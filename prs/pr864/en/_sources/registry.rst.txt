@@ -297,7 +297,7 @@ The AS Registry MUST contain the following parameters for each registered Authen
      - REQUIRED. Service access point (PDND endpoint for Public AS, API endpoint for Private AS).
    * - **data_capabilities[].api_specification**
      - string
-     - REQUIRED. URL to OpenAPI 3.0 specification document for this data capability.
+     - REQUIRED. URL to `OAS3`_ specification document for this data capability.
    * - **data_capabilities[].data_provision**
      - JSON object
      - OPTIONAL. Data provision capabilities and timing specifications.
@@ -386,7 +386,7 @@ The Digital Credential Catalog aims to:
   2. Standardize the technical and functional description of Digital Credentials.
   3. Enable interoperability between different Issuers and Relying Parties.
   4. Simplify the integration process for Wallet Providers and Relying Parties.
-  5. Ensure trust in the ecosystem through certified information.
+  5. Ensure trust in the ecosystem through verifiable and trustworthy information.
   6. Provide transparency on the ecosystem of available Digital Credentials.
 
 
@@ -451,11 +451,6 @@ The following table summarizes the main information that MUST be provided by the
        - **Restriction policy**: If applicable, rules governing the Digital Credential's use and limitations according to national regulations. It is used, for example, to specify if only specific legal type Entities, for example Pub-EAA Provider and public Wallet Solutions, are allowed to issue and obtain the Digital Credential.
        - **Pricing policy**: Information related to pricing models of Digital Credential, such as `free`, `issuance_based`, `verification_based`.
        - **Digital Credential purposes**: Information related to the allowed purposes for which the Digital Credential can be used. Each Digital Credential type can be used for multiple purposes.
-   * - Claims and Taxonomy References
-     - Content and classification information:
-
-       - **List of displayed claims**: Specific Digital Credential content displayed to the User.
-       - **Structured taxonomy references**: Classification systems and controlled vocabularies used.
 
 
 The Trust Anchor MUST publish and keep up to date all the information at the Digital Credential Catalog `.well-known` endpoint ensuring data reliability, authenticity and integrity. In particular, the Digital Credential Catalog, claims and taxonomy MUST be available through the ``.well-known/credential-catalog`` endpoint.
@@ -516,10 +511,10 @@ Each Credential MUST specify domains and purposes to enable both **Credential-Sp
 
   1. **Credential-Specific Scenarios** (Primary for Government/Regulated Sectors): RPs request specific credential types for compliance and audit requirements, including for example:
 
-    - **Government Services**: ``"vct_values": ["person_identification_data"]`` for PID-specific identity verification.
+    - **Government Services**: ``"vct_values": ["urn:eudi:pid:it:1"]`` for PID-specific identity verification.
     - **Police Controls**: ``"docType": "org.iso.18013.5.1.mDL"`` for driving license verification.
     - **Banking KYC**: Specific credential types mandated by financial regulations.
-    - **Healthcare Services**: ``"vct_values": ["european_disability_card"]`` for EU-compliant disability benefit access.
+    - **Healthcare Services**: ``"vct_values": ["urn:eudi:european_disability_card:it:1"]`` for EU-compliant disability benefit access.
 
   2. **Credential-Agnostic Scenarios** (Typical for Private Business): RPs request specific claims regardless of credential source for operational efficiency, such as:
 
@@ -579,8 +574,8 @@ The JWS payload contains the following parameters:
      - REQUIRED. Timestamp of the last modification to the Digital Credential Catalog.
    * - **credentials**
      - REQUIRED. Array containing Digital Credential definitions.
-   * - **wallet_attestation**
-     - REQUIRED. A JSON Object containing definitions for Wallet Attestations, including their supported formats, associated claims, and Levels of Assurance (LoA). This Object is used by other entities, such as Issuers and Relying Parties, to retrieve information about the Wallet Attestation formats supported within the ecosystem.
+   * - **wallet_app_attestation**
+     - REQUIRED. A JSON Object containing definitions for Wallet App Attestations, including their supported formats, and associated claims. This Object is used by other entities, such as Issuers and Relying Parties, to retrieve information about the Wallet App Attestation formats supported within the ecosystem.
 
 Each element of the ``credentials`` array contains at least the following information:
 
@@ -594,20 +589,11 @@ Each element of the ``credentials`` array contains at least the following inform
   * - **version**
     - REQUIRED. Version of the Digital Credential definition.
   * - **credential_type**
-    - REQUIRED. Unique identifier of the Digital Credential type.
+    - REQUIRED. Unique identifier of the Digital Credential type. For PID it MUST be ``pid``.
   * - **legal_type**
     - REQUIRED. Legal classification of the Credential (e.g., ``pub-eaa``, ``qeaa``, ``eaa``).
-  * - **localization**
-    - OPTIONAL. Localization settings, including:
-
-      * **default_locale**: Default language for text.
-      * **available_locales**: List of supported languages.
-      * **base_uri**: Base URI for localization resources.
-      * **version**: Version of the localization files.
-  * - **name**
-    - REQUIRED. Human-readable name of the Digital Credential. A suffix ``_l10n_id`` MAY be added for content localisation management.
-  * - **description**
-    - REQUIRED. Human-readable Digital Credential description. A suffix ``_l10n_id`` MAY be added for content localisation management.
+  * - **vct**: 
+    - REQUIRED. It MUST be set as a URN of the form defined in :ref:`credential-data-model:Credential SD-JWT Parameters`. Matching of the literals included in this URN string MUST be performed in a case-sensitive manner.
   * - **restriction_policy**
     - OPTIONAL. Legal restrictions on Wallet Solutions and/or Credential Issuers allowed to request/issue the Digital Credential.
 
@@ -651,30 +637,16 @@ Each element of the ``credentials`` array contains at least the following inform
 
       * **format**: Type of format (e.g., ``dc+sd-jwt``, ``mso_mdoc``)
       * **configuration_id**: Configuration identifier of the :term:Credential format. This is formed by concatenating the ``credential_type`` value to the ``format`` (e.g., ``dc_sd_jwt_mDL`` or ``mso_mdoc_mDL``), and is used to uniquely reference the configuration for this :term:Credential format.
-      * **vct**: CONDITIONAL. It is only REQUIRED if the ``format`` is ``dc+sd-jwt``. It MUST be set as a URI String of the form ``https://{Trust Anchor domain}/{version}/{credential_type}`` (e.g., ``https://trust-registry.it-wallet.example.it/v1.0/mDL``). Matching of the literals included in this URI string MUST be performed in a case-insensitive manner.
       * **docType**: CONDITIONAL. It is only REQUIRED if the ``format`` is ``mso_mdoc``. If the :term:Credential is:
 
         * defined by an ISO standard, it MUST be a string of the form ``iso.org.{iso-number}.{part}.{version}.{credential_type}`` (e.g., ``iso.org.18013.5.1.mDL``).
         * defined at the european level, it MUST be a string of the form ``eu.europa.ec.{credential_type}.{version}`` (e.g., ``eu.europa.ec.loyaltycard.1.0``).
-        * defined by a national standard, it MUST be a string of the form ``{Trust Anchor reverse domain}.{credential_type}.{version}`` (e.g., ``it.wallet.trust-registry.personidentificationdata.1``).
+        * defined by a national standard, it MUST be a string of the form ``{Trust Anchor reverse domain}.{credential_type}.{version}`` (e.g., ``it.wallet.trust-registry.pid.1``).
       * **schema_uri**: URI pointing to the format specification document.
       * **schema_uri#integrity**: Cryptographic digest of the format specification document for integrity verification. It MUST be a string of the form ``{digest_method}-{digest_value}``, where ``{digest_method}`` is the digest algorithm used (e.g., ``sha-256``) and ``{digest_value}`` is the base64url-encoded digest value.
-  * - **display_properties**
-    - REQUIRED. Visual presentation properties of Digital Credentials, e.g.:
-
-      * **templates**: Visual templates for the Credential, e.g. `svg` template.
-      * **background_color**: Background color in hexadecimal format.
-      * **text_color**: Text color in hexadecimal format.
-      * **logo_uri**: URI to the Digital Credential logo.
-  * - **claims**
-    - REQUIRED. Array of claims contained in the Digital Credential. It MUST include at least the following claims:
-
-      * **name**: The name of the claim in the Digital Credential.
-      * **namespaces**: CONDITIONAL. Namespace to which the claim belongs.
-      * **display_name_l10n_id**: OPTIONAL. Human-readable name of the claim with a suffix ``_l10n_id`` for content localisation management.
 
 
-The ``wallet_attestation`` Object contains at least the following information:
+The ``wallet_app_attestation`` Object contains at least the following information:
 
 .. list-table:: First-level Fields of Each Credential Entry
   :class: longtable
@@ -684,27 +656,17 @@ The ``wallet_attestation`` Object contains at least the following information:
   * - Field Name
     - Description
   * - **credential_type**
-    - REQUIRED. Unique identifier of the Wallet Attestation. It MUST be set to ``WalletAttestation``.
-  * - **name**
-    - REQUIRED. Human-readable name of the Wallet Attestation. It MUST be set to ``Wallet Attestation``.
-  * - **description**
-    - REQUIRED. Human-readable Digital Credential description.
-  * - **aal_values_supported**
-    - REQUIRED. Array of Strings each of which is a Level of Assurance (LoA) supported by the Wallet Attestation. It MUST include at least the levels ``low``, ``medium`` and ``high``.
+    - REQUIRED. Unique identifier of the Wallet App Attestation. It MUST be set to ``wallet_app_attestation``.
+  * - **vct**
+    - REQUIRED. It MUST be set as a URN of the form defined in :ref:`credential-data-model:Credential SD-JWT Parameters`. Matching of the literals included in this URN string MUST be performed in a case-sensitive manner.
   * - **formats**
-    - REQUIRED. Array of supported formats for the Wallet Attestation, including:
+    - REQUIRED. Array of supported formats for the Wallet App Attestation, including:
 
       * **format**: Type of format (e.g., ``dc+sd-jwt``, ``mso_mdoc`` or ``oauth-client-attestation+jwt``)
-      * **configuration_id**: Configuration identifier of the Wallet Attestation. This is formed by concatenating the string ``wa`` to the ``format`` (e.g., ``dc_sd_jwt_wa``, ``mso_mdoc_wa``, or ``jwt_wa``), and is used to uniquely reference the configuration of the Wallet Attestation format.
-      * **vct**: CONDITIONAL. It is only present if the ``format`` is ``dc+sd-jwt``. It MUST be set as a URI String of the form ``https://{Trust Anchor domain}/{credential_type}`` (e.g., ``https://trust-registry.it-wallet.example.it/WalletAttestation``). Matching of the literals included in this URI string MUST be performed in a case-insensitive manner.
-      * **docType**: CONDITIONAL. It is only present if the ``format`` is ``mso_mdoc``. It is a string of the form ``{Trust Anchor reverse domain}.{credential_type}`` (e.g., ``it.wallet.trust-registry.WalletAttestation``).
+      * **configuration_id**: Configuration identifier of the Wallet App Attestation. This is formed by concatenating the string ``wa`` to the ``format`` (e.g., ``dc_sd_jwt_wa``, ``mso_mdoc_wa``, or ``jwt_wa``), and is used to uniquely reference the configuration of the Wallet App Attestation format.
+      * **docType**: CONDITIONAL. It is only present if the ``format`` is ``mso_mdoc``. It is a string of the form ``{Trust Anchor reverse domain}.{credential_type}`` (e.g., ``it.wallet.trust-registry.wallet_app_attestation``).
       * **schema_uri**: URI pointing to the format specification document.
       * **schema_uri#integrity**: Cryptographic digest of the format specification document for integrity verification. It MUST be a string of the form ``{digest_method}-{digest_value}``, where ``{digest_method}`` is the digest algorithm used (e.g., ``sha-256``) and ``{digest_value}`` is the base64url-encoded digest value.
-  * - **claims**
-    - REQUIRED. Array of claims contained in the Wallet Attestation. It MUST include at least the following claims:
-
-      * **Name**: The name of the claim (e.g., ``sub``, ``aal``, ``wallet_link``, ``wallet_name``).
-      * **Namespaces**: CONDITIONAL. Array of namespaces to which the claim belongs. It MUST be set to ``{Trust Anchor reverse domain}.{credential_type}`` (e.g., ``it.wallet.trust-registry.WalletAttestation``).
 
 The corresponding example of Digital Credentials Catalog as decoded in JSON for both header and payload is the following:
 
@@ -741,6 +703,18 @@ The corresponding example of Digital Credentials Catalog as decoded in JSON for 
 
   Entities SHOULD verify the integrity of downloaded localization bundles using the digest method and values specified in the **localization_info.integrity** claim. This ensures that the localization data has not been tampered with during transmission.
 
+Catalog as Canonical Source for Display Information
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To minimize duplication while having consistent presentation across the ecosystem, the Digital Credential Catalogue is the canonical source of truth for all end-user display information related to Digital Credentials (e.g., credential name/description, claim labels, visual templates, colors, logo URIs).
+
+- For Credentials that are included in the Credential Catalog Wallet Solutions and Relying Parties MUST use the display-related fields retrieved through the ``vct`` URL contained in the Catalogue when rendering Digital Credentials and their claims.
+- For Credentials that are not included in the Credential Catalog (for example, Credentials not deemed of public interest), Wallet Solutions MAY use the display information from the Credential Issuer metadata and/or the Digital Credential Metadata Type. When both are available, the following precedence applies:
+
+  1. Use the Digital Credential Metadata Type if available.
+  2. Otherwise, use the Credential Issuer metadata.
+
+- Implementations SHOULD cache Metadata Type display data and apply language selection using the ``locale`` parameters.
 
 Taxonomy
 --------

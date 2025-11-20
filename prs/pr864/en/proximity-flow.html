@@ -197,7 +197,7 @@ During the communication subphase, the Relying Party Instance has the option to 
 <li><p><em>Supervised Device Retrieval flow</em> where a human Relying Party is overseeing the verification process in person, or <em>unsupervised flow</em> where verification might happen through automated systems without human oversight (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_095</span></a>).</p></li>
 <li><p><em>Relying Party Instance Authentication</em> following the mechanisms defined in the <a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> for the <em>reader authentication</em> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_098</span></a>).</p></li>
 <li><p>Domestic <em>Document Type</em> and <em>Namespaces</em> defined in this technical specification in addition to those already defined in the <a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> for the mDL (see <a class="reference internal" href="credential-data-model.html#mdoc-cbor-credential-format"><span class="std std-ref">mdoc-CBOR Credential Format</span></a> for more details) (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_099</span></a>).</p></li>
-<li><p><em>Wallet Instance validation</em> through the Wallet Attestation.</p></li>
+<li><p><em>Wallet Instance validation</em> through the Wallet App Attestation.</p></li>
 </ul>
 <p>The following table shows the supported Device Engagement technologies (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_097</span></a>), specifying which are mandatory.</p>
 <table class="longtable docutils align-default">
@@ -309,7 +309,7 @@ During the communication subphase, the Relying Party Instance has the option to 
 <p><strong>Step 6</strong>: The Relying Party Instance generates its ephemeral key pair (<code class="docutils literal notranslate"><span class="pre">EReaderKey.Priv</span></code>, <code class="docutils literal notranslate"><span class="pre">EReaderKey.Pub</span></code>). The private key (<code class="docutils literal notranslate"><span class="pre">EReaderKey.Priv</span></code>) MUST be kept secret, and the public key (<code class="docutils literal notranslate"><span class="pre">EReaderKey.Pub</span></code>) MUST be used in establishing the session.</p>
 <p><strong>Step 7</strong>: The Wallet Instance and Relying Party Instance independently MUST derive the session keys using their private ephemeral key and the other party's public ephemeral key through a key agreement protocol. This ensures session encryption. In this particular step, the Relying Party Instance MUST compute its session key  (<a class="reference internal" href="test-plans-proximity-presentation.html#test-plans-proximity-presentation"><span class="std std-ref">PPR-002</span></a> and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_104</span></a>).</p>
 <p><strong>Step 8</strong>: The Relying Party Instance MUST prepare a <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message. This message MUST be signed by the Relying Party Instance (mdoc reader authentication as specified in [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #12.5]) and encrypted using the session keys derived in the previous step. The <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message MUST include the <code class="docutils literal notranslate"><span class="pre">EReaderKey.Pub</span></code> and a request for specific attribute(s) (<a class="reference internal" href="test-plans-proximity-presentation.html#test-plans-proximity-presentation"><span class="std std-ref">PPR-002</span></a>).</p>
-<p>Below is a non-normative example using the diagnostic notation of a CBOR-encoded <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message that contains an mdoc request for a Wallet Attestation along with an mDL Digital Credential.</p>
+<p>Below is a non-normative example using the diagnostic notation of a CBOR-encoded <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message that contains an mdoc request for a Wallet App Attestation along with an mDL Digital Credential.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
   &quot;version&quot;: &quot;1.0&quot;,  % Version
   &quot;docRequests&quot;: 
@@ -338,7 +338,7 @@ During the communication subphase, the Relying Party Instance has the option to 
     &quot;itemsRequest&quot;: 
     24(&lt;&lt;  % Embedded CBOR data item
       {
-        &quot;docType&quot;: &quot;it.wallet.trust-registry.WalletAttestation&quot;,
+        &quot;docType&quot;: &quot;it.wallet.trust-registry.wallet_app_attestation&quot;,
       }
     &gt;&gt;)
     }
@@ -377,7 +377,7 @@ Refer to (<a class="reference internal" href="test-plans-wallet-provider.html#wa
 <li><p>Sec 8.2.2.5 for <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> over NFC</p></li>
 </ul>
 </div>
-<p>Below is a non-normative example using the diagnostic notation of a CBOR-encoded <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> that contains the mdoc response of a Wallet Attestation and an mDL Digital Credential.</p>
+<p>Below is a non-normative example using the diagnostic notation of a CBOR-encoded <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> that contains the mdoc response of a Wallet App Attestation and an mDL Digital Credential.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
     &quot;version&quot;: &quot;1.0&quot;,
     &quot;documents&quot;:
@@ -561,21 +561,13 @@ Refer to (<a class="reference internal" href="test-plans-wallet-provider.html#wa
         }
       },
       {
-        &quot;docType&quot;: &quot;it.wallet.trust-registry.WalletAttestation&quot;,
+        &quot;docType&quot;: &quot;it.wallet.trust-registry.wallet_app_attestation&quot;,
         &quot;issuerSigned&quot;: {
           &quot;nameSpaces&quot;: {
-            &quot;it.wallet.trust-registry.WalletAttestation&quot;: [
+            &quot;it.wallet.trust-registry.wallet_app_attestation&quot;: [
               24(&lt;&lt;
                 {
                   &quot;digestID&quot;: 0,
-                  &quot;elementIdentifier&quot;: &quot;aal&quot;,
-                  &quot;elementValue&quot;: &quot;https://wallet-provider.example.org/LoA/basic&quot;,
-                  &quot;random&quot;: h&#39;bbc6b4df4282424ed5753b4218863923ab3256cb831822601d95a5806e2bd114&#39;
-                }
-              &gt;&gt;),
-              24(&lt;&lt;
-                {
-                  &quot;digestID&quot;: 1,
                   &quot;elementIdentifier&quot;: &quot;sub&quot;,
                   &quot;elementValue&quot;: &quot;ec#1&quot;,
                   &quot;random&quot;: h&#39;0117942b3ecdad65f226a668466fa175b72563a392598ad18fa6d359ea9b1b2d&#39;
@@ -583,7 +575,7 @@ Refer to (<a class="reference internal" href="test-plans-wallet-provider.html#wa
               &gt;&gt;),
               24(&lt;&lt;
                 {
-                  &quot;digestID&quot;: 2,
+                  &quot;digestID&quot;: 1,
                   &quot;elementIdentifier&quot;: &quot;wallet_link&quot;,
                   &quot;elementValue&quot;: &quot;https://wallet-provider.example.org&quot;,
                   &quot;random&quot;: h&#39;dc9d032a64866e33d06f48a882989b5747da3638f0d216a2275191ed3395fdec&#39;
@@ -591,7 +583,7 @@ Refer to (<a class="reference internal" href="test-plans-wallet-provider.html#wa
               &gt;&gt;),
               24(&lt;&lt;
                 {
-                  &quot;digestID&quot;: 3,
+                  &quot;digestID&quot;: 2,
                   &quot;elementIdentifier&quot;: &quot;wallet_name&quot;,
                   &quot;elementValue&quot;: &quot;Wallet name&quot;,
                   &quot;random&quot;: h&#39;d665c50c4364c7cbf4ab9461b9bbb228f37ad278b9fb61283550951624d4d9ae&#39;
@@ -626,7 +618,7 @@ Refer to (<a class="reference internal" href="test-plans-wallet-provider.html#wa
                       -3: h&#39;6b972cd32c19cd5e8c19e051f1e207cabb3c2a802abf40ee5baaaa4a464508c3&#39;
                     }
                   },
-                  &quot;docType&quot;: &quot;org.iso.18013.5.1.IT.WalletAttestation&quot;,
+                  &quot;docType&quot;: &quot;org.iso.18013.5.1.IT.wallet_app_attestation&quot;,
                   &quot;validityInfo&quot;: {
                     &quot;signed&quot;: 0(&quot;2025-06-27T07:40:21Z&quot;),
                     &quot;validFrom&quot;: 0(&quot;2025-06-27T07:40:21Z&quot;),
@@ -664,7 +656,7 @@ Refer to (<a class="reference internal" href="test-plans-wallet-provider.html#wa
 <p><strong>Final Consideration</strong>: The presentation flow focused on the technical data exchange in proximity settings. It is crucial to recognise that supervised proximity flows involving a human verifier play a vital role in many use cases (e.g., age verification at a store, identity check by law enforcement). The human element adds a layer of identity verification through visual inspection and comparison, contributing to User Binding and overall authentication assurance aspects not fully captured in a purely technical presentation flow.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>During proximity presentation the Wallet Instance might not be able to fetch a fresh Wallet Attestation, in this case, the Wallet Instance SHOULD send the latest version of the Wallet Attestation (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_108a</span></a>). It is left up to the Relying Party to determine whether a presentation with a valid but expired Wallet Attestation is valid or not.</p>
+<p>During proximity presentation the Wallet Instance might not be able to fetch a fresh Wallet App Attestation, in this case, the Wallet Instance SHOULD send the latest version of the Wallet App Attestation (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_108a</span></a>). It is left up to the Relying Party to determine whether a presentation with a valid but expired Wallet App Attestation is valid or not.</p>
 </div>
 <section id="deviceengagement-over-qr-code">
 <span id="sec-deviceengagement-qr"></span><h2><span class="section-number">12.2.2.1. </span><code class="docutils literal notranslate"><span class="pre">DeviceEngagement</span></code> over QR Code<a class="headerlink" href="#deviceengagement-over-qr-code" title="Link to this heading">¶</a></h2>
@@ -1066,8 +1058,8 @@ If early <code class="docutils literal notranslate"><span class="pre">SessionEst
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>Requesting the Wallet Attestation</strong></p>
-<p>The Relying Party requesting a Wallet Attestation MUST add an object in the <strong>docRequest</strong> array having the <code class="docutils literal notranslate"><span class="pre">docType</span></code> set to <code class="docutils literal notranslate"><span class="pre">{Trust</span> <span class="pre">Anchor</span> <span class="pre">reverse</span> <span class="pre">domain}.{WalletAttestation}</span></code> as described in <a class="reference internal" href="registry-catalogue.html#digital-credentials-catalogue-structure"><span class="std std-ref">Digital Credentials Catalogue Structure</span></a>. The Relying Party MUST NOT include the <code class="docutils literal notranslate"><span class="pre">nameSpaces</span></code> parameter in the request (<a class="reference internal" href="test-plans-proximity-presentation.html#test-plans-proximity-presentation"><span class="std std-ref">PPR-010</span></a>).</p>
+<p><strong>Requesting the Wallet App Attestation</strong></p>
+<p>The Relying Party requesting a Wallet App Attestation MUST add an object in the <strong>docRequest</strong> array having the <code class="docutils literal notranslate"><span class="pre">docType</span></code> set to <code class="docutils literal notranslate"><span class="pre">{Trust</span> <span class="pre">Anchor</span> <span class="pre">reverse</span> <span class="pre">domain}.{WalletAppAttestation}</span></code> as described in <a class="reference internal" href="registry.html#digital-credentials-catalog-structure"><span class="std std-ref">Digital Credentials Catalog Structure</span></a>. The Relying Party MUST NOT include the <code class="docutils literal notranslate"><span class="pre">nameSpaces</span></code> parameter in the request (<a class="reference internal" href="test-plans-proximity-presentation.html#test-plans-proximity-presentation"><span class="std std-ref">PPR-010</span></a>).</p>
 </div>
 </section>
 <section id="mdoc-response">
@@ -1153,8 +1145,8 @@ If early <code class="docutils literal notranslate"><span class="pre">SessionEst
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>Presenting the Wallet Attestation</strong></p>
-<p>The Wallet Instance MUST include the Wallet Attestation if requested by the Relying Party in the mdoc request. The Wallet Instance SHOULD include all available disclosures for the Wallet Attestation and MUST include the claim <code class="docutils literal notranslate"><span class="pre">aal</span></code> as a disclosure (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_108b</span></a>). Moreover, during presentaion, the Wallet Instance MUST NOT request user's consent to the disclosure of the Wallet Attestation attributes which are technical data not transparent to the user (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_107a</span></a>).</p>
+<p><strong>Presenting the Wallet App Attestation</strong></p>
+<p>The Wallet Instance MUST include the Wallet App Attestation if requested by the Relying Party in the mdoc request. The Wallet Instance SHOULD include all available disclosures for the Wallet App Attestation (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_108b</span></a>). Moreover, during presentaion, the Wallet Instance MUST NOT request user's consent to the disclosure of the Wallet App Attestation attributes which are technical data not transparent to the user (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_107a</span></a>).</p>
 </div>
 </section>
 <section id="session-termination">
@@ -1249,7 +1241,7 @@ If early <code class="docutils literal notranslate"><span class="pre">SessionEst
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 14/10/2025.
+      Last updated on 20/11/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

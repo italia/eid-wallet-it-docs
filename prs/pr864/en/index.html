@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>IT-Wallet Technical Documentation - 1.2.0 &#8212; IT-Wallet Technical Documentation - PR #864</title>
+    <title>IT-Wallet Technical Documentation - 1.3.0 &#8212; IT-Wallet Technical Documentation - PR #864</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -161,7 +161,7 @@
           <div class="body" role="main">
             
   <section id="it-wallet-technical-documentation-version">
-<h1>IT-Wallet Technical Documentation - 1.2.0<a class="headerlink" href="#it-wallet-technical-documentation-version" title="Link to this heading">¶</a></h1>
+<h1>IT-Wallet Technical Documentation - 1.3.0<a class="headerlink" href="#it-wallet-technical-documentation-version" title="Link to this heading">¶</a></h1>
 <p>This document provides the technical architecture, implementation framework and design requirements to be adopted by the IT-Wallet System Technical Solutions.</p>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
@@ -206,7 +206,7 @@
 <li class="toctree-l3"><a class="reference internal" href="onboarding-high-level.html#relying-party-operator-journey">4.5.5. Relying Party Operator Journey</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="onboarding-high-level.html#end-user-experience-journey">4.6. End User Experience Journey</a></li>
+<li class="toctree-l2"><a class="reference internal" href="onboarding-high-level.html#user-experience-journey">4.6. User Experience Journey</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. User Experience Design</a><ul>
@@ -317,6 +317,7 @@
 <li class="toctree-l2"><a class="reference internal" href="registry.html#digital-credentials-catalog">7.6. Digital Credentials Catalog</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="registry.html#digital-credentials-hierarchy">7.6.1. Digital Credentials Hierarchy</a></li>
 <li class="toctree-l3"><a class="reference internal" href="registry.html#digital-credentials-catalog-structure">7.6.2. Digital Credentials Catalog Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="registry.html#catalog-as-canonical-source-for-display-information">7.6.3. Catalog as Canonical Source for Display Information</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="registry.html#taxonomy">7.7. Taxonomy</a></li>
@@ -340,8 +341,9 @@
 <li class="toctree-l2"><a class="reference internal" href="entity-onboarding.html#federation-entities-onboarding-process">8.4. Federation Entities Onboarding Process</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="entity-onboarding.html#hierarchical-federation-authority-model">8.4.1. Hierarchical Federation Authority Model</a></li>
 <li class="toctree-l3"><a class="reference internal" href="entity-onboarding.html#federation-onboarding-prerequisites">8.4.2. Federation Onboarding Prerequisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="entity-onboarding.html#federation-onboarding-procedure">8.4.3. Federation Onboarding Procedure</a></li>
-<li class="toctree-l3"><a class="reference internal" href="entity-onboarding.html#it-wallet-federation-trust-marks">8.4.4. IT-Wallet Federation Trust Marks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="entity-onboarding.html#key-management-security-requirements">8.4.3. Key Management Security Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="entity-onboarding.html#federation-onboarding-procedure">8.4.4. Federation Onboarding Procedure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="entity-onboarding.html#it-wallet-federation-trust-marks">8.4.5. IT-Wallet Federation Trust Marks</a></li>
 </ul>
 </li>
 </ul>
@@ -437,7 +439,7 @@
 <li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#id1">13.1.1. Federation Endpoint</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-solution-nonce-endpoint">13.1.2. Wallet Solution Nonce Endpoint</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-instance-management-endpoint">13.1.3. Wallet Instance Management Endpoint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#id3">13.1.4. Wallet Attestation Issuance Endpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-app-and-wallet-unit-attestation-issuance-endpoint">13.1.4. Wallet App and Wallet Unit Attestation Issuance Endpoint</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#e-service-pdnd-wallet-provider-catalog">13.1.5. e-Service PDND Wallet Provider Catalog</a></li>
 </ul>
 </li>
@@ -447,13 +449,9 @@
 <li class="toctree-l3"><a class="reference internal" href="credential-issuer-endpoint.html#e-service-pdnd-credential-issuer-catalog">13.2.3. e-Service PDND Credential Issuer Catalog</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoint.html">13.3. Relying Party Endpoints</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoint.html#relying-party-federation-endpoint">13.3.1. Relying Party Federation Endpoint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoint.html#relying-party-nonce-endpoint">13.3.2. Relying Party Nonce Endpoint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoint.html#relying-party-instance-initialization-endpoint">13.3.3. Relying Party Instance Initialization Endpoint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoint.html#relying-party-key-binding-endpoint">13.3.4. Relying Party Key Binding Endpoint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoint.html#relying-party-access-certificate-endpoint">13.3.5. Relying Party Access Certificate Endpoint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoint.html#relying-party-erasure-endpoint">13.3.6. Relying Party Erasure Endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html">13.3. Relying Party Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#relying-party-remote-flow-endpoints">13.3.1. Relying Party Remote Flow Endpoints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#relying-party-provider-backend-endpoints">13.3.2. Relying Party Provider Backend Endpoints</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="authentic-source-endpoint.html">13.4. Authentic Source Endpoints</a><ul>
@@ -562,7 +560,6 @@
 <li class="toctree-l1"><a class="reference internal" href="appendix.html">20. Appendix</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="mobile-application-instance.html">20.1. Mobile Application Instance</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="mobile-application-instance.html#mobile-application-instance-initialization">20.1.1. Mobile Application Instance Initialization</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mobile-application-instance.html#mobile-application-key-binding">20.1.2. Mobile Application Key Binding</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="e-service-pdnd.html">20.2. e-Service PDND</a><ul>
@@ -611,7 +608,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 14/10/2025.
+      Last updated on 20/11/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

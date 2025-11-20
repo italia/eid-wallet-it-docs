@@ -28,7 +28,7 @@ The Digital Credential data format and the mechanism through which a Digital Cre
 SD-JWT-VC Credential Format
 ---------------------------
 
-The PID/(Q)EAA is issued in the form of a Digital Credential. The Digital Credential format is `SD-JWT`_ as specified in `SD-JWT-VC`_.
+The PID/(Q)EAA is issued in the form of a Digital Credential. The Digital Credential format is `SD-JWT`_ as specified in `SD-JWT-VC`_ using the Compact Serialization.
 
 SD-JWT MUST be signed using the Issuer's private key. SD-JWT MUST be provided along with a Type Metadata related to the issued Digital Credential according to Sections 6 and 6.3 of [`SD-JWT-VC`_]. The payload MUST contain the **_sd_alg** claim described in Section 4.1.1 `SD-JWT`_ and other claims specified in this section.
 
@@ -77,7 +77,7 @@ The JOSE header contains the following mandatory parameters:
     - **Description**
     - **Reference**
   * - **typ**
-    - REQUIRED. It MUST be set to ``dc+sd-jwt`` as defined in `SD-JWT-VC`_.
+    - REQUIRED. It MUST be set to ``dc+sd-jwt`` as defined in `SD-JWT-VC`_. It MUST NOT be set to ``none``.
     - :rfc:`7515` Section 4.1.9.
   * - **alg**
     - REQUIRED. Signature Algorithm.
@@ -91,9 +91,6 @@ The JOSE header contains the following mandatory parameters:
   * - **x5c**
     - OPTIONAL. Contains the X.509 public key certificate or certificate chain [:rfc:`5280`] corresponding to the key used to digitally sign the JWT.
     - :rfc:`7515` Section 4.1.8 and [`SD-JWT-VC`_] Section 3.5.
-  * - **vctm**
-    - OPTIONAL. JSON array of base64url-encoded Type Metadata JSON documents. In case of extended type metadata, this claim contains the entire chain of JSON documents.
-    - [`SD-JWT-VC`_] Section 6.3.5.
 
 The JWT payload contains the following claims. Some of these claims can be disclosed, these are listed in the following tables that specify whether a claim is selectively disclosable [SD] or not [NSD].
 
@@ -110,7 +107,7 @@ The JWT payload contains the following claims. Some of these claims can be discl
       - [NSD]. REQUIRED. URL string representing the Credential Issuer unique identifier.
       - `[RFC7519, Section 4.1.1] <https://www.iana.org/go/rfc7519>`_.
     * - **sub**
-      - [NSD]. OPTIONAL. The identifier of the subject of the Digital Credential, the User, MUST be opaque and MUST NOT correspond to any anagraphic data or be derived from the User's anagraphic data via pseudonymization. Additionally, it is required that two different Credentials issued MUST NOT use the same ``sub`` value.
+      - [NSD]. OPTIONAL. The identifier of the subject of the Digital Credential, the User, MUST be opaque and MUST NOT correspond to any anagraphic data or be derived from the User's anagraphic data via pseudonymization. Additionally, it is required that two different Credential instances issued MUST NOT use the same ``sub`` value.
       - `[RFC7519, Section 4.1.2] <https://www.iana.org/go/rfc7519>`_.
     * - **iat**
       - [SD]. REQUIRED. UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in :rfc:`7519`.
@@ -134,13 +131,13 @@ The JWT payload contains the following claims. Some of these claims can be discl
       - [NSD]. REQUIRED. JSON object containing the proof-of-possession key materials. By including a **cnf** (confirmation) claim in a JWT, the Issuer of the JWT declares that the Holder is in control of the private key related to the public one defined in the **cnf** parameter. The recipient MUST cryptographically verify that the Holder is in control of that key.
       - `[RFC7800, Section 3.1] <https://www.iana.org/go/rfc7800>`_ and Section 3.2.2.2 `SD-JWT-VC`_.
     * - **vct**
-      - [NSD]. REQUIRED. Credential type value MUST be an HTTPS URL String and it MUST be set using one of the values obtained from the Credential Issuer metadata, matching of the literals included in this URI string MUST be performed in a case-insensitive manner. It is the identifier of the SD-JWT VC type and it MUST be set with a collision-resistant value as defined in Section 2 of :rfc:`7515`. It MUST contain also the number of version of the Credential type (for instance: ``https://trust-anchor.eid-wallet.example.it/credentials/v1.0/personidentificationdata``).
+      - [NSD]. REQUIRED. Credential type value MUST be a URN and it MUST be set using one of the values obtained from the Credential Issuer metadata, matching of the literals included in this URN MUST be performed in a case-sensitive manner. It is the identifier of the SD-JWT VC type and it MUST be set with a collision-resistant value as defined in Section 2 of :rfc:`7515`. It MUST contain also the number of version of the Credential type. The following structure MUST be used: ``urn:eudi:{credential_type}:it:{version}``. If the Digital Credential is published within the Digital Credential Catalog, ``vct`` value MUST correspond with the value indicated in the Catalog, see :ref:`registry:Digital Credentials Catalog Structure`.
       - Section 3.2.2.2 `SD-JWT-VC`_.
     * - **vct#integrity**
       - [NSD]. REQUIRED. The value MUST be an "integrity metadata" string as defined in Section 3 of [`W3C-SRI`_]. *SHA-256*, *SHA-384* and *SHA-512* MUST be supported as cryptographic hash functions. *MD5* and *SHA-1* MUST NOT be used. This claim MUST be verified according to Section 3.3.5 of [`W3C-SRI`_].
       - Section 6.1 `SD-JWT-VC`_, [`W3C-SRI`_]
     * - **verification**
-      - [SD]. CONDITIONAL. REQUIRED if Credential type is set to `PersonIdentificationData`, otherwise is OPTIONAL. Object containing User authentication and User data verification information. If present MUST include the following sub-value:
+      - [SD]. CONDITIONAL. REQUIRED if Credential type is set to `pid`, otherwise is OPTIONAL. Object containing User authentication and User data verification information. If present MUST include the following sub-value:
 
           * ``trust_framework``: String identifying the trust framework used for User authentication. It MUST be set using one of the values described in the `trust_frameworks_supported` map provided within the Credential Issuer Metadata.
           * ``assurance_level``: String identifying the level of identity assurance guaranteed during the User authentication process.
@@ -184,14 +181,10 @@ If the ``status`` parameter is set to ``status_list``, it is a JSON Object conta
 If the ``status`` parameter is set to ``status_assertion``, it is a JSON Object containing the *credential_hash_alg* claim indicating the Algorithm used for hashing the Digital Credential to which the Status Assertion is bound. It is RECOMMENDED to use *sha-256*.
 
 
-.. note::
-  The Credential Type Metadata JSON Document MAY be retrieved directly from the URL contained in the claim **vct**, using the HTTP GET method or using the ``vctm`` header parameter if provided. In case the Credential Type Metadata is retrived via ``vct``, matching of the literals included in the URI string MUST be performed in a case-insensitive manner. Unlike specified in Section 6.3.1 of `SD-JWT-VC`_ the **.well-known** endpoint is not included in the current implementation profile. Implementers may decide to use it for interoperability with other systems.
-
-
-Digital Credential Metadata Type
+Digital Credential Type Metadata
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Metadata type document MUST be a JSON object and contains the following parameters.
+The Type Metadata document MUST be a JSON object and contains the following parameters.
 
 .. _table_metadata_type_json_obj:
 .. list-table::
@@ -209,19 +202,10 @@ The Metadata type document MUST be a JSON object and contains the following para
       - REQUIRED. A human-readable description of the Digital Credential type. In case of multiple languages, the language tags are added to the member name, delimited by a `#` character as defined in :rfc:`5646`.
       - [`SD-JWT-VC`_] Section 6.2 and [`OIDC`_] Section 5.2.
     * - **extends**
-      - OPTIONAL. String Identifier of an extended metadata type document.
+      - OPTIONAL. String Identifier of an extended type metadata document.
       - [`SD-JWT-VC`_] Section 6.2.
     * - **extends#integrity**
       - CONDITIONAL. REQUIRED if **extends** is present.
-      - [`SD-JWT-VC`_] Section 6.2.
-    * - **schema**
-      - CONDITIONAL. REQUIRED if **schema_uri** is not present.
-      - [`SD-JWT-VC`_] Section 6.2.
-    * - **schema_uri**
-      - CONDITIONAL. REQUIRED if **schema** is not present.
-      - [`SD-JWT-VC`_] Section 6.2.
-    * - **schema_uri#integrity**
-      - CONDITIONAL. REQUIRED if **schema_uri** is present.
       - [`SD-JWT-VC`_] Section 6.2.
     * - **data_source**
       - REQUIRED. Object containing information about the data origin. It MUST contain the object ``verification`` with the following sub-value:
@@ -239,7 +223,7 @@ The Metadata type document MUST be a JSON object and contains the following para
     * - **display**
       - REQUIRED. Array of objects, one for each language supported, containing display information for the Digital Credential type. It contains for each object the following properties:
 
-          * ``lang``: language tag as defined in :rfc:`5646` Section 2. [REQUIRED].
+          * ``locale``: language tag as defined in Section 2 of :rfc:`5646`, the name of this parameter is aligned with SD-JWT-VC Draft 12. [REQUIRED].
           * ``name``: human-readable label for the Digital Credential type. [REQUIRED].
           * ``description``: human-readable description for the Digital Credential type. [REQUIRED].
           * ``rendering``: object containing rendering methods supported by the Digital Credential type. [REQUIRED]. The rendering method `svg_template` MUST be supported.
@@ -258,19 +242,23 @@ The Metadata type document MUST be a JSON object and contains the following para
                     * ``uri#integrity``: integrity metadata as defined in Section 3 of `W3C-SRI`_. [REQUIRED].
                     * ``alt_text``: A string containing alternative text to display instead of the logo image. [OPTIONAL].
 
-                * ``background_color``: RGB color value as defined in `W3C.CSS-COLOR`_ for the background of the Digital Credential. [OPTIONAL].
+                * ``background_color``: RGB color value as defined in `W3C.CSS-COLOR`_ for the background of the Digital Credential. [OPTIONAL]. 
+                * ``background_image``: Object containing information about the background image to be displayed for the type. This property is OPTIONAL [Aligned with SD-JWT-VC Draft 12]. The object contains the following sub-values:
+
+                    * ``uri``: A URI pointing to the background image. [REQUIRED]
+                    * ``uri#integrity``: integrity metadata as defined in Section 3 of `W3C-SRI`_. [REQUIRED].
+
                 * ``text_color``: RGB color value as defined in `W3C.CSS-COLOR`_ for the text of the Digital Credential. [OPTIONAL].
 
           .. note::
             The use of the SVG template is RECOMMENDED for all applications that support it.
-
       - [`SD-JWT-VC`_] Section 8.
     * - **claims**
-      - REQUIRED. Array of objects containing information for displaying and validating Digital Credential claims. It contains for each Credential claim the following properties:
+      - REQUIRED. An Array of objects that contains information for displaying and validating Digital Credential claims. Each object contains the following parameters:
 
           * ``path``: array indicating the claim or claims that are being addressed. [REQUIRED].
           * ``display``: array containing display information about the claim indicated in the ``path``. The array contains an object for each language supported by the Digital Credential type. This property is REQUIRED. It contains the following members:
-             * ``lang``: language tag as defined in :rfc:`5646` Section 2. [REQUIRED].
+             * ``locale``: language tag as defined in Section 2 of :rfc:`5646`, the name of this parameter is aligned with SD-JWT-VC Draft 12. [REQUIRED].
              * ``label``: human-readable label for the claim. [REQUIRED].
              * ``description``: human-readable description for the claim. [REQUIRED].
           * ``sd``: string indicating whether the claim is selectively disclosable. It MUST be set to `always` if the claim is selectively disclosure or `never` if not. [REQUIRED].
@@ -278,15 +266,51 @@ The Metadata type document MUST be a JSON object and contains the following para
       - [`SD-JWT-VC`_] Section 9.
 
 
-A non-normative Digital Credential metadata type is provided below.
+A non-normative Digital Credential type metadata is provided below.
 
 .. literalinclude:: ../../examples/vc-metadata-type.json
   :language: JSON
 
+Digital Credential Type Metadata retrieval
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The Credential Type Metadata JSON Document MAY be retrieved through a *well-known* endpoint. See Section 6.3.3 of `SD-JWT-VC`_
+This endpoint, provided by the Credential Issuer, MUST have the following format: ``https://{Credential Issuer Domain}/.well-known/vct/{vct}``.
+The Endpoint returns a ``200 OK`` status code and supports ``application/json`` and ``application/jwt`` as content type.
+
+Below a non-normative example is given.
+
+.. code-block:: http
+
+    GET /.well-known/vct/urn:eudi:pid:it:1 HTTP/1.1
+    Host: issuer.example.it
+    Accept: application/jwt
+
+    HTTP/1.1 200 OK
+    Content-Type: application/jwt
+
+    eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
+
+.. code-block:: http
+
+    GET /.well-known/vct/urn:eudi:pid:it:1 HTTP/1.1
+    Host: issuer.example.it
+    Accept: application/json
+
+    HTTP/1.1 200 OK
+    Content-Type: application/json
+
+    {	
+      "name": "...",
+      "description": "...",
+      ...
+    }
+
+
 PID Claims
 ^^^^^^^^^^
 
-Depending on the Digital Credential type **vct**, additional claims data MAY be added. The PID supports the following data:
+Depending on the Digital Credential type additional claims data MAY be added. The PID supports the following data:
 
 .. _table_sd-jwt-vc_pid_parameters:
 .. list-table::
@@ -850,14 +874,14 @@ For SD-JWT-VC, parameters are marked with `(hdr)` if they are located in the JOS
      - | issuerAuth.doctype
        | issuerAuth.version
    * - Digital Credential metadata
-     - | vctm.name (hdr)
-       | vctm.description (hdr)
-       | vctm.extends (hdr)
-       | vctm.schema (hdr)
-       | vctm.schema_uri (hdr)
-       | vctm.data_source (hdr)
-       | vctm.display (hdr)
-       | vctm.claims (hdr)
+     - | Type_Metadata.name (hdr)
+       | Type_Metadata.description (hdr)
+       | Type_Metadata.extends (hdr)
+       | Type_Metadata.schema (hdr)
+       | Type_Metadata.schema_uri (hdr)
+       | Type_Metadata.data_source (hdr)
+       | Type_Metadata.display (hdr)
+       | Type_Metadata.claims (hdr)
      - | -
        | -
        | -
@@ -908,14 +932,16 @@ For SD-JWT-VC, parameters are marked with `(hdr)` if they are located in the JOS
        | issuerAuth.valueDigests
    * - Integrity
      - | vct#integrity (pld)
-       | vctm.extends#integrity (hdr)
-       | vctm.schema_uri#integrity (hdr)
+       | Type_Metadata.extends#integrity (hdr)
+       | Type_Metadata.schema_uri#integrity (hdr)
      - |
        | -
        |
    * - Digital Credential format
      - typ (hdr)
-     - -
+     - |
+       | -
+       |
    * - Digital Credential auditability
      - verification (pld)
      - nameSpaces.elementIdentifier.verification
@@ -928,9 +954,9 @@ For SD-JWT-VC, parameters are marked with `(hdr)` if they are located in the JOS
        |
 
 .. note::
-  - In the mdoc-CBOR format, the version of the Digital Credential is not explicitly defined; it is only available for the IssuerAuth. In contrast, the SD-JWT format includes version information via the `vct` URL.
+  - In the mdoc-CBOR format, the version of the Digital Credential is not explicitly defined; it is only available for the IssuerAuth. In contrast, the SD-JWT format includes version information via the `vct` URN.
   - `Disclosures`, `_sd`, and `_sd_alg` enable Selective Disclosure of SD-JWT claims. The `_sd` and `_sd_alg` parameters are part of the SD-JWT payload, while `Disclosures` are sent separately in a Combined Format along with the SD-JWT.
-  - The `vctm.claims` parameter in SD-JWT and the `nameSpaces` structure in mdoc-CBOR are functionally equivalent, as both define the claim names and their structure. SD-JWT `Disclosures` for disclosed attributes directly correspond to `nameSpaces`, including attribute names, values, and salt values.
+  - The `Type_Metadata.claims` parameter in SD-JWT and the `nameSpaces` structure in mdoc-CBOR are functionally equivalent, as both define the claim names and their structure. SD-JWT `Disclosures` for disclosed attributes directly correspond to `nameSpaces`, including attribute names, values, and salt values.
   - A domestic namespace accommodates attributes such as `verification` and `sub`, which are not defined in the standard ISO elementIdentifiers for mdoc-CBOR Digital Credentials.
 
 

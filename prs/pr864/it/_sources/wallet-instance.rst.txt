@@ -7,7 +7,7 @@ Istanza del Wallet
 
 L'Istanza del Wallet stabilisce un meccanismo forte e affidabile per garantire all'Utente transazioni digitali in modo sicuro e rispettoso della privacy.
 
-L'Istanza del Wallet permette ad altre entità all'interno dell'ecosistema di stabilire un rapporto di fiducia con essa, presentando costantemente una Wallet Attestation durante le interazioni con i Fornitori di Attestati Elettronici di Dati di Identificazione Personale, i Fornitori di Attestati Elettronici di Attributi (Qualificati) e le Relying Party. Questi attestati verificabili, forniti dal Fornitore di Wallet, servono ad autenticare l'Istanza del Wallet stessa, garantendone l'affidabilità durante le interazioni con altri attori dell'ecosistema.
+L'Istanza del Wallet stabilisce un rapporto di fiducia con i Fornitori di PID e (Q)EAA presentando costantemente le Wallet App Attestation e Wallet Unit Attestation durante le interazioni, mentre si affida esclusivamente alle Wallet App Attestation per le Relying Party. Queste attestazioni verificabili, fornite dal Fornitore di Wallet, servono ad autenticare la stessa Istanza del Wallet, garantendo l'affidabilità del WSCD, verificando che l'Istanza del Wallet non sia stata revocata e assicurandone l'affidabilità nelle interazioni con gli altri attori dell'ecosistema.
 
 
 .. toctree::

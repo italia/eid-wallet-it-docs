@@ -207,7 +207,7 @@ Status Update related to the User
 
 Users MAY change their Digital Credential validity status by:
 
-  1. Deleting the Digital Credential from their Wallet Instance: the Wallet Instance MUST use the Notification Endpoint provided by the Issuer as described in Section :ref:`credential-revocation:Status Update by Wallet Instance`.
+  1. Deleting the Digital Credential from their Wallet Instance: the Wallet Instance SHOULD prompt the User to be optionally notify the Credential Issuer about the User's intention to revoke the Digital Credential. When the User uses this functionality, the notification to be sent to the Credential Issuer MUST use the Notification Endpoint provided by the Issuer, as described in Section :ref:`credential-revocation:Status Update by Wallet Instance`.
   2. Using the Issuer's web portal:
 
     a. Users MAY access a secure area with at least the same Level of Assurance used during the issuance phase.
@@ -217,19 +217,25 @@ Users MAY change their Digital Credential validity status by:
       - Verify data authenticity.
       - View and update validity status (revoke their Digital Credentials and, if it is supported by the Issuer, suspend them).
 
+In addition, when Users detect incorrect data in an issued Digital Credential, the Wallet Instance SHOULD initiate a data correction request via the Notification Endpoint as specified in :ref:`notification-data-correction`. Upon confirmation of the discrepancy, the Issuer SHOULD follow the :ref:`credential-issuance-low-level:Re-Issuance Flow`.
+
 .. note::
   If the User activates another Wallet Instance from the same Wallet Provider and using the same Wallet Solution and obtains a new PID, the previous PID MUST be revoked, and the previous Wallet Instance MUST transition to operational status.
 
-In case of the death of the User, Issuers and Wallet Provider MUST ensure that Digital Credentials and Wallet Instances owned by the User are revoked.
+In case of the death of the User, Issuers MUST ensure that Digital Credentials and Wallet Instances owned by the User are revoked.
 The User's death triggers a change in the validity status of the User's identification attributes contained in the public registry (ANPR). The User's death MUST produce the PID revocation. Therefore, the Authentic Source of the PID (ANPR) MUST notify the PID Provider that the User's attributes are no longer valid due to the death of the User. The Authentic Source and the PID Provider MUST use the mechanisms provided in the Section :ref:`credential-revocation:Status Update by Authentic Sources`.
 
 .. note::
-  Future versions of this technical specification will define how the information to (Q)EAA Issuers and Wallet Providers are propagated, according to national regulation. Moreover, automated procedures for Credential revocation due to illegal activities will be defined in future specifications.
+  Future versions of this technical specification will define how the information to (Q)EAA Issuers are propagated, according to national regulation. Moreover, automated procedures for Credential revocation due to illegal activities will be defined in future specifications.
 
 Status Update by Wallet Instance
 """"""""""""""""""""""""""""""""
 
-When the User deletes a Digital Credential from the Wallet Instance, the Wallet Instance MUST notify this event to the Credential Issuer and the Credential Issuer MUST revoke the Digital Credential. To notify this event, the Wallet Instance MUST use the *Notification Endpoint* described in Section :ref:`credential-issuance-endpoint:Notification Endpoint` using the parameter ``event`` set with the value ``credential_deleted``.
+When the User deletes a Digital Credential from the Wallet Instance, the Wallet Instance by default SHALL NOT notify the Credential Issuer of this deletion event. Deleting a Digital Credential from the Wallet Instance only removes the local copy and does not change the validity status at the Issuer.
+
+The Wallet Instance MAY inform the User, prior to deletion, that deletion is a local action and does not imply revocation at the Issuer, and MAY implement, under the User's explicit consent at deletion time, a notification feature to inform the Credential Issuer of the User's intention to revoke the Digital Credential.
+
+If the User wants the Issuer to revoke a Digital Credential, the User SHOULD explicitly confirm this intention via the Wallet Instance's deletion prompt (when available), which SHALL then notify the Credential Issuer; alternatively, the User MAY use the Issuer's web portal or other Issuer-provided channels.
 
 When the revoked Credential is the PID, the Credential Issuer MUST send a notification of this event to the User within 24 hours.
 For any other Credential different from the PID, the Credential Issuer SHOULD send a notification of this event to the User. The notification to the User MAY be implemented in several ways, such as using a User's email address, telephone number, or any other verified and secure communication channel. The notification to the User MUST also include all the information about the Credential revocation status. The method used for the notification to the User is out of scope of the current technical implementation profile. When the revocation occurs, the Credential Issuer MUST update the status of the Digital Credential accordingly. When the Notification Response sent by the Credential Issuer is successfully received by the Wallet Instance, the Wallet Instance MUST delete the Digital Credential.
@@ -284,11 +290,11 @@ Batch Credential Lifecycle Management
 
 When multiple Digital Credentials are issued together in a single batch, their lifecycle remains fully granular:
 
-  * **Grouped triggers, independent updates**: A single batch status update request referencing the batch's ``notification_id`` and sent by any authorized entity (e.g. the Wallet Instance via Notification Endpoint with ``event=credential_deleted``, a Wallet Provider via PDND) is handled as N separate status changes. The Issuer updates each Credential's own status individually (for example, flipping its status-list bit to ``INVALID`` or ``SUSPENDED``).
-  * **Batch-wide revoke**: That same batch update request also serves as a revoke all request. the Issuer marks every Credential in the batch as revoked and emits a single notification for the entire batch.
+  * **Grouped triggers, independent updates**: A single batch status update request referencing the batch's ``notification_id`` and sent by an authorized entity (e.g. the Wallet Instance via Notification Endpoint with ``event=credential_deleted``, a Wallet Provider via PDND) is handled as N separate status changes. The Issuer updates each Credential's own status individually (for example, flipping its status-list bit to ``INVALID`` or ``SUSPENDED``). By default, a Wallet Instance SHALL NOT trigger batch status updates when the User deletes local Credentials. Upon deletion, the Wallet Instance MAY, under the User's explicit consent, notify the Credential Issuer of the User's intention to revoke the affected Credential(s); such a notification does not constitute a batch status update request.
+  * **Batch-wide revoke**: That same batch update request also serves as a revoke all request. The Issuer marks every Credential in the batch as revoked and MAY emit a single notification for the entire batch according to Issuer policy.
 
 .. note::
-  As the Wallet UI typically surfaces a batch as one Credential (e.g., 3 uses remaining), a User-driven deletion likewise removes the entire batch. It is not possible to delete or revoke just one Credential, any deletion request using the batch's ``notification_id`` applies to all Credentials in that batch.
+  As the Wallet UI typically surfaces a batch as one Credential (e.g., 3 uses remaining), a User-driven deletion in the Wallet removes the entire batch locally. By default it does not request revocation at the Issuer. The Wallet MAY offer the User an optional prompt to request revocation at the Issuer as part of the deletion flow.
 
 
 

@@ -216,10 +216,8 @@ store ufficiale del sistema operativo del loro dispositivo (questo garantisce l'
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Mentre per l'ARF la revoca dell'Istanza del Wallet viene realizzata revocando la Wallet Attestation (vedi Argomento 9 e Argomento 38 nell'Allegato 2),
-in questa specifica la revoca è gestita diversamente. Essendo la Wallet Attestation a breve durata, non ha un meccanismo di gestione dello stato.
-Per questo motivo, la transizione di revoca dell'Istanza del Wallet viene realizzata eliminando la Cryptographic Hardware Key del Wallet dal WSCD dell'Istanza del
-Wallet e dall'account associato all'Utente. Questa transizione viene completata quando l'Istanza del Wallet è online.</p>
+<p>Come indicato nell'ARF (vedi Topic 9 e Topic 38 nell'Allegato 2), la revoca dell'Istanza del Wallet viene effettuata revocando la Wallet Unit Attestation tramite il meccanismo di gestione dello stato.
+Il Fornitore di Wallet può semplicemente modificare lo stato della Wallet Unit nella Status List per contrassegnarla come revocata e informare gli utenti riguardo al motivo della revoca della Wallet Unit.</p>
 </div>
 </section>
 <section id="transizione-a-operativo">
@@ -227,19 +225,17 @@ Wallet e dall'account associato all'Utente. Questa transizione viene completata 
 <p>Dopo l'installazione, l'Utente apre l'Istanza del Wallet e inizia un'attivazione (<strong>WI ACT</strong>).
 In questa fase, un account Utente DEVE essere creato con il Fornitore di Wallet e associato all'Istanza del Wallet tramite il Cryptographic Hardware
 Key Tag, previa acquisizione del consenso dell'Utente (vedi <a class="reference internal" href="wallet-instance-registration.html#inizializzazione-e-registrazione-dell-istanza-del-wallet"><span class="std std-ref">Inizializzazione e Registrazione dell'Istanza del Wallet</span></a> per maggiori dettagli, con i test in <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_024</span></a> e <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_138</span></a>).
-Questa associazione consente all'Utente di richiedere direttamente la revoca dell'Istanza del Wallet dal Fornitore di Wallet, e consente anche al Fornitore di Wallet di
-revocare l'Istanza del Wallet associata a quell'Utente.</p>
+Questa associazione consente all'utente di richiedere direttamente al Fornitore di Wallet la revoca dell'Istanza del Wallet.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>Come risultato della creazione dell'account Utente, DEVE essere impostato un meccanismo di autenticazione per l'Utente per interagire con il portale del Fornitore di Wallet.
 Questa specifica impone l'uso di almeno un secondo fattore per l'autenticazione dell'Utente.</p>
 </div>
-<p>Come parte dell'attivazione, il Fornitore di Wallet DEVE valutare il sistema operativo e le capacità tecniche generali del dispositivo per verificare la conformità
-con i requisiti tecnici e di sicurezza, e l'autenticità e l'integrità dell'Istanza del Wallet installata.
+<p>Come parte del processo di attivazione, il Fornitore di Wallet DEVE valutare il sistema operativo, le capacità tecniche generali del dispositivo e l'affidabilità del WSCD, al fine di verificare la conformità ai requisiti tecnici e di sicurezza, l'autenticità e l'integrità dell'Istanza del Wallet installata, e assicurarsi che le chiavi utilizzate per il binding crittografico risiedano in un WSCD sicuro.
 Dopo la verifica con successo, il Fornitore di Wallet DEVE emettere almeno una Wallet Attestation valido all'Istanza del Wallet, quindi l'Istanza del Wallet entra nello stato <strong>Operativo</strong>.</p>
 <p>Inoltre, se non è già stato fatto, gli Utenti DEVONO impostare il loro metodo preferito per sbloccare la loro Istanza del Wallet; questo PUÒ essere realizzato inserendo un
 PIN o utilizzando l'autenticazione biometrica, come l'impronta digitale o il riconoscimento facciale, secondo le preferenze
-personali e le capacità del dispositivo (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_025</span></a>). Si prega di fare riferimento a <a class="reference internal" href="wallet-attestation-issuance.html#emissione-della-wallet-attestation"><span class="std std-ref">Emissione della Wallet Attestation</span></a>.</p>
+personali e le capacità del dispositivo (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_025</span></a>). Si prega di fare riferimento a <a class="reference internal" href="wallet-attestation-issuance.html#emissione-della-wallet-app-e-wallet-unit-attestation"><span class="std std-ref">Emissione della Wallet App e Wallet Unit Attestation</span></a>.</p>
 <p>Nello stato <strong>Operativo</strong>, gli Utenti possono richiedere l'emissione dell'Attestato Elettronico di Dati di Identificazione Personale (<strong>PID ISS</strong>) o di Attestati Elettronici di Attributi (Qualificati) se l'Attestato Elettronico di Dati di Identificazione Personale non è richiesto nell'emissione
 (<strong>(Q)EEA ISS</strong>). Inoltre, se le Credenziali Elettroniche sono Attestati Elettronici di Attributi (Qualificati) e per la presentazione non richiedono l'Attestato Elettronico di Dati di Identificazione Personale, possono essere presentate
 senza far transitare l'Istanza del Wallet a un altro stato (transizione <strong>(Q)EEA PRE</strong>).</p>
@@ -283,7 +279,7 @@ eliminare le coppie di Cryptographic Hardware Key (<a class="reference internal"
 <p>Un Fornitore di Wallet invece è responsabile per:</p>
 <ul class="simple">
 <li><p><strong>Attivazione dell'Istanza del Wallet</strong> (<strong>WI ACT</strong>): un account Utente DEVE essere creato e associato all'Istanza del Wallet tramite il Cryptographic Hardware Key Tag. Come risultato della creazione dell'account Utente, DEVE essere impostato un meccanismo di autenticazione di almeno due fattori per l'Utente per interagire con il portale del Fornitore di Wallet.</p></li>
-<li><p><strong>Revoca dell'Istanza del Wallet</strong> (<strong>WI REV</strong>): per motivi tecnici di sicurezza o attivata da entità esterne (ad esempio, Utenti e Organi di Vigilanza) il Cryptographic Hardware Key Tag DEVE essere eliminato dall'account Utente.</p></li>
+<li><p><strong>Revoca dell'Istanza del Wallet</strong> (<strong>WI REV</strong>): Per motivi di sicurezza tecnica o a seguito dell'intervento di entità esterne (ad esempio Utenti o Autorità di Vigilanza), l'istanza del Wallet viene revocata, con conseguente revoca della Wallet Unit Attestation, che viene riportata nella Wallet Unit Attestation Status List. Inoltre, il Wallet Cryptographic Hardware Key Tag DEVE essere eliminato dall'account dell'utente.</p></li>
 <li><p><strong>Eliminazione dei Dati</strong>: attraverso una richiesta esplicita degli Utenti, l'account Utente presso il Fornitore di Wallet DEVE essere rimosso dallo storage locale.</p></li>
 </ul>
 </section>
@@ -338,7 +334,7 @@ eliminare le coppie di Cryptographic Hardware Key (<a class="reference internal"
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 14/10/2025.
+      Ultimo aggiornamento 20/11/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
