@@ -5,7 +5,7 @@
     "credentials": [{
         "version": "1.0",
         "credential_type": "mDL",
-        "credential_name": "Patente di guida"
+        "credential_name": "Patente di guida",
         "legal_type": "pub-eaa",
         "restriction_policy": {
             "allowed_wallet_ids": [
