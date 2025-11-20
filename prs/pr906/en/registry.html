@@ -517,8 +517,39 @@ Content-Type: application/json
 <section id="as-registry-parameters">
 <h4><span class="section-number">7.4.3.2. </span>AS Registry Parameters<a class="headerlink" href="#as-registry-parameters" title="Link to this heading">¶</a></h4>
 <p>The AS Registry MUST contain the following parameters for each registered Authentic Source:</p>
+<ul>
+<li><ul class="simple">
+<li><dl class="simple">
+<dt>Field Name</dt><dd><ul>
+<li><p>Description</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><ul>
+<li><p><strong>version</strong></p></li>
+<li><p>REQUIRED. The version of the AS Registry (e.g., <code class="docutils literal notranslate"><span class="pre">1.0</span></code>).</p></li>
+</ul>
+</li>
+<li><ul>
+<li><p><strong>last_modified</strong></p></li>
+<li><p>REQUIRED. The timestamp indicating when the list was last updated (e.g., <code class="docutils literal notranslate"><span class="pre">2025-03-15T12:00:00Z</span></code>).</p></li>
+</ul>
+</li>
+<li><ul>
+<li><p><strong>authentic_sources</strong></p></li>
+<li><p>REQUIRED. An array containing the supported schemas definitions.</p></li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
 <table class="longtable docutils align-default" id="id1">
-<caption><span class="caption-number">Table 7.1 </span><span class="caption-text">AS Registry - Required Parameters</span><a class="headerlink" href="#id1" title="Link to this table">¶</a></caption>
+<caption><span class="caption-number">Table 7.1 </span><span class="caption-text">Authentic Sources Parameters</span><a class="headerlink" href="#id1" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25.0%" />
 <col style="width: 15.0%" />
@@ -615,6 +646,14 @@ Content-Type: application/json
 <td><p>String Array</p></td>
 <td><p>REQUIRED. Claims available from this data capability.</p></td>
 </tr>
+<tr class="row-odd"><td><p><strong>data_capabilities[].available_claims.order</strong></p></td>
+<td><p>number</p></td>
+<td><p>REQUIRED. Defines the order in which the information would be shown.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>data_capabilities[].available_claims.mandatory</strong></p></td>
+<td><p>boolean</p></td>
+<td><p>REQUIRED. Defines if a claim is always available or not.</p></td>
+</tr>
 <tr class="row-odd"><td><p><strong>data_capabilities[].integration_method</strong></p></td>
 <td><p>string</p></td>
 <td><p>REQUIRED. Authorization framework used for data access. MUST be <code class="docutils literal notranslate"><span class="pre">&quot;pdnd&quot;</span></code> for Public AS. Private AS MAY use other authorization frameworks such as: <code class="docutils literal notranslate"><span class="pre">&quot;oauth2&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;api_key&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;mtls&quot;</span></code>, etc.</p></td>
@@ -663,17 +702,17 @@ Content-Type: application/json
 <td><p>string</p></td>
 <td><p>OPTIONAL. Identifier (<code class="docutils literal notranslate"><span class="pre">id</span></code>) of the preferred logo from the <cite>images</cite> array for UI display.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>display.preferred_credential_background_image</strong></p></td>
+<tr class="row-odd"><td><p><strong>display.preferred_credential_background_image_id</strong></p></td>
 <td><p>string</p></td>
 <td><p>OPTIONAL. Identifier (<code class="docutils literal notranslate"><span class="pre">id</span></code>) of the preferred background image from the <cite>images</cite> array for UI display.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>display.preferred_credential_background_color</strong></p></td>
+<tr class="row-even"><td><p><strong>display.preferred_credential_background_color_id</strong></p></td>
 <td><p>string</p></td>
-<td><p>OPTIONAL. Suggested background color for credentials in hexadecimal format (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;#003d82&quot;</span></code>).</p></td>
+<td><p>OPTIONAL. Identifier (<code class="docutils literal notranslate"><span class="pre">id</span></code>) of the preferred background color for credentials in hexadecimal format (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;credential_background_color_1&quot;</span></code>).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>display.preferred_credential_text_color</strong></p></td>
+<tr class="row-odd"><td><p><strong>display.preferred_credential_text_color_id</strong></p></td>
 <td><p>string</p></td>
-<td><p>OPTIONAL. Suggested text color for credentials in hexadecimal format (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;#ffffff&quot;</span></code>).</p></td>
+<td><p>OPTIONAL. Identifier (<code class="docutils literal notranslate"><span class="pre">id</span></code>) of the preferred text color for credentials in hexadecimal format (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;text_color_1&quot;</span></code>).</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>display.colors</strong></p></td>
 <td><p>JSON Objects Array</p></td>
@@ -709,184 +748,300 @@ Content-Type: application/json
 <section id="as-registry-example">
 <h4><span class="section-number">7.4.3.3. </span>AS Registry Example<a class="headerlink" href="#as-registry-example" title="Link to this heading">¶</a></h4>
 <p>A non-normative example of AS Registry structure is given below:</p>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;entity_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://motorizzazione.gov.example&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;organization_info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;organization_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ministero delle infrastrutture e dei trasporti&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;organization_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;public&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;ipa_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;m_inf&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;legal_identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;80192770587&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;organization_country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IT&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;homepage_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/transport&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;policy_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/transport/privacy-policy&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;service_documentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://docs.gov.example/transport/api-docs&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;user_information&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Vehicle registration data is available for licenses issued after January 1, 2020. For older licenses, contact the local motorization office.&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="s2">&quot;registry@gov.example&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;technical-support@gov.example&quot;</span>
-<span class="w">            </span><span class="p">]</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="nt">&quot;data_capabilities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;dataset_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;38832801&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;data_origin&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MIT -- Direzione Generale per la Motorizzazione&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;domains&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="s2">&quot;IDENTITY&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="s2">&quot;AUTHORIZATION&quot;</span>
-<span class="w">                </span><span class="p">],</span>
-<span class="w">                </span><span class="nt">&quot;intended_purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="s2">&quot;DRIVING_LICENSE&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="s2">&quot;PERSON_IDENTIFICATION&quot;</span>
-<span class="w">                </span><span class="p">],</span>
-<span class="w">                </span><span class="nt">&quot;available_claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="s2">&quot;given_name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="s2">&quot;family_name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="s2">&quot;birth_date&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="s2">&quot;birth_place&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="s2">&quot;issue_date&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="s2">&quot;expiry_date&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="s2">&quot;document_number&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="s2">&quot;driving_privileges&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="s2">&quot;portrait&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="s2">&quot;un_distinguishing_sign&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="s2">&quot;document_iss_country&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="s2">&quot;document_iss_authority&quot;</span>
-<span class="w">                </span><span class="p">],</span>
-<span class="w">                </span><span class="nt">&quot;integration_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pdnd&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;integration_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.gov.example/transport/driving-license&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;api_specification&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://docs.gov.example/transport/api-oas3.yaml&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;data_provision&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;immediate_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;deferred_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="nt">&quot;user_information&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;update_frequency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;real_time&quot;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">],</span>
-<span class="w">        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;branding_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/transport/brand-identity-guidelines&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;preferred_logo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;logo_standard&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;preferred_credential_background_image&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;credential_background&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;preferred_credential_background_color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#003d82&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;preferred_credential_text_color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#ffffff&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;colors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;last_modified&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-03-15T12:00:00Z&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;authentic_sources&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;entity_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://motorizzazione.gov.example&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;organization_info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;organization_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ministero delle infrastrutture e dei trasporti&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;organization_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;public&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;ipa_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;m_inf&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;legal_identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;80192770587&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;organization_country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IT&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;homepage_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/transport&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;policy_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/transport/privacy-policy&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;service_documentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://docs.gov.example/transport/api-docs&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;user_information&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Vehicle registration data is available for licenses issued after January 1, 2020. For older licenses, contact the local motorization office.&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="s2">&quot;registry@gov.example&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;technical-support@gov.example&quot;</span>
+<span class="w">                </span><span class="p">]</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;data_capabilities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;credential_background_color_1&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;hex&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#003d82&quot;</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;credential_background_color_2&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;hex&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#003d82&quot;</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text_color_1&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;hex&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#003d82&quot;</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text_color_2&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;hex&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#003d82&quot;</span>
+<span class="w">                    </span><span class="nt">&quot;dataset_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;38832801&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;data_origin&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MIT -- Direzione Generale per la Motorizzazione&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;domains&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="s2">&quot;IDENTITY&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="s2">&quot;AUTHORIZATION&quot;</span>
+<span class="w">                    </span><span class="p">],</span>
+<span class="w">                    </span><span class="nt">&quot;intended_purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="s2">&quot;DRIVING_LICENSE&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="s2">&quot;PERSON_IDENTIFICATION&quot;</span>
+<span class="w">                    </span><span class="p">],</span>
+<span class="w">                    </span><span class="nt">&quot;available_claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;given_name&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;family_name&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;birth_date&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;birth_place&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;document_number&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;issue_date&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;expiry_date&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;driving_privileges&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;portrait&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;un_distinguishing_sign&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;document_iss_country&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;document_iss_authority&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">],</span>
+<span class="w">                    </span><span class="nt">&quot;integration_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pdnd&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;integration_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.gov.example/transport/driving-license&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;api_specification&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://docs.gov.example/transport/api-oas3.yaml&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;data_provision&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;immediate_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;deferred_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="nt">&quot;user_information&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;update_frequency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;real_time&quot;</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;images&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;branding_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/transport/brand-identity-guidelines&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;preferred_logo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;logo_standard&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;preferred_credential_background_image_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;credential_background&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;preferred_credential_background_color_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;credential_background_color_1&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;preferred_credential_text_color_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text_color_1&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;colors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;credential_background_color_1&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;hex&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#003d82&quot;</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;credential_background_color_2&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;hex&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#003d82&quot;</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text_color_1&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;hex&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#003d82&quot;</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text_color_2&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;hex&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#003d82&quot;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;images&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;logo_standard&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;image_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/assets/transport-logo.svg&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;image_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3&quot;</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;logo_pictogram&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;image_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/assets/transport-logo-compact.svg&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;image_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3&quot;</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;credential_background&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;image_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/assets/backgroud_default.svg&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;image_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3&quot;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">]</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;entity_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.bank.example/auth-source&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;organization_info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;organization_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Example Bank S.p.A.&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;organization_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;private&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;legal_identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;12345678901&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;homepage_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.bank.example&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="s2">&quot;digital-credentials@bank.example&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;api-support@bank.example&quot;</span>
+<span class="w">                </span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;policy_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.bank.example/privacy-policy&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;tos_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.bank.example/terms-of-service&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;organization_country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IT&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.bank.example/assets/logo.svg&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;service_documentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://docs.bank.example/psd2-api&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;user_information&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Financial data access requires customer consent and is subject to PSD2 regulations. Account information is available for active accounts only.&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;data_capabilities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;logo_standard&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;image_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/assets/transport-logo.svg&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;image_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3&quot;</span>
+<span class="w">                    </span><span class="nt">&quot;domains&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="s2">&quot;FINANCIAL&quot;</span>
+<span class="w">                    </span><span class="p">],</span>
+<span class="w">                    </span><span class="nt">&quot;intended_purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="s2">&quot;BANK_ACCOUNT&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="s2">&quot;INCOME_CERTIFICATE&quot;</span>
+<span class="w">                    </span><span class="p">],</span>
+<span class="w">                    </span><span class="nt">&quot;available_claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;given_name&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;family_name&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;birth_date&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tax_code&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;account_holder_name&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;iban&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;account_status&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;account_opening_date&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bank_name&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bank_code&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">],</span>
+<span class="w">                    </span><span class="nt">&quot;integration_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;oauth2&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;integration_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.bank.example/psd2/v1/accounts&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;api_specification&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.bank.example/docs/psd2-openapi.yaml&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;data_provision&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;immediate_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;deferred_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="nt">&quot;update_frequency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;daily&quot;</span>
 <span class="w">                </span><span class="p">},</span>
 <span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;logo_pictogram&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;image_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/assets/transport-logo-compact.svg&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;image_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3&quot;</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;credential_background&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;image_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/assets/backgroud_default.svg&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;image_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3&quot;</span>
+<span class="w">                    </span><span class="nt">&quot;domains&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="s2">&quot;FINANCIAL&quot;</span>
+<span class="w">                    </span><span class="p">],</span>
+<span class="w">                    </span><span class="nt">&quot;intended_purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="s2">&quot;PAYMENT_HISTORY&quot;</span>
+<span class="w">                    </span><span class="p">],</span>
+<span class="w">                    </span><span class="nt">&quot;available_claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;given_name&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;family_name&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tax_code&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;transaction_history&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;average_balance&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;credit_score_indicator&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">],</span>
+<span class="w">                    </span><span class="nt">&quot;integration_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;oauth2&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;integration_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.bank.example/psd2/v1/transactions&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;api_specification&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.bank.example/docs/psd2-openapi.yaml&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;data_provision&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;immediate_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;deferred_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;max_response_time_minutes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1440</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;notification_methods&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                            </span><span class="s2">&quot;push&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">&quot;poll&quot;</span>
+<span class="w">                        </span><span class="p">]</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="nt">&quot;update_frequency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;weekly&quot;</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">]</span>
 <span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;entity_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.bank.example/auth-source&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;organization_info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;organization_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Example Bank S.p.A.&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;organization_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;private&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;legal_identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;12345678901&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;homepage_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.bank.example&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="s2">&quot;digital-credentials@bank.example&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;api-support@bank.example&quot;</span>
-<span class="w">            </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;policy_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.bank.example/privacy-policy&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;tos_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.bank.example/terms-of-service&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;organization_country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IT&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.bank.example/assets/logo.svg&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;service_documentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://docs.bank.example/psd2-api&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;user_information&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Financial data access requires customer consent and is subject to PSD2 regulations. Account information is available for active accounts only.&quot;</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="nt">&quot;data_capabilities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;domains&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="s2">&quot;FINANCIAL&quot;</span>
-<span class="w">                </span><span class="p">],</span>
-<span class="w">                </span><span class="nt">&quot;intended_purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="s2">&quot;BANK_ACCOUNT&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="s2">&quot;INCOME_CERTIFICATE&quot;</span>
-<span class="w">                </span><span class="p">],</span>
-<span class="w">                </span><span class="nt">&quot;available_claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="s2">&quot;given_name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="s2">&quot;family_name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="s2">&quot;birth_date&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="s2">&quot;tax_code&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="s2">&quot;account_holder_name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="s2">&quot;iban&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="s2">&quot;account_status&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="s2">&quot;account_opening_date&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="s2">&quot;bank_name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="s2">&quot;bank_code&quot;</span>
-<span class="w">                </span><span class="p">],</span>
-<span class="w">                </span><span class="nt">&quot;integration_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;oauth2&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;integration_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.bank.example/psd2/v1/accounts&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;api_specification&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.bank.example/docs/psd2-openapi.yaml&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;data_provision&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;immediate_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;deferred_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="nt">&quot;update_frequency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;daily&quot;</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;domains&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="s2">&quot;FINANCIAL&quot;</span>
-<span class="w">                </span><span class="p">],</span>
-<span class="w">                </span><span class="nt">&quot;intended_purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="s2">&quot;PAYMENT_HISTORY&quot;</span>
-<span class="w">                </span><span class="p">],</span>
-<span class="w">                </span><span class="nt">&quot;available_claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="s2">&quot;given_name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="s2">&quot;family_name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="s2">&quot;tax_code&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="s2">&quot;transaction_history&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="s2">&quot;average_balance&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="s2">&quot;credit_score_indicator&quot;</span>
-<span class="w">                </span><span class="p">],</span>
-<span class="w">                </span><span class="nt">&quot;integration_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;oauth2&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;integration_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.bank.example/psd2/v1/transactions&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;api_specification&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.bank.example/docs/psd2-openapi.yaml&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;data_provision&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;immediate_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;deferred_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;max_response_time_minutes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1440</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;notification_methods&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                        </span><span class="s2">&quot;push&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="s2">&quot;poll&quot;</span>
-<span class="w">                    </span><span class="p">]</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="nt">&quot;update_frequency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;weekly&quot;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">]</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">]</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>
@@ -1166,7 +1321,7 @@ Content-Type: application/json
 </table>
 <p>The JWS payload contains the following parameters:</p>
 <table class="longtable docutils align-default" id="id5">
-<caption><span class="caption-number">Table 7.4 </span><span class="caption-text">First-level Fields of the Catalog</span><a class="headerlink" href="#id5" title="Link to this table">¶</a></caption>
+<caption><span class="caption-number">Table 7.4 </span><span class="caption-text">First-level Fields of the Digital Credentials Catalog</span><a class="headerlink" href="#id5" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 30.0%" />
 <col style="width: 70.0%" />
@@ -1177,20 +1332,20 @@ Content-Type: application/json
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>catalog_version</strong></p></td>
+<tr class="row-even"><td><p><strong>version</strong></p></td>
 <td><p>REQUIRED. Version of the Digital Credential Catalog format.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>iss</strong></p></td>
-<td><p>REQUIRED. Issuer identifier of the Digital Credential Catalog.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>last_modified</strong></p></td>
+<tr class="row-odd"><td><p><strong>last_modified</strong></p></td>
 <td><p>REQUIRED. Timestamp of the last modification to the Digital Credential Catalog.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>iss</strong></p></td>
+<td><p>REQUIRED. Issuer identifier of the Digital Credential Catalog.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>credentials</strong></p></td>
 <td><p>REQUIRED. Array containing Digital Credential definitions.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>wallet_app_attestation</strong></p></td>
-<td><p>REQUIRED. A JSON Object containing definitions for Wallet App Attestations, including their supported formats, and associated claims. This Object is used by other entities, such as Issuers and Relying Parties, to retrieve information about the Wallet App Attestation formats supported within the ecosystem.</p></td>
+<tr class="row-even"><td><p><strong>wallet_app_attestations</strong></p></td>
+<td><p>REQUIRED. A JSON Array containing definitions for Wallet App Attestations, including their supported formats, and associated claims. This Object is used by other entities, such as Issuers and Relying Parties, to retrieve information about the Wallet App Attestation formats supported within the ecosystem.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1288,7 +1443,7 @@ Content-Type: application/json
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">wallet_app_attestations</span></code> Object is an Array containing at least the following information for each entry:</p>
 <table class="longtable docutils align-default" id="id7">
-<caption><span class="caption-number">Table 7.6 </span><span class="caption-text">Wallet App Attestation Fields</span><a class="headerlink" href="#id7" title="Link to this table">¶</a></caption>
+<caption><span class="caption-number">Table 7.6 </span><span class="caption-text">Wallet App Attestations Fields</span><a class="headerlink" href="#id7" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 30.0%" />
 <col style="width: 70.0%" />
@@ -1305,14 +1460,12 @@ Content-Type: application/json
 <tr class="row-odd"><td><p><strong>credential_type</strong></p></td>
 <td><p>REQUIRED. Unique identifier of the Wallet App Attestation. It MUST be set to <code class="docutils literal notranslate"><span class="pre">wallet_app_attestation</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>vct</strong></p></td>
-<td><p>REQUIRED. It MUST be set as a URN of the form defined in <a class="reference internal" href="credential-data-model.html#credential-sd-jwt-parameters"><span class="std std-ref">Credential SD-JWT Parameters</span></a>. Matching of the literals included in this URN string MUST be performed in a case-sensitive manner.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>formats</strong></p></td>
+<tr class="row-even"><td><p><strong>formats</strong></p></td>
 <td><p>REQUIRED. Array of supported formats for the Wallet App Attestation, including:</p>
 <ul class="simple">
 <li><p><strong>format</strong>: Type of format (e.g., <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code>, <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code> or <code class="docutils literal notranslate"><span class="pre">oauth-client-attestation+jwt</span></code>)</p></li>
 <li><p><strong>configuration_id</strong>: Configuration identifier of the Wallet App Attestation. This is formed by concatenating the string <code class="docutils literal notranslate"><span class="pre">wa</span></code> to the <code class="docutils literal notranslate"><span class="pre">format</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">dc_sd_jwt_wa</span></code>, <code class="docutils literal notranslate"><span class="pre">mso_mdoc_wa</span></code>, or <code class="docutils literal notranslate"><span class="pre">jwt_wa</span></code>), and is used to uniquely reference the configuration of the Wallet App Attestation format.</p></li>
+<li><p><strong>vct</strong>: CONDITIONAL. It is REQUIRED if the <code class="docutils literal notranslate"><span class="pre">format</span></code> is <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code>, indicating the Verifiable Credential Type (e.g., <code class="docutils literal notranslate"><span class="pre">urn:eudi:mDL:it:1</span></code>).</p></li>
 <li><p><strong>docType</strong>: CONDITIONAL. It is only present if the <code class="docutils literal notranslate"><span class="pre">format</span></code> is <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code>. It is a string of the form <code class="docutils literal notranslate"><span class="pre">{Trust</span> <span class="pre">Anchor</span> <span class="pre">reverse</span> <span class="pre">domain}.{credential_type}</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">it.wallet.trust-registry.wallet_app_attestation</span></code>).</p></li>
 <li><p><strong>schema_uri</strong>: URI pointing to the format specification document.</p></li>
 <li><p><strong>schema_uri#integrity</strong>: Cryptographic digest of the format specification document for integrity verification. It MUST be a string of the form <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code>, where <code class="docutils literal notranslate"><span class="pre">{digest_method}</span></code> is the digest algorithm used (e.g., <code class="docutils literal notranslate"><span class="pre">sha-256</span></code>) and <code class="docutils literal notranslate"><span class="pre">{digest_value}</span></code> is the base64url-encoded digest value.</p></li>
@@ -1331,9 +1484,9 @@ Content-Type: application/json
 </pre></div>
 </div>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;catalog_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;last_modified&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-03-15T12:00:00Z&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;credentials&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
 <span class="w">        </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;credential_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mDL&quot;</span><span class="p">,</span>
@@ -1413,11 +1566,11 @@ Content-Type: application/json
 <span class="w">    </span><span class="nt">&quot;wallet_app_attestations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
 <span class="w">        </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;credential_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wallet_app_attestation&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:eudi:wallet_app_attestation:it:1&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;formats&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">            </span><span class="p">{</span>
 <span class="w">                </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc+sd-jwt&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">&quot;configuration_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc_sd_jwt_wa&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:eudi:wallet_app_attestation:it:1&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">&quot;schema_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/.well-known/schemas/sd-jwt/wallet_app_attestation&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">&quot;schema_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256-Lxn6dNpkPdoeoRgO5+n0jNhJZ8MbKfXfP195+dNR0dc=&quot;</span>
 <span class="w">            </span><span class="p">},</span>
@@ -1721,7 +1874,7 @@ Content-Type: application/json
 </ul>
 </li>
 <li><ul>
-<li><p><strong>last_updated</strong></p></li>
+<li><p><strong>last_modified</strong></p></li>
 <li><p>REQUIRED. The timestamp indicating when the list was last updated (e.g., <code class="docutils literal notranslate"><span class="pre">2025-03-15T12:00:00Z</span></code>).</p></li>
 </ul>
 </li>
@@ -1852,7 +2005,7 @@ The main Journeys below illustrate the interactions with the Registry Infrastruc
 <p>This journey describes how a <strong>Wallet Instance</strong> and a <strong>Relying Party (RP)</strong> interact with the Registry Infrastructure when a Digital Credential needs to be presented by a User.</p>
 <ol class="arabic simple">
 <li><p><strong>Wallet Authorization and Selection</strong>:
-* The Wallet receives a Presentation Request from the RP, specifying required <em>claims</em> and <em>purposes/domains</em> (e.g., via the <strong>Taxonomy</strong> definitions).
+* The Wallet receives a Presentation Request from the RP, verifies the validity of the request comparing the requested <em>claims</em> with the <em>Authorization Policies</em> related to the RP (via the <strong>Taxonomy</strong> definitions).
 * The Wallet consults the <strong>Digital Credentials Catalog</strong> to verify the <em>Domains</em> and <em>Purposes</em> associated with the credential types it holds, evaluating which credentials are suitable for the request.
 * The Wallet verifies if the required attributes (claims) are available and authorized for disclosure based on the request policy (<strong>Credential-Specific</strong> or <strong>Credential-Agnostic</strong> scenarios).
 * The User authorizes the release of the selected, selectively disclosed attributes. The Wallet then packages and presents the Digital Credential to the RP.</p></li>
