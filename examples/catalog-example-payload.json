@@ -81,6 +81,7 @@
     "wallet_app_attestations": [{
         "version": "1.0",
         "credential_type": "wallet_app_attestation",
+        "vct": "urn:eudi:wallet_app_attestation:it:1",
         "formats": [
             {
                 "format": "dc+sd-jwt",

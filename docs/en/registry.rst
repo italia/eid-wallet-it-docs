@@ -822,7 +822,7 @@ The Schema Registry is accessible via the ``.well-known/it-wallet-registry`` dis
 
 A non-normative example of the Schema Registry payload:
 
-.. literalinclude:: ../../examples/registry-schema-example-payload.json
+.. literalinclude:: ../../examples/schema-registry-example-payload.json
   :language: JSON
 
 Registry Integration and Cross-References
