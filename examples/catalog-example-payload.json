@@ -1,7 +1,7 @@
 {
-    "catalog_version": "1.0",
-    "iss": "https://trust-registry.eid-wallet.example.it",
+    "version": "1.0",
     "last_modified": "2025-03-15T12:00:00Z",
+    "iss": "https://trust-registry.eid-wallet.example.it",
     "credentials": [{
         "version": "1.0",
         "credential_type": "mDL",
@@ -81,11 +81,11 @@
     "wallet_app_attestations": [{
         "version": "1.0",
         "credential_type": "wallet_app_attestation",
-        "vct": "urn:eudi:wallet_app_attestation:it:1",
         "formats": [
             {
                 "format": "dc+sd-jwt",
                 "configuration_id": "dc_sd_jwt_wa",
+                "vct": "urn:eudi:wallet_app_attestation:it:1",
                 "schema_uri": "https://trust-registry.it-wallet.example.it/.well-known/schemas/sd-jwt/wallet_app_attestation",
                 "schema_uri#integrity": "sha256-Lxn6dNpkPdoeoRgO5+n0jNhJZ8MbKfXfP195+dNR0dc="
             },

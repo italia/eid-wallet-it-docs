@@ -232,7 +232,21 @@ AS Registry Parameters
 
 The AS Registry MUST contain the following parameters for each registered Authentic Source:
 
-.. list-table:: AS Registry - Required Parameters
+.. list-table:: First-level Fields of the AS Registry
+   :class: longtable
+   :widths: 30 70
+   :header-rows: 1
+
+* - Field Name
+     - Description
+   * - **version**
+     - REQUIRED. The version of the AS Registry (e.g., ``1.0``).
+   * - **last_modified**
+     - REQUIRED. The timestamp indicating when the list was last updated (e.g., ``2025-03-15T12:00:00Z``).
+   * - **authentic_sources**
+     - REQUIRED. An array containing the supported schemas definitions.
+
+.. list-table:: Authentic Sources Parameters
    :class: longtable
    :widths: 25 15 60
    :header-rows: 1
@@ -303,6 +317,12 @@ The AS Registry MUST contain the following parameters for each registered Authen
    * - **data_capabilities[].available_claims**
      - String Array
      - REQUIRED. Claims available from this data capability.
+   * - **data_capabilities[].available_claims.order**
+     - number
+     - REQUIRED. Defines the order in which the information would be shown.
+   * - **data_capabilities[].available_claims.mandatory**
+     - boolean
+     - REQUIRED. Defines if a claim is always available or not.
    * - **data_capabilities[].integration_method**
      - string
      - REQUIRED. Authorization framework used for data access. MUST be ``"pdnd"`` for Public AS. Private AS MAY use other authorization frameworks such as: ``"oauth2"``, ``"api_key"``, ``"mtls"``, etc.
@@ -339,15 +359,15 @@ The AS Registry MUST contain the following parameters for each registered Authen
    * - **display.preferred_logo**
      - string
      - OPTIONAL. Identifier (``id``) of the preferred logo from the `images` array for UI display.
-   * - **display.preferred_credential_background_image**
+   * - **display.preferred_credential_background_image_id**
      - string
      - OPTIONAL. Identifier (``id``) of the preferred background image from the `images` array for UI display.
-   * - **display.preferred_credential_background_color**
+   * - **display.preferred_credential_background_color_id**
      - string
-     - OPTIONAL. Suggested background color for credentials in hexadecimal format (e.g., ``"#003d82"``).
-   * - **display.preferred_credential_text_color**
+     - OPTIONAL. Identifier (``id``) of the preferred background color for credentials in hexadecimal format (e.g., ``"credential_background_color_1"``).
+   * - **display.preferred_credential_text_color_id**
      - string
-     - OPTIONAL. Suggested text color for credentials in hexadecimal format (e.g., ``"#ffffff"``).
+     - OPTIONAL. Identifier (``id``) of the preferred text color for credentials in hexadecimal format (e.g., ``"text_color_1"``).
    * - **display.colors**
      - JSON Objects Array
      - OPTIONAL. Array of predefined colors for UI rendering.
@@ -590,23 +610,23 @@ Digital Credentials Catalog contents is secured in a JWS that contains the follo
 
 The JWS payload contains the following parameters:
 
-.. list-table:: First-level Fields of the Catalog
+.. list-table:: First-level Fields of the Digital Credentials Catalog
    :class: longtable
    :header-rows: 1
    :widths: 30 70
 
    * - Field Name
      - Description
-   * - **catalog_version**
+   * - **version**
      - REQUIRED. Version of the Digital Credential Catalog format.
-   * - **iss**
-     - REQUIRED. Issuer identifier of the Digital Credential Catalog.
    * - **last_modified**
      - REQUIRED. Timestamp of the last modification to the Digital Credential Catalog.
+   * - **iss**
+     - REQUIRED. Issuer identifier of the Digital Credential Catalog.
    * - **credentials**
      - REQUIRED. Array containing Digital Credential definitions.
-   * - **wallet_app_attestation**
-     - REQUIRED. A JSON Object containing definitions for Wallet App Attestations, including their supported formats, and associated claims. This Object is used by other entities, such as Issuers and Relying Parties, to retrieve information about the Wallet App Attestation formats supported within the ecosystem.
+   * - **wallet_app_attestations**
+     - REQUIRED. A JSON Array containing definitions for Wallet App Attestations, including their supported formats, and associated claims. This Object is used by other entities, such as Issuers and Relying Parties, to retrieve information about the Wallet App Attestation formats supported within the ecosystem.
 
 Each element of the ``credentials`` array contains at least the following information:
 
@@ -672,7 +692,7 @@ Each element of the ``credentials`` array contains at least the following inform
 
 The ``wallet_app_attestations`` Object is an Array containing at least the following information for each entry:
 
-.. list-table:: Wallet App Attestation Fields
+.. list-table:: Wallet App Attestations Fields
   :class: longtable
   :header-rows: 1
   :widths: 30 70
@@ -683,13 +703,13 @@ The ``wallet_app_attestations`` Object is an Array containing at least the follo
     - REQUIRED. Version of the Wallet App Attestation definition.
   * - **credential_type**
     - REQUIRED. Unique identifier of the Wallet App Attestation. It MUST be set to ``wallet_app_attestation``.
-  * - **vct**
-    - REQUIRED. It MUST be set as a URN of the form defined in :ref:`credential-data-model:Credential SD-JWT Parameters`. Matching of the literals included in this URN string MUST be performed in a case-sensitive manner.
+
   * - **formats**
     - REQUIRED. Array of supported formats for the Wallet App Attestation, including:
 
       * **format**: Type of format (e.g., ``dc+sd-jwt``, ``mso_mdoc`` or ``oauth-client-attestation+jwt``)
       * **configuration_id**: Configuration identifier of the Wallet App Attestation. This is formed by concatenating the string ``wa`` to the ``format`` (e.g., ``dc_sd_jwt_wa``, ``mso_mdoc_wa``, or ``jwt_wa``), and is used to uniquely reference the configuration of the Wallet App Attestation format.
+      * **vct**: CONDITIONAL. It is REQUIRED if the ``format`` is ``dc+sd-jwt``, indicating the Verifiable Credential Type (e.g., ``urn:eudi:mDL:it:1``).
       * **docType**: CONDITIONAL. It is only present if the ``format`` is ``mso_mdoc``. It is a string of the form ``{Trust Anchor reverse domain}.{credential_type}`` (e.g., ``it.wallet.trust-registry.wallet_app_attestation``).
       * **schema_uri**: URI pointing to the format specification document.
       * **schema_uri#integrity**: Cryptographic digest of the format specification document for integrity verification. It MUST be a string of the form ``{digest_method}-{digest_value}``, where ``{digest_method}`` is the digest algorithm used (e.g., ``sha-256``) and ``{digest_value}`` is the base64url-encoded digest value.
@@ -797,7 +817,7 @@ The **Schema Registry** is the authoritative inventory of all known and accepted
 
 The Schema Registry is accessible via the ``.well-known/it-wallet-registry`` discovery endpoint under the `schema_registry` field. It allows for the discovery of schema URIs and their cryptographic integrity checks.
 
-.. list-table:: Schema Registry Parameters
+.. list-table:: First-level Fields of the Schema Registry
    :class: longtable
    :widths: 30 70
    :header-rows: 1
@@ -806,7 +826,7 @@ The Schema Registry is accessible via the ``.well-known/it-wallet-registry`` dis
      - Description
    * - **version**
      - REQUIRED. The version of the Schema Registry (e.g., ``1.0``).
-   * - **last_updated**
+   * - **last_modified**
      - REQUIRED. The timestamp indicating when the list was last updated (e.g., ``2025-03-15T12:00:00Z``).
    * - **schemas**
      - REQUIRED. An array containing the supported schemas definitions.
@@ -894,7 +914,7 @@ Credential Presentation and Verification
 This journey describes how a **Wallet Instance** and a **Relying Party (RP)** interact with the Registry Infrastructure when a Digital Credential needs to be presented by a User.
 
 1.  **Wallet Authorization and Selection**:
-    * The Wallet receives a Presentation Request from the RP, specifying required *claims* and *purposes/domains* (e.g., via the **Taxonomy** definitions).
+    * The Wallet receives a Presentation Request from the RP, verifies the validity of the request comparing the requested *claims* with the *Authorization Policies* related to the RP (via the **Taxonomy** definitions).
     * The Wallet consults the **Digital Credentials Catalog** to verify the *Domains* and *Purposes* associated with the credential types it holds, evaluating which credentials are suitable for the request.
     * The Wallet verifies if the required attributes (claims) are available and authorized for disclosure based on the request policy (**Credential-Specific** or **Credential-Agnostic** scenarios).
     * The User authorizes the release of the selected, selectively disclosed attributes. The Wallet then packages and presents the Digital Credential to the RP.
