@@ -800,13 +800,15 @@ The Schema Registry is accessible via the ``.well-known/it-wallet-registry`` dis
    * - Field Name
      - Description
    * - **id**
-     - REQUIRED. The unique identifier of the scheme (e.g., ``mso_mdoc_mDL+mso_mdoc+org.iso.18013.5.1``).
+     - REQUIRED. The unique identifier of the scheme (e.g., ``mDL+mso_mdoc+org.iso.18013.5.1.mDL``).
    * - **credential_type**
      - REQUIRED. The unique identifier of the Digital Credential type (e.g., ``mDL``).
    * - **format**
      - REQUIRED. The technical format of the schema (e.g., ``dc+sd-jwt``, ``mso_mdoc``).
+   * - **vct**
+     - CONDITIONAL. It is REQUIRED if the ``format`` is ``dc+sd-jwt``, indicating the document type used (e.g., ``urn:eudi:mDL:it:1``).
    * - **docType**
-     - CONDITIONAL. It is REQUIRED if the ``format`` is ``mso_mdoc``, indicating the document type used (e.g., ``org.iso.18013.5.1``).
+     - CONDITIONAL. It is REQUIRED if the ``format`` is ``mso_mdoc``, indicating the document type used (e.g., ``org.iso.18013.5.1.mDL``).
    * - **schema_uri**
      - REQUIRED. The URI where the schema document can be retrieved.
    * - **schema_uri#integrity**

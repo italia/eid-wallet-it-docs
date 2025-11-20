@@ -142,8 +142,7 @@
                         }
                     },
                     "vct": "urn:eudi:EuropeanDisabilityCard:it:1",
-                    "schema_uri": "https://trust-registry.it-wallet.example.it/.well-known/schemas/sd-jwt/EuropeanDisabilityCard",
-                    "schema_uri#integrity": "sha256-c0d841be52cfc75b8da3295593eced2b9fca8197ee7e340199cd881a7bf61029",
+                    "schema_id": "EuropeanDisabilityCard+dc+sd-jwt+urn:eudi:EuropeanDisabilityCard:it:1",
                     "authentic_sources" [
                         {
                                 "entity_id": "https://authentic-source.example.com",
@@ -368,8 +367,7 @@
                         }
                     },
                     "vct": "urn:eudi:mDL:it:1",
-                    "schema_uri": "https://trust-registry.it-wallet.example.it/.well-known/schemas/sd-jwt/mDL",
-                    "schema_uri#integrity": "sha256-0a03d9ffe11e39fd748585e433a962f223d7d14b0a49068ad52452bd0b021f63",
+                    "schema_id": "mDL+dc+sd-jwt+urn:eudi:mDL:it:1",
                     "authentic_sources" [
                         {
                                 "entity_id": "https://authentic-source.example.com",
@@ -646,8 +644,7 @@
                     "format": "mso_mdoc",
                     "scope": "mDL",
                     "doctype": "org.iso.18013.5.1.mDL",
-                    "schema_uri": "https://trust-registry.it-wallet.example.it/.well-known/schemas/mdoc/mDL",
-                    "schema_uri#integrity": "sha256-a3ab8478290565ccb9418c5a53d8a5fbcfb44545c3fa595425da594bf8391511",
+                    "schema_id": "mDL+mso_mdoc+org.iso.18013.5.1.mDL",
                     "authentic_sources" [
                         {
                                 "entity_id": "https://authentic-source.example.com",
