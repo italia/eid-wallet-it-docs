@@ -1,9 +1,10 @@
 {
-    "schema_registry_version": "1.0",
+    "version": "1.0",
     "last_updated": "2025-03-15T12:00:00Z",
     "schemas": [
         {
             "id": "mDL+mso_mdoc+org.iso.18013.5.1.mDL",
+            "version": "1.0",
             "credential_type": "mDL",
             "format": "mso_mdoc",
             "docType": "org.iso.18013.5.1.mDL",
@@ -13,6 +14,7 @@
         },
         {
             "id": "pid+dc+sd-jwt+urn:eudi:pid:it:1",
+            "version": "1.0",
             "credential_type": "pid",
             "format": "dc+sd-jwt",
             "vct": "urn:eudi:mDL:it:1",
