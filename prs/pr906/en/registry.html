@@ -1707,7 +1707,7 @@ Content-Type: application/json
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>id</strong></p></td>
-<td><p>REQUIRED. The unique identifier of the scheme (e.g., <code class="docutils literal notranslate"><span class="pre">mso_mdoc_mDL+mso_mdoc+org.iso.18013.5.1</span></code>).</p></td>
+<td><p>REQUIRED. The unique identifier of the scheme (e.g., <code class="docutils literal notranslate"><span class="pre">mDL+mso_mdoc+org.iso.18013.5.1.mDL</span></code>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>credential_type</strong></p></td>
 <td><p>REQUIRED. The unique identifier of the Digital Credential type (e.g., <code class="docutils literal notranslate"><span class="pre">mDL</span></code>).</p></td>
@@ -1715,16 +1715,19 @@ Content-Type: application/json
 <tr class="row-even"><td><p><strong>format</strong></p></td>
 <td><p>REQUIRED. The technical format of the schema (e.g., <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code>, <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code>).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>docType</strong></p></td>
-<td><p>CONDITIONAL. It is REQUIRED if the <code class="docutils literal notranslate"><span class="pre">format</span></code> is <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code>, indicating the document type used (e.g., <code class="docutils literal notranslate"><span class="pre">org.iso.18013.5.1</span></code>).</p></td>
+<tr class="row-odd"><td><p><strong>vct</strong></p></td>
+<td><p>CONDITIONAL. It is REQUIRED if the <code class="docutils literal notranslate"><span class="pre">format</span></code> is <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code>, indicating the document type used (e.g., <code class="docutils literal notranslate"><span class="pre">urn:eudi:mDL:it:1</span></code>).</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>schema_uri</strong></p></td>
+<tr class="row-even"><td><p><strong>docType</strong></p></td>
+<td><p>CONDITIONAL. It is REQUIRED if the <code class="docutils literal notranslate"><span class="pre">format</span></code> is <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code>, indicating the document type used (e.g., <code class="docutils literal notranslate"><span class="pre">org.iso.18013.5.1.mDL</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>schema_uri</strong></p></td>
 <td><p>REQUIRED. The URI where the schema document can be retrieved.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>schema_uri#integrity</strong></p></td>
+<tr class="row-even"><td><p><strong>schema_uri#integrity</strong></p></td>
 <td><p>REQUIRED. Cryptographic digest of the schema document for integrity verification. Format: <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;sha-256-abc123...&quot;</span></code>).</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>description</strong></p></td>
+<tr class="row-odd"><td><p><strong>description</strong></p></td>
 <td><p>OPTIONAL. A human-readable description of the schema, which may be localized.</p></td>
 </tr>
 </tbody>
@@ -1736,19 +1739,20 @@ Content-Type: application/json
 <span class="w">    </span><span class="nt">&quot;last_updated&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-03-15T12:00:00Z&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;schemas&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mso_mdoc_mDL+mso_mdoc+org.iso.18013.5.1&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;credential_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mso_mdoc_mDL&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mDL+mso_mdoc+org.iso.18013.5.1.mDL&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;credential_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mDL&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mso_mdoc&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;docType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;schema_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/.well-known/schemas/mdoc/mDL&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;docType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;org.iso.18013.5.1.mDL&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;schema_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/.well-known/schemas/mdoc/mDL&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;schema_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256-c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Schema tecnico per la mobile Driving License in formato mdoc.&quot;</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc_sd_jwt_pid+dc+sd-jwt&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;credential_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc_sd_jwt_pid&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pid+dc+sd-jwt+urn:eudi:pid:it:1&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;credential_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pid&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc+sd-jwt&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;schema_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/.well-known/schemas/sd-jwt/pid&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:eudi:mDL:it:1&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;schema_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/.well-known/schemas/sd-jwt/pid&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;schema_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256-a1b2c3d4e5f67890...&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Schema tecnico per la Person Identification Data (PID) in formato SD-JWT.&quot;</span>
 <span class="w">        </span><span class="p">}</span>
