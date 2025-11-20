@@ -621,6 +621,8 @@ Each element of the ``credentials`` array contains at least the following inform
     - REQUIRED. Version of the Digital Credential definition.
   * - **credential_type**
     - REQUIRED. Unique identifier of the Digital Credential type. For PID it MUST be ``pid``. This field serves as the unique key in the catalog.
+  * - **credential_name**
+    - REQUIRED. Human-readable name of the Digital Credential.
   * - **legal_type**
     - REQUIRED. Legal classification of the Credential (e.g., ``pub-eaa``, ``qeaa``, ``eaa``).
   * - **restriction_policy**
