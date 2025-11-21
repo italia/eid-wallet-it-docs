@@ -51,7 +51,7 @@
 .. _OPENID4VC-HAIP: https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-01.html
 .. _OpenID4VC-SecTrust: https://openid.github.io/OpenID4VC_SecTrust/draft-oid4vc-security-and-trust.html
 .. _OpenID4VCI: https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html
-.. _OpenID4VP: https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html
+.. _OpenID4VP: https://openid.net/specs/openid-4-verifiable-presentations-1_0.html
 .. _PDND: https://www.agid.gov.it/sites/agid/files/2025-06/Linee_guida_Infrastruttura_Interoperabilit%C3%A0_PDND_v2_maggio_2025.pdf
 .. _RFC 2898: http://tools.ietf.org/html/rfc2898.html
 .. _RFC 4648: https://datatracker.ietf.org/doc/html/rfc4648

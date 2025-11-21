@@ -53,7 +53,7 @@ Digital Credential Issuance
     :header-rows: 0
 
     * - `OpenID4VCI`_
-      - Lodderstedt, T., Yasuda, K., Looker, T., "OpenID for Verifiable Credential Issuance", December 2024, Draft 15.
+      - Lodderstedt, T., Yasuda, K., Looker, T., Bastian, P., "OpenID for Verifiable Credential Issuance 1.0", September 2025.
     * - `OPENID4VC-HAIP`_
       - Lodderstedt, T., K. Yasuda, "OpenID4VC High Assurance Interoperability Profile", January 2025, Draft 1.
     * - `OAUTH-ATTESTATION-CLIENT-AUTH`_
@@ -72,7 +72,7 @@ Digital Credential Presentation
     :header-rows: 0
 
     * - `OpenID4VP`_
-      - Terbu, O., Lodderstedt, T., Yasuda, K., Looker, T., "OpenID for Verifiable Presentations", December 2024, Draft 23.
+      - Terbu, O., Lodderstedt, T., Yasuda, K., Fett, D., Heenan, J., "OpenID for Verifiable Presentations 1.0", July 2025.
     * - `OAuthCrossDeviceSec`_
       - Kasselman, P., Fett, D., Skokan, F.,  "Cross-Device Flows: Security Best Current Practice", July 2024, Draft 8.
     * - `OPENID4VC-HAIP`_
