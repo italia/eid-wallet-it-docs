@@ -11,7 +11,7 @@ La Relying Party DEVE esporre una serie di endpoint per supportare i flussi di p
 Endpoint di Federazione
 """""""""""""""""""""""
 
-La Relying Party DEVE fornire la propria Entity Configuration attraverso l'endpoint ``/.well-known/openid-federation``, secondo la Sezione :ref:`trust:Entity Configuration`. Questo endpoint abilita l'instaurazione della fiducia e la scoperta delle capacità della Relying Party.
+La Relying Party DEVE fornire la propria Entity Configuration attraverso l'endpoint ``/.well-known/openid-federation``, secondo la Sezione :ref:`trust-infrastructure:Entity Configuration`. Questo endpoint abilita l'instaurazione della fiducia e la scoperta delle capacità della Relying Party.
 
 I dettagli tecnici sono forniti nella Sezione :ref:`relying-party-entity-configuration:Entity Configuration Relying Party`.
 

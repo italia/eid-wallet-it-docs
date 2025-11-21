@@ -291,6 +291,24 @@ rm<span class="w"> </span>federation_entity.pem<span class="w"> </span>trust_anc
 <li><p>Analyze CRL content and validity periods.</p></li>
 </ul>
 </div></blockquote>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1"># CRL extraction and analysis for federation entities</span>
+
+<span class="c1"># Extract CRL URL from certificate CRL Distribution Points extension</span>
+<span class="nv">crl_url</span><span class="o">=</span><span class="k">$(</span>openssl<span class="w"> </span>x509<span class="w"> </span>-in<span class="w"> </span>certificate.der<span class="w"> </span>-inform<span class="w"> </span>DER<span class="w"> </span>-text<span class="w"> </span>-noout<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+<span class="w">          </span>grep<span class="w"> </span><span class="s2">&quot;URI:&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/.*URI://&#39;</span><span class="k">)</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;CRL Distribution Point: </span><span class="nv">$crl_url</span><span class="s2">&quot;</span>
+
+<span class="c1"># Download CRL from distribution point</span>
+curl<span class="w"> </span>-s<span class="w"> </span>-O<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$crl_url</span><span class="s2">&quot;</span>
+<span class="nv">crl_file</span><span class="o">=</span><span class="k">$(</span>basename<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$crl_url</span><span class="s2">&quot;</span><span class="k">)</span>
+
+<span class="c1"># Display CRL information</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;CRL Content Analysis:&quot;</span>
+openssl<span class="w"> </span>crl<span class="w"> </span>-in<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$crl_file</span><span class="s2">&quot;</span><span class="w"> </span>-inform<span class="w"> </span>DER<span class="w"> </span>-text<span class="w"> </span>-noout
+</pre></div>
+</div>
 </section>
 <section id="x-509-certificate-revocation-verification">
 <h3><span class="section-number">9.3.2. </span>X.509 Certificate Revocation Verification<a class="headerlink" href="#x-509-certificate-revocation-verification" title="Link to this heading">¶</a></h3>
@@ -304,6 +322,45 @@ rm<span class="w"> </span>federation_entity.pem<span class="w"> </span>trust_anc
 </ul>
 </div></blockquote>
 <p>Below a bash script for X.509 certificate revocation status verification is given as a non-normative example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1"># Certificate revocation verification for federation entities</span>
+
+<span class="c1"># Extract certificate serial number</span>
+<span class="nv">certificate_serial</span><span class="o">=</span><span class="k">$(</span>openssl<span class="w"> </span>x509<span class="w"> </span>-in<span class="w"> </span>certificate.der<span class="w"> </span>-inform<span class="w"> </span>DER<span class="w"> </span>-noout<span class="w"> </span>-serial<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+<span class="w">                  </span>cut<span class="w"> </span>-d<span class="o">=</span><span class="w"> </span>-f2<span class="k">)</span>
+
+<span class="c1"># Normalize serial number (remove leading zeros, convert to lowercase)</span>
+<span class="nv">normalized_serial</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$certificate_serial</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/^0*//&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span><span class="s1">&#39;[:upper:]&#39;</span><span class="w"> </span><span class="s1">&#39;[:lower:]&#39;</span><span class="k">)</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Certificate Serial Number: </span><span class="nv">$normalized_serial</span><span class="s2">&quot;</span>
+
+<span class="c1"># Extract CRL URL and download</span>
+<span class="nv">crl_url</span><span class="o">=</span><span class="k">$(</span>openssl<span class="w"> </span>x509<span class="w"> </span>-in<span class="w"> </span>certificate.der<span class="w"> </span>-inform<span class="w"> </span>DER<span class="w"> </span>-text<span class="w"> </span>-noout<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+<span class="w">          </span>grep<span class="w"> </span><span class="s2">&quot;URI:&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/.*URI://&#39;</span><span class="k">)</span>
+curl<span class="w"> </span>-s<span class="w"> </span>-O<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$crl_url</span><span class="s2">&quot;</span>
+<span class="nv">crl_file</span><span class="o">=</span><span class="k">$(</span>basename<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$crl_url</span><span class="s2">&quot;</span><span class="k">)</span>
+
+<span class="c1"># Validate CRL signature against Trust Anchor</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Validating CRL signature...&quot;</span>
+openssl<span class="w"> </span>crl<span class="w"> </span>-in<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$crl_file</span><span class="s2">&quot;</span><span class="w"> </span>-inform<span class="w"> </span>DER<span class="w"> </span>-noout<span class="w"> </span>-text<span class="w"> </span>-CAfile<span class="w"> </span>trust_anchor.pem
+
+<span class="c1"># Extract revoked serial numbers from CRL</span>
+<span class="nv">revoked_serials</span><span class="o">=</span><span class="k">$(</span>openssl<span class="w"> </span>crl<span class="w"> </span>-in<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$crl_file</span><span class="s2">&quot;</span><span class="w"> </span>-inform<span class="w"> </span>DER<span class="w"> </span>-text<span class="w"> </span>-noout<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+<span class="w">                 </span>grep<span class="w"> </span><span class="s1">&#39;Serial Number&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+<span class="w">                 </span>sed<span class="w"> </span><span class="s1">&#39;s/.*Serial Number: //&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+<span class="w">                 </span>sed<span class="w"> </span><span class="s1">&#39;s/^0*//&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+<span class="w">                 </span>tr<span class="w"> </span><span class="s1">&#39;[:upper:]&#39;</span><span class="w"> </span><span class="s1">&#39;[:lower:]&#39;</span><span class="k">)</span>
+
+<span class="c1"># Check if certificate is revoked</span>
+<span class="k">if</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$revoked_serials</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-q<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$normalized_serial</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Certificate Status: REVOKED&quot;</span>
+<span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">else</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Certificate Status: VALID&quot;</span>
+<span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
+<span class="k">fi</span>
+</pre></div>
+</div>
 </section>
 </section>
 <section id="x-509-certificate-management-best-practices">
@@ -345,6 +402,26 @@ rm<span class="w"> </span>federation_entity.pem<span class="w"> </span>trust_anc
 </ul>
 </div></blockquote>
 <p>The following non-normative example provides a script for Federation X.509 certificate infrastructure connectivity test:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1"># Federation certificate infrastructure connectivity test</span>
+
+<span class="c1"># Test Trust Anchor certificate endpoint</span>
+<span class="nv">ta_cert_url</span><span class="o">=</span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/pki/ta.cer&quot;</span>
+<span class="k">if</span><span class="w"> </span>curl<span class="w"> </span>-f<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ta_cert_url</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Trust Anchor certificate endpoint: ACCESSIBLE&quot;</span>
+<span class="k">else</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Trust Anchor certificate endpoint: FAILED&quot;</span>
+<span class="k">fi</span>
+
+<span class="c1"># Test CRL distribution endpoints</span>
+<span class="nv">ta_crl_url</span><span class="o">=</span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/pki/ta.crl&quot;</span>
+<span class="k">if</span><span class="w"> </span>curl<span class="w"> </span>-f<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ta_crl_url</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Trust Anchor CRL endpoint: ACCESSIBLE&quot;</span>
+<span class="k">else</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Trust Anchor CRL endpoint: FAILED&quot;</span>
+<span class="k">fi</span>
+</pre></div>
+</div>
 </section>
 <section id="x-509-certificate-lifecycle-coordination">
 <h3><span class="section-number">9.4.3. </span>X.509 Certificate Lifecycle Coordination<a class="headerlink" href="#x-509-certificate-lifecycle-coordination" title="Link to this heading">¶</a></h3>
@@ -581,7 +658,7 @@ curl<span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wall
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 11/11/2025.
+      Last updated on 21/11/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

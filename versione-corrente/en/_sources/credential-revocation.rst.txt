@@ -429,7 +429,7 @@ The requests to the *Status Assertion endpoint* MUST be HTTP with method POST, u
 
 Below a non-normative example representing a Status Assertion Request array with Status Assertion Request objects in JWT format.
 
-.. code::
+.. code-block:: text
 
   POST /status HTTP/1.1
   Host: issuer.example.org
@@ -500,7 +500,7 @@ Below, is given a non-normative example of a single *Status Assertion Request ob
     "alg": "ES256",
     "typ": "status-assertion-request+jwt"
   }
-  
+
 .. code-block:: json
 
   {
@@ -553,7 +553,7 @@ The HTTP response MUST:
 
 A non-normative example of a HTTP Status Assertion Response is given below.
 
-.. code::
+.. code-block:: text
 
     HTTP/1.1 200 Ok
     Content-Type: application/json
@@ -635,18 +635,20 @@ The Status Assertion MUST contain the parameters and claims defined below
 
 Below a non-normative example of a Status Assertion Response object in JWT format, with the headers and payload represented in JSON and without applying the signature.
 
-.. code::
-
+.. code-block:: json
+  
   {
     "alg": "ES256",
     "typ": "status-assertion+jwt",
     "kid": "Issuer-JWK-KID"
   }
- .
+
+.. code-block:: text
+
   {
     "iss": "https://issuer.example.org",
-    "jti": "6f204f7e-e453-4dfd-814e-9d155319408c"
-    "credential_hash": $CREDENTIAL-HASH,
+    "jti": "6f204f7e-e453-4dfd-814e-9d155319408c",
+    "credential_hash": "$CREDENTIAL-HASH",
     "credential_hash_alg": "sha-256",
     "credential_status_type": 0x01,
     "credential_status_detail": {
@@ -729,18 +731,20 @@ The `error` claim for the Status Assertion Error object MUST be set with one of 
 
 Below a non-normative example of a Status Assertion Error object in JWT format, with the headers and payload represented in JSON and without applying the signature.
 
-.. code::
+.. code-block:: json
 
   {
     "alg": "ES256",
     "typ": "status-assertion-error+jwt",
     "kid": "Issuer-JWK-KID"
   }
-  .
+
+.. code-block:: json
+
   {
     "iss": "https://issuer.example.org",
     "jti": "6f204f7e-e453-4dfd-814e-9d155319408c"
-    "credential_hash": $CREDENTIAL-HASH,
+    "credential_hash": "$CREDENTIAL-HASH",
     "credential_hash_alg": "sha-256",
     "error": "unsupported_hash_alg",
     "error_description": "The hash algorithm is not supported"
@@ -879,14 +883,16 @@ A JSON-encoded Status List has the following structure:
 
 The following is an example of Status List Token before applying signature and encoding:
 
-.. code::
+.. code-block:: json
 
   {
     "alg": "ES256",
     "kid": "$KID",
     "typ": "statuslist+jwt"
   }
-  .
+
+.. code-block:: json
+
   {
     "exp": 2291720170,
     "iat": 1686920170,
@@ -954,7 +960,7 @@ The Relying Party SHOULD send the ``application/statuslist+jwt`` Accept-Header t
 
 The following is a non-normative example of a request for a Status List Token:
 
-.. code::
+.. code-block:: http
 
   GET /statuslists HTTP/1.1
   Host: example-issuer.com
@@ -972,7 +978,7 @@ If caching-related HTTP headers are present in the HTTP response, Relying Partie
 
 The following is a non-normative example of a response for a Status List Token with type ``application/statuslist+jwt``:
 
-.. code::
+.. code-block:: http
 
   HTTP/1.1 200 OK
   Content-Type: application/statuslist+jwt
@@ -985,7 +991,7 @@ Upon receiving a Digital Credential, a Relying Party MUST first perform the vali
 - Resolve the Status List Token from the provided URI.
 - Validate the Status List Token:
 
-  - Validate the Status List Token's signature by following the rules defined in section 7.2 of [:rfc:`7519`]. This step requires the resolution of a public key as described in :ref:`trust:The Infrastructure of Trust`.
+  - Validate the Status List Token's signature by following the rules defined in section 7.2 of [:rfc:`7519`]. This step requires the resolution of a public key as described in :ref:`trust-infrastructure:The Infrastructure of Trust`.
 
   - Check for the existence of the required claims as defined in Section :ref:`credential-revocation:Status List Token`.
 

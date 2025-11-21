@@ -330,7 +330,7 @@ Below is the description of acronyms and definitions which are useful for furthe
       Aligned with ARF 2.5.
 
     **Wallet Unit Attestation**
-     Data object issued by a Wallet Provider that proves the keys used for key binding of Credentials reside in a trustworthy WSCD, 
+     Data object issued by a Wallet Provider that proves the keys used for key binding of Credentials reside in a trustworthy WSCD,
      and checks the Wallet Unit has not been revoked. Specific to IT-Wallet. 
 
     **Wallet App Attestation**

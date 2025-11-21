@@ -34,7 +34,7 @@ Il Trust Anchor DEVE pubblicare i metadati di discovery del registro all'endpoin
 Inoltre, il sistema di registro IT-Wallet DEVE utilizzare due modelli di accesso distinti:
 
   - **API del Registro Dati**: DEVONO supportare capacità di paginazione e filtraggio.
-  - **Infrastruttura di Trust della Federazione**: come definito in :ref:`trust:L'Infrastruttura di Trust`.
+  - **Infrastruttura di Trust della Federazione**: come definito in :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
 
 Di seguito viene fornito un esempio non normativo.
 
@@ -353,7 +353,7 @@ Dopo la registrazione AS, il Registro AS abilita i Credential Issuer a scoprire 
 Registro della Federazione
 ---------------------------
 
-Il **Registro della Federazione** fornisce l'infrastruttura di trust crittografico per tutti i partecipanti dell'ecosistema IT-Wallet. Il Registro della Federazione mantiene l'elenco autorevole delle entità fidate e il loro stato operativo utilizzando endpoint specifici della federazione come definito in :ref:`trust:Endpoint API di Federazione`.
+Il **Registro della Federazione** fornisce l'infrastruttura di trust crittografico per tutti i partecipanti dell'ecosistema IT-Wallet. Il Registro della Federazione mantiene l'elenco autorevole delle entità fidate e il loro stato operativo utilizzando endpoint specifici della federazione come definito in :ref:`trust-infrastructure:Endpoint API di Federazione`.
 
 Ruolo di Integrazione del Registro
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -367,12 +367,12 @@ All'interno dell'architettura del registro IT-Wallet, il Registro della Federazi
 Accesso al Registro della Federazione
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Le operazioni del Registro della Federazione sono accessibili attraverso gli endpoint della federazione del Trust Anchor come dettagliato in :ref:`trust:Endpoint API di Federazione`. L'architettura di discovery del registro fornisce informazioni sugli endpoint della federazione tramite l'Endpoint di Discovery del Registro descritto in `Endpoint di Discovery del Registro`_.
+Le operazioni del Registro della Federazione sono accessibili attraverso gli endpoint della federazione del Trust Anchor come dettagliato in :ref:`trust-infrastructure:Endpoint API di Federazione`. L'architettura di discovery del registro fornisce informazioni sugli endpoint della federazione tramite l'Endpoint di Discovery del Registro descritto in `Endpoint di Discovery del Registro`_.
 
 .. note::
    Gli endpoint della federazione sono disponibili sia attraverso il meccanismo di discovery del registro (per l'accesso unificato al registro) che attraverso l'Entity Configuration del Trust Anchor a ``.well-known/openid-federation`` (per operazioni specifiche della federazione). Entrambe le fonti forniscono gli stessi URL degli endpoint ma servono pattern di discovery diversi: discovery del registro per l'orientamento iniziale dell'ecosistema, Entity Configuration per la conformità standard OpenID Federation 1.0.
 
-Per le specifiche tecniche complete dei protocolli di federazione, configurazioni delle entità, meccanismi di valutazione del trust e validazione della catena di trust, vedere :ref:`trust:L'Infrastruttura di Trust`.
+Per le specifiche tecniche complete dei protocolli di federazione, configurazioni delle entità, meccanismi di valutazione del trust e validazione della catena di trust, vedere :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
 
 Catalogo degli Attestati Elettronici
 -------------------------------------

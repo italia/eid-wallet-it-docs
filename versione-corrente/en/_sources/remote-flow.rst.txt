@@ -126,7 +126,7 @@ Conversely, in the **Same Device Flow**, the Relying Party uses an HTTP response
     
     Where the body of the request prior to being encoded in `application/x-www-form-urlencoded` by the Wallet corresponds to:
     
-    .. code:: json
+    .. code-block:: json
     
       {
         "wallet_metadata": {

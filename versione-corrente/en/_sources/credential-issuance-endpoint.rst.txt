@@ -242,7 +242,7 @@ If any errors occur during the PAR Request, the Authorization Server MUST return
 
 Below is a non-normative example of an error response.
 
-.. code:: http
+.. code-block:: http
 
   HTTP/1.1 400 Bad Request
   Content-Type: application/json
@@ -355,7 +355,7 @@ If any other error occurs the Authorization Server MUST redirect the User by add
 
 Below is a non-normative example of an error response.
 
-.. code:: http
+.. code-block:: http
 
   HTTP/1.1 302 Found
   Location: https://client.example.com/cb?
@@ -539,7 +539,7 @@ If any errors occur during the validation of the Token Request, the Authorizatio
 
 Below is a non-normative example of an error response.
 
-.. code:: http
+.. code-block:: http
 
   HTTP/1.1 401 Unauthorized
   Content-Type: application/json;charset=UTF-8
@@ -858,7 +858,7 @@ If any other error occurs, the Credential Issuer MUST return an error response a
 
 Below is a non-normative example of an error response.
 
-.. code:: http
+.. code-block:: http
 
   HTTP/1.1 400 Bad Request
   Content-Type: application/json
@@ -962,7 +962,7 @@ The following parameter is used in the Deferred Credential Request:
 The Credential Issuer MUST invalidate the ``transaction_id`` after the Credential for which it was meant has been obtained by the Wallet Instance.
 The following is a non-normative example of a Deferred Credential Request:
 
-.. code::
+.. code-block:: http
 
   POST /credential HTTP/1.1
   Host: eaa-provider.example.org
@@ -1047,7 +1047,7 @@ If any other error occurs, the Credential Issuer MUST return an error response a
 
 Below is a non-normative example of an error response.
 
-.. code:: http
+.. code-block:: http
 
   HTTP/1.1 400 Bad Request
   Content-Type: application/json

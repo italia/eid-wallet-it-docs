@@ -155,7 +155,7 @@ PDND Voucher for e-Services Flow
 
 **Steps 1-2 (Preparation of Tracked Data):** The Consumer prepares a JWT (``TrackingEvidence``) containing the tracked data that have to be sent to the Provider. Finally, it computes the SHA-256 hash of ``TrackingEvidence``.
 
-.. code-block:: Json
+.. code-block:: json
   :caption: Non-normative example of the ``TrackingEvidence`` header
   :name: code_VoucherIssuance_eService_Flow_TrackingEvidence_Header
 

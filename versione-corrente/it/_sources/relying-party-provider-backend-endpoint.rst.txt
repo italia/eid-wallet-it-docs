@@ -11,7 +11,7 @@ La Relying Party DEVE esporre una serie di endpoint per gestire il ciclo di vita
 Endpoint di Federazione della Relying Party
 """""""""""""""""""""""""""""""""""""""""""
 
-La Relying Party DEVE fornire la propria Entity Configuration attraverso l'Endpoint ``/.well-known/openid-federation``, secondo la Sezione :ref:`trust:Entity Configuration`. I dettagli tecnici sono forniti nella Sezione :ref:`relying-party-entity-configuration:Entity Configuration Relying Party`.
+La Relying Party DEVE fornire la propria Entity Configuration attraverso l'Endpoint ``/.well-known/openid-federation``, secondo la Sezione :ref:`trust-infrastructure:Entity Configuration`. I dettagli tecnici sono forniti nella Sezione :ref:`relying-party-entity-configuration:Entity Configuration Relying Party`.
 
 
 Endpoint Nonce della Relying Party
