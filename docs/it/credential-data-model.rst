@@ -21,7 +21,7 @@ Il PID DEVE essere fornito secondo i requisiti del modello dati definiti in `EU_
 - Data di Nascita
 - Luogo di Nascita
 - Nazionalità
-- Codice di identificazione fiscale
+- Numero di identificazione dell'Utente nei servizi delle Relying Party pubbliche (ad esempio il *codice fiscale*)
 
 In aggiunta agli attributi dell'Utente elencati sopra, il PID include anche le seguenti informazioni (`EU_2024/2977`_ e **Sezione 2 dell'ARF PID Rulebook v1.3** [`EIDAS-ARF`_]):
 

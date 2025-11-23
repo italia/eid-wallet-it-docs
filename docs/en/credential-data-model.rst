@@ -22,7 +22,7 @@ The PID MUST be provided according to data model requirements defined in  `EU_20
 - Date of Birth
 - Place of Birth
 - Nationality
-- Taxpayer identification number
+- User identification number across public Relying Party services (for example the *taxpayer identification number*)
 
 In addition to the User attributes listed above, the PID includes also the following information (`EU_2024/2977`_ and **Section 2 of the ARF PID Rulebook v1.3** [`EIDAS-ARF`_]):
 
