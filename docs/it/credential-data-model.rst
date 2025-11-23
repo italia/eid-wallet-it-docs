@@ -222,9 +222,12 @@ Se il parametro ``status`` è valorizzato con ``status_assertion``, è un Oggett
 Modello Dati PID in formato SD-JWT-VC
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Per il PID SD-JWT-VC definito in questa specifica, il valore `vct` DEVE essere `urn:it-wallet:pid:1`.
+Per il PID SD-JWT-VC definito in questa specifica, il valore ``vct`` DEVE essere ``urn:eudi:pid:it:1`` in conformità ai requisiti dell'ARF PID Rulebook v1.3 per le estensioni domestiche PID (requisito **PID_14**, Sezione 4.2, estendendo il tipo base ``urn:eudi:pid:``).
 
-Una volta raggiunta la piena operatività dell'ecosistema EUDIW, il valore `vct` DEVE transitare a `urn:eudi:pid:it:1` in conformità ai requisiti dell'ARF PID Rulebook v1.3 per le estensioni domestiche PID (requisito *PID_14*, Sezione 4.2, estendendo il tipo base `urn:eudi:pid:`).
+.. note::
+   **Fase Transitoria:**
+
+   Durante la fase transitoria prima della piena operatività EUDIW, le implementazioni nazionali POSSONO utilizzare il valore ``vct`` ``urn:it-wallet:pid:1``. Una volta raggiunta la piena interoperabilità EUDIW, tutte le implementazioni DEVONO transitare all'identificatore conforme EUDI ``urn:eudi:pid:it:1`` specificato sopra.
 
 In base a `EU_2024/2977`_ e alla **Sezione 4 dell'ARF PID Rulebook v1.3** [`EIDAS-ARF`_], il PID in formato SD-JWT-VC DEVE supportare i seguenti Attributi Utente:
 
@@ -578,7 +581,7 @@ Di seguito è riportato un esempio non normativo.
 Formato Attestato Elettronico mdoc-CBOR
 ------------------------------------------
 
-Il modello dati dell'Attestato Elettronico in formato mdoc-CBOR si basa sullo standard ISO/IEC 18013-5.
+Gli Attestati Elettronici emessi in formato mdoc-CBOR DEVONO essere basati sullo standard ISO/IEC 18013-5.
 I dati in mdoc DEVONO essere codificati in CBOR come definito in :rfc:`8949`.
 
 Questo modello dati struttura gli Attestati Elettronici in componenti distinti: namespaces (**nameSpaces**) e prova crittografica (**issuerAuth**).
@@ -599,11 +602,15 @@ Un Attestato Elettronico in formato mdoc-CBOR DEVE avere la seguente struttura:
       - **Descrizione**
       - **Riferimento**
     * - **nameSpaces**
-      - *(map)*. All'interno dei ``namespaces`` vengono definiti i dati. Un Attestato Elettronico PUÒ includere più namespace. Gli attributi mDL obbligatori utilizzano il namespace standard `org.iso.18013.5.1`. Tuttavia, PUÒ avere anche un namespace domestico definito a livello nazionale, come `org.iso.18013.5.1.IT`, per includere attributi aggiuntivi definiti nel profilo di implementazione corrente. Ogni namespace all'interno di `nameSpaces` DEVE condividere lo stesso valore del tipo di documento emesso (`docType`), che identifica la natura dell'Attestato Elettronico, come definito in `issuerAuth`.
+      - *(map)*. I namespace all'interno dei quali sono definiti i dati. Un Attestato Elettronico PUÒ includere più namespace.
       - [ISO 18013-5#8.3.2.1.2]
     * - **issuerAuth**
-      - *(COSE_Sign1)*. Contiene *Mobile Security Object* (MSO), un documento COSE Sign1, emesso dal Fornitore di Attestati Elettronici.
+      - *(COSE_Sign1)*. Contiene il *Mobile Security Object* (MSO), un documento COSE Sign1, emesso dal Fornitore di Attestati Elettronici.
       - [ISO 18013-5#9.1.2.4]
+
+
+.. note::
+  Gli attributi mDL obbligatori utilizzano il namespace standard `org.iso.18013.5.1`. Tuttavia, PUÒ avere anche un namespace domestico, come `org.iso.18013.5.1.IT`, per includere attributi aggiuntivi definiti in questo profilo di implementazione. Ogni namespace all'interno di `nameSpaces` DEVE condividere lo stesso valore del tipo di documento emesso (`docType`), che identifica la natura dell'Attestato Elettronico, come definito in `issuerAuth`.
 
 La struttura di una Credenziale in formato mdoc-CBOR è ulteriormente descritta nelle sezioni seguenti.
 
@@ -680,11 +687,11 @@ Il `MobileSecurityObject` DEVE avere i seguenti attributi, se non diversamente s
       - *(tstr)*. Versione del `MobileSecurityObject`.
       - [ISO 18013-5#9.1.2.4]
     * - **validityInfo**
-      - *(map)*. Contiene le date e gli orari di emissione e scadenza del `MobileSecurityObject`. DEVE contenere i seguenti sub parametri:
+      - *(map, REQUIRED)*. Contiene le date e gli orari di emissione e scadenza del `MobileSecurityObject`. Include i seguenti sub-valori:
 
-          * **signed** *(tdate)*. Il timestamp che indica quando il `MobileSecurityObject` è stato firmato.
-          * **validFrom** *(tdate)*. Timestamp prima del quale il `MobileSecurityObject` non è considerato valido. DEVE essere uguale o successivo a `signed`.
-          * **validUntil** *(tdate)*. Timestamp dopo il quale il `MobileSecurityObject` non è più considerato valido.
+          * **signed** *(tdate, OPTIONAL)*. Il timestamp che indica quando il `MobileSecurityObject` è stato firmato.
+          * **validFrom** *(tdate, OPTIONAL)*. Timestamp prima del quale il `MobileSecurityObject` non è considerato valido. Quando presente, DEVE essere uguale o successivo a `signed`.
+          * **validUntil** *(tdate, REQUIRED)*. Timestamp dopo il quale il `MobileSecurityObject` non è più considerato valido.
 
       - [ISO 18013-5#9.1.2.4]
     * - **digestAlgorithm**
@@ -739,10 +746,10 @@ Attributi dei Namespaces
       - *(any)*. Valore del dato.
       - [ISO 18013-5#8.3.2.1.2.3]
 
-Attributi
-^^^^^^^^^
+Attributi Metadata degli Attestati Elettronici mdoc-CBOR
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-I seguenti **elementIdentifiers** sono definiti per gli Attestati Elettronici codificati in mdoc-CBOR all'interno del rispettivo *nameSpace*:
+I seguenti **elementIdentifiers** che rappresentano attributi metadata format-encoded sono definiti per gli Attestati Elettronici in formato mdoc-CBOR all'interno del rispettivo *nameSpace*:
 
 .. _table_element_identifiers_mdoc:
 .. list-table::
@@ -755,36 +762,38 @@ I seguenti **elementIdentifiers** sono definiti per gli Attestati Elettronici co
      - **Riferimento**
 
    * - **issuing_country**
-     - *(tstr, OBBLIGATORIO)*. Codice paese Alpha-2 come definito in [ISO 3166-1], che rappresenta il paese o territorio di emissione.
+     - *(tstr, OBBLIGATORIO)*. Identificatore dati format-encoded `issuing_country` come definito nella Sezione :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. Codice paese Alpha-2 come definito in [ISO 3166-1].
      - [ISO 18013-5#7.2]
 
    * - **issuing_authority**
-     - *(tstr, OBBLIGATORIO)*. Nome dell'autorità amministrativa che ha emesso l'Attestato Elettronico.
-       Il valore deve contenere solo caratteri Latin1b e deve avere una lunghezza massima di 150 caratteri.
+     - *(tstr, OBBLIGATORIO)*. Identificatore dati format-encoded `issuing_authority` come definito nella Sezione :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. Il valore DEVE contenere solo caratteri Latin1b e deve avere una lunghezza massima di 150 caratteri.
      - [ISO 18013-5#7.2]
 
+   * - **expiry_date**
+     - *(tdate o full-date, OPZIONALE)*. Identificatore dati format-encoded `expiry_date` come definito nella Sezione :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. DEVE essere conforme al formato ISO 8601-1 YYYY-MM-DD.
+     - Sezione 3 dell'ARF PID Rulebook v1.3 [`EIDAS-ARF`_]
+
    * - **sub**
-     - *(uuid, OPZIONALE)*. Identifica il soggetto dell'Attestato Elettronico (l'Utente).
-       L'identificativo DEVE essere opaco, NON DEVE corrispondere a nessun dato anagrafico e NON DEVE essere derivato dai dati anagrafici dell'Utente attraverso la pseudonimizzazione. Inoltre, diversi Attestati Elettronici emessi allo stesso Utente NON DEVONO riutilizzare lo stesso valore `sub`.
-     -
+     - *(uuid, OPZIONALE)*. Identifica il soggetto dell'Attestato Elettronico mdoc (l'Utente). L'identificativo DEVE essere opaco, NON DEVE corrispondere a nessun dato anagrafico e NON DEVE essere derivato dai dati anagrafici dell'Utente attraverso la pseudonimizzazione. Inoltre, Attestati Elettronici diversi emessi allo stesso Utente o a Utenti diversi NON DEVONO utilizzare lo stesso valore `sub`.
+     - Estensione domestica.
 
    * - **verification**
-     - *(map, OPZIONALE)*. Contiene dettagli di autenticazione e verifica dell'Utente. La CBOR map DEVE contenere i seguenti membri:
+     - *(map, OPZIONALE)*. Identificatore dati format-encoded `verification` come definito nella Sezione :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. La CBOR map include i seguenti membri:
 
-         * ``trust_framework`` *(tstr)*: trust framework utilizzato per l'autenticazione dell'Utente.
-         * ``assurance_level`` *(tstr)*: livello di garanzia dell'identità garantito durante l'autenticazione dell'Utente.
-         * ``evidence`` *(array)*: ogni voce DEVE contenere:
+         * ``trust_framework`` *(tstr, OBBLIGATORIO)*: trust framework utilizzato per l'autenticazione dell'Utente.
+         * ``assurance_level`` *(tstr, OBBLIGATORIO)*: livello di garanzia dell'identità garantito durante l'autenticazione dell'Utente.
+         * ``evidence`` *(array, OPZIONALE)*: ogni voce contiene:
 
-           - ``type`` *(tstr)*: tipo di evidenza (es., ``vouch``).
-           - ``time`` *(tdate)*: timestamp dell'autenticazione o verifica.
-           - ``attestation`` *(map)*: DEVE contenere:
+           - ``type`` *(tstr, OPZIONALE)*: tipo di evidenza (es., ``vouch``).
+           - ``time`` *(tdate, OPZIONALE)*: timestamp dell'autenticazione o verifica.
+           - ``attestation`` *(map, OPZIONALE)*: contiene:
 
-             - ``type`` *(tstr)*: tipo di attestazione (es., ``digital_attestation``).
-             - ``reference_number`` *(tstr)*: identificativo della risposta di autenticazione/verifica.
-             - ``date_of_issuance`` *(tdate)*: data di emissione dell'attestazione.
-             - ``voucher`` *(map)*: DEVE contenere ``organization`` *(tstr)*.
+             - ``type`` *(tstr, OPZIONALE)*: tipo di attestazione (es., ``digital_attestation``).
+             - ``reference_number`` *(tstr, OPZIONALE)*: identificativo della risposta di autenticazione/verifica.
+             - ``date_of_issuance`` *(tdate, OPZIONALE)*: data di emissione dell'attestazione.
+             - ``voucher`` *(map, OPZIONALE)*: contiene ``organization`` *(tstr)*.
 
-     -
+     - Estensione domestica.
 
 .. note::
   Gli attributi specifici dell'Utente dell'Attestato Elettronico sono definiti nel Catalogo degli Attestati Elettronici.
@@ -797,9 +806,19 @@ I seguenti **elementIdentifiers** sono definiti per gli Attestati Elettronici co
 Modello Dati PID in formato mdoc-CBOR
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Il PID in formato mdoc-CBOR (conforme a ISO/IEC 18013-5) DEVE utilizzare il **docType** ``eu.europa.ec.eudi.pid.1`` come specificato dal requisito ARF **PID_04**.
+Il PID in formato mdoc-CBOR DEVE utilizzare il **docType** ``eu.europa.ec.eudi.pid.it.1`` in conformità al requisito ARF **PID_06** per le estensioni domestiche PID (estendendo il tipo base ``eu.europa.ec.eudi.pid.1`` definito in **PID_04**).
 
-Gli attributi PID DEVONO essere codificati come specificato nella **Sezione 3 dell'ARF PID Rulebook v1.3** [`EIDAS-ARF`_], che definisce:
+Gli attributi PID DEVONO essere codificati come specificato nella **Sezione 3 dell'ARF PID Rulebook v1.3** [`EIDAS-ARF`_] e organizzati nei seguenti namespace:
+
+- **Attributi PID standard ARF**: namespace ``eu.europa.ec.eudi.pid.1``
+- **Estensioni domestiche italiane**: namespace ``eu.europa.ec.eudi.pid.it.1``
+
+.. note::
+   **Fase Transitoria:**
+
+   Durante la fase transitoria prima della piena operatività EUDIW, le implementazioni nazionali POSSONO utilizzare il **docType** ``it.wallet.trust-registry.pid.1`` con un unico namespace nazionale ``it.wallet.trust-registry.pid.1`` per tutti gli attributi. Una volta raggiunta la piena interoperabilità EUDIW, tutte le implementazioni DEVONO transitare al **docType** e alla struttura di namespace conformi EUDI specificati sopra.
+
+La Sezione 3 dell'ARF PID Rulebook v1.3 definisce:
 
 - Identificatori degli attributi e formati di codifica (Sezione 3.1.1)
 - Regole di codifica specifiche per ``nationality`` (Sezione 3.1.2), ``birth_date`` (Sezione 3.1.4), e ``place_of_birth`` (Sezione 3.1.5)
@@ -808,13 +827,43 @@ Gli attributi PID DEVONO essere codificati come specificato nella **Sezione 3 de
 .. note::
    **Differenze chiave rispetto alla codifica SD-JWT:**
 
-   ARF utilizza nomi diversi tra i formati SD-JWT e mdoc-CBOR:
+   L'ARF PID Rulebook v1.3 utilizza nomi diversi tra i formati SD-JWT e mdoc-CBOR:
 
    - mdoc usa ``birth_date`` (non ``birthdate`` come in SD-JWT)
    - mdoc usa ``expiry_date`` (non ``date_of_expiry`` come in SD-JWT)
    - Entrambi i formati usano ``place_of_birth`` con la stessa struttura CBOR map
 
-   Vedere ARF Sezione 3.1.1 (codifica mdoc) e Sezione 4.1.1 (codifica SD-JWT) per la mappatura completa.
+   Vedere Sezione 3.1.1 (codifica mdoc) e Sezione 4.1.1 (codifica SD-JWT) dell'ARF PID Rulebook v1.3 per la mappatura completa.
+
+In base a `EU_2024/2977`_ e alla **Sezione 3 dell'ARF PID Rulebook v1.3** [`EIDAS-ARF`_], il PID in formato mdoc-CBOR DEVE supportare i seguenti Attributi Utente nel namespace ``eu.europa.ec.eudi.pid.1``:
+
+.. _table_mdoc-cbor_pid_attributes:
+.. list-table::
+    :class: longtable
+    :widths: 20 60 20
+    :header-rows: 1
+
+    * - **elementIdentifier**
+      - **Descrizione**
+      - **Riferimento**
+    * - **given_name**
+      - OBBLIGATORIO. *(tstr)*. Nome attuale.
+      - Sezione 3.1.1 dell'ARF PID Rulebook v1.3 [`EIDAS-ARF`_] e Regolamento di esecuzione della Commissione `EU_2024/2977`_
+    * - **family_name**
+      - OBBLIGATORIO. *(tstr)*. Cognome attuale.
+      - Sezione 3.1.1 dell'ARF PID Rulebook v1.3 [`EIDAS-ARF`_] e Regolamento di esecuzione della Commissione `EU_2024/2977`_
+    * - **birth_date**
+      - OBBLIGATORIO. *(full-date)*. Data di Nascita. DEVE essere codificata come stringa full-date secondo :rfc:`8949`.
+      - Sezione 3.1.4 dell'ARF PID Rulebook v1.3 [`EIDAS-ARF`_] e Regolamento di esecuzione della Commissione `EU_2024/2977`_
+    * - **place_of_birth**
+      - OBBLIGATORIO. *(map)*. Luogo di Nascita. Almeno uno tra ``country``, ``region``, ``locality`` DEVE essere presente.
+      - Sezione 3.1.5 dell'ARF PID Rulebook v1.3 [`EIDAS-ARF`_] e Regolamento di esecuzione della Commissione `EU_2024/2977`_
+    * - **nationality**
+      - OBBLIGATORIO. *(tstr)*. Codice paese alpha-2 come specificato in ISO 3166-1. Per nazionalità multiple, DEVONO essere incluse istanze multiple di questo attributo.
+      - Sezione 3.1.2 dell'ARF PID Rulebook v1.3 [`EIDAS-ARF`_] e Regolamento di esecuzione della Commissione `EU_2024/2977`_
+    * - **personal_administrative_number**
+      - OBBLIGATORIO se ``tax_id_code`` non è presente, altrimenti OPZIONALE. *(tstr)*. Identificativo univoco nazionale di una persona fisica generato da ANPR.
+      - Sezione 2.2 dell'ARF PID Rulebook v1.3 [`EIDAS-ARF`_] e Regolamento di esecuzione della Commissione `EU_2024/2977`_
 
 **Requisiti per i PID italiani:**
 
@@ -823,8 +872,14 @@ Per i PID italiani si applicano i seguenti requisiti:
 - L'attributo ``verification`` (definito in :ref:`Attributes <table_element_identifiers_mdoc>`) è OBBLIGATORIO (mentre è OPZIONALE per altri tipi di credenziali).
 - Almeno uno dei seguenti identificatori DEVE essere presente:
 
-  - ``personal_administrative_number`` (ARF Sezione 2.2, attributo standard, namespace ``eu.europa.ec.eudi.pid.1``)
+  - ``personal_administrative_number`` (attributo ARF standard, namespace ``eu.europa.ec.eudi.pid.1``)
   - ``tax_id_code`` (estensione domestica italiana, namespace ``eu.europa.ec.eudi.pid.it.1``)
+
+Oltre agli attributi di metadati obbligatori definiti nella :ref:`Tabella MobileSecurityObject <table_MobileSecurityObject_attributes>` e nella :ref:`Tabella Attributi Metadata mdoc-CBOR <table_element_identifiers_mdoc>`, i seguenti attributi di metadati sono OBBLIGATORI per un PID:
+
+  - **expiry_date**
+  - **sub**
+  - **verification**
 
 **Estensioni Domestiche (requisito ARF PID_06):**
 

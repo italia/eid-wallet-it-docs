@@ -159,7 +159,7 @@ The JWT payload contains the following claims. Unless otherwise specifed, the fo
       - OPTIONAL. *String*. Format-encoded data identifier `expiry_date` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`.  This attribute pertains to the administrative validity period of the Digital Credential, which is typically different from the technical validity period expressed by the JWT ``exp`` claim.
       - Commission Implementing Regulation `EU_2024/2977`_.
     * - **status**
-      - REQUIRED only if the Digital Credential is long-lived. *JSON object*. Format-encoded data identifier `location_status` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. It MUST contain either the JSON member `status_assertion` or `status_list`.
+      - OPTIONAL. REQUIRED only if the Digital Credential is long-lived. *JSON object*. Format-encoded data identifier `location_status` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. It MUST contain either the JSON member `status_assertion` or `status_list`.
       - Section 3.2.2.2 `SD-JWT-VC`_ and Section 11 `OAUTH-STATUS-ASSERTION`_.
     * - **cnf**
       - REQUIRED. *JSON object*. Format-encoded data identifier `cryptographic_binding` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`, containing the proof-of-possession key materials. By including a **cnf** (confirmation) claim in a JWT, the Issuer of the JWT declares that the Holder is in control of the private key related to the public one defined in the **cnf** parameter. The recipient MUST cryptographically verify that the Holder is in control of that key.
@@ -171,8 +171,7 @@ The JWT payload contains the following claims. Unless otherwise specifed, the fo
       - REQUIRED. *String*. The value MUST be an "integrity metadata" string as defined in Section 3 of [`W3C-SRI`_]. *SHA-256*, *SHA-384* and *SHA-512* MUST be supported as cryptographic hash functions. *MD5* and *SHA-1* MUST NOT be used. This claim MUST be verified according to Section 3.3.5 of [`W3C-SRI`_].
       - Section 6.1 `SD-JWT-VC`_, [`W3C-SRI`_]
     * - **verification**
-      - OPTIONAL. *JSON object*. Format-encoded data identifier `verification` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. 
-      It includes the following sub-value:
+      - OPTIONAL. *JSON object*. Format-encoded data identifier `verification` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. It includes the following sub-value:
 
           * ``trust_framework``: REQUIRED. *String* identifying the trust framework used for User authentication. It MUST be set using one of the values described in the `trust_frameworks_supported` map provided within the Credential Issuer Metadata.
           * ``assurance_level``: REQUIRED. *String* identifying the level of identity assurance guaranteed during the User authentication process.
@@ -223,11 +222,14 @@ If the ``status`` parameter is set to ``status_assertion``, it is a *JSON object
 PID Data Model in SD-JWT-VC Format
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For the SD-JWT-VC PID defined in this specification, the `vct` value MUST be `urn:it-wallet:pid:1`.
+For the SD-JWT-VC PID defined in this specification, the ``vct`` value MUST be ``urn:eudi:pid:it:1`` in compliance with ARF PID Rulebook v1.3 requirements for domestic PID extensions (requirement **PID_14**, Section 4.2, extending the base type ``urn:eudi:pid:``).
 
-Upon full operability of the EUDIW ecosystem, the `vct` value MUST transition to `urn:eudi:pid:it:1` in compliance with ARF PID Rulebook v1.3 requirements for domestic PID extensions (requirement *PID_14*, Section 4.2, extending the base type `urn:eudi:pid:`). 
+.. note::
+   **Transitional Phase:**
 
-According to `EU_2024/2977`_ and **Section 4 of the ARF PID Rulebook v1.3** [`EIDAS-ARF`_], the PID in SD-JWT-VC format MUST supports the following User Attributes: 
+   During the transitional phase before full EUDIW operability, national implementations MAY use the ``vct`` value ``urn:it-wallet:pid:1``. Upon reaching full EUDIW operability, all implementations MUST transition to the EUDI-compliant identifier ``urn:eudi:pid:it:1`` specified above.
+
+According to `EU_2024/2977`_ and **Section 4 of the ARF PID Rulebook v1.3** [`EIDAS-ARF`_], the PID in SD-JWT-VC format MUST support the following User Attributes: 
 
 .. _table_sd-jwt-vc_pid_parameters:
 .. list-table::
@@ -576,7 +578,8 @@ Below a non-normative example is given.
 mdoc-CBOR Credential Format
 ---------------------------
 
-The Digital Credential data model in mdoc-CBOR format is based on the ISO/IEC 18013-5 standard.
+When Digital Credentials are issued in mdoc-CBOR format, they MUST be based on the ISO/IEC 18013-5 standard.
+
 The mdoc data elements MUST be encoded in CBOR as defined in :rfc:`8949`.
 
 This data model structures mdoc Digital Credentials into distinct components: namespaces (**nameSpaces**), and cryptographic proof (**issuerAuth**).
@@ -597,11 +600,15 @@ An mdoc-CBOR Digital Credential MUST be compliant with the following structure:
       - **Description**
       - **Reference**
     * - **nameSpaces**
-      - *(map)*. The namespaces within which the data elements are defined. A Digital Credential MAY include multiple namespaces. Mandatory mDL attributes utilize the standard namespace `org.iso.18013.5.1`. However, it MAY have a domestic namespace, such as `org.iso.18013.5.1.IT`, to include additional attributes defined in this implementation profile. Each namespace within the `nameSpaces` MUST share the same issued document type (`docType`) value, which identifies the nature of the Digital Credential, as defined in the `issuerAuth`.
+      - *(map)*. The namespaces within which the data elements are defined. A Digital Credential MAY include multiple namespaces. 
       - [ISO 18013-5#8.3.2.1.2]
     * - **issuerAuth**
       - *(COSE_Sign1)*. Contains *Mobile Security Object* (MSO), a COSE Sign1 Document, issued by the Credential Issuer.
       - [ISO 18013-5#9.1.2.4]
+
+
+.. note::
+  Mandatory mDL attributes utilize the standard namespace `org.iso.18013.5.1`. However, it MAY have a domestic namespace, such as `org.iso.18013.5.1.IT`, to include additional attributes defined in this implementation profile. Each namespace within the `nameSpaces` MUST share the same issued document type (`docType`) value, which identifies the nature of the Digital Credential, as defined in the `issuerAuth`.
 
 The structure of an mdoc-CBOR Credential is further elaborated in the following sections.
 
@@ -681,11 +688,11 @@ The `MobileSecurityObject` MUST have the following attributes, unless otherwise 
       - *(tstr)*. Version of the `MobileSecurityObject`.
       - [ISO 18013-5#9.1.2.4]
     * - **validityInfo**
-      - *(map)*. Contains the `MobileSecurityObject` issuance and expiration datetimes. It MUST contain the following sub-value:
+      - *(map, REQUIRED)*. Contains the `MobileSecurityObject` issuance and expiration datetimes. It includes the following sub-values:
 
-          * **signed** *(tdate)*. The timestamp indicating when the `MobileSecurityObject` was signed.
-          * **validFrom** *(tdate)*. Timestamp before which the `MobileSecurityObject` is not considered valid. MUST be equal to or later than the `signed` time.
-          * **validUntil** *(tdate)*. Timestamp after which the `MobileSecurityObject` is no longer considered valid.
+          * **signed** *(tdate, OPTIONAL)*. The timestamp indicating when the `MobileSecurityObject` was signed.
+          * **validFrom** *(tdate, OPTIONAL)*. Timestamp before which the `MobileSecurityObject` is not considered valid. When present, it MUST be equal to or later than the `signed` time.
+          * **validUntil** *(tdate, REQUIRED)*. Timestamp after which the `MobileSecurityObject` is no longer considered valid.
 
       - [ISO 18013-5#9.1.2.4]
     * - **digestAlgorithm**
@@ -703,7 +710,7 @@ The `MobileSecurityObject` MUST have the following attributes, unless otherwise 
 
       - [ISO 18013-5#9.1.2.4]
     * - **status**
-      - *(map, CONDITIONAL)*. REQUIRED only if the Digital Credential is long-lived. Contains the MSO revocation information. If present, it includes a *status_list* based on the TOKEN-STATUS-LIST_ mechanism. This mechanism uses a bit array to mark revoked MSOs by their index position.
+      - *(map, OPTIONAL)*. REQUIRED only if the Digital Credential is long-lived. Contains the MSO revocation information. If present, it includes a *status_list* based on the TOKEN-STATUS-LIST_ mechanism. This mechanism uses a bit array to mark revoked MSOs by their index position.
         The `status_list` MUST contain the following sub-values:
 
           * **idx**. Position index in the status list.
@@ -740,10 +747,10 @@ The **nameSpaces** contains one or more *nameSpace* entries, each identified by 
       - *(any)*. Data element value.
       - [ISO 18013-5#8.3.2.1.2.3]
 
-Attributes
-^^^^^^^^^^
+Digital Credential mdoc-CBOR Metadata Attributes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The following **elementIdentifiers** are defined for Digital Credentials encoded in mdoc-CBOR within the respective *nameSpace*:
+The following **elementIdentifiers** representing format-encoded metadata attributes are defined for Digital Credentials in mdoc-CBOR format within the respective *nameSpace*:
 
 .. _table_element_identifiers_mdoc:
 .. list-table::
@@ -756,39 +763,38 @@ The following **elementIdentifiers** are defined for Digital Credentials encoded
      - **Reference**
 
    * - **issuing_country**
-     - *(tstr, REQUIRED)*. Alpha-2 country code as defined in [ISO 3166-1], representing the issuing country or territory.
+     - *(tstr, REQUIRED)*. Format-encoded data identifier `issuing_country` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. Alpha-2 country code as defined in [ISO 3166-1].
      - [ISO 18013-5#7.2]
 
    * - **issuing_authority**
-     - *(tstr, REQUIRED)*. Name of the administrative authority that has issued the Digital Credential.
-       The value shall only use Latin1b characters and shall have a maximum length of 150 characters.
+     - *(tstr, REQUIRED)*. Format-encoded data identifier `issuing_authority` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. The value MUST only use Latin1b characters and shall have a maximum length of 150 characters.
      - [ISO 18013-5#7.2]
 
    * - **expiry_date**
-     - *(tdate or full-date, OPTIONAL)*. Date (and if possible time) when the Digital Credential will expire. It MUST be according to ISO 8601-1 YYYY-MM-DD format.
+     - *(tdate or full-date, OPTIONAL)*. Format-encoded data identifier `expiry_date` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. It MUST be according to ISO 8601-1 YYYY-MM-DD format.
      - Section 3 of the ARF PID Rulebook v1.3 [`EIDAS-ARF`_]
 
    * - **sub**
      - *(uuid, OPTIONAL)*. Identifies the subject of the mdoc Digital Credential (the User). The identifier MUST be opaque, MUST NOT correspond to any anagraphic data, and MUST NOT be derived from the User's anagraphic data through pseudonymization. Additionally, different Credentials issued to the same User or to different Users MUST NOT use the same `sub` value.
-     -
+     - Domestic extension.
 
    * - **verification**
-     - *(map, OPTIONAL)*. Contains authentication and verification details of the User. The CBOR map MUST contain the following members:
+     - *(map, OPTIONAL)*. Format-encoded data identifier `verification` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. The CBOR map includes the following members:
 
-         * ``trust_framework`` *(tstr)*: trust framework used for User authentication.
-         * ``assurance_level`` *(tstr)*: level of identity assurance guaranteed during User authentication.
-         * ``evidence`` *(array)*: each entry MUST contain:
+         * ``trust_framework`` *(tstr, REQUIRED)*: trust framework used for User authentication.
+         * ``assurance_level`` *(tstr, REQUIRED)*: level of identity assurance guaranteed during User authentication.
+         * ``evidence`` *(array, OPTIONAL)*: each entry contains:
 
-           - ``type`` *(tstr)*: evidence type (e.g., ``vouch``).
-           - ``time`` *(tdate)*: timestamp of authentication or verification.
-           - ``attestation`` *(map)*: MUST contain:
+           - ``type`` *(tstr, OPTIONAL)*: evidence type (e.g., ``vouch``).
+           - ``time`` *(tdate, OPTIONAL)*: timestamp of authentication or verification.
+           - ``attestation`` *(map, OPTIONAL)*: contains:
 
-             - ``type`` *(tstr)*: attestation type (e.g., ``digital_attestation``).
-             - ``reference_number`` *(tstr)*: identifier of the authentication/verification response.
-             - ``date_of_issuance`` *(tdate)*: date of issuance of the attestation.
-             - ``voucher`` *(map)*: MUST contain ``organization`` *(tstr)*.
+             - ``type`` *(tstr, OPTIONAL)*: attestation type (e.g., ``digital_attestation``).
+             - ``reference_number`` *(tstr, OPTIONAL)*: identifier of the authentication/verification response.
+             - ``date_of_issuance`` *(tdate, OPTIONAL)*: date of issuance of the attestation.
+             - ``voucher`` *(map, OPTIONAL)*: contains ``organization`` *(tstr)*.
 
-     -
+     - Domestic extension.
 
 .. note::
   Digital Credential User-specific attributes are defined in the Catalog of Digital Credentials.
@@ -800,9 +806,19 @@ The following **elementIdentifiers** are defined for Digital Credentials encoded
 PID Data Model in mdoc-CBOR Format
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The PID in mdoc-CBOR format (ISO/IEC 18013-5 compliant) SHALL use the **docType** ``eu.europa.ec.eudi.pid.1`` as specified in ARF requirement **PID_04**.
+The PID in mdoc-CBOR format MUST use the **docType** ``eu.europa.ec.eudi.pid.it.1`` in compliance with ARF requirement **PID_06** for domestic PID extensions (extending the base type ``eu.europa.ec.eudi.pid.1`` defined in **PID_04**).
 
-The PID attributes SHALL be encoded as specified in **Section 3 of the ARF PID Rulebook v1.3** [`EIDAS-ARF`_], which defines:
+The PID attributes MUST be encoded as specified in **Section 3 of the ARF PID Rulebook v1.3** [`EIDAS-ARF`_] and organized in the following namespaces:
+
+- **Standard ARF PID attributes**: namespace ``eu.europa.ec.eudi.pid.1``
+- **Italian domestic extensions**: namespace ``eu.europa.ec.eudi.pid.it.1``
+
+.. note::
+   **Transitional Phase:**
+
+   During the transitional phase before full EUDIW operability, national implementations MAY use the **docType** ``{Trust Anchor reverse domain}.pid.1`` with a single national namespace ``{Trust Anchor reverse domain}.pid.1`` for all attributes. Upon reaching full EUDIW operability, all implementations MUST transition to the EUDI-compliant **docType** and namespace structure specified above.
+
+Section 3 of the ARF PID Rulebook v1.3 defines:
 
 - Attribute identifiers and their encoding formats (Section 3.1.1)
 - Specific encoding rules for ``nationality`` (Section 3.1.2), ``birth_date`` (Section 3.1.4), and ``place_of_birth`` (Section 3.1.5)
@@ -811,39 +827,53 @@ The PID attributes SHALL be encoded as specified in **Section 3 of the ARF PID R
 .. note::
    **Key differences from SD-JWT encoding:**
 
-   ARF uses different claim names between SD-JWT and mdoc-CBOR formats:
+   The ARF PID Rulebook v1.3 uses different claim names between SD-JWT and mdoc-CBOR formats:
 
    - mdoc uses ``birth_date`` (not ``birthdate`` as in SD-JWT)
    - mdoc uses ``expiry_date`` (not ``date_of_expiry`` as in SD-JWT)
-   - Both formats use ``place_of_birth`` with the same CBOR map structure
 
-   See ARF Section 3.1.1 (mdoc encoding) and Section 4.1.1 (SD-JWT encoding) for the complete mapping.
+   See Section 3.1.1 (mdoc encoding) and Section 4.1.1 (SD-JWT encoding) of the ARF PID Rulebook v1.3 for the complete mapping.
 
-**Italian PID Requirements:**
+According to `EU_2024/2977`_ and **Section 3 of the ARF PID Rulebook v1.3** [`EIDAS-ARF`_], the PID in mdoc-CBOR format MUST support the following User Attributes in the namespace ``eu.europa.ec.eudi.pid.1``:
 
-For Italian PIDs, the following requirements apply:
-
-- The ``verification`` attribute (defined in :ref:`Attributes <table_element_identifiers_mdoc>`) is REQUIRED (whereas it is OPTIONAL for other credential types).
-- At least one of the following identifiers MUST be present:
-
-  - ``personal_administrative_number`` (ARF Section 2.2, standard attribute, namespace ``eu.europa.ec.eudi.pid.1``)
-  - ``tax_id_code`` (Italian domestic extension, namespace ``eu.europa.ec.eudi.pid.it.1``)
-
-**Domestic Extensions (ARF requirement PID_06):**
-
-The following domestic attribute is defined for Italian PIDs and SHALL be placed in the domestic namespace ``eu.europa.ec.eudi.pid.it.1``:
-
+.. _table_mdoc-cbor_pid_attributes:
 .. list-table::
-   :class: longtable
-   :widths: 20 20 60
-   :header-rows: 1
+    :class: longtable
+    :widths: 20 60 20
+    :header-rows: 1
 
-   * - **elementIdentifier**
-     - **Encoding**
-     - **Description**
-   * - **tax_id_code**
-     - ``tstr``
-     - Italian fiscal code (Codice Fiscale). Format: ETSI EN 319 412-1 (e.g., ``TINIT-RSSMRA80A10H501U``). Maximum length: 150 characters.
+    * - **elementIdentifier**
+      - **Description**
+      - **Reference**
+    * - **given_name**
+      - REQUIRED. *(tstr)*. Current First Name.
+      - Section 3.1.1 of the ARF PID Rulebook v1.3 [`EIDAS-ARF`_] and Commission Implementing Regulation `EU_2024/2977`_
+    * - **family_name**
+      - REQUIRED. *(tstr)*. Current Family Name.
+      - Section 3.1.1 of the ARF PID Rulebook v1.3 [`EIDAS-ARF`_] and Commission Implementing Regulation `EU_2024/2977`_
+    * - **birth_date**
+      - REQUIRED. *(full-date)*. Date of Birth. It MUST be encoded as full-date string according to :rfc:`8949`.
+      - Section 3.1.4 of the ARF PID Rulebook v1.3 [`EIDAS-ARF`_] and Commission Implementing Regulation `EU_2024/2977`_
+    * - **place_of_birth**
+      - REQUIRED. *(map)*. Place of Birth. At least one of ``country``, ``region``, ``locality`` MUST be present.
+      - Section 3.1.5 of the ARF PID Rulebook v1.3 [`EIDAS-ARF`_] and Commission Implementing Regulation `EU_2024/2977`_
+    * - **nationality**
+      - REQUIRED. *(tstr)*. Alpha-2 country code as specified in ISO 3166-1. For multiple nationalities, multiple instances of this attribute MUST be included.
+      - Section 3.1.2 of the ARF PID Rulebook v1.3 [`EIDAS-ARF`_] and Commission Implementing Regulation `EU_2024/2977`_
+    * - **personal_administrative_number**
+      - REQUIRED if ``tax_id_code`` is not present, OPTIONAL otherwise. *(tstr)*. National unique identifier of a natural person generated by ANPR.
+      - Section 2.2 of the ARF PID Rulebook v1.3 [`EIDAS-ARF`_] and Commission Implementing Regulation `EU_2024/2977`_
+    * - **tax_id_code**
+      - REQUIRED if ``personal_administrative_number`` is not present, OPTIONAL otherwise. *(tstr)*.Italian fiscal code (Codice Fiscale). Format: ETSI EN 319 412-1 (e.g., ``TINIT-RSSMRA80A10H501U``). Maximum length: 150 characters.
+      - Domestic extension
+
+In addition to the mandatory metadata attributes defined in :ref:`MobileSecurityObject Table <table_MobileSecurityObject_attributes>` and :ref:`mdoc-CBOR Metadata Attributes Table <table_element_identifiers_mdoc>`, the following metadata attributes are REQUIRED for a PID:
+
+  - **expiry_date**
+  - **sub**
+  - **validityInfo.Signed**
+  - **verification**
+
 
 **Non-normative example:**
 
