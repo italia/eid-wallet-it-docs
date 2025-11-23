@@ -1,52 +1,52 @@
 {
-  "_sd": [
-    "GHYjuGUthjtB4q4Oz_ZSGPmCokLOpv2kpFNzz1LfFUY",
-    "Jkbj8aLr-z2_c-HVxCbiw6YXFNHiyLSv1xGjN8lRogI",
-    "MWJufQz_DFWc9cR4yxq8XqmTZfglkg2D2Sxa3UFN4Qk",
-    "_C7hoKFt0kV190v2GXIwLUIiDbc_7LcyofQmgDfute8",
-    "tI5s2A_Ez6oZv6plZzUPjYAL-SJGiAUFyRbhzLsluGU",
-    "uIapUlDTKsB5wN7BF6xuBNTtl74gl5iCu_aQ5nj3YL8"
-  ],
-  "exp": 1883000000,
-  "iss": "https://pidprovider.example.org",
-  "sub": "NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs",
-  "iat": 1683000000,
-  "issuing_authority": "PID Provider Organization",
-  "issuing_country": "IT",
-  "date_of_expiry": "2033-03-19",
-  "status": {
-    "status_list": {
-      "idx": 1234,
-      "uri": "https://pidprovider.example.org/status"
-    }
-  },
-  "vct": "urn:eudi:pid:it:1",
-  "vct#integrity": "55f5fe57f1e491d49f33672784528532d9d",
-  "verification": {
-    "trust_framework": "it_cie",
-    "assurance_level": "high",
-    "evidence": [
-      {
-        "type": "vouch",
-        "time": "2020-03-19T12:42Z",
-        "attestation": {
-          "type": "digital_attestation",
-          "reference_number": "6485-1619-3976-6671",
-          "date_of_issuance": "2020-03-19T12:43Z",
-          "voucher": {
-            "organization": "Ministero dell'Interno"
-          }
+    "_sd": [
+        "GHYjuGUthjtB4q4Oz_ZSGPmCokLOpv2kpFNzz1LfFUY",
+        "Jkbj8aLr-z2_c-HVxCbiw6YXFNHiyLSv1xGjN8lRogI",
+        "MWJufQz_DFWc9cR4yxq8XqmTZfglkg2D2Sxa3UFN4Qk",
+        "_C7hoKFt0kV190v2GXIwLUIiDbc_7LcyofQmgDfute8",
+        "tI5s2A_Ez6oZv6plZzUPjYAL-SJGiAUFyRbhzLsluGU",
+        "uIapUlDTKsB5wN7BF6xuBNTtl74gl5iCu_aQ5nj3YL8"
+    ],
+    "exp": 1883000000,
+    "iss": "https://pidprovider.example.org",
+    "sub": "NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs",
+    "iat": 1683000000,
+    "issuing_authority": "PID Provider Organization",
+    "issuing_country": "IT",
+    "date_of_expiry": "2033-03-19",
+    "status": {
+        "status_list": {
+            "idx": 1234,
+            "uri": "https://pidprovider.example.org/status"
         }
-      }
-    ]
-  },
-  "_sd_alg": "sha-256",
-  "cnf": {
-    "jwk": {
-      "kty": "EC",
-      "crv": "P-256",
-      "x": "TCAER19Zvu3OHF4j4W4vfSVoHIP1ILilDls7vCeGemc",
-      "y": "ZxjiWWbZMQGHVWKVQ4hbSIirsVfuecCE6t4jT9F2HZQ"
+    },
+    "vct": "urn:eudi:pid:it:1",
+    "vct#integrity": "55f5fe57f1e491d49f33672784528532d9d",
+    "verification": {
+        "trust_framework": "it_cie",
+        "assurance_level": "high",
+        "evidence": [
+            {
+                "type": "vouch",
+                "time": "2020-03-19T12:42Z",
+                "attestation": {
+                    "type": "digital_attestation",
+                    "reference_number": "6485-1619-3976-6671",
+                    "date_of_issuance": "2020-03-19T12:43Z",
+                    "voucher": {
+                        "organization": "Ministero dell'Interno"
+                    }
+                }
+            }
+        ]
+    },
+    "_sd_alg": "sha-256",
+    "cnf": {
+        "jwk": {
+            "kty": "EC",
+            "crv": "P-256",
+            "x": "TCAER19Zvu3OHF4j4W4vfSVoHIP1ILilDls7vCeGemc",
+            "y": "ZxjiWWbZMQGHVWKVQ4hbSIirsVfuecCE6t4jT9F2HZQ"
+        }
     }
-  }
 }
