@@ -944,14 +944,10 @@ For SD-JWT-VC, parameters are marked with `(hdr)` if they are located in the JOS
      - | Type_Metadata.name (hdr)
        | Type_Metadata.description (hdr)
        | Type_Metadata.extends (hdr)
-       | Type_Metadata.schema (hdr)
-       | Type_Metadata.schema_uri (hdr)
        | Type_Metadata.data_source (hdr)
        | Type_Metadata.display (hdr)
        | Type_Metadata.claims (hdr)
      - | -
-       | -
-       | -
        | -
        | -
        | -
@@ -1002,10 +998,8 @@ For SD-JWT-VC, parameters are marked with `(hdr)` if they are located in the JOS
    * - Integrity
      - | vct#integrity (pld)
        | Type_Metadata.extends#integrity (hdr)
-       | Type_Metadata.schema_uri#integrity (hdr)
      - |
        | -
-       |
    * - Digital Credential format
      - typ (hdr)
      - |

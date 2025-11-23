@@ -967,14 +967,10 @@ Per SD-JWT-VC, i parametri sono contrassegnati con `(hdr)` se si trovano nell'he
      - | Type_Metadata.name (hdr)
        | Type_Metadata.description (hdr)
        | Type_Metadata.extends (hdr)
-       | Type_Metadata.schema (hdr)
-       | Type_Metadata.schema_uri (hdr)
        | Type_Metadata.data_source (hdr)
        | Type_Metadata.display (hdr)
        | Type_Metadata.claims (hdr)
      - | -
-       | -
-       | -
        | -
        | -
        | -
@@ -1023,10 +1019,8 @@ Per SD-JWT-VC, i parametri sono contrassegnati con `(hdr)` se si trovano nell'he
    * - Integrità
      - | vct#integrity (pld)
        | Type_Metadata.extends#integrity (hdr)
-       | Type_Metadata.schema_uri#integrity (hdr)
      - |
        | -
-       |
    * - Formato dell'Attestato Elettronico
      - typ (hdr)
      - |
