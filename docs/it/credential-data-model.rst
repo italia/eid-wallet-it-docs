@@ -859,7 +859,7 @@ In base a `EU_2024/2977`_ e alla **Sezione 3 dell'ARF PID Rulebook v1.3** [`EIDA
       - OBBLIGATORIO. *(map)*. Luogo di Nascita. Almeno uno tra ``country``, ``region``, ``locality`` DEVE essere presente.
       - Sezione 3.1.5 dell'ARF PID Rulebook v1.3 [`EIDAS-ARF`_] e Regolamento di esecuzione della Commissione `EU_2024/2977`_
     * - **nationality**
-      - OBBLIGATORIO. *(tstr)*. Codice paese alpha-2 come specificato in ISO 3166-1. Per nazionalità multiple, DEVONO essere incluse istanze multiple di questo attributo.
+      - OBBLIGATORIO. *(array di tstr)*. Uno o più codici paese alpha-2 come specificato in ISO 3166-1. Codificato come tipo CDDL ``nationalities`` (array di codici paese).
       - Sezione 3.1.2 dell'ARF PID Rulebook v1.3 [`EIDAS-ARF`_] e Regolamento di esecuzione della Commissione `EU_2024/2977`_
     * - **personal_administrative_number**
       - OBBLIGATORIO se ``tax_id_code`` non è presente, altrimenti OPZIONALE. *(tstr)*. Identificativo univoco nazionale di una persona fisica generato da ANPR.
@@ -879,6 +879,7 @@ Oltre agli attributi di metadati obbligatori definiti nella :ref:`Tabella Mobile
 
   - **expiry_date**
   - **sub**
+  - **validityInfo.signed**
   - **verification**
 
 **Estensioni Domestiche (requisito ARF PID_06):**

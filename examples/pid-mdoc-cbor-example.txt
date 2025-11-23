@@ -70,6 +70,14 @@
         "eu.europa.ec.eudi.pid.it.1": [
             24(<<
                 {
+                "digestID": 9,
+                "random": h'44DD0606C5F5FDD206H8C84H3F67F5HEEH',
+                "elementIdentifier": "sub",
+                "elementValue": "550e8400-e29b-41d4-a716-446655440000"
+                }
+            >>),
+            24(<<
+                {
                 "digestID": 10,
                 "random": h'22bb8384b3e3ebb084f6a62f1d45d3fccf',
                 "elementIdentifier": "tax_id_code",
@@ -78,7 +86,7 @@
             >>),
             24(<<
                 {
-                "digestID": 11,
+                "digestID": 12,
                 "random": h'33cc9495c4f4fcc195g7b73g2e56e4gddg',
                 "elementIdentifier": "verification",
                 "elementValue": {
@@ -107,9 +115,9 @@
               33: h'30820215308201BCA003020102021404AD30C…'% 33->X5chain:COSE X_509  
           },
           <<                       
-              24(<<    
-                  {                            
-                  "docType": "eu.europa.ec.eudi.pid.1",                                
+              24(<<
+                  {
+                  "docType": "eu.europa.ec.eudi.pid.it.1",                                
                   "version": "1.0",  
                   "validityInfo": {                                
                       "signed": 0("2023-02-22T06:23:56Z"),                                     
@@ -128,8 +136,9 @@
                           8: h'1A0F7EEDB46B37AS4N22R96D83F3F…'
                       },
                       "eu.europa.ec.eudi.pid.it.1": {
+                          9: h'C8FF5E58G89FCE97G45533CE3E4B…',
                           10: h'F9EE4D36F67DBD75E23311AC1C29…',
-                          11: h'A2BC5E47G78ECD86F34422BD2D3A…'
+                          12: h'A2BC5E47G78ECD86F34422BD2D3A…'
                       }
                   },                             
                   "deviceKeyInfo": {                              
