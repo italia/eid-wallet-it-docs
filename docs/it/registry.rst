@@ -70,6 +70,7 @@ Struttura del payload JWT (decodificato):
         "authentic_sources": "https://trust-anchor.eid-wallet.example.it/api/v1/authentic-sources",
         "credential_catalog": "https://trust-anchor.eid-wallet.example.it/api/v1/credential-catalog",
         "taxonomy": "https://trust-anchor.eid-wallet.example.it/api/v1/taxonomy",
+        "schema_registry": "https://trust-anchor.eid-wallet.example.it/api/v1/schemas",
         "federation_list": "https://trust-anchor.eid-wallet.example.it/list",
         "federation_fetch": "https://trust-anchor.eid-wallet.example.it/fetch",
         "federation_resolve": "https://trust-anchor.eid-wallet.example.it/resolve",
@@ -142,6 +143,7 @@ L'Organismo di Supervisione DEVE mantenere il Registro delle Fonti Autentiche pe
   - **Metodi di Integrazione**: Meccanismi di accesso tecnico (PDND per AS pubbliche, API personalizzate per AS private).
   - **Scopi Previsti**: Tipi di credenziali supportati e contesti aziendali per il coordinamento AS-CI.
   - **Garanzia della Qualità dei Dati**: Stato autoritativo, frequenza di aggiornamento e capacità di traccia di audit.
+  - **Caratteristiche di visualizzazione aggiuntive**: Specifiche visive e di formattazione, come un'immagine di riferimento di sfondo, logo, ecc.
 
 Il Registro AS DEVE garantire:
 
@@ -149,6 +151,9 @@ Il Registro AS DEVE garantire:
   - **Integrazione AS-CI**: Facilita i flussi di lavoro di approvazione e il coordinamento dell'accesso ai dati tra le entità.
   - **Garanzia della Qualità**: Mantiene lo stato autoritativo e l'affidabilità dei dati tra diversi domini.
   - **Conformità Normativa**: Supporta i requisiti di trasparenza dell'amministrazione pubblica e il coordinamento del settore privato.
+  
+.. note::
+   XXXX
 
 Utilizzo del Registro AS
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -225,6 +230,20 @@ Parametri del Registro AS
 """"""""""""""""""""""""""
 
 Il Registro AS DEVE contenere i seguenti parametri per ogni Fonte Autentica registrata:
+
+.. list-table:: First-level Fields of the Authentic Source Registry
+   :class: longtable
+   :widths: 30 70
+   :header-rows: 1
+
+* - Field Name
+     - Description
+   * - **version**
+     - REQUIRED. The version of the Authentic Source Registry (e.g., ``1.0``).
+   * - **last_modified**
+     - REQUIRED. The timestamp indicating when the list was last updated (e.g., ``2025-03-15T12:00:00Z``).
+   * - **authentic_sources**
+     - REQUIRED. An array containing the supported schemas definitions.
 
 .. list-table:: Registro AS - Parametri Richiesti
    :class: longtable
@@ -337,6 +356,39 @@ Il Registro AS DEVE contenere i seguenti parametri per ogni Fonte Autentica regi
      - string
      - CONDIZIONALE. Digest crittografico del template per la verifica dell'integrità. OBBLIGATORIO se ``template_uri`` è presente. Formato: ``{digest_method}-{digest_value}`` (ad esempio, ``"sha-256-def456..."``).
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Esempio del Registro AS
 """""""""""""""""""""""
 
@@ -407,12 +459,6 @@ Le principali Entità coinvolte nel Catalogo degli Attestati Elettronici sono:
     :caption: `Diagramma Entità-Relazione del Catalogo degli Attestati Elettronici. <https://www.plantuml.com/plantuml/svg/ZLJ1Rkis4BpxAxP6WQP00X-QtjeWgPEsFXGmuXGz6ZIvbeb8fCfTEbM__YrDELAUb6ST34khuSnmESjxOXKuLYKysiAoAc4PqA1ZcnwL57mH4Pwam1Pfzfrrkem6uPVbxM9vkrtwglPEy7UpsG_mY7lh43RhvzNBqwO7vbWh4tvQQ5zLtjsDVDbxnpVg3SbNUFFpGcDWkxTQCKv06p6wKpG5MdhzEW4M2GDDyUcBAJ1XEsAO07p5PgAx2J1hjbe5Cm69_-c3SWLkLSbJ-etqohwUW7nJPOaNAHVM4LkER5CuPhFtL5tfSmIlOJvCA7KHdGlW6GjB79hql1H4471eQ-3t85v07PKjrQv46A6JXTzJ7IpZh_DpfkO_Yg4r1lBkAlLTkF-MlvE6PVi_EeAtWmTZINivP53EYEg_4OalQIG-uU-soo4IFpXzy4dd9Rr1VarwwVUNSgf0EgbKoZgM7m4Vy9i3t1ULY8dcfY76wefYBT6qv4FpcpUD26ow2gJIITGxopxGkPig7HJK1qK8w2W6wmeWrFB0pScQQ1sLRlgwlP7kz2rHn42Zfmkh_34vU8WiJP1k6y3sBf9DAuP4SF4isq7eP0EMZNXUgv2OKdHo0ThAF9_ogQ_l4GJsK2Wf1R1kxqELsw1sFZBeSUN-O7NoUIhMmH-joRl_vrI1jjJkMMia6dgmZh48Yh4lcgeUCl471xdKQIlfP5gZDpu64KX2vnAqjQJ-foyD-22DTTBOD0sWc54uZ6XTx7Wtq6c0fBqVijrjg8lqTPVd7A6uAoqTiflVHQMD7JfJUm4Ahz0E4_nnXbQEPQ5c6LBBX_4rVJkVXZtuT1gPe8jjVs6-VZ2CzGQiQvSE-tyc6pSxo6fVyezFuZXc8TCDizVnTP7pO4_BzatlmjG3hdmV3XZJw12qaLuvOkKqGfq11dPDNhvzR0dw3bREs82Qo-RzHgN-bKfVsRYNECIg_080>`_
 
 
-.. .. figure:: ../../images/catalog.svg
-..     :figwidth: 100%
-..     :align: center
-..     :target: https://www.plantuml.com/plantuml/svg/ZLHDZnit3BtxLp16WMw1E3wqlHGeaDJR3mD9Qwopw751I_HOM8qq5JdhJdzzAMkyCnixs3aOy53aUq_aezwpO9AszhCtBXZVMeA3ICC_BPS9Z-yg9uTsrp8b4uDGa7Scril6OyWr2nRhtMwv-c6noQ7xJn-NDR9Gqj33AjPD3BccoVYpR-6MzYuGR3Ttwy-_RcTlRFbUh_xwy_xkumHYQHkqwVj1WDFJnLup5jma9yGz_t2R7dofvNKCHSh5uGa1ZyInfiMFIqD9tDuP59fMO55mXpmnsqVpE2qptvydQexLn4p5VA8qBVUHkkbAfsKw-s0msMd9zAyvOAZe0RrC70NneyHcMl8HlQSfm4iNM9oquiuUcisU_NrZKD37ggMtCBzrbTClM2MoUkRGCwpEvtDDkAFAiQGk_rzfHjBarCSWxa4b0JwXyxZp15VWjF2RulQVvsVZpRzJGHjA7CDD7eLYtpEb4uSJzny5XkCXWdLieauVC5Xb_QSbbjSuCfxY3zULrB9y2EOGCy_d_0NbC_FbtoSCM16VM6fqGVJ788ThzncwCoPLuoddjcEX-eRRHZthEARkbsWx9TWE4SYX4saCJcBYSpSn3mkQ0p811MwJ2nKm6VqZtKcQSZsXwSQyezKV-1rpIuclJXVMvJ0h-D2ADa6xRI4VYgDyQHJ80A_Eib-CWJQHxrJp1bD6ojOf0UWZypBbKr-VBGWIeK8D9N1X7rDTse2xs0gOwypZBHleot9iKdnojjp-xrC4-b1_PsE8-LA32q9LGg4nQOv6AC0l59JGm8tQoLnZjh5DIf29pY7eOvdzZ-WjnAID3UWXRmEW22c6LQvNEpuiTLuWRUyBRmyN6YpzTl1piL2xyuuFHSrlojBRZe9jeYOghi9UElZb3gs3QA4HXgEJm_MQiPolcZt5F8q2CDXsN5YU7qhNUWCkzAMN_J-3NHTxuTKnvUzVi-CL2GNkqdi3tc2v2EvKjkz63wQvm2hluGLYNXs6tjBhm8B143GbmSAkA-KFjpt0MC4wM9V8YE-UNrGUFwdyXOpt56nR-_y1
-
-
 La seguente tabella riassume le principali informazioni che DEVONO essere fornite dal Catalogo degli Attestati Elettronici:
 
 .. list-table:: Catalogo degli Attestati Elettronici - Informazioni principali
@@ -428,7 +474,6 @@ La seguente tabella riassume le principali informazioni che DEVONO essere fornit
        - **Identificatore univoco delle credenziali**: Una stringa identificatore univoco di ogni Attestato Elettronico.
        - **Metodi di autenticazione dell'utente**: Meccanismi di autenticazione dell'utente utilizzati per richiedere l'Attestato Elettronico, se richiesto dagli Issuer o dalle Fonti Autentiche.
        - **Livello di Garanzia minimo**: Il Livello di Garanzia minimo richiesto per l'affidabilità dell'Attestato Elettronico. DEVE tenere conto del Livello di Garanzia dell'autenticazione dell'Utente, quando applicabile, e dell'Istanza del Wallet.
-       - **Caratteristiche di visualizzazione aggiuntive**: Specifiche visive e di formattazione, come un'immagine di riferimento di sfondo, logo, ecc.
    * - Credential Issuer
      - Dettagli sull'organizzazione autorizzata a rilasciare l'Attestato Elettronico, come:
 
@@ -506,7 +551,6 @@ Gli Attestati Elettronici riconosciuti all'interno dell'ecosistema IT-Wallet son
        * CERTIFICATION
      - Credenziali che forniscono dichiarazioni ufficiali, conferme di stato o certificazioni rilasciate dalle autorità.
 
-
 Ogni Credenziale DEVE specificare domini e scopi per abilitare sia **Scenari Credential-Specific** che **Scenari Credential-Agnostic** secondo i requisiti delle Relying Party e i pattern di richiesta di presentazione:
 
   1. **Scenari Credential-Specific** (Primari per Settori Governativi/Regolamentati): Le RP richiedono tipi specifici di credenziali per requisiti di conformità e audit, inclusi ad esempio:
@@ -526,7 +570,6 @@ Questo approccio consente:
 
   - **Autorizzazione basata su policy** tramite l'utilizzo della mappatura dominio/scopo.
   - **Registrazione RP flessibile** che supporta sia le esigenze di conformità governativa che i requisiti operativi aziendali.
-
 
 Struttura del Catalogo degli Attestati Elettronici
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -633,19 +676,12 @@ Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazion
     - OBBLIGATORIO. Array di informazioni rilevanti sui Credential Issuer autorizzati, inclusi dati amministrativi e tecnici come nome dell'Organizzazione, riferimento al documento di specifica API e meccanismi di rilascio supportati (ad esempio il supporto del flusso differito).
   * - **authentic_sources**
     - OBBLIGATORIO. Array di identificatori stringa che fanno riferimento alle Fonti Autentiche autorizzate come registrate nel :ref:`registry:Registro delle Fonti Autentiche`. Ogni identificatore corrisponde a un valore ``entity_id`` dal Registro AS, che fornisce metadati organizzativi e tecnici completi incluse capacità di fornitura dati, metodi di integrazione e informazioni di contatto.
-  * - **formats**
-    - OBBLIGATORIO. Array di formati tecnici supportati degli Attestati Elettronici, inclusi:
+  
+  XXX
+  XXX
 
-      * **format**: Tipo di formato (ad esempio, ``dc+sd-jwt``, ``mso_mdoc``)
-      * **configuration_id**: Identificatore di configurazione del :term:formato Credenziale. Questo è formato concatenando il valore ``credential_type`` al ``format`` (ad esempio, ``dc_sd_jwt_mDL`` o ``mso_mdoc_mDL``), ed è utilizzato per fare riferimento univocamente alla configurazione per questo :term:formato Credenziale.
-      * **docType**: CONDIZIONALE. È OBBLIGATORIO solo se il ``format`` è ``mso_mdoc``. Se la :term:Credenziale è:
-
-        * definita da uno standard ISO, DEVE essere una stringa della forma ``iso.org.{iso-number}.{part}.{version}.{credential_type}`` (ad esempio, ``iso.org.18013.5.1.mDL``).
-        * definita a livello europeo, DEVE essere una stringa della forma ``eu.europa.ec.{credential_type}.{version}`` (ad esempio, ``eu.europa.ec.loyaltycard.1.0``).
-        * definita da uno standard nazionale, DEVE essere una stringa della forma ``{dominio inverso Trust Anchor}.{credential_type}.{version}`` (ad esempio, ``it.wallet.trust-registry.pid.1``).
-      * **schema_uri**: URI che punta al documento di specifica del formato.
-      * **schema_uri#integrity**: Digest crittografico del documento di specifica del formato per la verifica dell'integrità. DEVE essere una stringa della forma ``{digest_method}-{digest_value}``, dove ``{digest_method}`` è l'algoritmo di digest utilizzato (ad esempio, ``sha-256``) e ``{digest_value}`` è il valore del digest codificato in base64url.
-
+.. note::
+XXX
 
 L'Oggetto ``wallet_app_attestation`` contiene almeno le seguenti informazioni:
 
@@ -666,6 +702,7 @@ L'Oggetto ``wallet_app_attestation`` contiene almeno le seguenti informazioni:
 
       * **format**: Tipo di formato (ad esempio, ``dc+sd-jwt``, ``mso_mdoc`` o ``oauth-client-attestation+jwt``)
       * **configuration_id**: Identificatore di configurazione della Wallet App Attestation. Questo è formato concatenando la stringa ``wa`` al ``format`` (ad esempio, ``dc_sd_jwt_wa``, ``mso_mdoc_wa``, o ``jwt_wa``), ed è utilizzato per fare riferimento univocamente alla configurazione del formato della Wallet App Attestation.
+      * **vct**: CONDITIONAL. XXX
       * **docType**: CONDIZIONALE. È presente solo se il ``format`` è ``mso_mdoc``. È una stringa della forma ``{dominio inverso Trust Anchor}.{credential_type}`` (ad esempio, ``it.wallet.trust-registry.wallet_app_attestation``).
       * **schema_uri**: URI che punta al documento di specifica del formato.
       * **schema_uri#integrity**: Digest crittografico del documento di specifica del formato per la verifica dell'integrità. DEVE essere una stringa della forma ``{digest_method}-{digest_value}``, dove ``{digest_method}`` è l'algoritmo di digest utilizzato (ad esempio, ``sha-256``) e ``{digest_value}`` è il valore del digest codificato in base64url.
@@ -708,17 +745,13 @@ L'esempio corrispondente del Catalogo degli Attestati Elettronici come decodific
 Il Catalogo come Fonte Canonica per le Informazioni di Visualizzazione
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-  Per ridurre la duplicazione garantendo coerenza di presentazione nell'ecosistema, il Catalogo degli Attestati Elettronici è la fonte canonica delle informazioni di visualizzazione rivolte all'Utente finale relative agli Attestati Elettronici (ad es. nome/descrizione dell'Attestato Elettronico, etichette degli attributi, template visivi, colori, URI del logo).
-
-  - Per gli Attestati inclusi nel Catalogo degli Attestati Elettronici, le Soluzioni Wallet e le Relying Party DEVONO utilizzare i campi relativi alla visualizzazione recuperati tramite il ``vct`` contenuto nel Catalogo per la rappresentazione degli Attestati Elettronici e dei relativi Attributi.
-
-  - Per gli Attestati che non sono inclusi nel Catalogo degli Attestati Elettronici (ad esempio, Attestati non considerati di interesse pubblico), le Soluzioni Wallet POSSONO utilizzare le informazioni di visualizzazione provenienti dai metadati del Fornitore di Attestati Elettronici e/o dal Type Metadata dell’Attestato Elettronico. Quando entrambe le fonti sono disponibili, si applica la seguente regola di precedenza:
-
-    1. Utilizzare il Type Metadata dell'Attestato Elettronico, se disponibile.
-    2. In caso contrario, utilizzare i Metadata del Fornitore di Attestati Elettronici.
-
-- Le implementazioni DOVREBBERO memorizzare nella cache i dati di visualizzazione del Type Metadata e applicare la selezione della lingua utilizzando il parametri ``locale``.
-
+XXXX
+XXXX
+XXXX
+XXXX
+XXXX
+XXXX
+XXXX
 
 Tassonomia
 ----------
@@ -760,6 +793,69 @@ Un esempio non normativo della struttura della Tassonomia è fornito di seguito:
 .. literalinclude:: ../../examples/taxonomy-example.json
   :language: JSON
 
+
+Schema Registry
+-----------------
+
+The **Schema Registry** is the authoritative inventory of all known and accepted **Credential Schemas** (JSON Schema for SD-JWT, CBOR Schema for mDOC) within the IT-Wallet ecosystem. It is managed by the Trust Anchor and provides a single, verifiable source for retrieving the technical specifications required for parsing, validating, and displaying Digital Credentials.
+
+**Schema Registry Objectives:**
+
+1. **Schema Centralization**: Provide a centralized access point for all technical schemata used by Digital Credentials.
+2. **Integrity and Authenticity**: Ensure the integrity and authenticity of the schema documents through cryptographic digests.
+3. **Interoperability**: Facilitate the seamless integration of Wallet Providers and Relying Parties by providing consistent schema versions.
+4. **Credential Lifecycle Support**: Act as a verifiable reference point for schema validation during issuance and presentation.
+
+**Schema Registry Structure and Access:**
+
+The Schema Registry is accessible via the ``.well-known/it-wallet-registry`` discovery endpoint under the `schema_registry` field. It allows for the discovery of schema URIs and their cryptographic integrity checks.
+
+.. list-table:: First-level Fields of the Schema Registry
+   :class: longtable
+   :widths: 30 70
+   :header-rows: 1
+
+* - Field Name
+     - Description
+   * - **version**
+     - REQUIRED. The version of the Schema Registry (e.g., ``1.0``).
+   * - **last_modified**
+     - REQUIRED. The timestamp indicating when the list was last updated (e.g., ``2025-03-15T12:00:00Z``).
+   * - **schemas**
+     - REQUIRED. An array containing the supported schemas definitions.
+
+.. list-table:: Schema Definition Parameters
+   :widths: 25 75
+   :header-rows: 1
+
+   * - Field Name
+     - Description
+   * - **id**
+     - REQUIRED. The unique identifier of the scheme (e.g., ``mDL+mso_mdoc+org.iso.18013.5.1.mDL``).
+   * - **version**
+     - REQUIRED. The version of the schema definition (e.g., ``1.0``).
+   * - **credential_type**
+     - REQUIRED. The unique identifier of the Digital Credential type (e.g., ``mDL``, ``pid``).
+   * - **format**
+     - REQUIRED. The technical format of the schema (e.g., ``mso_mdoc``, ``dc+sd-jwt``).
+   * - **vct**
+     - CONDITIONAL. It is REQUIRED if the ``format`` is ``dc+sd-jwt``, indicating the Verifiable Credential Type (e.g., ``urn:eudi:mDL:it:1``).
+   * - **docType**
+     - CONDITIONAL. It is REQUIRED if the ``format`` is ``mso_mdoc``, indicating the document type used (e.g., ``org.iso.18013.5.1.mDL``).
+   * - **schema_uri**
+     - REQUIRED. The URI where the schema document can be retrieved (e.g., ``https://trust-registry.it-wallet.example.it/.well-known/schemas/mdoc/mDL``).
+   * - **schema_uri#integrity**
+     - REQUIRED. Cryptographic digest of the schema document for integrity verification. Format: ``{digest_method}-{digest_value}`` (e.g., ``sha256-c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16``).
+   * - **description**
+     - OPTIONAL. A human-readable description of the schema, which may be localized (e.g., "Schema tecnico per la mobile Driving License in formato mdoc.").
+
+**Schema Registry Example:**
+
+A non-normative example of the Schema Registry payload:
+
+.. literalinclude:: ../../examples/schema-registry-example-payload.json
+  :language: JSON
+
 Integrazione del Registro e Riferimenti Incrociati
 ---------------------------------------------------
 
@@ -769,3 +865,60 @@ I componenti del registro sono interconnessi e lavorano insieme per supportare l
 2. **Registro AS** ↔ **Catalogo**: I tipi di credenziali fanno riferimento alle capacità AS per la validazione della fonte dati.
 3. **Catalogo** ↔ **Tassonomia**: Le voci delle credenziali specificano domini e scopi dalla tassonomia per discovery e autorizzazione.
 4. **Registro della Federazione** ↔ **Tutti i Componenti**: Fornisce validazione del trust crittografico per tutte le operazioni del registro e autenticazione delle entità.
+5. **Schema Registry** ↔ **Issuer/RPs**: XXXX
+
+
+Registry Infrastructure Usage Journeys
+------------------------------------------
+
+
+The components of the Registry Infrastructure are designed to support various operational phases of the IT-Wallet ecosystem, each involving specific interactions between entities. 
+The main Journeys below illustrate the interactions with the Registry Infrastructure.
+
+Catalog Browsing
+^^^^^^^^^^^^^^^^^^^^^^^
+
+This *Catalog Browsing* journey supports Users (both human users via a **Wallet Instance** and automated systems like **Relying Parties** or web portals) in discovering and selecting available Digital Credentials.
+
+1.  **Accessing the Discovery Endpoint**: The entity (e.g., a Wallet Provider or informational portal) accesses the `Registry Discovery Endpoint` (``.well-known/it-wallet-registry``) to obtain the URI of the **Digital Credentials Catalog**.
+2.  **Navigation and Selection**:
+    * **Credential Discovery**: The entity browses the list of Credentials (``credentials`` field) to identify relevant Credential types (e.g., ``pid``, ``driving_license``).
+    * **Issuer Metadata**: The entity extracts the **Issuer Identifier** (`entity_id` within the `issuers` field) associated with the desired Credential.
+    * **Detail Consultation**: To obtain complete information oand specific technical requirements, the entity accesses the **Entity Configuration** (Issuer Metadata) using the retrieved identifier.
+3.  **Final Action**: The entity can then can use the metadata to display the catalog information to a User (or use the information in other way).
+
+Credential Issuance
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+This journey defines how a Credential Issuer uses the Registry Infrastructure to prepare and issue a compliant Digital Credential.
+
+1.  **Identifying Requirements**: The CI consults the **Digital Credentials Catalog** for the technical requirements of the Credential type to be issued (e.g., ``max_validity_days``, ``min_loa``).
+2.  **Schema and Claim Resolution**:
+    * The CI consults the **Schema Registry** to retrieve the technical specification of the format and schema (e.g., JSON Schema for SD-JWT) required by the Catalog, ensuring validity and integrity via the hash (`schema_uri#integrity`).
+    * The CI accesses the **Claims Registry** to retrieve the standardized semantic definitions and data formats (data types) of the necessary attributes (claims).
+3.  **Authentic Data Retrieval**:
+    * The CI consults the **Authentic Source (AS) Registry** to identify the authorized **Authentic Source** (AS) for the required dataset. The AS Registry provides the AS's ``entity_id`` and the technical details of the interface (`integration_endpoint`, `integration_method`).
+    * The CI consults the AS endpoint specification to implement the integration needed to retrieve the User data required to populate the Digital Credential.
+4.  **Credential Issuance**: The CI uses the retrieved data, validated schemas, and specified formats to generate and sign the Digital Credential in the correct format (e.g., SD-JWT or mDOC).
+
+Credential Presentation and Verification
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This journey describes how a **Wallet Instance** and a **Relying Party (RP)** interact with the Registry Infrastructure when a Digital Credential needs to be presented by a User.
+
+1.  **Wallet Authorization and Selection**:
+    * The Wallet receives a Presentation Request from the RP, verifies the validity of the request comparing the requested *claims* with the *Authorization Policies* related to the RP (via the **Taxonomy** definitions).
+    * The Wallet consults the **Digital Credentials Catalog** to verify the *Domains* and *Purposes* associated with the Credential types it holds, evaluating which Credentials are suitable for the request.
+    * The Wallet verifies if the required attributes (claims) are available and authorized for disclosure based on the request policy (**Credential-Specific** or **Credential-Agnostic** scenarios).
+    * The User authorizes the release of the selected, selectively disclosed attributes. The Wallet then packages and presents the Digital Credential to the RP.
+
+2.  **Discovery and Integrity**:
+    * The RP receives the Digital Credential from the User.
+    * The RP consults the **Federation Registry** via the Trust Anchor's endpoint (`federation_resolve`, `federation_trust_mark_status`) to verify the **cryptographic trust** (Trust Mark) of the Issuer and Wallet Provider.
+    * The RP consults the **Schema Registry** to download the schema of the presented Credential (`schema_uri`), verifying its integrity (`schema_uri#integrity`).
+
+3.  **Schema and Final Policy Validation**:
+    * The RP uses the retrieved schema to validate the structure of the Credential and the data types of the revealed attributes.
+    * The RP performs the final check to ensure that the attributes presented comply with the specific requirements of the initial request and authorization policy.
+
+4.  **Acceptance or Rejection**: Based on cryptographic validation, schema compliance, and policy-based authorization, the RP accepts or rejects the Credential for service access.
