@@ -763,7 +763,7 @@ The overall logic for presenting a Credential is:
 Taxonomy
 --------
 
-The **Taxonomy** provides the semantic foundation for Digital Credential interoperability by maintaining the authoritative vocabulary for organizing credentials within the IT-Wallet ecosystem. The taxonomy is credential format neutral and has the aim of facilitating Digital Credentials integrations in the IT-Wallet Technical Solutions. 
+The **Taxonomy** provides the semantic foundation for Digital Credential interoperability by maintaining the authoritative vocabulary for organizing Credentials within the IT-Wallet ecosystem. The taxonomy is neutral with respect to the Credential format. 
 
 The taxonomy provides, in a single resource, the hierarchical classification system organizing domains and purposes that can be applied to credential types, supporting authorization policy evaluation and ecosystem-wide standardization.
 
