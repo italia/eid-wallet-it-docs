@@ -109,7 +109,7 @@
                         "uri": "https://eaa-provider.example.org/public/compact-logo-IT.svg",
                         "uri#integrity": "2Rltygo7bKBE4E498tb/lLn9DIkimBhrzrsUERyUQjo="
                     }
-                    
+
                 },
                 {
                     "name": "EAA Provider",
@@ -143,12 +143,12 @@
                     },
                     "vct": "urn:eudi:EuropeanDisabilityCard:it:1",
                     "schema_id": "EuropeanDisabilityCard+dc+sd-jwt+urn:eudi:EuropeanDisabilityCard:it:1",
-                    "authentic_sources" [
+                    "authentic_sources": [
                         {
                             "entity_id": "https://authentic-source.example.com",
-                            "dataset_id": "12345"                            
+                            "dataset_id": "12345"
                         }
-                        
+
                     ],
                     "credential_metadata": {
                         "display": [
@@ -163,10 +163,10 @@
                                 },
                                 "background_color": "#12107c",
                                 "background_image": {
-                                    
+
                                     "uri": "https://trust-registry.it-wallet.example.it/images/EuropeanDisabilityCard/image-IT.svg",
                                     "uri#integrity": "3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg=="
-                                    
+
                                 },
                                 "text_color": "#FFFFFF"
                             },
@@ -248,7 +248,7 @@
                                         "name": "Data di Nascita (YYYY-MM-GG)",
                                         "locale": "it-IT",
                                         "description": "Data di nascita del titolare della carta"
-                                        
+
                                     },
                                     {
                                         "name": "Date of Birth (YYYY-MM-GG)",
@@ -287,7 +287,7 @@
                                     {
                                         "name": "Expiration Date (YYYY-MM-GG)",
                                         "locale": "en-US",
-                                        "description": "Card expiration date"                                        
+                                        "description": "Card expiration date"
                                     }
                                 ]
                             },
@@ -299,12 +299,12 @@
                                     {
                                         "name": "Diritto accompagnatore",
                                         "locale": "it-IT",
-                                        "description": "Questo campo indica se il titolare della carta ha diritto all'indennità di accompagnamento"                                         
+                                        "description": "Questo campo indica se il titolare della carta ha diritto all'indennità di accompagnamento"
                                     },
                                     {
                                         "name": "Constant attendance allowance",
                                         "locale": "en-US",
-                                        "description": "This field indicates whether the cardholder is entitled to the accompanying allowance"   
+                                        "description": "This field indicates whether the cardholder is entitled to the accompanying allowance"
                                     }
                                 ]
                             },
@@ -317,12 +317,12 @@
                                         "name": "Foto",
                                         "locale": "it-IT",
                                         "description": "Fotografia del titolare della carta"
-                                        
+
                                     },
                                     {
                                         "name": "Portrait",
                                         "locale": "en-US",
-                                        "description": "Photo of the cardholder"                                        
+                                        "description": "Photo of the cardholder"
                                     }
                                 ]
                             },
@@ -334,12 +334,12 @@
                                     {
                                         "name": "Link QR Code",
                                         "locale": "it-IT",
-                                        "description": "Questo campo contiene il QR-Code"                                        
+                                        "description": "Questo campo contiene il QR-Code"
                                     },
                                     {
                                         "name": "Link QR Code",
                                         "locale": "en-US",
-                                        "description": "This field contains the QR-Code"      
+                                        "description": "This field contains the QR-Code"
                                     }
                                 ]
                             }
@@ -368,13 +368,13 @@
                     },
                     "vct": "urn:eudi:mDL:it:1",
                     "schema_id": "mDL+dc+sd-jwt+urn:eudi:mDL:it:1",
-                    "authentic_sources" [
+                    "authentic_sources": [
                         {
                             "entity_id": "https://authentic-source.example.com",
-                            "dataset_id": "12345"                            
+                            "dataset_id": "12345"
                         }
-                        
-                    ],                   
+
+                    ],
                     "credential_metadata": {
                         "display": [
                             {
@@ -388,10 +388,10 @@
                                 },
                                 "background_color": "#12107c",
                                 "background_image": {
-                                    
+
                                     "uri": "https://trust-registry.it-wallet.example.it/images/mDL/image-IT.svg",
                                     "uri#integrity": "J0HV7GiDjWZrV8Vb6P4f6zeDDXASl3j2xVnoDYqhQK0="
-                                    
+
                                 },
                                 "text_color": "#FFFFFF"
                             },
@@ -406,10 +406,10 @@
                                 },
                                 "background_color": "#12107c",
                                 "background_image": {
-                                    
+
                                     "uri": "https://trust-registry.it-wallet.example.it/images/mDL/image-US.svg",
                                     "uri#integrity": "UyDP7JZDp9dpmxq9wbbuam8ylrQ05LsSRQzZVjdJTbJBZm57twaZvE2SnDKzycl0"
-                                    
+
                                 },
                                 "text_color": "#FFFFFF"
                             }
@@ -430,7 +430,7 @@
                                         "locale": "en-US",
                                         "description": "Name of the driving license holder"
                                     }
-                                ]   
+                                ]
                             },
                             {
                                 "path": ["family_name"],
@@ -500,7 +500,7 @@
                                     }
                                 ]
                             },
-                            {   
+                            {
                                 "path": ["expiry_date"],
                                 "mandatory": "true",
                                 "sd": "always",
@@ -518,7 +518,7 @@
                                 ]
                             },
                             {
-                                "path": ["issuing_country"], 
+                                "path": ["issuing_country"],
                                 "mandatory": "true",
                                 "sd": "always",
                                 "display": [
@@ -526,7 +526,7 @@
                                         "name": "Paese di rilascio",
                                         "locale": "it-IT",
                                         "description": "Paese di rilascio della patente"
-                                        
+
                                     },
                                     {
                                         "name": "Issuing Country",
@@ -638,19 +638,19 @@
                                 ]
                             }
                         ]
-                    }  
+                    }
                 },
                 "mso_mdoc_mDL": {
                     "format": "mso_mdoc",
                     "scope": "mDL",
                     "doctype": "org.iso.18013.5.1.mDL",
                     "schema_id": "mDL+mso_mdoc+org.iso.18013.5.1.mDL",
-                    "authentic_sources" [
+                    "authentic_sources": [
                         {
                             "entity_id": "https://authentic-source.example.com",
-                            "dataset_id": "12345"                            
+                            "dataset_id": "12345"
                         }
-                        
+
                     ],
                     "cryptographic_binding_methods_supported": [
                         "cose_key"
@@ -673,10 +673,10 @@
                                 },
                                 "background_color": "#12107c",
                                 "background_image": {
-                                    
+
                                     "uri": "https://trust-registry.it-wallet.example.it/images/mDL/image-IT.svg",
                                     "uri#integrity": "J0HV7GiDjWZrV8Vb6P4f6zeDDXASl3j2xVnoDYqhQK0="
-                                    
+
                                 },
                                 "text_color": "#FFFFFF"
                             },
@@ -691,10 +691,10 @@
                                 },
                                 "background_color": "#12107c",
                                 "background_image": {
-                                    
+
                                     "uri": "https://trust-registry.it-wallet.example.it/images/mDL/image-US.svg",
                                     "uri#integrity": "UyDP7JZDp9dpmxq9wbbuam8ylrQ05LsSRQzZVjdJTbJBZm57twaZvE2SnDKzycl0"
-                                    
+
                                 },
                                 "text_color": "#FFFFFF"
                             }
@@ -785,7 +785,7 @@
                                     }
                                 ]
                             },
-                            {    
+                            {
                                 "path": ["org.iso.18013.5.1", "expiry_date"],
                                 "mandatory": "true",
                                 "sd": "always",
@@ -803,7 +803,7 @@
                                 ]
                             },
                             {
-                                "path": ["org.iso.18013.5.1", "issuing_country"], 
+                                "path": ["org.iso.18013.5.1", "issuing_country"],
                                 "mandatory": "true",
                                 "sd": "always",
                                 "display": [
@@ -929,7 +929,7 @@
             ]
         },
         "openid_credential_verifier": {
-            ## see relying party metadata section and endpoints
+            // see relying party metadata section and endpoints
         },
         "jwks": {
             "keys": [
