@@ -244,7 +244,7 @@ Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciasc
    * - **last_modified**
      - RICHIESTO. Il timestamp che indica quando l'elenco è stato aggiornato l'ultima volta (es., ``2025-03-15T12:00:00Z``).
    * - **authentic_sources**
-     - RICHIESTO. Un array contenente le definizioni degli schemi supportati.
+     - RICHIESTO. Un Array JSON dove ogni elemento è un Oggetto JSON che rappresenta un'entità Fonte Autentica. Ogni oggetto contiene i parametri definiti nella tabella "Parametri delle Fonti Autentiche" sottostante, inclusi identificazione dell'entità, informazioni organizzative, capacità dei dati e metodi di integrazione.
 
 .. list-table:: Parametri delle Fonti Autentiche
    :class: longtable
@@ -823,7 +823,7 @@ Il Registro degli Schema è accessibile tramite l'endpoint di scoperta ``.well-k
    * - **last_modified**
      - RICHIESTO. Il timestamp che indica quando l'elenco è stato aggiornato l'ultima volta (es., ``2025-03-15T12:00:00Z``).
    * - **schemas**
-     - RICHIESTO. Un array contenente le definizioni degli schemi supportati.
+     - RICHIESTO. Un Array JSON dove ogni elemento è un Oggetto JSON che rappresenta una definizione di Schema di Credenziale. Ogni oggetto contiene i parametri definiti nella tabella "Parametri della Definizione dello Schema" sottostante, inclusi identificazione dello schema, specifiche del formato, URI e dati di verifica dell'integrità.
 
 .. list-table:: Parametri della Definizione dello Schema
    :widths: 25 75

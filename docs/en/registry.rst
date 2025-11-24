@@ -244,7 +244,7 @@ The Authentic Source Registry MUST contain the following parameters for each reg
    * - **last_modified**
      - REQUIRED. The timestamp indicating when the list was last updated (e.g., ``2025-03-15T12:00:00Z``).
    * - **authentic_sources**
-     - REQUIRED. An array containing the supported schemas definitions.
+     - REQUIRED. A JSON Array where each entry is a JSON Object representing an Authentic Source entity. Each object contains the parameters defined in the "Authentic Sources Parameters" table below, including entity identification, organizational information, data capabilities, and integration methods.
 
 .. list-table:: Authentic Sources Parameters
    :class: longtable
@@ -823,7 +823,7 @@ The Schema Registry is accessible via the ``.well-known/it-wallet-registry`` dis
    * - **last_modified**
      - REQUIRED. The timestamp indicating when the list was last updated (e.g., ``2025-03-15T12:00:00Z``).
    * - **schemas**
-     - REQUIRED. An array containing the supported schemas definitions.
+     - REQUIRED. A JSON Array where each entry is a JSON Object representing a Credential Schema definition. Each object contains the parameters defined in the "Schema Definition Parameters" table below, including schema identification, format specifications, URIs, and integrity verification data.
 
 .. list-table:: Schema Definition Parameters
    :widths: 25 75
