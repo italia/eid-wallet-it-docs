@@ -156,7 +156,7 @@ The AS Registry MUST ensure:
 .. note::
    Authentic Source Registry is a technical and non-public registry that provides guidance for the Credential Issuer for Credential provisioning.
 
-AS Registry Usage
+Authentic Source Registry Usage
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 The AS Registry supports ecosystem coordination throughout the operational lifecycle:
