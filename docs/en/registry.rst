@@ -889,7 +889,7 @@ This *Catalog Browsing* journey supports Users (both human users via a **Wallet 
 
 1.  **Accessing the Discovery Endpoint**: The entity (e.g., a Wallet Provider or informational portal) accesses the `Registry Discovery Endpoint` (``.well-known/it-wallet-registry``) to obtain the URI of the **Digital Credentials Catalog**.
 2.  **Navigation and Selection**:
-    * **Credential Discovery**: The entity browses the list of Credentials (``credentials`` field) to identify relevant credential types (e.g., ``pid``, ``driving_license``).
+    * **Credential Discovery**: The entity browses the list of Credentials (``credentials`` field) to identify relevant Credential types (e.g., ``pid``, ``driving_license``).
     * **Issuer Metadata**: The entity extracts the **Issuer Identifier** (`entity_id` within the `issuers` field) associated with the desired Credential.
     * **Detail Consultation**: To obtain complete information oand specific technical requirements, the entity accesses the **Entity Configuration** (Issuer Metadata) using the retrieved identifier.
 3.  **Final Action**: The entity can then can use the metadata to display the catalog information to a User (or use the information in other way).
