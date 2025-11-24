@@ -897,7 +897,7 @@ This *Catalog Browsing* journey supports Users (both human users via a **Wallet 
 Credential Issuance
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-This journey defines how a **Credential Issuer (CI)** uses the Registry Infrastructure to prepare and issue a compliant Digital Credential.
+This journey defines how a Credential Issuer uses the Registry Infrastructure to prepare and issue a compliant Digital Credential.
 
 1.  **Identifying Requirements**: The CI consults the **Digital Credentials Catalog** for the technical requirements of the credential type to be issued (e.g., `max_validity_days`, `min_loa`).
 2.  **Schema and Claim Resolution**:
