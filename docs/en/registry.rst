@@ -915,7 +915,7 @@ This journey describes how a **Wallet Instance** and a **Relying Party (RP)** in
 
 1.  **Wallet Authorization and Selection**:
     * The Wallet receives a Presentation Request from the RP, verifies the validity of the request comparing the requested *claims* with the *Authorization Policies* related to the RP (via the **Taxonomy** definitions).
-    * The Wallet consults the **Digital Credentials Catalog** to verify the *Domains* and *Purposes* associated with the credential types it holds, evaluating which credentials are suitable for the request.
+    * The Wallet consults the **Digital Credentials Catalog** to verify the *Domains* and *Purposes* associated with the Credential types it holds, evaluating which Credentials are suitable for the request.
     * The Wallet verifies if the required attributes (claims) are available and authorized for disclosure based on the request policy (**Credential-Specific** or **Credential-Agnostic** scenarios).
     * The User authorizes the release of the selected, selectively disclosed attributes. The Wallet then packages and presents the Digital Credential to the RP.
 
