@@ -922,7 +922,7 @@ This journey describes how a **Wallet Instance** and a **Relying Party (RP)** in
 2.  **Discovery and Integrity**:
     * The RP receives the Digital Credential from the User.
     * The RP consults the **Federation Registry** via the Trust Anchor's endpoint (`federation_resolve`, `federation_trust_mark_status`) to verify the **cryptographic trust** (Trust Mark) of the Issuer and Wallet Provider.
-    * The RP consults the **Schema Registry** to download the schema of the presented credential (`schema_uri`), verifying its integrity (`schema_uri#integrity`).
+    * The RP consults the **Schema Registry** to download the schema of the presented Credential (`schema_uri`), verifying its integrity (`schema_uri#integrity`).
 
 3.  **Schema and Final Policy Validation**:
     * The RP uses the retrieved schema to validate the structure of the Credential and the data types of the revealed attributes.
