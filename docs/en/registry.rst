@@ -928,4 +928,4 @@ This journey describes how a **Wallet Instance** and a **Relying Party (RP)** in
     * The RP uses the retrieved schema to validate the structure of the Credential and the data types of the revealed attributes.
     * The RP performs the final check to ensure that the attributes presented comply with the specific requirements of the initial request and authorization policy.
 
-4.  **Acceptance or Rejection**: Based on cryptographic validation, schema compliance, and policy-based authorization, the RP accepts or rejects the credential for service access.
+4.  **Acceptance or Rejection**: Based on cryptographic validation, schema compliance, and policy-based authorization, the RP accepts or rejects the Credential for service access.
