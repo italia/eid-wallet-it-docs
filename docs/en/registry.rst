@@ -872,7 +872,7 @@ The registry components are interconnected and work together to support the comp
 2. **AS Registry** ↔ **Catalog**: Credential types reference AS capabilities for data source validation.
 3. **Catalog** ↔ **Taxonomy**: Credential entries specify domains and purposes from the taxonomy for discovery and authorization.
 4. **Federation Registry** ↔ **All Components**: Provides cryptographic trust validation for all registry operations and entity authentication.
-5. **Schema Registry** ↔ **Issuer/RPs**: Provides the verifiable link to all known credential format specifications used in the ecosystem.
+5. **Schema Registry** ↔ **Issuer/RPs**: Provides the verifiable link to all known Credential format specifications used in the ecosystem.
 
 
 Registry Infrastructure Usage Journeys
