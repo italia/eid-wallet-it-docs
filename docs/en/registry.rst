@@ -756,7 +756,7 @@ The canonical source for display characteristics and claim structure is determin
 
 The overall logic for presenting a Credential is:
 
-1. The Wallet/Relying Party retrieves the lightweight **Digital Credentials Catalog** to discover the available `credential_type` and the `entity_id` of its Issuers.
+1. The Wallet/Relying Party retrieves the lightweight **Digital Credentials Catalog** to discover the available `credential_type` and the `entity_id` of their Credential Issuers.
 2. It retrieves the full **Credential Issuer Metadata** (Entity Configuration) from the discovered `entity_id`.
 3. The Credential Issuer Metadata MUST contain the full display characteristics (logos, colors) and the detailed schema information (via links to the appropriate Type Metadata or directly in the configuration). The Issuer builds this metadata based on the suggestions provided by the Authentic Source (via the AS Registry) and the standard schema specifications (via the Schema Registry).
 
