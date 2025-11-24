@@ -947,7 +947,6 @@ For SD-JWT-VC, parameters are marked with `(hdr)` if they are located in the JOS
    * - Digital Credential type definition
      - vct (pld)
      - | issuerAuth.doctype
-       | issuerAuth.version
    * - Digital Credential metadata
      - | Type_Metadata.name (hdr)
        | Type_Metadata.description (hdr)
@@ -1025,7 +1024,6 @@ For SD-JWT-VC, parameters are marked with `(hdr)` if they are located in the JOS
        |
 
 .. note::
-  - In the mdoc-CBOR format, the version of the Digital Credential is not explicitly defined; it is only available for the IssuerAuth. In contrast, the SD-JWT format includes version information via the `vct` URN.
   - `Disclosures`, `_sd`, and `_sd_alg` enable Selective Disclosure of SD-JWT claims. The `_sd` and `_sd_alg` parameters are part of the SD-JWT payload, while `Disclosures` are sent separately in a Combined Format along with the SD-JWT.
   - The `Type_Metadata.claims` parameter in SD-JWT and the `nameSpaces` structure in mdoc-CBOR are functionally equivalent, as both define the claim names and their structure. SD-JWT `Disclosures` for disclosed attributes directly correspond to `nameSpaces`, including attribute names, values, and salt values.
   - A domestic namespace accommodates attributes such as `verification` and `sub`, which are not defined in the standard ISO elementIdentifiers for mdoc-CBOR Digital Credentials.
