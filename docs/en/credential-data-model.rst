@@ -200,23 +200,7 @@ The JWT payload contains the following claims. Unless otherwise specifed, the fo
 .. note::
   The standard JWT claims ``nbf`` and ``exp`` are used to express the technical validity period of a SD-JWT VC-compliant Digital Credential.
 
-If the ``status`` parameter is set to ``status_list``, it is a *JSON object* containing the following sub-parameters:
-
-.. list-table::
-   :class: longtable
-   :widths: 20 60 20
-   :header-rows: 1
-
-   * - **Parameter**
-     - **Description**
-     - **Reference**
-   * - **idx**
-     - REQUIRED. The idx (index) claim MUST specify an Integer that represents the index to check for status information in the Status List for the current Digital Credential. The value of idx MUST be a non-negative number, containing a value of zero or greater.
-     - TOKEN-STATUS-LIST_
-   * - **uri**
-     - REQUIRED. The ``uri`` (URI) claim MUST specify a String value that identifies the Status List Token containing the status information for the Digital Credential. The value of ``uri`` MUST be a URI conforming to [:rfc:`3986`].
-     - TOKEN-STATUS-LIST_
-
+If the ``status`` parameter is set to ``status_list``, it MUST be a *JSON object* compliant with Section 6.2 of TOKEN-STATUS-LIST_.
 
 If the ``status`` parameter is set to ``status_assertion``, it is a *JSON object* containing the *credential_hash_alg* claim indicating the Algorithm used for hashing the Digital Credential to which the Status Assertion is bound. It is RECOMMENDED to use *sha-256*.
 
@@ -628,11 +612,7 @@ The `MobileSecurityObject` MUST have the following attributes, unless otherwise 
 
       - [ISO 18013-5#9.1.2.4]
     * - **status**
-      - *(map, OPTIONAL)*. REQUIRED only if the Digital Credential is long-lived. Contains the MSO revocation information. If present, it includes a *status_list* based on the TOKEN-STATUS-LIST_ mechanism. This mechanism uses a bit array to mark revoked MSOs by their index position.
-        The `status_list` MUST contain the following sub-values:
-
-          * **idx**. Position index in the status list.
-          * **uri**. URI pointing to the status list resource.
+      - *(map, OPTIONAL)*. REQUIRED only if the Digital Credential is long-lived. Contains the MSO revocation information. If present, it includes a *status_list* based on the TOKEN-STATUS-LIST_ mechanism as defined in Section 6.3 of TOKEN-STATUS-LIST_.
       - [ISO 18013-5#9.1.2.6]
 
 .. note::

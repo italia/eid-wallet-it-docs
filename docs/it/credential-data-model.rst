@@ -200,23 +200,7 @@ Il payload JWT contiene i seguenti claim. Salvo diversamente specificato, i segu
 .. note::
   I claim JWT standard ``nbf`` e ``exp`` sono utilizzati per esprimere il periodo di validità tecnica di un Attestato Elettronico conforme a SD-JWT VC.
 
-Se il parametro ``status`` è valorizzato con ``status_list``, è un Oggetto JSON contenente i seguenti sotto-parametri:
-
-.. list-table::
-   :class: longtable
-   :widths: 20 60 20
-   :header-rows: 1
-
-   * - **Parametro**
-     - **Descrizione**
-     - **Riferimento**
-   * - **idx**
-     - OBBLIGATORIO. Il claim idx (index) DEVE contenere un numero intero che rappresenta l'indice da controllare per recuperare le informazioni relative allo stato nella Status List per l'Attestato Elettronico corrente. Il valore di idx DEVE essere un numero non negativo, contenente un valore uguale o superiore a zero.
-     - TOKEN-STATUS-LIST_
-   * - **uri**
-     - OBBLIGATORIO. Il claim ``uri`` (URI) DEVE contenere una stringa che identifica la Status List Token contenente le informazioni dello stato per l'Attestato Elettronico. Il valore di ``uri`` DEVE essere un URI conforme a [:rfc:`3986`].
-     - TOKEN-STATUS-LIST_
-
+Se il parametro ``status`` è valorizzato con ``status_list``, DEVE essere un Oggetto JSON conforme alla Sezione 6.2 di TOKEN-STATUS-LIST_.
 
 Se il parametro ``status`` è valorizzato con ``status_assertion``, è un Oggetto JSON contenente il claim *credential_hash_alg* che indica l'algoritmo utilizzato per l'hashing dell'Attestato Elettronico a cui è associata la Status Assertion. Si RACCOMANDA di utilizzare *sha-256*.
 
@@ -625,11 +609,7 @@ Il `MobileSecurityObject` DEVE avere i seguenti attributi, se non diversamente s
 
       - [ISO 18013-5#9.1.2.4]
     * - **status**
-      - *(map, CONDIZIONALE)*. OBBLIGATORIO solo se l'Attestato Elettronico ha durata maggiore di 24 ore (long-lived). Contiene le informazioni relative allo stato di revoca del MSO. Se presente, include una *status_list* basata sul meccanismo TOKEN-STATUS-LIST_. Questo meccanismo utilizza un array di bit per contrassegnare gli MSO revocati in base alla loro posizione di indice.
-        La `status_list` DEVE contenere i seguenti sub parametri:
-
-          * **idx**. Indice di posizione nella status list.
-          * **uri**. URI che punta alla status list.
+      - *(map, CONDIZIONALE)*. OBBLIGATORIO solo se l'Attestato Elettronico ha durata maggiore di 24 ore (long-lived). Contiene le informazioni relative allo stato di revoca del MSO. Se presente, include una *status_list* basata sul meccanismo definito nella Sezione6.3 di TOKEN-STATUS-LIST_.
       - [ISO 18013-5#9.1.2.6]
 
 .. note::
