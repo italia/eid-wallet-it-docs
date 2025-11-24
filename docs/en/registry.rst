@@ -885,7 +885,7 @@ The main Journeys below illustrate the interactions with the Registry Infrastruc
 Catalog Browsing
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-This *Catalog Browsing* journey supports users (both human users via a **Wallet Instance** and automated systems like **Relying Parties** or web portals) in discovering and selecting available Digital Credentials.
+This *Catalog Browsing* journey supports Users (both human users via a **Wallet Instance** and automated systems like **Relying Parties** or web portals) in discovering and selecting available Digital Credentials.
 
 1.  **Accessing the Discovery Endpoint**: The entity (e.g., a Wallet Provider or informational portal) accesses the `Registry Discovery Endpoint` (``.well-known/it-wallet-registry``) to obtain the URI of the **Digital Credentials Catalog**.
 2.  **Navigation and Selection**:
