@@ -754,7 +754,7 @@ Decentralization of Display and Claim Information
 
 The canonical source for display characteristics and claim structure is determined by the **Credential Issuer's Metadata (Entity Configuration)**.
 
-The overall logic for presenting a credential is:
+The overall logic for presenting a Credential is:
 
 1. The Wallet/Relying Party retrieves the lightweight **Digital Credentials Catalog** to discover the available `credential_type` and the `entity_id` of its Issuers.
 2. It retrieves the full **Credential Issuer Metadata** (Entity Configuration) from the discovered `entity_id`.
