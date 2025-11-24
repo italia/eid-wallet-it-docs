@@ -11,13 +11,14 @@ The registry architecture addresses semantic standardization, federation trust m
 Registry Architecture Overview
 ------------------------------
 
-The IT-Wallet registry system comprises five main components:
+The IT-Wallet registry system comprises six main components:
 
   1. **Claims Registry**: Standardized semantic definitions for individual credential attributes, data types, and validation rules.
   2. **Authentic Source (AS) Registry**: Catalog of registered data providers with their declared capabilities and available claims.
   3. **Federation Registry**: Authoritative list of trusted entities participating in the federation with their technical configurations.
   4. **Digital Credentials Catalog**: Public discovery mechanism for available credential types with their metadata and issuance information.
-  5. **Taxonomy**: Hierarchical classification system organizing credentials by domain and purpose.
+  5. **Schema Registry**: Authoritative list of Credential Schemas.
+  6. **Taxonomy**: Hierarchical classification system organizing credentials by domain and purpose.
 
 These registry components are interconnected and maintained by the Supervisory Body to ensure consistency, security, and regulatory compliance across the ecosystem.
 

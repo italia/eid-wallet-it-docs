@@ -794,64 +794,64 @@ Un esempio non normativo della struttura della Tassonomia è fornito di seguito:
   :language: JSON
 
 
-Schema Registry
------------------
+Registro degli Schema
+---------------------
 
-The **Schema Registry** is the authoritative inventory of all known and accepted **Credential Schemas** (JSON Schema for SD-JWT, CBOR Schema for mDOC) within the IT-Wallet ecosystem. It is managed by the Trust Anchor and provides a single, verifiable source for retrieving the technical specifications required for parsing, validating, and displaying Digital Credentials.
+Il **Registro degli Schema** è l'inventario autorevole di tutti gli **Schema delle Credenziali** conosciuti e accettati (JSON Schema per SD-JWT, CBOR Schema per mDOC) all'interno dell'ecosistema IT-Wallet. È gestito dal Trust Anchor e fornisce una singola fonte verificabile per recuperare le specifiche tecniche richieste per analizzare, validare e visualizzare le Credenziali Digitali.
 
-**Schema Registry Objectives:**
+**Obiettivi del Registro degli Schema:**
 
-1. **Schema Centralization**: Provide a centralized access point for all technical schemata used by Digital Credentials.
-2. **Integrity and Authenticity**: Ensure the integrity and authenticity of the schema documents through cryptographic digests.
-3. **Interoperability**: Facilitate the seamless integration of Wallet Providers and Relying Parties by providing consistent schema versions.
-4. **Credential Lifecycle Support**: Act as a verifiable reference point for schema validation during issuance and presentation.
+1. **Centralizzazione degli Schema**: Fornire un punto di accesso centralizzato per tutti gli schemi tecnici usati dalle Credenziali Digitali.
+2. **Integrità e Autenticità**: Garantire l'integrità e l'autenticità dei documenti degli schema attraverso digest crittografici.
+3. **Interoperabilità**: Facilitare l'integrazione senza soluzione di continuità di Fornitori di Wallet e Relying Parties fornendo versioni di schema coerenti.
+4. **Supporto al Ciclo di Vita delle Credenziali**: Agire come punto di riferimento verificabile per la validazione dello schema durante l'emissione e la presentazione.
 
-**Schema Registry Structure and Access:**
+**Struttura e Accesso al Registro degli Schema:**
 
-The Schema Registry is accessible via the ``.well-known/it-wallet-registry`` discovery endpoint under the `schema_registry` field. It allows for the discovery of schema URIs and their cryptographic integrity checks.
+Il Registro degli Schema è accessibile tramite l'endpoint di scoperta ``.well-known/it-wallet-registry`` sotto il campo `schema_registry`. Permette la scoperta di URI degli schema e i loro controlli di integrità crittografica.
 
-.. list-table:: First-level Fields of the Schema Registry
+.. list-table:: Campi di Primo Livello del Registro degli Schema
    :class: longtable
    :widths: 30 70
    :header-rows: 1
 
-* - Field Name
-     - Description
+* - Nome del Campo
+     - Descrizione
    * - **version**
-     - REQUIRED. The version of the Schema Registry (e.g., ``1.0``).
+     - RICHIESTO. La versione del Registro degli Schema (es., ``1.0``).
    * - **last_modified**
-     - REQUIRED. The timestamp indicating when the list was last updated (e.g., ``2025-03-15T12:00:00Z``).
+     - RICHIESTO. Il timestamp che indica quando l'elenco è stato aggiornato l'ultima volta (es., ``2025-03-15T12:00:00Z``).
    * - **schemas**
-     - REQUIRED. An array containing the supported schemas definitions.
+     - RICHIESTO. Un array contenente le definizioni degli schemi supportati.
 
-.. list-table:: Schema Definition Parameters
+.. list-table:: Parametri della Definizione dello Schema
    :widths: 25 75
    :header-rows: 1
 
-   * - Field Name
-     - Description
+   * - Nome del Campo
+     - Descrizione
    * - **id**
-     - REQUIRED. The unique identifier of the scheme (e.g., ``mDL+mso_mdoc+org.iso.18013.5.1.mDL``).
+     - RICHIESTO. L'identificatore univoco dello schema (es., ``mDL+mso_mdoc+org.iso.18013.5.1.mDL``).
    * - **version**
-     - REQUIRED. The version of the schema definition (e.g., ``1.0``).
+     - RICHIESTO. La versione della definizione dello schema (es., ``1.0``).
    * - **credential_type**
-     - REQUIRED. The unique identifier of the Digital Credential type (e.g., ``mDL``, ``pid``).
+     - RICHIESTO. L'identificatore univoco del tipo di Credenziale Digitale (es., ``mDL``, ``pid``).
    * - **format**
-     - REQUIRED. The technical format of the schema (e.g., ``mso_mdoc``, ``dc+sd-jwt``).
+     - RICHIESTO. Il formato tecnico dello schema (es., ``mso_mdoc``, ``dc+sd-jwt``).
    * - **vct**
-     - CONDITIONAL. It is REQUIRED if the ``format`` is ``dc+sd-jwt``, indicating the Verifiable Credential Type (e.g., ``urn:eudi:mDL:it:1``).
+     - CONDIZIONALE. È RICHIESTO se il ``format`` è ``dc+sd-jwt``, indicando il Tipo di Credenziale Verificabile (es., ``urn:eudi:mDL:it:1``).
    * - **docType**
-     - CONDITIONAL. It is REQUIRED if the ``format`` is ``mso_mdoc``, indicating the document type used (e.g., ``org.iso.18013.5.1.mDL``).
+     - CONDIZIONALE. È RICHIESTO se il ``format`` è ``mso_mdoc``, indicando il tipo di documento usato (es., ``org.iso.18013.5.1.mDL``).
    * - **schema_uri**
-     - REQUIRED. The URI where the schema document can be retrieved (e.g., ``https://trust-registry.it-wallet.example.it/.well-known/schemas/mdoc/mDL``).
+     - RICHIESTO. L'URI dove può essere recuperato il documento dello schema (es., ``https://trust-registry.it-wallet.example.it/.well-known/schemas/mdoc/mDL``).
    * - **schema_uri#integrity**
-     - REQUIRED. Cryptographic digest of the schema document for integrity verification. Format: ``{digest_method}-{digest_value}`` (e.g., ``sha256-c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16``).
+     - RICHIESTO. Digest crittografico del documento dello schema per la verifica dell'integrità. Formato: ``{digest_method}-{digest_value}`` (es., ``sha256-c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16``).
    * - **description**
-     - OPTIONAL. A human-readable description of the schema, which may be localized (e.g., "Schema tecnico per la mobile Driving License in formato mdoc.").
+     - OPZIONALE. Una descrizione leggibile dall'uomo dello schema, che può essere localizzata (es., "Schema tecnico per la mobile Driving License in formato mdoc.").
 
-**Schema Registry Example:**
+**Esempio del Registro degli Schema:**
 
-A non-normative example of the Schema Registry payload:
+Un esempio non normativo del payload del Registro degli Schema:
 
 .. literalinclude:: ../../examples/schema-registry-example-payload.json
   :language: JSON
@@ -866,59 +866,60 @@ I componenti del registro sono interconnessi e lavorano insieme per supportare l
 3. **Catalogo** ↔ **Tassonomia**: Le voci delle credenziali specificano domini e scopi dalla tassonomia per discovery e autorizzazione.
 4. **Registro della Federazione** ↔ **Tutti i Componenti**: Fornisce validazione del trust crittografico per tutte le operazioni del registro e autenticazione delle entità.
 5. **Schema Registry** ↔ **Issuer/RPs**: XXXX
+5. **Registro degli Schema** ↔ **Emittente/RP**: Fornisce il collegamento verificabile a tutte le specifiche di formato delle Credenziali conosciute usate nell'ecosistema.
 
 
-Registry Infrastructure Usage Journeys
-------------------------------------------
+Percorsi di Utilizzo dell'Infrastruttura di Registro
+-----------------------------------------------------
 
 
-The components of the Registry Infrastructure are designed to support various operational phases of the IT-Wallet ecosystem, each involving specific interactions between entities. 
-The main Journeys below illustrate the interactions with the Registry Infrastructure.
+I componenti dell'Infrastruttura di Registro sono progettati per supportare varie fasi operative dell'ecosistema IT-Wallet, ciascuna coinvolgendo interazioni specifiche tra entità.
+I principali Percorsi di seguito illustrano le interazioni con l'Infrastruttura di Registro.
 
-Catalog Browsing
-^^^^^^^^^^^^^^^^^^^^^^^
+Navigazione del Catalogo
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This *Catalog Browsing* journey supports Users (both human users via a **Wallet Instance** and automated systems like **Relying Parties** or web portals) in discovering and selecting available Digital Credentials.
+Questo percorso *Navigazione del Catalogo* supporta gli Utenti (sia utenti umani tramite un'**Istanza Wallet** che sistemi automatizzati come **Relying Parties** o portali web) nella scoperta e selezione delle Credenziali Digitali disponibili.
 
-1.  **Accessing the Discovery Endpoint**: The entity (e.g., a Wallet Provider or informational portal) accesses the `Registry Discovery Endpoint` (``.well-known/it-wallet-registry``) to obtain the URI of the **Digital Credentials Catalog**.
-2.  **Navigation and Selection**:
-    * **Credential Discovery**: The entity browses the list of Credentials (``credentials`` field) to identify relevant Credential types (e.g., ``pid``, ``driving_license``).
-    * **Issuer Metadata**: The entity extracts the **Issuer Identifier** (`entity_id` within the `issuers` field) associated with the desired Credential.
-    * **Detail Consultation**: To obtain complete information oand specific technical requirements, the entity accesses the **Entity Configuration** (Issuer Metadata) using the retrieved identifier.
-3.  **Final Action**: The entity can then can use the metadata to display the catalog information to a User (or use the information in other way).
+1.  **Accesso all'Endpoint di Scoperta**: L'entità (es., un Fornitore di Wallet o portale informativo) accede all'`Endpoint di Scoperta del Registro` (``.well-known/it-wallet-registry``) per ottenere l'URI del **Catalogo delle Credenziali Digitali**.
+2.  **Navigazione e Selezione**:
+    * **Scoperta delle Credenziali**: L'entità naviga l'elenco delle Credenziali (campo ``credentials``) per identificare tipi di Credenziali rilevanti (es., ``pid``, ``driving_license``).
+    * **Metadati dell'Emittente**: L'entità estrae l'**Identificatore dell'Emittente** (`entity_id` all'interno del campo `issuers`) associato alla Credenziale desiderata.
+    * **Consultazione dei Dettagli**: Per ottenere informazioni complete e requisiti tecnici specifici, l'entità accede all'**Entity Configuration** (Metadati dell'Emittente) usando l'identificatore recuperato.
+3.  **Azione Finale**: L'entità può quindi usare i metadati per visualizzare le informazioni del catalogo a un Utente (o usare le informazioni in altro modo).
 
-Credential Issuance
-^^^^^^^^^^^^^^^^^^^^^^^^
+Emissione di Credenziali
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This journey defines how a Credential Issuer uses the Registry Infrastructure to prepare and issue a compliant Digital Credential.
+Questo percorso definisce come un Emittente di Credenziali usa l'Infrastruttura di Registro per preparare ed emettere una Credenziale Digitale conforme.
 
-1.  **Identifying Requirements**: The CI consults the **Digital Credentials Catalog** for the technical requirements of the Credential type to be issued (e.g., ``max_validity_days``, ``min_loa``).
-2.  **Schema and Claim Resolution**:
-    * The CI consults the **Schema Registry** to retrieve the technical specification of the format and schema (e.g., JSON Schema for SD-JWT) required by the Catalog, ensuring validity and integrity via the hash (`schema_uri#integrity`).
-    * The CI accesses the **Claims Registry** to retrieve the standardized semantic definitions and data formats (data types) of the necessary attributes (claims).
-3.  **Authentic Data Retrieval**:
-    * The CI consults the **Authentic Source (AS) Registry** to identify the authorized **Authentic Source** (AS) for the required dataset. The AS Registry provides the AS's ``entity_id`` and the technical details of the interface (`integration_endpoint`, `integration_method`).
-    * The CI consults the AS endpoint specification to implement the integration needed to retrieve the User data required to populate the Digital Credential.
-4.  **Credential Issuance**: The CI uses the retrieved data, validated schemas, and specified formats to generate and sign the Digital Credential in the correct format (e.g., SD-JWT or mDOC).
+1.  **Identificazione dei Requisiti**: Il CI consulta il **Catalogo delle Credenziali Digitali** per i requisiti tecnici del tipo di Credenziale da emettere (es., ``max_validity_days``, ``min_loa``).
+2.  **Risoluzione dello Schema e dei Claims**:
+    * Il CI consulta il **Registro degli Schema** per recuperare la specifica tecnica del formato e dello schema (es., JSON Schema per SD-JWT) richiesto dal Catalogo, garantendo validità e integrità tramite l'hash (`schema_uri#integrity`).
+    * Il CI accede al **Registro dei Claims** per recuperare le definizioni semantiche standardizzate e i formati dati (tipi di dati) degli attributi necessari (claims).
+3.  **Recupero dei Dati Autentici**:
+    * Il CI consulta il **Registro delle Fonti Autentiche (AS)** per identificare la **Fonte Autentica** (AS) autorizzata per il dataset richiesto. Il Registro AS fornisce l'``entity_id`` dell'AS e i dettagli tecnici dell'interfaccia (`integration_endpoint`, `integration_method`).
+    * Il CI consulta la specifica dell'endpoint AS per implementare l'integrazione necessaria per recuperare i dati dell'Utente richiesti per popolare la Credenziale Digitale.
+4.  **Emissione della Credenziale**: Il CI usa i dati recuperati, gli schemi validati e i formati specificati per generare e firmare la Credenziale Digitale nel formato corretto (es., SD-JWT o mDOC).
 
-Credential Presentation and Verification
+Presentazione e Verifica delle Credenziali
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This journey describes how a **Wallet Instance** and a **Relying Party (RP)** interact with the Registry Infrastructure when a Digital Credential needs to be presented by a User.
+Questo percorso descrive come un'**Istanza Wallet** e una **Relying Party (RP)** interagiscono con l'Infrastruttura di Registro quando una Credenziale Digitale deve essere presentata da un Utente.
 
-1.  **Wallet Authorization and Selection**:
-    * The Wallet receives a Presentation Request from the RP, verifies the validity of the request comparing the requested *claims* with the *Authorization Policies* related to the RP (via the **Taxonomy** definitions).
-    * The Wallet consults the **Digital Credentials Catalog** to verify the *Domains* and *Purposes* associated with the Credential types it holds, evaluating which Credentials are suitable for the request.
-    * The Wallet verifies if the required attributes (claims) are available and authorized for disclosure based on the request policy (**Credential-Specific** or **Credential-Agnostic** scenarios).
-    * The User authorizes the release of the selected, selectively disclosed attributes. The Wallet then packages and presents the Digital Credential to the RP.
+1.  **Autorizzazione e Selezione del Wallet**:
+    * Il Wallet riceve una Richiesta di Presentazione dall'RP, verifica la validità della richiesta confrontando i *claims* richiesti con le *Policy di Autorizzazione* relative all'RP (tramite le definizioni della **Tassonomia**).
+    * Il Wallet consulta il **Catalogo delle Credenziali Digitali** per verificare i *Domini* e *Scopi* associati ai tipi di Credenziali che detiene, valutando quali Credenziali sono adatte per la richiesta.
+    * Il Wallet verifica se gli attributi richiesti (claims) sono disponibili e autorizzati per la divulgazione in base alla policy della richiesta (scenari **Credential-Specific** o **Credential-Agnostic**).
+    * L'Utente autorizza il rilascio degli attributi selezionati, divulgati selettivamente. Il Wallet quindi confeziona e presenta la Credenziale Digitale all'RP.
 
-2.  **Discovery and Integrity**:
-    * The RP receives the Digital Credential from the User.
-    * The RP consults the **Federation Registry** via the Trust Anchor's endpoint (`federation_resolve`, `federation_trust_mark_status`) to verify the **cryptographic trust** (Trust Mark) of the Issuer and Wallet Provider.
-    * The RP consults the **Schema Registry** to download the schema of the presented Credential (`schema_uri`), verifying its integrity (`schema_uri#integrity`).
+2.  **Scoperta e Integrità**:
+    * L'RP riceve la Credenziale Digitale dall'Utente.
+    * L'RP consulta il **Registro di Federazione** tramite l'endpoint del Trust Anchor (`federation_resolve`, `federation_trust_mark_status`) per verificare la **fiducia crittografica** (Trust Mark) dell'Emittente e del Fornitore di Wallet.
+    * L'RP consulta il **Registro degli Schema** per scaricare lo schema della Credenziale presentata (`schema_uri`), verificandone l'integrità (`schema_uri#integrity`).
 
-3.  **Schema and Final Policy Validation**:
-    * The RP uses the retrieved schema to validate the structure of the Credential and the data types of the revealed attributes.
-    * The RP performs the final check to ensure that the attributes presented comply with the specific requirements of the initial request and authorization policy.
+3.  **Validazione dello Schema e della Policy Finale**:
+    * L'RP usa lo schema recuperato per validare la struttura della Credenziale e i tipi di dati degli attributi rivelati.
+    * L'RP esegue il controllo finale per garantire che gli attributi presentati siano conformi ai requisiti specifici della richiesta iniziale e della policy di autorizzazione.
 
-4.  **Acceptance or Rejection**: Based on cryptographic validation, schema compliance, and policy-based authorization, the RP accepts or rejects the Credential for service access.
+4.  **Accettazione o Rifiuto**: In base alla validazione crittografica, alla conformità dello schema e all'autorizzazione basata su policy, l'RP accetta o rifiuta la Credenziale per l'accesso al servizio.
