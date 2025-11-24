@@ -154,7 +154,7 @@ The AS Registry MUST ensure:
   - **Regulatory Compliance**: Supports public administration transparency and private sector coordination requirements.
 
 .. note::
-   AS Registry is a technical and non-public registry that provides guidance for the Credential Issuer for credential provisioning.
+   Authentic Source Registry is a technical and non-public registry that provides guidance for the Credential Issuer for Credential provisioning.
 
 AS Registry Usage
 ^^^^^^^^^^^^^^^^^^^^^^^^
