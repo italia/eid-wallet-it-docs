@@ -883,6 +883,7 @@ This *Catalog Browsing* journey supports Users (both human users via a **Wallet 
 
 1.  **Accessing the Discovery Endpoint**: The entity (e.g., a Wallet Provider or informational portal) accesses the `Registry Discovery Endpoint` (``.well-known/it-wallet-registry``) to obtain the URI of the **Digital Credentials Catalog**.
 2.  **Navigation and Selection**:
+
     * **Credential Discovery**: The entity browses the list of Credentials (``credentials`` field) to identify relevant Credential types (e.g., ``pid``, ``driving_license``).
     * **Issuer Metadata**: The entity extracts the **Issuer Identifier** (`entity_id` within the `issuers` field) associated with the desired Credential.
     * **Detail Consultation**: To obtain complete information oand specific technical requirements, the entity accesses the **Entity Configuration** (Issuer Metadata) using the retrieved identifier.
@@ -894,12 +895,17 @@ Credential Issuance
 This journey defines how a Credential Issuer uses the Registry Infrastructure to prepare and issue a compliant Digital Credential.
 
 1.  **Identifying Requirements**: The CI consults the **Digital Credentials Catalog** for the technical requirements of the Credential type to be issued (e.g., ``max_validity_days``, ``min_loa``).
+
 2.  **Schema and Claim Resolution**:
+
     * The CI consults the **Schema Registry** to retrieve the technical specification of the format and schema (e.g., JSON Schema for SD-JWT) required by the Catalog, ensuring validity and integrity via the hash (`schema_uri#integrity`).
     * The CI accesses the **Claims Registry** to retrieve the standardized semantic definitions and data formats (data types) of the necessary attributes (claims).
+
 3.  **Authentic Data Retrieval**:
+
     * The CI consults the **Authentic Source (AS) Registry** to identify the authorized **Authentic Source** (AS) for the required dataset. The AS Registry provides the AS's ``entity_id`` and the technical details of the interface (`integration_endpoint`, `integration_method`).
     * The CI consults the AS endpoint specification to implement the integration needed to retrieve the User data required to populate the Digital Credential.
+
 4.  **Credential Issuance**: The CI uses the retrieved data, validated schemas, and specified formats to generate and sign the Digital Credential in the correct format (e.g., SD-JWT or mDOC).
 
 Credential Presentation and Verification
@@ -908,17 +914,20 @@ Credential Presentation and Verification
 This journey describes how a **Wallet Instance** and a **Relying Party (RP)** interact with the Registry Infrastructure when a Digital Credential needs to be presented by a User.
 
 1.  **Wallet Authorization and Selection**:
+
     * The Wallet receives a Presentation Request from the RP, verifies the validity of the request comparing the requested *claims* with the *Authorization Policies* related to the RP (via the **Taxonomy** definitions).
     * The Wallet consults the **Digital Credentials Catalog** to verify the *Domains* and *Purposes* associated with the Credential types it holds, evaluating which Credentials are suitable for the request.
     * The Wallet verifies if the required attributes (claims) are available and authorized for disclosure based on the request policy (**Credential-Specific** or **Credential-Agnostic** scenarios).
     * The User authorizes the release of the selected, selectively disclosed attributes. The Wallet then packages and presents the Digital Credential to the RP.
 
 2.  **Discovery and Integrity**:
+
     * The RP receives the Digital Credential from the User.
     * The RP consults the **Federation Registry** via the Trust Anchor's endpoint (`federation_resolve`, `federation_trust_mark_status`) to verify the **cryptographic trust** (Trust Mark) of the Issuer and Wallet Provider as defined in Section :ref:`trust-infrastructure:The Infrastructure of Trust`.
     * The RP consults the **Schema Registry** to download the schema of the presented Credential (`schema_uri`), verifying its integrity (`schema_uri#integrity`).
 
 3.  **Schema and Final Policy Validation**:
+
     * The RP uses the retrieved schema to validate the structure of the Credential and the data types of the revealed attributes.
     * The RP performs the final check to ensure that the attributes presented comply with the specific requirements of the initial request and authorization policy.
 

@@ -882,10 +882,13 @@ Navigazione del Catalogo
 Questo percorso *Navigazione del Catalogo* supporta gli Utenti (sia utenti umani tramite un'**Istanza Wallet** che sistemi automatizzati come **Relying Parties** o portali web) nella scoperta e selezione delle Credenziali Digitali disponibili.
 
 1.  **Accesso all'Endpoint di Scoperta**: L'entità (es., un Fornitore di Wallet o portale informativo) accede all'`Endpoint di Scoperta del Registro` (``.well-known/it-wallet-registry``) per ottenere l'URI del **Catalogo delle Credenziali Digitali**.
+
 2.  **Navigazione e Selezione**:
+
     * **Scoperta delle Credenziali**: L'entità naviga l'elenco delle Credenziali (campo ``credentials``) per identificare tipi di Credenziali rilevanti (es., ``pid``, ``driving_license``).
     * **Metadati dell'Emittente**: L'entità estrae l'**Identificatore dell'Emittente** (`entity_id` all'interno del campo `issuers`) associato alla Credenziale desiderata.
     * **Consultazione dei Dettagli**: Per ottenere informazioni complete e requisiti tecnici specifici, l'entità accede all'**Entity Configuration** (Metadati dell'Emittente) usando l'identificatore recuperato.
+
 3.  **Azione Finale**: L'entità può quindi usare i metadati per visualizzare le informazioni del catalogo a un Utente (o usare le informazioni in altro modo).
 
 Emissione di Credenziali
@@ -894,10 +897,13 @@ Emissione di Credenziali
 Questo percorso definisce come un Emittente di Credenziali usa l'Infrastruttura di Registro per preparare ed emettere una Credenziale Digitale conforme.
 
 1.  **Identificazione dei Requisiti**: Il CI consulta il **Catalogo delle Credenziali Digitali** per i requisiti tecnici del tipo di Credenziale da emettere (es., ``max_validity_days``, ``min_loa``).
+
 2.  **Risoluzione dello Schema e dei Claims**:
+
     * Il CI consulta il **Registro degli Schema** per recuperare la specifica tecnica del formato e dello schema (es., JSON Schema per SD-JWT) richiesto dal Catalogo, garantendo validità e integrità tramite l'hash (`schema_uri#integrity`).
     * Il CI accede al **Registro dei Claims** per recuperare le definizioni semantiche standardizzate e i formati dati (tipi di dati) degli attributi necessari (claims).
 3.  **Recupero dei Dati Autentici**:
+
     * Il CI consulta il **Registro delle Fonti Autentiche (AS)** per identificare la **Fonte Autentica** (AS) autorizzata per il dataset richiesto. Il Registro AS fornisce l'``entity_id`` dell'AS e i dettagli tecnici dell'interfaccia (`integration_endpoint`, `integration_method`).
     * Il CI consulta la specifica dell'endpoint AS per implementare l'integrazione necessaria per recuperare i dati dell'Utente richiesti per popolare la Credenziale Digitale.
 4.  **Emissione della Credenziale**: Il CI usa i dati recuperati, gli schemi validati e i formati specificati per generare e firmare la Credenziale Digitale nel formato corretto (es., SD-JWT o mDOC).
@@ -908,17 +914,20 @@ Presentazione e Verifica delle Credenziali
 Questo percorso descrive come un'**Istanza Wallet** e una **Relying Party (RP)** interagiscono con l'Infrastruttura di Registro quando una Credenziale Digitale deve essere presentata da un Utente.
 
 1.  **Autorizzazione e Selezione del Wallet**:
+
     * Il Wallet riceve una Richiesta di Presentazione dall'RP, verifica la validità della richiesta confrontando i *claims* richiesti con le *Policy di Autorizzazione* relative all'RP (tramite le definizioni della **Tassonomia**).
     * Il Wallet consulta il **Catalogo delle Credenziali Digitali** per verificare i *Domini* e *Scopi* associati ai tipi di Credenziali che detiene, valutando quali Credenziali sono adatte per la richiesta.
     * Il Wallet verifica se gli attributi richiesti (claims) sono disponibili e autorizzati per la divulgazione in base alla policy della richiesta (scenari **Credential-Specific** o **Credential-Agnostic**).
     * L'Utente autorizza il rilascio degli attributi selezionati, divulgati selettivamente. Il Wallet quindi confeziona e presenta la Credenziale Digitale all'RP.
 
 2.  **Scoperta e Integrità**:
+
     * L'RP riceve la Credenziale Digitale dall'Utente.
     * L'RP consulta il **Registro di Federazione** tramite l'endpoint del Trust Anchor (`federation_resolve`, `federation_trust_mark_status`) per verificare la **fiducia crittografica** (Trust Mark) dell'Emittente e del Fornitore di Wallet, come definito nella Sezione :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
     * L'RP consulta il **Registro degli Schema** per scaricare lo schema della Credenziale presentata (`schema_uri`), verificandone l'integrità (`schema_uri#integrity`).
 
 3.  **Validazione dello Schema e della Policy Finale**:
+
     * L'RP usa lo schema recuperato per validare la struttura della Credenziale e i tipi di dati degli attributi rivelati.
     * L'RP esegue il controllo finale per garantire che gli attributi presentati siano conformi ai requisiti specifici della richiesta iniziale e della policy di autorizzazione.
 
