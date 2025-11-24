@@ -127,7 +127,7 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
 
     Dove il corpo della richiesta prima di essere codificato in ``application/x-www-form-urlencoded`` dal Wallet corrisponde a:
 
-    .. code:: json
+    .. code-block:: json
 
       {
         "wallet_metadata": {

@@ -12,10 +12,10 @@
     "code_challenge_method": "S256",
     "scope": "Education_degree",
     "authorization_details": [
-      {
-        "type": "openid_credential",
-        "credential_configuration_id": "dc_sd_jwt_Education_degree"
-      }
+        {
+            "type": "openid_credential",
+            "credential_configuration_id": "dc_sd_jwt_Education_degree"
+        }
     ],
     "redirect_uri": "https://client.example.com/cb"
 }

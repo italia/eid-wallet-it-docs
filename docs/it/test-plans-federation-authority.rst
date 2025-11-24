@@ -4,7 +4,7 @@
 Matrice di Test per le Autorità di Federazione
 ----------------------------------------------
 
-Questa sezione definisce i casi di test per le Autorità di Federazione (Trust Anchor e Intermediari) responsabili del funzionamento dell'Infrastruttura di Trust come descritto in :ref:`trust:L'Infrastruttura di Trust`. I test si concentrano sulla correttezza e conformità di:
+Questa sezione definisce i casi di test per le Autorità di Federazione (Trust Anchor e Intermediari) responsabili del funzionamento dell'Infrastruttura di Trust come descritto in :ref:`trust-infrastructure:L'Infrastruttura di Trust`. I test si concentrano sulla correttezza e conformità di:
 
 - Entity Configuration (``.well-known/openid-federation``)
 - Subordinate Statement restituiti da ``/fetch``
@@ -41,7 +41,7 @@ Tutte le validazioni sono allineate con (`OID-FED`_).
   * - FA_005
     - Security, Interoperability
     - Parametri comuni dell'Entity Configuration
-    - Il payload contiene ``jwks`` e ``metadata`` con l'oggetto ``federation_entity`` che include gli endpoint della Federazione pubblicati come da :ref:`trust:Integrazione tra Infrastruttura di Trust e Registry`.
+    - Il payload contiene ``jwks`` e ``metadata`` con l'oggetto ``federation_entity`` che include gli endpoint della Federazione pubblicati come da :ref:`trust-infrastructure:Integrazione tra Infrastruttura di Trust e Registry`.
   * - FA_006
     - Security
     - Validità del materiale crittografico

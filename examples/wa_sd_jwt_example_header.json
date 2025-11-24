@@ -1,10 +1,10 @@
-  {
+{
     "alg": "ES256",
     "kid": "5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY",
     "typ": "dc+sd-jwt",
     "x5c": [
-      "MIIDqjCCApKgAwIBAgIESLNEvDA ...",
-      "MIICwzCCAasCCQCKVy9eKjvi+jA ...",
-      "MIIDTDCCAjSgAwIBAgIJAPlnQYH..."
+        "MIIDqjCCApKgAwIBAgIESLNEvDA ...",
+        "MIICwzCCAasCCQCKVy9eKjvi+jA ...",
+        "MIIDTDCCAjSgAwIBAgIJAPlnQYH..."
     ]
-  }
+}

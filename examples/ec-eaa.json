@@ -106,17 +106,17 @@
                     "name": "EAA Provider",
                     "locale": "it-IT",
                     "logo": {
-                                "uri": "https://eaa-provider.example.org/public/compact-logo-IT.svg",
-                                "uri#integrity": "2Rltygo7bKBE4E498tb/lLn9DIkimBhrzrsUERyUQjo="
+                        "uri": "https://eaa-provider.example.org/public/compact-logo-IT.svg",
+                        "uri#integrity": "2Rltygo7bKBE4E498tb/lLn9DIkimBhrzrsUERyUQjo="
                     }
-
+                    
                 },
                 {
                     "name": "EAA Provider",
                     "locale": "en-US",
                     "logo": {
-                                "uri": "https://eaa-provider.example.org/public/compact-logo-US.svg",
-                                "uri#integrity": "mBQEi42aj0VYnFngpOjbqJGkuCnB5LmbZRnWpO+AHqUBVQxOe9kMIPOz+pSjRArE"
+                        "uri": "https://eaa-provider.example.org/public/compact-logo-US.svg",
+                        "uri#integrity": "mBQEi42aj0VYnFngpOjbqJGkuCnB5LmbZRnWpO+AHqUBVQxOe9kMIPOz+pSjRArE"
                     }
                 }
             ],
@@ -145,10 +145,10 @@
                     "schema_id": "EuropeanDisabilityCard+dc+sd-jwt+urn:eudi:EuropeanDisabilityCard:it:1",
                     "authentic_sources" [
                         {
-                                "entity_id": "https://authentic-source.example.com",
-                                "dataset_id": "12345"                            
+                            "entity_id": "https://authentic-source.example.com",
+                            "dataset_id": "12345"                            
                         }
-
+                        
                     ],
                     "credential_metadata": {
                         "display": [
@@ -157,16 +157,16 @@
                                 "locale": "it-IT",
                                 "description": "Versione digitale della carta della disabilità europea",
                                 "logo": {
-                                            "uri": "https://trust-registry.it-wallet.example.it/logos/EuropeanDisabilityCard/logo-IT.svg",
-                                            "uri#integrity": "3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg==",
-                                            "alt_text": "Testo alternativo all'immagine del logo"
+                                    "uri": "https://trust-registry.it-wallet.example.it/logos/EuropeanDisabilityCard/logo-IT.svg",
+                                    "uri#integrity": "3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg==",
+                                    "alt_text": "Testo alternativo all'immagine del logo"
                                 },
                                 "background_color": "#12107c",
                                 "background_image": {
-
-                                            "uri": "https://trust-registry.it-wallet.example.it/images/EuropeanDisabilityCard/image-IT.svg",
-                                            "uri#integrity": "3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg=="
-
+                                    
+                                    "uri": "https://trust-registry.it-wallet.example.it/images/EuropeanDisabilityCard/image-IT.svg",
+                                    "uri#integrity": "3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg=="
+                                    
                                 },
                                 "text_color": "#FFFFFF"
                             },
@@ -175,14 +175,14 @@
                                 "locale": "en-US",
                                 "description": "Digital version of the European Disability Card",
                                 "logo": {
-                                            "uri": "https://trust-registry.it-wallet.example.it/logos/EuropeanDisabilityCard/logo-US.svg",
-                                            "uri#integrity": "3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg==",
-                                            "alt_text": "Alternative text for the logo image"
+                                    "uri": "https://trust-registry.it-wallet.example.it/logos/EuropeanDisabilityCard/logo-US.svg",
+                                    "uri#integrity": "3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg==",
+                                    "alt_text": "Alternative text for the logo image"
                                 },
                                 "background_color": "#12107c",
                                 "background_image": {
-                                            "uri": "https://trust-registry.it-wallet.example.it/images/EuropeanDisabilityCard/image-US.svg",
-                                            "uri#integrity": "3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg=="
+                                    "uri": "https://trust-registry.it-wallet.example.it/images/EuropeanDisabilityCard/image-US.svg",
+                                    "uri#integrity": "3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg=="
                                 },
                                 "text_color": "#FFFFFF"
                             }
@@ -248,7 +248,7 @@
                                         "name": "Data di Nascita (YYYY-MM-GG)",
                                         "locale": "it-IT",
                                         "description": "Data di nascita del titolare della carta"
-
+                                        
                                     },
                                     {
                                         "name": "Date of Birth (YYYY-MM-GG)",
@@ -317,7 +317,7 @@
                                         "name": "Foto",
                                         "locale": "it-IT",
                                         "description": "Fotografia del titolare della carta"
-
+                                        
                                     },
                                     {
                                         "name": "Portrait",
@@ -370,10 +370,10 @@
                     "schema_id": "mDL+dc+sd-jwt+urn:eudi:mDL:it:1",
                     "authentic_sources" [
                         {
-                                "entity_id": "https://authentic-source.example.com",
-                                "dataset_id": "12345"                            
+                            "entity_id": "https://authentic-source.example.com",
+                            "dataset_id": "12345"                            
                         }
-
+                        
                     ],                   
                     "credential_metadata": {
                         "display": [
@@ -382,16 +382,16 @@
                                 "locale": "it-IT",
                                 "description": "Versione digitale della patente di guida",
                                 "logo": {
-                                            "uri": "https://trust-registry.it-wallet.example.it/logos/mDL/logo-IT.svg",
-                                            "uri#integrity": "qU4OnSrnRcL695rQqy9ayCMx6sboaXxEaW5rXvSAmnQ=",
-                                            "alt_text": "Testo alternativo all'immagine del logo"
+                                    "uri": "https://trust-registry.it-wallet.example.it/logos/mDL/logo-IT.svg",
+                                    "uri#integrity": "qU4OnSrnRcL695rQqy9ayCMx6sboaXxEaW5rXvSAmnQ=",
+                                    "alt_text": "Testo alternativo all'immagine del logo"
                                 },
                                 "background_color": "#12107c",
                                 "background_image": {
-
-                                            "uri": "https://trust-registry.it-wallet.example.it/images/mDL/image-IT.svg",
-                                            "uri#integrity": "J0HV7GiDjWZrV8Vb6P4f6zeDDXASl3j2xVnoDYqhQK0="
-
+                                    
+                                    "uri": "https://trust-registry.it-wallet.example.it/images/mDL/image-IT.svg",
+                                    "uri#integrity": "J0HV7GiDjWZrV8Vb6P4f6zeDDXASl3j2xVnoDYqhQK0="
+                                    
                                 },
                                 "text_color": "#FFFFFF"
                             },
@@ -400,16 +400,16 @@
                                 "locale": "en-US",
                                 "description": "Digital version of Mobile Driver's License",
                                 "logo": {
-                                            "uri": "https://trust-registry.it-wallet.example.it/logos/mDL/logo-US.svg",
-                                            "uri#integrity": "F5P1wXpfToammXkx6HF++66G534ystjOy7r4UMWwz1lcZYJU8kAKRKtFua7DvZLe",
-                                            "alt_text": "Testo alternativo all'immagine del logo"
+                                    "uri": "https://trust-registry.it-wallet.example.it/logos/mDL/logo-US.svg",
+                                    "uri#integrity": "F5P1wXpfToammXkx6HF++66G534ystjOy7r4UMWwz1lcZYJU8kAKRKtFua7DvZLe",
+                                    "alt_text": "Testo alternativo all'immagine del logo"
                                 },
                                 "background_color": "#12107c",
                                 "background_image": {
-
-                                            "uri": "https://trust-registry.it-wallet.example.it/images/mDL/image-US.svg",
-                                            "uri#integrity": "UyDP7JZDp9dpmxq9wbbuam8ylrQ05LsSRQzZVjdJTbJBZm57twaZvE2SnDKzycl0"
-
+                                    
+                                    "uri": "https://trust-registry.it-wallet.example.it/images/mDL/image-US.svg",
+                                    "uri#integrity": "UyDP7JZDp9dpmxq9wbbuam8ylrQ05LsSRQzZVjdJTbJBZm57twaZvE2SnDKzycl0"
+                                    
                                 },
                                 "text_color": "#FFFFFF"
                             }
@@ -526,7 +526,7 @@
                                         "name": "Paese di rilascio",
                                         "locale": "it-IT",
                                         "description": "Paese di rilascio della patente"
-
+                                        
                                     },
                                     {
                                         "name": "Issuing Country",
@@ -647,10 +647,10 @@
                     "schema_id": "mDL+mso_mdoc+org.iso.18013.5.1.mDL",
                     "authentic_sources" [
                         {
-                                "entity_id": "https://authentic-source.example.com",
-                                "dataset_id": "12345"                            
+                            "entity_id": "https://authentic-source.example.com",
+                            "dataset_id": "12345"                            
                         }
-
+                        
                     ],
                     "cryptographic_binding_methods_supported": [
                         "cose_key"
@@ -667,16 +667,16 @@
                                 "locale": "it-IT",
                                 "description": "Versione digitale della patente di guida",
                                 "logo": {
-                                            "uri": "https://trust-registry.it-wallet.example.it/logos/mDL/logo-IT.svg",
-                                            "uri#integrity": "qU4OnSrnRcL695rQqy9ayCMx6sboaXxEaW5rXvSAmnQ=",
-                                            "alt_text": "Testo alternativo all'immagine del logo"
+                                    "uri": "https://trust-registry.it-wallet.example.it/logos/mDL/logo-IT.svg",
+                                    "uri#integrity": "qU4OnSrnRcL695rQqy9ayCMx6sboaXxEaW5rXvSAmnQ=",
+                                    "alt_text": "Testo alternativo all'immagine del logo"
                                 },
                                 "background_color": "#12107c",
                                 "background_image": {
-
-                                            "uri": "https://trust-registry.it-wallet.example.it/images/mDL/image-IT.svg",
-                                            "uri#integrity": "J0HV7GiDjWZrV8Vb6P4f6zeDDXASl3j2xVnoDYqhQK0="
-
+                                    
+                                    "uri": "https://trust-registry.it-wallet.example.it/images/mDL/image-IT.svg",
+                                    "uri#integrity": "J0HV7GiDjWZrV8Vb6P4f6zeDDXASl3j2xVnoDYqhQK0="
+                                    
                                 },
                                 "text_color": "#FFFFFF"
                             },
@@ -685,16 +685,16 @@
                                 "locale": "en-US",
                                 "description": "Digital version of Mobile Driver's License",
                                 "logo": {
-                                            "uri": "https://trust-registry.it-wallet.example.it/logos/mDL/logo-US.svg",
-                                            "uri#integrity": "F5P1wXpfToammXkx6HF++66G534ystjOy7r4UMWwz1lcZYJU8kAKRKtFua7DvZLe",
-                                            "alt_text": "Testo alternativo all'immagine del logo"
+                                    "uri": "https://trust-registry.it-wallet.example.it/logos/mDL/logo-US.svg",
+                                    "uri#integrity": "F5P1wXpfToammXkx6HF++66G534ystjOy7r4UMWwz1lcZYJU8kAKRKtFua7DvZLe",
+                                    "alt_text": "Testo alternativo all'immagine del logo"
                                 },
                                 "background_color": "#12107c",
                                 "background_image": {
-
-                                            "uri": "https://trust-registry.it-wallet.example.it/images/mDL/image-US.svg",
-                                            "uri#integrity": "UyDP7JZDp9dpmxq9wbbuam8ylrQ05LsSRQzZVjdJTbJBZm57twaZvE2SnDKzycl0"
-
+                                    
+                                    "uri": "https://trust-registry.it-wallet.example.it/images/mDL/image-US.svg",
+                                    "uri#integrity": "UyDP7JZDp9dpmxq9wbbuam8ylrQ05LsSRQzZVjdJTbJBZm57twaZvE2SnDKzycl0"
+                                    
                                 },
                                 "text_color": "#FFFFFF"
                             }
@@ -930,18 +930,18 @@
         },
         "openid_credential_verifier": {
             ## see relying party metadata section and endpoints
-            },
-            "jwks": {
-                "keys": [
-                    {
-                        "kid": "f10aca0992694b3581f6f699bfc8a2c6cc687725",
-                        "kty": "EC",
-                        "crv": "P-256",
-                        "x": "jE2RpcQbFQxKpMqehahgZv6smmXD0i/LTP2QRzMADk4",
-                        "y": "qkMx5iqt5PhPu5tfctS6HsP+FmLgrxfrzUV2GwMQuh8"
-                    }
-                ]
-            }
+        },
+        "jwks": {
+            "keys": [
+                {
+                    "kid": "f10aca0992694b3581f6f699bfc8a2c6cc687725",
+                    "kty": "EC",
+                    "crv": "P-256",
+                    "x": "jE2RpcQbFQxKpMqehahgZv6smmXD0i/LTP2QRzMADk4",
+                    "y": "qkMx5iqt5PhPu5tfctS6HsP+FmLgrxfrzUV2GwMQuh8"
+                }
+            ]
         }
     }
+}
 }

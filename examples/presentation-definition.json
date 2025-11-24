@@ -2,13 +2,13 @@
     "id": "presentation definitions",
     "input_descriptors": [
         {
-			"id": "eu.europa.ec.eudiw.pid.it.1",
+            "id": "eu.europa.ec.eudiw.pid.it.1",
             "name": "Person Identification Data",
             "purpose": "User authentication",
-			"group": [
+            "group": [
                 "group1"
             ],
-			"format": {
+            "format": {
                 "dc+sd-jwt": {
                     "alg": [
                         "ES256",
@@ -63,7 +63,7 @@
             "id": "wallet_attestation",
             "name": "Wallet Attestation",
             "purpose": "Wallet Authentication",
-			"format": "jwt",
+            "format": "jwt",
             "group": [
                 "group2"
             ],
@@ -121,9 +121,9 @@
     ],
     "submission_requirements": [
         {
-			"name": "Sample requirement",
+            "name": "Sample requirement",
             "count": 1,
-			"rule": "pick",
+            "rule": "pick",
             "from": "group1"
         }
     ]

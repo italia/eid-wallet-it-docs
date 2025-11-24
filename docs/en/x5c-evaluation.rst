@@ -82,7 +82,7 @@ The following procedure enables federation entities to:
 	- Download current revocation lists.
 	- Analyze CRL content and validity periods.
 
-.. includeliteral:: ../../utils/crl-analysis.sh
+.. literalinclude:: ../../utils/crl-analysis.sh
    :language: bash
 
 
@@ -99,7 +99,7 @@ Federation entities SHOULD implement automated revocation checking for:
 
 Below a bash script for X.509 certificate revocation status verification is given as a non-normative example:
 
-.. includeliteral:: ../../utils/certificate-revocation-verification.sh
+.. literalinclude:: ../../utils/certificate-revocation-verification.sh
    :language: bash
 
 
@@ -140,7 +140,7 @@ Federation entities MUST implement diagnostic procedures to identify and resolve
 
 The following non-normative example provides a script for Federation X.509 certificate infrastructure connectivity test:
 
-.. includeliteral:: ../../utils/federation-connectivity-test.sh
+.. literalinclude:: ../../utils/federation-connectivity-test.sh
    :language: bash
 
 

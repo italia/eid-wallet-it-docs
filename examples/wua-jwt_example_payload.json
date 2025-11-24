@@ -1,22 +1,22 @@
-  {
+{
     "iss": "https://wallet-provider.example.org",
     "attested_keys": [
-      {
-        "crv": "P-256",
-        "kty": "EC",
-        "x": "4HNptI-xr2pjyRJKGMnz4WmdnQD_uJSq4R95Nj98b44",
-        "y": "LIZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg"
-      }
+        {
+            "crv": "P-256",
+            "kty": "EC",
+            "x": "4HNptI-xr2pjyRJKGMnz4WmdnQD_uJSq4R95Nj98b44",
+            "y": "LIZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg"
+        }
     ],
-    "status": { 
-    "status_list": {
-        "idx": 412,
-        "uri": "https://revocation_url/statuslists/1"
-      }
-  },
+    "status": {
+        "status_list": {
+            "idx": 412,
+            "uri": "https://revocation_url/statuslists/1"
+        }
+    },
     "iat": 1687281195,
     "exp": 1687288395,
     "key_storage": [ "iso_18045_moderate" ],
     "user_authentication": [ "iso_18045_moderate" ],
     "certification": "GP"
-  }
+}

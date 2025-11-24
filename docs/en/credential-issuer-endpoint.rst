@@ -12,7 +12,7 @@ Credential Issuer Endpoints
 Federation Endpoints
 ^^^^^^^^^^^^^^^^^^^^
 
-The Credential Issuers MUST provide an Entity Configuration through the ``/.well-known/openid-federation`` endpoint, according to Section :ref:`trust:Entity Configuration`. Technical details are provided in Section :ref:`credential-issuer-entity-configuration:Credential Issuer Entity Configuration`.
+The Credential Issuers MUST provide an Entity Configuration through the ``/.well-known/openid-federation`` endpoint, according to Section :ref:`trust-infrastructure:Entity Configuration`. Technical details are provided in Section :ref:`credential-issuer-entity-configuration:Credential Issuer Entity Configuration`.
 
 Credential Issuance Endpoints
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

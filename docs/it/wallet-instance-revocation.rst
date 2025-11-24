@@ -56,7 +56,7 @@ In entrambi i casi, utilizzando il portale del Fornitore di Wallet:
 
 Di seguito è riportato un esempio non normativo di una Richiesta di Recupero delle Istanze del Wallet.
 
-.. code:: http
+.. code-block:: http
 
    GET /wallet-instances HTTP/1.1
    Host: walletprovider.example.com
@@ -64,7 +64,7 @@ Di seguito è riportato un esempio non normativo di una Richiesta di Recupero de
 In caso di recupero riuscito, il Fornitore di Wallet DEVE restituire una risposta di conferma, con lo stato di tutte le Istanze del Wallet associate all'Utente (:ref:`WP_146 <wallet-instance-optional-testcases>`).
 Di seguito è riportato un esempio non normativo di una Risposta di Recupero delle Istanze del Wallet.
 
-.. code:: http
+.. code-block:: http
 
    HTTP/1.1 200 OK
    Content-Type: application/json

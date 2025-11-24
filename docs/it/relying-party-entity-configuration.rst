@@ -4,15 +4,15 @@
 Entity Configuration Relying Party
 ----------------------------------
 
-Secondo la Sezione :ref:`trust:Configurazione della Federazione`, come Entità di Federazione, la Relying Party è tenuta a mantenere un endpoint well-known che ospita la sua Entity Configuration.
-L'Entity Configuration delle Relying Party DEVE contenere i parametri definiti nelle Sezioni :ref:`trust:Entity Configuration Foglie e Intermediari` e :ref:`trust:Parametri Comuni delle Entity Configuration`.
+Secondo la Sezione :ref:`trust-infrastructure:Configurazione della Federazione`, come Entità di Federazione, la Relying Party è tenuta a mantenere un endpoint well-known che ospita la sua Entity Configuration.
+L'Entity Configuration delle Relying Party DEVE contenere i parametri definiti nelle Sezioni :ref:`trust-infrastructure:Entity Configuration Foglie e Intermediari` e :ref:`trust-infrastructure:Parametri Comuni delle Entity Configuration`.
 
 Le Relying Party DEVONO fornire i seguenti tipi di metadata:
 
   - ``federation_entity``
   - ``openid_credential_verifier``
 
-I metadata contenuti in ``federation_entity`` DEVONO contenere i claim come definito nella Sezione :ref:`trust:Metadati di federation_entity Foglie`.
+I metadata contenuti in ``federation_entity`` DEVONO contenere i claim come definito nella Sezione :ref:`trust-infrastructure:Metadati di federation_entity Foglie`.
 
 
 Entity Configuration di una Relying Party

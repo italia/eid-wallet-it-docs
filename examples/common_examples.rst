@@ -4,7 +4,7 @@
 EN 1. Entity Configuration Request
 ++++++++++++++++++++++++++++++++++
 
-.. code-block:: python
+.. code-block:: html
 
  GET /.well-known/openid-federation HTTP/1.1
  Host: rp.example.it

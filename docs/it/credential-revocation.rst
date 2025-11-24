@@ -425,7 +425,7 @@ Le richieste all'*endpoint di Status Assertion* DEVONO essere HTTP con metodo PO
 
 Di seguito un esempio non normativo che rappresenta un array di Status Assertion Request con Status Assertion Request object in formato JWT.
 
-.. code::
+.. code-block:: text
 
   POST /status HTTP/1.1
   Host: issuer.example.org
@@ -548,7 +548,7 @@ La risposta HTTP DEVE:
 
 Un esempio non normativo di una HTTP Status Assertion Response è fornito di seguito.
 
-.. code::
+.. code-block:: text
 
     HTTP/1.1 200 Ok
     Content-Type: application/json
@@ -631,18 +631,20 @@ La Status Assertion DEVE contenere i parametri e i claim definiti di seguito
 
 Di seguito un esempio non normativo di un Status Assertion Response object in formato JWT, con gli header e il payload rappresentati in JSON e senza applicare la firma.
 
-.. code::
+.. code-block:: json
 
   {
     "alg": "ES256",
     "typ": "status-assertion+jwt",
     "kid": "Issuer-JWK-KID"
   }
- .
+
+.. code-block:: text
+
   {
     "iss": "https://issuer.example.org",
-    "jti": "6f204f7e-e453-4dfd-814e-9d155319408c"
-    "credential_hash": $CREDENTIAL-HASH,
+    "jti": "6f204f7e-e453-4dfd-814e-9d155319408c",
+    "credential_hash": "$CREDENTIAL-HASH",
     "credential_hash_alg": "sha-256",
     "credential_status_type": 0x01,
     "credential_status_detail": {
@@ -726,18 +728,20 @@ Il claim `error` per l'oggetto Status Assertion Error DEVE essere impostato con 
 
 Di seguito un esempio non normativo di un oggetto Status Assertion Error in formato JWT, con gli header e il payload rappresentati in JSON e senza applicare la firma.
 
-.. code::
+.. code-block:: json
 
   {
     "alg": "ES256",
     "typ": "status-assertion-error+jwt",
     "kid": "Issuer-JWK-KID"
   }
-  .
+
+.. code-block:: json
+
   {
     "iss": "https://issuer.example.org",
     "jti": "6f204f7e-e453-4dfd-814e-9d155319408c"
-    "credential_hash": $CREDENTIAL-HASH,
+    "credential_hash": "$CREDENTIAL-HASH",
     "credential_hash_alg": "sha-256",
     "error": "unsupported_hash_alg",
     "error_description": "The hash algorithm is not supported"
@@ -878,14 +882,16 @@ Una Status List codificata in JSON ha la seguente struttura:
 
 Di seguito è riportato un esempio di Token di Status List prima di applicare la firma e la codifica:
 
-.. code::
+.. code-block:: json
 
   {
     "alg": "ES256",
     "kid": "$KID",
     "typ": "statuslist+jwt"
   }
-  .
+
+.. code-block:: json
+
   {
     "exp": 2291720170,
     "iat": 1686920170,
@@ -953,7 +959,7 @@ La Relying Party DOVREBBE inviare l'Accept-Header ``application/statuslist+jwt``
 
 Di seguito è riportato un esempio non normativo di una richiesta per un Token di Status List:
 
-.. code::
+.. code-block:: http
 
   GET /statuslists HTTP/1.1
   Host: example-issuer.com
@@ -971,7 +977,7 @@ Se gli header HTTP relativi alla cache sono presenti nella risposta HTTP, le Rel
 
 Di seguito è riportato un esempio non normativo di una risposta per un Token di Status List con tipo ``application/statuslist+jwt``:
 
-.. code::
+.. code-block:: http
 
   HTTP/1.1 200 OK
   Content-Type: application/statuslist+jwt
@@ -984,7 +990,7 @@ Al ricevimento di un Attestato Elettronico, una Relying Party DEVE prima eseguir
 - Risolvere il Token di Status List dall'URI fornito.
 - Validare il Token di Status List:
 
-  - Validare la firma del Token di Status List seguendo le regole definite nella sezione 7.2 di [:rfc:`7519`]. Questo passaggio richiede la risoluzione di una chiave pubblica come descritto in :ref:`trust:L'Infrastruttura di Trust`.
+  - Validare la firma del Token di Status List seguendo le regole definite nella sezione 7.2 di [:rfc:`7519`]. Questo passaggio richiede la risoluzione di una chiave pubblica come descritto in :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
 
   - Controllare l'esistenza dei claim richiesti come definito nella Sezione :ref:`credential-revocation:Token di Status List`.
 

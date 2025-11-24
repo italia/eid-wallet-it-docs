@@ -71,7 +71,6 @@ Di seguito un esempio non normativo di un URL relativo a una Credential Offer ch
 
   openid-credential-offer://?credential_offer%3D%7B%22credential_issuer%22%3A%22https%3A%2F%2Feaa-provider.example.org%22%2C%22credential_configuration_ids%22%3A%5B%22dc_sd_jwt_Education_degree%22%5D%2C%22grants%22%3A%7B%22authorization_code%22%3A%7B%22issuer_state%22%3A%22oaKazRN8I0IbtZ0C7JuMn5%22%7D%7D%7D
 
-
 Il seguente diagramma mostra il *flusso di emissione*.
 
 .. _fig_Low-Level-Flow-ITWallet-PID-QEAA-Issuance:
@@ -80,7 +79,7 @@ Il seguente diagramma mostra il *flusso di emissione*.
     :alt: La figura illustra il flusso dettagliato per l'emissione degli Attestati Elettronici.
     :caption: `Emissione degli Attestati Elettronici - Flusso dettagliato. <https://www.plantuml.com/plantuml/svg/nLRRRjj64xxdKmoIYry4gEHlsgi0BYBBQYpKa5L7WMyA22jg92rCxR9xaE8yVMU7f7RDo4sD5cWGMEJEuPlvvh3yO9qmpk-hJ7YdbT-lq6HPJMUobBLG3bvzjcXUWR3WisoblpG7_xDWzwHLxxJ2L_3wHcvtxhBo-DJsqkZZoLmybTsBga87KqKXg19PvvYXMWEXz68O6roZSb9KCBNMjnvbHl-CqWv17z30iP0KoVJZzUBZtMGooyOxB1_W6rkG5e9tq1jmEuHVI6w4arg187IzSa8gaCx27frO2oT2L8n3U4SO_Wn7U0-bGK78yr_74oZr6e52a1k9XhtSZuPpFM_L9QdFHtTmXtzuj0u6lok0if8KrbAkY_1c6b4EuUKetGvkHzxjXcFM6ewS8saCyZbX00MfEAzh59HOIj0vUjeop8q-oFLVajCQMBbLmdc3dKhhOLJNq0kJIJo8IgwbUuIKHGb3fh7ZnTPQMOH1IyFI6ra0VgcbGRkKAW_4iuaNxo7ahetyoZYHr4We96xop0ksb2ysp4JbqlQvk83vzEe9eOM7r_VNqyKaypPKdW22Sia8JHt74gTNSAD7S4r30eER7tFcfWmPAuBNTL0c4X_fZAWidLHRy3nbGSk9qjayieULnLvOWz_ooMYKlpGqokOVXgBMNIs9vJx1iQnXFWe8dK4_qjfJKOulCeh3jqM5XWHm5Hh-0H-VbTL6wqqoah3HvinESFe15L0-jPRAPSdWBaWIcuLvInppA6-DeFvnZpNoB5FWyM7PhOLspDVIOCaDnhF-huvw9fc3Kz2HIr6MQEsIimnTlZ5eTzqh_pJXfpENS33JgiGJ1zUBnHpcjvyMy5O5GOBBYcaDbwpHp6zlSqOMpzSaFPbqXU6P_4HTMM7VGd0e0FqDtK3G_rfRIomGTp4my9QS4Ob9Am6S4eyGPpeW9PLBbVP5UR9SIdxWgq4RI0IbLXkvzSr-vVt3nXO6_Fj3dcVDj5yAL-w-bszi_1bmVLC3oelSpYukLi7Lqiglc9-t_PjyHHHsdPB6qVx7rBNlxuetRzuK_3ZBSyXuO_NtkhGW3a9MObKXPCzVc0jAklb48dOI1pPue1J9bTFWebP6QiHE5rhTtB5hM3soLkyBAAxLE4yH91sgY5o0qe6VikEXcTg-SRo5cMp2Szv26UxpLj-Jlh0FF8dX0w-x4pBVUMiFGehMQOEf-mXwLXRNI8prx3P9vODUPWNW0HL_8IMDDE96QlRTsT9TtdoUP7UubTRHAJ7Er4SAXmOhuN0DcLIK_9xXc0RoSi9_Q_2Wsy3WNA7Ir6AfEBTt__-9n33MoX5aCz6zzflTBc8BVgVwajmOAcS1pWXbHTbLFitU5p9RVDjY1OWDqw10xBLNpMUUt2FO6ajAe6dE3eARvRX3HL1okqKJUpVq25_Enba-s5Jw268hf7hwUV21_lXzzIS0>`_
 
-Una volta completato il *flusso di richiesta dell'Utente*, l'Istanza del Wallet elabora i Metadata del Credential Issuer come definito nella Sezione :ref:`trust:Meccanismo di Trust Evaluation`. Inoltre, in caso di emissione di Credenziali in batch, l'Istanza del Wallet DEVE verificare che venga supportata l'emissione in batch tramite l'oggetto ``batch_credential_issuance`` presente nei metadati del Credential Issuer, da cui l'Istanza del Wallet può ottenere il valore ``batch_size``.
+Una volta completato il *flusso di richiesta dell'Utente*, l'Istanza del Wallet elabora i Metadata del Credential Issuer come definito nella Sezione :ref:`trust-infrastructure:Meccanismo di Trust Evaluation`. Inoltre, in caso di emissione di Credenziali in batch, l'Istanza del Wallet DEVE verificare che venga supportata l'emissione in batch tramite l'oggetto ``batch_credential_issuance`` presente nei metadati del Credential Issuer, da cui l'Istanza del Wallet può ottenere il valore ``batch_size``.
 
 .. note::
   **Controllo della Federazione:** L'Istanza del Wallet deve verificare se il Credential Issuer è membro della Federazione, ottenendo i suoi Metadata specifici per il protocollo (:ref:`WP_046 <wallet-credential-issuance-testcases>`). Un esempio non normativo di una risposta dall'Endpoint **.well-known/openid-federation** con la **Entity Configuration** e i **Metadata** del Credential Issuer è rappresentato nella sezione :ref:`credential-issuer-entity-configuration:Entity Configuration del Fornitore di Attestati Elettronici`.
@@ -487,7 +486,7 @@ La figura seguente mostra come ottenere un nuovo Access Token DPoP e un nuovo Re
 **Passo 2**: Per aggiornare un Access Token vincolato a DPoP, l'Istanza del Wallet invia una richiesta di token utilizzando il parametro ``grant_type`` impostato su ``refresh_token``, includendo l'header DPoP e gli header di OAuth Client Attestation (:ref:`WP_068 <wallet-credential-issuance-testcases>`).
 Un esempio non normativo della richiesta di token per un Access Token DPoP utilizzando un Refresh Token è mostrato di seguito.
 
-.. code::
+.. code-block:: http
 
   POST /token HTTP/1.1
   Host: eaa-provider.example.org
@@ -509,16 +508,17 @@ Se i controlli della richiesta hanno successo, il Credential Issuer genera un nu
 
 Un esempio non normativo di una risposta di successo è mostrato di seguito.
 
-.. code::
+.. code-block:: http
 
   HTTP/1.1 200 OK
   Content-Type: application/json
   Cache-Control: no-store
+  
   {
       "access_token": "eyJ0eXAiOiJhdCtqd3QiLCJhbGciOiJFU..",
       "refresh_token": "eyC3fiLdCtqd3QiLCJhbGciOiCL3..",
       "token_type": "DPoP",
-      "expires_in": 3600,
+      "expires_in": 3600
   }
 
 Se il Refresh Token è scaduto o non valido, il Credential Issuer DEVE emettere un errore, utilizzando il claim `error type` impostato su ``invalid_grant``. Pertanto, per ottenere l'Attestato Elettronico è necessario un flusso di emissione che autentichi l'Utente, come definito nella Sezione :ref:`credential-issuance-low-level:Issuance Flow`.
