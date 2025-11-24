@@ -14,7 +14,7 @@ The Wallet Provider, responsible for delivering a Wallet Solution, MUST expose t
 .. note::
   Tests related to the use of Wallet Provider endpoints are defined in 
   :ref:`wallet-provider-test-matrix`, particularly 
-  :ref:`wallet-provider-backend-testcases`, 
+  :ref:`wallet-provider-backend-testcases`,
   :ref:`wallet-instance-testcases`, and 
   :ref:`wallet-instance-optional-testcases`.
 
@@ -69,13 +69,11 @@ If any errors occur during the retrieval process, an error response MUST be retu
 
 Below is a non-normative example of an error response:
 
-.. code:: http
+.. code-block:: http
 
    HTTP/1.1 403 Forbidden
    Content-Type: application/json
    Cache-Control: no-store
-
-.. code:: json
 
    {
      "error": "forbidden",
@@ -100,13 +98,11 @@ If any errors occur during the Wallet Instance Revocation, an error response MUS
 
 Below is a non-normative example of an error response:
 
-.. code:: http
+.. code-block:: http
 
    HTTP/1.1 400 Bad Request
    Content-Type: application/json
    Cache-Control: no-store
-
-.. code:: json
 
    {
      "error": "bad_request",

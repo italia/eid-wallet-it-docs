@@ -683,9 +683,33 @@
 <p>Before submitting the technical onboarding request, Federation Entities MUST ensure that their <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> endpoint publishes a valid Entity Configuration (as defined in <a class="reference internal" href="trust-infrastructure.html#entity-configuration"><span class="std std-ref">Entity Configuration</span></a>) signed with their Federation Entity Private Key corresponding to the Federation Entity Key provided in the request. The Entity Configuration MUST already include application specific keys in the metadata with self-signed X.509 Certificates in the <code class="docutils literal notranslate"><span class="pre">x5c</span></code> claims.</p>
 </div>
 <p>A non-normative example of the technical information structure that Federation Entities submit during Step 1 onboarding request:</p>
-<p>The example below shows the decoded content of the CSR:</p>
 <div class="literal-block-wrapper docutils container" id="id7">
-<div class="code-block-caption"><span class="caption-number">Listing 8.2 </span><span class="caption-text">CSR decoded content example</span><a class="headerlink" href="#id7" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 8.2 </span><span class="caption-text">Federation onboarding request example</span><a class="headerlink" href="#id7" title="Link to this code">¶</a></div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;entity_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://credential-issuer.example.gov&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;entity_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;credential_issuer&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;jwks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;keys&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;k1d2e3f4g5h6i7j8&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;crv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8w1QwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;QwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;certificate_signing_requests&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;k1d2e3f4g5h6i7j8&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;-----BEGIN CERTIFICATE REQUEST-----\nMIIBWTCB/QIBADCBkDELMAkGA1UEBhMCSVQxDjAMBgNVBAgMBUxhemlvMQ0wCwYD\nVQQHDARSb21hMRYwFAYDVQQKDA1FeGFtcGxlIE9yZzEkMCIGA1UEAwwbY3JlZGVu\ndGlhbC1pc3N1ZXIuZXhhbXBsZS5nb3YwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNC\nAAR8w1QwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw\nQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw\nQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw\nQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw\n-----END CERTIFICATE REQUEST-----&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;submission_timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-09-25T14:30:00Z&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>The example below shows the decoded content of the CSR:</p>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-number">Listing 8.3 </span><span class="caption-text">CSR decoded content example</span><a class="headerlink" href="#id8" title="Link to this code">¶</a></div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Certificate Request:
     Data:
         Version: 0 (0x0)
@@ -843,8 +867,8 @@
 <section id="trust-mark-structure">
 <h4><span class="section-number">8.4.5.2. </span>Trust Mark Structure<a class="headerlink" href="#trust-mark-structure" title="Link to this heading">¶</a></h4>
 <p>Trust Marks in Entity Configuration MUST be represented as JSON objects containing the following claims:</p>
-<table class="longtable docutils align-default" id="id8">
-<caption><span class="caption-number">Table 8.4 </span><span class="caption-text">Trust Mark Object Claims (in Entity Configuration)</span><a class="headerlink" href="#id8" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id9">
+<caption><span class="caption-number">Table 8.4 </span><span class="caption-text">Trust Mark Object Claims (in Entity Configuration)</span><a class="headerlink" href="#id9" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 80.0%" />
@@ -864,8 +888,8 @@
 </tbody>
 </table>
 <p>The Trust Mark JWT (contained in the <code class="docutils literal notranslate"><span class="pre">trust_mark</span></code> claim above) includes the following claims:</p>
-<table class="longtable docutils align-default" id="id9">
-<caption><span class="caption-number">Table 8.5 </span><span class="caption-text">Trust Mark JWT Claims</span><a class="headerlink" href="#id9" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id10">
+<caption><span class="caption-number">Table 8.5 </span><span class="caption-text">Trust Mark JWT Claims</span><a class="headerlink" href="#id10" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 80.0%" />
@@ -1095,7 +1119,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 20/11/2025.
+      Last updated on 24/11/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

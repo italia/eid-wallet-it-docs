@@ -82,7 +82,7 @@ La seguente procedura consente alle entità federate di:
 	- Scaricare le liste di revoca correnti.
 	- Analizzare il contenuto CRL e i periodi di validità.
 
-.. includeliteral:: ../../utils/crl-analysis.sh
+.. literalinclude:: ../../utils/crl-analysis.sh
    :language: bash
 
 
@@ -99,7 +99,7 @@ Le entità federate DOVREBBERO implementare controlli di revoca automatizzati pe
 
 Di seguito è fornito un esempio non normativo di script bash per la verifica dello stato di revoca dei certificati X.509:
 
-.. includeliteral:: ../../utils/certificate-revocation-verification.sh
+.. literalinclude:: ../../utils/certificate-revocation-verification.sh
    :language: bash
 
 
@@ -140,7 +140,7 @@ Le entità federate DEVONO implementare procedure diagnostiche per identificare 
 
 Il seguente esempio non normativo fornisce uno script per il test di connettività dell'infrastruttura dei certificati X.509 della Federazione:
 
-.. includeliteral:: ../../utils/federation-connectivity-test.sh
+.. literalinclude:: ../../utils/federation-connectivity-test.sh
    :language: bash
 
 

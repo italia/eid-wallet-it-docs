@@ -347,25 +347,9 @@ L'onboarding della federazione segue una procedura strutturata in 4 fasi che abi
 
 Un esempio non normativo della struttura delle informazioni tecniche che le Entità di Federazione inviano durante la richiesta di onboarding della Fase 1:
 
-.. code-block:: json
-
-  {
-    "entity_id": "https://credentials.example.gov",
-    "entity_type": "credential_issuer",
-    "jwks": {
-      "keys": [
-        {
-          "kid": "NsXymfIILEPR5Y0t",
-          "kty": "EC",
-          "x": "gXY4FApFJCj91Gpb1K9GEIouTq2X3L0K64Iq0ob4l_g",
-          "y": "l-6dcrIrFVdrzoY9cRJv9zNuFOR3MsDz6TSDhB0xEo4",
-          "crv": "P-256"
-        }
-      ]
-    },
-    "certificate_signing_request": "-----BEGIN CERTIFICATE REQUEST-----\nMIIBTTCB9QIBADCBkjELMAkGA1UEBhMCSVQxDjAMBgNVBAgMBUxhemlvMQ0wCwYD\nVQQHDARSb21hMRYwFAYDVQQKDA1QYWdvUEEgUy5wLkEuMSQwIgYDVQQDDBtmb28x\nMS5ibG9iLmNvcmUud2luZG93cy5uZXQxJjAkBgkqhkiG9w0BCQEWF3BhZ29wYXNw\nYUBwZWMucGFnb3BhLml0MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEgXY4FApF\nJCj91Gpb1K9GEIouTq2X3L0K64Iq0ob4l_g\n-----END CERTIFICATE REQUEST-----",
-    "submission_timestamp": "2025-09-25T14:30:00Z"
-  }
+.. literalinclude:: ../../examples/federation-onboarding-request-example.json
+   :language: json
+   :caption: Federation onboarding request example
 
 Di seguito viene mostrato il contenuto decodificato dell'esempio CSR sopra riportato per riferimento:
 

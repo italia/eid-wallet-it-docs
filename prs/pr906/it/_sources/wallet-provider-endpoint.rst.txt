@@ -14,7 +14,7 @@ Il Fornitore di Wallet, responsabile della fornitura di una Soluzione Wallet, DE
 .. note::
    I test relativi all'uso degli endpoint del Wallet Provider sono definiti in 
    :ref:`wallet-provider-test-matrix`, in particolare in 
-   :ref:`wallet-provider-backend-testcases`, 
+   :ref:`wallet-provider-backend-testcases`,
    :ref:`wallet-instance-testcases` e 
    :ref:`wallet-instance-optional-testcases`.
 
@@ -71,13 +71,11 @@ Se si verificano errori durante il processo di recupero, DEVE essere restituita 
 
 Di seguito è riportato un esempio non normativo di una risposta di errore:
 
-.. code:: http
+.. code-block:: http
 
    HTTP/1.1 403 Forbidden
    Content-Type: application/json
    Cache-Control: no-store
-
-.. code:: json
 
    {
      "error": "forbidden",
@@ -102,13 +100,11 @@ Se si verificano errori durante la Revoca dell'Istanza di Wallet, DEVE essere re
 
 Di seguito è riportato un esempio non normativo di una risposta di errore:
 
-.. code:: http
+.. code-block:: http
 
    HTTP/1.1 400 Bad Request
    Content-Type: application/json
    Cache-Control: no-store
-
-.. code:: json
 
    {
      "error": "bad_request",

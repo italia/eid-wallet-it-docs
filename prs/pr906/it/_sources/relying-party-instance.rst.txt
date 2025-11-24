@@ -213,13 +213,13 @@ Le Relying Party DEVONO verificare periodicamente l'autenticità e la sicurezza 
 Quando vengono rilevati problemi di sicurezza, le Relying Party DEVONO revocare l'App di Verifica, revocando il suo Certificato di Accesso X.509 (in caso di certificati a lunga durata), e in ogni caso, le Relying Party NON DEVONO consentire la riemissione di certificati.
 Di conseguenza, la revoca dell'App di Verifica Mobile DEVE essere legata alla validità dei Certificati di Accesso X.509.
 
-I Certificati X.509 a lunga durata seguono i requisiti relativi al loro ciclo di vita, definiti in :ref:`trust:L'Infrastruttura di Trust`.
+I Certificati X.509 a lunga durata seguono i requisiti relativi al loro ciclo di vita, definiti in :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
 
 
 App di Verifica Web
 --------------------------
 
-Le Web Instance operano controlli di sicurezza lato server che memorizzano in modo sicuro segreti e chiavi crittografiche in un ambiente controllato. Le App di Verifica Web DEVONO essere registrate presso la Trust Anchor o le Entità Intermediarie, secondo :ref:`trust:L'Infrastruttura di Trust`.
+Le Web Instance operano controlli di sicurezza lato server che memorizzano in modo sicuro segreti e chiavi crittografiche in un ambiente controllato. Le App di Verifica Web DEVONO essere registrate presso la Trust Anchor o le Entità Intermediarie, secondo :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
 
 
 Funzionalità dell'App di Verifica Web

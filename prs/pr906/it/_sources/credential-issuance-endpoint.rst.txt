@@ -242,7 +242,7 @@ Se si verificano errori durante la PAR Request, l'Authorization Server DEVE rest
 
 Di seguito è riportato un esempio non normativo di una response di errore.
 
-.. code:: http
+.. code-block:: http
 
   HTTP/1.1 400 Bad Request
   Content-Type: application/json
@@ -354,7 +354,7 @@ Se si verifica qualsiasi altro errore, l'Authorization Server DEVE reindirizzare
 
 Di seguito è riportato un esempio non normativo di una response di errore.
 
-.. code:: http
+.. code-block:: http
 
   HTTP/1.1 302 Found
   Location: https://client.example.com/cb?
@@ -538,7 +538,7 @@ Se si verificano errori durante la convalida della Token Request, l'Authorizatio
 
 Di seguito è riportato un esempio non normativo di una response di errore.
 
-.. code:: http
+.. code-block:: http
 
   HTTP/1.1 401 Unauthorized
   Content-Type: application/json;charset=UTF-8
@@ -858,7 +858,7 @@ Se si verifica qualsiasi altro errore, il Credential Issuer DEVE restituire una 
 
 Di seguito è riportato un esempio non normativo di una response di errore.
 
-.. code:: http
+.. code-block:: http
 
   HTTP/1.1 400 Bad Request
   Content-Type: application/json
@@ -961,7 +961,7 @@ Il seguente parametro viene utilizzato nella Deferred Credential Request:
 Il Credential Issuer DEVE invalidare il ``transaction_id`` dopo che l'Attestato Elettronico per cui era destinato è stata ottenuto dall'Istanza del Wallet.
 Di seguito è riportato un esempio non normativo di una Deferred Credential Request:
 
-.. code::
+.. code-block::
 
   POST /credential HTTP/1.1
   Host: eaa-provider.example.org
@@ -1047,7 +1047,7 @@ Se si verifica qualsiasi altro errore, il Credential Issuer DEVE restituire una 
 
 Di seguito è riportato un esempio non normativo di una response di errore.
 
-.. code:: http
+.. code-block:: http
 
   HTTP/1.1 400 Bad Request
   Content-Type: application/json

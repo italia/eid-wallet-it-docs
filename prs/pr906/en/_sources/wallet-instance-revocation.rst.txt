@@ -56,7 +56,7 @@ In both cases, by using the Wallet Provider portal (:ref:`WP_005–006 <wallet-p
 
 Below is a non-normative example of a Wallet Instances Retrieval Request.
 
-.. code:: http
+.. code-block:: http
 
    GET /wallet-instances HTTP/1.1
    Host: walletprovider.example.com
@@ -64,7 +64,7 @@ Below is a non-normative example of a Wallet Instances Retrieval Request.
 Upon a successful retrieval, the Wallet Provider MUST return a confirmation response, with the status of all Wallet Instances associated with the User (:ref:`WP_146 <wallet-instance-optional-testcases>`).
 Below is a non-normative example of a Wallet Instances Retrieval Response.
 
-.. code:: http
+.. code-block:: http
 
    HTTP/1.1 200 OK
    Content-Type: application/json
@@ -95,8 +95,6 @@ Below is a non-normative example of a Wallet Instance Revocation Request.
     {
       "status": "REVOKED"
     }
-
-
 
 
 Wallet Instance Revocation Response
