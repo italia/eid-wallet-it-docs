@@ -232,6 +232,7 @@ Authentic Source Registry Parameters
 
 The Authentic Source Registry MUST contain the following parameters for each registered Authentic Source:
 
+
 .. list-table:: First-level Fields of the Authentic Source Registry
    :class: longtable
    :widths: 30 70
@@ -245,6 +246,7 @@ The Authentic Source Registry MUST contain the following parameters for each reg
      - REQUIRED. The timestamp indicating when the list was last updated (e.g., ``2025-03-15T12:00:00Z``).
    * - **authentic_sources**
      - REQUIRED. A JSON Array where each entry is a JSON Object representing an Authentic Source entity. Each object contains the parameters defined in the "Authentic Sources Parameters" table below, including entity identification, organizational information, data capabilities, and integration methods.
+
 
 .. list-table:: Authentic Sources Parameters
    :class: longtable
@@ -462,6 +464,7 @@ The main Entities involved in the Digital Credential Catalog are:
 
 The following table summarizes the main information that MUST be provided by the Digital Credential Catalog:
 
+
 .. list-table:: Digital Credential Catalog - Main information
    :class: longtable
    :widths: 30 70
@@ -504,6 +507,7 @@ Digital Credentials Hierarchy
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Digital Credentials recognized within the IT-Wallet ecosystem are hierarchically classified and standardized according to the following main domains and purposes. Additional purposes MAY be added as the IT-Wallet ecosystem grows.
+
 
 .. _it-wallet-dc-domains:
 .. list-table:: Digital Credential Domains and Purposes
@@ -577,6 +581,7 @@ Digital Credentials Catalog Structure
 
 Digital Credentials Catalog contents is secured in a JWS that contains the following JOSE header parameters:
 
+
 .. _table_catalog_parameters:
 .. list-table::
    :class: longtable
@@ -604,6 +609,7 @@ Digital Credentials Catalog contents is secured in a JWS that contains the follo
 
 The JWS payload contains the following parameters:
 
+
 .. list-table:: First-level Fields of the Digital Credentials Catalog
    :class: longtable
    :header-rows: 1
@@ -623,6 +629,7 @@ The JWS payload contains the following parameters:
      - REQUIRED. A JSON Array containing definitions for Wallet App Attestations, including their supported formats, and associated claims. This Object is used by other entities, such as Issuers and Relying Parties, to retrieve information about the Wallet App Attestation formats supported within the ecosystem.
 
 Each element of the ``credentials`` array contains at least the following information:
+
 
 .. list-table:: First-level Fields of Each Credential Entry
   :class: longtable
@@ -685,6 +692,7 @@ Each element of the ``credentials`` array contains at least the following inform
   The union of ``credential_type`` and ``version`` MUST be unique in the Credentail Catalog.
 
 The ``wallet_app_attestations`` Object is an Array containing at least the following information for each entry:
+
 
 .. list-table:: Wallet App Attestations Fields
   :class: longtable
@@ -811,6 +819,7 @@ The **Schema Registry** is the authoritative inventory of all known and accepted
 
 The Schema Registry is accessible via the ``.well-known/it-wallet-registry`` discovery endpoint under the `schema_registry` field. It allows for the discovery of schema URIs and their cryptographic integrity checks.
 
+
 .. list-table:: First-level Fields of the Schema Registry
    :class: longtable
    :widths: 30 70
@@ -824,6 +833,7 @@ The Schema Registry is accessible via the ``.well-known/it-wallet-registry`` dis
      - REQUIRED. The timestamp indicating when the list was last updated (e.g., ``2025-03-15T12:00:00Z``).
    * - **schemas**
      - REQUIRED. A JSON Array where each entry is a JSON Object representing a Credential Schema definition. Each object contains the parameters defined in the "Schema Definition Parameters" table below, including schema identification, format specifications, URIs, and integrity verification data.
+
 
 .. list-table:: Schema Definition Parameters
    :widths: 25 75

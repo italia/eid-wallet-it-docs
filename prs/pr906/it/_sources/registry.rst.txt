@@ -232,6 +232,7 @@ Parametri del Registro delle Fonti Autentiche
 
 Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciascuna Fonte Autentica registrata:
 
+
 .. list-table:: Campi di Primo Livello del Registro delle Fonti Autentiche
    :class: longtable
    :widths: 30 70
@@ -245,6 +246,7 @@ Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciasc
      - RICHIESTO. Il timestamp che indica quando l'elenco è stato aggiornato l'ultima volta (es., ``2025-03-15T12:00:00Z``).
    * - **authentic_sources**
      - RICHIESTO. Un Array JSON dove ogni elemento è un Oggetto JSON che rappresenta un'entità Fonte Autentica. Ogni oggetto contiene i parametri definiti nella tabella "Parametri delle Fonti Autentiche" sottostante, inclusi identificazione dell'entità, informazioni organizzative, capacità dei dati e metodi di integrazione.
+
 
 .. list-table:: Parametri delle Fonti Autentiche
    :class: longtable
@@ -462,6 +464,7 @@ Le principali Entità coinvolte nel Catalogo delle Credenziali Digitali sono:
 
 La seguente tabella riassume le informazioni principali che DEVONO essere fornite dal Catalogo delle Credenziali Digitali:
 
+
 .. list-table:: Catalogo delle Credenziali Digitali - Informazioni principali
    :class: longtable
    :widths: 30 70
@@ -504,6 +507,7 @@ Gerarchia delle Credenziali Digitali
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Le Credenziali Digitali riconosciute all'interno dell'ecosistema IT-Wallet sono classificate e standardizzate gerarchicamente secondo i seguenti domini e scopi principali. Scopi aggiuntivi POSSONO essere aggiunti man mano che l'ecosistema IT-Wallet cresce.
+
 
 .. _it-wallet-dc-domains:
 .. list-table:: Domini e Scopi delle Credenziali Digitali
@@ -577,6 +581,7 @@ Struttura del Catalogo delle Credenziali Digitali
 
 Il contenuto del Catalogo delle Credenziali Digitali è protetto in un JWS che contiene i seguenti parametri dell'header JOSE:
 
+
 .. _table_catalog_parameters:
 .. list-table::
    :class: longtable
@@ -604,6 +609,7 @@ Il contenuto del Catalogo delle Credenziali Digitali è protetto in un JWS che c
 
 Il payload JWS contiene i seguenti parametri:
 
+
 .. list-table:: Campi di Primo Livello del Catalogo delle Credenziali Digitali
    :class: longtable
    :header-rows: 1
@@ -623,6 +629,7 @@ Il payload JWS contiene i seguenti parametri:
      - RICHIESTO. Un Array JSON contenente definizioni per le Attestazioni dell'App Wallet, inclusi i loro formati supportati e i claims associati. Questo Oggetto è usato da altre entità, come Emittenti e Relying Parties, per recuperare informazioni sui formati di Attestazione dell'App Wallet supportati all'interno dell'ecosistema.
 
 Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazioni:
+
 
 .. list-table:: Campi di Primo Livello di Ciascuna Voce di Credenziale
   :class: longtable
@@ -685,6 +692,7 @@ Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazion
   L'unione di ``credential_type`` e ``version`` DEVE essere univoca nel Catalogo delle Credenziali.
 
 L'Oggetto ``wallet_app_attestations`` è un Array contenente almeno le seguenti informazioni per ciascuna voce:
+
 
 .. list-table:: Campi delle Attestazioni dell'App Wallet
   :class: longtable
@@ -811,6 +819,7 @@ Il **Registro degli Schema** è l'inventario autorevole di tutti gli **Schema de
 
 Il Registro degli Schema è accessibile tramite l'endpoint di scoperta ``.well-known/it-wallet-registry`` sotto il campo `schema_registry`. Permette la scoperta di URI degli schema e i loro controlli di integrità crittografica.
 
+
 .. list-table:: Campi di Primo Livello del Registro degli Schema
    :class: longtable
    :widths: 30 70
@@ -824,6 +833,7 @@ Il Registro degli Schema è accessibile tramite l'endpoint di scoperta ``.well-k
      - RICHIESTO. Il timestamp che indica quando l'elenco è stato aggiornato l'ultima volta (es., ``2025-03-15T12:00:00Z``).
    * - **schemas**
      - RICHIESTO. Un Array JSON dove ogni elemento è un Oggetto JSON che rappresenta una definizione di Schema di Credenziale. Ogni oggetto contiene i parametri definiti nella tabella "Parametri della Definizione dello Schema" sottostante, inclusi identificazione dello schema, specifiche del formato, URI e dati di verifica dell'integrità.
+
 
 .. list-table:: Parametri della Definizione dello Schema
    :widths: 25 75
@@ -869,17 +879,17 @@ I componenti del registro sono interconnessi e lavorano insieme per supportare l
 5. **Registro degli Schema** ↔ **Emittente/RP**: Fornisce il collegamento verificabile a tutte le specifiche di formato delle Credenziali conosciute usate nell'ecosistema.
 
 
-Percorsi di Utilizzo dell'Infrastruttura di Registro
+Utilizzo dell'Infrastruttura di Registro
 -----------------------------------------------------
 
 
-I componenti dell'Infrastruttura di Registro sono progettati per supportare varie fasi operative dell'ecosistema IT-Wallet, ciascuna coinvolgendo interazioni specifiche tra entità.
-I principali Percorsi di seguito illustrano le interazioni con l'Infrastruttura di Registro.
+I componenti dell'Infrastruttura di Registro sono progettati per supportare le varie fasi operative dell'ecosistema IT-Wallet, ciascuna coinvolgendo interazioni specifiche tra entità.
+I principali Percorsi di utilizzo illustrano di seguito le interazioni con l'Infrastruttura di Registro.
 
 Navigazione del Catalogo
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Questo percorso *Navigazione del Catalogo* supporta gli Utenti (sia utenti umani tramite un'**Istanza Wallet** che sistemi automatizzati come **Relying Parties** o portali web) nella scoperta e selezione delle Credenziali Digitali disponibili.
+Il percorso di utilizzo *Navigazione del Catalogo* supporta gli Utenti (sia utenti umani tramite un'**Istanza Wallet** che sistemi automatizzati come **Relying Parties** o portali web) nella scoperta e selezione delle Credenziali Digitali disponibili.
 
 1.  **Accesso all'Endpoint di Scoperta**: L'entità (es., un Fornitore di Wallet o portale informativo) accede all'`Endpoint di Scoperta del Registro` (``.well-known/it-wallet-registry``) per ottenere l'URI del **Catalogo delle Credenziali Digitali**.
 
