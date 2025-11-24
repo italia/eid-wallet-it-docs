@@ -905,7 +905,7 @@ This journey defines how a Credential Issuer uses the Registry Infrastructure to
     * The CI accesses the **Claims Registry** to retrieve the standardized semantic definitions and data formats (data types) of the necessary attributes (claims).
 3.  **Authentic Data Retrieval**:
     * The CI consults the **Authentic Source (AS) Registry** to identify the authorized **Authentic Source** (AS) for the required dataset. The AS Registry provides the AS's ``entity_id`` and the technical details of the interface (`integration_endpoint`, `integration_method`).
-    * The CI consults the AS endpoint specification to implement the integration needed to retrieve the user data required to populate the  Digital Credential.
+    * The CI consults the AS endpoint specification to implement the integration needed to retrieve the User data required to populate the Digital Credential.
 4.  **Credential Issuance**: The CI uses the retrieved data, validated schemas, and specified formats to generate and sign the Digital Credential in the correct format (e.g., SD-JWT or mDOC).
 
 Credential Presentation and Verification
