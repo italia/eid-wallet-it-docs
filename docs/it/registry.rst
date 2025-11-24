@@ -237,8 +237,8 @@ Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciasc
    :widths: 30 70
    :header-rows: 1
 
-* - Nome del Campo
-     - Descrizione
+   * - **Nome del Campo**
+     - **Descrizione**
    * - **version**
      - RICHIESTO. La versione del Registro delle Fonti Autentiche (es., ``1.0``).
    * - **last_modified**
@@ -467,8 +467,8 @@ La seguente tabella riassume le informazioni principali che DEVONO essere fornit
    :widths: 30 70
    :header-rows: 1
 
-   * - Informazioni relative a
-     - Descrizione
+   * - **Informazioni relative a**
+     - **Descrizione**
    * - Metadati della Credenziale Digitale
      - Informazioni identificative essenziali e caratteristiche della Credenziale Digitale, inclusi:
 
@@ -609,8 +609,8 @@ Il payload JWS contiene i seguenti parametri:
    :header-rows: 1
    :widths: 30 70
 
-   * - Nome del Campo
-     - Descrizione
+   * - **Nome del Campo**
+     - **Descrizione**
    * - **version**
      - RICHIESTO. Versione del formato del Catalogo delle Credenziali Digitali.
    * - **last_modified**
@@ -629,8 +629,8 @@ Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazion
   :header-rows: 1
   :widths: 30 70
 
-  * - Nome del Campo
-    - Descrizione
+  * - **Nome del Campo**
+    - **Descrizione**
   * - **version**
     - RICHIESTO. Versione della definizione della Credenziale Digitale.
   * - **credential_type**
@@ -691,8 +691,8 @@ L'Oggetto ``wallet_app_attestations`` è un Array contenente almeno le seguenti 
   :header-rows: 1
   :widths: 30 70
 
-  * - Nome del Campo
-    - Descrizione
+  * - **Nome del Campo**
+    - **Descrizione**
   * - **version**
     - RICHIESTO. Versione della definizione dell'Attestazione dell'App Wallet.
   * - **credential_type**
@@ -816,8 +816,8 @@ Il Registro degli Schema è accessibile tramite l'endpoint di scoperta ``.well-k
    :widths: 30 70
    :header-rows: 1
 
-* - Nome del Campo
-     - Descrizione
+   * - **Nome del Campo**
+     - **Descrizione**
    * - **version**
      - RICHIESTO. La versione del Registro degli Schema (es., ``1.0``).
    * - **last_modified**
@@ -829,8 +829,8 @@ Il Registro degli Schema è accessibile tramite l'endpoint di scoperta ``.well-k
    :widths: 25 75
    :header-rows: 1
 
-   * - Nome del Campo
-     - Descrizione
+   * - **Nome del Campo**
+     - **Descrizione**
    * - **id**
      - RICHIESTO. L'identificatore univoco dello schema (es., ``mDL+mso_mdoc+org.iso.18013.5.1.mDL``).
    * - **version**
@@ -866,7 +866,6 @@ I componenti del registro sono interconnessi e lavorano insieme per supportare l
 2. **Registro AS** ↔ **Catalogo**: I tipi di credenziali fanno riferimento alle capacità AS per la validazione della fonte dati.
 3. **Catalogo** ↔ **Tassonomia**: Le voci delle credenziali specificano domini e scopi dalla tassonomia per discovery e autorizzazione.
 4. **Registro della Federazione** ↔ **Tutti i Componenti**: Fornisce validazione del trust crittografico per tutte le operazioni del registro e autenticazione delle entità.
-5. **Schema Registry** ↔ **Issuer/RPs**: XXXX
 5. **Registro degli Schema** ↔ **Emittente/RP**: Fornisce il collegamento verificabile a tutte le specifiche di formato delle Credenziali conosciute usate nell'ecosistema.
 
 
@@ -924,3 +923,4 @@ Questo percorso descrive come un'**Istanza Wallet** e una **Relying Party (RP)**
     * L'RP esegue il controllo finale per garantire che gli attributi presentati siano conformi ai requisiti specifici della richiesta iniziale e della policy di autorizzazione.
 
 4.  **Accettazione o Rifiuto**: In base alla validazione crittografica, alla conformità dello schema e all'autorizzazione basata su policy, l'RP accetta o rifiuta la Credenziale per l'accesso al servizio.
+

@@ -157,7 +157,7 @@ The AS Registry MUST ensure:
    Authentic Source Registry is a technical and non-public registry that provides guidance for the Credential Issuer for Credential provisioning.
 
 Authentic Source Registry Usage
-^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The AS Registry supports ecosystem coordination throughout the operational lifecycle:
 
@@ -228,7 +228,7 @@ The AS identifier MUST follow these normative rules:
 
 
 Authentic Source Registry Parameters
-""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""
 
 The Authentic Source Registry MUST contain the following parameters for each registered Authentic Source:
 
@@ -237,8 +237,8 @@ The Authentic Source Registry MUST contain the following parameters for each reg
    :widths: 30 70
    :header-rows: 1
 
-* - Field Name
-     - Description
+   * - **Field Name**
+     - **Description**
    * - **version**
      - REQUIRED. The version of the Authentic Source Registry (e.g., ``1.0``).
    * - **last_modified**
@@ -467,8 +467,8 @@ The following table summarizes the main information that MUST be provided by the
    :widths: 30 70
    :header-rows: 1
 
-   * - Information related to
-     - Description
+   * - **Information related to**
+     - **Description**
    * - Digital Credential Metadata
      - Essential identifying information and characteristics of the Digital Credential, including:
 
@@ -583,9 +583,9 @@ Digital Credentials Catalog contents is secured in a JWS that contains the follo
    :header-rows: 1
    :widths: 25 50 25
 
-   * - JOSE header
-     - Description
-     - Reference
+   * - **JOSE header**
+     - **Description**
+     - **Reference**
    * - **typ**
      - REQUIRED. It MUST be set to ``JOSE``.
      - [:rfc:`7515` Section 4.1.9].
@@ -609,8 +609,8 @@ The JWS payload contains the following parameters:
    :header-rows: 1
    :widths: 30 70
 
-   * - Field Name
-     - Description
+   * - **Field Name**
+     - **Description**
    * - **version**
      - REQUIRED. Version of the Digital Credential Catalog format.
    * - **last_modified**
@@ -629,8 +629,8 @@ Each element of the ``credentials`` array contains at least the following inform
   :header-rows: 1
   :widths: 30 70
 
-  * - Field Name
-    - Description
+  * - **Field Name**
+    - **Description**
   * - **version**
     - REQUIRED. Version of the Digital Credential definition.
   * - **credential_type**
@@ -691,8 +691,8 @@ The ``wallet_app_attestations`` Object is an Array containing at least the follo
   :header-rows: 1
   :widths: 30 70
 
-  * - Field Name
-    - Description
+  * - **Field Name**
+    - **Description**
   * - **version**
     - REQUIRED. Version of the Wallet App Attestation definition.
   * - **credential_type**
@@ -816,8 +816,8 @@ The Schema Registry is accessible via the ``.well-known/it-wallet-registry`` dis
    :widths: 30 70
    :header-rows: 1
 
-* - Field Name
-     - Description
+   * - **Field Name**
+     - **Description**
    * - **version**
      - REQUIRED. The version of the Schema Registry (e.g., ``1.0``).
    * - **last_modified**
@@ -829,8 +829,8 @@ The Schema Registry is accessible via the ``.well-known/it-wallet-registry`` dis
    :widths: 25 75
    :header-rows: 1
 
-   * - Field Name
-     - Description
+   * - **Field Name**
+     - **Description**
    * - **id**
      - REQUIRED. The unique identifier of the scheme (e.g., ``mDL+mso_mdoc+org.iso.18013.5.1.mDL``).
    * - **version**
@@ -923,3 +923,4 @@ This journey describes how a **Wallet Instance** and a **Relying Party (RP)** in
     * The RP performs the final check to ensure that the attributes presented comply with the specific requirements of the initial request and authorization policy.
 
 4.  **Acceptance or Rejection**: Based on cryptographic validation, schema compliance, and policy-based authorization, the RP accepts or rejects the Credential for service access.
+
