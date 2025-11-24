@@ -916,7 +916,7 @@ Questo percorso descrive come un'**Istanza Wallet** e una **Relying Party (RP)**
 
 2.  **Scoperta e Integrità**:
     * L'RP riceve la Credenziale Digitale dall'Utente.
-    * L'RP consulta il **Registro di Federazione** tramite l'endpoint del Trust Anchor (`federation_resolve`, `federation_trust_mark_status`) per verificare la **fiducia crittografica** (Trust Mark) dell'Emittente e del Fornitore di Wallet.
+    * L'RP consulta il **Registro di Federazione** tramite l'endpoint del Trust Anchor (`federation_resolve`, `federation_trust_mark_status`) per verificare la **fiducia crittografica** (Trust Mark) dell'Emittente e del Fornitore di Wallet, come definito nella Sezione :ref:`trust:L'Infrastruttura di Trust`.
     * L'RP consulta il **Registro degli Schema** per scaricare lo schema della Credenziale presentata (`schema_uri`), verificandone l'integrità (`schema_uri#integrity`).
 
 3.  **Validazione dello Schema e della Policy Finale**:
