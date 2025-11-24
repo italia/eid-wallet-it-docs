@@ -227,7 +227,7 @@ The AS identifier MUST follow these normative rules:
   - ``https://api.bank.example/auth-source``: Private - Example Bank Financial Services
 
 
-AS Registry Parameters
+Authentic Source Registry Parameters
 """"""""""""""""""""""
 
 The AS Registry MUST contain the following parameters for each registered Authentic Source:
