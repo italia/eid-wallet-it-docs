@@ -899,7 +899,7 @@ Credential Issuance
 
 This journey defines how a Credential Issuer uses the Registry Infrastructure to prepare and issue a compliant Digital Credential.
 
-1.  **Identifying Requirements**: The CI consults the **Digital Credentials Catalog** for the technical requirements of the credential type to be issued (e.g., `max_validity_days`, `min_loa`).
+1.  **Identifying Requirements**: The CI consults the **Digital Credentials Catalog** for the technical requirements of the Credential type to be issued (e.g., ``max_validity_days``, ``min_loa``).
 2.  **Schema and Claim Resolution**:
     * The CI consults the **Schema Registry** to retrieve the technical specification of the format and schema (e.g., JSON Schema for SD-JWT) required by the Catalog, ensuring validity and integrity via the hash (`schema_uri#integrity`).
     * The CI accesses the **Claims Registry** to retrieve the standardized semantic definitions and data formats (data types) of the necessary attributes (claims).
