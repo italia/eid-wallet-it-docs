@@ -188,11 +188,14 @@ The JOSE header of the Wallet App Attestation proof of possession, contained in 
     * - **JOSE header**
       - **Description**
       - **Reference**
+    * - **typ**
+      - It MUST be set to ``oauth-client-attestation-pop+jwt``
+      - `OAUTH-ATTESTATION-CLIENT-AUTH`_.
     * - **alg**
       - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms listed in the Section :ref:`algorithms:Cryptographic Algorithms` and MUST NOT be set to ``none`` or any symmetric algorithm (MAC) identifier.
       - :rfc:`7516#section-4.1.1`.
 
-The body of the Wallet App Attestation proof of possession JWT, contained in the HTTP Request headers, MUST contain:
+The body of the Wallet App Attestation proof of possession JWT, contained in the HTTP Request headers, contains:
 
 .. list-table::
     :class: longtable
@@ -203,20 +206,22 @@ The body of the Wallet App Attestation proof of possession JWT, contained in the
       - **Description**
       - **Reference**
     * - **iss**
-      - Thumbprint of the JWK in the ``cnf`` parameter.
+      - REQUIRED. Thumbprint of the JWK in the ``cnf`` parameter.
       - :rfc:`9126` and :rfc:`7519`.
     * - **aud**
-      - It MUST be set to the identifier of the Credential Issuer.
-      - :rfc:`9126` and :rfc:`7519`.
-    * - **exp**
-      - UNIX Timestamp with the expiry time of the JWT.
+      - REQUIRED. It MUST be set to the identifier of the Credential Issuer.
       - :rfc:`9126` and :rfc:`7519`.
     * - **iat**
-      - UNIX Timestamp with the time of JWT issuance.
+      - REQUIRED. UNIX Timestamp with the time of JWT issuance.
       - :rfc:`9126` and :rfc:`7519`.
     * - **jti**
-      - Unique identifier for the DPoP proof JWT. The value SHOULD be set using a *UUID v4* value according to [:rfc:`4122`].
+      - REQUIRED. Unique identifier for the DPoP proof JWT. The value SHOULD be set using a *UUID v4* value according to [:rfc:`4122`].
       - [:rfc:`7519`. Section 4.1.7].
+    * - **nbf**
+      - OPTIONAL. UNIX Timestamp with the start time of validity of the JWT issuance.
+      - :rfc:`9126` and :rfc:`7519`.
+
+
 
 Pushed Authorization Request (PAR) Response
 ...........................................
@@ -271,9 +276,12 @@ In the following table are listed HTTP Status Codes and related error codes that
     * - *400 Bad Request* [REQUIRED]
       - ``invalid_scope``
       - The Credential Issuer cannot fulfill the request because the requested scope is invalid or unknown. (:rfc:`6749#section-5.2`).
+    * - *400 Bad Request* [REQUIRED]
+      - ``use_fresh_attestation``
+      - The Credential Issuer cannot fulfill the request because the requested scope is invalid or unknown. Section 6.2 of `OAUTH-ATTESTATION-CLIENT-AUTH`_.
     * - *401 Unauthorized* [REQUIRED]
       - ``invalid_client``
-      - The Credential Issuer cannot fulfill the request because of Client Authentication failed (for example in case of unknown client, no parameters Client Authentication included, or unsupported authentication method). (:rfc:`6749#section-5.2`).
+      - Them Wallet App Attestation JWT is not fresh enough to be acceptable by the server.  (:rfc:`6749#section-5.2`).
     * - *405 Method not allowed* [OPTIONAL]
       - `-`
       - The Credential Issuer cannot fulfill the request because POST method was not used in the request. (:rfc:`9126#section-2.3`).
