@@ -134,7 +134,7 @@ The Credential Issuer performs the following checks upon the receipt of the PAR 
     8. It MUST check that the Request Object is not expired, checking the ``exp`` claim.
     9. It MUST check that the Request Object was issued in a previous time than the value exposed in the ``iat`` claim. It SHOULD reject the request if the ``iat`` claim is far from the current time (:rfc:`9126`) of more than `5` minutes.
     10. It MUST check that the ``jti`` claim in the Request Object has not been used before by the Wallet Instance identified by the ``client_id``. This allows the Credential Issuer to mitigate replay attacks (:rfc:`7519`).
-    11. It MUST validate the ``OAuth-Client-Attestation-PoP`` parameter based on Section 4 of [`OAUTH-ATTESTATION-CLIENT-AUTH`_].
+    11. It MUST validate the ``OAuth-Client-Attestation-PoP`` parameter based on Section 5 of [`OAUTH-ATTESTATION-CLIENT-AUTH`_].
 
 Below a non-normative example of the PAR Request.
 
@@ -538,7 +538,7 @@ A non-normative example of the token request for a DPoP Access Token using a Ref
 
 **Step 3**: The Credential Issuer validates the request according to the following checks:
 
-  - It MUST validate the OAuth-Client-Attestation-PoP parameter based on Section 4 of [`OAUTH-ATTESTATION-CLIENT-AUTH`_].
+  - It MUST validate the OAuth-Client-Attestation-PoP parameter based on Section 5 of [`OAUTH-ATTESTATION-CLIENT-AUTH`_].
   - It MUST validate the DPoP Proof JWT, according to (:RFC:`9449`) Section 4.3.
   - It MUST check that the Refresh Token is not expired, not revoked and is bound to the same set of DPoP key as the ones used in the DPoP Proof JWT.
 
