@@ -82,7 +82,7 @@ la richiesta all'authorization endpoint del Credential Issuer DEVE utilizzare i 
 
 
 .. note::
-  I client DOVREBBERO selezionare gli algoritmi da utilizzare per la Wallet Attestation e la relativa prova di possesso sulla base dei campi di metadata dell'Authorization Server
+  I client DOVREBBERO selezionare gli algoritmi da utilizzare per la Wallet App Attestation e la relativa prova di possesso sulla base dei campi di metadata dell'Authorization Server
   ``client_attestation_signing_alg_values_supported`` e ``client_attestation_pop_signing_alg_values_supported`` documentati in :ref:`credential-issuer-metadata:Metadata per oauth_authorization_server`.
 
 
@@ -219,7 +219,7 @@ Il body del JWT relativo alla prova di possesso dell'Attestato di Unità di Wall
       - OBBLIGATORIO. Identificativo univoco per il JWT *DPoP proof*. Il valore DOVREBBE essere impostato utilizzando un valore *UUID v4* secondo [:rfc:`4122`].
       - [:rfc:`7519`. Sezione 4.1.7].
     * - **nbf**
-      - OBBLIGATORIO. Timestamp UNIX con data e orario prima del quale il JWT NON DEVE essere accettato.
+      - OPZIONALE. Timestamp UNIX con data e orario prima del quale il JWT NON DEVE essere accettato.
       - :rfc:`9126` e :rfc:`7519`.
 
 Pushed Authorization Request (PAR) Response
