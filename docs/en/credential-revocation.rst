@@ -888,7 +888,12 @@ The following is an example of Status List Token before applying signature and e
   {
     "alg": "ES256",
     "kid": "$KID",
-    "typ": "statuslist+jwt"
+    "typ": "statuslist+jwt",
+    "x5c": [
+      "MIIDqjCCApKgAwIBAgIESLNEvDA ...",
+      "MIICwzCCAasCCQCKVy9eKjvi+jA ...",
+      "MIIDTDCCAjSgAwIBAgIJAPlnQYH..."
+    ]
   }
 
 .. code-block:: json
