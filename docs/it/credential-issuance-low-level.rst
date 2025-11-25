@@ -61,9 +61,9 @@ Il seguente diagramma mostra il *flusso di richiesta dell'Utente*.
 
 **Passi 2.1-2.3 (Flusso Avviato dall'Issuer):** L'Utente, mentre naviga sul sito web del Credential Issuer, trova un link per ottenere un Attestato Elettronico.
 
-**Passi 2.4-2.7 (Cross-Device):** La Credential Offer viene presentata come un codice QR mostrato all'Utente. L'Utente scansiona il codice QR utilizzando l'Istanza del Wallet, che recupera i parametri definiti nella :ref:`Tabella dei parametri della Credential Offer <table_credential_offer_claim>` (:ref:`WP_047–048 <wallet-credential-issuance-testcases>`).
+**Passi 2.4-2.6 (Cross-Device):** La Credential Offer viene presentata come un codice QR. L'Utente lo scansiona con la fotocamera del dispositivo o con lo scanner integrato dell'Istanza del Wallet, attivando l'Istanza del Wallet per recuperare i parametri definiti nella :ref:`Tabella dei parametri della Credential Offer <table_credential_offer_claim>` (:ref:`WP_047-048 <wallet-credential-issuance-testcases>`).
 
-**Passi 2.8-2.10 (Same-Device):** La Credential Offer viene presentata come un pulsante href contenente l'URL che consente all'Utente di invocare l'Istanza del Wallet utilizzando il Credential Offer Endpoint.
+**Passi 2.7-2.10 (Same-Device):** La Credential Offer viene presentata come un pulsante href contenente l'URL che consente all'Utente di invocare l'Istanza del Wallet utilizzando il Credential Offer Endpoint.
 
 Di seguito un esempio non normativo di un URL relativo a una Credential Offer che può essere incluso in un codice QR o in una pagina HTML con un pulsante href:
 

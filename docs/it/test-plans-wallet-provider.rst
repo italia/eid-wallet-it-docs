@@ -368,12 +368,12 @@ Questa sezione elenca i casi di test dalle Sezioni:
      - Istanza del Wallet costruisce e verifica la Trust Chain completa dal Credential Issuer attraverso Intermediari fino al Trust Anchor radice, assicurandosi che ogni firma sia valida.
    * - WP_047
      - Issuance, Interoperabilità
-     - Flusso Issuer-Initiated: scansione e decodifica QR Credential Offer
-     - In un flusso cross-device Issuer-Initiated, Istanza del Wallet scansiona con successo il codice QR, e decodifica l'URL ``credential_offer``.
+     - Flusso Third-Party-Initiated: scansione e decodifica QR Credential Offer
+     - In un flusso cross-device Third-Party-Initiated, Istanza del Wallet scansiona con successo il codice QR, e decodifica l'URL ``credential_offer``.
    * - WP_048
      - Issuance, Interoperabilità
-     - Flusso Issuer-Initiated: parsing Credential Offer
-     - In un flusso Issuer-Initiated, Istanza del Wallet estrae e valida tutti i parametri richiesti presenti (``iss``, ``credential_offer``, ecc.) nell'URL decodificato ``credential_offer``.
+     - Flusso Third-Party-Initiated: parsing Credential Offer
+     - In un flusso Third-Party-Initiated, Istanza del Wallet estrae e valida tutti i parametri richiesti presenti (``iss``, ``credential_offer``, ecc.) nell'URL decodificato ``credential_offer``.
    * - WP_049
      - Issuance, Interoperabilità
      - Flusso Issuer-Initiated: controllo identificativo dell'Authorization Server
