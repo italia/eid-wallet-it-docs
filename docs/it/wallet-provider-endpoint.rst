@@ -481,7 +481,7 @@ Il corpo del JWT della Wallet App Attestation contiene i seguenti claim:
       - OPZIONALE. Stringa contenente un nome leggibile dall'uomo del Wallet.
       - `OpenID4VCI`_.
     * - **status**
-      - OPZIONALE. Stringa contenente le informazioni su come leggere lo stato della Wallet .App Attestation come definito nella Sezione 6.2 di `TOKEN-STATUS-LIST`_.
+      - OPZIONALE. Stringa contenente le informazioni su come leggere lo stato della Wallet App Attestation come definito nella Sezione 6.2 di `TOKEN-STATUS-LIST`_.
       - `OpenID4VCI`_.
     * - **sub**
       - OBBLIGATORIO. Identificatore dell'Istanza di Wallet che è l'impronta digitale della JWK della Wallet App Attestation.

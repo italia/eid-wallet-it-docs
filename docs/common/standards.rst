@@ -57,7 +57,7 @@ Digital Credential Issuance
     * - `OPENID4VC-HAIP`_
       - Lodderstedt, T., K. Yasuda, "OpenID4VC High Assurance Interoperability Profile", January 2025, Draft 1.
     * - `OAUTH-ATTESTATION-CLIENT-AUTH`_
-      - Looker, T., Bastian, P., "OAuth 2.0 Attestation-Based Client Authentication", September 2025, Draft 7.
+      - Looker, T., Bastian, P., Bormann, C., "OAuth 2.0 Attestation-Based Client Authentication", September 2025, Draft 7.
     * - `OAUTH-MULT-RESP-TYPE`_
       - de Medeiros, B., Scurtescu, M., Tarjan, P., Jones, M., "OAuth 2.0 Multiple Response Type Encoding Practices", February 2014.
     * - `OIDC-IDA`_
