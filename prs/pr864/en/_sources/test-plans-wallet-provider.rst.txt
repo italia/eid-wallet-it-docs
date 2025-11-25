@@ -8,7 +8,7 @@ Wallet Provider Test Matrix
 This section provides the set of test cases for verifying conformance of a Wallet Solution and Wallet Instance implementation to the technical rules defined in the IT-Wallet ecosystem. 
 The test plan is based on the requirements extracted from the following Sections:
 
-- :ref:`trust:The Infrastructure of Trust`
+- :ref:`trust-infrastructure:The Infrastructure of Trust`
 - :ref:`wallet-solution:Wallet Solution`
 - :ref:`credential-issuance:Digital Credential Issuance`
 - :ref:`credential-presentation:Digital Credential Presentation`

@@ -443,55 +443,58 @@ publicly available. The table below summarises the endpoints and their scopes.</
 MUST keep it up-to-date. The federation configuration is the Trust Anchor's Entity Configuration, it contains the
 public keys for signature operations.</p>
 <p>Below is a non-normative example of a Trust Anchor Entity Configuration, where each parameter is documented in the <a class="reference external" href="OID-FED">OpenID Federation</a> specification:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
-    &quot;alg&quot;: &quot;ES256&quot;,
-    &quot;kid&quot;: &quot;FifYx03bnosD8m6gYQIfNHNP9cM_Sam9Tc5nLloIIrc&quot;,
-    &quot;typ&quot;: &quot;entity-statement+jwt&quot;
-}
-.
-{
-    &quot;exp&quot;: 1649375259,
-    &quot;iat&quot;: 1649373279,
-    &quot;iss&quot;: &quot;https://trust-anchor.eid-wallet.example.it&quot;,
-    &quot;sub&quot;: &quot;https://trust-anchor.eid-wallet.example.it&quot;,
-    &quot;jwks&quot;: {
-        &quot;keys&quot;: [
-            {
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FifYx03bnosD8m6gYQIfNHNP9cM_Sam9Tc5nLloIIrc&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;entity-statement+jwt&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1649375259</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1649373279</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;jwks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;keys&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
 
-                &quot;kty&quot;: &quot;EC&quot;,
-                &quot;kid&quot;: &quot;X2ZOMHNGSDc4ZlBrcXhMT3MzRmRZOG9Jd3o2QjZDam51cUhhUFRuOWd0WQ&quot;,
-                &quot;crv&quot;: &quot;P-256&quot;,
-                &quot;x&quot;: &quot;1kNR9Ar3MzMokYTY8BRvRIue85NIXrYX4XD3K4JW7vI&quot;,
-                &quot;y&quot;: &quot;slT14644zbYXYF-xmw7aPdlbMuw3T1URwI4nafMtKrY&quot;,
-                &quot;x5c&quot;: [ &lt;self-issued X.509 certificate about the Trust Anchor&gt; ]
-            }
-        ]
-    },
-    &quot;metadata&quot;: {
-        &quot;federation_entity&quot;: {
-            &quot;organization_name&quot;: &quot;example TA&quot;,
-            &quot;contacts&quot;:[
-                &quot;tech@eid.trust-anchor.example.eu&quot;
-            ],
-            &quot;homepage_uri&quot;: &quot;https://trust-anchor.eid-wallet.example.it&quot;,
-            &quot;logo_uri&quot;:&quot;https://trust-anchor.eid-wallet.example.it/static/svg/logo.svg&quot;,
-            &quot;federation_fetch_endpoint&quot;: &quot;https://trust-anchor.eid-wallet.example.it/fetch&quot;,
-            &quot;federation_resolve_endpoint&quot;: &quot;https://trust-anchor.eid-wallet.example.it/resolve&quot;,
-            &quot;federation_list_endpoint&quot;: &quot;https://trust-anchor.eid-wallet.example.it/list&quot;,
-            &quot;federation_trust_mark_status_endpoint&quot;: &quot;https://trust-anchor.eid-wallet.example.it/trust_mark_status&quot;,
-            &quot;federation_subordinate_events_endpoint&quot;: &quot;https://trust-anchor.eid-wallet.example.it/events&quot;
-        }
-    },
-    &quot;trust_mark_issuers&quot;: {
-        &quot;https://trust-anchor.eid-wallet.example.it/openid_relying_party/public&quot;: [
-            &quot;https://trust-anchor.eid-wallet.example.it&quot;,
-            &quot;https://public.intermediary.other.org&quot;
-        ],
-        &quot;https://trust-anchor.eid-wallet.example.it/openid_relying_party/private&quot;: [
-            &quot;https://private.other.intermediary.org&quot;
-        ]
-    }
-}
+<span class="w">                </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;X2ZOMHNGSDc4ZlBrcXhMT3MzRmRZOG9Jd3o2QjZDam51cUhhUFRuOWd0WQ&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;crv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1kNR9Ar3MzMokYTY8BRvRIue85NIXrYX4XD3K4JW7vI&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;slT14644zbYXYF-xmw7aPdlbMuw3T1URwI4nafMtKrY&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;x5c&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                  </span><span class="c1">// &lt;self-issued X.509 certificate about the Trust Anchor&gt;</span>
+<span class="w">                  </span><span class="p">]</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;federation_entity&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;organization_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;example TA&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;contacts&quot;</span><span class="p">:[</span>
+<span class="w">                </span><span class="s2">&quot;tech@eid.trust-anchor.example.eu&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;homepage_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/static/svg/logo.svg&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;federation_fetch_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/fetch&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;federation_resolve_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/resolve&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;federation_list_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/list&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;federation_trust_mark_status_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/trust_mark_status&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;federation_subordinate_events_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/events&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;trust_mark_issuers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;https://trust-anchor.eid-wallet.example.it/openid_relying_party/public&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;https://public.intermediary.other.org&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;https://trust-anchor.eid-wallet.example.it/openid_relying_party/private&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;https://private.other.intermediary.org&quot;</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>
@@ -725,54 +728,57 @@ The Subordinate Statement MAY contain a metadata policy and the Trust Marks rela
 <p><strong>Role in Onboarding</strong>: During entity registration, Trust Anchors and Intermediates issue Subordinate Statements to formally attest the registration and capabilities of new entities. These statements establish the hierarchical trust relationship and apply any required metadata policies that constrain or enhance the entity's declared capabilities based on federation policies.</p>
 <p><strong>Role in Operations</strong>: During credential operations, Subordinate Statements are retrieved to validate trust chains and apply current metadata policies. They enable real-time verification of an entity's registration status and ensure that operational capabilities comply with federation-wide policies and the entity's authorized scope.</p>
 <p>Below there is a non-normative example of an Subordinate Statement issued by an Registration Body (such as the Trust Anchor or its Intermediate) in relation to one of its Subordinates.</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
-    &quot;alg&quot;: &quot;ES256&quot;,
-    &quot;kid&quot;: &quot;em3cmnZgHIYFsQ090N6B3Op7LAAqj8rghMhxGmJstqg&quot;,
-    &quot;typ&quot;: &quot;entity-statement+jwt&quot;
-}
-.
-{
-    &quot;exp&quot;: 1649623546,
-    &quot;iat&quot;: 1649450746,
-    &quot;iss&quot;: &quot;https://intermediate.example.org&quot;,
-    &quot;sub&quot;: &quot;https://rp.example.it&quot;,
-    &quot;jwks&quot;: {
-        &quot;keys&quot;: [ // keys about the Subordinate
-            {
-                &quot;kty&quot;: &quot;EC&quot;,
-                &quot;kid&quot;: &quot;2HnoFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs&quot;,
-                &quot;crv&quot;: &quot;P-256&quot;,
-                &quot;x&quot;: &quot;1kNR9Ar3MzMokYTY8BRvRIue85NIXrYX4XD3K4JW7vI&quot;,
-                &quot;y&quot;: &quot;slT14644zbYXYF-xmw7aPdlbMuw3T1URwI4nafMtKrY&quot;,
-                &quot;x5c&quot;: [ &lt;X.509 certificate about the Subordinate&gt; ]
-            }
-        ]
-    },
-    &quot;metadata_policy&quot;: {
-        &quot;openid_credential_verifier&quot;: {
-            &quot;scope&quot;: {
-                &quot;subset_of&quot;: [
-                     &quot;eu.europa.ec.eudiw.pid.1&quot;,
-                     &quot;given_name&quot;,
-                     &quot;family_name&quot;,
-                     &quot;email&quot;
-                  ]
-            },
-            &quot;vp_formats&quot;: {
-                &quot;dc+sd-jwt&quot;: {
-                    &quot;sd-jwt_alg_values&quot;: [
-                        &quot;ES256&quot;,
-                        &quot;ES384&quot;
-                    ],
-                    &quot;kb-jwt_alg_values&quot;: [
-                        &quot;ES256&quot;,
-                        &quot;ES384&quot;
-                    ]
-                }
-            }
-        }
-     }
-}
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;em3cmnZgHIYFsQ090N6B3Op7LAAqj8rghMhxGmJstqg&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;entity-statement+jwt&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1649623546</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1649450746</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://intermediate.example.org&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://rp.example.it&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;jwks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;keys&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="c1">// keys about the Subordinate</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2HnoFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;crv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1kNR9Ar3MzMokYTY8BRvRIue85NIXrYX4XD3K4JW7vI&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;slT14644zbYXYF-xmw7aPdlbMuw3T1URwI4nafMtKrY&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;x5c&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                  </span><span class="c1">// &lt;X.509 certificate about the Subordinate&gt;</span>
+<span class="w">                  </span><span class="p">]</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;metadata_policy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;openid_credential_verifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;scope&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;subset_of&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                     </span><span class="s2">&quot;eu.europa.ec.eudiw.pid.1&quot;</span><span class="p">,</span>
+<span class="w">                     </span><span class="s2">&quot;given_name&quot;</span><span class="p">,</span>
+<span class="w">                     </span><span class="s2">&quot;family_name&quot;</span><span class="p">,</span>
+<span class="w">                     </span><span class="s2">&quot;email&quot;</span>
+<span class="w">                  </span><span class="p">]</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;vp_formats&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;dc+sd-jwt&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;sd-jwt_alg_values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="s2">&quot;ES384&quot;</span>
+<span class="w">                    </span><span class="p">],</span>
+<span class="w">                    </span><span class="nt">&quot;kb-jwt_alg_values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="s2">&quot;ES384&quot;</span>
+<span class="w">                    </span><span class="p">]</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">     </span><span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -929,9 +935,7 @@ The Trust Evaluation mechanisms are distinct from protocol flows and are impleme
 <p>Below is a non-normative example of a Trust Chain, composed by a JSON Array containing JWTs, with an Intermediate involved.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
 <span class="w">  </span><span class="s2">&quot;eyJhbGciOiJFUzI1NiIsImtpZCI6Ik5GTTFXVVZpVWxZelVXcExhbWxmY0VwUFJWWTJWWFpJUmpCblFYWm1SSGhLWVVWWVVsZFRRbkEyTkEiLCJ0eXAiOiJhcHBsaWNhdGlvbi9lbnRpdHktc3RhdGVtZW50K2p3dCJ9.eyJleHAiOjE2NDk1OTA2MDIsImlhdCI6MTY0OTQxNzg2MiwiaXNzIjoiaHR0cHM6Ly9ycC5leGFtcGxlLm9yZyIsInN1YiI6Imh0dHBzOi8vcnAuZXhhbXBsZS5vcmciLCJqd2tzIjp7ImtleXMiOlt7Imt0eSI6IkVDIiwia2lkIjoiTkZNMVdVVmlVbFl6VVdwTGFtbGZjRXBQUlZZMlZYWklSakJuUVhabVJIaEtZVVZZVWxkVFFuQTJOQSIsImNydiI6IlAtMjU2IiwieCI6InVzbEMzd2QtcFgzd3o0YlJZbnd5M2x6cGJHWkZoTjk2aEwyQUhBM01RNlkiLCJ5IjoiVkxDQlhGV2xkTlNOSXo4a0gyOXZMUjROMThCa3dHT1gyNnpRb3J1UTFNNCJ9XX0sIm1ldGFkYXRhIjp7Im9wZW5pZF9yZWx5aW5nX3BhcnR5Ijp7ImFwcGxpY2F0aW9uX3R5cGUiOiJ3ZWIiLCJjbGllbnRfaWQiOiJodHRwczovL3JwLmV4YW1wbGUub3JnLyIsImNsaWVudF9yZWdpc3RyYXRpb25fdHlwZXMiOlsiYXV0b21hdGljIl0sImp3a3MiOnsia2V5cyI6W3sia3R5IjoiRUMiLCJraWQiOiJORk0xV1VWaVVsWXpVV3BMYW1sZmNFcFBSVlkyVlhaSVJqQm5RWFptUkhoS1lVVllVbGRUUW5BMk5BIiwiY3J2IjoiUC0yNTYiLCJ4IjoidXNsQzN3ZC1wWDN3ejRiUllud3kzbHpwYkdaRmhOOTZoTDJBSEEzTVE2WSIsInkiOiJWTENCWEZXbGROU05JejhrSDI5dkxSNE4xOEJrd0dPWDI2elFvcnVRMU00In1dfSwiY2xpZW50X25hbWUiOiJOYW1lIG9mIGFuIGV4YW1wbGUgb3JnYW5pemF0aW9uIiwiY29udGFjdHMiOlsib3BzQHJwLmV4YW1wbGUuaXQiXSwiZ3JhbnRfdHlwZXMiOlsicmVmcmVzaF90b2tlbiIsImF1dGhvcml6YXRpb25fY29kZSJdLCJyZWRpcmVjdF91cmlzIjpbImh0dHBzOi8vcnAuZXhhbXBsZS5vcmcvb2lkYy9ycC9jYWxsYmFjay8iXSwicmVzcG9uc2VfdHlwZXMiOlsiY29kZSJdLCJzY29wZSI6ImV1LmV1cm9wYS5lYy5ldWRpdy5waWQuMSBldS5ldXJvcGEuZWMuZXVkaXcucGlkLml0LjEgZW1haWwiLCJzdWJqZWN0X3R5cGUiOiJwYWlyd2lzZSJ9LCJmZWRlcmF0aW9uX2VudGl0eSI6eyJmZWRlcmF0aW9uX3Jlc29sdmVfZW5kcG9pbnQiOiJodHRwczovL3JwLmV4YW1wbGUub3JnL3Jlc29sdmUvIiwib3JnYW5pemF0aW9uX25hbWUiOiJFeGFtcGxlIFJQIiwiaG9tZXBhZ2VfdXJpIjoiaHR0cHM6Ly9ycC5leGFtcGxlLml0IiwicG9saWN5X3VyaSI6Imh0dHBzOi8vcnAuZXhhbXBsZS5pdC9wb2xpY3kiLCJsb2dvX3VyaSI6Imh0dHBzOi8vcnAuZXhhbXBsZS5pdC9zdGF0aWMvbG9nby5zdmciLCJjb250YWN0cyI6WyJ0ZWNoQGV4YW1wbGUuaXQiXX19LCJ0cnVzdF9tYXJrcyI6W3siaWQiOiJodHRwczovL3JlZ2lzdHJ5LmVpZGFzLnRydXN0LWFuY2hvci5leGFtcGxlLmV1L29wZW5pZF9yZWx5aW5nX3BhcnR5L3B1YmxpYy8iLCJ0cnVzdF9tYXJrIjoiZXlKaCBcdTIwMjYifV0sImF1dGhvcml0eV9oaW50cyI6WyJodHRwczovL2ludGVybWVkaWF0ZS5laWRhcy5leGFtcGxlLm9yZyJdfQ.Un315HdckvhYA-iRregZAmL7pnfjQH2APz82blQO5S0sl1JR0TEFp5E1T913g8GnuwgGtMQUqHPZwV6BvTLA8g&quot;</span><span class="p">,</span>
-
 <span class="w">  </span><span class="s2">&quot;eyJhbGciOiJFUzI1NiIsImtpZCI6IlNURkRXV2hKY0dWWFgzQjNSVmRaYWtsQ0xUTnVNa000WTNGNlFUTk9kRXRyZFhGWVlYWjJjWGN0UVEiLCJ0eXAiOiJhcHBsaWNhdGlvbi9lbnRpdHktc3RhdGVtZW50K2p3dCJ9.eyJleHAiOjE2NDk2MjM1NDYsImlhdCI6MTY0OTQ1MDc0NiwiaXNzIjoiaHR0cHM6Ly9pbnRlcm1lZGlhdGUuZWlkYXMuZXhhbXBsZS5vcmciLCJzdWIiOiJodHRwczovL3JwLmV4YW1wbGUub3JnIiwiandrcyI6eyJrZXlzIjpbeyJrdHkiOiJFQyIsImtpZCI6Ik5GTTFXVVZpVWxZelVXcExhbWxmY0VwUFJWWTJWWFpJUmpCblFYWm1SSGhLWVVWWVVsZFRRbkEyTkEiLCJjcnYiOiJQLTI1NiIsIngiOiJ1c2xDM3dkLXBYM3d6NGJSWW53eTNsenBiR1pGaE45NmhMMkFIQTNNUTZZIiwieSI6IlZMQ0JYRldsZE5TTkl6OGtIMjl2TFI0TjE4Qmt3R09YMjZ6UW9ydVExTTQifV19LCJtZXRhZGF0YV9wb2xpY3kiOnsib3BlbmlkX3JlbHlpbmdfcGFydHkiOnsic2NvcGUiOnsic3Vic2V0X29mIjpbImV1LmV1cm9wYS5lYy5ldWRpdy5waWQuMSwgIGV1LmV1cm9wYS5lYy5ldWRpdy5waWQuaXQuMSJdfSwicmVxdWVzdF9hdXRoZW50aWNhdGlvbl9tZXRob2RzX3N1cHBvcnRlZCI6eyJvbmVfb2YiOlsicmVxdWVzdF9vYmplY3QiXX0sInJlcXVlc3RfYXV0aGVudGljYXRpb25fc2lnbmluZ19hbGdfdmFsdWVzX3N1cHBvcnRlZCI6eyJzdWJzZXRfb2YiOlsiUlMyNTYiLCJSUzUxMiIsIkVTMjU2IiwiRVM1MTIiLCJQUzI1NiIsIlBTNTEyIl19fX0sInRydXN0X21hcmtzIjpbeyJpZCI6Imh0dHBzOi8vdHJ1c3QtYW5jaG9yLmV4YW1wbGUuZXUvb3BlbmlkX3JlbHlpbmdfcGFydHkvcHVibGljLyIsInRydXN0X21hcmsiOiJleUpoYiBcdTIwMjYifV19._qt5-T6DahP3TuWa_27klE8I9Z_sPK2FtQlKY6pGMPchbSI2aHXY3aAXDUrObPo4CHtqgg3J2XcrghDFUCFGEQ&quot;</span><span class="p">,</span>
-
 <span class="w">  </span><span class="s2">&quot;eyJhbGciOiJFUzI1NiIsImtpZCI6ImVXa3pUbWt0WW5kblZHMWxhMjU1ZDJkQ2RVZERSazQwUWt0WVlVMWFhRFZYT1RobFpHdFdXSGQ1WnciLCJ0eXAiOiJhcHBsaWNhdGlvbi9lbnRpdHktc3RhdGVtZW50K2p3dCJ9.eyJleHAiOjE2NDk2MjM1NDYsImlhdCI6MTY0OTQ1MDc0NiwiaXNzIjoiaHR0cHM6Ly90cnVzdC1hbmNob3IuZXhhbXBsZS5ldSIsInN1YiI6Imh0dHBzOi8vaW50ZXJtZWRpYXRlLmVpZGFzLmV4YW1wbGUub3JnIiwiandrcyI6eyJrZXlzIjpbeyJrdHkiOiJFQyIsImtpZCI6IlNURkRXV2hKY0dWWFgzQjNSVmRaYWtsQ0xUTnVNa000WTNGNlFUTk9kRXRyZFhGWVlYWjJjWGN0UVEiLCJjcnYiOiJQLTI1NiIsIngiOiJyQl9BOGdCUnh5NjhVTkxZRkZLR0ZMR2VmWU5XYmgtSzh1OS1GYlQyZkZJIiwieSI6IlNuWVk2Y3NjZnkxcjBISFhLTGJuVFZsamFndzhOZzNRUEs2WFVoc2UzdkUifV19LCJ0cnVzdF9tYXJrcyI6W3siaWQiOiJodHRwczovL3RydXN0LWFuY2hvci5leGFtcGxlLmV1L2ZlZGVyYXRpb25fZW50aXR5L3RoYXQtcHJvZmlsZSIsInRydXN0X21hcmsiOiJleUpoYiBcdTIwMjYifV19.r3uoi-U0tx0gDFlnDdITbcwZNUpy7M2tnh08jlD-Ej9vMzWMCXOCCuwIn0ZT0jS4M_sHneiG6tLxRqj-htI70g&quot;</span>
 <span class="p">]</span>
 </pre></div>
@@ -1411,8 +1415,8 @@ Signature:
 <li><p><strong>metadata_policy_update</strong>: Indicates when an Entity's metadata policy was updated in the Subordinate Statement</p></li>
 </ul>
 <p><strong>Example Request</strong>:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GET /federation_subordinate_events_endpoint?sub=https%3A%2F%2Frp%2Eexample%2Eorg HTTP/1.1
-Host: immediate-superior.example.org
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/federation_subordinate_events_endpoint?sub=https%3A%2F%2Frp%2Eexample%2Eorg</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">immediate-superior.example.org</span>
 </pre></div>
 </div>
 <p><strong>Example Response</strong>:</p>
@@ -1562,7 +1566,7 @@ Host: immediate-superior.example.org
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 20/11/2025.
+      Last updated on 25/11/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

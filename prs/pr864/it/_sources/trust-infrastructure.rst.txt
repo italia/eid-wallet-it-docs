@@ -316,15 +316,17 @@ Tutti i partecipanti nella federazione DEVONO ottenere la configurazione di fede
 
 Di seguito è riportato un esempio non normativo di un'Entity Configuration del Trust Anchor, dove ogni parametro è documentato nella specifica `OpenID Federation <OID-FED>`_:
 
-.. code-block:: text
+.. code-block:: json
 
     {
         "alg": "ES256",
         "kid": "FifYx03bnosD8m6gYQIfNHNP9cM_Sam9Tc5nLloIIrc",
         "typ": "entity-statement+jwt"
     }
-    .
-    {
+
+.. code-block:: json
+
+      {
         "exp": 1649375259,
         "iat": 1649373279,
         "iss": "https://trust-anchor.eid-wallet.example.it",
@@ -338,7 +340,9 @@ Di seguito è riportato un esempio non normativo di un'Entity Configuration del 
                     "crv": "P-256",
                     "x": "1kNR9Ar3MzMokYTY8BRvRIue85NIXrYX4XD3K4JW7vI",
                     "y": "slT14644zbYXYF-xmw7aPdlbMuw3T1URwI4nafMtKrY",
-                    "x5c": [ <self-issued X.509 certificate about the Trust Anchor> ]
+                    "x5c": [
+                      // <self-issued X.509 certificate about the Trust Anchor>
+                      ]
                 }
             ]
         },
@@ -564,28 +568,32 @@ I Trust Anchor e gli Intermediari DEVONO esporre l'endpoint Federation Fetch, do
 
 Di seguito è riportato un esempio non normativo di un Subordinate Statement emesso da un Registration Body (come il Trust Anchor o il suo Intermediario) in relazione a uno dei suoi Subordinati.
 
-.. code-block:: text
+.. code-block:: json
 
     {
         "alg": "ES256",
         "kid": "em3cmnZgHIYFsQ090N6B3Op7LAAqj8rghMhxGmJstqg",
         "typ": "entity-statement+jwt"
     }
-    .
+
+.. code-block:: json
+  
     {
         "exp": 1649623546,
         "iat": 1649450746,
         "iss": "https://intermediate.example.org",
         "sub": "https://rp.example.it",
         "jwks": {
-            "keys": [
+            "keys": [ // keys about the Subordinate
                 {
                     "kty": "EC",
                     "kid": "2HnoFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs",
                     "crv": "P-256",
                     "x": "1kNR9Ar3MzMokYTY8BRvRIue85NIXrYX4XD3K4JW7vI",
                     "y": "slT14644zbYXYF-xmw7aPdlbMuw3T1URwI4nafMtKrY",
-                    "x5c": [ <X.509 certificate> ]
+                    "x5c": [ 
+                      // <X.509 certificate about the Subordinate>
+                      ]
                 }
             ]
         },
@@ -686,7 +694,7 @@ La Trust Chain è una sequenza di dichiarazioni verificate che valida la conform
 
 Di seguito è riportata una rappresentazione astratta di una Trust Chain.
 
-.. code-block:: python
+.. code-block:: json
 
     [
         "EntityConfiguration-as-SignedJWT-selfissued-byLeaf",
@@ -695,7 +703,7 @@ Di seguito è riportata una rappresentazione astratta di una Trust Chain.
 
 Di seguito è riportato un esempio non normativo di una Trust Chain, composta da un Array JSON contenente JWT, con un Intermediario coinvolto.
 
-.. code-block:: python
+.. code-block:: json
 
     [
       "eyJhbGciOiJFUzI1NiIsImtpZCI6Ik5GTTFXVVZpVWxZelVXcExhbWxmY0VwUFJWWTJWWFpJUmpCblFYWm1SSGhLWVVWWVVsZFRRbkEyTkEiLCJ0eXAiOiJhcHBsaWNhdGlvbi9lbnRpdHktc3RhdGVtZW50K2p3dCJ9.eyJleHAiOjE2NDk1OTA2MDIsImlhdCI6MTY0OTQxNzg2MiwiaXNzIjoiaHR0cHM6Ly9ycC5leGFtcGxlLm9yZyIsInN1YiI6Imh0dHBzOi8vcnAuZXhhbXBsZS5vcmciLCJqd2tzIjp7ImtleXMiOlt7Imt0eSI6IkVDIiwia2lkIjoiTkZNMVdVVmlVbFl6VVdwTGFtbGZjRXBQUlZZMlZYWklSakJuUVhabVJIaEtZVVZZVWxkVFFuQTJOQSIsImNydiI6IlAtMjU2IiwieCI6InVzbEMzd2QtcFgzd3o0YlJZbnd5M2x6cGJHWkZoTjk2aEwyQUhBM01RNlkiLCJ5IjoiVkxDQlhGV2xkTlNOSXo4a0gyOXZMUjROMThCa3dHT1gyNnpRb3J1UTFNNCJ9XX0sIm1ldGFkYXRhIjp7Im9wZW5pZF9yZWx5aW5nX3BhcnR5Ijp7ImFwcGxpY2F0aW9uX3R5cGUiOiJ3ZWIiLCJjbGllbnRfaWQiOiJodHRwczovL3JwLmV4YW1wbGUub3JnLyIsImNsaWVudF9yZWdpc3RyYXRpb25fdHlwZXMiOlsiYXV0b21hdGljIl0sImp3a3MiOnsia2V5cyI6W3sia3R5IjoiRUMiLCJraWQiOiJORk0xV1VWaVVsWXpVV3BMYW1sZmNFcFBSVlkyVlhaSVJqQm5RWFptUkhoS1lVVllVbGRUUW5BMk5BIiwiY3J2IjoiUC0yNTYiLCJ4IjoidXNsQzN3ZC1wWDN3ejRiUllud3kzbHpwYkdaRmhOOTZoTDJBSEEzTVE2WSIsInkiOiJWTENCWEZXbGROU05JejhrSDI5dkxSNE4xOEJrd0dPWDI2elFvcnVRMU00In1dfSwiY2xpZW50X25hbWUiOiJOYW1lIG9mIGFuIGV4YW1wbGUgb3JnYW5pemF0aW9uIiwiY29udGFjdHMiOlsib3BzQHJwLmV4YW1wbGUuaXQiXSwiZ3JhbnRfdHlwZXMiOlsicmVmcmVzaF90b2tlbiIsImF1dGhvcml6YXRpb25fY29kZSJdLCJyZWRpcmVjdF91cmlzIjpbImh0dHBzOi8vcnAuZXhhbXBsZS5vcmcvb2lkYy9ycC9jYWxsYmFjay8iXSwicmVzcG9uc2VfdHlwZXMiOlsiY29kZSJdLCJzY29wZSI6ImV1LmV1cm9wYS5lYy5ldWRpdy5waWQuMSBldS5ldXJvcGEuZWMuZXVkaXcucGlkLml0LjEgZW1haWwiLCJzdWJqZWN0X3R5cGUiOiJwYWlyd2lzZSJ9LCJmZWRlcmF0aW9uX2VudGl0eSI6eyJmZWRlcmF0aW9uX3Jlc29sdmVfZW5kcG9pbnQiOiJodHRwczovL3JwLmV4YW1wbGUub3JnL3Jlc29sdmUvIiwib3JnYW5pemF0aW9uX25hbWUiOiJFeGFtcGxlIFJQIiwiaG9tZXBhZ2VfdXJpIjoiaHR0cHM6Ly9ycC5leGFtcGxlLml0IiwicG9saWN5X3VyaSI6Imh0dHBzOi8vcnAuZXhhbXBsZS5pdC9wb2xpY3kiLCJsb2dvX3VyaSI6Imh0dHBzOi8vcnAuZXhhbXBsZS5pdC9zdGF0aWMvbG9nby5zdmciLCJjb250YWN0cyI6WyJ0ZWNoQGV4YW1wbGUuaXQiXX19LCJ0cnVzdF9tYXJrcyI6W3siaWQiOiJodHRwczovL3JlZ2lzdHJ5LmVpZGFzLnRydXN0LWFuY2hvci5leGFtcGxlLmV1L29wZW5pZF9yZWx5aW5nX3BhcnR5L3B1YmxpYy8iLCJ0cnVzdF9tYXJrIjoiZXlKaCBcdTIwMjYifV0sImF1dGhvcml0eV9oaW50cyI6WyJodHRwczovL2ludGVybWVkaWF0ZS5laWRhcy5leGFtcGxlLm9yZyJdfQ.Un315HdckvhYA-iRregZAmL7pnfjQH2APz82blQO5S0sl1JR0TEFp5E1T913g8GnuwgGtMQUqHPZwV6BvTLA8g",

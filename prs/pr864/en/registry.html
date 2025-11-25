@@ -285,124 +285,124 @@ Content-Type: application/json
 <p>The Claims Registry maintains language-neutral, technical definitions for semantic consistency across the ecosystem. User-facing localizations for claim names and descriptions are provided through the Digital Credentials Catalog localization bundles, enabling efficient multilingual support without compromising the registry's structural integrity.</p>
 <p>A non-normative example of Claims Registry structure is given below:</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;registry_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;given_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Person&#39;s given name(s) as appears on official documents&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;aliases&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;first_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;forename&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;given_names&quot;</span><span class="p">],</span>
-<span class="w">      </span><span class="nt">&quot;max_length&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;validation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;pattern&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^[\\p{L}\\s\\-\\&#39;\\.&#39;]+$&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;min_length&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;family_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Person&#39;s family name as appears on official documents&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;aliases&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;last_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;surname&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;family_names&quot;</span><span class="p">],</span>
-<span class="w">      </span><span class="nt">&quot;max_length&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;validation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;pattern&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^[\\p{L}\\s\\-\\&#39;\\.&#39;]+$&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;min_length&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;birth_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;date&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Date of birth in ISO 8601 format&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;YYYY-MM-DD&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;validation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;min_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1900-01-01&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;max_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;current_date&quot;</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;birth_place&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Place of birth as registered in official records&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;aliases&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;place_of_birth&quot;</span><span class="p">],</span>
-<span class="w">      </span><span class="nt">&quot;max_length&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;tax_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Italian fiscal identification code (Codice Fiscale)&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;validation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;pattern&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]$&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;length&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;personal_administrative_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ANPR unique person identifier&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;validation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;pattern&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^[A-Z0-9]+$&quot;</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;document_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Document serial number or identifier&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;validation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;pattern&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^[A-Z0-9]+$&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;max_length&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;issue_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;date&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Document issue date&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;YYYY-MM-DD&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;validation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;max_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;current_date&quot;</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;expiry_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;date&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Document expiry date&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;YYYY-MM-DD&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;validation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;min_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;current_date&quot;</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;driving_privileges&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;array&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Array of authorized vehicle categories with details&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;items&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;vehicle_category_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;registry_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;given_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;enum&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;AM&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;A1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;A2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;A&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;B&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;BE&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;C&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;CE&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;D&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;DE&quot;</span><span class="p">]</span>
-<span class="w">          </span><span class="p">},</span>
-<span class="w">          </span><span class="nt">&quot;issue_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;date&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;YYYY-MM-DD&quot;</span><span class="p">},</span>
-<span class="w">          </span><span class="nt">&quot;expiry_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;date&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;YYYY-MM-DD&quot;</span><span class="p">},</span>
-<span class="w">          </span><span class="nt">&quot;restrictions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Category-specific restrictions&quot;</span><span class="p">}</span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Person&#39;s given name(s) as appears on official documents&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;aliases&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;first_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;forename&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;given_names&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;max_length&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;validation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;pattern&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^[\\p{L}\\s\\-\\&#39;\\.&#39;]+$&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;min_length&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;family_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Person&#39;s family name as appears on official documents&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;aliases&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;last_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;surname&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;family_names&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;max_length&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;validation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;pattern&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^[\\p{L}\\s\\-\\&#39;\\.&#39;]+$&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;min_length&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;birth_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;date&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Date of birth in ISO 8601 format&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;YYYY-MM-DD&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;validation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;min_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1900-01-01&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;max_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;current_date&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;birth_place&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Place of birth as registered in official records&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;aliases&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;place_of_birth&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;max_length&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;tax_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Italian fiscal identification code (Codice Fiscale)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;validation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;pattern&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]$&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;length&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;personal_administrative_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ANPR unique person identifier&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;validation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;pattern&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^[A-Z0-9]+$&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;document_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Document serial number or identifier&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;validation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;pattern&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^[A-Z0-9]+$&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;max_length&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;issue_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;date&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Document issue date&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;YYYY-MM-DD&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;validation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;max_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;current_date&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;expiry_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;date&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Document expiry date&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;YYYY-MM-DD&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;validation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;min_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;current_date&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;driving_privileges&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;array&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Array of authorized vehicle categories with details&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;items&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;vehicle_category_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;enum&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;AM&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;A1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;A2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;A&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;B&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;BE&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;C&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;CE&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;D&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;DE&quot;</span><span class="p">]</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="nt">&quot;issue_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;date&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;YYYY-MM-DD&quot;</span><span class="p">},</span>
+<span class="w">                    </span><span class="nt">&quot;expiry_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;date&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;YYYY-MM-DD&quot;</span><span class="p">},</span>
+<span class="w">                    </span><span class="nt">&quot;restrictions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Category-specific restrictions&quot;</span><span class="p">}</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;portrait&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;binary&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Person&#39;s photograph as binary string (JPEG or JPEG2000)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;encoding&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;base64&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;content_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;image/jpeg&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;image/jp2&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;validation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;max_size_bytes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;min_width&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;min_height&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;issuing_authority&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Authority that issued the document&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;max_length&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;issuing_country&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Country code that issued the document&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;validation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;pattern&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^[A-Z]{2}$&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;length&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">}</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;portrait&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;binary&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Person&#39;s photograph as binary string (JPEG or JPEG2000)&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;encoding&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;base64&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;content_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;image/jpeg&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;image/jp2&quot;</span><span class="p">],</span>
-<span class="w">      </span><span class="nt">&quot;validation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;max_size_bytes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;min_width&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;min_height&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;issuing_authority&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Authority that issued the document&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;max_length&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;issuing_country&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Country code that issued the document&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;validation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;pattern&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^[A-Z]{2}$&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;length&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
-<span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -668,100 +668,100 @@ Content-Type: application/json
 <h4><span class="section-number">7.4.3.3. </span>AS Registry Example<a class="headerlink" href="#as-registry-example" title="Link to this heading">¶</a></h4>
 <p>A non-normative example of AS Registry structure is given below:</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
-<span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;entity_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://motorizzazione.gov.example&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;organization_info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;organization_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MIT -- Direzione Generale per la Motorizzazione&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;organization_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;public&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;ipa_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;m_inf&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;legal_identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;80192770587&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;organization_country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IT&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;homepage_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/transport&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;registry@gov.example&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;technical-support@gov.example&quot;</span><span class="p">],</span>
-<span class="w">      </span><span class="nt">&quot;policy_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/transport/privacy-policy&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/assets/transport-logo.svg&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;service_documentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://docs.gov.example/transport/api-docs&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;user_information&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Vehicle registration data is available for licenses issued after January 1, 2020. For older licenses, contact the local motorization office.&quot;</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;data_capabilities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;domains&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;IDENTITY&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;AUTHORIZATION&quot;</span><span class="p">],</span>
-<span class="w">        </span><span class="nt">&quot;intended_purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;DRIVING_LICENSE&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;PERSON_IDENTIFICATION&quot;</span><span class="p">],</span>
-<span class="w">        </span><span class="nt">&quot;available_claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">          </span><span class="s2">&quot;given_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;family_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;birth_date&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;birth_place&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="s2">&quot;issue_date&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;expiry_date&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;document_number&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;driving_privileges&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="s2">&quot;portrait&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;un_distinguishing_sign&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;document_iss_country&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;document_iss_authority&quot;</span>
-<span class="w">        </span><span class="p">],</span>
-<span class="w">        </span><span class="nt">&quot;integration_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pdnd&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;integration_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.gov.example/transport/driving-license&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;api_specification&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://docs.gov.example/transport/api-oas3.yaml&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;data_provision&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;immediate_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;deferred_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;entity_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://motorizzazione.gov.example&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;organization_info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;organization_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MIT -- Direzione Generale per la Motorizzazione&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;organization_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;public&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;ipa_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;m_inf&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;legal_identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;80192770587&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;organization_country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IT&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;homepage_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/transport&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;registry@gov.example&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;technical-support@gov.example&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;policy_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/transport/privacy-policy&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/assets/transport-logo.svg&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;service_documentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://docs.gov.example/transport/api-docs&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;user_information&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Vehicle registration data is available for licenses issued after January 1, 2020. For older licenses, contact the local motorization office.&quot;</span>
 <span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="nt">&quot;update_frequency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;real_time&quot;</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;background_color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#003d82&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;text_color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#ffffff&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/assets/transport-logo.svg&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;logo_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3&quot;</span>
+<span class="w">        </span><span class="nt">&quot;data_capabilities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;domains&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;IDENTITY&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;AUTHORIZATION&quot;</span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;intended_purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;DRIVING_LICENSE&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;PERSON_IDENTIFICATION&quot;</span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;available_claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="s2">&quot;given_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;family_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;birth_date&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;birth_place&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;issue_date&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;expiry_date&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;document_number&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;driving_privileges&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;portrait&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;un_distinguishing_sign&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;document_iss_country&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;document_iss_authority&quot;</span>
+<span class="w">                </span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;integration_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pdnd&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;integration_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.gov.example/transport/driving-license&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;api_specification&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://docs.gov.example/transport/api-oas3.yaml&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;data_provision&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;immediate_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;deferred_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="nt">&quot;update_frequency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;real_time&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;background_color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#003d82&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;text_color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#ffffff&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/assets/transport-logo.svg&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;logo_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;entity_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.bank.example/auth-source&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;organization_info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;organization_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Example Bank S.p.A.&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;organization_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;private&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;legal_identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;12345678901&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;homepage_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.bank.example&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;digital-credentials@bank.example&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;api-support@bank.example&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;policy_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.bank.example/privacy-policy&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;tos_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.bank.example/terms-of-service&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;organization_country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IT&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.bank.example/assets/logo.svg&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;service_documentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://docs.bank.example/psd2-api&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;user_information&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Financial data access requires customer consent and is subject to PSD2 regulations. Account information is available for active accounts only.&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;data_capabilities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;domains&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;FINANCIAL&quot;</span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;intended_purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;BANK_ACCOUNT&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;INCOME_CERTIFICATE&quot;</span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;available_claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="s2">&quot;given_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;family_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;birth_date&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;tax_code&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;account_holder_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;iban&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;account_status&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;account_opening_date&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;bank_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;bank_code&quot;</span>
+<span class="w">                </span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;integration_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;oauth2&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;integration_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.bank.example/psd2/v1/accounts&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;api_specification&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.bank.example/docs/psd2-openapi.yaml&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;data_provision&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;immediate_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;deferred_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="nt">&quot;update_frequency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;daily&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;domains&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;FINANCIAL&quot;</span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;intended_purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;PAYMENT_HISTORY&quot;</span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;available_claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="s2">&quot;given_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;family_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;tax_code&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;transaction_history&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;average_balance&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;credit_score_indicator&quot;</span>
+<span class="w">                </span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;integration_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;oauth2&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;integration_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.bank.example/psd2/v1/transactions&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;api_specification&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.bank.example/docs/psd2-openapi.yaml&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;data_provision&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;immediate_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;deferred_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;max_response_time_minutes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1440</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;notification_methods&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;push&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;poll&quot;</span><span class="p">]</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="nt">&quot;update_frequency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;weekly&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;entity_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.bank.example/auth-source&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;organization_info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;organization_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Example Bank S.p.A.&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;organization_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;private&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;legal_identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;12345678901&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;homepage_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.bank.example&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;digital-credentials@bank.example&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;api-support@bank.example&quot;</span><span class="p">],</span>
-<span class="w">      </span><span class="nt">&quot;policy_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.bank.example/privacy-policy&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;tos_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.bank.example/terms-of-service&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;organization_country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IT&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.bank.example/assets/logo.svg&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;service_documentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://docs.bank.example/psd2-api&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;user_information&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Financial data access requires customer consent and is subject to PSD2 regulations. Account information is available for active accounts only.&quot;</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;data_capabilities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;domains&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;FINANCIAL&quot;</span><span class="p">],</span>
-<span class="w">        </span><span class="nt">&quot;intended_purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;BANK_ACCOUNT&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;INCOME_CERTIFICATE&quot;</span><span class="p">],</span>
-<span class="w">        </span><span class="nt">&quot;available_claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">          </span><span class="s2">&quot;given_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;family_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;birth_date&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;tax_code&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="s2">&quot;account_holder_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;iban&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;account_status&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;account_opening_date&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="s2">&quot;bank_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;bank_code&quot;</span>
-<span class="w">        </span><span class="p">],</span>
-<span class="w">        </span><span class="nt">&quot;integration_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;oauth2&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;integration_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.bank.example/psd2/v1/accounts&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;api_specification&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.bank.example/docs/psd2-openapi.yaml&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;data_provision&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;immediate_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;deferred_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="nt">&quot;update_frequency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;daily&quot;</span>
-<span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;domains&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;FINANCIAL&quot;</span><span class="p">],</span>
-<span class="w">        </span><span class="nt">&quot;intended_purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;PAYMENT_HISTORY&quot;</span><span class="p">],</span>
-<span class="w">        </span><span class="nt">&quot;available_claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">          </span><span class="s2">&quot;given_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;family_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;tax_code&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="s2">&quot;transaction_history&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;average_balance&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;credit_score_indicator&quot;</span>
-<span class="w">        </span><span class="p">],</span>
-<span class="w">        </span><span class="nt">&quot;integration_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;oauth2&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;integration_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.bank.example/psd2/v1/transactions&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;api_specification&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.bank.example/docs/psd2-openapi.yaml&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;data_provision&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;immediate_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;deferred_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;max_response_time_minutes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1440</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;notification_methods&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;push&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;poll&quot;</span><span class="p">]</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="nt">&quot;update_frequency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;weekly&quot;</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="w">  </span><span class="p">}</span>
 <span class="p">]</span>
 </pre></div>
 </div>
@@ -1205,133 +1205,133 @@ Content-Type: application/json
 </table>
 <p>The corresponding example of Digital Credentials Catalog as decoded in JSON for both header and payload is the following:</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">   </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="s2">&quot;JOSE&quot;</span><span class="p">,</span>
-<span class="w">   </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
-<span class="w">   </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="s2">&quot;e9bc097a-ce51-4036-9562-d2ade882db0d&quot;</span><span class="p">,</span>
-<span class="w">   </span><span class="nt">&quot;cty&quot;</span><span class="p">:</span><span class="s2">&quot;application/json&quot;</span>
+<span class="w">    </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="s2">&quot;JOSE&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="s2">&quot;e9bc097a-ce51-4036-9562-d2ade882db0d&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;cty&quot;</span><span class="p">:</span><span class="s2">&quot;application/json&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">   </span><span class="nt">&quot;catalog_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
-<span class="w">   </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it&quot;</span><span class="p">,</span>
-<span class="w">   </span><span class="nt">&quot;last_modified&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-03-15T12:00:00Z&quot;</span><span class="p">,</span>
-<span class="w">   </span><span class="nt">&quot;credentials&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="p">{</span>
-<span class="w">         </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">&quot;credential_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mDL&quot;</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">&quot;legal_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pub-eaa&quot;</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:eudi:mDL:it:1&quot;</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">&quot;restriction_policy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;allowed_wallet_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">               </span><span class="s2">&quot;https://wallet-provider.example.org/wallet_solution&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="s2">&quot;https://wallet-provider2.example.org/wallet_solution&quot;</span>
+<span class="w">    </span><span class="nt">&quot;catalog_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;last_modified&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-03-15T12:00:00Z&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;credentials&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;credential_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mDL&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;legal_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pub-eaa&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:eudi:mDL:it:1&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;restriction_policy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;allowed_wallet_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="s2">&quot;https://wallet-provider.example.org/wallet_solution&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;https://wallet-provider2.example.org/wallet_solution&quot;</span>
+<span class="w">                </span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;allowed_issuer_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="s2">&quot;https://issuer.example.org&quot;</span>
+<span class="w">                </span><span class="p">]</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;pricing_policy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;models&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;pricing_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;verification_based&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EUR&quot;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;pricing_model_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.com/pricing&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;validity_info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;max_validity_days&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">365</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;status_methods&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;status_list&quot;</span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;allowed_states&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="s2">&quot;valid&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;revoked&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;suspended&quot;</span>
+<span class="w">                </span><span class="p">]</span>
+<span class="w">            </span><span class="p">},</span><span class="w">       </span>
+<span class="w">            </span><span class="nt">&quot;authentication&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;user_auth_required&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;min_loa&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;high&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;supported_schemes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;it-wallet&quot;</span><span class="p">]</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DRIVING_LICENSE&quot;</span><span class="w">            </span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PERSON_IDENTIFICATION&quot;</span>
+<span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;allowed_issuer_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">               </span><span class="s2">&quot;https://issuer.example.org&quot;</span>
+<span class="w">            </span><span class="nt">&quot;issuers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;organization_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Digital Credential Issuer of Example&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;organization_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ci_example_it&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;organization_country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IT&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="s2">&quot;mailto:informazioni@example.it&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="s2">&quot;mailto:protocollo@pec.example.it&quot;</span>
+<span class="w">                    </span><span class="p">],</span>
+<span class="w">                    </span><span class="nt">&quot;legal_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pub-eaa&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;homepage_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org/logo.svg&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;policy_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org/privacy&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;tos_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org/terms&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;service_documentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org/.well-known/service-doc&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;issuance_flows&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;deferred_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;max_deferred_issuance_time_minutes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1440</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;notification_methods&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;push&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;polling&quot;</span><span class="p">]</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;authentic_sources&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;https://motorizzazione.gov.example&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;formats&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;configuration_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc_sd_jwt_mDL&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc+sd-jwt&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;schema_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/.well-known/schemas/sd-jwt/mDL&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;schema_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256-981bb56f693a4f40b917a896620a59cc984bed81bd57051d8ab5c6c194f67ee8&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;configuration_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mso_mdoc_mDL&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mso_mdoc&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;docType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;schema_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/.well-known/schemas/mdoc/mDL&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;schema_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256-c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16&quot;</span>
+<span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">]</span>
-<span class="w">         </span><span class="p">},</span>
-<span class="w">         </span><span class="nt">&quot;pricing_policy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">             </span><span class="nt">&quot;models&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">               </span><span class="p">{</span>
-<span class="w">                 </span><span class="nt">&quot;pricing_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;verification_based&quot;</span><span class="p">,</span>
-<span class="w">                 </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01</span><span class="p">,</span>
-<span class="w">                 </span><span class="nt">&quot;currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EUR&quot;</span>
-<span class="w">               </span><span class="p">}</span>
-<span class="w">             </span><span class="p">],</span>
-<span class="w">             </span><span class="nt">&quot;pricing_model_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.com/pricing&quot;</span>
-<span class="w">           </span><span class="p">},</span>
-<span class="w">         </span><span class="nt">&quot;validity_info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;max_validity_days&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">365</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;status_methods&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;status_list&quot;</span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;allowed_states&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">               </span><span class="s2">&quot;valid&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="s2">&quot;revoked&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="s2">&quot;suspended&quot;</span>
-<span class="w">            </span><span class="p">]</span>
-<span class="w">         </span><span class="p">},</span><span class="w">       </span>
-<span class="w">         </span><span class="nt">&quot;authentication&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;user_auth_required&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;min_loa&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;high&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;supported_schemes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;it-wallet&quot;</span><span class="p">]</span>
-<span class="w">         </span><span class="p">},</span>
-<span class="w">         </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;wallet_app_attestation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;credential_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wallet_app_attestation&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:eudi:wallet_app_attestation:it:1&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;formats&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">            </span><span class="p">{</span>
-<span class="w">               </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DRIVING_LICENSE&quot;</span><span class="w">            </span>
+<span class="w">                </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc+sd-jwt&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;configuration_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc_sd_jwt_wa&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;schema_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/.well-known/schemas/sd-jwt/wallet_app_attestation&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;schema_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256-Lxn6dNpkPdoeoRgO5+n0jNhJZ8MbKfXfP195+dNR0dc=&quot;</span>
 <span class="w">            </span><span class="p">},</span>
 <span class="w">            </span><span class="p">{</span>
-<span class="w">               </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PERSON_IDENTIFICATION&quot;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">         </span><span class="p">],</span>
-<span class="w">         </span><span class="nt">&quot;issuers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">               </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;organization_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Digital Credential Issuer of Example&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;organization_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ci_example_it&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;organization_country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IT&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                  </span><span class="s2">&quot;mailto:informazioni@example.it&quot;</span><span class="p">,</span>
-<span class="w">                  </span><span class="s2">&quot;mailto:protocollo@pec.example.it&quot;</span>
-<span class="w">               </span><span class="p">],</span>
-<span class="w">               </span><span class="nt">&quot;legal_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pub-eaa&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;homepage_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org/logo.svg&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;policy_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org/privacy&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;tos_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org/terms&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;service_documentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org/.well-known/service-doc&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;issuance_flows&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                  </span><span class="nt">&quot;deferred_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">                  </span><span class="nt">&quot;max_deferred_issuance_time_minutes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1440</span><span class="p">,</span>
-<span class="w">                  </span><span class="nt">&quot;notification_methods&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;push&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;polling&quot;</span><span class="p">]</span>
-<span class="w">               </span><span class="p">}</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">         </span><span class="p">],</span>
-<span class="w">         </span><span class="nt">&quot;authentic_sources&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">            </span><span class="s2">&quot;https://motorizzazione.gov.example&quot;</span>
-<span class="w">         </span><span class="p">],</span>
-<span class="w">         </span><span class="nt">&quot;formats&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">               </span><span class="nt">&quot;configuration_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc_sd_jwt_mDL&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc+sd-jwt&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;schema_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/.well-known/schemas/sd-jwt/mDL&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;schema_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256-981bb56f693a4f40b917a896620a59cc984bed81bd57051d8ab5c6c194f67ee8&quot;</span>
+<span class="w">                </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mso_mdoc&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;configuration_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mso_mdoc_wa&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;docType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it.wallet.trust-registry.wallet_app_attestation&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;schema_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/.well-known/schemas/mdoc/wallet_app_attestation&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;schema_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256-GcqnMfzyCw+0UTz9EI6JO0oUTD0WS3p+hQ2E7VfjTLA=&quot;</span>
 <span class="w">            </span><span class="p">},</span>
 <span class="w">            </span><span class="p">{</span>
-<span class="w">               </span><span class="nt">&quot;configuration_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mso_mdoc_mDL&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mso_mdoc&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;docType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;schema_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/.well-known/schemas/mdoc/mDL&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;schema_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256-c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16&quot;</span>
+<span class="w">                </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;oauth-client-attestation+jwt&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;configuration_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jwt_wa&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;schema_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/.well-known/schemas/jwt/wallet_app_attestation&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;schema_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256-2s9AJsZwjuAZ4D4EAl3qDJGvy92sThQkX6W9zDF2Sgg=&quot;</span>
 <span class="w">            </span><span class="p">}</span>
-<span class="w">         </span><span class="p">]</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">   </span><span class="p">],</span>
-<span class="w">   </span><span class="nt">&quot;wallet_app_attestation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;credential_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wallet_app_attestation&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:eudi:wallet_app_attestation:it:1&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;formats&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">         </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc+sd-jwt&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;configuration_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc_sd_jwt_wa&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;schema_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/.well-known/schemas/sd-jwt/wallet_app_attestation&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;schema_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256-Lxn6dNpkPdoeoRgO5+n0jNhJZ8MbKfXfP195+dNR0dc=&quot;</span>
-<span class="w">         </span><span class="p">},</span>
-<span class="w">         </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mso_mdoc&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;configuration_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mso_mdoc_wa&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;docType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it.wallet.trust-registry.wallet_app_attestation&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;schema_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/.well-known/schemas/mdoc/wallet_app_attestation&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;schema_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256-GcqnMfzyCw+0UTz9EI6JO0oUTD0WS3p+hQ2E7VfjTLA=&quot;</span>
-<span class="w">         </span><span class="p">},</span>
-<span class="w">         </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;oauth-client-attestation+jwt&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;configuration_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jwt_wa&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;schema_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/.well-known/schemas/jwt/wallet_app_attestation&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;schema_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256-2s9AJsZwjuAZ4D4EAl3qDJGvy92sThQkX6W9zDF2Sgg=&quot;</span>
-<span class="w">         </span><span class="p">}</span>
-<span class="w">      </span><span class="p">]</span>
-<span class="w">   </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1409,183 +1409,183 @@ Content-Type: application/json
 <p>The taxonomy is accessible through the dedicated taxonomy endpoint as defined in the registry discovery mechanism and is maintained by the Supervisory Body to ensure regulatory compliance and semantic consistency.</p>
 <p>A non-normative example of Taxonomy structure is given below:</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;last_modified&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-04-10T12:00:00Z&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:taxonomy:it-wallet&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;localization&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;default_locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;available_locales&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;en&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;it&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;fr&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;de&quot;</span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;base_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/.well-known/l10n/taxonomy/&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;taxonomy.name&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;taxonomy.description&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;domains&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDENTITY&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.identity.name&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.identity.description&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PERSON_IDENTIFICATION&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.person_identification.name&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.person_identification.description&quot;</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ELECTRONIC_RESIDENCY&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.electronic_residency.name&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.electronic_residency.description&quot;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;last_modified&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-04-10T12:00:00Z&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:taxonomy:it-wallet&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;localization&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;default_locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;available_locales&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;en&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;it&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;fr&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;de&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;base_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/.well-known/l10n/taxonomy/&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AUTHORIZATION&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.authorization.name&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.authorization.description&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;taxonomy.name&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;taxonomy.description&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;domains&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DRIVING_LICENSE&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.driving_license.name&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.driving_license.description&quot;</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDENTITY&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.identity.name&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.identity.description&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PERSON_IDENTIFICATION&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.person_identification.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.person_identification.description&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ELECTRONIC_RESIDENCY&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.electronic_residency.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.electronic_residency.description&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">]</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PROFESSIONAL_LICENSE&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.professional_license.name&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.professional_license.description&quot;</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AUTHORIZATION&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.authorization.name&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.authorization.description&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DRIVING_LICENSE&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.driving_license.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.driving_license.description&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PROFESSIONAL_LICENSE&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.professional_license.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.professional_license.description&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TRAVEL_DOCUMENT&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.travel_document.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.travel_document.description&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ACCESS_PERMIT&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.access_permit.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.access_permit.description&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">]</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TRAVEL_DOCUMENT&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.travel_document.name&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.travel_document.description&quot;</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EDUCATION&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.education.name&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.education.description&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ACADEMIC_DEGREE&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.academic_degree.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.academic_degree.description&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CERTIFICATE&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.certificate.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.certificate.description&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TRAINING_RECOGNITION&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.training_recognition.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.training_recognition.description&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">]</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ACCESS_PERMIT&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.access_permit.name&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.access_permit.description&quot;</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HEALTH&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.health.name&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.health.description&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;INSURANCE_CARD&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.insurance_card.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.insurance_card.description&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DISABILITY_CARD&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.disability_card.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.disability_card.description&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MEDICAL_PRESCRIPTION&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.medical_prescription.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.medical_prescription.description&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FINANCIAL&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.financial.name&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.financial.description&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;INCOME_CERTIFICATE&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.income_certificate.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.income_certificate.description&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TAX_STATEMENT&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.tax_statement.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.tax_statement.description&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FAMILY_ECONOMIC_STATUS&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.family_economic_status.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.family_economic_status.description&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BANK_ACCOUNT&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.bank_account.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.bank_account.description&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PAYMENT_HISTORY&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.payment_history.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.payment_history.description&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MEMBERSHIP&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.membership.name&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.membership.description&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ASSOCIATION&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.association.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.association.description&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LOYALTY_PROGRAM&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.loyalty_program.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.loyalty_program.description&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CLUB_MEMBERSHIP&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.club_membership.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.club_membership.description&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ATTESTATION&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.attestation.name&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.attestation.description&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PUBLIC_STATEMENT&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.public_statement.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.public_statement.description&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CIVIL_STATUS&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.civil_status.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.civil_status.description&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CERTIFICATION&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.certification.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.certification.description&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">]</span>
 <span class="w">        </span><span class="p">}</span>
-<span class="w">      </span><span class="p">]</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EDUCATION&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.education.name&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.education.description&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ACADEMIC_DEGREE&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.academic_degree.name&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.academic_degree.description&quot;</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CERTIFICATE&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.certificate.name&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.certificate.description&quot;</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TRAINING_RECOGNITION&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.training_recognition.name&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.training_recognition.description&quot;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">      </span><span class="p">]</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HEALTH&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.health.name&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.health.description&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;INSURANCE_CARD&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.insurance_card.name&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.insurance_card.description&quot;</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DISABILITY_CARD&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.disability_card.name&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.disability_card.description&quot;</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MEDICAL_PRESCRIPTION&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.medical_prescription.name&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.medical_prescription.description&quot;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">      </span><span class="p">]</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FINANCIAL&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.financial.name&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.financial.description&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;INCOME_CERTIFICATE&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.income_certificate.name&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.income_certificate.description&quot;</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TAX_STATEMENT&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.tax_statement.name&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.tax_statement.description&quot;</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FAMILY_ECONOMIC_STATUS&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.family_economic_status.name&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.family_economic_status.description&quot;</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BANK_ACCOUNT&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.bank_account.name&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.bank_account.description&quot;</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PAYMENT_HISTORY&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.payment_history.name&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.payment_history.description&quot;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">      </span><span class="p">]</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MEMBERSHIP&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.membership.name&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.membership.description&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ASSOCIATION&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.association.name&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.association.description&quot;</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LOYALTY_PROGRAM&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.loyalty_program.name&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.loyalty_program.description&quot;</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CLUB_MEMBERSHIP&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.club_membership.name&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.club_membership.description&quot;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">      </span><span class="p">]</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ATTESTATION&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.attestation.name&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.attestation.description&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PUBLIC_STATEMENT&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.public_statement.name&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.public_statement.description&quot;</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CIVIL_STATUS&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.civil_status.name&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.civil_status.description&quot;</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CERTIFICATION&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.certification.name&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.certification.description&quot;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">      </span><span class="p">]</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">]</span>
+<span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1678,7 +1678,7 @@ Content-Type: application/json
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 20/11/2025.
+      Last updated on 25/11/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

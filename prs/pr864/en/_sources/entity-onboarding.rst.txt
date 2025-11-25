@@ -316,24 +316,11 @@ The federation onboarding follows a structured 4-step procedure, it can be perfo
 .. warning::
    Before submitting the technical onboarding request, Federation Entities MUST ensure that their ``/.well-known/openid-federation`` endpoint publishes a valid Entity Configuration (as defined in :ref:`trust-infrastructure:Entity Configuration`) signed with their Federation Entity Private Key corresponding to the Federation Entity Key provided in the request. The Entity Configuration MUST already include application specific keys in the metadata with self-signed X.509 Certificates in the ``x5c`` claims.
 
-
 A non-normative example of the technical information structure that Federation Entities submit during Step 1 onboarding request:
 
 .. literalinclude:: ../../examples/federation-onboarding-request-example.json
    :language: json
    :caption: Federation onboarding request example
-
-    .. rst-class:: rst-comment
-
-       Private JWK for kid "k1d2e3f4g5h6i7j8":
-       {
-         "kid": "k1d2e3f4g5h6i7j8",
-         "kty": "EC",
-         "crv": "P-256",
-         "x": "8w1QwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw",
-         "y": "QwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw",
-         "d": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-       }
 
 The example below shows the decoded content of the CSR:
 

@@ -4,7 +4,7 @@
 Federation Authority Test Matrix
 --------------------------------
 
-This section defines test cases for Federation Authorities (Trust Anchors and Intermediates) responsible for operating the Trust Infrastructure as described in :ref:`trust:The Infrastructure of Trust`. Tests focus on correctness and conformance of:
+This section defines test cases for Federation Authorities (Trust Anchors and Intermediates) responsible for operating the Trust Infrastructure as described in :ref:`trust-infrastructure:The Infrastructure of Trust`. Tests focus on correctness and conformance of:
 
 - Entity Configuration (``.well-known/openid-federation``)
 - Subordinate Statements returned by ``/fetch``
@@ -41,7 +41,7 @@ All validations  align with (`OID-FED`_).
   * - FA_005
     - Security, Interoperability
     - Entity Configuration common parameters
-    - Payload contains ``jwks`` and ``metadata`` with ``federation_entity`` object including published Federation endpoints as per :ref:`trust:Trust Infrastructure and Registry Integration`.
+    - Payload contains ``jwks`` and ``metadata`` with ``federation_entity`` object including published Federation endpoints as per :ref:`trust-infrastructure:Trust Infrastructure and Registry Integration`.
   * - FA_006
     - Security
     - Entity Configuration key material validity

@@ -577,24 +577,29 @@
 <p>Prima di inviare la richiesta di onboarding tecnico, le Entità di Federazione DEVONO assicurarsi che il loro endpoint <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> pubblichi una Entity Configuration valida (come definita in <a class="reference internal" href="trust-infrastructure.html#entity-configuration"><span class="std std-ref">Entity Configuration</span></a>) firmata con la loro Chiave Privata di Federazione corrispondente alla Chiave Pubblica dell'Entità di Federazione fornita nella richiesta. L'Entity Configuration DEVE già includere le Chiavi di Protocollo nei metadati con certificati X.509 auto-firmati nei claim <code class="docutils literal notranslate"><span class="pre">x5c</span></code>.</p>
 </div>
 <p>Un esempio non normativo della struttura delle informazioni tecniche che le Entità di Federazione inviano durante la richiesta di onboarding della Fase 1:</p>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-number">Listato 8.1 </span><span class="caption-text">Federation onboarding request example</span><a class="headerlink" href="#id6" title="Link to this code">¶</a></div>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;entity_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://credentials.example.gov&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;entity_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;credential_issuer&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;jwks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;keys&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NsXymfIILEPR5Y0t&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gXY4FApFJCj91Gpb1K9GEIouTq2X3L0K64Iq0ob4l_g&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;l-6dcrIrFVdrzoY9cRJv9zNuFOR3MsDz6TSDhB0xEo4&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;crv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;certificate_signing_request&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;-----BEGIN CERTIFICATE REQUEST-----\nMIIBTTCB9QIBADCBkjELMAkGA1UEBhMCSVQxDjAMBgNVBAgMBUxhemlvMQ0wCwYD\nVQQHDARSb21hMRYwFAYDVQQKDA1QYWdvUEEgUy5wLkEuMSQwIgYDVQQDDBtmb28x\nMS5ibG9iLmNvcmUud2luZG93cy5uZXQxJjAkBgkqhkiG9w0BCQEWF3BhZ29wYXNw\nYUBwZWMucGFnb3BhLml0MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEgXY4FApF\nJCj91Gpb1K9GEIouTq2X3L0K64Iq0ob4l_g\n-----END CERTIFICATE REQUEST-----&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;submission_timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-09-25T14:30:00Z&quot;</span>
+<span class="w">    </span><span class="nt">&quot;entity_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://credential-issuer.example.gov&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;entity_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;credential_issuer&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;jwks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;keys&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;k1d2e3f4g5h6i7j8&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;crv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8w1QwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;QwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;certificate_signing_requests&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;k1d2e3f4g5h6i7j8&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;-----BEGIN CERTIFICATE REQUEST-----\nMIIBWTCB/QIBADCBkDELMAkGA1UEBhMCSVQxDjAMBgNVBAgMBUxhemlvMQ0wCwYD\nVQQHDARSb21hMRYwFAYDVQQKDA1FeGFtcGxlIE9yZzEkMCIGA1UEAwwbY3JlZGVu\ndGlhbC1pc3N1ZXIuZXhhbXBsZS5nb3YwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNC\nAAR8w1QwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw\nQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw\nQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw\nQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw\n-----END CERTIFICATE REQUEST-----&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;submission_timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-09-25T14:30:00Z&quot;</span>
 <span class="p">}</span>
 </pre></div>
+</div>
 </div>
 <p>Di seguito viene mostrato il contenuto decodificato dell'esempio CSR sopra riportato per riferimento:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Certificate Request:
@@ -769,8 +774,8 @@
 <section id="struttura-trust-mark">
 <h4><span class="section-number">8.4.5.2. </span>Struttura Trust Mark<a class="headerlink" href="#struttura-trust-mark" title="Link to this heading">¶</a></h4>
 <p>I Trust Mark nell'Entity Configuration DEVONO essere rappresentati come oggetti JSON contenenti i seguenti claim:</p>
-<table class="longtable docutils align-default" id="id6">
-<caption><span class="caption-number">Tabella 8.4 </span><span class="caption-text">Trust Mark Object Claims (nell'Entity Configuration)</span><a class="headerlink" href="#id6" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id7">
+<caption><span class="caption-number">Tabella 8.4 </span><span class="caption-text">Trust Mark Object Claims (nell'Entity Configuration)</span><a class="headerlink" href="#id7" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 80.0%" />
@@ -790,8 +795,8 @@
 </tbody>
 </table>
 <p>Il JWT del Trust Mark (contenuto nel claim <code class="docutils literal notranslate"><span class="pre">trust_mark</span></code> sopra) include i seguenti claim:</p>
-<table class="longtable docutils align-default" id="id7">
-<caption><span class="caption-number">Tabella 8.5 </span><span class="caption-text">Claim JWT Trust Mark</span><a class="headerlink" href="#id7" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id8">
+<caption><span class="caption-number">Tabella 8.5 </span><span class="caption-text">Claim JWT Trust Mark</span><a class="headerlink" href="#id8" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 80.0%" />
@@ -1021,7 +1026,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 20/11/2025.
+      Ultimo aggiornamento 25/11/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

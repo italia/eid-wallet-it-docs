@@ -22,7 +22,7 @@ La specifica è organizzata nelle seguenti sezioni principali:
 **Sezione** :ref:`functionalities:Design dell'Esperienza Utente`: 
   Fornisce i principi di design e i requisiti funzionali di alto livello per garantire un’Esperienza Utente di qualità in tutte le fasi di interazione tra l’Utente e il servizio. 
 
-**Sezione** :ref:`trust:L'Infrastruttura di Trust`:
+**Sezione** :ref:`trust-infrastructure:L'Infrastruttura di Trust`:
   Definisce il modello di trust basato sulla federazione, le relazioni tra entità e i meccanismi di valutazione della fiducia che proteggono l'intero ecosistema.
 
 **Sezione** :ref:`entities:Entità`: 
@@ -50,7 +50,7 @@ La specifica è organizzata nelle seguenti sezioni principali:
 Journey di Lettura per Ruolo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Prima di immergersi nelle sezioni specifiche per ruolo, tutti i lettori dovrebbero familiarizzare con i concetti fondamentali delineati nelle Sezioni :ref:`introduction:Introduzione`, :ref:`brand-identity:Brand Identity`, :ref:`architecture-overview:Panoramica dell'Architettura` e :ref:`trust:L'Infrastruttura di Trust`, che stabiliscono il vocabolario comune e l'infrastruttura di fiducia che forniscono il quadro sottostante per l'intero ecosistema.
+Prima di immergersi nelle sezioni specifiche per ruolo, tutti i lettori dovrebbero familiarizzare con i concetti fondamentali delineati nelle Sezioni :ref:`introduction:Introduzione`, :ref:`brand-identity:Brand Identity`, :ref:`architecture-overview:Panoramica dell'Architettura` e :ref:`trust-infrastructure:L'Infrastruttura di Trust`, che stabiliscono il vocabolario comune e l'infrastruttura di fiducia che forniscono il quadro sottostante per l'intero ecosistema.
 
 Fornitore di Wallet
 """""""""""""""""""
@@ -157,7 +157,7 @@ Approccio all'Implementazione
 
 Si suggerisce il seguente approccio di lettura in fasi:
 
-    1. **Fase di Fondazione**: Leggere le Sezioni :ref:`introduction:Introduzione`, :ref:`brand-identity:Brand Identity`, :ref:`architecture-overview:Panoramica dell'Architettura` e :ref:`trust:L'Infrastruttura di Trust` per stabilire una comprensione concettuale del paradigma IT-Wallet, degli elementi di Brand Identity e dell'infrastruttura di fiducia.
+    1. **Fase di Fondazione**: Leggere le Sezioni :ref:`introduction:Introduzione`, :ref:`brand-identity:Brand Identity`, :ref:`architecture-overview:Panoramica dell'Architettura` e :ref:`trust-infrastructure:L'Infrastruttura di Trust` per stabilire una comprensione concettuale del paradigma IT-Wallet, degli elementi di Brand Identity e dell'infrastruttura di fiducia.
     2. **Fase Specifica per Ruolo**: Concentrarsi sulle sezioni essenziali del ruolo primario per comprendere i requisiti specifici di Esperienza Utente, funzionali e di implementazione, i componenti tecnici principali, l'architettura generale e i flussi di interazione (vedere la Sezione :ref:`functionalities:Design dell'Esperienza Utente`, :ref:`entities:Entità` e la Sezione :ref:`endpoints:Endpoints` per maggiori dettagli).
     3. **Fase di Integrazione**: Rivedere le sezioni secondarie rilevanti per le interazioni con altri partecipanti all'ecosistema e i requisiti di integrazione della piattaforma.
     4. **Fase di Validazione**: Studiare le considerazioni sulla sicurezza, le linee guida per i test e i requisiti di conformità secondo le Sezioni :ref:`security-privacy-considerations:Considerazioni di Sicurezza e Privacy`, :ref:`log-retention-policy:Politiche Generali di Conservazione dei Log` e :ref:`test-plans:Test Plans` per ulteriori informazioni.

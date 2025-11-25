@@ -31,14 +31,16 @@ The metadata JSON Object whose key is ``wallet_provider`` contains the following
 
 Below is a non-normative example of the Entity Configuration for a Wallet Provider.
 
-.. code-block:: javascript
+.. code-block:: json
 
   {
     "alg": "ES256",
     "kid": "5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY",
     "typ": "entity-statement+jwt"
   }
-  .
+
+.. code-block:: json
+
   {
   "iss": "https://wallet-provider.example.org",
   "sub": "https://wallet-provider.example.org",

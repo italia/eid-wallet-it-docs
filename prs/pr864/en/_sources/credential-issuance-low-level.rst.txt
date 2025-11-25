@@ -96,7 +96,7 @@ The following diagram shows the *Issuance flow*.
 ..     PID/(Q)EAA Issuance - Detailed flow
 
 
-Once *User Request flow* is completed, the Wallet Instance processes the Metadata of the Credential Issuer as defined in Section :ref:`trust:Trust Evaluation Mechanism`. Additionally, in the case of Batch Credential issuance, the Wallet Instance MUST check the support of batch issuance by looking for the ``batch_credential_issuance`` object in the Credential Issuer metadata, from where the Wallet Instance can get the ``batch_size`` value. 
+Once *User Request flow* is completed, the Wallet Instance processes the Metadata of the Credential Issuer as defined in Section :ref:`trust-infrastructure:Trust Evaluation Mechanism`. Additionally, in the case of Batch Credential issuance, the Wallet Instance MUST check the support of batch issuance by looking for the ``batch_credential_issuance`` object in the Credential Issuer metadata, from where the Wallet Instance can get the ``batch_size`` value. 
 
 .. note::
   **Federation Check:** The Wallet Instance must verify whether the Credential Issuer is a member of the Federation, obtaining its protocol specific Metadata (:ref:`WP_046 <wallet-credential-issuance-testcases>`). A non-normative example of a response from the endpoint **.well-known/openid-federation** with the **Entity Configuration** and the **Metadata** of the Credential Issuer is represented within the section :ref:`credential-issuer-entity-configuration:Credential Issuer Entity Configuration`.
@@ -524,7 +524,7 @@ Figure below shows how to obtain a new DPoP Access Token and a new DPoP Refresh 
 **Step 2**: To refresh a DPoP-bound Access Token, the Wallet Instance sends a token request using the parameter ``grant_type`` set to ``refresh_token``, including the DPoP header and the OAuth Client Attestation headers (:ref:`WP_068 <wallet-credential-issuance-testcases>`).
 A non-normative example of the token request for a DPoP Access Token using a Refresh Token is shown below.
 
-.. code::
+.. code-block:: http
 
   POST /token HTTP/1.1
   Host: eaa-provider.example.org
@@ -546,16 +546,17 @@ If the request checks are successful, the Credential Issuer generates a new Acce
 
 A non-normative example of a successful response is shown below.
 
-.. code::
+.. code-block:: http
 
   HTTP/1.1 200 OK
   Content-Type: application/json
   Cache-Control: no-store
+  
   {
       "access_token": "eyJ0eXAiOiJhdCtqd3QiLCJhbGciOiJFU..",
       "refresh_token": "eyC3fiLdCtqd3QiLCJhbGciOiCL3..",
       "token_type": "DPoP",
-      "expires_in": 3600,
+      "expires_in": 3600
   }
 
 If the Refresh Token is expired or invalid, the Credential Issuer MUST issue an error, using the error type member set to ``invalid_grant``. Therefore, to obtain the Digital Credential an issuance flow authenticating the User is required, as defined in Section :ref:`credential-issuance-low-level:Low-Level Issuance Flow`.
