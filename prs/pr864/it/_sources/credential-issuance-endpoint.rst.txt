@@ -189,11 +189,14 @@ Il JOSE Header della prova di possesso dell'Attestato di Unità di Wallet, conte
     * - **JOSE Header**
       - **Descrizione**
       - **Riferimento**
+    * - **typ**
+      - DEVE essere valorizzato con ``oauth-client-attestation-pop+jwt``
+      - `OAUTH-ATTESTATION-CLIENT-AUTH`_.
     * - **alg**
       - Identificativo dell'algoritmo di firma digitale come definito nel registro IANA "JSON Web Signature and Encryption Algorithms". DEVE essere uno degli algoritmi supportati elencati nella Sezione :ref:`algorithms:Algoritmi Crittografici` e NON DEVE essere valorizzato con ``none`` o con qualsiasi identificativo di algoritmo simmetrico (MAC).
       - :rfc:`7516#section-4.1.1`.
 
-Il body del JWT relativo alla prova di possesso dell'Attestato di Unità di Wallet, contenuto negli header della HTTP Request, DEVE contenere:
+Il body del JWT relativo alla prova di possesso dell'Attestato di Unità di Wallet, contenuto negli header della HTTP Request, contiene:
 
 .. list-table::
     :class: longtable
@@ -204,20 +207,20 @@ Il body del JWT relativo alla prova di possesso dell'Attestato di Unità di Wall
       - **Descrizione**
       - **Riferimento**
     * - **iss**
-      - *thumbprint* del JWK contenuto nel parametro ``cnf``.
+      - OBBLIGATORIO. *thumbprint* del JWK contenuto nel parametro ``cnf``.
       - :rfc:`9126` e :rfc:`7519`.
     * - **aud**
-      - DEVE essere valorizzato con l'identificativo del Credential Issuer.
-      - :rfc:`9126` e :rfc:`7519`.
-    * - **exp**
-      - Timestamp UNIX con data e orario di scadenza del JWT.
+      - OBBLIGATORIO. DEVE essere valorizzato con l'identificativo del Credential Issuer.
       - :rfc:`9126` e :rfc:`7519`.
     * - **iat**
-      - Timestamp UNIX con data e orario di emissione del JWT.
+      - OBBLIGATORIO. Timestamp UNIX con data e orario di emissione del JWT.
       - :rfc:`9126` e :rfc:`7519`.
     * - **jti**
-      - Identificativo univoco per il JWT *DPoP proof*. Il valore DOVREBBE essere impostato utilizzando un valore *UUID v4* secondo [:rfc:`4122`].
+      - OBBLIGATORIO. Identificativo univoco per il JWT *DPoP proof*. Il valore DOVREBBE essere impostato utilizzando un valore *UUID v4* secondo [:rfc:`4122`].
       - [:rfc:`7519`. Sezione 4.1.7].
+    * - **nbf**
+      - OBBLIGATORIO. Timestamp UNIX con data e orario prima del quale il JWT NON DEVE essere accettato.
+      - :rfc:`9126` e :rfc:`7519`.
 
 Pushed Authorization Request (PAR) Response
 ......................................................
@@ -271,6 +274,9 @@ Nella seguente tabella sono elencati gli *Status Code HTTP* e i relativi codici 
     * - *400 Bad Request* [OBBLIGATORIO]
       - ``invalid_scope``
       - Il Credential Issuer non può soddisfare la richiesta perché lo scope richiesto non è valido oppure è sconosciuto. (:rfc:`6749#section-5.2`).
+    * - *400 Bad Request* [REQUIRED]
+      - ``use_fresh_attestation``
+      - Il Wallet App Attestation JWT non è abbastanza recente per essere accettato dal server. Sezione 6.2 di `OAUTH-ATTESTATION-CLIENT-AUTH`_.
     * - *401 Unauthorized* [OBBLIGATORIO]
       - ``invalid_client``
       - Il Credential Issuer non può soddisfare la richiesta a causa del fallimento della *Client Authentication* (ad esempio in caso di client sconosciuto, nessun parametro relativo alla Client Authentication presente oppure se il metodo di autenticazione non è supportato). (:rfc:`6749#section-5.2`).

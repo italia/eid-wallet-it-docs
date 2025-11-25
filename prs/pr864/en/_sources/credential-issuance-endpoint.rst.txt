@@ -278,10 +278,10 @@ In the following table are listed HTTP Status Codes and related error codes that
       - The Credential Issuer cannot fulfill the request because the requested scope is invalid or unknown. (:rfc:`6749#section-5.2`).
     * - *400 Bad Request* [REQUIRED]
       - ``use_fresh_attestation``
-      - The Credential Issuer cannot fulfill the request because the requested scope is invalid or unknown. Section 6.2 of `OAUTH-ATTESTATION-CLIENT-AUTH`_.
+      - The Wallet App Attestation JWT is not fresh enough to be acceptable by the server.  Section 6.2 of `OAUTH-ATTESTATION-CLIENT-AUTH`_.
     * - *401 Unauthorized* [REQUIRED]
       - ``invalid_client``
-      - Them Wallet App Attestation JWT is not fresh enough to be acceptable by the server.  (:rfc:`6749#section-5.2`).
+      - The Credential Issuer cannot fulfill the request because of Client Authentication failed (for example in case of unknown client, no parameters Client Authentication included, or unsupported authentication method). (:rfc:`6749#section-5.2`).
     * - *405 Method not allowed* [OPTIONAL]
       - `-`
       - The Credential Issuer cannot fulfill the request because POST method was not used in the request. (:rfc:`9126#section-2.3`).

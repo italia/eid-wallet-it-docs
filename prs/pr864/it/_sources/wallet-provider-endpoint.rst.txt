@@ -443,11 +443,11 @@ L'header JOSE del JWT della Wallet App Attestation contiene i seguenti parametri
       - OBBLIGATORIO. DEVE essere impostato su ``oauth-client-attestation+jwt``
       - `OPENID4VC-HAIP`_.
     * - **trust_chain**
-      - OBBLIGATORIO. Sequenza di Entity Statement che compone la Catena di Fiducia relativa al Fornitore di Wallet.
+      - OPZIONALE. Sequenza di Entity Statement che compone la Catena di Fiducia relativa al Fornitore di Wallet.
       - `OID-FED`_ Sezione 4.3 *Trust Chain Header Parameter*.
     * - **x5c**
       - OBBLIGATORIO. Contiene il certificato di chiave pubblica X.509 o la catena di certificati (:rfc:`5280`) corrispondente alla chiave utilizzata per firmare digitalmente il JWT.
-      - :rfc:`7515` Sezione 4.1.8 e `SD-JWT-VC`_ Sezione 3.5.
+      - :rfc:`7515` Sezione 4.1.8, `SD-JWT-VC`_ Sezione 3.5 e  `OPENID4VC-HAIP`_.
 
 Il corpo del JWT della Wallet App Attestation contiene i seguenti claim:
 
@@ -466,7 +466,10 @@ Il corpo del JWT della Wallet App Attestation contiene i seguenti claim:
       - OBBLIGATORIO. Timestamp UNIX con il tempo di scadenza del JWT.
       - :rfc:`9126` e :rfc:`7519`.
     * - **iat**
-      - OBBLIGATORIO. Timestamp UNIX con il tempo di emissione del JWT.
+      - OPZIONALE. Timestamp UNIX con il tempo di emissione del JWT.
+      - :rfc:`9126` e :rfc:`7519`.
+    * - **nbf**
+      - OPZIONALE. Timestamp UNIX con data e orario prima del quale il JWT NON DEVE essere accettato.
       - :rfc:`9126` e :rfc:`7519`.
     * - **cnf**
       - OBBLIGATORIO. Oggetto JSON, contenente la parte pubblica di una coppia di chiavi asimmetriche posseduta dall'Istanza di Wallet.
@@ -476,6 +479,9 @@ Il corpo del JWT della Wallet App Attestation contiene i seguenti claim:
       - `OpenID4VCI`_.
     * - **wallet_name**
       - OPZIONALE. Stringa contenente un nome leggibile dall'uomo del Wallet.
+      - `OpenID4VCI`_.
+    * - **status**
+      - OPZIONALE. Stringa contenente le informazioni su come leggere lo stato della Wallet .App Attestation come definito nella Sezione 6.2 di `TOKEN-STATUS-LIST`_.
       - `OpenID4VCI`_.
     * - **sub**
       - OBBLIGATORIO. Identificatore dell'Istanza di Wallet che è l'impronta digitale della JWK della Wallet App Attestation.
