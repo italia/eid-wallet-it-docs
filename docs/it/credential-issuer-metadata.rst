@@ -154,35 +154,4 @@ I Metadata *openid_credential_issuer* DEVONO contenere i seguenti *claims*.
 
             - **batch_size**: Valore intero che specifica la dimensione massima dell'array per il parametro ``proofs`` nella Credential Request.
 
-Recupero dei metadati del Credential Issuer
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-I metadati del Credential Issuer possono essere recuperati utilizzando l’identificativo del Credential Issuer.
-Il documento JSON DEVE essere reso disponibile presso l’endpoint */.well-known/openid-credential-issuer*
-come definito nella Sezione 12.2 di `OpenID4VCI`_.
-
-L’header ``Accept-Language`` nella richiesta HTTP GET può essere utilizzato per indicare la/le lingua/e preferite.
-In tal caso, il Credential Issuer può inviare un sottoinsieme dei metadati contenente dati di visualizzazione internazionalizzati per una o tutte le lingue richieste, e può indicare le lingue restituite utilizzando l’header HTTP ``Content-Language``.
-
-Di seguito è riportato un esempio non normativo.
-
-.. code-block:: http
-
-    GET /.well-known/openid-credential-issuer HTTP/1.1
-    Host: issuer.example.com
-    Accept: application/json
-    Accept-Language: it-IT, it;q=0.9
-
-Il Credential Issuer DEVE rispondere con il Status Code HTTP 200 e restituire i metadati del Credential Issuer, contenenti i parametri definiti nella sezione :ref:`credential-issuer-metadata:Metadata per openid_credential_issuer`, all’interno di un documento JSON non firmato, utilizzando il media type *application/json*.
-
-Gli elementi contenuti in ``authorization_servers`` nei metadati del Credential Issuer possono essere utilizzate per ottenere i metadati dell'OAuth Authorization Server tramite l’endpoint */.well-known/oauth-authorization-server*, come definito nella Sezione 3 del :rfc:`8414`.
-Nel caso in cui il parametro ``authorization_servers`` venga omesso, è possibile utilizzare l’identificativo del Credential Issuer per recuperare i metadati del Authorization Server.
-
-Di seguito è riportato un esempio non normativo.
-
-.. code-block:: http
-
-    GET /.well-known/oauth-authorization-server HTTP/1.1
-    Host: oauth-authorization-server.example.com
-
-OAuth Authorization Server DEVE rispondere con Status Code HTTP 200 e restituire i metadati dell’OAuth Authorization Server, contenenti i parametri definiti nella sezione :ref:`credential-issuer-metadata:Metadata per oauth_authorization_server`, all’interno di un documento JSON utilizzando il media type *application/json*.
