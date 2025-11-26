@@ -90,7 +90,7 @@ Digital Credential Revocation Check Mechanisms
     :header-rows: 0
 
     * - `TOKEN-STATUS-LIST`_
-      - Tobias Looker and Paul Bastian and Christian Bormann,  "Token Status List", February 2025, Draft 7.
+      - Looker, T., Bastian, P., Bormann, C.,  "Token Status List (TSL)", October 2025, Draft 13.
     * - `OAUTH-STATUS-ASSERTION`_
       - De Marco, G., Steele, O., Marino, F., Adomeit, M., "OAuth Status Assertions", June 2024, Draft 3.
 

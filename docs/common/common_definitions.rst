@@ -68,7 +68,7 @@
 .. _Signal Hub push-yaml: https://raw.githubusercontent.com/pagopa/interop-signalhub-core/refs/tags/1.0.1/docs/openAPI/push-signals.yaml
 .. _SIOPv2: https://openid.net/specs/openid-connect-self-issued-v2-1_0.html
 .. _SPID/CIE-OpenID-Connect-Specifications: https://italia.github.io/spid-cie-oidc-docs/en
-.. _TOKEN-STATUS-LIST: https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/07/
+.. _TOKEN-STATUS-LIST: https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/13/
 .. _Transition to Operational: wallet-solution.html#transition-to-operational
 .. _Trusty: https://source.android.com/docs/security/features/trusty
 .. _W3C-SRI: https://www.w3.org/TR/SRI/
