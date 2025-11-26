@@ -35,8 +35,6 @@ I Metadata *oauth_authorization_server* DEVONO contenere i seguenti parametri.
       - `https://trust-registry.eid-wallet.example.it/loa/high`
   * - **scopes_supported**
     - Array JSON contenente un elenco dei valori *scope* supportati. Vedi :rfc:`8414#section-2`.
-  * - **response_modes_supported**
-    - Array JSON contenente un elenco dei valori "*response_mode*" supportati, come specificato in `OAuth 2.0 Multiple Response Type Encoding Practices <https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html>`_. Il valore supportato DEVE essere *query*.
   * - **response_types_supported**
     - Array JSON contenente un elenco dei valori "*response_type*" supportati, come specificato in :rfc:`8414`. Il valore supportato DEVE essere *code*.
   * - **authorization_signing_alg_values_supported**
