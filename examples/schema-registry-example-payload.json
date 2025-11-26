@@ -17,7 +17,7 @@
             "version": "1.0",
             "credential_type": "pid",
             "format": "dc+sd-jwt",
-            "vct": "urn:eudi:mDL:it:1",
+            "vct": "urn:eudi:pid:it:1",
             "schema_uri": "https://trust-registry.it-wallet.example.it/.well-known/schemas/sd-jwt/pid",
             "schema_uri#integrity": "sha256-a1b2c3d4e5f67890...",
             "description": "Schema tecnico per la Person Identification Data (PID) in formato SD-JWT."
