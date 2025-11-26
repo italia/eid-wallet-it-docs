@@ -91,9 +91,6 @@ Il payload del JWT ``request`` contenuto nel messaggio HTTP POST contiene i segu
     * - **response_type**
       - DEVE essere valorizzato con ``code``.
       - :rfc:`6749`
-    * - **response_mode**
-      - DEVE essere una stringa che indica il "*response_mode*", come specificato in [`OAUTH-MULT-RESP-TYPE`_]. DEVE essere valorizzato con uno dei valori supportati (*response_modes_supported*) forniti nei Metadata del Credential Issuer. Tale claim informa il Credential Issuer sul meccanismo da utilizzare per la restituizione dei parametri da parte dell' Authorization Endpoint. In caso di *HTTP 302 Redirect Response* il valore DEVE essere *query*. In questa modalità, i parametri dell'Authorization Response sono codificati nella stringa di query aggiunta al ``redirect_uri`` durante il redirect all'Istanza del Wallet.
-      - Vedi [`OAUTH-MULT-RESP-TYPE`_].
     * - **client_id**
       - DEVE essere valorizzato come indicato nella :ref:`Tabella dei parametri HTTP <table_http_request_claim>`.
       - Vedi :ref:`Tabella dei parametri HTTP <table_http_request_claim>`.

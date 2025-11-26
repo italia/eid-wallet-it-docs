@@ -91,9 +91,6 @@ The ``request`` JWT payload contained in the HTTP POST message is given with the
     * - **response_type**
       - MUST be set to ``code``.
       - :rfc:`6749`
-    * - **response_mode**
-      - It MUST be a string indicating the "*response_mode*", as specified in [`OAUTH-MULT-RESP-TYPE`_]. The supported value MUST be *query* and it MUST be also the supported value (*response_modes_supported*) provided in the metadata of the Credential Issuer. It informs the Credential Issuer of the mechanism to be used for returning parameters from the Authorization Endpoint. The Authorization Response parameters are encoded in the query string added to the ``redirect_uri`` when redirecting back to the Wallet Instance.
-      - See [`OAUTH-MULT-RESP-TYPE`_].
     * - **client_id**
       - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`.
       - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
