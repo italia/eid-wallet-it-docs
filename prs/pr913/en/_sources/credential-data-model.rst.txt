@@ -24,7 +24,7 @@ The PID MUST be provided according to data model requirements defined in  `EU_20
 - Nationality
 - User identification number across public Relying Party services (for example the *taxpayer identification number*)
 
-In addition to the User attributes listed above, the PID includes also the following information (`EU_2024/2977`_ and **Section 2 of the ARF PID Rulebook v1.3** [`EIDAS-ARF`_]):
+In addition to the User attributes listed above, the PID includes also the following metadata attributes (`EU_2024/2977`_ and **Section 2 of the ARF PID Rulebook v1.3** [`EIDAS-ARF`_]):
 
 - Issuing authority
 - Issuing country
@@ -32,7 +32,7 @@ In addition to the User attributes listed above, the PID includes also the follo
 - Validity status information
 - Identity and data proofing information 
 
-Some data attributes, such as the *taxpayer identification number* and the *identity and data proofing information*, are provided as **domestic extensions** defined by the Italian IT-Wallet specification. It is NOT part of the ARF PID Rulebook (Annex 3.01, PID Rulebook v1.3), but is **permitted under ARF requirement PID_06**, which allows Member States to define additional domestic attributes beyond those specified in Commission Implementing Regulation (CIR) 2024/2977 (`EU_2024/2977`_). In particular, the identity proofing information is REQUIRED for Italian PIDs to ensure:
+Some attributes, such as the *taxpayer identification number* and the *identity and data proofing information*, are provided as **domestic extensions** defined by the Italian IT-Wallet specification. It is NOT part of the ARF PID Rulebook (Annex 3.01, PID Rulebook v1.3), but is **permitted under ARF requirement PID_06**, which allows Member States to define additional domestic attributes beyond those specified in Commission Implementing Regulation (CIR) 2024/2977 (`EU_2024/2977`_). In particular, the identity proofing information is REQUIRED for Italian PIDs to ensure:
 
 - Traceability of User authentication method.
 - Level of Assurance compliance of identity proofing during the enrollment process (LoA as defined by eIDAS Regulation).
@@ -183,9 +183,9 @@ The JWT payload contains the following claims. Unless otherwise specifed, the fo
             - ``time``: OPTIONAL. *UNIX Timestamps* with the time of the authentication or verification.
             - ``attestation``: OPTIONAL. It contains the following members:
 
-                - ``type``: OPTIONAL. *String* It MUST be set to ``digital_attestation``.
-                - ``reference_number``: OPTIONAL. *String.* identifier of the authentication or verification response.
-                - ``date_of_issuance``: OPTIONAL. *String*. date of issuance of the attestation.
+                - ``type``: OPTIONAL. *String*. It MUST be set to ``digital_attestation``.
+                - ``reference_number``: OPTIONAL. *String*. Identifier of the authentication or verification response.
+                - ``date_of_issuance``: OPTIONAL. *String*. Date of issuance of the attestation.
                 - ``voucher``: OPTIONAL. *JSON Object*. It MUST contains ``organization`` claim as a human-readable String format.
 
       - Domestic extension.
@@ -445,7 +445,7 @@ A non-normative Digital Credential metadata type is provided below.
 .. literalinclude:: ../../examples/vc-metadata-type.json
   :language: JSON
 
-The Credential Type Metadata JSON Document MAY be retrieved through a *well-known* endpoint. See Section 6.3.3 of `SD-JWT-VC`_
+The Credential Type Metadata JSON Document MAY be retrieved through a *well-known* endpoint. See Section 6.3.3 of `SD-JWT-VC`_.
 This endpoint, provided by the Credential Issuer, MUST have the following format: ``https://{Credential Issuer Domain}/.well-known/vct/{vct}``.
 The Endpoint returns a ``200 OK`` status code and supports ``application/json`` and ``application/jwt`` as content type.
 
