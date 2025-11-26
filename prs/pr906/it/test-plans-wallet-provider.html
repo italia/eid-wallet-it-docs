@@ -628,13 +628,13 @@ La risorsa specificata da <code class="docutils literal notranslate"><span class
 </tr>
 <tr class="row-even"><td><p>WP_047</p></td>
 <td><p>Issuance, Interoperabilità</p></td>
-<td><p>Flusso Issuer-Initiated: scansione e decodifica QR Credential Offer</p></td>
-<td><p>In un flusso cross-device Issuer-Initiated, Istanza del Wallet scansiona con successo il codice QR, e decodifica l'URL <code class="docutils literal notranslate"><span class="pre">credential_offer</span></code>.</p></td>
+<td><p>Flusso Third-Party-Initiated: scansione e decodifica QR Credential Offer</p></td>
+<td><p>In un flusso cross-device Third-Party-Initiated, l'Istanza del Wallet scansiona con successo il codice QR, e ottiene il parametro <code class="docutils literal notranslate"><span class="pre">credential_offer</span></code> o <code class="docutils literal notranslate"><span class="pre">credential_offer_uri</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_048</p></td>
 <td><p>Issuance, Interoperabilità</p></td>
-<td><p>Flusso Issuer-Initiated: parsing Credential Offer</p></td>
-<td><p>In un flusso Issuer-Initiated, Istanza del Wallet estrae e valida tutti i parametri richiesti presenti (<code class="docutils literal notranslate"><span class="pre">iss</span></code>, <code class="docutils literal notranslate"><span class="pre">credential_offer</span></code>, ecc.) nell'URL decodificato <code class="docutils literal notranslate"><span class="pre">credential_offer</span></code>.</p></td>
+<td><p>Flusso Third-Party-Initiated: parsing Credential Offer</p></td>
+<td><p>In un flusso Third-Party-Initiated, l'Istanza del Wallet estrae e valida tutti i parametri richiesti presenti nell'oggetto Credential Offer.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_049</p></td>
 <td><p>Issuance, Interoperabilità</p></td>
@@ -674,7 +674,7 @@ La risorsa specificata da <code class="docutils literal notranslate"><span class
 <tr class="row-odd"><td><p>WP_052b</p></td>
 <td><p>Issuance, Interoperabilità</p></td>
 <td><p>Creazione JWT PoP Wallet Attestation</p></td>
-<td><p>Istanza del Wallet genera il JWT PoP Wallet Attestation (per parametri <code class="docutils literal notranslate"><span class="pre">OAuth-Client-Attestation-PoP</span></code> come definito in <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/03/">OAUTH-ATTESTATION-CLIENT-AUTH</a>) e include, nel payload, la chiave pubblica effimera referenziata nel <code class="docutils literal notranslate"><span class="pre">cnf.jwk</span></code> della Wallet Attestation.</p></td>
+<td><p>Istanza del Wallet genera il JWT PoP Wallet Attestation (per parametri <code class="docutils literal notranslate"><span class="pre">OAuth-Client-Attestation-PoP</span></code> come definito in <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/07/">OAUTH-ATTESTATION-CLIENT-AUTH</a>) e include, nel payload, la chiave pubblica effimera referenziata nel <code class="docutils literal notranslate"><span class="pre">cnf.jwk</span></code> della Wallet Attestation.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_052c</p></td>
 <td><p>Issuance, Sicurezza</p></td>
@@ -719,7 +719,7 @@ La risorsa specificata da <code class="docutils literal notranslate"><span class
 <tr class="row-even"><td><p>WP_055a</p></td>
 <td><p>Issuance, Interoperabilità</p></td>
 <td><p>Parametri prova Token Request</p></td>
-<td><p>La Token Request porta le prove richieste negli header: un JWT prova DPoP, un JWT Wallet Attestation, e JWT PoP dell'Istanza del Wallet (per <code class="docutils literal notranslate"><span class="pre">OAuth-Client-Attestation</span></code> e <code class="docutils literal notranslate"><span class="pre">OAuth-Client-Attestation-PoP</span></code> come definito in <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/03/">OAUTH-ATTESTATION-CLIENT-AUTH</a>).</p></td>
+<td><p>La Token Request porta le prove richieste negli header: un JWT prova DPoP, un JWT Wallet Attestation, e JWT PoP dell'Istanza del Wallet (per <code class="docutils literal notranslate"><span class="pre">OAuth-Client-Attestation</span></code> e <code class="docutils literal notranslate"><span class="pre">OAuth-Client-Attestation-PoP</span></code> come definito in <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/07/">OAUTH-ATTESTATION-CLIENT-AUTH</a>).</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_055b</p></td>
 <td><p>Issuance, Interoperabilità</p></td>
@@ -874,7 +874,7 @@ La risorsa specificata da <code class="docutils literal notranslate"><span class
 <tr class="row-odd"><td><p>WP_069</p></td>
 <td><p>Issuance, Sicurezza</p></td>
 <td><p>Controllo stato di un Attestato Elettronico</p></td>
-<td><p>Istanza del Wallet verifica lo stato di ogni Attestato Elettronico archiviato recuperando e validando un Status List Token (per <a class="reference internal" href="credential-revocation.html#oauth-status-lists"><span class="std std-ref">OAuth Status Lists</span></a>) o una Status Assertion (per <a class="reference internal" href="credential-revocation.html#oauth-status-assertions"><span class="std std-ref">OAuth Status Assertions</span></a>).</p></td>
+<td><p>Istanza del Wallet verifica lo stato di ogni Attestato Elettronico archiviato recuperando e validando un Status List Token (per <span class="xref std std-ref">credential-revocation:OAuth Status Lists</span>) o una Status Assertion (per <a class="reference internal" href="credential-revocation.html#oauth-status-assertions"><span class="std std-ref">OAuth Status Assertions</span></a>).</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_070</p></td>
 <td><p>Issuance, Sicurezza</p></td>
@@ -986,7 +986,7 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
 <tr class="row-even"><td><p>WP_083a</p></td>
 <td><p>Flusso-remoto, Presentazione, Interoperabilità</p></td>
 <td><p>Costruire <code class="docutils literal notranslate"><span class="pre">wallet_metadata</span></code></p></td>
-<td><p>Istanza del Wallet formatta il <code class="docutils literal notranslate"><span class="pre">wallet_metadata</span></code> come oggetto JSON che include <code class="docutils literal notranslate"><span class="pre">vp_formats_supported</span></code>, <code class="docutils literal notranslate"><span class="pre">client_id_schemes_supported</span></code>, e <code class="docutils literal notranslate"><span class="pre">authorization_endpoint</span></code> per Sezione 10.1 di [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a>].</p></td>
+<td><p>Istanza del Wallet formatta il <code class="docutils literal notranslate"><span class="pre">wallet_metadata</span></code> come oggetto JSON che include <code class="docutils literal notranslate"><span class="pre">vp_formats_supported</span></code>, <code class="docutils literal notranslate"><span class="pre">client_id_schemes_supported</span></code>, e <code class="docutils literal notranslate"><span class="pre">authorization_endpoint</span></code> per Sezione 10.1 di [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_083b</p></td>
 <td><p>Flusso-remoto, Presentazione, Privacy</p></td>
@@ -1056,7 +1056,7 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
 <tr class="row-even"><td><p>WP_092</p></td>
 <td><p>Flusso-remoto, Presentazione, Sicurezza</p></td>
 <td><p>Cifrare l'Authorization Response</p></td>
-<td><p>Istanza del Wallet cifra il JWT dell'Authorization Response per Sezione 8.3 di [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a>] utilizzando la chiave pubblica della Relying Party.</p></td>
+<td><p>Istanza del Wallet cifra il JWT dell'Authorization Response per Sezione 8.3 di [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>] utilizzando la chiave pubblica della Relying Party.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_093</p></td>
 <td><p>Flusso-remoto, Presentazione, Sicurezza</p></td>
@@ -1076,7 +1076,7 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
 <tr class="row-even"><td><p>WP_093c</p></td>
 <td><p>Flusso-remoto, Presentazione, Sicurezza</p></td>
 <td><p>Formato Key Binding JWT</p></td>
-<td><p>L'header JOSE di ogni Key Binding JWT generato includeil parametro <code class="docutils literal notranslate"><span class="pre">typ</span></code> valorizzato con <code class="docutils literal notranslate"><span class="pre">kb+jwt</span></code> e un parametro <code class="docutils literal notranslate"><span class="pre">alg</span></code> valorizzato con uno degli algoritmi di firma supportati. Il payload include i parametri <code class="docutils literal notranslate"><span class="pre">iat</span></code>, <code class="docutils literal notranslate"><span class="pre">aud</span></code>, <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, e <code class="docutils literal notranslate"><span class="pre">sd_hash</span></code> come definito in <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a>.</p></td>
+<td><p>L'header JOSE di ogni Key Binding JWT generato includeil parametro <code class="docutils literal notranslate"><span class="pre">typ</span></code> valorizzato con <code class="docutils literal notranslate"><span class="pre">kb+jwt</span></code> e un parametro <code class="docutils literal notranslate"><span class="pre">alg</span></code> valorizzato con uno degli algoritmi di firma supportati. Il payload include i parametri <code class="docutils literal notranslate"><span class="pre">iat</span></code>, <code class="docutils literal notranslate"><span class="pre">aud</span></code>, <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, e <code class="docutils literal notranslate"><span class="pre">sd_hash</span></code> come definito in <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_094</p></td>
 <td><p>Flusso-remoto, Presentazione, Interoperabilità</p></td>
@@ -1847,7 +1847,7 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 25/11/2025.
+      Ultimo aggiornamento 26/11/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

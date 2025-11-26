@@ -19,12 +19,12 @@ The Credential Issuance flow is based on [`OpenID4VCI`_] and the following main 
 The Credential Issuer MUST use *OAuth 2.0 Authorization Server* based on :rfc:`6749` to authorize the User to obtain a Credential. Credential Issuers MUST support:
 
   * **Authorization Code Flow**: The Credential Issuer requires User authentication and consent at the Authorization Endpoint before collecting User information to create and provide a Credential.
-  * **Wallet Initiated Flow**: The request from the Wallet Instance is sent to the Credential Issuer without any input from the Credential Issuer.
+  * **Wallet Initiated Flow**: The request from the Wallet Instance is sent to the Credential Issuer without any input from the Credential Issuer or a third party (i.e. via Credential Offer support).
   * **Immediate Issuance Flow**: The Credential Issuer issues the Credential directly in response to the Credential Request.
 
 In addition, the Credential Issuers MAY support:
 
-  * **Issuer Initiated Flow**: The Wallet Instance sends its request to the Credential Issuer based on the input provided by the Credential Issuer.
+  * **Third-Party Initiated Flow**: The Wallet Instance sends its request to the Credential Issuer based on the input provided by the Credential Issuer or a third party (for example an Authentic Source) supporting Credential Offer mechanism as defined in [`OpenID4VCI`_].
 
     * **Same-device Issuance Flow**: The User receives the Credential on the same device used to initiate the flow.
     * **Cross-device Issuance Flow**: The User receives the Credential on another device than the one that initiated the flow.
@@ -56,27 +56,18 @@ The following diagram shows the *User request flow*.
 .. plantuml:: plantuml/credential-user-request-flow.puml
     :width: 99%
     :alt: The figure illustrates the Credential Request Flow by the User.
-    :caption: `Credential Request by the User - Detailed flow. <https://www.plantuml.com/plantuml/svg/hP9FJzj04CNlyob6uT3sG14zve20XAgHAWKA5PTUrkknFMAzQ-sV6BvzPpTkapHLAoGkLkJClFTxptCPel8nzGPKYiwclYAFvn_F0GPvpve7PIFElWVoCrG14q3bdhSltWKClKmDdRCqmvElt7RnsYGwtBtsRlorNld3_nwLCHHnPGN3QYep8v2jKLmEhUWvahVAO4qRrjblxPLj_sb6Ewc3gOMdccnaKLk5aAPv1b0c8ZVu6ujb9bADduqR0HAUNk0un_L05cD7-0S-gc7uOOtJefk40gNJBlje5TbPK3hoHlGaufYbqXnT5HLRV779uv9RZhAweykEMyiN2W3UEbbs6r4UyUJno-hX1jP5eD0O3X5TKtu_-1Go-57Ia2ifGW3ZwOKWQ6SRzdrP2sH8PrRHETu5I88ZDEu9eAQzE40ca3Gt3HurjtTSd_9nbIPvQl9sjJnxV_VXxERg2c-zst2T0r8LM23vDKNnLDJq6HVUXO3BSYyJI96hFCsnYxt1GRM2px73ksyBLrCk8_kmRVVZhvj6qilQ17FVkJ7tDMqLcOpmjkSnYf5MLammkm3iQhvNFVqrs56kpbFpdrHJA6rOFnNkibEb60KAtZHNFhxjur8UgJS_0G00>`_
-
-.. .. figure:: ../../images/Low-Level-Flow-ITWallet-PID-QEAA-User-Request.svg
-..     :figwidth: 100%
-..     :align: center
-..     :target: https://www.plantuml.com/plantuml/svg/hP9FJzj04CNlyob6uT3sG14zve20XAgHAWKA5PTUrkknFMAzQ-sV6BvzPpTkapHLAoGkLkJClFTxptCPel8nzGPKYiwclYAFvn_F0GPvpve7PIFElWVoCrG14q3bdhSltWKClKmDdRCqmvElt7RnsYGwtBtsRlorNld3_nwLCHHnPGN3QYep8v2jKLmEhUWvahVAO4qRrjblxPLj_sb6Ewc3gOMdccnaKLk5aAPv1b0c8ZVu6ujb9bADduqR0HAUNk0un_L05cD7-0S-gc7uOOtJefk40gNJBlje5TbPK3hoHlGaufYbqXnT5HLRV779uv9RZhAweykEMyiN2W3UEbbs6r4UyUJno-hX1jP5eD0O3X5TKtu_-1Go-57Ia2ifGW3ZwOKWQ6SRzdrP2sH8PrRHETu5I88ZDEu9eAQzE40ca3Gt3HurjtTSd_9nbIPvQl9sjJnxV_VXxERg2c-zst2T0r8LM23vDKNnLDJq6HVUXO3BSYyJI96hFCsnYxt1GRM2px73ksyBLrCk8_kmRVVZhvj6qilQ17FVkJ7tDMqLcOpmjkSnYf5MLammkm3iQhvNFVqrs56kpbFpdrHJA6rOFnNkibEb60KAtZHNFhxjur8UgJS_0G00
+    :caption: `Credential Request by the User - Detailed flow. <https://www.plantuml.com/plantuml/svg/hLDDJzjC4BxFhnZ1WHSf8F4USq0KQDL8bTAIL5ouhDTZUyHwrzgFcFpxZjUaSGZgXzIB5Utky_4yCxa9KVcOMWCgHMTJMv37gyihW4xEMNEdRCIJxu7y2Qg02Q1mB-F1MS3GogkkSPPEyFGBrqsyDOaEiRVUzJjuuG_l7fKn575XnORLbD_qGBP4KJcKefT8tYg39MrO3tfBhspzIp7QKnsyMZViI_mgHrjXxga874Tn1b0c8bVuqnf7Lf5A_6HS3v3muXhxEIuxiXWRmZSHK7NTapLEYzCaJb0bUML5MqLs5fIEl14-YTaFL6cEheYABMvTydZFDKU1tdag1vGoW-8ekQK0uAqJiDkGnnvF7pylrXzXcGco6yCXegloxxLFGOnFk70HGY8VXbeo4K1_SIqMjBCL-pR30XdIWrVXESO29B4ZRjmpG4cJE40cqD3SfDsZ-YPRzhzisLWdZtLEWRkXFDd_ZYpCyCEkKrn9QPfc-42r9FVR6LBKb-V0VzCjvsvtavTx5mBUvpKRROzqXQSvDh4rsAcQiEVOuBU7ErVIqD-WmxQUDhQiAl8Wi5SpgyRrkU8HbMdsurrfPUK6yvNaJc6Wqwebhz3vznRj_0ytxGnxF1PvCxxz05UY-Mx-e_YDf-etuL-pQyFwEOVFc2B5A1xp0lopFzImrkFdHZwfDJy0>`_
 
 
 **Steps 1.1-1.4 (Wallet Initiated Flow):** The User, using the Wallet Instance, selects the Credential Issuer from those listed in the list of trustworthy entities.
 
-**Steps 2.1-2.3 (Issuer Initiated Flow):** The User while browsing the Credential Issuer website finds a link to obtain a Digital Credential.
+**Steps 2.1-2.3 (Third Party Initiated Flow):** The User while browsing the Credential Issuer website or a Third Party website supporting the Credential Offer mechanism (for example an Authentic Source) finds a link to obtain a Digital Credential.
 
-**Steps 2.4-2.7 (Cross-Device):** The Credential Offer is presented as a QR Code displayed to the User. The User scans the QR Code using the Wallet Instance, which retrieves the parameters defined in the :ref:`Table of Credential Offer parameters <table_credential_offer_claim>` (:ref:`WP_047–048 <wallet-credential-issuance-testcases>`).
+**Steps 2.4-2.6 (Cross-Device):** The Credential Offer is presented as a QR Code. The User scans it with the device camera or with the Wallet Instance's built-in scanner, triggering the Wallet Instance to retrieve the parameters defined in the :ref:`Table of Credential Offer parameters <table_credential_offer_claim>` (:ref:`WP_047-048 <wallet-credential-issuance-testcases>`).
 
-**Steps 2.8-2.10 (Same-Device):** The Credential Offer is presented as an href button containing the URL that allows the User to invoke the Wallet Instance using the Credential Offer Endpoint.
+**Steps 2.7-2.10 (Same-Device):** The Credential Offer is presented as an href button containing the URL that allows the User to invoke the Wallet Instance using the Credential Offer Endpoint.
 
-Below a non-normative example of a URL related to a Credential Offer that can be included in a QR Code or in HTML page with an href button:
-
-.. code-block:: text
-
-  openid-credential-offer://?credential_offer%3D%7B%22credential_issuer%22%3A%22https%3A%2F%2Feaa-provider.example.org%22%2C%22credential_configuration_ids%22%3A%5B%22dc_sd_jwt_Education_degree%22%5D%2C%22grants%22%3A%7B%22authorization_code%22%3A%7B%22issuer_state%22%3A%22oaKazRN8I0IbtZ0C7JuMn5%22%7D%7D%7D
+The Credential Offer can be sent by value (using the ``credential_offer`` parameter) or by reference (using the ``credential_offer_uri`` parameter) as defined in Section 4 of [`OpenID4VCI`_]. Additional details and non-normative examples are provided in Section :ref:`credential-issuance-low-level:Credential Offer Flow`.
 
 
 The following diagram shows the *Issuance flow*.
@@ -134,7 +125,7 @@ The Credential Issuer performs the following checks upon the receipt of the PAR 
     8. It MUST check that the Request Object is not expired, checking the ``exp`` claim.
     9. It MUST check that the Request Object was issued in a previous time than the value exposed in the ``iat`` claim. It SHOULD reject the request if the ``iat`` claim is far from the current time (:rfc:`9126`) of more than `5` minutes.
     10. It MUST check that the ``jti`` claim in the Request Object has not been used before by the Wallet Instance identified by the ``client_id``. This allows the Credential Issuer to mitigate replay attacks (:rfc:`7519`).
-    11. It MUST validate the ``OAuth-Client-Attestation-PoP`` parameter based on Section 4 of [`OAUTH-ATTESTATION-CLIENT-AUTH`_].
+    11. It MUST validate the ``OAuth-Client-Attestation-PoP`` parameter based on Section 5 of [`OAUTH-ATTESTATION-CLIENT-AUTH`_].
 
 Below a non-normative example of the PAR Request.
 
@@ -143,8 +134,8 @@ Below a non-normative example of the PAR Request.
     POST /as/par HTTP/1.1
     Host: eaa-provider.example.org
     Content-Type: application/x-www-form-urlencoded
-    OAuth-Client-Attestation: eyJhbGciOiJFUzI1NiIsImtpZCI6IjBiNDk4ZGRlMDkxNzJhZGE3MDFkMDdlYjZmOTg2N2FkIiwidHlwIjoid2FsbGV0LWF0dGVzdGF0aW9uK2p3dCJ9.eyJpc3MiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZyIsInN1YiI6InZiZVhKa3NNNDV4cGh0QU5uQ2lHNm1DeXVVNGpmR056b3BHdUt2b2dnOWMiLCJjbmYiOnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiLCJ4IjoiNEhOcHRJLXhyMnBqeVJKS0dNbno0V21kblFEX3VKU3E0Ujk1Tmo5OGI0NCIsInkiOiJMSVpuU0IzOXZGSmhZZ1MzazdqWEU0cjMtQ29HRlF3WnRQQklScXBObHJnIn19LCJ3YWxsZXRfbmFtZSI6IldhbGxldF92MSIsIndhbGxldF9saW5rIjoiaHR0cHM6Ly9leGFtcGxlLmNvbS93YWxsZXQvZGV0YWlsX2luZm8uaHRtbCIsImlhdCI6MTc0MDE1ODA0NywiZXhwIjoxNzQwMTU4MTY3fQ.TCUOw--YhIFkem4gWC9DPovOOB7oBZE5QGjrSzKZHCDw-9s8Hj9OmsGi8M9sD9dJLtBxg_fNroe4E7uEFM5U4w
-    OAuth-Client-Attestation-PoP: eyJhbGciOiJFUzI1NiIsInR5cCI6Im9hdXRoLWNsaWVudC1hdHRlc3RhdGlvbi1wb3Arand0In0.eyJpc3MiOiIgaHR0cHM6Ly9jbGllbnQuZXhhbXBsZS5jb20iLCJhdWQiOiJodHRwczovL2FzLmV4YW1wbGUuY29tIiwianRpIjoiZDI1ZDAwYWItNTUyYi00NmZjLWFlMTktOThmNDQwZjI1MDY0IiwiaWF0IjoxNzQwMTU4NjE3LCJleHAiOjE3NDAxNTg3Mzd9.B0KOkGi9vMxf3H2Y8rrF-mdLNsuluTvAUbjFfL1Hi-gdaPW7-8ziS9uVh7aTnSAHKWzMfkZLv5q-bxhkglR4PA
+    OAuth-Client-Attestation: ew0KICAiYWxnIjogIkVTMjU2IiwNCiAgImtpZCI6ICIwYjQ5OGRkZTA5MTcyYWRhNzAxZDA3ZWI2Zjk4NjdhZCIsDQogICJ0eXAiOiAib2F1dGgtY2xpZW50LWF0dGVzdGF0aW9uK2p3dCIsDQogICAgIng1YyI6IFsNCiAgICAgICAgIk1JSURxakNDQXBLZ0F3SUJBZ0lFU0xORXZEQSAuLi4iLA0KICAgICAgICAiTUlJQ3d6Q0NBYXNDQ1FDS1Z5OWVLanZpK2pBIC4uLiIsDQogICAgICAgICJNSUlEVERDQ0FqU2dBd0lCQWdJSkFQbG5RWUguLi4iDQogICAgXQ0KfQ.ew0KICAiaXNzIjogImh0dHBzOi8vd2FsbGV0LXByb3ZpZGVyLmV4YW1wbGUub3JnIiwNCiAgInN1YiI6ICI0N2I5ODIzNjk3OTFkMDgwMDNhNzI4M2YwNTljYjBkMTQ3Yjk4MjM2OTc5MWQwODAwM2E3MjgzZjA1OWNiMGQxIiwNCiAgImNuZiI6IHsNCiAgICAiandrIjogew0KICAgICAgImNydiI6ICJQLTI1NiIsDQogICAgICAia3R5IjogIkVDIiwNCiAgICAgICJ4IjogIjRITnB0SS14cjJwanlSSktHTW56NFdtZG5RRF91SlNxNFI5NU5qOThiNDQiLA0KICAgICAgInkiOiAiTElablNCMzl2RkpoWWdTM2s3alhFNHIzLUNvR0ZRd1p0UEJJUnFwTmxyZyINCiAgICB9DQogIH0sDQogICJ3YWxsZXRfbmFtZSI6ICJXYWxsZXRfdjEiLA0KICAid2FsbGV0X2xpbmsiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS93YWxsZXQvZGV0YWlsX2luZm8uaHRtbCIsDQogICJpYXQiOiAxNzQwMTU4MDQ3LA0KICAiZXhwIjogMTc0MDE1ODE2Nw0KfQ.TCUOw--YhIFkem4gWC9DPovOOB7oBZE5QGjrSzKZHCDw-9s8Hj9OmsGi8M9sD9dJLtBxg_fNroe4E7uEFM5U4w
+    OAuth-Client-Attestation-PoP: eyJhbGciOiJFUzI1NiIsInR5cCI6Im9hdXRoLWNsaWVudC1hdHRlc3RhdGlvbi1wb3Arand0In0.ew0KICAiaXNzIjogIiA0N2I5ODIzNjk3OTFkMDgwMDNhNzI4M2YwNTljYjBkMSIsDQogICJhdWQiOiAiaHR0cHM6Ly9hcy5leGFtcGxlLmNvbSIsDQogICJqdGkiOiAiZDI1ZDAwYWItNTUyYi00NmZjLWFlMTktOThmNDQwZjI1MDY0IiwNCiAgImlhdCI6IDE3NDAxNTg2MTcNCn0.B0KOkGi9vMxf3H2Y8rrF-mdLNsuluTvAUbjFfL1Hi-gdaPW7-8ziS9uVh7aTnSAHKWzMfkZLv5q-bxhkglR4PA
 
     client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-app-attestation$&
     request=$SIGNED-JWT
@@ -244,8 +235,8 @@ The ``OAuth-Client-Attestation`` is signed using the private key bound to the Wa
     Host: eaa-provider.example.org
     Content-Type: application/x-www-form-urlencoded
     DPoP: eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwieCI6IjR2dDhNdEFISmlsMzBDNnpUTmt2c0VVcnlHTEUtQW5BNkc5LV8xa3l5Rk0iLCJ5IjoiTWdiNTFfbjNSRjNtbHNtS3dMd0xtRUFqVmlJM3Q1bTVWNTI2MFA5MzR3RSIsImNydiI6IlAtMjU2In19.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiR0VUIiwiaHR1IjoiaHR0cHM6Ly9yZXNvdXJjZS5leGFtcGxlLm9yZy9wcm90ZWN0ZWRyZXNvdXJjZSIsImlhdCI6MTU2MjI2MjYxOH0.3Tp1ZlZ05PQYeZUHhiZwaQ1etqnwYwoiJHFR_JHb32381lMJL-8o2rE3VZ8X3yuqrGFfCVeP90Ln4J5r8ASIBg
-    OAuth-Client-Attestation: eyJhbGciOiJFUzI1NiIsImtpZCI6IjBiNDk4ZGRlMDkxNzJhZGE3MDFkMDdlYjZmOTg2N2FkIiwidHlwIjoid2FsbGV0LWF0dGVzdGF0aW9uK2p3dCJ9.eyJpc3MiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZyIsInN1YiI6InZiZVhKa3NNNDV4cGh0QU5uQ2lHNm1DeXVVNGpmR056b3BHdUt2b2dnOWMiLCJjbmYiOnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiLCJ4IjoiNEhOcHRJLXhyMnBqeVJKS0dNbno0V21kblFEX3VKU3E0Ujk1Tmo5OGI0NCIsInkiOiJMSVpuU0IzOXZGSmhZZ1MzazdqWEU0cjMtQ29HRlF3WnRQQklScXBObHJnIn19LCJ3YWxsZXRfbmFtZSI6IldhbGxldF92MSIsIndhbGxldF9saW5rIjoiaHR0cHM6Ly9leGFtcGxlLmNvbS93YWxsZXQvZGV0YWlsX2luZm8uaHRtbCIsImlhdCI6MTc0MDE1ODA0NywiZXhwIjoxNzQwMTU4MTY3fQ.Iz1iMua0B0iZyzmnR_hFrgTuHcMp8ryVrHV5IyRveoNFsNk9eop4Pl9SU_DgoVsIwRpyYaIwYvczmZ3n7Y49Bw
-    OAuth-Client-Attestation-PoP: eyJhbGciOiJFUzI1NiIsInR5cCI6Im9hdXRoLWNsaWVudC1hdHRlc3RhdGlvbi1wb3Arand0In0.eyJpc3MiOiIgaHR0cHM6Ly9jbGllbnQuZXhhbXBsZS5jb20iLCJhdWQiOiJodHRwczovL2FzLmV4YW1wbGUuY29tIiwianRpIjoiZDI1ZDAwYWItNTUyYi00NmZjLWFlMTktOThmNDQwZjI1MDY0IiwiaWF0IjoxNzQwMTU4NjE3LCJleHAiOjE3NDAxNTg3Mzd9.B0KOkGi9vMxf3H2Y8rrF-mdLNsuluTvAUbjFfL1Hi-gdaPW7-8ziS9uVh7aTnSAHKWzMfkZLv5q-bxhkglR4PA
+    OAuth-Client-Attestation: ew0KICAiYWxnIjogIkVTMjU2IiwNCiAgImtpZCI6ICIwYjQ5OGRkZTA5MTcyYWRhNzAxZDA3ZWI2Zjk4NjdhZCIsDQogICJ0eXAiOiAib2F1dGgtY2xpZW50LWF0dGVzdGF0aW9uK2p3dCIsDQogICAgIng1YyI6IFsNCiAgICAgICAgIk1JSURxakNDQXBLZ0F3SUJBZ0lFU0xORXZEQSAuLi4iLA0KICAgICAgICAiTUlJQ3d6Q0NBYXNDQ1FDS1Z5OWVLanZpK2pBIC4uLiIsDQogICAgICAgICJNSUlEVERDQ0FqU2dBd0lCQWdJSkFQbG5RWUguLi4iDQogICAgXQ0KfQ.ew0KICAiaXNzIjogImh0dHBzOi8vd2FsbGV0LXByb3ZpZGVyLmV4YW1wbGUub3JnIiwNCiAgInN1YiI6ICI0N2I5ODIzNjk3OTFkMDgwMDNhNzI4M2YwNTljYjBkMTQ3Yjk4MjM2OTc5MWQwODAwM2E3MjgzZjA1OWNiMGQxIiwNCiAgImNuZiI6IHsNCiAgICAiandrIjogew0KICAgICAgImNydiI6ICJQLTI1NiIsDQogICAgICAia3R5IjogIkVDIiwNCiAgICAgICJ4IjogIjRITnB0SS14cjJwanlSSktHTW56NFdtZG5RRF91SlNxNFI5NU5qOThiNDQiLA0KICAgICAgInkiOiAiTElablNCMzl2RkpoWWdTM2s3alhFNHIzLUNvR0ZRd1p0UEJJUnFwTmxyZyINCiAgICB9DQogIH0sDQogICJ3YWxsZXRfbmFtZSI6ICJXYWxsZXRfdjEiLA0KICAid2FsbGV0X2xpbmsiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS93YWxsZXQvZGV0YWlsX2luZm8uaHRtbCIsDQogICJpYXQiOiAxNzQwMTU4MDQ3LA0KICAiZXhwIjogMTc0MDE1ODE2Nw0KfQ.Iz1iMua0B0iZyzmnR_hFrgTuHcMp8ryVrHV5IyRveoNFsNk9eop4Pl9SU_DgoVsIwRpyYaIwYvczmZ3n7Y49Bw
+    OAuth-Client-Attestation-PoP: eyJhbGciOiJFUzI1NiIsInR5cCI6Im9hdXRoLWNsaWVudC1hdHRlc3RhdGlvbi1wb3Arand0In0.ew0KICAiaXNzIjogIiA0N2I5ODIzNjk3OTFkMDgwMDNhNzI4M2YwNTljYjBkMSIsDQogICJhdWQiOiAiaHR0cHM6Ly9hcy5leGFtcGxlLmNvbSIsDQogICJqdGkiOiAiZDI1ZDAwYWItNTUyYi00NmZjLWFlMTktOThmNDQwZjI1MDY0IiwNCiAgImlhdCI6IDE3NDAxNTg2MTcNCn0.B0KOkGi9vMxf3H2Y8rrF-mdLNsuluTvAUbjFfL1Hi-gdaPW7-8ziS9uVh7aTnSAHKWzMfkZLv5q-bxhkglR4PA
 
     grant_type=authorization_code
     &code=SplxlOBeZQQYbYS6WxSbIA
@@ -530,15 +521,15 @@ A non-normative example of the token request for a DPoP Access Token using a Ref
   Host: eaa-provider.example.org
   Content-Type: application/x-www-form-urlencoded
   DPoP: eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwieCI6IjR2dDhNdEFISmlsMzBDNnpUTmt2c0VVcnlHTEUtQW5BNkc5LV8xa3l5Rk0iLCJ5IjoiTWdiNTFfbjNSRjNtbHNtS3dMd0xtRUFqVmlJM3Q1bTVWNTI2MFA5MzR3RSIsImNydiI6IlAtMjU2In19.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiR0VUIiwiaHR1IjoiaHR0cHM6Ly9yZXNvdXJjZS5leGFtcGxlLm9yZy9wcm90ZWN0ZWRyZXNvdXJjZSIsImlhdCI6MTU2MjI2MjYxOH0.3Tp1ZlZ05PQYeZUHhiZwaQ1etqnwYwoiJHFR_JHb32381lMJL-8o2rE3VZ8X3yuqrGFfCVeP90Ln4J5r8ASIBg
-  OAuth-Client-Attestation: eyJhbGciOiJFUzI1NiIsImtpZCI6IjBiNDk4ZGRlMDkxNzJhZGE3MDFkMDdlYjZmOTg2N2FkIiwidHlwIjoid2FsbGV0LWF0dGVzdGF0aW9uK2p3dCJ9.eyJpc3MiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZyIsInN1YiI6InZiZVhKa3NNNDV4cGh0QU5uQ2lHNm1DeXVVNGpmR056b3BHdUt2b2dnOWMiLCJjbmYiOnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiLCJ4IjoiNEhOcHRJLXhyMnBqeVJKS0dNbno0V21kblFEX3VKU3E0Ujk1Tmo5OGI0NCIsInkiOiJMSVpuU0IzOXZGSmhZZ1MzazdqWEU0cjMtQ29HRlF3WnRQQklScXBObHJnIn19LCJ3YWxsZXRfbmFtZSI6IldhbGxldF92MSIsIndhbGxldF9saW5rIjoiaHR0cHM6Ly9leGFtcGxlLmNvbS93YWxsZXQvZGV0YWlsX2luZm8uaHRtbCIsImlhdCI6MTc0MDE1ODA0NywiZXhwIjoxNzQwMTU4MTY3fQ.Iz1iMua0B0iZyzmnR_hFrgTuHcMp8ryVrHV5IyRveoNFsNk9eop4Pl9SU_DgoVsIwRpyYaIwYvczmZ3n7Y49Bw
-  OAuth-Client-Attestation-PoP: eyJhbGciOiJFUzI1NiIsInR5cCI6Im9hdXRoLWNsaWVudC1hdHRlc3RhdGlvbi1wb3Arand0In0.eyJpc3MiOiIgaHR0cHM6Ly9jbGllbnQuZXhhbXBsZS5jb20iLCJhdWQiOiJodHRwczovL2FzLmV4YW1wbGUuY29tIiwianRpIjoiZDI1ZDAwYWItNTUyYi00NmZjLWFlMTktOThmNDQwZjI1MDY0IiwiaWF0IjoxNzQwMTU4NjE3LCJleHAiOjE3NDAxNTg3Mzd9.B0KOkGi9vMxf3H2Y8rrF-mdLNsuluTvAUbjFfL1Hi-gdaPW7-8ziS9uVh7aTnSAHKWzMfkZLv5q-bxhkglR4PA
+  OAuth-Client-Attestation: ew0KICAiYWxnIjogIkVTMjU2IiwNCiAgImtpZCI6ICIwYjQ5OGRkZTA5MTcyYWRhNzAxZDA3ZWI2Zjk4NjdhZCIsDQogICJ0eXAiOiAib2F1dGgtY2xpZW50LWF0dGVzdGF0aW9uK2p3dCIsDQogICAgIng1YyI6IFsNCiAgICAgICAgIk1JSURxakNDQXBLZ0F3SUJBZ0lFU0xORXZEQSAuLi4iLA0KICAgICAgICAiTUlJQ3d6Q0NBYXNDQ1FDS1Z5OWVLanZpK2pBIC4uLiIsDQogICAgICAgICJNSUlEVERDQ0FqU2dBd0lCQWdJSkFQbG5RWUguLi4iDQogICAgXQ0KfQ.ew0KICAiaXNzIjogImh0dHBzOi8vd2FsbGV0LXByb3ZpZGVyLmV4YW1wbGUub3JnIiwNCiAgInN1YiI6ICI0N2I5ODIzNjk3OTFkMDgwMDNhNzI4M2YwNTljYjBkMTQ3Yjk4MjM2OTc5MWQwODAwM2E3MjgzZjA1OWNiMGQxIiwNCiAgImNuZiI6IHsNCiAgICAiandrIjogew0KICAgICAgImNydiI6ICJQLTI1NiIsDQogICAgICAia3R5IjogIkVDIiwNCiAgICAgICJ4IjogIjRITnB0SS14cjJwanlSSktHTW56NFdtZG5RRF91SlNxNFI5NU5qOThiNDQiLA0KICAgICAgInkiOiAiTElablNCMzl2RkpoWWdTM2s3alhFNHIzLUNvR0ZRd1p0UEJJUnFwTmxyZyINCiAgICB9DQogIH0sDQogICJ3YWxsZXRfbmFtZSI6ICJXYWxsZXRfdjEiLA0KICAid2FsbGV0X2xpbmsiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS93YWxsZXQvZGV0YWlsX2luZm8uaHRtbCIsDQogICJpYXQiOiAxNzQwMTU4MDQ3LA0KICAiZXhwIjogMTc0MDE1ODE2Nw0KfQ.Iz1iMua0B0iZyzmnR_hFrgTuHcMp8ryVrHV5IyRveoNFsNk9eop4Pl9SU_DgoVsIwRpyYaIwYvczmZ3n7Y49Bw
+  OAuth-Client-Attestation-PoP: eyJhbGciOiJFUzI1NiIsInR5cCI6Im9hdXRoLWNsaWVudC1hdHRlc3RhdGlvbi1wb3Arand0In0.ew0KICAiaXNzIjogIiA0N2I5ODIzNjk3OTFkMDgwMDNhNzI4M2YwNTljYjBkMSIsDQogICJhdWQiOiAiaHR0cHM6Ly9hcy5leGFtcGxlLmNvbSIsDQogICJqdGkiOiAiZDI1ZDAwYWItNTUyYi00NmZjLWFlMTktOThmNDQwZjI1MDY0IiwNCiAgImlhdCI6IDE3NDAxNTg2MTcNCn0.B0KOkGi9vMxf3H2Y8rrF-mdLNsuluTvAUbjFfL1Hi-gdaPW7-8ziS9uVh7aTnSAHKWzMfkZLv5q-bxhkglR4PA
 
   grant_type=refresh_token
   &refresh_token=eyJ0eXAiOiJydCtqd3QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImM5NTBjMGU2ZmRlYjVkZTUwYTUwMDk2YjI0N2FmMDNjIn0.eyJpc3MiOiJodHRwczovL2VhYS1wcm92aWRlci53YWxsZXQuaXB6cy5pdCIsImNsaWVudF9pZCI6IjQ3Yjk4MjM2OTc5MWQwODAwM2E3MjgzZjA1OWNiMGQxIiwiYXVkIjoiaHR0cHM6Ly9lYWEtcHJvdmlkZXIud2FsbGV0LmlwenMuaXQiLCJpYXQiOjE3Mzk5NTI5NDgsIm5iZiI6MTczOTk1MzU0OCwiZXhwIjoxNzQyMzcyNzQ4LCJhdGgiOiJmVUh5TzJyMlozRFo1M0VzTnJXQmIweFdYb2FOeTU5SWlLQ0Fxa3NtUUVvIiwianRpIjoiYzY5NTVjZWItYzY1Zi00MDI1LTkzNzgtYjY2NzJiNjE0NWNmIiwiY25mIjp7ImprdCI6Ijk1MTU3NGFlZTFiYjc5MDdhZTFlYzMxMDlkYjJiMjI1In19.qiGM6E-7zci2-3Nnk4OMD7Tv_leUcRPsFsqaBHDHxEEzsGXLNh9qDbLIBk9sujZGVT9xs-28jZhwD6VT-MGTGw
 
 **Step 3**: The Credential Issuer validates the request according to the following checks:
 
-  - It MUST validate the OAuth-Client-Attestation-PoP parameter based on Section 4 of [`OAUTH-ATTESTATION-CLIENT-AUTH`_].
+  - It MUST validate the OAuth-Client-Attestation-PoP parameter based on Section 5 of [`OAUTH-ATTESTATION-CLIENT-AUTH`_].
   - It MUST validate the DPoP Proof JWT, according to (:RFC:`9449`) Section 4.3.
   - It MUST check that the Refresh Token is not expired, not revoked and is bound to the same set of DPoP key as the ones used in the DPoP Proof JWT.
 
@@ -647,4 +638,148 @@ To ensure the integrity and security of the re-issuance process, the following s
   - Credential expiry: The Credential Issuer MUST set the same expiry date for the re-issued Digital Credential as the previous one. This prevents indefinite Credential renewals without proper User authentication.
   - User consent: For re-issuance processes triggered by attribute changes, User consent MUST be obtained before storing the new Digital Credential. This ensures that the User is aware of and agrees to the updated information.
   - Sender-constrained Refresh Token: Refresh Tokens MUST be cryptographically bound to the Wallet Instance using DPoP protocol. This mitigates the risk of token misuse by ensuring that only the intended Wallet Instance (the same that originally has obtained the Digital Credential) can use that Refresh Token.
+
+
+Credential Offer Flow
+-----------------------
+
+A Credential Issuer or third party (e.g., Authentic Source, Registry, Catalogue) initiates Credential Issuance by sending a Credential Offer to the Wallet Instance.
+
+The Wallet Instance invocation mechanism depends on the availability of the ``credential_offer_endpoint`` parameter in the Wallet metadata:
+
+- If ``credential_offer_endpoint`` is available and contains an HTTPS URL (Universal Link), the Credential Issuer or third party SHOULD use that endpoint.
+- Otherwise, the Credential Issuer or third party MUST use one of the custom URL schemes: ``openid-credential-offer://`` (as defined in Section 4 of [`OpenID4VCI`_]) or ``haip://`` (as defined in Section 5.1.1 of [`OPENID4VC-HAIP`_]).
+
+The Wallet Instance MUST support both custom URL schemes.
+
+The Credential Offer can be transmitted by value or by reference:
+
+- **By value** (``credential_offer`` parameter): the Credential Offer object is directly embedded in the URI as a JSON-encoded string.
+- **By reference** (``credential_offer_uri`` parameter): the URI points to a resource hosted by the Credential Issuer or third party. The Wallet Instance retrieves the Credential Offer object by sending an HTTP GET request to that URI.
+
+The Credential Offer object is a JSON object containing the parameters defined in Section 4.1.1 of [`OpenID4VCI`_]. The table below specifies the parameters with IT-Wallet specific requirements:
+
+.. _table_credential_offer_claim:
+.. list-table::
+  :class: longtable
+  :widths: 20 60 20
+  :header-rows: 1
+
+  * - **Claim**
+    - **Description**
+    - **Reference**
+  * - **credential_issuer**
+    - It MUST be set with an HTTPS URL that uniquely identifies the Credential Issuer. The Wallet uses this parameter value to obtain the Credential Issuer's metadata.
+    - Section 4.1.1 of [`OpenID4VCI`_].
+  * - **credential_configuration_ids**
+    - Array of Strings, each of them specifying a unique identifier of the Credential being described in the ``credential_configurations_supported`` map in the Credential Issuer Metadata (:ref:`WP_050b <wallet-credential-issuance-testcases>`).
+    - Section 4.1.1 of [`OpenID4VCI`_].
+  * - **grants**
+    - REQUIRED. It MUST contain ``authorization_code`` object with the following parameters:
+
+        - **issuer_state**: OPTIONAL. Opaque string created by the Credential Issuer used to bind the subsequent Authorization Request with the Credential Issuer. The Wallet MUST include it in the subsequent Authorization Request when present.
+        - **authorization_server**: REQUIRED when the Credential Issuer uses more than one authorization server in its Issuer Solution. This string identifies the Authorization Server to use. The value MUST match with one of the values mapped in the ``authorization_servers`` array of the Credential Issuer metadata. It MUST NOT be used if ``authorization_servers`` is absent or it has no multiple entries.
+        - **scope**: REQUIRED. String value that maps to a specific Credential type. The Wallet MUST use this scope value in the Authorization Request. See Section 4.1 of [`OPENID4VC-HAIP`_] for details.
+    - Section 4.1.1 of [`OpenID4VCI`_] and Section 4.1 of [`OPENID4VC-HAIP`_].
+
+.. note::
+  When using ``credential_offer_uri`` (by reference), the Credential Issuer or third party SHOULD use a unique URI for each Credential Offer or otherwise prevent caching of the URI, as recommended in Section 4.1.3 of [`OpenID4VCI`_].
+
+
+Non-normative Examples
+^^^^^^^^^^^^^^^^^^^^^^^
+
+**Example 1: Credential Offer by value**
+
+The Credential Offer can be transmitted by value using any supported invocation method (custom URL scheme or Universal Link):
+
+.. code-block:: text
+
+  openid-credential-offer://?credential_offer=%7B%22credential_issuer%22%3A%22https%3A//credential-issuer.example.org%22%2C%22credential_configuration_ids%22%3A%5B%22dc_sd_jwt_Education_degree%22%5D%2C%22grants%22%3A%7B%22authorization_code%22%3A%7B%22scope%22%3A%22Education_degree%22%7D%7D%7D
+
+The decoded Credential Offer object:
+
+.. code-block:: json
+
+  {
+    "credential_issuer": "https://credential-issuer.example.org",
+    "credential_configuration_ids": ["dc_sd_jwt_Education_degree"],
+    "grants": {
+      "authorization_code": {
+        "scope": "Education_degree"
+      }
+    }
+  }
+
+**Example 2: Credential Offer by reference from Credential Issuer**
+
+The QR Code or the href button contains:
+
+.. code-block:: text
+
+  openid-credential-offer://?credential_offer_uri=https%3A%2F%2Fcredential-issuer.example.org%2Foffers%2F8f3a2b1c
+
+The Wallet Instance sends an HTTP GET request:
+
+.. code-block:: http
+
+  GET /offers/8f3a2b1c HTTP/1.1
+  Host: credential-issuer.example.org
+  Accept: application/json
+
+The Credential Issuer responds:
+
+.. code-block:: http
+
+  HTTP/1.1 200 OK
+  Content-Type: application/json
+  Cache-Control: no-store
+
+  {
+    "credential_issuer": "https://credential-issuer.example.org",
+    "credential_configuration_ids": ["dc_sd_jwt_EuropeanDisabilityCard"],
+    "grants": {
+      "authorization_code": {
+        "issuer_state": "eyJhbGciOiJSU0Et...F77QK8",
+        "scope": "EuropeanDisabilityCard"
+      }
+    }
+  }
+
+**Example 3: Credential Offer by reference from third party**
+
+A third party, such as an Authentic Source, generates a Credential Offer for a Credential Issuer.
+
+The QR Code contains:
+
+.. code-block:: text
+
+  openid-credential-offer://?credential_offer_uri=https%3A%2F%2Fauthentic-source.gov.example%2Fcredential-offers%2Fabc123
+
+The Wallet Instance sends:
+
+.. code-block:: http
+
+  GET /credential-offers/abc123 HTTP/1.1
+  Host: authentic-source.gov.example
+  Accept: application/json
+
+The Authentic Source responds:
+
+.. code-block:: http
+
+  HTTP/1.1 200 OK
+  Content-Type: application/json
+  Cache-Control: no-store
+
+  {
+    "credential_issuer": "https://credential-issuer.example.org",
+    "credential_configuration_ids": ["mso_mdoc_mDL"],
+    "grants": {
+      "authorization_code": {
+        "scope": "mDL"
+      }
+    }
+  }
+
 

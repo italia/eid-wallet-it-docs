@@ -18,6 +18,10 @@ In cases where the (Q)EAA Providers authenticate Users using their Wallet Instan
 
 The *federation_entity* metadata MUST contain the parameters as defined in Section :ref:`trust-infrastructure:Metadata of federation_entity Leaves`.
 
+The *oauth_authorization_server* metadata MUST contain the parameters as defined in Section :ref:`credential-issuer-metadata:Metadata for oauth_authorization_server`.
+
+The *openid_credential_issuer* metadata MUST contain the parameters as defined in Section :ref:`credential-issuer-metadata:Metadata for openid_credential_issuer`.
+
 The *openid_credential_verifier* metadata MUST contain the parameters as defined in Section :ref:`relying-party-entity-configuration:Relying Party Entity Configuration`.
 
 Example of a (Q)EAA Provider Entity Configuration

@@ -666,7 +666,7 @@ Each element of the ``credentials`` array contains at least the following inform
 
       * **max_validity_days**: Maximum validity period in days.
       * **status_methods**: Supported status verification methods (e.g. ``status_list``).
-      * **allowed_states**: Allowed Digital Credential states (e.g. ``valid``, ``revoked``, ``suspended``).
+      * **allowed_states**: Allowed Digital Credential states (e.g. ``VALID``, ``INVALID``, ``SUSPENDED``).
   * - **authentication**
     - REQUIRED. Digital Credential authentication requirements.
 

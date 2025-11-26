@@ -1394,7 +1394,7 @@ Content-Type: application/json
 <ul class="simple">
 <li><p><strong>max_validity_days</strong>: Maximum validity period in days.</p></li>
 <li><p><strong>status_methods</strong>: Supported status verification methods (e.g. <code class="docutils literal notranslate"><span class="pre">status_list</span></code>).</p></li>
-<li><p><strong>allowed_states</strong>: Allowed Digital Credential states (e.g. <code class="docutils literal notranslate"><span class="pre">valid</span></code>, <code class="docutils literal notranslate"><span class="pre">revoked</span></code>, <code class="docutils literal notranslate"><span class="pre">suspended</span></code>).</p></li>
+<li><p><strong>allowed_states</strong>: Allowed Digital Credential states (e.g. <code class="docutils literal notranslate"><span class="pre">VALID</span></code>, <code class="docutils literal notranslate"><span class="pre">INVALID</span></code>, <code class="docutils literal notranslate"><span class="pre">SUSPENDED</span></code>).</p></li>
 </ul>
 </td>
 </tr>
@@ -1507,11 +1507,13 @@ Content-Type: application/json
 <span class="w">            </span><span class="nt">&quot;status_methods&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="s2">&quot;status_list&quot;</span>
 <span class="w">            </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;allowed_states&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="s2">&quot;valid&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;revoked&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;suspended&quot;</span>
-<span class="w">            </span><span class="p">]</span>
+<span class="w">            </span><span class="nt">&quot;allowed_states&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;0x00&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;VALID&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;0x01&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;INVALID&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;0x02&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SUSPENDED&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;0x03&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UPDATE&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;0x0B&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ATTRIBUTE_UPDATE&quot;</span>
+<span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="nt">&quot;authentication&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">&quot;user_auth_required&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
@@ -2108,7 +2110,7 @@ The main Journeys below illustrate the interactions with the Registry Infrastruc
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 25/11/2025.
+      Last updated on 26/11/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

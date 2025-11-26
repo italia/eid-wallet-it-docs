@@ -666,7 +666,7 @@ Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazion
 
       * **max_validity_days**: Periodo di validità massimo in giorni.
       * **status_methods**: Metodi di verifica dello stato supportati (es. ``status_list``).
-      * **allowed_states**: Stati consentiti della Credenziale Digitale (es. ``valid``, ``revoked``, ``suspended``).
+      * **allowed_states**: Stati consentiti della Credenziale Digitale (es. ``VALID``, ``INVALID``, ``SUSPENDED``).
   * - **authentication**
     - RICHIESTO. Requisiti di autenticazione della Credenziale Digitale.
 
