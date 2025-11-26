@@ -583,6 +583,9 @@ In the following table are listed HTTP Status Codes and related error codes that
     * - *400 Bad Request* [REQUIRED]
       - ``invalid_dpop_proof``
       - The Credential Issuer cannot fulfill the request because of invalid *DPoP proof*. Section 5 of [:rfc:`9449`].
+    * - *400 Bad Request* [REQUIRED]
+      - ``use_fresh_attestation``
+      - The Wallet App Attestation JWT is not fresh enough to be acceptable by the server.  Section 6.2 of `OAUTH-ATTESTATION-CLIENT-AUTH`_.
     * - *401 Unauthorized* [REQUIRED]
       - ``invalid_client``
       - The Credential Issuer cannot fulfill the request because of invalid parameters Client Authentication failed (for example in case of unknown client, no parameters Client Authentication included, or unsupported authentication method). (:rfc:`6749#section-5.2`).
