@@ -1,43 +1,5 @@
 .. include:: ../common/common_definitions.rst
 
-Credential Offer Endpoint
-"""""""""""""""""""""""""
-
-The Credential Offer endpoint of a Wallet is used by Credential Issuer to interact with the User to initiate a Credential Issuance. The custom URL scheme ``openid-credential-offer://`` MUST be used.
-
-Credential Offer
-................
-
-The Credential Offer made by Credential Issuer consists of a single URI query parameter ``credential_offer``. The Credential Offer URL MAY be included in a QR Code or in an html page with an href button and MUST contain the following mandatory parameters:
-
-.. _table_credential_offer_claim:
-.. list-table::
-  :class: longtable
-  :widths: 20 60 20
-  :header-rows: 1
-
-  * - **Claim**
-    - **Description**
-    - **Reference**
-  * - **credential_issuer**
-    - It MUST be set with an HTTPS URL that uniquely identifies the Credential Issuer. The Wallet uses this parameter value to obtain the Credential Issuer's metadata.
-    - Section 4.1.1 of [`OpenID4VCI`_].
-  * - **credential_configuration_ids**
-    - Array of Strings, each of them specifying a unique identifier of the Credential being described in the ``credential_configurations_supported`` map in the Credential Issuer Metadata (:ref:`WP_050b <wallet-credential-issuance-testcases>`).
-    - Section 4.1.1 of [`OpenID4VCI`_].
-  * - **grants**
-    - It MUST contain ``authorization_code`` object with the following parameters:
-
-        - **issuer_state**: REQUIRED. Opaque string created by the Credential Issuer used to bind the subsequent Authorization Request with the Credential Issuer. The Wallet MUST include it in the subsequent Authorization Request.
-        - **authorization_server**: REQUIRED when the Credential Issuer uses more than one authorization server in its Issuer Solution. String identifying the Authorization Server to use. The value MUST match with one of the values mapped in the ``authorization_servers`` array of the Credential Issuer metadata. It MUST NOT be used if ``authorization_servers`` is absent or it has no multiple entries.
-    - Section 4.1.1 of [`OpenID4VCI`_].
-
-
-Credential Offer Response
-.........................
-No response is expected from the Wallet.
-
-
 Pushed Authorization Request Endpoint
 """""""""""""""""""""""""""""""""""""
 
@@ -129,9 +91,6 @@ The ``request`` JWT payload contained in the HTTP POST message is given with the
     * - **response_type**
       - MUST be set to ``code``.
       - :rfc:`6749`
-    * - **response_mode**
-      - It MUST be a string indicating the "*response_mode*", as specified in [`OAUTH-MULT-RESP-TYPE`_]. The supported value MUST be *query* and it MUST be also the supported value (*response_modes_supported*) provided in the metadata of the Credential Issuer. It informs the Credential Issuer of the mechanism to be used for returning parameters from the Authorization Endpoint. The Authorization Response parameters are encoded in the query string added to the ``redirect_uri`` when redirecting back to the Wallet Instance.
-      - See [`OAUTH-MULT-RESP-TYPE`_].
     * - **client_id**
       - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`.
       - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
