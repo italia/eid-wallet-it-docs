@@ -55,7 +55,7 @@ Il seguente diagramma mostra il *flusso di richiesta dell'Utente*.
 .. plantuml:: plantuml/credential-user-request-flow.puml
     :width: 99%
     :alt: La figura illustra il flusso di richiesta dell'Attestato Elettronico da parte dell'Utente.
-    :caption: `Richiesta dell'Attestato Elettronico da parte dell'Utente - Flusso dettagliato. <https://www.plantuml.com/plantuml/svg/hP9FJzj04CNlyob6uT3sG14zve20XAgHAWKA5PTUrkknFMAzQ-sV6BvzPpTkapHLAoGkLkJClFTxptCPel8nzGPKYiwclYAFvn_F0GPvpve7PIFElWVoCrG14q3bdhSltWKClKmDdRCqmvElt7RnsYGwtBtsRlorNld3_nwLCHHnPGN3QYep8v2jKLmEhUWvahVAO4qRrjblxPLj_sb6Ewc3gOMdccnaKLk5aAPv1b0c8ZVu6ujb9bADduqR0HAUNk0un_L05cD7-0S-gc7uOOtJefk40gNJBlje5TbPK3hoHlGaufYbqXnT5HLRV779uv9RZhAweykEMyiN2W3UEbbs6r4UyUJno-hX1jP5eD0O3X5TKtu_-1Go-57Ia2ifGW3ZwOKWQ6SRzdrP2sH8PrRHETu5I88ZDEu9eAQzE40ca3Gt3HurjtTSd_9nbIPvQl9sjJnxV_VXxERg2c-zst2T0r8LM23vDKNnLDJq6HVUXO3BSYyJI96hFCsnYxt1GRM2px73ksyBLrCk8_kmRVVZhvj6qilQ17FVkJ7tDMqLcOpmjkSnYf5MLammkm3iQhvNFVqrs56kpbFpdrHJA6rOFnNkibEb60KAtZHNFhxjur8UgJS_0G00>`_
+    :caption: `Richiesta dell'Attestato Elettronico da parte dell'Utente - Flusso dettagliato. <https://www.plantuml.com/plantuml/svg/hLDDJzj04BtlhnZ1WI814ZroG1HerKYLqf9KNBYirsDxn7hNtPsDoR_lUECq3a7za7gn8dlUntipkOci0wVMmbt04XsJjl20Fn96Xa_Mzr2iWHk4xn63qeczIss10IulBfNg14k6EkqOZeQ98z0HabA5VzcyE8aGMvdg6k_m28w_KDtmhKsuZxqDlj_2Yx3_xL5RYmmp9rQTmJpJAtGbYCg-5Bum1YS9IboH6VJcGRlwjsAuezgRMZOKIlWghzR2t6CHYJVYf9Is35J1BsialJ6MkJ6b4fnVGty5ymvTBkzL1D1Tz-IiD-8qYHFGIQQSQ6icxvGsJ2lXavZzG9Mkm1UioS7Qfm3tL1FhwSO6nOta6gDImNa1-vKmzt3y-7cs_AZccI2xiHGPV9L_BqEAOdow_LcC2KCSQib4IlNdrsB1U5THQ3CieaKpU1MUGwmq87R4ZNzMgiH978KseZGt3XuqDpcmznUNOvCqDZdPo7OVJ-xTWVePVDZM2Glfo-2PN7GjeSFw393DnQcYVwcLnbh7fTy57oFSvmiRRMUw8k0LDDnQw7GjOOaR-FPmvqiSgXjqoDNJikPLXK49R3IpQ7oVsnrH0yrkimkZdNo1_4bofpZG6TrYqE33MpTs-fT7TW8z78gysjnkTmlHV3F_GVmcOFM7y6DsOyayv_0PKoHcyPWFuB_zbuQBtZnkv95Q-nC0>`_
 
 **Passi 1.1-1.4 (Flusso Avviato dal Wallet):** L'Utente, utilizzando l'Istanza del Wallet, seleziona il Credential Issuer tra quelli elencati nella lista delle entità affidabili.
 
@@ -65,11 +65,7 @@ Il seguente diagramma mostra il *flusso di richiesta dell'Utente*.
 
 **Passi 2.7-2.10 (Same-Device):** La Credential Offer viene presentata come un pulsante href contenente l'URL che consente all'Utente di invocare l'Istanza del Wallet utilizzando il Credential Offer Endpoint.
 
-Di seguito un esempio non normativo di un URL relativo a una Credential Offer che può essere incluso in un codice QR o in una pagina HTML con un pulsante href:
-
-.. code-block:: text
-
-  openid-credential-offer://?credential_offer%3D%7B%22credential_issuer%22%3A%22https%3A%2F%2Feaa-provider.example.org%22%2C%22credential_configuration_ids%22%3A%5B%22dc_sd_jwt_Education_degree%22%5D%2C%22grants%22%3A%7B%22authorization_code%22%3A%7B%22issuer_state%22%3A%22oaKazRN8I0IbtZ0C7JuMn5%22%7D%7D%7D
+La Credential Offer può essere inviata per valore (utilizzando il parametro ``credential_offer``) o per riferimento (utilizzando il parametro ``credential_offer_uri``) come definito nella Sezione 4 di [`OpenID4VCI`_]. Ulteriori dettagli ed esempi non normativi sono forniti nella Sezione :ref:`credential-issuance-low-level:Flusso Credential Offer`.
 
 Il seguente diagramma mostra il *flusso di emissione*.
 
@@ -601,3 +597,146 @@ Per garantire l'integrità e la sicurezza del Re-issuance Flow, si applicano le 
   - Scadenza dell'Attestato Elettronico: Il Credential Issuer DEVE impostare per l'Attestato Elettronico riemesso la stessa data di scadenza del precedente. Ciò impedisce rinnovi indefiniti dell'Attestato Elettronico senza una corretta autenticazione dell'Utente.
   - Consenso dell'Utente: Per i Re-issuance Flow attivati da modifiche agli attributi, il consenso dell'Utente DEVE essere ottenuto prima di memorizzare il nuovo Attestato Elettronico.
   - Refresh Token vincolato al mittente: I Refresh Token DEVONO essere crittograficamente vincolati all'Istanza del Wallet utilizzando il protocollo DPoP. Ciò mitiga il rischio di uso improprio del token, garantendo che solo l'Istanza del Wallet prevista possa utilizzarlo.
+
+
+Flusso Credential Offer
+-----------------------
+
+Un Credential Issuer o una Terza Parte (ad esempio, Authentic Source, Registro, Catalogo) avvia l'emissione di Attestati Elettronici inviando una Credential Offer all'Istanza del Wallet.
+
+Il meccanismo di invocazione dell'Istanza del Wallet dipende dalla disponibilità del parametro ``credential_offer_endpoint`` nei metadata del Wallet:
+
+- Se ``credential_offer_endpoint`` è disponibile e contiene un URL HTTPS (Universal Link), il Credential Issuer o la Terza Parte DOVREBBE utilizzare quell'endpoint.
+- Altrimenti, il Credential Issuer o la Terza Parte DEVE utilizzare uno degli schemi URL personalizzati: ``openid-credential-offer://`` (come definito nella Sezione 4 di [`OpenID4VCI`_]) o ``haip://`` (come definito nella Sezione 5.1.1 di [`OPENID4VC-HAIP`_]).
+
+L'Istanza del Wallet DEVE supportare entrambi gli schemi URL personalizzati.
+
+La Credential Offer può essere trasmessa per valore o per riferimento:
+
+- **Per valore** (parametro ``credential_offer``): l'oggetto Credential Offer è incorporato direttamente nell'URI come stringa codificata JSON.
+- **Per riferimento** (parametro ``credential_offer_uri``): l'URI punta a una risorsa ospitata dal Credential Issuer o dalla Terza Parte. L'Istanza del Wallet recupera l'oggetto Credential Offer inviando una richiesta HTTP GET a quell'URI.
+
+L'oggetto Credential Offer è un oggetto JSON contenente i parametri definiti nella Sezione 4.1.1 di [`OpenID4VCI`_]. La tabella seguente specifica i parametri con requisiti specifici IT-Wallet:
+
+.. _table_credential_offer_claim:
+.. list-table::
+  :class: longtable
+  :widths: 20 60 20
+  :header-rows: 1
+
+  * - **Claim**
+    - **Descrizione**
+    - **Riferimento**
+  * - **credential_issuer**
+    - DEVE essere impostato con un URL HTTPS che identifica univocamente il Credential Issuer. Il Wallet utilizza questo valore del parametro per ottenere i metadata del Credential Issuer.
+    - Sezione 4.1.1 di [`OpenID4VCI`_].
+  * - **credential_configuration_ids**
+    - Array di stringhe, ciascuna delle quali specifica un identificatore univoco dell'Attestato Elettronico descritto nella mappa ``credential_configurations_supported`` nei Metadata del Credential Issuer (:ref:`WP_050b <wallet-credential-issuance-testcases>`).
+    - Sezione 4.1.1 di [`OpenID4VCI`_].
+  * - **grants**
+    - REQUIRED. DEVE contenere l'oggetto ``authorization_code`` con i seguenti parametri:
+
+        - **issuer_state**: OPZIONALE. Stringa opaca creata dal Credential Issuer utilizzata per legare la successiva Authorization Request con il Credential Issuer. Il Wallet DEVE includerlo nella successiva Authorization Request quando presente.
+        - **authorization_server**: REQUIRED quando il Credential Issuer utilizza più di un authorization server nella sua soluzione. Stringa che identifica l'Authorization Server da utilizzare. Il valore DEVE corrispondere a uno dei valori mappati nell'array ``authorization_servers`` dei metadata del Credential Issuer. NON DEVE essere utilizzato se ``authorization_servers`` è assente o non ha voci multiple.
+        - **scope**: REQUIRED. Valore stringa che mappa a uno specifico tipo di Attestato Elettronico. Il Wallet DEVE utilizzare questo valore di scope nell'Authorization Request. Vedere Sezione 4.1 di [`OPENID4VC-HAIP`_] per i dettagli.
+    - Sezione 4.1.1 di [`OpenID4VCI`_] e Sezione 4.1 di [`OPENID4VC-HAIP`_].
+
+.. note::
+  Quando si utilizza ``credential_offer_uri`` (per riferimento), il Credential Issuer o la Terza Parte DOVREBBE utilizzare un URI univoco per ogni Credential Offer o altrimenti prevenire il caching dell'URI, come raccomandato nella Sezione 4.1.3 di [`OpenID4VCI`_].
+
+
+Esempi non normativi
+^^^^^^^^^^^^^^^^^^^^^^^
+
+**Esempio 1: Credential Offer per valore**
+
+La Credential Offer può essere trasmessa per valore utilizzando qualsiasi metodo di invocazione supportato (schema URL personalizzato o Universal Link):
+
+.. code-block:: text
+
+  openid-credential-offer://?credential_offer=%7B%22credential_issuer%22%3A%22https%3A//credential-issuer.example.org%22%2C%22credential_configuration_ids%22%3A%5B%22dc_sd_jwt_Education_degree%22%5D%2C%22grants%22%3A%7B%22authorization_code%22%3A%7B%22scope%22%3A%22Education_degree%22%7D%7D%7D
+
+L'oggetto Credential Offer decodificato:
+
+.. code-block:: json
+
+  {
+    "credential_issuer": "https://credential-issuer.example.org",
+    "credential_configuration_ids": ["dc_sd_jwt_Education_degree"],
+    "grants": {
+      "authorization_code": {
+        "scope": "Education_degree"
+      }
+    }
+  }
+
+**Esempio 2: Credential Offer per riferimento da Credential Issuer**
+
+Il codice QR contiene:
+
+.. code-block:: text
+
+  openid-credential-offer://?credential_offer_uri=https%3A%2F%2Fcredential-issuer.example.org%2Foffers%2F8f3a2b1c
+
+L'Istanza del Wallet invia una richiesta HTTP GET:
+
+.. code-block:: http
+
+  GET /offers/8f3a2b1c HTTP/1.1
+  Host: credential-issuer.example.org
+  Accept: application/json
+
+Il Credential Issuer risponde:
+
+.. code-block:: http
+
+  HTTP/1.1 200 OK
+  Content-Type: application/json
+  Cache-Control: no-store
+
+  {
+    "credential_issuer": "https://credential-issuer.example.org",
+    "credential_configuration_ids": ["dc_sd_jwt_EuropeanDisabilityCard"],
+    "grants": {
+      "authorization_code": {
+        "issuer_state": "eyJhbGciOiJSU0Et...F77QK8",
+        "scope": "EuropeanDisabilityCard"
+      }
+    }
+  }
+
+**Esempio 3: Credential Offer per riferimento da Terza Parte**
+
+Una Terza Parte, come un'Authentic Source, genera una Credential Offer per un Credential Issuer.
+
+Il codice QR contiene:
+
+.. code-block:: text
+
+  openid-credential-offer://?credential_offer_uri=https%3A%2F%2Fauthentic-source.gov.example%2Fcredential-offers%2Fabc123
+
+L'Istanza del Wallet invia:
+
+.. code-block:: http
+
+  GET /credential-offers/abc123 HTTP/1.1
+  Host: authentic-source.gov.example
+  Accept: application/json
+
+L'Authentic Source risponde:
+
+.. code-block:: http
+
+  HTTP/1.1 200 OK
+  Content-Type: application/json
+  Cache-Control: no-store
+
+  {
+    "credential_issuer": "https://credential-issuer.example.org",
+    "credential_configuration_ids": ["mso_mdoc_mDL"],
+    "grants": {
+      "authorization_code": {
+        "scope": "mDL"
+      }
+    }
+  }

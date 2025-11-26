@@ -1,43 +1,5 @@
 .. include:: ../common/common_definitions.rst
 
-Credential Offer Endpoint 
-"""""""""""""""""""""""""""""""""""""
-
-Il Credential Offer Endpoint di un Wallet è utilizzato dal Credential Issuer per interagire con l'Utente al fine di avviare un'Emissione di un Attestato Elettronico. DEVE essere utilizzato il *custom URL* ``openid-credential-offer://``.
-
-Credential Offer
-......................
-
-La Credential Offer effettuata dal Credential Issuer consiste in un singolo parametro da inviare in query URI ``credential_offer``. L'URL rappresentativa della Credential Offer PUÒ essere inclusa in un QR Code o in una pagina html con un pulsante href e DEVE contenere i seguenti parametri obbligatori:
-
-.. _table_credential_offer_claim:
-.. list-table::
-  :class: longtable
-  :widths: 20 60 20
-  :header-rows: 1
-
-  * - **Claim**
-    - **Descrizione**
-    - **Riferimento**
-  * - **credential_issuer**
-    - DEVE essere valorizzato con una URL HTTPS che identifica in modo univoco il Credential Issuer. Il Wallet utilizza il valore di questo parametro per ottenere i Metadata del Credential Issuer.
-    - Sezione 4.1.1 di [`OpenID4VCI`_].
-  * - **credential_configuration_ids**
-    - Array di Stringhe, ciascuna delle quali specifica un identificativo univoco dell'Attestato Elettronico descritta nel claim ``credential_configurations_supported`` presente nei Metadata del Credential Issuer (:ref:`WP_050b <wallet-credential-issuance-testcases>`).
-    - Sezione 4.1.1 di [`OpenID4VCI`_].
-  * - **grants**
-    - DEVE contenere un oggetto ``authorization_code`` con i seguenti parametri:
-
-        - **issuer_state**: OBBLIGATORIO. Stringa opaca creata dal Credential Issuer utilizzata per correlare la successiva Authorization Request con il Credential Issuer. Il Wallet DEVE includerla nella successiva Authorization Request.
-        - **authorization_server**: OBBLIGATORIO se il Credential Issuer utilizza più di un authorization server nella sua Soluzione di Fornitore di Attestati Elettronici. Stringa che identifica l'Authorization Server da utilizzare. Il valore DEVE corrispondere a uno dei valori censiti nell'array ``authorization_servers`` dei Metadata del Credential Issuer. NON DEVE essere utilizzato se ``authorization_servers`` è assente o non ha voci.
-    - Sezione 4.1.1 di [`OpenID4VCI`_].
-
-
-Credential Offer Response
-...................................
-Non è prevista alcuna response da parte del Wallet.
-
-
 Pushed Authorization Request Endpoint
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
