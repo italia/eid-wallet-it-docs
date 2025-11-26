@@ -55,11 +55,11 @@ Il seguente diagramma mostra il *flusso di richiesta dell'Utente*.
 .. plantuml:: plantuml/credential-user-request-flow.puml
     :width: 99%
     :alt: La figura illustra il flusso di richiesta dell'Attestato Elettronico da parte dell'Utente.
-    :caption: `Richiesta dell'Attestato Elettronico da parte dell'Utente - Flusso dettagliato. <https://www.plantuml.com/plantuml/svg/hLDDJzj04BtlhnZ1WI814ZroG1HerKYLqf9KNBYirsDxn7hNtPsDoR_lUECq3a7za7gn8dlUntipkOci0wVMmbt04XsJjl20Fn96Xa_Mzr2iWHk4xn63qeczIss10IulBfNg14k6EkqOZeQ98z0HabA5VzcyE8aGMvdg6k_m28w_KDtmhKsuZxqDlj_2Yx3_xL5RYmmp9rQTmJpJAtGbYCg-5Bum1YS9IboH6VJcGRlwjsAuezgRMZOKIlWghzR2t6CHYJVYf9Is35J1BsialJ6MkJ6b4fnVGty5ymvTBkzL1D1Tz-IiD-8qYHFGIQQSQ6icxvGsJ2lXavZzG9Mkm1UioS7Qfm3tL1FhwSO6nOta6gDImNa1-vKmzt3y-7cs_AZccI2xiHGPV9L_BqEAOdow_LcC2KCSQib4IlNdrsB1U5THQ3CieaKpU1MUGwmq87R4ZNzMgiH978KseZGt3XuqDpcmznUNOvCqDZdPo7OVJ-xTWVePVDZM2Glfo-2PN7GjeSFw393DnQcYVwcLnbh7fTy57oFSvmiRRMUw8k0LDDnQw7GjOOaR-FPmvqiSgXjqoDNJikPLXK49R3IpQ7oVsnrH0yrkimkZdNo1_4bofpZG6TrYqE33MpTs-fT7TW8z78gysjnkTmlHV3F_GVmcOFM7y6DsOyayv_0PKoHcyPWFuB_zbuQBtZnkv95Q-nC0>`_
+    :caption: `Richiesta dell'Attestato Elettronico da parte dell'Utente - Flusso dettagliato. <https://www.plantuml.com/plantuml/svg/hLDDJzjC4BxFhnZ1WHSf8F4USq0KQDL8bTAIL5ouhDTZUyHwrzgFcFpxZjUaSGZgXzIB5Utky_4yCxa9KVcOMWCgHMTJMv37gyihW4xEMNEdRCIJxu7y2Qg02Q1mB-F1MS3GogkkSPPEyFGBrqsyDOaEiRVUzJjuuG_l7fKn575XnORLbD_qGBP4KJcKefT8tYg39MrO3tfBhspzIp7QKnsyMZViI_mgHrjXxga874Tn1b0c8bVuqnf7Lf5A_6HS3v3muXhxEIuxiXWRmZSHK7NTapLEYzCaJb0bUML5MqLs5fIEl14-YTaFL6cEheYABMvTydZFDKU1tdag1vGoW-8ekQK0uAqJiDkGnnvF7pylrXzXcGco6yCXegloxxLFGOnFk70HGY8VXbeo4K1_SIqMjBCL-pR30XdIWrVXESO29B4ZRjmpG4cJE40cqD3SfDsZ-YPRzhzisLWdZtLEWRkXFDd_ZYpCyCEkKrn9QPfc-42r9FVR6LBKb-V0VzCjvsvtavTx5mBUvpKRROzqXQSvDh4rsAcQiEVOuBU7ErVIqD-WmxQUDhQiAl8Wi5SpgyRrkU8HbMdsurrfPUK6yvNaJc6Wqwebhz3vznRj_0ytxGnxF1PvCxxz05UY-Mx-e_YDf-etuL-pQyFwEOVFc2B5A1xp0lopFzImrkFdHZwfDJy0>`_
 
 **Passi 1.1-1.4 (Flusso Avviato dal Wallet):** L'Utente, utilizzando l'Istanza del Wallet, seleziona il Credential Issuer tra quelli elencati nella lista delle entità affidabili.
 
-**Passi 2.1-2.3 (Flusso Avviato dall'Issuer):** L'Utente, mentre naviga sul sito web del Credential Issuer, trova un link per ottenere un Attestato Elettronico.
+**Passi 2.1-2.3 (Flusso Avviato da una Terza Parte):** L'Utente, mentre naviga sul sito web del Credential Issuer o di una Terza Parte che supporta il meccanismo di Credential Offer (per esempio una Fonte Autentica), trova un link per ottenere un Attestato Elettronico.
 
 **Passi 2.4-2.6 (Cross-Device):** La Credential Offer viene presentata come un codice QR. L'Utente lo scansiona con la fotocamera del dispositivo o con lo scanner integrato dell'Istanza del Wallet, attivando l'Istanza del Wallet per recuperare i parametri definiti nella :ref:`Tabella dei parametri della Credential Offer <table_credential_offer_claim>` (:ref:`WP_047-048 <wallet-credential-issuance-testcases>`).
 
@@ -672,7 +672,7 @@ L'oggetto Credential Offer decodificato:
 
 **Esempio 2: Credential Offer per riferimento da Credential Issuer**
 
-Il codice QR contiene:
+Il codice QR o il pulsante href contiene:
 
 .. code-block:: text
 

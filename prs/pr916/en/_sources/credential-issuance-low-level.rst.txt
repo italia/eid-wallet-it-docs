@@ -56,12 +56,12 @@ The following diagram shows the *User request flow*.
 .. plantuml:: plantuml/credential-user-request-flow.puml
     :width: 99%
     :alt: The figure illustrates the Credential Request Flow by the User.
-    :caption: `Credential Request by the User - Detailed flow. <https://www.plantuml.com/plantuml/svg/hLDDJzj04BtlhnZ1WI814ZroG1HerKYLqf9KNBYirsDxn7hNtPsDoR_lUECq3a7za7gn8dlUntipkOci0wVMmbt04XsJjl20Fn96Xa_Mzr2iWHk4xn63qeczIss10IulBfNg14k6EkqOZeQ98z0HabA5VzcyE8aGMvdg6k_m28w_KDtmhKsuZxqDlj_2Yx3_xL5RYmmp9rQTmJpJAtGbYCg-5Bum1YS9IboH6VJcGRlwjsAuezgRMZOKIlWghzR2t6CHYJVYf9Is35J1BsialJ6MkJ6b4fnVGty5ymvTBkzL1D1Tz-IiD-8qYHFGIQQSQ6icxvGsJ2lXavZzG9Mkm1UioS7Qfm3tL1FhwSO6nOta6gDImNa1-vKmzt3y-7cs_AZccI2xiHGPV9L_BqEAOdow_LcC2KCSQib4IlNdrsB1U5THQ3CieaKpU1MUGwmq87R4ZNzMgiH978KseZGt3XuqDpcmznUNOvCqDZdPo7OVJ-xTWVePVDZM2Glfo-2PN7GjeSFw393DnQcYVwcLnbh7fTy57oFSvmiRRMUw8k0LDDnQw7GjOOaR-FPmvqiSgXjqoDNJikPLXK49R3IpQ7oVsnrH0yrkimkZdNo1_4bofpZG6TrYqE33MpTs-fT7TW8z78gysjnkTmlHV3F_GVmcOFM7y6DsOyayv_0PKoHcyPWFuB_zbuQBtZnkv95Q-nC0>`_
+    :caption: `Credential Request by the User - Detailed flow. <https://www.plantuml.com/plantuml/svg/hLDDJzjC4BxFhnZ1WHSf8F4USq0KQDL8bTAIL5ouhDTZUyHwrzgFcFpxZjUaSGZgXzIB5Utky_4yCxa9KVcOMWCgHMTJMv37gyihW4xEMNEdRCIJxu7y2Qg02Q1mB-F1MS3GogkkSPPEyFGBrqsyDOaEiRVUzJjuuG_l7fKn575XnORLbD_qGBP4KJcKefT8tYg39MrO3tfBhspzIp7QKnsyMZViI_mgHrjXxga874Tn1b0c8bVuqnf7Lf5A_6HS3v3muXhxEIuxiXWRmZSHK7NTapLEYzCaJb0bUML5MqLs5fIEl14-YTaFL6cEheYABMvTydZFDKU1tdag1vGoW-8ekQK0uAqJiDkGnnvF7pylrXzXcGco6yCXegloxxLFGOnFk70HGY8VXbeo4K1_SIqMjBCL-pR30XdIWrVXESO29B4ZRjmpG4cJE40cqD3SfDsZ-YPRzhzisLWdZtLEWRkXFDd_ZYpCyCEkKrn9QPfc-42r9FVR6LBKb-V0VzCjvsvtavTx5mBUvpKRROzqXQSvDh4rsAcQiEVOuBU7ErVIqD-WmxQUDhQiAl8Wi5SpgyRrkU8HbMdsurrfPUK6yvNaJc6Wqwebhz3vznRj_0ytxGnxF1PvCxxz05UY-Mx-e_YDf-etuL-pQyFwEOVFc2B5A1xp0lopFzImrkFdHZwfDJy0>`_
 
 
 **Steps 1.1-1.4 (Wallet Initiated Flow):** The User, using the Wallet Instance, selects the Credential Issuer from those listed in the list of trustworthy entities.
 
-**Steps 2.1-2.3 (Issuer Initiated Flow):** The User while browsing the Credential Issuer website finds a link to obtain a Digital Credential.
+**Steps 2.1-2.3 (Third Party Initiated Flow):** The User while browsing the Credential Issuer website or a Third Party website supporting the Credential Offer mechanism (for example an Authentic Source) finds a link to obtain a Digital Credential.
 
 **Steps 2.4-2.6 (Cross-Device):** The Credential Offer is presented as a QR Code. The User scans it with the device camera or with the Wallet Instance's built-in scanner, triggering the Wallet Instance to retrieve the parameters defined in the :ref:`Table of Credential Offer parameters <table_credential_offer_claim>` (:ref:`WP_047-048 <wallet-credential-issuance-testcases>`).
 
@@ -713,7 +713,7 @@ The decoded Credential Offer object:
 
 **Example 2: Credential Offer by reference from Credential Issuer**
 
-The QR Code contains:
+The QR Code or the href button contains:
 
 .. code-block:: text
 

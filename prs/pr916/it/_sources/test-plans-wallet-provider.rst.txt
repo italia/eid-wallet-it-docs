@@ -369,11 +369,11 @@ Questa sezione elenca i casi di test dalle Sezioni:
    * - WP_047
      - Issuance, Interoperabilità
      - Flusso Third-Party-Initiated: scansione e decodifica QR Credential Offer
-     - In un flusso cross-device Third-Party-Initiated, Istanza del Wallet scansiona con successo il codice QR, e decodifica l'URL ``credential_offer``.
+     - In un flusso cross-device Third-Party-Initiated, l'Istanza del Wallet scansiona con successo il codice QR, e ottiene il parametro ``credential_offer`` o ``credential_offer_uri``.
    * - WP_048
      - Issuance, Interoperabilità
      - Flusso Third-Party-Initiated: parsing Credential Offer
-     - In un flusso Third-Party-Initiated, Istanza del Wallet estrae e valida tutti i parametri richiesti presenti (``iss``, ``credential_offer``, ecc.) nell'URL decodificato ``credential_offer``.
+     - In un flusso Third-Party-Initiated, l'Istanza del Wallet estrae e valida tutti i parametri richiesti presenti nell'oggetto Credential Offer.
    * - WP_049
      - Issuance, Interoperabilità
      - Flusso Issuer-Initiated: controllo identificativo dell'Authorization Server
