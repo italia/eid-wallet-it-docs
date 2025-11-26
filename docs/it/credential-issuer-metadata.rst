@@ -45,6 +45,10 @@ I Metadata *oauth_authorization_server* DEVONO contenere i seguenti parametri.
     - Array JSON contenente un elenco dei metodi di *client authentication* supportati. Il *token endpoint* DEVE supportare *attest_jwt_client_auth* come definito in `OAUTH-ATTESTATION-CLIENT-AUTH`_.
   * - **token_endpoint_auth_signing_alg_values_supported**
     - Array JSON contenente un elenco degli algoritmi di firma ("valori *alg*") supportati dal *token endpoint* per la firma sul JWT utilizzato per autenticare il client al *token endpoint*. Vedi :rfc:`8414#section-2`.
+  * - **client_attestation_signing_alg_values_supported**
+    - Array JSON con l’elenco dei valori JWS "alg" supportati per la Wallet Attestation (``oauth-client-attestation+jwt``). I valori DEVONO provenire dalla Sezione :ref:`algorithms:Algoritmi Crittografici` e NON DEVONO includere ``none`` né algoritmi simmetrici (MAC).
+  * - **client_attestation_pop_signing_alg_values_supported**
+    - Array JSON con l’elenco dei valori JWS "alg" supportati per la Proof-of-Possession della Wallet Attestation (``oauth-client-attestation-pop+jwt``). I valori DEVONO provenire dalla Sezione :ref:`algorithms:Algoritmi Crittografici` e NON DEVONO includere ``none`` né algoritmi simmetrici (MAC).
   * - **require_signed_request_object**
     - Booleano. DEVE essere impostato a `true` per indicare che la richiesta di autorizzazione è protetta usando un Request Object firmato [:rfc:`9101`].
   * - **request_object_signing_alg_values_supported**
@@ -53,6 +57,10 @@ I Metadata *oauth_authorization_server* DEVONO contenere i seguenti parametri.
     - Array JSON contenente un elenco degli algoritmi di firma (valori "*alg*") supportati per i JWT DPoP proof. Vedi :rfc:`9449`.
   * - **jwks**
     - JSON Web Key Set contenente le chiavi crittografiche per '*authorization server*. Vedi `OID-FED`_ Sezione 5.2.1 e `JWK`_.
+
+.. important::
+  Se ``token_endpoint_auth_methods_supported`` include ``attest_jwt_client_auth``, l’Authorization Server DEVE includere entrambi ``client_attestation_signing_alg_values_supported`` e ``client_attestation_pop_signing_alg_values_supported`` nei propri metadati. I client DOVREBBERO recuperare e analizzare i metadati per rilevare supporto e requisiti di algoritmo per l’Attestation-Based Client Authentication e, in caso di incompatibilità, POSSONO ottenere una nuova attestation con un algoritmo supportato.
+
 
 Metadata per openid_credential_issuer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

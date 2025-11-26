@@ -43,6 +43,10 @@ The *oauth_authorization_server* metadata MUST contain the following parameters.
     - JSON array containing a list of the supported grant type values. The authorization server MUST support *authorization_code*.
   * - **token_endpoint_auth_methods_supported**
     - JSON array containing a list of supported client authentication methods. The Token Endpoint MUST support *attest_jwt_client_auth* as defined in `OAUTH-ATTESTATION-CLIENT-AUTH`_.
+  * - **client_attestation_signing_alg_values_supported**
+    - JSON array containing the list of JWS "alg" values supported for the Wallet Attestation (the ``oauth-client-attestation+jwt``). Values MUST be chosen from Section :ref:`algorithms:cryptographic algorithms` and MUST NOT include ``none`` nor symmetric (MAC) algorithms.
+  * - **client_attestation_pop_signing_alg_values_supported**
+    - JSON array containing the list of JWS "alg" values supported for the Wallet Attestation Proof-of-Possession (the ``oauth-client-attestation-pop+jwt``). Values MUST be chosen from Section :ref:`algorithms:cryptographic algorithms` and MUST NOT include ``none`` nor symmetric (MAC) algorithms.
   * - **token_endpoint_auth_signing_alg_values_supported**
     - JSON array containing a list of the signing algorithms ("*alg*" values) supported by the token endpoint for the signature on the JWT used to authenticate the client at the Token Endpoint. See :rfc:`8414#section-2`.
   * - **require_signed_request_object**
@@ -53,6 +57,11 @@ The *oauth_authorization_server* metadata MUST contain the following parameters.
     - JSON array containing a list of the signing algorithms ("*alg*" values) supported for DPoP proof JWTs. See :rfc:`9449`.
   * - **jwks**
     - JSON Web Key Set containing the cryptographic keys for the authorization server. See `OID-FED`_ Section 5.2.1 and `JWK`_.
+
+.. important::
+  If ``token_endpoint_auth_methods_supported`` includes ``attest_jwt_client_auth``, the Authorization Server MUST include both
+  ``client_attestation_signing_alg_values_supported`` and ``client_attestation_pop_signing_alg_values_supported`` in its metadata.
+  Clients SHOULD fetch and parse the Authorization Server metadata to detect support and algorithm requirements for Attestation-Based Client Authentication. When algorithms are incompatible, the client MAY obtain a new client attestation using a supported algorithm.
 
 Metadata for openid_credential_issuer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

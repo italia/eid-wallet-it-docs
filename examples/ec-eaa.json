@@ -62,6 +62,16 @@
             "token_endpoint_auth_methods_supported": [
                 "attest_jwt_client_auth"
             ],
+            "client_attestation_signing_alg_values_supported": [
+                "ES256",
+                "ES384",
+                "ES512"
+            ],
+            "client_attestation_pop_signing_alg_values_supported": [
+                "ES256",
+                "ES384",
+                "ES512"
+            ],
             "token_endpoint_auth_signing_alg_values_supported": [
                 "ES256",
                 "ES384",

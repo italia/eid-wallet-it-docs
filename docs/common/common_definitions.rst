@@ -20,7 +20,7 @@
 .. _Key Attestation: https://developer.android.com/privacy-and-security/security-key-attestation#attestation-v4
 .. _LG-AA: https://www.agid.gov.it/sites/default/files/repository_files/llgg_attribute_authorities_0.pdf
 .. _MODI: https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf
-.. _OAUTH-ATTESTATION-CLIENT-AUTH: https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/03/
+.. _OAUTH-ATTESTATION-CLIENT-AUTH: https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/07/
 .. _OAUTH-MULT-RESP-TYPE: https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html
 .. _OAUTH-STATUS-ASSERTION: https://datatracker.ietf.org/doc/draft-demarco-oauth-status-assertions/03/
 .. _OAUTH2: https://www.rfc-editor.org/rfc/rfc6749
