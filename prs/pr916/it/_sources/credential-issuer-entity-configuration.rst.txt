@@ -18,6 +18,10 @@ Nei casi in cui i Fornitori di Attestati Elettronici di Attributi autenticano gl
 
 I Metadata *federation_entity* DEVONO contenere i parametri come definiti nella Sezione :ref:`trust-infrastructure:Metadati di federation_entity Foglie`.
 
+I Metadata *oauth_authorization_server* DEVONO contenere i parametri come definiti nella Sezione :ref:`credential-issuer-metadata:Metadata per oauth_authorization_server`.
+
+I Metadata *openid_credential_issuer* DEVONO contenere i parametri come definiti nella Sezione :ref:`credential-issuer-metadata:Metadata per openid_credential_issuer`.
+
 I Metadata *openid_credential_verifier* DEVONO contenere i parametri come definiti nella Sezione :ref:`relying-party-entity-configuration:Entity Configuration Relying Party`.
 
 Esempio di Entity Configuration di un Fornitore di Attestati Elettronici di Attributi
