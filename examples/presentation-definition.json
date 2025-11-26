@@ -4,7 +4,6 @@
         {
             "id": "eu.europa.ec.eudiw.pid.it.1",
             "name": "Person Identification Data",
-            "purpose": "User authentication",
             "group": [
                 "group1"
             ],
@@ -62,7 +61,6 @@
         {
             "id": "wallet_attestation",
             "name": "Wallet Attestation",
-            "purpose": "Wallet Authentication",
             "format": "jwt",
             "group": [
                 "group2"
