@@ -445,11 +445,11 @@ The JOSE header of the Wallet App Attestation JWT contains the following paramet
       - REQUIRED. It MUST be set to ``oauth-client-attestation+jwt``
       - `OPENID4VC-HAIP`_.
     * - **trust_chain**
-      - REQUIRED. Sequence of Entity Statements that composes the Trust Chain related to the Wallet Provider.
+      - OPTIONAL. Sequence of Entity Statements that composes the Trust Chain related to the Wallet Provider.
       - `OID-FED`_ Section 4.3 *Trust Chain Header Parameter*.
     * - **x5c**
       - REQUIRED. Contains the X.509 public key certificate or certificate chain (:rfc:`5280`) corresponding to the key used to digitally sign the JWT.
-      - :rfc:`7515` Section 4.1.8 and `SD-JWT-VC`_ Section 3.5.
+      - :rfc:`7515` Section 4.1.8, `SD-JWT-VC`_ Section 3.5 and `OPENID4VC-HAIP`_.
 
 The body of the Wallet App Attestation JWT contains the following claims:
 
@@ -468,7 +468,10 @@ The body of the Wallet App Attestation JWT contains the following claims:
       - REQUIRED. UNIX Timestamp with the expiry time of the JWT.
       - :rfc:`9126` and :rfc:`7519`.
     * - **iat**
-      - REQUIRED. UNIX Timestamp with the time of JWT issuance.
+      - OPTIONAL. UNIX Timestamp with the time of JWT issuance.
+      - :rfc:`9126` and :rfc:`7519`.
+    * - **nbf**
+      - OPTIONAL. UNIX Timestamp with the start time of validity of the JWT issuance.
       - :rfc:`9126` and :rfc:`7519`.
     * - **cnf**
       - REQUIRED. JSON object, containing the public part of an asymmetric key pair owned by the Wallet Instance.
@@ -479,6 +482,9 @@ The body of the Wallet App Attestation JWT contains the following claims:
     * - **wallet_name**
       - OPTIONAL. String containing a human-readable name of the Wallet.
       - `OpenID4VCI`_.
+    * - **status**
+      - OPTIONAL. Status mechanism for the Wallet Attestation as defined in Section 6.2 of `TOKEN-STATUS-LIST`_.
+      - :rfc:`9126` and :rfc:`7519`.
     * - **sub**
       - REQUIRED. Identifier of the Wallet Instance which is the thumbprint of the Wallet App Attestation JWK.
       - :rfc:`9126` and :rfc:`7519`.
