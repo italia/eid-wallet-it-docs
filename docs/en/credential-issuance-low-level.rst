@@ -19,12 +19,12 @@ The Credential Issuance flow is based on [`OpenID4VCI`_] and the following main 
 The Credential Issuer MUST use *OAuth 2.0 Authorization Server* based on :rfc:`6749` to authorize the User to obtain a Credential. Credential Issuers MUST support:
 
   * **Authorization Code Flow**: The Credential Issuer requires User authentication and consent at the Authorization Endpoint before collecting User information to create and provide a Credential.
-  * **Wallet Initiated Flow**: The request from the Wallet Instance is sent to the Credential Issuer without any input from the Credential Issuer or a Third Party (i.e. via Credential Offer support).
+  * **Wallet Initiated Flow**: The request from the Wallet Instance is sent to the Credential Issuer without any input from the Credential Issuer or a third party (i.e. via Credential Offer support).
   * **Immediate Issuance Flow**: The Credential Issuer issues the Credential directly in response to the Credential Request.
 
 In addition, the Credential Issuers MAY support:
 
-  * **Third-Party Initiated Flow**: The Wallet Instance sends its request to the Credential Issuer based on the input provided by the Credential Issuer or a Third Party (for example an Authentic Source) supporting Credential Offer mechanism as defined in [`OpenID4VCI`_].
+  * **Third-Party Initiated Flow**: The Wallet Instance sends its request to the Credential Issuer based on the input provided by the Credential Issuer or a third party (for example an Authentic Source) supporting Credential Offer mechanism as defined in [`OpenID4VCI`_].
 
     * **Same-device Issuance Flow**: The User receives the Credential on the same device used to initiate the flow.
     * **Cross-device Issuance Flow**: The User receives the Credential on another device than the one that initiated the flow.
@@ -643,19 +643,19 @@ To ensure the integrity and security of the re-issuance process, the following s
 Credential Offer Flow
 -----------------------
 
-A Credential Issuer or Third Party (e.g., Authentic Source, Registry, Catalogue) initiates Credential Issuance by sending a Credential Offer to the Wallet Instance.
+A Credential Issuer or third party (e.g., Authentic Source, Registry, Catalogue) initiates Credential Issuance by sending a Credential Offer to the Wallet Instance.
 
 The Wallet Instance invocation mechanism depends on the availability of the ``credential_offer_endpoint`` parameter in the Wallet metadata:
 
-- If ``credential_offer_endpoint`` is available and contains an HTTPS URL (Universal Link), the Credential Issuer or Third Party SHOULD use that endpoint.
-- Otherwise, the Credential Issuer or Third Party MUST use one of the custom URL schemes: ``openid-credential-offer://`` (as defined in Section 4 of [`OpenID4VCI`_]) or ``haip://`` (as defined in Section 5.1.1 of [`OPENID4VC-HAIP`_]).
+- If ``credential_offer_endpoint`` is available and contains an HTTPS URL (Universal Link), the Credential Issuer or third party SHOULD use that endpoint.
+- Otherwise, the Credential Issuer or third party MUST use one of the custom URL schemes: ``openid-credential-offer://`` (as defined in Section 4 of [`OpenID4VCI`_]) or ``haip://`` (as defined in Section 5.1.1 of [`OPENID4VC-HAIP`_]).
 
 The Wallet Instance MUST support both custom URL schemes.
 
 The Credential Offer can be transmitted by value or by reference:
 
 - **By value** (``credential_offer`` parameter): the Credential Offer object is directly embedded in the URI as a JSON-encoded string.
-- **By reference** (``credential_offer_uri`` parameter): the URI points to a resource hosted by the Credential Issuer or Third Party. The Wallet Instance retrieves the Credential Offer object by sending an HTTP GET request to that URI.
+- **By reference** (``credential_offer_uri`` parameter): the URI points to a resource hosted by the Credential Issuer or third party. The Wallet Instance retrieves the Credential Offer object by sending an HTTP GET request to that URI.
 
 The Credential Offer object is a JSON object containing the parameters defined in Section 4.1.1 of [`OpenID4VCI`_]. The table below specifies the parameters with IT-Wallet specific requirements:
 
@@ -683,7 +683,7 @@ The Credential Offer object is a JSON object containing the parameters defined i
     - Section 4.1.1 of [`OpenID4VCI`_] and Section 4.1 of [`OPENID4VC-HAIP`_].
 
 .. note::
-  When using ``credential_offer_uri`` (by reference), the Credential Issuer or Third Party SHOULD use a unique URI for each Credential Offer or otherwise prevent caching of the URI, as recommended in Section 4.1.3 of [`OpenID4VCI`_].
+  When using ``credential_offer_uri`` (by reference), the Credential Issuer or third party SHOULD use a unique URI for each Credential Offer or otherwise prevent caching of the URI, as recommended in Section 4.1.3 of [`OpenID4VCI`_].
 
 
 Non-normative Examples
@@ -746,9 +746,9 @@ The Credential Issuer responds:
     }
   }
 
-**Example 3: Credential Offer by reference from Third Party**
+**Example 3: Credential Offer by reference from third party**
 
-A Third Party, such as an Authentic Source, generates a Credential Offer for a Credential Issuer.
+A third party, such as an Authentic Source, generates a Credential Offer for a Credential Issuer.
 
 The QR Code contains:
 

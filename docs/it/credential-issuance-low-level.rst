@@ -19,12 +19,12 @@ Il flusso di emissione degli Attestati Elettronici (Issuance Flow) è basato su 
 Il Credential Issuer DEVE utilizzare un *OAuth 2.0 Authorization Server* basato su :rfc:`6749` per autorizzare l'Utente a ottenere un Attestato Elettronico. I Credential Issuer DEVONO supportare:
 
   * **Authorization Code Flow**: Il Credential Issuer richiede l'autenticazione dell'Utente e il consenso all'Authorization Endpoint prima di raccogliere le informazioni dell'Utente per creare e rilasciare un Attestato Elettronico.
-  * **Wallet Initiated Flow**: La richiesta dell'Istanza del Wallet viene inviata al Credential Issuer senza alcun input dal Credential Issuer o una Terza Parte (i.e. tramite supporto al Credential Offer).
+  * **Wallet Initiated Flow**: La richiesta dell'Istanza del Wallet viene inviata al Credential Issuer senza alcun input dal Credential Issuer o una terza parte (i.e. tramite supporto al Credential Offer).
   * **Immediate Issuance Flow**: Il Credential Issuer rilascia l'Attestato Elettronico direttamente in risposta alla Credential Request.
 
 In aggiunta, i Credential Issuer POSSONO supportare:
 
-  * **Third-Party Initiated Flow**: L'Istanza del Wallet invia la sua richiesta al Credential Issuer in base all'input fornito dal Credential Issuer o da una Terza Parte (per esempio una Fonte Autentica) che supporta il meccanismo di Credential Offer definito in [`OpenID4VCI`_]..
+  * **Third-Party Initiated Flow**: L'Istanza del Wallet invia la sua richiesta al Credential Issuer in base all'input fornito dal Credential Issuer o da una terza parte (per esempio una Fonte Autentica) che supporta il meccanismo di Credential Offer definito in [`OpenID4VCI`_]..
 
     * **Same-device Issuance Flow**: L'Utente riceve l'Attestato Elettronico sullo stesso dispositivo utilizzato per avviare il flusso.
     * **Cross-device Issuance Flow**: L'Utente riceve l'Attestato Elettronico su un dispositivo diverso da quello su cui ha avviato il flusso.
@@ -602,19 +602,19 @@ Per garantire l'integrità e la sicurezza del Re-issuance Flow, si applicano le 
 Flusso Credential Offer
 -----------------------
 
-Un Credential Issuer o una Terza Parte (ad esempio, Authentic Source, Registro, Catalogo) avvia l'emissione di Attestati Elettronici inviando una Credential Offer all'Istanza del Wallet.
+Un Credential Issuer o una terza parte (ad esempio, Authentic Source, Registro, Catalogo) avvia l'emissione di Attestati Elettronici inviando una Credential Offer all'Istanza del Wallet.
 
 Il meccanismo di invocazione dell'Istanza del Wallet dipende dalla disponibilità del parametro ``credential_offer_endpoint`` nei metadata del Wallet:
 
-- Se ``credential_offer_endpoint`` è disponibile e contiene un URL HTTPS (Universal Link), il Credential Issuer o la Terza Parte DOVREBBE utilizzare quell'endpoint.
-- Altrimenti, il Credential Issuer o la Terza Parte DEVE utilizzare uno degli schemi URL personalizzati: ``openid-credential-offer://`` (come definito nella Sezione 4 di [`OpenID4VCI`_]) o ``haip://`` (come definito nella Sezione 5.1.1 di [`OPENID4VC-HAIP`_]).
+- Se ``credential_offer_endpoint`` è disponibile e contiene un URL HTTPS (Universal Link), il Credential Issuer o la terza parte DOVREBBE utilizzare quell'endpoint.
+- Altrimenti, il Credential Issuer o la terza parte DEVE utilizzare uno degli schemi URL personalizzati: ``openid-credential-offer://`` (come definito nella Sezione 4 di [`OpenID4VCI`_]) o ``haip://`` (come definito nella Sezione 5.1.1 di [`OPENID4VC-HAIP`_]).
 
 L'Istanza del Wallet DEVE supportare entrambi gli schemi URL personalizzati.
 
 La Credential Offer può essere trasmessa per valore o per riferimento:
 
 - **Per valore** (parametro ``credential_offer``): l'oggetto Credential Offer è incorporato direttamente nell'URI come stringa codificata JSON.
-- **Per riferimento** (parametro ``credential_offer_uri``): l'URI punta a una risorsa ospitata dal Credential Issuer o dalla Terza Parte. L'Istanza del Wallet recupera l'oggetto Credential Offer inviando una richiesta HTTP GET a quell'URI.
+- **Per riferimento** (parametro ``credential_offer_uri``): l'URI punta a una risorsa ospitata dal Credential Issuer o dalla terza parte. L'Istanza del Wallet recupera l'oggetto Credential Offer inviando una richiesta HTTP GET a quell'URI.
 
 L'oggetto Credential Offer è un oggetto JSON contenente i parametri definiti nella Sezione 4.1.1 di [`OpenID4VCI`_]. La tabella seguente specifica i parametri con requisiti specifici IT-Wallet:
 
@@ -642,7 +642,7 @@ L'oggetto Credential Offer è un oggetto JSON contenente i parametri definiti ne
     - Sezione 4.1.1 di [`OpenID4VCI`_] e Sezione 4.1 di [`OPENID4VC-HAIP`_].
 
 .. note::
-  Quando si utilizza ``credential_offer_uri`` (per riferimento), il Credential Issuer o la Terza Parte DOVREBBE utilizzare un URI univoco per ogni Credential Offer o altrimenti prevenire il caching dell'URI, come raccomandato nella Sezione 4.1.3 di [`OpenID4VCI`_].
+  Quando si utilizza ``credential_offer_uri`` (per riferimento), il Credential Issuer o la terza parte DOVREBBE utilizzare un URI univoco per ogni Credential Offer o altrimenti prevenire il caching dell'URI, come raccomandato nella Sezione 4.1.3 di [`OpenID4VCI`_].
 
 
 Esempi non normativi
@@ -705,9 +705,9 @@ Il Credential Issuer risponde:
     }
   }
 
-**Esempio 3: Credential Offer per riferimento da Terza Parte**
+**Esempio 3: Credential Offer per riferimento da terza parte**
 
-Una Terza Parte, come un'Authentic Source, genera una Credential Offer per un Credential Issuer.
+Una terza parte, come un'Authentic Source, genera una Credential Offer per un Credential Issuer.
 
 Il codice QR contiene:
 
