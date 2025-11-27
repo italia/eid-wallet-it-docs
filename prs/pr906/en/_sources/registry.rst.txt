@@ -63,23 +63,23 @@ JWT payload structure (when decoded):
 
 .. code-block:: json
 
-    {
-      "registry_version": "1.0",
-      "last_updated": "2024-03-15T10:30:00Z",
-      "endpoints": {
-        "claims_registry": "https://trust-anchor.eid-wallet.example.it/api/v1/claims",
-        "authentic_sources": "https://trust-anchor.eid-wallet.example.it/api/v1/authentic-sources",
-        "credential_catalog": "https://trust-anchor.eid-wallet.example.it/api/v1/credential-catalog",
-        "taxonomy": "https://trust-anchor.eid-wallet.example.it/api/v1/taxonomy",
-        "schema_registry": "https://trust-anchor.eid-wallet.example.it/api/v1/schemas",
-        "federation_list": "https://trust-anchor.eid-wallet.example.it/list",
-        "federation_fetch": "https://trust-anchor.eid-wallet.example.it/fetch",
-        "federation_resolve": "https://trust-anchor.eid-wallet.example.it/resolve",
-        "federation_trust_mark_status": "https://trust-anchor.eid-wallet.example.it/trust_mark_status",
-        "federation_historical_keys": "https://trust-anchor.eid-wallet.example.it/historical-jwks"
-      },
-      "content_negotiation": ["application/json", "application/jwt"]
-    }
+  {
+    "registry_version": "1.0",
+    "last_updated": "2024-03-15T10:30:00Z",
+    "endpoints": {
+      "claims_registry": "https://trust-anchor.eid-wallet.example.it/api/v1/claims",
+      "authentic_sources": "https://trust-anchor.eid-wallet.example.it/api/v1/authentic-sources",
+      "credential_catalog": "https://trust-anchor.eid-wallet.example.it/api/v1/credential-catalog",
+      "taxonomy": "https://trust-anchor.eid-wallet.example.it/api/v1/taxonomy",
+      "schema_registry": "https://trust-anchor.eid-wallet.example.it/api/v1/schemas",
+      "federation_list": "https://trust-anchor.eid-wallet.example.it/list",
+      "federation_fetch": "https://trust-anchor.eid-wallet.example.it/fetch",
+      "federation_resolve": "https://trust-anchor.eid-wallet.example.it/resolve",
+      "federation_trust_mark_status": "https://trust-anchor.eid-wallet.example.it/trust_mark_status",
+      "federation_historical_keys": "https://trust-anchor.eid-wallet.example.it/historical-jwks"
+    },
+    "content_negotiation": ["application/json", "application/jwt"]
+  }
 
 
 
@@ -103,7 +103,7 @@ The Claims Registry MUST ensure:
   - **Credential-Agnostic Scenarios**: Supports scenarios where **user convenience** and **business operational efficiency** are prioritized over **regulatory compliance** and **audit trails**.
 
 .. note::
-   The Claims Registry defines semantic properties of individual attributes, but MUST NOT specify selective disclosure capabilities. Selective disclosure depends on credential format implementations (SD-JWT, mDocs), issuer technical configurations, and presentation context. These capabilities are specified at the credential type level within the Digital Credentials Catalog and implemented during credential presentation flows.
+  The Claims Registry defines semantic properties of individual attributes, but MUST NOT specify selective disclosure capabilities. Selective disclosure depends on credential format implementations (SD-JWT, mDocs), issuer technical configurations, and presentation context. These capabilities are specified at the credential type level within the Digital Credentials Catalog and implemented during credential presentation flows.
 
 
 Claims Registry Usage
@@ -203,7 +203,7 @@ Each Authentic Source MUST be assigned a unique identifier that follows the HTTP
 
 .. code-block:: text
 
-    https://{organization_domain}[/{optional_path}]
+  https://{organization_domain}[/{optional_path}]
 
 **Schema Components:**
 
@@ -294,7 +294,7 @@ The Authentic Source Registry MUST contain the following parameters for each reg
    * - **organization_info.logo_uri#integrity**
      - string
      - REQUIRED. Cryptographic digest of the logo image resource for integrity verification. Format: ``{digest_method}-{digest_value}`` (e.g., ``"sha-256-abc123..."``).
-  * - **organization_info.logo_uri_extended**
+   * - **organization_info.logo_uri_extended**
      - string
      - OPTIONAL. URL to the organization's extended logo image.
    * - **organization_info.logo_uri_extended#integrity**
@@ -376,17 +376,17 @@ A non-normative example of AS Registry structure is given below:
 
 A non-normative example of a localisation bundle output is given below:
 
-    .. code-block:: json
+.. code-block:: json
 
-      {
-        "authentic_source1.name": "Ministero delle infrastrutture e dei trasporti",
-        "authentic_source1.dataset1.origin": "MIT -- Direzione Generale per la Motorizzazione",
-        "authentic_source1.dataset1.userinfo": "###### Patente di Guida\nSono disponibili le patenti rilasciate dopo il 1° gennaio 2020. Per le patenti più vecchie, contattare l'ufficio motorizzazione locale.",
-        "authentic_source2.name": "Example Bank S.p.A.",
-        "authentic_source2.dataset1.origin": "Esempio origine dei dati 1",
-        "authentic_source2.dataset1.userinfo": "###### Informazioni sulla disponibilità dei dati\nL'accesso ai dati finanziari richiede il consenso del cliente ed è soggetto alla normativa PSD2. Le informazioni sui conti sono disponibili solo per i conti attivi.",
-        "...": "..."
-      }
+  {
+    "authentic_source1.name": "Ministero delle infrastrutture e dei trasporti",
+    "authentic_source1.dataset1.origin": "MIT -- Direzione Generale per la Motorizzazione",
+    "authentic_source1.dataset1.userinfo": "###### Patente di Guida\nSono disponibili le patenti rilasciate dopo il 1° gennaio 2020. Per le patenti più vecchie, contattare l'ufficio motorizzazione locale.",
+    "authentic_source2.name": "Example Bank S.p.A.",
+    "authentic_source2.dataset1.origin": "Esempio origine dei dati 1",
+    "authentic_source2.dataset1.userinfo": "###### Informazioni sulla disponibilità dei dati\nL'accesso ai dati finanziari richiede il consenso del cliente ed è soggetto alla normativa PSD2. Le informazioni sui conti sono disponibili solo per i conti attivi.",
+    "...": "..."
+  }
 
 Localization bundles MUST be available at the URI specified in the **localization_info.bundles_base_uri** claim of the Digital Credentials Catalog. Each locale bundle MUST be accessible following the naming pattern **{locale_code}.json**, where **{locale_code}** is replaced with the corresponding locale code from the **available_locales** array.
 
@@ -558,7 +558,7 @@ Each Credential MUST specify domains and purposes to enable both **Credential-Sp
     - **Police Controls**: ``"docType": "org.iso.18013.5.1.mDL"`` for driving license verification.
     - **Banking KYC**: Specific credential types mandated by financial regulations.
     - **Healthcare Services**: ``"vct_values": ["urn:eudi:european_disability_card:it:1"]`` for EU-compliant disability benefit access.
-  
+
   2. **Credential-Agnostic Scenarios** (Typical for Private Business): RPs request specific claims regardless of credential source for operational efficiency, such as:
 
     - **E-commerce Delivery**: Any credential, among those to which he is authorized to access, containing ``given_name``, ``family_name``, ``address`` for shipping.
@@ -703,12 +703,12 @@ The ``wallet_app_attestations`` Object is an Array containing at least the follo
   * - **formats**
     - REQUIRED. Array of supported formats for the Wallet App Attestation, including:
 
-    * **format**: Type of format (e.g., ``dc+sd-jwt``, ``mso_mdoc`` or ``oauth-client-attestation+jwt``)
-    * **configuration_id**: Configuration identifier of the Wallet App Attestation. This is formed by concatenating the string ``wa`` to the ``format`` (e.g., ``dc_sd_jwt_wa``, ``mso_mdoc_wa``, or ``jwt_wa``), and is used to uniquely reference the configuration of the Wallet App Attestation format.
-    * **vct**: CONDITIONAL. It is REQUIRED if the ``format`` is ``dc+sd-jwt``, indicating the Verifiable Credential Type (e.g., ``urn:eudi:mDL:it:1``).
-    * **docType**: CONDITIONAL. It is only present if the ``format`` is ``mso_mdoc``. It is a string of the form ``{Trust Anchor reverse domain}.{credential_type}`` (e.g., ``it.wallet.trust-registry.wallet_app_attestation``).
-    * **schema_uri**: URI pointing to the format specification document.
-    * **schema_uri#integrity**: Cryptographic digest of the format specification document for integrity verification. It MUST be a string of the form ``{digest_method}-{digest_value}``, where ``{digest_method}`` is the digest algorithm used (e.g., ``sha-256``) and ``{digest_value}`` is the base64url-encoded digest value.
+      * **format**: Type of format (e.g., ``dc+sd-jwt``, ``mso_mdoc`` or ``oauth-client-attestation+jwt``)
+      * **configuration_id**: Configuration identifier of the Wallet App Attestation. This is formed by concatenating the string ``wa`` to the ``format`` (e.g., ``dc_sd_jwt_wa``, ``mso_mdoc_wa``, or ``jwt_wa``), and is used to uniquely reference the configuration of the Wallet App Attestation format.
+      * **vct**: CONDITIONAL. It is REQUIRED if the ``format`` is ``dc+sd-jwt``, indicating the Verifiable Credential Type (e.g., ``urn:eudi:mDL:it:1``).
+      * **docType**: CONDITIONAL. It is only present if the ``format`` is ``mso_mdoc``. It is a string of the form ``{Trust Anchor reverse domain}.{credential_type}`` (e.g., ``it.wallet.trust-registry.wallet_app_attestation``).
+      * **schema_uri**: URI pointing to the format specification document.
+      * **schema_uri#integrity**: Cryptographic digest of the format specification document for integrity verification. It MUST be a string of the form ``{digest_method}-{digest_value}``, where ``{digest_method}`` is the digest algorithm used (e.g., ``sha-256``) and ``{digest_value}`` is the base64url-encoded digest value.
 
 The corresponding example of Digital Credentials Catalog as decoded in JSON for both header and payload is the following:
 
@@ -730,11 +730,11 @@ A non-normative example of a localisation bundle output is given below:
 
 .. code-block:: json
 
-      {
-        "mDL.name": "Patente di Guida",
-        "mDL.issuer1.name": "Esempio di Credential Issuer",
-        "...": "..."
-      }
+  {
+    "mDL.name": "Patente di Guida",
+    "mDL.issuer1.name": "Esempio di Credential Issuer",
+    "...": "..."
+  }
 
 Localization bundles MUST be available at the URI specified in the **localization_info.bundles_base_uri** claim of the Digital Credentials Catalog. Each locale bundle MUST be accessible following the naming pattern **{locale_code}.json**, where **{locale_code}** is replaced with the corresponding locale code from the **available_locales** array.
 
@@ -807,8 +807,8 @@ A non-normative example of a localisation bundle output is given below:
 
   {
     "domain.identity.name": "Identità",
-    "domain.identity.description": "Attestati Elettronici che stabiliscono o verificano l'identità di una persona, compresi i documenti di identità fisici e digitali legalmente riconosciuti dalle leggi nazionali.",
-    "purpose.person_identification.name: "identificazione della persona",
+    "domain.identity.description": "Attestati Elettronici che stabiliscono o verificano l`identità di una persona, compresi i documenti di identità fisici e digitali legalmente riconosciuti dalle leggi nazionali.",
+    "purpose.person_identification.name": "identificazione della persona",
     "...": "..."
   }
 

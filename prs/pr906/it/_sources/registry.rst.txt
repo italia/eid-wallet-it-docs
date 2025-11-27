@@ -35,7 +35,7 @@ Il Trust Anchor DEVE pubblicare metadati di scoperta del registro all'endpoint `
 Inoltre, il sistema di registro IT-Wallet DEVE usare due pattern di accesso distinti:
 
 - **API di Registro Dati**: DEVONO supportare capacità di paginazione e filtraggio.
-- **Infrastruttura di Fiducia della Federazione**: come definito in :ref:`trust-infrastructure:The Infrastructure of Trust`.
+- **Infrastruttura di Fiducia della Federazione**: come definito in :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
 
 Di seguito è fornito un esempio non normativo.
 
@@ -63,23 +63,23 @@ Struttura del payload JWT (decodificato):
 
 .. code-block:: json
 
-    {
-      "registry_version": "1.0",
-      "last_updated": "2024-03-15T10:30:00Z",
-      "endpoints": {
-        "claims_registry": "https://trust-anchor.eid-wallet.example.it/api/v1/claims",
-        "authentic_sources": "https://trust-anchor.eid-wallet.example.it/api/v1/authentic-sources",
-        "credential_catalog": "https://trust-anchor.eid-wallet.example.it/api/v1/credential-catalog",
-        "taxonomy": "https://trust-anchor.eid-wallet.example.it/api/v1/taxonomy",
-        "schema_registry": "https://trust-anchor.eid-wallet.example.it/api/v1/schemas",
-        "federation_list": "https://trust-anchor.eid-wallet.example.it/list",
-        "federation_fetch": "https://trust-anchor.eid-wallet.example.it/fetch",
-        "federation_resolve": "https://trust-anchor.eid-wallet.example.it/resolve",
-        "federation_trust_mark_status": "https://trust-anchor.eid-wallet.example.it/trust_mark_status",
-        "federation_historical_keys": "https://trust-anchor.eid-wallet.example.it/historical-jwks"
-      },
-      "content_negotiation": ["application/json", "application/jwt"]
-    }
+  {
+    "registry_version": "1.0",
+    "last_updated": "2024-03-15T10:30:00Z",
+    "endpoints": {
+      "claims_registry": "https://trust-anchor.eid-wallet.example.it/api/v1/claims",
+      "authentic_sources": "https://trust-anchor.eid-wallet.example.it/api/v1/authentic-sources",
+      "credential_catalog": "https://trust-anchor.eid-wallet.example.it/api/v1/credential-catalog",
+      "taxonomy": "https://trust-anchor.eid-wallet.example.it/api/v1/taxonomy",
+      "schema_registry": "https://trust-anchor.eid-wallet.example.it/api/v1/schemas",
+      "federation_list": "https://trust-anchor.eid-wallet.example.it/list",
+      "federation_fetch": "https://trust-anchor.eid-wallet.example.it/fetch",
+      "federation_resolve": "https://trust-anchor.eid-wallet.example.it/resolve",
+      "federation_trust_mark_status": "https://trust-anchor.eid-wallet.example.it/trust_mark_status",
+      "federation_historical_keys": "https://trust-anchor.eid-wallet.example.it/historical-jwks"
+    },
+    "content_negotiation": ["application/json", "application/jwt"]
+  }
 
 
 
@@ -203,7 +203,7 @@ A ciascuna Fonte Autentica DEVE essere assegnato un identificatore univoco che s
 
 .. code-block:: text
 
-    https://{organization_domain}[/{optional_path}]
+  https://{organization_domain}[/{optional_path}]
 
 **Componenti dello Schema:**
 
@@ -558,7 +558,7 @@ Ogni Credenziale DEVE specificare domini e scopi per abilitare sia **Scenari Cre
     - **Controlli di Polizia**: ``"docType": "org.iso.18013.5.1.mDL"`` per la verifica della patente di guida.
     - **KYC Bancario**: Tipi di credenziali specifici richiesti dalle normative finanziarie.
     - **Servizi Sanitari**: ``"vct_values": ["urn:eudi:european_disability_card:it:1"]`` per l'accesso ai benefici per disabilità conforme all'UE.
-  
+
   2. **Scenari Credential-Agnostic** (Tipici per Business Privato): Le RP richiedono claims specifici indipendentemente dalla fonte della credenziale per efficienza operativa, come:
 
     - **Consegna E-commerce**: Qualsiasi credenziale, tra quelle a cui è autorizzato ad accedere, contenente ``given_name``, ``family_name``, ``address`` per la spedizione.
@@ -808,7 +808,7 @@ Un esempio non normativo di output di un bundle di localizzazione è fornito di 
  {
     "domain.identity.name": "Identity",
     "domain.identity.description": "Credentials that establish or verify the identity of a person, including physical and digital identity documents legally recognized by national laws.",
-    "purpose.person_identification.name: "Person identification",
+    "purpose.person_identification.name": "Person identification",
     "...": "..."
   }
 

@@ -190,7 +190,7 @@
 <p>Inoltre, il sistema di registro IT-Wallet DEVE usare due pattern di accesso distinti:</p>
 <ul class="simple">
 <li><p><strong>API di Registro Dati</strong>: DEVONO supportare capacità di paginazione e filtraggio.</p></li>
-<li><p><strong>Infrastruttura di Fiducia della Federazione</strong>: come definito in <span class="xref std std-ref">trust-infrastructure:The Infrastructure of Trust</span>.</p></li>
+<li><p><strong>Infrastruttura di Fiducia della Federazione</strong>: come definito in <a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>.</p></li>
 </ul>
 <p>Di seguito è fornito un esempio non normativo.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/.well-known/it-wallet-registry</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
@@ -1797,9 +1797,9 @@ Content-Type: application/json
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">   </span><span class="nt">&quot;domain.identity.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Identity&quot;</span><span class="p">,</span>
 <span class="w">   </span><span class="nt">&quot;domain.identity.description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Credentials that establish or verify the identity of a person, including physical and digital identity documents legally recognized by national laws.&quot;</span><span class="p">,</span>
-<span class="w">   </span><span class="s2">&quot;purpose.person_identification.name: &quot;</span><span class="err">Perso</span><span class="kc">n</span><span class="w"> </span><span class="err">ide</span><span class="kc">nt</span><span class="err">i</span><span class="kc">f</span><span class="err">ica</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span><span class="s2">&quot;,</span>
-<span class="s2">   &quot;</span><span class="err">...</span><span class="s2">&quot;: &quot;</span><span class="err">...&quot;</span>
-<span class="err"> }</span>
+<span class="w">   </span><span class="nt">&quot;purpose.person_identification.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Person identification&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;...&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span>
+<span class="w"> </span><span class="p">}</span>
 </pre></div>
 </div>
 <p>I bundle di localizzazione DEVONO essere disponibili all'URI specificato nell'attibuto <strong>localization_info.bundles_base_uri</strong> del Catalogo degli Attestati Elettronici. Ogni bundle locale DEVE essere accessibile seguendo il pattern di denominazione <strong>{locale_code}.json</strong>, dove <strong>{locale_code}</strong> è sostituito con il codice locale corrispondente dall'array <strong>available_locales</strong>.</p>
