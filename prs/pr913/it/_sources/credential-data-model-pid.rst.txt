@@ -251,4 +251,4 @@ Un esempio non normativo di un PID in formato mdoc-CBOR (notazione diagnostica) 
 
 .. literalinclude:: ../../examples/pid-mdoc-cbor-example.txt
   :language: text
-  
+
