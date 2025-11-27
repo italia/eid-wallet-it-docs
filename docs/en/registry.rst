@@ -355,9 +355,6 @@ The Authentic Source Registry MUST contain the following parameters for each reg
    * - **display**
      - JSON object
      - OPTIONAL. Visual branding suggestions that Authentic Sources can provide for credentials using their data.
-   * - **display.branding_uri**
-     - string
-     - OPTIONAL. URI to the organization's official brand identity guidelines.
    * - **display.preferred_logo**
      - string
      - OPTIONAL. Identifier (``id``) of the preferred logo from the `images` array for UI display.
@@ -367,9 +364,6 @@ The Authentic Source Registry MUST contain the following parameters for each reg
    * - **display.preferred_credential_background_color_id**
      - string
      - OPTIONAL. Identifier (``id``) of the preferred background color for credentials in hexadecimal format (e.g., ``"credential_background_color_1"``).
-   * - **display.preferred_credential_text_color_id**
-     - string
-     - OPTIONAL. Identifier (``id``) of the preferred text color for credentials in hexadecimal format (e.g., ``"text_color_1"``).
    * - **display.colors**
      - JSON Objects Array
      - OPTIONAL. Array of predefined colors for UI rendering.
