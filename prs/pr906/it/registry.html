@@ -954,6 +954,33 @@ Content-Type: application/json
 <span class="p">}</span>
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Per una gestione migliore e più efficiente della localizzazione delle informazioni contenute nel Catalogo delle Credenziali Digitali, un'Entità che lo consulta DOVREBBE:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Scaricare la versione base del Catalogo delle Credenziali Digitali (compatta, senza localizzazioni) usando l'endpoint <code class="docutils literal notranslate"><span class="pre">.well-known/authentic-sources</span></code>.</p></li>
+<li><p>Determinare la lingua preferita dell'Utente.</p></li>
+<li><p>Scaricare solo i bundle di localizzazione necessari.</p></li>
+<li><p>Unire dinamicamente il contenuto localizzato con la struttura del Catalogo delle Credenziali Digitali.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<p>Un esempio non normativo di output di un bundle di localizzazione è fornito di seguito:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;authentic_source1.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ministry of Infrastructure and Transport&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;authentic_source1.dataset1.origin&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MIT -- General Directorate for Motorization&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;authentic_source1.dataset1.userinfo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;###### Driving License\nVehicle registration data is available for licenses issued after January 1, 2020. For older licenses, contact the local motorization office.&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;authentic_source2.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Example Bank S.p.A.&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;authentic_source2.dataset1.origin&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Example data origin 1&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;authentic_source2.dataset1.userinfo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;###### Information on data availability\nFinancial data access requires customer consent and is subject to PSD2 regulations. Account information is available for active accounts only.&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;...&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span>
+<span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>I bundle di localizzazione DEVONO essere disponibili all'URI specificato nell'attibuto <strong>localization_info.bundles_base_uri</strong> del Catalogo degli Attestati Elettronici. Ogni bundle locale DEVE essere accessibile seguendo il pattern di denominazione <strong>{locale_code}.json</strong>, dove <strong>{locale_code}</strong> è sostituito con il codice locale corrispondente dall'array <strong>available_locales</strong>.</p>
+<p>Un esempio non normativo dell'URI di localizzazione italiana per il bundle sarebbe <strong>https://trust-registry.eid-wallet.example.it/.well-known/authentic-sources/it.json</strong>.</p>
+<p>Le Entità DOVREBBERO verificare l'integrità dei bundle di localizzazione scaricati utilizzando il metodo di digest e i valori specificati nel claim <strong>localization_info.integrity</strong>. Questo garantisce che i dati di localizzazione non siano stati manomessi durante la trasmissione.</p>
 </section>
 </section>
 <section id="coordinamento-as-ci">
@@ -1523,17 +1550,14 @@ Content-Type: application/json
 </div>
 <p>Un esempio non normativo di output di un bundle di localizzazione è fornito di seguito:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;driving_license.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Patente di Guida&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;driving_license.description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Patente di guida ufficiale valida in Italia e nell&#39;UE&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;purpose.driving_authorization.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Abilitazione alla guida&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;purpose.driving_authorization.description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Verifica di Abilitazione alla guida&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;claims.given_name.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Nome&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;mDL.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Driving License&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;mDL.issuer1.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Example of Credential Issuer&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;...&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>I bundle di localizzazione DEVONO essere disponibili all'URI specificato nell'attibuto <strong>localization_info.bundles_base_uri</strong> del Catalogo degli Attestati Elettronici. Ogni bundle locale DEVE essere accessibile seguendo il pattern di denominazione <strong>{locale_code}.json</strong>, dove <strong>{locale_code}</strong> è sostituito con il codice locale corrispondente dall'array <strong>available_locales</strong>.</p>
-<p>Un esempio non normativo dell'URI di localizzazione italiana per il bundle mDL sarebbe <strong>https://trust-registry.eid-wallet.example.it/.well-known/l10n/mdl/it.json</strong>.</p>
+<p>Un esempio non normativo dell'URI di localizzazione italiana per il bundle sarebbe <strong>https://trust-registry.eid-wallet.example.it/.well-known/credential-catalog/it.json</strong>.</p>
 <p>Le Entità DOVREBBERO verificare l'integrità dei bundle di localizzazione scaricati utilizzando il metodo di digest e i valori specificati nel claim <strong>localization_info.integrity</strong>. Questo garantisce che i dati di localizzazione non siano stati manomessi durante la trasmissione.</p>
 </section>
 <section id="decentralizzazione-delle-informazioni-di-visualizzazione-e-dei-claims">
@@ -1757,6 +1781,30 @@ Content-Type: application/json
 <span class="p">}</span>
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Per una gestione migliore e più efficiente della localizzazione delle informazioni contenute nel Catalogo delle Credenziali Digitali, un'Entità che lo consulta DOVREBBE:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Scaricare la versione base del Catalogo delle Credenziali Digitali (compatta, senza localizzazioni) usando l'endpoint <code class="docutils literal notranslate"><span class="pre">.well-known/taxonomy</span></code>.</p></li>
+<li><p>Determinare la lingua preferita dell'Utente.</p></li>
+<li><p>Scaricare solo i bundle di localizzazione necessari.</p></li>
+<li><p>Unire dinamicamente il contenuto localizzato con la struttura del Catalogo delle Credenziali Digitali.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<p>Un esempio non normativo di output di un bundle di localizzazione è fornito di seguito:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;domain.identity.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Identity&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;domain.identity.description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Credentials that establish or verify the identity of a person, including physical and digital identity documents legally recognized by national laws.&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="s2">&quot;purpose.person_identification.name: &quot;</span><span class="err">Perso</span><span class="kc">n</span><span class="w"> </span><span class="err">ide</span><span class="kc">nt</span><span class="err">i</span><span class="kc">f</span><span class="err">ica</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span><span class="s2">&quot;,</span>
+<span class="s2">   &quot;</span><span class="err">...</span><span class="s2">&quot;: &quot;</span><span class="err">...&quot;</span>
+<span class="err"> }</span>
+</pre></div>
+</div>
+<p>I bundle di localizzazione DEVONO essere disponibili all'URI specificato nell'attibuto <strong>localization_info.bundles_base_uri</strong> del Catalogo degli Attestati Elettronici. Ogni bundle locale DEVE essere accessibile seguendo il pattern di denominazione <strong>{locale_code}.json</strong>, dove <strong>{locale_code}</strong> è sostituito con il codice locale corrispondente dall'array <strong>available_locales</strong>.</p>
+<p>Un esempio non normativo dell'URI di localizzazione italiana per il bundle sarebbe <strong>https://trust-registry.eid-wallet.example.it/.well-known/taxonomy/it.json</strong>.</p>
+<p>Le Entità DOVREBBERO verificare l'integrità dei bundle di localizzazione scaricati utilizzando il metodo di digest e i valori specificati nel claim <strong>localization_info.integrity</strong>. Questo garantisce che i dati di localizzazione non siano stati manomessi durante la trasmissione.</p>
 </section>
 <section id="registro-degli-schema">
 <h2><span class="section-number">7.8. </span>Registro degli Schema<a class="headerlink" href="#registro-degli-schema" title="Link to this heading">¶</a></h2>

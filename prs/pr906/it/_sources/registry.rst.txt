@@ -366,6 +366,34 @@ Un esempio non normativo della struttura del Registro AS è fornito di seguito:
 .. literalinclude:: ../../examples/as-registry-example.json
   :language: JSON
 
+.. note::
+  Per una gestione migliore e più efficiente della localizzazione delle informazioni contenute nel Catalogo delle Credenziali Digitali, un'Entità che lo consulta DOVREBBE:
+
+    - Scaricare la versione base del Catalogo delle Credenziali Digitali (compatta, senza localizzazioni) usando l'endpoint ``.well-known/authentic-sources``.
+    - Determinare la lingua preferita dell'Utente.
+    - Scaricare solo i bundle di localizzazione necessari.
+    - Unire dinamicamente il contenuto localizzato con la struttura del Catalogo delle Credenziali Digitali.
+
+Un esempio non normativo di output di un bundle di localizzazione è fornito di seguito:
+
+.. code-block:: json
+
+ {
+    "authentic_source1.name": "Ministry of Infrastructure and Transport",
+    "authentic_source1.dataset1.origin": "MIT -- General Directorate for Motorization",
+    "authentic_source1.dataset1.userinfo": "###### Driving License\nVehicle registration data is available for licenses issued after January 1, 2020. For older licenses, contact the local motorization office.",
+    "authentic_source2.name": "Example Bank S.p.A.",
+    "authentic_source2.dataset1.origin": "Example data origin 1",
+    "authentic_source2.dataset1.userinfo": "###### Information on data availability\nFinancial data access requires customer consent and is subject to PSD2 regulations. Account information is available for active accounts only.",
+    "...": "..."
+  }
+
+I bundle di localizzazione DEVONO essere disponibili all'URI specificato nell'attibuto **localization_info.bundles_base_uri** del Catalogo degli Attestati Elettronici. Ogni bundle locale DEVE essere accessibile seguendo il pattern di denominazione **{locale_code}.json**, dove **{locale_code}** è sostituito con il codice locale corrispondente dall'array **available_locales**.
+
+Un esempio non normativo dell'URI di localizzazione italiana per il bundle sarebbe **https://trust-registry.eid-wallet.example.it/.well-known/authentic-sources/it.json**. 
+
+Le Entità DOVREBBERO verificare l'integrità dei bundle di localizzazione scaricati utilizzando il metodo di digest e i valori specificati nel claim **localization_info.integrity**. Questo garantisce che i dati di localizzazione non siano stati manomessi durante la trasmissione.
+
 Coordinamento AS-CI
 ^^^^^^^^^^^^^^^^^^^
 
@@ -703,17 +731,14 @@ Un esempio non normativo di output di un bundle di localizzazione è fornito di 
 .. code-block:: json
 
   {
-    "driving_license.name": "Patente di Guida",
-    "driving_license.description": "Patente di guida ufficiale valida in Italia e nell'UE",
-    "purpose.driving_authorization.name": "Abilitazione alla guida",
-    "purpose.driving_authorization.description": "Verifica di Abilitazione alla guida",
-    "claims.given_name.name": "Nome",
+    "mDL.name": "Driving License",
+    "mDL.issuer1.name": "Example of Credential Issuer",
     "...": "..."
   }
 
 I bundle di localizzazione DEVONO essere disponibili all'URI specificato nell'attibuto **localization_info.bundles_base_uri** del Catalogo degli Attestati Elettronici. Ogni bundle locale DEVE essere accessibile seguendo il pattern di denominazione **{locale_code}.json**, dove **{locale_code}** è sostituito con il codice locale corrispondente dall'array **available_locales**.
 
-Un esempio non normativo dell'URI di localizzazione italiana per il bundle mDL sarebbe **https://trust-registry.eid-wallet.example.it/.well-known/l10n/mdl/it.json**. 
+Un esempio non normativo dell'URI di localizzazione italiana per il bundle sarebbe **https://trust-registry.eid-wallet.example.it/.well-known/credential-catalog/it.json**. 
 
 Le Entità DOVREBBERO verificare l'integrità dei bundle di localizzazione scaricati utilizzando il metodo di digest e i valori specificati nel claim **localization_info.integrity**. Questo garantisce che i dati di localizzazione non siano stati manomessi durante la trasmissione.
 
@@ -768,6 +793,30 @@ Un esempio non normativo della struttura della Tassonomia è fornito di seguito:
 .. literalinclude:: ../../examples/taxonomy-example.json
   :language: JSON
 
+.. note::
+  Per una gestione migliore e più efficiente della localizzazione delle informazioni contenute nel Catalogo delle Credenziali Digitali, un'Entità che lo consulta DOVREBBE:
+
+    - Scaricare la versione base del Catalogo delle Credenziali Digitali (compatta, senza localizzazioni) usando l'endpoint ``.well-known/taxonomy``.
+    - Determinare la lingua preferita dell'Utente.
+    - Scaricare solo i bundle di localizzazione necessari.
+    - Unire dinamicamente il contenuto localizzato con la struttura del Catalogo delle Credenziali Digitali.
+
+Un esempio non normativo di output di un bundle di localizzazione è fornito di seguito:
+
+.. code-block:: json
+
+ {
+    "domain.identity.name": "Identity",
+    "domain.identity.description": "Credentials that establish or verify the identity of a person, including physical and digital identity documents legally recognized by national laws.",
+    "purpose.person_identification.name: "Person identification",
+    "...": "..."
+  }
+
+I bundle di localizzazione DEVONO essere disponibili all'URI specificato nell'attibuto **localization_info.bundles_base_uri** del Catalogo degli Attestati Elettronici. Ogni bundle locale DEVE essere accessibile seguendo il pattern di denominazione **{locale_code}.json**, dove **{locale_code}** è sostituito con il codice locale corrispondente dall'array **available_locales**.
+
+Un esempio non normativo dell'URI di localizzazione italiana per il bundle sarebbe **https://trust-registry.eid-wallet.example.it/.well-known/taxonomy/it.json**. 
+
+Le Entità DOVREBBERO verificare l'integrità dei bundle di localizzazione scaricati utilizzando il metodo di digest e i valori specificati nel claim **localization_info.integrity**. Questo garantisce che i dati di localizzazione non siano stati manomessi durante la trasmissione.
 
 Registro degli Schema
 ---------------------
