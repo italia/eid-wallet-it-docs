@@ -221,16 +221,18 @@ Oltre agli attributi di metadati obbligatori definiti nella :ref:`Tabella Mobile
     :widths: 50 50
     :header-rows: 1
 
-    * - **elementIdentifier**
-      - **Namespace**
+    * - **Attributo**
+      - **Posizione**
     * - **expiry_date**
-      - ``eu.europa.ec.eudi.pid.1``
+      - namespace ``eu.europa.ec.eudi.pid.1``
     * - **sub**
-      - ``eu.europa.ec.eudi.pid.it.1``
+      - namespace ``eu.europa.ec.eudi.pid.it.1``
     * - **validityInfo.signed**
-      - ``eu.europa.ec.eudi.pid.1``
+      - namespace ``eu.europa.ec.eudi.pid.1``
     * - **verification**
-      - ``eu.europa.ec.eudi.pid.it.1``
+      - namespace ``eu.europa.ec.eudi.pid.it.1``
+    * - **status**
+      - MobileSecurityObject (come definito nella Sezione 6.3 di `TOKEN-STATUS-LIST`_)
 
 .. note::
    **Differenze chiave rispetto alla codifica SD-JWT:**

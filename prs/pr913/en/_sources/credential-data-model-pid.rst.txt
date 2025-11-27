@@ -223,16 +223,18 @@ In addition to the mandatory metadata attributes defined in :ref:`MobileSecurity
     :widths: 50 50
     :header-rows: 1
 
-    * - **elementIdentifier**
-      - **Namespace**
+    * - **Attribute**
+      - **Location**
     * - **expiry_date**
-      - ``eu.europa.ec.eudi.pid.1``
+      - ``eu.europa.ec.eudi.pid.1`` namespace
     * - **sub**
-      - ``eu.europa.ec.eudi.pid.it.1``
+      - ``eu.europa.ec.eudi.pid.it.1`` namespace
     * - **validityInfo.signed**
-      - ``eu.europa.ec.eudi.pid.1``
+      - ``eu.europa.ec.eudi.pid.1`` namespace
     * - **verification**
-      - ``eu.europa.ec.eudi.pid.it.1``
+      - ``eu.europa.ec.eudi.pid.it.1`` namespace
+    * - **status**
+      - MobileSecurityObject (as defined in Section 6.3 of `TOKEN-STATUS-LIST`_)
 
 .. note::
    **Key differences from SD-JWT encoding:**
