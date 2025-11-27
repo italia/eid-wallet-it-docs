@@ -689,7 +689,7 @@ Each element of the ``credentials`` array contains at least the following inform
       * **dataset_id**: String identifier of the specific data capability/dataset used by the Issuer from the AS.
   
 .. note::
-  The union of ``credential_type`` and ``version`` MUST be unique in the Credentail Catalog.
+  The union of ``credential_type`` and ``version`` MUST be unique in the Credential Catalog.
 
 The ``wallet_app_attestations`` Object is an Array containing at least the following information for each entry:
 
