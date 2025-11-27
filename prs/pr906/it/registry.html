@@ -415,7 +415,6 @@ Content-Type: application/json
 <li><p><strong>Metodi di Integrazione</strong>: Meccanismi di accesso tecnico (PDND per AS pubblici, API personalizzate per AS privati).</p></li>
 <li><p><strong>Scopi Previsti</strong>: Tipi di credenziali supportati e contesti aziendali per il coordinamento AS-CI.</p></li>
 <li><p><strong>Garanzia della Qualità dei Dati</strong>: Stato autorevole, frequenza di aggiornamento e capacità di traccia di audit.</p></li>
-<li><p><strong>Caratteristiche di Visualizzazione (Opzionali)</strong>: Caratteristiche UI generali, non obbligatorie, relative alla credenziale (colori, loghi, sfondi) per guidare l'Emittente nel provisioning delle credenziali.</p></li>
 </ul>
 </div></blockquote>
 <p>Il Registro AS DEVE garantire:</p>
@@ -685,50 +684,6 @@ Content-Type: application/json
 <tr class="row-odd"><td><p><strong>data_capabilities[].update_frequency</strong></p></td>
 <td><p>string</p></td>
 <td><p>OPZIONALE. Indica con quale frequenza la Fonte Autentica aggiorna i suoi dati. Valori possibili: <code class="docutils literal notranslate"><span class="pre">&quot;real_time&quot;</span></code> (aggiornamenti quasi in tempo reale, tipicamente entro minuti), <code class="docutils literal notranslate"><span class="pre">&quot;daily&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;weekly&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;monthly&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;on_demand&quot;</span></code>.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>display</strong></p></td>
-<td><p>JSON object</p></td>
-<td><p>OPZIONALE. Suggerimenti di branding visivo che le Fonti Autentiche possono fornire per le credenziali che usano i loro dati.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>display.preferred_logo</strong></p></td>
-<td><p>string</p></td>
-<td><p>OPZIONALE. Identificatore (<code class="docutils literal notranslate"><span class="pre">id</span></code>) del logo preferito dall'array <cite>images</cite> per la visualizzazione UI.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>display.preferred_credential_background_image_id</strong></p></td>
-<td><p>string</p></td>
-<td><p>OPZIONALE. Identificatore (<code class="docutils literal notranslate"><span class="pre">id</span></code>) dell'immagine di sfondo preferita dall'array <cite>images</cite> per la visualizzazione UI.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>display.preferred_credential_background_color_id</strong></p></td>
-<td><p>string</p></td>
-<td><p>OPZIONALE. Identificatore (<code class="docutils literal notranslate"><span class="pre">id</span></code>) del colore di sfondo preferito per le credenziali in formato esadecimale (es., <code class="docutils literal notranslate"><span class="pre">&quot;credential_background_color_1&quot;</span></code>).</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>display.colors</strong></p></td>
-<td><p>JSON Objects Array</p></td>
-<td><p>OPZIONALE. Array di colori predefiniti per il rendering UI.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>display.colors[].id</strong></p></td>
-<td><p>string</p></td>
-<td><p>RICHIESTO. Identificatore univoco per la definizione del colore.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>display.colors[].hex</strong></p></td>
-<td><p>string</p></td>
-<td><p>RICHIESTO. Valore del colore in formato esadecimale (es., <code class="docutils literal notranslate"><span class="pre">&quot;#003d82&quot;</span></code>).</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>display.images</strong></p></td>
-<td><p>JSON Objects Array</p></td>
-<td><p>OPZIONALE. Array di risorse immagine (loghi, sfondi) suggerite per scopi di visualizzazione.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>display.images[].id</strong></p></td>
-<td><p>string</p></td>
-<td><p>RICHIESTO. Identificatore univoco per la risorsa immagine.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>display.images[].image_uri</strong></p></td>
-<td><p>string</p></td>
-<td><p>RICHIESTO. URI dove la risorsa immagine può essere recuperata. (Nota: Può anche essere chiamato <cite>logo_uri</cite> negli esempi).</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>display.images[].image_uri#integrity</strong></p></td>
-<td><p>string</p></td>
-<td><p>CONDIZIONALE. Digest crittografico della risorsa immagine per la verifica dell'integrità. RICHIESTO se <code class="docutils literal notranslate"><span class="pre">image_uri</span></code> è presente. Formato: <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code> (es., <code class="docutils literal notranslate"><span class="pre">&quot;sha-256-abc123...&quot;</span></code>).</p></td>
 </tr>
 </tbody>
 </table>

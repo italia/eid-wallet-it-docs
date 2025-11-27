@@ -144,7 +144,6 @@ L'Organismo di Supervisione DEVE mantenere il Registro delle Fonti Autentiche pe
   - **Metodi di Integrazione**: Meccanismi di accesso tecnico (PDND per AS pubblici, API personalizzate per AS privati).
   - **Scopi Previsti**: Tipi di credenziali supportati e contesti aziendali per il coordinamento AS-CI.
   - **Garanzia della Qualità dei Dati**: Stato autorevole, frequenza di aggiornamento e capacità di traccia di audit.
-  - **Caratteristiche di Visualizzazione (Opzionali)**: Caratteristiche UI generali, non obbligatorie, relative alla credenziale (colori, loghi, sfondi) per guidare l'Emittente nel provisioning delle credenziali.
 
 Il Registro AS DEVE garantire:
 
@@ -358,39 +357,6 @@ Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciasc
    * - **data_capabilities[].update_frequency**
      - string
      - OPZIONALE. Indica con quale frequenza la Fonte Autentica aggiorna i suoi dati. Valori possibili: ``"real_time"`` (aggiornamenti quasi in tempo reale, tipicamente entro minuti), ``"daily"``, ``"weekly"``, ``"monthly"``, ``"on_demand"``.
-   * - **display**
-     - JSON object
-     - OPZIONALE. Suggerimenti di branding visivo che le Fonti Autentiche possono fornire per le credenziali che usano i loro dati.
-   * - **display.preferred_logo**
-     - string
-     - OPZIONALE. Identificatore (``id``) del logo preferito dall'array `images` per la visualizzazione UI.
-   * - **display.preferred_credential_background_image_id**
-     - string
-     - OPZIONALE. Identificatore (``id``) dell'immagine di sfondo preferita dall'array `images` per la visualizzazione UI.
-   * - **display.preferred_credential_background_color_id**
-     - string
-     - OPZIONALE. Identificatore (``id``) del colore di sfondo preferito per le credenziali in formato esadecimale (es., ``"credential_background_color_1"``).
-   * - **display.colors**
-     - JSON Objects Array
-     - OPZIONALE. Array di colori predefiniti per il rendering UI.
-   * - **display.colors[].id**
-     - string
-     - RICHIESTO. Identificatore univoco per la definizione del colore.
-   * - **display.colors[].hex**
-     - string
-     - RICHIESTO. Valore del colore in formato esadecimale (es., ``"#003d82"``).
-   * - **display.images**
-     - JSON Objects Array
-     - OPZIONALE. Array di risorse immagine (loghi, sfondi) suggerite per scopi di visualizzazione.
-   * - **display.images[].id**
-     - string
-     - RICHIESTO. Identificatore univoco per la risorsa immagine.
-   * - **display.images[].image_uri**
-     - string
-     - RICHIESTO. URI dove la risorsa immagine può essere recuperata. (Nota: Può anche essere chiamato `logo_uri` negli esempi).
-   * - **display.images[].image_uri#integrity**
-     - string
-     - CONDIZIONALE. Digest crittografico della risorsa immagine per la verifica dell'integrità. RICHIESTO se ``image_uri`` è presente. Formato: ``{digest_method}-{digest_value}`` (es., ``"sha-256-abc123..."``).
 
 Esempio del Registro AS
 """"""""""""""""""""""""

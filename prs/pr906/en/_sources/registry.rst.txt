@@ -144,7 +144,6 @@ The Supervisory Body MUST maintain the Authentic Source Registry to enable coord
   - **Integration Methods**: Technical access mechanisms (PDND for public AS, custom APIs for private AS).
   - **Intended Purposes**: Supported credential types and business contexts for AS-CI coordination.
   - **Data Quality Assurance**: Authoritative status, update frequency, and audit trail capabilities.
-  - **Display Characteristics (Optional)**: General, non-mandatory UI characteristics related to the credential (colors, logos, backgrounds) to guide the Issuer in credential provisioning.
 
 The AS Registry MUST ensure:
 
