@@ -12,11 +12,10 @@
                 "organization_country": "IT",
                 "homepage_uri": "https://www.gov.example/transport",
                 "policy_uri": "https://www.gov.example/transport/privacy-policy",
-                "logo_uri": "https://www.gov.example/assets/transport-logo.svg",
+                "logo_uri": "https://trust-registry.it-wallet.example.it/logos/{ipa_code}/image.svg",
                 "logo_uri#integrity": "sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
-                "logo_extended_uri": "https://www.gov.example/assets/transport-logo-extended.svg",
+                "logo_extended_uri": "https://trust-registry.it-wallet.example.it/logos/{ipa_code}/extended-image.svg",
                 "logo_extended_uri#integrity": "sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
-                "service_documentation": "https://docs.gov.example/transport/api-docs",
                 "contacts": [
                     "registry@gov.example",
                     "technical-support@gov.example"
@@ -104,7 +103,22 @@
                         "deferred_flow": false
                     },
                     "user_information_l10n_id": "authentic_source1.dataset1.userinfo",
-                    "update_frequency": "real_time"
+                    "service_documentation": "https://docs.gov.example/transport/api-docs",
+                    "update_frequency": "real_time",
+                    "logo_uri": "https://trust-registry.it-wallet.example.it/logos/{dataset_id}/image.svg",
+                    "logo_uri#integrity": "sha-256-b1946ac92492d2347c6235b4d2611184e2a3f8b8c8f8f8e8f8f8f8f8f8f8f8f8",
+                    "contacts": [
+                    "citizen-support@gov.example"
+                    ],
+                    "background_image": {
+                                "uri": "https://trust-registry.it-wallet.example.it/images/{dataset_id}/image.svg",
+                                "uri#integrity": "3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg=="
+                    },
+                    "watermark_image": {
+                                "uri": "https://trust-registry.it-wallet.example.it/images/{dataset_id}/imag-watermark.svg",
+                                "uri#integrity": "3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg=="
+                    },
+                    "background_color" : "#12107c"
                 }
             ]
         },
@@ -122,9 +136,8 @@
                 "policy_uri": "https://www.bank.example/privacy-policy",
                 "tos_uri": "https://www.bank.example/terms-of-service",
                 "organization_country": "IT",
-                "logo_uri": "https://www.bank.example/assets/logo.svg",
-                "logo_uri#integrity": "sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
-                "service_documentation": "https://docs.bank.example/psd2-api"
+                "logo_uri": "https://trust-registry.it-wallet.example.it/logos/{legal_identifier}/image.svg",
+                "logo_uri#integrity": "sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
             },
             "data_capabilities": [
                 {
@@ -253,6 +266,7 @@
                         ]
                     },
                     "user_information_l10n_id": "authentic_source2.dataset2.userinfo",
+                    "service_documentation": "https://docs.bank.example/psd2-api",
                     "update_frequency": "weekly"
                 }
             ]

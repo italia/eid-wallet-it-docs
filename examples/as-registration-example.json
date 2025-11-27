@@ -6,13 +6,15 @@
     "legal_identifier": "12345678901",
     "organization_country": "XX",
     "homepage_uri": "https://www.gov.example/transport",
-    "email_contacts": [
+    "contacts": [
         "registry@transport-authority.gov.example",
         "technical-support@transport-authority.gov.example"
     ],
     "policy_uri": "https://www.gov.example/transport/privacy-policy",
-    "logo_uri": "https://www.gov.example/assets/transport-logo.svg",
+    "logo_uri": "https://www.gov.example/assets/transport-authority-logo.svg",
     "logo_uri#integrity": "sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+    "logo_extended_uri": "https://www.gov.example/assets/transport-authority-logo-extended.svg",
+    "logo_extended_uri#integrity": "sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
     "data_capabilities": [
         {
             "description": "Driving license data is available for licenses issued after January 1, 2020. For older licenses, contact the local transport authority office.",
@@ -94,7 +96,23 @@
                 "immediate_flow": true,
                 "deferred_flow": false
             },
-            "update_frequency": "real_time"
+            "update_frequency": "real_time",
+            "user_information": "###### Driving License\nVehicle registration data is available for licenses issued after January 1, 2020. For older licenses, contact the local motorization office.",
+            "service_documentation": "https://docs.gov.example/transport/api-docs",
+            "logo_uri": "https://www.gov.example/assets/transport-data-logo.svg",
+            "logo_uri#integrity": "sha-256-b1946ac92492d2347c6235b4d2611184e2a3f8b8c8f8f8e8f8f8f8f8f8f8f8f8",
+            "contacts": [
+                    "citizen-support@gov.example"
+            ],
+            "background_image": {
+                            "uri": "https://www.gov.example/assets/background-image.svg",
+                            "uri#integrity": "3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg=="
+                    },
+            "watermark_image": {
+                            "uri": "https://www.gov.example/assets/watermark-image.svg",
+                            "uri#integrity": "3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg=="
+                    },
+            "background_color" : "#12107c"
         }
     ]
 }

@@ -290,22 +290,16 @@ Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciasc
      - RICHIESTO. Codice paese a due lettere ISO 3166-1 alpha-2 dell'organizzazione.
    * - **organization_info.logo_uri**
      - string
-     - RICHIESTO. URL all'immagine del logo dell'organizzazione.
+     - OPZIONALE. URL all'immagine del logo dell'organizzazione.
    * - **organization_info.logo_uri#integrity**
      - string
-     - RICHIESTO. Digest crittografico della risorsa immagine del logo per la verifica dell'integrità. Formato: ``{digest_method}-{digest_value}`` (es., ``"sha-256-abc123..."``).
+     - CONDIZIONALE. Digest crittografico della risorsa immagine del logo per la verifica dell'integrità. RICHIESTO se ``logo_uri`` è presente. Formato: ``{digest_method}-{digest_value}`` (es., ``"sha-256-abc123..."``).
    * - **organization_info.logo_uri_extended**
      - string
      - RICHIESTO. URL all'immagine del logo esteso dell'organizzazione.
    * - **organization_info.logo_uri_extended#integrity**
      - string
      - CONDIZIONALE. Digest crittografico della risorsa immagine del logo esteso per la verifica dell'integrità. RICHIESTO se ``logo_uri_extended`` è presente. Formato: ``{digest_method}-{digest_value}`` (es., ``"sha-256-abc123..."``).
-   * - **organization_info.service_documentation**
-     - string
-     - OPZIONALE. URL che punta alla documentazione del servizio della Fonte Autentica.
-   * - **organization_info.user_information**
-     - string
-     - OPZIONALE. Una stringa contenente informazioni leggibili dall'uomo sulla Credenziale Digitale rilevanti per l'Utente. Questa stringa DEVE essere fornita dalla Fonte Autentica al Trust Anchor durante l'onboarding e DEVE essere formattata usando il formato Markdown come definito in :rfc:`7763`. La formattazione Markdown può essere testo semplice o una combinazione di testo e link. Ad esempio, se il database della Fonte Autentica contiene solo i dati richiesti per gli attributi della Credenziale Digitale registrati *dopo* una data specifica, questa informazione DEVE essere trasmessa al Trust Anchor in questa stringa Markdown.
    * - **data_capabilities**
      - JSON Objects Array
      - RICHIESTO. Array contenente specifiche delle capacità dei dati.
@@ -324,6 +318,9 @@ Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciasc
    * - **data_capabilities[].available_claims**
      - String Array
      - RICHIESTO. Claims disponibili da questa capacità di dati.
+   * - **data_capabilities[].available_claims.claim_name**
+     - string
+     - RICHIESTO. Contiene il nome del claim.
    * - **data_capabilities[].available_claims.order**
      - number
      - RICHIESTO. Definisce l'ordine in cui l'informazione verrebbe mostrata.
@@ -354,9 +351,33 @@ Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciasc
    * - **data_capabilities[].data_provision.notification_methods**
      - String Array
      - CONDIZIONALE. Array di metodi di notifica supportati dalla Fonte Autentica per la fornitura dati differita, come ``"push"``, ``"poll"``. RICHIESTO se ``deferred_flow`` è ``true``.
+   * - **data_capabilities[].user_information**
+     - string
+     - OPZIONALE. Una stringa contenente informazioni leggibili dall'uomo sulla Credenziale Digitale rilevanti per l'Utente. Questa stringa DEVE essere fornita dalla Fonte Autentica al Trust Anchor durante l'onboarding e DEVE essere formattata usando il formato Markdown come definito in :rfc:`7763`. La formattazione Markdown può essere testo semplice o una combinazione di testo e link. Ad esempio, se il database della Fonte Autentica contiene solo i dati richiesti per gli attributi della Credenziale Digitale registrati *dopo* una data specifica, questa informazione DEVE essere trasmessa al Trust Anchor in questa stringa Markdown.
+   * - **data_capabilities[].service_documentation**
+     - string
+     - OPZIONALE. URL che punta alla documentazione del servizio della Fonte Autentica.
    * - **data_capabilities[].update_frequency**
      - string
      - OPZIONALE. Indica con quale frequenza la Fonte Autentica aggiorna i suoi dati. Valori possibili: ``"real_time"`` (aggiornamenti quasi in tempo reale, tipicamente entro minuti), ``"daily"``, ``"weekly"``, ``"monthly"``, ``"on_demand"``.
+   * - **data_capabilities[].logo_uri**
+     - string
+     - OPZIONALE. URL all'immagine del logo relativa ai dati forniti.
+   * - **data_capabilities[].logo_uri#integrity**
+     - string
+     - CONDIZIONALE. Digest crittografico della risorsa immagine del logo per la verifica dell'integrità. RICHIESTO se ``logo_uri`` è presente. Formato: ``{digest_method}-{digest_value}`` (es., ``"sha-256-abc123..."``).
+   * - **data_capabilities[].background_image**
+     - JSON object
+     - OPZIONALE. Oggetto contiene informazioni sull’immagine di sfondo da visualizzare insieme ai dati forniti. L’oggetto include i parametri ``uri`` e ``uri#integrity``.
+   * - **data_capabilities[].watermark_image**
+     - JSON object
+     - OPZIONALE. Oggetto contiene informazioni sull’immagine di filigrana da visualizzare insieme ai dati forniti. L’oggetto include i parametri ``uri`` e ``uri#integrity``.
+   * - **data_capabilities[].background_color**
+     - string
+     - OPZIONALE. Stringa che rappresenta il colore di sfondo da visualizzare insieme ai dati forniti
+   * - **data_capabilities[].contacts**
+     - String Array
+     - OPZIONALE. Indirizzi email di contatto del servizio clienti.
 
 Esempio del Registro AS
 """"""""""""""""""""""""
