@@ -290,22 +290,16 @@ The Authentic Source Registry MUST contain the following parameters for each reg
      - REQUIRED. Two-letter ISO 3166-1 alpha-2 country code of the organization.
    * - **organization_info.logo_uri**
      - string
-     - REQUIRED. URL to the organization's logo image.
+     - OPTIONAL. URL to the organization's logo image.
    * - **organization_info.logo_uri#integrity**
      - string
-     - REQUIRED. Cryptographic digest of the logo image resource for integrity verification. Format: ``{digest_method}-{digest_value}`` (e.g., ``"sha-256-abc123..."``).
+     - CONDITIONAL. Cryptographic digest of the logo image resource for integrity verification. REQUIRED if ``logo_uri`` is present. Format: ``{digest_method}-{digest_value}`` (e.g., ``"sha-256-abc123..."``).
    * - **organization_info.logo_uri_extended**
      - string
      - OPTIONAL. URL to the organization's extended logo image.
    * - **organization_info.logo_uri_extended#integrity**
      - string
      - CONDITIONAL. Cryptographic digest of the extended logo image resource for integrity verification. REQUIRED if ``logo_uri_extended`` is present. Format: ``{digest_method}-{digest_value}`` (e.g., ``"sha-256-abc123..."``).
-   * - **organization_info.service_documentation**
-     - string
-     - OPTIONAL. URL pointing to the Authentic Source service documentation.
-   * - **organization_info.user_information**
-     - string
-     - OPTIONAL. A string containing human-readable information about the Digital Credential relevant to the User. This string MUST be provided by the Authentic Source to the Trust Anchor during onboarding and MUST be formatted using Markdown format as defined in :rfc:`7763`. The Markdown formatting can be plain text or a combination of text and links. For example, if the Authentic Source's database only contains the data required for Digital Credential attributes registered *after* a specific date, this information MUST be conveyed to the Trust Anchor in this Markdown string.
    * - **data_capabilities**
      - JSON Objects Array
      - REQUIRED. Array containing data capability specifications.
@@ -324,6 +318,9 @@ The Authentic Source Registry MUST contain the following parameters for each reg
    * - **data_capabilities[].available_claims**
      - String Array
      - REQUIRED. Claims available from this data capability.
+   * - **data_capabilities[].available_claims.claim_name**
+     - string
+     - REQUIRED. It Contains the name of the claim.
    * - **data_capabilities[].available_claims.order**
      - number
      - REQUIRED. Defines the order in which the information would be shown.
@@ -354,9 +351,33 @@ The Authentic Source Registry MUST contain the following parameters for each reg
    * - **data_capabilities[].data_provision.notification_methods**
      - String Array
      - CONDITIONAL. Array of notification methods supported by the Authentic Source for deferred data provision, such as ``"push"``, ``"poll"``. REQUIRED if ``deferred_flow`` is ``true``.
+   * - **data_capabilities[].user_information**
+     - string
+     - OPTIONAL. A string containing human-readable information about the Digital Credential relevant to the User. This string MUST be provided by the Authentic Source to the Trust Anchor during onboarding and MUST be formatted using Markdown format as defined in :rfc:`7763`. The Markdown formatting can be plain text or a combination of text and links. For example, if the Authentic Source's database only contains the data required for Digital Credential attributes registered *after* a specific date, this information MUST be conveyed to the Trust Anchor in this Markdown string.
+   * - **data_capabilities[].service_documentation**
+     - string
+     - OPTIONAL. URL pointing to the Authentic Source service documentation.
    * - **data_capabilities[].update_frequency**
      - string
      - OPTIONAL. Indicates how frequently the Authentic Source updates its data. Possible values: ``"real_time"`` (near real-time updates, typically within minutes), ``"daily"``, ``"weekly"``, ``"monthly"``, ``"on_demand"``.
+   * - **data_capabilities[].logo_uri**
+     - string
+     - OPTIONAL. URL to the logo image related to the data.
+   * - **data_capabilities[].logo_uri#integrity**
+     - string
+     - CONDITIONAL. Cryptographic digest of the logo image resource for integrity verification. REQUIRED if ``logo_uri`` is present. Format: ``{digest_method}-{digest_value}`` (e.g., ``"sha-256-abc123..."``).
+   * - **data_capabilities[].background_image**
+     - JSON object
+     - OPTIONAL. Object containing information about the background image to be displayed together with the data. The object contains ``uri`` and ``uri#integrity`` parameters.
+   * - **data_capabilities[].watermark_image**
+     - JSON object
+     - OPTIONAL. Object containing information about the watermark image to be displayed together with the data. The object contains ``uri`` and ``uri#integrity`` parameters.
+   * - **data_capabilities[].background_color**
+     - string
+     - OPTIONAL. String value of the background color related to be displayed together with the data.
+   * - **data_capabilities[].contacts**
+     - String Array
+     - OPTIONAL. Array of customer service contact email addresses.
 
 AS Registry Example
 """""""""""""""""""

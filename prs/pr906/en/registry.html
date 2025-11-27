@@ -590,11 +590,11 @@ Content-Type: application/json
 </tr>
 <tr class="row-odd"><td><p><strong>organization_info.logo_uri</strong></p></td>
 <td><p>string</p></td>
-<td><p>REQUIRED. URL to the organization's logo image.</p></td>
+<td><p>OPTIONAL. URL to the organization's logo image.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>organization_info.logo_uri#integrity</strong></p></td>
 <td><p>string</p></td>
-<td><p>REQUIRED. Cryptographic digest of the logo image resource for integrity verification. Format: <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;sha-256-abc123...&quot;</span></code>).</p></td>
+<td><p>CONDITIONAL. Cryptographic digest of the logo image resource for integrity verification. REQUIRED if <code class="docutils literal notranslate"><span class="pre">logo_uri</span></code> is present. Format: <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;sha-256-abc123...&quot;</span></code>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>organization_info.logo_uri_extended</strong></p></td>
 <td><p>string</p></td>
@@ -603,14 +603,6 @@ Content-Type: application/json
 <tr class="row-even"><td><p><strong>organization_info.logo_uri_extended#integrity</strong></p></td>
 <td><p>string</p></td>
 <td><p>CONDITIONAL. Cryptographic digest of the extended logo image resource for integrity verification. REQUIRED if <code class="docutils literal notranslate"><span class="pre">logo_uri_extended</span></code> is present. Format: <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;sha-256-abc123...&quot;</span></code>).</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>organization_info.service_documentation</strong></p></td>
-<td><p>string</p></td>
-<td><p>OPTIONAL. URL pointing to the Authentic Source service documentation.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>organization_info.user_information</strong></p></td>
-<td><p>string</p></td>
-<td><p>OPTIONAL. A string containing human-readable information about the Digital Credential relevant to the User. This string MUST be provided by the Authentic Source to the Trust Anchor during onboarding and MUST be formatted using Markdown format as defined in <span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7763.html"><strong>RFC 7763</strong></a>. The Markdown formatting can be plain text or a combination of text and links. For example, if the Authentic Source's database only contains the data required for Digital Credential attributes registered <em>after</em> a specific date, this information MUST be conveyed to the Trust Anchor in this Markdown string.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>data_capabilities</strong></p></td>
 <td><p>JSON Objects Array</p></td>
@@ -636,49 +628,85 @@ Content-Type: application/json
 <td><p>String Array</p></td>
 <td><p>REQUIRED. Claims available from this data capability.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].available_claims.order</strong></p></td>
+<tr class="row-odd"><td><p><strong>data_capabilities[].available_claims.claim_name</strong></p></td>
+<td><p>string</p></td>
+<td><p>REQUIRED. It Contains the name of the claim.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>data_capabilities[].available_claims.order</strong></p></td>
 <td><p>number</p></td>
 <td><p>REQUIRED. Defines the order in which the information would be shown.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].available_claims.mandatory</strong></p></td>
+<tr class="row-odd"><td><p><strong>data_capabilities[].available_claims.mandatory</strong></p></td>
 <td><p>boolean</p></td>
 <td><p>REQUIRED. Defines if a claim is always available or not.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].integration_method</strong></p></td>
+<tr class="row-even"><td><p><strong>data_capabilities[].integration_method</strong></p></td>
 <td><p>string</p></td>
 <td><p>REQUIRED. Authorization framework used for data access. MUST be <code class="docutils literal notranslate"><span class="pre">&quot;pdnd&quot;</span></code> for Public AS. Private AS MAY use other authorization frameworks such as: <code class="docutils literal notranslate"><span class="pre">&quot;oauth2&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;api_key&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;mtls&quot;</span></code>, etc.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].integration_endpoint</strong></p></td>
+<tr class="row-odd"><td><p><strong>data_capabilities[].integration_endpoint</strong></p></td>
 <td><p>string</p></td>
 <td><p>REQUIRED. Service access point (PDND endpoint for Public AS, API endpoint for Private AS).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].api_specification</strong></p></td>
+<tr class="row-even"><td><p><strong>data_capabilities[].api_specification</strong></p></td>
 <td><p>string</p></td>
 <td><p>REQUIRED. URL to <a class="reference external" href="https://spec.openapis.org/oas/v3.0.3">OAS3</a> specification document for this data capability.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].data_provision</strong></p></td>
+<tr class="row-odd"><td><p><strong>data_capabilities[].data_provision</strong></p></td>
 <td><p>JSON object</p></td>
 <td><p>OPTIONAL. Data provision capabilities and timing specifications.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].data_provision.immediate_flow</strong></p></td>
+<tr class="row-even"><td><p><strong>data_capabilities[].data_provision.immediate_flow</strong></p></td>
 <td><p>boolean</p></td>
 <td><p>REQUIRED. Indicates if the Authentic Source supports immediate data provision.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].data_provision.deferred_flow</strong></p></td>
+<tr class="row-odd"><td><p><strong>data_capabilities[].data_provision.deferred_flow</strong></p></td>
 <td><p>boolean</p></td>
 <td><p>REQUIRED. Indicates if the Authentic Source supports deferred data provision.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].data_provision.max_response_time_minutes</strong></p></td>
+<tr class="row-even"><td><p><strong>data_capabilities[].data_provision.max_response_time_minutes</strong></p></td>
 <td><p>integer</p></td>
 <td><p>CONDITIONAL. Maximum time in minutes for the Authentic Source to respond to a deferred data provision request. REQUIRED if <code class="docutils literal notranslate"><span class="pre">deferred_flow</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].data_provision.notification_methods</strong></p></td>
+<tr class="row-odd"><td><p><strong>data_capabilities[].data_provision.notification_methods</strong></p></td>
 <td><p>String Array</p></td>
 <td><p>CONDITIONAL. Array of notification methods supported by the Authentic Source for deferred data provision, such as <code class="docutils literal notranslate"><span class="pre">&quot;push&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;poll&quot;</span></code>. REQUIRED if <code class="docutils literal notranslate"><span class="pre">deferred_flow</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].update_frequency</strong></p></td>
+<tr class="row-even"><td><p><strong>data_capabilities[].user_information</strong></p></td>
+<td><p>string</p></td>
+<td><p>OPTIONAL. A string containing human-readable information about the Digital Credential relevant to the User. This string MUST be provided by the Authentic Source to the Trust Anchor during onboarding and MUST be formatted using Markdown format as defined in <span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7763.html"><strong>RFC 7763</strong></a>. The Markdown formatting can be plain text or a combination of text and links. For example, if the Authentic Source's database only contains the data required for Digital Credential attributes registered <em>after</em> a specific date, this information MUST be conveyed to the Trust Anchor in this Markdown string.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>data_capabilities[].service_documentation</strong></p></td>
+<td><p>string</p></td>
+<td><p>OPTIONAL. URL pointing to the Authentic Source service documentation.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>data_capabilities[].update_frequency</strong></p></td>
 <td><p>string</p></td>
 <td><p>OPTIONAL. Indicates how frequently the Authentic Source updates its data. Possible values: <code class="docutils literal notranslate"><span class="pre">&quot;real_time&quot;</span></code> (near real-time updates, typically within minutes), <code class="docutils literal notranslate"><span class="pre">&quot;daily&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;weekly&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;monthly&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;on_demand&quot;</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>data_capabilities[].logo_uri</strong></p></td>
+<td><p>string</p></td>
+<td><p>OPTIONAL. URL to the logo image related to the data.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>data_capabilities[].logo_uri#integrity</strong></p></td>
+<td><p>string</p></td>
+<td><p>CONDITIONAL. Cryptographic digest of the logo image resource for integrity verification. REQUIRED if <code class="docutils literal notranslate"><span class="pre">logo_uri</span></code> is present. Format: <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;sha-256-abc123...&quot;</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>data_capabilities[].background_image</strong></p></td>
+<td><p>JSON object</p></td>
+<td><p>OPTIONAL. Object containing information about the background image to be displayed together with the data. The object contains <code class="docutils literal notranslate"><span class="pre">uri</span></code> and <code class="docutils literal notranslate"><span class="pre">uri#integrity</span></code> parameters.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>data_capabilities[].watermark_image</strong></p></td>
+<td><p>JSON object</p></td>
+<td><p>OPTIONAL. Object containing information about the watermark image to be displayed together with the data. The object contains <code class="docutils literal notranslate"><span class="pre">uri</span></code> and <code class="docutils literal notranslate"><span class="pre">uri#integrity</span></code> parameters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>data_capabilities[].background_color</strong></p></td>
+<td><p>string</p></td>
+<td><p>OPTIONAL. String value of the background color related to be displayed together with the data.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>data_capabilities[].contacts</strong></p></td>
+<td><p>String Array</p></td>
+<td><p>OPTIONAL. Array of customer service contact email addresses.</p></td>
 </tr>
 </tbody>
 </table>
@@ -700,11 +728,10 @@ Content-Type: application/json
 <span class="w">                </span><span class="nt">&quot;organization_country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IT&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">&quot;homepage_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/transport&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">&quot;policy_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/transport/privacy-policy&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/assets/transport-logo.svg&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/logos/{ipa_code}/image.svg&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">&quot;logo_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;logo_extended_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/assets/transport-logo-extended.svg&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;logo_extended_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/logos/{ipa_code}/extended-image.svg&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">&quot;logo_extended_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;service_documentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://docs.gov.example/transport/api-docs&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                    </span><span class="s2">&quot;registry@gov.example&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;technical-support@gov.example&quot;</span>
@@ -792,7 +819,22 @@ Content-Type: application/json
 <span class="w">                        </span><span class="nt">&quot;deferred_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
 <span class="w">                    </span><span class="p">},</span>
 <span class="w">                    </span><span class="nt">&quot;user_information_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;authentic_source1.dataset1.userinfo&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;update_frequency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;real_time&quot;</span>
+<span class="w">                    </span><span class="nt">&quot;service_documentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://docs.gov.example/transport/api-docs&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;update_frequency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;real_time&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/logos/{dataset_id}/image.svg&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;logo_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-b1946ac92492d2347c6235b4d2611184e2a3f8b8c8f8f8e8f8f8f8f8f8f8f8f8&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="s2">&quot;citizen-support@gov.example&quot;</span>
+<span class="w">                    </span><span class="p">],</span>
+<span class="w">                    </span><span class="nt">&quot;background_image&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/images/{dataset_id}/image.svg&quot;</span><span class="p">,</span>
+<span class="w">                                </span><span class="nt">&quot;uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg==&quot;</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="nt">&quot;watermark_image&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/images/{dataset_id}/imag-watermark.svg&quot;</span><span class="p">,</span>
+<span class="w">                                </span><span class="nt">&quot;uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg==&quot;</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="nt">&quot;background_color&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#12107c&quot;</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">]</span>
 <span class="w">        </span><span class="p">},</span>
@@ -810,9 +852,8 @@ Content-Type: application/json
 <span class="w">                </span><span class="nt">&quot;policy_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.bank.example/privacy-policy&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">&quot;tos_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.bank.example/terms-of-service&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">&quot;organization_country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IT&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.bank.example/assets/logo.svg&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;logo_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;service_documentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://docs.bank.example/psd2-api&quot;</span>
+<span class="w">                </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/logos/{legal_identifier}/image.svg&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;logo_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3&quot;</span>
 <span class="w">            </span><span class="p">},</span>
 <span class="w">            </span><span class="nt">&quot;data_capabilities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="p">{</span>
@@ -941,6 +982,7 @@ Content-Type: application/json
 <span class="w">                        </span><span class="p">]</span>
 <span class="w">                    </span><span class="p">},</span>
 <span class="w">                    </span><span class="nt">&quot;user_information_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;authentic_source2.dataset2.userinfo&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;service_documentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://docs.bank.example/psd2-api&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;update_frequency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;weekly&quot;</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">]</span>
