@@ -53,7 +53,7 @@ La seguente tabella definisce gli attributi di metadati comuni che sono applicab
   :widths: 20 60
   :header-rows: 1
 
-  * - **Identificatore Dati**
+  * - **Identificativo del dato**
     - **Descrizione**
   * - **credential_type_identifier**
     - OBBLIGATORIO. Identificatore unico e resistente alle collisioni che specifica il tipo e lo schema dell'Attestato Elettronico. Definisce l'insieme di claim/attributi che l'Attestato Elettronico contiene e la loro struttura.
@@ -152,28 +152,28 @@ Il payload JWT contiene i seguenti claim. Salvo diversamente specificato, i segu
       - OPZIONALE. Timestamp UNIX con l'orario di inizio validità del JWT, codificato come NumericDate come indicato in :rfc:`7519`.
       - `[RFC7519, Sezione 4.1.4] <https://www.iana.org/go/rfc7519>`_.
     * - **issuing_authority**
-      - OBBLIGATORIO. *Stringa*. Identificatore dati `issuing_authority` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`.
+      - OBBLIGATORIO. *Stringa*. Identificativo del dato `issuing_authority` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`.
       - Regolamento di esecuzione della Commissione `EU_2024/2977`_.
     * - **issuing_country**
-      - OBBLIGATORIO. *Stringa*. Identificatore dati `issuing_country` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`.
+      - OBBLIGATORIO. *Stringa*. Identificativo del dato `issuing_country` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`.
       - Regolamento di esecuzione della Commissione `EU_2024/2977`_.
     * - **date_of_expiry**
-      - OPZIONALE. *Stringa*. Identificatore dati `expiry_date` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`. Questo attributo si riferisce al periodo di validità amministrativa dell'Attestato Elettronico, che è tipicamente diverso dal periodo di validità tecnica espresso dal claim JWT ``exp``.
+      - OPZIONALE. *Stringa*. Identificativo del dato `expiry_date` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`. Questo attributo si riferisce al periodo di validità amministrativa dell'Attestato Elettronico, che è tipicamente diverso dal periodo di validità tecnica espresso dal claim JWT ``exp``.
       - Regolamento di esecuzione della Commissione `EU_2024/2977`_.
     * - **status**
-      - OBBLIGATORIO solo se l'Attestato Elettronico è long-lived. *Oggetto JSON*. Identificatore dati `location_status` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`. DEVE contenere il membro JSON `status_assertion` o `status_list`.
+      - OBBLIGATORIO solo se l'Attestato Elettronico è long-lived. *Oggetto JSON*. Identificativo del dato `location_status` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`. DEVE contenere il membro JSON `status_assertion` o `status_list`.
       - Sezione 3.2.2.2 `SD-JWT-VC`_ e Sezione 11 `OAUTH-STATUS-ASSERTION`_.
     * - **cnf**
-      - OBBLIGATORIO. *Oggetto JSON*. Identificatore dati `cryptographic_binding` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`, contenente il materiale crittografico per la prova di possesso. Includendo un claim **cnf** (confirmation) in un JWT, il Fornitore del JWT dichiara che il Titolare ha il controllo della chiave privata relativa a quella pubblica definita nel parametro **cnf**. Il destinatario DEVE verificare crittograficamente che il Titolare abbia effettivamente il controllo di quella chiave.
+      - OBBLIGATORIO. *Oggetto JSON*. Identificativo del dato `cryptographic_binding` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`, contenente il materiale crittografico per la prova di possesso. Includendo un claim **cnf** (confirmation) in un JWT, il Fornitore del JWT dichiara che il Titolare ha il controllo della chiave privata relativa a quella pubblica definita nel parametro **cnf**. Il destinatario DEVE verificare crittograficamente che il Titolare abbia effettivamente il controllo di quella chiave.
       - `[RFC7800, Sezione 3.1] <https://www.iana.org/go/rfc7800>`_ e Sezione 3.2.2.2 `SD-JWT-VC`_.
     * - **vct**
-      - OBBLIGATORIO. *Stringa*. Identificatore dati `credential_type_identifier` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`. Il valore del tipo di Attestato Elettronico DEVE essere una URN e DEVE essere impostato utilizzando uno dei valori ottenuti dai metadata del Fornitore di Attestati Elettronici, il confronto dei caratteri letterali inclusi in questa URN DEVE essere eseguito in modo case-sensitive. È l'identificativo del tipo di SD-JWT VC e DEVE essere impostato con un valore resistente alle collisioni come definito nella Sezione 2 di :rfc:`7515`. DEVE contenere anche il numero di versione del tipo di Attestato Elettronico. A meno che non sia diversamente specificato da `EIDAS-ARF`_ e dagli EUDI Rulebook, il ``vct`` DOVREBBE seguire una struttura come ``urn:it-wallet:{credential_type}:{credential_type_version}``.
+      - OBBLIGATORIO. *Stringa*. Identificativo del dato `credential_type_identifier` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`. Il valore del tipo di Attestato Elettronico DEVE essere una URN e DEVE essere impostato utilizzando uno dei valori ottenuti dai metadata del Fornitore di Attestati Elettronici, il confronto dei caratteri letterali inclusi in questa URN DEVE essere eseguito in modo case-sensitive. È l'identificativo del tipo di SD-JWT VC e DEVE essere impostato con un valore resistente alle collisioni come definito nella Sezione 2 di :rfc:`7515`. DEVE contenere anche il numero di versione del tipo di Attestato Elettronico. A meno che non sia diversamente specificato da `EIDAS-ARF`_ e dagli EUDI Rulebook, il ``vct`` DOVREBBE seguire una struttura come ``urn:it-wallet:{credential_type}:{credential_type_version}``.
       - Sezione 3.2.2.2 `SD-JWT-VC`_.
     * - **vct#integrity**
       - OBBLIGATORIO. *Stringa*. Il valore DEVE essere una stringa "integrity metadata" come definito nella Sezione 3 di [`W3C-SRI`_]. *SHA-256*, *SHA-384* e *SHA-512* DEVONO essere supportati come funzioni crittografiche di hash. *MD5* e *SHA-1* NON DEVONO essere utilizzati. Questo claim DEVE essere verificato in base a quanto indicato nella Sezione 3.3.5 di [`W3C-SRI`_].
       - Sezione 6.1 `SD-JWT-VC`_, [`W3C-SRI`_]
     * - **verification**
-      - OPZIONALE. *Oggetto JSON*. Identificatore dati `verification` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`.
+      - OPZIONALE. *Oggetto JSON*. Identificativo del dato `verification` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`.
         Include i seguenti sotto-valori:
 
           * ``trust_framework``: OBBLIGATORIO. *Stringa* che identifica il trust framework utilizzato per l'autenticazione dell'Utente. DEVE essere impostato utilizzando uno dei valori descritti nella mappa `trust_frameworks_supported` fornita nei Metadata del Fornitore di Attestati Elettronici.
@@ -567,7 +567,7 @@ Il `MobileSecurityObject` DEVE avere i seguenti attributi, se non diversamente s
       - **Descrizione**
       - **Riferimento**
     * - **docType**
-      - *(tstr)*. Codifica formato dell'identificatore dati `credential_type_identifier` come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`.
+      - *(tstr)*. Codifica formato dell'Identificativo del dato `credential_type_identifier` come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`.
 
           - Se definito da uno standard ISO, DEVE essere una stringa della forma ``iso.org.{iso-number}.{part}.{version}.{credential_type}`` (per esempio, per una mDL, il valore DEVE essere ``org.iso.18013.5.1.mDL``).
 
@@ -651,15 +651,15 @@ I seguenti **elementIdentifiers** che rappresentano attributi metadata format-en
      - **Riferimento**
 
    * - **issuing_country**
-     - *(tstr, OBBLIGATORIO)*. Identificatore dati format-encoded `issuing_country` come definito nella Sezione :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. Codice paese Alpha-2 come definito in [ISO 3166-1].
+     - *(tstr, OBBLIGATORIO)*. Identificativo del dato format-encoded `issuing_country` come definito nella Sezione :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. Codice paese Alpha-2 come definito in [ISO 3166-1].
      - [ISO 18013-5#7.2]
 
    * - **issuing_authority**
-     - *(tstr, OBBLIGATORIO)*. Identificatore dati format-encoded `issuing_authority` come definito nella Sezione :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. Il valore DEVE contenere solo caratteri Latin1b e deve avere una lunghezza massima di 150 caratteri.
+     - *(tstr, OBBLIGATORIO)*. Identificativo del dato format-encoded `issuing_authority` come definito nella Sezione :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. Il valore DEVE contenere solo caratteri Latin1b e deve avere una lunghezza massima di 150 caratteri.
      - [ISO 18013-5#7.2]
 
    * - **expiry_date**
-     - *(tdate o full-date, OPZIONALE)*. Identificatore dati format-encoded `expiry_date` come definito nella Sezione :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. DEVE essere conforme al formato ISO 8601-1 YYYY-MM-DD.
+     - *(tdate o full-date, OPZIONALE)*. Identificativo del dato format-encoded `expiry_date` come definito nella Sezione :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. DEVE essere conforme al formato ISO 8601-1 YYYY-MM-DD.
      - Sezione 3 dell'ARF PID Rulebook v1.3 [`EIDAS-ARF`_]
 
    * - **sub**
@@ -667,7 +667,7 @@ I seguenti **elementIdentifiers** che rappresentano attributi metadata format-en
      - Estensione domestica.
 
    * - **verification**
-     - *(map, OPZIONALE)*. Identificatore dati format-encoded `verification` come definito nella Sezione :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. La CBOR map include i seguenti membri:
+     - *(map, OPZIONALE)*. Identificativo del dato format-encoded `verification` come definito nella Sezione :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. La CBOR map include i seguenti membri:
 
          * ``trust_framework`` *(tstr, OBBLIGATORIO)*: trust framework utilizzato per l'autenticazione dell'Utente.
          * ``assurance_level`` *(tstr, OBBLIGATORIO)*: livello di garanzia dell'identità garantito durante l'autenticazione dell'Utente.
