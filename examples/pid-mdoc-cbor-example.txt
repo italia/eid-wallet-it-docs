@@ -63,7 +63,7 @@
             "digestID": 8,
             "random": h'RGLXZ5CHND8Y2UUMHXXMJWPCHNH9HVIX',
             "elementIdentifier": "nationality",
-            "elementValue": ["IT"]
+            "elementValue": ["IT"],
             }
         >>)
         ],
