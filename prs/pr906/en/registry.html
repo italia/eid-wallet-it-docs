@@ -687,25 +687,17 @@ Content-Type: application/json
 <td><p>JSON object</p></td>
 <td><p>OPTIONAL. Visual branding suggestions that Authentic Sources can provide for credentials using their data.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>display.branding_uri</strong></p></td>
-<td><p>string</p></td>
-<td><p>OPTIONAL. URI to the organization's official brand identity guidelines.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>display.preferred_logo</strong></p></td>
+<tr class="row-odd"><td><p><strong>display.preferred_logo</strong></p></td>
 <td><p>string</p></td>
 <td><p>OPTIONAL. Identifier (<code class="docutils literal notranslate"><span class="pre">id</span></code>) of the preferred logo from the <cite>images</cite> array for UI display.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>display.preferred_credential_background_image_id</strong></p></td>
+<tr class="row-even"><td><p><strong>display.preferred_credential_background_image_id</strong></p></td>
 <td><p>string</p></td>
 <td><p>OPTIONAL. Identifier (<code class="docutils literal notranslate"><span class="pre">id</span></code>) of the preferred background image from the <cite>images</cite> array for UI display.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>display.preferred_credential_background_color_id</strong></p></td>
+<tr class="row-odd"><td><p><strong>display.preferred_credential_background_color_id</strong></p></td>
 <td><p>string</p></td>
 <td><p>OPTIONAL. Identifier (<code class="docutils literal notranslate"><span class="pre">id</span></code>) of the preferred background color for credentials in hexadecimal format (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;credential_background_color_1&quot;</span></code>).</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>display.preferred_credential_text_color_id</strong></p></td>
-<td><p>string</p></td>
-<td><p>OPTIONAL. Identifier (<code class="docutils literal notranslate"><span class="pre">id</span></code>) of the preferred text color for credentials in hexadecimal format (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;text_color_1&quot;</span></code>).</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>display.colors</strong></p></td>
 <td><p>JSON Objects Array</p></td>
@@ -755,6 +747,8 @@ Content-Type: application/json
 <span class="w">                </span><span class="nt">&quot;organization_country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IT&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">&quot;homepage_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/transport&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">&quot;policy_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/transport/privacy-policy&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/assets/transport-logo.svg&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;logo_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">&quot;service_documentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://docs.gov.example/transport/api-docs&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">&quot;user_information&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Vehicle registration data is available for licenses issued after January 1, 2020. For older licenses, contact the local motorization office.&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
@@ -848,11 +842,9 @@ Content-Type: application/json
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">],</span>
 <span class="w">            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;branding_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/transport/brand-identity-guidelines&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">&quot;preferred_logo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;logo_standard&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">&quot;preferred_credential_background_image_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;credential_background&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">&quot;preferred_credential_background_color_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;credential_background_color_1&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;preferred_credential_text_color_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text_color_1&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">&quot;colors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                    </span><span class="p">{</span>
 <span class="w">                        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;credential_background_color_1&quot;</span><span class="p">,</span>

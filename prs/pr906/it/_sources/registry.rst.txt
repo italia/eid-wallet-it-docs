@@ -355,9 +355,6 @@ Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciasc
    * - **display**
      - JSON object
      - OPZIONALE. Suggerimenti di branding visivo che le Fonti Autentiche possono fornire per le credenziali che usano i loro dati.
-   * - **display.branding_uri**
-     - string
-     - OPZIONALE. URI alle linee guida ufficiali dell'identità del marchio dell'organizzazione.
    * - **display.preferred_logo**
      - string
      - OPZIONALE. Identificatore (``id``) del logo preferito dall'array `images` per la visualizzazione UI.
@@ -367,9 +364,6 @@ Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciasc
    * - **display.preferred_credential_background_color_id**
      - string
      - OPZIONALE. Identificatore (``id``) del colore di sfondo preferito per le credenziali in formato esadecimale (es., ``"credential_background_color_1"``).
-   * - **display.preferred_credential_text_color_id**
-     - string
-     - OPZIONALE. Identificatore (``id``) del colore del testo preferito per le credenziali in formato esadecimale (es., ``"text_color_1"``).
    * - **display.colors**
      - JSON Objects Array
      - OPZIONALE. Array di colori predefiniti per il rendering UI.
