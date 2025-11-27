@@ -730,7 +730,7 @@ Content-Type: application/json
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">&quot;entity_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://motorizzazione.gov.example&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;organization_info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;organization_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ministero delle infrastrutture e dei trasporti&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;organization_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;authentic_source1.name&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">&quot;organization_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;public&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">&quot;ipa_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;m_inf&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">&quot;legal_identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;80192770587&quot;</span><span class="p">,</span>
@@ -740,7 +740,6 @@ Content-Type: application/json
 <span class="w">                </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/assets/transport-logo.svg&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">&quot;logo_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">&quot;service_documentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://docs.gov.example/transport/api-docs&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;user_information&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Vehicle registration data is available for licenses issued after January 1, 2020. For older licenses, contact the local motorization office.&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                    </span><span class="s2">&quot;registry@gov.example&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="s2">&quot;technical-support@gov.example&quot;</span>
@@ -749,7 +748,7 @@ Content-Type: application/json
 <span class="w">            </span><span class="nt">&quot;data_capabilities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="p">{</span>
 <span class="w">                    </span><span class="nt">&quot;dataset_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;38832801&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;data_origin&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MIT -- Direzione Generale per la Motorizzazione&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;data_origin_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;authentic_source1.dataset1.origin&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;domains&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                        </span><span class="s2">&quot;IDENTITY&quot;</span><span class="p">,</span>
 <span class="w">                        </span><span class="s2">&quot;AUTHORIZATION&quot;</span>
@@ -827,7 +826,7 @@ Content-Type: application/json
 <span class="w">                        </span><span class="nt">&quot;immediate_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">                        </span><span class="nt">&quot;deferred_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
 <span class="w">                    </span><span class="p">},</span>
-<span class="w">                    </span><span class="nt">&quot;user_information&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;user_information_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;authentic_source1.dataset1.userinfo&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;update_frequency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;real_time&quot;</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">],</span>
@@ -842,14 +841,6 @@ Content-Type: application/json
 <span class="w">                    </span><span class="p">},</span>
 <span class="w">                    </span><span class="p">{</span>
 <span class="w">                        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;credential_background_color_2&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;hex&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#003d82&quot;</span>
-<span class="w">                    </span><span class="p">},</span>
-<span class="w">                    </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text_color_1&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;hex&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#003d82&quot;</span>
-<span class="w">                    </span><span class="p">},</span>
-<span class="w">                    </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text_color_2&quot;</span><span class="p">,</span>
 <span class="w">                        </span><span class="nt">&quot;hex&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#003d82&quot;</span>
 <span class="w">                    </span><span class="p">}</span>
 <span class="w">                </span><span class="p">],</span>
@@ -875,7 +866,7 @@ Content-Type: application/json
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">&quot;entity_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.bank.example/auth-source&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;organization_info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;organization_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Example Bank S.p.A.&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;organization_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;authentic_source2.name&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">&quot;organization_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;private&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">&quot;legal_identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;12345678901&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">&quot;homepage_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.bank.example&quot;</span><span class="p">,</span>
@@ -887,11 +878,12 @@ Content-Type: application/json
 <span class="w">                </span><span class="nt">&quot;tos_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.bank.example/terms-of-service&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">&quot;organization_country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IT&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.bank.example/assets/logo.svg&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;service_documentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://docs.bank.example/psd2-api&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;user_information&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Financial data access requires customer consent and is subject to PSD2 regulations. Account information is available for active accounts only.&quot;</span>
+<span class="w">                </span><span class="nt">&quot;service_documentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://docs.bank.example/psd2-api&quot;</span>
 <span class="w">            </span><span class="p">},</span>
 <span class="w">            </span><span class="nt">&quot;data_capabilities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;dataset_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;38854801&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;data_origin_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;authentic_source2.dataset1.origin&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;domains&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                        </span><span class="s2">&quot;FINANCIAL&quot;</span>
 <span class="w">                    </span><span class="p">],</span>
@@ -958,9 +950,12 @@ Content-Type: application/json
 <span class="w">                        </span><span class="nt">&quot;immediate_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">                        </span><span class="nt">&quot;deferred_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
 <span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="nt">&quot;user_information_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;authentic_source2.dataset1.userinfo&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;update_frequency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;daily&quot;</span>
 <span class="w">                </span><span class="p">},</span>
 <span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;dataset_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;38854802&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;data_origin_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;authentic_source2.dataset2.origin&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;domains&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                        </span><span class="s2">&quot;FINANCIAL&quot;</span>
 <span class="w">                    </span><span class="p">],</span>
@@ -1011,6 +1006,7 @@ Content-Type: application/json
 <span class="w">                            </span><span class="s2">&quot;poll&quot;</span>
 <span class="w">                        </span><span class="p">]</span>
 <span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="nt">&quot;user_information_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;authentic_source2.dataset2.userinfo&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;update_frequency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;weekly&quot;</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">]</span>
@@ -1019,6 +1015,35 @@ Content-Type: application/json
 <span class="p">}</span>
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For a better and more efficient management of the localisation of the information contained in the Digital Credentials Catalog, an Entity consulting it SHOULD:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Download the basic version of the Digital Credentials Catalog (compact, without localisations) using the <code class="docutils literal notranslate"><span class="pre">.well-known/authentic-sources</span></code> endpoint.</p></li>
+<li><p>Determine the User's preferred language.</p></li>
+<li><p>Download only the necessary localisation bundles.</p></li>
+<li><p>Dynamically merge localised content with the Digital Credentials Catalog structure.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<p>A non-normative example of a localisation bundle output is given below:</p>
+<blockquote>
+<div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;authentic_source1.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ministero delle infrastrutture e dei trasporti&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;authentic_source1.dataset1.origin&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MIT -- Direzione Generale per la Motorizzazione&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;authentic_source1.dataset1.userinfo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;###### Patente di Guida\nSono disponibili le patenti rilasciate dopo il 1° gennaio 2020. Per le patenti più vecchie, contattare l&#39;ufficio motorizzazione locale.&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;authentic_source2.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Example Bank S.p.A.&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;authentic_source2.dataset1.origin&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Esempio origine dei dati 1&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;authentic_source2.dataset1.userinfo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;###### Informazioni sulla disponibilità dei dati\nL&#39;accesso ai dati finanziari richiede il consenso del cliente ed è soggetto alla normativa PSD2. Le informazioni sui conti sono disponibili solo per i conti attivi.&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;...&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Localization bundles MUST be available at the URI specified in the <strong>localization_info.bundles_base_uri</strong> claim of the Digital Credentials Catalog. Each locale bundle MUST be accessible following the naming pattern <strong>{locale_code}.json</strong>, where <strong>{locale_code}</strong> is replaced with the corresponding locale code from the <strong>available_locales</strong> array.</p>
+<p>A non-normative example of the Italian localization URI for the bundle would be <strong>https://trust-registry.eid-wallet.example.it/.well-known/authentic-sources/it.json</strong>.</p>
+<p>Entities SHOULD verify the integrity of downloaded localization bundles using the digest method and values specified in the <strong>localization_info.integrity</strong> claim. This ensures that the localization data has not been tampered with during transmission.</p>
 </section>
 </section>
 <section id="as-ci-coordination">
@@ -1433,7 +1458,7 @@ Content-Type: application/json
 <span class="w">    </span><span class="nt">&quot;credentials&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
 <span class="w">        </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;credential_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mDL&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;credential_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Patente di guida&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;credential_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mDL.name&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;legal_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pub-eaa&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;restriction_policy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">&quot;allowed_wallet_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
@@ -1481,7 +1506,7 @@ Content-Type: application/json
 <span class="w">        </span><span class="p">],</span>
 <span class="w">        </span><span class="nt">&quot;issuers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
 <span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;organization_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Digital Credential Issuer of Example&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;organization_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mDL.issuer1.name&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;organization_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ci_example_it&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;organization_country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IT&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
@@ -1550,17 +1575,14 @@ Content-Type: application/json
 </div>
 <p>A non-normative example of a localisation bundle output is given below:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;driving_license.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Patente di Guida&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;driving_license.description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Patente di guida ufficiale valida in Italia e nell&#39;UE&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;purpose.driving_authorization.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Abilitazione alla guida&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;purpose.driving_authorization.description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Verifica di Abilitazione alla guida&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;claims.given_name.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Nome&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;mDL.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Patente di Guida&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;mDL.issuer1.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Esempio di Credential Issuer&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;...&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>Localization bundles MUST be available at the URI specified in the <strong>localization_info.bundles_base_uri</strong> claim of the Digital Credentials Catalog. Each locale bundle MUST be accessible following the naming pattern <strong>{locale_code}.json</strong>, where <strong>{locale_code}</strong> is replaced with the corresponding locale code from the <strong>available_locales</strong> array.</p>
-<p>A non-normative example of the Italian localization URI for the mDL bundle would be <strong>https://trust-registry.eid-wallet.example.it/.well-known/l10n/mdl/it.json</strong>.</p>
+<p>A non-normative example of the Italian localization URI for the bundle would be <strong>https://trust-registry.eid-wallet.example.it/.well-known/credential-catalog/it.json</strong>.</p>
 <p>Entities SHOULD verify the integrity of downloaded localization bundles using the digest method and values specified in the <strong>localization_info.integrity</strong> claim. This ensures that the localization data has not been tampered with during transmission.</p>
 </section>
 <section id="decentralization-of-display-and-claim-information">
@@ -1784,6 +1806,32 @@ Content-Type: application/json
 <span class="p">}</span>
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For a better and more efficient management of the localisation of the information contained in the Digital Credentials Catalog, an Entity consulting it SHOULD:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Download the basic version of the Digital Credentials Catalog (compact, without localisations) using the <code class="docutils literal notranslate"><span class="pre">.well-known/taxonomy</span></code> endpoint.</p></li>
+<li><p>Determine the User's preferred language.</p></li>
+<li><p>Download only the necessary localisation bundles.</p></li>
+<li><p>Dynamically merge localised content with the Digital Credentials Catalog structure.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<p>A non-normative example of a localisation bundle output is given below:</p>
+<blockquote>
+<div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;domain.identity.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Identità&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;domain.identity.description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Attestati Elettronici che stabiliscono o verificano l&#39;identità di una persona, compresi i documenti di identità fisici e digitali legalmente riconosciuti dalle leggi nazionali.&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;purpose.person_identification.name: &quot;</span><span class="err">ide</span><span class="kc">nt</span><span class="err">i</span><span class="kc">f</span><span class="err">icazio</span><span class="kc">ne</span><span class="w"> </span><span class="err">della</span><span class="w"> </span><span class="err">perso</span><span class="kc">na</span><span class="s2">&quot;,</span>
+<span class="s2">  &quot;</span><span class="err">...</span><span class="s2">&quot;: &quot;</span><span class="err">...&quot;</span>
+<span class="err">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Localization bundles MUST be available at the URI specified in the <strong>localization_info.bundles_base_uri</strong> claim of the Digital Credentials Catalog. Each locale bundle MUST be accessible following the naming pattern <strong>{locale_code}.json</strong>, where <strong>{locale_code}</strong> is replaced with the corresponding locale code from the <strong>available_locales</strong> array.</p>
+<p>A non-normative example of the Italian localization URI for the bundle would be <strong>https://trust-registry.eid-wallet.example.it/.well-known/taxonomy/it.json</strong>.</p>
+<p>Entities SHOULD verify the integrity of downloaded localization bundles using the digest method and values specified in the <strong>localization_info.integrity</strong> claim. This ensures that the localization data has not been tampered with during transmission.</p>
 </section>
 <section id="schema-registry">
 <h2><span class="section-number">7.8. </span>Schema Registry<a class="headerlink" href="#schema-registry" title="Link to this heading">¶</a></h2>
