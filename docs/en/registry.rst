@@ -13,12 +13,12 @@ Registry Architecture Overview
 
 The IT-Wallet registry system comprises six main components:
 
-  1. **Claims Registry**: Standardized semantic definitions for individual credential attributes, data types, and validation rules.
-  2. **Authentic Source (AS) Registry**: Catalog of registered data providers with their declared capabilities and available claims.
-  3. **Federation Registry**: Authoritative list of trusted entities participating in the federation with their technical configurations.
-  4. **Digital Credentials Catalog**: Public discovery mechanism for available credential types with their metadata and issuance information.
-  5. **Schema Registry**: Authoritative list of Credential Schemas.
-  6. **Taxonomy**: Hierarchical classification system organizing credentials by domain and purpose.
+1. **Claims Registry**: Standardized semantic definitions for individual credential attributes, data types, and validation rules.
+2. **Authentic Source (AS) Registry**: Catalog of registered data providers with their declared capabilities and available claims.
+3. **Federation Registry**: Authoritative list of trusted entities participating in the federation with their technical configurations.
+4. **Digital Credentials Catalog**: Public discovery mechanism for available credential types with their metadata and issuance information.
+5. **Schema Registry**: Authoritative list of Credential Schemas.
+6. **Taxonomy**: Hierarchical classification system organizing credentials by domain and purpose.
 
 These registry components are interconnected and maintained by the Supervisory Body to ensure consistency, security, and regulatory compliance across the ecosystem.
 
@@ -29,13 +29,13 @@ The Trust Anchor MUST provide a discovery mechanism for all registry components 
 
 The Trust Anchor MUST publish registry discovery metadata at the ``.well-known/it-wallet-registry`` endpoint with content negotiation support:
 
-  - **Default Content-Type**: ``application/jwt`` (signed JWT ensuring authenticity and integrity)
-  - **Alternative Content-Type**: ``application/json`` (plain JSON for development/debugging purposes)
+- **Default Content-Type**: ``application/jwt`` (signed JWT ensuring authenticity and integrity)
+- **Alternative Content-Type**: ``application/json`` (plain JSON for development/debugging purposes)
 
 Moreover, the IT-Wallet registry system MUST use two distinct access patterns:
 
-  - **Data Registry APIs**: MUST support pagination and filtering capabilities.
-  - **Federation Trust Infrastructure**: as defined in :ref:`trust-infrastructure:The Infrastructure of Trust`.
+- **Data Registry APIs**: MUST support pagination and filtering capabilities.
+- **Federation Trust Infrastructure**: as defined in :ref:`trust-infrastructure:The Infrastructure of Trust`.
 
 Below a non-normative example is given.
 
@@ -208,8 +208,8 @@ Each Authentic Source MUST be assigned a unique identifier that follows the HTTP
 
 **Schema Components:**
 
-  - **organization_domain**: DNS domain controlled by the organization
-  - **optional_path**: Additional path component for specific services or departments
+- **organization_domain**: DNS domain controlled by the organization
+- **optional_path**: Additional path component for specific services or departments
 
 
 The AS identifier MUST follow these normative rules:
@@ -222,9 +222,9 @@ The AS identifier MUST follow these normative rules:
 
 **Examples of compliant AS identifiers:**
 
-  - ``https://motorizzazione.gov.example``: Public - Ministry of Transport, Motorization Dept
-  - ``https://registry.anpr.example``: Public - National Registry of Resident Population
-  - ``https://api.bank.example/auth-source``: Private - Example Bank Financial Services
+- ``https://motorizzazione.gov.example``: Public - Ministry of Transport, Motorization Dept
+- ``https://registry.anpr.example``: Public - National Registry of Resident Population
+- ``https://api.bank.example/auth-source``: Private - Example Bank Financial Services
 
 
 Authentic Source Registry Parameters
@@ -709,7 +709,7 @@ Each element of the ``credentials`` array contains at least the following inform
 
       * **id**: String identifier referencing the Authentic Source entity_id as registered in the :ref:`registry:Authentic Source Registry`.
       * **dataset_id**: String identifier of the specific data capability/dataset used by the Issuer from the AS.
-  
+
 .. note::
   The union of ``credential_type`` and ``version`` MUST be unique in the Credential Catalog.
 
@@ -731,12 +731,12 @@ The ``wallet_app_attestations`` Object is an Array containing at least the follo
   * - **formats**
     - REQUIRED. Array of supported formats for the Wallet App Attestation, including:
 
-      * **format**: Type of format (e.g., ``dc+sd-jwt``, ``mso_mdoc`` or ``oauth-client-attestation+jwt``)
-      * **configuration_id**: Configuration identifier of the Wallet App Attestation. This is formed by concatenating the string ``wa`` to the ``format`` (e.g., ``dc_sd_jwt_wa``, ``mso_mdoc_wa``, or ``jwt_wa``), and is used to uniquely reference the configuration of the Wallet App Attestation format.
-      * **vct**: CONDITIONAL. It is REQUIRED if the ``format`` is ``dc+sd-jwt``, indicating the Verifiable Credential Type (e.g., ``urn:eudi:mDL:it:1``).
-      * **docType**: CONDITIONAL. It is only present if the ``format`` is ``mso_mdoc``. It is a string of the form ``{Trust Anchor reverse domain}.{credential_type}`` (e.g., ``it.wallet.trust-registry.wallet_app_attestation``).
-      * **schema_uri**: URI pointing to the format specification document.
-      * **schema_uri#integrity**: Cryptographic digest of the format specification document for integrity verification. It MUST be a string of the form ``{digest_method}-{digest_value}``, where ``{digest_method}`` is the digest algorithm used (e.g., ``sha-256``) and ``{digest_value}`` is the base64url-encoded digest value.
+    * **format**: Type of format (e.g., ``dc+sd-jwt``, ``mso_mdoc`` or ``oauth-client-attestation+jwt``)
+    * **configuration_id**: Configuration identifier of the Wallet App Attestation. This is formed by concatenating the string ``wa`` to the ``format`` (e.g., ``dc_sd_jwt_wa``, ``mso_mdoc_wa``, or ``jwt_wa``), and is used to uniquely reference the configuration of the Wallet App Attestation format.
+    * **vct**: CONDITIONAL. It is REQUIRED if the ``format`` is ``dc+sd-jwt``, indicating the Verifiable Credential Type (e.g., ``urn:eudi:mDL:it:1``).
+    * **docType**: CONDITIONAL. It is only present if the ``format`` is ``mso_mdoc``. It is a string of the form ``{Trust Anchor reverse domain}.{credential_type}`` (e.g., ``it.wallet.trust-registry.wallet_app_attestation``).
+    * **schema_uri**: URI pointing to the format specification document.
+    * **schema_uri#integrity**: Cryptographic digest of the format specification document for integrity verification. It MUST be a string of the form ``{digest_method}-{digest_value}``, where ``{digest_method}`` is the digest algorithm used (e.g., ``sha-256``) and ``{digest_value}`` is the base64url-encoded digest value.
 
 The corresponding example of Digital Credentials Catalog as decoded in JSON for both header and payload is the following:
 
@@ -749,14 +749,14 @@ The corresponding example of Digital Credentials Catalog as decoded in JSON for 
 .. note::
   For a better and more efficient management of the localisation of the information contained in the Digital Credentials Catalog, an Entity consulting it SHOULD:
 
-    - Download the basic version of the Digital Credentials Catalog (compact, without localisations) using the ``.well-known/credential-catalog`` endpoint.
-    - Determine the User's preferred language.
-    - Download only the necessary localisation bundles.
-    - Dynamically merge localised content with the Digital Credentials Catalog structure.
+  - Download the basic version of the Digital Credentials Catalog (compact, without localisations) using the ``.well-known/credential-catalog`` endpoint.
+  - Determine the User's preferred language.
+  - Download only the necessary localisation bundles.
+  - Dynamically merge localised content with the Digital Credentials Catalog structure.
 
 A non-normative example of a localisation bundle output is given below:
 
-    .. code-block:: json
+.. code-block:: json
 
       {
         "mDL.name": "Patente di Guida",
@@ -935,11 +935,13 @@ Catalog Browsing
 This *Catalog Browsing* journey supports Users (both human users via a **Wallet Instance** and automated systems like **Relying Parties** or web portals) in discovering and selecting available Digital Credentials.
 
 1.  **Accessing the Discovery Endpoint**: The entity (e.g., a Wallet Provider or informational portal) accesses the `Registry Discovery Endpoint` (``.well-known/it-wallet-registry``) to obtain the URI of the **Digital Credentials Catalog**.
+
 2.  **Navigation and Selection**:
 
-    * **Credential Discovery**: The entity browses the list of Credentials (``credentials`` field) to identify relevant Credential types (e.g., ``pid``, ``driving_license``).
-    * **Issuer Metadata**: The entity extracts the **Issuer Identifier** (`entity_id` within the `issuers` field) associated with the desired Credential.
-    * **Detail Consultation**: To obtain complete information oand specific technical requirements, the entity accesses the **Entity Configuration** (Issuer Metadata) using the retrieved identifier.
+  * **Credential Discovery**: The entity browses the list of Credentials (``credentials`` field) to identify relevant Credential types (e.g., ``pid``, ``driving_license``).
+  * **Issuer Metadata**: The entity extracts the **Issuer Identifier** (`entity_id` within the `issuers` field) associated with the desired Credential.
+  * **Detail Consultation**: To obtain complete information oand specific technical requirements, the entity accesses the **Entity Configuration** (Issuer Metadata) using the retrieved identifier.
+
 3.  **Final Action**: The entity can then can use the metadata to display the catalog information to a User (or use the information in other way).
 
 Credential Issuance
@@ -951,13 +953,13 @@ This journey defines how a Credential Issuer uses the Registry Infrastructure to
 
 2.  **Schema and Claim Resolution**:
 
-    * The CI consults the **Schema Registry** to retrieve the technical specification of the format and schema (e.g., JSON Schema for SD-JWT) required by the Catalog, ensuring validity and integrity via the hash (`schema_uri#integrity`).
-    * The CI accesses the **Claims Registry** to retrieve the standardized semantic definitions and data formats (data types) of the necessary attributes (claims).
+  * The CI consults the **Schema Registry** to retrieve the technical specification of the format and schema (e.g., JSON Schema for SD-JWT) required by the Catalog, ensuring validity and integrity via the hash (`schema_uri#integrity`).
+  * The CI accesses the **Claims Registry** to retrieve the standardized semantic definitions and data formats (data types) of the necessary attributes (claims).
 
 3.  **Authentic Data Retrieval**:
 
-    * The CI consults the **Authentic Source (AS) Registry** to identify the authorized **Authentic Source** (AS) for the required dataset. The AS Registry provides the AS's ``entity_id`` and the technical details of the interface (`integration_endpoint`, `integration_method`).
-    * The CI consults the AS endpoint specification to implement the integration needed to retrieve the User data required to populate the Digital Credential.
+  * The CI consults the **Authentic Source (AS) Registry** to identify the authorized **Authentic Source** (AS) for the required dataset. The AS Registry provides the AS's ``entity_id`` and the technical details of the interface (`integration_endpoint`, `integration_method`).
+  * The CI consults the AS endpoint specification to implement the integration needed to retrieve the User data required to populate the Digital Credential.
 
 4.  **Credential Issuance**: The CI uses the retrieved data, validated schemas, and specified formats to generate and sign the Digital Credential in the correct format (e.g., SD-JWT or mDOC).
 
@@ -968,21 +970,21 @@ This journey describes how a **Wallet Instance** and a **Relying Party (RP)** in
 
 1.  **Wallet Authorization and Selection**:
 
-    * The Wallet receives a Presentation Request from the RP, verifies the validity of the request comparing the requested *claims* with the *Authorization Policies* related to the RP (via the **Taxonomy** definitions).
-    * The Wallet consults the **Digital Credentials Catalog** to verify the *Domains* and *Purposes* associated with the Credential types it holds, evaluating which Credentials are suitable for the request.
-    * The Wallet verifies if the required attributes (claims) are available and authorized for disclosure based on the request policy (**Credential-Specific** or **Credential-Agnostic** scenarios).
-    * The User authorizes the release of the selected, selectively disclosed attributes. The Wallet then packages and presents the Digital Credential to the RP.
+  * The Wallet receives a Presentation Request from the RP, verifies the validity of the request comparing the requested *claims* with the *Authorization Policies* related to the RP (via the **Taxonomy** definitions).
+  * The Wallet consults the **Digital Credentials Catalog** to verify the *Domains* and *Purposes* associated with the Credential types it holds, evaluating which Credentials are suitable for the request.
+  * The Wallet verifies if the required attributes (claims) are available and authorized for disclosure based on the request policy (**Credential-Specific** or **Credential-Agnostic** scenarios).
+  * The User authorizes the release of the selected, selectively disclosed attributes. The Wallet then packages and presents the Digital Credential to the RP.
 
 2.  **Discovery and Integrity**:
 
-    * The RP receives the Digital Credential from the User.
-    * The RP consults the **Federation Registry** via the Trust Anchor's endpoint (`federation_resolve`, `federation_trust_mark_status`) to verify the **cryptographic trust** (Trust Mark) of the Issuer and Wallet Provider as defined in Section :ref:`trust-infrastructure:The Infrastructure of Trust`.
-    * The RP consults the **Schema Registry** to download the schema of the presented Credential (`schema_uri`), verifying its integrity (`schema_uri#integrity`).
+  * The RP receives the Digital Credential from the User.
+  * The RP consults the **Federation Registry** via the Trust Anchor's endpoint (`federation_resolve`, `federation_trust_mark_status`) to verify the **cryptographic trust** (Trust Mark) of the Issuer and Wallet Provider as defined in Section :ref:`trust-infrastructure:The Infrastructure of Trust`.
+  * The RP consults the **Schema Registry** to download the schema of the presented Credential (`schema_uri`), verifying its integrity (`schema_uri#integrity`).
 
 3.  **Schema and Final Policy Validation**:
 
-    * The RP uses the retrieved schema to validate the structure of the Credential and the data types of the revealed attributes.
-    * The RP performs the final check to ensure that the attributes presented comply with the specific requirements of the initial request and authorization policy.
+  * The RP uses the retrieved schema to validate the structure of the Credential and the data types of the revealed attributes.
+  * The RP performs the final check to ensure that the attributes presented comply with the specific requirements of the initial request and authorization policy.
 
 4.  **Acceptance or Rejection**: Based on cryptographic validation, schema compliance, and policy-based authorization, the RP accepts or rejects the Credential for service access.
 
