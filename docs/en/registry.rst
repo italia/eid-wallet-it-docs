@@ -394,6 +394,34 @@ A non-normative example of AS Registry structure is given below:
 .. literalinclude:: ../../examples/as-registry-example.json
   :language: JSON
 
+.. note::
+  For a better and more efficient management of the localisation of the information contained in the Digital Credentials Catalog, an Entity consulting it SHOULD:
+
+    - Download the basic version of the Digital Credentials Catalog (compact, without localisations) using the ``.well-known/authentic-sources`` endpoint.
+    - Determine the User's preferred language.
+    - Download only the necessary localisation bundles.
+    - Dynamically merge localised content with the Digital Credentials Catalog structure.
+
+A non-normative example of a localisation bundle output is given below:
+
+    .. code-block:: json
+
+      {
+        "authentic_source1.name": "Ministero delle infrastrutture e dei trasporti",
+        "authentic_source1.dataset1.origin": "MIT -- Direzione Generale per la Motorizzazione",
+        "authentic_source1.dataset1.userinfo": "###### Patente di Guida\nSono disponibili le patenti rilasciate dopo il 1° gennaio 2020. Per le patenti più vecchie, contattare l'ufficio motorizzazione locale.",
+        "authentic_source2.name": "Example Bank S.p.A.",
+        "authentic_source2.dataset1.origin": "Esempio origine dei dati 1",
+        "authentic_source2.dataset1.userinfo": "###### Informazioni sulla disponibilità dei dati\nL'accesso ai dati finanziari richiede il consenso del cliente ed è soggetto alla normativa PSD2. Le informazioni sui conti sono disponibili solo per i conti attivi.",
+        "...": "..."
+      }
+
+Localization bundles MUST be available at the URI specified in the **localization_info.bundles_base_uri** claim of the Digital Credentials Catalog. Each locale bundle MUST be accessible following the naming pattern **{locale_code}.json**, where **{locale_code}** is replaced with the corresponding locale code from the **available_locales** array.
+
+A non-normative example of the Italian localization URI for the bundle would be **https://trust-registry.eid-wallet.example.it/.well-known/authentic-sources/it.json**. 
+
+Entities SHOULD verify the integrity of downloaded localization bundles using the digest method and values specified in the **localization_info.integrity** claim. This ensures that the localization data has not been tampered with during transmission.
+
 AS-CI Coordination
 ^^^^^^^^^^^^^^^^^^
 
@@ -731,17 +759,14 @@ A non-normative example of a localisation bundle output is given below:
     .. code-block:: json
 
       {
-        "driving_license.name": "Patente di Guida",
-        "driving_license.description": "Patente di guida ufficiale valida in Italia e nell'UE",
-        "purpose.driving_authorization.name": "Abilitazione alla guida",
-        "purpose.driving_authorization.description": "Verifica di Abilitazione alla guida",
-        "claims.given_name.name": "Nome",
+        "mDL.name": "Patente di Guida",
+        "mDL.issuer1.name": "Esempio di Credential Issuer",
         "...": "..."
       }
 
 Localization bundles MUST be available at the URI specified in the **localization_info.bundles_base_uri** claim of the Digital Credentials Catalog. Each locale bundle MUST be accessible following the naming pattern **{locale_code}.json**, where **{locale_code}** is replaced with the corresponding locale code from the **available_locales** array.
 
-A non-normative example of the Italian localization URI for the mDL bundle would be **https://trust-registry.eid-wallet.example.it/.well-known/l10n/mdl/it.json**. 
+A non-normative example of the Italian localization URI for the bundle would be **https://trust-registry.eid-wallet.example.it/.well-known/credential-catalog/it.json**. 
 
 Entities SHOULD verify the integrity of downloaded localization bundles using the digest method and values specified in the **localization_info.integrity** claim. This ensures that the localization data has not been tampered with during transmission.
 
@@ -796,6 +821,30 @@ A non-normative example of Taxonomy structure is given below:
 .. literalinclude:: ../../examples/taxonomy-example.json
   :language: JSON
 
+.. note::
+  For a better and more efficient management of the localisation of the information contained in the Digital Credentials Catalog, an Entity consulting it SHOULD:
+
+    - Download the basic version of the Digital Credentials Catalog (compact, without localisations) using the ``.well-known/taxonomy`` endpoint.
+    - Determine the User's preferred language.
+    - Download only the necessary localisation bundles.
+    - Dynamically merge localised content with the Digital Credentials Catalog structure.
+
+A non-normative example of a localisation bundle output is given below:
+
+    .. code-block:: json
+
+      {
+        "domain.identity.name": "Identità",
+        "domain.identity.description": "Attestati Elettronici che stabiliscono o verificano l'identità di una persona, compresi i documenti di identità fisici e digitali legalmente riconosciuti dalle leggi nazionali.",
+        "purpose.person_identification.name: "identificazione della persona",
+        "...": "..."
+      }
+
+Localization bundles MUST be available at the URI specified in the **localization_info.bundles_base_uri** claim of the Digital Credentials Catalog. Each locale bundle MUST be accessible following the naming pattern **{locale_code}.json**, where **{locale_code}** is replaced with the corresponding locale code from the **available_locales** array.
+
+A non-normative example of the Italian localization URI for the bundle would be **https://trust-registry.eid-wallet.example.it/.well-known/taxonomy/it.json**. 
+
+Entities SHOULD verify the integrity of downloaded localization bundles using the digest method and values specified in the **localization_info.integrity** claim. This ensures that the localization data has not been tampered with during transmission.
 
 Schema Registry
 -----------------

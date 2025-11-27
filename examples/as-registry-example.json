@@ -5,7 +5,7 @@
         {
             "entity_id": "https://motorizzazione.gov.example",
             "organization_info": {
-                "organization_name": "Ministero delle infrastrutture e dei trasporti",
+                "organization_name_l10n_id": "authentic_source1.name",
                 "organization_type": "public",
                 "ipa_code": "m_inf",
                 "legal_identifier": "80192770587",
@@ -15,7 +15,6 @@
                 "logo_uri": "https://www.gov.example/assets/transport-logo.svg",
                 "logo_uri#integrity": "sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
                 "service_documentation": "https://docs.gov.example/transport/api-docs",
-                "user_information": "Vehicle registration data is available for licenses issued after January 1, 2020. For older licenses, contact the local motorization office.",
                 "contacts": [
                     "registry@gov.example",
                     "technical-support@gov.example"
@@ -24,7 +23,7 @@
             "data_capabilities": [
                 {
                     "dataset_id": "38832801",
-                    "data_origin": "MIT -- Direzione Generale per la Motorizzazione",
+                    "data_origin_l10n_id": "authentic_source1.dataset1.origin",
                     "domains": [
                         "IDENTITY",
                         "AUTHORIZATION"
@@ -102,7 +101,7 @@
                         "immediate_flow": true,
                         "deferred_flow": false
                     },
-                    "user_information": "",
+                    "user_information_l10n_id": "authentic_source1.dataset1.userinfo",
                     "update_frequency": "real_time"
                 }
             ],
@@ -117,14 +116,6 @@
                     },
                     {
                         "id": "credential_background_color_2",
-                        "hex": "#003d82"
-                    },
-                    {
-                        "id": "text_color_1",
-                        "hex": "#003d82"
-                    },
-                    {
-                        "id": "text_color_2",
                         "hex": "#003d82"
                     }
                 ],
@@ -150,7 +141,7 @@
         {
             "entity_id": "https://api.bank.example/auth-source",
             "organization_info": {
-                "organization_name": "Example Bank S.p.A.",
+                "organization_name_l10n_id": "authentic_source2.name",
                 "organization_type": "private",
                 "legal_identifier": "12345678901",
                 "homepage_uri": "https://www.bank.example",
@@ -162,11 +153,12 @@
                 "tos_uri": "https://www.bank.example/terms-of-service",
                 "organization_country": "IT",
                 "logo_uri": "https://www.bank.example/assets/logo.svg",
-                "service_documentation": "https://docs.bank.example/psd2-api",
-                "user_information": "Financial data access requires customer consent and is subject to PSD2 regulations. Account information is available for active accounts only."
+                "service_documentation": "https://docs.bank.example/psd2-api"
             },
             "data_capabilities": [
                 {
+                    "dataset_id": "38854801",
+                    "data_origin_l10n_id": "authentic_source2.dataset1.origin",
                     "domains": [
                         "FINANCIAL"
                     ],
@@ -233,9 +225,12 @@
                         "immediate_flow": true,
                         "deferred_flow": false
                     },
+                    "user_information_l10n_id": "authentic_source2.dataset1.userinfo",
                     "update_frequency": "daily"
                 },
                 {
+                    "dataset_id": "38854802",
+                    "data_origin_l10n_id": "authentic_source2.dataset2.origin",
                     "domains": [
                         "FINANCIAL"
                     ],
@@ -286,6 +281,7 @@
                             "poll"
                         ]
                     },
+                    "user_information_l10n_id": "authentic_source2.dataset2.userinfo",
                     "update_frequency": "weekly"
                 }
             ]

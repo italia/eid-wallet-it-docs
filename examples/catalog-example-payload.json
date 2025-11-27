@@ -5,7 +5,7 @@
     "credentials": [{
         "version": "1.0",
         "credential_type": "mDL",
-        "credential_name": "Patente di guida",
+        "credential_name_l10n_id": "mDL.name",
         "legal_type": "pub-eaa",
         "restriction_policy": {
             "allowed_wallet_ids": [
@@ -53,7 +53,7 @@
         ],
         "issuers": [{
             "id": "https://issuer.example.org",
-            "organization_name": "Digital Credential Issuer of Example",
+            "organization_name_l10n_id": "mDL.issuer1.name",
             "organization_code": "ci_example_it",
             "organization_country": "IT",
             "contacts": [
