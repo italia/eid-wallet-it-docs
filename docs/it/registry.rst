@@ -808,7 +808,7 @@ Un esempio non normativo di output di un bundle di localizzazione è fornito di 
  {
     "domain.identity.name": "Identity",
     "domain.identity.description": "Credentials that establish or verify the identity of a person, including physical and digital identity documents legally recognized by national laws.",
-    "purpose.person_identification.name: "Person identification",
+    "purpose.person_identification.name": "Person identification",
     "...": "..."
   }
 
