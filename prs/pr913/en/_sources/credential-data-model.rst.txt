@@ -177,16 +177,6 @@ The JWT payload contains the following claims. Unless otherwise specifed, the fo
 
           * ``trust_framework``: REQUIRED. *String* identifying the trust framework used for User authentication. It MUST be set using one of the values described in the `trust_frameworks_supported` map provided within the Credential Issuer Metadata.
           * ``assurance_level``: REQUIRED. *String* identifying the level of identity assurance guaranteed during the User authentication process.
-          * ``evidence``: OPTIONAL. Each entry of the array MUST contain the following members:
-
-            - ``type``: OPTIONAL. *String*. It represents evidence type. It MUST be set to ``vouch``.
-            - ``time``: OPTIONAL. *UNIX Timestamps* with the time of the authentication or verification.
-            - ``attestation``: OPTIONAL. It contains the following members:
-
-                - ``type``: OPTIONAL. *String*. It MUST be set to ``digital_attestation``.
-                - ``reference_number``: OPTIONAL. *String*. Identifier of the authentication or verification response.
-                - ``date_of_issuance``: OPTIONAL. *String*. Date of issuance of the attestation.
-                - ``voucher``: OPTIONAL. *JSON Object*. It MUST contains ``organization`` claim as a human-readable String format.
 
       - Domestic extension.
     * - **_sd**
@@ -681,16 +671,6 @@ The following **elementIdentifiers** representing format-encoded metadata attrib
 
          * ``trust_framework`` *(tstr, REQUIRED)*: trust framework used for User authentication.
          * ``assurance_level`` *(tstr, REQUIRED)*: level of identity assurance guaranteed during User authentication.
-         * ``evidence`` *(array, OPTIONAL)*: each entry contains:
-
-           - ``type`` *(tstr, OPTIONAL)*: evidence type (e.g., ``vouch``).
-           - ``time`` *(tdate, OPTIONAL)*: timestamp of authentication or verification.
-           - ``attestation`` *(map, OPTIONAL)*: contains:
-
-             - ``type`` *(tstr, OPTIONAL)*: attestation type (e.g., ``digital_attestation``).
-             - ``reference_number`` *(tstr, OPTIONAL)*: identifier of the authentication/verification response.
-             - ``date_of_issuance`` *(tdate, OPTIONAL)*: date of issuance of the attestation.
-             - ``voucher`` *(map, OPTIONAL)*: contains ``organization`` *(tstr)*.
 
      - Domestic extension.
 

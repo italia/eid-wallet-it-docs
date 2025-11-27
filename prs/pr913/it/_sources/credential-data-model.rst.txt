@@ -178,16 +178,6 @@ Il payload JWT contiene i seguenti claim. Salvo diversamente specificato, i segu
 
           * ``trust_framework``: OBBLIGATORIO. *Stringa* che identifica il trust framework utilizzato per l'autenticazione dell'Utente. DEVE essere impostato utilizzando uno dei valori descritti nella mappa `trust_frameworks_supported` fornita nei Metadata del Fornitore di Attestati Elettronici.
           * ``assurance_level``: OBBLIGATORIO. *Stringa* che identifica il livello di garanzia dell'identità garantito durante il processo di autenticazione dell'Utente.
-          * ``evidence``: OPZIONALE. Ogni voce dell'array DEVE contenere i seguenti membri:
-
-            - ``type``: OPZIONALE. *Stringa*. Rappresenta il tipo di evidenza. DEVE essere impostato a ``vouch``.
-            - ``time``: OPZIONALE. *Timestamp UNIX* con l'orario dell'autenticazione o della verifica.
-            - ``attestation``: OPZIONALE. Contiene i seguenti membri:
-
-                - ``type``: OPZIONALE. *Stringa* DEVE essere impostato a ``digital_attestation``.
-                - ``reference_number``: OPZIONALE. *Stringa.* identificativo della risposta di autenticazione o verifica.
-                - ``date_of_issuance``: OPZIONALE. *Stringa*. data di emissione dell'attestazione.
-                - ``voucher``: OPZIONALE. *Oggetto JSON*. DEVE contenere il claim ``organization`` in formato Stringa leggibile.
 
       - Estensione domestica.
     * - **_sd**
@@ -681,16 +671,6 @@ I seguenti **elementIdentifiers** che rappresentano attributi metadata format-en
 
          * ``trust_framework`` *(tstr, OBBLIGATORIO)*: trust framework utilizzato per l'autenticazione dell'Utente.
          * ``assurance_level`` *(tstr, OBBLIGATORIO)*: livello di garanzia dell'identità garantito durante l'autenticazione dell'Utente.
-         * ``evidence`` *(array, OPZIONALE)*: ogni voce contiene:
-
-           - ``type`` *(tstr, OPZIONALE)*: tipo di evidenza (es., ``vouch``).
-           - ``time`` *(tdate, OPZIONALE)*: timestamp dell'autenticazione o verifica.
-           - ``attestation`` *(map, OPZIONALE)*: contiene:
-
-             - ``type`` *(tstr, OPZIONALE)*: tipo di attestazione (es., ``digital_attestation``).
-             - ``reference_number`` *(tstr, OPZIONALE)*: identificativo della risposta di autenticazione/verifica.
-             - ``date_of_issuance`` *(tdate, OPZIONALE)*: data di emissione dell'attestazione.
-             - ``voucher`` *(map, OPZIONALE)*: contiene ``organization`` *(tstr)*.
 
      - Estensione domestica.
 
