@@ -291,10 +291,16 @@ The Authentic Source Registry MUST contain the following parameters for each reg
      - REQUIRED. Two-letter ISO 3166-1 alpha-2 country code of the organization.
    * - **organization_info.logo_uri**
      - string
-     - OPTIONAL. URL to the organization's logo image.
+     - REQUIRED. URL to the organization's logo image.
    * - **organization_info.logo_uri#integrity**
      - string
-     - CONDITIONAL. Cryptographic digest of the logo image resource for integrity verification. REQUIRED if ``image_uri`` is present. Format: ``{digest_method}-{digest_value}`` (e.g., ``"sha-256-abc123..."``).
+     - REQUIRED. Cryptographic digest of the logo image resource for integrity verification. Format: ``{digest_method}-{digest_value}`` (e.g., ``"sha-256-abc123..."``).
+  * - **organization_info.logo_uri_extended**
+     - string
+     - OPTIONAL. URL to the organization's extended logo image.
+   * - **organization_info.logo_uri_extended#integrity**
+     - string
+     - CONDITIONAL. Cryptographic digest of the extended logo image resource for integrity verification. REQUIRED if ``logo_uri_extended`` is present. Format: ``{digest_method}-{digest_value}`` (e.g., ``"sha-256-abc123..."``).
    * - **organization_info.service_documentation**
      - string
      - OPTIONAL. URL pointing to the Authentic Source service documentation.
@@ -352,39 +358,6 @@ The Authentic Source Registry MUST contain the following parameters for each reg
    * - **data_capabilities[].update_frequency**
      - string
      - OPTIONAL. Indicates how frequently the Authentic Source updates its data. Possible values: ``"real_time"`` (near real-time updates, typically within minutes), ``"daily"``, ``"weekly"``, ``"monthly"``, ``"on_demand"``.
-   * - **display**
-     - JSON object
-     - OPTIONAL. Visual branding suggestions that Authentic Sources can provide for credentials using their data.
-   * - **display.preferred_logo**
-     - string
-     - OPTIONAL. Identifier (``id``) of the preferred logo from the `images` array for UI display.
-   * - **display.preferred_credential_background_image_id**
-     - string
-     - OPTIONAL. Identifier (``id``) of the preferred background image from the `images` array for UI display.
-   * - **display.preferred_credential_background_color_id**
-     - string
-     - OPTIONAL. Identifier (``id``) of the preferred background color for credentials in hexadecimal format (e.g., ``"credential_background_color_1"``).
-   * - **display.colors**
-     - JSON Objects Array
-     - OPTIONAL. Array of predefined colors for UI rendering.
-   * - **display.colors[].id**
-     - string
-     - REQUIRED. Unique identifier for the color definition.
-   * - **display.colors[].hex**
-     - string
-     - REQUIRED. Color value in hexadecimal format (e.g., ``"#003d82"``).
-   * - **display.images**
-     - JSON Objects Array
-     - OPTIONAL. Array of image resources (logos, backgrounds) suggested for display purposes.
-   * - **display.images[].id**
-     - string
-     - REQUIRED. Unique identifier for the image resource.
-   * - **display.images[].image_uri**
-     - string
-     - REQUIRED. URI where the image resource can be retrieved. (Note: May also be named `logo_uri` in examples).
-   * - **display.images[].image_uri#integrity**
-     - string
-     - CONDITIONAL. Cryptographic digest of the image resource for integrity verification. REQUIRED if ``image_uri`` is present. Format: ``{digest_method}-{digest_value}`` (e.g., ``"sha-256-abc123..."``).
 
 AS Registry Example
 """""""""""""""""""
@@ -831,14 +804,14 @@ A non-normative example of Taxonomy structure is given below:
 
 A non-normative example of a localisation bundle output is given below:
 
-    .. code-block:: json
+.. code-block:: json
 
-      {
-        "domain.identity.name": "Identità",
-        "domain.identity.description": "Attestati Elettronici che stabiliscono o verificano l'identità di una persona, compresi i documenti di identità fisici e digitali legalmente riconosciuti dalle leggi nazionali.",
-        "purpose.person_identification.name: "identificazione della persona",
-        "...": "..."
-      }
+  {
+    "domain.identity.name": "Identità",
+    "domain.identity.description": "Attestati Elettronici che stabiliscono o verificano l'identità di una persona, compresi i documenti di identità fisici e digitali legalmente riconosciuti dalle leggi nazionali.",
+    "purpose.person_identification.name: "identificazione della persona",
+    "...": "..."
+  }
 
 Localization bundles MUST be available at the URI specified in the **localization_info.bundles_base_uri** claim of the Digital Credentials Catalog. Each locale bundle MUST be accessible following the naming pattern **{locale_code}.json**, where **{locale_code}** is replaced with the corresponding locale code from the **available_locales** array.
 

@@ -531,194 +531,6 @@ Content-Type: application/json
 </tr>
 </tbody>
 </table>
-<table class="longtable docutils align-default" id="id2">
-<caption><span class="caption-number">Table 7.2 </span><span class="caption-text">Authentic Sources Parameters</span><a class="headerlink" href="#id2" title="Link to this table">¶</a></caption>
-<colgroup>
-<col style="width: 25.0%" />
-<col style="width: 15.0%" />
-<col style="width: 60.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Parameter</strong></p></th>
-<th class="head"><p><strong>Type</strong></p></th>
-<th class="head"><p><strong>Description</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>entity_id</strong></p></td>
-<td><p>string</p></td>
-<td><p>REQUIRED. Unique identifier following the normative schema: <code class="docutils literal notranslate"><span class="pre">https://{organization_domain}[/{optional_path}]</span></code>.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>organization_info</strong></p></td>
-<td><p>JSON object</p></td>
-<td><p>REQUIRED. Legal entity details and organizational metadata.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>organization_info.organization_name</strong></p></td>
-<td><p>string</p></td>
-<td><p>REQUIRED. Legal name of the organization.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>organization_info.organization_type</strong></p></td>
-<td><p>string</p></td>
-<td><p>REQUIRED. Entity classification: <code class="docutils literal notranslate"><span class="pre">&quot;public&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;private&quot;</span></code>.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>organization_info.ipa_code</strong></p></td>
-<td><p>string</p></td>
-<td><p>REQUIRED only for Public AS. IPA registration code for government entities.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>organization_info.legal_identifier</strong></p></td>
-<td><p>string</p></td>
-<td><p>REQUIRED. Legal registration identifier (Fiscal Code/VAT Number, or equivalent national identifier for foreign entities).</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>organization_info.homepage_uri</strong></p></td>
-<td><p>string</p></td>
-<td><p>REQUIRED. URL pointing to the organization's homepage.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>organization_info.contacts</strong></p></td>
-<td><p>String Array</p></td>
-<td><p>REQUIRED. Array of technical/administrative contact email addresses.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>organization_info.policy_uri</strong></p></td>
-<td><p>string</p></td>
-<td><p>REQUIRED. URL to privacy policy document.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>organization_info.tos_uri</strong></p></td>
-<td><p>string</p></td>
-<td><p>REQUIRED only for Private AS. URL to terms of service document.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>organization_info.organization_country</strong></p></td>
-<td><p>string</p></td>
-<td><p>REQUIRED. Two-letter ISO 3166-1 alpha-2 country code of the organization.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>organization_info.logo_uri</strong></p></td>
-<td><p>string</p></td>
-<td><p>OPTIONAL. URL to the organization's logo image.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>organization_info.logo_uri#integrity</strong></p></td>
-<td><p>string</p></td>
-<td><p>CONDITIONAL. Cryptographic digest of the logo image resource for integrity verification. REQUIRED if <code class="docutils literal notranslate"><span class="pre">image_uri</span></code> is present. Format: <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;sha-256-abc123...&quot;</span></code>).</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>organization_info.service_documentation</strong></p></td>
-<td><p>string</p></td>
-<td><p>OPTIONAL. URL pointing to the Authentic Source service documentation.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>organization_info.user_information</strong></p></td>
-<td><p>string</p></td>
-<td><p>OPTIONAL. A string containing human-readable information about the Digital Credential relevant to the User. This string MUST be provided by the Authentic Source to the Trust Anchor during onboarding and MUST be formatted using Markdown format as defined in <span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7763.html"><strong>RFC 7763</strong></a>. The Markdown formatting can be plain text or a combination of text and links. For example, if the Authentic Source's database only contains the data required for Digital Credential attributes registered <em>after</em> a specific date, this information MUST be conveyed to the Trust Anchor in this Markdown string.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>data_capabilities</strong></p></td>
-<td><p>JSON Objects Array</p></td>
-<td><p>REQUIRED. Array containing data capability specifications.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].dataset_id</strong></p></td>
-<td><p>string</p></td>
-<td><p>REQUIRED. The unique identifier of the dataset within the scope of the Authentic Source, which MAY be used as a query parameter for the <code class="docutils literal notranslate"><span class="pre">GetAttributeClaims</span></code> service.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].data_origin</strong></p></td>
-<td><p>string</p></td>
-<td><p>OPTIONAL. Human-readable name of the specific data origin or department providing the data.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].domains</strong></p></td>
-<td><p>String Array</p></td>
-<td><p>REQUIRED. Taxonomy domain (e.g., <code class="docutils literal notranslate"><span class="pre">[&quot;AUTHORIZATION&quot;]</span></code>, <code class="docutils literal notranslate"><span class="pre">[&quot;FINANCIAL&quot;]</span></code>).</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].intended_purposes</strong></p></td>
-<td><p>String Array</p></td>
-<td><p>REQUIRED. Business purposes served (e.g., <code class="docutils literal notranslate"><span class="pre">[&quot;driving-authorization&quot;,</span> <span class="pre">&quot;identity-verification&quot;]</span></code>).</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].available_claims</strong></p></td>
-<td><p>String Array</p></td>
-<td><p>REQUIRED. Claims available from this data capability.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].available_claims.order</strong></p></td>
-<td><p>number</p></td>
-<td><p>REQUIRED. Defines the order in which the information would be shown.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].available_claims.mandatory</strong></p></td>
-<td><p>boolean</p></td>
-<td><p>REQUIRED. Defines if a claim is always available or not.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].integration_method</strong></p></td>
-<td><p>string</p></td>
-<td><p>REQUIRED. Authorization framework used for data access. MUST be <code class="docutils literal notranslate"><span class="pre">&quot;pdnd&quot;</span></code> for Public AS. Private AS MAY use other authorization frameworks such as: <code class="docutils literal notranslate"><span class="pre">&quot;oauth2&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;api_key&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;mtls&quot;</span></code>, etc.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].integration_endpoint</strong></p></td>
-<td><p>string</p></td>
-<td><p>REQUIRED. Service access point (PDND endpoint for Public AS, API endpoint for Private AS).</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].api_specification</strong></p></td>
-<td><p>string</p></td>
-<td><p>REQUIRED. URL to <a class="reference external" href="https://spec.openapis.org/oas/v3.0.3">OAS3</a> specification document for this data capability.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].data_provision</strong></p></td>
-<td><p>JSON object</p></td>
-<td><p>OPTIONAL. Data provision capabilities and timing specifications.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].data_provision.immediate_flow</strong></p></td>
-<td><p>boolean</p></td>
-<td><p>REQUIRED. Indicates if the Authentic Source supports immediate data provision.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].data_provision.deferred_flow</strong></p></td>
-<td><p>boolean</p></td>
-<td><p>REQUIRED. Indicates if the Authentic Source supports deferred data provision.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].data_provision.max_response_time_minutes</strong></p></td>
-<td><p>integer</p></td>
-<td><p>CONDITIONAL. Maximum time in minutes for the Authentic Source to respond to a deferred data provision request. REQUIRED if <code class="docutils literal notranslate"><span class="pre">deferred_flow</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].data_provision.notification_methods</strong></p></td>
-<td><p>String Array</p></td>
-<td><p>CONDITIONAL. Array of notification methods supported by the Authentic Source for deferred data provision, such as <code class="docutils literal notranslate"><span class="pre">&quot;push&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;poll&quot;</span></code>. REQUIRED if <code class="docutils literal notranslate"><span class="pre">deferred_flow</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].update_frequency</strong></p></td>
-<td><p>string</p></td>
-<td><p>OPTIONAL. Indicates how frequently the Authentic Source updates its data. Possible values: <code class="docutils literal notranslate"><span class="pre">&quot;real_time&quot;</span></code> (near real-time updates, typically within minutes), <code class="docutils literal notranslate"><span class="pre">&quot;daily&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;weekly&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;monthly&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;on_demand&quot;</span></code>.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>display</strong></p></td>
-<td><p>JSON object</p></td>
-<td><p>OPTIONAL. Visual branding suggestions that Authentic Sources can provide for credentials using their data.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>display.preferred_logo</strong></p></td>
-<td><p>string</p></td>
-<td><p>OPTIONAL. Identifier (<code class="docutils literal notranslate"><span class="pre">id</span></code>) of the preferred logo from the <cite>images</cite> array for UI display.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>display.preferred_credential_background_image_id</strong></p></td>
-<td><p>string</p></td>
-<td><p>OPTIONAL. Identifier (<code class="docutils literal notranslate"><span class="pre">id</span></code>) of the preferred background image from the <cite>images</cite> array for UI display.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>display.preferred_credential_background_color_id</strong></p></td>
-<td><p>string</p></td>
-<td><p>OPTIONAL. Identifier (<code class="docutils literal notranslate"><span class="pre">id</span></code>) of the preferred background color for credentials in hexadecimal format (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;credential_background_color_1&quot;</span></code>).</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>display.colors</strong></p></td>
-<td><p>JSON Objects Array</p></td>
-<td><p>OPTIONAL. Array of predefined colors for UI rendering.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>display.colors[].id</strong></p></td>
-<td><p>string</p></td>
-<td><p>REQUIRED. Unique identifier for the color definition.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>display.colors[].hex</strong></p></td>
-<td><p>string</p></td>
-<td><p>REQUIRED. Color value in hexadecimal format (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;#003d82&quot;</span></code>).</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>display.images</strong></p></td>
-<td><p>JSON Objects Array</p></td>
-<td><p>OPTIONAL. Array of image resources (logos, backgrounds) suggested for display purposes.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>display.images[].id</strong></p></td>
-<td><p>string</p></td>
-<td><p>REQUIRED. Unique identifier for the image resource.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>display.images[].image_uri</strong></p></td>
-<td><p>string</p></td>
-<td><p>REQUIRED. URI where the image resource can be retrieved. (Note: May also be named <cite>logo_uri</cite> in examples).</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>display.images[].image_uri#integrity</strong></p></td>
-<td><p>string</p></td>
-<td><p>CONDITIONAL. Cryptographic digest of the image resource for integrity verification. REQUIRED if <code class="docutils literal notranslate"><span class="pre">image_uri</span></code> is present. Format: <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;sha-256-abc123...&quot;</span></code>).</p></td>
-</tr>
-</tbody>
-</table>
 </section>
 <section id="as-registry-example">
 <h4><span class="section-number">7.4.3.3. </span>AS Registry Example<a class="headerlink" href="#as-registry-example" title="Link to this heading">¶</a></h4>
@@ -739,6 +551,8 @@ Content-Type: application/json
 <span class="w">                </span><span class="nt">&quot;policy_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/transport/privacy-policy&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/assets/transport-logo.svg&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">&quot;logo_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;logo_extended_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/assets/transport-logo-extended.svg&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;logo_extended_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">&quot;service_documentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://docs.gov.example/transport/api-docs&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                    </span><span class="s2">&quot;registry@gov.example&quot;</span><span class="p">,</span>
@@ -829,39 +643,7 @@ Content-Type: application/json
 <span class="w">                    </span><span class="nt">&quot;user_information_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;authentic_source1.dataset1.userinfo&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;update_frequency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;real_time&quot;</span>
 <span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;preferred_logo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;logo_standard&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;preferred_credential_background_image_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;credential_background&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;preferred_credential_background_color_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;credential_background_color_1&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;colors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;credential_background_color_1&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;hex&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#003d82&quot;</span>
-<span class="w">                    </span><span class="p">},</span>
-<span class="w">                    </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;credential_background_color_2&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;hex&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#003d82&quot;</span>
-<span class="w">                    </span><span class="p">}</span>
-<span class="w">                </span><span class="p">],</span>
-<span class="w">                </span><span class="nt">&quot;images&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;logo_standard&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;image_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/assets/transport-logo.svg&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;image_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3&quot;</span>
-<span class="w">                    </span><span class="p">},</span>
-<span class="w">                    </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;logo_pictogram&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;image_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/assets/transport-logo-compact.svg&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;image_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3&quot;</span>
-<span class="w">                    </span><span class="p">},</span>
-<span class="w">                    </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;credential_background&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;image_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/assets/backgroud_default.svg&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;image_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3&quot;</span>
-<span class="w">                    </span><span class="p">}</span>
-<span class="w">                </span><span class="p">]</span>
-<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="p">]</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">&quot;entity_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.bank.example/auth-source&quot;</span><span class="p">,</span>
@@ -878,6 +660,7 @@ Content-Type: application/json
 <span class="w">                </span><span class="nt">&quot;tos_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.bank.example/terms-of-service&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">&quot;organization_country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IT&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.bank.example/assets/logo.svg&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;logo_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">&quot;service_documentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://docs.bank.example/psd2-api&quot;</span>
 <span class="w">            </span><span class="p">},</span>
 <span class="w">            </span><span class="nt">&quot;data_capabilities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
@@ -1099,19 +882,19 @@ Content-Type: application/json
 <li><p><strong>Authentic Sources</strong>: The Entities that hold the original data that is attested in the Digital Credentials. They provide support to Issuers in registering the Digital Credentials in the Catalog.</p></li>
 </ul>
 </div></blockquote>
-<figure class="align-default" id="id3">
+<figure class="align-default" id="id2">
 <span id="fig-catalog-svg"></span><p class="plantuml">
 <object data="_images/plantuml-cb8c3458016f41895f13509eaa8af4d2e34009e8.svg" type="image/svg+xml" style="width:99%">
 <a href="_images/plantuml-cb8c3458016f41895f13509eaa8af4d2e34009e8.png"><img src="_images/plantuml-cb8c3458016f41895f13509eaa8af4d2e34009e8.png" alt="The figure illustrates the Digital Credential Entities." style="width: 99.0%"/></a>
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 7.1 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/ZLJ1Rkis4BpxAxP6WQP00X-QtjeWgPEsFXGmuXGz6ZIvbeb8fCfTEbM__YrDELAUb6ST34khuSnmESjxOXKuLYKysiAoAc4PqA1ZcnwL57mH4Pwam1Pfzfrrkem6uPVbxM9vkrtwglPEy7UpsG_mY7lh43RhvzNBqwO7vbWh4tvQQ5zLtjsDVDbxnpVg3SbNUFFpGcDWkxTQCKv06p6wKpG5MdhzEW4M2GDDyUcBAJ1XEsAO07p5PgAx2J1hjbe5Cm69_-c3SWLkLSbJ-etqohwUW7nJPOaNAHVM4LkER5CuPhFtL5tfSmIlOJvCA7KHdGlW6GjB79hql1H4471eQ-3t85v07PKjrQv46A6JXTzJ7IpZh_DpfkO_Yg4r1lBkAlLTkF-MlvE6PVi_EeAtWmTZINivP53EYEg_4OalQIG-uU-soo4IFpXzy4dd9Rr1VarwwVUNSgf0EgbKoZgM7m4Vy9i3t1ULY8dcfY76wefYBT6qv4FpcpUD26ow2gJIITGxopxGkPig7HJK1qK8w2W6wmeWrFB0pScQQ1sLRlgwlP7kz2rHn42Zfmkh_34vU8WiJP1k6y3sBf9DAuP4SF4isq7eP0EMZNXUgv2OKdHo0ThAF9_ogQ_l4GJsK2Wf1R1kxqELsw1sFZBeSUN-O7NoUIhMmH-joRl_vrI1jjJkMMia6dgmZh48Yh4lcgeUCl471xdKQIlfP5gZDpu64KX2vnAqjQJ-foyD-22DTTBOD0sWc54uZ6XTx7Wtq6c0fBqVijrjg8lqTPVd7A6uAoqTiflVHQMD7JfJUm4Ahz0E4_nnXbQEPQ5c6LBBX_4rVJkVXZtuT1gPe8jjVs6-VZ2CzGQiQvSE-tyc6pSxo6fVyezFuZXc8TCDizVnTP7pO4_BzatlmjG3hdmV3XZJw12qaLuvOkKqGfq11dPDNhvzR0dw3bREs82Qo-RzHgN-bKfVsRYNECIg_080">Entity-Relationship diagram of Digital Credential Catalog.</a></span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 7.1 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/ZLJ1Rkis4BpxAxP6WQP00X-QtjeWgPEsFXGmuXGz6ZIvbeb8fCfTEbM__YrDELAUb6ST34khuSnmESjxOXKuLYKysiAoAc4PqA1ZcnwL57mH4Pwam1Pfzfrrkem6uPVbxM9vkrtwglPEy7UpsG_mY7lh43RhvzNBqwO7vbWh4tvQQ5zLtjsDVDbxnpVg3SbNUFFpGcDWkxTQCKv06p6wKpG5MdhzEW4M2GDDyUcBAJ1XEsAO07p5PgAx2J1hjbe5Cm69_-c3SWLkLSbJ-etqohwUW7nJPOaNAHVM4LkER5CuPhFtL5tfSmIlOJvCA7KHdGlW6GjB79hql1H4471eQ-3t85v07PKjrQv46A6JXTzJ7IpZh_DpfkO_Yg4r1lBkAlLTkF-MlvE6PVi_EeAtWmTZINivP53EYEg_4OalQIG-uU-soo4IFpXzy4dd9Rr1VarwwVUNSgf0EgbKoZgM7m4Vy9i3t1ULY8dcfY76wefYBT6qv4FpcpUD26ow2gJIITGxopxGkPig7HJK1qK8w2W6wmeWrFB0pScQQ1sLRlgwlP7kz2rHn42Zfmkh_34vU8WiJP1k6y3sBf9DAuP4SF4isq7eP0EMZNXUgv2OKdHo0ThAF9_ogQ_l4GJsK2Wf1R1kxqELsw1sFZBeSUN-O7NoUIhMmH-joRl_vrI1jjJkMMia6dgmZh48Yh4lcgeUCl471xdKQIlfP5gZDpu64KX2vnAqjQJ-foyD-22DTTBOD0sWc54uZ6XTx7Wtq6c0fBqVijrjg8lqTPVd7A6uAoqTiflVHQMD7JfJUm4Ahz0E4_nnXbQEPQ5c6LBBX_4rVJkVXZtuT1gPe8jjVs6-VZ2CzGQiQvSE-tyc6pSxo6fVyezFuZXc8TCDizVnTP7pO4_BzatlmjG3hdmV3XZJw12qaLuvOkKqGfq11dPDNhvzR0dw3bREs82Qo-RzHgN-bKfVsRYNECIg_080">Entity-Relationship diagram of Digital Credential Catalog.</a></span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>The following table summarizes the main information that MUST be provided by the Digital Credential Catalog:</p>
-<table class="longtable docutils align-default" id="id4">
-<caption><span class="caption-number">Table 7.3 </span><span class="caption-text">Digital Credential Catalog - Main information</span><a class="headerlink" href="#id4" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id3">
+<caption><span class="caption-number">Table 7.2 </span><span class="caption-text">Digital Credential Catalog - Main information</span><a class="headerlink" href="#id3" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 30.0%" />
 <col style="width: 70.0%" />
@@ -1168,8 +951,8 @@ Content-Type: application/json
 <section id="digital-credentials-hierarchy">
 <h3><span class="section-number">7.6.1. </span>Digital Credentials Hierarchy<a class="headerlink" href="#digital-credentials-hierarchy" title="Link to this heading">¶</a></h3>
 <p>Digital Credentials recognized within the IT-Wallet ecosystem are hierarchically classified and standardized according to the following main domains and purposes. Additional purposes MAY be added as the IT-Wallet ecosystem grows.</p>
-<span id="it-wallet-dc-domains"></span><table class="longtable docutils align-default" id="id5">
-<caption><span class="caption-number">Table 7.4 </span><span class="caption-text">Digital Credential Domains and Purposes</span><a class="headerlink" href="#id5" title="Link to this table">¶</a></caption>
+<span id="it-wallet-dc-domains"></span><table class="longtable docutils align-default" id="id4">
+<caption><span class="caption-number">Table 7.3 </span><span class="caption-text">Digital Credential Domains and Purposes</span><a class="headerlink" href="#id4" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 30.0%" />
@@ -1320,8 +1103,8 @@ Content-Type: application/json
 </tbody>
 </table>
 <p>The JWS payload contains the following parameters:</p>
-<table class="longtable docutils align-default" id="id6">
-<caption><span class="caption-number">Table 7.5 </span><span class="caption-text">First-level Fields of the Digital Credentials Catalog</span><a class="headerlink" href="#id6" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id5">
+<caption><span class="caption-number">Table 7.4 </span><span class="caption-text">First-level Fields of the Digital Credentials Catalog</span><a class="headerlink" href="#id5" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 30.0%" />
 <col style="width: 70.0%" />
@@ -1350,8 +1133,8 @@ Content-Type: application/json
 </tbody>
 </table>
 <p>Each element of the <code class="docutils literal notranslate"><span class="pre">credentials</span></code> array contains at least the following information:</p>
-<table class="longtable docutils align-default" id="id7">
-<caption><span class="caption-number">Table 7.6 </span><span class="caption-text">First-level Fields of Each Credential Entry</span><a class="headerlink" href="#id7" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id6">
+<caption><span class="caption-number">Table 7.5 </span><span class="caption-text">First-level Fields of Each Credential Entry</span><a class="headerlink" href="#id6" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 30.0%" />
 <col style="width: 70.0%" />
@@ -1819,8 +1602,7 @@ Content-Type: application/json
 </div></blockquote>
 </div>
 <p>A non-normative example of a localisation bundle output is given below:</p>
-<blockquote>
-<div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;domain.identity.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Identità&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;domain.identity.description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Attestati Elettronici che stabiliscono o verificano l&#39;identità di una persona, compresi i documenti di identità fisici e digitali legalmente riconosciuti dalle leggi nazionali.&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="s2">&quot;purpose.person_identification.name: &quot;</span><span class="err">ide</span><span class="kc">nt</span><span class="err">i</span><span class="kc">f</span><span class="err">icazio</span><span class="kc">ne</span><span class="w"> </span><span class="err">della</span><span class="w"> </span><span class="err">perso</span><span class="kc">na</span><span class="s2">&quot;,</span>
@@ -1828,7 +1610,6 @@ Content-Type: application/json
 <span class="err">}</span>
 </pre></div>
 </div>
-</div></blockquote>
 <p>Localization bundles MUST be available at the URI specified in the <strong>localization_info.bundles_base_uri</strong> claim of the Digital Credentials Catalog. Each locale bundle MUST be accessible following the naming pattern <strong>{locale_code}.json</strong>, where <strong>{locale_code}</strong> is replaced with the corresponding locale code from the <strong>available_locales</strong> array.</p>
 <p>A non-normative example of the Italian localization URI for the bundle would be <strong>https://trust-registry.eid-wallet.example.it/.well-known/taxonomy/it.json</strong>.</p>
 <p>Entities SHOULD verify the integrity of downloaded localization bundles using the digest method and values specified in the <strong>localization_info.integrity</strong> claim. This ensures that the localization data has not been tampered with during transmission.</p>
@@ -1845,8 +1626,8 @@ Content-Type: application/json
 </ol>
 <p><strong>Schema Registry Structure and Access:</strong></p>
 <p>The Schema Registry is accessible via the <code class="docutils literal notranslate"><span class="pre">.well-known/it-wallet-registry</span></code> discovery endpoint under the <cite>schema_registry</cite> field. It allows for the discovery of schema URIs and their cryptographic integrity checks.</p>
-<table class="longtable docutils align-default" id="id8">
-<caption><span class="caption-number">Table 7.7 </span><span class="caption-text">First-level Fields of the Schema Registry</span><a class="headerlink" href="#id8" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id7">
+<caption><span class="caption-number">Table 7.6 </span><span class="caption-text">First-level Fields of the Schema Registry</span><a class="headerlink" href="#id7" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 30.0%" />
 <col style="width: 70.0%" />
@@ -1868,8 +1649,8 @@ Content-Type: application/json
 </tr>
 </tbody>
 </table>
-<table class="docutils align-default" id="id9">
-<caption><span class="caption-number">Table 7.8 </span><span class="caption-text">Schema Definition Parameters</span><a class="headerlink" href="#id9" title="Link to this table">¶</a></caption>
+<table class="docutils align-default" id="id8">
+<caption><span class="caption-number">Table 7.7 </span><span class="caption-text">Schema Definition Parameters</span><a class="headerlink" href="#id8" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25.0%" />
 <col style="width: 75.0%" />

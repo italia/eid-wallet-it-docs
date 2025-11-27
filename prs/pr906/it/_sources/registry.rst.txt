@@ -291,10 +291,16 @@ Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciasc
      - RICHIESTO. Codice paese a due lettere ISO 3166-1 alpha-2 dell'organizzazione.
    * - **organization_info.logo_uri**
      - string
-     - OPZIONALE. URL all'immagine del logo dell'organizzazione.
+     - RICHIESTO. URL all'immagine del logo dell'organizzazione.
    * - **organization_info.logo_uri#integrity**
      - string
-     - CONDIZIONALE. Digest crittografico della risorsa immagine del logo per la verifica dell'integrità. RICHIESTO se ``image_uri`` è presente. Formato: ``{digest_method}-{digest_value}`` (es., ``"sha-256-abc123..."``).
+     - RICHIESTO. Digest crittografico della risorsa immagine del logo per la verifica dell'integrità. Formato: ``{digest_method}-{digest_value}`` (es., ``"sha-256-abc123..."``).
+   * - **organization_info.logo_uri_extended**
+     - string
+     - RICHIESTO. URL all'immagine del logo esteso dell'organizzazione.
+   * - **organization_info.logo_uri_extended#integrity**
+     - string
+     - CONDIZIONALE. Digest crittografico della risorsa immagine del logo esteso per la verifica dell'integrità. RICHIESTO se ``logo_uri_extended`` è presente. Formato: ``{digest_method}-{digest_value}`` (es., ``"sha-256-abc123..."``).
    * - **organization_info.service_documentation**
      - string
      - OPZIONALE. URL che punta alla documentazione del servizio della Fonte Autentica.
