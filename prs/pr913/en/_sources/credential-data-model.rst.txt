@@ -164,7 +164,7 @@ The JWT payload contains the following claims. Unless otherwise specifed, the fo
       - OPTIONAL. REQUIRED only if the Digital Credential is long-lived. *JSON object*. Format-encoded data identifier `location_status` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. It MUST contain either the JSON member `status_assertion` or `status_list`.
       - Section 3.2.2.2 `SD-JWT-VC`_ and Section 11 `OAUTH-STATUS-ASSERTION`_.
     * - **cnf**
-      - REQUIRED. *JSON object*. Format-encoded data identifier `cryptographic_binding` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`, containing the proof-of-possession key materials. By including a **cnf** (confirmation) claim in a JWT, the Issuer of the JWT declares that the Holder is in control of the private key related to the public one defined in the **cnf** parameter. The recipient MUST cryptographically verify that the Holder is in control of that key.
+      - OPTIONAL. *JSON object*. Format-encoded data identifier `cryptographic_binding` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`, containing the proof-of-possession key materials. By including a **cnf** (confirmation) claim in a JWT, the Issuer of the JWT declares that the Holder is in control of the private key related to the public one defined in the **cnf** parameter. The recipient MUST cryptographically verify that the Holder is in control of that key.
       - `[RFC7800, Section 3.1] <https://www.iana.org/go/rfc7800>`_ and Section 3.2.2.2 `SD-JWT-VC`_.
     * - **vct**
       - REQUIRED. *String*. Format-encoded data identifier `credential_type_identifier` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. Credential type value MUST be a URN and it MUST be set using one of the values obtained from the Credential Issuer metadata, matching of the literals included in this URN MUST be performed in a case-sensitive manner. It is the identifier of the SD-JWT VC type and it MUST be set with a collision-resistant value as defined in Section 2 of :rfc:`7515`. It MUST contain also the number of version of the Credential type. Unless otherwhise specified by `EIDAS-ARF`_ and EUDI Rulebooks, the `vct` SHOULD follow a structure like `urn:it-wallet:{credential_type}:{credential_type_version}`. 
@@ -244,6 +244,7 @@ In addition to the mandatory metadata attributes defined in :ref:`SD-JWT Paramet
   - **date_of_expiry**
   - **sub** (domestic extension)
   - **iat**
+  - **cnf**
   - **verification** (domestic extension)
 
 PID Non-Normative Examples
