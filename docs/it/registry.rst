@@ -589,7 +589,7 @@ Il contenuto del Catalogo delle Credenziali Digitali è protetto in un JWS che c
      - RICHIESTO. DEVE essere impostato a ``JOSE``.
      - [:rfc:`7515` Sezione 4.1.9].
    * - **alg**
-     - RICHIESTO. Un identificatore di algoritmo di firma digitale come da registro IANA "JSON Web Signature and Encryption Algorithms". DEVE essere uno degli algoritmi supportati nella Sezione :ref:`Algoritmi Crittografici <algorithms:Cryptographic Algorithms>` e NON DEVE essere impostato a ``none`` o con un identificatore di algoritmo simmetrico (MAC).
+     - RICHIESTO. Un identificatore di algoritmo di firma digitale come da registro IANA "JSON Web Signature and Encryption Algorithms". DEVE essere uno degli algoritmi supportati nella Sezione :ref:`algorithms:Algoritmi Crittografici` e NON DEVE essere impostato a ``none`` o con un identificatore di algoritmo simmetrico (MAC).
      - [:rfc:`7515` Sezione 4.1.1].
    * - **kid**
      - RICHIESTO. Identificatore univoco della chiave pubblica.
