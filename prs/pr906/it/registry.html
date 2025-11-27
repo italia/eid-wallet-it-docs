@@ -169,8 +169,7 @@
 <section id="panoramica-dell-architettura-di-registro">
 <h2><span class="section-number">7.1. </span>Panoramica dell'Architettura di Registro<a class="headerlink" href="#panoramica-dell-architettura-di-registro" title="Link to this heading">¶</a></h2>
 <p>Il sistema di registro IT-Wallet comprende sei componenti principali:</p>
-<blockquote>
-<div><ol class="arabic simple">
+<ol class="arabic simple">
 <li><p><strong>Registro dei Claims</strong>: Definizioni semantiche standardizzate per attributi individuali delle credenziali, tipi di dati e regole di validazione.</p></li>
 <li><p><strong>Registro delle Fonti Autentiche (AS)</strong>: Catalogo dei fornitori di dati registrati con le loro capacità dichiarate e claims disponibili.</p></li>
 <li><p><strong>Registro di Federazione</strong>: Elenco autorevole delle entità fidate che partecipano alla federazione con le loro configurazioni tecniche.</p></li>
@@ -178,26 +177,21 @@
 <li><p><strong>Registro degli Schema</strong>: Elenco autorevole degli schemi di Credenziali.</p></li>
 <li><p><strong>Tassonomia</strong>: Sistema di classificazione gerarchico che organizza le credenziali per dominio e scopo.</p></li>
 </ol>
-</div></blockquote>
 <p>Questi componenti di registro sono interconnessi e mantenuti dall'Organismo di Supervisione per garantire coerenza, sicurezza e conformità normativa attraverso l'ecosistema.</p>
 </section>
 <section id="endpoint-di-scoperta-del-registro">
 <h2><span class="section-number">7.2. </span>Endpoint di Scoperta del Registro<a class="headerlink" href="#endpoint-di-scoperta-del-registro" title="Link to this heading">¶</a></h2>
 <p>Il Trust Anchor DEVE fornire un meccanismo di scoperta per tutti i componenti di registro attraverso endpoint <em>well-known</em> standardizzati che forniscono metadati e informazioni di scoperta API REST per gestire operazioni complesse come paginazione e filtraggio.</p>
 <p>Il Trust Anchor DEVE pubblicare metadati di scoperta del registro all'endpoint <code class="docutils literal notranslate"><span class="pre">.well-known/it-wallet-registry</span></code> con supporto per la negoziazione del contenuto:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><p><strong>Content-Type Predefinito</strong>: <code class="docutils literal notranslate"><span class="pre">application/jwt</span></code> (JWT firmato che garantisce autenticità e integrità)</p></li>
 <li><p><strong>Content-Type Alternativo</strong>: <code class="docutils literal notranslate"><span class="pre">application/json</span></code> (JSON semplice per scopi di sviluppo/debug)</p></li>
 </ul>
-</div></blockquote>
 <p>Inoltre, il sistema di registro IT-Wallet DEVE usare due pattern di accesso distinti:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><p><strong>API di Registro Dati</strong>: DEVONO supportare capacità di paginazione e filtraggio.</p></li>
 <li><p><strong>Infrastruttura di Fiducia della Federazione</strong>: come definito in <span class="xref std std-ref">trust-infrastructure:The Infrastructure of Trust</span>.</p></li>
 </ul>
-</div></blockquote>
 <p>Di seguito è fornito un esempio non normativo.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/.well-known/it-wallet-registry</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="o">:</span> <span class="l">trust-anchor.eid-wallet.example.it</span>
@@ -1243,10 +1237,14 @@ Content-Type: application/json
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Servizi Governativi</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;vct_values&quot;:</span> <span class="pre">[&quot;urn:eudi:pid:it:1&quot;]</span></code> per la verifica dell'identità specifica del PID.</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
 <li><p><strong>Controlli di Polizia</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;docType&quot;:</span> <span class="pre">&quot;org.iso.18013.5.1.mDL&quot;</span></code> per la verifica della patente di guida.</p></li>
 <li><p><strong>KYC Bancario</strong>: Tipi di credenziali specifici richiesti dalle normative finanziarie.</p></li>
 <li><p><strong>Servizi Sanitari</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;vct_values&quot;:</span> <span class="pre">[&quot;urn:eudi:european_disability_card:it:1&quot;]</span></code> per l'accesso ai benefici per disabilità conforme all'UE.</p></li>
 </ul>
+</div></blockquote>
 </div></blockquote>
 <ol class="arabic simple" start="2">
 <li><p><strong>Scenari Credential-Agnostic</strong> (Tipici per Business Privato): Le RP richiedono claims specifici indipendentemente dalla fonte della credenziale per efficienza operativa, come:</p></li>
@@ -1594,9 +1592,7 @@ Content-Type: application/json
 </div></blockquote>
 </div>
 <p>Un esempio non normativo di output di un bundle di localizzazione è fornito di seguito:</p>
-<blockquote>
-<div><blockquote>
-<div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;driving_license.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Patente di Guida&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;driving_license.description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Patente di guida ufficiale valida in Italia e nell&#39;UE&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;purpose.driving_authorization.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Abilitazione alla guida&quot;</span><span class="p">,</span>
@@ -1606,13 +1602,9 @@ Content-Type: application/json
 <span class="p">}</span>
 </pre></div>
 </div>
-</div></blockquote>
 <p>I bundle di localizzazione DEVONO essere disponibili all'URI specificato nell'attibuto <strong>localization_info.bundles_base_uri</strong> del Catalogo degli Attestati Elettronici. Ogni bundle locale DEVE essere accessibile seguendo il pattern di denominazione <strong>{locale_code}.json</strong>, dove <strong>{locale_code}</strong> è sostituito con il codice locale corrispondente dall'array <strong>available_locales</strong>.</p>
-</div></blockquote>
 <p>Un esempio non normativo dell'URI di localizzazione italiana per il bundle mDL sarebbe <strong>https://trust-registry.eid-wallet.example.it/.well-known/l10n/mdl/it.json</strong>.</p>
-<blockquote>
-<div><p>Le Entità DOVREBBERO verificare l'integrità dei bundle di localizzazione scaricati utilizzando il metodo di digest e i valori specificati nel claim <strong>localization_info.integrity</strong>. Questo garantisce che i dati di localizzazione non siano stati manomessi durante la trasmissione.</p>
-</div></blockquote>
+<p>Le Entità DOVREBBERO verificare l'integrità dei bundle di localizzazione scaricati utilizzando il metodo di digest e i valori specificati nel claim <strong>localization_info.integrity</strong>. Questo garantisce che i dati di localizzazione non siano stati manomessi durante la trasmissione.</p>
 </section>
 <section id="decentralizzazione-delle-informazioni-di-visualizzazione-e-dei-claims">
 <h3><span class="section-number">7.6.3. </span>Decentralizzazione delle Informazioni di Visualizzazione e dei Claims<a class="headerlink" href="#decentralizzazione-delle-informazioni-di-visualizzazione-e-dei-claims" title="Link to this heading">¶</a></h3>
@@ -1963,13 +1955,16 @@ I principali Percorsi di utilizzo illustrano di seguito le interazioni con l'Inf
 <p>Il percorso di utilizzo <em>Navigazione del Catalogo</em> supporta gli Utenti (sia utenti umani tramite un'<strong>Istanza Wallet</strong> che sistemi automatizzati come <strong>Relying Parties</strong> o portali web) nella scoperta e selezione delle Credenziali Digitali disponibili.</p>
 <ol class="arabic simple">
 <li><p><strong>Accesso all'Endpoint di Scoperta</strong>: L'entità (es., un Fornitore di Wallet o portale informativo) accede all'<cite>Endpoint di Scoperta del Registro</cite> (<code class="docutils literal notranslate"><span class="pre">.well-known/it-wallet-registry</span></code>) per ottenere l'URI del <strong>Catalogo delle Credenziali Digitali</strong>.</p></li>
-<li><p><strong>Navigazione e Selezione</strong>:</p>
-<ul class="simple">
+<li><p><strong>Navigazione e Selezione</strong>:</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
 <li><p><strong>Scoperta delle Credenziali</strong>: L'entità naviga l'elenco delle Credenziali (campo <code class="docutils literal notranslate"><span class="pre">credentials</span></code>) per identificare tipi di Credenziali rilevanti (es., <code class="docutils literal notranslate"><span class="pre">pid</span></code>, <code class="docutils literal notranslate"><span class="pre">driving_license</span></code>).</p></li>
 <li><p><strong>Metadati dell'Emittente</strong>: L'entità estrae l'<strong>Identificatore dell'Emittente</strong> (<cite>entity_id</cite> all'interno del campo <cite>issuers</cite>) associato alla Credenziale desiderata.</p></li>
 <li><p><strong>Consultazione dei Dettagli</strong>: Per ottenere informazioni complete e requisiti tecnici specifici, l'entità accede all'<strong>Entity Configuration</strong> (Metadati dell'Emittente) usando l'identificatore recuperato.</p></li>
 </ul>
-</li>
+</div></blockquote>
+<ol class="arabic simple" start="3">
 <li><p><strong>Azione Finale</strong>: L'entità può quindi usare i metadati per visualizzare le informazioni del catalogo a un Utente (o usare le informazioni in altro modo).</p></li>
 </ol>
 </section>
@@ -1978,18 +1973,24 @@ I principali Percorsi di utilizzo illustrano di seguito le interazioni con l'Inf
 <p>Questo percorso definisce come un Emittente di Credenziali usa l'Infrastruttura di Registro per preparare ed emettere una Credenziale Digitale conforme.</p>
 <ol class="arabic simple">
 <li><p><strong>Identificazione dei Requisiti</strong>: Il CI consulta il <strong>Catalogo delle Credenziali Digitali</strong> per i requisiti tecnici del tipo di Credenziale da emettere (es., <code class="docutils literal notranslate"><span class="pre">max_validity_days</span></code>, <code class="docutils literal notranslate"><span class="pre">min_loa</span></code>).</p></li>
-<li><p><strong>Risoluzione dello Schema e dei Claims</strong>:</p>
-<ul class="simple">
+<li><p><strong>Risoluzione dello Schema e dei Claims</strong>:</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
 <li><p>Il CI consulta il <strong>Registro degli Schema</strong> per recuperare la specifica tecnica del formato e dello schema (es., JSON Schema per SD-JWT) richiesto dal Catalogo, garantendo validità e integrità tramite l'hash (<cite>schema_uri#integrity</cite>).</p></li>
 <li><p>Il CI accede al <strong>Registro dei Claims</strong> per recuperare le definizioni semantiche standardizzate e i formati dati (tipi di dati) degli attributi necessari (claims).</p></li>
 </ul>
-</li>
-<li><p><strong>Recupero dei Dati Autentici</strong>:</p>
-<ul class="simple">
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p><strong>Recupero dei Dati Autentici</strong>:</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
 <li><p>Il CI consulta il <strong>Registro delle Fonti Autentiche (AS)</strong> per identificare la <strong>Fonte Autentica</strong> (AS) autorizzata per il dataset richiesto. Il Registro AS fornisce l'<code class="docutils literal notranslate"><span class="pre">entity_id</span></code> dell'AS e i dettagli tecnici dell'interfaccia (<cite>integration_endpoint</cite>, <cite>integration_method</cite>).</p></li>
 <li><p>Il CI consulta la specifica dell'endpoint AS per implementare l'integrazione necessaria per recuperare i dati dell'Utente richiesti per popolare la Credenziale Digitale.</p></li>
 </ul>
-</li>
+</div></blockquote>
+<ol class="arabic simple" start="4">
 <li><p><strong>Emissione della Credenziale</strong>: Il CI usa i dati recuperati, gli schemi validati e i formati specificati per generare e firmare la Credenziale Digitale nel formato corretto (es., SD-JWT o mDOC).</p></li>
 </ol>
 </section>
@@ -1997,27 +1998,36 @@ I principali Percorsi di utilizzo illustrano di seguito le interazioni con l'Inf
 <h3><span class="section-number">7.10.3. </span>Presentazione e Verifica delle Credenziali<a class="headerlink" href="#presentazione-e-verifica-delle-credenziali" title="Link to this heading">¶</a></h3>
 <p>Questo percorso descrive come un'<strong>Istanza Wallet</strong> e una <strong>Relying Party (RP)</strong> interagiscono con l'Infrastruttura di Registro quando una Credenziale Digitale deve essere presentata da un Utente.</p>
 <ol class="arabic simple">
-<li><p><strong>Autorizzazione e Selezione del Wallet</strong>:</p>
-<ul class="simple">
+<li><p><strong>Autorizzazione e Selezione del Wallet</strong>:</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
 <li><p>Il Wallet riceve una Richiesta di Presentazione dall'RP, verifica la validità della richiesta confrontando i <em>claims</em> richiesti con le <em>Policy di Autorizzazione</em> relative all'RP (tramite le definizioni della <strong>Tassonomia</strong>).</p></li>
 <li><p>Il Wallet consulta il <strong>Catalogo delle Credenziali Digitali</strong> per verificare i <em>Domini</em> e <em>Scopi</em> associati ai tipi di Credenziali che detiene, valutando quali Credenziali sono adatte per la richiesta.</p></li>
 <li><p>Il Wallet verifica se gli attributi richiesti (claims) sono disponibili e autorizzati per la divulgazione in base alla policy della richiesta (scenari <strong>Credential-Specific</strong> o <strong>Credential-Agnostic</strong>).</p></li>
 <li><p>L'Utente autorizza il rilascio degli attributi selezionati, divulgati selettivamente. Il Wallet quindi confeziona e presenta la Credenziale Digitale all'RP.</p></li>
 </ul>
-</li>
-<li><p><strong>Scoperta e Integrità</strong>:</p>
-<ul class="simple">
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p><strong>Scoperta e Integrità</strong>:</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
 <li><p>L'RP riceve la Credenziale Digitale dall'Utente.</p></li>
 <li><p>L'RP consulta il <strong>Registro di Federazione</strong> tramite l'endpoint del Trust Anchor (<cite>federation_resolve</cite>, <cite>federation_trust_mark_status</cite>) per verificare la <strong>fiducia crittografica</strong> (Trust Mark) dell'Emittente e del Fornitore di Wallet, come definito nella Sezione <a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>.</p></li>
 <li><p>L'RP consulta il <strong>Registro degli Schema</strong> per scaricare lo schema della Credenziale presentata (<cite>schema_uri</cite>), verificandone l'integrità (<cite>schema_uri#integrity</cite>).</p></li>
 </ul>
-</li>
-<li><p><strong>Validazione dello Schema e della Policy Finale</strong>:</p>
-<ul class="simple">
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p><strong>Validazione dello Schema e della Policy Finale</strong>:</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
 <li><p>L'RP usa lo schema recuperato per validare la struttura della Credenziale e i tipi di dati degli attributi rivelati.</p></li>
 <li><p>L'RP esegue il controllo finale per garantire che gli attributi presentati siano conformi ai requisiti specifici della richiesta iniziale e della policy di autorizzazione.</p></li>
 </ul>
-</li>
+</div></blockquote>
+<ol class="arabic simple" start="4">
 <li><p><strong>Accettazione o Rifiuto</strong>: In base alla validazione crittografica, alla conformità dello schema e all'autorizzazione basata su policy, l'RP accetta o rifiuta la Credenziale per l'accesso al servizio.</p></li>
 </ol>
 </section>

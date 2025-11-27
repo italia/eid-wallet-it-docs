@@ -168,8 +168,7 @@
 <section id="registry-architecture-overview">
 <h2><span class="section-number">7.1. </span>Registry Architecture Overview<a class="headerlink" href="#registry-architecture-overview" title="Link to this heading">¶</a></h2>
 <p>The IT-Wallet registry system comprises six main components:</p>
-<blockquote>
-<div><ol class="arabic simple">
+<ol class="arabic simple">
 <li><p><strong>Claims Registry</strong>: Standardized semantic definitions for individual credential attributes, data types, and validation rules.</p></li>
 <li><p><strong>Authentic Source (AS) Registry</strong>: Catalog of registered data providers with their declared capabilities and available claims.</p></li>
 <li><p><strong>Federation Registry</strong>: Authoritative list of trusted entities participating in the federation with their technical configurations.</p></li>
@@ -177,26 +176,21 @@
 <li><p><strong>Schema Registry</strong>: Authoritative list of Credential Schemas.</p></li>
 <li><p><strong>Taxonomy</strong>: Hierarchical classification system organizing credentials by domain and purpose.</p></li>
 </ol>
-</div></blockquote>
 <p>These registry components are interconnected and maintained by the Supervisory Body to ensure consistency, security, and regulatory compliance across the ecosystem.</p>
 </section>
 <section id="registry-discovery-endpoint">
 <h2><span class="section-number">7.2. </span>Registry Discovery Endpoint<a class="headerlink" href="#registry-discovery-endpoint" title="Link to this heading">¶</a></h2>
 <p>The Trust Anchor MUST provide a discovery mechanism for all registry components through standardized <em>well-known</em> endpoints providing metadata and REST API discovery information to handle complex operations like pagination and filtering.</p>
 <p>The Trust Anchor MUST publish registry discovery metadata at the <code class="docutils literal notranslate"><span class="pre">.well-known/it-wallet-registry</span></code> endpoint with content negotiation support:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><p><strong>Default Content-Type</strong>: <code class="docutils literal notranslate"><span class="pre">application/jwt</span></code> (signed JWT ensuring authenticity and integrity)</p></li>
 <li><p><strong>Alternative Content-Type</strong>: <code class="docutils literal notranslate"><span class="pre">application/json</span></code> (plain JSON for development/debugging purposes)</p></li>
 </ul>
-</div></blockquote>
 <p>Moreover, the IT-Wallet registry system MUST use two distinct access patterns:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><p><strong>Data Registry APIs</strong>: MUST support pagination and filtering capabilities.</p></li>
 <li><p><strong>Federation Trust Infrastructure</strong>: as defined in <a class="reference internal" href="trust-infrastructure.html#the-infrastructure-of-trust"><span class="std std-ref">The Infrastructure of Trust</span></a>.</p></li>
 </ul>
-</div></blockquote>
 <p>Below a non-normative example is given.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/.well-known/it-wallet-registry</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="o">:</span> <span class="l">trust-anchor.eid-wallet.example.it</span>
@@ -492,12 +486,10 @@ Content-Type: application/json
 </pre></div>
 </div>
 <p><strong>Schema Components:</strong></p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><p><strong>organization_domain</strong>: DNS domain controlled by the organization</p></li>
 <li><p><strong>optional_path</strong>: Additional path component for specific services or departments</p></li>
 </ul>
-</div></blockquote>
 <p>The AS identifier MUST follow these normative rules:</p>
 <ol class="arabic simple">
 <li><p><strong>HTTPS Protocol</strong>: MUST use HTTPS scheme for security and trust verification</p></li>
@@ -507,13 +499,11 @@ Content-Type: application/json
 <li><p><strong>Resolvability</strong>: The URL SHOULD be resolvable (though not required to serve content)</p></li>
 </ol>
 <p><strong>Examples of compliant AS identifiers:</strong></p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">https://motorizzazione.gov.example</span></code>: Public - Ministry of Transport, Motorization Dept</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">https://registry.anpr.example</span></code>: Public - National Registry of Resident Population</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">https://api.bank.example/auth-source</span></code>: Private - Example Bank Financial Services</p></li>
 </ul>
-</div></blockquote>
 </section>
 <section id="authentic-source-registry-parameters">
 <h4><span class="section-number">7.4.3.2. </span>Authentic Source Registry Parameters<a class="headerlink" href="#authentic-source-registry-parameters" title="Link to this heading">¶</a></h4>
@@ -1427,38 +1417,6 @@ Content-Type: application/json
 <p>The union of <code class="docutils literal notranslate"><span class="pre">credential_type</span></code> and <code class="docutils literal notranslate"><span class="pre">version</span></code> MUST be unique in the Credential Catalog.</p>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">wallet_app_attestations</span></code> Object is an Array containing at least the following information for each entry:</p>
-<table class="longtable docutils align-default" id="id8">
-<caption><span class="caption-number">Table 7.7 </span><span class="caption-text">Wallet App Attestations Fields</span><a class="headerlink" href="#id8" title="Link to this table">¶</a></caption>
-<colgroup>
-<col style="width: 30.0%" />
-<col style="width: 70.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Field Name</strong></p></th>
-<th class="head"><p><strong>Description</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>version</strong></p></td>
-<td><p>REQUIRED. Version of the Wallet App Attestation definition.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>credential_type</strong></p></td>
-<td><p>REQUIRED. Unique identifier of the Wallet App Attestation. It MUST be set to <code class="docutils literal notranslate"><span class="pre">wallet_app_attestation</span></code>.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>formats</strong></p></td>
-<td><p>REQUIRED. Array of supported formats for the Wallet App Attestation, including:</p>
-<ul class="simple">
-<li><p><strong>format</strong>: Type of format (e.g., <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code>, <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code> or <code class="docutils literal notranslate"><span class="pre">oauth-client-attestation+jwt</span></code>)</p></li>
-<li><p><strong>configuration_id</strong>: Configuration identifier of the Wallet App Attestation. This is formed by concatenating the string <code class="docutils literal notranslate"><span class="pre">wa</span></code> to the <code class="docutils literal notranslate"><span class="pre">format</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">dc_sd_jwt_wa</span></code>, <code class="docutils literal notranslate"><span class="pre">mso_mdoc_wa</span></code>, or <code class="docutils literal notranslate"><span class="pre">jwt_wa</span></code>), and is used to uniquely reference the configuration of the Wallet App Attestation format.</p></li>
-<li><p><strong>vct</strong>: CONDITIONAL. It is REQUIRED if the <code class="docutils literal notranslate"><span class="pre">format</span></code> is <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code>, indicating the Verifiable Credential Type (e.g., <code class="docutils literal notranslate"><span class="pre">urn:eudi:mDL:it:1</span></code>).</p></li>
-<li><p><strong>docType</strong>: CONDITIONAL. It is only present if the <code class="docutils literal notranslate"><span class="pre">format</span></code> is <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code>. It is a string of the form <code class="docutils literal notranslate"><span class="pre">{Trust</span> <span class="pre">Anchor</span> <span class="pre">reverse</span> <span class="pre">domain}.{credential_type}</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">it.wallet.trust-registry.wallet_app_attestation</span></code>).</p></li>
-<li><p><strong>schema_uri</strong>: URI pointing to the format specification document.</p></li>
-<li><p><strong>schema_uri#integrity</strong>: Cryptographic digest of the format specification document for integrity verification. It MUST be a string of the form <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code>, where <code class="docutils literal notranslate"><span class="pre">{digest_method}</span></code> is the digest algorithm used (e.g., <code class="docutils literal notranslate"><span class="pre">sha-256</span></code>) and <code class="docutils literal notranslate"><span class="pre">{digest_value}</span></code> is the base64url-encoded digest value.</p></li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
 <p>The corresponding example of Digital Credentials Catalog as decoded in JSON for both header and payload is the following:</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="s2">&quot;JOSE&quot;</span><span class="p">,</span>
@@ -1583,18 +1541,15 @@ Content-Type: application/json
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>For a better and more efficient management of the localisation of the information contained in the Digital Credentials Catalog, an Entity consulting it SHOULD:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><p>Download the basic version of the Digital Credentials Catalog (compact, without localisations) using the <code class="docutils literal notranslate"><span class="pre">.well-known/credential-catalog</span></code> endpoint.</p></li>
 <li><p>Determine the User's preferred language.</p></li>
 <li><p>Download only the necessary localisation bundles.</p></li>
 <li><p>Dynamically merge localised content with the Digital Credentials Catalog structure.</p></li>
 </ul>
-</div></blockquote>
 </div>
 <p>A non-normative example of a localisation bundle output is given below:</p>
-<blockquote>
-<div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;driving_license.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Patente di Guida&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;driving_license.description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Patente di guida ufficiale valida in Italia e nell&#39;UE&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;purpose.driving_authorization.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Abilitazione alla guida&quot;</span><span class="p">,</span>
@@ -1604,7 +1559,6 @@ Content-Type: application/json
 <span class="p">}</span>
 </pre></div>
 </div>
-</div></blockquote>
 <p>Localization bundles MUST be available at the URI specified in the <strong>localization_info.bundles_base_uri</strong> claim of the Digital Credentials Catalog. Each locale bundle MUST be accessible following the naming pattern <strong>{locale_code}.json</strong>, where <strong>{locale_code}</strong> is replaced with the corresponding locale code from the <strong>available_locales</strong> array.</p>
 <p>A non-normative example of the Italian localization URI for the mDL bundle would be <strong>https://trust-registry.eid-wallet.example.it/.well-known/l10n/mdl/it.json</strong>.</p>
 <p>Entities SHOULD verify the integrity of downloaded localization bundles using the digest method and values specified in the <strong>localization_info.integrity</strong> claim. This ensures that the localization data has not been tampered with during transmission.</p>
@@ -1843,8 +1797,8 @@ Content-Type: application/json
 </ol>
 <p><strong>Schema Registry Structure and Access:</strong></p>
 <p>The Schema Registry is accessible via the <code class="docutils literal notranslate"><span class="pre">.well-known/it-wallet-registry</span></code> discovery endpoint under the <cite>schema_registry</cite> field. It allows for the discovery of schema URIs and their cryptographic integrity checks.</p>
-<table class="longtable docutils align-default" id="id9">
-<caption><span class="caption-number">Table 7.8 </span><span class="caption-text">First-level Fields of the Schema Registry</span><a class="headerlink" href="#id9" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id8">
+<caption><span class="caption-number">Table 7.7 </span><span class="caption-text">First-level Fields of the Schema Registry</span><a class="headerlink" href="#id8" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 30.0%" />
 <col style="width: 70.0%" />
@@ -1866,8 +1820,8 @@ Content-Type: application/json
 </tr>
 </tbody>
 </table>
-<table class="docutils align-default" id="id10">
-<caption><span class="caption-number">Table 7.9 </span><span class="caption-text">Schema Definition Parameters</span><a class="headerlink" href="#id10" title="Link to this table">¶</a></caption>
+<table class="docutils align-default" id="id9">
+<caption><span class="caption-number">Table 7.8 </span><span class="caption-text">Schema Definition Parameters</span><a class="headerlink" href="#id9" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25.0%" />
 <col style="width: 75.0%" />
@@ -1958,13 +1912,16 @@ The main Journeys below illustrate the interactions with the Registry Infrastruc
 <p>This <em>Catalog Browsing</em> journey supports Users (both human users via a <strong>Wallet Instance</strong> and automated systems like <strong>Relying Parties</strong> or web portals) in discovering and selecting available Digital Credentials.</p>
 <ol class="arabic simple">
 <li><p><strong>Accessing the Discovery Endpoint</strong>: The entity (e.g., a Wallet Provider or informational portal) accesses the <cite>Registry Discovery Endpoint</cite> (<code class="docutils literal notranslate"><span class="pre">.well-known/it-wallet-registry</span></code>) to obtain the URI of the <strong>Digital Credentials Catalog</strong>.</p></li>
-<li><p><strong>Navigation and Selection</strong>:</p>
-<ul class="simple">
+<li><p><strong>Navigation and Selection</strong>:</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
 <li><p><strong>Credential Discovery</strong>: The entity browses the list of Credentials (<code class="docutils literal notranslate"><span class="pre">credentials</span></code> field) to identify relevant Credential types (e.g., <code class="docutils literal notranslate"><span class="pre">pid</span></code>, <code class="docutils literal notranslate"><span class="pre">driving_license</span></code>).</p></li>
 <li><p><strong>Issuer Metadata</strong>: The entity extracts the <strong>Issuer Identifier</strong> (<cite>entity_id</cite> within the <cite>issuers</cite> field) associated with the desired Credential.</p></li>
 <li><p><strong>Detail Consultation</strong>: To obtain complete information oand specific technical requirements, the entity accesses the <strong>Entity Configuration</strong> (Issuer Metadata) using the retrieved identifier.</p></li>
 </ul>
-</li>
+</div></blockquote>
+<ol class="arabic simple" start="3">
 <li><p><strong>Final Action</strong>: The entity can then can use the metadata to display the catalog information to a User (or use the information in other way).</p></li>
 </ol>
 </section>
@@ -1973,18 +1930,24 @@ The main Journeys below illustrate the interactions with the Registry Infrastruc
 <p>This journey defines how a Credential Issuer uses the Registry Infrastructure to prepare and issue a compliant Digital Credential.</p>
 <ol class="arabic simple">
 <li><p><strong>Identifying Requirements</strong>: The CI consults the <strong>Digital Credentials Catalog</strong> for the technical requirements of the Credential type to be issued (e.g., <code class="docutils literal notranslate"><span class="pre">max_validity_days</span></code>, <code class="docutils literal notranslate"><span class="pre">min_loa</span></code>).</p></li>
-<li><p><strong>Schema and Claim Resolution</strong>:</p>
-<ul class="simple">
+<li><p><strong>Schema and Claim Resolution</strong>:</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
 <li><p>The CI consults the <strong>Schema Registry</strong> to retrieve the technical specification of the format and schema (e.g., JSON Schema for SD-JWT) required by the Catalog, ensuring validity and integrity via the hash (<cite>schema_uri#integrity</cite>).</p></li>
 <li><p>The CI accesses the <strong>Claims Registry</strong> to retrieve the standardized semantic definitions and data formats (data types) of the necessary attributes (claims).</p></li>
 </ul>
-</li>
-<li><p><strong>Authentic Data Retrieval</strong>:</p>
-<ul class="simple">
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p><strong>Authentic Data Retrieval</strong>:</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
 <li><p>The CI consults the <strong>Authentic Source (AS) Registry</strong> to identify the authorized <strong>Authentic Source</strong> (AS) for the required dataset. The AS Registry provides the AS's <code class="docutils literal notranslate"><span class="pre">entity_id</span></code> and the technical details of the interface (<cite>integration_endpoint</cite>, <cite>integration_method</cite>).</p></li>
 <li><p>The CI consults the AS endpoint specification to implement the integration needed to retrieve the User data required to populate the Digital Credential.</p></li>
 </ul>
-</li>
+</div></blockquote>
+<ol class="arabic simple" start="4">
 <li><p><strong>Credential Issuance</strong>: The CI uses the retrieved data, validated schemas, and specified formats to generate and sign the Digital Credential in the correct format (e.g., SD-JWT or mDOC).</p></li>
 </ol>
 </section>
@@ -1992,27 +1955,36 @@ The main Journeys below illustrate the interactions with the Registry Infrastruc
 <h3><span class="section-number">7.10.3. </span>Credential Presentation and Verification<a class="headerlink" href="#credential-presentation-and-verification" title="Link to this heading">¶</a></h3>
 <p>This journey describes how a <strong>Wallet Instance</strong> and a <strong>Relying Party (RP)</strong> interact with the Registry Infrastructure when a Digital Credential needs to be presented by a User.</p>
 <ol class="arabic simple">
-<li><p><strong>Wallet Authorization and Selection</strong>:</p>
-<ul class="simple">
+<li><p><strong>Wallet Authorization and Selection</strong>:</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
 <li><p>The Wallet receives a Presentation Request from the RP, verifies the validity of the request comparing the requested <em>claims</em> with the <em>Authorization Policies</em> related to the RP (via the <strong>Taxonomy</strong> definitions).</p></li>
 <li><p>The Wallet consults the <strong>Digital Credentials Catalog</strong> to verify the <em>Domains</em> and <em>Purposes</em> associated with the Credential types it holds, evaluating which Credentials are suitable for the request.</p></li>
 <li><p>The Wallet verifies if the required attributes (claims) are available and authorized for disclosure based on the request policy (<strong>Credential-Specific</strong> or <strong>Credential-Agnostic</strong> scenarios).</p></li>
 <li><p>The User authorizes the release of the selected, selectively disclosed attributes. The Wallet then packages and presents the Digital Credential to the RP.</p></li>
 </ul>
-</li>
-<li><p><strong>Discovery and Integrity</strong>:</p>
-<ul class="simple">
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p><strong>Discovery and Integrity</strong>:</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
 <li><p>The RP receives the Digital Credential from the User.</p></li>
 <li><p>The RP consults the <strong>Federation Registry</strong> via the Trust Anchor's endpoint (<cite>federation_resolve</cite>, <cite>federation_trust_mark_status</cite>) to verify the <strong>cryptographic trust</strong> (Trust Mark) of the Issuer and Wallet Provider as defined in Section <a class="reference internal" href="trust-infrastructure.html#the-infrastructure-of-trust"><span class="std std-ref">The Infrastructure of Trust</span></a>.</p></li>
 <li><p>The RP consults the <strong>Schema Registry</strong> to download the schema of the presented Credential (<cite>schema_uri</cite>), verifying its integrity (<cite>schema_uri#integrity</cite>).</p></li>
 </ul>
-</li>
-<li><p><strong>Schema and Final Policy Validation</strong>:</p>
-<ul class="simple">
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p><strong>Schema and Final Policy Validation</strong>:</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
 <li><p>The RP uses the retrieved schema to validate the structure of the Credential and the data types of the revealed attributes.</p></li>
 <li><p>The RP performs the final check to ensure that the attributes presented comply with the specific requirements of the initial request and authorization policy.</p></li>
 </ul>
-</li>
+</div></blockquote>
+<ol class="arabic simple" start="4">
 <li><p><strong>Acceptance or Rejection</strong>: Based on cryptographic validation, schema compliance, and policy-based authorization, the RP accepts or rejects the Credential for service access.</p></li>
 </ol>
 </section>
