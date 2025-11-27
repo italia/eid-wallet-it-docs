@@ -122,6 +122,10 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
                   
                   - **uri**: REQUIRED. A URI pointing to the background image.
                   - **uri#integrity**: REQUIRED. integrity metadata as defined in Section 3 of `W3C-SRI`_.
+                - **watermark_image**: OPTIONAL. Object containing information about the watermanrk image to be displayed for the type. The object contains the following sub-values:
+                  
+                  - **uri**: REQUIRED. A URI pointing to the background image.
+                  - **uri#integrity**: REQUIRED. integrity metadata as defined in Section 3 of `W3C-SRI`_.
                 
                 - **text_color**: OPTIONAL. String value of a text color of the Digital Credential represented as numerical color values defined in `W3C.CSS-COLOR`_.
 

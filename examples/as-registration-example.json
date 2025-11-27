@@ -94,47 +94,7 @@
                 "immediate_flow": true,
                 "deferred_flow": false
             },
-            "update_frequency": "real_time",
-            "display": {
-                "preferred_logo": "logo_standard",
-                "preferred_credential_background_image_id": "credential_background",
-                "preferred_credential_background_color_id": "credential_background_color_1",
-                "colors": [
-                    {
-                        "id": "credential_background_color_1",
-                        "hex": "#003d82"
-                    },
-                    {
-                        "id": "credential_background_color_2",
-                        "hex": "#003d82"
-                    },
-                    {
-                        "id": "text_color_1",
-                        "hex": "#003d82"
-                    },
-                    {
-                        "id": "text_color_2",
-                        "hex": "#003d82"
-                    }
-                ],
-                "images": [
-                    {
-                        "id": "logo_standard",
-                        "image_uri": "https://www.gov.example/assets/transport-logo.svg",
-                        "image_uri#integrity": "sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
-                    },
-                    {
-                        "id": "logo_pictogram",
-                        "image_uri": "https://www.gov.example/assets/transport-logo-compact.svg",
-                        "image_uri#integrity": "sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
-                    },
-                    {
-                        "id": "credential_background",
-                        "image_uri": "https://www.gov.example/assets/backgroud_default.svg",
-                        "image_uri#integrity": "sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
-                    }
-                ]
-            }
+            "update_frequency": "real_time"
         }
     ]
 }

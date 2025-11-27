@@ -168,6 +168,12 @@
                                     "uri#integrity": "3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg=="
 
                                 },
+                                "watermark_image": {
+
+                                    "uri": "https://trust-registry.it-wallet.example.it/images/EuropeanDisabilityCard/imag-watermark-IT.svg",
+                                    "uri#integrity": "3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg=="
+
+                                },
                                 "text_color": "#FFFFFF"
                             },
                             {
