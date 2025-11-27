@@ -9,10 +9,37 @@
 Credential Issuer Endpoints
 ---------------------------
 
-Federation Endpoints
+Metadata Endpoints
 ^^^^^^^^^^^^^^^^^^^^
 
 The Credential Issuers MUST provide an Entity Configuration through the ``/.well-known/openid-federation`` endpoint, according to Section :ref:`trust-infrastructure:Entity Configuration`. Technical details are provided in Section :ref:`credential-issuer-entity-configuration:Credential Issuer Entity Configuration`.
+
+Alternatively the Credential Issuer's Metadata can be retrieved using the Credential Issuer Identifier. The JSON document MUST be available through the ``/.well-known/openid-credential-issuer`` endpoint as defined in Section 12.2 of `OpenID4VCI`_.
+
+The ``Accept-Language`` header in the HTTP GET request can be used to indicate the language(s) preferred. In this case the Credential Issuer can send a subset of the metadata containing internationalized display data for one or all of the requested languages and indicate returned languages using the HTTP ``Content-Language`` Header.
+
+Below is a non-normative example.
+
+.. code-block:: http
+
+    GET /.well-known/openid-credential-issuer HTTP/1.1
+    Host: issuer.example.com
+    Accept: application/json
+    Accept-Language: it-IT, it;q=0.9
+
+
+The Credential Issuer MUST respond with HTTP Status Code 200 and return the Credential Issuer Metadata containing the parameters defined in :ref:`credential-issuer-metadata:Metadata for openid_credential_issuer` using an unsigned JSON document with the media type *application/json*.
+
+The ``authorization_servers`` entries of the Credential Issuer Metadata can be used to obtain the Authorization Server metadata from the Oauth Authorization Server ``/.well-known/oauth-authorization-server`` as defined in Section 3 of :rfc:`8414`. In case the ``authorization_servers`` parameter is omitted, the Credential Issuer's identifier can be used to retrieve the Authorization Server metadata.
+
+Below is a non-normative example.
+
+.. code-block:: http
+
+    GET /.well-known/oauth-authorization-server HTTP/1.1
+    Host: oauth-authorization-server.example.com
+
+The Oauth Authorization Server MUST respond with HTTP Status Code 200 and return the Oauth Authorization Server Metadata containing the parameters defined in :ref:`credential-issuer-metadata:Metadata for oauth_authorization_server`, using a JSON document with the media type *application/json*.
 
 Credential Issuance Endpoints
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

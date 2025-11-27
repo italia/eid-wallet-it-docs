@@ -204,13 +204,13 @@
 <td><p>JSON Array of <em>request_uri</em> values that are pre-registered by the RP. These URLs MUST use the <em>https</em> scheme. See <a class="reference external" href="https://openid.net/specs/openid-connect-registration-1_0.html">OpenID Connect Dynamic Client Registration 1.0</a> Section 2.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>response_uris</strong></p></td>
-<td><p>JSON Array of response URI strings to which the Wallet Instance MUST send the Authorization Response using an HTTP POST request as defined by the Response Mode <code class="docutils literal notranslate"><span class="pre">direct_post</span></code> and <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code> (see <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a> Draft 20 Sections 6.2 and 6.3).</p></td>
+<td><p>JSON Array of response URI strings to which the Wallet Instance MUST send the Authorization Response using an HTTP POST request as defined by the Response Mode <code class="docutils literal notranslate"><span class="pre">direct_post</span></code> and <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code> (see <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a> Draft 20 Sections 6.2 and 6.3).</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>encrypted_response_enc_values_supported</strong></p></td>
-<td><p>JSON array of content encryption algorithms (&quot;enc&quot;) the Verifier supports for encrypting the authorization response when using response mode <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code>. See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a> §5.1 and §8.3.1.</p></td>
+<td><p>JSON array of content encryption algorithms (&quot;enc&quot;) the Verifier supports for encrypting the authorization response when using response mode <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code>. See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a> §5.1 and §8.3.1.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>vp_formats_supported</strong></p></td>
-<td><p>JSON object defining the formats and proof types of Verifiable Presentations and Verifiable Credentials the RP supports. It consists of a list of name/value pairs, where each name uniquely identifies a supported type. The RP MUST support at least <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code>. For SD-JWT VC, the value associated with each name/value pair MUST include <code class="docutils literal notranslate"><span class="pre">sd-jwt_alg_values</span></code> listing acceptable signing algorithms; for mdoc, include <code class="docutils literal notranslate"><span class="pre">alg_values_supported</span></code>. The JOSE/COSE headers of presented artifacts MUST match one of the advertised values. See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a> §11 and Appendix B.</p></td>
+<td><p>JSON object defining the formats and proof types of Verifiable Presentations and Verifiable Credentials the RP supports. It consists of a list of name/value pairs, where each name uniquely identifies a supported type. The RP MUST support at least <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code>. For SD-JWT VC, the value associated with each name/value pair MUST include <code class="docutils literal notranslate"><span class="pre">sd-jwt_alg_values</span></code> listing acceptable signing algorithms; for mdoc, include <code class="docutils literal notranslate"><span class="pre">alg_values_supported</span></code>. The JOSE/COSE headers of presented artifacts MUST match one of the advertised values. See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a> §11 and Appendix B.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>jwks</strong></p></td>
 <td><p>JSON Web Key Set document, passed by value, containing the protocol specific keys for the Relying Party. See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Draft 41 Section 5.2.1 and <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-key">JWK</a>.</p></td>
@@ -254,7 +254,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 26/11/2025.
+      Last updated on 27/11/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

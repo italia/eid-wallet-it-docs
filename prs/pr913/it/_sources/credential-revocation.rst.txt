@@ -297,7 +297,7 @@ Quando più Attestati Elettronici vengono emessi insieme in un singolo batch, il
 Meccanismi di Verifica della Validità
 -------------------------------------
 
-Per la verifica dello stato di validità di un Attestato Elettronico a lunga durata, l'OAuth Status List (`TOKEN-STATUS-LIST`_) DEVE essere supportato sia per lo scenario remoto che per quello di prossimità. Nello scenario remoto, il Fornitore di Attestati Elettronici, l'Istanza del Wallet e la Relying Party POSSONO supportare OAuth Status Assertions (`OAUTH-STATUS-ASSERTION`_). La seguente tabella riassume i meccanismi di revoca richiesti per verificare lo stato degli Attestati Elettronici a lunga durata.
+Per la verifica dello stato di validità di un Attestato Elettronico a lunga durata, Token Status List (`TOKEN-STATUS-LIST`_) DEVE essere supportato sia per lo scenario remoto che per quello di prossimità. Nello scenario remoto, il Fornitore di Attestati Elettronici, l'Istanza del Wallet e la Relying Party POSSONO supportare OAuth Status Assertions (`OAUTH-STATUS-ASSERTION`_). La seguente tabella riassume i meccanismi di revoca richiesti per verificare lo stato degli Attestati Elettronici a lunga durata.
 
 .. _table_revocation_mechanisms:
 .. list-table::
@@ -311,10 +311,10 @@ Per la verifica dello stato di validità di un Attestato Elettronico a lunga dur
   * - Remoto
     -
       - [OPZIONALE] OAuth Status Assertion,
-      - [RICHIESTO] OAuth Status Lists.
+      - [RICHIESTO] Token Status List.
     - `OAUTH-STATUS-ASSERTION`_, `TOKEN-STATUS-LIST`_.
   * - Prossimità
-    - [RICHIESTO] OAuth Status Lists.
+    - [RICHIESTO] Token Status List.
     - `TOKEN-STATUS-LIST`_.
 
 OAuth Status Assertions
@@ -765,7 +765,7 @@ La Relying Party che vuole fare affidamento sul meccanismo fornito dalla Status 
     - i valori ``credential_status_type`` e ``credential_status_detail``.
 
 
-OAuth Status Lists
+Token Status Lists
 ------------------
 
 Questa sezione definisce una struttura di dati Status List, che viene utilizzata per trasmettere informazioni riguardanti gli stati individuali di più Attestati Elettronici. Gli Attestati Elettronici possono essere di qualsiasi formato, come SD-JWT o mdoc ISO/IEC 18013-5. Una Status List descrive lo stato degli Attestati Elettronici codificando la loro validità in un array di bit. A ciascun Attestato Elettronico viene assegnato un indice durante l'emissione; questo indice rappresenta la sua posizione all'interno dell'array di bit. Il valore del bit o dei bit in questo indice corrisponde allo stato degli Attestati Elettronici. Una Status List viene fornita all'interno di un Token di Status List firmato crittograficamente in formato JWT. Per i dettagli, vedere `TOKEN-STATUS-LIST`_.
@@ -787,13 +787,13 @@ Il Fornitore di Attestati Elettronici DEVE utilizzare i seguenti valori per i po
 
   - 0x00 - ``VALID`` - L'Attestato Elettronico è valido.
   - 0x01 - ``INVALID`` - L'Attestato Elettronico è revocato.
-  - 0x02 - ``SUSPENDED`` - L'Attestato Elettronico è temporaneamente non valido, sospeso. Questo stato è reversibile.
+  - 0x02 - ``SUSPENDED`` - L'Attestato Elettronico è temporaneamente non valido, sospeso. Questo stato è solitamente temporaneo.
   - 0x03 - ``UPDATE`` - I parametri dei metadata dell'Attestato Elettronico sono cambiati.
-  - 0x04 - ``ATTRIBUTE_UPDATE`` - Gli attributi dell'Attestato Elettronico sono cambiati.
+  - 0x0B - ``ATTRIBUTE_UPDATE`` - Gli attributi dell'Attestato Elettronico sono cambiati.
 
-Ad esempio, se sono possibili cinque stati per un certo Attestato Elettronico, allora k=4. Se il Fornitore di Attestati Elettronici crea un array per memorizzare gli stati di 6 Attestati Elettronici, i cui stati di validità sono 0, 0, 0, 4, 1, 2, rispettivamente; farà:
+Ad esempio, se sono possibili cinque stati per un certo Attestato Elettronico, allora k=4. Se il Fornitore di Attestati Elettronici crea un array per memorizzare gli stati di 6 Attestati Elettronici, i cui stati di validità sono 0, 0, 0, 3, 1, 2, rispettivamente; farà:
 
-  - creare l'array di bit ``[0, 0, 0, 0, 0, 0, 0, 0; 0, 1, 0, 0, 0, 0, 0, 0; 0, 0, 1, 0, 0, 0, 0, 1]`` che in notazione esadecimale genera l'array di byte ``[0x00, 0x40, 0x21]``.
+  - creare l'array di bit ``[0, 0, 0, 0, 0, 0, 0, 0; 0, 0, 1, 1, 0, 0, 0, 0; 0, 0, 1, 0, 0, 0, 0, 1]`` che in notazione esadecimale genera l'array di byte ``[0x00, 0x30, 0x21]``.
   - comprimere l'array utilizzando DEFLATE.
 
 .. note::
@@ -841,16 +841,16 @@ Il Token di Status List è disponibile all'Endpoint di Status List e contiene i 
     - **Descrizione**
     - **Riferimento**
   * - **sub**
-    - RICHIESTO. Il claim del soggetto DEVE specificare l'URI del Token di Status List. Il valore DEVE essere uguale a quello del claim uri contenuto nel claim status_list dell'Attestato Elettronico.
+    - RICHIESTO. Il claim del soggetto DEVE specificare l'URI del Token di Status List. Il valore DEVE essere uguale a quello del claim ``uri`` contenuto nel claim ``status_list`` dell'Attestato Elettronico.
     - [:rfc:`7519`]
   * - **iat**
     - RICHIESTO. Il claim issued at DEVE specificare l'ora in cui è stato emesso il Token di Status List.
     - [:rfc:`7519`]
   * - **exp**
-    - RICHIESTO. Il claim expiration time, se presente, DEVE specificare l'ora in cui il Token di Status List è considerato scaduto dal Fornitore di Attestati Elettronici.
+    - RACCOMANDATO. Il claim expiration time, se presente, DEVE specificare l'ora in cui il Token di Status List è considerato scaduto dal Fornitore di Attestati Elettronici.
     - [:rfc:`7519`]
   * - **ttl**
-    - OPZIONALE. Il claim time to live, se presente, DEVE specificare la quantità massima di tempo, in secondi, che il Token di Status List può essere memorizzato nella cache da un consumatore prima che una copia aggiornata DOVREBBE essere recuperata. Il valore del claim DEVE essere un numero positivo codificato in JSON come un numero. Questa quantità di tempo NON DOVREBBE superare il tempo di scadenza definito nel claim **exp**.
+    - RACCOMANDATO. Il claim time to live, se presente, DEVE specificare la quantità massima di tempo, in secondi, che il Token di Status List può essere memorizzato nella cache da un consumatore prima che una copia aggiornata DOVREBBE essere recuperata. Il valore del claim DEVE essere un numero positivo codificato in JSON come un numero. Questa quantità di tempo NON DOVREBBE superare il tempo di scadenza definito nel claim **exp**.
     - `TOKEN-STATUS-LIST`_
   * - **status_list**
     - RICHIESTO. Oggetto JSON che contiene una Status List.
@@ -887,7 +887,12 @@ Di seguito è riportato un esempio di Token di Status List prima di applicare la
   {
     "alg": "ES256",
     "kid": "$KID",
-    "typ": "statuslist+jwt"
+    "typ": "statuslist+jwt",
+    "x5c": [
+      "MIIDqjCCApKgAwIBAgIESLNEvDA ...",
+      "MIICwzCCAasCCQCKVy9eKjvi+jA ...",
+      "MIIDTDCCAjSgAwIBAgIJAPlnQYH..."
+    ]
   }
 
 .. code-block:: json
@@ -996,10 +1001,10 @@ Al ricevimento di un Attestato Elettronico, una Relying Party DEVE prima eseguir
 
 - Tutti i claim esistenti nel Token di Status List DEVONO essere controllati secondo :ref:`credential-revocation:Token di Status List`.
 
-  - Il claim subject del Token di Status List DEVE essere uguale al claim `uri` nell'oggetto `status_list` dell'Attestato Elettronico.
-  - Se la Relying Party ha politiche personalizzate riguardanti la freschezza del Token di Status List, DOVREBBE controllare il claim `iat`.
+  - Il claim subject del Token di Status List DEVE essere uguale al claim ```uri``` nell'oggetto ``status_list`` dell'Attestato Elettronico.
+  - Se la Relying Party ha politiche personalizzate riguardanti la freschezza del Token di Status List, DOVREBBE controllare il claim ``iat``.
   - Se il tempo di scadenza è definito, DEVE essere controllato se il Token di Status List è scaduto.
-  - Se la Relying Party sta utilizzando un sistema per memorizzare nella cache il Token di Status List, DOVREBBE controllare il claim `ttl` del Token di Status List e recuperare una copia aggiornata se (tempo in cui lo stato è stato risolto + `ttl` < tempo corrente).
+  - Se la Relying Party sta utilizzando un sistema per memorizzare nella cache il Token di Status List, DOVREBBE controllare il claim ``ttl`` del Token di Status List e recuperare una copia aggiornata se (tempo in cui lo stato è stato risolto + `ttl` < tempo corrente).
 
 - Decomprimere la Status List con un decompressore compatibile con DEFLATE [:rfc:`1951`] e ZLIB [:rfc:`1950`].
 - Recuperare il valore di stato dell'indice specificato nell'Attestato Elettronico come descritto in :ref:`credential-revocation:Creazione delle Status List`. Fallire se l'indice fornito è fuori dai limiti della Status List.

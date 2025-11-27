@@ -151,7 +151,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_028
     - Emissione, Sicurezza, Interoperabilità
     - Validazione OAuth Client Attestation PoP
-    - Il Credential Issuer valida con successo il parametro OAuth-Client-Attestation-PoP secondo la Sezione 4 di [`OAUTH-ATTESTATION-CLIENT-AUTH`_], confermando la prova di possesso e rifiutando attestazioni non valide con risposte di errore dettagliate.
+    - Il Credential Issuer valida con successo il parametro OAuth-Client-Attestation-PoP secondo la Sezione 5 di [`OAUTH-ATTESTATION-CLIENT-AUTH`_], confermando la prova di possesso e rifiutando attestazioni non valide con risposte di errore dettagliate.
   * - CI_029
     - Emissione, Fiducia
     - Verifica dell’affidabilità dell’istanza del Wallet
@@ -439,7 +439,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_091
     - Emissione, Interoperabilità
     - Validazione dell’OAuth Client Attestation PoP per il Refresh
-    - Il Credential Issuer valida correttamente il parametro OAuth-Client-Attestation-PoP secondo la Sezione 4 di [`OAUTH-ATTESTATION-CLIENT-AUTH`_].
+    - Il Credential Issuer valida correttamente il parametro OAuth-Client-Attestation-PoP secondo la Sezione 5 di [`OAUTH-ATTESTATION-CLIENT-AUTH`_].
   * - CI_092
     - Emissione, Sicurezza
     - Validazione del DPoP Proof JWT per il Refresh

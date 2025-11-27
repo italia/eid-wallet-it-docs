@@ -368,12 +368,12 @@ This section lists the test cases from Sections:
      - Wallet Instance builds and verifies the full Trust Chain from the Credential Issuer through Intermediaries to the root Trust Anchor, ensuring each signature is valid and confirms the root.
    * - WP_047
      - Issuance, Interoperability
-     - Issuer-Initiated flow: Credential Offer QR scan & decode
-     - In an Issuer-Initiated cross-device flow, Wallet Instance successfully scans the QR code, and decodes the ``credential_offer`` URL.
+     - Third-Party-Initiated flow: Credential Offer QR scan & decode
+     - In a Third-Party-Initiated cross-device flow, Wallet Instance successfully scans the QR code, and retrieves the ``credential_offer`` or the ``credential_offer_uri`` parameter.
    * - WP_048
      - Issuance, Interoperability
-     - Issuer-Initiated flow: Credential Offer parsing
-     - In an Issuer-Initiated flow, Wallet Instance extracts and validates all required parameters present (``iss``, ``credential_offer``, etc.) in the URL-decoded ``credential_offer``.
+     - Third-Party-Initiated flow: Credential Offer parsing
+     - In a Third-Party-Initiated flow, Wallet Instance extracts and validates all required parameters present in the Credential Offer.
    * - WP_049
      - Issuance, Interoperability
      - Issuer-Initiated flow: Authorization Server identifier check
