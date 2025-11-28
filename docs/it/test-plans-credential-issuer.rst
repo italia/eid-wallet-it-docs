@@ -1039,8 +1039,8 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_217
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Informazioni Richieste Catalogo Credenziale Digitale
-    - Il Fornitore di Attestati Elettronici fornisce le sue credenziali nel catalogo, insieme alle informazioni nella :ref:`tabella <table_catalogue_main_information>` corrispondente.
+    - Il Fornitore di Attestati Elettronici fornisce le sue credenziali nel catalogo, insieme alle informazioni nella :ref:`tabella <_table_catalog_parameters>` corrispondente.
   * - CI_218
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Informazioni Elemento Array Credenziali
-    - Ogni elemento dell'array delle credenziali contiene correttamente tutte le informazioni di primo livello definite nella :ref:`Tabella  <table_catalogue_credentials_parameters>` corrispondente.
+    - Ogni elemento dell'array delle credenziali contiene correttamente tutte le informazioni di primo livello definite nella :ref:`Tabella  <_table_catalog_parameters_first_level>` corrispondente.

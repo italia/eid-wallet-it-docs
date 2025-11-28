@@ -646,6 +646,7 @@ The JWS payload contains the following parameters:
 Each element of the ``credentials`` array contains at least the following information:
 
 
+.. _table_catalog_parameters_first_level:
 .. list-table:: First-level Fields of Each Credential Entry
   :class: longtable
   :header-rows: 1

@@ -1,22 +1,22 @@
 .. include:: ../common/common_definitions.rst
 
 
-Infrastruttura di Registro
-==========================
+Infrastruttura del Registro
+============================
 
-L'ecosistema IT-Wallet opera attraverso un'infrastruttura di registro che fornisce definizioni dati standardizzate, registrazione delle entità e capacità di scoperta delle credenziali. Il sistema di registro consiste di molteplici componenti interconnessi che supportano il ciclo di vita completo delle operazioni delle credenziali digitali dall'onboarding delle entità alla presentazione delle credenziali.
+L'ecosistema IT-Wallet opera attraverso un'infrastruttura di registro che fornisce definizioni dati standardizzate, registrazione delle entità e capacità di scoperta delle credenziali. Il sistema di registro consiste di molteplici componenti interconnessi che supportano il ciclo di vita completo delle operazioni degli Attestati Elettronici dall'onboarding delle entità alla presentazione delle credenziali.
 
 L'architettura di registro affronta la standardizzazione semantica, la gestione della fiducia federata e i requisiti di scoperta delle credenziali attraverso componenti di registro specializzati che assicurano interoperabilità e conformità attraverso l'ecosistema.
 
-Panoramica dell'Architettura di Registro
------------------------------------------
+Panoramica dell'Architettura del Registro
+------------------------------------------
 
 Il sistema di registro IT-Wallet comprende sei componenti principali:
 
 1. **Registro dei Claims**: Definizioni semantiche standardizzate per attributi individuali delle credenziali, tipi di dati e regole di validazione.
 2. **Registro delle Fonti Autentiche (AS)**: Catalogo dei fornitori di dati registrati con le loro capacità dichiarate e claims disponibili.
 3. **Registro di Federazione**: Elenco autorevole delle entità fidate che partecipano alla federazione con le loro configurazioni tecniche.
-4. **Catalogo delle Credenziali Digitali**: Meccanismo di scoperta pubblico per i tipi di credenziali disponibili con i loro metadati e informazioni di emissione.
+4. **Catalogo degli Attestati Elettronici**: Meccanismo di scoperta pubblico per i tipi di credenziali disponibili con i loro metadati e informazioni di emissione.
 5. **Registro degli Schema**: Elenco autorevole degli schemi di Credenziali.
 6. **Tassonomia**: Sistema di classificazione gerarchico che organizza le credenziali per dominio e scopo.
 
@@ -103,7 +103,7 @@ Il Registro dei Claims DEVE garantire:
   - **Scenari Credential-Agnostic**: Supporta scenari dove **convenienza dell'utente** ed **efficienza operativa aziendale** sono prioritari rispetto a **conformità normativa** e **tracce di audit**.
 
 .. note::
-   Il Registro dei Claims definisce le proprietà semantiche degli attributi individuali, ma NON DEVE specificare capacità di divulgazione selettiva. La divulgazione selettiva dipende dalle implementazioni del formato delle credenziali (SD-JWT, mDocs), dalle configurazioni tecniche dell'emittente e dal contesto di presentazione. Queste capacità sono specificate a livello di tipo di credenziale all'interno del Catalogo delle Credenziali Digitali e implementate durante i flussi di presentazione delle credenziali.
+   Il Registro dei Claims definisce le proprietà semantiche degli attributi individuali, ma NON DEVE specificare capacità di divulgazione selettiva. La divulgazione selettiva dipende dalle implementazioni del formato delle credenziali (SD-JWT, mDocs), dalle configurazioni tecniche dell'emittente e dal contesto di presentazione. Queste capacità sono specificate a livello di tipo di credenziale all'interno del Catalogo degli Attestati Elettronici e implementate durante i flussi di presentazione delle credenziali.
 
 
 Utilizzo del Registro dei Claims
@@ -127,7 +127,7 @@ Il Registro dei Claims DEVE supportare il ciclo di vita completo dell'ecosistema
 Struttura del Registro dei Claims
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Il Registro dei Claims mantiene definizioni tecniche, indipendenti dalla lingua, per la coerenza semantica attraverso l'ecosistema. Le localizzazioni rivolte all'utente per nomi e descrizioni dei claims sono fornite attraverso i bundle di localizzazione del Catalogo delle Credenziali Digitali, abilitando un supporto multilingue efficiente senza compromettere l'integrità strutturale del registro.
+Il Registro dei Claims mantiene definizioni tecniche, indipendenti dalla lingua, per la coerenza semantica attraverso l'ecosistema. Le localizzazioni rivolte all'utente per nomi e descrizioni dei claims sono fornite attraverso i bundle di localizzazione del Catalogo degli Attestati Elettronici, abilitando un supporto multilingue efficiente senza compromettere l'integrità strutturale del registro.
 
 Un esempio non normativo della struttura del Registro dei Claims è fornito di seguito:
 
@@ -197,7 +197,7 @@ Durante la registrazione, le Fonti Autentiche dichiarano le loro capacità prima
 Schema dell'Identificatore Univoco AS
 """"""""""""""""""""""""""""""""""""""
 
-A ciascuna Fonte Autentica DEVE essere assegnato un identificatore univoco che segue lo schema URL HTTPS definito di seguito. Questo identificatore è usato per fare riferimento alle entità AS attraverso il sistema di registro e nel Catalogo delle Credenziali Digitali, garantendo coerenza con i pattern di identificazione delle entità OpenID Federation.
+A ciascuna Fonte Autentica DEVE essere assegnato un identificatore univoco che segue lo schema URL HTTPS definito di seguito. Questo identificatore è usato per fare riferimento alle entità AS attraverso il sistema di registro e nel Catalogo degli Attestati Elettronici, garantendo coerenza con i pattern di identificazione delle entità OpenID Federation.
 
 **Schema dell'Identificatore AS:**
 
@@ -388,12 +388,12 @@ Un esempio non normativo della struttura del Registro AS è fornito di seguito:
   :language: JSON
 
 .. note::
-  Per una gestione migliore e più efficiente della localizzazione delle informazioni contenute nel Catalogo delle Credenziali Digitali, un'Entità che lo consulta DOVREBBE:
+  Per una gestione migliore e più efficiente della localizzazione delle informazioni contenute nel Catalogo degli Attestati Elettronici, un'Entità che lo consulta DOVREBBE:
 
-    - Scaricare la versione base del Catalogo delle Credenziali Digitali (compatta, senza localizzazioni) usando l'endpoint ``.well-known/authentic-sources``.
+    - Scaricare la versione base del Catalogo degli Attestati Elettronici (compatta, senza localizzazioni) usando l'endpoint ``.well-known/authentic-sources``.
     - Determinare la lingua preferita dell'Utente.
     - Scaricare solo i bundle di localizzazione necessari.
-    - Unire dinamicamente il contenuto localizzato con la struttura del Catalogo delle Credenziali Digitali.
+    - Unire dinamicamente il contenuto localizzato con la struttura del Catalogo degli Attestati Elettronici.
 
 Un esempio non normativo di output di un bundle di localizzazione è fornito di seguito:
 
@@ -418,12 +418,12 @@ Le Entità DOVREBBERO verificare l'integrità dei bundle di localizzazione scari
 Coordinamento AS-CI
 ^^^^^^^^^^^^^^^^^^^
 
-Dopo la registrazione AS, il Registro AS abilita gli Emittenti di Credenziali a scoprire entità AS adatte e richiedere l'approvazione dell'integrazione. Questo processo di coordinamento è dettagliato in :ref:`entity-onboarding:Authentic Source to Credential Issuer Authorization Process`.
+Dopo la registrazione AS, il Registro AS abilita gli Emittenti di Credenziali a scoprire entità AS adatte e richiedere l'approvazione dell'integrazione. Questo processo di coordinamento è dettagliato in :ref:`entity-onboarding:Processo di Integrazione AS-CI`.
 
 Registro di Federazione
 -----------------------
 
-Il **Registro di Federazione** fornisce l'infrastruttura di fiducia crittografica per tutti i partecipanti dell'ecosistema IT-Wallet. Il Registro di Federazione mantiene l'elenco autorevole delle entità fidate e il loro stato operativo usando endpoint specifici della federazione come definito in :ref:`trust-infrastructure:Federation API endpoints`.
+Il **Registro di Federazione** fornisce l'infrastruttura di fiducia crittografica per tutti i partecipanti dell'ecosistema IT-Wallet. Il Registro di Federazione mantiene l'elenco autorevole delle entità fidate e il loro stato operativo usando endpoint specifici della federazione come definito in :ref:`trust-infrastructure:Endpoint API di Federazione`.
 
 Ruolo di Integrazione del Registro
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -437,50 +437,50 @@ All'interno dell'architettura di registro IT-Wallet, il Registro di Federazione 
 Accesso al Registro di Federazione
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Le operazioni del Registro di Federazione sono accessibili attraverso gli endpoint di federazione del Trust Anchor come dettagliato in :ref:`trust-infrastructure:Federation API endpoints`. L'architettura di scoperta del registro fornisce informazioni sugli endpoint di federazione tramite l'endpoint di scoperta del registro descritto in `Endpoint di Scoperta del Registro`_.
+Le operazioni del Registro di Federazione sono accessibili attraverso gli endpoint di federazione del Trust Anchor come dettagliato in :ref:`trust-infrastructure:Endpoint API di Federazione`. L'architettura di scoperta del registro fornisce informazioni sugli endpoint di federazione tramite l'endpoint di scoperta del registro descritto in `Endpoint di Scoperta del Registro`_.
 
 .. note::
    Gli endpoint di federazione sono disponibili sia attraverso il meccanismo di scoperta del registro (per l'accesso unificato al registro) che attraverso l'Entity Configuration del Trust Anchor a ``.well-known/openid-federation`` (per operazioni specifiche della federazione). Entrambe le fonti forniscono gli stessi URL degli endpoint ma servono diversi pattern di scoperta: scoperta del registro per l'orientamento iniziale nell'ecosistema, Entity Configuration per la conformità standard OpenID Federation 1.0.
    
-   Per le specifiche tecniche complete dei protocolli di federazione, configurazioni delle entità, meccanismi di valutazione della fiducia e validazione della catena di fiducia, vedere :ref:`trust-infrastructure:The Infrastructure of Trust`.
+   Per le specifiche tecniche complete dei protocolli di federazione, configurazioni delle entità, meccanismi di valutazione della fiducia e validazione della catena di fiducia, vedere :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
 
-Catalogo delle Credenziali Digitali
+Catalogo degli Attestati Elettronici
 ------------------------------------
 
-Il Catalogo delle Credenziali Digitali è il registro di tutte le Credenziali Digitali disponibili riconosciute all'interno dell'ecosistema IT-Wallet. È pubblicato dal Trust Anchor e pubblicamente disponibile da tutte le Entità attraverso un endpoint di Federazione specializzato. Agisce come un punto di riferimento unico per tutti gli attori coinvolti nel processo di emissione, verifica e utilizzo delle Credenziali Digitali.
+Il Catalogo degli Attestati Elettronici è il registro di tutte gli Attestati Elettronici disponibili riconosciute all'interno dell'ecosistema IT-Wallet. È pubblicato dal Trust Anchor e pubblicamente disponibile da tutte le Entità attraverso un endpoint di Federazione specializzato. Agisce come un punto di riferimento unico per tutti gli attori coinvolti nel processo di emissione, verifica e utilizzo degli Attestati Elettronici.
 
-Il Catalogo delle Credenziali Digitali mira a:
+Il Catalogo degli Attestati ElettroniciCatalogo degli Attestati Elettronici mira a:
 
-  1. Facilitare la scoperta delle Credenziali Digitali per gli Utenti.
-  2. Standardizzare la descrizione tecnica e funzionale delle Credenziali Digitali.
+  1. Facilitare la scoperta degli Attestati Elettronici per gli Utenti.
+  2. Standardizzare la descrizione tecnica e funzionale degli Attestati Elettronici.
   3. Abilitare l'interoperabilità tra diversi Emittenti e Relying Parties.
   4. Semplificare il processo di integrazione per Fornitori di Wallet e Relying Parties.
   5. Garantire la fiducia nell'ecosistema attraverso informazioni verificabili e affidabili.
-  6. Fornire trasparenza sull'ecosistema delle Credenziali Digitali disponibili.
+  6. Fornire trasparenza sull'ecosistema degli Attestati Elettronici disponibili.
 
 
-Le principali Entità coinvolte nel Catalogo delle Credenziali Digitali sono:
+Le principali Entità coinvolte nel Catalogo degli Attestati Elettronici sono:
 
-  - **Trust Anchor**: Gestisce e mantiene il Catalogo delle Credenziali Digitali, garantendone l'autenticità e l'integrità.
-  - **Organismo di Supervisione**: Interagisce con il Trust Anchor e il Catalogo delle Credenziali Digitali per monitorare la fase di registrazione garantendo sicurezza e privacy secondo le normative nazionali/europee, mantenendo tutte le informazioni affidabili e aggiornate.
-  - **Emittenti di Credenziali Digitali**: Le entità autorizzate a emettere Credenziali Digitali, registrandole nel Catalogo.
-  - **Relying Parties**: Usano il Catalogo delle Credenziali Digitali per raccogliere tutte le informazioni necessarie sulle Credenziali Digitali che intendono richiedere durante la fase di presentazione.
-  - **Fornitori di Wallet**: Accedono al Catalogo delle Credenziali Digitali per identificare le Credenziali Digitali disponibili e per recuperare tutte le informazioni necessarie per integrarle nelle loro Soluzioni Wallet.
-  - **Utenti**: Gli Utenti che usano indirettamente il Catalogo delle Credenziali Digitali attraverso le loro Istanze Wallet per scoprire e richiedere Credenziali Digitali.
-  - **Fonti Autentiche**: Le Entità che detengono i dati originali che sono attestati nelle Credenziali Digitali. Forniscono supporto agli Emittenti nella registrazione delle Credenziali Digitali nel Catalogo.
+  - **Trust Anchor**: Gestisce e mantiene il Catalogo degli Attestati Elettronici, garantendone l'autenticità e l'integrità.
+  - **Organismo di Supervisione**: Interagisce con il Trust Anchor e il Catalogo degli Attestati Elettronici per monitorare la fase di registrazione garantendo sicurezza e privacy secondo le normative nazionali/europee, mantenendo tutte le informazioni affidabili e aggiornate.
+  - **Emittenti di Attestati Elettronici**: Le entità autorizzate a emettere Attestati Elettronici, registrandole nel Catalogo.
+  - **Relying Parties**: Usano il Catalogo degli Attestati Elettronici per raccogliere tutte le informazioni necessarie sulgli Attestati Elettronici che intendono richiedere durante la fase di presentazione.
+  - **Fornitori di Wallet**: Accedono al Catalogo degli Attestati Elettronici per identificare gli Attestati Elettronici disponibili e per recuperare tutte le informazioni necessarie per integrarle nelle loro Soluzioni Wallet.
+  - **Utenti**: Gli Utenti che usano indirettamente il Catalogo degli Attestati Elettronici attraverso le loro Istanze Wallet per scoprire e richiedere Attestati Elettronici.
+  - **Fonti Autentiche**: Le Entità che detengono i dati originali che sono attestati nelgli Attestati Elettronici. Forniscono supporto agli Emittenti nella registrazione degli Attestati Elettronici nel Catalogo.
 
 
 .. _fig_catalog.svg:
 .. plantuml:: plantuml/credential-catalog-entities.puml
     :width: 99%
-    :alt: La figura illustra le Entità delle Credenziali Digitali.
-    :caption: `Diagramma Entità-Relazione del Catalogo delle Credenziali Digitali. <https://www.plantuml.com/plantuml/svg/ZLJ1Rkis4BpxAxP6WQP00X-QtjeWgPEsFXGmuXGz6ZIvbeb8fCfTEbM__YrDELAUb6ST34khuSnmESjxOXKuLYKysiAoAc4PqA1ZcnwL57mH4Pwam1Pfzfrrkem6uPVbxM9vkrtwglPEy7UpsG_mY7lh43RhvzNBqwO7vbWh4tvQQ5zLtjsDVDbxnpVg3SbNUFFpGcDWkxTQCKv06p6wKpG5MdhzEW4M2GDDyUcBAJ1XEsAO07p5PgAx2J1hjbe5Cm69_-c3SWLkLSbJ-etqohwUW7nJPOaNAHVM4LkER5CuPhFtL5tfSmIlOJvCA7KHdGlW6GjB79hql1H4471eQ-3t85v07PKjrQv46A6JXTzJ7IpZh_DpfkO_Yg4r1lBkAlLTkF-MlvE6PVi_EeAtWmTZINivP53EYEg_4OalQIG-uU-soo4IFpXzy4dd9Rr1VarwwVUNSgf0EgbKoZgM7m4Vy9i3t1ULY8dcfY76wefYBT6qv4FpcpUD26ow2gJIITGxopxGkPig7HJK1qK8w2W6wmeWrFB0pScQQ1sLRlgwlP7kz2rHn42Zfmkh_34vU8WiJP1k6y3sBf9DAuP4SF4isq7eP0EMZNXUgv2OKdHo0ThAF9_ogQ_l4GJsK2Wf1R1kxqELsw1sFZBeSUN-O7NoUIhMmH-joRl_vrI1jjJkMMia6dgmZh48Yh4lcgeUCl471xdKQIlfP5gZDpu64KX2vnAqjQJ-foyD-22DTTBOD0sWc54uZ6XTx7Wtq6c0fBqVijrjg8lqTPVd7A6uAoqTiflVHQMD7JfJUm4Ahz0E4_nnXbQEPQ5c6LBBX_4rVJkVXZtuT1gPe8jjVs6-VZ2CzGQiQvSE-tyc6pSxo6fVyezFuZXc8TCDizVnTP7pO4_BzatlmjG3hdmV3XZJw12qaLuvOkKqGfq11dPDNhvzR0dw3bREs82Qo-RzHgN-bKfVsRYNECIg_080>`_
+    :alt: La figura illustra le Entità degli Attestati Elettronici.
+    :caption: `Diagramma Entità-Relazione del Catalogo degli Attestati Elettronici. <https://www.plantuml.com/plantuml/svg/ZLJ1Rkis4BpxAxP6WQP00X-QtjeWgPEsFXGmuXGz6ZIvbeb8fCfTEbM__YrDELAUb6ST34khuSnmESjxOXKuLYKysiAoAc4PqA1ZcnwL57mH4Pwam1Pfzfrrkem6uPVbxM9vkrtwglPEy7UpsG_mY7lh43RhvzNBqwO7vbWh4tvQQ5zLtjsDVDbxnpVg3SbNUFFpGcDWkxTQCKv06p6wKpG5MdhzEW4M2GDDyUcBAJ1XEsAO07p5PgAx2J1hjbe5Cm69_-c3SWLkLSbJ-etqohwUW7nJPOaNAHVM4LkER5CuPhFtL5tfSmIlOJvCA7KHdGlW6GjB79hql1H4471eQ-3t85v07PKjrQv46A6JXTzJ7IpZh_DpfkO_Yg4r1lBkAlLTkF-MlvE6PVi_EeAtWmTZINivP53EYEg_4OalQIG-uU-soo4IFpXzy4dd9Rr1VarwwVUNSgf0EgbKoZgM7m4Vy9i3t1ULY8dcfY76wefYBT6qv4FpcpUD26ow2gJIITGxopxGkPig7HJK1qK8w2W6wmeWrFB0pScQQ1sLRlgwlP7kz2rHn42Zfmkh_34vU8WiJP1k6y3sBf9DAuP4SF4isq7eP0EMZNXUgv2OKdHo0ThAF9_ogQ_l4GJsK2Wf1R1kxqELsw1sFZBeSUN-O7NoUIhMmH-joRl_vrI1jjJkMMia6dgmZh48Yh4lcgeUCl471xdKQIlfP5gZDpu64KX2vnAqjQJ-foyD-22DTTBOD0sWc54uZ6XTx7Wtq6c0fBqVijrjg8lqTPVd7A6uAoqTiflVHQMD7JfJUm4Ahz0E4_nnXbQEPQ5c6LBBX_4rVJkVXZtuT1gPe8jjVs6-VZ2CzGQiQvSE-tyc6pSxo6fVyezFuZXc8TCDizVnTP7pO4_BzatlmjG3hdmV3XZJw12qaLuvOkKqGfq11dPDNhvzR0dw3bREs82Qo-RzHgN-bKfVsRYNECIg_080>`_
 
 
-La seguente tabella riassume le informazioni principali che DEVONO essere fornite dal Catalogo delle Credenziali Digitali:
+La seguente tabella riassume le informazioni principali che DEVONO essere fornite dal Catalogo degli Attestati Elettronici:
 
 
-.. list-table:: Catalogo delle Credenziali Digitali - Informazioni principali
+.. list-table:: Catalogo degli Attestati Elettronici - Informazioni principali
    :class: longtable
    :widths: 30 70
    :header-rows: 1
@@ -493,7 +493,7 @@ La seguente tabella riassume le informazioni principali che DEVONO essere fornit
        - **Identificatore univoco della credenziale**: Una stringa identificativa univoca di ciascuna Credenziale Digitale.
        - **Metodi di autenticazione dell'utente**: Meccanismi di autenticazione dell'utente usati per richiedere la Credenziale Digitale, se richiesto dagli Emittenti o dalle Fonti Autentiche.
        - **Livello Minimo di Garanzia**: Il Livello Minimo di Garanzia richiesto per l'affidabilità della Credenziale Digitale. DEVE tenere conto del Livello di Garanzia dell'autenticazione dell'Utente, quando applicabile, e dell'Istanza Wallet.
-   * - Emittenti di Credenziali Digitali
+   * - Emittenti di Attestati Elettronici
      - Dettagli sull'organizzazione autorizzata a emettere la Credenziale Digitale, come:
 
        - **Identificatori dell'emittente**: Identificatore univoco per l'emittente della Credenziale Digitale.
@@ -510,22 +510,22 @@ La seguente tabella riassume le informazioni principali che DEVONO essere fornit
    * - Termini d'Uso
      - Condizioni e limitazioni per l'uso della Credenziale Digitale, come:
 
-       - **Validità della credenziale**: Periodo di tempo durante il quale la Credenziale Digitale è valida e, quando applicabile, meccanismi e dettagli tecnici per invalidare le Credenziali Digitali (metodi di revoca/sospensione).
+       - **Validità della credenziale**: Periodo di tempo durante il quale la Credenziale Digitale è valida e, quando applicabile, meccanismi e dettagli tecnici per invalidare gli Attestati Elettronici (metodi di revoca/sospensione).
        - **Policy di restrizione**: Se applicabile, regole che governano l'uso e le limitazioni della Credenziale Digitale secondo le normative nazionali. È usata, ad esempio, per specificare se solo Entità di tipo legale specifico, per esempio Fornitore Pub-EAA e Soluzioni Wallet pubbliche, sono autorizzate a emettere e ottenere la Credenziale Digitale.
        - **Policy di prezzo**: Informazioni relative ai modelli di prezzo della Credenziale Digitale, come `free`, `issuance_based`, `verification_based`.
        - **Scopi della Credenziale Digitale**: Informazioni relative agli scopi consentiti per cui la Credenziale Digitale può essere usata. Ogni tipo di Credenziale Digitale può essere usato per molteplici scopi.
 
 
-Il Trust Anchor DEVE pubblicare e mantenere aggiornate tutte le informazioni all'endpoint `.well-known` del Catalogo delle Credenziali Digitali garantendo affidabilità, autenticità e integrità dei dati. In particolare, il Catalogo delle Credenziali Digitali, i claims e la tassonomia DEVONO essere disponibili attraverso l'endpoint ``.well-known/credential-catalog``.
+Il Trust Anchor DEVE pubblicare e mantenere aggiornate tutte le informazioni all'endpoint `.well-known` del Catalogo degli Attestati Elettronici garantendo affidabilità, autenticità e integrità dei dati. In particolare, il Catalogo degli Attestati Elettronici, i claims e la tassonomia DEVONO essere disponibili attraverso l'endpoint ``.well-known/credential-catalog``.
 
-Gerarchia delle Credenziali Digitali
+Gerarchia degli Attestati Elettronici
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Le Credenziali Digitali riconosciute all'interno dell'ecosistema IT-Wallet sono classificate e standardizzate gerarchicamente secondo i seguenti domini e scopi principali. Scopi aggiuntivi POSSONO essere aggiunti man mano che l'ecosistema IT-Wallet cresce.
+gli Attestati Elettronici riconosciute all'interno dell'ecosistema IT-Wallet sono classificate e standardizzate gerarchicamente secondo i seguenti domini e scopi principali. Scopi aggiuntivi POSSONO essere aggiunti man mano che l'ecosistema IT-Wallet cresce.
 
 
 .. _it-wallet-dc-domains:
-.. list-table:: Domini e Scopi delle Credenziali Digitali
+.. list-table:: Domini e Scopi degli Attestati Elettronici
    :class: longtable
    :header-rows: 1
    :widths: 20 30 50
@@ -591,10 +591,10 @@ Questo approccio consente:
   - **Autorizzazione basata su policy** usando mappature dominio/scopo.
   - **Registrazione RP flessibile** supportando sia le esigenze di conformità governativa che i requisiti operativi aziendali.
 
-Struttura del Catalogo delle Credenziali Digitali
+Struttura del Catalogo degli Attestati Elettronici
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Il contenuto del Catalogo delle Credenziali Digitali è protetto in un JWS che contiene i seguenti parametri dell'header JOSE:
+Il contenuto del Catalogo degli Attestati Elettronici è protetto in un JWS che contiene i seguenti parametri dell'header JOSE:
 
 
 .. _table_catalog_parameters:
@@ -625,7 +625,7 @@ Il contenuto del Catalogo delle Credenziali Digitali è protetto in un JWS che c
 Il payload JWS contiene i seguenti parametri:
 
 
-.. list-table:: Campi di Primo Livello del Catalogo delle Credenziali Digitali
+.. list-table:: Campi di Primo Livello del Catalogo degli Attestati Elettronici
    :class: longtable
    :header-rows: 1
    :widths: 30 70
@@ -633,19 +633,20 @@ Il payload JWS contiene i seguenti parametri:
    * - **Nome del Campo**
      - **Descrizione**
    * - **version**
-     - RICHIESTO. Versione del formato del Catalogo delle Credenziali Digitali.
+     - RICHIESTO. Versione del formato del Catalogo degli Attestati Elettronici.
    * - **last_modified**
-     - RICHIESTO. Timestamp dell'ultima modifica al Catalogo delle Credenziali Digitali.
+     - RICHIESTO. Timestamp dell'ultima modifica al Catalogo degli Attestati Elettronici.
    * - **iss**
-     - RICHIESTO. Identificatore dell'emittente del Catalogo delle Credenziali Digitali.
+     - RICHIESTO. Identificatore dell'emittente del Catalogo degli Attestati Elettronici.
    * - **credentials**
-     - RICHIESTO. Array contenente definizioni di Credenziali Digitali.
+     - RICHIESTO. Array contenente definizioni di Attestati Elettronici.
    * - **wallet_app_attestations**
      - RICHIESTO. Un Array JSON contenente definizioni per le Attestazioni dell'App Wallet, inclusi i loro formati supportati e i claims associati. Questo Oggetto è usato da altre entità, come Emittenti e Relying Parties, per recuperare informazioni sui formati di Attestazione dell'App Wallet supportati all'interno dell'ecosistema.
 
 Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazioni:
 
 
+.. _table_catalog_parameters_first_level:
 .. list-table:: Campi di Primo Livello di Ciascuna Voce di Credenziale
   :class: longtable
   :header-rows: 1
@@ -700,7 +701,7 @@ Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazion
   * - **authentic_sources**
     - RICHIESTO. Array di oggetti JSON delle Fonti Autentiche che fanno riferimento alle Fonti Autentiche autorizzate. Ogni oggetto DEVE contenere l'identificatore dell'entità AS e l'identificatore specifico della capacità di dati:
 
-      * **id**: Identificatore stringa che fa riferimento all'entity_id della Fonte Autentica come registrato nel :ref:`registry:Authentic Source Registry`.
+      * **id**: Identificatore stringa che fa riferimento all'entity_id della Fonte Autentica come registrato nel :ref:`registry:Registro delle Fonti Autentiche`.
       * **dataset_id**: Identificatore stringa della capacità di dati/dataset specifico usato dall'Emittente dall'AS.
 
 .. note::
@@ -731,7 +732,7 @@ L'Oggetto ``wallet_app_attestations`` è un Array contenente almeno le seguenti 
       * **schema_uri**: URI che punta al documento di specifica del formato.
       * **schema_uri#integrity**: Digest crittografico del documento di specifica del formato per la verifica dell'integrità. DEVE essere una stringa della forma ``{digest_method}-{digest_value}``, dove ``{digest_method}`` è l'algoritmo di digest usato (es., ``sha-256``) e ``{digest_value}`` è il valore del digest codificato in base64url.
 
-L'esempio corrispondente del Catalogo delle Credenziali Digitali decodificato in JSON sia per l'header che per il payload è il seguente:
+L'esempio corrispondente del Catalogo degli Attestati Elettronici decodificato in JSON sia per l'header che per il payload è il seguente:
 
 .. literalinclude:: ../../examples/catalog-example-header.json
   :language: JSON
@@ -740,12 +741,12 @@ L'esempio corrispondente del Catalogo delle Credenziali Digitali decodificato in
   :language: JSON
 
 .. note::
-  Per una gestione migliore e più efficiente della localizzazione delle informazioni contenute nel Catalogo delle Credenziali Digitali, un'Entità che lo consulta DOVREBBE:
+  Per una gestione migliore e più efficiente della localizzazione delle informazioni contenute nel Catalogo degli Attestati Elettronici, un'Entità che lo consulta DOVREBBE:
 
-    - Scaricare la versione base del Catalogo delle Credenziali Digitali (compatta, senza localizzazioni) usando l'endpoint ``.well-known/credential-catalog``.
+    - Scaricare la versione base del Catalogo degli Attestati Elettronici (compatta, senza localizzazioni) usando l'endpoint ``.well-known/credential-catalog``.
     - Determinare la lingua preferita dell'Utente.
     - Scaricare solo i bundle di localizzazione necessari.
-    - Unire dinamicamente il contenuto localizzato con la struttura del Catalogo delle Credenziali Digitali.
+    - Unire dinamicamente il contenuto localizzato con la struttura del Catalogo degli Attestati Elettronici.
 
 Un esempio non normativo di output di un bundle di localizzazione è fornito di seguito:
 
@@ -770,7 +771,7 @@ La fonte canonica per le caratteristiche di visualizzazione e la struttura dei c
 
 La logica complessiva per presentare una Credenziale è:
 
-1. Il Wallet/Relying Party recupera il **Catalogo delle Credenziali Digitali** leggero per scoprire il `credential_type` disponibile e l'`entity_id` dei loro Emittenti di Credenziali.
+1. Il Wallet/Relying Party recupera il **Catalogo degli Attestati Elettronici** leggero per scoprire il `credential_type` disponibile e l'`entity_id` dei loro Emittenti di Credenziali.
 2. Recupera i **Metadati dell'Emittente di Credenziali** completi (Entity Configuration) dall'`entity_id` scoperto.
 3. I Metadati dell'Emittente di Credenziali DEVONO contenere le caratteristiche di visualizzazione complete (loghi, colori) e le informazioni dettagliate dello schema (tramite link ai Metadati di Tipo appropriati o direttamente nella configurazione). L'Emittente costruisce questi metadati in base ai suggerimenti forniti dalla Fonte Autentica (tramite il Registro AS) e le specifiche dello schema standard (tramite il Registro degli Schema).
 
@@ -815,12 +816,12 @@ Un esempio non normativo della struttura della Tassonomia è fornito di seguito:
   :language: JSON
 
 .. note::
-  Per una gestione migliore e più efficiente della localizzazione delle informazioni contenute nel Catalogo delle Credenziali Digitali, un'Entità che lo consulta DOVREBBE:
+  Per una gestione migliore e più efficiente della localizzazione delle informazioni contenute nel Catalogo degli Attestati Elettronici, un'Entità che lo consulta DOVREBBE:
 
-    - Scaricare la versione base del Catalogo delle Credenziali Digitali (compatta, senza localizzazioni) usando l'endpoint ``.well-known/taxonomy``.
+    - Scaricare la versione base del Catalogo degli Attestati Elettronici (compatta, senza localizzazioni) usando l'endpoint ``.well-known/taxonomy``.
     - Determinare la lingua preferita dell'Utente.
     - Scaricare solo i bundle di localizzazione necessari.
-    - Unire dinamicamente il contenuto localizzato con la struttura del Catalogo delle Credenziali Digitali.
+    - Unire dinamicamente il contenuto localizzato con la struttura del Catalogo degli Attestati Elettronici.
 
 Un esempio non normativo di output di un bundle di localizzazione è fornito di seguito:
 
@@ -842,11 +843,11 @@ Le Entità DOVREBBERO verificare l'integrità dei bundle di localizzazione scari
 Registro degli Schema
 ---------------------
 
-Il **Registro degli Schema** è l'inventario autorevole di tutti gli **Schema delle Credenziali** conosciuti e accettati (JSON Schema per SD-JWT, CBOR Schema per mDOC) all'interno dell'ecosistema IT-Wallet. È gestito dal Trust Anchor e fornisce una singola fonte verificabile per recuperare le specifiche tecniche richieste per analizzare, validare e visualizzare le Credenziali Digitali.
+Il **Registro degli Schema** è l'inventario autorevole di tutti gli **Schema delle Credenziali** conosciuti e accettati (JSON Schema per SD-JWT, CBOR Schema per mDOC) all'interno dell'ecosistema IT-Wallet. È gestito dal Trust Anchor e fornisce una singola fonte verificabile per recuperare le specifiche tecniche richieste per analizzare, validare e visualizzare gli Attestati Elettronici.
 
 **Obiettivi del Registro degli Schema:**
 
-1. **Centralizzazione degli Schema**: Fornire un punto di accesso centralizzato per tutti gli schemi tecnici usati dalle Credenziali Digitali.
+1. **Centralizzazione degli Schema**: Fornire un punto di accesso centralizzato per tutti gli schemi tecnici usati dalgli Attestati Elettronici.
 2. **Integrità e Autenticità**: Garantire l'integrità e l'autenticità dei documenti degli schema attraverso digest crittografici.
 3. **Interoperabilità**: Facilitare l'integrazione senza soluzione di continuità di Fornitori di Wallet e Relying Parties fornendo versioni di schema coerenti.
 4. **Supporto al Ciclo di Vita delle Credenziali**: Agire come punto di riferimento verificabile per la validazione dello schema durante l'emissione e la presentazione.
@@ -925,9 +926,9 @@ I principali Percorsi di utilizzo illustrano di seguito le interazioni con l'Inf
 Navigazione del Catalogo
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Il percorso di utilizzo *Navigazione del Catalogo* supporta gli Utenti (sia utenti umani tramite un'**Istanza Wallet** che sistemi automatizzati come **Relying Parties** o portali web) nella scoperta e selezione delle Credenziali Digitali disponibili.
+Il percorso di utilizzo *Navigazione del Catalogo* supporta gli Utenti (sia utenti umani tramite un'**Istanza Wallet** che sistemi automatizzati come **Relying Parties** o portali web) nella scoperta e selezione degli Attestati Elettronici disponibili.
 
-1.  **Accesso all'Endpoint di Scoperta**: L'entità (es., un Fornitore di Wallet o portale informativo) accede all'`Endpoint di Scoperta del Registro` (``.well-known/it-wallet-registry``) per ottenere l'URI del **Catalogo delle Credenziali Digitali**.
+1.  **Accesso all'Endpoint di Scoperta**: L'entità (es., un Fornitore di Wallet o portale informativo) accede all'`Endpoint di Scoperta del Registro` (``.well-known/it-wallet-registry``) per ottenere l'URI del **Catalogo degli Attestati Elettronici**.
 
 2.  **Navigazione e Selezione**:
 
@@ -942,7 +943,7 @@ Emissione di Credenziali
 
 Questo percorso definisce come un Emittente di Credenziali usa l'Infrastruttura di Registro per preparare ed emettere una Credenziale Digitale conforme.
 
-1.  **Identificazione dei Requisiti**: Il CI consulta il **Catalogo delle Credenziali Digitali** per i requisiti tecnici del tipo di Credenziale da emettere (es., ``max_validity_days``, ``min_loa``).
+1.  **Identificazione dei Requisiti**: Il CI consulta il **Catalogo degli Attestati Elettronici** per i requisiti tecnici del tipo di Credenziale da emettere (es., ``max_validity_days``, ``min_loa``).
 
 2.  **Risoluzione dello Schema e dei Claims**:
 
@@ -964,7 +965,7 @@ Questo percorso descrive come un'**Istanza Wallet** e una **Relying Party (RP)**
 1.  **Autorizzazione e Selezione del Wallet**:
 
   * Il Wallet riceve una Richiesta di Presentazione dall'RP, verifica la validità della richiesta confrontando i *claims* richiesti con le *Policy di Autorizzazione* relative all'RP (tramite le definizioni della **Tassonomia**).
-  * Il Wallet consulta il **Catalogo delle Credenziali Digitali** per verificare i *Domini* e *Scopi* associati ai tipi di Credenziali che detiene, valutando quali Credenziali sono adatte per la richiesta.
+  * Il Wallet consulta il **Catalogo degli Attestati Elettronici** per verificare i *Domini* e *Scopi* associati ai tipi di Credenziali che detiene, valutando quali Credenziali sono adatte per la richiesta.
   * Il Wallet verifica se gli attributi richiesti (claims) sono disponibili e autorizzati per la divulgazione in base alla policy della richiesta (scenari **Credential-Specific** o **Credential-Agnostic**).
   * L'Utente autorizza il rilascio degli attributi selezionati, divulgati selettivamente. Il Wallet quindi confeziona e presenta la Credenziale Digitale all'RP.
 

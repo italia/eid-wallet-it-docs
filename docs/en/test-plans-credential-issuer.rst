@@ -1039,9 +1039,9 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_217
     - Data Model and lifecycle, Interoperability
     - Digital Credential Catalogue Required Information
-    - Credential Issuer provides its credentials in the catalogue, along with the information in the corresponding :ref:`table <table_catalogue_main_information>`.
+    - Credential Issuer provides its credentials in the catalogue, along with the information in the corresponding :ref:`table <_table_catalog_parameters>`.
   * - CI_218
     - Data Model and lifecycle, Interoperability
     - Credentials Array Element Information
-    - Each element of the *Credentials* array correctly contains all the information defined in the First-level Fields :ref:`table <table_catalogue_credentials_parameters>`.
+    - Each element of the *Credentials* array correctly contains all the information defined in the First-level Fields :ref:`table <_table_catalog_parameters_first_level>`.
 
