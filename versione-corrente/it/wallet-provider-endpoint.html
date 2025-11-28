@@ -137,7 +137,7 @@
 <li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Sistema di Onboarding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. Design dell'Esperienza Utente</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. L'Infrastruttura di Trust</a></li>
-<li class="toctree-l1"><a class="reference internal" href="registry.html">7. Infrastruttura del Registro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registry.html">7. Infrastruttura di Registro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entity-onboarding.html">8. Onboarding delle Entità</a></li>
 <li class="toctree-l1"><a class="reference internal" href="x5c-evaluation.html">9. Operazioni di Gestione dei Certificati X.509</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entities.html">10. Entità</a></li>
@@ -819,7 +819,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 <td><p><span class="target" id="index-38"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7800.html"><strong>RFC 7800</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>vct</strong></p></td>
-<td><p>OBBLIGATORIO. Il valore del tipo di Credenziale DEVE essere una Stringa URL HTTPS e DEVE essere impostato come <code class="docutils literal notranslate"><span class="pre">urn:eudi:wallet_app_attestation:it:{version}</span></code>; si veda <a class="reference internal" href="registry.html#struttura-del-catalogo-degli-attestati-elettronici"><span class="std std-ref">Struttura del Catalogo degli Attestati Elettronici</span></a> per dettagli.</p></td>
+<td><p>OBBLIGATORIO. Il valore del tipo di Credenziale DEVE essere una Stringa URL HTTPS e DEVE essere impostato come <code class="docutils literal notranslate"><span class="pre">urn:eudi:wallet_app_attestation:it:{version}</span></code>; si veda <span class="xref std std-ref">registry:Struttura del Catalogo degli Attestati Elettronici</span> per dettagli.</p></td>
 <td><p>Sezione 3.2.2.2 <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/11/">SD-JWT-VC</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>_sd</strong></p></td>
@@ -913,7 +913,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 </section>
 <section id="wallet-app-attestation-mdoc">
 <h3><span class="section-number">13.1.4.5. </span>Wallet App Attestation mdoc<a class="headerlink" href="#wallet-app-attestation-mdoc" title="Link to this heading">¶</a></h3>
-<p>Questa descrizione specializza ulteriormente le linee guida fornite in ref:<cite>pid-eaa-data-model:MDOC-CBOR Credential Format</cite> per rappresentare la Wallet App Attestation in formato mdoc. Quest'ultimo DEVE avere il <code class="docutils literal notranslate"><span class="pre">docType</span></code> alorizzato come <code class="docutils literal notranslate"><span class="pre">{Trust</span> <span class="pre">Anchor</span> <span class="pre">reverse</span> <span class="pre">domain}.{wallet_app_attestation}.{versione}</span></code>; si veda <a class="reference internal" href="registry.html#struttura-del-catalogo-degli-attestati-elettronici"><span class="std std-ref">Struttura del Catalogo degli Attestati Elettronici</span></a> per dettagli.</p>
+<p>Questa descrizione specializza ulteriormente le linee guida fornite in ref:<cite>pid-eaa-data-model:MDOC-CBOR Credential Format</cite> per rappresentare la Wallet App Attestation in formato mdoc. Quest'ultimo DEVE avere il <code class="docutils literal notranslate"><span class="pre">docType</span></code> alorizzato come <code class="docutils literal notranslate"><span class="pre">{Trust</span> <span class="pre">Anchor</span> <span class="pre">reverse</span> <span class="pre">domain}.{wallet_app_attestation}.{versione}</span></code>; si veda <span class="xref std std-ref">registry:Struttura del Catalogo degli Attestati Elettronici</span> per dettagli.</p>
 <p>I <code class="docutils literal notranslate"><span class="pre">nameSpaces</span></code> per gli Oggetti Json del nameSpace domestico sono definiti come segue:</p>
 <table class="longtable docutils align-default" id="id1">
 <caption><span class="caption-number">Tabella 13.1 </span><span class="caption-text">it.wallet.trust-registry.WalletAttestation.1</span><a class="headerlink" href="#id1" title="Link to this table">¶</a></caption>
@@ -1258,7 +1258,7 @@ Un Fornitore di Attestati Elettronici di Dati di Identificazione Personale che �
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 26/11/2025.
+      Ultimo aggiornamento 28/11/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

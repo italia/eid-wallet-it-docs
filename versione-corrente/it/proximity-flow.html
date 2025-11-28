@@ -137,7 +137,7 @@
 <li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Sistema di Onboarding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. Design dell'Esperienza Utente</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. L'Infrastruttura di Trust</a></li>
-<li class="toctree-l1"><a class="reference internal" href="registry.html">7. Infrastruttura del Registro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registry.html">7. Infrastruttura di Registro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entity-onboarding.html">8. Onboarding delle Entità</a></li>
 <li class="toctree-l1"><a class="reference internal" href="x5c-evaluation.html">9. Operazioni di Gestione dei Certificati X.509</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entities.html">10. Entità</a></li>
@@ -1060,7 +1060,7 @@ Ogni Richiesta mdoc DEVE essere conforme alla seguente struttura e DEVE includer
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p><strong>Richiesta della Wallet App Attestation</strong></p>
-<p>La Relying Party che richiede una Wallet App Attestation DEVE aggiungere un oggetto nell'array <strong>docRequest</strong> che abbia solo il campo <code class="docutils literal notranslate"><span class="pre">docType</span></code> impostato come <code class="docutils literal notranslate"><span class="pre">{Trust</span> <span class="pre">Anchor</span> <span class="pre">reverse</span> <span class="pre">domain}.{WalletAppAttestation}</span></code> (si rimanda a <a class="reference internal" href="registry.html#struttura-del-catalogo-degli-attestati-elettronici"><span class="std std-ref">Struttura del Catalogo degli Attestati Elettronici</span></a> per dettagli ulteriori). La Relying Party NON DEVE includere il parametro <code class="docutils literal notranslate"><span class="pre">nameSpaces</span></code> nella richiesta (<a class="reference internal" href="test-plans-proximity-presentation.html#test-plans-proximity-presentation"><span class="std std-ref">PPR-010</span></a>).</p>
+<p>La Relying Party che richiede una Wallet App Attestation DEVE aggiungere un oggetto nell'array <strong>docRequest</strong> che abbia solo il campo <code class="docutils literal notranslate"><span class="pre">docType</span></code> impostato come <code class="docutils literal notranslate"><span class="pre">{Trust</span> <span class="pre">Anchor</span> <span class="pre">reverse</span> <span class="pre">domain}.{WalletAppAttestation}</span></code> (si rimanda a <span class="xref std std-ref">registry:Struttura del Catalogo degli Attestati Elettronici</span> per dettagli ulteriori). La Relying Party NON DEVE includere il parametro <code class="docutils literal notranslate"><span class="pre">nameSpaces</span></code> nella richiesta (<a class="reference internal" href="test-plans-proximity-presentation.html#test-plans-proximity-presentation"><span class="std std-ref">PPR-010</span></a>).</p>
 <p>Questo componente DEVE essere presente solo se <code class="docutils literal notranslate"><span class="pre">ReaderAuthAllSupport</span></code> è impostato su <code class="docutils literal notranslate"><span class="pre">true</span></code> nel messaggio di DeviceEngagement, e i campi individuali <code class="docutils literal notranslate"><span class="pre">readerAuth</span></code> non vengono utilizzati (<a class="reference internal" href="test-plans-proximity-presentation.html#test-plans-proximity-presentation"><span class="std std-ref">PPR-025</span></a>).</p>
 </div>
 </section>
@@ -1243,7 +1243,7 @@ Ogni Richiesta mdoc DEVE essere conforme alla seguente struttura e DEVE includer
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 26/11/2025.
+      Ultimo aggiornamento 28/11/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

@@ -77,8 +77,6 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
     - **Description**
   * - **credential_issuer**
     - The Credential Issuer identifier. It MUST be a case sensitive URL using HTTPS scheme as defined in `OpenID4VCI`_ Sections 12.2.1 and 12.2.4.
-  * - **logo_uri**
-    - URL of the entity's logo that will be shown to the User during Wallet Instance interactions. See `OID-FED`_ Section 5.2.2. The logo mime type MUST be ``application/svg``.
   * - **credential_endpoint**
     - URL of the Credential endpoint. See `OpenID4VCI`_ Section 12.2.4.
   * - **nonce_endpoint**
@@ -98,18 +96,22 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
 
         - **name**: String value of a display name for the Credential Issuer.
         - **locale**: String value that identifies the language of this object represented as a language tag taken from values defined in *BCP47* :rfc:`5646`. There MUST be only one object for each language identifier.
+        - **logo**: Object with information about the logo of the Credential Issuer. The following parameters MUST be included:
+
+              - **uri**: URL of the entity's logo that will be shown to the User during Wallet Instance interactions. The logo mime type MUST be ``application/svg``.
+              - **uri#integrity**: REQUIRED. integrity metadata as defined in Section 3 of `W3C-SRI`_.
 
   * - **credential_configurations_supported**
     - JSON object that outlines the details of the Digital Credentials supported by the Credential Issuer. It includes a list of name/value pairs, where each name uniquely identifies a specific supported Digital Credential. This identifier is utilized to inform the Wallet Instance which Digital Credential can be provided by the Credential Issuer. The associated value within the object MUST contain metadata specific to that Digital Credential, as defined following. See `OpenID4VCI`_ Sections 12.2.4 and A.3.2.
 
         - **format**: String identifying the format of this Credential. The Digital Credential MUST support the value string "*dc+sd-jwt*" in case of SD-JWT VC (See `OpenID4VCI`_ Section A.3.1.) and "*mso_mdoc*" in case of mdoc (see `OpenID4VCI`_ Section A.2.1.).
-        - **scope**: JSON String identifying the supported *scope* value. The Wallet Instance MUST use this value in the Pushed Authorization Request. Scope values MUST be the entire set or a subset of the *scope* values in the *scopes_supported* parameter of the Authorization Server. If the Credential is included in the Digital Credentials Catalog the *scope* value MUST match with the ``credential_type`` parameter defined in :ref:`registry:Digital Credentials Catalog Structure`. [See `OpenID4VCI`_ Section 12.2.4].
+        - **scope**: JSON String identifying the supported *scope* value. The Wallet Instance MUST use this value in the Pushed Authorization Request. Scope values MUST be the entire set or a subset of the *scope* values in the *scopes_supported* parameter of the Authorization Server. If the Credential is included in the Digital Credentials Catalog the *scope* value MUST match with the ``credential_type`` parameter defined in :ref:`registry:Digital Credentials Catalog Structure` or in the :ref:`registry:Schema Registry`. [See `OpenID4VCI`_ Section 12.2.4].
         - **cryptographic_binding_methods_supported**: JSON Array of case sensitive strings that identify the representation of the cryptographic key material that the issued Credential is bound to. The Credential Issuer MUST support the value "*jwk*" for "dc+sd-jwt" format and "*cose_key*" for "mso_mdoc".
         - **credential_signing_alg_values_supported**: JSON Array of case sensitive strings that identify the algorithms that the Credential Issuer MUST support to sign the issued Credential. See Section :ref:`algorithms:cryptographic algorithms` for more details.
         - **proof_types_supported**: JSON object which provides detailed information about the key proof(s) supported by the Credential Issuer. It consists of a list of name/value pairs, where each name uniquely identifies a supported proof type. The Credential Issuer MUST support at least "*jwt*" as defined in `OpenID4VCI`_ Appendix F.1. The value associated with each name/value pair is a JSON object containing metadata related to the key proof(s). The Credential Issuer MUST support at least the parameter **proof_signing_alg_values_supported** which MUST be a JSON Array of case sensitive strings that identify the supported algorithms (see Section :ref:`algorithms:cryptographic algorithms` for more details about the supported algorithms).
         - **vct**: REQUIRED only if ``format`` is set to "*dc+sd-jwt*". As defined in [:ref:`credential-data-model:SD-JWT-VC Credential Format`].
         - **doctype**: REQUIRED only if ``format`` is set to "*mso_mdoc*". As defined in [:ref:`credential-data-model:mDoc-CBOR Credential Format`].
-        - **credential_metadata**: REQUIRED only if the Digital Credential is not included in the Digital Credentials Catalog. Object containing information relevant to the usage and display of issued Credentials. The parameters that MUST be included are
+        - **credential_metadata**: REQUIRED. Object containing information relevant to the usage and display of issued Credentials. The parameters that MUST be included are
 
           - **display**: Array of objects containing display language properties. The parameters that MUST be included are
 
@@ -127,21 +129,25 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
                   
                   - **uri**: REQUIRED. A URI pointing to the background image.
                   - **uri#integrity**: REQUIRED. integrity metadata as defined in Section 3 of `W3C-SRI`_.
-                
-                - **text_color**: OPTIONAL. String value of a text color of the Digital Credential represented as numerical color values defined in `W3C.CSS-COLOR`_.
+                  
+                - **watermark_image**: OPTIONAL. Object containing information about the watermanrk image to be displayed for the type. The object contains the following sub-values:
+                  
+                  - **uri**: REQUIRED. A URI pointing to the background image.
+                  - **uri#integrity**: REQUIRED. integrity metadata as defined in Section 3 of `W3C-SRI`_.
 
           - **claims**: Array of JSON object each describing how a certain claim related to the Credential MUST be displayed to the User. This Array lists the claims in the order they MUST be displayed by the Wallet. To provide detailed information about the claim, the innermost value MUST contain at least the following parameters. See `OpenID4VCI`_ Section A.3.2.
 
             - **path**: It contains the pointer that specifies the path to a specific claim within the Digital Credential as defined in Appendix C of `OpenID4VCI`_.
-            - **display**: Array of objects containing display language properties. The parameters that MUST be included are
+            - **mandatory**: Boolean which, when set to `true`, indicates that the Credential Issuer will always include this claim in the issued Credential.
+            - **sd**: String indicating whether the claim is selectively disclosable. It MUST be set to `always` if the claim is selectively disclosure or `never` if not.
+            - **display**: Array of objects containing display language properties. Array containing display information about the claim indicated in the ``path``. The array contains an object for each language supported. The parameters that MUST be included are
 
                 - **name**: String value of a display name for the claim.
                 - **description**: human-readable description for the claim.
                 - **locale**: String value that identifies the language of this object represented as a language tag taken from values defined in *BCP47* :rfc:`5646`. There MUST be only one object for each language identifier.
                 
-        - **schema_uri**: REQUIRED only if the Digital Credential is not included in the Digital Credentials Catalog. URI pointing to the schema related to the format.
-        - **schema_uri#integrity**: REQUIRED only if ``schema_uri`` is present. Cryptographic digest of the schema specification for integrity verification. It MUST be a string of the form ``{digest_method}-{digest_value}``, where ``{digest_method}`` is the digest algorithm used (e.g., ``sha-256``) and ``{digest_value}`` is the base64url-encoded digest value.
-        - **authentic_source**: REQUIRED only if the Digital Credential is not included in the Digital Credentials Catalog. Object containing ``entity_id`` parameter valued with the identifier referencing authorized Authentic Sources as registered in the :ref:`registry:Authentic Source Registry`.
+        - **schema_id**: REQUIRED. Identifier of the credential schema as defined in the :ref:`registry:Schema Registry`.
+        - **authentic_sources**: REQUIRED. Object containing ``entity_id`` and ``dataset_id`` parameters valued with the respective identifiers as registered in the :ref:`registry:Authentic Source Registry`.
   * - **jwks**
     - JSON Web Key Set document, passed by value, containing the protocol specific keys for the Credential Issuer. See `OID-FED`_ Section 5.2.1 and `JWK`_.
   * - **trust_frameworks_supported**

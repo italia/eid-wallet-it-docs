@@ -76,8 +76,6 @@ I Metadata *openid_credential_issuer* DEVONO contenere i seguenti *claims*.
     - **Descrizione**
   * - **credential_issuer**
     - L'identificativo del Fornitore di Attestati Elettronici. DEVE essere un HTTPS URL *case sensitive* come definito in `OpenID4VCI`_ Sezioni 12.2.1 e 12.2.4.
-  * - **logo_uri**
-    - URL del logo dell’entità che verrà mostrato all’Utente durante le interazioni con l’istanza del Wallet. Vedi `OID-FED`_ Sezione 5.2.2. Il MIME type del logo DEVE essere ``application/svg``.
   * - **credential_endpoint**
     - URL del *Credential endpoint*. Vedi `OpenID4VCI`_ Sezione 12.2.4.
   * - **nonce_endpoint**
@@ -97,18 +95,22 @@ I Metadata *openid_credential_issuer* DEVONO contenere i seguenti *claims*.
 
         - **name**: Denominazione in formato stringa del Fornitore di Attestati Elettronici. 
         - **locale**: Valore stringa che identifica la localizzazione rappresentato come un tag linguistico come definito in *BCP47* :rfc:`5646`. DEVE esserci un solo oggetto per ogni identificativo di localizzazione.
+        - **logo**: Oggetto contenente informazioni relative al logo del Credential Issuer. DEVE includere i seguenti parametri:
+
+            - **uri**: URL del logo dell’entità che verrà mostrato all’Utente durante le interazioni con l’istanza del Wallet. Il MIME type del logo DEVE essere ``application/svg``.
+            - **uri#integrity**: REQUIRED. "integrity metadata" come definito nella Sezione 3 del documento `W3C-SRI`_.
 
   * - **credential_configurations_supported**
     - Oggetto JSON che delinea i dettagli dell'Attestato Elettronico supportato dal Fornitore di Attestato Elettronico. Include un elenco di coppie nome/valore, dove ogni nome identifica in modo univoco un specific Attestato Elettronico supportato. Questo identificativo viene utilizzato per informare l'Istanza del Wallet su quale Attestato Elettronico può essere emesso. Il valore associato all'interno dell'oggetto DEVE contenere Metadata specifici per quell'Attestato Elettronico, come definito di seguito. Vedi `OpenID4VCI`_ Sezioni 12.2.4 e A.3.2.
 
         - **format**: Stringa che identifica il formato di questo Attestato Elettronico. L'Attestato Elettronico DEVE supportare il valore stringa "*dc+sd-jwt*" nel caso di SD-JWT VC (Vedi `OpenID4VCI`_ Sezione A.3.1.) e "*mso_mdoc*" nel caso di mdoc (vedi `OpenID4VCI`_ Sezione A.2.1.).
-        - **scope**: Stringa JSON che identifica il valore *scope* supportato. L'Istanza del Wallet DEVE utilizzare questo valore nella *Pushed Authorization Request* inviata. I valori di scope DEVONO essere l'intero insieme o un sottoinsieme dei valori *scope* presenti nel parametro *scopes_supported* del *authorization server*. Se l’Attestato Elettronico è incluso nel Catalogo degli Attestati Elettronici, il valore scope DEVE corrispondere al parametro ``credential_type`` definito in :ref:`registry:Digital Credentials Catalog Structure`. [Vedi `OpenID4VCI`_ Sezione 12.2.4]. 
+        - **scope**: Stringa JSON che identifica il valore *scope* supportato. L'Istanza del Wallet DEVE utilizzare questo valore nella *Pushed Authorization Request* inviata. I valori di scope DEVONO essere l'intero insieme o un sottoinsieme dei valori *scope* presenti nel parametro *scopes_supported* del *authorization server*. Se l’Attestato Elettronico è incluso nel Catalogo degli Attestati Elettronici, il valore scope DEVE corrispondere al parametro ``credential_type`` definito in :ref:`registry:Struttura del Catalogo delle Credenziali Digitali` oppure in :ref:`registry:Registro degli Schema`. [Vedi `OpenID4VCI`_ Sezione 12.2.4]. 
         - **cryptographic_binding_methods_supported**: Array JSON di stringhe *case sensitive* che identificano la rappresentazione della chiave crittografica di *binding* dell'Attestato Elettronico emesso. Il Fornitore di Attestato Elettronico DEVE supportare il valore "*jwk*" per il formato "dc+sd-jwt" e "*cose_key*" per "mso_mdoc".
         - **credential_signing_alg_values_supported**: Array JSON di stringhe *case sensitive* che identificano gli algoritmi che il Fornitore di Attestato Elettronico DEVE supportare per firmare l'Attestato Elettronico emesso. Vedi Sezione :ref:`algorithms:Algoritmi Crittografici` per maggiori dettagli.
         - **proof_types_supported**: Oggetto JSON che fornisce informazioni dettagliate sulle *key proof* supportate dal Fornitore di Attestato Elettronico. Consiste in un elenco di coppie nome/valore, dove ogni nome identifica in modo univoco il *proof type* supportato. Il Fornitore di Attestato Elettronico DEVE supportare almeno "*jwt*" come definito in `OpenID4VCI`_ Appendice F.1. Il valore associato a ciascuna coppia nome/valore è un oggetto JSON contenente informazioni relative alla *key proof(s)*. Il Fornitore di Attestato Elettronico DEVE supportare almeno il parametro **proof_signing_alg_values_supported** che DEVE essere un Array JSON di stringhe *case sensitive* che identificano gli algoritmi supportati (vedi Sezione :ref:`algorithms:Algoritmi Crittografici` per maggiori dettagli sugli algoritmi supportati).
         - **vct**: RICHIESTO solo se ``format`` è valorizzato con "*dc+sd-jwt*". Come definito in [:ref:`credential-data-model:Attestato Elettronico in formato SD-JWT-VC`].        
         - **doctype**: RICHIESTO solo se ``format`` è valorizzato con "*mso_mdoc*". Come definito in [:ref:`credential-data-model:Attestato Elettronico in formato mdoc-CBOR`].
-        - **credential_metadata**: OBBLIGATORIO solo se l'Attestato Elettronico non è incluso nel Catalogo degli Attestati Elettronici. Oggetto contenente informazioni rilevanti per l'utilizzo e la visualizzazione degli Attestati emessi. I parametri che DEVONO essere inclusi sono:
+        - **credential_metadata**: OBBLIGATORIO. Oggetto contenente informazioni rilevanti per l'utilizzo e la visualizzazione degli Attestati emessi. I parametri che DEVONO essere inclusi sono:
 
           - **display**: Array di oggetti contenente le proprietà legate alla visualizzazione. I seguenti parametri sono inclusi:
 
@@ -125,23 +127,26 @@ I Metadata *openid_credential_issuer* DEVONO contenere i seguenti *claims*.
 
                   - **uri**: OBBLIGATORIO. Stringa che contiene la URI da cui il Wallet può ottenere il logo dell’Attestato Elettronico dal Fornitore di Attestati Elettronici.
                   - **uri#integrity**: OBBLIGATORIO. "integrity metadata" come definito nella Sezione 3 del documento `W3C-SRI`_.
-  
-                - **text_color**: OPZIONALE. Valore di tipo stringa che rappresenta il colore del testo dell’Attestato Elettronico, espresso come valore numerico secondo la definizione del documento W3C.CSS-COLOR_.
+
+                - **watermark_image**: OPZIONALE. Oggetto contiene informazioni sull’immagine di filigrana da visualizzare per l'Attestato Elettronico. L’oggetto include i seguenti sotto-valori:
+
+                  - **uri**: OBBLIGATORIO. Stringa che contiene la URI da cui il Wallet può ottenere il logo dell’Attestato Elettronico dal Fornitore di Attestati Elettronici.
+                  - **uri#integrity**: OBBLIGATORIO. "integrity metadata" come definito nella Sezione 3 del documento `W3C-SRI`_.  
 
           - **claims**: Array di oggetti JSON ciascuno che descrive come un determinato attributo relativo all'Attestato Elettronico DEVE essere visualizzato all'Utente. Questo array elenca le attestazioni nell’ordine in cui DEVONO essere mostrate dal Wallet. Per fornire informazioni dettagliate sull’attestazione, il valore più interno DEVE contenere almeno i seguenti parametri. Vedi OpenID4VCI_ Sezione A.3.2.
 
 
             - **path**: Contiene il puntatore che specifica il percorso all'attributo specifico all'interno dell'Attestato Elettronico come definito nell'Appendice C di `OpenID4VCI`_.
-            - **display**: Array di oggetti contenenti proprietà di visualizzazione della localizzazione. I parametri che DEVONO essere inclusi sono
+            - **mandatory**: Valore booleano che, se impostato su `true`, indica che il Credential Issuer includerà sempre questo attributo nelle Credenziali che emette.
+            - **sd**: Stringa che indica se il claim è divulgabile selettivamente. DEVE essere impostato su `always` se il claim è divulgabile selettivamente o `never` se non lo è.
+            - **display**: Array di oggetti contenenti le proprietà di visualizzazione. Array contenente informazioni di visualizzazione relative al claim indicato nel ``path``. L'array contiene un oggetto per ogni lingua supportata. I parametri che DEVONO essere inclusi sono:
 
                 - **name**: Nome dell'attributo in formato stringa.
                 - **description**: Descrizione "human-readable" dell'Attributo.
                 - **locale**: Stringa che identifica la localizzazione con un tag linguistico come definito in *BCP47* :rfc:`5646`. DEVE esserci un solo oggetto per ogni identificativo di localizzazione.
 
-
-        - **schema_uri**: OBBLIGATORIO solo se l’Attestato Elettronico non è incluso nel Catalogo degli Attestati Elettronici. URI che punta allo schema relativo al formato.
-        - **schema_uri#integrity**: OBBLIGATORIO solo se ``schema_uri`` è presente. Digest crittografico del documento di schema utilizzato per la verifica dell'integrità. DEVE essere una stringa nel formato ``{metodo_digest}-{valore_digest}``, dove ``{metodo_digest}`` è l'algoritmo di digest utilizzato (ad esempio, ``sha-256``) e ``{valore_digest}`` è il valore di digest codificato in base64url.
-        - **authentic_source**: OBBLIGATORIO solo se l’Attestato Elettronico non è incluso nel Catalogo degli Attestati Elettronici. Oggetto contenente il parametro ``entity_id``, valorizzato con l’identificativo che fa riferimento alle Fonti Autentiche autorizzate registrate nel :ref:`registry:Registro delle Fonti Autentiche`.
+        - **schema_id**: OBBLIGATORIO. Identificativo dello schema delle credenziali come definito nel :ref:`registry:Registro degli Schema`.
+        - **authentic_sources**: OBBLIGATORIO. Oggetto contenente il parametro ``entity_id`` e ``dataset_id``, valorizzato con i rispettivi dentificativi come censiti all'interno del :ref:`registry:Registro delle Fonti Autentiche`.
 
   * - **jwks**
     - JSON Web Key Set, passato per valore, contenente le chiavi specifiche del protocollo usato dal Fornitore di Attestato Elettronico. Vedi `OID-FED`_ Sezione 5.2.1 e `JWK`_.

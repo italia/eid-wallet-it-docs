@@ -208,64 +208,6 @@ Il documento di *Type Metadata* DEVE essere un oggetto JSON che contiene i segue
     * - **extends#integrity**
       - CONDIZIONALE. OBBLIGATORIO se **extends** è presente.
       - [`SD-JWT-VC`_] Sezione 6.2.
-    * - **data_source**
-      - OBBLIGATORIO. Oggetto contenente informazioni sull'origine dei dati. DEVE contenere l'oggetto ``verification`` con il seguente sub parametro:
-
-          * ``trust_framework``: DEVE contenere il trust framework utilizzato per l'autenticazione digitale verso il sistema della Fonte Autentica.
-          * ``authentic_source``: DEVE contenere i seguenti claim relativi alle informazioni sulla Fonte Autentica:
-
-               * ``organization_name`` nome della Fonte Autentica.
-               * ``organization_code`` codice identificativo della Fonte Autentica.
-               * ``homepage_uri`` uri che punta alla homepage della Fonte Autentica.
-               * ``contacts`` elenco dei contatti per informazioni e assistenza.
-               * ``logo_uri`` URI che punta all'immagine del logo.
-
-      - Questa specifica
-    * - **display**
-      - OBBLIGATORIO. Array di oggetti, uno per ogni lingua supportata, contenente informazioni di visualizzazione per il tipo di Attestato Elettronico. Contiene per ogni oggetto le seguenti proprietà:
-
-          * ``locale``: tag di lingua come definito in :rfc:`5646` Sezione 2, il nome di questo parametro è allineato con quanto definito in SD-JWT-VC Draft 12. [OBBLIGATORIO].
-          * ``name``: nome *human-readable* del tipo di Attestato Elettronico. [OBBLIGATORIO].
-          * ``description``: descrizione *human-readable* per il tipo di Attestato Elettronico. [OBBLIGATORIO].
-          * ``rendering``: oggetto contenente i metodi di rendering supportati dal tipo di Attestato Elettronico. [OBBLIGATORIO]. Il metodo di rendering `svg_template` DEVE essere supportato.
-            
-            L'array ``svg_templates`` di oggetti contiene per ogni template SVG supportato le seguenti proprietà:
-
-                * ``uri``: URI che punta al template SVG. [OBBLIGATORIO].
-                * ``uri#integrity``: "integrity metadata" come definito nella Sezione 3 di `W3C-SRI`_. [OBBLIGATORIO].
-                * ``properties``: oggetto contenente le proprietà del template SVG. Questa proprietà è OBBLIGATORIA se è presente più di un template SVG. L'oggetto DEVE contenere almeno una delle proprietà definite in `SD-JWT-VC`_ Sezione 8.1.2.1.
-
-            Se è supportato anche il metodo di rendering `simple`, l'oggetto ``simple`` contiene le seguenti proprietà:
-
-                * ``logo``: oggetto contenente informazioni sul logo da visualizzare. Questa proprietà è OBBLIGATORIA. L'oggetto contiene i seguenti sotto-valori:
-
-                    * ``uri``: URI che punta all'immagine del logo. [OBBLIGATORIO]
-                    * ``uri#integrity``: "integrity metadata" come definito nella Sezione 3 di `W3C-SRI`_. [OBBLIGATORIO].
-                    * ``alt_text``: stringa contenente del testo alternativo da visualizzare al posto dell'immagine del logo. [OPZIONALE].
-
-                * ``background_color``: valore del colore in RGB come definito in `W3C.CSS-COLOR`_ per lo sfondo dell'Attestato Elettronico. [OPZIONALE].
-                * ``background_image``: Oggetto contenente informazioni sull'immagine di sfondo da visualizzare per l'Attestato Elettronico. Questa proprietà è OPZIONALE [Allineato con SD-JWT-VC Draft 12]. L'oggetto contiene i seguenti sottovalori:
-
-                    * ``uri``: URI che punta all'immagine di sfondo. [OBBLIGATORIO]
-                    * ``uri#integrity``: "integrity metadata" come definito nella Sezione 3 di `W3C-SRI`_. [OBBLIGATORIO].
-
-                * ``text_color``: valore del colore in RGB come definito in `W3C.CSS-COLOR`_ per il testo dell'Attestato Elettronico. [OPZIONALE].
-
-          .. note::
-            L'uso del template SVG è RACCOMANDATO per tutte le applicazioni che lo supportano.
-
-      - [`SD-JWT-VC`_] Sezione 8.
-    * - **claims**
-      - OBBLIGATORIO. Array di oggetti contenenti informazioni per la visualizzazione e la validazione dei claim dell'Attestato Elettronico. Ogni oggetto contiene le seguenti proprietà:
-
-          * ``path``: array che indica i/il claim a cui ci si riferisce. [OBBLIGATORIO].
-          * ``display``: array contenente informazioni di visualizzazione sul claim indicato nel ``path``. L'array contiene un oggetto per ogni lingua supportata dal tipo di Attestato Elettronico. Questa proprietà è OBBLIGATORIA. Contiene i seguenti parametri:
-             * ``locale``: tag di lingua come definito in :rfc:`5646` Sezione 2, il nome di questo parametro è allineato con quanto definito in SD-JWT-VC Draft 12. [OBBLIGATORIO].
-             * ``label``: etichetta *human-readable* per il claim. [OBBLIGATORIO].
-             * ``description``: descrizione *human-readable* per il claim. [OBBLIGATORIO].
-          * ``sd``: stringa che indica se il claim è divulgabile selettivamente. DEVE essere impostato su `always` se il claim è divulgabile selettivamente o `never` se non lo è. [OBBLIGATORIO].
-          * ``svg_id``: stringa alfanumerica contenente l'ID del claim referenziato nel template SVG come definito in [`SD-JWT-VC`_] Sezione 9. [OBBLIGATORIO].
-      - [`SD-JWT-VC`_] Sezione 9.
 
 
 Un esempio non normativo di *Type Metadata* dell'Attestato Elettronico è fornito di seguito.
@@ -883,17 +825,7 @@ Per SD-JWT-VC, i parametri sono contrassegnati con `(hdr)` se si trovano nell'he
      - | Type_Metadata.name (hdr)
        | Type_Metadata.description (hdr)
        | Type_Metadata.extends (hdr)
-       | Type_Metadata.schema (hdr)
-       | Type_Metadata.schema_uri (hdr)
-       | Type_Metadata.data_source (hdr)
-       | Type_Metadata.display (hdr)
-       | Type_Metadata.claims (hdr)
      - | -
-       | -
-       | -
-       | -
-       | -
-       | -
        | -
        | nameSpaces
    * - Emittente
