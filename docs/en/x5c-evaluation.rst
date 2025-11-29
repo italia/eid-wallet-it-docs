@@ -155,6 +155,79 @@ Federation entities MUST coordinate X.509 Certificate management with federation
 - **Federation Exit**: Ensure proper X.509 Certificate revocation during voluntary or supervisory body-initiated federation exit.
 
 
+Key Rotation Procedures
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Federation entities MUST implement key rotation mechanisms to maintain security posture and respond to security events. This section defines operational procedures for detecting and responding to superior key rotations and for subordinate key renewal.
+
+Periodic Trust Chain Verification
+""""""""""""""""""""""""""""""""""
+
+Subordinate entities MUST perform periodic verification of their trust chain to detect superior key rotations and ensure continued federation membership.
+
+**Verification Requirements**
+
+Federation subordinates MUST:
+
+1. Fetch their own Subordinate Statement from immediate superior every 24 hours using the fetch endpoint defined in :ref:`trust-infrastructure:Federation API endpoints`.
+2. Verify X.509 Certificate validity and detect certificate updates in the ``x5c`` field.
+3. Check for revocation or suspension status.
+4. Update local Entity Configuration when superior certificates change.
+
+**Detection Mechanisms**
+
+Subordinates MAY use one or more of the following mechanisms to detect changes:
+
+- **CRL/OCSP Verification**: Monitor Certificate Revocation Lists or Online Certificate Status Protocol responses to detect revocation of superior certificates as defined in :ref:`trust-infrastructure:X.509 Certificate Revocation`. Certificate revocation indicates superior key rotation is in progress.
+- **Fetch Endpoint**: Retrieve Subordinate Statement via ``GET {superior}/fetch?sub={subordinate_entity_id}`` to obtain current certificates.
+- **Events Endpoint**: Monitor ``GET {superior}/federation_subordinate_events_endpoint?sub={subordinate_entity_id}`` for ``jwks_update`` events. The Federation Subordinate Events endpoint returns historical track of registration events as defined in :ref:`trust-infrastructure:Federation API endpoints`.
+
+**Implementation**
+
+Subordinates SHOULD implement automated scheduling for:
+
+- Daily fetch operations to retrieve current Subordinate Statement.
+- X.509 Certificate chain validation after each fetch.
+- Automatic Entity Configuration updates when certificate changes detected.
+- Event monitoring for proactive change detection.
+
+Superior Key Rotation
+""""""""""""""""""""""
+
+When a superior entity (Trust Anchor or Intermediate) rotates its Federation Entity Key, all subordinate X.509 certificates MUST be reissued.
+
+**Rotation Procedure**
+
+1. **Key Revocation**: Superior publishes Certificate Revocation List (CRL) or Historical Keys (HK) entry revoking the old key as defined in :ref:`trust-infrastructure:X.509 Certificate Revocation`.
+2. **Entity Configuration Update**: Superior publishes new Entity Configuration signed with new Federation Entity Key.
+3. **X.509 Certificate Reissuance**: Superior reissues X.509 certificates to all subordinates using new key.
+4. **Certificate Publication**: Superior makes new certificates available on fetch endpoint.
+5. **Subordinate Detection**: Subordinates detect change during periodic fetch (within 24 hours).
+6. **Certificate Update**: Subordinates update ``x5c`` field in their Entity Configuration with new certificate.
+
+**Certificate Priority**
+
+When multiple X.509 certificates exist for the same subordinate public key, the certificate in the Subordinate Statement MUST take priority over the certificate in the subordinate's Entity Configuration.
+
+Subordinate Key Rotation
+"""""""""""""""""""""""""
+
+Subordinates rotate their Federation Entity Keys by submitting Certificate Signing Requests to their immediate superior following the same procedure as initial onboarding.
+
+**Rotation Procedure**
+
+1. **New Key Generation**: Subordinate generates new Federation Entity Key pair.
+2. **CSR Generation**: Subordinate generates PKCS #10 Certificate Signing Request for new key as defined in :ref:`entity-onboarding:Entity Onboarding`.
+3. **CSR Submission**: Subordinate submits CSR to superior entity using the same onboarding endpoint.
+4. **Certificate Issuance**: Superior validates CSR and issues new X.509 certificate.
+5. **Certificate Publication**: Superior makes new certificate available on fetch endpoint.
+6. **Certificate Retrieval**: Subordinate fetches updated Subordinate Statement containing new certificate.
+7. **Entity Configuration Update**: Subordinate adds new JWK with new certificate to Entity Configuration ``jwks`` array.
+
+.. note::
+   During key rotation, subordinates SHOULD maintain both old and new keys temporarily to ensure service continuity. The old key SHOULD be removed only after confirming successful propagation of the new key throughout the federation.
+
+
 Entity Lifecycle Management
 ----------------------------
 
