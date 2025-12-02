@@ -182,8 +182,6 @@ Subordinates MAY use one or more of the following mechanisms to detect changes:
 - **Fetch Endpoint**: Retrieve Subordinate Statement via ``GET {superior}/fetch?sub={subordinate_entity_id}`` to obtain current certificates.
 - **Events Endpoint**: Monitor ``GET {superior}/federation_subordinate_events_endpoint?sub={subordinate_entity_id}`` for ``jwks_update`` events. The Federation Subordinate Events endpoint returns historical track of registration events as defined in :ref:`trust-infrastructure:Federation API endpoints`.
 
-**Implementation**
-
 Subordinates SHOULD implement automated scheduling for:
 
 - Daily fetch operations to retrieve current Subordinate Statement.
