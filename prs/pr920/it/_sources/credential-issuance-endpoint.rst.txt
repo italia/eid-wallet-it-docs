@@ -10,7 +10,7 @@ La request all'authorization endpoint del Credential Issuer DEVE contenere sia i
 
 Il metodo HTTP POST DEVE avere i parametri nel body del messaggio codificati in formato ``application/x-www-form-urlencoded``.
 
-.. _table_http_request_claim:
+.. _table_http_request_claims:
 .. list-table:: Parametri della PAR request http
     :class: longtable
     :widths: 20 60 20
@@ -29,7 +29,6 @@ Il metodo HTTP POST DEVE avere i parametri nel body del messaggio codificati in 
 Il Pushed Authorization Endpoint è protetto con *OAuth 2.0 Attestation-based Client Authentication* [`OAUTH-ATTESTATION-CLIENT-AUTH`_], pertanto
 la richiesta all'authorization endpoint del Credential Issuer DEVE utilizzare i seguenti parametri di header HTTP:
 
-.. _table_http_request_headers_claim:
 .. list-table:: parametri di header della request http
     :class: longtable
     :widths: 20 60 20
@@ -97,8 +96,8 @@ Il payload del JWT ``request`` contenuto nel messaggio HTTP POST contiene i segu
       - DEVE essere valorizzato con ``code``.
       - :rfc:`6749`
     * - **client_id**
-      - DEVE essere valorizzato come indicato nella :ref:`Tabella dei parametri HTTP <table_http_request_claim>`.
-      - Vedi :ref:`Tabella dei parametri HTTP <table_http_request_claim>`.
+      - DEVE essere valorizzato come indicato nella :ref:`Tabella dei parametri HTTP <table_http_request_claims>`.
+      - Vedi :ref:`Tabella dei parametri HTTP <table_http_request_claims>`.
     * - **state**
       - Identificativo univoco della sessione lato client. Questo valore verrà restituito al client nella response, al termine dell'autenticazione. DEVE essere una stringa casuale composta da caratteri alfanumerici e con una lunghezza minima di 32 cifre. Tra i caratteri speciali DEVONO essere considerati quelli non alfanumerici definiti in `[NIST] <https://csrc.nist.gov/glossary/term/special_character>`__.
       - Vedi [`OIDC`_] Sezione 3.1.2.1.
@@ -283,8 +282,8 @@ I parametri obbligatori nell'authentication request HTTP sono specificati nella 
       - **Descrizione**
       - **Riferimento**
     * - **client_id**
-      - DEVE essere valorizzato come indicato nella :ref:`Tabella dei parametri HTTP <table_http_request_claim>`.
-      - Vedi :ref:`Tabella dei parametri HTTP <table_http_request_claim>`.
+      - DEVE essere valorizzato come indicato nella :ref:`Tabella dei parametri HTTP <table_http_request_claims>`.
+      - Vedi :ref:`Tabella dei parametri HTTP <table_http_request_claims>`.
     * - **request_uri**
       - DEVE essere valorizzato con lo stesso valore ottenuto dalla PAR Response. Vedi :ref:`Tabella dei parametri della Risposta HTTP PAR <table_http_response_claim>`.
       - [:rfc:`9126`].
@@ -1055,8 +1054,6 @@ Nella seguente tabella sono elencati i *Status Code HTTP* e i relativi codici di
       - `-`
       - Il Credential Issuer non può soddisfare la richiesta entro l'intervallo di tempo definito.
 
-
-.. _it-notification-data-correction:
 
 Correzione dati usando credential_failure
 .........................................

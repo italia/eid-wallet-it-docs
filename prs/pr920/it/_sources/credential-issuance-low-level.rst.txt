@@ -567,7 +567,7 @@ Il seguente diagramma descrive il Re-issuance Flow dell'Attestato Elettronico.
 
 **Passo 1**: Il flusso inizia quando l'Utente apre l'Istanza del Wallet: questo passaggio PUÒ essere attivato da una notifica inviata dal Credential Issuer (utilizzando ad esempio uno dei contatti di comunicazione out-of-band registrati durante il flusso di emissione).
 
-**Passo 2**: L'Istanza del Wallet DEVE controllare lo stato di ogni Attestato Elettronico memorizzato, recuperando — se non disponibile — un Token di Stato valido (seguendo il flusso descritto nella Sezione :ref:`credential-revocation:OAuth Status Lists`) o una Status Assertion (seguendo il flusso descritto nella Sezione :ref:`credential-revocation:OAuth Status Assertions`) come da (:ref:`WP_069 <wallet-credential-issuance-testcases>`).  
+**Passo 2**: L'Istanza del Wallet DEVE controllare lo stato di ogni Attestato Elettronico memorizzato, recuperando — se non disponibile — un Token di Stato valido (seguendo il flusso descritto nella Sezione :ref:`credential-revocation:Token di Status List`) o una Status Assertion (seguendo il flusso descritto nella Sezione :ref:`credential-revocation:OAuth Status Assertions`) come da (:ref:`WP_069 <wallet-credential-issuance-testcases>`).  
 L'Istanza del Wallet DEVE poi verificare (:ref:`WP_070 <wallet-credential-issuance-testcases>`):
 
   - in caso di Status List: se un Attestato Elettronico ha lo stato impostato su ``0x03`` - ``UPDATE`` o ``0x04`` - ``ATTRIBUTE_UPDATE``;

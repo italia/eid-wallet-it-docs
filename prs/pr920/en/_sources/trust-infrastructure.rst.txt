@@ -16,7 +16,7 @@ illustrated in :ref:`onboarding-high-level:Onboarding Journey Maps`.
 
 **Onboarding Enablement**: The Trust Infrastructure provides the cryptographic mechanisms that allow new entities (Credential Issuers, Relying Parties, Wallet Providers) to establish verifiable trust relationships during their registration process. Without this infrastructure, entities would not be able to prove their compliance status or operational capabilities to other ecosystem participants.
 
-**Entity Lifecycle Support**: Throughout an entity's operational lifecycle, the Trust Infrastructure maintains up-to-date trust attestations, handles key rotation, manages revocation scenarios, and supports compliance monitoring. This directly supports the lifecycle management procedures detailed in :ref:`entity-onboarding:Entity Lifecycle Management`.
+**Entity Lifecycle Support**: Throughout an entity's operational lifecycle, the Trust Infrastructure maintains up-to-date trust attestations, handles key rotation, manages revocation scenarios, and supports compliance monitoring. This directly supports the lifecycle management procedures detailed in :ref:`entity-onboarding:Entity Onboarding`.
 
 **Registry Infrastructure Integration**: The Trust Infrastructure implements the Federation Registry component of the broader Registry Infrastructure, providing the technical foundation for entity discovery and trust validation that underpins all onboarding procedures.
 
@@ -36,7 +36,7 @@ except for Wallet Instances which are End-User's personal devices authenticated 
 .. note::
   The Wallet Instance, as a personal device, is deemed reliable through a verifiable attestation issued and signed by a trusted third party.
 
-  This is called *Wallet Attestation* and is documented in the dedicated :ref:`wallet-attestation-issuance:Wallet Attestation Issuance`.
+  This is called *Wallet Attestation* and is documented in the dedicated :ref:`wallet-attestation-issuance:Wallet App and Wallet Unit Attestation Issuance`.
 
 **Role in Onboarding**: During entity registration, the Trust Anchor and Intermediates act as Federation Authorities. This establishes the participant's position in the trust hierarchy and enables them to participate in credential operations. Leaves (Credential Issuers, Relying Parties, Wallet Providers) undergo registration to prove their eligibility and receive authorization to perform their designated functions.
 
@@ -630,6 +630,7 @@ The Trust Chains can also be verified offline, using one of the Trust Anchor's p
   The Wallet Attestation conveys all the required information pertaining to the instance, such as its public key and any other technical or administrative information, without any User's personal data.
 
 
+
 Establishing Trust with Credential Issuers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -660,6 +661,7 @@ In the process represented in the sequence diagram below, the Wallet Instance us
 
 .. note::
   As shown in the figure, the Trust Evaluation process is entirely separate and distinct from the protocol-specific flow. It operates in a different flow and utilizes specialized protocols designed specifically for this purpose.
+
 
 Establishing Trust with Relying Party
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -701,6 +703,7 @@ The Wallet Provider issues the Wallet Attestation, certifying the operational st
 The Wallet Attestation MUST contain the Trust Chain that attests the reliability for its issuer (Wallet Provider) at the time of issuance.
 
 The Wallet Instance provides its Wallet Attestation within the signed request during the PID issuance phase. The Credential Issuer MUST evaluate the Trust Chain about the Wallet Attestation issuer (formally, the Wallet Provider).
+
 
 
 Trust Chain
@@ -809,6 +812,7 @@ The Trust Chains can also be verified offline, using one of the Trust Anchor's p
 **Role in Operations**: During credential issuance and presentation operations, trust evaluation provides real-time verification of entity validity and compliance status. This enables secure credential transactions by ensuring that all participating entities (credential issuers, relying parties, wallet providers) maintain their authorized status and comply with current federation policies.
 
 
+
 Establishing Trust with Credential Issuers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -839,6 +843,7 @@ In the process represented in the sequence diagram below, the Wallet Instance us
 
 .. note::
   As shown in the figure, the Trust Evaluation process is entirely separate and distinct from the protocol-specific flow. It operates in a different flow and utilizes specialized protocols designed specifically for this purpose.
+
 
 Establishing Trust with Relying Party
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -880,6 +885,7 @@ The Wallet Provider issues the Wallet Attestation, certifying the operational st
 The Wallet Attestation MAY contain the Trust Chain that attests the reliability for its issuer (Wallet Provider) at the time of issuance.
 
 The Wallet Instance provides its Wallet Attestation within the signed request during the PID issuance phase. The Credential Issuer MUST evaluate the Trust Chain about the Wallet Attestation issuer (formally, the Wallet Provider).
+
 
 
 Non-repudiability of the Long Lived Attestations
@@ -1105,7 +1111,7 @@ The claims in the Subordinate events statement response are:
 
 **Integration with Entity Lifecycle Management**:
 
-This endpoint complements the entity lifecycle management procedures defined in :ref:`entity-onboarding:Entity Lifecycle Management` by providing detailed historical tracking of all significant events affecting federation participants. It supports both automated compliance monitoring and manual auditing processes.
+This endpoint complements the entity lifecycle management procedures defined in :ref:`entity-onboarding:Entity Onboarding` by providing detailed historical tracking of all significant events affecting federation participants. It supports both automated compliance monitoring and manual auditing processes.
 
 Privacy Remarks
 ---------------

@@ -145,7 +145,7 @@ Lifecycle management in the IT-Wallet ecosystem needs coordination between multi
     - **Registry synchronization:** When one entity makes changes that affect other entities, all registry systems MUST be properly updated ensuring that all changes are logged securely with timestamps and reasons.
     - **Business continuity assurance:** Entities SHOULD balance between making necessary updates and keeping their obligations to users and regulations. This includes ensuring that the service is as available as possible, handling personal data correctly during changes, and staying compliant with legal requirements even in emergency situations.
 
-Technical procedures and specific compliance requirements for lifecycle management are detailed in the Section :ref:`entity-onboarding:Entity Lifecycle Management`.
+Technical procedures and specific compliance requirements for lifecycle management are detailed in the Section :ref:`entity-onboarding:Entity Onboarding`.
 
 Onboarding Journey Maps
 -------------------------------

@@ -565,7 +565,7 @@ Questa sezione elenca i casi di test dalle Sezioni:
    * - WP_069
      - Issuance, Sicurezza
      - Controllo stato di un Attestato Elettronico
-     - Istanza del Wallet verifica lo stato di ogni Attestato Elettronico archiviato recuperando e validando un Status List Token (per :ref:`credential-revocation:OAuth Status Lists`) o una Status Assertion (per :ref:`credential-revocation:OAuth Status Assertions`).
+     - Istanza del Wallet verifica lo stato di ogni Attestato Elettronico archiviato recuperando e validando un Status List Token (per :ref:`credential-revocation:Token di Status List`) o una Status Assertion (per :ref:`credential-revocation:OAuth Status Assertions`).
    * - WP_070
      - Issuance, Sicurezza
      - Flusso re-Issuance: rilevare necessità re-Issuance (aggiornare stato)
@@ -955,7 +955,7 @@ Casi di Test per Eliminazione Attributi dell'Utente Lato Relying Party
 Questa sezione elenca i casi di test dalle Sezioni:
 
 - :ref:`user-attribute-deletion:User's Attributes Deletion`
-- `Relying Party Erasure Endpoint <relying-party-provider-backend-endpoint.html#relying-party-erasure-endpoint>`_
+- `Relying Party Provider Backend Erasure Endpoint <relying-party-provider-backend-endpoint.html#relying-party-provider-backend-erasure-endpoint>`_
 
 
 .. list-table::

@@ -169,7 +169,7 @@
 This trust infrastructure works in coordination with the Registry Infrastructure (see <a class="reference internal" href="registry.html#registry-infrastructure"><span class="std std-ref">Registry Infrastructure</span></a>) to enable the entity onboarding processes detailed in <a class="reference internal" href="entity-onboarding.html#entity-onboarding"><span class="std std-ref">Entity Onboarding</span></a>. In particular, it enables the technical   implementation of the onboarding processes described in <a class="reference internal" href="entity-onboarding.html#entity-onboarding"><span class="std std-ref">Entity Onboarding</span></a> and supports the operational scenarios
 illustrated in <a class="reference internal" href="onboarding-high-level.html#onboarding-journey-maps"><span class="std std-ref">Onboarding Journey Maps</span></a>.</p>
 <p><strong>Onboarding Enablement</strong>: The Trust Infrastructure provides the cryptographic mechanisms that allow new entities (Credential Issuers, Relying Parties, Wallet Providers) to establish verifiable trust relationships during their registration process. Without this infrastructure, entities would not be able to prove their compliance status or operational capabilities to other ecosystem participants.</p>
-<p><strong>Entity Lifecycle Support</strong>: Throughout an entity's operational lifecycle, the Trust Infrastructure maintains up-to-date trust attestations, handles key rotation, manages revocation scenarios, and supports compliance monitoring. This directly supports the lifecycle management procedures detailed in <span class="xref std std-ref">entity-onboarding:Entity Lifecycle Management</span>.</p>
+<p><strong>Entity Lifecycle Support</strong>: Throughout an entity's operational lifecycle, the Trust Infrastructure maintains up-to-date trust attestations, handles key rotation, manages revocation scenarios, and supports compliance monitoring. This directly supports the lifecycle management procedures detailed in <a class="reference internal" href="entity-onboarding.html#entity-onboarding"><span class="std std-ref">Entity Onboarding</span></a>.</p>
 <p><strong>Registry Infrastructure Integration</strong>: The Trust Infrastructure implements the Federation Registry component of the broader Registry Infrastructure, providing the technical foundation for entity discovery and trust validation that underpins all onboarding procedures.</p>
 <figure class="align-default" id="id7">
 <p class="plantuml">
@@ -189,7 +189,7 @@ except for Wallet Instances which are End-User's personal devices authenticated 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The Wallet Instance, as a personal device, is deemed reliable through a verifiable attestation issued and signed by a trusted third party.</p>
-<p>This is called <em>Wallet Attestation</em> and is documented in the dedicated <span class="xref std std-ref">wallet-attestation-issuance:Wallet Attestation Issuance</span>.</p>
+<p>This is called <em>Wallet Attestation</em> and is documented in the dedicated <a class="reference internal" href="wallet-attestation-issuance.html#wallet-app-and-wallet-unit-attestation-issuance"><span class="std std-ref">Wallet App and Wallet Unit Attestation Issuance</span></a>.</p>
 </div>
 <p><strong>Role in Onboarding</strong>: During entity registration, the Trust Anchor and Intermediates act as Federation Authorities. This establishes the participant's position in the trust hierarchy and enables them to participate in credential operations. Leaves (Credential Issuers, Relying Parties, Wallet Providers) undergo registration to prove their eligibility and receive authorization to perform their designated functions.</p>
 <p><strong>Role in Operations</strong>: During credential issuance and presentation, these roles enable distributed trust validation without requiring centralized verification for each transaction. Leaves utilize their registered status to issue credentials, verify presentations, or provide wallet services to end users.</p>
@@ -1447,7 +1447,7 @@ Signature:
 </pre></div>
 </div>
 <p><strong>Integration with Entity Lifecycle Management</strong>:</p>
-<p>This endpoint complements the entity lifecycle management procedures defined in <span class="xref std std-ref">entity-onboarding:Entity Lifecycle Management</span> by providing detailed historical tracking of all significant events affecting federation participants. It supports both automated compliance monitoring and manual auditing processes.</p>
+<p>This endpoint complements the entity lifecycle management procedures defined in <a class="reference internal" href="entity-onboarding.html#entity-onboarding"><span class="std std-ref">Entity Onboarding</span></a> by providing detailed historical tracking of all significant events affecting federation participants. It supports both automated compliance monitoring and manual auditing processes.</p>
 </section>
 </section>
 <section id="privacy-remarks">
@@ -1566,7 +1566,7 @@ Signature:
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 28/11/2025.
+      Last updated on 02/12/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

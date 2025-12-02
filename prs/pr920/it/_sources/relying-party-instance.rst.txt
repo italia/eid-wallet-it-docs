@@ -8,7 +8,7 @@ App di Verifica
 L'App di Verifica è un'applicazione mobile o embedded progettata per richiedere, ricevere ed elaborare Attestati Elettronici dalle Istanze del Wallet in modo affidabile. Ogni App di Verifica garantisce l'integrità, la riservatezza e l'autenticità degli scambi di Attestati Elettronici, consentendo interazioni sicure tra Utenti e Relying Party.
 
 .. note::
-  Per dettagli sui test di conformità, si veda: :ref:`test-plans-remote-presentation:Matrice di Test per la Presentazione di Credenziali Remota`, :ref:`test-plans-proximity-presentation:Matrice di Test per la Presentazione di Credenziali in Prossimità`.
+  Per dettagli sui test di conformità, si veda: :ref:`test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto`, :ref:`test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità`.
 
 Esistono due tipi principali di App di Verifica, ciascuna destinata a diversi ambienti operativi:
 

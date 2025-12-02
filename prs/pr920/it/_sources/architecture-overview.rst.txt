@@ -43,4 +43,4 @@ L'architettura abilita i seguenti processi di interazione principali:
 
   4. **Archiviazione e Gestione degli Attestati**: Le Soluzioni IT-Wallet ricevono e gestiscono gli Attestati Elettronici sui dispositivi degli utenti, consentendo una gestione sicura del ciclo di vita degli attestati.
 
-  5. **Presentazione e Verifica degli Attestati**: Gli Utenti presentano gli Attestati Elettronici alle Relying Party, che verificano i claim attraverso validazione crittografica e verifica dello stato. Le Relying Party operano all'interno di ambiti autorizzati che definiscono quali tipi di attestati e scopi possono richiedere, con validazione contro il :ref:`registry:Registro degli Attributi` per la verifica dello schema.
+  5. **Presentazione e Verifica degli Attestati**: Gli Utenti presentano gli Attestati Elettronici alle Relying Party, che verificano i claim attraverso validazione crittografica e verifica dello stato. Le Relying Party operano all'interno di ambiti autorizzati che definiscono quali tipi di attestati e scopi possono richiedere, con validazione contro il :ref:`registry:Registro dei Claims` per la verifica dello schema.
