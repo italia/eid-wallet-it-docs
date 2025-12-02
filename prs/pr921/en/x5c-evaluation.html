@@ -437,14 +437,14 @@ openssl<span class="w"> </span>crl<span class="w"> </span>-in<span class="w"> </
 <section id="key-rotation-procedures">
 <h2><span class="section-number">9.5. </span>Key Rotation Procedures<a class="headerlink" href="#key-rotation-procedures" title="Link to this heading">¶</a></h2>
 <p>Federation entities MUST implement key rotation mechanisms to maintain security posture and respond to security events. This section defines the operational procedures for detecting and responding to superior key rotations and for subordinate key renewal.</p>
-<section id="periodic-trust-chain-verification">
-<h3><span class="section-number">9.5.1. </span>Periodic Trust Chain Verification<a class="headerlink" href="#periodic-trust-chain-verification" title="Link to this heading">¶</a></h3>
+<section id="superior-key-rotation">
+<h3><span class="section-number">9.5.1. </span>Superior Key Rotation<a class="headerlink" href="#superior-key-rotation" title="Link to this heading">¶</a></h3>
 <p>Subordinate entities MUST perform periodic verification of their trust chain to detect superior key rotations and ensure continued federation membership.</p>
 <p><strong>Verification Requirements</strong></p>
 <p>Federation Subordinates MUST:</p>
 <ol class="arabic simple">
 <li><p>Fetch their own Subordinate Statement from immediate superior every 24 hours using the fetch endpoint defined in <a class="reference internal" href="trust-infrastructure.html#federation-api-endpoints"><span class="std std-ref">Federation API endpoints</span></a>.</p></li>
-<li><p>Verify X.509 Certificate validity and detect the X.509 certificate updates in the <code class="docutils literal notranslate"><span class="pre">x5c</span></code> field.</p></li>
+<li><p>Verify validity and detect updates related tto the X.509 certificate of the Superior in the <code class="docutils literal notranslate"><span class="pre">x5c</span></code> field.</p></li>
 <li><p>Check for revocation or suspension status.</p></li>
 <li><p>Update local Entity Configuration when superior certificates change.</p></li>
 </ol>
@@ -462,9 +462,6 @@ openssl<span class="w"> </span>crl<span class="w"> </span>-in<span class="w"> </
 <li><p>Automatic Entity Configuration updates when certificate changes detected.</p></li>
 <li><p>Event monitoring for proactive change detection.</p></li>
 </ul>
-</section>
-<section id="superior-key-rotation">
-<h3><span class="section-number">9.5.2. </span>Superior Key Rotation<a class="headerlink" href="#superior-key-rotation" title="Link to this heading">¶</a></h3>
 <p>When a superior entity (Trust Anchor or Intermediate) rotates its Federation Entity Key, all subordinate X.509 certificates MUST be reissued.</p>
 <p><strong>Rotation Procedure</strong></p>
 <ol class="arabic simple">
@@ -477,9 +474,13 @@ openssl<span class="w"> </span>crl<span class="w"> </span>-in<span class="w"> </
 </ol>
 <p><strong>Certificate Priority</strong></p>
 <p>When multiple X.509 certificates exist for the same subordinate public key, the certificate in the Subordinate Statement MUST take priority over the certificate in the subordinate's Entity Configuration.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A superior entity cannot independently initiate a Subordinate Key rotation process. The Subordinate Key Rotation mechanism is always initiated by the Subordinate entity, see Section :<a class="reference internal" href="#subordinate-key-rotation"><span class="std std-ref">Subordinate Key Rotation</span></a>.</p>
+</div>
 </section>
 <section id="subordinate-key-rotation">
-<h3><span class="section-number">9.5.3. </span>Subordinate Key Rotation<a class="headerlink" href="#subordinate-key-rotation" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">9.5.2. </span>Subordinate Key Rotation<a class="headerlink" href="#subordinate-key-rotation" title="Link to this heading">¶</a></h3>
 <p>Subordinates rotate their Federation Entity Keys by submitting Certificate Signing Requests to their immediate superior following the same procedure as initial onboarding.</p>
 <p><strong>Rotation Procedure</strong></p>
 <ol class="arabic simple">
@@ -496,7 +497,7 @@ openssl<span class="w"> </span>crl<span class="w"> </span>-in<span class="w"> </
 <p>During key rotation, subordinates SHOULD maintain both old and new keys temporarily to ensure service continuity. The old key SHOULD be removed only after confirming successful propagation of the new key throughout the federation.</p>
 </div>
 <section id="entity-lifecycle-management">
-<h4><span class="section-number">9.5.3.1. </span>Entity Lifecycle Management<a class="headerlink" href="#entity-lifecycle-management" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">9.5.2.1. </span>Entity Lifecycle Management<a class="headerlink" href="#entity-lifecycle-management" title="Link to this heading">¶</a></h4>
 <p>This section provides technical implementation procedures for entity lifecycle management. For high-level lifecycle concepts and business processes, see <a class="reference internal" href="onboarding-high-level.html#entity-lifecycle-management"><span class="std std-ref">Entity Lifecycle Management</span></a>.</p>
 <p>While administrative data update MUST follow governance processes that are out of scope of this technical specification, technical configuration updates are described in the following sections.</p>
 </section>
@@ -684,10 +685,9 @@ curl<span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wall
 </ul>
 </li>
 <li><a class="reference internal" href="#key-rotation-procedures">9.5. Key Rotation Procedures</a><ul>
-<li><a class="reference internal" href="#periodic-trust-chain-verification">9.5.1. Periodic Trust Chain Verification</a></li>
-<li><a class="reference internal" href="#superior-key-rotation">9.5.2. Superior Key Rotation</a></li>
-<li><a class="reference internal" href="#subordinate-key-rotation">9.5.3. Subordinate Key Rotation</a><ul>
-<li><a class="reference internal" href="#entity-lifecycle-management">9.5.3.1. Entity Lifecycle Management</a></li>
+<li><a class="reference internal" href="#superior-key-rotation">9.5.1. Superior Key Rotation</a></li>
+<li><a class="reference internal" href="#subordinate-key-rotation">9.5.2. Subordinate Key Rotation</a><ul>
+<li><a class="reference internal" href="#entity-lifecycle-management">9.5.2.1. Entity Lifecycle Management</a></li>
 </ul>
 </li>
 </ul>
