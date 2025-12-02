@@ -158,7 +158,7 @@ Federation entities MUST coordinate X.509 Certificate management with federation
 Key Rotation Procedures
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Federation entities MUST implement key rotation mechanisms to maintain security posture and respond to security events. This section defines operational procedures for detecting and responding to superior key rotations and for subordinate key renewal.
+Federation entities MUST implement key rotation mechanisms to maintain security posture and respond to security events. This section defines the operational procedures for detecting and responding to superior key rotations and for subordinate key renewal.
 
 Periodic Trust Chain Verification
 """"""""""""""""""""""""""""""""""
