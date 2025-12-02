@@ -5,7 +5,7 @@
 The Relying Party MUST expose a set of endpoints for handling the lifecycle of Verifier Apps that use a remote backend service provided by their Relying Party Provider Backend. These endpoints support proximity presentation flows by providing nonce generation, hardware key registration, integrity validation, and Access Certificate issuance. The specific implementation details are left to the Relying Party's discretion.
 
 .. note::
-  Tests related to Relying Party endpoints are defined in the remote presentation test matrix (:ref:`test-plans-remote-presentation`) and proximity presentation test matrix (:ref:`test-plans-proximity-presentation`).
+  Tests related to Relying Party endpoints are defined in the remote presentation test matrix (:ref:`test-plans-remote-presentation:Remote Credential Verifier Test Matrix`) and proximity presentation test matrix (:ref:`test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix`).
 
 
 Relying Party Provider Backend Federation Endpoint
@@ -227,8 +227,8 @@ The following table lists HTTP Status Codes and related error codes that MUST be
       - ``temporarily_unavailable``
       - The request cannot be fulfilled because the Endpoint is temporarily unavailable (e.g., due to maintenance or overload).
 
-Relying Party Erasure Endpoint
-""""""""""""""""""""""""""""""
+Relying Party Provider Backend Erasure Endpoint
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 The Erasure Endpoint allows Wallet Instances to request deletion of attributes presented to the Relying Party, supporting user privacy rights and regulatory compliance.
 

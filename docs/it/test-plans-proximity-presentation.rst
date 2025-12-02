@@ -1,4 +1,4 @@
-.. _test-plans-proximity-presentation:
+.. include:: ../common/common_definitions.rst
 
 Matrice di Test per il Verificatore di Credenziali in Prossimità
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

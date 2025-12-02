@@ -1,4 +1,4 @@
-.. _presentation-test-matrix:
+.. include:: ../common/common_definitions.rst
 
 Credential Verifier Test Matrix
 -----------------------------------
