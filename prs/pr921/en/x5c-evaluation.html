@@ -441,10 +441,10 @@ openssl<span class="w"> </span>crl<span class="w"> </span>-in<span class="w"> </
 <h3><span class="section-number">9.5.1. </span>Periodic Trust Chain Verification<a class="headerlink" href="#periodic-trust-chain-verification" title="Link to this heading">¶</a></h3>
 <p>Subordinate entities MUST perform periodic verification of their trust chain to detect superior key rotations and ensure continued federation membership.</p>
 <p><strong>Verification Requirements</strong></p>
-<p>Federation subordinates MUST:</p>
+<p>Federation Subordinates MUST:</p>
 <ol class="arabic simple">
 <li><p>Fetch their own Subordinate Statement from immediate superior every 24 hours using the fetch endpoint defined in <a class="reference internal" href="trust-infrastructure.html#federation-api-endpoints"><span class="std std-ref">Federation API endpoints</span></a>.</p></li>
-<li><p>Verify X.509 Certificate validity and detect certificate updates in the <code class="docutils literal notranslate"><span class="pre">x5c</span></code> field.</p></li>
+<li><p>Verify X.509 Certificate validity and detect the X.509 certificate updates in the <code class="docutils literal notranslate"><span class="pre">x5c</span></code> field.</p></li>
 <li><p>Check for revocation or suspension status.</p></li>
 <li><p>Update local Entity Configuration when superior certificates change.</p></li>
 </ol>
@@ -455,7 +455,6 @@ openssl<span class="w"> </span>crl<span class="w"> </span>-in<span class="w"> </
 <li><p><strong>Fetch Endpoint</strong>: Retrieve Subordinate Statement via <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">{superior}/fetch?sub={subordinate_entity_id}</span></code> to obtain current certificates.</p></li>
 <li><p><strong>Events Endpoint</strong>: Monitor <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">{superior}/federation_subordinate_events_endpoint?sub={subordinate_entity_id}</span></code> for <code class="docutils literal notranslate"><span class="pre">jwks_update</span></code> events. The Federation Subordinate Events endpoint returns historical track of registration events as defined in <a class="reference internal" href="trust-infrastructure.html#federation-api-endpoints"><span class="std std-ref">Federation API endpoints</span></a>.</p></li>
 </ul>
-<p><strong>Implementation</strong></p>
 <p>Subordinates SHOULD implement automated scheduling for:</p>
 <ul class="simple">
 <li><p>Daily fetch operations to retrieve current Subordinate Statement.</p></li>
