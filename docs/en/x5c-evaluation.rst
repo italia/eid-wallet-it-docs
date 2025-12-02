@@ -160,8 +160,8 @@ Key Rotation Procedures
 
 Federation entities MUST implement key rotation mechanisms to maintain security posture and respond to security events. This section defines the operational procedures for detecting and responding to superior key rotations and for subordinate key renewal.
 
-Periodic Trust Chain Verification
-""""""""""""""""""""""""""""""""""
+Superior Key Rotation
+"""""""""""""""""""""""
 
 Subordinate entities MUST perform periodic verification of their trust chain to detect superior key rotations and ensure continued federation membership.
 
@@ -170,7 +170,7 @@ Subordinate entities MUST perform periodic verification of their trust chain to 
 Federation Subordinates MUST:
 
 1. Fetch their own Subordinate Statement from immediate superior every 24 hours using the fetch endpoint defined in :ref:`trust-infrastructure:Federation API endpoints`.
-2. Verify X.509 Certificate validity and detect the X.509 certificate updates in the ``x5c`` field.
+2. Verify validity and detect updates related tto the X.509 certificate of the Superior in the ``x5c`` field.
 3. Check for revocation or suspension status.
 4. Update local Entity Configuration when superior certificates change.
 
@@ -189,9 +189,6 @@ Subordinates SHOULD implement automated scheduling for:
 - Automatic Entity Configuration updates when certificate changes detected.
 - Event monitoring for proactive change detection.
 
-Superior Key Rotation
-""""""""""""""""""""""
-
 When a superior entity (Trust Anchor or Intermediate) rotates its Federation Entity Key, all subordinate X.509 certificates MUST be reissued.
 
 **Rotation Procedure**
@@ -206,6 +203,9 @@ When a superior entity (Trust Anchor or Intermediate) rotates its Federation Ent
 **Certificate Priority**
 
 When multiple X.509 certificates exist for the same subordinate public key, the certificate in the Subordinate Statement MUST take priority over the certificate in the subordinate's Entity Configuration.
+
+.. note::
+  A superior entity cannot independently initiate a Subordinate Key rotation process. The Subordinate Key Rotation mechanism is always initiated by the Subordinate entity, see Section ::ref:`x5c-evaluation:Subordinate Key Rotation`.
 
 Subordinate Key Rotation
 """""""""""""""""""""""""

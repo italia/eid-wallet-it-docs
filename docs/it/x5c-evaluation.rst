@@ -160,59 +160,57 @@ Procedure di Rotazione delle Chiavi
 
 Le entità federate DEVONO implementare meccanismi di rotazione delle chiavi per mantenere la postura di sicurezza e rispondere agli eventi di sicurezza. Questa sezione definisce le procedure operative per rilevare e rispondere alle rotazioni delle chiavi superiori e per il rinnovo delle chiavi subordinate.
 
-Verifica Periodica della Trust Chain
+Rotazione delle Chiavi Superiori
 """""""""""""""""""""""""""""""""""""
 
 Le entità subordinate DEVONO eseguire la verifica periodica della propria trust chain per rilevare le rotazioni delle chiavi superiori e garantire la continuità dell'appartenenza alla federazione.
 
 **Requisiti di Verifica**
 
-I subordinati della federazione DEVONO:
+I Subordinati della federazione DEVONO:
 
 1. Recuperare il proprio Subordinate Statement dal superiore immediato ogni 24 ore utilizzando il fetch endpoint definito in :ref:`trust-infrastructure:Endpoint delle API della Federazione`.
-2. Verificare la validità del Certificato X.509 e rilevare gli aggiornamenti dei certificati nel campo ``x5c``.
+2. Verificare la validità e rilevare gli aggiornamenti dei certificati X.509 del superiore nel campo ``x5c``.
 3. Verificare lo stato di revoca o sospensione.
 4. Aggiornare il proprio Entity Configuration quando cambiano i certificati superiori.
 
 **Meccanismi di Rilevamento**
 
-I subordinati POSSONO utilizzare uno o più dei seguenti meccanismi per rilevare le modifiche:
+I Subordinati POSSONO utilizzare uno o più dei seguenti meccanismi per rilevare le modifiche:
 
 - **Verifica CRL/OCSP**: Monitorare le Certificate Revocation List o le risposte del protocollo Online Certificate Status Protocol per rilevare la revoca dei certificati superiori come definito in :ref:`trust-infrastructure:Revoca dei Certificati X.509`. La revoca del certificato indica che è in corso la rotazione della chiave superiore.
 - **Fetch Endpoint**: Recuperare il Subordinate Statement tramite ``GET {superiore}/fetch?sub={entity_id_subordinato}`` per ottenere i certificati correnti.
 - **Events Endpoint**: Monitorare ``GET {superiore}/federation_subordinate_events_endpoint?sub={entity_id_subordinato}`` per gli eventi ``jwks_update``. Il Federation Subordinate Events endpoint restituisce la traccia storica degli eventi di registrazione come definito in :ref:`trust-infrastructure:Endpoint delle API della Federazione`.
 
-**Implementazione**
-
-I subordinati DOVREBBERO implementare la pianificazione automatizzata per:
+I Subordinati DOVREBBERO implementare la pianificazione automatizzata per:
 
 - Operazioni di fetch giornaliere per recuperare il Subordinate Statement corrente.
 - Validazione della catena di certificati X.509 dopo ogni fetch.
 - Aggiornamenti automatici dell'Entity Configuration quando vengono rilevate modifiche ai certificati.
 - Monitoraggio degli eventi per il rilevamento proattivo delle modifiche.
 
-Rotazione delle Chiavi Superiori
-"""""""""""""""""""""""""""""""""
-
-Quando un'entità superiore (Trust Anchor o Intermediate) ruota la propria Chiave dell'Entità Federata, tutti i certificati X.509 subordinati DEVONO essere riemessi.
+Quando un'entità superiore (Trust Anchor o Intermediate) ruota la propria Chiave dell'Entità Federata, tutti i certificati X.509 Subordinati DEVONO essere riemessi.
 
 **Procedura di Rotazione**
 
 1. **Revoca della Chiave**: Il superiore pubblica la Certificate Revocation List (CRL) o la voce Historical Keys (HK) revocando la vecchia chiave come definito in :ref:`trust-infrastructure:Revoca dei Certificati X.509`.
 2. **Aggiornamento Entity Configuration**: Il superiore pubblica la nuova Entity Configuration firmata con la nuova Chiave dell'Entità Federata.
-3. **Riemissione Certificati X.509**: Il superiore riemette i certificati X.509 a tutti i subordinati utilizzando la nuova chiave.
+3. **Riemissione Certificati X.509**: Il superiore riemette i certificati X.509 a tutti i Subordinati utilizzando la nuova chiave.
 4. **Pubblicazione Certificati**: Il superiore rende disponibili i nuovi certificati sul fetch endpoint.
-5. **Rilevamento Subordinato**: I subordinati rilevano la modifica durante il fetch periodico (entro 24 ore).
-6. **Aggiornamento Certificati**: I subordinati aggiornano il campo ``x5c`` nella propria Entity Configuration con il nuovo certificato.
+5. **Rilevamento Subordinato**: I Subordinati rilevano la modifica durante il fetch periodico (entro 24 ore).
+6. **Aggiornamento Certificati**: I Subordinati aggiornano il campo ``x5c`` nella propria Entity Configuration con il nuovo certificato.
 
 **Priorità dei Certificati**
 
 Quando esistono più certificati X.509 per la stessa chiave pubblica subordinata, il certificato nel Subordinate Statement DEVE avere priorità sul certificato nella Entity Configuration del subordinato.
 
+.. note::
+  Un'entità superiore non puà avviare autonomamente un processo di rotazione delle Chiavi Subordinate. Il meccanismo di rotazione delle Chiavi Subordinate è sempre avviato dall'entità Subordinata, vedi Sezione ::ref:`x5c-evaluation:Rotazione delle Chiavi Subordinate`.
+
 Rotazione delle Chiavi Subordinate
 """""""""""""""""""""""""""""""""""
 
-I subordinati ruotano le proprie Chiavi dell'Entità Federata inviando Certificate Signing Request al proprio superiore immediato seguendo la stessa procedura dell'onboarding iniziale.
+I Subordinati ruotano le proprie Chiavi dell'Entità Federata inviando Certificate Signing Request al proprio superiore immediato seguendo la stessa procedura dell'onboarding iniziale.
 
 **Procedura di Rotazione**
 
@@ -225,7 +223,7 @@ I subordinati ruotano le proprie Chiavi dell'Entità Federata inviando Certifica
 7. **Aggiornamento Entity Configuration**: Il subordinato aggiunge la nuova JWK con il nuovo certificato all'array ``jwks`` della Entity Configuration.
 
 .. note::
-   Durante la rotazione delle chiavi, i subordinati DOVREBBERO mantenere sia le chiavi vecchie che quelle nuove per garantire la continuità del servizio. La vecchia chiave DOVREBBE essere rimossa solo dopo aver confermato la corretta propagazione della nuova chiave in tutta la federazione.
+   Durante la rotazione delle chiavi, i Subordinati DOVREBBERO mantenere sia le chiavi vecchie che quelle nuove per garantire la continuità del servizio. La vecchia chiave DOVREBBE essere rimossa solo dopo aver confermato la corretta propagazione della nuova chiave in tutta la federazione.
 
 
 Gestione del Ciclo di Vita dell'Entità
