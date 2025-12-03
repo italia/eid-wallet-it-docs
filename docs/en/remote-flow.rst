@@ -186,6 +186,11 @@ The details of each step shown in the previous picture are described below.
         "MIICajCCAdOgAwIBAgIC...awz",
         "MIICajCCAdOgAwIBAgIC...2w3",
         "MIICajCCAdOgAwIBAgIC...sf2"
+      ],
+      "x5c": [
+        "MIIDqjCCApKgAwIBAgIESLNEvDA ...",
+        "MIICwzCCAasCCQCKVy9eKjvi+jA ...",
+        "MIIDTDCCAjSgAwIBAgIJAPlnQYH..."
       ]
     }
   
@@ -224,8 +229,7 @@ The details of each step shown in the previous picture are described below.
       "state": "3be39b69-6ac1-41aa-921b-3e6c07ddcb03",
       "iss": "https://relying-party.example.org",
       "iat": 1672418465,
-      "exp": 1672422065,
-      "request_uri_method": "post"
+      "exp": 1672422065
     }
 
   It then processes the Relying Party metadata and applies the relevant policies to determine which Digital Credentials and User data the Relying Party is authorized to request (:ref:`WP_087 <wallet-credential-presentation-testcases>`).

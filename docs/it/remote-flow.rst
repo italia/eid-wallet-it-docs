@@ -186,6 +186,11 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
         "MIICajCCAdOgAwIBAgIC...awz",
         "MIICajCCAdOgAwIBAgIC...2w3",
         "MIICajCCAdOgAwIBAgIC...sf2"
+      ],
+      "x5c": [
+        "MIIDqjCCApKgAwIBAgIESLNEvDA ...",
+        "MIICwzCCAasCCQCKVy9eKjvi+jA ...",
+        "MIIDTDCCAjSgAwIBAgIJAPlnQYH..."
       ]
     }
 
@@ -228,8 +233,7 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
       "state": "3be39b69-6ac1-41aa-921b-3e6c07ddcb03",
       "iss": "https://relying-party.example.org",
       "iat": 1672418465,
-      "exp": 1672422065,
-      "request_uri_method": "post"
+      "exp": 1672422065
     }
 
 **Passaggi 13-15 (Controlli WI)**: L'Istanza del Wallet verifica l'Oggetto di Richiesta, che è sotto forma di JWT firmato (:ref:`WP_085–086 <wallet-credential-presentation-testcases>`). Quindi elabora i metadati della Relying Party e applica le politiche pertinenti per determinare quali Credenziali Elettroniche e dati dell'Utente la Relying Party è autorizzata a richiedere (:ref:`WP_087 <wallet-credential-presentation-testcases>`).
