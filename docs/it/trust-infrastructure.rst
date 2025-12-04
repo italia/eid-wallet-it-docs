@@ -15,7 +15,7 @@ Questa infrastruttura di trust lavora in coordinamento con l'Infrastruttura di R
 
 **Abilitazione dell'Onboarding**: L'Infrastruttura di Trust fornisce i meccanismi crittografici che consentono alle nuove entità (Credential Issuer, Relying Party, Fornitori di Wallet) di stabilire relazioni di trust verificabili durante il loro processo di registrazione. Senza questa infrastruttura, le entità non sarebbero in grado di dimostrare il loro stato di conformità o le capacità operative agli altri partecipanti dell'ecosistema.
 
-**Supporto al Ciclo di Vita delle Entità**: Durante tutto il ciclo di vita operativo di un'entità, l'Infrastruttura di Trust mantiene attestazioni di trust aggiornate, gestisce la rotazione delle chiavi, gestisce scenari di revoca e supporta il monitoraggio della conformità. Questo supporta direttamente le procedure di gestione del ciclo di vita dettagliate in :ref:`entity-onboarding:Gestione del Ciclo di Vita delle Entità`.
+**Supporto al Ciclo di Vita delle Entità**: Durante tutto il ciclo di vita operativo di un'entità, l'Infrastruttura di Trust mantiene attestazioni di trust aggiornate, gestisce la rotazione delle chiavi, gestisce scenari di revoca e supporta il monitoraggio della conformità. Questo supporta direttamente le procedure di gestione del ciclo di vita dettagliate in :ref:`entity-onboarding:Onboarding delle Entità`.
 
 **Integrazione con l'Infrastruttura di Registro**: L'Infrastruttura di Trust implementa il componente Federation Registry dell'Infrastruttura di Registro più ampia, fornendo le fondamenta tecniche per la scoperta delle entità e la validazione del trust che sottende tutte le procedure di onboarding.
 
@@ -34,7 +34,7 @@ Tutti i partecipanti sono Entità di Federazione che DEVONO essere registrate da
 .. note::
   L'Istanza del Wallet, come dispositivo personale, è considerata affidabile attraverso un'attestazione verificabile rilasciata e firmata da una terza parte fidata.
 
-  Questo è chiamato *Wallet Attestation* ed è documentato nella sezione dedicata :ref:`wallet-attestation-issuance:Emissione della Wallet Attestation`.
+  Questo è chiamato *Wallet Attestation* ed è documentato nella sezione dedicata :ref:`wallet-attestation-issuance:Emissione della Wallet App e Wallet Unit Attestation`.
 
 **Ruolo nell'Onboarding**: Durante la registrazione delle entità, il Trust Anchor e gli Intermediari agiscono come Autorità di Federazione. Questo stabilisce la posizione del partecipante nella gerarchia di trust e gli consente di partecipare alle operazioni di credenziali. Le Foglie (Credential Issuer, Relying Party, Fornitori di Wallet) subiscono la registrazione per dimostrare la loro idoneità e ricevere l'autorizzazione per svolgere le loro funzioni designate.
 
@@ -996,7 +996,7 @@ I claim nella risposta della dichiarazione eventi subordinati sono:
 
 **Integration with Entity Lifecycle Management**:
 
-Questo endpoint completa le procedure di gestione del ciclo di vita delle entità definite in :ref:`entity-onboarding:Gestione del Ciclo di Vita delle Entità` fornendo un tracciamento dettagliato di tutti gli eventi significativi che influenzano i partecipanti della federazione. Supporta sia il monitoraggio automatizzato della conformità che i processi di audit manuale.
+Questo endpoint completa le procedure di gestione del ciclo di vita delle entità definite in :ref:`entity-onboarding:Onboarding delle Entità` fornendo un tracciamento dettagliato di tutti gli eventi significativi che influenzano i partecipanti della federazione. Supporta sia il monitoraggio automatizzato della conformità che i processi di audit manuale.
 
 Osservazioni sulla Privacy
 --------------------------
