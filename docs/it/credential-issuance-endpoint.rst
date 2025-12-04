@@ -6,11 +6,12 @@ Pushed Authorization Request Endpoint
 Pushed Authorization Request (PAR) Request
 ............................................
 
+.. _table_http_request_claims:
+
 La request all'authorization endpoint del Credential Issuer DEVE contenere sia i parametri di header HTTP che i parametri HTTP POST.
 
 Il metodo HTTP POST DEVE avere i parametri nel body del messaggio codificati in formato ``application/x-www-form-urlencoded``.
 
-.. _table_http_request_claims:
 .. list-table:: Parametri della PAR request http
     :class: longtable
     :widths: 20 60 20
