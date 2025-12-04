@@ -25,9 +25,12 @@ The metadata JSON Object whose key is ``wallet_provider`` contains the following
     * - ``signed_jwks_uri``
       - CONDITIONAL. URL referencing a signed JWT having the Entity's JWK Set document for that Entity Type as its payload. This URL MUST use the https scheme. The JWT MUST be signed using a Federation Entity Key. A successful response from the URL MUST use the HTTP status code 200 with the Content Type ``application/jwk-set+jwt``. It MUST be present if ``jwks`` and ``jwks_uri`` are absent.
       - `OID-FED`_.
-    * - **logo_uri**
+    * - ``logo_uri``
       - REQUIRED. URL of the entity's logo that will be shown to the User during interactions with the Wallet Instance. The logo mime type MUST be ``application/svg``.
       - `OID-FED`_ Section 5.2.2
+    * - ``wallet_metadata``
+      - REQUIRED. It contains the Wallet Metadata parameters as defined in :ref:`Table of Wallet Metadata Parameters <table_wallet_metadata_parameters>` and the ``credential_offer_endpoint`` parameter.
+      - `OpenID4VP`_ Section 10.1
 
 Below is a non-normative example of the Entity Configuration for a Wallet Provider.
 
@@ -69,6 +72,28 @@ Below is a non-normative example of the Entity Configuration for a Wallet Provid
           }
         ]
       },
+      "wallet_metadata": {
+        "authorization_endpoint": "https://wallet-solution.digital-strategy.europa.eu/authorization",
+        "credential_offer_endpoint": "https://wallet-solution.digital-strategy.europa.eu/credential_offer",
+        "response_types_supported": [
+          "vp_token"
+        ],
+        "response_modes_supported": [
+          "query"
+        ],
+        "vp_formats_supported": {
+          "dc+sd-jwt": {
+            "sd-jwt_alg_values": [
+              "ES256",
+              "ES384"
+            ]
+          }
+        },
+        "request_object_signing_alg_values_supported": [
+          "ES256"
+        ],
+        "client_id_prefixes_supported": ["openid_federation", "x509_hash"]
+      }
     },
     "federation_entity": {
       "organization_name": "IT-Wallet Provider",
