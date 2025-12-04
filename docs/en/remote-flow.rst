@@ -465,7 +465,7 @@ The JWT header parameters are described below:
   * - **typ**
     - REQUIRED. Media Type of the JWT, as defined in [:rfc:`7519`] and [:rfc:`9101`]. It SHOULD be set to the value ``oauth-authz-req+jwt`` (:ref:`RPR-105 <test-plans-remote-presentation>`).
   * - **kid**
-    - REQUIRED. Key ID of the public key needed to verify the JWT signature, as defined in [:rfc:`7517`]. REQUIRED when ``trust_chain`` is used.
+    - REQUIRED. Key ID of the public key needed to verify the JWT signature, as defined in [:rfc:`7517`].
   * - **trust_chain**
     - OPTIONAL. It is a sequence of Entity Statements that composes the Trust Chain related to the Relying Party, as defined in `OID-FED`_ Section 4.3 *Trust Chain Header Parameter*.
   * - **x5c**
@@ -496,15 +496,15 @@ The JWT payload parameters are described herein:
   * - **dcql_query**
     - REQUIRED. Object representing a request for a presentation of Credentials, according to the DCQL query language defined in Section 6 of `OpenID4VP`_.
   * - **transaction_data**
-    - OPTIONAL. Array of JSON objects, each describing a transaction that the Relying Party requests the User to authorize. Each transaction object includes: 
+    - OPTIONAL. Non-empty array of JSON objects, each describing a transaction that the Relying Party requests the User to authorize. Each transaction object includes: 
         - **type**.  String that identifies the transaction data type.
         - **credential_ids**. Array referencing one or more Credentials from the ``dcql_query`` that can authorize the transaction.  
   * - **transaction_data_hashes_alg** 
-    - OPTIONAL. Array of of strings, each representing a hash algorithm identifier, corresponding to a hash algorithm name listed in the `IANA <https://www.iana.org/assignments/named-information/named-information.xhtml#hash-alg>`_.  One of these algorithms MUST be used to calculate the hashes in the ``transaction_data_hashes`` response parameter.  If omitted, the default hash algorithm is ``sha-256``.
+    - OPTIONAL. Array of strings, each representing a hash algorithm identifier, corresponding to a hash algorithm name listed in the `IANA <https://www.iana.org/assignments/named-information/named-information.xhtml#hash-alg>`_.  One of these algorithms MUST be used to calculate the hashes in the ``transaction_data_hashes`` response parameter.  If omitted, the default hash algorithm is ``sha-256``.
   * - **response_type**
     - REQUIRED. It MUST be set to ``vp_token`` (:ref:`RPR-107 <test-plans-remote-presentation>`).
   * - **wallet_nonce**
-    - REQUIRED if reviously provided by Wallet Instance (:ref:`RPR-94 <test-plans-remote-presentation>`). String value used to mitigate replay attacks of the response, as defined in Section 5.10 (Request URI Method) of `OpenID4VP`_.
+    - REQUIRED if previously provided by Wallet Instance (:ref:`RPR-94 <test-plans-remote-presentation>`). String value used to mitigate replay attacks of the response, as defined in Section 5.10 (Request URI Method) of `OpenID4VP`_.
   * - **response_uri**
     - REQUIRED. The Response URI to which the Wallet Instance MUST send the Authorization Response using an HTTP request using the method POST (:ref:`RPR-109 <test-plans-remote-presentation>`).
   * - **nonce**
