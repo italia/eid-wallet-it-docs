@@ -205,7 +205,7 @@ Quando un'entità superiore (Trust Anchor o Intermediate) ruota la propria Chiav
 Quando esistono più certificati X.509 per la stessa chiave pubblica subordinata, il certificato nel Subordinate Statement DEVE avere priorità sul certificato nella Entity Configuration del subordinato.
 
 .. note::
-  Un'entità superiore non puà avviare autonomamente un processo di rotazione delle Chiavi Subordinate. Il meccanismo di rotazione delle Chiavi Subordinate è sempre avviato dall'entità Subordinata, vedi Sezione ::ref:`x5c-evaluation:Rotazione delle Chiavi Subordinate`.
+  Un'entità superiore non può avviare autonomamente un processo di rotazione delle Chiavi Subordinate. Il meccanismo di rotazione delle Chiavi Subordinate è sempre avviato dall'entità Subordinata, vedi Sezione ::ref:`x5c-evaluation:Rotazione delle Chiavi Subordinate`.
 
 Rotazione delle Chiavi Subordinate
 """""""""""""""""""""""""""""""""""
