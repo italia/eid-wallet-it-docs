@@ -14,7 +14,7 @@ Endpoint Metadata
 
 I Credential Issuer DEVONO fornire una Entity Configuration attraverso l'endpoint ``/.well-known/openid-federation``, secondo la Sezione :ref:`trust-infrastructure:Entity Configuration`. I dettagli tecnici sono forniti nella Sezione :ref:`credential-issuer-entity-configuration:Entity Configuration del Fornitore di Attestati Elettronici`.
 
-Alternativamente i metadati del Credential Issuer possono essere recuperati utilizzando l’identificativo del Credential Issuer. Il documento di metadata in formato JSON o JWT DEVE essere reso disponibile presso l’endpoint ``/.well-known/openid-credential-issuer``come definito nella Sezione 12.2.2 di `OpenID4VCI`_.
+Alternativamente i metadati del Credential Issuer possono essere recuperati utilizzando l’identificativo del Credential Issuer. Il documento di metadata in formato JSON o JWT DEVE essere reso disponibile presso l’endpoint ``/.well-known/openid-credential-issuer`` come definito nella Sezione 12.2.2 di `OpenID4VCI`_.
 
 L’header ``Accept-Language`` nella richiesta HTTP GET può essere utilizzato per indicare la/le lingua/e preferite.
 In tal caso, il Credential Issuer può inviare un sottoinsieme dei metadati contenente dati di visualizzazione internazionalizzati per una o tutte le lingue richieste, e può indicare le lingue restituite utilizzando l’header HTTP ``Content-Language``.
