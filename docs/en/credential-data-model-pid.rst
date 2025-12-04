@@ -4,7 +4,14 @@
 PID Data Model
 ==============================
 
-The Person Identification Data (PID) is issued by the PID Provider according to national laws and it MUST be provided in SD-JWT-VC and mdoc-CBOR data format. The main scope of the PID is allowing natural persons to be authenticated for access to a service or to a protected resource.
+The Person Identification Data (PID) is issued by the PID Provider according to national laws and it MUST be provided in SD-JWT-VC and mdoc-CBOR data format. 
+
+.. note::
+   **Transitional Phase:**
+
+   During the transitional phase before full EUDIW operability,PID will be provided only in SD-JWT-VC format. 
+
+The main scope of the PID is allowing natural persons to be authenticated for access to a service or to a protected resource.
 The PID MUST be provided according to data model requirements defined in  `EU_2024/2977`_ and **Section 2 of the ARF PID Rulebook v1.3** [`EIDAS-ARF`_], the User attributes provided within the Italian PID are the ones listed below:
 
 - Current Family Name
@@ -177,11 +184,6 @@ The PID attributes MUST be encoded as specified in **Section 3 of the ARF PID Ru
 
 - **Standard ARF PID attributes**: namespace ``eu.europa.ec.eudi.pid.1``
 - **Italian domestic extensions**: namespace ``eu.europa.ec.eudi.pid.it.1``
-
-.. note::
-   **Transitional Phase:**
-
-   During the transitional phase before full EUDIW operability, national implementations MAY use the **docType** ``{Trust Anchor reverse domain}.pid.1`` with a single national namespace ``{Trust Anchor reverse domain}.pid.1`` for all attributes. Upon reaching full EUDIW operability, all implementations MUST transition to the EUDI-compliant **docType** and namespace structure specified above.
 
 According to `EU_2024/2977`_ and **Section 3 of the ARF PID Rulebook v1.3** [`EIDAS-ARF`_], the PID in mdoc-CBOR format includes the following User Attributes:
 

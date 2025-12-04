@@ -3,7 +3,14 @@
 Modello di Dati del PID
 ==============================================
 
-L'Attestato Elettronico di Dati di Identificazione Personale (PID) è rilasciato dal Fornitore di Attestati Elettronici di Dati di Identificazione Personale secondo le leggi nazionali e DEVE essere fornito in formato SD-JWT-VC e mdoc-CBOR. Lo scopo principale del PID è consentire alle persone fisiche di essere autenticate per accedere a un servizio o a una risorsa protetta.
+L'Attestato Elettronico di Dati di Identificazione Personale (PID) è rilasciato dal Fornitore di Attestati Elettronici di Dati di Identificazione Personale secondo le leggi nazionali e DEVE essere fornito in formato SD-JWT-VC e mdoc-CBOR. 
+
+.. note::
+   **Fase Transitoria:**
+
+   Durante la fase transitoria prima della piena operatività EUDIW, il PID sarà fornito solo in formato SD-JWT-VC.
+
+Lo scopo principale del PID è consentire alle persone fisiche di essere autenticate per accedere a un servizio o a una risorsa protetta.
 Il PID DEVE essere fornito secondo i requisiti del modello dati definiti in `EU_2024/2977`_ e **Sezione 2 dell'ARF PID Rulebook v1.3** [`EIDAS-ARF`_], gli attributi dell'Utente forniti all'interno del PID italiano sono quelli elencati di seguito:
 
 - Cognome attuale
@@ -175,11 +182,6 @@ Gli attributi PID DEVONO essere codificati come specificato nella **Sezione 3 de
 
 - **Attributi PID standard ARF**: namespace ``eu.europa.ec.eudi.pid.1``
 - **Estensioni domestiche italiane**: namespace ``eu.europa.ec.eudi.pid.it.1``
-
-.. note::
-   **Fase Transitoria:**
-
-   Durante la fase transitoria prima della piena operatività EUDIW, le implementazioni nazionali POSSONO utilizzare il **docType** ``{Trust Anchor reverse domain}.pid.1`` con un unico namespace nazionale ``{Trust Anchor reverse domain}.pid.1`` per tutti gli attributi. Una volta raggiunta la piena operatività EUDIW, tutte le implementazioni DEVONO transitare al **docType** e alla struttura di namespace conformi EUDI specificati sopra.
 
 In base a `EU_2024/2977`_ e alla **Sezione 3 dell'ARF PID Rulebook v1.3** [`EIDAS-ARF`_], il PID in formato mdoc-CBOR include i seguenti Attributi Utente:
 
