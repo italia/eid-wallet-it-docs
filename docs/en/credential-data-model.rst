@@ -438,7 +438,7 @@ The `MobileSecurityObject` MUST have the following attributes, unless otherwise 
 
       - [ISO 18013-5#9.1.2.4]
     * - **status**
-      - *(map, OPTIONAL)*. REQUIRED only if the Digital Credential is long-lived. Contains the MSO revocation information. If present, it includes a *status_list* based on the TOKEN-STATUS-LIST_ mechanism as defined in Section 6.3 of TOKEN-STATUS-LIST_.
+      - *(map, OPTIONAL)*. REQUIRED only if the Digital Credential is long-lived. Format-encoded data identifier `location_status` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. Contains the MSO revocation information. If present, it includes a *status_list* based on the TOKEN-STATUS-LIST_ mechanism as defined in Section 6.3 of TOKEN-STATUS-LIST_.
       - [ISO 18013-5#9.1.2.6]
 
 .. note::
