@@ -151,13 +151,13 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
   * - **jwks**
     - JSON Web Key Set document, passed by value, containing the protocol specific keys for the Credential Issuer. See `OID-FED`_ Section 5.2.1 and `JWK`_.
   * - **trust_frameworks_supported**
-    - JSON array containing all supported trust frameworks. See `OIDC-IDA`_ Section 8. The supported values are:
+    - JSON array containing all supported trust frameworks. The supported values are:
         - *it_cie*: CIE id trust framework supported.
         - *it_wallet*: IT-Wallet trust framework supported.
         - *eudi_wallet*: Member State EUDI Wallet trust framework supported.
         - *it_l2+document_proof*: eID Substantial Authentication with MRTD Verification protocol supported.
   * - **evidence_supported**
-    - JSON array containing all types of identity evidence supported by the Credential Issuer. See `OIDC-IDA`_ Section 8. The supported value is ``vouch``.
+    - JSON array containing all types of identity evidence supported by the Credential Issuer. The supported value is ``vouch``.
   * - **credential_hash_alg_supported**
     - The supported algorithm used by the Wallet Instance to hash the Digital Credential for which the Status Assertion is requested. It is RECOMMENDED to use *sha-256*. (See `OAUTH-STATUS-ASSERTION`_ Section 11.1.).
   * - **batch_credential_issuance**

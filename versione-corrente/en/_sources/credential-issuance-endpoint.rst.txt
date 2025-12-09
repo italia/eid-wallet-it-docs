@@ -655,7 +655,7 @@ The **DPoP JWT** MUST contain the following JOSE header parameters and claims.
     - It MUST be an HTTPS URL that uniquely identifies the Credential Issuer. The Wallet Instance MUST verify that this value matches the Credential Issuer where it has requested the Credential.
     - [:rfc:`9068`], [:rfc:`7519`].
   * - **sub**
-    - It identifies the subject of the JWT. It MUST be set to the value of the ``sub`` field in the SD-JWT-VC Credential.
+    - It identifies the subject of the JWT. It MUST be set to the value of the ``sub`` field in the SD-JWT VC Credential.
     - [:rfc:`9068`], [:rfc:`7519`] and Section 8 of [`OIDC`_].
   * - **client_id**
     - The identifier for the Wallet Instance that requested the Access Token; it MUST be equal to the to `kid` value identifying the public key used in the Wallet Instance, used in the Wallet App Attestation (``cnf.jwk``).

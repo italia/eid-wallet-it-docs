@@ -423,6 +423,8 @@ Di seguito gli acronimi usati più di frequente nel documento:
     - Anagrafe Nazionale della Popolazione Residente (Italian National Registry of the Resident Population)
   * - **API**
     - Application Programming Interface. Insieme componenti previsti per semplificare gli scenari di integrazione di uno specifico Sistema.
+  * - **ARF HLR**
+    - EUDI Wallet Architecture and Reference Framework High Level Requirements
   * - **CAB**
     - Conformity Assessment Body (Organismo di Valutazione della Conformità)
   * - **CIE**
