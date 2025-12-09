@@ -6,7 +6,7 @@ Pushed Authorization Request Endpoint
 Pushed Authorization Request (PAR) Request
 ..........................................
 
-.. _table_http_request_claims:
+.. _table_http_request_claim:
 
 The request to the Credential Issuer authorization endpoint MUST use HTTP Headers parameters and HTTP POST parameters.
 
@@ -96,8 +96,8 @@ The ``request`` JWT payload contained in the HTTP POST message is given with the
       - MUST be set to ``code``.
       - :rfc:`6749`
     * - **client_id**
-      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claims>`.
-      - See :ref:`Table of the HTTP parameters <table_http_request_claims>`.
+      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`.
+      - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
     * - **state**
       - Unique session identifier at the client side. This value will be returned to the client in the response, at the end of the authentication. It MUST be a random string composed by alphanumeric characters and with a minimum length of 32 digits. Special characters MUST be considered non-alphanumeric characters as defined in `[NIST] <https://csrc.nist.gov/glossary/term/special_character>`__.
       - See [`OIDC`_] Section 3.1.2.1.
@@ -285,8 +285,8 @@ The mandatory parameters in the HTTP authentication request are specified in the
       - **Description**
       - **Reference**
     * - **client_id**
-      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claims>`.
-      - See :ref:`Table of the HTTP parameters <table_http_request_claims>`.
+      - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`.
+      - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
     * - **request_uri**
       - It MUST be set to the same value as obtained by PAR Response. See :ref:`Table of the HTTP PAR Response parameters <table_http_response_claim>`.
       - [:rfc:`9126`].

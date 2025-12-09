@@ -6,7 +6,7 @@ Pushed Authorization Request Endpoint
 Pushed Authorization Request (PAR) Request
 ............................................
 
-.. _table_http_request_claims:
+.. _table_http_request_claim:
 
 La request all'authorization endpoint del Credential Issuer DEVE contenere sia i parametri di header HTTP che i parametri HTTP POST.
 
@@ -97,8 +97,8 @@ Il payload del JWT ``request`` contenuto nel messaggio HTTP POST contiene i segu
       - DEVE essere valorizzato con ``code``.
       - :rfc:`6749`
     * - **client_id**
-      - DEVE essere valorizzato come indicato nella :ref:`Tabella dei parametri HTTP <table_http_request_claims>`.
-      - Vedi :ref:`Tabella dei parametri HTTP <table_http_request_claims>`.
+      - DEVE essere valorizzato come indicato nella :ref:`Tabella dei parametri HTTP <table_http_request_claim>`.
+      - Vedi :ref:`Tabella dei parametri HTTP <table_http_request_claim>`.
     * - **state**
       - Identificativo univoco della sessione lato client. Questo valore verrà restituito al client nella response, al termine dell'autenticazione. DEVE essere una stringa casuale composta da caratteri alfanumerici e con una lunghezza minima di 32 cifre. Tra i caratteri speciali DEVONO essere considerati quelli non alfanumerici definiti in `[NIST] <https://csrc.nist.gov/glossary/term/special_character>`__.
       - Vedi [`OIDC`_] Sezione 3.1.2.1.
@@ -283,8 +283,8 @@ I parametri obbligatori nell'authentication request HTTP sono specificati nella 
       - **Descrizione**
       - **Riferimento**
     * - **client_id**
-      - DEVE essere valorizzato come indicato nella :ref:`Tabella dei parametri HTTP <table_http_request_claims>`.
-      - Vedi :ref:`Tabella dei parametri HTTP <table_http_request_claims>`.
+      - DEVE essere valorizzato come indicato nella :ref:`Tabella dei parametri HTTP <table_http_request_claim>`.
+      - Vedi :ref:`Tabella dei parametri HTTP <table_http_request_claim>`.
     * - **request_uri**
       - DEVE essere valorizzato con lo stesso valore ottenuto dalla PAR Response. Vedi :ref:`Tabella dei parametri della Risposta HTTP PAR <table_http_response_claim>`.
       - [:rfc:`9126`].
