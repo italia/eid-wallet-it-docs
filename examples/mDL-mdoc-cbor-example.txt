@@ -147,20 +147,6 @@
         "elementValue": {
           "trust_framework": "it_wallet",
           "assurance_level": "high",
-          "evidence": [
-            {
-              "type": "vouch",
-              "time": "2025-03-27",
-              "attestation": {
-                "type": "digital_attestation",
-                "reference_number": "6485-1619-3976-6671",
-                "date_of_issuance": "2025-03-27",
-                "voucher": {
-                  "organization": "Motorizzazione Civile"
-                  }
-                }
-              }
-            ]
           }
         }
       >>)

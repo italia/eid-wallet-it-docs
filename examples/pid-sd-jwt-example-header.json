@@ -1,10 +1,8 @@
 {
-    "typ":"dc+sd-jwt",
-    "alg":"ES256",
-    "kid":"dB67gL7ck3TFiIAf7N6_7SHvqk0MDYMEQcoGGlkUAAw",
-    "trust_chain" : [
-        "NEhRdERpYnlHY3M5WldWTWZ2aUhm ...",
-        "eyJhbGciOiJSUzI1NiIsImtpZCI6 ...",
-        "IkJYdmZybG5oQU11SFIwN2FqVW1B ..."
+    "alg": "ES256",
+    "typ": "dc+sd-jwt",
+    "kid": "dB67gL7ck3TFiIAf7N6_7SHvqk0MDYMEQcoGGlkUAAw",
+    "x5c": [
+        "<Issuer X.509 Certificate>"
     ]
 }

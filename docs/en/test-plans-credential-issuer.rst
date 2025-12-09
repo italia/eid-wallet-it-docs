@@ -547,7 +547,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_118
     - Data Model and lifecycle, Issuance, Interoperability
     - (Q)EAA Credential Formats
-    - (Q)EAA are Issued to a Wallet Instance in SD-JWT-VC or mdoc-CBOR data format.
+    - (Q)EAA are Issued to a Wallet Instance in SD-JWT VC or mdoc-CBOR data format.
   * - CI_119
     - Data Model and lifecycle, Interoperability
     - PID/(Q)EAA Digital Credential Format
@@ -623,7 +623,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_136
     - Data Model and lifecycle, Interoperability
     - Metadata Document JSON Object Structure
-    - The Type Metadata document is a JSON object containing the parameters in the :ref:`Digital Credential Type Metadata Table <table_metadata_type_json_obj>`.
+    - The Type Metadata document, if provided, is a JSON object containing the parameters defined in Section 6.2 of `SD-JWT-VC`_.
   * - CI_137
     - Data Model and lifecycle, Interoperability
     - Additional PID Claims
