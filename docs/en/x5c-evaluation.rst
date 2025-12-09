@@ -169,7 +169,7 @@ Subordinate entities MUST perform periodic verification of their Trust Chain to 
 
 Federation Subordinates MUST:
 
-1. Fetch their own Subordinate Statement from immediate superior every 24 hours using the fetch endpoint defined in :ref:`trust-infrastructure:Federation API endpoints`.
+1. Periodically fetch their own Subordinate Statement from immediate superior using the fetch endpoint defined in :ref:`trust-infrastructure:Federation API endpoints`. This SHOULD be made within a time interval not superior that 24 hours.
 2. Verify validity and detect updates related to the X.509 certificate of the Superior in the ``x5c`` field.
 3. Check for revocation or suspension status.
 4. Update local Entity Configuration when superior certificates change.
