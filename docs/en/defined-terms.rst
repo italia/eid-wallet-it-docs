@@ -64,10 +64,6 @@ Below is the description of acronyms and definitions which are useful for furthe
       Organizational Entity providing Digital Credentials to Users (may be PID Provider or (Q)EAA Provider).
       Aligned with ARF 2.5; IT-Wallet merges PID and (Q)EAA Providers under this term.
 
-    **Status Assertion**
-      Signed document proving a Digital Credential's current validity status.
-      Not present in ARF 2.5; specific to IT-Wallet.
-
     **Critical Assets**
       Assets (e.g., cryptographic keys) whose loss would seriously impact the Wallet Unit.
       Aligned with ARF 2.5.

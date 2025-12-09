@@ -85,8 +85,6 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
     - URL of the revocation endpoint. See :rfc:`8414#section-2`.
   * - **deferred_credential_endpoint**
     - URL of the deferred Credential endpoint, as defined in Section 12.2.4 of `OpenID4VCI`_.
-  * - **status_assertion_endpoint**
-    - It MUST be an HTTPs URL indicating the endpoint where the Wallet Instances can request Status Assertions. See Section :ref:`credential-revocation:Digital Credential Lifecycle` for more details. (`OAUTH-STATUS-ASSERTION`_ Section 11.1.).
   * - **notification_endpoint**
     - It MUST be an HTTPs URL indicating the notification endpoint. See Section 12.2.4 of [`OpenID4VCI`_].
   * - **authorization_servers**
@@ -158,8 +156,6 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
         - *it_l2+document_proof*: eID Substantial Authentication with MRTD Verification protocol supported.
   * - **evidence_supported**
     - JSON array containing all types of identity evidence supported by the Credential Issuer. See `OIDC-IDA`_ Section 8. The supported value is ``vouch``.
-  * - **credential_hash_alg_supported**
-    - The supported algorithm used by the Wallet Instance to hash the Digital Credential for which the Status Assertion is requested. It is RECOMMENDED to use *sha-256*. (See `OAUTH-STATUS-ASSERTION`_ Section 11.1.).
   * - **batch_credential_issuance**
     - Object containing information about the Credential Issuer's support for issuance of Credentials in a batch at the Credential Endpoint. The presence of this parameter means that the Credential Issuer supports more than one key proof in the ``proofs`` parameter in the Credential request so can issue more than one Digital Credential for the same Credential with the same attributes about the Holder in a single request/response. The parameter that MUST be included is:
 

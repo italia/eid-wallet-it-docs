@@ -126,8 +126,8 @@ Il payload JWT contiene i seguenti claim. Alcuni di questi claim possono essere 
       - [NSD]. OBBLIGATORIO. Codice paese Alpha-2, come specificato in ISO 3166-1, del paese o territorio del Fornitore di Attestati Elettronici.
       - Regolamento di esecuzione della Commissione `EU_2024/2977`_.
     * - **status**
-      - [NSD]. OBBLIGATORIO solo se l'Attestato Elettronico ha una durata superiore alle 24 ore (long-lived). Oggetto JSON contenente le informazioni su come leggere lo stato dell'Attestato Elettronico. DEVE contenere l'oggetto JSON *status_assertion* o *status_list*.
-      - Sezione 3.2.2.2 `SD-JWT-VC`_ e Sezione 11 `OAUTH-STATUS-ASSERTION`_.
+      - [NSD]. OBBLIGATORIO solo se l'Attestato Elettronico ha una durata superiore alle 24 ore (long-lived). Oggetto JSON contenente le informazioni su come leggere lo stato dell'Attestato Elettronico. DEVE contenere l'oggetto JSON *status_list*.
+      - Sezione 3.2.2.2 `SD-JWT-VC`_.
     * - **cnf**
       - [NSD]. OBBLIGATORIO. Oggetto JSON contenente il materiale crittografico da utilizzare come prova di possesso. L'inclusione del claim **cnf** (confirmation) in un JWT, permette al soggetto che emette il JWT di dichiarare che il Titolare ha il controllo della chiave privata relativa a quella pubblica definita nel parametro **cnf**. Il destinatario DEVE verificare crittograficamente che il Titolare abbia effettivamente il controllo di quella chiave.
       - `[RFC7800, Sezione 3.1] <https://www.iana.org/go/rfc7800>`_ e Sezione 3.2.2.2 `SD-JWT-VC`_.
@@ -161,7 +161,7 @@ Il payload JWT contiene i seguenti claim. Alcuni di questi claim possono essere 
       - [NSD]. OBBLIGATORIO. Algoritmo di hash utilizzato dal Fornitore di Attestati Elettronici per generare i digest.
       - 4.1.1 `SD-JWT`_
 
-Se il parametro ``status`` è valorizzato con ``status_list``, l'oggetto JSON contiene i seguenti sub parametri:
+Il parametro ``status_list`` di ``status``, è un'oggetto JSON che contiene i seguenti sub parametri:
 
 .. list-table::
    :class: longtable
@@ -177,9 +177,6 @@ Se il parametro ``status`` è valorizzato con ``status_list``, l'oggetto JSON co
    * - **uri**
      - OBBLIGATORIO. Il claim ``uri`` (URI) DEVE contenere una stringa che identifica la Status List Token contenente le informazioni dello stato per l'Attestato Elettronico. Il valore di ``uri`` DEVE essere un URI conforme a [:rfc:`3986`].
      - TOKEN-STATUS-LIST_
-
-
-Se il parametro ``status`` è valorizzato con ``status_assertion``, l'oggetto JSON contiene il claim *credential_hash_alg* che indica l'algoritmo utilizzato per l'hashing dell'Attestato Elettronico a cui è associato la Status Assertion. Si RACCOMANDA di utilizzare *sha-256*.
 
 
 Type Metadata dell'Attestato Elettronico
@@ -395,48 +392,48 @@ Il *combined format* per l'emissione del PID è dato da:
 .. code-block:: text
 
   eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCIsICJraWQiOiAiZEI2N2dM
-  N2NrM1RGaUlBZjdONl83U0h2cWswTURZTUVRY29HR2xrVUFBdyJ9.ewogICJfc2QiOiB
-  bCiAgICAiNldMTmMwOXJCci1Qd0V0bld6eEdLZHpJbWpycER4YnI0cW9JeDgzOGE4OCI
-  sCiAgICAiTHFydFUycmxBNTFVOTdjTWlZaHF3YS1pczY4NWJZaU9KSW1wOGE1S0dOQSI
-  sCiAgICAiVlFJLVMxbVQxS3hmcTJvOEo5aW83eE1NWDJNSXhhRzlNOVBlSlZxck1jQSI
-  sCiAgICAiWXJjLXMtV1NyNGV4RVl0cURFc21SbDdzcG9WZm1CeGl4UDEyZTRzeXFORSI
-  sCiAgICAiaDdFZ2w1SDlnVFBDX0ZDVTg0NWFhZHZzQy0tZFRqeTlOcnN0eGgtY2FSbyI
-  sCiAgICAiczFYSzVmMnBNMy1hRlRhdVhobXZkOXB5UVRKNkZNVWhjLUpYZkhyeGhMayI
-  sCiAgICAidFNMLWUxbkxkV09VOXNGTVRDVXU1UDF0Q3p4QS1UVy1WV2JIR3pZdFU3RSI
-  sCiAgICAielZkZ2hjbUNsTVZXbFVnR3NHcFNrQ1BrRUhaNHU5b1dqMVNsSUJsQ2MxbyI
-  KICBdLAogICJleHAiOiAxODgzMDAwMDAwLAogICJpc3MiOiAiaHR0cHM6Ly9waWRwcm9
-  2aWRlci5leGFtcGxlLm9yZyIsCiAgInN1YiI6ICJOemJMc1hoOHVEQ2NkN25vV1hGWkF
-  mSGt4WnNSR0M5WHMiLAogICJpc3N1aW5nX2F1dGhvcml0eSI6ICJJc3RpdHV0byBQb2x
-  pZ3JhZmljbyBlIFplY2NhIGRlbGxvIFN0YXRvIiwKICAiaXNzdWluZ19jb3VudHJ5Ijo
-  gIklUIiwKICAic3RhdHVzIjogewogICAgInN0YXR1c19hc3NlcnRpb24iOiB7CiAgICA
-  gICJjcmVkZW50aWFsX2hhc2hfYWxnIjogInNoYS0yNTYiCiAgICB9CiAgfSwKICAibmF
-  0aW9uYWxpdGllcyI6IFsKCXsKICAgICAgIi4uLiI6ICJ5S2VQMUNXVFFLOFNkOUJlTnZ
-  GaGtMWGdFdS8xRzNRUXo0Q1dTbHFFT0Z3IgogICAgfQogIF0sCiAgInZjdCI6ICJodHR
-  wczovL3RydXN0LXJlZ2lzdHJ5LmVpZC13YWxsZXQuZXhhbXBsZS5pdC9jcmVkZW50aWF
-  scy92MS4wL3BlcnNvbmlkZW50aWZpY2F0aW9uZGF0YSIsCiAgInZjdCNpbnRlZ3JpdHk
-  iOiAiYzVmNzNlMjUwZmU4NjlmMjRkMTUxMThhY2NlMjg2YzliYjU2YjYzYTQ0M2RjODV
-  hZjY1M2NkNzNmNjA3OGIxZiIsCiAgIl9zZF9hbGciOiAic2hhLTI1NiIsCiAgImNuZiI
-  6IHsKICAgICJqd2siOiB7CiAgICAgICJrdHkiOiAiRUMiLAogICAgICAiY3J2IjogIlA
-  tMjU2IiwKICAgICAgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWx
-  EbHM3dkNlR2VtYyIsCiAgICAgICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnN
-  WZnVlY0NFNnQ0alQ5RjJIWlEiCiAgICB9CiAgfQp9.ISeLw-Tqpmcos9ms7KQTfUhSm4
-  srAtGOMNQe3M-toaYhCcT4JnvZANmtBb8rOXdJ60oTtya4krCOjFNirEg3-g~WyIyR0x
-  DNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImlhdCIsIDE2ODMwMDAwMDBd~WyJlbHVWNU9nM2
-  dTTklJOEVZbnN4QV9BIiwgInZlcmlmaWNhdGlvbiIsIHsidHJ1c3RfZnJhbWV3b3JrIj
-  ogIml0X2NpZSIsICJhc3N1cmFuY2VfbGV2ZWwiOiAiaGlnaCIsICJldmlkZW5jZSI6IH
-  sidHlwZSI6ICJ2b3VjaCIsICJ0aW1lIjogIjIwMjAtMDMtMTlUMTI6NDJaIiwgImF0dG
-  VzdGF0aW9uIjogeyJ0eXBlIjogImRpZ2l0YWxfYXR0ZXN0YXRpb24iLCAicmVmZXJlbm
-  NlX251bWJlciI6ICI2NDg1LTE2MTktMzk3Ni02NjcxIiwgImRhdGVfb2ZfaXNzdWFuY2
-  UiOiAiMjAyMC0wMy0xOVQxMjo0M1oiLCAidm91Y2hlciI6IHsib3JnYW5pemF0aW9uIj
-  ogIk1pbmlzdGVybyBkZWxsJ0ludGVybm8ifX19fV0~WyI2SWo3dE0tYTVpVlBHYm9TNX
-  RtdlZBIiwgImdpdmVuX25hbWUiLCAiTWFyaW8iXQ~WyJlSThaV205UW5LUHBOUGVOZW5
-  IZGhRIiwgImZhbWlseV9uYW1lIiwgIlJvc3NpIl0~WyJRZ19PNjR6cUF4ZTQxMmExMDh
-  pcm9BIiwgImJpcnRoX2RhdGUiLCAiMTk4MC0wMS0xMCJd~WyJBSngtMDk1VlBycFR0Tj
-  RRTU9xUk9BIiwgImJpcnRoX3BsYWNlIiwgIlJvbWEiXQ~WyJQYzMzSk0yTGNoY1VfbEh
-  nZ3ZfdWZRIiwgIklUIl0~WyJHMDJOU3JRZmpGWFE3SW8wOXN5YWpBIiwgInBlcnNvbmF
-  sX2FkbWluaXN0cmF0aXZlX251bWJlciIsICJYWDAwMDAwWFgiXQ~WyJsa2x4RjVqTVls
-  R1RQVW92TU5JdkNBIiwgInRheF9pZF9jb2RlIiwgIlRJTklULVhYWFhYWFhYWFhYWFhY
-  WFgiXQ~
+  N2NrM1RGaUlBZjdONl83U0h2cWswTURZTUVRY29HR2xrVUFBdyJ9.ew0KICAiX3NkIjo
+  gWw0KICAgICI2V0xOYzA5ckJyLVB3RXRuV3p4R0tkekltanJwRHhicjRxb0l4ODM4YTg
+  4IiwNCiAgICAiTHFydFUycmxBNTFVOTdjTWlZaHF3YS1pczY4NWJZaU9KSW1wOGE1S0d
+  OQSIsDQogICAgIlZRSS1TMW1UMUt4ZnEybzhKOWlvN3hNTVgyTUl4YUc5TTlQZUpWcXJ
+  NY0EiLA0KICAgICJZcmMtcy1XU3I0ZXhFWXRxREVzbVJsN3Nwb1ZmbUJ4aXhQMTJlNHN
+  5cU5FIiwNCiAgICAiaDdFZ2w1SDlnVFBDX0ZDVTg0NWFhZHZzQy0tZFRqeTlOcnN0eGg
+  tY2FSbyIsDQogICAgInMxWEs1ZjJwTTMtYUZUYXVYaG12ZDlweVFUSjZGTVVoYy1KWGZ
+  IcnhoTGsiLA0KICAgICJ0U0wtZTFuTGRXT1U5c0ZNVENVdTVQMXRDenhBLVRXLVZXYkh
+  Hell0VTdFIiwNCiAgICAielZkZ2hjbUNsTVZXbFVnR3NHcFNrQ1BrRUhaNHU5b1dqMVN
+  sSUJsQ2MxbyINCiAgXSwNCiAgImV4cCI6IDE4ODMwMDAwMDAsDQogICJpc3MiOiAiaHR
+  0cHM6Ly9waWRwcm92aWRlci5leGFtcGxlLm9yZyIsDQogICJzdWIiOiAiTnpiTHNYaDh
+  1RENjZDdub1dYRlpBZkhreFpzUkdDOVhzIiwNCiAgImlzc3VpbmdfYXV0aG9yaXR5Ijo
+  gIklzdGl0dXRvIFBvbGlncmFmaWNvIGUgWmVjY2EgZGVsbG8gU3RhdG8iLA0KICAiaXN
+  zdWluZ19jb3VudHJ5IjogIklUIiwNCiAgInN0YXR1cyI6IHsNCiAgICAgICJzdGF0dXN
+  fbGlzdCI6IHsNCiAgICAgICAgICAiaWR4IjogInNoYS0yNTYiLA0KICAgICAgICAgICJ
+  1cmkiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9zdGF0dXNsaXN0cy8xIg0KICAgICAgIH0
+  NCiAgfSwNCiAgIm5hdGlvbmFsaXRpZXMiOiBbDQogICAgew0KICAgICAgIi4uLiI6ICJ
+  5S2VQMUNXVFFLOFNkOUJlTnZGaGtMWGdFdS8xRzNRUXo0Q1dTbHFFT0Z3Ig0KICAgIH0
+  NCiAgXSwNCiAgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6aXQ6MSIsDQogICJ2Y3QjaW50ZWd
+  yaXR5IjogImM1ZjczZTI1MGZlODY5ZjI0ZDE1MTE4YWNjZTI4NmM5YmI1NmI2M2E0NDN
+  kYzg1YWY2NTNjZDczZjYwNzhiMWYiLA0KICAiX3NkX2FsZyI6ICJzaGEtMjU2IiwNCiA
+  gImNuZiI6IHsNCiAgICAiandrIjogew0KICAgICAgImt0eSI6ICJFQyIsDQogICAgICA
+  iY3J2IjogIlAtMjU2IiwNCiAgICAgICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
+  Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLA0KICAgICAgInkiOiAiWnhqaVdXYlpNUUdIVld
+  LVlE0aGJTSWlyc1ZmdWVjQ0U2dDRqVDlGMkhaUSINCiAgICB9DQogIH0NCn0NCg.ISeL
+  w-Tqpmcos9ms7KQTfUhSm4srAtGOMNQe3M-toaYhCcT4JnvZANmtBb8rOXdJ60oTtya4
+  krCOjFNirEg3-g~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImlhdCIsIDE2ODMwM
+  DAwMDBd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgInZlcmlmaWNhdGlvbiIsIHsi
+  dHJ1c3RfZnJhbWV3b3JrIjogIml0X2NpZSIsICJhc3N1cmFuY2VfbGV2ZWwiOiAiaGln
+  aCIsICJldmlkZW5jZSI6IHsidHlwZSI6ICJ2b3VjaCIsICJ0aW1lIjogIjIwMjAtMDMt
+  MTlUMTI6NDJaIiwgImF0dGVzdGF0aW9uIjogeyJ0eXBlIjogImRpZ2l0YWxfYXR0ZXN0
+  YXRpb24iLCAicmVmZXJlbmNlX251bWJlciI6ICI2NDg1LTE2MTktMzk3Ni02NjcxIiwg
+  ImRhdGVfb2ZfaXNzdWFuY2UiOiAiMjAyMC0wMy0xOVQxMjo0M1oiLCAidm91Y2hlciI6
+  IHsib3JnYW5pemF0aW9uIjogIk1pbmlzdGVybyBkZWxsJ0ludGVybm8ifX19fV0~WyI2
+  SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImdpdmVuX25hbWUiLCAiTWFyaW8iXQ~WyJlS
+  ThaV205UW5LUHBOUGVOZW5IZGhRIiwgImZhbWlseV9uYW1lIiwgIlJvc3NpIl0~WyJRZ
+  19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImJpcnRoX2RhdGUiLCAiMTk4MC0wMS0xMCJd~
+  WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgImJpcnRoX3BsYWNlIiwgIlJvbWEiXQ~W
+  yJQYzMzSk0yTGNoY1VfbEhnZ3ZfdWZRIiwgIklUIl0~WyJHMDJOU3JRZmpGWFE3SW8wO
+  XN5YWpBIiwgInBlcnNvbmFsX2FkbWluaXN0cmF0aXZlX251bWJlciIsICJYWDAwMDAwW
+  FgiXQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgInRheF9pZF9jb2RlIiwgIlRJTk
+  lULVhYWFhYWFhYWFhYWFhYWFgiXQ~
 
 Esempi Non Normativi di (Q)EAA
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -529,37 +526,41 @@ Il *combined format* per l'emissione del (Q)EAA è rappresentato di seguito:
 .. code-block:: text
 
   eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCIsICJraWQiOiAiZDEyNmE2
-  YTg1NmY3NzI0NTYwNDg0ZmE5ZGM1OWQxOTUifQ.eyJfc2QiOiBbIkR4LTZoanZyY3hOe
-  kYwc2xVNnVrTm16SG9MLVl2Qk4tdEZhMFQ4WC1iWTAiLCAiR0UzU2p5X3pBVDM0Zjh3Y
-  TVEVWtWQjBGc2xhU0pSQUFjOEkzbE4xMUZmYyIsICJWUUktUzFtVDFLeGZxMm84Sjlpb
-  zd4TU1YMk1JeGFHOU05UGVKVnFyTWNBIiwgIllyYy1zLVdTcjRleEVZdHFERXNtUmw3c
-  3BvVmZtQnhpeFAxMmU0c3lxTkUiLCAiYUJWZGZjbnhUMFo1UnJ3ZHhaU1VodVV4ejNnT
-  TJ2Y0VaTGVZSWo2MUthcyIsICJvMWNIRzhKYkVFWXYwSGVKSU5ZS2JGTGQtVG5FRFV1T
-  npJMVhwelYzMmFVIiwgInMxWEs1ZjJwTTMtYUZUYXVYaG12ZDlweVFUSjZGTVVoYy1KW
-  GZIcnhoTGsiLCAielZkZ2hjbUNsTVZXbFVnR3NHcFNrQ1BrRUhaNHU5b1dqMVNsSUJsQ
-  2MxbyJdLCAiZXhwIjogMTg4MzAwMDAwMCwgImlzcyI6ICJodHRwczovL2lzc3Vlci5le
-  GFtcGxlLm9yZyIsICJzdWIiOiAiTnpiTHNYaDh1RENjZDdub1dYRlpBZkhreFpzUkdDO
-  VhzIiwgImlzc3VpbmdfYXV0aG9yaXR5IjogIklzdGl0dXRvIFBvbGlncmFmaWNvIGUgW
-  mVjY2EgZGVsbG8gU3RhdG8iLCAiaXNzdWluZ19jb3VudHJ5IjogIklUIiwgInN0YXR1c
-  yI6IHsic3RhdHVzX2Fzc2VydGlvbiI6IHsiY3JlZGVudGlhbF9oYXNoX2FsZyI6ICJza
-  GEtMjU2In19LCAidmN0IjogImh0dHBzOi8vdHJ1c3QtcmVnaXN0cnkuZWlkLXdhbGxld
-  C5leGFtcGxlLml0L2NyZWRlbnRpYWxzL3YxLjAvRXVyb3BlYW5EaXNhYmlsaXR5Q2FyZ
-  CIsICJ2Y3QjaW50ZWdyaXR5IjogIjJlNDBiY2Q2Nzk5MDA4MDg1ZmZiMWExZjM1MTdlZ
-  mVlMzM1Mjk4ZmQ5NzZiM2U2NTViZmIzZjRlYWExMWQxNzEiLCAiX3NkX2FsZyI6ICJza
-  GEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlAtMjU2I
-  iwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkNlR2VtY
-  yIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ5RjJIW
-  lEifX19.2Dt5a6CFNv-YAmfewZGERmlIOdYybaNtZP6Va1zHZ_IqZAGM8S6M4mcTU-RO
-  3X4cU4j20xif2Ocf1jvd2L5CRQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImlhd
-  CIsIDE2ODMwMDAwMDBd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImRvY3VtZW50
-  X251bWJlciIsICJYWFhYWFhYWFhYIl0~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwg
-  ImdpdmVuX25hbWUiLCAiTWFyaW8iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgI
-  mZhbWlseV9uYW1lIiwgIlJvc3NpIl0~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgI
-  mJpcnRoX2RhdGUiLCAiMTk4MC0wMS0xMCJd~WyJBSngtMDk1VlBycFR0TjRRTU9xUk9B
-  IiwgImV4cGlyeV9kYXRlIiwgIjIwMjQtMDEtMDEiXQ~WyJQYzMzSk0yTGNoY1VfbEhnZ
-  3ZfdWZRIiwgInBlcnNvbmFsX2FkbWluaXN0cmF0aXZlX251bWJlciIsICJYWDAwMDAwW
-  FgiXQ~WyJHMDJOU3JRZmpGWFE3SW8wOXN5YWpBIiwgImNvbnN0YW50X2F0dGVuZGFuY2
-  VfYWxsb3dhbmNlIiwgdHJ1ZV0~
+  YTg1NmY3NzI0NTYwNDg0ZmE5ZGM1OWQxOTUifQ.ew0KICAiX3NkIjogWw0KICAgICJEeC
+  02aGp2cmN4TnpGMHNsVTZ1a05tekhvTC1ZdkJOLXRGYTBUOFgtYlkwIiwNCiAgICAiR0
+  UzU2p5X3pBVDM0Zjh3YTVEVWtWQjBGc2xhU0pSQUFjOEkzbE4xMUZmYyIsDQogICAgIl
+  ZRSS1TMW1UMUt4ZnEybzhKOWlvN3hNTVgyTUl4YUc5TTlQZUpWcXJNY0EiLA0KICAgIC
+  JZcmMtcy1XU3I0ZXhFWXRxREVzbVJsN3Nwb1ZmbUJ4aXhQMTJlNHN5cU5FIiwNCiAgIC
+  AiYUJWZGZjbnhUMFo1UnJ3ZHhaU1VodVV4ejNnTTJ2Y0VaTGVZSWo2MUthcyIsDQogIC
+  AgIm8xY0hHOEpiRUVZdjBIZUpJTllLYkZMZC1UbkVEVXVOekkxWHB6VjMyYVUiLA0KIC
+  AgICJzMVhLNWYycE0zLWFGVGF1WGhtdmQ5cHlRVEo2Rk1VaGMtSlhmSHJ4aExrIiwNCi
+  AgICAielZkZ2hjbUNsTVZXbFVnR3NHcFNrQ1BrRUhaNHU5b1dqMVNsSUJsQ2MxbyINCi
+  AgXSwNCiAgImV4cCI6IDE4ODMwMDAwMDAsDQogICJpc3MiOiAiaHR0cHM6Ly9pc3N1ZX
+  IuZXhhbXBsZS5vcmciLA0KICAic3ViIjogIk56YkxzWGg4dURDY2Q3bm9XWEZaQWZIa3
+  hac1JHQzlYcyIsDQogICJpc3N1aW5nX2F1dGhvcml0eSI6ICJJc3RpdHV0byBQb2xpZ3
+  JhZmljbyBlIFplY2NhIGRlbGxvIFN0YXRvIiwNCiAgImlzc3VpbmdfY291bnRyeSI6IC
+  JJVCIsDQogICJzdGF0dXMiOiB7DQogICAgICAic3RhdHVzX2xpc3QiOiB7DQogICAgIC
+  AgICAgImlkeCI6ICJzaGEtMjU2IiwNCiAgICAgICAgICAidXJpIjogImh0dHBzOi8vZX
+  hhbXBsZS5jb20vc3RhdHVzbGlzdHMvMSINCiAgICAgICB9DQogIH0sDQogICJ2Y3QiOi
+  AiaHR0cHM6Ly90cnVzdC1yZWdpc3RyeS5laWQtd2FsbGV0LmV4YW1wbGUuaXQvY3JlZG
+  VudGlhbHMvdjEuMC9FdXJvcGVhbkRpc2FiaWxpdHlDYXJkIiwNCiAgInZjdCNpbnRlZ3
+  JpdHkiOiAiMmU0MGJjZDY3OTkwMDgwODVmZmIxYTFmMzUxN2VmZWUzMzUyOThmZDk3Nm
+  IzZTY1NWJmYjNmNGVhYTExZDE3MSIsDQogICJfc2RfYWxnIjogInNoYS0yNTYiLA0KIC
+  AiY25mIjogew0KICAgICJqd2siOiB7DQogICAgICAia3R5IjogIkVDIiwNCiAgICAgIC
+  JjcnYiOiAiUC0yNTYiLA0KICAgICAgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1
+  ZvSElQMUlMaWxEbHM3dkNlR2VtYyIsDQogICAgICAieSI6ICJaeGppV1diWk1RR0hWV0
+  tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIg0KICAgIH0NCiAgfQ0KfQ.2Dt5a6C
+  FNv-YAmfewZGERmlIOdYybaNtZP6Va1zHZ_IqZAGM8S6M4mcTU-RO3X4cU4j20xif2Oc
+  f1jvd2L5CRQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImlhdCIsIDE2ODMwMDAw
+  MDBd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImRvY3VtZW50X251bWJlciIsICJ
+  YWFhYWFhYWFhYIl0~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImdpdmVuX25hbWU
+  iLCAiTWFyaW8iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgImZhbWlseV9uYW1l
+  IiwgIlJvc3NpIl0~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImJpcnRoX2RhdGUi
+  LCAiMTk4MC0wMS0xMCJd~WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgImV4cGlyeV9
+  kYXRlIiwgIjIwMjQtMDEtMDEiXQ~WyJQYzMzSk0yTGNoY1VfbEhnZ3ZfdWZRIiwgInBl
+  cnNvbmFsX2FkbWluaXN0cmF0aXZlX251bWJlciIsICJYWDAwMDAwWFgiXQ~WyJHMDJOU
+  3JRZmpGWFE3SW8wOXN5YWpBIiwgImNvbnN0YW50X2F0dGVuZGFuY2VfYWxsb3dhbmNlI
+  iwgdHJ1ZV0~
 
 Attestato Elettronico in formato mdoc-CBOR
 ------------------------------------------
@@ -846,10 +847,8 @@ Per SD-JWT-VC, i parametri sono contrassegnati con `(hdr)` se si trovano nell'he
        | issuerAuth.validityInfo.validUntil
        | issuerAuth.validityInfo.validFrom
    * - Meccanismo di verifica dello stato
-     - | status_assertion (pld)
-       | status_list (pld)
-     - | -
-       | issuerAuth.status_list
+     - | status_list (pld)
+     - | issuerAuth.status_list
    * - Firma
      - | alg (hdr)
        | kid (hdr)

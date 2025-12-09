@@ -91,8 +91,6 @@ Digital Credential Revocation Check Mechanisms
 
     * - `TOKEN-STATUS-LIST`_
       - Looker, T., Bastian, P., Bormann, C.,  "Token Status List (TSL)", October 2025, Draft 13.
-    * - `OAUTH-STATUS-ASSERTION`_
-      - De Marco, G., Steele, O., Marino, F., Adomeit, M., "OAuth Status Assertions", June 2024, Draft 3.
 
 National Data Interoperability Platform Specifications
 ------------------------------------------------------

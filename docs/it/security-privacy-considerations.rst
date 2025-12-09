@@ -334,8 +334,7 @@ PR-E-60
      - Il Trust Framework deve garantire che il Fornitore di Credenziali non possa sapere dove l'Utente utilizza la Credenziale.
 
 Il Verificatore di Attestati Elettronici che esegue la Trust Evaluation sul Fornitore di Credenziali di una Credenziale non deve rilasciare alcuna informazione al Fornitore di Credenziali sull'Istanza del Wallet con cui sta interagendo. Utilizzando [`OID-FED`_] il Fornitore di Credenziali non sa chi è l'Utente che presenta la Credenziale.
-Inoltre, la privacy è protetta anche durante il controllo dello stato della Credenziale. Utilizzando Status Assertion [`OAUTH-STATUS-ASSERTION`_], la specifica IT-Wallet garantisce
-che mentre il Verificatore di Attestati Elettronici controlla la validità della Credenziale, il Fornitore di Credenziali non apprende dove o quando la Credenziale viene utilizzata.
+Inoltre, la privacy è protetta anche durante il controllo dello stato della Credenziale. Utilizzando Status List [`TOKEN-STATUS-LIST`_], la specifica IT-Wallet garantisce che mentre il Verificatore di Attestati Elettronici controlla la validità della Credenziale, il Fornitore di Credenziali non apprende dove o quando la Credenziale viene utilizzata.
 
 PR-E-70
 ^^^^^^^
@@ -394,7 +393,7 @@ SPR-E-50
    * - |check-icon|
      - Il Trust Framework deve garantire che i cicli di vita delle chiavi, dei certificati e delle Credenziali siano progettati in modo tale da minimizzare l'impatto di una compromissione.
 
-Il ciclo di vita della Credenziale include un meccanismo di revoca della Credenziale basato su Status Assertion [`OAUTH-STATUS-ASSERTION`_] che garantisce che le Credenziali siano correttamente revocate quando compromesse o obsolete.
+Il ciclo di vita della Credenziale include un meccanismo di revoca della Credenziale basato su Status List [`TOKEN-STATUS-LIST`_] che garantisce che le Credenziali siano correttamente revocate quando compromesse o obsolete.
 
 La revoca di un'Entità di Federazione (cioè, Fornitore di Credenziali, Verificatore di Attestati Elettronici, Fornitore di Wallet) è invece possibile non emettendo la corrispondente Subordinate Statement su quell'Entità e impostando una breve scadenza della Trust Chain, impedendo così l'uso improprio durante la compromissione.
 
@@ -474,8 +473,7 @@ SPR-P-80
    * - |check-icon|
      - Il protocollo deve garantire che il Fornitore di Credenziali non possa sapere dove l'Utente utilizza la Credenziale.
 
-Il protocollo di scambio non richiede alcuna interazione tra Verificatori di Attestati Elettronici e Fornitori di Credenziali. Inoltre, Status Assertion che preservano la privacy, presentate insieme alle Credenziali,
-garantiscono che mentre il Verificatore di Attestati Elettronici controlla la validità della Credenziale, il Fornitore di Credenziali non apprende dove o quando la Credenziale viene utilizzata.
+Il protocollo di scambio non richiede alcuna interazione tra Verificatori di Attestati Elettronici e Fornitori di Credenziali. Inoltre, Status List che preserva la privacy, garantisce che mentre il Verificatore di Attestati Elettronici controlla la validità della Credenziale, il Fornitore di Credenziali non apprende dove o quando la Credenziale viene utilizzata.
 
 SPR-W-50
 ^^^^^^^^

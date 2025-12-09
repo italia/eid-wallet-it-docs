@@ -6,8 +6,9 @@
     "issuing_authority": "Istituto Poligrafico e Zecca dello Stato",
     "issuing_country": "IT",
     "status": {
-        "status_assertion": {
-            "credential_hash_alg": "sha-256"
+        "status_list": {
+            "idx": "sha-256",
+            "uri": "https://example.com/statuslists/1"
         }
     },
     "vct": "urn:eudi:EuropeanDisabilityCard:it:1",

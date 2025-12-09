@@ -596,7 +596,7 @@ The following diagram describes the Digital Credential re-issuance flow.
 .. plantuml:: plantuml/credential-reissuance-flow.puml
     :width: 99%
     :alt: The figure illustrates the Re-Issuance Flow Diagram.
-    :caption: `Re-Issuance Flow Diagram. <https://www.plantuml.com/plantuml/svg/ZLHTRnCn47pthnYUQAMqLA9FAOM6faYH2gf2IeLQ5BbtUuc5OmVlNjBowucT3-LYABc7ABPdzcCywmiM7QIUMFNAkCBM9U7TvUcRozDXzzdfYIdUAwKIHZalX616Or5tOtBGw9gH4Mrn6QWa9qPREAAI8HwFX7fQQg6o1HdJDgR7N5DWVEvy1vCheU6ycCeKMentaHqPjqm1DHitWaQWaM6XG2LyBKU-EdhKhaJX9vFQhOd5M3j7zbZ5eB5SfTefYf-IOznfQqdGSopQ5NIcbAbmqAUPN_4d52COdk31uHnVHKlDk3Oi-708YKqVF1CVAYW0xJv9C3IZ1d3WVv93vKE4WCK7AhUQvxEqdxIqL4bQzUbNRI9k7bCuZvcsfan7UMXwCYoS3ZTjnaNiPKla5T4ut9yydRnjOV5x-cEdZVYHPSA1yuTGsFvO_5HXbSPKge5LSPahq66c4ANa_HI8RjfFWaRilqdmWWRdw7tvrhdkTVFkrwHYGnfo8WrB4ctiSLmHZDkWxszlkft1LGkTmQ3V-tWxk1ekTt9jzvIteV3Urx7yRJJHAGfYNjaawPULjFdo-Xh7oy6e0l5ultX0Uw5s43HPdwoVB-_xfNoP7i368ZjxM6RH3excwIM9eungaMSNEJSoJe_8QqQdZdNB-g7OWcPpbDz9ljhyYSyBkZV-1WtnnIEiHcC3ZVNc3-PQdCoxlFPkdDiMVC23-uzBppDF_lk-sd7WY2K9bEJnmVnEwfnjup9NDF34knaoJ_X0iVMivHVya3aYkuECk6_6dQbfTycI4AQ1PiRNtE2eLC35Wb9Fx1y0>`_
+    :caption: `Re-Issuance Flow Diagram. <https://www.plantuml.com/plantuml/svg/ZLDHYnCn47xFh_ZUlCAT7EXJ3z5Y4GuKZgeS8ZxaTcUxmMscPcRRqrzlahQnUqHq7fQ4p3VVDpFVYjgWnhCIWbltQkvxyh1OkhLJE-1je9QykdZqHAr06G-4STjQfVOIsjDvpgt8I47mOV45Ghw5XMTrdMkiElPGpeZFGW6ZEB-6HQ2r4wLO13pg5NTN3pOY6zviHdy2DhtrdeRd9XLDSesPvogy9I-ujyD0YbilQdr3DmO6m7n56Xpj21_LwYXuxqJnYR-JHySXfK2K8_DP3nB1GER0G9tcsuf-Z2xbxTDuF6Dd1zUcfqffUendoOz5RRgu3XT_U4v0v_7r-l7wnINYz-MtrpDeuhZuIJBBCD0WX0lFCnYSXoXl3OuqhZFbDH4jceP4ZegosahbOwJBXAaybt8hwW99_t_rW7biBYYcg7S3xm_3hVFLEYkHzs4mZGEBzV2qpzvBoqSNUPvcxftssNRF18inwTQJjQQfqvNbA0EktyeX6HBBExx3PFZA24SVbjIej_ABbU4yjOeShF8gM-JlSvydcv9eRZItoS7zobtUrFPTg2Rv93M6oMuvK6wX9hs-r_fcoophm7yprjm_Nz90IjW6sZaUPO8nMS2R21atmsy0>`_
 
 
 .. .. figure:: ../../images/Re-Issuance-Flow.svg
@@ -609,11 +609,7 @@ The following diagram describes the Digital Credential re-issuance flow.
 
 **Step 1**: The flow starts when the User opens the Wallet Instance: this step MAY be triggered either by a notification sent by the Credential Issuer (using e.g., one of the out-of-band communication contacts registered during the Issuance flow).
 
-**Step 2**: The Wallet Instance MUST check the status of any stored Digital Credential, by retrieving either a valid Status List Token (following the flow described in Section :ref:`credential-revocation:OAuth Status Lists`) or Status Assertion (following the flow described in Section :ref:`credential-revocation:OAuth Status Assertions`) as per (:ref:`WP_069 <wallet-credential-issuance-testcases>`), if a valid one is not available. Then, the Wallet Instance MUST check  (:ref:`WP_070 <wallet-credential-issuance-testcases>`):
-
-  - In case of Status List: if any Digital Credential has status set to ``0x03`` - ``UPDATE`` or ``0x04`` - ``ATTRIBUTE_UPDATE``.
-
-  - In case of Status Assertion: if ``credential_status_type`` is set to ``INVALID`` and ``credential_status_detail.state`` is set to ``UPDATE`` or ``ATTRIBUTE_UPDATE``.
+**Step 2**: The Wallet Instance MUST check the status of any stored Digital Credential, by retrieving either a valid Status List Token (following the flow described in Section :ref:`credential-revocation:OAuth Status Lists`) as per (:ref:`WP_069 <wallet-credential-issuance-testcases>`), if a valid one is not available. Then, the Wallet Instance MUST check  (:ref:`WP_070 <wallet-credential-issuance-testcases>`) if any Digital Credential has status set to ``0x03`` - ``UPDATE`` or ``0x04`` - ``ATTRIBUTE_UPDATE``.
 
 If the conditions above are not met, the flow MUST be interrupted.
 
@@ -624,9 +620,9 @@ Otherwise, the Wallet Instance MUST check the related Access Tokens. If they are
 **Step 4**: The Wallet Instance MUST use a valid DPoP Access Token to retrieve the new Digital Credential requesting it to the Credential endpoint following the steps from 12 to 22 of Figure 9 in Section :ref:`credential-issuance-low-level:Low-Level Issuance Flow`  (:ref:`WP_072 <wallet-credential-issuance-testcases>`). When the new Digital Credential is successfully stored in the secure storage, the Wallet Instance MUST delete the previous one  (:ref:`WP_073 <wallet-credential-issuance-testcases>`).
 
 .. note::
-  Regardless of the Digital Credential revocation mechanism supported, if either the Digital Credential status is set to ``ATTRIBUTE_UPDATE`` (using OAuth Status List revocation) or ``credential_status_detail.state`` is set to ``ATTRIBUTE_UPDATE`` (using OAuth Status List revocation) the User's attribute set, in the refreshed Digital Credential, doesn't match the one in the stored Digital Credential. In this case, the Wallet Instance MUST request the User's authorization to store the new refreshed Digital Credential  (:ref:`WP_074 <wallet-credential-issuance-testcases>`). 
+  Regardless of the Digital Credential revocation mechanism supported, if the Digital Credential status is set to ``ATTRIBUTE_UPDATE``, the User's attribute set, in the refreshed Digital Credential, doesn't match the one in the stored Digital Credential. In this case, the Wallet Instance MUST request the User's authorization to store the new refreshed Digital Credential  (:ref:`WP_074 <wallet-credential-issuance-testcases>`). 
   
-  If instead, either the Digital Credential status is set to ``UPDATE``(using OAuth Status List revocation) or ``credential_status_detail.state`` set to ``UPDATE`` (using OAuth Status List revocation) the ``credential_status_detail.state`` is set to ``UPDATE``, only the Credential metadata parameters have changed. In this case, the Wallet Instance SHOULD store the new Digital Credential without requiring explicit user authorization and consent  (:ref:`WP_075 <wallet-credential-issuance-testcases>`).
+  If instead, either the Digital Credential status is set to ``UPDATE``, only the Credential metadata parameters have changed. In this case, the Wallet Instance SHOULD store the new Digital Credential without requiring explicit user authorization and consent  (:ref:`WP_075 <wallet-credential-issuance-testcases>`).
 
 
 Re-Issuance Flow: Security Considerations

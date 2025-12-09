@@ -335,8 +335,7 @@ PR-E-60
      - The Trust Framework must ensure that the Issuer cannot learn where the User uses the Credential.
 
 The Verifier performing the Trust Evaluation about the Issuer of a Credential must not release any information to the Credential Issuer about the Wallet Instance it is interacting with. Using [`OID-FED`_] the Issuer doesn't know who is the User presenting the Credential.
-In addition, privacy is protected also during the check of the Credential's status. By using Status Assertion [`OAUTH-STATUS-ASSERTION`_], the IT-Wallet specification ensures
-that while the Verifier checks the Credential's validity, the Issuer does not learn where or when the Credential is being used.
+In addition, privacy is protected also during the check of the Credential's status. By using Status List [`TOKEN-STATUS-LIST`_], the IT-Wallet specification ensures that while the Verifier checks the Credential's validity, the Issuer does not learn where or when the Credential is being used.
 
 PR-E-70
 ^^^^^^^
@@ -395,7 +394,7 @@ SPR-E-50
    * - |check-icon|
      - The Trust Framework must ensure that lifecycles of keys, certificates, and Credentials are designed such that the impact of a compromise is minimized.
 
-The Credential lifecycle includes a Credential revocation mechanism based on Status Assertion [`OAUTH-STATUS-ASSERTION`_] that ensures that Credentials are properly revoked when compromised or outdated.
+The Credential lifecycle includes a Credential revocation mechanism based on Status List [`TOKEN-STATUS-LIST`_] that ensures that Credentials are properly revoked when compromised or outdated.
 
 The revocation of a Federation Entity (i.e., Issuer, Verifier, Wallet Provider) is instead possible by not issuing the corresponding Subordinate Statement about that Entity and set a short expiration of the Trust Chain, thus preventing misuse during compromise.
 
@@ -477,7 +476,7 @@ SPR-P-80
    * - |check-icon|
      - The protocol must ensure that the Issuer cannot learn where the User uses the Credential.
 
-The exchange protocol does not require any interactions between Verifiers and Issuers. In addition, privacy-preserving Status Assertions, presented along with Credentials,
+The exchange protocol does not require any interactions between Verifiers and Issuers. In addition, privacy-preserving Status List mechanism
 ensure that while the Verifier checks the Credential's validity, the Issuer does not learn where or when the Credential is being used.
 
 SPR-W-50
