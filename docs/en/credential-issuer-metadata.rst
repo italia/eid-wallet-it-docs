@@ -155,8 +155,6 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
         - *it_wallet*: IT-Wallet trust framework supported.
         - *eudi_wallet*: Member State EUDI Wallet trust framework supported.
         - *it_l2+document_proof*: eID Substantial Authentication with MRTD Verification protocol supported.
-  * - **evidence_supported**
-    - JSON array containing all types of identity evidence supported by the Credential Issuer. The supported value is ``vouch``.
   * - **credential_hash_alg_supported**
     - The supported algorithm used by the Wallet Instance to hash the Digital Credential for which the Status Assertion is requested. It is RECOMMENDED to use *sha-256*. (See `OAUTH-STATUS-ASSERTION`_ Section 11.1.).
   * - **batch_credential_issuance**

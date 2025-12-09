@@ -155,8 +155,6 @@ I Metadata *openid_credential_issuer* DEVONO contenere i seguenti *claims*.
         - *it_wallet*: trust framework IT-Wallet supportato.
         - *eudi_wallet*: trust framework Member State EUDI Wallet supportato.
         - *it_l2+document_proof*: protocollo Autenticazione eID Substantial con Verifica MRTD supportato.
-  * - **evidence_supported**
-    - Array JSON contenente tutti i tipi di evidenze di identità supportate dal Fornitore dell'Attestato Elettronico. Il valore supportato è ``vouch``.
   * - **credential_hash_alg_supported**
     - L'algoritmo supportato utilizzato dall'Istanza del Wallet per eseguire l'hash dell'Attestato Elettronico per il quale viene richiesta la Status Assertion. Si RACCOMANDA di utilizzare *sha-256*. (Vedi `OAUTH-STATUS-ASSERTION`_ Sezione 11.1.).
   * - **batch_credential_issuance**
