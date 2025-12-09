@@ -207,7 +207,7 @@ In the following, the requirements are grouped based on their category.</p>
 </tr>
 </tbody>
 </table>
-<p>The IT-Wallet specification supports both SD-JWT-VC and mdoc-CBOR Credential formats. The authenticity and integrity of a Credential is checked by verifying the Issuer's signature.</p>
+<p>The IT-Wallet specification supports both SD-JWT VC and mdoc-CBOR Credential formats. The authenticity and integrity of a Credential is checked by verifying the Issuer's signature.</p>
 <ul class="simple">
 <li><p>For SD-JWT, the verification is performed using the algorithm specified in the <strong>alg</strong> header parameter of SD-JWT and a verifiable reference to the public key that must be used for the signature verification. Using OpenID Federation, the verifiable reference to the public cryptographic material is the <strong>kid</strong> header of the SD-JWT, where the cryptographic material is obtained from the Trust Chain about the Credential Issuer, specified in <strong>iss</strong> claim.</p></li>
 <li><p>For mdoc-CBOR, the Issuer's signature is contained in the <em>Mobile Security Object</em> (MSO) and must be validated using the Issuer's public key through a trusted certificate chain contained in the <strong>x5chain</strong> header parameter.</p></li>

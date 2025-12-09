@@ -169,7 +169,7 @@ Le entità subordinate DEVONO eseguire la verifica periodica della propria Trust
 
 I Subordinati della federazione DEVONO:
 
-1. Recuperare il proprio Subordinate Statement dal superiore immediato ogni 24 ore utilizzando il fetch endpoint definito in :ref:`trust-infrastructure:Endpoint delle API della Federazione`. Ciò DEVE essere fatto entro un intervallo di tempo non superiore a 24 ore.
+1. Recuperare il proprio Subordinate Statement dal superiore immediato ogni 24 ore utilizzando il fetch endpoint definito in :ref:`trust-infrastructure:Endpoint delle API della Federazione`. Ciò DOVREBBE essere fatto entro un intervallo di tempo non superiore a 24 ore.
 2. Verificare lo stato di revoca o sospensione.
 3. Aggiornare il proprio Entity Configuration quando cambiano i certificati superiori.
 
@@ -196,7 +196,7 @@ Quando un'entità superiore (Trust Anchor o Intermediate) ruota la propria Chiav
 2. **Aggiornamento Entity Configuration**: Il superiore pubblica la nuova Entity Configuration firmata con la nuova Chiave dell'Entità Federata.
 3. **Riemissione Certificati X.509**: Il superiore riemette i certificati X.509 a tutti i Subordinati utilizzando la nuova chiave.
 4. **Pubblicazione Certificati**: Il superiore rende disponibili i nuovi certificati sul fetch endpoint.
-5. **Rilevamento Subordinato**: I Subordinati rilevano la modifica durante il fetch periodico (entro 24 ore).
+5. **Rilevamento Subordinato**: I Subordinati rilevano la modifica al successivo fetch programmato (al massimo entro 24 ore dalla pubblicazione della modifica).
 6. **Aggiornamento Certificati**: I Subordinati aggiornano il campo ``x5c`` nella propria Entity Configuration con il nuovo certificato.
 
 **Priorità dei Certificati**
@@ -204,7 +204,7 @@ Quando un'entità superiore (Trust Anchor o Intermediate) ruota la propria Chiav
 Quando esistono più certificati X.509 per la stessa chiave pubblica subordinata, il certificato nel Subordinate Statement DEVE avere priorità sul certificato nella Entity Configuration del subordinato.
 
 .. note::
-  Un'entità superiore non può avviare autonomamente un processo di rotazione delle Chiavi Subordinate. Il meccanismo di rotazione delle Chiavi Subordinate è sempre avviato dall'entità Subordinata, vedi Sezione ::ref:`x5c-evaluation:Rotazione delle Chiavi Subordinate`.
+  Un'entità superiore non può avviare autonomamente un processo di rotazione delle Chiavi Subordinate. Il meccanismo di rotazione delle Chiavi Subordinate è sempre avviato dall'entità Subordinata, vedi Sezione :ref:`x5c-evaluation:Rotazione delle Chiavi Subordinate`.
 
 Rotazione delle Chiavi Subordinate
 """""""""""""""""""""""""""""""""""

@@ -208,7 +208,7 @@ Di seguito, i requisiti sono raggruppati in base alla loro categoria.</p>
 </tr>
 </tbody>
 </table>
-<p>La specifica IT-Wallet supporta sia il formato di Credenziale SD-JWT-VC che mdoc-CBOR. L'autenticità e l'integrità di una Credenziale vengono verificate controllando la firma del Fornitore di Credenziali.</p>
+<p>La specifica IT-Wallet supporta sia il formato di Credenziale SD-JWT VC che mdoc-CBOR. L'autenticità e l'integrità di una Credenziale vengono verificate controllando la firma del Fornitore di Credenziali.</p>
 <ul class="simple">
 <li><p>Per SD-JWT, la verifica viene eseguita utilizzando l'algoritmo specificato nel parametro dell'header <strong>alg</strong> di SD-JWT e un riferimento verificabile alla chiave pubblica che deve essere utilizzata per la verifica della firma. Utilizzando OpenID Federation, il riferimento verificabile al materiale crittografico pubblico è l'header <strong>kid</strong> dell'SD-JWT, dove il materiale crittografico viene ottenuto dalla Trust Chain relativa al Credential Issuer, specificato nel claim <strong>iss</strong>.</p></li>
 <li><p>Per mdoc-CBOR, la firma del Fornitore di Credenziali è contenuta nel <em>Mobile Security Object</em> (MSO) e deve essere convalidata utilizzando la chiave pubblica del Fornitore di Credenziali attraverso una catena di certificati attendibile contenuta nel parametro dell'header <strong>x5chain</strong>.</p></li>

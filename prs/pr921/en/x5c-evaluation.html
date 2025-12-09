@@ -443,9 +443,8 @@ openssl<span class="w"> </span>crl<span class="w"> </span>-in<span class="w"> </
 <p><strong>Verification Requirements</strong></p>
 <p>Federation Subordinates MUST:</p>
 <ol class="arabic simple">
-<li><p>Periodically fetch their own Subordinate Statement from immediate superior using the fetch endpoint defined in <a class="reference internal" href="trust-infrastructure.html#federation-api-endpoints"><span class="std std-ref">Federation API endpoints</span></a>. This SHOULD be made within a time interval not superior that 24 hours.</p></li>
-<li><p>Verify validity and detect updates related to the X.509 certificate of the Superior in the <code class="docutils literal notranslate"><span class="pre">x5c</span></code> field.</p></li>
-<li><p>Check for revocation or suspension status.</p></li>
+<li><p>Periodically fetch their own Subordinate Statement from immediate superior using the fetch endpoint defined in <a class="reference internal" href="trust-infrastructure.html#federation-api-endpoints"><span class="std std-ref">Federation API endpoints</span></a>. This SHOULD be made within 24 hours.</p></li>
+<li><p>After fetching, verify the validity of the Superior's X.509 certificate in the <code class="docutils literal notranslate"><span class="pre">x5c</span></code> field, including checking for revocation or suspension status.</p></li>
 <li><p>Update local Entity Configuration when superior certificates change.</p></li>
 </ol>
 <p><strong>Detection Mechanisms</strong></p>
@@ -476,7 +475,7 @@ openssl<span class="w"> </span>crl<span class="w"> </span>-in<span class="w"> </
 <p>When multiple X.509 certificates exist for the same subordinate public key, the certificate in the Subordinate Statement MUST take priority over the certificate in the subordinate's Entity Configuration.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>A superior entity cannot independently initiate a Subordinate Key rotation process. The Subordinate Key Rotation mechanism is always initiated by the Subordinate entity, see Section :<a class="reference internal" href="#subordinate-key-rotation"><span class="std std-ref">Subordinate Key Rotation</span></a>.</p>
+<p>A superior entity cannot independently initiate a Subordinate Key rotation process. The Subordinate Key Rotation mechanism is always initiated by the Subordinate entity, see Section <a class="reference internal" href="#subordinate-key-rotation"><span class="std std-ref">Subordinate Key Rotation</span></a>.</p>
 </div>
 </section>
 <section id="subordinate-key-rotation">
