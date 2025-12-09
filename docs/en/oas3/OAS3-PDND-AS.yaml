@@ -6,7 +6,7 @@ servers:
   - url: https://authentic-source.example.it
     description: Authentic Source API
 paths:
-  /v0.9.0/AttributeClaims:
+  /v1.3.1/AttributeClaims{dataset_id}:
     post:
       tags:
         - e-Services PDND
@@ -15,6 +15,12 @@ paths:
         This service provides the Credential Issuer with all attribute claims necessary for the issuance of a Digital Credential
       operationId: attributeClaims
       parameters:
+        - in: path
+          name: dataset_id
+          schema:
+            type: string
+          required: true
+          description: Identifier of the dataset as registered in the Authentic Source Registry 
         - name: Authorization
           in: header
           description: >-

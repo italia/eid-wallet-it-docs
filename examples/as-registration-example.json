@@ -6,27 +6,88 @@
     "legal_identifier": "12345678901",
     "organization_country": "XX",
     "homepage_uri": "https://www.gov.example/transport",
-    "email_contacts": [
+    "contacts": [
         "registry@transport-authority.gov.example",
         "technical-support@transport-authority.gov.example"
     ],
     "policy_uri": "https://www.gov.example/transport/privacy-policy",
-    "logo_uri": "https://www.gov.example/assets/transport-logo.svg",
+    "logo_uri": "https://www.gov.example/assets/transport-authority-logo.svg",
     "logo_uri#integrity": "sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+    "logo_extended_uri": "https://www.gov.example/assets/transport-authority-logo-extended.svg",
+    "logo_extended_uri#integrity": "sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
     "data_capabilities": [
         {
             "description": "Driving license data is available for licenses issued after January 1, 2020. For older licenses, contact the local transport authority office.",
-            "domains": ["IDENTITY", "AUTHORIZATION"],
-            "intended_purposes": ["DRIVING_LICENSE"],
+            "domains": [
+                "IDENTITY",
+                "AUTHORIZATION"
+            ],
+            "intended_purposes": [
+                "DRIVING_LICENSE"
+            ],
+            "dataset_id": "38832801",
+            "data_origin": "MIT -- Direzione Generale per la Motorizzazione",
             "available_claims": [
-                "given_name",
-                "family_name",
-                "birth_date",
-                "birth_place",
-                "issue_date",
-                "expiry_date",
-                "document_number",
-                "driving_privileges"
+                {
+                    "claim_name": "given_name",
+                    "order": 1,
+                    "mandatory": true
+                },
+                {
+                    "claim_name": "family_name",
+                    "order": 2,
+                    "mandatory": true
+                },
+                {
+                    "claim_name": "birth_date",
+                    "order": 3,
+                    "mandatory": true
+                },
+                {
+                    "claim_name": "birth_place",
+                    "order": 4,
+                    "mandatory": false
+                },
+                {
+                    "claim_name": "document_number",
+                    "order": 5,
+                    "mandatory": true
+                },
+                {
+                    "claim_name": "issue_date",
+                    "order": 6,
+                    "mandatory": true
+                },
+                {
+                    "claim_name": "expiry_date",
+                    "order": 7,
+                    "mandatory": true
+                },
+                {
+                    "claim_name": "driving_privileges",
+                    "order": 8,
+                    "mandatory": true
+                },
+                {
+                    "claim_name": "portrait",
+                    "order": 9,
+                    "mandatory": false
+                },
+                {
+                    "claim_name": "un_distinguishing_sign",
+                    "order": 10,
+                    "mandatory": false
+                },
+                {
+                    "claim_name": "document_iss_country",
+                    "order": 11,
+                    "mandatory": true
+                },
+                {
+                    "claim_name": "document_iss_authority",
+                    "order": 12,
+                    "mandatory": true
+                }
             ],
             "integration_method": "pdnd",
             "integration_endpoint": "https://api.gov.example/transport/driving-license",
@@ -36,10 +97,22 @@
                 "deferred_flow": false
             },
             "update_frequency": "real_time",
-            "display": {
-                "background_color": "#003d82",
-                "text_color": "#ffffff"
-            }
+            "user_information": "###### Driving License\nVehicle registration data is available for licenses issued after January 1, 2020. For older licenses, contact the local motorization office.",
+            "service_documentation": "https://docs.gov.example/transport/api-docs",
+            "logo_uri": "https://www.gov.example/assets/transport-data-logo.svg",
+            "logo_uri#integrity": "sha-256-b1946ac92492d2347c6235b4d2611184e2a3f8b8c8f8f8e8f8f8f8f8f8f8f8f8",
+            "contacts": [
+                    "citizen-support@gov.example"
+            ],
+            "background_image": {
+                            "uri": "https://www.gov.example/assets/background-image.svg",
+                            "uri#integrity": "3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg=="
+                    },
+            "watermark_image": {
+                            "uri": "https://www.gov.example/assets/watermark-image.svg",
+                            "uri#integrity": "3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg=="
+                    },
+            "background_color" : "#12107c"
         }
     ]
 }

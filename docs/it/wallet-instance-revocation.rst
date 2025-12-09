@@ -122,6 +122,8 @@ La verifica della validità dell'Istanza del Wallet DEVE essere eseguita:
 
 - **Durante il periodo di validità dell’Attestato Elettronico di Attributi** da parte dei Fornitori di Attestati, ogni 24 ore mediante la verifica della Wallet Unit Attestation Status List del PID. Infatti, se l'Istanza del Wallet è revocata, il PID in essa contenuto DEVE essere revocato. Di conseguenza, qualsiasi altro Attestato Elettronico ottenuto attraverso la presentazione del PID DEVE anch'esso essere revocato.
 
+- **Durante il ciclo di vita dell'Istanza del Wallet** da parte dell'Istanza del Wallet. Ogni Fornitore di Wallet può implementare metodi diversi per consentire a un'Istanza del Wallet di verificarne il suo stato. La specifica IT Wallet suggerisce di controllare la Status List della Wallet Unit Attestation.
+
 .. note::
   Se i Fornitori di Attestati rilasciano Attestati Elettronico di Attributi con un periodo di validità inferiore a 24 ore, è sufficiente che verifichino il periodo di validità della WUA al momento dell'emissione.
 

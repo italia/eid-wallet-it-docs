@@ -201,8 +201,7 @@ La registrazione della Fonte Autentica segue un processo tecnico come descritto 
          },
          "update_frequency": "real_time",
          "display": {
-          "background_color": "#003d82",
-          "text_color": "#ffffff",
+          "background_color": "#003d82"
          }
        }
      ]

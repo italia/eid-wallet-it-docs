@@ -1,96 +1,275 @@
-[
-    {
-        "entity_id": "https://motorizzazione.gov.example",
-        "organization_info": {
-            "organization_name": "MIT -- Direzione Generale per la Motorizzazione",
-            "organization_type": "public",
-            "ipa_code": "m_inf",
-            "legal_identifier": "80192770587",
-            "organization_country": "IT",
-            "homepage_uri": "https://www.gov.example/transport",
-            "contacts": ["registry@gov.example", "technical-support@gov.example"],
-            "policy_uri": "https://www.gov.example/transport/privacy-policy",
-            "logo_uri": "https://www.gov.example/assets/transport-logo.svg",
-            "service_documentation": "https://docs.gov.example/transport/api-docs",
-            "user_information": "Vehicle registration data is available for licenses issued after January 1, 2020. For older licenses, contact the local motorization office."
-        },
-        "data_capabilities": [
-            {
-                "domains": ["IDENTITY", "AUTHORIZATION"],
-                "intended_purposes": ["DRIVING_LICENSE", "PERSON_IDENTIFICATION"],
-                "available_claims": [
-                    "given_name", "family_name", "birth_date", "birth_place",
-                    "issue_date", "expiry_date", "document_number", "driving_privileges",
-                    "portrait", "un_distinguishing_sign", "document_iss_country", "document_iss_authority"
-                ],
-                "integration_method": "pdnd",
-                "integration_endpoint": "https://api.gov.example/transport/driving-license",
-                "api_specification": "https://docs.gov.example/transport/api-oas3.yaml",
-                "data_provision": {
-                    "immediate_flow": true,
-                    "deferred_flow": false
-                },
-                "update_frequency": "real_time"
-            }
-        ],
-        "display": {
-            "background_color": "#003d82",
-            "text_color": "#ffffff",
-            "logo_uri": "https://www.gov.example/assets/transport-logo.svg",
-            "logo_uri#integrity": "sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
-        }
-    },
-    {
-        "entity_id": "https://api.bank.example/auth-source",
-        "organization_info": {
-            "organization_name": "Example Bank S.p.A.",
-            "organization_type": "private",
-            "legal_identifier": "12345678901",
-            "homepage_uri": "https://www.bank.example",
-            "contacts": ["digital-credentials@bank.example", "api-support@bank.example"],
-            "policy_uri": "https://www.bank.example/privacy-policy",
-            "tos_uri": "https://www.bank.example/terms-of-service",
-            "organization_country": "IT",
-            "logo_uri": "https://www.bank.example/assets/logo.svg",
-            "service_documentation": "https://docs.bank.example/psd2-api",
-            "user_information": "Financial data access requires customer consent and is subject to PSD2 regulations. Account information is available for active accounts only."
-        },
-        "data_capabilities": [
-            {
-                "domains": ["FINANCIAL"],
-                "intended_purposes": ["BANK_ACCOUNT", "INCOME_CERTIFICATE"],
-                "available_claims": [
-                    "given_name", "family_name", "birth_date", "tax_code",
-                    "account_holder_name", "iban", "account_status", "account_opening_date",
-                    "bank_name", "bank_code"
-                ],
-                "integration_method": "oauth2",
-                "integration_endpoint": "https://api.bank.example/psd2/v1/accounts",
-                "api_specification": "https://api.bank.example/docs/psd2-openapi.yaml",
-                "data_provision": {
-                    "immediate_flow": true,
-                    "deferred_flow": false
-                },
-                "update_frequency": "daily"
+{
+    "version": "1.0",
+    "last_modified": "2025-03-15T12:00:00Z",
+    "authentic_sources": [
+        {
+            "entity_id": "https://motorizzazione.gov.example",
+            "organization_info": {
+                "organization_name_l10n_id": "authentic_source1.name",
+                "organization_type": "public",
+                "ipa_code": "m_inf",
+                "legal_identifier": "80192770587",
+                "organization_country": "IT",
+                "homepage_uri": "https://www.gov.example/transport",
+                "policy_uri": "https://www.gov.example/transport/privacy-policy",
+                "logo_uri": "https://trust-registry.it-wallet.example.it/logos/{ipa_code}/image.svg",
+                "logo_uri#integrity": "sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+                "logo_extended_uri": "https://trust-registry.it-wallet.example.it/logos/{ipa_code}/extended-image.svg",
+                "logo_extended_uri#integrity": "sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+                "contacts": [
+                    "registry@gov.example",
+                    "technical-support@gov.example"
+                ]
             },
-            {
-                "domains": ["FINANCIAL"],
-                "intended_purposes": ["PAYMENT_HISTORY"],
-                "available_claims": [
-                    "given_name", "family_name", "tax_code",
-                    "transaction_history", "average_balance", "credit_score_indicator"
+            "data_capabilities": [
+                {
+                    "dataset_id": "38832801",
+                    "data_origin_l10n_id": "authentic_source1.dataset1.origin",
+                    "domains": [
+                        "IDENTITY",
+                        "AUTHORIZATION"
+                    ],
+                    "intended_purposes": [
+                        "DRIVING_LICENSE",
+                        "PERSON_IDENTIFICATION"
+                    ],
+                    "available_claims": [
+                        {
+                            "claim_name": "given_name",
+                            "order": 1,
+                            "mandatory": true
+                        },
+                        {
+                            "claim_name": "family_name",
+                            "order": 2,
+                            "mandatory": true
+                        },
+                        {
+                            "claim_name": "birth_date",
+                            "order": 3,
+                            "mandatory": true
+                        },
+                        {
+                            "claim_name": "birth_place",
+                            "order": 4,
+                            "mandatory": false
+                        },
+                        {
+                            "claim_name": "document_number",
+                            "order": 5,
+                            "mandatory": true
+                        },
+                        {
+                            "claim_name": "issue_date",
+                            "order": 6,
+                            "mandatory": true
+                        },
+                        {
+                            "claim_name": "expiry_date",
+                            "order": 7,
+                            "mandatory": true
+                        },
+                        {
+                            "claim_name": "driving_privileges",
+                            "order": 8,
+                            "mandatory": true
+                        },
+                        {
+                            "claim_name": "portrait",
+                            "order": 9,
+                            "mandatory": false
+                        },
+                        {
+                            "claim_name": "un_distinguishing_sign",
+                            "order": 10,
+                            "mandatory": false
+                        },
+                        {
+                            "claim_name": "document_iss_country",
+                            "order": 11,
+                            "mandatory": true
+                        },
+                        {
+                            "claim_name": "document_iss_authority",
+                            "order": 12,
+                            "mandatory": true
+                        }
+                    ],
+                    "integration_method": "pdnd",
+                    "integration_endpoint": "https://api.gov.example/transport/driving-license",
+                    "api_specification": "https://docs.gov.example/transport/api-oas3.yaml",
+                    "data_provision": {
+                        "immediate_flow": true,
+                        "deferred_flow": false
+                    },
+                    "user_information_l10n_id": "authentic_source1.dataset1.userinfo",
+                    "service_documentation": "https://docs.gov.example/transport/api-docs",
+                    "update_frequency": "real_time",
+                    "logo_uri": "https://trust-registry.it-wallet.example.it/logos/{dataset_id}/image.svg",
+                    "logo_uri#integrity": "sha-256-b1946ac92492d2347c6235b4d2611184e2a3f8b8c8f8f8e8f8f8f8f8f8f8f8f8",
+                    "contacts": [
+                    "citizen-support@gov.example"
+                    ],
+                    "background_image": {
+                                "uri": "https://trust-registry.it-wallet.example.it/images/{dataset_id}/image.svg",
+                                "uri#integrity": "3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg=="
+                    },
+                    "watermark_image": {
+                                "uri": "https://trust-registry.it-wallet.example.it/images/{dataset_id}/imag-watermark.svg",
+                                "uri#integrity": "3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg=="
+                    },
+                    "background_color" : "#12107c"
+                }
+            ]
+        },
+        {
+            "entity_id": "https://api.bank.example/auth-source",
+            "organization_info": {
+                "organization_name_l10n_id": "authentic_source2.name",
+                "organization_type": "private",
+                "legal_identifier": "12345678901",
+                "homepage_uri": "https://www.bank.example",
+                "contacts": [
+                    "digital-credentials@bank.example",
+                    "api-support@bank.example"
                 ],
-                "integration_method": "oauth2",
-                "integration_endpoint": "https://api.bank.example/psd2/v1/transactions",
-                "api_specification": "https://api.bank.example/docs/psd2-openapi.yaml",
-                "data_provision": {
-                    "immediate_flow": false,
-                    "deferred_flow": true,
-                    "max_response_time_minutes": 1440,
-                    "notification_methods": ["push", "poll"]
+                "policy_uri": "https://www.bank.example/privacy-policy",
+                "tos_uri": "https://www.bank.example/terms-of-service",
+                "organization_country": "IT",
+                "logo_uri": "https://trust-registry.it-wallet.example.it/logos/{legal_identifier}/image.svg",
+                "logo_uri#integrity": "sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
+            },
+            "data_capabilities": [
+                {
+                    "dataset_id": "38854801",
+                    "data_origin_l10n_id": "authentic_source2.dataset1.origin",
+                    "domains": [
+                        "FINANCIAL"
+                    ],
+                    "intended_purposes": [
+                        "BANK_ACCOUNT",
+                        "INCOME_CERTIFICATE"
+                    ],
+                    "available_claims": [
+                        {
+                            "claim_name": "given_name",
+                            "order": 1,
+                            "mandatory": true
+                        },
+                        {
+                            "claim_name": "family_name",
+                            "order": 2,
+                            "mandatory": true
+                        },
+                        {
+                            "claim_name": "birth_date",
+                            "order": 3,
+                            "mandatory": false
+                        },
+                        {
+                            "claim_name": "tax_code",
+                            "order": 4,
+                            "mandatory": true
+                        },
+                        {
+                            "claim_name": "account_holder_name",
+                            "order": 5,
+                            "mandatory": true
+                        },
+                        {
+                            "claim_name": "iban",
+                            "order": 6,
+                            "mandatory": true
+                        },
+                        {
+                            "claim_name": "account_status",
+                            "order": 7,
+                            "mandatory": false
+                        },
+                        {
+                            "claim_name": "account_opening_date",
+                            "order": 8,
+                            "mandatory": false
+                        },
+                        {
+                            "claim_name": "bank_name",
+                            "order": 9,
+                            "mandatory": true
+                        },
+                        {
+                            "claim_name": "bank_code",
+                            "order": 10,
+                            "mandatory": true
+                        }
+                    ],
+                    "integration_method": "oauth2",
+                    "integration_endpoint": "https://api.bank.example/psd2/v1/accounts",
+                    "api_specification": "https://api.bank.example/docs/psd2-openapi.yaml",
+                    "data_provision": {
+                        "immediate_flow": true,
+                        "deferred_flow": false
+                    },
+                    "user_information_l10n_id": "authentic_source2.dataset1.userinfo",
+                    "update_frequency": "daily"
                 },
-                "update_frequency": "weekly"
-            }
-        ]
-    }
-]
+                {
+                    "dataset_id": "38854802",
+                    "data_origin_l10n_id": "authentic_source2.dataset2.origin",
+                    "domains": [
+                        "FINANCIAL"
+                    ],
+                    "intended_purposes": [
+                        "PAYMENT_HISTORY"
+                    ],
+                    "available_claims": [
+                        {
+                            "claim_name": "given_name",
+                            "order": 1,
+                            "mandatory": true
+                        },
+                        {
+                            "claim_name": "family_name",
+                            "order": 2,
+                            "mandatory": true
+                        },
+                        {
+                            "claim_name": "tax_code",
+                            "order": 3,
+                            "mandatory": true
+                        },
+                        {
+                            "claim_name": "transaction_history",
+                            "order": 4,
+                            "mandatory": true
+                        },
+                        {
+                            "claim_name": "average_balance",
+                            "order": 5,
+                            "mandatory": false
+                        },
+                        {
+                            "claim_name": "credit_score_indicator",
+                            "order": 6,
+                            "mandatory": false
+                        }
+                    ],
+                    "integration_method": "oauth2",
+                    "integration_endpoint": "https://api.bank.example/psd2/v1/transactions",
+                    "api_specification": "https://api.bank.example/docs/psd2-openapi.yaml",
+                    "data_provision": {
+                        "immediate_flow": false,
+                        "deferred_flow": true,
+                        "max_response_time_minutes": 1440,
+                        "notification_methods": [
+                            "push",
+                            "poll"
+                        ]
+                    },
+                    "user_information_l10n_id": "authentic_source2.dataset2.userinfo",
+                    "service_documentation": "https://docs.bank.example/psd2-api",
+                    "update_frequency": "weekly"
+                }
+            ]
+        }
+    ]
+}

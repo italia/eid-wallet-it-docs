@@ -20,7 +20,7 @@
 .. _Key Attestation: https://developer.android.com/privacy-and-security/security-key-attestation#attestation-v4
 .. _LG-AA: https://www.agid.gov.it/sites/default/files/repository_files/llgg_attribute_authorities_0.pdf
 .. _MODI: https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf
-.. _OAUTH-ATTESTATION-CLIENT-AUTH: https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/03/
+.. _OAUTH-ATTESTATION-CLIENT-AUTH: https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/07/
 .. _OAUTH-MULT-RESP-TYPE: https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html
 .. _OAUTH-STATUS-ASSERTION: https://datatracker.ietf.org/doc/draft-demarco-oauth-status-assertions/03/
 .. _OAUTH2: https://www.rfc-editor.org/rfc/rfc6749
@@ -51,7 +51,7 @@
 .. _OPENID4VC-HAIP: https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-01.html
 .. _OpenID4VC-SecTrust: https://openid.github.io/OpenID4VC_SecTrust/draft-oid4vc-security-and-trust.html
 .. _OpenID4VCI: https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html
-.. _OpenID4VP: https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html
+.. _OpenID4VP: https://openid.net/specs/openid-4-verifiable-presentations-1_0.html
 .. _PDND: https://www.agid.gov.it/sites/agid/files/2025-06/Linee_guida_Infrastruttura_Interoperabilit%C3%A0_PDND_v2_maggio_2025.pdf
 .. _RFC 2898: http://tools.ietf.org/html/rfc2898.html
 .. _RFC 4648: https://datatracker.ietf.org/doc/html/rfc4648
@@ -68,11 +68,11 @@
 .. _Signal Hub push-yaml: https://raw.githubusercontent.com/pagopa/interop-signalhub-core/refs/tags/1.0.1/docs/openAPI/push-signals.yaml
 .. _SIOPv2: https://openid.net/specs/openid-connect-self-issued-v2-1_0.html
 .. _SPID/CIE-OpenID-Connect-Specifications: https://italia.github.io/spid-cie-oidc-docs/en
-.. _TOKEN-STATUS-LIST: https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/07/
+.. _TOKEN-STATUS-LIST: https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/13/
 .. _Transition to Operational: wallet-solution.html#transition-to-operational
 .. _Trusty: https://source.android.com/docs/security/features/trusty
 .. _W3C-SRI: https://www.w3.org/TR/SRI/
-.. _W3C.CSS-COLOR: https://www.w3.org/TR/css-color/
+.. _W3C.CSS-COLOR: https://www.w3.org/TR/2022/REC-css-color-3-20220118/
 .. _Wallet Attestation Issuance endpoint: wallet-solution.html#wallet-attestation-issuance-endpoint
 .. _Wallet Attestation Issuance: wallet-solution.html#wallet-attestation-issuance
 .. _Wallet Instance Functionalities: wallet-solution.html#wallet-instance-functionalities

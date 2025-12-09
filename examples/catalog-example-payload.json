@@ -1,105 +1,93 @@
 {
-    "catalog_version": "1.0",
-    "iss": "https://trust-registry.eid-wallet.example.it",
+    "version": "1.0",
     "last_modified": "2025-03-15T12:00:00Z",
-    "credentials": [
-        {
-            "version": "1.0",
-            "credential_type": "mDL",
-            "legal_type": "pub-eaa",
-            "vct": "urn:eudi:mDL:it:1",
-            "restriction_policy": {
-                "allowed_wallet_ids": [
-                    "https://wallet-provider.example.org/wallet_solution",
-                    "https://wallet-provider2.example.org/wallet_solution"
-                ],
-                "allowed_issuer_ids": [
-                    "https://issuer.example.org"
-                ]
-            },
-            "pricing_policy": {
-                "models": [
-                    {
-                        "pricing_type": "verification_based",
-                        "price": 0.01,
-                        "currency": "EUR"
-                    }
-                ],
-                "pricing_model_uri": "https://example.com/pricing"
-            },
-            "validity_info": {
-                "max_validity_days": 365,
-                "status_methods": ["status_list"],
-                "allowed_states": [
-                    "valid",
-                    "revoked",
-                    "suspended"
-                ]
-            },       
-            "authentication": {
-                "user_auth_required": true,
-                "min_loa": "high",
-                "supported_schemes": ["it-wallet"]
-            },
-            "purposes": [
-                {
-                    "id": "DRIVING_LICENSE"            
-                },
-                {
-                    "id": "PERSON_IDENTIFICATION"
-                }
+    "iss": "https://trust-registry.eid-wallet.example.it",
+    "credentials": [{
+        "version": "1.0",
+        "credential_type": "mDL",
+        "credential_name_l10n_id": "mDL.name",
+        "legal_type": "pub-eaa",
+        "restriction_policy": {
+            "allowed_wallet_ids": [
+                "https://wallet-provider.example.org/wallet_solution",
+                "https://wallet-provider2.example.org/wallet_solution"
             ],
-            "issuers": [
-                {
-                    "id": "https://issuer.example.org",
-                    "organization_name": "Digital Credential Issuer of Example",
-                    "organization_code": "ci_example_it",
-                    "organization_country": "IT",
-                    "contacts": [
-                        "mailto:informazioni@example.it",
-                        "mailto:protocollo@pec.example.it"
-                    ],
-                    "legal_type": "pub-eaa",
-                    "homepage_uri": "https://issuer.example.org",
-                    "logo_uri": "https://issuer.example.org/logo.svg",
-                    "policy_uri": "https://issuer.example.org/privacy",
-                    "tos_uri": "https://issuer.example.org/terms",
-                    "service_documentation": "https://issuer.example.org/.well-known/service-doc",
-                    "issuance_flows": {
-                        "deferred_flow": true,
-                        "max_deferred_issuance_time_minutes": 1440,
-                        "notification_methods": ["push", "polling"]
-                    }
-                }
-            ],
-            "authentic_sources": [
-                "https://motorizzazione.gov.example"
-            ],
-            "formats": [
-                {
-                    "configuration_id": "dc_sd_jwt_mDL",
-                    "format": "dc+sd-jwt",
-                    "schema_uri": "https://trust-registry.eid-wallet.example.it/.well-known/schemas/sd-jwt/mDL",
-                    "schema_uri#integrity": "sha256-981bb56f693a4f40b917a896620a59cc984bed81bd57051d8ab5c6c194f67ee8"
-                },
-                {
-                    "configuration_id": "mso_mdoc_mDL",
-                    "format": "mso_mdoc",
-                    "docType": "org.iso.18013.5.1",
-                    "schema_uri": "https://trust-registry.eid-wallet.example.it/.well-known/schemas/mdoc/mDL",
-                    "schema_uri#integrity": "sha256-c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16"
-                }
+            "allowed_issuer_ids": [
+                "https://issuer.example.org"
             ]
-        }
-    ],
-    "wallet_app_attestation": {
+        },
+        "pricing_policy": {
+            "models": [{
+                "pricing_type": "verification_based",
+                "price": 0.01,
+                "currency": "EUR"
+            }],
+            "pricing_model_uri": "https://example.com/pricing"
+        },
+        "validity_info": {
+            "max_validity_days": 365,
+            "status_methods": [
+                "status_list"
+            ],
+            "allowed_states": {
+                "0x00" : "VALID",
+                "0x01" : "INVALID",
+                "0x02" : "SUSPENDED",
+                "0x03" : "UPDATE",
+                "0x0B" : "ATTRIBUTE_UPDATE"
+            }
+        },
+        "authentication": {
+            "user_auth_required": true,
+            "min_loa": "high",
+            "supported_schemes": [
+                "it-wallet"
+            ]
+        },
+        "purposes": [{
+            "id": "DRIVING_LICENSE"
+        },
+            {
+                "id": "PERSON_IDENTIFICATION"
+            }
+        ],
+        "issuers": [{
+            "id": "https://issuer.example.org",
+            "organization_name_l10n_id": "mDL.issuer1.name",
+            "organization_code": "ci_example_it",
+            "organization_country": "IT",
+            "contacts": [
+                "mailto:informazioni@example.it",
+                "mailto:protocollo@pec.example.it"
+            ],
+            "legal_type": "pub-eaa",
+            "homepage_uri": "https://issuer.example.org",
+            "logo_uri": "https://issuer.example.org/logo.svg",
+            "policy_uri": "https://issuer.example.org/privacy",
+            "tos_uri": "https://issuer.example.org/terms",
+            "service_documentation": "https://issuer.example.org/.well-known/service-doc",
+            "issuance_flows": {
+                "deferred_flow": true,
+                "max_deferred_issuance_time_minutes": 1440,
+                "notification_methods": [
+                    "push",
+                    "polling"
+                ]
+            }
+        }],
+        "authentic_sources": [{
+            "id": "https://motorizzazione.gov.example",
+            "dataset_id": "38832801"
+        }]
+    }],
+    "wallet_app_attestations": [{
         "version": "1.0",
         "credential_type": "wallet_app_attestation",
-        "vct": "urn:eudi:wallet_app_attestation:it:1",
         "formats": [
             {
                 "format": "dc+sd-jwt",
                 "configuration_id": "dc_sd_jwt_wa",
+                "vct": "urn:eudi:wallet_app_attestation:it:1",
                 "schema_uri": "https://trust-registry.it-wallet.example.it/.well-known/schemas/sd-jwt/wallet_app_attestation",
                 "schema_uri#integrity": "sha256-Lxn6dNpkPdoeoRgO5+n0jNhJZ8MbKfXfP195+dNR0dc="
             },
@@ -118,4 +106,5 @@
             }
         ]
     }
+    ]
 }

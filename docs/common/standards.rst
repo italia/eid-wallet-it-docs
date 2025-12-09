@@ -53,11 +53,11 @@ Digital Credential Issuance
     :header-rows: 0
 
     * - `OpenID4VCI`_
-      - Lodderstedt, T., Yasuda, K., Looker, T., "OpenID for Verifiable Credential Issuance", December 2024, Draft 15.
+      - Lodderstedt, T., Yasuda, K., Looker, T., Bastian, P., "OpenID for Verifiable Credential Issuance 1.0", September 2025.
     * - `OPENID4VC-HAIP`_
       - Lodderstedt, T., K. Yasuda, "OpenID4VC High Assurance Interoperability Profile", January 2025, Draft 1.
     * - `OAUTH-ATTESTATION-CLIENT-AUTH`_
-      - Looker, T., Bastian, P., "OAuth 2.0 Attestation-Based Client Authentication", May 2024, Draft 3.
+      - Looker, T., Bastian, P., Bormann, C., "OAuth 2.0 Attestation-Based Client Authentication", September 2025, Draft 7.
     * - `OAUTH-MULT-RESP-TYPE`_
       - de Medeiros, B., Scurtescu, M., Tarjan, P., Jones, M., "OAuth 2.0 Multiple Response Type Encoding Practices", February 2014.
 
@@ -70,7 +70,7 @@ Digital Credential Presentation
     :header-rows: 0
 
     * - `OpenID4VP`_
-      - Terbu, O., Lodderstedt, T., Yasuda, K., Looker, T., "OpenID for Verifiable Presentations", December 2024, Draft 23.
+      - Terbu, O., Lodderstedt, T., Yasuda, K., Fett, D., Heenan, J., "OpenID for Verifiable Presentations 1.0", July 2025.
     * - `OAuthCrossDeviceSec`_
       - Kasselman, P., Fett, D., Skokan, F.,  "Cross-Device Flows: Security Best Current Practice", July 2024, Draft 8.
     * - `OPENID4VC-HAIP`_
@@ -88,7 +88,7 @@ Digital Credential Revocation Check Mechanisms
     :header-rows: 0
 
     * - `TOKEN-STATUS-LIST`_
-      - Tobias Looker and Paul Bastian and Christian Bormann,  "Token Status List", February 2025, Draft 7.
+      - Looker, T., Bastian, P., Bormann, C.,  "Token Status List (TSL)", October 2025, Draft 13.
     * - `OAUTH-STATUS-ASSERTION`_
       - De Marco, G., Steele, O., Marino, F., Adomeit, M., "OAuth Status Assertions", June 2024, Draft 3.
 
