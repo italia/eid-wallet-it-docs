@@ -139,7 +139,7 @@ The JWT payload contains the following claims. Unless otherwise specifed, the fo
       - Commission Implementing Regulation `EU_2024/2977`_.
     * - **status**
       - OPTIONAL. REQUIRED only if the Digital Credential is long-lived. *JSON object*. Format-encoded data identifier `location_status` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. It MUST contain either the JSON member `status_list`.
-      - Section 3.2.2.2 `SD-JWT-VC`_ and Section 11 `OAUTH-STATUS-ASSERTION`_.
+      - Section 3.2.2.2 `SD-JWT-VC`_.
     * - **cnf**
       - OPTIONAL. *JSON object*. Format-encoded data identifier `cryptographic_binding` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`, containing the proof-of-possession key materials. By including a **cnf** (confirmation) claim in a JWT, the Issuer of the JWT declares that the Holder is in control of the private key related to the public one defined in the **cnf** parameter. The recipient MUST cryptographically verify that the Holder is in control of that key.
       - `[RFC7800, Section 3.1] <https://www.iana.org/go/rfc7800>`_ and Section 3.2.2.2 `SD-JWT-VC`_.

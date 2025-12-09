@@ -139,7 +139,7 @@ Il payload JWT contiene i seguenti claim. Salvo diversamente specificato, i segu
       - Regolamento di esecuzione della Commissione `EU_2024/2977`_.
     * - **status**
       - OBBLIGATORIO solo se l'Attestato Elettronico è long-lived. *Oggetto JSON*. Identificativo del dato `location_status` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`. DEVE contenere il membro JSON `status_list`.
-      - Sezione 3.2.2.2 `SD-JWT-VC`_ e Sezione 11 `OAUTH-STATUS-ASSERTION`_.
+      - Sezione 3.2.2.2 `SD-JWT-VC`_.
     * - **cnf**
       - OPZIONALE. *Oggetto JSON*. Identificativo del dato `cryptographic_binding` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`, contenente il materiale crittografico per la prova di possesso. Includendo un claim **cnf** (confirmation) in un JWT, il Fornitore del JWT dichiara che il Titolare ha il controllo della chiave privata relativa a quella pubblica definita nel parametro **cnf**. Il destinatario DEVE verificare crittograficamente che il Titolare abbia effettivamente il controllo di quella chiave.
       - `[RFC7800, Sezione 3.1] <https://www.iana.org/go/rfc7800>`_ e Sezione 3.2.2.2 `SD-JWT-VC`_.
@@ -167,9 +167,7 @@ Il payload JWT contiene i seguenti claim. Salvo diversamente specificato, i segu
 .. note::
   I claim JWT standard ``nbf`` e ``exp`` sono utilizzati per esprimere il periodo di validità tecnica di un Attestato Elettronico conforme a SD-JWT VC.
 
-Se il parametro ``status`` è valorizzato con ``status_list``, DEVE essere un Oggetto JSON conforme alla Sezione 6.2 di TOKEN-STATUS-LIST_.
-
-Se il parametro ``status`` è valorizzato con ``status_assertion``, è un Oggetto JSON contenente il claim *credential_hash_alg* che indica l'algoritmo utilizzato per l'hashing dell'Attestato Elettronico a cui è associata la Status Assertion. Si RACCOMANDA di utilizzare *sha-256*.
+Il parametro ``status_list`` di ``status`` DEVE essere un Oggetto JSON conforme alla Sezione 6.2 di TOKEN-STATUS-LIST_.
 
 Esempi Non Normativi di (Q)EAA
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
