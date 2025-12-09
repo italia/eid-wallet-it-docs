@@ -163,7 +163,7 @@ Federation entities MUST implement key rotation mechanisms to maintain security 
 Superior Key Rotation
 """""""""""""""""""""""
 
-Subordinate entities MUST perform periodic verification of their trust chain to detect superior key rotations and ensure continued federation membership.
+Subordinate entities MUST perform periodic verification of their Trust Chain to detect superior key rotations and ensure continued federation membership.
 
 **Verification Requirements**
 
