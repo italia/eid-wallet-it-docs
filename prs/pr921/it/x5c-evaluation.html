@@ -444,8 +444,7 @@ openssl<span class="w"> </span>crl<span class="w"> </span>-in<span class="w"> </
 <p><strong>Requisiti di Verifica</strong></p>
 <p>I Subordinati della federazione DEVONO:</p>
 <ol class="arabic simple">
-<li><p>Recuperare il proprio Subordinate Statement dal superiore immediato ogni 24 ore utilizzando il fetch endpoint definito in <span class="xref std std-ref">trust-infrastructure:Endpoint delle API della Federazione</span>.</p></li>
-<li><p>Verificare la validità e rilevare gli aggiornamenti dei certificati X.509 del superiore nel campo <code class="docutils literal notranslate"><span class="pre">x5c</span></code>.</p></li>
+<li><p>Recuperare il proprio Subordinate Statement dal superiore immediato ogni 24 ore utilizzando il fetch endpoint definito in <span class="xref std std-ref">trust-infrastructure:Endpoint delle API della Federazione</span>. Ciò DEVE essere fatto entro un intervallo di tempo non superiore a 24 ore.</p></li>
 <li><p>Verificare lo stato di revoca o sospensione.</p></li>
 <li><p>Aggiornare il proprio Entity Configuration quando cambiano i certificati superiori.</p></li>
 </ol>

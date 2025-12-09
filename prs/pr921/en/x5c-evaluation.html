@@ -443,7 +443,7 @@ openssl<span class="w"> </span>crl<span class="w"> </span>-in<span class="w"> </
 <p><strong>Verification Requirements</strong></p>
 <p>Federation Subordinates MUST:</p>
 <ol class="arabic simple">
-<li><p>Fetch their own Subordinate Statement from immediate superior every 24 hours using the fetch endpoint defined in <a class="reference internal" href="trust-infrastructure.html#federation-api-endpoints"><span class="std std-ref">Federation API endpoints</span></a>.</p></li>
+<li><p>Periodically fetch their own Subordinate Statement from immediate superior using the fetch endpoint defined in <a class="reference internal" href="trust-infrastructure.html#federation-api-endpoints"><span class="std std-ref">Federation API endpoints</span></a>. This SHOULD be made within a time interval not superior that 24 hours.</p></li>
 <li><p>Verify validity and detect updates related to the X.509 certificate of the Superior in the <code class="docutils literal notranslate"><span class="pre">x5c</span></code> field.</p></li>
 <li><p>Check for revocation or suspension status.</p></li>
 <li><p>Update local Entity Configuration when superior certificates change.</p></li>
