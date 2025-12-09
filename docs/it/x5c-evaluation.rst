@@ -169,10 +169,9 @@ Le entità subordinate DEVONO eseguire la verifica periodica della propria trust
 
 I Subordinati della federazione DEVONO:
 
-1. Recuperare il proprio Subordinate Statement dal superiore immediato ogni 24 ore utilizzando il fetch endpoint definito in :ref:`trust-infrastructure:Endpoint delle API della Federazione`.
-2. Verificare la validità e rilevare gli aggiornamenti dei certificati X.509 del superiore nel campo ``x5c``.
-3. Verificare lo stato di revoca o sospensione.
-4. Aggiornare il proprio Entity Configuration quando cambiano i certificati superiori.
+1. Recuperare il proprio Subordinate Statement dal superiore immediato ogni 24 ore utilizzando il fetch endpoint definito in :ref:`trust-infrastructure:Endpoint delle API della Federazione`. Ciò DEVE essere fatto entro un intervallo di tempo non superiore a 24 ore.
+2. Verificare lo stato di revoca o sospensione.
+3. Aggiornare il proprio Entity Configuration quando cambiano i certificati superiori.
 
 **Meccanismi di Rilevamento**
 
