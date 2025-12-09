@@ -433,15 +433,78 @@ openssl<span class="w"> </span>crl<span class="w"> </span>-in<span class="w"> </
 <li><p><strong>Gestione CRL</strong>: Per i Certificati X.509 del Protocollo con validità &gt; 24 ore, mantenere la pubblicazione CRL corrente.</p></li>
 <li><p><strong>Uscita dalla Federazione</strong>: Garantire la revoca corretta dei Certificati X.509 durante l'uscita volontaria o avviata dall'organo di supervisione dalla federazione.</p></li>
 </ul>
+</section>
+</section>
+<section id="procedure-di-rotazione-delle-chiavi">
+<h2><span class="section-number">9.5. </span>Procedure di Rotazione delle Chiavi<a class="headerlink" href="#procedure-di-rotazione-delle-chiavi" title="Link to this heading">¶</a></h2>
+<p>Le entità federate DEVONO implementare meccanismi di rotazione delle chiavi per mantenere la postura di sicurezza e rispondere agli eventi di sicurezza. Questa sezione definisce le procedure operative per rilevare e rispondere alle rotazioni delle chiavi superiori e per il rinnovo delle chiavi subordinate.</p>
+<section id="rotazione-delle-chiavi-superiori">
+<h3><span class="section-number">9.5.1. </span>Rotazione delle Chiavi Superiori<a class="headerlink" href="#rotazione-delle-chiavi-superiori" title="Link to this heading">¶</a></h3>
+<p>Le entità subordinate DEVONO eseguire la verifica periodica della propria Trust Chain per rilevare le rotazioni delle chiavi superiori e garantire la continuità dell'appartenenza alla federazione.</p>
+<p><strong>Requisiti di Verifica</strong></p>
+<p>I Subordinati della federazione DEVONO:</p>
+<ol class="arabic simple">
+<li><p>Recuperare il proprio Subordinate Statement dal superiore immediato ogni 24 ore utilizzando il fetch endpoint definito in <span class="xref std std-ref">trust-infrastructure:Endpoint delle API della Federazione</span>. Ciò DOVREBBE essere fatto entro un intervallo di tempo non superiore a 24 ore.</p></li>
+<li><p>Verificare lo stato di revoca o sospensione.</p></li>
+<li><p>Aggiornare il proprio Entity Configuration quando cambiano i certificati superiori.</p></li>
+</ol>
+<p><strong>Meccanismi di Rilevamento</strong></p>
+<p>I Subordinati POSSONO utilizzare uno o più dei seguenti meccanismi per rilevare le modifiche:</p>
+<ul class="simple">
+<li><p><strong>Verifica CRL/OCSP</strong>: Monitorare le Certificate Revocation List o le risposte del protocollo Online Certificate Status Protocol per rilevare la revoca dei certificati superiori come definito in <span class="xref std std-ref">trust-infrastructure:Revoca dei Certificati X.509</span>. La revoca del certificato indica che è in corso la rotazione della chiave superiore.</p></li>
+<li><p><strong>Fetch Endpoint</strong>: Recuperare il Subordinate Statement tramite <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">{superiore}/fetch?sub={entity_id_subordinato}</span></code> per ottenere i certificati correnti.</p></li>
+<li><p><strong>Events Endpoint</strong>: Monitorare <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">{superiore}/federation_subordinate_events_endpoint?sub={entity_id_subordinato}</span></code> per gli eventi <code class="docutils literal notranslate"><span class="pre">jwks_update</span></code>. Il Federation Subordinate Events endpoint restituisce la traccia storica degli eventi di registrazione come definito in <span class="xref std std-ref">trust-infrastructure:Endpoint delle API della Federazione</span>.</p></li>
+</ul>
+<p>I Subordinati DOVREBBERO implementare la pianificazione automatizzata per:</p>
+<ul class="simple">
+<li><p>Operazioni di fetch giornaliere per recuperare il Subordinate Statement corrente.</p></li>
+<li><p>Validazione della catena di certificati X.509 dopo ogni fetch.</p></li>
+<li><p>Aggiornamenti automatici dell'Entity Configuration quando vengono rilevate modifiche ai certificati.</p></li>
+<li><p>Monitoraggio degli eventi per il rilevamento proattivo delle modifiche.</p></li>
+</ul>
+<p>Quando un'entità superiore (Trust Anchor o Intermediate) ruota la propria Chiave dell'Entità Federata, tutti i certificati X.509 Subordinati DEVONO essere riemessi.</p>
+<p><strong>Procedura di Rotazione</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Revoca della Chiave</strong>: Il superiore pubblica la Certificate Revocation List (CRL) o la voce Historical Keys (HK) revocando la vecchia chiave come definito in <span class="xref std std-ref">trust-infrastructure:Revoca dei Certificati X.509</span>.</p></li>
+<li><p><strong>Aggiornamento Entity Configuration</strong>: Il superiore pubblica la nuova Entity Configuration firmata con la nuova Chiave dell'Entità Federata.</p></li>
+<li><p><strong>Riemissione Certificati X.509</strong>: Il superiore riemette i certificati X.509 a tutti i Subordinati utilizzando la nuova chiave.</p></li>
+<li><p><strong>Pubblicazione Certificati</strong>: Il superiore rende disponibili i nuovi certificati sul fetch endpoint.</p></li>
+<li><p><strong>Rilevamento Subordinato</strong>: I Subordinati rilevano la modifica al successivo fetch programmato (al massimo entro 24 ore dalla pubblicazione della modifica).</p></li>
+<li><p><strong>Aggiornamento Certificati</strong>: I Subordinati aggiornano il campo <code class="docutils literal notranslate"><span class="pre">x5c</span></code> nella propria Entity Configuration con il nuovo certificato.</p></li>
+</ol>
+<p><strong>Priorità dei Certificati</strong></p>
+<p>Quando esistono più certificati X.509 per la stessa chiave pubblica subordinata, il certificato nel Subordinate Statement DEVE avere priorità sul certificato nella Entity Configuration del subordinato.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Un'entità superiore non può avviare autonomamente un processo di rotazione delle Chiavi Subordinate. Il meccanismo di rotazione delle Chiavi Subordinate è sempre avviato dall'entità Subordinata, vedi Sezione <a class="reference internal" href="#rotazione-delle-chiavi-subordinate"><span class="std std-ref">Rotazione delle Chiavi Subordinate</span></a>.</p>
+</div>
+</section>
+<section id="rotazione-delle-chiavi-subordinate">
+<h3><span class="section-number">9.5.2. </span>Rotazione delle Chiavi Subordinate<a class="headerlink" href="#rotazione-delle-chiavi-subordinate" title="Link to this heading">¶</a></h3>
+<p>I Subordinati ruotano le proprie Chiavi dell'Entità Federata inviando Certificate Signing Request al proprio superiore immediato seguendo la stessa procedura dell'onboarding iniziale.</p>
+<p><strong>Procedura di Rotazione</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Generazione Nuova Chiave</strong>: Il subordinato genera una nuova coppia di Chiavi dell'Entità Federata.</p></li>
+<li><p><strong>Generazione CSR</strong>: Il subordinato genera un Certificate Signing Request PKCS #10 per la nuova chiave come definito in <a class="reference internal" href="entity-onboarding.html#onboarding-delle-entita"><span class="std std-ref">Onboarding delle Entità</span></a>.</p></li>
+<li><p><strong>Invio CSR</strong>: Il subordinato invia il CSR all'entità superiore utilizzando lo stesso endpoint di onboarding.</p></li>
+<li><p><strong>Emissione Certificato</strong>: Il superiore valida il CSR ed emette un nuovo certificato X.509.</p></li>
+<li><p><strong>Pubblicazione Certificato</strong>: Il superiore rende disponibile il nuovo certificato sul fetch endpoint.</p></li>
+<li><p><strong>Recupero Certificato</strong>: Il subordinato recupera il Subordinate Statement aggiornato contenente il nuovo certificato.</p></li>
+<li><p><strong>Aggiornamento Entity Configuration</strong>: Il subordinato aggiunge la nuova JWK con il nuovo certificato all'array <code class="docutils literal notranslate"><span class="pre">jwks</span></code> della Entity Configuration.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Durante la rotazione delle chiavi, i Subordinati DOVREBBERO mantenere sia le chiavi vecchie che quelle nuove per garantire la continuità del servizio. La vecchia chiave DOVREBBE essere rimossa solo dopo aver confermato la corretta propagazione della nuova chiave in tutta la federazione.</p>
+</div>
 <section id="gestione-del-ciclo-di-vita-dell-entita">
-<h4><span class="section-number">9.4.3.1. </span>Gestione del Ciclo di Vita dell'Entità<a class="headerlink" href="#gestione-del-ciclo-di-vita-dell-entita" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">9.5.2.1. </span>Gestione del Ciclo di Vita dell'Entità<a class="headerlink" href="#gestione-del-ciclo-di-vita-dell-entita" title="Link to this heading">¶</a></h4>
 <p>Questa sezione fornisce le procedure di implementazione tecnica per la gestione del ciclo di vita dell'entità. Per i concetti di alto livello del ciclo di vita e i processi aziendali, vedere <span class="xref std std-ref">onboarding-high-level:Gestione del Ciclo di Vita dell'Entità</span>.</p>
 <p>Mentre l'aggiornamento dei dati amministrativi DEVE seguire processi di governance che sono fuori dall'ambito di questa specifica tecnica, gli aggiornamenti della configurazione tecnica sono descritti nelle seguenti sezioni.</p>
 </section>
 </section>
 </section>
 <section id="aggiornamenti-della-configurazione-tecnica">
-<h2><span class="section-number">9.5. </span>Aggiornamenti della Configurazione Tecnica<a class="headerlink" href="#aggiornamenti-della-configurazione-tecnica" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">9.6. </span>Aggiornamenti della Configurazione Tecnica<a class="headerlink" href="#aggiornamenti-della-configurazione-tecnica" title="Link to this heading">¶</a></h2>
 <p>Gli aggiornamenti tecnici che influenzano le operazioni del protocollo della federazione DEVONO seguire procedure specifiche per:</p>
 <blockquote>
 <div><ul class="simple">
@@ -483,10 +546,10 @@ openssl<span class="w"> </span>crl<span class="w"> </span>-in<span class="w"> </
 </div></blockquote>
 </section>
 <section id="procedure-tecniche-di-uscita-dalla-federazione">
-<h2><span class="section-number">9.6. </span>Procedure Tecniche di Uscita dalla Federazione<a class="headerlink" href="#procedure-tecniche-di-uscita-dalla-federazione" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">9.7. </span>Procedure Tecniche di Uscita dalla Federazione<a class="headerlink" href="#procedure-tecniche-di-uscita-dalla-federazione" title="Link to this heading">¶</a></h2>
 <p>Per il contesto aziendale sui processi di uscita dalla federazione, vedere <a class="reference internal" href="onboarding-high-level.html#processi-di-uscita-e-rimozione-dalla-federazione"><span class="std std-ref">Processi di Uscita e Rimozione dalla Federazione</span></a>. Questa sezione copre le procedure di implementazione tecnica.</p>
 <section id="uscita-volontaria-disattivazione-tecnica">
-<h3><span class="section-number">9.6.1. </span>Uscita Volontaria - Disattivazione Tecnica<a class="headerlink" href="#uscita-volontaria-disattivazione-tecnica" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">9.7.1. </span>Uscita Volontaria - Disattivazione Tecnica<a class="headerlink" href="#uscita-volontaria-disattivazione-tecnica" title="Link to this heading">¶</a></h3>
 <blockquote>
 <div><ol class="arabic simple">
 <li><p><strong>Richiesta di Revoca del Certificato X.509</strong>: L'Entità DEVE inviare una richiesta di revoca del Certificato X.509 all'Autorità Federata con il motivo della revoca. La richiesta DEVE essere firmata con la Chiave Privata dell'Entità Federata corrispondente al Certificato X.509 che viene revocato per dimostrare la legittimità della richiesta di revoca.</p></li>
@@ -532,7 +595,7 @@ cG9saWN5MAoGCCqGSM49BAMCA0gAMEUCIQC9h3Y6hFgd7zUzZyBrQ3jJ8HmVF2Qa
 </div>
 </section>
 <section id="rimozione-da-parte-dell-organo-di-supervisione-implementazione-tecnica">
-<h3><span class="section-number">9.6.2. </span>Rimozione da Parte dell'Organo di Supervisione - Implementazione Tecnica<a class="headerlink" href="#rimozione-da-parte-dell-organo-di-supervisione-implementazione-tecnica" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">9.7.2. </span>Rimozione da Parte dell'Organo di Supervisione - Implementazione Tecnica<a class="headerlink" href="#rimozione-da-parte-dell-organo-di-supervisione-implementazione-tecnica" title="Link to this heading">¶</a></h3>
 <blockquote>
 <div><ol class="arabic simple">
 <li><p><strong>Revoca di Emergenza del Certificato X.509</strong>: L'Autorità Federata DEVE revocare immediatamente il Certificato X.509 con il codice di motivo appropriato (ad es., &quot;Key Compromise&quot;, &quot;Cessation of Operation&quot;).</p></li>
@@ -618,16 +681,21 @@ curl<span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wall
 <li><a class="reference internal" href="#migliori-pratiche-per-la-gestione-dei-certificati-x-509">9.4. Migliori Pratiche per la Gestione dei Certificati X.509</a><ul>
 <li><a class="reference internal" href="#integrazione-della-validazione-dei-certificati-x-509">9.4.1. Integrazione della Validazione dei Certificati X.509</a></li>
 <li><a class="reference internal" href="#diagnostica-e-risoluzione-dei-problemi">9.4.2. Diagnostica e Risoluzione dei Problemi</a></li>
-<li><a class="reference internal" href="#coordinamento-del-ciclo-di-vita-dei-certificati-x-509">9.4.3. Coordinamento del Ciclo di Vita dei Certificati X.509</a><ul>
-<li><a class="reference internal" href="#gestione-del-ciclo-di-vita-dell-entita">9.4.3.1. Gestione del Ciclo di Vita dell'Entità</a></li>
+<li><a class="reference internal" href="#coordinamento-del-ciclo-di-vita-dei-certificati-x-509">9.4.3. Coordinamento del Ciclo di Vita dei Certificati X.509</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#procedure-di-rotazione-delle-chiavi">9.5. Procedure di Rotazione delle Chiavi</a><ul>
+<li><a class="reference internal" href="#rotazione-delle-chiavi-superiori">9.5.1. Rotazione delle Chiavi Superiori</a></li>
+<li><a class="reference internal" href="#rotazione-delle-chiavi-subordinate">9.5.2. Rotazione delle Chiavi Subordinate</a><ul>
+<li><a class="reference internal" href="#gestione-del-ciclo-di-vita-dell-entita">9.5.2.1. Gestione del Ciclo di Vita dell'Entità</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#aggiornamenti-della-configurazione-tecnica">9.5. Aggiornamenti della Configurazione Tecnica</a></li>
-<li><a class="reference internal" href="#procedure-tecniche-di-uscita-dalla-federazione">9.6. Procedure Tecniche di Uscita dalla Federazione</a><ul>
-<li><a class="reference internal" href="#uscita-volontaria-disattivazione-tecnica">9.6.1. Uscita Volontaria - Disattivazione Tecnica</a></li>
-<li><a class="reference internal" href="#rimozione-da-parte-dell-organo-di-supervisione-implementazione-tecnica">9.6.2. Rimozione da Parte dell'Organo di Supervisione - Implementazione Tecnica</a></li>
+<li><a class="reference internal" href="#aggiornamenti-della-configurazione-tecnica">9.6. Aggiornamenti della Configurazione Tecnica</a></li>
+<li><a class="reference internal" href="#procedure-tecniche-di-uscita-dalla-federazione">9.7. Procedure Tecniche di Uscita dalla Federazione</a><ul>
+<li><a class="reference internal" href="#uscita-volontaria-disattivazione-tecnica">9.7.1. Uscita Volontaria - Disattivazione Tecnica</a></li>
+<li><a class="reference internal" href="#rimozione-da-parte-dell-organo-di-supervisione-implementazione-tecnica">9.7.2. Rimozione da Parte dell'Organo di Supervisione - Implementazione Tecnica</a></li>
 </ul>
 </li>
 </ul>
