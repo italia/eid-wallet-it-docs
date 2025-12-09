@@ -112,7 +112,7 @@ X.509 Certificate Validation Integration
 Federation entities SHOULD integrate X.509 Certificate validation procedures into their standard federation operations:
 
 	1. **Entity Configuration Updates**: Verify X.509 Certificate chains when processing authority hints and X.509 Certificate updates.
-	2. **Trust Chain Construction**: Validate all X.509 Certificates during trust chain building procedures.
+	2. **Trust Chain Construction**: Validate all X.509 Certificates during Trust Chain building procedures.
 	3. **X.509 PKI Operations**: Perform X.509 Certificate revocation checks using CRL endpoints.
 	4. **Protocol Certificate Management**: Validate self-issued protocol specific X.509 Certificate for internal services.
 	5. **Periodic Validation**: Implement regular X.509 Certificate and CRL validation schedules.

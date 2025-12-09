@@ -163,7 +163,7 @@ Le entità federate DEVONO implementare meccanismi di rotazione delle chiavi per
 Rotazione delle Chiavi Superiori
 """""""""""""""""""""""""""""""""""""
 
-Le entità subordinate DEVONO eseguire la verifica periodica della propria trust chain per rilevare le rotazioni delle chiavi superiori e garantire la continuità dell'appartenenza alla federazione.
+Le entità subordinate DEVONO eseguire la verifica periodica della propria Trust Chain per rilevare le rotazioni delle chiavi superiori e garantire la continuità dell'appartenenza alla federazione.
 
 **Requisiti di Verifica**
 
