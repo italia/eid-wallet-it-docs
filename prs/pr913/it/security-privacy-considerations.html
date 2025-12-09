@@ -137,7 +137,7 @@
 <li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Sistema di Onboarding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. Design dell'Esperienza Utente</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. L'Infrastruttura di Trust</a></li>
-<li class="toctree-l1"><a class="reference internal" href="registry.html">7. Infrastruttura del Registro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registry.html">7. Infrastruttura di Registro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entity-onboarding.html">8. Onboarding delle Entità</a></li>
 <li class="toctree-l1"><a class="reference internal" href="x5c-evaluation.html">9. Operazioni di Gestione dei Certificati X.509</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entities.html">10. Entità</a></li>
@@ -208,7 +208,7 @@ Di seguito, i requisiti sono raggruppati in base alla loro categoria.</p>
 </tr>
 </tbody>
 </table>
-<p>La specifica IT-Wallet supporta sia il formato di Credenziale SD-JWT-VC che mdoc-CBOR. L'autenticità e l'integrità di una Credenziale vengono verificate controllando la firma del Fornitore di Credenziali.</p>
+<p>La specifica IT-Wallet supporta sia il formato di Credenziale SD-JWT VC che mdoc-CBOR. L'autenticità e l'integrità di una Credenziale vengono verificate controllando la firma del Fornitore di Credenziali.</p>
 <ul class="simple">
 <li><p>Per SD-JWT, la verifica viene eseguita utilizzando l'algoritmo specificato nel parametro dell'header <strong>alg</strong> di SD-JWT e un riferimento verificabile alla chiave pubblica che deve essere utilizzata per la verifica della firma. Utilizzando OpenID Federation, il riferimento verificabile al materiale crittografico pubblico è l'header <strong>kid</strong> dell'SD-JWT, dove il materiale crittografico viene ottenuto dalla Trust Chain relativa al Credential Issuer, specificato nel claim <strong>iss</strong>.</p></li>
 <li><p>Per mdoc-CBOR, la firma del Fornitore di Credenziali è contenuta nel <em>Mobile Security Object</em> (MSO) e deve essere convalidata utilizzando la chiave pubblica del Fornitore di Credenziali attraverso una catena di certificati attendibile contenuta nel parametro dell'header <strong>x5chain</strong>.</p></li>
@@ -902,7 +902,7 @@ garantiscono che mentre il Verificatore di Attestati Elettronici controlla la va
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 27/11/2025.
+      Ultimo aggiornamento 09/12/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

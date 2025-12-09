@@ -154,7 +154,6 @@ During registration, Authentic Sources MUST provide the following information:
      - **OPTIONAL**. Visual branding suggestions for Digital Credentials using Authentic Source data:
 
        - Background color for Digital Credentials in hexadecimal format (e.g., ``"#003d82"``).
-       - Text color for Digital Credentials in hexadecimal format (e.g., ``"#ffffff"``).
        - Logo URI with cryptographic integrity verification for Digital Credential branding.
        - Visual template URI with integrity verification for Digital Credential presentation.
 

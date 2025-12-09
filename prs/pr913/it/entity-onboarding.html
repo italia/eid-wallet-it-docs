@@ -19,7 +19,7 @@
     <link rel="index" title="Indice" href="genindex.html" />
     <link rel="search" title="Cerca" href="search.html" />
     <link rel="next" title="9. Operazioni di Gestione dei Certificati X.509" href="x5c-evaluation.html" />
-    <link rel="prev" title="7. Infrastruttura del Registro" href="registry.html" /> 
+    <link rel="prev" title="7. Infrastruttura di Registro" href="registry.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -137,7 +137,7 @@
 <li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Sistema di Onboarding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. Design dell'Esperienza Utente</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. L'Infrastruttura di Trust</a></li>
-<li class="toctree-l1"><a class="reference internal" href="registry.html">7. Infrastruttura del Registro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registry.html">7. Infrastruttura di Registro</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">8. Onboarding delle Entità</a></li>
 <li class="toctree-l1"><a class="reference internal" href="x5c-evaluation.html">9. Operazioni di Gestione dei Certificati X.509</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entities.html">10. Entità</a></li>
@@ -164,7 +164,7 @@
             
   <section id="onboarding-delle-entita">
 <h1><span class="section-number">8. </span>Onboarding delle Entità<a class="headerlink" href="#onboarding-delle-entita" title="Link to this heading">¶</a></h1>
-<p>Questa sezione definisce le Specifiche Tecniche per la gestione del ciclo di vita delle entità nell'ecosistema IT-Wallet basato sull'<strong>Infrastruttura di Registro</strong> definita in <a class="reference internal" href="registry.html#infrastruttura-del-registro"><span class="std std-ref">Infrastruttura del Registro</span></a>. Questo include le procedure di onboarding iniziale, le operazioni di gestione continua (aggiornamenti dei dati, modifiche) e i processi di uscita dalla federazione. Il sistema di gestione del ciclo di vita stabilisce e mantiene l'infrastruttura di trust federata e il coordinamento del registro necessari per le operazioni sicure degli Attestati Elettronici.</p>
+<p>Questa sezione definisce le Specifiche Tecniche per la gestione del ciclo di vita delle entità nell'ecosistema IT-Wallet basato sull'<strong>Infrastruttura di Registro</strong> definita in <span class="xref std std-ref">registry:Infrastruttura del Registro</span>. Questo include le procedure di onboarding iniziale, le operazioni di gestione continua (aggiornamenti dei dati, modifiche) e i processi di uscita dalla federazione. Il sistema di gestione del ciclo di vita stabilisce e mantiene l'infrastruttura di trust federata e il coordinamento del registro necessari per le operazioni sicure degli Attestati Elettronici.</p>
 <p>Per una panoramica di alto livello del processo di onboarding, vedere <a class="reference internal" href="onboarding-high-level.html#sistema-di-onboarding"><span class="std std-ref">Sistema di Onboarding</span></a>. In particolare, la Sezione <a class="reference internal" href="onboarding-high-level.html#onboarding-journey-maps"><span class="std std-ref">Onboarding Journey Maps</span></a> fornisce una mappa delle Journey di onboarding dal punto di vista degli operatori delle Entità.</p>
 <section id="panoramica">
 <h2><span class="section-number">8.1. </span>Panoramica<a class="headerlink" href="#panoramica" title="Link to this heading">¶</a></h2>
@@ -249,11 +249,11 @@
 <li><p><strong>Integrazione della Tassonomia</strong>: Tutte le entità utilizzano la classificazione gerarchica della Tassonomia (domini, scopi) per la struttura organizzativa per categorizzare gli Attestati Elettronici.</p></li>
 <li><p><strong>Integrazione del Registro AS</strong>: Le Fonti Autentiche registrate con i loro attributi dichiarati e le relative specifiche, abilitando la discovery e coordinamento con i Credential Issuer.</p></li>
 <li><p><strong>Integrazione del Registro di Federazione</strong>: Entità operative incluse per la validazione del trust durante le operazioni delle attestazioni elettroniche.</p></li>
-<li><p><strong>Integrazione del Catalogo</strong>: Tipi di attestati elettronici pubblicati in <a class="reference internal" href="registry.html#catalogo-degli-attestati-elettronici"><span class="std std-ref">Catalogo degli Attestati Elettronici</span></a> basati sulle policy dell'organismo di supervisione per l'eleggibilità alla discovery pubblica.</p></li>
+<li><p><strong>Integrazione del Catalogo</strong>: Tipi di attestati elettronici pubblicati in <span class="xref std std-ref">registry:catalogo degli attestati elettronici</span> basati sulle policy dell'organismo di supervisione per l'eleggibilità alla discovery pubblica.</p></li>
 </ul>
 </div></blockquote>
 </div></blockquote>
-<p>Tutti i componenti del registro e le loro interazioni sono dettagliati in <a class="reference internal" href="registry.html#infrastruttura-del-registro"><span class="std std-ref">Infrastruttura del Registro</span></a>.</p>
+<p>Tutti i componenti del registro e le loro interazioni sono dettagliati in <span class="xref std std-ref">registry:Infrastruttura del Registro</span>.</p>
 </section>
 </section>
 <section id="processo-di-registrazione-delle-fonti-autentiche">
@@ -403,8 +403,7 @@
 <span class="w">      </span><span class="p">},</span>
 <span class="w">      </span><span class="nt">&quot;update_frequency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;real_time&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">       </span><span class="nt">&quot;background_color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#003d82&quot;</span><span class="p">,</span>
-<span class="w">       </span><span class="nt">&quot;text_color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#ffffff&quot;</span><span class="p">,</span>
+<span class="w">       </span><span class="nt">&quot;background_color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#003d82&quot;</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">]</span>
@@ -752,7 +751,7 @@
 </div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p><strong>Integrazione del Registro di Federazione</strong>: Dopo il completamento con successo dell'onboarding, l'Identificativo dell'Entità di Federazione diventa scopribile attraverso i meccanismi di elenco delle entità del Trust Anchor (come definito in <a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>), indicando la partecipazione attiva alla federazione. L'entità diventa parte dell'infrastruttura di federazione dettagliata in <a class="reference internal" href="registry.html#infrastruttura-del-registro"><span class="std std-ref">Infrastruttura del Registro</span></a>.</p>
+<p><strong>Integrazione del Registro di Federazione</strong>: Dopo il completamento con successo dell'onboarding, l'Identificativo dell'Entità di Federazione diventa scopribile attraverso i meccanismi di elenco delle entità del Trust Anchor (come definito in <a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>), indicando la partecipazione attiva alla federazione. L'entità diventa parte dell'infrastruttura di federazione dettagliata in <span class="xref std std-ref">registry:Infrastruttura del Registro</span>.</p>
 </div>
 </section>
 <section id="trust-mark-di-federazione-it-wallet">
@@ -1012,7 +1011,7 @@
             <div class="left">
                 
                 <a href="registry.html">
-                    <span class="icon">&lt;</span><span><span class="section-number">7. </span>Infrastruttura del Registro</span></a>
+                    <span class="icon">&lt;</span><span><span class="section-number">7. </span>Infrastruttura di Registro</span></a>
                 
             </div>
 
@@ -1026,7 +1025,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 27/11/2025.
+      Ultimo aggiornamento 09/12/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

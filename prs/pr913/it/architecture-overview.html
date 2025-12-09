@@ -137,7 +137,7 @@
 <li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Sistema di Onboarding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. Design dell'Esperienza Utente</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. L'Infrastruttura di Trust</a></li>
-<li class="toctree-l1"><a class="reference internal" href="registry.html">7. Infrastruttura del Registro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registry.html">7. Infrastruttura di Registro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entity-onboarding.html">8. Onboarding delle Entità</a></li>
 <li class="toctree-l1"><a class="reference internal" href="x5c-evaluation.html">9. Operazioni di Gestione dei Certificati X.509</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entities.html">10. Entità</a></li>
@@ -200,15 +200,15 @@ L'ecosistema IT-Wallet è costruito su un'architettura multi-livello, dove gli o
 </figcaption>
 </figure>
 <p>I sistemi esterni forniscono servizi che collegano l'ecosistema IT-Wallet all'infrastruttura digitale nazionale, consentendo l'interoperabilità con i servizi governativi esistenti e le fonti di dati.</p>
-<p>Questi tre livelli architetturali lavorano insieme per consentire operazioni sicure degli Attestati Elettronici. La natura federata di questa architettura richiede processi sistematici di onboarding per stabilire relazioni di trust tra i partecipanti e standardizzare la semantica delle credenziali attraverso i componenti centralizzati Claims Registry e Taxonomy, come dettagliato in <a class="reference internal" href="registry.html#infrastruttura-del-registro"><span class="std std-ref">Infrastruttura del Registro</span></a>.</p>
+<p>Questi tre livelli architetturali lavorano insieme per consentire operazioni sicure degli Attestati Elettronici. La natura federata di questa architettura richiede processi sistematici di onboarding per stabilire relazioni di trust tra i partecipanti e standardizzare la semantica delle credenziali attraverso i componenti centralizzati Claims Registry e Taxonomy, come dettagliato in <span class="xref std std-ref">registry:Infrastruttura del Registro</span>.</p>
 <p>L'architettura abilita i seguenti processi di interazione principali:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p><strong>Onboarding delle Entità e Federazione</strong>: Solo le entità qualificate possono partecipare alla federazione attraverso un onboarding sistematico che garantisce la conformità e stabilisce relazioni di trust crittografiche. Il sistema di onboarding include un <strong>Claims Registry</strong> e una <strong>Taxonomy</strong> che standardizzano le definizioni semantiche per tutte le credenziali, consentendo interoperabilità e governance. L'autorizzazione delle entità segue un approccio basato su policy che concede ambiti operativi specifici basati sulle caratteristiche organizzative e sulla conformità normativa. Vedere Sezione <a class="reference internal" href="onboarding-high-level.html#sistema-di-onboarding"><span class="std std-ref">Sistema di Onboarding</span></a> e <a class="reference internal" href="registry.html#infrastruttura-del-registro"><span class="std std-ref">Infrastruttura del Registro</span></a>.</p></li>
-<li><p><strong>Discovery delle Credenziali e Gestione del Catalogo</strong>: L'ecosistema supporta meccanismi duali di discovery delle credenziali pubbliche attraverso il <a class="reference internal" href="registry.html#catalogo-degli-attestati-elettronici"><span class="std std-ref">Catalogo degli Attestati Elettronici</span></a> per credenziali di uso generale, e discovery di Attestati Elettronici privati tramite Credential Offer dirette per casi d'uso specifici. Il catalogo viene popolato automaticamente basandosi sulle policy dell'Organismo di Supervisione dalle definizioni registrate nel Claims Registry e nella Taxonomy.</p></li>
+<li><p><strong>Onboarding delle Entità e Federazione</strong>: Solo le entità qualificate possono partecipare alla federazione attraverso un onboarding sistematico che garantisce la conformità e stabilisce relazioni di trust crittografiche. Il sistema di onboarding include un <strong>Claims Registry</strong> e una <strong>Taxonomy</strong> che standardizzano le definizioni semantiche per tutte le credenziali, consentendo interoperabilità e governance. L'autorizzazione delle entità segue un approccio basato su policy che concede ambiti operativi specifici basati sulle caratteristiche organizzative e sulla conformità normativa. Vedere Sezione <a class="reference internal" href="onboarding-high-level.html#sistema-di-onboarding"><span class="std std-ref">Sistema di Onboarding</span></a> e <span class="xref std std-ref">registry:Infrastruttura del Registro</span>.</p></li>
+<li><p><strong>Discovery delle Credenziali e Gestione del Catalogo</strong>: L'ecosistema supporta meccanismi duali di discovery delle credenziali pubbliche attraverso il <span class="xref std std-ref">registry:Catalogo degli Attestati Elettronici</span> per credenziali di uso generale, e discovery di Attestati Elettronici privati tramite Credential Offer dirette per casi d'uso specifici. Il catalogo viene popolato automaticamente basandosi sulle policy dell'Organismo di Supervisione dalle definizioni registrate nel Claims Registry e nella Taxonomy.</p></li>
 <li><p><strong>Rilascio degli Attestati</strong>: I Credential Issuer si coordinano con le Fonti Autentiche tramite API standardizzate per richiedere Attributi dell'Utente verificati, creando Attestati Elettronici basati su dati autorevoli. Il rilascio può procedere sia per attestati pubblicati nel catalogo che per offerte di attestati privati.</p></li>
 <li><p><strong>Archiviazione e Gestione degli Attestati</strong>: Le Soluzioni IT-Wallet ricevono e gestiscono gli Attestati Elettronici sui dispositivi degli utenti, consentendo una gestione sicura del ciclo di vita degli attestati.</p></li>
-<li><p><strong>Presentazione e Verifica degli Attestati</strong>: Gli Utenti presentano gli Attestati Elettronici alle Relying Party, che verificano i claim attraverso validazione crittografica e verifica dello stato. Le Relying Party operano all'interno di ambiti autorizzati che definiscono quali tipi di attestati e scopi possono richiedere, con validazione contro il <a class="reference internal" href="registry.html#registro-degli-attributi"><span class="std std-ref">Registro degli Attributi</span></a> per la verifica dello schema.</p></li>
+<li><p><strong>Presentazione e Verifica degli Attestati</strong>: Gli Utenti presentano gli Attestati Elettronici alle Relying Party, che verificano i claim attraverso validazione crittografica e verifica dello stato. Le Relying Party operano all'interno di ambiti autorizzati che definiscono quali tipi di attestati e scopi possono richiedere, con validazione contro il <span class="xref std std-ref">registry:Registro degli Attributi</span> per la verifica dello schema.</p></li>
 </ol>
 </div></blockquote>
 </section>
@@ -241,7 +241,7 @@ L'ecosistema IT-Wallet è costruito su un'architettura multi-livello, dove gli o
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 27/11/2025.
+      Ultimo aggiornamento 09/12/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

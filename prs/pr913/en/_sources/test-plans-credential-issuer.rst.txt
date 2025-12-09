@@ -547,7 +547,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_118
     - Data Model and lifecycle, Issuance, Interoperability
     - (Q)EAA Credential Formats
-    - (Q)EAA are Issued to a Wallet Instance in SD-JWT-VC or mdoc-CBOR data format.
+    - (Q)EAA are Issued to a Wallet Instance in SD-JWT VC or mdoc-CBOR data format.
   * - CI_119
     - Data Model and lifecycle, Interoperability
     - PID/(Q)EAA Digital Credential Format
