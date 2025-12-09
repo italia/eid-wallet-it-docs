@@ -169,10 +169,9 @@ Subordinate entities MUST perform periodic verification of their Trust Chain to 
 
 Federation Subordinates MUST:
 
-1. Periodically fetch their own Subordinate Statement from immediate superior using the fetch endpoint defined in :ref:`trust-infrastructure:Federation API endpoints`. This SHOULD be made within a time interval not superior that 24 hours.
-2. Verify validity and detect updates related to the X.509 certificate of the Superior in the ``x5c`` field.
-3. Check for revocation or suspension status.
-4. Update local Entity Configuration when superior certificates change.
+1. Periodically fetch their own Subordinate Statement from immediate superior using the fetch endpoint defined in :ref:`trust-infrastructure:Federation API endpoints`. This SHOULD be made within 24 hours.
+2. After fetching, verify the validity of the Superior's X.509 certificate in the ``x5c`` field, including checking for revocation or suspension status.
+3. Update local Entity Configuration when superior certificates change.
 
 **Detection Mechanisms**
 
@@ -205,7 +204,7 @@ When a superior entity (Trust Anchor or Intermediate) rotates its Federation Ent
 When multiple X.509 certificates exist for the same subordinate public key, the certificate in the Subordinate Statement MUST take priority over the certificate in the subordinate's Entity Configuration.
 
 .. note::
-  A superior entity cannot independently initiate a Subordinate Key rotation process. The Subordinate Key Rotation mechanism is always initiated by the Subordinate entity, see Section ::ref:`x5c-evaluation:Subordinate Key Rotation`.
+  A superior entity cannot independently initiate a Subordinate Key rotation process. The Subordinate Key Rotation mechanism is always initiated by the Subordinate entity, see Section :ref:`x5c-evaluation:Subordinate Key Rotation`.
 
 Subordinate Key Rotation
 """""""""""""""""""""""""
