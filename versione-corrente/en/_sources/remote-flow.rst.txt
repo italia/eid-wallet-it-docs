@@ -186,6 +186,11 @@ The details of each step shown in the previous picture are described below.
         "MIICajCCAdOgAwIBAgIC...awz",
         "MIICajCCAdOgAwIBAgIC...2w3",
         "MIICajCCAdOgAwIBAgIC...sf2"
+      ],
+      "x5c": [
+        "MIIDqjCCApKgAwIBAgIESLNEvDA ...",
+        "MIICwzCCAasCCQCKVy9eKjvi+jA ...",
+        "MIIDTDCCAjSgAwIBAgIJAPlnQYH..."
       ]
     }
   
@@ -224,8 +229,7 @@ The details of each step shown in the previous picture are described below.
       "state": "3be39b69-6ac1-41aa-921b-3e6c07ddcb03",
       "iss": "https://relying-party.example.org",
       "iat": 1672418465,
-      "exp": 1672422065,
-      "request_uri_method": "post"
+      "exp": 1672422065
     }
 
   It then processes the Relying Party metadata and applies the relevant policies to determine which Digital Credentials and User data the Relying Party is authorized to request (:ref:`WP_087 <wallet-credential-presentation-testcases>`).
@@ -358,6 +362,7 @@ The request and its parameters are defined in Section 5 (Authorization Request) 
      - RECOMMENDED. String used by Wallet Instance to prevent replay of the Relying Party's responses. 
 
 
+.. _table_wallet_metadata_parameters:
 .. list-table:: Wallet Metadata Parameters
    :class: longtable
    :widths: 20 80
@@ -457,15 +462,15 @@ The JWT header parameters are described below:
   * - **Name**
     - **Description**
   * - **alg**
-    - Algorithm used to sign the JWT, according to [:rfc:`7516#section-4.1.1`]. It MUST be one of the supported algorithms in Section :ref:`algorithms:Cryptographic Algorithms` and MUST NOT be set to ``none`` or to a symmetric algorithm (MAC) identifier (:ref:`RPR-104 <test-plans-remote-presentation>`).
+    - REQUIRED. Algorithm used to sign the JWT, according to [:rfc:`7516#section-4.1.1`]. It MUST be one of the supported algorithms in Section :ref:`algorithms:Cryptographic Algorithms` and MUST NOT be set to ``none`` or to a symmetric algorithm (MAC) identifier (:ref:`RPR-104 <test-plans-remote-presentation>`).
   * - **typ**
-    - Media Type of the JWT, as defined in [:rfc:`7519`] and [:rfc:`9101`]. It SHOULD be set to the value ``oauth-authz-req+jwt`` (:ref:`RPR-105 <test-plans-remote-presentation>`).
+    - REQUIRED. Media Type of the JWT, as defined in [:rfc:`7519`] and [:rfc:`9101`]. It SHOULD be set to the value ``oauth-authz-req+jwt`` (:ref:`RPR-105 <test-plans-remote-presentation>`).
   * - **kid**
-    - Key ID of the public key needed to verify the JWT signature, as defined in [:rfc:`7517`]. REQUIRED when ``trust_chain`` is used.
+    - REQUIRED. Key ID of the public key needed to verify the JWT signature, as defined in [:rfc:`7517`].
   * - **trust_chain**
-    - CONDITIONAL. REQUIRED when the ``client_id`` prefix used in the request is set with ``openid-federation``. It is a sequence of Entity Statements that composes the Trust Chain related to the Relying Party, as defined in `OID-FED`_ Section 4.3 *Trust Chain Header Parameter*.
+    - OPTIONAL. It is a sequence of Entity Statements that composes the Trust Chain related to the Relying Party, as defined in `OID-FED`_ Section 4.3 *Trust Chain Header Parameter*.
   * - **x5c**
-    - CONDITIONAL. REQUIRED when ``client_id`` uses the ``x509_hash`` prefix; otherwise ``kid`` with ``jwks`` is used. Contains the Relying Party’s leaf X.509 certificate (and optionally intermediate certificates), used to verify the JWT signature with the public key in the Relying Party’s certificate as defined in :rfc:`7515`. The Relying Party’s certificate in ``x5c`` MUST assert Relying Party identity information sufficient to bind the network endpoints referenced by the presentation flow. In particular, the endpoints used in the Authorization Request and Authorization Response (e.g., ``response_uri``, ``redirect_uri``) MUST correspond to identity information contained in the Relying Party’s certificate (for example, a URI-type SAN for full-URI matching or a DNSName SAN for host-name matching).
+    - REQUIRED. Contains the X.509 certificate chain about the Relying Party, excluding the Trust Anchor certificate, used to verify the JWT signature with the public key in the Relying Party’s certificate as defined in :rfc:`7515`. The Relying Party’s certificate in ``x5c`` asserts the Relying Party identity information along with the network endpoints used in the presentation flow, including the endpoints Authorization Request and Response endpoints (``response_uri`` and ``redirect_uri``). All the endpoints used in the presentation flow by a Relying Party MUST be bound to the FQDN and any further webpath provided in the Relying Party’s certificate, in the form of URI-type SAN for full-URI matching, or a DNSName SAN for host-name matching.
 
 .. note::
    The ``x5c`` header MUST NOT include the root certificate, as required by `OPENID4VC-HAIP`_. The ``x5c`` certificate chain MUST validate to a preconfigured root certificate; see Section :ref:`trust-infrastructure:X.509 PKI` for background on X.509 certificate chain validation.
@@ -480,41 +485,39 @@ The JWT payload parameters are described herein:
   * - **Name**
     - **Description**
   * - **client_id**
-    - Unique Identifier of the Relying Party.
+    - REQUIRED. Unique Identifier of the Relying Party.
   * - **client_metadata**
-    - A JSON object containing the Relying Party metadata values, that SHOULD include the following parameters:
+    - OPTIONAL. A JSON object containing the Relying Party metadata values, that SHOULD include the following parameters:
         - **vp_formats_supported**. Used by the Wallet Instance to determine the supported Verifiable Presentation formats.
         - **encrypted_response_enc_values_supported**. JSON array listing the supported JWE ``enc`` algorithms for encrypted Authorization Responses in ``direct_post.jwt``.
         - **jwks**. JSON Web Key Set used by the Wallet Instance for encrypting the Authorization Response or for key agreement. Keys contained in this set are request-specific and identified by their ``kid`` value.
         - **client_name** and **logo_uri**. OPTIONAL. Used for user consent display and to show the Relying Party identity in the Wallet Instance interface.
   * - **response_mode**
-    - It MUST be set to ``direct_post.jwt`` (:ref:`RPR-106 <test-plans-remote-presentation>`).
+    - REQUIRED. It MUST be set to ``direct_post.jwt`` (:ref:`RPR-106 <test-plans-remote-presentation>`).
   * - **dcql_query**
-    - Object representing a request for a presentation of Credentials, according to the DCQL query language defined in Section 6 of `OpenID4VP`_.
+    - REQUIRED. Object representing a request for a presentation of Credentials, according to the DCQL query language defined in Section 6 of `OpenID4VP`_.
   * - **transaction_data**
-    - An optional non-empty array of JSON objects, each describing a transaction that the Relying Party requests the User to authorize. Each transaction object includes: 
+    - OPTIONAL. Non-empty array of JSON objects, each describing a transaction that the Relying Party requests the User to authorize. Each transaction object includes: 
         - **type**.  String that identifies the transaction data type.
         - **credential_ids**. Array referencing one or more Credentials from the ``dcql_query`` that can authorize the transaction.  
   * - **transaction_data_hashes_alg** 
-    - An optional array of of strings, each representing a hash algorithm identifier, corresponding to a hash algorithm name listed in the `IANA <https://www.iana.org/assignments/named-information/named-information.xhtml#hash-alg>`_.  One of these algorithms MUST be used to calculate the hashes in the ``transaction_data_hashes`` response parameter.  If omitted, the default hash algorithm is ``sha-256``.
+    - OPTIONAL. Array of strings, each representing a hash algorithm identifier, corresponding to a hash algorithm name listed in the `IANA <https://www.iana.org/assignments/named-information/named-information.xhtml#hash-alg>`_.  One of these algorithms MUST be used to calculate the hashes in the ``transaction_data_hashes`` response parameter.  If omitted, the default hash algorithm is ``sha-256``.
   * - **response_type**
-    - It MUST be set to ``vp_token`` (:ref:`RPR-107 <test-plans-remote-presentation>`).
+    - REQUIRED. It MUST be set to ``vp_token`` (:ref:`RPR-107 <test-plans-remote-presentation>`).
   * - **wallet_nonce**
-    - String value used to mitigate replay attacks of the response, as defined in Section 5.10 (Request URI Method) of `OpenID4VP`_. It MUST be present if previously provided by Wallet Instance (:ref:`RPR-94 <test-plans-remote-presentation>`).
+    - REQUIRED if previously provided by Wallet Instance (:ref:`RPR-94 <test-plans-remote-presentation>`). String value used to mitigate replay attacks of the response, as defined in Section 5.10 (Request URI Method) of `OpenID4VP`_.
   * - **response_uri**
-    - The Response URI to which the Wallet Instance MUST send the Authorization Response using an HTTP request using the method POST (:ref:`RPR-109 <test-plans-remote-presentation>`).
+    - REQUIRED. The Response URI to which the Wallet Instance MUST send the Authorization Response using an HTTP request using the method POST (:ref:`RPR-109 <test-plans-remote-presentation>`).
   * - **nonce**
-    - Fresh cryptographically random number with sufficient entropy, which length MUST be at least 32 digits (:ref:`RPR-110 <test-plans-remote-presentation>`).
+    - REQUIRED. Fresh cryptographically random number with sufficient entropy, which length MUST be at least 32 digits (:ref:`RPR-110 <test-plans-remote-presentation>`).
   * - **state**
-    - Unique identifier of the Authorization Request. It is RECOMMENDED to include this parameter, and the value SHOULD be opaque to the Wallet Instance.
+    - RECOMMENDED. Unique identifier of the Authorization Request, its value SHOULD be opaque to the Wallet Instance.
   * - **iss**
-    - The entity that has issued the JWT. It will be populated with the Relying Party client id.
+    - REQUIRED. The entity that has issued the JWT. It will be populated with the Relying Party client id.
   * - **iat**
-    - Unix Timestamp, representing the time at which the JWT was issued.
+    - REQUIRED. Unix Timestamp, representing the time at which the JWT was issued.
   * - **exp**
-    - Unix Timestamp, representing the expiration time on or after which the JWT MUST NOT be valid anymore (:ref:`RPR-111 <test-plans-remote-presentation>`).
-  * - **request_uri_method**
-    - String determining the HTTP method to be used with the `request_uri` endpoint to provide the Wallet Instance metadata to the Relying Party. The value is case-insensitive and can be set to: `get` or `post`. The GET method, as defined in [@RFC9101], involves the Wallet Instance sending a GET request to retrieve a Request Object. The POST method involves the Wallet Instance requesting the creation of a new Request Object by sending an HTTP POST request, with its metadata, to the request URI of the Relying Party.
+    - REQUIRED. Unix Timestamp, representing the expiration time on or after which the JWT MUST NOT be valid anymore (:ref:`RPR-111 <test-plans-remote-presentation>`).
 
 .. warning::
 

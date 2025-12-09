@@ -207,9 +207,13 @@
 <td><p>CONDIZIONALE. URL che fa riferimento a un JWT firmato avente come payload il documento JWK Set dell'Entità per quel Tipo di Entità. Questo URL DEVE utilizzare lo schema https. Il JWT DEVE essere firmato utilizzando una Chiave di Entità di Federazione. Una risposta positiva dall'URL DEVE utilizzare il codice di stato HTTP 200 con il Content Type <code class="docutils literal notranslate"><span class="pre">application/jwk-set+jwt</span></code>. DEVE essere presente se <code class="docutils literal notranslate"><span class="pre">jwks</span></code> e <code class="docutils literal notranslate"><span class="pre">jwks_uri</span></code> sono assenti.</p></td>
 <td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>logo_uri</strong></p></td>
-<td><p>URL del logo dell’entità che verrà mostrato all’Utente durante le interazioni con l’istanza del Wallet. Il MIME type del logo DEVE essere <code class="docutils literal notranslate"><span class="pre">application/svg</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">logo_uri</span></code></p></td>
+<td><p>OBBLIGATORIO. URL del logo dell’entità che verrà mostrato all’Utente durante le interazioni con l’istanza del Wallet. Il MIME type del logo DEVE essere <code class="docutils literal notranslate"><span class="pre">application/svg</span></code>.</p></td>
 <td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Sezione 5.2.2.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">wallet_metadata</span></code></p></td>
+<td><p>OBBLIGATORIO. Contiene i parametri relativi ai metadati del Wallet come definiti nella <a class="reference internal" href="remote-flow.html#table-wallet-metadata-parameters"><span class="std std-ref">Tabella dei parametri dei metadati del portafoglio</span></a> e il parametro <code class="docutils literal notranslate"><span class="pre">credential_offer_endpoint</span></code>.</p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a> Sezione 10.1.</p></td>
 </tr>
 </tbody>
 </table>
@@ -248,6 +252,28 @@
 <span class="w">        </span><span class="p">}</span>
 <span class="w">      </span><span class="p">]</span>
 <span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;wallet_metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;authorization_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-solution.digital-strategy.europa.eu/authorization&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;credential_offer_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-solution.digital-strategy.europa.eu/credential_offer&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;response_types_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;vp_token&quot;</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;response_modes_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;query&quot;</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;vp_formats_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;dc+sd-jwt&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;sd-jwt_alg_values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;ES384&quot;</span>
+<span class="w">          </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;request_object_signing_alg_values_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;ES256&quot;</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;client_id_prefixes_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;openid_federation&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;x509_hash&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="nt">&quot;federation_entity&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;organization_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IT-Wallet Provider&quot;</span><span class="p">,</span>
