@@ -640,8 +640,6 @@ The JWS payload contains the following parameters:
      - REQUIRED. Issuer identifier of the Digital Credential Catalog.
    * - **credentials**
      - REQUIRED. Array containing Digital Credential definitions.
-   * - **wallet_app_attestations**
-     - REQUIRED. A JSON Array containing definitions for Wallet App Attestations, including their supported formats, and associated claims. This Object is used by other entities, such as Issuers and Relying Parties, to retrieve information about the Wallet App Attestation formats supported within the ecosystem.
 
 Each element of the ``credentials`` array contains at least the following information:
 
@@ -705,31 +703,6 @@ Each element of the ``credentials`` array contains at least the following inform
 
 .. note::
   The union of ``credential_type`` and ``version`` MUST be unique in the Credential Catalog.
-
-The ``wallet_app_attestations`` Object is an Array containing at least the following information for each entry:
-
-
-.. list-table:: Wallet App Attestations Fields
-  :class: longtable
-  :header-rows: 1
-  :widths: 30 70
-
-  * - **Field Name**
-    - **Description**
-  * - **version**
-    - REQUIRED. Version of the Wallet App Attestation definition.
-  * - **credential_type**
-    - REQUIRED. Unique identifier of the Wallet App Attestation. It MUST be set to ``wallet_app_attestation``.
-
-  * - **formats**
-    - REQUIRED. Array of supported formats for the Wallet App Attestation, including:
-
-      * **format**: Type of format (e.g., ``dc+sd-jwt``, ``mso_mdoc`` or ``oauth-client-attestation+jwt``)
-      * **configuration_id**: Configuration identifier of the Wallet App Attestation. This is formed by concatenating the string ``wa`` to the ``format`` (e.g., ``dc_sd_jwt_wa``, ``mso_mdoc_wa``, or ``jwt_wa``), and is used to uniquely reference the configuration of the Wallet App Attestation format.
-      * **vct**: CONDITIONAL. It is REQUIRED if the ``format`` is ``dc+sd-jwt``, indicating the Verifiable Credential Type (e.g., ``urn:eudi:mDL:it:1``).
-      * **docType**: CONDITIONAL. It is only present if the ``format`` is ``mso_mdoc``. It is a string of the form ``{Trust Anchor reverse domain}.{credential_type}`` (e.g., ``it.wallet.trust-registry.wallet_app_attestation``).
-      * **schema_uri**: URI pointing to the format specification document.
-      * **schema_uri#integrity**: Cryptographic digest of the format specification document for integrity verification. It MUST be a string of the form ``{digest_method}-{digest_value}``, where ``{digest_method}`` is the digest algorithm used (e.g., ``sha-256``) and ``{digest_value}`` is the base64url-encoded digest value.
 
 The corresponding example of Digital Credentials Catalog as decoded in JSON for both header and payload is the following:
 

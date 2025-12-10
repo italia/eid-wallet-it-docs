@@ -109,21 +109,7 @@ Below is a non-normative example of the response.
 
   {
     "wallet_attestations": [
-      "wallet_app_attestations": [
-        {
-          "format": "jwt",
-          "wallet_app_attestation": "ey..."
-        },
-        {
-          "format": "dc+sd-jwt",
-          "wallet_app_attestation": "ey..."
-        },
-        {
-          "format": "mso_mdoc",
-          "wallet_app_attestation": "omppc3N1ZXJBdXRohEOhASahG...ArQwggKwMIICVqADAgEC"
-        }
-      ],
-
+      "wallet_app_attestation": "omppc3N1ZXJBdXRohEOhASaiBE...dElEAnFlbGVtZW50SWRl",
       "wallet_unit_attestation": "omppc3N1ZXJBdXRohEOhASahG...ArQwggKwMIICVqADAgEC"
     ]
   }

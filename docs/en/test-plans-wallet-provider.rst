@@ -719,7 +719,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_093a
      - Remote-flow, Presentation, Interoperability
      - Include signed presentations
-     - Within that ``vp_token``, there are the requested Credential(s) in SD JWT VC format and, if requested by the Relying Party, one SD JWT VC for the Wallet Attestation.
+     - Within that ``vp_token``, there are the requested Credential(s) in SD JWT VC format.
    * - WP_093b
      - Remote-flow, Presentation, Security
      - Append Key Binding JWT
@@ -851,31 +851,19 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_106
      - Proximity-flow, Presentation, Security
      - Validate ``SessionEstablishment`` contents
-     - Wallet Instance verifies the ``SessionEstablishment`` message includes the Relying Party’s Pub Key and a request for specific attribute(s), and an optional request for the Wallet Attestation from the Relying Party.
+     - Wallet Instance verifies the ``SessionEstablishment`` message includes the Relying Party’s Pub Key and a request for specific attribute(s) from the Relying Party.
    * - WP_107
      - Proximity-flow, Presentation, Privacy
      - Prompt attribute consent
      - Wallet Instance decrypts and displays the requested attributes to the User in a consent screen and proceeds only after receiving explicit User approval.
    * - WP_107a
      - Proximity-flow, Presentation, Privacy
-     - No consent for Wallet Attestation disclosure
-     - Wallet Instance does not request the User's consent for the Wallet Attestation, ensuring that its technical attributes are excluded from the list of data shown on the User consent screen.
-   * - WP_107b
-     - Proximity-flow, Presentation, Privacy
      - Display Relying Party certificate
      - Wallet Instance displays the full, parsed Relying Party Registration Certificate to the User for transparency before User consent and data disclosure.
    * - WP_108
      - Proximity-flow, Presentation, Interoperability
-     - Retrieve mdoc Credentials and Wallet Attestation
-     - Wallet Instance successfully retrieves each requested mdoc Credential from storage and obtains a fresh Wallet Attestation (if requested), preparing them for the mdoc Response.
-   * - WP_108a
-     - Proximity-flow, Presentation, Interoperability
-     - Use cached Wallet Attestation
-     - When a fresh Wallet Attestation cannot be fetched, Wallet Instance successfully includes its most recently cached version of the Wallet Attestation in the response.
-   * - WP_108b
-     - Proximity-flow, Presentation, Interoperability
-     - Wallet Attestation attributes
-     - When providing the Wallet Attestation, Wallet Instance includes all of its available disclosures, and the mandatory ``aal`` claim.
+     - Retrieve mdoc Credentials
+     - Wallet Instance successfully retrieves each requested mdoc Credential from storage, preparing it for the mdoc Response.
    * - WP_109
      - Proximity-flow, Presentation, Interoperability
      - Prepare mdoc Response
