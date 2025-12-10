@@ -22,7 +22,6 @@
 .. _MODI: https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf
 .. _OAUTH-ATTESTATION-CLIENT-AUTH: https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/07/
 .. _OAUTH-MULT-RESP-TYPE: https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html
-.. _OAUTH-STATUS-ASSERTION: https://datatracker.ietf.org/doc/draft-demarco-oauth-status-assertions/03/
 .. _OAUTH2: https://www.rfc-editor.org/rfc/rfc6749
 .. _OAuthCrossDeviceSec: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-cross-device-security-08
 .. _OID-FED-WALLET: https://openid.net/specs/openid-federation-wallet-1_0.html
