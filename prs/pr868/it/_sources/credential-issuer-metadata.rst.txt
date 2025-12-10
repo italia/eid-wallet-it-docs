@@ -82,8 +82,6 @@ I Metadata *openid_credential_issuer* DEVONO contenere i seguenti *claims*.
     - URL del *Nonce endpoint*, come definito nella Sezione 7 di `OpenID4VCI`_.
   * - **deferred_credential_endpoint**
     - URL del *deferred credential endpoint*, come definito nella Sezione 12.2.4 di `OpenID4VCI`_.
-  * - **status_assertion_endpoint**
-    - DEVE essere un URL HTTPS che indica l'endpoint dove le Istanze del Wallet possono richiedere Status Assertion. Vedi Sezione :ref:`credential-revocation:Ciclo di Vita degli Attestati Elettronici` per maggiori dettagli. (`OAUTH-STATUS-ASSERTION`_ Sezione 11.1.).
   * - **notification_endpoint**
     - DEVE essere un URL HTTPS che indica il *notification endpoint*. Vedi Sezione 12.2.4 di [`OpenID4VCI`_].
   * - **authorization_servers**
@@ -157,8 +155,6 @@ I Metadata *openid_credential_issuer* DEVONO contenere i seguenti *claims*.
         - *it_l2+document_proof*: protocollo Autenticazione eID Substantial con Verifica MRTD supportato.
   * - **evidence_supported**
     - Array JSON contenente tutti i tipi di evidenze di identità supportate dal Fornitore dell'Attestato Elettronico. Il valore supportato è ``vouch``.
-  * - **credential_hash_alg_supported**
-    - L'algoritmo supportato utilizzato dall'Istanza del Wallet per eseguire l'hash dell'Attestato Elettronico per il quale viene richiesta la Status Assertion. Si RACCOMANDA di utilizzare *sha-256*. (Vedi `OAUTH-STATUS-ASSERTION`_ Sezione 11.1.).
   * - **batch_credential_issuance**
     - Oggetto contenente informazioni sull'emissione di Credenziali in batch da parte del Credential Issuer presso il Credential Endpoint. La presenza di questo parametro indica che il Credential Issuer supporta più di una prova di possesso nel parametro ``proofs`` nella Credential Request, pertanto può emettere più di un Attestato Elettronico con gli stessi attributi relativi al titolare in un'unica richiesta/risposta. Il parametro che DEVE essere incluso è:
 

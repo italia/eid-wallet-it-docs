@@ -103,7 +103,7 @@ L'architettura dell'infrastruttura di trust è costruita sui seguenti principi f
      - Incorpora meccanismi per garantire l'integrità, la riservatezza e l'autenticità delle Trust Relationship e delle interazioni all'interno della federazione.
    * - P2
      - **Privacy**
-     - Progettata per rispettare e proteggere la privacy delle entità e degli individui coinvolti, la divulgazione minima fa parte di questo.
+     - Progettata per rispettare e proteggere la privacy delle entità coinvolte, la divulgazione minima fa parte di questo.
    * - P3
      - **Interoperabilità**
      - Supporta l'interazione senza soluzione di continuità e la creazione di trust tra sistemi ed entità diverse all'interno della federazione.
@@ -112,7 +112,7 @@ L'architettura dell'infrastruttura di trust è costruita sui seguenti principi f
      - Trust stabilito indirettamente attraverso una catena di relazioni fidate, consentendo alle entità di fidarsi l'una dell'altra basandosi su autorità comuni e intermediari fidati.
    * - P5
      - **Delegazione**
-     - Capacità/funzionalità tecnica di delegare autorità o responsabilità ad altre entità, consentendo un meccanismo di trust distribuito.
+     - Capacità o funzionalità tecnica di delegare autorità o responsabilità ad altre entità, consentendo un meccanismo di trust distribuito.
    * - P6
      - **Scalabilità**
      - Progettata per gestire efficientemente un numero crescente di entità o interazioni senza un aumento significativo della complessità di gestione del trust.
@@ -201,23 +201,27 @@ Tutti gli endpoint elencati di seguito sono definiti nelle specifiche `OID-FED`_
      - Trust Anchor, Intermediario, Fornitore di Wallet, Relying Party, Credential Issuer
    * - subordinate list endpoint
      - **GET** /list
-     - Elenca i Subordinati.
+     - Elenca i Subordinati. Vedi `OID-FED`_ Sezione 5.1.1
      - Trust Anchor, Intermediario
    * - fetch endpoint
      - **GET** /fetch?sub=https://rp.example.org
-     - Restituisce un JWT firmato su un soggetto specifico, il suo Subordinato. È chiamato Subordinate Statement.
+     - Restituisce un JWT firmato su un soggetto specifico, il suo Subordinato. È chiamato Subordinate Statement. Vedi `OID-FED`_ Sezione 5.1.1
      - Trust Anchor, Intermediario
    * - trust mark status
      - **POST** /status?sub=...&trust_mark_id=...
-     - Restituisce lo stato dell'emissione (validità) di un Trust Mark relativo a un soggetto specifico.
+     - Restituisce lo stato dell'emissione (validità) di un Trust Mark relativo a un soggetto specifico. Vedi `OID-FED`_ Sezione 5.1.1
+     - Trust Anchor, Intermediario
+   * - trust marked listing
+     - **GET** /trust_mark_listing?trust_mark_id=...
+     - Elenca tutte le entità per le quali sono stati emessi Trust Mark e sono ancora validi. Vedi `OID-FED`_ Sezione 5.1.1
      - Trust Anchor, Intermediario
    * - historical keys
      - **GET** /historical-jwks
-     - Elenca le chiavi scadute e revocate, con la motivazione della revoca.
+     - Elenca le chiavi scadute e revocate, con la motivazione della revoca. Vedi `OID-FED`_ Sezione 5.1.1
      - Trust Anchor, Intermediario
    * - subordinate events
      - **GET** /federation_subordinate_events_endpoint?sub=https://rp.example.org
-     - Restituisce una traccia storica degli eventi di registrazione sui Subordinati Immediati, come registrazione, revoca e aggiornamenti delle loro Chiavi dell'Entità di Federazione.
+     - Restituisce una traccia storica degli eventi di registrazione sui Subordinati Immediati, come registrazione, revoca e aggiornamenti delle loro Chiavi dell'Entità di Federazione. Vedi la sezione :ref:`federation-subordinate-events-endpoint:Federation Subordinate Events Endpoint` per maggiori dettagli.
      - Trust Anchor, Intermediario
 
 
@@ -358,6 +362,7 @@ Di seguito è riportato un esempio non normativo di un'Entity Configuration del 
                 "federation_resolve_endpoint": "https://trust-anchor.eid-wallet.example.it/resolve",
                 "federation_list_endpoint": "https://trust-anchor.eid-wallet.example.it/list",
                 "federation_trust_mark_status_endpoint": "https://trust-anchor.eid-wallet.example.it/trust_mark_status",
+                "federation_trust_mark_listing_endpoint": "https://trust-anchor.eid-wallet.example.it/trust_mark_listing",
                 "federation_subordinate_events_endpoint": "https://trust-anchor.eid-wallet.example.it/events"
             }
         },

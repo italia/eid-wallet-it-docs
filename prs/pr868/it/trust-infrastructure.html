@@ -272,7 +272,7 @@ Questa infrastruttura di trust lavora in coordinamento con l'Infrastruttura di R
 </tr>
 <tr class="row-odd"><td><p>P2</p></td>
 <td><p><strong>Privacy</strong></p></td>
-<td><p>Progettata per rispettare e proteggere la privacy delle entità e degli individui coinvolti, la divulgazione minima fa parte di questo.</p></td>
+<td><p>Progettata per rispettare e proteggere la privacy delle entità coinvolte, la divulgazione minima fa parte di questo.</p></td>
 </tr>
 <tr class="row-even"><td><p>P3</p></td>
 <td><p><strong>Interoperabilità</strong></p></td>
@@ -284,7 +284,7 @@ Questa infrastruttura di trust lavora in coordinamento con l'Infrastruttura di R
 </tr>
 <tr class="row-even"><td><p>P5</p></td>
 <td><p><strong>Delegazione</strong></p></td>
-<td><p>Capacità/funzionalità tecnica di delegare autorità o responsabilità ad altre entità, consentendo un meccanismo di trust distribuito.</p></td>
+<td><p>Capacità o funzionalità tecnica di delegare autorità o responsabilità ad altre entità, consentendo un meccanismo di trust distribuito.</p></td>
 </tr>
 <tr class="row-odd"><td><p>P6</p></td>
 <td><p><strong>Scalabilità</strong></p></td>
@@ -406,27 +406,32 @@ Questa infrastruttura di trust lavora in coordinamento con l'Infrastruttura di R
 </tr>
 <tr class="row-odd"><td><p>subordinate list endpoint</p></td>
 <td><p><strong>GET</strong> /list</p></td>
-<td><p>Elenca i Subordinati.</p></td>
+<td><p>Elenca i Subordinati. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Sezione 5.1.1</p></td>
 <td><p>Trust Anchor, Intermediario</p></td>
 </tr>
 <tr class="row-even"><td><p>fetch endpoint</p></td>
 <td><p><strong>GET</strong> /fetch?sub=https://rp.example.org</p></td>
-<td><p>Restituisce un JWT firmato su un soggetto specifico, il suo Subordinato. È chiamato Subordinate Statement.</p></td>
+<td><p>Restituisce un JWT firmato su un soggetto specifico, il suo Subordinato. È chiamato Subordinate Statement. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Sezione 5.1.1</p></td>
 <td><p>Trust Anchor, Intermediario</p></td>
 </tr>
 <tr class="row-odd"><td><p>trust mark status</p></td>
 <td><p><strong>POST</strong> /status?sub=...&amp;trust_mark_id=...</p></td>
-<td><p>Restituisce lo stato dell'emissione (validità) di un Trust Mark relativo a un soggetto specifico.</p></td>
+<td><p>Restituisce lo stato dell'emissione (validità) di un Trust Mark relativo a un soggetto specifico. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Sezione 5.1.1</p></td>
 <td><p>Trust Anchor, Intermediario</p></td>
 </tr>
-<tr class="row-even"><td><p>historical keys</p></td>
+<tr class="row-even"><td><p>trust marked listing</p></td>
+<td><p><strong>GET</strong> /trust_mark_listing?trust_mark_id=...</p></td>
+<td><p>Elenca tutte le entità per le quali sono stati emessi Trust Mark e sono ancora validi. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Sezione 5.1.1</p></td>
+<td><p>Trust Anchor, Intermediario</p></td>
+</tr>
+<tr class="row-odd"><td><p>historical keys</p></td>
 <td><p><strong>GET</strong> /historical-jwks</p></td>
-<td><p>Elenca le chiavi scadute e revocate, con la motivazione della revoca.</p></td>
+<td><p>Elenca le chiavi scadute e revocate, con la motivazione della revoca. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Sezione 5.1.1</p></td>
 <td><p>Trust Anchor, Intermediario</p></td>
 </tr>
-<tr class="row-odd"><td><p>subordinate events</p></td>
+<tr class="row-even"><td><p>subordinate events</p></td>
 <td><p><strong>GET</strong> /federation_subordinate_events_endpoint?sub=https://rp.example.org</p></td>
-<td><p>Restituisce una traccia storica degli eventi di registrazione sui Subordinati Immediati, come registrazione, revoca e aggiornamenti delle loro Chiavi dell'Entità di Federazione.</p></td>
+<td><p>Restituisce una traccia storica degli eventi di registrazione sui Subordinati Immediati, come registrazione, revoca e aggiornamenti delle loro Chiavi dell'Entità di Federazione. Vedi la sezione <span class="xref std std-ref">federation-subordinate-events-endpoint:Federation Subordinate Events Endpoint</span> per maggiori dettagli.</p></td>
 <td><p>Trust Anchor, Intermediario</p></td>
 </tr>
 </tbody>
@@ -548,6 +553,7 @@ Host: immediate-superior.example.org
 <span class="w">            </span><span class="nt">&quot;federation_resolve_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/resolve&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;federation_list_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/list&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;federation_trust_mark_status_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/trust_mark_status&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;federation_trust_mark_listing_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/trust_mark_listing&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;federation_subordinate_events_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/events&quot;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">},</span>

@@ -565,11 +565,11 @@ Questa sezione elenca i casi di test dalle Sezioni:
    * - WP_069
      - Issuance, Sicurezza
      - Controllo stato di un Attestato Elettronico
-     - Istanza del Wallet verifica lo stato di ogni Attestato Elettronico archiviato recuperando e validando un Status List Token (per :ref:`credential-revocation:OAuth Status Lists`) o una Status Assertion (per :ref:`credential-revocation:OAuth Status Assertions`).
+     - Istanza del Wallet verifica lo stato di ogni Attestato Elettronico archiviato recuperando e validando un Status List Token (per :ref:`credential-revocation:OAuth Status Lists`).
    * - WP_070
      - Issuance, Sicurezza
      - Flusso re-Issuance: rilevare necessità re-Issuance (aggiornare stato)
-     - Istanza del Wallet aggiorna un Attestato Elettronico quando la Status List mostra ``0x03`` (``UPDATE``) o ``0x04`` (``ATTRIBUTE_UPDATE``), o quando il Status Assertion indica ``credential_status_type`` di ``INVALID`` con ``credential_status_detail.state`` impostato su ``UPDATE`` o ``ATTRIBUTE_UPDATE`` per quell'Attestato Elettronico.
+     - Istanza del Wallet aggiorna un Attestato Elettronico quando la Status List mostra ``0x03`` (``UPDATE``) o ``0x04`` (``ATTRIBUTE_UPDATE``) per quell'Attestato Elettronico.
    * - WP_071
      - Issuance, Sicurezza
      - Flusso re-Issuance: verificare validità Access Token per re-Issuance
