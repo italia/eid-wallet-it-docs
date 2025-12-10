@@ -665,10 +665,10 @@ The JOSE header of the Wallet Unit Attestation JWT contains the following parame
       - REQUIRED. It MUST be set to ``key-attestation+jwt``
       - `OPENID4VC-HAIP`_.
     * - **trust_chain**
-      - REQUIRED. Sequence of Entity Statements that composes the Trust Chain related to the Wallet Provider.
+      - OPTIONAL. Sequence of Entity Statements that composes the Trust Chain related to the Wallet Provider.
       - `OID-FED`_ Section 4.3 *Trust Chain Header Parameter*.
     * - **x5c**
-      - OPTIONAL. Contains the X.509 public key certificate or certificate chain (:rfc:`5280`) corresponding to the key used to digitally sign the JWT.
+      - REQUIRED. Contains the X.509 public key certificate or certificate chain (:rfc:`5280`) corresponding to the key used to digitally sign the JWT.
       - :rfc:`7515` Section 4.1.8.
 
 The body of the Wallet Unit Attestation JWT contains the following claims:
