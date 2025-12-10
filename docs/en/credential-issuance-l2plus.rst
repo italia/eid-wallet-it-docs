@@ -353,7 +353,7 @@ JWT decoded header:
       "kid":"b3f1a6c2e9d54a8f9c3e7d1a2f4b6c78"
     }
 
-JWT decoded body;
+JWT decoded body:
 
 .. code-block:: json
 
