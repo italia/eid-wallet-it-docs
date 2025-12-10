@@ -137,7 +137,7 @@
 <li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Sistema di Onboarding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. Design dell'Esperienza Utente</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. L'Infrastruttura di Trust</a></li>
-<li class="toctree-l1"><a class="reference internal" href="registry.html">7. Infrastruttura del Registro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registry.html">7. Infrastruttura di Registro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entity-onboarding.html">8. Onboarding delle Entità</a></li>
 <li class="toctree-l1"><a class="reference internal" href="x5c-evaluation.html">9. Operazioni di Gestione dei Certificati X.509</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="entities.html">10. Entità</a><ul class="current">
@@ -275,6 +275,7 @@ Di seguito è riportato un esempio non normativo di una Risposta di Revoca dell'
 <li><p><strong>Durante l'emissione dell’Attestato Elettronico di Attributi</strong> da parte dei Fornitori di Attestati. Solo le istanze del Wallet in stato Operativo o Valido possiedono una Wallet App Attestation e una Wallet Unit Attestation valide. La verifica della validità di un'Istanza del Wallet viene eseguita indirettamente dai Fornitori di Attestati tramite il controllo della presenza di una Wallet Unit Attestation valida (ossia non scaduta, non revocata — verificando la Wallet Unit Attestation Status List — e firmata da un Fornitore di Portafoglio fidato).</p></li>
 <li><p><strong>Durante la fase presentazione dell’Attestato Elettronico di Attributi</strong> da parte delle Relying Parties. La verifica della validità di un'Istanza del Wallet viene eseguita dalle Relying Parties tramite il controllo della presenza di una Wallet App Attestation valida (ossia non scaduta e firmata da un Fornitore di Wallet fidato). Durante una presentazione in prossimità, l'istanza del Wallet potrebbe non essere in grado di recuperare una nuova Wallet App Attestation; in questo caso, l'istanza del Wallet DOVREBBE inviare l'ultima versione disponibile della Wallet App Attestation. Spetta alla Relying Party determinare se una presentazione con una Wallet App Attestation valida ma scaduta sia da considerarsi accettabile o meno.</p></li>
 <li><p><strong>Durante il periodo di validità dell’Attestato Elettronico di Attributi</strong> da parte dei Fornitori di Attestati, ogni 24 ore mediante la verifica della Wallet Unit Attestation Status List del PID. Infatti, se l'Istanza del Wallet è revocata, il PID in essa contenuto DEVE essere revocato. Di conseguenza, qualsiasi altro Attestato Elettronico ottenuto attraverso la presentazione del PID DEVE anch'esso essere revocato.</p></li>
+<li><p><strong>Durante il ciclo di vita dell'Istanza del Wallet</strong> da parte dell'Istanza del Wallet. Ogni Fornitore di Wallet può implementare metodi diversi per consentire a un'Istanza del Wallet di verificarne il suo stato. La specifica IT Wallet suggerisce di controllare la Status List della Wallet Unit Attestation.</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
@@ -334,7 +335,7 @@ Di seguito è riportato un esempio non normativo di una Risposta di Revoca dell'
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 06/11/2025.
+      Ultimo aggiornamento 10/12/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

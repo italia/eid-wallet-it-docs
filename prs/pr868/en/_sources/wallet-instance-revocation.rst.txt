@@ -56,7 +56,7 @@ In both cases, by using the Wallet Provider portal (:ref:`WP_005–006 <wallet-p
 
 Below is a non-normative example of a Wallet Instances Retrieval Request.
 
-.. code:: http
+.. code-block:: http
 
    GET /wallet-instances HTTP/1.1
    Host: walletprovider.example.com
@@ -64,7 +64,7 @@ Below is a non-normative example of a Wallet Instances Retrieval Request.
 Upon a successful retrieval, the Wallet Provider MUST return a confirmation response, with the status of all Wallet Instances associated with the User (:ref:`WP_146 <wallet-instance-optional-testcases>`).
 Below is a non-normative example of a Wallet Instances Retrieval Response.
 
-.. code:: http
+.. code-block:: http
 
    HTTP/1.1 200 OK
    Content-Type: application/json
@@ -97,8 +97,6 @@ Below is a non-normative example of a Wallet Instance Revocation Request.
     }
 
 
-
-
 Wallet Instance Revocation Response
 """""""""""""""""""""""""""""""""""
 
@@ -122,6 +120,7 @@ The verification of the Wallet Instance validity MUST be performed:
 
 - **During the validity period of the Digital Credential** by the Credential Issuers every 24 hours by checking the PID's Wallet Unit Attestation Status List. Indeed, if the Wallet Instance is revoked, the PID hosted within it MUST be revoked. Any other Digital Credential obtained through the presentation of the PID MUST therefore be revoked too. 
 
+- **During the Wallet Instance lifecycle** by the Wallet Instance. Each Wallet Provider may implement diffent methods to allow a Wallet Instance to check its status. The IT Wallet specification suggests to check the Status List of the Wallet Unit Attestation. 
 
 .. note::
   If Credential Issuers issue credentials with a validity period of less than 24 hours, they only need to verify the validity period of the WUA upon issuance.

@@ -186,7 +186,7 @@
 <p>This section provides the set of test cases for verifying conformance of a Wallet Solution and Wallet Instance implementation to the technical rules defined in the IT-Wallet ecosystem.
 The test plan is based on the requirements extracted from the following Sections:</p>
 <ul class="simple">
-<li><p><span class="xref std std-ref">trust:The Infrastructure of Trust</span></p></li>
+<li><p><a class="reference internal" href="trust-infrastructure.html#the-infrastructure-of-trust"><span class="std std-ref">The Infrastructure of Trust</span></a></p></li>
 <li><p><a class="reference internal" href="wallet-solution.html#wallet-solution"><span class="std std-ref">Wallet Solution</span></a></p></li>
 <li><p><a class="reference internal" href="credential-issuance.html#digital-credential-issuance"><span class="std std-ref">Digital Credential Issuance</span></a></p></li>
 <li><p><a class="reference internal" href="credential-presentation.html#digital-credential-presentation"><span class="std std-ref">Digital Credential Presentation</span></a></p></li>
@@ -627,13 +627,13 @@ The <code class="docutils literal notranslate"><span class="pre">signed_jwks_uri
 </tr>
 <tr class="row-even"><td><p>WP_047</p></td>
 <td><p>Issuance, Interoperability</p></td>
-<td><p>Issuer-Initiated flow: Credential Offer QR scan &amp; decode</p></td>
-<td><p>In an Issuer-Initiated cross-device flow, Wallet Instance successfully scans the QR code, and decodes the <code class="docutils literal notranslate"><span class="pre">credential_offer</span></code> URL.</p></td>
+<td><p>Third-Party-Initiated flow: Credential Offer QR scan &amp; decode</p></td>
+<td><p>In a Third-Party-Initiated cross-device flow, Wallet Instance successfully scans the QR code, and retrieves the <code class="docutils literal notranslate"><span class="pre">credential_offer</span></code> or the <code class="docutils literal notranslate"><span class="pre">credential_offer_uri</span></code> parameter.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_048</p></td>
 <td><p>Issuance, Interoperability</p></td>
-<td><p>Issuer-Initiated flow: Credential Offer parsing</p></td>
-<td><p>In an Issuer-Initiated flow, Wallet Instance extracts and validates all required parameters present (<code class="docutils literal notranslate"><span class="pre">iss</span></code>, <code class="docutils literal notranslate"><span class="pre">credential_offer</span></code>, etc.) in the URL-decoded <code class="docutils literal notranslate"><span class="pre">credential_offer</span></code>.</p></td>
+<td><p>Third-Party-Initiated flow: Credential Offer parsing</p></td>
+<td><p>In a Third-Party-Initiated flow, Wallet Instance extracts and validates all required parameters present in the Credential Offer.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_049</p></td>
 <td><p>Issuance, Interoperability</p></td>
@@ -673,7 +673,7 @@ The <code class="docutils literal notranslate"><span class="pre">signed_jwks_uri
 <tr class="row-odd"><td><p>WP_052b</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>Wallet Attestation PoP JWT creation</p></td>
-<td><p>Wallet Instance generates the Wallet Attestation PoP JWT (per OAuth-Client-Attestation-PoP parameters as defined in <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/03/">OAUTH-ATTESTATION-CLIENT-AUTH</a>) and binds it to the same ephemeral public key referenced in the Wallet Attestation’s <code class="docutils literal notranslate"><span class="pre">cnf.jwk</span></code>.</p></td>
+<td><p>Wallet Instance generates the Wallet Attestation PoP JWT (per OAuth-Client-Attestation-PoP parameters as defined in <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/07/">OAUTH-ATTESTATION-CLIENT-AUTH</a>) and binds it to the same ephemeral public key referenced in the Wallet Attestation’s <code class="docutils literal notranslate"><span class="pre">cnf.jwk</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_052c</p></td>
 <td><p>Issuance, Security</p></td>
@@ -718,7 +718,7 @@ The <code class="docutils literal notranslate"><span class="pre">signed_jwks_uri
 <tr class="row-even"><td><p>WP_055a</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>Token request proof parameters</p></td>
-<td><p>The Token Request carries the required proofs in headers: a DPoP proof JWT, a Wallet Attestation JWT, and Wallet Instance’s PoP JWT (per OAuth-Client-Attestation and OAuth-Client-Attestation-PoP as defined in <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/03/">OAUTH-ATTESTATION-CLIENT-AUTH</a>).</p></td>
+<td><p>The Token Request carries the required proofs in headers: a DPoP proof JWT, a Wallet Attestation JWT, and Wallet Instance’s PoP JWT (per OAuth-Client-Attestation and OAuth-Client-Attestation-PoP as defined in <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/07/">OAUTH-ATTESTATION-CLIENT-AUTH</a>).</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_055b</p></td>
 <td><p>Issuance, Interoperability</p></td>
@@ -873,7 +873,7 @@ The <code class="docutils literal notranslate"><span class="pre">signed_jwks_uri
 <tr class="row-odd"><td><p>WP_069</p></td>
 <td><p>Issuance, Security</p></td>
 <td><p>Check Digital Credential status</p></td>
-<td><p>Wallet Instance verifies the status of each stored Digital Credential by retrieving and validating either a Status List Token (per <a class="reference internal" href="credential-revocation.html#oauth-status-lists"><span class="std std-ref">OAuth Status Lists</span></a>) or a Status Assertion (per <a class="reference internal" href="credential-revocation.html#oauth-status-assertions"><span class="std std-ref">OAuth Status Assertions</span></a>).</p></td>
+<td><p>Wallet Instance verifies the status of each stored Digital Credential by retrieving and validating either a Status List Token (per <span class="xref std std-ref">credential-revocation:OAuth Status Lists</span>) or a Status Assertion (per <a class="reference internal" href="credential-revocation.html#oauth-status-assertions"><span class="std std-ref">OAuth Status Assertions</span></a>).</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_070</p></td>
 <td><p>Issuance, Security</p></td>
@@ -985,7 +985,7 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 <tr class="row-even"><td><p>WP_083a</p></td>
 <td><p>Remote-flow, Presentation, Interoperability</p></td>
 <td><p>Construct <code class="docutils literal notranslate"><span class="pre">wallet_metadata</span></code></p></td>
-<td><p>Wallet Instance formats the <code class="docutils literal notranslate"><span class="pre">wallet_metadata</span></code> as a JSON object that includes the <code class="docutils literal notranslate"><span class="pre">vp_formats_supported</span></code>, <code class="docutils literal notranslate"><span class="pre">client_id_schemes_supported</span></code>, and <code class="docutils literal notranslate"><span class="pre">authorization_endpoint</span></code> per Section 10.1 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a>].</p></td>
+<td><p>Wallet Instance formats the <code class="docutils literal notranslate"><span class="pre">wallet_metadata</span></code> as a JSON object that includes the <code class="docutils literal notranslate"><span class="pre">vp_formats_supported</span></code>, <code class="docutils literal notranslate"><span class="pre">client_id_schemes_supported</span></code>, and <code class="docutils literal notranslate"><span class="pre">authorization_endpoint</span></code> per Section 10.1 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_083b</p></td>
 <td><p>Remote-flow, Presentation, Privacy</p></td>
@@ -1055,7 +1055,7 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 <tr class="row-even"><td><p>WP_092</p></td>
 <td><p>Remote-flow, Presentation, Security</p></td>
 <td><p>Encrypt Authorization Response</p></td>
-<td><p>Wallet Instance encrypts the Authorization Response JWT per Section 8.3 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a>] using the Relying Party’s public key.</p></td>
+<td><p>Wallet Instance encrypts the Authorization Response JWT per Section 8.3 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>] using the Relying Party’s public key.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_093</p></td>
 <td><p>Remote-flow, Presentation, Security</p></td>
@@ -1075,7 +1075,7 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 <tr class="row-even"><td><p>WP_093c</p></td>
 <td><p>Remote-flow, Presentation, Security</p></td>
 <td><p>Key Binding JWT format</p></td>
-<td><p>The JOSE header of each generated Key Binding JWT includes <code class="docutils literal notranslate"><span class="pre">&quot;typ&quot;:&quot;kb+jwt&quot;</span></code> and an <code class="docutils literal notranslate"><span class="pre">alg</span></code> to one of the supported signature algorithms, as well as a payload including the <code class="docutils literal notranslate"><span class="pre">iat</span></code>, <code class="docutils literal notranslate"><span class="pre">aud</span></code>, <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, and <code class="docutils literal notranslate"><span class="pre">sd_hash</span></code> claims per <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a> .</p></td>
+<td><p>The JOSE header of each generated Key Binding JWT includes <code class="docutils literal notranslate"><span class="pre">&quot;typ&quot;:&quot;kb+jwt&quot;</span></code> and an <code class="docutils literal notranslate"><span class="pre">alg</span></code> to one of the supported signature algorithms, as well as a payload including the <code class="docutils literal notranslate"><span class="pre">iat</span></code>, <code class="docutils literal notranslate"><span class="pre">aud</span></code>, <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, and <code class="docutils literal notranslate"><span class="pre">sd_hash</span></code> claims per <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a> .</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_094</p></td>
 <td><p>Remote-flow, Presentation, Interoperability</p></td>
@@ -1846,7 +1846,7 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 06/11/2025.
+      Last updated on 10/12/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

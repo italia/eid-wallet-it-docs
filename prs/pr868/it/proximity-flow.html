@@ -137,7 +137,7 @@
 <li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Sistema di Onboarding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. Design dell'Esperienza Utente</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. L'Infrastruttura di Trust</a></li>
-<li class="toctree-l1"><a class="reference internal" href="registry.html">7. Infrastruttura del Registro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registry.html">7. Infrastruttura di Registro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entity-onboarding.html">8. Onboarding delle Entità</a></li>
 <li class="toctree-l1"><a class="reference internal" href="x5c-evaluation.html">9. Operazioni di Gestione dei Certificati X.509</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entities.html">10. Entità</a></li>
@@ -197,7 +197,7 @@ Durante la sottofase di comunicazione, l'Istanza di Relying Party ha l'opzione d
 <ul class="simple">
 <li><p><em>Flusso di Recupero del Dispositivo Supervisionato</em> dove un supervisore umano supervisiona il processo di verifica in persona, in contrasto con il <em>flusso non supervisionato</em> dove la verifica potrebbe avvenire attraverso sistemi automatizzati senza supervisione umana (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_095</span></a>).</p></li>
 <li><p><em>Autenticazione dell'Istanza di Relying Party</em> seguendo i meccanismi definiti nella <a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> per il <em>reader authentication</em> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_098</span></a>).</p></li>
-<li><p><em>Tipo di Documento</em> domestico e <em>Namespace</em> definiti in questa specifica tecnica in aggiunta a quelli già definiti nell'<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> per l'mDL (vedi <a class="reference internal" href="credential-data-model.html#attestato-elettronico-in-formato-mdoc-cbor"><span class="std std-ref">Attestato Elettronico in formato mdoc-CBOR</span></a> per maggiori dettagli) (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_099</span></a>).</p></li>
+<li><p><em>Tipo di Documento</em> domestico e <em>Namespace</em> definiti in questa specifica tecnica in aggiunta a quelli già definiti nell'<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> per l'mDL (vedi <span class="xref std std-ref">credential-data-model:Attestato Elettronico in formato mdoc-CBOR</span> per maggiori dettagli) (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_099</span></a>).</p></li>
 <li><p><em>Validazione dell'Istanza del Wallet</em> attraverso la Wallet App Attestation.</p></li>
 </ul>
 <p>La tabella seguente mostra le tecnologie di <em>Device Engagement</em> supportate  (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_097</span></a>), specificando quali sono obbligatorie.</p>
@@ -652,7 +652,7 @@ Fare riferimento a (<a class="reference internal" href="test-plans-wallet-provid
 }
 </pre></div>
 </div>
-<p><strong>Passo 13</strong>: L'Istanza di Relying Party riceve il <code class="docutils literal notranslate"><span class="pre">SessionData</span></code>, quindi DEVE decifrarlo e DEVE verificare la firma dell'Istanza del Wallet per garantire l'integrità dei dati e che provengano dal dispositivo previsto (device binding). DEVE anche controllare la validità dell'mdoc, inclusa la firma del suo Fornitore di Attestati Elettronici. In caso di Attestati Elettronici Digitali di lunga durata, DOVREBBE anche controllare lo stato di revoca utilizzando il <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/07/">TOKEN-STATUS-LIST</a>.</p>
+<p><strong>Passo 13</strong>: L'Istanza di Relying Party riceve il <code class="docutils literal notranslate"><span class="pre">SessionData</span></code>, quindi DEVE decifrarlo e DEVE verificare la firma dell'Istanza del Wallet per garantire l'integrità dei dati e che provengano dal dispositivo previsto (device binding). DEVE anche controllare la validità dell'mdoc, inclusa la firma del suo Fornitore di Attestati Elettronici. In caso di Attestati Elettronici Digitali di lunga durata, DOVREBBE anche controllare lo stato di revoca utilizzando il <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/13/">TOKEN-STATUS-LIST</a>.</p>
 <p><strong>Passo 14</strong>: Una volta completato lo scambio di dati, una delle parti può terminare la sessione. La sessione può essere terminata inviando lo status code per la <em>Session Termination</em> in un messaggio <code class="docutils literal notranslate"><span class="pre">SessionData</span></code>; questo può essere inviato insieme a una la Richiesta mdoc o Risposta mdoc [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #12.2.4] (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_113c</span></a>). Se viene utilizzato BLE, questo può comportare l'invio di uno <em>status code</em> per la <em>Session Termination</em> o il comando &quot;End&quot;. In questo scenario, il Client GATT (Istanza di Relying Party) DEVE annullare l'iscrizione dalle caratteristiche e disconnettersi dal server GATT (Istanza del Wallet) (<a class="reference internal" href="test-plans-proximity-presentation.html#test-plans-proximity-presentation"><span class="std std-ref">PPR-007</span></a>, <a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_113b</span></a>, and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_114</span></a>).</p>
 <p><strong>Considerazione Finale</strong>: Il flusso di presentazione si è concentrato sullo scambio tecnico di dati in contesti di prossimità. È cruciale riconoscere che i flussi di prossimità supervisionati che coinvolgono un verificatore umano svolgono un ruolo vitale in molti casi d'uso (ad esempio, verifica dell'età in un negozio, controllo dell'identità da parte delle forze dell'ordine). L'elemento umano aggiunge un livello di verifica dell'identità attraverso l'ispezione visiva e il confronto, contribuendo agli aspetti di User Binding e garanzia di autenticazione complessiva non completamente catturati in un flusso di presentazione puramente tecnico.</p>
 <div class="admonition note">
@@ -1034,7 +1034,7 @@ Ogni Richiesta mdoc DEVE essere conforme alla seguente struttura e DEVE includer
 <ul>
 <li><p><strong>itemsRequest</strong>. Struttura <cite>ItemsRequest</cite> codificata CBOR, formattata come:</p>
 <ul>
-<li><p><strong>docType</strong> <em>(tstr)</em>. Il tipo di documento richiesto. Vedere <a class="reference internal" href="credential-data-model.html#attestato-elettronico-in-formato-mdoc-cbor"><span class="std std-ref">Attestato Elettronico in formato mdoc-CBOR</span></a>.</p></li>
+<li><p><strong>docType</strong> <em>(tstr)</em>. Il tipo di documento richiesto. Vedere <span class="xref std std-ref">credential-data-model:Attestato Elettronico in formato mdoc-CBOR</span>.</p></li>
 <li><p><strong>nameSpaces</strong> <em>(map)</em>. Una mappa di identificatori di namespace a <em>DataElements</em> richiesti.</p>
 <p>Ogni voce in <cite>DataElements</cite> include:</p>
 <ul class="simple">
@@ -1060,7 +1060,7 @@ Ogni Richiesta mdoc DEVE essere conforme alla seguente struttura e DEVE includer
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p><strong>Richiesta della Wallet App Attestation</strong></p>
-<p>La Relying Party che richiede una Wallet App Attestation DEVE aggiungere un oggetto nell'array <strong>docRequest</strong> che abbia solo il campo <code class="docutils literal notranslate"><span class="pre">docType</span></code> impostato come <code class="docutils literal notranslate"><span class="pre">{Trust</span> <span class="pre">Anchor</span> <span class="pre">reverse</span> <span class="pre">domain}.{WalletAppAttestation}</span></code> (si rimanda a <a class="reference internal" href="registry.html#struttura-del-catalogo-degli-attestati-elettronici"><span class="std std-ref">Struttura del Catalogo degli Attestati Elettronici</span></a> per dettagli ulteriori). La Relying Party NON DEVE includere il parametro <code class="docutils literal notranslate"><span class="pre">nameSpaces</span></code> nella richiesta (<a class="reference internal" href="test-plans-proximity-presentation.html#test-plans-proximity-presentation"><span class="std std-ref">PPR-010</span></a>).</p>
+<p>La Relying Party che richiede una Wallet App Attestation DEVE aggiungere un oggetto nell'array <strong>docRequest</strong> che abbia solo il campo <code class="docutils literal notranslate"><span class="pre">docType</span></code> impostato come <code class="docutils literal notranslate"><span class="pre">{Trust</span> <span class="pre">Anchor</span> <span class="pre">reverse</span> <span class="pre">domain}.{WalletAppAttestation}</span></code> (si rimanda a <span class="xref std std-ref">registry:Struttura del Catalogo degli Attestati Elettronici</span> per dettagli ulteriori). La Relying Party NON DEVE includere il parametro <code class="docutils literal notranslate"><span class="pre">nameSpaces</span></code> nella richiesta (<a class="reference internal" href="test-plans-proximity-presentation.html#test-plans-proximity-presentation"><span class="std std-ref">PPR-010</span></a>).</p>
 <p>Questo componente DEVE essere presente solo se <code class="docutils literal notranslate"><span class="pre">ReaderAuthAllSupport</span></code> è impostato su <code class="docutils literal notranslate"><span class="pre">true</span></code> nel messaggio di DeviceEngagement, e i campi individuali <code class="docutils literal notranslate"><span class="pre">readerAuth</span></code> non vengono utilizzati (<a class="reference internal" href="test-plans-proximity-presentation.html#test-plans-proximity-presentation"><span class="std std-ref">PPR-025</span></a>).</p>
 </div>
 </section>
@@ -1109,7 +1109,7 @@ Ogni Richiesta mdoc DEVE essere conforme alla seguente struttura e DEVE includer
 <td><p><em>(tstr)</em>. identificativo del tipo di documento. Ad esempio, per un mDL, il valore DEVE essere <code class="docutils literal notranslate"><span class="pre">org.iso.18013.5.1.mDL</span></code> (<a class="reference internal" href="test-plans-proximity-presentation.html#test-plans-proximity-presentation"><span class="std std-ref">PPR-010</span></a>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>issuerSigned</strong></p></td>
-<td><p><em>(bstr)</em>. Contiene la struttura <cite>IssuerNameSpaces</cite>, che include elementi dati firmati dal Fornitore di Attestati Elettronici, e la struttura <cite>issuerAuth</cite>, che garantisce la loro autenticità e integrità utilizzando il Mobile Security Object (MSO). Vedere <a class="reference internal" href="credential-data-model.html#attestato-elettronico-in-formato-mdoc-cbor"><span class="std std-ref">Attestato Elettronico in formato mdoc-CBOR</span></a>.</p></td>
+<td><p><em>(bstr)</em>. Contiene la struttura <cite>IssuerNameSpaces</cite>, che include elementi dati firmati dal Fornitore di Attestati Elettronici, e la struttura <cite>issuerAuth</cite>, che garantisce la loro autenticità e integrità utilizzando il Mobile Security Object (MSO). Vedere <span class="xref std std-ref">credential-data-model:Attestato Elettronico in formato mdoc-CBOR</span>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>deviceSigned</strong></p></td>
 <td><p><em>(bstr)</em>. Contiene la struttura <cite>DeviceNameSpaces</cite> (elementi dati firmati dall'Istanza del Wallet), e la struttura <cite>deviceAuth</cite>, che include i dati di autenticazione firmati dall'Istanza del Wallet. Vedere la tabella sottostante per dettagli.</p></td>
@@ -1171,7 +1171,7 @@ Ogni Richiesta mdoc DEVE essere conforme alla seguente struttura e DEVE includer
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Vedere <a class="reference internal" href="credential-data-model.html#attestato-elettronico-in-formato-mdoc-cbor"><span class="std std-ref">Attestato Elettronico in formato mdoc-CBOR</span></a> per il significato degli acronimi di tipo CBOR.</p>
+<p>Vedere <span class="xref std std-ref">credential-data-model:Attestato Elettronico in formato mdoc-CBOR</span> per il significato degli acronimi di tipo CBOR.</p>
 </div>
 </section>
 </section>
@@ -1243,7 +1243,7 @@ Ogni Richiesta mdoc DEVE essere conforme alla seguente struttura e DEVE includer
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 06/11/2025.
+      Ultimo aggiornamento 10/12/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

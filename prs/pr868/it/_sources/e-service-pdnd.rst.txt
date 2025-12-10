@@ -155,7 +155,7 @@ Flusso del Voucher PDND per e-Service
 
 **Passi 1-2 (Preparazione dei dati tracciati):** Il Fruitore prepara un JWT (``TrackingEvidence``) contenente i dati tracciati che devono essere inviati all'Erogatore. Infine, calcola l'hash SHA-256 di ``TrackingEvidence``.
 
-.. code-block:: Json
+.. code-block:: json
   :caption: Esempio non normativo dell'header di ``TrackingEvidence``
   :name: code_VoucherIssuance_eService_Flow_TrackingEvidence_Header
 

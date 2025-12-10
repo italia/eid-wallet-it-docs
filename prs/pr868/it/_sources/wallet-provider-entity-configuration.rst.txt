@@ -7,7 +7,7 @@ Una richiesta HTTP GET all'endpoint della Federazione consente di recuperare la 
 
 La Entity Configuration del Fornitore di Wallet restituita DEVE contenere gli attributi descritti nelle sezioni seguenti.
 
-La Entity Configuration del Fornitore di Wallet è un JWT firmato contenente le chiavi pubbliche e gli algoritmi supportati dal Fornitore di Wallet. È strutturata in conformità con `OID-FED`_ e con :ref:`trust:L'Infrastruttura di Trust` delineata in questa specifica (:ref:`WP_002 <wallet-provider-backend-testcases>`).
+La Entity Configuration del Fornitore di Wallet è un JWT firmato contenente le chiavi pubbliche e gli algoritmi supportati dal Fornitore di Wallet. È strutturata in conformità con `OID-FED`_ e con :ref:`trust-infrastructure:L'Infrastruttura di Trust` delineata in questa specifica (:ref:`WP_002 <wallet-provider-backend-testcases>`).
 
 Header JWT della Entity Configuration del Fornitore di Wallet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

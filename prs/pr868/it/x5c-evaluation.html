@@ -137,7 +137,7 @@
 <li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Sistema di Onboarding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. Design dell'Esperienza Utente</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. L'Infrastruttura di Trust</a></li>
-<li class="toctree-l1"><a class="reference internal" href="registry.html">7. Infrastruttura del Registro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registry.html">7. Infrastruttura di Registro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entity-onboarding.html">8. Onboarding delle Entità</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">9. Operazioni di Gestione dei Certificati X.509</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entities.html">10. Entità</a></li>
@@ -292,6 +292,24 @@ rm<span class="w"> </span>federation_entity.pem<span class="w"> </span>trust_anc
 <li><p>Analizzare il contenuto CRL e i periodi di validità.</p></li>
 </ul>
 </div></blockquote>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1"># CRL extraction and analysis for federation entities</span>
+
+<span class="c1"># Extract CRL URL from certificate CRL Distribution Points extension</span>
+<span class="nv">crl_url</span><span class="o">=</span><span class="k">$(</span>openssl<span class="w"> </span>x509<span class="w"> </span>-in<span class="w"> </span>certificate.der<span class="w"> </span>-inform<span class="w"> </span>DER<span class="w"> </span>-text<span class="w"> </span>-noout<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+<span class="w">          </span>grep<span class="w"> </span><span class="s2">&quot;URI:&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/.*URI://&#39;</span><span class="k">)</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;CRL Distribution Point: </span><span class="nv">$crl_url</span><span class="s2">&quot;</span>
+
+<span class="c1"># Download CRL from distribution point</span>
+curl<span class="w"> </span>-s<span class="w"> </span>-O<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$crl_url</span><span class="s2">&quot;</span>
+<span class="nv">crl_file</span><span class="o">=</span><span class="k">$(</span>basename<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$crl_url</span><span class="s2">&quot;</span><span class="k">)</span>
+
+<span class="c1"># Display CRL information</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;CRL Content Analysis:&quot;</span>
+openssl<span class="w"> </span>crl<span class="w"> </span>-in<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$crl_file</span><span class="s2">&quot;</span><span class="w"> </span>-inform<span class="w"> </span>DER<span class="w"> </span>-text<span class="w"> </span>-noout
+</pre></div>
+</div>
 </section>
 <section id="verifica-della-revoca-dei-certificati-x-509">
 <h3><span class="section-number">9.3.2. </span>Verifica della Revoca dei Certificati X.509<a class="headerlink" href="#verifica-della-revoca-dei-certificati-x-509" title="Link to this heading">¶</a></h3>
@@ -305,6 +323,45 @@ rm<span class="w"> </span>federation_entity.pem<span class="w"> </span>trust_anc
 </ul>
 </div></blockquote>
 <p>Di seguito è fornito un esempio non normativo di script bash per la verifica dello stato di revoca dei certificati X.509:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1"># Certificate revocation verification for federation entities</span>
+
+<span class="c1"># Extract certificate serial number</span>
+<span class="nv">certificate_serial</span><span class="o">=</span><span class="k">$(</span>openssl<span class="w"> </span>x509<span class="w"> </span>-in<span class="w"> </span>certificate.der<span class="w"> </span>-inform<span class="w"> </span>DER<span class="w"> </span>-noout<span class="w"> </span>-serial<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+<span class="w">                  </span>cut<span class="w"> </span>-d<span class="o">=</span><span class="w"> </span>-f2<span class="k">)</span>
+
+<span class="c1"># Normalize serial number (remove leading zeros, convert to lowercase)</span>
+<span class="nv">normalized_serial</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$certificate_serial</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/^0*//&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span><span class="s1">&#39;[:upper:]&#39;</span><span class="w"> </span><span class="s1">&#39;[:lower:]&#39;</span><span class="k">)</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Certificate Serial Number: </span><span class="nv">$normalized_serial</span><span class="s2">&quot;</span>
+
+<span class="c1"># Extract CRL URL and download</span>
+<span class="nv">crl_url</span><span class="o">=</span><span class="k">$(</span>openssl<span class="w"> </span>x509<span class="w"> </span>-in<span class="w"> </span>certificate.der<span class="w"> </span>-inform<span class="w"> </span>DER<span class="w"> </span>-text<span class="w"> </span>-noout<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+<span class="w">          </span>grep<span class="w"> </span><span class="s2">&quot;URI:&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/.*URI://&#39;</span><span class="k">)</span>
+curl<span class="w"> </span>-s<span class="w"> </span>-O<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$crl_url</span><span class="s2">&quot;</span>
+<span class="nv">crl_file</span><span class="o">=</span><span class="k">$(</span>basename<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$crl_url</span><span class="s2">&quot;</span><span class="k">)</span>
+
+<span class="c1"># Validate CRL signature against Trust Anchor</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Validating CRL signature...&quot;</span>
+openssl<span class="w"> </span>crl<span class="w"> </span>-in<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$crl_file</span><span class="s2">&quot;</span><span class="w"> </span>-inform<span class="w"> </span>DER<span class="w"> </span>-noout<span class="w"> </span>-text<span class="w"> </span>-CAfile<span class="w"> </span>trust_anchor.pem
+
+<span class="c1"># Extract revoked serial numbers from CRL</span>
+<span class="nv">revoked_serials</span><span class="o">=</span><span class="k">$(</span>openssl<span class="w"> </span>crl<span class="w"> </span>-in<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$crl_file</span><span class="s2">&quot;</span><span class="w"> </span>-inform<span class="w"> </span>DER<span class="w"> </span>-text<span class="w"> </span>-noout<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+<span class="w">                 </span>grep<span class="w"> </span><span class="s1">&#39;Serial Number&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+<span class="w">                 </span>sed<span class="w"> </span><span class="s1">&#39;s/.*Serial Number: //&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+<span class="w">                 </span>sed<span class="w"> </span><span class="s1">&#39;s/^0*//&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+<span class="w">                 </span>tr<span class="w"> </span><span class="s1">&#39;[:upper:]&#39;</span><span class="w"> </span><span class="s1">&#39;[:lower:]&#39;</span><span class="k">)</span>
+
+<span class="c1"># Check if certificate is revoked</span>
+<span class="k">if</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$revoked_serials</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-q<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$normalized_serial</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Certificate Status: REVOKED&quot;</span>
+<span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">else</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Certificate Status: VALID&quot;</span>
+<span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
+<span class="k">fi</span>
+</pre></div>
+</div>
 </section>
 </section>
 <section id="migliori-pratiche-per-la-gestione-dei-certificati-x-509">
@@ -346,6 +403,26 @@ rm<span class="w"> </span>federation_entity.pem<span class="w"> </span>trust_anc
 </ul>
 </div></blockquote>
 <p>Il seguente esempio non normativo fornisce uno script per il test di connettività dell'infrastruttura dei certificati X.509 della Federazione:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1"># Federation certificate infrastructure connectivity test</span>
+
+<span class="c1"># Test Trust Anchor certificate endpoint</span>
+<span class="nv">ta_cert_url</span><span class="o">=</span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/pki/ta.cer&quot;</span>
+<span class="k">if</span><span class="w"> </span>curl<span class="w"> </span>-f<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ta_cert_url</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Trust Anchor certificate endpoint: ACCESSIBLE&quot;</span>
+<span class="k">else</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Trust Anchor certificate endpoint: FAILED&quot;</span>
+<span class="k">fi</span>
+
+<span class="c1"># Test CRL distribution endpoints</span>
+<span class="nv">ta_crl_url</span><span class="o">=</span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/pki/ta.crl&quot;</span>
+<span class="k">if</span><span class="w"> </span>curl<span class="w"> </span>-f<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ta_crl_url</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Trust Anchor CRL endpoint: ACCESSIBLE&quot;</span>
+<span class="k">else</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Trust Anchor CRL endpoint: FAILED&quot;</span>
+<span class="k">fi</span>
+</pre></div>
+</div>
 </section>
 <section id="coordinamento-del-ciclo-di-vita-dei-certificati-x-509">
 <h3><span class="section-number">9.4.3. </span>Coordinamento del Ciclo di Vita dei Certificati X.509<a class="headerlink" href="#coordinamento-del-ciclo-di-vita-dei-certificati-x-509" title="Link to this heading">¶</a></h3>
@@ -356,15 +433,78 @@ rm<span class="w"> </span>federation_entity.pem<span class="w"> </span>trust_anc
 <li><p><strong>Gestione CRL</strong>: Per i Certificati X.509 del Protocollo con validità &gt; 24 ore, mantenere la pubblicazione CRL corrente.</p></li>
 <li><p><strong>Uscita dalla Federazione</strong>: Garantire la revoca corretta dei Certificati X.509 durante l'uscita volontaria o avviata dall'organo di supervisione dalla federazione.</p></li>
 </ul>
+</section>
+</section>
+<section id="procedure-di-rotazione-delle-chiavi">
+<h2><span class="section-number">9.5. </span>Procedure di Rotazione delle Chiavi<a class="headerlink" href="#procedure-di-rotazione-delle-chiavi" title="Link to this heading">¶</a></h2>
+<p>Le entità federate DEVONO implementare meccanismi di rotazione delle chiavi per mantenere la postura di sicurezza e rispondere agli eventi di sicurezza. Questa sezione definisce le procedure operative per rilevare e rispondere alle rotazioni delle chiavi superiori e per il rinnovo delle chiavi subordinate.</p>
+<section id="rotazione-delle-chiavi-superiori">
+<h3><span class="section-number">9.5.1. </span>Rotazione delle Chiavi Superiori<a class="headerlink" href="#rotazione-delle-chiavi-superiori" title="Link to this heading">¶</a></h3>
+<p>Le entità subordinate DEVONO eseguire la verifica periodica della propria Trust Chain per rilevare le rotazioni delle chiavi superiori e garantire la continuità dell'appartenenza alla federazione.</p>
+<p><strong>Requisiti di Verifica</strong></p>
+<p>I Subordinati della federazione DEVONO:</p>
+<ol class="arabic simple">
+<li><p>Recuperare il proprio Subordinate Statement dal superiore immediato ogni 24 ore utilizzando il fetch endpoint definito in <span class="xref std std-ref">trust-infrastructure:Endpoint delle API della Federazione</span>. Ciò DOVREBBE essere fatto entro un intervallo di tempo non superiore a 24 ore.</p></li>
+<li><p>Verificare lo stato di revoca o sospensione.</p></li>
+<li><p>Aggiornare il proprio Entity Configuration quando cambiano i certificati superiori.</p></li>
+</ol>
+<p><strong>Meccanismi di Rilevamento</strong></p>
+<p>I Subordinati POSSONO utilizzare uno o più dei seguenti meccanismi per rilevare le modifiche:</p>
+<ul class="simple">
+<li><p><strong>Verifica CRL/OCSP</strong>: Monitorare le Certificate Revocation List o le risposte del protocollo Online Certificate Status Protocol per rilevare la revoca dei certificati superiori come definito in <span class="xref std std-ref">trust-infrastructure:Revoca dei Certificati X.509</span>. La revoca del certificato indica che è in corso la rotazione della chiave superiore.</p></li>
+<li><p><strong>Fetch Endpoint</strong>: Recuperare il Subordinate Statement tramite <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">{superiore}/fetch?sub={entity_id_subordinato}</span></code> per ottenere i certificati correnti.</p></li>
+<li><p><strong>Events Endpoint</strong>: Monitorare <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">{superiore}/federation_subordinate_events_endpoint?sub={entity_id_subordinato}</span></code> per gli eventi <code class="docutils literal notranslate"><span class="pre">jwks_update</span></code>. Il Federation Subordinate Events endpoint restituisce la traccia storica degli eventi di registrazione come definito in <span class="xref std std-ref">trust-infrastructure:Endpoint delle API della Federazione</span>.</p></li>
+</ul>
+<p>I Subordinati DOVREBBERO implementare la pianificazione automatizzata per:</p>
+<ul class="simple">
+<li><p>Operazioni di fetch giornaliere per recuperare il Subordinate Statement corrente.</p></li>
+<li><p>Validazione della catena di certificati X.509 dopo ogni fetch.</p></li>
+<li><p>Aggiornamenti automatici dell'Entity Configuration quando vengono rilevate modifiche ai certificati.</p></li>
+<li><p>Monitoraggio degli eventi per il rilevamento proattivo delle modifiche.</p></li>
+</ul>
+<p>Quando un'entità superiore (Trust Anchor o Intermediate) ruota la propria Chiave dell'Entità Federata, tutti i certificati X.509 Subordinati DEVONO essere riemessi.</p>
+<p><strong>Procedura di Rotazione</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Revoca della Chiave</strong>: Il superiore pubblica la Certificate Revocation List (CRL) o la voce Historical Keys (HK) revocando la vecchia chiave come definito in <span class="xref std std-ref">trust-infrastructure:Revoca dei Certificati X.509</span>.</p></li>
+<li><p><strong>Aggiornamento Entity Configuration</strong>: Il superiore pubblica la nuova Entity Configuration firmata con la nuova Chiave dell'Entità Federata.</p></li>
+<li><p><strong>Riemissione Certificati X.509</strong>: Il superiore riemette i certificati X.509 a tutti i Subordinati utilizzando la nuova chiave.</p></li>
+<li><p><strong>Pubblicazione Certificati</strong>: Il superiore rende disponibili i nuovi certificati sul fetch endpoint.</p></li>
+<li><p><strong>Rilevamento Subordinato</strong>: I Subordinati rilevano la modifica al successivo fetch programmato (al massimo entro 24 ore dalla pubblicazione della modifica).</p></li>
+<li><p><strong>Aggiornamento Certificati</strong>: I Subordinati aggiornano il campo <code class="docutils literal notranslate"><span class="pre">x5c</span></code> nella propria Entity Configuration con il nuovo certificato.</p></li>
+</ol>
+<p><strong>Priorità dei Certificati</strong></p>
+<p>Quando esistono più certificati X.509 per la stessa chiave pubblica subordinata, il certificato nel Subordinate Statement DEVE avere priorità sul certificato nella Entity Configuration del subordinato.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Un'entità superiore non può avviare autonomamente un processo di rotazione delle Chiavi Subordinate. Il meccanismo di rotazione delle Chiavi Subordinate è sempre avviato dall'entità Subordinata, vedi Sezione <a class="reference internal" href="#rotazione-delle-chiavi-subordinate"><span class="std std-ref">Rotazione delle Chiavi Subordinate</span></a>.</p>
+</div>
+</section>
+<section id="rotazione-delle-chiavi-subordinate">
+<h3><span class="section-number">9.5.2. </span>Rotazione delle Chiavi Subordinate<a class="headerlink" href="#rotazione-delle-chiavi-subordinate" title="Link to this heading">¶</a></h3>
+<p>I Subordinati ruotano le proprie Chiavi dell'Entità Federata inviando Certificate Signing Request al proprio superiore immediato seguendo la stessa procedura dell'onboarding iniziale.</p>
+<p><strong>Procedura di Rotazione</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Generazione Nuova Chiave</strong>: Il subordinato genera una nuova coppia di Chiavi dell'Entità Federata.</p></li>
+<li><p><strong>Generazione CSR</strong>: Il subordinato genera un Certificate Signing Request PKCS #10 per la nuova chiave come definito in <a class="reference internal" href="entity-onboarding.html#onboarding-delle-entita"><span class="std std-ref">Onboarding delle Entità</span></a>.</p></li>
+<li><p><strong>Invio CSR</strong>: Il subordinato invia il CSR all'entità superiore utilizzando lo stesso endpoint di onboarding.</p></li>
+<li><p><strong>Emissione Certificato</strong>: Il superiore valida il CSR ed emette un nuovo certificato X.509.</p></li>
+<li><p><strong>Pubblicazione Certificato</strong>: Il superiore rende disponibile il nuovo certificato sul fetch endpoint.</p></li>
+<li><p><strong>Recupero Certificato</strong>: Il subordinato recupera il Subordinate Statement aggiornato contenente il nuovo certificato.</p></li>
+<li><p><strong>Aggiornamento Entity Configuration</strong>: Il subordinato aggiunge la nuova JWK con il nuovo certificato all'array <code class="docutils literal notranslate"><span class="pre">jwks</span></code> della Entity Configuration.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Durante la rotazione delle chiavi, i Subordinati DOVREBBERO mantenere sia le chiavi vecchie che quelle nuove per garantire la continuità del servizio. La vecchia chiave DOVREBBE essere rimossa solo dopo aver confermato la corretta propagazione della nuova chiave in tutta la federazione.</p>
+</div>
 <section id="gestione-del-ciclo-di-vita-dell-entita">
-<h4><span class="section-number">9.4.3.1. </span>Gestione del Ciclo di Vita dell'Entità<a class="headerlink" href="#gestione-del-ciclo-di-vita-dell-entita" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">9.5.2.1. </span>Gestione del Ciclo di Vita dell'Entità<a class="headerlink" href="#gestione-del-ciclo-di-vita-dell-entita" title="Link to this heading">¶</a></h4>
 <p>Questa sezione fornisce le procedure di implementazione tecnica per la gestione del ciclo di vita dell'entità. Per i concetti di alto livello del ciclo di vita e i processi aziendali, vedere <span class="xref std std-ref">onboarding-high-level:Gestione del Ciclo di Vita dell'Entità</span>.</p>
 <p>Mentre l'aggiornamento dei dati amministrativi DEVE seguire processi di governance che sono fuori dall'ambito di questa specifica tecnica, gli aggiornamenti della configurazione tecnica sono descritti nelle seguenti sezioni.</p>
 </section>
 </section>
 </section>
 <section id="aggiornamenti-della-configurazione-tecnica">
-<h2><span class="section-number">9.5. </span>Aggiornamenti della Configurazione Tecnica<a class="headerlink" href="#aggiornamenti-della-configurazione-tecnica" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">9.6. </span>Aggiornamenti della Configurazione Tecnica<a class="headerlink" href="#aggiornamenti-della-configurazione-tecnica" title="Link to this heading">¶</a></h2>
 <p>Gli aggiornamenti tecnici che influenzano le operazioni del protocollo della federazione DEVONO seguire procedure specifiche per:</p>
 <blockquote>
 <div><ul class="simple">
@@ -406,10 +546,10 @@ rm<span class="w"> </span>federation_entity.pem<span class="w"> </span>trust_anc
 </div></blockquote>
 </section>
 <section id="procedure-tecniche-di-uscita-dalla-federazione">
-<h2><span class="section-number">9.6. </span>Procedure Tecniche di Uscita dalla Federazione<a class="headerlink" href="#procedure-tecniche-di-uscita-dalla-federazione" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">9.7. </span>Procedure Tecniche di Uscita dalla Federazione<a class="headerlink" href="#procedure-tecniche-di-uscita-dalla-federazione" title="Link to this heading">¶</a></h2>
 <p>Per il contesto aziendale sui processi di uscita dalla federazione, vedere <a class="reference internal" href="onboarding-high-level.html#processi-di-uscita-e-rimozione-dalla-federazione"><span class="std std-ref">Processi di Uscita e Rimozione dalla Federazione</span></a>. Questa sezione copre le procedure di implementazione tecnica.</p>
 <section id="uscita-volontaria-disattivazione-tecnica">
-<h3><span class="section-number">9.6.1. </span>Uscita Volontaria - Disattivazione Tecnica<a class="headerlink" href="#uscita-volontaria-disattivazione-tecnica" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">9.7.1. </span>Uscita Volontaria - Disattivazione Tecnica<a class="headerlink" href="#uscita-volontaria-disattivazione-tecnica" title="Link to this heading">¶</a></h3>
 <blockquote>
 <div><ol class="arabic simple">
 <li><p><strong>Richiesta di Revoca del Certificato X.509</strong>: L'Entità DEVE inviare una richiesta di revoca del Certificato X.509 all'Autorità Federata con il motivo della revoca. La richiesta DEVE essere firmata con la Chiave Privata dell'Entità Federata corrispondente al Certificato X.509 che viene revocato per dimostrare la legittimità della richiesta di revoca.</p></li>
@@ -455,7 +595,7 @@ cG9saWN5MAoGCCqGSM49BAMCA0gAMEUCIQC9h3Y6hFgd7zUzZyBrQ3jJ8HmVF2Qa
 </div>
 </section>
 <section id="rimozione-da-parte-dell-organo-di-supervisione-implementazione-tecnica">
-<h3><span class="section-number">9.6.2. </span>Rimozione da Parte dell'Organo di Supervisione - Implementazione Tecnica<a class="headerlink" href="#rimozione-da-parte-dell-organo-di-supervisione-implementazione-tecnica" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">9.7.2. </span>Rimozione da Parte dell'Organo di Supervisione - Implementazione Tecnica<a class="headerlink" href="#rimozione-da-parte-dell-organo-di-supervisione-implementazione-tecnica" title="Link to this heading">¶</a></h3>
 <blockquote>
 <div><ol class="arabic simple">
 <li><p><strong>Revoca di Emergenza del Certificato X.509</strong>: L'Autorità Federata DEVE revocare immediatamente il Certificato X.509 con il codice di motivo appropriato (ad es., &quot;Key Compromise&quot;, &quot;Cessation of Operation&quot;).</p></li>
@@ -541,16 +681,21 @@ curl<span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wall
 <li><a class="reference internal" href="#migliori-pratiche-per-la-gestione-dei-certificati-x-509">9.4. Migliori Pratiche per la Gestione dei Certificati X.509</a><ul>
 <li><a class="reference internal" href="#integrazione-della-validazione-dei-certificati-x-509">9.4.1. Integrazione della Validazione dei Certificati X.509</a></li>
 <li><a class="reference internal" href="#diagnostica-e-risoluzione-dei-problemi">9.4.2. Diagnostica e Risoluzione dei Problemi</a></li>
-<li><a class="reference internal" href="#coordinamento-del-ciclo-di-vita-dei-certificati-x-509">9.4.3. Coordinamento del Ciclo di Vita dei Certificati X.509</a><ul>
-<li><a class="reference internal" href="#gestione-del-ciclo-di-vita-dell-entita">9.4.3.1. Gestione del Ciclo di Vita dell'Entità</a></li>
+<li><a class="reference internal" href="#coordinamento-del-ciclo-di-vita-dei-certificati-x-509">9.4.3. Coordinamento del Ciclo di Vita dei Certificati X.509</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#procedure-di-rotazione-delle-chiavi">9.5. Procedure di Rotazione delle Chiavi</a><ul>
+<li><a class="reference internal" href="#rotazione-delle-chiavi-superiori">9.5.1. Rotazione delle Chiavi Superiori</a></li>
+<li><a class="reference internal" href="#rotazione-delle-chiavi-subordinate">9.5.2. Rotazione delle Chiavi Subordinate</a><ul>
+<li><a class="reference internal" href="#gestione-del-ciclo-di-vita-dell-entita">9.5.2.1. Gestione del Ciclo di Vita dell'Entità</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#aggiornamenti-della-configurazione-tecnica">9.5. Aggiornamenti della Configurazione Tecnica</a></li>
-<li><a class="reference internal" href="#procedure-tecniche-di-uscita-dalla-federazione">9.6. Procedure Tecniche di Uscita dalla Federazione</a><ul>
-<li><a class="reference internal" href="#uscita-volontaria-disattivazione-tecnica">9.6.1. Uscita Volontaria - Disattivazione Tecnica</a></li>
-<li><a class="reference internal" href="#rimozione-da-parte-dell-organo-di-supervisione-implementazione-tecnica">9.6.2. Rimozione da Parte dell'Organo di Supervisione - Implementazione Tecnica</a></li>
+<li><a class="reference internal" href="#aggiornamenti-della-configurazione-tecnica">9.6. Aggiornamenti della Configurazione Tecnica</a></li>
+<li><a class="reference internal" href="#procedure-tecniche-di-uscita-dalla-federazione">9.7. Procedure Tecniche di Uscita dalla Federazione</a><ul>
+<li><a class="reference internal" href="#uscita-volontaria-disattivazione-tecnica">9.7.1. Uscita Volontaria - Disattivazione Tecnica</a></li>
+<li><a class="reference internal" href="#rimozione-da-parte-dell-organo-di-supervisione-implementazione-tecnica">9.7.2. Rimozione da Parte dell'Organo di Supervisione - Implementazione Tecnica</a></li>
 </ul>
 </li>
 </ul>
@@ -582,7 +727,7 @@ curl<span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wall
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 06/11/2025.
+      Ultimo aggiornamento 10/12/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
