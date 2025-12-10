@@ -328,6 +328,11 @@ eyJhbGciOiJFUzI1NiIs...9t2LQ
 <span class="w">    </span><span class="s2">&quot;MIICajCCAdOgAwIBAgIC...awz&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;MIICajCCAdOgAwIBAgIC...2w3&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;MIICajCCAdOgAwIBAgIC...sf2&quot;</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;x5c&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;MIIDqjCCApKgAwIBAgIESLNEvDA ...&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;MIICwzCCAasCCQCKVy9eKjvi+jA ...&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;MIIDTDCCAjSgAwIBAgIJAPlnQYH...&quot;</span>
 <span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
@@ -365,8 +370,7 @@ eyJhbGciOiJFUzI1NiIs...9t2LQ
 <span class="w">  </span><span class="nt">&quot;state&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3be39b69-6ac1-41aa-921b-3e6c07ddcb03&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://relying-party.example.org&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1672418465</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1672422065</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;request_uri_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;post&quot;</span>
+<span class="w">  </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1672422065</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -497,7 +501,7 @@ The request and its parameters are defined in Section 5 (Authorization Request) 
 </tr>
 </tbody>
 </table>
-<table class="longtable docutils align-default" id="id5">
+<span id="table-wallet-metadata-parameters"></span><table class="longtable docutils align-default" id="id5">
 <caption><span class="caption-number">Table 12.16 </span><span class="caption-text">Wallet Metadata Parameters</span><a class="headerlink" href="#id5" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
@@ -617,19 +621,19 @@ Furthermore, universal links offer fallback mechanisms, allowing the flow to con
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>alg</strong></p></td>
-<td><p>Algorithm used to sign the JWT, according to [<span class="target" id="index-4"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>]. It MUST be one of the supported algorithms in Section <a class="reference internal" href="algorithms.html#cryptographic-algorithms"><span class="std std-ref">Cryptographic Algorithms</span></a> and MUST NOT be set to <code class="docutils literal notranslate"><span class="pre">none</span></code> or to a symmetric algorithm (MAC) identifier (<a class="reference internal" href="test-plans-remote-presentation.html#remote-credential-verifier-test-matrix"><span class="std std-ref">RPR-104</span></a>).</p></td>
+<td><p>REQUIRED. Algorithm used to sign the JWT, according to [<span class="target" id="index-4"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>]. It MUST be one of the supported algorithms in Section <a class="reference internal" href="algorithms.html#cryptographic-algorithms"><span class="std std-ref">Cryptographic Algorithms</span></a> and MUST NOT be set to <code class="docutils literal notranslate"><span class="pre">none</span></code> or to a symmetric algorithm (MAC) identifier (<a class="reference internal" href="test-plans-remote-presentation.html#remote-credential-verifier-test-matrix"><span class="std std-ref">RPR-104</span></a>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>typ</strong></p></td>
-<td><p>Media Type of the JWT, as defined in [<span class="target" id="index-5"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>] and [<span class="target" id="index-6"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9101.html"><strong>RFC 9101</strong></a>]. It SHOULD be set to the value <code class="docutils literal notranslate"><span class="pre">oauth-authz-req+jwt</span></code> (<a class="reference internal" href="test-plans-remote-presentation.html#remote-credential-verifier-test-matrix"><span class="std std-ref">RPR-105</span></a>).</p></td>
+<td><p>REQUIRED. Media Type of the JWT, as defined in [<span class="target" id="index-5"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>] and [<span class="target" id="index-6"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9101.html"><strong>RFC 9101</strong></a>]. It SHOULD be set to the value <code class="docutils literal notranslate"><span class="pre">oauth-authz-req+jwt</span></code> (<a class="reference internal" href="test-plans-remote-presentation.html#remote-credential-verifier-test-matrix"><span class="std std-ref">RPR-105</span></a>).</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>kid</strong></p></td>
-<td><p>Key ID of the public key needed to verify the JWT signature, as defined in [<span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>]. REQUIRED when <code class="docutils literal notranslate"><span class="pre">trust_chain</span></code> is used.</p></td>
+<td><p>REQUIRED. Key ID of the public key needed to verify the JWT signature, as defined in [<span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>trust_chain</strong></p></td>
-<td><p>CONDITIONAL. REQUIRED when the <code class="docutils literal notranslate"><span class="pre">client_id</span></code> prefix used in the request is set with <code class="docutils literal notranslate"><span class="pre">openid-federation</span></code>. It is a sequence of Entity Statements that composes the Trust Chain related to the Relying Party, as defined in <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Section 4.3 <em>Trust Chain Header Parameter</em>.</p></td>
+<td><p>OPTIONAL. It is a sequence of Entity Statements that composes the Trust Chain related to the Relying Party, as defined in <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Section 4.3 <em>Trust Chain Header Parameter</em>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>x5c</strong></p></td>
-<td><p>CONDITIONAL. REQUIRED when <code class="docutils literal notranslate"><span class="pre">client_id</span></code> uses the <code class="docutils literal notranslate"><span class="pre">x509_hash</span></code> prefix; otherwise <code class="docutils literal notranslate"><span class="pre">kid</span></code> with <code class="docutils literal notranslate"><span class="pre">jwks</span></code> is used. Contains the Relying Party’s leaf X.509 certificate (and optionally intermediate certificates), used to verify the JWT signature with the public key in the Relying Party’s certificate as defined in <span class="target" id="index-8"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>. The Relying Party’s certificate in <code class="docutils literal notranslate"><span class="pre">x5c</span></code> MUST assert Relying Party identity information sufficient to bind the network endpoints referenced by the presentation flow. In particular, the endpoints used in the Authorization Request and Authorization Response (e.g., <code class="docutils literal notranslate"><span class="pre">response_uri</span></code>, <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>) MUST correspond to identity information contained in the Relying Party’s certificate (for example, a URI-type SAN for full-URI matching or a DNSName SAN for host-name matching).</p></td>
+<td><p>REQUIRED. Contains the X.509 certificate chain about the Relying Party, excluding the Trust Anchor certificate, used to verify the JWT signature with the public key in the Relying Party’s certificate as defined in <span class="target" id="index-8"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>. The Relying Party’s certificate in <code class="docutils literal notranslate"><span class="pre">x5c</span></code> asserts the Relying Party identity information along with the network endpoints used in the presentation flow, including the endpoints Authorization Request and Response endpoints (<code class="docutils literal notranslate"><span class="pre">response_uri</span></code> and <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>). All the endpoints used in the presentation flow by a Relying Party MUST be bound to the FQDN and any further webpath provided in the Relying Party’s certificate, in the form of URI-type SAN for full-URI matching, or a DNSName SAN for host-name matching.</p></td>
 </tr>
 </tbody>
 </table>
@@ -650,11 +654,11 @@ Furthermore, universal links offer fallback mechanisms, allowing the flow to con
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>client_id</strong></p></td>
-<td><p>Unique Identifier of the Relying Party.</p></td>
+<td><p>REQUIRED. Unique Identifier of the Relying Party.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>client_metadata</strong></p></td>
 <td><dl class="simple">
-<dt>A JSON object containing the Relying Party metadata values, that SHOULD include the following parameters:</dt><dd><ul class="simple">
+<dt>OPTIONAL. A JSON object containing the Relying Party metadata values, that SHOULD include the following parameters:</dt><dd><ul class="simple">
 <li><p><strong>vp_formats_supported</strong>. Used by the Wallet Instance to determine the supported Verifiable Presentation formats.</p></li>
 <li><p><strong>encrypted_response_enc_values_supported</strong>. JSON array listing the supported JWE <code class="docutils literal notranslate"><span class="pre">enc</span></code> algorithms for encrypted Authorization Responses in <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code>.</p></li>
 <li><p><strong>jwks</strong>. JSON Web Key Set used by the Wallet Instance for encrypting the Authorization Response or for key agreement. Keys contained in this set are request-specific and identified by their <code class="docutils literal notranslate"><span class="pre">kid</span></code> value.</p></li>
@@ -665,14 +669,14 @@ Furthermore, universal links offer fallback mechanisms, allowing the flow to con
 </td>
 </tr>
 <tr class="row-even"><td><p><strong>response_mode</strong></p></td>
-<td><p>It MUST be set to <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code> (<a class="reference internal" href="test-plans-remote-presentation.html#remote-credential-verifier-test-matrix"><span class="std std-ref">RPR-106</span></a>).</p></td>
+<td><p>REQUIRED. It MUST be set to <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code> (<a class="reference internal" href="test-plans-remote-presentation.html#remote-credential-verifier-test-matrix"><span class="std std-ref">RPR-106</span></a>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>dcql_query</strong></p></td>
-<td><p>Object representing a request for a presentation of Credentials, according to the DCQL query language defined in Section 6 of <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>.</p></td>
+<td><p>REQUIRED. Object representing a request for a presentation of Credentials, according to the DCQL query language defined in Section 6 of <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>transaction_data</strong></p></td>
 <td><dl class="simple">
-<dt>An optional non-empty array of JSON objects, each describing a transaction that the Relying Party requests the User to authorize. Each transaction object includes:</dt><dd><ul class="simple">
+<dt>OPTIONAL. Non-empty array of JSON objects, each describing a transaction that the Relying Party requests the User to authorize. Each transaction object includes:</dt><dd><ul class="simple">
 <li><p><strong>type</strong>.  String that identifies the transaction data type.</p></li>
 <li><p><strong>credential_ids</strong>. Array referencing one or more Credentials from the <code class="docutils literal notranslate"><span class="pre">dcql_query</span></code> that can authorize the transaction.</p></li>
 </ul>
@@ -681,34 +685,31 @@ Furthermore, universal links offer fallback mechanisms, allowing the flow to con
 </td>
 </tr>
 <tr class="row-odd"><td><p><strong>transaction_data_hashes_alg</strong></p></td>
-<td><p>An optional array of of strings, each representing a hash algorithm identifier, corresponding to a hash algorithm name listed in the <a class="reference external" href="https://www.iana.org/assignments/named-information/named-information.xhtml#hash-alg">IANA</a>.  One of these algorithms MUST be used to calculate the hashes in the <code class="docutils literal notranslate"><span class="pre">transaction_data_hashes</span></code> response parameter.  If omitted, the default hash algorithm is <code class="docutils literal notranslate"><span class="pre">sha-256</span></code>.</p></td>
+<td><p>OPTIONAL. Array of strings, each representing a hash algorithm identifier, corresponding to a hash algorithm name listed in the <a class="reference external" href="https://www.iana.org/assignments/named-information/named-information.xhtml#hash-alg">IANA</a>.  One of these algorithms MUST be used to calculate the hashes in the <code class="docutils literal notranslate"><span class="pre">transaction_data_hashes</span></code> response parameter.  If omitted, the default hash algorithm is <code class="docutils literal notranslate"><span class="pre">sha-256</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>response_type</strong></p></td>
-<td><p>It MUST be set to <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> (<a class="reference internal" href="test-plans-remote-presentation.html#remote-credential-verifier-test-matrix"><span class="std std-ref">RPR-107</span></a>).</p></td>
+<td><p>REQUIRED. It MUST be set to <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> (<a class="reference internal" href="test-plans-remote-presentation.html#remote-credential-verifier-test-matrix"><span class="std std-ref">RPR-107</span></a>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>wallet_nonce</strong></p></td>
-<td><p>String value used to mitigate replay attacks of the response, as defined in Section 5.10 (Request URI Method) of <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>. It MUST be present if previously provided by Wallet Instance (<a class="reference internal" href="test-plans-remote-presentation.html#remote-credential-verifier-test-matrix"><span class="std std-ref">RPR-94</span></a>).</p></td>
+<td><p>REQUIRED if previously provided by Wallet Instance (<a class="reference internal" href="test-plans-remote-presentation.html#remote-credential-verifier-test-matrix"><span class="std std-ref">RPR-94</span></a>). String value used to mitigate replay attacks of the response, as defined in Section 5.10 (Request URI Method) of <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>response_uri</strong></p></td>
-<td><p>The Response URI to which the Wallet Instance MUST send the Authorization Response using an HTTP request using the method POST (<a class="reference internal" href="test-plans-remote-presentation.html#remote-credential-verifier-test-matrix"><span class="std std-ref">RPR-109</span></a>).</p></td>
+<td><p>REQUIRED. The Response URI to which the Wallet Instance MUST send the Authorization Response using an HTTP request using the method POST (<a class="reference internal" href="test-plans-remote-presentation.html#remote-credential-verifier-test-matrix"><span class="std std-ref">RPR-109</span></a>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>nonce</strong></p></td>
-<td><p>Fresh cryptographically random number with sufficient entropy, which length MUST be at least 32 digits (<a class="reference internal" href="test-plans-remote-presentation.html#remote-credential-verifier-test-matrix"><span class="std std-ref">RPR-110</span></a>).</p></td>
+<td><p>REQUIRED. Fresh cryptographically random number with sufficient entropy, which length MUST be at least 32 digits (<a class="reference internal" href="test-plans-remote-presentation.html#remote-credential-verifier-test-matrix"><span class="std std-ref">RPR-110</span></a>).</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>state</strong></p></td>
-<td><p>Unique identifier of the Authorization Request. It is RECOMMENDED to include this parameter, and the value SHOULD be opaque to the Wallet Instance.</p></td>
+<td><p>RECOMMENDED. Unique identifier of the Authorization Request, its value SHOULD be opaque to the Wallet Instance.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>iss</strong></p></td>
-<td><p>The entity that has issued the JWT. It will be populated with the Relying Party client id.</p></td>
+<td><p>REQUIRED. The entity that has issued the JWT. It will be populated with the Relying Party client id.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>iat</strong></p></td>
-<td><p>Unix Timestamp, representing the time at which the JWT was issued.</p></td>
+<td><p>REQUIRED. Unix Timestamp, representing the time at which the JWT was issued.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>exp</strong></p></td>
-<td><p>Unix Timestamp, representing the expiration time on or after which the JWT MUST NOT be valid anymore (<a class="reference internal" href="test-plans-remote-presentation.html#remote-credential-verifier-test-matrix"><span class="std std-ref">RPR-111</span></a>).</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>request_uri_method</strong></p></td>
-<td><p>String determining the HTTP method to be used with the <cite>request_uri</cite> endpoint to provide the Wallet Instance metadata to the Relying Party. The value is case-insensitive and can be set to: <cite>get</cite> or <cite>post</cite>. The GET method, as defined in [&#64;RFC9101], involves the Wallet Instance sending a GET request to retrieve a Request Object. The POST method involves the Wallet Instance requesting the creation of a new Request Object by sending an HTTP POST request, with its metadata, to the request URI of the Relying Party.</p></td>
+<td><p>REQUIRED. Unix Timestamp, representing the expiration time on or after which the JWT MUST NOT be valid anymore (<a class="reference internal" href="test-plans-remote-presentation.html#remote-credential-verifier-test-matrix"><span class="std std-ref">RPR-111</span></a>).</p></td>
 </tr>
 </tbody>
 </table>
@@ -1153,7 +1154,7 @@ The request url SHOULD include a parameter with a random value. The HTTP respons
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 09/12/2025.
+      Last updated on 10/12/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

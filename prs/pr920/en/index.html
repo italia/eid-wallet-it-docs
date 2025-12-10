@@ -368,10 +368,15 @@
 <li class="toctree-l3"><a class="reference internal" href="x5c-evaluation.html#x-509-certificate-lifecycle-coordination">9.4.3. X.509 Certificate Lifecycle Coordination</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="x5c-evaluation.html#technical-configuration-updates">9.5. Technical Configuration Updates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="x5c-evaluation.html#technical-federation-exit-procedures">9.6. Technical Federation Exit Procedures</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="x5c-evaluation.html#voluntary-exit-technical-deactivation">9.6.1. Voluntary Exit - Technical Deactivation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="x5c-evaluation.html#supervisory-body-removal-technical-implementation">9.6.2. Supervisory Body Removal - Technical Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="x5c-evaluation.html#key-rotation-procedures">9.5. Key Rotation Procedures</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="x5c-evaluation.html#superior-key-rotation">9.5.1. Superior Key Rotation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="x5c-evaluation.html#subordinate-key-rotation">9.5.2. Subordinate Key Rotation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="x5c-evaluation.html#technical-configuration-updates">9.6. Technical Configuration Updates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="x5c-evaluation.html#technical-federation-exit-procedures">9.7. Technical Federation Exit Procedures</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="x5c-evaluation.html#voluntary-exit-technical-deactivation">9.7.1. Voluntary Exit - Technical Deactivation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="x5c-evaluation.html#supervisory-body-removal-technical-implementation">9.7.2. Supervisory Body Removal - Technical Implementation</a></li>
 </ul>
 </li>
 </ul>
@@ -408,16 +413,22 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">11. Digital Credential Management</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="credential-data-model.html">11.1. Digital Credential Data Model</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="credential-data-model.html#sd-jwt-vc-credential-format">11.1.1. SD-JWT-VC Credential Format</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-data-model.html#mdoc-cbor-credential-format">11.1.2. mdoc-CBOR Credential Format</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-data-model.html#cross-format-credential-parameters-mapping">11.1.3. Cross-Format Credential Parameters Mapping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-data-model.html#format-agnostic-credential-metadata-attributes">11.1.1. Format-Agnostic Credential Metadata Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-data-model.html#sd-jwt-vc-credential-format">11.1.2. SD-JWT-VC Credential Format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-data-model.html#mdoc-cbor-credential-format">11.1.3. mdoc-CBOR Credential Format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-data-model.html#cross-format-credential-parameters-mapping">11.1.4. Cross-Format Credential Parameters Mapping</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="credential-revocation.html">11.2. Digital Credential Lifecycle</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#credential-transitions">11.2.1. Credential Transitions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#digital-credential-lifecycle-in-a-batch">11.2.2. Digital Credential Lifecycle in a Batch</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#credential-lifecycle-management">11.2.3. Credential Lifecycle Management</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#validity-verification-mechanisms">11.2.4. Validity Verification Mechanisms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credential-data-model-pid.html">11.2. PID Data Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="credential-data-model-pid.html#pid-data-model-in-sd-jwt-vc-format">11.2.1. PID Data Model in SD-JWT VC Format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-data-model-pid.html#pid-data-model-in-mdoc-cbor-format">11.2.2. PID Data Model in mdoc-CBOR Format</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="credential-revocation.html">11.3. Digital Credential Lifecycle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#credential-transitions">11.3.1. Credential Transitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#digital-credential-lifecycle-in-a-batch">11.3.2. Digital Credential Lifecycle in a Batch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#credential-lifecycle-management">11.3.3. Credential Lifecycle Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#validity-verification-mechanisms">11.3.4. Validity Verification Mechanisms</a></li>
 </ul>
 </li>
 </ul>
@@ -610,7 +621,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 09/12/2025.
+      Last updated on 10/12/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

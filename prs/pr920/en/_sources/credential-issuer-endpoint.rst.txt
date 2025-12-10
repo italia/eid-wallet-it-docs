@@ -14,7 +14,7 @@ Metadata Endpoints
 
 The Credential Issuers MUST provide an Entity Configuration through the ``/.well-known/openid-federation`` endpoint, according to Section :ref:`trust-infrastructure:Entity Configuration`. Technical details are provided in Section :ref:`credential-issuer-entity-configuration:Credential Issuer Entity Configuration`.
 
-Alternatively the Credential Issuer's Metadata can be retrieved using the Credential Issuer Identifier. The JSON document MUST be available through the ``/.well-known/openid-credential-issuer`` endpoint as defined in Section 12.2 of `OpenID4VCI`_.
+Alternatively the Credential Issuer's Metadata can be retrieved using the Credential Issuer Identifier. The Metadata document in JSON or JWT format MUST be made available through the ``/.well-known/openid-credential-issuer`` endpoint as defined in Section 12.2.2 of `OpenID4VCI`_.
 
 The ``Accept-Language`` header in the HTTP GET request can be used to indicate the language(s) preferred. In this case the Credential Issuer can send a subset of the metadata containing internationalized display data for one or all of the requested languages and indicate returned languages using the HTTP ``Content-Language`` Header.
 
@@ -28,7 +28,7 @@ Below is a non-normative example.
     Accept-Language: it-IT, it;q=0.9
 
 
-The Credential Issuer MUST respond with HTTP Status Code 200 and return the Credential Issuer Metadata containing the parameters defined in :ref:`credential-issuer-metadata:Metadata for openid_credential_issuer` using an unsigned JSON document with the media type *application/json*.
+The Credential Issuer MUST respond with HTTP Status Code 200 and return the Credential Issuer Metadata containing the parameters defined in Section 12.2.3 of `OpenID4VCI`_ in addition to those defined in :ref:`credential-issuer-metadata:Metadata for openid_credential_issuer` as an unsigned JSON document using the media type *application/json* or a signed JSON Web Token using the media type *application/jwt*.
 
 The ``authorization_servers`` entries of the Credential Issuer Metadata can be used to obtain the Authorization Server metadata from the Oauth Authorization Server ``/.well-known/oauth-authorization-server`` as defined in Section 3 of :rfc:`8414`. In case the ``authorization_servers`` parameter is omitted, the Credential Issuer's identifier can be used to retrieve the Authorization Server metadata.
 

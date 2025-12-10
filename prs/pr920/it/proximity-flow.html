@@ -197,7 +197,7 @@ Durante la sottofase di comunicazione, l'Istanza di Relying Party ha l'opzione d
 <ul class="simple">
 <li><p><em>Flusso di Recupero del Dispositivo Supervisionato</em> dove un supervisore umano supervisiona il processo di verifica in persona, in contrasto con il <em>flusso non supervisionato</em> dove la verifica potrebbe avvenire attraverso sistemi automatizzati senza supervisione umana (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_095</span></a>).</p></li>
 <li><p><em>Autenticazione dell'Istanza di Relying Party</em> seguendo i meccanismi definiti nella <a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> per il <em>reader authentication</em> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_098</span></a>).</p></li>
-<li><p><em>Tipo di Documento</em> domestico e <em>Namespace</em> definiti in questa specifica tecnica in aggiunta a quelli già definiti nell'<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> per l'mDL (vedi <a class="reference internal" href="credential-data-model.html#attestato-elettronico-in-formato-mdoc-cbor"><span class="std std-ref">Attestato Elettronico in formato mdoc-CBOR</span></a> per maggiori dettagli) (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_099</span></a>).</p></li>
+<li><p><em>Tipo di Documento</em> domestico e <em>Namespace</em> definiti in questa specifica tecnica in aggiunta a quelli già definiti nell'<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> per l'mDL (vedi <span class="xref std std-ref">credential-data-model:Attestato Elettronico in formato mdoc-CBOR</span> per maggiori dettagli) (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_099</span></a>).</p></li>
 <li><p><em>Validazione dell'Istanza del Wallet</em> attraverso la Wallet App Attestation.</p></li>
 </ul>
 <p>La tabella seguente mostra le tecnologie di <em>Device Engagement</em> supportate  (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_097</span></a>), specificando quali sono obbligatorie.</p>
@@ -1034,7 +1034,7 @@ Ogni Richiesta mdoc DEVE essere conforme alla seguente struttura e DEVE includer
 <ul>
 <li><p><strong>itemsRequest</strong>. Struttura <cite>ItemsRequest</cite> codificata CBOR, formattata come:</p>
 <ul>
-<li><p><strong>docType</strong> <em>(tstr)</em>. Il tipo di documento richiesto. Vedere <a class="reference internal" href="credential-data-model.html#attestato-elettronico-in-formato-mdoc-cbor"><span class="std std-ref">Attestato Elettronico in formato mdoc-CBOR</span></a>.</p></li>
+<li><p><strong>docType</strong> <em>(tstr)</em>. Il tipo di documento richiesto. Vedere <span class="xref std std-ref">credential-data-model:Attestato Elettronico in formato mdoc-CBOR</span>.</p></li>
 <li><p><strong>nameSpaces</strong> <em>(map)</em>. Una mappa di identificatori di namespace a <em>DataElements</em> richiesti.</p>
 <p>Ogni voce in <cite>DataElements</cite> include:</p>
 <ul class="simple">
@@ -1109,7 +1109,7 @@ Ogni Richiesta mdoc DEVE essere conforme alla seguente struttura e DEVE includer
 <td><p><em>(tstr)</em>. identificativo del tipo di documento. Ad esempio, per un mDL, il valore DEVE essere <code class="docutils literal notranslate"><span class="pre">org.iso.18013.5.1.mDL</span></code> (<a class="reference internal" href="test-plans-proximity-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-prossimita"><span class="std std-ref">PPR-010</span></a>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>issuerSigned</strong></p></td>
-<td><p><em>(bstr)</em>. Contiene la struttura <cite>IssuerNameSpaces</cite>, che include elementi dati firmati dal Fornitore di Attestati Elettronici, e la struttura <cite>issuerAuth</cite>, che garantisce la loro autenticità e integrità utilizzando il Mobile Security Object (MSO). Vedere <a class="reference internal" href="credential-data-model.html#attestato-elettronico-in-formato-mdoc-cbor"><span class="std std-ref">Attestato Elettronico in formato mdoc-CBOR</span></a>.</p></td>
+<td><p><em>(bstr)</em>. Contiene la struttura <cite>IssuerNameSpaces</cite>, che include elementi dati firmati dal Fornitore di Attestati Elettronici, e la struttura <cite>issuerAuth</cite>, che garantisce la loro autenticità e integrità utilizzando il Mobile Security Object (MSO). Vedere <span class="xref std std-ref">credential-data-model:Attestato Elettronico in formato mdoc-CBOR</span>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>deviceSigned</strong></p></td>
 <td><p><em>(bstr)</em>. Contiene la struttura <cite>DeviceNameSpaces</cite> (elementi dati firmati dall'Istanza del Wallet), e la struttura <cite>deviceAuth</cite>, che include i dati di autenticazione firmati dall'Istanza del Wallet. Vedere la tabella sottostante per dettagli.</p></td>
@@ -1171,7 +1171,7 @@ Ogni Richiesta mdoc DEVE essere conforme alla seguente struttura e DEVE includer
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Vedere <a class="reference internal" href="credential-data-model.html#attestato-elettronico-in-formato-mdoc-cbor"><span class="std std-ref">Attestato Elettronico in formato mdoc-CBOR</span></a> per il significato degli acronimi di tipo CBOR.</p>
+<p>Vedere <span class="xref std std-ref">credential-data-model:Attestato Elettronico in formato mdoc-CBOR</span> per il significato degli acronimi di tipo CBOR.</p>
 </div>
 </section>
 </section>
@@ -1243,7 +1243,7 @@ Ogni Richiesta mdoc DEVE essere conforme alla seguente struttura e DEVE includer
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 09/12/2025.
+      Ultimo aggiornamento 10/12/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

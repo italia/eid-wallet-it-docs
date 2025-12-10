@@ -422,6 +422,8 @@ Below are the main acronyms used in the document:
     - Anagrafe Nazionale della Popolazione Residente (Italian National Registry of the Resident Population)
   * - **API**
     - Application Programming Interface
+  * - **ARF HLR**
+    - EUDI Wallet Architecture and Reference Framework High Level Requirements
   * - **CAB**
     - Conformity Assessment Body
   * - **CIE**
