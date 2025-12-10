@@ -547,7 +547,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_118
     - Modello di Dati e ciclo di vita, Emissione, Interoperabilità
     - Formati di Credenziali (Q)EAA
-    - Le (Q)EAA sono rilasciate a un'Istanza del Wallet in formato dati SD-JWT-VC o mdoc-CBOR.
+    - Le (Q)EAA sono rilasciate a un'Istanza del Wallet in formato dati SD-JWT VC o mdoc-CBOR.
   * - CI_119
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Formato Credenziale Digitale PID/(Q)EAA
@@ -623,7 +623,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_136
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Struttura Oggetto JSON Documento Metadati
-    - Il documento *Type Metadata* è un oggetto JSON contenente i parametri nella :ref:`Tabella del Type Metadata dell'Attestato Elettronico <table_metadata_type_json_obj>`.
+    - Il documento *Type Metadata*, se presente, è un oggetto JSON contenente i parametri definiti nella Sezione 6.2 di `SD-JWT-VC`_.
   * - CI_137
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Claim PID Aggiuntivi

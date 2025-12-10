@@ -362,6 +362,7 @@ The request and its parameters are defined in Section 5 (Authorization Request) 
      - RECOMMENDED. String used by Wallet Instance to prevent replay of the Relying Party's responses. 
 
 
+.. _table_wallet_metadata_parameters:
 .. list-table:: Wallet Metadata Parameters
    :class: longtable
    :widths: 20 80

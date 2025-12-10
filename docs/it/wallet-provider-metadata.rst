@@ -25,9 +25,12 @@ L'oggetto JSON dei metadati la cui chiave è ``wallet_provider`` contiene i segu
     * - ``signed_jwks_uri``
       - CONDIZIONALE. URL che fa riferimento a un JWT firmato avente come payload il documento JWK Set dell'Entità per quel Tipo di Entità. Questo URL DEVE utilizzare lo schema https. Il JWT DEVE essere firmato utilizzando una Chiave di Entità di Federazione. Una risposta positiva dall'URL DEVE utilizzare il codice di stato HTTP 200 con il Content Type ``application/jwk-set+jwt``. DEVE essere presente se ``jwks`` e ``jwks_uri`` sono assenti.
       - `OID-FED`_.
-    * - **logo_uri**
-      - URL del logo dell’entità che verrà mostrato all’Utente durante le interazioni con l’istanza del Wallet. Il MIME type del logo DEVE essere ``application/svg``.
+    * - ``logo_uri``
+      - OBBLIGATORIO. URL del logo dell’entità che verrà mostrato all’Utente durante le interazioni con l’istanza del Wallet. Il MIME type del logo DEVE essere ``application/svg``.
       - `OID-FED`_ Sezione 5.2.2.
+    * - ``wallet_metadata``
+      - OBBLIGATORIO. Contiene i parametri relativi ai metadati del Wallet come definiti nella :ref:`Tabella dei parametri dei metadati del portafoglio <table_wallet_metadata_parameters>` e il parametro ``credential_offer_endpoint``.
+      - `OpenID4VP`_ Sezione 10.1.
 
 Di seguito è riportato un esempio non normativo della Entity Configuration per un Fornitore di Wallet.
 
@@ -68,6 +71,28 @@ Di seguito è riportato un esempio non normativo della Entity Configuration per 
           }
         ]
       },
+      "wallet_metadata": {
+        "authorization_endpoint": "https://wallet-solution.digital-strategy.europa.eu/authorization",
+        "credential_offer_endpoint": "https://wallet-solution.digital-strategy.europa.eu/credential_offer",
+        "response_types_supported": [
+          "vp_token"
+        ],
+        "response_modes_supported": [
+          "query"
+        ],
+        "vp_formats_supported": {
+          "dc+sd-jwt": {
+            "sd-jwt_alg_values": [
+              "ES256",
+              "ES384"
+            ]
+          }
+        },
+        "request_object_signing_alg_values_supported": [
+          "ES256"
+        ],
+        "client_id_prefixes_supported": ["openid_federation", "x509_hash"]
+      }
     },
     "federation_entity": {
       "organization_name": "IT-Wallet Provider",

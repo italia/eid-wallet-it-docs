@@ -362,6 +362,7 @@ La richiesta e i suoi parametri sono definiti nella Sezione 5 (Authorization Req
      - RACCOMANDATO. Stringa utilizzata dall'Istanza del Wallet per prevenire il replay delle risposte della Relying Party. 
 
 
+.. _table_wallet_metadata_parameters:
 .. list-table:: Parametri dei metadata del Wallet
    :class: longtable
    :widths: 20 80
