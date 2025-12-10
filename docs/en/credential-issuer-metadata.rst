@@ -81,8 +81,6 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
     - URL of the Credential endpoint. See `OpenID4VCI`_ Section 12.2.4.
   * - **nonce_endpoint**
     - URL of the Nonce Endpoint, as defined in Section 7 of `OpenID4VCI`_.
-  * - **revocation_endpoint**
-    - URL of the revocation endpoint. See :rfc:`8414#section-2`.
   * - **deferred_credential_endpoint**
     - URL of the deferred Credential endpoint, as defined in Section 12.2.4 of `OpenID4VCI`_.
   * - **status_assertion_endpoint**
@@ -96,10 +94,11 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
 
         - **name**: String value of a display name for the Credential Issuer.
         - **locale**: String value that identifies the language of this object represented as a language tag taken from values defined in *BCP47* :rfc:`5646`. There MUST be only one object for each language identifier.
-        - **logo**: Object with information about the logo of the Credential Issuer. The following parameters MUST be included:
+        - **logo**: Object with information about the logo of the Credential Issuer. The following parameters are included:
 
-              - **uri**: URL of the entity's logo that will be shown to the User during Wallet Instance interactions. The logo mime type MUST be ``application/svg``.
-              - **uri#integrity**: REQUIRED. integrity metadata as defined in Section 3 of `W3C-SRI`_.
+              - **uri**: REQUIRED. URL of the entity's logo that will be shown to the User during Wallet Instance interactions. The logo mime type MUST be ``application/svg``.
+              - **uri#integrity**: OPTIONAL. integrity metadata as defined in Section 3 of `W3C-SRI`_.
+              - **alt_text**: OPTIONAL. String value of the alternative text for the logo image.
 
   * - **credential_configurations_supported**
     - JSON object that outlines the details of the Digital Credentials supported by the Credential Issuer. It includes a list of name/value pairs, where each name uniquely identifies a specific supported Digital Credential. This identifier is utilized to inform the Wallet Instance which Digital Credential can be provided by the Credential Issuer. The associated value within the object MUST contain metadata specific to that Digital Credential, as defined following. See `OpenID4VCI`_ Sections 12.2.4 and A.3.2.
@@ -108,7 +107,7 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
         - **scope**: JSON String identifying the supported *scope* value. The Wallet Instance MUST use this value in the Pushed Authorization Request. Scope values MUST be the entire set or a subset of the *scope* values in the *scopes_supported* parameter of the Authorization Server. If the Credential is included in the Digital Credentials Catalog the *scope* value MUST match with the ``credential_type`` parameter defined in :ref:`registry:Digital Credentials Catalog Structure` or in the :ref:`registry:Schema Registry`. [See `OpenID4VCI`_ Section 12.2.4].
         - **cryptographic_binding_methods_supported**: JSON Array of case sensitive strings that identify the representation of the cryptographic key material that the issued Credential is bound to. The Credential Issuer MUST support the value "*jwk*" for "dc+sd-jwt" format and "*cose_key*" for "mso_mdoc".
         - **credential_signing_alg_values_supported**: JSON Array of case sensitive strings that identify the algorithms that the Credential Issuer MUST support to sign the issued Credential. See Section :ref:`algorithms:cryptographic algorithms` for more details.
-        - **proof_types_supported**: JSON object which provides detailed information about the key proof(s) supported by the Credential Issuer. It consists of a list of name/value pairs, where each name uniquely identifies a supported proof type. The Credential Issuer MUST support at least "*jwt*" as defined in `OpenID4VCI`_ Appendix F.1. The value associated with each name/value pair is a JSON object containing metadata related to the key proof(s). The Credential Issuer MUST support at least the parameter **proof_signing_alg_values_supported** which MUST be a JSON Array of case sensitive strings that identify the supported algorithms (see Section :ref:`algorithms:cryptographic algorithms` for more details about the supported algorithms).
+        - **proof_types_supported**: JSON object which provides detailed information about the key proof(s) supported by the Credential Issuer. It consists of a list of name/value pairs, where each name uniquely identifies a supported proof type. The Credential Issuer MUST support at least "*jwt*" as defined in `OpenID4VCI`_ Appendix F.1. The value associated with each name/value pair is a JSON object containing metadata related to the key proof(s). The Credential Issuer MUST support at least the parameter **proof_signing_alg_values_supported** which MUST be a JSON Array of case sensitive strings that identify the supported algorithms (see Section :ref:`algorithms:cryptographic algorithms` for more details about the supported algorithms). The Credential Issuer MAY support the parameter **key_attestations_required** as defined in Section 12.2 of `OpenID4VCI`_.
         - **vct**: REQUIRED only if ``format`` is set to "*dc+sd-jwt*". As defined in [:ref:`credential-data-model:SD-JWT-VC Credential Format`].
         - **doctype**: REQUIRED only if ``format`` is set to "*mso_mdoc*". As defined in [:ref:`credential-data-model:mDoc-CBOR Credential Format`].
         - **credential_metadata**: REQUIRED. Object containing information relevant to the usage and display of issued Credentials. The parameters that MUST be included are
@@ -151,13 +150,13 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
   * - **jwks**
     - JSON Web Key Set document, passed by value, containing the protocol specific keys for the Credential Issuer. See `OID-FED`_ Section 5.2.1 and `JWK`_.
   * - **trust_frameworks_supported**
-    - JSON array containing all supported trust frameworks. See `OIDC-IDA`_ Section 8. The supported values are:
+    - JSON array containing all supported trust frameworks. The supported values are:
         - *it_cie*: CIE id trust framework supported.
         - *it_wallet*: IT-Wallet trust framework supported.
         - *eudi_wallet*: Member State EUDI Wallet trust framework supported.
         - *it_l2+document_proof*: eID Substantial Authentication with MRTD Verification protocol supported.
   * - **evidence_supported**
-    - JSON array containing all types of identity evidence supported by the Credential Issuer. See `OIDC-IDA`_ Section 8. The supported value is ``vouch``.
+    - JSON array containing all types of identity evidence supported by the Credential Issuer. The supported value is ``vouch``.
   * - **credential_hash_alg_supported**
     - The supported algorithm used by the Wallet Instance to hash the Digital Credential for which the Status Assertion is requested. It is RECOMMENDED to use *sha-256*. (See `OAUTH-STATUS-ASSERTION`_ Section 11.1.).
   * - **batch_credential_issuance**
