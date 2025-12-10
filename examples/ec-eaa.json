@@ -933,9 +933,6 @@
                 "it_cie",
                 "it_wallet",
                 "eudi_wallet"
-            ],
-            "evidence_supported": [
-                "vouch"
             ]
         },
         "openid_credential_verifier": {
