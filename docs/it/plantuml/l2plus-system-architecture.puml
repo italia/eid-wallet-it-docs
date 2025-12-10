@@ -14,7 +14,7 @@ HIDE_STEREOTYPE()
 
 title Architettura L2+ Autenticazione eID Substantial con Verifica MRTD
 
-Component_Ext(wallet, "Istanza del Wallet", "App Mobile", "Gestisce richiesta PID basata sullo stack standard tecnologico IT-Wallet. Fornisce **capacità crittografiche per lettura Documento Elettronico MRT/IAS** (ICAO 9303, BSI-03110)",$sprite="wallet")
+Component_Ext(wallet, "Istanza del Wallet", "App Mobile", "Gestisce richiesta PID basata sullo stack standard tecnologico IT-Wallet. Fornisce **capacità crittografiche per lettura Documento Elettronico MRTD/IAS** (ICAO 9303, BSI-03110)",$sprite="wallet")
 
 Boundary(issuer, "Provider PID") {
     Boundary(multi_step_authz, "Sistema Autenticazione eID Substantial con Verifica MRTD", "Orchestra flusso autenticazione multi-step e identity proofing remoto") {
