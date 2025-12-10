@@ -1,0 +1,43 @@
+@startuml e-Service Usage
+title e-Service Usage
+
+autonumber
+
+box **Consumer** #Ivory
+  participant "**OAuth Client**" as CF
+end box
+
+box **PDND** #Azure
+  participant "**OAuth Authorization Server**" as AS
+end box
+
+box **Provider** #HoneyDew
+  participant "**OAuth Resource Server**" as RS
+end box
+
+CF->CF:Prepare JWT with signature (""Signature"")
+
+CF->CF: Create DPoP proof
+
+CF->RS: Data Request with Voucher
+
+rnote over RS #LightGreen
+  Check ""DPoP""
+endrnote
+
+rnote over RS #LightGreen
+  Check ""access_token""
+endrnote
+
+opt Only with ""AUDIT_REST_02""
+  rnote over RS #LightGreen
+    Check ""TrackingEvidence""
+  endrnote
+end
+
+rnote over RS #LightGreen
+  Check ""Signature""
+endrnote
+
+RS-->CF: Requested data
+@enduml

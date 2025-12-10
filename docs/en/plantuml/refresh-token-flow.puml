@@ -1,0 +1,14 @@
+@startuml Refresh Token Flow
+autonumber
+
+participant "Wallet Instance" as w
+participant "Credential Issuer" as i
+
+w -> w : generate DPoP proof and WA-PoP for Credential Issuer token endpoint
+
+w -> i : Token Request with DPoP proof (\n  grant_type,\n  refresh_token) \n with OAuth-Client-Attestation and OAuth-Client-Attestation-PoP in the header
+
+i -> w : Token Response (access_token, refresh_token, token_type, expires_in)
+
+hnote across #WHITE: The flow continues with a request to the deferred/notification/credential endpoint\n with the new DPoP access token
+@enduml

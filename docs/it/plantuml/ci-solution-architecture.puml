@@ -1,0 +1,71 @@
+@startuml Credential Issuer Solution Architecture
+!include <C4/C4_Component>
+
+' Define SPRITES
+!include <tupadr3/common>
+!include <tupadr3/font-awesome-5/certificate>
+!include <tupadr3/font-awesome-5/database>
+!include <tupadr3/font-awesome-5/lock>
+!include <tupadr3/font-awesome-5/users>
+!include <tupadr3/font-awesome-5/cogs>
+!include <tupadr3/font-awesome-5/server>
+!include <tupadr3/font-awesome-5/key>
+!include <tupadr3/font-awesome-5/user>
+!include <tupadr3/font-awesome-5/id_card>
+!include <tupadr3/font-awesome-5/exchange_alt>
+!include <tupadr3/font-awesome-5/desktop>
+!include <tupadr3/font-awesome-5/wallet>
+!include <tupadr3/font-awesome/institution>
+
+' Custom styles
+AddElementTag("external", $bgColor="#999999", $fontColor="white", $borderColor="grey")
+AddElementTag("primary", $bgColor="#1168bd", $fontColor="white", $borderColor="#0b4884")
+AddElementTag("secondary", $bgColor="#6cb33f", $fontColor="white", $borderColor="#4a8329")
+AddElementTag("trust", $bgColor="#8A398F", $fontColor="white", $borderColor="#55235A")
+
+' Define the actors and external systems
+Person(user, "User", "Person holding Digital Credentials", $sprite="users")
+System_Ext(wallet_instance, "Wallet Instance", "User's IT-Wallet", $tags="external", $sprite="id_card")
+System_Ext(national_eid, "National eID System", "National digital identity system", $tags="external", $sprite="key")
+System_Ext(authentic_source, "Authentic Sources", "Authoritative data sources", $tags="external", $sprite="database")
+System_Ext(trust_anchor, "Trust Anchor", "Root of trust for the IT-Wallet Federation", $tags="external", $sprite="certificate")
+System_Ext(auth_third_parties, "Authorized Third Parties", " Judicial or Supervisory Bodies and Legal authorities", $tags="external", $sprite="institution")
+System_Ext(wallet_provider, "Wallet Provider", "Authorized digital services accessing/exchanging data.", $tags="external", $sprite="wallet")
+
+
+' Define the Issuer Solution boundary
+Boundary(issuer_solution, "Digital Credential Issuer Solution") {
+    Component(issuer_frontend, "Frontend Component", "Web services and User frontend", "Provides additional services through a Web User interface (for example Shows/Verifies/Manages/Request Digital Credentials)", $tags="primary", $sprite="desktop")
+    
+    Component(credential_issuer, "Credential Issuer Component", "OpenID4VCI", "Creates and issues Digital Credentials to wallet instances", $tags="secondary", $sprite="server")
+
+    Component(auth_server, "Authorization Server", "OAuth 2.0", "Handles authentication and authorization flows", $tags="secondary", $sprite="server")
+
+    Component(relying_party, "Relying Party Component", "OpenID4VP / OIDC / SAML", "Authenticates users with National eID systems (for PID) or with PID (for (Q)EAA)", $tags="secondary", $sprite="server")
+
+    Component(pdnd_eservices, "API Interface", "API e-services", "Authorized digital services accessing/exchanging data.", $tags="secondary", $sprite="exchange_alt")
+
+    Component(credential_lifecycle, "Credential Lifecycle Management", "Service", "Handles credential registration, status, and revocation", $tags="trust", $sprite="cogs")
+
+    Component(trust_security, "Trust & Security Component", "Service", "Manages keys, certificates, and security monitoring", $tags="trust", $sprite="lock")
+}
+
+' Define the relationships
+Rel(user, wallet_instance, "Uses")
+Rel(user, issuer_frontend, "Uses")
+Rel(user, national_eid, "Authenticates with")
+Rel(wallet_instance, credential_issuer, "Requests and receives Digital Credentials using OpenID4VCI")
+Rel(wallet_instance, auth_server, "Obtains authorization using OAuth")
+Rel(relying_party, national_eid, "Authenticates users with")
+Rel(relying_party, wallet_instance, "Authenticates users with")
+Rel(auth_server, relying_party, "Validates user identity")
+Rel(credential_issuer, auth_server, "Verifies authorizations")
+Rel(credential_issuer, credential_lifecycle, "Manages issued Digital Credentials")
+Rel(credential_issuer, trust_security, "Uses for cryptographic operations")
+Rel(credential_lifecycle, pdnd_eservices, "Uses verified data from")
+Rel(issuer_frontend, credential_lifecycle, "Manages issued Digital Credentials")
+BiRel(pdnd_eservices, authentic_source, "Retrieves verified user data from")
+BiRel(pdnd_eservices, wallet_provider, "Interacts with")
+Rel_U(auth_third_parties, pdnd_eservices, "Interacts with")
+Rel_U(issuer_solution, trust_anchor, "Federates and obtains registration certificate from")
+@enduml

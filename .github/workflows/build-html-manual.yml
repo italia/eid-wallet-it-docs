@@ -1,0 +1,130 @@
+name: Manual PR Preview
+
+on:
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'Pull Request Number to build preview for'
+        required: true
+
+env:
+  DEFAULT_BRANCH: versione-corrente
+
+jobs:
+  build-and-index:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the PR code
+      - name: Checkout PR
+        uses: actions/checkout@v3
+        with:
+          ref: refs/pull/${{ github.event.inputs.pr_number }}/head
+
+      # Install Python
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+          architecture: "x64"
+
+      # Install Java
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      # Install Graphviz required for plantuml
+      - name: Install Graphviz
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y graphviz
+
+      # Install python dependencies
+      - name: Install deps
+        run: |-
+          python -m pip install -r requirements-dev.txt
+
+      # Set the deployment path for this PR
+      - name: Set deployment path
+        id: deployment
+        run: |
+          echo "path=prs/pr${{ github.event.inputs.pr_number }}" >> $GITHUB_OUTPUT
+
+      # Append PR tag to document title for manual preview
+      - name: Append tags to document title
+        run: |
+          PR_NUM="${{ github.event.inputs.pr_number }}"
+          sed -i 's/\(settings_project_name = ".*\)"/\1 - PR #'"${PR_NUM}"'"/' docs/it/conf.py
+          sed -i 's/\(settings_project_name = ".*\)"/\1 - PR #'"${PR_NUM}"'"/' docs/en/conf.py
+          echo "Applied PR tag '#${PR_NUM}' to document titles for manual preview"
+
+      # Run Sphinx build for HTML output
+      - name: Build branch
+        run: |-
+          # Create output directories
+          mkdir -p "html/${{ steps.deployment.outputs.path }}/it"
+          mkdir -p "html/${{ steps.deployment.outputs.path }}/en"
+
+          echo "Building html/${{ steps.deployment.outputs.path }}/it"
+          echo "Building html/${{ steps.deployment.outputs.path }}/en"
+
+          sphinx-build -b html docs/it/ html/${{ steps.deployment.outputs.path }}/it
+          sphinx-build -b html docs/en/ html/${{ steps.deployment.outputs.path }}/en
+
+      # Copy scripts and templates for deployment
+      - name: Copy python scripts for deploy
+        run: |
+          mkdir -p html/scripts/ && cp -r .github/scripts/* html/scripts/
+          mkdir -p html/templates/ && cp -r .github/templates/* html/templates/
+          mkdir -p html/static/ && cp -r .github/static/* html/static/
+
+      # Check out the gh-pages branch in a temporary directory
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v3
+        with:
+          ref: gh-pages
+          path: gh-pages-temp
+
+      # Integrate new content and update gh-pages
+      - name: Integrate and update gh-pages content
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Copy all generated files to the temporary directory
+          rsync -av html/ gh-pages-temp/
+          
+          cd gh-pages-temp
+          
+          # Clean up old PR directories and generate index
+          python ./scripts/cleanup_old_prs.py
+          python ./scripts/generate_index.py
+          
+          # Configure git for commit
+          git config --local user.name 'GitHub Actions'
+          git config --local user.email 'actions@github.com'
+          
+          # Add modified files and commit
+          git add .
+          git commit -m "Update documentation and index for PR #${{ github.event.inputs.pr_number }}"
+          git push
+
+      # Add a comment to the PR with preview links
+      - name: Comment on PR
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const prNumber = ${{ github.event.inputs.pr_number }};
+            const repoUrl = `https://${context.repo.owner}.github.io/${context.repo.repo}`;
+            const previewUrl = `${repoUrl}/prs/pr${prNumber}/`;
+            
+            const comment = `✅ Preview for this PR has been manually generated and is available here: 
+            - English Version --> ${previewUrl}en/
+            - Italian Version --> ${previewUrl}it/`;
+            
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: prNumber,
+              body: comment
+            });

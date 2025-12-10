@@ -1,0 +1,21 @@
+@startuml Voucher Issuance - Interoperability API
+title Voucher Issuance - Interoperability API
+
+autonumber
+
+box "**Participant**\n<size:10>(Consumer or</size>\n<size:10>Provider)</size>" #Ivory
+  participant "**OAuth Client**" as CF
+end box
+
+box **PDND** #Azure
+  participant "**OAuth Authorization Server**" as AS
+end box
+
+CF->AS: Voucher Request (""client_id"", ""client_assertion"", ""client_assertion_type"", ""grant_type"")
+
+rnote over AS #LightPink
+  Checks
+endrnote
+
+AS-->CF:Voucher Response (""access_token"", ""token_type"", ""expires_in"")
+@enduml

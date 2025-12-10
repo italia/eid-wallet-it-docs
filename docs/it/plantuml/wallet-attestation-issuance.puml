@@ -1,0 +1,57 @@
+@startuml Wallet Attestation Issuance
+autonumber
+hide footbox
+'participant
+
+actor "User" as user
+participant "Wallet Instance" as app 
+participant "Device Integrity Service APIs" as aats #springgreen
+participant "Wallet Provider backend" as bck
+
+
+user->app: Request a new operation that\nrequires a Wallet Attestation
+activate app
+
+app->app: Check if Cryptographic Hardware Key \nTag (""hardware_key_tag"") is available
+
+
+app->app: Generates an ephemeral key pair (""ephemeral_key_pub"", ""ephemeral_key_priv"")
+
+rnote over app,bck #LIGHTGREEN
+Check Wallet Provider is part of the Federation and obtain its metadata
+endrnote
+
+
+app->bck: Request ""nonce""
+activate bck
+
+bck->bck: Generate fresh ""nonce""
+
+bck-->app: ""nonce""
+deactivate bck
+
+
+app->app: Generate ""client_data_hash"" as SHA256(""nonce"", ""ephemeral_key_pub"")
+
+app->app: Generate Cryptographic Hardware Key PoP\n""hardware_signature"" = sign((""client_data_hash"", ""hardware_key_tag""), ""hardware_key_priv"")
+
+app->aats: ""client_data_hash""
+aats-->app: ""integrity_assertion""
+
+app->app: Generate Wallet Attestation Request with ""integrity_assertion"", ""hardware_signature"", ""nonce"",\n""hardware_key_tag"", ""ephemeral_key_pub"" signed with ephemeral ""ephemeral_key_priv""
+app->bck: Send Wallet Attestation Request
+activate bck
+rnote over bck,bck #LIGHTGREEN
+Check if Wallet Instance is initialized and valid
+using ""hardware_key_tag""
+endrnote
+bck->bck: Validate ""nonce""
+bck->bck: Validate ""integrity_assertion""
+bck->bck: Validate ""hardware_signature""
+bck->bck: Validate ""ephemeral_key_pub"" PoP
+bck->bck: Create Wallet Attestation
+bck-->app: Wallet Attestation Response
+deactivate bck
+
+deactivate app
+@enduml

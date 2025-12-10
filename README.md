@@ -1,94 +1,114 @@
-# EUDI Wallet Technical Specifications
+# IT-Wallet Technical Specifications
 
-[![GitHub release](https://img.shields.io/github/release/italia/eidas-it-wallet-docs.svg?style=plastic)](https://github.com/italia/eidas-it-wallet-docs/releases)
+[![GitHub release](https://img.shields.io/github/release/italia/eid-wallet-it-docs.svg?style=plastic)](https://github.com/italia/eid-wallet-it-docs/releases)
 [![Get invited](https://slack.developers.italia.it/badge.svg)](https://slack.developers.italia.it/)
-[![Docs Italia](https://docs.italia.it/media/static/projects/badges/passing.svg)](https://docs.italia.it/italia/eidas-it-wallet-docs/it/master/index.html)
-[![Documentation](https://img.shields.io/badge/Documentation-Docs%20Italia-blue.svg)](https://docs.italia.it/italia/eidas-it-wallet-docs/)
 
 ---
 
 ## Table of Contents
 
-- [Description](#description)
-- [Documentation](#documentation)
-- [Versioning](#versioning)
+- [Intro](#intro)
+- [Versioning and preview](#versioning-and-preview)
+- [Releases](#releases)
 - [Contributing](#how-to-contribute)
 - [Authors](#authors)
 - [License](#license)
 
 ## Intro
 
-This repository hosts the sphinx project tree of EUDI Wallet Technical Specifications.
+This repository hosts the IT-Wallet Technical Specifications: the technical architecture, implementation framework and design requirements to be adopoted by the IT-Wallet System Technical Solutions.
 
-> This repository may contain contents to be considered experimental until the publication of the first release.
+For more information on the IT-Wallet System please refer to the [official page]([url](https://innovazione.gov.it/progetti/sistema-it-wallet/)).
 
-## Preview
-
-The stable release in different languages is published at the link below:
-
- - [English](https://italia.github.io/eudi-wallet-it-docs/versione-corrente/en/)
-
-### Preview of a branch
-
-Preview of other branches can be navigated by adding the branch name in the webpath, as follows:
-
- - https://italia.github.io/eudi-wallet-it-docs/$branch-name/en
-
-### Preview of released versions
-
-Released versions can be navigated by adding the tag in the webpath leaded by a _v_, as follows:
-
- - [https://italia.github.io/eudi-wallet-it-docs/v0.6.0/en/](https://italia.github.io/eudi-wallet-it-docs/v0.6.0/en/)
- - [https://italia.github.io/eudi-wallet-it-docs/v0.5.0/en/](https://italia.github.io/eudi-wallet-it-docs/v0.5.0/en/)
- - [https://italia.github.io/eudi-wallet-it-docs/v0.4.1/en/](https://italia.github.io/eudi-wallet-it-docs/v0.4.1/en/)
+The repository is structured as sphinx project tree. **The first stable release is v1.0**; older releases are considered experimental.
 
 
-## Documentation
+## Versioning and preview
 
-This repository is structured to be compliant with 
-[Docs Italia](https://docs.italia.it/italia/developers-italia/publiccodeyml/it/master/index.html).
-This is why the content of the relevant folders will be compiled and rendered inside such platform.
-`Docs Italia` is designed to support documents, localized in different languages and for this
-reason it is the reference platform for displaying this standard.
+This project adheres to the [*Semantic
+Versioning*](https://semver.org/) model.
+
+Furthermore, this project uses the git *branches* and *tags* in the following way:
+* the branch `versione-corrente` contains the last stable version of the documentation;
+* The [release page](https://github.com/italia/eid-wallet-it-docs/releases) of
+  this project contains all the released versions of the specifications. For the sake of coherence, the *releases* are made according to the tag names.
+
+Each time a release is created or edited, a preview is built based on the tag the release refers to. 
+A preview of the latest editor's copy build, corresponding to the branch `versione-corrente` can be navigated using the following link:
+
+English version:
+
+ - [Editor's Copy](https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/)
+
+Versione Italiana:
+
+ - [Ultima versione in corso di sviluppo](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/)
+
+### Releases
+
+This section contains the references about the official releases of this project.
+
+#### IT-Wallet Releases
+
+Released versions are available in both Italian and English, and can be accessed in HTML and PDF formats.
+
+| Version | English | Italian |
+|---------|---------|---------|
+| 1.3.1 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.3.1/en/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.3.1/eid-wallet-it-docs-en-20251128-101201.pdf) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.3.1/it/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.3.1/eid-wallet-it-docs-it-20251128-101201.pdf) |
+| 1.3.0 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.3.0/en/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.3.0/eid-wallet-it-docs-en-20251105-173944.pdf) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.3.0/it/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.3.0/eid-wallet-it-docs-it-20251105-173944.pdf) |
+| 1.2.1 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.2.1/en/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.2.1/eid-wallet-it-docs-en-20251021-171536.pdf) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.2.1/it/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.2.1/eid-wallet-it-docs-it-20251021-171536.pdf) |
+| 1.2.0 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.2.0/en/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.2.0/eid-wallet-it-docs-en-20251008-145727.pdf) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.2.0/it/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.2.0/eid-wallet-it-docs-it-20251008-145727.pdf) |
+| 1.1.0 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.1.0/en/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.1.0/eid-wallet-it-docs-en-20250731-104027.pdf) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.1.0/it/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.1.0/eid-wallet-it-docs-it-20250731-104027.pdf) |
+| 1.0.2 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.0.2/en/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.0.2/eid-wallet-it-docs-en-20250618-105321.pdf) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.0.2/it/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.0.2/eid-wallet-it-docs-it-20250618-105321.pdf) |
+| 1.0.1 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.0.1/en/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.0.1/eid-wallet-it-docs-en-20250603-153138.pdf) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.0.1/it/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.0.1/eid-wallet-it-docs-it-20250603-153138.pdf) |
+| v1.0.0 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v1.0.0/en/) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v1.0.0/it/) |
+
+#### IT-Wallet Early Stages Releases
+
+The following table contains all historical versions before 1.0.0, representing the early development stages of the IT-Wallet product:
+
+| Version | English | Italian |
+|---------|---------|---------|
+| v0.9.3 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.9.3/en/) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.9.3/it/) |
+| v0.9.2 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.9.2/en/) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.9.2/it/) |
+| v0.9.1 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.9.1/en/) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.9.1/it/) |
+| v0.9.0 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.9.0/en/) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.9.0/it/) |
+| v0.8.2 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.8.2/en/) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.8.2/it/) |
+| v0.8.1 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.8.1/en/) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.8.1/it/) |
+| v0.8.0 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.8.0/en/) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.8.0/it/) |
+| v0.7.1 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.7.1/en/) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.7.1/it/) |
+| v0.7.0 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.7.0/en/) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.7.0/it/) |
+| v0.6.0 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.6.0/en/) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.6.0/it/) |
+| v0.5.0 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.5.0/en/) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.5.0/it/) |
+| v0.4.1 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.4.1/en/) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.4.1/it/) |
 
 
 ## Build
 
 HTML
 ````
-pip install -r requirements.txt
+pip install -r requirements-dev.txt
 
-# italian version
-sphinx-build -b html -d html/it/doctrees docs/it/  html/it
-
-# english version
-sphinx-build -b html -d html/en/doctrees docs/en/  html/en
+sphinx-build -b html -d html/en/doctrees docs/en/ html/en
 ````
 
 ODT
 ````
 sudo apt install pandoc
-sphinx-build -b singlehtml docs/it/  html/
+sphinx-build -b singlehtml docs/en/  html/
 cd html
-pandoc -o eidas-it-wallet-docs.odt index.html
+pandoc -o eid-it-wallet-docs.odt index.html
 ````
 
-## Versioning
-
-This project participates in the versioning model [*Semantic
-Versioning*](https://semver.org/).
-
-Furthermore, this project uses the git *branches* and *tags* in the following way:
-* the branch `versione-corrente` contains the last stable version of the standard;
-* The [release page](https://github.com/italia/publiccode.yml/releases) of
-  GitHub contains all the released versions of the standard. For the sake of coherence, the *releases* are made according to the tag names.
-
-Each time a release is created or edited, a preview is built based on the tag the release refers to. See [the preview section](preview-of-released-versions) for more.
 
 ## How to contribute
 
-Don't hesitate to submit [Pull Requests or raise Issues](CONTRIBUTING.md) if you encounter any problems.
 
+Refer to [Contributing Rules Section](CONTRIBUTING-RULES.md) for an editorial guideline. Don't hesitate to submit [Pull Requests or raise Issues](CONTRIBUTING.md) if you encounter any problems.
+
+
+## Authors
+These Technical Specifications are drafted and maintained by the [Department for Digital Transformation]([url](https://innovazione.gov.it/)), [IPZS Istituto Poligrafico e Zecca dello Stato]([url](https://www.ipzs.it/ext/index.html)) and [PagoPA]([url](https://www.pagopa.it/it/)), with the supervision of [AGID, Agency for Digital Italy]([url](https://www.agid.gov.it/it)). 
 
 ## License
 

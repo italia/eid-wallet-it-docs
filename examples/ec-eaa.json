@@ -1,0 +1,959 @@
+{
+    "iat": 1718207217,
+    "exp": 1749743216,
+    "iss": "https://eaa-provider.example.org",
+    "sub": "https://eaa-provider.example.org",
+    "authority_hints": [
+        "https://trust-anchor.example.org"
+    ],
+    "jwks": {
+        "keys": [
+            {
+                "kid": "FANFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs",
+                "kty": "EC",
+                "crv": "P-256",
+                "x": "jE2RpcQbFQxKpMqehahgZv6smmXD0i/LTP2QRzMADk4",
+                "y": "qkMx5iqt5PhPu5tfctS6HsP+FmLgrxfrzUV2GwMQuh8"
+            }
+        ]
+    },
+    "metadata": {
+        "federation_entity": {
+            "homepage_uri": "https://eaa-provider.example.org/",
+            "organization_name": "Organization Name",
+            "contacts": [
+                "informazioni@example.it",
+                "protocollo@pec.example.it"
+            ],
+            "tos_uri": "https://eaa-provider.example.org/public/info_policy.html",
+            "policy_uri": "https://eaa-provider.example.org/public/privacy_policy.html",
+            "logo_uri": "https://eaa-provider.example.org/public/logo.svg"
+        },
+        "oauth_authorization_server": {
+            "issuer": "https://eaa-provider.example.org",
+            "pushed_authorization_request_endpoint": "https://eaa-provider.example.org/as/par",
+            "authorization_endpoint": "https://eaa-provider.example.org/authorize",
+            "token_endpoint": "https://eaa-provider.example.org/token",
+            "client_registration_types_supported": [
+                "automatic"
+            ],
+            "code_challenge_methods_supported": [
+                "S256"
+            ],
+            "acr_values_supported": [
+                "https://trust-registry.it-wallet.example.it/loa/substantial",
+                "https://trust-registry.it-wallet.example.it/loa/high"
+            ],
+            "scopes_supported": [
+                "EuropeanDisabilityCard",
+                "mDL"
+            ],
+            "response_types_supported": [
+                "code"
+            ],
+            "authorization_signing_alg_values_supported": [
+                "ES256",
+                "ES384",
+                "ES512"
+            ],
+            "grant_types_supported": [
+                "authorization_code"
+            ],
+            "token_endpoint_auth_methods_supported": [
+                "attest_jwt_client_auth"
+            ],
+            "client_attestation_signing_alg_values_supported": [
+                "ES256",
+                "ES384",
+                "ES512"
+            ],
+            "client_attestation_pop_signing_alg_values_supported": [
+                "ES256",
+                "ES384",
+                "ES512"
+            ],
+            "token_endpoint_auth_signing_alg_values_supported": [
+                "ES256",
+                "ES384",
+                "ES512"
+            ],
+            "request_object_signing_alg_values_supported": [
+                "ES256",
+                "ES384",
+                "ES512"
+            ],
+            "dpop_signing_alg_values_supported": [
+                "ES256",
+                "ES384",
+                "ES512"
+            ],
+            "jwks": {
+                "keys": [
+                    {
+                        "kid": "f10aca0992694b3581f6f699bfc8a2c6cc687725",
+                        "kty": "EC",
+                        "crv": "P-256",
+                        "x": "jE2RpcQbFQxKpMqehahgZv6smmXD0i/LTP2QRzMADk4",
+                        "y": "qkMx5iqt5PhPu5tfctS6HsP+FmLgrxfrzUV2GwMQuh8"
+                    }
+                ]
+            }
+        },
+        "openid_credential_issuer": {
+            "credential_issuer": "https://eaa-provider.example.org",
+            "credential_endpoint": "https://eaa-provider.example.org/credential",
+            "nonce_endpoint": "https://eaa-provider.example.org/nonce-endpoint",
+            "deferred_credential_endpoint": "https://eaa-provider.example.org/deferred-credential",
+            "status_assertion_endpoint": "https://eaa-provider.example.org/status",
+            "notification_endpoint": "https://eaa-provider.example.org/notification",
+            "credential_hash_alg_supported": "sha-256",
+            "display": [
+                {
+                    "name": "EAA Provider",
+                    "locale": "it-IT",
+                    "logo": {
+                        "uri": "https://eaa-provider.example.org/public/compact-logo-IT.svg",
+                        "uri#integrity": "2Rltygo7bKBE4E498tb/lLn9DIkimBhrzrsUERyUQjo=",
+                        "alt_text": "Testo alternativo all'immagine del logo"
+                    }
+
+                },
+                {
+                    "name": "EAA Provider",
+                    "locale": "en-US",
+                    "logo": {
+                        "uri": "https://eaa-provider.example.org/public/compact-logo-US.svg",
+                        "uri#integrity": "mBQEi42aj0VYnFngpOjbqJGkuCnB5LmbZRnWpO+AHqUBVQxOe9kMIPOz+pSjRArE",
+                        "alt_text": "Alternative text for the logo image"
+                    }
+                }
+            ],
+            "credential_configurations_supported": {
+                "dc_sd_jwt_EuropeanDisabilityCard": {
+                    "format": "dc+sd-jwt",
+                    "scope": "EuropeanDisabilityCard",
+                    "cryptographic_binding_methods_supported": [
+                        "jwk"
+                    ],
+                    "credential_signing_alg_values_supported": [
+                        "ES256",
+                        "ES384",
+                        "ES512"
+                    ],
+                    "proof_types_supported": {
+                        "jwt": {
+                            "proof_signing_alg_values_supported": [
+                                "ES256",
+                                "ES384",
+                                "ES512"
+                            ],
+                            "key_attestations_required": {
+                            "key_storage": [ "iso_18045_enhanced-basic" ],
+                            "user_authentication": [ "iso_18045_enhanced-basic" ]
+                            }
+                        }
+                    },
+                    "vct": "urn:eudi:EuropeanDisabilityCard:it:1",
+                    "schema_id": "EuropeanDisabilityCard+dc+sd-jwt+urn:eudi:EuropeanDisabilityCard:it:1",
+                    "authentic_sources": [
+                        {
+                            "entity_id": "https://authentic-source.example.com",
+                            "dataset_id": "12345"
+                        }
+
+                    ],
+                    "credential_metadata": {
+                        "display": [
+                            {
+                                "name": "Carta della disabilità europea",
+                                "locale": "it-IT",
+                                "description": "Versione digitale della carta della disabilità europea",
+                                "logo": {
+                                    "uri": "https://trust-registry.it-wallet.example.it/logos/EuropeanDisabilityCard/logo-IT.svg",
+                                    "uri#integrity": "3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg==",
+                                    "alt_text": "Testo alternativo all'immagine del logo"
+                                },
+                                "background_color": "#12107c",
+                                "background_image": {
+
+                                    "uri": "https://trust-registry.it-wallet.example.it/images/EuropeanDisabilityCard/image-IT.svg",
+                                    "uri#integrity": "3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg=="
+
+                                },
+                                "watermark_image": {
+
+                                    "uri": "https://trust-registry.it-wallet.example.it/images/EuropeanDisabilityCard/imag-watermark-IT.svg",
+                                    "uri#integrity": "3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg=="
+
+                                }
+                            },
+                            {
+                                "name": "European Disability Card",
+                                "locale": "en-US",
+                                "description": "Digital version of the European Disability Card",
+                                "logo": {
+                                    "uri": "https://trust-registry.it-wallet.example.it/logos/EuropeanDisabilityCard/logo-US.svg",
+                                    "uri#integrity": "3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg==",
+                                    "alt_text": "Alternative text for the logo image"
+                                },
+                                "background_color": "#12107c",
+                                "background_image": {
+                                    "uri": "https://trust-registry.it-wallet.example.it/images/EuropeanDisabilityCard/image-US.svg",
+                                    "uri#integrity": "3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg=="
+                                }
+                            }
+                        ],
+                        "claims": [
+                            {
+                                "path": ["document_number"],
+                                "mandatory": "true",
+                                "sd": "always",
+                                "display": [
+                                    {
+                                        "name": "Numero Documento",
+                                        "locale": "it-IT",
+                                        "description": "Numero Documento della carta europea della disabilità"
+                                    },
+                                    {
+                                        "name": "Document Number",
+                                        "locale": "en-US",
+                                        "description": "Document number of the European Disability Card"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["given_name"],
+                                "mandatory": "true",
+                                "sd": "always",
+                                "display": [
+                                    {
+                                        "name": "Nome",
+                                        "locale": "it-IT",
+                                        "description": "Nome del titolare della carta"
+                                    },
+                                    {
+                                        "name": "Name",
+                                        "locale": "en-US",
+                                        "description": "Cardholder name"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["family_name"],
+                                "mandatory": "true",
+                                "sd": "always",
+                                "display": [
+                                    {
+                                        "name": "Cognome",
+                                        "locale": "it-IT",
+                                        "description": "Cognome del titolare della carta"
+                                    },
+                                    {
+                                        "name": "Family Name",
+                                        "locale": "en-US",
+                                        "description": "cardholder last name"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["birth_date"],
+                                "mandatory": "true",
+                                "sd": "always",
+                                "display": [
+                                    {
+                                        "name": "Data di Nascita (YYYY-MM-GG)",
+                                        "locale": "it-IT",
+                                        "description": "Data di nascita del titolare della carta"
+
+                                    },
+                                    {
+                                        "name": "Date of Birth (YYYY-MM-GG)",
+                                        "locale": "en-US",
+                                        "description": "cardholder birth date"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["personal_administrative_number"],
+                                "mandatory": "true",
+                                "sd": "always",
+                                "display": [
+                                    {
+                                        "name": "Codice Fiscale",
+                                        "locale": "it-IT",
+                                        "description": "Codice fiscale del titolare della carta"
+                                    },
+                                    {
+                                        "name": "Tax Identification Number",
+                                        "locale": "en-US",
+                                        "description": "cardholder tax identification number"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["expiry_date"],
+                                "mandatory": "true",
+                                "sd": "always",
+                                "display": [
+                                    {
+                                        "name": "Data di Scadenza (YYYY-MM-GG)",
+                                        "locale": "it-IT",
+                                        "description": "Data di scadenza della carta"
+                                    },
+                                    {
+                                        "name": "Expiration Date (YYYY-MM-GG)",
+                                        "locale": "en-US",
+                                        "description": "Card expiration date"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["constant_attendance_allowance"],
+                                "mandatory": "true",
+                                "sd": "always",
+                                "display": [
+                                    {
+                                        "name": "Diritto accompagnatore",
+                                        "locale": "it-IT",
+                                        "description": "Questo campo indica se il titolare della carta ha diritto all'indennità di accompagnamento"
+                                    },
+                                    {
+                                        "name": "Constant attendance allowance",
+                                        "locale": "en-US",
+                                        "description": "This field indicates whether the cardholder is entitled to the accompanying allowance"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["portrait"],
+                                "mandatory": "true",
+                                "sd": "always",
+                                "display": [
+                                    {
+                                        "name": "Foto",
+                                        "locale": "it-IT",
+                                        "description": "Fotografia del titolare della carta"
+
+                                    },
+                                    {
+                                        "name": "Portrait",
+                                        "locale": "en-US",
+                                        "description": "Photo of the cardholder"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["link_qr_code"],
+                                "mandatory": "true",
+                                "sd": "always",
+                                "display": [
+                                    {
+                                        "name": "Link QR Code",
+                                        "locale": "it-IT",
+                                        "description": "Questo campo contiene il QR-Code"
+                                    },
+                                    {
+                                        "name": "Link QR Code",
+                                        "locale": "en-US",
+                                        "description": "This field contains the QR-Code"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "dc_sd_jwt_mDL": {
+                    "format": "dc+sd-jwt",
+                    "scope": "mDL",
+                    "cryptographic_binding_methods_supported": [
+                        "jwk"
+                    ],
+                    "credential_signing_alg_values_supported": [
+                        "ES256",
+                        "ES384",
+                        "ES512"
+                    ],
+                    "proof_types_supported": {
+                        "jwt": {
+                            "proof_signing_alg_values_supported": [
+                                "ES256",
+                                "ES384",
+                                "ES512"
+                            ]
+                        }
+                    },
+                    "vct": "urn:eudi:mDL:it:1",
+                    "schema_id": "mDL+dc+sd-jwt+urn:eudi:mDL:it:1",
+                    "authentic_sources": [
+                        {
+                            "entity_id": "https://authentic-source.example.com",
+                            "dataset_id": "12345"
+                        }
+
+                    ],
+                    "credential_metadata": {
+                        "display": [
+                            {
+                                "name": "Patente di guida",
+                                "locale": "it-IT",
+                                "description": "Versione digitale della patente di guida",
+                                "logo": {
+                                    "uri": "https://trust-registry.it-wallet.example.it/logos/mDL/logo-IT.svg",
+                                    "uri#integrity": "qU4OnSrnRcL695rQqy9ayCMx6sboaXxEaW5rXvSAmnQ=",
+                                    "alt_text": "Testo alternativo all'immagine del logo"
+                                },
+                                "background_color": "#12107c",
+                                "background_image": {
+
+                                    "uri": "https://trust-registry.it-wallet.example.it/images/mDL/image-IT.svg",
+                                    "uri#integrity": "J0HV7GiDjWZrV8Vb6P4f6zeDDXASl3j2xVnoDYqhQK0="
+
+                                }
+                            },
+                            {
+                                "name": "Mobile Driver's License",
+                                "locale": "en-US",
+                                "description": "Digital version of Mobile Driver's License",
+                                "logo": {
+                                    "uri": "https://trust-registry.it-wallet.example.it/logos/mDL/logo-US.svg",
+                                    "uri#integrity": "F5P1wXpfToammXkx6HF++66G534ystjOy7r4UMWwz1lcZYJU8kAKRKtFua7DvZLe",
+                                    "alt_text": "Testo alternativo all'immagine del logo"
+                                },
+                                "background_color": "#12107c",
+                                "background_image": {
+
+                                    "uri": "https://trust-registry.it-wallet.example.it/images/mDL/image-US.svg",
+                                    "uri#integrity": "UyDP7JZDp9dpmxq9wbbuam8ylrQ05LsSRQzZVjdJTbJBZm57twaZvE2SnDKzycl0"
+
+                                }
+                            }
+                        ],
+                        "claims": [
+                            {
+                                "path": ["given_name"],
+                                "mandatory": "true",
+                                "sd": "always",
+                                "display": [
+                                    {
+                                        "name": "Nome",
+                                        "locale": "it-IT",
+                                        "description": "Nome del titolare della patente"
+                                    },
+                                    {
+                                        "name": "First Name",
+                                        "locale": "en-US",
+                                        "description": "Name of the driving license holder"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["family_name"],
+                                "mandatory": "true",
+                                "sd": "always",
+                                "display": [
+                                    {
+                                        "name": "Cognome",
+                                        "locale": "it-IT",
+                                        "description": "Cognome del titolare della patente"
+                                    },
+                                    {
+                                        "name": "Family Name",
+                                        "locale": "en-US",
+                                        "description": "last name of the driving license holder"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["birth_date"],
+                                "mandatory": "true",
+                                "sd": "always",
+                                "display": [
+                                    {
+                                        "name": "Data di nascita (YYYY-MM-GG)",
+                                        "locale": "it-IT",
+                                        "description": "Data di nascita del titolare della patente"
+                                    },
+                                    {
+                                        "name": "Date of Birth (YYYY-MM-GG)",
+                                        "locale": "en-US",
+                                        "description": "Date of birth of the driving license holder"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["place_of_birth"],
+                                "mandatory": "true",
+                                "sd": "always",
+                                "display": [
+                                    {
+                                        "name": "Luogo di Nascita",
+                                        "locale": "it-IT",
+                                        "description": "Luogo di nascita del titolare della patente"
+                                    },
+                                    {
+                                        "name": "Place of Birth",
+                                        "locale": "en-US",
+                                        "description": "Place of birth of the driving license holder"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["issue_date"],
+                                "mandatory": "true",
+                                "sd": "always",
+                                "display": [
+                                    {
+                                        "name": "Data di rilascio (YYYY-MM-GG)",
+                                        "locale": "it-IT",
+                                        "description": "Data di rilascio della patente"
+                                    },
+                                    {
+                                        "name": "Issue Date (YYYY-MM-GG)",
+                                        "locale": "en-US",
+                                        "description": "Date of issuance of the driving license"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["expiry_date"],
+                                "mandatory": "true",
+                                "sd": "always",
+                                "display": [
+                                    {
+                                        "name": "Data di scadenza (YYYY-MM-GG)",
+                                        "locale": "it-IT",
+                                        "description": "Data di scadenza della patente"
+                                    },
+                                    {
+                                        "name": "Expiry Date (YYYY-MM-GG)",
+                                        "locale": "en-US",
+                                        "description": "Date of expiry of the driving license"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["issuing_country"],
+                                "mandatory": "true",
+                                "sd": "always",
+                                "display": [
+                                    {
+                                        "name": "Paese di rilascio",
+                                        "locale": "it-IT",
+                                        "description": "Paese di rilascio della patente"
+
+                                    },
+                                    {
+                                        "name": "Issuing Country",
+                                        "locale": "en-US",
+                                        "description": "Issuing country of the driving license"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["issuing_authority"],
+                                "mandatory": "true",
+                                "sd": "always",
+                                "display": [
+                                    {
+                                        "name": "Autorità di rilascio",
+                                        "locale": "it-IT",
+                                        "description": "Autorità che ha rilasciato la patente"
+                                    },
+                                    {
+                                        "name": "Issuing Authority",
+                                        "locale": "en-US",
+                                        "description": "Issuing authority of the driving license"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["document_number"],
+                                "mandatory": "true",
+                                "sd": "always",
+                                "display": [
+                                    {
+                                        "name": "Numero di documento",
+                                        "locale": "it-IT",
+                                        "description": "Numero Documento della patente"
+                                    },
+                                    {
+                                        "name": "Document Number",
+                                        "locale": "en-US",
+                                        "description": "Document number of the driving license"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["portrait"],
+                                "mandatory": "true",
+                                "sd": "always",
+                                "display": [
+                                    {
+                                        "name": "Foto codificata",
+                                        "locale": "it-IT",
+                                        "description": "Fotografia del titolare della patente"
+                                    },
+                                    {
+                                        "name": "Portrait base64 encoded",
+                                        "locale": "en-US",
+                                        "description": "Photo of of the driving licence holder"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["driving_privileges"],
+                                "mandatory": "true",
+                                "sd": "always",
+                                "display": [
+                                    {
+                                        "name": "Abilitazioni alla guida",
+                                        "locale": "it-IT",
+                                        "description": "Elenco delle categorie di abilitazione"
+                                    },
+                                    {
+                                        "name": "Driving Privileges",
+                                        "locale": "en-US",
+                                        "description": "Driving Privileges list"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["restrictions_conditions"],
+                                "mandatory": "true",
+                                "sd": "always",
+                                "display": [
+                                    {
+                                        "name": "Annotazioni/Restrizioni",
+                                        "locale": "it-IT",
+                                        "description": "Annotazioni/Restrizioni valide per tutte le categorie separate da spazio"
+                                    },
+                                    {
+                                        "name": "Restrictions/Conditions",
+                                        "locale": "en-US",
+                                        "description": "Restriction/Condition for all driving privileges separated by space"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["driving_privileges_details"],
+                                "mandatory": "true",
+                                "sd": "always",
+                                "display": [
+                                    {
+                                        "name": "Dettagli delle categorie di abilitazione",
+                                        "locale": "it-IT",
+                                        "description": "Dettagli relativi alle specifiche categorie di abilitazione"
+                                    },
+                                    {
+                                        "name": "Driving privilege details",
+                                        "locale": "en-US",
+                                        "description": "Details related to the specific driving privileges"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "mso_mdoc_mDL": {
+                    "format": "mso_mdoc",
+                    "scope": "mDL",
+                    "doctype": "org.iso.18013.5.1.mDL",
+                    "schema_id": "mDL+mso_mdoc+org.iso.18013.5.1.mDL",
+                    "authentic_sources": [
+                        {
+                            "entity_id": "https://authentic-source.example.com",
+                            "dataset_id": "12345"
+                        }
+
+                    ],
+                    "cryptographic_binding_methods_supported": [
+                        "cose_key"
+                    ],
+                    "credential_signing_alg_values_supported": [
+                        "ES256",
+                        "ES384",
+                        "ES512"
+                    ],
+                    "credential_metadata": {
+                        "display": [
+                            {
+                                "name": "Patente di guida",
+                                "locale": "it-IT",
+                                "description": "Versione digitale della patente di guida",
+                                "logo": {
+                                    "uri": "https://trust-registry.it-wallet.example.it/logos/mDL/logo-IT.svg",
+                                    "uri#integrity": "qU4OnSrnRcL695rQqy9ayCMx6sboaXxEaW5rXvSAmnQ=",
+                                    "alt_text": "Testo alternativo all'immagine del logo"
+                                },
+                                "background_color": "#12107c",
+                                "background_image": {
+
+                                    "uri": "https://trust-registry.it-wallet.example.it/images/mDL/image-IT.svg",
+                                    "uri#integrity": "J0HV7GiDjWZrV8Vb6P4f6zeDDXASl3j2xVnoDYqhQK0="
+
+                                }
+                            },
+                            {
+                                "name": "Mobile Driver's License",
+                                "locale": "en-US",
+                                "description": "Digital version of Mobile Driver's License",
+                                "logo": {
+                                    "uri": "https://trust-registry.it-wallet.example.it/logos/mDL/logo-US.svg",
+                                    "uri#integrity": "F5P1wXpfToammXkx6HF++66G534ystjOy7r4UMWwz1lcZYJU8kAKRKtFua7DvZLe",
+                                    "alt_text": "Testo alternativo all'immagine del logo"
+                                },
+                                "background_color": "#12107c",
+                                "background_image": {
+
+                                    "uri": "https://trust-registry.it-wallet.example.it/images/mDL/image-US.svg",
+                                    "uri#integrity": "UyDP7JZDp9dpmxq9wbbuam8ylrQ05LsSRQzZVjdJTbJBZm57twaZvE2SnDKzycl0"
+
+                                }
+                            }
+                        ],
+                        "claims": [
+                            {
+                                "path": ["org.iso.18013.5.1", "given_name"],
+                                "mandatory": "true",
+                                "sd": "always",
+                                "display": [
+                                    {
+                                        "name": "Nome",
+                                        "locale": "it-IT",
+                                        "description": "Nome del titolare della patente"
+                                    },
+                                    {
+                                        "name": "First Name",
+                                        "locale": "en-US",
+                                        "description": "Name of the driving license holder"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["org.iso.18013.5.1", "family_name"],
+                                "mandatory": "true",
+                                "sd": "always",
+                                "display": [
+                                    {
+                                        "name": "Cognome",
+                                        "locale": "it-IT",
+                                        "description": "Cognome del titolare della patente"
+                                    },
+                                    {
+                                        "name": "Family Name",
+                                        "locale": "en-US",
+                                        "description": "last name of the driving license holder"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["org.iso.18013.5.1", "birth_date"],
+                                "mandatory": "true",
+                                "sd": "always",
+                                "display": [
+                                    {
+                                        "name": "Data di nascita (YYYY-MM-GG)",
+                                        "locale": "it-IT",
+                                        "description": "Data di nascita del titolare della patente"
+                                    },
+                                    {
+                                        "name": "Date of Birth (YYYY-MM-GG)",
+                                        "locale": "en-US",
+                                        "description": "Date of birth of the driving license holder"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["org.iso.18013.5.1", "birth_place"],
+                                "mandatory": "true",
+                                "sd": "always",
+                                "display": [
+                                    {
+                                        "name": "Luogo di Nascita",
+                                        "locale": "it-IT",
+                                        "description": "Luogo di nascita del titolare della patente"
+                                    },
+                                    {
+                                        "name": "Place of Birth",
+                                        "locale": "en-US",
+                                        "description": "Place of birth of the driving license holder"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["org.iso.18013.5.1", "issue_date"],
+                                "mandatory": "true",
+                                "sd": "always",
+                                "display": [
+                                    {
+                                        "name": "Data di rilascio (YYYY-MM-GG)",
+                                        "locale": "it-IT",
+                                        "description": "Data di emissione della patente"
+                                    },
+                                    {
+                                        "name": "Issue Date (YYYY-MM-GG)",
+                                        "locale": "en-US",
+                                        "description": "Date of issuance of the driving license"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["org.iso.18013.5.1", "expiry_date"],
+                                "mandatory": "true",
+                                "sd": "always",
+                                "display": [
+                                    {
+                                        "name": "Data di scadenza (YYYY-MM-GG)",
+                                        "locale": "it-IT",
+                                        "description": "Data di scadenza della patente"
+                                    },
+                                    {
+                                        "name": "Expiry Date (YYYY-MM-GG)",
+                                        "locale": "en-US",
+                                        "description": "Date of expiry of the driving license"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["org.iso.18013.5.1", "issuing_country"],
+                                "mandatory": "true",
+                                "sd": "always",
+                                "display": [
+                                    {
+                                        "name": "Paese di rilascio",
+                                        "locale": "it-IT",
+                                        "description": "Paese di rilascio della patente"
+                                    },
+                                    {
+                                        "name": "Issuing Country",
+                                        "locale": "en-US",
+                                        "description": "Issuing country of the driving license"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["org.iso.18013.5.1", "issuing_authority"],
+                                "mandatory": "true",
+                                "sd": "always",
+                                "display": [
+                                    {
+                                        "name": "Autorità di rilascio",
+                                        "locale": "it-IT",
+                                        "description": "Autorità che ha rilasciato la patente"
+                                    },
+                                    {
+                                        "name": "Issuing Authority",
+                                        "locale": "en-US",
+                                        "description": "Issuing authority of the driving license"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["org.iso.18013.5.1", "document_number"],
+                                "mandatory": "true",
+                                "sd": "always",
+                                "display": [
+                                    {
+                                        "name": "Numero di documento",
+                                        "locale": "it-IT",
+                                        "description": "Numero Documento della patente"
+                                    },
+                                    {
+                                        "name": "Document Number",
+                                        "locale": "en-US",
+                                        "description": "Document number of the driving license"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["org.iso.18013.5.1", "portrait"],
+                                "mandatory": "true",
+                                "sd": "always",
+                                "display": [
+                                    {
+                                        "name": "Foto codificata",
+                                        "locale": "it-IT",
+                                        "description": "Fotografia del titolare della patente"
+                                    },
+                                    {
+                                        "name": "Portrait",
+                                        "locale": "en-US",
+                                        "description": "Photo of of the driving licence holder"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["org.iso.18013.5.1", "driving_privileges"],
+                                "mandatory": "true",
+                                "sd": "always",
+                                "display": [
+                                    {
+                                        "name": "Abilitazioni alla guida",
+                                        "locale": "it-IT",
+                                        "description": "Elenco delle categorie di abilitazione"
+                                    },
+                                    {
+                                        "name": "Driving Privileges",
+                                        "locale": "en-US",
+                                        "description": "Driving Privileges list"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["org.iso.18013.5.1", "un_distinguishing_sign"],
+                                "mandatory": "true",
+                                "sd": "always",
+                                "display": [
+                                    {
+                                        "name": "Codice identificativo della Nazione",
+                                        "locale": "it-IT",
+                                        "description": "Segno distintivo del paese che emette la patente"
+                                    },
+                                    {
+                                        "name": "Distinguishing sign of the issuing country",
+                                        "locale": "en-US",
+                                        "description": "Distinguishing sign of the issuing country"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            },
+            "jwks": {
+                "keys": [
+                    {
+                        "kid": "f10aca0992694b3581f6f699bfc8a2c6cc687725",
+                        "kty": "EC",
+                        "crv": "P-256",
+                        "x": "jE2RpcQbFQxKpMqehahgZv6smmXD0i/LTP2QRzMADk4",
+                        "y": "qkMx5iqt5PhPu5tfctS6HsP+FmLgrxfrzUV2GwMQuh8"
+                    }
+                ]
+            },
+            "trust_frameworks_supported": [
+                "it_cie",
+                "it_wallet",
+                "eudi_wallet"
+            ],
+            "evidence_supported": [
+                "vouch"
+            ]
+        },
+        "openid_credential_verifier": {
+            // see relying party metadata section and endpoints
+        },
+        "jwks": {
+            "keys": [
+                {
+                    "kid": "f10aca0992694b3581f6f699bfc8a2c6cc687725",
+                    "kty": "EC",
+                    "crv": "P-256",
+                    "x": "jE2RpcQbFQxKpMqehahgZv6smmXD0i/LTP2QRzMADk4",
+                    "y": "qkMx5iqt5PhPu5tfctS6HsP+FmLgrxfrzUV2GwMQuh8"
+                }
+            ]
+        }
+    }
+}
+}

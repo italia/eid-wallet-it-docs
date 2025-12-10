@@ -1,0 +1,8 @@
+@startuml Status List Flow
+autonumber
+participant "Wallet Instance" as wi
+participant "Credential Issuer" as i
+
+wi -> i: Get Status List HTTP Request
+i --> wi: Status List HTTP Response \n "$StatusListToken"
+@enduml

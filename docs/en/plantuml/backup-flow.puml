@@ -1,0 +1,25 @@
+@startuml Backup flow
+!include <C4/C4_Container>
+
+actor User as "User"
+
+System_Boundary(walletSolution, "User's Device") {
+    System_Boundary(walletInstance, "Wallet Instance") {
+        Container(ui, "User Interface")
+        Container(backupApiService, "Backup API Service")
+    }
+    Container(mobileStorage, "Mobile Device Local Storage") {
+    }
+}
+
+' Explicit layout adjustment for positioning
+mobileStorage -[hidden]-> walletInstance
+
+User --> ui : "<b>1. Backup Credentials</b>"
+ui <--> backupApiService: "<b>2. Generate Key Phrases</b>"
+ui --> User: "<b>3. Store Key Phrases</b>"
+backupApiService --> backupApiService: "<b>4. Create Encrypted Backup File</b>"
+backupApiService --> ui: "<b>5. Encrypted Backup </b>"
+ui --> User: "<b>5. Encrypted Backup </b> \n <b> with Prompt for </b> \n <b>Local/Cloud Storage</b>"
+User --> mobileStorage : "<b>6. Local Storage</b>"
+@enduml

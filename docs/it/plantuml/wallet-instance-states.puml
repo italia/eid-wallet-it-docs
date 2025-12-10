@@ -1,0 +1,21 @@
+@startuml Wallet Instance States
+hide empty description
+
+state Installed #FFA500
+state Operational #ffff00
+state Valid #008000
+state Uninstalled #D64545
+
+   [*] -down-> Installed: WI INST
+    Installed -down-> Uninstalled: WI UNINST
+    Installed -right-> Operational: WI ACT
+    Operational -down-> Uninstalled: WI UNINST
+    Operational -left-> Installed: WI REV
+    Operational -> Operational: <color:blue>(Q)EAA ISS/PRE</color>
+    Operational -down-> Valid: <color:blue>PID ISS</color>
+    Valid -up-> Operational:<color:blue>PID EXP/</color> \n<color:blue>REV/DEL</color>
+    Valid -up-> Installed: WI REV
+    Valid -> Valid: <color:blue>(Q)EEA ISS/PRE</color> \n<color:blue>PID PRE</color>
+    Valid -down-> Uninstalled: WI UNINST
+    Uninstalled --> [*]: <size:12></size>
+@enduml

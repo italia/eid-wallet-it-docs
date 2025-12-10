@@ -1,0 +1,39 @@
+@startuml Relying Party Discovery
+participant WalletInstance as "Wallet Instance"
+participant CV as "Relying Party"
+participant TA as "Trust Anchor / Intermediate"
+
+WalletInstance ->> CV: request a protected resource
+CV -->> WalletInstance: signed credential presentation request
+
+WalletInstance ->> WalletInstance: decode and evaluates the request
+
+
+alt If Trust Chain is provided within the request and no internet connection
+    WalletInstance ->> WalletInstance: statically validate the Trust Chain using Trust Anchor's public keys
+else
+    WalletInstance ->> CV: Fetch RP's Entity Configuration\n at .well-known/openid-federation
+    CV ->> WalletInstance: Return Entity Configuration
+
+    WalletInstance ->> CV: Extract Authority Hints from RP's Configuration
+    CV ->> WalletInstance: Provide Authority Hints
+
+    loop for each Authority Hint
+        WalletInstance ->> TA: Fetch Entity Configuration -> get federation_fetch_api URL
+        TA ->> WalletInstance: Fetch Subordinate Statement
+        WalletInstance ->> WalletInstance: Validate the previous statement\nusing the Federation Entity Keys\nprovided in the Subordinate Statement
+    end
+
+end
+
+WalletInstance ->> WalletInstance: Validate Trust Chain
+
+alt If Trust Chain is valid and unexpired
+    WalletInstance ->> WalletInstance: Proceed with Federation Process
+else
+    WalletInstance ->> WalletInstance: Abort Process with Error
+end
+
+WalletInstance ->> WalletInstance: Applies Policies
+WalletInstance ->> WalletInstance: Derive RP's final metadata
+@enduml

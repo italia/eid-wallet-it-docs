@@ -1,0 +1,49 @@
+@startuml Mobile App Initialization
+autonumber
+hide footbox
+
+'Participants
+actor "User" as user
+participant "Mobile Application Instance" as app 
+participant "Key Attestation APIs" as aats #springgreen
+participant "Application Provider Backend" as bck
+
+user->app: Launch the application
+activate app
+
+app->app: Check if the device meets the minimum security requirements\nand if Key Attestation APIs are available
+
+app->bck: Request ""nonce""
+activate bck
+
+bck->bck: Generate ""nonce""
+
+bck-->app: ""nonce""
+deactivate bck
+
+app->app: Generate Cryptographic Hardware Keys pair (""hardware_key_pub"", ""hardware_key_priv"")\nand store Cryptographic Hardware Key Tag (""hardware_key_tag"")
+
+app->aats: ""client_data_hash = digest(nonce, hardware_key_tag, hardware_key_pub)""
+activate aats
+
+aats->aats: Generate ""key_attestation""\nbound to nonce
+
+aats-->app: ""key_attestation"" 
+deactivate aats
+
+app->bck: ""nonce"", ""key_attestation"", ""hardware_key_tag""
+activate bck
+
+bck->bck: Validate ""nonce""
+
+bck->bck: Validate ""key_attestation""
+
+bck->bck: Store ""hardware_key_tag"",\n""hardware_key_pub""
+
+bck-->app: Key Registration Response
+
+deactivate bck
+deactivate app
+
+app-->user: Initialization successful
+@enduml

@@ -1,0 +1,10 @@
+@startuml Status Assertion Flow
+autonumber
+participant "Wallet Instance" as wi
+participant "Credential Issuer" as i
+
+wi -> i: POST Status Assertion HTTP Request \n "status_assertion_requests" : [\n   $StatusAssertionRequest,\n   ...\n ]
+
+
+i --> wi: Status Assertion HTTP Response \n "status_assertion_responses": [\n   $StatusAssertionResponse,\n   ...,\n   $StatusAssertionError,\n   ...\n ]
+@enduml

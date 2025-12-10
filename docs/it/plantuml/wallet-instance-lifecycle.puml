@@ -1,0 +1,33 @@
+@startuml Wallet Instance Lifecycle Management
+!include <C4/C4_Container>
+HIDE_STEREOTYPE()
+
+SHOW_PERSON_PORTRAIT()
+
+AddRelTag("db", $textColor="orange", $lineColor="orange", $lineStyle = DashedLine())
+
+Boundary(ub, "Wallet Instance Boundary") {
+ 
+  System(acq, "Wallet Instance Activation \n(WI ACT)", "")
+  System(del, "Wallet Instance Revocation \n(WI REV)", "")
+
+  ContainerDb(wstor,"Storage", "")
+  
+}
+
+
+Boundary(cb, "Wallet Provider Boundary") {
+  System(gen, "Wallet Instance Activation \n(WI ACT)", "")
+  System(rev, "Wallet Instance Revocation \n(WI REV)", "")
+  ContainerDb(stor, "Storage", "")
+  Container(pur, "Data Purging", "",$sprite="robot")
+}
+
+
+Rel(pur, stor, "DELETE", "", $tags="db")
+Rel(gen, stor, "CREATE", "", $tags="db")
+
+Rel(acq, wstor, "CREATE", "", $tags="db")
+Rel(del, wstor, "DELETE", "", $tags="db")
+Rel(rev, stor, "UPDATE", "", $tags="db")
+@enduml

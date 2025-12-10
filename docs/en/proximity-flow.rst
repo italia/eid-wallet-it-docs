@@ -1,412 +1,581 @@
+.. include:: ../common/common_definitions.rst
 
-
-.. _proximity_flow_sec:
 
 Proximity Flow
 ==============
 
-This section describes how a Verifier requests the presentation of an *mDoc-CBOR* Credential to a Wallet Instance according to the *ISO 18013-5 Specification*. Only *Supervised Device Retrieval flow* is supported in this technical implementation profile. 
+This section describes how a Relying Party Instance requests the presentation of an *mdoc-CBOR* Credential to a Wallet Instance as specified in the *ISO 18013-5 Specification*.
 
-The presentation phase is divided into three sub-phases: 
+The high-level presentation phase is structured into three broad sub-phases as depicted in the following figure:
+
+.. plantuml:: plantuml/credential-presentation-high-level-flow.puml
+    :width: 90%
+    :alt: The figure illustrates the High-Level Presentation Flow in proximity.
+    :caption: `High-Level Presentation Flow in proximity. <https://www.plantuml.com/plantuml/svg/VLBHYjim47pNLsppv8CcHzjxBELeOaYXK9DSANqoEccmHMN9bUHSJUc_T-qanWr9zIAyEpCxE_9ZJ3Aahh6qDLMz_8m3B1K14Ix9PBoZefOHufLnodOQz7xzSBz-ADU-QRrZq0SXjfysURb_odVvbwVlHPxT2P5Cig35VpKNGXG8qRkiYmYlQV6LhmNVZVQAQcyrVxAM-EWxfsNeitQcKRQ31gEl2D_HRq5y9fEPni4eb72LhD1mXOblLhGPovHFvM7y7geBe5Zxa9P1kWgal7DGuuHdf1V0qJTfBH99fsa7snjNKS59zeD2pg4-MnDhH3BE92CjnQEggYLBMTwB-5ouZ8XnM0rd_idfsnNjZotAvwrnbbEXRnFqtEIBIJKl80ENJwBq0_rnknIfQyz-CD5FkElEb6-QpXarfimgxrRSd9LeUSvoXnGC3jB-Qsvyqu2V7MAw3uYi6q7ufUenu8EHbmanVSlfMiIPIIsJd5XizOyGd7wvEVr2rvxv-009aU43TfTTGTrAtaBgICbFt1l0otpWk3kEV8JJNMF_0W00>`_
+
+The sub-phases are described below:
+
+  1. **Device Engagement**: This subphase begins when the User is prompted to disclose specific attributes from the mdoc(s). The objective of this subphase is to establish a secure communication channel between the Wallet Instance and the Relying Party Instance, so that the mdoc requests and responses can be exchanged during the communication subphase.
+  The messages exchanged in this subphase are transmitted through short-range technologies to limit the possibility of interception and eavesdropping. Device Engagement data may be transferred using either QR code or NFC technologies.
+
+  2. **Session Establishment**: During the session establishment phase, the Relying Party Instance sets up a secure connection. All data transmitted over this connection is encrypted using a session key, which is known to both the Wallet Instance and the Relying Party Instance at this stage.
+  The established session MAY be later terminated based on the conditions as detailed in [`ISO18013-5`_ #12.2.4].
+
+  3. **Communication - Device Retrieval**: The Relying Party Instance encrypts the mdoc request with the appropriate session key and sends it to the Wallet Instance together with its public key in a session establishment message. The Wallet Instance uses the data from the session establishment message to derive the session key and then to decrypt the mdoc request.
+  During the communication subphase, the Relying Party Instance has the option to request information from the Wallet Instance using mdoc requests and responses. The primary mode of communication is the secure channel established during the session setup. The Wallet Instance encrypts the mdoc response using the session key and transmits it to the mobile Relying Party Instance via a session data message.
+
+
+Relying Party and Wallet Instances registered in the IT-Wallet ecosystem MUST support at least the following flows:
+
+
+- *Supervised Device Retrieval flow* where a human Relying Party is overseeing the verification process in person, or *unsupervised flow* where verification might happen through automated systems without human oversight (:ref:`WP_095 <wallet-credential-presentation-testcases>`).
+- *Relying Party Instance Authentication* following the mechanisms defined in the `ISO18013-5`_ for the *reader authentication* (:ref:`WP_098 <wallet-credential-presentation-testcases>`).
+- Domestic *Document Type* and *Namespaces* defined in this technical specification in addition to those already defined in the `ISO18013-5`_ for the mDL (see :ref:`credential-data-model:mdoc-CBOR Credential Format` for more details) (:ref:`WP_099 <wallet-credential-presentation-testcases>`).
+- *Wallet Instance validation* through the Wallet App Attestation.
+
+The following table shows the supported Device Engagement technologies (:ref:`WP_097 <wallet-credential-presentation-testcases>`), specifying which are mandatory.
+
+.. list-table::
+   :class: longtable
+   :widths: 20 15 15 25 25
+   :header-rows: 2
+
+   * - **Transmission technology**
+     - **ISO 18013-5**
+     - **ISO 18013-5**
+     - **IT Wallet**
+     - **IT Wallet**
+   * -
+     - **Wallet Instance**
+     - **RP Instance**
+     - **Wallet Instance**
+     - **RP Instance**
+   * - **QR code**
+     - C\ :sup:`a`
+     - M
+     - MUST
+     - C – MUST if the device is equipped with a camera or QR code reader and BLE.
+   * - **NFC**
+     - C\ :sup:`a`
+     - M
+     - RECOMMENDED
+     - C – MUST if the device is equipped with an NFC reader.
+
+Key: C = Conditional | M = Mandatory | :sup:`a`\ Support for at least one of these methods is mandatory (:ref:`WP_097a <wallet-credential-presentation-testcases>`)
+
+The following table shows the supported Device Retrieval technologies, specifying which are mandatory.
+
+.. list-table::
+   :header-rows: 2
+   :widths: 20 15 15 25 25
+   :class: longtable
+
+   * - **Transmission technology**
+     - **ISO 18013-5**
+     - **ISO 18013-5**
+     - **IT Wallet**
+     - **IT Wallet**
+   * - 
+     - **Wallet Instance**
+     - **RP Instance**
+     - **Wallet Instance**
+     - **RP Instance**
+   * - **BLE**
+     - C\ :sup:`a`
+     - M
+     - MUST
+     - C – MUST if the device is equipped with a camera or QR code reader and BLE.
+   * - **NFC**
+     - C\ :sup:`a`
+     - M
+     - RECOMMENDED
+     - C – MUST if the device is equipped with an NFC reader.
  
-  1. **Device Engagement**: This subphase begins when the User is prompted to disclose certain attributes from the mDoc(s). The objective of this subphase is to establish a secure communication channel between the Wallet Instance and the Verifier App, so that the mDoc requests and responses can be exchanged during the communication subphase.
-  The messages exchanged in this subphase are transmitted through short-range technologies to limit the possibility of interception and eavesdropping.
-  This technical implementation profile exclusively supports QR code for Device Engagement.
-
-  2. **Session establishment**: During the session establishment phase, the Verifier App sets up a secure connection. All data transmitted over this connection is encrypted using a session key, which is known to both the Wallet Instance and the Verifier at this stage.
-  The established session MAY be terminated based on the conditions as detailed in [ISO18013-5#9.1.1.4].
-
-  3. **Communication - Device Retrieval**: The Verifier App encrypts the mDoc request with the appropriate session key and sends it to the Wallet Instance together with its public key in a session establishment message. The mDoc uses the data from the session establishment message to derive the session key and decrypt the mDoc request.
-  During the communication subphase, the Verifier App has the option to request information from the Wallet using mDoc requests and responses. The primary mode of communication is the secure channel established during the session setup. The Wallet Instance encrypts the mDoc response using the session key and transmits it to the Verifier App via a session data message. This technical implementation profile only supports Bluetooth Low Energy (BLE) for the communication sub-phase.
-
-
-The following figure illustrates the flow diagram compliant with ISO 18013-5 for proximity flow.
-
-.. _fig_High-Level-Flow-ITWallet-Presentation-ISO:
-.. figure:: ../../images/High-Level-Flow-ITWallet-Presentation-ISO.svg
-    :figwidth: 100%
-    :align: center
-    :target: https://www.plantuml.com/plantuml/svg/bL9BZnCn3BxFhx3A0H3q3_ImMlOXXBJYqGguzE9ct2RQn0bvJDb_ZoSP3QFI2xab_Xx-xDocZ34NPpiisNDn1ufT1t9GPH_XUw88cA3KjuF_3QlnwNM2dHDYq9vf1Q-Up4ddErkeme9KZ381ESFg9rfB6JwnEB4IiAYTAuou7nN_Al-WQ8xcVzHd2dm8eKeFI-cMfApNDpVd3Nm9n90rmKLBa3s4I8b441dSWrTm7wcNkq7RD3xxJE07CIhlXmqyq624-CWdF94RYQaSWiP4iAweRzjr1vLvRkOVYIcYY32TWO8c9rSBp_GYWKoSe88LzPtsvx5HKO5xtnCSVVpNibA6ATjE8IyfKr7aBgptVDry0WlPXIBOH2aPpoEcbgzDOJTXIEPui2PfrqROZogki56OfNuvcxkdHv5N9H8eZSnaPLRJwUPU95JTn9P-5J60Tn2AcAZQjJ_MiCljxndUN6texN8Dr-ErSjd0roZrNEUjFDSVaJqaZP6gOMpDK0-61UHglkcJjJL75Cx4NHflAKT30xLGH_41wnLQIDb7FD6C7URSAOZCSfCjxyjSWcHEZBb4slCuTQL9FJVsWDRq9akuxfQuByx-0G00
-
-    High-Level Proximity Flow
-
-**Step 1-3**: The Verifier requests the User to reveal certain attributes from their mDoc(s) stored in the Wallet Instance. The User initiates the Wallet Instance. The Wallet Instance MUST create a new temporary key pair (EDeviceKey.Priv, EDeviceKey.Pub), and incorporate the cipher suite identifier, the identifier of the elliptic curve for key agreement, and the EDeviceKey public point into the device engagement structure (refer to [ISO18013-5#9.1.1.4]). This key pair is temporary and MUST be invalidated immediately after the secure channel is established. Finally, the Wallet Instance displays the QR Code for Device Engagement.
-
-Below an example of a device engagement structure that utilizes QR for device engagement and Bluetooth Low Energy (BLE) for data retrieval.
-
-CBOR data:
-
-.. code-block:: 
-
-  a30063312e30018201d818584ba4010220012158205a88d182bce5f42efa59943f33359d2e8a968ff289d93e5fa444b624343167fe225820b16e8cf858ddc7690407ba61d4c338237a8cfcf3de6aa672fc60a557aa32fc670281830201a300f401f50b5045efef742b2c4837a9a3b0e1d05a6917 
-
-In diagnostic notation:
-
-.. code-block:: 
-
-  { 
-    0: "1.0", % Version
-
-    1:        % Security
-    [ 
-        1,     % defines the cipher suite 1 which contains only EC curves
-        24(<<  % embedded CBOR data item
-          { 
-            1: 2, % kty:EC2 (Elliptic curves with x and y coordinate pairs)
-          -1: 1, % crv:p256
-  -2:h'5A88D182BCE5F42EFA59943F33359D2E8A968FF289D93E5FA444B624343  167FE',% x-coordinate
-  -3:h'B16E8CF858DDC7690407BA61D4C338237A8CFCF3DE6AA672FC60A557AA32FC67' % y-coordinate
-          }
-        >>)
-      ],
-  
-      2: %DeviceRetrievalMethods(Device engagement using QR code)
-      [ 
-        [
-          2, %BLE
-          1, % Version
-        {    %BLE options
-            0: false, % no support for mdoc peripheral server mode
-            1: true, % support mdoc central client mode
-            11: h'45EFEF742B2C4837A9A3B0E1D05A6917' % UUID of mdoc client central mode
-          }
-        ]
-      ]
-  }
-
-
-
-**Step 4-6**: The Verifier App scans the QR Code and generates its own ephemeral key pair (EReaderKey.Priv, EReaderKey.Pub). It then calculates the session key, using the public key received in the Engagement Structure and its newly-generated private key, as outlined in [ISO18013-5#9.1.1.5]. Finally, it generates its session key, which must be independently derived by both the Wallet Instance and the Verifier App.
-
-**Step 7**: The Verifier App creates an mDoc request that MUST be encrypted using the relevant session key, and transmits it to the Wallet Instance along with EReaderKey.Pub within a session establishment message. The mDoc request MUST be encoded in CBOR, as demonstrated in the following non-normative example.
-
-CBOR data: 
-.. code-block::
-
-  a26776657273696f6e63312e306b646f63526571756573747381a26c6974656d7352657175657374d818590152a267646f6354797065756f72672e69736f2e31383031332e352e312e6d444c6a6e616d65537061636573a2746f72672e69736f2e31383031332e352e312e4954a375766572696669636174696f6e2e65766964656e6365f4781c766572696669636174696f6e2e6173737572616e63655f6c6576656cf4781c766572696669636174696f6e2e74727573745f6672616d65776f726bf4716f72672e69736f2e31383031332e352e31ab76756e5f64697374696e6775697368696e675f7369676ef47264726976696e675f70726976696c65676573f46f646f63756d656e745f6e756d626572f46a69737375655f64617465f46f69737375696e675f636f756e747279f47169737375696e675f617574686f72697479f46a62697274685f64617465f46b6578706972795f64617465f46a676976656e5f6e616d65f468706f727472616974f46b66616d696c795f6e616d65f46a726561646572417574688443a10126a11821590129308201253081cda00302010202012a300a06082a8648ce3d0403023020311e301c06035504030c15536f6d652052656164657220417574686f72697479301e170d3233313132343130323832325a170d3238313132323130323832325a301a3118301606035504030c0f536f6d6520526561646572204b65793059301306072a8648ce3d020106082a8648ce3d03010703420004aa1092fb59e26ddd182cfdbc85f1aa8217a4f0fae6a6a5536b57c5ef7be2fb6d0dfd319839e6c24d087cd26499ec4f87c8c766200ba4c6218c74de50cd1243b1300a06082a8648ce3d0403020347003044022048466e92226e042add073b8cdc43df5a19401e1d95ab226e142947e435af9db30220043af7a8e7d31646a424e02ea0c853ec9c293791f930bf589bee557370a4c97bf6584058a0d421a7e53b7db0412a196fea50ca6d4c8a530a47dd84d88588ab145374bd0ab2a724cf2ed2facf32c7184591c5969efd53f5aba63194105440bc1904e1b9
-
-The above CBOR data is represented in diagnostic notation as follows:
-.. code-block::
-
-  {
-    "version": "1.0",
-    "docRequests": [
-    {
-      "itemsRequest": 24(<< {
-        "docType": "org.iso.18013.5.1.mDL",
-        "nameSpaces": {
-          "org.iso.18013.5.1.IT": {
-            "verification.evidence": false,
-            "verification.assurance_level": false,
-            "verification.trust_framework": false
-          },
-          "org.iso.18013.5.1": {
-            "un_distinguishing_sign": false,
-            "driving_privileges": false,
-            "document_number": false,
-            "issue_date": false,
-            "issuing_country": false,
-            "issuing_authority": false,
-            "birth_date": false,
-            "expiry_date": false,
-            "given_name": false,
-            "portrait": false,
-            "family_name": false
-          }
-        }
-      } >>),
-      "readerAuth": [
-        h'a10126',
-        {
-          33: h'308201253081cda00302010202012a300a06082a8648ce3d0403023020311e301c06035504030c15536f6d652052656164657220417574686f72697479301e170d3233313132343130323832325a170d3238313132323130323832325a301a3118301606035504030c0f536f6d6520526561646572204b65793059301306072a8648ce3d020106082a8648ce3d03010703420004aa1092fb59e26ddd182cfdbc85f1aa8217a4f0fae6a6a5536b57c5ef7be2fb6d0dfd319839e6c24d087cd26499ec4f87c8c766200ba4c6218c74de50cd1243b1300a06082a8648ce3d0403020347003044022048466e92226e042add073b8cdc43df5a19401e1d95ab226e142947e435af9db30220043af7a8e7d31646a424e02ea0c853ec9c293791f930bf589bee557370a4c97b'
-        },
-        null,
-        h'58a0d421a7e53b7db0412a196fea50ca6d4c8a530a47dd84d88588ab145374bd0ab2a724cf2ed2facf32c7184591c5969efd53f5aba63194105440bc1904e1b9'
-      ]
-    }
-    ]
-  }
-
-**Step 8**: The Wallet Instance uses the session establishment message to derive the session keys and decrypt the mDoc request. It computes the session key using the public key received from the Verifier App and its private key.
-
-**Step 9-10**: When the Wallet Instance receives the mDoc request, it locates the documents that contain the requested attributes and asks the User for permission to provide this information to the Verifier. If the User agrees, the Wallet generates an mDoc response and transmits it to the Verifier App through the secure channel.
-
-**Step 11-12**: If the User gives consent, the Wallet Instance creates an mDoc response and transmits it to the Verifier App via the secure channel. The mDoc response MUST be encoded in CBOR, with its structure outlined in [ISO18013-5#8.3.2.1.2.2]. Below is a non-normative example of an mDoc response.
-
-CBOR Data:
-.. code-block::
-
-  a36776657273696f6e63312e3069646f63756d656e747381a367646f6354797065756f72672e69736f2e31383031332e352e312e6d444c6c6973737565725369676e6564a26a6e616d65537061636573a2746f72672e69736f2e31383031332e352e312e495483d81858f7a46864696765737449440b6672616e646f6d506d44f21ee875f2c1d502b43198e5a15271656c656d656e744964656e74696669657275766572696669636174696f6e2e65766964656e63656c656c656d656e7456616c756581a2647479706571656c656374726f6e69635f7265636f7264667265636f7264bf6474797065781f68747470733a2f2f657564692e77616c6c65742e70646e642e676f762e697466736f75726365bf716f7267616e697a6174696f6e5f6e616d65754d6f746f72697a7a617a696f6e6520436976696c656f6f7267616e697a6174696f6e5f6964656d5f696e666c636f756e7472795f636f6465626974ffffd8185866a4686469676573744944046672616e646f6d50185d84dfb71ce9b173010ddd62174fbe71656c656d656e744964656e746966696572781c766572696669636174696f6e2e74727573745f6672616d65776f726b6c656c656d656e7456616c7565656569646173d8185865a4686469676573744944006672616e646f6d50137f903174253c4585358267aae2ea4e71656c656d656e744964656e746966696572781c766572696669636174696f6e2e6173737572616e63655f6c6576656c6c656c656d656e7456616c75656468696768716f72672e69736f2e31383031332e352e318bd8185852a46864696765737449440c6672616e646f6d5053e29d0ddbbc7d2306a32bdbe2e56e5171656c656d656e744964656e7469666965726b66616d696c795f6e616d656c656c656d656e7456616c756563446f65d8185855a4686469676573744944036672616e646f6d50990cba2069fa1b33b8d6ae910b6549dc71656c656d656e744964656e7469666965726a676976656e5f6e616d656c656c656d656e7456616c756567416e746f6e696fd818585ba46864696765737449440a6672616e646f6d504086c1379975f805f1b1f4975e6a126571656c656d656e744964656e7469666965726a69737375655f646174656c656c656d656e7456616c7565d903ec6a323031392d31302d3230d818585ca4686469676573744944016672616e646f6d50ab4ca30c918dd2fd0bf35242c15fa2d871656c656d656e744964656e7469666965726b6578706972795f646174656c656c656d656e7456616c7565d903ec6a323032342d31302d3230d8185855a4686469676573744944076672616e646f6d508d9066f6c8da16619867cd4e2fab0c8871656c656d656e744964656e7469666965726f69737375696e675f636f756e7472796c656c656d656e7456616c7565624954d818587ea4686469676573744944056672616e646f6d5059fe68db795dee4c20976380ea24770571656c656d656e744964656e7469666965727169737375696e675f617574686f726974796c656c656d656e7456616c75657828497374697475746f20506f6c696772616669636f2065205a656363612064656c6c6f20537461746fd818585ba4686469676573744944026672616e646f6d5008b3f1ca5517019767be3dee3bb0614571656c656d656e744964656e7469666965726a62697274685f646174656c656c656d656e7456616c7565d903ec6a313935362d30312d3230d818585ca4686469676573744944096672616e646f6d50a2395ec214350c26066306e23279b3ae71656c656d656e744964656e7469666965726f646f63756d656e745f6e756d6265726c656c656d656e7456616c756569393837363534333231d8185850a4686469676573744944066672616e646f6d50a25e1a5b915d2d6eafee9674e023293971656c656d656e744964656e74696669657268706f7274726169746c656c656d656e7456616c75654420212223d81858eea46864696765737449440d6672616e646f6d50eeed6a3b856563627589a360939d12f771656c656d656e744964656e7469666965727264726976696e675f70726976696c656765736c656c656d656e7456616c756582a37576656869636c655f63617465676f72795f636f646561416a69737375655f64617465d903ec6a323031382d30382d30396b6578706972795f64617465d903ec6a323032342d31302d3230a37576656869636c655f63617465676f72795f636f646561426a69737375655f64617465d903ec6a323031372d30322d32336b6578706972795f64617465d903ec6a323032342d31302d3230d818585ba4686469676573744944086672616e646f6d50c0ef486b2a194ed3cbf7f354fd40092171656c656d656e744964656e74696669657276756e5f64697374696e6775697368696e675f7369676e6c656c656d656e7456616c756561496a697373756572417574688443a10126a118215901423082013e3081e5a00302010202012a300a06082a8648ce3d040302301a3118301606035504030c0f5374617465204f662055746f706961301e170d3233313132343134353430345a170d3238313132323134353430345a30383136303406035504030c2d5374617465204f662055746f7069612049737375696e6720417574686f72697479205369676e696e67204b65793059301306072a8648ce3d020106082a8648ce3d03010703420004c338ec1000b351ce8bcdfc167450aeceb
-
-In diagnostic notation:
-.. code-block::
-
-  {
-    "version": "1.0",
-    "documents": [
-    {
-      "docType": "org.iso.18013.5.1.mDL",
-      "issuerSigned": {
-        "nameSpaces": {
-          "org.iso.18013.5.1.IT": [
-            24(<< {
-              "digestID": 11,
-              "random": h'6d44f21ee875f2c1d502b43198e5a152',
-              "elementIdentifier": "verification.evidence",
-              "elementValue": [
-                {
-                  "type": "electronic_record",
-                  "record": {
-                    "type": "https://eudi.wallet.pdnd.gov.it",
-                    "source": {
-                      "organization_name": "Motorizzazione Civile",
-                      "organization_id": "m_inf",
-                      "country_code": "it"
-                    }
-                  }
-                }
-              ]
-            } >>),
-            24(<< {
-              "digestID": 4,
-              "random": h'185d84dfb71ce9b173010ddd62174fbe',
-              "elementIdentifier": "verification.trust_framework",
-              "elementValue": "eidas"
-            } >>),
-            24(<< {
-              "digestID": 0,
-              "random": h'137f903174253c4585358267aae2ea4e',
-              "elementIdentifier": "verification.assurance_level",
-              "elementValue": "high"
-            } >>)
-          ],
-          "org.iso.18013.5.1": [
-            24(<< {
-              "digestID": 12,
-              "random": h'53e29d0ddbbc7d2306a32bdbe2e56e51',
-              "elementIdentifier": "family_name",
-              "elementValue": "Doe"
-            } >>),
-            24(<< {
-              "digestID": 3,
-              "random": h'990cba2069fa1b33b8d6ae910b6549dc',
-              "elementIdentifier": "given_name",
-              "elementValue": "Antonio"
-            } >>),
-            24(<< {
-              "digestID": 10,
-              "random": h'4086c1379975f805f1b1f4975e6a1265',
-              "elementIdentifier": "issue_date",
-              "elementValue": 1004("2019-10-20")
-            } >>),
-            24(<< {
-              "digestID": 1,
-              "random": h'ab4ca30c918dd2fd0bf35242c15fa2d8',
-              "elementIdentifier": "expiry_date",
-              "elementValue": 1004("2024-10-20")
-            } >>),
-            24(<< {
-              "digestID": 7,
-              "random": h'8d9066f6c8da16619867cd4e2fab0c88',
-              "elementIdentifier": "issuing_country",
-              "elementValue": "IT"
-            } >>),
-            24(<< {
-              "digestID": 5,
-              "random": h'59fe68db795dee4c20976380ea247705',
-              "elementIdentifier": "issuing_authority",
-              "elementValue": "Istituto Poligrafico e Zecca dello Stato"
-            } >>),
-            24(<< {
-              "digestID": 2,
-              "random": h'08b3f1ca5517019767be3dee3bb06145',
-              "elementIdentifier": "birth_date",
-              "elementValue": 1004("1956-01-20")
-            } >>),
-            24(<< {
-              "digestID": 9,
-              "random": h'a2395ec214350c26066306e23279b3ae',
-              "elementIdentifier": "document_number",
-              "elementValue": "987654321"
-            } >>),
-            24(<< {
-              "digestID": 6,
-              "random": h'a25e1a5b915d2d6eafee9674e0232939',
-              "elementIdentifier": "portrait",
-              "elementValue": h'20212223'
-            } >>),
-            24(<< {
-              "digestID": 13,
-              "random": h'eeed6a3b856563627589a360939d12f7',
-              "elementIdentifier": "driving_privileges",
-              "elementValue": [
-                {
-                  "vehicle_category_code": "A",
-                  "issue_date": 1004("2018-08-09"),
-                  "expiry_date": 1004("2024-10-20")
-                },
-                {
-                  "vehicle_category_code": "B",
-                  "issue_date": 1004("2017-02-23"),
-                  "expiry_date": 1004("2024-10-20")
-                }
-              ]
-            } >>),
-            24(<< {
-              "digestID": 8,
-              "random": h'c0ef486b2a194ed3cbf7f354fd400921',
-              "elementIdentifier": "un_distinguishing_sign",
-              "elementValue": "I"
-            } >>)
-          ]
-        },
-        "issuerAuth": [
-          h'a10126',
-          {
-            33: h'3082013e3081e5a00302010202012a300a06082a8648ce3d040302301a3118301606035504030c0f5374617465204f662055746f706961301e170d3233313132343134353430345a170d3238313132323134353430345a30383136303406035504030c2d5374617465204f662055746f7069612049737375696e6720417574686f72697479205369676e696e67204b65793059301306072a8648ce3d020106082a8648ce3d03010703420004c338ec1000b351ce8bcdfc167450aeceb7d518bd9a519583e082d67effff06565804fc09abf0e4a08e699c9dba3796285a15f68e40ac7f9fc7700a15153a4065300a06082a8648ce3d040302034800304502210099b7d62e6bf7b1823db3713df889bf73e70bb4d9c58c21e92c58d2f1beffe932022058d039747a00d70e6d66be4797e6142b3608a014ee09b7b79af2cae2aaf27788'
-          },
-          24(<< {
-        "version": "1.0",
-        "digestAlgorithm": "SHA-256",
-        "docType": "org.iso.18013.5.1.mDL",
-        "valueDigests": {
-          "org.iso.18013.5.1": {
-          1: h'0E5F0B6B33418E508740771E82F893372EAF5B2445BC4C84DCF08B005E9493FC',
-          2: h'DE21BB62FF2897D8B986D2CDA9F9BC5865C02807F7B4D9DD1FA4A79DF4C0D37F',
-          3: h'BC5568239E35CE9FF8798C27FFDCD757B134B679F0FE05729AA3491381912E65',
-          5: h'E6048BDC7FD6454296F1E3F54536107C9C5B24C4064DE46A98121E3630EECCA2',
-          6: h'73690D92DCAA61B0203870F67C6AA9FDFEA889B6F0C720DE757B4B0A8516A206',
-          7: h'E353EA0B0FD92B6BE90C64CC3B2EE1284153A8F0F5066B99AAC599200E6EEEB2',
-          8: h'29227872CEB49923D267B5F4BADE6D387B42AC2DC4B2AE26C9013067FEE7018A',
-          9: h'A6A119F7CACAC0B8C6AACAC747FD3FE7E50B6D9BB8A507FDA79F0DF6646F285D',
-          10: h'6D8025D2F02A5E7E1406FB6AAEB67F9EDE9B07191A53F3E23B77C528223A94E2',
-          12: h'B0D43E4E2EA534E4D5304E64BCF7A0F13E2C8EE8304B9CD23ABA4909652A4647',
-          13: h'FBF4DE318982F2DBAD43C601CAEB22628B301AC18AA8264C5831B2AAAC89C486'
-          },
-          "org.iso.18013.5.1.IT": {
-          0: h'CF57377B675F64F37314739592C1E8A911A7DDAF341CE2902FE877C5A835E4C1',
-          4: h'4A4B4CC64EC9299C1A2501EA449F577005E9F7A60408057C07A7C67FB151E5F5',
-          11: h'78824FBD6FBBA88A2AAB44DF8B6F5E9759126D87D1F4415995E658FD9239E1FE'
-          }
-        },
-        "deviceKeyInfo": {
-          "deviceKey": {
-          1: 2,
-          -1: 1,
-          -2: h'AFD09E720B918CEDC2B8A881950BAB6A1051E18AE16A814D51E609938663D5E1',
-          -3: h'61FBC6C8AD24EC86A78BB4E9AC377DD2B7C711D9F2EB9AFD4AA0963662847AED'}},
-          "validityInfo": {
-            "signed": 0("2023-11-24T14:54:05Z"),
-            "validFrom": 0("2023-11-24T14:54:05Z"),
-            "validUntil": 0("2024-11-24T14:54:05Z")}
-          }  >>),
-          h'f2461e4fab69e9f7bcffe552395424514524d1679440036213173101448d1b1ab4a293859b389ffa8b47aeed10e9b0c1545412ac37c51a76482cd9bbbe110152'
-        ]
-      },
-      "deviceSigned": {
-        "nameSpaces": 24(<< {} >>),
-        "deviceAuth": {
-          "deviceSignature": [
-            h'a10126',
-            {},
-            null,
-            h'1fed7190d2975ab79c072e6f1d9d52436059d1fc959d55baf74f057d89b10fcc0dc77a50d433d4c76ddf26223c5560c4ab123b5cb5eb805a90036aa147493076'
-          ]
-        }
-      }
-    }
-    ],
-    "status": 0
-  }
-
-**Step 13**: The Verifier App is required to validate the signatures in the mDoc's issuerSigned field using the public key of the Credential Issuer specified within the mDoc. Subsequently, the Verifier MUST validate the signature in the deviceSigned field. If these signature checks pass, the Verifier can confidently consider the received information as valid.
-
-Device Engagement
------------------
-
-The Device Engagement structure MUST be have at least the following components:
-
-  - **Version**: *tstr*. Version of the data structure being used.
-  - **Security**: an array that contains two mandatory values
-  
-    - the cipher identifier: see Table 22 of [ISO18013-5]
-    - the mDL public ephemeral key generated by the Wallet Instance and required by the Verifier App to derive the Session Key. The mDL public ephemeral key MUST be of a type allowed by the indicated cipher suite.
-  - **transferMethod**: an array that contains one or more transferMethod arrays when performing device engagement using the QR code. This array is for offline data retrieval methods. A transferMethod array holds two mandatory values (type and version). Only the BLE option is supported by this technical implementation profile, then the type value MUST be set to ``2``. 
-  - **BleOptions**: this elements MUST provide options for the BLE connection (support for Peripheral Server or Central Client Mode, and the device UUID).
-
-
-mDoc Request
-------------
-
-The messages in the mDoc Request MUST be encoded using CBOR. The resulting CBOR byte string for the mDoc Request MUST be encrypted with the Session Key obtained after the Device Engagement phase and MUST be transmitted using the BLE protocol.
-The details on the structure of mDoc Request, including identifier and format of the data elements, are provided below. 
-
-  - **version**: (tstr). Version of the data structure.
-  - **docRequests**: Requested DocType, NameSpace and data elements.
-
-    - **itemsRequest**: #6.24(bstr .cbor ItemsRequest).
-
-      - **docType**: (tstr). The DocType element contains the type of document requested. See :ref:`Data Model Section <pid_eaa_data_model.rst>`.
-      - **nameSpaces**: (tstr). See :ref:`Data Model Section <pid_eaa_data_model.rst>` for more details.
-
-        - **dataElements**: (tstr). Requested data elements with *Intent to Retain* value for each requested element.
-
-          - **IntentToRetain**: (bool). It indicates that the Verifier App intends to retain the received data element.
-    - **readerAuth**: *COSE_Sign1*. It is required for the Verifier App authentication. 
+Key: C = Conditional | M = Mandatory | :sup:`a`\ Support for at least one of these methods is mandatory (:ref:`WP_096b <wallet-credential-presentation-testcases>`)
 
 .. note::
+   From the second edition, version 3, `ISO18013-5`_ does not define or support Server Retrieval as a transport option. Only proximity retrieval methods (NFC, BLE, and optionally Wi-Fi Aware) are specified (:ref:`WP_096 <wallet-credential-presentation-testcases>`). Therefore, Server Retrieval is not considered in this flow (:ref:`WP_096a <wallet-credential-presentation-testcases>` and :ref:`PPR-023 <test-plans-proximity-presentation>`).
+
+
+The following figure illustrates the low-level flow compliant with ISO 18013-5 for proximity flow.
+
+.. _fig_High-Level-Flow-ITWallet-Presentation-ISO-updated:
+.. plantuml:: plantuml/credential-presentation-flow.puml
+    :width: 99%
+    :alt: The figure illustrates the Low-Level Presentation Flow in proximity.
+    :caption: `Low-Level Presentation Flow in proximity. <https://www.plantuml.com/plantuml/svg/ZLJBRjim4BppAnRgfGQS5kYn28muZki6JTFKJf1BBXIrjeb8IvKFAVxxBacvTLe7oKtIScTsPeSwSrvQ7vfQoE0DXQP4AuHKtbYuSsX1EWX2j7n8AzrAyb3Soxf63tUaVH7h_VFoyWOkYM59OIftGeIJIVyPVhH8uBS80y3-LAJJdVJ8IE4q7StKWGyJ0qkl3K6vEzOCF2XN9DolPjCzKsftMAFoBZMrrZpfHliTFw5Zq0ov3gJYWwov94phuRkaIhBu7UWrh3osy0cq0p8UMhHhOnki8bzYwtdOyEAmwGXI9KIVXbeWeOqg2Nl0TeiDlzRmY3oKr1OUw7rHp2-mqmg_uUx3ZTLTKOpX-STG5iL82CiJiVQEcVjn1--kBXTVRnVB-VnQd9QJwUZqOpdXpjmufutSC1tveW2M9m6Vr5RIPa3ukGHbgcJbzPTPd3d1Yx-BuHrs9vFkhIAMA2kq_uWu-9X5PCIPQTh0W0wTYyunr9xinY8d2tcvJc-8ZUVb09AokzR7D--jBcFl0rdy5T1vOFPL1ffpFifQkstM_QfdvtlFZlT3mv_PnJ_MLHdf_6e--COALE1fOvcmFh1n2C0nfRboWKdJo-HHEBFfDUUI8ntja9x98dJAu7BGBrkEUiSRuQZkiwvfCro6GzFSc6rJXZoVS63MO76ZdRSvlmhvHgzZcd6uKzC1-JKVPzd75Sj_QN4yLcl8uS6sBZYLl2GGlVPR6BRvRDnCADzaU8xFVwvcal5H9sDogtHReDHKiMUZDBNQedg4fZ8AMBokueyYNNmc663X5csZAHadAZouD0SllJZZ-VX7-ni0>`_
+
+
+**Step 1**: The User opens the Wallet Instance initiating the process.
+
+**Step 2**: The User authenticates itself to the Wallet Instance. This can be done by the Wallet Instance or a Wallet Secure Cryptographic Application (WSCA). It is a prerequisite for accessing sensitive data and presenting attributes  (:ref:`WP_100 <wallet-credential-presentation-testcases>`).
+
+**Step 3**: The User selects the proximity presentation functionality.
+
+**Step 4**: [Optional] If the initial authentication in Step 2 was not done through WSCA, a separate authentication via WSCA MAY be required  (:ref:`WP_100 <wallet-credential-presentation-testcases>`).
+
+**Step 5**: The Wallet Instance generates a new ephemeral Elliptic Curve key pair for secure communication (:ref:`WP_101 <wallet-credential-presentation-testcases>`). The public key (``EDeviceKey.Pub``) will be exchanged with the Relying Party Instance to derive a shared session key, which is then used for session encryption. This is part of the device engagement process.
+
+.. admonition:: Box A
+
+   The Wallet Instance and Relying Party Instance exchange *Device Engagement* data via QR code or via NFC Connection Handover (:ref:`WP_097 <wallet-credential-presentation-testcases>`).  
+
+   Refer to:
+
+   - Sec 8.2.2.1 for ``DeviceEngagement`` over QR code
+   - Sec 8.2.2.2 for ``DeviceEngagement`` over NFC
+
+**Step 6**: The Relying Party Instance generates its ephemeral key pair (``EReaderKey.Priv``, ``EReaderKey.Pub``). The private key (``EReaderKey.Priv``) MUST be kept secret, and the public key (``EReaderKey.Pub``) MUST be used in establishing the session.
+
+**Step 7**: The Wallet Instance and Relying Party Instance independently MUST derive the session keys using their private ephemeral key and the other party's public ephemeral key through a key agreement protocol. This ensures session encryption. In this particular step, the Relying Party Instance MUST compute its session key  (:ref:`PPR-002 <test-plans-proximity-presentation>` and :ref:`WP_104 <wallet-credential-presentation-testcases>`).
+
+**Step 8**: The Relying Party Instance MUST prepare a ``SessionEstablishment`` message. This message MUST be signed by the Relying Party Instance (mdoc reader authentication as specified in [`ISO18013-5`_ #12.5]) and encrypted using the session keys derived in the previous step. The ``SessionEstablishment`` message MUST include the ``EReaderKey.Pub`` and a request for specific attribute(s) (:ref:`PPR-002 <test-plans-proximity-presentation>`).
+
+
+
+Below is a non-normative example using the diagnostic notation of a CBOR-encoded ``SessionEstablishment`` message that contains an mdoc request for a Wallet App Attestation along with an mDL Digital Credential.
+
+.. literalinclude:: ../../examples/iso-session-establishment.txt
+  :language: text
+
+.. admonition:: Box B
+
+   The Relying Party Instance MUST transmit the encrypted and signed ``SessionEstablishment`` message to the Wallet Instance over an NFC or a BLE secure connection that was established based on the Device Engagement information.
+   Refer to:
+
+   - Sec 8.2.2.3 for ``SessionEstablishment`` over BLE, and
+   - Sec 8.2.2.5 for ``SessionEstablishment`` over NFC
+
+**Step 9**: The Wallet Instance MUST compute the session key, as described in Step 7.
+
+**Step 10**: Upon receiving the ``SessionEstablishment`` message, the Wallet Instance MUST decrypt it using the shared session key and MUST verify the Relying Party Instance's signature (mdoc reader authentication as specified in [`ISO18013-5`_ #12.5]) to ensure its authenticity (:ref:`PPR-002 <test-plans-proximity-presentation>` and :ref:`WP_105–106 <wallet-credential-presentation-testcases>`).
+
+**Step 11**: The Wallet Instance MUST decrypt the attribute request and MUST prompt the User for their consent to release the requested attributes (:ref:`WP_107 <wallet-credential-presentation-testcases>`). It MUST also display the contents of the Relying Party's Registration Certificate to ensure transparency about the requested attributes and its registered purpose (:ref:`WP_107b <wallet-credential-presentation-testcases>`).
+
+**Step 12**: The User reviews the request and the Relying Party's registration information and then approves the presentation of the requested attributes.
+
+
+.. admonition:: Box C
+
+   After receiving User approval, the Wallet Instance MUST retrieve the requested mdoc Digital Credentials (:ref:`PPR-006 <test-plans-proximity-presentation>` and :ref:`WP_108 <wallet-credential-presentation-testcases>`). It then MUST prepare a ``SessionData`` message containing these Digital Credentials, and it MUST sign the required authentication data (as part of the mdoc authentication process, as specified in [`ISO18013-5`_ #12.4]) as per (:ref:`WP_109–110 <wallet-credential-presentation-testcases>`). It MUST encrypt it using the established session keys before transmitting it to the Relying Party Instance over the secure channel (:ref:`WP_111 <wallet-credential-presentation-testcases>`). The signing ensures device binding and data integrity. The mdoc response MUST be encoded in CBOR, with its structure outlined in [`ISO18013-5`_ #10.3] (:ref:`PPR-029 <test-plans-proximity-presentation>`, :ref:`PPR-030 <test-plans-proximity-presentation>`, and :ref:`WP_112 <wallet-credential-presentation-testcases>`).
+   Refer to (:ref:`WP_112a–112b <wallet-credential-presentation-testcases>`):
+
+   - Sec 8.2.2.4 for ``SessionData`` over BLE, and
+   - Sec 8.2.2.5 for ``SessionData`` over NFC
+
+Below is a non-normative example using the diagnostic notation of a CBOR-encoded ``SessionData`` that contains the mdoc response of a Wallet App Attestation and an mDL Digital Credential.
+
+.. literalinclude:: ../../examples/iso-session-data.txt
+  :language: text
+
+**Step 13**: The Relying Party Instance receives the ``SessionData``, then it MUST decrypt it, and it MUST verify the Wallet Instance's signature to ensure the data's integrity and that it originates from the expected device (device binding). It also MUST check the validity of the mdoc, including its Issuer's signature. In case of long-lived Digital Credentials, it SHOULD also check the revocation status using the `TOKEN-STATUS-LIST`_.
+
+**Step 14**: Once the data exchange is complete, either party can terminate the session. The session can be terminated by sending the status code for session termination in a ``SessionData`` message; this can be sent together with an mdoc request or response [`ISO18013-5`_ #12.2.4] (:ref:`WP_113c <wallet-credential-presentation-testcases>`). If BLE is used, this can involve sending a status code for session termination or the “End” command. In this scenario, the GATT Client (Relying Party Instance) MUST unsubscribe from characteristics and disconnect from the GATT server (Wallet Instance) (:ref:`PPR-007 <test-plans-proximity-presentation>`, :ref:`WP_113b <wallet-credential-presentation-testcases>`, and :ref:`WP_114 <wallet-credential-presentation-testcases>`).
+
+**Final Consideration**: The presentation flow focused on the technical data exchange in proximity settings. It is crucial to recognise that supervised proximity flows involving a human verifier play a vital role in many use cases (e.g., age verification at a store, identity check by law enforcement). The human element adds a layer of identity verification through visual inspection and comparison, contributing to User Binding and overall authentication assurance aspects not fully captured in a purely technical presentation flow.
+
+.. note::
+   During proximity presentation the Wallet Instance might not be able to fetch a fresh Wallet App Attestation, in this case, the Wallet Instance SHOULD send the latest version of the Wallet App Attestation (:ref:`WP_108a <wallet-credential-presentation-testcases>`). It is left up to the Relying Party to determine whether a presentation with a valid but expired Wallet App Attestation is valid or not.
+
+.. _sec-deviceengagement-qr:
+
+``DeviceEngagement`` over QR Code
+----------------------------------
+The following figure illustrates the low-level flow compliant with ISO 18013-5 for ``DeviceEngagement`` over QR Code corresponding to Box A in Figure :ref:`fig_High-Level-Flow-ITWallet-Presentation-ISO-updated`.
+
+.. _fig_DeviceEngagement-QR:
+.. plantuml:: plantuml/device-engagement-over-qr-code.puml
+    :width: 90%
+    :alt: The figure illustrates the Device Engagement over QR Code Presentation Flow in proximity.
+    :caption: `Device Engagement over QR Code. <https://www.plantuml.com/plantuml/svg/PP0n3i8m34NtdCBAtWimL4Z0m0P5YDaaLcifTQlMIQvFbAK5F5Zoz__Fae-hug9n30QZJXB7Doq6IjKsbnqxdb4Kx0j388Mdi5h05VA_fRl1LGfH75LBCXiBdN92fPghIcxQT837C6NGWU3UmMdo12mkHC_IWxLdIkpe8ZtsD9AejT-iLCVKD6qk98Uo9sstFVqaTa8sHn9VFl01>`_
+
+**Step 1**: The Wallet Instance presents a QR Code to the Relying Party Instance. The QR code SHALL contain a URI with “mdoc:” as scheme and the ``DeviceEngagement`` structure specified in Section 9.1 encoded using base64url-without-padding, according to `RFC 4648`_, as path  (:ref:`WP_102a <wallet-credential-presentation-testcases>`).
+
+Non-Normative Example with BLE as Data Retrieval
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Below is a non-normative example using the diagnostic notation of a CBOR-encoded ``DeviceEngagement`` that utilizes QR for Device Engagement and Bluetooth Low Energy (BLE) for data retrieval.
+
+ .. literalinclude:: ../../examples/iso-device-engagement-BLE.txt
+  :language: text
+
+Non-Normative Example with NFC as Data Retrieval
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Below is a non-normative example using the diagnostic notation of a CBOR-encoded ``DeviceEngagement`` that utilizes QR for Device Engagement and NFC for data retrieval.
+
+ .. literalinclude:: ../../examples/iso-device-engagement-NFC.txt
+  :language: text
+
+**Step 2**: The Relying Party uses its Relying Party Instance to scan the QR code and retrieve the ``DeviceEngagement`` data from the mdoc. It MUST select one of the transmission technologies from the ones provided in the ``DeviceEngagement`` structure.
+
+.. _sec-deviceengagement-nfc:
+
+``DeviceEngagement`` over NFC
+------------------------------
+The following figure illustrates the low-level flow compliant with ISO 18013-5 for ``DeviceEngagement`` over NFC corresponding to Box A in Figure :ref:`fig_High-Level-Flow-ITWallet-Presentation-ISO-updated` (:ref:`WP_103 <wallet-credential-presentation-testcases>`). 
+
+.. _fig_DeviceEngagement-NFC:
+.. plantuml:: plantuml/device-engagement-over-nfc.puml
+    :width: 90%
+    :alt: The figure illustrates the Device Engagement over NFC Presentation Flow in proximity.
+    :caption: `Device Engagement over NFC. <https://www.plantuml.com/plantuml/img/dLDDJ-Cm4BtFhtZoXUOGJfooAaA28hWKr7QrPpSUWYNNpjfEilpxdPIIRRLKIEGG9NdpFkObkKbPnzpj7Eak1z_jjXo9g9M7jhQjzXdgbtQECtvwcnLqmd0Ahvxnw4N6rxo7Uo9TPzlhp38wNVPqWR8iiRo_XU7UrWpsZMvunw8o4m6HH8Zmt8HiXMAAaK3Ry0VgKvOYGBkCzJltLNiJUiaFEVgol1ugh5WRF1m0hDbnBMQRjvPnXOrk2XbcbnZBoVLKPn2Tlf8DhQ0Eoxl5FRGHDDl4QPf5uhXFDrDTz9L_gQlagmzK5OTCOwGfpOf_Tvp6tRks3N6qhdMCbcCg3jwZzN_fbRhRDx7uLuI2qLaND6xZ3O7a32bENkN5V0wbrfoI3NuXDM-TJQyVh2vQtnmlFxdDGfk5eLs1-Pn8xhuZ8_vuykuDzWN3-tSqjMTmM1pMuxEbVc2pN3nFrTg4JbYNrAEyXZJvrB8_7JcNSAAinsA-dBfr8PqNEx6aiMeYmqSV-j7DG3U2o__r5m00>`_
+
+``DeviceEngagement`` over NFC is based on the NFC Forum Connection Handover Technical Specification, Version 1.5. Only Reader/ Writer mode using a Type 4 Tag is supported. The Connection Handover protocol is always initiated by the Relying Party Instance, which makes the role of Handover Requester. The Wallet Instance acts as the NFC Tag Device and the Relying Party Instance as the NFC Reader Device. The Wallet Instance SHALL use either Static Handover or Negotiated Handover:
+- **Static Handover**: The Relying Party Instance retrieves a Handover Select message directly from the Wallet Instance's Type 4 Tag. This message contains at least one Alternative Carrier Record, each indicating a retrieval method supported by the Wallet Instance (:ref:`WP_103a <wallet-credential-presentation-testcases>`). The Relying Party Instance MUST select one of these transmission technologies. (see Step 1)
+- **Negotiated Handover**: The Wallet Instance includes the service ``urn:nfc:sn:handover`` in a Service Parameter Record of the initial NDEF (NFC Data Exchange Format) message  (:ref:`WP_103b <wallet-credential-presentation-testcases>`). Upon selecting this service, the Relying Party Instance sends a Handover Request with an Alternative Carrier Record for each carrier it supports. The Wallet Instance replies with a Handover Select message containing exactly one selected carrier. (See Step 2-4)
+
+**Step 1**: The Relying Party Instance reads the Wallet’s NFC Type 4 Tag to obtain a Handover Select message, which includes: 
+- Alternative Carrier Record is an NDEF record inside a Handover Select or Handover Request message. It points to one possible communication technology (called a “carrier”), such as NFC or BLE. It tells the reader about the supported carrier and a pointer (Auxiliary Data Reference) to more detailed information. The Alternative Carrier Record for the NFC device retrieval transmission technology shall reference the Carrier Configuration Record with the ID reference “nfc”.
+- Carrier Configuration Record provides the technical parameters needed actually to use that carrier. For NFC device retrieval transmission technology, it SHALL have the type “iso.org:18013:nfc” and the ID reference “nfc”. The binary content of the Carrier Configuration Record SHALL be encoded according to Table 1 of [`ISO18013-5`_ #9.2.2] (:ref:`WP_103d <wallet-credential-presentation-testcases>`).
+
+For example:
+For NFC, this defines maximum APDU (Application Protocol Data Unit) command/response lengths; 
+For BLE, it defines the Wallet Instance service UUID, characteristic UUIDs, MTU (Maximum Transmission Unit) size, and optional connection parameters; 
+If early ``SessionEstablishment`` is supported, it also lists the TNEP (Tag NDEF Exchange Protocol) service name used to send the ``SessionEstablishment`` message during handover.
+
+.. note::
+   For the NFC device retrieval transmission technology, the contents of the Alternative Carrier Record and Carrier Configuration Record(s) SHALL comply with [`ISO18013-5`_ #9.2.2]. For the BLE device retrieval transmission technology, the contents of the Alternative Carrier Record and Carrier Configuration Record(s) shall comply with [`ISO18013-5`_ #11.1.2].
+
+- Auxiliary Data Record MUST carry the DeviceEngagement structure from the Wallet Instance to the Relying Party Instance as part of the auxiliary NDEF record in the Handover Select message. This record has the type ``iso.org:18013:deviceengagement``, the ID reference “mdoc”, and uses the NFC forum external type format (``0x04``). For each Alternative Carrier record, the Auxiliary Data Reference MUST point to the NDEF record containing the ``DeviceEngagement`` Structure (:ref:`WP_103e <wallet-credential-presentation-testcases>`). 
+
+**Step 2**: The Relying Party Instance reads the Wallet Instance's Initial NDEF (NFC Data Exchange Format) message, which contains a service parameter record for ``urn:nfc:sn:handover``, indicating the Wallet supports Negotiated Handover. 
+
+**Step 3**: The Relying Party Instance sends a Handover Request to the Wallet Instance listing the supported carriers. 
+
+**Step 4**: The Wallet Instance returns Handover Select constructed in response to the received Handover Request message. The contents of the Handover Select message is the same as Step 1 (:ref:`WP_103f <wallet-credential-presentation-testcases>`).
+
+.. note::
+   Use of Negotiated Handover for Device Engagement allows negotiation of transfer methods. For BLE, it additionally allows negotiation of keys used by the transmission layer. This provides improved user experience and enhances the security of data transmission [`ISO18013-5`_ #9.2.1].
+
+.. note::
+   Proceed only if the ``DeviceEngagement`` Capabilities include ``HandoverSessionEstablishmentSupport`` set to ``true`` (:ref:`WP_103c <wallet-credential-presentation-testcases>`). Otherwise, skip the early ``SessionEstablishment``. The early ``SessionEstablishment`` is sent via a dedicated TNEP service; the same ``SessionEstablishment`` SHALL also be sent again during data retrieval and MUST match. If it does not match, the Wallet Instance terminates (:ref:`WP_103g <wallet-credential-presentation-testcases>`). If the early ``SessionEstablishment`` fails to send, proceed as normal (:ref:`WP_103h <wallet-credential-presentation-testcases>`).
+
+**Step 5**: [Optional] Relying Party Instance opens the TNEP service named [urn:placeholder] with the Wallet Instance during the negotiated handover to deliver the early ``SessionEstablishment`` message.
+
+**Step 6**: Relying Party Instance sends ``SessionEstablishment`` (e.g., ``EReaderKey`` + encrypted ``DeviceRequest``). Wallet Instance processes it; data retrieval has not started yet.
+
+**Step 7**: Relying Party Instance closes the TNEP service.
+
+.. note::
+  If an optional ``SessionEstablishment`` message is sent during Negotiated Handover (Step 5), the Wallet Instance MUST verify that it matches the ``SessionEstablishment`` message received during Device Retrieval (using BLE or NFC secure channel). This verification is required to ensure a correct Session Binding.
+
+Non-Normative Example
+^^^^^^^^^^^^^^^^^^^^^^^
+Below is a non-normative example of a ``DeviceEngagement`` structure for Data Retrieval over BLE and NFC.
+  .. literalinclude:: ../../examples/iso-device-engagement-NFC-BLE.txt
+   :language: text
+
+``SessionEstablishment`` over BLE
+----------------------------------
+The following figure illustrates the low-level flow compliant with `ISO18013-5`_ for ``SessionEstablishment`` over BLE corresponding to Boxes B in Figure 8.10.
+
+.. _fig_SessionEstablishment-BLE:
+.. plantuml:: plantuml/session-establishment-over-ble.puml
+    :width: 90%
+    :alt: The figure illustrates the Session Establishment over BLE Presentation Flow in proximity.
+    :caption: `Session Establishment over BLE. <https://www.plantuml.com/plantuml/svg/ZLHDRzim3BthLn2-r3aaG3PWXs8RYYu15c0PXcRfBhimCki8ioLDakNq5-r_x9UDabitmVeL184Zak_nFLA-y05TwDf6O1UCxjeTEI4idocfBEe0nGzi6WgmrIeKW1xwq_3LDrXfHj6ISZWAWJAeY84uTNpaupFuyDI7OvTVbY2DriGLHWCnvAvHVjyIivGtphImtQuMu4YIYbI1qh2Wg2J1KjTOKqgSF4iYTkO0HIBo53eBfJCDJR7MnhEUII40ullfn_uSblViC6JBpX78FN9xZI1T0IEz9EYQdBgvPKsEMmvWYHn4XR2gaY86SsmEvoHkAF_-cSzdyzdRsPldDMG9zn0aVq7PLaP2J6IAF8GzZPIEi2ANTV7Ns01N-MHeJKbCJdEapve_cTPsF2awM2vcWpFB48xdkVJntYCs7Pt08BirpccewLNOZz0ZCamFmDZbaBDMliKWznFuJgvLEktDwLfm3RlFl_0mXPXfYs93tdFAydXnYW8CM_FO54Nouwu6BfMkbAx5866TcdWQiULZthS7XLNdk1X-QlXAjGaAatkVKLUPEojFO_clZZTu4yZ2Ep4QiRxBUOKLoGXnDWndazn0yAhMZClCR9DqjpOruiXRepr1EIfQOC2Yc737kJb7lpk-Rwao1ATsl0L-z4s8YevkyT6VNbmmBRyx_W40>`_
+    
+**Step 1**: The Wallet Instance and Relying Party Instance establish a secure BLE connection [`ISO18013-5`_ #11.1]. The Relying Party Instance (central) connects to the Wallet Instance (peripheral) using the Wallet Instance service UUID provided by DeviceEngagement, then discovers services/characteristics, and enables notifications as needed (:ref:`WP_112c <wallet-credential-presentation-testcases>`).
+
+**Step 2-5**: [Optional] Wallet Instance initiates verification by preparing to check the Relying Party’s identity via the Ident characteristic, that is a BLE GATT characteristic that carries an identifier value as described in [`ISO18013-5`_ #11.1.3.2]. The Wallet Instance derives the expected Ident value and reads the Relying Party's Ident characteristic, comparing it to the expected Ident, and terminating the BLE connection if a mismatch may occur .
+
+.. note::
+   The purpose of the Ident characteristic is only to verify whether the Wallet Instance is connected to the correct Relying Party Instance before starting data retrieval. If the Wallet Instance is connected to the wrong Relying Party Instance, session establishment will fail. Connecting and disconnecting to a Relying Party Instance takes a relatively large amount of time; therefore, it is faster to implement methods to identify the correct Relying Party Instance [`ISO18013-5`_ #11.1.3.1] (:ref:`WP_112d <wallet-credential-presentation-testcases>`).
+
+**Step 6**: Relying Party Instance sends the encrypted ``SessionEstablishment`` message (includes ``EReaderKey`` and encrypted ``DeviceRequest``) over the established BLE connection.
+
+**Step 7-8**: [Optional] If the Wallet Unit receives the ``SessionEstablishment`` message during Negotiated Handover, the Wallet Unit MUST verify if this ``SessionEstablishment`` message matches the ``SessionEstablishment`` message received during the data retrieval phase (i.e., Step 6). In the event of a mismatch, the Wallet Unit shall terminate the BLE connection [`ISO18013-5`_ #9.2.3].
+
+``SessionData`` over BLE
+--------------------------
+The following figure illustrates the low-level flow compliant with `ISO18013-5`_ for ``SessionData`` over BLE corresponding to Boxes C in Figure 8.10.
+
+.. _fig_SessionData-BLE:
+.. plantuml:: plantuml/session-data-over-ble.puml
+    :width: 90%
+    :alt: The figure illustrates the Session Data over BLE Presentation Flow in proximity.
+    :caption: `Session Data over BLE. <https://www.plantuml.com/plantuml/svg/LO-n3i8m34JtV8ML2GP-W05L20Oa1aI5M5ZSr898hLjYfn5_Zs50PRjtT_B9bIWcpNtdCEl0kMyeEJUQ5qCSaHNy5RkE52uSrGCAbF_uV883snKEz8qdvp1ed539gZzfTbbjfZNKn2qWIBmpcJ0W3kargb4Y6GSMWeNtDOd4WNUewFqIRboYFgpnp2IVBggcs6GbWM6Y1DlZthcMPeCpAAwoMNlp3G00>`_
+
+**Step 1**: The Wallet Instance sends the final APDU containing either the last block DeviceResponse (with requested attributes) or a status code, after which the session may end or continue with a new request.
+
+
+``SessionEstablishment`` over NFC
+----------------------------------
+.. note::
+   If Device Engagement is initiated via a QR code, the Relying Party Instance has no standardised way to signal its intent to use NFC for subsequent data transfer. This could lead to a poor user experience, as the User might not be aware that they need to use NFC. This issue is avoided when NFC is used for the Device Engagement, as it implicitly establishes the data transfer method [`ISO18013-5`_ #8.2.5].
+
+.. note::
+   Due to the limited data transfer rate of NFC, if a large amount of data is required for a transaction, it may be neither practical nor reasonable for a User to keep the device within the RF range of the Relying Party Instance for the duration of the transaction. Furthermore, loss of signal when a device leaves the RF field necessitates re-initiating the transaction. This can only be avoided if all necessary User interactions with the Wallet Instance are performed while the device remains in the field, or if no User interaction is required during the active transmission phase [`ISO18013-5`_ #8.2.5].
+
+   The following figure illustrates the low-level flow compliant with `ISO18013-5`_ for ``SessionEstablishment`` over NFC corresponding to Box B in Figure 8.10.
+
+.. _fig_SessionEstablishment-NFC:
+.. plantuml:: plantuml/session-establishment-over-nfc.puml
+    :width: 90%
+    :alt: The figure illustrates the Session Establishment over NFC Presentation Flow in proximity.
+    :caption: `Session Establishment over NFC. <https://www.plantuml.com/plantuml/svg/ZP9BJyCm383l-HLMJzjX9pWX3G6b20HxYF6uSCbIRutKE25nM_ZtE6n2GsWIjyJv77-ESv5OH-vSgtJ7dZgtngXKa9WrDcXYA5vrsoB3Crc6qVAkBCS5w0J3R-fn2NSabv51eShh7TGhfGtRNZDAmizImjCfWAkzWSiGMciqMq-mmXRDzsewLJrCpc4uWqL0sg7w07sZLVLGbKzWl7EQQZLal3-3lQxnjB7H9G57Ytlm4IpLEHaJE1yHQiqQsCC6sJJZRw6YM65ASdibZQnRcng7n4LnQ5EHYP-1iJvEHtplCF4RLVENwc6nh8uvHap1Kvt-g-W3mxucN6MMjcgOd8lLJ0jntCX9M6zH2XgqlRZNNPHaUHkOuzQprRcXMr7qFKOOB3V03VxDip8ZnW0dazFSp4TkPZJRKpERNFOOmnD6PobFUdvJvb7GRgmAvH5KZGT_uc3Jgmivbx_u1G00>`_
+
+Definitions (Acronyms and Commands)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. list-table::
+   :class: longtable
+   :widths: 15 85
+   :header-rows: 1
+
+   * - **Acronym/Command**
+     - **Description**
+
+   * - **PICC**
+     - Proximity Integrated Circuit Card, implemented by Wallet Units acting as a NFC tag.
+
+   * - **PCD**
+     - Proximity Coupling Device, impletented by Relying Party instances using `APDU` exchanges.
+
+   * - **AID**
+     - Application Identifier, unique ID used in SELECT `APDU` command to engage the Wallet Instance.
+
+   * - **APDU**
+     - Application Protocol Data Unit, a standard message format for communication between Relying Party Instance (PCD) and Wallet (PICC) consists of Command APDUs (e.g., `SELECT`, `ENVELOPE`, `GET RESPONSE`) from the reader and Response `APDUs` from the wallet, which include data exhange and end exchange using status words (`SW1/SW2`).
+
+   * - **SELECT APDU**
+     - Command that opens the Wallet Instance by `AID`.  Response includes File Control Information (FCI) and Status Word (`SW1/SW2`).
   
-  The domestic data elements MUST not be returned unless specifically requested by the Verifier App.
+   * - **ENVELOPE APDU**
+     - Command that carries session messages (e.g., ``SessionEstablishment``).  Response indicates processing status (`OK` or `more data`).
 
-mDoc Response
--------------
+   * - **GET RESPONSE APDU**
+     - Command that retrieves additional response data when the Wallet signals "more data" is available (`SW1=61`).
 
-The messages in the mDoc Response MUST be encoded using CBOR and MUST be encrypted with the Session Key obtained after the Device Engagement phase.
-The details on the structure of mDoc Response are provided below. 
+   * - **SW1/SW2**
+     - `SW1/SW2` (Status Words) — Two-byte status code at the end of every response.  Common values: `90 00 = success`, `61 XX = more data`, `6A 82 = file/application not found`.
 
-  - **version**: (tstr). Version of the data structure.
-  - **documents**: Returned *DocType*, and *ResponseData*.
 
-    - **docType**: (tstr). The DocType element contains the type of document returned. See :ref:`Data Model Section <pid_eaa_data_model.rst>`.
-    - **ResponseData**:
+**Step 1**: The Relying Party Instance (PCD) sends a SELECT `APDU` command with the Application Identifier (`AID: A0 00 00 02 48 04 00`) to engage the Wallet Instance.
 
-      - **IssuerSigned**: Responded data elements signed by the issuer.
 
-        - **nameSpaces**: (tstr). See :ref:`Data Model Section <pid_eaa_data_model.rst>` for more details.
+**Step 2**: The Wallet Instance (PICC) responds with File Control Information (FCI) and status words (SW1/SW2), either confirming success (`90 00`) or indicating that more data (`61 XX`) (:ref:`WP_112e <wallet-credential-presentation-testcases>`).
 
-          - **IssuerSignedItemBytes**: #6.24(bstr .cbor). 
 
-            - **digestID**: (uint).  Reference value to one of the **ValueDigests** provided in the *Mobile Security Object* (`issuerAuth`).
-            - **random**: (bstr). Random byte value used as salt for the hash function. This value SHALL be different for each *IssuerSignedItem* and it SHALL have a minimum length of 16 bytes.
-            - **elementIdentifier**: (tstr). Identifier of User attribute name contained in the Credential.
-            - **elementValue**: (any). User attribute value
-      - **DeviceSigned**: Responded data elements signed by the Wallet Instance.
+**Step 3**: The Relying Party Instance sends an ENVELOPE `APDU` carrying the ``SessionEstablishment`` message, which contains the encrypted ``DeviceRequest`` and its ephemeral public key for session setup.
 
-        - **NameSpaces**: #6.24(bstr .cbor DeviceNameSpaces). The DeviceNameSpaces structure MAY be an empty structure. DeviceNameSpaces contains the data element identifiers and values. It is returned as part of the corresponding namespace in DeviceNameSpace.
 
-          - **DataItemName**: (tstr). The identifier of the element.
-          - **DataItemValue**: (any). The value of the element.
-        - **DeviceAuth**:  The DeviceAuth structure MUST contain the DeviceSignature elements.
+**Step 4**: The Wallet Instance processes ``SessionEstablishment`` and returns an `APDU` response with `SW1/SW2` (`OK` or `more data` to fetch), confirming the start of secure session context (:ref:`WP_112f <wallet-credential-presentation-testcases>`).
 
-          - **DeviceSignature**: It MUST contain the device signature for the Wallet Instance authentication. 
-  - **status**: It contains a status code. For detailed description and action required refer to to Table 8 (ResponseStatus) of the [ISO18013-5]
 
+**Step 5-6**: [Optional] The Wallet Instance receives the ``SessionEstablishment`` message during Negotiated Handover, the Wallet Instance SHALL verify that this ``SessionEstablishment`` message matches the same message received during the data retrieval phase (i.e., Step 3-4). In the event of a mismatch, the Wallet Instance SHALL terminate the NFC connection [`ISO18013-5`_ #9.2.3].
+
+
+``SessionData`` over NFC
+--------------------------
+The following figure illustrates the low-level flow compliant with `ISO18013-5`_ for ``SessionData`` over NFC corresponding to Box C in Figure 8.10.
+
+.. _fig_SessionData-NFC:
+.. plantuml:: plantuml/session-data-over-nfc.puml
+    :width: 90%
+    :alt: The figure illustrates the Session Data over NFC Presentation Flow in proximity.
+    :caption: `Session Data over NFC. <https://www.plantuml.com/plantuml/svg/PP3DJiD038Jl-nIZN4WEl42be4ffGBr0b81wuU8afbrfVyAkavItPn6YAkhDjkORZMSRXOBCrYYQnRlPzXoKcj9D3teY9yWEP0mBtfmMvCs-geeC5B7-LxKDzYwPkO6JgjhzYXQbQ12za702BcCwgxkoH9Pr7AFsRaT2MORwF9p87HbbgOpt4mudRHZM1yQO9D0Hj90sr1jMm8Bx1wmRjFmvSnGuFWi-0XqjfqnuTtYgNz7MNVFotDKOlBNanWIkF-2okGbmONDsG_YQXCT2SKB-W4VjoDnWEOa4tS_24JuWrI1pB9GQ-UhxgsLHssIQMly6>`_
+
+**Step 1-2**: As long as the Wallet Instance signals that more data is available (`61 XX`), the Relying Party Instance issues `GET RESPONSE APDUs` to request the next block.  The Wallet Instance returns encrypted ``SessionData`` fragments until all data is delivered.
+
+
+**Step 3**: The Wallet Instance sends the final `APDU` containing either the last block DeviceResponse (with requested attributes) or a status code, after which the session may end or continue with a new request.
+
+Device Engagement
+------------------
+
+The Device Engagement structure MUST be CBOR encoded and have at least the following components (:ref:`PPR-001 <test-plans-proximity-presentation>`, :ref:`PPR-021 <test-plans-proximity-presentation>`, :ref:`PPR-022 <test-plans-proximity-presentation>`, and :ref:`WP_102 <wallet-credential-presentation-testcases>`):
+
+.. list-table::
+   :class: longtable
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Component**
+     - **Description**
+
+   * - **Version**
+     - *(tstr)*. Version of the Device Engagement structure.
+
+   * - **Security**
+     - *(array)*. Contains two mandatory values:
+
+       - *(int)*. Cipher suite identifier. See Table 22 of `ISO18013-5`_.
+
+       - *(bstr)*. Public ephemeral key generated by the Wallet Instance, used by the Relying Party Instance to derive the Session Key. The key MUST be of a type allowed by the selected cipher suite (:ref:`PPR-022 <test-plans-proximity-presentation>`).
+
+   * - **DeviceRetrievalMode-BLEOptions**
+     - *(map)*. Provides options for the BLE connection, such as Peripheral Server or Central Client mode, and the device UUID. See Table 2 of `ISO18013-5`_ for the detailed mapping.
+       
+       If the Wallet Instance indicates during Device Engagement that it supports both modes, the Relying Party Instance  SHOULD select the mdoc central client mode  [`ISO18013-5`_ #11.1.3.1].
+       
+       Only present when performing Device Engagement using the QR code. Absent when using NFC to perform Device Engagement.
+
+
+   * - **DeviceRetrievalMode-NFCOptions**
+     - *(map)*. Provides options for NFC connections, including the supported role (PICC or PCD) and maximum PDU command/response sizes. See Table 2 of `ISO18013-5`_ for the detailed mapping.
+        
+       In case NFC is used for Device Retrieval, the Wallet Instance SHALL support PICC mode and the Relying Party Instance SHALL support PCD mode [`ISO18013-5`_ #11.2].
+        
+       Only present when performing Device Engagement using the QR code. Absent when using NFC to perform Device Engagement.
+  
+   * - **Capabilities**
+     - *(map)*. Declares optional capabilities supported by the mdoc, that are:
+
+       - **HandoverSessionEstablishmentSupport** *(bool)*. If present, it MUST be set to `true`. Indicates support for receiving the `SessionEstablishment` message during Negotiated Handover, as defined in [`ISO18013-5`_ #9.2.3] (:ref:`PPR-024 <test-plans-proximity-presentation>`).
+
+       - **ReaderAuthAllSupport** *(bool)*. If present, it MUST be set to `true`. Indicates support for receiving the `ReaderAuthAll` structure in the mdoc request, as defined in [`ISO18013-5`_ #10.2.6] (:ref:`PPR-025 <test-plans-proximity-presentation>`).
+
+   * - **OriginInfos**
+     - *(array)*. Describes the interface used to receive and deliver the engagement structure.
+     
+       `OriginInfos` MAY be an empty array.
+
+
+mdoc Request
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+The messages in the mdoc Request MUST be encoded using CBOR. The resulting CBOR byte string for the mdoc Request MUST be encrypted with the Session Key obtained after the Device Engagement phase and MUST be transmitted using the BLE or NFC protocol (:ref:`PPR-026 <test-plans-proximity-presentation>`, :ref:`PPR-027 <test-plans-proximity-presentation>`, :ref:`PPR-028 <test-plans-proximity-presentation>`).
+
+Each mdoc Request MUST be compliant with the following structure, and MUST include the following components, unless otherwise specified:
+
+.. list-table::
+   :class: longtable
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Component**
+     - **Description**
+
+   * - **version**
+     - *(tstr)*. Version of the mdoc Request structure. Enables compatibility management across different versions or implementation profiles.
+
+   * - **docRequests**
+     - *(array)*. Each entry is a `DocRequest` containing:
+
+       - **itemsRequest**. CBOR-encoded `ItemsRequest` structure, formatted as:
+
+         - **docType** *(tstr)*. The type of document requested. See :ref:`credential-data-model:mdoc-CBOR Credential Format`.
+
+         - **nameSpaces** *(map)*. A map of namespace identifiers to requested *DataElements*.
+
+           Each entry in `DataElements` includes:
+
+           - **DataElementIdentifier** *(tstr)*. The identifier of the requested data element.
+           - **IntentToRetain** *(bool)*. Indicates whether the Relying Party intends to retain the value of the data element.
+
+       - **readerAuth** *(COSE_Sign1, CONDITIONAL)*. Used to authenticate the the Relying Party Instance for each `DocRequest`. The signature is computed over `ReaderAuthentication` data, as defined in [`ISO18013-5`_ #12.5].
+
+         This component MUST be present only if `readerAuthAll` is not used (:ref:`PPR-025 <test-plans-proximity-presentation>`).
+
+   * - **readerAuthAll**
+     - *(COSE_Sign1, CONDITIONAL)*. Used to authenticate the Relying Party once for all `DocRequest`s. The signature is computed over `ReaderAuthenticationAll` data, as defined in [`ISO18013-5`_ #12.5].
+
+       This component MUST be present only if `ReaderAuthAllSupport` is set to `true` in the DeviceEngagement structure, and individual `readerAuth` fields are not used (:ref:`PPR-025 <test-plans-proximity-presentation>`).
+
+.. note::
+    **Requesting the Wallet App Attestation**
+
+    The Relying Party requesting a Wallet App Attestation MUST add an object in the **docRequest** array having the ``docType`` set to ``{Trust Anchor reverse domain}.{WalletAppAttestation}`` as described in :ref:`registry:Digital Credentials Catalog Structure`. The Relying Party MUST NOT include the ``nameSpaces`` parameter in the request (:ref:`PPR-010 <test-plans-proximity-presentation>`).
+
+mdoc Response
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The messages in the mdoc Response MUST be encoded using CBOR and MUST be encrypted with the Session Key obtained after the Device Engagement phase (:ref:`PPR-029 <test-plans-proximity-presentation>`, :ref:`PPR-030 <test-plans-proximity-presentation>`).
+
+Each mdoc Response MUST be compliant with the following structure, and MUST include the following components, unless otherwise specified:
+
+.. _table-mdoc-attributes:
+.. list-table::
+   :class: longtable
+   :widths: 25 75
+   :header-rows: 1
+
+   * - **Component**
+     - **Description**
+
+   * - **version**
+     - *(tstr)*. Version of the mdoc Response structure. Enables tracking changes and maintaining compatibility across versions of the standard or implementation profiles.
+
+   * - **documents**
+     - *(array of Documents, OPTIONAL)*. CBOR-encoded collection of documents returned in response to the request. Each document includes `issuerSigned` and `deviceSigned` components, and follows the structure defined in [`ISO18013-5`_ #10.3.3].
+
+   * - **documentErrors**
+     - *(map, OPTIONAL)*. A map of error codes for unreturned documents, as defined in [`ISO18013-5`_ #10.3.6]. Each key is a `docType`, and each value is an `ErrorCode` (int) indicating the reason why the document was not returned.
+
+   * - **status**
+     - *(uint)*. Status code indicating the outcome of the request. For example, `"status": 0` means successful processing. For details, see Table 3 (ResponseStatus) of [`ISO18013-5`_ #10.3.5].
+
+
+Each document in **documents** MUST be compliant with the following structure, and it MUST include the following components, unless otherwise specified (:ref:`PPR-029 <test-plans-proximity-presentation>`):
+
+.. _table-mdoc-documents-attributes:
+.. list-table::
+   :class: longtable
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Component**
+     - **Description**
+
+   * - **docType**
+     - *(tstr)*. Document type identifier. For example, for an mDL, the value MUST be ``org.iso.18013.5.1.mDL``.
+
+   * - **issuerSigned**
+     - *(bstr)*. Contains the `IssuerNameSpaces` structure, which includes data elements signed by the Issuer, and the `issuerAuth` structure, which ensures their authenticity and integrity using the Mobile Security Object (MSO). See :ref:`credential-data-model:mdoc-CBOR Credential Format`.
+
+   * - **deviceSigned**
+     - *(bstr)*. Contains the `DeviceNameSpaces` structure (data elements signed by the Wallet Instance), and the `deviceAuth` structure, which includes the authentication data signed by the Wallet Instance. See the table below for details.
+
+   * - **errors**
+     - *(map, OPTIONAL)*. A map of error codes for each unreturned data element grouped by namespace. Each key represents a namespace, and each value is a map of data element identifiers to corresponding error codes. See [`ISO18013-5`_ #10.3.6] for details on the errors structure.
+
+
+
+A **deviceSigned** data structure MUST be compliant with the following structure (:ref:`WP_111a <wallet-credential-presentation-testcases>`), and MUST include the following components:
+
+.. list-table::
+   :class: longtable
+   :widths: 25 75
+   :header-rows: 1
+
+   * - **Component**
+     - **Description**
+
+   * - **nameSpaces**
+     - *(bstr)*. Contains the `DeviceNameSpaces` structure. It MAY be an empty structure. `DeviceNameSpaces` maps namespace identifiers to a set of data elements signed by the Wallet Instance.
+
+       Each namespace contains one or more `DeviceSignedItem`, where each item includes:
+
+       - **DataItemName** *(tstr)*. The identifier of the data element.
+       - **DataItemValue** *(any)*. The value of the data element.
+
+   * - **deviceAuth**
+     - *(COSE_Sign1)*. Contains the `DeviceAuth` structure, which MUST include the **deviceSignature** for the Wallet Instance authentication. The signature is computed over the `DeviceAuthentication` data, which binds the returned elements to the session and the request. See [`ISO18013-5`_ #12.4] for details on the authentication structure.
+
+.. note::
+    **Presenting the Wallet App Attestation**
+
+    The Wallet Instance MUST include the Wallet App Attestation if requested by the Relying Party in the mdoc request. The Wallet Instance SHOULD include all available disclosures for the Wallet App Attestation (:ref:`WP_108b <wallet-credential-presentation-testcases>`). Moreover, during presentaion, the Wallet Instance MUST NOT request user's consent to the disclosure of the Wallet App Attestation attributes which are technical data not transparent to the user (:ref:`WP_107a <wallet-credential-presentation-testcases>`).
 
 Session Termination
--------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The session MUST be terminated if at least one of the following conditions occur. 
+The session MUST be terminated if at least one of the following conditions occur (:ref:`PPR-007 <test-plans-proximity-presentation>` and :ref:`WP_113–113a <wallet-credential-presentation-testcases>`):
 
-  - After a time-out of no activity of receiving or sending session establishment or session data messages occurs. The time-out for no activity implemented by the Wallet Instance and the Verifier App SHOULD be no less than 300 seconds.
-  - When the Wallet Instance doesn't accept any more requests.
-  - When the Verifier App does not send any further requests. 
+- After a time-out of no activity of receiving or sending session establishment or session data messages occurs. The time-out for no activity implemented by the Wallet Instance and the Relying Party Instance SHOULD be no less than 300 seconds;
+- When the Wallet Instance does not accept any more requests;
+- When the Relying Party Instance does not send any further requests.
 
-If the Wallet Instance and the Verifier App does not send or receive any further requests, the session termination MUST be initiated as follows. 
+If the Wallet Instance and the Relying Party Instance do not send or receive any further requests, the session termination MUST be initiated as follows (:ref:`PPR-007 <test-plans-proximity-presentation>` and :ref:`WP_113 <wallet-credential-presentation-testcases>`):
 
- - Send the status code for session termination, or
- - dispatch the "End" command as outlined in [ISO18013-5#8.3.3.1.1.5].
+- Send the status code for session termination, or
+- Dispatch the "End" command as outlined in [`ISO18013-5`_ #11.1.3.3].
 
-When a session is terminated, the Wallet Instance and the Verifier App MUST perform at least the following actions: 
+When a session is terminated, the Wallet Instance and the Relying Party Instance MUST perform at least the following actions (:ref:`WP_114 <wallet-credential-presentation-testcases>`):
 
-  - destruction of session keys and related ephemeral key material; 
-  - closure of the communication channel used for data retrieval.
+- Destruction of session keys and related ephemeral key material;
+- Closure of the communication channel used for data retrieval.
+
+.. note::
+  See :ref:`credential-data-model:mdoc-CBOR Credential Format` for the meaning of CBOR type acronyms.
+
