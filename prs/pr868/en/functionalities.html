@@ -209,6 +209,13 @@
 </ul>
 <p>The Wallet Provider MUST allow the User to remove the PID issued during the activation phase. In addition, the PID Provider SHOULD allow the User to revoke the issued PID through a specific Touchpoint. The Wallet Provider MUST allow the User to always have the option to request the deactivation of their Wallet Instance, even in the absence of the device on which it was installed. For further details, please refer to the <a class="reference internal" href="#deactivation-of-the-wallet-instance">Deactivation of the Wallet Instance</a> and <a class="reference internal" href="#management-of-electronic-attestations">Management of Electronic Attestations</a> sections.</p>
 <p>In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the <a class="reference internal" href="#error-management"><span class="std std-ref">Error Management</span></a> section.</p>
+<p>The flow is shown below with illustrative wireframes.</p>
+<figure class="align-default" id="id87">
+<a class="reference internal image-reference" href="_images/Attivazione-IT-Wallet.svg"><img alt="Example of User Experience in Activating a Wallet Instance" src="_images/Attivazione-IT-Wallet.svg" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.3 </span><span class="caption-text">Example of User Experience in Activating a Wallet Instance</span><a class="headerlink" href="#id87" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
 <section id="focus-on-pid-person-identification-data">
 <h3><span class="section-number">5.3.1. </span>Focus on PID – Person Identification Data<a class="headerlink" href="#focus-on-pid-person-identification-data" title="Link to this heading">¶</a></h3>
 <p>The PID (Person Identification Data) refers to verified minimum set of informations about the User identity (see <a class="reference internal" href="credential-data-model.html#digital-credential-data-model"><span class="std std-ref">Digital Credential Data Model</span></a>) issued as a result of the activation process and made available in the Wallet Instance.
@@ -277,6 +284,13 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 </ul>
 <p>If the User encounters incorrect data in an already obtained or in-progress Electronic Attestation of Attributes, the Wallet Provider SHOULD guarantee the User appropriate assistance via their Wallet Instance. For more information, please refer to the <a class="reference internal" href="#user-assistance"><span class="std std-ref">User Assistance</span></a> section.</p>
 <p>In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the <a class="reference internal" href="#error-management"><span class="std std-ref">Error Management</span></a> section.</p>
+<p>The flow is shown below with illustrative wireframes.</p>
+<figure class="align-default" id="id89">
+<a class="reference internal image-reference" href="_images/Ottenimento-da-catalogo.svg"><img alt="Example of User Experience in the issuance an Authentic Electronic Attestation from Catalog" src="_images/Ottenimento-da-catalogo.svg" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.5 </span><span class="caption-text">Example of User Experience in the issuance an Authentic Electronic Attestation from Catalog</span><a class="headerlink" href="#id89" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="issuance-from-a-touchpoint-of-the-authentic-source">
 <h3><span class="section-number">5.4.2. </span>Issuance from a Touchpoint of the Authentic Source<a class="headerlink" href="#issuance-from-a-touchpoint-of-the-authentic-source" title="Link to this heading">¶</a></h3>
@@ -295,6 +309,13 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 <li><p>The User views the details of the requested Electronic Attestation of Attributes, including: the data contained in it, the name of the Electronic Attestation of Attributes Provider who issued the Attestation, and the names of the Authentic Sources.</p></li>
 </ul>
 <p>In case of errors during the issuance of the Electronic Attestation of Attributes, the Authentic Source MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the <a class="reference internal" href="#error-management"><span class="std std-ref">Error Management</span></a> section.</p>
+<p>The flow is shown below with illustrative wireframes.</p>
+<figure class="align-default" id="id90">
+<a class="reference internal image-reference" href="images/svg/Ottenimento-da-fonte-autentica.svg"><img alt="Example of User Experience in the issuance an Authentic Electronic Attestation from Authentic Source" src="images/svg/Ottenimento-da-fonte-autentica.svg" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.6 </span><span class="caption-text">Example of User Experience in the issuance an Authentic Electronic Attestation from Authentic Source</span><a class="headerlink" href="#id90" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="focus-on-electronic-attestations-of-attributes">
 <h3><span class="section-number">5.4.3. </span>Focus on Electronic Attestations of Attributes<a class="headerlink" href="#focus-on-electronic-attestations-of-attributes" title="Link to this heading">¶</a></h3>
@@ -316,6 +337,13 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 <li><p>MUST define a name/ naming convention to refer to the EAAs issued, to guarantee consistency across all Wallet Solutions; the EAA name MUST be comprehensible and user-friendly avoiding technical terms or acronyms whenever possible;</p></li>
 <li><p>MUST define a clear set of specifications for the EAA to ensure consistent identification and representation of the EAA across different Wallet Solutions, in terms of format, structure, and appearance standards (e.g. color, background image, etc.).</p></li>
 </ul>
+<p>Below an example of Electronic Attestation of Attribute layout, in a Preview View, and Detail View.</p>
+<figure class="align-default" id="id91">
+<a class="reference internal image-reference" href="images/svg/A4-Focus-EAA.svg"><img alt="Example of Electronic Attestation of Attribute layout, Preview View, and Detail View" src="images/svg/A4-Focus-EAA.svg" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.7 </span><span class="caption-text">Example of Electronic Attestation of Attribute layout, Preview View, and Detail View</span><a class="headerlink" href="#id91" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 <section id="presentation-of-electronic-attestations">
@@ -353,6 +381,13 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 <li><p>The User receives confirmation of the successful presentation.</p></li>
 </ul>
 <p>In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the <a class="reference internal" href="#error-management"><span class="std std-ref">Error Management</span></a> section.</p>
+<p>The flow is shown below with illustrative wireframes.</p>
+<figure class="align-default" id="id93">
+<a class="reference internal image-reference" href="_images/Presentazione-prossimita.svg"><img alt="Example of User Experience in proximity presentation" src="_images/Presentazione-prossimita.svg" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.9 </span><span class="caption-text">Example of User Experience in proximity presentation</span><a class="headerlink" href="#id93" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="remote-presentation">
 <h3><span class="section-number">5.5.2. </span>Remote Presentation<a class="headerlink" href="#remote-presentation" title="Link to this heading">¶</a></h3>
@@ -374,6 +409,13 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 <li><p>The User returns to the Relying Party's Touchpoint, where they see confirmation of the completed presentation.</p></li>
 </ul>
 <p>In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the <a class="reference internal" href="#error-management">Error Management</a> section.</p>
+<p>The flow is shown below with illustrative wireframes.</p>
+<figure class="align-default" id="id94">
+<a class="reference internal image-reference" href="_images/Presentazione-remoto-same-device.svg"><img alt="Example of User Experience in remote, same-device presentation" src="_images/Presentazione-remoto-same-device.svg" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.10 </span><span class="caption-text">Example of User Experience in remote, same-device presentation</span><a class="headerlink" href="#id94" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
 <p><strong>Cross-Device Mode</strong></p>
 <ul class="simple">
 <li><p>The User clicks the Engagement Button provided on the Touchpoint of the Relying Party while accessing the service from a different device than the one where the Wallet Instance is installed;</p></li>
@@ -385,6 +427,13 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 <li><p>The User returns to the Relying Party's Touchpoint and views confirmation of the completed presentation.</p></li>
 </ul>
 <p>In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the <a class="reference internal" href="#error-management">Error Management</a> section.</p>
+<p>The flow is shown below with illustrative wireframes.</p>
+<figure class="align-default" id="id95">
+<a class="reference internal image-reference" href="_images/Presentazione-remoto-cross-device.svg"><img alt="Example of User Experience in remote, cross-device presentation" src="_images/Presentazione-remoto-cross-device.svg" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.11 </span><span class="caption-text">Example of User Experience in remote, cross-device presentation</span><a class="headerlink" href="#id95" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
 <section id="authentication">
 <h4><span class="section-number">5.5.2.1. </span>Authentication<a class="headerlink" href="#authentication" title="Link to this heading">¶</a></h4>
 <p>Authentication is a specific use case of remote presentation that allows the User to securely access services provided by both public and private Relying Parties. This is achieved by presenting the PID and, if necessary, a set of Attributes contained in the obtained Electronic Attestations of Attributes. This process ensures that the User retains control over their data, including the ability to present only the information strictly necessary for verification by Relying Parties.</p>
@@ -413,10 +462,10 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 <p>Specific requirements for each individual page are detailed below.</p>
 <p><strong>Discovery Page</strong></p>
 <p>To enable Authentication via the IT-Wallet System, the Relying Party MAY replace its existing Discovery Page with the version provided in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p>
-<figure class="align-default" id="id87">
+<figure class="align-default" id="id96">
 <a class="reference internal image-reference" href="_images/discovery-page.svg"><img alt="Layout Model of Discovery Page in grid" src="_images/discovery-page.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.3 </span><span class="caption-text">Layout Model of Discovery Page in grid</span><a class="headerlink" href="#id87" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.12 </span><span class="caption-text">Layout Model of Discovery Page in grid</span><a class="headerlink" href="#id96" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Alternatively, the Relying Party MAY maintain its own Discovery Page but MUST integrate the Authentication Button as specified in the <a class="reference internal" href="#authentication-button">Authentication Button</a> section.</p>
@@ -431,10 +480,10 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 <p><strong>Selection Page</strong></p>
 <p>The Selection Page is the page on which the User lands after they have chosen to Authenticate via the IT-Wallet System, and is intended to present the User with the Wallet Solutions available to perform Authentication.</p>
 <p>The Relying Party MUST implement the Selection Page made available in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p>
-<figure class="align-default" id="id89">
+<figure class="align-default" id="id98">
 <a class="reference internal image-reference" href="_images/selection-page.svg"><img alt="Selection Page" src="_images/selection-page.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.5 </span><span class="caption-text">Selection Page</span><a class="headerlink" href="#id89" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.14 </span><span class="caption-text">Selection Page</span><a class="headerlink" href="#id98" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>The Relying Party implementing the page:</p>
@@ -451,10 +500,10 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 <p><strong>QR Code Page (cross-device only)</strong></p>
 <p>The QR Code Page is presented to the User who selects IT-Wallet System Authentication within a cross-device process. Its purpose is to prompt the User to scan the generated QR code using their Wallet Instance.</p>
 <p>Relying Parties MUST implement the QR Code Page (cross-device) provided in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p>
-<figure class="align-default" id="id91">
+<figure class="align-default" id="id100">
 <a class="reference internal image-reference" href="_images/QR-page.svg"><img alt="QR Code Page" src="_images/QR-page.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.7 </span><span class="caption-text">QR Code Page</span><a class="headerlink" href="#id91" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.16 </span><span class="caption-text">QR Code Page</span><a class="headerlink" href="#id100" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>The Relying Party implementing the page:</p>
@@ -477,10 +526,10 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 <p><strong>Waiting Page (cross-device only)</strong></p>
 <p>The Waiting Page is shown after the QR code has been scanned and prompts the User to continue the Authentication process within their Wallet Instance.</p>
 <p>Relying Parties MUST implement the Waiting Page (cross-device) provided in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p>
-<figure class="align-default" id="id93">
+<figure class="align-default" id="id102">
 <a class="reference internal image-reference" href="_images/waiting-page.svg"><img alt="Waiting Page" src="_images/waiting-page.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.9 </span><span class="caption-text">Waiting Page</span><a class="headerlink" href="#id93" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.18 </span><span class="caption-text">Waiting Page</span><a class="headerlink" href="#id102" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>The Relying Party implementing the page:</p>
@@ -491,10 +540,10 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 <p><strong>Thank You Page</strong></p>
 <p>The Thank You Page is displayed after the User completes the Authentication process via their Wallet Instance. Its purpose is to prompt the User to proceed to the authenticated area of the Relying Party's Touchpoint.</p>
 <p>Relying Parties MUST implement the Thank You Page provided in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p>
-<figure class="align-default" id="id95">
+<figure class="align-default" id="id104">
 <a class="reference internal image-reference" href="_images/thank-you-page.svg"><img alt="Thank You Page" src="_images/thank-you-page.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.11 </span><span class="caption-text">Thank You Page</span><a class="headerlink" href="#id95" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.20 </span><span class="caption-text">Thank You Page</span><a class="headerlink" href="#id104" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>The Relying Party implementing the page:</p>
@@ -506,10 +555,10 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 <p><strong>Error Page</strong></p>
 <p>The Error Page is displayed when an issue occurs during the Authentication process. Its purpose is to inform the User about the nature of the error (e.g., technical issue, network issues, Wallet Instance malfunction, denied data sharing, etc.) and to present the available next steps. For further details, refer to the <a class="reference internal" href="#error-management"><span class="std std-ref">Error Management</span></a> section.</p>
 <p>Relying Parties MUST implement the Error Page provided in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p>
-<figure class="align-default" id="id97">
+<figure class="align-default" id="id106">
 <a class="reference internal image-reference" href="_images/error-page.svg"><img alt="Error Page" src="_images/error-page.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.13 </span><span class="caption-text">Error Page</span><a class="headerlink" href="#id97" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.22 </span><span class="caption-text">Error Page</span><a class="headerlink" href="#id106" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>The Relying Party implementing the page:</p>
@@ -518,6 +567,19 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 <li><p>MUST ensure that the copy on the page mirrors that reported in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>;</p></li>
 <li><p>MUST include one or more Call To Action guiding the User toward the appropriate next step (e.g., retry, contact support, etc.).</p></li>
 </ul>
+<p>Both flows are shown below with illustrative wireframes.</p>
+<figure class="align-default" id="id108">
+<a class="reference internal image-reference" href="_images/Autenticazione-same-device.svg"><img alt="Example of same-device Authentication User Experience" src="_images/Autenticazione-same-device.svg" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.24 </span><span class="caption-text">Example of same-device Authentication User Experience</span><a class="headerlink" href="#id108" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id109">
+<a class="reference internal image-reference" href="_images/Autenticazione-cross-device.svg"><img alt="Example of cross-device Authentication User Experience" src="_images/Autenticazione-cross-device.svg" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.25 </span><span class="caption-text">Example of cross-device Authentication User Experience</span><a class="headerlink" href="#id109" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
 <section id="authentication-button">
 <h5><span class="section-number">5.5.2.1.1. </span>Authentication Button<a class="headerlink" href="#authentication-button" title="Link to this heading">¶</a></h5>
 <p>The Authentication Button &quot;Login with IT-Wallet&quot; serves as an Engagement Button, providing Users with a standardized way to Authenticate themselves using their digital Wallet.</p>
@@ -534,17 +596,17 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 <li><p>Where space allows and/or the context requires it, the Authentication Button SHOULD be accompanied by a descriptive text, e.g., &quot;IT-Wallet is the Italian Digital Wallet System that gives you full control over your information, without the issuing entity being aware of when and how it is used” or &quot;Login through an IT-Wallet app, the Italian Digital Wallet System that simplifies interactions between citizens, public administrations and private entities, in the physical and digital world. With IT-Wallet you have full control over your information, sharing it only when necessary and securely, without the issuing entity knowing when and how it is used.&quot;.</p></li>
 </ul>
 <p>Below are some non-mandatory examples of Authentication Button layouts:</p>
-<figure class="align-default" id="id99">
+<figure class="align-default" id="id110">
 <a class="reference internal image-reference" href="_images/authentication-button-layout.svg"><img alt="Variants of Authentication Button" src="_images/authentication-button-layout.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.15 </span><span class="caption-text">Variants of Authentication Button</span><a class="headerlink" href="#id99" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.26 </span><span class="caption-text">Variants of Authentication Button</span><a class="headerlink" href="#id110" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>The integration of the Authentication Button within the Discovery Page may vary depending on the page layout. Below are illustrative, non-exhaustive examples of Discovery Pages using grid, tab, and list layouts, respectively.</p>
-<figure class="align-default" id="id101">
+<figure class="align-default" id="id112">
 <a class="reference internal image-reference" href="_images/discovery-page-layouts.svg"><img alt="Examples of Discovery Page layouts: grid, tab, and list" src="_images/discovery-page-layouts.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.17 </span><span class="caption-text">Examples of Discovery Page layouts: grid, tab, and list</span><a class="headerlink" href="#id101" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.28 </span><span class="caption-text">Examples of Discovery Page layouts: grid, tab, and list</span><a class="headerlink" href="#id112" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>For further details on the use of the Authentication Button, please refer to the <a class="reference internal" href="#authentication"><span class="std std-ref">Authentication</span></a> section.</p>
@@ -592,6 +654,13 @@ Below a non-normative example of the Authentication Button. The references to th
 - The User sees a message in the Detail View informing them of the new status of the Electronic Attestation and CAN find out more information;
 - The User sees any additional information on the requirements and/or limitations relating to the status of the Electronic Attestation of Attributes and CAN close the message or proceed with any action requested by the Electronic Attestation Provider;
 - The User sees specific Call To Action buttons in the Detail View to delete the Electronic Attestation or update it if no longer valid.</p>
+<p>The flow is shown below with illustrative wireframes.</p>
+<figure class="align-default" id="id114">
+<a class="reference internal image-reference" href="_images/Aggiornamento-EAA.svg"><img alt="Example of User Experience in Updating an Electronic Attestation" src="_images/Aggiornamento-EAA.svg" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.30 </span><span class="caption-text">Example of User Experience in Updating an Electronic Attestation</span><a class="headerlink" href="#id114" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
 <section id="revocation-of-electronic-attestations">
 <h4><span class="section-number">5.6.1.1. </span>Revocation of Electronic Attestations<a class="headerlink" href="#revocation-of-electronic-attestations" title="Link to this heading">¶</a></h4>
 <p>Revocation is the procedure that turns an Electronic Attestation from a valid state to an invalid state. Revocation can occur in either an active or passive mode:</p>
@@ -621,6 +690,13 @@ Below a non-normative example of the Authentication Button. The references to th
 - The User selects the Call to Action to revoke the Electronic Attestation;
 - The User reviews all information relevant to the action being performed and either gives their consent to proceed or denies consent to cancel the operation;
 - The User sees the successful outcome of the revocation.</p>
+<p>The flow is shown below with illustrative wireframes.</p>
+<figure class="align-default" id="id115">
+<a class="reference internal image-reference" href="_images/Revoca-EAA-da-wallet.svg"><img alt="Example of User Experience in Revoking an Electronic Attestation" src="_images/Revoca-EAA-da-wallet.svg" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.31 </span><span class="caption-text">Example of User Experience in Revoking an Electronic Attestation</span><a class="headerlink" href="#id115" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 <section id="history-of-electronic-attestations">
@@ -679,6 +755,13 @@ Below a non-normative example of the Authentication Button. The references to th
 <p>The User has the ability to reactivate the Wallet Instance by re-downloading the app from the app store (if uninstalled) and/or by following the activation process again. For further details, please refer to the <a class="reference internal" href="#activation-of-the-wallet-instance">Activation of the Wallet Instance</a> section.</p>
 <p>Once the Wallet Instance is reactivated, Electronic Attestations of Attributes can be re-obtained by starting the issuance or restore process again. For more details, please refer to sections <a class="reference internal" href="#issuance-of-electronic-attestations-of-attributes">Issuance of Electronic Attestations of Attributes</a> and <a class="reference internal" href="#backup-and-restore-of-electronic-attestation-of-attributes">Backup and Restore of Electronic Attestation of Attributes</a>.</p>
 <p>In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For more details, please refer to the <a class="reference internal" href="#error-management">Error Management</a> section.</p>
+<p>The flow is shown below with illustrative wireframes.</p>
+<figure class="align-default" id="id116">
+<a class="reference internal image-reference" href="_images/Disattivazione-wallet.svg"><img alt="Example of User Experience in Deactivating a Wallet Instance" src="_images/Disattivazione-wallet.svg" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.32 </span><span class="caption-text">Example of User Experience in Deactivating a Wallet Instance</span><a class="headerlink" href="#id116" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="error-management">
 <h2><span class="section-number">5.8. </span>Error Management<a class="headerlink" href="#error-management" title="Link to this heading">¶</a></h2>
