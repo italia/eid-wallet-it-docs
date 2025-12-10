@@ -153,8 +153,6 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
         - *it_wallet*: IT-Wallet trust framework supported.
         - *eudi_wallet*: Member State EUDI Wallet trust framework supported.
         - *it_l2+document_proof*: eID Substantial Authentication with MRTD Verification protocol supported.
-  * - **evidence_supported**
-    - JSON array containing all types of identity evidence supported by the Credential Issuer. The supported value is ``vouch``.
   * - **batch_credential_issuance**
     - Object containing information about the Credential Issuer's support for issuance of Credentials in a batch at the Credential Endpoint. The presence of this parameter means that the Credential Issuer supports more than one key proof in the ``proofs`` parameter in the Credential request so can issue more than one Digital Credential for the same Credential with the same attributes about the Holder in a single request/response. The parameter that MUST be included is:
 
