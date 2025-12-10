@@ -873,12 +873,12 @@ The <code class="docutils literal notranslate"><span class="pre">signed_jwks_uri
 <tr class="row-odd"><td><p>WP_069</p></td>
 <td><p>Issuance, Security</p></td>
 <td><p>Check Digital Credential status</p></td>
-<td><p>Wallet Instance verifies the status of each stored Digital Credential by retrieving and validating either a Status List Token (per <span class="xref std std-ref">credential-revocation:OAuth Status Lists</span>) or a Status Assertion (per <a class="reference internal" href="credential-revocation.html#oauth-status-assertions"><span class="std std-ref">OAuth Status Assertions</span></a>).</p></td>
+<td><p>Wallet Instance verifies the status of each stored Digital Credential by retrieving and validating either a Status List Token (per <span class="xref std std-ref">credential-revocation:OAuth Status Lists</span>).</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_070</p></td>
 <td><p>Issuance, Security</p></td>
 <td><p>Re-issuance flow: detect re-issuance necessity (update status)</p></td>
-<td><p>Wallet Instance updates a Digital Credential when the Status List shows <code class="docutils literal notranslate"><span class="pre">0x03</span></code> (<code class="docutils literal notranslate"><span class="pre">UPDATE</span></code>) or <code class="docutils literal notranslate"><span class="pre">0x04</span></code> (<code class="docutils literal notranslate"><span class="pre">ATTRIBUTE_UPDATE</span></code>), or when the Status Assertion indicates <code class="docutils literal notranslate"><span class="pre">credential_status_type</span></code> of <code class="docutils literal notranslate"><span class="pre">INVALID</span></code> with <code class="docutils literal notranslate"><span class="pre">credential_status_detail.state</span></code> set to <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> or <code class="docutils literal notranslate"><span class="pre">ATTRIBUTE_UPDATE</span></code> for that Credential.</p></td>
+<td><p>Wallet Instance updates a Digital Credential when the Status List shows <code class="docutils literal notranslate"><span class="pre">0x03</span></code> (<code class="docutils literal notranslate"><span class="pre">UPDATE</span></code>) or <code class="docutils literal notranslate"><span class="pre">0x04</span></code> (<code class="docutils literal notranslate"><span class="pre">ATTRIBUTE_UPDATE</span></code>) for that Credential.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_071</p></td>
 <td><p>Issuance, Security</p></td>

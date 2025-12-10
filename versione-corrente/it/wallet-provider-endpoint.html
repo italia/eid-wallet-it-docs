@@ -1048,11 +1048,11 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 <td><p><a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-01.html">OPENID4VC-HAIP</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>trust_chain</strong></p></td>
-<td><p>OBBLIGATORIO. Sequenza di Entity Statement che compone la Catena di Fiducia relativa al Fornitore di Wallet.</p></td>
+<td><p>OPZIONALE. Sequenza di Entity Statement che compone la Catena di Fiducia relativa al Fornitore di Wallet.</p></td>
 <td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Sezione 4.3 <em>Trust Chain Header Parameter</em>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>x5c</strong></p></td>
-<td><p>OPZIONALE. Contiene il certificato di chiave pubblica X.509 o la catena di certificati (<span class="target" id="index-45"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>) corrispondente alla chiave utilizzata per firmare digitalmente il JWT.</p></td>
+<td><p>OBBLIGATORIO. Contiene il certificato di chiave pubblica X.509 o la catena di certificati (<span class="target" id="index-45"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>) corrispondente alla chiave utilizzata per firmare digitalmente il JWT.</p></td>
 <td><p><span class="target" id="index-46"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Sezione 4.1.8 e <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/11/">SD-JWT-VC</a> Sezione 3.5.</p></td>
 </tr>
 </tbody>
@@ -1125,6 +1125,9 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 <span class="w">        </span><span class="s2">&quot;eyJhbGciOiJFUz...6S0A&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="s2">&quot;eyJhbGciOiJFUz...jJLA&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="s2">&quot;eyJhbGciOiJFUz...H9gw&quot;</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;x5c&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;&lt;Wallet Provider X.509 Certificate&gt;&quot;</span>
 <span class="w">    </span><span class="p">],</span>
 <span class="w">    </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;key-attestation+jwt&quot;</span>
 <span class="p">}</span>
