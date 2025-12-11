@@ -608,8 +608,7 @@ Oltre alle informazioni del Fornitore di Credenziali, il <em>Type Metadata</em> 
 </tbody>
 </table>
 <p>Il Verificatore di Attestati Elettronici che esegue la Trust Evaluation sul Fornitore di Credenziali di una Credenziale non deve rilasciare alcuna informazione al Fornitore di Credenziali sull'Istanza del Wallet con cui sta interagendo. Utilizzando [<a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a>] il Fornitore di Credenziali non sa chi è l'Utente che presenta la Credenziale.
-Inoltre, la privacy è protetta anche durante il controllo dello stato della Credenziale. Utilizzando Status Assertion [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-demarco-oauth-status-assertions/03/">OAUTH-STATUS-ASSERTION</a>], la specifica IT-Wallet garantisce
-che mentre il Verificatore di Attestati Elettronici controlla la validità della Credenziale, il Fornitore di Credenziali non apprende dove o quando la Credenziale viene utilizzata.</p>
+Inoltre, la privacy è protetta anche durante il controllo dello stato della Credenziale. Utilizzando Status List [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/13/">TOKEN-STATUS-LIST</a>], la specifica IT-Wallet garantisce che mentre il Verificatore di Attestati Elettronici controlla la validità della Credenziale, il Fornitore di Credenziali non apprende dove o quando la Credenziale viene utilizzata.</p>
 </section>
 <section id="pr-e-70">
 <h3><span class="section-number">15.2.4. </span>PR-E-70<a class="headerlink" href="#pr-e-70" title="Link to this heading">¶</a></h3>
@@ -695,7 +694,7 @@ che mentre il Verificatore di Attestati Elettronici controlla la validità della
 </tr>
 </tbody>
 </table>
-<p>Il ciclo di vita della Credenziale include un meccanismo di revoca della Credenziale basato su Status Assertion [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-demarco-oauth-status-assertions/03/">OAUTH-STATUS-ASSERTION</a>] che garantisce che le Credenziali siano correttamente revocate quando compromesse o obsolete.</p>
+<p>Il ciclo di vita della Credenziale include un meccanismo di revoca della Credenziale basato su Status List [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/13/">TOKEN-STATUS-LIST</a>] che garantisce che le Credenziali siano correttamente revocate quando compromesse o obsolete.</p>
 <p>La revoca di un'Entità di Federazione (cioè, Fornitore di Credenziali, Verificatore di Attestati Elettronici, Fornitore di Wallet) è invece possibile non emettendo la corrispondente Subordinate Statement su quell'Entità e impostando una breve scadenza della Trust Chain, impedendo così l'uso improprio durante la compromissione.</p>
 <div class="admonition tip">
 <p class="admonition-title">Suggerimento</p>
@@ -795,8 +794,7 @@ Lo standard OpenID4VCI fornisce l'opzione per il Wallet di richiedere Credenzial
 </tr>
 </tbody>
 </table>
-<p>Il protocollo di scambio non richiede alcuna interazione tra Verificatori di Attestati Elettronici e Fornitori di Credenziali. Inoltre, Status Assertion che preservano la privacy, presentate insieme alle Credenziali,
-garantiscono che mentre il Verificatore di Attestati Elettronici controlla la validità della Credenziale, il Fornitore di Credenziali non apprende dove o quando la Credenziale viene utilizzata.</p>
+<p>Il protocollo di scambio non richiede alcuna interazione tra Verificatori di Attestati Elettronici e Fornitori di Credenziali. Inoltre, Status List che preserva la privacy, garantisce che mentre il Verificatore di Attestati Elettronici controlla la validità della Credenziale, il Fornitore di Credenziali non apprende dove o quando la Credenziale viene utilizzata.</p>
 </section>
 <section id="spr-w-50">
 <h3><span class="section-number">15.3.6. </span>SPR-W-50<a class="headerlink" href="#spr-w-50" title="Link to this heading">¶</a></h3>
@@ -902,7 +900,7 @@ garantiscono che mentre il Verificatore di Attestati Elettronici controlla la va
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 10/12/2025.
+      Ultimo aggiornamento 11/12/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

@@ -138,8 +138,8 @@ The JWT payload contains the following claims. Unless otherwise specifed, the fo
       - OPTIONAL. *String*. Format-encoded data identifier `expiry_date` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`.  This attribute pertains to the administrative validity period of the Digital Credential, which is typically different from the technical validity period expressed by the JWT ``exp`` claim.
       - Commission Implementing Regulation `EU_2024/2977`_.
     * - **status**
-      - OPTIONAL. REQUIRED only if the Digital Credential is long-lived. *JSON object*. Format-encoded data identifier `location_status` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. It MUST contain either the JSON member `status_assertion` or `status_list`.
-      - Section 3.2.2.2 `SD-JWT-VC`_ and Section 11 `OAUTH-STATUS-ASSERTION`_.
+      - OPTIONAL. REQUIRED only if the Digital Credential is long-lived. *JSON object*. Format-encoded data identifier `location_status` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. It MUST contain either the JSON member `status_list`.
+      - Section 3.2.2.2 `SD-JWT-VC`_.
     * - **cnf**
       - OPTIONAL. *JSON object*. Format-encoded data identifier `cryptographic_binding` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`, containing the proof-of-possession key materials. By including a **cnf** (confirmation) claim in a JWT, the Issuer of the JWT declares that the Holder is in control of the private key related to the public one defined in the **cnf** parameter. The recipient MUST cryptographically verify that the Holder is in control of that key.
       - `[RFC7800, Section 3.1] <https://www.iana.org/go/rfc7800>`_ and Section 3.2.2.2 `SD-JWT-VC`_.
@@ -167,9 +167,7 @@ The JWT payload contains the following claims. Unless otherwise specifed, the fo
 .. note::
   The standard JWT claims ``nbf`` and ``exp`` are used to express the technical validity period of a SD-JWT VC-compliant Digital Credential.
 
-If the ``status`` parameter is set to ``status_list``, it MUST be a *JSON object* compliant with Section 6.2 of TOKEN-STATUS-LIST_.
-
-If the ``status`` parameter is set to ``status_assertion``, it is a *JSON object* containing the *credential_hash_alg* claim indicating the Algorithm used for hashing the Digital Credential to which the Status Assertion is bound. It is RECOMMENDED to use *sha-256*.
+The ``status`` parameter ``status_list``, it MUST be a *JSON object* compliant with Section 6.2 of TOKEN-STATUS-LIST_.
 
 (Q)EAA non-normative Examples
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -600,10 +598,8 @@ For SD-JWT-VC, parameters are marked with `(hdr)` if they are located in the JOS
        | issuerAuth.validityInfo.validFrom
        | nameSpaces.elementIdentifier.expiry_date
    * - Status mechanism
-     - | status_assertion (pld)
-       | status_list (pld)
-     - | -
-       | issuerAuth.status_list
+     - | status_list (pld)
+     - | issuerAuth.status_list
    * - Signature
      - | alg (hdr)
        | kid (hdr)
