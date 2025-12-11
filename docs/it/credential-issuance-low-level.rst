@@ -563,16 +563,13 @@ Il seguente diagramma descrive il Re-issuance Flow dell'Attestato Elettronico.
 .. plantuml:: plantuml/credential-reissuance-flow.puml
     :width: 99%
     :alt: La figura illustra il Re-issuance Flow.
-    :caption: `Re-issuance Flow. <https://www.plantuml.com/plantuml/svg/ZLHTRnCn47pthnYUQAMqLA9FAOM6faYH2gf2IeLQ5BbtUuc5OmVlNjBowucT3-LYABc7ABPdzcCywmiM7QIUMFNAkCBM9U7TvUcRozDXzzdfYIdUAwKIHZalX616Or5tOtBGw9gH4Mrn6QWa9qPREAAI8HwFX7fQQg6o1HdJDgR7N5DWVEvy1vCheU6ycCeKMentaHqPjqm1DHitWaQWaM6XG2LyBKU-EdhKhaJX9vFQhOd5M3j7zbZ5eB5SfTefYf-IOznfQqdGSopQ5NIcbAbmqAUPN_4d52COdk31uHnVHKlDk3Oi-708YKqVF1CVAYW0xJv9C3IZ1d3WVv93vKE4WCK7AhUQvxEqdxIqL4bQzUbNRI9k7bCuZvcsfan7UMXwCYoS3ZTjnaNiPKla5T4ut9yydRnjOV5x-cEdZVYHPSA1yuTGsFvO_5HXbSPKge5LSPahq66c4ANa_HI8RjfFWaRilqdmWWRdw7tvrhdkTVFkrwHYGnfo8WrB4ctiSLmHZDkWxszlkft1LGkTmQ3V-tWxk1ekTt9jzvIteV3Urx7yRJJHAGfYNjaawPULjFdo-Xh7oy6e0l5ultX0Uw5s43HPdwoVB-_xfNoP7i368ZjxM6RH3excwIM9eungaMSNEJSoJe_8QqQdZdNB-g7OWcPpbDz9ljhyYSyBkZV-1WtnnIEiHcC3ZVNc3-PQdCoxlFPkdDiMVC23-uzBppDF_lk-sd7WY2K9bEJnmVnEwfnjup9NDF34knaoJ_X0iVMivHVya3aYkuECk6_6dQbfTycI4AQ1PiRNtE2eLC35Wb9Fx1y0>`_
+    :caption: `Re-issuance Flow. <https://www.plantuml.com/plantuml/svg/ZLDHYnCn47xFh_ZUlCAT7EXJ3z5Y4GuKZgeS8ZxaTcUxmMscPcRRqrzlahQnUqHq7fQ4p3VVDpFVYjgWnhCIWbltQkvxyh1OkhLJE-1je9QykdZqHAr06G-4STjQfVOIsjDvpgt8I47mOV45Ghw5XMTrdMkiElPGpeZFGW6ZEB-6HQ2r4wLO13pg5NTN3pOY6zviHdy2DhtrdeRd9XLDSesPvogy9I-ujyD0YbilQdr3DmO6m7n56Xpj21_LwYXuxqJnYR-JHySXfK2K8_DP3nB1GER0G9tcsuf-Z2xbxTDuF6Dd1zUcfqffUendoOz5RRgu3XT_U4v0v_7r-l7wnINYz-MtrpDeuhZuIJBBCD0WX0lFCnYSXoXl3OuqhZFbDH4jceP4ZegosahbOwJBXAaybt8hwW99_t_rW7biBYYcg7S3xm_3hVFLEYkHzs4mZGEBzV2qpzvBoqSNUPvcxftssNRF18inwTQJjQQfqvNbA0EktyeX6HBBExx3PFZA24SVbjIej_ABbU4yjOeShF8gM-JlSvydcv9eRZItoS7zobtUrFPTg2Rv93M6oMuvK6wX9hs-r_fcoophm7yprjm_Nz90IjW6sZaUPO8nMS2R21atmsy0>`_
 
 **Passo 1**: Il flusso inizia quando l'Utente apre l'Istanza del Wallet: questo passaggio PUÒ essere attivato da una notifica inviata dal Credential Issuer (utilizzando ad esempio uno dei contatti di comunicazione out-of-band registrati durante il flusso di emissione).
 
-**Passo 2**: L'Istanza del Wallet DEVE controllare lo stato di ogni Attestato Elettronico memorizzato, recuperando — se non disponibile — un Token di Stato valido (seguendo il flusso descritto nella Sezione :ref:`credential-revocation:Token di Status List`) o una Status Assertion (seguendo il flusso descritto nella Sezione :ref:`credential-revocation:OAuth Status Assertions`) come da (:ref:`WP_069 <wallet-credential-issuance-testcases>`).  
-L'Istanza del Wallet DEVE poi verificare (:ref:`WP_070 <wallet-credential-issuance-testcases>`):
-
-  - in caso di Status List: se un Attestato Elettronico ha lo stato impostato su ``0x03`` - ``UPDATE`` o ``0x04`` - ``ATTRIBUTE_UPDATE``;
-  - in caso di Status Assertion: se il ``credential_status_type`` è impostato su ``INVALID`` e ``credential_status_detail.state`` è impostato su ``UPDATE`` o ``ATTRIBUTE_UPDATE``.
-
+**Passo 2**: L'Istanza del Wallet DEVE controllare lo stato di ogni Attestato Elettronico memorizzato, recuperando — se non disponibile — un Token di Stato valido (seguendo il flusso descritto nella Sezione :ref:`credential-revocation:Token di Status List`) come da (:ref:`WP_069 <wallet-credential-issuance-testcases>`).  
+L'Istanza del Wallet DEVE poi verificare (:ref:`WP_070 <wallet-credential-issuance-testcases>`) se un Attestato Elettronico ha lo stato impostato su ``0x03`` - ``UPDATE`` o ``0x04`` - ``ATTRIBUTE_UPDATE``.
+ 
 Se le condizioni non sono soddisfatte, il flusso DEVE essere interrotto.  
 Altrimenti, l'Istanza del Wallet DEVE verificare i relativi Access Token. Se sono ancora validi, il Passo 3 PUÒ essere saltato (:ref:`WP_071 <wallet-credential-issuance-testcases>`).
 
@@ -583,9 +580,9 @@ Il Refresh Token Flow consente all'Istanza del Wallet di ottenere un nuovo Refre
 Quando il nuovo Attestato Elettronico è memorizzato con successo nel secure storage, l'Istanza del Wallet DEVE eliminare quello precedente (:ref:`WP_073 <wallet-credential-issuance-testcases>`).
 
 .. note::
-  Indipendentemente dal meccanismo di revoca supportato, se lo stato dell'Attestato Elettronico è impostato su ``ATTRIBUTE_UPDATE`` (usando OAuth Status List) o ``credential_status_detail.state`` è impostato su ``ATTRIBUTE_UPDATE`` (usando Status Assertions), l'insieme di attributi dell'Utente nell'Attestato aggiornato non corrisponde a quello memorizzato. In questo caso, l'Istanza del Wallet DEVE richiedere l'autorizzazione dell'Utente per memorizzare il nuovo Attestato aggiornato (:ref:`WP_074 <wallet-credential-issuance-testcases>`).  
+  Indipendentemente dal meccanismo di revoca supportato, se lo stato dell'Attestato Elettronico è impostato su ``ATTRIBUTE_UPDATE``, l'insieme di attributi dell'Utente nell'Attestato aggiornato non corrisponde a quello memorizzato. In questo caso, l'Istanza del Wallet DEVE richiedere l'autorizzazione dell'Utente per memorizzare il nuovo Attestato aggiornato (:ref:`WP_074 <wallet-credential-issuance-testcases>`).  
 
-  Se invece lo stato è impostato su ``UPDATE`` (usando OAuth Status List) o ``credential_status_detail.state`` è impostato su ``UPDATE`` (usando Status Assertions), solo i parametri dei Metadata sono cambiati. In questo caso, l'Istanza del Wallet DOVREBBE memorizzare il nuovo Attestato senza richiedere autorizzazione o consenso esplicito dell'Utente (:ref:`WP_075 <wallet-credential-issuance-testcases>`).
+  Se invece lo stato è impostato su ``UPDATE``, solo i parametri dei Metadata sono cambiati. In questo caso, l'Istanza del Wallet DOVREBBE memorizzare il nuovo Attestato senza richiedere autorizzazione o consenso esplicito dell'Utente (:ref:`WP_075 <wallet-credential-issuance-testcases>`).
 
 
 Re-issuance Flow: Considerazioni di Sicurezza

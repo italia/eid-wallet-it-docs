@@ -662,10 +662,10 @@ L'intestazione JOSE del Wallet Unit Attestation JWT contiene i seguenti parametr
       - OBBLIGATORIO. Deve essere impostato su ``key-attestation+jwt``
       - `OPENID4VC-HAIP`_.
     * - **trust_chain**
-      - OBBLIGATORIO. Sequenza di Entity Statement che compone la Catena di Fiducia relativa al Fornitore di Wallet.
+      - OPZIONALE. Sequenza di Entity Statement che compone la Catena di Fiducia relativa al Fornitore di Wallet.
       - `OID-FED`_ Sezione 4.3 *Trust Chain Header Parameter*.
     * - **x5c**
-      - OPZIONALE. Contiene il certificato di chiave pubblica X.509 o la catena di certificati (:rfc:`5280`) corrispondente alla chiave utilizzata per firmare digitalmente il JWT.
+      - OBBLIGATORIO. Contiene il certificato di chiave pubblica X.509 o la catena di certificati (:rfc:`5280`) corrispondente alla chiave utilizzata per firmare digitalmente il JWT.
       - :rfc:`7515` Sezione 4.1.8 e `SD-JWT-VC`_ Sezione 3.5.
 
 Il corpo del Wallet Unit Attestation JWT contiene le seguenti dichiarazioni (claims):

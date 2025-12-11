@@ -6,5 +6,8 @@
         "eyJhbGciOiJFUz...jJLA",
         "eyJhbGciOiJFUz...H9gw"
     ],
+    "x5c": [
+        "<Wallet Provider X.509 Certificate>"
+    ],
     "typ": "key-attestation+jwt"
 }

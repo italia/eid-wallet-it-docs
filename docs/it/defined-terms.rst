@@ -58,10 +58,6 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Soggetto pubblico o privato che fornisce Attestati Elettronici agli Utenti (può essere un fornitore di PID oppure un fornitore di (Q)EAA).
       Conforme con ARF 2.5.; IT-Wallet aggrega sotto questo termine sia il fornitore di PID che di (Q)EAA .
 
-    **Status Assertion**
-      Documento firmato attestante lo stato di validità attuale di un Attestato Elettronico.
-      Non presente in ARF 2.5; specifico di IT-Wallet.
-
     **Asset Critici**
       Asset (ad esempio, le chiavi crittografiche) la cui perdita avrebbe gravi ripercussioni sulla Istanza del Wallet.
       Conforme con ARF 2.5.
