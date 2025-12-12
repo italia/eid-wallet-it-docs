@@ -252,9 +252,9 @@ The details of each step shown in the previous picture are described below.
         }
       }
 
-**Steps 19-23 (RP Checks)**: The Relying Party verifies the Authorization Response, extracts the ``vp_token``, which contains one or more Digital Credentials presentations, and validates the overall format of the VP Token. For each credential presentation, the Relying Party verifies its integrity according to the DCQL query criteria defined in the Authorization Request. The Relying Party MUST also attest trust with the corresponding Credentials Issuer, and validate the Wallet Instance's proof of possession of each presented Digital Credential. Finally, the Relying Party verifies the revocation status of each presented Digital Credential, as described in :ref:`credential-revocation:Digital Credential Revocation and Suspension`. If all previous verifications yelded positive result, the Relying Party updates the User session.
+**Steps 19-22 (RP Checks)**: The Relying Party verifies the Authorization Response, extracts the ``vp_token``, which contains one or more Digital Credentials presentations, and validates the overall format of the VP Token. For each credential presentation, the Relying Party verifies its integrity according to the DCQL query criteria defined in the Authorization Request. The Relying Party MUST also attest trust with the corresponding Credentials Issuer, and validate the Wallet Instance's proof of possession of each presented Digital Credential. Finally, the Relying Party verifies the revocation status of each presented Digital Credential, as described in :ref:`credential-revocation:Digital Credential Revocation and Suspension`. If all previous verifications yelded positive result, the Relying Party updates the User session.
 
-**Steps 24-25 or 26 (Relying Party Response)**: The Relying Party provides to the Wallet Instance the response about the presentation, which informs the User.
+**Steps 23-24 or 25 (Relying Party Response)**: The Relying Party provides to the Wallet Instance the response about the presentation, which informs the User.
 
   Upon receiving and validating the Authorization Response at the Response Endpoint, the Relying Party returns to the Wallet Instance a HTTP 200 OK. In particular, in the Same Device Flow, the Relying Party SHOULD also pass the ``redirect_uri`` to the Wallet Instance. Upon receiving the ``redirect_uri``, the Wallet Instance MUST perform a redirect to the URL specified by the ``redirect_uri``. This redirect allows the Relying Party to seamlessly resume interaction with the User on the device which initiated the flow. When the response does not contain the ``redirect_uri`` parameter, the Wallet Instance is not required to perform any further step. The User should manually close the Wallet Instance and open the user-agent to continue the flow (:ref:`RPR-83 <test-plans-remote-presentation>`).
 
@@ -269,7 +269,7 @@ The details of each step shown in the previous picture are described below.
       "redirect_uri": "https://relying-party.example.org/cb?response_code=091535f699ea575c7937fa5f0f454aee"
     }
 
-**Steps 27-28**: The JavaScript page is inspecting the status endpoint.
+**Steps 26-27**: The JavaScript page is inspecting the status endpoint.
 
   Below is a non-normative example of the HTTP Request to the status endpoint, where the parameter ``id`` contains an opaque and random value:
 
@@ -290,7 +290,7 @@ The details of each step shown in the previous picture are described below.
         "redirect_uri": "https://relying-party.example.org/cb?response_code=091535f699ea575c7937fa5f0f454aee"
       }
 
-**Steps 29-30**: The user-agent is redirected to the redirect URI to continue the navigation with the protected resource made available to the User (:ref:`WP_094 <wallet-credential-presentation-testcases>`).
+**Steps 28-29**: The user-agent is redirected to the redirect URI to continue the navigation with the protected resource made available to the User (:ref:`WP_094 <wallet-credential-presentation-testcases>`).
 
 
 
