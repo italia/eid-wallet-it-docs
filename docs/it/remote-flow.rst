@@ -46,8 +46,8 @@ Una descrizione ad alto livello del flusso remoto, dal punto di vista dell'Utent
 
     c. valuta gli Attestati Elettronici richiesti e verifica l'idoneità della Relying Party nel richiedere questi ultimi. Ad esempio, applicando le politiche relative a quella specifica Relying Party ottenute con la Trust Chain (:ref:`WP_087 <wallet-credential-presentation-testcases>`).
 
-  5. *Risposta di Autorizzazione POST*: l'Istanza del Wallet presenta le informazioni richieste alla Relying Party, insieme alla Wallet Attestation se richiesto.
-  6. *Controlli RP*: La Relying Party convalida le Credenziali presentate verificando la fiducia con i loro Fornitori di Attestati Elettronici e controlla la Wallet Attestation per garantire che il Fornitore di Wallet sia affidabile.
+  5. *Risposta di Autorizzazione POST*: l'Istanza del Wallet presenta le informazioni richieste alla Relying Party.
+  6. *Controlli RP*: La Relying Party convalida le Credenziali presentate verificando la fiducia con i loro Fornitori di Attestati Elettronici e controlla i rispettivi stati di validità.
   7. *Risposta della Relying Party*: l'Istanza del Wallet informa l'Utente dell'autenticazione riuscita con la Relying Party, e l'Utente continua la navigazione.
 
 Di seguito è riportato un diagramma di sequenza che dettaglia le interazioni tra tutte le parti coinvolte.
@@ -213,17 +213,6 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
               {"path": ["family_name"]},
               {"path": ["personal_administrative_number"]}
             ]
-          },
-          {
-            "id": "wallet attestation",
-            "format": "dc+sd-jwt",
-            "meta": {
-              "vct_values": ["urn:eudi:WalletAttestation:it:1"]
-            },
-            "claims": [
-              {"path": ["wallet_link"]},
-              {"path": ["wallet_name"]}
-            ]
           }
         ]
       },
@@ -259,14 +248,13 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
       {
         "state": "3be39b69-6ac1-41aa-921b-3e6c07ddcb03",
         "vp_token": {
-          "personal id data": "eyJhbGciOiJFUzI1NiIs...PT0iXX0",
-          "wallet attestation": "eyJhbGciOiJFUzI1NiIs...NTi0XG"
+          "personal id data": "eyJhbGciOiJFUzI1NiIs...PT0iXX0"
         }
       }
 
-**Passaggi 19-20 (Controlli RP)**: La Relying Party verifica la Risposta di Autorizzazione, estrae la Wallet Attestation per stabilire la fiducia con la Soluzione Wallet. Quindi estrae il ``vp_token`` che contiene una o più presentazioni di Attestati Elettronici di Attributi, e ne valida il formato complessivo.  Per ogni presentazione di un Attestato, la Relying Party ne verifica l’integrità secondo i criteri della query DCQL definiti nella Richiesta di Autorizzazione. La Relying Party DEVE anche attestare la fiducia con il relativo Fornitore di Attestati Elettronici e verificare la prova di possesso dell'Istanza del Wallet per ogni Attestato presentato. Infine, la Relying Party verifica lo stato di revoca di ogni Attestato presentato come descritto in :ref:`credential-revocation:Revoca e Sospensione degli Attestati Elettronici`. Se tutte le verifiche precedenti hanno dato esito positivo, la Relying Party aggiorna la sessione dell'Utente.
+**Passaggi 19-22 (Controlli RP)**: La Relying Party verifica la Risposta di Autorizzazione, estrae la Wallet Attestation per stabilire la fiducia con la Soluzione Wallet. Quindi estrae il ``vp_token`` che contiene una o più presentazioni di Attestati Elettronici di Attributi, e ne valida il formato complessivo.  Per ogni presentazione di un Attestato, la Relying Party ne verifica l’integrità secondo i criteri della query DCQL definiti nella Richiesta di Autorizzazione. La Relying Party DEVE anche attestare la fiducia con il relativo Fornitore di Attestati Elettronici e verificare la prova di possesso dell'Istanza del Wallet per ogni Attestato presentato. Infine, la Relying Party verifica lo stato di revoca di ogni Attestato presentato come descritto in :ref:`credential-revocation:Revoca e Sospensione degli Attestati Elettronici`. Se tutte le verifiche precedenti hanno dato esito positivo, la Relying Party aggiorna la sessione dell'Utente.
 
-**Passaggi 24-25 o 26 (Risposta della Relying Party)**: La Relying Party fornisce all'Istanza del Wallet la risposta sulla presentazione, che a sua volta informa l'Utente.
+**Passaggi 23-24 o 25 (Risposta della Relying Party)**: La Relying Party fornisce all'Istanza del Wallet la risposta sulla presentazione, che a sua volta informa l'Utente.
 
   Dopo aver ricevuto e convalidato la Authorization Response al Response Endpoint, la Relying Party restituisce all'Istanza del Wallet un codice HTTP 200 OK. In particolare, nel Flusso Same Device, la Relying Party DOVREBBE anche passare il ``redirect_uri`` all'Istanza del Wallet. Dopo aver ricevuto il ``redirect_uri``, l'Istanza del Wallet DEVE eseguire un reindirizzamento all'URL specificato dal ``redirect_uri``. Questo reindirizzamento consente alla Relying Party di riprendere senza problemi l'interazione con l'Utente sul dispositivo che ha avviato il flusso. Quando la risposta non contiene il parametro ``redirect_uri``, l'Istanza del Wallet non è tenuta a eseguire ulteriori passaggi. L'Utente dovrebbe chiudere manualmente l'Istanza del Wallet e aprire lo user-agent per continuare il flusso (:ref:`RPR-83 <test-plans-remote-presentation>`).
 
@@ -281,7 +269,7 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
       "redirect_uri": "https://relying-party.example.org/cb?response_code=091535f699ea575c7937fa5f0f454aee"
     }
 
-**Passaggi 27-28**: La pagina JavaScript continua ad ispezionare lo Status Endpoint.
+**Passaggi 26-27**: La pagina JavaScript continua ad ispezionare lo Status Endpoint.
 
   Di seguito è riportato un esempio non normativo della Richiesta HTTP allo Status Endpoint, dove il parametro ``id`` contiene un valore opaco e casuale:
 
@@ -302,7 +290,7 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
         "redirect_uri": "https://relying-party.example.org/cb?response_code=091535f699ea575c7937fa5f0f454aee"
       }
 
-**Passaggi 29-30**: Lo user-agent viene reindirizzato al ``redirect_uri`` per continuare la navigazione con la risorsa protetta resa disponibile all'Utente (:ref:`WP_094 <wallet-credential-presentation-testcases>`).
+**Passaggi 28-29**: Lo user-agent viene reindirizzato al ``redirect_uri`` per continuare la navigazione con la risorsa protetta resa disponibile all'Utente (:ref:`WP_094 <wallet-credential-presentation-testcases>`).
 
 
 
@@ -531,11 +519,6 @@ I parametri del payload JWT sono descritti qui:
 .. note::
   L'utilizzo del parametro ``client_metadata`` è condizionale. Se ``client_id`` utilizza il prefisso ``x509_hash``, tutti i metadata della Relying Party, oltre alla sua chiave pubblica utilizzata per firmare il Request Object, DEVONO essere forniti in ``client_metadata``. Tuttavia, se è presente e ``client_id`` utilizza il prefisso ``openid_federation``, l'Istanza del Wallet DEVE ignorarlo e ottenere i metadata attraverso la Trust Chain OpenID Federation (:ref:`RPR-113 <test-plans-remote-presentation>`).
 
-.. note:: **Richiesta dell'Attestazione del Wallet**
-  
-  La Relying Party che richiede un'Attestazione del Wallet DEVE farlo utilizzando una query DCQL standard, tuttavia NON DOVREBBE includere il parametro ``claims`` nella query. A seconda del formato dell'Attestazione del Wallet, la Relying Party DEVE richiedere il parametro ``vct_values`` nella query DCQL, il quale DEVE essere impostato al valore definito nella :ref:`registry:Struttura del Catalogo degli Attestati Elettronici` (:ref:`RPR-114 <test-plans-remote-presentation>`).
-
-
 
 Authorization Response
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -547,9 +530,6 @@ Dopo aver ottenuto l'autorizzazione e il consenso dell'Utente per la presentazio
 
     La risposta inviata dall'Istanza del Wallet alla Relying Party è cifrata per impedire a un avversario di sfruttare possibili vulnerabilità per accedere alle informazioni trasmesse in chiaro all'interno della rete della Relying Party. Per esempio, ciò è possibile se l'ambiente di rete della Relying Party impiega un proxy per le operazioni di `TLS Termination <https://www.f5.com/glossary/ssl-termination>`_, il quale agisce come intermediario tra il client e il backend web server della Relying Party e gestisce tutte le operazioni relative a TLS. In questo caso specifico, il proxy decifra il contenuto della trasmissione, in seguito lo inoltra al backend web server della Relying Party. Questa operazione può avvenire in chiaro oppure negoziando una ulteriore sessione TLS con il web server della Relying Party (sempre raccomandato). Nel primo caso, trasmissione dei dati TLS in chiaro, qualsiasi avversario all'interno del segmento di rete fra proxy e web server backend che intercettasse i dati trasmessi, potrebbe ottenere informazioni sensibili; se però la risposta è cifrata, la fattispece descritta viene mitigata anche mandando i dati in chiaro.
 
-.. note:: **Presentazione dell'Attestazione del Wallet**
-  
-    L'Istanza del Wallet DEVE includere l'Attestazione del Wallet se richiesta dalla Relying Party usando la query DCQL. Durante la presentazione, l'Istanza del Wallet NON DOVREBBE richiedere il consenso dell'utente alla divulgazione degli attributi dell'Attestazione del Wallet, i quali sono dati tecnici non trasparenti per l'utente.
 
 Nella Authorization Response vengono utilizzati i seguenti parametri (:ref:`WP_093 <wallet-credential-presentation-testcases>`):
 
@@ -561,10 +541,7 @@ Nella Authorization Response vengono utilizzati i seguenti parametri (:ref:`WP_0
   * - **Nome**
     - **Descrizione**
   * - **vp_token**
-    - Ci DEVONO essere almeno due presentazioni firmate in questo Array (:ref:`WP_093a <wallet-credential-presentation-testcases>`):
-
-      - L'Attestato Elettronico richiesto (uno o più, in formato SD-JWT VC)
-      - la Wallet Attestation (in formato SD-JWT VC)
+    - Questo array DEVE contenere gli Attestati Elettronici richiesti nel formato SD-JWT VC (:ref:`WP_093a <wallet-credential-presentation-testcases>`).
 
       Il formato ``vp_token`` è un JSON Object le cui chiavi corrispondono agli id degli Attestati Elettronici richieste nel ``dcql_query`` utilizzato nella richiesta, e i valori a ciascun Attestato Elettronico presentato.
 
@@ -719,9 +696,6 @@ La seguente tabella elenca gli Status Code HTTP e i relativi *Error codes* che D
     * - ``403 Forbidden``
       - ``invalid_request``
       - Il valore del nonce fornito è errato o altrimenti non conforme agli standard.
-    * - ``403 Forbidden``
-      - ``invalid_request``
-      - La firma della Wallet Attestation non è valida o la fiducia non può essere stabilita con il suo Emittente.
     * - ``403 Forbidden``
       - ``invalid_request``
       - La trust non può essere stabilita con il Fornitore di Attestati Elettronici.
