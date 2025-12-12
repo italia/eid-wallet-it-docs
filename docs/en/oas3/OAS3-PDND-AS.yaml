@@ -314,6 +314,25 @@ components:
                   type: string
                 required: [object_id, status, last_updated]
                 example: '[{"object_id": "6F9619FF-8B86-D011-B42D-00C04FC964FF", "nationality": "IT"}, {...}]'
+            metadataClaims:
+              description: List of Metadata Claims.
+              type: array
+              items: 
+                type: object
+                properties:
+                  object_id:
+                    description: Unique identifier of the Dataset.
+                    type: string
+                    example: "6F9619FF-8B86-D011-B42D-00C04FC964FF"
+                  issuance_date:
+                    description: Administrative validity start date of the Dataset
+                    type: string
+                    example: '"2025-01-01"'
+                  expiry_date:
+                    description: Administrative expiry date of the Dataset.
+                    type: string
+                    example: '"2025-12-31"'
+                required: [object_id]
           required: [iss, aud, exp, iat, jti]
     CredentialClaimsRequest:
       required:
