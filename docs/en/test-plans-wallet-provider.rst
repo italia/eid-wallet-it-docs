@@ -242,8 +242,8 @@ This section lists the test cases from Sections:
      - Upon successful validation of the Wallet Attestation Issuance Request, the Wallet Provider returns 200 OK with Content-Type: application/json, containing the Wallet Attestation as its structure defined in `Wallet Attestation JWT <wallet-provider-endpoint.html#wallet-attestation-jwt>`_.
    * - WP_029a
      - Wallet Attestation Issuance, Data Model and Lifecycle, Security
-     - Multi-format Wallet Attestation
-     - Wallet Provider provides the Wallet Attestation in at least three formats (JWT, SD-JWT, and mdoc), each signed by the Wallet Provider, and confirming the structures defined in `Wallet Attestation JWT <wallet-provider-endpoint.html#wallet-attestation-jwt>`_, `Wallet Attestation SD-JWT <wallet-provider-endpoint.html#wallet-attestation-sd-jwt>`_, and `Wallet Attestation mdoc <wallet-provider-endpoint.html#wallet-attestation-mdoc>`_.
+     - Wallet Attestation format
+     - Wallet Provider provides the Wallet Attestation in JWT format signed by the Wallet Provider, and confirming the structures defined in `Wallet Attestation JWT <wallet-provider-endpoint.html#wallet-attestation-jwt>`_.
    * - WP_029b
      - Wallet Attestation Issuance, Data Model and Lifecycle, Security
      - No PII in Wallet Attestation

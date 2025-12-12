@@ -36,7 +36,7 @@ See :ref:`mobile-application-instance:Mobile Application Nonce Request` and :ref
 Wallet Instance Management Endpoint
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This is a RESTful API endpoint provided by the Wallet Provider that enables Wallet Instance management, including registration, status retrieval, revocation upon request (e.g., by the User), and deletion.
+These are RESTful API endpoints provided by the Wallet Provider that enables Wallet Instance management, including registration, status retrieval, revocation upon request (e.g., by the User), and deletion.
 The following sections describe the registration, status retrieval and revocation requests, along with their corresponding responses, handled by this endpoint, which are required for core :ref:`wallet-instance-functionalities:Wallet Instance Functionalities`.
 
 Wallet Instance Registration Request
@@ -196,7 +196,7 @@ Wallet App and Wallet Unit Attestation Issuance Request
 
 The Wallet App and Wallet Unit Attestation Issuance Request uses the HTTP POST method with ``Content-Type`` set to ``application/json``. (:ref:`WP_026 <wallet-instance-testcases>` and :ref:`WP_140–142 <wallet-instance-optional-testcases>`).
 
-The ``typ`` header of the Wallet App and Wallet Unit Attestation Issuance Request JWT assumes the value ``wp-war-wua+jwt``.
+The ``typ`` header of the Wallet App and Wallet Unit Attestation Issuance Request JWT assumes the value ``attestations-request+jwt``.
 
 The Wallet App and Wallet Unit Attestation Issuance Request body contains an ``assertion`` parameter whose value is a signed JWT including all header parameters and body claims described below.
 
@@ -230,7 +230,7 @@ In particular, the Wallet App and Wallet Unit Attestation Issuance JWT includes 
       - Thumbprint of the Wallet Instance's JWK contained in the ``cnf`` claim.
       - [:rfc:`7638#section_3`]
     * - **typ**
-      - The type of the JWT, it MUST set to ``wp-war-wua+jwt``.
+      - The type of the JWT, it MUST set to ``attestations-request+jwt``.
       -
 
 The Wallet App and Wallet Unit Attestation Request JWT includes the following body claims:
@@ -282,7 +282,7 @@ Below is a non-normative example of a Wallet App and Wallet Unit Attestation Req
     {
       "alg": "ES256",
       "kid": "OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
-      "typ": "wp-war-wua+jwt"
+      "typ": "attestations-request+jwt"
     }
 
 .. code-block:: json
