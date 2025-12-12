@@ -7,7 +7,7 @@ An HTTP GET request to the Federation endpoint allows the retrieval of the Walle
 
 The returned Entity Configuration of the Wallet Provider MUST contain the attributes described in the sections below.
 
-The Wallet Provider Entity Configuration is a signed JWT containing the public keys and supported algorithms of the Wallet Provider. It is structured in accordance with the `OID-FED`_ and the :ref:`trust-infrastructure:The Infrastructure of Trust` outlined in this specification (:ref:`WP_002 <wallet-provider-backend-testcases>`).
+The Wallet Provider Entity Configuration is a signed JWT containing the public keys and supported algorithms of the Wallet Solution as a component of the Wallet Provider. It is structured in accordance with the `OID-FED`_ and :ref:`trust-infrastructure:The Infrastructure of Trust` outlined in this specification (:ref:`WP_002 <wallet-provider-backend-testcases>`).
 
 
 Wallet Provider Entity Configuration JWT Header
@@ -43,10 +43,10 @@ Wallet Provider Entity Configuration JWT Payload
       - **Value**
       - **Reference**
     * - ``iss``
-      - REQUIRED. Public URL of the Wallet Provider.
+      - REQUIRED. Public URL of the Wallet Solution.
       - `OID-FED`_.
     * - ``sub``
-      - REQUIRED. Public URL of the Wallet Provider.
+      - REQUIRED. Public URL of the Wallet Solution.
       - `OID-FED`_.
     * - ``iat``
       - REQUIRED. Issuance datetime in Unix Timestamp format.
@@ -55,15 +55,28 @@ Wallet Provider Entity Configuration JWT Payload
       - REQUIRED. Expiration datetime in Unix Timestamp format.
       - `OID-FED`_.
     * - ``authority_hints``
-      - REQUIRED. Array of URLs (String) containing the list of URLs of the immediate superior Entities, such as the Trust Anchor or an Intermediate, that MAY issue an Entity Statement related to the Wallet Provider.
+      - REQUIRED. Array of URLs (String) containing the list of URLs of the immediate superior Entities, such as the Trust Anchor or an Intermediate, that MAY issue an Entity Statement related to the Wallet Solution.
       - `OID-FED`_.
     * - ``jwks``
-      - REQUIRED. A JSON Web Key Set (JWKS) representing the public part of the Wallet Provider's Federation Entity signing keys. The corresponding private key is used by the Entity to sign the Entity Configuration about itself.
+      - REQUIRED. A JSON Web Key Set (JWKS) representing the public part of the Federation Entity signing keys. The corresponding private key is used by the Wallet Solution to sign the Entity Configuration about itself.
       - :rfc:`7517`, `OID-FED`_.
     * - ``metadata``
-      - REQUIRED.JSON object that represents the Entity's Types and the metadata for those Entity Types. Each member name of the JSON object is an Entity Type Identifier, and each value MUST be a JSON object containing metadata parameters according to the metadata schema of the Entity Type. It MUST contains the ``wallet_provider`` and OPTIONALLY the ``federation_entity`` metadata.
+      - REQUIRED.JSON object that represents the Entity's Types and the metadata for those Entity Types. Each member name of the JSON object is an Entity Type Identifier, and each value MUST be a JSON object containing metadata parameters according to the metadata schema of the Entity Type. It MUST contain the ``wallet_solution`` and OPTIONALLY the ``federation_entity`` metadata.
       - `OID-FED`_.
 
 
 .. note::
     Tests covering the Entity Configuration structure (header and payload) are provided in :ref:`WP_002a–002h <wallet-provider-backend-testcases>`.
+
+
+Example of a Wallet Provider Entity Configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Below is a non-normative example of a payload of a Wallet Provider Entity Configuration containing a metadata for
+
+- `federation_entity`
+- `wallet_solution`
+
+.. literalinclude:: ../../examples/ec-wp.json
+  :language: JSON
+

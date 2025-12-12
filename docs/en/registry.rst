@@ -11,7 +11,7 @@ The registry architecture addresses semantic standardization, federation trust m
 Registry Architecture Overview
 ------------------------------
 
-The IT-Wallet registry system comprises six main components:
+The IT-Wallet System Register comprises six main components:
 
 1. **Claims Registry**: Standardized semantic definitions for individual credential attributes, data types, and validation rules.
 2. **Authentic Source (AS) Registry**: Catalog of registered data providers with their declared capabilities and available claims.
@@ -32,7 +32,7 @@ The Trust Anchor MUST publish registry discovery metadata at the ``.well-known/i
 - **Default Content-Type**: ``application/jwt`` (signed JWT ensuring authenticity and integrity)
 - **Alternative Content-Type**: ``application/json`` (plain JSON for development/debugging purposes)
 
-Moreover, the IT-Wallet registry system MUST use two distinct access patterns:
+Moreover, the IT-Wallet System Register MUST use two distinct access patterns:
 
 - **Data Registry APIs**: MUST support pagination and filtering capabilities.
 - **Federation Trust Infrastructure**: as defined in :ref:`trust-infrastructure:The Infrastructure of Trust`.
@@ -428,7 +428,7 @@ The **Federation Registry** provides the cryptographic trust infrastructure for 
 Registry Integration Role
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Within the IT-Wallet registry architecture, the Federation Registry serves as the **trust validation layer** for:
+Within the IT-Wallet System Register architecture, the Federation Registry serves as the **trust validation layer** for:
 
 1. **Entity Authentication**: Validates the cryptographic identity of all participants before registry operations
 2. **Trust Chain Verification**: Provides the cryptographic foundation for Credential Issuers, Relying Parties, and Wallet Providers entity validation
