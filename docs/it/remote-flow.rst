@@ -248,7 +248,7 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
       {
         "state": "3be39b69-6ac1-41aa-921b-3e6c07ddcb03",
         "vp_token": {
-          "personal id data": "eyJhbGciOiJFUzI1NiIs...PT0iXX0"
+          "personal id data": ["eyJhbGciOiJFUzI1NiIs...PT0iXX0"]
         }
       }
 
@@ -543,7 +543,7 @@ Nella Authorization Response vengono utilizzati i seguenti parametri (:ref:`WP_0
   * - **vp_token**
     - Questo array DEVE contenere gli Attestati Elettronici richiesti nel formato SD-JWT VC (:ref:`WP_093a <wallet-credential-presentation-testcases>`).
 
-      Il formato ``vp_token`` è un JSON Object le cui chiavi corrispondono agli id degli Attestati Elettronici richieste nel ``dcql_query`` utilizzato nella richiesta, e i valori a ciascun Attestato Elettronico presentato.
+      Il formato ``vp_token`` è un JSON Object le cui chiavi corrispondono agli id degli Attestati Elettronici richieste nel ``dcql_query`` utilizzato nella richiesta, e i valori sono degli array contenenti il(gli) Attestato(i) Elettronico(i) presentato(i).
 
   * - **state**
     - Identificatore univoco fornito dalla Relying Party all'interno della Authorization Request.

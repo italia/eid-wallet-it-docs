@@ -248,7 +248,7 @@ The details of each step shown in the previous picture are described below.
       {
         "state": "3be39b69-6ac1-41aa-921b-3e6c07ddcb03",
         "vp_token": {
-          "personal id data": "eyJhbGciOiJFUzI1NiIs...PT0iXX0"
+          "personal id data": ["eyJhbGciOiJFUzI1NiIs...PT0iXX0"]
         }
       }
 
@@ -547,7 +547,7 @@ Where the following parameters are used (:ref:`WP_093 <wallet-credential-present
 
     - This array MUST contain the requested Digital Credential(s) in format of SD-JWT VC (:ref:`WP_093a <wallet-credential-presentation-testcases>`).
 
-      The ``vp_token`` format is a JSON Object which keys corresponds to the requested credential ids in the ``dcql_query`` used in the request, and the values to each presented Digital Credential.
+      The ``vp_token`` format is a JSON Object which keys corresponds to the requested credential ids in the ``dcql_query`` used in the request, and the values are arrays containing the presented Digital Credential(s).
 
   * - **state**
     - Unique identifier provided by the Relying Party within the Authorization Request.
