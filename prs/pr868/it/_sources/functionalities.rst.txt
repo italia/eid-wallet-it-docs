@@ -669,7 +669,7 @@ Di seguito alcuni esempi non normativi di layout dell'Authentication Button:
  
 .. only:: format_html 
 
-  .. figure:: ./images/svg/authentication-button-layout.svg
+  .. figure:: ./images/svg/layout-pulsante-autenticazione.svg
      :alt: Varianti di Authentication Button
      :width: 100% 
 
@@ -677,7 +677,7 @@ Di seguito alcuni esempi non normativi di layout dell'Authentication Button:
 
 .. only:: format_latex  
 
-  .. figure:: ./images/pdf/authentication-button-layout.pdf 
+  .. figure:: ./images/pdf/layout-pulsante-autenticazione.pdf 
      :alt: Varianti di Authentication Button 
      :width: 100% 
 
