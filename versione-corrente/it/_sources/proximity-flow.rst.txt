@@ -30,7 +30,6 @@ Le Istanze di Relying Party e Wallet registrate nell'ecosistema IT-Wallet DEVONO
 - *Flusso di Recupero del Dispositivo Supervisionato* dove un supervisore umano supervisiona il processo di verifica in persona, in contrasto con il *flusso non supervisionato* dove la verifica potrebbe avvenire attraverso sistemi automatizzati senza supervisione umana (:ref:`WP_095 <wallet-credential-presentation-testcases>`).
 - *Autenticazione dell'Istanza di Relying Party* seguendo i meccanismi definiti nella `ISO18013-5`_ per il *reader authentication* (:ref:`WP_098 <wallet-credential-presentation-testcases>`).
 - *Tipo di Documento* domestico e *Namespace* definiti in questa specifica tecnica in aggiunta a quelli già definiti nell'`ISO18013-5`_ per l'mDL (vedi :ref:`credential-data-model:Attestato Elettronico in formato mdoc-CBOR` per maggiori dettagli) (:ref:`WP_099 <wallet-credential-presentation-testcases>`).
-- *Validazione dell'Istanza del Wallet* attraverso la Wallet App Attestation.
 
 La tabella seguente mostra le tecnologie di *Device Engagement* supportate  (:ref:`WP_097 <wallet-credential-presentation-testcases>`), specificando quali sono obbligatorie.
 
@@ -131,7 +130,7 @@ La figura seguente illustra il flusso di basso livello conforme a ISO 18013-5 pe
 
 **Passo 8**: L'Istanza di Relying Party DEVE preparare il ``SessionEstablishment``. Questo messaggio DEVE essere firmato dall'Istanza di Relying Party (autenticazione dell'*mdoc reader* come specificato in [`ISO18013-5`_ #12.5]) e cifrato utilizzando la chiave di sessione derivata nel passo precedente. Il messaggio ``SessionEstablishment`` DEVE includere la ``EReaderKey.Pub`` e una richiesta per specifici attributi (:ref:`PPR-002 <test-plans-proximity-presentation>`).
 
-Di seguito è riportato un esempio non normativo nella notazione diagnostica di un messaggio ``SessionEstablishment`` CBOR che contiene una Richiesta mdoc per una Wallet App Attestation insieme a un Attestato Elettronico mDL.
+Di seguito è riportato un esempio non normativo nella notazione diagnostica di un messaggio ``SessionEstablishment`` CBOR che contiene una Richiesta mdoc per un Attestato Elettronico mDL.
 
 .. literalinclude:: ../../examples/iso-session-establishment.txt
   :language: text
@@ -148,7 +147,7 @@ Di seguito è riportato un esempio non normativo nella notazione diagnostica di 
 
 **Passo 10**: Al ricevimento del ``SessionEstablishment``, l'Istanza del Wallet DEVE decifrarlo utilizzando la chiave di sessione calcolata al Passo 9 e DEVE verificare la firma dell'Istanza di Relying Party (come specificato in [`ISO18013-5`_ #12.5 *mdoc reader authentication*]) per garantire l'autenticità del messaggio (:ref:`PPR-002 <test-plans-proximity-presentation>` and :ref:`WP_105–106 <wallet-credential-presentation-testcases>`).
 
-**Passo 11**: L'Istanza del Wallet DEVE decifrare la richiesta di attributi e DEVE chiedere all'Utente il consenso per il rilascio degli attributi richiesti (:ref:`WP_107 <wallet-credential-presentation-testcases>`). DEVE inoltre visualizzare il contenuto del Certificato di Registrazione della Relying Party per garantire l'autenticità, la trasparenza sui dati richiesti e sul suo scopo registrato (:ref:`WP_107b <wallet-credential-presentation-testcases>`).
+**Passo 11**: L'Istanza del Wallet DEVE decifrare la richiesta di attributi e DEVE chiedere all'Utente il consenso per il rilascio degli attributi richiesti (:ref:`WP_107 <wallet-credential-presentation-testcases>`). DEVE inoltre visualizzare il contenuto del Certificato di Registrazione della Relying Party per garantire l'autenticità, la trasparenza sui dati richiesti e sul suo scopo registrato (:ref:`WP_107a <wallet-credential-presentation-testcases>`).
 
 **Passo 12**: L'Utente esamina la richiesta e le informazioni di registrazione della Relying Party e quindi approva la presentazione degli attributi richiesti.
 
@@ -160,7 +159,7 @@ Di seguito è riportato un esempio non normativo nella notazione diagnostica di 
    - Sez 8.2.2.4 per ``SessionData`` tramite BLE, e
    - Sez 8.2.2.5 per ``SessionData`` tramite NFC
 
-Di seguito è riportato un esempio non normativo di ``SessionData`` nella notazione diagnostica che contiene la Risposta mdoc di una Wallet App Attestation e un Attestato Elettronico mDL.
+Di seguito è riportato un esempio non normativo di ``SessionData`` nella notazione diagnostica che contiene la Risposta mdoc di un Attestato Elettronico mDL.
 
 .. literalinclude:: ../../examples/iso-session-data.txt
   :language: text
@@ -170,9 +169,6 @@ Di seguito è riportato un esempio non normativo di ``SessionData`` nella notazi
 **Passo 14**: Una volta completato lo scambio di dati, una delle parti può terminare la sessione. La sessione può essere terminata inviando lo status code per la *Session Termination* in un messaggio ``SessionData``; questo può essere inviato insieme a una la Richiesta mdoc o Risposta mdoc [`ISO18013-5`_ #12.2.4] (:ref:`WP_113c <wallet-credential-presentation-testcases>`). Se viene utilizzato BLE, questo può comportare l'invio di uno *status code* per la *Session Termination* o il comando "End". In questo scenario, il Client GATT (Istanza di Relying Party) DEVE annullare l'iscrizione dalle caratteristiche e disconnettersi dal server GATT (Istanza del Wallet) (:ref:`PPR-007 <test-plans-proximity-presentation>`, :ref:`WP_113b <wallet-credential-presentation-testcases>`, and :ref:`WP_114 <wallet-credential-presentation-testcases>`).
 
 **Considerazione Finale**: Il flusso di presentazione si è concentrato sullo scambio tecnico di dati in contesti di prossimità. È cruciale riconoscere che i flussi di prossimità supervisionati che coinvolgono un verificatore umano svolgono un ruolo vitale in molti casi d'uso (ad esempio, verifica dell'età in un negozio, controllo dell'identità da parte delle forze dell'ordine). L'elemento umano aggiunge un livello di verifica dell'identità attraverso l'ispezione visiva e il confronto, contribuendo agli aspetti di User Binding e garanzia di autenticazione complessiva non completamente catturati in un flusso di presentazione puramente tecnico.
-
-.. note::
-   Durante la presentazione di prossimità l'Istanza del Wallet potrebbe non essere in grado di recuperare una Wallet App Attestation aggiornata, in questo caso, l'Istanza del Wallet DOVREBBE inviare l'ultima versione della Wallet App Attestation (:ref:`WP_108a <wallet-credential-presentation-testcases>`). È demandato alla Relying Party di determinare se una presentazione con una Wallet App Attestation valida ma scaduto è valida o meno.
 
 .. _sec-deviceengagement-qr:
 
@@ -465,13 +461,6 @@ Ogni Richiesta mdoc DEVE essere conforme alla seguente struttura e DEVE includer
 
        Questo componente DEVE essere presente solo se ``ReaderAuthAllSupport`` è impostato su ``true`` nel messaggio di DeviceEngagement, e i campi individuali ``readerAuth`` non vengono utilizzati (:ref:`PPR-025 <test-plans-proximity-presentation>`).
 
-.. note::
-    **Richiesta della Wallet App Attestation**
-
-    La Relying Party che richiede una Wallet App Attestation DEVE aggiungere un oggetto nell'array **docRequest** che abbia solo il campo ``docType`` impostato come ``{Trust Anchor reverse domain}.{WalletAppAttestation}`` (si rimanda a :ref:`registry:Struttura del Catalogo degli Attestati Elettronici` per dettagli ulteriori). La Relying Party NON DEVE includere il parametro ``nameSpaces`` nella richiesta (:ref:`PPR-010 <test-plans-proximity-presentation>`).
-
-    Questo componente DEVE essere presente solo se ``ReaderAuthAllSupport`` è impostato su ``true`` nel messaggio di DeviceEngagement, e i campi individuali ``readerAuth`` non vengono utilizzati (:ref:`PPR-025 <test-plans-proximity-presentation>`).
-
 
 Risposta mdoc
 ^^^^^^^^^^^^^^
@@ -550,10 +539,6 @@ Una struttura di dati **deviceSigned** DEVE essere conforme alla seguente strutt
 
      - *(COSE_Sign1)*. Contiene la struttura ``DeviceAuth``, che DEVE includere la **deviceSignature** per l'autenticazione dell'Istanza del Wallet. La firma è calcolata sui dati ``DeviceAuthentication``, che lega gli elementi restituiti alla sessione e alla richiesta. Vedi [`ISO18013-5`_ #12.4] per i dettagli sulla struttura di autenticazione (:ref:`PPR-003 <test-plans-proximity-presentation>`).
 
-
-.. note:: **Presentazione della Wallet App Attestation**
-  
-    L'Istanza del Wallet DEVE includere la Wallet App Attestation se richiesta dalla Relying Party nella richiesta mdoc. L'Istanza del Wallet DOVREBBE includere tutte le divulgazioni selettive disponibili per la Wallet App Attestation (:ref:`WP_108b <wallet-credential-presentation-testcases>`). Inoltre, durante la presentazione, l'Istanza del Wallet NON DEVE richiedere il consenso dell'Utente alla divulgazione degli attributi della Wallet App Attestation, i quali sono dati tecnici non trasparenti verso l'Utente (:ref:`WP_107a <wallet-credential-presentation-testcases>`).
 
 Session Termination
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^

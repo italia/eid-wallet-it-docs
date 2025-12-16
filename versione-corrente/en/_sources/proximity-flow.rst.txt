@@ -31,7 +31,6 @@ Relying Party and Wallet Instances registered in the IT-Wallet ecosystem MUST su
 - *Supervised Device Retrieval flow* where a human Relying Party is overseeing the verification process in person, or *unsupervised flow* where verification might happen through automated systems without human oversight (:ref:`WP_095 <wallet-credential-presentation-testcases>`).
 - *Relying Party Instance Authentication* following the mechanisms defined in the `ISO18013-5`_ for the *reader authentication* (:ref:`WP_098 <wallet-credential-presentation-testcases>`).
 - Domestic *Document Type* and *Namespaces* defined in this technical specification in addition to those already defined in the `ISO18013-5`_ for the mDL (see :ref:`credential-data-model:mdoc-CBOR Credential Format` for more details) (:ref:`WP_099 <wallet-credential-presentation-testcases>`).
-- *Wallet Instance validation* through the Wallet App Attestation.
 
 The following table shows the supported Device Engagement technologies (:ref:`WP_097 <wallet-credential-presentation-testcases>`), specifying which are mandatory.
 
@@ -133,7 +132,7 @@ The following figure illustrates the low-level flow compliant with ISO 18013-5 f
 
 
 
-Below is a non-normative example using the diagnostic notation of a CBOR-encoded ``SessionEstablishment`` message that contains an mdoc request for a Wallet App Attestation along with an mDL Digital Credential.
+Below is a non-normative example using the diagnostic notation of a CBOR-encoded ``SessionEstablishment`` message that contains an mdoc request for an mDL Digital Credential.
 
 .. literalinclude:: ../../examples/iso-session-establishment.txt
   :language: text
@@ -150,7 +149,7 @@ Below is a non-normative example using the diagnostic notation of a CBOR-encoded
 
 **Step 10**: Upon receiving the ``SessionEstablishment`` message, the Wallet Instance MUST decrypt it using the shared session key and MUST verify the Relying Party Instance's signature (mdoc reader authentication as specified in [`ISO18013-5`_ #12.5]) to ensure its authenticity (:ref:`PPR-002 <test-plans-proximity-presentation>` and :ref:`WP_105–106 <wallet-credential-presentation-testcases>`).
 
-**Step 11**: The Wallet Instance MUST decrypt the attribute request and MUST prompt the User for their consent to release the requested attributes (:ref:`WP_107 <wallet-credential-presentation-testcases>`). It MUST also display the contents of the Relying Party's Registration Certificate to ensure transparency about the requested attributes and its registered purpose (:ref:`WP_107b <wallet-credential-presentation-testcases>`).
+**Step 11**: The Wallet Instance MUST decrypt the attribute request and MUST prompt the User for their consent to release the requested attributes (:ref:`WP_107 <wallet-credential-presentation-testcases>`). It MUST also display the contents of the Relying Party's Registration Certificate to ensure transparency about the requested attributes and its registered purpose (:ref:`WP_107a <wallet-credential-presentation-testcases>`).
 
 **Step 12**: The User reviews the request and the Relying Party's registration information and then approves the presentation of the requested attributes.
 
@@ -163,7 +162,7 @@ Below is a non-normative example using the diagnostic notation of a CBOR-encoded
    - Sec 8.2.2.4 for ``SessionData`` over BLE, and
    - Sec 8.2.2.5 for ``SessionData`` over NFC
 
-Below is a non-normative example using the diagnostic notation of a CBOR-encoded ``SessionData`` that contains the mdoc response of a Wallet App Attestation and an mDL Digital Credential.
+Below is a non-normative example using the diagnostic notation of a CBOR-encoded ``SessionData`` that contains the mdoc response of an mDL Digital Credential.
 
 .. literalinclude:: ../../examples/iso-session-data.txt
   :language: text
@@ -173,9 +172,6 @@ Below is a non-normative example using the diagnostic notation of a CBOR-encoded
 **Step 14**: Once the data exchange is complete, either party can terminate the session. The session can be terminated by sending the status code for session termination in a ``SessionData`` message; this can be sent together with an mdoc request or response [`ISO18013-5`_ #12.2.4] (:ref:`WP_113c <wallet-credential-presentation-testcases>`). If BLE is used, this can involve sending a status code for session termination or the “End” command. In this scenario, the GATT Client (Relying Party Instance) MUST unsubscribe from characteristics and disconnect from the GATT server (Wallet Instance) (:ref:`PPR-007 <test-plans-proximity-presentation>`, :ref:`WP_113b <wallet-credential-presentation-testcases>`, and :ref:`WP_114 <wallet-credential-presentation-testcases>`).
 
 **Final Consideration**: The presentation flow focused on the technical data exchange in proximity settings. It is crucial to recognise that supervised proximity flows involving a human verifier play a vital role in many use cases (e.g., age verification at a store, identity check by law enforcement). The human element adds a layer of identity verification through visual inspection and comparison, contributing to User Binding and overall authentication assurance aspects not fully captured in a purely technical presentation flow.
-
-.. note::
-   During proximity presentation the Wallet Instance might not be able to fetch a fresh Wallet App Attestation, in this case, the Wallet Instance SHOULD send the latest version of the Wallet App Attestation (:ref:`WP_108a <wallet-credential-presentation-testcases>`). It is left up to the Relying Party to determine whether a presentation with a valid but expired Wallet App Attestation is valid or not.
 
 .. _sec-deviceengagement-qr:
 
@@ -472,11 +468,6 @@ Each mdoc Request MUST be compliant with the following structure, and MUST inclu
 
        This component MUST be present only if `ReaderAuthAllSupport` is set to `true` in the DeviceEngagement structure, and individual `readerAuth` fields are not used (:ref:`PPR-025 <test-plans-proximity-presentation>`).
 
-.. note::
-    **Requesting the Wallet App Attestation**
-
-    The Relying Party requesting a Wallet App Attestation MUST add an object in the **docRequest** array having the ``docType`` set to ``{Trust Anchor reverse domain}.{WalletAppAttestation}`` as described in :ref:`registry:Digital Credentials Catalog Structure`. The Relying Party MUST NOT include the ``nameSpaces`` parameter in the request (:ref:`PPR-010 <test-plans-proximity-presentation>`).
-
 mdoc Response
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -551,11 +542,6 @@ A **deviceSigned** data structure MUST be compliant with the following structure
 
    * - **deviceAuth**
      - *(COSE_Sign1)*. Contains the `DeviceAuth` structure, which MUST include the **deviceSignature** for the Wallet Instance authentication. The signature is computed over the `DeviceAuthentication` data, which binds the returned elements to the session and the request. See [`ISO18013-5`_ #12.4] for details on the authentication structure.
-
-.. note::
-    **Presenting the Wallet App Attestation**
-
-    The Wallet Instance MUST include the Wallet App Attestation if requested by the Relying Party in the mdoc request. The Wallet Instance SHOULD include all available disclosures for the Wallet App Attestation (:ref:`WP_108b <wallet-credential-presentation-testcases>`). Moreover, during presentaion, the Wallet Instance MUST NOT request user's consent to the disclosure of the Wallet App Attestation attributes which are technical data not transparent to the user (:ref:`WP_107a <wallet-credential-presentation-testcases>`).
 
 Session Termination
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^

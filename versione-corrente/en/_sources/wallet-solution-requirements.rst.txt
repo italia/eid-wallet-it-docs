@@ -10,7 +10,7 @@ This section lists the requirements about Wallet Providers and Wallet Solutions 
 - The Wallet Solution MUST adhere to the specifications set by this document for obtaining Personal Identification (PID) and (Q)EAAs.
 - The Wallet Provider MUST expose a set of endpoints, exclusively available to its Wallet Solution instances, supporting the core functionalities of the Wallet Instances.
 - The Wallet Instance MUST periodically reestablish trust with its Wallet Provider, obtaining a fresh Wallet App Attestation (:ref:`WP_018 <wallet-instance-testcases>`).
-- The Wallet Instance MUST establish trust with other participants of the Wallet ecosystem, such as Credential Issers and Relying Parties. In case of Credential Issuers, Wallet Instance presents both Wallet App and Wallet Unit Attestations, while for Relying Parties, it only presents Wallet App Attestation. 
+- The Wallet Instance MUST establish trust with other participants of the Wallet ecosystem, such as Credential Issers. In case of Credential Issuers, Wallet Instance presents both Wallet App and Wallet Unit Attestations. 
 - The Wallet Instance MUST be compatible and functional on both Android and iOS operating systems and available on the Play Store and App Store, respectively (:ref:`WP_015 <wallet-instance-testcases>`).
 - The Wallet Instance MUST provide a mechanism to verify the User's actual possession and full control of their personal device.
 - The Wallet Instance MUST provide Users with an up-to-date list of Relying Parties with which the User has established a connection and, where applicable, all data exchanged;
@@ -36,7 +36,7 @@ The requirements for the Wallet App Attestation are defined below:
 - The Wallet App Attestation MUST be short-lived and MUST have an expiration time, after which it MUST no longer be considered valid.
 - The Wallet App Attestation MUST NOT be issued by the Wallet Provider if the authenticity, integrity, and genuineness of the Wallet Instance requesting it cannot be guaranteed (:ref:`WP_019a <wallet-instance-testcases>`).
 - Each Wallet Instance SHOULD be able to request multiple Wallet App Attestations using different cryptographic public keys associated with them.
-- The Wallet App Attestation MUST NOT contain information about the User in control of the Wallet Instance (:ref:`WP_029a <wallet-instance-testcases>`).
+- The Wallet App Attestation MUST NOT contain information about the User in control of the Wallet Instance (:ref:`WP_029b <wallet-instance-testcases>`).
 - The Wallet Instance MUST secure a Wallet App Attestation as a prerequisite for transitioning to the Operational state, as defined by `EIDAS-ARF`_.
 
 

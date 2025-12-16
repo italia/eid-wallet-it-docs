@@ -183,7 +183,7 @@
 <li><p>The Wallet Solution MUST adhere to the specifications set by this document for obtaining Personal Identification (PID) and (Q)EAAs.</p></li>
 <li><p>The Wallet Provider MUST expose a set of endpoints, exclusively available to its Wallet Solution instances, supporting the core functionalities of the Wallet Instances.</p></li>
 <li><p>The Wallet Instance MUST periodically reestablish trust with its Wallet Provider, obtaining a fresh Wallet App Attestation (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_018</span></a>).</p></li>
-<li><p>The Wallet Instance MUST establish trust with other participants of the Wallet ecosystem, such as Credential Issers and Relying Parties. In case of Credential Issuers, Wallet Instance presents both Wallet App and Wallet Unit Attestations, while for Relying Parties, it only presents Wallet App Attestation.</p></li>
+<li><p>The Wallet Instance MUST establish trust with other participants of the Wallet ecosystem, such as Credential Issers. In case of Credential Issuers, Wallet Instance presents both Wallet App and Wallet Unit Attestations.</p></li>
 <li><p>The Wallet Instance MUST be compatible and functional on both Android and iOS operating systems and available on the Play Store and App Store, respectively (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_015</span></a>).</p></li>
 <li><p>The Wallet Instance MUST provide a mechanism to verify the User's actual possession and full control of their personal device.</p></li>
 <li><p>The Wallet Instance MUST provide Users with an up-to-date list of Relying Parties with which the User has established a connection and, where applicable, all data exchanged;</p></li>
@@ -208,7 +208,7 @@ It primarily proves the <strong>authenticity</strong>, <strong>integrity</strong
 <li><p>The Wallet App Attestation MUST be short-lived and MUST have an expiration time, after which it MUST no longer be considered valid.</p></li>
 <li><p>The Wallet App Attestation MUST NOT be issued by the Wallet Provider if the authenticity, integrity, and genuineness of the Wallet Instance requesting it cannot be guaranteed (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_019a</span></a>).</p></li>
 <li><p>Each Wallet Instance SHOULD be able to request multiple Wallet App Attestations using different cryptographic public keys associated with them.</p></li>
-<li><p>The Wallet App Attestation MUST NOT contain information about the User in control of the Wallet Instance (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_029a</span></a>).</p></li>
+<li><p>The Wallet App Attestation MUST NOT contain information about the User in control of the Wallet Instance (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_029b</span></a>).</p></li>
 <li><p>The Wallet Instance MUST secure a Wallet App Attestation as a prerequisite for transitioning to the Operational state, as defined by <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>.</p></li>
 </ul>
 <div class="admonition note">
@@ -299,7 +299,7 @@ Only the legitimate User can access the private cryptographic keys, preventing u
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 10/12/2025.
+      Last updated on 16/12/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

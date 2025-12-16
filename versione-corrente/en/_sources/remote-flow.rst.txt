@@ -45,8 +45,8 @@ A High-Level description of the remote flow, from the User's perspective, is giv
 
     c. evaluates the requested Digital Credentials and checks the eligibility of the Relying Party in asking for these by applying the policies related to that specific Relying Party, obtained with the Trust Chain (:ref:`WP_087 <wallet-credential-presentation-testcases>`).
 
-  5. *POST Authorization Response*: the Wallet Instance presents the requested information to the Relying Party, along with the Wallet Attestation if requested.
-  6. *RP Checks*: The Relying Party validates the presented Credentials by verifying the trust with their Issuers and checks the Wallet Attestation to ensure the Wallet Provider is trusted.
+  5. *POST Authorization Response*: the Wallet Instance presents the requested information to the Relying Party.
+  6. *RP Checks*: The Relying Party validates the presented Credentials by verifying the trust with their Issuers and checks the respective validity status.
   7. *Relying Party Response*: the Wallet Instance informs the User about the successful authentication with the Relying Party, and the User continues the navigation.
 
 Below is a sequence diagram that details the interactions between all the involved parties.
@@ -54,13 +54,13 @@ Below is a sequence diagram that details the interactions between all the involv
 .. plantuml:: plantuml/credential-presentation-remote-flow.puml
     :width: 99%
     :alt: The figure illustrates the Remote Protocol Flow.
-    :caption: `Remote Protocol Flow. <https://www.plantuml.com/plantuml/svg/fLPDRzj64xxlhnZeFRmsKBj9ZmPSn55TsqbQgvOINmmOg-L8sfhQPVU3YbhaltU68rAab1O1ofl8cMUUUUPZz2Oc7L9Ubqhdv5rUpp4efQvCyW567oE64UW8MQcv_oml_X_X9wojmJY2_tsmorLwMsPK5U5OOolj4emUTLbYWZj7yCvWWx4PccI2EjDBT4aYQ8Mk08go2_M0vTQw9Kp8QVkFaOPcJ-xa_Ygd5OnBIy2d3N9zu46KKev0qIflTz4ZTj7fqIRPMYUaj3ES_KZSBk0Hvp35m7c3qxLTwcIzwvbgLM3VKRDdZHVmW7zaZ0acmISq2Gjw4tqE1fMwlAJN68bh0mUJbOu8bvSTBhEliOKYFIk2WBrsaBOLFhdaeK161nDyZFIZ8Ue3HBr6-Ib0aiqghKke204sbkJwxM7iYyPy5N01nXCVwrZMj4B8eGH9hgEaTldb2vYk_8RDMX16PIHJMlF27mHpdbFoRg2HtcUvKMePVAvWJFJR_WBlogtQS9mDnJ7QKGpW85minRMHJn-yqILmRuBE5D4bQwGydVTrhSlCaLB8CKdMpCqqZV9i2KwN2UoYAzVz_7VMSxu5eey17Ga8zEpCWfWzvs2VrvXMlW3BVRJ3djnFPmhasRJbemweRO6mcmvoquLE6f9dBdt8hZjRZBxu84_R5ltaLXruGkCios9qfUUsjCbYP5Si8tv30ZVNCwwYymagwT2ZT5gbE6gqIuT52mfUn5i4l_xNr9ewIYvIonPeM0Kb1J_emUFY3fO1_DBggrq1bQT-j1WxfqyOx6BRnDCf1mI_w38v9j1vwT8IPfSHMNwQdCHJCSXxKHO-y1onS0VxH836tYriM6CnN1kTkDn0mBlC1_kdB0TQ6nKZmfEJ6jNLS_8lwBw3cCZzU6aSTOTaRVMynE7YQN1wJfBdiAMkKi8ezkV4GNxs3Dh-3iJFHk2bsuhwCzBhnfE-KJd4QtWas8VRBM1DP8hp7fjTg74W69UiBk4knem1PZpD0hcd_Evn1jEsh3qKecSmHfdx3agfG54HV8s1pEZGtDtSpcuUhgz_LL_tk51m1kCLqdgxzIKb1kzn2s-jAxZtc0hv-GNdFl4n4W0hd2D_1GNGm5LvJWq9B-GvzvbyhEFt_HoJXrgQjAdSH8fqhZZyzUSKj17r2njDwICMe5CATfuJneQ6OOuywoHqDuQM0e2CHK3GjRObjyCvZrYZXEf9zh5gcq3MQvlCYV7-nIBavdjngjhzFTLhtArlwL6AHX5DC_fgF-Qtizda-zVdh-67Lw_W_ZsLyAzHttJ4DofLaOzF2oJT_spuodpP3PmcZb48zjq7TvaI-_fv2KTqVKxVoBW_jfk3pIItCP9-y8u4dffWgoJLk3YuK3AvFD4d7A1TAvAoY7owJoQYYa8ew_-iuPV1GYLe4MhmpqN0sWDLTVzWWlo3ELevBRN9iUNmz1yezeP2vtNvDm00>`_
+    :caption: `Remote Protocol Flow. <https://www.plantuml.com/plantuml/svg/fLPDRnit4BtpLmpKGssWIPCU3RX8eXgnaxHMBIM-630exaXYJP5RSYX5BVBVEuFHhZwK5W6gcxGpxyrxyx5wLSXcgijWRAKKwtAAsHZpsb7ACFXOC0_05gZ6JDDd_U7x0h_WoZii0_ZkWvylw4seQ5h6ySwtDX8Cxcq8I70J6Juw50nO7uPKXdfcvnX96Qp1s02pRAdkC6nydCE8apR_pdGGzX3FRbzNMi0mU0O-5sHO7MLmILGBC5kR_9QzOC_E7-l8homXowxmx6UezWBkSGfZpA8RebtvkIMVubweDGtk9rh9NE45tE6V5Gl1A2T2HzZmBoNLxD2Ooql-6Gj6iW87euKj29UNFQvKly8EYlri6G9stW5jMdo8bA11GGUNKodyHGg5bA7O9UfN1L8r2re6Q1a1rfxj-lrkc1e9XqN66RZ4zVWejj82eUO0lJWjoMprrGiOBz9QmZeGGHKa5xnxaWUAEQr4AHvuP7SgryRCSwej3BdyRhuWnR0nQ-5PCu-paJb0IAHPHdgZZpuaPmF8R8Ajp1Z9EsrFdtsrig4A4-LQI5Lpf5J9uO-UuMmWyBE-NRVJFyJFwGQuVCmOsK3WppOiQzXZpVvnYRH83NYPeotsw7OyCQ2VTTS-de2LRn2ssy5fjh5aWPBKiW_PJsU7iMy-w6St5ZjnYnwSq4KljZZRsgaFdZmMISLGy1i4lBsQI1TZ8cXrGa_aT4u9Q_7pY4q72adDc-Mq_4zfA7rKBThB3kYm2qORVZI3fyqzE0RmQ-UlZGsqANWd5dH9dp3xsGQ4prBD26dMAJajO9TbWsVCNX57VXgTbNCDg3jJPYdB7ebnH_T4WOOfpdnUOdDuDdfpPO10RbdA_Yyz3dmsMa64XwWzMhMFb9um_W1oq_3aQ9nEXwhsTXhmyF2GuEmblIOI5SECZQoJ3N1JIiKC4zcVXoYUxinuTp-1SMUaedG3xx0KtRGUofWS4sUb5MOEuzD-y_PwylRkwkety_MC2mFFOBX0FYZNAJISzXutyCR7HhejfN1UcaaBHwaK1X1DjSXJaFaIkBPEWtVmn9dJL3d7H_bzNoCbhaV6GhqQgItFZT1VVQPidKvxuuiBgM03bYZxQIKi86KugL6souRG3xvd0j11p0XsPNsG1ZoNeHOdqEnPzh5jjhtIWzQ9ENCfFNc4Ai-nEJVTnHpBWTU3gLF1RCpeI9RDx1RhUZ8P_VZo-KluwSKBk7tFBVnxi1ywaBS2jKNEVGUay_RevAv_sOwuvHgB5dZ0j7VNHTZN3te-AJTL-iQAznTbVNGBz6rKs3zunmQFNVOjQJSkZju9kYkoGsT2q2soIbQJptTY2fgY1LNxlptyeYTi1wr67VnNKB3kbT3s_nco_cSuMVAkjD5fvD7Bzj2nLqnTb-4V>`_
 
 
 .. .. figure:: ../../images/cross_same_device_auth_seq_diagram.svg
 ..     :figwidth: 100%
 ..     :align: center
-..     :target: https://www.plantuml.com/plantuml/svg/fLPDRnit4BtpLmpKGst0TfCU3RY8uxgsaxHMBIK-r8L0SKSIwnMv9OTIr2B_lJEWbgPa1mXGtPRalFVuE1zw4qa7IijMwKJUfUKKWrBgt90FCFWOCGn0HqXAJVtdlF1zX9znPGt60NptmSuNzBPDg3h6iSPssX4CxdNR8i6DOtXdK31WlNiaCTIndgEZpA0LkWQOPKjrX-t6kZaCEMZpTQQTOm_kuFOyqG8kMil0Xu8Cgxq8baGf0hDrtcxP8nPs_cb3TgK98Qa4np-njbEunocCCCYzmUcLdMkotbL7jMgm3jGIkS9JkCE_4qQ2OV24Xh3XbUXJCAZKsHalOsIjMk1WkD0HuUoiu8hw5VPG5m5bJKCaBNkQxNXmKvzOEtbuiXICzu_sXT2GnKnIi12oZEgKF5Z76ciasdJCmUWDacoPu6Fa3t42V82ebvW_Cr2sQq7B5Zf6WBMb1Vn-T-4REGwBW3DMvqXRP-T02uGKMf1J3yx8iz74DaUrqADytIFuergSB94MllcpSbsyKblZqocC5duj-3svg145J68UPIDhcIOYxsgOf9_iNoir3pvrx9-FVUA3T-r6hOLdpJn6E-O08P4iKf8qUUk3Dxe5AHhGYHaTMPFpfaHVoYCA4uKKARibseeLIkcMmCxW-UN1IkPkWuQtex42_gtxn-I4Mza6OLkC7ACRJHh82qEDLuf10A3sKxvBUbHY5mMMq3WhrpIwqrFRMh8O5ROHlq7qrULOdiHvWYxNWIetg4f7wAATEsnwGF3JloGRPy4lltgR_1eYFtlz8iH-0Zr_cPqM0x_sDchNGESvcIp64lG9WvrjG9WqfO3WPvNwSg7RJ5sYT6kRgZpvvAVXGJpC1zAJ4JCVf7Z4gBqkbO4kl9lPiCHcjnaLGoL9G3ga3_QVt7BkC7Q220yklycgcv1_H5VAhgiwr2IcwTB6A3bSs_PoZcGxh9wskDldI0XAK6L0bLZdH1Zp-HCMbp-h0tr-1nPk8qYFxzt-1NbPIoJlQTUKg6ecIOpaNS0LYsbEAZMPIbfc8oMhMxY9CM60iTJe5h98VdS_Xb7_tXKAopCOOwxc0gLKO5O4lyB0ntYktLnTZw_kBYz_Koz7d2euXei5SjEwzct3OUzn0s-jQoGfHGh7-PdSVUXZP01nE4NP1IadWUlIb3CL7ZaoZmlhPBs-8tdM8zcRNswO7-b42VtbPmhQPFSR6qth8pQWYOAT9i8eCi28HYbwDhhKf6K2oFKI4FHAsrRIuKHgKvn0LLdsiUkJ83VD_Z87UPn1adri3bNVbKSoV79JpidBRCneIFf0LVdNu_7mXzSdh-77Lw_WzZq_uR-3-kX09XPriSmY2Dkoc1YP7L-sbQXPOym2TvYgsI4NUtbeX6ToVQ9lL5pNytglPUM95za_UCS6Zqom7UNNEDsRExcafTGFXA3lD_dAsUH3LR0ZgfW59Vs_FVoYH7O5dOtQ-QEKmVe1rPK_JEMVocxBATA6pq_k3VHTnzumTLgs_m40
+..     :target: https://www.plantuml.com/plantuml/svg/fLPDRnit4BtpLmpKGssWIPCU3RX8eXgnaxHMBIM-630exaXYJP5RSYX5BVBVEuFHhZwK5W6gcxGpxyrxyx5wLSXcgijWRAKKwtAAsHZpsb7ACFXOC0_05gZ6JDDd_U7x0h_WoZii0_ZkWvylw4seQ5h6ySwtDX8Cxcq8I70J6Juw50nO7uPKXdfcvnX96Qp1s02pRAdkC6nydCE8apR_pdGGzX3FRbzNMi0mU0O-5sHO7MLmILGBC5kR_9QzOC_E7-l8homXowxmx6UezWBkSGfZpA8RebtvkIMVubweDGtk9rh9NE45tE6V5Gl1A2T2HzZmBoNLxD2Ooql-6Gj6iW87euKj29UNFQvKly8EYlri6G9stW5jMdo8bA11GGUNKodyHGg5bA7O9UfN1L8r2re6Q1a1rfxj-lrkc1e9XqN66RZ4zVWejj82eUO0lJWjoMprrGiOBz9QmZeGGHKa5xnxaWUAEQr4AHvuP7SgryRCSwej3BdyRhuWnR0nQ-5PCu-paJb0IAHPHdgZZpuaPmF8R8Ajp1Z9EsrFdtsrig4A4-LQI5Lpf5J9uO-UuMmWyBE-NRVJFyJFwGQuVCmOsK3WppOiQzXZpVvnYRH83NYPeotsw7OyCQ2VTTS-de2LRn2ssy5fjh5aWPBKiW_PJsU7iMy-w6St5ZjnYnwSq4KljZZRsgaFdZmMISLGy1i4lBsQI1TZ8cXrGa_aT4u9Q_7pY4q72adDc-Mq_4zfA7rKBThB3kYm2qORVZI3fyqzE0RmQ-UlZGsqANWd5dH9dp3xsGQ4prBD26dMAJajO9TbWsVCNX57VXgTbNCDg3jJPYdB7ebnH_T4WOOfpdnUOdDuDdfpPO10RbdA_Yyz3dmsMa64XwWzMhMFb9um_W1oq_3aQ9nEXwhsTXhmyF2GuEmblIOI5SECZQoJ3N1JIiKC4zcVXoYUxinuTp-1SMUaedG3xx0KtRGUofWS4sUb5MOEuzD-y_PwylRkwkety_MC2mFFOBX0FYZNAJISzXutyCR7HhejfN1UcaaBHwaK1X1DjSXJaFaIkBPEWtVmn9dJL3d7H_bzNoCbhaV6GhqQgItFZT1VVQPidKvxuuiBgM03bYZxQIKi86KugL6souRG3xvd0j11p0XsPNsG1ZoNeHOdqEnPzh5jjhtIWzQ9ENCfFNc4Ai-nEJVTnHpBWTU3gLF1RCpeI9RDx1RhUZ8P_VZo-KluwSKBk7tFBVnxi1ywaBS2jKNEVGUay_RevAv_sOwuvHgB5dZ0j7VNHTZN3te-AJTL-iQAznTbVNGBz6rKs3zunmQFNVOjQJSkZju9kYkoGsT2q2soIbQJptTY2fgY1LNxlptyeYTi1wr67VnNKB3kbT3s_nco_cSuMVAkjD5fvD7Bzj2nLqnTb-4V
 
 ..     Remote Protocol Flow
 
@@ -213,13 +213,6 @@ The details of each step shown in the previous picture are described below.
               {"path": ["family_name"]},
               {"path": ["personal_administrative_number"]}
             ]
-          },
-          {
-            "id": "wallet attestation",
-            "format": "dc+sd-jwt",
-            "meta": {
-              "vct_values": ["urn:eudi:wallet_attestation:it:1"]
-            }
           }
         ]
       },
@@ -255,14 +248,13 @@ The details of each step shown in the previous picture are described below.
       {
         "state": "3be39b69-6ac1-41aa-921b-3e6c07ddcb03",
         "vp_token": {
-          "personal id data": "eyJhbGciOiJFUzI1NiIs...PT0iXX0",
-          "wallet attestation": "eyJhbGciOiJFUzI1NiIs...NTi0XG"
+          "personal id data": ["eyJhbGciOiJFUzI1NiIs...PT0iXX0"]
         }
       }
 
-**Steps 19-23 (RP Checks)**: The Relying Party verifies the Authorization Response, extracts the Wallet Attestation to establish trust with the Wallet Solution. It then extracts the ``vp_token``, which contains one or more Digital Credentials presentations, and validates the overall format of the VP Token. For each credential presentation, the Relying Party verifies its integrity according to the DCQL query criteria defined in the Authorization Request. The Relying Party MUST also attest trust with the corresponding Credentials Issuer, and validate the Wallet Instance's proof of possession of each presented Digital Credential. Finally, the Relying Party verifies the revocation status of each presented Digital Credential, as described in :ref:`credential-revocation:Digital Credential Revocation and Suspension`. If all previous verifications yelded positive result, the Relying Party updates the User session.
+**Steps 19-22 (RP Checks)**: The Relying Party verifies the Authorization Response, extracts the ``vp_token``, which contains one or more Digital Credentials presentations, and validates the overall format of the VP Token. For each credential presentation, the Relying Party verifies its integrity according to the DCQL query criteria defined in the Authorization Request. The Relying Party MUST also attest trust with the corresponding Credentials Issuer, and validate the Wallet Instance's proof of possession of each presented Digital Credential. Finally, the Relying Party verifies the revocation status of each presented Digital Credential, as described in :ref:`credential-revocation:Digital Credential Revocation and Suspension`. If all previous verifications yielded positive result, the Relying Party updates the User session.
 
-**Steps 24-25 or 26 (Relying Party Response)**: The Relying Party provides to the Wallet Instance the response about the presentation, which informs the User.
+**Steps 23-24 or 25 (Relying Party Response)**: The Relying Party provides to the Wallet Instance the response about the presentation, which informs the User.
 
   Upon receiving and validating the Authorization Response at the Response Endpoint, the Relying Party returns to the Wallet Instance a HTTP 200 OK. In particular, in the Same Device Flow, the Relying Party SHOULD also pass the ``redirect_uri`` to the Wallet Instance. Upon receiving the ``redirect_uri``, the Wallet Instance MUST perform a redirect to the URL specified by the ``redirect_uri``. This redirect allows the Relying Party to seamlessly resume interaction with the User on the device which initiated the flow. When the response does not contain the ``redirect_uri`` parameter, the Wallet Instance is not required to perform any further step. The User should manually close the Wallet Instance and open the user-agent to continue the flow (:ref:`RPR-83 <test-plans-remote-presentation>`).
 
@@ -277,7 +269,7 @@ The details of each step shown in the previous picture are described below.
       "redirect_uri": "https://relying-party.example.org/cb?response_code=091535f699ea575c7937fa5f0f454aee"
     }
 
-**Steps 27-28**: The JavaScript page is inspecting the status endpoint.
+**Steps 26-27**: The JavaScript page is inspecting the status endpoint.
 
   Below is a non-normative example of the HTTP Request to the status endpoint, where the parameter ``id`` contains an opaque and random value:
 
@@ -298,7 +290,7 @@ The details of each step shown in the previous picture are described below.
         "redirect_uri": "https://relying-party.example.org/cb?response_code=091535f699ea575c7937fa5f0f454aee"
       }
 
-**Steps 29-30**: The user-agent is redirected to the redirect URI to continue the navigation with the protected resource made available to the User (:ref:`WP_094 <wallet-credential-presentation-testcases>`).
+**Steps 28-29**: The user-agent is redirected to the redirect URI to continue the navigation with the protected resource made available to the User (:ref:`WP_094 <wallet-credential-presentation-testcases>`).
 
 
 
@@ -532,11 +524,6 @@ The JWT payload parameters are described herein:
 .. note::
   The ``client_metadata`` parameter usage is conditional. If ``client_id`` uses the ``x509_hash`` prefix, all the Relying Party metadata, other than its public key used for signing the Request Object, MUST be provided in ``client_metadata``. However,  if it is present and ``client_id`` uses the ``openid_federation`` prefix, the Wallet Instance MUST ignore it and obtain the metadata through the OpenID Federation Trust Chain (:ref:`RPR-113 <test-plans-remote-presentation>`). 
 
-.. note::
-    **Requesting the Wallet Attestation**
-
-    The Relying Party which requests a Wallet Attestation MUST do so by using a standard DCQL query, however it SHOULD NOT include the ``claims`` parameter in the query as the Wallet Attestation is not a Digital Credential but a proof of the Wallet Instance's trustworthiness and capabilities. Depending on the format of the Wallet Attestation, the Relying Party MUST request the ``vct_values`` parameter in the DCQL query, which MUST be set to the value set in the :ref:`registry:Digital Credentials Catalog Structure` (:ref:`RPR-114 <test-plans-remote-presentation>`).
-
 Authorization Response
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -546,11 +533,6 @@ After obtaining the User authorization and consent for the presentation of the D
     **Why the response is encrypted?**
 
     The response sent from the Wallet Instance to the Relying Party is encrypted to prevent a malicious agent from gaining access to the plaintext information transmitted within the Relying Party's network. This is only possible if the network environment of the Relying Party employs `TLS termination <https://www.f5.com/glossary/ssl-termination>`_. Such technique employs a termination proxy that acts as an intermediary between the client and the webserver and handles all TLS-related operations. In this manner, the proxy deciphers the transmission's content and either forwards it in plaintext or by negotiates an internal TLS session with the actual webserver's intended target. In the first scenario, any malicious actor within the network segment could intercept the transmitted data and obtain sensitive information, such as an unencrypted response, by sniffing the transmitted data.
-
-.. note::
-    **Presenting the Wallet Attestation**
-
-    The Wallet Instance MUST include the Wallet Attestation if requested by the Relying Party using the DCQL query. During presentaion, the Wallet Instance SHOULD NOT request User's consent to the disclosure of the Wallet Attestation attributes which are technical data not transparent to the User.
 
 Where the following parameters are used (:ref:`WP_093 <wallet-credential-presentation-testcases>`):
 
@@ -563,12 +545,9 @@ Where the following parameters are used (:ref:`WP_093 <wallet-credential-present
     - **Description**
   * - **vp_token**
 
-    - There MUST be at least two signed presentations in this Array (:ref:`WP_093a <wallet-credential-presentation-testcases>`):
+    - This array MUST contain the requested Digital Credential(s) in format of SD-JWT VC (:ref:`WP_093a <wallet-credential-presentation-testcases>`).
 
-      - The requested Digital Credential (one or more, in format of SD-JWT VC)
-      - The Wallet Attestation (in SD-JWT VC format)
-
-      The ``vp_token`` format is a JSON Object which keys corresponds to the requested credential ids in the ``dcql_query`` used in the request, and the values to each presented Digital Credential.
+      The ``vp_token`` format is a JSON Object which keys corresponds to the requested credential ids in the ``dcql_query`` used in the request, and the values are arrays containing the presented Digital Credential(s).
 
   * - **state**
     - Unique identifier provided by the Relying Party within the Authorization Request.
@@ -723,9 +702,6 @@ The following table lists the HTTP Status Codes and related error codes that MUS
     * - ``403 Forbidden``
       - ``invalid_request``
       - The nonce value provided is incorrect or otherwise malformed.
-    * - ``403 Forbidden``
-      - ``invalid_request``
-      - The signature of the Wallet Attestation is not valid or trust cannot be established with its Issuer.
     * - ``403 Forbidden``
       - ``invalid_request``
       - Trust could not be established with the Credential Issuer.
