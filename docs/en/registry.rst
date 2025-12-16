@@ -564,50 +564,145 @@ Credential Types enable precise targeting for compliance-driven or regulation-ma
 .. list-table:: Digital Credential Domains and Purposes
    :class: longtable
    :header-rows: 1
-   :widths: 25 30 50  
+   :widths: 25 25 25 25  
 
    * - **Domain**
-     - **Purpose**
+     - **Class (Credential Family)**
+     - **Subclass (Credential Type)**
      - **Description**
    * - *IDENTITY*
-     - * PERSON_IDENTIFICATION
-       * ELECTRONIC_RESIDENCY
+     - * Identification Documents
+       * Civil Registry and Personal Status Certificates
+       * Economic and Legal Status
+       - Electronic Identity Card (CIE)
+       - Passport
+       - Driving License (Italy only)
+       - Tax Code / Health Insurance Card
+       - Age Certification
+       - Birth Certificate
+       - Residence Certificate
+       - Family Status Certificate
+       - Marriage Certificate
+       - Citizenship Certificate
+       - ISEE (Equivalent Economic Situation Indicator)
+       - Residence Permit
+       - Certificate of Pending Charges
+       - Criminal Record Certificate
      - Credentials that establish or verify the identity of a person, including physical and digital identity documents legally recognized by national laws.
-   * - *AUTHORIZATION*
-     - * DRIVING_LICENSE
-       * PROFESSIONAL_LICENSE
-       * TRAVEL_DOCUMENT
-       * ACCESS_PERMIT
-     - Credentials that grant specific permissions, rights or authorizations to perform certain activities or access restricted areas.
+   * - *HOME AND FAMILY*
+     - * Property and Cadastral Documents
+       * Family Documents
+       * Local Tax Documents
+       - Deed of Sale
+       - Cadastral Survey
+       - Cadastral Floor Plan
+       - Cadastral Certificate
+       - Children’s Tax Code / Health Card
+       - Birth Certificate
+       - Family Status Certificate
+       - IMU (Property Tax)
+       - TARI (Waste Tax)
+     - Credentials that certify family composition, housing ownership or residency, and related legal, fiscal, and administrative relationships.
    * - *EDUCATION*
-     - * ACADEMIC_DEGREE
-       * CERTIFICATE
-       * TRAINING_RECOGNITION
+     - * Educational Qualifications
+       * Professional Certifications
+       - Lower Secondary School Diploma
+       - Upper Secondary School Diploma
+       - Bachelor’s Degree
+       - Master’s Degree
+       - University Master
+       - PhD
+       - Professional Licenses (e.g. architect, lawyer, psychologist)
+       - Vocational Training Certificates (e.g. healthcare assistant)
+       - Language Certifications (e.g. IELTS)
+       - Academic Qualifications (e.g. Europass)
      - Credentials related to educational achievements, qualifications, and professional training recognition.
    * - *HEALTH*
-     - * INSURANCE_CARD
-       * DISABILITY_CARD
-       * MEDICAL_PRESCRIPTION
+     - * Certifications and Eligibility
+       * Medical Records
+       - Health Insurance Card (TEAM)
+       - European Health Card (CED)
+       - Disability Certificate
+       - Vaccination Certificate
+       - Sports Fitness Certificate
+       - Work Fitness Certificate
+       - Medical Prescriptions
+       - Digital Medical Report
      - Credentials related to healthcare access, medical history, insurance coverage, and health-related documents.
    * - *FINANCIAL*
-     - * INCOME_CERTIFICATE
-       * TAX_STATEMENT
-       * FAMILY_ECONOMIC_STATUS
-       * BANK_ACCOUNT
-       * PAYMENT_HISTORY
+     - * Payment Instruments
+       * Payment Credentials and Authorisations
+       * Public Payments and Fees
+       * Recurring Payments and Subscriptions
+       - Digital Payment Card (debit / credit / prepaid)
+       - Virtual Card
+       - Bank Account (IBAN)
+       - Strong Customer Authentication (SCA) Credential
+       - PagoPA Payment Receipt
+       - Digital Stamp Duty (Bollo digitale)
+       - Tax and Fee Payment Certificate
+       - Subscription Mandate
+       - Recurring Payment Credential
      - Credentials that attest to financial status, income levels, taxation, banking information, or economic situation of individuals or families.
-   * - *MEMBERSHIP*
-     - * ASSOCIATION
-       * LOYALTY_PROGRAM
-       * CLUB_MEMBERSHIP
-     - Credentials that confirm affiliation with organizations, participation in programs, or membership status.
-   * - *ATTESTATION*
-     - * PUBLIC_STATEMENT
-       * CIVIL_STATUS
-       * CERTIFICATION
+   * - *CULTURE AND LEISURE*
+     - * Cultural Cards and Benefits (associations, loyalty programm, membership)
+       - Culture Card
+       - Annual Museum Passes
+       - Cinema Card
+       - Museum Card
+       - Association Membership Cards
+       - Library Card
+       - City Pass
+       - Credentials that confirm affiliation with organizations, participation in programs, or membership status.
+   * - *EMPLOYMENT*
+     - * Employment Documents
+       * Employment Status
+       - Digital Employment Contract
+       - Curriculum Vitae (CV)
+       - Residence Permit
+       - Employment Status Certificate
+       - INPS Contribution Record
      - Credentials that provide official statements, confirmations of status, or certifications issued by authorities.
+   * - *MOBILITY AND TRAVEL*
+     - * Licenses and Authorizations
+       * Vehicle Documents
+       * Subscriptions
+       * Travel Documents 
+       * Pet Travel Documents
+       * Travel Insurance
+       * Bookings
+       * Discounts and Benefits
+       - Mobile Driving License
+       - Boating License
+       - Vehicle Registration Certificate
+       - Digital RCA Insurance
+       - Vehicle Inspection Certificate
+       - Green Card / International Insurance
+       - Public Transport Pass
+       - Telepass Subscription
+       - Passport
+       - European Pet Passport
+       - Travel Tickets (air, train, etc.)
+       - Travel Insurance Policy
+       - Hotel Reservation
+       - Discount Cards
+       - Tourist Benefits
+     - Credentials that authorize, enable, or certify the right to move, drive, travel, or access transport services, including personal licenses, vehicle documents, travel documents, and related insurance or entitlement proofs, as recognized by national or international regulations.
+   * - *BONUSES*
+     - * Economic Benefits and Allowances
+       * Incentives and Vouchers
+       * Health and Wellbeing Bonuses
+       - Family Allowance Credential
+       - Unemployment Benefit Credential
+       - Digital Voucher
+       - Purchase Incentive Credential
+       - Cashback Eligibility Credential
+       - Healthcare Bonus Credential
+       - Mental Health Support Voucher
+       - Sports and Physical Activity Bonus
 
-Each Credential MUST specify domains and purposes to enable both **Credential-Specific Scenarios** and **Credential-Agnostic Scenarios** according to Relying Party's requirements and presentation request patterns:
+
+Each Credential MUST specify domains and classes to enable both **Credential-Specific Scenarios** and **Credential-Agnostic Scenarios** according to Relying Party's requirements and presentation request patterns:
 
   1. **Credential-Specific Scenarios** (Primary for Government/Regulated Sectors): RPs request specific credential types for compliance and audit requirements, including for example:
 
