@@ -11,7 +11,7 @@ L'architettura di registro affronta la standardizzazione semantica, la gestione 
 Panoramica dell'Architettura di Registro
 -----------------------------------------
 
-Il sistema di registro IT-Wallet comprende sei componenti principali:
+Il Registro del Sistema IT-Wallet comprende sei componenti principali:
 
 1. **Registro dei Claims**: Definizioni semantiche standardizzate per attributi individuali delle credenziali, tipi di dati e regole di validazione.
 2. **Registro delle Fonti Autentiche (AS)**: Catalogo dei fornitori di dati registrati con le loro capacità dichiarate e claims disponibili.
@@ -32,7 +32,7 @@ Il Trust Anchor DEVE pubblicare metadati di scoperta del registro all'endpoint `
 - **Content-Type Predefinito**: ``application/jwt`` (JWT firmato che garantisce autenticità e integrità)
 - **Content-Type Alternativo**: ``application/json`` (JSON semplice per scopi di sviluppo/debug)
 
-Inoltre, il sistema di registro IT-Wallet DEVE usare due pattern di accesso distinti:
+Inoltre, il Registro del Sistema IT-Wallet DEVE usare due pattern di accesso distinti:
 
 - **API di Registro Dati**: DEVONO supportare capacità di paginazione e filtraggio.
 - **Infrastruttura di Fiducia della Federazione**: come definito in :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
@@ -428,7 +428,7 @@ Il **Registro di Federazione** fornisce l'infrastruttura di fiducia crittografic
 Ruolo di Integrazione del Registro
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-All'interno dell'architettura di registro IT-Wallet, il Registro di Federazione serve come **livello di validazione della fiducia** per:
+All'interno dell'architettura del Registro del Sistema IT-Wallet, il Registro di Federazione serve come **livello di validazione della fiducia** per:
 
 1. **Autenticazione delle Entità**: Valida l'identità crittografica di tutti i partecipanti prima delle operazioni di registro
 2. **Verifica della Catena di Fiducia**: Fornisce la fondazione crittografica per la validazione delle entità Emittenti di Credenziali, Relying Parties e Fornitori di Wallet

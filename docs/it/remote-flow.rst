@@ -7,10 +7,19 @@ Flusso Remoto
 A seconda di come l'Utente stia interagendo con il frontend dell'App di Verifica Web, usando cioè il dispositivo in cui risiede l'Unità Wallet (**Same Device**) oppure un altro dispositivo (**Cross Device**), la Relying Party DEVE supportare i seguenti flussi remoti (:ref:`RPR-84 <test-plans-remote-presentation>`):
 
 * **Same Device**: essa DEVE fornire un indirizzo ``HTTP`` all'Istanza del Wallet utilizzando un *redirect* (``302``) o un href HTML nella pagina web (:ref:`RPR-01 <test-plans-remote-presentation>`);
-* **Cross Device**: essa DEVE fornire un indirizzo ``HTTP`` tramite un Codice QR che l'Utente scansiona con l'Istanza del Wallet (:ref:`RPR-03 <test-plans-remote-presentation>`).
+* **Cross Device**: essa DEVE fornire un indirizzo ``HTTP`` tramite un Codice QR che l'Utente scansiona con la fotocamera del proprio dispositivo oppure con l'Istanza del Wallet (:ref:`RPR-03 <test-plans-remote-presentation>`).
 
+Per richiamare l'Istanza del Wallet corretta, la Relying Party ha necessità di sapere quale Istanza del Wallet è installata sul dispositivo dell'Utente e quale l'Utente desidera utilizzare. 
+Queste informazioni DOVREBBERO essere ottenute utilizzando la Selection Page descritta in :ref:`functionalities:Design dell'Esperienza Utente`. 
 
-Successivamente, l'Istanza del Wallet valida la trust con la Relying Party, valuta ne la richiesta, e, se l'Utente fornisce il consenso per la divulgazione dei propri Attestati Elettronici, li invia sotto forma di Verifiable Presentation.
+-  Se la Selection Page è disponibile, l'utente seleziona l'Istanza del Wallet, quindi la Relying Party recupera i Wallet metadata come descritto in :ref:`wallet-metadata-retrieval:Flusso di Recupero dei Wallet Metadata`. Il contenuto del HTML href o del QR Code dipende dal parametro ``authorization_endpoint`` nei Wallet metadata:
+
+  - Se ``authorization_endpoint`` è disponibile e contiene un URL HTTPS (Universal Link), la Relying Party DOVREBBE utilizzare quell'endpoint.
+  - Altrimenti, la Relying Party DEVE utilizzare uno degli schemi URL personalizzati: ``openid4vp://`` (come definito nella Sezione 13.1.2 di [`OpenID4VP`_]) o ``haip-vp://`` (come definito nella Sezione 5.1 di [`OPENID4VC-HAIP`_]). L'Istanza del Wallet DEVE supportare entrambi gli schemi URL personalizzati.
+
+-  Se la Selection Page non è disponibile o il recupero dei Wallet metadata fallisce, la Relying Party richiamerà direttamente l'Istanza del Wallet utilizzando uno degli schemi URL personalizzati (vedere punto precedente).
+
+Successivamente all'invocazione dell'Istanza del Wallet, l'Istanza del Wallet valida la trust con la Relying Party e ne valuta la richiesta. Se valida e l'Utente fornisce il consenso per la divulgazione dei propri Attestati Elettronici, li invia sotto forma di Verifiable Presentation.
 
 .. _fig_High-Level-Flow-Presentation:
 .. plantuml:: plantuml/credential-presentation-remote-high-level-flow.puml
