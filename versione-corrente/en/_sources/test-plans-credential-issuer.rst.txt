@@ -304,6 +304,10 @@ This section provides the set of test cases designed for technical implementers 
     - Issuance, Security
     - Authorization Code Validity and Usage Check of the Token Request
     - Credential Issuer verifies the Authorization code is valid and has not been previously used (:rfc:`6749`).
+  * - CI_061a
+    - Issuance, Security
+    - PKCE ``code_verifier`` Verification in Token Request
+    - The Credential Issuer verifies that the ``code_verifier`` parameter is present and matches the ``code_challenge`` associated with the authorization code (:rfc:`7636`); in case of mismatch, the request is rejected.  
   * - CI_062
     - Issuance, Security
     - Redirect URI Matching Validation of the Token Request

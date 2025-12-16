@@ -217,6 +217,7 @@ L'``OAuth-Client-Attestation`` è firmato utilizzando la chiave privata associat
    2. DEVE assicurarsi che il ``code`` di autorizzazione sia valido e non sia stato utilizzato in precedenza (:rfc:`6749`).
    3. DEVE assicurarsi che il ``redirect_uri`` corrisponda al valore incluso nel precedente `Request Object` (vedi Sezione 3.1.3.1. di [`OIDC`_]).
    4. DEVE validare il JWT di `DPoP proof`, secondo la Sezione 4.3 di (:rfc:`9449`).
+   5. DEVE verificare il parametro ``code_verifier`` secondo il meccanismo PKCE, assicurandosi che corrisponda al ``code_challenge`` associato al codice di autorizzazione come definito nella Sezione 4.6 di :rfc:`7636`; in caso contrario, la richiesta DEVE essere rifiutata (:ref:`CI_061a <test-plans-credential-issuer:matrice dei test per il credential issuer>`).
 
 .. code-block:: http
 
