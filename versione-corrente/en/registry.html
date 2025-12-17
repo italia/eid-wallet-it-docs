@@ -167,7 +167,7 @@
 <p>The registry architecture addresses semantic standardization, federation trust management, and credential discovery requirements through specialized registry components that ensure interoperability and compliance across the ecosystem.</p>
 <section id="registry-architecture-overview">
 <h2><span class="section-number">7.1. </span>Registry Architecture Overview<a class="headerlink" href="#registry-architecture-overview" title="Link to this heading">¶</a></h2>
-<p>The IT-Wallet registry system comprises six main components:</p>
+<p>The IT-Wallet System Register comprises six main components:</p>
 <ol class="arabic simple">
 <li><p><strong>Claims Registry</strong>: Standardized semantic definitions for individual credential attributes, data types, and validation rules.</p></li>
 <li><p><strong>Authentic Source (AS) Registry</strong>: Catalog of registered data providers with their declared capabilities and available claims.</p></li>
@@ -186,7 +186,7 @@
 <li><p><strong>Default Content-Type</strong>: <code class="docutils literal notranslate"><span class="pre">application/jwt</span></code> (signed JWT ensuring authenticity and integrity)</p></li>
 <li><p><strong>Alternative Content-Type</strong>: <code class="docutils literal notranslate"><span class="pre">application/json</span></code> (plain JSON for development/debugging purposes)</p></li>
 </ul>
-<p>Moreover, the IT-Wallet registry system MUST use two distinct access patterns:</p>
+<p>Moreover, the IT-Wallet System Register MUST use two distinct access patterns:</p>
 <ul class="simple">
 <li><p><strong>Data Registry APIs</strong>: MUST support pagination and filtering capabilities.</p></li>
 <li><p><strong>Federation Trust Infrastructure</strong>: as defined in <a class="reference internal" href="trust-infrastructure.html#the-infrastructure-of-trust"><span class="std std-ref">The Infrastructure of Trust</span></a>.</p></li>
@@ -1030,7 +1030,7 @@ Content-Type: application/json
 <p>The <strong>Federation Registry</strong> provides the cryptographic trust infrastructure for all IT-Wallet ecosystem participants. The Federation Registry maintains the authoritative list of trusted entities and their operational status using federation-specific endpoints as defined in <a class="reference internal" href="trust-infrastructure.html#federation-api-endpoints"><span class="std std-ref">Federation API endpoints</span></a>.</p>
 <section id="registry-integration-role">
 <h3><span class="section-number">7.5.1. </span>Registry Integration Role<a class="headerlink" href="#registry-integration-role" title="Link to this heading">¶</a></h3>
-<p>Within the IT-Wallet registry architecture, the Federation Registry serves as the <strong>trust validation layer</strong> for:</p>
+<p>Within the IT-Wallet System Register architecture, the Federation Registry serves as the <strong>trust validation layer</strong> for:</p>
 <ol class="arabic simple">
 <li><p><strong>Entity Authentication</strong>: Validates the cryptographic identity of all participants before registry operations</p></li>
 <li><p><strong>Trust Chain Verification</strong>: Provides the cryptographic foundation for Credential Issuers, Relying Parties, and Wallet Providers entity validation</p></li>

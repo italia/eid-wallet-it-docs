@@ -149,6 +149,7 @@
 <li class="toctree-l3"><a class="reference internal" href="proximity-flow.html">12.2.2. Flusso di Prossimità</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-metadata-retrieval.html">12.3. Flusso di Recupero dei Wallet Metadata</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="endpoints.html">13. Endpoints</a></li>
@@ -175,9 +176,23 @@
 <p>A seconda di come l'Utente stia interagendo con il frontend dell'App di Verifica Web, usando cioè il dispositivo in cui risiede l'Unità Wallet (<strong>Same Device</strong>) oppure un altro dispositivo (<strong>Cross Device</strong>), la Relying Party DEVE supportare i seguenti flussi remoti (<a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">RPR-84</span></a>):</p>
 <ul class="simple">
 <li><p><strong>Same Device</strong>: essa DEVE fornire un indirizzo <code class="docutils literal notranslate"><span class="pre">HTTP</span></code> all'Istanza del Wallet utilizzando un <em>redirect</em> (<code class="docutils literal notranslate"><span class="pre">302</span></code>) o un href HTML nella pagina web (<a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">RPR-01</span></a>);</p></li>
-<li><p><strong>Cross Device</strong>: essa DEVE fornire un indirizzo <code class="docutils literal notranslate"><span class="pre">HTTP</span></code> tramite un Codice QR che l'Utente scansiona con l'Istanza del Wallet (<a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">RPR-03</span></a>).</p></li>
+<li><p><strong>Cross Device</strong>: essa DEVE fornire un indirizzo <code class="docutils literal notranslate"><span class="pre">HTTP</span></code> tramite un Codice QR che l'Utente scansiona con la fotocamera del proprio dispositivo oppure con l'Istanza del Wallet (<a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">RPR-03</span></a>).</p></li>
 </ul>
-<p>Successivamente, l'Istanza del Wallet valida la trust con la Relying Party, valuta ne la richiesta, e, se l'Utente fornisce il consenso per la divulgazione dei propri Attestati Elettronici, li invia sotto forma di Verifiable Presentation.</p>
+<p>Per richiamare l'Istanza del Wallet corretta, la Relying Party DOVREBBE invocare l'Istanza del Wallet installata sul dispositivo dell'Utente che l'Utente desidera utilizzare.
+Queste informazioni DOVREBBERO essere fornite dall'Utente utilizzando la Selection Page descritta in <a class="reference internal" href="functionalities.html#design-dell-esperienza-utente"><span class="std std-ref">Design dell'Esperienza Utente</span></a>.</p>
+<ul class="simple">
+<li><p>Se la Selection Page è disponibile, l'utente seleziona l'Istanza del Wallet, quindi la Relying Party recupera i Wallet metadata come descritto in <a class="reference internal" href="wallet-metadata-retrieval.html#flusso-di-recupero-dei-wallet-metadata"><span class="std std-ref">Flusso di Recupero dei Wallet Metadata</span></a>. Il contenuto del HTML href o del QR Code dipende dal parametro <code class="docutils literal notranslate"><span class="pre">authorization_endpoint</span></code> nei Wallet metadata:</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>Se <code class="docutils literal notranslate"><span class="pre">authorization_endpoint</span></code> è disponibile e contiene un URL HTTPS (Universal Link), la Relying Party DOVREBBE utilizzare quell'endpoint.</p></li>
+<li><p>Altrimenti, la Relying Party DEVE utilizzare uno degli schemi URL personalizzati: <code class="docutils literal notranslate"><span class="pre">openid4vp://</span></code> (come definito nella Sezione 13.1.2 di [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>]) o <code class="docutils literal notranslate"><span class="pre">haip-vp://</span></code> (come definito nella Sezione 5.1 di [<a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-06.html">OPENID4VC-HAIP</a>]). L'Istanza del Wallet DEVE supportare entrambi gli schemi URL personalizzati.</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>Nel caso in cui la Relying Party non supporti la Selection Page o il recupero dei Wallet metadata fallisce per qualche motivo, la Relying Party richiamerà l'Istanza del Wallet utilizzando uno degli schemi URL personalizzati descritti precedentemente.</p></li>
+</ul>
+<p>Successivamente all'invocazione dell'Istanza del Wallet, l'Istanza del Wallet valida la trust con la Relying Party e ne valuta la richiesta. Se valida e l'Utente fornisce il consenso per la divulgazione dei propri Attestati Elettronici, li invia sotto forma di Verifiable Presentation.</p>
 <figure class="align-default" id="id1">
 <span id="fig-high-level-flow-presentation"></span><p class="plantuml">
 <object data="_images/plantuml-ab243d3130f2ad490ff2f94df8a467cc058a8823.svg" type="image/svg+xml" style="width:99%">
@@ -540,7 +555,7 @@ La richiesta e i suoi parametri sono definiti nella Sezione 5 (Authorization Req
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>Per l'<code class="docutils literal notranslate"><span class="pre">authorization_endpoint</span></code> l'uso di <em>univarsal link</em> è preferito rispetto a <em>URL scheme</em> personalizzati perché, quando configurati correttamente utilizzando Assetlinks JSON per Android e Apple App Site Association per iOS, forniscono una sicurezza migliorata riducendo il rischio di dirottamento degli URL.
-Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo al flusso di continuare senza problemi in un browser anche se l'Istanza del Wallet non è installata, garantendo un'esperienza Utente più fluida. Per garantire l'interoperabilità, il supporto degli <em>URL scheme</em> personalizzati è anche RACCOMANDATO secondo il profilo di interoperabilità OpenID4VC High Assurance Interoperability Profile (HAIP) <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-01.html">OPENID4VC-HAIP</a>, e in particolare utilizzando l'url personalizzato <code class="docutils literal notranslate"><span class="pre">haip://</span></code>.</p>
+Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo al flusso di continuare senza problemi in un browser anche se l'Istanza del Wallet non è installata, garantendo un'esperienza Utente più fluida. Per garantire l'interoperabilità, il supporto degli <em>URL scheme</em> personalizzati è anche RACCOMANDATO secondo il profilo di interoperabilità OpenID4VC High Assurance Interoperability Profile (HAIP) <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-06.html">OPENID4VC-HAIP</a>, e in particolare utilizzando l'url personalizzato <code class="docutils literal notranslate"><span class="pre">haip://</span></code>.</p>
 </div>
 </section>
 <section id="risposta-dell-endpoint-uri-request">
@@ -618,7 +633,7 @@ Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo
 <td><p>OBBLIGATORIO. ID della chiave della chiave pubblica necessaria per verificare la firma JWT, come definito in [<span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>trust_chain</strong></p></td>
-<td><p>OPZIONALE. È una sequenza di Entity Statement che compongono la Trust Chain relativa alla Relying Party, come definito in <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Sezione 4.3 <em>Trust Chain Header Parameter</em>.</p></td>
+<td><p>OPZIONALE. È una sequenza di Entity Statement che compongono la Trust Chain relativa alla Relying Party, come definito in <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Sezione 4.3 <em>Trust Chain Header Parameter</em>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>x5c</strong></p></td>
 <td><p>OBBLIGATORIO. Contiene il certificato X.509 foglia della Relying Party (e opzionalmente i certificati intermedi), utilizzato per verificare la firma JWT con la chiave pubblica nel certificato della Relying Party come definito in <span class="target" id="index-8"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>. Il certificato della Relying Party in <code class="docutils literal notranslate"><span class="pre">x5c</span></code> DEVE attestare informazioni di identità della Relying Party sufficienti per vincolare gli endpoint di rete referenziati dal flusso di presentazione. In particolare, gli endpoint utilizzati nella Authorization Request e Authorization Response (ad esempio, <code class="docutils literal notranslate"><span class="pre">response_uri</span></code>, <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>) DEVONO corrispondere alle informazioni di identità contenute nel certificato della Relying Party (ad esempio, un SAN di tipo URI per il matching completo dell'URI o un DNS Name SAN per il matching del nome host).</p></td>
@@ -627,7 +642,7 @@ Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo
 </table>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>L'intestazione <code class="docutils literal notranslate"><span class="pre">x5c</span></code> NON DEVE includere il certificato radice, come richiesto da <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-01.html">OPENID4VC-HAIP</a>. La catena di certificati <code class="docutils literal notranslate"><span class="pre">x5c</span></code> DEVE validare a un certificato radice preconfigurato; vedere la Sezione <a class="reference internal" href="trust-infrastructure.html#id9"><span class="std std-ref">X.509 PKI</span></a> per informazioni di base sulla validazione della catena di certificati X.509.</p>
+<p>L'intestazione <code class="docutils literal notranslate"><span class="pre">x5c</span></code> NON DEVE includere il certificato radice, come richiesto da <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-06.html">OPENID4VC-HAIP</a>. La catena di certificati <code class="docutils literal notranslate"><span class="pre">x5c</span></code> DEVE validare a un certificato radice preconfigurato; vedere la Sezione <a class="reference internal" href="trust-infrastructure.html#x-509-pki"><span class="std std-ref">X.509 PKI</span></a> per informazioni di base sulla validazione della catena di certificati X.509.</p>
 </div>
 <p>I parametri del payload JWT sono descritti qui:</p>
 <table class="longtable docutils align-default">
@@ -857,7 +872,7 @@ L'Istanza del Wallet invia la <em>Error Response</em> nella <em>Autorization Res
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">invalid_client</span></code></p></td>
 <td><ul class="simple">
-<li><p>I metadata della Relying Party sono stati risolti basandosi sull'Identificatore del Client (utilizzando il prefisso <code class="docutils literal notranslate"><span class="pre">openid_federation</span></code> o <code class="docutils literal notranslate"><span class="pre">x509_hash</span></code>), ma la Relying Party non può essere autorizzata a causa di errori nella verifica della trust oppure dal fatto che non è stata riconosciuta come entità valida della federazione. <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> e <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a></p></li>
+<li><p>I metadata della Relying Party sono stati risolti basandosi sull'Identificatore del Client (utilizzando il prefisso <code class="docutils literal notranslate"><span class="pre">openid_federation</span></code> o <code class="docutils literal notranslate"><span class="pre">x509_hash</span></code>), ma la Relying Party non può essere autorizzata a causa di errori nella verifica della trust oppure dal fatto che non è stata riconosciuta come entità valida della federazione. <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> e <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a></p></li>
 <li><p>Il parametro <code class="docutils literal notranslate"><span class="pre">client_metadata</span></code> è presente, ma il Wallet riconosce l'identificativo del client e conosce i metadati ad esso associati. <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a></p></li>
 <li><p>I metadati pre-registrati del Relying Party sono stati trovati in base all'identificativo del client, ma è presente anche il parametro <code class="docutils literal notranslate"><span class="pre">client_metadata</span></code>. <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a></p></li>
 </ul>

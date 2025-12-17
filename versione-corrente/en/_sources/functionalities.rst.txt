@@ -278,7 +278,7 @@ Relying Parties SHOULD use the :ref:`official-resources:Official Resources` for 
 Relying Parties MUST implement and provide the following pages as part of the Authentication process:
 
 - **Discovery Page**: lists all the available Authentication methods;
-- **Selection Page**: shows the User all the Wallet Solutions available in the Register and let them choose which one to continue the Authentication process with; 
+- **Selection Page**: shows the User all the Wallet Solutions available in the IT-Wallet System Register and let them choose which one to continue the Authentication process with; 
 - **QR Code Page** (*cross-device only*): prompts the User to scan a QR code;
 - **Waiting Page** (*cross-device only*): instructs the User to continue the Authentication process on their Wallet Instance;
 - **Thank You Page**: confirms the successful Authentication;
@@ -327,6 +327,10 @@ If the User accesses the Discovery Page from the same Touchpoint where the Walle
 
 The Selection Page is the page on which the User lands after they have chosen to Authenticate via the IT-Wallet System, and is intended to present the User with the Wallet Solutions available to perform Authentication. 
 
+.. note::
+   This section describes the display of a Selection Page as part of the Authentication process use case. The same page SHOULD be used also by the Relying Parties during presentation and by third parties offering the Credential Offer to enable the Wallet Solution selection option. Further details are provided in :ref:`remote-flow:Remote Flow` and :ref:`credential-issuance-low-level:Credential Offer Flow`.
+
+
 The Relying Party MUST implement the Selection Page made available in the :ref:`official-resources:Official Resources`. 
 
 .. only:: format_html 
@@ -351,15 +355,15 @@ The Relying Party implementing the page:
 
 - MUST ensure that the copy on the page mirrors that reported in the :ref:`official-resources:Official Resources`; 
 
-- MUST present each Wallet Solution in the IT-Wallet Register through a modular component that displays the logo and name in full; 
+- MUST present each Wallet Solution in the IT-Wallet System Register through a modular component that displays the logo and name in full retrieved as described in :ref:`wallet-metadata-retrieval:Wallet Metadata Retrieval Flow`; 
 
-- MUST present the Wallet Solutions in a dynamic layout that adapts to the number of Wallet Solutions available: when less than 3 MUST distribute them in a 2-column grid, when less than 2 MUST use a center-column layout; in all cases random sorting MUST be guarantee; 
+- MUST present the Wallet Solutions in a dynamic layout that adapts to the number of Wallet Solutions available: when the Wallet Solution number is less than 2, the Selection Page MUST distribute the Wallet Solutions within a center-column layout. Otherwise, when the Wallet Solution number is equal or superior than 3, the Selection Page MUST distribute the Wallet Solutions in a 2-column grid; in all cases random sorting MUST be guaranteed; 
 
 - MUST allow the User to search for a Wallet Solution through a filter feature by name, when more than 5 Wallet Solutions are present; 
 
-- MUST allow the User to find out, when needed, which Wallet Solutions are available in the Register by preparing a cross-reference to the official site of the IT-Wallet System; 
+- MUST allow the User to find out, when needed, which Wallet Solutions are available in the IT-Wallet System Register by preparing a cross-reference to the official site of the IT-Wallet System; 
 
-- MUST include a Call to Action that allows the User to abort the operation and return to the Discovery Page. 
+- MUST include a Call to Action that allows the User to abort the operation and return to the previous page (e.g., the Discovery Page in case of an Authentication process).
 
 The Relying Party MAY also include a text component on the Selection Page to promote the Authentication mode via IT-Wallet, which links back to the IT-Wallet System's official website, as represented in the :ref:`official-resources:Official Resources`. 
 

@@ -464,7 +464,7 @@
 <p>Questo approccio gerarchico abilita la <strong>gestione distribuita dell'onboarding</strong> mantenendo un'istituzione di trust unificata. Sia i Trust Anchor che gli Intermediari agiscono come <strong>Autorità di Federazione</strong> con le seguenti capacità di onboarding:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Emissione dei Certificati</strong>: Emettono certificati X.509 ai loro subordinati immediati con vincoli di denominazione appropriati come definito in <a class="reference internal" href="trust-infrastructure.html#id9"><span class="std std-ref">X.509 PKI</span></a>.</p></li>
+<li><p><strong>Emissione dei Certificati</strong>: Emettono certificati X.509 ai loro subordinati immediati con vincoli di denominazione appropriati come definito in <a class="reference internal" href="trust-infrastructure.html#x-509-pki"><span class="std std-ref">X.509 PKI</span></a>.</p></li>
 <li><p><strong>Applicazione delle Metadata Policy</strong>: Applicano le metadata policy specifiche della federazione con <strong>effetto a cascata</strong> (le policy del Trust Anchor prevalgono sulle policy degli Intermediari).</p></li>
 <li><p><strong>Emissione del Trust Mark</strong>: Emettono Trust Mark di Federazione attestando la conformità dei subordinati ai requisiti della federazione.</p></li>
 </ul>
@@ -565,7 +565,7 @@
 <ul class="simple">
 <li><p>Contenere <strong>solo la Chiave Pubblica dell'Entità di Federazione</strong> da certificare.</p></li>
 <li><p>Essere firmato con la corrispondente Chiave Privata di Federazione.</p></li>
-<li><p>Definire il Subject del certificato con gli attributi richiesti come specificato in <a class="reference internal" href="trust-infrastructure.html#id11"><span class="std std-ref">Emissione di Certificati X.509</span></a> per le Entità di Federazione.</p></li>
+<li><p>Definire il Subject del certificato con gli attributi richiesti come specificato in <a class="reference internal" href="trust-infrastructure.html#emissione-di-certificati-x-509"><span class="std std-ref">Emissione di Certificati X.509</span></a> per le Entità di Federazione.</p></li>
 </ul>
 </td>
 </tr>
@@ -615,7 +615,7 @@
 </div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Gli attributi Subject del CSR DEVONO rispettare i requisiti specificati in <a class="reference internal" href="trust-infrastructure.html#id11"><span class="std std-ref">Emissione di Certificati X.509</span></a> per le Entità di Federazione.</p>
+<p>Gli attributi Subject del CSR DEVONO rispettare i requisiti specificati in <a class="reference internal" href="trust-infrastructure.html#emissione-di-certificati-x-509"><span class="std std-ref">Emissione di Certificati X.509</span></a> per le Entità di Federazione.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>

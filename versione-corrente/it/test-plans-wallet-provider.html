@@ -232,7 +232,7 @@ Il piano di test è basato sui requisiti estratti dalle seguenti Sezioni:</p>
 <tr class="row-odd"><td><p>WP_002</p></td>
 <td><p>Trust, Sicurezza</p></td>
 <td><p>Firma Entity Configuration</p></td>
-<td><p>L'Entity Configuration del Fornitore del Wallet è un JWT firmato che è conforme a <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a>.</p></td>
+<td><p>L'Entity Configuration del Fornitore del Wallet è un JWT firmato che è conforme a <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_002a</p></td>
 <td><p>Trust, Interoperabilità</p></td>
@@ -272,17 +272,17 @@ Il piano di test è basato sui requisiti estratti dalle seguenti Sezioni:</p>
 <tr class="row-odd"><td><p>WP_002h</p></td>
 <td><p>Trust, Interoperabilità</p></td>
 <td><p>Metadata Entity Configuration</p></td>
-<td><p>Il payload del JWT Entity Configuration contiene un oggetto <code class="docutils literal notranslate"><span class="pre">metadata</span></code> che include il parametro <code class="docutils literal notranslate"><span class="pre">wallet_provider</span></code> e opzionalmente il parametro <code class="docutils literal notranslate"><span class="pre">federation_entity</span></code>, ciascuno valorizzato seguendo il proprio schema.</p></td>
+<td><p>Il payload del JWT Entity Configuration contiene un oggetto <code class="docutils literal notranslate"><span class="pre">metadata</span></code> che include il parametro <code class="docutils literal notranslate"><span class="pre">wallet_solution</span></code> e opzionalmente il parametro <code class="docutils literal notranslate"><span class="pre">federation_entity</span></code>, ciascuno valorizzato seguendo il proprio schema.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_003</p></td>
 <td><p>Trust, Interoperabilità</p></td>
 <td><p>Utilizzo chiave metadata</p></td>
-<td><p>Le chiavi pubbliche nell'oggetto JSON con cui è valorizzato <code class="docutils literal notranslate"><span class="pre">wallet_provider</span></code> sono usate esclusivamente per la firma e/o cifratura quando l'Entità agisce come Fornitore del Wallet (es. per emettere la Wallet Attestation).</p></td>
+<td><p>Le chiavi pubbliche nell'oggetto JSON sono usate esclusivamente per la firma e/o cifratura quando l'Entità agisce come Fornitore del Wallet (es. per emettere la Wallet Attestation).</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_004</p></td>
 <td><p>Trust, Interoperabilità</p></td>
 <td><p>Riferimento chiave metadata</p></td>
-<td><p>Per riferire le chiavi pubbliche, l'oggetto JSON con cui è valorizzato <code class="docutils literal notranslate"><span class="pre">wallet_provider</span></code> contiene esattamente uno dei seguenti claim: <code class="docutils literal notranslate"><span class="pre">jwks</span></code>, <code class="docutils literal notranslate"><span class="pre">jwks_uri</span></code>, o <code class="docutils literal notranslate"><span class="pre">signed_jwks_uri</span></code>.</p></td>
+<td><p>Per riferire le chiavi pubbliche, l'oggetto JSON contiene esattamente uno dei seguenti claim: <code class="docutils literal notranslate"><span class="pre">jwks</span></code>, <code class="docutils literal notranslate"><span class="pre">jwks_uri</span></code>, o <code class="docutils literal notranslate"><span class="pre">signed_jwks_uri</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_004a</p></td>
 <td><p>Trust, Interoperabilità</p></td>
