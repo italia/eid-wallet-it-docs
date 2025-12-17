@@ -25,7 +25,7 @@
 .. _OAUTH2: https://www.rfc-editor.org/rfc/rfc6749
 .. _OAuthCrossDeviceSec: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-cross-device-security-08
 .. _OID-FED-WALLET: https://openid.net/specs/openid-federation-wallet-1_0.html
-.. _OID-FED: https://openid.net/specs/openid-federation-1_0-41.html
+.. _OID-FED: https://openid.net/specs/openid-federation-1_0-46.html
 .. _OIDC-FED#Federation_Entity: https://openid.net/specs/openid-federation-1_0.html#Section-4.6
 .. _OIDC-FED#RP_metadata: https://openid.net/specs/openid-federation-1_0.html#Section-4.1
 .. _OIDC-FED#Section_1.2: https://openid.net/specs/openid-federation-1_0.html#Section-1.2
@@ -47,7 +47,7 @@
 .. _OIDC-FED#Section-7.5: https://openid.net/specs/openid-federation-1_0.html#Section-7.5
 .. _OIDC-IDA: https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html
 .. _OIDC: https://openid.net/specs/openid-connect-core-1_0.html
-.. _OPENID4VC-HAIP: https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-01.html
+.. _OPENID4VC-HAIP: https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-06.html
 .. _OpenID4VC-SecTrust: https://openid.github.io/OpenID4VC_SecTrust/draft-oid4vc-security-and-trust.html
 .. _OpenID4VCI: https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html
 .. _OpenID4VP: https://openid.net/specs/openid-4-verifiable-presentations-1_0.html
