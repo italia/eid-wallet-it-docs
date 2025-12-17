@@ -3,7 +3,6 @@
 User Experience Design
 =======================
 
-
 .. include:: design.rst 
 
 
