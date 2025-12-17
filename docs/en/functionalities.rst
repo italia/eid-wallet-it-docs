@@ -129,10 +129,10 @@ The Authentic Source MAY provide additional information related to an Electronic
 Following is an example of informative text: 
 
 .. note::
-  **Title:** Do you already have the physical document? 
-  **Text:** To obtain the digital version of [Document name], please make sure to already have obtained the corresponding physical document. For more details, [read more information] (URL). 
+  **Title:** Who may obtain the document 
+  **Text:** The digital version of [Document name] is available only to those who already hold the physical one. Please, make sure to have already obtained the corresponding physical document.  For more details, [read more information] (URL). 
 
-For further information, please refer to the section :ref:`registry:Digital Credentials Catalog` (see claim ``user_information``). 
+For further information, please refer to the section :ref:`registry:uthentic Source Registry` (see ``data_capabilities.user_information`` parameter). 
 
 The Wallet Provider MUST allow the User to remove an Electronic Attestation of Attributes through their Wallet Instance at any moment. In case of absence of the device where the Wallet Instance was activated, the Wallet Provider MUST allow the User to deactivate the entire Wallet Instance through a specific Touchpoint. In addition, the Electronic Attestation of Attributes Providers SHOULD allow the User to revoke the issued Digital Credentials through specific Touchpoints. For more details, please refer to the `Deactivation of the Wallet Instance`_ and `Management of Electronic Attestations`_ sections.
 
@@ -167,23 +167,67 @@ In case of errors during the issuance of the Electronic Attestation of Attribute
 Focus on Electronic Attestations of Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The EAAs obtained within the Wallet Instance SHOULD be displayed in a list within a Preview View. In this case, each EAA MUST ensure a high level of recognizability and accessibility [REF_ACCESSIBILITY] of the information contained. Below are the requirements for displaying the EAA that each Wallet Provider MUST adhere to in order to provide a consistent and accessible consultation and usage experience:
+The EAAs obtained within the Wallet Instance MUST ensure a high level of recognizability and accessibility [REF_ACCESSIBILITY] of the information contained. 
 
-- The EAA MUST be displayed correctly across all devices, ensuring a consistent experience on screens of varying sizes;
-- The name of the EAA MUST be clearly visible and always displayed in both the Detail View and the Preview View;
-- The EAA, both in the Preview View and the Detailed View, MUST display its status if different from valid to provide transparency on its lifecycle and MAY display it if valid. The Preview View MAY also include additional Attributes to enhance the User Experience and management; for example, it MAY display the name or logo of the Electronic Attestation of Attributes Provider or the PID Provider. The Detailed View MUST include the same information of the Preview View and give a complete representation of all the other Attributes, such as the name of the Electronic Attestation of Attributes Provider or the name of the Authentic Source; the Detailed View MAY provide specific details for example about use case scenario or the reason of invalid state of the EAA;
-- The EAA MUST include Action Buttons in the Detail View to enable lifecycle management and allow the User to revoke or to update a EAA at any time (see :ref:`functionalities:Management of Electronic Attestations`); 
-- The EAA MUST be an interactive element, for the User to access services provided by Relying Parties in digital and proximity contexts (see :ref:`functionalities:Presentation of Electronic Attestations`); 
-- The EAA MAY be displayed in a card format in their Preview View, in line with approaches already used by other digital wallets in the market, to mirror the appearance of a corresponding physical document;
-- The EAA MUST display the same information in the Detail View as shown in the Preview View and MAY include additional details; 
-- The EAA MUST display a method of assistance (see :ref:`functionalities:User Assistance`); 
-- The EAA layout in the Preview View MUST be optimized for scalability and usability, especially when multiple EAAs are displayed on the same screen; 
-- The EAA representation MUST adhere to a defined set of specifications provided by the Electronic Attestation of Attributes Provider to ensure recognizability, consistency and homogeneity among different Wallet Solutions. 
+The EAAs representation depends on the UI and design choices of the Wallet Solution and for certain specific aspects, on what is defined within the Authentic Source Registry and the Digital Credential Catalog (see :ref: `registry:Registry Infrastructure`).  
 
-The Electronic Attestation of Attributes Provider: 
+Below are the requirements that every Authentic Source MUST follow to personalize their EAAs (see :ref:`registry:Authentic Source Registry`): 
 
-- MUST define a name/ naming convention to refer to the EAAs issued, to guarantee consistency across all Wallet Solutions; the EAA name MUST be comprehensible and user-friendly avoiding technical terms or acronyms whenever possible; 
-- MUST define a clear set of specifications for the EAA to ensure consistent identification and representation of the EAA across different Wallet Solutions, in terms of format, structure, and appearance standards (e.g. color, background image, etc.). 
+- The EAA MAY be characterized by the **Authentic Source** logo. The Authentic Source MAY provide this logo in two versions, a compact version via the ``organization_info.logo_uri`` parameter and an extended version via the ``organization_info.logo_extended_uri`` parameter. In particular, the Authentic Source:  
+
+ - MUST provide the logo only in one of the following formats: .png, .svg, or .webp; 
+ - MUST provide the logo in both a positive and a negative version, if available; 
+ - MUST provide the logo with a minimum size of 30 × 30 pixels and a maximum size of 60 x 60 pixels, in its compact version; 
+ - MUST provide the logo with an aspect ratio of 1:1, in its compact version; 
+ - MUST provide the logo which does not exceed the maximum file size of 80 KB, in its compact version; 
+ - MUST provide the logo with a minimum size of 200 × 30 pixels and a maximum size of 650 × 180 pixels, in its extended version; 
+ - MUST provide the logo which does not exceed the maximum file size of 150 KB, in its extended version. 
+
+- The EAA MAY be characterized by a **distinctive logo**. The Authentic Source MAY provide this logo via the ``data_capabilities.logo_uri`` parameter. In particular, the Authentic Source: 
+
+ - MUST provide the logo only in one of the following formats: .png, .svg, or .webp; 
+ - MUST provide the logo in both a positive and a negative version, if available; 
+ - MUST provide the logo with a minimum size of 200 × 30 pixels and a maximum size of 650 × 180 pixels; 
+ - MUST provide the logo with a maximum file size of 150 KB. 
+
+- The EAA MAY be characterized by a background image. The Authentic Source MAY provide the desired image via the ``data_capabilities.background_image`` parameter. In particular, the Authentic Source: 
+
+ - MUST provide the background image as a single image; 
+ - MUST provide the background image only in one of the following formats: .png, .svg, .jpeg, .jpg, .webp; 
+ - MUST provide the background image with a minimum resolution of 321 × 205 pixels and maximum resolution of 1284 × 820 pixels; 
+ - MUST provide the background image with a maximum file size of 200 KB. 
+
+- The EAA MAY be characterized by a **background watermark**. The Authentic Source MAY provide the desired watermark via the ``data_capabilities.watermark_image`` parameter. In particular, the Authentic Source: 
+ 
+ - MUST provide the watermark as a single element; 
+ - MUST provide the watermark only in one of the following formats: .png, .svg; 
+ - MUST provide the watermark with a minimum resolution of 321 × 205 pixels and a maximum resolution of 1284 × 820 pixels; 
+ - MUST provide the watermark with a maximum file size of 200 KB. 
+
+- The EAA MAY be characterized by a **background color**. The Authentic Source MAY provide the desired background color via the ``data_capabilities.background_color`` parameter. In particular, the Authentic Source: 
+
+ - MUST provide the background color only using one of the following color modes: HEX, HSB, RGB, sRGB, HSL, or HSV; 
+ - MAY provide the background color also with a gradient.the Gradient values MUST be provided in one of the accepted color modes. 
+
+- The EAA MUST be characterized by a particular data order. The Authentic Source MUST provided the desired Attributes order via ``data_capabilities.available_claims.order`` parameter. In particular, the Authentic Source: 
+
+ - MUST firstly provide personal details, if included, in the following order: first name, last name, date of birth, place of birth, tax code, etc; 
+ - MUST provide additional specific details following a logical order that is clear to the User. 
+
+To ensure a consistent identification and representation of the EAAs across different Wallet Solutions, the Electronic Attestation of Attributes Provider MUST define a name/naming convention for each EAA provided, that is comprehensible and user-friendly, thus avoiding technical terms or acronyms whenever possible.  
+
+Below are illustrated the User Experience requirements to ensure a uniform and consistent usage and display of the EAAs. The Wallet Provider: 
+
+- MUST correctly display the EAA across all devices, ensuring a consistent experience on screens of varying sizes; 
+- MAY display the EAAs issued in the form of cards stacked in a list in the Preview View, in line with approaches already used by other digital wallets in the market; 
+- MUST optimize the EAA layout in the Preview View for scalability and usability, especially when multiple EAAs are displayed on the same screen; 
+- MUST display clearly the name of the EAA, as defined within the Digital Credentials Catalog via the ``credential_name`` parameter (see :ref:`registry:Digital Credentials Catalog`), in both the Detail View and the Preview View; 
+- MUST display the EAA status, if different from valid to provide transparency on its lifecycle and MAY display it if valid, in both the Detail View and the Preview View. Specific details about the EAA status, if invalid, MAY be provided in the Detail View (e.g., the reason why the EAA is revoked); 
+- MAY include optional information to enhance the User Experience and the EAA recognizability, both in the Preview View and the Detail View, such as the logo, the color, the image and/or the watermark as defined by the Authentic Source within the Authentic Source Registry (see :ref:`registry:Authentic Source Registry`); 
+- MUST include the same data of the Preview View in the Detail View and give a complete representation of all the other Attributes, following the order defined by the Authentic Source within the Authentic Source Registry (see :ref:`registry:Authentic Source Registry`); MAY include specific details in the Detail View, for example information about use case scenario or the reason for the invalid state of the EAA; 
+- MUST include Action Buttons in the Detail View to enable the EAA lifecycle management and allow the User to revoke or to update a EAA at any time (see :ref :`functionalities:Management of Electronic Attestations`); 
+- MUST guarantee that the EAA is a functional element, for the User to access services provided by Relying Parties in digital and proximity contexts (see :ref:`functionalities:Presentation of Electronic Attestations`); 
+- MUST display in the Detail View a method of assistance given by the Authentic Source via the data_capabilities.contacts parameter (see :ref:`functionalities:User Assistance` and see :ref:`registry:Authentic Source Registry`). 
 
 Presentation of Electronic Attestations
 ----------------------------------------
