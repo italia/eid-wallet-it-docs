@@ -66,7 +66,7 @@ The flow is shown below with illustrative wireframes.
 
 .. only:: format_html
 
-  .. figure:: ./images/svg/Attivazione-IT-Wallet.svg
+  .. figure:: ./images/svg/IT-Wallet-Activation.svg
     :alt: Example of User Experience in Activating a Wallet Instance 
     :width: 100%
 
@@ -74,7 +74,7 @@ The flow is shown below with illustrative wireframes.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/A4-Flusso-Attivazione-01.pdf
+  .. figure:: ./images/pdf/IT-Wallet-Activation.pdf
     :alt: Example of User Experience in Activating a Wallet Instance
     :width: 100%
 
@@ -163,7 +163,7 @@ The flow is shown below with illustrative wireframes.
 
 .. only:: format_html
 
-  .. figure:: ./images/svg/Ottenimento-da-catalogo.svg
+  .. figure:: ./images/svg/Issuance-from-catalog.svg
     :alt: Example of User Experience in the issuance an Authentic Electronic Attestation from Catalog
     :width: 100%
 
@@ -192,7 +192,7 @@ The flow is shown below with illustrative wireframes.
 
 .. only:: format_html
 
-  .. figure:: ./images/svg/Ottenimento-da-fonte-autentica.svg
+  .. figure:: ./images/svg/Issuance-from-Authentic-Source.svg
     :alt: Example of User Experience in the issuance an Authentic Electronic Attestation from Authentic Source
     :width: 100%
 
@@ -224,7 +224,7 @@ Below an example of Electronic Attestation of Attribute layout, in a Preview Vie
 
 .. only:: format_html
 
-  .. figure:: ./images/svg/A4-Focus-EAA.svg
+  .. figure:: ./images/svg/Focus-EAA.svg
     :alt: Example of Electronic Attestation of Attribute layout, Preview View, and Detail View 
     :width: 100%
 
@@ -232,7 +232,7 @@ Below an example of Electronic Attestation of Attribute layout, in a Preview Vie
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/A4-Focus-EAA.pdf
+  .. figure:: ./images/pdf/Focus-EAA.pdf
     :alt: Example of Electronic Attestation of Attribute layout, Preview View, and Detail View   
     :width: 100%
 
@@ -285,7 +285,7 @@ The flow is shown below with illustrative wireframes.
 
 .. only:: format_html
 
-  .. figure:: ./images/svg/Presentazione-prossimita.svg
+  .. figure:: ./images/svg/proximity-presentation.svg
     :alt: Example of User Experience in proximity presentation
     :width: 100%
 
@@ -319,7 +319,7 @@ The flow is shown below with illustrative wireframes.
 
 .. only:: format_html
 
-  .. figure:: ./images/svg/Presentazione-remoto-same-device.svg
+  .. figure:: ./images/svg/Remote-presentation-same-device.svg
     :alt: Example of User Experience in remote, same-device presentation
     :width: 100%
 
@@ -341,7 +341,7 @@ The flow is shown below with illustrative wireframes.
 
 .. only:: format_html
 
-  .. figure:: ./images/svg/Presentazione-remoto-cross-device.svg
+  .. figure:: ./images/svg/Remote-presentation-cross-device.svg
     :alt: Example of User Experience in remote, cross-device presentation
     :width: 100%
 
@@ -579,7 +579,7 @@ Both flows are shown below with illustrative wireframes.
 
 .. only:: format_html
 
-  .. figure:: ./images/svg/Autenticazione-same-device.svg
+  .. figure:: ./images/svg/Authentication-same-device.svg
     :alt: Example of same-device Authentication User Experience
     :width: 100%
 
@@ -588,7 +588,7 @@ Both flows are shown below with illustrative wireframes.
 
 .. only:: format_html
 
-  .. figure:: ./images/svg/Autenticazione-cross-device.svg
+  .. figure:: ./images/svg/Authentication-cross-device.svg
     :alt: Example of cross-device Authentication User Experience
     :width: 100%
 
@@ -706,7 +706,7 @@ The flow is shown below with illustrative wireframes.
 
 .. only:: format_html
 
-  .. figure:: ./images/svg/Aggiornamento-EAA.svg
+  .. figure:: ./images/svg/Update-EAA.svg
      :alt: Example of User Experience in Updating an Electronic Attestation
      :width: 100%
 
@@ -741,7 +741,7 @@ The flow is shown below with illustrative wireframes.
 
 .. only:: format_html
 
-  .. figure:: ./images/svg/Revoca-EAA-da-wallet.svg
+  .. figure:: ./images/svg/Revocation-EAA-from-wallet.svg
      :alt: Example of User Experience in Revoking an Electronic Attestation
      :width: 100%
 
@@ -805,7 +805,7 @@ The flow is shown below with illustrative wireframes.
 
 .. only:: format_html
 
-  .. figure:: ./images/svg/Disattivazione-wallet.svg
+  .. figure:: ./images/svg/wallet-deactivation.svg
      :alt: Example of User Experience in Deactivating a Wallet Instance
      :width: 100%
 
