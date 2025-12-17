@@ -610,7 +610,7 @@ Queste informazioni DOVREBBERO essere ottenute utilizzando la Selection Page des
   - Se ``credential_offer_endpoint`` è disponibile e contiene un URL HTTPS (Universal Link), il Credential Issuer o la terza parte DOVREBBE utilizzare quell'endpoint.
   - Altrimenti, il Credential Issuer o la terza parte DEVE utilizzare uno degli schemi URL personalizzati: ``openid-credential-offer://`` (come definito nella Sezione 4 di [`OpenID4VCI`_]) o ``haip-vci://`` (come definito nella Sezione 4.2 di [`OPENID4VC-HAIP`_]). L'Istanza del Wallet DEVE supportare entrambi gli schemi URL personalizzati.
 
--  Se la Selection Page non è disponibile o il recupero dei Wallet metadata fallisce, il Credential Issuer o la terza richiamerà direttamente l'Istanza del Wallet utilizzando uno degli schemi URL personalizzati (vedere punto precedente).
+-  Nel caso in cui il Credential Issuer o la terza non supporti la Selection Page o il recupero dei Wallet metadata fallisce per qualche motivo,  il Credential Issuer o la terza richiamerà l'Istanza del Wallet utilizzando uno degli schemi URL personalizzati descritti precedentemente.
 
 
 La Credential Offer può essere trasmessa per valore o per riferimento:
