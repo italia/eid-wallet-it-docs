@@ -211,23 +211,25 @@
 <p>In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the <a class="reference internal" href="#error-management"><span class="std std-ref">Error Management</span></a> section.</p>
 <section id="focus-on-pid-person-identification-data">
 <h3><span class="section-number">5.3.1. </span>Focus on PID – Person Identification Data<a class="headerlink" href="#focus-on-pid-person-identification-data" title="Link to this heading">¶</a></h3>
-<p>The PID (Person Identification Data) refers to verified minimum set of informations about the User identity (see <a class="reference internal" href="credential-data-model.html#digital-credential-data-model"><span class="std std-ref">Digital Credential Data Model</span></a>) issued as a result of the activation process and made available in the Wallet Instance.
-Below are the requirements for displaying and using the PID that each Wallet Provider MUST adhere to, in order to provide a consistent and accessible consultation and usage experience:</p>
+<p>The PID (Person Identification Data) refers to verified minimum set of informations about the User identity (see <a class="reference internal" href="credential-data-model.html#digital-credential-data-model"><span class="std std-ref">Digital Credential Data Model</span></a>) issued as a result of the activation process and made available in the Wallet Instance.</p>
+<p>Below are illustrated the User Experience requirements to ensure a uniform and consistent usage and display of the PID. The Wallet Provider:</p>
 <ul class="simple">
-<li><p>The PID MUST be displayed correctly across all devices, ensuring a consistent experience on screens of varying sizes;</p></li>
-<li><p>The PID MUST be named as defined by the PID Provider;</p></li>
-<li><p>The PID MUST display its status if different from valid to provide transparency on its lifecycle and MAY display it if valid. Specific details about the PID status, if invalid, MAY be provided (e.g., the reason why the PID is revoked);</p></li>
-<li><p>The PID MUST include Action Buttons to enable lifecycle management and allow the User to revoke the PID, thus the entire Wallet Instance with all EAAs issued, or to update the PID at any time (see <a class="reference internal" href="#management-of-electronic-attestations"><span class="std std-ref">Management of Electronic Attestations</span></a>);</p></li>
-<li><p>The PID MUST be an interactive element, for the User to be authenticated by a Relying Party in a digital context (see <a class="reference internal" href="#authentication"><span class="std std-ref">Authentication</span></a>), to access services in proximity contexts, and to request the issuance of additional EAAs (see <a class="reference internal" href="#issuance-of-electronic-attestations-of-attributes"><span class="std std-ref">Issuance of Electronic Attestations of Attributes</span></a>);</p></li>
-<li><p>The PID MUST display a method of assistance by the PID Provider (see <a class="reference internal" href="#user-assistance"><span class="std std-ref">User Assistance</span></a>);</p></li>
-<li><p>The PID MUST be recognizable by the User and distinguishable from other EAAs;</p></li>
-<li><p>The PID MUST be named with the naming convention that will be defined in this document's future version, avoiding custom or technical terms such as &quot;Person Identification Data&quot; or its acronym &quot;PID&quot;;</p></li>
-<li><p>The PID representation MUST adhere to a defined set of specifications provided by the PID Provider to ensure recognizability, consistency and homogeneity among different Wallet Solutions.</p></li>
+<li><p>MUST correctly display the PID across all devices, ensuring a consistent experience on screens of varying sizes;</p></li>
+<li><p>MUST display the PID status, if different from valid to provide transparency on its lifecycle, and MAY display it if valid. Specific details about the PID status, if invalid, MAY be provided (e.g., the reason why the PID is revoked);</p></li>
+<li><p>MUST include Action Buttons to enable the PID lifecycle management and allow the User to revoke the PID, thus the entire Wallet Instance with all EAAs issued, or to update the PID at any time (see <a class="reference internal" href="#management-of-electronic-attestations"><span class="std std-ref">Management of Electronic Attestations</span></a>);</p></li>
+<li><p>MUST guarantee that the PID is a functional element, for the User to be authenticated by a Relying Party in a digital context (see <a class="reference internal" href="#authentication"><span class="std std-ref">Authentication</span></a>), to access services in proximity contexts, and to request the issuance of additional EAAs (see <a class="reference internal" href="#issuance-of-electronic-attestations-of-attributes"><span class="std std-ref">Issuance of Electronic Attestations of Attributes</span></a>);</p></li>
+<li><p>MUST display a method of assistance given by the PID Provider (see <a class="reference internal" href="#user-assistance"><span class="std std-ref">User Assistance</span></a>);</p></li>
+<li><p>MUST guarantee that the PID is recognizable by the User and distinguishable from other EAAs.</p></li>
 </ul>
-<p>The PID Provider MUST:</p>
+<p>To ensure a consistent identification and representation of the PID across different Wallet Solutions, the Wallet Provider:</p>
 <ul class="simple">
-<li><p>Implement a name/naming convention to refer to the PID, to guarantee consistency across all Wallet Solutions;</p></li>
-<li><p>Define a clear set of specifications for the PID to ensure consistent identification and representation of the PID across different Wallet Solutions, in terms of format, structure and appearance standards (e.g. color, background image, etc.).</p></li>
+<li><p>MUST use the official naming “IT-Wallet ID” to refer to PID in their Wallet Solutions and MUST NOT use custom or technical terms such as &quot;Person Identification Data&quot; or its acronym &quot;PID&quot;;</p></li>
+<li><p>MUST use the IT-Wallet ID official graphic asset available in the Official Resources and MUST comply with the related usage specifications provided;</p></li>
+<li><p>MUST use the IT-Wallet ID graphic asset in the application/svg+xml data format;</p></li>
+<li><p>MUST NOT alter, distort, modify, or replace the IT-Wallet ID graphic asset with unofficial graphic assets;</p></li>
+<li><p>MUST maintain the minimum clear space as defined in the Official Resources to ensure visibility and recognizability. No other graphic or textual elements MUST interfere with this space;</p></li>
+<li><p>MUST NOT resize the IT-Wallet ID graphic asset below the minimum dimensions specified in the Official Resources to maintain legibility across formats and devices;</p></li>
+<li><p>MUST NOT place the IT-Wallet ID graphic asset on backgrounds that compromise its visibility or legibility. Adequate contrast between the IT-Wallet ID graphic asset and the background MUST be ensured, in line with the Official Resources.</p></li>
 </ul>
 </section>
 </section>
