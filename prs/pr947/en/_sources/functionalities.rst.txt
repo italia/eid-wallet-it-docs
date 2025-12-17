@@ -132,7 +132,7 @@ Following is an example of informative text:
   **Title:** Who may obtain the document 
   **Text:** The digital version of [Document name] is available only to those who already hold the physical one. Please, make sure to have already obtained the corresponding physical document.  For more details, [read more information] (URL). 
 
-For further information, please refer to the section :ref:`registry:uthentic Source Registry` (see ``data_capabilities.user_information`` parameter). 
+For further information, please refer to the section :ref:`registry:Authentic Source Registry` (see ``data_capabilities.user_information`` parameter). 
 
 The Wallet Provider MUST allow the User to remove an Electronic Attestation of Attributes through their Wallet Instance at any moment. In case of absence of the device where the Wallet Instance was activated, the Wallet Provider MUST allow the User to deactivate the entire Wallet Instance through a specific Touchpoint. In addition, the Electronic Attestation of Attributes Providers SHOULD allow the User to revoke the issued Digital Credentials through specific Touchpoints. For more details, please refer to the `Deactivation of the Wallet Instance`_ and `Management of Electronic Attestations`_ sections.
 
