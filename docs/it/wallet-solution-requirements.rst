@@ -10,7 +10,7 @@ Questa sezione elenca i requisiti relativi ai Fornitori di Wallet e alle Soluzio
 - La Soluzione Wallet DEVE aderire alle specifiche stabilite da questo documento per ottenere Attestati Elettronici di Dati di Identificazione Personale (PID) e Attestati Elettronici di Attributi (Q)EAA.
 - Il Fornitore di Wallet DEVE esporre un insieme di endpoint, disponibili esclusivamente per le istanze della sua Soluzione Wallet, che supportano le funzionalità principali delle Istanze del Wallet.
 - L'Istanza del Wallet DEVE periodicamente ristabilire la trust con il suo Fornitore di Wallet, ottenendo una nuova Wallet App Attestation (:ref:`WP_018 <wallet-instance-testcases>`).
-- L'istanza del Wallet DEVE stabilire un rapporto di fiducia con gli altri partecipanti dell'ecosistema del Wallet, come i Fornitori di Attributi Elettronici e le Relying Party. Nel caso dei Fornitori di Attributi Elettronici, l'istanza del Wallet presenta sia la Wallet App Attestation che la Wallet Unit Attestation, mentre per la Relying Party presenta solo la Wallet App Attestation.
+- L'istanza del Wallet DEVE stabilire un rapporto di fiducia con gli altri partecipanti dell'ecosistema del Wallet, come i Fornitori di Attributi Elettronici. Nel caso dei Fornitori di Attributi Elettronici, l'istanza del Wallet presenta sia la Wallet App Attestation che la Wallet Unit Attestation.
 - L'Istanza del Wallet DEVE essere compatibile e funzionale sia sui sistemi operativi Android che iOS e disponibile rispettivamente sul Play Store e sull'App Store (:ref:`WP_015 <wallet-instance-testcases>`).
 - L'Istanza del Wallet DEVE fornire un meccanismo per verificare l'effettivo possesso e il pieno controllo da parte dell'Utente del proprio dispositivo personale.
 - L'Istanza del Wallet DEVE fornire agli Utenti un elenco aggiornato delle Relying Party con cui l'Utente ha stabilito una connessione e, ove applicabile, tutti i dati scambiati;
@@ -36,7 +36,7 @@ I requisiti per la Wallet App Attestation sono definiti di seguito:
 - La Wallet App Attestation DEVE avere una durata limitata e DEVE includere un tempo di scadenza, oltre il quale NON DEVE più essere considerata valida.
 - la Wallet App Attestation NON DEVE essere rilasciato dal Fornitore di Wallet se l'autenticità, l'integrità e la genuinità dell'Istanza del Wallet che lo richiede non possono essere garantite (:ref:`WP_019a <wallet-instance-testcases>`).
 - Ogni Istanza del Wallet DOVREBBE essere in grado di richiedere più Wallet App Attestation utilizzando diverse chiavi pubbliche crittografiche associate ad essi.
-- la Wallet App Attestation NON DEVE contenere informazioni sull'Utente che controlla l'Istanza del Wallet (:ref:`WP_029a <wallet-instance-testcases>`).
+- la Wallet App Attestation NON DEVE contenere informazioni sull'Utente che controlla l'Istanza del Wallet (:ref:`WP_029b <wallet-instance-testcases>`).
 - L'Istanza del Wallet DEVE ottenere una Wallet App Attestation come prerequisito per passare allo stato Operativo, come definito da `EIDAS-ARF`_.
 
 .. note::

@@ -96,7 +96,7 @@ L'Istanza del Wallet DEVE inviare il JWT firmato della Richiesta di Wallet App e
 
 Al completamento con successo di tutte le verifiche, il Fornitore di Wallet emette una Wallet App Attestation valida per meno di 24 ore (:ref:`WP_144 <wallet-instance-optional-testcases>`) e una Wallet Unit Attestation valida per almeno un mese.
 
-**Passo 29 (Risposta di Emissione della Wallet App e Wallet Unit Attestation)**: Al completamento con successo, il Fornitore di Wallet DEVE restituire una risposta di conferma utilizzando il codice di stato 200 e il Content-Type ``application/json``, contenente le Wallet App e Wallet Unit Attestations firmate dal Fornitore di Wallet. Il Fornitore di Wallet DEVE restituire la Wallet App Attestation in almeno tre formati: ``JWT``, ``SD-JWT`` e ``mdoc``. L'Istanza del Wallet eseguirà quindi la verifica di sicurezza e integrità delle Wallet App e Wallet Unit Attestations ricevute, oltre alla verifica di fiducia del relativo emittente (:ref:`WP_030–031 <wallet-instance-testcases>`).
+**Passo 29 (Risposta di Emissione della Wallet App e Wallet Unit Attestation)**: Al completamento con successo, il Fornitore di Wallet DEVE restituire una risposta di conferma utilizzando il codice di stato 200 e il Content-Type ``application/json``, contenente le Wallet App e Wallet Unit Attestations firmate dal Fornitore di Wallet. Il Fornitore di Wallet DEVE restituire la Wallet App Attestation in formato ``JWT``. L'Istanza del Wallet eseguirà quindi la verifica di sicurezza e integrità delle Wallet App e Wallet Unit Attestations ricevute, oltre alla verifica di fiducia del relativo emittente (:ref:`WP_030–031 <wallet-instance-testcases>`).
 
 
 Di seguito è riportato un esempio non normativo della risposta.
@@ -108,21 +108,7 @@ Di seguito è riportato un esempio non normativo della risposta.
 
   {
     "wallet_attestations": [
-      "wallet_app_attestations": [
-        {
-          "format": "jwt",
-          "wallet_app_attestation": "ey..."
-        },
-        {
-          "format": "dc+sd-jwt",
-          "wallet_app_attestation": "ey..."
-        },
-        {
-          "format": "mso_mdoc",
-          "wallet_app_attestation": "omppc3N1ZXJBdXRohEOhASahG...ArQwggKwMIICVqADAgEC"
-        }
-      ],
-
+      "wallet_app_attestation": "omppc3N1ZXJBdXRohEOhASaiBE...dElEAnFlbGVtZW50SWRl",
       "wallet_unit_attestation": "omppc3N1ZXJBdXRohEOhASahG...ArQwggKwMIICVqADAgEC"
     ]
   }
