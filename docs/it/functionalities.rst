@@ -130,7 +130,7 @@ Segue un esempio di testo informativo:
 
 .. note::
   **Titolo:** Chi può ottenere il documento. 
-  **Testo:** La versione digitale del [Nome documento] documento è disponibile solo per coloro che possiedono già la versione fisica. Se vuoi avere maggiori dettagli, [leggi più informazioni] (URL). 
+  **Testo:** La versione digitale del [Nome documento] è disponibile solo per coloro che possiedono già la versione fisica. Se vuoi avere maggiori dettagli, [leggi più informazioni] (URL). 
 
 Per approfondimenti si rimanda alla sezione :ref:`registry:Registro delle Fonti Autentiche` (vedi claim ``data_capabilities.user_information``). 
 
