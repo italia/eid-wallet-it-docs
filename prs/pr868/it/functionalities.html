@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>5. Design dell&#39;Esperienza Utente &#8212; IT-Wallet Technical Documentation - PR #868</title>
+    <title>5. Design dell&#39;Esperienza Utente &#8212; IT-Wallet Technical Specifications - PR #868</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -33,7 +33,7 @@
         <p id="toggle_sidebar">
             <a href="#" title="Toggle sidebar">|||</a>
         </p>
-        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Documentation - PR #868</a></h1>
+        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Specifications - PR #868</a></h1>
             <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
     
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
@@ -244,7 +244,7 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 <p>Ad attivazione conclusa, l'Utente PUÒ ottenere uno o più Attestati Elettronici di Attributi all'interno della sua Istanza del Wallet.</p>
 <p>A seconda delle specifiche esigenze dell'Utente, della tipologia di Attestato Elettronico di Attributi e delle disponibilità offerte dal Fornitore di Wallet, dal Fornitore di Attestati Elettronici di Attributi e dalla Fonte Autentica, l'ottenimento degli Attestati Elettronici di Attributi può avvenire attraverso due modalità:</p>
 <ul class="simple">
-<li><p><strong>dal Catalogo dell'Istanza del Wallet</strong>: l'Utente esplora l'elenco degli Attestati Elettronici di Attributi forniti dalla Soluzione Wallet, seleziona quello di interesse e avvia il processo di richiesta, concludendo con il rilascio dell'Attestato Elettronico di Attributi nell'Istanza del Wallet. Questo percorso è disponibile per i tipi di credenziale idonei per la discovery pubblica come determinato dalle politiche dell'organismo di supervisione durante il processo di onboarding (vedere <span class="xref std std-ref">registry:Catalogo degli Attestati Elettronici</span>).</p></li>
+<li><p><strong>dal Catalogo dell'Istanza del Wallet</strong>: l'Utente esplora l'elenco degli Attestati Elettronici di Attributi forniti dalla Soluzione Wallet, seleziona quello di interesse e avvia il processo di richiesta, concludendo con il rilascio dell'Attestato Elettronico di Attributi nell'Istanza del Wallet. Questo percorso è disponibile per i tipi di credenziale idonei per la discovery pubblica come determinato dalle politiche dell'organismo di supervisione durante il processo di onboarding (vedere <a class="reference internal" href="registry.html#catalogo-delle-credenziali-digitali"><span class="std std-ref">Catalogo delle Credenziali Digitali</span></a>).</p></li>
 <li><p><strong>da un Touchpoint della Fonte Autentica</strong> (o del Fornitore di Attestati Elettronici di Attributi se coincide con la Fonte Autentica): l'Utente interagisce con il servizio digitale della Fonte Autentica, consentendogli di ottenere un Attestato Elettronico di Attributi specifico nella propria Istanza del Wallet tramite un Engagement Button.</p></li>
 </ul>
 <p>Nonostante le modalità di avvio della richiesta siano diverse, i flussi di ottenimento condividono una struttura e un processo simili.</p>
@@ -276,7 +276,7 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 <p><strong>Titolo:</strong> Hai già il documento fisico?
 <strong>Testo:</strong> Per ottenere la versione digitale del [Nome documento] devi aver già ottenuto il relativo documento fisico. Se vuoi avere maggiori dettagli, [leggi più informazioni] (URL).</p>
 </div>
-<p>Per approfondimenti si rimanda alla sezione <span class="xref std std-ref">registry:Catalogo degli Attestati Elettronici</span> (vedi claim <code class="docutils literal notranslate"><span class="pre">user_information</span></code>).</p>
+<p>Per approfondimenti si rimanda alla sezione <a class="reference internal" href="registry.html#catalogo-delle-credenziali-digitali"><span class="std std-ref">Catalogo delle Credenziali Digitali</span></a> (vedi claim <code class="docutils literal notranslate"><span class="pre">user_information</span></code>).</p>
 <p>Il Fornitore di Wallet DEVE permettere all'Utente di rimuovere un Attestato Elettronico di Attributi dalla sua Istanza del Wallet in ogni momento. In caso di assenza del dispositivo su cui è stata attivata l'Istanza del Wallet, il Fornitore di Wallet DEVE permettere all'Utente di disattivare l'intera Istanza del Wallet tramite un Touchpoint dedicato. Inoltre, i Fornitori di Attestati Elettronici di Attributi DOVREBBERO permettere all'Utente la revoca degli Attestati Elettronici ottenuti, tramite specifici Touchpoint. Per approfondimenti si rimanda alle sezioni <a class="reference internal" href="#disattivazione-dell-istanza-del-wallet"><span class="std std-ref">Disattivazione dell'Istanza del Wallet</span></a> e <a class="reference internal" href="#gestione-degli-attestati-elettronici"><span class="std std-ref">Gestione degli Attestati Elettronici</span></a>.</p>
 <p>In caso di problemi di comunicazione tra i sistemi del Fornitore di Attestati Elettronici di Attributi e della Fonte Autentica o in presenza di processi amministrativi o tecnici che non consentono di fornire immediatamente l'Attestato Elettronico di Attributi, gli attori coinvolti POSSONO gestire il flusso di ottenimento in modalità differita. In questo caso, il Fornitore di Wallet DEVE garantire che:</p>
 <ul class="simple">
@@ -448,7 +448,7 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 <p>I Verificatori di Attestati Elettronici, in ogni caso, DEVONO abilitare il processo di Autenticazione rendendo disponibili le seguenti pagine:</p>
 <ul class="simple">
 <li><p><strong>Discovery Page</strong>: ha l'obiettivo di mostrare all'Utente tutti i metodi di Autenticazione disponibili;</p></li>
-<li><p><strong>Selection Page</strong>: ha lo scopo di mostrare all’Utente tutte le Soluzioni Wallet presenti nel Registro e permettere di scegliere con quale continuare il processo di Autenticazione;</p></li>
+<li><p><strong>Selection Page</strong>: ha lo scopo di mostrare all’Utente tutte le Soluzioni Wallet presenti nel Registro del Sistema IT-Wallet e permettere di scegliere con quale continuare il processo di Autenticazione;</p></li>
 <li><p><strong>QR Code Page</strong> (<em>solo per modalità cross-device</em>): ha lo scopo di invitare l'Utente a inquadrare il codice QR;</p></li>
 <li><p><strong>Waiting Page</strong> (<em>solo per modalità cross-device</em>): ha lo scopo di invitare l'Utente a continuare il processo di Autenticazione sulla propria Istanza del Wallet;</p></li>
 <li><p><strong>Thank You Page</strong>: ha lo scopo di comunicare all'Utente l'avvenuta Autenticazione;</p></li>
@@ -479,6 +479,10 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 <p>Nel caso in cui invece l'Utente stia navigando la pagina del Verificatore di Attestati Elettronici dallo stesso Touchpoint su cui ha attivato l'Istanza del Wallet (modalità same-device) tale pagina DEVE condurre l'Utente all'apertura della propria Istanza del Wallet.</p>
 <p><strong>Selection Page</strong></p>
 <p>La Selection Page è la pagina su cui atterra l'Utente dopo che ha scelto di Autenticarsi tramite il Sistema IT-Wallet, e ha lo scopo di presentare all'Utente le Soluzioni Wallet disponibili per effettuare l’Autenticazione.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Questa sezione descrive come visualizzare la Selection Page come parte di un processo di Autenticazione. La stessa pagina DOVREBBE essere utilizzata anche dai Verificatori di Attestati Elettronici durante la presentazione e da terze parti che supportano il Credential Offer per abilitare l'opzione di selezione della Soluzione Wallet. Ulteriori dettagli sono forniti in <a class="reference internal" href="remote-flow.html#flusso-remoto"><span class="std std-ref">Flusso Remoto</span></a> e <a class="reference internal" href="credential-issuance-low-level.html#flusso-credential-offer"><span class="std std-ref">Flusso Credential Offer</span></a>.</p>
+</div>
 <p>Il Verificatore di Attestati Elettronici DEVE implementare la Selection Page resa disponibile nelle <a class="reference internal" href="official-resources.html#risorse-ufficiali"><span class="std std-ref">Risorse Ufficiali</span></a>.</p>
 <figure class="align-default" id="id101">
 <a class="reference internal image-reference" href="_images/selection-page.svg"><img alt="Selection Page" src="_images/selection-page.svg" style="width: 100%;" /></a>
@@ -490,11 +494,11 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 <ul class="simple">
 <li><p>DEVE includere gli elementi propri dell'Identità Visiva del Sistema IT-Wallet, tra cui il Logo affiancandolo al proprio logo secondo le indicazioni fornite nella sezione <a class="reference internal" href="brand-identity.html#identita-visiva"><span class="std std-ref">Identità Visiva</span></a>;</p></li>
 <li><p>DEVE assicurare che i copy presenti nella pagina rispecchino quelli riportati nelle <a class="reference internal" href="official-resources.html#risorse-ufficiali"><span class="std std-ref">Risorse Ufficiali</span></a>;</p></li>
-<li><p>DEVE presentare ogni Soluzione Wallet presente nel Registro attraverso un componente modulare che mostra il logo e il nome per esteso;</p></li>
-<li><p>DEVE presentare le Soluzioni Wallet in un layout dinamico che si adatta al numero di Soluzioni Wallet disponibili: quando inferiore a 3 DEVE distribuirle in una griglia a 2 colonne, quando inferiore a 2 DEVE utilizzare un layout ad una colonna centrale; in ogni caso DEVE essere garantito un ordinamento randomico;</p></li>
+<li><p>DEVE presentare ogni Soluzione Wallet presente nel Registro del Sistema IT-Wallet attraverso un componente modulare che mostra il logo e il nome per esteso recuperati come descritto in <a class="reference internal" href="wallet-metadata-retrieval.html#flusso-di-recupero-dei-wallet-metadata"><span class="std std-ref">Flusso di Recupero dei Wallet Metadata</span></a>;</p></li>
+<li><p>DEVE presentare le Soluzioni Wallet in un layout dinamico che si adatta al numero di Soluzioni Wallet disponibili: quando il numero di Solutioni Wallet è inferiore a 2, la Selection Page DEVE distribuire le Soluzioni Wallet all'interno di un layout ad una colonna centrale. Altrimenti, quando il numero di Soluzioni Wallet è pari o superiore a 3, la Selection Page DEVE distribuire le Soluzioni Wallet in una griglia a 2 colonne; in ogni caso DEVE essere garantito un ordinamento randomico;</p></li>
 <li><p>DEVE permettere all’Utente di cercare una Soluzione Wallet attraverso una funzionalità di filtro per nome, quando presenti più di 5 Soluzioni Wallet;</p></li>
-<li><p>DEVE permettere all'Utente di scoprire, in caso di necessità, quali sono le Soluzioni Wallet presenti nel Registro, predisponendo un rimando al sito ufficiale del Sistema IT-Wallet;</p></li>
-<li><p>DEVE includere una Call to Action che permetta all'Utente di interrompere l’operazione e tornare alla Discovery Page.</p></li>
+<li><p>DEVE permettere all'Utente di scoprire, in caso di necessità, quali sono le Soluzioni Wallet presenti nel Registro del Sistema IT-Wallet, predisponendo un rimando al sito ufficiale del Sistema IT-Wallet;</p></li>
+<li><p>DEVE includere una Call to Action che permetta all'Utente di interrompere l’operazione e tornare alla pagina precedente (ad esempio la Discovery Page nel caso di un processo di Autenticazione).</p></li>
 </ul>
 <p>Il Verificatore di Attestati Elettronici PUÒ inserire un componente testuale per promuovere la modalità di Autenticazione tramite IT-Wallet, che rimandi al sito ufficiale del Sistema, come rappresentato nelle <a class="reference internal" href="official-resources.html#risorse-ufficiali"><span class="std std-ref">Risorse Ufficiali</span></a>.</p>
 <p><strong>QR Code Page (*solo per modalità cross-device*)</strong></p>
@@ -1042,7 +1046,7 @@ Di seguito un esempio non normativo di Authentication Button. I riferimenti corr
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 16/12/2025.
+      Ultimo aggiornamento 17/12/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

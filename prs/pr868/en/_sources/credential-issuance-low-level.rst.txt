@@ -228,6 +228,7 @@ The ``OAuth-Client-Attestation`` is signed using the private key bound to the Wa
    2. It MUST ensure the Authorization ``code`` is valid and has not been previously used (:rfc:`6749`).
    3. It MUST ensure the ``redirect_uri`` matches the value included in the previous Request Object (see Section 3.1.3.1. of [`OIDC`_]).
    4. It MUST validate the DPoP Proof JWT, according to (:rfc:`9449`) Section 4.3.
+   5. It MUST verify the ``code_verifier`` parameter according to the PKCE mechanism, ensuring it matches the ``code_challenge`` associated with the authorization code as defined in Section 4.6 of :rfc:`7636`; otherwise, the request MUST be rejected (:ref:`CI_061a <credential-issuer-test-matrix>`).
 
 .. code-block:: http
 
@@ -641,12 +642,14 @@ Credential Offer Flow
 
 A Credential Issuer or third party (e.g., Authentic Source, Registry, Catalogue) initiates Credential Issuance by sending a Credential Offer to the Wallet Instance.
 
-The Wallet Instance invocation mechanism depends on the availability of the ``credential_offer_endpoint`` parameter in the Wallet metadata:
+To invoke the correct Wallet Instance, they need to know which Wallet Instance is installed on the User's device and the User wishes to use. This information SHOULD be obtained using the Selection Page described in :ref:`functionalities:User Experience Design`. 
 
-- If ``credential_offer_endpoint`` is available and contains an HTTPS URL (Universal Link), the Credential Issuer or third party SHOULD use that endpoint.
-- Otherwise, the Credential Issuer or third party MUST use one of the custom URL schemes: ``openid-credential-offer://`` (as defined in Section 4 of [`OpenID4VCI`_]) or ``haip://`` (as defined in Section 5.1.1 of [`OPENID4VC-HAIP`_]).
+- If the Selection Page is supported, the User selects the Wallet, and then the Credential Issuer or third party retrieves the Wallet metadata as described in :ref:`wallet-metadata-retrieval:Wallet Metadata Retrieval Flow`. The Wallet Instance invocation mechanism depends on the ``credential_offer_endpoint`` parameter in the Wallet metadata:
+  
+  - If ``credential_offer_endpoint`` is available and contains an HTTPS URL (Universal Link), the Credential Issuer or third party SHOULD use that endpoint.
+  - Otherwise, the Credential Issuer or third party MUST use one of the custom URL schemes: ``openid-credential-offer://`` (as defined in Section 4 of [`OpenID4VCI`_]) or ``haip-vci://`` (as defined in Section 4.2 of [`OPENID4VC-HAIP`_]). The Wallet Instance MUST support both custom URL schemes.
 
-The Wallet Instance MUST support both custom URL schemes.
+- In the case when the the Credential Issuer or third party does not support the Selection Page, or the retrieval of the Wallet metadata may fail for some reason, the the Credential Issuer or third party invokes the Wallet Instance using the custom URL scheme described above.
 
 The Credential Offer can be transmitted by value or by reference:
 

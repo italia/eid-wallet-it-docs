@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>7. Infrastruttura di Registro &#8212; IT-Wallet Technical Documentation - PR #868</title>
+    <title>7. Infrastruttura di Registro &#8212; IT-Wallet Technical Specifications - PR #868</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -33,7 +33,7 @@
         <p id="toggle_sidebar">
             <a href="#" title="Toggle sidebar">|||</a>
         </p>
-        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Documentation - PR #868</a></h1>
+        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Specifications - PR #868</a></h1>
             <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
     
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
@@ -168,7 +168,7 @@
 <p>L'architettura di registro affronta la standardizzazione semantica, la gestione della fiducia federata e i requisiti di scoperta delle credenziali attraverso componenti di registro specializzati che assicurano interoperabilità e conformità attraverso l'ecosistema.</p>
 <section id="panoramica-dell-architettura-di-registro">
 <h2><span class="section-number">7.1. </span>Panoramica dell'Architettura di Registro<a class="headerlink" href="#panoramica-dell-architettura-di-registro" title="Link to this heading">¶</a></h2>
-<p>Il sistema di registro IT-Wallet comprende sei componenti principali:</p>
+<p>Il Registro del Sistema IT-Wallet comprende sei componenti principali:</p>
 <ol class="arabic simple">
 <li><p><strong>Registro dei Claims</strong>: Definizioni semantiche standardizzate per attributi individuali delle credenziali, tipi di dati e regole di validazione.</p></li>
 <li><p><strong>Registro delle Fonti Autentiche (AS)</strong>: Catalogo dei fornitori di dati registrati con le loro capacità dichiarate e claims disponibili.</p></li>
@@ -187,7 +187,7 @@
 <li><p><strong>Content-Type Predefinito</strong>: <code class="docutils literal notranslate"><span class="pre">application/jwt</span></code> (JWT firmato che garantisce autenticità e integrità)</p></li>
 <li><p><strong>Content-Type Alternativo</strong>: <code class="docutils literal notranslate"><span class="pre">application/json</span></code> (JSON semplice per scopi di sviluppo/debug)</p></li>
 </ul>
-<p>Inoltre, il sistema di registro IT-Wallet DEVE usare due pattern di accesso distinti:</p>
+<p>Inoltre, il Registro del Sistema IT-Wallet DEVE usare due pattern di accesso distinti:</p>
 <ul class="simple">
 <li><p><strong>API di Registro Dati</strong>: DEVONO supportare capacità di paginazione e filtraggio.</p></li>
 <li><p><strong>Infrastruttura di Fiducia della Federazione</strong>: come definito in <a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>.</p></li>
@@ -1035,7 +1035,7 @@ Content-Type: application/json
 <p>Il <strong>Registro di Federazione</strong> fornisce l'infrastruttura di fiducia crittografica per tutti i partecipanti dell'ecosistema IT-Wallet. Il Registro di Federazione mantiene l'elenco autorevole delle entità fidate e il loro stato operativo usando endpoint specifici della federazione come definito in <span class="xref std std-ref">trust-infrastructure:Federation API endpoints</span>.</p>
 <section id="ruolo-di-integrazione-del-registro">
 <h3><span class="section-number">7.5.1. </span>Ruolo di Integrazione del Registro<a class="headerlink" href="#ruolo-di-integrazione-del-registro" title="Link to this heading">¶</a></h3>
-<p>All'interno dell'architettura di registro IT-Wallet, il Registro di Federazione serve come <strong>livello di validazione della fiducia</strong> per:</p>
+<p>All'interno dell'architettura del Registro del Sistema IT-Wallet, il Registro di Federazione serve come <strong>livello di validazione della fiducia</strong> per:</p>
 <ol class="arabic simple">
 <li><p><strong>Autenticazione delle Entità</strong>: Valida l'identità crittografica di tutti i partecipanti prima delle operazioni di registro</p></li>
 <li><p><strong>Verifica della Catena di Fiducia</strong>: Fornisce la fondazione crittografica per la validazione delle entità Emittenti di Credenziali, Relying Parties e Fornitori di Wallet</p></li>
@@ -1323,9 +1323,6 @@ Content-Type: application/json
 <tr class="row-odd"><td><p><strong>credentials</strong></p></td>
 <td><p>RICHIESTO. Array contenente definizioni di Credenziali Digitali.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>wallet_app_attestations</strong></p></td>
-<td><p>RICHIESTO. Un Array JSON contenente definizioni per le Attestazioni dell'App Wallet, inclusi i loro formati supportati e i claims associati. Questo Oggetto è usato da altre entità, come Emittenti e Relying Parties, per recuperare informazioni sui formati di Attestazione dell'App Wallet supportati all'interno dell'ecosistema.</p></td>
-</tr>
 </tbody>
 </table>
 <p>Ogni elemento dell'array <code class="docutils literal notranslate"><span class="pre">credentials</span></code> contiene almeno le seguenti informazioni:</p>
@@ -1420,39 +1417,6 @@ Content-Type: application/json
 <p class="admonition-title">Nota</p>
 <p>L'unione di <code class="docutils literal notranslate"><span class="pre">credential_type</span></code> e <code class="docutils literal notranslate"><span class="pre">version</span></code> DEVE essere univoca nel Catalogo delle Credenziali.</p>
 </div>
-<p>L'Oggetto <code class="docutils literal notranslate"><span class="pre">wallet_app_attestations</span></code> è un Array contenente almeno le seguenti informazioni per ciascuna voce:</p>
-<table class="longtable docutils align-default" id="id8">
-<caption><span class="caption-number">Tabella 7.7 </span><span class="caption-text">Campi delle Attestazioni dell'App Wallet</span><a class="headerlink" href="#id8" title="Link to this table">¶</a></caption>
-<colgroup>
-<col style="width: 30.0%" />
-<col style="width: 70.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Nome del Campo</strong></p></th>
-<th class="head"><p><strong>Descrizione</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>version</strong></p></td>
-<td><p>RICHIESTO. Versione della definizione dell'Attestazione dell'App Wallet.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>credential_type</strong></p></td>
-<td><p>RICHIESTO. Identificatore univoco dell'Attestazione dell'App Wallet. DEVE essere impostato a <code class="docutils literal notranslate"><span class="pre">wallet_app_attestation</span></code>.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>formats</strong></p></td>
-<td><p>RICHIESTO. Array di formati supportati per l'Attestazione dell'App Wallet, inclusi:</p>
-<ul class="simple">
-<li><p><strong>format</strong>: Tipo di formato (es., <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code>, <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code> o <code class="docutils literal notranslate"><span class="pre">oauth-client-attestation+jwt</span></code>)</p></li>
-<li><p><strong>configuration_id</strong>: Identificatore di configurazione dell'Attestazione dell'App Wallet. Questo è formato concatenando la stringa <code class="docutils literal notranslate"><span class="pre">wa</span></code> al <code class="docutils literal notranslate"><span class="pre">format</span></code> (es., <code class="docutils literal notranslate"><span class="pre">dc_sd_jwt_wa</span></code>, <code class="docutils literal notranslate"><span class="pre">mso_mdoc_wa</span></code>, o <code class="docutils literal notranslate"><span class="pre">jwt_wa</span></code>), ed è usato per fare riferimento in modo univoco alla configurazione del formato dell'Attestazione dell'App Wallet.</p></li>
-<li><p><strong>vct</strong>: CONDIZIONALE. È RICHIESTO se il <code class="docutils literal notranslate"><span class="pre">format</span></code> è <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code>, indicando il Tipo di Credenziale Verificabile (es., <code class="docutils literal notranslate"><span class="pre">urn:eudi:mDL:it:1</span></code>).</p></li>
-<li><p><strong>docType</strong>: CONDIZIONALE. È presente solo se il <code class="docutils literal notranslate"><span class="pre">format</span></code> è <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code>. È una stringa della forma <code class="docutils literal notranslate"><span class="pre">{Trust</span> <span class="pre">Anchor</span> <span class="pre">reverse</span> <span class="pre">domain}.{credential_type}</span></code> (es., <code class="docutils literal notranslate"><span class="pre">it.wallet.trust-registry.wallet_app_attestation</span></code>).</p></li>
-<li><p><strong>schema_uri</strong>: URI che punta al documento di specifica del formato.</p></li>
-<li><p><strong>schema_uri#integrity</strong>: Digest crittografico del documento di specifica del formato per la verifica dell'integrità. DEVE essere una stringa della forma <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code>, dove <code class="docutils literal notranslate"><span class="pre">{digest_method}</span></code> è l'algoritmo di digest usato (es., <code class="docutils literal notranslate"><span class="pre">sha-256</span></code>) e <code class="docutils literal notranslate"><span class="pre">{digest_value}</span></code> è il valore del digest codificato in base64url.</p></li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
 <p>L'esempio corrispondente del Catalogo delle Credenziali Digitali decodificato in JSON sia per l'header che per il payload è il seguente:</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="s2">&quot;JOSE&quot;</span><span class="p">,</span>
@@ -1543,34 +1507,7 @@ Content-Type: application/json
 <span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://motorizzazione.gov.example&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;dataset_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;38832801&quot;</span>
 <span class="w">        </span><span class="p">}]</span>
-<span class="w">    </span><span class="p">}],</span>
-<span class="w">    </span><span class="nt">&quot;wallet_app_attestations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
-<span class="w">        </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;credential_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wallet_app_attestation&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;formats&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc+sd-jwt&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;configuration_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc_sd_jwt_wa&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:eudi:wallet_app_attestation:it:1&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;schema_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/.well-known/schemas/sd-jwt/wallet_app_attestation&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;schema_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256-Lxn6dNpkPdoeoRgO5+n0jNhJZ8MbKfXfP195+dNR0dc=&quot;</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mso_mdoc&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;configuration_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mso_mdoc_wa&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;docType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it.wallet.trust-registry.wallet_app_attestation&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;schema_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/.well-known/schemas/mdoc/wallet_app_attestation&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;schema_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256-GcqnMfzyCw+0UTz9EI6JO0oUTD0WS3p+hQ2E7VfjTLA=&quot;</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;oauth-client-attestation+jwt&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;configuration_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jwt_wa&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;schema_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/.well-known/schemas/jwt/wallet_app_attestation&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;schema_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256-2s9AJsZwjuAZ4D4EAl3qDJGvy92sThQkX6W9zDF2Sgg=&quot;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">]</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1856,8 +1793,8 @@ Content-Type: application/json
 </ol>
 <p><strong>Struttura e Accesso al Registro degli Schema:</strong></p>
 <p>Il Registro degli Schema è accessibile tramite l'endpoint di scoperta <code class="docutils literal notranslate"><span class="pre">.well-known/it-wallet-registry</span></code> sotto il campo <cite>schema_registry</cite>. Permette la scoperta di URI degli schema e i loro controlli di integrità crittografica.</p>
-<table class="longtable docutils align-default" id="id9">
-<caption><span class="caption-number">Tabella 7.8 </span><span class="caption-text">Campi di Primo Livello del Registro degli Schema</span><a class="headerlink" href="#id9" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id8">
+<caption><span class="caption-number">Tabella 7.7 </span><span class="caption-text">Campi di Primo Livello del Registro degli Schema</span><a class="headerlink" href="#id8" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 30.0%" />
 <col style="width: 70.0%" />
@@ -1879,8 +1816,8 @@ Content-Type: application/json
 </tr>
 </tbody>
 </table>
-<table class="docutils align-default" id="id10">
-<caption><span class="caption-number">Tabella 7.9 </span><span class="caption-text">Parametri della Definizione dello Schema</span><a class="headerlink" href="#id10" title="Link to this table">¶</a></caption>
+<table class="docutils align-default" id="id9">
+<caption><span class="caption-number">Tabella 7.8 </span><span class="caption-text">Parametri della Definizione dello Schema</span><a class="headerlink" href="#id9" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25.0%" />
 <col style="width: 75.0%" />
@@ -2133,7 +2070,7 @@ I principali Percorsi di utilizzo illustrano di seguito le interazioni con l'Inf
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 16/12/2025.
+      Ultimo aggiornamento 17/12/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

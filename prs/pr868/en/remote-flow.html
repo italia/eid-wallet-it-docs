@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>12.2.1. Remote Flow &#8212; IT-Wallet Technical Documentation - PR #868</title>
+    <title>12.2.1. Remote Flow &#8212; IT-Wallet Technical Specifications - PR #868</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -32,7 +32,7 @@
         <p id="toggle_sidebar">
             <a href="#" title="Toggle sidebar">|||</a>
         </p>
-        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Documentation - PR #868</a></h1>
+        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Specifications - PR #868</a></h1>
             <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
     
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
@@ -148,6 +148,7 @@
 <li class="toctree-l3"><a class="reference internal" href="proximity-flow.html">12.2.2. Proximity Flow</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-metadata-retrieval.html">12.3. Wallet Metadata Retrieval Flow</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="endpoints.html">13. Endpoints</a></li>
@@ -174,9 +175,19 @@
 <p>Depending on whether the User is using a mobile device or a workstation, the Relying Party MUST support the following remote flows (<a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">RPR-84</span></a>):</p>
 <ul class="simple">
 <li><p><strong>Same Device</strong>, the Relying Party MUST provide an <code class="docutils literal notranslate"><span class="pre">HTTP</span></code> location to the Wallet Instance using a redirect (<code class="docutils literal notranslate"><span class="pre">302</span></code>) or an HTML href in a web page (<a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">RPR-01</span></a>);</p></li>
-<li><p><strong>Cross Device</strong>, the Relying Party MUST provide a <code class="docutils literal notranslate"><span class="pre">QR</span> <span class="pre">Code</span></code> which the User frames with the Wallet Instance (<a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">RPR-03</span></a>).</p></li>
+<li><p><strong>Cross Device</strong>, the Relying Party MUST provide a <code class="docutils literal notranslate"><span class="pre">QR</span> <span class="pre">Code</span></code> which the User frames with the device camera or with the Wallet Instance (<a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">RPR-03</span></a>).</p></li>
 </ul>
-<p>Once the Wallet Instance establishes the trust with the Relying Party and evaluates the request, the User gives the consent for the disclosure of the Digital Credentials, in the form of a Verifiable Presentation.</p>
+<p>To invoke the correct Wallet Instance, the Relying Party SHOULD trigger the Wallet Instance installed on the User's device the User wishes to use. This information SHOULD be provided by the User using the Selection Page described in <a class="reference internal" href="functionalities.html#user-experience-design"><span class="std std-ref">User Experience Design</span></a>.</p>
+<ul class="simple">
+<li><p>If the Selection Page is supported, the User selects the Wallet, and then the Relying Party retrieves the Wallet metadata as described in <a class="reference internal" href="wallet-metadata-retrieval.html#wallet-metadata-retrieval-flow"><span class="std std-ref">Wallet Metadata Retrieval Flow</span></a>. The content of the HTML href or QR Code depends on the <code class="docutils literal notranslate"><span class="pre">authorization_endpoint</span></code> parameter in the Wallet metadata:</p>
+<ul>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">authorization_endpoint</span></code> is available and contains an HTTPS URL (Universal Link), the Relying Party SHOULD use that endpoint.</p></li>
+<li><p>Otherwise, the Relying Party MUST use one of the custom URL schemes: <code class="docutils literal notranslate"><span class="pre">openid4vp://</span></code> (as defined in Section 13.1.2 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>]) or <code class="docutils literal notranslate"><span class="pre">haip-vp://</span></code> (as defined in Section 5.1 of [<a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-06.html">OPENID4VC-HAIP</a>]). The Wallet Instance MUST support both custom URL schemes.</p></li>
+</ul>
+</li>
+<li><p>In the case when the Relying Party does not support the Selection Page, or the retrieval of the Wallet metadata may fail for some reason, the Relying Party invokes the Wallet Instance using the custom URL scheme described above.</p></li>
+</ul>
+<p>After the Wallet Instance invocation, the Wallet Instance establishes the trust with the Relying Party and evaluates the request. If valid, it will ask Users to give their consent for the disclosure of the Digital Credentials, in the form of a Verifiable Presentation.</p>
 <figure class="align-default" id="id2">
 <span id="fig-high-level-flow-presentation"></span><p class="plantuml">
 <object data="_images/plantuml-a7dbd1fd229ac774842a44a4a8ec50d5a194af6a.svg" type="image/svg+xml" style="width:99%">
@@ -216,20 +227,20 @@
 </ol>
 </div></blockquote>
 <ol class="arabic simple" start="5">
-<li><p><em>POST Authorization Response</em>: the Wallet Instance presents the requested information to the Relying Party, along with the Wallet Attestation if requested.</p></li>
-<li><p><em>RP Checks</em>: The Relying Party validates the presented Credentials by verifying the trust with their Issuers and checks the Wallet Attestation to ensure the Wallet Provider is trusted.</p></li>
+<li><p><em>POST Authorization Response</em>: the Wallet Instance presents the requested information to the Relying Party.</p></li>
+<li><p><em>RP Checks</em>: The Relying Party validates the presented Credentials by verifying the trust with their Issuers and checks the respective validity status.</p></li>
 <li><p><em>Relying Party Response</em>: the Wallet Instance informs the User about the successful authentication with the Relying Party, and the User continues the navigation.</p></li>
 </ol>
 </div></blockquote>
 <p>Below is a sequence diagram that details the interactions between all the involved parties.</p>
 <figure class="align-default" id="id3">
 <p class="plantuml">
-<object data="_images/plantuml-fb7abf64b17437432b57e424e1f9c8951f4f530c.svg" type="image/svg+xml" style="width:99%">
-<a href="_images/plantuml-fb7abf64b17437432b57e424e1f9c8951f4f530c.png"><img src="_images/plantuml-fb7abf64b17437432b57e424e1f9c8951f4f530c.png" alt="The figure illustrates the Remote Protocol Flow." style="width: 99.0%"/></a>
+<object data="_images/plantuml-cbacc3672c6c707b149e910099e3f6afad2308d9.svg" type="image/svg+xml" style="width:99%">
+<a href="_images/plantuml-cbacc3672c6c707b149e910099e3f6afad2308d9.png"><img src="_images/plantuml-cbacc3672c6c707b149e910099e3f6afad2308d9.png" alt="The figure illustrates the Remote Protocol Flow." style="width: 99.0%"/></a>
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 12.12 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/fLPDRzj64xxlhnZeFRmsKBj9ZmPSn55TsqbQgvOINmmOg-L8sfhQPVU3YbhaltU68rAab1O1ofl8cMUUUUPZz2Oc7L9Ubqhdv5rUpp4efQvCyW567oE64UW8MQcv_oml_X_X9wojmJY2_tsmorLwMsPK5U5OOolj4emUTLbYWZj7yCvWWx4PccI2EjDBT4aYQ8Mk08go2_M0vTQw9Kp8QVkFaOPcJ-xa_Ygd5OnBIy2d3N9zu46KKev0qIflTz4ZTj7fqIRPMYUaj3ES_KZSBk0Hvp35m7c3qxLTwcIzwvbgLM3VKRDdZHVmW7zaZ0acmISq2Gjw4tqE1fMwlAJN68bh0mUJbOu8bvSTBhEliOKYFIk2WBrsaBOLFhdaeK161nDyZFIZ8Ue3HBr6-Ib0aiqghKke204sbkJwxM7iYyPy5N01nXCVwrZMj4B8eGH9hgEaTldb2vYk_8RDMX16PIHJMlF27mHpdbFoRg2HtcUvKMePVAvWJFJR_WBlogtQS9mDnJ7QKGpW85minRMHJn-yqILmRuBE5D4bQwGydVTrhSlCaLB8CKdMpCqqZV9i2KwN2UoYAzVz_7VMSxu5eey17Ga8zEpCWfWzvs2VrvXMlW3BVRJ3djnFPmhasRJbemweRO6mcmvoquLE6f9dBdt8hZjRZBxu84_R5ltaLXruGkCios9qfUUsjCbYP5Si8tv30ZVNCwwYymagwT2ZT5gbE6gqIuT52mfUn5i4l_xNr9ewIYvIonPeM0Kb1J_emUFY3fO1_DBggrq1bQT-j1WxfqyOx6BRnDCf1mI_w38v9j1vwT8IPfSHMNwQdCHJCSXxKHO-y1onS0VxH836tYriM6CnN1kTkDn0mBlC1_kdB0TQ6nKZmfEJ6jNLS_8lwBw3cCZzU6aSTOTaRVMynE7YQN1wJfBdiAMkKi8ezkV4GNxs3Dh-3iJFHk2bsuhwCzBhnfE-KJd4QtWas8VRBM1DP8hp7fjTg74W69UiBk4knem1PZpD0hcd_Evn1jEsh3qKecSmHfdx3agfG54HV8s1pEZGtDtSpcuUhgz_LL_tk51m1kCLqdgxzIKb1kzn2s-jAxZtc0hv-GNdFl4n4W0hd2D_1GNGm5LvJWq9B-GvzvbyhEFt_HoJXrgQjAdSH8fqhZZyzUSKj17r2njDwICMe5CATfuJneQ6OOuywoHqDuQM0e2CHK3GjRObjyCvZrYZXEf9zh5gcq3MQvlCYV7-nIBavdjngjhzFTLhtArlwL6AHX5DC_fgF-Qtizda-zVdh-67Lw_W_ZsLyAzHttJ4DofLaOzF2oJT_spuodpP3PmcZb48zjq7TvaI-_fv2KTqVKxVoBW_jfk3pIItCP9-y8u4dffWgoJLk3YuK3AvFD4d7A1TAvAoY7owJoQYYa8ew_-iuPV1GYLe4MhmpqN0sWDLTVzWWlo3ELevBRN9iUNmz1yezeP2vtNvDm00">Remote Protocol Flow.</a></span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 12.12 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/fLPDRnit4BtpLmpKGssWIPCU3RX8eXgnaxHMBIM-630exaXYJP5RSYX5BVBVEuFHhZwK5W6gcxGpxyrxyx5wLSXcgijWRAKKwtAAsHZpsb7ACFXOC0_05gZ6JDDd_U7x0h_WoZii0_ZkWvylw4seQ5h6ySwtDX8Cxcq8I70J6Juw50nO7uPKXdfcvnX96Qp1s02pRAdkC6nydCE8apR_pdGGzX3FRbzNMi0mU0O-5sHO7MLmILGBC5kR_9QzOC_E7-l8homXowxmx6UezWBkSGfZpA8RebtvkIMVubweDGtk9rh9NE45tE6V5Gl1A2T2HzZmBoNLxD2Ooql-6Gj6iW87euKj29UNFQvKly8EYlri6G9stW5jMdo8bA11GGUNKodyHGg5bA7O9UfN1L8r2re6Q1a1rfxj-lrkc1e9XqN66RZ4zVWejj82eUO0lJWjoMprrGiOBz9QmZeGGHKa5xnxaWUAEQr4AHvuP7SgryRCSwej3BdyRhuWnR0nQ-5PCu-paJb0IAHPHdgZZpuaPmF8R8Ajp1Z9EsrFdtsrig4A4-LQI5Lpf5J9uO-UuMmWyBE-NRVJFyJFwGQuVCmOsK3WppOiQzXZpVvnYRH83NYPeotsw7OyCQ2VTTS-de2LRn2ssy5fjh5aWPBKiW_PJsU7iMy-w6St5ZjnYnwSq4KljZZRsgaFdZmMISLGy1i4lBsQI1TZ8cXrGa_aT4u9Q_7pY4q72adDc-Mq_4zfA7rKBThB3kYm2qORVZI3fyqzE0RmQ-UlZGsqANWd5dH9dp3xsGQ4prBD26dMAJajO9TbWsVCNX57VXgTbNCDg3jJPYdB7ebnH_T4WOOfpdnUOdDuDdfpPO10RbdA_Yyz3dmsMa64XwWzMhMFb9um_W1oq_3aQ9nEXwhsTXhmyF2GuEmblIOI5SECZQoJ3N1JIiKC4zcVXoYUxinuTp-1SMUaedG3xx0KtRGUofWS4sUb5MOEuzD-y_PwylRkwkety_MC2mFFOBX0FYZNAJISzXutyCR7HhejfN1UcaaBHwaK1X1DjSXJaFaIkBPEWtVmn9dJL3d7H_bzNoCbhaV6GhqQgItFZT1VVQPidKvxuuiBgM03bYZxQIKi86KugL6souRG3xvd0j11p0XsPNsG1ZoNeHOdqEnPzh5jjhtIWzQ9ENCfFNc4Ai-nEJVTnHpBWTU3gLF1RCpeI9RDx1RhUZ8P_VZo-KluwSKBk7tFBVnxi1ywaBS2jKNEVGUay_RevAv_sOwuvHgB5dZ0j7VNHTZN3te-AJTL-iQAznTbVNGBz6rKs3zunmQFNVOjQJSkZju9kYkoGsT2q2soIbQJptTY2fgY1LNxlptyeYTi1wr67VnNKB3kbT3s_nco_cSuMVAkjD5fvD7Bzj2nLqnTb-4V">Remote Protocol Flow.</a></span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>The details of each step shown in the previous picture are described below.</p>
@@ -354,13 +365,6 @@ eyJhbGciOiJFUzI1NiIs...9t2LQ
 <span class="w">          </span><span class="p">{</span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;family_name&quot;</span><span class="p">]},</span>
 <span class="w">          </span><span class="p">{</span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;personal_administrative_number&quot;</span><span class="p">]}</span>
 <span class="w">        </span><span class="p">]</span>
-<span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wallet attestation&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc+sd-jwt&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;vct_values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;urn:eudi:wallet_attestation:it:1&quot;</span><span class="p">]</span>
-<span class="w">        </span><span class="p">}</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="w">  </span><span class="p">},</span>
@@ -391,15 +395,14 @@ eyJhbGciOiJFUzI1NiIs...9t2LQ
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;state&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3be39b69-6ac1-41aa-921b-3e6c07ddcb03&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;vp_token&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;personal id data&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJhbGciOiJFUzI1NiIs...PT0iXX0&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;wallet attestation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJhbGciOiJFUzI1NiIs...NTi0XG&quot;</span>
+<span class="w">    </span><span class="nt">&quot;personal id data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;eyJhbGciOiJFUzI1NiIs...PT0iXX0&quot;</span><span class="p">]</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div></blockquote>
-<p><strong>Steps 19-23 (RP Checks)</strong>: The Relying Party verifies the Authorization Response, extracts the Wallet Attestation to establish trust with the Wallet Solution. It then extracts the <code class="docutils literal notranslate"><span class="pre">vp_token</span></code>, which contains one or more Digital Credentials presentations, and validates the overall format of the VP Token. For each credential presentation, the Relying Party verifies its integrity according to the DCQL query criteria defined in the Authorization Request. The Relying Party MUST also attest trust with the corresponding Credentials Issuer, and validate the Wallet Instance's proof of possession of each presented Digital Credential. Finally, the Relying Party verifies the revocation status of each presented Digital Credential, as described in <a class="reference internal" href="credential-revocation.html#digital-credential-revocation-and-suspension"><span class="std std-ref">Digital Credential Revocation and Suspension</span></a>. If all previous verifications yelded positive result, the Relying Party updates the User session.</p>
-<p><strong>Steps 24-25 or 26 (Relying Party Response)</strong>: The Relying Party provides to the Wallet Instance the response about the presentation, which informs the User.</p>
+<p><strong>Steps 19-22 (RP Checks)</strong>: The Relying Party verifies the Authorization Response, extracts the <code class="docutils literal notranslate"><span class="pre">vp_token</span></code>, which contains one or more Digital Credentials presentations, and validates the overall format of the VP Token. For each credential presentation, the Relying Party verifies its integrity according to the DCQL query criteria defined in the Authorization Request. The Relying Party MUST also attest trust with the corresponding Credentials Issuer, and validate the Wallet Instance's proof of possession of each presented Digital Credential. Finally, the Relying Party verifies the revocation status of each presented Digital Credential, as described in <a class="reference internal" href="credential-revocation.html#digital-credential-revocation-and-suspension"><span class="std std-ref">Digital Credential Revocation and Suspension</span></a>. If all previous verifications yielded positive result, the Relying Party updates the User session.</p>
+<p><strong>Steps 23-24 or 25 (Relying Party Response)</strong>: The Relying Party provides to the Wallet Instance the response about the presentation, which informs the User.</p>
 <blockquote>
 <div><p>Upon receiving and validating the Authorization Response at the Response Endpoint, the Relying Party returns to the Wallet Instance a HTTP 200 OK. In particular, in the Same Device Flow, the Relying Party SHOULD also pass the <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> to the Wallet Instance. Upon receiving the <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>, the Wallet Instance MUST perform a redirect to the URL specified by the <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>. This redirect allows the Relying Party to seamlessly resume interaction with the User on the device which initiated the flow. When the response does not contain the <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> parameter, the Wallet Instance is not required to perform any further step. The User should manually close the Wallet Instance and open the user-agent to continue the flow (<a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">RPR-83</span></a>).</p>
 <p>The following is a non-normative example of the response in the Same Device Flow.</p>
@@ -412,7 +415,7 @@ eyJhbGciOiJFUzI1NiIs...9t2LQ
 <span class="p">}</span>
 </pre></div>
 </div>
-<p><strong>Steps 27-28</strong>: The JavaScript page is inspecting the status endpoint.</p>
+<p><strong>Steps 26-27</strong>: The JavaScript page is inspecting the status endpoint.</p>
 <blockquote>
 <div><p>Below is a non-normative example of the HTTP Request to the status endpoint, where the parameter <code class="docutils literal notranslate"><span class="pre">id</span></code> contains an opaque and random value:</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/session-state?id=3be39b69-6ac1-41aa-921b-3e6c07ddcb03</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
@@ -430,7 +433,7 @@ The following is a non-normative example of the response with the <code class="d
 </pre></div>
 </div>
 </div></blockquote>
-<p><strong>Steps 29-30</strong>: The user-agent is redirected to the redirect URI to continue the navigation with the protected resource made available to the User (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_094</span></a>).</p>
+<p><strong>Steps 28-29</strong>: The user-agent is redirected to the redirect URI to continue the navigation with the protected resource made available to the User (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_094</span></a>).</p>
 <section id="authorization-request">
 <h2><span class="section-number">12.2.1.1. </span>Authorization Request<a class="headerlink" href="#authorization-request" title="Link to this heading">¶</a></h2>
 <p>The URL parameters contained in the Relying Party Authorization Request are described in the table below.</p>
@@ -552,7 +555,7 @@ When present, the Relying Party MUST evaluate it (<a class="reference internal" 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>For the <code class="docutils literal notranslate"><span class="pre">authorization_endpoint</span></code> the use of universal links are preferred over custom url-schemes because, when properly configured using Assetlinks JSON for Android and Apple App Site Association for iOS, they provide enhanced security by reducing the risk of URL hijacking.
-Furthermore, universal links offer fallback mechanisms, allowing the flow to continue seamlessly in a browser even if the Wallet Instance is not installed, ensuring a smoother User experience. To ensure interoperability, support custom url-schemes is also RECOMMENDED according to OpenID4VC High Assurance Interoperability Profile (HAIP) <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-01.html">OPENID4VC-HAIP</a>, and in particular using the custom url <code class="docutils literal notranslate"><span class="pre">haip://</span></code>.</p>
+Furthermore, universal links offer fallback mechanisms, allowing the flow to continue seamlessly in a browser even if the Wallet Instance is not installed, ensuring a smoother User experience. To ensure interoperability, support custom url-schemes is also RECOMMENDED according to OpenID4VC High Assurance Interoperability Profile (HAIP) <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-06.html">OPENID4VC-HAIP</a>, and in particular using the custom url <code class="docutils literal notranslate"><span class="pre">haip://</span></code>.</p>
 </div>
 </section>
 <section id="request-uri-response">
@@ -630,7 +633,7 @@ Furthermore, universal links offer fallback mechanisms, allowing the flow to con
 <td><p>REQUIRED. Key ID of the public key needed to verify the JWT signature, as defined in [<span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>trust_chain</strong></p></td>
-<td><p>OPTIONAL. It is a sequence of Entity Statements that composes the Trust Chain related to the Relying Party, as defined in <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Section 4.3 <em>Trust Chain Header Parameter</em>.</p></td>
+<td><p>OPTIONAL. It is a sequence of Entity Statements that composes the Trust Chain related to the Relying Party, as defined in <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Section 4.3 <em>Trust Chain Header Parameter</em>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>x5c</strong></p></td>
 <td><p>REQUIRED. Contains the X.509 certificate chain about the Relying Party, excluding the Trust Anchor certificate, used to verify the JWT signature with the public key in the Relying Party’s certificate as defined in <span class="target" id="index-8"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>. The Relying Party’s certificate in <code class="docutils literal notranslate"><span class="pre">x5c</span></code> asserts the Relying Party identity information along with the network endpoints used in the presentation flow, including the endpoints Authorization Request and Response endpoints (<code class="docutils literal notranslate"><span class="pre">response_uri</span></code> and <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>). All the endpoints used in the presentation flow by a Relying Party MUST be bound to the FQDN and any further webpath provided in the Relying Party’s certificate, in the form of URI-type SAN for full-URI matching, or a DNSName SAN for host-name matching.</p></td>
@@ -639,7 +642,7 @@ Furthermore, universal links offer fallback mechanisms, allowing the flow to con
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">x5c</span></code> header MUST NOT include the root certificate, as required by <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-01.html">OPENID4VC-HAIP</a>. The <code class="docutils literal notranslate"><span class="pre">x5c</span></code> certificate chain MUST validate to a preconfigured root certificate; see Section <a class="reference internal" href="trust-infrastructure.html#x-509-pki"><span class="std std-ref">X.509 PKI</span></a> for background on X.509 certificate chain validation.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">x5c</span></code> header MUST NOT include the root certificate, as required by <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-06.html">OPENID4VC-HAIP</a>. The <code class="docutils literal notranslate"><span class="pre">x5c</span></code> certificate chain MUST validate to a preconfigured root certificate; see Section <a class="reference internal" href="trust-infrastructure.html#x-509-pki"><span class="std std-ref">X.509 PKI</span></a> for background on X.509 certificate chain validation.</p>
 </div>
 <p>The JWT payload parameters are described herein:</p>
 <table class="longtable docutils align-default">
@@ -729,11 +732,6 @@ Furthermore, universal links offer fallback mechanisms, allowing the flow to con
 <p class="admonition-title">Note</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">client_metadata</span></code> parameter usage is conditional. If <code class="docutils literal notranslate"><span class="pre">client_id</span></code> uses the <code class="docutils literal notranslate"><span class="pre">x509_hash</span></code> prefix, all the Relying Party metadata, other than its public key used for signing the Request Object, MUST be provided in <code class="docutils literal notranslate"><span class="pre">client_metadata</span></code>. However,  if it is present and <code class="docutils literal notranslate"><span class="pre">client_id</span></code> uses the <code class="docutils literal notranslate"><span class="pre">openid_federation</span></code> prefix, the Wallet Instance MUST ignore it and obtain the metadata through the OpenID Federation Trust Chain (<a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">RPR-113</span></a>).</p>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><strong>Requesting the Wallet Attestation</strong></p>
-<p>The Relying Party which requests a Wallet Attestation MUST do so by using a standard DCQL query, however it SHOULD NOT include the <code class="docutils literal notranslate"><span class="pre">claims</span></code> parameter in the query as the Wallet Attestation is not a Digital Credential but a proof of the Wallet Instance's trustworthiness and capabilities. Depending on the format of the Wallet Attestation, the Relying Party MUST request the <code class="docutils literal notranslate"><span class="pre">vct_values</span></code> parameter in the DCQL query, which MUST be set to the value set in the <a class="reference internal" href="registry.html#digital-credentials-catalog-structure"><span class="std std-ref">Digital Credentials Catalog Structure</span></a> (<a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">RPR-114</span></a>).</p>
-</div>
 </section>
 <section id="authorization-response">
 <h2><span class="section-number">12.2.1.5. </span>Authorization Response<a class="headerlink" href="#authorization-response" title="Link to this heading">¶</a></h2>
@@ -742,11 +740,6 @@ Furthermore, universal links offer fallback mechanisms, allowing the flow to con
 <p class="admonition-title">Note</p>
 <p><strong>Why the response is encrypted?</strong></p>
 <p>The response sent from the Wallet Instance to the Relying Party is encrypted to prevent a malicious agent from gaining access to the plaintext information transmitted within the Relying Party's network. This is only possible if the network environment of the Relying Party employs <a class="reference external" href="https://www.f5.com/glossary/ssl-termination">TLS termination</a>. Such technique employs a termination proxy that acts as an intermediary between the client and the webserver and handles all TLS-related operations. In this manner, the proxy deciphers the transmission's content and either forwards it in plaintext or by negotiates an internal TLS session with the actual webserver's intended target. In the first scenario, any malicious actor within the network segment could intercept the transmitted data and obtain sensitive information, such as an unencrypted response, by sniffing the transmitted data.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><strong>Presenting the Wallet Attestation</strong></p>
-<p>The Wallet Instance MUST include the Wallet Attestation if requested by the Relying Party using the DCQL query. During presentaion, the Wallet Instance SHOULD NOT request User's consent to the disclosure of the Wallet Attestation attributes which are technical data not transparent to the User.</p>
 </div>
 <p>Where the following parameters are used (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_093</span></a>):</p>
 <table class="longtable docutils align-default">
@@ -761,12 +754,8 @@ Furthermore, universal links offer fallback mechanisms, allowing the flow to con
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>vp_token</strong></p></td>
-<td><p>There MUST be at least two signed presentations in this Array (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_093a</span></a>):</p>
-<ul class="simple">
-<li><p>The requested Digital Credential (one or more, in format of SD-JWT VC)</p></li>
-<li><p>The Wallet Attestation (in SD-JWT VC format)</p></li>
-</ul>
-<p>The <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> format is a JSON Object which keys corresponds to the requested credential ids in the <code class="docutils literal notranslate"><span class="pre">dcql_query</span></code> used in the request, and the values to each presented Digital Credential.</p>
+<td><p>This array MUST contain the requested Digital Credential(s) in format of SD-JWT VC (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_093a</span></a>).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> format is a JSON Object which keys corresponds to the requested credential ids in the <code class="docutils literal notranslate"><span class="pre">dcql_query</span></code> used in the request, and the values are arrays containing the presented Digital Credential(s).</p>
 </td>
 </tr>
 <tr class="row-odd"><td><p><strong>state</strong></p></td>
@@ -884,7 +873,7 @@ The Authorization Error Response MUST be encoded in the request body using the f
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">invalid_client</span></code></p></td>
 <td><ul class="simple">
-<li><p>The Relying Party’s metadata has been resolved based on the Client Identifier (using the <code class="docutils literal notranslate"><span class="pre">openid_federation</span></code> or <code class="docutils literal notranslate"><span class="pre">x509_hash</span></code> prefix), but cannot be authorized due to trust validation failures or is not a valid participant of the federation. <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> and <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a></p></li>
+<li><p>The Relying Party’s metadata has been resolved based on the Client Identifier (using the <code class="docutils literal notranslate"><span class="pre">openid_federation</span></code> or <code class="docutils literal notranslate"><span class="pre">x509_hash</span></code> prefix), but cannot be authorized due to trust validation failures or is not a valid participant of the federation. <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> and <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">client_metadata</span></code> parameter is present, but the Wallet recognizes Client Identifier and knows metadata associated with it. <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a></p></li>
 <li><p>Relying Party's pre-registered metadata has been found based on the Client Identifier, but <code class="docutils literal notranslate"><span class="pre">client_metadata</span></code> parameter is also present. <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a></p></li>
 </ul>
@@ -955,17 +944,13 @@ Even if an adversary manages to steal the random value used in the request to th
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
-<td><p>The signature of the Wallet Attestation is not valid or trust cannot be established with its Issuer.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
 <td><p>Trust could not be established with the Credential Issuer.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">500</span> <span class="pre">Internal</span> <span class="pre">Server</span> <span class="pre">Error</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">500</span> <span class="pre">Internal</span> <span class="pre">Server</span> <span class="pre">Error</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">server_error</span></code></p></td>
 <td><p>The request cannot be fulfilled because the Response URI Endpoint encountered an internal problem.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">503</span> <span class="pre">Service</span> <span class="pre">Unavailable</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">503</span> <span class="pre">Service</span> <span class="pre">Unavailable</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">temporarily_unavailable</span></code></p></td>
 <td><p>The request cannot be fulfilled because the Response URI Endpoint is temporarily unavailable (e.g., due to maintenance or overload).</p></td>
 </tr>
@@ -1154,7 +1139,7 @@ The request url SHOULD include a parameter with a random value. The HTTP respons
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 16/12/2025.
+      Last updated on 17/12/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

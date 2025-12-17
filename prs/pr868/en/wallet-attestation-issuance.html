@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>10.1.4.2.2. Wallet App and Wallet Unit Attestation Issuance &#8212; IT-Wallet Technical Documentation - PR #868</title>
+    <title>10.1.4.2.2. Wallet App and Wallet Unit Attestation Issuance &#8212; IT-Wallet Technical Specifications - PR #868</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -32,7 +32,7 @@
         <p id="toggle_sidebar">
             <a href="#" title="Toggle sidebar">|||</a>
         </p>
-        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Documentation - PR #868</a></h1>
+        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Specifications - PR #868</a></h1>
             <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
     
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
@@ -147,7 +147,7 @@
 <li class="toctree-l3 current"><a class="reference internal" href="wallet-instance.html">10.1.4. Wallet Instance</a></li>
 <li class="toctree-l3"><a class="reference internal" href="backup-restore.html">10.1.5. Backup and Restore</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-provider-entity-configuration.html">10.1.6. Wallet Provider Entity Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-metadata.html">10.1.7. Wallet Provider Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution-metadata.html">10.1.7. Wallet Solution Metadata</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html">10.2. Credential Issuer Solution</a></li>
@@ -265,28 +265,14 @@
 </ol>
 </div></blockquote>
 <p>Upon successful completion of all checks, the Wallet Provider issues a Wallet App Attestation valid for less than 24 hours (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_144</span></a>), and a Wallet Unit Attestation valid for at least one month.</p>
-<p><strong>Step 29 (Wallet App and Wallet Unit Attestation Issuance Response)</strong>: Upon successful completion, the Wallet Provider MUST return a confirmation response using status code 200 and Content-Type <code class="docutils literal notranslate"><span class="pre">application/json</span></code>, containing the Wallet App and Wallet Unit Attestations signed by the Wallet Provider. The Wallet provider MUST return the Wallet App Attestation in at least three formats: JWT, SD-JWT and mdoc. The Wallet Instance will then perform security and integrity verification of the Wallet App and Wallet Unit Attestations received in addition to trust verification of its Issuer (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_030–031</span></a>).</p>
+<p><strong>Step 29 (Wallet App and Wallet Unit Attestation Issuance Response)</strong>: Upon successful completion, the Wallet Provider MUST return a confirmation response using status code 200 and Content-Type <code class="docutils literal notranslate"><span class="pre">application/json</span></code>, containing the Wallet App and Wallet Unit Attestations signed by the Wallet Provider. The Wallet provider MUST return the Wallet App Attestation in JWT format. The Wallet Instance will then perform security and integrity verification of the Wallet App and Wallet Unit Attestations received in addition to trust verification of its Issuer (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_030–031</span></a>).</p>
 <p>Below is a non-normative example of the response.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 
 <span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;wallet_attestations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="nt">&quot;wallet_app_attestations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jwt&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;wallet_app_attestation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ey...&quot;</span>
-<span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc+sd-jwt&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;wallet_app_attestation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ey...&quot;</span>
-<span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mso_mdoc&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;wallet_app_attestation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;omppc3N1ZXJBdXRohEOhASahG...ArQwggKwMIICVqADAgEC&quot;</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">],</span>
-
+<span class="w">    </span><span class="nt">&quot;wallet_app_attestation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;omppc3N1ZXJBdXRohEOhASaiBE...dElEAnFlbGVtZW50SWRl&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;wallet_unit_attestation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;omppc3N1ZXJBdXRohEOhASahG...ArQwggKwMIICVqADAgEC&quot;</span>
 <span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
@@ -322,7 +308,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 16/12/2025.
+      Last updated on 17/12/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

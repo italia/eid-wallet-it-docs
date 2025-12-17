@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>20.6. Overview &#8212; IT-Wallet Technical Documentation - PR #868</title>
+    <title>20.6. Overview &#8212; IT-Wallet Technical Specifications - PR #868</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -32,7 +32,7 @@
         <p id="toggle_sidebar">
             <a href="#" title="Toggle sidebar">|||</a>
         </p>
-        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Documentation - PR #868</a></h1>
+        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Specifications - PR #868</a></h1>
             <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
     
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
@@ -529,18 +529,37 @@ The instantiation process will result in a new e-service that <strong>MUST</stro
 <span class="linenos">314</span><span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="linenos">315</span><span class="w">                </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">object_id</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">status</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">last_updated</span><span class="p p-Indicator">]</span>
 <span class="linenos">316</span><span class="w">                </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;[{&quot;object_id&quot;:</span><span class="nv"> </span><span class="s">&quot;6F9619FF-8B86-D011-B42D-00C04FC964FF&quot;,</span><span class="nv"> </span><span class="s">&quot;nationality&quot;:</span><span class="nv"> </span><span class="s">&quot;IT&quot;},</span><span class="nv"> </span><span class="s">{...}]&#39;</span>
-<span class="linenos">317</span><span class="w">          </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">iss</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">aud</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">exp</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">iat</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">jti</span><span class="p p-Indicator">]</span>
-<span class="linenos">318</span><span class="w">    </span><span class="nt">CredentialClaimsRequest</span><span class="p">:</span>
-<span class="linenos">319</span><span class="w">      </span><span class="nt">required</span><span class="p">:</span>
-<span class="linenos">320</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unique_id</span>
-<span class="linenos">321</span><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
-<span class="linenos">322</span><span class="w">      </span><span class="nt">properties</span><span class="p">:</span>
-<span class="linenos">323</span><span class="w">        </span><span class="nt">unique_id</span><span class="p">:</span>
-<span class="linenos">324</span><span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="linenos">325</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ID ANPR or Tax identification number</span>
-<span class="linenos">326</span><span class="w">        </span><span class="nt">object_id</span><span class="p">:</span>
-<span class="linenos">327</span><span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="linenos">328</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Unique identifier of the Credential dataset or `jti` of the Agid-JWT-Signature Credential Issuer deferred flow&#39;s request. If this parameter is present only the indicated dataset is returned</span>
+<span class="linenos">317</span><span class="w">            </span><span class="nt">metadataClaims</span><span class="p">:</span>
+<span class="linenos">318</span><span class="w">              </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">List of Metadata Claims.</span>
+<span class="linenos">319</span><span class="w">              </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">array</span>
+<span class="linenos">320</span><span class="w">              </span><span class="nt">items</span><span class="p">:</span><span class="w"> </span>
+<span class="linenos">321</span><span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="linenos">322</span><span class="w">                </span><span class="nt">properties</span><span class="p">:</span>
+<span class="linenos">323</span><span class="w">                  </span><span class="nt">object_id</span><span class="p">:</span>
+<span class="linenos">324</span><span class="w">                    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Unique identifier of the Dataset.</span>
+<span class="linenos">325</span><span class="w">                    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">326</span><span class="w">                    </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;6F9619FF-8B86-D011-B42D-00C04FC964FF&quot;</span>
+<span class="linenos">327</span><span class="w">                  </span><span class="nt">issuance_date</span><span class="p">:</span>
+<span class="linenos">328</span><span class="w">                    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Administrative validity start date of the Dataset</span>
+<span class="linenos">329</span><span class="w">                    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">330</span><span class="w">                    </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&quot;2025-01-01&quot;&#39;</span>
+<span class="linenos">331</span><span class="w">                  </span><span class="nt">expiry_date</span><span class="p">:</span>
+<span class="linenos">332</span><span class="w">                    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Administrative expiry date of the Dataset.</span>
+<span class="linenos">333</span><span class="w">                    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">334</span><span class="w">                    </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&quot;2025-12-31&quot;&#39;</span>
+<span class="linenos">335</span><span class="w">                </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">object_id</span><span class="p p-Indicator">]</span>
+<span class="linenos">336</span><span class="w">          </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">iss</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">aud</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">exp</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">iat</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">jti</span><span class="p p-Indicator">]</span>
+<span class="linenos">337</span><span class="w">    </span><span class="nt">CredentialClaimsRequest</span><span class="p">:</span>
+<span class="linenos">338</span><span class="w">      </span><span class="nt">required</span><span class="p">:</span>
+<span class="linenos">339</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unique_id</span>
+<span class="linenos">340</span><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="linenos">341</span><span class="w">      </span><span class="nt">properties</span><span class="p">:</span>
+<span class="linenos">342</span><span class="w">        </span><span class="nt">unique_id</span><span class="p">:</span>
+<span class="linenos">343</span><span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">344</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ID ANPR or Tax identification number</span>
+<span class="linenos">345</span><span class="w">        </span><span class="nt">object_id</span><span class="p">:</span>
+<span class="linenos">346</span><span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">347</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Unique identifier of the Credential dataset or `jti` of the Agid-JWT-Signature Credential Issuer deferred flow&#39;s request. If this parameter is present only the indicated dataset is returned</span>
 </pre></div>
 </div>
 </section>
@@ -590,7 +609,7 @@ The instantiation process will result in a new e-service that <strong>MUST</stro
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 16/12/2025.
+      Last updated on 17/12/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

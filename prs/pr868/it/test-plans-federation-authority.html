@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>20.4.1.3. Matrice di Test per le Autorità di Federazione &#8212; IT-Wallet Technical Documentation - PR #868</title>
+    <title>20.4.1.3. Matrice di Test per le Autorità di Federazione &#8212; IT-Wallet Technical Specifications - PR #868</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -33,7 +33,7 @@
         <p id="toggle_sidebar">
             <a href="#" title="Toggle sidebar">|||</a>
         </p>
-        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Documentation - PR #868</a></h1>
+        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Specifications - PR #868</a></h1>
             <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
     
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
@@ -190,7 +190,7 @@
 <li><p>Subordinate Statement restituiti da <code class="docutils literal notranslate"><span class="pre">/fetch</span></code></p></li>
 <li><p>Endpoint del registro di federazione (<code class="docutils literal notranslate"><span class="pre">/list</span></code>, <code class="docutils literal notranslate"><span class="pre">/fetch</span></code>, <code class="docutils literal notranslate"><span class="pre">/trust_mark_status</span></code>, <code class="docutils literal notranslate"><span class="pre">/historical-jwks</span></code>)</p></li>
 </ul>
-<p>Tutte le validazioni sono allineate con (<a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a>).</p>
+<p>Tutte le validazioni sono allineate con (<a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a>).</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 15.0%" />
@@ -214,7 +214,7 @@
 <tr class="row-odd"><td><p>FA_002</p></td>
 <td><p>Security</p></td>
 <td><p>Integrità della firma dell'Entity Configuration</p></td>
-<td><p>L'Entity Configuration è un JWT firmato; la firma è verificabile usando una delle chiavi pubbliche della Federation Entity contenute in <code class="docutils literal notranslate"><span class="pre">jwks</span></code> secondo <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a>.</p></td>
+<td><p>L'Entity Configuration è un JWT firmato; la firma è verificabile usando una delle chiavi pubbliche della Federation Entity contenute in <code class="docutils literal notranslate"><span class="pre">jwks</span></code> secondo <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p>FA_003</p></td>
 <td><p>Interoperability</p></td>
@@ -244,7 +244,7 @@
 <tr class="row-odd"><td><p>FA_008</p></td>
 <td><p>Security</p></td>
 <td><p>Firma e durata del Subordinate Statement</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/fetch?sub={entity}</span></code> restituisce un JWT firmato (Subordinate Statement); header e payload sono validi secondo <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a>; <code class="docutils literal notranslate"><span class="pre">iss</span></code> uguale all'Autorità emittente; <code class="docutils literal notranslate"><span class="pre">sub</span></code> uguale al soggetto richiesto; <code class="docutils literal notranslate"><span class="pre">iat</span></code>/<code class="docutils literal notranslate"><span class="pre">exp</span></code> validi.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/fetch?sub={entity}</span></code> restituisce un JWT firmato (Subordinate Statement); header e payload sono validi secondo <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a>; <code class="docutils literal notranslate"><span class="pre">iss</span></code> uguale all'Autorità emittente; <code class="docutils literal notranslate"><span class="pre">sub</span></code> uguale al soggetto richiesto; <code class="docutils literal notranslate"><span class="pre">iat</span></code>/<code class="docutils literal notranslate"><span class="pre">exp</span></code> validi.</p></td>
 </tr>
 <tr class="row-even"><td><p>FA_009</p></td>
 <td><p>Interoperability</p></td>
@@ -338,7 +338,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 16/12/2025.
+      Ultimo aggiornamento 17/12/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
