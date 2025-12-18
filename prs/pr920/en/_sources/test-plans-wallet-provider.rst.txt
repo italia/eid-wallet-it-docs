@@ -81,7 +81,7 @@ This section lists the test cases from Sections:
    * - WP_002h
      - Trust, Interoperability
      - Entity Configuration metadata
-     - The Entity Configuration JWT payload contains a ``metadata`` object that includes ``wallet_provider`` metadata and optionally ``federation_entity``, each following its schema.
+     - The Entity Configuration JWT payload contains a ``metadata`` object that includes ``wallet_solution`` metadata and optionally ``federation_entity``, each following its schema.
    * - WP_003
      - Trust, Interoperability
      - Metadata key usage

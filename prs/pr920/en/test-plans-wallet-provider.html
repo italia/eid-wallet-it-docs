@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>20.4.1.4. Wallet Provider Test Matrix &#8212; IT-Wallet Technical Documentation - PR #920</title>
+    <title>20.4.1.4. Wallet Provider Test Matrix &#8212; IT-Wallet Technical Specifications - PR #920</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -32,7 +32,7 @@
         <p id="toggle_sidebar">
             <a href="#" title="Toggle sidebar">|||</a>
         </p>
-        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Documentation - PR #920</a></h1>
+        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Specifications - PR #920</a></h1>
             <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
     
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
@@ -205,7 +205,7 @@ The test plan is based on the requirements extracted from the following Sections
 <li><p><a class="reference internal" href="wallet-solution-components.html#wallet-solution-components"><span class="std std-ref">Wallet Solution Components</span></a></p></li>
 <li><p><a class="reference internal" href="wallet-instance.html#wallet-instance"><span class="std std-ref">Wallet Instance</span></a></p></li>
 <li><p><a class="reference internal" href="wallet-provider-entity-configuration.html#wallet-provider-entity-configuration"><span class="std std-ref">Wallet Provider Entity Configuration</span></a></p></li>
-<li><p><a class="reference internal" href="wallet-provider-metadata.html#id1"><span class="std std-ref">Wallet Provider Metadata</span></a></p></li>
+<li><p><span class="xref std std-ref">wallet-provider-metadata:Wallet Provider Metadata</span></p></li>
 <li><p><a class="reference external" href="wallet-provider-endpoint.html#e-service-pdnd-wallet-provider-catalogue0">e-Service PDND Wallet Provider Catalogue</a></p></li>
 </ul>
 <table class="longtable docutils align-default">
@@ -231,7 +231,7 @@ The test plan is based on the requirements extracted from the following Sections
 <tr class="row-odd"><td><p>WP_002</p></td>
 <td><p>Trust, Security</p></td>
 <td><p>Entity Configuration cryptography</p></td>
-<td><p>The Wallet Provider Entity Configuration is a signed JWT that conforms to <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a>.</p></td>
+<td><p>The Wallet Provider Entity Configuration is a signed JWT that conforms to <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_002a</p></td>
 <td><p>Trust, Interoperability</p></td>
@@ -271,7 +271,7 @@ The test plan is based on the requirements extracted from the following Sections
 <tr class="row-odd"><td><p>WP_002h</p></td>
 <td><p>Trust, Interoperability</p></td>
 <td><p>Entity Configuration metadata</p></td>
-<td><p>The Entity Configuration JWT payload contains a <code class="docutils literal notranslate"><span class="pre">metadata</span></code> object that includes <code class="docutils literal notranslate"><span class="pre">wallet_provider</span></code> metadata and optionally <code class="docutils literal notranslate"><span class="pre">federation_entity</span></code>, each following its schema.</p></td>
+<td><p>The Entity Configuration JWT payload contains a <code class="docutils literal notranslate"><span class="pre">metadata</span></code> object that includes <code class="docutils literal notranslate"><span class="pre">wallet_solution</span></code> metadata and optionally <code class="docutils literal notranslate"><span class="pre">federation_entity</span></code>, each following its schema.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_003</p></td>
 <td><p>Trust, Interoperability</p></td>
@@ -1831,7 +1831,7 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 17/12/2025.
+      Last updated on 18/12/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

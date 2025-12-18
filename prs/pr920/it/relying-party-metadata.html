@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>10.3.5. Metadati della Relying Party &#8212; IT-Wallet Technical Documentation - PR #920</title>
+    <title>10.3.5. Metadati della Relying Party &#8212; IT-Wallet Technical Specifications - PR #920</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -33,7 +33,7 @@
         <p id="toggle_sidebar">
             <a href="#" title="Toggle sidebar">|||</a>
         </p>
-        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Documentation - PR #920</a></h1>
+        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Specifications - PR #920</a></h1>
             <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
     
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
@@ -196,7 +196,7 @@
 <td><p>Stringa leggibile che rappresenta il nome della RP. Vedi <span class="target" id="index-1"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7591.html#section-2"><strong>RFC 7591#section-2</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>logo_uri</strong></p></td>
-<td><p>URL del logo dell’entità che verrà mostrato all’Utente durante le interazioni con l’istanza del Wallet. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Sezione 5.2.2. Il MIME type del logo DEVE essere <code class="docutils literal notranslate"><span class="pre">application/svg</span></code>.</p></td>
+<td><p>URL del logo dell’entità che verrà mostrato all’Utente durante le interazioni con l’istanza del Wallet. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Sezione 5.2.2. Il MIME type del logo DEVE essere <code class="docutils literal notranslate"><span class="pre">application/svg</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>application_type</strong></p></td>
 <td><p>Stringa che indica il tipo di applicazione. DEVE essere impostata al valore &quot;<em>web</em>&quot;. Vedi <a class="reference external" href="https://openid.net/specs/openid-connect-registration-1_0.html">OpenID Connect Dynamic Client Registration 1.0</a> Sezione 2.</p></td>
@@ -214,7 +214,7 @@
 <td><p>Oggetto JSON che definisce i formati e i tipi di prova delle Verifiable Presentations e delle Verifiable Credentials supportati dalla RP. È composto da una lista di coppie nome/valore, dove ogni nome identifica in modo univoco un tipo supportato. La RP DEVE supportare almeno <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code>. Per le SD-JWT VC, il valore associato a ciascuna coppia nome/valore DEVE includere <code class="docutils literal notranslate"><span class="pre">sd-jwt_alg_values</span></code> che elenca gli algoritmi di firma accettati; per mdoc, includere <code class="docutils literal notranslate"><span class="pre">alg_values_supported</span></code>. Gli header JOSE/COSE degli artefatti presentati DEVONO corrispondere a uno dei valori dichiarati. Vedi <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a> §11 e Appendice B.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>jwks</strong></p></td>
-<td><p>Documento JSON Web Key Set, passato per valore, contenente le chiavi specifiche del protocollo per la Relying Party. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Draft 41 Sezione 5.2.1 e <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-key">JWK</a>.</p></td>
+<td><p>Documento JSON Web Key Set, passato per valore, contenente le chiavi specifiche del protocollo per la Relying Party. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Draft 41 Sezione 5.2.1 e <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-key">JWK</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>erasure_endpoint</strong></p></td>
 <td><p>[CONDIZIONALE] Stringa JSON che rappresenta l'URI a cui l'Istanza del Wallet può richiedere la cancellazione degli attributi degli Utenti. Questo URL DEVE utilizzare lo schema <code class="docutils literal notranslate"><span class="pre">https</span></code>. Questo endpoint DEVE essere presente ogni volta che le Relying Party richiedono attributi che possono identificare in modo univoco gli Utenti, come il claim <code class="docutils literal notranslate"><span class="pre">tax_id_code</span></code> del PID.</p></td>
@@ -255,7 +255,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 17/12/2025.
+      Ultimo aggiornamento 18/12/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

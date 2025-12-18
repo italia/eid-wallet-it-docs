@@ -413,7 +413,7 @@ In this section are defined the main metadata types mapped to the roles of the e
      - `OID-FED`_
    * - Wallet Provider
      - Wallet Provider
-     - ``federation_entity``, ``wallet_provider``
+     - ``federation_entity``, ``wallet_solution``
      - --
    * - Authorization Server
      -

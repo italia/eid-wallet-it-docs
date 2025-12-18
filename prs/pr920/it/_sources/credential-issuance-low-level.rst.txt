@@ -602,12 +602,16 @@ Flusso Credential Offer
 
 Un Credential Issuer o una terza parte (ad esempio, Authentic Source, Registro, Catalogo) avvia l'emissione di Attestati Elettronici inviando una Credential Offer all'Istanza del Wallet.
 
-Il meccanismo di invocazione dell'Istanza del Wallet dipende dalla disponibilità del parametro ``credential_offer_endpoint`` nei metadata del Wallet:
+Per richiamare l'Istanza del Wallet corretta, è necessario sapere quale Istanza del Wallet è installata sul dispositivo dell'Utente e quale l'Utente desidera utilizzare. 
+Queste informazioni DOVREBBERO essere ottenute utilizzando la Selection Page descritta in :ref:`functionalities:Design dell'Esperienza Utente`. 
 
-- Se ``credential_offer_endpoint`` è disponibile e contiene un URL HTTPS (Universal Link), il Credential Issuer o la terza parte DOVREBBE utilizzare quell'endpoint.
-- Altrimenti, il Credential Issuer o la terza parte DEVE utilizzare uno degli schemi URL personalizzati: ``openid-credential-offer://`` (come definito nella Sezione 4 di [`OpenID4VCI`_]) o ``haip://`` (come definito nella Sezione 5.1.1 di [`OPENID4VC-HAIP`_]).
+-  Se la Selection Page è disponibile, l'utente seleziona l'Istanza del Wallet, quindi il Credential Issuer o una terza parte recupera i Wallet metadata come descritto in :ref:`wallet-metadata-retrieval:Flusso di Recupero dei Wallet Metadata`. Il meccanismo di invocazione dell'Istanza del Wallet dipende dal parametro ``credential_offer_endpoint`` nei Wallet metadata:
 
-L'Istanza del Wallet DEVE supportare entrambi gli schemi URL personalizzati.
+  - Se ``credential_offer_endpoint`` è disponibile e contiene un URL HTTPS (Universal Link), il Credential Issuer o la terza parte DOVREBBE utilizzare quell'endpoint.
+  - Altrimenti, il Credential Issuer o la terza parte DEVE utilizzare uno degli schemi URL personalizzati: ``openid-credential-offer://`` (come definito nella Sezione 4 di [`OpenID4VCI`_]) o ``haip-vci://`` (come definito nella Sezione 4.2 di [`OPENID4VC-HAIP`_]). L'Istanza del Wallet DEVE supportare entrambi gli schemi URL personalizzati.
+
+-  Nel caso in cui il Credential Issuer o la terza non supporti la Selection Page o il recupero dei Wallet metadata fallisce per qualche motivo,  il Credential Issuer o la terza richiamerà l'Istanza del Wallet utilizzando uno degli schemi URL personalizzati descritti precedentemente.
+
 
 La Credential Offer può essere trasmessa per valore o per riferimento:
 

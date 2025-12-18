@@ -26,5 +26,5 @@ The following diagram depicts the Wallet Solution High Level Architecture.
   wallet-instance.rst
   backup-restore.rst
   wallet-provider-entity-configuration.rst
-  wallet-provider-metadata.rst
+  wallet-solution-metadata.rst
 

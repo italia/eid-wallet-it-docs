@@ -92,7 +92,7 @@ Ad attivazione conclusa, l'Utente PUÒ ottenere uno o più Attestati Elettronici
 
 A seconda delle specifiche esigenze dell'Utente, della tipologia di Attestato Elettronico di Attributi e delle disponibilità offerte dal Fornitore di Wallet, dal Fornitore di Attestati Elettronici di Attributi e dalla Fonte Autentica, l'ottenimento degli Attestati Elettronici di Attributi può avvenire attraverso due modalità: 
 
-- **dal Catalogo dell'Istanza del Wallet**: l'Utente esplora l'elenco degli Attestati Elettronici di Attributi forniti dalla Soluzione Wallet, seleziona quello di interesse e avvia il processo di richiesta, concludendo con il rilascio dell'Attestato Elettronico di Attributi nell'Istanza del Wallet. Questo percorso è disponibile per i tipi di credenziale idonei per la discovery pubblica come determinato dalle politiche dell'organismo di supervisione durante il processo di onboarding (vedere :ref:`registry:Catalogo degli Attestati Elettronici`).
+- **dal Catalogo dell'Istanza del Wallet**: l'Utente esplora l'elenco degli Attestati Elettronici di Attributi forniti dalla Soluzione Wallet, seleziona quello di interesse e avvia il processo di richiesta, concludendo con il rilascio dell'Attestato Elettronico di Attributi nell'Istanza del Wallet. Questo percorso è disponibile per i tipi di credenziale idonei per la discovery pubblica come determinato dalle politiche dell'organismo di supervisione durante il processo di onboarding (vedere :ref:`registry:Catalogo delle Credenziali Digitali`).
 
 - **da un Touchpoint della Fonte Autentica** (o del Fornitore di Attestati Elettronici di Attributi se coincide con la Fonte Autentica): l'Utente interagisce con il servizio digitale della Fonte Autentica, consentendogli di ottenere un Attestato Elettronico di Attributi specifico nella propria Istanza del Wallet tramite un Engagement Button.
 
@@ -130,7 +130,7 @@ Segue un esempio di testo informativo:
   **Titolo:** Hai già il documento fisico? 
   **Testo:** Per ottenere la versione digitale del [Nome documento] devi aver già ottenuto il relativo documento fisico. Se vuoi avere maggiori dettagli, [leggi più informazioni] (URL). 
 
-Per approfondimenti si rimanda alla sezione :ref:`registry:Catalogo degli Attestati Elettronici` (vedi claim ``user_information``). 
+Per approfondimenti si rimanda alla sezione :ref:`registry:Catalogo delle Credenziali Digitali` (vedi claim ``user_information``). 
 
 Il Fornitore di Wallet DEVE permettere all'Utente di rimuovere un Attestato Elettronico di Attributi dalla sua Istanza del Wallet in ogni momento. In caso di assenza del dispositivo su cui è stata attivata l'Istanza del Wallet, il Fornitore di Wallet DEVE permettere all'Utente di disattivare l'intera Istanza del Wallet tramite un Touchpoint dedicato. Inoltre, i Fornitori di Attestati Elettronici di Attributi DOVREBBERO permettere all'Utente la revoca degli Attestati Elettronici ottenuti, tramite specifici Touchpoint. Per approfondimenti si rimanda alle sezioni :ref:`functionalities:Disattivazione dell'Istanza del Wallet` e :ref:`functionalities:Gestione degli Attestati Elettronici`. 
 
@@ -283,7 +283,7 @@ I Verificatori di Attestati Elettronici DOVREBBERO utilizzare le :ref:`official-
 I Verificatori di Attestati Elettronici, in ogni caso, DEVONO abilitare il processo di Autenticazione rendendo disponibili le seguenti pagine: 
 
 - **Discovery Page**: ha l'obiettivo di mostrare all'Utente tutti i metodi di Autenticazione disponibili; 
-- **Selection Page**: ha lo scopo di mostrare all’Utente tutte le Soluzioni Wallet presenti nel Registro e permettere di scegliere con quale continuare il processo di Autenticazione; 
+- **Selection Page**: ha lo scopo di mostrare all’Utente tutte le Soluzioni Wallet presenti nel Registro del Sistema IT-Wallet e permettere di scegliere con quale continuare il processo di Autenticazione; 
 - **QR Code Page** (*solo per modalità cross-device*): ha lo scopo di invitare l'Utente a inquadrare il codice QR; 
 - **Waiting Page** (*solo per modalità cross-device*): ha lo scopo di invitare l'Utente a continuare il processo di Autenticazione sulla propria Istanza del Wallet; 
 - **Thank You Page**: ha lo scopo di comunicare all'Utente l'avvenuta Autenticazione; 
@@ -331,7 +331,10 @@ Nel caso in cui invece l'Utente stia navigando la pagina del Verificatore di Att
 
 **Selection Page** 
 
-La Selection Page è la pagina su cui atterra l'Utente dopo che ha scelto di Autenticarsi tramite il Sistema IT-Wallet, e ha lo scopo di presentare all'Utente le Soluzioni Wallet disponibili per effettuare l’Autenticazione.  
+La Selection Page è la pagina su cui atterra l'Utente dopo che ha scelto di Autenticarsi tramite il Sistema IT-Wallet, e ha lo scopo di presentare all'Utente le Soluzioni Wallet disponibili per effettuare l’Autenticazione.
+
+.. note:: 
+  Questa sezione descrive come visualizzare la Selection Page come parte di un processo di Autenticazione. La stessa pagina DOVREBBE essere utilizzata anche dai Verificatori di Attestati Elettronici durante la presentazione e da terze parti che supportano il Credential Offer per abilitare l'opzione di selezione della Soluzione Wallet. Ulteriori dettagli sono forniti in :ref:`remote-flow:Flusso Remoto` e :ref:`credential-issuance-low-level:Flusso Credential Offer`.
 
 Il Verificatore di Attestati Elettronici DEVE implementare la Selection Page resa disponibile nelle :ref:`official-resources:Risorse Ufficiali`.
 
@@ -357,16 +360,15 @@ Il Verificatore di Attestati Elettronici che implementa la pagina:
 
 - DEVE assicurare che i copy presenti nella pagina rispecchino quelli riportati nelle :ref:`official-resources:Risorse Ufficiali`; 
 
-- DEVE presentare ogni Soluzione Wallet presente nel Registro attraverso un componente modulare che mostra il logo e il nome per esteso; 
+- DEVE presentare ogni Soluzione Wallet presente nel Registro del Sistema IT-Wallet attraverso un componente modulare che mostra il logo e il nome per esteso recuperati come descritto in :ref:`wallet-metadata-retrieval:Flusso di Recupero dei Wallet Metadata`; 
 
-- DEVE presentare le Soluzioni Wallet in un layout dinamico che si adatta al numero di Soluzioni Wallet disponibili: quando inferiore a 3 DEVE distribuirle in una griglia a 2 colonne, quando inferiore a 2 DEVE utilizzare un layout ad una colonna centrale; in ogni caso DEVE essere garantito un ordinamento randomico; 
-
+- DEVE presentare le Soluzioni Wallet in un layout dinamico che si adatta al numero di Soluzioni Wallet disponibili: quando il numero di Solutioni Wallet è inferiore a 2, la Selection Page DEVE distribuire le Soluzioni Wallet all'interno di un layout ad una colonna centrale. Altrimenti, quando il numero di Soluzioni Wallet è pari o superiore a 3, la Selection Page DEVE distribuire le Soluzioni Wallet in una griglia a 2 colonne; in ogni caso DEVE essere garantito un ordinamento randomico; 
 
 - DEVE permettere all’Utente di cercare una Soluzione Wallet attraverso una funzionalità di filtro per nome, quando presenti più di 5 Soluzioni Wallet;  
 
-- DEVE permettere all'Utente di scoprire, in caso di necessità, quali sono le Soluzioni Wallet presenti nel Registro, predisponendo un rimando al sito ufficiale del Sistema IT-Wallet; 
+- DEVE permettere all'Utente di scoprire, in caso di necessità, quali sono le Soluzioni Wallet presenti nel Registro del Sistema IT-Wallet, predisponendo un rimando al sito ufficiale del Sistema IT-Wallet; 
 
-- DEVE includere una Call to Action che permetta all'Utente di interrompere l’operazione e tornare alla Discovery Page. 
+- DEVE includere una Call to Action che permetta all'Utente di interrompere l’operazione e tornare alla pagina precedente (ad esempio la Discovery Page nel caso di un processo di Autenticazione). 
 
 Il Verificatore di Attestati Elettronici PUÒ inserire un componente testuale per promuovere la modalità di Autenticazione tramite IT-Wallet, che rimandi al sito ufficiale del Sistema, come rappresentato nelle :ref:`official-resources:Risorse Ufficiali`.
 

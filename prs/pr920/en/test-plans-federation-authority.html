@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>20.4.1.3. Federation Authority Test Matrix &#8212; IT-Wallet Technical Documentation - PR #920</title>
+    <title>20.4.1.3. Federation Authority Test Matrix &#8212; IT-Wallet Technical Specifications - PR #920</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -32,7 +32,7 @@
         <p id="toggle_sidebar">
             <a href="#" title="Toggle sidebar">|||</a>
         </p>
-        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Documentation - PR #920</a></h1>
+        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Specifications - PR #920</a></h1>
             <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
     
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
@@ -189,7 +189,7 @@
 <li><p>Subordinate Statements returned by <code class="docutils literal notranslate"><span class="pre">/fetch</span></code></p></li>
 <li><p>Federation registry endpoints (<code class="docutils literal notranslate"><span class="pre">/list</span></code>, <code class="docutils literal notranslate"><span class="pre">/fetch</span></code>, <code class="docutils literal notranslate"><span class="pre">/trust_mark_status</span></code>, <code class="docutils literal notranslate"><span class="pre">/historical-jwks</span></code>)</p></li>
 </ul>
-<p>All validations  align with (<a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a>).</p>
+<p>All validations  align with (<a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a>).</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 15.0%" />
@@ -213,7 +213,7 @@
 <tr class="row-odd"><td><p>FA_002</p></td>
 <td><p>Security</p></td>
 <td><p>Entity Configuration signature integrity</p></td>
-<td><p>The Entity Configuration is a signed JWT; signature verifies using one of the Federation Entity public keys contained in the Entity Configuration <code class="docutils literal notranslate"><span class="pre">jwks</span></code> per <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a>.</p></td>
+<td><p>The Entity Configuration is a signed JWT; signature verifies using one of the Federation Entity public keys contained in the Entity Configuration <code class="docutils literal notranslate"><span class="pre">jwks</span></code> per <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p>FA_003</p></td>
 <td><p>Interoperability</p></td>
@@ -243,7 +243,7 @@
 <tr class="row-odd"><td><p>FA_008</p></td>
 <td><p>Security</p></td>
 <td><p>Subordinate Statement signature and lifetime</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/fetch?sub={entity}</span></code> returns a signed JWT Subordinate Statement; header and payload verify per <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a>; <code class="docutils literal notranslate"><span class="pre">iss</span></code> equals the issuing Federation Authority; <code class="docutils literal notranslate"><span class="pre">sub</span></code> equals requested entity; <code class="docutils literal notranslate"><span class="pre">iat</span></code>/<code class="docutils literal notranslate"><span class="pre">exp</span></code> valid.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/fetch?sub={entity}</span></code> returns a signed JWT Subordinate Statement; header and payload verify per <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a>; <code class="docutils literal notranslate"><span class="pre">iss</span></code> equals the issuing Federation Authority; <code class="docutils literal notranslate"><span class="pre">sub</span></code> equals requested entity; <code class="docutils literal notranslate"><span class="pre">iat</span></code>/<code class="docutils literal notranslate"><span class="pre">exp</span></code> valid.</p></td>
 </tr>
 <tr class="row-even"><td><p>FA_009</p></td>
 <td><p>Interoperability</p></td>
@@ -337,7 +337,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 17/12/2025.
+      Last updated on 18/12/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

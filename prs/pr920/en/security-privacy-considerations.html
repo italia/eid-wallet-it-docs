@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>15. Security and Privacy Considerations &#8212; IT-Wallet Technical Documentation - PR #920</title>
+    <title>15. Security and Privacy Considerations &#8212; IT-Wallet Technical Specifications - PR #920</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -32,7 +32,7 @@
         <p id="toggle_sidebar">
             <a href="#" title="Toggle sidebar">|||</a>
         </p>
-        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Documentation - PR #920</a></h1>
+        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Specifications - PR #920</a></h1>
             <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
     
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
@@ -607,7 +607,7 @@ In addition to the Issuer's information, the Digital Credential Type Metadata al
 </tr>
 </tbody>
 </table>
-<p>The Verifier performing the Trust Evaluation about the Issuer of a Credential must not release any information to the Credential Issuer about the Wallet Instance it is interacting with. Using [<a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a>] the Issuer doesn't know who is the User presenting the Credential.
+<p>The Verifier performing the Trust Evaluation about the Issuer of a Credential must not release any information to the Credential Issuer about the Wallet Instance it is interacting with. Using [<a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a>] the Issuer doesn't know who is the User presenting the Credential.
 In addition, privacy is protected also during the check of the Credential's status. By using Status List [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/13/">TOKEN-STATUS-LIST</a>], the IT-Wallet specification ensures that while the Verifier checks the Credential's validity, the Issuer does not learn where or when the Credential is being used.</p>
 </section>
 <section id="pr-e-70">
@@ -698,7 +698,7 @@ In addition, privacy is protected also during the check of the Credential's stat
 <p>The revocation of a Federation Entity (i.e., Issuer, Verifier, Wallet Provider) is instead possible by not issuing the corresponding Subordinate Statement about that Entity and set a short expiration of the Trust Chain, thus preventing misuse during compromise.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>In addition, [<a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a>] supports a historical key endpoint to retrieve the list of expired and revoked keys, with the motivation of the revocation.</p>
+<p>In addition, [<a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a>] supports a historical key endpoint to retrieve the list of expired and revoked keys, with the motivation of the revocation.</p>
 </div>
 </section>
 <section id="spr-p-10">
@@ -903,7 +903,7 @@ ensure that while the Verifier checks the Credential's validity, the Issuer does
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 17/12/2025.
+      Last updated on 18/12/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

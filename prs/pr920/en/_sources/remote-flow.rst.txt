@@ -7,9 +7,18 @@ Remote Flow
 Depending on whether the User is using a mobile device or a workstation, the Relying Party MUST support the following remote flows (:ref:`RPR-84 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`):
 
 * **Same Device**, the Relying Party MUST provide an ``HTTP`` location to the Wallet Instance using a redirect (``302``) or an HTML href in a web page (:ref:`RPR-01 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`);
-* **Cross Device**, the Relying Party MUST provide a ``QR Code`` which the User frames with the Wallet Instance (:ref:`RPR-03 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`).
+* **Cross Device**, the Relying Party MUST provide a ``QR Code`` which the User frames with the device camera or with the Wallet Instance (:ref:`RPR-03 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`).
 
-Once the Wallet Instance establishes the trust with the Relying Party and evaluates the request, the User gives the consent for the disclosure of the Digital Credentials, in the form of a Verifiable Presentation.
+To invoke the correct Wallet Instance, the Relying Party SHOULD trigger the Wallet Instance installed on the User's device the User wishes to use. This information SHOULD be provided by the User using the Selection Page described in :ref:`functionalities:User Experience Design`. 
+
+- If the Selection Page is supported, the User selects the Wallet, and then the Relying Party retrieves the Wallet metadata as described in :ref:`wallet-metadata-retrieval:Wallet Metadata Retrieval Flow`. The content of the HTML href or QR Code depends on the ``authorization_endpoint`` parameter in the Wallet metadata:
+
+  - If ``authorization_endpoint`` is available and contains an HTTPS URL (Universal Link), the Relying Party SHOULD use that endpoint.
+  - Otherwise, the Relying Party MUST use one of the custom URL schemes: ``openid4vp://`` (as defined in Section 13.1.2 of [`OpenID4VP`_]) or ``haip-vp://`` (as defined in Section 5.1 of [`OPENID4VC-HAIP`_]). The Wallet Instance MUST support both custom URL schemes.
+
+- In the case when the Relying Party does not support the Selection Page, or the retrieval of the Wallet metadata may fail for some reason, the Relying Party invokes the Wallet Instance using the custom URL scheme described above.
+
+After the Wallet Instance invocation, the Wallet Instance establishes the trust with the Relying Party and evaluates the request. If valid, it will ask Users to give their consent for the disclosure of the Digital Credentials, in the form of a Verifiable Presentation.
 
 .. _fig_High-Level-Flow-Presentation:
 .. plantuml:: plantuml/credential-presentation-remote-high-level-flow.puml

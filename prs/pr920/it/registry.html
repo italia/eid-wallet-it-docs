@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>7. Infrastruttura del Registro &#8212; IT-Wallet Technical Documentation - PR #920</title>
+    <title>7. Infrastruttura del Registro &#8212; IT-Wallet Technical Specifications - PR #920</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -33,7 +33,7 @@
         <p id="toggle_sidebar">
             <a href="#" title="Toggle sidebar">|||</a>
         </p>
-        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Documentation - PR #920</a></h1>
+        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Specifications - PR #920</a></h1>
             <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
     
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
@@ -168,7 +168,7 @@
 <p>L'architettura di registro affronta la standardizzazione semantica, la gestione della fiducia federata e i requisiti di scoperta delle credenziali attraverso componenti di registro specializzati che assicurano interoperabilità e conformità attraverso l'ecosistema.</p>
 <section id="panoramica-dell-architettura-del-registro">
 <h2><span class="section-number">7.1. </span>Panoramica dell'Architettura del Registro<a class="headerlink" href="#panoramica-dell-architettura-del-registro" title="Link to this heading">¶</a></h2>
-<p>Il sistema di registro IT-Wallet comprende sei componenti principali:</p>
+<p>Il Registro del Sistema IT-Wallet comprende sei componenti principali:</p>
 <ol class="arabic simple">
 <li><p><strong>Registro dei Claims</strong>: Definizioni semantiche standardizzate per attributi individuali delle credenziali, tipi di dati e regole di validazione.</p></li>
 <li><p><strong>Registro delle Fonti Autentiche (AS)</strong>: Catalogo dei fornitori di dati registrati con le loro capacità dichiarate e claims disponibili.</p></li>
@@ -187,7 +187,7 @@
 <li><p><strong>Content-Type Predefinito</strong>: <code class="docutils literal notranslate"><span class="pre">application/jwt</span></code> (JWT firmato che garantisce autenticità e integrità)</p></li>
 <li><p><strong>Content-Type Alternativo</strong>: <code class="docutils literal notranslate"><span class="pre">application/json</span></code> (JSON semplice per scopi di sviluppo/debug)</p></li>
 </ul>
-<p>Inoltre, il sistema di registro IT-Wallet DEVE usare due pattern di accesso distinti:</p>
+<p>Inoltre, il Registro del Sistema IT-Wallet DEVE usare due pattern di accesso distinti:</p>
 <ul class="simple">
 <li><p><strong>API di Registro Dati</strong>: DEVONO supportare capacità di paginazione e filtraggio.</p></li>
 <li><p><strong>Infrastruttura di Fiducia della Federazione</strong>: come definito in <a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>.</p></li>
@@ -1035,7 +1035,7 @@ Content-Type: application/json
 <p>Il <strong>Registro di Federazione</strong> fornisce l'infrastruttura di fiducia crittografica per tutti i partecipanti dell'ecosistema IT-Wallet. Il Registro di Federazione mantiene l'elenco autorevole delle entità fidate e il loro stato operativo usando endpoint specifici della federazione come definito in <a class="reference internal" href="trust-infrastructure.html#endpoint-api-di-federazione"><span class="std std-ref">Endpoint API di Federazione</span></a>.</p>
 <section id="ruolo-di-integrazione-del-registro">
 <h3><span class="section-number">7.5.1. </span>Ruolo di Integrazione del Registro<a class="headerlink" href="#ruolo-di-integrazione-del-registro" title="Link to this heading">¶</a></h3>
-<p>All'interno dell'architettura di registro IT-Wallet, il Registro di Federazione serve come <strong>livello di validazione della fiducia</strong> per:</p>
+<p>All'interno dell'architettura del Registro del Sistema IT-Wallet, il Registro di Federazione serve come <strong>livello di validazione della fiducia</strong> per:</p>
 <ol class="arabic simple">
 <li><p><strong>Autenticazione delle Entità</strong>: Valida l'identità crittografica di tutti i partecipanti prima delle operazioni di registro</p></li>
 <li><p><strong>Verifica della Catena di Fiducia</strong>: Fornisce la fondazione crittografica per la validazione delle entità Emittenti di Credenziali, Relying Parties e Fornitori di Wallet</p></li>
@@ -2070,7 +2070,7 @@ I principali Percorsi di utilizzo illustrano di seguito le interazioni con l'Inf
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 17/12/2025.
+      Ultimo aggiornamento 18/12/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

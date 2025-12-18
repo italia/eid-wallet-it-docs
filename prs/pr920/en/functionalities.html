@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>5. User Experience Design &#8212; IT-Wallet Technical Documentation - PR #920</title>
+    <title>5. User Experience Design &#8212; IT-Wallet Technical Specifications - PR #920</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -32,7 +32,7 @@
         <p id="toggle_sidebar">
             <a href="#" title="Toggle sidebar">|||</a>
         </p>
-        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Documentation - PR #920</a></h1>
+        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Specifications - PR #920</a></h1>
             <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
     
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
@@ -399,7 +399,7 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 <p>Relying Parties MUST implement and provide the following pages as part of the Authentication process:</p>
 <ul class="simple">
 <li><p><strong>Discovery Page</strong>: lists all the available Authentication methods;</p></li>
-<li><p><strong>Selection Page</strong>: shows the User all the Wallet Solutions available in the Register and let them choose which one to continue the Authentication process with;</p></li>
+<li><p><strong>Selection Page</strong>: shows the User all the Wallet Solutions available in the IT-Wallet System Register and let them choose which one to continue the Authentication process with;</p></li>
 <li><p><strong>QR Code Page</strong> (<em>cross-device only</em>): prompts the User to scan a QR code;</p></li>
 <li><p><strong>Waiting Page</strong> (<em>cross-device only</em>): instructs the User to continue the Authentication process on their Wallet Instance;</p></li>
 <li><p><strong>Thank You Page</strong>: confirms the successful Authentication;</p></li>
@@ -430,6 +430,10 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 <p>If the User accesses the Discovery Page from the same Touchpoint where the Wallet Instance is activated (same-device), the selection MUST trigger the opening of the User's Wallet Instance.</p>
 <p><strong>Selection Page</strong></p>
 <p>The Selection Page is the page on which the User lands after they have chosen to Authenticate via the IT-Wallet System, and is intended to present the User with the Wallet Solutions available to perform Authentication.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This section describes the display of a Selection Page as part of the Authentication process use case. The same page SHOULD be used also by the Relying Parties during presentation and by third parties offering the Credential Offer to enable the Wallet Solution selection option. Further details are provided in <a class="reference internal" href="remote-flow.html#remote-flow"><span class="std std-ref">Remote Flow</span></a> and <a class="reference internal" href="credential-issuance-low-level.html#credential-offer-flow"><span class="std std-ref">Credential Offer Flow</span></a>.</p>
+</div>
 <p>The Relying Party MUST implement the Selection Page made available in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p>
 <figure class="align-default" id="id88">
 <a class="reference internal image-reference" href="_images/selection-page.svg"><img alt="Selection Page" src="_images/selection-page.svg" style="width: 100%;" /></a>
@@ -441,11 +445,11 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 <ul class="simple">
 <li><p>MUST include the elements proper to the Visual Identity of the IT-Wallet System, including the Logo by placing it alongside its own logo according to the guidance provided in the <a class="reference internal" href="brand-identity.html#visual-identity"><span class="std std-ref">Visual Identity</span></a> section;</p></li>
 <li><p>MUST ensure that the copy on the page mirrors that reported in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>;</p></li>
-<li><p>MUST present each Wallet Solution in the IT-Wallet Register through a modular component that displays the logo and name in full;</p></li>
-<li><p>MUST present the Wallet Solutions in a dynamic layout that adapts to the number of Wallet Solutions available: when less than 3 MUST distribute them in a 2-column grid, when less than 2 MUST use a center-column layout; in all cases random sorting MUST be guarantee;</p></li>
+<li><p>MUST present each Wallet Solution in the IT-Wallet System Register through a modular component that displays the logo and name in full retrieved as described in <a class="reference internal" href="wallet-metadata-retrieval.html#wallet-metadata-retrieval-flow"><span class="std std-ref">Wallet Metadata Retrieval Flow</span></a>;</p></li>
+<li><p>MUST present the Wallet Solutions in a dynamic layout that adapts to the number of Wallet Solutions available: when the Wallet Solution number is less than 2, the Selection Page MUST distribute the Wallet Solutions within a center-column layout. Otherwise, when the Wallet Solution number is equal or superior than 3, the Selection Page MUST distribute the Wallet Solutions in a 2-column grid; in all cases random sorting MUST be guaranteed;</p></li>
 <li><p>MUST allow the User to search for a Wallet Solution through a filter feature by name, when more than 5 Wallet Solutions are present;</p></li>
-<li><p>MUST allow the User to find out, when needed, which Wallet Solutions are available in the Register by preparing a cross-reference to the official site of the IT-Wallet System;</p></li>
-<li><p>MUST include a Call to Action that allows the User to abort the operation and return to the Discovery Page.</p></li>
+<li><p>MUST allow the User to find out, when needed, which Wallet Solutions are available in the IT-Wallet System Register by preparing a cross-reference to the official site of the IT-Wallet System;</p></li>
+<li><p>MUST include a Call to Action that allows the User to abort the operation and return to the previous page (e.g., the Discovery Page in case of an Authentication process).</p></li>
 </ul>
 <p>The Relying Party MAY also include a text component on the Selection Page to promote the Authentication mode via IT-Wallet, which links back to the IT-Wallet System's official website, as represented in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p>
 <p><strong>QR Code Page (cross-device only)</strong></p>
@@ -972,7 +976,7 @@ Below a non-normative example of the Authentication Button. The references to th
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 17/12/2025.
+      Last updated on 18/12/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
