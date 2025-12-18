@@ -81,15 +81,15 @@ Questa sezione elenca i casi di test dalle Sezioni:
    * - WP_002h
      - Trust, Interoperabilità
      - Metadata Entity Configuration
-     - Il payload del JWT Entity Configuration contiene un oggetto ``metadata`` che include il parametro ``wallet_provider`` e opzionalmente il parametro ``federation_entity``, ciascuno valorizzato seguendo il proprio schema.
+     - Il payload del JWT Entity Configuration contiene un oggetto ``metadata`` che include il parametro ``wallet_solution`` e opzionalmente il parametro ``federation_entity``, ciascuno valorizzato seguendo il proprio schema.
    * - WP_003
      - Trust, Interoperabilità
      - Utilizzo chiave metadata
-     - Le chiavi pubbliche nell'oggetto JSON con cui è valorizzato ``wallet_provider`` sono usate esclusivamente per la firma e/o cifratura quando l'Entità agisce come Fornitore del Wallet (es. per emettere la Wallet Attestation).
+     - Le chiavi pubbliche nell'oggetto JSON sono usate esclusivamente per la firma e/o cifratura quando l'Entità agisce come Fornitore del Wallet (es. per emettere la Wallet Attestation).
    * - WP_004
      - Trust, Interoperabilità
      - Riferimento chiave metadata
-     - Per riferire le chiavi pubbliche, l'oggetto JSON con cui è valorizzato ``wallet_provider`` contiene esattamente uno dei seguenti claim: ``jwks``, ``jwks_uri``, o ``signed_jwks_uri``.
+     - Per riferire le chiavi pubbliche, l'oggetto JSON contiene esattamente uno dei seguenti claim: ``jwks``, ``jwks_uri``, o ``signed_jwks_uri``.
    * - WP_004a
      - Trust, Interoperabilità
      - JWKS per valore

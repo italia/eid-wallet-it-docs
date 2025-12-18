@@ -227,6 +227,90 @@ Tutti gli endpoint elencati di seguito sono definiti nelle specifiche `OID-FED`_
 
 Tutte le risposte degli endpoint di federazione sono sotto forma di JWT firmato, ad eccezione dell'**endpoint di Elenco Subordinati** e dell'**endpoint di Stato Trust Mark** che sono serviti come JSON semplice per impostazione predefinita. L'**Endpoint Eventi Subordinati della Federazione** restituisce anche JWT firmati con il tipo di contenuto ``application/entity-events-statement+jwt``.
 
+Federation Subordinate Events Endpoint
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+L'Endpoint Eventi Subordinati della Federazione fornisce un meccanismo per Trust Anchor e Intermediari per pubblicare eventi storici relativi ai loro Subordinati Immediati. Questo endpoint fornisce trasparenza e responsabilità all'interno della federazione fornendo un record storico completo di eventi significativi che influenzano i partecipanti della federazione.
+
+**Endpoint Location**:
+
+L'Endpoint Eventi Subordinati della Federazione è pubblicato nei metadati ``federation_entity`` utilizzando il parametro ``federation_subordinate_events_endpoint``.
+
+**Request Format**:
+
+La richiesta all'``federation_subordinate_events_endpoint`` DEVE essere una richiesta HTTP GET con i seguenti parametri di query:
+
+- **sub**: (OBBLIGATORIO) L'Identificativo dell'Entità del soggetto per cui viene richiesta la traccia storica.
+
+**Response Format**:
+
+Una risposta di successo DEVE utilizzare il codice di stato HTTP 200 e il tipo di contenuto ``application/entity-events-statement+jwt``. La risposta è un JWT firmato che è esplicitamente tipizzato impostando il parametro header ``typ`` su ``entity-events-statement+jwt`` per prevenire la confusione cross-JWT.
+
+**JWT Claims**:
+
+I claim nella risposta della dichiarazione eventi subordinati sono:
+
+- **iss**: (OBBLIGATORIO) Identificativo dell'Entità dell'emittente della risposta
+- **sub**: (OBBLIGATORIO) Identificativo dell'Entità del soggetto della risposta  
+- **iat**: (OBBLIGATORIO) Ora in cui questa risposta è stata emessa, espressa come Secondi dall'Epoch
+- **exp**: (OPZIONALE) Ora in cui questa risoluzione non è più valida, espressa come Secondi dall'Epoch
+- **federation_registration_events**: (OBBLIGATORIO) Array di oggetti JSON, ognuno rappresentante un evento di particolare interesse dalla prospettiva della federazione
+
+**Event Object Parameters**:
+
+- **iat**: (OBBLIGATORIO) Ora in cui si è verificato l'evento, utilizzando il formato ora definito per il claim ``iat``
+- **event**: (OBBLIGATORIO) Stringa che identifica il tipo di evento
+- **event_description**: (OPZIONALE) Stringa che può offrire informazioni aggiuntive sull'evento
+
+**Supported Event Types**:
+
+- **registration**: Indica quando un'Entità è stata registrata nella federazione
+- **revocation**: Indica quando la registrazione di un'Entità è stata revocata
+- **suspension**: Indica quando la registrazione di un'Entità è stata sospesa
+- **jwks_update**: Indica quando le Chiavi dell'Entità di Federazione di un'Entità sono state aggiornate
+- **metadata_update**: Indica quando i metadati di un'Entità sono stati aggiornati nel Subordinate Statement
+- **metadata_policy_update**: Indica quando la policy dei metadati di un'Entità è stata aggiornata nel Subordinate Statement
+
+**Example Request**:
+
+.. code-block:: text
+
+   GET /federation_subordinate_events_endpoint?sub=https%3A%2F%2Frp%2Eexample%2Eorg HTTP/1.1
+   Host: immediate-superior.example.org
+
+**Example Response**:
+
+.. code-block:: json
+
+   {
+     "iss": "https://immediate-superior.example.org",
+     "sub": "https://rp.example.org",
+     "iat": 1590000000,
+     "federation_registration_events": [
+       {
+         "iat": 1590000000,
+         "event": "registration"
+       },
+       {
+         "iat": 1590000000,
+         "event": "jwks_updates"
+       },
+       {
+         "iat": 1600000000,
+         "event": "revocation",
+         "event_description": "compromised node"
+       },
+       {
+         "iat": 1610000000,
+         "event": "registration"
+       }
+     ]
+   }
+
+**Integration with Entity Lifecycle Management**:
+
+Questo endpoint completa le procedure di gestione del ciclo di vita delle entità definite in :ref:`entity-onboarding:Onboarding delle Entità` fornendo un tracciamento dettagliato di tutti gli eventi significativi che influenzano i partecipanti della federazione. Supporta sia il monitoraggio automatizzato della conformità che i processi di audit manuale.
+
 Configurazione della Federazione
 --------------------------------
 
@@ -413,7 +497,7 @@ In questa sezione sono definiti i principali tipi di metadati mappati sui ruoli 
      - `OID-FED`_
    * - Fornitore di Wallet
      - Fornitore di Wallet
-     - ``federation_entity``, ``wallet_provider``
+     - ``federation_entity``, ``wallet_solution``
      - --
    * - Authorization Server
      -
@@ -616,6 +700,18 @@ Le Trust Chain possono anche essere verificate offline, utilizzando una delle ch
 
   Il Wallet Attestation trasmette tutte le informazioni richieste riguardanti l'istanza, come la sua chiave pubblica e qualsiasi altra informazione tecnica o amministrativa, senza alcun dato personale dell'Utente.
 
+.. note::
+  La revoca di un'Entità è fatta con l'indisponibilità del Subordinate Statement relativo ad essa. Se il Trust Anchor o il suo Intermediario non pubblica un Subordinate Statement valido, o se pubblica un Subordinate Statement scaduto/non valido, il soggetto del Subordinate Statement DEVE essere inteso come non valido o revocato.
+
+La concatenazione delle dichiarazioni, attraverso la combinazione di questi meccanismi di firma e il binding di claim e chiavi pubbliche, forma la Trust Chain.
+
+Le Trust Chain possono anche essere verificate offline, utilizzando una delle chiavi pubbliche del Trust Anchor.
+
+.. note::
+  Poiché l'Istanza del Wallet non è un'Entità di Federazione, il Meccanismo di Trust Evaluation relativo ad essa **richiede la presentazione del Wallet Attestation durante le fasi di emissione e presentazione delle credenziali**.
+
+  Il Wallet Attestation trasmette tutte le informazioni richieste riguardanti l'istanza, come la sua chiave pubblica e qualsiasi altra informazione tecnica o amministrativa, senza alcun dato personale dell'Utente.
+
 Trust Chain
 -----------
 
@@ -725,7 +821,7 @@ Nel processo di emissione, la Trust Evaluation garantisce l'integrità e l'auten
 
 Le Trust Evaluation implementano modi diversi, come definito di seguito:
 
-* **Scoperta di Entità di Federazione**: Le Istanze del Wallet e i Relying Party DEVONO verificare l'identità dell'Emittente utilizzando il processo di Scoperta di Entità di Federazione definito in :ref:`trust-infrastructure:Discovery della Federazione`. Questo comporta l'interrogazione degli endpoint di federazione per confermare lo stato di validità dell'Emittente e la conformità al Trust Framework. I dati degli eventi storici dall'Endpoint Eventi Subordinati della Federazione possono fornire contesto aggiuntivo sul ciclo di vita dell'entità e la storia di conformità.
+* **Scoperta di Entità di Federazione**: Le Istanze del Wallet e i Relying Party DEVONO verificare l'identità dell'Emittente utilizzando il processo di Scoperta di Entità di Federazione definito in :ref:`trust-infrastructure:Discovery della Federazione`. Questo comporta l'interrogazione degli endpoint di federazione per confermare lo stato di validità dell'Emittente e la conformità al Trust Framework.
 
 * **Trust Chain**: Le Istanze del Wallet e i Relying Party valutano le Trust Chain dell'Emittente utilizzando i meccanismi definiti in :ref:`trust-infrastructure:Trust Chain`. Le Trust Chain possono essere fornite staticamente o costruite attraverso un processo di Scoperta di Entità di Federazione, per garantire che l'entità che richiede la Credenziale faccia parte di una federazione riconosciuta e fidata.
 
@@ -751,7 +847,7 @@ I meccanismi di Trust Evaluation sono distinti dai flussi di protocollo e sono i
 
 Le Trust Evaluation sono condotte come segue:
 
-* **Scoperta di Entità di Federazione**: Quando l'Istanza del Wallet riceve una richiesta firmata emessa da un Relying Party, l'Istanza del Wallet DEVE verificare l'identità del Relying Party utilizzando il processo di Scoperta di Entità di Federazione definito in :ref:`trust-infrastructure:Discovery della Federazione`. Questo comporta l'interrogazione degli endpoint di federazione per confermare lo stato di validità del Relying Party e la conformità al Trust Framework e valutare la firma della richiesta utilizzando il materiale crittografico ottenuto dalla Trust Chain. I dati degli eventi storici dall'Endpoint Eventi Subordinati della Federazione possono fornire contesto aggiuntivo sul ciclo di vita del Relying Party e la storia di conformità.
+* **Scoperta di Entità di Federazione**: Quando l'Istanza del Wallet riceve una richiesta firmata emessa da un Relying Party, l'Istanza del Wallet DEVE verificare l'identità del Relying Party utilizzando il processo di Scoperta di Entità di Federazione definito in :ref:`trust-infrastructure:Discovery della Federazione`. Questo comporta l'interrogazione degli endpoint di federazione per confermare lo stato di validità del Relying Party e la conformità al Trust Framework e valutare la firma della richiesta utilizzando il materiale crittografico ottenuto dalla Trust Chain.
 
 * **Trust Chain**: L'Istanza del Wallet valuta le Trust Chain del Relying Party utilizzando i meccanismi definiti in :ref:`trust-infrastructure:Trust Chain`. Le Trust Chain possono essere fornite staticamente o costruite attraverso un processo di Scoperta di Entità di Federazione, per garantire che il Relying Party faccia parte di una federazione riconosciuta e fidata.
 
@@ -835,28 +931,14 @@ Quando un partecipante auto-emette un Certificato X.509, aderisce ai seguenti re
 
 1. **Nome del Soggetto**: Il nome del soggetto del Certificato X.509 DEVE corrispondere all'identità del partecipante. Il nome del soggetto degli Intermediari e delle Foglie DEVE includere i seguenti attributi:
 
-   .. list-table::
-      :widths: 30 70
-      :header-rows: 1
-
-      * - Attribute
-        - Requirement
-      * - ``Country Name (C)``
-        - DEVE contenere il codice paese ISO a due lettere.
-      * - ``State or Province Name (ST)``
-        - DEVE contenere la regione o stato dove l'entità è localizzata.
-      * - ``Locality Name (L)``
-        - DEVE contenere la città dove l'entità è localizzata.
-      * - ``Organization Name (O)`` 
-        - DEVE contenere il nome legale dell'organizzazione.
-      * - ``Organizational Unit Name (OU)`` 
-        - PUÒ contenere il nome del dipartimento all'interno dell'organizzazione (opzionale).
-      * - ``Common Name (CN)``
-        - DEVE contenere il nome DNS dell'identificatore unico dell'Entità di Federazione, che è incluso nel valore sub (soggetto) nella sua Entity Configuration di federazione, rimuovendo ``https://`` e qualsiasi path web.
-      * - ``Email Address`` 
-        - DEVE contenere l'indirizzo email di contatto dell'organizzazione.
-      * - ``organizationIdentifier`` 
-        - DEVE contenere il numero di registrazione che identifica univocamente l'organizzazione all'interno del servizio di registrazione, utilizzando il valore OID ``2.5.4.97`` come definito in ``ITU-T X.500``.
+  - ``Country Name (C)``: DEVE contenere il codice paese ISO a due lettere.
+  - ``State or Province Name (ST)``: DEVE contenere la regione o stato dove l'entità è localizzata.
+  - ``Locality Name (L)``: DEVE contenere la città dove l'entità è localizzata.
+  - ``Organization Name (O)``: DEVE contenere il nome legale dell'organizzazione.
+  - ``Organizational Unit Name (OU)``: PUÒ contenere il nome del dipartimento all'interno dell'organizzazione (opzionale).
+  - ``Common Name (CN)``: DEVE contenere il nome DNS dell'identificatore unico dell'Entità di Federazione, che è incluso nel valore sub (soggetto) nella sua Entity Configuration di federazione, rimuovendo ``https://`` e qualsiasi path web.
+  - ``Email Address``: DEVE contenere l'indirizzo email di contatto dell'organizzazione.
+  - ``organizationIdentifier``: DEVE contenere il numero di registrazione che identifica univocamente l'organizzazione all'interno del servizio di registrazione, utilizzando il valore OID ``2.5.4.97`` come definito in ``ITU-T X.500``.
   
 2. **Subject Alternative Name (SAN)**: Il Certificato X.509 DEVE includere un ``SAN URI`` che DEVE corrispondere ai valori **sub** e **iss** della sua Entity Configuration di federazione.
 3. **Nome DNS**: Il Certificato X.509 DEVE includere un Nome DNS nel SAN che corrisponde al nome DNS contenuto all'interno dei valori **sub** e **iss** della sua Entity Configuration, rimuovendo ``https://`` e qualsiasi path web.
@@ -919,89 +1001,6 @@ Di seguito è riportato un esempio non normativo, in testo semplice, che illustr
     Signature:
         5c:4f:3b:...
 
-Federation Subordinate Events Endpoint
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-L'Endpoint Eventi Subordinati della Federazione fornisce un meccanismo per Trust Anchor e Intermediari per pubblicare eventi storici relativi ai loro Subordinati Immediati. Questo endpoint fornisce trasparenza e responsabilità all'interno della federazione fornendo un record storico completo di eventi significativi che influenzano i partecipanti della federazione.
-
-**Endpoint Location**:
-
-L'Endpoint Eventi Subordinati della Federazione è pubblicato nei metadati ``federation_entity`` utilizzando il parametro ``federation_subordinate_events_endpoint``.
-
-**Request Format**:
-
-La richiesta all'``federation_subordinate_events_endpoint`` DEVE essere una richiesta HTTP GET con i seguenti parametri di query:
-
-- **sub**: (OBBLIGATORIO) L'Identificativo dell'Entità del soggetto per cui viene richiesta la traccia storica.
-
-**Response Format**:
-
-Una risposta di successo DEVE utilizzare il codice di stato HTTP 200 e il tipo di contenuto ``application/entity-events-statement+jwt``. La risposta è un JWT firmato che è esplicitamente tipizzato impostando il parametro header ``typ`` su ``entity-events-statement+jwt`` per prevenire la confusione cross-JWT.
-
-**JWT Claims**:
-
-I claim nella risposta della dichiarazione eventi subordinati sono:
-
-- **iss**: (OBBLIGATORIO) Identificativo dell'Entità dell'emittente della risposta
-- **sub**: (OBBLIGATORIO) Identificativo dell'Entità del soggetto della risposta  
-- **iat**: (OBBLIGATORIO) Ora in cui questa risposta è stata emessa, espressa come Secondi dall'Epoch
-- **exp**: (OPZIONALE) Ora in cui questa risoluzione non è più valida, espressa come Secondi dall'Epoch
-- **federation_registration_events**: (OBBLIGATORIO) Array di oggetti JSON, ognuno rappresentante un evento di particolare interesse dalla prospettiva della federazione
-
-**Event Object Parameters**:
-
-- **iat**: (OBBLIGATORIO) Ora in cui si è verificato l'evento, utilizzando il formato ora definito per il claim ``iat``
-- **event**: (OBBLIGATORIO) Stringa che identifica il tipo di evento
-- **event_description**: (OPZIONALE) Stringa che può offrire informazioni aggiuntive sull'evento
-
-**Supported Event Types**:
-
-- **registration**: Indica quando un'Entità è stata registrata nella federazione
-- **revocation**: Indica quando la registrazione di un'Entità è stata revocata
-- **suspension**: Indica quando la registrazione di un'Entità è stata sospesa
-- **jwks_update**: Indica quando le Chiavi dell'Entità di Federazione di un'Entità sono state aggiornate
-- **metadata_update**: Indica quando i metadati di un'Entità sono stati aggiornati nel Subordinate Statement
-- **metadata_policy_update**: Indica quando la policy dei metadati di un'Entità è stata aggiornata nel Subordinate Statement
-
-**Example Request**:
-
-.. code-block:: text
-
-   GET /federation_subordinate_events_endpoint?sub=https%3A%2F%2Frp%2Eexample%2Eorg HTTP/1.1
-   Host: immediate-superior.example.org
-
-**Example Response**:
-
-.. code-block:: json
-
-   {
-     "iss": "https://immediate-superior.example.org",
-     "sub": "https://rp.example.org",
-     "iat": 1590000000,
-     "federation_registration_events": [
-       {
-         "iat": 1590000000,
-         "event": "registration"
-       },
-       {
-         "iat": 1590000000,
-         "event": "jwks_updates"
-       },
-       {
-         "iat": 1600000000,
-         "event": "revocation",
-         "event_description": "compromised node"
-       },
-       {
-         "iat": 1610000000,
-         "event": "registration"
-       }
-     ]
-   }
-
-**Integration with Entity Lifecycle Management**:
-
-Questo endpoint completa le procedure di gestione del ciclo di vita delle entità definite in :ref:`entity-onboarding:Onboarding delle Entità` fornendo un tracciamento dettagliato di tutti gli eventi significativi che influenzano i partecipanti della federazione. Supporta sia il monitoraggio automatizzato della conformità che i processi di audit manuale.
 
 Osservazioni sulla Privacy
 --------------------------
