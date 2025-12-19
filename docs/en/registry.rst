@@ -573,144 +573,172 @@ Additional Domains, Classes, specific Credentials, and verification Purposes **M
      - **Subclass (Credential Type)**
      - **Description**
      - **Purpose**
+
    * - *IDENTITY*
-     - * Identification Documents
+     -
+       * Identification Documents
        * Civil Registry and Personal Status Certificates
        * Economic and Legal Status
-       - Electronic Identity Card (CIE)
-       - Passport
-       - Driving License (Italy only)
-       - Tax Code / Health Insurance Card
-       - Age Certification
-       - Birth Certificate
-       - Residence Certificate
-       - Family Status Certificate
-       - Marriage Certificate
-       - Citizenship Certificate
-       - ISEE (Equivalent Economic Situation Indicator)
-       - Residence Permit
-       - Certificate of Pending Charges
-       - Criminal Record Certificate
-     - Credentials that establish or confirm a person’s legal identity and personal status.
-     - Identity and age verification, civil status verification, access to services for minors, eligibility for services or benefits, right of residence.
+     -
+       * Electronic Identity Card (CIE)
+       * Passport
+       * Driving License (Italy only)
+       * Tax Code / Health Insurance Card
+       * Age Certification
+       * Birth Certificate
+       * Residence Certificate
+       * Family Status Certificate
+       * Marriage Certificate
+       * Citizenship Certificate
+       * ISEE (Equivalent Economic Situation Indicator)
+       * Residence Permit
+       * Certificate of Pending Charges
+       * Criminal Record Certificate
+     - Credentials that establish or confirm a person’s legal identity and personal, civil or legal status.
+     - Identity and age verification; civil status verification; access to services for minors; eligibility for services or benefits; right of residence.
+
    * - *HOME AND FAMILY*
-     - * Property and Cadastral Documents
+     -
+       * Property and Cadastral Documents
        * Family Documents
        * Local Tax Documents
-       - Deed of Sale
-       - Cadastral Survey
-       - Cadastral Floor Plan
-       - Cadastral Certificate
-       - Children’s Tax Code / Health Card
-       - Birth Certificate
-       - Family Status Certificate
-       - IMU (Property Tax)
-       - TARI (Waste Tax)
+     -
+       * Deed of Sale
+       * Cadastral Survey
+       * Cadastral Floor Plan
+       * Cadastral Certificate
+       * Children’s Tax Code / Health Card
+       * Birth Certificate
+       * Family Status Certificate
+       * IMU (Property Tax)
+       * TARI (Waste Tax)
      - Credentials that attest household composition, residence, and housing-related legal or fiscal relationships.
-     - Residence and household verification, determination of eligibility for housing, social or education services, compliance with local tax obligations.
+     - Residence and household verification; eligibility for housing, social or education services; compliance with local tax obligations.
+
    * - *EDUCATION*
-     - * Educational Qualifications
+     -
+       * Educational Qualifications
        * Professional Certifications
-       - Lower Secondary School Diploma
-       - Upper Secondary School Diploma
-       - Bachelor’s Degree
-       - Master’s Degree
-       - University Master
-       - PhD
-       - Professional Licenses (e.g. architect, lawyer, psychologist)
-       - Vocational Training Certificates (e.g. healthcare assistant)
-       - Language Certifications (e.g. IELTS)
-       - Academic Qualifications (e.g. Europass)
+     -
+       * Lower Secondary School Diploma
+       * Upper Secondary School Diploma
+       * Bachelor’s Degree
+       * Master’s Degree
+       * University Master
+       * PhD
+       * Professional Licenses (e.g. architect, lawyer, psychologist)
+       * Vocational Training Certificates (e.g. healthcare assistant)
+       * Language Certifications (e.g. IELTS)
+       * Academic Qualifications (e.g. Europass)
      - Credentials that attest educational achievements, academic qualifications, and professional training.
-     - Qualification and degree verification, skills and language assessment, eligibility for education pathways, competitions, licenses, or study and work opportunities.
+     - Qualification and degree verification; skills and language assessment; eligibility for education pathways, competitions, licenses, or study and work opportunities.
+
    * - *HEALTH*
-     - * Certifications and Eligibility
+     -
+       * Certifications and Eligibility
        * Medical Records
-       - Health Insurance Card (TEAM)
-       - European Health Card (CED)
-       - Disability Certificate
-       - Vaccination Certificate
-       - Sports Fitness Certificate
-       - Work Fitness Certificate
-       - Medical Prescriptions
-       - Digital Medical Report
+     -
+       * Health Insurance Card (TEAM)
+       * European Health Card (CED)
+       * Disability Certificate
+       * Vaccination Certificate
+       * Sports Fitness Certificate
+       * Work Fitness Certificate
+       * Medical Prescriptions
+       * Digital Medical Report
      - Credentials related to healthcare coverage, medical status, and health-related certifications.
-     - Access to healthcare services, identification within health systems, verification of vaccination or fitness status, access to and sharing of medical records.
+     - Access to healthcare services; identification within health systems; verification of vaccination or fitness status; access to and sharing of medical records.
+
    * - *FINANCIAL*
-     - * Payment Instruments
+     -
+       * Payment Instruments
        * Payment Credentials and Authorisations
        * Public Payments and Fees
        * Recurring Payments and Subscriptions
-       - Digital Payment Card (debit / credit / prepaid)
-       - Virtual Card
-       - Bank Account (IBAN)
-       - Strong Customer Authentication (SCA) Credential
-       - PagoPA Payment Receipt
-       - Digital Stamp Duty (Bollo digitale)
-       - Tax and Fee Payment Certificate
-       - Subscription Mandate
-       - Recurring Payment Credential
+     -
+       * Digital Payment Card (debit / credit / prepaid)
+       * Virtual Card
+       * Bank Account (IBAN)
+       * Strong Customer Authentication (SCA) Credential
+       * PagoPA Payment Receipt
+       * Digital Stamp Duty (Bollo digitale)
+       * Tax and Fee Payment Certificate
+       * Subscription Mandate
+       * Recurring Payment Credential
      - Credentials related to payment instruments, financial authorizations, and proof of payments.
-     - Payment authorization and execution, proof of payment, management of recurring payments, compliance with security or regulatory requirements.
+     - Payment authorization and execution; proof of payment; management of recurring payments; compliance with security or regulatory requirements.
+
    * - *CULTURE AND LEISURE*
-     - * Cultural Cards and Benefits (associations, loyalty programm, membership)
-       - Culture Card
-       - Annual Museum Passes
-       - Cinema Card
-       - Museum Card
-       - Association Membership Cards
-       - Library Card
-       - City Pass
+     -
+       * Cultural Cards and Benefits
+       * Membership and Loyalty Programs
+     -
+       * Culture Card
+       * Annual Museum Passes
+       * Cinema Card
+       * Museum Card
+       * Association Membership Cards
+       * Library Card
+       * City Pass
      - Credentials that attest membership, affiliation, or participation in cultural or recreational programs.
-     - Access to cultural or leisure services, application of discounts or benefits linked to memberships or programs.
+     - Access to cultural or leisure services; application of discounts or benefits linked to memberships or programs.
+
    * - *EMPLOYMENT*
-     - * Employment Documents
+     -
+       * Employment Documents
        * Employment Status
-       - Digital Employment Contract
-       - Curriculum Vitae (CV)
-       - Residence Permit
-       - Employment Status Certificate
-       - INPS Contribution Record
+     -
+       * Digital Employment Contract
+       * Curriculum Vitae (CV)
+       * Residence Permit
+       * Employment Status Certificate
+       * INPS Contribution Record
      - Credentials that attest employment relationships, professional status, and contribution records.
-     - Employment status verification, professional profile validation, verification of contribution records, eligibility for employment-related services or benefits.
+     - Employment status verification; professional profile validation; verification of contribution records; eligibility for employment-related services or benefits.
+
    * - *MOBILITY AND TRAVEL*
-     - * Licenses and Authorizations
+     -
+       * Licenses and Authorizations
        * Vehicle Documents
        * Subscriptions
-       * Travel Documents 
+       * Travel Documents
        * Travel Insurance
        * Bookings
        * Discounts and Benefits
-       - Mobile Driving License
-       - Boating License
-       - Vehicle Registration Certificate
-       - Digital RCA Insurance
-       - Vehicle Inspection Certificate
-       - Green Card / International Insurance
-       - Public Transport Pass
-       - Telepass Subscription
-       - Passport
-       - Travel Tickets (air, train, etc.)
-       - Travel Insurance Policy
-       - Hotel Reservation
-       - Discount Cards
-       - Tourist Benefits
+     -
+       * Mobile Driving License
+       * Boating License
+       * Vehicle Registration Certificate
+       * Digital RCA Insurance
+       * Vehicle Inspection Certificate
+       * Green Card / International Insurance
+       * Public Transport Pass
+       * Telepass Subscription
+       * Passport
+       * Travel Tickets (air, train, etc.)
+       * Travel Insurance Policy
+       * Hotel Reservation
+       * Discount Cards
+       * Tourist Benefits
      - Credentials that attest mobility rights, vehicle-related status, and travel-related entitlements.
-     - Driving and vehicle verification, right to travel or circulate, access to transport or accommodation services, verification of travel insurance or discounts.
+     - Driving and vehicle verification; right to travel or circulate; access to transport or accommodation services; verification of travel insurance or discounts.
+
    * - *BONUSES*
-     - * Economic Benefits and Allowances
+     -
+       * Economic Benefits and Allowances
        * Incentives and Vouchers
        * Health and Wellbeing Bonuses
-       - Family Allowance Credential
-       - Unemployment Benefit Credential
-       - Digital Voucher
-       - Purchase Incentive Credential
-       - Cashback Eligibility Credential
-       - Healthcare Bonus Credential
-       - Mental Health Support Voucher
-       - Sports and Physical Activity Bonus
+     -
+       * Family Allowance Credential
+       * Unemployment Benefit Credential
+       * Digital Voucher
+       * Purchase Incentive Credential
+       * Cashback Eligibility Credential
+       * Healthcare Bonus Credential
+       * Mental Health Support Voucher
+       * Sports and Physical Activity Bonus
      - Credentials that attest entitlement to economic benefits, incentives, or vouchers.
-     - Eligibility verification, allocation and use of benefits, application of usage conditions or limits.
+     - Eligibility verification; allocation and use of benefits; application of usage conditions or limits.
 
 Each Credential MUST specify domains, classes and purpose to enable both **Credential-Specific Scenarios** and **Credential-Agnostic Scenarios** according to Relying Party's requirements and presentation request patterns:
 
