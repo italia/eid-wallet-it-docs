@@ -964,8 +964,8 @@ The taxonomy maintains a four level hierarchical structure:
 
 - **Domains**: Top-level classification representing broad functional areas (e.g., IDENTITY, HEALTH, FINANCIAL)
 - **Class(Credential Family)**: Family of credentials sharing similar function, structure, or legal meaning (e.g., Identity Documents, Civil Status Certificates, Professional Licenses)
-- **Credential Type (Subclass)**: Specific credential definition issued by an authority  (e.g., Passport, Birth Certificate, Mobile Driving License).
-- **Purpose (Verification Intent)**: Verification objectives that a credential can satisfy  (e.g., Identity Verification, Age Verification, Eligibility for specific services).
+- **Credential Type (Subclass)**: Specific credential definition issued by an authority (e.g., Passport, Birth Certificate, Mobile Driving License).
+- **Purpose (Verification Intent)**: Verification objectives that a credential can satisfy (e.g., Identity Verification, Age Verification, Eligibility for specific services).
 
 
 **Localization Support:**
