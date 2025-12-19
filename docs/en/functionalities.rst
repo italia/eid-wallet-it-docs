@@ -869,7 +869,7 @@ The flow is shown below with illustrative wireframes.
 
 
 .. only:: format_latex
-  .. figure:: ./images/pdf/wallet-deactivation.svg
+  .. figure:: ./images/pdf/wallet-deactivation.pdf
     :alt: Example of User Experience in Deactivating a Wallet Instance
     :width: 100%
     :align: center
