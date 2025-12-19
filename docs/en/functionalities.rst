@@ -196,7 +196,7 @@ The flow is shown below with illustrative wireframes.
     :alt: Example of User Experience in the issuance an Authentic Electronic Attestation from Authentic Source
     :width: 100%
 
-    Example of User Experience in the issuance an Authentic Electronic Attestation from Authentic Source
+    Example of the User Experience during the issuance an Authentic Electronic Attestation from Authentic Source.
 
 
 Focus on Electronic Attestations of Attributes
@@ -228,7 +228,7 @@ Below an example of Electronic Attestation of Attribute layout, in a Preview Vie
     :alt: Example of Electronic Attestation of Attribute layout, Preview View, and Detail View 
     :width: 100%
 
-    Example of Electronic Attestation of Attribute layout, Preview View, and Detail View 
+    Example of Electronic Attestation of Attribute layout, Preview View, and Detail View.
 
 .. only:: format_latex
 
@@ -236,7 +236,7 @@ Below an example of Electronic Attestation of Attribute layout, in a Preview Vie
     :alt: Example of Electronic Attestation of Attribute layout, Preview View, and Detail View   
     :width: 100%
 
-    Example of Electronic Attestation of Attribute layout, Preview View, and Detail View 
+    Example of Electronic Attestation of Attribute layout, Preview View, and Detail View.
 
 
 Presentation of Electronic Attestations
@@ -289,7 +289,7 @@ The flow is shown below with illustrative wireframes.
     :alt: Example of User Experience in proximity presentation
     :width: 100%
 
-    Example of User Experience in proximity presentation
+    Example of User Experience in proximity presentation.
 
 Remote Presentation
 ^^^^^^^^^^^^^^^^^^^^
@@ -323,7 +323,7 @@ The flow is shown below with illustrative wireframes.
     :alt: Example of User Experience in remote, same-device presentation
     :width: 100%
 
-    Example of User Experience in remote, same-device presentation
+    Example of User Experience in remote, same-device presentation.
 
 **Cross-Device Mode**
 
@@ -345,7 +345,7 @@ The flow is shown below with illustrative wireframes.
     :alt: Example of User Experience in remote, cross-device presentation
     :width: 100%
 
-    Example of User Experience in remote, cross-device presentation
+    Example of User Experience in remote, cross-device presentation.
 
 
 
@@ -583,7 +583,7 @@ Both flows are shown below with illustrative wireframes.
     :alt: Example of same-device Authentication User Experience
     :width: 100%
 
-    Example of same-device Authentication User Experience
+    Example of same-device Authentication User Experience.
 
 
 .. only:: format_html
@@ -592,7 +592,7 @@ Both flows are shown below with illustrative wireframes.
     :alt: Example of cross-device Authentication User Experience
     :width: 100%
 
-    Example of cross-device Authentication User Experience
+    Example of cross-device Authentication User Experience.
 
 
 Authentication Button
@@ -710,7 +710,7 @@ The flow is shown below with illustrative wireframes.
      :alt: Example of User Experience in Updating an Electronic Attestation
      :width: 100%
 
-     Example of User Experience in Updating an Electronic Attestation
+     Example of User Experience in Updating an Electronic Attestation.
 
 
 Revocation of Electronic Attestations
@@ -745,7 +745,7 @@ The flow is shown below with illustrative wireframes.
      :alt: Example of User Experience in Revoking an Electronic Attestation
      :width: 100%
 
-     Example of User Experience in Revoking an Electronic Attestation
+     Example of User Experience in Revoking an Electronic Attestation.
 
 
 History of Electronic Attestations
@@ -809,7 +809,7 @@ The flow is shown below with illustrative wireframes.
      :alt: Example of User Experience in Deactivating a Wallet Instance
      :width: 100%
 
-     Example of User Experience in Deactivating a Wallet Instance
+     Example of User Experience in Deactivating a Wallet Instance.
 
 
 Error Management
