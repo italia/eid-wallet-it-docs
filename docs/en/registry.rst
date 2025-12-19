@@ -955,3 +955,4 @@ This journey describes how a **Wallet Instance** and a **Relying Party (RP)** in
 
 4.  **Acceptance or Rejection**: Based on cryptographic validation, schema compliance, and policy-based authorization, the RP accepts or rejects the Credential for service access.
 
+
