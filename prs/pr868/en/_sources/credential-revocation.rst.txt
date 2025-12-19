@@ -108,7 +108,7 @@ the conditions leading to its suspension are resolved, or it changes in **Revoke
 Digital Credential Lifecycle in a Batch
 ---------------------------------------
 
-For Digital Credentials issued in a single batch, each Credential immediately enters its own lifecycle state machine. All state transitions (Issued → Valid → Expired/Suspended/Revoked) still occur on a per Credential basis, using Credential's individual parameters (e.g., validity dates, Status List).
+For Digital Credentials issued in a single batch, each Credential shares the same lifecycle state machine. All state transitions (Issued → Valid → Expired/Suspended/Revoked) occur for the entire batch.
 
 
 Credential Lifecycle Management
@@ -243,8 +243,9 @@ For any other Credential different from the PID, the Credential Issuer SHOULD se
 Status Update by Wallet Providers
 """""""""""""""""""""""""""""""""
 
-In addition to what already defined in :ref:`credential-revocation:Digital Credential Lifecycle`, the Credential Issuer MUST provide a web service (Wallet Instance Revocation endpoint) defined using PDND, as specified in the Section :ref:`credential-issuer-endpoint:e-Service PDND Credential Issuer Catalog`.
-The Wallet Provider that for any reason revokes a Wallet Instance MUST send a notification to Issuers using this endpoint.
+The Wallet Provider that, for any reason, revokes a Wallet Instance MUST ensure that the updated status is reflected in the status list of the related the Wallet Unit Attestation. 
+In addition to what already defined in :ref:`credential-revocation:Digital Credential Lifecycle`, the Credential Issuer MUST implement a monitoring mechanism of the current statuses of all the Wallet Unit Attestations related to the Wallet Instances to which the Credentials were issued.
+Afterwards the revocation of the Wallet Unit Attestation, the Credential Issuer proceeds with the revocation of all the Credentials issued to the Wallet Instance.
 
 Status Update by Authentic Sources
 """"""""""""""""""""""""""""""""""
@@ -288,10 +289,9 @@ The Wallet instance, following periodic checks of the validity status of the sto
 Batch Credential Lifecycle Management
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When multiple Digital Credentials are issued together in a single batch, their lifecycle remains fully granular:
+When multiple Digital Credentials are issued together in a single batch, their lifecycle is shared:
 
-  * **Grouped triggers, independent updates**: A single batch status update request referencing the batch's ``notification_id`` and sent by an authorized entity (e.g. the Wallet Instance via Notification Endpoint with ``event=credential_deleted``, a Wallet Provider via PDND) is handled as N separate status changes. The Issuer updates each Credential's own status individually (for example, flipping its status-list bit to ``INVALID`` or ``SUSPENDED``). By default, a Wallet Instance SHALL NOT trigger batch status updates when the User deletes local Credentials. Upon deletion, the Wallet Instance MAY, under the User's explicit consent, notify the Credential Issuer of the User's intention to revoke the affected Credential(s); such a notification does not constitute a batch status update request.
-  * **Batch-wide revoke**: That same batch update request also serves as a revoke all request. The Issuer marks every Credential in the batch as revoked and MAY emit a single notification for the entire batch according to Issuer policy.
+  * **Grouped updates**: regardless of the actor that triggers a batch status update (e.g. the Wallet Instance via Notification Endpoint with ``event=credential_deleted``, Wallet Provider via updating Wallet Unit Attestation status list) the status updating is handled by changing a single status indicator (for example, flipping its status-list bit to ``INVALID`` or ``SUSPENDED``) related to the entire batch. By default, a Wallet Instance SHALL NOT trigger batch status updates when the User deletes local Credentials. Upon deletion, the Wallet Instance MAY, under the User's explicit consent, notify the Credential Issuer of the User's intention to revoke the affected Credential(s).
 
 .. note::
   As the Wallet UI typically surfaces a batch as one Credential (e.g., 3 uses remaining), a User-driven deletion in the Wallet removes the entire batch locally. By default it does not request revocation at the Issuer. The Wallet MAY offer the User an optional prompt to request revocation at the Issuer as part of the deletion flow.

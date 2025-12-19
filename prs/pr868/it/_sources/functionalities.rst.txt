@@ -72,7 +72,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
     :alt: Esempio di Esperienza Utente nell'Attivazione di un'Istanza del Wallet 
     :width: 100%
 
-    Esempio di Esperienza Utente nell'Attivazione di un'Istanza del Wallet 
+    Esempio di Esperienza Utente nell'Attivazione di un'Istanza del Wallet.
 
 .. only:: format_latex
 
@@ -80,7 +80,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
     :alt: Esempio di Esperienza Utente nell'Attivazione di un'Istanza del Wallet 01
     :width: 100%
 
-    Esempio di Esempio di Esperienza Utente nell'Attivazione di un'Istanza del Wallet 01
+    Esempio di Esperienza Utente nell'Attivazione di un'Istanza del Wallet 01
 
 
 .. only:: format_latex
@@ -89,7 +89,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
     :alt: Esempio di Esperienza Utente nell'Attivazione di un'Istanza del Wallet 02
     :width: 100%
 
-    Esempio di Esperienza Utente nell'Attivazione di un'Istanza del Wallet 02
+    Esempio di Esperienza Utente nell'Attivazione di un'Istanza del Wallet 02.
 
 
 
@@ -182,7 +182,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
     :alt: Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico di Attributi da Catalogo
     :width: 100%
 
-    Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico di Attributi da Catalogo 
+    Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico di Attributi da Catalogo.
 
 .. only:: format_latex
 
@@ -190,7 +190,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
     :alt: Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico di Attributi da Catalogo - 01
     :width: 100%
 
-    Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico di Attributi da Catalogo - 01
+    Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico di Attributi da Catalogo - 01.
 
 .. only:: format_latex
 
@@ -198,7 +198,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
     :alt: Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico di Attributi da Catalogo - 02
     :width: 100%
 
-    Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico di Attributi da Catalogo - 02
+    Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico di Attributi da Catalogo - 02.
 
 .. only:: format_latex
 
@@ -206,7 +206,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
     :alt: Esempio di Esperienza Utente nell'Ottenimento differito di un Attestato Elettronico di Attributi da Catalogo 
     :width: 100%
 
-    Esempio di Esperienza Utente nell'Ottenimento differito di un Attestato Elettronico di Attributi da Catalogo 
+    Esempio di Esperienza Utente nell'Ottenimento differito di un Attestato Elettronico di Attributi da Catalogo. 
 
 
 Ottenimento dal Touchpoint della Fonte Autentica
@@ -270,7 +270,7 @@ Di seguito un esempio di layout di Attestato Elettronico di Attributi, all'inter
     :alt: Esempio di layout di Attestato Elettronico di Attributi, Vista in Anteprima e Vista di Dettaglio
     :width: 100%
 
-    Esempio di layout di Attestato Elettronico di Attributi, Vista in Anteprima e Vista di Dettaglio 
+    Esempio di layout di Attestato Elettronico di Attributi, Vista in Anteprima e Vista di Dettaglio.
 
 .. only:: format_latex
 
@@ -278,7 +278,7 @@ Di seguito un esempio di layout di Attestato Elettronico di Attributi, all'inter
     :alt: Esempio di layout di Attestato Elettronico di Attributi, Vista in Anteprima e Vista di Dettaglio  
     :width: 100%
 
-    Esempio di layout di Attestato Elettronico di Attributi, Vista in Anteprima e Vista di Dettaglio
+    Esempio di layout di Attestato Elettronico di Attributi, Vista in Anteprima e Vista di Dettaglio.
 
 
 Presentazione degli Attestati Elettronici 
@@ -331,7 +331,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
     :alt: Esempio di Esperienza Utente nella presentazione in prossimità
     :width: 100%
 
-    Esempio di Esperienza Utente nella presentazione in prossimità
+    Esempio di Esperienza Utente nella presentazione in prossimità.
 
 
 Presentazione da remoto 
@@ -366,7 +366,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
     :alt: Esempio di Esperienza Utente nella presentazione da remoto, same-device
     :width: 100%
 
-    Esempio di Esperienza Utente nella presentazione da remoto, same-device
+    Esempio di Esperienza Utente nella presentazione da remoto, same-device.
 
 **Cross-device** 
 
@@ -388,7 +388,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
     :alt: Esempio di Esperienza Utente nella presentazione da remoto, cross-device
     :width: 100%
 
-    Esempio di Esperienza Utente nella presentazione da remoto, cross-device
+    Esempio di Esperienza Utente nella presentazione da remoto, cross-device.
 
 
 Autenticazione
@@ -622,7 +622,7 @@ Il Verificatore di Attestati Elettronici che implementa la pagina:
 - DEVE assicurare che i copy presenti nella pagina rispecchino quelli riportati nelle :ref:`official-resources:Risorse Ufficiali`;  
 - DEVE prevedere una o più Call to Action che invitino l'Utente a intraprendere le azioni previste (es. riprova, contatta l'assistenza, etc.). 
 
-Entrambi i flussi sono rappresentati di seguito con wirefrme esemplificativi.
+Entrambi i flussi sono rappresentati di seguito con wireframe esemplificativi.
 
 .. only:: format_html
 
@@ -630,7 +630,7 @@ Entrambi i flussi sono rappresentati di seguito con wirefrme esemplificativi.
     :alt: Esempio di Esperienza Utente di Autenticazione same-device
     :width: 100%
 
-    Esempio di Esperienza Utente di Autenticazione same-device
+    Esempio di Esperienza Utente di Autenticazione same-device.
 
 
 .. only:: format_html
@@ -639,7 +639,7 @@ Entrambi i flussi sono rappresentati di seguito con wirefrme esemplificativi.
     :alt: Esempio di Esperienza Utente di Autenticazione cross-device
     :width: 100%
 
-    Esempio di Esperienza Utente di Autenticazione cross-device
+    Esempio di Esperienza Utente di Autenticazione cross-device.
 
 
 Authentication Button
@@ -754,7 +754,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
      :alt: Esempio di Esperienza Utente nell'Aggiornamento di un Attestato Elettronico
      :width: 100%
 
-     Esempio di Esperienza Utente nell'Aggiornamento di un Attestato Elettronico
+     Esempio di Esperienza Utente nell'Aggiornamento di un Attestato Elettronico.
 
 
 Revoca degli Attestati Elettronici
@@ -789,7 +789,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
      :alt: Esempio di Esperienza Utente nella Revoca di un Attestato Elettronico
      :width: 100%
 
-     Esempio di Esperienza Utente nella Revoca di un Attestato Elettronico
+     Esempio di Esperienza Utente nella Revoca di un Attestato Elettronico.
 
 
 Storico degli Attestati Elettronici 
@@ -852,7 +852,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
      :alt: Esempio di Esperienza Utente nella Disattivazione di un'Istanza del Wallet
      :width: 100%
 
-     Esempio di Esperienza Utente nella Disattivazione di un'Istanza del Wallet
+     Esempio di Esperienza Utente nella Disattivazione di un'Istanza del Wallet.
 
 
 Gestione degli errori 
