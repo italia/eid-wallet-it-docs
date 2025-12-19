@@ -554,15 +554,11 @@ I Tipi di Credenziale consentono un targeting preciso nei flussi di verifica gui
 
 **Finalità (Intento di Verifica)**
 
-
 Una **Finalità (Intento di Verifica)** descrive *perché* una Credenziale può essere richiesta da un *Relying Party* (ad es. Verifica dell’identità, Verifica dell’età, Idoneità all’accesso a servizi specifici).
-
 Le Finalità **DEVONO** descrivere gli **obiettivi della verifica**.
-
 Ogni Tipo di Credenziale **DEVE** dichiarare il proprio Dominio, la propria Classe e le Finalità supportate.
 
 La tabella seguente fornisce esempi non esaustivi che illustrano le relazioni tra Dominio, Classe, Tipo di Credenziale e Finalità.
-
 Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori **POTREBBERO** essere aggiunti nel tempo man mano che l’ecosistema IT-Wallet evolverà.
 
 
@@ -1001,7 +997,6 @@ Un esempio non normativo della struttura della Tassonomia è fornito di seguito:
 Un esempio non normativo di output di un bundle di localizzazione è fornito di seguito:
 
 .. code-block:: json
-
 
   {
     "domain.identity.name": "IDENTITÀ",
