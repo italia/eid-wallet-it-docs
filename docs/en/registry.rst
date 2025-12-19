@@ -740,7 +740,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes **M
      - Credentials that attest entitlement to economic benefits, incentives, or vouchers.
      - Eligibility verification; allocation and use of benefits; application of usage conditions or limits.
 
-Each Credential MUST specify domains, classes and purpose to enable both **Credential-Specific Scenarios** and **Credential-Agnostic Scenarios** according to Relying Party's requirements and presentation request patterns:
+Each Credential MUST specify domains, classes and purposes to enable both **Credential-Specific Scenarios** and **Credential-Agnostic Scenarios** according to Relying Party's requirements and presentation request patterns:
 
   1. **Credential-Specific Scenarios** (Primary for Government/Regulated Sectors): RPs request specific credential types for compliance and audit requirements, including for example:
 
