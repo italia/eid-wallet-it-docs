@@ -531,7 +531,7 @@ Un **Dominio** rappresenta un'area tematica di alto livello che raggruppa famigl
 
 **Classe (Famiglia di Credenziali)**
 
-Una **Classe** rappresenta una famiglia di Credenziali che condividono natura, funzione o struttura simili (ad es. Documenti di Identità, Certificati di Stato Civile).
+Una **Classe** rappresenta una famiglia di Credenziali che condividono natura, funzione o struttura simili (ad es. Documenti di Identificazione, Certificati di Stato Civile).
 
 Ogni Classe **DOVREBBE** definire:
 
@@ -542,7 +542,7 @@ Le Classi consentono ai *Relying Party* e alle *Wallet Solution* di richiedere o
 
 **Tipo di Credenziale (Sottoclasse)**
 
-Un **Tipo di Credenziale (Sottoclasse)** rappresenta una specifica istanza di credenziale all'interno di una Classe (ad es. Passaporto, Certificato di Nascita, Patente di Guida).
+Un **Tipo di Credenziale (Sottoclasse)** rappresenta una specifica istanza di credenziale all'interno di una Classe (ad es. Credenziale di Viaggio Digitale, Certificato di Nascita, Patente di Guida).
 
 Ogni Tipo di Credenziale **DEVE** includere:
 
@@ -580,7 +580,7 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori **POTRE
        * Certificati di Registro Civile e Stato Personale
        * Stato Economico e Legale
      -
-       * Passaporto
+       * Credenziale di Viaggio Digitale
        * Patente di Guida (solo Italia)
        * Codice Fiscale / Tessera Sanitaria
        * Certificazione dell'Età
@@ -713,7 +713,7 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori **POTRE
        * Carta Verde / Assicurazione Internazionale
        * Abbonamento Trasporto Pubblico
        * Abbonamento Telepass
-       * Passaporto
+       * Credenziale di Viaggio Digitale
        * Biglietti di Viaggio (aereo, treno, ecc.)
        * Polizza Assicurativa di Viaggio
        * Prenotazione Alberghiera
@@ -936,8 +936,8 @@ La Tassonomia mantiene una struttura gerarchica a quattro livelli:
 
 - **Dominio**: Classificazione di livello superiore che rappresenta aree funzionali ampie (ad esempio, IDENTITY, HEALTH, FINANCIAL) 
 
-- **Classe (Famiglia di Credenziali)**: Insieme di Credenziali che condividono funzione, struttura o significato giuridico simili (es. Documenti di Identità, Certificati di Stato Civile, Abilitazioni Professionali)
-- **Sottoclasse (Tipo di credenziale)**: Definizione specifica di una Credenziale rilasciata da un'autorità competente (es. Passaporto, Certificato di Nascita, Patente di Guida).
+- **Classe (Famiglia di Credenziali)**: Insieme di Credenziali che condividono funzione, struttura o significato giuridico simili (es. Documenti di Identificazione, Certificati di Stato Civile, Abilitazioni Professionali)
+- **Sottoclasse (Tipo di credenziale)**: Definizione specifica di una Credenziale rilasciata da un'autorità competente (es. Credenziale di Viaggio Digitale, Certificato di Nascita, Patente di Guida).
 - **Finalità di verifica**: Obiettivi di verifica che una Credenziale può soddisfare (ad es. Verifica dell'identità, Verifica dell'età, Idoneità all'accesso a servizi specifici).
 
 **Supporto alla Localizzazione:**
@@ -973,7 +973,7 @@ Un esempio non normativo di output di un bundle di localizzazione è fornito di 
   {
     "domain.identity.name": "IDENTITÀ",
     "domain.class": "Documenti di Identificazione",
-    "domain.subclass": "Passaporto",
+    "domain.subclass": "Patente di Guida",
     "domain.identity.description": "Credenziali che stabiliscono o confermano l'identità legale di una persona e lo stato personale",
     "purpose.person_identification.name": "Verifica dell'identità",
     "...": "..."

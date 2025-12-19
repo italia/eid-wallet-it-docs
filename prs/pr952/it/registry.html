@@ -1151,7 +1151,7 @@ Content-Type: application/json
 <p><strong>Dominio</strong></p>
 <p>Un <strong>Dominio</strong> rappresenta un'area tematica di alto livello che raggruppa famiglie di Credenziali afferenti allo stesso contesto generale (ad es. Identità, Salute, Istruzione, Mobilità). I Domini forniscono il livello organizzativo più alto della Tassonomia.</p>
 <p><strong>Classe (Famiglia di Credenziali)</strong></p>
-<p>Una <strong>Classe</strong> rappresenta una famiglia di Credenziali che condividono natura, funzione o struttura simili (ad es. Documenti di Identità, Certificati di Stato Civile).</p>
+<p>Una <strong>Classe</strong> rappresenta una famiglia di Credenziali che condividono natura, funzione o struttura simili (ad es. Documenti di Identificazione, Certificati di Stato Civile).</p>
 <p>Ogni Classe <strong>DOVREBBE</strong> definire:</p>
 <ul class="simple">
 <li><p>un identificatore di Classe stabile (URI),</p></li>
@@ -1159,7 +1159,7 @@ Content-Type: application/json
 </ul>
 <p>Le Classi consentono ai <em>Relying Party</em> e alle <em>Wallet Solution</em> di richiedere o individuare credenziali in base alla loro categoria tipologica.</p>
 <p><strong>Tipo di Credenziale (Sottoclasse)</strong></p>
-<p>Un <strong>Tipo di Credenziale (Sottoclasse)</strong> rappresenta una specifica istanza di credenziale all'interno di una Classe (ad es. Passaporto, Certificato di Nascita, Patente di Guida).</p>
+<p>Un <strong>Tipo di Credenziale (Sottoclasse)</strong> rappresenta una specifica istanza di credenziale all'interno di una Classe (ad es. Credenziale di Viaggio Digitale, Certificato di Nascita, Patente di Guida).</p>
 <p>Ogni Tipo di Credenziale <strong>DEVE</strong> includere:</p>
 <ul class="simple">
 <li><p>un identificatore univoco,</p></li>
@@ -1199,7 +1199,7 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori <strong
 </ul>
 </td>
 <td><ul class="simple">
-<li><p>Passaporto</p></li>
+<li><p>Credenziale di Viaggio Digitale</p></li>
 <li><p>Patente di Guida (solo Italia)</p></li>
 <li><p>Codice Fiscale / Tessera Sanitaria</p></li>
 <li><p>Certificazione dell'Età</p></li>
@@ -1360,7 +1360,7 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori <strong
 <li><p>Carta Verde / Assicurazione Internazionale</p></li>
 <li><p>Abbonamento Trasporto Pubblico</p></li>
 <li><p>Abbonamento Telepass</p></li>
-<li><p>Passaporto</p></li>
+<li><p>Credenziale di Viaggio Digitale</p></li>
 <li><p>Biglietti di Viaggio (aereo, treno, ecc.)</p></li>
 <li><p>Polizza Assicurativa di Viaggio</p></li>
 <li><p>Prenotazione Alberghiera</p></li>
@@ -1728,8 +1728,8 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori <strong
 <p>La Tassonomia mantiene una struttura gerarchica a quattro livelli:</p>
 <ul class="simple">
 <li><p><strong>Dominio</strong>: Classificazione di livello superiore che rappresenta aree funzionali ampie (ad esempio, IDENTITY, HEALTH, FINANCIAL)</p></li>
-<li><p><strong>Classe (Famiglia di Credenziali)</strong>: Insieme di Credenziali che condividono funzione, struttura o significato giuridico simili (es. Documenti di Identità, Certificati di Stato Civile, Abilitazioni Professionali)</p></li>
-<li><p><strong>Sottoclasse (Tipo di credenziale)</strong>: Definizione specifica di una Credenziale rilasciata da un'autorità competente (es. Passaporto, Certificato di Nascita, Patente di Guida).</p></li>
+<li><p><strong>Classe (Famiglia di Credenziali)</strong>: Insieme di Credenziali che condividono funzione, struttura o significato giuridico simili (es. Documenti di Identificazione, Certificati di Stato Civile, Abilitazioni Professionali)</p></li>
+<li><p><strong>Sottoclasse (Tipo di credenziale)</strong>: Definizione specifica di una Credenziale rilasciata da un'autorità competente (es. Credenziale di Viaggio Digitale, Certificato di Nascita, Patente di Guida).</p></li>
 <li><p><strong>Finalità di verifica</strong>: Obiettivi di verifica che una Credenziale può soddisfare (ad es. Verifica dell'identità, Verifica dell'età, Idoneità all'accesso a servizi specifici).</p></li>
 </ul>
 <p><strong>Supporto alla Localizzazione:</strong></p>
@@ -1940,7 +1940,7 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori <strong
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;domain.identity.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDENTITÀ&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;domain.class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Documenti di Identificazione&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;domain.subclass&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Passaporto&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;domain.subclass&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Patente di Guida&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;domain.identity.description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Credenziali che stabiliscono o confermano l&#39;identità legale di una persona e lo stato personale&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;purpose.person_identification.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Verifica dell&#39;identità&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;...&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span>

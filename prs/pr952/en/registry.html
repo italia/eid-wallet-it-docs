@@ -1147,7 +1147,7 @@ Content-Type: application/json
 <p>A <strong>Domain</strong> represents a high-level thematic area grouping Credential families that relate to the same broad context (e.g., Identity, Health, Education, Mobility).
 Domains provide a top-level organizational layer.</p>
 <p><strong>Class (Credential Family)</strong></p>
-<p>A <strong>Class</strong> represents a family of Credentials sharing similar nature, function, or structure (e.g., Identity Documents, Civil Status Certificates).</p>
+<p>A <strong>Class</strong> represents a family of Credentials sharing similar nature, function, or structure (e.g., Identification Documents, Civil Status Certificates).</p>
 <p>Each Class SHOULD define:</p>
 <ul class="simple">
 <li><p>a stable Class identifier (URI),</p></li>
@@ -1155,7 +1155,7 @@ Domains provide a top-level organizational layer.</p>
 </ul>
 <p>Classes enable Relying Parties and Wallet Solutions to request or match Credentials based on their type category.</p>
 <p><strong>Credential Type (Subclass)</strong></p>
-<p>A <strong>Credential Type (Subclass)</strong> represents a specific Credential within a Class (e.g. Passport, Birth Certificate, Mobile Driving License).
+<p>A <strong>Credential Type (Subclass)</strong> represents a specific Credential within a Class (e.g. Digital Travel Credential, Birth Certificate, Mobile Driving License).
 Each Credential Type SHALL include:</p>
 <ul class="simple">
 <li><p>a unique identifier,</p></li>
@@ -1196,7 +1196,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 </td>
 <td><ul class="simple">
 <li><p>Digital Travel Credential</p></li>
-<li><p>Driving License (Italy only)</p></li>
+<li><p>Mobile Driving License (Italy only)</p></li>
 <li><p>Tax Code / Health Insurance Card</p></li>
 <li><p>Age Certification</p></li>
 <li><p>Birth Certificate</p></li>
@@ -1356,7 +1356,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 <li><p>Green Card / International Insurance</p></li>
 <li><p>Public Transport Pass</p></li>
 <li><p>Telepass Subscription</p></li>
-<li><p>Passport</p></li>
+<li><p>Digital Travel Credential</p></li>
 <li><p>Travel Tickets (air, train, etc.)</p></li>
 <li><p>Travel Insurance Policy</p></li>
 <li><p>Hotel Reservation</p></li>
@@ -1722,8 +1722,8 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 <p>The taxonomy maintains a four level hierarchical structure:</p>
 <ul class="simple">
 <li><p><strong>Domains</strong>: Top-level classification representing broad functional areas (e.g., IDENTITY, HEALTH, FINANCIAL)</p></li>
-<li><p><strong>Class(Credential Family)</strong>: Family of Credentials sharing similar function, structure, or legal meaning (e.g., Identity Documents, Civil Status Certificates, Professional Licenses)</p></li>
-<li><p><strong>Credential Type (Subclass)</strong>: Specific Credential definition issued by an authority (e.g., Passport, Birth Certificate, Mobile Driving License).</p></li>
+<li><p><strong>Class(Credential Family)</strong>: Family of Credentials sharing similar function, structure, or legal meaning (e.g., Identification Documents, Civil Status Certificates, Professional Licenses)</p></li>
+<li><p><strong>Credential Type (Subclass)</strong>: Specific Credential definition issued by an authority (e.g., Digital Travel Credential, Birth Certificate, Mobile Driving License).</p></li>
 <li><p><strong>Purpose (Verification Intent)</strong>: Verification objectives that a Credential can satisfy (e.g., Identity Verification, Age Verification, Eligibility for specific services).</p></li>
 </ul>
 <p><strong>Localization Support:</strong></p>
@@ -1934,7 +1934,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;domain.identity.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDENTITY&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;domain.class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Identification Documents&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;domain.subclass&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Passport&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;domain.subclass&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mobile Driving License&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;domain.identity.description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Credentials that establish or confirm a person&#39;s legal identity and personal status&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;purpose.person_identification.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Identity verification&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;...&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span>
