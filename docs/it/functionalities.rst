@@ -32,7 +32,7 @@ Il Sistema IT-Wallet offre all'utente un'esperienza più semplice, veloce e sicu
 
 Le sezioni a seguire si focalizzano sulle macro-fasi di utilizzo e post-utilizzo. Esse definiscono i requisiti funzionali a supporto dell'Esperienza Utente relativi alle fasi di attivazione ottenimento, presentazione, gestione e disattivazione, unitamente ai requisiti di interazione con il servizio in termini di gestione degli errori, richiesta di assistenza e raccolta feedback. 
 
-La documentazione e le risorse aggiuntive sono rese disponibili nella sezione :ref:`official-resources:Risorse Ufficiali`. 
+La documentazione e le risorse aggiuntive sono rese disponibili nella cartella :ref:`official-resources:Risorse Ufficiali`. 
 
 Le Risorse Ufficiali descrivono le modalità di interazione Utente-Istanza del Wallet e le buone pratiche di progettazione al fine di promuovere coerenza tra le diverse Soluzioni Wallet, in termini di modalità di fruizione delle funzionalità. 
 
@@ -80,12 +80,30 @@ Di seguito sono riportati i requisiti di Esperienza Utente per assicurare una vi
 Per assicurare un’identificazione e una rappresentazione del PID coerente tra tutte le Soluzioni Wallet, il Fornitore di Wallet: 
 
 - DEVE utilizzare la denominazione ufficiale “IT-Wallet ID” per riferirsi al PID nelle sue Soluzioni Wallet e NON DEVE utilizzare personalizzazioni o termini tecnici come "Dati di Identificazione della Persona" o l’acronimo "PID"; 
-- DEVE utilizzare l’elemento grafico ufficiale di IT-Wallet ID disponibile nelle Risorse Ufficiali e DEVE rispettare tutte le relative specifiche di utilizzo fornite; 
+- DEVE utilizzare l’elemento grafico ufficiale di IT-Wallet ID disponibile nelle :ref:`official-resources:Risorse Ufficiali` e DEVE rispettare tutte le relative specifiche di utilizzo fornite; 
 - DEVE utilizzare l’elemento grafico di IT-Wallet ID in formato ``application/svg+xml`` data; 
 - NON DEVE alterare, distorcere, modificare o sostituire l’elemento grafico di IT-Wallet ID con elementi grafici non ufficiali; 
-- DEVE garantire l'area di rispetto minima definita nelle Risorse Ufficiali, al fine di garantirne un'adeguata visibilità e riconoscibilità. Altri elementi grafici o testuali NON DEVONO interferire con questa area di rispetto; 
-- NON DEVE ridimensionare l’elemento grafico di IT-Wallet ID oltre i limiti minimi stabiliti dalle Risorse Ufficiali, in modo da garantire sempre una leggibilità ottimale su qualsiasi formato o dispositivo; 
-- NON DEVE utilizzare l’elemento grafico di IT-Wallet ID su sfondi di colore che ne compromettano la visibilità o la leggibilità. DEVE garantire un contrasto adeguato tra elemento grafico di IT-Wallet ID e lo sfondo, in conformità con quanto definito nelle Risorse Ufficiali.  
+- DEVE garantire l'area di rispetto minima definita nelle :ref:`official-resources:Risorse Ufficiali`, al fine di garantirne un'adeguata visibilità e riconoscibilità. Altri elementi grafici o testuali NON DEVONO interferire con questa area di rispetto; 
+- NON DEVE ridimensionare l’elemento grafico di IT-Wallet ID oltre i limiti minimi stabiliti dalle :ref:`official-resources:Risorse Ufficiali`, in modo da garantire sempre una leggibilità ottimale su qualsiasi formato o dispositivo; 
+- NON DEVE utilizzare l’elemento grafico di IT-Wallet ID su sfondi di colore che ne compromettano la visibilità o la leggibilità. DEVE garantire un contrasto adeguato tra elemento grafico di IT-Wallet ID e lo sfondo, in conformità con quanto definito nelle :ref:`official-resources:Risorse Ufficiali`. 
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/IT-Wallet-ID.svg
+    :alt: Elemento grafico “IT-Wallet ID” su sfondo chiaro 
+    :width: 100%
+
+    Elemento grafico “IT-Wallet ID” su sfondo chiaro 
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/IT-Wallet-ID.pdf
+    :alt: Elemento grafico “IT-Wallet ID” su sfondo chiaro 
+    :width: 100%
+
+    Elemento grafico “IT-Wallet ID” su sfondo chiaro  
+
+Le Risorse Ufficiali dell’“IT-Wallet ID” sono disponibili all’interno della cartella :ref:`official-resources:Risorse Ufficiali`. Maggiore Dodecumentazione aggiuntiva sarà prossimamente disponibile sul sito ufficiale https://www.wallet.gov.it. 
 
 Ottenimento degli Attestati Elettronici di Attributi 
 -----------------------------------------------------
