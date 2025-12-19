@@ -547,7 +547,7 @@ Un **Tipo di Credenziale (Sottoclasse)** rappresenta una specifica istanza di Cr
 Ogni Tipo di Credenziale **DEVE** includere:
 
 - un identificatore univoco (ad es. VCT, URI di schema),  
-- l’autorità emittente,  
+- l'identificativo del Credential Issuer,  
 - l’insieme degli Attributi che **POTREBBERO** essere inclusi nelle presentazioni.
 
 I Tipi di Credenziale consentono un targeting preciso nei flussi di verifica guidati da requisiti di conformità o obblighi normativi.
