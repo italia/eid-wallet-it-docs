@@ -204,7 +204,7 @@ Di seguito sono riportati i requisiti che ogni Fonte Autentica DEVE rispettare p
 - L’EAA PUÒ essere caratterizzato da una **filigrana di background**. La Fonte Autentica PUÒ rendere disponibile la filigrana desiderata tramite il parametro ``data_capabilities.watermark_image``. In particolare, la Fonte Autentica: 
 
  - DEVE fornire esclusivamente una singola filigrana; 
- - DEVE fornire la filigrana in uno dei seguenti formati: png, .svg; 
+ - DEVE fornire la filigrana in uno dei seguenti formati: ``image/png``, ``image/svg+xml``; 
  - DEVE fornire la filigrana con una dimensione minima di 321 × 205 pixel e una dimensione massima di 1284 × 820 pixel; 
  - DEVE fornire una filigrana che non ecceda il peso massimo di 200 KB. 
 
