@@ -30,17 +30,17 @@ The IT-Wallet System provides Users with a simpler, faster, and more secure way 
 
 The following sections focus on the usage and post-usage phases. They define the functional requirements supporting the User Experience for the activation, acquisition, presentation, management, and deactivation phases, along with interaction requirements related to error management, assistance requests, and feedback collection.
 
-Additional documentation and resources are provided in the :ref:`official-resources:Official Resources` section.  
+Additional documentation and resources are provided in the :ref:`official-resources:Official Resources` folder.  
 
 The Official Resources include recommendations on the required User-Wallet Instance interactions and design best practices that promote consistency across different Wallet Solutions in terms of how functionalities are accessed and used.
 
 To ensure a correct and consistent implementation, Primary Actors: 
 
-- MUST use Official Resources and MUST comply with all related usage specifications provided; 
+- MUST use the :ref:`official-resources:Official Resources` and MUST comply with all related usage specifications provided; 
 
 - MAY choose from the available configurations provided. Primary Actors MUST ensure the correct use of atomic components, such as the Engagement Buttons; 
 
-- MUST keep used resources up to date, in line with the latest available version of the Official Resources. 
+- MUST keep used resources up to date, in line with the latest available version of the :ref:`official-resources:Official Resources`. 
 
 Activation of the Wallet Instance
 ----------------------------------
@@ -79,12 +79,30 @@ Below are illustrated the User Experience requirements to ensure a uniform and c
 To ensure a consistent identification and representation of the PID across different Wallet Solutions, the Wallet Provider: 
 
 - MUST use the official naming “IT-Wallet ID” to refer to PID in their Wallet Solutions and MUST NOT use custom or technical terms such as "Person Identification Data" or its acronym "PID"; 
-- MUST use the IT-Wallet ID official graphic asset available in the Official Resources and MUST comply with the related usage specifications provided; 
+- MUST use the IT-Wallet ID official graphic asset available in the :ref:`official-resources:Official Resources` and MUST comply with the related usage specifications provided; 
 - MUST use the IT-Wallet ID graphic asset in the ``application/svg+xml`` data format; 
 - MUST NOT alter, modify, or replace the IT-Wallet ID graphic asset with unofficial graphic assets; 
-- MUST maintain the minimum clear space as defined in the Official Resources to ensure visibility and recognizability. No other graphic or textual elements MUST interfere with this space; 
-- MUST NOT resize the IT-Wallet ID graphic asset below the minimum dimensions specified in the Official Resources to maintain legibility across formats and devices; 
-- MUST NOT place the IT-Wallet ID graphic asset on backgrounds that compromise its visibility or legibility. Adequate contrast between the IT-Wallet ID graphic asset and the background MUST be ensured, in line with the Official Resources. 
+- MUST maintain the minimum clear space as defined in the :ref:`official-resources:Official Resources` to ensure visibility and recognizability. No other graphic or textual elements MUST interfere with this space; 
+- MUST NOT resize the IT-Wallet ID graphic asset below the minimum dimensions specified in the :ref:`official-resources:Official Resources` to maintain legibility across formats and devices; 
+- MUST NOT place the IT-Wallet ID graphic asset on backgrounds that compromise its visibility or legibility. Adequate contrast between the IT-Wallet ID graphic asset and the background MUST be ensured, in line with the :ref:`official-resources:Official Resources`. 
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/IT-Wallet-ID.svg
+    :alt: IT-Wallet ID official graphic asset on a light background 
+    :width: 100%
+
+    IT-Wallet ID official graphic asset on a light background 
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/IT-Wallet-ID.pdf
+    :alt: IT-Wallet ID official graphic asset on a light background 
+    :width: 100%
+
+    IT-Wallet ID official graphic asset on a light background 
+
+The IT-Wallet ID Official Resources are provided in the related :re:`official-resources` folder. Additional documentation on the IT-Wallet ID graphic assets is available in the Brand Manual, which will be made available on the official website https://www.wallet.gov.it.  
 
 
 Issuance of Electronic Attestations of Attributes
