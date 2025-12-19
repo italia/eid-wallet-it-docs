@@ -65,7 +65,7 @@ In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee 
 Focus on PID – Person Identification Data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The PID (Person Identification Data) refers to verified minimum set of informations about the User identity (see :ref:`credential-data-model:Digital Credential Data Model`) issued as a result of the activation process and made available in the Wallet Instance.
+The PID (Person Identification Data) refers to a verified minimum set of information about the User identity (see :ref:`credential-data-model:Digital Credential Data Model`) issued as a result of the activation process and made available in the Wallet Instance.
 
 Below are illustrated the User Experience requirements to ensure a uniform and consistent usage and display of the PID. The Wallet Provider: 
 
@@ -168,9 +168,7 @@ Focus on Electronic Attestations of Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The EAAs obtained within the Wallet Instance MUST ensure a high level of recognizability and accessibility [REF_ACCESSIBILITY] of the information contained. 
-
-The EAAs representation depends on the UI and design choices of the Wallet Solution and for certain specific aspects, on what is defined within the Authentic Source Registry and the Digital Credential Catalog (see :ref: `registry:Registry Infrastructure`).  
-
+The EAAs representation depends on the UI and design choices of the Wallet Solution and for certain specific aspects, on what is defined within the Authentic Source Registry and the Digital Credential Catalog (see :ref:`registry:Registry Infrastructure`).  
 Below are the requirements that every Authentic Source MUST follow to personalize their EAAs (see :ref:`registry:Authentic Source Registry`): 
 
 - The EAA MAY be characterized by the **Authentic Source** logo. The Authentic Source MAY provide this logo in two versions, a compact version via the ``organization_info.logo_uri`` parameter and an extended version via the ``organization_info.logo_extended_uri`` parameter. In particular, the Authentic Source:  
@@ -207,9 +205,9 @@ Below are the requirements that every Authentic Source MUST follow to personaliz
 - The EAA MAY be characterized by a **background color**. The Authentic Source MAY provide the desired background color via the ``data_capabilities.background_color`` parameter. In particular, the Authentic Source: 
 
  - MUST provide the background color only using one of the following color modes: HEX, HSB, RGB, sRGB, HSL, or HSV; 
- - MAY provide the background color also with a gradient.the Gradient values MUST be provided in one of the accepted color modes. 
+ - MAY provide the background color also with a gradient. Gradient values MUST be provided in one of the accepted color modes. 
 
-- The EAA MUST be characterized by a particular data order. The Authentic Source MUST provided the desired Attributes order via ``data_capabilities.available_claims.order`` parameter. In particular, the Authentic Source: 
+- The EAA MUST be characterized by a particular data order. The Authentic Source MUST provide the desired Attributes order via ``data_capabilities.available_claims.order`` parameter. In particular, the Authentic Source: 
 
  - MUST firstly provide personal details, if included, in the following order: first name, last name, date of birth, place of birth, tax code, etc; 
  - MUST provide additional specific details following a logical order that is clear to the User. 
@@ -225,9 +223,9 @@ Below are illustrated the User Experience requirements to ensure a uniform and c
 - MUST display the EAA status, if different from valid to provide transparency on its lifecycle and MAY display it if valid, in both the Detail View and the Preview View. Specific details about the EAA status, if invalid, MAY be provided in the Detail View (e.g., the reason why the EAA is revoked); 
 - MAY include optional information to enhance the User Experience and the EAA recognizability, both in the Preview View and the Detail View, such as the logo, the color, the image and/or the watermark as defined by the Authentic Source within the Authentic Source Registry (see :ref:`registry:Authentic Source Registry`); 
 - MUST include the same data of the Preview View in the Detail View and give a complete representation of all the other Attributes, following the order defined by the Authentic Source within the Authentic Source Registry (see :ref:`registry:Authentic Source Registry`); MAY include specific details in the Detail View, for example information about use case scenario or the reason for the invalid state of the EAA; 
-- MUST include Action Buttons in the Detail View to enable the EAA lifecycle management and allow the User to revoke or to update a EAA at any time (see :ref :`functionalities:Management of Electronic Attestations`); 
+- MUST include Action Buttons in the Detail View to enable the EAA lifecycle management and allow the User to revoke or to update a EAA at any time (see :ref:`functionalities:Management of Electronic Attestations`); 
 - MUST guarantee that the EAA is a functional element, for the User to access services provided by Relying Parties in digital and proximity contexts (see :ref:`functionalities:Presentation of Electronic Attestations`); 
-- MUST display in the Detail View a method of assistance given by the Authentic Source via the data_capabilities.contacts parameter (see :ref:`functionalities:User Assistance` and see :ref:`registry:Authentic Source Registry`). 
+- MUST display in the Detail View a method of assistance given by the Authentic Source via the ``data_capabilities.contacts`` parameter (see :ref:`functionalities:User Assistance` and see :ref:`registry:Authentic Source Registry`). 
 
 Presentation of Electronic Attestations
 ----------------------------------------
