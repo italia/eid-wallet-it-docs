@@ -941,7 +941,7 @@ La tassonomia mantiene una struttura gerarchica a quattro livelli:
 
 - **Dominio**: Classificazione di livello superiore che rappresenta aree funzionali ampie (ad esempio, IDENTITY, HEALTH, FINANCIAL) 
 - **Classe(Famiglia di Credenziali)**: Insieme di credenziali che condividono funzione, struttura o significato giuridico simili (es. Documenti di Identità, Certificati di Stato Civile, Abilitazioni Professionali)
-- ** Sottoclasse (Tipo di credenziale)**: Definizione specifica di una credenziale rilasciata da un’autorità/fonte autentica (es. Passaporto, Certificato di Nascita, Patente di Guida).
+- **Sottoclasse (Tipo di credenziale)**: Definizione specifica di una credenziale rilasciata da un’autorità/fonte autentica (es. Passaporto, Certificato di Nascita, Patente di Guida).
 - **Finalità di verifica**: Obiettivi di verifica che una credenziale può soddisfare (ad es. Verifica dell’identità, Verifica dell’età, Idoneità all’accesso a servizi specifici).
 
 **Supporto alla Localizzazione:**
