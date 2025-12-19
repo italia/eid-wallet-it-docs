@@ -532,7 +532,7 @@ Domains provide a top-level organizational layer.
 
 **Class (Credential Family)**
 
-A **Class** represents a family of Credentials sharing similar nature, function, or structure (e.g., Identity Documents, Civil Status Certificates).  
+A **Class** represents a family of Credentials sharing similar nature, function, or structure (e.g., Identification Documents, Civil Status Certificates).  
 
 Each Class SHOULD define:
 
@@ -543,7 +543,7 @@ Classes enable Relying Parties and Wallet Solutions to request or match Credenti
 
 **Credential Type (Subclass)**
 
-A **Credential Type (Subclass)** represents a specific Credential within a Class (e.g. Passport, Birth Certificate, Mobile Driving License).  
+A **Credential Type (Subclass)** represents a specific Credential within a Class (e.g. Digital Travel Credential, Birth Certificate, Mobile Driving License).  
 Each Credential Type SHALL include:
 
 - a unique identifier,  
@@ -581,7 +581,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes **M
        * Economic and Legal Status
      -
        * Digital Travel Credential
-       * Driving License (Italy only)
+       * Mobile Driving License (Italy only)
        * Tax Code / Health Insurance Card
        * Age Certification
        * Birth Certificate
@@ -713,7 +713,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes **M
        * Green Card / International Insurance
        * Public Transport Pass
        * Telepass Subscription
-       * Passport
+       * Digital Travel Credential
        * Travel Tickets (air, train, etc.)
        * Travel Insurance Policy
        * Hotel Reservation
@@ -962,8 +962,8 @@ The Taxonomy provides, in a single resource, the hierarchical classification sys
 The taxonomy maintains a four level hierarchical structure:
 
 - **Domains**: Top-level classification representing broad functional areas (e.g., IDENTITY, HEALTH, FINANCIAL)
-- **Class(Credential Family)**: Family of Credentials sharing similar function, structure, or legal meaning (e.g., Identity Documents, Civil Status Certificates, Professional Licenses)
-- **Credential Type (Subclass)**: Specific Credential definition issued by an authority (e.g., Passport, Birth Certificate, Mobile Driving License).
+- **Class(Credential Family)**: Family of Credentials sharing similar function, structure, or legal meaning (e.g., Identification Documents, Civil Status Certificates, Professional Licenses)
+- **Credential Type (Subclass)**: Specific Credential definition issued by an authority (e.g., Digital Travel Credential, Birth Certificate, Mobile Driving License).
 - **Purpose (Verification Intent)**: Verification objectives that a Credential can satisfy (e.g., Identity Verification, Age Verification, Eligibility for specific services).
 
 
@@ -1000,7 +1000,7 @@ A non-normative example of a localisation bundle output is given below:
   {
     "domain.identity.name": "IDENTITY",
     "domain.class": "Identification Documents",
-    "domain.subclass": "Passport",
+    "domain.subclass": "Mobile Driving License",
     "domain.identity.description": "Credentials that establish or confirm a person's legal identity and personal status",
     "purpose.person_identification.name": "Identity verification",
     "...": "..."
