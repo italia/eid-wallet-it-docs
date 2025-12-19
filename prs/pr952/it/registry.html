@@ -1146,10 +1146,10 @@ Content-Type: application/json
 <p>Il Trust Anchor DEVE pubblicare e mantenere aggiornate tutte le informazioni all'endpoint <cite>.well-known</cite> del Catalogo delle Credenziali Digitali garantendo affidabilità, autenticità e integrità dei dati. In particolare, il Catalogo delle Credenziali Digitali, i claims e la tassonomia DEVONO essere disponibili attraverso l'endpoint <code class="docutils literal notranslate"><span class="pre">.well-known/credential-catalog</span></code>.</p>
 <section id="gerarchia-delle-credenziali-digitali">
 <h3><span class="section-number">7.6.1. </span>Gerarchia delle Credenziali Digitali<a class="headerlink" href="#gerarchia-delle-credenziali-digitali" title="Link to this heading">¶</a></h3>
-<p>Le <strong>Credenziali Digitali</strong> riconosciute all’interno dell’ecosistema <strong>IT-Wallet</strong> sono classificate e standardizzate secondo il seguente modello gerarchico multilivello, progettato per migliorare la chiarezza semantica, la scoperta delle Credenziali e la compatibilità sia con flussi di verifica basati su Credenziali specifiche sia su singoli claim.</p>
+<p>Le <strong>Credenziali Digitali</strong> riconosciute all'interno dell'ecosistema <strong>IT-Wallet</strong> sono classificate e standardizzate secondo il seguente modello gerarchico multilivello, progettato per migliorare la chiarezza semantica, la scoperta delle Credenziali e la compatibilità sia con flussi di verifica basati su Credenziali specifiche sia su singoli claim.</p>
 <p>La gerarchia è definita come segue:</p>
 <p><strong>Dominio</strong></p>
-<p>Un <strong>Dominio</strong> rappresenta un’area tematica di alto livello che raggruppa famiglie di Credenziali afferenti allo stesso contesto generale (ad es. Identità, Salute, Istruzione, Mobilità). I Domini forniscono il livello organizzativo più alto della Tassonomia.</p>
+<p>Un <strong>Dominio</strong> rappresenta un'area tematica di alto livello che raggruppa famiglie di Credenziali afferenti allo stesso contesto generale (ad es. Identità, Salute, Istruzione, Mobilità). I Domini forniscono il livello organizzativo più alto della Tassonomia.</p>
 <p><strong>Classe (Famiglia di Credenziali)</strong></p>
 <p>Una <strong>Classe</strong> rappresenta una famiglia di Credenziali che condividono natura, funzione o struttura simili (ad es. Documenti di Identità, Certificati di Stato Civile).</p>
 <p>Ogni Classe <strong>DOVREBBE</strong> definire:</p>
@@ -1164,15 +1164,15 @@ Content-Type: application/json
 <ul class="simple">
 <li><p>un identificatore univoco (ad es. VCT, URI di schema),</p></li>
 <li><p>l'identificativo del Credential Issuer,</p></li>
-<li><p>l’insieme degli Attributi che <strong>POTREBBERO</strong> essere inclusi nelle presentazioni.</p></li>
+<li><p>l'insieme degli Attributi che <strong>POTREBBERO</strong> essere inclusi nelle presentazioni.</p></li>
 </ul>
 <p>I Tipi di Credenziale consentono un targeting preciso nei flussi di verifica guidati da requisiti di conformità o obblighi normativi.</p>
 <p><strong>Finalità (Intento di Verifica)</strong></p>
-<p>Una <strong>Finalità (Intento di Verifica)</strong> descrive <em>perché</em> una Credenziale può essere richiesta da un <em>Relying Party</em> (ad es. Verifica dell’identità, Verifica dell’età, Idoneità all’accesso a servizi specifici).
+<p>Una <strong>Finalità (Intento di Verifica)</strong> descrive <em>perché</em> una Credenziale può essere richiesta da un <em>Relying Party</em> (ad es. Verifica dell'identità, Verifica dell'età, Idoneità all'accesso a servizi specifici).
 Le Finalità <strong>DEVONO</strong> descrivere gli <strong>obiettivi della verifica</strong>.
 Ogni Tipo di Credenziale <strong>DEVE</strong> dichiarare il proprio Dominio, la propria Classe e le Finalità supportate.</p>
 <p>La tabella seguente fornisce esempi non esaustivi che illustrano le relazioni tra Dominio, Classe, Tipo di Credenziale e Finalità.
-Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori <strong>POTREBBERO</strong> essere aggiunti nel tempo man mano che l’ecosistema IT-Wallet evolverà.</p>
+Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori <strong>POTREBBERO</strong> essere aggiunti nel tempo man mano che l'ecosistema IT-Wallet evolverà.</p>
 <span id="it-wallet-dc-domains"></span><table class="longtable docutils align-default" id="id5">
 <caption><span class="caption-number">Tabella 7.4 </span><span class="caption-text">Domini e finalità delle Credenziali</span><a class="headerlink" href="#id5" title="Link to this table">¶</a></caption>
 <colgroup>
@@ -1730,8 +1730,8 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori <strong
 <ul class="simple">
 <li><p><strong>Dominio</strong>: Classificazione di livello superiore che rappresenta aree funzionali ampie (ad esempio, IDENTITY, HEALTH, FINANCIAL)</p></li>
 <li><p><strong>Classe (Famiglia di Credenziali)</strong>: Insieme di Credenziali che condividono funzione, struttura o significato giuridico simili (es. Documenti di Identità, Certificati di Stato Civile, Abilitazioni Professionali)</p></li>
-<li><p><strong>Sottoclasse (Tipo di credenziale)</strong>: Definizione specifica di una Credenziale rilasciata da un’autorità competente (es. Passaporto, Certificato di Nascita, Patente di Guida).</p></li>
-<li><p><strong>Finalità di verifica</strong>: Obiettivi di verifica che una Credenziale può soddisfare (ad es. Verifica dell’identità, Verifica dell’età, Idoneità all’accesso a servizi specifici).</p></li>
+<li><p><strong>Sottoclasse (Tipo di credenziale)</strong>: Definizione specifica di una Credenziale rilasciata da un'autorità competente (es. Passaporto, Certificato di Nascita, Patente di Guida).</p></li>
+<li><p><strong>Finalità di verifica</strong>: Obiettivi di verifica che una Credenziale può soddisfare (ad es. Verifica dell'identità, Verifica dell'età, Idoneità all'accesso a servizi specifici).</p></li>
 </ul>
 <p><strong>Supporto alla Localizzazione:</strong></p>
 <p>La tassonomia supporta ambienti multilingue attraverso il pattern del suffisso <code class="docutils literal notranslate"><span class="pre">_l10n_id</span></code>, abilitando una gestione efficiente della localizzazione per interfacce utente e implementazioni transfrontaliere.</p>

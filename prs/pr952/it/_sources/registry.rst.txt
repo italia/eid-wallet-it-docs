@@ -521,13 +521,13 @@ Il Trust Anchor DEVE pubblicare e mantenere aggiornate tutte le informazioni all
 Gerarchia delle Credenziali Digitali
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Le **Credenziali Digitali** riconosciute all’interno dell’ecosistema **IT-Wallet** sono classificate e standardizzate secondo il seguente modello gerarchico multilivello, progettato per migliorare la chiarezza semantica, la scoperta delle Credenziali e la compatibilità sia con flussi di verifica basati su Credenziali specifiche sia su singoli claim. 
+Le **Credenziali Digitali** riconosciute all'interno dell'ecosistema **IT-Wallet** sono classificate e standardizzate secondo il seguente modello gerarchico multilivello, progettato per migliorare la chiarezza semantica, la scoperta delle Credenziali e la compatibilità sia con flussi di verifica basati su Credenziali specifiche sia su singoli claim. 
 
 La gerarchia è definita come segue:
 
 **Dominio**
 
-Un **Dominio** rappresenta un’area tematica di alto livello che raggruppa famiglie di Credenziali afferenti allo stesso contesto generale (ad es. Identità, Salute, Istruzione, Mobilità). I Domini forniscono il livello organizzativo più alto della Tassonomia.
+Un **Dominio** rappresenta un'area tematica di alto livello che raggruppa famiglie di Credenziali afferenti allo stesso contesto generale (ad es. Identità, Salute, Istruzione, Mobilità). I Domini forniscono il livello organizzativo più alto della Tassonomia.
 
 **Classe (Famiglia di Credenziali)**
 
@@ -548,18 +548,18 @@ Ogni Tipo di Credenziale **DEVE** includere:
 
 - un identificatore univoco (ad es. VCT, URI di schema),  
 - l'identificativo del Credential Issuer,  
-- l’insieme degli Attributi che **POTREBBERO** essere inclusi nelle presentazioni.
+- l'insieme degli Attributi che **POTREBBERO** essere inclusi nelle presentazioni.
 
 I Tipi di Credenziale consentono un targeting preciso nei flussi di verifica guidati da requisiti di conformità o obblighi normativi.
 
 **Finalità (Intento di Verifica)**
 
-Una **Finalità (Intento di Verifica)** descrive *perché* una Credenziale può essere richiesta da un *Relying Party* (ad es. Verifica dell’identità, Verifica dell’età, Idoneità all’accesso a servizi specifici).
+Una **Finalità (Intento di Verifica)** descrive *perché* una Credenziale può essere richiesta da un *Relying Party* (ad es. Verifica dell'identità, Verifica dell'età, Idoneità all'accesso a servizi specifici).
 Le Finalità **DEVONO** descrivere gli **obiettivi della verifica**.
 Ogni Tipo di Credenziale **DEVE** dichiarare il proprio Dominio, la propria Classe e le Finalità supportate.
 
 La tabella seguente fornisce esempi non esaustivi che illustrano le relazioni tra Dominio, Classe, Tipo di Credenziale e Finalità.
-Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori **POTREBBERO** essere aggiunti nel tempo man mano che l’ecosistema IT-Wallet evolverà.
+Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori **POTREBBERO** essere aggiunti nel tempo man mano che l'ecosistema IT-Wallet evolverà.
 
 
 .. _it-wallet-dc-domains:
@@ -938,8 +938,8 @@ La Tassonomia mantiene una struttura gerarchica a quattro livelli:
 - **Dominio**: Classificazione di livello superiore che rappresenta aree funzionali ampie (ad esempio, IDENTITY, HEALTH, FINANCIAL) 
 
 - **Classe (Famiglia di Credenziali)**: Insieme di Credenziali che condividono funzione, struttura o significato giuridico simili (es. Documenti di Identità, Certificati di Stato Civile, Abilitazioni Professionali)
-- **Sottoclasse (Tipo di credenziale)**: Definizione specifica di una Credenziale rilasciata da un’autorità competente (es. Passaporto, Certificato di Nascita, Patente di Guida).
-- **Finalità di verifica**: Obiettivi di verifica che una Credenziale può soddisfare (ad es. Verifica dell’identità, Verifica dell’età, Idoneità all’accesso a servizi specifici).
+- **Sottoclasse (Tipo di credenziale)**: Definizione specifica di una Credenziale rilasciata da un'autorità competente (es. Passaporto, Certificato di Nascita, Patente di Guida).
+- **Finalità di verifica**: Obiettivi di verifica che una Credenziale può soddisfare (ad es. Verifica dell'identità, Verifica dell'età, Idoneità all'accesso a servizi specifici).
 
 **Supporto alla Localizzazione:**
 
