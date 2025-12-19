@@ -81,7 +81,7 @@ Per assicurare un’identificazione e una rappresentazione del PID coerente tra 
 
 - DEVE utilizzare la denominazione ufficiale “IT-Wallet ID” per riferirsi al PID nelle sue Soluzioni Wallet e NON DEVE utilizzare personalizzazioni o termini tecnici come "Dati di Identificazione della Persona" o l’acronimo "PID"; 
 - DEVE utilizzare l’elemento grafico ufficiale di IT-Wallet ID disponibile nelle Risorse Ufficiali e DEVE rispettare tutte le relative specifiche di utilizzo fornite; 
-- DEVE utilizzare l’elemento grafico di IT-Wallet ID in formato application/svg+xml data; 
+- DEVE utilizzare l’elemento grafico di IT-Wallet ID in formato ``application/svg+xml`` data; 
 - NON DEVE alterare, distorcere, modificare o sostituire l’elemento grafico di IT-Wallet ID con elementi grafici non ufficiali; 
 - DEVE garantire l'area di rispetto minima definita nelle Risorse Ufficiali, al fine di garantirne un'adeguata visibilità e riconoscibilità. Altri elementi grafici o testuali NON DEVONO interferire con questa area di rispetto; 
 - NON DEVE ridimensionare l’elemento grafico di IT-Wallet ID oltre i limiti minimi stabiliti dalle Risorse Ufficiali, in modo da garantire sempre una leggibilità ottimale su qualsiasi formato o dispositivo; 
@@ -179,7 +179,7 @@ Di seguito sono riportati i requisiti che ogni Fonte Autentica DEVE rispettare p
 
 - L’EAA PUÒ essere caratterizzato dal **logo della Fonte Autentica**. La Fonte Autentica PUÒ rendere disponibile questo logo in due versioni, una versione compatta tramite il parametro ``organization_info.logo_uri`` parameter e una versione estesa tramite il parametro ``organization_info.logo_extended_uri``. In particolare, la Fonte Autentica: 
 
- - DEVE fornire il logo in uno dei seguenti formati: png, .svg, or .webp; 
+ - DEVE fornire il logo in uno dei seguenti formati: ``image/png``, ``image/svg+xml``, or ``image/webp``; ; 
  - DEVE fornire il logo sia in versione positiva che negativa, se disponibile; 
  - DEVE fornire il logo con una dimensione minima di 30 × 30 pixel e una dimensione massima di 60 x 60 pixel, nella sua versione compatta; 
  - DEVE fornire il logo secondo una ratio di 1:1, nella sua versione compatta; 
@@ -189,7 +189,7 @@ Di seguito sono riportati i requisiti che ogni Fonte Autentica DEVE rispettare p
 
 - L’EAA PUÒ essere caratterizzato da un **logo distintivo**. La Fonte Autentica PUÒ rendere disponibile questo logo tramite il parametro ``data_capabilities.logo_uri``. In particolare, la Fonte Autentica: 
 
- - DEVE fornire il logo in uno dei seguenti formati: png, .svg, or .webp; 
+ - DEVE fornire il logo in uno dei seguenti formati: ``image/png``, ``image/svg+xml``, or ``image/webp``; 
  - DEVE fornire il logo sia in versione positiva che negativa, se disponibile; 
  - DEVE fornire il logo con una dimensione minima di 200 × 30 pixel e una dimensione massima di 650 x 180 pixel; 
  - DEVE fornire un logo che non ecceda il peso massimo di 150 KB.
@@ -197,7 +197,7 @@ Di seguito sono riportati i requisiti che ogni Fonte Autentica DEVE rispettare p
 - L’EAA PUÒ essere caratterizzato da un’**immagine di background**. La Fonte Autentica PUÒ rendere disponibile l’immagine desiderata tramite il parametro ``data_capabilities.background_image``. In particolare, la Fonte Autentica: 
 
  - DEVE fornire esclusivamente una singola immagine; 
- - DEVE fornire l’immagine in uno dei seguenti formati: .png, .svg, .jpeg, .jpg, .webp; 
+ - DEVE fornire l’immagine in uno dei seguenti formati: ``image/png``, ``image/svg+xml``, ``image/jpeg``, or ``image/webp``; 
  - DEVE fornire l’immagine con una dimensione minima di 321 × 205 pixel e una dimensione massima di 1284 × 820 pixel; 
  - DEVE fornire un’immagine che non ecceda il peso massimo di 200 KB. 
 

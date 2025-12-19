@@ -80,8 +80,8 @@ To ensure a consistent identification and representation of the PID across diffe
 
 - MUST use the official naming “IT-Wallet ID” to refer to PID in their Wallet Solutions and MUST NOT use custom or technical terms such as "Person Identification Data" or its acronym "PID"; 
 - MUST use the IT-Wallet ID official graphic asset available in the Official Resources and MUST comply with the related usage specifications provided; 
-- MUST use the IT-Wallet ID graphic asset in the application/svg+xml data format; 
-- MUST NOT alter, distort, modify, or replace the IT-Wallet ID graphic asset with unofficial graphic assets; 
+- MUST use the IT-Wallet ID graphic asset in the ``application/svg+xml`` data format; 
+- MUST NOT alter, modify, or replace the IT-Wallet ID graphic asset with unofficial graphic assets; 
 - MUST maintain the minimum clear space as defined in the Official Resources to ensure visibility and recognizability. No other graphic or textual elements MUST interfere with this space; 
 - MUST NOT resize the IT-Wallet ID graphic asset below the minimum dimensions specified in the Official Resources to maintain legibility across formats and devices; 
 - MUST NOT place the IT-Wallet ID graphic asset on backgrounds that compromise its visibility or legibility. Adequate contrast between the IT-Wallet ID graphic asset and the background MUST be ensured, in line with the Official Resources. 
@@ -130,7 +130,7 @@ Following is an example of informative text:
 
 .. note::
   **Title:** Who may obtain the document 
-  **Text:** The digital version of [Document name] is available only to those who already hold the physical one. Please, make sure to have already obtained the corresponding physical document.  For more details, [read more information] (URL). 
+  **Text:** The digital version of [Document name] is available only to those who already hold the physical one. Please, make sure to have already obtained the corresponding physical document. For more details, [read more information] (URL). 
 
 For further information, please refer to the section :ref:`registry:Authentic Source Registry` (see ``data_capabilities.user_information`` parameter). 
 
@@ -173,7 +173,7 @@ Below are the requirements that every Authentic Source MUST follow to personaliz
 
 - The EAA MAY be characterized by the **Authentic Source** logo. The Authentic Source MAY provide this logo in two versions, a compact version via the ``organization_info.logo_uri`` parameter and an extended version via the ``organization_info.logo_extended_uri`` parameter. In particular, the Authentic Source:  
 
- - MUST provide the logo only in one of the following formats: .png, .svg, or .webp; 
+ - MUST provide the logo only in one of the following formats: ``image/png``, ``image/svg+xml``, or ``image/webp``; 
  - MUST provide the logo in both a positive and a negative version, if available; 
  - MUST provide the logo with a minimum size of 30 × 30 pixels and a maximum size of 60 x 60 pixels, in its compact version; 
  - MUST provide the logo with an aspect ratio of 1:1, in its compact version; 
@@ -183,7 +183,7 @@ Below are the requirements that every Authentic Source MUST follow to personaliz
 
 - The EAA MAY be characterized by a **distinctive logo**. The Authentic Source MAY provide this logo via the ``data_capabilities.logo_uri`` parameter. In particular, the Authentic Source: 
 
- - MUST provide the logo only in one of the following formats: .png, .svg, or .webp; 
+ - MUST provide the logo only in one of the following formats: ``image/png``, ``image/svg+xml``, or ``image/webp``; 
  - MUST provide the logo in both a positive and a negative version, if available; 
  - MUST provide the logo with a minimum size of 200 × 30 pixels and a maximum size of 650 × 180 pixels; 
  - MUST provide the logo with a maximum file size of 150 KB. 
@@ -191,14 +191,14 @@ Below are the requirements that every Authentic Source MUST follow to personaliz
 - The EAA MAY be characterized by a background image. The Authentic Source MAY provide the desired image via the ``data_capabilities.background_image`` parameter. In particular, the Authentic Source: 
 
  - MUST provide the background image as a single image; 
- - MUST provide the background image only in one of the following formats: .png, .svg, .jpeg, .jpg, .webp; 
+ - MUST provide the background image only in one of the following formats: ``image/png``, ``image/svg+xml``, ``image/jpeg`` or ``image/webp``; 
  - MUST provide the background image with a minimum resolution of 321 × 205 pixels and maximum resolution of 1284 × 820 pixels; 
  - MUST provide the background image with a maximum file size of 200 KB. 
 
 - The EAA MAY be characterized by a **background watermark**. The Authentic Source MAY provide the desired watermark via the ``data_capabilities.watermark_image`` parameter. In particular, the Authentic Source: 
  
  - MUST provide the watermark as a single element; 
- - MUST provide the watermark only in one of the following formats: .png, .svg; 
+ - MUST provide the watermark only in one of the following formats: ``image/png``, ``image/svg+xml``; 
  - MUST provide the watermark with a minimum resolution of 321 × 205 pixels and a maximum resolution of 1284 × 820 pixels; 
  - MUST provide the watermark with a maximum file size of 200 KB. 
 
