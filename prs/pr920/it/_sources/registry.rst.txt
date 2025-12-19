@@ -955,3 +955,4 @@ Questo percorso descrive come un'**Istanza Wallet** e una **Relying Party (RP)**
 
 4.  **Accettazione o Rifiuto**: In base alla validazione crittografica, alla conformità dello schema e all'autorizzazione basata su policy, l'RP accetta o rifiuta la Credenziale per l'accesso al servizio.
 
+
