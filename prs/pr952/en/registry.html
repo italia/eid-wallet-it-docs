@@ -1158,9 +1158,9 @@ Domains provide a top-level organizational layer.</p>
 <p>A <strong>Credential Type (Subclass)</strong> represents a specific Credential within a Class (e.g. Passport, Birth Certificate, Mobile Driving License).
 Each Credential Type SHALL include:</p>
 <ul class="simple">
-<li><p>a unique identifier (e.g., VCT, schema URI),</p></li>
+<li><p>a unique identifier,</p></li>
 <li><p>the Credential Issuer identifier,</p></li>
-<li><p>the set of Attributes that MAY be included in presentations.</p></li>
+<li><p>the set of Attributes that may be included in presentations.</p></li>
 </ul>
 <p>Credential Types enable precise targeting for compliance-driven or regulation-mandated verification flows.</p>
 <p><strong>Purpose (Verification Intent)</strong></p>
@@ -1195,8 +1195,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 </ul>
 </td>
 <td><ul class="simple">
-<li><p>Electronic Identity Card (CIE)</p></li>
-<li><p>Passport</p></li>
+<li><p>Digital Travel Credential</p></li>
 <li><p>Driving License (Italy only)</p></li>
 <li><p>Tax Code / Health Insurance Card</p></li>
 <li><p>Age Certification</p></li>
@@ -1398,10 +1397,10 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Government Services</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;vct_values&quot;:</span> <span class="pre">[&quot;urn:eudi:pid:it:1&quot;]</span></code> for PID-specific identity verification.</p></li>
-<li><p><strong>Police Controls</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;docType&quot;:</span> <span class="pre">&quot;org.iso.18013.5.1.mDL&quot;</span></code> for driving license verification.</p></li>
+<li><p><strong>Government Services</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;credential_type&quot;:&quot;pid&quot;</span></code> for PID-specific identity verification.</p></li>
+<li><p><strong>Police Controls</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;credential_type&quot;:&quot;mDL&quot;</span></code> for driving license verification.</p></li>
 <li><p><strong>Banking KYC</strong>: Specific credential types mandated by financial regulations.</p></li>
-<li><p><strong>Healthcare Services</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;vct_values&quot;:</span> <span class="pre">[&quot;urn:eudi:european_disability_card:it:1&quot;]</span></code> for EU-compliant disability benefit access.</p></li>
+<li><p><strong>Healthcare Services</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;credential_type&quot;:&quot;european_disability_card&quot;</span></code> for EU-compliant disability benefit access.</p></li>
 </ul>
 </div></blockquote>
 <ol class="arabic simple" start="2">
@@ -2077,7 +2076,7 @@ The main Journeys below illustrate the interactions with the Registry Infrastruc
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Credential Discovery</strong>: The entity browses the list of Credentials (<code class="docutils literal notranslate"><span class="pre">credentials</span></code> field) to identify relevant Credential types (e.g., <code class="docutils literal notranslate"><span class="pre">pid</span></code>, <code class="docutils literal notranslate"><span class="pre">driving_license</span></code>).</p></li>
+<li><p><strong>Credential Discovery</strong>: The entity browses the list of Credentials (<code class="docutils literal notranslate"><span class="pre">credentials</span></code> field) to identify relevant Credential types (e.g., <code class="docutils literal notranslate"><span class="pre">pid</span></code>, <code class="docutils literal notranslate"><span class="pre">mDL</span></code>).</p></li>
 <li><p><strong>Issuer Metadata</strong>: The entity extracts the <strong>Issuer Identifier</strong> (<cite>entity_id</cite> within the <cite>issuers</cite> field) associated with the desired Credential.</p></li>
 <li><p><strong>Detail Consultation</strong>: To obtain complete information oand specific technical requirements, the entity accesses the <strong>Entity Configuration</strong> (Issuer Metadata) using the retrieved identifier.</p></li>
 </ul>

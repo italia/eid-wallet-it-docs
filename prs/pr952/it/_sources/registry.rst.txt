@@ -546,9 +546,9 @@ Un **Tipo di Credenziale (Sottoclasse)** rappresenta una specifica istanza di cr
 
 Ogni Tipo di Credenziale **DEVE** includere:
 
-- un identificatore univoco (ad es. VCT, URI di schema),  
+- un identificatore univoco,  
 - l'identificativo del Credential Issuer,  
-- l'insieme degli Attributi che **POTREBBERO** essere inclusi nelle presentazioni.
+- l'insieme degli Attributi che potrebbero essere inclusi nelle presentazioni.
 
 I Tipi di Credenziale consentono un targeting preciso nei flussi di verifica guidati da requisiti di conformità o obblighi normativi.
 
@@ -580,7 +580,6 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori **POTRE
        * Certificati di Registro Civile e Stato Personale
        * Stato Economico e Legale
      -
-       * Carta d'Identità Elettronica (CIE)
        * Passaporto
        * Patente di Guida (solo Italia)
        * Codice Fiscale / Tessera Sanitaria
@@ -706,7 +705,7 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori **POTRE
        * Prenotazioni
        * Sconti e Benefici
      -
-       * Patente di Guida Mobile
+       * Patente di Guida
        * Patente Nautica
        * Certificato di Immatricolazione Veicolo
        * Assicurazione RCA Digitale
@@ -744,10 +743,10 @@ Ogni Credenziale **DEVE** specificare il proprio **Dominio**, la **Classe** e la
 
   1. **Scenari Credential-Specific** (Primari per Settori Governativi/Regolamentati): Le RP richiedono tipi di Credenziali specifici per requisiti di conformità e audit, includendo ad esempio:
 
-    - **Servizi Governativi**: ``"vct_values": ["urn:eudi:pid:it:1"]`` per la verifica dell'identità specifica del PID.
-    - **Controlli di Polizia**: ``"docType": "org.iso.18013.5.1.mDL"`` per la verifica della patente di guida.
+    - **Servizi Governativi**: ``"credential_type":"pid"`` per la verifica dell'identità specifica del PID.
+    - **Controlli di Polizia**: ``"credential_type":"mDL"`` per la verifica della patente di guida.
     - **KYC Bancario**: Tipi di credenziali specifici richiesti dalle normative finanziarie.
-    - **Servizi Sanitari**: ``"vct_values": ["urn:eudi:european_disability_card:it:1"]`` per l'accesso ai benefici per disabilità conforme all'UE.
+    - **Servizi Sanitari**: ``"credential_type":"european_disability_card"`` per l'accesso ai benefici per disabilità conforme all'UE.
 
   2. **Scenari Credential-Agnostic** (Tipici per Business Privato): Le RP richiedono claims specifici indipendentemente dalla fonte della credenziale per efficienza operativa, come:
 
@@ -1078,7 +1077,7 @@ Il percorso di utilizzo *Navigazione del Catalogo* supporta gli Utenti (sia uten
 
 2.  **Navigazione e Selezione**:
 
-  * **Scoperta delle Credenziali**: L'entità naviga l'elenco delle Credenziali (campo ``credentials``) per identificare tipi di Credenziali rilevanti (es., ``pid``, ``driving_license``).
+  * **Scoperta delle Credenziali**: L'entità naviga l'elenco delle Credenziali (campo ``credentials``) per identificare tipi di Credenziali rilevanti (es., ``pid``, ``mDL``).
   * **Metadati dell'Emittente**: L'entità estrae l'**Identificatore dell'Emittente** (`entity_id` all'interno del campo `issuers`) associato alla Credenziale desiderata.
   * **Consultazione dei Dettagli**: Per ottenere informazioni complete e requisiti tecnici specifici, l'entità accede all'**Entity Configuration** (Metadati dell'Emittente) usando l'identificatore recuperato.
 

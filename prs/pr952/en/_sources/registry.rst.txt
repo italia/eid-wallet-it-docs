@@ -546,9 +546,9 @@ Classes enable Relying Parties and Wallet Solutions to request or match Credenti
 A **Credential Type (Subclass)** represents a specific Credential within a Class (e.g. Passport, Birth Certificate, Mobile Driving License).  
 Each Credential Type SHALL include:
 
-- a unique identifier (e.g., VCT, schema URI),  
+- a unique identifier,  
 - the Credential Issuer identifier,  
-- the set of Attributes that MAY be included in presentations.
+- the set of Attributes that may be included in presentations.
 
 Credential Types enable precise targeting for compliance-driven or regulation-mandated verification flows.
 
@@ -580,8 +580,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes **M
        * Civil Registry and Personal Status Certificates
        * Economic and Legal Status
      -
-       * Electronic Identity Card (CIE)
-       * Passport
+       * Digital Travel Credential
        * Driving License (Italy only)
        * Tax Code / Health Insurance Card
        * Age Certification
@@ -744,10 +743,10 @@ Each Credential MUST specify domains, classes and purposes to enable both **Cred
 
   1. **Credential-Specific Scenarios** (Primary for Government/Regulated Sectors): RPs request specific credential types for compliance and audit requirements, including for example:
 
-    - **Government Services**: ``"vct_values": ["urn:eudi:pid:it:1"]`` for PID-specific identity verification.
-    - **Police Controls**: ``"docType": "org.iso.18013.5.1.mDL"`` for driving license verification.
+    - **Government Services**: ``"credential_type":"pid"`` for PID-specific identity verification.
+    - **Police Controls**: ``"credential_type":"mDL"`` for driving license verification.
     - **Banking KYC**: Specific credential types mandated by financial regulations.
-    - **Healthcare Services**: ``"vct_values": ["urn:eudi:european_disability_card:it:1"]`` for EU-compliant disability benefit access.
+    - **Healthcare Services**: ``"credential_type":"european_disability_card"`` for EU-compliant disability benefit access.
 
   2. **Credential-Agnostic Scenarios** (Typical for Private Business): RPs request specific claims regardless of credential source for operational efficiency, such as:
 
@@ -1078,7 +1077,7 @@ This *Catalog Browsing* journey supports Users (both human users via a **Wallet 
 
 2.  **Navigation and Selection**:
 
-  * **Credential Discovery**: The entity browses the list of Credentials (``credentials`` field) to identify relevant Credential types (e.g., ``pid``, ``driving_license``).
+  * **Credential Discovery**: The entity browses the list of Credentials (``credentials`` field) to identify relevant Credential types (e.g., ``pid``, ``mDL``).
   * **Issuer Metadata**: The entity extracts the **Issuer Identifier** (`entity_id` within the `issuers` field) associated with the desired Credential.
   * **Detail Consultation**: To obtain complete information oand specific technical requirements, the entity accesses the **Entity Configuration** (Issuer Metadata) using the retrieved identifier.
 

@@ -1162,9 +1162,9 @@ Content-Type: application/json
 <p>Un <strong>Tipo di Credenziale (Sottoclasse)</strong> rappresenta una specifica istanza di credenziale all'interno di una Classe (ad es. Passaporto, Certificato di Nascita, Patente di Guida).</p>
 <p>Ogni Tipo di Credenziale <strong>DEVE</strong> includere:</p>
 <ul class="simple">
-<li><p>un identificatore univoco (ad es. VCT, URI di schema),</p></li>
+<li><p>un identificatore univoco,</p></li>
 <li><p>l'identificativo del Credential Issuer,</p></li>
-<li><p>l'insieme degli Attributi che <strong>POTREBBERO</strong> essere inclusi nelle presentazioni.</p></li>
+<li><p>l'insieme degli Attributi che potrebbero essere inclusi nelle presentazioni.</p></li>
 </ul>
 <p>I Tipi di Credenziale consentono un targeting preciso nei flussi di verifica guidati da requisiti di conformità o obblighi normativi.</p>
 <p><strong>Finalità (Intento di Verifica)</strong></p>
@@ -1199,7 +1199,6 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori <strong
 </ul>
 </td>
 <td><ul class="simple">
-<li><p>Carta d'Identità Elettronica (CIE)</p></li>
 <li><p>Passaporto</p></li>
 <li><p>Patente di Guida (solo Italia)</p></li>
 <li><p>Codice Fiscale / Tessera Sanitaria</p></li>
@@ -1353,7 +1352,7 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori <strong
 </ul>
 </td>
 <td><ul class="simple">
-<li><p>Patente di Guida Mobile</p></li>
+<li><p>Patente di Guida</p></li>
 <li><p>Patente Nautica</p></li>
 <li><p>Certificato di Immatricolazione Veicolo</p></li>
 <li><p>Assicurazione RCA Digitale</p></li>
@@ -1402,10 +1401,10 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori <strong
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Servizi Governativi</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;vct_values&quot;:</span> <span class="pre">[&quot;urn:eudi:pid:it:1&quot;]</span></code> per la verifica dell'identità specifica del PID.</p></li>
-<li><p><strong>Controlli di Polizia</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;docType&quot;:</span> <span class="pre">&quot;org.iso.18013.5.1.mDL&quot;</span></code> per la verifica della patente di guida.</p></li>
+<li><p><strong>Servizi Governativi</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;credential_type&quot;:&quot;pid&quot;</span></code> per la verifica dell'identità specifica del PID.</p></li>
+<li><p><strong>Controlli di Polizia</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;credential_type&quot;:&quot;mDL&quot;</span></code> per la verifica della patente di guida.</p></li>
 <li><p><strong>KYC Bancario</strong>: Tipi di credenziali specifici richiesti dalle normative finanziarie.</p></li>
-<li><p><strong>Servizi Sanitari</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;vct_values&quot;:</span> <span class="pre">[&quot;urn:eudi:european_disability_card:it:1&quot;]</span></code> per l'accesso ai benefici per disabilità conforme all'UE.</p></li>
+<li><p><strong>Servizi Sanitari</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;credential_type&quot;:&quot;european_disability_card&quot;</span></code> per l'accesso ai benefici per disabilità conforme all'UE.</p></li>
 </ul>
 </div></blockquote>
 <ol class="arabic simple" start="2">
@@ -2083,7 +2082,7 @@ I principali Percorsi di utilizzo illustrano di seguito le interazioni con l'Inf
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Scoperta delle Credenziali</strong>: L'entità naviga l'elenco delle Credenziali (campo <code class="docutils literal notranslate"><span class="pre">credentials</span></code>) per identificare tipi di Credenziali rilevanti (es., <code class="docutils literal notranslate"><span class="pre">pid</span></code>, <code class="docutils literal notranslate"><span class="pre">driving_license</span></code>).</p></li>
+<li><p><strong>Scoperta delle Credenziali</strong>: L'entità naviga l'elenco delle Credenziali (campo <code class="docutils literal notranslate"><span class="pre">credentials</span></code>) per identificare tipi di Credenziali rilevanti (es., <code class="docutils literal notranslate"><span class="pre">pid</span></code>, <code class="docutils literal notranslate"><span class="pre">mDL</span></code>).</p></li>
 <li><p><strong>Metadati dell'Emittente</strong>: L'entità estrae l'<strong>Identificatore dell'Emittente</strong> (<cite>entity_id</cite> all'interno del campo <cite>issuers</cite>) associato alla Credenziale desiderata.</p></li>
 <li><p><strong>Consultazione dei Dettagli</strong>: Per ottenere informazioni complete e requisiti tecnici specifici, l'entità accede all'<strong>Entity Configuration</strong> (Metadati dell'Emittente) usando l'identificatore recuperato.</p></li>
 </ul>
