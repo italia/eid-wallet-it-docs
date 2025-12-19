@@ -521,49 +521,53 @@ Il Trust Anchor DEVE pubblicare e mantenere aggiornate tutte le informazioni all
 Gerarchia delle Credenziali Digitali
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Le **Credenziali Digitali** riconosciute all'interno dell'ecosistema **IT-Wallet** sono classificate e standardizzate secondo il seguente modello gerarchico multilivello, progettato per migliorare la chiarezza semantica, la scoperta delle credenziali e la compatibilità sia con flussi di verifica basati su credenziali specifiche sia su singole attestazioni (*claim-based*). 
+Le **Credenziali Digitali** riconosciute all’interno dell’ecosistema **IT-Wallet** sono classificate e standardizzate secondo il seguente modello gerarchico multilivello, progettato per migliorare la chiarezza semantica, la scoperta delle Credenziali e la compatibilità sia con flussi di verifica basati su Credenziali specifiche sia su singoli claim. 
 
 La gerarchia è definita come segue:
 
 **Dominio**
 
-Un **Dominio** rappresenta un'area tematica di alto livello che raggruppa famiglie di credenziali afferenti allo stesso contesto generale (ad es. Identità, Salute, Istruzione, Mobilità). I Domini forniscono il livello organizzativo più alto della tassonomia.
+Un **Dominio** rappresenta un’area tematica di alto livello che raggruppa famiglie di Credenziali afferenti allo stesso contesto generale (ad es. Identità, Salute, Istruzione, Mobilità). I Domini forniscono il livello organizzativo più alto della Tassonomia.
 
-**Classe (Famiglia di credenziali)**
+**Classe (Famiglia di Credenziali)**
 
-Una **Classe** rappresenta una famiglia di credenziali che condividono natura, funzione o struttura simili (ad es. Documenti di Identità, Certificati di Stato Civile).
+Una **Classe** rappresenta una famiglia di Credenziali che condividono natura, funzione o struttura simili (ad es. Documenti di Identità, Certificati di Stato Civile).
 
 Ogni Classe **DOVREBBE** definire:
 
 - un identificatore di Classe stabile (URI),  
-- la semantica attesa della famiglia di credenziali.
+- la semantica attesa della famiglia di Credenziali.
 
-Le Classi consentono ai *Relying Party* e ai *Wallet provider* di richiedere o individuare credenziali in base alla loro categoria tipologica.
+Le Classi consentono ai *Relying Party* e alle *Wallet Solution* di richiedere o individuare credenziali in base alla loro categoria tipologica.
 
-**Tipo di credenziale (Sottoclasse)**
+**Tipo di Credenziale (Sottoclasse)**
 
 Un **Tipo di Credenziale (Sottoclasse)** rappresenta una specifica istanza di credenziale all'interno di una Classe (ad es. Passaporto, Certificato di Nascita, Patente di Guida).
 
 Ogni Tipo di Credenziale **DEVE** includere:
 
 - un identificatore univoco (ad es. VCT, URI di schema),  
-- l'autorità emittente,  
-- l'insieme degli attributi che **POSSONO** essere inclusi nelle presentazioni.
+- l'identificativo del Credential Issuer,  
+- l’insieme degli Attributi che **POTREBBERO** essere inclusi nelle presentazioni.
 
 I Tipi di Credenziale consentono un targeting preciso nei flussi di verifica guidati da requisiti di conformità o obblighi normativi.
 
 **Finalità (Intento di Verifica)**
 
-Una **Finalità (Intento di Verifica)** descrive *perché* una credenziale può essere richiesta da un *Relying Party* (ad es. Verifica dell'identità, Verifica dell'età, Idoneità all'accesso a servizi specifici). Le Finalità **NON DEVONO** rappresentare categorie di credenziali.  
-Le Finalità **DEVONO** descrivere gli **esiti della verifica**, non le categorie di credenziali.
+
+Una **Finalità (Intento di Verifica)** descrive *perché* una Credenziale può essere richiesta da un *Relying Party* (ad es. Verifica dell’identità, Verifica dell’età, Idoneità all’accesso a servizi specifici).
+
+Le Finalità **DEVONO** descrivere gli **obiettivi della verifica**.
+
 Ogni Tipo di Credenziale **DEVE** dichiarare il proprio Dominio, la propria Classe e le Finalità supportate.
 
 La tabella seguente fornisce esempi non esaustivi che illustrano le relazioni tra Dominio, Classe, Tipo di Credenziale e Finalità.
-Domini, classi, credenziali specifiche e finalità della verifica aggiuntivi **POSSONO** essere aggiunti nel tempo man mano che l'ecosistema IT-Wallet evolve.
+
+Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori **POTREBBERO** essere aggiunti nel tempo man mano che l’ecosistema IT-Wallet evolverà.
 
 
 .. _it-wallet-dc-domains:
-.. list-table:: Domini, Classi, Tipi di Credenziali Digitali, Descrizioni e Finalità
+.. list-table:: Domini e finalità delle Credenziali
    :class: longtable
    :header-rows: 1
    :widths: 20 20 20 20 20  
@@ -742,7 +746,7 @@ Domini, classi, credenziali specifiche e finalità della verifica aggiuntivi **P
 
 Ogni Credenziale **DEVE** specificare il proprio **Dominio**, la **Classe** e la **Finalità** al fine di abilitare sia **Scenari Specifici per Credenziale (Credential-Specific Scenarios)** sia **Scenari Agnostici rispetto alla Credenziale (Credential-Agnostic Scenarios)**, in base ai requisiti del *Relying Party* e ai pattern di richiesta delle presentazioni.
 
-  1. **Scenari Credential-Specific** (Primari per Settori Governativi/Regolamentati): Le RP richiedono tipi di credenziali specifici per requisiti di conformità e audit, includendo ad esempio:
+  1. **Scenari Credential-Specific** (Primari per Settori Governativi/Regolamentati): Le RP richiedono tipi di Credenziali specifici per requisiti di conformità e audit, includendo ad esempio:
 
     - **Servizi Governativi**: ``"vct_values": ["urn:eudi:pid:it:1"]`` per la verifica dell'identità specifica del PID.
     - **Controlli di Polizia**: ``"docType": "org.iso.18013.5.1.mDL"`` per la verifica della patente di guida.
@@ -948,24 +952,25 @@ Tassonomia
 
 La **Tassonomia** fornisce le fondamenta semantiche per l'interoperabilità degli Attestati Elettronici mantenendo il vocabolario autorevole per organizzare le credenziali all'interno dell'ecosistema IT-Wallet. La tassonomia è neutrale rispetto al formato delle credenziali e ha l'obiettivo di facilitare le integrazioni degli Attestati Elettronici nelle Soluzioni Tecniche IT-Wallet.
 
-La tassonomia fornisce, in una singola risorsa, il sistema di classificazione gerarchica che organizza Domini, Classi e Finalità di verifica che possono essere applicati ai tipi di credenziali, supportando la valutazione delle policy di autorizzazione e la standardizzazione a livello di ecosistema.
+La Tassonomia fornisce, in una singola risorsa, il sistema di classificazione gerarchica che organizza Domini, Classi e Finalità di verifica che possono essere applicati ai tipi di Credenziali, supportando la valutazione delle policy di autorizzazione e la standardizzazione a livello di ecosistema.
 
 **Obiettivi della Tassonomia:**
 
 1. **Fondamento Semantico**: Stabilire vocabolario standardizzato per domini e scopi in tutto l'ecosistema
 2. **Framework delle Policy**: Abilitare decisioni di autorizzazione strutturate basate sulla classificazione gerarchica
 3. **Interoperabilità**: Garantire interpretazione coerente delle classificazioni delle credenziali
-4. **Estensibilità**: Supportare l'evoluzione dell'ecosistema con nuovi domini, classi, tipologia di credenziali, finalità di verifica
+4. **Estensibilità**: Supportare l'evoluzione dell'ecosistema con nuovi Domini, Classi, Tipologia di Credenziali, Finalità di verifica
 5. **Conformità Transfrontaliera**: Allinearsi con i requisiti normativi UE e gli standard internazionali
 
 **Struttura della Tassonomia:**
 
-La tassonomia mantiene una struttura gerarchica a quattro livelli:
+La Tassonomia mantiene una struttura gerarchica a quattro livelli:
 
 - **Dominio**: Classificazione di livello superiore che rappresenta aree funzionali ampie (ad esempio, IDENTITY, HEALTH, FINANCIAL) 
-- **Classe(Famiglia di Credenziali)**: Insieme di credenziali che condividono funzione, struttura o significato giuridico simili (es. Documenti di Identità, Certificati di Stato Civile, Abilitazioni Professionali)
-- **Sottoclasse (Tipo di credenziale)**: Definizione specifica di una credenziale rilasciata da un'autorità/fonte autentica (es. Passaporto, Certificato di Nascita, Patente di Guida).
-- **Finalità di verifica**: Obiettivi di verifica che una credenziale può soddisfare (ad es. Verifica dell'identità, Verifica dell'età, Idoneità all'accesso a servizi specifici).
+
+- **Classe (Famiglia di Credenziali)**: Insieme di Credenziali che condividono funzione, struttura o significato giuridico simili (es. Documenti di Identità, Certificati di Stato Civile, Abilitazioni Professionali)
+- **Sottoclasse (Tipo di credenziale)**: Definizione specifica di una Credenziale rilasciata da un’autorità competente (es. Passaporto, Certificato di Nascita, Patente di Guida).
+- **Finalità di verifica**: Obiettivi di verifica che una Credenziale può soddisfare (ad es. Verifica dell’identità, Verifica dell’età, Idoneità all’accesso a servizi specifici).
 
 **Supporto alla Localizzazione:**
 
@@ -975,10 +980,10 @@ La tassonomia supporta ambienti multilingue attraverso il pattern del suffisso `
 
 - **Registro degli Attributi**: Catalogo degli attributi individuali
 - **Registro AS**: Le Fonti Autentiche dichiarano capacità di fornitura dati utilizzando classificazioni della tassonomia
-- **Catalogo degli Attestati Elettronici**: I tipi di credenziale specificano dominio, classe, finalità di verifica
+- **Catalogo degli Attestati Elettronici**: I tipi di Credenziale specificano Dominio, Classe, Finalità di verifica
 - **Policy di Autorizzazione**: La valutazione delle policy sfrutta la struttura della tassonomia per decisioni di controllo degli accessi
 
-La tassonomia è accessibile attraverso l'endpoint dedicato della tassonomia come definito nel meccanismo di discovery del registro ed è mantenuta dall'Organismo di Supervisione per garantire conformità normativa e coerenza semantica.
+La Tassonomia è accessibile attraverso l'endpoint dedicato della Tassonomia come definito nel meccanismo di discovery del registro ed è mantenuta dall'Organismo di Supervisione per garantire conformità normativa e coerenza semantica.
 
 Un esempio non normativo della struttura della Tassonomia è fornito di seguito:
 

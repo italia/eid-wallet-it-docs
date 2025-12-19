@@ -527,35 +527,35 @@ The hierarchy is defined as follows:
 
 **Domain**
 
-A **Domain** represents a high-level thematic area grouping credential families that relate to the same broad context (e.g., Identity, Health, Education, Mobility).  
+A **Domain** represents a high-level thematic area grouping Credential families that relate to the same broad context (e.g., Identity, Health, Education, Mobility).  
 Domains provide a top-level organizational layer.
 
 **Class (Credential Family)**
 
-A **Class** represents a family of credentials sharing similar nature, function, or structure (e.g., Identity Documents, Civil Status Certificates).  
+A **Class** represents a family of Credentials sharing similar nature, function, or structure (e.g., Identity Documents, Civil Status Certificates).  
 
 Each Class SHOULD define:
 
 - a stable Class identifier (URI),  
-- the expected semantics of the credential family.
+- the expected semantics of the Credential Family.
 
-Classes enable Relying Parties and Wallets to request or match credentials based on their type category.
+Classes enable Relying Parties and Wallet Solutions to request or match Credentials based on their type category.
 
 **Credential Type (Subclass)**
 
-A **Credential Type(Subclass)** represents a specific credential instance within a Class (e.g. Passport, Birth Certificate, Mobile Driving License).  
+A **Credential Type (Subclass)** represents a specific Credential within a Class (e.g. Passport, Birth Certificate, Mobile Driving License).  
 Each Credential Type SHALL include:
 
 - a unique identifier (e.g., VCT, schema URI),  
-- the issuing authority,  
-- the set of attributes that MAY be included in presentations.
+- the Credential Issuer identifier,  
+- the set of Attributes that MAY be included in presentations.
 
 Credential Types enable precise targeting for compliance-driven or regulation-mandated verification flows.
 
 **Purpose (Verification Intent)**
 
 A **Purpose (Verification Intent)** describes *why* a credential may be requested by a Relying Party (e.g., Identity Verification, Age Verification, Eligibility for specific services).  
-Purposes MUST NOT represent categories of credentials. Purposes SHALL describe **verification outcomes**, not credential categories.
+Purposes SHALL describe **verification outcomes**.
 Each Credential Type MUST declare its Domain, Class, and supported Purposes. 
 
 The following table provides non-exhaustive examples illustrating Domain, Class, Credential Type, and Purpose relationships.
@@ -948,14 +948,14 @@ Taxonomy
 
 The **Taxonomy** provides the semantic foundation for Digital Credential interoperability by maintaining the authoritative vocabulary for organizing Credentials within the IT-Wallet ecosystem. The taxonomy is neutral with respect to the Credential format. 
 
-The taxonomy provides, in a single resource, the hierarchical classification system organizing Domains, Classes and Purposes that can be applied to credential types, supporting authorization policy evaluation and ecosystem-wide standardization.
+The Taxonomy provides, in a single resource, the hierarchical classification system organizing Domains, Classes and Purposes that can be applied to Credential Types, supporting authorization policy evaluation and ecosystem-wide standardization.
 
 **Taxonomy Objectives:**
 
 1. **Semantic Foundation**: Establish standardized vocabulary for domains and purposes across the ecosystem
 2. **Policy Framework**: Enable structured authorization decisions based on hierarchical classification
 3. **Interoperability**: Ensure consistent interpretation of credential classifications
-4. **Extensibility**: Support evolution of the ecosystem with new domains, classes, credential types and purposes
+4. **Extensibility**: Support evolution of the ecosystem with new Domains, Classes, Credential Types and Purposes
 5. **Cross-Border Compliance**: Align with EU regulatory requirements and international standards
 
 **Taxonomy Structure:**
@@ -963,9 +963,9 @@ The taxonomy provides, in a single resource, the hierarchical classification sys
 The taxonomy maintains a four level hierarchical structure:
 
 - **Domains**: Top-level classification representing broad functional areas (e.g., IDENTITY, HEALTH, FINANCIAL)
-- **Class(Credential Family)**: Family of credentials sharing similar function, structure, or legal meaning (e.g., Identity Documents, Civil Status Certificates, Professional Licenses)
-- **Credential Type (Subclass)**: Specific credential definition issued by an authority (e.g., Passport, Birth Certificate, Mobile Driving License).
-- **Purpose (Verification Intent)**: Verification objectives that a credential can satisfy (e.g., Identity Verification, Age Verification, Eligibility for specific services).
+- **Class(Credential Family)**: Family of Credentials sharing similar function, structure, or legal meaning (e.g., Identity Documents, Civil Status Certificates, Professional Licenses)
+- **Credential Type (Subclass)**: Specific Credential definition issued by an authority (e.g., Passport, Birth Certificate, Mobile Driving License).
+- **Purpose (Verification Intent)**: Verification objectives that a Credential can satisfy (e.g., Identity Verification, Age Verification, Eligibility for specific services).
 
 
 **Localization Support:**
@@ -976,10 +976,10 @@ The taxonomy supports multilingual environments through the ``_l10n_id`` suffix 
 
 - **Claims Registry**: Individual claims catalog
 - **AS Registry**: Authentic Sources declare capabilities using taxonomy classifications
-- **Digital Credentials Catalog**: Credential types specify domains, classes and purposes
+- **Digital Credentials Catalog**: Credential Types specify Domains, Classes and Purposes
 - **Authorization Policies**: Policy evaluation leverages taxonomy structure for access control decisions
 
-The taxonomy is accessible through the dedicated taxonomy endpoint as defined in the registry discovery mechanism and is maintained by the Supervisory Body to ensure regulatory compliance and semantic consistency.
+The Taxonomy is accessible through the dedicated taxonomy endpoint as defined in the registry discovery mechanism and is maintained by the Supervisory Body to ensure regulatory compliance and semantic consistency.
 
 A non-normative example of Taxonomy structure is given below:
 
