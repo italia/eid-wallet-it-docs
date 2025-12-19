@@ -164,7 +164,7 @@
             
   <section id="infrastruttura-del-registro">
 <h1><span class="section-number">7. </span>Infrastruttura del Registro<a class="headerlink" href="#infrastruttura-del-registro" title="Link to this heading">¶</a></h1>
-<p>L'ecosistema IT-Wallet opera attraverso un'infrastruttura di registro che fornisce definizioni dati standardizzate, registrazione delle entità e capacità di scoperta delle credenziali. Il sistema di registro consiste di molteplici componenti interconnessi che supportano il ciclo di vita completo delle operazioni degli Attestati Elettronici dall'onboarding delle entità alla presentazione delle credenziali.</p>
+<p>L'ecosistema IT-Wallet opera attraverso un'infrastruttura di registro che fornisce definizioni dati standardizzate, registrazione delle entità e capacità di scoperta delle Credenziali. Il sistema di registro consiste di molteplici componenti interconnessi che supportano il ciclo di vita completo delle operazioni degli Attestati Elettronici dall'onboarding delle entità alla presentazione delle Credenziali.</p>
 <p>L'architettura di registro affronta la standardizzazione semantica, la gestione della fiducia federata e i requisiti di scoperta delle credenziali attraverso componenti di registro specializzati che assicurano interoperabilità e conformità attraverso l'ecosistema.</p>
 <section id="panoramica-dell-architettura-del-registro">
 <h2><span class="section-number">7.1. </span>Panoramica dell'Architettura del Registro<a class="headerlink" href="#panoramica-dell-architettura-del-registro" title="Link to this heading">¶</a></h2>
@@ -173,7 +173,7 @@
 <li><p><strong>Registro dei Claims</strong>: Definizioni semantiche standardizzate per attributi individuali delle credenziali, tipi di dati e regole di validazione.</p></li>
 <li><p><strong>Registro delle Fonti Autentiche (AS)</strong>: Catalogo dei fornitori di dati registrati con le loro capacità dichiarate e claims disponibili.</p></li>
 <li><p><strong>Registro di Federazione</strong>: Elenco autorevole delle entità fidate che partecipano alla federazione con le loro configurazioni tecniche.</p></li>
-<li><p><strong>Catalogo degli Attestati Elettronici</strong>: Meccanismo di scoperta pubblico per i tipi di credenziali disponibili con i loro metadati e informazioni di emissione.</p></li>
+<li><p><strong>Catalogo degli Attestati Elettronici</strong>: Meccanismo di scoperta pubblico per i tipi di Credenziali disponibili con i loro metadati e informazioni di emissione.</p></li>
 <li><p><strong>Registro degli Schema</strong>: Elenco autorevole degli schemi di Credenziali.</p></li>
 <li><p><strong>Tassonomia</strong>: Sistema di classificazione gerarchico che organizza le credenziali per dominio e scopo.</p></li>
 </ol>
@@ -255,7 +255,7 @@ Content-Type: application/json
 </div></blockquote>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Il Registro dei Claims definisce le proprietà semantiche degli attributi individuali, ma NON DEVE specificare capacità di divulgazione selettiva. La divulgazione selettiva dipende dalle implementazioni del formato delle credenziali (SD-JWT, mDocs), dalle configurazioni tecniche dell'emittente e dal contesto di presentazione. Queste capacità sono specificate a livello di tipo di credenziale all'interno del Catalogo degli Attestati Elettronici e implementate durante i flussi di presentazione delle credenziali.</p>
+<p>Il Registro dei Claims definisce le proprietà semantiche degli attributi individuali, ma NON DEVE specificare capacità di divulgazione selettiva. La divulgazione selettiva dipende dalle implementazioni del formato delle Credenziali (SD-JWT VC, mDoc), dalle configurazioni tecniche dell'emittente e dal contesto di presentazione. Queste capacità sono specificate a livello di tipo di credenziale all'interno del Catalogo degli Attestati Elettronici e implementate durante i flussi di presentazione delle Credenziali.</p>
 </div>
 <section id="utilizzo-del-registro-dei-claims">
 <h3><span class="section-number">7.3.1. </span>Utilizzo del Registro dei Claims<a class="headerlink" href="#utilizzo-del-registro-dei-claims" title="Link to this heading">¶</a></h3>

@@ -4,7 +4,7 @@
 Infrastruttura del Registro
 ============================
 
-L'ecosistema IT-Wallet opera attraverso un'infrastruttura di registro che fornisce definizioni dati standardizzate, registrazione delle entità e capacità di scoperta delle credenziali. Il sistema di registro consiste di molteplici componenti interconnessi che supportano il ciclo di vita completo delle operazioni degli Attestati Elettronici dall'onboarding delle entità alla presentazione delle credenziali.
+L'ecosistema IT-Wallet opera attraverso un'infrastruttura di registro che fornisce definizioni dati standardizzate, registrazione delle entità e capacità di scoperta delle Credenziali. Il sistema di registro consiste di molteplici componenti interconnessi che supportano il ciclo di vita completo delle operazioni degli Attestati Elettronici dall'onboarding delle entità alla presentazione delle Credenziali.
 
 L'architettura di registro affronta la standardizzazione semantica, la gestione della fiducia federata e i requisiti di scoperta delle credenziali attraverso componenti di registro specializzati che assicurano interoperabilità e conformità attraverso l'ecosistema.
 
@@ -16,7 +16,7 @@ Il Registro del Sistema IT-Wallet comprende sei componenti principali:
 1. **Registro dei Claims**: Definizioni semantiche standardizzate per attributi individuali delle credenziali, tipi di dati e regole di validazione.
 2. **Registro delle Fonti Autentiche (AS)**: Catalogo dei fornitori di dati registrati con le loro capacità dichiarate e claims disponibili.
 3. **Registro di Federazione**: Elenco autorevole delle entità fidate che partecipano alla federazione con le loro configurazioni tecniche.
-4. **Catalogo degli Attestati Elettronici**: Meccanismo di scoperta pubblico per i tipi di credenziali disponibili con i loro metadati e informazioni di emissione.
+4. **Catalogo degli Attestati Elettronici**: Meccanismo di scoperta pubblico per i tipi di Credenziali disponibili con i loro metadati e informazioni di emissione.
 5. **Registro degli Schema**: Elenco autorevole degli schemi di Credenziali.
 6. **Tassonomia**: Sistema di classificazione gerarchico che organizza le credenziali per dominio e scopo.
 
@@ -103,7 +103,7 @@ Il Registro dei Claims DEVE garantire:
   - **Scenari Credential-Agnostic**: Supporta scenari dove **convenienza dell'utente** ed **efficienza operativa aziendale** sono prioritari rispetto a **conformità normativa** e **tracce di audit**.
 
 .. note::
-   Il Registro dei Claims definisce le proprietà semantiche degli attributi individuali, ma NON DEVE specificare capacità di divulgazione selettiva. La divulgazione selettiva dipende dalle implementazioni del formato delle credenziali (SD-JWT, mDocs), dalle configurazioni tecniche dell'emittente e dal contesto di presentazione. Queste capacità sono specificate a livello di tipo di credenziale all'interno del Catalogo degli Attestati Elettronici e implementate durante i flussi di presentazione delle credenziali.
+   Il Registro dei Claims definisce le proprietà semantiche degli attributi individuali, ma NON DEVE specificare capacità di divulgazione selettiva. La divulgazione selettiva dipende dalle implementazioni del formato delle Credenziali (SD-JWT VC, mDoc), dalle configurazioni tecniche dell'emittente e dal contesto di presentazione. Queste capacità sono specificate a livello di tipo di credenziale all'interno del Catalogo degli Attestati Elettronici e implementate durante i flussi di presentazione delle Credenziali.
 
 
 Utilizzo del Registro dei Claims
