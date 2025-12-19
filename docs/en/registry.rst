@@ -1003,7 +1003,7 @@ A non-normative example of a localisation bundle output is given below:
     "domain.class": "Identification Documents",
     "domain.subclass": "Passport",
     "domain.identity.description": "Credentials that establish or confirm a person’s legal identity and personal status",
-    "purpose.person_identification.name": "Identity verification", "Age verification", "Verification of citizenship or nationality"
+    "purpose.person_identification.name": "Identity verification",
     "...": "..."
   }
 
