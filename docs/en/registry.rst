@@ -594,7 +594,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes **M
        * Residence Permit
        * Certificate of Pending Charges
        * Criminal Record Certificate
-     - Credentials that establish or confirm a person’s legal identity and personal, civil or legal status.
+     - Credentials that establish or confirm a person's legal identity and personal, civil or legal status.
      - Identity and age verification; civil status verification; access to services for minors; eligibility for services or benefits; right of residence.
 
    * - *HOME AND FAMILY*
@@ -607,7 +607,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes **M
        * Cadastral Survey
        * Cadastral Floor Plan
        * Cadastral Certificate
-       * Children’s Tax Code / Health Card
+       * Children's Tax Code / Health Card
        * Birth Certificate
        * Family Status Certificate
        * IMU (Property Tax)
@@ -622,8 +622,8 @@ Additional Domains, Classes, specific Credentials, and verification Purposes **M
      -
        * Lower Secondary School Diploma
        * Upper Secondary School Diploma
-       * Bachelor’s Degree
-       * Master’s Degree
+       * Bachelor's Degree
+       * Master's Degree
        * University Master
        * PhD
        * Professional Licenses (e.g. architect, lawyer, psychologist)
@@ -1002,7 +1002,7 @@ A non-normative example of a localisation bundle output is given below:
     "domain.identity.name": "IDENTITY",
     "domain.class": "Identification Documents",
     "domain.subclass": "Passport",
-    "domain.identity.description": "Credentials that establish or confirm a person’s legal identity and personal status",
+    "domain.identity.description": "Credentials that establish or confirm a person's legal identity and personal status",
     "purpose.person_identification.name": "Identity verification",
     "...": "..."
   }
