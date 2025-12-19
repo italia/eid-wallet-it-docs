@@ -10,3 +10,4 @@ Flussi relativi agli Attestati Elettronici
 
   credential-issuance.rst
   credential-presentation.rst
+  wallet-metadata-retrieval.rst

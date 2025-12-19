@@ -1,21 +1,6 @@
 .. include:: ../common/common_definitions.rst
 
 
-Riferimenti Normativi
-=====================
-
-[CAD]
-
-Decreto Legislativo del 7 marzo 2005, n. 82 e successive modificazioni, recante il 'Codice dell'Amministrazione Digitale'.
-
-[RIF_ACCESSIBILITÀ]
-
-Linee guida per l'accessibilità degli strumenti informatici ai sensi dell'articolo 11 della legge del 9 Gennaio 2004 n. 4. Direttiva UE 2019/882 del Parlamento Europeo e del Consiglio, del 17 aprile 2019, sui requisiti di accessibilità per prodotti e servizi.
-
-[LG_DESIGN]
-
-Linee guida per la progettazione dei siti web e dei servizi digitali forniti dalle pubbliche amministrazioni, ai sensi dell'articolo 53, comma 1-ter, del decreto legislativo del 7 marzo 2005, n. 82, e successive modificazioni.
-
 Definizioni e Acronimi
 =======================
 
@@ -383,7 +368,7 @@ Di seguito sono riportati i principali termini e definizioni relativi agli aspet
       Modalità di visualizzazione compatta dell'Attestato Elettronico che consente di riconoscerla e distinguerla in un elenco di Attestati Elettronici mediante la presenza di dati o elementi minimi.
 
     **Selection Page**
-      È la pagina presente nel Touchpoint della Relying Party dove l'Utente viene a conoscenza di tutte le Soluzioni Wallet presenti nel Registro e può scegliere con quale proseguire il processo di Autenticazione. 
+      È la pagina presente nel Touchpoint della Relying Party o delle terze parti che supportano un Credential Offer dove l'Utente viene a conoscenza di tutte le Soluzioni Wallet presenti nel Registro del Sistema IT-Wallet e può scegliere con quale proseguire il processo di Autenticazione, presentazione o erogazione. 
 
     **Modello di Servizio**
       Insieme di interazioni tra attori e Touchpoint necessari per l'erogazione e la fruizione del servizio.
