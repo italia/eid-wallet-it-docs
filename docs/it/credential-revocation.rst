@@ -107,7 +107,7 @@ le condizioni che hanno portato alla sua sospensione vengono risolte, o passa a 
 Ciclo di vita degli Attestati Elettronici ottenuti in batch
 -----------------------------------------------------------
 
-Ciascuna degli Attestati Elettronici emessi in batch, entra immediatamente nel proprio stato relativo al ciclo di vita. Tutte le transizioni di stato (Emessa → Valida → Scaduta/Sospesa/Revocata) avvengono a livello di singolo Attestato Elettronico, utilizzando i parametri individuali dell'Attestato Elettronico (ad esempio, date di validità, Status List).
+Ciascuno degli Attestati Elettronici emessi in batch, condivide il medesimo stato del ciclo di vita. Tutte le transizioni di stato (Emessa → Valida → Scaduta/Sospesa/Revocata) avvengono a livello di intero batch.
 
 Gestione del Ciclo di Vita degli Attestati Elettronici
 ------------------------------------------------------
@@ -241,8 +241,9 @@ Per qualsiasi altro Attestato Elettronico diverso dal PID, il Fornitore di Attes
 Aggiornamento dello Stato da parte dei Fornitori di Wallet
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-In aggiunta a quanto definito in :ref:`credential-revocation:Ciclo di Vita degli Attestati Elettronici`, il Fornitore di Attestati Elettronici DEVE mettere a disposizione un servizio web (endpoint di Revoca dell'Istanza del Wallet) definito utilizzando PDND, come specificato nella Sezione :ref:`credential-issuer-endpoint:e-Service PDND Credential Issuer Catalog`.
-Il Fornitore di Wallet che per qualsiasi motivo revoca un'Istanza del Wallet DEVE inviare una notifica ai Fornitori di Attestati Elettronici utilizzando questo endpoint.
+Il Fornitore di Wallet che, per qualsiasi motivo, revoca una Wallet Instance DEVE garantire che lo stato aggiornato sia riportato all'interno della Status List della Wallet Unit Attestation.
+In aggiunta a quanto definito in :ref:`credential-revocation:Ciclo di Vita degli Attestati Elettronici`, il Fornitore di Attestati Elettronici DEVE implementare un meccanismo di monitoraggio degli stati correnti di tutte le Wallet Unit Attestation relative alle Wallet Instance a cui sono stati emessi gli Attestati Elettronici.
+In seguito alla revoca della Wallet Unit Attestation, il Credential Issuer procede alla revoca di tutti gli Attestati Elettronici emessi alla Wallet Instance.
 
 Aggiornamento dello Stato da parte delle Fonti Autentiche
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -285,10 +286,9 @@ L’Istanza del Wallet, a seguito di controlli periodici dello stato di validit�
 Gestione del ciclo di vita delle Credenziali in batch
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Quando più Attestati Elettronici vengono emessi insieme in un singolo batch, il loro ciclo di vita rimane completamente granulare:
+Quando più Attestati Elettronici vengono emessi insieme in un singolo batch, il loro ciclo di vita è condiviso:
 
-* **Trigger raggruppati, aggiornamenti indipendenti**: una singola richiesta di aggiornamento dello stato del batch che fa riferimento al ``notification_id`` del batch e inviata da un'entità autorizzata (ad esempio, l'Istanza del Wallet tramite il Notification Endpoint con ``event=credential_deleted``, un Wallet Provider tramite PDND) viene gestita come N modifiche di stato separate. Il Fornitore di Attestati Elettronici aggiorna lo stato di ciascun Attestato Elettronico singolarmente (ad esempio, impostando il bit della status-list su ``INVALID`` o ``SUSPENDED``). Per impostazione predefinita, un'Istanza del Wallet NON DEVE attivare aggiornamenti di stato del batch quando l'Utente elimina Attestati Elettronici localmente. In fase di eliminazione, l’Istanza del Wallet PUÒ, con il consenso esplicito dell’Utente, notificare al Fornitore di Attestati Elettronici l’intenzione dell’Utente di revocare gli Attestati Elettronici interessati; tale notifica non costituisce una richiesta di aggiornamento di stato a livello di batch.
-* **Revoca a livello di batch**: la stessa richiesta di aggiornamento del batch funge anche da richiesta di revoca totale. Il Credential Issuer contrassegna ogni Attestato Elettronico nel batch come revocato e PUÒ emettere una singola notifica per l'intero batch secondo la propria policy.
+* **Aggiornamenti raggruppati**: indipendentemente dall'attore che ha innescato la variazione di stato del batch (ad esempio, la Wallet Instance tramite il Notification Endpoint con ``event=credential_deleted``, un Wallet Provider tramite l'aggiornamento della Status List della Wallet Unit Attestation) l'aggiornamento viene gestito modificando il singolo indicatore di stato (ad esempio, impostando il bit della status-list su ``INVALID`` o ``SUSPENDED``) relativo all'intero batch. Per impostazione predefinita, un'Istanza del Wallet NON DEVE attivare aggiornamenti di stato del batch quando l'Utente elimina Attestati Elettronici localmente. In fase di eliminazione, l’Istanza del Wallet PUÒ, con il consenso esplicito dell’Utente, notificare al Fornitore di Attestati Elettronici l’intenzione dell’Utente di revocare gli Attestati Elettronici interessati.
 
 .. note::
   Poiché l'interfaccia utente del Wallet in genere visualizza un batch come un singolo Attestato Elettronico (ad esempio, con 3 utilizzi rimanenti), un'eliminazione da parte dell'utente rimuove l'intero batch localmente. Per impostazione predefinita non richiede la revoca presso il Fornitore di Attestati Elettronici. L’Istanza del Wallet PUÒ offrire all’Utente un prompt opzionale per richiedere la revoca presso il Fornitore di Attestati Elettronici nell’ambito del flusso di eliminazione.

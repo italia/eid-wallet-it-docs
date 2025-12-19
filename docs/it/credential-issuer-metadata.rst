@@ -157,5 +157,6 @@ I Metadata *openid_credential_issuer* DEVONO contenere i seguenti *claims*.
     - Oggetto contenente informazioni sull'emissione di Credenziali in batch da parte del Credential Issuer presso il Credential Endpoint. La presenza di questo parametro indica che il Credential Issuer supporta più di una prova di possesso nel parametro ``proofs`` nella Credential Request, pertanto può emettere più di un Attestato Elettronico con gli stessi attributi relativi al titolare in un'unica richiesta/risposta. Il parametro che DEVE essere incluso è:
 
             - **batch_size**: Valore intero che specifica la dimensione massima dell'array per il parametro ``proofs`` nella Credential Request.
-
+  * - **status_list_aggregation_endpoint**
+    - URL del *Status List Aggregation Endpoint*. Vedi `TOKEN-STATUS-LIST`_ Sezione 9.
 

@@ -29,7 +29,7 @@ This section lists the test cases from Sections:
 - :ref:`wallet-solution-components:Wallet Solution Components`
 - :ref:`wallet-instance:Wallet Instance`
 - :ref:`wallet-provider-entity-configuration:Wallet Provider Entity Configuration`
-- :ref:`wallet-provider-metadata:Wallet Provider Metadata`
+- :ref:`wallet-solution-metadata:Wallet Solution Metadata`
 - `e-Service PDND Wallet Provider Catalogue <wallet-provider-endpoint.html#e-service-pdnd-wallet-provider-catalogue0>`_
 
 
