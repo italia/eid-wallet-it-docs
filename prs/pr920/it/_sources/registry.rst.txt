@@ -6,19 +6,19 @@ Infrastruttura del Registro
 
 L'ecosistema IT-Wallet opera attraverso un'infrastruttura di registro che fornisce definizioni dati standardizzate, registrazione delle entità e capacità di scoperta delle Credenziali. Il sistema di registro consiste di molteplici componenti interconnessi che supportano il ciclo di vita completo delle operazioni degli Attestati Elettronici dall'onboarding delle entità alla presentazione delle Credenziali.
 
-L'architettura di registro affronta la standardizzazione semantica, la gestione della fiducia federata e i requisiti di scoperta delle credenziali attraverso componenti di registro specializzati che assicurano interoperabilità e conformità attraverso l'ecosistema.
+L'architettura di registro affronta la standardizzazione semantica, la gestione della fiducia federata e i requisiti di scoperta delle Credenziali attraverso componenti di registro specializzati che assicurano interoperabilità e conformità attraverso l'ecosistema.
 
 Panoramica dell'Architettura del Registro
 ------------------------------------------
 
 Il Registro del Sistema IT-Wallet comprende sei componenti principali:
 
-1. **Registro dei Claims**: Definizioni semantiche standardizzate per attributi individuali delle credenziali, tipi di dati e regole di validazione.
+1. **Registro dei Claims**: Definizioni semantiche standardizzate per attributi individuali delle Credenziali, tipi di dati e regole di validazione.
 2. **Registro delle Fonti Autentiche (AS)**: Catalogo dei fornitori di dati registrati con le loro capacità dichiarate e claims disponibili.
 3. **Registro di Federazione**: Elenco autorevole delle entità fidate che partecipano alla federazione con le loro configurazioni tecniche.
 4. **Catalogo degli Attestati Elettronici**: Meccanismo di scoperta pubblico per i tipi di Credenziali disponibili con i loro metadati e informazioni di emissione.
 5. **Registro degli Schema**: Elenco autorevole degli schemi di Credenziali.
-6. **Tassonomia**: Sistema di classificazione gerarchico che organizza le credenziali per dominio e scopo.
+6. **Tassonomia**: Sistema di classificazione gerarchico che organizza le Credenziali per dominio e scopo.
 
 Questi componenti di registro sono interconnessi e mantenuti dall'Organismo di Supervisione per garantire coerenza, sicurezza e conformità normativa attraverso l'ecosistema.
 
@@ -86,11 +86,11 @@ Struttura del payload JWT (decodificato):
 Registro dei Claims
 -------------------
 
-Il **Registro dei Claims** fornisce definizioni semantiche standardizzate per attributi individuali delle Credenziali, tipi di dati e regole di validazione. Questo registro serve come fondamento semantico per la standardizzazione degli attributi delle credenziali attraverso l'ecosistema IT-Wallet, lavorando in coordinamento con il componente Tassonomia per la classificazione gerarchica.
+Il **Registro dei Claims** fornisce definizioni semantiche standardizzate per attributi individuali delle Credenziali, tipi di dati e regole di validazione. Questo registro serve come fondamento semantico per la standardizzazione degli attributi delle Credenziali attraverso l'ecosistema IT-Wallet, lavorando in coordinamento con il componente Tassonomia per la classificazione gerarchica.
 
 L'Organismo di Supervisione DEVE mantenere il Registro dei Claims per garantire coerenza semantica e conformità normativa attraverso l'ecosistema. Il registro DEVE contenere:
 
-  - **Claims Standardizzati**: Definizioni semantiche per tutti gli attributi delle credenziali con tipi di dati e regole di validazione.
+  - **Claims Standardizzati**: Definizioni semantiche per tutti gli attributi delle Credenziali con tipi di dati e regole di validazione.
   - **Mappature di Interoperabilità**: Definizioni di alias per claims che usano terminologia diversa tra standard (es. ISO18013-5 ``place_of_birth`` mappato al canonico ``birth_place``).
   - **Formati Dati**: Tipi di dati standardizzati (string, date, numeric, boolean, email, url, image, array, object) con pattern di validazione.
 
@@ -98,12 +98,12 @@ Il Registro dei Claims DEVE garantire:
 
   - **Coerenza Semantica**: Previene conflitti tra claims duplicati o sovrapposti attraverso l'ecosistema.
   - **Interoperabilità Transfrontaliera**: Garantisce conformità UE e interpretazione coerente dei claims.
-  - **Validazione degli Schema**: Fornisce definizioni autorevoli per la validazione dei claims attraverso tutti gli scenari delle credenziali.
+  - **Validazione degli Schema**: Fornisce definizioni autorevoli per la validazione dei claims attraverso tutti gli scenari delle Credenziali.
   - **Allineamento Normativo**: Si coordina con il quadro normativo nazionale ed europeo.
   - **Scenari Credential-Agnostic**: Supporta scenari dove **convenienza dell'utente** ed **efficienza operativa aziendale** sono prioritari rispetto a **conformità normativa** e **tracce di audit**.
 
 .. note::
-   Il Registro dei Claims definisce le proprietà semantiche degli attributi individuali, ma NON DEVE specificare capacità di divulgazione selettiva. La divulgazione selettiva dipende dalle implementazioni del formato delle Credenziali (SD-JWT VC, mDoc), dalle configurazioni tecniche dell'emittente e dal contesto di presentazione. Queste capacità sono specificate a livello di tipo di credenziale all'interno del Catalogo degli Attestati Elettronici e implementate durante i flussi di presentazione delle Credenziali.
+   Il Registro dei Claims definisce le proprietà semantiche degli attributi individuali, ma NON DEVE specificare capacità di divulgazione selettiva. La divulgazione selettiva dipende dalle implementazioni del formato delle Credenziali (SD-JWT VC, mDoc), dalle configurazioni tecniche dell'emittente e dal contesto di presentazione. Queste capacità sono specificate a livello di tipo di Credenziale all'interno del Catalogo degli Attestati Elettronici e implementate durante i flussi di presentazione delle Credenziali.
 
 
 Utilizzo del Registro dei Claims
@@ -114,12 +114,12 @@ Il Registro dei Claims DEVE supportare il ciclo di vita completo dell'ecosistema
 **Durante il Processo di Onboarding**:
 
   - **Registrazione AS**: Le Fonti Autentiche dichiarano i claims disponibili dal registro standardizzato durante la registrazione delle capacità.
-  - **Registrazione CI**: Gli Emittenti di Credenziali selezionano le entità AS in base ai claims richiesti e registrano i tipi di credenziali per la pubblicazione nel catalogo.
-  - **Registrazione RP**: Le Relying Parties specificano i requisiti di autorizzazione usando domini/scopi per tipi di credenziali specifici e/o attributi dell'Utente.
+  - **Registrazione CI**: Gli Emittenti di Credenziali selezionano le entità AS in base ai claims richiesti e registrano i tipi di Credenziali per la pubblicazione nel catalogo.
+  - **Registrazione RP**: Le Relying Parties specificano i requisiti di autorizzazione usando domini/scopi per tipi di Credenziali specifici e/o attributi dell'Utente.
 
 **Durante le Attività Operative**:
 
-  - **Emissione di Credenziali**: Le definizioni dei claims garantiscono una rappresentazione dati coerente attraverso diversi tipi di credenziali.
+  - **Emissione di Credenziali**: Le definizioni dei claims garantiscono una rappresentazione dati coerente attraverso diversi tipi di Credenziali.
   - **Richieste di Presentazione**: Le RP fanno riferimento ai claims per la validazione dello schema e la verifica dell'autorizzazione in scenari sia credential-specific che credential-agnostic.
   - **Applicazione delle Policy**: Le policy di autorizzazione sfruttano le classificazioni dominio/scopo per il controllo degli accessi.
 
@@ -137,17 +137,17 @@ Un esempio non normativo della struttura del Registro dei Claims è fornito di s
 Registro delle Fonti Autentiche
 --------------------------------
 
-L'Organismo di Supervisione DEVE mantenere il Registro delle Fonti Autentiche per abilitare l'accesso coordinato ai dati e l'emissione di credenziali attraverso l'ecosistema. Il Registro AS DEVE contenere almeno:
+L'Organismo di Supervisione DEVE mantenere il Registro delle Fonti Autentiche per abilitare l'accesso coordinato ai dati e l'emissione di Credenziali attraverso l'ecosistema. Il Registro AS DEVE contenere almeno:
 
   - **Informazioni sull'Organizzazione**: Dettagli dell'entità legale, stato normativo e ruolo autorevole all'interno di domini specifici.
   - **Capacità dei Dati**: Disponibilità dichiarata dei claims che fanno riferimento a definizioni standardizzate dal Registro dei Claims con le corrispondenti classificazioni della Tassonomia.
   - **Metodi di Integrazione**: Meccanismi di accesso tecnico (PDND per AS pubblici, API personalizzate per AS privati).
-  - **Scopi Previsti**: Tipi di credenziali supportati e contesti aziendali per il coordinamento AS-CI.
+  - **Scopi Previsti**: Tipi di Credenziali supportati e contesti aziendali per il coordinamento AS-CI.
   - **Garanzia della Qualità dei Dati**: Stato autorevole, frequenza di aggiornamento e capacità di traccia di audit.
 
 Il Registro AS DEVE garantire:
 
-  - **Accesso Coordinato ai Dati**: Abilita la scoperta da parte dei CI di dati appropriati dalle Fonti Autentiche per l'emissione di credenziali.
+  - **Accesso Coordinato ai Dati**: Abilita la scoperta da parte dei CI di dati appropriati dalle Fonti Autentiche per l'emissione di Credenziali.
   - **Integrazione AS-CI**: Facilita flussi di lavoro di approvazione e coordinamento dell'accesso ai dati tra entità.
   - **Garanzia della Qualità**: Mantiene lo stato autorevole e l'affidabilità dei dati attraverso diversi domini.
   - **Conformità Normativa**: Supporta i requisiti di trasparenza della pubblica amministrazione e coordinamento del settore privato.
@@ -161,12 +161,12 @@ Utilizzo del Registro delle Fonti Autentiche
 Il Registro AS supporta il coordinamento dell'ecosistema durante tutto il ciclo di vita operativo:
 
 **Durante il Processo di Onboarding**:
-  - **Auto-Dichiarazione AS**: Le Fonti Autentiche registrano le capacità prima che esistano tipi di credenziali nel catalogo.
-  - **Scoperta CI**: Gli Emittenti di Credenziali cercano entità AS in base ai claims richiesti e ai tipi di credenziali previsti.
+  - **Auto-Dichiarazione AS**: Le Fonti Autentiche registrano le capacità prima che esistano tipi di Credenziali nel catalogo.
+  - **Scoperta CI**: Gli Emittenti di Credenziali cercano entità AS in base ai claims richiesti e ai tipi di Credenziali previsti.
   - **Coordinamento delle Approvazioni**: Le entità AS valutano e approvano le richieste di accesso dei CI per la fornitura di dati.
 
 **Durante le Attività Operative**:
-  - **Risoluzione della Fonte Dati**: I sistemi CI fanno riferimento al Registro AS per l'accesso ai dati in tempo reale durante l'emissione delle credenziali.
+  - **Risoluzione della Fonte Dati**: I sistemi CI fanno riferimento al Registro AS per l'accesso ai dati in tempo reale durante l'emissione delle Credenziali.
   - **Validazione della Qualità**: Le informazioni del Registro AS supportano la verifica dell'origine dei dati e i requisiti di audit.
   - **Gestione dell'Integrazione**: Gli endpoint tecnici e i metodi di accesso abilitano la comunicazione standardizzata AS-CI.
 
@@ -179,7 +179,7 @@ L'architettura del Registro AS supporta diversi pattern di coordinamento che rif
 
     - **Integrazione PDND**: ``"integration_method": "pdnd_eservice"`` per l'accesso standardizzato ai dati governativi.
     - **Conformità Normativa**: Requisiti di trasparenza completi con pubblicazione nel catalogo pubblico.
-    - **Requisiti di Audit**: Tracciabilità completa per i processi di emissione di credenziali governative.
+    - **Requisiti di Audit**: Tracciabilità completa per i processi di emissione di Credenziali governative.
 
   2. **AS del Settore Privato** (Integrazione Flessibile): Le entità private forniscono dati specializzati attraverso accordi personalizzati:
 
@@ -192,7 +192,7 @@ Questo approccio abilita sia la **trasparenza normativa** per la pubblica ammini
 Struttura del Registro AS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Durante la registrazione, le Fonti Autentiche dichiarano le loro capacità prima che esistano tipi di credenziali nel catalogo. Questa dichiarazione stabilisce le fondamenta per la successiva registrazione CI e creazione dei tipi di credenziali.
+Durante la registrazione, le Fonti Autentiche dichiarano le loro capacità prima che esistano tipi di Credenziali nel catalogo. Questa dichiarazione stabilisce le fondamenta per la successiva registrazione CI e creazione dei tipi di Credenziali.
 
 Schema dell'Identificatore Univoco AS
 """"""""""""""""""""""""""""""""""""""
@@ -490,7 +490,7 @@ La seguente tabella riassume le informazioni principali che DEVONO essere fornit
    * - Metadati della Credenziale Digitale
      - Informazioni identificative essenziali e caratteristiche della Credenziale Digitale, inclusi:
 
-       - **Identificatore univoco della credenziale**: Una stringa identificativa univoca di ciascuna Credenziale Digitale.
+       - **Identificatore univoco della Credenziale**: Una stringa identificativa univoca di ciascuna Credenziale Digitale.
        - **Metodi di autenticazione dell'utente**: Meccanismi di autenticazione dell'utente usati per richiedere la Credenziale Digitale, se richiesto dagli Emittenti o dalle Fonti Autentiche.
        - **Livello Minimo di Garanzia**: Il Livello Minimo di Garanzia richiesto per l'affidabilità della Credenziale Digitale. DEVE tenere conto del Livello di Garanzia dell'autenticazione dell'Utente, quando applicabile, e dell'Istanza Wallet.
    * - Emittenti di Attestati Elettronici
@@ -510,7 +510,7 @@ La seguente tabella riassume le informazioni principali che DEVONO essere fornit
    * - Termini d'Uso
      - Condizioni e limitazioni per l'uso della Credenziale Digitale, come:
 
-       - **Validità della credenziale**: Periodo di tempo durante il quale la Credenziale Digitale è valida e, quando applicabile, meccanismi e dettagli tecnici per invalidare gli Attestati Elettronici (metodi di revoca/sospensione).
+       - **Validità della Credenziale**: Periodo di tempo durante il quale la Credenziale Digitale è valida e, quando applicabile, meccanismi e dettagli tecnici per invalidare gli Attestati Elettronici (metodi di revoca/sospensione).
        - **Policy di restrizione**: Se applicabile, regole che governano l'uso e le limitazioni della Credenziale Digitale secondo le normative nazionali. È usata, ad esempio, per specificare se solo Entità di tipo legale specifico, per esempio Fornitore Pub-EAA e Soluzioni Wallet pubbliche, sono autorizzate a emettere e ottenere la Credenziale Digitale.
        - **Policy di prezzo**: Informazioni relative ai modelli di prezzo della Credenziale Digitale, come `free`, `issuance_based`, `verification_based`.
        - **Scopi della Credenziale Digitale**: Informazioni relative agli scopi consentiti per cui la Credenziale Digitale può essere usata. Ogni tipo di Credenziale Digitale può essere usato per molteplici scopi.
@@ -573,17 +573,17 @@ gli Attestati Elettronici riconosciute all'interno dell'ecosistema IT-Wallet son
 
 Ogni Credenziale DEVE specificare domini e scopi per abilitare sia **Scenari Credential-Specific** che **Scenari Credential-Agnostic** secondo i requisiti della Relying Party e i pattern di richiesta di presentazione:
 
-  1. **Scenari Credential-Specific** (Primari per Settori Governativi/Regolamentati): Le RP richiedono tipi di credenziali specifici per requisiti di conformità e audit, includendo ad esempio:
+  1. **Scenari Credential-Specific** (Primari per Settori Governativi/Regolamentati): Le RP richiedono tipi di Credenziali specifici per requisiti di conformità e audit, includendo ad esempio:
 
     - **Servizi Governativi**: ``"vct_values": ["urn:eudi:pid:it:1"]`` per la verifica dell'identità specifica del PID.
     - **Controlli di Polizia**: ``"docType": "org.iso.18013.5.1.mDL"`` per la verifica della patente di guida.
-    - **KYC Bancario**: Tipi di credenziali specifici richiesti dalle normative finanziarie.
+    - **KYC Bancario**: Tipi di Credenziali specifici richiesti dalle normative finanziarie.
     - **Servizi Sanitari**: ``"vct_values": ["urn:eudi:european_disability_card:it:1"]`` per l'accesso ai benefici per disabilità conforme all'UE.
 
-  2. **Scenari Credential-Agnostic** (Tipici per Business Privato): Le RP richiedono claims specifici indipendentemente dalla fonte della credenziale per efficienza operativa, come:
+  2. **Scenari Credential-Agnostic** (Tipici per Business Privato): Le RP richiedono claims specifici indipendentemente dalla fonte della Credenziale per efficienza operativa, come:
 
-    - **Consegna E-commerce**: Qualsiasi credenziale, tra quelle a cui è autorizzato ad accedere, contenente ``given_name``, ``family_name``, ``address`` per la spedizione.
-    - **Abbonamenti**: Qualsiasi credenziale, tra quelle a cui è autorizzato ad accedere, con ``given_name``, ``email`` per la personalizzazione.
+    - **Consegna E-commerce**: Qualsiasi Credenziale, tra quelle a cui è autorizzato ad accedere, contenente ``given_name``, ``family_name``, ``address`` per la spedizione.
+    - **Abbonamenti**: Qualsiasi Credenziale, tra quelle a cui è autorizzato ad accedere, con ``given_name``, ``email`` per la personalizzazione.
     - **Personalizzazione del Servizio**: Applicazioni aziendali che richiedono dati personali di base senza forti requisiti sulla fonte.
 
 Questo approccio consente:
@@ -751,15 +751,15 @@ La logica complessiva per presentare una Credenziale è:
 Tassonomia
 ----------
 
-La **Tassonomia** fornisce le fondamenta semantiche per l'interoperabilità degli Attestati Elettronici mantenendo il vocabolario autorevole per organizzare le credenziali all'interno dell'ecosistema IT-Wallet. La tassonomia è neutrale rispetto al formato delle credenziali e ha l'obiettivo di facilitare le integrazioni degli Attestati Elettronici nelle Soluzioni Tecniche IT-Wallet.
+La **Tassonomia** fornisce le fondamenta semantiche per l'interoperabilità degli Attestati Elettronici mantenendo il vocabolario autorevole per organizzare le Credenziali all'interno dell'ecosistema IT-Wallet. La tassonomia è neutrale rispetto al formato delle Credenziali e ha l'obiettivo di facilitare le integrazioni degli Attestati Elettronici nelle Soluzioni Tecniche IT-Wallet.
 
-La tassonomia fornisce, in una singola risorsa, il sistema di classificazione gerarchica che organizza domini e scopi che possono essere applicati ai tipi di credenziali, supportando la valutazione delle policy di autorizzazione e la standardizzazione a livello di ecosistema.
+La tassonomia fornisce, in una singola risorsa, il sistema di classificazione gerarchica che organizza domini e scopi che possono essere applicati ai tipi di Credenziali, supportando la valutazione delle policy di autorizzazione e la standardizzazione a livello di ecosistema.
 
 **Obiettivi della Tassonomia:**
 
 1. **Fondamento Semantico**: Stabilire vocabolario standardizzato per domini e scopi in tutto l'ecosistema
 2. **Framework delle Policy**: Abilitare decisioni di autorizzazione strutturate basate sulla classificazione gerarchica
-3. **Interoperabilità**: Garantire interpretazione coerente delle classificazioni delle credenziali
+3. **Interoperabilità**: Garantire interpretazione coerente delle classificazioni delle Credenziali
 4. **Estensibilità**: Supportare l'evoluzione dell'ecosistema con nuovi domini e scopi
 5. **Conformità Transfrontaliera**: Allinearsi con i requisiti normativi UE e gli standard internazionali
 
@@ -768,7 +768,7 @@ La tassonomia fornisce, in una singola risorsa, il sistema di classificazione ge
 La tassonomia mantiene una struttura gerarchica a due livelli:
 
 - **Domini**: Classificazione di livello superiore che rappresenta aree funzionali ampie (ad esempio, IDENTITY, AUTHORIZATION, FINANCIAL)
-- **Scopi**: Casi d'uso specifici delle credenziali all'interno di ogni dominio (ad esempio, PERSON_IDENTIFICATION, DRIVING_LICENSE, BANK_ACCOUNT) per i quali le credenziali possono essere utilizzate
+- **Scopi**: Casi d'uso specifici delle Credenziali all'interno di ogni dominio (ad esempio, PERSON_IDENTIFICATION, DRIVING_LICENSE, BANK_ACCOUNT) per i quali le Credenziali possono essere utilizzate
 
 **Supporto alla Localizzazione:**
 
@@ -778,7 +778,7 @@ La tassonomia supporta ambienti multilingue attraverso il pattern del suffisso `
 
 - **Registro degli Attributi**: Catalogo degli attributi individuali
 - **Registro AS**: Le Fonti Autentiche dichiarano capacità di fornitura dati utilizzando classificazioni della tassonomia
-- **Catalogo degli Attestati Elettronici**: I tipi di credenziali specificano domini e scopi supportati
+- **Catalogo degli Attestati Elettronici**: I tipi di Credenziali specificano domini e scopi supportati
 - **Policy di Autorizzazione**: La valutazione delle policy sfrutta la struttura della tassonomia per decisioni di controllo degli accessi
 
 La tassonomia è accessibile attraverso l'endpoint dedicato della tassonomia come definito nel meccanismo di discovery del registro ed è mantenuta dall'Organismo di Supervisione per garantire conformità normativa e coerenza semantica.
@@ -880,11 +880,11 @@ Un esempio non normativo del payload del Registro degli Schema:
 Integrazione del Registro e Riferimenti Incrociati
 ---------------------------------------------------
 
-I componenti del registro sono interconnessi e lavorano insieme per supportare l'ecosistema completo delle credenziali:
+I componenti del registro sono interconnessi e lavorano insieme per supportare l'ecosistema completo delle Credenziali:
 
 1. **Registro AS** ↔ **Tassonomia**: Le entità AS dichiarano capacità di fornitura utilizzando classificazioni della tassonomia per la categorizzazione standardizzata.
-2. **Registro AS** ↔ **Catalogo**: I tipi di credenziali fanno riferimento alle capacità AS per la validazione della fonte dati.
-3. **Catalogo** ↔ **Tassonomia**: Le voci delle credenziali specificano domini e scopi dalla tassonomia per discovery e autorizzazione.
+2. **Registro AS** ↔ **Catalogo**: I tipi di Credenziali fanno riferimento alle capacità AS per la validazione della fonte dati.
+3. **Catalogo** ↔ **Tassonomia**: Le voci delle Credenziali specificano domini e scopi dalla tassonomia per discovery e autorizzazione.
 4. **Registro della Federazione** ↔ **Tutti i Componenti**: Fornisce validazione del trust crittografico per tutte le operazioni del registro e autenticazione delle entità.
 5. **Registro degli Schema** ↔ **Emittente/RP**: Fornisce il collegamento verificabile a tutte le specifiche di formato delle Credenziali conosciute usate nell'ecosistema.
 
