@@ -169,6 +169,13 @@ The flow is shown below with illustrative wireframes.
 
     Example of User Experience in the issuance an Authentic Electronic Attestation from Catalog 
 
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/Issuance-from-catalog.pdf
+    :alt: Example of User Experience in the issuance an Authentic Electronic Attestation from Catalog
+    :width: 100%
+    :align: center
+ 
 
 Issuance from a Touchpoint of the Authentic Source 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -197,6 +204,12 @@ The flow is shown below with illustrative wireframes.
     :width: 100%
 
     Example of the User Experience during the issuance an Authentic Electronic Attestation from Authentic Source.
+
+.. only:: format_latex
+  .. figure:: ./images/pdf/Issuance-from-Authentic-Source.pdf
+    :alt: Example of User Experience in the issuance an Authentic Electronic Attestation from Authentic Source.
+    :width: 100%
+    :align: center
 
 
 Focus on Electronic Attestations of Attributes
@@ -291,6 +304,13 @@ The flow is shown below with illustrative wireframes.
 
     Example of User Experience in proximity presentation.
 
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/proximity-presentation.pdf
+    :alt: Example of User Experience in proximity presentation
+    :width: 100%
+    :align: center
+
 Remote Presentation
 ^^^^^^^^^^^^^^^^^^^^
 
@@ -325,6 +345,12 @@ The flow is shown below with illustrative wireframes.
 
     Example of User Experience in remote, same-device presentation.
 
+.. only:: format_latex
+  .. figure:: ./images/pdf/Remote-presentation-same-device.pdf
+    :alt: Example of User Experience in remote, same-device presentation.
+    :width: 100%
+    :align: center
+
 **Cross-Device Mode**
 
 - The User clicks the Engagement Button provided on the Touchpoint of the Relying Party while accessing the service from a different device than the one where the Wallet Instance is installed;
@@ -347,6 +373,12 @@ The flow is shown below with illustrative wireframes.
 
     Example of User Experience in remote, cross-device presentation.
 
+
+.. only:: format_latex
+  .. figure:: ./images/pdf/Remote-presentation-cross-device.pdf
+    :alt: Example of User Experience in remote, cross-device presentation.
+    :width: 100%
+    :align: center
 
 
 Authentication
@@ -585,6 +617,12 @@ Both flows are shown below with illustrative wireframes.
 
     Example of same-device Authentication User Experience.
 
+.. only:: format_latex
+  .. figure:: ./images/pdf/Authentication-same-device.pdf
+    :alt: Example of same-device Authentication User Experience.
+    :width: 100%
+    :align: center
+
 
 .. only:: format_html
 
@@ -593,6 +631,12 @@ Both flows are shown below with illustrative wireframes.
     :width: 100%
 
     Example of cross-device Authentication User Experience.
+
+.. only:: format_latex
+  .. figure:: ./images/pdf/Authentication-cross-device.pdf
+    :alt: Example of cross-device Authentication User Experience.
+    :width: 100%
+    :align: center
 
 
 Authentication Button
@@ -712,6 +756,12 @@ The flow is shown below with illustrative wireframes.
 
      Example of User Experience in Updating an Electronic Attestation.
 
+.. only:: format_latex
+  .. figure:: ./images/pdf/Update-EAA.pdf
+    :alt: Example of User Experience in Updating an Electronic Attestation
+    :width: 100%
+    :align: center
+
 
 Revocation of Electronic Attestations
 """"""""""""""""""""""""""""""""""""""
@@ -747,6 +797,12 @@ The flow is shown below with illustrative wireframes.
 
      Example of User Experience in Revoking an Electronic Attestation.
 
+
+.. only:: format_latex
+  .. figure:: ./images/pdf/Revocation-EAA-from-wallet.pdf
+    :alt: Example of User Experience in Revoking an Electronic Attestation.
+    :width: 100%
+    :align: center
 
 History of Electronic Attestations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -811,6 +867,12 @@ The flow is shown below with illustrative wireframes.
 
      Example of User Experience in Deactivating a Wallet Instance.
 
+
+.. only:: format_latex
+  .. figure:: ./images/pdf/wallet-deactivation.svg
+    :alt: Example of User Experience in Deactivating a Wallet Instance
+    :width: 100%
+    :align: center
 
 Error Management
 -----------------
