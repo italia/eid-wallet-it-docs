@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>6. The Infrastructure of Trust &#8212; IT-Wallet Technical Documentation - PR #947</title>
+    <title>6. The Infrastructure of Trust &#8212; IT-Wallet Technical Specifications - PR #947</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -32,7 +32,7 @@
         <p id="toggle_sidebar">
             <a href="#" title="Toggle sidebar">|||</a>
         </p>
-        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Documentation - PR #947</a></h1>
+        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Specifications - PR #947</a></h1>
             <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
     
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
@@ -164,21 +164,21 @@
   <section id="the-infrastructure-of-trust">
 <h1><span class="section-number">6. </span>The Infrastructure of Trust<a class="headerlink" href="#the-infrastructure-of-trust" title="Link to this heading">¶</a></h1>
 <p>The IT-Wallet ecosystem operates within a federated trust infrastructure where participating entities establish cryptographic trust relationships and maintain compliance with common security standards. This infrastructure provides the foundation for secure Digital Credential operations across the ecosystem participants.</p>
-<p>This section outlines the implementation of the Trust Model in an infrastructure that complies with OpenID Federation 1.0 <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a>. This infrastructure involves a RESTful API for distributing metadata, metadata policies, trust marks, cryptographic public keys and X.509 Certificates, and the revocation status of the participants, also called Federation Entities.</p>
+<p>This section outlines the implementation of the Trust Model in an infrastructure that complies with OpenID Federation 1.0 <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a>. This infrastructure involves a RESTful API for distributing metadata, metadata policies, trust marks, cryptographic public keys and X.509 Certificates, and the revocation status of the participants, also called Federation Entities.</p>
 <p>The Infrastructure of trust facilitates the application of a trust assessment mechanism among the parties defined in the <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>.
 This trust infrastructure works in coordination with the Registry Infrastructure (see <a class="reference internal" href="registry.html#registry-infrastructure"><span class="std std-ref">Registry Infrastructure</span></a>) to enable the entity onboarding processes detailed in <a class="reference internal" href="entity-onboarding.html#entity-onboarding"><span class="std std-ref">Entity Onboarding</span></a>. In particular, it enables the technical   implementation of the onboarding processes described in <a class="reference internal" href="entity-onboarding.html#entity-onboarding"><span class="std std-ref">Entity Onboarding</span></a> and supports the operational scenarios
 illustrated in <a class="reference internal" href="onboarding-high-level.html#onboarding-journey-maps"><span class="std std-ref">Onboarding Journey Maps</span></a>.</p>
 <p><strong>Onboarding Enablement</strong>: The Trust Infrastructure provides the cryptographic mechanisms that allow new entities (Credential Issuers, Relying Parties, Wallet Providers) to establish verifiable trust relationships during their registration process. Without this infrastructure, entities would not be able to prove their compliance status or operational capabilities to other ecosystem participants.</p>
-<p><strong>Entity Lifecycle Support</strong>: Throughout an entity's operational lifecycle, the Trust Infrastructure maintains up-to-date trust attestations, handles key rotation, manages revocation scenarios, and supports compliance monitoring. This directly supports the lifecycle management procedures detailed in <span class="xref std std-ref">entity-onboarding:Entity Lifecycle Management</span>.</p>
+<p><strong>Entity Lifecycle Support</strong>: Throughout an entity's operational lifecycle, the Trust Infrastructure maintains up-to-date trust attestations, handles key rotation, manages revocation scenarios, and supports compliance monitoring. This directly supports the lifecycle management procedures detailed in <a class="reference internal" href="entity-onboarding.html#entity-onboarding"><span class="std std-ref">Entity Onboarding</span></a>.</p>
 <p><strong>Registry Infrastructure Integration</strong>: The Trust Infrastructure implements the Federation Registry component of the broader Registry Infrastructure, providing the technical foundation for entity discovery and trust validation that underpins all onboarding procedures.</p>
-<figure class="align-default" id="id7">
+<figure class="align-default" id="id2">
 <p class="plantuml">
 <object data="_images/plantuml-02526ff8d1d9d12e5be1f25efe444ae33dc82b43.svg" type="image/svg+xml" style="width:99%">
 <a href="_images/plantuml-02526ff8d1d9d12e5be1f25efe444ae33dc82b43.png"><img src="_images/plantuml-02526ff8d1d9d12e5be1f25efe444ae33dc82b43.png" alt="The figure illustrates the trust roles." style="width: 99.0%"/></a>
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 6.1 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/png/XT1HQy90303Wz_iLcNkMiIAoXo5AtK3OWup17aViPUxmcYkvd29Z_tsjThM2kBSc-P9UCesAegdqviPnuPCbUCn7T_de8m-iw9XaOapSEAvGi8GL5fkrXCGs3pu8g237kaIiFJKJ2RiZMFcwmnYXGf7Ndc3m9YagpBZu2Z80ZA08j_FnqyDpTkOMh2GbMOTA1-TOxplv3ymkZdmXt58y64_u6UjnZPcFhw6iGzTKTwu_3Ty6eDUG2rbYTUXX4MEYu-w5wnvwfj_HUr9OIjWwszfTTTc-ajyxNiCIHVS7AIVvOqpzZs6gXXDGDBkg_MwEQQGNPQOzIQ_UxjypJVeqhKcTeYcnJQN_1G00">The roles within the Federation, where the Trust Anchor oversees its subordinates, which include one or more Intermediates and Leaves.</a></span><a class="headerlink" href="#id7" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 6.1 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/png/XT1HQy90303Wz_iLcNkMiIAoXo5AtK3OWup17aViPUxmcYkvd29Z_tsjThM2kBSc-P9UCesAegdqviPnuPCbUCn7T_de8m-iw9XaOapSEAvGi8GL5fkrXCGs3pu8g237kaIiFJKJ2RiZMFcwmnYXGf7Ndc3m9YagpBZu2Z80ZA08j_FnqyDpTkOMh2GbMOTA1-TOxplv3ymkZdmXt58y64_u6UjnZPcFhw6iGzTKTwu_3Ty6eDUG2rbYTUXX4MEYu-w5wnvwfj_HUr9OIjWwszfTTTc-ajyxNiCIHVS7AIVvOqpzZs6gXXDGDBkg_MwEQQGNPQOzIQ_UxjypJVeqhKcTeYcnJQN_1G00">The roles within the Federation, where the Trust Anchor oversees its subordinates, which include one or more Intermediates and Leaves.</a></span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>In this representation, both the Trust Anchor and the Intermediates assume the role of Registration Authority.</p>
@@ -189,7 +189,7 @@ except for Wallet Instances which are End-User's personal devices authenticated 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The Wallet Instance, as a personal device, is deemed reliable through a verifiable attestation issued and signed by a trusted third party.</p>
-<p>This is called <em>Wallet Attestation</em> and is documented in the dedicated <span class="xref std std-ref">wallet-attestation-issuance:Wallet Attestation Issuance</span>.</p>
+<p>This is called <em>Wallet Attestation</em> and is documented in the dedicated <a class="reference internal" href="wallet-attestation-issuance.html#wallet-app-and-wallet-unit-attestation-issuance"><span class="std std-ref">Wallet App and Wallet Unit Attestation Issuance</span></a>.</p>
 </div>
 <p><strong>Role in Onboarding</strong>: During entity registration, the Trust Anchor and Intermediates act as Federation Authorities. This establishes the participant's position in the trust hierarchy and enables them to participate in credential operations. Leaves (Credential Issuers, Relying Parties, Wallet Providers) undergo registration to prove their eligibility and receive authorization to perform their designated functions.</p>
 <p><strong>Role in Operations</strong>: During credential issuance and presentation, these roles enable distributed trust validation without requiring centralized verification for each transaction. Leaves utilize their registered status to issue credentials, verify presentations, or provide wallet services to end users.</p>
@@ -309,8 +309,8 @@ except for Wallet Instances which are End-User's personal devices authenticated 
 <section id="trust-infrastructure-requirements">
 <h2><span class="section-number">6.4. </span>Trust Infrastructure Requirements<a class="headerlink" href="#trust-infrastructure-requirements" title="Link to this heading">¶</a></h2>
 <p>This section includes the requirements necessary for the successful implementation and operation of the infrastructure of trust.</p>
-<table class="longtable docutils align-default" id="id8">
-<caption><span class="caption-number">Table 6.1 </span><span class="caption-text">Functional Requirements</span><a class="headerlink" href="#id8" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id3">
+<caption><span class="caption-number">Table 6.1 </span><span class="caption-text">Functional Requirements</span><a class="headerlink" href="#id3" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 80.0%" />
@@ -386,7 +386,7 @@ except for Wallet Instances which are End-User's personal devices authenticated 
 <p>OpenID Federation 1.0 uses RESTful Web Services secured over
 HTTPs. OpenID Federation 1.0 defines which are the web endpoints that the participants MUST make
 publicly available. The table below summarises the endpoints and their scopes.</p>
-<p>All the endpoints listed below are defined in the <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> specs.</p>
+<p>All the endpoints listed below are defined in the <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> specs.</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 25.0%" />
@@ -409,32 +409,32 @@ publicly available. The table below summarises the endpoints and their scopes.</
 </tr>
 <tr class="row-odd"><td><p>subordinate list endpoint</p></td>
 <td><p><strong>GET</strong> /list</p></td>
-<td><p>Lists the Subordinates. See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Section 5.1.1</p></td>
+<td><p>Lists the Subordinates. See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Section 5.1.1</p></td>
 <td><p>Trust Anchor, Intermediate</p></td>
 </tr>
 <tr class="row-even"><td><p>fetch endpoint</p></td>
 <td><p><strong>GET</strong> /fetch?sub=https://rp.example.org</p></td>
-<td><p>Returns a signed JWT about a specific subject, its Subordinate. It's called Subordinate Statement. See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Section 5.1.1</p></td>
+<td><p>Returns a signed JWT about a specific subject, its Subordinate. It's called Subordinate Statement. See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Section 5.1.1</p></td>
 <td><p>Trust Anchor, Intermediate</p></td>
 </tr>
 <tr class="row-odd"><td><p>trust mark status</p></td>
 <td><p><strong>POST</strong> /status?sub=...&amp;trust_mark_id=...</p></td>
-<td><p>Returns the status of the issuance (validity) of a Trust Mark related to a specific subject. See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Section 5.1.1</p></td>
+<td><p>Returns the status of the issuance (validity) of a Trust Mark related to a specific subject. See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Section 5.1.1</p></td>
 <td><p>Trust Anchor, Intermediate</p></td>
 </tr>
 <tr class="row-even"><td><p>trust marked listing</p></td>
 <td><p><strong>GET</strong> /trust_mark_listing?trust_mark_id=...</p></td>
-<td><p>Lists all entities for which Trust Marks have been issued and are still valid. See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Section 5.1.1</p></td>
+<td><p>Lists all entities for which Trust Marks have been issued and are still valid. See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Section 5.1.1</p></td>
 <td><p>Trust Anchor, Intermediate</p></td>
 </tr>
 <tr class="row-odd"><td><p>historical keys</p></td>
 <td><p><strong>GET</strong> /historical-jwks</p></td>
-<td><p>Lists the expired and revoked keys, with the motivation of the revocation. See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Section 5.1.1</p></td>
+<td><p>Lists the expired and revoked keys, with the motivation of the revocation. See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Section 5.1.1</p></td>
 <td><p>Trust Anchor, Intermediate</p></td>
 </tr>
 <tr class="row-even"><td><p>subordinate events</p></td>
 <td><p><strong>GET</strong> /federation_subordinate_events_endpoint?sub=https://rp.example.org</p></td>
-<td><p>Returns a historical track of registration events about Immediate Subordinates, such as registration, revocation, and updates of their Federation Entity Keys. See the section <span class="xref std std-ref">federation-subordinate-events-endpoint:Federation Subordinate Events Endpoint</span> for more details.</p></td>
+<td><p>Returns a historical track of registration events about Immediate Subordinates, such as registration, revocation, and updates of their Federation Entity Keys. See the section <a class="reference internal" href="#federation-subordinate-events-endpoint"><span class="std std-ref">Federation Subordinate Events Endpoint</span></a> for more details.</p></td>
 <td><p>Trust Anchor, Intermediate</p></td>
 </tr>
 </tbody>
@@ -637,16 +637,16 @@ giving the references of the metadata protocol for each of these.</p>
 <tr class="row-even"><td><p>Trust Anchor</p></td>
 <td><p>Trust Anchor</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code></p></td>
-<td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a></p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a></p></td>
 </tr>
 <tr class="row-odd"><td><p>Intermediate</p></td>
 <td><p>Intermediate</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code></p></td>
-<td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a></p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a></p></td>
 </tr>
 <tr class="row-even"><td><p>Wallet Provider</p></td>
 <td><p>Wallet Provider</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code>, <code class="docutils literal notranslate"><span class="pre">wallet_provider</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code>, <code class="docutils literal notranslate"><span class="pre">wallet_solution</span></code></p></td>
 <td><p>--</p></td>
 </tr>
 <tr class="row-odd"><td><p>Authorization Server</p></td>
@@ -662,7 +662,7 @@ giving the references of the metadata protocol for each of these.</p>
 <tr class="row-odd"><td><p>Relying Party</p></td>
 <td><p>Relying Party</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code>, <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code></p></td>
-<td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a>, <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a></p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a>, <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -698,25 +698,25 @@ or <code class="docutils literal notranslate"><span class="pre">openid_credentia
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>organization_name</strong></p></td>
-<td><p>See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Section 5.2.2</p></td>
+<td><p>See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Section 5.2.2</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>homepage_uri</strong></p></td>
-<td><p>See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Section 5.2.2</p></td>
+<td><p>See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Section 5.2.2</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>policy_uri</strong></p></td>
-<td><p>See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Section 5.2.2</p></td>
+<td><p>See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Section 5.2.2</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>logo_uri</strong></p></td>
-<td><p>URL of the entity's logo; it MUST be in SVG format. See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Section 5.2.2</p></td>
+<td><p>URL of the entity's logo; it MUST be in SVG format. See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Section 5.2.2</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>contacts</strong></p></td>
-<td><p>Institutional verified email address (PEC) of the entity. See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Section 5.2.2</p></td>
+<td><p>Institutional verified email address (PEC) of the entity. See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Section 5.2.2</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>federation_resolve_endpoint</strong></p></td>
-<td><p>See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Section 5.1.1</p></td>
+<td><p>See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Section 5.1.1</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>tos_uri</strong></p></td>
-<td><p>[OPTIONAL] URL string that points to a human-readable terms of service document for the client that describes a contractual relationship between the end-user and the client that the end-user accepts when authorizing the client. See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a>.</p></td>
+<td><p>[OPTIONAL] URL string that points to a human-readable terms of service document for the client that describes a contractual relationship between the end-user and the client that the end-user accepts when authorizing the client. See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -810,27 +810,27 @@ and in relation to the signature mechanisms MUST be applied for the Subordinate 
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>iss</strong></p></td>
-<td><p>See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Section 3 for further details.</p></td>
+<td><p>See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Section 3 for further details.</p></td>
 <td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>sub</strong></p></td>
-<td><p>See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Section 3 for further details.</p></td>
+<td><p>See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Section 3 for further details.</p></td>
 <td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>iat</strong></p></td>
-<td><p>See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Section 3 for further details.</p></td>
+<td><p>See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Section 3 for further details.</p></td>
 <td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>exp</strong></p></td>
-<td><p>See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Section 3 for further details.</p></td>
+<td><p>See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Section 3 for further details.</p></td>
 <td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>jwks</strong></p></td>
-<td><p>Federation JWKS of the <em>sub</em> entity. See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Section 3 for further details.</p></td>
+<td><p>Federation JWKS of the <em>sub</em> entity. See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Section 3 for further details.</p></td>
 <td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>metadata_policy</strong></p></td>
-<td><p>JSON Object that describes the Metadata policy. Each key of the JSON Object represents an identifier of the metadata type and each value MUST be a JSON Object that represents the metadata policy according to that metadata type. Please refer to the <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> specifications, Section 6.1, for the implementation details.</p></td>
+<td><p>JSON Object that describes the Metadata policy. Each key of the JSON Object represents an identifier of the metadata type and each value MUST be a JSON Object that represents the metadata policy according to that metadata type. Please refer to the <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> specifications, Section 6.1, for the implementation details.</p></td>
 <td><p><a class="reference internal" href="_images/Eo_circle_red_letter-x.png"><img alt="uncheck-icon" src="_images/Eo_circle_red_letter-x.png" style="width: 25px;" /></a></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>trust_marks</strong></p></td>
@@ -866,65 +866,6 @@ and in relation to the signature mechanisms MUST be applied for the Subordinate 
 <p>Since the Wallet Instance is not a Federation Entity, the Trust Evaluation Mechanism related to it <strong>requires the presentation of the Wallet Attestation during the credential issuance and presentation phases</strong>.</p>
 <p>The Wallet Attestation conveys all the required information pertaining to the instance, such as its public key and any other technical or administrative information, without any User's personal data.</p>
 </div>
-<section id="establishing-trust-with-credential-issuers">
-<h3><span class="section-number">6.10.1. </span>Establishing Trust with Credential Issuers<a class="headerlink" href="#establishing-trust-with-credential-issuers" title="Link to this heading">¶</a></h3>
-<p>In the issuance process, Trust Evaluation ensures the integrity and authenticity of the Credentials being issued and the realiability of their Issuers. This section delineates the Trust Evaluation mechanisms distinct from the protocol flows, implemented by Wallet Instances and Relying Parties, as described in the dedicated section.</p>
-<p>Trust Evaluations implement different ways, as defined below:</p>
-<ul class="simple">
-<li><p><strong>Federation Entity Discovery</strong>: Wallet Instances and Relying Parties MUST verify the identity of the Issuer through a Federation Entity Discovery process. This involves querying a Trusted List or directory to confirm the Issuer's validity status and compliance with the Trust Framework.</p></li>
-<li><p><strong>Trust Chains</strong>: Wallet Instances and Relying Parties evaluate Issuer's Trust Chains, be provided statically or build though a Federation Entity Discovery process, to ensure that the entity requesting the Credential is part of a recognized and trusted federation. This involves checking the Trust Chain from the root authority to the Issuer.</p></li>
-<li><p><strong>Trust Marks Evaluation</strong>: Trust Marks are assessed to ensure ongoing compliance with federation policies. These marks indicate adherence to specific standards and practices required by the federation.</p></li>
-<li><p><strong>Policy Evaluation</strong>: Wallet Instances and Relying Parties MUST check that the Credential Issuer is allowed in the issuance of the Credential of their interest. Metadata, metadata policies and Trust Marks are used for the implementation of these checks (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-issuance-testcases"><span class="std std-ref">WP_050a</span></a>).</p></li>
-</ul>
-<p>In the process represented in the sequence diagram below, the Wallet Instance uses the Federation API to discover and collect all the Credential Issuers enabled within the federation. The discovery process produces the Trust Chain. When the Trust Chain is provided statically within a signed request or Credential, it only REQUIRES to be refreshed when the internet connection is available, while it MUST be refreshed when the statically provided Trust Chain results as expired.</p>
-<figure class="align-default" id="id9">
-<p class="plantuml">
-<object data="_images/plantuml-142731de99b6d615f4253079dcc9dc44d7eda639.svg" type="image/svg+xml" style="width:99%">
-<a href="_images/plantuml-142731de99b6d615f4253079dcc9dc44d7eda639.png"><img src="_images/plantuml-142731de99b6d615f4253079dcc9dc44d7eda639.png" alt="The figure illustrates the Trust Evaluation Process." style="width: 99.0%"/></a>
-
-</object></p>
-<figcaption>
-<p><span class="caption-number">Fig. 6.2 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/fPE_Rjmm38TtFGMHfTCrUuOWXwlJ6bs2fd-MB8n5nqHbIg2ek-JjwxFW9XUSkzIJ87_y-AD1tsH3jJ86-Aub6pHx30MDey2TnevoTWdLkEE4Ol0BGo0xkTgrW1akTagUn1W3j3aNqeiJgcrcgXKZ7Sap6btMZblfXZZHhhfXStqzEQ_WbgmRfjE738qOsmlielJyL7IEzo201XyF5CBcjyI3NCP4mdxJawUA08bFaSNShfsrjSCLV2ChAcUrIumJldasnMwAMco8Ugpvmc8PUerZJVZE4M9Cq4S5mcvuL-PWUjuqQPjbrlyUSzLyNnwZUXOqWdj3ev74ghe_0gkAvGlynC3-M6q3GLBQSomPygkgP9Qd-Utjts3BG5_f9Jz8qhXdJnvOZjpvJ8x4E_Ul07LfTWEoE8V1eEtVtW7doWAAXnz2pucL_CfSTSV9mu5jgCbFTvz2fhNQxPJV5h8Q6jMegpDiKmfC6UvYu6uwd6C-aVAUwbBrB1XW94EFXkVepsI0U-I0Zu7WzHVCC07nG7vUGiwve7JaRaXy6SCV">Trust Evaluation Process.</a></span><a class="headerlink" href="#id9" title="Link to this image">¶</a></p>
-</figcaption>
-</figure>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>As shown in the figure, the Trust Evaluation process is entirely separate and distinct from the protocol-specific flow. It operates in a different flow and utilizes specialized protocols designed specifically for this purpose.</p>
-</div>
-</section>
-<section id="establishing-trust-with-relying-party">
-<h3><span class="section-number">6.10.2. </span>Establishing Trust with Relying Party<a class="headerlink" href="#establishing-trust-with-relying-party" title="Link to this heading">¶</a></h3>
-<p>In the context of evaluating Relying Parties, the responsibility for Trust Evaluation lies solely with the Wallet Instance.
-The Trust Evaluation mechanisms are distinct from protocol flows and are implemented by the Wallet Instance, as detailed in the dedicated section.</p>
-<p>Trust Evaluations are conducted as follows:</p>
-<ul class="simple">
-<li><p><strong>Federation Entity Discovery</strong>: When the Wallet Instance receives a signed request issued by a Relying Party, the Wallet Instance MUST verify the identity of the Relying Party through a Federation Entity Discovery process. This involves querying a Trusted List or directory to confirm the Relying Party's validity status and compliance with the Trust Framework and the evaluation of the request signature using the cryptographic material obtained from the Trust Chain.</p></li>
-<li><p><strong>Trust Chains</strong>: The Wallet Instance evaluates the Relying Party's Trust Chains, which may be provided statically or built through a Federation Entity Discovery process, to ensure that the Relying Party is part of a recognized and trusted federation. This involves checking the Trust Chain from the root authority (Trust Anchor) to the Relying Party (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_079</span></a>).</p></li>
-<li><p><strong>Trust Marks Evaluation</strong>: Trust Marks are assessed to ensure ongoing compliance with federation policies. These marks indicate adherence to specific standards and practices required by the federation. Relying Parties MAY include Trust Marks in their Entity Configuration to signal administrative properties and compliance to specific profiles, such as the grants in interacting with under-age users (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_080</span></a>).</p></li>
-<li><p><strong>Policy Evaluation</strong>: The Wallet Instance MUST verify that the Relying Party is authorized to request the Credential of interest. Metadata, metadata policies, and Trust Marks are used to implement these checks (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_087</span></a>).</p></li>
-</ul>
-<p>In the process depicted in the sequence diagram below, the Wallet Instance uses the Federation API to discover and collect all the Relying Parties enabled within the federation. The discovery process produces the Trust Chain. When the Trust Chain is provided statically within a signed request, it only needs to be refreshed when an internet connection is available, but it MUST be refreshed if the statically provided Trust Chain is expired.</p>
-<figure class="align-default" id="id10">
-<p class="plantuml">
-<object data="_images/plantuml-fbba2be78f4d369f9b244106ae5f9cb5f41be31a.svg" type="image/svg+xml" style="width:99%">
-<a href="_images/plantuml-fbba2be78f4d369f9b244106ae5f9cb5f41be31a.png"><img src="_images/plantuml-fbba2be78f4d369f9b244106ae5f9cb5f41be31a.png" alt="The figure illustrates the Relying Party Discovery Process." style="width: 99.0%"/></a>
-
-</object></p>
-<figcaption>
-<p><span class="caption-number">Fig. 6.3 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/ZLDFRzi-3BtxKn2z_4xvzTv3qQ1_i64x16dNNGeKgaGdH6NAawYq_lPZvBbD33Tm3ev5Fpw-Hv5NIKoKt7XOe--8Dx3ISmStb6pOOUogLizagJKiyDjuZ_ATDOajWabmreTWY9qTuQyV2-Q8-XZni2o8XvYJm9BjDaGuLpR1sA0Z8yfOZSekBY-L-G8Y_iceQGRQ60IjeDDO2ZbQhBJqGe4ZoHUGQCEAin4Tif3ncen9NurGu85pikQOog4D3i6m0zmPdrLi0jdY9qbblBQcXjxUzTOG0wMzt1qvLV56iYK-p2bi781OC38AsC2CTg-j0ltDaAN_GbQ37QWgSYghL3WKaTF-FWwx_f_AoY-UBBnYbohq2Vk2qxs_Gx5RMAyqxPQ5f8Fhm3LjSYnzV68m0l-_eVUBLmvlV1vQP7AB6Xr6CzXHgaaBQvGSUPAvEgNgzbsYiMefYrhQvtuZbWHr34qHE-8w8M7Ltz6OgY_lGsYX3X7GsEq8KW1VQ7nO3fsRigOGsA30Pu-UwptusRG4lzO_1sQbcPJSCz_dbn0TiH64Uz5dWwT5ZMaU3uUcZRYZa1EaWUg9o_2KhtSVIWT3Fx1BJ_mnuFrmdz24xAggFEOhEnhbhtQiZ7xPfiputb94DtU1zEej_jlEGuibdlhTcCkrLECoPFQCjp66EDlpicqzOO9Ly6JrPKxE3KRQOJ_mDR7nqA0OPyHKLretD_ul">Trust Evaluation - Relying Party Discovery Process.</a></span><a class="headerlink" href="#id10" title="Link to this image">¶</a></p>
-</figcaption>
-</figure>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>As shown in the figure, internet connection is required to update the Trust Chain about an RP and check its revocation status.</p>
-</div>
-</section>
-<section id="evaluating-trust-with-wallets">
-<h3><span class="section-number">6.10.3. </span>Evaluating Trust with Wallets<a class="headerlink" href="#evaluating-trust-with-wallets" title="Link to this heading">¶</a></h3>
-<p>The Wallet Provider issues the Wallet Attestation, certifying the operational status of its Wallet Instances and including one of their public keys.</p>
-<p>The Wallet Attestation MUST contain the Trust Chain that attests the reliability for its issuer (Wallet Provider) at the time of issuance.</p>
-<p>The Wallet Instance provides its Wallet Attestation within the signed request during the PID issuance phase. The Credential Issuer MUST evaluate the Trust Chain about the Wallet Attestation issuer (formally, the Wallet Provider).</p>
-</section>
 </section>
 <section id="trust-chain">
 <h2><span class="section-number">6.11. </span>Trust Chain<a class="headerlink" href="#trust-chain" title="Link to this heading">¶</a></h2>
@@ -1003,8 +944,8 @@ Trust Chain is close to expiration but the overall structure of the federation h
 </div>
 <p><strong>Role in Onboarding</strong>: Trust evaluation mechanisms are essential during entity registration and lifecycle management to verify the compliance status of new participants and validate changes to existing entities. This includes validating the registration credentials of entities requesting onboarding and ensuring they meet federation policies before granting operational authorization.</p>
 <p><strong>Role in Operations</strong>: During credential issuance and presentation operations, trust evaluation provides real-time verification of entity validity and compliance status. This enables secure credential transactions by ensuring that all participating entities (credential issuers, relying parties, wallet providers) maintain their authorized status and comply with current federation policies.</p>
-<section id="id2">
-<h3><span class="section-number">6.12.1. </span>Establishing Trust with Credential Issuers<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<section id="establishing-trust-with-credential-issuers">
+<h3><span class="section-number">6.12.1. </span>Establishing Trust with Credential Issuers<a class="headerlink" href="#establishing-trust-with-credential-issuers" title="Link to this heading">¶</a></h3>
 <p>In the issuance process, Trust Evaluation ensures the integrity and authenticity of the Credentials being issued and the realiability of their Issuers. This section delineates the Trust Evaluation mechanisms distinct from the protocol flows, implemented by Wallet Instances and Relying Parties, as described in the dedicated section.</p>
 <p>Trust Evaluations implement different ways, as defined below:</p>
 <ul class="simple">
@@ -1014,14 +955,14 @@ Trust Chain is close to expiration but the overall structure of the federation h
 <li><p><strong>Policy Evaluation</strong>: Wallet Instances and Relying Parties MUST check that the Credential Issuer is allowed in the issuance of the Credential of their interest. Metadata, metadata policies and Trust Marks are used for the implementation of these checks.</p></li>
 </ul>
 <p>In the process represented in the sequence diagram below, the Wallet Instance uses the Federation API to discover and collect all the Credential Issuers enabled within the federation. The discovery process produces the Trust Chain. When the Trust Chain is provided statically within a signed request or Credential, it only REQUIRES to be refreshed when the internet connection is available, while it MUST be refreshed when the statically provided Trust Chain results as expired.</p>
-<figure class="align-default" id="id11">
+<figure class="align-default" id="id4">
 <p class="plantuml">
 <object data="_images/plantuml-142731de99b6d615f4253079dcc9dc44d7eda639.svg" type="image/svg+xml" style="width:99%">
 <a href="_images/plantuml-142731de99b6d615f4253079dcc9dc44d7eda639.png"><img src="_images/plantuml-142731de99b6d615f4253079dcc9dc44d7eda639.png" alt="The figure illustrates the Trust Evaluation Process." style="width: 99.0%"/></a>
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 6.4 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/fPE_Rjmm38TtFGMHfTCrUuOWXwlJ6bs2fd-MB8n5nqHbIg2ek-JjwxFW9XUSkzIJ87_y-AD1tsH3jJ86-Aub6pHx30MDey2TnevoTWdLkEE4Ol0BGo0xkTgrW1akTagUn1W3j3aNqeiJgcrcgXKZ7Sap6btMZblfXZZHhhfXStqzEQ_WbgmRfjE738qOsmlielJyL7IEzo201XyF5CBcjyI3NCP4mdxJawUA08bFaSNShfsrjSCLV2ChAcUrIumJldasnMwAMco8Ugpvmc8PUerZJVZE4M9Cq4S5mcvuL-PWUjuqQPjbrlyUSzLyNnwZUXOqWdj3ev74ghe_0gkAvGlynC3-M6q3GLBQSomPygkgP9Qd-Utjts3BG5_f9Jz8qhXdJnvOZjpvJ8x4E_Ul07LfTWEoE8V1eEtVtW7doWAAXnz2pucL_CfSTSV9mu5jgCbFTvz2fhNQxPJV5h8Q6jMegpDiKmfC6UvYu6uwd6C-aVAUwbBrB1XW94EFXkVepsI0U-I0Zu7WzHVCC07nG7vUGiwve7JaRaXy6SCV">Trust Evaluation Process.</a></span><a class="headerlink" href="#id11" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 6.2 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/fPE_Rjmm38TtFGMHfTCrUuOWXwlJ6bs2fd-MB8n5nqHbIg2ek-JjwxFW9XUSkzIJ87_y-AD1tsH3jJ86-Aub6pHx30MDey2TnevoTWdLkEE4Ol0BGo0xkTgrW1akTagUn1W3j3aNqeiJgcrcgXKZ7Sap6btMZblfXZZHhhfXStqzEQ_WbgmRfjE738qOsmlielJyL7IEzo201XyF5CBcjyI3NCP4mdxJawUA08bFaSNShfsrjSCLV2ChAcUrIumJldasnMwAMco8Ugpvmc8PUerZJVZE4M9Cq4S5mcvuL-PWUjuqQPjbrlyUSzLyNnwZUXOqWdj3ev74ghe_0gkAvGlynC3-M6q3GLBQSomPygkgP9Qd-Utjts3BG5_f9Jz8qhXdJnvOZjpvJ8x4E_Ul07LfTWEoE8V1eEtVtW7doWAAXnz2pucL_CfSTSV9mu5jgCbFTvz2fhNQxPJV5h8Q6jMegpDiKmfC6UvYu6uwd6C-aVAUwbBrB1XW94EFXkVepsI0U-I0Zu7WzHVCC07nG7vUGiwve7JaRaXy6SCV">Trust Evaluation Process.</a></span><a class="headerlink" href="#id4" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -1029,8 +970,8 @@ Trust Chain is close to expiration but the overall structure of the federation h
 <p>As shown in the figure, the Trust Evaluation process is entirely separate and distinct from the protocol-specific flow. It operates in a different flow and utilizes specialized protocols designed specifically for this purpose.</p>
 </div>
 </section>
-<section id="id4">
-<h3><span class="section-number">6.12.2. </span>Establishing Trust with Relying Party<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<section id="establishing-trust-with-relying-party">
+<h3><span class="section-number">6.12.2. </span>Establishing Trust with Relying Party<a class="headerlink" href="#establishing-trust-with-relying-party" title="Link to this heading">¶</a></h3>
 <p>In the context of evaluating Relying Parties, the responsibility for Trust Evaluation lies solely with the Wallet Instance.
 The Trust Evaluation mechanisms are distinct from protocol flows and are implemented by the Wallet Instance, as detailed in the dedicated section.</p>
 <p>Trust Evaluations are conducted as follows:</p>
@@ -1041,14 +982,14 @@ The Trust Evaluation mechanisms are distinct from protocol flows and are impleme
 <li><p><strong>Policy Evaluation</strong>: The Wallet Instance MUST verify that the Relying Party is authorized to request the Credential of interest. Metadata, metadata policies, and Trust Marks are used to implement these checks.</p></li>
 </ul>
 <p>In the process depicted in the sequence diagram below, the Wallet Instance uses the Federation API to discover and collect all the Relying Parties enabled within the federation. The discovery process produces the Trust Chain. When the Trust Chain is provided statically within a signed request, it only needs to be refreshed when an internet connection is available, but it MUST be refreshed if the statically provided Trust Chain is expired.</p>
-<figure class="align-default" id="id12">
+<figure class="align-default" id="id5">
 <p class="plantuml">
 <object data="_images/plantuml-fbba2be78f4d369f9b244106ae5f9cb5f41be31a.svg" type="image/svg+xml" style="width:99%">
 <a href="_images/plantuml-fbba2be78f4d369f9b244106ae5f9cb5f41be31a.png"><img src="_images/plantuml-fbba2be78f4d369f9b244106ae5f9cb5f41be31a.png" alt="The figure illustrates the Relying Party Discovery Process." style="width: 99.0%"/></a>
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 6.5 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/ZLDFRzi-3BtxKn2z_4xvzTv3qQ1_i64x16dNNGeKgaGdH6NAawYq_lPZvBbD33Tm3ev5Fpw-Hv5NIKoKt7XOe--8Dx3ISmStb6pOOUogLizagJKiyDjuZ_ATDOajWabmreTWY9qTuQyV2-Q8-XZni2o8XvYJm9BjDaGuLpR1sA0Z8yfOZSekBY-L-G8Y_iceQGRQ60IjeDDO2ZbQhBJqGe4ZoHUGQCEAin4Tif3ncen9NurGu85pikQOog4D3i6m0zmPdrLi0jdY9qbblBQcXjxUzTOG0wMzt1qvLV56iYK-p2bi781OC38AsC2CTg-j0ltDaAN_GbQ37QWgSYghL3WKaTF-FWwx_f_AoY-UBBnYbohq2Vk2qxs_Gx5RMAyqxPQ5f8Fhm3LjSYnzV68m0l-_eVUBLmvlV1vQP7AB6Xr6CzXHgaaBQvGSUPAvEgNgzbsYiMefYrhQvtuZbWHr34qHE-8w8M7Ltz6OgY_lGsYX3X7GsEq8KW1VQ7nO3fsRigOGsA30Pu-UwptusRG4lzO_1sQbcPJSCz_dbn0TiH64Uz5dWwT5ZMaU3uUcZRYZa1EaWUg9o_2KhtSVIWT3Fx1BJ_mnuFrmdz24xAggFEOhEnhbhtQiZ7xPfiputb94DtU1zEej_jlEGuibdlhTcCkrLECoPFQCjp66EDlpicqzOO9Ly6JrPKxE3KRQOJ_mDR7nqA0OPyHKLretD_ul">Trust Evaluation - Relying Party Discovery Process.</a></span><a class="headerlink" href="#id12" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 6.3 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/ZLDFRzi-3BtxKn2z_4xvzTv3qQ1_i64x16dNNGeKgaGdH6NAawYq_lPZvBbD33Tm3ev5Fpw-Hv5NIKoKt7XOe--8Dx3ISmStb6pOOUogLizagJKiyDjuZ_ATDOajWabmreTWY9qTuQyV2-Q8-XZni2o8XvYJm9BjDaGuLpR1sA0Z8yfOZSekBY-L-G8Y_iceQGRQ60IjeDDO2ZbQhBJqGe4ZoHUGQCEAin4Tif3ncen9NurGu85pikQOog4D3i6m0zmPdrLi0jdY9qbblBQcXjxUzTOG0wMzt1qvLV56iYK-p2bi781OC38AsC2CTg-j0ltDaAN_GbQ37QWgSYghL3WKaTF-FWwx_f_AoY-UBBnYbohq2Vk2qxs_Gx5RMAyqxPQ5f8Fhm3LjSYnzV68m0l-_eVUBLmvlV1vQP7AB6Xr6CzXHgaaBQvGSUPAvEgNgzbsYiMefYrhQvtuZbWHr34qHE-8w8M7Ltz6OgY_lGsYX3X7GsEq8KW1VQ7nO3fsRigOGsA30Pu-UwptusRG4lzO_1sQbcPJSCz_dbn0TiH64Uz5dWwT5ZMaU3uUcZRYZa1EaWUg9o_2KhtSVIWT3Fx1BJ_mnuFrmdz24xAggFEOhEnhbhtQiZ7xPfiputb94DtU1zEej_jlEGuibdlhTcCkrLECoPFQCjp66EDlpicqzOO9Ly6JrPKxE3KRQOJ_mDR7nqA0OPyHKLretD_ul">Trust Evaluation - Relying Party Discovery Process.</a></span><a class="headerlink" href="#id5" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -1056,8 +997,8 @@ The Trust Evaluation mechanisms are distinct from protocol flows and are impleme
 <p>As shown in the figure, internet connection is required to update the Trust Chain about an RP and check its revocation status.</p>
 </div>
 </section>
-<section id="id6">
-<h3><span class="section-number">6.12.3. </span>Evaluating Trust with Wallets<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<section id="evaluating-trust-with-wallets">
+<h3><span class="section-number">6.12.3. </span>Evaluating Trust with Wallets<a class="headerlink" href="#evaluating-trust-with-wallets" title="Link to this heading">¶</a></h3>
 <p>The Wallet Provider issues the Wallet Attestation, certifying the operational status of its Wallet Instances and including one of their public keys.</p>
 <p>The Wallet Attestation MAY contain the Trust Chain that attests the reliability for its issuer (Wallet Provider) at the time of issuance.</p>
 <p>The Wallet Instance provides its Wallet Attestation within the signed request during the PID issuance phase. The Credential Issuer MUST evaluate the Trust Chain about the Wallet Attestation issuer (formally, the Wallet Provider).</p>
@@ -1066,7 +1007,7 @@ The Trust Evaluation mechanisms are distinct from protocol flows and are impleme
 <section id="non-repudiability-of-the-long-lived-attestations">
 <h2><span class="section-number">6.13. </span>Non-repudiability of the Long Lived Attestations<a class="headerlink" href="#non-repudiability-of-the-long-lived-attestations" title="Link to this heading">¶</a></h2>
 <p>The Trust Anchor and its Intermediate MUST expose the Federation Historical Keys endpoint, where are published all the public part of the Federation Entity Keys that are no longer used, whether expired or revoked.</p>
-<p>The details of this endpoint are defined in the <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Section 8.7.</p>
+<p>The details of this endpoint are defined in the <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Section 8.7.</p>
 <p>Each JWT containing a Trust Chain in the JWT headers can be verified over time, since the entire Trust Chain is verifiable using the Trust Anchor's public key.</p>
 <p>Even if the Trust Anchor has changed its cryptographic keys for digital signature, the Federation Historical Keys endpoint always makes the keys no longer used available for historical signature verifications.</p>
 </section>
@@ -1453,7 +1394,7 @@ Signature:
 </pre></div>
 </div>
 <p><strong>Integration with Entity Lifecycle Management</strong>:</p>
-<p>This endpoint complements the entity lifecycle management procedures defined in <span class="xref std std-ref">entity-onboarding:Entity Lifecycle Management</span> by providing detailed historical tracking of all significant events affecting federation participants. It supports both automated compliance monitoring and manual auditing processes.</p>
+<p>This endpoint complements the entity lifecycle management procedures defined in <a class="reference internal" href="entity-onboarding.html#entity-onboarding"><span class="std std-ref">Entity Onboarding</span></a> by providing detailed historical tracking of all significant events affecting federation participants. It supports both automated compliance monitoring and manual auditing processes.</p>
 </section>
 </section>
 <section id="privacy-remarks">
@@ -1512,12 +1453,7 @@ Signature:
 <li><a class="reference internal" href="#subordinate-statement">6.9.1. Subordinate Statement</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#federation-discovery">6.10. Federation Discovery</a><ul>
-<li><a class="reference internal" href="#establishing-trust-with-credential-issuers">6.10.1. Establishing Trust with Credential Issuers</a></li>
-<li><a class="reference internal" href="#establishing-trust-with-relying-party">6.10.2. Establishing Trust with Relying Party</a></li>
-<li><a class="reference internal" href="#evaluating-trust-with-wallets">6.10.3. Evaluating Trust with Wallets</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#federation-discovery">6.10. Federation Discovery</a></li>
 <li><a class="reference internal" href="#trust-chain">6.11. Trust Chain</a><ul>
 <li><a class="reference internal" href="#offline-trust-attestation-mechanisms">6.11.1. Offline Trust Attestation Mechanisms</a><ul>
 <li><a class="reference internal" href="#offline-wallet-trust-attestation">6.11.1.1. Offline Wallet Trust Attestation</a></li>
@@ -1528,9 +1464,9 @@ Signature:
 </ul>
 </li>
 <li><a class="reference internal" href="#trust-evaluation-mechanism">6.12. Trust Evaluation Mechanism</a><ul>
-<li><a class="reference internal" href="#id2">6.12.1. Establishing Trust with Credential Issuers</a></li>
-<li><a class="reference internal" href="#id4">6.12.2. Establishing Trust with Relying Party</a></li>
-<li><a class="reference internal" href="#id6">6.12.3. Evaluating Trust with Wallets</a></li>
+<li><a class="reference internal" href="#establishing-trust-with-credential-issuers">6.12.1. Establishing Trust with Credential Issuers</a></li>
+<li><a class="reference internal" href="#establishing-trust-with-relying-party">6.12.2. Establishing Trust with Relying Party</a></li>
+<li><a class="reference internal" href="#evaluating-trust-with-wallets">6.12.3. Evaluating Trust with Wallets</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#non-repudiability-of-the-long-lived-attestations">6.13. Non-repudiability of the Long Lived Attestations</a></li>
@@ -1572,7 +1508,7 @@ Signature:
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 17/12/2025.
+      Last updated on 19/12/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

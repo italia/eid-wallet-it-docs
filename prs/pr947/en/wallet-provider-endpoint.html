@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>13.1. Wallet Provider Endpoints &#8212; IT-Wallet Technical Documentation - PR #947</title>
+    <title>13.1. Wallet Provider Endpoints &#8212; IT-Wallet Technical Specifications - PR #947</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -32,7 +32,7 @@
         <p id="toggle_sidebar">
             <a href="#" title="Toggle sidebar">|||</a>
         </p>
-        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Documentation - PR #947</a></h1>
+        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Specifications - PR #947</a></h1>
             <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
     
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
@@ -616,15 +616,15 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </tr>
 <tr class="row-even"><td><p><strong>typ</strong></p></td>
 <td><p>REQUIRED. It MUST be set to <code class="docutils literal notranslate"><span class="pre">oauth-client-attestation+jwt</span></code></p></td>
-<td><p><a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-01.html">OPENID4VC-HAIP</a>.</p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-06.html">OPENID4VC-HAIP</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>trust_chain</strong></p></td>
 <td><p>OPTIONAL. Sequence of Entity Statements that composes the Trust Chain related to the Wallet Provider.</p></td>
-<td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Section 4.3 <em>Trust Chain Header Parameter</em>.</p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Section 4.3 <em>Trust Chain Header Parameter</em>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>x5c</strong></p></td>
 <td><p>REQUIRED. Contains the X.509 public key certificate or certificate chain (<span class="target" id="index-15"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>) corresponding to the key used to digitally sign the JWT.</p></td>
-<td><p><span class="target" id="index-16"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Section 4.1.8, <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/11/">SD-JWT-VC</a> Section 3.5 and <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-01.html">OPENID4VC-HAIP</a>.</p></td>
+<td><p><span class="target" id="index-16"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Section 4.1.8, <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/11/">SD-JWT-VC</a> Section 3.5 and <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-06.html">OPENID4VC-HAIP</a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -745,11 +745,11 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </tr>
 <tr class="row-even"><td><p><strong>typ</strong></p></td>
 <td><p>REQUIRED. It MUST be set to <code class="docutils literal notranslate"><span class="pre">key-attestation+jwt</span></code></p></td>
-<td><p><a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-01.html">OPENID4VC-HAIP</a>.</p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-06.html">OPENID4VC-HAIP</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>trust_chain</strong></p></td>
 <td><p>OPTIONAL. Sequence of Entity Statements that composes the Trust Chain related to the Wallet Provider.</p></td>
-<td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Section 4.3 <em>Trust Chain Header Parameter</em>.</p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Section 4.3 <em>Trust Chain Header Parameter</em>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>x5c</strong></p></td>
 <td><p>REQUIRED. Contains the X.509 public key certificate or certificate chain (<span class="target" id="index-32"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>) corresponding to the key used to digitally sign the JWT.</p></td>
@@ -959,7 +959,7 @@ A PID Provider that has been notified by the Authentic Source of the PID of the 
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 17/12/2025.
+      Last updated on 19/12/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

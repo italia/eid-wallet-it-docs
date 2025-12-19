@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>15. Considerazioni di Sicurezza e Privacy &#8212; IT-Wallet Technical Documentation - PR #947</title>
+    <title>15. Considerazioni di Sicurezza e Privacy &#8212; IT-Wallet Technical Specifications - PR #947</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -33,7 +33,7 @@
         <p id="toggle_sidebar">
             <a href="#" title="Toggle sidebar">|||</a>
         </p>
-        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Documentation - PR #947</a></h1>
+        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Specifications - PR #947</a></h1>
             <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
     
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
@@ -607,7 +607,7 @@ Oltre alle informazioni del Fornitore di Credenziali, il <em>Type Metadata</em> 
 </tr>
 </tbody>
 </table>
-<p>Il Verificatore di Attestati Elettronici che esegue la Trust Evaluation sul Fornitore di Credenziali di una Credenziale non deve rilasciare alcuna informazione al Fornitore di Credenziali sull'Istanza del Wallet con cui sta interagendo. Utilizzando [<a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a>] il Fornitore di Credenziali non sa chi è l'Utente che presenta la Credenziale.
+<p>Il Verificatore di Attestati Elettronici che esegue la Trust Evaluation sul Fornitore di Credenziali di una Credenziale non deve rilasciare alcuna informazione al Fornitore di Credenziali sull'Istanza del Wallet con cui sta interagendo. Utilizzando [<a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a>] il Fornitore di Credenziali non sa chi è l'Utente che presenta la Credenziale.
 Inoltre, la privacy è protetta anche durante il controllo dello stato della Credenziale. Utilizzando Status List [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/13/">TOKEN-STATUS-LIST</a>], la specifica IT-Wallet garantisce che mentre il Verificatore di Attestati Elettronici controlla la validità della Credenziale, il Fornitore di Credenziali non apprende dove o quando la Credenziale viene utilizzata.</p>
 </section>
 <section id="pr-e-70">
@@ -698,7 +698,7 @@ Inoltre, la privacy è protetta anche durante il controllo dello stato della Cre
 <p>La revoca di un'Entità di Federazione (cioè, Fornitore di Credenziali, Verificatore di Attestati Elettronici, Fornitore di Wallet) è invece possibile non emettendo la corrispondente Subordinate Statement su quell'Entità e impostando una breve scadenza della Trust Chain, impedendo così l'uso improprio durante la compromissione.</p>
 <div class="admonition tip">
 <p class="admonition-title">Suggerimento</p>
-<p>Inoltre, [<a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a>] supporta un endpoint delle chiavi storiche per recuperare l'elenco delle chiavi scadute e revocate, con la motivazione della revoca.</p>
+<p>Inoltre, [<a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a>] supporta un endpoint delle chiavi storiche per recuperare l'elenco delle chiavi scadute e revocate, con la motivazione della revoca.</p>
 </div>
 </section>
 <section id="spr-p-10">
@@ -900,7 +900,7 @@ Lo standard OpenID4VCI fornisce l'opzione per il Wallet di richiedere Credenzial
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 17/12/2025.
+      Ultimo aggiornamento 19/12/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
