@@ -13,7 +13,7 @@ Therefore, to ensure that the Brand Identity is applied consistently and coheren
 In particular, all Primary Actors:  
 
 - MUST exclusively follow the indications specified in the Brand Manual, which will be made available shortly on the official website https://www.wallet.gov.it. 
-- MUST exclusively use the Official Resources available in the related :ref:`official-resources` folder of these Technical Specifications.  
+- MUST exclusively use the Official Resources available in the related :ref:`official-resources:Official Resources` folder of these Technical Specifications.  
 
 
 Naming
@@ -102,7 +102,7 @@ Below are illustrated the requirements for the use of the Logo. All actors inten
 - MAY use the Logo symbol within a shape or a button to reference the connection to IT-Wallet, such as in Engagement Buttons (see :ref: `functionalities:Authentication Button’), in accordance with the Brand Manual. 
 
 For further information on the Logo and its related symbol refer to the Brand Manual, which will soon be made available on the official website https://www.wallet.gov.it.  
-The Logo Official Resources are available in the related :ref:`official-resources` folder of these Technical Specifications. 
+The Logo Official Resources are available in the related :ref:`official-resources:Official Resources` folder of these Technical Specifications. 
 
 
 Trust Mark
@@ -144,4 +144,4 @@ Below are illustrated the requirements for the use of the Trust Mark, that apply
 
 - MAY display the Trust Mark alongside other actors' logos, trademarks, or symbols, in accordance with the Brand Manual. 
 
- For further information on the Trust Mark, refer to the Brand Manual which will soon by made available on the official website https://www.wallet.gov.it. Trust Mark Official Resources are available in the related :ref:`official-resources` folder of these Technical Specifications. 
+ For further information on the Trust Mark, refer to the Brand Manual which will soon by made available on the official website https://www.wallet.gov.it. Trust Mark Official Resources are available in the related :ref:`official-resources:Official Resources` folder of these Technical Specifications. 
