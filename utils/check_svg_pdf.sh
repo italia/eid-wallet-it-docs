@@ -7,9 +7,36 @@ DOCS="$ROOT/docs"
 found_count=0
 not_found_count=0
 
+# Funzione per controllare se un riferimento è in un blocco figure con :target: plantuml
+check_plantuml_target() {
+  local file="$1"
+  local line="$2"
+  local start_line=$((line - 10))
+  local end_line=$((line + 10))
+  
+  if [ "$start_line" -lt 1 ]; then
+    start_line=1
+  fi
+  
+  # Leggi il contesto intorno alla riga
+  sed -n "${start_line},${end_line}p" "$file" | grep -qi ':target:.*plantuml'
+  return $?
+}
+
 while IFS=$'\t' read -r fileline ref; do
   file="${fileline%%:*}"
   line="${fileline##*:}"
+  
+  # Salta se la riga contiene http o plantuml direttamente
+  if echo "$ref" | grep -qiE '(http|plantuml)'; then
+    continue
+  fi
+  
+  # Controlla se è in un blocco figure con :target: plantuml
+  if check_plantuml_target "$file" "$line"; then
+    continue
+  fi
+  
   rst="$(basename "$file")"
   name="$(basename "$ref")"
 
@@ -64,4 +91,3 @@ if [ "$not_found_count" -gt 0 ]; then
 fi
 
 exit 0
-
