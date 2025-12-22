@@ -629,10 +629,23 @@ Per maggiori dettagli sull'utilizzo dell'Authentication Button vedi la sezione :
 Il pulsante è disponibile in 3 varianti (default / M / L ) ed in formato "get" (chiamata ad una pagina esterna) e "post" (form interna al pulsante). I riferimenti al codice html e alla Brand Identity corretta verranno inclusi nelle versioni successive delle presenti regole tecniche.
 
 **Authentication Button "Entra con IT-Wallet" - svg**
-Di seguito un esempio non normativo di Authentication Button. I riferimenti corretti alla Brand Identity verranno inclusi nelle versioni successive delle presenti regole tecniche.
+Per approfondimenti sull'Authentication button consultare il Brand Manual prossimamente disponibile sul sito ufficiale https://www.wallet.gov.it. La Risorsa Ufficiale dell'Authentication button è disponibile nella relativa cartella Risorse Ufficiali di queste Specifiche Tecniche. 
 
-.. literalinclude:: ../../examples/authentication_button.svg
-  :language: xml 
+.. only:: format_html
+
+  .. figure:: ./images/svg/Authentication-button.svg
+     :alt: Esempio di Authentication button nelle tre varianti
+     :width: 100%
+
+     Esempio di  Authentication button nelle tre varianti
+
+.. only:: format_latex 
+
+  .. figure:: ./images/pdf/Authentication-button.pdf
+     :alt: Example of Authentication button in nelle tre varianti
+     :width: 100%
+
+     Esempio di Authentication button in nelle tre varianti
 
 
 Gestione degli Attestati Elettronici

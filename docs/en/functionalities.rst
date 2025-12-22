@@ -625,10 +625,24 @@ The references to the html code and the Brand Identity will be included in the n
  
 
 **"Login with IT-Wallet" button – svg**
-Below a non-normative example of the Authentication Button. The references to the Brand Identity will be included in the next releases of the present specifications.
+For further information on the Authentication button refer to the Brand Manual which will soon by made available on the official website https://www.wallet.gov.it. Authentication button Official Resource is available in the related Official Resources folder of these Technical Specifications. 
 
-.. literalinclude:: ../../examples/authentication_button.svg
-  :language: xml 
+.. only:: format_html
+
+  .. figure:: ./images/svg/Authentication-button.svg
+     :alt: Example of Authentication button in 3 variants
+     :width: 100%
+
+     Example of Authentication button in 3 variants
+
+.. only:: format_latex 
+
+  .. figure:: ./images/pdf/Authentication-button.pdf
+     :alt: Example of Authentication button in 3 variants
+     :width: 100%
+
+     Example of Authentication button in 3 variants
+
 
 Management of Electronic Attestations
 --------------------------------------
