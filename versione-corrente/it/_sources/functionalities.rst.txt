@@ -565,7 +565,7 @@ Il pulsante è disponibile in 3 varianti (default / M / L ) ed in formato "get" 
 **Authentication Button "Entra con IT-Wallet" - svg**
 Di seguito un esempio non normativo di Authentication Button. I riferimenti corretti alla Brand Identity verranno inclusi nelle versioni successive delle presenti regole tecniche.
 
-.. literalinclude:: ../../examples/authentication_button.svg
+.. literalinclude:: ./images/svg/authentication_button.svg 
   :language: xml 
 
 
