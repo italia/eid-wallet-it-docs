@@ -46,7 +46,7 @@ The document, by distinguishing between mandatory regulatory aspects and good de
 
 The second focus is to define the technical architecture and reference framework that will serve as a guideline for all the parties involved in the development of the IT-Wallet System.
 
-Additional documentation, tools and resources - hereinafter defined Official Resources - for the design and development of the IT-Wallet System Technical Solutions are available in the :ref:`official-resources:Official Resources` section and will be periodically updated.
+Additional documentation, tools and resources - hereinafter defined Official Resources - for the design and development of the IT-Wallet System Technical Solutions will be soon available in the :ref:`official-resources:Official Resources` section and will be periodically updated.
 
 Normative Language and Conventions
 ----------------------------------
