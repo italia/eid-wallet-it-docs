@@ -49,44 +49,42 @@ while IFS=$'\t' read -r fileline ref; do
   
   rst="$(basename "$file")"
   name="$(basename "$ref")"
+  file_dir="$(dirname "$file")"
 
-  # Search for an exact match by basename
-  found=0
-  for lang in it en; do
-    for kind in svg pdf; do
-      full_try="$DOCS/$lang/$kind/$name"
-      if [ -e "$full_try" ]; then
-        found=1
-        break 2
-      fi
-    done
-  done
+  # Resolve the exact path specified in the RST file
+  resolved_ref="$ref"
+  # Remove leading ./ if present
+  if [[ "$resolved_ref" == ./* ]]; then
+    resolved_ref="${resolved_ref#./}"
+  fi
+  # Resolve relative path from RST file directory
+  if [[ "$resolved_ref" != /* ]]; then
+    resolved_path="$file_dir/$resolved_ref"
+  else
+    resolved_path="$resolved_ref"
+  fi
 
-  if [ "$found" -eq 0 ]; then
+  # Check if the specified path exists
+  if [ -e "$resolved_path" ]; then
+    ((found_count++))
+  else
+    # Path doesn't exist - check if basename exists in standard locations (for reporting)
     rel="${file#"$DOCS"/}"
     lang="${rel%%/*}"
     ext="${name##*.}"
-    not_found_path="$DOCS/$lang/images/$ext/$name"
-    if [ -e "$not_found_path" ]; then
-      ((found_count++))
-    else
-      printf 'NOT-FOUND: %s:%s -> %s\n' "$rst" "$line" "$not_found_path"
-      ((not_found_count++))
-    fi
-  else
-    ((found_count++))
+    images_path="$DOCS/$lang/images/$ext/$name"
+    
+    # Report the actual missing path from RST
+    printf 'NOT-FOUND: %s:%s -> %s\n' "$rst" "$line" "$resolved_path"
+    ((not_found_count++))
   fi
 done < <(
   grep -r --include='*.rst' --exclude-dir=.git -nH -E '\.(svg|pdf)' "$DOCS" \
     | grep -vi 'http' \
     | awk -F: '
       {
-        # Skip RST comment lines (lines starting with .. .. after file:line:)
         file=$1; line=$2; text="";
         for (i=3; i<=NF; i++) { if (i>3) text=text ":"; text=text $i }
-        # Check if the line content starts with .. .. (RST comment, not directive)
-        if (match(text, /^\s*\.\.\s+\.\./)) next;
-        # Process non-comment lines
         while (match(text, /[[:graph:]]+\.(svg|pdf)/)) {
           ref=substr(text, RSTART, RLENGTH);
           print file ":" line "\t" ref;
