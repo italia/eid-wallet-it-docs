@@ -11,11 +11,21 @@ not_found_count=0
 check_plantuml_target() {
   local file="$1"
   local line="$2"
-  local start_line=$((line - 10))
-  local end_line=$((line + 10))
+  # Usa una finestra configurabile di righe intorno alla riga di riferimento.
+  # FIGURE_CONTEXT_LINES permette di cambiare l'ampiezza senza modificare lo script.
+  local context="${FIGURE_CONTEXT_LINES:-10}"
+  local start_line=$((line - context))
+  local end_line=$((line + context))
   
   if [ "$start_line" -lt 1 ]; then
     start_line=1
+  fi
+  
+  # Evita di andare oltre la fine del file
+  local max_line
+  max_line=$(wc -l < "$file")
+  if [ "$end_line" -gt "$max_line" ]; then
+    end_line="$max_line"
   fi
   
   # Leggi il contesto intorno alla riga
@@ -82,9 +92,9 @@ done < <(
     '
 )
 
-printf '\nConteggio:\n'
-printf '  Trovati: %d\n' "$found_count"
-printf '  Non trovati: %d\n' "$not_found_count"
+printf '\nSummary:\n'
+printf '  Found: %d\n' "$found_count"
+printf '  Not found: %d\n' "$not_found_count"
 
 if [ "$not_found_count" -gt 0 ]; then
   exit 1
