@@ -50,15 +50,13 @@ while IFS=$'\t' read -r fileline ref; do
   rst="$(basename "$file")"
   name="$(basename "$ref")"
 
-  # Clear any previous value of full and search for an exact match by basename
-  full=""
+  # Search for an exact match by basename
   found=0
   for lang in it en; do
     for kind in svg pdf; do
       full_try="$DOCS/$lang/$kind/$name"
       if [ -e "$full_try" ]; then
         found=1
-        full="$full_try"
         break 2
       fi
     done
