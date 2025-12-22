@@ -180,13 +180,6 @@ The following journey maps illustrate two distinct Credential scenarios:
 Authentic Source Operator Journey
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. .. figure:: ./images/svg/onboarding-journey-maps/as-onboarding-journey.svg
-..     :width: 100%
-..     :alt: Authentic Source onboarding journey
-..     :name: as-onboarding-journey
-
-..     Authentic Source registration process and Supervisory Body interactions
-
 From the Authentic Source operator perspective, the onboarding process begins with evaluating existing data capabilities against the standardized Claims Registry and Taxonomy classifications, determining which user attributes can be made available as a Digital Credential. The operator submits a registration request to the Supervisory Body, declaring specific claims from the Claims Registry with the Taxonomy domains and intended purposes.
 
 **Example - Public Authentic Source (mDL Scenario)**:
@@ -213,13 +206,6 @@ Critical phases include administrative verification by the Supervisory Body (whi
 
 Credential Issuer Operator Journey  
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. .. figure:: ./images/svg/onboarding-journey-maps/ci-onboarding-journey.svg
-..     :width: 100%
-..     :alt: Credential Issuer onboarding journey
-..     :name: ci-onboarding-journey
-
-..     Credential Issuer registration with integration pathway alternatives
 
 Credential Issuer operators start by discovering available Authentic Source entities through the AS Registry and evaluating integration feasibility based on required claims. The registration request specifies which Credential types they intend to issue, select appropriate Authentic Source entities, and demonstrate technical capability to access the required data sources.
 
@@ -253,13 +239,6 @@ Following successful integration testing and Authentic Source approval, the Cred
 Wallet Provider Operator Journey
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. .. figure:: ./images/svg/onboarding-journey-maps/wp-onboarding-journey.svg
-..     :width: 100%
-..     :alt: Wallet Provider onboarding journey  
-..     :name: wp-onboarding-journey
-
-..     Wallet Provider certification and security validation process
-
 Wallet Provider operators follow an independent onboarding path that focuses on application certification and security validation. The process highlights the development and certification of wallet applications that can securely store and manage Digital Credentials for citizens.
 
 A key technical requirement involves implementing Wallet integrity and authenticity check mechanisms. These checks enable the Wallet to obtain a Wallet App Attestation, which serves as proof of the Wallet's security and compliance status during Credential operations.
@@ -268,13 +247,6 @@ The certification process includes security evaluation, covering wallet architec
 
 Relying Party Operator Journey
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  
-
-.. .. figure:: ./images/svg/onboarding-journey-maps/rp-onboarding-journey.svg
-..     :width: 100%
-..     :alt: Relying Party onboarding journey
-..     :name: rp-onboarding-journey
-
-..     Relying Party service integration and authorization process
 
 Relying Party operators begin by identifying which EAA types are required for their specific services and evaluating integration complexity with existing authentication systems. The registration request provides evidence of legitimate needs for accessing specific Credential types and User attributes, outlining the intended service use cases and organizational characteristics that justify Credential access.
 
