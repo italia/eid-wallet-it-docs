@@ -81,11 +81,11 @@ done < <(
     | grep -vi 'http' \
     | awk -F: '
       {
-        # Skip RST comment lines (lines starting with .. after file:line:)
+        # Skip RST comment lines (lines starting with .. .. after file:line:)
         file=$1; line=$2; text="";
         for (i=3; i<=NF; i++) { if (i>3) text=text ":"; text=text $i }
-        # Check if the line content starts with .. (RST comment)
-        if (match(text, /^\s*\.\./)) next;
+        # Check if the line content starts with .. .. (RST comment, not directive)
+        if (match(text, /^\s*\.\.\s+\.\./)) next;
         # Process non-comment lines
         while (match(text, /[[:graph:]]+\.(svg|pdf)/)) {
           ref=substr(text, RSTART, RLENGTH);
