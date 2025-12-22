@@ -1,18 +1,18 @@
 #!/bin/bash
 
-# Usa la directory corrente come root del progetto
+# Use the current working directory as the project root
 ROOT="$(pwd)"
 DOCS="$ROOT/docs"
 
 found_count=0
 not_found_count=0
 
-# Funzione per controllare se un riferimento è in un blocco figure con :target: plantuml
+# Function to check if a reference is in a figure block with :target: plantuml
 check_plantuml_target() {
   local file="$1"
   local line="$2"
-  # Usa una finestra configurabile di righe intorno alla riga di riferimento.
-  # FIGURE_CONTEXT_LINES permette di cambiare l'ampiezza senza modificare lo script.
+  # Use a configurable window of lines around the reference line.
+  # FIGURE_CONTEXT_LINES allows changing the window size without modifying the script.
   local context="${FIGURE_CONTEXT_LINES:-10}"
   local start_line=$((line - context))
   local end_line=$((line + context))
@@ -21,14 +21,14 @@ check_plantuml_target() {
     start_line=1
   fi
   
-  # Evita di andare oltre la fine del file
+  # Avoid going past the end of the file
   local max_line
   max_line=$(wc -l < "$file")
   if [ "$end_line" -gt "$max_line" ]; then
     end_line="$max_line"
   fi
   
-  # Leggi il contesto intorno alla riga
+  # Read the context around the line
   sed -n "${start_line},${end_line}p" "$file" | grep -qi ':target:.*plantuml'
   return $?
 }
@@ -37,12 +37,12 @@ while IFS=$'\t' read -r fileline ref; do
   file="${fileline%%:*}"
   line="${fileline##*:}"
   
-  # Salta se la riga contiene http o plantuml direttamente
+  # Skip if the reference directly contains http or plantuml
   if echo "$ref" | grep -qiE '(http|plantuml)'; then
     continue
   fi
   
-  # Controlla se è in un blocco figure con :target: plantuml
+  # Check if it is in a figure block with :target: plantuml
   if check_plantuml_target "$file" "$line"; then
     continue
   fi
