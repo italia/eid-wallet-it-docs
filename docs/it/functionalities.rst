@@ -637,7 +637,7 @@ Per approfondimenti sull'Authentication button consultare il Brand Manual prossi
      :alt: Esempio di Authentication button nelle tre varianti
      :width: 100%
 
-     Esempio di  Authentication button nelle sue tre varianti
+     Esempio di Authentication button nelle sue tre varianti
 
 .. only:: format_latex 
 
