@@ -24,5 +24,3 @@ jobs:
         run: |
           echo "Running utils/check_svg_pdf.sh from project root..."
           bash utils/check_svg_pdf.sh
-
-
