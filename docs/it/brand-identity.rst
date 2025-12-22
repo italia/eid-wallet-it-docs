@@ -9,9 +9,9 @@ La Brand Identity del Sistema IT-Wallet definisce la personalità del sistema e 
  
 È importante che la consapevolezza dell'Utente e la sua fiducia nell'ecosistema siano favoriti dalla presenza di elementi grafici, da integrare nelle Soluzioni Tecniche e nei diversi Touchpoint.  
  
-Per garantire quindi che la presenza della Brand Identity nelle diverse Soluzioni Tecniche sia uniforme, coerente e favorisca un’ Esperienza Utente di qualità, gli Attori Primari DEVONO rispettare i requisiti di applicazione della Brand Identity del Sistema IT-Wallet nelle loro Soluzioni Tecniche. In particolare, tutti gli Attori Primari:
+Per garantire quindi che la presenza della Brand Identity nelle diverse Soluzioni Tecniche sia uniforme, coerente e favorisca un’Esperienza Utente di qualità, gli Attori Primari DEVONO rispettare i requisiti di applicazione della Brand Identity del Sistema IT-Wallet nelle loro Soluzioni Tecniche. In particolare, tutti gli Attori Primari:
 
-- DEVONO seguire esclusivamente le indicazioni specificate nel Brand Manual prossimamente disponibille sul sito ufficiale https://www.wallet.gov.it.; 
+- DEVONO seguire esclusivamente le indicazioni specificate nel Brand Manual prossimamente disponibile sul sito ufficiale https://www.wallet.gov.it.; 
 
 - DEVONO utilizzare esclusivamente le Risorse Ufficiali rese disponibili nella relativa cartella :ref:`official-resources:Risorse Ufficiali` di queste Specifiche Tecniche. 
 

@@ -30,13 +30,13 @@ All those who intend to refer to the IT-Wallet System:
 
 - MUST use of the hyphen (“-”) between "IT" and "Wallet",  without any spacing; 
 
-- MUST correctly pronouncethe term “IT”, phonetically separating the two letters “I” and “IT”. In Italian, the correct pronunciation is /i ti/ and not /it/, while in English the correct pronunciations is /ˌaɪ ˈtiː/ e non /ɪt/, /aɪt/ o /ɪti/. 
+- MUST correctly pronounce the term “IT”, phonetically separating the two letters “I” and “IT”. In Italian, the correct pronunciation is /i ti/ and not /it/, while in English the correct pronunciations is /ˌaɪ ˈtiː/ e non /ɪt/, /aɪt/ o /ɪti/. 
 
 
 Visual Identity
 ----------------
 
-The “IT-Wallet" Brand has its own Visual Identity. All actors within the ecosystem MUST apply it to provide visibility of their participation in the IT-Wallet System but MUST NOT use “IT-Wallet” Visual Identity as a replacement of the Visual Identity of their own organization ot their own Technical Solutions. 
+The “IT-Wallet" Brand has its own Visual Identity. All actors within the ecosystem MUST apply it to provide visibility of their participation in the IT-Wallet System but MUST NOT use “IT-Wallet” Visual Identity as a replacement of the Visual Identity of their own organization or their own Technical Solutions. 
 
 To ensure proper coexistence between the “IT-Wallet” Visual Identity and the Visual Identity of their organization or Technical Solutions, Primary Actors MUST exclusively use the Official Resources and comply with the indications specified in the Brand Manual.
 
@@ -85,7 +85,7 @@ Below are illustrated the requirements for the use of the Logo. All actors inten
 
 - MUST the Logo exactly as provided in the Official Resources and MUST comply with the related usage specifications provided; 
 
-- MUST use the Logo in the ``pplication/svg+xml`` data format; 
+- MUST use the Logo in the ``application/svg+xml`` data format; 
 
 - MUST NOT alter, distort, modify the Logo, or replace it with unofficial logos; 
 
@@ -93,13 +93,13 @@ Below are illustrated the requirements for the use of the Logo. All actors inten
 
 - MUST NOT resized the Logo below the minimum dimensions specified in the Brand Manual, to maintain legibility across formats and devices; 
 
-- MUST NOT place the Logo on backgrounds that compromise its visibility or legibility. They MUST enure an adequate contrast between the Logo and the background, in accordance with the Brand Manual; 
+- MUST NOT place the Logo on backgrounds that compromise its visibility or legibility. They MUST ensure an adequate contrast between the Logo and the background, in accordance with the Brand Manual; 
 
 - MAY displayed the Logo alongside other actors' logos, trademarks, or symbols, in accordance with the Brand Manual; 
 
-- MAY use the Logo symbor as a simplified version of the Logo, in accordance with the Brand Manual; 
+- MAY use the Logo symbol as a simplified version of the Logo, in accordance with the Brand Manual; 
 
-- MAY use the Logo symbol within a shape or a button to reference the connection to IT-Wallet, such as in Engagement Buttons (see :ref: `functionalities:Authentication Button’), in accordance with the Brand Manual. 
+- MAY use the Logo symbol within a shape or a button to reference the connection to IT-Wallet, such as in Engagement Buttons (see :ref:`functionalities:Authentication Button`), in accordance with the Brand Manual. 
 
 For further information on the Logo and its related symbol refer to the Brand Manual, which will soon be made available on the official website https://www.wallet.gov.it.  
 The Logo Official Resources are available in the related :ref:`official-resources:Official Resources` folder of these Technical Specifications. 
@@ -132,7 +132,7 @@ Below are illustrated the requirements for the use of the Trust Mark, that apply
 
 - MUST display the Trust Mark only in the Technical Solutions that have successfully completed the registration process; 
 
-- MUST esclusively use the Trust Mark provided in the Official Resources and MUST comply with the related usage specifications provided in the Brand Manual; 
+- MUST exclusively use the Trust Mark provided in the Official Resources and MUST comply with the related usage specifications provided in the Brand Manual; 
 
 - MUST NOT alter, distort, modify the Trust Mark, or replace it with unofficial elements; 
 
