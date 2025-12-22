@@ -470,7 +470,7 @@ The main Entities involved in the Digital Credential Catalog are:
   - **Authentic Sources**: The Entities that hold the original data that is attested in the Digital Credentials. They provide support to Issuers in registering the Digital Credentials in the Catalog.
 
 
-.. _fig_catalog.svg:
+.. _fig_catalog:
 .. plantuml:: plantuml/credential-catalog-entities.puml
     :width: 99%
     :alt: The figure illustrates the Digital Credential Entities.
