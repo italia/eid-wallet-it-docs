@@ -180,13 +180,6 @@ Le seguenti mappe dei Journey illustrano due scenari di Credenziali distinti:
 Journey dell'Operatore della Fonte Autentica
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. .. figure:: ./images/svg/onboarding-journey-maps/as-onboarding-journey.svg
-..     :width: 100%
-..     :alt: Journey di onboarding della Fonte Autentica
-..     :name: as-onboarding-journey
-
-..     Processo di registrazione della Fonte Autentica e interazioni con l'Organismo di Supervisione
-
 Dalla prospettiva dell'operatore della Fonte Autentica, il processo di onboarding inizia con la valutazione delle capacità di fornire dati esistenti rispetto al Registro degli Attributi dell'Utente standardizzato e alle classificazioni della Tassonomia, determinando quali Attributi dell'Utente possono essere resi disponibili come Attestato Elettronico. L'operatore invia una richiesta di registrazione all'Organismo di Supervisione, dichiarando Attributi dell'Utente specifici dal Registro degli Attributi dell'Utente con i domini della Tassonomia e gli scopi previsti.
 
 **Esempio - Fonte Autentica Pubblica (Scenario mDL)**:
@@ -213,13 +206,6 @@ Le fasi critiche includono la verifica amministrativa da parte dell'Organismo di
 
 Journey dell'Operatore del Credential Issuer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. .. figure:: ./images/svg/onboarding-journey-maps/ci-onboarding-journey.svg
-..     :width: 100%
-..     :alt: Journey di onboarding del Credential Issuer
-..     :name: ci-onboarding-journey
-
-..     Registrazione del Credential Issuer con alternative del flusso di integrazione
 
 Gli operatori del Credential Issuer iniziano effettuando la discovery delle Fonti Autentiche disponibili attraverso il Registro AS e valutando la fattibilità dell'integrazione basata sugli Attributi dell'Utente richiesti. La richiesta di registrazione specifica quali tipi di Credenziali intendono emettere, seleziona entità Fonte Autentica appropriate e dimostra la capacità tecnica di accedere alle fonti di dati richieste.
 
@@ -253,13 +239,6 @@ Dopo il test di integrazione riuscito e l'approvazione della Fonte Autentica, il
 Journey dell'Operatore del Fornitore di Wallet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. .. figure:: ./images/svg/onboarding-journey-maps/wp-onboarding-journey.svg
-..     :width: 100%
-..     :alt: Journey di onboarding del Fornitore di Wallet
-..     :name: wp-onboarding-journey
-
-..     Processo di certificazione del Fornitore di Wallet e validazione della sicurezza
-
 Gli operatori del Fornitore di Wallet seguono un Journey di onboarding indipendente che si concentra sulla certificazione dell'applicazione e sulla validazione della sicurezza. Il processo evidenzia lo sviluppo e la certificazione di applicazioni Wallet che possono memorizzare e gestire in modo sicuro gli Attestati Elettronici per i cittadini.
 
 Un requisito tecnico chiave coinvolge l'implementazione di meccanismi di controllo dell'integrità e autenticità del Wallet. Questi controlli consentono al Wallet di ottenere un Wallet App Attestation, che serve come prova dello stato di sicurezza e conformità del Wallet durante le operazioni delle Credenziali.
@@ -268,13 +247,6 @@ Il processo di certificazione include la valutazione della sicurezza, coprendo l
 
 Journey dell'Operatore della Relying Party
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. .. figure:: ./images/svg/onboarding-journey-maps/rp-onboarding-journey.svg
-..     :width: 100%
-..     :alt: Journey di onboarding della Relying Party
-..     :name: rp-onboarding-journey
-
-..     Integrazione del servizio della Relying Party e processo di autorizzazione
 
 Gli operatori della Relying Party iniziano identificando quali tipi di EAA sono richiesti per i loro servizi specifici e valutando la complessità dell'integrazione con i sistemi di autenticazione esistenti. La richiesta di registrazione fornisce evidenza di necessità legittime per accedere a tipi di Credenziale specifici e Attributi dell'Utente, delineando i casi d'uso del servizio previsti e le caratteristiche organizzative che giustificano l'accesso alle Credenziali.
 
