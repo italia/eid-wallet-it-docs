@@ -470,7 +470,7 @@ Le principali Entità coinvolte nel Catalogo delle Credenziali Digitali sono:
   - **Fonti Autentiche**: Le Entità che detengono i dati originali che sono attestati nelle Credenziali Digitali. Forniscono supporto agli Emittenti nella registrazione delle Credenziali Digitali nel Catalogo.
 
 
-.. _fig_catalog.svg:
+.. _fig_catalog:
 .. plantuml:: plantuml/credential-catalog-entities.puml
     :width: 99%
     :alt: La figura illustra le Entità delle Credenziali Digitali.
