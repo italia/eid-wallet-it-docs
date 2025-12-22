@@ -53,7 +53,7 @@ while IFS=$'\t' read -r fileline ref; do
   done
 
   if [ "$found" -eq 0 ]; then
-    rel="${file#$DOCS/}"
+    rel="${file#"$DOCS"/}"
     lang="${rel%%/*}"
     ext="${name##*.}"
     full="$DOCS/$lang/images/$ext/$name"
