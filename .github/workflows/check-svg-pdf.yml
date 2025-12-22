@@ -15,6 +15,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: ShellCheck (lint bash scripts)
+        uses: ludeeus/action-shellcheck@v2
+        with:
+          scandir: './utils'
+
       - name: Run SVG/PDF reference check
         run: |
           echo "Running utils/check_svg_pdf.sh from project root..."

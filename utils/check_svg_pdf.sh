@@ -67,7 +67,7 @@ while IFS=$'\t' read -r fileline ref; do
     ((found_count++))
   fi
 done < <(
-  grep -R --include='*.rst' -nH -E '\.(svg|pdf)' "$DOCS" \
+  grep -r --include='*.rst' --exclude-dir=.git -nH -E '\.(svg|pdf)' "$DOCS" \
     | grep -vi 'http' \
     | awk -F: '
       {
