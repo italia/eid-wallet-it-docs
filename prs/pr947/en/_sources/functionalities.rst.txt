@@ -643,7 +643,6 @@ For further information on the Authentication button refer to the Brand Manual w
 
      Example of Authentication button in 3 variants
 
-
 Management of Electronic Attestations
 --------------------------------------
 
