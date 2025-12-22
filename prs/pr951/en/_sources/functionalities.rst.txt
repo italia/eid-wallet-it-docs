@@ -563,8 +563,7 @@ The references to the html code and the Brand Identity will be included in the n
 **"Login with IT-Wallet" button – svg**
 Below a non-normative example of the Authentication Button. The references to the Brand Identity will be included in the next releases of the present specifications.
 
-.. literalinclude:: ../../examples/authentication_button.svg
-  :language: xml 
+.. literalinclude:: ./images/svg/authentication_button.svg 
 
 Management of Electronic Attestations
 --------------------------------------
