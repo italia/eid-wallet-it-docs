@@ -68,12 +68,6 @@ while IFS=$'\t' read -r fileline ref; do
   if [ -e "$resolved_path" ]; then
     ((found_count++))
   else
-    # Path doesn't exist - check if basename exists in standard locations (for reporting)
-    rel="${file#"$DOCS"/}"
-    lang="${rel%%/*}"
-    ext="${name##*.}"
-    images_path="$DOCS/$lang/images/$ext/$name"
-    
     # Report the actual missing path from RST
     printf 'NOT-FOUND: %s:%s -> %s\n' "$rst" "$line" "$resolved_path"
     ((not_found_count++))
