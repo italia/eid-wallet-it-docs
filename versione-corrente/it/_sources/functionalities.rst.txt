@@ -32,7 +32,7 @@ Il Sistema IT-Wallet offre all'utente un'esperienza più semplice, veloce e sicu
 
 Le sezioni a seguire si focalizzano sulle macro-fasi di utilizzo e post-utilizzo. Esse definiscono i requisiti funzionali a supporto dell'Esperienza Utente relativi alle fasi di attivazione ottenimento, presentazione, gestione e disattivazione, unitamente ai requisiti di interazione con il servizio in termini di gestione degli errori, richiesta di assistenza e raccolta feedback. 
 
-La documentazione e le risorse aggiuntive sono rese disponibili nella cartella :ref:`official-resources:Risorse Ufficiali`. 
+La documentazione e le risorse aggiuntive saranno rese disponibili nella sezione :ref:`official-resources:Risorse Ufficiali`. 
 
 Le Risorse Ufficiali descrivono le modalità di interazione Utente-Istanza del Wallet e le buone pratiche di progettazione al fine di promuovere coerenza tra le diverse Soluzioni Wallet, in termini di modalità di fruizione delle funzionalità. 
 

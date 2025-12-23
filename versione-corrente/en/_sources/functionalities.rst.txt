@@ -30,7 +30,7 @@ The IT-Wallet System provides Users with a simpler, faster, and more secure way 
 
 The following sections focus on the usage and post-usage phases. They define the functional requirements supporting the User Experience for the activation, acquisition, presentation, management, and deactivation phases, along with interaction requirements related to error management, assistance requests, and feedback collection.
 
-Additional documentation and resources are provided in the :ref:`official-resources:Official Resources` folder.  
+Additional documentation and resources will be provided in the :ref:`official-resources:Official Resources` section.  
 
 The Official Resources include recommendations on the required User-Wallet Instance interactions and design best practices that promote consistency across different Wallet Solutions in terms of how functionalities are accessed and used.
 
