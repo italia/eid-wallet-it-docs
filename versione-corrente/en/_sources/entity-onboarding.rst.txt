@@ -513,7 +513,7 @@ The Trust Mark JWT (contained in the ``trust_mark`` claim above) includes the fo
    * - **email**
      - **RECOMMENDED**. Institutional or PEC email of the organization.
    * - **logo_uri**
-     - **OPTIONAL**. URL pointing to the Trust Mark logo for UI/UX purposes.
+     - **REQUIRED**. URL pointing to the :ref:`brand-identity:Trust Mark` for UI/UX purposes.
    * - **ref**
      - **OPTIONAL**. URL with additional web information about the Trust Mark.
 

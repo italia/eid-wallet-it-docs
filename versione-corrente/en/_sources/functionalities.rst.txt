@@ -62,6 +62,24 @@ The Wallet Provider MUST allow the User to remove the PID issued during the acti
 
 In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the :ref:`functionalities:Error Management` section.
 
+The flow is shown below with illustrative wireframes.
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/IT-Wallet-Activation.svg
+    :alt: Example of User Experience in Activating a Wallet Instance 
+    :width: 100%
+
+    Example of User Experience in Activating a Wallet Instance
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/IT-Wallet-Activation.pdf
+    :alt: Example of User Experience in Activating a Wallet Instance
+    :width: 100%
+
+    Example of User Experience in Activating a Wallet Instance
+
 Focus on PID – Person Identification Data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -163,6 +181,24 @@ If the User encounters incorrect data in an already obtained or in-progress Elec
 
 In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the :ref:`functionalities:Error Management` section.
 
+The flow is shown below with illustrative wireframes.
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/Issuance-from-catalog.svg
+    :alt: Example of User Experience in the issuance an Authentic Electronic Attestation from Catalog
+    :width: 100%
+
+    Example of User Experience in the issuance an Authentic Electronic Attestation from Catalog 
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/Issuance-from-catalog.pdf
+    :alt: Example of User Experience in the issuance an Authentic Electronic Attestation from Catalog
+    :width: 100%
+    :align: center
+ 
+
 Issuance from a Touchpoint of the Authentic Source 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Below are illustrated the User Experience requirements for the issuance of an Electronic Attribute Attestation from the Catalog that the Wallet Solution Provider MUST guarantee through their own Wallet Solution: 
@@ -180,6 +216,22 @@ Below are illustrated the User Experience requirements for the issuance of an El
 - The User views the details of the requested Electronic Attestation of Attributes, including: the data contained in it, the name of the Electronic Attestation of Attributes Provider who issued the Attestation, and the names of the Authentic Sources. 
 
 In case of errors during the issuance of the Electronic Attestation of Attributes, the Authentic Source MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the :ref:`functionalities:Error Management` section. 
+
+The flow is shown below with illustrative wireframes.
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/Issuance-from-Authentic-Source.svg
+    :alt: Example of User Experience in the issuance an Authentic Electronic Attestation from Authentic Source
+    :width: 100%
+
+    Example of the User Experience during the issuance an Authentic Electronic Attestation from Authentic Source.
+
+.. only:: format_latex
+  .. figure:: ./images/pdf/Issuance-from-Authentic-Source.pdf
+    :alt: Example of User Experience in the issuance an Authentic Electronic Attestation from Authentic Source.
+    :width: 100%
+    :align: center
 
 
 Focus on Electronic Attestations of Attributes
@@ -245,6 +297,25 @@ Below are illustrated the User Experience requirements to ensure a uniform and c
 - MUST guarantee that the EAA is a functional element, for the User to access services provided by Relying Parties in digital and proximity contexts (see :ref:`functionalities:Presentation of Electronic Attestations`); 
 - MUST display in the Detail View a method of assistance given by the Authentic Source via the ``data_capabilities.contacts`` parameter (see :ref:`functionalities:User Assistance` and see :ref:`registry:Authentic Source Registry`). 
 
+Below an example of Electronic Attestation of Attribute layout, in a Preview View, and Detail View.
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/Focus-EAA.svg
+    :alt: Example of Electronic Attestation of Attribute layout, Preview View, and Detail View 
+    :width: 100%
+
+    Example of Electronic Attestation of Attribute layout, Preview View, and Detail View.
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/Focus-EAA.pdf
+    :alt: Example of Electronic Attestation of Attribute layout, Preview View, and Detail View   
+    :width: 100%
+
+    Example of Electronic Attestation of Attribute layout, Preview View, and Detail View.
+
+
 Presentation of Electronic Attestations
 ----------------------------------------
 
@@ -287,6 +358,23 @@ In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee 
 
 In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the :ref:`functionalities:Error Management` section.
 
+The flow is shown below with illustrative wireframes.
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/proximity-presentation.svg
+    :alt: Example of User Experience in proximity presentation
+    :width: 100%
+
+    Example of User Experience in proximity presentation.
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/proximity-presentation.pdf
+    :alt: Example of User Experience in proximity presentation
+    :width: 100%
+    :align: center
+
 Remote Presentation
 ^^^^^^^^^^^^^^^^^^^^
 
@@ -311,6 +399,22 @@ Below are the User Experience requirements related to both methods that the Wall
 
 In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the `Error Management`_ section.
 
+The flow is shown below with illustrative wireframes.
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/Remote-presentation-same-device.svg
+    :alt: Example of User Experience in remote, same-device presentation
+    :width: 100%
+
+    Example of User Experience in remote, same-device presentation.
+
+.. only:: format_latex
+  .. figure:: ./images/pdf/Remote-presentation-same-device.pdf
+    :alt: Example of User Experience in remote, same-device presentation.
+    :width: 100%
+    :align: center
+
 **Cross-Device Mode**
 
 - The User clicks the Engagement Button provided on the Touchpoint of the Relying Party while accessing the service from a different device than the one where the Wallet Instance is installed;
@@ -322,6 +426,24 @@ In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee 
 - The User returns to the Relying Party's Touchpoint and views confirmation of the completed presentation.
 
 In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the `Error Management`_ section.
+
+The flow is shown below with illustrative wireframes.
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/Remote-presentation-cross-device.svg
+    :alt: Example of User Experience in remote, cross-device presentation
+    :width: 100%
+
+    Example of User Experience in remote, cross-device presentation.
+
+
+.. only:: format_latex
+  .. figure:: ./images/pdf/Remote-presentation-cross-device.pdf
+    :alt: Example of User Experience in remote, cross-device presentation.
+    :width: 100%
+    :align: center
+
 
 Authentication
 """""""""""""""
@@ -553,6 +675,38 @@ The Relying Party implementing the page:
 - MUST ensure that the copy on the page mirrors that reported in the :ref:`official-resources:Official Resources`;
 - MUST include one or more Call To Action guiding the User toward the appropriate next step (e.g., retry, contact support, etc.).
 
+Both flows are shown below with illustrative wireframes.
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/Authentication-same-device.svg
+    :alt: Example of same-device Authentication User Experience
+    :width: 100%
+
+    Example of same-device Authentication User Experience.
+
+.. only:: format_latex
+  .. figure:: ./images/pdf/Authentication-same-device.pdf
+    :alt: Example of same-device Authentication User Experience.
+    :width: 100%
+    :align: center
+
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/Authentication-cross-device.svg
+    :alt: Example of cross-device Authentication User Experience
+    :width: 100%
+
+    Example of cross-device Authentication User Experience.
+
+.. only:: format_latex
+  .. figure:: ./images/pdf/Authentication-cross-device.pdf
+    :alt: Example of cross-device Authentication User Experience.
+    :width: 100%
+    :align: center
+
+
 Authentication Button
 ~~~~~~~~~~~~~~~~~~~~~~
 
@@ -673,6 +827,23 @@ Below are the functional requirements supporting the User Experience regarding t
 - The User sees any additional information on the requirements and/or limitations relating to the status of the Electronic Attestation of Attributes and CAN close the message or proceed with any action requested by the Electronic Attestation Provider;
 - The User sees specific Call To Action buttons in the Detail View to delete the Electronic Attestation or update it if no longer valid.
 
+The flow is shown below with illustrative wireframes.
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/Update-EAA.svg
+     :alt: Example of User Experience in Updating an Electronic Attestation
+     :width: 100%
+
+     Example of User Experience in Updating an Electronic Attestation.
+
+.. only:: format_latex
+  .. figure:: ./images/pdf/Update-EAA.pdf
+    :alt: Example of User Experience in Updating an Electronic Attestation
+    :width: 100%
+    :align: center
+
+
 Revocation of Electronic Attestations
 """"""""""""""""""""""""""""""""""""""
 
@@ -696,6 +867,23 @@ Below are the User Experience requirements that the Wallet Provider MUST guarant
 - The User selects the Call to Action to revoke the Electronic Attestation;
 - The User reviews all information relevant to the action being performed and either gives their consent to proceed or denies consent to cancel the operation;
 - The User sees the successful outcome of the revocation.
+
+The flow is shown below with illustrative wireframes.
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/Revocation-EAA-from-wallet.svg
+     :alt: Example of User Experience in Revoking an Electronic Attestation
+     :width: 100%
+
+     Example of User Experience in Revoking an Electronic Attestation.
+
+
+.. only:: format_latex
+  .. figure:: ./images/pdf/Revocation-EAA-from-wallet.pdf
+    :alt: Example of User Experience in Revoking an Electronic Attestation.
+    :width: 100%
+    :align: center
 
 History of Electronic Attestations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -748,6 +936,24 @@ The User has the ability to reactivate the Wallet Instance by re-downloading the
 Once the Wallet Instance is reactivated, Electronic Attestations of Attributes can be re-obtained by starting the issuance or restore process again. For more details, please refer to sections `Issuance of Electronic Attestations of Attributes`_ and `Backup and Restore of Electronic Attestation of Attributes`_.
 
 In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For more details, please refer to the `Error Management`_ section.
+
+
+The flow is shown below with illustrative wireframes.
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/wallet-deactivation.svg
+     :alt: Example of User Experience in Deactivating a Wallet Instance
+     :width: 100%
+
+     Example of User Experience in Deactivating a Wallet Instance.
+
+
+.. only:: format_latex
+  .. figure:: ./images/pdf/wallet-deactivation.pdf
+    :alt: Example of User Experience in Deactivating a Wallet Instance
+    :width: 100%
+    :align: center
 
 Error Management
 -----------------

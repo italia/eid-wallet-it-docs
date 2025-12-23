@@ -64,6 +64,35 @@ Il Fornitore di Wallet DEVE permettere all'Utente in ogni momento di rimuovere i
 
 In caso di errori nell'utilizzo della Istanza del Wallet, il Fornitore di Wallet DEVE garantire all'Utente la visualizzazione di messaggi coerenti che lo informino e guidino alla loro risoluzione. Per approfondimenti si rimanda alla sezione :ref:`functionalities:Gestione degli errori`.
 
+Il flusso è rappresentato di seguito con wireframe esemplificativi.
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/Attivazione-IT-Wallet.svg
+    :alt: Esempio di Esperienza Utente nell'Attivazione di un'Istanza del Wallet 
+    :width: 100%
+
+    Esempio di Esperienza Utente nell'Attivazione di un'Istanza del Wallet.
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Flusso-Attivazione-01.pdf
+    :alt: Esempio di Esperienza Utente nell'Attivazione di un'Istanza del Wallet 01
+    :width: 100%
+
+    Esempio di Esperienza Utente nell'Attivazione di un'Istanza del Wallet 01
+
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Flusso-Attivazione-02.pdf
+    :alt: Esempio di Esperienza Utente nell'Attivazione di un'Istanza del Wallet 02
+    :width: 100%
+
+    Esempio di Esperienza Utente nell'Attivazione di un'Istanza del Wallet 02.
+
+
+
 Focus sul PID – Dati di Identificazione della Persona
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -154,6 +183,7 @@ Per approfondimenti si rimanda alla sezione :ref:`registry:Registro delle Fonti 
 
 Il Fornitore di Wallet DEVE permettere all'Utente di rimuovere un Attestato Elettronico di Attributi dalla sua Istanza del Wallet in ogni momento. In caso di assenza del dispositivo su cui è stata attivata l'Istanza del Wallet, il Fornitore di Wallet DEVE permettere all'Utente di disattivare l'intera Istanza del Wallet tramite un Touchpoint dedicato. Inoltre, i Fornitori di Attestati Elettronici di Attributi DOVREBBERO permettere all'Utente la revoca degli Attestati Elettronici ottenuti, tramite specifici Touchpoint. Per approfondimenti si rimanda alle sezioni :ref:`functionalities:Disattivazione dell'Istanza del Wallet` e :ref:`functionalities:Gestione degli Attestati Elettronici`. 
 
+
 In caso di problemi di comunicazione tra i sistemi del Fornitore di Attestati Elettronici di Attributi e della Fonte Autentica o in presenza di processi amministrativi o tecnici che non consentono di fornire immediatamente l'Attestato Elettronico di Attributi, gli attori coinvolti POSSONO gestire il flusso di ottenimento in modalità differita. In questo caso, il Fornitore di Wallet DEVE garantire che: 
 
 - l'Utente, giunto all'ultimo step del processo, visualizzi un messaggio che lo invita ad attendere il momento in cui l'Attestato Elettronico di Attributi potrà essere rilasciato; 
@@ -162,6 +192,42 @@ In caso di problemi di comunicazione tra i sistemi del Fornitore di Attestati El
 In caso di dati errati all'interno di un Attestato Elettronico di Attributi già ottenuto o in fase di ottenimento, il Fornitore di Wallet DOVREBBE garantire all'Utente un'adeguata assistenza attraverso la propria Istanza del Wallet. Per approfondimenti si rimanda alla sezione :ref:`functionalities:Assistenza Utente`. 
 
 In caso di errori nell'utilizzo della Istanza del Wallet, il Fornitore di Wallet DEVE garantire all'Utente la visualizzazione di messaggi coerenti che lo informino e guidino alla loro risoluzione. Per approfondimenti si rimanda alla sezione :ref:`functionalities:Gestione degli errori`. 
+
+
+Il flusso è rappresentato di seguito con wireframe esemplificativi.
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/Ottenimento-da-catalogo.svg
+    :alt: Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico di Attributi da Catalogo
+    :width: 100%
+
+    Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico di Attributi da Catalogo.
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Flusso-Ottenimento-01.pdf
+    :alt: Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico di Attributi da Catalogo - 01
+    :width: 100%
+
+    Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico di Attributi da Catalogo - 01.
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Flusso-Ottenimento-02.pdf
+    :alt: Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico di Attributi da Catalogo - 02
+    :width: 100%
+
+    Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico di Attributi da Catalogo - 02.
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Flusso-Ottenimento-03.pdf
+    :alt: Esempio di Esperienza Utente nell'Ottenimento differito di un Attestato Elettronico di Attributi da Catalogo 
+    :width: 100%
+
+    Esempio di Esperienza Utente nell'Ottenimento differito di un Attestato Elettronico di Attributi da Catalogo. 
+
 
 Ottenimento dal Touchpoint della Fonte Autentica
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -184,6 +250,25 @@ Di seguito sono illustrati i requisiti dell'Esperienza Utente del flusso di otte
 - l'Utente visualizza i dettagli dell'Attestato Elettronico di Attributi ottenuto ovvero: i dati in esso contenuti, il nome del Fornitore di Attestati Elettronici di Attributi che ha emesso l'Attestato Elettronico di Attributi e il nome della Fonte Autentica. 
 
 In caso di errori nell'ottenimento dell'Attestato Elettronico di Attributi, la Fonte Autentica DEVE garantire all'Utente la visualizzazione di messaggi coerenti che lo informino e guidino alla loro risoluzione. Per approfondimenti si rimanda alla sezione :ref:`functionalities:Gestione degli errori`. 
+
+
+Il flusso è rappresentato di seguito con wireframe esemplificativi.
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/Ottenimento-da-fonte-autentica.svg
+    :alt: Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico da Touchpoint della Fonte Autentica
+    :width: 100%
+
+    Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico da Touchpoint della Fonte Autentica
+
+.. only:: format_latex 
+
+  .. figure:: ./images/pdf/Ottenimento-da-fonte-autentica.pdf
+    :alt: Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico da Touchpoint della Fonte Autentica
+     :width: 100%
+
+    Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico da Touchpoint della Fonte Autentica
 
 
 Focus sugli Attestati Elettronici di Attributi
@@ -252,6 +337,25 @@ Di seguito sono riportati i requisiti di Esperienza Utente per assicurare una vi
 - DEVE garantire che l’EAA sia un elemento funzionale, affinché l'Utente possa accedere ai servizi forniti dai Verificatori di Attestati Elettronici in contesti digitali e di prossimità (vedi :ref:`functionalities:Presentazione degli Attestati Elettronici`); 
 - DEVE mostrare nella Vista di Dettaglio un metodo di assistenza reso disponibile dalla Fonte Autentica tramite il parametro ``data_capabilities.contacts`` (vedi :ref:`functionalities:Assistenza Utente` e vedi :ref:`registry:Registro delle Fonti Autentiche`).
 
+Di seguito un esempio di layout di Attestato Elettronico di Attributi, all'interno della Vista in Anteprima e Vista di Dettaglio
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/A4-Focus-EAA.svg
+    :alt: Esempio di layout di Attestato Elettronico di Attributi, Vista in Anteprima e Vista di Dettaglio
+    :width: 100%
+
+    Esempio di layout di Attestato Elettronico di Attributi, Vista in Anteprima e Vista di Dettaglio
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Focus-EAA.pdf
+    :alt: Esempio di layout di Attestato Elettronico di Attributi, Vista in Anteprima e Vista di Dettaglio  
+    :width: 100%
+
+    Esempio di layout di Attestato Elettronico di Attributi, Vista in Anteprima e Vista di Dettaglio
+
+
 Presentazione degli Attestati Elettronici 
 ------------------------------------------
 
@@ -294,6 +398,26 @@ In caso di errori nell'utilizzo dell'Istanza del Wallet, il Fornitore di Wallet 
 
 In caso di errori nell'utilizzo dell'Istanza del Wallet, il Fornitore di Wallet DEVE garantire all'Utente la visualizzazione di messaggi coerenti che lo informino e guidino alla loro risoluzione. Per approfondimenti si rimanda alla sezione :ref:`functionalities:Gestione degli errori`. 
 
+Il flusso è rappresentato di seguito con wireframe esemplificativi.
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/Presentazione-prossimita.svg
+    :alt: Esempio di Esperienza Utente nella presentazione in prossimità
+    :width: 100%
+
+    Esempio di Esperienza Utente nella presentazione in prossimità
+
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/Presentazione-prossimita.pdf
+    :alt: Esempio di Esperienza Utente nella presentazione in prossimità
+    :width: 100%
+
+    Esempio di Esperienza Utente nella presentazione in prossimità
+
+
 Presentazione da remoto 
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -318,6 +442,25 @@ Di seguito i requisiti dell'Esperienza Utente relativi a entrambe le modalità c
 
 In caso di errori nell'utilizzo dell'Istanza del Wallet, il Fornitore di Wallet DEVE garantire all'Utente la visualizzazione di messaggi coerenti che lo informino e guidino alla loro risoluzione. Per approfondimenti si rimanda alla sezione :ref:`functionalities:Gestione degli errori`. 
 
+Il flusso è rappresentato di seguito con wireframe esemplificativi.
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/Presentazione-remoto-same-device.svg
+    :alt: Esempio di Esperienza Utente nella presentazione da remoto, same-device
+    :width: 100%
+
+    Esempio di Esperienza Utente nella presentazione da remoto, same-device
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/Presentazione-remoto-same-device.pdf
+    :alt: Esempio di Esperienza Utente nella presentazione da remoto, same-device
+    :width: 100%
+
+    Esempio di Esperienza Utente nella presentazione da remoto, same-device
+
+
 **Cross-device** 
 
 - L'Utente clicca l'Engagement Button reso disponibile nel Touchpoint del Verificatore di Attestati Elettronici che l'Utente sta navigando da un dispositivo diverso da quello su cui è installata l'Istanza del Wallet; 
@@ -329,6 +472,25 @@ In caso di errori nell'utilizzo dell'Istanza del Wallet, il Fornitore di Wallet 
 - L'Utente torna sul Touchpoint del Verificatore di Attestati Elettronici e visualizza l'esito della presentazione completata. 
 
 In caso di errori nell'utilizzo dell'Istanza del Wallet, il Fornitore di Wallet DEVE garantire all'Utente la visualizzazione di messaggi coerenti che lo informino e guidino alla loro risoluzione. Per approfondimenti si rimanda alla sezione :ref:`functionalities:Gestione degli errori`. 
+
+Il flusso è rappresentato di seguito con wireframe esemplificativi.
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/Presentazione-remoto-cross-device.svg
+    :alt: Esempio di Esperienza Utente nella presentazione da remoto, cross-device
+    :width: 100%
+
+    Esempio di Esperienza Utente nella presentazione da remoto, cross-device
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/Presentazione-remoto-cross-device.pdf
+    :alt: Esempio di Esperienza Utente nella presentazione da remoto, cross-device
+    :width: 100%
+
+    Esempio di Esperienza Utente nella presentazione da remoto, cross-device
+
 
 Autenticazione
 """""""""""""""
@@ -561,6 +723,42 @@ Il Verificatore di Attestati Elettronici che implementa la pagina:
 - DEVE assicurare che i copy presenti nella pagina rispecchino quelli riportati nelle :ref:`official-resources:Risorse Ufficiali`;  
 - DEVE prevedere una o più Call to Action che invitino l'Utente a intraprendere le azioni previste (es. riprova, contatta l'assistenza, etc.). 
 
+Entrambi i flussi sono rappresentati di seguito con wireframe esemplificativi.
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/Autenticazione-same-device.svg
+    :alt: Esempio di Esperienza Utente di Autenticazione same-device
+    :width: 100%
+
+    Esempio di Esperienza Utente di Autenticazione same-device.
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/Autenticazione-same-device.pdf
+    :alt: Esempio di Esperienza Utente di Autenticazione same-device 
+    :width: 100%
+
+    Esempio di Esperienza Utente di Autenticazione same-device
+
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/Autenticazione-cross-device.svg
+    :alt: Esempio di Esperienza Utente di Autenticazione cross-device
+    :width: 100%
+
+    Esempio di Esperienza Utente di Autenticazione cross-device
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/Autenticazione-cross-device.pdf
+    :alt: Esempio di Esperienza Utente di Autenticazione cross-device
+    :width: 100%
+
+    Esempio di Esperienza Utente di Autenticazione cross-device
+
+
 Authentication Button
 ~~~~~~~~~~~~~~~~~~~~~~
 
@@ -590,7 +788,7 @@ Di seguito alcuni esempi non normativi di layout dell'Authentication Button:
  
 .. only:: format_html 
 
-  .. figure:: ./images/svg/authentication-button-layout.svg
+  .. figure:: ./images/svg/layout-pulsante-autenticazione.svg
      :alt: Varianti di Authentication Button
      :width: 100% 
 
@@ -598,7 +796,7 @@ Di seguito alcuni esempi non normativi di layout dell'Authentication Button:
 
 .. only:: format_latex  
 
-  .. figure:: ./images/pdf/authentication-button-layout.pdf 
+  .. figure:: ./images/pdf/layout-pulsante-autenticazione.pdf 
      :alt: Varianti di Authentication Button 
      :width: 100% 
 
@@ -678,6 +876,25 @@ Di seguito i requisiti funzionali a supporto dell'Esperienza Utente relativi all
 - L’Utente visualizza eventuali informazioni aggiuntive sui requisiti e/o limitazioni relative allo stato dell’Attestato Elettronico di Attributi e PUÒ chiudere il messaggio oppure procedere con un eventuale azione richiesta dal Fornitore di Attestati Elettronici.
 - L'Utente visualizza all'interno della Vista di Dettaglio apposite Call To Action per eliminare l'Attestato Elettronico o aggiornarlo se in stato non più valido.
 
+Il flusso è rappresentato di seguito con wireframe esemplificativi.
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/Aggiornamento-EAA.svg
+     :alt: Esempio di Esperienza Utente nell'Aggiornamento di un Attestato Elettronico
+     :width: 100%
+
+     Esempio di Esperienza Utente nell'Aggiornamento di un Attestato Elettronico.
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/Aggiornamento-EAA.pdf
+    :alt: Esempio di Esperienza Utente nell'Aggiornamento di un Attestato Elettronico  
+    :width: 100%
+
+    Esempio di Esperienza Utente nell'Aggiornamento di un Attestato Elettronico
+
+
 Revoca degli Attestati Elettronici
 """""""""""""""""""""""""""""""""""
 
@@ -701,6 +918,25 @@ Di seguito i requisiti di Esperienza Utente che il Wallet Provider DEVE garantir
 - l'Utente seleziona la Call to Action per la revoca dell’Attestato Elettronico;
 - l'Utente prende visione di tutte le informazioni rilevanti l’azione in corso e dà il proprio consenso per proseguire oppure lo nega per annullare l'operazione;
 - l’Utente visualizza l'esito positivo della revoca avvenuta.
+
+Il flusso è rappresentato di seguito con wireframe esemplificativi.
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/Revoca-EAA-da-wallet.svg
+     :alt: Esempio di Esperienza Utente nella Revoca di un Attestato Elettronico
+     :width: 100%
+
+     Esempio di Esperienza Utente nella Revoca di un Attestato Elettronico.
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/Revoca-EAA-da-wallet.pdf
+    :alt: Esempio di Esperienza Utente nella Revoca di un Attestato Elettronico 
+    :width: 100%
+
+    Esempio di Esperienza Utente nella Revoca di un Attestato Elettronico
+
 
 Storico degli Attestati Elettronici 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -753,6 +989,25 @@ L'Utente ha la possibilità di riattivare l'Istanza del Wallet riscaricando l'ap
 Una volta riattivata l'Istanza del Wallet, gli Attestati Elettronici di Attributi potranno essere ri-ottenuti avviando nuovamente il processo di ottenimento o di ripristino. Per approfondimenti si rimanda rispettivamente alle sezioni :ref:`functionalities:Ottenimento degli Attestati Elettronici di Attributi` e :ref:`functionalities:Archiviazione e ripristino degli Attestati Elettronici di Attributi`. 
 
 In caso di errori nell'utilizzo dell'Istanza del Wallet, il Fornitore di Wallet DEVE garantire all'Utente la visualizzazione di messaggi coerenti che lo informino e guidino alla loro risoluzione. Per approfondimenti si rimanda alla sezione :ref:`functionalities:Gestione degli errori`. 
+
+Il flusso è rappresentato di seguito con wireframe esemplificativi.
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/Disattivazione-wallet.svg
+     :alt: Esempio di Esperienza Utente nella Disattivazione di un'Istanza del Wallet
+     :width: 100%
+
+     Esempio di Esperienza Utente nella Disattivazione di un'Istanza del Wallet
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/Disattivazione-wallet.pdf
+    :alt: Esempio di Esperienza Utente nella Disattivazione di un'Istanza del Wallet  
+    :width: 100%
+
+    Esempio di Esperienza Utente nella Disattivazione di un'Istanza del Wallet
+
 
 Gestione degli errori 
 ----------------------
