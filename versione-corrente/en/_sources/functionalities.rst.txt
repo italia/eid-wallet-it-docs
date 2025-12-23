@@ -120,7 +120,7 @@ To ensure a consistent identification and representation of the PID across diffe
 
     IT-Wallet ID official graphic asset on a light background 
 
-The IT-Wallet ID Official Resources are provided in the related :re:`official-resources` folder. Additional documentation on the IT-Wallet ID graphic assets is available in the Brand Manual, which will be made available on the official website https://www.wallet.gov.it.  
+The IT-Wallet ID Official Resources are provided in the related :ref:`official-resources:Official Resources` Section. Additional documentation on the IT-Wallet ID graphic assets is available in the Brand Manual, which will be made available on the official website https://www.wallet.gov.it.  
 
 
 Issuance of Electronic Attestations of Attributes
