@@ -166,8 +166,7 @@
 <p>The IT-Wallet ecosystem operates within a federated trust infrastructure where participating entities establish cryptographic trust relationships and maintain compliance with common security standards. This infrastructure provides the foundation for secure Digital Credential operations across the ecosystem participants.</p>
 <p>This section outlines the implementation of the Trust Model in an infrastructure that complies with OpenID Federation 1.0 <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a>. This infrastructure involves a RESTful API for distributing metadata, metadata policies, trust marks, cryptographic public keys and X.509 Certificates, and the revocation status of the participants, also called Federation Entities.</p>
 <p>The Infrastructure of trust facilitates the application of a trust assessment mechanism among the parties defined in the <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>.
-This trust infrastructure works in coordination with the Registry Infrastructure (see <a class="reference internal" href="registry.html#registry-infrastructure"><span class="std std-ref">Registry Infrastructure</span></a>) to enable the entity onboarding processes detailed in <a class="reference internal" href="entity-onboarding.html#entity-onboarding"><span class="std std-ref">Entity Onboarding</span></a>. In particular, it enables the technical   implementation of the onboarding processes described in <a class="reference internal" href="entity-onboarding.html#entity-onboarding"><span class="std std-ref">Entity Onboarding</span></a> and supports the operational scenarios
-illustrated in <a class="reference internal" href="onboarding-high-level.html#onboarding-journey-maps"><span class="std std-ref">Onboarding Journey Maps</span></a>.</p>
+This trust infrastructure works in coordination with the Registry Infrastructure (see <a class="reference internal" href="registry.html#registry-infrastructure"><span class="std std-ref">Registry Infrastructure</span></a>) to enable the entity onboarding processes detailed in <a class="reference internal" href="entity-onboarding.html#entity-onboarding"><span class="std std-ref">Entity Onboarding</span></a>. In particular, it enables the technical   implementation of the onboarding processes described in <a class="reference internal" href="entity-onboarding.html#entity-onboarding"><span class="std std-ref">Entity Onboarding</span></a> and supports the operational scenarios illustrated in <a class="reference internal" href="onboarding-high-level.html#onboarding-journey-maps"><span class="std std-ref">Onboarding Journey Maps</span></a>.</p>
 <p><strong>Onboarding Enablement</strong>: The Trust Infrastructure provides the cryptographic mechanisms that allow new entities (Credential Issuers, Relying Parties, Wallet Providers) to establish verifiable trust relationships during their registration process. Without this infrastructure, entities would not be able to prove their compliance status or operational capabilities to other ecosystem participants.</p>
 <p><strong>Entity Lifecycle Support</strong>: Throughout an entity's operational lifecycle, the Trust Infrastructure maintains up-to-date trust attestations, handles key rotation, manages revocation scenarios, and supports compliance monitoring. This directly supports the lifecycle management procedures detailed in <a class="reference internal" href="entity-onboarding.html#entity-onboarding"><span class="std std-ref">Entity Onboarding</span></a>.</p>
 <p><strong>Registry Infrastructure Integration</strong>: The Trust Infrastructure implements the Federation Registry component of the broader Registry Infrastructure, providing the technical foundation for entity discovery and trust validation that underpins all onboarding procedures.</p>
@@ -184,8 +183,7 @@ illustrated in <a class="reference internal" href="onboarding-high-level.html#on
 <p>In this representation, both the Trust Anchor and the Intermediates assume the role of Registration Authority.</p>
 <section id="federation-roles">
 <h2><span class="section-number">6.1. </span>Federation Roles<a class="headerlink" href="#federation-roles" title="Link to this heading">¶</a></h2>
-<p>All the participants are Federation Entities that MUST be registered by a Registration Body,
-except for Wallet Instances which are End-User's personal devices authenticated by their Wallet Provider.</p>
+<p>All the participants are Federation Entities that MUST be registered by a Registration Body, except for Wallet Instances which are End-User's personal devices authenticated by their Wallet Provider.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The Wallet Instance, as a personal device, is deemed reliable through a verifiable attestation issued and signed by a trusted third party.</p>
@@ -383,9 +381,7 @@ except for Wallet Instances which are End-User's personal devices authenticated 
 </section>
 <section id="federation-api-endpoints">
 <h2><span class="section-number">6.5. </span>Federation API endpoints<a class="headerlink" href="#federation-api-endpoints" title="Link to this heading">¶</a></h2>
-<p>OpenID Federation 1.0 uses RESTful Web Services secured over
-HTTPs. OpenID Federation 1.0 defines which are the web endpoints that the participants MUST make
-publicly available. The table below summarises the endpoints and their scopes.</p>
+<p>OpenID Federation 1.0 uses RESTful Web Services secured over HTTPs. OpenID Federation 1.0 defines which are the web endpoints that the participants MUST make publicly available. The table below summarises the endpoints and their scopes.</p>
 <p>All the endpoints listed below are defined in the <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> specs.</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -444,9 +440,7 @@ publicly available. The table below summarises the endpoints and their scopes.</
 <section id="configuration-of-the-federation">
 <h2><span class="section-number">6.6. </span>Configuration of the Federation<a class="headerlink" href="#configuration-of-the-federation" title="Link to this heading">¶</a></h2>
 <p>The configuration of the federation is published by the Trust Anchor within its Entity Configuration, it is available at the well-known web path corresponding to <strong>.well-known/openid-federation</strong>.</p>
-<p>All the participants in the federation MUST obtain the federation configuration before entering the operational phase, and they
-MUST keep it up-to-date. The federation configuration is the Trust Anchor's Entity Configuration, it contains the
-public keys for signature operations.</p>
+<p>All the participants in the federation MUST obtain the federation configuration before entering the operational phase, and they MUST keep it up-to-date. The federation configuration is the Trust Anchor's Entity Configuration, it contains the public keys for signature operations.</p>
 <p>Below is a non-normative example of a Trust Anchor Entity Configuration, where each parameter is documented in the <a class="reference external" href="OID-FED">OpenID Federation</a> specification:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
@@ -508,8 +502,7 @@ public keys for signature operations.</p>
 <h2><span class="section-number">6.7. </span>Entity Configuration<a class="headerlink" href="#entity-configuration" title="Link to this heading">¶</a></h2>
 <p>The Entity Configuration is the verifiable document that each Federation Entity MUST publish on its own behalf, in the <strong>.well-known/openid-federation</strong> endpoint.</p>
 <p>The Entity Configuration HTTP Response MUST set the media type to <cite>application/entity-statement+jwt</cite>.</p>
-<p>The Entity Configuration MUST be cryptographically signed. The public part of this key MUST be provided in the
-Entity Configuration and within the Subordinate Statement issued by a immediate superior and related to its subordinate Federation Entity.</p>
+<p>The Entity Configuration MUST be cryptographically signed. The public part of this key MUST be provided in the Entity Configuration and within the Subordinate Statement issued by a immediate superior and related to its subordinate Federation Entity.</p>
 <p>The Entity Configuration MAY also contain one or more Trust Marks.</p>
 <p><strong>Role in Onboarding</strong>: New entities publish their Entity Configuration as part of their registration process, declaring their capabilities, supported protocols, and compliance status to the federation. The configuration serves as the entity's initial declaration of its technical readiness and operational scope, enabling other participants to discover and validate its registration status.</p>
 <p><strong>Role in Operations</strong>: During credential operations, Entity Configurations are retrieved by wallets, credential issuers, and relying parties to verify the current operational status, supported capabilities, and compliance attestations of other entities. This enables dynamic discovery of service endpoints, cryptographic keys, and protocol versions required for secure credential exchange.</p>
@@ -551,10 +544,7 @@ Entity Configuration and within the Subordinate Statement issued by a immediate 
 </td>
 </tr>
 <tr class="row-odd"><td><p><strong>metadata</strong></p></td>
-<td><p>JSON Object. Each key of the JSON Object represents a metadata type identifier
-containing JSON Object representing the metadata, according to the metadata
-schema of that type. An Entity Configuration MAY contain more metadata statements, but only one for each type of
-metadata (&lt;<strong>entity_type</strong>&gt;). the metadata types are defined in the section <a class="reference external" href="MetadataTypes">Metadata Types</a>.</p></td>
+<td><p>JSON Object. Each key of the JSON Object represents a metadata type identifier containing JSON Object representing the metadata, according to the metadata schema of that type. An Entity Configuration MAY contain more metadata statements, but only one for each type of metadata (&lt;<strong>entity_type</strong>&gt;). the metadata types are defined in the section <a class="reference external" href="MetadataTypes">Metadata Types</a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -576,8 +566,7 @@ metadata (&lt;<strong>entity_type</strong>&gt;). the metadata types are defined 
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>trust_mark_issuers</strong></p></td>
-<td><p>JSON Array that defines which Federation authorities are considered trustworthy
-for issuing specific Trust Marks, assigned with their unique identifiers.</p></td>
+<td><p>JSON Array that defines which Federation authorities are considered trustworthy for issuing specific Trust Marks, assigned with their unique identifiers.</p></td>
 <td><p><a class="reference internal" href="_images/Eo_circle_red_letter-x.png"><img alt="uncheck-icon" src="_images/Eo_circle_red_letter-x.png" style="width: 25px;" /></a></p></td>
 </tr>
 </tbody>
@@ -600,8 +589,7 @@ for issuing specific Trust Marks, assigned with their unique identifiers.</p></t
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>authority_hints</strong></p></td>
-<td><p>Array of URLs (String). It contains a list of URLs of the immediate superior entities, such as the Trust Anchor or
-an Intermediate, that issues an Subordinate Statement related to this subject.</p></td>
+<td><p>Array of URLs (String). It contains a list of URLs of the immediate superior entities, such as the Trust Anchor or an Intermediate, that issues an Subordinate Statement related to this subject.</p></td>
 <td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>trust_marks</strong></p></td>
@@ -613,8 +601,7 @@ an Intermediate, that issues an Subordinate Statement related to this subject.</
 </section>
 <section id="id1">
 <h3><span class="section-number">6.7.4. </span>Metadata Types<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
-<p>In this section are defined the main metadata types mapped to the roles of the ecosystem,
-giving the references of the metadata protocol for each of these.</p>
+<p>In this section are defined the main metadata types mapped to the roles of the ecosystem, giving the references of the metadata protocol for each of these.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The entries that don't have any reference to a known draft or standard are intended to be defined in this technical reference.</p>
@@ -673,13 +660,9 @@ giving the references of the metadata protocol for each of these.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>In instances where a PID/EAA Provider implements both the Credential Issuer and the Authorization Server,
-it MUST incorporate both
-<code class="docutils literal notranslate"><span class="pre">oauth_authorization_server</span></code> and <code class="docutils literal notranslate"><span class="pre">openid_credential_issuer</span></code> within its metadata types.
+<p>In instances where a PID/EAA Provider implements both the Credential Issuer and the Authorization Server, it MUST incorporate both <code class="docutils literal notranslate"><span class="pre">oauth_authorization_server</span></code> and <code class="docutils literal notranslate"><span class="pre">openid_credential_issuer</span></code> within its metadata types.
 Other implementations may divide the Credential Issuer from the Authorization Server, when this happens the Credential Issuer metadata MUST contain the <cite>authorization_servers</cite> parameters, including the Authorization Server unique identifier.
-Furthermore, should there be a necessity for User Authentication by the Credential Issuer,
-it could be necessary to include the relevant metadata type, either <code class="docutils literal notranslate"><span class="pre">openid_relying_party</span></code>
-or <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code>.</p>
+Furthermore, should there be a necessity for User Authentication by the Credential Issuer, it could be necessary to include the relevant metadata type, either <code class="docutils literal notranslate"><span class="pre">openid_relying_party</span></code> or <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code>.</p>
 </div>
 </section>
 </section>
@@ -790,8 +773,7 @@ The Subordinate Statement MAY contain a metadata policy and the Trust Marks rela
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>Subordinate Statement Signature</strong></p>
-<p>The same considerations and requirements made for the Entity Configuration
-and in relation to the signature mechanisms MUST be applied for the Subordinate Statements.</p>
+<p>The same considerations and requirements made for the Entity Configuration and in relation to the signature mechanisms MUST be applied for the Subordinate Statements.</p>
 </div>
 <section id="subordinate-statement">
 <h3><span class="section-number">6.9.1. </span>Subordinate Statement<a class="headerlink" href="#subordinate-statement" title="Link to this heading">¶</a></h3>
@@ -881,8 +863,7 @@ and in relation to the signature mechanisms MUST be applied for the Subordinate 
 </div>
 <p>Below is a non-normative example of a Trust Chain, composed by a JSON Array containing JWTs, with an Intermediate involved.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
-<span class="w">  </span><span class="s2">&quot;eyJhbGciOiJFUzI1NiIsImtpZCI6Ik5GTTFXVVZpVWxZelVXcExhbWxmY0VwUFJWWTJWWFpJUmpCblFYWm1SSGhLWVVWWVVsZFRRbkEyTkEiLCJ0eXAiOiJhcHBsaWNhdGlvbi9lbnRpdHktc3RhdGVtZW50K2p3dCJ9.eyJleHAiOjE2NDk1OTA2MDIsImlhdCI6MTY0OTQxNzg2MiwiaXNzIjoiaHR0cHM6Ly9ycC5leGFtcGxlLm9yZyIsInN1YiI6Imh0dHBzOi8vcnAuZXhhbXBsZS5vcmciLCJqd2tzIjp7ImtleXMiOlt7Imt0eSI6IkVDIiwia2lkIjoiTkZNMVdVVmlVbFl6VVdwTGFtbGZjRXBQUlZZMlZYWklSakJuUVhabVJIaEtZVVZZVWxkVFFuQTJOQSIsImNydiI6IlAtMjU2IiwieCI6InVzbEMzd2QtcFgzd3o0YlJZbnd5M2x6cGJHWkZoTjk2aEwyQUhBM01RNlkiLCJ5IjoiVkxDQlhGV2xkTlNOSXo4a0gyOXZMUjROMThCa3dHT1gyNnpRb3J1UTFNNCJ9XX0sIm1ldGFkYXRhIjp7Im9wZW5pZF9yZWx5aW5nX3BhcnR5Ijp7ImFwcGxpY2F0aW9uX3R5cGUiOiJ3ZWIiLCJjbGllbnRfaWQiOiJodHRwczovL3JwLmV4YW1wbGUub3JnLyIsImNsaWVudF9yZWdpc3RyYXRpb25fdHlwZXMiOlsiYXV0b21hdGljIl0sImp3a3MiOnsia2V5cyI6W3sia3R5IjoiRUMiLCJraWQiOiJORk0xV1VWaVVsWXpVV3BMYW1sZmNFcFBSVlkyVlhaSVJqQm5RWFptUkhoS1lVVllVbGRUUW5BMk5BIiwiY3J2IjoiUC0yNTYiLCJ4IjoidXNsQzN3ZC1wWDN3ejRiUllud3kzbHpwYkdaRmhOOTZoTDJBSEEzTVE2WSIsInkiOiJWTENCWEZXbGROU05JejhrSDI5dkxSNE4xOEJrd0dPWDI2elFvcnVRMU00In1dfSwiY2xpZW50X25hbWUiOiJOYW1lIG9mIGFuIGV4YW1wbGUgb3JnYW5pemF0aW9uIiwiY29udGFjdHMiOlsib3BzQHJwLmV4YW1wbGUuaXQiXSwiZ3JhbnRfdHlwZXMiOlsicmVmcmVzaF90b2tlbiIsImF1dGhvcml6YXRpb25fY29kZSJdLCJyZWRpcmVjdF91cmlzIjpbImh0dHBzOi8vcnAuZXhhbXBsZS5vcmcvb2lkYy9ycC9jYWxsYmFjay8iXSwicmVzcG9uc2VfdHlwZXMiOlsiY29kZSJdLCJzY29wZSI6ImV1LmV1cm9wYS5lYy5ldWRpdy5waWQuMSBldS5ldXJvcGEuZWMuZXVkaXcucGlkLml0LjEgZW1haWwiLCJzdWJqZWN0X3R5cGUiOiJwYWlyd2lzZSJ9LCJmZWRlcmF0aW9uX2VudGl0eSI6eyJmZWRlcmF0aW9uX3Jlc29sdmVfZW5kcG9pbnQiOiJodHRwczovL3JwLmV4YW1wbGUub3JnL3Jlc29sdmUvIiwib3JnYW5pemF0aW9uX25hbWUiOiJFeGFtcGxlIFJQIiwiaG9tZXBhZ2VfdXJpIjoiaHR0cHM6Ly9ycC5leGFtcGxlLml0IiwicG9saWN5X3VyaSI6Imh0dHBzOi8vcnAuZXhhbXBsZS5pdC9wb2xpY3kiLCJsb2dvX3VyaSI6Imh0dHBzOi8vcnAuZXhhbXBsZS5pdC9zdGF0aWMvbG9nby5zdmciLCJjb250YWN0cyI6WyJ0ZWNoQGV4YW1wbGUuaXQiXX19LCJ0cnVzdF9tYXJrcyI6W3siaWQiOiJodHRwczovL3JlZ2lzdHJ5LmVpZGFzLnRydXN0LWFuY2hvci5leGFtcGxlLmV1L29wZW5pZF9yZWx5aW5nX3BhcnR5L3B1YmxpYy8iLCJ0cnVzdF9tYXJrIjoiZXlKaCBcdTIwMjYifV0sImF1dGhvcml0eV9oaW50cyI6WyJodHRwczovL2ludGVybWVkaWF0ZS5laWRhcy5leGFtcGxlLm9yZyJdfQ.Un315HdckvhYA-iRregZAmL7pnfjQH2APz82blQO5S0sl1JR0TEFp5E1T913g8GnuwgGtMQUqHPZwV6BvTLA8g&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="s2">&quot;eyJhbGciOiJFUzI1NiIsImtpZCI6IlNURkRXV2hKY0dWWFgzQjNSVmRaYWtsQ0xUTnVNa000WTNGNlFUTk9kRXRyZFhGWVlYWjJjWGN0UVEiLCJ0eXAiOiJhcHBsaWNhdGlvbi9lbnRpdHktc3RhdGVtZW50K2p3dCJ9.eyJleHAiOjE2NDk2MjM1NDYsImlhdCI6MTY0OTQ1MDc0NiwiaXNzIjoiaHR0cHM6Ly9pbnRlcm1lZGlhdGUuZWlkYXMuZXhhbXBsZS5vcmciLCJzdWIiOiJodHRwczovL3JwLmV4YW1wbGUub3JnIiwiandrcyI6eyJrZXlzIjpbeyJrdHkiOiJFQyIsImtpZCI6Ik5GTTFXVVZpVWxZelVXcExhbWxmY0VwUFJWWTJWWFpJUmpCblFYWm1SSGhLWVVWWVVsZFRRbkEyTkEiLCJjcnYiOiJQLTI1NiIsIngiOiJ1c2xDM3dkLXBYM3d6NGJSWW53eTNsenBiR1pGaE45NmhMMkFIQTNNUTZZIiwieSI6IlZMQ0JYRldsZE5TTkl6OGtIMjl2TFI0TjE4Qmt3R09YMjZ6UW9ydVExTTQifV19LCJtZXRhZGF0YV9wb2xpY3kiOnsib3BlbmlkX3JlbHlpbmdfcGFydHkiOnsic2NvcGUiOnsic3Vic2V0X29mIjpbImV1LmV1cm9wYS5lYy5ldWRpdy5waWQuMSwgIGV1LmV1cm9wYS5lYy5ldWRpdy5waWQuaXQuMSJdfSwicmVxdWVzdF9hdXRoZW50aWNhdGlvbl9tZXRob2RzX3N1cHBvcnRlZCI6eyJvbmVfb2YiOlsicmVxdWVzdF9vYmplY3QiXX0sInJlcXVlc3RfYXV0aGVudGljYXRpb25fc2lnbmluZ19hbGdfdmFsdWVzX3N1cHBvcnRlZCI6eyJzdWJzZXRfb2YiOlsiUlMyNTYiLCJSUzUxMiIsIkVTMjU2IiwiRVM1MTIiLCJQUzI1NiIsIlBTNTEyIl19fX0sInRydXN0X21hcmtzIjpbeyJpZCI6Imh0dHBzOi8vdHJ1c3QtYW5jaG9yLmV4YW1wbGUuZXUvb3BlbmlkX3JlbHlpbmdfcGFydHkvcHVibGljLyIsInRydXN0X21hcmsiOiJleUpoYiBcdTIwMjYifV19._qt5-T6DahP3TuWa_27klE8I9Z_sPK2FtQlKY6pGMPchbSI2aHXY3aAXDUrObPo4CHtqgg3J2XcrghDFUCFGEQ&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;eyJhbGciOiJFUzI1NiIsImtpZCI6Ik5GTTFXVVZpVWxZelVXcExhbWxmY0VwUFJWWTJWWFpJUmpCblFYWm1SSGhLWVVWWVVsZFRRbkEyTkEiLCJ0eXAiOiJhcHBsaWNhdGlvbi9lbnRpdHktc3RhdGVtZW50K2p3dCJ9.eyJleHAiOjE2NDk1OTA2MDIsImlhdCI6MTY0OTQxNzg2MiwiaXNzIjoiaHR0cHM6Ly9ycC5leGFtcGxlLm9yZyIsInN1YiI6Imh0dHBzOi8vcnAuZXhhbXBsZS5vcmciLCJqd2tzIjp7ImtleXMiOlt7Imt0eSI6IkVDIiwia2lkIjoiTkZNMVdVVmlVbFl6VVdwTGFtbGZjRXBQUlZZMlZYWklSakJuUVhabVJIaEtZVVZZVWxkVFFuQTJOQSIsImNydiI6IlAtMjU2IiwieCI6InVzbEMzd2QtcFgzd3o0YlJZbnd5M2x6cGJHWkZoTjk2aEwyQUhBM01RNlkiLCJ5IjoiVkxDQlhGV2xkTlNOSXo4a0gyOXZMUjROMThCa3dHT1gyNnpRb3J1UTFNNCJ9XX0sIm1ldGFkYXRhIjp7Im9wZW5pZF9yZWx5aW5nX3BhcnR5Ijp7ImFwcGxpY2F0aW9uX3R5cGUiOiJ3ZWIiLCJjbGllbnRfaWQiOiJodHRwczovL3JwLmV4YW1wbGUub3JnLyIsImNsaWVudF9yZWdpc3RyYXRpb25fdHlwZXMiOlsiYXV0b21hdGljIl0sImp3a3MiOnsia2V5cyI6W3sia3R5IjoiRUMiLCJraWQiOiJORk0xV1VWaVVsWXpVV3BMYW1sZmNFcFBSVlkyVlhaSVJqQm5RWFptUkhoS1lVVllVbGRUUW5BMk5BIiwiY3J2IjoiUC0yNTYiLCJ4IjoidXNsQzN3ZC1wWDN3ejRiUllud3kzbHpwYkdaRmhOOTZoTDJBSEEzTVE2WSIsInkiOiJWTENCWEZXbGROU05JejhrSDI5dkxSNE4xOEJrd0dPWDI2elFvcnVRMU00In1dfSwiY2xpZW50X25hbWUiOiJOYW1lIG9mIGFuIGV4YW1wbGUgb3JnYW5pemF0aW9uIiwiY29udGFjdHMiOlsib3BzQHJwLmV4YW1wbGUuaXQiXSwiZ3JhbnRfdHlwZXMiOlsicmVmcmVzaF90b2tlbiIsImF1dGhvcml6YXRpb25fY29kZSJdLCJyZWRpcmVjdF91cmlzIjpbImh0dHBzOi8vcnAuZXhhbXBsZS5vcmcvb2lkYy9ycC9jYWxsYmFjay8iXSwicmVzcG9uc2VfdHlwZXMiOlsiY29kZSJdLCJzY29wZSI6ImV1LmV1cm9wYS5lYy5ldWRpdy5waWQuMSBldS5ldXJvcGEuZWMuZXVkaXcucGlkLml0LjEgZW1haWwiLCJzdWJqZWN0X3R5cGUiOiJwYWlyd2lzZSJ9LCJmZWRlcmF0aW9uX2VudGl0eSI6eyJmZWRlcmF0aW9uX3Jlc29sdmVfZW5kcG9pbnQiOiJodHRwczovL3JwLmV4YW1wbGUub3JnL3Jlc29sdmUvIiwib3JnYW5pemF0aW9uX25hbWUiOiJFeGFtcGxlIFJQIiwiaG9tZXBhZ2VfdXJpIjoiaHR0cHM6Ly9ycC5leGFtcGxlLml0IiwicG9saWN5X3VyaSI6Imh0dHBzOi8vcnAuZXhhbXBsZS5pdC9wb2xpY3kiLCJsb2dvX3VyaSI6Imh0dHBzOi8vcnAuZXhhbXBsZS5pdC9zdGF0aWMvbG9nby5zdmciLCJjb250YWN0cyI6WyJ0ZWNoQGV4YW1wbGUuaXQiXX19LCJ0cnVzdF9tYXJrcyI6W3siaWQiOiJodHRwczovL3JlZ2lzdHJ5LmVpZGFzLnRydXN0LWFuY2hvci5leGFtcGxlLmV1L29wZW5pZF9yZWx5aW5nX3BhcnR5L3B1YmxpYy8iLCJ0cnVzdF9tYXJrIjoiZXlKaCBcdTIwMjYifV0sImF1dGhvcml0eV9oaW50cyI6WyJodHRwczovL2ludGVybWVkaWF0ZS5laWRhcy5leGFtcGxlLm9yZyJdfQ.Un315HdckvhYA-iRregZAmL7pnfjQH2APz82blQO5S0sl1JR0TEFp5E1T913g8GnuwgGtMQUqHPZwV6BvTLA8g&quot;</span><span class="p">,</span><span class="s2">&quot;eyJhbGciOiJFUzI1NiIsImtpZCI6IlNURkRXV2hKY0dWWFgzQjNSVmRaYWtsQ0xUTnVNa000WTNGNlFUTk9kRXRyZFhGWVlYWjJjWGN0UVEiLCJ0eXAiOiJhcHBsaWNhdGlvbi9lbnRpdHktc3RhdGVtZW50K2p3dCJ9.eyJleHAiOjE2NDk2MjM1NDYsImlhdCI6MTY0OTQ1MDc0NiwiaXNzIjoiaHR0cHM6Ly9pbnRlcm1lZGlhdGUuZWlkYXMuZXhhbXBsZS5vcmciLCJzdWIiOiJodHRwczovL3JwLmV4YW1wbGUub3JnIiwiandrcyI6eyJrZXlzIjpbeyJrdHkiOiJFQyIsImtpZCI6Ik5GTTFXVVZpVWxZelVXcExhbWxmY0VwUFJWWTJWWFpJUmpCblFYWm1SSGhLWVVWWVVsZFRRbkEyTkEiLCJjcnYiOiJQLTI1NiIsIngiOiJ1c2xDM3dkLXBYM3d6NGJSWW53eTNsenBiR1pGaE45NmhMMkFIQTNNUTZZIiwieSI6IlZMQ0JYRldsZE5TTkl6OGtIMjl2TFI0TjE4Qmt3R09YMjZ6UW9ydVExTTQifV19LCJtZXRhZGF0YV9wb2xpY3kiOnsib3BlbmlkX3JlbHlpbmdfcGFydHkiOnsic2NvcGUiOnsic3Vic2V0X29mIjpbImV1LmV1cm9wYS5lYy5ldWRpdy5waWQuMSwgIGV1LmV1cm9wYS5lYy5ldWRpdy5waWQuaXQuMSJdfSwicmVxdWVzdF9hdXRoZW50aWNhdGlvbl9tZXRob2RzX3N1cHBvcnRlZCI6eyJvbmVfb2YiOlsicmVxdWVzdF9vYmplY3QiXX0sInJlcXVlc3RfYXV0aGVudGljYXRpb25fc2lnbmluZ19hbGdfdmFsdWVzX3N1cHBvcnRlZCI6eyJzdWJzZXRfb2YiOlsiUlMyNTYiLCJSUzUxMiIsIkVTMjU2IiwiRVM1MTIiLCJQUzI1NiIsIlBTNTEyIl19fX0sInRydXN0X21hcmtzIjpbeyJpZCI6Imh0dHBzOi8vdHJ1c3QtYW5jaG9yLmV4YW1wbGUuZXUvb3BlbmlkX3JlbHlpbmdfcGFydHkvcHVibGljLyIsInRydXN0X21hcmsiOiJleUpoYiBcdTIwMjYifV19._qt5-T6DahP3TuWa_27klE8I9Z_sPK2FtQlKY6pGMPchbSI2aHXY3aAXDUrObPo4CHtqgg3J2XcrghDFUCFGEQ&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="s2">&quot;eyJhbGciOiJFUzI1NiIsImtpZCI6ImVXa3pUbWt0WW5kblZHMWxhMjU1ZDJkQ2RVZERSazQwUWt0WVlVMWFhRFZYT1RobFpHdFdXSGQ1WnciLCJ0eXAiOiJhcHBsaWNhdGlvbi9lbnRpdHktc3RhdGVtZW50K2p3dCJ9.eyJleHAiOjE2NDk2MjM1NDYsImlhdCI6MTY0OTQ1MDc0NiwiaXNzIjoiaHR0cHM6Ly90cnVzdC1hbmNob3IuZXhhbXBsZS5ldSIsInN1YiI6Imh0dHBzOi8vaW50ZXJtZWRpYXRlLmVpZGFzLmV4YW1wbGUub3JnIiwiandrcyI6eyJrZXlzIjpbeyJrdHkiOiJFQyIsImtpZCI6IlNURkRXV2hKY0dWWFgzQjNSVmRaYWtsQ0xUTnVNa000WTNGNlFUTk9kRXRyZFhGWVlYWjJjWGN0UVEiLCJjcnYiOiJQLTI1NiIsIngiOiJyQl9BOGdCUnh5NjhVTkxZRkZLR0ZMR2VmWU5XYmgtSzh1OS1GYlQyZkZJIiwieSI6IlNuWVk2Y3NjZnkxcjBISFhLTGJuVFZsamFndzhOZzNRUEs2WFVoc2UzdkUifV19LCJ0cnVzdF9tYXJrcyI6W3siaWQiOiJodHRwczovL3RydXN0LWFuY2hvci5leGFtcGxlLmV1L2ZlZGVyYXRpb25fZW50aXR5L3RoYXQtcHJvZmlsZSIsInRydXN0X21hcmsiOiJleUpoYiBcdTIwMjYifV19.r3uoi-U0tx0gDFlnDdITbcwZNUpy7M2tnh08jlD-Ej9vMzWMCXOCCuwIn0ZT0jS4M_sHneiG6tLxRqj-htI70g&quot;</span>
 <span class="p">]</span>
 </pre></div>
@@ -905,8 +886,7 @@ and in relation to the signature mechanisms MUST be applied for the Subordinate 
 <p>The offline flows do not allow for real-time evaluation of an Entity's status, such as its revocation. At the same time, using short-lived Trust Chains enables the attainment of trust attestations compatible with the required revocation administrative protocols (e.g., a revocation must be propagated in less than 24 hours, thus the Trust Chain must not be valid for more than that period).</p>
 <section id="offline-wallet-trust-attestation">
 <h4><span class="section-number">6.11.1.1. </span>Offline Wallet Trust Attestation<a class="headerlink" href="#offline-wallet-trust-attestation" title="Link to this heading">¶</a></h4>
-<p>Given that the Wallet Instance cannot publish its metadata online at the <em>.well-known/openid-federation</em> endpoint,
-it MUST obtain a Wallet Attestation issued by its Wallet Provider. The Wallet Attestation MUST contain all the relevant information regarding the security capabilities of the Wallet Instance and its protocol related configuration. It SHOULD contain the Trust Chain related to its issuer (Wallet Provider).</p>
+<p>Given that the Wallet Instance cannot publish its metadata online at the <em>.well-known/openid-federation</em> endpoint, it MUST obtain a Wallet Attestation issued by its Wallet Provider. The Wallet Attestation MUST contain all the relevant information regarding the security capabilities of the Wallet Instance and its protocol related configuration. It SHOULD contain the Trust Chain related to its issuer (Wallet Provider).</p>
 </section>
 <section id="offline-relying-party-metadata">
 <h4><span class="section-number">6.11.1.2. </span>Offline Relying Party Metadata<a class="headerlink" href="#offline-relying-party-metadata" title="Link to this heading">¶</a></h4>
@@ -918,9 +898,7 @@ it MUST obtain a Wallet Attestation issued by its Wallet Provider. The Wallet At
 </section>
 <section id="trust-chain-fast-renewal">
 <h3><span class="section-number">6.11.2. </span>Trust Chain Fast Renewal<a class="headerlink" href="#trust-chain-fast-renewal" title="Link to this heading">¶</a></h3>
-<p>The Trust Chain fast renewal method offers a streamlined way to maintain the validity of a trust chain without undergoing the full discovery
-process again. It's particularly useful for quickly updating Trust Relationships when minor changes occur or when the
-Trust Chain is close to expiration but the overall structure of the federation hasn't changed significantly.</p>
+<p>The Trust Chain fast renewal method offers a streamlined way to maintain the validity of a trust chain without undergoing the full discovery process again. It's particularly useful for quickly updating Trust Relationships when minor changes occur or when the Trust Chain is close to expiration but the overall structure of the federation hasn't changed significantly.</p>
 <p>The Trust Chain fast renewal process is initiated by fetching the leaf's Entity Configuration anew. However, unlike the federation discovery process that may involve fetching Entity Configurations starting from the authority hints, the fast renewal focuses on directly obtaining the Subordinate Statements. These statements are requested using the <cite>source_endpoint</cite> provided within them, which points to the location where the statements can be fetched.</p>
 </section>
 </section>
@@ -952,7 +930,7 @@ Trust Chain is close to expiration but the overall structure of the federation h
 <li><p><strong>Federation Entity Discovery</strong>: Wallet Instances and Relying Parties MUST verify the identity of the Issuer using the Federation Entity Discovery process defined in <a class="reference internal" href="#federation-discovery"><span class="std std-ref">Federation Discovery</span></a>. This involves querying federation endpoints to confirm the Issuer's validity status and compliance with the Trust Framework. Historical event data from the Federation Subordinate Events Endpoint can provide additional context about the entity's lifecycle and compliance history.</p></li>
 <li><p><strong>Trust Chains</strong>: Wallet Instances and Relying Parties evaluate Issuer's Trust Chains using the mechanisms defined in <a class="reference internal" href="#trust-chain"><span class="std std-ref">Trust Chain</span></a>. Trust Chains may be provided statically or built through a Federation Entity Discovery process, to ensure that the entity requesting the Credential is part of a recognized and trusted federation.</p></li>
 <li><p><strong>Trust Marks Evaluation</strong>: Trust Marks are assessed to ensure ongoing compliance with federation policies. These marks indicate adherence to specific standards and practices required by the federation.</p></li>
-<li><p><strong>Policy Evaluation</strong>: Wallet Instances and Relying Parties MUST check that the Credential Issuer is allowed in the issuance of the Credential of their interest. Metadata, metadata policies and Trust Marks are used for the implementation of these checks.</p></li>
+<li><p><strong>Policy Evaluation</strong>: Wallet Instances and Relying Parties MUST check that the Credential Issuer is allowed in the issuance of the Credential of their interest. Metadata, metadata policies and Trust Marks are used for the implementation of these checks (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-issuance-testcases"><span class="std std-ref">WP_050a</span></a>).</p></li>
 </ul>
 <p>In the process represented in the sequence diagram below, the Wallet Instance uses the Federation API to discover and collect all the Credential Issuers enabled within the federation. The discovery process produces the Trust Chain. When the Trust Chain is provided statically within a signed request or Credential, it only REQUIRES to be refreshed when the internet connection is available, while it MUST be refreshed when the statically provided Trust Chain results as expired.</p>
 <figure class="align-default" id="id4">
@@ -977,9 +955,9 @@ The Trust Evaluation mechanisms are distinct from protocol flows and are impleme
 <p>Trust Evaluations are conducted as follows:</p>
 <ul class="simple">
 <li><p><strong>Federation Entity Discovery</strong>: When the Wallet Instance receives a signed request issued by a Relying Party, the Wallet Instance MUST verify the identity of the Relying Party using the Federation Entity Discovery process defined in <a class="reference internal" href="#federation-discovery"><span class="std std-ref">Federation Discovery</span></a>. This involves querying federation endpoints to confirm the Relying Party's validity status and compliance with the Trust Framework and evaluating the request signature using the cryptographic material obtained from the Trust Chain. Historical event data from the Federation Subordinate Events Endpoint can provide additional context about the Relying Party's lifecycle and compliance history.</p></li>
-<li><p><strong>Trust Chains</strong>: The Wallet Instance evaluates the Relying Party's Trust Chains using the mechanisms defined in <a class="reference internal" href="#trust-chain"><span class="std std-ref">Trust Chain</span></a>. Trust Chains may be provided statically or built through a Federation Entity Discovery process, to ensure that the Relying Party is part of a recognized and trusted federation.</p></li>
-<li><p><strong>Trust Marks Evaluation</strong>: Trust Marks are assessed to ensure ongoing compliance with federation policies. These marks indicate adherence to specific standards and practices required by the federation. Relying Parties MAY include Trust Marks in their Entity Configuration to signal administrative properties and compliance to specific profiles, such as the grants in interacting with under-age users.</p></li>
-<li><p><strong>Policy Evaluation</strong>: The Wallet Instance MUST verify that the Relying Party is authorized to request the Credential of interest. Metadata, metadata policies, and Trust Marks are used to implement these checks.</p></li>
+<li><p><strong>Trust Chains</strong>: The Wallet Instance evaluates the Relying Party's Trust Chains using the mechanisms defined in <a class="reference internal" href="#trust-chain"><span class="std std-ref">Trust Chain</span></a>. Trust Chains may be provided statically or built through a Federation Entity Discovery process, to ensure that the Relying Party is part of a recognized and trusted federation. This involves checking the Trust Chain from the root authority (Trust Anchor) to the Relying Party (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_079</span></a>).</p></li>
+<li><p><strong>Trust Marks Evaluation</strong>: Trust Marks are assessed to ensure ongoing compliance with federation policies. These marks indicate adherence to specific standards and practices required by the federation. Relying Parties MAY include Trust Marks in their Entity Configuration to signal administrative properties and compliance to specific profiles, such as the grants in interacting with under-age users (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_080</span></a>).</p></li>
+<li><p><strong>Policy Evaluation</strong>: The Wallet Instance MUST verify that the Relying Party is authorized to request the Credential of interest. Metadata, metadata policies, and Trust Marks are used to implement these checks (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_087</span></a>).</p></li>
 </ul>
 <p>In the process depicted in the sequence diagram below, the Wallet Instance uses the Federation API to discover and collect all the Relying Parties enabled within the federation. The discovery process produces the Trust Chain. When the Trust Chain is provided statically within a signed request, it only needs to be refreshed when an internet connection is available, but it MUST be refreshed if the statically provided Trust Chain is expired.</p>
 <figure class="align-default" id="id5">

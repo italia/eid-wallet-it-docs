@@ -1,4 +1,4 @@
-.. _presentation-test-matrix:
+.. include:: ../common/common_definitions.rst
 
 Matrice di Test per i Verificatori di Credenziali
 -------------------------------------------------

@@ -5,7 +5,7 @@
 La Relying Party DEVE esporre una serie di endpoint per gestire il ciclo di vita delle App di Verifica che utilizzano un servizio di backend remoto fornito dal loro Backend del Provider di Relying Party. Questi endpoint supportano i flussi di presentazione in prossimità fornendo generazione di nonce, registrazione delle chiavi hardware, convalida dell'integrità e rilascio del Certificato di Accesso. I dettagli specifici della loro implementazione sono lasciati alla discrezione della Relying Party.
 
 .. note::
-  I test relativi agli endpoint della Relying Party sono definiti nella matrice di test per presentazione remota (:ref:`test-plans-remote-presentation:Matrice di Test per la Presentazione di Credenziali Remota`) e prossimità (:ref:`test-plans-proximity-presentation:Matrice di Test per la Presentazione di Credenziali in Prossimità`).
+  I test relativi agli endpoint della Relying Party sono definiti nella matrice di test per presentazione remota (:ref:`test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto`) e prossimità (:ref:`test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità`).
 
 
 Endpoint di Federazione della Relying Party
@@ -24,7 +24,7 @@ Ulteriori dettagli sulla Richiesta e Risposta Nonce sono forniti rispettivamente
 Endpoint di Inizializzazione dell'App di Verifica della Relying Party
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-L'Endpoint di Inizializzazione dell'App di Verifica consente l'inizializzazione delle App di Verifica, consistente nella registrazione di una coppia di Cryptographic Hardware Keys a lunga durata, memorizzate in modo sicuro (:ref:`test-plans-proximity-presentation`).
+L'Endpoint di Inizializzazione dell'App di Verifica consente l'inizializzazione delle App di Verifica, consistente nella registrazione di una coppia di Cryptographic Hardware Keys a lunga durata, memorizzate in modo sicuro (:ref:`test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità`).
 
 Ulteriori dettagli sulla Richiesta e Risposta di Inizializzazione dell'App di Verifica sono forniti rispettivamente nelle Sezioni :ref:`mobile-application-instance:Richiesta di Inizializzazione dell'Istanza dell'Applicazione Mobile` e :ref:`mobile-application-instance:Risposta di Inizializzazione dell'Istanza dell'Applicazione Mobile`.
 
@@ -226,8 +226,8 @@ La seguente tabella elenca gli HTTP Status Code e i relativi codici di errore ch
       - ``temporarily_unavailable``
       - La richiesta non può essere soddisfatta perché l'Endpoint è temporaneamente non disponibile (ad esempio, a causa di manutenzione o sovraccarico).
 
-Endpoint di Cancellazione della Relying Party
-"""""""""""""""""""""""""""""""""""""""""""""
+Endpoint di Cancellazione della Relying Party del Provider Backend
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 L'Endpoint di Cancellazione consente alle Istanze di Wallet di richiedere la cancellazione degli attributi presentati alla Relying Party, supportando i diritti di privacy dell'utente e la conformità normativa.
 

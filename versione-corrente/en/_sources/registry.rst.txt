@@ -4,21 +4,21 @@
 Registry Infrastructure
 ==========================
 
-The IT-Wallet ecosystem operates through a registry infrastructure that provides standardized data definitions, entity registration, and credential discovery capabilities. The registry system consists of multiple interconnected components that support the complete lifecycle of digital credential operations from entity onboarding to credential presentation. 
+The IT-Wallet ecosystem operates through a registry infrastructure that provides standardized data definitions, entity registration, and Credential discovery capabilities. The registry system consists of multiple interconnected components that support the complete lifecycle of digital Credential operations from entity onboarding to Credential presentation. 
 
-The registry architecture addresses semantic standardization, federation trust management, and credential discovery requirements through specialized registry components that ensure interoperability and compliance across the ecosystem.
+The registry architecture addresses semantic standardization, federation trust management, and Credential discovery requirements through specialized registry components that ensure interoperability and compliance across the ecosystem.
 
 Registry Architecture Overview
 ------------------------------
 
 The IT-Wallet System Register comprises six main components:
 
-1. **Claims Registry**: Standardized semantic definitions for individual credential attributes, data types, and validation rules.
+1. **Claims Registry**: Standardized semantic definitions for individual Credential attributes, data types, and validation rules.
 2. **Authentic Source (AS) Registry**: Catalog of registered data providers with their declared capabilities and available claims.
 3. **Federation Registry**: Authoritative list of trusted entities participating in the federation with their technical configurations.
-4. **Digital Credentials Catalog**: Public discovery mechanism for available credential types with their metadata and issuance information.
+4. **Digital Credentials Catalog**: Public discovery mechanism for available Credential types with their metadata and issuance information.
 5. **Schema Registry**: Authoritative list of Credential Schemas.
-6. **Taxonomy**: Hierarchical classification system organizing credentials by domain and purpose.
+6. **Taxonomy**: Hierarchical classification system organizing Credentials by domain and purpose.
 
 These registry components are interconnected and maintained by the Supervisory Body to ensure consistency, security, and regulatory compliance across the ecosystem.
 
@@ -86,11 +86,11 @@ JWT payload structure (when decoded):
 Claims Registry
 ---------------
 
-The **Claims Registry** provides standardized semantic definitions for individual Credential attributes, data types, and validation rules. This registry serves as the semantic foundation for credential attribute standardization across the IT-Wallet ecosystem, working in coordination with the Taxonomy component for hierarchical classification.
+The **Claims Registry** provides standardized semantic definitions for individual Credential attributes, data types, and validation rules. This registry serves as the semantic foundation for Credential attribute standardization across the IT-Wallet ecosystem, working in coordination with the Taxonomy component for hierarchical classification.
 
 The Supervisory Body MUST maintain the Claims Registry to ensure semantic consistency and regulatory compliance across the ecosystem. The registry MUST contain:
 
-  - **Standardised Claims**: Semantic definitions for all credential attributes with data types and validation rules.
+  - **Standardised Claims**: Semantic definitions for all Credential attributes with data types and validation rules.
   - **Interoperability Mappings**: Alias definitions for claims that use different terminology across standards (e.g., ISO18013-5 ``place_of_birth`` mapped to canonical ``birth_place``).
   - **Data Formats**: Standardised data types (string, date, numeric, boolean, email, url, image, array, object) with validation patterns.
 
@@ -98,12 +98,12 @@ The Claims Registry MUST ensure:
 
   - **Semantic Consistency**: Prevents conflicts between duplicate or overlapping claims across the ecosystem.
   - **Cross-border Interoperability**: Ensures EU compliance and consistent claim interpretation.
-  - **Schema Validation**: Provides authoritative definitions for claim validation across all credential scenarios.
+  - **Schema Validation**: Provides authoritative definitions for claim validation across all Credential scenarios.
   - **Regulatory Alignment**: Coordinates with national and EU regulatory framework.
   - **Credential-Agnostic Scenarios**: Supports scenarios where **user convenience** and **business operational efficiency** are prioritized over **regulatory compliance** and **audit trails**.
 
 .. note::
-  The Claims Registry defines semantic properties of individual attributes, but MUST NOT specify selective disclosure capabilities. Selective disclosure depends on credential format implementations (SD-JWT, mDocs), issuer technical configurations, and presentation context. These capabilities are specified at the credential type level within the Digital Credentials Catalog and implemented during credential presentation flows.
+  The Claims Registry defines semantic properties of individual attributes, but MUST NOT specify selective disclosure capabilities. Selective disclosure depends on Credential format implementations (SD-JWT, mDocs), issuer technical configurations, and presentation context. These capabilities are specified at the Credential type level within the Digital Credentials Catalog and implemented during Credential presentation flows.
 
 
 Claims Registry Usage
@@ -114,12 +114,12 @@ The Claims Registry MUST support the complete ecosystem lifecycle:
 **During Onboarding Process**:
 
   - **AS Registration**: Authentic Sources declare available claims from standardized registry during capability registration.
-  - **CI Registration**: Credential Issuers select AS entities based on required claims and register credential types for catalog publication.
-  - **RP Registration**: Relying Parties specify authorization requirements using domains/purposes for specific credential types and/or User's attributes.
+  - **CI Registration**: Credential Issuers select AS entities based on required claims and register Credential types for catalog publication.
+  - **RP Registration**: Relying Parties specify authorization requirements using domains/purposes for specific Credential types and/or User's attributes.
 
 **During Operational Activities**:
 
-  - **Credential Issuance**: Claims definitions ensure consistent data representation across different credential types.
+  - **Credential Issuance**: Claims definitions ensure consistent data representation across different Credential types.
   - **Presentation Requests**: RPs reference claims for schema validation and authorization verification in both credential-specific and credential-agnostic scenarios.
   - **Policy Enforcement**: Authorization policies leverage domain/purpose classifications for access control.
 
@@ -137,17 +137,17 @@ A non-normative example of Claims Registry structure is given below:
 Authentic Source Registry
 -------------------------
 
-The Supervisory Body MUST maintain the Authentic Source Registry to enable coordinated data access and credential issuance across the ecosystem. The AS Registry MUST contain at least:
+The Supervisory Body MUST maintain the Authentic Source Registry to enable coordinated data access and Credential issuance across the ecosystem. The AS Registry MUST contain at least:
 
   - **Organization Information**: Legal entity details, regulatory status, and authoritative role within specific domains.
   - **Data Capabilities**: Declared claims availability referencing standardized definitions from the Claims Registry with corresponding Taxonomy classifications.
   - **Integration Methods**: Technical access mechanisms (PDND for public AS, custom APIs for private AS).
-  - **Intended Purposes**: Supported credential types and business contexts for AS-CI coordination.
+  - **Intended Purposes**: Supported Credential types and business contexts for AS-CI coordination.
   - **Data Quality Assurance**: Authoritative status, update frequency, and audit trail capabilities.
 
 The AS Registry MUST ensure:
 
-  - **Coordinated Data Access**: Enables CI discovery of appropriate data from Authentic Sources for credential issuance.
+  - **Coordinated Data Access**: Enables CI discovery of appropriate data from Authentic Sources for Credential issuance.
   - **AS-CI Integration**: Facilitates approval workflows and data access coordination between entities.
   - **Quality Assurance**: Maintains authoritative status and data reliability across different domains.
   - **Regulatory Compliance**: Supports public administration transparency and private sector coordination requirements.
@@ -161,12 +161,12 @@ Authentic Source Registry Usage
 The AS Registry supports ecosystem coordination throughout the operational lifecycle:
 
 **During Onboarding Process**:
-  - **AS Self-Declaration**: Authentic Sources register capabilities before any credential types exist in the catalog.
-  - **CI Discovery**: Credential Issuers search for AS entities based on required claims and intended credential types.
+  - **AS Self-Declaration**: Authentic Sources register capabilities before any Credential types exist in the catalog.
+  - **CI Discovery**: Credential Issuers search for AS entities based on required claims and intended Credential types.
   - **Approval Coordination**: AS entities evaluate and approve CI access requests for data provision.
 
 **During Operational Activities**:
-  - **Data Source Resolution**: CI systems reference AS Registry for real-time data access during credential issuance.
+  - **Data Source Resolution**: CI systems reference AS Registry for real-time data access during Credential issuance.
   - **Quality Validation**: AS Registry information supports data origin verification and audit requirements.
   - **Integration Management**: Technical endpoints and access methods enable standardized AS-CI communication.
 
@@ -179,7 +179,7 @@ The AS Registry architecture supports different coordination patterns reflecting
 
     - **PDND Integration**: ``"integration_method": "pdnd_eservice"`` for standardized government data access.
     - **Regulatory Compliance**: Full transparency requirements with public catalog publication.
-    - **Audit Requirements**: Complete traceability for government credential issuance processes.
+    - **Audit Requirements**: Complete traceability for government Credential issuance processes.
 
   2. **Private Sector AS** (Flexible Integration): Private entities provide specialized data through custom arrangements:
 
@@ -192,7 +192,7 @@ This approach enables both **regulatory transparency** for public administration
 AS Registry Structure
 ^^^^^^^^^^^^^^^^^^^^^
 
-During registration, Authentic Sources declare their capabilities before credential types exist in the catalog. This declaration establishes the foundation for subsequent CI registration and credential type creation.
+During registration, Authentic Sources declare their capabilities before Credential types exist in the catalog. This declaration establishes the foundation for subsequent CI registration and Credential type creation.
 
 AS Unique Identifier Schema
 """""""""""""""""""""""""""
@@ -573,14 +573,14 @@ Digital Credentials recognized within the IT-Wallet ecosystem are hierarchically
 
 Each Credential MUST specify domains and purposes to enable both **Credential-Specific Scenarios** and **Credential-Agnostic Scenarios** according to Relying Party's requirements and presentation request patterns:
 
-  1. **Credential-Specific Scenarios** (Primary for Government/Regulated Sectors): RPs request specific credential types for compliance and audit requirements, including for example:
+  1. **Credential-Specific Scenarios** (Primary for Government/Regulated Sectors): RPs request specific Credential types for compliance and audit requirements, including for example:
 
     - **Government Services**: ``"vct_values": ["urn:eudi:pid:it:1"]`` for PID-specific identity verification.
     - **Police Controls**: ``"docType": "org.iso.18013.5.1.mDL"`` for driving license verification.
-    - **Banking KYC**: Specific credential types mandated by financial regulations.
+    - **Banking KYC**: Specific Credential types mandated by financial regulations.
     - **Healthcare Services**: ``"vct_values": ["urn:eudi:european_disability_card:it:1"]`` for EU-compliant disability benefit access.
 
-  2. **Credential-Agnostic Scenarios** (Typical for Private Business): RPs request specific claims regardless of credential source for operational efficiency, such as:
+  2. **Credential-Agnostic Scenarios** (Typical for Private Business): RPs request specific claims regardless of Credential source for operational efficiency, such as:
 
     - **E-commerce Delivery**: Any credential, among those to which he is authorized to access, containing ``given_name``, ``family_name``, ``address`` for shipping.
     - **Subscriptions**: Any credential, among those to which he is authorized to access, with ``given_name``, ``email`` for personalization.
@@ -644,6 +644,7 @@ The JWS payload contains the following parameters:
 Each element of the ``credentials`` array contains at least the following information:
 
 
+.. _table_catalog_parameters_first_level:
 .. list-table:: First-level Fields of Each Credential Entry
   :class: longtable
   :header-rows: 1
@@ -752,13 +753,13 @@ Taxonomy
 
 The **Taxonomy** provides the semantic foundation for Digital Credential interoperability by maintaining the authoritative vocabulary for organizing Credentials within the IT-Wallet ecosystem. The taxonomy is neutral with respect to the Credential format. 
 
-The taxonomy provides, in a single resource, the hierarchical classification system organizing domains and purposes that can be applied to credential types, supporting authorization policy evaluation and ecosystem-wide standardization.
+The taxonomy provides, in a single resource, the hierarchical classification system organizing domains and purposes that can be applied to Credential types, supporting authorization policy evaluation and ecosystem-wide standardization.
 
 **Taxonomy Objectives:**
 
 1. **Semantic Foundation**: Establish standardized vocabulary for domains and purposes across the ecosystem
 2. **Policy Framework**: Enable structured authorization decisions based on hierarchical classification
-3. **Interoperability**: Ensure consistent interpretation of credential classifications
+3. **Interoperability**: Ensure consistent interpretation of Credential classifications
 4. **Extensibility**: Support evolution of the ecosystem with new domains and purposes
 5. **Cross-Border Compliance**: Align with EU regulatory requirements and international standards
 
@@ -767,7 +768,7 @@ The taxonomy provides, in a single resource, the hierarchical classification sys
 The taxonomy maintains a two-level hierarchical structure:
 
 - **Domains**: Top-level classification representing broad functional areas (e.g., IDENTITY, AUTHORIZATION, FINANCIAL)
-- **Purposes**: Specific credential use cases within each domain (e.g., PERSON_IDENTIFICATION, DRIVING_LICENSE, BANK_ACCOUNT) for which credentials can be used
+- **Purposes**: Specific Credential use cases within each domain (e.g., PERSON_IDENTIFICATION, DRIVING_LICENSE, BANK_ACCOUNT) for which Credentials can be used
 
 **Localization Support:**
 
@@ -879,7 +880,7 @@ A non-normative example of the Schema Registry payload:
 Registry Integration and Cross-References
 ------------------------------------------
 
-The registry components are interconnected and work together to support the complete credential ecosystem:
+The registry components are interconnected and work together to support the complete Credential ecosystem:
 
 1. **AS Registry** ↔ **Taxonomy**: AS entities declare capabilities using taxonomy classifications for standardized categorization.
 2. **AS Registry** ↔ **Catalog**: Credential types reference AS capabilities for data source validation.
@@ -953,4 +954,5 @@ This journey describes how a **Wallet Instance** and a **Relying Party (RP)** in
   * The RP performs the final check to ensure that the attributes presented comply with the specific requirements of the initial request and authorization policy.
 
 4.  **Acceptance or Rejection**: Based on cryptographic validation, schema compliance, and policy-based authorization, the RP accepts or rejects the Credential for service access.
+
 

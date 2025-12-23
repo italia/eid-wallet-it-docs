@@ -228,7 +228,7 @@ The ``OAuth-Client-Attestation`` is signed using the private key bound to the Wa
    2. It MUST ensure the Authorization ``code`` is valid and has not been previously used (:rfc:`6749`).
    3. It MUST ensure the ``redirect_uri`` matches the value included in the previous Request Object (see Section 3.1.3.1. of [`OIDC`_]).
    4. It MUST validate the DPoP Proof JWT, according to (:rfc:`9449`) Section 4.3.
-   5. It MUST verify the ``code_verifier`` parameter according to the PKCE mechanism, ensuring it matches the ``code_challenge`` associated with the authorization code as defined in Section 4.6 of :rfc:`7636`; otherwise, the request MUST be rejected (:ref:`CI_061a <credential-issuer-test-matrix>`).
+   5. It MUST verify the ``code_verifier`` parameter according to the PKCE mechanism, ensuring it matches the ``code_challenge`` associated with the authorization code as defined in Section 4.6 of :rfc:`7636`; otherwise, the request MUST be rejected (:ref:`CI_061a <test-plans-credential-issuer:Credential Issuer Test Matrix>`).
 
 .. code-block:: http
 
@@ -610,7 +610,7 @@ The following diagram describes the Digital Credential re-issuance flow.
 
 **Step 1**: The flow starts when the User opens the Wallet Instance: this step MAY be triggered either by a notification sent by the Credential Issuer (using e.g., one of the out-of-band communication contacts registered during the Issuance flow).
 
-**Step 2**: The Wallet Instance MUST check the status of any stored Digital Credential, by retrieving either a valid Status List Token (following the flow described in Section :ref:`credential-revocation:OAuth Status Lists`) as per (:ref:`WP_069 <wallet-credential-issuance-testcases>`), if a valid one is not available. Then, the Wallet Instance MUST check  (:ref:`WP_070 <wallet-credential-issuance-testcases>`) if any Digital Credential has status set to ``0x03`` - ``UPDATE`` or ``0x04`` - ``ATTRIBUTE_UPDATE``.
+**Step 2**: The Wallet Instance MUST check the status of any stored Digital Credential, by retrieving either a valid Status List Token (following the flow described in Section :ref:`credential-revocation:Status List Token`) as per (:ref:`WP_069 <wallet-credential-issuance-testcases>`), if a valid one is not available. Then, the Wallet Instance MUST check  (:ref:`WP_070 <wallet-credential-issuance-testcases>`) if any Digital Credential has status set to ``0x03`` - ``UPDATE`` or ``0x04`` - ``ATTRIBUTE_UPDATE``.
 
 If the conditions above are not met, the flow MUST be interrupted.
 

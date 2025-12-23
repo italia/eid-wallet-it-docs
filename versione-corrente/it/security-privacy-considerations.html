@@ -137,7 +137,7 @@
 <li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Sistema di Onboarding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. Design dell'Esperienza Utente</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. L'Infrastruttura di Trust</a></li>
-<li class="toctree-l1"><a class="reference internal" href="registry.html">7. Infrastruttura di Registro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registry.html">7. Infrastruttura del Registro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entity-onboarding.html">8. Onboarding delle Entità</a></li>
 <li class="toctree-l1"><a class="reference internal" href="x5c-evaluation.html">9. Operazioni di Gestione dei Certificati X.509</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entities.html">10. Entità</a></li>
@@ -455,7 +455,7 @@ dove viene discussa una lista di mitigazioni da [<a class="reference external" h
 <p>Un prerequisito per un attacco di questo tipo è che l'attaccante abbia accesso ad alcuni messaggi tra il Wallet e il Verificatore di Attestati Elettronici, ad esempio,
 l'attaccante potrebbe avere accesso alla presentazione contenuta nel Token VP. Dato ciò, la corretta implementazione di TLS garantisce la riservatezza, evitando la fuga della risposta.
 Oltre a TLS, l'implementazione esistente dei controlli <strong>nonce</strong> e audience nel protocollo di presentazione dovrebbe aiutare a soddisfare il requisito di sicurezza P-41.
-Per quanto riguarda il claim <strong>nonce</strong>, il Verificatore di Attestati Elettronici DEVE verificare che il valore <strong>nonce</strong> nel Token VP corrisponda al valore <strong>nonce</strong> che è creato dal Verificatore di Attestati Elettronici durante la richiesta di autorizzazione (<a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">Matrice di Test per il Verificatore di Credenziali in Remoto</span></a>).
+Per quanto riguarda il claim <strong>nonce</strong>, il Verificatore di Attestati Elettronici DEVE verificare che il valore <strong>nonce</strong> nel Token VP corrisponda al valore <strong>nonce</strong> che è creato dal Verificatore di Attestati Elettronici durante la richiesta di autorizzazione (<span class="xref std std-ref">test-plans-remote-presentation</span>).
 Per quanto riguarda il valore <strong>aud</strong>, il Verificatore di Attestati Elettronici deve verificare che l'audience della presentazione corrisponda all'identificatore del Verificatore di Attestati Elettronici.</p>
 </section>
 <section id="sr-p-50">
