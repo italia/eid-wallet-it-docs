@@ -132,7 +132,7 @@ Per assicurare un’identificazione e una rappresentazione del PID coerente tra 
 
     Elemento grafico “IT-Wallet ID” su sfondo chiaro  
 
-Le Risorse Ufficiali dell’“IT-Wallet ID” sono disponibili all’interno della cartella :ref:`official-resources:Risorse Ufficiali`. Maggiore Dodecumentazione aggiuntiva sarà prossimamente disponibile sul sito ufficiale https://www.wallet.gov.it. 
+Le Risorse Ufficiali dell’“IT-Wallet ID” sono disponibili all’interno della Sezione :ref:`official-resources:Risorse Ufficiali`. Maggiore documentazione aggiuntiva sarà prossimamente disponibile sul sito ufficiale https://www.wallet.gov.it. 
 
 Ottenimento degli Attestati Elettronici di Attributi 
 -----------------------------------------------------
