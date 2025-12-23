@@ -1,6 +1,8 @@
 .. include:: ../common/common_definitions.rst
 
 
+.. _registry-infrastruttura-di-registro:
+
 Infrastruttura del Registro
 ============================
 
@@ -443,6 +445,8 @@ Le operazioni del Registro di Federazione sono accessibili attraverso gli endpoi
    Gli endpoint di federazione sono disponibili sia attraverso il meccanismo di scoperta del registro (per l'accesso unificato al registro) che attraverso l'Entity Configuration del Trust Anchor a ``.well-known/openid-federation`` (per operazioni specifiche della federazione). Entrambe le fonti forniscono gli stessi URL degli endpoint ma servono diversi pattern di scoperta: scoperta del registro per l'orientamento iniziale nell'ecosistema, Entity Configuration per la conformità standard OpenID Federation 1.0.
    
    Per le specifiche tecniche complete dei protocolli di federazione, configurazioni delle entità, meccanismi di valutazione della fiducia e validazione della catena di fiducia, vedere :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
+
+.. _registry-catalogo-delle-credenziali-digitali:
 
 Catalogo degli Attestati Elettronici
 ------------------------------------

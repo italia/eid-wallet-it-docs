@@ -1,6 +1,8 @@
 .. include:: ../common/common_definitions.rst
 .. include:: ../common/symbols.rst
 
+.. _entity-onboarding-gestione-del-ciclo-di-vita-delle-entita:
+
 Onboarding delle Entità
 ========================
 

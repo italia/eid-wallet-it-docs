@@ -145,7 +145,7 @@ La gestione del ciclo di vita nell'ecosistema IT-Wallet necessita di coordinamen
     - **Sincronizzazione del registro:** Quando un'entità apporta cambiamenti che influenzano altre entità, tutti i sistemi di registro DEVONO essere aggiornati correttamente assicurando che tutti i cambiamenti siano registrati in modo sicuro con timestamp e ragioni.
     - **Garanzia di continuità aziendale:** Le entità DOVREBBERO bilanciare tra l'apportare aggiornamenti necessari e mantenere i loro obblighi verso utenti e normative. Questo include assicurare che il servizio sia il più disponibile possibile, gestire i dati personali correttamente durante i cambiamenti e rimanere conformi ai requisiti legali anche in situazioni di emergenza.
 
-Le procedure tecniche e i requisiti di conformità specifici per la gestione del ciclo di vita sono dettagliati nella Sezione :ref:`entity-onboarding:Gestione del Ciclo di Vita delle Entità`.
+Le procedure tecniche e i requisiti di conformità specifici per la gestione del ciclo di vita sono dettagliati nella Sezione :ref:`entity-onboarding-gestione-del-ciclo-di-vita-delle-entita`.
 
 Onboarding Journey Maps
 ------------------------

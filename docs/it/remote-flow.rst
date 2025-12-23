@@ -333,6 +333,8 @@ I parametri URL contenuti nella Authorization Request della Relying Party sono d
 Il valore corrispondente all'endpoint ``request_uri`` DOVREBBE essere casuale, secondo quanto prescritto da `RFC 9101, The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR) <https://www.rfc-editor.org/rfc/rfc9101.html#section-5.2.1>`_ Sezione 5.2.1.
 
 
+.. _remote-flow-endpoint-uri-request:
+
 Richiesta all'Endpoint URI Request
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -401,6 +403,8 @@ Risposta dell'Endpoint URI Request
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 La Relying Party emette il Request Object firmato utilizzando il tipo di contenuto impostato su ``application/oauth-authz-req+jwt``. Per il contenuto dell'oggetto Request, vedere la Sezione :ref:`remote-flow:Request Object`.
+
+.. _remote-flow-errori-status-endpoint:
 
 Errori dell'Endpoint URI Request
 --------------------------------
@@ -751,6 +755,8 @@ La Relying Party lega la richiesta dello user-agent, con un cookie di sessione c
 * **201 Created**; quando il Request Object firmato è stato emesso dalla Relying Party che attende di essere scaricato dall'Istanza del Wallet all'endpoint ``request_uri``.
 * **202 Accepted**; quando il Request Object firmato è stato ottenuto dall'Istanza del Wallet.
 * **200 OK**; quando l'Istanza del Wallet ha fornito la presentazione all'endpoint ``response_uri`` della Relying Party e l'autenticazione dell'Utente ha avuto successo. La Relying Party aggiorna il cookie di sessione consentendo allo user-agent di accedere alla risorsa protetta. Viene fornito un ``redirect_uri`` che trasporta lo user-agent alla pagina in cui l'Utente deve navigare.
+
+.. _remote-flow-errori-status-endpoint:
 
 Errori dello Status Endpoint
 -----------------------------
