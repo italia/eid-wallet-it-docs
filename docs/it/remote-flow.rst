@@ -404,7 +404,7 @@ Risposta dell'Endpoint URI Request
 
 La Relying Party emette il Request Object firmato utilizzando il tipo di contenuto impostato su ``application/oauth-authz-req+jwt``. Per il contenuto dell'oggetto Request, vedere la Sezione :ref:`remote-flow:Request Object`.
 
-.. _remote-flow-errori-status-endpoint:
+.. _remote-flow-errori-endpoint-uri-request:
 
 Errori dell'Endpoint URI Request
 --------------------------------
