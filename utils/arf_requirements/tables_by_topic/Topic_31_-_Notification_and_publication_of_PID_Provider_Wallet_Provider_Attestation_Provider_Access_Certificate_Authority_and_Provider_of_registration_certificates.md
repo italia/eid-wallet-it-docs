@@ -8,14 +8,18 @@
 | GenNot_04 |  | As regard to GenNot_03, second bullet, the Commission SHALL verify whether the notified data is complete and meets the technical specifications, while the Member States SHALL be responsible for the... | 🟡 |
 | GenNot_05 |  | As part of the specifications referred to in GenNot_01, the European Commission SHALL establish standard operating procedures for the suspension or cancellation of a PID Provider, PuB-EAA Provider,... | 🟡 |
 | PPNot_01 |  | The European Commission SHALL establish technical specifications for the common set of information to be notified about PID Providers. | 🟡 |
+| PPNot_02 |  | The common set of information to be notified about a PID Provider SHALL include at least: 1. Identification data: i. MS/Country of establishment, ii. Name as registered in an official record, iii. ... | 🟡 |
 | PPNot_03 |  | PID Providers SHALL ensure that all PIDs they issue can be authenticated using the PID Provider trust anchors notified to the Commission. | 🟡 |
+| PPNot_04 |  | PID Providers SHALL ensure that their PID Provider access certificates can be authenticated using the applicable Access Certificate Authority trust anchors notified to the Commission. *Note: [[Topi... | 🟡 |
 | PPNot_05 |  | PID Provider trust anchors SHALL be accepted because of their secure notification by the Member States to the Commission and by their publication in the corresponding Commission-compiled PID Provid... | 🟡 |
 | PPNot_06 |  | Access Certificate Authority trust anchors SHALL be accepted because of their secure notification by the Member States to the Commission and by their publication in the corresponding Commission-com... | 🟡 |
 | PPNot_07 |  | The format of the PID Provider Trusted List SHALL comply with ETSI TS 119 612 v2.1.1 or with a suitable profile similarly derived from ETSI TS 102 231. | 🟡 |
 | WPNot_01 |  | The European Commission SHALL establish technical specifications for the common set of information to be notified about Wallet Providers. | 🟡 |
+| WPNot_02 |  | The common set of information to be notified about a Wallet Provider SHALL include: 1. Identification data: i. MS/Country of establishment, ii. Name as registered in an official record, iii. Where ... | 🟡 |
 | WPNot_03 |  | Wallet Providers SHALL ensure that all WUAs they issue can be authenticated using the trust anchors notified to the Commission. | 🟡 |
 | WPNot_04 |  | Wallet Provider trust anchors SHALL be accepted because of their secure notification by the Member States to the Commission and by their publication in the corresponding Commission-compiled Wallet ... | 🟡 |
 | WPNot_05 |  | The format of the Wallet Provider Trusted List SHALL comply with ETSI TS 119 612 v2.1.1 or with a suitable profile similarly derived from ETSI TS 102 231. | 🟡 |
+| WPNot_06 |  | If a Wallet Provider is cancelled (see requirement GenNot_05 above), that Wallet Provider SHALL immediately revoke all of its valid WUAs, in accordance with the requirements in [Topic 38](./annex-2... | 🟡 |
 | PuBPNot_01 |  | The European Commission SHALL establish technical specifications for the common set of information to be notified about PuB-EAA Providers. | 🟡 |
 | PuBPNot_02 |  | The common set of information to be notified by Member States about PuB-EAA Providers SHALL include at least: 1. Identification data: i. MS/Country of establishment, ii. Name as registered in an of... | 🟡 |
 | PuBPNot_03 |  | The format of the PuB-EAA Provider Trusted List SHALL comply with ETSI TS 119 612 v2.1.1 or with a suitable profile similarly derived from ETSI TS 102 231. | 🟡 |

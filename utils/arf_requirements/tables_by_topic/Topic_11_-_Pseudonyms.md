@@ -10,6 +10,7 @@
 | PA_06 |  | A Wallet Unit SHALL enable a User to choose which Pseudonym to authenticate with towards a Relying Party, if multiple Pseudonyms are registered for this Relying Party. The Wallet Unit SHOULD presen... | 🟡 |
 | PA_07 |  | A Wallet Unit SHALL enable a User to delete a Pseudonym. | 🟡 |
 | PA_08 |  | A Wallet Unit SHALL enable the User to manage Pseudonyms within the Wallet Unit in a user-friendly and transparent manner. | 🟡 |
+| PA_08a |  | A Wallet Unit SHALL log Pseudonym registration and presentation transactions as specified in [Topic 19](./annex-2.02-high-level-requirements-by-topic.md#a2312-topic-19---user-navigation-requirement... | 🟡 |
 | PA_09 |  | A Wallet Unit SHALL enable the User to see all existing pseudonyms, including the associated Relying Party. | 🟡 |
 | PA_10 |  | A Relying Party SHALL be able to verify that a User is registering a Pseudonym using a non-revoked Wallet Unit. | 🟡 |
 | PA_11 |  | A Relying Party SHALL be able to verify that a User is authenticating with a Pseudonym using a non-revoked Wallet Unit. | 🟡 |

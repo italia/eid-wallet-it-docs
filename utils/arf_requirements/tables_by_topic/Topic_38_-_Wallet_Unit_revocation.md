@@ -8,9 +8,11 @@
 | WURevocation_04 |  | Empty | 🟡 |
 | WURevocation_05 |  | Empty | 🟡 |
 | WURevocation_06 |  | Empty | 🟡 |
+| WURevocation_07 |  | A Wallet Provider SHALL be able to revoke a Wallet Unit by revoking its WUA(s), as specified in [[Topic 7](./annex-2.02-high-level-requirements-by-topic.md#a235-topic-7---attestation-revocation-and... | 🟡 |
 | WURevocation_08 |  | Empty | 🟡 |
 | WURevocation_09 |  | During the lifetime of a Wallet Unit, the Wallet Provider SHALL regularly verify that the security of the Wallet Unit is not breached or compromised. If the Wallet Provider detects a security breac... | 🟡 |
 | WURevocation_9b |  | If within three months from an administrative suspension of a Wallet Unit the security breach or compromise is remedied, the Wallet Provider SHALL issue one or more WUAs to the Wallet Unit, such th... | 🟡 |
+| WURevocation_10 |  | A Wallet Provider SHALL revoke a Wallet Unit upon the explicit request of the User registered during the Wallet Unit activation process, see [Topic 40](./annex-2.02-high-level-requirements-by-topic... | 🟡 |
 | WURevocation_11 |  | A Wallet Provider SHALL revoke a Wallet Unit upon the explicit request of a PID Provider, in case the natural person using the Wallet Unit has died or the legal person using the Wallet Unit has cea... | 🟡 |
 | WURevocation_12 |  | Before revoking a Wallet Unit per WURevocation_11, the Wallet Provider SHALL verify that the party requesting revocation is indeed a valid PID Provider listed in the Trusted List of PID Providers. | 🟡 |
 | WURevocation_13 |  | Before requesting a Wallet Provider to revoke a Wallet Unit per WURevocation_11, the PID Provider SHALL ensure that the revocation does not harm the interests of any of the stakeholders. The PID Pr... | 🟡 |
@@ -18,6 +20,7 @@
 | WURevocation_15 |  | Empty | 🟡 |
 | WURevocation_16 |  | To inform a User about the revocation of their Wallet Unit, the Wallet Provider SHALL use a communication channel that is independent of the Wallet Unit. In addition, the Wallet Provider MAY use th... | 🟡 |
 | WURevocation_17 |  | Empty | 🟡 |
+| WURevocation_18 |  | A PID Provider issuing revocable PIDs SHALL, for each of its valid PIDs, regularly verify whether the Wallet Provider revoked the Wallet Unit on which that PID is residing, using the revocation inf... | 🟡 |
 | WURevocation_19 |  | An Attestation Provider issuing revocable attestations MAY decide to revoke an attestation if the Wallet Provider revoked the Wallet Unit on which that attestation is residing, in the same manner a... | 🟡 |
 | WURevocation_19a |  | Empty | 🟡 |
 | WURevocation_19b |  | Empty | 🟡 |

@@ -3,6 +3,7 @@
 | **Requirement ID** | **Legacy ID** | **Description** | **Status** |
 |-------------------|---------------|------------------|------------|
 | VCR_01 |  | A PID Provider, QEAA Provider, or PuB-EAA Provider SHALL use one of the following methods for revocation of a PID, QEAA, or PuB-EAA: - Only issue short-lived attestations having a validity period o... | 🟡 |
+| VCR_01a |  | A Wallet Provider SHALL use either the second or the third of the methods specified in VCR_01 for revocation of a WUA. *Note: Due to requirement WUA_08 in [Topic 9](./annex-2.02-high-level-requirem... | 🟡 |
 | VCR_02 |  | For non-qualified EAAs, the relevant Rulebook SHALL specify whether that type of EAA must be revocable. If a non-qualified EAA type must be revocable, the relevant Rulebook SHALL determine which of... | 🟡 |
 | VCR_03 |  | If a PID or attestation is revocable, the PID Provider of a given PID, or the Attestation Provider of a given attestation, SHALL be the only party in the EUDI Wallet ecosystem responsible for execu... | 🟡 |
 | VCR_03a |  | The Wallet Provider of a given WUA SHALL be the only party in the EUDI Wallet ecosystem responsible for executing the revocation of that WUA. *Note: A Wallet Provider MAY outsource the operation of... | 🟡 |
@@ -11,6 +12,7 @@
 | VCR_06 |  | If a PID, attestation, or WUA is revocable, the PID Provider, Attestation Provider, or Wallet Provider SHALL revoke a PID, attestation, or WUA when its security has been compromised. | 🟡 |
 | VCR_07 |  | A Wallet Provider SHALL revoke all valid WUAs issued to a Wallet Unit upon the explicit request of the User to revoke their Wallet Unit. | 🟡 |
 | VCR_07a |  | If a PID or attestation is revocable, the PID Provider or Attestation Provider SHOULD revoke that PID or attestation upon the explicit request of the User to whom the PID or the attestation was iss... | 🟡 |
+| VCR_07b |  | If a PID or attestation is revocable, the PID Provider or Attestation Provider SHOULD revoke that PID if the Wallet Unit on which it resides is revoked, in compliance with requirement WURevocation_... | 🟡 |
 | VCR_08 |  | If a PID is revocable, the PID Provider SHALL revoke a PID upon the death of the natural person who is the subject of the PID, or the cease of activity of the legal person who is the subject of the... | 🟡 |
 | VCR_09 |  | If a PID, attestation, or WUA is revocable, the PID Provider, Attestation Provider or Wallet Provider SHALL revoke a PID, attestation, or WUA if the value of one or more attributes in the PID, atte... | 🟡 |
 | VCR_10 |  | Wallet Providers SHALL implement the attestation revocation mechanisms specified per VCR_11 in their Wallet Solutions. | 🟡 |

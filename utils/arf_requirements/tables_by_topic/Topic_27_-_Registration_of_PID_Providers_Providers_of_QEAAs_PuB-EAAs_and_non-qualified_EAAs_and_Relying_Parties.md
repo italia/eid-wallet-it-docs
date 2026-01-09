@@ -13,8 +13,10 @@
 | Reg_07 |  | A Member State SHALL enable a registered PID Provider, QEAA Provider, PuB-EAA Provider, non-qualified EAA Provider, or Relying Party to update the information registered on it, using a process comp... | 🟡 |
 | Reg_08 |  | A registered PID Provider, QEAA Provider, PuB-EAA Provider, non-qualified EAA Provider, or Relying Party SHALL make any updates necessary to ensure the continued correctness of the registered infor... | 🟡 |
 | Reg_09 |  | Member States SHALL log all changes made on the information registered regarding a PID Provider, QEAA Provider, PuB-EAA Provider, non-qualified EAA Provider, or Relying Party, including at least in... | 🟡 |
+| Reg_10 |  | A Member State SHALL ensure that an Access Certificate Authority notified according to [[Topic 31](./annex-2.02-high-level-requirements-by-topic.md#a2320-topic-31---notification-and-publication-of-... | 🟡 |
 | Reg_11 |  | A Member State SHALL ensure that the issuance process of access certificates by their notified Access Certificate Authority(s) complies with a common Certificate Policy for Access Certificate Autho... | 🟡 |
 | Reg_12 |  | The Commission SHALL provide technical specifications establishing the common Access Certificate Authority Certificate Policy mentioned in Reg_11. | 🟡 |
+| Reg_13 |  | The common Certificate Policy mentioned in Reg_12 SHALL require that an Access Certificate Authority logs all issued access certificates for Certificate Transparency (CT), according to all requirem... | 🟡 |
 | Reg_14 |  | The common Certificate Policy mentioned in Reg_12 SHALL require that an Access Certificate Authority provides one or more method(s) to revoke the access certificates it issued. | 🟡 |
 | Reg_15 |  | The common Certificate Policy mentioned in Reg_12 SHALL include a policy for revocation, which SHALL require that an Access Certificate Authority revokes an access certificate at least when: - the ... | 🟡 |
 | Reg_16 |  | The common Certificate Policy mentioned in Reg_12 SHALL specify the profile of access certificates in detail. | 🟡 |

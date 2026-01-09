@@ -50,9 +50,7 @@ The requirements are identical between ARF 2.5.0 and ARF 2.7.3.
 | 🟡 | CAT_02 | Empty |  |
 | 🟡 | CAT_03 | Empty | Pending: Not yet established, planned at EU level. |
 | 🟡 | CAT_03b | Empty | DE4A](https://www.de4a.eu/semper), - [SEMIC Core Vocabularies](https://interoperable-europe.ec.europa.eu/collection/semic-support-centre/core-vocabularies#What%20are%20the%20Core%20Vocabularies), - [IANA Registry for JSON Web Token Claims](https://www.iana.org/assignments/jwt/jwt.xhtml) (for JSON-based attributes only), - [ISO/IEC 23220-2](https://www.iso.org/standard/86782.html) (for CBOR-based attributes only). |
-| 🟡 | CAT_04 | A request to include or to modify an attribute in the catalogue of attributes SHALL indicate how a QTSP can use the verification point for that attribute. *Note: This could be, for instance, in the form of (a reference to) an endpoint description text. | Pending: Not yet established, planned at EU level. |The CAT requirements show **no substantive changes** to requirement specifications themselves. All modifications are limited to the addition of three new explanatory notes that provide implementation guidance:
-
-**CAT_01**: Added note on catalogue architecture:
+| 🟡 | CAT_04 | A request to include or to modify an attribute in the catalogue of attributes SHALL indicate how a QTSP can use the verification point for that attribute. *Note: This could be, for instance, in the form of (a reference to) an endpoint description text. | Pending: Not yet established, planned at EU level. |**CAT_01**: Added note on catalogue architecture:
 - **NEW NOTE**: "The catalogue of attributes does not need to be a separate catalogue, but could be combined with the Attestation Rulebooks catalogue mentioned in CAT_05."
 - **Purpose**: Provides flexibility in implementation by clarifying that a single combined catalogue is acceptable
 

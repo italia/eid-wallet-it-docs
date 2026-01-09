@@ -21,8 +21,10 @@
 | AS-MS-27-009 | Reg_07 | A Member State SHALL enable a registered PID Provider, QEAA Provider, PuB-EAA Provider, non-qualified EAA Provider, or Relying Party to update the information registered on it, using a process comp... | 🟡 |
 | AS-MS-27-010 | Reg_08 | A registered PID Provider, QEAA Provider, PuB-EAA Provider, non-qualified EAA Provider, or Relying Party SHALL make any updates necessary to ensure the continued correctness of the registered infor... | 🟡 |
 | AS-MS-27-011 | Reg_09 | Member States SHALL log all changes made on the information registered regarding a PID Provider, QEAA Provider, PuB-EAA Provider, non-qualified EAA Provider, or Relying Party, including at least in... | 🟡 |
+| AS-MS-27-012 | Reg_10 | A Member State SHALL ensure that an Access Certificate Authority notified according to [[Topic 31](./annex-2.02-high-level-requirements-by-topic.md#a2320-topic-31---notification-and-publication-of-... | 🟡 |
 | AS-MS-27-013 | Reg_11 | A Member State SHALL ensure that the issuance process of access certificates by their notified Access Certificate Authority(s) complies with a common Certificate Policy for Access Certificate Autho... | 🟡 |
 | AS-MS-27-014 | Reg_12 | The Commission SHALL provide technical specifications establishing the common Access Certificate Authority Certificate Policy mentioned in Reg_11. | 🟡 |
+| AS-MS-27-015 | Reg_13 | The common Certificate Policy mentioned in Reg_12 SHALL require that an Access Certificate Authority logs all issued access certificates for Certificate Transparency (CT), according to all requirem... | 🟡 |
 | AS-MS-27-016 | Reg_14 | The common Certificate Policy mentioned in Reg_12 SHALL require that an Access Certificate Authority provides one or more method(s) to revoke the access certificates it issued. | 🟡 |
 | AS-MS-27-017 | Reg_15 | The common Certificate Policy mentioned in Reg_12 SHALL include a policy for revocation, which SHALL require that an Access Certificate Authority revokes an access certificate at least when: - the ... | 🟡 |
 | AS-MS-27-018 | Reg_16 | The common Certificate Policy mentioned in Reg_12 SHALL specify the profile of access certificates in detail. | 🟡 |
@@ -56,6 +58,7 @@
 | AS-MS-31-005 | GenNot_05 | As part of the specifications referred to in GenNot_01, the European Commission SHALL establish standard operating procedures for the suspension or cancellation of a PID Provider, PuB-EAA Provider,... | 🟡 |
 | AS-MS-31-006 | PPNot_01 | The European Commission SHALL establish technical specifications for the common set of information to be notified about PID Providers. | 🟡 |
 | AS-MS-31-007 | PPNot_03 | PID Providers SHALL ensure that all PIDs they issue can be authenticated using the PID Provider trust anchors notified to the Commission. | 🟡 |
+| AS-MS-31-008 | PPNot_04 | PID Providers SHALL ensure that their PID Provider access certificates can be authenticated using the applicable Access Certificate Authority trust anchors notified to the Commission. | 🟡 |
 | AS-MS-31-009 | PPNot_05 | PID Provider trust anchors SHALL be accepted because of their secure notification by the Member States to the Commission and by their publication in the corresponding Commission-compiled PID Provid... | 🟡 |
 | AS-MS-31-010 | PPNot_06 | Access Certificate Authority trust anchors SHALL be accepted because of their secure notification by the Member States to the Commission and by their publication in the corresponding Commission-com... | 🟡 |
 | AS-MS-31-011 | PPNot_07 | The format of the PID Provider Trusted List SHALL comply with ETSI TS 119 612 v2.1.1 or with a suitable profile similarly derived from ETSI TS 102 231. | 🟡 |
@@ -73,3 +76,4 @@
 | AS-MS-55-003 | CT_03 | In case a CT log provider for access certificates is available, all Access CAs SHALL act as monitors in the CT ecosystem. Access CAs SHOULD still monitor the CT logs in situations of temporary unav... | 🟡 |
 | AS-MS-55-004 | CT_04 | An Access CA SHALL include at least one Signed Certificate Timestamp (SCT) in each access certificate. | 🟡 |
 | AS-MS-55-005 | CT_05 | When verifying an access certificate during PID or attestation issuance or presentation, a Wallet Unit SHALL also verify that the access certificate includes at least one valid Signed Certificate T... | 🟡 |
+| AS-MS-55-006 | CT_06 | If an access certificate does not include a valid SCT, a Wallet Unit SHALL handle this as a failure or Relying Party authentication, in compliance with all requirements in [[Topic 6](./annex-2.02-h... | 🟡 |

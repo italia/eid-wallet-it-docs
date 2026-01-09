@@ -94,7 +94,9 @@ def extract_requirements_from_file(file_path: Path) -> List[Requirement]:
             continue
         
         # Se siamo in una tabella, estrae i requisiti
-        if in_table and line.strip().startswith('|') and '--' not in line:
+        # Verifica se è il separatore della tabella (| -- | -- |) invece di controllare se contiene '--'
+        is_separator = line.strip().startswith('|') and re.match(r'^\|\s*--+\s*\|', line.strip())
+        if in_table and line.strip().startswith('|') and not is_separator:
             parsed = parse_markdown_table_line(line)
             if parsed:
                 identifier, legacy_identifier, description, notes = parsed

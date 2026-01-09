@@ -3,17 +3,18 @@
 **Topic:** Topic 51 - PID or attestation deletion
 
 **Requirements ARF 2.5.0:** 26
-**Requirements ARF 2.7.3:** 26
+**Requirements ARF 2.7.3:** 28
 
 ---
 
 ## Diff ARF 2.5.0 → ARF 2.7.3
 
-### ℹ️ No changes detected
+### ✅ Requirements added in ARF 2.7.3 (2):
 
-The requirements are identical between ARF 2.5.0 and ARF 2.7.3.
+- **RPI_01**: An intermediary SHALL register as a Relying Party, in accordance with all requirements in [Topic 27](./annex-2.02-high-level-requirements-by-topic.md#a2316-topic-27---registration-of-pid-providers-providers-of-qeaas-pub-eaas-and-non-qualified-eaas-and-relying-parties), while indicating it intends to act as an intermediary. *Note: a) This implies that an intermediary obtains an access certificate containing its own name and unique Relying Party identifier. b) An intermediary may also obtain a registration certificate according to [Topic 44](./annex-2.02-high-level-requirements-by-topic.md#a2326-topic-44---registration-certificates-for-pid-providers-providers-of-qeaas-pub-eaas-and-non-qualified-eaas-and-relying-parties), but this certificate will not be used for intermediated transactions. c) An entity that registered as an intermediary may also register as a Relying Party in its own capacity. In such a case, it will receive one or more registration certificates for its intended use(s), and will use one of these certificates when interacting with a Wallet Unit.
+- **RPI_03**: An intermediary SHALL register each intermediated Relying Party it is acting on behalf of at a Registrar in the Member State where the intermediated Relying Party is established, according all requirements in [Topic 44](./annex-2.02-high-level-requirements-by-topic.md#a2326-topic-44---registration-certificates-for-pid-providers-providers-of-qeaas-pub-eaas-and-non-qualified-eaas-and-relying-parties). If a Provider of registration certificates associated with the Registrar issues registration certificates, the intermediary SHALL receive a registration certificate for each of the registered intended uses of the intermediated Relying Party.
 
-**Total requirements ARF 2.7.3:** 26
+**Total requirements ARF 2.7.3:** 28
 **Total requirements ARF 2.5.0:** 26
 ---
 
@@ -39,9 +40,10 @@ Legend:
 
 ## Diff ARF 2.5.0 → ARF 2.7.3
 
-### ℹ️ No changes detected
+### ✅ Requirements added in ARF 2.7.3 (2):
 
-The requirements are identical between ARF 2.5.0 and ARF 2.7.3.
+- **RPI_01**: An intermediary SHALL register as a Relying Party, in accordance with all requirements in [Topic 27](./annex-2.02-high-level-requirements-by-topic.md#a2316-topic-27---registration-of-pid-providers-providers-of-qeaas-pub-eaas-and-non-qualified-eaas-and-relying-parties), while indicating it intends to act as an intermediary. *Note: a) This implies that an intermediary obtains an access certificate containing its own name and unique Relying Party identifier. b) An intermediary may also obtain a registration certificate according to [Topic 44](./annex-2.02-high-level-requirements-by-topic.md#a2326-topic-44---registration-certificates-for-pid-providers-providers-of-qeaas-pub-eaas-and-non-qualified-eaas-and-relying-parties), but this certificate will not be used for intermediated transactions. c) An entity that registered as an intermediary may also register as a Relying Party in its own capacity. In such a case, it will receive one or more registration certificates for its intended use(s), and will use one of these certificates when interacting with a Wallet Unit.
+- **RPI_03**: An intermediary SHALL register each intermediated Relying Party it is acting on behalf of at a Registrar in the Member State where the intermediated Relying Party is established, according all requirements in [Topic 44](./annex-2.02-high-level-requirements-by-topic.md#a2326-topic-44---registration-certificates-for-pid-providers-providers-of-qeaas-pub-eaas-and-non-qualified-eaas-and-relying-parties). If a Provider of registration certificates associated with the Registrar issues registration certificates, the intermediary SHALL receive a registration certificate for each of the registered intended uses of the intermediated Relying Party.
 
 
 | Status | **ID** | **Requirement specification** | **IT-Wallet Mapping & Documentation** |
@@ -52,7 +54,9 @@ The requirements are identical between ARF 2.5.0 and ARF 2.7.3.
 | 🟧 | PAD_04 | If the Wallet Unit deletes a PID or device-bound attestation on the User's request, the Wallet Unit SHALL ensure that all cryptographic assets in the WSCA/WSCD related to this PID, or in a keystore related to this attestation, are securely destroyed. *Note: Key deletion for a PID key is a cryptographic key operation and requires User authentication, as specified in requirement WIAM_14. |  |
 | 🟧 | PAD_05 | If a Wallet Unit supports the [W3C Digital Credentials API] and it deletes, on the User's request, a PID or attestation previously disclosed to the Digital Credentials API framework, the Wallet Instance SHALL disclose the fact that it no longer stores this PID or attestation to the Digital Credentials API framework. |  |
 | 🟡 | PAD_06 | If the User uninstalls the Wallet Instance, the Wallet Instance SHALL request the associated WSCA/WSCD and keystore(s) to delete all cryptographic assets related to the Wallet Unit and to all PIDs and device-bound attestations on the Wallet Unit, if the WSCA/WSCD and keystore(s) are connected to the User device at the moment the Wallet Instance is uninstalled. *Note: It may happen there is no connection to the WSCA/WSCD or to a keystore at the moment the User uninstalls the Wallet Instance; for instance, in case the WSCA/WSCD is an external smart card and the User does not present that card to the User device. Another example occurs when the WSCA/WSCD is a remote HSM and the User device is offline at the moment the User uninstalls the Wallet Instance. In such cases, the cryptographic assets will probably remain present on the WSCA/WSCD or on the keystore, even though they will never be used again. If needed, it is up to the Wallet Provider to define how the Wallet Unit should handle such situations. For example, an HSM manager could address such cases by deciding to delete cryptographic keys in the HSM that are too old or haven't been used for too long, while being aware of the risks in doing so. |  |
+| 🟡 | RPI_01 | An intermediary SHALL register as a Relying Party, in accordance with all requirements in [Topic 27](./annex-2.02-high-level-requirements-by-topic.md#a2316-topic-27---registration-of-pid-providers-providers-of-qeaas-pub-eaas-and-non-qualified-eaas-and-relying-parties), while indicating it intends to act as an intermediary. *Note: a) This implies that an intermediary obtains an access certificate containing its own name and unique Relying Party identifier. b) An intermediary may also obtain a registration certificate according to [Topic 44](./annex-2.02-high-level-requirements-by-topic.md#a2326-topic-44---registration-certificates-for-pid-providers-providers-of-qeaas-pub-eaas-and-non-qualified-eaas-and-relying-parties), but this certificate will not be used for intermediated transactions. c) An entity that registered as an intermediary may also register as a Relying Party in its own capacity. In such a case, it will receive one or more registration certificates for its intended use(s), and will use one of these certificates when interacting with a Wallet Unit. |  |
 | 🟡 | RPI_02 | Empty |  |
+| 🟡 | RPI_03 | An intermediary SHALL register each intermediated Relying Party it is acting on behalf of at a Registrar in the Member State where the intermediated Relying Party is established, according all requirements in [Topic 44](./annex-2.02-high-level-requirements-by-topic.md#a2326-topic-44---registration-certificates-for-pid-providers-providers-of-qeaas-pub-eaas-and-non-qualified-eaas-and-relying-parties). If a Provider of registration certificates associated with the Registrar issues registration certificates, the intermediary SHALL receive a registration certificate for each of the registered intended uses of the intermediated Relying Party. |  |
 | 🟡 | RPI_04 | When registering an intermediated Relying Party, an intermediary SHALL provide legally valid evidence that this Relying Party will indeed use the services of this intermediary to interact with Wallet Units. The Registrar SHALL verify this evidence, and, if it is found to be correct, SHALL register the relationship between the intermediary and the intermediated Relying Party. *Note: Such evidence may, for instance, be a contract between the intermediary and the intermediated Relying Party. |  |
 | 🟡 | RPI_05 | When an intermediated Relying Party asks its intermediary to request some attributes from a Wallet Unit, it SHALL specify  a) its user-friendly name, b) its unique identifier, c) the URL of its Registrar. d) the identifier of its intended use, e) a User-friendly description of its intended use. In addition, if the intermediated Relying Party has registration certificates, it SHALL indicate which single registration certificate the intermediary must include in the presentation request. *Note: a) See RPRC_19a for why the intermediary needs this information. b)  Since a), b) and c) will not change for each request, specification of this information can be done once. The same is true for d) and e) if the intermediated Relying Party has only one registered intended use. |  |
 | 🟡 | RPI_06 | When requested by an intermediated Relying Party, an intermediary SHALL request a presentation of attributes from a specific Wallet Unit. In the request, the intermediary SHALL include the intermediary's access certificate meant in requirement RPI_01 and the registration certificate of the Relying Party, as meant in RPI_03, if available. In addition, whether or not a registration certificate is available, the intermediary SHALL include in the request the information about the intermediated Relying Party required in RPRC_19a. |  |
@@ -71,10 +75,7 @@ The requirements are identical between ARF 2.5.0 and ARF 2.7.3.
 | 🟡 | ZKP_06 | A ZKP scheme SHOULD be able to generate proofs for already issued PIDs and attestations in the formats specified in [ISO/IEC 18013-5] or [SD-JWT VC]. |  |
 | 🟡 | ZKP_07 | A ZKP scheme SHALL NOT introduce any additional communication or information that could be used to track or link User activity during, before, or after proof generation. |  |
 | 🟡 | ZKP_08 | A ZKP scheme SHALL rely solely on algorithms standardised by a standardisation organisation recognised by the Commission or in a standard recognised by the Commission. |  |
-| 🟡 | ZKP_09 | Use of a ZKP scheme SHALL NOT prevent the Wallet Unit's ability to provide User authentication with Level of Assurance High. |  |1. **PAD_02**: Added clarifying note about batch attestations
-2. **PAD_06**: **NEW REQUIREMENT** - Wallet Instance uninstall behavior with detailed note about edge cases
-
-### Changes by Requirement
+| 🟡 | ZKP_09 | Use of a ZKP scheme SHALL NOT prevent the Wallet Unit's ability to provide User authentication with Level of Assurance High. |  |### Changes by Requirement
 
 - **PAD_01, PAD_03, PAD_04, PAD_05**: No changes
 - **PAD_02**: Note added for clarity

@@ -6,6 +6,7 @@
 | WIAM_02 |  | If a Wallet Provider makes its certified Wallet Solution available for installation through other means than the official OS app store, it SHALL implement a mechanism allowing the User to verify th... | 🟡 |
 | WIAM_03 |  | A Wallet Provider SHALL ensure that a Wallet Instance starts a process to activate the new Wallet Unit with the Wallet Provider immediately after installation or when the User first opens the Walle... | 🟡 |
 | WIAM_04 |  | During the activation process of a new Wallet Unit, the Wallet Provider SHALL verify that the new Wallet Instance is a genuine instance of its Wallet Solution. | 🟡 |
+| WIAM_05 |  | During the activation process of a new Wallet Unit, the Wallet Provider SHALL process information about the User device and the available WSCA/WSCD and keystore(s), as far as necessary to issue a W... | 🟡 |
 | WIAM_06 |  | The Wallet Provider SHALL request the User, through the new Wallet Instance, to set up a User account at the Wallet Provider. The Wallet Provider SHALL explain to the User that this is necessary to... | 🟡 |
 | WIAM_07 |  | A Wallet Provider SHALL activate a new Wallet Unit before a User can use it to have issued an PID or attestation. *Note: The WUA is issued as part of the activation. | 🟡 |
 | WIAM_08 |  | A Wallet Provider SHALL only activate a new Wallet Unit if it has verified that: - The Wallet Unit includes a WSCA/WSCD that is certified to be compliant with applicable requirements in this Topic.... | 🟡 |
@@ -30,3 +31,4 @@
 | WIAM_18 |  | Empty | 🟡 |
 | WIAM_19 |  | A WSCA/WSCD and a keystore SHALL be able to prove possession of the private key corresponding to a public key on request of a Wallet Instance, for example by signing a challenge with that private key. | 🟡 |
 | WIAM_20 |  | A WSCA/WSCD SHALL protect a private key it generated during the entire lifetime of the key. This protection SHALL at least imply that the WSCA/WSCD prevents the private key from being extracted in ... | 🟡 |
+| WIAM_21 |  | Whenever the WSCA/WSCD successfully authenticated the User, the Wallet Unit SHOULD check if the WSCD contains cryptographic assets for PIDs or attestations that cannot be presented any longer to Re... | 🟡 |

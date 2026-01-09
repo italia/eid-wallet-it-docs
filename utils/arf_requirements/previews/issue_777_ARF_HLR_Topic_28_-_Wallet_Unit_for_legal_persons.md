@@ -2,19 +2,20 @@
 
 **Topic:** Topic 28 - Wallet Unit for legal persons
 
-**Requirements ARF 2.5.0:** 2
-**Requirements ARF 2.7.3:** 2
+**Requirements ARF 2.5.0:** 1
+**Requirements ARF 2.7.3:** 3
 
 ---
 
 ## Diff ARF 2.5.0 → ARF 2.7.3
 
-### ℹ️ No changes detected
+### ✅ Requirements added in ARF 2.7.3 (2):
 
-The requirements are identical between ARF 2.5.0 and ARF 2.7.3.
+- **LP_02**: The attestation type of a legal-person PID SHALL be different from the attestation type of a natural person PID. *Note: See [[Topic 12](./annex-2.02-high-level-requirements-by-topic.md#a239-topic-12---attestation-rulebooks)] for an explanation of the concept of attestation type.
+- **LP_03**: A legal-person PID SHALL comply with all requirements in the Legal-person PID Rulebook mentioned in LP_01.
 
-**Total requirements ARF 2.7.3:** 2
-**Total requirements ARF 2.5.0:** 2
+**Total requirements ARF 2.7.3:** 3
+**Total requirements ARF 2.5.0:** 1
 ---
 
 ## Nuovo body completo della issue:
@@ -30,18 +31,17 @@ Please refer to the "Summary of Changes" section and subsequent sections to see 
 
 ## Diff ARF 2.5.0 → ARF 2.7.3
 
-### ℹ️ No changes detected
+### ✅ Requirements added in ARF 2.7.3 (2):
 
-The requirements are identical between ARF 2.5.0 and ARF 2.7.3.
+- **LP_02**: The attestation type of a legal-person PID SHALL be different from the attestation type of a natural person PID. *Note: See [[Topic 12](./annex-2.02-high-level-requirements-by-topic.md#a239-topic-12---attestation-rulebooks)] for an explanation of the concept of attestation type.
+- **LP_03**: A legal-person PID SHALL comply with all requirements in the Legal-person PID Rulebook mentioned in LP_01.
 
 
 | Status | **Index** | **Requirement specification** | **IT-Wallet Mapping & Documentation** |
 |---|---------|------------------|-----------------------------------|
 | 🟡 | LP_01 | The Commission SHALL develop a Legal-person PID Rulebook to specify the attestation scheme and other technical details applicable for legal-person PIDs. | Pending: Not yet established, planned at EU level. |
-| 🟡 | LP_03 | A legal-person PID SHALL comply with all requirements in the Legal-person PID Rulebook mentioned in LP_01. | Pending: Not yet established, planned at EU level. |**LP_01**: Commission SHALL develop Legal-person PID Rulebook
-- Specifies attribute scheme and technical details for legal-person PIDs
-
-**LP_02**: Legal-person PID SHALL have different attestation type from natural person PID
+| 🟡 | LP_02 | The attestation type of a legal-person PID SHALL be different from the attestation type of a natural person PID. *Note: See [[Topic 12](./annex-2.02-high-level-requirements-by-topic.md#a239-topic-12---attestation-rulebooks)] for an explanation of the concept of attestation type. |  |
+| 🟡 | LP_03 | A legal-person PID SHALL comply with all requirements in the Legal-person PID Rulebook mentioned in LP_01. | Pending: Not yet established, planned at EU level. |**LP_02**: Legal-person PID SHALL have different attestation type from natural person PID
 - Ensures distinction between legal and natural person PIDs
 - References Topic 12 for attestation type explanation
 

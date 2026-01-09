@@ -3,17 +3,18 @@
 **Topic:** Topic 30 - Interaction between Wallet Units
 
 **Requirements ARF 2.5.0:** 20
-**Requirements ARF 2.7.3:** 20
+**Requirements ARF 2.7.3:** 22
 
 ---
 
 ## Diff ARF 2.5.0 → ARF 2.7.3
 
-### ℹ️ No changes detected
+### ✅ Requirements added in ARF 2.7.3 (2):
 
-The requirements are identical between ARF 2.5.0 and ARF 2.7.3.
+- **W2W_19**: When receiving a presentation response, a Verifier Wallet SHALL verify the received attestation according to requirements OIA_12 - OIA_15 in [Topic 1](./annex-2.02-high-level-requirements-by-topic.md#a231-topic-1---accessing-online-services-with-a-wallet-unit).
+- **W2W_21**: A Verifier Wallet Unit SHALL NOT persistently store any attestations or attributes received. A Verifier Wallet Unit SHOULD minimize the time the received presentation is stored in memory. A Verifier Wallet Unit SHALL comply with OIA_16 in [Topic 1](./annex-2.02-high-level-requirements-by-topic.md#a231-topic-1---accessing-online-services-with-a-wallet-unit).
 
-**Total requirements ARF 2.7.3:** 20
+**Total requirements ARF 2.7.3:** 22
 **Total requirements ARF 2.5.0:** 20
 ---
 
@@ -45,9 +46,10 @@ Legend:
 
 ## Diff ARF 2.5.0 → ARF 2.7.3
 
-### ℹ️ No changes detected
+### ✅ Requirements added in ARF 2.7.3 (2):
 
-The requirements are identical between ARF 2.5.0 and ARF 2.7.3.
+- **W2W_19**: When receiving a presentation response, a Verifier Wallet SHALL verify the received attestation according to requirements OIA_12 - OIA_15 in [Topic 1](./annex-2.02-high-level-requirements-by-topic.md#a231-topic-1---accessing-online-services-with-a-wallet-unit).
+- **W2W_21**: A Verifier Wallet Unit SHALL NOT persistently store any attestations or attributes received. A Verifier Wallet Unit SHOULD minimize the time the received presentation is stored in memory. A Verifier Wallet Unit SHALL comply with OIA_16 in [Topic 1](./annex-2.02-high-level-requirements-by-topic.md#a231-topic-1---accessing-online-services-with-a-wallet-unit).
 
 
 | Status | **Index** | **Requirement specification** | **IT-Wallet Mapping & Documentation** |
@@ -70,7 +72,9 @@ The requirements are identical between ARF 2.5.0 and ARF 2.7.3.
 | 🟡 | W2W_16 | A Verifier Wallet Unit SHALL authenticate the Verifier and SHALL obtain the Verifier's approval prior to sending a presentation request to a Holder Wallet Unit. |  |
 | 🟡 | W2W_17 | A Verifier Wallet Unit SHALL implement measures to limit the number of presentation requests it can send per unit of time, to prevent abuse of the Wallet-to-Wallet functionality by Relying Parties. The limitation strategy, for instance exponential backoff time between subsequent presentation requests or hard limits for the number of requests, SHALL be decided by the Wallet Provider, based on applicable requirements in [Technical Specification 9](../../technical-specifications/ts9-wallet-to-wallet-interactions.md). |  |
 | 🟡 | W2W_18 | When receiving a presentation request, a Holder Wallet Unit SHOULD verify the validity of the Verifier Wallet Unit before presenting a received request to the Holder, provided [Technical Specification 9](../../technical-specifications/ts9-wallet-to-wallet-interactions.md) specifies a suitable mechanism for doing so. |  |
+| 🟡 | W2W_19 | When receiving a presentation response, a Verifier Wallet SHALL verify the received attestation according to requirements OIA_12 - OIA_15 in [Topic 1](./annex-2.02-high-level-requirements-by-topic.md#a231-topic-1---accessing-online-services-with-a-wallet-unit). |  |
 | 🟡 | W2W_20 | A Verifier Wallet Unit SHALL display all verified attributes to the Verifier. |  |
+| 🟡 | W2W_21 | A Verifier Wallet Unit SHALL NOT persistently store any attestations or attributes received. A Verifier Wallet Unit SHOULD minimize the time the received presentation is stored in memory. A Verifier Wallet Unit SHALL comply with OIA_16 in [Topic 1](./annex-2.02-high-level-requirements-by-topic.md#a231-topic-1---accessing-online-services-with-a-wallet-unit). |  |
 | 🟡 | W2W_22 | Wallet Providers SHOULD take measures to prevent a User from taking screenshots while their Wallet Unit is acting as a Verifier Wallet Unit. |  |
 
 ---

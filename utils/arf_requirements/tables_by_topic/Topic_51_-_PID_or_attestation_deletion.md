@@ -8,7 +8,9 @@
 | PAD_04 |  | If the Wallet Unit deletes a PID or device-bound attestation on the User's request, the Wallet Unit SHALL ensure that all cryptographic assets in the WSCA/WSCD related to this PID, or in a keystore... | 🟡 |
 | PAD_05 |  | If a Wallet Unit supports the [W3C Digital Credentials API] and it deletes, on the User's request, a PID or attestation previously disclosed to the Digital Credentials API framework, the Wallet Ins... | 🟡 |
 | PAD_06 |  | If the User uninstalls the Wallet Instance, the Wallet Instance SHALL request the associated WSCA/WSCD and keystore(s) to delete all cryptographic assets related to the Wallet Unit and to all PIDs ... | 🟡 |
+| RPI_01 |  | An intermediary SHALL register as a Relying Party, in accordance with all requirements in [Topic 27](./annex-2.02-high-level-requirements-by-topic.md#a2316-topic-27---registration-of-pid-providers-... | 🟡 |
 | RPI_02 |  | Empty | 🟡 |
+| RPI_03 |  | An intermediary SHALL register each intermediated Relying Party it is acting on behalf of at a Registrar in the Member State where the intermediated Relying Party is established, according all requ... | 🟡 |
 | RPI_04 |  | When registering an intermediated Relying Party, an intermediary SHALL provide legally valid evidence that this Relying Party will indeed use the services of this intermediary to interact with Wall... | 🟡 |
 | RPI_05 |  | When an intermediated Relying Party asks its intermediary to request some attributes from a Wallet Unit, it SHALL specify  a) its user-friendly name, b) its unique identifier, c) the URL of its Reg... | 🟡 |
 | RPI_06 |  | When requested by an intermediated Relying Party, an intermediary SHALL request a presentation of attributes from a specific Wallet Unit. In the request, the intermediary SHALL include the intermed... | 🟡 |

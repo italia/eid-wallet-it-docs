@@ -2,40 +2,59 @@
 
 | **Requirement ID** | **Legacy ID** | **Description** | **Status** |
 |-------------------|---------------|------------------|------------|
+| ISSU_01 |  | Wallet Providers SHALL ensure that their Wallet Solution supports the OpenID4VCI protocol specified in [OpenID4VCI], as profiled by the 'OpenID for Verifiable Credential Issuance' profile specified... | 🟡 |
+| ISSU_01a |  | PID Providers and Attestation Providers SHALL support the OpenID4VCI protocol specified in [OpenID4VCI], as profiled by the 'OpenID for Verifiable Credential Issuance' profile specified in [HAIP], ... | 🟡 |
 | ISSU_02 |  | Wallet Providers SHALL ensure that their Wallet Solution supports the attestation formats specified in ISO/IEC 18013-5, see [ISO18013-5], and in "SD-JWT-based Verifiable Credentials (SD-JWT VC)", s... | 🟡 |
 | ISSU_03 |  | Wallet Units, PID Providers, and Attestation Providers SHALL support the [W3C Digital Credentials API]](<https://wicg.github.io/digital-credentials/>) for the issuance of PIDs and attestations, pro... | 🟡 |
 | ISSU_04 |  | The OpenID4VCI protocol referenced in requirement ISSU_01, or an EUDI Wallet-specific extension or profile thereof, SHALL enable PID Providers and Attestation Provider to issue to a Wallet Unit a b... | 🟡 |
 | ISSU_05 |  | A Wallet Unit SHALL support a process to activate a newly issued PID, in accordance with the requirements for LoA High in [Commission Implementing Regulation (EU) 2015/1502](https://eur-lex.europa.... | 🟡 |
 | ISSU_06 |  | After a Wallet Unit receives a PID or an attestation from a PID Provider or Attestation Provider, it SHALL verify that the PID or attestation it received matches the PID or attestation requested by... | 🟡 |
+| ISSU_07 |  | After a Wallet Unit receives a PID from a PID Provider, it SHALL validate the signature of the PID using a trust anchor provided in a PID Provider Trusted List made available in accordance with [[T... | 🟡 |
 | ISSU_08 |  | After a Wallet Unit receives a QEAA from a QEAA Provider, it SHALL validate the qualified signature of the QEAA in accordance with Art.32 of the [European Digital Identity Regulation]. For the veri... | 🟡 |
 | ISSU_09 |  | After a Wallet Unit receives a PuB-EAA from a PUB-EAA Provider, it SHALL validate the qualified signature of the PuB-EAA in accordance with Art. 32 of the [European Digital Identity Regulation]. Fo... | 🟡 |
+| ISSU_10 |  | After a Wallet Unit receives a non-qualified EAA from an EAA Provider, it SHALL validate the signature of the EAA using a trust anchor provided according to the mechanism(s) specified in the applic... | 🟡 |
 | ISSU_11 |  | A Wallet Unit SHALL request the User's approval before storing a PID or attestation obtained from a PID Provider or Attestation Provider. When requesting approval, the Wallet Instance SHALL display... | 🟡 |
 | ISSU_11b |  | In case one or more of the verifications in ISSU_06 - ISSU_11 fail, the Wallet Unit SHALL immediately delete the PID or attestation it received. The Wallet Instance SHALL notify the User about the ... | 🟡 |
+| ISSU_12 |  | A PID Provider or Attestation Provider SHALL offer its PIDs or attestations in all formats required in the PID Rulebook or the applicable Attestation Rulebook, see [[Topic 12](./annex-2.02-high-lev... | 🟡 |
 | ISSU_12a |  | A Wallet Provider SHALL ensure that, when a User instructs their Wallet Unit to request a PID or attestation from a PID Provider or Attestation Provider, the Wallet Unit requests that PID or attest... | 🟡 |
 | ISSU_12b |  | During issuance of a PID or a device-bound attestation, the WSCA/WSCD or a key store SHALL generate a new key pair for a new PID or attestation, on request of the PID Provider or Attestation Provid... | 🟡 |
+| ISSU_12c |  | The expiration date of a PID SHALL be no later than the expiration date of the WUA presented as part of the PID issuance process. *Note: This requirement is an implication of WURevocation_18 in [To... | 🟡 |
+| ISSU_12d |  | If an Attestation Provider supports revocation chaining for its attestations per WURevocation_19 in [Topic 38](./annex-2.02-high-level-requirements-by-topic.md#a2322-topic-38---wallet-unit-revocati... | 🟡 |
 | ISSU_13 |  | A Wallet Provider SHALL ensure that at least one PID Provider is willing to issue a PID complying with [PID Rulebook] to Users of the Wallet Units it provides. | 🟡 |
 | ISSU_14 |  | A PID Provider SHALL ensure that all PIDs it issues to Wallet Units comply with the requirements specified in [PID Rulebook]. | 🟡 |
 | ISSU_15 |  | A PID Provider SHALL support the OpenID4VCI protocol referenced in ISSU_01 for issuing PIDs. | 🟡 |
 | ISSU_16 |  | Empty | 🟡 |
+| ISSU_17 |  | A PID Provider SHALL implement device binding for all PIDs it issues, meaning it SHALL ensure that a PID is cryptographically bound to the WSCA/WSCD included in the Wallet Unit, as specified in req... | 🟡 |
 | ISSU_18 |  | A PID Provider SHALL verify the identity of the subject of the PID in compliance with Level of Assurance (LoA) High requirements. *Note: These requirements will be determined by the relevant eID sc... | 🟡 |
 | ISSU_18a |  | A PID Provider SHALL ensure that the attributes attested in the PID issued are valid for the identified PID subject at any point of time of PID validity. | 🟡 |
+| ISSU_19 |  | For the verification of a WUA, a PID Provider SHALL accept the trust anchors in the Wallet Provider Trusted List it needs. *Note: a) The Wallet Provider Trusted List is explained in [[Topic 31](./a... | 🟡 |
 | ISSU_19a |  | A PID Provider SHALL support at least one Wallet Solution, meaning that it is willing and able to issue a PID to a Wallet Unit on request of the User. | 🟡 |
 | ISSU_20 |  | To inform its potential PID subjects about the Wallet Solution(s) they can use for requesting a PID, a PID Provider SHALL publish a list of supported Wallet Solutions in such a way that it can be e... | 🟡 |
+| ISSU_21 |  | Before issuing a PID, a PID Provider SHALL verify that the Wallet Provider mentioned in the Wallet Unit's WUA is present in a Wallet Provider Trusted List. The PID Provider SHALL also authenticate ... | 🟡 |
 | ISSU_22 |  | A PID Provider SHALL include its PID Provider access certificate in its Issuer metadata used in the common OpenID4VCI protocol referenced in ISSU_01. | 🟡 |
 | ISSU_22a |  | A PID Provider SHALL sign its metadata (as defined in OpenID4VCI) using the private key corresponding to its PID Provider access certificate. | 🟡 |
 | ISSU_22b |  | The common OpenID4VCI protocol referenced in requirement ISSU_01, or an EUDI Wallet-specific extension or profile thereof, SHALL enable a PID Provider or Attestation Provider to include its access ... | 🟡 |
+| ISSU_23 |  | For the verification of PID Provider access certificates, a Wallet Unit SHALL accept the trust anchors in the Trusted List(s) of Access Certificate Authorities it needs. *Note: a) Access Certificat... | 🟡 |
 | ISSU_23a |  | A Wallet Provider SHALL support at least one PID Provider, meaning that its Wallet Units SHALL be capable of requesting the issuance of a PID from these PID Provider(s), and that the Wallet Provide... | 🟡 |
 | ISSU_23b |  | Prior to or during installation of a Wallet Instance, the Wallet Provider SHALL notify the User about the PID Provider(s) that are supported by the Wallet Unit. | 🟡 |
 | ISSU_24 |  | A Wallet Unit SHALL authenticate and validate the PID Provider access certificate before requesting the issuance of a PID. The Wallet Unit SHALL verify that the access certificate is authentic and ... | 🟡 |
 | ISSU_24a |  | Before requesting the issuance of a PID, the Wallet Unit SHALL verify that the PID Provider is indeed a registered PID Provider. The Wallet Unit SHALL do so using information contained in the PID P... | 🟡 |
+| ISSU_25 |  | An Attestation Provider SHALL ensure all attestations issued to Wallet Units comply with the requirements specified in the applicable Rulebook, as described in [[Topic 12](./annex-2.02-high-level-r... | 🟡 |
 | ISSU_26 |  | An Attestation Provider SHALL support the OpenID4VCI protocol referenced in ISSU_01 for issuing attestations. | 🟡 |
+| ISSU_27 |  | An Attestation Provider SHOULD implement device binding for all attestations it issues. If an issued attestation is device-bound, the Attestation Provider SHALL ensure that the attestation is crypt... | 🟡 |
 | ISSU_27a |  | If the subject of the attestation is a natural person, an Attestation Provider SHALL verify the identity of the subject of the attestation, in compliance with applicable requirements and in accorda... | 🟡 |
 | ISSU_27b |  | If applicable, an Attestation Provider SHALL ensure that the attributes attested in the attestation issued are valid for the identified attestation subject. | 🟡 |
 | ISSU_27c |  | The Attestation Provider SHALL verify that the User requesting the attestation has the right to receive it. | 🟡 |
+| ISSU_28 |  | For the verification of a WUA, an Attestation Provider SHALL accept the trust anchors in the Wallet Provider Trusted List. *Note: The Wallet Provider Trusted List is explained in [[Topic 31](./anne... | 🟡 |
+| ISSU_29 |  | A QEAA Provider or PuB-EAA Provider SHALL support all Wallet Solutions, except in case the attestation in question is a Strong User Authentication (SUA) attestation as meant in [Topic 20](./annex-2... | 🟡 |
+| ISSU_30 |  | Before issuing an attestation, an Attestation Provider SHALL: - verify that the Wallet Provider mentioned in the Wallet Unit's WUA is present in the Wallet Provider Trusted List. - authenticate and... | 🟡 |
 | ISSU_31 |  | Empty | 🟡 |
 | ISSU_32 |  | An Attestation Provider SHALL include its Attestation Provider access certificate and registration certificate(s) in its Issuer metadata used in the common OpenID4VCI protocol referenced in ISSU_01. | 🟡 |
 | ISSU_32a |  | An Attestation Provider SHALL sign its metadata (as defined in OpenID4VCI) using the private key corresponding to its Attestation Provider access certificate. | 🟡 |
+| ISSU_33 |  | For the verification of Attestation Provider access certificates, a Wallet Unit SHALL accept the trust anchors in all applicable Access Certificate Authority Trusted List(s). *Note: Access Certific... | 🟡 |
 | ISSU_33a |  | For the verification of Attestation Provider registration certificates, a Wallet Unit SHALL accept the trust anchors in all Trusted List(s) for Providers of registration certificates. | 🟡 |
+| ISSU_33b |  | A Wallet Provider SHALL support all Attestation Providers, except possibly if the attestation in question is a Strong User Authentication (SUA) attestation as meant in [Topic 20](./annex-2.02-high-... | 🟡 |
+| ISSU_34 |  | A Wallet Unit SHALL authenticate and validate the Attestation Provider access certificate before requesting the issuance of an attestation. The Wallet Unit SHALL verify that the access certificate ... | 🟡 |
 | ISSU_34a |  | Before requesting the issuance of an attestation, the Wallet Unit SHALL verify that the Attestation Provider is a registered QEAA Provider, PuB-EAA Provider, or EAA Provider. The Wallet Unit SHALL ... | 🟡 |
 | ISSU_35 |  | A PID Provider or Attestation Provider SHALL ensure that all unique elements in a PID or attestation have a negligible chance of having the same value across all PIDs or attestations issued by that... | 🟡 |
 | ISSU_35a |  | A Wallet Provider SHALL ensure that all unique elements in a WUA have a negligible chance of having the same value across all WUAs issued by that Wallet Provider. This SHALL include at least a) the... | 🟡 |

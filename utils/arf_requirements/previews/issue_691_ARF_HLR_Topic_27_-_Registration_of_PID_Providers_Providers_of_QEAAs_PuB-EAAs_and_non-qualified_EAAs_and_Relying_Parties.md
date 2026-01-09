@@ -3,17 +3,18 @@
 **Topic:** Topic 27 - Registration of PID Providers, Providers of QEAAs, PuB-EAAs, and non-qualified EAAs, and Relying Parties
 
 **Requirements ARF 2.5.0:** 37
-**Requirements ARF 2.7.3:** 37
+**Requirements ARF 2.7.3:** 39
 
 ---
 
 ## Diff ARF 2.5.0 → ARF 2.7.3
 
-### ℹ️ No changes detected
+### ✅ Requirements added in ARF 2.7.3 (2):
 
-The requirements are identical between ARF 2.5.0 and ARF 2.7.3.
+- **Reg_10**: A Member State SHALL ensure that an Access Certificate Authority notified according to [[Topic 31](./annex-2.02-high-level-requirements-by-topic.md#a2320-topic-31---notification-and-publication-of-pid-provider-wallet-provider-attestation-provider-access-certificate-authority-and-provider-of-registration-certificates)] issues an access certificate to all PID Providers, QEAA Providers, PuB-EAA Providers, non-qualified EAA Providers, and Relying Parties registered in one of the Member State's registries.
+- **Reg_13**: The common Certificate Policy mentioned in Reg_12 SHALL require that an Access Certificate Authority logs all issued access certificates for Certificate Transparency (CT), according to all requirements in [Topic 55](./annex-2.02-high-level-requirements-by-topic.md#a2333-topic-55---certificate-transparency).
 
-**Total requirements ARF 2.7.3:** 37
+**Total requirements ARF 2.7.3:** 39
 **Total requirements ARF 2.5.0:** 37
 ---
 
@@ -50,9 +51,10 @@ Legend:
 
 ## Diff ARF 2.5.0 → ARF 2.7.3
 
-### ℹ️ No changes detected
+### ✅ Requirements added in ARF 2.7.3 (2):
 
-The requirements are identical between ARF 2.5.0 and ARF 2.7.3.
+- **Reg_10**: A Member State SHALL ensure that an Access Certificate Authority notified according to [[Topic 31](./annex-2.02-high-level-requirements-by-topic.md#a2320-topic-31---notification-and-publication-of-pid-provider-wallet-provider-attestation-provider-access-certificate-authority-and-provider-of-registration-certificates)] issues an access certificate to all PID Providers, QEAA Providers, PuB-EAA Providers, non-qualified EAA Providers, and Relying Parties registered in one of the Member State's registries.
+- **Reg_13**: The common Certificate Policy mentioned in Reg_12 SHALL require that an Access Certificate Authority logs all issued access certificates for Certificate Transparency (CT), according to all requirements in [Topic 55](./annex-2.02-high-level-requirements-by-topic.md#a2333-topic-55---certificate-transparency).
 
 
 | Status | **Index** | **Requirement specification** | **IT-Wallet Mapping & Documentation** |
@@ -68,8 +70,10 @@ The requirements are identical between ARF 2.5.0 and ARF 2.7.3.
 | 🟡 | Reg_07 | A Member State SHALL enable a registered PID Provider, QEAA Provider, PuB-EAA Provider, non-qualified EAA Provider, or Relying Party to update the information registered on it, using a process comparable to the original registration process. For Relying Parties, this SHALL be possible using the API or user interface mentioned in Reg_24. |  |
 | 🟡 | Reg_08 | A registered PID Provider, QEAA Provider, PuB-EAA Provider, non-qualified EAA Provider, or Relying Party SHALL make any updates necessary to ensure the continued correctness of the registered information without undue delay. |  |
 | 🟡 | Reg_09 | Member States SHALL log all changes made on the information registered regarding a PID Provider, QEAA Provider, PuB-EAA Provider, non-qualified EAA Provider, or Relying Party, including at least initial registration, updates, deletion of information, and suspension or cancellation. |  |
+| 🟡 | Reg_10 | A Member State SHALL ensure that an Access Certificate Authority notified according to [[Topic 31](./annex-2.02-high-level-requirements-by-topic.md#a2320-topic-31---notification-and-publication-of-pid-provider-wallet-provider-attestation-provider-access-certificate-authority-and-provider-of-registration-certificates)] issues an access certificate to all PID Providers, QEAA Providers, PuB-EAA Providers, non-qualified EAA Providers, and Relying Parties registered in one of the Member State's registries. |  |
 | 🟡 | Reg_11 | A Member State SHALL ensure that the issuance process of access certificates by their notified Access Certificate Authority(s) complies with a common Certificate Policy for Access Certificate Authority. |  |
 | 🟡 | Reg_12 | The Commission SHALL provide technical specifications establishing the common Access Certificate Authority Certificate Policy mentioned in Reg_11. | Pending: Not yet established, planned at EU level. |
+| 🟡 | Reg_13 | The common Certificate Policy mentioned in Reg_12 SHALL require that an Access Certificate Authority logs all issued access certificates for Certificate Transparency (CT), according to all requirements in [Topic 55](./annex-2.02-high-level-requirements-by-topic.md#a2333-topic-55---certificate-transparency). |  |
 | 🟡 | Reg_14 | The common Certificate Policy mentioned in Reg_12 SHALL require that an Access Certificate Authority provides one or more method(s) to revoke the access certificates it issued. | Pending: Not yet established, planned at EU level. |
 | 🟡 | Reg_15 | The common Certificate Policy mentioned in Reg_12 SHALL include a policy for revocation, which SHALL require that an Access Certificate Authority revokes an access certificate at least when: - the certificate subject which is a Relying Party is suspended or cancelled by the respective Registrar, - the certificate subject which is a PID Provider, QEAA Provider, PuB-EAA Provider, or non-qualified EAA Provider is suspended or cancelled by the respective Registrar, - on request of the certificate subject, or - on request of a competent national authority. | Pending: Not yet established, planned at EU level. |
 | 🟡 | Reg_16 | The common Certificate Policy mentioned in Reg_12 SHALL specify the profile of access certificates in detail. | Pending: Not yet established, planned at EU level. |
@@ -93,8 +97,7 @@ The requirements are identical between ARF 2.5.0 and ARF 2.7.3.
 | 🟡 | Reg_30 | Empty |  |
 | 🟡 | Reg_31 | The common Certificate Policy mentioned in Reg_12 SHALL require that an access certificate contains a name for the PID Provider, QEAA Provider, PuB-EAA Provider, non-qualified EAA Provider, or Relying Party, in a format suitable for presenting to a User. |  |
 | 🟡 | Reg_32 | The common Certificate Policy mentioned in Reg_12 SHALL require that an access certificate contains an EU-wide unique identifier for the PID Provider, QEAA Provider, PuB-EAA Provider, non-qualified EAA Provider, or Relying Party, and SHALL specify a method for deriving such identifiers. *Note: a) The EU-wide unique identifier could, for example, be a composition of a unique identifier of the Registrar, defined in the policy, and a unique identifier for the Relying Party allocated by this Registrar. b) This Relying Party identifier is identical in all access certificates issued to a given entity. |  |
-| 🟡 | Reg_33 | Empty |  |
-## C. Requirements for the registration of PID Providers
+| 🟡 | Reg_33 | Empty |  |## C. Requirements for the registration of PID Providers
 
 | **Index** | **Requirement specification** | **IT-Wallet Mapping & Documentation** |
 |---|-----------|------------------------------|---------------------------------------|

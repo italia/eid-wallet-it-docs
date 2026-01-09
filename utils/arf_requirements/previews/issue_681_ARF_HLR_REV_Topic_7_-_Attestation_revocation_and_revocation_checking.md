@@ -3,17 +3,18 @@
 **Topic:** Topic 7 - Attestation revocation and revocation checking
 
 **Requirements ARF 2.5.0:** 22
-**Requirements ARF 2.7.3:** 22
+**Requirements ARF 2.7.3:** 24
 
 ---
 
 ## Diff ARF 2.5.0 → ARF 2.7.3
 
-### ℹ️ No changes detected
+### ✅ Requirements added in ARF 2.7.3 (2):
 
-The requirements are identical between ARF 2.5.0 and ARF 2.7.3.
+- **VCR_01a**: A Wallet Provider SHALL use either the second or the third of the methods specified in VCR_01 for revocation of a WUA. *Note: Due to requirement WUA_08 in [Topic 9](./annex-2.02-high-level-requirements-by-topic.md#a236-topic-9---wallet-unit-attestation), it is not possible to issue short-lived WUAs. This implies that all WUAs are revocable.
+- **VCR_07b**: If a PID or attestation is revocable, the PID Provider or Attestation Provider SHOULD revoke that PID if the Wallet Unit on which it resides is revoked, in compliance with requirement WURevocation_18 in [Topic 38](./annex-2.02-high-level-requirements-by-topic.md#a2322-topic-38---wallet-unit-revocation).
 
-**Total requirements ARF 2.7.3:** 22
+**Total requirements ARF 2.7.3:** 24
 **Total requirements ARF 2.5.0:** 22
 ---
 
@@ -35,14 +36,16 @@ Legend:
 
 ## Diff ARF 2.5.0 → ARF 2.7.3
 
-### ℹ️ No changes detected
+### ✅ Requirements added in ARF 2.7.3 (2):
 
-The requirements are identical between ARF 2.5.0 and ARF 2.7.3.
+- **VCR_01a**: A Wallet Provider SHALL use either the second or the third of the methods specified in VCR_01 for revocation of a WUA. *Note: Due to requirement WUA_08 in [Topic 9](./annex-2.02-high-level-requirements-by-topic.md#a236-topic-9---wallet-unit-attestation), it is not possible to issue short-lived WUAs. This implies that all WUAs are revocable.
+- **VCR_07b**: If a PID or attestation is revocable, the PID Provider or Attestation Provider SHOULD revoke that PID if the Wallet Unit on which it resides is revoked, in compliance with requirement WURevocation_18 in [Topic 38](./annex-2.02-high-level-requirements-by-topic.md#a2322-topic-38---wallet-unit-revocation).
 
 
 | Status | **Index** | **Requirement specification** | IT-Wallet Mapping & Documentation |
 |---|---------|------------------|-----------------------------------|
 | 🟡 | VCR_01 | A PID Provider, QEAA Provider, or PuB-EAA Provider SHALL use one of the following methods for revocation of a PID, QEAA, or PuB-EAA: - Only issue short-lived attestations having a validity period of 24 hours or less, such that revocation will never be necessary, - Use an Attestation Status List mechanism specified per VCR_11, or - Use an Attestation Revocation List mechanism specified per VCR_11. *Note: The 24-hour period originates from ETSI EN 319 411-1 V1.4.1, requirement REV-6.2.4-03A. This requires that the process of revocation must take at most 24 hours. Consequently, revocation may make no sense if the attestation is valid for less than 24 hours, because it may reach the end of its validity period before it is revoked. |  |
+| 🟡 | VCR_01a | A Wallet Provider SHALL use either the second or the third of the methods specified in VCR_01 for revocation of a WUA. *Note: Due to requirement WUA_08 in [Topic 9](./annex-2.02-high-level-requirements-by-topic.md#a236-topic-9---wallet-unit-attestation), it is not possible to issue short-lived WUAs. This implies that all WUAs are revocable. |  |
 | 🟡 | VCR_02 | For non-qualified EAAs, the relevant Rulebook SHALL specify whether that type of EAA must be revocable. If a non-qualified EAA type must be revocable, the relevant Rulebook SHALL determine which of the methods mentioned in VCR_01 must be implemented by the relevant EAA Providers for the revocation of such an EAA. |  |
 | 🟡 | VCR_03 | If a PID or attestation is revocable, the PID Provider of a given PID, or the Attestation Provider of a given attestation, SHALL be the only party in the EUDI Wallet ecosystem responsible for executing the revocation of that PID or attestation. *Note: A PID Provider, Attestation Provider MAY outsource the operation of the revocation process to a third party. |  |
 | 🟡 | VCR_03a | The Wallet Provider of a given WUA SHALL be the only party in the EUDI Wallet ecosystem responsible for executing the revocation of that WUA. *Note: A Wallet Provider MAY outsource the operation of the revocation process to a third party. |  |
@@ -51,6 +54,7 @@ The requirements are identical between ARF 2.5.0 and ARF 2.7.3.
 | 🟡 | VCR_06 | If a PID, attestation, or WUA is revocable, the PID Provider, Attestation Provider, or Wallet Provider SHALL revoke a PID, attestation, or WUA when its security has been compromised. |  |
 | 🟡 | VCR_07 | A Wallet Provider SHALL revoke all valid WUAs issued to a Wallet Unit upon the explicit request of the User to revoke their Wallet Unit. |  |
 | 🟡 | VCR_07a | If a PID or attestation is revocable, the PID Provider or Attestation Provider SHOULD revoke that PID or attestation upon the explicit request of the User to whom the PID or the attestation was issued. |  |
+| 🟡 | VCR_07b | If a PID or attestation is revocable, the PID Provider or Attestation Provider SHOULD revoke that PID if the Wallet Unit on which it resides is revoked, in compliance with requirement WURevocation_18 in [Topic 38](./annex-2.02-high-level-requirements-by-topic.md#a2322-topic-38---wallet-unit-revocation). |  |
 | 🟡 | VCR_08 | If a PID is revocable, the PID Provider SHALL revoke a PID upon the death of the natural person who is the subject of the PID, or the cease of activity of the legal person who is the subject of the PID. |  |
 | 🟡 | VCR_09 | If a PID, attestation, or WUA is revocable, the PID Provider, Attestation Provider or Wallet Provider SHALL revoke a PID, attestation, or WUA if the value of one or more attributes in the PID, attestation, or WUA was changed (including attributes being added or deleted) and it is still valid for at least 24 hours. Subsequently, if the User's contact details are known, the PID Provider, Attestation Provider, or Wallet Provider SHOULD, via an out-of-band manner, notify the User about the revocation and ask the User to request re-issuance of the PID, attestation, or WUA using their Wallet Unit. *Note: If the value of the attributes is determined by a party different from the Provider, such as an Authentic Source, the Provider is responsible for ensuring that this third party notifies them about such changes. |  |
 | 🟡 | VCR_10 | Wallet Providers SHALL implement the attestation revocation mechanisms specified per VCR_11 in their Wallet Solutions. |  |

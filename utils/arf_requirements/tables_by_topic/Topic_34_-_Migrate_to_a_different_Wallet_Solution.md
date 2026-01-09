@@ -12,9 +12,11 @@
 | Mig_06 |  | Directly after installation of a new Wallet Instance, the Wallet Instance SHALL enable the User to import a Migration Object from an external storage or remote storage location indicated by the Use... | 🟡 |
 | Mig_07 |  | When importing a Migration Object, for each PID and device-bound attestation listed in the Migration Object, the Wallet Unit SHALL enable the User to select that PID or attestation. When a PID or d... | 🟡 |
 | Mig_07a |  | When importing a Migration Object, for each non device-bound attestation listed in the Migration Object, the Wallet Unit SHALL enable the User to select that attestation. When an attestation is sel... | 🟡 |
+| Mig_07b |  | When importing a Migration Object, the Wallet Unit SHALL ask the User whether they want to restore the log from the Migration Object. When the User agrees, the Wallet Unit SHALL restore the log, an... | 🟡 |
 | Mig_08 |  | Empty | 🟡 |
 | Mig_09 |  | Empty | 🟡 |
 | Mig_10 |  | Empty | 🟡 |
+| Mig_11 |  | The processes and interfaces used for issuance of a PID or attestation as part of a migration process SHALL be the same as those used for a 'normal' issuance process, as specified in [Topic 10](./a... | 🟡 |
 | Mig_12 |  | Empty | 🟡 |
 | Mig_13 |  | Empty | 🟡 |
 | Mig_14 |  | Empty | 🟡 |

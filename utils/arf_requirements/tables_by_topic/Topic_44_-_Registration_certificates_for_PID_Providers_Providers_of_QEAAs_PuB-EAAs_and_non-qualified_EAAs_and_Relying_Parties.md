@@ -8,8 +8,14 @@
 | RPRC_04 |  | If the subject of the registration certificate uses the services of an intermediary (see [Topic 52](./annex-2.02-high-level-requirements-by-topic.md#a2330-topic-52-relying-party-intermediaries)), t... | 🟡 |
 | RPRC_04a |  | Empty | 🟡 |
 | RPRC_05 |  | If the subject of the registration certificate is not a Relying Party (i.e. in the terms of CIR 2025/848, a Service Provider), the certificate SHALL NOT contain the intended use as meant in Annex I... | 🟡 |
+| RPRC_06 |  | The contents of a registration certificate SHALL include a name for the subject of the certificate, in a format suitable for presenting to a User. *Note: A Wallet Unit needs the name of a Relying P... | 🟡 |
+| RPRC_07 |  | The contents of a registration certificate SHALL include an EU-wide unique identifier for the subject of the certificate. *Note: a) A Wallet Unit needs an identifier for a Relying Party at least to... | 🟡 |
 | RPRC_08 |  | The EU-wide unique identifier meant in RPRC_07 SHALL be identical in all registration certificates issued for a given entity. *Note: In case the registration certificates issued to an intermediated... | 🟡 |
+| RPRC_09 |  | A Member State Registrar MAY decide that, during the registration process for Relying Parties, as specified in [Topic 27](./annex-2.02-high-level-requirements-by-topic.md#a2316-topic-27---registrat... | 🟡 |
 | RPRC_10 |  | If, during registration, a Relying Party received one or more registration certificates, it SHALL distribute these to all its Relying Party Instances. | 🟡 |
+| RPRC_11 |  | The contents of a registration certificate issued to a Relying Party SHALL at least one of the following: a) the URL of a web form provided by the Relying Party, which Users can use to send data de... | 🟡 |
+| RPRC_12 |  | The contents of a registration certificate issued to a Relying Party SHALL contain the name and country of the Data Protection Authority supervising the Relying Party. In addition, the registration... | 🟡 |
+| RPRC_13 |  | A Registrar MAY decide that, during the registration process for PID Providers, QEAA Providers, PuB-EAA Provider, or non-qualified EAA Providers, as specified in [Topic 27](./annex-2.02-high-level-... | 🟡 |
 | RPRC_14 |  | If, during registration, a PID Provider, QEAA Provider, PuB-EAA Provider, or non-qualified EAA Provider received a registration certificate, it SHALL distribute it to all its service supply points.... | 🟡 |
 | RPRC_15 |  | The contents of a registration certificate issued to a PID Provider, a QEAA Provider, a PuB-EAA Provider, or a non-qualified EAA Provider SHALL contain the type(s) of attestation that this entity i... | 🟡 |
 | RPRC_16 |  | Either after receiving a presentation request or as a general User setting, a Wallet Unit SHALL offer the User the possibility to indicate whether the User wants to verify the information registere... | 🟡 |

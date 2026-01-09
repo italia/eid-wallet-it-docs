@@ -56,13 +56,7 @@ The requirements are identical between ARF 2.5.0 and ARF 2.7.3.
 | 🟧 | EDP_08 | The Commission SHALL take measures to ensure a technical specification is created establishing common mechanisms for the specification of embedded disclosure policies by Attestation Providers, and for the evaluation of such policies by Wallet Units. |  |
 | 🟧 | EDP_09 | An Attestation Provider SHALL include an embedded disclosure policy (if any) by value in the Issuer metadata related to the attestation, in compliance with the [OpenID4VCI] issuance protocol or an extension thereof specified in the technical specification mentioned in EDP_08. |  |
 | 🟧 | EDP_10 | During attestation issuance, a Wallet Unit SHALL retrieve and store locally the corresponding embedded disclosure policy, if any. |  |
-| 🟧 | EDP_11 | An Attestation Provider SHALL revoke an attestation if a corresponding embedded disclosure policy is added, changed, or deleted. |  |**EDP_02**: Changed identifier retrieval source for intermediaries
-- **Context**: 'Authorised relying parties only policy' - handling intermediated Relying Parties
-- **OLD**: "retrieve the unique identifier of the intermediated Relying Party from the presentation request or from the Registrar's online service (as applicable)"
-- **NEW**: "retrieve the unique identifier of the intermediated Relying Party from the presentation request or from the registration certificate of the intermediated Relying Party"
-- **Key change**: Removed "Registrar's online service (as applicable)" option, replaced with "registration certificate of the intermediated Relying Party"
-
-### Analysis of EDP_02 Change:
+| 🟧 | EDP_11 | An Attestation Provider SHALL revoke an attestation if a corresponding embedded disclosure policy is added, changed, or deleted. |  |### Analysis of EDP_02 Change:
 
 **Previous approach (two options):**
 1. Presentation request

@@ -3,17 +3,18 @@
 **Topic:** Topic 34 - Migrate to a different Wallet Solution
 
 **Requirements ARF 2.5.0:** 18
-**Requirements ARF 2.7.3:** 18
+**Requirements ARF 2.7.3:** 20
 
 ---
 
 ## Diff ARF 2.5.0 → ARF 2.7.3
 
-### ℹ️ No changes detected
+### ✅ Requirements added in ARF 2.7.3 (2):
 
-The requirements are identical between ARF 2.5.0 and ARF 2.7.3.
+- **Mig_07b**: When importing a Migration Object, the Wallet Unit SHALL ask the User whether they want to restore the log from the Migration Object. When the User agrees, the Wallet Unit SHALL restore the log, and SHALL append future transactions to this log according to the requirements in [Topic 19](./annex-2.02-high-level-requirements-by-topic.md#a2312-topic-19---user-navigation-requirements-dashboard-logs-for-transparency).
+- **Mig_11**: The processes and interfaces used for issuance of a PID or attestation as part of a migration process SHALL be the same as those used for a 'normal' issuance process, as specified in [Topic 10](./annex-2.02-high-level-requirements-by-topic.md#a237-topic-10---issuing-a-pid-or-attestation-to-a-wallet-unit).
 
-**Total requirements ARF 2.7.3:** 18
+**Total requirements ARF 2.7.3:** 20
 **Total requirements ARF 2.5.0:** 18
 ---
 
@@ -63,9 +64,10 @@ UPDATED TO ARF 2.7.3.
 
 ## Diff ARF 2.5.0 → ARF 2.7.3
 
-### ℹ️ No changes detected
+### ✅ Requirements added in ARF 2.7.3 (2):
 
-The requirements are identical between ARF 2.5.0 and ARF 2.7.3.
+- **Mig_07b**: When importing a Migration Object, the Wallet Unit SHALL ask the User whether they want to restore the log from the Migration Object. When the User agrees, the Wallet Unit SHALL restore the log, and SHALL append future transactions to this log according to the requirements in [Topic 19](./annex-2.02-high-level-requirements-by-topic.md#a2312-topic-19---user-navigation-requirements-dashboard-logs-for-transparency).
+- **Mig_11**: The processes and interfaces used for issuance of a PID or attestation as part of a migration process SHALL be the same as those used for a 'normal' issuance process, as specified in [Topic 10](./annex-2.02-high-level-requirements-by-topic.md#a237-topic-10---issuing-a-pid-or-attestation-to-a-wallet-unit).
 
 
 | Status | **Index** | **Requirement specification** | **IT-Wallet Mapping & Documentation** |
@@ -80,15 +82,16 @@ The requirements are identical between ARF 2.5.0 and ARF 2.7.3.
 | 🟡 | Mig_06 | Directly after installation of a new Wallet Instance, the Wallet Instance SHALL enable the User to import a Migration Object from an external storage or remote storage location indicated by the User, from among the storage options supported by the Wallet Unit. |  |
 | 🟡 | Mig_07 | When importing a Migration Object, for each PID and device-bound attestation listed in the Migration Object, the Wallet Unit SHALL enable the User to select that PID or attestation. When a PID or device-bound attestation is selected, the Wallet Unit SHALL request the respective PID Provider or Attestation Provider to re-issue that PID or attestation. If the User selects a PID, the PID SHALL be the first to be restored. |  |
 | 🟡 | Mig_07a | When importing a Migration Object, for each non device-bound attestation listed in the Migration Object, the Wallet Unit SHALL enable the User to select that attestation. When an attestation is selected, the Wallet Unit SHALL, depending on whether the Migration Object contains attribute identifiers and attribute values (see Mig_03a), either restore the attestation or request the respective Attestation Provider to re-issue it. |  |
+| 🟡 | Mig_07b | When importing a Migration Object, the Wallet Unit SHALL ask the User whether they want to restore the log from the Migration Object. When the User agrees, the Wallet Unit SHALL restore the log, and SHALL append future transactions to this log according to the requirements in [Topic 19](./annex-2.02-high-level-requirements-by-topic.md#a2312-topic-19---user-navigation-requirements-dashboard-logs-for-transparency). |  |
 | 🟡 | Mig_08 | Empty |  |
 | 🟡 | Mig_09 | Empty |  |
 | 🟡 | Mig_10 | Empty |  |
+| 🟡 | Mig_11 | The processes and interfaces used for issuance of a PID or attestation as part of a migration process SHALL be the same as those used for a 'normal' issuance process, as specified in [Topic 10](./annex-2.02-high-level-requirements-by-topic.md#a237-topic-10---issuing-a-pid-or-attestation-to-a-wallet-unit). |  |
 | 🟡 | Mig_12 | Empty |  |
 | 🟡 | Mig_13 | Empty |  |
 | 🟡 | Mig_14 | Empty |  |
 | 🟡 | Mig_15 | Empty |  |
-| 🟡 | Mig_16 | Empty |  |
-## Summary of Changes
+| 🟡 | Mig_16 | Empty |  |## Summary of Changes
 
 ### No Substantive Changes
 

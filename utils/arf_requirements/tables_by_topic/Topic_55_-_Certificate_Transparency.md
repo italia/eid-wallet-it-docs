@@ -7,3 +7,4 @@
 | CT_03 |  | In case a CT log provider for access certificates is available, all Access CAs SHALL act as monitors in the CT ecosystem. Access CAs SHOULD still monitor the CT logs in situations of temporary unav... | 🟡 |
 | CT_04 |  | An Access CA SHALL include at least one Signed Certificate Timestamp (SCT) in each access certificate. | 🟡 |
 | CT_05 |  | When verifying an access certificate during PID or attestation issuance or presentation, a Wallet Unit SHALL also verify that the access certificate includes at least one valid Signed Certificate T... | 🟡 |
+| CT_06 |  | If an access certificate does not include a valid SCT, a Wallet Unit SHALL handle this as a failure or Relying Party authentication, in compliance with all requirements in [[Topic 6](./annex-2.02-h... | 🟡 |
