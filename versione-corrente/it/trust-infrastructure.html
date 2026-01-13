@@ -246,7 +246,7 @@ Questa infrastruttura di trust lavora in coordinamento con l'Infrastruttura di R
 </table>
 </section>
 <section id="integrazione-dell-infrastruttura-di-trust-e-del-registro">
-<h2><span class="section-number">6.2. </span>Integrazione dell'Infrastruttura di Trust e del Registro<a class="headerlink" href="#integrazione-dell-infrastruttura-di-trust-e-del-registro" title="Link to this heading">¶</a></h2>
+<span id="trust-infrastructure-integrazione-tra-infrastruttura-di-trust-e-registry"></span><h2><span class="section-number">6.2. </span>Integrazione dell'Infrastruttura di Trust e del Registro<a class="headerlink" href="#integrazione-dell-infrastruttura-di-trust-e-del-registro" title="Link to this heading">¶</a></h2>
 <p>L'Infrastruttura di Trust implementa il componente Federation Registry dell'Infrastruttura di Registro. Il Federation Registry mantiene l'elenco autorevole delle entità fidate attraverso gli endpoint di federazione definiti in questa sezione, inclusi l'elenco delle entità (/list), le dichiarazioni dei subordinati (/fetch), la validazione dei trust mark (/trust_mark_status) e la gestione delle chiavi storiche (/historical-jwks).</p>
 <p>Questo Federation Registry opera insieme ad altri componenti del registro (Claims Registry, AS Registry, Catalogo degli Attestati Elettronici, Taxonomy) per fornire supporto completo all'ecosistema. Per l'architettura completa del registro e le interazioni dei componenti, vedi <a class="reference internal" href="registry.html#infrastruttura-del-registro"><span class="std std-ref">Infrastruttura del Registro</span></a>.</p>
 </section>
@@ -381,7 +381,7 @@ Questa infrastruttura di trust lavora in coordinamento con l'Infrastruttura di R
 </table>
 </section>
 <section id="endpoint-api-di-federazione">
-<h2><span class="section-number">6.5. </span>Endpoint API di Federazione<a class="headerlink" href="#endpoint-api-di-federazione" title="Link to this heading">¶</a></h2>
+<span id="trust-infrastructure-endpoint-delle-api-della-federazione"></span><h2><span class="section-number">6.5. </span>Endpoint API di Federazione<a class="headerlink" href="#endpoint-api-di-federazione" title="Link to this heading">¶</a></h2>
 <p>OpenID Federation 1.0 utilizza Servizi Web RESTful protetti su HTTPs. OpenID Federation 1.0 definisce quali sono gli endpoint web che i partecipanti DEVONO rendere pubblicamente disponibili. La tabella sottostante riassume gli endpoint e i loro ambiti.</p>
 <p>Tutti gli endpoint elencati di seguito sono definiti nelle specifiche <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a>.</p>
 <table class="longtable docutils align-default">
@@ -1073,7 +1073,7 @@ I meccanismi di Trust Evaluation sono distinti dai flussi di protocollo e sono i
 <p>Anche se il Trust Anchor ha cambiato le sue chiavi crittografiche per la firma digitale, l'endpoint delle Chiavi Storiche di Federazione rende sempre disponibili le chiavi non più utilizzate per le verifiche di firma storiche.</p>
 </section>
 <section id="x-509-pki">
-<h2><span class="section-number">6.14. </span>X.509 PKI<a class="headerlink" href="#x-509-pki" title="Link to this heading">¶</a></h2>
+<span id="trust-infrastructure-pki-x509"></span><h2><span class="section-number">6.14. </span>X.509 PKI<a class="headerlink" href="#x-509-pki" title="Link to this heading">¶</a></h2>
 <p>L'Infrastruttura a Chiave Pubblica (PKI) X.509 è un framework progettato per creare, gestire, distribuire, utilizzare, archiviare e revocare certificati digitali X.509. Al centro della PKI X.509 c'è il concetto di Autorità di Certificazione (CA), che emette certificati digitali alle entità. Questi certificati sono richiesti per stabilire comunicazioni sicure su reti, incluso internet, abilitando funzionalità di crittografia e firma digitale. La gerarchia PKI tipicamente coinvolge una CA radice in cima, con una o più CA subordinate sotto, formando una catena di trust. Le entità si affidano a questa catena di trust per verificare l'autenticità dei certificati. Gli standard X.509 definiscono il formato dei certificati a chiave pubblica.</p>
 <p>L'integrazione di OpenID Federation 1.0 con la PKI tradizionale basata su X.509 (rfc:5280), completata da un'API RESTful, mira a migliorare l'infrastruttura con funzionalità aggiuntive, rendendola navigabile e trasparente.</p>
 <p>Questo approccio sfrutta la natura dinamica e flessibile di OpenID Federation insieme al requisito dei Certificati X.509 per applicazioni legacy e scopi di interoperabilità, mirando ad affrontare le esigenze in evoluzione di verifica dello stato di registrazione dei partecipanti alla federazione, la loro conformità alle regole condivise e la gestione generale e interoperabile del trust in ecosistemi digitali multilaterali.</p>
@@ -1335,7 +1335,7 @@ BAMCA0gAMEUCIQDFmNugWs3S/qfzwhK09S8U0qfMF+pezrJpfqkPWpWrpgIgbbeb
 <p>Utilizzando il livello sottostante stabilito con OpenID Federation 1.0, tutti i certificati X.509 sono emessi in modo propriamente decentralizzato utilizzando il pattern di delegazione.</p>
 </section>
 <section id="revoca-di-certificati-x-509">
-<h3><span class="section-number">6.14.3. </span>Revoca di Certificati X.509<a class="headerlink" href="#revoca-di-certificati-x-509" title="Link to this heading">¶</a></h3>
+<span id="trust-infrastructure-revoca-dei-certificati-x509"></span><h3><span class="section-number">6.14.3. </span>Revoca di Certificati X.509<a class="headerlink" href="#revoca-di-certificati-x-509" title="Link to this heading">¶</a></h3>
 <p>Un Certificato X.509 può essere revocato dal suo Emittente.
 Le liste di revoca, e/o qualsiasi altro meccanismo di controllo della revoca, sono particolarmente richieste per i Certificati X.509 con un tempo di scadenza superiore a 24 ore; altrimenti, non sono richieste.</p>
 <p>Quando l'emittente del Certificato X.509 è la Foglia e quindi il Certificato X.509 si riferisce a se stesso, se il tempo di scadenza del certificato è superiore a 24 ore dal tempo <code class="docutils literal notranslate"><span class="pre">X509_NOT_VALID_BEFORE</span></code>, DEVE implementare una CRL relativa al certificato emesso e mantenerla aggiornata.
@@ -1476,7 +1476,7 @@ Signature:
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 23/12/2025.
+      Ultimo aggiornamento 13/01/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

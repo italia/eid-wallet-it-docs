@@ -228,6 +228,7 @@ The flow is shown below with illustrative wireframes.
     Example of the User Experience during the issuance an Authentic Electronic Attestation from Authentic Source.
 
 .. only:: format_latex
+
   .. figure:: ./images/pdf/Issuance-from-Authentic-Source.pdf
     :alt: Example of User Experience in the issuance an Authentic Electronic Attestation from Authentic Source.
     :width: 100%
@@ -410,6 +411,7 @@ The flow is shown below with illustrative wireframes.
     Example of User Experience in remote, same-device presentation.
 
 .. only:: format_latex
+
   .. figure:: ./images/pdf/Remote-presentation-same-device.pdf
     :alt: Example of User Experience in remote, same-device presentation.
     :width: 100%
@@ -439,6 +441,7 @@ The flow is shown below with illustrative wireframes.
 
 
 .. only:: format_latex
+
   .. figure:: ./images/pdf/Remote-presentation-cross-device.pdf
     :alt: Example of User Experience in remote, cross-device presentation.
     :width: 100%
@@ -686,6 +689,7 @@ Both flows are shown below with illustrative wireframes.
     Example of same-device Authentication User Experience.
 
 .. only:: format_latex
+
   .. figure:: ./images/pdf/Authentication-same-device.pdf
     :alt: Example of same-device Authentication User Experience.
     :width: 100%
@@ -701,6 +705,7 @@ Both flows are shown below with illustrative wireframes.
     Example of cross-device Authentication User Experience.
 
 .. only:: format_latex
+
   .. figure:: ./images/pdf/Authentication-cross-device.pdf
     :alt: Example of cross-device Authentication User Experience.
     :width: 100%
@@ -838,6 +843,7 @@ The flow is shown below with illustrative wireframes.
      Example of User Experience in Updating an Electronic Attestation.
 
 .. only:: format_latex
+
   .. figure:: ./images/pdf/Update-EAA.pdf
     :alt: Example of User Experience in Updating an Electronic Attestation
     :width: 100%
@@ -880,6 +886,7 @@ The flow is shown below with illustrative wireframes.
 
 
 .. only:: format_latex
+
   .. figure:: ./images/pdf/Revocation-EAA-from-wallet.pdf
     :alt: Example of User Experience in Revoking an Electronic Attestation.
     :width: 100%
@@ -950,6 +957,7 @@ The flow is shown below with illustrative wireframes.
 
 
 .. only:: format_latex
+
   .. figure:: ./images/pdf/wallet-deactivation.pdf
     :alt: Example of User Experience in Deactivating a Wallet Instance
     :width: 100%

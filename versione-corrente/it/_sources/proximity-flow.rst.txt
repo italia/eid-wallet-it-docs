@@ -29,7 +29,7 @@ Le Istanze di Relying Party e Wallet registrate nell'ecosistema IT-Wallet DEVONO
 
 - *Flusso di Recupero del Dispositivo Supervisionato* dove un supervisore umano supervisiona il processo di verifica in persona, in contrasto con il *flusso non supervisionato* dove la verifica potrebbe avvenire attraverso sistemi automatizzati senza supervisione umana (:ref:`WP_095 <wallet-credential-presentation-testcases>`).
 - *Autenticazione dell'Istanza di Relying Party* seguendo i meccanismi definiti nella `ISO18013-5`_ per il *reader authentication* (:ref:`WP_098 <wallet-credential-presentation-testcases>`).
-- *Tipo di Documento* domestico e *Namespace* definiti in questa specifica tecnica in aggiunta a quelli già definiti nell'`ISO18013-5`_ per l'mDL (vedi :ref:`credential-data-model:Attestato Elettronico in formato mdoc-CBOR` per maggiori dettagli) (:ref:`WP_099 <wallet-credential-presentation-testcases>`).
+- *Tipo di Documento* domestico e *Namespace* definiti in questa specifica tecnica in aggiunta a quelli già definiti nell'`ISO18013-5`_ per l'mDL (vedi :ref:`credential-data-model-attestato-elettronico-in-formato-mdoc-cbor` per maggiori dettagli) (:ref:`WP_099 <wallet-credential-presentation-testcases>`).
 
 La tabella seguente mostra le tecnologie di *Device Engagement* supportate  (:ref:`WP_097 <wallet-credential-presentation-testcases>`), specificando quali sono obbligatorie.
 
@@ -443,7 +443,7 @@ Ogni Richiesta mdoc DEVE essere conforme alla seguente struttura e DEVE includer
 
        - **itemsRequest**. Struttura `ItemsRequest` codificata CBOR, formattata come:
 
-         - **docType** *(tstr)*. Il tipo di documento richiesto. Vedere :ref:`credential-data-model:Attestato Elettronico in formato mdoc-CBOR`.
+         - **docType** *(tstr)*. Il tipo di documento richiesto. Vedere :ref:`credential-data-model-attestato-elettronico-in-formato-mdoc-cbor`.
 
          - **nameSpaces** *(map)*. Una mappa di identificatori di namespace a *DataElements* richiesti.
 
@@ -507,7 +507,7 @@ Ogni elemento in **documents** DEVE essere conforme alla seguente struttura e DE
      - *(tstr)*. identificativo del tipo di documento. Ad esempio, per un mDL, il valore DEVE essere ``org.iso.18013.5.1.mDL`` (:ref:`PPR-010 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>`).
 
    * - **issuerSigned**
-     - *(bstr)*. Contiene la struttura `IssuerNameSpaces`, che include elementi dati firmati dal Fornitore di Attestati Elettronici, e la struttura `issuerAuth`, che garantisce la loro autenticità e integrità utilizzando il Mobile Security Object (MSO). Vedere :ref:`credential-data-model:Attestato Elettronico in formato mdoc-CBOR`.
+     - *(bstr)*. Contiene la struttura `IssuerNameSpaces`, che include elementi dati firmati dal Fornitore di Attestati Elettronici, e la struttura `issuerAuth`, che garantisce la loro autenticità e integrità utilizzando il Mobile Security Object (MSO). Vedere :ref:`credential-data-model-attestato-elettronico-in-formato-mdoc-cbor`.
 
    * - **deviceSigned**
      - *(bstr)*. Contiene la struttura `DeviceNameSpaces` (elementi dati firmati dall'Istanza del Wallet), e la struttura `deviceAuth`, che include i dati di autenticazione firmati dall'Istanza del Wallet. Vedere la tabella sottostante per dettagli.
@@ -561,4 +561,4 @@ Quando una sessione viene terminata, l'Istanza del Wallet e l'Istanza di Relying
 - Chiusura del canale di comunicazione utilizzato per il *Device Retrieval*.
 
 .. note::
-  Vedere :ref:`credential-data-model:Attestato Elettronico in formato mdoc-CBOR` per il significato degli acronimi di tipo CBOR.
+  Vedere :ref:`credential-data-model-attestato-elettronico-in-formato-mdoc-cbor` per il significato degli acronimi di tipo CBOR.

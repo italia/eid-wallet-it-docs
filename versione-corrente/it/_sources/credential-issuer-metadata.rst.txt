@@ -59,8 +59,9 @@ I Metadata *oauth_authorization_server* DEVONO contenere i seguenti parametri.
     - JSON Web Key Set contenente le chiavi crittografiche per '*authorization server*. Vedi `OID-FED`_ Sezione 5.2.1 e `JWK`_.
 
 .. important::
-  Se ``token_endpoint_auth_methods_supported`` include ``attest_jwt_client_auth``, l’Authorization Server DEVE includere entrambi ``client_attestation_signing_alg_values_supported`` e ``client_attestation_pop_signing_alg_values_supported`` nei propri metadati. I client DOVREBBERO recuperare e analizzare i metadati per rilevare supporto e requisiti di algoritmo per l’Attestation-Based Client Authentication e, in caso di incompatibilità, POSSONO ottenere una nuova attestation con un algoritmo supportato.
+  Se ``token_endpoint_auth_methods_supported`` include ``attest_jwt_client_auth``, l'Authorization Server DEVE includere entrambi ``client_attestation_signing_alg_values_supported`` e ``client_attestation_pop_signing_alg_values_supported`` nei propri metadati. I client DOVREBBERO recuperare e analizzare i metadati per rilevare supporto e requisiti di algoritmo per l'Attestation-Based Client Authentication e, in caso di incompatibilità, POSSONO ottenere una nuova attestation con un algoritmo supportato.
 
+.. _credential-issuer-metadata-metadata-per-openid-credential-issuer:
 
 Metadata per openid_credential_issuer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -105,8 +106,8 @@ I Metadata *openid_credential_issuer* DEVONO contenere i seguenti *claims*.
         - **cryptographic_binding_methods_supported**: Array JSON di stringhe *case sensitive* che identificano la rappresentazione della chiave crittografica di *binding* dell'Attestato Elettronico emesso. Il Fornitore di Attestato Elettronico DEVE supportare il valore "*jwk*" per il formato "dc+sd-jwt" e "*cose_key*" per "mso_mdoc".
         - **credential_signing_alg_values_supported**: Array JSON di stringhe *case sensitive* che identificano gli algoritmi che il Fornitore di Attestato Elettronico DEVE supportare per firmare l'Attestato Elettronico emesso. Vedi Sezione :ref:`algorithms:Algoritmi Crittografici` per maggiori dettagli.
         - **proof_types_supported**: Oggetto JSON che fornisce informazioni dettagliate sulle *key proof* supportate dal Fornitore di Attestato Elettronico. Consiste in un elenco di coppie nome/valore, dove ogni nome identifica in modo univoco il *proof type* supportato. Il Fornitore di Attestato Elettronico DEVE supportare almeno "*jwt*" come definito in `OpenID4VCI`_ Appendice F.1. Il valore associato a ciascuna coppia nome/valore è un oggetto JSON contenente informazioni relative alla *key proof(s)*. Il Fornitore di Attestato Elettronico DEVE supportare almeno il parametro **proof_signing_alg_values_supported** che DEVE essere un Array JSON di stringhe *case sensitive* che identificano gli algoritmi supportati (vedi Sezione :ref:`algorithms:Algoritmi Crittografici` per maggiori dettagli sugli algoritmi supportati). Il Fornitore di Attestato Elettronico PUÒ supportare il parametro **key_attestations_required** come definito nella Sezione 12.2 di `OpenID4VCI`_.
-        - **vct**: RICHIESTO solo se ``format`` è valorizzato con "*dc+sd-jwt*". Come definito in [:ref:`credential-data-model:Attestato Elettronico in formato SD-JWT-VC`].        
-        - **doctype**: RICHIESTO solo se ``format`` è valorizzato con "*mso_mdoc*". Come definito in [:ref:`credential-data-model:Attestato Elettronico in formato mdoc-CBOR`].
+        - **vct**: RICHIESTO solo se ``format`` è valorizzato con "*dc+sd-jwt*". Come definito in :ref:`credential-data-model-attestato-elettronico-in-formato-sd-jwt-vc`.        
+        - **doctype**: RICHIESTO solo se ``format`` è valorizzato con "*mso_mdoc*". Come definito in :ref:`credential-data-model-attestato-elettronico-in-formato-mdoc-cbor`.
         - **credential_metadata**: OBBLIGATORIO. Oggetto contenente informazioni rilevanti per l'utilizzo e la visualizzazione degli Attestati emessi. I parametri che DEVONO essere inclusi sono:
 
           - **display**: Array di oggetti contenente le proprietà legate alla visualizzazione. I seguenti parametri sono inclusi:

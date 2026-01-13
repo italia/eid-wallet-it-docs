@@ -205,7 +205,7 @@ Aggiornamento dello Stato relativo all'Utente
 
 Gli Utenti POSSONO modificare lo stato di validità del loro Attestato Elettronico:
 
-  1. Eliminando l'Attestato Elettronico dalla propria Istanza del Wallet: l'Istanza del Wallet DOVREBBE proporre all'Utente un prompt per notificare opzionalmente al Fornitore di Attestati Elettronici il desiderio da parte dell'Utente di richiedere la revoca della Credenziale. Quando l'Utente utilizza questa funzionalità, la notifica da inviare al Fornitore di Attestati Elettronici DEVE utilizzare il Notification Endpoint messo a disposizione dal Fornitore di Attestati Elettronici, come descritto nella Sezione :ref:`credential-revocation:Status Update by Wallet Instance`.
+  1. Eliminando l'Attestato Elettronico dalla propria Istanza del Wallet: l'Istanza del Wallet DOVREBBE proporre all'Utente un prompt per notificare opzionalmente al Fornitore di Attestati Elettronici il desiderio da parte dell'Utente di richiedere la revoca della Credenziale. Quando l'Utente utilizza questa funzionalità, la notifica da inviare al Fornitore di Attestati Elettronici DEVE utilizzare il Notification Endpoint messo a disposizione dal Fornitore di Attestati Elettronici, come descritto nella Sezione :ref:`credential-revocation-status-update-by-wallet-instance`.
   2. Utilizzando il portale web del Fornitore di Attestati Elettronici:
 
     a. Gli Utenti POSSONO accedere ad un'area sicura con almeno lo stesso Livello di Garanzia utilizzato durante la fase di emissione.
@@ -221,10 +221,12 @@ Inoltre, quando gli Utenti rilevano dati non corretti in un Attestato Elettronic
   Se l'Utente attiva un'altra Istanza del Wallet dello stesso Fornitore di Wallet e utilizzando la stessa Soluzione di Wallet e ottiene un nuovo PID, il PID precedente DEVE essere revocato e la precedente Istanza del Wallet DEVE passare allo stato operativo.
 
 In caso di morte dell'Utente, i Fornitori di Attestati Elettronici DEVONO garantire che gli Attestati Elettronici e le Istanze del Wallet di proprietà dell'Utente siano revocati.
-La morte dell'Utente comporta una modifica dello stato di validità degli attributi identificativi dell'Utente contenuti nel registro pubblico (ANPR). La morte dell'Utente DEVE produrre la revoca del PID. Pertanto, la Fonte Autentica del PID (ANPR) DEVE notificare al PID Provider che gli attributi dell'Utente non sono più validi a causa della morte dell'Utente. La Fonte Autentica e il PID Provider DEVONO utilizzare i meccanismi previsti nella Sezione :ref:`credential-revocation:Status Update by Authentic Sources`.
+La morte dell'Utente comporta una modifica dello stato di validità degli attributi identificativi dell'Utente contenuti nel registro pubblico (ANPR). La morte dell'Utente DEVE produrre la revoca del PID. Pertanto, la Fonte Autentica del PID (ANPR) DEVE notificare al PID Provider che gli attributi dell'Utente non sono più validi a causa della morte dell'Utente. La Fonte Autentica e il PID Provider DEVONO utilizzare i meccanismi previsti nella Sezione :ref:`credential-revocation-status-update-by-authentic-sources`.
 
 .. note::
   Le versioni future della presente specifica tecnica definiranno come le informazioni verso i Fornitori di (Q)EAA vengono propagate, in accordo alla normativa nazionale. Inoltre, saranno definite procedure automatizzate per la revoca degli Attestati dovuta ad attività illecite.
+
+.. _credential-revocation-status-update-by-wallet-instance:
 
 Aggiornamento dello Stato da parte dell'Istanza del Wallet
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -244,6 +246,8 @@ Aggiornamento dello Stato da parte dei Fornitori di Wallet
 Il Fornitore di Wallet che, per qualsiasi motivo, revoca una Wallet Instance DEVE garantire che lo stato aggiornato sia riportato all'interno della Status List della Wallet Unit Attestation.
 In aggiunta a quanto definito in :ref:`credential-revocation:Ciclo di Vita degli Attestati Elettronici`, il Fornitore di Attestati Elettronici DEVE implementare un meccanismo di monitoraggio degli stati correnti di tutte le Wallet Unit Attestation relative alle Wallet Instance a cui sono stati emessi gli Attestati Elettronici.
 In seguito alla revoca della Wallet Unit Attestation, il Credential Issuer procede alla revoca di tutti gli Attestati Elettronici emessi alla Wallet Instance.
+
+.. _credential-revocation-status-update-by-authentic-sources:
 
 Aggiornamento dello Stato da parte delle Fonti Autentiche
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

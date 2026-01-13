@@ -1,5 +1,6 @@
 .. include:: ../common/common_definitions.rst
 
+.. _algorithms-cryptographic-algorithms:
 
 Algoritmi Crittografici
 =======================
