@@ -596,6 +596,7 @@ Per garantire l'integrità e la sicurezza del Re-issuance Flow, si applicano le 
   - Consenso dell'Utente: Per i Re-issuance Flow attivati da modifiche agli attributi, il consenso dell'Utente DEVE essere ottenuto prima di memorizzare il nuovo Attestato Elettronico.
   - Refresh Token vincolato al mittente: I Refresh Token DEVONO essere crittograficamente vincolati all'Istanza del Wallet utilizzando il protocollo DPoP. Ciò mitiga il rischio di uso improprio del token, garantendo che solo l'Istanza del Wallet prevista possa utilizzarlo.
 
+.. _credential-issuance-low-level-credential-offer-flow:
 
 Flusso Credential Offer
 -----------------------

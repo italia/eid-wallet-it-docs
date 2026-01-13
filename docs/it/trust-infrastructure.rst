@@ -78,6 +78,8 @@ Di seguito la tabella con il riepilogo dei ruoli delle Entità di Federazione, m
      - Leaf
      -
 
+.. _trust-infrastructure-integrazione-tra-infrastruttura-di-trust-e-registry:
+
 Integrazione dell'Infrastruttura di Trust e del Registro
 --------------------------------------------------------
 
@@ -178,6 +180,8 @@ Questa sezione include i requisiti necessari per l'implementazione e il funziona
    * - FR19
      - **Binding delle Capacità del Protocollo Sicuro**: il protocollo sicuro deve abilitare lo scambio di dati delle capacità specifiche del protocollo come metadati crittograficamente legati associati a un'identità specifica. Questi metadati dovrebbero definire le capacità tecniche associate all'identità, garantendo prova verificabile e associazione a prova di manomissione per un robusto stabilimento del trust e controllo degli accessi.
 
+
+.. _trust-infrastructure-endpoint-delle-api-della-federazione:
 
 Endpoint API di Federazione
 ---------------------------
@@ -885,6 +889,8 @@ Ogni JWT contenente una Trust Chain negli header JWT può essere verificato nel 
 
 Anche se il Trust Anchor ha cambiato le sue chiavi crittografiche per la firma digitale, l'endpoint delle Chiavi Storiche di Federazione rende sempre disponibili le chiavi non più utilizzate per le verifiche di firma storiche.
 
+.. _trust-infrastructure-pki-x509:
+
 X.509 PKI
 ---------
 
@@ -968,6 +974,8 @@ Di seguito è riportato un esempio non normativo, in testo semplice (formato Ope
 
 Utilizzando il livello sottostante stabilito con OpenID Federation 1.0, tutti i certificati X.509 sono emessi in modo propriamente decentralizzato utilizzando il pattern di delegazione.
 
+
+.. _trust-infrastructure-revoca-dei-certificati-x509:
 
 Revoca di Certificati X.509
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^

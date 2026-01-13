@@ -1,5 +1,7 @@
 .. include:: ../common/common_definitions.rst
 
+.. _wallet-solution-metadata-metadati-della-soluzione-wallet:
+
 Metadati della Soluzione Wallet
 --------------------------------
 
