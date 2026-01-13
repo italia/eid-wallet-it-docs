@@ -132,7 +132,7 @@ Per assicurare un’identificazione e una rappresentazione del PID coerente tra 
 
     Elemento grafico “IT-Wallet ID” su sfondo chiaro  
 
-Le Risorse Ufficiali dell’“IT-Wallet ID” sono disponibili all’interno della Sezione :ref:`official-resources:Risorse Ufficiali`. Maggiore documentazione aggiuntiva sarà prossimamente disponibile sul sito ufficiale https://www.wallet.gov.it. 
+Le Risorse Ufficiali dell’“IT-Wallet ID” sono disponibili all’interno della Sezione :ref:`official-resources:Risorse Ufficiali`. Maggiore documentazione aggiuntiva sarà prossimamente disponibile sul sito ufficiale, come indicato nella sezione :ref:`official-resources:Risorse Ufficiali`. 
 
 Ottenimento degli Attestati Elettronici di Attributi 
 -----------------------------------------------------
@@ -778,7 +778,7 @@ L'Authentication Button è caratterizzato dai seguenti requisiti:
 
 - DEVE riportare la dicitura "Entra con IT-Wallet"; 
 
-- DOVREBBE essere sempre accompagnato da un link esterno (ad es. "Scopri di più") che rimanda al sito ufficiale del Sistema IT-Wallet ``www.wallet.gov.it``; 
+- DOVREBBE essere sempre accompagnato da un link esterno (ad es. "Scopri di più") che rimanda al sito ufficiale del Sistema IT-Wallet, come indicato nella sezione :ref:`official-resources:Risorse Ufficiali`; 
 
 - Gli attori che intendono integrare l'Authentication Button nella propria Soluzione Tecnica DEVONO garantirne la traduzione in altre lingue, almeno quella inglese; 
 
@@ -827,7 +827,7 @@ Per maggiori dettagli sull'utilizzo dell'Authentication Button vedi la sezione :
 Il pulsante è disponibile in 3 varianti (default / M / L ) ed in formato "get" (chiamata ad una pagina esterna) e "post" (form interna al pulsante). I riferimenti al codice html e alla Brand Identity corretta verranno inclusi nelle versioni successive delle presenti regole tecniche.
 
 **Authentication Button "Entra con IT-Wallet" - svg**
-Per approfondimenti sull'Authentication button consultare il Brand Manual prossimamente disponibile sul sito ufficiale https://www.wallet.gov.it. La Risorsa Ufficiale dell'Authentication button è disponibile nella relativa cartella Risorse Ufficiali di queste Specifiche Tecniche. 
+Per approfondimenti sull'Authentication button consultare il Brand Manual, come indicato nella sezione :ref:`official-resources:Risorse Ufficiali`. La Risorsa Ufficiale dell'Authentication button è disponibile nella sezione :ref:`official-resources:Risorse Ufficiali` di queste Specifiche Tecniche. 
 
 .. only:: format_html
 
