@@ -336,6 +336,9 @@ Below are the main defined terms and definitions related to User Experience aspe
   
     **Brand Identity**
       Collection of visual, verbal, and strategic elements that a service, a product or an entity uses to present itself to the User and to distinguish itself from others.
+
+    **Brand Manual**
+      Document defining the rules and standards for the correct and consistent use of a Brand’s distinctive elements, including visual, verbal, and application-related aspects, across different Touchpoints.
     
     **Catalog**
       Section of the Wallet Instance that displays the list of all the available Digital Credentials that can be obtained through the IT-Wallet Instance, and from which it is possible to start the issuing process.

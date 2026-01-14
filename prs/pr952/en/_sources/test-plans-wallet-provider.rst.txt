@@ -29,7 +29,7 @@ This section lists the test cases from Sections:
 - :ref:`wallet-solution-components:Wallet Solution Components`
 - :ref:`wallet-instance:Wallet Instance`
 - :ref:`wallet-provider-entity-configuration:Wallet Provider Entity Configuration`
-- :ref:`wallet-provider-metadata:Wallet Provider Metadata`
+- :ref:`wallet-solution-metadata:Wallet Solution Metadata`
 - `e-Service PDND Wallet Provider Catalogue <wallet-provider-endpoint.html#e-service-pdnd-wallet-provider-catalogue0>`_
 
 
@@ -565,7 +565,7 @@ This section lists the test cases from Sections:
    * - WP_069
      - Issuance, Security
      - Check Digital Credential status
-     - Wallet Instance verifies the status of each stored Digital Credential by retrieving and validating either a Status List Token (per :ref:`credential-revocation:OAuth Status Lists`). 
+     - Wallet Instance verifies the status of each stored Digital Credential by retrieving and validating either a Status List Token (per :ref:`credential-revocation:Status List Token`). 
    * - WP_070
      - Issuance, Security
      - Re-issuance flow: detect re-issuance necessity (update status)
@@ -941,8 +941,7 @@ Test Cases for User Attribute Deletion on Relying Party Side
 This section lists the test cases from Sections: 
 
 - :ref:`user-attribute-deletion:User's Attributes Deletion`
-- `Relying Party Erasure Endpoint <relying-party-provider-backend-endpoint.html#relying-party-erasure-endpoint>`_
-
+- `Relying Party Provider Backend Erasure Endpoint <relying-party-provider-backend-endpoint.html#relying-party-provider-backend-erasure-endpoint>`_
 
 .. list-table::
    :class: longtable

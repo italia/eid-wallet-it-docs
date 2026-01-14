@@ -226,7 +226,7 @@ In particolare, il JWT della richiesta di emissione della Wallet App e Wallet Un
       - **Descrizione**
       - **Riferimento**
     * - **alg**
-      - Identificatore dell'algoritmo di firma digitale, come definito nel registro IANA "JSON Web Signature and Encryption Algorithms". DEVE essere uno degli algoritmi supportati elencati in :ref:`algorithms:cryptographic algorithms` e non DEVE essere impostato su ``none`` né su alcun identificatore di algoritmo simmetrico (MAC).
+      - Identificatore dell'algoritmo di firma digitale, come definito nel registro IANA "JSON Web Signature and Encryption Algorithms". DEVE essere uno degli algoritmi supportati elencati in :ref:`algorithms-cryptographic-algorithms` e non DEVE essere impostato su ``none`` né su alcun identificatore di algoritmo simmetrico (MAC).
       - [:rfc:`7516#section-4.1.1`]
     * - **kid**
       - thumbprint della JWK dell'Istanza del Wallet contenuta nella dichiarazione ``cnf``.

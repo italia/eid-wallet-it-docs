@@ -603,7 +603,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_131
     - Data Model and lifecycle, Interoperability
     - SD-JWT JOSE Header Parameter
-    - The JOSE header contains the parameter in the Credential :ref:`SD-JWT Parameters Table <table_sd-wt-vc_jose_header>`.
+    - The JOSE header contains the parameter in the Credential :ref:`SD-JWT Parameters Table <table_sd-jwt-vc_jose_header>`.
   * - CI_132
     - Data Model and lifecycle, Interoperability
     - SD-JWT Payload Claims
@@ -895,7 +895,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_183
     - Data Model and lifecycle, Interoperability
     - Status List Digital Credential Status Values Definition
-    - Credential Issuer successfully uses the values for possible Statuses defined in the :ref:`credential-revocation:Status Lists Creation` section.
+    - Credential Issuer successfully uses the values for possible Statuses defined in the :ref:`credential-revocation:Token Status Lists` section.
   * - CI_184
     - Data Model and lifecycle, Interoperability
     - Status List Optional Digital Credential Status States Definition
@@ -939,9 +939,9 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_194
     - Data Model and lifecycle, Interoperability
     - Digital Credential Catalogue Required Information
-    - Credential Issuer provides its credentials in the catalogue, along with the information in the corresponding :ref:`table <table_catalogue_main_information>`.
+    - Credential Issuer provides its credentials in the catalogue, along with the information in the corresponding :ref:`table <table_catalog_parameters>`.
   * - CI_195
     - Data Model and lifecycle, Interoperability
     - Credentials Array Element Information
-    - Each element of the *Credentials* array correctly contains all the information defined in the First-level Fields :ref:`table <table_catalogue_credentials_parameters>`.
+    - Each element of the *Credentials* array correctly contains all the information defined in the First-level Fields :ref:`table <table_catalog_parameters_first_level>`.
 

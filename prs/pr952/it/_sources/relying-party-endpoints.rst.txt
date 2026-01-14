@@ -8,7 +8,7 @@ Endpoint della Relying Party
 La Relying Party DEVE esporre una serie completa di endpoint per supportare l'ecosistema IT-Wallet completo, inclusi sia i flussi di presentazione remoti che di prossimità.
 
 .. note::
-  I test relativi agli endpoint della Relying Party sono definiti nella matrice di test per presentazione remota (:ref:`test-plans-remote-presentation:Matrice di Test per la Presentazione di Credenziali Remota`) e prossimità (:ref:`test-plans-proximity-presentation:Matrice di Test per la Presentazione di Credenziali in Prossimità`).
+  I test relativi agli endpoint della Relying Party sono definiti nella matrice di test per presentazione remota (:ref:`test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto`) e prossimità (:ref:`test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità`).
 
 
 Endpoint per Flussi Remoti della Relying Party

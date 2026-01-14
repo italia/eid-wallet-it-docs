@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>7. Infrastruttura di Registro &#8212; IT-Wallet Technical Specifications - PR #952</title>
+    <title>7. Infrastruttura del Registro &#8212; IT-Wallet Technical Specifications - PR #952</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -137,7 +137,7 @@
 <li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Sistema di Onboarding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. Design dell'Esperienza Utente</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. L'Infrastruttura di Trust</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">7. Infrastruttura di Registro</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">7. Infrastruttura del Registro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entity-onboarding.html">8. Onboarding delle Entità</a></li>
 <li class="toctree-l1"><a class="reference internal" href="x5c-evaluation.html">9. Operazioni di Gestione dei Certificati X.509</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entities.html">10. Entità</a></li>
@@ -162,20 +162,20 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="infrastruttura-di-registro">
-<h1><span class="section-number">7. </span>Infrastruttura di Registro<a class="headerlink" href="#infrastruttura-di-registro" title="Link to this heading">¶</a></h1>
-<p>L'ecosistema IT-Wallet opera attraverso un'infrastruttura di registro che fornisce definizioni dati standardizzate, registrazione delle entità e capacità di scoperta delle credenziali. Il sistema di registro consiste di molteplici componenti interconnessi che supportano il ciclo di vita completo delle operazioni delle credenziali digitali dall'onboarding delle entità alla presentazione delle credenziali.</p>
-<p>L'architettura di registro affronta la standardizzazione semantica, la gestione della fiducia federata e i requisiti di scoperta delle credenziali attraverso componenti di registro specializzati che assicurano interoperabilità e conformità attraverso l'ecosistema.</p>
-<section id="panoramica-dell-architettura-di-registro">
-<h2><span class="section-number">7.1. </span>Panoramica dell'Architettura di Registro<a class="headerlink" href="#panoramica-dell-architettura-di-registro" title="Link to this heading">¶</a></h2>
+  <section id="infrastruttura-del-registro">
+<span id="registry-infrastruttura-di-registro"></span><h1><span class="section-number">7. </span>Infrastruttura del Registro<a class="headerlink" href="#infrastruttura-del-registro" title="Link to this heading">¶</a></h1>
+<p>L'ecosistema IT-Wallet opera attraverso un'infrastruttura di registro che fornisce definizioni dati standardizzate, registrazione delle entità e capacità di scoperta delle Credenziali. Il sistema di registro consiste di molteplici componenti interconnessi che supportano il ciclo di vita completo delle operazioni degli Attestati Elettronici dall'onboarding delle entità alla presentazione delle Credenziali.</p>
+<p>L'architettura di registro affronta la standardizzazione semantica, la gestione della fiducia federata e i requisiti di scoperta delle Credenziali attraverso componenti di registro specializzati che assicurano interoperabilità e conformità attraverso l'ecosistema.</p>
+<section id="panoramica-dell-architettura-del-registro">
+<h2><span class="section-number">7.1. </span>Panoramica dell'Architettura del Registro<a class="headerlink" href="#panoramica-dell-architettura-del-registro" title="Link to this heading">¶</a></h2>
 <p>Il Registro del Sistema IT-Wallet comprende sei componenti principali:</p>
 <ol class="arabic simple">
-<li><p><strong>Registro dei Claims</strong>: Definizioni semantiche standardizzate per attributi individuali delle credenziali, tipi di dati e regole di validazione.</p></li>
+<li><p><strong>Registro dei Claims</strong>: Definizioni semantiche standardizzate per attributi individuali delle Credenziali, tipi di dati e regole di validazione.</p></li>
 <li><p><strong>Registro delle Fonti Autentiche (AS)</strong>: Catalogo dei fornitori di dati registrati con le loro capacità dichiarate e claims disponibili.</p></li>
 <li><p><strong>Registro di Federazione</strong>: Elenco autorevole delle entità fidate che partecipano alla federazione con le loro configurazioni tecniche.</p></li>
-<li><p><strong>Catalogo delle Credenziali Digitali</strong>: Meccanismo di scoperta pubblico per i tipi di credenziali disponibili con i loro metadati e informazioni di emissione.</p></li>
+<li><p><strong>Catalogo degli Attestati Elettronici</strong>: Meccanismo di scoperta pubblico per i tipi di Credenziali disponibili con i loro metadati e informazioni di emissione.</p></li>
 <li><p><strong>Registro degli Schema</strong>: Elenco autorevole degli schemi di Credenziali.</p></li>
-<li><p><strong>Tassonomia</strong>: Sistema di classificazione gerarchico che organizza le credenziali per dominio e scopo.</p></li>
+<li><p><strong>Tassonomia</strong>: Sistema di classificazione gerarchico che organizza le Credenziali per dominio e scopo.</p></li>
 </ol>
 <p>Questi componenti di registro sono interconnessi e mantenuti dall'Organismo di Supervisione per garantire coerenza, sicurezza e conformità normativa attraverso l'ecosistema.</p>
 </section>
@@ -234,11 +234,11 @@ Content-Type: application/json
 </section>
 <section id="registro-dei-claims">
 <h2><span class="section-number">7.3. </span>Registro dei Claims<a class="headerlink" href="#registro-dei-claims" title="Link to this heading">¶</a></h2>
-<p>Il <strong>Registro dei Claims</strong> fornisce definizioni semantiche standardizzate per attributi individuali delle Credenziali, tipi di dati e regole di validazione. Questo registro serve come fondamento semantico per la standardizzazione degli attributi delle credenziali attraverso l'ecosistema IT-Wallet, lavorando in coordinamento con il componente Tassonomia per la classificazione gerarchica.</p>
+<p>Il <strong>Registro dei Claims</strong> fornisce definizioni semantiche standardizzate per attributi individuali delle Credenziali, tipi di dati e regole di validazione. Questo registro serve come fondamento semantico per la standardizzazione degli attributi delle Credenziali attraverso l'ecosistema IT-Wallet, lavorando in coordinamento con il componente Tassonomia per la classificazione gerarchica.</p>
 <p>L'Organismo di Supervisione DEVE mantenere il Registro dei Claims per garantire coerenza semantica e conformità normativa attraverso l'ecosistema. Il registro DEVE contenere:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Claims Standardizzati</strong>: Definizioni semantiche per tutti gli attributi delle credenziali con tipi di dati e regole di validazione.</p></li>
+<li><p><strong>Claims Standardizzati</strong>: Definizioni semantiche per tutti gli attributi delle Credenziali con tipi di dati e regole di validazione.</p></li>
 <li><p><strong>Mappature di Interoperabilità</strong>: Definizioni di alias per claims che usano terminologia diversa tra standard (es. ISO18013-5 <code class="docutils literal notranslate"><span class="pre">place_of_birth</span></code> mappato al canonico <code class="docutils literal notranslate"><span class="pre">birth_place</span></code>).</p></li>
 <li><p><strong>Formati Dati</strong>: Tipi di dati standardizzati (string, date, numeric, boolean, email, url, image, array, object) con pattern di validazione.</p></li>
 </ul>
@@ -248,14 +248,14 @@ Content-Type: application/json
 <div><ul class="simple">
 <li><p><strong>Coerenza Semantica</strong>: Previene conflitti tra claims duplicati o sovrapposti attraverso l'ecosistema.</p></li>
 <li><p><strong>Interoperabilità Transfrontaliera</strong>: Garantisce conformità UE e interpretazione coerente dei claims.</p></li>
-<li><p><strong>Validazione degli Schema</strong>: Fornisce definizioni autorevoli per la validazione dei claims attraverso tutti gli scenari delle credenziali.</p></li>
+<li><p><strong>Validazione degli Schema</strong>: Fornisce definizioni autorevoli per la validazione dei claims attraverso tutti gli scenari delle Credenziali.</p></li>
 <li><p><strong>Allineamento Normativo</strong>: Si coordina con il quadro normativo nazionale ed europeo.</p></li>
 <li><p><strong>Scenari Credential-Agnostic</strong>: Supporta scenari dove <strong>convenienza dell'utente</strong> ed <strong>efficienza operativa aziendale</strong> sono prioritari rispetto a <strong>conformità normativa</strong> e <strong>tracce di audit</strong>.</p></li>
 </ul>
 </div></blockquote>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Il Registro dei Claims definisce le proprietà semantiche degli attributi individuali, ma NON DEVE specificare capacità di divulgazione selettiva. La divulgazione selettiva dipende dalle implementazioni del formato delle credenziali (SD-JWT, mDocs), dalle configurazioni tecniche dell'emittente e dal contesto di presentazione. Queste capacità sono specificate a livello di tipo di credenziale all'interno del Catalogo delle Credenziali Digitali e implementate durante i flussi di presentazione delle credenziali.</p>
+<p>Il Registro dei Claims definisce le proprietà semantiche degli attributi individuali, ma NON DEVE specificare capacità di divulgazione selettiva. La divulgazione selettiva dipende dalle implementazioni del formato delle Credenziali (SD-JWT VC, mDoc), dalle configurazioni tecniche dell'emittente e dal contesto di presentazione. Queste capacità sono specificate a livello di tipo di Credenziale all'interno del Catalogo degli Attestati Elettronici e implementate durante i flussi di presentazione delle Credenziali.</p>
 </div>
 <section id="utilizzo-del-registro-dei-claims">
 <h3><span class="section-number">7.3.1. </span>Utilizzo del Registro dei Claims<a class="headerlink" href="#utilizzo-del-registro-dei-claims" title="Link to this heading">¶</a></h3>
@@ -265,13 +265,13 @@ Content-Type: application/json
 <div><ul class="simple">
 <li><p><strong>Registrazione AS</strong>: Le Fonti Autentiche dichiarano i claims disponibili dal registro standardizzato durante la registrazione delle capacità.</p></li>
 <li><p><strong>Registrazione CI</strong>: Gli Emittenti di Credenziali selezionano le entità AS in base ai claims richiesti e registrano i tipi di credenziali per la pubblicazione nel catalogo.</p></li>
-<li><p><strong>Registrazione RP</strong>: Le Relying Parties specificano i requisiti di autorizzazione usando domini/scopi per tipi di credenziali specifici e/o attributi dell'Utente.</p></li>
+<li><p><strong>Registrazione RP</strong>: Le Relying Parties specificano i requisiti di autorizzazione usando domini/finalità per tipi di credenziali specifici e/o attributi dell'Utente.</p></li>
 </ul>
 </div></blockquote>
 <p><strong>Durante le Attività Operative</strong>:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Emissione di Credenziali</strong>: Le definizioni dei claims garantiscono una rappresentazione dati coerente attraverso diversi tipi di credenziali.</p></li>
+<li><p><strong>Emissione di Credenziali</strong>: Le definizioni dei claims garantiscono una rappresentazione dati coerente attraverso diversi tipi di Credenziali.</p></li>
 <li><p><strong>Richieste di Presentazione</strong>: Le RP fanno riferimento ai claims per la validazione dello schema e la verifica dell'autorizzazione in scenari sia credential-specific che credential-agnostic.</p></li>
 <li><p><strong>Applicazione delle Policy</strong>: Le policy di autorizzazione sfruttano le classificazioni dominio/scopo per il controllo degli accessi.</p></li>
 </ul>
@@ -279,7 +279,7 @@ Content-Type: application/json
 </section>
 <section id="struttura-del-registro-dei-claims">
 <h3><span class="section-number">7.3.2. </span>Struttura del Registro dei Claims<a class="headerlink" href="#struttura-del-registro-dei-claims" title="Link to this heading">¶</a></h3>
-<p>Il Registro dei Claims mantiene definizioni tecniche, indipendenti dalla lingua, per la coerenza semantica attraverso l'ecosistema. Le localizzazioni rivolte all'utente per nomi e descrizioni dei claims sono fornite attraverso i bundle di localizzazione del Catalogo delle Credenziali Digitali, abilitando un supporto multilingue efficiente senza compromettere l'integrità strutturale del registro.</p>
+<p>Il Registro dei Claims mantiene definizioni tecniche, indipendenti dalla lingua, per la coerenza semantica attraverso l'ecosistema. Le localizzazioni rivolte all'utente per nomi e descrizioni dei claims sono fornite attraverso i bundle di localizzazione del Catalogo degli Attestati Elettronici, abilitando un supporto multilingue efficiente senza compromettere l'integrità strutturale del registro.</p>
 <p>Un esempio non normativo della struttura del Registro dei Claims è fornito di seguito:</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;registry_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
@@ -407,20 +407,20 @@ Content-Type: application/json
 </section>
 <section id="registro-delle-fonti-autentiche">
 <h2><span class="section-number">7.4. </span>Registro delle Fonti Autentiche<a class="headerlink" href="#registro-delle-fonti-autentiche" title="Link to this heading">¶</a></h2>
-<p>L'Organismo di Supervisione DEVE mantenere il Registro delle Fonti Autentiche per abilitare l'accesso coordinato ai dati e l'emissione di credenziali attraverso l'ecosistema. Il Registro AS DEVE contenere almeno:</p>
+<p>L'Organismo di Supervisione DEVE mantenere il Registro delle Fonti Autentiche per abilitare l'accesso coordinato ai dati e l'emissione di Credenziali attraverso l'ecosistema. Il Registro AS DEVE contenere almeno:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Informazioni sull'Organizzazione</strong>: Dettagli dell'entità legale, stato normativo e ruolo autorevole all'interno di domini specifici.</p></li>
 <li><p><strong>Capacità dei Dati</strong>: Disponibilità dichiarata dei claims che fanno riferimento a definizioni standardizzate dal Registro dei Claims con le corrispondenti classificazioni della Tassonomia.</p></li>
 <li><p><strong>Metodi di Integrazione</strong>: Meccanismi di accesso tecnico (PDND per AS pubblici, API personalizzate per AS privati).</p></li>
-<li><p><strong>Scopi Previsti</strong>: Tipi di credenziali supportati e contesti aziendali per il coordinamento AS-CI.</p></li>
+<li><p><strong>Finalità Previste</strong>: Tipi di credenziali supportati e contesti aziendali per il coordinamento AS-CI.</p></li>
 <li><p><strong>Garanzia della Qualità dei Dati</strong>: Stato autorevole, frequenza di aggiornamento e capacità di traccia di audit.</p></li>
 </ul>
 </div></blockquote>
 <p>Il Registro AS DEVE garantire:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Accesso Coordinato ai Dati</strong>: Abilita la scoperta da parte dei CI di dati appropriati dalle Fonti Autentiche per l'emissione di credenziali.</p></li>
+<li><p><strong>Accesso Coordinato ai Dati</strong>: Abilita la scoperta da parte dei CI di dati appropriati dalle Fonti Autentiche per l'emissione di Credenziali.</p></li>
 <li><p><strong>Integrazione AS-CI</strong>: Facilita flussi di lavoro di approvazione e coordinamento dell'accesso ai dati tra entità.</p></li>
 <li><p><strong>Garanzia della Qualità</strong>: Mantiene lo stato autorevole e l'affidabilità dei dati attraverso diversi domini.</p></li>
 <li><p><strong>Conformità Normativa</strong>: Supporta i requisiti di trasparenza della pubblica amministrazione e coordinamento del settore privato.</p></li>
@@ -435,13 +435,13 @@ Content-Type: application/json
 <p>Il Registro AS supporta il coordinamento dell'ecosistema durante tutto il ciclo di vita operativo:</p>
 <dl class="simple">
 <dt><strong>Durante il Processo di Onboarding</strong>:</dt><dd><ul class="simple">
-<li><p><strong>Auto-Dichiarazione AS</strong>: Le Fonti Autentiche registrano le capacità prima che esistano tipi di credenziali nel catalogo.</p></li>
-<li><p><strong>Scoperta CI</strong>: Gli Emittenti di Credenziali cercano entità AS in base ai claims richiesti e ai tipi di credenziali previsti.</p></li>
+<li><p><strong>Auto-Dichiarazione AS</strong>: Le Fonti Autentiche registrano le capacità prima che esistano tipi di Credenziali nel catalogo.</p></li>
+<li><p><strong>Scoperta CI</strong>: Gli Emittenti di Credenziali cercano entità AS in base ai claims richiesti e ai tipi di Credenziali previsti.</p></li>
 <li><p><strong>Coordinamento delle Approvazioni</strong>: Le entità AS valutano e approvano le richieste di accesso dei CI per la fornitura di dati.</p></li>
 </ul>
 </dd>
 <dt><strong>Durante le Attività Operative</strong>:</dt><dd><ul class="simple">
-<li><p><strong>Risoluzione della Fonte Dati</strong>: I sistemi CI fanno riferimento al Registro AS per l'accesso ai dati in tempo reale durante l'emissione delle credenziali.</p></li>
+<li><p><strong>Risoluzione della Fonte Dati</strong>: I sistemi CI fanno riferimento al Registro AS per l'accesso ai dati in tempo reale durante l'emissione delle Credenziali.</p></li>
 <li><p><strong>Validazione della Qualità</strong>: Le informazioni del Registro AS supportano la verifica dell'origine dei dati e i requisiti di audit.</p></li>
 <li><p><strong>Gestione dell'Integrazione</strong>: Gli endpoint tecnici e i metodi di accesso abilitano la comunicazione standardizzata AS-CI.</p></li>
 </ul>
@@ -459,7 +459,7 @@ Content-Type: application/json
 <div><ul class="simple">
 <li><p><strong>Integrazione PDND</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;integration_method&quot;:</span> <span class="pre">&quot;pdnd_eservice&quot;</span></code> per l'accesso standardizzato ai dati governativi.</p></li>
 <li><p><strong>Conformità Normativa</strong>: Requisiti di trasparenza completi con pubblicazione nel catalogo pubblico.</p></li>
-<li><p><strong>Requisiti di Audit</strong>: Tracciabilità completa per i processi di emissione di credenziali governative.</p></li>
+<li><p><strong>Requisiti di Audit</strong>: Tracciabilità completa per i processi di emissione di Credenziali governative.</p></li>
 </ul>
 </div></blockquote>
 <ol class="arabic simple" start="2">
@@ -477,10 +477,10 @@ Content-Type: application/json
 </section>
 <section id="struttura-del-registro-as">
 <h3><span class="section-number">7.4.3. </span>Struttura del Registro AS<a class="headerlink" href="#struttura-del-registro-as" title="Link to this heading">¶</a></h3>
-<p>Durante la registrazione, le Fonti Autentiche dichiarano le loro capacità prima che esistano tipi di credenziali nel catalogo. Questa dichiarazione stabilisce le fondamenta per la successiva registrazione CI e creazione dei tipi di credenziali.</p>
+<p>Durante la registrazione, le Fonti Autentiche dichiarano le loro capacità prima che esistano tipi di Credenziali nel catalogo. Questa dichiarazione stabilisce le fondamenta per la successiva registrazione CI e creazione dei tipi di Credenziali.</p>
 <section id="schema-dell-identificatore-univoco-as">
 <h4><span class="section-number">7.4.3.1. </span>Schema dell'Identificatore Univoco AS<a class="headerlink" href="#schema-dell-identificatore-univoco-as" title="Link to this heading">¶</a></h4>
-<p>A ciascuna Fonte Autentica DEVE essere assegnato un identificatore univoco che segue lo schema URL HTTPS definito di seguito. Questo identificatore è usato per fare riferimento alle entità AS attraverso il sistema di registro e nel Catalogo delle Credenziali Digitali, garantendo coerenza con i pattern di identificazione delle entità OpenID Federation.</p>
+<p>A ciascuna Fonte Autentica DEVE essere assegnato un identificatore univoco che segue lo schema URL HTTPS definito di seguito. Questo identificatore è usato per fare riferimento alle entità AS attraverso il sistema di registro e nel Catalogo degli Attestati Elettronici, garantendo coerenza con i pattern di identificazione delle entità OpenID Federation.</p>
 <p><strong>Schema dell'Identificatore AS:</strong></p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>https://{organization_domain}[/{optional_path}]
 </pre></div>
@@ -621,95 +621,91 @@ Content-Type: application/json
 <td><p>string</p></td>
 <td><p>OPZIONALE. Nome leggibile dall'uomo dell'origine dati specifica o del dipartimento che fornisce i dati.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].domains</strong></p></td>
+<tr class="row-even"><td><p><strong>data_capabilities[].intended_purposes</strong></p></td>
 <td><p>String Array</p></td>
-<td><p>RICHIESTO. Dominio della tassonomia (es., <code class="docutils literal notranslate"><span class="pre">[&quot;AUTHORIZATION&quot;]</span></code>, <code class="docutils literal notranslate"><span class="pre">[&quot;FINANCIAL&quot;]</span></code>).</p></td>
+<td><p>RICHIESTO. Finalità previste (es., <code class="docutils literal notranslate"><span class="pre">[&quot;driving-authorization&quot;,</span> <span class="pre">&quot;identity-verification&quot;]</span></code>).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].intended_purposes</strong></p></td>
-<td><p>String Array</p></td>
-<td><p>RICHIESTO. Scopi aziendali serviti (es., <code class="docutils literal notranslate"><span class="pre">[&quot;driving-authorization&quot;,</span> <span class="pre">&quot;identity-verification&quot;]</span></code>).</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].available_claims</strong></p></td>
+<tr class="row-odd"><td><p><strong>data_capabilities[].available_claims</strong></p></td>
 <td><p>String Array</p></td>
 <td><p>RICHIESTO. Claims disponibili da questa capacità di dati.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].available_claims.claim_name</strong></p></td>
+<tr class="row-even"><td><p><strong>data_capabilities[].available_claims.claim_name</strong></p></td>
 <td><p>string</p></td>
 <td><p>RICHIESTO. Contiene il nome del claim.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].available_claims.order</strong></p></td>
+<tr class="row-odd"><td><p><strong>data_capabilities[].available_claims.order</strong></p></td>
 <td><p>number</p></td>
 <td><p>RICHIESTO. Definisce l'ordine in cui l'informazione verrebbe mostrata.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].available_claims.mandatory</strong></p></td>
+<tr class="row-even"><td><p><strong>data_capabilities[].available_claims.mandatory</strong></p></td>
 <td><p>boolean</p></td>
 <td><p>RICHIESTO. Definisce se un claim è sempre disponibile o no.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].integration_method</strong></p></td>
+<tr class="row-odd"><td><p><strong>data_capabilities[].integration_method</strong></p></td>
 <td><p>string</p></td>
 <td><p>RICHIESTO. Framework di autorizzazione usato per l'accesso ai dati. DEVE essere <code class="docutils literal notranslate"><span class="pre">&quot;pdnd&quot;</span></code> per AS Pubblici. Gli AS Privati POSSONO usare altri framework di autorizzazione come: <code class="docutils literal notranslate"><span class="pre">&quot;oauth2&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;api_key&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;mtls&quot;</span></code>, ecc.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].integration_endpoint</strong></p></td>
+<tr class="row-even"><td><p><strong>data_capabilities[].integration_endpoint</strong></p></td>
 <td><p>string</p></td>
 <td><p>RICHIESTO. Punto di accesso al servizio (endpoint PDND per AS Pubblici, endpoint API per AS Privati).</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].api_specification</strong></p></td>
+<tr class="row-odd"><td><p><strong>data_capabilities[].api_specification</strong></p></td>
 <td><p>string</p></td>
 <td><p>RICHIESTO. URL al documento di specifica <a class="reference external" href="https://spec.openapis.org/oas/v3.0.3">OAS3</a> per questa capacità di dati.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].data_provision</strong></p></td>
+<tr class="row-even"><td><p><strong>data_capabilities[].data_provision</strong></p></td>
 <td><p>JSON object</p></td>
 <td><p>OPZIONALE. Capacità di fornitura dati e specifiche dei tempi.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].data_provision.immediate_flow</strong></p></td>
+<tr class="row-odd"><td><p><strong>data_capabilities[].data_provision.immediate_flow</strong></p></td>
 <td><p>boolean</p></td>
 <td><p>RICHIESTO. Indica se la Fonte Autentica supporta la fornitura immediata di dati.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].data_provision.deferred_flow</strong></p></td>
+<tr class="row-even"><td><p><strong>data_capabilities[].data_provision.deferred_flow</strong></p></td>
 <td><p>boolean</p></td>
 <td><p>RICHIESTO. Indica se la Fonte Autentica supporta la fornitura differita di dati.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].data_provision.max_response_time_minutes</strong></p></td>
+<tr class="row-odd"><td><p><strong>data_capabilities[].data_provision.max_response_time_minutes</strong></p></td>
 <td><p>integer</p></td>
 <td><p>CONDIZIONALE. Tempo massimo in minuti per la Fonte Autentica per rispondere a una richiesta di fornitura dati differita. RICHIESTO se <code class="docutils literal notranslate"><span class="pre">deferred_flow</span></code> è <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].data_provision.notification_methods</strong></p></td>
+<tr class="row-even"><td><p><strong>data_capabilities[].data_provision.notification_methods</strong></p></td>
 <td><p>String Array</p></td>
 <td><p>CONDIZIONALE. Array di metodi di notifica supportati dalla Fonte Autentica per la fornitura dati differita, come <code class="docutils literal notranslate"><span class="pre">&quot;push&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;poll&quot;</span></code>. RICHIESTO se <code class="docutils literal notranslate"><span class="pre">deferred_flow</span></code> è <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].user_information</strong></p></td>
+<tr class="row-odd"><td><p><strong>data_capabilities[].user_information</strong></p></td>
 <td><p>string</p></td>
 <td><p>OPZIONALE. Una stringa contenente informazioni leggibili dall'uomo sulla Credenziale Digitale rilevanti per l'Utente. Questa stringa DEVE essere fornita dalla Fonte Autentica al Trust Anchor durante l'onboarding e DEVE essere formattata usando il formato Markdown come definito in <span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7763.html"><strong>RFC 7763</strong></a>. La formattazione Markdown può essere testo semplice o una combinazione di testo e link. Ad esempio, se il database della Fonte Autentica contiene solo i dati richiesti per gli attributi della Credenziale Digitale registrati <em>dopo</em> una data specifica, questa informazione DEVE essere trasmessa al Trust Anchor in questa stringa Markdown.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].service_documentation</strong></p></td>
+<tr class="row-even"><td><p><strong>data_capabilities[].service_documentation</strong></p></td>
 <td><p>string</p></td>
 <td><p>OPZIONALE. URL che punta alla documentazione del servizio della Fonte Autentica.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].update_frequency</strong></p></td>
+<tr class="row-odd"><td><p><strong>data_capabilities[].update_frequency</strong></p></td>
 <td><p>string</p></td>
 <td><p>OPZIONALE. Indica con quale frequenza la Fonte Autentica aggiorna i suoi dati. Valori possibili: <code class="docutils literal notranslate"><span class="pre">&quot;real_time&quot;</span></code> (aggiornamenti quasi in tempo reale, tipicamente entro minuti), <code class="docutils literal notranslate"><span class="pre">&quot;daily&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;weekly&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;monthly&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;on_demand&quot;</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].logo_uri</strong></p></td>
+<tr class="row-even"><td><p><strong>data_capabilities[].logo_uri</strong></p></td>
 <td><p>string</p></td>
 <td><p>OPZIONALE. URL all'immagine del logo relativa ai dati forniti.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].logo_uri#integrity</strong></p></td>
+<tr class="row-odd"><td><p><strong>data_capabilities[].logo_uri#integrity</strong></p></td>
 <td><p>string</p></td>
 <td><p>CONDIZIONALE. Digest crittografico della risorsa immagine del logo per la verifica dell'integrità. RICHIESTO se <code class="docutils literal notranslate"><span class="pre">logo_uri</span></code> è presente. Formato: <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code> (es., <code class="docutils literal notranslate"><span class="pre">&quot;sha-256-abc123...&quot;</span></code>).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].background_image</strong></p></td>
+<tr class="row-even"><td><p><strong>data_capabilities[].background_image</strong></p></td>
 <td><p>JSON object</p></td>
 <td><p>OPZIONALE. Oggetto contiene informazioni sull'immagine di sfondo da visualizzare insieme ai dati forniti. L'oggetto include i parametri <code class="docutils literal notranslate"><span class="pre">uri</span></code> e <code class="docutils literal notranslate"><span class="pre">uri#integrity</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].watermark_image</strong></p></td>
+<tr class="row-odd"><td><p><strong>data_capabilities[].watermark_image</strong></p></td>
 <td><p>JSON object</p></td>
 <td><p>OPZIONALE. Oggetto contiene informazioni sull'immagine di filigrana da visualizzare insieme ai dati forniti. L'oggetto include i parametri <code class="docutils literal notranslate"><span class="pre">uri</span></code> e <code class="docutils literal notranslate"><span class="pre">uri#integrity</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].background_color</strong></p></td>
+<tr class="row-even"><td><p><strong>data_capabilities[].background_color</strong></p></td>
 <td><p>string</p></td>
 <td><p>OPZIONALE. Stringa che rappresenta il colore di sfondo da visualizzare insieme ai dati forniti</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].contacts</strong></p></td>
+<tr class="row-odd"><td><p><strong>data_capabilities[].contacts</strong></p></td>
 <td><p>String Array</p></td>
 <td><p>OPZIONALE. Indirizzi email di contatto del servizio clienti.</p></td>
 </tr>
@@ -746,10 +742,6 @@ Content-Type: application/json
 <span class="w">                </span><span class="p">{</span>
 <span class="w">                    </span><span class="nt">&quot;dataset_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;38832801&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;data_origin_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;authentic_source1.dataset1.origin&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;domains&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                        </span><span class="s2">&quot;IDENTITY&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="s2">&quot;AUTHORIZATION&quot;</span>
-<span class="w">                    </span><span class="p">],</span>
 <span class="w">                    </span><span class="nt">&quot;intended_purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                        </span><span class="s2">&quot;DRIVING_LICENSE&quot;</span><span class="p">,</span>
 <span class="w">                        </span><span class="s2">&quot;PERSON_IDENTIFICATION&quot;</span>
@@ -829,15 +821,15 @@ Content-Type: application/json
 <span class="w">                    </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/logos/{dataset_id}/image.svg&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;logo_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-b1946ac92492d2347c6235b4d2611184e2a3f8b8c8f8f8e8f8f8f8f8f8f8f8f8&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="s2">&quot;citizen-support@gov.example&quot;</span>
+<span class="w">                        </span><span class="s2">&quot;citizen-support@gov.example&quot;</span>
 <span class="w">                    </span><span class="p">],</span>
 <span class="w">                    </span><span class="nt">&quot;background_image&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/images/{dataset_id}/image.svg&quot;</span><span class="p">,</span>
-<span class="w">                                </span><span class="nt">&quot;uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg==&quot;</span>
+<span class="w">                        </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/images/{dataset_id}/image.svg&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg==&quot;</span>
 <span class="w">                    </span><span class="p">},</span>
 <span class="w">                    </span><span class="nt">&quot;watermark_image&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/images/{dataset_id}/imag-watermark.svg&quot;</span><span class="p">,</span>
-<span class="w">                                </span><span class="nt">&quot;uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg==&quot;</span>
+<span class="w">                        </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/images/{dataset_id}/imag-watermark.svg&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg==&quot;</span>
 <span class="w">                    </span><span class="p">},</span>
 <span class="w">                    </span><span class="nt">&quot;background_color&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#12107c&quot;</span>
 <span class="w">                </span><span class="p">}</span>
@@ -864,9 +856,6 @@ Content-Type: application/json
 <span class="w">                </span><span class="p">{</span>
 <span class="w">                    </span><span class="nt">&quot;dataset_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;38854801&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;data_origin_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;authentic_source2.dataset1.origin&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;domains&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                        </span><span class="s2">&quot;FINANCIAL&quot;</span>
-<span class="w">                    </span><span class="p">],</span>
 <span class="w">                    </span><span class="nt">&quot;intended_purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                        </span><span class="s2">&quot;BANK_ACCOUNT&quot;</span><span class="p">,</span>
 <span class="w">                        </span><span class="s2">&quot;INCOME_CERTIFICATE&quot;</span>
@@ -936,9 +925,6 @@ Content-Type: application/json
 <span class="w">                </span><span class="p">{</span>
 <span class="w">                    </span><span class="nt">&quot;dataset_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;38854802&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;data_origin_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;authentic_source2.dataset2.origin&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;domains&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                        </span><span class="s2">&quot;FINANCIAL&quot;</span>
-<span class="w">                    </span><span class="p">],</span>
 <span class="w">                    </span><span class="nt">&quot;intended_purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                        </span><span class="s2">&quot;PAYMENT_HISTORY&quot;</span>
 <span class="w">                    </span><span class="p">],</span>
@@ -998,13 +984,13 @@ Content-Type: application/json
 </div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Per una gestione migliore e più efficiente della localizzazione delle informazioni contenute nel Catalogo delle Credenziali Digitali, un'Entità che lo consulta DOVREBBE:</p>
+<p>Per una gestione migliore e più efficiente della localizzazione delle informazioni contenute nel Catalogo degli Attestati Elettronici, un'Entità che lo consulta DOVREBBE:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Scaricare la versione base del Catalogo delle Credenziali Digitali (compatta, senza localizzazioni) usando l'endpoint <code class="docutils literal notranslate"><span class="pre">.well-known/authentic-sources</span></code>.</p></li>
+<li><p>Scaricare la versione base del Catalogo degli Attestati Elettronici (compatta, senza localizzazioni) usando l'endpoint <code class="docutils literal notranslate"><span class="pre">.well-known/authentic-sources</span></code>.</p></li>
 <li><p>Determinare la lingua preferita dell'Utente.</p></li>
 <li><p>Scaricare solo i bundle di localizzazione necessari.</p></li>
-<li><p>Unire dinamicamente il contenuto localizzato con la struttura del Catalogo delle Credenziali Digitali.</p></li>
+<li><p>Unire dinamicamente il contenuto localizzato con la struttura del Catalogo degli Attestati Elettronici.</p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -1027,12 +1013,12 @@ Content-Type: application/json
 </section>
 <section id="coordinamento-as-ci">
 <h3><span class="section-number">7.4.4. </span>Coordinamento AS-CI<a class="headerlink" href="#coordinamento-as-ci" title="Link to this heading">¶</a></h3>
-<p>Dopo la registrazione AS, il Registro AS abilita gli Emittenti di Credenziali a scoprire entità AS adatte e richiedere l'approvazione dell'integrazione. Questo processo di coordinamento è dettagliato in <span class="xref std std-ref">entity-onboarding:Authentic Source to Credential Issuer Authorization Process</span>.</p>
+<p>Dopo la registrazione AS, il Registro AS abilita gli Emittenti di Credenziali a scoprire entità AS adatte e richiedere l'approvazione dell'integrazione. Questo processo di coordinamento è dettagliato in <a class="reference internal" href="entity-onboarding.html#processo-di-integrazione-as-ci"><span class="std std-ref">Processo di Integrazione AS-CI</span></a>.</p>
 </section>
 </section>
 <section id="registro-di-federazione">
 <h2><span class="section-number">7.5. </span>Registro di Federazione<a class="headerlink" href="#registro-di-federazione" title="Link to this heading">¶</a></h2>
-<p>Il <strong>Registro di Federazione</strong> fornisce l'infrastruttura di fiducia crittografica per tutti i partecipanti dell'ecosistema IT-Wallet. Il Registro di Federazione mantiene l'elenco autorevole delle entità fidate e il loro stato operativo usando endpoint specifici della federazione come definito in <span class="xref std std-ref">trust-infrastructure:Federation API endpoints</span>.</p>
+<p>Il <strong>Registro di Federazione</strong> fornisce l'infrastruttura di fiducia crittografica per tutti i partecipanti dell'ecosistema IT-Wallet. Il Registro di Federazione mantiene l'elenco autorevole delle entità fidate e il loro stato operativo usando endpoint specifici della federazione come definito in <a class="reference internal" href="trust-infrastructure.html#endpoint-api-di-federazione"><span class="std std-ref">Endpoint API di Federazione</span></a>.</p>
 <section id="ruolo-di-integrazione-del-registro">
 <h3><span class="section-number">7.5.1. </span>Ruolo di Integrazione del Registro<a class="headerlink" href="#ruolo-di-integrazione-del-registro" title="Link to this heading">¶</a></h3>
 <p>All'interno dell'architettura del Registro del Sistema IT-Wallet, il Registro di Federazione serve come <strong>livello di validazione della fiducia</strong> per:</p>
@@ -1044,53 +1030,53 @@ Content-Type: application/json
 </section>
 <section id="accesso-al-registro-di-federazione">
 <h3><span class="section-number">7.5.2. </span>Accesso al Registro di Federazione<a class="headerlink" href="#accesso-al-registro-di-federazione" title="Link to this heading">¶</a></h3>
-<p>Le operazioni del Registro di Federazione sono accessibili attraverso gli endpoint di federazione del Trust Anchor come dettagliato in <span class="xref std std-ref">trust-infrastructure:Federation API endpoints</span>. L'architettura di scoperta del registro fornisce informazioni sugli endpoint di federazione tramite l'endpoint di scoperta del registro descritto in <a class="reference internal" href="#endpoint-di-scoperta-del-registro">Endpoint di Scoperta del Registro</a>.</p>
+<p>Le operazioni del Registro di Federazione sono accessibili attraverso gli endpoint di federazione del Trust Anchor come dettagliato in <a class="reference internal" href="trust-infrastructure.html#endpoint-api-di-federazione"><span class="std std-ref">Endpoint API di Federazione</span></a>. L'architettura di scoperta del registro fornisce informazioni sugli endpoint di federazione tramite l'endpoint di scoperta del registro descritto in <a class="reference internal" href="#endpoint-di-scoperta-del-registro">Endpoint di Scoperta del Registro</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>Gli endpoint di federazione sono disponibili sia attraverso il meccanismo di scoperta del registro (per l'accesso unificato al registro) che attraverso l'Entity Configuration del Trust Anchor a <code class="docutils literal notranslate"><span class="pre">.well-known/openid-federation</span></code> (per operazioni specifiche della federazione). Entrambe le fonti forniscono gli stessi URL degli endpoint ma servono diversi pattern di scoperta: scoperta del registro per l'orientamento iniziale nell'ecosistema, Entity Configuration per la conformità standard OpenID Federation 1.0.</p>
-<p>Per le specifiche tecniche complete dei protocolli di federazione, configurazioni delle entità, meccanismi di valutazione della fiducia e validazione della catena di fiducia, vedere <span class="xref std std-ref">trust-infrastructure:The Infrastructure of Trust</span>.</p>
+<p>Per le specifiche tecniche complete dei protocolli di federazione, configurazioni delle entità, meccanismi di valutazione della fiducia e validazione della catena di fiducia, vedere <a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>.</p>
 </div>
 </section>
 </section>
-<section id="catalogo-delle-credenziali-digitali">
-<h2><span class="section-number">7.6. </span>Catalogo delle Credenziali Digitali<a class="headerlink" href="#catalogo-delle-credenziali-digitali" title="Link to this heading">¶</a></h2>
-<p>Il Catalogo delle Credenziali Digitali è il registro di tutte le Credenziali Digitali disponibili riconosciute all'interno dell'ecosistema IT-Wallet. È pubblicato dal Trust Anchor e pubblicamente disponibile da tutte le Entità attraverso un endpoint di Federazione specializzato. Agisce come un punto di riferimento unico per tutti gli attori coinvolti nel processo di emissione, verifica e utilizzo delle Credenziali Digitali.</p>
-<p>Il Catalogo delle Credenziali Digitali mira a:</p>
+<section id="catalogo-degli-attestati-elettronici">
+<span id="registry-catalogo-delle-credenziali-digitali"></span><h2><span class="section-number">7.6. </span>Catalogo degli Attestati Elettronici<a class="headerlink" href="#catalogo-degli-attestati-elettronici" title="Link to this heading">¶</a></h2>
+<p>Il Catalogo degli Attestati Elettronici è il registro di tutte gli Attestati Elettronici disponibili riconosciute all'interno dell'ecosistema IT-Wallet. È pubblicato dal Trust Anchor e pubblicamente disponibile da tutte le Entità attraverso un endpoint di Federazione specializzato. Agisce come un punto di riferimento unico per tutti gli attori coinvolti nel processo di emissione, verifica e utilizzo degli Attestati Elettronici.</p>
+<p>Il Catalogo degli Attestati ElettroniciCatalogo degli Attestati Elettronici mira a:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>Facilitare la scoperta delle Credenziali Digitali per gli Utenti.</p></li>
-<li><p>Standardizzare la descrizione tecnica e funzionale delle Credenziali Digitali.</p></li>
+<li><p>Facilitare la scoperta degli Attestati Elettronici per gli Utenti.</p></li>
+<li><p>Standardizzare la descrizione tecnica e funzionale degli Attestati Elettronici.</p></li>
 <li><p>Abilitare l'interoperabilità tra diversi Emittenti e Relying Parties.</p></li>
 <li><p>Semplificare il processo di integrazione per Fornitori di Wallet e Relying Parties.</p></li>
 <li><p>Garantire la fiducia nell'ecosistema attraverso informazioni verificabili e affidabili.</p></li>
-<li><p>Fornire trasparenza sull'ecosistema delle Credenziali Digitali disponibili.</p></li>
+<li><p>Fornire trasparenza sull'ecosistema degli Attestati Elettronici disponibili.</p></li>
 </ol>
 </div></blockquote>
-<p>Le principali Entità coinvolte nel Catalogo delle Credenziali Digitali sono:</p>
+<p>Le principali Entità coinvolte nel Catalogo degli Attestati Elettronici sono:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Trust Anchor</strong>: Gestisce e mantiene il Catalogo delle Credenziali Digitali, garantendone l'autenticità e l'integrità.</p></li>
-<li><p><strong>Organismo di Supervisione</strong>: Interagisce con il Trust Anchor e il Catalogo delle Credenziali Digitali per monitorare la fase di registrazione garantendo sicurezza e privacy secondo le normative nazionali/europee, mantenendo tutte le informazioni affidabili e aggiornate.</p></li>
-<li><p><strong>Emittenti di Credenziali Digitali</strong>: Le entità autorizzate a emettere Credenziali Digitali, registrandole nel Catalogo.</p></li>
-<li><p><strong>Relying Parties</strong>: Usano il Catalogo delle Credenziali Digitali per raccogliere tutte le informazioni necessarie sulle Credenziali Digitali che intendono richiedere durante la fase di presentazione.</p></li>
-<li><p><strong>Fornitori di Wallet</strong>: Accedono al Catalogo delle Credenziali Digitali per identificare le Credenziali Digitali disponibili e per recuperare tutte le informazioni necessarie per integrarle nelle loro Soluzioni Wallet.</p></li>
-<li><p><strong>Utenti</strong>: Gli Utenti che usano indirettamente il Catalogo delle Credenziali Digitali attraverso le loro Istanze Wallet per scoprire e richiedere Credenziali Digitali.</p></li>
-<li><p><strong>Fonti Autentiche</strong>: Le Entità che detengono i dati originali che sono attestati nelle Credenziali Digitali. Forniscono supporto agli Emittenti nella registrazione delle Credenziali Digitali nel Catalogo.</p></li>
+<li><p><strong>Trust Anchor</strong>: Gestisce e mantiene il Catalogo degli Attestati Elettronici, garantendone l'autenticità e l'integrità.</p></li>
+<li><p><strong>Organismo di Supervisione</strong>: Interagisce con il Trust Anchor e il Catalogo degli Attestati Elettronici per monitorare la fase di registrazione garantendo sicurezza e privacy secondo le normative nazionali/europee, mantenendo tutte le informazioni affidabili e aggiornate.</p></li>
+<li><p><strong>Emittenti di Attestati Elettronici</strong>: Le entità autorizzate a emettere Attestati Elettronici, registrandole nel Catalogo.</p></li>
+<li><p><strong>Relying Parties</strong>: Usano il Catalogo degli Attestati Elettronici per raccogliere tutte le informazioni necessarie sulgli Attestati Elettronici che intendono richiedere durante la fase di presentazione.</p></li>
+<li><p><strong>Fornitori di Wallet</strong>: Accedono al Catalogo degli Attestati Elettronici per identificare gli Attestati Elettronici disponibili e per recuperare tutte le informazioni necessarie per integrarle nelle loro Soluzioni Wallet.</p></li>
+<li><p><strong>Utenti</strong>: Gli Utenti che usano indirettamente il Catalogo degli Attestati Elettronici attraverso le loro Istanze Wallet per scoprire e richiedere Attestati Elettronici.</p></li>
+<li><p><strong>Fonti Autentiche</strong>: Le Entità che detengono i dati originali che sono attestati nelgli Attestati Elettronici. Forniscono supporto agli Emittenti nella registrazione degli Attestati Elettronici nel Catalogo.</p></li>
 </ul>
 </div></blockquote>
 <figure class="align-default" id="id3">
-<span id="fig-catalog-svg"></span><p class="plantuml">
+<span id="fig-catalog"></span><p class="plantuml">
 <object data="_images/plantuml-cb8c3458016f41895f13509eaa8af4d2e34009e8.svg" type="image/svg+xml" style="width:99%">
-<a href="_images/plantuml-cb8c3458016f41895f13509eaa8af4d2e34009e8.png"><img src="_images/plantuml-cb8c3458016f41895f13509eaa8af4d2e34009e8.png" alt="La figura illustra le Entità delle Credenziali Digitali." style="width: 99.0%"/></a>
+<a href="_images/plantuml-cb8c3458016f41895f13509eaa8af4d2e34009e8.png"><img src="_images/plantuml-cb8c3458016f41895f13509eaa8af4d2e34009e8.png" alt="La figura illustra le Entità degli Attestati Elettronici." style="width: 99.0%"/></a>
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 7.1 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/ZLJ1Rkis4BpxAxP6WQP00X-QtjeWgPEsFXGmuXGz6ZIvbeb8fCfTEbM__YrDELAUb6ST34khuSnmESjxOXKuLYKysiAoAc4PqA1ZcnwL57mH4Pwam1Pfzfrrkem6uPVbxM9vkrtwglPEy7UpsG_mY7lh43RhvzNBqwO7vbWh4tvQQ5zLtjsDVDbxnpVg3SbNUFFpGcDWkxTQCKv06p6wKpG5MdhzEW4M2GDDyUcBAJ1XEsAO07p5PgAx2J1hjbe5Cm69_-c3SWLkLSbJ-etqohwUW7nJPOaNAHVM4LkER5CuPhFtL5tfSmIlOJvCA7KHdGlW6GjB79hql1H4471eQ-3t85v07PKjrQv46A6JXTzJ7IpZh_DpfkO_Yg4r1lBkAlLTkF-MlvE6PVi_EeAtWmTZINivP53EYEg_4OalQIG-uU-soo4IFpXzy4dd9Rr1VarwwVUNSgf0EgbKoZgM7m4Vy9i3t1ULY8dcfY76wefYBT6qv4FpcpUD26ow2gJIITGxopxGkPig7HJK1qK8w2W6wmeWrFB0pScQQ1sLRlgwlP7kz2rHn42Zfmkh_34vU8WiJP1k6y3sBf9DAuP4SF4isq7eP0EMZNXUgv2OKdHo0ThAF9_ogQ_l4GJsK2Wf1R1kxqELsw1sFZBeSUN-O7NoUIhMmH-joRl_vrI1jjJkMMia6dgmZh48Yh4lcgeUCl471xdKQIlfP5gZDpu64KX2vnAqjQJ-foyD-22DTTBOD0sWc54uZ6XTx7Wtq6c0fBqVijrjg8lqTPVd7A6uAoqTiflVHQMD7JfJUm4Ahz0E4_nnXbQEPQ5c6LBBX_4rVJkVXZtuT1gPe8jjVs6-VZ2CzGQiQvSE-tyc6pSxo6fVyezFuZXc8TCDizVnTP7pO4_BzatlmjG3hdmV3XZJw12qaLuvOkKqGfq11dPDNhvzR0dw3bREs82Qo-RzHgN-bKfVsRYNECIg_080">Diagramma Entità-Relazione del Catalogo delle Credenziali Digitali.</a></span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 7.1 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/ZLJ1Rkis4BpxAxP6WQP00X-QtjeWgPEsFXGmuXGz6ZIvbeb8fCfTEbM__YrDELAUb6ST34khuSnmESjxOXKuLYKysiAoAc4PqA1ZcnwL57mH4Pwam1Pfzfrrkem6uPVbxM9vkrtwglPEy7UpsG_mY7lh43RhvzNBqwO7vbWh4tvQQ5zLtjsDVDbxnpVg3SbNUFFpGcDWkxTQCKv06p6wKpG5MdhzEW4M2GDDyUcBAJ1XEsAO07p5PgAx2J1hjbe5Cm69_-c3SWLkLSbJ-etqohwUW7nJPOaNAHVM4LkER5CuPhFtL5tfSmIlOJvCA7KHdGlW6GjB79hql1H4471eQ-3t85v07PKjrQv46A6JXTzJ7IpZh_DpfkO_Yg4r1lBkAlLTkF-MlvE6PVi_EeAtWmTZINivP53EYEg_4OalQIG-uU-soo4IFpXzy4dd9Rr1VarwwVUNSgf0EgbKoZgM7m4Vy9i3t1ULY8dcfY76wefYBT6qv4FpcpUD26ow2gJIITGxopxGkPig7HJK1qK8w2W6wmeWrFB0pScQQ1sLRlgwlP7kz2rHn42Zfmkh_34vU8WiJP1k6y3sBf9DAuP4SF4isq7eP0EMZNXUgv2OKdHo0ThAF9_ogQ_l4GJsK2Wf1R1kxqELsw1sFZBeSUN-O7NoUIhMmH-joRl_vrI1jjJkMMia6dgmZh48Yh4lcgeUCl471xdKQIlfP5gZDpu64KX2vnAqjQJ-foyD-22DTTBOD0sWc54uZ6XTx7Wtq6c0fBqVijrjg8lqTPVd7A6uAoqTiflVHQMD7JfJUm4Ahz0E4_nnXbQEPQ5c6LBBX_4rVJkVXZtuT1gPe8jjVs6-VZ2CzGQiQvSE-tyc6pSxo6fVyezFuZXc8TCDizVnTP7pO4_BzatlmjG3hdmV3XZJw12qaLuvOkKqGfq11dPDNhvzR0dw3bREs82Qo-RzHgN-bKfVsRYNECIg_080">Diagramma Entità-Relazione del Catalogo degli Attestati Elettronici.</a></span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<p>La seguente tabella riassume le informazioni principali che DEVONO essere fornite dal Catalogo delle Credenziali Digitali:</p>
+<p>La seguente tabella riassume le informazioni principali che DEVONO essere fornite dal Catalogo degli Attestati Elettronici:</p>
 <table class="longtable docutils align-default" id="id4">
-<caption><span class="caption-number">Tabella 7.3 </span><span class="caption-text">Catalogo delle Credenziali Digitali - Informazioni principali</span><a class="headerlink" href="#id4" title="Link to this table">¶</a></caption>
+<caption><span class="caption-number">Tabella 7.3 </span><span class="caption-text">Catalogo degli Attestati Elettronici - Informazioni principali</span><a class="headerlink" href="#id4" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 30.0%" />
 <col style="width: 70.0%" />
@@ -1104,13 +1090,13 @@ Content-Type: application/json
 <tr class="row-even"><td><p>Metadati della Credenziale Digitale</p></td>
 <td><p>Informazioni identificative essenziali e caratteristiche della Credenziale Digitale, inclusi:</p>
 <ul class="simple">
-<li><p><strong>Identificatore univoco della credenziale</strong>: Una stringa identificativa univoca di ciascuna Credenziale Digitale.</p></li>
+<li><p><strong>Identificatore univoco della Credenziale</strong>: Una stringa identificativa univoca di ciascuna Credenziale Digitale.</p></li>
 <li><p><strong>Metodi di autenticazione dell'utente</strong>: Meccanismi di autenticazione dell'utente usati per richiedere la Credenziale Digitale, se richiesto dagli Emittenti o dalle Fonti Autentiche.</p></li>
 <li><p><strong>Livello Minimo di Garanzia</strong>: Il Livello Minimo di Garanzia richiesto per l'affidabilità della Credenziale Digitale. DEVE tenere conto del Livello di Garanzia dell'autenticazione dell'Utente, quando applicabile, e dell'Istanza Wallet.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><p>Emittenti di Credenziali Digitali</p></td>
+<tr class="row-odd"><td><p>Emittenti di Attestati Elettronici</p></td>
 <td><p>Dettagli sull'organizzazione autorizzata a emettere la Credenziale Digitale, come:</p>
 <ul class="simple">
 <li><p><strong>Identificatori dell'emittente</strong>: Identificatore univoco per l'emittente della Credenziale Digitale.</p></li>
@@ -1134,64 +1120,64 @@ Content-Type: application/json
 <tr class="row-even"><td><p>Termini d'Uso</p></td>
 <td><p>Condizioni e limitazioni per l'uso della Credenziale Digitale, come:</p>
 <ul class="simple">
-<li><p><strong>Validità della credenziale</strong>: Periodo di tempo durante il quale la Credenziale Digitale è valida e, quando applicabile, meccanismi e dettagli tecnici per invalidare le Credenziali Digitali (metodi di revoca/sospensione).</p></li>
+<li><p><strong>Validità della Credenziale</strong>: Periodo di tempo durante il quale la Credenziale Digitale è valida e, quando applicabile, meccanismi e dettagli tecnici per invalidare gli Attestati Elettronici (metodi di revoca/sospensione).</p></li>
 <li><p><strong>Policy di restrizione</strong>: Se applicabile, regole che governano l'uso e le limitazioni della Credenziale Digitale secondo le normative nazionali. È usata, ad esempio, per specificare se solo Entità di tipo legale specifico, per esempio Fornitore Pub-EAA e Soluzioni Wallet pubbliche, sono autorizzate a emettere e ottenere la Credenziale Digitale.</p></li>
 <li><p><strong>Policy di prezzo</strong>: Informazioni relative ai modelli di prezzo della Credenziale Digitale, come <cite>free</cite>, <cite>issuance_based</cite>, <cite>verification_based</cite>.</p></li>
-<li><p><strong>Scopi della Credenziale Digitale</strong>: Informazioni relative agli scopi consentiti per cui la Credenziale Digitale può essere usata. Ogni tipo di Credenziale Digitale può essere usato per molteplici scopi.</p></li>
+<li><p><strong>Finalità della Credenziale Digitale</strong>: Informazioni relative alle finalità consentite per cui la Credenziale Digitale può essere usata. Ogni tipo di Credenziale Digitale può essere usato per molteplici finalità.</p></li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
-<p>Il Trust Anchor DEVE pubblicare e mantenere aggiornate tutte le informazioni all'endpoint <cite>.well-known</cite> del Catalogo delle Credenziali Digitali garantendo affidabilità, autenticità e integrità dei dati. In particolare, il Catalogo delle Credenziali Digitali, i claims e la tassonomia DEVONO essere disponibili attraverso l'endpoint <code class="docutils literal notranslate"><span class="pre">.well-known/credential-catalog</span></code>.</p>
-<section id="gerarchia-delle-credenziali-digitali">
-<h3><span class="section-number">7.6.1. </span>Gerarchia delle Credenziali Digitali<a class="headerlink" href="#gerarchia-delle-credenziali-digitali" title="Link to this heading">¶</a></h3>
-<p>Le <strong>Credenziali Digitali</strong> riconosciute all'interno dell'ecosistema <strong>IT-Wallet</strong> sono classificate e standardizzate secondo il seguente modello gerarchico multilivello, progettato per migliorare la chiarezza semantica, la scoperta delle Credenziali e la compatibilità sia con flussi di verifica basati su Credenziali specifiche sia su singoli claim.</p>
+<p>Il Trust Anchor DEVE pubblicare e mantenere aggiornate tutte le informazioni all'endpoint <cite>.well-known</cite> del Catalogo degli Attestati Elettronici garantendo affidabilità, autenticità e integrità dei dati. In particolare, il Catalogo degli Attestati Elettronici, i claims e la tassonomia DEVONO essere disponibili attraverso l'endpoint <code class="docutils literal notranslate"><span class="pre">.well-known/credential-catalog</span></code>.</p>
+<section id="gerarchia-degli-attestati-elettronici">
+<h3><span class="section-number">7.6.1. </span>Gerarchia degli Attestati Elettronici<a class="headerlink" href="#gerarchia-degli-attestati-elettronici" title="Link to this heading">¶</a></h3>
+<p>Le Credenziali Digitali riconosciute all'interno dell'ecosistema IT-Wallet sono classificate e standardizzate secondo il seguente modello gerarchico multilivello, progettato per migliorare la chiarezza semantica, la scoperta delle credenziali e la compatibilità sia con flussi di verifica basati su credenziali specifiche che su singoli attributi (claims).</p>
 <p>La gerarchia è definita come segue:</p>
-<p><strong>Dominio</strong></p>
-<p>Un <strong>Dominio</strong> rappresenta un'area tematica di alto livello che raggruppa famiglie di Credenziali afferenti allo stesso contesto generale (ad es. Identità, Salute, Istruzione, Mobilità). I Domini forniscono il livello organizzativo più alto della Tassonomia.</p>
-<p><strong>Classe (Famiglia di Credenziali)</strong></p>
-<p>Una <strong>Classe</strong> rappresenta una famiglia di Credenziali che condividono natura, funzione o struttura simili (ad es. Documenti di Identificazione, Certificati di Stato Civile).</p>
+<p><strong>Dominio (Domain)</strong></p>
+<p>Un <strong>Dominio</strong> rappresenta un'area tematica di alto livello che raggruppa famiglie di Credenziali afferenti allo stesso contesto generale (ad es. Identità, Salute, Istruzione, Mobilità).
+I Domini forniscono il livello organizzativo più alto della Tassonomia.</p>
+<p><strong>Classe di Credenziale (Credential Class)</strong></p>
+<p>Una <strong>Credential Class</strong> rappresenta una famiglia di Credenziali che condividono natura, funzione o struttura simili (ad es. Documenti di Identità, Certificati di Stato Civile).</p>
 <p>Ogni Classe <strong>DOVREBBE</strong> definire:</p>
 <ul class="simple">
-<li><p>un identificatore di Classe stabile (URI),</p></li>
+<li><p>un identificatore di Classe stabile (URI);</p></li>
 <li><p>la semantica attesa della famiglia di Credenziali.</p></li>
 </ul>
-<p>Le Classi consentono ai <em>Relying Party</em> e alle <em>Wallet Solution</em> di richiedere o individuare credenziali in base alla loro categoria tipologica.</p>
-<p><strong>Tipo di Credenziale (Sottoclasse)</strong></p>
-<p>Un <strong>Tipo di Credenziale (Sottoclasse)</strong> rappresenta una specifica istanza di credenziale all'interno di una Classe (ad es. Credenziale di Viaggio Digitale, Certificato di Nascita, Patente di Guida).</p>
-<p>Ogni Tipo di Credenziale <strong>DEVE</strong> includere:</p>
+<p>Le Classi consentono ai Relying Party e alle Wallet Solution di richiedere o individuare le credenziali in base alla loro categoria tipologica.</p>
+<p><strong>Tipo di Credenziale (Credential Type)</strong></p>
+<p>Un <strong>Credential Type</strong> rappresenta una specifica istanza di una credenziale all'interno di una Classe (ad es. Credenziale di Viaggio Digitale, Certificato di Nascita, Patente di Guida).
+Ogni Credential Type <strong>DEVE</strong> includere:</p>
 <ul class="simple">
-<li><p>un identificatore univoco,</p></li>
-<li><p>l'identificativo del Credential Issuer,</p></li>
-<li><p>l'insieme degli Attributi che potrebbero essere inclusi nelle presentazioni.</p></li>
+<li><p>un identificatore univoco;</p></li>
+<li><p>l'identificativo dell'Emittente della Credenziale (Issuer);</p></li>
+<li><p>l'insieme degli Attributi che possono essere inclusi nelle presentazioni.</p></li>
 </ul>
-<p>I Tipi di Credenziale consentono un targeting preciso nei flussi di verifica guidati da requisiti di conformità o obblighi normativi.</p>
-<p><strong>Finalità (Intento di Verifica)</strong></p>
-<p>Una <strong>Finalità (Intento di Verifica)</strong> descrive <em>perché</em> una Credenziale può essere richiesta da un <em>Relying Party</em> (ad es. Verifica dell'identità, Verifica dell'età, Idoneità all'accesso a servizi specifici).
-Le Finalità <strong>DEVONO</strong> descrivere gli <strong>obiettivi della verifica</strong>.
-Ogni Tipo di Credenziale <strong>DEVE</strong> dichiarare il proprio Dominio, la propria Classe e le Finalità supportate.</p>
-<p>La tabella seguente fornisce esempi non esaustivi che illustrano le relazioni tra Dominio, Classe, Tipo di Credenziale e Finalità.
-Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori <strong>POTREBBERO</strong> essere aggiunti nel tempo man mano che l'ecosistema IT-Wallet evolverà.</p>
-<span id="it-wallet-dc-domains"></span><table class="longtable docutils align-default" id="id5">
-<caption><span class="caption-number">Tabella 7.4 </span><span class="caption-text">Domini e finalità delle Credenziali</span><a class="headerlink" href="#id5" title="Link to this table">¶</a></caption>
+<p>I Credential Type consentono un targeting preciso nei flussi di verifica guidati da requisiti di conformità o obblighi normativi.</p>
+<p><strong>Finalità (Purpose - Intento di Verifica)</strong></p>
+<p>Uno <strong>Finalità (Purpose - Intento di Verifica)</strong> descrive <em>perché</em> una credenziale può essere richiesta da un Relying Party (ad es. Verifica dell'identità, Verifica dell'età, Idoneità per servizi specifici).
+Gli Finalità <strong>DEVONO</strong> descrivere gli <strong>obiettivi della verifica</strong>.
+Ogni Credential Type <strong>DEVE</strong> dichiarare il proprio Dominio, Classe e le Finalità supportati.</p>
+<p>Le tabelle seguenti forniscono esempi non esaustivi che illustrano le relazioni tra Dominio, Credential Class e Credential Type, seguite dalla loro mappatura con gli Scopi di verifica.
+Ulteriori Domini, Classi, credenziali specifiche e Finalità di verifica POSSONO essere aggiunti nel tempo con l'evolversi dell'ecosistema IT-Wallet.</p>
+<span id="it-wallet-dc-taxonomy"></span><table class="longtable docutils align-default" id="id5">
+<caption><span class="caption-number">Tabella 7.4 </span><span class="caption-text">Tabella 1: Tassonomia delle Credenziali Digitali: Gerarchia e Classificazione</span><a class="headerlink" href="#id5" title="Link to this table">¶</a></caption>
 <colgroup>
-<col style="width: 20.0%" />
-<col style="width: 20.0%" />
-<col style="width: 20.0%" />
-<col style="width: 20.0%" />
-<col style="width: 20.0%" />
+<col style="width: 15.0%" />
+<col style="width: 25.0%" />
+<col style="width: 30.0%" />
+<col style="width: 30.0%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p><strong>Dominio</strong></p></th>
-<th class="head"><p><strong>Classe (Famiglia di Credenziali)</strong></p></th>
-<th class="head"><p><strong>Sottoclasse (Tipo di Credenziale)</strong></p></th>
 <th class="head"><p><strong>Descrizione</strong></p></th>
-<th class="head"><p><strong>Finalità</strong></p></th>
+<th class="head"><p><strong>Credential Class</strong></p></th>
+<th class="head"><p><strong>Credential Type</strong></p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><em>IDENTITÀ</em></p></td>
+<td><p>Credenziali che stabiliscono o confermano l'identità legale di una persona e lo stato personale, civile o legale.</p></td>
 <td><ul class="simple">
 <li><p>Documenti di Identificazione</p></li>
 <li><p>Certificati di Registro Civile e Stato Personale</p></li>
@@ -1214,10 +1200,9 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori <strong
 <li><p>Certificato del Casellario Giudiziale</p></li>
 </ul>
 </td>
-<td><p>Credenziali che stabiliscono o confermano l'identità legale di una persona e lo stato personale, civile o legale.</p></td>
-<td><p>Verifica dell'identità e dell'età; verifica dello stato civile; accesso a servizi per minori; idoneità a servizi o benefici; diritto di residenza.</p></td>
 </tr>
 <tr class="row-odd"><td><p><em>CASA E FAMIGLIA</em></p></td>
+<td><p>Credenziali che attestano la composizione del nucleo familiare, la residenza e le relazioni fiscali relative all'abitazione.</p></td>
 <td><ul class="simple">
 <li><p>Documenti di Proprietà e Catastali</p></li>
 <li><p>Documenti Familiari</p></li>
@@ -1236,10 +1221,9 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori <strong
 <li><p>TARI (Tassa sui Rifiuti)</p></li>
 </ul>
 </td>
-<td><p>Credenziali che attestano la composizione del nucleo familiare, la residenza e le relazioni legali o fiscali relative all'abitazione.</p></td>
-<td><p>Verifica della residenza e del nucleo familiare; idoneità a servizi abitativi, sociali o educativi; conformità agli obblighi fiscali locali.</p></td>
 </tr>
 <tr class="row-even"><td><p><em>ISTRUZIONE</em></p></td>
+<td><p>Credenziali che attestano risultati educativi, qualifiche accademiche e formazione professionale.</p></td>
 <td><ul class="simple">
 <li><p>Qualifiche Educative</p></li>
 <li><p>Certificazioni Professionali</p></li>
@@ -1252,19 +1236,18 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori <strong
 <li><p>Laurea Magistrale</p></li>
 <li><p>Master Universitario</p></li>
 <li><p>Dottorato di Ricerca</p></li>
-<li><p>Licenze Professionali (es. architetto, avvocato, psicologo)</p></li>
-<li><p>Certificati di Formazione Professionale (es. assistente sanitario)</p></li>
+<li><p>Licenze Professionali (es. architetto, avvocato)</p></li>
+<li><p>Certificati di Formazione Professionale</p></li>
 <li><p>Certificazioni Linguistiche (es. IELTS)</p></li>
 <li><p>Qualifiche Accademiche (es. Europass)</p></li>
 </ul>
 </td>
-<td><p>Credenziali che attestano risultati educativi, qualifiche accademiche e formazione professionale.</p></td>
-<td><p>Verifica di qualifiche e titoli; valutazione di competenze e lingue; idoneità a percorsi educativi, concorsi, licenze o opportunità di studio e lavoro.</p></td>
 </tr>
 <tr class="row-odd"><td><p><em>SALUTE</em></p></td>
+<td><p>Credenziali relative alla copertura sanitaria, allo stato medico e alle certificazioni sanitarie.</p></td>
 <td><ul class="simple">
 <li><p>Certificazioni e Idoneità</p></li>
-<li><p>Cartelle Cliniche</p></li>
+<li><p>Medical Records</p></li>
 </ul>
 </td>
 <td><ul class="simple">
@@ -1278,10 +1261,9 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori <strong
 <li><p>Referto Medico Digitale</p></li>
 </ul>
 </td>
-<td><p>Credenziali relative alla copertura sanitaria, allo stato medico e alle certificazioni sanitarie.</p></td>
-<td><p>Accesso ai servizi sanitari; identificazione nei sistemi sanitari; verifica dello stato vaccinale o di idoneità; accesso e condivisione di cartelle cliniche.</p></td>
 </tr>
 <tr class="row-even"><td><p><em>FINANZIARIO</em></p></td>
+<td><p>Credenziali relative a strumenti di pagamento, autorizzazioni finanziarie e prova di pagamenti.</p></td>
 <td><ul class="simple">
 <li><p>Strumenti di Pagamento</p></li>
 <li><p>Credenziali e Autorizzazioni di Pagamento</p></li>
@@ -1293,18 +1275,17 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori <strong
 <li><p>Carta di Pagamento Digitale (debito / credito / prepagata)</p></li>
 <li><p>Carta Virtuale</p></li>
 <li><p>Conto Bancario (IBAN)</p></li>
-<li><p>Credenziale di Autenticazione Forte del Cliente (SCA)</p></li>
+<li><p>Credenziale di Autenticazione Forte (SCA)</p></li>
 <li><p>Ricevuta di Pagamento PagoPA</p></li>
-<li><p>Marca da Bollo Digitale</p></li>
+<li><p>Marca da Bollo Digitale (Bollo digitale)</p></li>
 <li><p>Certificato di Pagamento Tasse e Imposte</p></li>
 <li><p>Mandato di Abbonamento</p></li>
 <li><p>Credenziale di Pagamento Ricorrente</p></li>
 </ul>
 </td>
-<td><p>Credenziali relative a strumenti di pagamento, autorizzazioni finanziarie e prova di pagamenti.</p></td>
-<td><p>Autorizzazione ed esecuzione di pagamenti; prova di pagamento; gestione di pagamenti ricorrenti; conformità a requisiti di sicurezza o normativi.</p></td>
 </tr>
 <tr class="row-odd"><td><p><em>CULTURA E TEMPO LIBERO</em></p></td>
+<td><p>Credenziali che attestano l'appartenenza o la partecipazione a programmi culturali o ricreativi.</p></td>
 <td><ul class="simple">
 <li><p>Carte e Benefici Culturali</p></li>
 <li><p>Programmi di Membership e Fedeltà</p></li>
@@ -1320,10 +1301,9 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori <strong
 <li><p>City Pass</p></li>
 </ul>
 </td>
-<td><p>Credenziali che attestano l'appartenenza, l'affiliazione o la partecipazione a programmi culturali o ricreativi.</p></td>
-<td><p>Accesso a servizi culturali o ricreativi; applicazione di sconti o benefici legati a membership o programmi.</p></td>
 </tr>
 <tr class="row-even"><td><p><em>LAVORO</em></p></td>
+<td><p>Credenziali che attestano rapporti di lavoro, stato professionale e registri contributivi.</p></td>
 <td><ul class="simple">
 <li><p>Documenti di Lavoro</p></li>
 <li><p>Stato Lavorativo</p></li>
@@ -1337,16 +1317,15 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori <strong
 <li><p>Estratto Contributivo INPS</p></li>
 </ul>
 </td>
-<td><p>Credenziali che attestano rapporti di lavoro, stato professionale e registri contributivi.</p></td>
-<td><p>Verifica dello stato lavorativo; validazione del profilo professionale; verifica dei registri contributivi; idoneità a servizi o benefici legati al lavoro.</p></td>
 </tr>
 <tr class="row-odd"><td><p><em>MOBILITÀ E VIAGGI</em></p></td>
+<td><p>Credenziali che attestano diritti di mobilità, stato dei veicoli e diritti legati ai viaggi.</p></td>
 <td><ul class="simple">
 <li><p>Licenze e Autorizzazioni</p></li>
 <li><p>Documenti Veicolari</p></li>
 <li><p>Abbonamenti</p></li>
 <li><p>Documenti di Viaggio</p></li>
-<li><p>Assicurazioni di Viaggio</p></li>
+<li><p>Assicurazione di Viaggio</p></li>
 <li><p>Prenotazioni</p></li>
 <li><p>Sconti e Benefici</p></li>
 </ul>
@@ -1368,10 +1347,9 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori <strong
 <li><p>Benefici Turistici</p></li>
 </ul>
 </td>
-<td><p>Credenziali che attestano diritti di mobilità, stato relativo ai veicoli e diritti legati ai viaggi.</p></td>
-<td><p>Verifica di guida e veicolo; diritto a viaggiare o circolare; accesso a servizi di trasporto o alloggio; verifica di assicurazioni o sconti di viaggio.</p></td>
 </tr>
 <tr class="row-even"><td><p><em>BONUS</em></p></td>
+<td><p>Credenziali che attestano il diritto a benefici economici, incentivi o voucher.</p></td>
 <td><ul class="simple">
 <li><p>Benefici Economici e Indennità</p></li>
 <li><p>Incentivi e Voucher</p></li>
@@ -1389,12 +1367,222 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori <strong
 <li><p>Bonus Sport e Attività Fisica</p></li>
 </ul>
 </td>
-<td><p>Credenziali che attestano il diritto a benefici economici, incentivi o voucher.</p></td>
-<td><p>Verifica di idoneità; allocazione e utilizzo di benefici; applicazione di condizioni o limiti di utilizzo.</p></td>
 </tr>
 </tbody>
 </table>
-<p>Ogni Credenziale <strong>DEVE</strong> specificare il proprio <strong>Dominio</strong>, la <strong>Classe</strong> e la <strong>Finalità</strong> al fine di abilitare sia <strong>Scenari Specifici per Credenziale (Credential-Specific Scenarios)</strong> sia <strong>Scenari Agnostici rispetto alla Credenziale (Credential-Agnostic Scenarios)</strong>, in base ai requisiti del <em>Relying Party</em> e ai pattern di richiesta delle presentazioni.</p>
+<span id="it-wallet-dc-mapping"></span><table class="longtable docutils align-default" id="id6">
+<caption><span class="caption-number">Tabella 7.5 </span><span class="caption-text">Tabella 2: Mappatura tra Credential Class e Finalità (Purposes)</span><a class="headerlink" href="#id6" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 40.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Credential Class</strong></p></th>
+<th class="head"><p><strong>Finalità Supportati (Supported Purposes)</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Documenti di Identificazione</p></td>
+<td><ul class="simple">
+<li><p>Verifica dell'identità</p></li>
+<li><p>Verifica dell'età</p></li>
+<li><p>Identificazione della persona</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Certificati di Registro Civile e Stato Personale</p></td>
+<td><ul class="simple">
+<li><p>Verifica dello stato civile</p></li>
+<li><p>Diritto di residenza</p></li>
+<li><p>Verifica della composizione del nucleo familiare</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>Stato Economico e Legale</p></td>
+<td><ul class="simple">
+<li><p>Idoneità per servizi o benefici</p></li>
+<li><p>Verifica dello stato legale</p></li>
+<li><p>Controllo del casellario giudiziale</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Documenti di Proprietà e Catastali</p></td>
+<td><ul class="simple">
+<li><p>Verifica della residenza e del nucleo familiare</p></li>
+<li><p>Verifica della proprietà immobiliare</p></li>
+<li><p>Conformità catastale</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>Documenti Familiari</p></td>
+<td><ul class="simple">
+<li><p>Verifica della composizione familiare</p></li>
+<li><p>Idoneità per servizi sociali basati sulla famiglia</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Documenti Fiscali Locali</p></td>
+<td><ul class="simple">
+<li><p>Conformità agli obblighi fiscali locali</p></li>
+<li><p>Verifica dello stato delle tasse sugli immobili</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>Qualifiche Educative</p></td>
+<td><ul class="simple">
+<li><p>Verifica di qualifiche e titoli accademici</p></li>
+<li><p>Idoneità per percorsi educativi</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Certificazioni Professionali</p></td>
+<td><ul class="simple">
+<li><p>Verifica delle licenze professionali</p></li>
+<li><p>Valutazione delle competenze lavorative</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>Certificazioni e Idoneità</p></td>
+<td><ul class="simple">
+<li><p>Verifica dello stato vaccinale</p></li>
+<li><p>Verifica dello stato di idoneità fisica</p></li>
+<li><p>Accesso ad aree con restrizioni sanitarie</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Cartelle Mediche (Medical Records)</p></td>
+<td><ul class="simple">
+<li><p>Accesso ai servizi sanitari</p></li>
+<li><p>Condivisione di cartelle cliniche</p></li>
+<li><p>Validazione della storia medica</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>Strumenti di Pagamento</p></td>
+<td><ul class="simple">
+<li><p>Autorizzazione al pagamento</p></li>
+<li><p>Esecuzione del pagamento</p></li>
+<li><p>Prova di pagamento</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Credenziali e Autorizzazioni di Pagamento</p></td>
+<td><ul class="simple">
+<li><p>Gestione delle autorizzazioni finanziarie</p></li>
+<li><p>Autenticazione Forte del Cliente (SCA)</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>Pagamenti Pubblici e Tasse</p></td>
+<td><ul class="simple">
+<li><p>Prova di pagamento tasse</p></li>
+<li><p>Prova di pagamento diritti</p></li>
+<li><p>Validazione della marca da bollo digitale</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Pagamenti Ricorrenti e Abbonamenti</p></td>
+<td><ul class="simple">
+<li><p>Gestione dei pagamenti ricorrenti</p></li>
+<li><p>Verifica dei mandati di abbonamento</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>Carte e Benefici Culturali</p></td>
+<td><ul class="simple">
+<li><p>Accesso a servizi culturali</p></li>
+<li><p>Accesso a servizi ricreativi</p></li>
+<li><p>Applicazione di sconti per i membri</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Programmi di Membership e Fedeltà</p></td>
+<td><ul class="simple">
+<li><p>Verifica dell'affiliazione</p></li>
+<li><p>Verifica della partecipazione</p></li>
+<li><p>Utilizzo dei benefici fedeltà</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>Documenti di Lavoro</p></td>
+<td><ul class="simple">
+<li><p>Verifica dello stato lavorativo</p></li>
+<li><p>Validazione del profilo professionale</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Stato Lavorativo</p></td>
+<td><ul class="simple">
+<li><p>Verifica dei registri contributivi</p></li>
+<li><p>Idoneità per benefici legati al lavoro</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>Licenze e Autorizzazioni</p></td>
+<td><ul class="simple">
+<li><p>Verifica dei diritti di guida</p></li>
+<li><p>Verifica dei diritti di navigazione</p></li>
+<li><p>Controlli delle forze dell'ordine</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Documenti Veicolari</p></td>
+<td><ul class="simple">
+<li><p>Verifica dell'immatricolazione del veicolo</p></li>
+<li><p>Verifica della revisione del veicolo</p></li>
+<li><p>Controllo dello stato assicurativo</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>Abbonamenti</p></td>
+<td><ul class="simple">
+<li><p>Accesso ai servizi di trasporto</p></li>
+<li><p>Verifica dell'abbonamento al trasporto pubblico</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Documenti di Viaggio</p></td>
+<td><ul class="simple">
+<li><p>Diritto a viaggiare o circolare</p></li>
+<li><p>Controllo dell'identità per mobilità transfrontaliera</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>Assicurazione di Viaggio e Prenotazioni</p></td>
+<td><ul class="simple">
+<li><p>Verifica della copertura assicurativa di viaggio</p></li>
+<li><p>Controllo delle prenotazioni di alloggio</p></li>
+<li><p>Controllo delle prenotazioni di trasporto</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Benefici Economici e Indennità</p></td>
+<td><ul class="simple">
+<li><p>Verifica di idoneità per assegni familiari</p></li>
+<li><p>Verifica di idoneità per indennità di disoccupazione</p></li>
+<li><p>Assegnazione di supporto economico</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>Incentivi e Voucher</p></td>
+<td><ul class="simple">
+<li><p>Utilizzo di voucher digitali</p></li>
+<li><p>Utilizzo di incentivi all'acquisto</p></li>
+<li><p>Verifica dell'idoneità per il cashback</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Bonus Salute e Benessere</p></td>
+<td><ul class="simple">
+<li><p>Accesso ai bonus sanitari</p></li>
+<li><p>Utilizzo di voucher per la salute mentale</p></li>
+<li><p>Utilizzo di voucher per lo sport</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Ogni Credenziale <strong>DEVE</strong> specificare i propri domini, classi e finalità per abilitare sia gli <strong>Scenari Specifici per Credenziale</strong> che gli <strong>Scenari Agnostici rispetto alla Credenziale</strong> in base ai requisiti del Relying Party, come definito nelle tabelle di mappatura sopra riportate.</p>
 <blockquote>
 <div><ol class="arabic simple">
 <li><p><strong>Scenari Credential-Specific</strong> (Primari per Settori Governativi/Regolamentati): Le RP richiedono tipi di Credenziali specifici per requisiti di conformità e audit, includendo ad esempio:</p></li>
@@ -1408,12 +1596,12 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori <strong
 </ul>
 </div></blockquote>
 <ol class="arabic simple" start="2">
-<li><p><strong>Scenari Credential-Agnostic</strong> (Tipici per Business Privato): Le RP richiedono claims specifici indipendentemente dalla fonte della credenziale per efficienza operativa, come:</p></li>
+<li><p><strong>Scenari Credential-Agnostic</strong> (Tipici per Business Privato): Le RP richiedono claims specifici indipendentemente dalla fonte della Credenziale per efficienza operativa, come:</p></li>
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Consegna E-commerce</strong>: Qualsiasi credenziale, tra quelle a cui è autorizzato ad accedere, contenente <code class="docutils literal notranslate"><span class="pre">given_name</span></code>, <code class="docutils literal notranslate"><span class="pre">family_name</span></code>, <code class="docutils literal notranslate"><span class="pre">address</span></code> per la spedizione.</p></li>
-<li><p><strong>Abbonamenti</strong>: Qualsiasi credenziale, tra quelle a cui è autorizzato ad accedere, con <code class="docutils literal notranslate"><span class="pre">given_name</span></code>, <code class="docutils literal notranslate"><span class="pre">email</span></code> per la personalizzazione.</p></li>
+<li><p><strong>Consegna E-commerce</strong>: Qualsiasi Credenziale, tra quelle a cui è autorizzato ad accedere, contenente <code class="docutils literal notranslate"><span class="pre">given_name</span></code>, <code class="docutils literal notranslate"><span class="pre">family_name</span></code>, <code class="docutils literal notranslate"><span class="pre">address</span></code> per la spedizione.</p></li>
+<li><p><strong>Abbonamenti</strong>: Qualsiasi Credenziale, tra quelle a cui è autorizzato ad accedere, con <code class="docutils literal notranslate"><span class="pre">given_name</span></code>, <code class="docutils literal notranslate"><span class="pre">email</span></code> per la personalizzazione.</p></li>
 <li><p><strong>Personalizzazione del Servizio</strong>: Applicazioni aziendali che richiedono dati personali di base senza forti requisiti sulla fonte.</p></li>
 </ul>
 </div></blockquote>
@@ -1421,14 +1609,14 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori <strong
 <p>Questo approccio consente:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Autorizzazione basata su policy</strong> mediante l'utilizzo di mappature tra <strong>Dominio / Classe / Sottoclasse (Tipo di Credenziale) / Finalità</strong>.</p></li>
+<li><p><strong>Autorizzazione basata su policy</strong> mediante l'utilizzo di mappature tra <strong>Dominio / Classe / Tipo di Credenziale / Finalità</strong>.</p></li>
 <li><p><strong>Registrazione RP flessibile</strong> supportando sia le esigenze di conformità governativa che i requisiti operativi aziendali.</p></li>
 </ul>
 </div></blockquote>
 </section>
-<section id="struttura-del-catalogo-delle-credenziali-digitali">
-<h3><span class="section-number">7.6.2. </span>Struttura del Catalogo delle Credenziali Digitali<a class="headerlink" href="#struttura-del-catalogo-delle-credenziali-digitali" title="Link to this heading">¶</a></h3>
-<p>Il contenuto del Catalogo delle Credenziali Digitali è protetto in un JWS che contiene i seguenti parametri dell'header JOSE:</p>
+<section id="struttura-del-catalogo-degli-attestati-elettronici">
+<h3><span class="section-number">7.6.2. </span>Struttura del Catalogo degli Attestati Elettronici<a class="headerlink" href="#struttura-del-catalogo-degli-attestati-elettronici" title="Link to this heading">¶</a></h3>
+<p>Il contenuto del Catalogo degli Attestati Elettronici è protetto in un JWS che contiene i seguenti parametri dell'header JOSE:</p>
 <table class="longtable docutils align-default" id="table-catalog-parameters">
 <colgroup>
 <col style="width: 25.0%" />
@@ -1465,8 +1653,8 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori <strong
 </tbody>
 </table>
 <p>Il payload JWS contiene i seguenti parametri:</p>
-<table class="longtable docutils align-default" id="id6">
-<caption><span class="caption-number">Tabella 7.5 </span><span class="caption-text">Campi di Primo Livello del Catalogo delle Credenziali Digitali</span><a class="headerlink" href="#id6" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id7">
+<caption><span class="caption-number">Tabella 7.6 </span><span class="caption-text">Campi di Primo Livello del Catalogo degli Attestati Elettronici</span><a class="headerlink" href="#id7" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 30.0%" />
 <col style="width: 70.0%" />
@@ -1478,13 +1666,13 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori <strong
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>version</strong></p></td>
-<td><p>RICHIESTO. Versione del formato del Catalogo delle Credenziali Digitali.</p></td>
+<td><p>RICHIESTO. Versione del formato del Catalogo degli Attestati Elettronici.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>last_modified</strong></p></td>
-<td><p>RICHIESTO. Timestamp dell'ultima modifica al Catalogo delle Credenziali Digitali.</p></td>
+<td><p>RICHIESTO. Timestamp dell'ultima modifica al Catalogo degli Attestati Elettronici.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>iss</strong></p></td>
-<td><p>RICHIESTO. Identificatore dell'emittente del Catalogo delle Credenziali Digitali.</p></td>
+<td><p>RICHIESTO. Identificatore dell'emittente del Catalogo degli Attestati Elettronici.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>credentials</strong></p></td>
 <td><p>RICHIESTO. Array contenente definizioni di Credenziali Digitali.</p></td>
@@ -1492,8 +1680,8 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori <strong
 </tbody>
 </table>
 <p>Ogni elemento dell'array <code class="docutils literal notranslate"><span class="pre">credentials</span></code> contiene almeno le seguenti informazioni:</p>
-<table class="longtable docutils align-default" id="id7">
-<caption><span class="caption-number">Tabella 7.6 </span><span class="caption-text">Campi di Primo Livello di Ciascuna Voce di Credenziale</span><a class="headerlink" href="#id7" title="Link to this table">¶</a></caption>
+<span id="table-catalog-parameters-first-level"></span><table class="longtable docutils align-default" id="id8">
+<caption><span class="caption-number">Tabella 7.7 </span><span class="caption-text">Campi di Primo Livello di Ciascuna Voce di Credenziale</span><a class="headerlink" href="#id8" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 30.0%" />
 <col style="width: 70.0%" />
@@ -1556,13 +1744,24 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori <strong
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><strong>purposes</strong></p></td>
-<td><p>RICHIESTO. Array di scopi di utilizzo per cui la Credenziale Digitale può essere usata, definendo contesti di utilizzo specifici e claims richiesti per ciascuno scopo, come:</p>
+<tr class="row-even"><td><p><strong>domains</strong></p></td>
+<td><p>RICHIESTO. Array di domini a cui la Credenziale Digitale appartiene, come:</p>
 <ul class="simple">
-<li><p><strong>id</strong>: Identificatore univoco per lo scopo (es., &quot;driving-authorization&quot;, &quot;person-identification&quot;).</p></li>
-<li><p><strong>description</strong>: Descrizione dello scopo leggibile dall'uomo con un suffisso <code class="docutils literal notranslate"><span class="pre">_l10n_id</span></code> per la localizzazione del contenuto.</p></li>
-<li><p><strong>claims_required</strong>: Array di identificatori di claims che sono richiesti quando si usa la Credenziale per questo scopo.</p></li>
-<li><p><strong>claims_recommended</strong>: Array di identificatori di claims che sono raccomandati ma non obbligatori per questo scopo.</p></li>
+<li><p><strong>id</strong>: Identificativo univoco del dominio (e.g., &quot;IDENTITY&quot;, &quot;MOBILITY_TRAVEL&quot;).</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>classes</strong></p></td>
+<td><p>RICHIESTO. Array di classi a cui la Credenziale Digitale appartiene, come:</p>
+<ul class="simple">
+<li><p><strong>id</strong>: Identificativo univoco della classe (e.g., &quot;IDENTIFICATION_DOCUMENTS&quot;, &quot;LICENSES_AUTHORIZATIONS&quot;).</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>purposes</strong></p></td>
+<td><p>RICHIESTO. Array di finalità di utilizzo per cui la Credenziale Digitale può essere usata, definendo contesti di utilizzo specifici e claims richiesti per ciascuno scopo, come:</p>
+<ul class="simple">
+<li><p><strong>id</strong>: Identificatore univoco della finalità (es., &quot;IDENTITY_VERIFICATION&quot;, &quot;AGE_VERIFICATION&quot;, &quot;DRIVING_RIGHTS&quot;).</p></li>
 </ul>
 </td>
 </tr>
@@ -1572,7 +1771,7 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori <strong
 <tr class="row-even"><td><p><strong>authentic_sources</strong></p></td>
 <td><p>RICHIESTO. Array di oggetti JSON delle Fonti Autentiche che fanno riferimento alle Fonti Autentiche autorizzate. Ogni oggetto DEVE contenere l'identificatore dell'entità AS e l'identificatore specifico della capacità di dati:</p>
 <ul class="simple">
-<li><p><strong>id</strong>: Identificatore stringa che fa riferimento all'entity_id della Fonte Autentica come registrato nel <span class="xref std std-ref">registry:Authentic Source Registry</span>.</p></li>
+<li><p><strong>id</strong>: Identificatore stringa che fa riferimento all'entity_id della Fonte Autentica come registrato nel <a class="reference internal" href="#registro-delle-fonti-autentiche"><span class="std std-ref">Registro delle Fonti Autentiche</span></a>.</p></li>
 <li><p><strong>dataset_id</strong>: Identificatore stringa della capacità di dati/dataset specifico usato dall'Emittente dall'AS.</p></li>
 </ul>
 </td>
@@ -1596,96 +1795,124 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori <strong
 <span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;last_modified&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-03-15T12:00:00Z&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;credentials&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
-<span class="w">        </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;credential_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mDL&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;credential_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mDL.name&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;legal_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pub-eaa&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;restriction_policy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;allowed_wallet_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="s2">&quot;https://wallet-provider.example.org/wallet_solution&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;https://wallet-provider2.example.org/wallet_solution&quot;</span>
-<span class="w">            </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;allowed_issuer_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="s2">&quot;https://issuer.example.org&quot;</span>
-<span class="w">            </span><span class="p">]</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="nt">&quot;pricing_policy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;models&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
-<span class="w">                </span><span class="nt">&quot;pricing_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;verification_based&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EUR&quot;</span>
-<span class="w">            </span><span class="p">}],</span>
-<span class="w">            </span><span class="nt">&quot;pricing_model_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.com/pricing&quot;</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="nt">&quot;validity_info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;max_validity_days&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">365</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;status_methods&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="s2">&quot;status_list&quot;</span>
-<span class="w">            </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;allowed_states&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;0x00&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;VALID&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;0x01&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;INVALID&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;0x02&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SUSPENDED&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;0x03&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UPDATE&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;0x0B&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ATTRIBUTE_UPDATE&quot;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="nt">&quot;authentication&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;user_auth_required&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;min_loa&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;high&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;supported_schemes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="s2">&quot;it-wallet&quot;</span>
-<span class="w">            </span><span class="p">]</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
-<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DRIVING_LICENSE&quot;</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PERSON_IDENTIFICATION&quot;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">],</span>
-<span class="w">        </span><span class="nt">&quot;issuers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
-<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;organization_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mDL.issuer1.name&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;organization_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ci_example_it&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;organization_country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IT&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="s2">&quot;mailto:informazioni@example.it&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;mailto:protocollo@pec.example.it&quot;</span>
-<span class="w">            </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;credentials&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;credential_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mDL&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;credential_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mDL.name&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;legal_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pub-eaa&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;homepage_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org/logo.svg&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;policy_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org/privacy&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;tos_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org/terms&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;service_documentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org/.well-known/service-doc&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;issuance_flows&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;deferred_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;max_deferred_issuance_time_minutes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1440</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;notification_methods&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="s2">&quot;push&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="s2">&quot;polling&quot;</span>
+<span class="w">            </span><span class="nt">&quot;restriction_policy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;allowed_wallet_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="s2">&quot;https://wallet-provider.example.org/wallet_solution&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;https://wallet-provider2.example.org/wallet_solution&quot;</span>
+<span class="w">                </span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;allowed_issuer_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="s2">&quot;https://issuer.example.org&quot;</span>
 <span class="w">                </span><span class="p">]</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">}],</span>
-<span class="w">        </span><span class="nt">&quot;authentic_sources&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
-<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://motorizzazione.gov.example&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;dataset_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;38832801&quot;</span>
-<span class="w">        </span><span class="p">}]</span>
-<span class="w">    </span><span class="p">}]</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;pricing_policy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;models&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;pricing_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;verification_based&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EUR&quot;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;pricing_model_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.com/pricing&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;validity_info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;max_validity_days&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">365</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;status_methods&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="s2">&quot;status_list&quot;</span>
+<span class="w">                </span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;allowed_states&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;0x00&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;VALID&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;0x01&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;INVALID&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;0x02&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SUSPENDED&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;0x03&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UPDATE&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;0x0B&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ATTRIBUTE_UPDATE&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;authentication&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;user_auth_required&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;min_loa&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;high&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;supported_schemes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="s2">&quot;it-wallet&quot;</span>
+<span class="w">                </span><span class="p">]</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;domains&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDENTITY&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MOBILITY_TRAVEL&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;classes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDENTIFICATION_DOCUMENTS&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LICENSES_AUTHORIZATIONS&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDENTITY_VERIFICATION&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AGE_VERIFICATION&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DRIVING_RIGHTS&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;issuers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;organization_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mDL.issuer1.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;organization_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ci_example_it&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;organization_country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IT&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="s2">&quot;mailto:informazioni@example.it&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="s2">&quot;mailto:protocollo@pec.example.it&quot;</span>
+<span class="w">                    </span><span class="p">],</span>
+<span class="w">                    </span><span class="nt">&quot;legal_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pub-eaa&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;homepage_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org/logo.svg&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;policy_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org/privacy&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;tos_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org/terms&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;service_documentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org/.well-known/service-doc&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;issuance_flows&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;deferred_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;max_deferred_issuance_time_minutes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1440</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;notification_methods&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                            </span><span class="s2">&quot;push&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">&quot;polling&quot;</span>
+<span class="w">                        </span><span class="p">]</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;authentic_sources&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://motorizzazione.gov.example&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;dataset_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;38832801&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Per una gestione migliore e più efficiente della localizzazione delle informazioni contenute nel Catalogo delle Credenziali Digitali, un'Entità che lo consulta DOVREBBE:</p>
+<p>Per una gestione migliore e più efficiente della localizzazione delle informazioni contenute nel Catalogo degli Attestati Elettronici, un'Entità che lo consulta DOVREBBE:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Scaricare la versione base del Catalogo delle Credenziali Digitali (compatta, senza localizzazioni) usando l'endpoint <code class="docutils literal notranslate"><span class="pre">.well-known/credential-catalog</span></code>.</p></li>
+<li><p>Scaricare la versione base del Catalogo degli Attestati Elettronici (compatta, senza localizzazioni) usando l'endpoint <code class="docutils literal notranslate"><span class="pre">.well-known/credential-catalog</span></code>.</p></li>
 <li><p>Determinare la lingua preferita dell'Utente.</p></li>
 <li><p>Scaricare solo i bundle di localizzazione necessari.</p></li>
-<li><p>Unire dinamicamente il contenuto localizzato con la struttura del Catalogo delle Credenziali Digitali.</p></li>
+<li><p>Unire dinamicamente il contenuto localizzato con la struttura del Catalogo degli Attestati Elettronici.</p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -1706,7 +1933,7 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori <strong
 <p>La fonte canonica per le caratteristiche di visualizzazione e la struttura dei claims è determinata dai <strong>Metadati dell'Emittente di Credenziali (Entity Configuration)</strong>.</p>
 <p>La logica complessiva per presentare una Credenziale è:</p>
 <ol class="arabic simple">
-<li><p>Il Wallet/Relying Party recupera il <strong>Catalogo delle Credenziali Digitali</strong> leggero per scoprire il <cite>credential_type</cite> disponibile e l'<cite>entity_id</cite> dei loro Emittenti di Credenziali.</p></li>
+<li><p>Il Wallet/Relying Party recupera il <strong>Catalogo degli Attestati Elettronici</strong> leggero per scoprire il <cite>credential_type</cite> disponibile e l'<cite>entity_id</cite> dei loro Emittenti di Credenziali.</p></li>
 <li><p>Recupera i <strong>Metadati dell'Emittente di Credenziali</strong> completi (Entity Configuration) dall'<cite>entity_id</cite> scoperto.</p></li>
 <li><p>I Metadati dell'Emittente di Credenziali DEVONO contenere le caratteristiche di visualizzazione complete (loghi, colori) e le informazioni dettagliate dello schema (tramite link ai Metadati di Tipo appropriati o direttamente nella configurazione). L'Emittente costruisce questi metadati in base ai suggerimenti forniti dalla Fonte Autentica (tramite il Registro AS) e le specifiche dello schema standard (tramite il Registro degli Schema).</p></li>
 </ol>
@@ -1714,11 +1941,11 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori <strong
 </section>
 <section id="tassonomia">
 <h2><span class="section-number">7.7. </span>Tassonomia<a class="headerlink" href="#tassonomia" title="Link to this heading">¶</a></h2>
-<p>La <strong>Tassonomia</strong> fornisce le fondamenta semantiche per l'interoperabilità degli Attestati Elettronici mantenendo il vocabolario autorevole per organizzare le credenziali all'interno dell'ecosistema IT-Wallet. La tassonomia è neutrale rispetto al formato delle credenziali e ha l'obiettivo di facilitare le integrazioni degli Attestati Elettronici nelle Soluzioni Tecniche IT-Wallet.</p>
+<p>La <strong>Tassonomia</strong> fornisce le fondamenta semantiche per l'interoperabilità degli Attestati Elettronici mantenendo il vocabolario autorevole per organizzare le Credenziali all'interno dell'ecosistema IT-Wallet. La tassonomia è neutrale rispetto al formato delle Credenziali e ha l'obiettivo di facilitare le integrazioni degli Attestati Elettronici nelle Soluzioni Tecniche IT-Wallet.</p>
 <p>La Tassonomia fornisce, in una singola risorsa, il sistema di classificazione gerarchica che organizza Domini, Classi e Finalità di verifica che possono essere applicati ai tipi di Credenziali, supportando la valutazione delle policy di autorizzazione e la standardizzazione a livello di ecosistema.</p>
 <p><strong>Obiettivi della Tassonomia:</strong></p>
 <ol class="arabic simple">
-<li><p><strong>Fondamento Semantico</strong>: Stabilire vocabolario standardizzato per domini e scopi in tutto l'ecosistema</p></li>
+<li><p><strong>Fondamento Semantico</strong>: Stabilire vocabolario standardizzato per domini e finalità in tutto l'ecosistema</p></li>
 <li><p><strong>Framework delle Policy</strong>: Abilitare decisioni di autorizzazione strutturate basate sulla classificazione gerarchica</p></li>
 <li><p><strong>Interoperabilità</strong>: Garantire interpretazione coerente delle classificazioni delle credenziali</p></li>
 <li><p><strong>Estensibilità</strong>: Supportare l'evoluzione dell'ecosistema con nuovi Domini, Classi, Tipologia di Credenziali, Finalità di verifica</p></li>
@@ -1729,8 +1956,8 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori <strong
 <ul class="simple">
 <li><p><strong>Dominio</strong>: Classificazione di livello superiore che rappresenta aree funzionali ampie (ad esempio, IDENTITY, HEALTH, FINANCIAL)</p></li>
 <li><p><strong>Classe (Famiglia di Credenziali)</strong>: Insieme di Credenziali che condividono funzione, struttura o significato giuridico simili (es. Documenti di Identificazione, Certificati di Stato Civile, Abilitazioni Professionali)</p></li>
-<li><p><strong>Sottoclasse (Tipo di credenziale)</strong>: Definizione specifica di una Credenziale rilasciata da un'autorità competente (es. Credenziale di Viaggio Digitale, Certificato di Nascita, Patente di Guida).</p></li>
-<li><p><strong>Finalità di verifica</strong>: Obiettivi di verifica che una Credenziale può soddisfare (ad es. Verifica dell'identità, Verifica dell'età, Idoneità all'accesso a servizi specifici).</p></li>
+<li><p><strong>Tipo di credenziale</strong>: Definizione specifica di una Credenziale rilasciata da un'autorità competente (es. Credenziale di Viaggio Digitale, Certificato di Nascita, Patente di Guida).</p></li>
+<li><p><strong>Scopo (Purpose - Intento di Verifica)</strong>: Obiettivi di verifica che una Credenziale può soddisfare (ad es. Verifica dell'identità, Verifica dell'età, Idoneità all'accesso a servizi specifici).</p></li>
 </ul>
 <p><strong>Supporto alla Localizzazione:</strong></p>
 <p>La tassonomia supporta ambienti multilingue attraverso il pattern del suffisso <code class="docutils literal notranslate"><span class="pre">_l10n_id</span></code>, abilitando una gestione efficiente della localizzazione per interfacce utente e implementazioni transfrontaliere.</p>
@@ -1749,7 +1976,12 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori <strong
 <span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:taxonomy:it-wallet&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;localization&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;default_locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;available_locales&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;en&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;it&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;fr&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;de&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;available_locales&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;it&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;fr&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;de&quot;</span>
+<span class="w">        </span><span class="p">],</span>
 <span class="w">        </span><span class="nt">&quot;base_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/.well-known/l10n/taxonomy/&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span>
 <span class="w">    </span><span class="p">},</span>
@@ -1760,43 +1992,75 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori <strong
 <span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDENTITY&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.identity.name&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.identity.description&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="nt">&quot;classes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PERSON_IDENTIFICATION&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.person_identification.name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.person_identification.description&quot;</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDENTIFICATION_DOCUMENTS&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;class.id_docs.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDENTITY_VERIFICATION&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.id_ver.name&quot;</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AGE_VERIFICATION&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.age_ver.name&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">]</span>
 <span class="w">                </span><span class="p">},</span>
 <span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ELECTRONIC_RESIDENCY&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.electronic_residency.name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.electronic_residency.description&quot;</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CIVIL_REGISTRY_STATUS&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;class.civil_registry.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CIVIL_STATUS_VERIFICATION&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.civil_status.name&quot;</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RESIDENCE_VERIFICATION&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.residence.name&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">]</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ECONOMIC_LEGAL_STATUS&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;class.economic_status.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ELIGIBILITY_VERIFICATION&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.eligibility.name&quot;</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LEGAL_STATUS_CHECK&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.legal_status.name&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">]</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">]</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AUTHORIZATION&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.authorization.name&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.authorization.description&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HOME_FAMILY&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.home_family.name&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.home_family.description&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;classes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DRIVING_LICENSE&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.driving_license.name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.driving_license.description&quot;</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PROPERTY_CADASTRAL_DOCS&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;class.property_docs.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OWNERSHIP_VERIFICATION&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.ownership.name&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">]</span>
 <span class="w">                </span><span class="p">},</span>
 <span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PROFESSIONAL_LICENSE&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.professional_license.name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.professional_license.description&quot;</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TRAVEL_DOCUMENT&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.travel_document.name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.travel_document.description&quot;</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ACCESS_PERMIT&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.access_permit.name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.access_permit.description&quot;</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LOCAL_TAX_DOCUMENTS&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;class.local_tax.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TAX_COMPLIANCE&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.tax_compliance.name&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">]</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">]</span>
 <span class="w">        </span><span class="p">},</span>
@@ -1804,21 +2068,30 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori <strong
 <span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EDUCATION&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.education.name&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.education.description&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="nt">&quot;classes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ACADEMIC_DEGREE&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.academic_degree.name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.academic_degree.description&quot;</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EDUCATIONAL_QUALIFICATIONS&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;class.edu_qualifications.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DEGREE_VERIFICATION&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.degree_ver.name&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">]</span>
 <span class="w">                </span><span class="p">},</span>
 <span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CERTIFICATE&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.certificate.name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.certificate.description&quot;</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TRAINING_RECOGNITION&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.training_recognition.name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.training_recognition.description&quot;</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PROFESSIONAL_CERTIFICATIONS&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;class.prof_cert.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SKILLS_ASSESSMENT&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.skills.name&quot;</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PROFESSIONAL_PRACTICE&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.prof_practice.name&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">]</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">]</span>
 <span class="w">        </span><span class="p">},</span>
@@ -1826,21 +2099,26 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori <strong
 <span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HEALTH&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.health.name&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.health.description&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="nt">&quot;classes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;INSURANCE_CARD&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.insurance_card.name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.insurance_card.description&quot;</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CERTIFICATIONS_ELIGIBILITY&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;class.health_cert.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HEALTH_STATUS_VERIFICATION&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.health_status.name&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">]</span>
 <span class="w">                </span><span class="p">},</span>
 <span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DISABILITY_CARD&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.disability_card.name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.disability_card.description&quot;</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MEDICAL_PRESCRIPTION&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.medical_prescription.name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.medical_prescription.description&quot;</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MEDICAL_RECORDS&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;class.medical_records.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HEALTHCARE_ACCESS&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.healthcare_access.name&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">]</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">]</span>
 <span class="w">        </span><span class="p">},</span>
@@ -1848,75 +2126,52 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori <strong
 <span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FINANCIAL&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.financial.name&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.financial.description&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="nt">&quot;classes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;INCOME_CERTIFICATE&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.income_certificate.name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.income_certificate.description&quot;</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PAYMENT_INSTRUMENTS&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;class.payments.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PAYMENT_EXECUTION&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.pay_exec.name&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">]</span>
 <span class="w">                </span><span class="p">},</span>
 <span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TAX_STATEMENT&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.tax_statement.name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.tax_statement.description&quot;</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FAMILY_ECONOMIC_STATUS&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.family_economic_status.name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.family_economic_status.description&quot;</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BANK_ACCOUNT&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.bank_account.name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.bank_account.description&quot;</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PAYMENT_HISTORY&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.payment_history.name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.payment_history.description&quot;</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PUBLIC_PAYMENTS_FEES&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;class.public_fees.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PROOF_OF_PAYMENT&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.proof_pay.name&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">]</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">]</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MEMBERSHIP&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.membership.name&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.membership.description&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MOBILITY_TRAVEL&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.mobility.name&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;classes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ASSOCIATION&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.association.name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.association.description&quot;</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LICENSES_AUTHORIZATIONS&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;class.licenses.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DRIVING_RIGHTS&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.driving.name&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">]</span>
 <span class="w">                </span><span class="p">},</span>
 <span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LOYALTY_PROGRAM&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.loyalty_program.name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.loyalty_program.description&quot;</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CLUB_MEMBERSHIP&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.club_membership.name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.club_membership.description&quot;</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">]</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ATTESTATION&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.attestation.name&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.attestation.description&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PUBLIC_STATEMENT&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.public_statement.name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.public_statement.description&quot;</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CIVIL_STATUS&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.civil_status.name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.civil_status.description&quot;</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CERTIFICATION&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.certification.name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.certification.description&quot;</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;VEHICLE_DOCUMENTS&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;class.vehicle_docs.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;VEHICLE_VERIFICATION&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.vehicle.name&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">]</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">]</span>
 <span class="w">        </span><span class="p">}</span>
@@ -1926,23 +2181,22 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori <strong
 </div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Per una gestione migliore e più efficiente della localizzazione delle informazioni contenute nel Catalogo delle Credenziali Digitali, un'Entità che lo consulta DOVREBBE:</p>
+<p>Per una gestione migliore e più efficiente della localizzazione delle informazioni contenute nel Catalogo degli Attestati Elettronici, un'Entità che lo consulta DOVREBBE:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Scaricare la versione base del Catalogo delle Credenziali Digitali (compatta, senza localizzazioni) usando l'endpoint <code class="docutils literal notranslate"><span class="pre">.well-known/taxonomy</span></code>.</p></li>
+<li><p>Scaricare la versione base del Catalogo degli Attestati Elettronici (compatta, senza localizzazioni) usando l'endpoint <code class="docutils literal notranslate"><span class="pre">.well-known/taxonomy</span></code>.</p></li>
 <li><p>Determinare la lingua preferita dell'Utente.</p></li>
 <li><p>Scaricare solo i bundle di localizzazione necessari.</p></li>
-<li><p>Unire dinamicamente il contenuto localizzato con la struttura del Catalogo delle Credenziali Digitali.</p></li>
+<li><p>Unire dinamicamente il contenuto localizzato con la struttura del Catalogo degli Attestati Elettronici.</p></li>
 </ul>
 </div></blockquote>
 </div>
 <p>Un esempio non normativo di output di un bundle di localizzazione è fornito di seguito:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;domain.identity.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDENTITÀ&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;domain.class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Documenti di Identificazione&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;domain.subclass&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Patente di Guida&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;domain.identity.description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Credenziali che stabiliscono o confermano l&#39;identità legale di una persona e lo stato personale&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;purpose.person_identification.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Verifica dell&#39;identità&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;class.id_docs.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Documenti di Identificazione&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;purpose.id_ver.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Verifica dell&#39;identità&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;...&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span>
 <span class="p">}</span>
 </pre></div>
@@ -1953,18 +2207,18 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori <strong
 </section>
 <section id="registro-degli-schema">
 <h2><span class="section-number">7.8. </span>Registro degli Schema<a class="headerlink" href="#registro-degli-schema" title="Link to this heading">¶</a></h2>
-<p>Il <strong>Registro degli Schema</strong> è l'inventario autorevole di tutti gli <strong>Schema delle Credenziali</strong> conosciuti e accettati (JSON Schema per SD-JWT, CBOR Schema per mDOC) all'interno dell'ecosistema IT-Wallet. È gestito dal Trust Anchor e fornisce una singola fonte verificabile per recuperare le specifiche tecniche richieste per analizzare, validare e visualizzare le Credenziali Digitali.</p>
+<p>Il <strong>Registro degli Schema</strong> è l'inventario autorevole di tutti gli <strong>Schema delle Credenziali</strong> conosciuti e accettati (JSON Schema per SD-JWT, CBOR Schema per mDOC) all'interno dell'ecosistema IT-Wallet. È gestito dal Trust Anchor e fornisce una singola fonte verificabile per recuperare le specifiche tecniche richieste per analizzare, validare e visualizzare gli Attestati Elettronici.</p>
 <p><strong>Obiettivi del Registro degli Schema:</strong></p>
 <ol class="arabic simple">
-<li><p><strong>Centralizzazione degli Schema</strong>: Fornire un punto di accesso centralizzato per tutti gli schemi tecnici usati dalle Credenziali Digitali.</p></li>
+<li><p><strong>Centralizzazione degli Schema</strong>: Fornire un punto di accesso centralizzato per tutti gli schemi tecnici usati dalgli Attestati Elettronici.</p></li>
 <li><p><strong>Integrità e Autenticità</strong>: Garantire l'integrità e l'autenticità dei documenti degli schema attraverso digest crittografici.</p></li>
 <li><p><strong>Interoperabilità</strong>: Facilitare l'integrazione senza soluzione di continuità di Fornitori di Wallet e Relying Parties fornendo versioni di schema coerenti.</p></li>
 <li><p><strong>Supporto al Ciclo di Vita delle Credenziali</strong>: Agire come punto di riferimento verificabile per la validazione dello schema durante l'emissione e la presentazione.</p></li>
 </ol>
 <p><strong>Struttura e Accesso al Registro degli Schema:</strong></p>
 <p>Il Registro degli Schema è accessibile tramite l'endpoint di scoperta <code class="docutils literal notranslate"><span class="pre">.well-known/it-wallet-registry</span></code> sotto il campo <cite>schema_registry</cite>. Permette la scoperta di URI degli schema e i loro controlli di integrità crittografica.</p>
-<table class="longtable docutils align-default" id="id8">
-<caption><span class="caption-number">Tabella 7.7 </span><span class="caption-text">Campi di Primo Livello del Registro degli Schema</span><a class="headerlink" href="#id8" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id9">
+<caption><span class="caption-number">Tabella 7.8 </span><span class="caption-text">Campi di Primo Livello del Registro degli Schema</span><a class="headerlink" href="#id9" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 30.0%" />
 <col style="width: 70.0%" />
@@ -1986,8 +2240,8 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori <strong
 </tr>
 </tbody>
 </table>
-<table class="docutils align-default" id="id9">
-<caption><span class="caption-number">Tabella 7.8 </span><span class="caption-text">Parametri della Definizione dello Schema</span><a class="headerlink" href="#id9" title="Link to this table">¶</a></caption>
+<table class="docutils align-default" id="id10">
+<caption><span class="caption-number">Tabella 7.9 </span><span class="caption-text">Parametri della Definizione dello Schema</span><a class="headerlink" href="#id10" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25.0%" />
 <col style="width: 75.0%" />
@@ -2060,11 +2314,11 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori <strong
 </section>
 <section id="integrazione-del-registro-e-riferimenti-incrociati">
 <h2><span class="section-number">7.9. </span>Integrazione del Registro e Riferimenti Incrociati<a class="headerlink" href="#integrazione-del-registro-e-riferimenti-incrociati" title="Link to this heading">¶</a></h2>
-<p>I componenti del registro sono interconnessi e lavorano insieme per supportare l'ecosistema completo delle credenziali:</p>
+<p>I componenti del registro sono interconnessi e lavorano insieme per supportare l'ecosistema completo delle Credenziali:</p>
 <ol class="arabic simple">
 <li><p><strong>Registro AS</strong> ↔ <strong>Tassonomia</strong>: Le entità AS dichiarano capacità di fornitura utilizzando classificazioni della tassonomia per la categorizzazione standardizzata.</p></li>
 <li><p><strong>Registro AS</strong> ↔ <strong>Catalogo</strong>: I tipi di credenziali fanno riferimento alle capacità AS per la validazione della fonte dati.</p></li>
-<li><p><strong>Catalogo</strong> ↔ <strong>Tassonomia</strong>: Le voci delle credenziali specificano domini e scopi dalla tassonomia per discovery e autorizzazione.</p></li>
+<li><p><strong>Catalogo</strong> ↔ <strong>Tassonomia</strong>: Le voci delle credenziali specificano domini e finalità dalla tassonomia per discovery e autorizzazione.</p></li>
 <li><p><strong>Registro della Federazione</strong> ↔ <strong>Tutti i Componenti</strong>: Fornisce validazione del trust crittografico per tutte le operazioni del registro e autenticazione delle entità.</p></li>
 <li><p><strong>Registro degli Schema</strong> ↔ <strong>Emittente/RP</strong>: Fornisce il collegamento verificabile a tutte le specifiche di formato delle Credenziali conosciute usate nell'ecosistema.</p></li>
 </ol>
@@ -2075,14 +2329,14 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica ulteriori <strong
 I principali Percorsi di utilizzo illustrano di seguito le interazioni con l'Infrastruttura di Registro.</p>
 <section id="navigazione-del-catalogo">
 <h3><span class="section-number">7.10.1. </span>Navigazione del Catalogo<a class="headerlink" href="#navigazione-del-catalogo" title="Link to this heading">¶</a></h3>
-<p>Il percorso di utilizzo <em>Navigazione del Catalogo</em> supporta gli Utenti (sia utenti umani tramite un'<strong>Istanza Wallet</strong> che sistemi automatizzati come <strong>Relying Parties</strong> o portali web) nella scoperta e selezione delle Credenziali Digitali disponibili.</p>
+<p>Il percorso di utilizzo <em>Navigazione del Catalogo</em> supporta gli Utenti (sia utenti umani tramite un'<strong>Istanza Wallet</strong> che sistemi automatizzati come <strong>Relying Parties</strong> o portali web) nella scoperta e selezione degli Attestati Elettronici disponibili.</p>
 <ol class="arabic simple">
-<li><p><strong>Accesso all'Endpoint di Scoperta</strong>: L'entità (es., un Fornitore di Wallet o portale informativo) accede all'<cite>Endpoint di Scoperta del Registro</cite> (<code class="docutils literal notranslate"><span class="pre">.well-known/it-wallet-registry</span></code>) per ottenere l'URI del <strong>Catalogo delle Credenziali Digitali</strong>.</p></li>
+<li><p><strong>Accesso all'Endpoint di Scoperta</strong>: L'entità (es., un Fornitore di Wallet o portale informativo) accede all'<cite>Endpoint di Scoperta del Registro</cite> (<code class="docutils literal notranslate"><span class="pre">.well-known/it-wallet-registry</span></code>) per ottenere l'URI del <strong>Catalogo delle Credenziali Digitali</strong> e della <strong>Tassonomia</strong>.</p></li>
 <li><p><strong>Navigazione e Selezione</strong>:</p></li>
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Scoperta delle Credenziali</strong>: L'entità naviga l'elenco delle Credenziali (campo <code class="docutils literal notranslate"><span class="pre">credentials</span></code>) per identificare tipi di Credenziali rilevanti (es., <code class="docutils literal notranslate"><span class="pre">pid</span></code>, <code class="docutils literal notranslate"><span class="pre">mDL</span></code>).</p></li>
+<li><p><strong>Scoperta delle Credenziali</strong>: L'entità naviga l'elenco delle Credenziali (campo <code class="docutils literal notranslate"><span class="pre">credentials</span></code>) per identificare tipi di Credenziali rilevanti (es., <code class="docutils literal notranslate"><span class="pre">pid</span></code>, <code class="docutils literal notranslate"><span class="pre">mDL</span></code>) e, se necessario, utilizza i dati della <strong>Tassonomia</strong> per navigarne la gerarchia o offire diverse localizzazioni dei contenuti.</p></li>
 <li><p><strong>Metadati dell'Emittente</strong>: L'entità estrae l'<strong>Identificatore dell'Emittente</strong> (<cite>entity_id</cite> all'interno del campo <cite>issuers</cite>) associato alla Credenziale desiderata.</p></li>
 <li><p><strong>Consultazione dei Dettagli</strong>: Per ottenere informazioni complete e requisiti tecnici specifici, l'entità accede all'<strong>Entity Configuration</strong> (Metadati dell'Emittente) usando l'identificatore recuperato.</p></li>
 </ul>
@@ -2095,7 +2349,7 @@ I principali Percorsi di utilizzo illustrano di seguito le interazioni con l'Inf
 <h3><span class="section-number">7.10.2. </span>Emissione di Credenziali<a class="headerlink" href="#emissione-di-credenziali" title="Link to this heading">¶</a></h3>
 <p>Questo percorso definisce come un Emittente di Credenziali usa l'Infrastruttura di Registro per preparare ed emettere una Credenziale Digitale conforme.</p>
 <ol class="arabic simple">
-<li><p><strong>Identificazione dei Requisiti</strong>: Il CI consulta il <strong>Catalogo delle Credenziali Digitali</strong> per i requisiti tecnici del tipo di Credenziale da emettere (es., <code class="docutils literal notranslate"><span class="pre">max_validity_days</span></code>, <code class="docutils literal notranslate"><span class="pre">min_loa</span></code>).</p></li>
+<li><p><strong>Identificazione dei Requisiti</strong>: Il CI consulta il <strong>Catalogo degli Attestati Elettronici</strong> per i requisiti tecnici del tipo di Credenziale da emettere (es., <code class="docutils literal notranslate"><span class="pre">max_validity_days</span></code>, <code class="docutils literal notranslate"><span class="pre">min_loa</span></code>).</p></li>
 <li><p><strong>Risoluzione dello Schema e dei Claims</strong>:</p></li>
 </ol>
 <blockquote>
@@ -2125,8 +2379,8 @@ I principali Percorsi di utilizzo illustrano di seguito le interazioni con l'Inf
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li><p>Il Wallet riceve una Richiesta di Presentazione dall'RP, verifica la validità della richiesta confrontando i <em>claims</em> richiesti con le <em>Policy di Autorizzazione</em> relative all'RP (tramite le definizioni della <strong>Tassonomia</strong>).</p></li>
-<li><p>Il Wallet consulta il <strong>Catalogo delle Credenziali Digitali</strong> per verificare i <em>Domini</em> e <em>Scopi</em> associati ai tipi di Credenziali che detiene, valutando quali Credenziali sono adatte per la richiesta.</p></li>
+<li><p>Il Wallet riceve una Richiesta di Presentazione dall'RP, verifica la validità della richiesta confrontando i <em>claims</em> richiesti con le <em>Policy di Autorizzazione</em> relative all'RP.</p></li>
+<li><p>Il Wallet consulta il <strong>Catalogo delle Credenziali Digitali</strong> e la <strong>Tassonomia</strong> per verificare i <em>Domini</em>, le <em>Classi</em> e le <em>Finalità</em> associati ai tipi di Credenziali che detiene, valutando quali Credenziali sono adatte per la richiesta.</p></li>
 <li><p>Il Wallet verifica se gli attributi richiesti (claims) sono disponibili e autorizzati per la divulgazione in base alla policy della richiesta (scenari <strong>Credential-Specific</strong> o <strong>Credential-Agnostic</strong>).</p></li>
 <li><p>L'Utente autorizza il rilascio degli attributi selezionati, divulgati selettivamente. Il Wallet quindi confeziona e presenta la Credenziale Digitale all'RP.</p></li>
 </ul>
@@ -2171,8 +2425,8 @@ I principali Percorsi di utilizzo illustrano di seguito le interazioni con l'Inf
             <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
             <div class="page_toc">
                 <ul>
-<li><a class="reference internal" href="#">7. Infrastruttura di Registro</a><ul>
-<li><a class="reference internal" href="#panoramica-dell-architettura-di-registro">7.1. Panoramica dell'Architettura di Registro</a></li>
+<li><a class="reference internal" href="#">7. Infrastruttura del Registro</a><ul>
+<li><a class="reference internal" href="#panoramica-dell-architettura-del-registro">7.1. Panoramica dell'Architettura del Registro</a></li>
 <li><a class="reference internal" href="#endpoint-di-scoperta-del-registro">7.2. Endpoint di Scoperta del Registro</a></li>
 <li><a class="reference internal" href="#registro-dei-claims">7.3. Registro dei Claims</a><ul>
 <li><a class="reference internal" href="#utilizzo-del-registro-dei-claims">7.3.1. Utilizzo del Registro dei Claims</a></li>
@@ -2196,9 +2450,9 @@ I principali Percorsi di utilizzo illustrano di seguito le interazioni con l'Inf
 <li><a class="reference internal" href="#accesso-al-registro-di-federazione">7.5.2. Accesso al Registro di Federazione</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#catalogo-delle-credenziali-digitali">7.6. Catalogo delle Credenziali Digitali</a><ul>
-<li><a class="reference internal" href="#gerarchia-delle-credenziali-digitali">7.6.1. Gerarchia delle Credenziali Digitali</a></li>
-<li><a class="reference internal" href="#struttura-del-catalogo-delle-credenziali-digitali">7.6.2. Struttura del Catalogo delle Credenziali Digitali</a></li>
+<li><a class="reference internal" href="#catalogo-degli-attestati-elettronici">7.6. Catalogo degli Attestati Elettronici</a><ul>
+<li><a class="reference internal" href="#gerarchia-degli-attestati-elettronici">7.6.1. Gerarchia degli Attestati Elettronici</a></li>
+<li><a class="reference internal" href="#struttura-del-catalogo-degli-attestati-elettronici">7.6.2. Struttura del Catalogo degli Attestati Elettronici</a></li>
 <li><a class="reference internal" href="#decentralizzazione-delle-informazioni-di-visualizzazione-e-dei-claims">7.6.3. Decentralizzazione delle Informazioni di Visualizzazione e dei Claims</a></li>
 </ul>
 </li>
@@ -2240,7 +2494,7 @@ I principali Percorsi di utilizzo illustrano di seguito le interazioni con l'Inf
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 19/12/2025.
+      Ultimo aggiornamento 14/01/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

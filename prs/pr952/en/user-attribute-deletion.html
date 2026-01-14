@@ -201,13 +201,13 @@
 </ul>
 </dd>
 </dl>
-<p><strong>Steps 7 - 8:</strong> The Wallet Instance redirects the User to the Erasure Endpoint. It MUST also ensure that a callback mechanism to allow the User-Agent to notify the Wallet Instance (and thus the User) after the Erasure Response is present (<a class="reference internal" href="test-plans-wallet-provider.html#user-attribute-deletion-testcases"><span class="std std-ref">WP_118</span></a>). Details on the Erasure Request can be found in <span class="xref std std-ref">relying-party-provider-backend-endpoint:Erasure Request</span> (<a class="reference internal" href="test-plans-wallet-provider.html#user-attribute-deletion-testcases"><span class="std std-ref">WP_117</span></a>).</p>
+<p><strong>Steps 7 - 8:</strong> The Wallet Instance redirects the User to the Erasure Endpoint. It MUST also ensure that a callback mechanism to allow the User-Agent to notify the Wallet Instance (and thus the User) after the Erasure Response is present (<a class="reference internal" href="test-plans-wallet-provider.html#user-attribute-deletion-testcases"><span class="std std-ref">WP_118</span></a>). Details on the Erasure Request can be found in <a class="reference internal" href="relying-party-provider-backend-endpoint.html#relying-party-provider-backend-erasure-endpoint"><span class="std std-ref">Relying Party Provider Backend Erasure Endpoint</span></a> (<a class="reference internal" href="test-plans-wallet-provider.html#user-attribute-deletion-testcases"><span class="std std-ref">WP_117</span></a>).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The Relying Party web page will authenticate the User with an appropriate Level of Assurance using any method such as CIE or the PID presentation. The specific mechanism used for authentication is left to the Relying Party. Upon authenticating the User, the Relying Party MAY prompt the User to perform additional steps needed for the deletion of attributes, e.g., it might require the User to confirm the deletion operation.</p>
 </div>
 <p><strong>Step 9:</strong> Upon successful authentication of the User the Relying Party MUST delete all attributes bound to the User in its possession.</p>
-<p><strong>Step 10:</strong> The Relying Party returns the Erasure Response in the form of an HTTP Response to the User-Agent and includes the callback URL if provided in the Erasure Request. Details on the Erasure Response can be found in <span class="xref std std-ref">relying-party-provider-backend-endpoint:Erasure Response</span>.</p>
+<p><strong>Step 10:</strong> The Relying Party returns the Erasure Response in the form of an HTTP Response to the User-Agent and includes the callback URL if provided in the Erasure Request. Details on the Erasure Response can be found in <a class="reference internal" href="relying-party-provider-backend-endpoint.html#relying-party-provider-backend-erasure-endpoint"><span class="std std-ref">Relying Party Provider Backend Erasure Endpoint</span></a>.</p>
 <p><strong>Steps 11 - 12:</strong> The User-Agent uses the implemented method to return the Erasure Response to the Wallet Instance. Finally, the User is notified via the Wallet Instance regarding the Erasure Response outcome (<a class="reference internal" href="test-plans-wallet-provider.html#user-attribute-deletion-testcases"><span class="std std-ref">WP_119</span></a>).</p>
 </section>
 
@@ -239,7 +239,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 19/12/2025.
+      Last updated on 14/01/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

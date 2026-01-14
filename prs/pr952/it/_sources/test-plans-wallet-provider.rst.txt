@@ -29,7 +29,7 @@ Questa sezione elenca i casi di test dalle Sezioni:
 - :ref:`wallet-solution-components:Wallet Solution Components`
 - :ref:`wallet-instance:Wallet Instance`
 - :ref:`wallet-provider-entity-configuration:Wallet Provider Entity Configuration`
-- :ref:`wallet-provider-metadata:Wallet Provider Metadata`
+- :ref:`wallet-solution-metadata:Wallet Solution Metadata`
 - `e-Service PDND Wallet Provider Catalogue <wallet-provider-endpoint.html#e-service-pdnd-wallet-provider-catalogue0>`_
 
 
@@ -565,7 +565,7 @@ Questa sezione elenca i casi di test dalle Sezioni:
    * - WP_069
      - Issuance, Sicurezza
      - Controllo stato di un Attestato Elettronico
-     - Istanza del Wallet verifica lo stato di ogni Attestato Elettronico archiviato recuperando e validando un Status List Token (per :ref:`credential-revocation:OAuth Status Lists`).
+     - Istanza del Wallet verifica lo stato di ogni Attestato Elettronico archiviato recuperando e validando un Status List Token (per :ref:`credential-revocation:Token di Status List`).
    * - WP_070
      - Issuance, Sicurezza
      - Flusso re-Issuance: rilevare necessità re-Issuance (aggiornare stato)
@@ -943,7 +943,7 @@ Casi di Test per Eliminazione Attributi dell'Utente Lato Relying Party
 Questa sezione elenca i casi di test dalle Sezioni:
 
 - :ref:`user-attribute-deletion:User's Attributes Deletion`
-- `Relying Party Erasure Endpoint <relying-party-provider-backend-endpoint.html#relying-party-erasure-endpoint>`_
+- `Relying Party Provider Backend Erasure Endpoint <relying-party-provider-backend-endpoint.html#relying-party-provider-backend-erasure-endpoint>`_
 
 
 .. list-table::

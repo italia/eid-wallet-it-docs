@@ -44,7 +44,7 @@ Il documento, distinguendo tra aspetti normativi obbligatori e buone pratiche pr
 
 Il secondo focus è definire l'architettura tecnica e il quadro di riferimento che servirà da linea guida per tutte le parti coinvolte nello sviluppo delle Soluzioni Tecniche del Sistema IT-Wallet.
 
-La documentazione, gli strumenti e le risorse aggiuntive - di seguito definite Risorse Ufficiali - per la progettazione e lo sviluppo delle Soluzioni Tecniche del Sistema IT-Wallet sono disponibili  nella sezione :ref:official-resources:Risorse Ufficiali: e saranno aggiornate periodicamente. 
+La documentazione, gli strumenti e le risorse aggiuntive - di seguito definite Risorse Ufficiali - per la progettazione e lo sviluppo delle Soluzioni Tecniche del Sistema IT-Wallet saranno presto disponibili nella sezione :ref:`official-resources:Risorse Ufficiali`: e saranno aggiornate periodicamente. 
 
 Linguaggio Normativo e Convenzioni
 ----------------------------------

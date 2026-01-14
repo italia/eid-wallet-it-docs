@@ -74,7 +74,7 @@ Di seguito è riportato un esempio non normativo dell'oggetto JSON ``client_data
 
 **Passi 21-22 (Richiesta di Emissione della Wallet App e Wallet Unit Attestation)**: L'Istanza del Wallet:
 
-* Costruisce la Wallet App e la Wallet Unit Attestation Request sotto forma di JWT. Questo JWT include l'``integrity_assertion`` per la Wallet App Attestation, ``attested_key``, ``hardware_signature``, ``nonce``, ``hardware_key_tag``, ``cnf`` e altri parametri relativi alla configurazione (vedi :ref:`Tabella del Corpo della Richiesta di Wallet App e Wallet Unit Attestation <_table_waa_wua_request_claim>`) ed è firmato utilizzando la chiave privata della coppia di chiavi effimere generata inizialmente (:ref:`WP_140–141 <wallet-instance-optional-testcases>`).
+* Costruisce la Wallet App e la Wallet Unit Attestation Request sotto forma di JWT. Questo JWT include l'``integrity_assertion`` per la Wallet App Attestation, ``attested_key``, ``hardware_signature``, ``nonce``, ``hardware_key_tag``, ``cnf`` e altri parametri relativi alla configurazione (vedi :ref:`Tabella del Corpo della Richiesta di Wallet App e Wallet Unit Attestation <table_waa_wua_request_claim>`) ed è firmato utilizzando la chiave privata della coppia di chiavi effimere generata inizialmente (:ref:`WP_140–141 <wallet-instance-optional-testcases>`).
 * Invia la Wallet App e la Wallet Unit Attestation Request all'endpoint :ref:`wallet-provider-endpoint:Endpoint di Emissione della Wallet App e Wallet Unit Attestation` del Backend del Fornitore del Wallet.
 
 .. note:: 

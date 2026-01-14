@@ -6,11 +6,12 @@ Pushed Authorization Request Endpoint
 Pushed Authorization Request (PAR) Request
 ............................................
 
+.. _table_http_request_claim:
+
 La request all'authorization endpoint del Credential Issuer DEVE contenere sia i parametri di header HTTP che i parametri HTTP POST.
 
 Il metodo HTTP POST DEVE avere i parametri nel body del messaggio codificati in formato ``application/x-www-form-urlencoded``.
 
-.. _table_http_request_claim:
 .. list-table:: Parametri della PAR request http
     :class: longtable
     :widths: 20 60 20
@@ -29,7 +30,6 @@ Il metodo HTTP POST DEVE avere i parametri nel body del messaggio codificati in 
 Il Pushed Authorization Endpoint è protetto con *OAuth 2.0 Attestation-based Client Authentication* [`OAUTH-ATTESTATION-CLIENT-AUTH`_], pertanto
 la richiesta all'authorization endpoint del Credential Issuer DEVE utilizzare i seguenti parametri di header HTTP:
 
-.. _table_http_request_headers_claim:
 .. list-table:: parametri di header della request http
     :class: longtable
     :widths: 20 60 20
@@ -1055,8 +1055,6 @@ Nella seguente tabella sono elencati i *Status Code HTTP* e i relativi codici di
       - `-`
       - Il Credential Issuer non può soddisfare la richiesta entro l'intervallo di tempo definito.
 
-
-.. _it-notification-data-correction:
 
 Correzione dati usando credential_failure
 .........................................

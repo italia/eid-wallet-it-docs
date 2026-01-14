@@ -176,7 +176,7 @@
 <p>The Relying Party MUST expose a set of endpoints to support remote presentation flows as defined in OpenID4VP 1.0. These endpoints enable secure credential verification, trust establishment, and user authentication for cross-device and same-device interaction patterns.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Tests related to Relying Party remote flow endpoints are defined in the remote presentation test matrix (<a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">Remote Credential Verifier Test Matrix</span></a>).</p>
+<p>Tests related to Relying Party remote flow endpoints are defined in the remote presentation test matrix (<a class="reference internal" href="test-plans-remote-presentation.html#remote-credential-verifier-test-matrix"><span class="std std-ref">Remote Credential Verifier Test Matrix</span></a>).</p>
 </div>
 <section id="id84">
 <h3><span class="section-number">13.3.1.1. </span>Federation Endpoint<a class="headerlink" href="#id84" title="Link to this heading">¶</a></h3>
@@ -189,7 +189,7 @@
 <section id="request-uri-endpoint">
 <h4><span class="section-number">13.3.1.2.1. </span>Request URI Endpoint<a class="headerlink" href="#request-uri-endpoint" title="Link to this heading">¶</a></h4>
 <p>The Request URI Endpoint is where the Relying Party provides the signed Request Object to the Wallet Instance. This endpoint supports both GET and POST methods as defined in the OpenID4VP 1.0 specification.</p>
-<p>For detailed implementation requirements, see <span class="xref std std-ref">remote-flow:Request URI Endpoint</span> and <a class="reference internal" href="remote-flow.html#request-uri-request"><span class="std std-ref">Request URI Request</span></a>.</p>
+<p>For detailed implementation requirements, see <a class="reference internal" href="remote-flow.html#request-uri-request"><span class="std std-ref">Request URI Request</span></a> and <a class="reference internal" href="remote-flow.html#request-uri-response"><span class="std std-ref">Request URI Response</span></a>.</p>
 </section>
 <section id="response-uri-endpoint">
 <h4><span class="section-number">13.3.1.2.2. </span>Response URI Endpoint<a class="headerlink" href="#response-uri-endpoint" title="Link to this heading">¶</a></h4>
@@ -283,7 +283,7 @@
 <li><p><strong>Rate Limiting</strong>: Endpoints SHOULD implement rate limiting to prevent abuse</p></li>
 <li><p><strong>Audit Logging</strong>: All endpoint interactions SHOULD be logged for security monitoring</p></li>
 </ul>
-<p>For detailed security requirements, see <span class="xref std std-ref">remote-flow:Security Considerations</span> and the relevant test cases in <a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">Remote Credential Verifier Test Matrix</span></a>.</p>
+<p>For detailed security requirements, see <a class="reference internal" href="remote-flow.html#remote-flow"><span class="std std-ref">Remote Flow</span></a> and the relevant test cases in <a class="reference internal" href="test-plans-remote-presentation.html#remote-credential-verifier-test-matrix"><span class="std std-ref">Remote Credential Verifier Test Matrix</span></a>.</p>
 </section>
 <section id="implementation-notes">
 <h3><span class="section-number">13.3.1.5. </span>Implementation Notes<a class="headerlink" href="#implementation-notes" title="Link to this heading">¶</a></h3>
@@ -302,7 +302,7 @@
 <p>The Relying Party MUST expose a set of endpoints for handling the lifecycle of Verifier Apps that use a remote backend service provided by their Relying Party Provider Backend. These endpoints support proximity presentation flows by providing nonce generation, hardware key registration, integrity validation, and Access Certificate issuance. The specific implementation details are left to the Relying Party's discretion.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Tests related to Relying Party endpoints are defined in the remote presentation test matrix (<a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">Remote Credential Verifier Test Matrix</span></a>) and proximity presentation test matrix (<a class="reference internal" href="test-plans-proximity-presentation.html#test-plans-proximity-presentation"><span class="std std-ref">Proximity Credential Verifier Test Matrix</span></a>).</p>
+<p>Tests related to Relying Party endpoints are defined in the remote presentation test matrix (<a class="reference internal" href="test-plans-remote-presentation.html#remote-credential-verifier-test-matrix"><span class="std std-ref">Remote Credential Verifier Test Matrix</span></a>) and proximity presentation test matrix (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">Proximity Credential Verifier Test Matrix</span></a>).</p>
 </div>
 <section id="relying-party-provider-backend-federation-endpoint">
 <h3><span class="section-number">13.3.2.1. </span>Relying Party Provider Backend Federation Endpoint<a class="headerlink" href="#relying-party-provider-backend-federation-endpoint" title="Link to this heading">¶</a></h3>
@@ -540,8 +540,8 @@
 </table>
 </section>
 </section>
-<section id="id168">
-<h3><span class="section-number">13.3.2.6. </span>Relying Party Erasure Endpoint<a class="headerlink" href="#id168" title="Link to this heading">¶</a></h3>
+<section id="relying-party-provider-backend-erasure-endpoint">
+<h3><span class="section-number">13.3.2.6. </span>Relying Party Provider Backend Erasure Endpoint<a class="headerlink" href="#relying-party-provider-backend-erasure-endpoint" title="Link to this heading">¶</a></h3>
 <p>The Erasure Endpoint allows Wallet Instances to request deletion of attributes presented to the Relying Party, supporting user privacy rights and regulatory compliance.</p>
 <p>For detailed implementation requirements, see <a class="reference internal" href="relying-party-remote-flow-endpoints.html#relying-party-erasure-endpoint"><span class="std std-ref">Relying Party Erasure Endpoint</span></a>.</p>
 </section>
@@ -595,7 +595,7 @@
 <li><a class="reference internal" href="#relying-party-provider-backend-access-certificate-response">13.3.2.5.2. Relying Party Provider Backend Access Certificate Response</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id168">13.3.2.6. Relying Party Erasure Endpoint</a></li>
+<li><a class="reference internal" href="#relying-party-provider-backend-erasure-endpoint">13.3.2.6. Relying Party Provider Backend Erasure Endpoint</a></li>
 </ul>
 </li>
 </ul>
@@ -627,7 +627,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 19/12/2025.
+      Last updated on 14/01/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
