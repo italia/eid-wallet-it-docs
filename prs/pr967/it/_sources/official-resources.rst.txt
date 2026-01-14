@@ -21,6 +21,13 @@ Le seguenti risorse grafiche ufficiali sono disponibili nella cartella `official
 - **Trust Mark**: Elemento grafico ufficiale per l'attestazione dell'appartenenza al Sistema IT-Wallet (versioni ENG e ITA) - `Scarica Trust Mark ENG <https://raw.githubusercontent.com/italia/eidas-it-wallet-docs/versione-corrente/docs/en/images/svg/trustmark-ENG.svg>`_, `Scarica Trust Mark ITA <https://raw.githubusercontent.com/italia/eidas-it-wallet-docs/versione-corrente/docs/it/images/svg/trustmark-ITA.svg>`_
 - **Authentication Button**: Pulsante ufficiale per l'autenticazione tramite IT-Wallet - `Scarica Authentication Button <https://raw.githubusercontent.com/italia/eidas-it-wallet-docs/versione-corrente/docs/it/images/svg/Authentication-button.svg>`_
 
+Componenti HTML
+^^^^^^^^^^^^^^^^
+
+I seguenti componenti HTML ufficiali sono disponibili nella cartella `official_resources/ <https://github.com/italia/eidas-it-wallet-docs/tree/versione-corrente/official_resources>`_ di questo repository:
+
+- **Authentication Button Component**: Componente HTML/CSS ufficiale per l'autenticazione tramite IT-Wallet, basato sul framework `dev-kit-italia <https://github.com/italia/dev-kit-italia/tree/main/packages/button>`_ - `Vedi il componente <https://github.com/italia/eidas-it-wallet-docs/tree/versione-corrente/official_resources/authentication-button>`_ - `Demo su GitHub Pages <https://italia.github.io/eidas-it-wallet-docs/official_resources/authentication-button/authentication-button.html>`_
+
 Repository e Risorse Aggiuntive
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

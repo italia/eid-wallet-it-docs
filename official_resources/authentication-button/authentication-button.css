@@ -1,0 +1,216 @@
+/**
+ * Authentication Button - IT-Wallet
+ * Componente ufficiale per l'autenticazione tramite IT-Wallet
+ * Basato su dev-kit-italia e Bootstrap Italia
+ * 
+ * Colori ufficiali:
+ * - Primario: #0066CC (Blu IT-Wallet)
+ * - Bordo: #7B61FF (Viola)
+ * - Testo: #FFFFFF (Bianco)
+ */
+
+/* Reset e base */
+.btn-itwallet-auth {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
+  background-color: #0066CC;
+  color: #FFFFFF;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  min-height: 48px; /* Accessibilità: area di tocco minima */
+}
+
+.btn-itwallet-auth:hover:not(:disabled) {
+  background-color: #0052A3;
+  color: #FFFFFF;
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 102, 204, 0.3);
+}
+
+.btn-itwallet-auth:focus {
+  outline: 2px solid #7B61FF;
+  outline-offset: 2px;
+  background-color: #0066CC;
+  color: #FFFFFF;
+}
+
+.btn-itwallet-auth:active:not(:disabled) {
+  background-color: #003D7A;
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 102, 204, 0.2);
+}
+
+.btn-itwallet-auth:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: #0066CC;
+  color: #FFFFFF;
+}
+
+/* Icona */
+.btn-itwallet-auth .btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 24px;
+}
+
+.btn-itwallet-auth .btn-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+/* Testo */
+.btn-itwallet-auth .btn-text {
+  white-space: nowrap;
+}
+
+/* Variante Outline */
+.btn-itwallet-auth.btn-outline {
+  background-color: transparent;
+  border: 2px solid #0066CC;
+  color: #0066CC;
+}
+
+.btn-itwallet-auth.btn-outline:hover:not(:disabled) {
+  background-color: #0066CC;
+  color: #FFFFFF;
+  border-color: #0066CC;
+}
+
+.btn-itwallet-auth.btn-outline:focus {
+  outline: 2px solid #7B61FF;
+  outline-offset: 2px;
+  background-color: transparent;
+  color: #0066CC;
+  border-color: #0066CC;
+}
+
+.btn-itwallet-auth.btn-outline:active:not(:disabled) {
+  background-color: #0052A3;
+  color: #FFFFFF;
+  border-color: #0052A3;
+}
+
+.btn-itwallet-auth.btn-outline:disabled {
+  opacity: 0.6;
+  background-color: transparent;
+  color: #0066CC;
+  border-color: #0066CC;
+}
+
+/* Dimensioni */
+
+/* Large (default) */
+.btn-itwallet-auth.btn-lg {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  line-height: 1.5;
+  min-height: 60px;
+}
+
+.btn-itwallet-auth.btn-lg .btn-icon {
+  width: 24px;
+  height: 28px;
+}
+
+/* Medium */
+.btn-itwallet-auth.btn-md {
+  padding: 0.625rem 1.25rem;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  min-height: 48px;
+}
+
+.btn-itwallet-auth.btn-md .btn-icon {
+  width: 18px;
+  height: 22px;
+}
+
+/* Small */
+.btn-itwallet-auth.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  min-height: 40px;
+  gap: 0.5rem;
+}
+
+.btn-itwallet-auth.btn-sm .btn-icon {
+  width: 16px;
+  height: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .btn-itwallet-auth {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .btn-itwallet-auth.btn-lg {
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+/* Accessibilità: focus visibile per tastiera */
+.btn-itwallet-auth:focus-visible {
+  outline: 3px solid #7B61FF;
+  outline-offset: 3px;
+}
+
+/* Supporto per preferenze di riduzione del movimento */
+@media (prefers-reduced-motion: reduce) {
+  .btn-itwallet-auth {
+    transition: none;
+  }
+  
+  .btn-itwallet-auth:hover:not(:disabled) {
+    transform: none;
+  }
+  
+  .btn-itwallet-auth:active:not(:disabled) {
+    transform: none;
+  }
+}
+
+/* Stili per link (se usato come <a>) */
+a.btn-itwallet-auth {
+  display: inline-flex;
+  text-decoration: none;
+}
+
+a.btn-itwallet-auth:hover {
+  text-decoration: none;
+}
+
+/* Print styles */
+@media print {
+  .btn-itwallet-auth {
+    border: 1px solid #000;
+    background-color: transparent;
+    color: #000;
+  }
+  
+  .btn-itwallet-auth .btn-icon {
+    display: none;
+  }
+}
