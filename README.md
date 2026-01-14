@@ -87,6 +87,14 @@ The following table contains all historical versions before 1.0.0, representing 
 
 ## Build
 
+Using Github Actions
+
+- access the manual [build frontend](https://github.com/italia/eid-wallet-it-docs/actions/workflows/build-html-manual.yml)
+- insert the Pull Request number using the form and submit the workflow as shown in the image below.
+
+<img width="1894" height="734" alt="image" src="https://github.com/user-attachments/assets/cdc81d14-4665-41c8-b251-385a1170a299" />
+
+
 HTML
 ````
 pip install -r requirements-dev.txt
