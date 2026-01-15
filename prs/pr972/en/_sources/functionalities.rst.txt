@@ -807,11 +807,21 @@ Both flows are shown below with illustrative wireframes.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/Authentication-same-device.pdf
-    :alt: Example of same-device Authentication User Experience.
+  .. figure:: ./images/pdf/A4-Authentication-same-device-01.pdf
+    :alt: Example of same-device Authentication User Experience - 01
     :width: 100%
     :align: center
 
+    Example of same-device Authentication User Experience - 01
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Authentication-same-device-02.pdf
+    :alt: Example of same-device Authentication User Experience - 02
+    :width: 100%
+    :align: center
+
+    Example of same-device Authentication User Experience - 02
 
 .. only:: format_html
 
@@ -823,11 +833,39 @@ Both flows are shown below with illustrative wireframes.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/Authentication-cross-device.pdf
-    :alt: Example of cross-device Authentication User Experience.
+  .. figure:: ./images/pdf/A4-Authentication-cross-device-01.pdf
+    :alt: Example of cross-device Authentication User Experience - 01
     :width: 100%
     :align: center
 
+    Example of cross-device Authentication User Experience - 01
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Authentication-cross-device-02.pdf
+    :alt: Example of cross-device Authentication User Experience - 02
+    :width: 100%
+    :align: center
+
+    Example of cross-device Authentication User Experience - 02
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Authentication-cross-device-03.pdf
+    :alt: Example of cross-device Authentication User Experience - 03
+    :width: 100%
+    :align: center
+
+    Example of cross-device Authentication User Experience - 03
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Authentication-cross-device-04.pdf
+    :alt: Example of cross-device Authentication User Experience - 04
+    :width: 100%
+    :align: center
+
+    Example of cross-device Authentication User Experience - 04
 
 Authentication Button
 ~~~~~~~~~~~~~~~~~~~~~~
