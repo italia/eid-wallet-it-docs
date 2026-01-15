@@ -447,10 +447,12 @@ The flow is shown below with illustrative wireframes.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/proximity-presentation.pdf
+  .. figure:: ./images/pdf/A4-Proximity-presentation.pdf
     :alt: Example of User Experience in proximity presentation
     :width: 100%
     :align: center
+
+    Example of User Experience in proximity presentation.
 
 Remote Presentation
 ^^^^^^^^^^^^^^^^^^^^
@@ -488,10 +490,21 @@ The flow is shown below with illustrative wireframes.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/Remote-presentation-same-device.pdf
-    :alt: Example of User Experience in remote, same-device presentation.
+  .. figure:: ./images/pdf/A4-Remote-presentation-same-device-01.pdf
+    :alt: Example of User Experience in remote, same-device presentation - 01
     :width: 100%
     :align: center
+
+    Example of User Experience in remote, same-device presentation  - 01
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Remote-presentation-same-device-02.pdf
+    :alt: Example of User Experience in remote, same-device presentation - 02
+    :width: 100%
+    :align: center
+
+    Example of User Experience in remote, same-device presentation  - 02
 
 **Cross-Device Mode**
 
@@ -518,11 +531,39 @@ The flow is shown below with illustrative wireframes.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/Remote-presentation-cross-device.pdf
-    :alt: Example of User Experience in remote, cross-device presentation.
+  .. figure:: ./images/pdf/A4-Remote-presentation-cross-device-01.pdf
+    :alt: Example of User Experience in remote, cross-device presentation - 01
     :width: 100%
     :align: center
 
+    Example of User Experience in remote, cross-device presentation - 01
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Remote-presentation-cross-device-02.pdf
+    :alt: Example of User Experience in remote, cross-device presentation - 02
+    :width: 100%
+    :align: center
+
+    Example of User Experience in remote, cross-device presentation - 02
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Remote-presentation-cross-device-03.pdf
+    :alt: Example of User Experience in remote, cross-device presentation - 03
+    :width: 100%
+    :align: center
+
+    Example of User Experience in remote, cross-device presentation - 03
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Remote-presentation-cross-device-04.pdf
+    :alt: Example of User Experience in remote, cross-device presentation - 04
+    :width: 100%
+    :align: center
+
+    Example of User Experience in remote, cross-device presentation - 04
 
 Authentication
 """""""""""""""
