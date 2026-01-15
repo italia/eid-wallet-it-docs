@@ -74,11 +74,20 @@ The flow is shown below with illustrative wireframes.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/IT-Wallet-Activation.pdf
+  .. figure:: ./images/pdf/A4-Wallet-Activation-01.pdf
     :alt: Example of User Experience in Activating a Wallet Instance
     :width: 100%
 
-    Example of User Experience in Activating a Wallet Instance
+    Example of User Experience in Activating a Wallet Instance - 01
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Wallet-Activation-02.pdf
+    :alt: Example of User Experience in Activating a Wallet Instance
+    :width: 100%
+
+    Example of User Experience in Activating a Wallet Instance - 02
+
 
 Focus on PID – Person Identification Data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -186,18 +195,37 @@ The flow is shown below with illustrative wireframes.
 .. only:: format_html
 
   .. figure:: ./images/svg/Issuance-from-catalog.svg
-    :alt: Example of User Experience in the issuance an Authentic Electronic Attestation from Catalog
+    :alt: Example of User Experience in the issuance an Electronic Attestation of Attributes from Catalog
     :width: 100%
 
-    Example of User Experience in the issuance an Authentic Electronic Attestation from Catalog 
+    Example of User Experience in the issuance an Electronic Attestation of Attributes from Catalog 
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/Issuance-from-catalog.pdf
-    :alt: Example of User Experience in the issuance an Authentic Electronic Attestation from Catalog
+  .. figure:: ./images/pdf/A4-Issuance-from-catalog-01.pdf
+    :alt: Example of User Experience in the issuance an Electronic Attestation of Attributes from Catalog
     :width: 100%
     :align: center
- 
+
+    Example of User Experience in the issuance an Electronic Attestation of Attributes from Catalog - 01
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Issuance-from-catalog-02.pdf
+    :alt: Example of User Experience in the issuance an Electronic Attestation of Attributes from Catalog
+    :width: 100%
+    :align: center
+
+    Example of User Experience in the issuance an Electronic Attestation of Attributes from Catalog - 02
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Issuance-from-catalog-03.pdf
+    :alt: Example of User Experience in the issuance an Electronic Attestation of Attributes from Catalog
+    :width: 100%
+    :align: center
+
+    Example of User Experience in the issuance an Electronic Attestation of Attributes from Catalog - 03
 
 Issuance from a Touchpoint of the Authentic Source 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -222,18 +250,66 @@ The flow is shown below with illustrative wireframes.
 .. only:: format_html
 
   .. figure:: ./images/svg/Issuance-from-Authentic-Source.svg
-    :alt: Example of User Experience in the issuance an Authentic Electronic Attestation from Authentic Source
+    :alt: Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source
     :width: 100%
 
-    Example of the User Experience during the issuance an Authentic Electronic Attestation from Authentic Source.
+    Example of the User Experience during the issuance of an Electronic Attestation of Attributes from the Authentic Source.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/Issuance-from-Authentic-Source.pdf
-    :alt: Example of User Experience in the issuance an Authentic Electronic Attestation from Authentic Source.
+  .. figure:: ./images/pdf/A4-Issuance-from-Authentic-Source-same-device-01.pdf
+    :alt: Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source, same device - 01.
     :width: 100%
     :align: center
 
+    Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source, same device - 01
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Issuance-from-Authentic-Source-same-device-02.pdf
+    :alt: Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source, same device - 02.
+    :width: 100%
+    :align: center
+
+    Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source, same device - 02
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Issuance-from-Authentic-Source-cross-device-01.pdf
+    :alt: Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source, cross device - 01.
+    :width: 100%
+    :align: center
+
+    Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source, cross device - 01
+
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Issuance-from-Authentic-Source-cross-device-02.pdf
+    :alt: Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source, cross device - 02.
+    :width: 100%
+    :align: center
+
+    Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source, cross device - 02
+
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Issuance-from-Authentic-Source-cross-device-03.pdf
+    :alt: Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source, cross device - 03.
+    :width: 100%
+    :align: center
+
+    Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source, cross device - 03
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Issuance-from-Authentic-Source-cross-device-04.pdf
+    :alt: Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source, cross device - 04.
+    :width: 100%
+    :align: center
+
+    Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source, cross device - 04
 
 Focus on Electronic Attestations of Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -310,7 +386,7 @@ Below an example of Electronic Attestation of Attribute layout, in a Preview Vie
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/Focus-EAA.pdf
+  .. figure:: ./images/pdf/A4-focus-EAA.pdf
     :alt: Example of Electronic Attestation of Attribute layout, Preview View, and Detail View   
     :width: 100%
 
