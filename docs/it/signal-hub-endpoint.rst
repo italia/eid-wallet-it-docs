@@ -8,17 +8,17 @@
 
 Endpoint di PDND Signal Hub
 -----------------------------
-All'interno della piattaforma PDND, Signal Hub funge da intermediario tra un Provider PDND e i suoi Consumer PDND per facilitare le segnalazioni di variazioni dei dati. Per abilitare tale funzionalità, il gestore della piattaforma PDND, di seguito denominato PDND Manager, agendo come PDND e-Service Provider, fornisce due e-Service PDND di Signal Hub:
-  - l'e-Service di Raccolta Segnali che viene utilizzato dai PDND e-Service Provider per depositare i Segnali; in questo caso, il PDND e-Service Provider agisce come Consumer dell'e-Service di Raccolta Segnali;
-  - l'e-Service di Distribuzione Segnali che viene utilizzato dai PDND e-Service Consumer per recuperare i Segnali raccolti; in questo caso, il PDND e-Service Consumer agisce anche come Consumer dell'e-Service di Distribuzione Segnali.
+All'interno della piattaforma PDND, Signal Hub funge da intermediario tra un Provider PDND e i suoi Consumer PDND per facilitare le segnalazioni di variazioni dei dati. Per abilitare tale funzionalità, il gestore della piattaforma PDND, di seguito denominato PDND Manager, agendo come e-Service PDNDProvider, fornisce due e-Service PDND di Signal Hub:
+  - l'e-Service di Raccolta Segnali che viene utilizzato dai e-Service PDNDProvider per depositare i Segnali; in questo caso, il e-Service PDNDProvider agisce come Consumer dell'e-Service di Raccolta Segnali;
+  - l'e-Service di Distribuzione Segnali che viene utilizzato dai e-Service PDNDConsumer per recuperare i Segnali raccolti; in questo caso, il e-Service PDNDConsumer agisce anche come Consumer dell'e-Service di Distribuzione Segnali.
 
-Al fine di proteggere la privacy del soggetto del Segnale, il PDND Manager richiede a ciascun PDND e-Service Provider di pseudonimizzare l'identificativo del soggetto utilizzato all'interno dei Segnali e di configurare un endpoint di pseudonimizzazione per il proprio PDND e-Service. Questo endpoint di pseudonimizzazione viene utilizzato dagli e-Service Consumer per ottenere l'algoritmo di pseudonimizzazione al fine di calcolare lo Pseudonimo del soggetto del Segnale. Solo il PDND e-Service Provider e i suoi PDND e-Service Consumer sono in grado di collegare un Segnale ai dati personali del soggetto, mentre il PDND Manager gestisce solo gli identificativi pseudonimizzati.
+Al fine di proteggere la privacy del soggetto del Segnale, il PDND Manager richiede a ciascun e-Service PDNDProvider di pseudonimizzare l'identificativo del soggetto utilizzato all'interno dei Segnali e di configurare un endpoint di pseudonimizzazione per il proprio PDND e-Service. Questo endpoint di pseudonimizzazione viene utilizzato dagli e-Service Consumer per ottenere l'algoritmo di pseudonimizzazione al fine di calcolare lo Pseudonimo del soggetto del Segnale. Solo il e-Service PDNDProvider e i suoi e-Service PDNDConsumer sono in grado di collegare un Segnale ai dati personali del soggetto, mentre il PDND Manager gestisce solo gli identificativi pseudonimizzati.
 
 Per specifiche tecniche dettagliate e linee guida per l'implementazione, si prega di fare riferimento alla `Signal Hub Guide`_.
 
 Nel contesto dell'IT Wallet, le Fonti Autentiche interagiscono con Signal Hub per notificare ai Fornitori di Attestati Elettronici i cambiamenti nello stato e/o nel valore degli Attributi associati agli Attestati Elettronici. Nello specifico,
   - la Fonte Autentica depositerà i Segnali in Signal Hub, svolgendo quindi il ruolo di PDND Consumer dell'e-Service di Raccolta Segnali;
-  - il Fornitore di Attestati Elettronici recupererà i Segnali da Signal Hub, e svolgerà quindi il ruolo di PDND e-Service Consumer dell'e-Service di Distribuzione Segnali.
+  - il Fornitore di Attestati Elettronici recupererà i Segnali da Signal Hub, e svolgerà quindi il ruolo di e-Service PDNDConsumer dell'e-Service di Distribuzione Segnali.
 
 .. note::
   Nel contesto dell'IT Wallet, a causa della particolare natura dei dati scambiati, la pseudonimizzazione del soggetto del Segnale non è necessaria poiché l'identificativo è già opaco e non correlato al soggetto dell'Attestato Elettronico. Pertanto, la Fonte Autentica non ha bisogno di configurare un endpoint di pseudonimizzazione per i suoi e-Service.

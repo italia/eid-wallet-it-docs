@@ -180,7 +180,7 @@ The Authentic Source registration follows a technical process as described below
   - **Taxonomy Validation**: Verification that declared domains, and purposes are valid taxonomy entries.
   - **API Integration Verification**:
 
-    - **Public Entities**: PDND e-service specification compliance verification
+    - **Public Entities**: e-Service PDNDspecification compliance verification
     - **Private Entities**: `OAS3`_ specification completeness including authorization framework, request/response schemas, error handling mechanisms, and sandbox environment.
 
   - **Response Format Standards**: Verification of Claims Registry format usage and state mapping specification.

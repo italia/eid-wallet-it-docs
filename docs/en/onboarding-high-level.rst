@@ -187,7 +187,7 @@ From the Authentic Source operator perspective, the onboarding process begins wi
     - **Claims Declaration**: Selects standardized claims (``given_name``, ``family_name``, ``driving_privileges``, etc. ) from Claims Registry.
     - **Taxonomy Classification**: Domain ``AUTHORIZATION``, Purpose ``DRIVING_LICENSE``.
     - **Use Case**: Public service - driving authorization verification (eligible for Credential Catalog).
-    - **Integration**: PDND e-service integration following government standards (see :ref:`e-service-pdnd:e-Service PDND`).
+    - **Integration**: e-Service PDNDintegration following government standards (see :ref:`e-service-pdnd:e-Service PDND`).
     - **Catalog Outcome**: mDL becomes publicly discoverable after CI integration.
 
 **Example - Corporate AS (Employee Badge Scenario)**:
@@ -213,7 +213,7 @@ Credential Issuer operators start by discovering available Authentic Source enti
 
     - **AS Discovery**: Identifies the Authentic Source providing mDL attributes in AS Registry with required driving license claims.
     - **Integration Request**: Automatic approval due to regulatory mandate. 
-    - **Technical Setup**: PDND e-service integration following government standards (see :ref:`e-service-pdnd:e-Service PDND`).
+    - **Technical Setup**: e-Service PDNDintegration following government standards (see :ref:`e-service-pdnd:e-Service PDND`).
     - **Catalog Publication**: mDL automatically published in the Credential Catalog.
     - **User Access**: Citizens discover mDL through a public catalog in Wallet.
 

@@ -1,7 +1,7 @@
 .. include:: ../common/common_definitions.rst
 
 
-PDND e-Service Template
+e-Service PDNDTemplate
 =======================
 
 The PDND provides a specialized tool that enhances API co-design processes by optimizing e-service publication and reuse. This functionality is defined in this document.
