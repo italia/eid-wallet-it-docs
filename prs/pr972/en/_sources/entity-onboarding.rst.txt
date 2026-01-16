@@ -72,7 +72,7 @@ The onboarding process follows a structured multi-phase approach:
   3. **IT-Wallet Registry Integration**:
 
     - **Claims Registry Integration**: Authentic Sources select standardized claim definitions from Claims Registry during capability declaration.
-    - **Taxonomy Integration**: All entities use Taxonomy hierarchical classification (domains, purposes) for organizational structure to categorize Credentials.
+    - **Taxonomy Integration**: All entities use Taxonomy hierarchical classification (domains, classes, purposes) for organizational structure to categorize Credentials.
     - **Authentic Source Registry Integration**: Authentic Sources registered with their declared claims and capabilities, enabling Credential Issuers discovery and coordination.
     - **Federation Registry Integration**: Operational entities included for trust validation during Credential operations.
     - **Catalog Integration**: Credential types published in :ref:`registry:Digital Credentials Catalog Structure` based on supervisory body policies for public discovery eligibility.
@@ -136,7 +136,7 @@ During registration, Authentic Sources MUST provide the following information:
      - **REQUIRED**. Available claims:
 
        - Array of claim identifiers from Claims Registry that the Authentic Source provides (e.g., ``["given_name", "family_name", "driving_privileges"]``).
-       - Taxonomy classification for Authentic Source scope (e.g., ``["AUTHORIZATION"]`` domains and ``["DRIVING_LICENSE"]`` purposes).
+       - Intended Purposes for verification (e.g. ``["DRIVING_RIGHTS"]``).
       
    * - **API Implementation Details**
      - **REQUIRED**. Integration information details:
@@ -177,7 +177,7 @@ The Authentic Source registration follows a technical process as described below
 **Step 2 - Technical Validation**: Supervisory Body validates submitted registration focusing on:
 
   - **Claims Registry Compliance**: Validation of claims format, identifiers, and existence in Claims Registry.
-  - **Taxonomy Validation**: Verification that declared domains, and purposes are valid taxonomy entries.
+  - **Taxonomy Validation**: Verification that declared purposes are valid taxonomy entries.
   - **API Integration Verification**:
 
     - **Public Entities**: PDND e-service specification compliance verification
@@ -551,8 +551,8 @@ The following non-normative examples illustrate different Trust Mark JWT content
      "authorized_claims": ["given_name", "family_name", "driving_privileges"],
      "authorized_credential_types": ["mobile-driving-license"],
      "scope_restrictions": {
-       "domains": ["AUTHORIZATION"],
-       "purposes": ["DRIVING_LICENSE"]
+       "domains": ["MOBILITY_TRAVEL"],
+       "purposes": ["DRIVING_RIGHTS"]
      }
    }
 
