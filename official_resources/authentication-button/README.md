@@ -105,12 +105,6 @@ Il componente è progettato per essere accessibile e rispettare gli standard WCA
 - Navigazione da tastiera
 - Focus visibile
 
-## Browser Supportati
-
-- Chrome (ultime 2 versioni)
-- Firefox (ultime 2 versioni)
-- Safari (ultime 2 versioni)
-- Edge (ultime 2 versioni)
 
 ## Licenza
 
