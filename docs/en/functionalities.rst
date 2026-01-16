@@ -120,7 +120,7 @@ To ensure a consistent identification and representation of the PID across diffe
 
     IT-Wallet ID official graphic asset on a light background 
 
-The IT-Wallet ID Official Resources are provided in the related :ref:`official-resources:Official Resources` Section. Additional documentation on the IT-Wallet ID graphic assets is available in the Brand Manual, as indicated in the :ref:`official-resources:Official Resources` section.  
+The IT-Wallet ID Official Resource is provided in the related :ref:`official-resources:Official Resources` Section. Additional documentation on the IT-Wallet ID graphic asset is available in the Brand Manual, indicated in the :ref:`official-resources:Official Resources` section.  
 
 
 Issuance of Electronic Attestations of Attributes
@@ -733,7 +733,7 @@ The Authentication Button has the following requirements:
 
 - The Authentication Button MUST state "Login with IT-Wallet";
 
-- The Authentication Button SHOULD always be accompanied by an external link (e.g., "Learn more") that links to the official website of the IT-Wallet System, as indicated in the :ref:`official-resources:Official Resources` section; 
+- The Authentication Button SHOULD always be accompanied by an external link (e.g., "Learn more") that links to the official website of the IT-Wallet System, indicated in the :ref:`official-resources:Official Resources` section; 
 
 - Where space allows and/or the context requires it, the Authentication Button SHOULD be accompanied by a descriptive text, e.g., "IT-Wallet is the Italian Digital Wallet System that gives you full control over your information, without the issuing entity being aware of when and how it is used” or "Login through an IT-Wallet app, the Italian Digital Wallet System that simplifies interactions between citizens, public administrations and private entities, in the physical and digital world. With IT-Wallet you have full control over your information, sharing it only when necessary and securely, without the issuing entity knowing when and how it is used.". 
 
@@ -784,7 +784,7 @@ The references to the html code and the Brand Identity will be included in the n
  
 
 **"Login with IT-Wallet" button – svg**
-For further information on the Authentication button refer to the Brand Manual, as indicated in the :ref:`official-resources:Official Resources` section. Authentication button Official Resource is available in the :ref:`official-resources:Official Resources` section of these Technical Specifications. 
+For further information on the Authentication button refer to the Brand Manual, indicated in the :ref:`official-resources:Official Resources` section. The Authentication button Official Resource is available in the :ref:`official-resources:Official Resources` section of these Technical Specifications. 
 
 .. only:: format_html
 
