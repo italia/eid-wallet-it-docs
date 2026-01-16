@@ -4,7 +4,12 @@
     "id": "urn:taxonomy:it-wallet",
     "localization": {
         "default_locale": "it",
-        "available_locales": ["en", "it", "fr", "de"],
+        "available_locales": [
+            "en",
+            "it",
+            "fr",
+            "de"
+        ],
         "base_uri": "https://trust-registry.eid-wallet.example.it/.well-known/l10n/taxonomy/",
         "version": "1.0.0"
     },
@@ -15,43 +20,75 @@
             "id": "IDENTITY",
             "name_l10n_id": "domain.identity.name",
             "description_l10n_id": "domain.identity.description",
-            "purposes": [
+            "classes": [
                 {
-                    "id": "PERSON_IDENTIFICATION",
-                    "name_l10n_id": "purpose.person_identification.name",
-                    "description_l10n_id": "purpose.person_identification.description"
+                    "id": "IDENTIFICATION_DOCUMENTS",
+                    "name_l10n_id": "class.id_docs.name",
+                    "purposes": [
+                        {
+                            "id": "IDENTITY_VERIFICATION",
+                            "name_l10n_id": "purpose.id_ver.name"
+                        },
+                        {
+                            "id": "AGE_VERIFICATION",
+                            "name_l10n_id": "purpose.age_ver.name"
+                        }
+                    ]
                 },
                 {
-                    "id": "ELECTRONIC_RESIDENCY",
-                    "name_l10n_id": "purpose.electronic_residency.name",
-                    "description_l10n_id": "purpose.electronic_residency.description"
+                    "id": "CIVIL_REGISTRY_STATUS",
+                    "name_l10n_id": "class.civil_registry.name",
+                    "purposes": [
+                        {
+                            "id": "CIVIL_STATUS_VERIFICATION",
+                            "name_l10n_id": "purpose.civil_status.name"
+                        },
+                        {
+                            "id": "RESIDENCE_VERIFICATION",
+                            "name_l10n_id": "purpose.residence.name"
+                        }
+                    ]
+                },
+                {
+                    "id": "ECONOMIC_LEGAL_STATUS",
+                    "name_l10n_id": "class.economic_status.name",
+                    "purposes": [
+                        {
+                            "id": "ELIGIBILITY_VERIFICATION",
+                            "name_l10n_id": "purpose.eligibility.name"
+                        },
+                        {
+                            "id": "LEGAL_STATUS_CHECK",
+                            "name_l10n_id": "purpose.legal_status.name"
+                        }
+                    ]
                 }
             ]
         },
         {
-            "id": "AUTHORIZATION",
-            "name_l10n_id": "domain.authorization.name",
-            "description_l10n_id": "domain.authorization.description",
-            "purposes": [
+            "id": "HOME_FAMILY",
+            "name_l10n_id": "domain.home_family.name",
+            "description_l10n_id": "domain.home_family.description",
+            "classes": [
                 {
-                    "id": "DRIVING_LICENSE",
-                    "name_l10n_id": "purpose.driving_license.name",
-                    "description_l10n_id": "purpose.driving_license.description"
+                    "id": "PROPERTY_CADASTRAL_DOCS",
+                    "name_l10n_id": "class.property_docs.name",
+                    "purposes": [
+                        {
+                            "id": "OWNERSHIP_VERIFICATION",
+                            "name_l10n_id": "purpose.ownership.name"
+                        }
+                    ]
                 },
                 {
-                    "id": "PROFESSIONAL_LICENSE",
-                    "name_l10n_id": "purpose.professional_license.name",
-                    "description_l10n_id": "purpose.professional_license.description"
-                },
-                {
-                    "id": "TRAVEL_DOCUMENT",
-                    "name_l10n_id": "purpose.travel_document.name",
-                    "description_l10n_id": "purpose.travel_document.description"
-                },
-                {
-                    "id": "ACCESS_PERMIT",
-                    "name_l10n_id": "purpose.access_permit.name",
-                    "description_l10n_id": "purpose.access_permit.description"
+                    "id": "LOCAL_TAX_DOCUMENTS",
+                    "name_l10n_id": "class.local_tax.name",
+                    "purposes": [
+                        {
+                            "id": "TAX_COMPLIANCE",
+                            "name_l10n_id": "purpose.tax_compliance.name"
+                        }
+                    ]
                 }
             ]
         },
@@ -59,21 +96,30 @@
             "id": "EDUCATION",
             "name_l10n_id": "domain.education.name",
             "description_l10n_id": "domain.education.description",
-            "purposes": [
+            "classes": [
                 {
-                    "id": "ACADEMIC_DEGREE",
-                    "name_l10n_id": "purpose.academic_degree.name",
-                    "description_l10n_id": "purpose.academic_degree.description"
+                    "id": "EDUCATIONAL_QUALIFICATIONS",
+                    "name_l10n_id": "class.edu_qualifications.name",
+                    "purposes": [
+                        {
+                            "id": "DEGREE_VERIFICATION",
+                            "name_l10n_id": "purpose.degree_ver.name"
+                        }
+                    ]
                 },
                 {
-                    "id": "CERTIFICATE",
-                    "name_l10n_id": "purpose.certificate.name",
-                    "description_l10n_id": "purpose.certificate.description"
-                },
-                {
-                    "id": "TRAINING_RECOGNITION",
-                    "name_l10n_id": "purpose.training_recognition.name",
-                    "description_l10n_id": "purpose.training_recognition.description"
+                    "id": "PROFESSIONAL_CERTIFICATIONS",
+                    "name_l10n_id": "class.prof_cert.name",
+                    "purposes": [
+                        {
+                            "id": "SKILLS_ASSESSMENT",
+                            "name_l10n_id": "purpose.skills.name"
+                        },
+                        {
+                            "id": "PROFESSIONAL_PRACTICE",
+                            "name_l10n_id": "purpose.prof_practice.name"
+                        }
+                    ]
                 }
             ]
         },
@@ -81,21 +127,26 @@
             "id": "HEALTH",
             "name_l10n_id": "domain.health.name",
             "description_l10n_id": "domain.health.description",
-            "purposes": [
+            "classes": [
                 {
-                    "id": "INSURANCE_CARD",
-                    "name_l10n_id": "purpose.insurance_card.name",
-                    "description_l10n_id": "purpose.insurance_card.description"
+                    "id": "CERTIFICATIONS_ELIGIBILITY",
+                    "name_l10n_id": "class.health_cert.name",
+                    "purposes": [
+                        {
+                            "id": "HEALTH_STATUS_VERIFICATION",
+                            "name_l10n_id": "purpose.health_status.name"
+                        }
+                    ]
                 },
                 {
-                    "id": "DISABILITY_CARD",
-                    "name_l10n_id": "purpose.disability_card.name",
-                    "description_l10n_id": "purpose.disability_card.description"
-                },
-                {
-                    "id": "MEDICAL_PRESCRIPTION",
-                    "name_l10n_id": "purpose.medical_prescription.name",
-                    "description_l10n_id": "purpose.medical_prescription.description"
+                    "id": "MEDICAL_RECORDS",
+                    "name_l10n_id": "class.medical_records.name",
+                    "purposes": [
+                        {
+                            "id": "HEALTHCARE_ACCESS",
+                            "name_l10n_id": "purpose.healthcare_access.name"
+                        }
+                    ]
                 }
             ]
         },
@@ -103,75 +154,52 @@
             "id": "FINANCIAL",
             "name_l10n_id": "domain.financial.name",
             "description_l10n_id": "domain.financial.description",
-            "purposes": [
+            "classes": [
                 {
-                    "id": "INCOME_CERTIFICATE",
-                    "name_l10n_id": "purpose.income_certificate.name",
-                    "description_l10n_id": "purpose.income_certificate.description"
+                    "id": "PAYMENT_INSTRUMENTS",
+                    "name_l10n_id": "class.payments.name",
+                    "purposes": [
+                        {
+                            "id": "PAYMENT_EXECUTION",
+                            "name_l10n_id": "purpose.pay_exec.name"
+                        }
+                    ]
                 },
                 {
-                    "id": "TAX_STATEMENT",
-                    "name_l10n_id": "purpose.tax_statement.name",
-                    "description_l10n_id": "purpose.tax_statement.description"
-                },
-                {
-                    "id": "FAMILY_ECONOMIC_STATUS",
-                    "name_l10n_id": "purpose.family_economic_status.name",
-                    "description_l10n_id": "purpose.family_economic_status.description"
-                },
-                {
-                    "id": "BANK_ACCOUNT",
-                    "name_l10n_id": "purpose.bank_account.name",
-                    "description_l10n_id": "purpose.bank_account.description"
-                },
-                {
-                    "id": "PAYMENT_HISTORY",
-                    "name_l10n_id": "purpose.payment_history.name",
-                    "description_l10n_id": "purpose.payment_history.description"
+                    "id": "PUBLIC_PAYMENTS_FEES",
+                    "name_l10n_id": "class.public_fees.name",
+                    "purposes": [
+                        {
+                            "id": "PROOF_OF_PAYMENT",
+                            "name_l10n_id": "purpose.proof_pay.name"
+                        }
+                    ]
                 }
             ]
         },
         {
-            "id": "MEMBERSHIP",
-            "name_l10n_id": "domain.membership.name",
-            "description_l10n_id": "domain.membership.description",
-            "purposes": [
+            "id": "MOBILITY_TRAVEL",
+            "name_l10n_id": "domain.mobility.name",
+            "classes": [
                 {
-                    "id": "ASSOCIATION",
-                    "name_l10n_id": "purpose.association.name",
-                    "description_l10n_id": "purpose.association.description"
+                    "id": "LICENSES_AUTHORIZATIONS",
+                    "name_l10n_id": "class.licenses.name",
+                    "purposes": [
+                        {
+                            "id": "DRIVING_RIGHTS",
+                            "name_l10n_id": "purpose.driving.name"
+                        }
+                    ]
                 },
                 {
-                    "id": "LOYALTY_PROGRAM",
-                    "name_l10n_id": "purpose.loyalty_program.name",
-                    "description_l10n_id": "purpose.loyalty_program.description"
-                },
-                {
-                    "id": "CLUB_MEMBERSHIP",
-                    "name_l10n_id": "purpose.club_membership.name",
-                    "description_l10n_id": "purpose.club_membership.description"
-                }
-            ]
-        },
-        {
-            "id": "ATTESTATION",
-            "name_l10n_id": "domain.attestation.name",
-            "description_l10n_id": "domain.attestation.description",
-            "purposes": [
-                {
-                    "id": "PUBLIC_STATEMENT",
-                    "name_l10n_id": "purpose.public_statement.name",
-                    "description_l10n_id": "purpose.public_statement.description"
-                },
-                {
-                    "id": "CIVIL_STATUS",
-                    "name_l10n_id": "purpose.civil_status.name",
-                    "description_l10n_id": "purpose.civil_status.description"
-                },
-                {
-                    "id": "CERTIFICATION",
-                    "name_l10n_id": "purpose.certification.name",
-                    "description_l10n_id": "purpose.certification.description"
+                    "id": "VEHICLE_DOCUMENTS",
+                    "name_l10n_id": "class.vehicle_docs.name",
+                    "purposes": [
+                        {
+                            "id": "VEHICLE_VERIFICATION",
+                            "name_l10n_id": "purpose.vehicle.name"
+                        }
+                    ]
                 }
             ]
         }

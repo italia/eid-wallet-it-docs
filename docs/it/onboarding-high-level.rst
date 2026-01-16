@@ -30,7 +30,7 @@ Tutti gli Attori Primari DEVONO sottoporsi alla registrazione amministrativa per
 
     2. **Registrazione Tecnica**: Dopo l'approvazione amministrativa, le entità completano la registrazione tecnica attraverso Journey specializzati:
 
-        a. **Fonti Autentiche**: Dichiarano i loro Attributi dell'Utente disponibili dal Registro degli Attributi dell'Utente e specificano domini, scopi e tipo di organizzazione (pubblica o privata) previsti.
+        a. **Fonti Autentiche**: Dichiarano i loro Attributi dell'Utente disponibili dal Registro degli Attributi dell'Utente e specificano gli scopi di verifica previsti e tipo di organizzazione (pubblica o privata) previsti.
 
         b. **Credential Issuer**: Selezionano le Fonti Autentiche basate sugli Attributi dell'Utente richiesti, richiedono l'approvazione dell'integrazione (eccetto per i mandati normativi) e registrano i tipi di Credenziali con pubblicazione automatica del catalogo secondo la politica dell'Organismo di Supervisione.
 
@@ -38,7 +38,7 @@ Tutti gli Attori Primari DEVONO sottoporsi alla registrazione amministrativa per
 
     3. **Integrazione del Registro IT-Wallet**:
 
-        a. **Integrazione del Registro degli Attributi dell'Utente e della Tassonomia**: Il Registro degli Attributi dell'Utente fornisce definizioni di dati standardizzate per i singoli Attributi delle Credenziali, mentre la Tassonomia definisce la classificazione gerarchica (domini, scopi) che vengono poi referenziati nel Catalogo degli Attestati Elettronici per implementazioni specifiche di Credenziali. Tutti i partecipanti sfruttano questi registri per dichiarazioni di capacità di fornitura dati e requisiti di emissione/verifica.
+        a. **Integrazione del Registro degli Attributi dell'Utente e della Tassonomia**: Il Registro degli Attributi dell'Utente fornisce definizioni di dati standardizzate per i singoli Attributi delle Credenziali, mentre la Tassonomia definisce la classificazione gerarchica (domini, classi, scopi) che vengono poi referenziati nel Catalogo degli Attestati Elettronici per implementazioni specifiche di Credenziali. Tutti i partecipanti sfruttano questi registri per dichiarazioni di capacità di fornitura dati e requisiti di emissione/verifica.
 
         b. **Integrazione del Registro AS**: Fonti Autentiche registrate con i loro Attributi dell'Utente dichiarati e relative specifiche, abilitando la discovery e coordinazione dei CI.
 
@@ -185,7 +185,7 @@ Dalla prospettiva dell'operatore della Fonte Autentica, il processo di onboardin
 **Esempio - Fonte Autentica Pubblica (Scenario mDL)**:
 
     - **Dichiarazione degli Attributi dell'Utente**: Seleziona Attributi dell'Utente standardizzati (``given_name``, ``family_name``, ``driving_privileges``, ecc.) dal Registro degli Attributi dell'Utente.
-    - **Classificazione della Tassonomia**: Dominio ``AUTHORIZATION``, Scopo ``DRIVING_LICENSE``.
+    - **Classificazione della Tassonomia**: Dominio ``MOBILITY_TRAVEL``, Scopo ``DRIVING_RIGHTS``.
     - **Caso d'Uso**: Servizio pubblico - verifica dell'autorizzazione alla guida (eleggibile per il Catalogo delle Credenziali).
     - **Integrazione**: Integrazione e-service PDND seguendo gli standard governativi (vedi :ref:`e-service-pdnd:e-Service PDND`).
     - **Risultato del Catalogo**: mDL diventa pubblicamente scopribile dopo l'integrazione CI.
@@ -256,7 +256,7 @@ Gli operatori della Relying Party iniziano identificando quali tipi di EAA sono 
     - **Richiesta di Autorizzazione**: Verifica dell'autorizzazione alla guida per l'eleggibilità al noleggio.
     - **Requisiti degli Attributi dell'Utente**: ``given_name``, ``family_name``, ``driving_privileges``, ecc., da mDL.
     - **Giustificazione del Caso d'Uso**: Obbligo legale di verificare la patente di guida valida prima del noleggio del veicolo.
-    - **Ambito di Autorizzazione**: Concesso accesso al dominio ``AUTHORIZATION``, scopo ``DRIVING_LICENSE``.
+    - **Ambito di Autorizzazione**: Concesso accesso al dominio ``MOBILITY_TRAVEL``, scopo ``DRIVING_RIGHTS``.
 
 **Esempio - Servizi Municipali (RP Pubblica)**:
 
