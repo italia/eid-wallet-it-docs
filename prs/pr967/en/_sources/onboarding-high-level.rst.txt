@@ -30,7 +30,7 @@ All Primary Actors MUST undergo administrative registration for legal and regula
 
     2. **Technical Registration**: Following administrative approval, entities complete technical registration through specialized pathways:
 
-        a. **Authentic Sources**: Declare their available claims from the Claims Registry and specify intended domains, purposes and organization type (public or private). 
+        a. **Authentic Sources**: Declare their available claims from the Claims Registry and specify intended verification purposes and organization type (public or private). 
 
         b. **Credential Issuers**: Select Authentic Sources based on required claims, request integration approval (except for regulatory mandates), and register Credential types with automatic catalog publication per Supervisory Body policy.
 
@@ -38,7 +38,7 @@ All Primary Actors MUST undergo administrative registration for legal and regula
 
     3. **IT-Wallet Registry Integration**:
 
-        a. **Claims Registry and Taxonomy Integration**: Claims Registry provides standardized data definitions for individual Credential attributes, while Taxonomy defines hierarchical classification (domains, purposes) that are then referenced in the Digital Credentials Catalog for specific Credential implementations. All participants leverage these registries for capability declarations and issuance/verification requirements.
+        a. **Claims Registry and Taxonomy Integration**: Claims Registry provides standardized data definitions for individual Credential attributes, while Taxonomy defines hierarchical classification (domains, classes, purposes) that are then referenced in the Digital Credentials Catalog for specific Credential implementations. All participants leverage these registries for capability declarations and issuance/verification requirements.
 
         b. **AS Registry Integration**: Authentic Sources registered with their declared claims and capability, enabling CI discovery and coordination.
 
@@ -185,7 +185,7 @@ From the Authentic Source operator perspective, the onboarding process begins wi
 **Example - Public Authentic Source (mDL Scenario)**:
 
     - **Claims Declaration**: Selects standardized claims (``given_name``, ``family_name``, ``driving_privileges``, etc. ) from Claims Registry.
-    - **Taxonomy Classification**: Domain ``AUTHORIZATION``, Purpose ``DRIVING_LICENSE``.
+    - **Taxonomy Classification**: Domain ``MOBILITY_TRAVEL``, Purpose ``DRIVING_RIGHTS``.
     - **Use Case**: Public service - driving authorization verification (eligible for Credential Catalog).
     - **Integration**: PDND e-service integration following government standards (see :ref:`e-service-pdnd:e-Service PDND`).
     - **Catalog Outcome**: mDL becomes publicly discoverable after CI integration.
@@ -256,7 +256,7 @@ Relying Party operators begin by identifying which EAA types are required for th
     - **Authorization Request**: Driving authorization verification for rental eligibility.
     - **Claims Requirements**: ``given_name``, ``family_name``, ``driving_privileges``, etc., from mDL.
     - **Use Case Justification**: Legal obligation to verify valid driving license before vehicle rental.
-    - **Authorization Scope**: Granted access to ``AUTHORIZATION`` domain, ``DRIVING_LICENSE`` purpose.
+    - **Authorization Scope**: Granted access to ``MOBILITY_TRAVEL`` domain, ``DRIVING_RIGHTS`` purpose.
 
 **Example - Municipal Services (Public RP)**:
 

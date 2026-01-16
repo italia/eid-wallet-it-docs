@@ -245,7 +245,7 @@
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Claims Registry Integration</strong>: Authentic Sources select standardized claim definitions from Claims Registry during capability declaration.</p></li>
-<li><p><strong>Taxonomy Integration</strong>: All entities use Taxonomy hierarchical classification (domains, purposes) for organizational structure to categorize Credentials.</p></li>
+<li><p><strong>Taxonomy Integration</strong>: All entities use Taxonomy hierarchical classification (domains, classes, purposes) for organizational structure to categorize Credentials.</p></li>
 <li><p><strong>Authentic Source Registry Integration</strong>: Authentic Sources registered with their declared claims and capabilities, enabling Credential Issuers discovery and coordination.</p></li>
 <li><p><strong>Federation Registry Integration</strong>: Operational entities included for trust validation during Credential operations.</p></li>
 <li><p><strong>Catalog Integration</strong>: Credential types published in <a class="reference internal" href="registry.html#digital-credentials-catalog-structure"><span class="std std-ref">Digital Credentials Catalog Structure</span></a> based on supervisory body policies for public discovery eligibility.</p></li>
@@ -323,7 +323,7 @@
 <td><p><strong>REQUIRED</strong>. Available claims:</p>
 <ul class="simple">
 <li><p>Array of claim identifiers from Claims Registry that the Authentic Source provides (e.g., <code class="docutils literal notranslate"><span class="pre">[&quot;given_name&quot;,</span> <span class="pre">&quot;family_name&quot;,</span> <span class="pre">&quot;driving_privileges&quot;]</span></code>).</p></li>
-<li><p>Taxonomy classification for Authentic Source scope (e.g., <code class="docutils literal notranslate"><span class="pre">[&quot;AUTHORIZATION&quot;]</span></code> domains and <code class="docutils literal notranslate"><span class="pre">[&quot;DRIVING_LICENSE&quot;]</span></code> purposes).</p></li>
+<li><p>Intended Purposes for verification (e.g. <code class="docutils literal notranslate"><span class="pre">[&quot;DRIVING_RIGHTS&quot;]</span></code>).</p></li>
 </ul>
 </td>
 </tr>
@@ -360,8 +360,8 @@
 <p>The Authentic Source registration follows a technical process as described below.</p>
 <figure class="align-default" id="id3">
 <p class="plantuml">
-<object data="_images/plantuml-35b17aa79bbea7e02d0b1f0c8a28251c37e2ed36.svg" type="image/svg+xml" style="width:99%">
-<a href="_images/plantuml-35b17aa79bbea7e02d0b1f0c8a28251c37e2ed36.png"><img src="_images/plantuml-35b17aa79bbea7e02d0b1f0c8a28251c37e2ed36.png" alt="Authentic Source registration process showing the 3-step procedure" style="width: 99.0%"/></a>
+<object data="_images/plantuml-b41cfb6b927d5db984f7ae8a5bd541f10e7d14f6.svg" type="image/svg+xml" style="width:99%">
+<a href="_images/plantuml-b41cfb6b927d5db984f7ae8a5bd541f10e7d14f6.png"><img src="_images/plantuml-b41cfb6b927d5db984f7ae8a5bd541f10e7d14f6.png" alt="Authentic Source registration process showing the 3-step procedure" style="width: 99.0%"/></a>
 
 </object></p>
 <figcaption>
@@ -391,10 +391,6 @@
 <span class="w">    </span><span class="nt">&quot;data_capabilities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Driving license data is available for licenses issued after January 1, 2020. For older licenses, contact the local transport authority office.&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;domains&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="s2">&quot;IDENTITY&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;AUTHORIZATION&quot;</span>
-<span class="w">            </span><span class="p">],</span>
 <span class="w">            </span><span class="nt">&quot;intended_purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="s2">&quot;DRIVING_LICENSE&quot;</span>
 <span class="w">            </span><span class="p">],</span>
@@ -475,16 +471,16 @@
 <span class="w">            </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/assets/transport-data-logo.svg&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;logo_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-b1946ac92492d2347c6235b4d2611184e2a3f8b8c8f8f8e8f8f8f8f8f8f8f8f8&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="s2">&quot;citizen-support@gov.example&quot;</span>
+<span class="w">                </span><span class="s2">&quot;citizen-support@gov.example&quot;</span>
 <span class="w">            </span><span class="p">],</span>
 <span class="w">            </span><span class="nt">&quot;background_image&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                            </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/assets/background-image.svg&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg==&quot;</span>
-<span class="w">                    </span><span class="p">},</span>
+<span class="w">                </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/assets/background-image.svg&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg==&quot;</span>
+<span class="w">            </span><span class="p">},</span>
 <span class="w">            </span><span class="nt">&quot;watermark_image&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                            </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/assets/watermark-image.svg&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg==&quot;</span>
-<span class="w">                    </span><span class="p">},</span>
+<span class="w">                </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/assets/watermark-image.svg&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg==&quot;</span>
+<span class="w">            </span><span class="p">},</span>
 <span class="w">            </span><span class="nt">&quot;background_color&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#12107c&quot;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
@@ -496,7 +492,7 @@
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Claims Registry Compliance</strong>: Validation of claims format, identifiers, and existence in Claims Registry.</p></li>
-<li><p><strong>Taxonomy Validation</strong>: Verification that declared domains, and purposes are valid taxonomy entries.</p></li>
+<li><p><strong>Taxonomy Validation</strong>: Verification that declared purposes are valid taxonomy entries.</p></li>
 <li><p><strong>API Integration Verification</strong>:</p>
 <ul>
 <li><p><strong>Public Entities</strong>: PDND e-service specification compliance verification</p></li>
@@ -945,8 +941,8 @@
 <span class="w">  </span><span class="nt">&quot;authorized_claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;given_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;family_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;driving_privileges&quot;</span><span class="p">],</span>
 <span class="w">  </span><span class="nt">&quot;authorized_credential_types&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;mobile-driving-license&quot;</span><span class="p">],</span>
 <span class="w">  </span><span class="nt">&quot;scope_restrictions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;domains&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;AUTHORIZATION&quot;</span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;DRIVING_LICENSE&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="nt">&quot;domains&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;MOBILITY_TRAVEL&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;DRIVING_RIGHTS&quot;</span><span class="p">]</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -1094,7 +1090,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 14/01/2026.
+      Last updated on 16/01/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
