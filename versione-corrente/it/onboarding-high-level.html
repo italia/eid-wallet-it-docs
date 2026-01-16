@@ -189,7 +189,7 @@
 <li><p><strong>Registrazione Tecnica</strong>: Dopo l'approvazione amministrativa, le entità completano la registrazione tecnica attraverso Journey specializzati:</p>
 <blockquote>
 <div><ol class="loweralpha simple">
-<li><p><strong>Fonti Autentiche</strong>: Dichiarano i loro Attributi dell'Utente disponibili dal Registro degli Attributi dell'Utente e specificano domini, scopi e tipo di organizzazione (pubblica o privata) previsti.</p></li>
+<li><p><strong>Fonti Autentiche</strong>: Dichiarano i loro Attributi dell'Utente disponibili dal Registro degli Attributi dell'Utente e specificano gli scopi di verifica previsti e tipo di organizzazione (pubblica o privata) previsti.</p></li>
 <li><p><strong>Credential Issuer</strong>: Selezionano le Fonti Autentiche basate sugli Attributi dell'Utente richiesti, richiedono l'approvazione dell'integrazione (eccetto per i mandati normativi) e registrano i tipi di Credenziali con pubblicazione automatica del catalogo secondo la politica dell'Organismo di Supervisione.</p></li>
 <li><p><strong>Altre Entità di Federazione</strong> (Relying Party, Fornitori di Wallet): Subiscono registrazione basata su federazione per l'istituzione di trust crittografico.</p></li>
 </ol>
@@ -198,7 +198,7 @@
 <li><p><strong>Integrazione del Registro IT-Wallet</strong>:</p>
 <blockquote>
 <div><ol class="loweralpha simple">
-<li><p><strong>Integrazione del Registro degli Attributi dell'Utente e della Tassonomia</strong>: Il Registro degli Attributi dell'Utente fornisce definizioni di dati standardizzate per i singoli Attributi delle Credenziali, mentre la Tassonomia definisce la classificazione gerarchica (domini, scopi) che vengono poi referenziati nel Catalogo degli Attestati Elettronici per implementazioni specifiche di Credenziali. Tutti i partecipanti sfruttano questi registri per dichiarazioni di capacità di fornitura dati e requisiti di emissione/verifica.</p></li>
+<li><p><strong>Integrazione del Registro degli Attributi dell'Utente e della Tassonomia</strong>: Il Registro degli Attributi dell'Utente fornisce definizioni di dati standardizzate per i singoli Attributi delle Credenziali, mentre la Tassonomia definisce la classificazione gerarchica (domini, classi, scopi) che vengono poi referenziati nel Catalogo degli Attestati Elettronici per implementazioni specifiche di Credenziali. Tutti i partecipanti sfruttano questi registri per dichiarazioni di capacità di fornitura dati e requisiti di emissione/verifica.</p></li>
 <li><p><strong>Integrazione del Registro AS</strong>: Fonti Autentiche registrate con i loro Attributi dell'Utente dichiarati e relative specifiche, abilitando la discovery e coordinazione dei CI.</p></li>
 <li><p><strong>Integrazione del Registro di Federazione</strong>: Entità operative incluse per la validazione del trust durante le operazioni delle Credenziali.</p></li>
 <li><p><strong>Integrazione del Catalogo</strong>: Tipi di Credenziali automaticamente pubblicati nel <a class="reference internal" href="registry.html#catalogo-degli-attestati-elettronici"><span class="std std-ref">Catalogo degli Attestati Elettronici</span></a> basato sulle politiche dell'Organismo di Supervisione per l'eleggibilità alla discovery pubblica.</p></li>
@@ -333,7 +333,7 @@ Le entità operative DEVONO completare l'onboarding che include la verifica dell
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Dichiarazione degli Attributi dell'Utente</strong>: Seleziona Attributi dell'Utente standardizzati (<code class="docutils literal notranslate"><span class="pre">given_name</span></code>, <code class="docutils literal notranslate"><span class="pre">family_name</span></code>, <code class="docutils literal notranslate"><span class="pre">driving_privileges</span></code>, ecc.) dal Registro degli Attributi dell'Utente.</p></li>
-<li><p><strong>Classificazione della Tassonomia</strong>: Dominio <code class="docutils literal notranslate"><span class="pre">AUTHORIZATION</span></code>, Scopo <code class="docutils literal notranslate"><span class="pre">DRIVING_LICENSE</span></code>.</p></li>
+<li><p><strong>Classificazione della Tassonomia</strong>: Dominio <code class="docutils literal notranslate"><span class="pre">MOBILITY_TRAVEL</span></code>, Scopo <code class="docutils literal notranslate"><span class="pre">DRIVING_RIGHTS</span></code>.</p></li>
 <li><p><strong>Caso d'Uso</strong>: Servizio pubblico - verifica dell'autorizzazione alla guida (eleggibile per il Catalogo delle Credenziali).</p></li>
 <li><p><strong>Integrazione</strong>: Integrazione e-service PDND seguendo gli standard governativi (vedi <a class="reference internal" href="e-service-pdnd.html#e-service-pdnd"><span class="std std-ref">e-Service PDND</span></a>).</p></li>
 <li><p><strong>Risultato del Catalogo</strong>: mDL diventa pubblicamente scopribile dopo l'integrazione CI.</p></li>
@@ -407,7 +407,7 @@ Le entità operative DEVONO completare l'onboarding che include la verifica dell
 <li><p><strong>Richiesta di Autorizzazione</strong>: Verifica dell'autorizzazione alla guida per l'eleggibilità al noleggio.</p></li>
 <li><p><strong>Requisiti degli Attributi dell'Utente</strong>: <code class="docutils literal notranslate"><span class="pre">given_name</span></code>, <code class="docutils literal notranslate"><span class="pre">family_name</span></code>, <code class="docutils literal notranslate"><span class="pre">driving_privileges</span></code>, ecc., da mDL.</p></li>
 <li><p><strong>Giustificazione del Caso d'Uso</strong>: Obbligo legale di verificare la patente di guida valida prima del noleggio del veicolo.</p></li>
-<li><p><strong>Ambito di Autorizzazione</strong>: Concesso accesso al dominio <code class="docutils literal notranslate"><span class="pre">AUTHORIZATION</span></code>, scopo <code class="docutils literal notranslate"><span class="pre">DRIVING_LICENSE</span></code>.</p></li>
+<li><p><strong>Ambito di Autorizzazione</strong>: Concesso accesso al dominio <code class="docutils literal notranslate"><span class="pre">MOBILITY_TRAVEL</span></code>, scopo <code class="docutils literal notranslate"><span class="pre">DRIVING_RIGHTS</span></code>.</p></li>
 </ul>
 </div></blockquote>
 <p><strong>Esempio - Servizi Municipali (RP Pubblica)</strong>:</p>
@@ -504,7 +504,7 @@ Le entità operative DEVONO completare l'onboarding che include la verifica dell
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 13/01/2026.
+      Ultimo aggiornamento 16/01/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

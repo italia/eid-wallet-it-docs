@@ -188,7 +188,7 @@
 <li><p><strong>Technical Registration</strong>: Following administrative approval, entities complete technical registration through specialized pathways:</p>
 <blockquote>
 <div><ol class="loweralpha simple">
-<li><p><strong>Authentic Sources</strong>: Declare their available claims from the Claims Registry and specify intended domains, purposes and organization type (public or private).</p></li>
+<li><p><strong>Authentic Sources</strong>: Declare their available claims from the Claims Registry and specify intended verification purposes and organization type (public or private).</p></li>
 <li><p><strong>Credential Issuers</strong>: Select Authentic Sources based on required claims, request integration approval (except for regulatory mandates), and register Credential types with automatic catalog publication per Supervisory Body policy.</p></li>
 <li><p><strong>Other Federation Entities</strong> (Relying Parties, Wallet Providers): Undergo federation-based registration for cryptographic trust establishment.</p></li>
 </ol>
@@ -197,7 +197,7 @@
 <li><p><strong>IT-Wallet Registry Integration</strong>:</p>
 <blockquote>
 <div><ol class="loweralpha simple">
-<li><p><strong>Claims Registry and Taxonomy Integration</strong>: Claims Registry provides standardized data definitions for individual Credential attributes, while Taxonomy defines hierarchical classification (domains, purposes) that are then referenced in the Digital Credentials Catalog for specific Credential implementations. All participants leverage these registries for capability declarations and issuance/verification requirements.</p></li>
+<li><p><strong>Claims Registry and Taxonomy Integration</strong>: Claims Registry provides standardized data definitions for individual Credential attributes, while Taxonomy defines hierarchical classification (domains, classes, purposes) that are then referenced in the Digital Credentials Catalog for specific Credential implementations. All participants leverage these registries for capability declarations and issuance/verification requirements.</p></li>
 <li><p><strong>AS Registry Integration</strong>: Authentic Sources registered with their declared claims and capability, enabling CI discovery and coordination.</p></li>
 <li><p><strong>Federation Registry Integration</strong>: Operational entities included for trust validation during Credential operations.</p></li>
 <li><p><strong>Catalog Integration</strong>: Credential types automatically published in <a class="reference internal" href="registry.html#digital-credentials-catalog"><span class="std std-ref">Digital Credentials Catalog</span></a> based on Supervisory Body policies for public discovery eligibility.</p></li>
@@ -332,7 +332,7 @@ Operational entities MUST complete onboarding that includes administrative eligi
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Claims Declaration</strong>: Selects standardized claims (<code class="docutils literal notranslate"><span class="pre">given_name</span></code>, <code class="docutils literal notranslate"><span class="pre">family_name</span></code>, <code class="docutils literal notranslate"><span class="pre">driving_privileges</span></code>, etc. ) from Claims Registry.</p></li>
-<li><p><strong>Taxonomy Classification</strong>: Domain <code class="docutils literal notranslate"><span class="pre">AUTHORIZATION</span></code>, Purpose <code class="docutils literal notranslate"><span class="pre">DRIVING_LICENSE</span></code>.</p></li>
+<li><p><strong>Taxonomy Classification</strong>: Domain <code class="docutils literal notranslate"><span class="pre">MOBILITY_TRAVEL</span></code>, Purpose <code class="docutils literal notranslate"><span class="pre">DRIVING_RIGHTS</span></code>.</p></li>
 <li><p><strong>Use Case</strong>: Public service - driving authorization verification (eligible for Credential Catalog).</p></li>
 <li><p><strong>Integration</strong>: PDND e-service integration following government standards (see <a class="reference internal" href="e-service-pdnd.html#e-service-pdnd"><span class="std std-ref">e-Service PDND</span></a>).</p></li>
 <li><p><strong>Catalog Outcome</strong>: mDL becomes publicly discoverable after CI integration.</p></li>
@@ -406,7 +406,7 @@ Operational entities MUST complete onboarding that includes administrative eligi
 <li><p><strong>Authorization Request</strong>: Driving authorization verification for rental eligibility.</p></li>
 <li><p><strong>Claims Requirements</strong>: <code class="docutils literal notranslate"><span class="pre">given_name</span></code>, <code class="docutils literal notranslate"><span class="pre">family_name</span></code>, <code class="docutils literal notranslate"><span class="pre">driving_privileges</span></code>, etc., from mDL.</p></li>
 <li><p><strong>Use Case Justification</strong>: Legal obligation to verify valid driving license before vehicle rental.</p></li>
-<li><p><strong>Authorization Scope</strong>: Granted access to <code class="docutils literal notranslate"><span class="pre">AUTHORIZATION</span></code> domain, <code class="docutils literal notranslate"><span class="pre">DRIVING_LICENSE</span></code> purpose.</p></li>
+<li><p><strong>Authorization Scope</strong>: Granted access to <code class="docutils literal notranslate"><span class="pre">MOBILITY_TRAVEL</span></code> domain, <code class="docutils literal notranslate"><span class="pre">DRIVING_RIGHTS</span></code> purpose.</p></li>
 </ul>
 </div></blockquote>
 <p><strong>Example - Municipal Services (Public RP)</strong>:</p>
@@ -503,7 +503,7 @@ Operational entities MUST complete onboarding that includes administrative eligi
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 13/01/2026.
+      Last updated on 16/01/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
