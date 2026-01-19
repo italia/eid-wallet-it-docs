@@ -102,7 +102,7 @@ Below are illustrated the requirements for the use of the Logo. All actors inten
 - MAY use the Logo symbol within a shape or a button to reference the connection to IT-Wallet, such as in Engagement Buttons (see :ref:`functionalities:Authentication Button`), in accordance with the Brand Manual. 
 
 For further information on the Logo and its related symbol refer to the Brand Manual, indicated in the :ref:`official-resources:Official Resources` section.  
-The Logo Official Resources will be made available in the related :ref:`official-resources:Official Resources` section of these Technical Specifications. 
+The Logo Official Resources are available in the related :ref:`official-resources:Official Resources` section of these Technical Specifications. 
 
 
 Trust Mark

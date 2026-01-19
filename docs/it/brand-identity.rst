@@ -13,7 +13,7 @@ Per garantire quindi che la presenza della Brand Identity nelle diverse Soluzion
 
 - DEVONO seguire esclusivamente le indicazioni specificate nel Brand Manual, indicato nella sezione :ref:`official-resources:Risorse Ufficiali`; 
 
-- DEVONO utilizzare esclusivamente le Risorse Ufficiali che saranno presto rese disponibili nella relativa sezione :ref:`official-resources:Risorse Ufficiali` di queste Specifiche Tecniche. 
+- DEVONO utilizzare esclusivamente le Risorse Ufficiali che sono disponibili nella relativa sezione :ref:`official-resources:Risorse Ufficiali` di queste Specifiche Tecniche. 
 
 
 
