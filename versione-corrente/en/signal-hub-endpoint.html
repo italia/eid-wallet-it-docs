@@ -171,18 +171,18 @@
   <section id="pdnd-signal-hub-endpoints">
 <h1><span class="section-number">13.5. </span>PDND Signal Hub Endpoints<a class="headerlink" href="#pdnd-signal-hub-endpoints" title="Link to this heading">¶</a></h1>
 <dl class="simple">
-<dt>Within the PDND platform, the Signal Hub serves as an intermediary component between PDND Providers and their PDND Consumers to facilitate real-time data variation notifications. To enable this functionality, the PDND Manager, acting in the role of PDND e-Service Provider, offers the following specialized PDND Signal Hub e-Services:</dt><dd><ul class="simple">
-<li><p>the Signal Collection e-Service which is used by PDND e-Service Providers to deposit Signals, since the PDND e-Service Provider acts as Consumer of the Signal Collection e-Service;</p></li>
-<li><p>the Signal Distribution e-Service which is used by PDND e-Service Consumers to retrieve collected Signals, since the PDND e-Service Consumer also acts as Consumer of the Signal Distribution e-Service.</p></li>
+<dt>Within the PDND platform, the Signal Hub serves as an intermediary component between PDND Providers and their PDND Consumers to facilitate real-time data variation notifications. To enable this functionality, the PDND Manager, acting in the role of e-Service PDNDProvider, offers the following specialized PDND Signal Hub e-Services:</dt><dd><ul class="simple">
+<li><p>the Signal Collection e-Service which is used by e-Service PDNDProviders to deposit Signals, since the e-Service PDNDProvider acts as Consumer of the Signal Collection e-Service;</p></li>
+<li><p>the Signal Distribution e-Service which is used by e-Service PDNDConsumers to retrieve collected Signals, since the e-Service PDNDConsumer also acts as Consumer of the Signal Distribution e-Service.</p></li>
 </ul>
 </dd>
 </dl>
-<p>In order to protect the privacy of the Signal's subject, the PDND Manager requires each PDND e-Service Provider to pseudonymize the subject's identifier used within the Signals and set up a pseudonymization endpoint for their PDND e-Service. This pseudonymization endpoint is used by e-Service Consumers to use the pseudonymization algorithm in order to calculate the Signal subject's pseudonym. Only the PDND e-Service Provider and its PDND e-Service Consumers are able to link a Signal to the subject's personal data, while the PDND Manager only handles pseudonymized identifiers.</p>
+<p>In order to protect the privacy of the Signal's subject, the PDND Manager requires each e-Service PDNDProvider to pseudonymize the subject's identifier used within the Signals and set up a pseudonymization endpoint for their PDND e-Service. This pseudonymization endpoint is used by e-Service Consumers to use the pseudonymization algorithm in order to calculate the Signal subject's pseudonym. Only the e-Service PDNDProvider and its e-Service PDNDConsumers are able to link a Signal to the subject's personal data, while the PDND Manager only handles pseudonymized identifiers.</p>
 <p>For detailed technical specifications and implementation guidelines, please refer to the <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub">Signal Hub Guide</a>.</p>
 <dl class="simple">
 <dt>In the context of the IT Wallet, Authentic Sources interact with the Signal Hub to notify Credential Issuers about changes in the status and/or value of attributes associated with Digital Credentials. Specifically,</dt><dd><ul class="simple">
 <li><p>the Authentic Source will deposit Signals in the Signal Hub, thus playing the role of PDND Consumer of the Signal Collection e-Service;</p></li>
-<li><p>the Credential Issuer will retrieve Signals from the Signal Hub, and will thus play the role of PDND e-Service Consumer of the Signal Distribution e-Service.</p></li>
+<li><p>the Credential Issuer will retrieve Signals from the Signal Hub, and will thus play the role of e-Service PDNDConsumer of the Signal Distribution e-Service.</p></li>
 </ul>
 </dd>
 </dl>
@@ -341,7 +341,7 @@
 <div><ul class="simple">
 <li><p>Signals are queried and retrieved per PDND e-Service, meaning that the Credential Issuer MUST implement a poll cycle for each e-Service ID;</p></li>
 <li><p>the retention period of Signals in the Signal Hub is specified in <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub">Signal Hub Guide</a>. Signals older than the specified retention period are not available for retrieval;</p></li>
-<li><p>the Signal Hub does not keep track of the last <code class="docutils literal notranslate"><span class="pre">signalId</span></code> notified to a specific Credential Issuer. Each Credential Issuer MUST keep track of the last <code class="docutils literal notranslate"><span class="pre">signalId</span></code> it has received for each PDND e-Service ID;</p></li>
+<li><p>the Signal Hub does not keep track of the last <code class="docutils literal notranslate"><span class="pre">signalId</span></code> notified to a specific Credential Issuer. Each Credential Issuer MUST keep track of the last <code class="docutils literal notranslate"><span class="pre">signalId</span></code> it has received for each e-Service PDNDID;</p></li>
 <li><p>the Signal Distribution e-Service endpoint returns Signals in batches. The maximal size the batch is specified in <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub">Signal Hub Guide</a>. The Signal Distribution e-Service will indicate if additional Signals are available for retrieval.</p></li>
 </ul>
 </div></blockquote>
