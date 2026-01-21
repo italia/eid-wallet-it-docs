@@ -8,7 +8,7 @@ Any additional technical resources, repositories, and documentation will be made
 Official Website
 ^^^^^^^^^^^^^^^^
 
-The official website of the IT-Wallet System is available at the following address. If it is not immediately accessible, it will be made available as soon as possible:
+The official website of the IT-Wallet System is the following address:
 
 - **IT-Wallet Official Website**: `https://www.wallet.gov.it <https://www.wallet.gov.it>`_
 

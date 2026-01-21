@@ -20,7 +20,7 @@ Public Authentic Sources MUST provide the following e-Service through PDND to pr
 .. only:: latex
 
   .. note::
-    A complete OpenAPI Specification is available :ref:`appendix-oas-pdnd-as:Authentic Source PDND OpenAPI Specification`.
+    A complete OpenAPI Specification is available :ref:`e-service-pdnd-template:Authentic Source PDND OpenAPI Specification`.
 
 Get Attribute Claims
 """"""""""""""""""""

@@ -76,20 +76,20 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/A4-Flusso-Attivazione-01.pdf
+  .. figure:: ./images/pdf/A4-Attivazione-01.pdf
     :alt: Esempio di Esperienza Utente nell'Attivazione di un'Istanza del Wallet 01
     :width: 100%
 
-    Esempio di Esperienza Utente nell'Attivazione di un'Istanza del Wallet 01
+    Esempio di Esperienza Utente nell'Attivazione di un'Istanza del Wallet - 01
 
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/A4-Flusso-Attivazione-02.pdf
+  .. figure:: ./images/pdf/A4-Attivazione-02.pdf
     :alt: Esempio di Esperienza Utente nell'Attivazione di un'Istanza del Wallet 02
     :width: 100%
 
-    Esempio di Esperienza Utente nell'Attivazione di un'Istanza del Wallet 02.
+    Esempio di Esperienza Utente nell'Attivazione di un'Istanza del Wallet - 02
 
 
 
@@ -206,27 +206,27 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/A4-Flusso-Ottenimento-01.pdf
+  .. figure:: ./images/pdf/A4-Ottenimento-da-catalogo-01.pdf
     :alt: Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico di Attributi da Catalogo - 01
     :width: 100%
 
-    Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico di Attributi da Catalogo - 01.
+    Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico di Attributi da Catalogo - 01
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/A4-Flusso-Ottenimento-02.pdf
+  .. figure:: ./images/pdf/A4-Ottenimento-da-catalogo-02.pdf
     :alt: Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico di Attributi da Catalogo - 02
     :width: 100%
 
-    Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico di Attributi da Catalogo - 02.
+    Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico di Attributi da Catalogo - 02
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/A4-Flusso-Ottenimento-03.pdf
-    :alt: Esempio di Esperienza Utente nell'Ottenimento differito di un Attestato Elettronico di Attributi da Catalogo 
+  .. figure:: ./images/pdf/A4-Ottenimento-da-catalogo-03.pdf
+    :alt: Esempio di Esperienza Utente nell'Ottenimento differito di un Attestato Elettronico di Attributi da Catalogo - 03
     :width: 100%
 
-    Esempio di Esperienza Utente nell'Ottenimento differito di un Attestato Elettronico di Attributi da Catalogo. 
+    Esempio di Esperienza Utente nell'Ottenimento differito di un Attestato Elettronico di Attributi da Catalogo - 03
 
 
 Ottenimento dal Touchpoint della Fonte Autentica
@@ -264,12 +264,51 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
 .. only:: format_latex 
 
-  .. figure:: ./images/pdf/Ottenimento-da-fonte-autentica.pdf
-    :alt: Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico da Touchpoint della Fonte Autentica
+  .. figure:: ./images/pdf/A4-Ottenimento-Fonte-Autentica-same-device-01.pdf
+    :alt: Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico da Touchpoint della Fonte Autentica, same device - 01
      :width: 100%
 
-    Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico da Touchpoint della Fonte Autentica
+    Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico da Touchpoint della Fonte Autentica, same device - 01
 
+.. only:: format_latex 
+
+  .. figure:: ./images/pdf/A4-Ottenimento-Fonte-Autentica-same-device-02.pdf
+    :alt: Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico da Touchpoint della Fonte Autentica, same device - 02
+     :width: 100%
+
+    Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico da Touchpoint della Fonte Autentica, same device - 02
+
+.. only:: format_latex 
+
+  .. figure:: ./images/pdf/A4-Ottenimento-Fonte-Autentica-cross-device-01.pdf
+    :alt: Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico da Touchpoint della Fonte Autentica, cross device - 01
+     :width: 100%
+
+    Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico da Touchpoint della Fonte Autentica, cross device - 01
+
+.. only:: format_latex 
+
+  .. figure:: ./images/pdf/A4-Ottenimento-Fonte-Autentica-cross-device-02.pdf
+    :alt: Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico da Touchpoint della Fonte Autentica, cross device - 02
+     :width: 100%
+
+    Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico da Touchpoint della Fonte Autentica, cross device - 02
+
+.. only:: format_latex 
+
+  .. figure:: ./images/pdf/A4-Ottenimento-Fonte-Autentica-cross-device-03.pdf
+    :alt: Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico da Touchpoint della Fonte Autentica, cross device - 03
+     :width: 100%
+
+    Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico da Touchpoint della Fonte Autentica, cross device - 03
+
+.. only:: format_latex 
+
+  .. figure:: ./images/pdf/A4-Ottenimento-Fonte-Autentica-cross-device-04.pdf
+    :alt: Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico da Touchpoint della Fonte Autentica, cross device - 04
+     :width: 100%
+
+    Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico da Touchpoint della Fonte Autentica, cross device - 04
 
 Focus sugli Attestati Elettronici di Attributi
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -349,7 +388,7 @@ Di seguito un esempio di layout di Attestato Elettronico di Attributi, all'inter
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/A4-Focus-EAA.pdf
+  .. figure:: ./images/pdf/A4-focus-EAA.pdf
     :alt: Esempio di layout di Attestato Elettronico di Attributi, Vista in Anteprima e Vista di Dettaglio  
     :width: 100%
 
@@ -411,7 +450,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/Presentazione-prossimita.pdf
+  .. figure:: ./images/pdf/A4-Presentazione-prossimita.pdf
     :alt: Esempio di Esperienza Utente nella presentazione in prossimità
     :width: 100%
 
@@ -454,11 +493,19 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/Presentazione-remoto-same-device.pdf
-    :alt: Esempio di Esperienza Utente nella presentazione da remoto, same-device
+  .. figure:: ./images/pdf/A4-Presentazione-remoto-same-device-01.pdf
+    :alt: Esempio di Esperienza Utente nella presentazione da remoto, same-device - 01
     :width: 100%
 
-    Esempio di Esperienza Utente nella presentazione da remoto, same-device
+    Esempio di Esperienza Utente nella presentazione da remoto, same-device - 01
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Presentazione-remoto-same-device-02.pdf
+    :alt: Esempio di Esperienza Utente nella presentazione da remoto, same-device - 02
+    :width: 100%
+
+    Esempio di Esperienza Utente nella presentazione da remoto, same-device - 02
 
 
 **Cross-device** 
@@ -485,12 +532,35 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/Presentazione-remoto-cross-device.pdf
-    :alt: Esempio di Esperienza Utente nella presentazione da remoto, cross-device
+  .. figure:: ./images/pdf/A4-Presentazione-remoto-cross-device-01.pdf
+    :alt: Esempio di Esperienza Utente nella presentazione da remoto, cross-device - 01
     :width: 100%
 
-    Esempio di Esperienza Utente nella presentazione da remoto, cross-device
+    Esempio di Esperienza Utente nella presentazione da remoto, cross-device - 01
 
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Presentazione-remoto-cross-device-02.pdf
+    :alt: Esempio di Esperienza Utente nella presentazione da remoto, cross-device - 02
+    :width: 100%
+
+    Esempio di Esperienza Utente nella presentazione da remoto, cross-device - 02
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Presentazione-remoto-cross-device-03.pdf
+    :alt: Esempio di Esperienza Utente nella presentazione da remoto, cross-device - 03
+    :width: 100%
+
+    Esempio di Esperienza Utente nella presentazione da remoto, cross-device - 03
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Presentazione-remoto-cross-device-04.pdf
+    :alt: Esempio di Esperienza Utente nella presentazione da remoto, cross-device - 04
+    :width: 100%
+
+    Esempio di Esperienza Utente nella presentazione da remoto, cross-device - 04
 
 Autenticazione
 """""""""""""""
@@ -735,12 +805,19 @@ Entrambi i flussi sono rappresentati di seguito con wireframe esemplificativi.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/Autenticazione-same-device.pdf
-    :alt: Esempio di Esperienza Utente di Autenticazione same-device 
+  .. figure:: ./images/pdf/A4-Autenticazione-same-device-01.pdf
+    :alt: Esempio di Esperienza Utente di Autenticazione same-device - 01
     :width: 100%
 
-    Esempio di Esperienza Utente di Autenticazione same-device
+    Esempio di Esperienza Utente di Autenticazione same-device - 01
 
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Autenticazione-same-device-02.pdf
+    :alt: Esempio di Esperienza Utente di Autenticazione same-device - 02
+    :width: 100%
+
+    Esempio di Esperienza Utente di Autenticazione same-device - 02
 
 .. only:: format_html
 
@@ -752,11 +829,35 @@ Entrambi i flussi sono rappresentati di seguito con wireframe esemplificativi.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/Autenticazione-cross-device.pdf
-    :alt: Esempio di Esperienza Utente di Autenticazione cross-device
+  .. figure:: ./images/pdf/A4-Autenticazione-cross-device-01.pdf
+    :alt: Esempio di Esperienza Utente di Autenticazione cross-device - 01
     :width: 100%
 
-    Esempio di Esperienza Utente di Autenticazione cross-device
+    Esempio di Esperienza Utente di Autenticazione cross-device - 01
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Autenticazione-cross-device-02.pdf
+    :alt: Esempio di Esperienza Utente di Autenticazione cross-device - 02
+    :width: 100%
+
+    Esempio di Esperienza Utente di Autenticazione cross-device - 02
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Autenticazione-cross-device-03.pdf
+    :alt: Esempio di Esperienza Utente di Autenticazione cross-device - 03
+    :width: 100%
+
+    Esempio di Esperienza Utente di Autenticazione cross-device - 03
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Autenticazione-cross-device-04.pdf
+    :alt: Esempio di Esperienza Utente di Autenticazione cross-device - 04
+    :width: 100%
+
+    Esempio di Esperienza Utente di Autenticazione cross-device - 04
 
 
 Authentication Button
@@ -888,7 +989,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/Aggiornamento-EAA.pdf
+  .. figure:: ./images/pdf/A4-Aggiornamento-EAA.pdf
     :alt: Esempio di Esperienza Utente nell'Aggiornamento di un Attestato Elettronico  
     :width: 100%
 
@@ -931,11 +1032,11 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/Revoca-EAA-da-wallet.pdf
-    :alt: Esempio di Esperienza Utente nella Revoca di un Attestato Elettronico 
+  .. figure:: ./images/pdf/A4-Revoca-EAA-da-wallet.pdf
+    :alt: Esempio di Esperienza Utente nella Revoca di un Attestato Elettronico da Wallet
     :width: 100%
 
-    Esempio di Esperienza Utente nella Revoca di un Attestato Elettronico
+    Esempio di Esperienza Utente nella Revoca di un Attestato Elettronico da Wallet
 
 
 Storico degli Attestati Elettronici 
@@ -1002,7 +1103,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/Disattivazione-wallet.pdf
+  .. figure:: ./images/pdf/A4-Disattivazione-wallet.pdf
     :alt: Esempio di Esperienza Utente nella Disattivazione di un'Istanza del Wallet  
     :width: 100%
 

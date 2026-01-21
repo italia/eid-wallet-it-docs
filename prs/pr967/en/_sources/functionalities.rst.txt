@@ -74,11 +74,20 @@ The flow is shown below with illustrative wireframes.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/IT-Wallet-Activation.pdf
+  .. figure:: ./images/pdf/A4-Wallet-Activation-01.pdf
     :alt: Example of User Experience in Activating a Wallet Instance
     :width: 100%
 
-    Example of User Experience in Activating a Wallet Instance
+    Example of User Experience in Activating a Wallet Instance - 01
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Wallet-Activation-02.pdf
+    :alt: Example of User Experience in Activating a Wallet Instance
+    :width: 100%
+
+    Example of User Experience in Activating a Wallet Instance - 02
+
 
 Focus on PID – Person Identification Data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -186,18 +195,37 @@ The flow is shown below with illustrative wireframes.
 .. only:: format_html
 
   .. figure:: ./images/svg/Issuance-from-catalog.svg
-    :alt: Example of User Experience in the issuance an Authentic Electronic Attestation from Catalog
+    :alt: Example of User Experience in the issuance an Electronic Attestation of Attributes from Catalog
     :width: 100%
 
-    Example of User Experience in the issuance an Authentic Electronic Attestation from Catalog 
+    Example of User Experience in the issuance an Electronic Attestation of Attributes from Catalog 
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/Issuance-from-catalog.pdf
-    :alt: Example of User Experience in the issuance an Authentic Electronic Attestation from Catalog
+  .. figure:: ./images/pdf/A4-Issuance-from-catalog-01.pdf
+    :alt: Example of User Experience in the issuance an Electronic Attestation of Attributes from Catalog
     :width: 100%
     :align: center
- 
+
+    Example of User Experience in the issuance an Electronic Attestation of Attributes from Catalog - 01
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Issuance-from-catalog-02.pdf
+    :alt: Example of User Experience in the issuance an Electronic Attestation of Attributes from Catalog
+    :width: 100%
+    :align: center
+
+    Example of User Experience in the issuance an Electronic Attestation of Attributes from Catalog - 02
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Issuance-from-catalog-03.pdf
+    :alt: Example of User Experience in the issuance an Electronic Attestation of Attributes from Catalog
+    :width: 100%
+    :align: center
+
+    Example of User Experience in the issuance an Electronic Attestation of Attributes from Catalog - 03
 
 Issuance from a Touchpoint of the Authentic Source 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -222,18 +250,66 @@ The flow is shown below with illustrative wireframes.
 .. only:: format_html
 
   .. figure:: ./images/svg/Issuance-from-Authentic-Source.svg
-    :alt: Example of User Experience in the issuance an Authentic Electronic Attestation from Authentic Source
+    :alt: Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source
     :width: 100%
 
-    Example of the User Experience during the issuance an Authentic Electronic Attestation from Authentic Source.
+    Example of the User Experience during the issuance of an Electronic Attestation of Attributes from the Authentic Source.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/Issuance-from-Authentic-Source.pdf
-    :alt: Example of User Experience in the issuance an Authentic Electronic Attestation from Authentic Source.
+  .. figure:: ./images/pdf/A4-Issuance-from-Authentic-Source-same-device-01.pdf
+    :alt: Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source, same device - 01.
     :width: 100%
     :align: center
 
+    Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source, same device - 01
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Issuance-from-Authentic-Source-same-device-02.pdf
+    :alt: Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source, same device - 02.
+    :width: 100%
+    :align: center
+
+    Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source, same device - 02
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Issuance-from-Authentic-Source-cross-device-01.pdf
+    :alt: Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source, cross device - 01.
+    :width: 100%
+    :align: center
+
+    Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source, cross device - 01
+
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Issuance-from-Authentic-Source-cross-device-02.pdf
+    :alt: Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source, cross device - 02.
+    :width: 100%
+    :align: center
+
+    Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source, cross device - 02
+
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Issuance-from-Authentic-Source-cross-device-03.pdf
+    :alt: Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source, cross device - 03.
+    :width: 100%
+    :align: center
+
+    Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source, cross device - 03
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Issuance-from-Authentic-Source-cross-device-04.pdf
+    :alt: Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source, cross device - 04.
+    :width: 100%
+    :align: center
+
+    Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source, cross device - 04
 
 Focus on Electronic Attestations of Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -310,7 +386,7 @@ Below an example of Electronic Attestation of Attribute layout, in a Preview Vie
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/Focus-EAA.pdf
+  .. figure:: ./images/pdf/A4-focus-EAA.pdf
     :alt: Example of Electronic Attestation of Attribute layout, Preview View, and Detail View   
     :width: 100%
 
@@ -371,10 +447,12 @@ The flow is shown below with illustrative wireframes.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/proximity-presentation.pdf
+  .. figure:: ./images/pdf/A4-Proximity-presentation.pdf
     :alt: Example of User Experience in proximity presentation
     :width: 100%
     :align: center
+
+    Example of User Experience in proximity presentation.
 
 Remote Presentation
 ^^^^^^^^^^^^^^^^^^^^
@@ -412,10 +490,21 @@ The flow is shown below with illustrative wireframes.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/Remote-presentation-same-device.pdf
-    :alt: Example of User Experience in remote, same-device presentation.
+  .. figure:: ./images/pdf/A4-Remote-presentation-same-device-01.pdf
+    :alt: Example of User Experience in remote, same-device presentation - 01
     :width: 100%
     :align: center
+
+    Example of User Experience in remote, same-device presentation  - 01
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Remote-presentation-same-device-02.pdf
+    :alt: Example of User Experience in remote, same-device presentation - 02
+    :width: 100%
+    :align: center
+
+    Example of User Experience in remote, same-device presentation  - 02
 
 **Cross-Device Mode**
 
@@ -442,11 +531,39 @@ The flow is shown below with illustrative wireframes.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/Remote-presentation-cross-device.pdf
-    :alt: Example of User Experience in remote, cross-device presentation.
+  .. figure:: ./images/pdf/A4-Remote-presentation-cross-device-01.pdf
+    :alt: Example of User Experience in remote, cross-device presentation - 01
     :width: 100%
     :align: center
 
+    Example of User Experience in remote, cross-device presentation - 01
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Remote-presentation-cross-device-02.pdf
+    :alt: Example of User Experience in remote, cross-device presentation - 02
+    :width: 100%
+    :align: center
+
+    Example of User Experience in remote, cross-device presentation - 02
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Remote-presentation-cross-device-03.pdf
+    :alt: Example of User Experience in remote, cross-device presentation - 03
+    :width: 100%
+    :align: center
+
+    Example of User Experience in remote, cross-device presentation - 03
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Remote-presentation-cross-device-04.pdf
+    :alt: Example of User Experience in remote, cross-device presentation - 04
+    :width: 100%
+    :align: center
+
+    Example of User Experience in remote, cross-device presentation - 04
 
 Authentication
 """""""""""""""
@@ -690,11 +807,21 @@ Both flows are shown below with illustrative wireframes.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/Authentication-same-device.pdf
-    :alt: Example of same-device Authentication User Experience.
+  .. figure:: ./images/pdf/A4-Authentication-same-device-01.pdf
+    :alt: Example of same-device Authentication User Experience - 01
     :width: 100%
     :align: center
 
+    Example of same-device Authentication User Experience - 01
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Authentication-same-device-02.pdf
+    :alt: Example of same-device Authentication User Experience - 02
+    :width: 100%
+    :align: center
+
+    Example of same-device Authentication User Experience - 02
 
 .. only:: format_html
 
@@ -706,11 +833,39 @@ Both flows are shown below with illustrative wireframes.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/Authentication-cross-device.pdf
-    :alt: Example of cross-device Authentication User Experience.
+  .. figure:: ./images/pdf/A4-Authentication-cross-device-01.pdf
+    :alt: Example of cross-device Authentication User Experience - 01
     :width: 100%
     :align: center
 
+    Example of cross-device Authentication User Experience - 01
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Authentication-cross-device-02.pdf
+    :alt: Example of cross-device Authentication User Experience - 02
+    :width: 100%
+    :align: center
+
+    Example of cross-device Authentication User Experience - 02
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Authentication-cross-device-03.pdf
+    :alt: Example of cross-device Authentication User Experience - 03
+    :width: 100%
+    :align: center
+
+    Example of cross-device Authentication User Experience - 03
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Authentication-cross-device-04.pdf
+    :alt: Example of cross-device Authentication User Experience - 04
+    :width: 100%
+    :align: center
+
+    Example of cross-device Authentication User Experience - 04
 
 Authentication Button
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -738,24 +893,24 @@ The Authentication Button has the following requirements:
 - Where space allows and/or the context requires it, the Authentication Button SHOULD be accompanied by a descriptive text, e.g., "IT-Wallet is the Italian Digital Wallet System that gives you full control over your information, without the issuing entity being aware of when and how it is used” or "Login through an IT-Wallet app, the Italian Digital Wallet System that simplifies interactions between citizens, public administrations and private entities, in the physical and digital world. With IT-Wallet you have full control over your information, sharing it only when necessary and securely, without the issuing entity knowing when and how it is used.". 
 
 
-Below are some non-mandatory examples of Authentication Button layouts: 
+Below are some non-mandatory examples of Authentication Button layout: 
 
  
 .. only:: format_html 
 
   .. figure:: ./images/svg/authentication-button-layout.svg
-     :alt: Variants of Authentication Button 
+     :alt: Variants of Authentication Button layout
      :width: 100% 
 
-     Variants of Authentication Button 
+     Variants of Authentication Button layout
 
 .. only:: format_latex  
 
   .. figure:: ./images/pdf/authentication-button-layout.pdf 
-     :alt: Variants of Authentication Button 
+     :alt: Variants of Authentication Button layout
      :width: 100% 
 
-     Variants of Authentication Button 
+     Variants of Authentication Button layout
 
 The integration of the Authentication Button within the Discovery Page may vary depending on the page layout. Below are illustrative, non-exhaustive examples of Discovery Pages using grid, tab, and list layouts, respectively.
 
@@ -844,10 +999,12 @@ The flow is shown below with illustrative wireframes.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/Update-EAA.pdf
+  .. figure:: ./images/pdf/A4-Update-EAA.pdf
     :alt: Example of User Experience in Updating an Electronic Attestation
     :width: 100%
     :align: center
+
+    Example of User Experience in Updating an Electronic Attestation
 
 
 Revocation of Electronic Attestations
@@ -887,10 +1044,12 @@ The flow is shown below with illustrative wireframes.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/Revocation-EAA-from-wallet.pdf
+  .. figure:: ./images/pdf/A4-Revocation-EAA-from-wallet.pdf
     :alt: Example of User Experience in Revoking an Electronic Attestation.
     :width: 100%
     :align: center
+
+    Example of User Experience in Revoking an Electronic Attestation.
 
 History of Electronic Attestations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -958,10 +1117,12 @@ The flow is shown below with illustrative wireframes.
 
 .. only:: format_latex
 
-  .. figure:: ./images/pdf/wallet-deactivation.pdf
+  .. figure:: ./images/pdf/A4-wallet-deactivation.pdf
     :alt: Example of User Experience in Deactivating a Wallet Instance
     :width: 100%
     :align: center
+
+    Example of User Experience in Deactivating a Wallet Instance
 
 Error Management
 -----------------
