@@ -8,7 +8,7 @@ Any additional technical resources, repositories, and documentation will be made
 Official Website
 ^^^^^^^^^^^^^^^^
 
-The official website of the IT-Wallet System is available at the following address. If it is not immediately accessible, it will be made available as soon as possible:
+The official website of the IT-Wallet System is the following address:
 
 - **IT-Wallet Official Website**: `https://www.wallet.gov.it <https://www.wallet.gov.it>`_
 
@@ -19,7 +19,7 @@ The following official graphic assets are available for download in the `docs/en
 
 - **IT-Wallet Logo**: Official logo of the IT-Wallet System (SVG format) - `Download the logo <https://raw.githubusercontent.com/italia/eidas-it-wallet-docs/versione-corrente/docs/en/images/svg/logoIT-Wallet.svg>`_
 - **IT-Wallet Symbol**: Official symbol of the IT-Wallet System - `Download the symbol <https://raw.githubusercontent.com/italia/eidas-it-wallet-docs/versione-corrente/docs/en/images/svg/symbol-IT-Wallet.svg>`_
-- **IT-Wallet ID**: Official graphic element for identifying the IT-Wallet System - `Download IT-Wallet ID <https://raw.githubusercontent.com/italia/eidas-it-wallet-docs/versione-corrente/docs/en/images/svg/IT-Wallet-ID.svg>`_
+- **IT-Wallet ID**: Official graphic element that ensures the unique identification and representation of the PID across all Wallet Solutions - `Download IT-Wallet ID <https://raw.githubusercontent.com/italia/eidas-it-wallet-docs/versione-corrente/docs/en/images/svg/IT-Wallet-ID.svg>`_
 - **Trust Mark**: Official graphic element for attesting the participation in the IT-Wallet System - Read more at section :ref:`brand-identity:Trust Mark`
 - **Authentication Button**: Official button for authentication via IT-Wallet - `Download Authentication Button <https://raw.githubusercontent.com/italia/eidas-it-wallet-docs/versione-corrente/docs/en/images/svg/Authentication-button.svg>`_
 
