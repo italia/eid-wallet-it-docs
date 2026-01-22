@@ -1,0 +1,48 @@
+name: Lint HTML and CSS
+
+on:
+  push:
+    branches:
+      - '**'
+    paths:
+      - 'official_resources/**/*.html'
+      - 'official_resources/**/*.css'
+      - '.github/workflows/lint-html-css.yml'
+  pull_request:
+    branches:
+      - '**'
+    paths:
+      - 'official_resources/**/*.html'
+      - 'official_resources/**/*.css'
+      - '.github/workflows/lint-html-css.yml'
+  workflow_dispatch:
+
+jobs:
+  lint:
+    name: Lint HTML and CSS
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Lint HTML files
+        run: |
+          echo "Linting HTML files..."
+          find official_resources -name "*.html" -type f | while read file; do
+            echo "Checking $file"
+            npx --yes htmlhint "$file" --config .htmlhintrc.json || exit 1
+          done
+
+      - name: Lint CSS files
+        run: |
+          echo "Linting CSS files..."
+          find official_resources -name "*.css" -type f | while read file; do
+            echo "Checking $file"
+            npx --yes stylelint "$file" --config .stylelintrc.json || exit 1
+          done
