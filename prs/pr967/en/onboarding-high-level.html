@@ -348,7 +348,7 @@ Operational entities MUST complete onboarding that includes administrative eligi
 <li><p><strong>Catalog Outcome</strong>: Badge remains private, available only via Credential Offer.</p></li>
 </ul>
 </div></blockquote>
-<p>Critical phases include administrative verification by the Supervisory Body (which involves regulatory compliance checks outside the technical scope) and technical validation. The process concludes with registration in the AS Registry, making the declared claims discoverable by Credential Issuers for integration requests.</p>
+<p>Critical phases include administrative verification by the Supervisory Body (which involves regulatory compliance checks outside the technical scope) and technical validation. The process concludes with registration in the AS Registry, making the declared claims discoverable by Credential Issuers for integration requests. The integration requests can be also send by the Authentic Sources to a specific Credential Issuers.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p><strong>Important dependency</strong>: Declared claims in AS Registry remain unavailable to end users until a Credential Issuer completes registration, integration approval, and technical implementation. Catalog publication depends on Supervisory Body policies for public discovery eligibility.</p>
@@ -356,11 +356,11 @@ Operational entities MUST complete onboarding that includes administrative eligi
 </section>
 <section id="credential-issuer-operator-journey">
 <h3><span class="section-number">4.5.3. </span>Credential Issuer Operator Journey<a class="headerlink" href="#credential-issuer-operator-journey" title="Link to this heading">¶</a></h3>
-<p>Credential Issuer operators start by discovering available Authentic Source entities through the AS Registry and evaluating integration feasibility based on required claims. The registration request specifies which Credential types they intend to issue, select appropriate Authentic Source entities, and demonstrate technical capability to access the required data sources.</p>
+<p>Credential Issuer operators start by discovering available Authentic Source entities through the AS Registry and evaluating integration feasibility based on required claims. The registration request specifies which Credential types they intend to issue, select appropriate Authentic Source entities, and demonstrate technical capability to access the required data sources. Alternatively, the Credential Issuer operators receive directly the integration request by the Authentic Source.</p>
 <p><strong>Example - mDL (Public Scenario)</strong>:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>AS Discovery</strong>: Identifies the Authentic Source providing mDL attributes in AS Registry with required driving license claims.</p></li>
+<li><p><strong>AS Discovery</strong> or <strong>AS Integration Request</strong>: Identifies the Authentic Source providing mDL attributes in AS Registry with required driving license claims. Alternatively, Credential Issuer receives the integration request directly by mDL Authentic Source.</p></li>
 <li><p><strong>Integration Request</strong>: Automatic approval due to regulatory mandate.</p></li>
 <li><p><strong>Technical Setup</strong>: e-Service PDNDintegration following government standards (see <a class="reference internal" href="e-service-pdnd.html#e-service-pdnd"><span class="std std-ref">e-Service PDND</span></a>).</p></li>
 <li><p><strong>Catalog Publication</strong>: mDL automatically published in the Credential Catalog.</p></li>
@@ -370,8 +370,8 @@ Operational entities MUST complete onboarding that includes administrative eligi
 <p><strong>Example - CI for Employee Badge (Private Scenario)</strong>:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>AS Discovery</strong>: Identifies the Authentic Source in AS Registry with employee access claims.</p></li>
-<li><p><strong>Integration Request</strong>: Requires AS approval.</p></li>
+<li><p><strong>AS Discovery</strong> or <strong>AS Integration Request</strong>: Identifies the Authentic Source in AS Registry with employee access claims. Alternatively, Credential Issuer receives the integration request by the Authentic Source.</p></li>
+<li><p><strong>Integration Request</strong>: Requires recipient approval.</p></li>
 <li><p><strong>Technical Setup</strong>: Custom API integration with authentication.</p></li>
 <li><p><strong>Catalog Publication</strong>: Badge excluded from public catalog per supervisory policy.</p></li>
 <li><p><strong>User Access</strong>: Employees receive badges only via direct Credential Offer from company systems.</p></li>
@@ -503,7 +503,7 @@ Operational entities MUST complete onboarding that includes administrative eligi
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 21/01/2026.
+      Last updated on 22/01/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

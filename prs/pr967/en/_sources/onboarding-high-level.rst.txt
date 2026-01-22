@@ -198,8 +198,8 @@ From the Authentic Source operator perspective, the onboarding process begins wi
     - **Integration**: Custom API for Credential Issuer integration.
     - **Catalog Outcome**: Badge remains private, available only via Credential Offer.
 
-Critical phases include administrative verification by the Supervisory Body (which involves regulatory compliance checks outside the technical scope) and technical validation. The process concludes with registration in the AS Registry, making the declared claims discoverable by Credential Issuers for integration requests.
-
+Critical phases include administrative verification by the Supervisory Body (which involves regulatory compliance checks outside the technical scope) and technical validation. The process concludes with registration in the AS Registry, making the declared claims discoverable by Credential Issuers for integration requests. The integration requests can be also send by the Authentic Sources to a specific Credential Issuers.
+ 
 .. warning::
 
     **Important dependency**: Declared claims in AS Registry remain unavailable to end users until a Credential Issuer completes registration, integration approval, and technical implementation. Catalog publication depends on Supervisory Body policies for public discovery eligibility.
@@ -207,11 +207,11 @@ Critical phases include administrative verification by the Supervisory Body (whi
 Credential Issuer Operator Journey  
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Credential Issuer operators start by discovering available Authentic Source entities through the AS Registry and evaluating integration feasibility based on required claims. The registration request specifies which Credential types they intend to issue, select appropriate Authentic Source entities, and demonstrate technical capability to access the required data sources.
+Credential Issuer operators start by discovering available Authentic Source entities through the AS Registry and evaluating integration feasibility based on required claims. The registration request specifies which Credential types they intend to issue, select appropriate Authentic Source entities, and demonstrate technical capability to access the required data sources. Alternatively, the Credential Issuer operators receive directly the integration request by the Authentic Source.
 
 **Example - mDL (Public Scenario)**:
 
-    - **AS Discovery**: Identifies the Authentic Source providing mDL attributes in AS Registry with required driving license claims.
+    - **AS Discovery** or **AS Integration Request**: Identifies the Authentic Source providing mDL attributes in AS Registry with required driving license claims. Alternatively, Credential Issuer receives the integration request directly by mDL Authentic Source.
     - **Integration Request**: Automatic approval due to regulatory mandate. 
     - **Technical Setup**: e-Service PDNDintegration following government standards (see :ref:`e-service-pdnd:e-Service PDND`).
     - **Catalog Publication**: mDL automatically published in the Credential Catalog.
@@ -219,8 +219,8 @@ Credential Issuer operators start by discovering available Authentic Source enti
 
 **Example - CI for Employee Badge (Private Scenario)**:
 
-    - **AS Discovery**: Identifies the Authentic Source in AS Registry with employee access claims.
-    - **Integration Request**: Requires AS approval.
+    - **AS Discovery** or **AS Integration Request**: Identifies the Authentic Source in AS Registry with employee access claims. Alternatively, Credential Issuer receives the integration request by the Authentic Source.
+    - **Integration Request**: Requires recipient approval.
     - **Technical Setup**: Custom API integration with authentication.
     - **Catalog Publication**: Badge excluded from public catalog per supervisory policy.
     - **User Access**: Employees receive badges only via direct Credential Offer from company systems.

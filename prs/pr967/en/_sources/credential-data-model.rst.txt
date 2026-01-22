@@ -64,7 +64,7 @@ The Disclosures are provided to the Holder together with the SD-JWT in the *Comb
 
 .. code-block:: text
 
-  <Issuer-Signed-JWT>~<Disclosure 1>~<Disclosure 2>~...~<Disclosure N>
+  <Issuer-Signed-JWT>~<Disclosure 1>~<Disclosure 2>~...~<Disclosure N>~
 
 See `SD-JWT-VC`_ and `SD-JWT`_ for additional details.
 

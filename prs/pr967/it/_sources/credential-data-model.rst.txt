@@ -65,7 +65,7 @@ Le Disclosure vengono fornite al Titolare insieme all'SD-JWT nel *Combined Forma
 
 .. code-block:: text
 
-  <Issuer-Signed-JWT>~<Disclosure 1>~<Disclosure 2>~...~<Disclosure N>
+  <Issuer-Signed-JWT>~<Disclosure 1>~<Disclosure 2>~...~<Disclosure N>~
 
 Vedere `SD-JWT-VC`_ e `SD-JWT`_ per ulteriori dettagli.
 
