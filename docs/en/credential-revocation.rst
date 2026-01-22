@@ -283,7 +283,7 @@ Once the data changes, the Authentic Source notifies the Credential Issuers who 
 
 The Credential Issuer periodically queries the Signal Hub :ref:`signal-hub-endpoint:Signal Distribution e-Service` for new Signals. When a new Signal is found, the Credential Issuer retrieves it and processes it as described in :ref:`signal-hub-endpoint:Signals Processing`. Then, the Credential Issuer updates the Credential Status according to the validity mechanism's defined mode. The Credential Issuer MAY notify the User through a registered out-of-band communication channel.
 
-The Wallet instance, following periodic checks of the validity status of the stored Digital Credentials, receives the updated status. When the Credential Status is changed to INVALID, the Credential Issuer MUST inform the User about this change. In case the Credential status is modified to UPDATE (resp. 0x03) or ATTRIBUTE_UPDATE (resp. 0x0B), the Wallet Instance SHOULD proceed to the re-issuance of the Digital Credential, as described in :ref:`credential-issuance-low-level:Re-Issuance Flow`.
+The Wallet instance, following periodic checks of the validity status of the stored Digital Credentials, receives the updated status. When the Credential Status is changed to ``INVALID``, the Credential Issuer MUST inform the User about this change. In case the Credential status is modified to ``UPDATE`` (resp. 0x03) or ``ATTRIBUTE_UPDATE`` (resp. 0x0B), the Wallet Instance SHOULD proceed to the re-issuance of the Digital Credential, as described in :ref:`credential-issuance-low-level:Re-Issuance Flow`.
 
 
 Batch Credential Lifecycle Management
