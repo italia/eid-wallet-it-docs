@@ -120,7 +120,7 @@ e l'effetto sul loro storage locale.
 .. plantuml:: plantuml/credential-lifecycle.puml
     :width: 99%
     :alt: La figura illustra il Ciclo di Vita degli Attestati Elettronici.
-    :caption: `Gestione del Ciclo di Vita degli Attestati Elettronici. <https://www.plantuml.com/plantuml/svg/ZLDTRnCn47pthnYUQAKMAj6db8z6YP0gWLG5K8KGGkxTNix2iODtdRJyUcmdENB82FRXPCixExExSzSiEaXSMVN4kCR6bl1oTlbyTlbj_kZqoZIlbL8bHpalX62MlQYxdXmqvcPfH5lC0hNanAIZ8sePud5FYEjM2xLda9wESswO8mN6--bdCBaM6iwBwKoZnNW7yGNnYIaWid5BQ0HQ6XPAHU2ZdFlk_5udPEDNg-WEmARNpf5zfdBHB5UfIQdYr-GOTzfQ4jmu5kqQkb9G02OBac1eG_WWMYBZdM71H_-T73eVSWfOV68-we4J62WSiDH9kIteHpGvRvl7upmssfesFrLAqqCwStaSrEQBwN3oc-S0D0vVBXukNfmXVI-_lZc5P8wJH-BJ0WDP9fmuVmg5us3nQuKzZUdKy9g9far3p7j5HMsbyZxoPSGqUYxb5jG5ulx_wW6Jr5mGZ55lhT_kXblZgtTMOjY7mZXsBDh1qRPuBoyVNUBvCtDhf2-sUygOngnR3jOQfuvNLc8OSFqs7B8XCR_rjnWDNpp2teT3Qj9R-SLsmwbOXNTMULKiylUvJx9DYQKqMjhqmVmiNLxLzZrGZVA9QmoZtVf0fOMQzFfUwviTPba7_fknvlx9d2m9OHreOtpa4KOL0TS94bVs5m00>`_
+    :caption: `Gestione del Ciclo di Vita degli Attestati Elettronici. <https://www.plantuml.com/plantuml/svg/ZLDTQnGn57tFhpW-sKAh1VkqzQErYr1GA5Kf8YBfp9sTO3PPSs-whR_U9BiRTvU8teSX8VUSSp_EdBFe875krHFZEXjxmilBq-UNfz-dZqxFJVTQALLobFD226OsYheToK5ZQcP6jCLbe9wSc7HqH3r3FEu8ST5heVu8Cj9spXLpfC3uSF45JAw7Hk8sW-cq6EyIkY0-CmL4Dcu6ZK0pmqA913xAiH-ExtH2Tdu-Zsu3x4Rj7DbdAfFcSfMQ51Q_8CUurTQIuCgnQDVHcO82CBaX2ORk2Hz5IsIyJqBuv7-Gm-13JW6BJyfRFN020qK3bWOfjnlw6KtEM-RnE8zxRKsVdnhKz93EN1vhjVbY1XpyqTa0ZSFNauUJ5qT8txVVtXn2iiR18_5XWO4i4mwSFuJ2Th3uXS9QnWoglcQXYwuZvdL5fTfzvXgLjYhLvqftGqCW7l-F3vYave9W5_NE-kLgk2szTcSbwZuKTcEbeXqSBOltyl8n99tzpAMHiTZkAUCYvhfbOwtjrFsLbQW3Rj_g8HiIqsj_ZPtXYqTO-x2cfdeRlrWTphvLU6MLLyKYVv_x9DkKM4gZfKqVpA_IvLbhtrLg9v-ugR2zMn-ejD0glRtNzcRhBDl0Vokst3-PaYKXB0BT6nzv1wDA0US94kVsDm00>`_
 
 .. .. figure:: ../../images/DigitalCredential_Lifecycle.svg
 ..     :figwidth: 100%
@@ -285,7 +285,7 @@ Una volta che i dati cambiano, la Fonte Autentica notifica i Fornitori di Attest
 
 Il Fornitore di Attestati Elettronici interroga periodicamente il Signal Hub :ref:`signal-hub-endpoint:e-Service di Distribuzione Segnali` per nuovi Signal. Quando viene trovato un nuovo Signal, il Fornitore di Attestati Elettronici lo recupera e lo processa come descritto in :ref:`signal-hub-endpoint:Elaborazione dei Segnali`. Quindi, il Fornitore di Attestati Elettronici aggiorna lo Stato dell’Attestato secondo la modalità definita dal meccanismo di validità. Il Fornitore di Attestati Elettronici PUÒ notificare l’Utente tramite un canale di comunicazione registrato e out-of-band.
 
-L’Istanza del Wallet, a seguito di controlli periodici dello stato di validità degli Attestati Elettronici memorizzati, riceve lo stato aggiornato. Quando lo Stato dell’Attestato viene modificato in INVALID, il Fornitore di Attestati Elettronici DEVE informare l’Utente di tale cambiamento. Nel caso in cui lo stato dell’Attestato venga modificato in UPDATE (risp. 0x03) o ATTRIBUTE_UPDATE (risp. 0x04), l’Istanza del Wallet DOVREBBE procedere alla riemissione dell’Attestato Elettronico, come descritto in :ref:`credential-issuance-low-level:Re-Issuance Flow`.
+L’Istanza del Wallet, a seguito di controlli periodici dello stato di validità degli Attestati Elettronici memorizzati, riceve lo stato aggiornato. Quando lo Stato dell’Attestato viene modificato in ``INVALID``, il Fornitore di Attestati Elettronici DEVE informare l’Utente di tale cambiamento. Nel caso in cui lo stato dell’Attestato venga modificato in ``UPDATE`` (risp. 0x03) o ``ATTRIBUTE_UPDATE`` (risp. 0x0B), l’Istanza del Wallet DOVREBBE procedere alla riemissione dell’Attestato Elettronico, come descritto in :ref:`credential-issuance-low-level:Re-Issuance Flow`.
 
 Gestione del ciclo di vita delle Credenziali in batch
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -494,7 +494,7 @@ Il valore del claim ``status_list`` DEVE essere a sua volta un Oggetto JSON con 
 Verifica degli Stati degli Attestati Elettronici
 """"""""""""""""""""""""""""""""""""""""""""""""
 
-Il recupero, l'elaborazione e la verifica di un Token di Status List possono essere effettuati sia dall'Istanza del Wallet che da una Relying Party. Di seguito viene descritto per la Relying Party, tuttavia, le stesse regole si applicherebbero anche all'Istanza del Wallet.
+Il recupero, l'elaborazione e la verifica di un Token di Status List possono essere effettuati sia dall'Istanza del Wallet che da una Relying Party. Di seguito viene descritto per la Wallet Instance, tuttavia, le stesse regole si applicherebbero anche al Relying Party.
 
 .. _fig_entity-relation-credential-revocation-SL:
 .. plantuml:: plantuml/status-list-flow.puml

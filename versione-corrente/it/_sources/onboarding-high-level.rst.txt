@@ -198,7 +198,7 @@ Dalla prospettiva dell'operatore della Fonte Autentica, il processo di onboardin
     - **Integrazione**: API personalizzata per l'integrazione del Credential Issuer.
     - **Risultato del Catalogo**: Il badge rimane privato, disponibile solo tramite Offerta di Credenziale.
 
-Le fasi critiche includono la verifica amministrativa da parte dell'Organismo di Supervisione (che coinvolge controlli di conformità normativa al di fuori dell'ambito tecnico) e la validazione tecnica. Il processo si conclude con la registrazione nel Registro AS, rendendo gli Attributi dell'Utente dichiarati scopribili dai Credential Issuer per le richieste di integrazione.
+Le fasi critiche includono la verifica amministrativa da parte dell'Organismo di Supervisione (che coinvolge controlli di conformità normativa al di fuori dell'ambito tecnico) e la validazione tecnica. Il processo si conclude con la registrazione nel Registro AS, rendendo gli Attributi dell'Utente dichiarati scopribili dai Credential Issuer per le richieste di integrazione. Le richieste di integrazione possono essere inviate anche dalle Fonti Autentiche a specifici Credential Issuer.
 
 .. warning::
 
@@ -207,11 +207,11 @@ Le fasi critiche includono la verifica amministrativa da parte dell'Organismo di
 Journey dell'Operatore del Credential Issuer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Gli operatori del Credential Issuer iniziano effettuando la discovery delle Fonti Autentiche disponibili attraverso il Registro AS e valutando la fattibilità dell'integrazione basata sugli Attributi dell'Utente richiesti. La richiesta di registrazione specifica quali tipi di Credenziali intendono emettere, seleziona entità Fonte Autentica appropriate e dimostra la capacità tecnica di accedere alle fonti di dati richieste.
+Gli operatori del Credential Issuer iniziano effettuando la discovery delle Fonti Autentiche disponibili attraverso il Registro AS e valutando la fattibilità dell'integrazione basata sugli Attributi dell'Utente richiesti. La richiesta di registrazione specifica quali tipi di Credenziali intendono emettere, seleziona entità Fonte Autentica appropriate e dimostra la capacità tecnica di accedere alle fonti di dati richieste. In alternativa, gli operatori del Credential Issuer ricevono direttamente la richiesta di integrazione dalla Fonte Autentica.
 
 **Esempio - mDL (Scenario Pubblico)**:
 
-    - **discovery AS**: Identifica la Fonte Autentica che fornisce Attributi mDL nel Registro AS con gli Attributi dell'Utente della patente di guida richiesti.
+    - **discovery AS** o **AS Integration Request**: Identifica la Fonte Autentica che fornisce Attributi mDL nel Registro AS con gli Attributi dell'Utente della patente di guida richiesti. In alternativa, il Credential Issuer riceve la richiesta di integrazione direttamente dalla Fonte Authentica.
     - **Richiesta di Integrazione**: Approvazione automatica dovuta al mandato normativo.
     - **Configurazione Tecnica**: Integrazione e-service PDND seguendo gli standard governativi (vedi :ref:`e-service-pdnd:e-Service PDND`).
     - **Pubblicazione del Catalogo**: mDL automaticamente pubblicato nel Catalogo delle Credenziali.
@@ -219,8 +219,8 @@ Gli operatori del Credential Issuer iniziano effettuando la discovery delle Font
 
 **Esempio - CI per Badge Dipendente (Scenario Privato)**:
 
-    - **discovery AS**: Identifica la Fonte Autentica nel Registro AS con gli Attributi dell'Utente di accesso dipendente.
-    - **Richiesta di Integrazione**: Richiede approvazione AS.
+    - **discovery AS** o **AS Integration Request**: Identifica la Fonte Autentica nel Registro AS con gli Attributi dell'Utente di accesso dipendente. In alternativa, il Credential Issuer riceve la richiesta di integrazione direttamente dalla Fonte Authentica.
+    - **Richiesta di Integrazione**: Richiede approvazione da parte del destinatario della richiesta.
     - **Configurazione Tecnica**: Integrazione API personalizzata con autenticazione.
     - **Pubblicazione del Catalogo**: Badge escluso dal catalogo pubblico per politica di supervisione.
     - **Accesso Utente**: I dipendenti ricevono badge solo tramite Offerta di Credenziale diretta dai sistemi aziendali.
