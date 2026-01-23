@@ -417,3 +417,9 @@ smartquotes = False
 
 autosectionlabel_prefix_document= True
 
+# Add official_resources to static path so files are copied during build
+# Note: Sphinx will automatically copy image files referenced in RST figures,
+# but adding official_resources to html_static_path makes the entire folder
+# accessible for direct downloads
+html_static_path = ['../../static', '../../official_resources']
+

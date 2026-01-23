@@ -106,7 +106,7 @@ To ensure a consistent identification and representation of the PID across diffe
 
 .. only:: format_html
 
-  .. figure:: ./images/svg/IT-Wallet-ID.svg
+  .. figure:: ../../official_resources/IT-Wallet-ID.svg
     :alt: IT-Wallet ID official graphic asset on a light background 
     :width: 100%
 
@@ -791,7 +791,7 @@ For further information on the Authentication button refer to the Brand Manual, 
 
 .. only:: format_html
 
-  .. figure:: ./images/svg/Authentication-button.svg
+  .. figure:: ../../official_resources/Authentication-button -ENG.svg
      :alt: Example of Authentication button in 3 variants
      :width: 100%
 
