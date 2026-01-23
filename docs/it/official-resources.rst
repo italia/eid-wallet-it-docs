@@ -19,7 +19,7 @@ Di seguito sono elencate le risorse grafiche ufficiali, disponibili per il downl
 - **Logo IT-Wallet**: Logo ufficiale del Sistema IT-Wallet (formato SVG) - `Scarica il logo <https://raw.githubusercontent.com/italia/eidas-it-wallet-docs/versione-corrente/official_resources/logoIT-Wallet.svg>`_
 - **Pittogramma IT-Wallet**: Pittogramma ufficiale del Sistema IT-Wallet - `Scarica il pittogramma <https://raw.githubusercontent.com/italia/eidas-it-wallet-docs/versione-corrente/official_resources/symbol-IT-Wallet.svg>`_
 - **IT-Wallet ID**: Elemento grafico ufficiale che assicura l’identificazione e rappresentazione univoca del PID tra tutte le Soluzioni Wallet (formato SVG) - `Scarica IT-Wallet ID <https://raw.githubusercontent.com/italia/eidas-it-wallet-docs/versione-corrente/official_resources/IT-Wallet-ID.svg>`_
-- **Trust Mark**: Elemento grafico ufficiale per l'attestazione dell'appartenenza al Sistema IT-Wallet - Consulta la sezione :ref:`brand-identity:Trust Mark`;
+- **Trust Mark**: Elemento grafico ufficiale per l'attestazione dell'appartenenza al Sistema IT-Wallet - `Scarica Trust Mark <https://raw.githubusercontent.com/italia/eidas-it-wallet-docs/versione-corrente/official_resources/trustmark-ITA.svg>`_ - Consulta la sezione :ref:`brand-identity:Trust Mark`;
 - **Authentication Button**: Pulsante ufficiale per l'autenticazione tramite IT-Wallet - `Scarica Authentication Button <https://raw.githubusercontent.com/italia/eidas-it-wallet-docs/versione-corrente/official_resources/Authentication-button-ITA.svg>`_
 
 Componenti HTML

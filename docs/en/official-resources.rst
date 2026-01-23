@@ -20,7 +20,7 @@ The following official graphic assets are available for download in the `officia
 - **IT-Wallet Logo**: Official logo of the IT-Wallet System (SVG format) - `Download the logo <https://raw.githubusercontent.com/italia/eidas-it-wallet-docs/versione-corrente/official_resources/logoIT-Wallet.svg>`_
 - **IT-Wallet Symbol**: Official symbol of the IT-Wallet System - `Download the symbol <https://raw.githubusercontent.com/italia/eidas-it-wallet-docs/versione-corrente/official_resources/symbol-IT-Wallet.svg>`_
 - **IT-Wallet ID**: Official graphic element that ensures the unique identification and representation of the PID across all Wallet Solutions - `Download IT-Wallet ID <https://raw.githubusercontent.com/italia/eidas-it-wallet-docs/versione-corrente/official_resources/IT-Wallet-ID.svg>`_
-- **Trust Mark**: Official graphic element for attesting the participation in the IT-Wallet System - Read more at section :ref:`brand-identity:Trust Mark`
+- **Trust Mark**: Official graphic element for attesting the participation in the IT-Wallet System - `Download Trust Mark <https://raw.githubusercontent.com/italia/eidas-it-wallet-docs/versione-corrente/official_resources/trustmark-ENG.svg>`_ - Read more at section :ref:`brand-identity:Trust Mark`
 - **Authentication Button**: Official button for authentication via IT-Wallet - `Download Authentication Button <https://raw.githubusercontent.com/italia/eidas-it-wallet-docs/versione-corrente/official_resources/Authentication-button-ENG.svg>`_
 
 HTML Components
