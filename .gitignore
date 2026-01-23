@@ -35,3 +35,4 @@ v_env/bin/activate
 
 .*
 !.github
+*__pycache__
