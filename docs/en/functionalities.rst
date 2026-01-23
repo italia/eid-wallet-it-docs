@@ -784,7 +784,7 @@ The button is available in three variants of dimensions (S - default / M / L ) a
 - the fixed-width version with icon on the left and centered text;
 - the fixed‑width version with icon and text centered.
 
-The Official Resource of the Authentication Button is available in the :ref:official-resources:Official Resources of these Technical Specification.
+The Official Resource of the Authentication Button is available in the :ref:`official-resources:Official Resources` of these Technical Specification.
 
 **"Login with IT-Wallet" button – svg**
 For further information on the Authentication button refer to the Brand Manual, indicated in the :ref:`official-resources:Official Resources` section. The Authentication button Official Resource is available in the :ref:`official-resources:Official Resources` section of these Technical Specifications. 
