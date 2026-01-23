@@ -139,8 +139,7 @@ Questo componente è basato sul framework [dev-kit-italia](https://github.com/it
 
 ## Identità Visiva
 
-L'identità visiva del bottone è definita nel file `Authentication-button.svg`, disponibile anche all'indirizzo:
-https://raw.githubusercontent.com/italia/eidas-it-wallet-docs/versione-corrente/docs/it/images/svg/Authentication-button.svg
+L'identità visiva del bottone è definita nel Brand Manual, indicato nella sezione :ref:`official-resources:Risorse Ufficiali`.
 
 ## Accessibilità
 
