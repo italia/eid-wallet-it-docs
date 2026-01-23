@@ -791,7 +791,7 @@ For further information on the Authentication button refer to the Brand Manual, 
 
 .. only:: format_html
 
-  .. figure:: ../../official_resources/Authentication-button -ENG.svg
+  .. figure:: ../../official_resources/Authentication-button-ENG.svg
      :alt: Example of Authentication button in 3 variants
      :width: 100%
 
