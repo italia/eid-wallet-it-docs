@@ -268,7 +268,7 @@ The details of each step shown in the previous picture are described below.
       {
         "state": "3be39b69-6ac1-41aa-921b-3e6c07ddcb03",
         "vp_token": {
-          "personal id data": ["eyJhbGciOiJFUzI1NiIs...PT0iXX0"]
+          "personal id data": ["eyJhbGciOiJFUzI1NiIs...PT0iXX0"],
           "mobile driving license": ["o2Nkb2N0eXBlb3Jzby4xO...Nib3JfZHVtbXk"]
         }
       }
