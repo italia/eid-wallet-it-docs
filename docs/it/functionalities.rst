@@ -824,7 +824,12 @@ Per maggiori dettagli sull'utilizzo dell'Authentication Button vedi la sezione :
 
 **Authentication Button "Entra con IT-Wallet" - codice html** 
  
-Il pulsante è disponibile in 3 varianti (default / M / L ) ed in formato "get" (chiamata ad una pagina esterna) e "post" (form interna al pulsante). I riferimenti al codice html e alla Brand Identity corretta verranno inclusi nelle versioni successive delle presenti regole tecniche.
+Il pulsante è disponibile in tre varianti di dimensione (S - default / M / L ) come da Design System .Italia, ed in formato "get" (chiamata ad una pagina esterna) e "post" (form interna al pulsante). Oltre alle varianti di dimensione, sono previste due varianti di pulsante a larghezza fissa utilizzabili in situazioni in cui è preferibile mantenere coerenza con altri pulsanti simili: 
+
+• la versione a larghezza fissa con icona a sinistra e testo centrato; 
+• la versione a larghezza fissa con icona e testo centrati. 
+
+La Risorsa Ufficiale dell'Authentication button html è disponibile nella sezione :ref:`official-resources:Risorse Ufficiali` di queste Specifiche Tecniche. 
 
 **Authentication Button "Entra con IT-Wallet" - svg**
 Per approfondimenti sull'Authentication button consultare il Brand Manual, indicato nella sezione :ref:`official-resources:Risorse Ufficiali`. La Risorsa Ufficiale dell'Authentication button è disponibile nella sezione :ref:`official-resources:Risorse Ufficiali` di queste Specifiche Tecniche. 
