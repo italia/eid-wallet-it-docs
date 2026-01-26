@@ -31,10 +31,27 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Verify config files exist
+        run: |
+          if [ ! -f .htmlhintrc.json ]; then
+            echo "Error: .htmlhintrc.json not found"
+            exit 1
+          fi
+          if [ ! -f .stylelintrc.json ]; then
+            echo "Error: .stylelintrc.json not found"
+            exit 1
+          fi
+          echo "Config files found"
+
       - name: Lint HTML files
         run: |
           echo "Linting HTML files..."
-          find official_resources -name "*.html" -type f | while read file; do
+          HTML_FILES=$(find official_resources -name "*.html" -type f)
+          if [ -z "$HTML_FILES" ]; then
+            echo "No HTML files found to lint"
+            exit 0
+          fi
+          echo "$HTML_FILES" | while read file; do
             echo "Checking $file"
             npx --yes htmlhint "$file" --config .htmlhintrc.json || exit 1
           done
@@ -42,7 +59,12 @@ jobs:
       - name: Lint CSS files
         run: |
           echo "Linting CSS files..."
-          find official_resources -name "*.css" -type f | while read file; do
+          CSS_FILES=$(find official_resources -name "*.css" -type f)
+          if [ -z "$CSS_FILES" ]; then
+            echo "No CSS files found to lint"
+            exit 0
+          fi
+          echo "$CSS_FILES" | while read file; do
             echo "Checking $file"
             npx --yes stylelint "$file" --config .stylelintrc.json || exit 1
           done
