@@ -779,7 +779,7 @@ For further details on the use of the Authentication Button, please refer to the
 
 **"Login with IT-Wallet" button - html code**  
 
-The button is available in three variants of dimensions (S - default / M / L ) as per the .Italia Design System, and in "get" (call to an external page) and "post" (form inside the button) formats. In addition to the variants of dimensions, are provided two variants of button with fixed length, to be used in situations where it's preferable to keep consistency between similar buttons:
+The button is available in three variants of dimensions (S - default / M / L ) as per the .Italia Design System, and in "get" (call to an external page) and "post" (form inside the button) formats. In addition to the variants of dimensions, are provided two variants of button with fixed width, to be used in situations where it's preferable to keep consistency between similar buttons:
 
 - the fixed-width version with icon on the left and centered text;
 - the fixed‑width version with icon and text centered.
