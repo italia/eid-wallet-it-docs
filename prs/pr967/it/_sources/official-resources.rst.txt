@@ -7,7 +7,7 @@ Qualsiasi risorsa tecnica aggiuntiva, repository e documentazione aggiuntiva sar
 Sito Ufficiale
 ^^^^^^^^^^^^^^
 
-Il sito ufficiale del Sistema IT-Wallet è disponibile all'indirizzo seguente. Potrebbe non essere accessibile se in fase di rilascio o in corso di revisione o in aggiornamento:
+Il sito ufficiale del Sistema IT-Wallet è disponibile all'indirizzo seguente:
 
 - **Sito Ufficiale IT-Wallet**: `https://www.wallet.gov.it <https://www.wallet.gov.it>`_
 
