@@ -41,7 +41,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
     **Fornitore di Attestati Elettronici**
     **Credential Issuer**
       Soggetto pubblico o privato che fornisce Attestati Elettronici agli Utenti (può essere un fornitore di PID oppure un fornitore di (Q)EAA).
-      Conforme con ARF 2.5.; IT-Wallet aggrega sotto questo termine sia il fornitore di PID che di (Q)EAA .
+      Conforme con ARF 2.7.3.; IT-Wallet aggrega sotto questo termine sia il fornitore di PID che di (Q)EAA .
 
     **Asset Critici**
       Asset (ad esempio, le chiavi crittografiche) la cui perdita avrebbe gravi ripercussioni sulla Istanza del Wallet.
