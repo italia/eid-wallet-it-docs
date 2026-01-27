@@ -569,7 +569,7 @@ Questa sezione elenca i casi di test dalle Sezioni:
    * - WP_070
      - Issuance, Sicurezza
      - Flusso re-Issuance: rilevare necessità re-Issuance (aggiornare stato)
-     - Istanza del Wallet aggiorna un Attestato Elettronico quando la Status List mostra ``0x03`` (``UPDATE``) o ``0x04`` (``ATTRIBUTE_UPDATE``) per quell'Attestato Elettronico.
+     - Istanza del Wallet aggiorna un Attestato Elettronico quando la Status List mostra ``0x03`` (``UPDATE``) o ``0x0B`` (``ATTRIBUTE_UPDATE``) per quell'Attestato Elettronico.
    * - WP_071
      - Issuance, Sicurezza
      - Flusso re-Issuance: verificare validità Access Token per re-Issuance

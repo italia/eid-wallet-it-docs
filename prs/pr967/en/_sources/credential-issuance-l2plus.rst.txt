@@ -125,6 +125,9 @@ Upon successful processing of the PAR, the Authorization Server redirects the Us
 
 The PID Authorization Server MUST ensure that the ``mrtd_auth_session`` parameter is maintained throughout this phase for proper session correlation with subsequent authentication steps.
 
+.. note::
+  In the case the User performs a LoA High authentication the phase 3 MUST be skipped.
+
 Phase 3: MRTD PoP Validation Flow
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

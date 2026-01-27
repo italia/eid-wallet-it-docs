@@ -125,6 +125,9 @@ Dopo l'elaborazione con successo del PAR, il Server di Autorizzazione reindirizz
 
 Il Server di Autorizzazione PID DEVE assicurare che il parametro ``mrtd_auth_session`` sia mantenuto durante questa fase per la correlazione appropriata di sessione con gli step di autenticazione successivi.
 
+.. note::
+  Nel caso in cui l'Utente dovesse eseguire un'autenticazione LoA High, la successiva fase 3 DOVRA' essere saltata.
+
 Fase 3: Flusso di Validazione MRTD PoP
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

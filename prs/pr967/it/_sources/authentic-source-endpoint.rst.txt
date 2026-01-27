@@ -20,7 +20,7 @@ Le Fonti Autentiche pubbliche DEVONO realizzare e rendere disponibile tramite PD
 .. only:: latex
 
   .. note::
-    La Specifica OpenAPI completa è disponibile :ref:`appendix-oas-pdnd-as:Specifica OpenAPI della Fonte Autentica PDND`.
+    La Specifica OpenAPI completa è disponibile :ref:`e-service-pdnd-template:Specifica OpenAPI della Fonte Autentica PDND`.
 
 Get Attribute Claims
 """""""""""""""""""""""""""""""""""

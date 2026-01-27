@@ -172,18 +172,18 @@
   <section id="endpoint-di-pdnd-signal-hub">
 <h1><span class="section-number">13.5. </span>Endpoint di PDND Signal Hub<a class="headerlink" href="#endpoint-di-pdnd-signal-hub" title="Link to this heading">¶</a></h1>
 <dl class="simple">
-<dt>All'interno della piattaforma PDND, Signal Hub funge da intermediario tra un Provider PDND e i suoi Consumer PDND per facilitare le segnalazioni di variazioni dei dati. Per abilitare tale funzionalità, il gestore della piattaforma PDND, di seguito denominato PDND Manager, agendo come PDND e-Service Provider, fornisce due e-Service PDND di Signal Hub:</dt><dd><ul class="simple">
-<li><p>l'e-Service di Raccolta Segnali che viene utilizzato dai PDND e-Service Provider per depositare i Segnali; in questo caso, il PDND e-Service Provider agisce come Consumer dell'e-Service di Raccolta Segnali;</p></li>
-<li><p>l'e-Service di Distribuzione Segnali che viene utilizzato dai PDND e-Service Consumer per recuperare i Segnali raccolti; in questo caso, il PDND e-Service Consumer agisce anche come Consumer dell'e-Service di Distribuzione Segnali.</p></li>
+<dt>All'interno della piattaforma PDND, Signal Hub funge da intermediario tra un Provider PDND e i suoi Consumer PDND per facilitare le segnalazioni di variazioni dei dati. Per abilitare tale funzionalità, il gestore della piattaforma PDND, di seguito denominato PDND Manager, agendo come e-Service PDNDProvider, fornisce due e-Service PDND di Signal Hub:</dt><dd><ul class="simple">
+<li><p>l'e-Service di Raccolta Segnali che viene utilizzato dai e-Service PDNDProvider per depositare i Segnali; in questo caso, il e-Service PDNDProvider agisce come Consumer dell'e-Service di Raccolta Segnali;</p></li>
+<li><p>l'e-Service di Distribuzione Segnali che viene utilizzato dai e-Service PDNDConsumer per recuperare i Segnali raccolti; in questo caso, il e-Service PDNDConsumer agisce anche come Consumer dell'e-Service di Distribuzione Segnali.</p></li>
 </ul>
 </dd>
 </dl>
-<p>Al fine di proteggere la privacy del soggetto del Segnale, il PDND Manager richiede a ciascun PDND e-Service Provider di pseudonimizzare l'identificativo del soggetto utilizzato all'interno dei Segnali e di configurare un endpoint di pseudonimizzazione per il proprio PDND e-Service. Questo endpoint di pseudonimizzazione viene utilizzato dagli e-Service Consumer per ottenere l'algoritmo di pseudonimizzazione al fine di calcolare lo Pseudonimo del soggetto del Segnale. Solo il PDND e-Service Provider e i suoi PDND e-Service Consumer sono in grado di collegare un Segnale ai dati personali del soggetto, mentre il PDND Manager gestisce solo gli identificativi pseudonimizzati.</p>
+<p>Al fine di proteggere la privacy del soggetto del Segnale, il PDND Manager richiede a ciascun e-Service PDNDProvider di pseudonimizzare l'identificativo del soggetto utilizzato all'interno dei Segnali e di configurare un endpoint di pseudonimizzazione per il proprio PDND e-Service. Questo endpoint di pseudonimizzazione viene utilizzato dagli e-Service Consumer per ottenere l'algoritmo di pseudonimizzazione al fine di calcolare lo Pseudonimo del soggetto del Segnale. Solo il e-Service PDNDProvider e i suoi e-Service PDNDConsumer sono in grado di collegare un Segnale ai dati personali del soggetto, mentre il PDND Manager gestisce solo gli identificativi pseudonimizzati.</p>
 <p>Per specifiche tecniche dettagliate e linee guida per l'implementazione, si prega di fare riferimento alla <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub">Signal Hub Guide</a>.</p>
 <dl class="simple">
 <dt>Nel contesto dell'IT Wallet, le Fonti Autentiche interagiscono con Signal Hub per notificare ai Fornitori di Attestati Elettronici i cambiamenti nello stato e/o nel valore degli Attributi associati agli Attestati Elettronici. Nello specifico,</dt><dd><ul class="simple">
 <li><p>la Fonte Autentica depositerà i Segnali in Signal Hub, svolgendo quindi il ruolo di PDND Consumer dell'e-Service di Raccolta Segnali;</p></li>
-<li><p>il Fornitore di Attestati Elettronici recupererà i Segnali da Signal Hub, e svolgerà quindi il ruolo di PDND e-Service Consumer dell'e-Service di Distribuzione Segnali.</p></li>
+<li><p>il Fornitore di Attestati Elettronici recupererà i Segnali da Signal Hub, e svolgerà quindi il ruolo di e-Service PDNDConsumer dell'e-Service di Distribuzione Segnali.</p></li>
 </ul>
 </dd>
 </dl>
