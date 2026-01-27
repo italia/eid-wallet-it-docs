@@ -113,7 +113,7 @@ The requirements for EAA Provider Trusted Lists are established by the eIDAS tru
 - **`ETSI TS 119 602`_** and **Annex H**: Abstract data model and profile for Lists of Trusted Entities (LoTE), including Attestation Provider Trusted Lists, with JSON and XML bindings.
 
 Implementation Profile for QEAA Provider Trusted Lists
-"""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 QEAA Providers are Qualified Trust Service Providers (QTSPs). After successful registration with the National Registrar, QEAA Providers are included in Member State QTSP Trusted Lists compiled and published by the Member State Trusted List Provider (MS TLP) in XML format compliant with `ETSI TS 119 612`_ and signed with XAdES Baseline B as per `ETSI EN 319 132-1`_.
 
@@ -233,7 +233,7 @@ In addition to the OpenID Federation endpoints, the IT-Wallet ecosystem exposes 
 - QTSP Trusted Lists for QEAA Providers MUST be published by the National Trust Anchor as XML TSL documents compliant with `ETSI TS 119 612`_, at HTTPS distribution points under the National Trust Anchor FQDN (for example, ``https://<NationalTrustAnchorFQDN>/tsl/qeaa-tsl.xml``), and signed with XAdES Baseline B according to `ETSI EN 319 132-1`_.
 - National EAA Provider Trusted Lists (for non-qualified EAA Providers and, where applicable, Pub-EAA Providers) MUST be published as LoTE documents following `ETSI TS 119 602`_ Annex H, at HTTPS distribution points under the National Trust Anchor FQDN (for example, ``https://<NationalTrustAnchorFQDN>/lote/eaa-providers.json``), in JSON (preferred) or XML, and signed with compact JAdES Baseline B or XAdES Baseline B as mandated by `ETSI TS 119 182-1`_ and `ETSI EN 319 132-1`_.
 
-Clients consume these endpoints by periodically downloading the lists, validating the digital signatures, and applying the service status and sequence number semantics defined in `ETSI TS 119 612`_ and `ETSI TS 119 602`_ to build and refresh their local trust stores.
+Clients belonging from EUDI Wallet ecosystem consume these endpoints by periodically downloading the lists, validating the digital signatures, and applying the service status and sequence number semantics defined in `ETSI TS 119 612`_ and `ETSI TS 119 602`_ to build and refresh their local trust stores.
 
 Configuration of the Federation
 -------------------------------
