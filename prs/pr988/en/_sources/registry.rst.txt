@@ -431,6 +431,19 @@ Within the IT-Wallet System Register architecture, the Federation Registry serve
 2. **Trust Chain Verification**: Provides the cryptographic foundation for Credential Issuers, Relying Parties, and Wallet Providers entity validation
 3. **Compliance Verification**: Maintains Trust Marks that attest regulatory compliance and operational status
 
+Federation Registry Registration Information
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Entities registering in the Federation Registry MUST provide the information specified in the registration form requirements as defined in :ref:`onboarding-high-level:Registration Form Information Requirements`. This information is collected during the administrative registration phase and stored in the National Register, which feeds the Federation Registry for trust validation purposes.
+
+The Federation Registry uses this registration information to:
+- Validate entity identity during cryptographic operations
+- Verify entitlements and authorization scopes
+- Support trust chain validation and certificate issuance
+- Enable cross-border interoperability through standardized data formats
+
+For detailed information about what data entities must provide during registration, see :ref:`onboarding-high-level:Registration Form Information Requirements`.
+
 Federation Registry Access
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

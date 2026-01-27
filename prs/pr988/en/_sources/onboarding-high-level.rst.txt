@@ -73,6 +73,101 @@ The registration process, managed by National Registrars for PID Providers, Atte
 3. **Registration Certificate Issuance**: Issuance of registration certificates that describe registration status and entitlements for Relying Parties and Credential Issuers.
 4. **Registry Publication**: Publication of all registered entities in the registry, with an online API (see :ref:`trust-infrastructure:Trust Infrastructure and Registry Integration`) that Wallet Units use to verify PID Provider registration, Attestation Provider registration and types, and Relying Party registration and requested attributes.
 
+Registration Form Information Requirements
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+According to the Architecture and Reference Framework (ARF) High-Level Requirements and Regulation (EU) 2025/848, Annex I, all entities registering with National Registrars MUST provide the following information in the registration form. This information is required for PID Providers, Attestation Providers (QEAA Providers, PuB-EAA Providers, and non-qualified EAA Providers), and Relying Parties.
+
+The registration form MUST collect at least the following information as specified in `Regulation (EU) 2025/848, Annex I <https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202500848>`_ and aligned with the use cases defined in the trust infrastructure onboarding documentation:
+
+.. list-table:: Registration Form Information Requirements (Annex I)
+   :class: longtable
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Information Field**
+     - **Description and Requirements**
+   * - **Official Name**
+     - REQUIRED. The official legal name of the wallet-relying party (entity name as registered in business or government registries).
+   * - **Official Identifiers**
+     - REQUIRED. One or more official identifiers of the wallet-relying party, such as:
+       
+       - EORI (Economic Operators Registration and Identification)
+       - LEI (Legal Entity Identifier)
+       - VAT number (Value Added Tax identification number)
+       - National business registration number
+       - Other equivalent national identifiers
+   * - **Physical Address and Member State**
+     - REQUIRED. Physical address of the entity and Member State if not present in official identifier. The address MUST include:
+       
+       - Street address
+       - City
+       - Postal code
+       - Country (Member State)
+   * - **URL**
+     - REQUIRED. URL belonging to the wallet-relying party where applicable (e.g., organization homepage, service website).
+   * - **Contact Information**
+     - REQUIRED. Detailed contact information including:
+       
+       - Phone number
+       - Website URL (if different from main URL)
+       - Email address(es) for administrative and technical contacts
+   * - **Service Description**
+     - REQUIRED. Description of the type of services provided by the entity, including:
+       
+       - Service categories
+       - Target user base
+       - Service scope and capabilities
+   * - **Attributes Request List**
+     - REQUIRED. A list of the attributes that the wallet-relying party intends to request for each intended use. This MUST reference:
+       
+       - Specific claim identifiers from the Claims Registry (e.g., ``given_name``, ``family_name``, ``driving_privileges``)
+       - Taxonomy classifications (domains, classes, purposes) for authorization policy evaluation
+       - See :ref:`registry:Claims Registry` for standardized claim definitions
+   * - **Intended Use Description**
+     - REQUIRED. A description of intended use of the data, including:
+       
+       - Business purpose for requesting attributes
+       - Service context and use cases
+       - Legal basis for data access (where applicable)
+   * - **Public Sector Body Indication**
+     - REQUIRED. Indication whether the wallet-relying party is a public sector body (boolean value).
+   * - **Applicable Entitlements**
+     - REQUIRED. Applicable entitlement(s) of the wallet-relying party chosen from the following list:
+       
+       - ``Service_Provider``
+       - ``QEAA_Provider``
+       - ``Non_Q_EAA_Provider``
+       - ``PUB_EAA_Provider``
+       - ``PID_Provider``
+       - ``QCert_for_ESeal_Provider``
+       - ``QCert_for_ESig_Provider``
+       - ``rQSigCDs_Provider``
+       - ``rQSealCDs_Provider``
+       - ``ESig_ESeal_Creation_Provider``
+   * - **Intermediary Indication**
+     - REQUIRED. Indication if the wallet-relying party intends to act as an intermediary or to rely upon an intermediary (boolean value).
+   * - **Entity-Specific Information**
+     - CONDITIONAL. Additional information required based on entity type:
+       
+       - **For PID/EAA Providers**: Attestation type(s) that the Provider intends to issue (QEAA, PuB-EAA, non-qualified EAA, PID)
+       - **For QEAA Providers**: Qualification evidence (conformity assessment report, QTSP status)
+       - **For PuB-EAA Providers**: Public sector body evidence
+       - **For non-qualified EAA Providers**: Service provider information
+       - **For Relying Parties**: Service supply point(s) and technical endpoint information
+
+The registration form MUST be designed to support both manual data entry and automated registration processes through qualified authoritative registries (see :ref:`entity-onboarding:Industrial-Scale Considerations`). The Registrar MAY import entity information from qualified registries (e.g., business registries, VAT registries, professional qualification registries, GLEIF for LEI records) to reduce duplication and streamline onboarding.
+
+All information provided in the registration form MUST be:
+- Accurate and current at the time of registration
+- Verifiable against supporting documentation or authoritative sources
+- Maintained and updated without undue delay when changes occur
+- Compliant with applicable data protection and privacy regulations
+
+For Authentic Source registration information requirements, see :ref:`entity-onboarding:Authentic Sources Registration Information Requirements`.
+
+For Wallet Provider registration information requirements, see the Wallet Provider onboarding documentation which specifies conformity assessment requirements and Trusted List inclusion procedures.
+
 Responsibilities Matrix
 ^^^^^^^^^^^^^^^^^^^^^^^
 

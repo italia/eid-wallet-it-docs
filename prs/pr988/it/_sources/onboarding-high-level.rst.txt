@@ -76,6 +76,101 @@ Il processo di registrazione/onboarding, gestito dai Registrar degli Stati Membr
 .. note::
   I **PID Provider**, i **PuB-EAA Provider** e i **Wallet Provider** sono registrati attraverso il sistema di onboarding dell'IT-Wallet e successivamente notificati alla Commissione Europea per l'inclusione nelle Trusted Lists. I Wallet Provider non ricevono certificati di accesso o certificati di registrazione dai Registrar nazionali. La Soluzione Wallet fornita dal Wallet Provider deve essere certificata da Organismi di Valutazione della Conformità (CAB) secondo il quadro nazionale di valutazione della conformità.
 
+Requisiti sulle Informazioni del Modulo di Registrazione
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Secondo i Requisiti di Alto Livello dell'Architettura e del Framework di Riferimento (ARF) e il Regolamento (UE) 2025/848, Allegato I, tutte le entità che si registrano presso i Registrar Nazionali DEVONO fornire le seguenti informazioni nel modulo di registrazione. Queste informazioni sono richieste per PID Provider, Attestation Provider (QEAA Provider, PuB-EAA Provider ed EAA Provider non qualificati) e Relying Party.
+
+Il modulo di registrazione DEVE raccogliere almeno le seguenti informazioni come specificato nell'`Allegato I del Regolamento (UE) 2025/848 <https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202500848>`_ e allineato con i casi d'uso definiti nella documentazione di onboarding dell'infrastruttura di trust:
+
+.. list-table:: Requisiti sulle Informazioni del Modulo di Registrazione (Allegato I)
+   :class: longtable
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Campo di Informazione**
+     - **Descrizione e Requisiti**
+   * - **Nome Ufficiale**
+     - OBBLIGATORIO. Il nome legale ufficiale della wallet-relying party (nome dell'entità come registrato nei registri aziendali o governativi).
+   * - **Identificatori Ufficiali**
+     - OBBLIGATORIO. Uno o più identificatori ufficiali della wallet-relying party, come:
+       
+       - EORI (Economic Operators Registration and Identification)
+       - LEI (Legal Entity Identifier)
+       - Numero di partita IVA (Value Added Tax identification number)
+       - Numero di registrazione aziendale nazionale
+       - Altri identificatori nazionali equivalenti
+   * - **Indirizzo Fisico e Stato Membro**
+     - OBBLIGATORIO. Indirizzo fisico dell'entità e Stato Membro se non presente nell'identificatore ufficiale. L'indirizzo DEVE includere:
+       
+       - Indirizzo stradale
+       - Città
+       - Codice postale
+       - Paese (Stato Membro)
+   * - **URL**
+     - OBBLIGATORIO. URL appartenente alla wallet-relying party dove applicabile (es., homepage dell'organizzazione, sito web del servizio).
+   * - **Informazioni di Contatto**
+     - OBBLIGATORIO. Informazioni di contatto dettagliate inclusi:
+       
+       - Numero di telefono
+       - URL del sito web (se diverso dall'URL principale)
+       - Indirizzo/i email per contatti amministrativi e tecnici
+   * - **Descrizione del Servizio**
+     - OBBLIGATORIO. Descrizione del tipo di servizi forniti dall'entità, inclusi:
+       
+       - Categorie di servizi
+       - Base di utenti target
+       - Ambito e capacità del servizio
+   * - **Elenco Attributi Richiesti**
+     - OBBLIGATORIO. Un elenco degli attributi che la wallet-relying party intende richiedere per ogni uso previsto. Questo DEVE fare riferimento a:
+       
+       - Identificatori specifici di claim dal Registro Claims (es., ``given_name``, ``family_name``, ``driving_privileges``)
+       - Classificazioni della Tassonomia (domini, classi, scopi) per la valutazione delle politiche di autorizzazione
+       - Vedere :ref:`registry:Registro Claims` per le definizioni standardizzate dei claim
+   * - **Descrizione dell'Uso Previsto**
+     - OBBLIGATORIO. Una descrizione dell'uso previsto dei dati, inclusi:
+       
+       - Scopo commerciale per la richiesta di attributi
+       - Contesto del servizio e casi d'uso
+       - Base legale per l'accesso ai dati (ove applicabile)
+   * - **Indicazione Ente Pubblico**
+     - OBBLIGATORIO. Indicazione se la wallet-relying party è un ente pubblico (valore booleano).
+   * - **Diritti Applicabili**
+     - OBBLIGATORIO. Diritto/i applicabile/i della wallet-relying party scelto/i dalla seguente lista:
+       
+       - ``Service_Provider``
+       - ``QEAA_Provider``
+       - ``Non_Q_EAA_Provider``
+       - ``PUB_EAA_Provider``
+       - ``PID_Provider``
+       - ``QCert_for_ESeal_Provider``
+       - ``QCert_for_ESig_Provider``
+       - ``rQSigCDs_Provider``
+       - ``rQSealCDs_Provider``
+       - ``ESig_ESeal_Creation_Provider``
+   * - **Indicazione Intermediario**
+     - OBBLIGATORIO. Indicazione se la wallet-relying party intende agire come intermediario o fare affidamento su un intermediario (valore booleano).
+   * - **Informazioni Specifiche dell'Entità**
+     - CONDIZIONALE. Informazioni aggiuntive richieste in base al tipo di entità:
+       
+       - **Per PID/EAA Provider**: Tipo/i di attestazione che il Provider intende emettere (QEAA, PuB-EAA, EAA non qualificato, PID)
+       - **Per QEAA Provider**: Prova di qualificazione (rapporto di valutazione della conformità, stato QTSP)
+       - **Per PuB-EAA Provider**: Prova di ente pubblico
+       - **Per EAA Provider non qualificati**: Informazioni sul provider di servizi
+       - **Per Relying Party**: Punto/i di fornitura del servizio e informazioni sugli endpoint tecnici
+
+Il modulo di registrazione DEVE essere progettato per supportare sia l'inserimento manuale dei dati che i processi di registrazione automatizzati attraverso registri autorevoli qualificati (vedere :ref:`entity-onboarding:Considerazioni su Scala Industriale`). Il Registrar PUÒ importare informazioni sull'entità da registri qualificati (es., registri aziendali, registri IVA, registri di qualificazione professionale, GLEIF per record LEI) per ridurre la duplicazione e semplificare l'onboarding.
+
+Tutte le informazioni fornite nel modulo di registrazione DEVONO essere:
+- Accurate e aggiornate al momento della registrazione
+- Verificabili rispetto alla documentazione di supporto o alle fonti autorevoli
+- Mantenute e aggiornate senza indebito ritardo quando si verificano cambiamenti
+- Conformi alle normative applicabili sulla protezione dei dati e sulla privacy
+
+Per i requisiti sulle informazioni di registrazione delle Fonti Autentiche, vedere :ref:`entity-onboarding:Requisiti sulle Informazioni di Registrazione delle AS`.
+
+Per i requisiti sulle informazioni di registrazione dei Wallet Provider, vedere la documentazione di onboarding dei Wallet Provider che specifica i requisiti di valutazione della conformità e le procedure di inclusione nelle Trusted Lists.
+
 Matrice delle Responsabilità
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

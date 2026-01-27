@@ -1023,8 +1023,18 @@ Content-Type: application/json
 <li><p><strong>Compliance Verification</strong>: Maintains Trust Marks that attest regulatory compliance and operational status</p></li>
 </ol>
 </section>
+<section id="federation-registry-registration-information">
+<h3><span class="section-number">7.5.2. </span>Federation Registry Registration Information<a class="headerlink" href="#federation-registry-registration-information" title="Link to this heading">¶</a></h3>
+<p>Entities registering in the Federation Registry MUST provide the information specified in the registration form requirements as defined in <a class="reference internal" href="onboarding-high-level.html#registration-form-information-requirements"><span class="std std-ref">Registration Form Information Requirements</span></a>. This information is collected during the administrative registration phase and stored in the National Register, which feeds the Federation Registry for trust validation purposes.</p>
+<p>The Federation Registry uses this registration information to:
+- Validate entity identity during cryptographic operations
+- Verify entitlements and authorization scopes
+- Support trust chain validation and certificate issuance
+- Enable cross-border interoperability through standardized data formats</p>
+<p>For detailed information about what data entities must provide during registration, see <a class="reference internal" href="onboarding-high-level.html#registration-form-information-requirements"><span class="std std-ref">Registration Form Information Requirements</span></a>.</p>
+</section>
 <section id="federation-registry-access">
-<h3><span class="section-number">7.5.2. </span>Federation Registry Access<a class="headerlink" href="#federation-registry-access" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">7.5.3. </span>Federation Registry Access<a class="headerlink" href="#federation-registry-access" title="Link to this heading">¶</a></h3>
 <p>Federation Registry operations are accessed through the Trust Anchor's federation endpoints as detailed in <a class="reference internal" href="trust-infrastructure.html#federation-api-endpoints"><span class="std std-ref">Federation API endpoints</span></a>. The registry discovery architecture provides federation endpoint information via the registry discovery endpoint described in <a class="reference internal" href="#registry-discovery-endpoint">Registry Discovery Endpoint</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -2440,7 +2450,8 @@ The main Journeys below illustrate the interactions with the Registry Infrastruc
 </li>
 <li><a class="reference internal" href="#federation-registry">7.5. Federation Registry</a><ul>
 <li><a class="reference internal" href="#registry-integration-role">7.5.1. Registry Integration Role</a></li>
-<li><a class="reference internal" href="#federation-registry-access">7.5.2. Federation Registry Access</a></li>
+<li><a class="reference internal" href="#federation-registry-registration-information">7.5.2. Federation Registry Registration Information</a></li>
+<li><a class="reference internal" href="#federation-registry-access">7.5.3. Federation Registry Access</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#digital-credentials-catalog">7.6. Digital Credentials Catalog</a><ul>
