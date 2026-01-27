@@ -93,15 +93,16 @@ Trust Infrastructure Schema: Onboarding and Trusted Lists
 
 The trust infrastructure relies on three distinct but complementary processes:
 
-1. **Registration/Onboarding**: Entities (PID Providers, Attestation Providers, Relying Parties) register with the National Registrar to define operational authorization and entitlements.
-2. **Notification**: The Member State notifies the European Commission of **Wallet Providers**, **Access Certificate Authorities (Access CAs)**, and **Providers of Registration Certificates** for inclusion in the relevant Trusted Lists.
+1. **Registration/Onboarding**: Entities (PID Providers, Attestation Providers, Relying Parties, Wallet Providers) register with the National Registrar or the IT-Wallet onboarding system to define operational authorization and entitlements.
+2. **Notification**: The Member State notifies the European Commission, as operator of the EU-level eIDAS Trusted List Provider, of **PID Providers**, **PuB-EAA Providers**, **Wallet Providers**, **Access Certificate Authorities (Access CAs)**, and **Providers of Registration Certificates** for inclusion in the relevant Trusted Lists.
 3. **National Catalog and List Publication**: Publication of national catalogs and lists for registered entities via RESTful endpoints, as described in this section.
-4. **Trusted List Publication**: Publication of cryptographic trust anchors for validation purposes, based on registration data and Member State notifications.
+4. **eIDAS Trusted List Publication**: Publication of EU-level eIDAS Trusted Lists by the European Commission, based on notifications from the Member State for Wallet Providers, PID Providers, PuB-EAA Providers, Access CAs, and Registration Certificate Providers.
+5. **National Trusted List Publication**: Publication of national Trusted Lists for QEAA Providers and non-qualified EAA Providers by the Member State Trusted List Provider (MS TLP), based on National Registrar data.
 
 EAA Provider Trusted Lists: Implementation Profile
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This section provides the implementation profile for Trusted Lists for both Qualified Electronic Attestation of Attributes (QEAA) Providers and non-qualified Electronic Attestation of Attributes (EAA) Providers, as required by the EUDI Wallet trust infrastructure.
+This section provides the implementation profile for national Trusted Lists compiled and published by the Member State Trusted List Provider (MS TLP) for both Qualified Electronic Attestation of Attributes (QEAA) Providers and non-qualified Electronic Attestation of Attributes (EAA) Providers, as required by the EUDI Wallet trust infrastructure.
 
 Regulatory Requirements and Motivations
 """""""""""""""""""""""""""""""""""""""
