@@ -6,7 +6,7 @@ servers:
   - url: https://authentic-source.example.it
     description: Authentic Source API
 paths:
-  /v1.3.1/AttributeClaims{dataset_id}:
+  /v1.3.1/AttributeClaims/{dataset_id}:
     post:
       tags:
         - e-Services PDND
