@@ -246,7 +246,7 @@
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Integrazione del Registro Claims</strong>: Le Fonti Autentiche selezionano definizioni di claim standardizzate dal Registro degli Attributi durante la dichiarazione delle specifiche.</p></li>
-<li><p><strong>Integrazione della Tassonomia</strong>: Tutte le entità utilizzano la classificazione gerarchica della Tassonomia (domini, classi, scopi) per la struttura organizzativa per categorizzare gli Attestati Elettronici.</p></li>
+<li><p><strong>Integrazione della Tassonomia</strong>: Tutte le entità utilizzano la classificazione gerarchica della Tassonomia (domini, scopi) per la struttura organizzativa per categorizzare gli Attestati Elettronici.</p></li>
 <li><p><strong>Integrazione del Registro AS</strong>: Le Fonti Autentiche registrate con i loro attributi dichiarati e le relative specifiche, abilitando la discovery e coordinamento con i Credential Issuer.</p></li>
 <li><p><strong>Integrazione del Registro di Federazione</strong>: Entità operative incluse per la validazione del trust durante le operazioni delle attestazioni elettroniche.</p></li>
 <li><p><strong>Integrazione del Catalogo</strong>: Tipi di attestati elettronici pubblicati in <a class="reference internal" href="registry.html#catalogo-degli-attestati-elettronici"><span class="std std-ref">Catalogo degli Attestati Elettronici</span></a> basati sulle policy dell'organismo di supervisione per l'eleggibilità alla discovery pubblica.</p></li>
@@ -294,13 +294,9 @@
 </section>
 <section id="requisiti-sulle-informazioni-di-registrazione-delle-as">
 <h3><span class="section-number">8.2.2. </span>Requisiti sulle Informazioni di Registrazione delle AS<a class="headerlink" href="#requisiti-sulle-informazioni-di-registrazione-delle-as" title="Link to this heading">¶</a></h3>
-<div class="admonition note">
-<p class="admonition-title">Nota</p>
-<p>Attualmente solo le Authentic Source italiane possono registrarsi ad IT-Wallet.</p>
-</div>
 <p>Durante la registrazione, le Fonti Autentiche DEVONO fornire le seguenti informazioni:</p>
 <table class="longtable docutils align-default" id="id2">
-<caption><span class="caption-number">Tabella 8.2 </span><span class="caption-text">Requisiti sulle Informazioni di Registrazione delle AS</span><a class="headerlink" href="#id2" title="Link to this table">¶</a></caption>
+<caption><span class="caption-number">Tabella 8.2 </span><span class="caption-text">sulle Informazioni di Registrazione delle AS</span><a class="headerlink" href="#id2" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 30.0%" />
 <col style="width: 70.0%" />
@@ -324,7 +320,7 @@
 <td><p><strong>OBBLIGATORIO</strong>. Claims disponibili:</p>
 <ul class="simple">
 <li><p>Array che include identificativi dei claim censiti nel Registro Claims che la Fonte Autentica fornisce (es., <code class="docutils literal notranslate"><span class="pre">[&quot;given_name&quot;,</span> <span class="pre">&quot;family_name&quot;,</span> <span class="pre">&quot;driving_privileges&quot;]</span></code>).</p></li>
-<li><p>Scopi previsti per la verifica (es. <code class="docutils literal notranslate"><span class="pre">[&quot;DRIVING_RIGHTS&quot;]</span></code>).</p></li>
+<li><p>Classificazione tassonomica per l'ambito della Fonte Autentica (es., domini <code class="docutils literal notranslate"><span class="pre">[AUTHORIZATION]</span></code> e scopi <code class="docutils literal notranslate"><span class="pre">[&quot;DRIVING_LICENSE&quot;]</span></code>).</p></li>
 </ul>
 </td>
 </tr>
@@ -366,8 +362,8 @@
 <p>La registrazione della Fonte Autentica segue un processo tecnico come descritto di seguito.</p>
 <figure class="align-default" id="id3">
 <p class="plantuml">
-<object data="_images/plantuml-b41cfb6b927d5db984f7ae8a5bd541f10e7d14f6.svg" type="image/svg+xml" style="width:99%">
-<a href="_images/plantuml-b41cfb6b927d5db984f7ae8a5bd541f10e7d14f6.png"><img src="_images/plantuml-b41cfb6b927d5db984f7ae8a5bd541f10e7d14f6.png" alt="Processo di registrazione della Fonte Autentica che mostra la procedura in 3 fasi" style="width: 99.0%"/></a>
+<object data="_images/plantuml-35b17aa79bbea7e02d0b1f0c8a28251c37e2ed36.svg" type="image/svg+xml" style="width:99%">
+<a href="_images/plantuml-35b17aa79bbea7e02d0b1f0c8a28251c37e2ed36.png"><img src="_images/plantuml-35b17aa79bbea7e02d0b1f0c8a28251c37e2ed36.png" alt="Processo di registrazione della Fonte Autentica che mostra la procedura in 3 fasi" style="width: 99.0%"/></a>
 
 </object></p>
 <figcaption>
@@ -375,130 +371,50 @@
 </figcaption>
 </figure>
 <p><strong>Fase 1 - Preparazione del Pacchetto di Registrazione</strong>: L'Entità prepara le informazioni di registrazione secondo la tabella dei requisiti sopra. Un esempio non normativo di informazioni in formato JSON è fornito di seguito.</p>
-<div class="literal-block-wrapper docutils container" id="id4">
-<div class="code-block-caption"><span class="caption-number">Listato 8.1 </span><span class="caption-text">Esempio di Registrazione Authentic Source</span><a class="headerlink" href="#id4" title="Link to this code">¶</a></div>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;entity_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://transport-authority.gov.example&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;organization_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;National Transport Authority&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;entity_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://transport-authority.gov.example&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;organization_info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;organization_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Autorità Nazionale dei Trasporti&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;organization_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;public&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;ipa_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nta_001&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;legal_identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;12345678901&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;organization_country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;XX&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;homepage_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/transport&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="s2">&quot;registry@transport-authority.gov.example&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;technical-support@transport-authority.gov.example&quot;</span>
-<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;registry@transport-authority.gov.example&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;technical-support@transport-authority.gov.example&quot;</span><span class="p">],</span>
 <span class="w">    </span><span class="nt">&quot;policy_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/transport/privacy-policy&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/assets/transport-authority-logo.svg&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;logo_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;logo_extended_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/assets/transport-authority-logo-extended.svg&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;logo_extended_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;data_capabilities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Driving license data is available for licenses issued after January 1, 2020. For older licenses, contact the local transport authority office.&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;intended_purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="s2">&quot;DRIVING_LICENSE&quot;</span>
-<span class="w">            </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;dataset_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;38832801&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;data_origin&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MIT -- Direzione Generale per la Motorizzazione&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;available_claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;given_name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;family_name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;birth_date&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;birth_place&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;document_number&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;issue_date&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;expiry_date&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;driving_privileges&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;portrait&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;un_distinguishing_sign&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;document_iss_country&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;document_iss_authority&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;integration_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pdnd&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;integration_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.gov.example/transport/driving-license&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;api_specification&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://docs.gov.example/transport/api-oas3.yaml&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;data_provision&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;immediate_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;deferred_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="nt">&quot;update_frequency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;real_time&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;user_information&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;###### Driving License\nVehicle registration data is available for licenses issued after January 1, 2020. For older licenses, contact the local motorization office.&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;service_documentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://docs.gov.example/transport/api-docs&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/assets/transport-data-logo.svg&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;logo_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-b1946ac92492d2347c6235b4d2611184e2a3f8b8c8f8f8e8f8f8f8f8f8f8f8f8&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="s2">&quot;citizen-support@gov.example&quot;</span>
-<span class="w">            </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;background_image&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/assets/background-image.svg&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg==&quot;</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="nt">&quot;watermark_image&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/assets/watermark-image.svg&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg==&quot;</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="nt">&quot;background_color&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#12107c&quot;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">]</span>
+<span class="w">    </span><span class="nt">&quot;user_information&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;I dati della patente di guida sono disponibili per le patenti rilasciate dopo il 1° gennaio 2020. Per patenti più vecchie, contattare l&#39;ufficio dell&#39;autorità dei trasporti locale.&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/assets/transport-logo.svg&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;logo_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;data_capabilities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;domains&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;IDENTITY&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;AUTHORIZATION&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;intended_purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;DRIVING_LICENSE&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;available_claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;given_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;family_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;birth_date&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;birth_place&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;issue_date&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;expiry_date&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;document_number&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;driving_privileges&quot;</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;integration_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pdnd&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;integration_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.gov.example/transport/driving-license&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;api_specification&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://docs.gov.example/transport/api-oas3.yaml&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;data_provision&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;immediate_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;deferred_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;update_frequency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;real_time&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">       </span><span class="nt">&quot;background_color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#003d82&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
-</div>
 </div>
 <p><strong>Fase 2 - Validazione Tecnica</strong>: L'Organismo di Supervisione valida la registrazione presentata concentrandosi su:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Conformità con il Registro dei Claims</strong>: Validazione del formato dei claim, degli identificativi ed esistenza nel Registro dei Claims.</p></li>
-<li><p><strong>Validazione Tassonomia</strong>: Verifica che le finalità dichiarate siano voci tassonomiche valide.</p></li>
+<li><p><strong>Validazione Tassonomia</strong>: Verifica che i domini e finalità dichiarate siano voci tassonomiche valide.</p></li>
 <li><p><strong>Verifica Integrazione API</strong>:</p>
 <ul>
 <li><p><strong>Entità Pubbliche</strong>: Verifica della conformità della specifica e-service PDND</p></li>
@@ -615,19 +531,19 @@
 <p class="admonition-title">Nota</p>
 <p>Questa sezione copre solo i requisiti di registrazione tecnica. Tutte le informazioni amministrative (validazione dell'entità legale, conformità normativa, eleggibilità organizzativa, ecc.) si presume siano state raccolte e validate dall'Organismo di Supervisione durante la fase di registrazione amministrativa, che è fuori dall'ambito di questa specifica tecnica. Esempi di informazioni amministrative includono: nome dell'entità legale, numeri di registrazione aziendale, persone di contatto, documentazione di conformità legale e autorizzazioni operative.</p>
 </div>
-<figure class="align-default" id="id5">
+<figure class="align-default" id="id4">
 <p class="plantuml">
 <object data="_images/plantuml-1bcf87d7d6deb4e2d1e5e5caf18348f7e29fc537.svg" type="image/svg+xml" style="width:99%">
 <a href="_images/plantuml-1bcf87d7d6deb4e2d1e5e5caf18348f7e29fc537.png"><img src="_images/plantuml-1bcf87d7d6deb4e2d1e5e5caf18348f7e29fc537.png" alt="Processo di onboarding dell'entità di federazione che mostra la procedura in 4 fasi" style="width: 99.0%"/></a>
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 8.2 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/dLHHRnit37w_Nq7qOKYmfF6wz646l3NmqY4BXXPEr-t1G41BF5khZhf9L5B_-vqi7quvtu1XRmSToUyZFtvy5mIznCR2UzBaKOnZk6KnieSFl77ejU4jVFHEKGWLHd4ScmtvgcgxHADCYopmwYJx5M20clurwYRApla-KB2g5Wju46hXktc9lAA_8mM1XxXfJ0WfTR6egfhWyaSGdESV0cv8yJbbpMV7Hkv-le2FSMEDWdlQmwz_t5_0yc5rFc2-cSCKD_YCrkZyYAnXILvCRHGAmLq84LdHWOvWJ-SpULFlmTFM13dMCrmxtno-oyXSc_fnBntNPXkFETZnlthzJDPUVc7tp5Uk9JRwiXve4klM6PQYvatRsZqq9AXH45fdZJ8KuDd83XG6XOS9KLsJAlDICmH_ldux-m5KqMJ7UyqdsXR3h2gqKeufH9KsfOws0W3843NDNynExT0mU0gjuq23K2Nqju2z3ELxEA_81YeXQpIMz0XkHN-HIhzpxqOJfnAamQHUGqMi1_s_dq-hy7jxK2XflwBWx1Fr2rbiOOBBWPD5vck-X1kjXtuUTuObWB9eclxdrxSgFnor6azhmChJ3pk81qmDjyl_i2s3O_fE2fzS-VpqKuYR1R4aZaP_8pu6UKHM7Us5OFTKMEPwABJAGkOv5TvTkgQrbD179bcHwkAxyahWAGa91wZSQH7t2t6YJwKvFnqYVqF_9MqdPBRbAhEoKLCPPpXT2PT8fM8FWa8DiKmX1RDbqjsD-9I5A8XThFdfw5azU2prZCbsgUCJvsL_z8CQp05dRsOp-71_VhAsERBtHYRHiUbKAgXqxZYbaciDEhydKRlfpfFcTVhzKl4ncydSJ6aORu6QScw_YaSbBtJohfckDSgzOw6jHncfDschVY2FJHTqD5FcV-gKsZ3Q_tjdyxtfXSd71iwkPxEhwzdrU6AttZi_KYyV7107Hvlbs_EEMCV6_WC0">Processo di Onboarding dell'Entità di Federazione.</a></span><a class="headerlink" href="#id5" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 8.2 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/dLHHRnit37w_Nq7qOKYmfF6wz646l3NmqY4BXXPEr-t1G41BF5khZhf9L5B_-vqi7quvtu1XRmSToUyZFtvy5mIznCR2UzBaKOnZk6KnieSFl77ejU4jVFHEKGWLHd4ScmtvgcgxHADCYopmwYJx5M20clurwYRApla-KB2g5Wju46hXktc9lAA_8mM1XxXfJ0WfTR6egfhWyaSGdESV0cv8yJbbpMV7Hkv-le2FSMEDWdlQmwz_t5_0yc5rFc2-cSCKD_YCrkZyYAnXILvCRHGAmLq84LdHWOvWJ-SpULFlmTFM13dMCrmxtno-oyXSc_fnBntNPXkFETZnlthzJDPUVc7tp5Uk9JRwiXve4klM6PQYvatRsZqq9AXH45fdZJ8KuDd83XG6XOS9KLsJAlDICmH_ldux-m5KqMJ7UyqdsXR3h2gqKeufH9KsfOws0W3843NDNynExT0mU0gjuq23K2Nqju2z3ELxEA_81YeXQpIMz0XkHN-HIhzpxqOJfnAamQHUGqMi1_s_dq-hy7jxK2XflwBWx1Fr2rbiOOBBWPD5vck-X1kjXtuUTuObWB9eclxdrxSgFnor6azhmChJ3pk81qmDjyl_i2s3O_fE2fzS-VpqKuYR1R4aZaP_8pu6UKHM7Us5OFTKMEPwABJAGkOv5TvTkgQrbD179bcHwkAxyahWAGa91wZSQH7t2t6YJwKvFnqYVqF_9MqdPBRbAhEoKLCPPpXT2PT8fM8FWa8DiKmX1RDbqjsD-9I5A8XThFdfw5azU2prZCbsgUCJvsL_z8CQp05dRsOp-71_VhAsERBtHYRHiUbKAgXqxZYbaciDEhydKRlfpfFcTVhzKl4ncydSJ6aORu6QScw_YaSbBtJohfckDSgzOw6jHncfDschVY2FJHTqD5FcV-gKsZ3Q_tjdyxtfXSd71iwkPxEhwzdrU6AttZi_KYyV7107Hvlbs_EEMCV6_WC0">Processo di Onboarding dell'Entità di Federazione.</a></span><a class="headerlink" href="#id4" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Fase 1 - Invio Richiesta di Onboarding</strong>: L'Entità di Federazione inizia il processo di onboarding inviando una richiesta di registrazione tecnica includendo le seguenti informazioni.</p>
-<table class="longtable docutils align-default" id="id6">
-<caption><span class="caption-number">Tabella 8.3 </span><span class="caption-text">Informazioni della Richiesta Tecnica di Onboarding della Federazione</span><a class="headerlink" href="#id6" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id5">
+<caption><span class="caption-number">Tabella 8.3 </span><span class="caption-text">Informazioni della Richiesta Tecnica di Onboarding della Federazione</span><a class="headerlink" href="#id5" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 30.0%" />
 <col style="width: 70.0%" />
@@ -660,8 +576,8 @@
 <p>Prima di inviare la richiesta di onboarding tecnico, le Entità di Federazione DEVONO assicurarsi che il loro endpoint <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> pubblichi una Entity Configuration valida (come definita in <a class="reference internal" href="trust-infrastructure.html#entity-configuration"><span class="std std-ref">Entity Configuration</span></a>) firmata con la loro Chiave Privata di Federazione corrispondente alla Chiave Pubblica dell'Entità di Federazione fornita nella richiesta. L'Entity Configuration DEVE già includere le Chiavi di Protocollo nei metadati con certificati X.509 auto-firmati nei claim <code class="docutils literal notranslate"><span class="pre">x5c</span></code>.</p>
 </div>
 <p>Un esempio non normativo della struttura delle informazioni tecniche che le Entità di Federazione inviano durante la richiesta di onboarding della Fase 1:</p>
-<div class="literal-block-wrapper docutils container" id="id7">
-<div class="code-block-caption"><span class="caption-number">Listato 8.2 </span><span class="caption-text">Federation onboarding request example</span><a class="headerlink" href="#id7" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-number">Listato 8.1 </span><span class="caption-text">Federation onboarding request example</span><a class="headerlink" href="#id6" title="Link to this code">¶</a></div>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;entity_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://credential-issuer.example.gov&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;entity_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;credential_issuer&quot;</span><span class="p">,</span>
@@ -857,8 +773,8 @@
 <section id="struttura-trust-mark">
 <h4><span class="section-number">8.4.5.2. </span>Struttura Trust Mark<a class="headerlink" href="#struttura-trust-mark" title="Link to this heading">¶</a></h4>
 <p>I Trust Mark nell'Entity Configuration DEVONO essere rappresentati come oggetti JSON contenenti i seguenti claim:</p>
-<table class="longtable docutils align-default" id="id8">
-<caption><span class="caption-number">Tabella 8.4 </span><span class="caption-text">Trust Mark Object Claims (nell'Entity Configuration)</span><a class="headerlink" href="#id8" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id7">
+<caption><span class="caption-number">Tabella 8.4 </span><span class="caption-text">Trust Mark Object Claims (nell'Entity Configuration)</span><a class="headerlink" href="#id7" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 80.0%" />
@@ -878,8 +794,8 @@
 </tbody>
 </table>
 <p>Il JWT del Trust Mark (contenuto nel claim <code class="docutils literal notranslate"><span class="pre">trust_mark</span></code> sopra) include i seguenti claim:</p>
-<table class="longtable docutils align-default" id="id9">
-<caption><span class="caption-number">Tabella 8.5 </span><span class="caption-text">Claim JWT Trust Mark</span><a class="headerlink" href="#id9" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id8">
+<caption><span class="caption-number">Tabella 8.5 </span><span class="caption-text">Claim JWT Trust Mark</span><a class="headerlink" href="#id8" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 80.0%" />
@@ -958,8 +874,8 @@
 <span class="w">  </span><span class="nt">&quot;authorized_claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;given_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;family_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;driving_privileges&quot;</span><span class="p">],</span>
 <span class="w">  </span><span class="nt">&quot;authorized_credential_types&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;mobile-driving-license&quot;</span><span class="p">],</span>
 <span class="w">  </span><span class="nt">&quot;scope_restrictions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;domains&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;MOBILITY_TRAVEL&quot;</span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;DRIVING_RIGHTS&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="nt">&quot;domains&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;AUTHORIZATION&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;DRIVING_LICENSE&quot;</span><span class="p">]</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -1109,7 +1025,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 26/01/2026.
+      Ultimo aggiornamento 27/01/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

@@ -116,8 +116,8 @@ Il Registro dei Claims DEVE supportare il ciclo di vita completo dell'ecosistema
 **Durante il Processo di Onboarding**:
 
   - **Registrazione AS**: Le Fonti Autentiche dichiarano i claims disponibili dal registro standardizzato durante la registrazione delle capacità.
-  - **Registrazione CI**: Gli Emittenti di Credenziali selezionano le entità AS in base ai claims richiesti e registrano i tipi di credenziali per la pubblicazione nel catalogo.
-  - **Registrazione RP**: Le Relying Parties specificano i requisiti di autorizzazione usando domini/finalità per tipi di credenziali specifici e/o attributi dell'Utente.
+  - **Registrazione CI**: Gli Emittenti di Credenziali selezionano le entità AS in base ai claims richiesti e registrano i tipi di Credenziali per la pubblicazione nel catalogo.
+  - **Registrazione RP**: Le Relying Parties specificano i requisiti di autorizzazione usando domini/scopi per tipi di Credenziali specifici e/o attributi dell'Utente.
 
 **Durante le Attività Operative**:
 
@@ -144,7 +144,7 @@ L'Organismo di Supervisione DEVE mantenere il Registro delle Fonti Autentiche pe
   - **Informazioni sull'Organizzazione**: Dettagli dell'entità legale, stato normativo e ruolo autorevole all'interno di domini specifici.
   - **Capacità dei Dati**: Disponibilità dichiarata dei claims che fanno riferimento a definizioni standardizzate dal Registro dei Claims con le corrispondenti classificazioni della Tassonomia.
   - **Metodi di Integrazione**: Meccanismi di accesso tecnico (PDND per AS pubblici, API personalizzate per AS privati).
-  - **Finalità Previste**: Tipi di credenziali supportati e contesti aziendali per il coordinamento AS-CI.
+  - **Scopi Previsti**: Tipi di Credenziali supportati e contesti aziendali per il coordinamento AS-CI.
   - **Garanzia della Qualità dei Dati**: Stato autorevole, frequenza di aggiornamento e capacità di traccia di audit.
 
 Il Registro AS DEVE garantire:
@@ -311,9 +311,12 @@ Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciasc
    * - **data_capabilities[].data_origin**
      - string
      - OPZIONALE. Nome leggibile dall'uomo dell'origine dati specifica o del dipartimento che fornisce i dati.
+   * - **data_capabilities[].domains**
+     - String Array
+     - RICHIESTO. Dominio della tassonomia (es., ``["AUTHORIZATION"]``, ``["FINANCIAL"]``).
    * - **data_capabilities[].intended_purposes**
      - String Array
-     - RICHIESTO. Finalità previste (es., ``["driving-authorization", "identity-verification"]``).
+     - RICHIESTO. Scopi aziendali serviti (es., ``["driving-authorization", "identity-verification"]``).
    * - **data_capabilities[].available_claims**
      - String Array
      - RICHIESTO. Claims disponibili da questa capacità di dati.
@@ -367,10 +370,10 @@ Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciasc
      - CONDIZIONALE. Digest crittografico della risorsa immagine del logo per la verifica dell'integrità. RICHIESTO se ``logo_uri`` è presente. Formato: ``{digest_method}-{digest_value}`` (es., ``"sha-256-abc123..."``).
    * - **data_capabilities[].background_image**
      - JSON object
-     - OPZIONALE. Oggetto contiene informazioni sull'immagine di sfondo da visualizzare insieme ai dati forniti. L'oggetto include i parametri ``uri`` e ``uri#integrity``.
+     - OPZIONALE. Oggetto contiene informazioni sull’immagine di sfondo da visualizzare insieme ai dati forniti. L’oggetto include i parametri ``uri`` e ``uri#integrity``.
    * - **data_capabilities[].watermark_image**
      - JSON object
-     - OPZIONALE. Oggetto contiene informazioni sull'immagine di filigrana da visualizzare insieme ai dati forniti. L'oggetto include i parametri ``uri`` e ``uri#integrity``.
+     - OPZIONALE. Oggetto contiene informazioni sull’immagine di filigrana da visualizzare insieme ai dati forniti. L’oggetto include i parametri ``uri`` e ``uri#integrity``.
    * - **data_capabilities[].background_color**
      - string
      - OPZIONALE. Stringa che rappresenta il colore di sfondo da visualizzare insieme ai dati forniti
@@ -399,12 +402,12 @@ Un esempio non normativo di output di un bundle di localizzazione è fornito di 
 .. code-block:: json
 
  {
-    "authentic_source1.name": "Ministero delle Infrastrutture e dei Trasporti",
-    "authentic_source1.dataset1.origin": "MIT -- Direzione Generale per la Motorizzazione",
-    "authentic_source1.dataset1.userinfo": "###### Patente di guida\nI dati di immatricolazione del veicolo sono disponibili per le patenti rilasciate dopo il 1° gennaio 2020. Per patenti più vecchie, contattare l'ufficio locale della motorizzazione.",
-    "authentic_source2.name": "Banca di Esempio S.p.A.",
-    "authentic_source2.dataset1.origin": "Origine dati di esempio 1",
-    "authentic_source2.dataset1.userinfo": "###### Informazioni sulla disponibilità dei dati\nL'accesso ai dati finanziari richiede il consenso del cliente ed è soggetto alle normative PSD2. Le informazioni sul conto sono disponibili solo per conti attivi.",
+    "authentic_source1.name": "Ministry of Infrastructure and Transport",
+    "authentic_source1.dataset1.origin": "MIT -- General Directorate for Motorization",
+    "authentic_source1.dataset1.userinfo": "###### Driving License\nVehicle registration data is available for licenses issued after January 1, 2020. For older licenses, contact the local motorization office.",
+    "authentic_source2.name": "Example Bank S.p.A.",
+    "authentic_source2.dataset1.origin": "Example data origin 1",
+    "authentic_source2.dataset1.userinfo": "###### Information on data availability\nFinancial data access requires customer consent and is subject to PSD2 regulations. Account information is available for active accounts only.",
     "...": "..."
   }
 
@@ -514,7 +517,7 @@ La seguente tabella riassume le informazioni principali che DEVONO essere fornit
        - **Validità della Credenziale**: Periodo di tempo durante il quale la Credenziale Digitale è valida e, quando applicabile, meccanismi e dettagli tecnici per invalidare gli Attestati Elettronici (metodi di revoca/sospensione).
        - **Policy di restrizione**: Se applicabile, regole che governano l'uso e le limitazioni della Credenziale Digitale secondo le normative nazionali. È usata, ad esempio, per specificare se solo Entità di tipo legale specifico, per esempio Fornitore Pub-EAA e Soluzioni Wallet pubbliche, sono autorizzate a emettere e ottenere la Credenziale Digitale.
        - **Policy di prezzo**: Informazioni relative ai modelli di prezzo della Credenziale Digitale, come `free`, `issuance_based`, `verification_based`.
-       - **Finalità della Credenziale Digitale**: Informazioni relative alle finalità consentite per cui la Credenziale Digitale può essere usata. Ogni tipo di Credenziale Digitale può essere usato per molteplici finalità.
+       - **Scopi della Credenziale Digitale**: Informazioni relative agli scopi consentiti per cui la Credenziale Digitale può essere usata. Ogni tipo di Credenziale Digitale può essere usato per molteplici scopi.
 
 
 Il Trust Anchor DEVE pubblicare e mantenere aggiornate tutte le informazioni all'endpoint `.well-known` del Catalogo degli Attestati Elettronici garantendo affidabilità, autenticità e integrità dei dati. In particolare, il Catalogo degli Attestati Elettronici, i claims e la tassonomia DEVONO essere disponibili attraverso l'endpoint ``.well-known/credential-catalog``.
@@ -522,351 +525,64 @@ Il Trust Anchor DEVE pubblicare e mantenere aggiornate tutte le informazioni all
 Gerarchia degli Attestati Elettronici
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Le Credenziali Digitali riconosciute all'interno dell'ecosistema IT-Wallet sono classificate e standardizzate secondo il seguente modello gerarchico multilivello, progettato per migliorare la chiarezza semantica, la scoperta delle credenziali e la compatibilità sia con flussi di verifica basati su credenziali specifiche che su singoli attributi (claims).
+gli Attestati Elettronici riconosciute all'interno dell'ecosistema IT-Wallet sono classificate e standardizzate gerarchicamente secondo i seguenti domini e scopi principali. Scopi aggiuntivi POSSONO essere aggiunti man mano che l'ecosistema IT-Wallet cresce.
 
-La gerarchia è definita come segue:
 
-**Dominio (Domain)**
-
-Un **Dominio** rappresenta un'area tematica di alto livello che raggruppa famiglie di Credenziali afferenti allo stesso contesto generale (ad es. Identità, Salute, Istruzione, Mobilità).
-I Domini forniscono il livello organizzativo più alto della Tassonomia.
-
-**Classe di Credenziale (Credential Class)**
-
-Una **Credential Class** rappresenta una famiglia di Credenziali che condividono natura, funzione o struttura simili (ad es. Documenti di Identità, Certificati di Stato Civile).
-
-Ogni Classe **DOVREBBE** definire:
-
-- un identificatore di Classe stabile (URI);
-- la semantica attesa della famiglia di Credenziali.
-
-Le Classi consentono ai Relying Party e alle Wallet Solution di richiedere o individuare le credenziali in base alla loro categoria tipologica.
-
-**Tipo di Credenziale (Credential Type)**
-
-Un **Credential Type** rappresenta una specifica istanza di una credenziale all'interno di una Classe (ad es. Credenziale di Viaggio Digitale, Certificato di Nascita, Patente di Guida).
-Ogni Credential Type **DEVE** includere:
-
-- un identificatore univoco;
-- l'identificativo dell'Emittente della Credenziale (Issuer);
-- l'insieme degli Attributi che possono essere inclusi nelle presentazioni.
-
-I Credential Type consentono un targeting preciso nei flussi di verifica guidati da requisiti di conformità o obblighi normativi.
-
-**Finalità (Purpose - Intento di Verifica)**
-
-Uno **Finalità (Purpose - Intento di Verifica)** descrive *perché* una credenziale può essere richiesta da un Relying Party (ad es. Verifica dell'identità, Verifica dell'età, Idoneità per servizi specifici).
-Gli Finalità **DEVONO** descrivere gli **obiettivi della verifica**.
-Ogni Credential Type **DEVE** dichiarare il proprio Dominio, Classe e le Finalità supportati.
-
-Le tabelle seguenti forniscono esempi non esaustivi che illustrano le relazioni tra Dominio, Credential Class e Credential Type, seguite dalla loro mappatura con gli Scopi di verifica.
-Ulteriori Domini, Classi, credenziali specifiche e Finalità di verifica POSSONO essere aggiunti nel tempo con l'evolversi dell'ecosistema IT-Wallet.
-
-.. _it-wallet-dc-taxonomy:
-.. list-table:: Tabella 1: Tassonomia delle Credenziali Digitali: Gerarchia e Classificazione
+.. _it-wallet-dc-domains:
+.. list-table:: Domini e Scopi degli Attestati Elettronici
    :class: longtable
    :header-rows: 1
-   :widths: 15 25 30 30
+   :widths: 20 30 50
 
    * - **Dominio**
+     - **Scopo**
      - **Descrizione**
-     - **Credential Class**
-     - **Credential Type**
+   * - *IDENTITY*
+     - * PERSON_IDENTIFICATION
+       * ELECTRONIC_RESIDENCY
+     - Credenziali che stabiliscono o verificano l'identità di una persona, inclusi documenti di identità fisici e digitali legalmente riconosciuti dalle leggi nazionali.
+   * - *AUTHORIZATION*
+     - * DRIVING_LICENSE
+       * PROFESSIONAL_LICENSE
+       * TRAVEL_DOCUMENT
+       * ACCESS_PERMIT
+     - Credenziali che concedono permessi, diritti o autorizzazioni specifici per eseguire determinate attività o accedere ad aree riservate.
+   * - *EDUCATION*
+     - * ACADEMIC_DEGREE
+       * CERTIFICATE
+       * TRAINING_RECOGNITION
+     - Credenziali relative a risultati educativi, qualifiche e riconoscimento di formazione professionale.
+   * - *HEALTH*
+     - * INSURANCE_CARD
+       * DISABILITY_CARD
+       * MEDICAL_PRESCRIPTION
+     - Credenziali relative all'accesso sanitario, storia medica, copertura assicurativa e documenti sanitari.
+   * - *FINANCIAL*
+     - * INCOME_CERTIFICATE
+       * TAX_STATEMENT
+       * FAMILY_ECONOMIC_STATUS
+       * BANK_ACCOUNT
+       * PAYMENT_HISTORY
+     - Credenziali che attestano stato finanziario, livelli di reddito, tassazione, informazioni bancarie o situazione economica di individui o famiglie.
+   * - *MEMBERSHIP*
+     - * ASSOCIATION
+       * LOYALTY_PROGRAM
+       * CLUB_MEMBERSHIP
+     - Credenziali che confermano affiliazione con organizzazioni, partecipazione a programmi o stato di membership.
+   * - *ATTESTATION*
+     - * PUBLIC_STATEMENT
+       * CIVIL_STATUS
+       * CERTIFICATION
+     - Credenziali che forniscono dichiarazioni ufficiali, conferme di stato o certificazioni rilasciate da autorità.
 
-   * - *IDENTITÀ*
-     - Credenziali che stabiliscono o confermano l'identità legale di una persona e lo stato personale, civile o legale.
-     - 
-       * Documenti di Identificazione
-       * Certificati di Registro Civile e Stato Personale
-       * Stato Economico e Legale
-     - 
-       * Credenziale di Viaggio Digitale
-       * Patente di Guida (solo Italia)
-       * Codice Fiscale / Tessera Sanitaria
-       * Certificazione dell'Età
-       * Certificato di Nascita
-       * Certificato di Residenza
-       * Certificato di Stato di Famiglia
-       * Certificato di Matrimonio
-       * Certificato di Cittadinanza
-       * ISEE (Indicatore della Situazione Economica Equivalente)
-       * Permesso di Soggiorno
-       * Certificato di Carichi Pendenti
-       * Certificato del Casellario Giudiziale
+Ogni Credenziale DEVE specificare domini e scopi per abilitare sia **Scenari Credential-Specific** che **Scenari Credential-Agnostic** secondo i requisiti della Relying Party e i pattern di richiesta di presentazione:
 
-   * - *CASA E FAMIGLIA*
-     - Credenziali che attestano la composizione del nucleo familiare, la residenza e le relazioni fiscali relative all'abitazione.
-     - 
-       * Documenti di Proprietà e Catastali
-       * Documenti Familiari
-       * Documenti Fiscali Locali
-     - 
-       * Atto di Compravendita
-       * Visura Catastale
-       * Planimetria Catastale
-       * Certificato Catastale
-       * Codice Fiscale / Tessera Sanitaria dei Figli
-       * Certificato di Nascita
-       * Certificato di Stato di Famiglia
-       * IMU (Imposta Municipale Unica)
-       * TARI (Tassa sui Rifiuti)
-
-   * - *ISTRUZIONE*
-     - Credenziali che attestano risultati educativi, qualifiche accademiche e formazione professionale.
-     - 
-       * Qualifiche Educative
-       * Certificazioni Professionali
-     - 
-       * Diploma di Scuola Secondaria di Primo Grado
-       * Diploma di Scuola Secondaria di Secondo Grado
-       * Laurea Triennale
-       * Laurea Magistrale
-       * Master Universitario
-       * Dottorato di Ricerca
-       * Licenze Professionali (es. architetto, avvocato)
-       * Certificati di Formazione Professionale
-       * Certificazioni Linguistiche (es. IELTS)
-       * Qualifiche Accademiche (es. Europass)
-
-   * - *SALUTE*
-     - Credenziali relative alla copertura sanitaria, allo stato medico e alle certificazioni sanitarie.
-     - 
-       * Certificazioni e Idoneità
-       * Medical Records
-     - 
-       * Tessera Sanitaria (TEAM)
-       * Tessera Europea di Assicurazione Malattia (CED)
-       * Certificato di Invalidità
-       * Certificato di Vaccinazione
-       * Certificato di Idoneità Sportiva
-       * Certificato di Idoneità Lavorativa
-       * Prescrizioni Mediche
-       * Referto Medico Digitale
-
-   * - *FINANZIARIO*
-     - Credenziali relative a strumenti di pagamento, autorizzazioni finanziarie e prova di pagamenti.
-     - 
-       * Strumenti di Pagamento
-       * Credenziali e Autorizzazioni di Pagamento
-       * Pagamenti Pubblici e Tasse
-       * Pagamenti Ricorrenti e Abbonamenti
-     - 
-       * Carta di Pagamento Digitale (debito / credito / prepagata)
-       * Carta Virtuale
-       * Conto Bancario (IBAN)
-       * Credenziale di Autenticazione Forte (SCA)
-       * Ricevuta di Pagamento PagoPA
-       * Marca da Bollo Digitale (Bollo digitale)
-       * Certificato di Pagamento Tasse e Imposte
-       * Mandato di Abbonamento
-       * Credenziale di Pagamento Ricorrente
-
-   * - *CULTURA E TEMPO LIBERO*
-     - Credenziali che attestano l'appartenenza o la partecipazione a programmi culturali o ricreativi.
-     - 
-       * Carte e Benefici Culturali
-       * Programmi di Membership e Fedeltà
-     - 
-       * Carta della Cultura
-       * Abbonamenti Museali Annuali
-       * Carta Cinema
-       * Carta Musei
-       * Tessere di Associazioni
-       * Tessera Biblioteca
-       * City Pass
-
-   * - *LAVORO*
-     - Credenziali che attestano rapporti di lavoro, stato professionale e registri contributivi.
-     - 
-       * Documenti di Lavoro
-       * Stato Lavorativo
-     - 
-       * Contratto di Lavoro Digitale
-       * Curriculum Vitae (CV)
-       * Permesso di Soggiorno
-       * Certificato di Stato Lavorativo
-       * Estratto Contributivo INPS
-
-   * - *MOBILITÀ E VIAGGI*
-     - Credenziali che attestano diritti di mobilità, stato dei veicoli e diritti legati ai viaggi.
-     - 
-       * Licenze e Autorizzazioni
-       * Documenti Veicolari
-       * Abbonamenti
-       * Documenti di Viaggio
-       * Assicurazione di Viaggio
-       * Prenotazioni
-       * Sconti e Benefici
-     - 
-       * Patente di Guida
-       * Patente Nautica
-       * Certificato di Immatricolazione Veicolo
-       * Assicurazione RCA Digitale
-       * Certificato di Revisione Veicolo
-       * Carta Verde / Assicurazione Internazionale
-       * Abbonamento Trasporto Pubblico
-       * Abbonamento Telepass
-       * Credenziale di Viaggio Digitale
-       * Biglietti di Viaggio (aereo, treno, ecc.)
-       * Polizza Assicurativa di Viaggio
-       * Prenotazione Alberghiera
-       * Carte Sconto
-       * Benefici Turistici
-
-   * - *BONUS*
-     - Credenziali che attestano il diritto a benefici economici, incentivi o voucher.
-     - 
-       * Benefici Economici e Indennità
-       * Incentivi e Voucher
-       * Bonus Salute e Benessere
-     - 
-       * Credenziale Assegno Familiare
-       * Credenziale Indennità di Disoccupazione
-       * Voucher Digitale
-       * Credenziale Incentivo all'Acquisto
-       * Credenziale Idoneità Cashback
-       * Credenziale Bonus Sanitario
-       * Voucher Supporto Salute Mentale
-       * Bonus Sport e Attività Fisica
-
-.. _it-wallet-dc-mapping:
-.. list-table:: Tabella 2: Mappatura tra Credential Class e Finalità (Purposes)
-   :class: longtable
-   :header-rows: 1
-   :widths: 40 60
-
-   * - **Credential Class**
-     - **Finalità Supportati (Supported Purposes)**
-
-   * - Documenti di Identificazione
-     - 
-       * Verifica dell'identità
-       * Verifica dell'età
-       * Identificazione della persona
-   * - Certificati di Registro Civile e Stato Personale
-     - 
-       * Verifica dello stato civile
-       * Diritto di residenza
-       * Verifica della composizione del nucleo familiare
-   * - Stato Economico e Legale
-     - 
-       * Idoneità per servizi o benefici
-       * Verifica dello stato legale
-       * Controllo del casellario giudiziale
-   * - Documenti di Proprietà e Catastali
-     - 
-       * Verifica della residenza e del nucleo familiare
-       * Verifica della proprietà immobiliare
-       * Conformità catastale
-   * - Documenti Familiari
-     - 
-       * Verifica della composizione familiare
-       * Idoneità per servizi sociali basati sulla famiglia
-   * - Documenti Fiscali Locali
-     - 
-       * Conformità agli obblighi fiscali locali
-       * Verifica dello stato delle tasse sugli immobili
-   * - Qualifiche Educative
-     - 
-       * Verifica di qualifiche e titoli accademici
-       * Idoneità per percorsi educativi
-   * - Certificazioni Professionali
-     - 
-       * Verifica delle licenze professionali
-       * Valutazione delle competenze lavorative
-   * - Certificazioni e Idoneità
-     - 
-       * Verifica dello stato vaccinale
-       * Verifica dello stato di idoneità fisica
-       * Accesso ad aree con restrizioni sanitarie
-   * - Cartelle Mediche (Medical Records)
-     - 
-       * Accesso ai servizi sanitari
-       * Condivisione di cartelle cliniche
-       * Validazione della storia medica
-   * - Strumenti di Pagamento
-     - 
-       * Autorizzazione al pagamento
-       * Esecuzione del pagamento
-       * Prova di pagamento
-   * - Credenziali e Autorizzazioni di Pagamento
-     - 
-       * Gestione delle autorizzazioni finanziarie
-       * Autenticazione Forte del Cliente (SCA)
-   * - Pagamenti Pubblici e Tasse
-     - 
-       * Prova di pagamento tasse
-       * Prova di pagamento diritti
-       * Validazione della marca da bollo digitale
-   * - Pagamenti Ricorrenti e Abbonamenti
-     - 
-       * Gestione dei pagamenti ricorrenti
-       * Verifica dei mandati di abbonamento
-   * - Carte e Benefici Culturali
-     - 
-       * Accesso a servizi culturali
-       * Accesso a servizi ricreativi
-       * Applicazione di sconti per i membri
-   * - Programmi di Membership e Fedeltà
-     - 
-       * Verifica dell'affiliazione
-       * Verifica della partecipazione
-       * Utilizzo dei benefici fedeltà
-   * - Documenti di Lavoro
-     - 
-       * Verifica dello stato lavorativo
-       * Validazione del profilo professionale
-   * - Stato Lavorativo
-     - 
-       * Verifica dei registri contributivi
-       * Idoneità per benefici legati al lavoro
-   * - Licenze e Autorizzazioni
-     - 
-       * Verifica dei diritti di guida
-       * Verifica dei diritti di navigazione
-       * Controlli delle forze dell'ordine
-   * - Documenti Veicolari
-     - 
-       * Verifica dell'immatricolazione del veicolo
-       * Verifica della revisione del veicolo
-       * Controllo dello stato assicurativo
-   * - Abbonamenti
-     - 
-       * Accesso ai servizi di trasporto
-       * Verifica dell'abbonamento al trasporto pubblico
-   * - Documenti di Viaggio
-     - 
-       * Diritto a viaggiare o circolare
-       * Controllo dell'identità per mobilità transfrontaliera
-   * - Assicurazione di Viaggio e Prenotazioni
-     - 
-       * Verifica della copertura assicurativa di viaggio
-       * Controllo delle prenotazioni di alloggio
-       * Controllo delle prenotazioni di trasporto
-   * - Benefici Economici e Indennità
-     - 
-       * Verifica di idoneità per assegni familiari
-       * Verifica di idoneità per indennità di disoccupazione
-       * Assegnazione di supporto economico
-   * - Incentivi e Voucher
-     - 
-       * Utilizzo di voucher digitali
-       * Utilizzo di incentivi all'acquisto
-       * Verifica dell'idoneità per il cashback
-   * - Bonus Salute e Benessere
-     - 
-       * Accesso ai bonus sanitari
-       * Utilizzo di voucher per la salute mentale
-       * Utilizzo di voucher per lo sport
-
-Ogni Credenziale **DEVE** specificare i propri domini, classi e finalità per abilitare sia gli **Scenari Specifici per Credenziale** che gli **Scenari Agnostici rispetto alla Credenziale** in base ai requisiti del Relying Party, come definito nelle tabelle di mappatura sopra riportate.
-  
   1. **Scenari Credential-Specific** (Primari per Settori Governativi/Regolamentati): Le RP richiedono tipi di Credenziali specifici per requisiti di conformità e audit, includendo ad esempio:
 
-    - **Servizi Governativi**: ``"credential_type":"pid"`` per la verifica dell'identità specifica del PID.
-    - **Controlli di Polizia**: ``"credential_type":"mDL"`` per la verifica della patente di guida.
-    - **KYC Bancario**: Tipi di credenziali specifici richiesti dalle normative finanziarie.
-    - **Servizi Sanitari**: ``"credential_type":"european_disability_card"`` per l'accesso ai benefici per disabilità conforme all'UE.
+    - **Servizi Governativi**: ``"vct_values": ["urn:eudi:pid:it:1"]`` per la verifica dell'identità specifica del PID.
+    - **Controlli di Polizia**: ``"docType": "org.iso.18013.5.1.mDL"`` per la verifica della patente di guida.
+    - **KYC Bancario**: Tipi di Credenziali specifici richiesti dalle normative finanziarie.
+    - **Servizi Sanitari**: ``"vct_values": ["urn:eudi:european_disability_card:it:1"]`` per l'accesso ai benefici per disabilità conforme all'UE.
 
   2. **Scenari Credential-Agnostic** (Tipici per Business Privato): Le RP richiedono claims specifici indipendentemente dalla fonte della Credenziale per efficienza operativa, come:
 
@@ -876,7 +592,7 @@ Ogni Credenziale **DEVE** specificare i propri domini, classi e finalità per ab
 
 Questo approccio consente:
 
-  - **Autorizzazione basata su policy** mediante l'utilizzo di mappature tra **Dominio / Classe / Tipo di Credenziale / Finalità**.
+  - **Autorizzazione basata su policy** usando mappature dominio/scopo.
   - **Registrazione RP flessibile** supportando sia le esigenze di conformità governativa che i requisiti operativi aziendali.
 
 Struttura del Catalogo degli Attestati Elettronici
@@ -975,18 +691,13 @@ Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazion
       * **user_auth_required**: RICHIESTO. Flag che indica se è richiesta l'autenticazione dell'Utente durante l'emissione della Credenziale Digitale.
       * **min_loa**: RICHIESTO. Livello Minimo di Garanzia richiesto per l'autenticazione della Credenziale Digitale. DEVE includere il Livello di Garanzia dell'autenticazione dell'Utente e dell'Istanza Wallet che richiede la Credenziale Digitale.
       * **supported_eid_schemes**: RICHIESTO se ``user_auth_required`` è ``true``. Schemi di autenticazione di identità digitale supportati.
-  * - **domains**
-    - RICHIESTO. Array di domini a cui la Credenziale Digitale appartiene, come:
-
-      * **id**: Identificativo univoco del dominio (e.g., "IDENTITY", "MOBILITY_TRAVEL").
-  * - **classes**
-    - RICHIESTO. Array di classi a cui la Credenziale Digitale appartiene, come:
-
-      * **id**: Identificativo univoco della classe (e.g., "IDENTIFICATION_DOCUMENTS", "LICENSES_AUTHORIZATIONS").
   * - **purposes**
-    - RICHIESTO. Array di finalità di utilizzo per cui la Credenziale Digitale può essere usata, definendo contesti di utilizzo specifici e claims richiesti per ciascuno scopo, come:
+    - RICHIESTO. Array di scopi di utilizzo per cui la Credenziale Digitale può essere usata, definendo contesti di utilizzo specifici e claims richiesti per ciascuno scopo, come:
 
-      * **id**: Identificatore univoco della finalità (es., "IDENTITY_VERIFICATION", "AGE_VERIFICATION", "DRIVING_RIGHTS").
+      * **id**: Identificatore univoco per lo scopo (es., "driving-authorization", "person-identification").
+      * **description**: Descrizione dello scopo leggibile dall'uomo con un suffisso ``_l10n_id`` per la localizzazione del contenuto.
+      * **claims_required**: Array di identificatori di claims che sono richiesti quando si usa la Credenziale per questo scopo.
+      * **claims_recommended**: Array di identificatori di claims che sono raccomandati ma non obbligatori per questo scopo.
   * - **issuers**
     - RICHIESTO. Array di informazioni rilevanti sugli Emittenti di Credenziali autorizzati, inclusi dati amministrativi e tecnici come nome dell'Organizzazione, un riferimento al documento di specifica API e meccanismi di emissione supportati (ad esempio il supporto del flusso differito).
   * - **authentic_sources**
@@ -1019,8 +730,8 @@ Un esempio non normativo di output di un bundle di localizzazione è fornito di 
 .. code-block:: json
 
   {
-    "mDL.name": "Patente di Guida",
-    "mDL.issuer1.name": "Esempio di Emittente di Credenziali",
+    "mDL.name": "Driving License",
+    "mDL.issuer1.name": "Example of Credential Issuer",
     "...": "..."
   }
 
@@ -1046,24 +757,22 @@ Tassonomia
 
 La **Tassonomia** fornisce le fondamenta semantiche per l'interoperabilità degli Attestati Elettronici mantenendo il vocabolario autorevole per organizzare le Credenziali all'interno dell'ecosistema IT-Wallet. La tassonomia è neutrale rispetto al formato delle Credenziali e ha l'obiettivo di facilitare le integrazioni degli Attestati Elettronici nelle Soluzioni Tecniche IT-Wallet.
 
-La Tassonomia fornisce, in una singola risorsa, il sistema di classificazione gerarchica che organizza Domini, Classi e Finalità di verifica che possono essere applicati ai tipi di Credenziali, supportando la valutazione delle policy di autorizzazione e la standardizzazione a livello di ecosistema.
+La tassonomia fornisce, in una singola risorsa, il sistema di classificazione gerarchica che organizza domini e scopi che possono essere applicati ai tipi di Credenziali, supportando la valutazione delle policy di autorizzazione e la standardizzazione a livello di ecosistema.
 
 **Obiettivi della Tassonomia:**
 
-1. **Fondamento Semantico**: Stabilire vocabolario standardizzato per domini e finalità in tutto l'ecosistema
+1. **Fondamento Semantico**: Stabilire vocabolario standardizzato per domini e scopi in tutto l'ecosistema
 2. **Framework delle Policy**: Abilitare decisioni di autorizzazione strutturate basate sulla classificazione gerarchica
-3. **Interoperabilità**: Garantire interpretazione coerente delle classificazioni delle credenziali
-4. **Estensibilità**: Supportare l'evoluzione dell'ecosistema con nuovi Domini, Classi, Tipologia di Credenziali, Finalità di verifica
+3. **Interoperabilità**: Garantire interpretazione coerente delle classificazioni delle Credenziali
+4. **Estensibilità**: Supportare l'evoluzione dell'ecosistema con nuovi domini e scopi
 5. **Conformità Transfrontaliera**: Allinearsi con i requisiti normativi UE e gli standard internazionali
 
 **Struttura della Tassonomia:**
 
-La Tassonomia mantiene una struttura gerarchica a quattro livelli:
+La tassonomia mantiene una struttura gerarchica a due livelli:
 
-- **Dominio**: Classificazione di livello superiore che rappresenta aree funzionali ampie (ad esempio, IDENTITY, HEALTH, FINANCIAL) 
-- **Classe (Famiglia di Credenziali)**: Insieme di Credenziali che condividono funzione, struttura o significato giuridico simili (es. Documenti di Identificazione, Certificati di Stato Civile, Abilitazioni Professionali)
-- **Tipo di credenziale**: Definizione specifica di una Credenziale rilasciata da un'autorità competente (es. Credenziale di Viaggio Digitale, Certificato di Nascita, Patente di Guida).
-- **Scopo (Purpose - Intento di Verifica)**: Obiettivi di verifica che una Credenziale può soddisfare (ad es. Verifica dell'identità, Verifica dell'età, Idoneità all'accesso a servizi specifici).
+- **Domini**: Classificazione di livello superiore che rappresenta aree funzionali ampie (ad esempio, IDENTITY, AUTHORIZATION, FINANCIAL)
+- **Scopi**: Casi d'uso specifici delle Credenziali all'interno di ogni dominio (ad esempio, PERSON_IDENTIFICATION, DRIVING_LICENSE, BANK_ACCOUNT) per i quali le Credenziali possono essere utilizzate
 
 **Supporto alla Localizzazione:**
 
@@ -1073,10 +782,10 @@ La tassonomia supporta ambienti multilingue attraverso il pattern del suffisso `
 
 - **Registro degli Attributi**: Catalogo degli attributi individuali
 - **Registro AS**: Le Fonti Autentiche dichiarano capacità di fornitura dati utilizzando classificazioni della tassonomia
-- **Catalogo degli Attestati Elettronici**: I tipi di Credenziale specificano Dominio, Classe, Finalità di verifica
+- **Catalogo degli Attestati Elettronici**: I tipi di Credenziali specificano domini e scopi supportati
 - **Policy di Autorizzazione**: La valutazione delle policy sfrutta la struttura della tassonomia per decisioni di controllo degli accessi
 
-La Tassonomia è accessibile attraverso l'endpoint dedicato della Tassonomia come definito nel meccanismo di discovery del registro ed è mantenuta dall'Organismo di Supervisione per garantire conformità normativa e coerenza semantica.
+La tassonomia è accessibile attraverso l'endpoint dedicato della tassonomia come definito nel meccanismo di discovery del registro ed è mantenuta dall'Organismo di Supervisione per garantire conformità normativa e coerenza semantica.
 
 Un esempio non normativo della struttura della Tassonomia è fornito di seguito:
 
@@ -1095,11 +804,10 @@ Un esempio non normativo di output di un bundle di localizzazione è fornito di 
 
 .. code-block:: json
 
-  {
-    "domain.identity.name": "IDENTITÀ",
-    "domain.identity.description": "Credenziali che stabiliscono o confermano l'identità legale di una persona e lo stato personale",
-    "class.id_docs.name": "Documenti di Identificazione",
-    "purpose.id_ver.name": "Verifica dell'identità",
+ {
+    "domain.identity.name": "Identity",
+    "domain.identity.description": "Credentials that establish or verify the identity of a person, including physical and digital identity documents legally recognized by national laws.",
+    "purpose.person_identification.name": "Person identification",
     "...": "..."
   }
 
@@ -1164,7 +872,7 @@ Il Registro degli Schema è accessibile tramite l'endpoint di scoperta ``.well-k
    * - **schema_uri#integrity**
      - RICHIESTO. Digest crittografico del documento dello schema per la verifica dell'integrità. Formato: ``{digest_method}-{digest_value}`` (es., ``sha256-c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16``).
    * - **description**
-     - OPZIONALE. Una descrizione leggibile dall'uomo dello schema, che può essere localizzata (es., "Schema tecnico per la Patente di Guida mobile in formato mdoc.").
+     - OPZIONALE. Una descrizione leggibile dall'uomo dello schema, che può essere localizzata (es., "Schema tecnico per la mobile Driving License in formato mdoc.").
 
 **Esempio del Registro degli Schema:**
 
@@ -1179,8 +887,8 @@ Integrazione del Registro e Riferimenti Incrociati
 I componenti del registro sono interconnessi e lavorano insieme per supportare l'ecosistema completo delle Credenziali:
 
 1. **Registro AS** ↔ **Tassonomia**: Le entità AS dichiarano capacità di fornitura utilizzando classificazioni della tassonomia per la categorizzazione standardizzata.
-2. **Registro AS** ↔ **Catalogo**: I tipi di credenziali fanno riferimento alle capacità AS per la validazione della fonte dati.
-3. **Catalogo** ↔ **Tassonomia**: Le voci delle credenziali specificano domini e finalità dalla tassonomia per discovery e autorizzazione.
+2. **Registro AS** ↔ **Catalogo**: I tipi di Credenziali fanno riferimento alle capacità AS per la validazione della fonte dati.
+3. **Catalogo** ↔ **Tassonomia**: Le voci delle Credenziali specificano domini e scopi dalla tassonomia per discovery e autorizzazione.
 4. **Registro della Federazione** ↔ **Tutti i Componenti**: Fornisce validazione del trust crittografico per tutte le operazioni del registro e autenticazione delle entità.
 5. **Registro degli Schema** ↔ **Emittente/RP**: Fornisce il collegamento verificabile a tutte le specifiche di formato delle Credenziali conosciute usate nell'ecosistema.
 
@@ -1197,11 +905,11 @@ Navigazione del Catalogo
 
 Il percorso di utilizzo *Navigazione del Catalogo* supporta gli Utenti (sia utenti umani tramite un'**Istanza Wallet** che sistemi automatizzati come **Relying Parties** o portali web) nella scoperta e selezione degli Attestati Elettronici disponibili.
 
-1.  **Accesso all'Endpoint di Scoperta**: L'entità (es., un Fornitore di Wallet o portale informativo) accede all'`Endpoint di Scoperta del Registro` (``.well-known/it-wallet-registry``) per ottenere l'URI del **Catalogo delle Credenziali Digitali** e della **Tassonomia**.
+1.  **Accesso all'Endpoint di Scoperta**: L'entità (es., un Fornitore di Wallet o portale informativo) accede all'`Endpoint di Scoperta del Registro` (``.well-known/it-wallet-registry``) per ottenere l'URI del **Catalogo degli Attestati Elettronici**.
 
 2.  **Navigazione e Selezione**:
 
-  * **Scoperta delle Credenziali**: L'entità naviga l'elenco delle Credenziali (campo ``credentials``) per identificare tipi di Credenziali rilevanti (es., ``pid``, ``mDL``) e, se necessario, utilizza i dati della **Tassonomia** per navigarne la gerarchia o offire diverse localizzazioni dei contenuti.
+  * **Scoperta delle Credenziali**: L'entità naviga l'elenco delle Credenziali (campo ``credentials``) per identificare tipi di Credenziali rilevanti (es., ``pid``, ``driving_license``).
   * **Metadati dell'Emittente**: L'entità estrae l'**Identificatore dell'Emittente** (`entity_id` all'interno del campo `issuers`) associato alla Credenziale desiderata.
   * **Consultazione dei Dettagli**: Per ottenere informazioni complete e requisiti tecnici specifici, l'entità accede all'**Entity Configuration** (Metadati dell'Emittente) usando l'identificatore recuperato.
 
@@ -1233,8 +941,8 @@ Questo percorso descrive come un'**Istanza Wallet** e una **Relying Party (RP)**
 
 1.  **Autorizzazione e Selezione del Wallet**:
 
-  * Il Wallet riceve una Richiesta di Presentazione dall'RP, verifica la validità della richiesta confrontando i *claims* richiesti con le *Policy di Autorizzazione* relative all'RP.
-  * Il Wallet consulta il **Catalogo delle Credenziali Digitali** e la **Tassonomia** per verificare i *Domini*, le *Classi* e le *Finalità* associati ai tipi di Credenziali che detiene, valutando quali Credenziali sono adatte per la richiesta.
+  * Il Wallet riceve una Richiesta di Presentazione dall'RP, verifica la validità della richiesta confrontando i *claims* richiesti con le *Policy di Autorizzazione* relative all'RP (tramite le definizioni della **Tassonomia**).
+  * Il Wallet consulta il **Catalogo degli Attestati Elettronici** per verificare i *Domini* e *Scopi* associati ai tipi di Credenziali che detiene, valutando quali Credenziali sono adatte per la richiesta.
   * Il Wallet verifica se gli attributi richiesti (claims) sono disponibili e autorizzati per la divulgazione in base alla policy della richiesta (scenari **Credential-Specific** o **Credential-Agnostic**).
   * L'Utente autorizza il rilascio degli attributi selezionati, divulgati selettivamente. Il Wallet quindi confeziona e presenta la Credenziale Digitale all'RP.
 

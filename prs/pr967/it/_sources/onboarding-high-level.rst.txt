@@ -30,7 +30,7 @@ Tutti gli Attori Primari DEVONO sottoporsi alla registrazione amministrativa per
 
     2. **Registrazione Tecnica**: Dopo l'approvazione amministrativa, le entità completano la registrazione tecnica attraverso Journey specializzati:
 
-        a. **Fonti Autentiche**: Dichiarano i loro Attributi dell'Utente disponibili dal Registro degli Attributi dell'Utente e specificano gli scopi di verifica previsti e tipo di organizzazione (pubblica o privata) previsti.
+        a. **Fonti Autentiche**: Dichiarano i loro Attributi dell'Utente disponibili dal Registro degli Attributi dell'Utente e specificano domini, scopi e tipo di organizzazione (pubblica o privata) previsti.
 
         b. **Credential Issuer**: Selezionano le Fonti Autentiche basate sugli Attributi dell'Utente richiesti, richiedono l'approvazione dell'integrazione (eccetto per i mandati normativi) e registrano i tipi di Credenziali con pubblicazione automatica del catalogo secondo la politica dell'Organismo di Supervisione.
 
@@ -38,7 +38,7 @@ Tutti gli Attori Primari DEVONO sottoporsi alla registrazione amministrativa per
 
     3. **Integrazione del Registro IT-Wallet**:
 
-        a. **Integrazione del Registro degli Attributi dell'Utente e della Tassonomia**: Il Registro degli Attributi dell'Utente fornisce definizioni di dati standardizzate per i singoli Attributi delle Credenziali, mentre la Tassonomia definisce la classificazione gerarchica (domini, classi, scopi) che vengono poi referenziati nel Catalogo degli Attestati Elettronici per implementazioni specifiche di Credenziali. Tutti i partecipanti sfruttano questi registri per dichiarazioni di capacità di fornitura dati e requisiti di emissione/verifica.
+        a. **Integrazione del Registro degli Attributi dell'Utente e della Tassonomia**: Il Registro degli Attributi dell'Utente fornisce definizioni di dati standardizzate per i singoli Attributi delle Credenziali, mentre la Tassonomia definisce la classificazione gerarchica (domini, scopi) che vengono poi referenziati nel Catalogo degli Attestati Elettronici per implementazioni specifiche di Credenziali. Tutti i partecipanti sfruttano questi registri per dichiarazioni di capacità di fornitura dati e requisiti di emissione/verifica.
 
         b. **Integrazione del Registro AS**: Fonti Autentiche registrate con i loro Attributi dell'Utente dichiarati e relative specifiche, abilitando la discovery e coordinazione dei CI.
 
@@ -185,7 +185,7 @@ Dalla prospettiva dell'operatore della Fonte Autentica, il processo di onboardin
 **Esempio - Fonte Autentica Pubblica (Scenario mDL)**:
 
     - **Dichiarazione degli Attributi dell'Utente**: Seleziona Attributi dell'Utente standardizzati (``given_name``, ``family_name``, ``driving_privileges``, ecc.) dal Registro degli Attributi dell'Utente.
-    - **Classificazione della Tassonomia**: Dominio ``MOBILITY_TRAVEL``, Scopo ``DRIVING_RIGHTS``.
+    - **Classificazione della Tassonomia**: Dominio ``AUTHORIZATION``, Scopo ``DRIVING_LICENSE``.
     - **Caso d'Uso**: Servizio pubblico - verifica dell'autorizzazione alla guida (eleggibile per il Catalogo delle Credenziali).
     - **Integrazione**: Integrazione e-service PDND seguendo gli standard governativi (vedi :ref:`e-service-pdnd:e-Service PDND`).
     - **Risultato del Catalogo**: mDL diventa pubblicamente scopribile dopo l'integrazione CI.
@@ -198,7 +198,7 @@ Dalla prospettiva dell'operatore della Fonte Autentica, il processo di onboardin
     - **Integrazione**: API personalizzata per l'integrazione del Credential Issuer.
     - **Risultato del Catalogo**: Il badge rimane privato, disponibile solo tramite Offerta di Credenziale.
 
-Le fasi critiche includono la verifica amministrativa da parte dell'Organismo di Supervisione (che coinvolge controlli di conformità normativa al di fuori dell'ambito tecnico) e la validazione tecnica. Il processo si conclude con la registrazione nel Registro AS, rendendo gli Attributi dell'Utente dichiarati scopribili dai Credential Issuer per le richieste di integrazione. Le richieste di integrazione possono essere inviate anche dalle Fonti Autentiche a specifici Credential Issuer.
+Le fasi critiche includono la verifica amministrativa da parte dell'Organismo di Supervisione (che coinvolge controlli di conformità normativa al di fuori dell'ambito tecnico) e la validazione tecnica. Il processo si conclude con la registrazione nel Registro AS, rendendo gli Attributi dell'Utente dichiarati scopribili dai Credential Issuer per le richieste di integrazione.
 
 .. warning::
 
@@ -207,11 +207,11 @@ Le fasi critiche includono la verifica amministrativa da parte dell'Organismo di
 Journey dell'Operatore del Credential Issuer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Gli operatori del Credential Issuer iniziano effettuando la discovery delle Fonti Autentiche disponibili attraverso il Registro AS e valutando la fattibilità dell'integrazione basata sugli Attributi dell'Utente richiesti. La richiesta di registrazione specifica quali tipi di Credenziali intendono emettere, seleziona entità Fonte Autentica appropriate e dimostra la capacità tecnica di accedere alle fonti di dati richieste. In alternativa, gli operatori del Credential Issuer ricevono direttamente la richiesta di integrazione dalla Fonte Autentica.
+Gli operatori del Credential Issuer iniziano effettuando la discovery delle Fonti Autentiche disponibili attraverso il Registro AS e valutando la fattibilità dell'integrazione basata sugli Attributi dell'Utente richiesti. La richiesta di registrazione specifica quali tipi di Credenziali intendono emettere, seleziona entità Fonte Autentica appropriate e dimostra la capacità tecnica di accedere alle fonti di dati richieste.
 
 **Esempio - mDL (Scenario Pubblico)**:
 
-    - **discovery AS** o **AS Integration Request**: Identifica la Fonte Autentica che fornisce Attributi mDL nel Registro AS con gli Attributi dell'Utente della patente di guida richiesti. In alternativa, il Credential Issuer riceve la richiesta di integrazione direttamente dalla Fonte Authentica.
+    - **discovery AS**: Identifica la Fonte Autentica che fornisce Attributi mDL nel Registro AS con gli Attributi dell'Utente della patente di guida richiesti.
     - **Richiesta di Integrazione**: Approvazione automatica dovuta al mandato normativo.
     - **Configurazione Tecnica**: Integrazione e-service PDND seguendo gli standard governativi (vedi :ref:`e-service-pdnd:e-Service PDND`).
     - **Pubblicazione del Catalogo**: mDL automaticamente pubblicato nel Catalogo delle Credenziali.
@@ -219,8 +219,8 @@ Gli operatori del Credential Issuer iniziano effettuando la discovery delle Font
 
 **Esempio - CI per Badge Dipendente (Scenario Privato)**:
 
-    - **discovery AS** o **AS Integration Request**: Identifica la Fonte Autentica nel Registro AS con gli Attributi dell'Utente di accesso dipendente. In alternativa, il Credential Issuer riceve la richiesta di integrazione direttamente dalla Fonte Authentica.
-    - **Richiesta di Integrazione**: Richiede approvazione da parte del destinatario della richiesta.
+    - **discovery AS**: Identifica la Fonte Autentica nel Registro AS con gli Attributi dell'Utente di accesso dipendente.
+    - **Richiesta di Integrazione**: Richiede approvazione AS.
     - **Configurazione Tecnica**: Integrazione API personalizzata con autenticazione.
     - **Pubblicazione del Catalogo**: Badge escluso dal catalogo pubblico per politica di supervisione.
     - **Accesso Utente**: I dipendenti ricevono badge solo tramite Offerta di Credenziale diretta dai sistemi aziendali.
@@ -256,7 +256,7 @@ Gli operatori della Relying Party iniziano identificando quali tipi di EAA sono 
     - **Richiesta di Autorizzazione**: Verifica dell'autorizzazione alla guida per l'eleggibilità al noleggio.
     - **Requisiti degli Attributi dell'Utente**: ``given_name``, ``family_name``, ``driving_privileges``, ecc., da mDL.
     - **Giustificazione del Caso d'Uso**: Obbligo legale di verificare la patente di guida valida prima del noleggio del veicolo.
-    - **Ambito di Autorizzazione**: Concesso accesso al dominio ``MOBILITY_TRAVEL``, scopo ``DRIVING_RIGHTS``.
+    - **Ambito di Autorizzazione**: Concesso accesso al dominio ``AUTHORIZATION``, scopo ``DRIVING_LICENSE``.
 
 **Esempio - Servizi Municipali (RP Pubblica)**:
 

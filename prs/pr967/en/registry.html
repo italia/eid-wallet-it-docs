@@ -278,7 +278,7 @@ Content-Type: application/json
 </section>
 <section id="claims-registry-structure">
 <h3><span class="section-number">7.3.2. </span>Claims Registry Structure<a class="headerlink" href="#claims-registry-structure" title="Link to this heading">¶</a></h3>
-<p>The Claims Registry maintains language-neutral, technical definitions for semantic consistency across the ecosystem. User-facing localisations for claim names and descriptions are provided through the Digital Credentials Catalog localization bundles, enabling efficient multilingual support without compromising the registry's structural integrity.</p>
+<p>The Claims Registry maintains language-neutral, technical definitions for semantic consistency across the ecosystem. User-facing localizations for claim names and descriptions are provided through the Digital Credentials Catalog localization bundles, enabling efficient multilingual support without compromising the registry's structural integrity.</p>
 <p>A non-normative example of Claims Registry structure is given below:</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;registry_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
@@ -616,91 +616,95 @@ Content-Type: application/json
 <td><p>string</p></td>
 <td><p>OPTIONAL. Human-readable name of the specific data origin or department providing the data.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].intended_purposes</strong></p></td>
+<tr class="row-even"><td><p><strong>data_capabilities[].domains</strong></p></td>
+<td><p>String Array</p></td>
+<td><p>REQUIRED. Taxonomy domain (e.g., <code class="docutils literal notranslate"><span class="pre">[&quot;AUTHORIZATION&quot;]</span></code>, <code class="docutils literal notranslate"><span class="pre">[&quot;FINANCIAL&quot;]</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>data_capabilities[].intended_purposes</strong></p></td>
 <td><p>String Array</p></td>
 <td><p>REQUIRED. Business purposes served (e.g., <code class="docutils literal notranslate"><span class="pre">[&quot;driving-authorization&quot;,</span> <span class="pre">&quot;identity-verification&quot;]</span></code>).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].available_claims</strong></p></td>
+<tr class="row-even"><td><p><strong>data_capabilities[].available_claims</strong></p></td>
 <td><p>String Array</p></td>
 <td><p>REQUIRED. Claims available from this data capability.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].available_claims.claim_name</strong></p></td>
+<tr class="row-odd"><td><p><strong>data_capabilities[].available_claims.claim_name</strong></p></td>
 <td><p>string</p></td>
 <td><p>REQUIRED. It Contains the name of the claim.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].available_claims.order</strong></p></td>
+<tr class="row-even"><td><p><strong>data_capabilities[].available_claims.order</strong></p></td>
 <td><p>number</p></td>
 <td><p>REQUIRED. Defines the order in which the information would be shown.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].available_claims.mandatory</strong></p></td>
+<tr class="row-odd"><td><p><strong>data_capabilities[].available_claims.mandatory</strong></p></td>
 <td><p>boolean</p></td>
 <td><p>REQUIRED. Defines if a claim is always available or not.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].integration_method</strong></p></td>
+<tr class="row-even"><td><p><strong>data_capabilities[].integration_method</strong></p></td>
 <td><p>string</p></td>
 <td><p>REQUIRED. Authorization framework used for data access. MUST be <code class="docutils literal notranslate"><span class="pre">&quot;pdnd&quot;</span></code> for Public AS. Private AS MAY use other authorization frameworks such as: <code class="docutils literal notranslate"><span class="pre">&quot;oauth2&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;api_key&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;mtls&quot;</span></code>, etc.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].integration_endpoint</strong></p></td>
+<tr class="row-odd"><td><p><strong>data_capabilities[].integration_endpoint</strong></p></td>
 <td><p>string</p></td>
 <td><p>REQUIRED. Service access point (PDND endpoint for Public AS, API endpoint for Private AS).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].api_specification</strong></p></td>
+<tr class="row-even"><td><p><strong>data_capabilities[].api_specification</strong></p></td>
 <td><p>string</p></td>
 <td><p>REQUIRED. URL to <a class="reference external" href="https://spec.openapis.org/oas/v3.0.3">OAS3</a> specification document for this data capability.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].data_provision</strong></p></td>
+<tr class="row-odd"><td><p><strong>data_capabilities[].data_provision</strong></p></td>
 <td><p>JSON object</p></td>
 <td><p>OPTIONAL. Data provision capabilities and timing specifications.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].data_provision.immediate_flow</strong></p></td>
+<tr class="row-even"><td><p><strong>data_capabilities[].data_provision.immediate_flow</strong></p></td>
 <td><p>boolean</p></td>
 <td><p>REQUIRED. Indicates if the Authentic Source supports immediate data provision.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].data_provision.deferred_flow</strong></p></td>
+<tr class="row-odd"><td><p><strong>data_capabilities[].data_provision.deferred_flow</strong></p></td>
 <td><p>boolean</p></td>
 <td><p>REQUIRED. Indicates if the Authentic Source supports deferred data provision.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].data_provision.max_response_time_minutes</strong></p></td>
+<tr class="row-even"><td><p><strong>data_capabilities[].data_provision.max_response_time_minutes</strong></p></td>
 <td><p>integer</p></td>
 <td><p>CONDITIONAL. Maximum time in minutes for the Authentic Source to respond to a deferred data provision request. REQUIRED if <code class="docutils literal notranslate"><span class="pre">deferred_flow</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].data_provision.notification_methods</strong></p></td>
+<tr class="row-odd"><td><p><strong>data_capabilities[].data_provision.notification_methods</strong></p></td>
 <td><p>String Array</p></td>
 <td><p>CONDITIONAL. Array of notification methods supported by the Authentic Source for deferred data provision, such as <code class="docutils literal notranslate"><span class="pre">&quot;push&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;poll&quot;</span></code>. REQUIRED if <code class="docutils literal notranslate"><span class="pre">deferred_flow</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].user_information</strong></p></td>
+<tr class="row-even"><td><p><strong>data_capabilities[].user_information</strong></p></td>
 <td><p>string</p></td>
 <td><p>OPTIONAL. A string containing human-readable information about the Digital Credential relevant to the User. This string MUST be provided by the Authentic Source to the Trust Anchor during onboarding and MUST be formatted using Markdown format as defined in <span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7763.html"><strong>RFC 7763</strong></a>. The Markdown formatting can be plain text or a combination of text and links. For example, if the Authentic Source's database only contains the data required for Digital Credential attributes registered <em>after</em> a specific date, this information MUST be conveyed to the Trust Anchor in this Markdown string.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].service_documentation</strong></p></td>
+<tr class="row-odd"><td><p><strong>data_capabilities[].service_documentation</strong></p></td>
 <td><p>string</p></td>
 <td><p>OPTIONAL. URL pointing to the Authentic Source service documentation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].update_frequency</strong></p></td>
+<tr class="row-even"><td><p><strong>data_capabilities[].update_frequency</strong></p></td>
 <td><p>string</p></td>
 <td><p>OPTIONAL. Indicates how frequently the Authentic Source updates its data. Possible values: <code class="docutils literal notranslate"><span class="pre">&quot;real_time&quot;</span></code> (near real-time updates, typically within minutes), <code class="docutils literal notranslate"><span class="pre">&quot;daily&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;weekly&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;monthly&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;on_demand&quot;</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].logo_uri</strong></p></td>
+<tr class="row-odd"><td><p><strong>data_capabilities[].logo_uri</strong></p></td>
 <td><p>string</p></td>
 <td><p>OPTIONAL. URL to the logo image related to the data.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].logo_uri#integrity</strong></p></td>
+<tr class="row-even"><td><p><strong>data_capabilities[].logo_uri#integrity</strong></p></td>
 <td><p>string</p></td>
 <td><p>CONDITIONAL. Cryptographic digest of the logo image resource for integrity verification. REQUIRED if <code class="docutils literal notranslate"><span class="pre">logo_uri</span></code> is present. Format: <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;sha-256-abc123...&quot;</span></code>).</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].background_image</strong></p></td>
+<tr class="row-odd"><td><p><strong>data_capabilities[].background_image</strong></p></td>
 <td><p>JSON object</p></td>
 <td><p>OPTIONAL. Object containing information about the background image to be displayed together with the data. The object contains <code class="docutils literal notranslate"><span class="pre">uri</span></code> and <code class="docutils literal notranslate"><span class="pre">uri#integrity</span></code> parameters.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].watermark_image</strong></p></td>
+<tr class="row-even"><td><p><strong>data_capabilities[].watermark_image</strong></p></td>
 <td><p>JSON object</p></td>
 <td><p>OPTIONAL. Object containing information about the watermark image to be displayed together with the data. The object contains <code class="docutils literal notranslate"><span class="pre">uri</span></code> and <code class="docutils literal notranslate"><span class="pre">uri#integrity</span></code> parameters.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].background_color</strong></p></td>
+<tr class="row-odd"><td><p><strong>data_capabilities[].background_color</strong></p></td>
 <td><p>string</p></td>
 <td><p>OPTIONAL. String value of the background color related to be displayed together with the data.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].contacts</strong></p></td>
+<tr class="row-even"><td><p><strong>data_capabilities[].contacts</strong></p></td>
 <td><p>String Array</p></td>
 <td><p>OPTIONAL. Array of customer service contact email addresses.</p></td>
 </tr>
@@ -737,6 +741,10 @@ Content-Type: application/json
 <span class="w">                </span><span class="p">{</span>
 <span class="w">                    </span><span class="nt">&quot;dataset_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;38832801&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;data_origin_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;authentic_source1.dataset1.origin&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;domains&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="s2">&quot;IDENTITY&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="s2">&quot;AUTHORIZATION&quot;</span>
+<span class="w">                    </span><span class="p">],</span>
 <span class="w">                    </span><span class="nt">&quot;intended_purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                        </span><span class="s2">&quot;DRIVING_LICENSE&quot;</span><span class="p">,</span>
 <span class="w">                        </span><span class="s2">&quot;PERSON_IDENTIFICATION&quot;</span>
@@ -816,15 +824,15 @@ Content-Type: application/json
 <span class="w">                    </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/logos/{dataset_id}/image.svg&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;logo_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-b1946ac92492d2347c6235b4d2611184e2a3f8b8c8f8f8e8f8f8f8f8f8f8f8f8&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                        </span><span class="s2">&quot;citizen-support@gov.example&quot;</span>
+<span class="w">                    </span><span class="s2">&quot;citizen-support@gov.example&quot;</span>
 <span class="w">                    </span><span class="p">],</span>
 <span class="w">                    </span><span class="nt">&quot;background_image&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/images/{dataset_id}/image.svg&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg==&quot;</span>
+<span class="w">                                </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/images/{dataset_id}/image.svg&quot;</span><span class="p">,</span>
+<span class="w">                                </span><span class="nt">&quot;uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg==&quot;</span>
 <span class="w">                    </span><span class="p">},</span>
 <span class="w">                    </span><span class="nt">&quot;watermark_image&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/images/{dataset_id}/imag-watermark.svg&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg==&quot;</span>
+<span class="w">                                </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/images/{dataset_id}/imag-watermark.svg&quot;</span><span class="p">,</span>
+<span class="w">                                </span><span class="nt">&quot;uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg==&quot;</span>
 <span class="w">                    </span><span class="p">},</span>
 <span class="w">                    </span><span class="nt">&quot;background_color&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#12107c&quot;</span>
 <span class="w">                </span><span class="p">}</span>
@@ -851,6 +859,9 @@ Content-Type: application/json
 <span class="w">                </span><span class="p">{</span>
 <span class="w">                    </span><span class="nt">&quot;dataset_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;38854801&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;data_origin_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;authentic_source2.dataset1.origin&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;domains&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="s2">&quot;FINANCIAL&quot;</span>
+<span class="w">                    </span><span class="p">],</span>
 <span class="w">                    </span><span class="nt">&quot;intended_purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                        </span><span class="s2">&quot;BANK_ACCOUNT&quot;</span><span class="p">,</span>
 <span class="w">                        </span><span class="s2">&quot;INCOME_CERTIFICATE&quot;</span>
@@ -920,6 +931,9 @@ Content-Type: application/json
 <span class="w">                </span><span class="p">{</span>
 <span class="w">                    </span><span class="nt">&quot;dataset_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;38854802&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;data_origin_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;authentic_source2.dataset2.origin&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;domains&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="s2">&quot;FINANCIAL&quot;</span>
+<span class="w">                    </span><span class="p">],</span>
 <span class="w">                    </span><span class="nt">&quot;intended_purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                        </span><span class="s2">&quot;PAYMENT_HISTORY&quot;</span>
 <span class="w">                    </span><span class="p">],</span>
@@ -1127,467 +1141,99 @@ Content-Type: application/json
 <p>The Trust Anchor MUST publish and keep up to date all the information at the Digital Credential Catalog <cite>.well-known</cite> endpoint ensuring data reliability, authenticity and integrity. In particular, the Digital Credential Catalog, claims and taxonomy MUST be available through the <code class="docutils literal notranslate"><span class="pre">.well-known/credential-catalog</span></code> endpoint.</p>
 <section id="digital-credentials-hierarchy">
 <h3><span class="section-number">7.6.1. </span>Digital Credentials Hierarchy<a class="headerlink" href="#digital-credentials-hierarchy" title="Link to this heading">¶</a></h3>
-<p>Digital Credentials recognized within the IT-Wallet ecosystem are classified and standardized according to the following multi-level hierarchical model designed to improve semantic clarity, credential discovery, and compatibility with both credential-specific and claim-based verification workflows.</p>
-<p>The hierarchy is defined as follows:</p>
-<p><strong>Domain</strong></p>
-<p>A <strong>Domain</strong> represents a high-level thematic area grouping Credential families that relate to the same broad context (e.g., Identity, Health, Education, Mobility).
-Domains provide a top-level organizational layer.</p>
-<p><strong>Credential Class</strong></p>
-<p>A <strong>Credential Class</strong> represents a family of Credentials sharing similar nature, function, or structure (e.g., Identification Documents, Civil Status Certificates).</p>
-<p>Each Class SHOULD define:</p>
-<ul class="simple">
-<li><p>a stable Class identifier (URI),</p></li>
-<li><p>the expected semantics of the Credential Family.</p></li>
-</ul>
-<p>Classes enable Relying Parties and Wallet Solutions to request or match Credentials based on their type category.</p>
-<p><strong>Credential Type</strong></p>
-<p>A <strong>Credential Type</strong> represents a specific Credential within a Class (e.g. Digital Travel Credential, Birth Certificate, Mobile Driving License).
-Each Credential Type SHALL include:</p>
-<ul class="simple">
-<li><p>a unique identifier,</p></li>
-<li><p>the Credential Issuer identifier,</p></li>
-<li><p>the set of Attributes that may be included in presentations.</p></li>
-</ul>
-<p>Credential Types enable precise targeting for compliance-driven or regulation-mandated verification flows.</p>
-<p><strong>Purpose (Verification Intent)</strong></p>
-<p>A <strong>Purpose (Verification Intent)</strong> describes <em>why</em> a credential may be requested by a Relying Party (e.g., Identity Verification, Age Verification, Eligibility for specific services).
-Purposes SHALL describe <strong>verification outcomes</strong>.
-Each Credential Type MUST declare its Domain, Class, and supported Purposes.</p>
-<p>The following tables provide non-exhaustive examples illustrating the relationships between Domains, Credential Classes, and Credential Types, followed by their mapping to verification Purposes.
-Additional Domains, Classes, specific Credentials, and verification Purposes <strong>MAY</strong> be added over time as the IT-Wallet ecosystem evolves.</p>
-<span id="it-wallet-dc-taxonomy"></span><table class="longtable docutils align-default" id="id5">
-<caption><span class="caption-number">Table 7.4 </span><span class="caption-text">Digital Credential Taxonomy: Hierarchy and Classification</span><a class="headerlink" href="#id5" title="Link to this table">¶</a></caption>
+<p>Digital Credentials recognized within the IT-Wallet ecosystem are hierarchically classified and standardized according to the following main domains and purposes. Additional purposes MAY be added as the IT-Wallet ecosystem grows.</p>
+<span id="it-wallet-dc-domains"></span><table class="longtable docutils align-default" id="id5">
+<caption><span class="caption-number">Table 7.4 </span><span class="caption-text">Digital Credential Domains and Purposes</span><a class="headerlink" href="#id5" title="Link to this table">¶</a></caption>
 <colgroup>
-<col style="width: 15.0%" />
-<col style="width: 25.0%" />
+<col style="width: 20.0%" />
 <col style="width: 30.0%" />
-<col style="width: 30.0%" />
+<col style="width: 50.0%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p><strong>Domain</strong></p></th>
+<th class="head"><p><strong>Purpose</strong></p></th>
 <th class="head"><p><strong>Description</strong></p></th>
-<th class="head"><p><strong>Credential Class</strong></p></th>
-<th class="head"><p><strong>Credential Type</strong></p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><em>IDENTITY</em></p></td>
-<td><p>Credentials that establish or confirm a person's legal identity and personal, civil or legal status.</p></td>
 <td><ul class="simple">
-<li><p>Identification Documents</p></li>
-<li><p>Civil Registry and Personal Status Certificates</p></li>
-<li><p>Economic and Legal Status</p></li>
+<li><p>PERSON_IDENTIFICATION</p></li>
+<li><p>ELECTRONIC_RESIDENCY</p></li>
 </ul>
 </td>
-<td><ul class="simple">
-<li><p>Digital Travel Credential</p></li>
-<li><p>Mobile Driving License (Italy only)</p></li>
-<li><p>Tax Code / Health Insurance Card</p></li>
-<li><p>Age Certification</p></li>
-<li><p>Birth Certificate</p></li>
-<li><p>Residence Certificate</p></li>
-<li><p>Family Status Certificate</p></li>
-<li><p>Marriage Certificate</p></li>
-<li><p>Citizenship Certificate</p></li>
-<li><p>ISEE (Equivalent Economic Situation Indicator)</p></li>
-<li><p>Residence Permit</p></li>
-<li><p>Certificate of Pending Charges</p></li>
-<li><p>Criminal Record Certificate</p></li>
-</ul>
-</td>
+<td><p>Credentials that establish or verify the identity of a person, including physical and digital identity documents legally recognized by national laws.</p></td>
 </tr>
-<tr class="row-odd"><td><p><em>HOME AND FAMILY</em></p></td>
-<td><p>Credentials that attest household composition, residence, and housing-related legal or fiscal relationships.</p></td>
+<tr class="row-odd"><td><p><em>AUTHORIZATION</em></p></td>
 <td><ul class="simple">
-<li><p>Property and Cadastral Documents</p></li>
-<li><p>Family Documents</p></li>
-<li><p>Local Tax Documents</p></li>
+<li><p>DRIVING_LICENSE</p></li>
+<li><p>PROFESSIONAL_LICENSE</p></li>
+<li><p>TRAVEL_DOCUMENT</p></li>
+<li><p>ACCESS_PERMIT</p></li>
 </ul>
 </td>
-<td><ul class="simple">
-<li><p>Deed of Sale</p></li>
-<li><p>Cadastral Survey</p></li>
-<li><p>Cadastral Floor Plan</p></li>
-<li><p>Cadastral Certificate</p></li>
-<li><p>Children's Tax Code / Health Card</p></li>
-<li><p>Birth Certificate</p></li>
-<li><p>Family Status Certificate</p></li>
-<li><p>IMU (Property Tax)</p></li>
-<li><p>TARI (Waste Tax)</p></li>
-</ul>
-</td>
+<td><p>Credentials that grant specific permissions, rights or authorizations to perform certain activities or access restricted areas.</p></td>
 </tr>
 <tr class="row-even"><td><p><em>EDUCATION</em></p></td>
-<td><p>Credentials that attest educational achievements, academic qualifications, and professional training.</p></td>
 <td><ul class="simple">
-<li><p>Educational Qualifications</p></li>
-<li><p>Professional Certifications</p></li>
+<li><p>ACADEMIC_DEGREE</p></li>
+<li><p>CERTIFICATE</p></li>
+<li><p>TRAINING_RECOGNITION</p></li>
 </ul>
 </td>
-<td><ul class="simple">
-<li><p>Lower Secondary School Diploma</p></li>
-<li><p>Upper Secondary School Diploma</p></li>
-<li><p>Bachelor's Degree</p></li>
-<li><p>Master's Degree</p></li>
-<li><p>University Master</p></li>
-<li><p>PhD</p></li>
-<li><p>Professional Licenses (e.g. architect, lawyer)</p></li>
-<li><p>Vocational Training Certificates</p></li>
-<li><p>Language Certifications (e.g. IELTS)</p></li>
-<li><p>Academic Qualifications (e.g. Europass)</p></li>
-</ul>
-</td>
+<td><p>Credentials related to educational achievements, qualifications, and professional training recognition.</p></td>
 </tr>
 <tr class="row-odd"><td><p><em>HEALTH</em></p></td>
-<td><p>Credentials related to healthcare coverage, medical status, and health-related certifications.</p></td>
 <td><ul class="simple">
-<li><p>Certifications and Eligibility</p></li>
-<li><p>Medical Records</p></li>
+<li><p>INSURANCE_CARD</p></li>
+<li><p>DISABILITY_CARD</p></li>
+<li><p>MEDICAL_PRESCRIPTION</p></li>
 </ul>
 </td>
-<td><ul class="simple">
-<li><p>Health Insurance Card (TEAM)</p></li>
-<li><p>European Health Card (CED)</p></li>
-<li><p>Disability Certificate</p></li>
-<li><p>Vaccination Certificate</p></li>
-<li><p>Sports Fitness Certificate</p></li>
-<li><p>Work Fitness Certificate</p></li>
-<li><p>Medical Prescriptions</p></li>
-<li><p>Digital Medical Report</p></li>
-</ul>
-</td>
+<td><p>Credentials related to healthcare access, medical history, insurance coverage, and health-related documents.</p></td>
 </tr>
 <tr class="row-even"><td><p><em>FINANCIAL</em></p></td>
-<td><p>Credentials related to payment instruments, financial authorizations, and proof of payments.</p></td>
 <td><ul class="simple">
-<li><p>Payment Instruments</p></li>
-<li><p>Payment Credentials and Authorisations</p></li>
-<li><p>Public Payments and Fees</p></li>
-<li><p>Recurring Payments and Subscriptions</p></li>
+<li><p>INCOME_CERTIFICATE</p></li>
+<li><p>TAX_STATEMENT</p></li>
+<li><p>FAMILY_ECONOMIC_STATUS</p></li>
+<li><p>BANK_ACCOUNT</p></li>
+<li><p>PAYMENT_HISTORY</p></li>
 </ul>
 </td>
-<td><ul class="simple">
-<li><p>Digital Payment Card (debit / credit / prepaid)</p></li>
-<li><p>Virtual Card</p></li>
-<li><p>Bank Account (IBAN)</p></li>
-<li><p>Strong Customer Authentication (SCA) Credential</p></li>
-<li><p>PagoPA Payment Receipt</p></li>
-<li><p>Digital Stamp Duty (Bollo digitale)</p></li>
-<li><p>Tax and Fee Payment Certificate</p></li>
-<li><p>Subscription Mandate</p></li>
-<li><p>Recurring Payment Credential</p></li>
-</ul>
-</td>
+<td><p>Credentials that attest to financial status, income levels, taxation, banking information, or economic situation of individuals or families.</p></td>
 </tr>
-<tr class="row-odd"><td><p><em>CULTURE AND LEISURE</em></p></td>
-<td><p>Credentials that attest membership, affiliation, or participation in cultural or recreational programs.</p></td>
+<tr class="row-odd"><td><p><em>MEMBERSHIP</em></p></td>
 <td><ul class="simple">
-<li><p>Cultural Cards and Benefits</p></li>
-<li><p>Membership and Loyalty Programs</p></li>
+<li><p>ASSOCIATION</p></li>
+<li><p>LOYALTY_PROGRAM</p></li>
+<li><p>CLUB_MEMBERSHIP</p></li>
 </ul>
 </td>
-<td><ul class="simple">
-<li><p>Culture Card</p></li>
-<li><p>Annual Museum Passes</p></li>
-<li><p>Cinema Card</p></li>
-<li><p>Museum Card</p></li>
-<li><p>Association Membership Cards</p></li>
-<li><p>Library Card</p></li>
-<li><p>City Pass</p></li>
-</ul>
-</td>
+<td><p>Credentials that confirm affiliation with organizations, participation in programs, or membership status.</p></td>
 </tr>
-<tr class="row-even"><td><p><em>EMPLOYMENT</em></p></td>
-<td><p>Credentials that attest employment relationships, professional status, and contribution records.</p></td>
+<tr class="row-even"><td><p><em>ATTESTATION</em></p></td>
 <td><ul class="simple">
-<li><p>Employment Documents</p></li>
-<li><p>Employment Status</p></li>
+<li><p>PUBLIC_STATEMENT</p></li>
+<li><p>CIVIL_STATUS</p></li>
+<li><p>CERTIFICATION</p></li>
 </ul>
 </td>
-<td><ul class="simple">
-<li><p>Digital Employment Contract</p></li>
-<li><p>Curriculum Vitae (CV)</p></li>
-<li><p>Residence Permit</p></li>
-<li><p>Employment Status Certificate</p></li>
-<li><p>INPS Contribution Record</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-odd"><td><p><em>MOBILITY AND TRAVEL</em></p></td>
-<td><p>Credentials that attest mobility rights, vehicle-related status, and travel-related entitlements.</p></td>
-<td><ul class="simple">
-<li><p>Licenses and Authorizations</p></li>
-<li><p>Vehicle Documents</p></li>
-<li><p>Subscriptions</p></li>
-<li><p>Travel Documents</p></li>
-<li><p>Travel Insurance</p></li>
-<li><p>Bookings</p></li>
-<li><p>Discounts and Benefits</p></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li><p>Mobile Driving License</p></li>
-<li><p>Boating License</p></li>
-<li><p>Vehicle Registration Certificate</p></li>
-<li><p>Digital RCA Insurance</p></li>
-<li><p>Vehicle Inspection Certificate</p></li>
-<li><p>Green Card / International Insurance</p></li>
-<li><p>Public Transport Pass</p></li>
-<li><p>Telepass Subscription</p></li>
-<li><p>Digital Travel Credential</p></li>
-<li><p>Travel Tickets (air, train, etc.)</p></li>
-<li><p>Travel Insurance Policy</p></li>
-<li><p>Hotel Reservation</p></li>
-<li><p>Discount Cards</p></li>
-<li><p>Tourist Benefits</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-even"><td><p><em>BONUSES</em></p></td>
-<td><p>Credentials that attest entitlement to economic benefits, incentives, or vouchers.</p></td>
-<td><ul class="simple">
-<li><p>Economic Benefits and Allowances</p></li>
-<li><p>Incentives and Vouchers</p></li>
-<li><p>Health and Wellbeing Bonuses</p></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li><p>Family Allowance Credential</p></li>
-<li><p>Unemployment Benefit Credential</p></li>
-<li><p>Digital Voucher</p></li>
-<li><p>Purchase Incentive Credential</p></li>
-<li><p>Cashback Eligibility Credential</p></li>
-<li><p>Healthcare Bonus Credential</p></li>
-<li><p>Mental Health Support Voucher</p></li>
-<li><p>Sports and Physical Activity Bonus</p></li>
-</ul>
-</td>
+<td><p>Credentials that provide official statements, confirmations of status, or certifications issued by authorities.</p></td>
 </tr>
 </tbody>
 </table>
-<span id="it-wallet-dc-mapping"></span><table class="longtable docutils align-default" id="id6">
-<caption><span class="caption-number">Table 7.5 </span><span class="caption-text">Table 2: Mapping between Credential Classes and Purposes</span><a class="headerlink" href="#id6" title="Link to this table">¶</a></caption>
-<colgroup>
-<col style="width: 40.0%" />
-<col style="width: 60.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Credential Class</strong></p></th>
-<th class="head"><p><strong>Supported Purposes</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Identification Documents</p></td>
-<td><ul class="simple">
-<li><p>Identity verification</p></li>
-<li><p>Age verification</p></li>
-<li><p>Person identification</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-odd"><td><p>Civil Registry and Personal Status Certificates</p></td>
-<td><ul class="simple">
-<li><p>Civil status verification</p></li>
-<li><p>Right of residence</p></li>
-<li><p>Household composition verification</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-even"><td><p>Economic and Legal Status</p></td>
-<td><ul class="simple">
-<li><p>Eligibility for services or benefits</p></li>
-<li><p>Legal status verification</p></li>
-<li><p>Criminal record check</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-odd"><td><p>Property and Cadastral Documents</p></td>
-<td><ul class="simple">
-<li><p>Residence and household verification</p></li>
-<li><p>Property ownership verification</p></li>
-<li><p>Real estate compliance</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-even"><td><p>Family Documents</p></td>
-<td><ul class="simple">
-<li><p>Household composition verification</p></li>
-<li><p>Eligibility for family-based social services</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-odd"><td><p>Local Tax Documents</p></td>
-<td><ul class="simple">
-<li><p>Compliance with local tax obligations</p></li>
-<li><p>Verification of property tax status</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-even"><td><p>Educational Qualifications</p></td>
-<td><ul class="simple">
-<li><p>Qualification and degree verification</p></li>
-<li><p>Eligibility for education pathways</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-odd"><td><p>Professional Certifications</p></td>
-<td><ul class="simple">
-<li><p>Professional license verification</p></li>
-<li><p>Skills assessment for work</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-even"><td><p>Certifications and Eligibility</p></td>
-<td><ul class="simple">
-<li><p>Verification of vaccination status</p></li>
-<li><p>Verification of fitness status</p></li>
-<li><p>Access to health-restricted areas</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-odd"><td><p>Medical Records</p></td>
-<td><ul class="simple">
-<li><p>Access to healthcare services</p></li>
-<li><p>Sharing of medical records</p></li>
-<li><p>Medical history validation</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-even"><td><p>Payment Instruments</p></td>
-<td><ul class="simple">
-<li><p>Payment authorization</p></li>
-<li><p>Payment execution</p></li>
-<li><p>Proof of payment</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-odd"><td><p>Payment Credentials and Authorisations</p></td>
-<td><ul class="simple">
-<li><p>Management of financial authorizations</p></li>
-<li><p>Strong Customer Authentication (SCA)</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-even"><td><p>Public Payments and Fees</p></td>
-<td><ul class="simple">
-<li><p>Proof of tax payment</p></li>
-<li><p>Proof of fee payment</p></li>
-<li><p>Digital stamp duty validation</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-odd"><td><p>Recurring Payments and Subscriptions</p></td>
-<td><ul class="simple">
-<li><p>Management of recurring payments</p></li>
-<li><p>Subscription mandate verification</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-even"><td><p>Cultural Cards and Benefits</p></td>
-<td><ul class="simple">
-<li><p>Access to cultural services</p></li>
-<li><p>Access to leisure services</p></li>
-<li><p>Application of member discounts</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-odd"><td><p>Membership and Loyalty Programs</p></td>
-<td><ul class="simple">
-<li><p>Verification of affiliation</p></li>
-<li><p>Verification of participation</p></li>
-<li><p>Use of loyalty benefits</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-even"><td><p>Employment Documents</p></td>
-<td><ul class="simple">
-<li><p>Employment status verification</p></li>
-<li><p>Professional profile validation</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-odd"><td><p>Employment Status</p></td>
-<td><ul class="simple">
-<li><p>Verification of contribution records</p></li>
-<li><p>Eligibility for employment-related benefits</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-even"><td><p>Licenses and Authorizations</p></td>
-<td><ul class="simple">
-<li><p>Driving rights verification</p></li>
-<li><p>Navigation rights verification</p></li>
-<li><p>Law enforcement controls</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-odd"><td><p>Vehicle Documents</p></td>
-<td><ul class="simple">
-<li><p>Vehicle registration verification</p></li>
-<li><p>Vehicle inspection verification</p></li>
-<li><p>Insurance status check</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-even"><td><p>Subscriptions</p></td>
-<td><ul class="simple">
-<li><p>Access to transport services</p></li>
-<li><p>Public transport pass verification</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-odd"><td><p>Travel Documents</p></td>
-<td><ul class="simple">
-<li><p>Right to travel or circulate</p></li>
-<li><p>Cross-border mobility identity check</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-even"><td><p>Travel Insurance and Bookings</p></td>
-<td><ul class="simple">
-<li><p>Verification of travel insurance coverage</p></li>
-<li><p>Accommodation reservation check</p></li>
-<li><p>Transport reservation check</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-odd"><td><p>Economic Benefits and Allowances</p></td>
-<td><ul class="simple">
-<li><p>Eligibility verification for family benefits</p></li>
-<li><p>Eligibility verification for unemployment benefits</p></li>
-<li><p>Allocation of economic support</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-even"><td><p>Incentives and Vouchers</p></td>
-<td><ul class="simple">
-<li><p>Use of digital vouchers</p></li>
-<li><p>Use of purchase incentives</p></li>
-<li><p>Cashback eligibility verification</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-odd"><td><p>Health and Wellbeing Bonuses</p></td>
-<td><ul class="simple">
-<li><p>Access to healthcare bonuses</p></li>
-<li><p>Use of mental health vouchers</p></li>
-<li><p>Use of sports vouchers</p></li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<p>Each Credential MUST specify domains, classes and purposes to enable both <strong>Credential-Specific Scenarios</strong> and <strong>Credential-Agnostic Scenarios</strong> according to Relying Party's requirements and presentation request patterns, as defined in the mapping tables above.</p>
+<p>Each Credential MUST specify domains and purposes to enable both <strong>Credential-Specific Scenarios</strong> and <strong>Credential-Agnostic Scenarios</strong> according to Relying Party's requirements and presentation request patterns:</p>
 <blockquote>
 <div><ol class="arabic simple">
 <li><p><strong>Credential-Specific Scenarios</strong> (Primary for Government/Regulated Sectors): RPs request specific Credential types for compliance and audit requirements, including for example:</p></li>
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Government Services</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;credential_type&quot;:&quot;pid&quot;</span></code> for PID-specific identity verification.</p></li>
-<li><p><strong>Police Controls</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;credential_type&quot;:&quot;mDL&quot;</span></code> for driving license verification.</p></li>
-<li><p><strong>Banking KYC</strong>: Specific credential types mandated by financial regulations.</p></li>
-<li><p><strong>Healthcare Services</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;credential_type&quot;:&quot;european_disability_card&quot;</span></code> for EU-compliant disability benefit access.</p></li>
+<li><p><strong>Government Services</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;vct_values&quot;:</span> <span class="pre">[&quot;urn:eudi:pid:it:1&quot;]</span></code> for PID-specific identity verification.</p></li>
+<li><p><strong>Police Controls</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;docType&quot;:</span> <span class="pre">&quot;org.iso.18013.5.1.mDL&quot;</span></code> for driving license verification.</p></li>
+<li><p><strong>Banking KYC</strong>: Specific Credential types mandated by financial regulations.</p></li>
+<li><p><strong>Healthcare Services</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;vct_values&quot;:</span> <span class="pre">[&quot;urn:eudi:european_disability_card:it:1&quot;]</span></code> for EU-compliant disability benefit access.</p></li>
 </ul>
 </div></blockquote>
 <ol class="arabic simple" start="2">
@@ -1604,7 +1250,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 <p>This approach allows:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Policy-based authorization</strong> by using <strong>Domain / Class / Credential Type / Purpose</strong> mappings.</p></li>
+<li><p><strong>Policy-based authorization</strong> by using domain/purpose mappings.</p></li>
 <li><p><strong>Flexible RP registration</strong> supporting both government compliance needs and business operational requirements.</p></li>
 </ul>
 </div></blockquote>
@@ -1648,8 +1294,8 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 </tbody>
 </table>
 <p>The JWS payload contains the following parameters:</p>
-<table class="longtable docutils align-default" id="id7">
-<caption><span class="caption-number">Table 7.6 </span><span class="caption-text">First-level Fields of the Digital Credentials Catalog</span><a class="headerlink" href="#id7" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id6">
+<caption><span class="caption-number">Table 7.5 </span><span class="caption-text">First-level Fields of the Digital Credentials Catalog</span><a class="headerlink" href="#id6" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 30.0%" />
 <col style="width: 70.0%" />
@@ -1675,8 +1321,8 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 </tbody>
 </table>
 <p>Each element of the <code class="docutils literal notranslate"><span class="pre">credentials</span></code> array contains at least the following information:</p>
-<span id="table-catalog-parameters-first-level"></span><table class="longtable docutils align-default" id="id8">
-<caption><span class="caption-number">Table 7.7 </span><span class="caption-text">First-level Fields of Each Credential Entry</span><a class="headerlink" href="#id8" title="Link to this table">¶</a></caption>
+<span id="table-catalog-parameters-first-level"></span><table class="longtable docutils align-default" id="id7">
+<caption><span class="caption-number">Table 7.6 </span><span class="caption-text">First-level Fields of Each Credential Entry</span><a class="headerlink" href="#id7" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 30.0%" />
 <col style="width: 70.0%" />
@@ -1739,24 +1385,13 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><strong>domains</strong></p></td>
-<td><p>REQUIRED. Array of domains to which Digital Credential belongs, such as:</p>
-<ul class="simple">
-<li><p><strong>id</strong>: Unique identifier for the purpose (e.g., &quot;IDENTITY&quot;, &quot;MOBILITY_TRAVEL&quot;).</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-odd"><td><p><strong>classes</strong></p></td>
-<td><p>REQUIRED. Array of classes to which Digital Credential belongs, such as:</p>
-<ul class="simple">
-<li><p><strong>id</strong>: Unique identifier for the class (e.g., &quot;IDENTIFICATION_DOCUMENTS&quot;, &quot;LICENSES_AUTHORIZATIONS&quot;).</p></li>
-</ul>
-</td>
-</tr>
 <tr class="row-even"><td><p><strong>purposes</strong></p></td>
 <td><p>REQUIRED. Array of usage purposes for which the Digital Credential can be used, defining specific usage contexts and required claims for each purpose, such as:</p>
 <ul class="simple">
-<li><p><strong>id</strong>: Unique identifier for the purpose (e.g., &quot;IDENTITY_VERIFICATION&quot;, &quot;AGE_VERIFICATION&quot;, &quot;DRIVING_RIGHTS&quot;).</p></li>
+<li><p><strong>id</strong>: Unique identifier for the purpose (e.g., &quot;driving-authorization&quot;, &quot;person-identification&quot;).</p></li>
+<li><p><strong>description</strong>: Human-readable purpose description with a suffix <code class="docutils literal notranslate"><span class="pre">_l10n_id</span></code> for content localisation.</p></li>
+<li><p><strong>claims_required</strong>: Array of claim identifiers that are required when using the Credential for this purpose.</p></li>
+<li><p><strong>claims_recommended</strong>: Array of claim identifiers that are recommended but not mandatory for this purpose.</p></li>
 </ul>
 </td>
 </tr>
@@ -1790,112 +1425,84 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 <span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;last_modified&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-03-15T12:00:00Z&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;credentials&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;credential_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mDL&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;credential_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mDL.name&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;legal_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pub-eaa&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;restriction_policy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;allowed_wallet_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="s2">&quot;https://wallet-provider.example.org/wallet_solution&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="s2">&quot;https://wallet-provider2.example.org/wallet_solution&quot;</span>
-<span class="w">                </span><span class="p">],</span>
-<span class="w">                </span><span class="nt">&quot;allowed_issuer_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="s2">&quot;https://issuer.example.org&quot;</span>
-<span class="w">                </span><span class="p">]</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="nt">&quot;pricing_policy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;models&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">&quot;pricing_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;verification_based&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EUR&quot;</span>
-<span class="w">                    </span><span class="p">}</span>
-<span class="w">                </span><span class="p">],</span>
-<span class="w">                </span><span class="nt">&quot;pricing_model_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.com/pricing&quot;</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="nt">&quot;validity_info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;max_validity_days&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">365</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;status_methods&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="s2">&quot;status_list&quot;</span>
-<span class="w">                </span><span class="p">],</span>
-<span class="w">                </span><span class="nt">&quot;allowed_states&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;0x00&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;VALID&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;0x01&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;INVALID&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;0x02&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SUSPENDED&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;0x03&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UPDATE&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;0x0B&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ATTRIBUTE_UPDATE&quot;</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="nt">&quot;authentication&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;user_auth_required&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;min_loa&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;high&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;supported_schemes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="s2">&quot;it-wallet&quot;</span>
-<span class="w">                </span><span class="p">]</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="nt">&quot;domains&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDENTITY&quot;</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MOBILITY_TRAVEL&quot;</span>
-<span class="w">                </span><span class="p">}</span>
+<span class="w">    </span><span class="nt">&quot;credentials&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">        </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;credential_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mDL&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;credential_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mDL.name&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;legal_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pub-eaa&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;restriction_policy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;allowed_wallet_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;https://wallet-provider.example.org/wallet_solution&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;https://wallet-provider2.example.org/wallet_solution&quot;</span>
 <span class="w">            </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;classes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDENTIFICATION_DOCUMENTS&quot;</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LICENSES_AUTHORIZATIONS&quot;</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDENTITY_VERIFICATION&quot;</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AGE_VERIFICATION&quot;</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DRIVING_RIGHTS&quot;</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;issuers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;organization_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mDL.issuer1.name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;organization_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ci_example_it&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;organization_country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IT&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                        </span><span class="s2">&quot;mailto:informazioni@example.it&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="s2">&quot;mailto:protocollo@pec.example.it&quot;</span>
-<span class="w">                    </span><span class="p">],</span>
-<span class="w">                    </span><span class="nt">&quot;legal_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pub-eaa&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;homepage_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org/logo.svg&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;policy_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org/privacy&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;tos_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org/terms&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;service_documentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org/.well-known/service-doc&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;issuance_flows&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">&quot;deferred_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;max_deferred_issuance_time_minutes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1440</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;notification_methods&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                            </span><span class="s2">&quot;push&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="s2">&quot;polling&quot;</span>
-<span class="w">                        </span><span class="p">]</span>
-<span class="w">                    </span><span class="p">}</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;authentic_sources&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://motorizzazione.gov.example&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;dataset_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;38832801&quot;</span>
-<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="nt">&quot;allowed_issuer_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;https://issuer.example.org&quot;</span>
 <span class="w">            </span><span class="p">]</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;pricing_policy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;models&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">                </span><span class="nt">&quot;pricing_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;verification_based&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EUR&quot;</span>
+<span class="w">            </span><span class="p">}],</span>
+<span class="w">            </span><span class="nt">&quot;pricing_model_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.com/pricing&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;validity_info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;max_validity_days&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">365</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;status_methods&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;status_list&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;allowed_states&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;0x00&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;VALID&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;0x01&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;INVALID&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;0x02&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SUSPENDED&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;0x03&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UPDATE&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;0x0B&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ATTRIBUTE_UPDATE&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;authentication&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;user_auth_required&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;min_loa&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;high&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;supported_schemes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;it-wallet&quot;</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DRIVING_LICENSE&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PERSON_IDENTIFICATION&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;issuers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;organization_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mDL.issuer1.name&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;organization_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ci_example_it&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;organization_country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IT&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;mailto:informazioni@example.it&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;mailto:protocollo@pec.example.it&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;legal_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pub-eaa&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;homepage_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org/logo.svg&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;policy_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org/privacy&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;tos_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org/terms&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;service_documentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org/.well-known/service-doc&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;issuance_flows&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;deferred_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;max_deferred_issuance_time_minutes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1440</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;notification_methods&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="s2">&quot;push&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;polling&quot;</span>
+<span class="w">                </span><span class="p">]</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}],</span>
+<span class="w">        </span><span class="nt">&quot;authentic_sources&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://motorizzazione.gov.example&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;dataset_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;38832801&quot;</span>
+<span class="w">        </span><span class="p">}]</span>
+<span class="w">    </span><span class="p">}]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1935,22 +1542,20 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 <section id="taxonomy">
 <h2><span class="section-number">7.7. </span>Taxonomy<a class="headerlink" href="#taxonomy" title="Link to this heading">¶</a></h2>
 <p>The <strong>Taxonomy</strong> provides the semantic foundation for Digital Credential interoperability by maintaining the authoritative vocabulary for organizing Credentials within the IT-Wallet ecosystem. The taxonomy is neutral with respect to the Credential format.</p>
-<p>The Taxonomy provides, in a single resource, the hierarchical classification system organizing Domains, Classes and Purposes that can be applied to Credential Types, supporting authorization policy evaluation and ecosystem-wide standardization.</p>
+<p>The taxonomy provides, in a single resource, the hierarchical classification system organizing domains and purposes that can be applied to Credential types, supporting authorization policy evaluation and ecosystem-wide standardization.</p>
 <p><strong>Taxonomy Objectives:</strong></p>
 <ol class="arabic simple">
 <li><p><strong>Semantic Foundation</strong>: Establish standardized vocabulary for domains and purposes across the ecosystem</p></li>
 <li><p><strong>Policy Framework</strong>: Enable structured authorization decisions based on hierarchical classification</p></li>
-<li><p><strong>Interoperability</strong>: Ensure consistent interpretation of credential classifications</p></li>
-<li><p><strong>Extensibility</strong>: Support evolution of the ecosystem with new Domains, Classes, Credential Types and Purposes</p></li>
+<li><p><strong>Interoperability</strong>: Ensure consistent interpretation of Credential classifications</p></li>
+<li><p><strong>Extensibility</strong>: Support evolution of the ecosystem with new domains and purposes</p></li>
 <li><p><strong>Cross-Border Compliance</strong>: Align with EU regulatory requirements and international standards</p></li>
 </ol>
 <p><strong>Taxonomy Structure:</strong></p>
-<p>The taxonomy maintains a four level hierarchical structure:</p>
+<p>The taxonomy maintains a two-level hierarchical structure:</p>
 <ul class="simple">
-<li><p><strong>Domains</strong>: Top-level classification representing broad functional areas (e.g., IDENTITY, HEALTH, FINANCIAL)</p></li>
-<li><p><strong>Class (Credential Family)</strong>: Family of Credentials sharing similar function, structure, or legal meaning (e.g., Identification Documents, Civil Status Certificates, Professional Licenses)</p></li>
-<li><p><strong>Credential Type</strong>: Specific Credential definition issued by an authority (e.g., Digital Travel Credential, Birth Certificate, Mobile Driving License).</p></li>
-<li><p><strong>Purpose (Verification Intent)</strong>: Verification objectives that a Credential can satisfy (e.g., Identity Verification, Age Verification, Eligibility for specific services).</p></li>
+<li><p><strong>Domains</strong>: Top-level classification representing broad functional areas (e.g., IDENTITY, AUTHORIZATION, FINANCIAL)</p></li>
+<li><p><strong>Purposes</strong>: Specific Credential use cases within each domain (e.g., PERSON_IDENTIFICATION, DRIVING_LICENSE, BANK_ACCOUNT) for which Credentials can be used</p></li>
 </ul>
 <p><strong>Localization Support:</strong></p>
 <p>The taxonomy supports multilingual environments through the <code class="docutils literal notranslate"><span class="pre">_l10n_id</span></code> suffix pattern, enabling efficient localization management for user interfaces and cross-border implementations.</p>
@@ -1958,10 +1563,10 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 <ul class="simple">
 <li><p><strong>Claims Registry</strong>: Individual claims catalog</p></li>
 <li><p><strong>AS Registry</strong>: Authentic Sources declare capabilities using taxonomy classifications</p></li>
-<li><p><strong>Digital Credentials Catalog</strong>: Credential Types specify Domains, Classes and Purposes</p></li>
+<li><p><strong>Digital Credentials Catalog</strong>: Credential types specify domains and supported purposes</p></li>
 <li><p><strong>Authorization Policies</strong>: Policy evaluation leverages taxonomy structure for access control decisions</p></li>
 </ul>
-<p>The Taxonomy is accessible through the dedicated taxonomy endpoint as defined in the registry discovery mechanism and is maintained by the Supervisory Body to ensure regulatory compliance and semantic consistency.</p>
+<p>The taxonomy is accessible through the dedicated taxonomy endpoint as defined in the registry discovery mechanism and is maintained by the Supervisory Body to ensure regulatory compliance and semantic consistency.</p>
 <p>A non-normative example of Taxonomy structure is given below:</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
@@ -1969,12 +1574,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 <span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:taxonomy:it-wallet&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;localization&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;default_locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;available_locales&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">            </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;it&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;fr&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;de&quot;</span>
-<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;available_locales&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;en&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;it&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;fr&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;de&quot;</span><span class="p">],</span>
 <span class="w">        </span><span class="nt">&quot;base_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/.well-known/l10n/taxonomy/&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span>
 <span class="w">    </span><span class="p">},</span>
@@ -1985,75 +1585,43 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 <span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDENTITY&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.identity.name&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.identity.description&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;classes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDENTIFICATION_DOCUMENTS&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;class.id_docs.name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                        </span><span class="p">{</span>
-<span class="w">                            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDENTITY_VERIFICATION&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.id_ver.name&quot;</span>
-<span class="w">                        </span><span class="p">},</span>
-<span class="w">                        </span><span class="p">{</span>
-<span class="w">                            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AGE_VERIFICATION&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.age_ver.name&quot;</span>
-<span class="w">                        </span><span class="p">}</span>
-<span class="w">                    </span><span class="p">]</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PERSON_IDENTIFICATION&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.person_identification.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.person_identification.description&quot;</span>
 <span class="w">                </span><span class="p">},</span>
 <span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CIVIL_REGISTRY_STATUS&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;class.civil_registry.name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                        </span><span class="p">{</span>
-<span class="w">                            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CIVIL_STATUS_VERIFICATION&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.civil_status.name&quot;</span>
-<span class="w">                        </span><span class="p">},</span>
-<span class="w">                        </span><span class="p">{</span>
-<span class="w">                            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RESIDENCE_VERIFICATION&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.residence.name&quot;</span>
-<span class="w">                        </span><span class="p">}</span>
-<span class="w">                    </span><span class="p">]</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ECONOMIC_LEGAL_STATUS&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;class.economic_status.name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                        </span><span class="p">{</span>
-<span class="w">                            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ELIGIBILITY_VERIFICATION&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.eligibility.name&quot;</span>
-<span class="w">                        </span><span class="p">},</span>
-<span class="w">                        </span><span class="p">{</span>
-<span class="w">                            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LEGAL_STATUS_CHECK&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.legal_status.name&quot;</span>
-<span class="w">                        </span><span class="p">}</span>
-<span class="w">                    </span><span class="p">]</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ELECTRONIC_RESIDENCY&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.electronic_residency.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.electronic_residency.description&quot;</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">]</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HOME_FAMILY&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.home_family.name&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.home_family.description&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;classes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AUTHORIZATION&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.authorization.name&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.authorization.description&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PROPERTY_CADASTRAL_DOCS&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;class.property_docs.name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                        </span><span class="p">{</span>
-<span class="w">                            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OWNERSHIP_VERIFICATION&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.ownership.name&quot;</span>
-<span class="w">                        </span><span class="p">}</span>
-<span class="w">                    </span><span class="p">]</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DRIVING_LICENSE&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.driving_license.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.driving_license.description&quot;</span>
 <span class="w">                </span><span class="p">},</span>
 <span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LOCAL_TAX_DOCUMENTS&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;class.local_tax.name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                        </span><span class="p">{</span>
-<span class="w">                            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TAX_COMPLIANCE&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.tax_compliance.name&quot;</span>
-<span class="w">                        </span><span class="p">}</span>
-<span class="w">                    </span><span class="p">]</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PROFESSIONAL_LICENSE&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.professional_license.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.professional_license.description&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TRAVEL_DOCUMENT&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.travel_document.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.travel_document.description&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ACCESS_PERMIT&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.access_permit.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.access_permit.description&quot;</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">]</span>
 <span class="w">        </span><span class="p">},</span>
@@ -2061,30 +1629,21 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 <span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EDUCATION&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.education.name&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.education.description&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;classes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EDUCATIONAL_QUALIFICATIONS&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;class.edu_qualifications.name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                        </span><span class="p">{</span>
-<span class="w">                            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DEGREE_VERIFICATION&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.degree_ver.name&quot;</span>
-<span class="w">                        </span><span class="p">}</span>
-<span class="w">                    </span><span class="p">]</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ACADEMIC_DEGREE&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.academic_degree.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.academic_degree.description&quot;</span>
 <span class="w">                </span><span class="p">},</span>
 <span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PROFESSIONAL_CERTIFICATIONS&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;class.prof_cert.name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                        </span><span class="p">{</span>
-<span class="w">                            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SKILLS_ASSESSMENT&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.skills.name&quot;</span>
-<span class="w">                        </span><span class="p">},</span>
-<span class="w">                        </span><span class="p">{</span>
-<span class="w">                            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PROFESSIONAL_PRACTICE&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.prof_practice.name&quot;</span>
-<span class="w">                        </span><span class="p">}</span>
-<span class="w">                    </span><span class="p">]</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CERTIFICATE&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.certificate.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.certificate.description&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TRAINING_RECOGNITION&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.training_recognition.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.training_recognition.description&quot;</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">]</span>
 <span class="w">        </span><span class="p">},</span>
@@ -2092,26 +1651,21 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 <span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HEALTH&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.health.name&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.health.description&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;classes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CERTIFICATIONS_ELIGIBILITY&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;class.health_cert.name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                        </span><span class="p">{</span>
-<span class="w">                            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HEALTH_STATUS_VERIFICATION&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.health_status.name&quot;</span>
-<span class="w">                        </span><span class="p">}</span>
-<span class="w">                    </span><span class="p">]</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;INSURANCE_CARD&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.insurance_card.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.insurance_card.description&quot;</span>
 <span class="w">                </span><span class="p">},</span>
 <span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MEDICAL_RECORDS&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;class.medical_records.name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                        </span><span class="p">{</span>
-<span class="w">                            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HEALTHCARE_ACCESS&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.healthcare_access.name&quot;</span>
-<span class="w">                        </span><span class="p">}</span>
-<span class="w">                    </span><span class="p">]</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DISABILITY_CARD&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.disability_card.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.disability_card.description&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MEDICAL_PRESCRIPTION&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.medical_prescription.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.medical_prescription.description&quot;</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">]</span>
 <span class="w">        </span><span class="p">},</span>
@@ -2119,52 +1673,75 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 <span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FINANCIAL&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.financial.name&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.financial.description&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;classes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PAYMENT_INSTRUMENTS&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;class.payments.name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                        </span><span class="p">{</span>
-<span class="w">                            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PAYMENT_EXECUTION&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.pay_exec.name&quot;</span>
-<span class="w">                        </span><span class="p">}</span>
-<span class="w">                    </span><span class="p">]</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;INCOME_CERTIFICATE&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.income_certificate.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.income_certificate.description&quot;</span>
 <span class="w">                </span><span class="p">},</span>
 <span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PUBLIC_PAYMENTS_FEES&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;class.public_fees.name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                        </span><span class="p">{</span>
-<span class="w">                            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PROOF_OF_PAYMENT&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.proof_pay.name&quot;</span>
-<span class="w">                        </span><span class="p">}</span>
-<span class="w">                    </span><span class="p">]</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TAX_STATEMENT&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.tax_statement.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.tax_statement.description&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FAMILY_ECONOMIC_STATUS&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.family_economic_status.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.family_economic_status.description&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BANK_ACCOUNT&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.bank_account.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.bank_account.description&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PAYMENT_HISTORY&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.payment_history.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.payment_history.description&quot;</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">]</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MOBILITY_TRAVEL&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.mobility.name&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;classes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MEMBERSHIP&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.membership.name&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.membership.description&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LICENSES_AUTHORIZATIONS&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;class.licenses.name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                        </span><span class="p">{</span>
-<span class="w">                            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DRIVING_RIGHTS&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.driving.name&quot;</span>
-<span class="w">                        </span><span class="p">}</span>
-<span class="w">                    </span><span class="p">]</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ASSOCIATION&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.association.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.association.description&quot;</span>
 <span class="w">                </span><span class="p">},</span>
 <span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;VEHICLE_DOCUMENTS&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;class.vehicle_docs.name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                        </span><span class="p">{</span>
-<span class="w">                            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;VEHICLE_VERIFICATION&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.vehicle.name&quot;</span>
-<span class="w">                        </span><span class="p">}</span>
-<span class="w">                    </span><span class="p">]</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LOYALTY_PROGRAM&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.loyalty_program.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.loyalty_program.description&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CLUB_MEMBERSHIP&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.club_membership.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.club_membership.description&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ATTESTATION&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.attestation.name&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.attestation.description&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PUBLIC_STATEMENT&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.public_statement.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.public_statement.description&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CIVIL_STATUS&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.civil_status.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.civil_status.description&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CERTIFICATION&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.certification.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.certification.description&quot;</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">]</span>
 <span class="w">        </span><span class="p">}</span>
@@ -2186,10 +1763,9 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 </div>
 <p>A non-normative example of a localisation bundle output is given below:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;domain.identity.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDENTITY&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;domain.identity.description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Credentials that establish or confirm a person&#39;s legal identity and personal status&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;class.id_docs.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Identification Documents&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;purpose.id_ver.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Identity verification&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;domain.identity.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Identità&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;domain.identity.description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Attestati Elettronici che stabiliscono o verificano l`identità di una persona, compresi i documenti di identità fisici e digitali legalmente riconosciuti dalle leggi nazionali.&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;purpose.person_identification.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;identificazione della persona&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;...&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span>
 <span class="p">}</span>
 </pre></div>
@@ -2210,8 +1786,8 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 </ol>
 <p><strong>Schema Registry Structure and Access:</strong></p>
 <p>The Schema Registry is accessible via the <code class="docutils literal notranslate"><span class="pre">.well-known/it-wallet-registry</span></code> discovery endpoint under the <cite>schema_registry</cite> field. It allows for the discovery of schema URIs and their cryptographic integrity checks.</p>
-<table class="longtable docutils align-default" id="id9">
-<caption><span class="caption-number">Table 7.8 </span><span class="caption-text">First-level Fields of the Schema Registry</span><a class="headerlink" href="#id9" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id8">
+<caption><span class="caption-number">Table 7.7 </span><span class="caption-text">First-level Fields of the Schema Registry</span><a class="headerlink" href="#id8" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 30.0%" />
 <col style="width: 70.0%" />
@@ -2233,8 +1809,8 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 </tr>
 </tbody>
 </table>
-<table class="docutils align-default" id="id10">
-<caption><span class="caption-number">Table 7.9 </span><span class="caption-text">Schema Definition Parameters</span><a class="headerlink" href="#id10" title="Link to this table">¶</a></caption>
+<table class="docutils align-default" id="id9">
+<caption><span class="caption-number">Table 7.8 </span><span class="caption-text">Schema Definition Parameters</span><a class="headerlink" href="#id9" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25.0%" />
 <col style="width: 75.0%" />
@@ -2324,12 +1900,12 @@ The main Journeys below illustrate the interactions with the Registry Infrastruc
 <h3><span class="section-number">7.10.1. </span>Catalog Browsing<a class="headerlink" href="#catalog-browsing" title="Link to this heading">¶</a></h3>
 <p>This <em>Catalog Browsing</em> journey supports Users (both human users via a <strong>Wallet Instance</strong> and automated systems like <strong>Relying Parties</strong> or web portals) in discovering and selecting available Digital Credentials.</p>
 <ol class="arabic simple">
-<li><p><strong>Accessing the Discovery Endpoint</strong>: The entity (e.g., a Wallet Provider or informational portal) accesses the <cite>Registry Discovery Endpoint</cite> (<code class="docutils literal notranslate"><span class="pre">.well-known/it-wallet-registry</span></code>) to obtain the URI of the <strong>Digital Credentials Catalog</strong> ad of the <strong>Taxonomy</strong>.</p></li>
+<li><p><strong>Accessing the Discovery Endpoint</strong>: The entity (e.g., a Wallet Provider or informational portal) accesses the <cite>Registry Discovery Endpoint</cite> (<code class="docutils literal notranslate"><span class="pre">.well-known/it-wallet-registry</span></code>) to obtain the URI of the <strong>Digital Credentials Catalog</strong>.</p></li>
 <li><p><strong>Navigation and Selection</strong>:</p></li>
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Credential Discovery</strong>: The entity browses the list of Credentials (<code class="docutils literal notranslate"><span class="pre">credentials</span></code> field) to identify relevant Credential types (e.g., <code class="docutils literal notranslate"><span class="pre">pid</span></code>, <code class="docutils literal notranslate"><span class="pre">mDL</span></code>) and, if needed, uses the information on the <strong>Taxonomy</strong> to navigate their hierarchy and to provide different localisations.</p></li>
+<li><p><strong>Credential Discovery</strong>: The entity browses the list of Credentials (<code class="docutils literal notranslate"><span class="pre">credentials</span></code> field) to identify relevant Credential types (e.g., <code class="docutils literal notranslate"><span class="pre">pid</span></code>, <code class="docutils literal notranslate"><span class="pre">driving_license</span></code>).</p></li>
 <li><p><strong>Issuer Metadata</strong>: The entity extracts the <strong>Issuer Identifier</strong> (<cite>entity_id</cite> within the <cite>issuers</cite> field) associated with the desired Credential.</p></li>
 <li><p><strong>Detail Consultation</strong>: To obtain complete information oand specific technical requirements, the entity accesses the <strong>Entity Configuration</strong> (Issuer Metadata) using the retrieved identifier.</p></li>
 </ul>
@@ -2372,8 +1948,8 @@ The main Journeys below illustrate the interactions with the Registry Infrastruc
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li><p>The Wallet receives a Presentation Request from the RP, verifies the validity of the request comparing the requested <em>claims</em> with the <em>Authorization Policies</em> related to the RP .</p></li>
-<li><p>The Wallet consults the <strong>Digital Credentials Catalog</strong> and the <strong>Taxonomy</strong> to verify the <em>Domains</em>, the <em>Classes</em> and <em>Purposes</em> associated with the Credential types it holds, evaluating which Credentials are suitable for the request.</p></li>
+<li><p>The Wallet receives a Presentation Request from the RP, verifies the validity of the request comparing the requested <em>claims</em> with the <em>Authorization Policies</em> related to the RP (via the <strong>Taxonomy</strong> definitions).</p></li>
+<li><p>The Wallet consults the <strong>Digital Credentials Catalog</strong> to verify the <em>Domains</em> and <em>Purposes</em> associated with the Credential types it holds, evaluating which Credentials are suitable for the request.</p></li>
 <li><p>The Wallet verifies if the required attributes (claims) are available and authorized for disclosure based on the request policy (<strong>Credential-Specific</strong> or <strong>Credential-Agnostic</strong> scenarios).</p></li>
 <li><p>The User authorizes the release of the selected, selectively disclosed attributes. The Wallet then packages and presents the Digital Credential to the RP.</p></li>
 </ul>
@@ -2487,7 +2063,7 @@ The main Journeys below illustrate the interactions with the Registry Infrastruc
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 26/01/2026.
+      Last updated on 27/01/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
