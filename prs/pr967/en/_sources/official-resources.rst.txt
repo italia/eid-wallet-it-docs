@@ -17,18 +17,18 @@ Graphic Assets
 
 The following official graphic assets are available for download in the `official_resources/ <https://github.com/italia/eidas-it-wallet-docs/tree/versione-corrente/official_resources>`_ folder of this repository:
 
-- **IT-Wallet Logo**: Official logo of the IT-Wallet System (SVG format) - `Download the logo <https://raw.githubusercontent.com/italia/eidas-it-wallet-docs/versione-corrente/official_resources/logoIT-Wallet.svg>`_
-- **IT-Wallet Symbol**: Official symbol of the IT-Wallet System - `Download the symbol <https://raw.githubusercontent.com/italia/eidas-it-wallet-docs/versione-corrente/official_resources/symbol-IT-Wallet.svg>`_
-- **IT-Wallet ID**: Official graphic element that ensures the unique identification and representation of the PID across all Wallet Solutions - `Download IT-Wallet ID <https://raw.githubusercontent.com/italia/eidas-it-wallet-docs/versione-corrente/official_resources/IT-Wallet-ID.svg>`_
-- **Trust Mark**: Official graphic element for attesting the participation in the IT-Wallet System - `Download Trust Mark <https://raw.githubusercontent.com/italia/eidas-it-wallet-docs/versione-corrente/official_resources/trustmark-ENG.svg>`_ - Read more at section :ref:`brand-identity:Trust Mark`
-- **Authentication Button**: Official button for authentication via IT-Wallet - `Download Authentication Button <https://raw.githubusercontent.com/italia/eidas-it-wallet-docs/versione-corrente/official_resources/Authentication-button-ENG.svg>`_
+- **IT-Wallet Logo**: Official logo of the IT-Wallet System (SVG format) - `Download the logo <_static/logoIT-Wallet.svg>`_
+- **IT-Wallet Symbol**: Official symbol of the IT-Wallet System - `Download the symbol <_static/symbol-IT-Wallet.svg>`_
+- **IT-Wallet ID**: Official graphic element that ensures the unique identification and representation of the PID across all Wallet Solutions - `Download IT-Wallet ID <_static/IT-Wallet-ID.svg>`_
+- **Trust Mark**: Official graphic element for attesting the participation in the IT-Wallet System - `Download Trust Mark <_static/trustmark-ENG.svg>`_ - Read more at section :ref:`brand-identity:Trust Mark`
+- **Authentication Button**: Official button for authentication via IT-Wallet - `Download Authentication Button <_static/Authentication-button-ENG.svg>`_
 
 HTML Components
 ^^^^^^^^^^^^^^^
 
 The following official HTML components are available in the `official_resources/ <https://github.com/italia/eidas-it-wallet-docs/tree/versione-corrente/official_resources>`_ folder of this repository:
 
-- **Authentication Button Component**: Official HTML/CSS component for authentication via IT-Wallet, based on the `dev-kit-italia <https://github.com/italia/dev-kit-italia/tree/main/packages/button>`_ framework - `View the component <https://github.com/italia/eidas-it-wallet-docs/tree/versione-corrente/official_resources/authentication-button>`_ - `Demo on GitHub Pages <https://italia.github.io/eidas-it-wallet-docs/official_resources/authentication-button/authentication-button.html>`_
+- **Authentication Button Component**: Official HTML/CSS component for authentication via IT-Wallet, based on the `dev-kit-italia <https://github.com/italia/dev-kit-italia/tree/main/packages/button>`_ framework - `View the component <https://github.com/italia/eidas-it-wallet-docs/tree/versione-corrente/official_resources/authentication-button>`_ - `Live demo <_static/authentication-button/authentication-button.html>`_
 
 
 Brand Manual
