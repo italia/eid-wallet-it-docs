@@ -290,7 +290,7 @@ Below is the description of acronyms and definitions which are useful for furthe
       Not present in ARF 2.5.
 
     **eIDAS Trusted List**
-      Repository of information about authoritative entities and their status used in the eIDAS trust services framework (e.g., QTSP Trusted Lists, EAA Provider Trusted Lists).
+      Repository of information about authoritative entities and their status used in the eIDAS trust services framework (e.g., PID Provider Trusted Lists, Wallet Provider Trusted Lists, List of Trusted List pointing to Member States QTSP Trusted Lists and Member States EAA Provider Trusted Lists, Access Certificates CA and Registristration Certificates Provider Trusted Lists).
       Terminology specialized for IT-Wallet.
 
     **User**
