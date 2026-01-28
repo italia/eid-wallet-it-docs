@@ -127,7 +127,7 @@ authentication-button/
 ├── authentication-button.css     # File CSS principale
 ├── authentication-button.html    # Esempio HTML
 ├── Authentication-button.svg     # Identità visiva ufficiale
-└── fonts/                        # Font files statici (Titillium Web)
+└── fonts/                        # Font files statici per "Titillium Sans Pro"
     ├── titillium-web-400.ttf     # Font weight 400 (normal)
     ├── titillium-web-600.ttf     # Font weight 600 (semi-bold)
     └── titillium-web-700.ttf     # Font weight 700 (bold)
