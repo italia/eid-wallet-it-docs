@@ -2,10 +2,23 @@ openapi: 3.0.1
 info:
   title: IT Wallet API - AS web services
   version: 0.1.0
+  x-summary: e-Service della Fonte Autentica IT Wallet esposto tramite PDND.
+  contact:
+    url: https://github.com/italia/eid-wallet-it-docs
 servers:
   - url: https://authentic-source.example.it
     description: Authentic Source API
 paths:
+  /status:
+    get:
+      tags:
+        - e-Services PDND
+      summary: Recupera lo stato dell’API della Fonte Autentica.
+      description: Endpoint di health-check che restituisce lo stato operativo dell’API della Fonte Autentica.
+      operationId: getAuthenticSourceStatus
+      responses:
+        "200":
+          description: OK
   /v1.3.1/AttributeClaims{dataset_id}:
     post:
       tags:
@@ -21,7 +34,7 @@ paths:
             type: string
           required: true
           description: Identifier of the dataset as registered in the Authentic Source Registry 
-        - name: Authorization
+        - name: PDND-Voucher
           in: header
           description: >-
             JWT token obtained from <a target="blank"
@@ -91,12 +104,14 @@ paths:
             type: string
             format: JWT
             example: eyJhbGciOiJFUzI1NiIsImtpZCI6ImQ0YzNiMmExLTk4NzYtNTQzMi0xMGZlLWRjYmE5ODc2NTQzMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJhdWQiOiJodHRwczovL2F1dGhlbnRpYy1zb3VyY2UuZXhhbXBsZS5pdCIsImV4cCI6MTczMzA1MjYwMCwibmJmIjoxNzMzMDM2NDUwLCJpYXQiOjE3MzMwMzY0MDAsImp0aSI6ImE0YjVjNmQ3LWU4ZjktYWJjZC1lZjEyLTM0NTY3ODkwMTIzNCIsImRub25jZSI6NjUyODQyNDIxMzY4NSwicHVycG9zZUlkIjoiYjJjM2Q0ZTUtZjZnNy1oOGk5LWowazEtbG1ubzEyMzQ1Njc4IiwidXNlcklEIjoiYThiN2M2ZDUtZTRmMy1nMmgxLWk5ajAta2xtbm9wcXJzdHV2IiwibG9hIjoic3Vic3RhbnRpYWwifQ.y42yfMeW2H9h0b0j0BODUml8yF20stY9q3BwoVU5BB90afBj852Q0QlInncdhjXhUjLS1V76cGBxkutDNvxRNA
+      security:
+        - PDNDVoucher: [ ]
       requestBody:
+        required: true
         content:
           application/json:
             schema:
               $ref: "#/components/schemas/CredentialClaimsRequest"
-        required: true
       responses:
         "200":
           description: OK
@@ -108,37 +123,9 @@ paths:
         "400":
           description: Bad Request
           content:
-            application/json:
+            application/problem+json:
               schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                    description: The error code
-                    enum: [invalid_request, invalid_dpop_proof]
-                  error_description:
-                    type: string
-                    description: Text in human-readable form providing further details to clarify the nature of the error encountered
-                    example: >-
-                      The request cannot be fulfilled because it is missing
-                      required parameters, contains invalid parameters, or
-                      is otherwise malformed.
-                required:
-                  - error
-              examples:
-                invalid_request:
-                  value:
-                    error: invalid_request
-                    error_description: >-
-                      The request cannot be fulfilled because it is missing
-                      required parameters, contains invalid parameters, or is
-                      otherwise malformed
-                invalid_dpop_proof:
-                  value:
-                    error: invalid_dpop_proof
-                    error_description: >-
-                      The request cannot be fulfilled because it contains an
-                      invalid dpop proof
+                $ref: "#/components/schemas/ProblemDetails"
         "401":
           description: Unauthorized
           headers:
@@ -151,68 +138,27 @@ paths:
         "404":
           description: Claims not found
           content:
-            application/json:
+            application/problem+json:
               schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                    description: The error code
-                    enum: [not_found]
-                  error_description:
-                    type: string
-                    description: >-
-                      Text in human-readable form providing further details to
-                      clarify the nature of the error encountered
-                    example: >-
-                      The authentic source cannot fulfill the request because the
-                      claims were not found
-                required:
-                  - error
+                $ref: "#/components/schemas/ProblemDetails"
         "500":
           description: Internal Server Error
           content:
-            application/json:
+            application/problem+json:
               schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                    description: The error code
-                    enum: [server_error]
-                  error_description:
-                    type: string
-                    description: >-
-                      Text in human-readable form providing further details to
-                      clarify the nature of the error encountered
-                required:
-                  - error
-              example:
-                error: server_error
-                error_description: >-
-                  The request cannot be fulfilled because the e-Service Endpoint encountered an internal problem
+                $ref: "#/components/schemas/ProblemDetails"
         "503":
           description: Service Unavailable
           content:
-            application/json:
+            application/problem+json:
               schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                    description: The error code
-                    enum: [temporarily_unavailable]
-                  error_description:
-                    type: string
-                    description: >-
-                      Text in human-readable form providing further details to
-                      clarify the nature of the error encountered
-                required:
-                  - error
-              example:
-                error: "temporarily_unavailable"
-                error_description: "The request cannot be fulfilled because the e-Service Endpoint is temporarily unavailable (e.g., due to maintainance or overload)"
+                $ref: "#/components/schemas/ProblemDetails"
 components:
+  securitySchemes:
+    PDNDVoucher:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
   schemas:
     CredentialClaimsResponse:
       properties:
@@ -246,10 +192,12 @@ components:
             exp:
               description: UNIX timestamp representing the JWT expiration time.
               type: integer
+              format: int64
               example: 1736846928
             iat:
               description: UNIX timestamp representing the JWT issuance time.
               type: integer
+              format: int64
               example: 1736846688
             jti:
               description: Unique identifier of the JWT to prevent replay attacks.
@@ -314,25 +262,6 @@ components:
                   type: string
                 required: [object_id, status, last_updated]
                 example: '[{"object_id": "6F9619FF-8B86-D011-B42D-00C04FC964FF", "nationality": "IT"}, {...}]'
-            metadataClaims:
-              description: List of Metadata Claims.
-              type: array
-              items: 
-                type: object
-                properties:
-                  object_id:
-                    description: Unique identifier of the Dataset.
-                    type: string
-                    example: "6F9619FF-8B86-D011-B42D-00C04FC964FF"
-                  issuance_date:
-                    description: Administrative validity start date of the Dataset
-                    type: string
-                    example: '"2025-01-01"'
-                  expiry_date:
-                    description: Administrative expiry date of the Dataset.
-                    type: string
-                    example: '"2025-12-31"'
-                required: [object_id]
           required: [iss, aud, exp, iat, jti]
     CredentialClaimsRequest:
       required:
@@ -345,3 +274,25 @@ components:
         object_id:
           type: string
           description: Unique identifier of the Credential dataset or `jti` of the Agid-JWT-Signature Credential Issuer deferred flow's request. If this parameter is present only the indicated dataset is returned
+    ProblemDetails:
+      type: object
+      description: Oggetto di dettaglio errore conforme a RFC7807 per le risposte di errore.
+      properties:
+        type:
+          type: string
+          format: uri
+          description: URI assoluto che identifica il tipo di problema.
+        title:
+          type: string
+          description: Breve descrizione testuale del tipo di problema.
+        status:
+          type: integer
+          format: int32
+          description: Codice di stato HTTP generato dal server di origine per questa occorrenza del problema.
+        detail:
+          type: string
+          description: Descrizione testuale specifica di questa occorrenza del problema.
+        instance:
+          type: string
+          format: uri
+          description: URI assoluto che identifica la specifica occorrenza del problema.
