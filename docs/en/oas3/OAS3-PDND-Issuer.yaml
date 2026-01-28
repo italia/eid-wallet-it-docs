@@ -2,10 +2,23 @@ openapi: 3.0.1
 info:
   title: IT Wallet API - Issuer web services
   version: 0.1.0
+  x-summary: IT Wallet Issuer e-Services exposed via PDND.
+  contact:
+    url: https://github.com/italia/eid-wallet-it-docs
 servers:
   - url: https://issuer.example.it
     description: Credential Issuer API
 paths:
+  /status:
+    get:
+      tags:
+        - e-services PDND
+      summary: Retrieve Issuer API status.
+      description: Health-check endpoint that returns the operational status of the Issuer API.
+      operationId: getIssuerStatus
+      responses:
+        "200":
+          description: OK
   /v0.9.0/notifyWalletRevocation:
     post:
       tags:
@@ -17,7 +30,7 @@ paths:
         user
       operationId: notifyWalletRevocation
       parameters:
-        - name: Authorization
+        - name: PDND-Voucher
           in: header
           description: >-
             JWT token obtained from <a target="blank"
@@ -103,48 +116,9 @@ paths:
         "400":
           description: Bad Request
           content:
-            application/json:
+            application/problem+json:
               schema:
-                oneOf:
-                  - type: object
-                    properties:
-                      error:
-                        type: string
-                        description: invalid_request
-                      error_description:
-                        type: string
-                        description: >-
-                          The request cannot be fulfilled because it is missing
-                          required parameters, contains invalid parameters, or
-                          is otherwise malformed.
-                    required:
-                      - error
-                  - type: object
-                    properties:
-                      error:
-                        type: string
-                        description: invalid_dpop_proof
-                      error_description:
-                        type: string
-                        description: >-
-                          The request cannot be fulfilled because it contains an
-                          invalid dpop proof.
-                    required:
-                      - error
-              examples:
-                invalid request:
-                  value:
-                    error: invalid_request
-                    error_description: >-
-                      The request cannot be fulfilled because it is missing
-                      required parameters, contains invalid parameters, or is
-                      otherwise malformed
-                invalid dpop proof:
-                  value:
-                    error: invalid_dpop_proof
-                    error_description: >-
-                      The request cannot be fulfilled because it contains an
-                      invalid dpop proof
+                $ref: "#/components/schemas/ProblemDetails"
         "401":
           description: Unauthorized
           headers:
@@ -155,64 +129,21 @@ paths:
         "404":
           description: Credentials not found
           content:
-            application/json:
+            application/problem+json:
               schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                    description: The error code
-                    example: not_found
-                  error_description:
-                    type: string
-                    description: >-
-                      Text in human-readable form providing further details to
-                      clarify the nature of the error encountered
-                    example: >-
-                      The issuer cannot fulfill the request because the
-                      credentials were not found
-                required:
-                  - error
+                $ref: "#/components/schemas/ProblemDetails"
         "500":
           description: Internal Server Error
           content:
-            application/json:
+            application/problem+json:
               schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                    description: server_error
-                  error_description:
-                    type: string
-                    description: >-
-                      The request cannot be fulfilled because the e-Service Endpoint encountered an internal problem.
-                required:
-                  - error
-              example:
-                error: invalid_request
-                error_description: >-
-                  The request cannot be fulfilled because the e-Service Endpoint encountered an internal problem.
+                $ref: "#/components/schemas/ProblemDetails"
         "503":
           description: Service Unavailable
           content:
-            application/json:
+            application/problem+json:
               schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                    description: The error code
-                  error_description:
-                    type: string
-                    description: >-
-                      Text in human-readable form providing further details to
-                      clarify the nature of the error encountered
-                required:
-                  - error
-              example:
-                error: "temporarily_unavailable"
-                error_description: "The request cannot be fulfilled because the e-Service Endpoint is temporarily unavailable (e.g., due to maintainance or overload)"
+                $ref: "#/components/schemas/ProblemDetails"
   /v0.9.0/wallet-report/{api}:
     get:
       tags:
@@ -250,7 +181,7 @@ paths:
           schema:
             type: string
             format: date-time
-        - name: Authorization
+        - name: PDND-Voucher
           in: header
           description: >-
             JWT token obtained from <a target="blank"
@@ -319,6 +250,11 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorDTO"
 components:
+  securitySchemes:
+    PDNDVoucher:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
   schemas:
     e-Service_Response:
       properties:
@@ -356,10 +292,12 @@ components:
             exp:
               description: UNIX timestamp representing the JWT expiration time.
               type: integer
+              format: int64
               example: 1736846928
             iat:
               description: UNIX timestamp representing the JWT issuance time.
               type: integer
+              format: int64
               example: 1736846688
             jti:
               description: Unique identifier of the JWT to prevent replay attacks.
@@ -381,6 +319,28 @@ components:
               type: string
               example: The service correctly received the request
           required: [iss, aud, exp, iat, jti, result_code, result_description]
+    ProblemDetails:
+      type: object
+      description: RFC7807-compliant problem details object for error responses.
+      properties:
+        type:
+          type: string
+          format: uri
+          description: An absolute URI that identifies the problem type.
+        title:
+          type: string
+          description: A short, human-readable summary of the problem type.
+        status:
+          type: integer
+          format: int32
+          description: The HTTP status code generated by the origin server for this occurrence of the problem.
+        detail:
+          type: string
+          description: A human-readable explanation specific to this occurrence of the problem.
+        instance:
+          type: string
+          format: uri
+          description: An absolute URI that identifies the specific occurrence of the problem.
     RevokeAllCredentials:
       required:
         - object_id
