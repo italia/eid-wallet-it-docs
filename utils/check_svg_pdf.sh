@@ -63,11 +63,46 @@ while IFS=$'\t' read -r fileline ref; do
     resolved_path="$resolved_ref"
   fi
 
-  # Check if the specified path exists
+  # Special handling for Sphinx _static assets referenced from RST.
+  # RST files may use `_static/foo.svg`, but during the Sphinx build these
+  # are actually collected from various static source folders (e.g. docs/**/images/**, official_resources/, etc.).
+  # To avoid false negatives, when a reference is under `_static/` we try to
+  # resolve it against a set of known static asset roots and consider it valid
+  # if it exists in at least one of them.
+  if [[ "$resolved_ref" == _static/* || "$resolved_ref" == ./_static/* ]]; then
+    # Strip leading ./ if still present
+    clean_ref="${resolved_ref#./}"
+    filename="${clean_ref#_static/}"
+
+    static_found=false
+    # Known static roots used to feed the Sphinx build / GitHub Pages:
+    # - docs/en/images/svg: original EN SVG assets
+    # - docs/it/images/svg: original IT SVG assets
+    # - official_resources: shared official SVG assets (including Authentication Button, Trustmarks, etc.)
+    for static_root in \
+      "$DOCS/en/images/svg" \
+      "$DOCS/it/images/svg" \
+      "$ROOT/official_resources"
+    do
+      candidate="$static_root/$filename"
+      if [ -e "$candidate" ]; then
+        static_found=true
+        resolved_path="$candidate"
+        break
+      fi
+    done
+
+    if "$static_found"; then
+      ((found_count++))
+      continue
+    fi
+    # Fall through to generic NOT-FOUND reporting below if none of the candidates exist.
+  fi
+
+  # Generic check: use the resolved path from the RST file location
   if [ -e "$resolved_path" ]; then
     ((found_count++))
   else
-    # Report the actual missing path from RST
     printf 'NOT-FOUND: %s:%s -> %s\n' "$rst" "$line" "$resolved_path"
     ((not_found_count++))
   fi
