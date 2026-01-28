@@ -21,9 +21,11 @@
 /* Uncomment the @import below to use Google Fonts CDN instead of local fonts */
 /* @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap'); */
 
-/* Local font files - Titillium Web */
+/* Local font files - implementation of the design-system font "Titillium Sans Pro"
+ * via the open-source webfont files commonly distributed as "Titillium Web".
+ */
 @font-face {
-  font-family: 'Titillium Web';
+  font-family: 'Titillium Sans Pro';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -31,7 +33,7 @@
 }
 
 @font-face {
-  font-family: 'Titillium Web';
+  font-family: 'Titillium Sans Pro';
   font-style: normal;
   font-weight: 600;
   font-display: swap;
@@ -39,7 +41,7 @@
 }
 
 @font-face {
-  font-family: 'Titillium Web';
+  font-family: 'Titillium Sans Pro';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
@@ -51,7 +53,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  font-family: "Titillium Sans Pro", "Titillium Web", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "Titillium Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 600; /* Semi-bold per il label principale */
   text-align: left;
   text-decoration: none;
