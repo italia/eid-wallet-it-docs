@@ -7,6 +7,8 @@ on:
     paths:
       - 'official_resources/**/*.html'
       - 'official_resources/**/*.css'
+      - '.htmlhintrc.json'
+      - '.stylelintrc.json'
       - '.github/workflows/lint-html-css.yml'
   pull_request:
     branches:
@@ -14,6 +16,8 @@ on:
     paths:
       - 'official_resources/**/*.html'
       - 'official_resources/**/*.css'
+      - '.htmlhintrc.json'
+      - '.stylelintrc.json'
       - '.github/workflows/lint-html-css.yml'
   workflow_dispatch:
 
