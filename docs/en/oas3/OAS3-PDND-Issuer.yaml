@@ -234,21 +234,21 @@ paths:
         "400":
           description: Bad request
           content:
-            application/json:
+            application/problem+json:
               schema:
-                $ref: "#/components/schemas/ErrorDTO"
+                $ref: "#/components/schemas/ProblemDetails"
         "401":
           description: Unauthorized
           content:
-            application/json:
+            application/problem+json:
               schema:
-                $ref: "#/components/schemas/ErrorDTO"
+                $ref: "#/components/schemas/ProblemDetails"
         "500":
           description: Internal server error
           content:
-            application/json:
+            application/problem+json:
               schema:
-                $ref: "#/components/schemas/ErrorDTO"
+                $ref: "#/components/schemas/ProblemDetails"
 components:
   securitySchemes:
     PDNDVoucher:
