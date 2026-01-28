@@ -14,7 +14,7 @@ Il sito ufficiale del Sistema IT-Wallet è disponibile all'indirizzo seguente:
 Risorse Grafiche
 ^^^^^^^^^^^^^^^^
 
-Di seguito sono elencate le risorse grafiche ufficiali, disponibili per il download nella cartella `official_resources/ <https://github.com/italia/eidas-it-wallet-docs/tree/versione-corrente/official_resources>`_ di questo repository:
+Di seguito sono elencate le risorse grafiche ufficiali, disponibili per il download nella cartella `official_resources/ <https://github.com/italia/eid-wallet-it-docs/tree/versione-corrente/official_resources>`_ di questo repository:
 
 - **Logo IT-Wallet**: Logo ufficiale del Sistema IT-Wallet (formato SVG) - `Scarica il logo <_static/logoIT-Wallet.svg>`_
 - **Pittogramma IT-Wallet**: Pittogramma ufficiale del Sistema IT-Wallet - `Scarica il pittogramma <_static/symbol-IT-Wallet.svg>`_
@@ -25,9 +25,9 @@ Di seguito sono elencate le risorse grafiche ufficiali, disponibili per il downl
 Componenti HTML
 ^^^^^^^^^^^^^^^^
 
-I seguenti componenti HTML ufficiali sono disponibili nella cartella `official_resources/ <https://github.com/italia/eidas-it-wallet-docs/tree/versione-corrente/official_resources>`_ di questo repository:
+I seguenti componenti HTML ufficiali sono disponibili nella cartella `official_resources/ <https://github.com/italia/eid-wallet-it-docs/tree/versione-corrente/official_resources>`_ di questo repository:
 
-- **Authentication Button Component**: Componente HTML/CSS ufficiale per l'autenticazione tramite IT-Wallet, basato sul framework `dev-kit-italia <https://github.com/italia/dev-kit-italia/tree/main/packages/button>`_ - `Vedi il componente <https://github.com/italia/eidas-it-wallet-docs/tree/versione-corrente/official_resources/authentication-button>`_ - `Demo live <_static/authentication-button/authentication-button.html>`_
+- **Authentication Button Component**: Componente HTML/CSS ufficiale per l'autenticazione tramite IT-Wallet, basato sul framework `dev-kit-italia <https://github.com/italia/dev-kit-italia/tree/main/packages/button>`_ - `Vedi il componente <https://github.com/italia/eid-wallet-it-docs/tree/versione-corrente/official_resources/authentication-button>`_ - `Demo live <_static/authentication-button/authentication-button.html>`_
 
 
 Brand Manual

@@ -15,7 +15,7 @@ The official website of the IT-Wallet System is the following address:
 Graphic Assets
 ^^^^^^^^^^^^^^
 
-The following official graphic assets are available for download in the `official_resources/ <https://github.com/italia/eidas-it-wallet-docs/tree/versione-corrente/official_resources>`_ folder of this repository:
+The following official graphic assets are available for download in the `official_resources/ <https://github.com/italia/eid-wallet-it-docs/tree/versione-corrente/official_resources>`_ folder of this repository:
 
 - **IT-Wallet Logo**: Official logo of the IT-Wallet System (SVG format) - `Download the logo <_static/logoIT-Wallet.svg>`_
 - **IT-Wallet Symbol**: Official symbol of the IT-Wallet System - `Download the symbol <_static/symbol-IT-Wallet.svg>`_
@@ -26,9 +26,9 @@ The following official graphic assets are available for download in the `officia
 HTML Components
 ^^^^^^^^^^^^^^^
 
-The following official HTML components are available in the `official_resources/ <https://github.com/italia/eidas-it-wallet-docs/tree/versione-corrente/official_resources>`_ folder of this repository:
+The following official HTML components are available in the `official_resources/ <https://github.com/italia/eid-wallet-it-docs/tree/versione-corrente/official_resources>`_ folder of this repository:
 
-- **Authentication Button Component**: Official HTML/CSS component for authentication via IT-Wallet, based on the `dev-kit-italia <https://github.com/italia/dev-kit-italia/tree/main/packages/button>`_ framework - `View the component <https://github.com/italia/eidas-it-wallet-docs/tree/versione-corrente/official_resources/authentication-button>`_ - `Live demo <_static/authentication-button/authentication-button.html>`_
+- **Authentication Button Component**: Official HTML/CSS component for authentication via IT-Wallet, based on the `dev-kit-italia <https://github.com/italia/dev-kit-italia/tree/main/packages/button>`_ framework - `View the component <https://github.com/italia/eid-wallet-it-docs/tree/versione-corrente/official_resources/authentication-button>`_ - `Live demo <_static/authentication-button/authentication-button.html>`_
 
 
 Brand Manual
