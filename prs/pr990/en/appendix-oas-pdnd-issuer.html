@@ -408,21 +408,21 @@
 <span class="linenos">234</span><span class="w">        </span><span class="s">&quot;400&quot;</span><span class="p p-Indicator">:</span>
 <span class="linenos">235</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad request</span>
 <span class="linenos">236</span><span class="w">          </span><span class="nt">content</span><span class="p">:</span>
-<span class="linenos">237</span><span class="w">            </span><span class="nt">application/json</span><span class="p">:</span>
+<span class="linenos">237</span><span class="w">            </span><span class="nt">application/problem+json</span><span class="p">:</span>
 <span class="linenos">238</span><span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
-<span class="linenos">239</span><span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/ErrorDTO&quot;</span>
+<span class="linenos">239</span><span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/ProblemDetails&quot;</span>
 <span class="linenos">240</span><span class="w">        </span><span class="s">&quot;401&quot;</span><span class="p p-Indicator">:</span>
 <span class="linenos">241</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Unauthorized</span>
 <span class="linenos">242</span><span class="w">          </span><span class="nt">content</span><span class="p">:</span>
-<span class="linenos">243</span><span class="w">            </span><span class="nt">application/json</span><span class="p">:</span>
+<span class="linenos">243</span><span class="w">            </span><span class="nt">application/problem+json</span><span class="p">:</span>
 <span class="linenos">244</span><span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
-<span class="linenos">245</span><span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/ErrorDTO&quot;</span>
+<span class="linenos">245</span><span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/ProblemDetails&quot;</span>
 <span class="linenos">246</span><span class="w">        </span><span class="s">&quot;500&quot;</span><span class="p p-Indicator">:</span>
 <span class="linenos">247</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Internal server error</span>
 <span class="linenos">248</span><span class="w">          </span><span class="nt">content</span><span class="p">:</span>
-<span class="linenos">249</span><span class="w">            </span><span class="nt">application/json</span><span class="p">:</span>
+<span class="linenos">249</span><span class="w">            </span><span class="nt">application/problem+json</span><span class="p">:</span>
 <span class="linenos">250</span><span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
-<span class="linenos">251</span><span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/ErrorDTO&quot;</span>
+<span class="linenos">251</span><span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/ProblemDetails&quot;</span>
 <span class="linenos">252</span><span class="nt">components</span><span class="p">:</span>
 <span class="linenos">253</span><span class="w">  </span><span class="nt">securitySchemes</span><span class="p">:</span>
 <span class="linenos">254</span><span class="w">    </span><span class="nt">PDNDVoucher</span><span class="p">:</span>
