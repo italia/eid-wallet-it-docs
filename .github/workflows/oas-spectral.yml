@@ -47,7 +47,12 @@ jobs:
             fi
           done
           if [ "$fail" -ne 0 ]; then
-            echo "One or more OpenAPI 3.x specifications failed Spectral checks."
+            echo "One or more OpenAPI 3.x specifications failed Spectral checks. Printing JSON reports:"
+            for report in spectral-reports/*.json; do
+              echo "====== $report ======"
+              cat "$report"
+              echo
+            done
             exit 1
           fi
 
