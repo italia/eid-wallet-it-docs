@@ -52,6 +52,9 @@ while IFS=$'\t' read -r fileline ref; do
 
   # Resolve the exact path specified in the RST file
   resolved_ref="$ref"
+  # Strip optional leading '<' and trailing '>' (e.g. RST links like `<_static/foo.svg>`)
+  resolved_ref="${resolved_ref#<}"
+  resolved_ref="${resolved_ref%>}"
   # Remove leading ./ if present
   if [[ "$resolved_ref" == ./* ]]; then
     resolved_ref="${resolved_ref#./}"
