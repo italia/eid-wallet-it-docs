@@ -65,11 +65,12 @@
   transition: all 0.2s ease-in-out;
   background-color: #0066CC;
   color: #FFFFFF;
-  padding: 0.75rem 1.5rem;
-  /* Dimensioni base secondo Brand Manual (Titillium ~16px) */
-  font-size: 1rem;        /* 16px */
-  line-height: 1.375;     /* ~22px */
-  min-height: 48px; /* Accessibility: minimum touch area */
+  padding: 0.5rem 1rem;
+  /* Default size: Small (S) per Brand Manual */
+  font-size: 0.875rem;    /* 14px */
+  line-height: 1.428;     /* ~20px */
+  min-height: 40px; /* Accessibility: minimum touch area */
+  gap: 0.5rem;
   justify-content: flex-start; /* Default: left alignment */
 }
 
@@ -102,14 +103,14 @@
   color: #FFFFFF;
 }
 
-/* Icon */
+/* Icon - default size Small (S) */
 .btn-itwallet-auth .btn-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 20px;
-  height: 24px;
+  width: 16px;
+  height: 20px;
 }
 
 .btn-itwallet-auth .btn-icon svg {
@@ -158,19 +159,20 @@
   padding-left: 0;
 }
 
-/* Sizes */
+/* Sizes - default is Small (S) */
 
-/* Large (default) */
-.btn-itwallet-auth.btn-lg {
-  padding: 1rem 2rem;
-  font-size: 1.125rem;   /* 18px */
-  line-height: 1.444;    /* ~26px */
-  min-height: 56px;
+/* Small (default) - base .btn-itwallet-auth already uses these values */
+.btn-itwallet-auth.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;   /* 14px */
+  line-height: 1.428;    /* ~20px */
+  min-height: 40px;
+  gap: 0.5rem;
 }
 
-.btn-itwallet-auth.btn-lg .btn-icon {
-  width: 24px;
-  height: 28px;
+.btn-itwallet-auth.btn-sm .btn-icon {
+  width: 16px;
+  height: 20px;
 }
 
 /* Medium */
@@ -186,18 +188,17 @@
   height: 22px;
 }
 
-/* Small */
-.btn-itwallet-auth.btn-sm {
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;   /* 14px */
-  line-height: 1.428;    /* ~20px */
-  min-height: 40px;
-  gap: 0.5rem;
+/* Large */
+.btn-itwallet-auth.btn-lg {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;   /* 18px */
+  line-height: 1.444;    /* ~26px */
+  min-height: 56px;
 }
 
-.btn-itwallet-auth.btn-sm .btn-icon {
-  width: 16px;
-  height: 20px;
+.btn-itwallet-auth.btn-lg .btn-icon {
+  width: 24px;
+  height: 28px;
 }
 
 /* Responsive */
