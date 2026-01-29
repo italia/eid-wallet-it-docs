@@ -1117,7 +1117,7 @@ In addition, the Provider MUST validate the integrity of the e-Service Request, 
 
 If any of the previous checks fail, the Provider MUST reject the Request.
 
-**Step 4 (e-Service Response):** Upon successful checks, the Provider provides the Consumer with the requested data.
+**Step 4 (e-Service Response):** Upon successful checks, the Provider provides the Consumer with the requested data. In The Response header MUST be present the JWT (``Signature``) to ensure integrity.
 
 .. code-block:: http
   :caption: Non-normative example of the e-Service Response
@@ -1133,9 +1133,6 @@ If any of the previous checks fail, the Provider MUST reject the Request.
   "requestedField2": "value2",
   "requestedField3": "value3"
 }
-
-.. note::
-  Step 4 is required to comply with the ``INTEGRITY_REST_02`` security pattern.
 
 The Consumer MUST validate the ``Signature`` JWT as follows:
 
@@ -1309,7 +1306,7 @@ When complying with the ``AUDIT_REST_02`` security pattern, the ``TrackingEviden
 e-Service Response
 """""""""""""""""""
 
-The e-Service Response is a JWT serialized in ``application/json`` format.
+The e-Service Response MUST use HTTP Content-Type set to ``application/json``.
 
 The e-Service Response MUST include the following HTTP header parameters:
 
