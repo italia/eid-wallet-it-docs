@@ -304,6 +304,10 @@ This section provides the set of test cases designed for technical implementers 
     - Issuance, Security
     - Authorization Code Validity and Usage Check of the Token Request
     - Credential Issuer verifies the Authorization code is valid and has not been previously used (:rfc:`6749`).
+  * - CI_061a
+    - Issuance, Security
+    - PKCE ``code_verifier`` Verification in Token Request
+    - The Credential Issuer verifies that the ``code_verifier`` parameter is present and matches the ``code_challenge`` associated with the authorization code (:rfc:`7636`); in case of mismatch, the request is rejected.  
   * - CI_062
     - Issuance, Security
     - Redirect URI Matching Validation of the Token Request
@@ -599,7 +603,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_131
     - Data Model and lifecycle, Interoperability
     - SD-JWT JOSE Header Parameter
-    - The JOSE header contains the parameter in the Credential :ref:`SD-JWT Parameters Table <table_sd-wt-vc_jose_header>`.
+    - The JOSE header contains the parameter in the Credential :ref:`SD-JWT Parameters Table <table_sd-jwt-vc_jose_header>`.
   * - CI_132
     - Data Model and lifecycle, Interoperability
     - SD-JWT Payload Claims
@@ -826,122 +830,118 @@ This section provides the set of test cases designed for technical implementers 
     - Credential Issuer successfully updates Digital Credential status immediately when revocation occurs
   * - CI_169
     - Data Model and lifecycle, Interoperability
-    - Wallet Instance Revocation Endpoint via PDND
-    - Credential Issuer successfully provides web service for Wallet Instance Revocation endpoint defined using PDND specifications, with implementation compliant to e-Service PDND Credential Issuer Catalogue requirements.
+    - Wallet Instance Status Monitoring for the Digital Credential Status Update
+    - Credential Issuer establishes a monitoring mechanism of the current statuses of all the Wallet Unit Attestations related to the Wallet Instances to which the Credentials were issued.
   * - CI_170
-    - Data Model and lifecycle, Interoperability
-    - Credential Update and Status Notification Service via PDND
-    - Credential Issuer successfully provides web service available via PDND for Credential update notification and validity status as defined in Section e-Service PDND Credential Issuer Catalogue specifications.
-  * - CI_171
     - Data Model and lifecycle, Interoperability
     - Credential Status Update Following Data Change Notification
     - Credential Issuer successfully updates Credential Status according to the validity mechanism's defined mode upon receiving notification from Authentic Source
-  * - CI_171a
+  * - CI_170a
     - Data Model and lifecycle, Interoperability
     - User Notification of Credential Update
     - Credential Issuer successfully notifies User of credential changes through registered out-of-band communication channel
-  * - CI_172
+  * - CI_171
     - Data Model and lifecycle, Interoperability
     - User Notification on Credential Status INVALID
     - Credential Issuer successfully informs User when Credential Status changes to INVALID
-  * - CI_173
+  * - CI_172
     - Data Model and lifecycle, Interoperability
     - Batch Status Update Processing as Individual Changes
     - Credential Issuer successfully handles single batch status update request (referencing batch notification_id) from authorized entities (e.g. Wallet Instance via Notification Endpoint with event=credential_deleted, or Wallet Provider via PDND) as N separate individual status changes, with each Credential's status updated independently (for example, flipping its status-list bit to INVALID or SUSPENDED).
-  * - CI_174
+  * - CI_173
     - Data Model and lifecycle, Interoperability
     - Batch revocation upon credential Update Request
     - Credential Issuer successfully processes batch update request as revoke all requests, marking every Credential in the batch as revoked and emitting single notification covering the entire batch.
-  * - CI_175
+  * - CI_174
     - Data Model and lifecycle, Interoperability
     - Batch Credential Deletion
     - User-driven deletion successfully removes the entire batch as Wallet UI surfaces a batch as one Credential, with deletion request using the batch's notification_id applying to all Credentials in that batch, as it is not possible to delete or revoke just one Credential.
-  * - CI_176
+  * - CI_175
     - Data Model and lifecycle, Interoperability
     - OAuth Status List Support for Long-Lived Digital Credentials
     - OAuth Status List (`TOKEN-STATUS-LIST`_) is successfully supported for verification of validity status of long-lived Digital Credentials in both remote and proximity scenarios.
-  * - CI_177
+  * - CI_176
     - Data Model and lifecycle, Interoperability
     - Digital Credential Index Allocation and Status Mapping
     - Each Digital Credential is successfully allocated an index during issuance that represents its position within the bit array, with the value of the bit(s) at this index corresponding to the Digital Credential's status.
-  * - CI_178
+  * - CI_177
     - Data Model and lifecycle, Interoperability
     - Status List Token Cryptographic Format
     - Status List is successfully provided within cryptographically signed Status List Token in JWT format.
-  * - CI_179
+  * - CI_178
     - Data Model and lifecycle, Interoperability
     - Status List Bit Configuration for Digital Credentials
     - Credential Issuer successfully defines number of bits k (either 1, 2, 4, 8) that represents the amount of bits used to describe the status of each Digital Credential within Status List, with Credential Issuer configuring the number of bits and each Credential having 2^k possible states.
-  * - CI_180
+  * - CI_179
     - Data Model and lifecycle, Interoperability
     - Status List Byte Array Creation and Credential Position Assignment
     - Credential Issuer successfully creates byte array of size = (amount of Digital Credentials) * k / 8 or greater, with each byte corresponding to 8/k statuses depending on k value (8 if k=1, 4 if k=2, 2 if k=4, or 1 if k=8), and assigns each issued Digital Credential to a position in the array.
-  * - CI_181
+  * - CI_180
     - Data Model and lifecycle, Interoperability
     - Status List Digital Credential Status Values Setting in Byte Array
     - Credential Issuer successfully sets status values for all issued Digital Credentials within the byte array, with each Digital Credential status identified using an index that maps to specific bits within the byte array, index counting from 0 to (amount of Digital Credential) - 1, bits counted from least significant bit ("0") to most significant bit ("7"), and all bits of the byte array at a particular index set to a status value
-  * - CI_182
+  * - CI_181
     - Data Model and lifecycle, Interoperability
     - Status List Digital Credential Byte Array Compression
     - Credential Issuer successfully compresses the byte array using DEFLATE [:rfc:`1951`] with the ZLIB [:rfc:`1950`] data format
-  * - CI_182a
+  * - CI_181a
     - Data Model and lifecycle, Interoperability
     - Status List Digital Credential Recommended Compression Level
     - Implementations successfully use the highest compression level available for byte array compression.
-  * - CI_183
+  * - CI_182
     - Data Model and lifecycle, Interoperability
     - Status List Endpoint Availability
     - Credential Issuer successfully makes available to Relying Parties and Wallet Instances an endpoint to request Status Lists.
-  * - CI_184
+  * - CI_183
     - Data Model and lifecycle, Interoperability
     - Status List Digital Credential Status Values Definition
-    - Credential Issuer successfully uses the values for possible Statuses defined in the :ref:`credential-revocation:Status Lists Creation` section.
-  * - CI_185
+    - Credential Issuer successfully uses the values for possible Statuses defined in the :ref:`credential-revocation:Token Status Lists` section.
+  * - CI_184
     - Data Model and lifecycle, Interoperability
     - Status List Optional Digital Credential Status States Definition
     - Credential Issuer successfully adds other states besides those described above when choosing the number of bits for conveying statuses of issued Digital Credentials, with careful consideration for information disclosure to Relying Parties when adding many different states for Digital Credential lifecycle.
-  * - CI_186
+  * - CI_185
     - Data Model and lifecycle, Interoperability
     - Status List Token Parameters at Endpoint
     - Status List Token is successfully available at the Status List Endpoint and contains the parameters in the corresponding :ref:`table <table_status_list_endpoint_parameters>`
-  * - CI_187
+  * - CI_186
     - Data Model and lifecycle, Interoperability
     - Recommended Status List Token Short-Lived Expiration Setting
     - Credential Issuer successfully sets exp claim so that Status List Token is short-lived, typically with exp claim not exceeding iat claim by more than 24 hours.
-  * - CI_188
+  * - CI_187
     - Data Model and lifecycle, Interoperability
     - JSON-Encoded Status List Structure
     - The JSON-encoded Status List's structure correctly conforms to the corresponding :ref:`table <table_status_list_structure>`
-  * - CI_189
+  * - CI_188
     - Data Model and lifecycle, Interoperability
     - Status List Digital Credential Local Storage
     - Credential Issuers successfully store generated Digital Credential locally with minimum set of data required to manage its lifecycle, including the validity status of that Digital Credential.
-  * - CI_190
+  * - CI_189
     - Data Model and lifecycle, Interoperability
     - Digital Credential Status List Claim Inclusion
     - Credential Issuers successfully include *status_list* claim within the JSON Object value of the status claim of the Digital Credential once generated.
-  * - CI_191
+  * - CI_190
     - Data Model and lifecycle, Interoperability
     - Status List Claim JSON Object Parameters
     - The value of *status_list* claim is successfully a JSON Object with the corresponding :ref:`parameters <table_status_list_parameters>`.
-  * - CI_192
+  * - CI_191
     - Data Model and lifecycle, Interoperability
     - Status List Endpoint Successful Response
     - Status List Endpoint successfully responds with Status List Token using HTTP status code in the 2xx range, with Status Provider using content-type application/statuslist+jwt for Status List Token in JWT format in the successful response.
-  * - CI_193
+  * - CI_192
     - Data Model and lifecycle, Interoperability
     - HTTP Status List Response Gzip Content-Encoding
     - HTTP response successfully uses gzip Content-Encoding as defined in [:rfc:`9110`].
-  * - CI_194
+  * - CI_193
     - Data Model and lifecycle, Interoperability
     - Digital Credential Issuer Authorization and Registration
     - Credential Issuer successfully registers its own Digital Credentials in the catalogue.
-  * - CI_195
+  * - CI_194
     - Data Model and lifecycle, Interoperability
     - Digital Credential Catalogue Required Information
-    - Credential Issuer provides its credentials in the catalogue, along with the information in the corresponding :ref:`table <table_catalogue_main_information>`.
-  * - CI_196
+    - Credential Issuer provides its credentials in the catalogue, along with the information in the corresponding :ref:`table <table_catalog_parameters>`.
+  * - CI_195
     - Data Model and lifecycle, Interoperability
     - Credentials Array Element Information
-    - Each element of the *Credentials* array correctly contains all the information defined in the First-level Fields :ref:`table <table_catalogue_credentials_parameters>`.
+    - Each element of the *Credentials* array correctly contains all the information defined in the First-level Fields :ref:`table <table_catalog_parameters_first_level>`.
 

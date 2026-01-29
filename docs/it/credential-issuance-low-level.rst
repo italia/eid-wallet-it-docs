@@ -217,6 +217,7 @@ L'``OAuth-Client-Attestation`` è firmato utilizzando la chiave privata associat
    2. DEVE assicurarsi che il ``code`` di autorizzazione sia valido e non sia stato utilizzato in precedenza (:rfc:`6749`).
    3. DEVE assicurarsi che il ``redirect_uri`` corrisponda al valore incluso nel precedente `Request Object` (vedi Sezione 3.1.3.1. di [`OIDC`_]).
    4. DEVE validare il JWT di `DPoP proof`, secondo la Sezione 4.3 di (:rfc:`9449`).
+   5. DEVE verificare il parametro ``code_verifier`` secondo il meccanismo PKCE, assicurandosi che corrisponda al ``code_challenge`` associato al codice di autorizzazione come definito nella Sezione 4.6 di :rfc:`7636`; in caso contrario, la richiesta DEVE essere rifiutata (:ref:`CI_061a <test-plans-credential-issuer:matrice dei test per il credential issuer>`).
 
 .. code-block:: http
 
@@ -563,14 +564,13 @@ Il seguente diagramma descrive il Re-issuance Flow dell'Attestato Elettronico.
 .. plantuml:: plantuml/credential-reissuance-flow.puml
     :width: 99%
     :alt: La figura illustra il Re-issuance Flow.
-    :caption: `Re-issuance Flow. <https://www.plantuml.com/plantuml/svg/ZLDHYnCn47xFh_ZUlCAT7EXJ3z5Y4GuKZgeS8ZxaTcUxmMscPcRRqrzlahQnUqHq7fQ4p3VVDpFVYjgWnhCIWbltQkvxyh1OkhLJE-1je9QykdZqHAr06G-4STjQfVOIsjDvpgt8I47mOV45Ghw5XMTrdMkiElPGpeZFGW6ZEB-6HQ2r4wLO13pg5NTN3pOY6zviHdy2DhtrdeRd9XLDSesPvogy9I-ujyD0YbilQdr3DmO6m7n56Xpj21_LwYXuxqJnYR-JHySXfK2K8_DP3nB1GER0G9tcsuf-Z2xbxTDuF6Dd1zUcfqffUendoOz5RRgu3XT_U4v0v_7r-l7wnINYz-MtrpDeuhZuIJBBCD0WX0lFCnYSXoXl3OuqhZFbDH4jceP4ZegosahbOwJBXAaybt8hwW99_t_rW7biBYYcg7S3xm_3hVFLEYkHzs4mZGEBzV2qpzvBoqSNUPvcxftssNRF18inwTQJjQQfqvNbA0EktyeX6HBBExx3PFZA24SVbjIej_ABbU4yjOeShF8gM-JlSvydcv9eRZItoS7zobtUrFPTg2Rv93M6oMuvK6wX9hs-r_fcoophm7yprjm_Nz90IjW6sZaUPO8nMS2R21atmsy0>`_
+    :caption: `Re-issuance Flow. <https://www.plantuml.com/plantuml/svg/ZLFVYnCn47xFN_6zsSAT7FYsXtZL8Xme75KvH7p8xSvsWsbICvEs-jURfEtQbOZEmp93vfjlVdnxnwA3n8rLnL7E2o6OzI3gSI07ZQLP6z4MRm9rvCGarn5r3F5u8iHjfuMwAyX0bpdtp942u_tYCvXS1urKs_IcrMAyI-Y2-CGK4DcuDJG2hGqBfIBmKQvzV_sa4xBrcqrqPs0xQEV8FbUvQ6vNgQPKyLjoZ4TjBGdk7OjsBTqgA03DYYGOsX4-Y9R8U9U8yD5_8uVUXvm25f-OBsRW10OA1oprKg8LVOycv-tpUfp7JblJvQTAQJeadylZs6qEJ8_PRvupq3XykJdSlBX2-hx--ceEoHop7yJp0WDP9ioSdqFXqbZyLk54OtfL_3FHecs9-THHwRPI-MGbk6GQdyToA-e3yV1_zO0c3HS4KzHRw_V7vTRuwfCL6--XCBKZYtPmj2_QoyT7dtZ-pDmR6OhidZ4MCVSjPsbDKwSdApOkk1wDJXOabW_-0PFbYqSuwN1CJVrMVh7ZSYfIuQDKNXQ9_7tlJPOfiPH1ovW-c9zbojlQlKUgIJvnXM5wMn-eZ51hlNxN-cN7NTQ1_sQigRzPaYKXR0FjZ8yymQZIm5s2n8tz1G00>`_
 
 **Passo 1**: Il flusso inizia quando l'Utente apre l'Istanza del Wallet: questo passaggio PUÒ essere attivato da una notifica inviata dal Credential Issuer (utilizzando ad esempio uno dei contatti di comunicazione out-of-band registrati durante il flusso di emissione).
 
-**Passo 2**: L'Istanza del Wallet DEVE controllare lo stato di ogni Attestato Elettronico memorizzato, recuperando — se non disponibile — un Token di Stato valido (seguendo il flusso descritto nella Sezione :ref:`credential-revocation:OAuth Status Lists`) come da (:ref:`WP_069 <wallet-credential-issuance-testcases>`).  
-L'Istanza del Wallet DEVE poi verificare (:ref:`WP_070 <wallet-credential-issuance-testcases>`) se un Attestato Elettronico ha lo stato impostato su ``0x03`` - ``UPDATE`` o ``0x04`` - ``ATTRIBUTE_UPDATE``.
+**Passo 2**: L'Istanza del Wallet DEVE controllare lo stato di ogni Attestato Elettronico memorizzato, recuperando — se non disponibile — un Token di Stato valido (seguendo il flusso descritto nella Sezione :ref:`credential-revocation:Token di Status List`) come da (:ref:`WP_069 <wallet-credential-issuance-testcases>`).  
+L'Istanza del Wallet DEVE poi verificare (:ref:`WP_070 <wallet-credential-issuance-testcases>`) se un Attestato Elettronico ha lo stato impostato su ``0x03`` - ``UPDATE`` o ``0x0`` - ``ATTRIBUTE_UPDATE``.
  
-
 Se le condizioni non sono soddisfatte, il flusso DEVE essere interrotto.  
 Altrimenti, l'Istanza del Wallet DEVE verificare i relativi Access Token. Se sono ancora validi, il Passo 3 PUÒ essere saltato (:ref:`WP_071 <wallet-credential-issuance-testcases>`).
 
@@ -596,18 +596,23 @@ Per garantire l'integrità e la sicurezza del Re-issuance Flow, si applicano le 
   - Consenso dell'Utente: Per i Re-issuance Flow attivati da modifiche agli attributi, il consenso dell'Utente DEVE essere ottenuto prima di memorizzare il nuovo Attestato Elettronico.
   - Refresh Token vincolato al mittente: I Refresh Token DEVONO essere crittograficamente vincolati all'Istanza del Wallet utilizzando il protocollo DPoP. Ciò mitiga il rischio di uso improprio del token, garantendo che solo l'Istanza del Wallet prevista possa utilizzarlo.
 
+.. _credential-issuance-low-level-credential-offer-flow:
 
 Flusso Credential Offer
 -----------------------
 
 Un Credential Issuer o una terza parte (ad esempio, Authentic Source, Registro, Catalogo) avvia l'emissione di Attestati Elettronici inviando una Credential Offer all'Istanza del Wallet.
 
-Il meccanismo di invocazione dell'Istanza del Wallet dipende dalla disponibilità del parametro ``credential_offer_endpoint`` nei metadata del Wallet:
+Per richiamare l'Istanza del Wallet corretta, è necessario sapere quale Istanza del Wallet è installata sul dispositivo dell'Utente e quale l'Utente desidera utilizzare. 
+Queste informazioni DOVREBBERO essere ottenute utilizzando la Selection Page descritta in :ref:`functionalities:Design dell'Esperienza Utente`. 
 
-- Se ``credential_offer_endpoint`` è disponibile e contiene un URL HTTPS (Universal Link), il Credential Issuer o la terza parte DOVREBBE utilizzare quell'endpoint.
-- Altrimenti, il Credential Issuer o la terza parte DEVE utilizzare uno degli schemi URL personalizzati: ``openid-credential-offer://`` (come definito nella Sezione 4 di [`OpenID4VCI`_]) o ``haip://`` (come definito nella Sezione 5.1.1 di [`OPENID4VC-HAIP`_]).
+-  Se la Selection Page è disponibile, l'utente seleziona l'Istanza del Wallet, quindi il Credential Issuer o una terza parte recupera i Wallet metadata come descritto in :ref:`wallet-metadata-retrieval:Flusso di Recupero dei Wallet Metadata`. Il meccanismo di invocazione dell'Istanza del Wallet dipende dal parametro ``credential_offer_endpoint`` nei Wallet metadata:
 
-L'Istanza del Wallet DEVE supportare entrambi gli schemi URL personalizzati.
+  - Se ``credential_offer_endpoint`` è disponibile e contiene un URL HTTPS (Universal Link), il Credential Issuer o la terza parte DOVREBBE utilizzare quell'endpoint.
+  - Altrimenti, il Credential Issuer o la terza parte DEVE utilizzare uno degli schemi URL personalizzati: ``openid-credential-offer://`` (come definito nella Sezione 4 di [`OpenID4VCI`_]) o ``haip-vci://`` (come definito nella Sezione 4.2 di [`OPENID4VC-HAIP`_]). L'Istanza del Wallet DEVE supportare entrambi gli schemi URL personalizzati.
+
+-  Nel caso in cui il Credential Issuer o la terza non supporti la Selection Page o il recupero dei Wallet metadata fallisce per qualche motivo,  il Credential Issuer o la terza richiamerà l'Istanza del Wallet utilizzando uno degli schemi URL personalizzati descritti precedentemente.
+
 
 La Credential Offer può essere trasmessa per valore o per riferimento:
 

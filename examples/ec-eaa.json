@@ -933,7 +933,8 @@
                 "it_cie",
                 "it_wallet",
                 "eudi_wallet"
-            ]
+            ],
+            "status_list_aggregation_endpoint": "https://eaa-provider.example.org/statuslists/aggregation"
         },
         "openid_credential_verifier": {
             // see relying party metadata section and endpoints

@@ -1,4 +1,4 @@
-.. _test-plans-remote-presentation:
+.. include:: ../common/common_definitions.rst
 
 Matrice di Test per il Verificatore di Credenziali in Remoto
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

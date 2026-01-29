@@ -30,7 +30,7 @@ All Primary Actors MUST undergo administrative registration for legal and regula
 
     2. **Technical Registration**: Following administrative approval, entities complete technical registration through specialized pathways:
 
-        a. **Authentic Sources**: Declare their available claims from the Claims Registry and specify intended domains, purposes and organization type (public or private). 
+        a. **Authentic Sources**: Declare their available claims from the Claims Registry and specify intended verification purposes and organization type (public or private). 
 
         b. **Credential Issuers**: Select Authentic Sources based on required claims, request integration approval (except for regulatory mandates), and register Credential types with automatic catalog publication per Supervisory Body policy.
 
@@ -38,7 +38,7 @@ All Primary Actors MUST undergo administrative registration for legal and regula
 
     3. **IT-Wallet Registry Integration**:
 
-        a. **Claims Registry and Taxonomy Integration**: Claims Registry provides standardized data definitions for individual Credential attributes, while Taxonomy defines hierarchical classification (domains, purposes) that are then referenced in the Digital Credentials Catalog for specific Credential implementations. All participants leverage these registries for capability declarations and issuance/verification requirements.
+        a. **Claims Registry and Taxonomy Integration**: Claims Registry provides standardized data definitions for individual Credential attributes, while Taxonomy defines hierarchical classification (domains, classes, purposes) that are then referenced in the Digital Credentials Catalog for specific Credential implementations. All participants leverage these registries for capability declarations and issuance/verification requirements.
 
         b. **AS Registry Integration**: Authentic Sources registered with their declared claims and capability, enabling CI discovery and coordination.
 
@@ -145,7 +145,7 @@ Lifecycle management in the IT-Wallet ecosystem needs coordination between multi
     - **Registry synchronization:** When one entity makes changes that affect other entities, all registry systems MUST be properly updated ensuring that all changes are logged securely with timestamps and reasons.
     - **Business continuity assurance:** Entities SHOULD balance between making necessary updates and keeping their obligations to users and regulations. This includes ensuring that the service is as available as possible, handling personal data correctly during changes, and staying compliant with legal requirements even in emergency situations.
 
-Technical procedures and specific compliance requirements for lifecycle management are detailed in the Section :ref:`entity-onboarding:Entity Lifecycle Management`.
+Technical procedures and specific compliance requirements for lifecycle management are detailed in the Section :ref:`entity-onboarding:Entity Onboarding`.
 
 Onboarding Journey Maps
 -------------------------------
@@ -157,7 +157,7 @@ Each journey map shows the complete process from initial planning to final regis
 Ecosystem Overview
 ^^^^^^^^^^^^^^^^^^
 
-.. figure:: ./images/svg/onboarding-journey-maps/overview-onboarding-journey.svg
+.. figure:: ./images/svg/overview-onboarding-journey.svg
     :width: 100%
     :alt: IT-Wallet ecosystem onboarding overview
     :name: onboarding-overview
@@ -180,21 +180,14 @@ The following journey maps illustrate two distinct Credential scenarios:
 Authentic Source Operator Journey
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. .. figure:: ./images/svg/onboarding-journey-maps/as-onboarding-journey.svg
-..     :width: 100%
-..     :alt: Authentic Source onboarding journey
-..     :name: as-onboarding-journey
-
-..     Authentic Source registration process and Supervisory Body interactions
-
 From the Authentic Source operator perspective, the onboarding process begins with evaluating existing data capabilities against the standardized Claims Registry and Taxonomy classifications, determining which user attributes can be made available as a Digital Credential. The operator submits a registration request to the Supervisory Body, declaring specific claims from the Claims Registry with the Taxonomy domains and intended purposes.
 
 **Example - Public Authentic Source (mDL Scenario)**:
 
     - **Claims Declaration**: Selects standardized claims (``given_name``, ``family_name``, ``driving_privileges``, etc. ) from Claims Registry.
-    - **Taxonomy Classification**: Domain ``AUTHORIZATION``, Purpose ``DRIVING_LICENSE``.
+    - **Taxonomy Classification**: Domain ``MOBILITY_TRAVEL``, Purpose ``DRIVING_RIGHTS``.
     - **Use Case**: Public service - driving authorization verification (eligible for Credential Catalog).
-    - **Integration**: PDND e-service integration following government standards (see :ref:`e-service-pdnd:e-Service PDND`).
+    - **Integration**: e-Service PDNDintegration following government standards (see :ref:`e-service-pdnd:e-Service PDND`).
     - **Catalog Outcome**: mDL becomes publicly discoverable after CI integration.
 
 **Example - Corporate AS (Employee Badge Scenario)**:
@@ -205,8 +198,8 @@ From the Authentic Source operator perspective, the onboarding process begins wi
     - **Integration**: Custom API for Credential Issuer integration.
     - **Catalog Outcome**: Badge remains private, available only via Credential Offer.
 
-Critical phases include administrative verification by the Supervisory Body (which involves regulatory compliance checks outside the technical scope) and technical validation. The process concludes with registration in the AS Registry, making the declared claims discoverable by Credential Issuers for integration requests.
-
+Critical phases include administrative verification by the Supervisory Body (which involves regulatory compliance checks outside the technical scope) and technical validation. The process concludes with registration in the AS Registry, making the declared claims discoverable by Credential Issuers for integration requests. The integration requests can be also send by the Authentic Sources to a specific Credential Issuers.
+ 
 .. warning::
 
     **Important dependency**: Declared claims in AS Registry remain unavailable to end users until a Credential Issuer completes registration, integration approval, and technical implementation. Catalog publication depends on Supervisory Body policies for public discovery eligibility.
@@ -214,27 +207,20 @@ Critical phases include administrative verification by the Supervisory Body (whi
 Credential Issuer Operator Journey  
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. .. figure:: ./images/svg/onboarding-journey-maps/ci-onboarding-journey.svg
-..     :width: 100%
-..     :alt: Credential Issuer onboarding journey
-..     :name: ci-onboarding-journey
-
-..     Credential Issuer registration with integration pathway alternatives
-
-Credential Issuer operators start by discovering available Authentic Source entities through the AS Registry and evaluating integration feasibility based on required claims. The registration request specifies which Credential types they intend to issue, select appropriate Authentic Source entities, and demonstrate technical capability to access the required data sources.
+Credential Issuer operators start by discovering available Authentic Source entities through the AS Registry and evaluating integration feasibility based on required claims. The registration request specifies which Credential types they intend to issue, select appropriate Authentic Source entities, and demonstrate technical capability to access the required data sources. Alternatively, the Credential Issuer operators receive directly the integration request by the Authentic Source.
 
 **Example - mDL (Public Scenario)**:
 
-    - **AS Discovery**: Identifies the Authentic Source providing mDL attributes in AS Registry with required driving license claims.
+    - **AS Discovery** or **AS Integration Request**: Identifies the Authentic Source providing mDL attributes in AS Registry with required driving license claims. Alternatively, Credential Issuer receives the integration request directly by mDL Authentic Source.
     - **Integration Request**: Automatic approval due to regulatory mandate. 
-    - **Technical Setup**: PDND e-service integration following government standards (see :ref:`e-service-pdnd:e-Service PDND`).
+    - **Technical Setup**: e-Service PDNDintegration following government standards (see :ref:`e-service-pdnd:e-Service PDND`).
     - **Catalog Publication**: mDL automatically published in the Credential Catalog.
     - **User Access**: Citizens discover mDL through a public catalog in Wallet.
 
 **Example - CI for Employee Badge (Private Scenario)**:
 
-    - **AS Discovery**: Identifies the Authentic Source in AS Registry with employee access claims.
-    - **Integration Request**: Requires AS approval.
+    - **AS Discovery** or **AS Integration Request**: Identifies the Authentic Source in AS Registry with employee access claims. Alternatively, Credential Issuer receives the integration request by the Authentic Source.
+    - **Integration Request**: Requires recipient approval.
     - **Technical Setup**: Custom API integration with authentication.
     - **Catalog Publication**: Badge excluded from public catalog per supervisory policy.
     - **User Access**: Employees receive badges only via direct Credential Offer from company systems.
@@ -253,13 +239,6 @@ Following successful integration testing and Authentic Source approval, the Cred
 Wallet Provider Operator Journey
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. .. figure:: ./images/svg/onboarding-journey-maps/wp-onboarding-journey.svg
-..     :width: 100%
-..     :alt: Wallet Provider onboarding journey  
-..     :name: wp-onboarding-journey
-
-..     Wallet Provider certification and security validation process
-
 Wallet Provider operators follow an independent onboarding path that focuses on application certification and security validation. The process highlights the development and certification of wallet applications that can securely store and manage Digital Credentials for citizens.
 
 A key technical requirement involves implementing Wallet integrity and authenticity check mechanisms. These checks enable the Wallet to obtain a Wallet App Attestation, which serves as proof of the Wallet's security and compliance status during Credential operations.
@@ -269,13 +248,6 @@ The certification process includes security evaluation, covering wallet architec
 Relying Party Operator Journey
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  
 
-.. .. figure:: ./images/svg/onboarding-journey-maps/rp-onboarding-journey.svg
-..     :width: 100%
-..     :alt: Relying Party onboarding journey
-..     :name: rp-onboarding-journey
-
-..     Relying Party service integration and authorization process
-
 Relying Party operators begin by identifying which EAA types are required for their specific services and evaluating integration complexity with existing authentication systems. The registration request provides evidence of legitimate needs for accessing specific Credential types and User attributes, outlining the intended service use cases and organizational characteristics that justify Credential access.
 
 **Example - Car Rental Service (Private RP)**:
@@ -284,7 +256,7 @@ Relying Party operators begin by identifying which EAA types are required for th
     - **Authorization Request**: Driving authorization verification for rental eligibility.
     - **Claims Requirements**: ``given_name``, ``family_name``, ``driving_privileges``, etc., from mDL.
     - **Use Case Justification**: Legal obligation to verify valid driving license before vehicle rental.
-    - **Authorization Scope**: Granted access to ``AUTHORIZATION`` domain, ``DRIVING_LICENSE`` purpose.
+    - **Authorization Scope**: Granted access to ``MOBILITY_TRAVEL`` domain, ``DRIVING_RIGHTS`` purpose.
 
 **Example - Municipal Services (Public RP)**:
 

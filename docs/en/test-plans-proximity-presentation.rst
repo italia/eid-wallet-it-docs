@@ -1,4 +1,4 @@
-.. _test-plans-proximity-presentation:
+.. include:: ../common/common_definitions.rst
 
 Proximity Credential Verifier Test Matrix
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -5,80 +5,142 @@
 Brand Identity
 ===============
 
-La Brand Identity del Sistema IT-Wallet definisce la personalità del sistema e si declina in una serie di elementi codificati che la contraddistinguono, tra cui il naming e gli elementi propri dell'Identità Visiva. Questa consolida il Modello della Fiducia alla base dell'intero ecosistema, introducendo elementi visivi riconoscibili.
+La Brand Identity del Sistema IT-Wallet definisce la personalità del sistema e si declina in una serie di elementi codificati che la contraddistinguono, tra cui il naming e gli elementi propri dell'Identità Visiva. Questa contribuisce e valorizza il Modello della Fiducia alla base dell'intero ecosistema, introducendo elementi visivi riconoscibili. 
+ 
+È importante che la consapevolezza dell'Utente e la sua fiducia nell'ecosistema siano favoriti dalla presenza di elementi grafici, da integrare nelle Soluzioni Tecniche e nei diversi Touchpoint.  
+ 
+Per garantire quindi che la presenza della Brand Identity nelle diverse Soluzioni Tecniche sia uniforme, coerente e favorisca un’Esperienza Utente di qualità, gli Attori Primari DEVONO rispettare i requisiti di applicazione della Brand Identity del Sistema IT-Wallet nelle loro Soluzioni Tecniche. In particolare, tutti gli Attori Primari:
 
-È quindi importante che la consapevolezza dell'Utente e la sua fiducia nell'ecosistema siano favoriti dalla presenza di elementi grafici, da integrare nelle Soluzioni Tecniche e nei diversi Touchpoint. 
+- DEVONO seguire esclusivamente le indicazioni specificate nel Brand Manual prossimamente disponibile sul sito ufficiale https://www.wallet.gov.it.; 
 
-Questa sezione illustra i requisiti minimi che gli Attori Primari devono rispettare per garantire una corretta applicazione della Brand Identity del Sistema IT-Wallet, quindi una sua presenza visiva uniforme, coerente e riconoscibile e un'Esperienza Utente di qualità. 
+- DEVONO utilizzare esclusivamente le Risorse Ufficiali che saranno presto rese disponibili nella relativa sezione :ref:`official-resources:Risorse Ufficiali` di queste Specifiche Tecniche. 
 
-La documentazione e le risorse aggiuntive relative alla Brand Identity del Sistema IT-Wallet sono rese disponibili nella sezione the :ref:`official-resources:Risorse Ufficiali`. 
 
-Gli Attori Primari DEVONO utilizzare esclusivamente queste Risorse Ufficiali e DEVONO rispettare le tutte le relative specifiche di utilizzo fornite. 
 
 
 Naming 
 ------
 
-Il termine "Sistema IT-Wallet", così come definito dalla norma istitutiva, rappresenta la denominazione ufficiale che DOVREBBE essere utilizzata in contesti a carattere istituzionale, formale o giuridico per riferirsi al sistema.  
+Il termine "Sistema IT-Wallet", così come definito dalla norma istitutiva, rappresenta la denominazione ufficiale che DOVREBBE essere utilizzata in contesti a carattere istituzionale, formale o giuridico per riferirsi al sistema.   
+ 
+La declinazione contratta "IT-Wallet" rappresenta, invece, il Brand naming ufficiale che DEVE essere utilizzato in ogni contesto comunicativo e divulgativo, scritto o verbale, fisico o digitale, per riferirsi al "Sistema IT-Wallet".  
+ 
+Di seguito sono riportati i requisiti di scrittura e pronuncia.  Tutti coloro che intendono riferirsi al Sistema IT-Wallet:  
 
-La declinazione contratta "IT-Wallet" rappresenta, invece, il Brand naming ufficiale che DEVE essere utilizzato in ogni contesto comunicativo e divulgativo, scritto o verbale, fisico o digitale, per riferirsi al "Sistema IT-Wallet".  Di seguito i relativi requisiti per la corretta scrittura e pronuncia: 
+- DEVONO rispettare l'uso delle maiuscole nel termine "IT" e nelle iniziali di "Wallet" e "Sistema";  
 
-- si DEVE rispettare l'uso delle maiuscole nel termine "IT" e nelle iniziali di "Wallet" e "Sistema"; 
+- DEVONO rispettare l'uso del trattino tra i termini “IT” e “Wallet”, senza l'uso di spaziature;  
 
-- si DEVE rispettare l'uso del trattino tra i termini “IT” e “Wallet”, senza l'uso di spaziature; 
-
-- si DEVE rispettare la corretta pronuncia del termine “IT”, separando foneticamente le due lettere “I” e “T”. In italiano la fonetica corretta è /i ti/ e non /it/, mentre in inglese la fonetica corretta è /ˌaɪ ˈtiː/ e non /ɪt/, /aɪt/ o /ɪti/. 
+- DEVONO rispettare la corretta pronuncia del termine “IT”, separando foneticamente le due lettere “I” e “T”. In italiano la fonetica corretta è /i ti/ e non /it/, mentre in inglese la fonetica corretta è /ˌaɪ ˈtiː/ e non /ɪt/, /aɪt/ o /ɪti/.  
  
 
 Identità Visiva
 ---------------
 
-Il Brand "IT-Wallet" ha una propria Identità Visiva. I partecipanti dell'ecosistema DEVONO applicarla in modo che si distingua e allo stesso tempo dialoghi e coesista con l'Identità Visiva propria e delle proprie Soluzioni Tecniche. In particolare, tutti gli Attori Primari DEVONO utilizzare le Risorse Ufficiali relative all'Identità Visiva del Sistema IT-Wallet. Il loro utilizzo ha lo scopo di rappresentare la partecipazione al Sistema IT-Wallet senza sostituire l'Identità Visiva della propria Soluzione Tecnica. 
+Il Brand "IT-Wallet" ha una propria Identità Visiva. I partecipanti dell'ecosistema DEVONO applicarla per dare visibilità della propria partecipazione al Sistema IT-Wallet, ma NON DEVONO utilizzare l'Identità Visiva del Brand “IT-Wallet” in sostituzione dell’Identità Visiva della propria organizzazione o la propria Soluzione Tecnica. 
+
+Per garantire una corretta coesistenza tra l’Identità Visiva del Brand “IT-Wallet” e l’Identità Visiva della propria organizzazione o delle proprie Soluzioni Tecniche, gli Attori Primari DEVONO utilizzare esclusivamente le Risorse Ufficiali e rispettare le indicazioni del Brand Manual. 
 
 Logo 
 ^^^^
 
-Il Logo è l'elemento grafico ufficiale che permette l'immediata riconoscibilità del Sistema IT-Wallet. 
+Il Logo è l'elemento grafico ufficiale che permette l'immediata riconoscibilità del Sistema IT-Wallet. È composto da un pittogramma e dal logotipo “IT-Wallet”.
 
-Di seguito i requisiti generali per il suo utilizzo, validi sia in riferimento a contesti di utilizzo fisici che digitali (e.g. siti web, applicazioni, documenti cartacei, materiali informativi stampati o video, etc.): 
+.. only:: format_html
 
-- il Logo PUÒ essere utilizzato da tutti coloro che intendono riferirsi al Sistema IT-Wallet; 
+  .. figure:: ./images/svg/logoIT-Wallet.svg
+    :alt: Logo del Brand “IT-Wallet” su sfondo chiaro  
+    :width: 100%
 
-- il Logo DEVE essere utilizzato per rappresentare il Sistema IT-Wallet o l'appartenenza ad esso e NON DEVE essere utilizzato per identificare una specifica Soluzione Tecnica; 
+    Logo del Brand “IT-Wallet” su sfondo chiaro  
 
-- il Logo DEVE essere quello presente all'interno delle Risorse Ufficiali e DEVE rispettare tutte le relative specifiche di utilizzo fornite; 
+.. only:: format_latex
 
-- il Logo DEVE essere utilizzato in formato ``application/svg+xml``; 
+  .. figure:: ./images/pdf/logoIT-Wallet.pdf
+    :alt: Logo del Brand “IT-Wallet” su sfondo chiaro  
+    :width: 100%
 
-- il Logo NON DEVE essere alterato, distorto, modificato o sostituito da loghi non ufficiali; 
+    Logo del Brand “IT-Wallet” su sfondo chiaro 
 
-- il Logo DEVE essere utilizzato garantendo l'area di rispetto minima definita nelle Risorse Ufficiali, al fine di garantirne un'adeguata visibilità e riconoscibilità. Altri elementi grafici o testuali NON DEVONO interferire con questa area di rispetto; 
 
-- il Logo NON DEVE essere ridimensionato oltre i limiti minimi stabiliti dalle Risorse Ufficiali, in modo da garantire sempre una leggibilità ottimale su qualsiasi formato o dispositivo; 
+.. only:: format_html
 
-- il Logo NON DEVE essere utilizzato su sfondi di colore che ne compromettano la visibilità o la leggibilità. DEVE essere garantito un contrasto adeguato tra il Logo e lo sfondo, in conformità con quanto definito nelle Risorse Ufficiali; 
+  .. figure:: ./images/svg/symbol-IT-Wallet.svg
+    :alt: Pittogramma del Brand “IT-Wallet” su sfondo chiaro  
+    :width: 100%
 
-- il Logo PUÒ essere associato a loghi, marchi o simboli di altri attori del sistema in accordo con le specifiche di coesistenza, in termini di proporzioni e visibilità, stabilite nelle Risorse Ufficiali. 
+    Pittogramma del Brand “IT-Wallet” su sfondo chiaro  
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/symbol-IT-Wallet.pdf
+    :alt: Pittogramma del Brand “IT-Wallet” su sfondo chiaro  
+    :width: 100%
+
+    Pittogramma del Brand “IT-Wallet” su sfondo chiaro   
+
+Di seguito sono riportati i requisiti generali di utilizzo del Logo. Tutti gli attori che intendono riferirsi al Sistema: 
+
+- POSSONO utilizzare il Logo per riferirsi al Sistema IT-Wallet ma NON DEVONO utilizzare il Logo per identificare una specifica Soluzione Tecnica; 
+
+- DEVONO utilizzare il Logo reso disponibile nelle Risorse Ufficiali e DEVONO rispettare tutte le relative specifiche di utilizzo fornite;  
+
+- DEVONO utilizzare il Logo in formato ``application/svg+xml``;  
+
+- NON DEVONO alterare, distorcere, modificare il Logo o sostituirlo con loghi non ufficiali;  
+
+- DEVONO utilizzare il Logo garantendo l’area di rispetto minima stabilita nel Brand Manual, al fine di garantirne un'adeguata visibilità e riconoscibilità. NON DEVONO permettere che altri elementi grafici o testuali interferiscano con questa area di rispetto; 
+
+- NON DEVONO ridimensionare il Logo oltre i limiti minimi stabiliti nel Brand Manual, in modo da garantire sempre una leggibilità ottimale su qualsiasi formato o dispositivo;  
+
+- NON DEVONO utilizzare il Logo su sfondi di colore che ne compromettano la visibilità o la leggibilità. DEVONO garantire un contrasto adeguato tra il Logo e lo sfondo, in conformità con quanto definito nel Brand Manual; 
+
+- POSSONO utilizzare il Logo in associazione a loghi, marchi o simboli di altri attori del sistema, purchè in accordo con quando stabilito nel Brand Manual; 
+
+- POSSONO utilizzare il pittogramma del Logo come versione sintetica del Logo, in accordo con quando stabilito nel Brand Manual; 
+
+- POSSONO utilizzare il pittogramma del Logo all’interno di una forma o di un pulsante per rendere evidente il richiamo a IT-Wallet, come per esempio negli Engagement Buttons (vedi :ref:`functionalities:Authentication Button`), in accordo con quando stabilito nel Brand Manual.  
+
+Per approfondimenti sul Logo e relativo pittogramma, consultare il Brand Manual prossimamente disponibile sul sito ufficiale https://www.wallet.gov.it. Le Risorse Ufficiali del Logo saranno disponibili nella relativa sezione :ref:`official-resources:Risorse Ufficiali` di queste Specifiche Tecniche. 
 
 Trust Mark 
 ^^^^^^^^^^
 
-Il Trust Mark è l'elemento grafico ufficiale che dà prova agli Utenti dell'appartenenza al Sistema IT-Wallet degli attori del Sistema IT-Wallet e delle relative Soluzioni Tecniche con cui interagisce.
+Il Trust Mark è l'elemento grafico ufficiale che dà prova all’Utente dell'appartenenza degli Attori Primari e delle relative Soluzioni Tecniche, al Sistema IT-Wallet.
 
-Di seguito i requisiti generali per il suo utilizzo, validi sia in riferimento a contesti di utilizzo fisici che digitali (e.g. siti web, applicazioni, documenti cartacei, materiali informativi stampati o video, etc.): 
+.. only:: format_html
 
-- il Trust Mark DEVE essere utilizzato esclusivamente per dare prova dell'appartenenza al Sistema IT-Wallet e non DEVE essere utilizzato per scopi diversi; 
+  .. figure:: ./images/svg/trustmark-ITA.svg
+    :alt: Trust Mark su sfondo chiaro  
+    :width: 100%
 
-- il Trust Mark DEVE essere esposto esclusivamente dalle Soluzioni Tecniche che hanno concluso con successo il processo di certificazione; 
+    Trust Mark su sfondo chiaro  
 
-- il Trust Mark DEVE essere quello presente all'interno delle Risorse Ufficiali e DEVE rispettare tutte le relative specifiche di utilizzo fornite, per garantirne un'adeguata visibilità in tutte le fasi dell'Esperienza Utente; 
+.. only:: format_latex
 
-- il Trust Mark NON DEVE essere alterato, distorto, modificato o sostituito da loghi non ufficiali. 
+  .. figure:: ./images/pdf/trustmark-ITA.pdf
+    :alt: Trust Mark su sfondo chiaro  
+    :width: 100%
 
-- il Trust Mark NON DEVE essere ridimensionato oltre i limiti minimi stabiliti dalle Risorse Ufficiali, in modo da garantire sempre una leggibilità ottimale su qualsiasi formato o dispositivo; 
+    Trust Mark su sfondo chiaro 
 
-- il Trust Mark DEVE essere utilizzato garantendo l'area di rispetto minima definita nelle Risorse Ufficiali, al fine di garantirne un'adeguata visibilità e riconoscibilità. Altri elementi grafici o testuali NON DEVONO interferire con questa area di rispetto; 
 
-- il Trust Mark NON DEVE essere utilizzato su sfondi di colore che ne compromettano la visibilità o la leggibilità. DEVE essere garantito un contrasto adeguato tra il Logo e lo sfondo, in conformità con quanto definito nelle Risorse Ufficiali; 
+Di seguito sono riportati i requisiti di utilizzo del Trust Mark, validi sia in riferimento a contesti di utilizzo fisici che digitali (e.g. siti web, applicazioni, documenti cartacei, materiali informativi stampati o video, etc.). Tutti gli Attori Primari: 
 
-- il Trust Mark PUÒ essere associato a loghi, marchi o simboli di altri attori del sistema in accordo con le specifiche di coesistenza, in termini di proporzioni e visibilità, stabilite nelle Risorse Ufficiali. 
+- DEVONO utilizzare il Trust Mark esclusivamente per dare prova dell'appartenenza al Sistema IT-Wallet e non DEVONO utilizzarlo per scopi diversi;  
+
+- DEVONO esporre il Trust Mark esclusivamente nelle Soluzioni Tecniche che hanno concluso con successo il processo di registrazione;  
+
+- DEVONO utilizzare esclusivamente il Trust Mark reso disponibile nelle Risorse Ufficiali e DEVONO rispettare tutte le relative specifiche di utilizzo fornite nel Brand Manual; 
+
+- NON DEVONO alterare, distorcere, modificare il Trust Mark o sostituirlo con elementi non ufficiali;  
+
+- NON DEVONO ridimensionare il Trust Mark oltre i limiti minimi stabiliti dal Brand Manual, in modo da garantire sempre una leggibilità ottimale su qualsiasi formato o dispositivo;  
+
+- DEVONO utilizzare il Trust Mark garantendo l'area di rispetto minima definita nel Brand Manual, al fine di garantirne un'adeguata visibilità e riconoscibilità. NON DEVONO permettere ad altri elementi grafici o testuali di interferire con questa area di rispetto;  
+
+- NON DEVONO utilizzare il Trust Mark su sfondi di colore che ne compromettano la visibilità o la leggibilità. DEVONO garantito un contrasto adeguato tra il Trust Mark e lo sfondo, in conformità con quanto definito nel Brand Manual; 
+
+- POSSONO associare il Trust Mark a loghi, marchi o simboli di altri attori del sistema, purchè in accordo con quando stabilito nel Brand Manual. 
+
+Per approfondimenti sul Trust Mark, consultare il Brand Manual prossimamente disponibile sul sito ufficiale https://www.wallet.gov.it.. La Risorsa Ufficiale del Trust Mark sarà disponibile nella relativa sezione Risorse Ufficiali di queste specifiche tecniche.  

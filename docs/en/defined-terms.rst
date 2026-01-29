@@ -1,25 +1,5 @@
 .. include:: ../common/common_definitions.rst
 
-
-Normative References
-====================
-
-Below the normative references and respective acronyms included in these Technical Specifications:
-
-[CAD]
-
-Legislative Decree No. 82 of March 7, 2005, as amended, containing the 'Digital Administration Code'.
-
-[REF_ACCESSIBILITY]
-
-Accessibility Guidelines for IT Tools as per Article 11 of Law 4/2004.
-Directive (EU) 2019/882 of the European Parliament and of the Council of 17 April 2019 on the accessibility requirements for products and services.
-
-[GL_DESIGN]
-
-Design Guidelines for websites and digital services provided by public administrations, pursuant to Article 53, paragraph 1-ter of Legislative Decree No. 82 of March 7, 2005, as amended.
-
-
 Defined Terms and Acronyms
 ==========================
 
@@ -356,6 +336,9 @@ Below are the main defined terms and definitions related to User Experience aspe
   
     **Brand Identity**
       Collection of visual, verbal, and strategic elements that a service, a product or an entity uses to present itself to the User and to distinguish itself from others.
+
+    **Brand Manual**
+      Document defining the rules and standards for the correct and consistent use of a Brand’s distinctive elements, including visual, verbal, and application-related aspects, across different Touchpoints.
     
     **Catalog**
       Section of the Wallet Instance that displays the list of all the available Digital Credentials that can be obtained through the IT-Wallet Instance, and from which it is possible to start the issuing process.
@@ -382,7 +365,7 @@ Below are the main defined terms and definitions related to User Experience aspe
       Compact visualization mode of the Digital Credential that allows it to be recognized and distinguished in a list of Electronic Attestations thanks to the presence of minimum data or elements.
 
     **Selection Page**
-      It's the page of the Touchpoint of the Relying Party where the User can see all the Wallet Solutions available in the Register and is able to select which one to continue the process of Authentication with.
+      It's the page of the Touchpoint of the Relying Party or of a third party offering a Credential Offer where the User can see all the Wallet Solutions available in the IT-Wallet System Register and is able to select which one to continue the process of Authentication, presentation or issuance.
     
     **Service Model**
       Set of interactions between actors and touchpoints necessary for service delivery and fruition.

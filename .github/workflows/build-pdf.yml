@@ -78,7 +78,7 @@ jobs:
           lualatex -interaction=nonstopmode -file-line-error "$SETTINGS_FILE_NAME.tex" 2>&1 | grep -E "Warning|Error" 
           
           echo "Processing index..."
-          makeindex "$SETTINGS_FILE_NAME.idx" || true
+          makeindex -s python.ist "$SETTINGS_FILE_NAME.idx" || true
           
           echo "=== Second LaTeX run ==="
           lualatex -interaction=nonstopmode -file-line-error "$SETTINGS_FILE_NAME.tex" 2>&1 | grep -E "Warning|Error" 
@@ -99,7 +99,7 @@ jobs:
           lualatex -interaction=nonstopmode -file-line-error "$SETTINGS_FILE_NAME.tex" 2>&1 | grep -E "Warning|Error" 
           
           echo "Processing index..."
-          makeindex "$SETTINGS_FILE_NAME.idx" || true
+          makeindex -s python.ist "$SETTINGS_FILE_NAME.idx" || true
           
           echo "=== Second LaTeX run ==="
           lualatex -interaction=nonstopmode -file-line-error "$SETTINGS_FILE_NAME.tex" 2>&1 | grep -E "Warning|Error" 

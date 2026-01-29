@@ -21,14 +21,6 @@
         }
       }
     >>)
-    },
-    {
-    "itemsRequest": 
-    24(<<  % Embedded CBOR data item
-      {
-        "docType": "it.wallet.trust-registry.wallet_app_attestation",
-      }
-    >>)
     }
   ],
   "readerAuthAll": 
