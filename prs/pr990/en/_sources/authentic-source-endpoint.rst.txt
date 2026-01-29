@@ -44,7 +44,7 @@ Get Attribute Claims
     - the Authentic Source MUST record the datetime value provided within the ``last_updated`` parameter, which indicates the last time the User's attributes were updated in the Authentic Source's database;
     - the Credential Issuer MUST read the ``last_updated`` value received in the response to be able to check if the User's attributes have changed since the last issuance of a Digital Credential.
 
-The successful response (HTTP 200) returns a ``CredentialClaimsResponse`` object formatted as a signed JWT.
+The successful response (HTTP 200) returns a ``CredentialClaimsResponse`` object formatted as a **Signed JWT**.
 
 Signature Verification and Key Management
 '''''''''''''''''''''''''''''''''''''''''

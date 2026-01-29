@@ -58,25 +58,13 @@ This specification is based on the following set of requirements:
     - R2, R4, R5
   * - **[ID_AUTH_CHANNEL_01]** Direct Trust Transport-Level Security (*Annex 2 - Security Patterns* [`MODI`_]): REQUIRED. It protects the communication between the Consumer and the Provider by ensuring confidentiality, integrity, identification of the Provider, and mitigation against replay attack and spoofing.
     - R1, R2
-  * - **[INTEGRITY_REST_02]** REST Payload Integrity in PDND (*Annex 2 - Security Patterns* [`MODI`_]): CONDITIONAL. It ensures the integrity of the payload of the REST Consumer request, within the PDND Infrastructure. It is REQUIRED whenever the request carries a payload.
+  * - **[INTEGRITY_REST_02]** REST Payload Integrity in PDND (*Annex 2 - Security Patterns* [`MODI`_]): CONDITIONAL. It ensures the integrity of the payload of the REST Consumer request and the REST Provider response, within the PDND Infrastructure. It is REQUIRED whenever the request/response carries a payload.
     - R2, R4
   * - **[AUDIT_REST_02]** Submission of audit data within the REST request with correlation (*Annex 2 - Security Patterns* [`MODI`_]): OPTIONAL. The Provider MAY request additional data tracked in the Consumer's domain, with a correlation between such data and the authentication method. In that case, this pattern MUST be used.
     - R3, R4
 
 .. note::
     In these specifications, the ``REST_JWS_2021_POP`` security pattern is implemented by default in accordance with :rfc:`9449`. If DPoP is not supported by the PDND Infrastructure, the proof of possession is attested by the ``TrackingEvidence`` JWT (as detailed below). However, while the ``TrackingEvidence`` is defined in ``AUDIT_REST_02`` to provide additional tracked data, in this context, it acts as proof of possession of the Voucher. Such implementation choices will be referred to as ``POP_DPoP`` and ``POP_TPoP``, respectively.
-
-In addition, this specification defines and applies a custom security pattern:
-
-.. list-table::
-  :widths: 80 20
-  :header-rows: 1
-
-  * - **Security Pattern**
-    - **Compliant With**
-  * - REST Response Payload Integrity in PDND: REQUIRED. It ensures the integrity of the payload of the REST Provider response, within the PDND Infrastructure.
-    - R2
-
 
 The following security patterns defined in `PDND`_ and `MODI`_ MUST NOT be used as they do not comply with the requirements defined above:
 
@@ -1129,61 +1117,44 @@ In addition, the Provider MUST validate the integrity of the e-Service Request, 
 
 If any of the previous checks fail, the Provider MUST reject the Request.
 
-**Step 4 (e-Service Response):** Upon successful checks, the Provider provides the Consumer with the requested data.
+**Step 4 (e-Service Response):** Upon successful checks, the Provider provides the Consumer with the requested data. In The Response header MUST be present the JWT (``Signature``) to ensure integrity.
 
 .. code-block:: http
   :caption: Non-normative example of the e-Service Response
   :name: _code_Usage_Flow_Response
 
   HTTP/1.1 200 OK
-  Content-Type: application/jwt
-
-  eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4MDJhNjktMTYwNC00MjYxLTkyNDYtMjE0NTNlMjA2NThlIiwidHlwIjoiSldUIn0.eyJpc3MiOiJodHRwczovL2Vyb2dhdG9yZS5leGFtcGxlL2VudGUtZXhhbXBsZS92MSIsImF1ZCI6IjlhOGI3YzZkLWU1ZjQtZzNoMi1pMWowLWtsbW5vcHFyc3R1diIsImV4cCI6MTczMzQwMTc4NSwibmJmIjoxNzMzNDAxMzg3LCJpYXQiOjE3MzM0MDEyNTYsImp0aSI6Ijk5NzUzMmUtODcxYS00OTY5LTk5OTktMTIzNDU2Nzg5YWJjIiwicmVxdWVzdGVkRmllbGQxIjoidmFsdWUxIiwicmVxdWVzdGVkRmllbGQyIjoidmFsdWUyIiwicmVxdWVzdGVkRmllbGQzIjoidmFsdWUzIn0.OZSn693I-oCvvq3RnFW-9HeUWE7J1hri-lyae8CLt2JTbzKPCnWg7f6AmzR-euXYKdRWpofZkhpux7TlYG9RwA
-
-
-.. code-block:: json
-  :caption: Non-normative example of the e-Service Response JWT header
-  :name: _code_Usage_Flow_Response_JWT_Header
+  Content-Type: application/json
+  Agid-JWT-Signature: ew0KICAiYWxnIjogIkVTMjU2IiwNCiAgImtpZCI6ICJhMWY1YzhkMi00YjM3LTRlOTEtYjBkMi03OWUzZjBjNGE4ZWYiLA0KICAidHlwIjogIkpXVCINCn0.ew0KICAiaXNzIjogIjEyMzRhYmNkLWVmNTYtZ2g3OC1pOWowLWtsbW5vcHFyc3R3eCIsDQogICJzdWIiOiAiMTIzNGFiY2QtZWY1Ni1naDc4LWk5ajAta2xtbm9wcXJzdHd4IiwNCiAgImF1ZCI6ICJodHRwczovL2ZydWl0b3JlLmV4YW1wbGUvZW50ZS1leGFtcGxlL3YxIiwNCiAgImlhdCI6IDE3MzMzOTc4NDAsDQogICJuYmYiOiAxNzMzNDAxNjI4LA0KICAiZXhwIjogMTczMzQwMTQ0MCwNCiAgImp0aSI6ICI4ZTEyZjRiNy05YzNhLTRmODMtOWI4ZC01MWEyYzdmNmU5ZDQiLA0KICAic2lnbmVkX2hlYWRlcnMiOiBbDQogICAgew0KICAgICAgImRpZ2VzdCI6ICJTSEEtMjU2PTc5YTIwYTc0NDMzNjQyMDMwMTgzMDYwMGFkOWJkY2E5OTM1OTNmODc2MjA5YTAwNGI1OTliNTgzMDk1YjBhNjEiDQogICAgfSwNCiAgICB7DQogICAgICAiY29udGVudC10eXBlIjogImFwcGxpY2F0aW9uL2pzb24iDQogICAgfQ0KICBdDQp9.DpuBNo2UgQhL7WLin4mpdZrbIpQq3tPvCX6HfktkxG7L5mk6a8OK1Hg0mQcZfFi3gelS-aL9kFS-6MoSy4csBg
+  Digest: SHA-256=79a20a744336420301830600ad9bdca993593f876209a004b599b583095b0a61
 
   {
-    "alg": "ES256",
-    "kid": "2802a69-1604-4261-9246-21453e20658e",
-    "typ": "JWT"
-  }
-
-.. code-block:: json
-  :caption: Non-normative example of the e-Service Response JWT payload
-  :name: _code_Usage_Flow_Response_JWT_Payload
-
-  {
-    "iss": "https://erogatore.example/ente-example/v1",
-    "aud": "9a8b7c6d-e5f4-g3h2-i1j0-klmnopqrstuv",
-    "exp": 1733401785,
-    "nbf": 1733401387,
-    "iat": 1733401256,
-    "jti": "997532e-871a-4969-9999-123456789abc",
     "requestedField1": "value1",
     "requestedField2": "value2",
     "requestedField3": "value3"
   }
 
-
-The Consumer MUST perform the following steps to validate the e-Service Response JWT:
+The Consumer MUST validate the ``Signature`` JWT as follows:
 
   Header:
 
-  - Ensure that the ``typ`` claim is present and that its value is ``JWT``.
+    - Ensure that the ``typ`` claim is present and that its value is ``JWT``.
 
   Signature:
 
-  - Obtain the Provider's public key corresponding to the ``kid`` header parameter, by interacting with the PDND Interoperability API.
-  - Validate the signature of the JWT using the retrieved Provider's public key and the algorithm specified by the ``alg`` header parameter.
+    - Validate the signature of the JWT using the retrieved Provider's public key and the algorithm specified by the ``alg`` header parameter.
 
   Payload:
 
-  - The ``iss`` claim MUST identify the Provider.
-  - The ``aud`` claim MUST identify the Consumer Client itself.
+    - The ``iss`` and ``sub`` claims MUST identify the Provider.
+    - The ``aud`` claim MUST identify the Consumer Client itself.
 
+In addition, the Consumer MUST validate the integrity of the e-Service Response, by checking that:
+
+  - The ``signed_headers.content-type`` claim matches the value of the ``Content-Type`` HTTP header of the e-Service Response.
+  - The ``signed_headers.digest`` claim matches the value of the digest of the payload of the e-Service Response, as well as the value of the ``Digest`` HTTP header of the e-Service Response.
+
+If any of the previous checks fail, the Consumer MUST reject the Response.
 
 e-Service Endpoint
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -1335,9 +1306,9 @@ When complying with the ``AUDIT_REST_02`` security pattern, the ``TrackingEviden
 e-Service Response
 """""""""""""""""""
 
-The e-Service Response is a JWT serialized in ``application/jwt`` format.
+The e-Service Response MUST use HTTP Content-Type set to ``application/json``.
 
-The e-Service Response JWT MUST include the following JOSE header parameters:
+The e-Service Response MUST include the following HTTP header parameters:
 
 .. list-table::
   :class: longtable
@@ -1347,17 +1318,14 @@ The e-Service Response JWT MUST include the following JOSE header parameters:
   * - **Parameter**
     - **Description**
     - **Reference**
-  * - **alg**
-    - A digital signature algorithm identifier.
-    - [:rfc:`7515`]
-  * - **kid**
-    - Unique identifier of the JWK used by the Provider to sign the JWT.
-    - [:rfc:`7515`]
-  * - **typ**
-    - MUST be set to ``JWT``.
-    - [:rfc:`7515`], [:rfc:`7519`]
+  * - **Agid-JWT-Signature**
+    - JWT containing the signature of the message headers whose integrity needs to be guaranteed, to comply with the ``INTEGRITY_REST_02`` security pattern.
+    - [`MODI`_]
+  * - **Digest**
+    - Digest of the message payload, to comply with the ``INTEGRITY_REST_02`` security pattern. According to :rfc:`3230`, the format MUST be the following: ``<digest-algorithm>=<encoded digest output>``.
+    - [:rfc:`3230`], [`MODI`_]
 
-The e-Service Response JWT MUST include the following payload claims:
+The ``Signature`` JWT, contained in the ``Agid-JWT-Signature`` HTTP header, MUST include the following payload claims:
 
 .. list-table::
   :class: longtable
@@ -1368,7 +1336,10 @@ The e-Service Response JWT MUST include the following payload claims:
     - **Description**
     - **Reference**
   * - **iss**
-    - The identifier of the e-Service.
+    - The identifier of the Provider.
+    - [:rfc:`7519`]
+  * - **sub**
+    - The identifier of the Provider.
     - [:rfc:`7519`]
   * - **aud**
     - The identifier of the Consumer.
@@ -1384,9 +1355,15 @@ The e-Service Response JWT MUST include the following payload claims:
     - [:rfc:`7519`]
   * - **jti**
     - Unique identifier of the JWT to prevent replay attacks.
-    - [:rfc:`7523`]
+    - [:rfc:`7519`]
+  * - **signed_headers**
+    - JSON object containing the signed headers whose integrity needs to be protected, to with ``INTEGRITY_REST_02``. It MUST contain the following claims:
 
-The e-Service Response JWT payload includes specific claims related to the data elements provided to the Consumer.
+      - **digest**: JSON string representing the signature of the ``Digest`` HTTP header
+      - **content-type**: JSON string representing the signature of the ``Content-Type`` HTTP header
+    - [`MODI`_]
+
+The e-Service Response payload includes specific claims related to the data elements provided to the Consumer.
 
 If any errors occur during the validation of the e-Service Request, the e-Service Endpoint MUST return an error response, whose structure depends on the nature of the error.
 
@@ -1399,7 +1376,7 @@ In case of authentication issues (i.e., invalid or expired Voucher), the respons
     HTTP/1.1 401 Unauthorized
     WWW-Authenticate: DPoP error="invalid_token", error_description="The access token expired"
 
-For all other errors, the response MUST adhere to the error format defined in :rfc:`6749#section-5.2`. The response MUST use ``application/json`` as the content type and MUST include the following parameters:
+For all other errors, the response MUST adhere to the error format defined in :rfc:`6749#section-5.2`. The response MUST use ``application/problem+json`` (according to MODI ``RAC_GEN_FORMAT_002``) as the content type and MUST include the following parameters:
 
     - ``error``: The error code.
     - ``error_description``: Text in human-readable form providing further details to clarify the nature of the error encountered.
@@ -1409,7 +1386,7 @@ For all other errors, the response MUST adhere to the error format defined in :r
     :name: code_Usage_Endpoint_eService_Error
 
     HTTP/1.1 400 Bad Request
-    Content-Type: application/json
+    Content-Type: application/problem+json
 
     {
         "error": "invalid_request",
