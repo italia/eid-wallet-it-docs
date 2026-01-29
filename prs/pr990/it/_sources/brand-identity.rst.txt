@@ -11,9 +11,9 @@ La Brand Identity del Sistema IT-Wallet definisce la personalità del sistema e 
  
 Per garantire quindi che la presenza della Brand Identity nelle diverse Soluzioni Tecniche sia uniforme, coerente e favorisca un’Esperienza Utente di qualità, gli Attori Primari DEVONO rispettare i requisiti di applicazione della Brand Identity del Sistema IT-Wallet nelle loro Soluzioni Tecniche. In particolare, tutti gli Attori Primari:
 
-- DEVONO seguire esclusivamente le indicazioni specificate nel Brand Manual prossimamente disponibile sul sito ufficiale https://www.wallet.gov.it.; 
+- DEVONO seguire esclusivamente le indicazioni specificate nel Brand Manual, indicato nella sezione :ref:`official-resources:Risorse Ufficiali`; 
 
-- DEVONO utilizzare esclusivamente le Risorse Ufficiali che saranno presto rese disponibili nella relativa sezione :ref:`official-resources:Risorse Ufficiali` di queste Specifiche Tecniche. 
+- DEVONO utilizzare esclusivamente le Risorse Ufficiali che sono disponibili nella relativa sezione :ref:`official-resources:Risorse Ufficiali` di queste Specifiche Tecniche. 
 
 
 
@@ -48,7 +48,7 @@ Il Logo è l'elemento grafico ufficiale che permette l'immediata riconoscibilit�
 
 .. only:: format_html
 
-  .. figure:: ./images/svg/logoIT-Wallet.svg
+  .. figure:: ../../official_resources/logoIT-Wallet.svg
     :alt: Logo del Brand “IT-Wallet” su sfondo chiaro  
     :width: 100%
 
@@ -65,7 +65,7 @@ Il Logo è l'elemento grafico ufficiale che permette l'immediata riconoscibilit�
 
 .. only:: format_html
 
-  .. figure:: ./images/svg/symbol-IT-Wallet.svg
+  .. figure:: ../../official_resources/symbol-IT-Wallet.svg
     :alt: Pittogramma del Brand “IT-Wallet” su sfondo chiaro  
     :width: 100%
 
@@ -101,7 +101,7 @@ Di seguito sono riportati i requisiti generali di utilizzo del Logo. Tutti gli a
 
 - POSSONO utilizzare il pittogramma del Logo all’interno di una forma o di un pulsante per rendere evidente il richiamo a IT-Wallet, come per esempio negli Engagement Buttons (vedi :ref:`functionalities:Authentication Button`), in accordo con quando stabilito nel Brand Manual.  
 
-Per approfondimenti sul Logo e relativo pittogramma, consultare il Brand Manual prossimamente disponibile sul sito ufficiale https://www.wallet.gov.it. Le Risorse Ufficiali del Logo saranno disponibili nella relativa sezione :ref:`official-resources:Risorse Ufficiali` di queste Specifiche Tecniche. 
+Per approfondimenti sul Logo e relativo pittogramma, consultare il Brand Manual, indicato nella sezione :ref:`official-resources:Risorse Ufficiali`. Le Risorse Ufficiali del Logo sono disponibili nella sezione :ref:`official-resources:Risorse Ufficiali` di queste Specifiche Tecniche. 
 
 Trust Mark 
 ^^^^^^^^^^
@@ -110,7 +110,7 @@ Il Trust Mark è l'elemento grafico ufficiale che dà prova all’Utente dell'ap
 
 .. only:: format_html
 
-  .. figure:: ./images/svg/trustmark-ITA.svg
+  .. figure:: ../../official_resources/trustmark-ITA.svg
     :alt: Trust Mark su sfondo chiaro  
     :width: 100%
 
@@ -143,4 +143,4 @@ Di seguito sono riportati i requisiti di utilizzo del Trust Mark, validi sia in 
 
 - POSSONO associare il Trust Mark a loghi, marchi o simboli di altri attori del sistema, purchè in accordo con quando stabilito nel Brand Manual. 
 
-Per approfondimenti sul Trust Mark, consultare il Brand Manual prossimamente disponibile sul sito ufficiale https://www.wallet.gov.it.. La Risorsa Ufficiale del Trust Mark sarà disponibile nella relativa sezione Risorse Ufficiali di queste specifiche tecniche.  
+Per approfondimenti sul Trust Mark, consultare il Brand Manual, indicato nella sezione :ref:`official-resources:Risorse Ufficiali`. La Risorsa Ufficiale del Trust Mark è disponibile nella sezione :ref:`official-resources:Risorse Ufficiali` di queste specifiche tecniche.  

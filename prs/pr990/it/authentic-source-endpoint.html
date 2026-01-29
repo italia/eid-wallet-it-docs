@@ -208,6 +208,17 @@
 </dd>
 </dl>
 </div>
+<p>La risposta in caso di successo (HTTP 200) restituisce un oggetto <code class="docutils literal notranslate"><span class="pre">CredentialClaimsResponse</span></code> formattato come JWT firmato.</p>
+<section id="verifica-della-firma-e-gestione-chiavi">
+<h4><span class="section-number">13.4.1.1.1. </span>Verifica della Firma e Gestione Chiavi<a class="headerlink" href="#verifica-della-firma-e-gestione-chiavi" title="Link to this heading">¶</a></h4>
+<p>Essendo il token di risposta firmato, il Credential Issuer (Fruitore) DEVE verificare la firma per garantire l'integrità e l'autenticità dei dati ricevuti dalla Fonte Autentica.</p>
+<p>Il processo di verifica e recupero delle chiavi DEVE seguire rigorosamente il pattern standard definito per gli <strong>e-Service PDND</strong>.
+Si rimanda all'Appendice tecnica (Sezione <a class="reference internal" href="e-service-pdnd.html#e-service-pdnd"><span class="std std-ref">e-Service PDND</span></a>) per i dettagli sulla validazione del JWT e per le specifiche sul recupero della chiave pubblica dell'Erogatore tramite API di Interoperabilità.</p>
+<div class="admonition warning">
+<p class="admonition-title">Avvertimento</p>
+<p>Non sono ammessi meccanismi alternativi di distribuzione del materiale crittografico (es. endpoint <code class="docutils literal notranslate"><span class="pre">.well-known</span></code> pubblici esposti direttamente dalla Fonte Autentica o distribuzione <em>out-of-band</em>). La gestione del trust DEVE rimanere centralizzata all'interno del perimetro dell'infrastruttura PDND come descritto nei riferimenti sopra citati.</p>
+</div>
+</section>
 </section>
 </section>
 </section>
@@ -228,7 +239,10 @@
                 <ul>
 <li><a class="reference internal" href="#">13.4. Endpoint delle Fonti Autentiche</a><ul>
 <li><a class="reference internal" href="#catalogo-degli-e-service-pdnd-delle-fonti-autentiche">13.4.1. Catalogo degli e-Service PDND delle Fonti Autentiche</a><ul>
-<li><a class="reference internal" href="#get-attribute-claims">13.4.1.1. Get Attribute Claims</a></li>
+<li><a class="reference internal" href="#get-attribute-claims">13.4.1.1. Get Attribute Claims</a><ul>
+<li><a class="reference internal" href="#verifica-della-firma-e-gestione-chiavi">13.4.1.1.1. Verifica della Firma e Gestione Chiavi</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
