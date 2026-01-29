@@ -120,8 +120,8 @@ La figura seguente illustra il flusso di basso livello conforme a ISO 18013-5 pe
 
    Fare riferimento a:
 
-   - Sez 8.2.2.1 per ``DeviceEngagement`` tramite QR code
-   - Sez 8.2.2.2 per ``DeviceEngagement`` tramite NFC
+   - :ref:`sec-deviceengagement-qr` per ``DeviceEngagement`` tramite QR code
+   - :ref:`sec-deviceengagement-nfc` per ``DeviceEngagement`` tramite NFC
 
 
 **Passo 6**: L'Istanza di Relying Party genera la sua coppia di chiavi effimera (``EReaderKey.Priv``, ``EReaderKey.Pub``). La chiave privata (``EReaderKey.Priv``) DEVE essere mantenuta segreta, e la chiave pubblica (``EReaderKey.Pub``) DEVE essere utilizzata nel *Session Establishment* (:ref:`PPR-002 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>`).

@@ -100,7 +100,7 @@ The trust infrastructure relies on three distinct but complementary processes:
 5. **National Trusted List Publication**: Publication of national Trusted Lists for QEAA Providers and non-qualified EAA Providers by the Member State Trusted List Provider (MS TLP), based on National Registrar data.
 
 National Provider Trusted Lists: Implementation Profile
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This section provides the implementation profile for national Trusted Lists compiled and published by the Member State Trusted List Provider (MS TLP) for both Qualified Electronic Attestation of Attributes (QEAA) Providers and non-qualified Electronic Attestation of Attributes (EAA) Providers, as required by the EUDI Wallet trust infrastructure.
 
