@@ -1128,11 +1128,11 @@ If any of the previous checks fail, the Provider MUST reject the Request.
   Agid-JWT-Signature: ew0KICAiYWxnIjogIkVTMjU2IiwNCiAgImtpZCI6ICJhMWY1YzhkMi00YjM3LTRlOTEtYjBkMi03OWUzZjBjNGE4ZWYiLA0KICAidHlwIjogIkpXVCINCn0.ew0KICAiaXNzIjogIjEyMzRhYmNkLWVmNTYtZ2g3OC1pOWowLWtsbW5vcHFyc3R3eCIsDQogICJzdWIiOiAiMTIzNGFiY2QtZWY1Ni1naDc4LWk5ajAta2xtbm9wcXJzdHd4IiwNCiAgImF1ZCI6ICJodHRwczovL2ZydWl0b3JlLmV4YW1wbGUvZW50ZS1leGFtcGxlL3YxIiwNCiAgImlhdCI6IDE3MzMzOTc4NDAsDQogICJuYmYiOiAxNzMzNDAxNjI4LA0KICAiZXhwIjogMTczMzQwMTQ0MCwNCiAgImp0aSI6ICI4ZTEyZjRiNy05YzNhLTRmODMtOWI4ZC01MWEyYzdmNmU5ZDQiLA0KICAic2lnbmVkX2hlYWRlcnMiOiBbDQogICAgew0KICAgICAgImRpZ2VzdCI6ICJTSEEtMjU2PTc5YTIwYTc0NDMzNjQyMDMwMTgzMDYwMGFkOWJkY2E5OTM1OTNmODc2MjA5YTAwNGI1OTliNTgzMDk1YjBhNjEiDQogICAgfSwNCiAgICB7DQogICAgICAiY29udGVudC10eXBlIjogImFwcGxpY2F0aW9uL2pzb24iDQogICAgfQ0KICBdDQp9.DpuBNo2UgQhL7WLin4mpdZrbIpQq3tPvCX6HfktkxG7L5mk6a8OK1Hg0mQcZfFi3gelS-aL9kFS-6MoSy4csBg
   Digest: SHA-256=79a20a744336420301830600ad9bdca993593f876209a004b599b583095b0a61
 
-{
-  "requestedField1": "value1",
-  "requestedField2": "value2",
-  "requestedField3": "value3"
-}
+  {
+    "requestedField1": "value1",
+    "requestedField2": "value2",
+    "requestedField3": "value3"
+  }
 
 The Consumer MUST validate the ``Signature`` JWT as follows:
 
