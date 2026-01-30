@@ -6,7 +6,7 @@ info:
   contact:
     url: https://github.com/italia/eid-wallet-it-docs
 servers:
-  - url: https://issuer.example.it
+  - url: https://issuer.example.it/v1.4.0
     description: Credential Issuer API
 paths:
   /status:
@@ -19,7 +19,7 @@ paths:
       responses:
         "200":
           description: OK
-  /v0.9.0/notifyWalletRevocation:
+  /notifyWalletRevocation:
     post:
       tags:
         - e-services PDND
@@ -30,7 +30,7 @@ paths:
         user
       operationId: notifyWalletRevocation
       parameters:
-        - name: PDND-Voucher
+        - name: Authorization
           in: header
           description: >-
             JWT token obtained from <a target="blank"
@@ -181,7 +181,7 @@ paths:
           schema:
             type: string
             format: date-time
-        - name: PDND-Voucher
+        - name: Authorization
           in: header
           description: >-
             JWT token obtained from <a target="blank"

@@ -47,11 +47,11 @@ Get Attribute Claims
 Esempio di risposta della Authentic Source
 """"""""""""""""""""""""""""""""""""""""""
 
-La risposta dell'endpoint è un JWT (``application/jwt``). Decodificando il payload di tale JWT, il Fornitore di Attestati Elettronici riceve una struttura come la seguente. I campi obbligatori sono ``iss``, ``aud``, ``exp``, ``iat``, ``jti``; gli altri campi sono opzionali o condizionati al tipo di attestato/dataset. Di seguito un esempio concreto con dati fittizi per chiarire forma e contenuto attesi.
+La risposta ha come HTTP Content-Type ``application/jwt``. mDi seguito un esempio concreto con dati fittizi per chiarire forma e contenuto attesi.
 
 .. literalinclude:: ../../examples/credential-claims-response-example.json
   :language: json
-  :caption: Esempio di payload del JWT di risposta (Get Attribute Claims) dopo decodifica
+  :caption: Esempio di payload JSON di risposta (Get Attribute Claims)
 
 In sintesi:
 

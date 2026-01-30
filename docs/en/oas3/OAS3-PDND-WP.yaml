@@ -6,7 +6,7 @@ info:
   contact:
     url: https://github.com/italia/eid-wallet-it-docs
 servers:
-  - url: https://pdnd.wallet-provider.example.org/api/v1.0
+  - url: https://pdnd.wallet-provider.example.org/api/v1.4.0
     description: Wallet Provider API for PDND
 paths:
   /status:
@@ -28,7 +28,7 @@ paths:
         This service is used to notify the Wallet Provider of the need to revoke the Wallet Instance and delete the User's account due to the User's death.
       operationId: notifyUserDeath
       parameters:
-        - name: PDND-Voucher
+        - name: Authorization
           in: header
           description: >-
             JWT token obtained from <a target="blank"

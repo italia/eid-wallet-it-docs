@@ -6,7 +6,7 @@ info:
   contact:
     url: https://github.com/italia/eid-wallet-it-docs
 servers:
-  - url: https://authentic-source.example.it
+  - url: https://authentic-source.example.it/v1.4.0
     description: Authentic Source API
 paths:
   /status:
@@ -19,7 +19,7 @@ paths:
       responses:
         "200":
           description: OK
-  /v1.3.1/AttributeClaims/{dataset_id}:
+  /AttributeClaims/{dataset_id}:
     post:
       tags:
         - e-Services PDND
@@ -34,7 +34,7 @@ paths:
             type: string
           required: true
           description: Identifier of the dataset as registered in the Authentic Source Registry 
-        - name: PDND-Voucher
+        - name: Authorization
           in: header
           description: >-
             JWT token obtained from <a target="blank"
@@ -105,7 +105,7 @@ paths:
             format: JWT
             example: eyJhbGciOiJFUzI1NiIsImtpZCI6ImQ0YzNiMmExLTk4NzYtNTQzMi0xMGZlLWRjYmE5ODc2NTQzMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJhdWQiOiJodHRwczovL2F1dGhlbnRpYy1zb3VyY2UuZXhhbXBsZS5pdCIsImV4cCI6MTczMzA1MjYwMCwibmJmIjoxNzMzMDM2NDUwLCJpYXQiOjE3MzMwMzY0MDAsImp0aSI6ImE0YjVjNmQ3LWU4ZjktYWJjZC1lZjEyLTM0NTY3ODkwMTIzNCIsImRub25jZSI6NjUyODQyNDIxMzY4NSwicHVycG9zZUlkIjoiYjJjM2Q0ZTUtZjZnNy1oOGk5LWowazEtbG1ubzEyMzQ1Njc4IiwidXNlcklEIjoiYThiN2M2ZDUtZTRmMy1nMmgxLWk5ajAta2xtbm9wcXJzdHV2IiwibG9hIjoic3Vic3RhbnRpYWwifQ.y42yfMeW2H9h0b0j0BODUml8yF20stY9q3BwoVU5BB90afBj852Q0QlInncdhjXhUjLS1V76cGBxkutDNvxRNA
       security:
-        - PDNDVoucher: [ ]
+        - BearerAuth: [ ]
       requestBody:
         required: true
         content:
@@ -132,12 +132,6 @@ paths:
               schema:
                 $ref: "#/components/schemas/CredentialClaimsResponse"
               example:
-                iss: "https://authentic-source.example.it"
-                aud: "82914b3f-60b2-4529-b4d6-3d4e67f0a933"
-                exp: 1736846928
-                iat: 1736846688
-                nbf: 1736846688
-                jti: "c8bd8a2f-e990-44fa-9013-1b353bfc5a0d"
                 interval: 864000
                 userClaims:
                   given_name: "Mario"
@@ -147,22 +141,27 @@ paths:
                   tax_id_code: "TINIT-RSSMRA80A01H501Z"
                   personal_administrative_number: "12345A123A"
                 attributeClaims:
-                  - object_id: "6F9619FF-8B86-D011-B42D-00C04FC964FF"
-                    status: "VALID"
-                    last_updated: "2025-01-15T10:30:00Z"
-                    nationality: "IT"
-                    residence_address: "Via Roma 1, 00100 Roma"
-                  - object_id: "7A0720AB-9C97-E122-C53E-11D05FD075GG"
-                    status: "VALID"
-                    last_updated: "2025-01-10T08:00:00Z"
-                    driving_license_category: "B"
-                metadataClaims:
-                  - object_id: "6F9619FF-8B86-D011-B42D-00C04FC964FF"
-                    issuance_date: "2025-01-01"
-                    expiry_date: "2025-12-31"
-                  - object_id: "7A0720AB-9C97-E122-C53E-11D05FD075GG"
-                    issuance_date: "2024-06-15"
-                    expiry_date: "2030-06-14"                
+                - object_id: "6F9619FF-8B86-D011-B42D-00C04FC964FF"
+                  status: "VALID"
+                  last_updated: "2025-01-15T10:30:00Z"
+                  institute_name: "Nome Istituto Universitario"
+                  programme_type_name: "Laurea Magistrale"
+                  degree_course_name: "Computer Science - Informatica"
+                  academic_qualification_date: "2025-06-25"
+                  ...: ""
+                - object_id: "7A0720AB-9C97-E122-C53E-11D05FD075GG"
+                  status: "VALID"
+                  last_updated: "2025-01-10T08:00:00Z"
+                  institute_name: "Nome Istituto Universitario"
+                  programme_type_name: "Laurea Triennale"
+                  degree_course_name: "Informatica"
+                  academic_qualification_date: "2022-11-27"
+                  ...: ""
+                  metadataClaims:
+                - object_id: "6F9619FF-8B86-D011-B42D-00C04FC964FF"
+                  issuance_date: "2025-06-25"
+                - object_id: "7A0720AB-9C97-E122-C53E-11D05FD075GG"
+                  issuance_date: "2022-11-27"
         "400":
           description: Bad Request
           content:
@@ -198,7 +197,7 @@ paths:
                 $ref: "#/components/schemas/ProblemDetails"
 components:
   securitySchemes:
-    PDNDVoucher:
+    BearerAuth:
       type: http
       scheme: bearer
       bearerFormat: JWT
@@ -282,7 +281,6 @@ components:
               type: integer
               format: int64
               example: 864000
-          required: [iss, aud, exp, iat, jti]
     CredentialClaimsRequest:
       required:
         - unique_id
@@ -316,3 +314,4 @@ components:
           type: string
           format: uri
           description: An absolute URI that identifies the specific occurrence of the problem.
+      required: [title, status, detail]
