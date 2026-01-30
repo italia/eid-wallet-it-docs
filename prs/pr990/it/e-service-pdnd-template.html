@@ -329,24 +329,24 @@ Il processo di istanziazione risulterà in un nuovo servizio elettronico che <st
 <span class="linenos">  2</span><span class="nt">info</span><span class="p">:</span>
 <span class="linenos">  3</span><span class="w">  </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IT Wallet API - AS web services</span>
 <span class="linenos">  4</span><span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1.0</span>
-<span class="linenos">  5</span><span class="w">  </span><span class="nt">x-summary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">e-Service della Fonte Autentica IT Wallet esposto tramite PDND.</span>
+<span class="linenos">  5</span><span class="w">  </span><span class="nt">x-summary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IT Wallet Authentic Source e-Service exposed via PDND.</span>
 <span class="linenos">  6</span><span class="w">  </span><span class="nt">contact</span><span class="p">:</span>
 <span class="linenos">  7</span><span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/italia/eid-wallet-it-docs</span>
 <span class="linenos">  8</span><span class="nt">servers</span><span class="p">:</span>
-<span class="linenos">  9</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://authentic-source.example.it</span>
+<span class="linenos">  9</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://authentic-source.example.it/v1.4.0</span>
 <span class="linenos"> 10</span><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Authentic Source API</span>
 <span class="linenos"> 11</span><span class="nt">paths</span><span class="p">:</span>
 <span class="linenos"> 12</span><span class="w">  </span><span class="nt">/status</span><span class="p">:</span>
 <span class="linenos"> 13</span><span class="w">    </span><span class="nt">get</span><span class="p">:</span>
 <span class="linenos"> 14</span><span class="w">      </span><span class="nt">tags</span><span class="p">:</span>
 <span class="linenos"> 15</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">e-Services PDND</span>
-<span class="linenos"> 16</span><span class="w">      </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Recupera lo stato dell’API della Fonte Autentica.</span>
-<span class="linenos"> 17</span><span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Endpoint di health-check che restituisce lo stato operativo dell’API della Fonte Autentica.</span>
+<span class="linenos"> 16</span><span class="w">      </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Get Authentic Source API status.</span>
+<span class="linenos"> 17</span><span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Health-check endpoint that returns the operational status of the Authentic Source API.</span>
 <span class="linenos"> 18</span><span class="w">      </span><span class="nt">operationId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">getAuthenticSourceStatus</span>
 <span class="linenos"> 19</span><span class="w">      </span><span class="nt">responses</span><span class="p">:</span>
 <span class="linenos"> 20</span><span class="w">        </span><span class="s">&quot;200&quot;</span><span class="p p-Indicator">:</span>
 <span class="linenos"> 21</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OK</span>
-<span class="linenos"> 22</span><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">/v1.3.1/AttributeClaims/{dataset_id}</span><span class="p p-Indicator">:</span>
+<span class="linenos"> 22</span><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">/AttributeClaims/{dataset_id}</span><span class="p p-Indicator">:</span>
 <span class="linenos"> 23</span><span class="w">    </span><span class="nt">post</span><span class="p">:</span>
 <span class="linenos"> 24</span><span class="w">      </span><span class="nt">tags</span><span class="p">:</span>
 <span class="linenos"> 25</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">e-Services PDND</span>
@@ -361,7 +361,7 @@ Il processo di istanziazione risulterà in un nuovo servizio elettronico che <st
 <span class="linenos"> 34</span><span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="linenos"> 35</span><span class="w">          </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="linenos"> 36</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Identifier of the dataset as registered in the Authentic Source Registry</span><span class="w"> </span>
-<span class="linenos"> 37</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PDND-Voucher</span>
+<span class="linenos"> 37</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Authorization</span>
 <span class="linenos"> 38</span><span class="w">          </span><span class="nt">in</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">header</span>
 <span class="linenos"> 39</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
 <span class="linenos"> 40</span><span class="w">            </span><span class="no">JWT token obtained from &lt;a target=&quot;blank&quot;</span>
@@ -396,7 +396,7 @@ Il processo di istanziazione risulterà in un nuovo servizio elettronico che <st
 <span class="linenos"> 69</span><span class="w">          </span><span class="nt">in</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">header</span>
 <span class="linenos"> 70</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
 <span class="linenos"> 71</span><span class="w">            </span><span class="no">JWT containing the signature of the message headers whose integrity</span>
-<span class="linenos"> 72</span><span class="w">            </span><span class="no">needs to be guaranteed, see the INTEGRITY_REST_02</span>
+<span class="linenos"> 72</span><span class="w">            </span><span class="no">needs to be guaranteed, to comply with the INTEGRITY_REST_02</span>
 <span class="linenos"> 73</span><span class="w">            </span><span class="no">security pattern (see &lt;a target=&quot;blank&quot;</span>
 <span class="linenos"> 74</span><span class="w">            </span><span class="no">href=&quot;https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/e-service-pdnd.html&quot;&gt;e-Service PDND&lt;/a&gt;). &lt;br/&gt;&lt;br/&gt;</span>
 <span class="linenos"> 75</span>
@@ -410,7 +410,7 @@ Il processo di istanziazione risulterà in un nuovo servizio elettronico che <st
 <span class="linenos"> 83</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Digest</span>
 <span class="linenos"> 84</span><span class="w">          </span><span class="nt">in</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">header</span>
 <span class="linenos"> 85</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
-<span class="linenos"> 86</span><span class="w">            </span><span class="no">Digest of the message payload, see the INTEGRITY_REST_02</span>
+<span class="linenos"> 86</span><span class="w">            </span><span class="no">Digest of the message payload, to comply with the INTEGRITY_REST_02</span>
 <span class="linenos"> 87</span><span class="w">            </span><span class="no">security pattern. According to &lt;a target=&quot;blank&quot; href=&quot;https://www.rfc-editor.org/rfc/rfc3230.html#section-4.2&quot;&gt;RFC</span>
 <span class="linenos"> 88</span><span class="w">            </span><span class="no">3230 §4.2&lt;/a&gt;, the format MUST be the following: digest-algorithm=encoded</span>
 <span class="linenos"> 89</span><span class="w">            </span><span class="no">digest output.</span>
@@ -432,7 +432,7 @@ Il processo di istanziazione risulterà in un nuovo servizio elettronico che <st
 <span class="linenos">105</span><span class="w">            </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">JWT</span>
 <span class="linenos">106</span><span class="w">            </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eyJhbGciOiJFUzI1NiIsImtpZCI6ImQ0YzNiMmExLTk4NzYtNTQzMi0xMGZlLWRjYmE5ODc2NTQzMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJhdWQiOiJodHRwczovL2F1dGhlbnRpYy1zb3VyY2UuZXhhbXBsZS5pdCIsImV4cCI6MTczMzA1MjYwMCwibmJmIjoxNzMzMDM2NDUwLCJpYXQiOjE3MzMwMzY0MDAsImp0aSI6ImE0YjVjNmQ3LWU4ZjktYWJjZC1lZjEyLTM0NTY3ODkwMTIzNCIsImRub25jZSI6NjUyODQyNDIxMzY4NSwicHVycG9zZUlkIjoiYjJjM2Q0ZTUtZjZnNy1oOGk5LWowazEtbG1ubzEyMzQ1Njc4IiwidXNlcklEIjoiYThiN2M2ZDUtZTRmMy1nMmgxLWk5ajAta2xtbm9wcXJzdHV2IiwibG9hIjoic3Vic3RhbnRpYWwifQ.y42yfMeW2H9h0b0j0BODUml8yF20stY9q3BwoVU5BB90afBj852Q0QlInncdhjXhUjLS1V76cGBxkutDNvxRNA</span>
 <span class="linenos">107</span><span class="w">      </span><span class="nt">security</span><span class="p">:</span>
-<span class="linenos">108</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">PDNDVoucher</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span>
+<span class="linenos">108</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">BearerAuth</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span>
 <span class="linenos">109</span><span class="w">      </span><span class="nt">requestBody</span><span class="p">:</span>
 <span class="linenos">110</span><span class="w">        </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="linenos">111</span><span class="w">        </span><span class="nt">content</span><span class="p">:</span>
@@ -444,12 +444,12 @@ Il processo di istanziazione risulterà in un nuovo servizio elettronico che <st
 <span class="linenos">117</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OK</span>
 <span class="linenos">118</span><span class="w">          </span><span class="nt">headers</span><span class="p">:</span>
 <span class="linenos">119</span><span class="w">            </span><span class="nt">Agid-JWT-Signature</span><span class="p">:</span>
-<span class="linenos">120</span><span class="w">              </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">JWT containing the signature of the message headers whose integrity needs to be guaranteed, see the INTEGRITY_REST_02 security pattern (see &lt;a target=&quot;blank&quot; href=&quot;https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/e-service-pdnd.html&quot;&gt;e-Service PDND&lt;/a&gt;). &lt;a target=&quot;blank&quot; href=&quot;https://jwt.io/#debugger-io?token=ew0KICAiYWxnIjogIkVTMjU2IiwNCiAgImtpZCI6ICJhMWY1YzhkMi00YjM3LTRlOTEtYjBkMi03OWUzZjBjNGE4ZWYiLA0KICAidHlwIjogIkpXVCINCn0.ew0KICAiaXNzIjogIjEyMzRhYmNkLWVmNTYtZ2g3OC1pOWowLWtsbW5vcHFyc3R3eCIsDQogICJzdWIiOiAiMTIzNGFiY2QtZWY1Ni1naDc4LWk5ajAta2xtbm9wcXJzdHd4IiwNCiAgImF1ZCI6ICJodHRwczovL2ZydWl0b3JlLmV4YW1wbGUvZW50ZS1leGFtcGxlL3YxIiwNCiAgImlhdCI6IDE3MzMzOTc4NDAsDQogICJuYmYiOiAxNzMzNDAxNjI4LA0KICAiZXhwIjogMTczMzQwMTQ0MCwNCiAgImp0aSI6ICI4ZTEyZjRiNy05YzNhLTRmODMtOWI4ZC01MWEyYzdmNmU5ZDQiLA0KICAic2lnbmVkX2hlYWRlcnMiOiBbDQogICAgew0KICAgICAgImRpZ2VzdCI6ICJTSEEtMjU2PTc5YTIwYTc0NDMzNjQyMDMwMTgzMDYwMGFkOWJkY2E5OTM1OTNmODc2MjA5YTAwNGI1OTliNTgzMDk1YjBhNjEiDQogICAgfSwNCiAgICB7DQogICAgICAiY29udGVudC10eXBlIjogImFwcGxpY2F0aW9uL2pzb24iDQogICAgfQ0KICBdDQp9.DpuBNo2UgQhL7WLin4mpdZrbIpQq3tPvCX6HfktkxG7L5mk6a8OK1Hg0mQcZfFi3gelS-aL9kFS-6MoSy4csBg&quot;&gt;EXAMPLE</span>
+<span class="linenos">120</span><span class="w">              </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">JWT containing the signature of the message headers whose integrity needs to be guaranteed, to comply with the INTEGRITY_REST_02 security pattern (see &lt;a target=&quot;blank&quot; href=&quot;https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/e-service-pdnd.html&quot;&gt;e-Service PDND&lt;/a&gt;). &lt;a target=&quot;blank&quot; href=&quot;https://jwt.io/#debugger-io?token=ew0KICAiYWxnIjogIkVTMjU2IiwNCiAgImtpZCI6ICJhMWY1YzhkMi00YjM3LTRlOTEtYjBkMi03OWUzZjBjNGE4ZWYiLA0KICAidHlwIjogIkpXVCINCn0.ew0KICAiaXNzIjogIjEyMzRhYmNkLWVmNTYtZ2g3OC1pOWowLWtsbW5vcHFyc3R3eCIsDQogICJzdWIiOiAiMTIzNGFiY2QtZWY1Ni1naDc4LWk5ajAta2xtbm9wcXJzdHd4IiwNCiAgImF1ZCI6ICJodHRwczovL2ZydWl0b3JlLmV4YW1wbGUvZW50ZS1leGFtcGxlL3YxIiwNCiAgImlhdCI6IDE3MzMzOTc4NDAsDQogICJuYmYiOiAxNzMzNDAxNjI4LA0KICAiZXhwIjogMTczMzQwMTQ0MCwNCiAgImp0aSI6ICI4ZTEyZjRiNy05YzNhLTRmODMtOWI4ZC01MWEyYzdmNmU5ZDQiLA0KICAic2lnbmVkX2hlYWRlcnMiOiBbDQogICAgew0KICAgICAgImRpZ2VzdCI6ICJTSEEtMjU2PTc5YTIwYTc0NDMzNjQyMDMwMTgzMDYwMGFkOWJkY2E5OTM1OTNmODc2MjA5YTAwNGI1OTliNTgzMDk1YjBhNjEiDQogICAgfSwNCiAgICB7DQogICAgICAiY29udGVudC10eXBlIjogImFwcGxpY2F0aW9uL2pzb24iDQogICAgfQ0KICBdDQp9.DpuBNo2UgQhL7WLin4mpdZrbIpQq3tPvCX6HfktkxG7L5mk6a8OK1Hg0mQcZfFi3gelS-aL9kFS-6MoSy4csBg&quot;&gt;EXAMPLE</span>
 <span class="linenos">121</span><span class="w">              </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="linenos">122</span><span class="w">              </span><span class="nt">schema</span><span class="p">:</span><span class="w"> </span>
 <span class="linenos">123</span><span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="linenos">124</span><span class="w">            </span><span class="nt">Digest</span><span class="p">:</span>
-<span class="linenos">125</span><span class="w">              </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Digest of the message payload, see the INTEGRITY_REST_02 security pattern. According to RFC 3230 Section 4.2 &lt;a target=&quot;blank&quot; href=&quot;https://www.rfc-editor.org/rfc/rfc3230.html#section-4.2&quot;&gt;RFC 3230 §4.2&lt;/a&gt;, the format MUST be the following digest-algorithm=encoded digest output.</span>
+<span class="linenos">125</span><span class="w">              </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Digest of the message payload, to comply with the INTEGRITY_REST_02 security pattern. According to RFC 3230 Section 4.2 &lt;a target=&quot;blank&quot; href=&quot;https://www.rfc-editor.org/rfc/rfc3230.html#section-4.2&quot;&gt;RFC 3230 §4.2&lt;/a&gt;, the format MUST be the following digest-algorithm=encoded digest output.</span>
 <span class="linenos">126</span><span class="w">              </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="linenos">127</span><span class="w">              </span><span class="nt">schema</span><span class="p">:</span><span class="w"> </span>
 <span class="linenos">128</span><span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
@@ -458,192 +458,190 @@ Il processo di istanziazione risulterà in un nuovo servizio elettronico che <st
 <span class="linenos">131</span><span class="w">            </span><span class="nt">application/json</span><span class="p">:</span>
 <span class="linenos">132</span><span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
 <span class="linenos">133</span><span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/CredentialClaimsResponse&quot;</span>
-<span class="linenos">134</span><span class="w">              </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IjRlNTAzYjU0LWNiZDUtNDZkOC1iNzhhLTAxMTY5OTEyMmYzMCJ9.eyJpc3MiOiJodHRwczovL2F1dGhlbnRpYy1zb3VyY2UuZXhhbXBsZS5pdCIsIm5iZiI6MTczNjg0NjY4OCwiZXhwIjoxNzM2ODQ2OTI4LCJpYXQiOjE3MzY4NDY2ODgsImF1ZCI6IjgyOTE0YjNmLTYwYjItNDUyOS1iNGQ2LTNkNGU2N2YwYTkzMyIsImp0aSI6ImM4YmQ4YTJmLWU5OTAtNDRmYS05MDEzLTFiMzUzYmZjNWEwZCJ9.4BgoaKyVOupA67tXLQeIK8QNEiYkB646_35HndTkWxS9xypF7FJqyqV24z6EJirSgn5BlT2ZrgqeDURSjJuPUg&quot;</span>
-<span class="linenos">135</span><span class="w">        </span><span class="s">&quot;400&quot;</span><span class="p p-Indicator">:</span>
-<span class="linenos">136</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request</span>
-<span class="linenos">137</span><span class="w">          </span><span class="nt">content</span><span class="p">:</span>
-<span class="linenos">138</span><span class="w">            </span><span class="nt">application/problem+json</span><span class="p">:</span>
-<span class="linenos">139</span><span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
-<span class="linenos">140</span><span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/ProblemDetails&quot;</span>
-<span class="linenos">141</span><span class="w">        </span><span class="s">&quot;401&quot;</span><span class="p p-Indicator">:</span>
-<span class="linenos">142</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Unauthorized</span>
-<span class="linenos">143</span><span class="w">          </span><span class="nt">headers</span><span class="p">:</span>
-<span class="linenos">144</span><span class="w">            </span><span class="nt">WWW-Authenticate</span><span class="p">:</span>
-<span class="linenos">145</span><span class="w">              </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The request cannot be fulfilled because the Voucher is expired, revoked or otherwise malformed. See &lt;a target=&quot;blank&quot; href=&quot;https://datatracker.ietf.org/doc/html/rfc6750.html#section-3&quot;&gt;RFC6750&lt;/a&gt; and &lt;a target=&quot;blank&quot; href=&quot;https://datatracker.ietf.org/doc/html/rfc9449.html#section-7.1-11&quot;&gt;RFC9449&lt;/a&gt; for details.</span>
-<span class="linenos">146</span><span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
-<span class="linenos">147</span><span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="linenos">148</span><span class="w">                </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
-<span class="linenos">149</span><span class="w">                  </span><span class="no">Bearer error=&quot;invalid_token&quot;, error_description=&quot;The access token expired&quot;</span>
-<span class="linenos">150</span><span class="w">        </span><span class="s">&quot;404&quot;</span><span class="p p-Indicator">:</span>
-<span class="linenos">151</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Claims not found</span>
-<span class="linenos">152</span><span class="w">          </span><span class="nt">content</span><span class="p">:</span>
-<span class="linenos">153</span><span class="w">            </span><span class="nt">application/problem+json</span><span class="p">:</span>
-<span class="linenos">154</span><span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
-<span class="linenos">155</span><span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/ProblemDetails&quot;</span>
-<span class="linenos">156</span><span class="w">        </span><span class="s">&quot;500&quot;</span><span class="p p-Indicator">:</span>
-<span class="linenos">157</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Internal Server Error</span>
-<span class="linenos">158</span><span class="w">          </span><span class="nt">content</span><span class="p">:</span>
-<span class="linenos">159</span><span class="w">            </span><span class="nt">application/problem+json</span><span class="p">:</span>
-<span class="linenos">160</span><span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
-<span class="linenos">161</span><span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/ProblemDetails&quot;</span>
-<span class="linenos">162</span><span class="w">        </span><span class="s">&quot;503&quot;</span><span class="p p-Indicator">:</span>
-<span class="linenos">163</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service Unavailable</span>
-<span class="linenos">164</span><span class="w">          </span><span class="nt">content</span><span class="p">:</span>
-<span class="linenos">165</span><span class="w">            </span><span class="nt">application/problem+json</span><span class="p">:</span>
-<span class="linenos">166</span><span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
-<span class="linenos">167</span><span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/ProblemDetails&quot;</span>
-<span class="linenos">168</span><span class="nt">components</span><span class="p">:</span>
-<span class="linenos">169</span><span class="w">  </span><span class="nt">securitySchemes</span><span class="p">:</span>
-<span class="linenos">170</span><span class="w">    </span><span class="nt">PDNDVoucher</span><span class="p">:</span>
-<span class="linenos">171</span><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
-<span class="linenos">172</span><span class="w">      </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bearer</span>
-<span class="linenos">173</span><span class="w">      </span><span class="nt">bearerFormat</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">JWT</span>
-<span class="linenos">174</span><span class="w">  </span><span class="nt">schemas</span><span class="p">:</span>
-<span class="linenos">175</span><span class="w">    </span><span class="nt">CredentialClaimsResponse</span><span class="p">:</span>
-<span class="linenos">176</span><span class="w">      </span><span class="nt">properties</span><span class="p">:</span>
-<span class="linenos">177</span><span class="w">        </span><span class="nt">CredentialClaimsResponse</span><span class="p">:</span>
-<span class="linenos">178</span><span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
-<span class="linenos">179</span><span class="w">          </span><span class="nt">properties</span><span class="p">:</span>
-<span class="linenos">180</span><span class="w">            </span><span class="nt">userClaims</span><span class="p">:</span>
-<span class="linenos">181</span><span class="w">              </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">List of User Claims.</span>
-<span class="linenos">182</span><span class="w">              </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
-<span class="linenos">183</span><span class="w">              </span><span class="nt">properties</span><span class="p">:</span>
-<span class="linenos">184</span><span class="w">                </span><span class="nt">given_name</span><span class="p">:</span>
-<span class="linenos">185</span><span class="w">                  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Current First Name.</span>
-<span class="linenos">186</span><span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="linenos">187</span><span class="w">                  </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&quot;Mario&quot;&#39;</span>
-<span class="linenos">188</span><span class="w">                </span><span class="nt">family_name</span><span class="p">:</span>
-<span class="linenos">189</span><span class="w">                  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Current Family Name.</span>
-<span class="linenos">190</span><span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="linenos">191</span><span class="w">                  </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&quot;Rossi&quot;&#39;</span>
-<span class="linenos">192</span><span class="w">                </span><span class="nt">birth_date</span><span class="p">:</span>
-<span class="linenos">193</span><span class="w">                  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Date of Birth.</span>
-<span class="linenos">194</span><span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="linenos">195</span><span class="w">                  </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&quot;1980-01-10&quot;&#39;</span>
-<span class="linenos">196</span><span class="w">                </span><span class="nt">birth_place</span><span class="p">:</span>
-<span class="linenos">197</span><span class="w">                  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Place of Birth.</span>
-<span class="linenos">198</span><span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="linenos">199</span><span class="w">                  </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&quot;Roma&quot;&#39;</span>
-<span class="linenos">200</span><span class="w">                </span><span class="nt">tax_id_code</span><span class="p">:</span>
-<span class="linenos">201</span><span class="w">                  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">National tax identification number. REQUIRED if personal_administrative_number is absent.</span>
-<span class="linenos">202</span><span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="linenos">203</span><span class="w">                  </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&quot;TINIT-XXXXXXXXXXXXXXXX&quot;&#39;</span>
-<span class="linenos">204</span><span class="w">                </span><span class="nt">personal_administrative_number</span><span class="p">:</span>
-<span class="linenos">205</span><span class="w">                  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">National unique identifier of a natural person. REQUIRED if tax_id_code is absent.</span>
-<span class="linenos">206</span><span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="linenos">207</span><span class="w">                  </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&quot;XX00000XX&quot;&#39;</span>
-<span class="linenos">208</span><span class="w">            </span><span class="nt">attributeClaims</span><span class="p">:</span>
-<span class="linenos">209</span><span class="w">              </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">List of Datasets of Attribute.</span>
-<span class="linenos">210</span><span class="w">              </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">array</span>
-<span class="linenos">211</span><span class="w">              </span><span class="nt">items</span><span class="p">:</span><span class="w"> </span>
-<span class="linenos">212</span><span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
-<span class="linenos">213</span><span class="w">                </span><span class="nt">properties</span><span class="p">:</span>
-<span class="linenos">214</span><span class="w">                  </span><span class="nt">object_id</span><span class="p">:</span>
-<span class="linenos">215</span><span class="w">                    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Unique identifier of the Dataset.</span>
-<span class="linenos">216</span><span class="w">                    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="linenos">217</span><span class="w">                    </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;6F9619FF-8B86-D011-B42D-00C04FC964FF&quot;</span>
-<span class="linenos">218</span><span class="w">                  </span><span class="nt">status</span><span class="p">:</span>
-<span class="linenos">219</span><span class="w">                    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Status of the Dataset.</span>
-<span class="linenos">220</span><span class="w">                    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="linenos">221</span><span class="w">                    </span><span class="nt">enum</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;VALID&quot;</span><span class="p p-Indicator">,</span><span class="s">&quot;INVALID&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;SUSPENDED&quot;</span><span class="p p-Indicator">]</span>
-<span class="linenos">222</span><span class="w">                    </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;VALID&quot;</span>
-<span class="linenos">223</span><span class="w">                  </span><span class="nt">last_updated</span><span class="p">:</span>
-<span class="linenos">224</span><span class="w">                    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Last time the status or attributes of the Dataset have been updated. Its format is `YYYY-MM-DDTHH:MM:SSZ`.</span>
-<span class="linenos">225</span><span class="w">                    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="linenos">226</span><span class="w">                    </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2025-01-15T10:30:00Z&quot;</span>
-<span class="linenos">227</span><span class="w">                </span><span class="nt">additionalProperties</span><span class="p">:</span>
+<span class="linenos">134</span><span class="w">              </span><span class="nt">example</span><span class="p">:</span>
+<span class="linenos">135</span><span class="w">                </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">864000</span>
+<span class="linenos">136</span><span class="w">                </span><span class="nt">userClaims</span><span class="p">:</span>
+<span class="linenos">137</span><span class="w">                  </span><span class="nt">given_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Mario&quot;</span>
+<span class="linenos">138</span><span class="w">                  </span><span class="nt">family_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Rossi&quot;</span>
+<span class="linenos">139</span><span class="w">                  </span><span class="nt">birth_date</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1980-01-10&quot;</span>
+<span class="linenos">140</span><span class="w">                  </span><span class="nt">birth_place</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Roma&quot;</span>
+<span class="linenos">141</span><span class="w">                  </span><span class="nt">tax_id_code</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;TINIT-RSSMRA80A01H501Z&quot;</span>
+<span class="linenos">142</span><span class="w">                  </span><span class="nt">personal_administrative_number</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;12345A123A&quot;</span>
+<span class="linenos">143</span><span class="w">                </span><span class="nt">attributeClaims</span><span class="p">:</span>
+<span class="linenos">144</span><span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">object_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;6F9619FF-8B86-D011-B42D-00C04FC964FF&quot;</span>
+<span class="linenos">145</span><span class="w">                  </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;VALID&quot;</span>
+<span class="linenos">146</span><span class="w">                  </span><span class="nt">last_updated</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2025-01-15T10:30:00Z&quot;</span>
+<span class="linenos">147</span><span class="w">                  </span><span class="nt">institute_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Nome</span><span class="nv"> </span><span class="s">Istituto</span><span class="nv"> </span><span class="s">Universitario&quot;</span>
+<span class="linenos">148</span><span class="w">                  </span><span class="nt">programme_type_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Laurea</span><span class="nv"> </span><span class="s">Magistrale&quot;</span>
+<span class="linenos">149</span><span class="w">                  </span><span class="nt">degree_course_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Computer</span><span class="nv"> </span><span class="s">Science</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">Informatica&quot;</span>
+<span class="linenos">150</span><span class="w">                  </span><span class="nt">academic_qualification_date</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2025-06-25&quot;</span>
+<span class="linenos">151</span><span class="w">                  </span><span class="nt">...</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="linenos">152</span><span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">object_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;7A0720AB-9C97-E122-C53E-11D05FD075GG&quot;</span>
+<span class="linenos">153</span><span class="w">                  </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;VALID&quot;</span>
+<span class="linenos">154</span><span class="w">                  </span><span class="nt">last_updated</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2025-01-10T08:00:00Z&quot;</span>
+<span class="linenos">155</span><span class="w">                  </span><span class="nt">institute_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Nome</span><span class="nv"> </span><span class="s">Istituto</span><span class="nv"> </span><span class="s">Universitario&quot;</span>
+<span class="linenos">156</span><span class="w">                  </span><span class="nt">programme_type_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Laurea</span><span class="nv"> </span><span class="s">Triennale&quot;</span>
+<span class="linenos">157</span><span class="w">                  </span><span class="nt">degree_course_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Informatica&quot;</span>
+<span class="linenos">158</span><span class="w">                  </span><span class="nt">academic_qualification_date</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2022-11-27&quot;</span>
+<span class="linenos">159</span><span class="w">                  </span><span class="nt">...</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="linenos">160</span><span class="w">                  </span><span class="nt">metadataClaims</span><span class="p">:</span>
+<span class="linenos">161</span><span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">object_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;6F9619FF-8B86-D011-B42D-00C04FC964FF&quot;</span>
+<span class="linenos">162</span><span class="w">                  </span><span class="nt">issuance_date</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2025-06-25&quot;</span>
+<span class="linenos">163</span><span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">object_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;7A0720AB-9C97-E122-C53E-11D05FD075GG&quot;</span>
+<span class="linenos">164</span><span class="w">                  </span><span class="nt">issuance_date</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2022-11-27&quot;</span>
+<span class="linenos">165</span><span class="w">        </span><span class="s">&quot;400&quot;</span><span class="p p-Indicator">:</span>
+<span class="linenos">166</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request</span>
+<span class="linenos">167</span><span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<span class="linenos">168</span><span class="w">            </span><span class="nt">application/problem+json</span><span class="p">:</span>
+<span class="linenos">169</span><span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="linenos">170</span><span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/ProblemDetails&quot;</span>
+<span class="linenos">171</span><span class="w">        </span><span class="s">&quot;401&quot;</span><span class="p p-Indicator">:</span>
+<span class="linenos">172</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Unauthorized</span>
+<span class="linenos">173</span><span class="w">          </span><span class="nt">headers</span><span class="p">:</span>
+<span class="linenos">174</span><span class="w">            </span><span class="nt">WWW-Authenticate</span><span class="p">:</span>
+<span class="linenos">175</span><span class="w">              </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The request cannot be fulfilled because the Voucher is expired, revoked or otherwise malformed. See &lt;a target=&quot;blank&quot; href=&quot;https://datatracker.ietf.org/doc/html/rfc6750.html#section-3&quot;&gt;RFC6750&lt;/a&gt; and &lt;a target=&quot;blank&quot; href=&quot;https://datatracker.ietf.org/doc/html/rfc9449.html#section-7.1-11&quot;&gt;RFC9449&lt;/a&gt; for details.</span>
+<span class="linenos">176</span><span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="linenos">177</span><span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">178</span><span class="w">                </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
+<span class="linenos">179</span><span class="w">                  </span><span class="no">Bearer error=&quot;invalid_token&quot;, error_description=&quot;The access token expired&quot;</span>
+<span class="linenos">180</span><span class="w">        </span><span class="s">&quot;404&quot;</span><span class="p p-Indicator">:</span>
+<span class="linenos">181</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Claims not found</span>
+<span class="linenos">182</span><span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<span class="linenos">183</span><span class="w">            </span><span class="nt">application/problem+json</span><span class="p">:</span>
+<span class="linenos">184</span><span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="linenos">185</span><span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/ProblemDetails&quot;</span>
+<span class="linenos">186</span><span class="w">        </span><span class="s">&quot;500&quot;</span><span class="p p-Indicator">:</span>
+<span class="linenos">187</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Internal Server Error</span>
+<span class="linenos">188</span><span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<span class="linenos">189</span><span class="w">            </span><span class="nt">application/problem+json</span><span class="p">:</span>
+<span class="linenos">190</span><span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="linenos">191</span><span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/ProblemDetails&quot;</span>
+<span class="linenos">192</span><span class="w">        </span><span class="s">&quot;503&quot;</span><span class="p p-Indicator">:</span>
+<span class="linenos">193</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service Unavailable</span>
+<span class="linenos">194</span><span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<span class="linenos">195</span><span class="w">            </span><span class="nt">application/problem+json</span><span class="p">:</span>
+<span class="linenos">196</span><span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="linenos">197</span><span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/ProblemDetails&quot;</span>
+<span class="linenos">198</span><span class="nt">components</span><span class="p">:</span>
+<span class="linenos">199</span><span class="w">  </span><span class="nt">securitySchemes</span><span class="p">:</span>
+<span class="linenos">200</span><span class="w">    </span><span class="nt">BearerAuth</span><span class="p">:</span>
+<span class="linenos">201</span><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
+<span class="linenos">202</span><span class="w">      </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bearer</span>
+<span class="linenos">203</span><span class="w">      </span><span class="nt">bearerFormat</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">JWT</span>
+<span class="linenos">204</span><span class="w">  </span><span class="nt">schemas</span><span class="p">:</span>
+<span class="linenos">205</span><span class="w">    </span><span class="nt">CredentialClaimsResponse</span><span class="p">:</span>
+<span class="linenos">206</span><span class="w">      </span><span class="nt">properties</span><span class="p">:</span>
+<span class="linenos">207</span><span class="w">        </span><span class="nt">CredentialClaimsResponse</span><span class="p">:</span>
+<span class="linenos">208</span><span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="linenos">209</span><span class="w">          </span><span class="nt">properties</span><span class="p">:</span>
+<span class="linenos">210</span><span class="w">            </span><span class="nt">userClaims</span><span class="p">:</span>
+<span class="linenos">211</span><span class="w">              </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">List of User Claims.</span>
+<span class="linenos">212</span><span class="w">              </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="linenos">213</span><span class="w">              </span><span class="nt">properties</span><span class="p">:</span>
+<span class="linenos">214</span><span class="w">                </span><span class="nt">given_name</span><span class="p">:</span>
+<span class="linenos">215</span><span class="w">                  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Current First Name.</span>
+<span class="linenos">216</span><span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">217</span><span class="w">                  </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&quot;Mario&quot;&#39;</span>
+<span class="linenos">218</span><span class="w">                </span><span class="nt">family_name</span><span class="p">:</span>
+<span class="linenos">219</span><span class="w">                  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Current Family Name.</span>
+<span class="linenos">220</span><span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">221</span><span class="w">                  </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&quot;Rossi&quot;&#39;</span>
+<span class="linenos">222</span><span class="w">                </span><span class="nt">birth_date</span><span class="p">:</span>
+<span class="linenos">223</span><span class="w">                  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Date of Birth.</span>
+<span class="linenos">224</span><span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">225</span><span class="w">                  </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&quot;1980-01-10&quot;&#39;</span>
+<span class="linenos">226</span><span class="w">                </span><span class="nt">birth_place</span><span class="p">:</span>
+<span class="linenos">227</span><span class="w">                  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Place of Birth.</span>
 <span class="linenos">228</span><span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="linenos">229</span><span class="w">                </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">object_id</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">status</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">last_updated</span><span class="p p-Indicator">]</span>
-<span class="linenos">230</span><span class="w">            </span><span class="nt">metadataClaims</span><span class="p">:</span>
-<span class="linenos">231</span><span class="w">              </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">List of Metadata Claims.</span>
-<span class="linenos">232</span><span class="w">              </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">array</span>
-<span class="linenos">233</span><span class="w">              </span><span class="nt">items</span><span class="p">:</span><span class="w"> </span>
-<span class="linenos">234</span><span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
-<span class="linenos">235</span><span class="w">                </span><span class="nt">properties</span><span class="p">:</span>
-<span class="linenos">236</span><span class="w">                  </span><span class="nt">object_id</span><span class="p">:</span>
-<span class="linenos">237</span><span class="w">                    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Unique identifier of the Dataset.</span>
-<span class="linenos">238</span><span class="w">                    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="linenos">239</span><span class="w">                    </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;6F9619FF-8B86-D011-B42D-00C04FC964FF&quot;</span>
-<span class="linenos">240</span><span class="w">                  </span><span class="nt">issuance_date</span><span class="p">:</span>
-<span class="linenos">241</span><span class="w">                    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Administrative validity start date of the Dataset</span>
-<span class="linenos">242</span><span class="w">                    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="linenos">243</span><span class="w">                    </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&quot;2025-01-01&quot;&#39;</span>
-<span class="linenos">244</span><span class="w">                  </span><span class="nt">expiry_date</span><span class="p">:</span>
-<span class="linenos">245</span><span class="w">                    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Administrative expiry date of the Dataset.</span>
+<span class="linenos">229</span><span class="w">                  </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&quot;Roma&quot;&#39;</span>
+<span class="linenos">230</span><span class="w">                </span><span class="nt">tax_id_code</span><span class="p">:</span>
+<span class="linenos">231</span><span class="w">                  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">National tax identification number. REQUIRED if personal_administrative_number is absent.</span>
+<span class="linenos">232</span><span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">233</span><span class="w">                  </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&quot;TINIT-XXXXXXXXXXXXXXXX&quot;&#39;</span>
+<span class="linenos">234</span><span class="w">                </span><span class="nt">personal_administrative_number</span><span class="p">:</span>
+<span class="linenos">235</span><span class="w">                  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">National unique identifier of a natural person. REQUIRED if tax_id_code is absent.</span>
+<span class="linenos">236</span><span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">237</span><span class="w">                  </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&quot;XX00000XX&quot;&#39;</span>
+<span class="linenos">238</span><span class="w">            </span><span class="nt">attributeClaims</span><span class="p">:</span>
+<span class="linenos">239</span><span class="w">              </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">List of Datasets of Attribute.</span>
+<span class="linenos">240</span><span class="w">              </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">array</span>
+<span class="linenos">241</span><span class="w">              </span><span class="nt">items</span><span class="p">:</span><span class="w"> </span>
+<span class="linenos">242</span><span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="linenos">243</span><span class="w">                </span><span class="nt">properties</span><span class="p">:</span>
+<span class="linenos">244</span><span class="w">                  </span><span class="nt">object_id</span><span class="p">:</span>
+<span class="linenos">245</span><span class="w">                    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Unique identifier of the Dataset.</span>
 <span class="linenos">246</span><span class="w">                    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="linenos">247</span><span class="w">                    </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&quot;2025-12-31&quot;&#39;</span>
-<span class="linenos">248</span><span class="w">                </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">object_id</span><span class="p p-Indicator">]</span>
-<span class="linenos">249</span><span class="w">            </span><span class="nt">interval</span><span class="p">:</span>
-<span class="linenos">250</span><span class="w">              </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Required if claims parameter is not present. This represents the estimated amount of time (in seconds) required before making the request of the attribute claims again.</span>
-<span class="linenos">251</span><span class="w">              </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
-<span class="linenos">252</span><span class="w">              </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int64</span>
-<span class="linenos">253</span><span class="w">              </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">864000</span>
-<span class="linenos">254</span><span class="w">          </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">iss</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">aud</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">exp</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">iat</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">jti</span><span class="p p-Indicator">]</span>
-<span class="linenos">255</span><span class="w">          </span><span class="nt">example</span><span class="p">:</span>
-<span class="linenos">256</span><span class="w">            </span><span class="nt">iss</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://authentic-source.example.it&quot;</span>
-<span class="linenos">257</span><span class="w">            </span><span class="nt">aud</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;82914b3f-60b2-4529-b4d6-3d4e67f0a933&quot;</span>
-<span class="linenos">258</span><span class="w">            </span><span class="nt">exp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1736846928</span>
-<span class="linenos">259</span><span class="w">            </span><span class="nt">iat</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1736846688</span>
-<span class="linenos">260</span><span class="w">            </span><span class="nt">nbf</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1736846688</span>
-<span class="linenos">261</span><span class="w">            </span><span class="nt">jti</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;c8bd8a2f-e990-44fa-9013-1b353bfc5a0d&quot;</span>
-<span class="linenos">262</span><span class="w">            </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">864000</span>
-<span class="linenos">263</span><span class="w">            </span><span class="nt">userClaims</span><span class="p">:</span>
-<span class="linenos">264</span><span class="w">              </span><span class="nt">given_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Mario&quot;</span>
-<span class="linenos">265</span><span class="w">              </span><span class="nt">family_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Rossi&quot;</span>
-<span class="linenos">266</span><span class="w">              </span><span class="nt">birth_date</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1980-01-10&quot;</span>
-<span class="linenos">267</span><span class="w">              </span><span class="nt">birth_place</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Roma&quot;</span>
-<span class="linenos">268</span><span class="w">              </span><span class="nt">tax_id_code</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;TINIT-RSSMRA80A01H501Z&quot;</span>
-<span class="linenos">269</span><span class="w">              </span><span class="nt">personal_administrative_number</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;12345A123A&quot;</span>
-<span class="linenos">270</span><span class="w">            </span><span class="nt">attributeClaims</span><span class="p">:</span>
-<span class="linenos">271</span><span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">object_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;6F9619FF-8B86-D011-B42D-00C04FC964FF&quot;</span>
-<span class="linenos">272</span><span class="w">                </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;VALID&quot;</span>
-<span class="linenos">273</span><span class="w">                </span><span class="nt">last_updated</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2025-01-15T10:30:00Z&quot;</span>
-<span class="linenos">274</span><span class="w">                </span><span class="nt">nationality</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;IT&quot;</span>
-<span class="linenos">275</span><span class="w">                </span><span class="nt">residence_address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Via</span><span class="nv"> </span><span class="s">Roma</span><span class="nv"> </span><span class="s">1,</span><span class="nv"> </span><span class="s">00100</span><span class="nv"> </span><span class="s">Roma&quot;</span>
-<span class="linenos">276</span><span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">object_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;7A0720AB-9C97-E122-C53E-11D05FD075GG&quot;</span>
-<span class="linenos">277</span><span class="w">                </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;VALID&quot;</span>
-<span class="linenos">278</span><span class="w">                </span><span class="nt">last_updated</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2025-01-10T08:00:00Z&quot;</span>
-<span class="linenos">279</span><span class="w">                </span><span class="nt">driving_license_category</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;B&quot;</span>
-<span class="linenos">280</span><span class="w">            </span><span class="nt">metadataClaims</span><span class="p">:</span>
-<span class="linenos">281</span><span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">object_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;6F9619FF-8B86-D011-B42D-00C04FC964FF&quot;</span>
-<span class="linenos">282</span><span class="w">                </span><span class="nt">issuance_date</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2025-01-01&quot;</span>
-<span class="linenos">283</span><span class="w">                </span><span class="nt">expiry_date</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2025-12-31&quot;</span>
-<span class="linenos">284</span><span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">object_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;7A0720AB-9C97-E122-C53E-11D05FD075GG&quot;</span>
-<span class="linenos">285</span><span class="w">                </span><span class="nt">issuance_date</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2024-06-15&quot;</span>
-<span class="linenos">286</span><span class="w">                </span><span class="nt">expiry_date</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2030-06-14&quot;</span>
-<span class="linenos">287</span><span class="w">    </span><span class="nt">CredentialClaimsRequest</span><span class="p">:</span>
-<span class="linenos">288</span><span class="w">      </span><span class="nt">required</span><span class="p">:</span>
-<span class="linenos">289</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unique_id</span>
-<span class="linenos">290</span><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
-<span class="linenos">291</span><span class="w">      </span><span class="nt">properties</span><span class="p">:</span>
-<span class="linenos">292</span><span class="w">        </span><span class="nt">unique_id</span><span class="p">:</span>
+<span class="linenos">247</span><span class="w">                    </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;6F9619FF-8B86-D011-B42D-00C04FC964FF&quot;</span>
+<span class="linenos">248</span><span class="w">                  </span><span class="nt">status</span><span class="p">:</span>
+<span class="linenos">249</span><span class="w">                    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Status of the Dataset.</span>
+<span class="linenos">250</span><span class="w">                    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">251</span><span class="w">                    </span><span class="nt">enum</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;VALID&quot;</span><span class="p p-Indicator">,</span><span class="s">&quot;INVALID&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;SUSPENDED&quot;</span><span class="p p-Indicator">]</span>
+<span class="linenos">252</span><span class="w">                    </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;VALID&quot;</span>
+<span class="linenos">253</span><span class="w">                  </span><span class="nt">last_updated</span><span class="p">:</span>
+<span class="linenos">254</span><span class="w">                    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Last time the status or attributes of the Dataset have been updated. Its format is `YYYY-MM-DDTHH:MM:SSZ`.</span>
+<span class="linenos">255</span><span class="w">                    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">256</span><span class="w">                    </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2025-01-15T10:30:00Z&quot;</span>
+<span class="linenos">257</span><span class="w">                </span><span class="nt">additionalProperties</span><span class="p">:</span>
+<span class="linenos">258</span><span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">259</span><span class="w">                </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">object_id</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">status</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">last_updated</span><span class="p p-Indicator">]</span>
+<span class="linenos">260</span><span class="w">            </span><span class="nt">metadataClaims</span><span class="p">:</span>
+<span class="linenos">261</span><span class="w">              </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">List of Metadata Claims.</span>
+<span class="linenos">262</span><span class="w">              </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">array</span>
+<span class="linenos">263</span><span class="w">              </span><span class="nt">items</span><span class="p">:</span><span class="w"> </span>
+<span class="linenos">264</span><span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="linenos">265</span><span class="w">                </span><span class="nt">properties</span><span class="p">:</span>
+<span class="linenos">266</span><span class="w">                  </span><span class="nt">object_id</span><span class="p">:</span>
+<span class="linenos">267</span><span class="w">                    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Unique identifier of the Dataset.</span>
+<span class="linenos">268</span><span class="w">                    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">269</span><span class="w">                    </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;6F9619FF-8B86-D011-B42D-00C04FC964FF&quot;</span>
+<span class="linenos">270</span><span class="w">                  </span><span class="nt">issuance_date</span><span class="p">:</span>
+<span class="linenos">271</span><span class="w">                    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Administrative validity start date of the Dataset</span>
+<span class="linenos">272</span><span class="w">                    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">273</span><span class="w">                    </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&quot;2025-01-01&quot;&#39;</span>
+<span class="linenos">274</span><span class="w">                  </span><span class="nt">expiry_date</span><span class="p">:</span>
+<span class="linenos">275</span><span class="w">                    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Administrative expiry date of the Dataset.</span>
+<span class="linenos">276</span><span class="w">                    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">277</span><span class="w">                    </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&quot;2025-12-31&quot;&#39;</span>
+<span class="linenos">278</span><span class="w">                </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">object_id</span><span class="p p-Indicator">]</span>
+<span class="linenos">279</span><span class="w">            </span><span class="nt">interval</span><span class="p">:</span>
+<span class="linenos">280</span><span class="w">              </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Required if claims parameter is not present. This represents the estimated amount of time (in seconds) required before making the request of the attribute claims again.</span>
+<span class="linenos">281</span><span class="w">              </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<span class="linenos">282</span><span class="w">              </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int64</span>
+<span class="linenos">283</span><span class="w">              </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">864000</span>
+<span class="linenos">284</span><span class="w">    </span><span class="nt">CredentialClaimsRequest</span><span class="p">:</span>
+<span class="linenos">285</span><span class="w">      </span><span class="nt">required</span><span class="p">:</span>
+<span class="linenos">286</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unique_id</span>
+<span class="linenos">287</span><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="linenos">288</span><span class="w">      </span><span class="nt">properties</span><span class="p">:</span>
+<span class="linenos">289</span><span class="w">        </span><span class="nt">unique_id</span><span class="p">:</span>
+<span class="linenos">290</span><span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">291</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ID ANPR or Tax identification number</span>
+<span class="linenos">292</span><span class="w">        </span><span class="nt">object_id</span><span class="p">:</span>
 <span class="linenos">293</span><span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="linenos">294</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ID ANPR or Tax identification number</span>
-<span class="linenos">295</span><span class="w">        </span><span class="nt">object_id</span><span class="p">:</span>
-<span class="linenos">296</span><span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="linenos">297</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Unique identifier of the Credential dataset or `jti` of the Agid-JWT-Signature Credential Issuer deferred flow&#39;s request. If this parameter is present only the indicated dataset is returned</span>
-<span class="linenos">298</span><span class="w">    </span><span class="nt">ProblemDetails</span><span class="p">:</span>
-<span class="linenos">299</span><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
-<span class="linenos">300</span><span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Oggetto di dettaglio errore conforme a RFC7807 per le risposte di errore.</span>
-<span class="linenos">301</span><span class="w">      </span><span class="nt">properties</span><span class="p">:</span>
-<span class="linenos">302</span><span class="w">        </span><span class="nt">type</span><span class="p">:</span>
-<span class="linenos">303</span><span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="linenos">304</span><span class="w">          </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uri</span>
-<span class="linenos">305</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">URI assoluto che identifica il tipo di problema.</span>
-<span class="linenos">306</span><span class="w">        </span><span class="nt">title</span><span class="p">:</span>
-<span class="linenos">307</span><span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="linenos">308</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Breve descrizione testuale del tipo di problema.</span>
-<span class="linenos">309</span><span class="w">        </span><span class="nt">status</span><span class="p">:</span>
-<span class="linenos">310</span><span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
-<span class="linenos">311</span><span class="w">          </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int32</span>
-<span class="linenos">312</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Codice di stato HTTP generato dal server di origine per questa occorrenza del problema.</span>
-<span class="linenos">313</span><span class="w">        </span><span class="nt">detail</span><span class="p">:</span>
+<span class="linenos">294</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Unique identifier of the Credential dataset or `jti` of the Agid-JWT-Signature Credential Issuer deferred flow&#39;s request. If this parameter is present only the indicated dataset is returned</span>
+<span class="linenos">295</span><span class="w">    </span><span class="nt">ProblemDetails</span><span class="p">:</span>
+<span class="linenos">296</span><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="linenos">297</span><span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RFC7807-compliant problem details object for error responses.</span>
+<span class="linenos">298</span><span class="w">      </span><span class="nt">properties</span><span class="p">:</span>
+<span class="linenos">299</span><span class="w">        </span><span class="nt">type</span><span class="p">:</span>
+<span class="linenos">300</span><span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">301</span><span class="w">          </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uri</span>
+<span class="linenos">302</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">An absolute URI that identifies the problem type.</span>
+<span class="linenos">303</span><span class="w">        </span><span class="nt">title</span><span class="p">:</span>
+<span class="linenos">304</span><span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">305</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A short, human-readable summary of the problem type.</span>
+<span class="linenos">306</span><span class="w">        </span><span class="nt">status</span><span class="p">:</span>
+<span class="linenos">307</span><span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<span class="linenos">308</span><span class="w">          </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int32</span>
+<span class="linenos">309</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The HTTP status code generated by the origin server for this occurrence of the problem.</span>
+<span class="linenos">310</span><span class="w">        </span><span class="nt">detail</span><span class="p">:</span>
+<span class="linenos">311</span><span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">312</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A human-readable explanation specific to this occurrence of the problem.</span>
+<span class="linenos">313</span><span class="w">        </span><span class="nt">instance</span><span class="p">:</span>
 <span class="linenos">314</span><span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="linenos">315</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Descrizione testuale specifica di questa occorrenza del problema.</span>
-<span class="linenos">316</span><span class="w">        </span><span class="nt">instance</span><span class="p">:</span>
-<span class="linenos">317</span><span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="linenos">318</span><span class="w">          </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uri</span>
-<span class="linenos">319</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">URI assoluto che identifica la specifica occorrenza del problema.</span>
+<span class="linenos">315</span><span class="w">          </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uri</span>
+<span class="linenos">316</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">An absolute URI that identifies the specific occurrence of the problem.</span>
+<span class="linenos">317</span><span class="w">      </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">title</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">status</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">detail</span><span class="p p-Indicator">]</span>
 </pre></div>
 </div>
 </section>

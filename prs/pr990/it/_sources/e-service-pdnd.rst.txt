@@ -1379,10 +1379,13 @@ In caso di problemi di autenticazione (cioè, Voucher non valido o scaduto), la 
     HTTP/1.1 401 Unauthorized
     WWW-Authenticate: DPoP error="invalid_token", error_description="The access token expired"
 
-Per tutti gli altri errori, la risposta DEVE aderire al formato di errore definito in :rfc:`6749#section-5.2`. La risposta DEVE utilizzare ``application/problem+json`` (secondo MODI ``RAC_GEN_FORMAT_002``) come ``Content-Type`` e DEVE includere i seguenti parametri:
+Per tutti gli altri errori, la risposta DEVE aderire al formato di errore definito in :rfc:`9457`. La risposta DEVE utilizzare ``application/problem+json`` (secondo MODI ``RAC_GEN_FORMAT_002``) come ``Content-Type`` e DEVE includere i seguenti parametri:
 
-    - ``error``: Il codice di errore.
-    - ``error_description``: Testo in forma leggibile dall'uomo che fornisce ulteriori dettagli per chiarire la natura dell'errore incontrato.
+    - ``type``: [OPZIONALE] URI che identifica il tipo di problema.
+    - ``title``:  [OBBLIGATORIO] Stringa contenente un breve riepilogo, leggibile dall’utente, del tipo di problema.
+    - ``status``: [OBBLIGATORIO] Numero che indica il codice di stato HTTP relativo a questa specifica occorrenza del problema.
+    - ``detail``: [OBBLIGATORIO] Stringa contenente una spiegazione, leggibile dall’utente, specifica per questa occorrenza del problema.
+    - ``instance``: [OPZIONALE] Stringa contenente un riferimento URI che identifica la specifica occorrenza del problema.
 
 .. code-block:: http
     :caption: Esempio non normativo di una `e-Service Error Response` in caso di altri errori
@@ -1392,12 +1395,13 @@ Per tutti gli altri errori, la risposta DEVE aderire al formato di errore defini
     Content-Type: application/problem+json
 
     {
-        "error": "invalid_request",
-        "error_description": "The Agid-JWT-Signature header parameter is missing."
+        "title": "invalid_request",
+        "status": 400,
+        "detail": "The Agid-JWT-Signature header parameter is missing."
     }
 
 
-La seguente tabella elenca gli HTTP Status Code e i relativi codici di errore che DEVONO essere supportati per la risposta di errore:
+La seguente tabella elenca gli HTTP Status Code che DEVONO essere supportati per la risposta di errore:
 
 .. list-table::
   :class: longtable
@@ -1405,20 +1409,14 @@ La seguente tabella elenca gli HTTP Status Code e i relativi codici di errore ch
   :header-rows: 1
 
   * - **HTTP Status Code**
-    - **Codice di Errore**
     - **Descrizione**
   * - ``400 Bad Request``
-    - ``invalid_request``
-    - La richiesta non può essere soddisfatta perché mancano parametri richiesti, contiene parametri non validi o è in qualche modo malformata [:rfc:`6750#section-3.1`].
+    - La richiesta non può essere soddisfatta perché mancano parametri richiesti, contiene parametri non validi o è in qualche modo malformata.
   * - ``400 Bad Request``
-    - ``invalid_dpop_proof``
-    - La richiesta non può essere soddisfatta perché contiene una *DPoP proof* non valida [:rfc:`9449#section-5`].
+    - La richiesta non può essere soddisfatta perché contiene una *DPoP proof* non valida.
   * - ``401 Unauthorized``
-    - ``invalid_token``
-    - La richiesta non può essere soddisfatta perché il Voucher è scaduto, revocato o in qualche modo malformato [:rfc:`6750#section-3.1`].
+    - La richiesta non può essere soddisfatta perché il Voucher è scaduto, revocato o in qualche modo malformato.
   * - ``500 Internal Server Error``
-    - ``server_error``
     - La richiesta non può essere soddisfatta perché l'Endpoint e-Service ha riscontrato un problema interno.
   * - ``503 Service Unavailable``
-    - ``temporarily_unavailable``
     - La richiesta non può essere soddisfatta perché l'Endpoint e-Service è temporaneamente non disponibile (ad esempio, a causa di manutenzione o sovraccarico).

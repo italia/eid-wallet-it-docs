@@ -47,11 +47,11 @@ Get Attribute Claims
 Example of Authentic Source response
 """""""""""""""""""""""""""""""""""""
 
-The endpoint response is a JWT (``application/jwt``). After decoding the JWT payload, the Credential Issuer receives a structure like the following. Required fields are ``iss``, ``aud``, ``exp``, ``iat``, ``jti``; other fields are optional or conditional on the type of credential/dataset. Below is a concrete example with fictitious data to clarify the expected shape and content.
+The endpoint response MUST use the HTTP Content-Type set to ``application/json``. Below is a concrete example with fictitious data to clarify the expected shape and content.
 
 .. literalinclude:: ../../examples/credential-claims-response-example.json
   :language: json
-  :caption: Example of the response JWT payload (Get Attribute Claims) after decoding
+  :caption: Example of the response JSON payload (Get Attribute Claims)
 
 In summary:
 

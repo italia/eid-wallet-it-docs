@@ -211,17 +211,10 @@
 </section>
 <section id="esempio-di-risposta-della-authentic-source">
 <h3><span class="section-number">13.4.1.2. </span>Esempio di risposta della Authentic Source<a class="headerlink" href="#esempio-di-risposta-della-authentic-source" title="Link to this heading">¶</a></h3>
-<p>La risposta dell'endpoint è un JWT (<code class="docutils literal notranslate"><span class="pre">application/jwt</span></code>). Decodificando il payload di tale JWT, il Fornitore di Attestati Elettronici riceve una struttura come la seguente. I campi obbligatori sono <code class="docutils literal notranslate"><span class="pre">iss</span></code>, <code class="docutils literal notranslate"><span class="pre">aud</span></code>, <code class="docutils literal notranslate"><span class="pre">exp</span></code>, <code class="docutils literal notranslate"><span class="pre">iat</span></code>, <code class="docutils literal notranslate"><span class="pre">jti</span></code>; gli altri campi sono opzionali o condizionati al tipo di attestato/dataset. Di seguito un esempio concreto con dati fittizi per chiarire forma e contenuto attesi.</p>
+<p>La risposta ha come HTTP Content-Type <code class="docutils literal notranslate"><span class="pre">application/jwt</span></code>. mDi seguito un esempio concreto con dati fittizi per chiarire forma e contenuto attesi.</p>
 <div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-number">Listato 13.1 </span><span class="caption-text">Esempio di payload del JWT di risposta (Get Attribute Claims) dopo decodifica</span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listato 13.1 </span><span class="caption-text">Esempio di payload JSON di risposta (Get Attribute Claims)</span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://authentic-source.example.it&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;aud&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;82914b3f-60b2-4529-b4d6-3d4e67f0a933&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1736846928</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1736846688</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;nbf&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1736846688</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;jti&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;c8bd8a2f-e990-44fa-9013-1b353bfc5a0d&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;interval&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">864000</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;userClaims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;given_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mario&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;family_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Rossi&quot;</span><span class="p">,</span>
@@ -234,27 +227,32 @@
 <span class="w">    </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;object_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;6F9619FF-8B86-D011-B42D-00C04FC964FF&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;VALID&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;last_updated&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-01-15T10:30:00Z&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;nationality&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IT&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;residence_address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Via Roma 1, 00100 Roma&quot;</span>
+<span class="w">      </span><span class="nt">&quot;last_updated&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-09-15T10:30:00Z&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;institute_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Nome Istituto Universitario&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;programme_type_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Laurea Magistrale&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;degree_course_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Computer Science - Informatica&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;academic_qualification_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-06-25&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;...&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;object_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;7A0720AB-9C97-E122-C53E-11D05FD075GG&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;VALID&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;last_updated&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-01-10T08:00:00Z&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;driving_license_category&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;B&quot;</span>
+<span class="w">      </span><span class="nt">&quot;last_updated&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-01-10T08:00:00Z&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;institute_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Nome Istituto Universitario&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;programme_type_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Laurea Triennale&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;degree_course_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Informatica&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;academic_qualification_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-11-27&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;...&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">],</span>
 <span class="w">  </span><span class="nt">&quot;metadataClaims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;object_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;6F9619FF-8B86-D011-B42D-00C04FC964FF&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;issuance_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-01-01&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;expiry_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-12-31&quot;</span>
+<span class="w">      </span><span class="nt">&quot;issuance_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-06-25&quot;</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;object_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;7A0720AB-9C97-E122-C53E-11D05FD075GG&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;issuance_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-06-15&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;expiry_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2030-06-14&quot;</span>
+<span class="w">      </span><span class="nt">&quot;issuance_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-11-27&quot;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>

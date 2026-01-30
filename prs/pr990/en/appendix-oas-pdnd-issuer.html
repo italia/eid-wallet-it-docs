@@ -180,7 +180,7 @@
 <span class="linenos">  6</span><span class="w">  </span><span class="nt">contact</span><span class="p">:</span>
 <span class="linenos">  7</span><span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/italia/eid-wallet-it-docs</span>
 <span class="linenos">  8</span><span class="nt">servers</span><span class="p">:</span>
-<span class="linenos">  9</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://issuer.example.it</span>
+<span class="linenos">  9</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://issuer.example.it/v1.4.0</span>
 <span class="linenos"> 10</span><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Credential Issuer API</span>
 <span class="linenos"> 11</span><span class="nt">paths</span><span class="p">:</span>
 <span class="linenos"> 12</span><span class="w">  </span><span class="nt">/status</span><span class="p">:</span>
@@ -193,7 +193,7 @@
 <span class="linenos"> 19</span><span class="w">      </span><span class="nt">responses</span><span class="p">:</span>
 <span class="linenos"> 20</span><span class="w">        </span><span class="s">&quot;200&quot;</span><span class="p p-Indicator">:</span>
 <span class="linenos"> 21</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OK</span>
-<span class="linenos"> 22</span><span class="w">  </span><span class="nt">/v0.9.0/notifyWalletRevocation</span><span class="p">:</span>
+<span class="linenos"> 22</span><span class="w">  </span><span class="nt">/notifyWalletRevocation</span><span class="p">:</span>
 <span class="linenos"> 23</span><span class="w">    </span><span class="nt">post</span><span class="p">:</span>
 <span class="linenos"> 24</span><span class="w">      </span><span class="nt">tags</span><span class="p">:</span>
 <span class="linenos"> 25</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">e-services PDND</span>
@@ -204,7 +204,7 @@
 <span class="linenos"> 30</span><span class="w">        </span><span class="no">user</span>
 <span class="linenos"> 31</span><span class="w">      </span><span class="nt">operationId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">notifyWalletRevocation</span>
 <span class="linenos"> 32</span><span class="w">      </span><span class="nt">parameters</span><span class="p">:</span>
-<span class="linenos"> 33</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PDND-Voucher</span>
+<span class="linenos"> 33</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Authorization</span>
 <span class="linenos"> 34</span><span class="w">          </span><span class="nt">in</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">header</span>
 <span class="linenos"> 35</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
 <span class="linenos"> 36</span><span class="w">            </span><span class="no">JWT token obtained from &lt;a target=&quot;blank&quot;</span>
@@ -355,7 +355,7 @@
 <span class="linenos">181</span><span class="w">          </span><span class="nt">schema</span><span class="p">:</span>
 <span class="linenos">182</span><span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="linenos">183</span><span class="w">            </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">date-time</span>
-<span class="linenos">184</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PDND-Voucher</span>
+<span class="linenos">184</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Authorization</span>
 <span class="linenos">185</span><span class="w">          </span><span class="nt">in</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">header</span>
 <span class="linenos">186</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
 <span class="linenos">187</span><span class="w">            </span><span class="no">JWT token obtained from &lt;a target=&quot;blank&quot;</span>
