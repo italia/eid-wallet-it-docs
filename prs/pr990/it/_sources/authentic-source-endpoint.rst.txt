@@ -44,7 +44,7 @@ Get Attribute Claims
     - la Fonte Autentica DEVE registrare il valore datetime fornito all'interno del parametro ``last_updated``, che indica data e orario dell'ultima volta che gli Attributi dell'Utente sono stati aggiornati nel database della Fonte Autentica;
     - il Credential Issuer DEVE leggere il valore ``last_updated`` ricevuto nella risposta per essere in grado di verificare se gli Attributi dell'Utente sono cambiati dall'ultima emissione di un Attestato Elettronico.
 
-Esempio di risposta (payload decodificato)
+Esempio di risposta della Authentic Source
 """"""""""""""""""""""""""""""""""""""""""
 
 La risposta dell'endpoint è un JWT (``application/jwt``). Decodificando il payload di tale JWT, il Fornitore di Attestati Elettronici riceve una struttura come la seguente. I campi obbligatori sono ``iss``, ``aud``, ``exp``, ``iat``, ``jti``; gli altri campi sono opzionali o condizionati al tipo di attestato/dataset. Di seguito un esempio concreto con dati fittizi per chiarire forma e contenuto attesi.

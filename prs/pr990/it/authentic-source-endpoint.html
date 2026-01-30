@@ -209,8 +209,8 @@
 </dl>
 </div>
 </section>
-<section id="esempio-di-risposta-payload-decodificato">
-<h3><span class="section-number">13.4.1.2. </span>Esempio di risposta (payload decodificato)<a class="headerlink" href="#esempio-di-risposta-payload-decodificato" title="Link to this heading">¶</a></h3>
+<section id="esempio-di-risposta-della-authentic-source">
+<h3><span class="section-number">13.4.1.2. </span>Esempio di risposta della Authentic Source<a class="headerlink" href="#esempio-di-risposta-della-authentic-source" title="Link to this heading">¶</a></h3>
 <p>La risposta dell'endpoint è un JWT (<code class="docutils literal notranslate"><span class="pre">application/jwt</span></code>). Decodificando il payload di tale JWT, il Fornitore di Attestati Elettronici riceve una struttura come la seguente. I campi obbligatori sono <code class="docutils literal notranslate"><span class="pre">iss</span></code>, <code class="docutils literal notranslate"><span class="pre">aud</span></code>, <code class="docutils literal notranslate"><span class="pre">exp</span></code>, <code class="docutils literal notranslate"><span class="pre">iat</span></code>, <code class="docutils literal notranslate"><span class="pre">jti</span></code>; gli altri campi sono opzionali o condizionati al tipo di attestato/dataset. Di seguito un esempio concreto con dati fittizi per chiarire forma e contenuto attesi.</p>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-number">Listato 13.1 </span><span class="caption-text">Esempio di payload del JWT di risposta (Get Attribute Claims) dopo decodifica</span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
@@ -300,7 +300,7 @@ Si rimanda all'Appendice tecnica (Sezione <a class="reference internal" href="e-
 <li><a class="reference internal" href="#">13.4. Endpoint delle Fonti Autentiche</a><ul>
 <li><a class="reference internal" href="#catalogo-degli-e-service-pdnd-delle-fonti-autentiche">13.4.1. Catalogo degli e-Service PDND delle Fonti Autentiche</a><ul>
 <li><a class="reference internal" href="#get-attribute-claims">13.4.1.1. Get Attribute Claims</a></li>
-<li><a class="reference internal" href="#esempio-di-risposta-payload-decodificato">13.4.1.2. Esempio di risposta (payload decodificato)</a><ul>
+<li><a class="reference internal" href="#esempio-di-risposta-della-authentic-source">13.4.1.2. Esempio di risposta della Authentic Source</a><ul>
 <li><a class="reference internal" href="#verifica-della-firma-e-gestione-chiavi">13.4.1.2.1. Verifica della Firma e Gestione Chiavi</a></li>
 </ul>
 </li>
