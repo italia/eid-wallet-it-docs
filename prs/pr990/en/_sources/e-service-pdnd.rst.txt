@@ -1402,7 +1402,7 @@ The following table lists the HTTP Status Codes that MUST be supported for the e
 
 .. list-table::
   :class: longtable
-  :widths: 20 20 60
+  :widths: 50 50
   :header-rows: 1
 
   * - **Status Code**

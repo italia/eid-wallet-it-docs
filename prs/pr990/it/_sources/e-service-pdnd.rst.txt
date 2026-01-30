@@ -1405,7 +1405,7 @@ La seguente tabella elenca gli HTTP Status Code che DEVONO essere supportati per
 
 .. list-table::
   :class: longtable
-  :widths: 20 20 60
+  :widths: 50 50
   :header-rows: 1
 
   * - **HTTP Status Code**
