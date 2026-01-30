@@ -12,6 +12,7 @@
 - Francesco Ventola
 - Gabriella Cefalù
 - Giada Sciarretta
+- Gian Paolo Rossi
 - Giuseppe De Marco
 - Klaas Wierenga
 - Kristina Yasuda
