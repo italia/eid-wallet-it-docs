@@ -131,7 +131,38 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/CredentialClaimsResponse"
-              example: "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IjRlNTAzYjU0LWNiZDUtNDZkOC1iNzhhLTAxMTY5OTEyMmYzMCJ9.eyJpc3MiOiJodHRwczovL2F1dGhlbnRpYy1zb3VyY2UuZXhhbXBsZS5pdCIsIm5iZiI6MTczNjg0NjY4OCwiZXhwIjoxNzM2ODQ2OTI4LCJpYXQiOjE3MzY4NDY2ODgsImF1ZCI6IjgyOTE0YjNmLTYwYjItNDUyOS1iNGQ2LTNkNGU2N2YwYTkzMyIsImp0aSI6ImM4YmQ4YTJmLWU5OTAtNDRmYS05MDEzLTFiMzUzYmZjNWEwZCJ9.4BgoaKyVOupA67tXLQeIK8QNEiYkB646_35HndTkWxS9xypF7FJqyqV24z6EJirSgn5BlT2ZrgqeDURSjJuPUg"
+              example:
+                iss: "https://authentic-source.example.it"
+                aud: "82914b3f-60b2-4529-b4d6-3d4e67f0a933"
+                exp: 1736846928
+                iat: 1736846688
+                nbf: 1736846688
+                jti: "c8bd8a2f-e990-44fa-9013-1b353bfc5a0d"
+                interval: 864000
+                userClaims:
+                  given_name: "Mario"
+                  family_name: "Rossi"
+                  birth_date: "1980-01-10"
+                  birth_place: "Roma"
+                  tax_id_code: "TINIT-RSSMRA80A01H501Z"
+                  personal_administrative_number: "12345A123A"
+                attributeClaims:
+                  - object_id: "6F9619FF-8B86-D011-B42D-00C04FC964FF"
+                    status: "VALID"
+                    last_updated: "2025-01-15T10:30:00Z"
+                    nationality: "IT"
+                    residence_address: "Via Roma 1, 00100 Roma"
+                  - object_id: "7A0720AB-9C97-E122-C53E-11D05FD075GG"
+                    status: "VALID"
+                    last_updated: "2025-01-10T08:00:00Z"
+                    driving_license_category: "B"
+                metadataClaims:
+                  - object_id: "6F9619FF-8B86-D011-B42D-00C04FC964FF"
+                    issuance_date: "2025-01-01"
+                    expiry_date: "2025-12-31"
+                  - object_id: "7A0720AB-9C97-E122-C53E-11D05FD075GG"
+                    issuance_date: "2024-06-15"
+                    expiry_date: "2030-06-14"                
         "400":
           description: Bad Request
           content:
@@ -252,38 +283,6 @@ components:
               format: int64
               example: 864000
           required: [iss, aud, exp, iat, jti]
-          example:
-            iss: "https://authentic-source.example.it"
-            aud: "82914b3f-60b2-4529-b4d6-3d4e67f0a933"
-            exp: 1736846928
-            iat: 1736846688
-            nbf: 1736846688
-            jti: "c8bd8a2f-e990-44fa-9013-1b353bfc5a0d"
-            interval: 864000
-            userClaims:
-              given_name: "Mario"
-              family_name: "Rossi"
-              birth_date: "1980-01-10"
-              birth_place: "Roma"
-              tax_id_code: "TINIT-RSSMRA80A01H501Z"
-              personal_administrative_number: "12345A123A"
-            attributeClaims:
-              - object_id: "6F9619FF-8B86-D011-B42D-00C04FC964FF"
-                status: "VALID"
-                last_updated: "2025-01-15T10:30:00Z"
-                nationality: "IT"
-                residence_address: "Via Roma 1, 00100 Roma"
-              - object_id: "7A0720AB-9C97-E122-C53E-11D05FD075GG"
-                status: "VALID"
-                last_updated: "2025-01-10T08:00:00Z"
-                driving_license_category: "B"
-            metadataClaims:
-              - object_id: "6F9619FF-8B86-D011-B42D-00C04FC964FF"
-                issuance_date: "2025-01-01"
-                expiry_date: "2025-12-31"
-              - object_id: "7A0720AB-9C97-E122-C53E-11D05FD075GG"
-                issuance_date: "2024-06-15"
-                expiry_date: "2030-06-14"
     CredentialClaimsRequest:
       required:
         - unique_id
