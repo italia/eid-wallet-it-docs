@@ -44,7 +44,23 @@ Get Attribute Claims
     - the Authentic Source MUST record the datetime value provided within the ``last_updated`` parameter, which indicates the last time the User's attributes were updated in the Authentic Source's database;
     - the Credential Issuer MUST read the ``last_updated`` value received in the response to be able to check if the User's attributes have changed since the last issuance of a Digital Credential.
 
-The successful response (HTTP 200) returns a ``CredentialClaimsResponse`` object formatted as a **Signed JWT**.
+Example of Authentic Source response
+"""""""""""""""""""""""""""""""""""""
+
+The endpoint response is a JWT (``application/jwt``). After decoding the JWT payload, the Credential Issuer receives a structure like the following. Required fields are ``iss``, ``aud``, ``exp``, ``iat``, ``jti``; other fields are optional or conditional on the type of credential/dataset. Below is a concrete example with fictitious data to clarify the expected shape and content.
+
+.. literalinclude:: ../../examples/credential-claims-response-example.json
+  :language: json
+  :caption: Example of the response JWT payload (Get Attribute Claims) after decoding
+
+In summary:
+
+- **userClaims**: user identity data (first name, family name, date/place of birth, tax id or personal administrative number). At least one of ``tax_id_code`` and ``personal_administrative_number`` is required when providing user claims.
+- **attributeClaims**: array of datasets; each element **MUST** contain ``object_id``, ``status`` (VALID | INVALID | SUSPENDED), ``last_updated`` (ISO 8601 format), plus any dataset-specific attributes (e.g. ``nationality``, ``residence_address``).
+- **metadataClaims**: array of metadata per dataset (``object_id`` required; ``issuance_date`` and ``expiry_date`` optional).
+- **interval**: required when the request does not include a ``claims`` parameter; indicates the number of seconds to wait before repeating the request (e.g. 864000 = 10 days).
+
+The successful response (HTTP 200) returns a ``CredentialClaimsResponse`` object formatted as a **Payload JSON**.
 
 Signature Verification and Key Management
 '''''''''''''''''''''''''''''''''''''''''
