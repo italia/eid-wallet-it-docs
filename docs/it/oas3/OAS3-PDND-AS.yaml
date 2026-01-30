@@ -249,6 +249,7 @@ components:
             interval:
               description: Required if claims parameter is not present. This represents the estimated amount of time (in seconds) required before making the request of the attribute claims again.
               type: integer
+              format: int64
               example: 864000
           required: [iss, aud, exp, iat, jti]
           example:
