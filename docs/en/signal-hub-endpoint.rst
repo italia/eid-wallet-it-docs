@@ -155,7 +155,7 @@ After the Signals have been successfully recovered by the Credential Issuer, the
 
   - For each Signal, the Credential Issuer MUST check the ``SignalType`` value:
     
-    - if the Signal ``SignalType`` is ``UPDATE`` (where ``objectId`` refers to the **Digital Credential unique identifier**), the status and/or value of the attribute associated with a Digest Credential need updates;
+    - if the Signal ``SignalType`` is ``UPDATE`` (where ``objectId`` refers to the **Authentic Source's unique database identifier of the Digital Credential's attribute**), the status and/or value of the attribute associated with a Digital Credential need updates;
     - if the Signal ``SignalType`` is ``CREATE`` (where ``objectId`` refers to the **request ``jti``**), the requested attributes of a specific Digital Credential are now available; 
 
     If the ``objectId`` does not correspond to any valid identifier known to the Credential Issuer, the Signal MUST be ignored. Otherwise, if it corresponds to a known and valid identifier, the Credential Issuer MUST use the :ref:`authentic-source-endpoint:Get Attribute Claims` PDND endpoint of the Authentic Source to retrieve the updated information and, if applicable, apply the new status to the corresponding Credential.
