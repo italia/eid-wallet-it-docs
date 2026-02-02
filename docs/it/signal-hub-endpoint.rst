@@ -155,7 +155,7 @@ Dopo che i Segnali sono stati recuperati con successo dal Fornitore di Attestati
 
   - Per ogni Segnale, il Fornitore di Attestati Elettronici DEVE verificare il valore ``SignalType``:
     
-    - se il ``SignalType`` del Segnale è ``UPDATE`` (l'``objectId`` fa riferimento all'**identificativo univoco dell'Attestato**), lo stato e/o il valore dell'Attributo associato a un Attestato Elettronico necessitano di aggiornamenti;
+    - se il ``SignalType`` del Segnale è ``UPDATE`` (l'``objectId`` fa riferimento all'**identificativo univoco presente nella base dati della Fonte Autentica relativo agli Attributi dell'Attestato Elettronico**), lo stato e/o il valore dell'Attributo associato a un Attestato Elettronico necessitano di aggiornamenti;    
     - se il ``SignalType`` del Segnale è ``CREATE`` (l'``objectId`` corrisponde al **``jti`` della richiesta**), gli Attributi richiesti di un Attestato Elettronico specifico sono ora disponibili;
 
     Se l'``objectId`` non corrisponde ad alcun identificativo valido noto al Fornitore di Attestati Elettronici, il Segnale DEVE essere ignorato. Altrimenti, se corrisponde a un identificativo noto e valido, il Fornitore di Attestati Elettronici DEVE utilizzare l'endpoint PDND :ref:`authentic-source-endpoint:Get Attribute Claims` della Fonte Autentica per recuperare le informazioni aggiornate e, se possibile, applicare il nuovo stato/attributo all'Attestato Elettronico corrispondente.
