@@ -1,6 +1,6 @@
 # Authentication Button - IT-Wallet
 
-Pulsante ufficiale per l'autenticazione tramite IT-Wallet, basato sul framework [dev-kit-italia](https://github.com/italia/dev-kit-italia/tree/main/packages/button) e conforme all'identità visiva del Sistema IT-Wallet.
+Pulsante ufficiale per l'autenticazione tramite IT-Wallet, basato sulla libreria [Bootstrap Italia](https://italia.github.io/bootstrap-italia/docs/componenti/buttons/) e conforme all'identità visiva del Sistema IT-Wallet.
 
 ## Descrizione
 
@@ -22,7 +22,7 @@ Per le linee guida di spaziatura e design, consultare la pagina dei bottoni del 
 
 ## Caratteristiche
 
-- **Conforme alle linee guida PA**: Basato su Bootstrap Italia e dev-kit-italia
+- **Conforme alle linee guida PA**: Basato su Bootstrap Italia
 - **Accessibile**: Rispetta gli standard WCAG per l'accessibilità
 - **Responsive**: Adattabile a diverse dimensioni dello schermo
 - **Varianti di dimensione**: Disponibile in tre dimensioni (large, medium, small)
@@ -135,9 +135,9 @@ authentication-button/
     └── titillium-web-700.ttf     # Font weight 700 (bold)
 ```
 
-## Framework di Riferimento
+## Libreria di Riferimento
 
-Questo componente è basato sul framework [dev-kit-italia](https://github.com/italia/dev-kit-italia/tree/main/packages/button), che fornisce componenti conformi alle linee guida di design per i servizi web della Pubblica Amministrazione italiana.
+Questo componente è basato sulla libreria [Bootstrap Italia](https://italia.github.io/bootstrap-italia/docs/componenti/buttons/), che fornisce componenti conformi alle linee guida di design per i servizi web della Pubblica Amministrazione italiana.
 
 ## Identità Visiva
 

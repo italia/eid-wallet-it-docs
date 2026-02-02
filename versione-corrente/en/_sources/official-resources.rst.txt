@@ -28,8 +28,7 @@ HTML Components
 
 The following official HTML components are available in the `official_resources/ <https://github.com/italia/eid-wallet-it-docs/tree/versione-corrente/official_resources>`_ folder of this repository:
 
-- **Authentication Button Component**: Official HTML/CSS component for authentication via IT-Wallet, based on the `dev-kit-italia <https://github.com/italia/dev-kit-italia/tree/main/packages/button>`_ framework - `View the component <https://github.com/italia/eid-wallet-it-docs/tree/versione-corrente/official_resources/authentication-button>`_ - `Live demo <_static/authentication-button/authentication-button.html>`_
-
+- **Authentication Button Component**: Official HTML/CSS component for authentication via IT-Wallet, based on the `Bootstrap Italia <https://italia.github.io/bootstrap-italia/docs/componenti/buttons/>`_ library - `View the component <https://github.com/italia/eid-wallet-it-docs/tree/versione-corrente/official_resources/authentication-button>`_ - `Live demo <_static/authentication-button/authentication-button.html>`_
 
 Brand Manual
 ^^^^^^^^^^^^
