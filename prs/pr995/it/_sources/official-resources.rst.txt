@@ -22,6 +22,13 @@ Di seguito sono elencate le risorse grafiche ufficiali, disponibili per il downl
 - **Trust Mark**: Elemento grafico ufficiale per l'attestazione dell'appartenenza al Sistema IT-Wallet - `Scarica Trust Mark <_static/trustmark-ITA.svg>`_ - Consulta la sezione :ref:`brand-identity:Trust Mark`;
 - **Authentication Button**: Pulsante ufficiale per l'autenticazione tramite IT-Wallet - `Scarica Authentication Button <_static/Authentication-button-ITA.svg>`_
 
+Componenti HTML
+^^^^^^^^^^^^^^^^
+
+I seguenti componenti HTML ufficiali sono disponibili nella cartella `official_resources/ <https://github.com/italia/eid-wallet-it-docs/tree/versione-corrente/official_resources>`_ di questo repository:
+
+- **Authentication Button Component**: Componente HTML/CSS ufficiale per l'autenticazione tramite IT-Wallet, basato sulla libreria `Bootstrap Italia <https://italia.github.io/bootstrap-italia/docs/componenti/buttons/>`_ - `Vedi il componente <https://github.com/italia/eid-wallet-it-docs/tree/versione-corrente/official_resources/authentication-button>`_ - `Demo live <_static/authentication-button/authentication-button.html>`_
+
 Brand Manual
 ^^^^^^^^^^^^
 
