@@ -1,28 +1,71 @@
 openapi: 3.0.1
 info:
-  title: IT Wallet API - Issuer web services
-  version: 0.1.0
-  x-summary: IT Wallet Issuer e-Services exposed via PDND.
+  title: IT Wallet API - Credential Issuer web services
+  version: 0.2.0
+  description: IT Wallet Credential Issuer e-Service exposed via PDND.
+  termsOfService: "https://credential-issuer.example.it/tos/"
   contact:
+    name: IT-Wallet <credential_issuer>
     url: https://github.com/italia/eid-wallet-it-docs
+  x-api-id: CISSITW-01
+  x-summary: IT-Wallet Credential Issuer API.
 servers:
-  - url: https://issuer.example.it/v1.4.0
-    description: Credential Issuer API
+  - url: https://test.credential-issuer.example.it/v0.2.0
+    description: Credential Issuer API test server
+  - url: https://credential-issuer.example.it/v0.2.0
+    description: Credential Issuer API production server
+
 paths:
   /status:
     get:
       tags:
-        - e-services PDND
-      summary: Retrieve Issuer API status.
-      description: Health-check endpoint that returns the operational status of the Issuer API.
-      operationId: getIssuerStatus
+        - status
+      summary: Get Credential Issuer API status.
+      description: Health-check endpoint that returns the operational status of the Credential Issuer API.
+      operationId: credentialIssuerStatus
       responses:
         "200":
-          description: OK
-  /v0.9.0/wallet-report/{api}:
+          description: Service available
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          headers:
+            Cache-Control:
+              $ref: "#/components/headers/CacheControlHeader"
+            RateLimit-Limit:
+              $ref: "#/components/headers/RateLimitLimitHeader"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/RateLimitRemainingHeader"
+            RateLimit-Reset:
+              $ref: "#/components/headers/RateLimitResetHeader"
+        "429":
+          description: Too Many Requests
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          headers:
+            RateLimit-Limit:
+              $ref: "#/components/headers/RateLimitLimitHeader"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/RateLimitRemainingHeader"
+            RateLimit-Reset:
+              $ref: "#/components/headers/RateLimitResetHeader"
+        "503":
+          description: Service Unavailable
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          headers:
+            Retry-After:
+              $ref: "#/components/headers/RetryAfterHeader"
+
+  /wallet-report/{api}:
     get:
       tags:
-        - e-services PDND
+        - stats
       summary: Get Statistics
       description: This service returns statistical data on issued Digital Credentials
       operationId: walletGetReport
@@ -56,67 +99,199 @@ paths:
           schema:
             type: string
             format: date-time
-        - name: DPoP
+        - name: Digest
           in: header
           description: >-
-            DPoP proof JWT, to comply with the REST_JWS_2021_POP security
-            pattern using the POP_DPoP implementation. See also <a target="blank"
-            href="https://datatracker.ietf.org/doc/html/rfc9449.html">RFC
-            9449</a>.<br/><br/>
-
-            <a target="blank" href="https://jwt.io/#debugger-io?token=eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6ImRGVTNNRDI4REpfamZzZmloUHZpMm8tQ3RqTEVVejNwT0lWMEJkTk1mZjgiLCJjcnYiOiJQLTI1NiIsIngiOiJodXlYSVFOdjkwMm9Mc3BYNF96b25DOTRHNnlFbG42bHNkbS0xd003MzJvIiwieSI6Ikk5UERFYXdXSHFhRkRHeDFaa05rLTJQVjZXZHBjYUgzQWZPYkJTTGloZ3cifX0.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiR0VUIiwiYXRoIjoiNzFkZWY4MWYyZjE3MWI1MmFkYWMxNzg5ODI3NmFlZWU5OTlhZWUzZDNkZmE3NjkyMjJjODA0NDBmNDQ0ODgxYSIsImh0dSI6Imh0dHBzOi8vc2VydmVyLmV4YW1wbGUuY29tL3Rva2VuIiwiaWF0IjoxNzYyMjYyNjE2fQ.H9r1N2s8xp_rcNr4Bs7_n-6vNKN4BPsvXzsV_UWwWiyr314xPMv4v6_8ac2SIbM-cJ-O4hlZysOUrjC7rewlag">EXAMPLE
+            Digest of the message payload, to comply with the INTEGRITY_REST_02
+            security pattern. According to <a target="blank" href="https://www.rfc-editor.org/rfc/rfc3230.html#section-4.2">RFC
+            3230 §4.2</a>, the format MUST be the following: digest-algorithm=encoded
+            digest output.
+          required: true
+          schema:
+            type: string
+            example: SHA-256=72e18bdddf13c911b4dd562ee21979a5c9f235c3a01bd1426e857d8c1a282f41
+        - name: Agid-JWT-TrackingEvidence
+          in: header
+          description: >-
+            If the Voucher type is Bearer, this header represents a JWT acting as a proof of possession, to comply with the REST_JWS_2021_POP security
+            pattern using the POP_TPoP implementation. Otherwise, it is a JWT containing the data tracked in the Consumer's domain, to comply with AUDIT_REST_02 (see <a target="blank"
+            href="https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/e-service-pdnd.html">e-Service PDND</a>). <br/><br/>
+            <a target="blank" href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImQ0YzNiMmExLTk4NzYtNTQzMi0xMGZlLWRjYmE5ODc2NTQzMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJhdWQiOiJodHRwczovL2F1dGhlbnRpYy1zb3VyY2UuZXhhbXBsZS5pdCIsImV4cCI6MTczMzA1MjYwMCwibmJmIjoxNzMzMDM2NDUwLCJpYXQiOjE3MzMwMzY0MDAsImp0aSI6ImE0YjVjNmQ3LWU4ZjktYWJjZC1lZjEyLTM0NTY3ODkwMTIzNCIsImRub25jZSI6NjUyODQyNDIxMzY4NSwicHVycG9zZUlkIjoiYjJjM2Q0ZTUtZjZnNy1oOGk5LWowazEtbG1ubzEyMzQ1Njc4IiwidXNlcklEIjoiYThiN2M2ZDUtZTRmMy1nMmgxLWk5ajAta2xtbm9wcXJzdHV2IiwibG9hIjoic3Vic3RhbnRpYWwifQ.y42yfMeW2H9h0b0j0BODUml8yF20stY9q3BwoVU5BB90afBj852Q0QlInncdhjXhUjLS1V76cGBxkutDNvxRNA">EXAMPLE
             ON JWT.IO</a>
           required: false
           schema:
             type: string
             format: JWT
-            example: >-
-              eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6ImRGVTNNRDI4REpfamZzZmloUHZpMm8tQ3RqTEVVejNwT0lWMEJkTk1mZjgiLCJjcnYiOiJQLTI1NiIsIngiOiJodXlYSVFOdjkwMm9Mc3BYNF96b25DOTRHNnlFbG42bHNkbS0xd003MzJvIiwieSI6Ikk5UERFYXdXSHFhRkRHeDFaa05rLTJQVjZXZHBjYUgzQWZPYkJTTGloZ3cifX0.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiR0VUIiwiYXRoIjoiNzFkZWY4MWYyZjE3MWI1MmFkYWMxNzg5ODI3NmFlZWU5OTlhZWUzZDNkZmE3NjkyMjJjODA0NDBmNDQ0ODgxYSIsImh0dSI6Imh0dHBzOi8vc2VydmVyLmV4YW1wbGUuY29tL3Rva2VuIiwiaWF0IjoxNzYyMjYyNjE2fQ.H9r1N2s8xp_rcNr4Bs7_n-6vNKN4BPsvXzsV_UWwWiyr314xPMv4v6_8ac2SIbM-cJ-O4hlZysOUrjC7rewlag
-        - name: Agid-JWT-TrackingEvidence
+            example: eyJhbGciOiJFUzI1NiIsImtpZCI6ImQ0YzNiMmExLTk4NzYtNTQzMi0xMGZlLWRjYmE5ODc2NTQzMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJhdWQiOiJodHRwczovL2F1dGhlbnRpYy1zb3VyY2UuZXhhbXBsZS5pdCIsImV4cCI6MTczMzA1MjYwMCwibmJmIjoxNzMzMDM2NDUwLCJpYXQiOjE3MzMwMzY0MDAsImp0aSI6ImE0YjVjNmQ3LWU4ZjktYWJjZC1lZjEyLTM0NTY3ODkwMTIzNCIsImRub25jZSI6NjUyODQyNDIxMzY4NSwicHVycG9zZUlkIjoiYjJjM2Q0ZTUtZjZnNy1oOGk5LWowazEtbG1ubzEyMzQ1Njc4IiwidXNlcklEIjoiYThiN2M2ZDUtZTRmMy1nMmgxLWk5ajAta2xtbm9wcXJzdHV2IiwibG9hIjoic3Vic3RhbnRpYWwifQ.y42yfMeW2H9h0b0j0BODUml8yF20stY9q3BwoVU5BB90afBj852Q0QlInncdhjXhUjLS1V76cGBxkutDNvxRNA
+        - name: DPoP
           in: header
-          description: >-
-             If the Voucher type is Bearer, this header represents a JWT acting as a proof of possession, to comply with the REST_JWS_2021_POP security
-             pattern using the POP_TPoP implementation. Otherwise, it is a JWT containing the data tracked in the Consumer's domain, to comply with AUDIT_REST_02 (see <a target="blank"
-             href="https://italia.github.io/eid-wallet-it-docs/v1.0.0/en/e-service-pdnd.html">e-Service PDND</a>). <br/><br/>
-             <a target="blank" href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImQ0YzNiMmExLTk4NzYtNTQzMi0xMGZlLWRjYmE5ODc2NTQzMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJhdWQiOiJodHRwczovL2lzc3Vlci5leGFtcGxlLml0Iiwic3ViIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1IiwiZXhwIjoxNzMzMDUyNjAwLCJuYmYiOjE3MzMwMzY0NTAsImlhdCI6MTczMzAzNjQwMCwianRpIjoiYTRiNWM2ZDctZThmOS1hYmNkLWVmMTItMzQ1Njc4OTAxMjM0IiwiZG5vbmNlIjo2NTI4NDI0MjEzNjg1LCJwdXJwb3NlSWQiOiJiMmMzZDRlNS1mNmc3LWg4aTktajBrMS1sbW5vMTIzNDU2NzgiLCJ1c2VySUQiOiJhOGI3YzZkNS1lNGYzLWcyaDEtaTlqMC1rbG1ub3BxcnN0dXYiLCJsb2EiOiJzdWJzdGFudGlhbCJ9.y42yfMeW2H9h0b0j0BODUml8yF20stY9q3BwoVU5BB90afBj852Q0QlInncdhjXhUjLS1V76cGBxkutDNvxRNA">EXAMPLE ON JWT.IO</a>
-          required: false
+          description: Use only if the DPoP voucher has been requested from PDND.
           schema:
             type: string
             format: JWT
-            example: eyJhbGciOiJFUzI1NiIsImtpZCI6ImQ0YzNiMmExLTk4NzYtNTQzMi0xMGZlLWRjYmE5ODc2NTQzMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJhdWQiOiJodHRwczovL2lzc3Vlci5leGFtcGxlLml0Iiwic3ViIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1IiwiZXhwIjoxNzMzMDUyNjAwLCJuYmYiOjE3MzMwMzY0NTAsImlhdCI6MTczMzAzNjQwMCwianRpIjoiYTRiNWM2ZDctZThmOS1hYmNkLWVmMTItMzQ1Njc4OTAxMjM0IiwiZG5vbmNlIjo2NTI4NDI0MjEzNjg1LCJwdXJwb3NlSWQiOiJiMmMzZDRlNS1mNmc3LWg4aTktajBrMS1sbW5vMTIzNDU2NzgiLCJ1c2VySUQiOiJhOGI3YzZkNS1lNGYzLWcyaDEtaTlqMC1rbG1ub3BxcnN0dXYiLCJsb2EiOiJzdWJzdGFudGlhbCJ9.y42yfMeW2H9h0b0j0BODUml8yF20stY9q3BwoVU5BB90afBj852Q0QlInncdhjXhUjLS1V76cGBxkutDNvxRNA
+          required: false
+        - name: Agid-JWT-Signature
+          in: header
+          description: >-
+            JWT containing the signature of the message headers whose integrity
+            needs to be guaranteed, to comply with the INTEGRITY_REST_02
+            security pattern (see <a target="blank"
+            href="https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/e-service-pdnd.html">e-Service PDND</a>). <br/><br/>
+
+            <a target="blank" href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImQ0YzNiMmExLTk4NzYtNTQzMi0xMGZlLWRjYmE5ODc2NTQzMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJzdWIiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJhdWQiOiJodHRwczovL2F1dGhlbnRpYy1zb3VyY2UuZXhhbXBsZS5pdCIsImlhdCI6MTczMzM5Nzg0MCwibmJmIjoxNzMzNDAxNjI4LCJleHAiOjE3MzM0MDE0NDAsImp0aSI6ImQzZjdiMmM5LTI3NGEtNDJiNy04ZjhkLTJlOWQ4YjE3MzRiMCIsInNpZ25lZF9oZWFkZXJzIjpbeyJkaWdlc3QiOiJTSEEtMjU2PTcyZTE4YmRkZGYxM2M5MTFiNGRkNTYyZWUyMTk3OWE1YzlmMjM1YzNhMDFiZDE0MjZlODU3ZDhjMWEyODJmNDEifSx7ImNvbnRlbnQtdHlwZSI6ImFwcGxpY2F0aW9uL2pzb24ifV19.tG5-P96CCA6N1IYC-xk4GumoVkA3NFolpbBn2vQ2e9vpWQ8f5Sm2l4-1VrXfKTx-CUVz_puiwqkBhulrNKj2fA">EXAMPLE
+            ON JWT.IO</a>
+          required: true
+          schema:
+            type: string
+            format: JWT
+            example: eyJhbGciOiJFUzI1NiIsImtpZCI6ImQ0YzNiMmExLTk4NzYtNTQzMi0xMGZlLWRjYmE5ODc2NTQzMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJzdWIiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJhdWQiOiJodHRwczovL2F1dGhlbnRpYy1zb3VyY2UuZXhhbXBsZS5pdCIsImlhdCI6MTczMzM5Nzg0MCwibmJmIjoxNzMzNDAxNjI4LCJleHAiOjE3MzM0MDE0NDAsImp0aSI6ImQzZjdiMmM5LTI3NGEtNDJiNy04ZjhkLTJlOWQ4YjE3MzRiMCIsInNpZ25lZF9oZWFkZXJzIjpbeyJkaWdlc3QiOiJTSEEtMjU2PTcyZTE4YmRkZGYxM2M5MTFiNGRkNTYyZWUyMTk3OWE1YzlmMjM1YzNhMDFiZDE0MjZlODU3ZDhjMWEyODJmNDEifSx7ImNvbnRlbnQtdHlwZSI6ImFwcGxpY2F0aW9uL2pzb24ifV19.tG5-P96CCA6N1IYC-xk4GumoVkA3NFolpbBn2vQ2e9vpWQ8f5Sm2l4-1VrXfKTx-CUVz_puiwqkBhulrNKj2fA
       security:
         - BearerAuth: []
+        - DPoPAuth: []
       responses:
         "200":
           description: 200 OK
+          headers:
+            Agid-JWT-Signature:
+              description: JWT containing the signature of the message headers whose integrity needs to be guaranteed, to comply with the INTEGRITY_REST_02 security pattern (see <a target="blank" href="https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/e-service-pdnd.html">e-Service PDND</a>). <a target="blank" href="https://jwt.io/#debugger-io?token=ew0KICAiYWxnIjogIkVTMjU2IiwNCiAgImtpZCI6ICJhMWY1YzhkMi00YjM3LTRlOTEtYjBkMi03OWUzZjBjNGE4ZWYiLA0KICAidHlwIjogIkpXVCINCn0.ew0KICAiaXNzIjogIjEyMzRhYmNkLWVmNTYtZ2g3OC1pOWowLWtsbW5vcHFyc3R3eCIsDQogICJzdWIiOiAiMTIzNGFiY2QtZWY1Ni1naDc4LWk5ajAta2xtbm9wcXJzdHd4IiwNCiAgImF1ZCI6ICJodHRwczovL2ZydWl0b3JlLmV4YW1wbGUvZW50ZS1leGFtcGxlL3YxIiwNCiAgImlhdCI6IDE3MzMzOTc4NDAsDQogICJuYmYiOiAxNzMzNDAxNjI4LA0KICAiZXhwIjogMTczMzQwMTQ0MCwNCiAgImp0aSI6ICI4ZTEyZjRiNy05YzNhLTRmODMtOWI4ZC01MWEyYzdmNmU5ZDQiLA0KICAic2lnbmVkX2hlYWRlcnMiOiBbDQogICAgew0KICAgICAgImRpZ2VzdCI6ICJTSEEtMjU2PTc5YTIwYTc0NDMzNjQyMDMwMTgzMDYwMGFkOWJkY2E5OTM1OTNmODc2MjA5YTAwNGI1OTliNTgzMDk1YjBhNjEiDQogICAgfSwNCiAgICB7DQogICAgICAiY29udGVudC10eXBlIjogImFwcGxpY2F0aW9uL2pzb24iDQogICAgfQ0KICBdDQp9.DpuBNo2UgQhL7WLin4mpdZrbIpQq3tPvCX6HfktkxG7L5mk6a8OK1Hg0mQcZfFi3gelS-aL9kFS-6MoSy4csBg">EXAMPLE
+              required: true
+              schema:
+                type: string
+            Digest:
+              description: Digest of the message payload, to comply with the INTEGRITY_REST_02 security pattern. According to RFC 3230 Section 4.2 <a target="blank" href="https://www.rfc-editor.org/rfc/rfc3230.html#section-4.2">RFC 3230 §4.2</a>, the format MUST be the following digest-algorithm=encoded digest output.
+              required: true
+              schema:
+                type: string
+                example: SHA-256=79a20a744336420301830600ad9bdca993593f876209a004b599b583095b0a61
+            Cache-Control:
+              $ref: "#/components/headers/CacheControlHeader"
+            RateLimit-Limit:
+              $ref: "#/components/headers/RateLimitLimitHeader"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/RateLimitRemainingHeader"
+            RateLimit-Reset:
+              $ref: "#/components/headers/RateLimitResetHeader"
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/ResponseReport"
         "400":
-          description: Bad request
+          description: Bad Request
           content:
             application/problem+json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+          headers:
+            RateLimit-Limit:
+              $ref: "#/components/headers/RateLimitLimitHeader"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/RateLimitRemainingHeader"
+            RateLimit-Reset:
+              $ref: "#/components/headers/RateLimitResetHeader"
         "401":
           description: Unauthorized
           content:
             application/problem+json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
-        "500":
-          description: Internal server error
+          headers:
+            RateLimit-Limit:
+              $ref: "#/components/headers/RateLimitLimitHeader"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/RateLimitRemainingHeader"
+            RateLimit-Reset:
+              $ref: "#/components/headers/RateLimitResetHeader"
+            WWW-Authenticate:
+              $ref: "#/components/headers/WWWAuthenticateHeader"
+        "429":
+          description: Too Many Requests
           content:
             application/problem+json:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
+          headers:
+            RateLimit-Limit:
+              $ref: "#/components/headers/RateLimitLimitHeader"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/RateLimitRemainingHeader"
+            RateLimit-Reset:
+              $ref: "#/components/headers/RateLimitResetHeader"
+        "500":
+          description: Internal Server Error.
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          headers:
+            Retry-After:
+              $ref: "#/components/headers/RetryAfterHeader"
+        "503":
+          description: Service Unavailable
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          headers:
+            Retry-After:
+              $ref: "#/components/headers/RetryAfterHeader"
+
+tags:
+  - name: status
+    description: Endpoint di health check dell'API.
+  - name: stats
+    description: Statistical data on issued Digital Credentials.
+
 components:
   securitySchemes:
     BearerAuth:
       type: http
       scheme: bearer
       bearerFormat: JWT
+      description: PDND Bearer Token
+    DPoPAuth:
+      type: apiKey
+      in: header
+      name: DPoP
+      description: DPoP proof JWT (RFC 9449).
+
+  headers:
+    CacheControlHeader:
+      schema:
+        type: string
+        enum:
+          - no-store
+      description: no-store
+    RateLimitLimitHeader:
+      schema:
+        type: integer
+        format: int32
+        minimum: 0
+      description: Maximum number of requests within the time window.
+    RateLimitRemainingHeader:
+      schema:
+        type: integer
+        format: int32
+        minimum: 0
+      description: Remaining requests within the time window.
+    RateLimitResetHeader:
+      schema:
+        type: integer
+        format: int32
+        minimum: 0
+      description: UTC epoch in seconds, corresponding to when the window for the current rate limit will reset.
+    RetryAfterHeader:
+      schema:
+        type: integer
+        format: int32
+        minimum: 0
+      description: Seconds to wait before receiving another response.
+    WWWAuthenticateHeader:
+      schema:
+        type: string
+        example: >-
+          Bearer error="invalid_token", error_description="The access token expired"
+      description: The request cannot be fulfilled because the Voucher is expired, revoked or otherwise malformed. See <a target="blank" href="https://datatracker.ietf.org/doc/html/rfc6750.html#section-3">RFC6750</a> and <a target="blank" href="https://datatracker.ietf.org/doc/html/rfc9449.html#section-7.1-11">RFC9449</a> for details.
+
   schemas:
     ProblemDetails:
       type: object
