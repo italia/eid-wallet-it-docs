@@ -243,7 +243,7 @@
 <tr class="row-even"><td><p><strong>objectId</strong></p></td>
 <td><p>REQUIRED. The subject to which the Signal is bound. If the Signal has <code class="docutils literal notranslate"><span class="pre">signalType</span></code>:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">CREATE</span></code>, then it MUST be set to the <code class="docutils literal notranslate"><span class="pre">jti</span></code> value the Credental Issuer used in the Agid-JWT-Signature token of the <cite>get attributes</cite> request to the Authentic Source to obtain the attributes related to a specific Digital Credential (see <a class="reference internal" href="authentic-source-endpoint.html#get-attribute-claims"><span class="std std-ref">Get Attribute Claims</span></a>);</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CREATE</span></code>, then it MUST be set to the <code class="docutils literal notranslate"><span class="pre">jti</span></code> value the Credential Issuer used in the Agid-JWT-Signature token of the <cite>get attributes</cite> request to the Authentic Source to obtain the attributes related to a specific Digital Credential (see <a class="reference internal" href="authentic-source-endpoint.html#get-attribute-claims"><span class="std std-ref">Get Attribute Claims</span></a>);</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">UPDATE</span></code>, then it MUST be set to the Authentic Source's unique database identifier of the Digital Credential's attributes the Signal refers to.</p></li>
 </ul>
 </td>
@@ -354,8 +354,8 @@
 <div><ul>
 <li><p>For each Signal, the Credential Issuer MUST check the <code class="docutils literal notranslate"><span class="pre">SignalType</span></code> value:</p>
 <ul class="simple">
-<li><p>if the Signal <code class="docutils literal notranslate"><span class="pre">SignalType</span></code> is <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code>, the status and/or value of the attribute associated with a Digest Credential need updates;</p></li>
-<li><p>if the Signal <code class="docutils literal notranslate"><span class="pre">SignalType</span></code> is <code class="docutils literal notranslate"><span class="pre">CREATE</span></code>, the requested attributes of a specific Digital Credential are now available;</p></li>
+<li><p>if the Signal <code class="docutils literal notranslate"><span class="pre">SignalType</span></code> is <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> (where <code class="docutils literal notranslate"><span class="pre">objectId</span></code> refers to the <strong>Authentic Source's unique database identifier of the Digital Credential's attributes</strong>), the status and/or value of the attribute associated with a Digital Credential need updates;</p></li>
+<li><p>if the Signal <code class="docutils literal notranslate"><span class="pre">SignalType</span></code> is <code class="docutils literal notranslate"><span class="pre">CREATE</span></code> (where <code class="docutils literal notranslate"><span class="pre">objectId</span></code> refers to the <strong>request ``jti``</strong>), the requested attributes of a specific Digital Credential are now available;</p></li>
 </ul>
 <p>If the <code class="docutils literal notranslate"><span class="pre">objectId</span></code> does not correspond to any valid identifier known to the Credential Issuer, the Signal MUST be ignored. Otherwise, if it corresponds to a known and valid identifier, the Credential Issuer MUST use the <a class="reference internal" href="authentic-source-endpoint.html#get-attribute-claims"><span class="std std-ref">Get Attribute Claims</span></a> PDND endpoint of the Authentic Source to retrieve the updated information and, if applicable, apply the new status to the corresponding Credential.</p>
 <p>When the Signal has been processed, the Credential Issuer will either move to the next Signal and update its <code class="docutils literal notranslate"><span class="pre">signalId</span></code> counter; or, if there are no more Signals to process, it will resume the Pull cycle.</p>
@@ -364,7 +364,7 @@
 </div></blockquote>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Given Signal Hub's currently supported security patterns, if the Authentic Source requires the <cite>AUDIT_REST_02</cite> security pattern from the Credential Issuer, the latter MUST revoke the Digital Credential referenced in Signals with <code class="docutils literal notranslate"><span class="pre">signalType</span></code> <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> since it cannot contact the Authentic Source to retrieve the updated information without having authenticated the User before.</p>
+<p>Given Signal Hub's currently supported security patterns, if the Authentic Source requires the <cite>AUDIT_REST_02</cite> security pattern from the Credential Issuer, the latter MUST revoke the Digital Credential referenced in Signals with <code class="docutils literal notranslate"><span class="pre">signalType</span></code> <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> since it cannot contact the Authentic Source to retrieve the updated information without having authenticated the User before. <strong>In this scenario, revocation is the only allowed action.</strong></p>
 </div>
 </section>
 </section>

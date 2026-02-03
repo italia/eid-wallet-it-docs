@@ -68,8 +68,8 @@ The Signal Collection e-Service endpoint is used by Authentic Sources to deposit
     - REQUIRED. Using this field the Authentic Source MAY use to further specify the Signal.
   * - **objectId**
     - REQUIRED. The subject to which the Signal is bound. If the Signal has ``signalType``:
-    
-      - ``CREATE``, then it MUST be set to the ``jti`` value the Credental Issuer used in the Agid-JWT-Signature token of the `get attributes` request to the Authentic Source to obtain the attributes related to a specific Digital Credential (see :ref:`authentic-source-endpoint:Get Attribute Claims`);
+      
+      - ``CREATE``, then it MUST be set to the ``jti`` value the Credential Issuer used in the Agid-JWT-Signature token of the `get attributes` request to the Authentic Source to obtain the attributes related to a specific Digital Credential (see :ref:`authentic-source-endpoint:Get Attribute Claims`);
       - ``UPDATE``, then it MUST be set to the Authentic Source's unique database identifier of the Digital Credential's attributes the Signal refers to.
       
   * - **signalType**
@@ -155,8 +155,8 @@ After the Signals have been successfully recovered by the Credential Issuer, the
 
   - For each Signal, the Credential Issuer MUST check the ``SignalType`` value:
     
-    - if the Signal ``SignalType`` is ``UPDATE``, the status and/or value of the attribute associated with a Digest Credential need updates;
-    - if the Signal ``SignalType`` is ``CREATE``, the requested attributes of a specific Digital Credential are now available; 
+    - if the Signal ``SignalType`` is ``UPDATE`` (where ``objectId`` refers to the **Authentic Source's unique database identifier of the Digital Credential's attributes**), the status and/or value of the attribute associated with a Digital Credential need updates;
+    - if the Signal ``SignalType`` is ``CREATE`` (where ``objectId`` refers to the **request ``jti``**), the requested attributes of a specific Digital Credential are now available; 
 
     If the ``objectId`` does not correspond to any valid identifier known to the Credential Issuer, the Signal MUST be ignored. Otherwise, if it corresponds to a known and valid identifier, the Credential Issuer MUST use the :ref:`authentic-source-endpoint:Get Attribute Claims` PDND endpoint of the Authentic Source to retrieve the updated information and, if applicable, apply the new status to the corresponding Credential.
     
@@ -164,6 +164,4 @@ After the Signals have been successfully recovered by the Credential Issuer, the
 
 .. warning::
 
-  Given Signal Hub's currently supported security patterns, if the Authentic Source requires the `AUDIT_REST_02` security pattern from the Credential Issuer, the latter MUST revoke the Digital Credential referenced in Signals with ``signalType`` ``UPDATE`` since it cannot contact the Authentic Source to retrieve the updated information without having authenticated the User before.  
-
-
+  Given Signal Hub's currently supported security patterns, if the Authentic Source requires the `AUDIT_REST_02` security pattern from the Credential Issuer, the latter MUST revoke the Digital Credential referenced in Signals with ``signalType`` ``UPDATE`` since it cannot contact the Authentic Source to retrieve the updated information without having authenticated the User before. **In this scenario, revocation is the only allowed action.**
