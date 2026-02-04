@@ -63,22 +63,22 @@ Technical implementation procedures for Authentic Source registration are provid
 Federation Onboarding Process
 -------------------------------
 
-Federation onboarding establishes the trust relationships and compliance checks that enable operational entities (PID Providers, Attestation Providers, Relying Parties, and Wallet Providers) to participate in the Credential lifecycle.
-Operational entities MUST complete onboarding that includes administrative eligibility verification and technical validation. For Wallet Providers, this includes conformity assessment of the Wallet Solution and subsequent Trusted List notification flows.
+Federation onboarding, including administrative and technical registration processes, establishes the trust relationships and compliance checks that enable all entities (PID Providers, Attestation Providers, Relying Parties, Wallet Providers, and Authentic Sources) to participate in the Credential lifecycle.
+Operational entities (PID Providers, Attestation Providers, Relying Parties, and Wallet Providers) MUST complete onboarding that includes administrative eligibility verification and technical validation. For Wallet Providers, this includes conformity assessment of the Wallet Solution and subsequent Trusted List notification flows.
 
-The registration process, managed by National Registrars for PID Providers, Attestation Providers, and Relying Parties, typically includes:
+For PID Providers, Attestation Providers, and Relying Parties, the federation onboarding process typically includes:
 
 1. **Entity Registration**: Collection of core data (identification, entitlements, service supply points, and cryptographic public keys and certificates) needed to authorize entities and describe their capabilities.
-2. **Access Certificate Issuance**: Issuance of access certificates that authenticate entities, reference the registry for entitlement verification, and support certificate transparency.
+2. **Certificate Issuance**: Issuance of certificates that authenticate entities, reference the registry for entitlement verification, support certificate transparency, and describe registration status for Relying Parties and Credential Issuers.
 3. **Registration Certificate Issuance**: Issuance of registration certificates that describe registration status and entitlements for Relying Parties and Credential Issuers.
-4. **Registry Publication**: Publication of all registered entities in the registry, with an online API (see :ref:`trust-infrastructure:Trust Infrastructure and Registry Integration`) that Wallet Units use to verify PID Provider registration, Attestation Provider registration and types, and Relying Party registration and requested attributes.
+3. **Registry Publication**: Publication of all registered entities in the registry, with an online API (see :ref:`trust-infrastructure:Trust Infrastructure and Registry Integration`) that can be used to verify entity registration, and requested attributes.
 
 Registration Form Information Requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 According to the Architecture and Reference Framework (ARF) High-Level Requirements and Regulation (EU) 2025/848, Annex I, all entities registering with National Registrars MUST provide the following information in the registration form. This information is required for PID Providers, Attestation Providers (QEAA Providers, PuB-EAA Providers, and non-qualified EAA Providers), and Relying Parties.
 
-The registration form MUST collect at least the following information as specified in `Regulation (EU) 2025/848, Annex I <https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202500848>`_ and aligned with the use cases defined in the trust infrastructure onboarding documentation:
+For entities regulated under the Architecture and Reference Framework (ARF) - namely PID Providers, Attestation Providers (QEAA Providers, PuB-EAA Providers, and non-qualified EAA Providers), and Relying Parties - the registration form MUST collect at least the following information as specified in `Regulation (EU) 2025/848, Annex I <https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202500848>`_ and aligned with the use cases defined in the trust infrastructure onboarding documentation:
 
 .. list-table:: Registration Form Information Requirements (Annex I)
    :class: longtable
@@ -119,13 +119,13 @@ The registration form MUST collect at least the following information as specifi
        - Target user base
        - Service scope and capabilities
    * - **Attributes Request List**
-     - REQUIRED. A list of the attributes that the wallet-relying party intends to request for each intended use. This MUST reference:
+     - REQUIRED. Where applicable, a list of the attributes that the wallet-relying party intends to request for each intended use. This MUST reference:
        
        - Specific claim identifiers from the Claims Registry (e.g., ``given_name``, ``family_name``, ``driving_privileges``)
        - Taxonomy classifications (domains, classes, purposes) for authorization policy evaluation
        - See :ref:`registry:Claims Registry` for standardized claim definitions
    * - **Intended Use Description**
-     - REQUIRED. A description of intended use of the data, including:
+     - REQUIRED. Where applicable, a description of intended use of the data, including:
        
        - Business purpose for requesting attributes
        - Service context and use cases
@@ -159,10 +159,11 @@ The registration form MUST collect at least the following information as specifi
 The registration form MUST be designed to support both manual data entry and automated registration processes through qualified authoritative registries (see :ref:`entity-onboarding:Industrial-Scale Considerations`). The Registrar MAY import entity information from qualified registries (e.g., business registries, VAT registries, professional qualification registries, GLEIF for LEI records) to reduce duplication and streamline onboarding.
 
 All information provided in the registration form MUST be:
-- Accurate and current at the time of registration
-- Verifiable against supporting documentation or authoritative sources
-- Maintained and updated without undue delay when changes occur
-- Compliant with applicable data protection and privacy regulations
+
+  - Accurate and current at the time of registration
+  - Verifiable against supporting documentation or authoritative sources
+  - Maintained and updated without undue delay when changes occur
+  - Compliant with applicable data protection and privacy regulations
 
 For Authentic Source registration information requirements, see :ref:`entity-onboarding:Authentic Sources Registration Information Requirements`.
 
@@ -208,6 +209,9 @@ The following table summarizes the registration requirement and the authority re
      - Not applicable in pilot (notification from Member State to EC only)
 
 .. note::
+  **Trusted Lists and Federation Registry**: Entities listed in Trusted Lists are also registered in the national Federation Registry, which maintains additional technical information (e.g., federation endpoints). Key validation can occur through both mechanisms: verification against the Trusted List and verification through federation endpoints.
+
+.. note::
   **PID Providers**, **PuB-EAA Providers**, and **Wallet Providers** are registered through the IT-Wallet onboarding system and subsequently notified to the European Commission for Trusted List inclusion. Wallet Providers do not receive access certificates or registration certificates from National Registrars. The Wallet Solution provided by the Wallet Provider must be certified by Conformity Assessment Bodies (CABs) according to the national conformity assessment framework.
 
 Member State Notification to European Commission
@@ -215,10 +219,10 @@ Member State Notification to European Commission
 
 The Member State MUST notify all PID Providers, PuB-EAA Providers, Wallet Providers, Access Certificate Authorities, and Providers of Registration Certificates to the European Commission. The information notified varies by entity type:
 
-- **PID Providers**: Identification data, PID Provider public keys/certificates, Access Certificate Authority public keys/certificates for PID Providers, Service Supply Point (URL)
-- **Wallet Providers**: Identification data, Wallet Provider public keys/certificates
-- **PuB-EAA Providers**: Identification data (including conformity assessment report), Service Supply Point (URL)
-- **Access Certificate Authorities and Providers of Registration Certificates**: Identification data, public keys/certificates
+  - **PID Providers**: Identification data, PID Provider public keys/certificates, Access Certificate Authority public keys/certificates for PID Providers, Service Supply Point (URL)
+  - **Wallet Providers**: Identification data, Wallet Provider public keys/certificates
+  - **PuB-EAA Providers**: Identification data (including conformity assessment report), Service Supply Point (URL)
+  - **Access Certificate Authorities and Providers of Registration Certificates**: Identification data, public keys/certificates
 
 The European Commission compiles, signs/seals, and publishes Trusted Lists for Wallet Providers, PID Providers, Access CAs, and Registration Certificate Providers.
 
