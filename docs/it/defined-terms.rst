@@ -111,6 +111,10 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Sistemi di identità preesistenti (ad esempio CIE) notificati eIDAS.
       Non presente in ARF 2.7.3.
 
+    **National Trust Anchor**
+      Entità organizzativa designata a livello nazionale che agisce come radice di fiducia della federazione, operando la PKI nazionale e pubblicando le Trusted List e i metadati di federazione autorevoli per le entità subordinate (ad esempio Intermediari e Foglie).
+      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+
     **Processo di Notifica**
       Procedura per l'invio delle informazioni alla Commissione Europea e l'inserimento all'interno delle Trusted List.
       Conforme con ARF 2.7.3.

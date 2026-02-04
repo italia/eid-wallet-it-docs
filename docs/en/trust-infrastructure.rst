@@ -24,7 +24,7 @@ Throughout an entity's operational lifecycle, the Trust Infrastructure maintains
    :alt: The figure illustrates the trust roles.
    :caption: `The roles within the Federation, where the Trust Anchor oversees its subordinates, which include one or more Intermediates and Leaves. <https://www.plantuml.com/plantuml/png/XT1HQy90303Wz_iLcNkMiIAoXo5AtK3OWup17aViPUxmcYkvd29Z_tsjThM2kBSc-P9UCesAegdqviPnuPCbUCn7T_de8m-iw9XaOapSEAvGi8GL5fkrXCGs3pu8g237kaIiFJKJ2RiZMFcwmnYXGf7Ndc3m9YagpBZu2Z80ZA08j_FnqyDpTkOMh2GbMOTA1-TOxplv3ymkZdmXt58y64_u6UjnZPcFhw6iGzTKTwu_3Ty6eDUG2rbYTUXX4MEYu-w5wnvwfj_HUr9OIjWwszfTTTc-ajyxNiCIHVS7AIVvOqpzZs6gXXDGDBkg_MwEQQGNPQOzIQ_UxjypJVeqhKcTeYcnJQN_1G00>`_
 
-In this representation, both the National Trust Anchor and the Intermediates assume the role of Registration Authority.
+In this representation, both the :term:`National Trust Anchor` and the Intermediates assume the role of Registration Authority.
 
 Federation Roles
 ----------------
@@ -51,8 +51,8 @@ Below the table with the summary of the Federation Entity roles, mapped on the c
      - Federation Role
      - Notes
    * - Public Key Infrastructure (PKI)
-     - National Trust Anchor
-     - The Federation has PKI capabilities and uses OpenID Federation 1.0 `OID-FED`_. The Entity that configures the entire infrastructure at national level is the National Trust Anchor.
+     - :term:`National Trust Anchor`
+     - The Federation has PKI capabilities and uses OpenID Federation 1.0 `OID-FED`_. The Entity that configures the entire infrastructure at national level is the :term:`National Trust Anchor`.
    * - Qualified Trust Service Provider (QTSP)
      - Leaf
      -
@@ -78,7 +78,7 @@ Below the table with the summary of the Federation Entity roles, mapped on the c
      - eIDAS Trust Anchor
      - Compiles, signs, and publishes the EU-level eIDAS Trusted Lists for QTSPs, Wallet Providers, PID Providers, Access CAs, and Registration Certificate Providers, as described in the EUDI Wallet trust infrastructure schema.
    * - National eIDAS Trusted List Provider
-     - National Trust Anchor
+     - :term:`National Trust Anchor`
      - Compiles, signs, and publishes national Trusted Lists for QEAA Providers and non-qualified EAA Providers according to the national trust services framework, as described in this document for QEAA and EAA Provider Trusted List publication.
 
 Trust Infrastructure and Registry Integration
@@ -230,7 +230,7 @@ National Trusted List endpoints
 
 In addition to the OpenID Federation endpoints, the IT-Wallet ecosystem exposes HTTPS distribution points for eIDAS Trusted Lists and national EAA Provider Trusted Lists. These endpoints are operated by the Member State Trusted List Provider (MS TLP) and publish the authoritative, signed Trusted Lists that are referenced by the LoTL and consumed by Wallet Units, Credential Issuers, and Relying Parties.
 
-- QTSP Trusted Lists for QEAA Providers MUST be published by the National Trust Anchor as XML TSL documents compliant with `ETSI TS 119 612`_, at HTTPS distribution points under the National Trust Anchor FQDN (for example, ``https://<NationalTrustAnchorFQDN>/tsl/qeaa-tsl.xml``), and signed with XAdES Baseline B according to `ETSI EN 319 132-1`_.
+- QTSP Trusted Lists for QEAA Providers MUST be published by the :term:`National Trust Anchor` as XML TSL documents compliant with `ETSI TS 119 612`_, at HTTPS distribution points under the National Trust Anchor FQDN (for example, ``https://<NationalTrustAnchorFQDN>/tsl/qeaa-tsl.xml``), and signed with XAdES Baseline B according to `ETSI EN 319 132-1`_.
 - National EAA Provider Trusted Lists (for non-qualified EAA Providers and, where applicable, Pub-EAA Providers) MUST be published as LoTE documents following `ETSI TS 119 602`_ Annex H, at HTTPS distribution points under the National Trust Anchor FQDN (for example, ``https://<NationalTrustAnchorFQDN>/lote/eaa-providers.json``), in JSON (preferred) or XML, and signed with compact JAdES Baseline B or XAdES Baseline B as mandated by `ETSI TS 119 182-1`_ and `ETSI EN 319 132-1`_.
 
 Clients belonging from EUDI Wallet ecosystem consume these endpoints by periodically downloading the lists, validating the digital signatures, and applying the service status and sequence number semantics defined in `ETSI TS 119 612`_ and `ETSI TS 119 602`_ to build and refresh their local trust stores.
