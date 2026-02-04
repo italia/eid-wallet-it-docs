@@ -64,11 +64,11 @@
                 "mso_mdoc": {
                     "issuerauth_alg_values": [
                         -9,
-                        -50
+                        -51
                     ],
                     "deviceauth_alg_values": [
                         -9,
-                        -50
+                        -51
                     ]
                 }             
             },
