@@ -181,7 +181,7 @@
 <p><span class="caption-number">Fig. 6.1 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/png/XT1HQy90303Wz_iLcNkMiIAoXo5AtK3OWup17aViPUxmcYkvd29Z_tsjThM2kBSc-P9UCesAegdqviPnuPCbUCn7T_de8m-iw9XaOapSEAvGi8GL5fkrXCGs3pu8g237kaIiFJKJ2RiZMFcwmnYXGf7Ndc3m9YagpBZu2Z80ZA08j_FnqyDpTkOMh2GbMOTA1-TOxplv3ymkZdmXt58y64_u6UjnZPcFhw6iGzTKTwu_3Ty6eDUG2rbYTUXX4MEYu-w5wnvwfj_HUr9OIjWwszfTTTc-ajyxNiCIHVS7AIVvOqpzZs6gXXDGDBkg_MwEQQGNPQOzIQ_UxjypJVeqhKcTeYcnJQN_1G00">I ruoli all'interno della Federazione, dove il National Trust Anchor supervisiona i suoi subordinati, che includono uno o più Intermediari e Foglie.</a></span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<p>In questa rappresentazione, sia il National Trust Anchor che gli Intermediari assumono il ruolo di Registration Authority.</p>
+<p>In questa rappresentazione, sia il <a class="reference internal" href="defined-terms.html#term-National-Trust-Anchor"><span class="xref std std-term">National Trust Anchor</span></a> che gli Intermediari assumono il ruolo di Registration Authority.</p>
 <section id="ruoli-di-federazione">
 <h2><span class="section-number">6.1. </span>Ruoli di Federazione<a class="headerlink" href="#ruoli-di-federazione" title="Link to this heading">¶</a></h2>
 <p>Tutti i partecipanti sono Entità di Federazione che DEVONO essere registrate da un Registration Body, eccetto le Istanze del Wallet che sono dispositivi personali dell'Utente finale autenticati dal loro Fornitore di Wallet.</p>
@@ -207,8 +207,8 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Public Key Infrastructure (PKI)</p></td>
-<td><p>National Trust Anchor</p></td>
-<td><p>La Federazione ha capacità PKI e utilizza OpenID Federation 1.0 <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a>. L'Entità che configura l'intera infrastruttura a livello nazionale è il National Trust Anchor.</p></td>
+<td><p><a class="reference internal" href="defined-terms.html#term-National-Trust-Anchor"><span class="xref std std-term">National Trust Anchor</span></a></p></td>
+<td><p>La Federazione ha capacità PKI e utilizza OpenID Federation 1.0 <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a>. L'Entità che configura l'intera infrastruttura a livello nazionale è il <a class="reference internal" href="defined-terms.html#term-National-Trust-Anchor"><span class="xref std std-term">National Trust Anchor</span></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Qualified Trust Service Provider (QTSP)</p></td>
 <td><p>Leaf</p></td>
@@ -243,7 +243,7 @@
 <td><p>Compila, firma e pubblica le eIDAS Trusted Lists a livello UE per QTSP, Fornitori di Wallet, PID Provider, Access CA e Fornitori di Certificati di Registrazione, come descritto nello schema dell'infrastruttura di trust dell'EUDI Wallet.</p></td>
 </tr>
 <tr class="row-odd"><td><p>National eIDAS Trusted List Provider</p></td>
-<td><p>National Trust Anchor</p></td>
+<td><p><a class="reference internal" href="defined-terms.html#term-National-Trust-Anchor"><span class="xref std std-term">National Trust Anchor</span></a></p></td>
 <td><p>Compila, firma e pubblica le Trusted Lists nazionali per i QEAA Provider e per gli EAA Provider non qualificati secondo il quadro nazionale dei servizi fiduciari, come descritto in questo documento per la pubblicazione delle Trusted Lists degli EAA Provider e dei QEAA Provider.</p></td>
 </tr>
 </tbody>
@@ -682,7 +682,7 @@
 <h2><span class="section-number">6.5. </span>Endpoint delle Trusted Lists Nazionali<a class="headerlink" href="#endpoint-delle-trusted-lists-nazionali" title="Link to this heading">¶</a></h2>
 <p>In aggiunta agli endpoint di OpenID Federation, l'ecosistema IT-Wallet espone punti di distribuzione HTTPS per le eIDAS Trusted Lists e per le Trusted Lists nazionali degli EAA Provider. Questi endpoint sono operati dal Fornitore di Trusted Lists dello Stato Membro (MS TLP) e pubblicano le Trusted Lists autorevoli e firmate che sono referenziate dalla LoTL e consumate da Wallet Unit, Credential Issuer e Relying Party.</p>
 <ul class="simple">
-<li><p>Le Trusted Lists QTSP per i QEAA Provider DEVONO essere pubblicate dal National Trust Anchor come documenti TSL XML conformi a <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119600_119699/119612/02.04.01_60/ts_119612v020401p.pdf">ETSI TS 119 612</a>, in punti di distribuzione HTTPS sotto il FQDN del National Trust Anchor (ad esempio, <code class="docutils literal notranslate"><span class="pre">https://&lt;FQDNNationalTrustAnchor&gt;/tsl/qeaa-tsl.xml</span></code>), e firmate con XAdES Baseline B in accordo con <a class="reference external" href="https://www.etsi.org/deliver/etsi_en/319100_319199/31913201/01.03.01_60/en_31913201v010301p.pdf">ETSI EN 319 132-1</a>.</p></li>
+<li><p>Le Trusted Lists QTSP per i QEAA Provider DEVONO essere pubblicate dal <a class="reference internal" href="defined-terms.html#term-National-Trust-Anchor"><span class="xref std std-term">National Trust Anchor</span></a> come documenti TSL XML conformi a <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119600_119699/119612/02.04.01_60/ts_119612v020401p.pdf">ETSI TS 119 612</a>, in punti di distribuzione HTTPS sotto il FQDN del National Trust Anchor (ad esempio, <code class="docutils literal notranslate"><span class="pre">https://&lt;FQDNNationalTrustAnchor&gt;/tsl/qeaa-tsl.xml</span></code>), e firmate con XAdES Baseline B in accordo con <a class="reference external" href="https://www.etsi.org/deliver/etsi_en/319100_319199/31913201/01.03.01_60/en_31913201v010301p.pdf">ETSI EN 319 132-1</a>.</p></li>
 <li><p>Le Trusted Lists nazionali degli EAA Provider (per EAA Provider non qualificati e, ove applicabile, per i PuB-EAA Provider) DEVONO essere pubblicate come documenti LoTE che seguono il profilo <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119600_119699/119602/01.01.01_60/ts_119602v010101p.pdf">ETSI TS 119 602</a> Allegato H, in punti di distribuzione HTTPS sotto il FQDN del National Trust Anchor (ad esempio, <code class="docutils literal notranslate"><span class="pre">https://&lt;FQDNNationalTrustAnchor&gt;/lote/eaa-providers.json</span></code>), in formato JSON (preferibile) o XML, e firmate con firme compact JAdES Baseline B o XAdES Baseline B come previsto da <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119100_119199/11918201/01.02.01_60/ts_11918201v010201p.pdf">ETSI TS 119 182-1</a> e <a class="reference external" href="https://www.etsi.org/deliver/etsi_en/319100_319199/31913201/01.03.01_60/en_31913201v010301p.pdf">ETSI EN 319 132-1</a>.</p></li>
 </ul>
 <p>I client afferenti all'ecosistema EUDI Wallet consumano questi endpoint scaricando periodicamente le liste, validando le firme digitali e applicando le semantiche di stato del servizio e di numero di sequenza definite in <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119600_119699/119612/02.04.01_60/ts_119612v020401p.pdf">ETSI TS 119 612</a> e <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119600_119699/119602/01.01.01_60/ts_119602v010101p.pdf">ETSI TS 119 602</a> per costruire e aggiornare i propri trust store locali.</p>
