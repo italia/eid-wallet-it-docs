@@ -75,10 +75,10 @@ Below the table with the summary of the Federation Entity roles, mapped on the c
      - Leaf
      -
    * - eIDAS Trusted List Provider
-     - 
+     - eIDAS Trust Anchor
      - Compiles, signs, and publishes the EU-level eIDAS Trusted Lists for QTSPs, Wallet Providers, PID Providers, Access CAs, and Registration Certificate Providers, as described in the EUDI Wallet trust infrastructure schema.
    * - National eIDAS Trusted List Provider
-     - 
+     - National Trust Anchor
      - Compiles, signs, and publishes national Trusted Lists for QEAA Providers and non-qualified EAA Providers according to the national trust services framework, as described in this document for QEAA and EAA Provider Trusted List publication.
 
 Trust Infrastructure and Registry Integration
