@@ -947,18 +947,53 @@ For further information on the Authentication button refer to the Brand Manual, 
 .. only:: format_html
 
   .. figure:: ../../official_resources/Authentication-button-ENG.svg
-     :alt: Example of Authentication button in 3 variants
+     :alt: Authentication button in its dimension variants
      :width: 100%
 
-     Example of Authentication button in 3 variants
+     Example of Authentication button in its dimension variants
 
 .. only:: format_latex 
 
   .. figure:: ./images/pdf/Authentication-button.pdf
-     :alt: Example of Authentication button in 3 variants
+     :alt: Example of Authentication button in its dimension variants
      :width: 100%
 
-     Example of Authentication button in 3 variants
+     Example of Authentication button in its dimension variants
+
+
+.. only:: format_html
+
+  .. figure:: ../../official_resources/Authentication-Button-ENG-Fixed-Justified.svg
+     :alt: Authentication button fixed justified 
+     :width: 100%
+
+     Authentication button fixed justified
+
+.. only:: format_latex 
+
+  .. figure:: ./images/pdf/Authentication-Button-ENG-Fixed-Justified.pdf
+     :alt: Authentication Button fixed justified
+     :width: 100%
+
+     Authentication button fixed justified
+
+
+.. only:: format_html
+
+  .. figure:: ../../official_resources/Authentication-Button-ENG-Fixed-Centered.svg
+     :alt: Authentication button fixed centered
+     :width: 100%
+
+     Authentication button fixed centered
+
+.. only:: format_latex 
+
+  .. figure:: ./images/pdf/Authentication-Button-ENG-Fixed-Centered.pdf
+     :alt: Authentication Button fixed centered
+     :width: 100%
+
+     Authentication button fixed centered
+
 
 Management of Electronic Attestations
 --------------------------------------
