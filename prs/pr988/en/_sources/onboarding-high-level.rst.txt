@@ -167,7 +167,7 @@ All information provided in the registration form MUST be:
 
 For Authentic Source registration information requirements, see :ref:`entity-onboarding:Authentic Sources Registration Information Requirements`.
 
-For Wallet Provider registration information requirements, see the Wallet Provider onboarding documentation which specifies conformity assessment requirements and Trusted List inclusion procedures.
+For Wallet Provider registration information requirements, see the section :ref:`onboarding-high-level:Member State Notification to European Commission`, which specifies conformity assessment requirements and Trusted List inclusion procedures.
 
 Responsibilities Matrix
 ^^^^^^^^^^^^^^^^^^^^^^^

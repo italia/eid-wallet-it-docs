@@ -169,7 +169,7 @@ Tutte le informazioni fornite nel modulo di registrazione DEVONO essere:
 
 Per i requisiti sulle informazioni di registrazione delle Fonti Autentiche, vedere :ref:`entity-onboarding:Requisiti sulle Informazioni di Registrazione delle AS`.
 
-Per i requisiti sulle informazioni di registrazione dei Wallet Provider, vedere la documentazione di onboarding dei Wallet Provider che specifica i requisiti di valutazione della conformità e le procedure di inclusione nelle Trusted Lists.
+Per i requisiti sulle informazioni di registrazione dei Wallet Provider, vedere la sezione :ref:`onboarding-high-level:Notifica dello Stato Membro alla Commissione Europea`, che specifica i requisiti di valutazione della conformità e le procedure di inclusione nelle Trusted Lists.
 
 Matrice delle Responsabilità
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
