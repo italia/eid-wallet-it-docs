@@ -19,6 +19,7 @@
 - Kristina Yasuda
 - Leif Johansson
 - Lorenzo Cerini
+- Lorenzo Nardi
 - Manuel Rafeli
 - Marco Basili
 - Marco Pernpruner
