@@ -8,7 +8,7 @@ The Infrastructure of Trust
 
 The IT-Wallet ecosystem operates within a federated trust infrastructure where participating entities establish cryptographic trust relationships and maintain compliance with common security standards. This infrastructure provides the foundation for secure Digital Credential operations across the ecosystem participants.
 
-This section defines the implementation of the Trust Model in an infrastructure that complies with eIDAS ARF and OpenID Federation 1.0 `OID-FED`_. OpenID Federation operates at the national level and is complemented by Member State Trusted Lists for QEAA and EAA Providers, as detailed in :ref:`trust-infrastructure:National Provider Trusted Lists: Implementation Profile`. The List of Trusted Lists (LoTL) maintained by the European Commission, in the role of eIDAS Trusted List provider, aggregates pointers to all published eIDAS Trusted Lists, enabling cross-border trust establishment and centralized discovery of Trusted List locations and signing keys.
+This section defines the implementation of the Trust Model in an infrastructure that complies with eIDAS ARF and OpenID Federation 1.0 `OID-FED`_. OpenID Federation operates at the national level and is complemented by Member State Trusted Lists for QEAA and EAA Providers, as detailed in :ref:`trust-infrastructure:national-provider-trusted-lists-implementation-profile`. The List of Trusted Lists (LoTL) maintained by the European Commission, in the role of eIDAS Trusted List provider, aggregates pointers to all published eIDAS Trusted Lists, enabling cross-border trust establishment and centralized discovery of Trusted List locations and signing keys.
 
 The national infrastructure involves a RESTful API for distributing metadata, metadata policies, trust marks, cryptographic public keys and X.509 Certificates, and the revocation status of the participants, also called Federation Entities.
 
@@ -87,6 +87,8 @@ Trust Infrastructure and Registry Integration
 The Trust Infrastructure implements the Federation Registry component of the Registry Infrastructure. The Federation Registry maintains the authoritative list of trusted entities through the federation endpoints defined in this section, including entity listing (/list), subordinate statements (/fetch), trust mark validation (/trust_mark_status), subordinate events (/federation_subordinate_events_endpoint), and historical key management (/historical-jwks).
 
 This Federation Registry operates alongside other registry components (Claims Registry, AS Registry, Digital Credentials Catalog, Taxonomy) to provide comprehensive ecosystem support. For complete registry architecture and component interactions, see :ref:`registry:Registry Infrastructure`.
+
+.. _trust-infrastructure:national-provider-trusted-lists-implementation-profile:
 
 Trust Infrastructure Schema: Onboarding and Trusted Lists
 ---------------------------------------------------------
