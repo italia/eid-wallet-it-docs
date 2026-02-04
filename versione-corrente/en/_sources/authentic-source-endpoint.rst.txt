@@ -43,3 +43,32 @@ Get Attribute Claims
     - both MUST save the ``jti`` value in the Agid-JWT-Signature payload of the request to manage Signals related to the deffered issuance of a Digital Credential (see :ref:`signal-hub-endpoint:Signals Processing`);
     - the Authentic Source MUST record the datetime value provided within the ``last_updated`` parameter, which indicates the last time the User's attributes were updated in the Authentic Source's database;
     - the Credential Issuer MUST read the ``last_updated`` value received in the response to be able to check if the User's attributes have changed since the last issuance of a Digital Credential.
+
+Example of Authentic Source response
+"""""""""""""""""""""""""""""""""""""
+
+The endpoint response MUST use the HTTP Content-Type set to ``application/json``. Below is a concrete example with fictitious data to clarify the expected shape and content.
+
+.. literalinclude:: ../../examples/credential-claims-response-example.json
+  :language: json
+  :caption: Example of the response JSON payload (Get Attribute Claims)
+
+In summary:
+
+- **userClaims**: user identity data (first name, family name, date/place of birth, tax id or personal administrative number). At least one of ``tax_id_code`` and ``personal_administrative_number`` is required when providing user claims.
+- **attributeClaims**: array of datasets; each element **MUST** contain ``object_id``, ``status`` (VALID | INVALID | SUSPENDED), ``last_updated`` (ISO 8601 format), plus any dataset-specific attributes (e.g. ``nationality``, ``residence_address``).
+- **metadataClaims**: array of metadata per dataset (``object_id`` required; ``issuance_date`` and ``expiry_date`` optional).
+- **interval**: required when the request does not include a ``claims`` parameter; indicates the number of seconds to wait before repeating the request (e.g. 864000 = 10 days).
+
+The successful response (HTTP 200) returns a ``CredentialClaimsResponse`` object formatted as a **Payload JSON**.
+
+Signature Verification and Key Management
+'''''''''''''''''''''''''''''''''''''''''
+
+As the response token is signed, the Credential Issuer (Consumer) MUST verify the signature to ensure the integrity and authenticity of the data received from the Authentic Source.
+
+The signature verification and key retrieval process MUST strictly follow the standard pattern defined for **PDND e-Services**.
+Please refer to the Technical Appendix (Section :ref:`e-service-pdnd:e-Service PDND`) for details on JWT validation and specifications for retrieving the Provider's public key via the Interoperability API.
+
+.. warning::
+  Alternative mechanisms for distributing cryptographic material (e.g., public ``.well-known`` endpoints directly exposed by the Authentic Source or *out-of-band* distribution) are not allowed. Trust management MUST remain centralized within the perimeter of the PDND infrastructure as described in the references cited above.

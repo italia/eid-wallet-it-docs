@@ -58,25 +58,13 @@ Questa specifica si basa sul seguente insieme di requisiti:
     - R2, R4, R5
   * - **[ID_AUTH_CHANNEL_01]** Direct Trust Transport-Level Security (*Allegato 2 - Pattern di sicurezza* [`MODI`_]): OBBLIGATORIO. Protegge la comunicazione tra il Fruitore e l'Erogatore garantendo riservatezza, integrità, identificazione dell'Erogatore e mitigazione contro attacchi di replay e spoofing.
     - R1, R2
-  * - **[INTEGRITY_REST_02]** Integrità del payload delle richieste REST in PDND (*Allegato 2 - Pattern di sicurezza* [`MODI`_]): CONDIZIONALE. Garantisce l'integrità del payload della richiesta REST del Fruitore, all'interno dell'Infrastruttura PDND. È OBBLIGATORIO ogni volta che la richiesta contiene un payload.
+  * - **[INTEGRITY_REST_02]** Integrità del payload delle richieste REST in PDND (*Allegato 2 - Pattern di sicurezza* [`MODI`_]): CONDIZIONALE. Garantisce l'integrità del payload della richiesta REST del Fruitore e della risposta REST dell'Erogatore, all'interno dell'Infrastruttura PDND. È OBBLIGATORIO ogni volta che la richiesta/risposta contiene un payload.
     - R2, R4
   * - **[AUDIT_REST_02]** Inoltro dati tracciati nel dominio del Fruitore REST con correlazione (*Allegato 2 - Pattern di sicurezza* [`MODI`_]): OPZIONALE. L'Erogatore PUÒ richiedere dati aggiuntivi tracciati nel dominio del Fruitore, con una correlazione tra tali dati e il metodo di autenticazione. In tal caso, questo pattern DEVE essere utilizzato.
     - R3, R4
 
 .. note::
     In queste specifiche, il pattern di sicurezza ``REST_JWS_2021_POP`` è implementato di default in conformità con :rfc:`9449`. Se DPoP non è supportato dall'Infrastruttura PDND, la prova di possesso è attestata dal JWT ``TrackingEvidence`` (come dettagliato di seguito). Tuttavia, mentre il ``TrackingEvidence`` è definito in ``AUDIT_REST_02`` per fornire dati tracciati aggiuntivi, in questo contesto funge da prova di possesso del Voucher. Tali scelte di implementazione saranno indicate rispettivamente come ``POP_DPoP`` e ``POP_TPoP``.
-
-Inoltre, questa specifica definisce e applica il seguente pattern di sicurezza personalizzato:
-
-.. list-table::
-  :widths: 80 20
-  :header-rows: 1
-
-  * - **Pattern di Sicurezza**
-    - **Conforme a**
-  * - Integrità del payload delle risposte REST in PDND: OBBLIGATORIO. Garantisce l'integrità del payload della risposta REST dell'Erogatore, all'interno dell'Infrastruttura PDND.
-    - R2
-
 
 I seguenti pattern di sicurezza definiti in `PDND`_ e `MODI`_ NON DEVONO essere utilizzati in quanto non conformi ai requisiti definiti in precedenza:
 
@@ -1129,61 +1117,45 @@ Inoltre, l'Erogatore DEVE validare l'integrità della `e-Service Request`, verif
 
 Se uno qualsiasi dei controlli precedenti fallisce, l'Erogatore DEVE rifiutare la richiesta.
 
-**Passo 4 (Risposta):** Qualora i controlli abbiano successo, l'Erogatore fornisce al Fruitore i dati richiesti.
+**Passo 4 (Risposta):** Qualora i controlli abbiano successo, l'Erogatore fornisce al Fruitore i dati richiesti. Nelle intestazioni della risposta DEVE essere presente il JWT (``Signature``) al fine di garantire l'integrità.
 
 .. code-block:: http
   :caption: Esempio non normativo della `e-Service Response`
   :name: _code_Usage_Flow_Response
 
   HTTP/1.1 200 OK
-  Content-Type: application/jwt
-
-  eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4MDJhNjktMTYwNC00MjYxLTkyNDYtMjE0NTNlMjA2NThlIiwidHlwIjoiSldUIn0.eyJpc3MiOiJodHRwczovL2Vyb2dhdG9yZS5leGFtcGxlL2VudGUtZXhhbXBsZS92MSIsImF1ZCI6IjlhOGI3YzZkLWU1ZjQtZzNoMi1pMWowLWtsbW5vcHFyc3R1diIsImV4cCI6MTczMzQwMTc4NSwibmJmIjoxNzMzNDAxMzg3LCJpYXQiOjE3MzM0MDEyNTYsImp0aSI6Ijk5NzUzMmUtODcxYS00OTY5LTk5OTktMTIzNDU2Nzg5YWJjIiwicmVxdWVzdGVkRmllbGQxIjoidmFsdWUxIiwicmVxdWVzdGVkRmllbGQyIjoidmFsdWUyIiwicmVxdWVzdGVkRmllbGQzIjoidmFsdWUzIn0.OZSn693I-oCvvq3RnFW-9HeUWE7J1hri-lyae8CLt2JTbzKPCnWg7f6AmzR-euXYKdRWpofZkhpux7TlYG9RwA
-
-
-.. code-block:: json
-  :caption: Esempio non normativo dell'header JWT della `e-Service Response`
-  :name: _code_Usage_Flow_Response_JWT_Header
+  Content-Type: application/json
+  Agid-JWT-Signature: ew0KICAiYWxnIjogIkVTMjU2IiwNCiAgImtpZCI6ICJhMWY1YzhkMi00YjM3LTRlOTEtYjBkMi03OWUzZjBjNGE4ZWYiLA0KICAidHlwIjogIkpXVCINCn0.ew0KICAiaXNzIjogIjEyMzRhYmNkLWVmNTYtZ2g3OC1pOWowLWtsbW5vcHFyc3R3eCIsDQogICJzdWIiOiAiMTIzNGFiY2QtZWY1Ni1naDc4LWk5ajAta2xtbm9wcXJzdHd4IiwNCiAgImF1ZCI6ICJodHRwczovL2ZydWl0b3JlLmV4YW1wbGUvZW50ZS1leGFtcGxlL3YxIiwNCiAgImlhdCI6IDE3MzMzOTc4NDAsDQogICJuYmYiOiAxNzMzNDAxNjI4LA0KICAiZXhwIjogMTczMzQwMTQ0MCwNCiAgImp0aSI6ICI4ZTEyZjRiNy05YzNhLTRmODMtOWI4ZC01MWEyYzdmNmU5ZDQiLA0KICAic2lnbmVkX2hlYWRlcnMiOiBbDQogICAgew0KICAgICAgImRpZ2VzdCI6ICJTSEEtMjU2PTc5YTIwYTc0NDMzNjQyMDMwMTgzMDYwMGFkOWJkY2E5OTM1OTNmODc2MjA5YTAwNGI1OTliNTgzMDk1YjBhNjEiDQogICAgfSwNCiAgICB7DQogICAgICAiY29udGVudC10eXBlIjogImFwcGxpY2F0aW9uL2pzb24iDQogICAgfQ0KICBdDQp9.DpuBNo2UgQhL7WLin4mpdZrbIpQq3tPvCX6HfktkxG7L5mk6a8OK1Hg0mQcZfFi3gelS-aL9kFS-6MoSy4csBg
+  Digest: SHA-256=79a20a744336420301830600ad9bdca993593f876209a004b599b583095b0a61
 
   {
-    "alg": "ES256",
-    "kid": "2802a69-1604-4261-9246-21453e20658e",
-    "typ": "JWT"
-  }
-
-.. code-block:: json
-  :caption: Esempio non normativo del payload JWT della `e-Service Response`
-  :name: _code_Usage_Flow_Response_JWT_Payload
-
-  {
-    "iss": "https://erogatore.example/ente-example/v1",
-    "aud": "9a8b7c6d-e5f4-g3h2-i1j0-klmnopqrstuv",
-    "exp": 1733401785,
-    "nbf": 1733401387,
-    "iat": 1733401256,
-    "jti": "997532e-871a-4969-9999-123456789abc",
     "requestedField1": "value1",
     "requestedField2": "value2",
     "requestedField3": "value3"
   }
 
-
-Il Fruitore DEVE eseguire i seguenti passaggi per validare il JWT della `e-Service Response`:
+Il Fruitore DEVE validare il JWT ``Signature`` come segue:
 
   Header:
 
-  - Assicurarsi che il claim ``typ`` sia presente e che il suo valore sia ``JWT``.
+    - Assicurarsi che il claim ``typ`` sia presente e che il suo valore sia ``JWT``.
 
   Firma:
 
-  - Ottenere la chiave pubblica dell'Erogatore corrispondente al parametro header ``kid``, interagendo con l'API di Interoperabilità PDND.
-  - Validare la firma del JWT utilizzando la chiave pubblica dell'Erogatore recuperata e l'algoritmo specificato dal parametro header ``alg``.
+    - Validare la firma del JWT utilizzando la chiave pubblica del Fruitore recuperata e l'algoritmo specificato dal parametro header ``alg``.
 
   Payload:
 
-  - Il claim ``iss`` DEVE identificare l'Erogatore.
-  - Il claim ``aud`` DEVE identificare il Client del Fruitore stesso.
+    - I claim ``iss`` e ``sub`` DEVONO identificare l'Erogatore.
+    - Il claim ``aud`` DEVE identificare il Client del Fruitore.
 
+Inoltre, il Fruitore DEVE validare l'integrità della `e-Service Response`, verificando che:
+
+  - Il claim ``signed_headers.content-type`` corrisponda al valore dell'header HTTP ``Content-Type`` della `e-Service Response`.
+  - Il claim ``signed_headers.digest`` corrisponda al valore del digest del payload della `e-Service Response`, nonché al valore dell'header HTTP ``Digest`` della `e-Service Response`.
+
+
+Se uno qualsiasi dei controlli precedenti fallisce, il Fruitore DEVE rifiutare la richiesta.
 
 Endpoint e-Service
 ^^^^^^^^^^^^^^^^^^
@@ -1335,7 +1307,9 @@ Quando si rispetta il pattern di sicurezza ``AUDIT_REST_02``, il payload ``Track
 Risposta (e-Service)
 """"""""""""""""""""""
 
-La `e-Service Response` è un JWT serializzato in formato ``application/jwt``.
+La `e-Service Response` DEVE avere un content type ``application/json``.
+
+La `e-Service Response` DEVE includere i seguenti parametri di header HTTP:
 
 Il JWT della `e-Service Response` DEVE includere i seguenti parametri nel JOSE header:
 
@@ -1347,17 +1321,14 @@ Il JWT della `e-Service Response` DEVE includere i seguenti parametri nel JOSE h
   * - **Parametro**
     - **Descrizione**
     - **Riferimento**
-  * - **alg**
-    - Identificativo di un algoritmo di firma digitale.
-    - [:rfc:`7515`]
-  * - **kid**
-    - Identificativo univoco del JWK utilizzato dall'Erogatore per firmare il JWT.
-    - [:rfc:`7515`]
-  * - **typ**
-    - DEVE essere impostato su ``JWT``.
-    - [:rfc:`7515`], [:rfc:`7519`]
+  * - **Agid-JWT-Signature**
+    - JWT contenente la firma delle intestazioni del messaggio la cui integrità deve essere garantita, per rispettare il pattern di sicurezza ``INTEGRITY_REST_02``.
+    - [`MODI`_]
+  * - **Digest**
+    - Digest del payload del messaggio, per rispettare il pattern di sicurezza ``INTEGRITY_REST_02``. Secondo :rfc:`3230`, il formato DEVE essere il seguente: ``<digest-algorithm>=<encoded digest output>``.
+    - [:rfc:`3230`], [`MODI`_]
 
-Il JWT della `e-Service Response` DEVE includere i seguenti claim nel payload:
+Il JWT ``Signature``, contenuto nell'header HTTP ``Agid-JWT-Signature``, DEVE includere i seguenti claim nel payload:
 
 .. list-table::
   :class: longtable
@@ -1368,7 +1339,10 @@ Il JWT della `e-Service Response` DEVE includere i seguenti claim nel payload:
     - **Descrizione**
     - **Riferimento**
   * - **iss**
-    - Identificativo dell'e-Service.
+    - Identificativo dell'Erogatore.
+    - [:rfc:`7519`]
+  * - **sub**
+    - Identificativo dell'Erogatore.
     - [:rfc:`7519`]
   * - **aud**
     - Identificativo del Fruitore.
@@ -1384,7 +1358,13 @@ Il JWT della `e-Service Response` DEVE includere i seguenti claim nel payload:
     - [:rfc:`7519`]
   * - **jti**
     - Identificativo univoco del JWT per prevenire attacchi di replay.
-    - [:rfc:`7523`]
+    - [:rfc:`7519`]
+  * - **signed_headers**
+    - Oggetto JSON contenente le intestazioni firmate la cui integrità deve essere protetta, per rispettare ``INTEGRITY_REST_02``. DEVE contenere i seguenti claim:
+
+      - **digest**: stringa JSON che rappresenta la firma dell'header HTTP ``Digest``
+      - **content-type**: stringa JSON che rappresenta la firma dell'header HTTP ``Content-Type``
+    - [`MODI`_]
 
 Il payload del JWT della `e-Service Response` include specifici claim relativi ai dati forniti al Fruitore.
 
@@ -1399,46 +1379,44 @@ In caso di problemi di autenticazione (cioè, Voucher non valido o scaduto), la 
     HTTP/1.1 401 Unauthorized
     WWW-Authenticate: DPoP error="invalid_token", error_description="The access token expired"
 
-Per tutti gli altri errori, la risposta DEVE aderire al formato di errore definito in :rfc:`6749#section-5.2`. La risposta DEVE utilizzare ``application/json`` come ``Content-Type`` e DEVE includere i seguenti parametri:
+Per tutti gli altri errori, la risposta DEVE aderire al formato di errore definito in :rfc:`9457`. La risposta DEVE utilizzare ``application/problem+json`` (secondo MODI ``RAC_GEN_FORMAT_002``) come ``Content-Type`` e DEVE includere i seguenti parametri:
 
-    - ``error``: Il codice di errore.
-    - ``error_description``: Testo in forma leggibile dall'uomo che fornisce ulteriori dettagli per chiarire la natura dell'errore incontrato.
+    - ``type``: [OPZIONALE] URI che identifica il tipo di problema.
+    - ``title``:  [OBBLIGATORIO] Stringa contenente un breve riepilogo, leggibile dall’utente, del tipo di problema.
+    - ``status``: [OBBLIGATORIO] Numero che indica il codice di stato HTTP relativo a questa specifica occorrenza del problema.
+    - ``detail``: [OBBLIGATORIO] Stringa contenente una spiegazione, leggibile dall’utente, specifica per questa occorrenza del problema.
+    - ``instance``: [OPZIONALE] Stringa contenente un riferimento URI che identifica la specifica occorrenza del problema.
 
 .. code-block:: http
     :caption: Esempio non normativo di una `e-Service Error Response` in caso di altri errori
     :name: code_Usage_Endpoint_eService_Error
 
     HTTP/1.1 400 Bad Request
-    Content-Type: application/json
+    Content-Type: application/problem+json
 
     {
-        "error": "invalid_request",
-        "error_description": "The Agid-JWT-Signature header parameter is missing."
+        "title": "invalid_request",
+        "status": 400,
+        "detail": "The Agid-JWT-Signature header parameter is missing."
     }
 
 
-La seguente tabella elenca gli HTTP Status Code e i relativi codici di errore che DEVONO essere supportati per la risposta di errore:
+La seguente tabella elenca gli HTTP Status Code che DEVONO essere supportati per la risposta di errore:
 
 .. list-table::
   :class: longtable
-  :widths: 20 20 60
+  :widths: 50 50
   :header-rows: 1
 
   * - **HTTP Status Code**
-    - **Codice di Errore**
     - **Descrizione**
   * - ``400 Bad Request``
-    - ``invalid_request``
-    - La richiesta non può essere soddisfatta perché mancano parametri richiesti, contiene parametri non validi o è in qualche modo malformata [:rfc:`6750#section-3.1`].
+    - La richiesta non può essere soddisfatta perché mancano parametri richiesti, contiene parametri non validi o è in qualche modo malformata.
   * - ``400 Bad Request``
-    - ``invalid_dpop_proof``
-    - La richiesta non può essere soddisfatta perché contiene una *DPoP proof* non valida [:rfc:`9449#section-5`].
+    - La richiesta non può essere soddisfatta perché contiene una *DPoP proof* non valida.
   * - ``401 Unauthorized``
-    - ``invalid_token``
-    - La richiesta non può essere soddisfatta perché il Voucher è scaduto, revocato o in qualche modo malformato [:rfc:`6750#section-3.1`].
+    - La richiesta non può essere soddisfatta perché il Voucher è scaduto, revocato o in qualche modo malformato.
   * - ``500 Internal Server Error``
-    - ``server_error``
     - La richiesta non può essere soddisfatta perché l'Endpoint e-Service ha riscontrato un problema interno.
   * - ``503 Service Unavailable``
-    - ``temporarily_unavailable``
     - La richiesta non può essere soddisfatta perché l'Endpoint e-Service è temporaneamente non disponibile (ad esempio, a causa di manutenzione o sovraccarico).
