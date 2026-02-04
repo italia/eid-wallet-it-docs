@@ -387,7 +387,7 @@ The request and its parameters are defined in Section 5 (Authorization Request) 
    * - Parameter
      - Description
    * - `vp_formats_supported`
-     - REQUIRED. object containing a list of name/value pairs, where the name is a Credential Format Identifier (e.g., dc+sd-jwt, mso_mdoc), and the value defines format-specific parameters that a Wallet supports. See `OpenID4VP`_ Appendix B.
+     - REQUIRED. Object containing a list of name/value pairs, where the name is a Credential Format Identifier and the value defines format-specific parameters that a Wallet supports. See `OpenID4VP`_ Appendix B. Wallet Instances MUST support the Credential Format Identifiers required by `OPENID4VC-HAIP`_ (including ``dc+sd-jwt`` and ``mso_mdoc``).
    * - `client_id_prefixes_supported`
      - RECOMMENDED. A non-empty array of the Client Identifier Prefixes that the Wallet Instance supports.  Valid values include ``openid_federation`` and ``x509_hash``; if omitted, the default is ``pre-registered``.
    * - `authorization_endpoint`
@@ -575,7 +575,7 @@ Where the following parameters are used (:ref:`WP_093 <wallet-credential-present
       The ``vp_token`` MUST be a JSON Object where each key corresponds to a requested Credential id, and each value is either a single presentation or an array of one or more presentations for that Credential. The encoding of each presentation depends on the Credential format, for example:
       
       - **dc+sd-jwt**: an SD-JWT VC string (including the appended Key Binding JWT) (:ref:`WP_093a <wallet-credential-presentation-testcases>`).
-      - **mso_mdoc**: a base64url-encoded CBOR ``DeviceResponse`` corresponding to the requested mdoc presentation (see `OpenID4VP`_ Appendix B.2).
+      - **mso_mdoc**: a base64url-encoded CBOR ``DeviceResponse`` corresponding to the requested mdoc presentation (see `OpenID4VP`_ Appendix B.2). When multiple mdoc presentations are returned, each MUST be carried in a separate ``DeviceResponse`` aligned with the corresponding DCQL query item; in this case, the ``vp_token`` value for that Credential id MUST be an array of ``DeviceResponse`` values.
 
   * - **state**
     - Unique identifier provided by the Relying Party within the Authorization Request.
