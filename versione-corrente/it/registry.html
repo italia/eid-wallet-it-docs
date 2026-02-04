@@ -1028,8 +1028,18 @@ Content-Type: application/json
 <li><p><strong>Verifica della Conformità</strong>: Mantiene Trust Marks che attestano la conformità normativa e lo stato operativo</p></li>
 </ol>
 </section>
+<section id="informazioni-di-registrazione-del-registro-di-federazione">
+<h3><span class="section-number">7.5.2. </span>Informazioni di Registrazione del Registro di Federazione<a class="headerlink" href="#informazioni-di-registrazione-del-registro-di-federazione" title="Link to this heading">¶</a></h3>
+<p>Le entità che si registrano nel Registro di Federazione DEVONO fornire le informazioni specificate nei requisiti del modulo di registrazione come definito in <a class="reference internal" href="onboarding-high-level.html#requisiti-sulle-informazioni-del-modulo-di-registrazione"><span class="std std-ref">Requisiti sulle Informazioni del Modulo di Registrazione</span></a>. Queste informazioni sono raccolte durante la fase di registrazione amministrativa e memorizzate nel Registro Nazionale, che alimenta il Registro di Federazione per scopi di validazione della fiducia.</p>
+<p>Il Registro di Federazione utilizza queste informazioni di registrazione per:
+- Validare l'identità dell'entità durante le operazioni crittografiche
+- Verificare i diritti e gli ambiti di autorizzazione
+- Supportare la validazione della catena di fiducia e l'emissione di certificati
+- Abilitare l'interoperabilità transfrontaliera attraverso formati di dati standardizzati</p>
+<p>Per informazioni dettagliate sui dati che le entità devono fornire durante la registrazione, vedere <a class="reference internal" href="onboarding-high-level.html#requisiti-sulle-informazioni-del-modulo-di-registrazione"><span class="std std-ref">Requisiti sulle Informazioni del Modulo di Registrazione</span></a>.</p>
+</section>
 <section id="accesso-al-registro-di-federazione">
-<h3><span class="section-number">7.5.2. </span>Accesso al Registro di Federazione<a class="headerlink" href="#accesso-al-registro-di-federazione" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">7.5.3. </span>Accesso al Registro di Federazione<a class="headerlink" href="#accesso-al-registro-di-federazione" title="Link to this heading">¶</a></h3>
 <p>Le operazioni del Registro di Federazione sono accessibili attraverso gli endpoint di federazione del Trust Anchor come dettagliato in <a class="reference internal" href="trust-infrastructure.html#endpoint-api-di-federazione"><span class="std std-ref">Endpoint API di Federazione</span></a>. L'architettura di scoperta del registro fornisce informazioni sugli endpoint di federazione tramite l'endpoint di scoperta del registro descritto in <a class="reference internal" href="#endpoint-di-scoperta-del-registro">Endpoint di Scoperta del Registro</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
@@ -2447,7 +2457,8 @@ I principali Percorsi di utilizzo illustrano di seguito le interazioni con l'Inf
 </li>
 <li><a class="reference internal" href="#registro-di-federazione">7.5. Registro di Federazione</a><ul>
 <li><a class="reference internal" href="#ruolo-di-integrazione-del-registro">7.5.1. Ruolo di Integrazione del Registro</a></li>
-<li><a class="reference internal" href="#accesso-al-registro-di-federazione">7.5.2. Accesso al Registro di Federazione</a></li>
+<li><a class="reference internal" href="#informazioni-di-registrazione-del-registro-di-federazione">7.5.2. Informazioni di Registrazione del Registro di Federazione</a></li>
+<li><a class="reference internal" href="#accesso-al-registro-di-federazione">7.5.3. Accesso al Registro di Federazione</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#catalogo-degli-attestati-elettronici">7.6. Catalogo degli Attestati Elettronici</a><ul>

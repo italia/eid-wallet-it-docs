@@ -192,7 +192,13 @@
 <li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Sistema di Onboarding</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="onboarding-high-level.html#architettura-del-sistema-di-onboarding">4.1. Architettura del Sistema di Onboarding</a></li>
 <li class="toctree-l2"><a class="reference internal" href="onboarding-high-level.html#processo-di-registrazione-della-fonte-autentica">4.2. Processo di Registrazione della Fonte Autentica</a></li>
-<li class="toctree-l2"><a class="reference internal" href="onboarding-high-level.html#processo-di-onboarding-della-federazione">4.3. Processo di Onboarding della Federazione</a></li>
+<li class="toctree-l2"><a class="reference internal" href="onboarding-high-level.html#processo-di-onboarding-della-federazione">4.3. Processo di Onboarding della Federazione</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="onboarding-high-level.html#requisiti-sulle-informazioni-del-modulo-di-registrazione">4.3.1. Requisiti sulle Informazioni del Modulo di Registrazione</a></li>
+<li class="toctree-l3"><a class="reference internal" href="onboarding-high-level.html#matrice-delle-responsabilita">4.3.2. Matrice delle Responsabilità</a></li>
+<li class="toctree-l3"><a class="reference internal" href="onboarding-high-level.html#notifica-dello-stato-membro-alla-commissione-europea">4.3.3. Notifica dello Stato Membro alla Commissione Europea</a></li>
+<li class="toctree-l3"><a class="reference internal" href="onboarding-high-level.html#pubblicazione-delle-trusted-lists-per-attestation-provider">4.3.4. Pubblicazione delle Trusted Lists per Attestation Provider</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="onboarding-high-level.html#gestione-del-ciclo-di-vita-delle-entita">4.4. Gestione del Ciclo di Vita delle Entità</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="onboarding-high-level.html#gestione-delle-operazioni-continuative">4.4.1. Gestione delle Operazioni Continuative</a></li>
 <li class="toctree-l3"><a class="reference internal" href="onboarding-high-level.html#processi-di-uscita-e-rimozione-dalla-federazione">4.4.2. Processi di Uscita e Rimozione dalla Federazione</a></li>
@@ -250,9 +256,12 @@
 <li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. L'Infrastruttura di Trust</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#ruoli-di-federazione">6.1. Ruoli di Federazione</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#integrazione-dell-infrastruttura-di-trust-e-del-registro">6.2. Integrazione dell'Infrastruttura di Trust e del Registro</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#proprieta-generali">6.3. Proprietà Generali</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#requisiti-dell-infrastruttura-di-trust">6.4. Requisiti dell'Infrastruttura di Trust</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#endpoint-api-di-federazione">6.5. Endpoint API di Federazione</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#schema-dell-infrastruttura-di-trust-onboarding-e-trusted-lists">6.3. Schema dell'Infrastruttura di Trust: Onboarding e Trusted Lists</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#trusted-lists-per-eaa-provider-profilo-di-implementazione">6.3.1. Trusted Lists per EAA Provider: Profilo di Implementazione</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#endpoint-api-di-federazione">6.4. Endpoint API di Federazione</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#endpoint-delle-trusted-lists-nazionali">6.5. Endpoint delle Trusted Lists Nazionali</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#federation-subordinate-events-endpoint">6.5.1. Federation Subordinate Events Endpoint</a></li>
 </ul>
 </li>
@@ -309,7 +318,8 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="registry.html#registro-di-federazione">7.5. Registro di Federazione</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="registry.html#ruolo-di-integrazione-del-registro">7.5.1. Ruolo di Integrazione del Registro</a></li>
-<li class="toctree-l3"><a class="reference internal" href="registry.html#accesso-al-registro-di-federazione">7.5.2. Accesso al Registro di Federazione</a></li>
+<li class="toctree-l3"><a class="reference internal" href="registry.html#informazioni-di-registrazione-del-registro-di-federazione">7.5.2. Informazioni di Registrazione del Registro di Federazione</a></li>
+<li class="toctree-l3"><a class="reference internal" href="registry.html#accesso-al-registro-di-federazione">7.5.3. Accesso al Registro di Federazione</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="registry.html#catalogo-degli-attestati-elettronici">7.6. Catalogo degli Attestati Elettronici</a><ul>
@@ -551,7 +561,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="standards.html">17.4. Technical References</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="standards.html#wallet-paradigm-frameworks">17.4.1. Wallet Paradigm Frameworks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standards.html#wallet-architecture-and-reference-frameworks">17.4.1. Wallet Architecture and Reference Frameworks</a></li>
 <li class="toctree-l3"><a class="reference internal" href="standards.html#infrastructure-of-trust">17.4.2. Infrastructure of Trust</a></li>
 <li class="toctree-l3"><a class="reference internal" href="standards.html#digital-credential-data-format">17.4.3. Digital Credential Data Format</a></li>
 <li class="toctree-l3"><a class="reference internal" href="standards.html#digital-credential-issuance">17.4.4. Digital Credential Issuance</a></li>
