@@ -259,7 +259,7 @@ Below is the description of acronyms and definitions which are useful for furthe
 
     **Access Certificate**
       Certificate authenticating and validating the (Wallet-) Relying Party.
-      Aligned with ARF 2.7.3
+      Aligned with ARF 2.7.3.
 
     **Access Certificate Authority**
     **Access CA**
