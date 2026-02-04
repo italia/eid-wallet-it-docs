@@ -443,7 +443,6 @@ The Federation Registry uses this registration information to:
   - Support trust chain validation and certificate issuance
   - Enable cross-border interoperability through standardized data formats
 
-For detailed information about what data entities must provide during registration, see :ref:`onboarding-high-level:Registration Form Information Requirements`.
 
 Federation Registry Access
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
