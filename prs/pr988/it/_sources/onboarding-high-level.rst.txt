@@ -159,7 +159,7 @@ Il modulo di registrazione DEVE raccogliere almeno le seguenti informazioni come
        - **Per EAA Provider non qualificati**: Informazioni sul provider di servizi
        - **Per Relying Party**: Punto/i di fornitura del servizio e informazioni sugli endpoint tecnici
 
-Il modulo di registrazione DEVE essere progettato per supportare sia l'inserimento manuale dei dati che i processi di registrazione automatizzati attraverso registri autorevoli qualificati (vedere :ref:`entity-onboarding:Considerazioni su Scala Industriale`). Il Registrar PUÒ importare informazioni sull'entità da registri qualificati (es., registri aziendali, registri IVA, registri di qualificazione professionale, GLEIF per record LEI) per ridurre la duplicazione e semplificare l'onboarding.
+Il modulo di registrazione DEVE essere progettato per supportare sia l'inserimento manuale dei dati che i processi di registrazione automatizzati attraverso registri autorevoli qualificati. Il Registrar PUÒ importare informazioni sull'entità da registri qualificati (es., registri aziendali, registri IVA, registri di qualificazione professionale, GLEIF per record LEI) per ridurre la duplicazione e semplificare l'onboarding.
 
 Tutte le informazioni fornite nel modulo di registrazione DEVONO essere:
 - Accurate e aggiornate al momento della registrazione
