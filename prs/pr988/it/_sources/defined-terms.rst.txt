@@ -190,6 +190,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 
     **Fornitore di Servizi**
     **Relying Party**
+    **Wallet‑Relying Party**
       Entità che si affida all'identificazione elettronica o al Servizio Fiduciario di un'Istanza del Wallet.
       Conforme con ARF 2.7.3.
 
