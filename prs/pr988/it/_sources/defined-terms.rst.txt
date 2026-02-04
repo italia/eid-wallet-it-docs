@@ -264,7 +264,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 
     **Certificato di Accesso**
     **Access Certificate**
-      Certificato di autenticazione e convalida della (Wallet-) Relying Party.
+      Certificato di autenticazione e convalida della Wallet Relying Party.
       Conforme con ARF 2.7.3.
 
     **Certificato di Registrazione**
