@@ -76,7 +76,7 @@ For PID Providers, Attestation Providers, and Relying Parties, the federation on
 Registration Form Information Requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-According to the Architecture and Reference Framework (ARF) High-Level Requirements and Regulation (EU) 2025/848, Annex I, all entities registering with National Registrars MUST provide the following information in the registration form. This information is required for PID Providers, Attestation Providers (QEAA Providers, PuB-EAA Providers, and non-qualified EAA Providers), and Relying Parties.
+During the administrative registration process, all entities registering with National Registrars MUST provide specific information. 
 
 For entities regulated under the Architecture and Reference Framework (ARF) - namely PID Providers, Attestation Providers (QEAA Providers, PuB-EAA Providers, and non-qualified EAA Providers), and Relying Parties - the registration form MUST collect at least the following information as specified in `Regulation (EU) 2025/848, Annex I <https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202500848>`_ and aligned with the use cases defined in the trust infrastructure onboarding documentation:
 
