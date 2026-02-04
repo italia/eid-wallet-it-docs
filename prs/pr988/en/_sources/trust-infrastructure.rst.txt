@@ -36,7 +36,7 @@ All the participants are Federation Entities that MUST be registered by a Regist
 
   This is called *Wallet Attestation* and is documented in the dedicated :ref:`wallet-attestation-issuance:Wallet App and Wallet Unit Attestation Issuance`.
 
-**Role in Onboarding**: During entity registration, the Trust Anchor and Intermediates act as Federation Authorities. This establishes the participant's position in the trust hierarchy and enables them to participate in Credential operations. Leaves (Credential Issuers, Relying Parties, Wallet Providers) undergo registration to prove their eligibility and receive authorization to perform their designated functions.
+**Role in Onboarding**: Entity onboarding is split between **Registration Authorities (Registrars)** and **Federation Authorities** (Trust Anchor and Intermediates). Registrars handle **administrative registration** (legal identity, regulatory compliance, business justification, and eligibility), while Federation Authorities handle **federation registration** (issuing federation certificates, applying federation metadata policies, and placing entities in the trust hierarchy). Leaves (Credential Issuers, Relying Parties, Wallet Providers) undergo both steps: they first prove their eligibility to the Registrar and then obtain federation authorization from the Federation Authorities to perform their designated functions in Credential operations.
 
 **Role in Operations**: During Credential issuance and presentation, these roles enable distributed trust validation without requiring centralized verification for each transaction. Leaves utilize their registered status to issue Credentials, verify presentations, or provide Wallet services to end users.
 
@@ -91,7 +91,7 @@ This Federation Registry operates alongside other registry components (Claims Re
 Trust Infrastructure Schema: Onboarding and Trusted Lists
 ---------------------------------------------------------
 
-The trust infrastructure relies on three distinct but complementary processes:
+The trust infrastructure relies on five distinct but complementary processes:
 
 1. **Registration/Onboarding**: Entities (PID Providers, Qualified Electronic Attestation of Attributes Providers, Electronic Attestation of Attributes Providers, Relying Parties, Wallet Providers) register with the National Registrar or the IT-Wallet onboarding system to define operational authorization and entitlements.
 2. **Notification**: The Member State notifies the European Commission, as operator of the EU-level eIDAS Trusted List Provider, of **PID Providers**, **PuB-EAA Providers**, **Wallet Providers**, **Access Certificate Authorities (Access CAs)**, and **Providers of Registration Certificates** for inclusion in the relevant Trusted Lists.

@@ -190,7 +190,7 @@
 <p>L'Istanza del Wallet, come dispositivo personale, è considerata affidabile attraverso un'attestazione verificabile rilasciata e firmata da una terza parte fidata.</p>
 <p>Questo è chiamato <em>Wallet Attestation</em> ed è documentato nella sezione dedicata <a class="reference internal" href="wallet-attestation-issuance.html#emissione-della-wallet-app-e-wallet-unit-attestation"><span class="std std-ref">Emissione della Wallet App e Wallet Unit Attestation</span></a>.</p>
 </div>
-<p><strong>Ruolo nell'Onboarding</strong>: Durante la registrazione delle entità, il Trust Anchor e gli Intermediari agiscono come Autorità di Federazione. Questo stabilisce la posizione del partecipante nella gerarchia di trust e gli consente di partecipare alle operazioni di credenziali. Le Foglie (Credential Issuer, Relying Party, Fornitori di Wallet) subiscono la registrazione per dimostrare la loro idoneità e ricevere l'autorizzazione per svolgere le loro funzioni designate.</p>
+<p><strong>Ruolo nell'Onboarding</strong>: Il processo di onboarding delle entità è suddiviso tra <strong>Registration Authority (Registrar)</strong> e <strong>Autorità di Federazione</strong> (Trust Anchor e Intermediari). I Registrar gestiscono la <strong>registrazione amministrativa</strong> (identità legale, conformità normativa, giustificazione di business e idoneità), mentre le Autorità di Federazione gestiscono la <strong>registrazione di federazione</strong> (emissione di certificati di federazione, applicazione delle federation metadata policy e posizionamento delle entità nella gerarchia di trust). Le Foglie (Credential Issuer, Relying Party, Fornitori di Wallet) attraversano entrambi i passaggi: prima dimostrano la loro idoneità al Registrar, poi ottengono l'autorizzazione di federazione dalle Autorità di Federazione per svolgere le loro funzioni nelle operazioni sulle Credenziali.</p>
 <p><strong>Ruolo nelle Operazioni</strong>: Durante l'emissione e la presentazione delle Credenziali, questi ruoli abilitano la validazione del trust distribuita senza richiedere la verifica centralizzata per ogni transazione. Le Foglie utilizzano il loro stato registrato per emettere Credenziali, verificare presentazioni o fornire servizi di Wallet agli utenti finali.</p>
 <p>Di seguito la tabella con il riepilogo dei ruoli delle Entità di Federazione, mappati sui corrispondenti ruoli EUDI Wallet.</p>
 <table class="longtable docutils align-default">
@@ -239,11 +239,11 @@
 <td></td>
 </tr>
 <tr class="row-even"><td><p>eIDAS Trusted List Provider</p></td>
-<td><p>Trust Anchor</p></td>
+<td><p>eIDAS Trust Anchor</p></td>
 <td><p>Compila, firma e pubblica le eIDAS Trusted Lists a livello UE per QTSP, Fornitori di Wallet, PID Provider, Access CA e Fornitori di Certificati di Registrazione, come descritto nello schema dell'infrastruttura di trust dell'EUDI Wallet.</p></td>
 </tr>
 <tr class="row-odd"><td><p>National eIDAS Trusted List Provider</p></td>
-<td><p>Intermediate</p></td>
+<td><p>National Trust Anchor</p></td>
 <td><p>Compila, firma e pubblica le Trusted Lists nazionali per i QEAA Provider e per gli EAA Provider non qualificati secondo il quadro nazionale dei servizi fiduciari, come descritto in questo documento per la pubblicazione delle Trusted Lists degli EAA Provider e dei QEAA Provider.</p></td>
 </tr>
 </tbody>
@@ -256,7 +256,7 @@
 </section>
 <section id="schema-dell-infrastruttura-di-trust-onboarding-e-trusted-lists">
 <h2><span class="section-number">6.3. </span>Schema dell'Infrastruttura di Trust: Onboarding e Trusted Lists<a class="headerlink" href="#schema-dell-infrastruttura-di-trust-onboarding-e-trusted-lists" title="Link to this heading">¶</a></h2>
-<p>L'infrastruttura di trust si basa su tre processi distinti ma complementari:</p>
+<p>L'infrastruttura di trust si basa su cinque processi distinti ma complementari:</p>
 <ol class="arabic simple">
 <li><p><strong>Registrazione/Onboarding</strong>: Le entità (PID Provider, QEAA Provider, EAA Provider, Relying Party, Wallet Provider) si registrano con il Registrar nazionale o tramite il sistema di onboarding dell'IT-Wallet per definire l'autorizzazione operativa e i diritti.</p></li>
 <li><p><strong>Notifica</strong>: Lo Stato Membro notifica alla Commissione Europea, in qualità di operatore dell'eIDAS Trusted List Provider a livello UE, i <strong>PID Provider</strong>, i <strong>PuB-EAA Provider</strong>, i <strong>Wallet Provider</strong>, le <strong>Autorità Certificatrici di Accesso (Access CA)</strong> e i <strong>Fornitori di Certificati di Registrazione</strong> per l'inclusione nelle relative Trusted Lists.</p></li>
