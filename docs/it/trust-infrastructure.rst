@@ -38,7 +38,7 @@ Tutti i partecipanti sono Entità di Federazione che DEVONO essere registrate da
 
   Questo è chiamato *Wallet Attestation* ed è documentato nella sezione dedicata :ref:`wallet-attestation-issuance:Emissione della Wallet App e Wallet Unit Attestation`.
 
-**Ruolo nell'Onboarding**: Durante la registrazione delle entità, il Trust Anchor e gli Intermediari agiscono come Autorità di Federazione. Questo stabilisce la posizione del partecipante nella gerarchia di trust e gli consente di partecipare alle operazioni di credenziali. Le Foglie (Credential Issuer, Relying Party, Fornitori di Wallet) subiscono la registrazione per dimostrare la loro idoneità e ricevere l'autorizzazione per svolgere le loro funzioni designate.
+**Ruolo nell'Onboarding**: Il processo di onboarding delle entità è suddiviso tra **Registration Authority (Registrar)** e **Autorità di Federazione** (Trust Anchor e Intermediari). I Registrar gestiscono la **registrazione amministrativa** (identità legale, conformità normativa, giustificazione di business e idoneità), mentre le Autorità di Federazione gestiscono la **registrazione di federazione** (emissione di certificati di federazione, applicazione delle federation metadata policy e posizionamento delle entità nella gerarchia di trust). Le Foglie (Credential Issuer, Relying Party, Fornitori di Wallet) attraversano entrambi i passaggi: prima dimostrano la loro idoneità al Registrar, poi ottengono l'autorizzazione di federazione dalle Autorità di Federazione per svolgere le loro funzioni nelle operazioni sulle Credenziali.
 
 **Ruolo nelle Operazioni**: Durante l'emissione e la presentazione delle Credenziali, questi ruoli abilitano la validazione del trust distribuita senza richiedere la verifica centralizzata per ogni transazione. Le Foglie utilizzano il loro stato registrato per emettere Credenziali, verificare presentazioni o fornire servizi di Wallet agli utenti finali.
 
@@ -77,10 +77,10 @@ Di seguito la tabella con il riepilogo dei ruoli delle Entità di Federazione, m
      - Leaf
      -
    * - eIDAS Trusted List Provider
-     - Trust Anchor
+     - eIDAS Trust Anchor
      - Compila, firma e pubblica le eIDAS Trusted Lists a livello UE per QTSP, Fornitori di Wallet, PID Provider, Access CA e Fornitori di Certificati di Registrazione, come descritto nello schema dell'infrastruttura di trust dell'EUDI Wallet.
    * - National eIDAS Trusted List Provider
-     - Intermediate
+     - National Trust Anchor
      - Compila, firma e pubblica le Trusted Lists nazionali per i QEAA Provider e per gli EAA Provider non qualificati secondo il quadro nazionale dei servizi fiduciari, come descritto in questo documento per la pubblicazione delle Trusted Lists degli EAA Provider e dei QEAA Provider.
 
 .. _trust-infrastructure-integrazione-tra-infrastruttura-di-trust-e-registry:
@@ -95,7 +95,7 @@ Questo Federation Registry opera insieme ad altri componenti del registro (Claim
 Schema dell'Infrastruttura di Trust: Onboarding e Trusted Lists
 ----------------------------------------------------------------
 
-L'infrastruttura di trust si basa su tre processi distinti ma complementari:
+L'infrastruttura di trust si basa su cinque processi distinti ma complementari:
 
 1. **Registrazione/Onboarding**: Le entità (PID Provider, QEAA Provider, EAA Provider, Relying Party, Wallet Provider) si registrano con il Registrar nazionale o tramite il sistema di onboarding dell'IT-Wallet per definire l'autorizzazione operativa e i diritti.
 2. **Notifica**: Lo Stato Membro notifica alla Commissione Europea, in qualità di operatore dell'eIDAS Trusted List Provider a livello UE, i **PID Provider**, i **PuB-EAA Provider**, i **Wallet Provider**, le **Autorità Certificatrici di Accesso (Access CA)** e i **Fornitori di Certificati di Registrazione** per l'inclusione nelle relative Trusted Lists.
