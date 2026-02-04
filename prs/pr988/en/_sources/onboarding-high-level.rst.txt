@@ -68,10 +68,10 @@ Operational entities (PID Providers, Attestation Providers, Relying Parties, and
 
 For PID Providers, Attestation Providers, and Relying Parties, the federation onboarding process typically includes:
 
-1. **Entity Registration**: Collection of core data (identification, entitlements, service supply points, and cryptographic public keys and certificates) needed to authorize entities and describe their capabilities.
-2. **Certificate Issuance**: Issuance of certificates that authenticate entities, reference the registry for entitlement verification, support certificate transparency, and describe registration status for Relying Parties and Credential Issuers.
-3. **Registration Certificate Issuance**: Issuance of registration certificates that describe registration status and entitlements for Relying Parties and Credential Issuers.
-3. **Registry Publication**: Publication of all registered entities in the registry, with an online API (see :ref:`trust-infrastructure:Trust Infrastructure and Registry Integration`) that can be used to verify entity registration, and requested attributes.
+- **Entity Registration**: Collection of core data (identification, entitlements, service supply points, and cryptographic public keys and certificates) needed to authorize entities and describe their capabilities.
+- **Certificate Issuance**: Issuance of certificates that authenticate entities, reference the registry for entitlement verification, support certificate transparency, and describe registration status for Relying Parties and Credential Issuers.
+- **Registration Certificate Issuance**: Issuance of registration certificates that describe registration status and entitlements for Relying Parties and Credential Issuers.
+- **Registry Publication**: Publication of all registered entities in the registry, with an online API (see :ref:`trust-infrastructure:Trust Infrastructure and Registry Integration`) that can be used to verify entity registration, and requested attributes.
 
 Registration Form Information Requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -183,15 +183,15 @@ The following table summarizes the registration requirement and the authority re
      - Registration Process
      - Trusted List Compilation (EC / MS TLP)
      - Member State TLP Role
-  * - **PID Provider**
+   * - **PID Provider**
      - **Registration with Registrar**
      - **European Commission** (EU-level TL for PID Providers)
      - None (no national TL for PID Providers)
-  * - **Attestation Provider**
+   * - **Attestation Provider**
      - **Registration with Registrar**
      - **Member State / MS TLP** (national QTSP TL for QEAA Providers; national TL for non-qualified EAA Providers)
      - Compiles, signs, and publishes national Trusted Lists for QEAA and non-qualified EAA Providers according to the national trust services framework.
-  * - **Relying Party (RP)**
+   * - **Relying Party (RP)**
      - **Registration with Registrar**
      - N/A (Uses Access Certificates/Registry)
      - None (not listed in TLs)

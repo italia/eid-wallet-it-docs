@@ -220,12 +220,12 @@
 <p>Federation onboarding, including administrative and technical registration processes, establishes the trust relationships and compliance checks that enable all entities (PID Providers, Attestation Providers, Relying Parties, Wallet Providers, and Authentic Sources) to participate in the Credential lifecycle.
 Operational entities (PID Providers, Attestation Providers, Relying Parties, and Wallet Providers) MUST complete onboarding that includes administrative eligibility verification and technical validation. For Wallet Providers, this includes conformity assessment of the Wallet Solution and subsequent Trusted List notification flows.</p>
 <p>For PID Providers, Attestation Providers, and Relying Parties, the federation onboarding process typically includes:</p>
-<ol class="arabic simple">
+<ul class="simple">
 <li><p><strong>Entity Registration</strong>: Collection of core data (identification, entitlements, service supply points, and cryptographic public keys and certificates) needed to authorize entities and describe their capabilities.</p></li>
 <li><p><strong>Certificate Issuance</strong>: Issuance of certificates that authenticate entities, reference the registry for entitlement verification, support certificate transparency, and describe registration status for Relying Parties and Credential Issuers.</p></li>
-</ol>
-<p>3. <strong>Registration Certificate Issuance</strong>: Issuance of registration certificates that describe registration status and entitlements for Relying Parties and Credential Issuers.
-3. <strong>Registry Publication</strong>: Publication of all registered entities in the registry, with an online API (see <a class="reference internal" href="trust-infrastructure.html#trust-infrastructure-and-registry-integration"><span class="std std-ref">Trust Infrastructure and Registry Integration</span></a>) that can be used to verify entity registration, and requested attributes.</p>
+<li><p><strong>Registration Certificate Issuance</strong>: Issuance of registration certificates that describe registration status and entitlements for Relying Parties and Credential Issuers.</p></li>
+<li><p><strong>Registry Publication</strong>: Publication of all registered entities in the registry, with an online API (see <a class="reference internal" href="trust-infrastructure.html#trust-infrastructure-and-registry-integration"><span class="std std-ref">Trust Infrastructure and Registry Integration</span></a>) that can be used to verify entity registration, and requested attributes.</p></li>
+</ul>
 <section id="registration-form-information-requirements">
 <h3><span class="section-number">4.3.1. </span>Registration Form Information Requirements<a class="headerlink" href="#registration-form-information-requirements" title="Link to this heading">¶</a></h3>
 <p>During the administrative registration process, all entities registering with National Registrars MUST provide specific information.</p>
@@ -356,6 +356,54 @@ Operational entities (PID Providers, Attestation Providers, Relying Parties, and
 <section id="responsibilities-matrix">
 <h3><span class="section-number">4.3.2. </span>Responsibilities Matrix<a class="headerlink" href="#responsibilities-matrix" title="Link to this heading">¶</a></h3>
 <p>The following table summarizes the registration requirement and the authority responsible for compiling the Trusted List (TL) for each entity type:</p>
+<table class="longtable docutils align-default" id="id3">
+<caption><span class="caption-number">Table 4.2 </span><span class="caption-text">Federation Onboarding Responsibilities Matrix</span><a class="headerlink" href="#id3" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Entity Type</p></th>
+<th class="head"><p>Registration Process</p></th>
+<th class="head"><p>Trusted List Compilation (EC / MS TLP)</p></th>
+<th class="head"><p>Member State TLP Role</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>PID Provider</strong></p></td>
+<td><p><strong>Registration with Registrar</strong></p></td>
+<td><p><strong>European Commission</strong> (EU-level TL for PID Providers)</p></td>
+<td><p>None (no national TL for PID Providers)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Attestation Provider</strong></p></td>
+<td><p><strong>Registration with Registrar</strong></p></td>
+<td><p><strong>Member State / MS TLP</strong> (national QTSP TL for QEAA Providers; national TL for non-qualified EAA Providers)</p></td>
+<td><p>Compiles, signs, and publishes national Trusted Lists for QEAA and non-qualified EAA Providers according to the national trust services framework.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Relying Party (RP)</strong></p></td>
+<td><p><strong>Registration with Registrar</strong></p></td>
+<td><p>N/A (Uses Access Certificates/Registry)</p></td>
+<td><p>None (not listed in TLs)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Wallet Provider</strong></p></td>
+<td><p><em>Notification only</em> (to EC)</p></td>
+<td><p><strong>European Commission</strong> (EU-level TL for Wallet Providers)</p></td>
+<td><p>Not applicable in pilot (notification from Member State to EC only)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Access CA</strong></p></td>
+<td><p><em>Notification only</em> (to EC)</p></td>
+<td><p><strong>European Commission</strong> (EU-level TL for Access CAs)</p></td>
+<td><p>Not applicable in pilot (notification from Member State to EC only)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Reg. Cert. Provider</strong></p></td>
+<td><p><em>Notification only</em> (to EC)</p></td>
+<td><p><strong>European Commission</strong> (EU-level TL for Reg. Cert. Providers)</p></td>
+<td><p>Not applicable in pilot (notification from Member State to EC only)</p></td>
+</tr>
+</tbody>
+</table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>Trusted Lists and Federation Registry</strong>: Entities listed in national Trusted Lists are also registered in the national Federation Registry, which maintains additional technical information (e.g., federation endpoints). Key validation can occur through both mechanisms: verification against the Trusted List and verification through federation endpoints.</p>
