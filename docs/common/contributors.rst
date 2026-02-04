@@ -1,5 +1,6 @@
 - Alen Horvat
 - Amir Sharif
+- Andrea Misuraca
 - Andrea Moro
 - Andrea Prosseda
 - Chris Phillips
