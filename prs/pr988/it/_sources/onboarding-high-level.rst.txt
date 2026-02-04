@@ -63,15 +63,15 @@ Le procedure di implementazione tecnica per la registrazione della Fonte Autenti
 Processo di Onboarding della Federazione
 -----------------------------------------
 
-L'onboarding della federazione stabilisce le relazioni di trust crittografiche e le verifiche di conformità che consentono alle entità operative (PID Provider, Attestation Provider, Relying Party e Fornitori di Wallet) di partecipare ad attività sicure del ciclo di vita delle Credenziali.
+L'onboarding della federazione, inclusi i processi di registrazione amministrativa e tecnica, stabilisce le relazioni di trust crittografiche e le verifiche di conformità che consentono a tutte le entità (PID Provider, Attestation Provider, Relying Party, Fornitori di Wallet e Fonti Autentiche) di partecipare ad attività sicure del ciclo di vita delle Credenziali.
 Le entità operative DEVONO completare l'onboarding che include la verifica dell'eleggibilità amministrativa e la validazione tecnica. Per i Fornitori di Wallet, questo include la valutazione di conformità della Soluzione Wallet e i successivi flussi di notifica nelle Trusted Lists.
 
-Il processo di registrazione/onboarding, gestito dai Registrar degli Stati Membri per PID Provider, Attestation Provider e Relying Party, tipicamente include:
+Per PID Provider, Attestation Provider e Relying Party, il processo di onboarding della federazione tipicamente include:
 
 1. **Registrazione dell'Entità**: Raccolta dei dati principali (identificazione, diritti, punti di fornitura del servizio e chiavi pubbliche crittografiche e certificati) necessari per autorizzare le entità e descriverne le capacità.
-2. **Emissione del Certificato di Accesso**: Emissione di certificati di accesso che autenticano le entità, fanno riferimento al registro per la verifica dei diritti e supportano la Certificate Transparency.
+2. **Emissione dei Certificati**: Emissione di certificati che autenticano le entità, fanno riferimento al registro per la verifica dei diritti, supportano la Certificate Transparency e descrivono lo stato di registrazione per Relying Party e Credential Issuer.
 3. **Emissione del Certificato di Registrazione**: Emissione di certificati di registrazione che descrivono lo stato di registrazione e i diritti per Relying Party e Credential Issuer.
-4. **Pubblicazione del Registro**: Pubblicazione di tutte le entità registrate nel registro, con un'API online (vedi :ref:`trust-infrastructure:Integrazione dell'Infrastruttura di Trust e del Registro`) che le Wallet Unit utilizzano per verificare la registrazione dei PID Provider, la registrazione degli Attestation Provider e i tipi, e la registrazione delle Relying Party e gli attributi richiesti.
+4. **Pubblicazione del Registro**: Pubblicazione di tutte le entità registrate nel registro, con un'API online (vedi :ref:`trust-infrastructure:Integrazione dell'Infrastruttura di Trust e del Registro`) che può essere utilizzata per verificare la registrazione delle entità e gli attributi richiesti.
 
 .. note::
   I **PID Provider**, i **PuB-EAA Provider** e i **Wallet Provider** sono registrati attraverso il sistema di onboarding dell'IT-Wallet e successivamente notificati alla Commissione Europea per l'inclusione nelle Trusted Lists. I Wallet Provider non ricevono certificati di accesso o certificati di registrazione dai Registrar nazionali. La Soluzione Wallet fornita dal Wallet Provider deve essere certificata da Organismi di Valutazione della Conformità (CAB) secondo il quadro nazionale di valutazione della conformità.
@@ -122,13 +122,13 @@ Il modulo di registrazione DEVE raccogliere almeno le seguenti informazioni come
        - Base di utenti target
        - Ambito e capacità del servizio
    * - **Elenco Attributi Richiesti**
-     - OBBLIGATORIO. Un elenco degli attributi che la wallet-relying party intende richiedere per ogni uso previsto. Questo DEVE fare riferimento a:
+     - OBBLIGATORIO, ove applicabile. Un elenco degli attributi che la wallet-relying party intende richiedere per ogni uso previsto. Questo DEVE fare riferimento a:
        
        - Identificatori specifici di claim dal Registro Claims (es., ``given_name``, ``family_name``, ``driving_privileges``)
        - Classificazioni della Tassonomia (domini, classi, scopi) per la valutazione delle politiche di autorizzazione
        - Vedere :ref:`registry:Registro Claims` per le definizioni standardizzate dei claim
    * - **Descrizione dell'Uso Previsto**
-     - OBBLIGATORIO. Una descrizione dell'uso previsto dei dati, inclusi:
+     - OBBLIGATORIO, ove applicabile. Una descrizione dell'uso previsto dei dati, inclusi:
        
        - Scopo commerciale per la richiesta di attributi
        - Contesto del servizio e casi d'uso
@@ -186,15 +186,15 @@ La seguente tabella riassume il requisito di registrazione e l'autorità respons
      - Compilazione Trusted List (EC / MS TLP)
      - Ruolo MS TLP
    * - **PID Provider**
-     - **Registrazione con Registrar nazionale**
+     - **Registrazione presso il Registrar**
      - **Commissione Europea** (TL a livello UE per PID Provider)
      - Nessuno (nessuna TL nazionale per PID Provider)
    * - **Attestation Provider**
-     - **Registrazione con Registrar nazionale**
+     - **Registrazione presso il Registrar**
      - **Stato Membro / MS TLP** (TL QTSP nazionale per QEAA Provider; TL nazionale per EAA Provider non qualificati)
      - Compila, firma e pubblica le Trusted Lists nazionali per QEAA Provider ed EAA Provider non qualificati secondo il quadro nazionale dei servizi fiduciari.
    * - **Relying Party (RP)**
-     - **Registrazione con Registrar nazionale**
+     - **Registrazione presso il Registrar**
      - N/A (Utilizza Certificati di Accesso/Registro)
      - Nessuno (non elencati nelle TL)
    * - **Wallet Provider**
@@ -209,6 +209,9 @@ La seguente tabella riassume il requisito di registrazione e l'autorità respons
      - *Solo notifica* (verso EC)
      - **Commissione Europea** (TL a livello UE per Fornitori Cert. Reg.)
      - Non applicabile nel pilot (solo notifica da Stato Membro a EC)
+
+.. note::
+  **Trusted Lists e Registro di Federazione**: Le entità elencate nelle Trusted Lists nazionali sono anche registrate nel Registro di Federazione nazionale, che mantiene informazioni tecniche aggiuntive (es., endpoint di federazione). La validazione delle chiavi può avvenire tramite entrambi i meccanismi: verifica rispetto alla Trusted List e verifica tramite gli endpoint di federazione.
 
 Notifica dello Stato Membro alla Commissione Europea
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -218,14 +218,14 @@
 </section>
 <section id="processo-di-onboarding-della-federazione">
 <h2><span class="section-number">4.3. </span>Processo di Onboarding della Federazione<a class="headerlink" href="#processo-di-onboarding-della-federazione" title="Link to this heading">¶</a></h2>
-<p>L'onboarding della federazione stabilisce le relazioni di trust crittografiche e le verifiche di conformità che consentono alle entità operative (PID Provider, Attestation Provider, Relying Party e Fornitori di Wallet) di partecipare ad attività sicure del ciclo di vita delle Credenziali.
+<p>L'onboarding della federazione, inclusi i processi di registrazione amministrativa e tecnica, stabilisce le relazioni di trust crittografiche e le verifiche di conformità che consentono a tutte le entità (PID Provider, Attestation Provider, Relying Party, Fornitori di Wallet e Fonti Autentiche) di partecipare ad attività sicure del ciclo di vita delle Credenziali.
 Le entità operative DEVONO completare l'onboarding che include la verifica dell'eleggibilità amministrativa e la validazione tecnica. Per i Fornitori di Wallet, questo include la valutazione di conformità della Soluzione Wallet e i successivi flussi di notifica nelle Trusted Lists.</p>
-<p>Il processo di registrazione/onboarding, gestito dai Registrar degli Stati Membri per PID Provider, Attestation Provider e Relying Party, tipicamente include:</p>
+<p>Per PID Provider, Attestation Provider e Relying Party, il processo di onboarding della federazione tipicamente include:</p>
 <ol class="arabic simple">
 <li><p><strong>Registrazione dell'Entità</strong>: Raccolta dei dati principali (identificazione, diritti, punti di fornitura del servizio e chiavi pubbliche crittografiche e certificati) necessari per autorizzare le entità e descriverne le capacità.</p></li>
-<li><p><strong>Emissione del Certificato di Accesso</strong>: Emissione di certificati di accesso che autenticano le entità, fanno riferimento al registro per la verifica dei diritti e supportano la Certificate Transparency.</p></li>
+<li><p><strong>Emissione dei Certificati</strong>: Emissione di certificati che autenticano le entità, fanno riferimento al registro per la verifica dei diritti, supportano la Certificate Transparency e descrivono lo stato di registrazione per Relying Party e Credential Issuer.</p></li>
 <li><p><strong>Emissione del Certificato di Registrazione</strong>: Emissione di certificati di registrazione che descrivono lo stato di registrazione e i diritti per Relying Party e Credential Issuer.</p></li>
-<li><p><strong>Pubblicazione del Registro</strong>: Pubblicazione di tutte le entità registrate nel registro, con un'API online (vedi <a class="reference internal" href="trust-infrastructure.html#integrazione-dell-infrastruttura-di-trust-e-del-registro"><span class="std std-ref">Integrazione dell'Infrastruttura di Trust e del Registro</span></a>) che le Wallet Unit utilizzano per verificare la registrazione dei PID Provider, la registrazione degli Attestation Provider e i tipi, e la registrazione delle Relying Party e gli attributi richiesti.</p></li>
+<li><p><strong>Pubblicazione del Registro</strong>: Pubblicazione di tutte le entità registrate nel registro, con un'API online (vedi <a class="reference internal" href="trust-infrastructure.html#integrazione-dell-infrastruttura-di-trust-e-del-registro"><span class="std std-ref">Integrazione dell'Infrastruttura di Trust e del Registro</span></a>) che può essere utilizzata per verificare la registrazione delle entità e gli attributi richiesti.</p></li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
@@ -293,7 +293,7 @@ Le entità operative DEVONO completare l'onboarding che include la verifica dell
 </td>
 </tr>
 <tr class="row-even"><td><p><strong>Elenco Attributi Richiesti</strong></p></td>
-<td><p>OBBLIGATORIO. Un elenco degli attributi che la wallet-relying party intende richiedere per ogni uso previsto. Questo DEVE fare riferimento a:</p>
+<td><p>OBBLIGATORIO, ove applicabile. Un elenco degli attributi che la wallet-relying party intende richiedere per ogni uso previsto. Questo DEVE fare riferimento a:</p>
 <ul class="simple">
 <li><p>Identificatori specifici di claim dal Registro Claims (es., <code class="docutils literal notranslate"><span class="pre">given_name</span></code>, <code class="docutils literal notranslate"><span class="pre">family_name</span></code>, <code class="docutils literal notranslate"><span class="pre">driving_privileges</span></code>)</p></li>
 <li><p>Classificazioni della Tassonomia (domini, classi, scopi) per la valutazione delle politiche di autorizzazione</p></li>
@@ -302,7 +302,7 @@ Le entità operative DEVONO completare l'onboarding che include la verifica dell
 </td>
 </tr>
 <tr class="row-odd"><td><p><strong>Descrizione dell'Uso Previsto</strong></p></td>
-<td><p>OBBLIGATORIO. Una descrizione dell'uso previsto dei dati, inclusi:</p>
+<td><p>OBBLIGATORIO, ove applicabile. Una descrizione dell'uso previsto dei dati, inclusi:</p>
 <ul class="simple">
 <li><p>Scopo commerciale per la richiesta di attributi</p></li>
 <li><p>Contesto del servizio e casi d'uso</p></li>
@@ -374,17 +374,17 @@ Le entità operative DEVONO completare l'onboarding che include la verifica dell
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>PID Provider</strong></p></td>
-<td><p><strong>Registrazione con Registrar nazionale</strong></p></td>
+<td><p><strong>Registrazione presso il Registrar</strong></p></td>
 <td><p><strong>Commissione Europea</strong> (TL a livello UE per PID Provider)</p></td>
 <td><p>Nessuno (nessuna TL nazionale per PID Provider)</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Attestation Provider</strong></p></td>
-<td><p><strong>Registrazione con Registrar nazionale</strong></p></td>
+<td><p><strong>Registrazione presso il Registrar</strong></p></td>
 <td><p><strong>Stato Membro / MS TLP</strong> (TL QTSP nazionale per QEAA Provider; TL nazionale per EAA Provider non qualificati)</p></td>
 <td><p>Compila, firma e pubblica le Trusted Lists nazionali per QEAA Provider ed EAA Provider non qualificati secondo il quadro nazionale dei servizi fiduciari.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Relying Party (RP)</strong></p></td>
-<td><p><strong>Registrazione con Registrar nazionale</strong></p></td>
+<td><p><strong>Registrazione presso il Registrar</strong></p></td>
 <td><p>N/A (Utilizza Certificati di Accesso/Registro)</p></td>
 <td><p>Nessuno (non elencati nelle TL)</p></td>
 </tr>
@@ -405,6 +405,10 @@ Le entità operative DEVONO completare l'onboarding che include la verifica dell
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p><strong>Trusted Lists e Registro di Federazione</strong>: Le entità elencate nelle Trusted Lists nazionali sono anche registrate nel Registro di Federazione nazionale, che mantiene informazioni tecniche aggiuntive (es., endpoint di federazione). La validazione delle chiavi può avvenire tramite entrambi i meccanismi: verifica rispetto alla Trusted List e verifica tramite gli endpoint di federazione.</p>
+</div>
 </section>
 <section id="notifica-dello-stato-membro-alla-commissione-europea">
 <h3><span class="section-number">4.3.3. </span>Notifica dello Stato Membro alla Commissione Europea<a class="headerlink" href="#notifica-dello-stato-membro-alla-commissione-europea" title="Link to this heading">¶</a></h3>

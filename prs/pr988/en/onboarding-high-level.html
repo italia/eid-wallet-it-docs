@@ -356,57 +356,9 @@ Operational entities (PID Providers, Attestation Providers, Relying Parties, and
 <section id="responsibilities-matrix">
 <h3><span class="section-number">4.3.2. </span>Responsibilities Matrix<a class="headerlink" href="#responsibilities-matrix" title="Link to this heading">¶</a></h3>
 <p>The following table summarizes the registration requirement and the authority responsible for compiling the Trusted List (TL) for each entity type:</p>
-<table class="longtable docutils align-default" id="id3">
-<caption><span class="caption-number">Table 4.2 </span><span class="caption-text">Federation Onboarding Responsibilities Matrix</span><a class="headerlink" href="#id3" title="Link to this table">¶</a></caption>
-<colgroup>
-<col style="width: 25.0%" />
-<col style="width: 25.0%" />
-<col style="width: 25.0%" />
-<col style="width: 25.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Entity Type</p></th>
-<th class="head"><p>Registration Process</p></th>
-<th class="head"><p>Trusted List Compilation (EC / MS TLP)</p></th>
-<th class="head"><p>Member State TLP Role</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>PID Provider</strong></p></td>
-<td><p><strong>Register with National Registrar</strong></p></td>
-<td><p><strong>European Commission</strong> (EU-level TL for PID Providers)</p></td>
-<td><p>None (no national TL for PID Providers)</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Attestation Provider</strong></p></td>
-<td><p><strong>Register with National Registrar</strong></p></td>
-<td><p><strong>Member State / MS TLP</strong> (national QTSP TL for QEAA Providers; national TL for non-qualified EAA Providers)</p></td>
-<td><p>Compiles, signs, and publishes national Trusted Lists for QEAA and non-qualified EAA Providers according to the national trust services framework.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Relying Party (RP)</strong></p></td>
-<td><p><strong>Register with National Registrar</strong></p></td>
-<td><p>N/A (Uses Access Certificates/Registry)</p></td>
-<td><p>None (not listed in TLs)</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Wallet Provider</strong></p></td>
-<td><p><em>Notification only</em> (to EC)</p></td>
-<td><p><strong>European Commission</strong> (EU-level TL for Wallet Providers)</p></td>
-<td><p>Not applicable in pilot (notification from Member State to EC only)</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Access CA</strong></p></td>
-<td><p><em>Notification only</em> (to EC)</p></td>
-<td><p><strong>European Commission</strong> (EU-level TL for Access CAs)</p></td>
-<td><p>Not applicable in pilot (notification from Member State to EC only)</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Reg. Cert. Provider</strong></p></td>
-<td><p><em>Notification only</em> (to EC)</p></td>
-<td><p><strong>European Commission</strong> (EU-level TL for Reg. Cert. Providers)</p></td>
-<td><p>Not applicable in pilot (notification from Member State to EC only)</p></td>
-</tr>
-</tbody>
-</table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>Trusted Lists and Federation Registry</strong>: Entities listed in Trusted Lists are also registered in the national Federation Registry, which maintains additional technical information (e.g., federation endpoints). Key validation can occur through both mechanisms: verification against the Trusted List and verification through federation endpoints.</p>
+<p><strong>Trusted Lists and Federation Registry</strong>: Entities listed in national Trusted Lists are also registered in the national Federation Registry, which maintains additional technical information (e.g., federation endpoints). Key validation can occur through both mechanisms: verification against the Trusted List and verification through federation endpoints.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>

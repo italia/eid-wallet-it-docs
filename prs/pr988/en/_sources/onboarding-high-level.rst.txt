@@ -183,16 +183,16 @@ The following table summarizes the registration requirement and the authority re
      - Registration Process
      - Trusted List Compilation (EC / MS TLP)
      - Member State TLP Role
-   * - **PID Provider**
-     - **Register with National Registrar**
+  * - **PID Provider**
+     - **Registration with Registrar**
      - **European Commission** (EU-level TL for PID Providers)
      - None (no national TL for PID Providers)
-   * - **Attestation Provider**
-     - **Register with National Registrar**
+  * - **Attestation Provider**
+     - **Registration with Registrar**
      - **Member State / MS TLP** (national QTSP TL for QEAA Providers; national TL for non-qualified EAA Providers)
      - Compiles, signs, and publishes national Trusted Lists for QEAA and non-qualified EAA Providers according to the national trust services framework.
-   * - **Relying Party (RP)**
-     - **Register with National Registrar**
+  * - **Relying Party (RP)**
+     - **Registration with Registrar**
      - N/A (Uses Access Certificates/Registry)
      - None (not listed in TLs)
    * - **Wallet Provider**
@@ -209,7 +209,7 @@ The following table summarizes the registration requirement and the authority re
      - Not applicable in pilot (notification from Member State to EC only)
 
 .. note::
-  **Trusted Lists and Federation Registry**: Entities listed in Trusted Lists are also registered in the national Federation Registry, which maintains additional technical information (e.g., federation endpoints). Key validation can occur through both mechanisms: verification against the Trusted List and verification through federation endpoints.
+  **Trusted Lists and Federation Registry**: Entities listed in national Trusted Lists are also registered in the national Federation Registry, which maintains additional technical information (e.g., federation endpoints). Key validation can occur through both mechanisms: verification against the Trusted List and verification through federation endpoints.
 
 .. note::
   **PID Providers**, **PuB-EAA Providers**, and **Wallet Providers** are registered through the IT-Wallet onboarding system and subsequently notified to the European Commission for Trusted List inclusion. Wallet Providers do not receive access certificates or registration certificates from National Registrars. The Wallet Solution provided by the Wallet Provider must be certified by Conformity Assessment Bodies (CABs) according to the national conformity assessment framework.
