@@ -1023,8 +1023,21 @@ Content-Type: application/json
 <li><p><strong>Compliance Verification</strong>: Maintains Trust Marks that attest regulatory compliance and operational status</p></li>
 </ol>
 </section>
+<section id="federation-registry-registration-information">
+<h3><span class="section-number">7.5.2. </span>Federation Registry Registration Information<a class="headerlink" href="#federation-registry-registration-information" title="Link to this heading">¶</a></h3>
+<p>Entities registering in the Federation Registry MUST provide the information specified in the registration form requirements as defined in <a class="reference internal" href="onboarding-high-level.html#registration-form-information-requirements"><span class="std std-ref">Registration Form Information Requirements</span></a>. This information is collected during the administrative registration phase and stored in the National Register, which feeds the Federation Registry for trust validation purposes.</p>
+<p>The Federation Registry uses this registration information to:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Validate entity identity during cryptographic operations</p></li>
+<li><p>Verify entitlements and authorization scopes</p></li>
+<li><p>Support trust chain validation and certificate issuance</p></li>
+<li><p>Enable cross-border interoperability through standardized data formats</p></li>
+</ul>
+</div></blockquote>
+</section>
 <section id="federation-registry-access">
-<h3><span class="section-number">7.5.2. </span>Federation Registry Access<a class="headerlink" href="#federation-registry-access" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">7.5.3. </span>Federation Registry Access<a class="headerlink" href="#federation-registry-access" title="Link to this heading">¶</a></h3>
 <p>Federation Registry operations are accessed through the Trust Anchor's federation endpoints as detailed in <a class="reference internal" href="trust-infrastructure.html#federation-api-endpoints"><span class="std std-ref">Federation API endpoints</span></a>. The registry discovery architecture provides federation endpoint information via the registry discovery endpoint described in <a class="reference internal" href="#registry-discovery-endpoint">Registry Discovery Endpoint</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1142,7 +1155,7 @@ Domains provide a top-level organizational layer.</p>
 <p>Classes enable Relying Parties and Wallet Solutions to request or match Credentials based on their type category.</p>
 <p><strong>Credential Type</strong></p>
 <p>A <strong>Credential Type</strong> represents a specific Credential within a Class (e.g. Digital Travel Credential, Birth Certificate, Mobile Driving License).
-Each Credential Type SHALL include:</p>
+Each Credential Type MUST include:</p>
 <ul class="simple">
 <li><p>a unique identifier,</p></li>
 <li><p>the Credential Issuer identifier,</p></li>
@@ -1151,7 +1164,7 @@ Each Credential Type SHALL include:</p>
 <p>Credential Types enable precise targeting for compliance-driven or regulation-mandated verification flows.</p>
 <p><strong>Purpose (Verification Intent)</strong></p>
 <p>A <strong>Purpose (Verification Intent)</strong> describes <em>why</em> a credential may be requested by a Relying Party (e.g., Identity Verification, Age Verification, Eligibility for specific services).
-Purposes SHALL describe <strong>verification outcomes</strong>.
+Purposes MUST describe <strong>verification outcomes</strong>.
 Each Credential Type MUST declare its Domain, Class, and supported Purposes.</p>
 <p>The following tables provide non-exhaustive examples illustrating the relationships between Domains, Credential Classes, and Credential Types, followed by their mapping to verification Purposes.
 Additional Domains, Classes, specific Credentials, and verification Purposes <strong>MAY</strong> be added over time as the IT-Wallet ecosystem evolves.</p>
@@ -2440,7 +2453,8 @@ The main Journeys below illustrate the interactions with the Registry Infrastruc
 </li>
 <li><a class="reference internal" href="#federation-registry">7.5. Federation Registry</a><ul>
 <li><a class="reference internal" href="#registry-integration-role">7.5.1. Registry Integration Role</a></li>
-<li><a class="reference internal" href="#federation-registry-access">7.5.2. Federation Registry Access</a></li>
+<li><a class="reference internal" href="#federation-registry-registration-information">7.5.2. Federation Registry Registration Information</a></li>
+<li><a class="reference internal" href="#federation-registry-access">7.5.3. Federation Registry Access</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#digital-credentials-catalog">7.6. Digital Credentials Catalog</a><ul>

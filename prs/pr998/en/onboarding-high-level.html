@@ -163,14 +163,10 @@
             
   <section id="onboarding-system">
 <h1><span class="section-number">4. </span>Onboarding System<a class="headerlink" href="#onboarding-system" title="Link to this heading">¶</a></h1>
-<p>The IT-Wallet ecosystem operates as a federated trust infrastructure where participants establish trust relationships and maintain compliance with common security standards.</p>
-<p>The onboarding system MUST enable secure Digital Credential operations. At the same time, it MUST accommodate the diverse operational requirements that different participants require.</p>
-<p>Administrative processes for organizational entities are common to all participants and independent of their technical functions within the ecosystem. However, technical registration processes MUST account for distinct operational roles.</p>
-<p>Credential Issuers, Relying Parties, and Wallet Instances (registered indirectly through Wallet Providers) participate directly in Credential issuance and verification operations. These entities require cryptographic trust establishment through federation protocols.</p>
-<p>Authentic Sources provide authoritative data through direct trust relationships with Credential Issuers. They serve a central role in data discovery and availability, requiring specialized data-focused registration procedures.</p>
+<p>The onboarding system registers operational entities (PID Providers, Attestation Providers, Relying Parties, Wallet Providers, and Authentic Sources) so that they can participate in the IT-Wallet ecosystem with clearly defined authorizations and trust relationships.</p>
 <section id="onboarding-system-architecture">
 <h2><span class="section-number">4.1. </span>Onboarding System Architecture<a class="headerlink" href="#onboarding-system-architecture" title="Link to this heading">¶</a></h2>
-<p>The onboarding framework MUST provide specialized onboarding processes that match the operational characteristics and regulatory obligations of different participant types.</p>
+<p>The onboarding service MUST provide specialized onboarding processes that match the operational characteristics and regulatory obligations of different participant types.</p>
 <figure class="align-default" id="id1">
 <p class="plantuml">
 <object data="_images/plantuml-0217c0cfde9c23cc86d4826a3ef3eac72198d034.svg" type="image/svg+xml" style="width:99%">
@@ -221,10 +217,233 @@
 </section>
 <section id="federation-onboarding-process">
 <h2><span class="section-number">4.3. </span>Federation Onboarding Process<a class="headerlink" href="#federation-onboarding-process" title="Link to this heading">¶</a></h2>
-<p>Federation onboarding establishes the trust relationships and compliance frameworks that enable operational entities to participate in secure Credential lifecycle activities.
-Operational entities MUST complete onboarding that includes administrative eligibility verification, technical infrastructure validation, and trust establishment. The onboarding process creates cryptographic trust relationships through certificate issuance, trust chain evaluation, and compliance attestation. These mechanisms enable secure interactions among federation participants and provide the foundation for distributed trust validation across the ecosystem.</p>
-<p>Successfully onboarded entities are included in the Federation Registry, which maintains the authoritative list of trusted federation participants. This registry enables operational trust validation during Credential lifecycle activities.</p>
-<p>Relying Parties MUST verify Digital Credentials with cryptographic assurance, Wallet Providers MUST provide trusted digital wallet services to citizens, and Credential Issuers MUST issue Digital Credentials using authoritative data sources. All operations MUST occur within established trust relationships that assure security and auditability.</p>
+<p>Federation onboarding, including administrative and technical registration processes, establishes the trust relationships and compliance checks that enable all entities (PID Providers, Attestation Providers, Relying Parties, Wallet Providers, and Authentic Sources) to participate in the Credential lifecycle.
+Operational entities (PID Providers, Attestation Providers, Relying Parties, and Wallet Providers) MUST complete onboarding that includes administrative eligibility verification and technical validation. For Wallet Providers, this includes conformity assessment of the Wallet Solution and subsequent Trusted List notification flows.</p>
+<p>For PID Providers, Attestation Providers, and Relying Parties, the federation onboarding process typically includes:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Entity Registration</strong>: Collection of core data (identification, entitlements, service supply points, and cryptographic public keys and certificates) needed to authorize entities and describe their capabilities.</p></li>
+<li><p><strong>Certificate Issuance</strong>: Issuance of certificates that authenticate entities, reference the registry for entitlement verification, support certificate transparency, and describe registration status for Relying Parties and Credential Issuers.</p></li>
+<li><p><strong>Registry Publication</strong>: Publication of all registered entities in the registry, with an online API (see <a class="reference internal" href="trust-infrastructure.html#trust-infrastructure-and-registry-integration"><span class="std std-ref">Trust Infrastructure and Registry Integration</span></a>) that can be used to verify entity registration, and requested attributes.</p></li>
+</ul>
+</div></blockquote>
+<section id="registration-form-information-requirements">
+<h3><span class="section-number">4.3.1. </span>Registration Form Information Requirements<a class="headerlink" href="#registration-form-information-requirements" title="Link to this heading">¶</a></h3>
+<p>During the administrative registration process, all entities registering with National Registrars MUST provide specific information.</p>
+<p>For entities regulated under the Architecture and Reference Framework (ARF) - namely PID Providers, Attestation Providers (QEAA Providers, PuB-EAA Providers, and non-qualified EAA Providers), and Relying Parties - the registration form MUST collect at least the following information as specified in <a class="reference external" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202500848">Regulation (EU) 2025/848, Annex I</a> and aligned with the use cases defined in the trust infrastructure onboarding documentation:</p>
+<table class="longtable docutils align-default" id="id2">
+<caption><span class="caption-number">Table 4.1 </span><span class="caption-text">Registration Form Information Requirements (Annex I)</span><a class="headerlink" href="#id2" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Information Field</strong></p></th>
+<th class="head"><p><strong>Description and Requirements</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Official Name</strong></p></td>
+<td><p>REQUIRED. The official legal name of the wallet-relying party (entity name as registered in business or government registries).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Official Identifiers</strong></p></td>
+<td><p>REQUIRED. One or more official identifiers of the wallet-relying party, such as:</p>
+<ul class="simple">
+<li><p>EORI (Economic Operators Registration and Identification)</p></li>
+<li><p>LEI (Legal Entity Identifier)</p></li>
+<li><p>VAT number (Value Added Tax identification number)</p></li>
+<li><p>National business registration number</p></li>
+<li><p>Other equivalent national identifiers</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Physical Address and Member State</strong></p></td>
+<td><p>REQUIRED. Physical address of the entity and Member State if not present in official identifier. The address MUST include:</p>
+<ul class="simple">
+<li><p>Street address</p></li>
+<li><p>City</p></li>
+<li><p>Postal code</p></li>
+<li><p>Country (Member State)</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>URL</strong></p></td>
+<td><p>REQUIRED. URL belonging to the wallet-relying party where applicable (e.g., organization homepage, service website).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Contact Information</strong></p></td>
+<td><p>REQUIRED. Detailed contact information including:</p>
+<ul class="simple">
+<li><p>Phone number</p></li>
+<li><p>Website URL (if different from main URL)</p></li>
+<li><p>Email address(es) for administrative and technical contacts</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Service Description</strong></p></td>
+<td><p>REQUIRED. Description of the type of services provided by the entity, including:</p>
+<ul class="simple">
+<li><p>Service categories</p></li>
+<li><p>Target user base</p></li>
+<li><p>Service scope and capabilities</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Attributes Request List</strong></p></td>
+<td><p>REQUIRED. Where applicable, a list of the attributes that the wallet-relying party intends to request for each intended use. This MUST reference:</p>
+<ul class="simple">
+<li><p>Specific claim identifiers from the Claims Registry (e.g., <code class="docutils literal notranslate"><span class="pre">given_name</span></code>, <code class="docutils literal notranslate"><span class="pre">family_name</span></code>, <code class="docutils literal notranslate"><span class="pre">driving_privileges</span></code>)</p></li>
+<li><p>Taxonomy classifications (domains, classes, purposes) for authorization policy evaluation</p></li>
+<li><p>See <a class="reference internal" href="registry.html#claims-registry"><span class="std std-ref">Claims Registry</span></a> for standardized claim definitions</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Intended Use Description</strong></p></td>
+<td><p>REQUIRED. Where applicable, a description of intended use of the data, including:</p>
+<ul class="simple">
+<li><p>Business purpose for requesting attributes</p></li>
+<li><p>Service context and use cases</p></li>
+<li><p>Legal basis for data access (where applicable)</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Public Sector Body Indication</strong></p></td>
+<td><p>REQUIRED. Indication whether the wallet-relying party is a public sector body (boolean value).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Applicable Entitlements</strong></p></td>
+<td><p>REQUIRED. Applicable entitlement(s) of the wallet-relying party chosen from the following list:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Service_Provider</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QEAA_Provider</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Non_Q_EAA_Provider</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PUB_EAA_Provider</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PID_Provider</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QCert_for_ESeal_Provider</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QCert_for_ESig_Provider</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rQSigCDs_Provider</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rQSealCDs_Provider</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ESig_ESeal_Creation_Provider</span></code></p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Intermediary Indication</strong></p></td>
+<td><p>REQUIRED. Indication if the wallet-relying party intends to act as an intermediary or to rely upon an intermediary (boolean value).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Entity-Specific Information</strong></p></td>
+<td><p>CONDITIONAL. Additional information required based on entity type:</p>
+<ul class="simple">
+<li><p><strong>For PID/EAA Providers</strong>: Attestation type(s) that the Provider intends to issue (QEAA, PuB-EAA, non-qualified EAA, PID)</p></li>
+<li><p><strong>For QEAA Providers</strong>: Qualification evidence (conformity assessment report, QTSP status)</p></li>
+<li><p><strong>For PuB-EAA Providers</strong>: Public sector body evidence</p></li>
+<li><p><strong>For non-qualified EAA Providers</strong>: Service provider information</p></li>
+<li><p><strong>For Relying Parties</strong>: Service supply point(s) and technical endpoint information</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The registration form MUST be designed to support both manual data entry and automated registration processes through qualified authoritative registries. The Registrar MAY import entity information from qualified registries (e.g., business registries, VAT registries, professional qualification registries, GLEIF for LEI records) to reduce duplication and streamline onboarding.</p>
+<p>All information provided in the registration form MUST be:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Accurate and current at the time of registration</p></li>
+<li><p>Verifiable against supporting documentation or authoritative sources</p></li>
+<li><p>Maintained and updated without undue delay when changes occur</p></li>
+<li><p>Compliant with applicable data protection and privacy regulations</p></li>
+</ul>
+</div></blockquote>
+<p>For Authentic Source registration information requirements, see <a class="reference internal" href="entity-onboarding.html#authentic-sources-registration-information-requirements"><span class="std std-ref">Authentic Sources Registration Information Requirements</span></a>.</p>
+<p>For Wallet Provider registration information requirements, see the section <a class="reference internal" href="#member-state-notification-to-european-commission"><span class="std std-ref">Member State Notification to European Commission</span></a>, which specifies conformity assessment requirements and Trusted List inclusion procedures.</p>
+</section>
+<section id="responsibilities-matrix">
+<h3><span class="section-number">4.3.2. </span>Responsibilities Matrix<a class="headerlink" href="#responsibilities-matrix" title="Link to this heading">¶</a></h3>
+<p>The following table summarizes the registration requirement and the authority responsible for compiling the Trusted List (TL) for each entity type:</p>
+<table class="longtable docutils align-default" id="id3">
+<caption><span class="caption-number">Table 4.2 </span><span class="caption-text">Federation Onboarding Responsibilities Matrix</span><a class="headerlink" href="#id3" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Entity Type</p></th>
+<th class="head"><p>Registration Process</p></th>
+<th class="head"><p>Trusted List Compilation (EC / MS TLP)</p></th>
+<th class="head"><p>Member State TLP Role</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>PID Provider</strong></p></td>
+<td><p><strong>Registration with Registrar</strong></p></td>
+<td><p><strong>European Commission</strong> (EU-level TL for PID Providers)</p></td>
+<td><p>None (no national TL for PID Providers)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Attestation Provider</strong></p></td>
+<td><p><strong>Registration with Registrar</strong></p></td>
+<td><p><strong>Member State / MS TLP</strong> (national QTSP TL for QEAA Providers; national TL for non-qualified EAA Providers)</p></td>
+<td><p>Compiles, signs, and publishes national Trusted Lists for QEAA and non-qualified EAA Providers according to the national trust services framework.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Relying Party (RP)</strong></p></td>
+<td><p><strong>Registration with Registrar</strong></p></td>
+<td><p>N/A (Uses Access Certificates/Registry)</p></td>
+<td><p>None (not listed in TLs)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Wallet Provider</strong></p></td>
+<td><p><em>Notification only</em> (to EC)</p></td>
+<td><p><strong>European Commission</strong> (EU-level TL for Wallet Providers)</p></td>
+<td><p>Not applicable in pilot (notification from Member State to EC only)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Access CA</strong></p></td>
+<td><p><em>Notification only</em> (to EC)</p></td>
+<td><p><strong>European Commission</strong> (EU-level TL for Access CAs)</p></td>
+<td><p>Not applicable in pilot (notification from Member State to EC only)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Reg. Cert. Provider</strong></p></td>
+<td><p><em>Notification only</em> (to EC)</p></td>
+<td><p><strong>European Commission</strong> (EU-level TL for Reg. Cert. Providers)</p></td>
+<td><p>Not applicable in pilot (notification from Member State to EC only)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Trusted Lists and Federation Registry</strong>: Entities listed in national Trusted Lists are also registered in the national Federation Registry, which maintains additional technical information (e.g., federation endpoints). Key validation can occur through both mechanisms: verification against the Trusted List and verification through federation endpoints.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>PID Providers</strong>, <strong>PuB-EAA Providers</strong>, and <strong>Wallet Providers</strong> are registered through the IT-Wallet onboarding system and subsequently notified to the European Commission for Trusted List inclusion. Wallet Providers do not receive access certificates or registration certificates from National Registrars. The Wallet Solution provided by the Wallet Provider must be certified by Conformity Assessment Bodies (CABs) according to the national conformity assessment framework.</p>
+</div>
+</section>
+<section id="member-state-notification-to-european-commission">
+<h3><span class="section-number">4.3.3. </span>Member State Notification to European Commission<a class="headerlink" href="#member-state-notification-to-european-commission" title="Link to this heading">¶</a></h3>
+<p>The Member State MUST notify all PID Providers, PuB-EAA Providers, Wallet Providers, Access Certificate Authorities, and Providers of Registration Certificates to the European Commission. The information notified varies by entity type:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>PID Providers</strong>: Identification data, PID Provider public keys/certificates, Access Certificate Authority public keys/certificates for PID Providers, Service Supply Point (URL)</p></li>
+<li><p><strong>Wallet Providers</strong>: Identification data, Wallet Provider public keys/certificates</p></li>
+<li><p><strong>PuB-EAA Providers</strong>: Identification data (including conformity assessment report), Service Supply Point (URL)</p></li>
+<li><p><strong>Access Certificate Authorities and Providers of Registration Certificates</strong>: Identification data, public keys/certificates</p></li>
+</ul>
+</div></blockquote>
+<p>The European Commission compiles, signs/seals, and publishes Trusted Lists for Wallet Providers, PID Providers, Access CAs, and Registration Certificate Providers.</p>
+</section>
+<section id="trusted-list-publication-for-attestation-providers">
+<h3><span class="section-number">4.3.4. </span>Trusted List Publication for Attestation Providers<a class="headerlink" href="#trusted-list-publication-for-attestation-providers" title="Link to this heading">¶</a></h3>
+<p>For <strong>Attestation Providers</strong> (both QEAA and non-qualified EAA Providers), the registration process triggers Trusted List publication:</p>
+<p>QEAA Providers:
+- After successful registration with the National Registrar, QEAA Providers are included in <strong>Member State QTSP Trusted Lists</strong> published by the Member State per <strong>`EIDAS`_ Article 22</strong>
+- These QTSP Trusted Lists are <strong>notified to the European Commission</strong> per <a class="reference external" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv%3AOJ.L_.2014.257.01.0073.01.ENG">EIDAS</a> Article 22(3) so that QTSP TL locations and signing keys can be exposed via the <strong>List of Trusted Lists (LoTL)</strong></p>
+<p>Non-qualified EAA Providers:
+- After successful registration with the National Registrar, non-qualified EAA Providers are included in <strong>national EAA Provider Trusted Lists</strong> compiled and published by Member State Trusted List Providers (MS TLP)
+- These national Trusted Lists are published using <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119600_119699/119602/01.01.01_60/ts_119602v010101p.pdf">ETSI TS 119 602</a> Annex H profile (Attestation Provider Trusted Lists), in either JSON format with compact JAdES Baseline B signature OR XML format with XAdES Baseline B signature
+- The MS TLP submits the published non-qualified EAA Provider Trusted List URL to the European Commission for inclusion in the LoTL</p>
+<p>The Member State Trusted List Provider (MS TLP):
+- Receives notification of successful registration from the Registrar (or accesses Registry data)
+- Extracts cryptographic public keys, certificates, and relevant data from the Registry
+- Compiles Trusted Lists according to <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119600_119699/119612/02.04.01_60/ts_119612v020401p.pdf">ETSI TS 119 612</a> or <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119600_119699/119602/01.01.01_60/ts_119602v010101p.pdf">ETSI TS 119 602</a> specifications
+- Signs/seals and publishes Trusted Lists at publicly accessible URLs
+- Submits the Trusted List URL to the European Commission</p>
+</section>
 </section>
 <section id="entity-lifecycle-management">
 <h2><span class="section-number">4.4. </span>Entity Lifecycle Management<a class="headerlink" href="#entity-lifecycle-management" title="Link to this heading">¶</a></h2>
@@ -458,7 +677,13 @@ Operational entities MUST complete onboarding that includes administrative eligi
 <li><a class="reference internal" href="#">4. Onboarding System</a><ul>
 <li><a class="reference internal" href="#onboarding-system-architecture">4.1. Onboarding System Architecture</a></li>
 <li><a class="reference internal" href="#authentic-source-registration-process">4.2. Authentic Source Registration Process</a></li>
-<li><a class="reference internal" href="#federation-onboarding-process">4.3. Federation Onboarding Process</a></li>
+<li><a class="reference internal" href="#federation-onboarding-process">4.3. Federation Onboarding Process</a><ul>
+<li><a class="reference internal" href="#registration-form-information-requirements">4.3.1. Registration Form Information Requirements</a></li>
+<li><a class="reference internal" href="#responsibilities-matrix">4.3.2. Responsibilities Matrix</a></li>
+<li><a class="reference internal" href="#member-state-notification-to-european-commission">4.3.3. Member State Notification to European Commission</a></li>
+<li><a class="reference internal" href="#trusted-list-publication-for-attestation-providers">4.3.4. Trusted List Publication for Attestation Providers</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#entity-lifecycle-management">4.4. Entity Lifecycle Management</a><ul>
 <li><a class="reference internal" href="#ongoing-operations-management">4.4.1. Ongoing Operations Management</a></li>
 <li><a class="reference internal" href="#federation-exit-and-removal-processes">4.4.2. Federation Exit and Removal Processes</a></li>

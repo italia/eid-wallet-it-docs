@@ -433,6 +433,19 @@ All'interno dell'architettura del Registro del Sistema IT-Wallet, il Registro di
 2. **Verifica della Catena di Fiducia**: Fornisce la fondazione crittografica per la validazione delle entità Emittenti di Credenziali, Relying Parties e Fornitori di Wallet
 3. **Verifica della Conformità**: Mantiene Trust Marks che attestano la conformità normativa e lo stato operativo
 
+Informazioni di Registrazione del Registro di Federazione
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Le entità che si registrano nel Registro di Federazione DEVONO fornire le informazioni specificate nei requisiti del modulo di registrazione come definito in :ref:`onboarding-high-level:Requisiti sulle Informazioni del Modulo di Registrazione`. Queste informazioni sono raccolte durante la fase di registrazione amministrativa e memorizzate nel Registro Nazionale, che alimenta il Registro di Federazione per scopi di validazione della fiducia.
+
+Il Registro di Federazione utilizza queste informazioni di registrazione per:
+- Validare l'identità dell'entità durante le operazioni crittografiche
+- Verificare i diritti e gli ambiti di autorizzazione
+- Supportare la validazione della catena di fiducia e l'emissione di certificati
+- Abilitare l'interoperabilità transfrontaliera attraverso formati di dati standardizzati
+
+Per informazioni dettagliate sui dati che le entità devono fornire durante la registrazione, vedere :ref:`onboarding-high-level:Requisiti sulle Informazioni del Modulo di Registrazione`.
+
 Accesso al Registro di Federazione
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

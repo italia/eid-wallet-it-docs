@@ -431,6 +431,19 @@ Within the IT-Wallet System Register architecture, the Federation Registry serve
 2. **Trust Chain Verification**: Provides the cryptographic foundation for Credential Issuers, Relying Parties, and Wallet Providers entity validation
 3. **Compliance Verification**: Maintains Trust Marks that attest regulatory compliance and operational status
 
+Federation Registry Registration Information
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Entities registering in the Federation Registry MUST provide the information specified in the registration form requirements as defined in :ref:`onboarding-high-level:Registration Form Information Requirements`. This information is collected during the administrative registration phase and stored in the National Register, which feeds the Federation Registry for trust validation purposes.
+
+The Federation Registry uses this registration information to:
+
+  - Validate entity identity during cryptographic operations
+  - Verify entitlements and authorization scopes
+  - Support trust chain validation and certificate issuance
+  - Enable cross-border interoperability through standardized data formats
+
+
 Federation Registry Access
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -541,7 +554,7 @@ Classes enable Relying Parties and Wallet Solutions to request or match Credenti
 **Credential Type**
 
 A **Credential Type** represents a specific Credential within a Class (e.g. Digital Travel Credential, Birth Certificate, Mobile Driving License).  
-Each Credential Type SHALL include:
+Each Credential Type MUST include:
 
 - a unique identifier,  
 - the Credential Issuer identifier,  
@@ -552,7 +565,7 @@ Credential Types enable precise targeting for compliance-driven or regulation-ma
 **Purpose (Verification Intent)**
 
 A **Purpose (Verification Intent)** describes *why* a credential may be requested by a Relying Party (e.g., Identity Verification, Age Verification, Eligibility for specific services).  
-Purposes SHALL describe **verification outcomes**.
+Purposes MUST describe **verification outcomes**.
 Each Credential Type MUST declare its Domain, Class, and supported Purposes. 
 
 The following tables provide non-exhaustive examples illustrating the relationships between Domains, Credential Classes, and Credential Types, followed by their mapping to verification Purposes.

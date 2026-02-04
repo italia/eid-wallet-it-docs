@@ -460,7 +460,7 @@ The **nameSpaces** contains one or more *nameSpace* entries, each identified by 
       - *(uint)*. Reference value to one of the ``ValueDigests`` provided in the *Mobile Security Object*.
       - [ISO 18013-5#9.1.2.5]
     * - **random**
-      - *(bstr)*. Random byte value used as salt for the hash function. This value SHALL be different for each *IssuerSignedItem* and it SHALL have a minimum length of 16 bytes.
+      - *(bstr)*. Random byte value used as salt for the hash function. This value MUST be different for each *IssuerSignedItem* and it MUST have a minimum length of 16 bytes.
       - [ISO 18013-5#9.1.2.5]
     * - **elementIdentifier**
       - *(tstr)*. Data element identifier.
@@ -489,7 +489,7 @@ The following **elementIdentifiers** representing format-encoded metadata attrib
      - [ISO 18013-5#7.2]
 
    * - **issuing_authority**
-     - *(tstr, REQUIRED)*. Format-encoded data identifier `issuing_authority` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. The value MUST only use Latin1b characters and shall have a maximum length of 150 characters.
+     - *(tstr, REQUIRED)*. Format-encoded data identifier `issuing_authority` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. The value MUST only use Latin1b characters and MUST have a maximum length of 150 characters.
      - [ISO 18013-5#7.2]
 
    * - **issuance_date**

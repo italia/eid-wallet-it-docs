@@ -185,7 +185,7 @@ The following figure illustrates the low-level flow compliant with ISO 18013-5 f
     :alt: The figure illustrates the Device Engagement over QR Code Presentation Flow in proximity.
     :caption: `Device Engagement over QR Code. <https://www.plantuml.com/plantuml/svg/PP0n3i8m34NtdCBAtWimL4Z0m0P5YDaaLcifTQlMIQvFbAK5F5Zoz__Fae-hug9n30QZJXB7Doq6IjKsbnqxdb4Kx0j388Mdi5h05VA_fRl1LGfH75LBCXiBdN92fPghIcxQT837C6NGWU3UmMdo12mkHC_IWxLdIkpe8ZtsD9AejT-iLCVKD6qk98Uo9sstFVqaTa8sHn9VFl01>`_
 
-**Step 1**: The Wallet Instance presents a QR Code to the Relying Party Instance. The QR code SHALL contain a URI with “mdoc:” as scheme and the ``DeviceEngagement`` structure specified in Section 9.1 encoded using base64url-without-padding, according to `RFC 4648`_, as path  (:ref:`WP_102a <wallet-credential-presentation-testcases>`).
+**Step 1**: The Wallet Instance presents a QR Code to the Relying Party Instance. The QR code MUST contain a URI with “mdoc:” as scheme and the ``DeviceEngagement`` structure specified in Section 9.1 encoded using base64url-without-padding, according to `RFC 4648`_, as path  (:ref:`WP_102a <wallet-credential-presentation-testcases>`).
 
 Non-Normative Example with BLE as Data Retrieval
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -215,13 +215,13 @@ The following figure illustrates the low-level flow compliant with ISO 18013-5 f
     :alt: The figure illustrates the Device Engagement over NFC Presentation Flow in proximity.
     :caption: `Device Engagement over NFC. <https://www.plantuml.com/plantuml/img/dLDDJ-Cm4BtFhtZoXUOGJfooAaA28hWKr7QrPpSUWYNNpjfEilpxdPIIRRLKIEGG9NdpFkObkKbPnzpj7Eak1z_jjXo9g9M7jhQjzXdgbtQECtvwcnLqmd0Ahvxnw4N6rxo7Uo9TPzlhp38wNVPqWR8iiRo_XU7UrWpsZMvunw8o4m6HH8Zmt8HiXMAAaK3Ry0VgKvOYGBkCzJltLNiJUiaFEVgol1ugh5WRF1m0hDbnBMQRjvPnXOrk2XbcbnZBoVLKPn2Tlf8DhQ0Eoxl5FRGHDDl4QPf5uhXFDrDTz9L_gQlagmzK5OTCOwGfpOf_Tvp6tRks3N6qhdMCbcCg3jwZzN_fbRhRDx7uLuI2qLaND6xZ3O7a32bENkN5V0wbrfoI3NuXDM-TJQyVh2vQtnmlFxdDGfk5eLs1-Pn8xhuZ8_vuykuDzWN3-tSqjMTmM1pMuxEbVc2pN3nFrTg4JbYNrAEyXZJvrB8_7JcNSAAinsA-dBfr8PqNEx6aiMeYmqSV-j7DG3U2o__r5m00>`_
 
-``DeviceEngagement`` over NFC is based on the NFC Forum Connection Handover Technical Specification, Version 1.5. Only Reader/ Writer mode using a Type 4 Tag is supported. The Connection Handover protocol is always initiated by the Relying Party Instance, which makes the role of Handover Requester. The Wallet Instance acts as the NFC Tag Device and the Relying Party Instance as the NFC Reader Device. The Wallet Instance SHALL use either Static Handover or Negotiated Handover:
+``DeviceEngagement`` over NFC is based on the NFC Forum Connection Handover Technical Specification, Version 1.5. Only Reader/ Writer mode using a Type 4 Tag is supported. The Connection Handover protocol is always initiated by the Relying Party Instance, which makes the role of Handover Requester. The Wallet Instance MUST use either Static Handover or Negotiated Handover:
 - **Static Handover**: The Relying Party Instance retrieves a Handover Select message directly from the Wallet Instance's Type 4 Tag. This message contains at least one Alternative Carrier Record, each indicating a retrieval method supported by the Wallet Instance (:ref:`WP_103a <wallet-credential-presentation-testcases>`). The Relying Party Instance MUST select one of these transmission technologies. (see Step 1)
 - **Negotiated Handover**: The Wallet Instance includes the service ``urn:nfc:sn:handover`` in a Service Parameter Record of the initial NDEF (NFC Data Exchange Format) message  (:ref:`WP_103b <wallet-credential-presentation-testcases>`). Upon selecting this service, the Relying Party Instance sends a Handover Request with an Alternative Carrier Record for each carrier it supports. The Wallet Instance replies with a Handover Select message containing exactly one selected carrier. (See Step 2-4)
 
 **Step 1**: The Relying Party Instance reads the Wallet’s NFC Type 4 Tag to obtain a Handover Select message, which includes: 
-- Alternative Carrier Record is an NDEF record inside a Handover Select or Handover Request message. It points to one possible communication technology (called a “carrier”), such as NFC or BLE. It tells the reader about the supported carrier and a pointer (Auxiliary Data Reference) to more detailed information. The Alternative Carrier Record for the NFC device retrieval transmission technology shall reference the Carrier Configuration Record with the ID reference “nfc”.
-- Carrier Configuration Record provides the technical parameters needed actually to use that carrier. For NFC device retrieval transmission technology, it SHALL have the type “iso.org:18013:nfc” and the ID reference “nfc”. The binary content of the Carrier Configuration Record SHALL be encoded according to Table 1 of [`ISO18013-5`_ #9.2.2] (:ref:`WP_103d <wallet-credential-presentation-testcases>`).
+- Alternative Carrier Record is an NDEF record inside a Handover Select or Handover Request message. It points to one possible communication technology (called a “carrier”), such as NFC or BLE. It tells the reader about the supported carrier and a pointer (Auxiliary Data Reference) to more detailed information. The Alternative Carrier Record for the NFC device retrieval transmission technology MUST reference the Carrier Configuration Record with the ID reference “nfc”.
+- Carrier Configuration Record provides the technical parameters needed actually to use that carrier. For NFC device retrieval transmission technology, it MUST have the type “iso.org:18013:nfc” and the ID reference “nfc”. The binary content of the Carrier Configuration Record MUST be encoded according to Table 1 of [`ISO18013-5`_ #9.2.2] (:ref:`WP_103d <wallet-credential-presentation-testcases>`).
 
 For example:
 For NFC, this defines maximum APDU (Application Protocol Data Unit) command/response lengths; 
@@ -229,7 +229,7 @@ For BLE, it defines the Wallet Instance service UUID, characteristic UUIDs, MTU 
 If early ``SessionEstablishment`` is supported, it also lists the TNEP (Tag NDEF Exchange Protocol) service name used to send the ``SessionEstablishment`` message during handover.
 
 .. note::
-   For the NFC device retrieval transmission technology, the contents of the Alternative Carrier Record and Carrier Configuration Record(s) SHALL comply with [`ISO18013-5`_ #9.2.2]. For the BLE device retrieval transmission technology, the contents of the Alternative Carrier Record and Carrier Configuration Record(s) shall comply with [`ISO18013-5`_ #11.1.2].
+   For the NFC device retrieval transmission technology, the contents of the Alternative Carrier Record and Carrier Configuration Record(s) MUST comply with [`ISO18013-5`_ #9.2.2]. For the BLE device retrieval transmission technology, the contents of the Alternative Carrier Record and Carrier Configuration Record(s) MUST comply with [`ISO18013-5`_ #11.1.2].
 
 - Auxiliary Data Record MUST carry the DeviceEngagement structure from the Wallet Instance to the Relying Party Instance as part of the auxiliary NDEF record in the Handover Select message. This record has the type ``iso.org:18013:deviceengagement``, the ID reference “mdoc”, and uses the NFC forum external type format (``0x04``). For each Alternative Carrier record, the Auxiliary Data Reference MUST point to the NDEF record containing the ``DeviceEngagement`` Structure (:ref:`WP_103e <wallet-credential-presentation-testcases>`). 
 
@@ -243,7 +243,7 @@ If early ``SessionEstablishment`` is supported, it also lists the TNEP (Tag NDEF
    Use of Negotiated Handover for Device Engagement allows negotiation of transfer methods. For BLE, it additionally allows negotiation of keys used by the transmission layer. This provides improved user experience and enhances the security of data transmission [`ISO18013-5`_ #9.2.1].
 
 .. note::
-   Proceed only if the ``DeviceEngagement`` Capabilities include ``HandoverSessionEstablishmentSupport`` set to ``true`` (:ref:`WP_103c <wallet-credential-presentation-testcases>`). Otherwise, skip the early ``SessionEstablishment``. The early ``SessionEstablishment`` is sent via a dedicated TNEP service; the same ``SessionEstablishment`` SHALL also be sent again during data retrieval and MUST match. If it does not match, the Wallet Instance terminates (:ref:`WP_103g <wallet-credential-presentation-testcases>`). If the early ``SessionEstablishment`` fails to send, proceed as normal (:ref:`WP_103h <wallet-credential-presentation-testcases>`).
+   Proceed only if the ``DeviceEngagement`` Capabilities include ``HandoverSessionEstablishmentSupport`` set to ``true`` (:ref:`WP_103c <wallet-credential-presentation-testcases>`). Otherwise, skip the early ``SessionEstablishment``. The early ``SessionEstablishment`` is sent via a dedicated TNEP service; the same ``SessionEstablishment`` MUST also be sent again during data retrieval and MUST match. If it does not match, the Wallet Instance terminates (:ref:`WP_103g <wallet-credential-presentation-testcases>`). If the early ``SessionEstablishment`` fails to send, proceed as normal (:ref:`WP_103h <wallet-credential-presentation-testcases>`).
 
 **Step 5**: [Optional] Relying Party Instance opens the TNEP service named [urn:placeholder] with the Wallet Instance during the negotiated handover to deliver the early ``SessionEstablishment`` message.
 
@@ -279,7 +279,7 @@ The following figure illustrates the low-level flow compliant with `ISO18013-5`_
 
 **Step 6**: Relying Party Instance sends the encrypted ``SessionEstablishment`` message (includes ``EReaderKey`` and encrypted ``DeviceRequest``) over the established BLE connection.
 
-**Step 7-8**: [Optional] If the Wallet Unit receives the ``SessionEstablishment`` message during Negotiated Handover, the Wallet Unit MUST verify if this ``SessionEstablishment`` message matches the ``SessionEstablishment`` message received during the data retrieval phase (i.e., Step 6). In the event of a mismatch, the Wallet Unit shall terminate the BLE connection [`ISO18013-5`_ #9.2.3].
+**Step 7-8**: [Optional] If the Wallet Unit receives the ``SessionEstablishment`` message during Negotiated Handover, the Wallet Unit MUST verify if this ``SessionEstablishment`` message matches the ``SessionEstablishment`` message received during the data retrieval phase (i.e., Step 6). In the event of a mismatch, the Wallet Unit MUST terminate the BLE connection [`ISO18013-5`_ #9.2.3].
 
 ``SessionData`` over BLE
 --------------------------
@@ -357,7 +357,7 @@ Definitions (Acronyms and Commands)
 **Step 4**: The Wallet Instance processes ``SessionEstablishment`` and returns an `APDU` response with `SW1/SW2` (`OK` or `more data` to fetch), confirming the start of secure session context (:ref:`WP_112f <wallet-credential-presentation-testcases>`).
 
 
-**Step 5-6**: [Optional] The Wallet Instance receives the ``SessionEstablishment`` message during Negotiated Handover, the Wallet Instance SHALL verify that this ``SessionEstablishment`` message matches the same message received during the data retrieval phase (i.e., Step 3-4). In the event of a mismatch, the Wallet Instance SHALL terminate the NFC connection [`ISO18013-5`_ #9.2.3].
+**Step 5-6**: [Optional] The Wallet Instance receives the ``SessionEstablishment`` message during Negotiated Handover, the Wallet Instance MUST verify that this ``SessionEstablishment`` message matches the same message received during the data retrieval phase (i.e., Step 3-4). In the event of a mismatch, the Wallet Instance MUST terminate the NFC connection [`ISO18013-5`_ #9.2.3].
 
 
 ``SessionData`` over NFC
@@ -409,7 +409,7 @@ The Device Engagement structure MUST be CBOR encoded and have at least the follo
    * - **DeviceRetrievalMode-NFCOptions**
      - *(map)*. Provides options for NFC connections, including the supported role (PICC or PCD) and maximum PDU command/response sizes. See Table 2 of `ISO18013-5`_ for the detailed mapping.
         
-       In case NFC is used for Device Retrieval, the Wallet Instance SHALL support PICC mode and the Relying Party Instance SHALL support PCD mode [`ISO18013-5`_ #11.2].
+       In case NFC is used for Device Retrieval, the Wallet Instance MUST support PICC mode and the Relying Party Instance MUST support PCD mode [`ISO18013-5`_ #11.2].
         
        Only present when performing Device Engagement using the QR code. Absent when using NFC to perform Device Engagement.
   
