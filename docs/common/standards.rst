@@ -34,8 +34,6 @@ Infrastructure of Trust
       - Hedberg, R., Jones, M.B., Solberg, A.A., Bradley, J., De Marco, G., Dzhuvinov, V., "OpenID Federation 1.0", December 2025, Draft 46.
     * - `OID-FED-SUBORDINATE-EVENTS`_
       - De Marco, G., Jones, M.B., "OpenID Federation Subordinate Events Endpoint 1.0", January 2026, Draft 00.
-    * - `EIDAS`_
-      - Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC (eIDAS Regulation).
     * - `ETSI TS 119 612`_
       - ETSI TS 119 612 v2.4.1 (2025-08) - Electronic Signatures and Infrastructures (ESI); Trusted Lists.
     * - `ETSI TS 119 602`_
