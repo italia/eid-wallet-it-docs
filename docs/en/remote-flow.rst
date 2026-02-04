@@ -387,7 +387,7 @@ The request and its parameters are defined in Section 5 (Authorization Request) 
    * - Parameter
      - Description
    * - `vp_formats_supported`
-     - REQUIRED. object containing a list of name/value pairs, where the name is a Credential Format Identifier and the value defines format-specific parameters that a Wallet supports (e.g., dc+sd-jwt, mso_mdoc). See `OpenID4VP`_ Appendix B.
+     - REQUIRED. object containing a list of name/value pairs, where the name is a Credential Format Identifier (e.g., dc+sd-jwt, mso_mdoc), and the value defines format-specific parameters that a Wallet supports. See `OpenID4VP`_ Appendix B.
    * - `client_id_prefixes_supported`
      - RECOMMENDED. A non-empty array of the Client Identifier Prefixes that the Wallet Instance supports.  Valid values include ``openid_federation`` and ``x509_hash``; if omitted, the default is ``pre-registered``.
    * - `authorization_endpoint`
