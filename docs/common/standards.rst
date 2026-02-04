@@ -8,15 +8,15 @@ This section details the technical references, grouped by scope, that are part o
 This section includes international and national standards, draft specifications, architecture references and other relevant technical documents foundational for the interoperability and the compliance with industry standards.
 
 
-Wallet Paradigm Frameworks
---------------------------
+Wallet Architecture and Reference Frameworks
+--------------------------------------------
 
 .. list-table::
     :widths: 25 75
     :header-rows: 0
 
     * - `EIDAS-ARF`_
-      - EUDI Wallet - Architecture and Reference Framework.
+      - EUDI Wallet Architecture and Reference Framework (ARF) v2.8.0.
 
 
 Infrastructure of Trust
@@ -37,9 +37,11 @@ Infrastructure of Trust
     * - `EIDAS`_
       - Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC (eIDAS Regulation).
     * - `ETSI TS 119 612`_
-      - ETSI TS 119 612 v2.4.1 (2025-11) - Electronic Signatures and Infrastructures (ESI); Trusted Lists.
+      - ETSI TS 119 612 v2.4.1 (2025-08) - Electronic Signatures and Infrastructures (ESI); Trusted Lists.
     * - `ETSI TS 119 602`_
-      - ETSI TS 119 602 v1.1.1 (2025-11) - Electronic Signatures and Infrastructures (ESI); Lists of Trusted Entities; Data model for Lists of Trusted Entities.
+      - ETSI TS 119 602 v1.1.1 (2025-11) - Electronic Signatures and Infrastructures (ESI); Lists of trusted entities; Data model.
+    * - `ETSI TS 119 615`_
+      - ETSI TS 119 615 v1.3.1 (2026-01) - Electronic Signatures and Trust Infrastructures (ESI); Trusted lists; Procedures for using and interpreting European Union Member States national trusted lists.
     * - `ETSI EN 319 132-1`_
       - ETSI EN 319 132-1 v1.3.1 - Electronic Signatures and Infrastructures (ESI); XAdES digital signatures; Part 1: Building blocks and XAdES baseline signatures.
     * - `ETSI TS 119 182-1`_
