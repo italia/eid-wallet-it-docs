@@ -209,6 +209,75 @@
 </dl>
 </div>
 </section>
+<section id="esempio-di-risposta-della-authentic-source">
+<h3><span class="section-number">13.4.1.2. </span>Esempio di risposta della Authentic Source<a class="headerlink" href="#esempio-di-risposta-della-authentic-source" title="Link to this heading">¶</a></h3>
+<p>La risposta ha come HTTP Content-Type <code class="docutils literal notranslate"><span class="pre">application/jwt</span></code>. mDi seguito un esempio concreto con dati fittizi per chiarire forma e contenuto attesi.</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-number">Listato 13.1 </span><span class="caption-text">Esempio di payload JSON di risposta (Get Attribute Claims)</span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;userClaims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;given_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mario&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;family_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Rossi&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;birth_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1980-01-10&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;birth_place&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Roma&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tax_id_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TINIT-RSSMRA80A01H501Z&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;personal_administrative_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;12345A123A&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;attributeClaims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;object_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;6F9619FF-8B86-D011-B42D-00C04FC964FF&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;VALID&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;last_updated&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-09-15T10:30:00Z&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;institute_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Nome Istituto Universitario&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;programme_type_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Laurea Magistrale&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;degree_course_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Computer Science - Informatica&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;academic_qualification_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-06-25&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;...&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;object_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;7A0720AB-9C97-E122-C53E-11D05FD075GG&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;VALID&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;last_updated&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-01-10T08:00:00Z&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;institute_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Nome Istituto Universitario&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;programme_type_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Laurea Triennale&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;degree_course_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Informatica&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;academic_qualification_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-11-27&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;...&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;metadataClaims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;object_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;6F9619FF-8B86-D011-B42D-00C04FC964FF&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;issuance_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-06-25&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;object_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;7A0720AB-9C97-E122-C53E-11D05FD075GG&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;issuance_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-11-27&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>In sintesi:</p>
+<ul class="simple">
+<li><p><strong>userClaims</strong>: dati anagrafici dell'utente (nome, cognome, data/luogo di nascita, codice fiscale o numero di identificazione). Almeno uno tra <code class="docutils literal notranslate"><span class="pre">tax_id_code</span></code> e <code class="docutils literal notranslate"><span class="pre">personal_administrative_number</span></code> è richiesto se si forniscono user claims.</p></li>
+<li><p><strong>attributeClaims</strong>: array di dataset; ogni elemento <strong>DEVE</strong> contenere <code class="docutils literal notranslate"><span class="pre">object_id</span></code>, <code class="docutils literal notranslate"><span class="pre">status</span></code> (VALID | INVALID | SUSPENDED), <code class="docutils literal notranslate"><span class="pre">last_updated</span></code> (formato ISO 8601), più eventuali attributi aggiuntivi specifici del dataset (es. <code class="docutils literal notranslate"><span class="pre">nationality</span></code>, <code class="docutils literal notranslate"><span class="pre">residence_address</span></code>).</p></li>
+<li><p><strong>metadataClaims</strong>: array di metadati per dataset (<code class="docutils literal notranslate"><span class="pre">object_id</span></code> obbligatorio; <code class="docutils literal notranslate"><span class="pre">issuance_date</span></code> e <code class="docutils literal notranslate"><span class="pre">expiry_date</span></code> opzionali).</p></li>
+<li><p><strong>interval</strong>: obbligatorio se non è presente il parametro <code class="docutils literal notranslate"><span class="pre">claims</span></code> nella richiesta; indica i secondi da attendere prima di ripetere la richiesta (es. 864000 = 10 giorni).</p></li>
+</ul>
+<p>La risposta in caso di successo (HTTP 200) restituisce un oggetto <code class="docutils literal notranslate"><span class="pre">CredentialClaimsResponse</span></code> formattato come <strong>Payload JSON</strong>.</p>
+<section id="verifica-della-firma-e-gestione-chiavi">
+<h4><span class="section-number">13.4.1.2.1. </span>Verifica della Firma e Gestione Chiavi<a class="headerlink" href="#verifica-della-firma-e-gestione-chiavi" title="Link to this heading">¶</a></h4>
+<p>Essendo il token di risposta firmato, il Credential Issuer (Fruitore) DEVE verificare la firma per garantire l'integrità e l'autenticità dei dati ricevuti dalla Fonte Autentica.</p>
+<p>Il processo di verifica e recupero delle chiavi DEVE seguire rigorosamente il pattern standard definito per gli <strong>e-Service PDND</strong>.
+Si rimanda all'Appendice tecnica (Sezione <a class="reference internal" href="e-service-pdnd.html#e-service-pdnd"><span class="std std-ref">e-Service PDND</span></a>) per i dettagli sulla validazione del JWT e per le specifiche sul recupero della chiave pubblica dell'Erogatore tramite API di Interoperabilità.</p>
+<div class="admonition warning">
+<p class="admonition-title">Avvertimento</p>
+<p>Non sono ammessi meccanismi alternativi di distribuzione del materiale crittografico (es. endpoint <code class="docutils literal notranslate"><span class="pre">.well-known</span></code> pubblici esposti direttamente dalla Fonte Autentica o distribuzione <em>out-of-band</em>). La gestione del trust DEVE rimanere centralizzata all'interno del perimetro dell'infrastruttura PDND come descritto nei riferimenti sopra citati.</p>
+</div>
+</section>
+</section>
 </section>
 </section>
 
@@ -229,6 +298,10 @@
 <li><a class="reference internal" href="#">13.4. Endpoint delle Fonti Autentiche</a><ul>
 <li><a class="reference internal" href="#catalogo-degli-e-service-pdnd-delle-fonti-autentiche">13.4.1. Catalogo degli e-Service PDND delle Fonti Autentiche</a><ul>
 <li><a class="reference internal" href="#get-attribute-claims">13.4.1.1. Get Attribute Claims</a></li>
+<li><a class="reference internal" href="#esempio-di-risposta-della-authentic-source">13.4.1.2. Esempio di risposta della Authentic Source</a><ul>
+<li><a class="reference internal" href="#verifica-della-firma-e-gestione-chiavi">13.4.1.2.1. Verifica della Firma e Gestione Chiavi</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -260,7 +333,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 29/01/2026.
+      Ultimo aggiornamento 04/02/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

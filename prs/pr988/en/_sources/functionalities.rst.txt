@@ -115,7 +115,7 @@ To ensure a consistent identification and representation of the PID across diffe
 
 .. only:: format_html
 
-  .. figure:: ./images/svg/IT-Wallet-ID.svg
+  .. figure:: ../../official_resources/IT-Wallet-ID.svg
     :alt: IT-Wallet ID official graphic asset on a light background 
     :width: 100%
 
@@ -129,7 +129,7 @@ To ensure a consistent identification and representation of the PID across diffe
 
     IT-Wallet ID official graphic asset on a light background 
 
-The IT-Wallet ID Official Resources are provided in the related :ref:`official-resources:Official Resources` Section. Additional documentation on the IT-Wallet ID graphic assets is available in the Brand Manual, which will be made available on the official website https://www.wallet.gov.it.  
+The IT-Wallet ID Official Resource is provided in the related :ref:`official-resources:Official Resources` Section. Additional documentation on the IT-Wallet ID graphic asset is available in the Brand Manual, indicated in the :ref:`official-resources:Official Resources` section.  
 
 
 Issuance of Electronic Attestations of Attributes
@@ -888,7 +888,7 @@ The Authentication Button has the following requirements:
 
 - The Authentication Button MUST state "Login with IT-Wallet";
 
-- The Authentication Button SHOULD always be accompanied by an external link (e.g., "Learn more") that links to the official website of the IT-Wallet System ``www.wallet.gov.it``; 
+- The Authentication Button SHOULD always be accompanied by an external link (e.g., "Learn more") that links to the official website of the IT-Wallet System, indicated in the :ref:`official-resources:Official Resources` section; 
 
 - Where space allows and/or the context requires it, the Authentication Button SHOULD be accompanied by a descriptive text, e.g., "IT-Wallet is the Italian Digital Wallet System that gives you full control over your information, without the issuing entity being aware of when and how it is used” or "Login through an IT-Wallet app, the Italian Digital Wallet System that simplifies interactions between citizens, public administrations and private entities, in the physical and digital world. With IT-Wallet you have full control over your information, sharing it only when necessary and securely, without the issuing entity knowing when and how it is used.". 
 
@@ -934,16 +934,19 @@ For further details on the use of the Authentication Button, please refer to the
 
 **"Login with IT-Wallet" button - html code**  
 
-The button is available in 3 variants (default / M / L ) and in "get" (call to an external page) and "post" (form inside the button) formats. 
-The references to the html code and the Brand Identity will be included in the next releases of the present specifications.
- 
+The button is available in three variants of dimensions (S - default / M / L ) as per the .Italia Design System, and in "get" (call to an external page) and "post" (form inside the button) formats. In addition to the variants of dimensions, are provided two variants of button with fixed width, to be used in situations where it's preferable to keep consistency between similar buttons:
+
+- the fixed-width version with icon on the left and centered text;
+- the fixed‑width version with icon and text centered.
+
+The Official Resource of the Authentication Button is available in the :ref:`official-resources:Official Resources` of these Technical Specification.
 
 **"Login with IT-Wallet" button – svg**
-For further information on the Authentication button refer to the Brand Manual which will soon by made available on the official website https://www.wallet.gov.it. Authentication button Official Resource is available in the related Official Resources folder of these Technical Specifications. 
+For further information on the Authentication button refer to the Brand Manual, indicated in the :ref:`official-resources:Official Resources` section. The Authentication button Official Resource is available in the :ref:`official-resources:Official Resources` section of these Technical Specifications. 
 
 .. only:: format_html
 
-  .. figure:: ./images/svg/Authentication-button.svg
+  .. figure:: ../../official_resources/Authentication-button-ENG.svg
      :alt: Example of Authentication button in 3 variants
      :width: 100%
 

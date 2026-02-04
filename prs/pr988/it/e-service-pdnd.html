@@ -243,7 +243,7 @@
 <tr class="row-odd"><td><p><strong>[ID_AUTH_CHANNEL_01]</strong> Direct Trust Transport-Level Security (<em>Allegato 2 - Pattern di sicurezza</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]): OBBLIGATORIO. Protegge la comunicazione tra il Fruitore e l'Erogatore garantendo riservatezza, integrità, identificazione dell'Erogatore e mitigazione contro attacchi di replay e spoofing.</p></td>
 <td><p>R1, R2</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>[INTEGRITY_REST_02]</strong> Integrità del payload delle richieste REST in PDND (<em>Allegato 2 - Pattern di sicurezza</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]): CONDIZIONALE. Garantisce l'integrità del payload della richiesta REST del Fruitore, all'interno dell'Infrastruttura PDND. È OBBLIGATORIO ogni volta che la richiesta contiene un payload.</p></td>
+<tr class="row-even"><td><p><strong>[INTEGRITY_REST_02]</strong> Integrità del payload delle richieste REST in PDND (<em>Allegato 2 - Pattern di sicurezza</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]): CONDIZIONALE. Garantisce l'integrità del payload della richiesta REST del Fruitore e della risposta REST dell'Erogatore, all'interno dell'Infrastruttura PDND. È OBBLIGATORIO ogni volta che la richiesta/risposta contiene un payload.</p></td>
 <td><p>R2, R4</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>[AUDIT_REST_02]</strong> Inoltro dati tracciati nel dominio del Fruitore REST con correlazione (<em>Allegato 2 - Pattern di sicurezza</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]): OPZIONALE. L'Erogatore PUÒ richiedere dati aggiuntivi tracciati nel dominio del Fruitore, con una correlazione tra tali dati e il metodo di autenticazione. In tal caso, questo pattern DEVE essere utilizzato.</p></td>
@@ -255,23 +255,6 @@
 <p class="admonition-title">Nota</p>
 <p>In queste specifiche, il pattern di sicurezza <code class="docutils literal notranslate"><span class="pre">REST_JWS_2021_POP</span></code> è implementato di default in conformità con <span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>. Se DPoP non è supportato dall'Infrastruttura PDND, la prova di possesso è attestata dal JWT <code class="docutils literal notranslate"><span class="pre">TrackingEvidence</span></code> (come dettagliato di seguito). Tuttavia, mentre il <code class="docutils literal notranslate"><span class="pre">TrackingEvidence</span></code> è definito in <code class="docutils literal notranslate"><span class="pre">AUDIT_REST_02</span></code> per fornire dati tracciati aggiuntivi, in questo contesto funge da prova di possesso del Voucher. Tali scelte di implementazione saranno indicate rispettivamente come <code class="docutils literal notranslate"><span class="pre">POP_DPoP</span></code> e <code class="docutils literal notranslate"><span class="pre">POP_TPoP</span></code>.</p>
 </div>
-<p>Inoltre, questa specifica definisce e applica il seguente pattern di sicurezza personalizzato:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 80.0%" />
-<col style="width: 20.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Pattern di Sicurezza</strong></p></th>
-<th class="head"><p><strong>Conforme a</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Integrità del payload delle risposte REST in PDND: OBBLIGATORIO. Garantisce l'integrità del payload della risposta REST dell'Erogatore, all'interno dell'Infrastruttura PDND.</p></td>
-<td><p>R2</p></td>
-</tr>
-</tbody>
-</table>
 <p>I seguenti pattern di sicurezza definiti in <a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2025-06/Linee_guida_Infrastruttura_Interoperabilit%C3%A0_PDND_v2_maggio_2025.pdf">PDND</a> e <a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a> NON DEVONO essere utilizzati in quanto non conformi ai requisiti definiti in precedenza:</p>
 <blockquote>
 <div><ul class="simple">
@@ -1450,35 +1433,15 @@
 </ul>
 </div></blockquote>
 <p>Se uno qualsiasi dei controlli precedenti fallisce, l'Erogatore DEVE rifiutare la richiesta.</p>
-<p><strong>Passo 4 (Risposta):</strong> Qualora i controlli abbiano successo, l'Erogatore fornisce al Fruitore i dati richiesti.</p>
+<p><strong>Passo 4 (Risposta):</strong> Qualora i controlli abbiano successo, l'Erogatore fornisce al Fruitore i dati richiesti. Nelle intestazioni della risposta DEVE essere presente il JWT (<code class="docutils literal notranslate"><span class="pre">Signature</span></code>) al fine di garantire l'integrità.</p>
 <div class="literal-block-wrapper docutils container" id="code-usage-flow-response">
 <div class="code-block-caption"><span class="caption-number">Listato 20.26 </span><span class="caption-text">Esempio non normativo della <cite>e-Service Response</cite></span><a class="headerlink" href="#code-usage-flow-response" title="Link to this code">¶</a></div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
-<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/jwt</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Agid-JWT-Signature</span><span class="o">:</span> <span class="l">ew0KICAiYWxnIjogIkVTMjU2IiwNCiAgImtpZCI6ICJhMWY1YzhkMi00YjM3LTRlOTEtYjBkMi03OWUzZjBjNGE4ZWYiLA0KICAidHlwIjogIkpXVCINCn0.ew0KICAiaXNzIjogIjEyMzRhYmNkLWVmNTYtZ2g3OC1pOWowLWtsbW5vcHFyc3R3eCIsDQogICJzdWIiOiAiMTIzNGFiY2QtZWY1Ni1naDc4LWk5ajAta2xtbm9wcXJzdHd4IiwNCiAgImF1ZCI6ICJodHRwczovL2ZydWl0b3JlLmV4YW1wbGUvZW50ZS1leGFtcGxlL3YxIiwNCiAgImlhdCI6IDE3MzMzOTc4NDAsDQogICJuYmYiOiAxNzMzNDAxNjI4LA0KICAiZXhwIjogMTczMzQwMTQ0MCwNCiAgImp0aSI6ICI4ZTEyZjRiNy05YzNhLTRmODMtOWI4ZC01MWEyYzdmNmU5ZDQiLA0KICAic2lnbmVkX2hlYWRlcnMiOiBbDQogICAgew0KICAgICAgImRpZ2VzdCI6ICJTSEEtMjU2PTc5YTIwYTc0NDMzNjQyMDMwMTgzMDYwMGFkOWJkY2E5OTM1OTNmODc2MjA5YTAwNGI1OTliNTgzMDk1YjBhNjEiDQogICAgfSwNCiAgICB7DQogICAgICAiY29udGVudC10eXBlIjogImFwcGxpY2F0aW9uL2pzb24iDQogICAgfQ0KICBdDQp9.DpuBNo2UgQhL7WLin4mpdZrbIpQq3tPvCX6HfktkxG7L5mk6a8OK1Hg0mQcZfFi3gelS-aL9kFS-6MoSy4csBg</span>
+<span class="na">Digest</span><span class="o">:</span> <span class="l">SHA-256=79a20a744336420301830600ad9bdca993593f876209a004b599b583095b0a61</span>
 
-eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4MDJhNjktMTYwNC00MjYxLTkyNDYtMjE0NTNlMjA2NThlIiwidHlwIjoiSldUIn0.eyJpc3MiOiJodHRwczovL2Vyb2dhdG9yZS5leGFtcGxlL2VudGUtZXhhbXBsZS92MSIsImF1ZCI6IjlhOGI3YzZkLWU1ZjQtZzNoMi1pMWowLWtsbW5vcHFyc3R1diIsImV4cCI6MTczMzQwMTc4NSwibmJmIjoxNzMzNDAxMzg3LCJpYXQiOjE3MzM0MDEyNTYsImp0aSI6Ijk5NzUzMmUtODcxYS00OTY5LTk5OTktMTIzNDU2Nzg5YWJjIiwicmVxdWVzdGVkRmllbGQxIjoidmFsdWUxIiwicmVxdWVzdGVkRmllbGQyIjoidmFsdWUyIiwicmVxdWVzdGVkRmllbGQzIjoidmFsdWUzIn0.OZSn693I-oCvvq3RnFW-9HeUWE7J1hri-lyae8CLt2JTbzKPCnWg7f6AmzR-euXYKdRWpofZkhpux7TlYG9RwA
-</pre></div>
-</div>
-</div>
-<div class="literal-block-wrapper docutils container" id="code-usage-flow-response-jwt-header">
-<div class="code-block-caption"><span class="caption-number">Listato 20.27 </span><span class="caption-text">Esempio non normativo dell'header JWT della <cite>e-Service Response</cite></span><a class="headerlink" href="#code-usage-flow-response-jwt-header" title="Link to this code">¶</a></div>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2802a69-1604-4261-9246-21453e20658e&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;JWT&quot;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-<div class="literal-block-wrapper docutils container" id="code-usage-flow-response-jwt-payload">
-<div class="code-block-caption"><span class="caption-number">Listato 20.28 </span><span class="caption-text">Esempio non normativo del payload JWT della <cite>e-Service Response</cite></span><a class="headerlink" href="#code-usage-flow-response-jwt-payload" title="Link to this code">¶</a></div>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://erogatore.example/ente-example/v1&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;aud&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;9a8b7c6d-e5f4-g3h2-i1j0-klmnopqrstuv&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1733401785</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;nbf&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1733401387</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1733401256</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;jti&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;997532e-871a-4969-9999-123456789abc&quot;</span><span class="p">,</span>
+<span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;requestedField1&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;value1&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;requestedField2&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;value2&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;requestedField3&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;value3&quot;</span>
@@ -1486,23 +1449,36 @@ eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4MDJhNjktMTYwNC00MjYxLTkyNDYtMjE0NTNlMjA2NThlIiwi
 </pre></div>
 </div>
 </div>
-<p>Il Fruitore DEVE eseguire i seguenti passaggi per validare il JWT della <cite>e-Service Response</cite>:</p>
+<p>Il Fruitore DEVE validare il JWT <code class="docutils literal notranslate"><span class="pre">Signature</span></code> come segue:</p>
 <blockquote>
 <div><p>Header:</p>
-<ul class="simple">
+<blockquote>
+<div><ul class="simple">
 <li><p>Assicurarsi che il claim <code class="docutils literal notranslate"><span class="pre">typ</span></code> sia presente e che il suo valore sia <code class="docutils literal notranslate"><span class="pre">JWT</span></code>.</p></li>
 </ul>
+</div></blockquote>
 <p>Firma:</p>
-<ul class="simple">
-<li><p>Ottenere la chiave pubblica dell'Erogatore corrispondente al parametro header <code class="docutils literal notranslate"><span class="pre">kid</span></code>, interagendo con l'API di Interoperabilità PDND.</p></li>
-<li><p>Validare la firma del JWT utilizzando la chiave pubblica dell'Erogatore recuperata e l'algoritmo specificato dal parametro header <code class="docutils literal notranslate"><span class="pre">alg</span></code>.</p></li>
-</ul>
-<p>Payload:</p>
-<ul class="simple">
-<li><p>Il claim <code class="docutils literal notranslate"><span class="pre">iss</span></code> DEVE identificare l'Erogatore.</p></li>
-<li><p>Il claim <code class="docutils literal notranslate"><span class="pre">aud</span></code> DEVE identificare il Client del Fruitore stesso.</p></li>
+<blockquote>
+<div><ul class="simple">
+<li><p>Validare la firma del JWT utilizzando la chiave pubblica del Fruitore recuperata e l'algoritmo specificato dal parametro header <code class="docutils literal notranslate"><span class="pre">alg</span></code>.</p></li>
 </ul>
 </div></blockquote>
+<p>Payload:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>I claim <code class="docutils literal notranslate"><span class="pre">iss</span></code> e <code class="docutils literal notranslate"><span class="pre">sub</span></code> DEVONO identificare l'Erogatore.</p></li>
+<li><p>Il claim <code class="docutils literal notranslate"><span class="pre">aud</span></code> DEVE identificare il Client del Fruitore.</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p>Inoltre, il Fruitore DEVE validare l'integrità della <cite>e-Service Response</cite>, verificando che:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Il claim <code class="docutils literal notranslate"><span class="pre">signed_headers.content-type</span></code> corrisponda al valore dell'header HTTP <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> della <cite>e-Service Response</cite>.</p></li>
+<li><p>Il claim <code class="docutils literal notranslate"><span class="pre">signed_headers.digest</span></code> corrisponda al valore del digest del payload della <cite>e-Service Response</cite>, nonché al valore dell'header HTTP <code class="docutils literal notranslate"><span class="pre">Digest</span></code> della <cite>e-Service Response</cite>.</p></li>
+</ul>
+</div></blockquote>
+<p>Se uno qualsiasi dei controlli precedenti fallisce, il Fruitore DEVE rifiutare la richiesta.</p>
 </section>
 <section id="endpoint-e-service">
 <h3><span class="section-number">20.2.4.3. </span>Endpoint e-Service<a class="headerlink" href="#endpoint-e-service" title="Link to this heading">¶</a></h3>
@@ -1705,7 +1681,8 @@ eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4MDJhNjktMTYwNC00MjYxLTkyNDYtMjE0NTNlMjA2NThlIiwi
 </section>
 <section id="risposta-e-service">
 <h4><span class="section-number">20.2.4.3.2. </span>Risposta (e-Service)<a class="headerlink" href="#risposta-e-service" title="Link to this heading">¶</a></h4>
-<p>La <cite>e-Service Response</cite> è un JWT serializzato in formato <code class="docutils literal notranslate"><span class="pre">application/jwt</span></code>.</p>
+<p>La <cite>e-Service Response</cite> DEVE avere un content type <code class="docutils literal notranslate"><span class="pre">application/json</span></code>.</p>
+<p>La <cite>e-Service Response</cite> DEVE includere i seguenti parametri di header HTTP:</p>
 <p>Il JWT della <cite>e-Service Response</cite> DEVE includere i seguenti parametri nel JOSE header:</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -1720,21 +1697,17 @@ eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4MDJhNjktMTYwNC00MjYxLTkyNDYtMjE0NTNlMjA2NThlIiwi
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>alg</strong></p></td>
-<td><p>Identificativo di un algoritmo di firma digitale.</p></td>
-<td><p>[<span class="target" id="index-97"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>]</p></td>
+<tr class="row-even"><td><p><strong>Agid-JWT-Signature</strong></p></td>
+<td><p>JWT contenente la firma delle intestazioni del messaggio la cui integrità deve essere garantita, per rispettare il pattern di sicurezza <code class="docutils literal notranslate"><span class="pre">INTEGRITY_REST_02</span></code>.</p></td>
+<td><p>[<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>kid</strong></p></td>
-<td><p>Identificativo univoco del JWK utilizzato dall'Erogatore per firmare il JWT.</p></td>
-<td><p>[<span class="target" id="index-98"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>]</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>typ</strong></p></td>
-<td><p>DEVE essere impostato su <code class="docutils literal notranslate"><span class="pre">JWT</span></code>.</p></td>
-<td><p>[<span class="target" id="index-99"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>], [<span class="target" id="index-100"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+<tr class="row-odd"><td><p><strong>Digest</strong></p></td>
+<td><p>Digest del payload del messaggio, per rispettare il pattern di sicurezza <code class="docutils literal notranslate"><span class="pre">INTEGRITY_REST_02</span></code>. Secondo <span class="target" id="index-97"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc3230.html"><strong>RFC 3230</strong></a>, il formato DEVE essere il seguente: <code class="docutils literal notranslate"><span class="pre">&lt;digest-algorithm&gt;=&lt;encoded</span> <span class="pre">digest</span> <span class="pre">output&gt;</span></code>.</p></td>
+<td><p>[<span class="target" id="index-98"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc3230.html"><strong>RFC 3230</strong></a>], [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]</p></td>
 </tr>
 </tbody>
 </table>
-<p>Il JWT della <cite>e-Service Response</cite> DEVE includere i seguenti claim nel payload:</p>
+<p>Il JWT <code class="docutils literal notranslate"><span class="pre">Signature</span></code>, contenuto nell'header HTTP <code class="docutils literal notranslate"><span class="pre">Agid-JWT-Signature</span></code>, DEVE includere i seguenti claim nel payload:</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 20.0%" />
@@ -1749,92 +1722,102 @@ eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4MDJhNjktMTYwNC00MjYxLTkyNDYtMjE0NTNlMjA2NThlIiwi
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>iss</strong></p></td>
-<td><p>Identificativo dell'e-Service.</p></td>
+<td><p>Identificativo dell'Erogatore.</p></td>
+<td><p>[<span class="target" id="index-99"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>sub</strong></p></td>
+<td><p>Identificativo dell'Erogatore.</p></td>
+<td><p>[<span class="target" id="index-100"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>aud</strong></p></td>
+<td><p>Identificativo del Fruitore.</p></td>
 <td><p>[<span class="target" id="index-101"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>aud</strong></p></td>
-<td><p>Identificativo del Fruitore.</p></td>
+<tr class="row-odd"><td><p><strong>exp</strong></p></td>
+<td><p>Timestamp UNIX che rappresenta l'istante di scadenza del JWT.</p></td>
 <td><p>[<span class="target" id="index-102"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>exp</strong></p></td>
-<td><p>Timestamp UNIX che rappresenta l'istante di scadenza del JWT.</p></td>
+<tr class="row-even"><td><p><strong>nbf</strong></p></td>
+<td><p>Timestamp UNIX che rappresenta il primo istante di validità del JWT (opzionale).</p></td>
 <td><p>[<span class="target" id="index-103"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>nbf</strong></p></td>
-<td><p>Timestamp UNIX che rappresenta il primo istante di validità del JWT (opzionale).</p></td>
+<tr class="row-odd"><td><p><strong>iat</strong></p></td>
+<td><p>Timestamp UNIX che rappresenta l'istante di emissione del JWT.</p></td>
 <td><p>[<span class="target" id="index-104"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>iat</strong></p></td>
-<td><p>Timestamp UNIX che rappresenta l'istante di emissione del JWT.</p></td>
+<tr class="row-even"><td><p><strong>jti</strong></p></td>
+<td><p>Identificativo univoco del JWT per prevenire attacchi di replay.</p></td>
 <td><p>[<span class="target" id="index-105"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>jti</strong></p></td>
-<td><p>Identificativo univoco del JWT per prevenire attacchi di replay.</p></td>
-<td><p>[<span class="target" id="index-106"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7523.html"><strong>RFC 7523</strong></a>]</p></td>
+<tr class="row-odd"><td><p><strong>signed_headers</strong></p></td>
+<td><p>Oggetto JSON contenente le intestazioni firmate la cui integrità deve essere protetta, per rispettare <code class="docutils literal notranslate"><span class="pre">INTEGRITY_REST_02</span></code>. DEVE contenere i seguenti claim:</p>
+<ul class="simple">
+<li><p><strong>digest</strong>: stringa JSON che rappresenta la firma dell'header HTTP <code class="docutils literal notranslate"><span class="pre">Digest</span></code></p></li>
+<li><p><strong>content-type</strong>: stringa JSON che rappresenta la firma dell'header HTTP <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code></p></li>
+</ul>
+</td>
+<td><p>[<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]</p></td>
 </tr>
 </tbody>
 </table>
 <p>Il payload del JWT della <cite>e-Service Response</cite> include specifici claim relativi ai dati forniti al Fruitore.</p>
 <p>Se si verificano errori durante la validazione della <cite>e-Service Request</cite>, l'Endpoint e-Service DEVE restituire un errore, la cui struttura dipende dalla natura dell'errore.</p>
-<p>In caso di problemi di autenticazione (cioè, Voucher non valido o scaduto), la risposta DEVE aderire al formato di errore definito in <span class="target" id="index-107"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6750.html#section-3"><strong>RFC 6750#section-3</strong></a> e <span class="target" id="index-108"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html#section-7.1"><strong>RFC 9449#section-7.1</strong></a>, con specifico riferimento all'uso del parametro di header <code class="docutils literal notranslate"><span class="pre">WWW-Authenticate</span></code>.</p>
+<p>In caso di problemi di autenticazione (cioè, Voucher non valido o scaduto), la risposta DEVE aderire al formato di errore definito in <span class="target" id="index-106"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6750.html#section-3"><strong>RFC 6750#section-3</strong></a> e <span class="target" id="index-107"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html#section-7.1"><strong>RFC 9449#section-7.1</strong></a>, con specifico riferimento all'uso del parametro di header <code class="docutils literal notranslate"><span class="pre">WWW-Authenticate</span></code>.</p>
 <div class="literal-block-wrapper docutils container" id="code-usage-endpoint-eservice-error-401">
-<div class="code-block-caption"><span class="caption-number">Listato 20.29 </span><span class="caption-text">Esempio non normativo di una <cite>e-Service Error Response</cite> in caso di errori 401</span><a class="headerlink" href="#code-usage-endpoint-eservice-error-401" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listato 20.27 </span><span class="caption-text">Esempio non normativo di una <cite>e-Service Error Response</cite> in caso di errori 401</span><a class="headerlink" href="#code-usage-endpoint-eservice-error-401" title="Link to this code">¶</a></div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">401</span> <span class="ne">Unauthorized</span>
 <span class="na">WWW-Authenticate</span><span class="o">:</span> <span class="l">DPoP error=&quot;invalid_token&quot;, error_description=&quot;The access token expired&quot;</span>
 </pre></div>
 </div>
 </div>
-<p>Per tutti gli altri errori, la risposta DEVE aderire al formato di errore definito in <span class="target" id="index-109"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-5.2"><strong>RFC 6749#section-5.2</strong></a>. La risposta DEVE utilizzare <code class="docutils literal notranslate"><span class="pre">application/json</span></code> come <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> e DEVE includere i seguenti parametri:</p>
+<p>Per tutti gli altri errori, la risposta DEVE aderire al formato di errore definito in <span class="target" id="index-108"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9457.html"><strong>RFC 9457</strong></a>. La risposta DEVE utilizzare <code class="docutils literal notranslate"><span class="pre">application/problem+json</span></code> (secondo MODI <code class="docutils literal notranslate"><span class="pre">RAC_GEN_FORMAT_002</span></code>) come <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> e DEVE includere i seguenti parametri:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">error</span></code>: Il codice di errore.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">error_description</span></code>: Testo in forma leggibile dall'uomo che fornisce ulteriori dettagli per chiarire la natura dell'errore incontrato.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code>: [OPZIONALE] URI che identifica il tipo di problema.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">title</span></code>:  [OBBLIGATORIO] Stringa contenente un breve riepilogo, leggibile dall’utente, del tipo di problema.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">status</span></code>: [OBBLIGATORIO] Numero che indica il codice di stato HTTP relativo a questa specifica occorrenza del problema.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">detail</span></code>: [OBBLIGATORIO] Stringa contenente una spiegazione, leggibile dall’utente, specifica per questa occorrenza del problema.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">instance</span></code>: [OPZIONALE] Stringa contenente un riferimento URI che identifica la specifica occorrenza del problema.</p></li>
 </ul>
 </div></blockquote>
 <div class="literal-block-wrapper docutils container" id="code-usage-endpoint-eservice-error">
-<div class="code-block-caption"><span class="caption-number">Listato 20.30 </span><span class="caption-text">Esempio non normativo di una <cite>e-Service Error Response</cite> in caso di altri errori</span><a class="headerlink" href="#code-usage-endpoint-eservice-error" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listato 20.28 </span><span class="caption-text">Esempio non normativo di una <cite>e-Service Error Response</cite> in caso di altri errori</span><a class="headerlink" href="#code-usage-endpoint-eservice-error" title="Link to this code">¶</a></div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">400</span> <span class="ne">Bad Request</span>
-<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/problem+json</span>
 
 <span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;invalid_request&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;error_description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The Agid-JWT-Signature header parameter is missing.&quot;</span>
+<span class="w">    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;invalid_request&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;detail&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The Agid-JWT-Signature header parameter is missing.&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
-<p>La seguente tabella elenca gli HTTP Status Code e i relativi codici di errore che DEVONO essere supportati per la risposta di errore:</p>
+<p>La seguente tabella elenca gli HTTP Status Code che DEVONO essere supportati per la risposta di errore:</p>
 <table class="longtable docutils align-default">
 <colgroup>
-<col style="width: 20.0%" />
-<col style="width: 20.0%" />
-<col style="width: 60.0%" />
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p><strong>HTTP Status Code</strong></p></th>
-<th class="head"><p><strong>Codice di Errore</strong></p></th>
 <th class="head"><p><strong>Descrizione</strong></p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
-<td><p>La richiesta non può essere soddisfatta perché mancano parametri richiesti, contiene parametri non validi o è in qualche modo malformata [<span class="target" id="index-110"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6750.html#section-3.1"><strong>RFC 6750#section-3.1</strong></a>].</p></td>
+<td><p>La richiesta non può essere soddisfatta perché mancano parametri richiesti, contiene parametri non validi o è in qualche modo malformata.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">invalid_dpop_proof</span></code></p></td>
-<td><p>La richiesta non può essere soddisfatta perché contiene una <em>DPoP proof</em> non valida [<span class="target" id="index-111"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html#section-5"><strong>RFC 9449#section-5</strong></a>].</p></td>
+<td><p>La richiesta non può essere soddisfatta perché contiene una <em>DPoP proof</em> non valida.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">401</span> <span class="pre">Unauthorized</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">invalid_token</span></code></p></td>
-<td><p>La richiesta non può essere soddisfatta perché il Voucher è scaduto, revocato o in qualche modo malformato [<span class="target" id="index-112"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6750.html#section-3.1"><strong>RFC 6750#section-3.1</strong></a>].</p></td>
+<td><p>La richiesta non può essere soddisfatta perché il Voucher è scaduto, revocato o in qualche modo malformato.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">500</span> <span class="pre">Internal</span> <span class="pre">Server</span> <span class="pre">Error</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">server_error</span></code></p></td>
 <td><p>La richiesta non può essere soddisfatta perché l'Endpoint e-Service ha riscontrato un problema interno.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">503</span> <span class="pre">Service</span> <span class="pre">Unavailable</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">temporarily_unavailable</span></code></p></td>
 <td><p>La richiesta non può essere soddisfatta perché l'Endpoint e-Service è temporaneamente non disponibile (ad esempio, a causa di manutenzione o sovraccarico).</p></td>
 </tr>
 </tbody>
@@ -1936,7 +1919,7 @@ eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4MDJhNjktMTYwNC00MjYxLTkyNDYtMjE0NTNlMjA2NThlIiwi
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 29/01/2026.
+      Ultimo aggiornamento 04/02/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
