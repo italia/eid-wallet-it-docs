@@ -109,8 +109,8 @@ Regulatory Requirements and Motivations
 
 The requirements for EAA Provider Trusted Lists are established by the eIDAS trust services framework and ETSI technical standards:
 
-- **`ETSI TS 119 612`_**: XML-based Trusted Service Lists (TSL) format for Trusted Lists, including service type definitions and status management.
-- **`ETSI TS 119 602`_** and **Annex H**: Abstract data model and profile for Lists of Trusted Entities (LoTE), including Attestation Provider Trusted Lists, with JSON and XML bindings.
+- **`ETSI TS 119 612`_**: XML-based Trusted Service Lists (TSL) format for Trusted Lists, including service type definitions and status management. This profile continues to be used for **QTSP Trusted Lists**, including **QEAA Providers**.
+- **`ETSI TS 119 602`_** and **Annex H**: Abstract data model and profile for Lists of Trusted Entities (LoTE), including **Attestation Provider Trusted Lists for non-qualified EAA Providers and, where applicable, Pub‑EAA Providers**. QEAA Providers remain in QTSP Trusted Lists under `ETSI TS 119 612`_, while Annex H is used for national EAA Provider Trusted Lists with JSON and XML bindings.
 
 Implementation Profile for QEAA Provider Trusted Lists
 """""""""""""""""""""""""""""""""""""""""""""""""""""""

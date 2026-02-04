@@ -113,8 +113,8 @@ Requisiti Normativi e Motivazioni
 
 Il requisito per le Trusted Lists degli EAA Provider è stabilito dal quadro dei servizi fiduciari e dalle specifiche tecniche ETSI:
 
-- **`ETSI TS 119 612`_**: definisce il formato Trusted Service Lists (TSL) basato su XML per le trusted lists, inclusi i tipi di servizio e la gestione dello stato.
-- **`ETSI TS 119 602`_** e il relativo Allegato H: definiscono il modello di dati astratto e il profilo per le Liste di Entità Fidate (LoTE), incluse le Trusted Lists degli Attestation Provider, con binding JSON e XML.
+- **`ETSI TS 119 612`_**: definisce il formato Trusted Service Lists (TSL) basato su XML per le trusted lists, inclusi i tipi di servizio e la gestione dello stato. Questo profilo continua a essere utilizzato per le **Trusted Lists QTSP**, inclusi i **QEAA Provider**.
+- **`ETSI TS 119 602`_** e il relativo Allegato H: definiscono il modello di dati astratto e il profilo per le Liste di Entità Fidate (LoTE), incluse le **Trusted Lists degli Attestation Provider per gli EAA Provider non qualificati e, ove applicabile, per i PuB‑EAA Provider**. I QEAA Provider rimangono invece nelle Trusted Lists QTSP secondo `ETSI TS 119 612`_, mentre l'Allegato H viene utilizzato per le Trusted Lists nazionali degli EAA Provider con binding JSON e XML.
 
 Profilo di Implementazione per le Trusted Lists dei QEAA Provider
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
