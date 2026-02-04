@@ -221,12 +221,13 @@
 <p>L'onboarding della federazione, inclusi i processi di registrazione amministrativa e tecnica, stabilisce le relazioni di trust crittografiche e le verifiche di conformità che consentono a tutte le entità (PID Provider, Attestation Provider, Relying Party, Fornitori di Wallet e Fonti Autentiche) di partecipare ad attività sicure del ciclo di vita delle Credenziali.
 Le entità operative DEVONO completare l'onboarding che include la verifica dell'eleggibilità amministrativa e la validazione tecnica. Per i Fornitori di Wallet, questo include la valutazione di conformità della Soluzione Wallet e i successivi flussi di notifica nelle Trusted Lists.</p>
 <p>Per PID Provider, Attestation Provider e Relying Party, il processo di onboarding della federazione tipicamente include:</p>
-<ol class="arabic simple">
+<blockquote>
+<div><ul class="simple">
 <li><p><strong>Registrazione dell'Entità</strong>: Raccolta dei dati principali (identificazione, diritti, punti di fornitura del servizio e chiavi pubbliche crittografiche e certificati) necessari per autorizzare le entità e descriverne le capacità.</p></li>
 <li><p><strong>Emissione dei Certificati</strong>: Emissione di certificati che autenticano le entità, fanno riferimento al registro per la verifica dei diritti, supportano la Certificate Transparency e descrivono lo stato di registrazione per Relying Party e Credential Issuer.</p></li>
-<li><p><strong>Emissione del Certificato di Registrazione</strong>: Emissione di certificati di registrazione che descrivono lo stato di registrazione e i diritti per Relying Party e Credential Issuer.</p></li>
 <li><p><strong>Pubblicazione del Registro</strong>: Pubblicazione di tutte le entità registrate nel registro, con un'API online (vedi <a class="reference internal" href="trust-infrastructure.html#integrazione-dell-infrastruttura-di-trust-e-del-registro"><span class="std std-ref">Integrazione dell'Infrastruttura di Trust e del Registro</span></a>) che può essere utilizzata per verificare la registrazione delle entità e gli attributi richiesti.</p></li>
-</ol>
+</ul>
+</div></blockquote>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>I <strong>PID Provider</strong>, i <strong>PuB-EAA Provider</strong> e i <strong>Wallet Provider</strong> sono registrati attraverso il sistema di onboarding dell'IT-Wallet e successivamente notificati alla Commissione Europea per l'inclusione nelle Trusted Lists. I Wallet Provider non ricevono certificati di accesso o certificati di registrazione dai Registrar nazionali. La Soluzione Wallet fornita dal Wallet Provider deve essere certificata da Organismi di Valutazione della Conformità (CAB) secondo il quadro nazionale di valutazione della conformità.</p>
