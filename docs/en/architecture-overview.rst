@@ -7,7 +7,7 @@ Architecture Overview
 The IT-Wallet System is a federated ecosystem that enables secure Digital Identity management and Digital Credential exchange for citizens and organizations. 
 The IT-Wallet ecosystem is built on a multi-layered architecture, where governance bodies establish and maintain the trust infrastructure, Primary Actors implement and operate the technical solutions, and external systems provide additional services.
 
-The following diagrams depict the IT-Wallet architecture overview.
+The following diagrams list the IT-Wallet architecture overview. 
 
 .. plantuml:: plantuml/architecture-overview-governance.puml
     :width: 99%
@@ -33,6 +33,50 @@ External systems provide services that connect the IT-Wallet ecosystem to the na
 
 These three architectural layers work together to enable secure Digital Credential operations. The federated nature of this architecture require systematic onboarding processes to establish trust relationships between participants and standardise Credential semantics through the centralised Claims Registry and Taxonomy components, as detailed in :ref:`registry:Registry Infrastructure`.
 
+Security Levels
+---------------
+
+The IT-Wallet System defines two security levels for the Wallet Secure Cryptographic Device (WSCD), maintaining an analogy with the existing national electronic identification means while referencing the wallet-specific ecosystem:
+
+.. list-table:: Wallet Security Levels
+   :widths: 15 25 60
+   :header-rows: 1
+
+   * - Level
+     - Assurance
+     - Description
+   * - WL3
+     - High
+     - The WSCD supporting the keys associated with the Digital Credentials is certifiable as resistant against attackers with a high attack potential, such as HSM or smart card devices certified at least Common Criteria EAL4+ AVA_VAN.5.
+   * - WL2
+     - Substantial
+     - The WSCD supporting the keys associated with the Digital Credentials is not easily certifiable as resistant against attackers with a high attack potential, such as Trusted Execution Environments (TEE) included in User mobile devices.
+
+Within the IT-Wallet System:
+
+- WL3 is primarily associated with the Person Identification Data (PID) usable at both national and European level as per Article 5a of Regulation (EU) No 910/2014 (eIDAS), and with the Wallet Unit Attestation (WUA) WL3.
+
+- WL2 is associated with all Electronic Attestations of Attributes ((Pub/Q)EAA, EAA), with the National Person Identification Data (NPID) usable exclusively at national level towards Relying Parties, and with the Wallet Unit Attestation (WUA) WL2.
+
+Although the WSCD dedicated to WL3 and WL2 are distinct, it is permitted to use the WL3 WSCD also for private keys corresponding to WUA WL2, NPID, PubEAA, QEAA, and generic EAA, provided that each individual Digital Credential has its own distinct key. It is not permitted under any circumstance to use the WL2 WSCD to host PID keys.
+
+.. list-table:: Credential Issuers and Security Levels
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Actor
+     - Issued Credentials
+   * - PID Provider
+     - PID (WL3), NPID (WL2)
+   * - PubEAA Provider
+     - PubEAA (WL2)
+   * - QEAA Provider
+     - QEAA (WL2)
+   * - EAA Provider
+     - EAA (WL2)
+   * - Wallet Provider
+     - WUA (WL3, WL2)
+
 The architecture enables the following core interaction processes:
 
   1. **Entity Onboarding and Federation**: Only qualified entities can participate in the federation through systematic onboarding that ensures compliance and establishes cryptographic trust relationships. The onboarding system includes a **Claims Registry** and **Taxonomy** that standardize semantic definitions for all Credentials, enabling interoperability and governance. Entity authorization follows policy-based approach that grants specific operational scopes based on organizational characteristics and regulatory compliance. See Section :ref:`onboarding-high-level:Onboarding System` and :ref:`registry:Registry Infrastructure`.
@@ -44,6 +88,8 @@ The architecture enables the following core interaction processes:
   4. **Credential Storage and Management**: IT-Wallet Solutions receive and manage Digital Credentials on User devices, enabling secure Credential lifecycle management.
 
   5. **Credential Presentation and Verification**: Users present Digital Credentials to Relying Parties, which verify claims through cryptographic validation and status verification. Relying Parties operate within authorized scopes that define which Credential types and purposes they can request, with validation against the :ref:`registry:Claims Registry` for schema verification.
+  
+  6. **Certification and Conformity Assessment**: The IT-Wallet System components are subject to certification processes as required by Commission Implementing Regulation (EU) 2024/2981. The certification scope encompasses the Wallet Instance, WSCD, WSCA, Wallet Provider Backend, eID Scheme components, Trust List Backend Services, and PID Provider Backend. Components outside the certification scope include the User Device, the Operating System, Attribute Attestation Providers ((Pub/Q)EAA), Authentic Sources, Relying Parties, and Qualified Signature/Seal Creation Devices. The electronic identification scheme, encompassing services and processes that are cross-cutting to the Wallet Provider and the PID Provider, is also within the certification scope.
 
 
  

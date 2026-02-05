@@ -68,6 +68,7 @@ This association allows the User to directly request Wallet Instance revocation 
 As part of the activation, the Wallet Provider MUST evaluate the operating system, general technical capabilities of the device, and trustworthiness of the WSCD 
 to check compliance with the technical and security requirements, the authenticity and integrity of the installed Wallet Instance, and ensure the keys used for 
 key binding resides in a secure WSCD.
+As part of this evaluation, the Wallet Provider MUST classify the WSCD security level of the Wallet Unit as either WL2 or WL3, according to the criteria defined in Section :ref:`architecture-overview:Security Levels`. This classification determines which types of Digital Credentials the Wallet Instance is eligible to receive (PID requires WL3; NPID and (Q)EAA require at least WL2).
 Upon successful verification, the Wallet Provider MUST issue at least one valid Wallet Attestation to the Wallet Instance, therefore the Wallet Instance enters the **Operational** state.
 
 In addition, if not already done, Users MUST set their preferred method of unlocking their Wallet Instance; this MAY be accomplished by entering a

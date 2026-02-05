@@ -76,8 +76,15 @@ Only the legitimate User can access the private cryptographic keys, preventing u
 - **Remote Hybrid WSCD**: The WSCD involves a local component mixed with a remote service.
 
 .. warning::
-  At the current stage, the implementation profile defined in this document supports only the **Local Internal WSCD** (:ref:`WP_014 <wallet-instance-testcases>`). Future versions of this specification MAY include other approaches depending on the required Authenticator Assurance Level (`AAL`).
+  At the current stage, the implementation profile defined in this document supports only the Local Internal WSCD (:ref:`WP_014 <wallet-instance-testcases>`).
+  Future versions of this specification MAY include other approaches depending on the required Authenticator Assurance Level (AAL).
 
-For more detailed information, please refer to :ref:`wallet-instance-registration:Wallet Instance Initialization and Registration` and :ref:`wallet-attestation-issuance:Wallet App and Wallet Unit Attestation Issuance` of this document.
+  The WSCD operates at two security levels as described in Section :ref:`architecture-overview:Security Levels`:
+  - **WL3 WSCD**: certified as resistant against attackers with a high attack potential (e.g., HSM, smart card certified at least Common Criteria EAL4+ AVA_VAN.5). Keys bound to PID and WUA WL3 MUST be stored in a WL3 WSCD.
+  **WL2 WSCD**: based on hardware environments not easily certifiable against high attack potential (e.g., TEE). Keys bound to NPID, (Pub/Q)EAA, EAA, and WUA WL2 MAY be stored in a WL2 WSCD.
+  
+  The WL3 WSCD MAY also be used to store private keys corresponding to WL2 Digital Credentials, provided that each Digital Credential has its own distinct key. The WL2 WSCD MUST NOT be used to host PID keys under any circumstance.
+  
+  For more detailed information, please refer to :ref:`wallet-instance-registration:Wallet Instance Initialization and Registration` and :ref:`wallet-attestation-issuance:Wallet App and Wallet Unit Attestation Issuance` of this document.
 
 

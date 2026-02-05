@@ -37,8 +37,9 @@ The Digital Credential Issuer Solution MUST:
    9. Periodically renew its trust with the Federation.
    10. Register the Relying Party Component within the CIEid Digital Identity Federation ecosystem (for PID issuance), and within the IT-Wallet ecosystem (for (Q)EAA issuance, if required).
    11. For PID issuance, authenticate Users with LoA High using national Digital Identity infrastructure.
-   12. For (Q)EAA issuance requiring authentication, verify a valid PID from the User's Wallet Instance via `OpenID4VP`_.
-   13. Implement proper procedures for the entire Digital Credential lifecycle as detailed in Section :ref:`credential-revocation:Digital Credential Lifecycle`.
+   12. Verify that the WSCD security level of the Wallet Unit is appropriate for the type of Digital Credential being issued, in accordance with Section :ref:`architecture-overview:Security Levels`. PID issuance requires a WL3 WSCD; NPID and (Q)EAA issuance require at least a WL2 WSCD.
+   13. For (Q)EAA issuance requiring authentication, verify a valid PID from the User's Wallet Instance via `OpenID4VP`_.
+   14. Implement proper procedures for the entire Digital Credential lifecycle as detailed in Section :ref:`credential-revocation:Digital Credential Lifecycle`.
 
    For the Frontend Component (if implemented):
 
@@ -87,6 +88,8 @@ When User authentication is required, this component MUST authenticate Users:
 
    - For PID issuance, via national Digital Identity Providers.
    - For (Q)EAA issuance, requesting, obtaining and validating PIDs from User Wallet Instances using `OpenID4VP`_ in accordance with Section :ref:`credential-presentation:Digital Credential Presentation`.
+
+For PID issuance, the Credential Issuer MUST ensure that the Wallet Unit provides a WL3 WSCD for key storage, as the PID requires a high Level of Assurance. For NPID issuance, the Credential Issuer MUST ensure that the Wallet Unit provides at least a WL2 WSCD. For (Q)EAA issuance, the Credential Issuer MUST ensure that the Wallet Unit provides at least a WL2 WSCD. See Section :ref:`architecture-overview:Security Levels` for the definition of security levels.
 
 API Interface
 ^^^^^^^^^^^^^
