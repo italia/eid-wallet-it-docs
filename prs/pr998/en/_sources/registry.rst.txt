@@ -69,7 +69,7 @@ JWT payload structure (when decoded):
     "endpoints": {
       "claims_registry": "https://trust-anchor.eid-wallet.example.it/api/v1/claims",
       "authentic_sources": "https://trust-anchor.eid-wallet.example.it/api/v1/authentic-sources",
-      "credential_catalog": "https://trust-anchor.eid-wallet.example.it/api/v1/credential-catalog",
+      "credential_catalog": "https://trust-anchor.eid-wallet.example.it/api/v1/.well-known/credential-catalog",
       "taxonomy": "https://trust-anchor.eid-wallet.example.it/api/v1/taxonomy",
       "schema_registry": "https://trust-anchor.eid-wallet.example.it/api/v1/schemas",
       "federation_list": "https://trust-anchor.eid-wallet.example.it/list",
@@ -525,8 +525,31 @@ The following table summarizes the main information that MUST be provided by the
        - **Pricing policy**: Information related to pricing models of Digital Credential, such as `free`, `issuance_based`, `verification_based`.
        - **Digital Credential purposes**: Information related to the allowed purposes for which the Digital Credential can be used. Each Digital Credential type can be used for multiple purposes.
 
+The Trust Anchor MUST publish and keep up to date all the information at the Digital Credential Catalog `.well-known` endpoint ensuring data reliability, authenticity and integrity. In particular, the Digital Credential Catalog MUST be available through the ``.well-known/credential-catalog`` endpoint. It MUST support ``application/jose`` and ``application/json`` as content-type.
 
-The Trust Anchor MUST publish and keep up to date all the information at the Digital Credential Catalog `.well-known` endpoint ensuring data reliability, authenticity and integrity. In particular, the Digital Credential Catalog, claims and taxonomy MUST be available through the ``.well-known/credential-catalog`` endpoint.
+Below a non-normative example is given.
+
+.. code-block:: http
+
+    GET /.well-known/credential-catalog HTTP/1.1
+    Host: trust-anchor.eid-wallet.example.it
+    Accept: application/jose
+
+    HTTP/1.1 200 OK
+    Content-Type: application/jose
+
+    eyJhbGciOiJSUzI1NiIsImtpZCI6ImV4YW1w...
+
+.. code-block:: http
+
+    GET /.well-known/credential-catalog HTTP/1.1
+    Host: trust-anchor.eid-wallet.example.it
+    Accept: application/json
+
+    HTTP/1.1 200 OK
+    Content-Type: application/json
+
+In the section :ref:`registry:Digital Credentials Catalog Structure` an example of Digital Credentials Catalog is given as decoded in JSON.
 
 Digital Credentials Hierarchy
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

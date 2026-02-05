@@ -217,7 +217,7 @@ Content-Type: application/json
 <span class="w">  </span><span class="nt">&quot;endpoints&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;claims_registry&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/api/v1/claims&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;authentic_sources&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/api/v1/authentic-sources&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;credential_catalog&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/api/v1/credential-catalog&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;credential_catalog&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/api/v1/.well-known/credential-catalog&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;taxonomy&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/api/v1/taxonomy&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;schema_registry&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/api/v1/schemas&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;federation_list&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/list&quot;</span><span class="p">,</span>
@@ -1137,7 +1137,27 @@ Content-Type: application/json
 </tr>
 </tbody>
 </table>
-<p>The Trust Anchor MUST publish and keep up to date all the information at the Digital Credential Catalog <cite>.well-known</cite> endpoint ensuring data reliability, authenticity and integrity. In particular, the Digital Credential Catalog, claims and taxonomy MUST be available through the <code class="docutils literal notranslate"><span class="pre">.well-known/credential-catalog</span></code> endpoint.</p>
+<p>The Trust Anchor MUST publish and keep up to date all the information at the Digital Credential Catalog <cite>.well-known</cite> endpoint ensuring data reliability, authenticity and integrity. In particular, the Digital Credential Catalog MUST be available through the <code class="docutils literal notranslate"><span class="pre">.well-known/credential-catalog</span></code> endpoint. It MUST support <code class="docutils literal notranslate"><span class="pre">application/jose</span></code> and <code class="docutils literal notranslate"><span class="pre">application/json</span></code> as content-type.</p>
+<p>Below a non-normative example is given.</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/.well-known/credential-catalog</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">trust-anchor.eid-wallet.example.it</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">application/jose</span>
+
+HTTP/1.1 200 OK
+Content-Type: application/jose
+
+eyJhbGciOiJSUzI1NiIsImtpZCI6ImV4YW1w...
+</pre></div>
+</div>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/.well-known/credential-catalog</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">trust-anchor.eid-wallet.example.it</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">application/json</span>
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+</pre></div>
+</div>
+<p>In the section <a class="reference internal" href="#digital-credentials-catalog-structure"><span class="std std-ref">Digital Credentials Catalog Structure</span></a> an example of Digital Credentials Catalog is given as decoded in JSON.</p>
 <section id="digital-credentials-hierarchy">
 <h3><span class="section-number">7.6.1. </span>Digital Credentials Hierarchy<a class="headerlink" href="#digital-credentials-hierarchy" title="Link to this heading">¶</a></h3>
 <p>Digital Credentials recognized within the IT-Wallet ecosystem are classified and standardized according to the following multi-level hierarchical model designed to improve semantic clarity, credential discovery, and compatibility with both credential-specific and claim-based verification workflows.</p>
