@@ -927,8 +927,8 @@ Per maggiori dettagli sull'utilizzo dell'Authentication Button vedi la sezione :
  
 Il pulsante è disponibile in tre varianti di dimensione (S - default / M / L ) come da Design System .Italia, ed in formato "get" (chiamata ad una pagina esterna) e "post" (form interna al pulsante). Oltre alle varianti di dimensione, sono previste due varianti di pulsante a larghezza fissa utilizzabili in situazioni in cui è preferibile mantenere coerenza con altri pulsanti simili: 
 
-• la versione a larghezza fissa giustificata (con icona a sinistra e testo centrato); 
-• la versione a larghezza fissa centrata (con icona e testo centrati). 
+• la versione giustificata (con icona a sinistra e testo centrato); 
+• la versione centrata (con icona e testo centrati). 
 
 La Risorsa Ufficiale dell'Authentication button html è disponibile nella sezione :ref:`official-resources:Risorse Ufficiali` di queste Specifiche Tecniche. 
 
@@ -956,35 +956,35 @@ Per approfondimenti sull'Authentication button consultare il Brand Manual, indic
 .. only:: format_html
 
   .. figure:: ../../official_resources/Authentication-Button-ITA-Fixed-Justified.svg
-     :alt: Authentication button a larghezza fissa giustificato 
+     :alt: Authentication button giustificato, a larghezza fissa
      :width: 100%
 
-     Authentication button a larghezza fissa giustificato
+     Authentication button giustificato, a larghezza fissa
 
 .. only:: format_latex 
 
   .. figure:: ./images/pdf/Authentication-Button-ITA-Fixed-Justified.pdf
-     :alt: Authentication Button a larghezza fissa giustificato
+     :alt: Authentication Button giustificato, a larghezza fissa
      :width: 100%
 
-     Authentication button a larghezza fissa giustificato
+     Authentication button giustificato, a larghezza fissa
 
 
 .. only:: format_html
 
   .. figure:: ../../official_resources/Authentication-Button-ITA-Fixed-Centered.svg
-     :alt: Authentication button a larghezza fissa centrato 
+     :alt: Authentication button centrato, a larghezza fissa
      :width: 100%
 
-     Authentication button a larghezza fissa centrato
+     Authentication button centrato, a larghezza fissa
 
 .. only:: format_latex 
 
   .. figure:: ./images/pdf/Authentication-Button-ITA-Fixed-Centered.pdf
-     :alt: Authentication Button a larghezza fissa centrato
+     :alt: Authentication Button centrato, a larghezza fissa
      :width: 100%
 
-     Authentication button a larghezza fissa centrato
+     Authentication button centrato, a larghezza fissa
 
 
 Gestione degli Attestati Elettronici
