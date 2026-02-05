@@ -1,0 +1,12 @@
+{
+  "rules": {
+    "color-hex-length": "long",
+    "color-named": "never",
+    "value-no-vendor-prefix": true
+  },
+  "ignoreFiles": [
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/build/**"
+  ]
+}

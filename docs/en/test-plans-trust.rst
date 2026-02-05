@@ -1,3 +1,5 @@
+.. include:: ../common/common_definitions.rst
+
 Trust Evaluation Test Matrix
 -----------------------------
 

@@ -1,0 +1,74 @@
+name: oas-spectral
+
+on:
+  push:
+    branches: [ "*" ]
+  pull_request:
+    branches: [ "*" ]
+
+jobs:
+  spectral-oas3:
+    name: Run Spectral on OAS3
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Yarn
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y yarn
+
+      - name: Install Spectral CLI
+        run: yarn global add @stoplight/spectral-cli
+
+      - name: Download the latest Spectral Ruleset of the National Interoperability Model (Italian Guidelines Full)
+        run: wget https://github.com/italia/api-oas-checker-rules/releases/latest/download/spectral.yml -O spectral.yml
+
+      - name: Run Spectral Lint on all OAS3 specs
+        run: |
+          mkdir -p spectral-reports
+          # Find all OpenAPI 3.x specs (YAML/JSON) and lint them
+          mapfile -t FILES < <(grep -Rl --include="*.yaml" --include="*.yml" --include="*.json" "^openapi: 3\." docs/ || true)
+          if [ "${#FILES[@]}" -eq 0 ]; then
+            echo "No OpenAPI 3.x files found, skipping Spectral."
+            exit 0
+          fi
+          fail=0
+          for file in "${FILES[@]}"; do
+            echo "Linting $file"
+            output_file="spectral-reports/report-$(echo "$file" | tr '/:' '_').json"
+            if ! spectral lint "$file" -e utf8 -D -f json -o "$output_file" -r spectral.yml -v; then
+              echo "Spectral found errors in $file"
+              fail=1
+            fi
+          done
+          if [ "$fail" -ne 0 ]; then
+            echo "One or more OpenAPI 3.x specifications failed Spectral checks. Printing JSON reports:"
+            for report in spectral-reports/*.json; do
+              echo "====== $report ======"
+              cat "$report"
+              echo
+            done
+            exit 1
+          fi
+
+      - name: Check if Spectral reports contain files
+        id: check_reports
+        run: |
+          if [ -n "$(ls -A spectral-reports 2>/dev/null || true)" ]; then
+            echo "reports_exist=true" >> $GITHUB_ENV
+          else
+            echo "reports_exist=false" >> $GITHUB_ENV
+          fi
+
+      - name: Upload Spectral reports
+        if: env.reports_exist == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: spectral-reports
+          path: spectral-reports
+

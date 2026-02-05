@@ -48,6 +48,8 @@ La seguente tabella definisce gli attributi di metadati comuni che sono applicab
 
 Le sezioni seguenti forniscono gli attributi specifici del formato e una mappatura degli attributi di metadati sopra indicati ai parametri tecnici specifici del formato quando la credenziale è codificata in formato SD-JWT VC o mdoc-CBOR.
 
+.. _credential-data-model-attestato-elettronico-in-formato-sd-jwt-vc:
+
 Formato Attestato Elettronico SD-JWT-VC
 ----------------------------------------
 
@@ -63,7 +65,7 @@ Le Disclosure vengono fornite al Titolare insieme all'SD-JWT nel *Combined Forma
 
 .. code-block:: text
 
-  <Issuer-Signed-JWT>~<Disclosure 1>~<Disclosure 2>~...~<Disclosure N>
+  <Issuer-Signed-JWT>~<Disclosure 1>~<Disclosure 2>~...~<Disclosure N>~
 
 Vedere `SD-JWT-VC`_ e `SD-JWT`_ per ulteriori dettagli.
 
@@ -301,6 +303,8 @@ Di seguito è riportato un esempio non normativo.
       ...
     }
 
+
+.. _credential-data-model-attestato-elettronico-in-formato-mdoc-cbor:
 
 Formato Attestato Elettronico mdoc-CBOR
 ------------------------------------------

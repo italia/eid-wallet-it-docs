@@ -25,10 +25,6 @@
                 {
                     "dataset_id": "38832801",
                     "data_origin_l10n_id": "authentic_source1.dataset1.origin",
-                    "domains": [
-                        "IDENTITY",
-                        "AUTHORIZATION"
-                    ],
                     "intended_purposes": [
                         "DRIVING_LICENSE",
                         "PERSON_IDENTIFICATION"
@@ -108,15 +104,15 @@
                     "logo_uri": "https://trust-registry.it-wallet.example.it/logos/{dataset_id}/image.svg",
                     "logo_uri#integrity": "sha-256-b1946ac92492d2347c6235b4d2611184e2a3f8b8c8f8f8e8f8f8f8f8f8f8f8f8",
                     "contacts": [
-                    "citizen-support@gov.example"
+                        "citizen-support@gov.example"
                     ],
                     "background_image": {
-                                "uri": "https://trust-registry.it-wallet.example.it/images/{dataset_id}/image.svg",
-                                "uri#integrity": "3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg=="
+                        "uri": "https://trust-registry.it-wallet.example.it/images/{dataset_id}/image.svg",
+                        "uri#integrity": "3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg=="
                     },
                     "watermark_image": {
-                                "uri": "https://trust-registry.it-wallet.example.it/images/{dataset_id}/imag-watermark.svg",
-                                "uri#integrity": "3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg=="
+                        "uri": "https://trust-registry.it-wallet.example.it/images/{dataset_id}/imag-watermark.svg",
+                        "uri#integrity": "3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg=="
                     },
                     "background_color" : "#12107c"
                 }
@@ -143,9 +139,6 @@
                 {
                     "dataset_id": "38854801",
                     "data_origin_l10n_id": "authentic_source2.dataset1.origin",
-                    "domains": [
-                        "FINANCIAL"
-                    ],
                     "intended_purposes": [
                         "BANK_ACCOUNT",
                         "INCOME_CERTIFICATE"
@@ -215,9 +208,6 @@
                 {
                     "dataset_id": "38854802",
                     "data_origin_l10n_id": "authentic_source2.dataset2.origin",
-                    "domains": [
-                        "FINANCIAL"
-                    ],
                     "intended_purposes": [
                         "PAYMENT_HISTORY"
                     ],

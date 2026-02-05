@@ -8,15 +8,15 @@ This section details the technical references, grouped by scope, that are part o
 This section includes international and national standards, draft specifications, architecture references and other relevant technical documents foundational for the interoperability and the compliance with industry standards.
 
 
-Wallet Paradigm Frameworks
---------------------------
+Wallet Architecture and Reference Frameworks
+--------------------------------------------
 
 .. list-table::
     :widths: 25 75
     :header-rows: 0
 
     * - `EIDAS-ARF`_
-      - EUDI Wallet - Architecture and Reference Framework.
+      - EUDI Wallet Architecture and Reference Framework (ARF) v2.8.0.
 
 
 Infrastructure of Trust
@@ -30,6 +30,20 @@ Infrastructure of Trust
       - Cooper, D., Santesson, S., Farrell, S., Boeyen, S., Housley, R., and W. Polk, "Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile", RFC 5280, May 2008.
     * - `OID-FED-WALLET`_
       - De Marco, G., Hedberg, R., Jones, M.B., Bradley, J., Dzhuvinov, V., "OpenID Federation Wallet Architectures 1.0", October 2024, Draft 03.
+    * - `OID-FED`_
+      - Hedberg, R., Jones, M.B., Solberg, A.A., Bradley, J., De Marco, G., Dzhuvinov, V., "OpenID Federation 1.0", December 2025, Draft 46.
+    * - `OID-FED-SUBORDINATE-EVENTS`_
+      - De Marco, G., Jones, M.B., "OpenID Federation Subordinate Events Endpoint 1.0", January 2026, Draft 00.
+    * - `ETSI TS 119 612`_
+      - ETSI TS 119 612 v2.4.1 (2025-08) - Electronic Signatures and Infrastructures (ESI); Trusted Lists.
+    * - `ETSI TS 119 602`_
+      - ETSI TS 119 602 v1.1.1 (2025-11) - Electronic Signatures and Infrastructures (ESI); Lists of trusted entities; Data model.
+    * - `ETSI TS 119 615`_
+      - ETSI TS 119 615 v1.3.1 (2026-01) - Electronic Signatures and Trust Infrastructures (ESI); Trusted lists; Procedures for using and interpreting European Union Member States national trusted lists.
+    * - `ETSI EN 319 132-1`_
+      - ETSI EN 319 132-1 v1.3.1 - Electronic Signatures and Infrastructures (ESI); XAdES digital signatures; Part 1: Building blocks and XAdES baseline signatures.
+    * - `ETSI TS 119 182-1`_
+      - ETSI TS 119 182-1 v1.2.1 - Electronic Signatures and Infrastructures (ESI); JAdES digital signatures; Part 1: Building blocks and JAdES baseline signatures.
 
 
 Digital Credential Data Format
@@ -55,7 +69,7 @@ Digital Credential Issuance
     * - `OpenID4VCI`_
       - Lodderstedt, T., Yasuda, K., Looker, T., Bastian, P., "OpenID for Verifiable Credential Issuance 1.0", September 2025.
     * - `OPENID4VC-HAIP`_
-      - Lodderstedt, T., K. Yasuda, "OpenID4VC High Assurance Interoperability Profile", January 2025, Draft 1.
+      - K. Yasuda, Lodderstedt, T., Bormann, C., Heenan, J., "OpenID4VC High Assurance Interoperability Profile 1.0", November 2025, Draft 6.
     * - `OAUTH-ATTESTATION-CLIENT-AUTH`_
       - Looker, T., Bastian, P., Bormann, C., "OAuth 2.0 Attestation-Based Client Authentication", September 2025, Draft 7.
     * - `OAUTH-MULT-RESP-TYPE`_

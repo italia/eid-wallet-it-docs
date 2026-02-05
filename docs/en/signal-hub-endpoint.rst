@@ -8,17 +8,17 @@
 
 PDND Signal Hub Endpoints
 -------------------------
-Within the PDND platform, the Signal Hub serves as an intermediary component between PDND Providers and their PDND Consumers to facilitate real-time data variation notifications. To enable this functionality, the PDND Manager, acting in the role of PDND e-Service Provider, offers the following specialized PDND Signal Hub e-Services:
-  - the Signal Collection e-Service which is used by PDND e-Service Providers to deposit Signals, since the PDND e-Service Provider acts as Consumer of the Signal Collection e-Service;
-  - the Signal Distribution e-Service which is used by PDND e-Service Consumers to retrieve collected Signals, since the PDND e-Service Consumer also acts as Consumer of the Signal Distribution e-Service.
+Within the PDND platform, the Signal Hub serves as an intermediary component between PDND Providers and their PDND Consumers to facilitate real-time data variation notifications. To enable this functionality, the PDND Manager, acting in the role of e-Service PDNDProvider, offers the following specialized PDND Signal Hub e-Services:
+  - the Signal Collection e-Service which is used by e-Service PDNDProviders to deposit Signals, since the e-Service PDNDProvider acts as Consumer of the Signal Collection e-Service;
+  - the Signal Distribution e-Service which is used by e-Service PDNDConsumers to retrieve collected Signals, since the e-Service PDNDConsumer also acts as Consumer of the Signal Distribution e-Service.
 
-In order to protect the privacy of the Signal's subject, the PDND Manager requires each PDND e-Service Provider to pseudonymize the subject's identifier used within the Signals and set up a pseudonymization endpoint for their PDND e-Service. This pseudonymization endpoint is used by e-Service Consumers to use the pseudonymization algorithm in order to calculate the Signal subject's pseudonym. Only the PDND e-Service Provider and its PDND e-Service Consumers are able to link a Signal to the subject's personal data, while the PDND Manager only handles pseudonymized identifiers.
+In order to protect the privacy of the Signal's subject, the PDND Manager requires each e-Service PDNDProvider to pseudonymize the subject's identifier used within the Signals and set up a pseudonymization endpoint for their PDND e-Service. This pseudonymization endpoint is used by e-Service Consumers to use the pseudonymization algorithm in order to calculate the Signal subject's pseudonym. Only the e-Service PDNDProvider and its e-Service PDNDConsumers are able to link a Signal to the subject's personal data, while the PDND Manager only handles pseudonymized identifiers.
 
 For detailed technical specifications and implementation guidelines, please refer to the `Signal Hub Guide`_.
 
 In the context of the IT Wallet, Authentic Sources interact with the Signal Hub to notify Credential Issuers about changes in the status and/or value of attributes associated with Digital Credentials. Specifically,
   - the Authentic Source will deposit Signals in the Signal Hub, thus playing the role of PDND Consumer of the Signal Collection e-Service; 
-  - the Credential Issuer will retrieve Signals from the Signal Hub, and will thus play the role of PDND e-Service Consumer of the Signal Distribution e-Service. 
+  - the Credential Issuer will retrieve Signals from the Signal Hub, and will thus play the role of e-Service PDNDConsumer of the Signal Distribution e-Service. 
 
 .. note::
   In the context of IT Wallet, due to the particular nature of the data exchanged, the pseudonymization of the Signal's subject is not needed since it is already an opaque identifier unrelated to the Digial Credential's subject. Thus, the Authentic Source does not need to set up a pseudonymization endpoint for its e-Services. 
@@ -68,8 +68,8 @@ The Signal Collection e-Service endpoint is used by Authentic Sources to deposit
     - REQUIRED. Using this field the Authentic Source MAY use to further specify the Signal.
   * - **objectId**
     - REQUIRED. The subject to which the Signal is bound. If the Signal has ``signalType``:
-    
-      - ``CREATE``, then it MUST be set to the ``jti`` value the Credental Issuer used in the Agid-JWT-Signature token of the `get attributes` request to the Authentic Source to obtain the attributes related to a specific Digital Credential (see :ref:`authentic-source-endpoint:Get Attribute Claims`);
+      
+      - ``CREATE``, then it MUST be set to the ``jti`` value the Credential Issuer used in the Agid-JWT-Signature token of the `get attributes` request to the Authentic Source to obtain the attributes related to a specific Digital Credential (see :ref:`authentic-source-endpoint:Get Attribute Claims`);
       - ``UPDATE``, then it MUST be set to the Authentic Source's unique database identifier of the Digital Credential's attributes the Signal refers to.
       
   * - **signalType**
@@ -146,7 +146,7 @@ The Credential Issuer MUST implement the necessary logic to handle the Polling o
 
   - Signals are queried and retrieved per PDND e-Service, meaning that the Credential Issuer MUST implement a poll cycle for each e-Service ID;
   - the retention period of Signals in the Signal Hub is specified in `Signal Hub Guide`_. Signals older than the specified retention period are not available for retrieval;
-  - the Signal Hub does not keep track of the last ``signalId`` notified to a specific Credential Issuer. Each Credential Issuer MUST keep track of the last ``signalId`` it has received for each PDND e-Service ID;
+  - the Signal Hub does not keep track of the last ``signalId`` notified to a specific Credential Issuer. Each Credential Issuer MUST keep track of the last ``signalId`` it has received for each e-Service PDNDID;
   - the Signal Distribution e-Service endpoint returns Signals in batches. The maximal size the batch is specified in `Signal Hub Guide`_. The Signal Distribution e-Service will indicate if additional Signals are available for retrieval.
 
 Signals Processing
@@ -155,8 +155,8 @@ After the Signals have been successfully recovered by the Credential Issuer, the
 
   - For each Signal, the Credential Issuer MUST check the ``SignalType`` value:
     
-    - if the Signal ``SignalType`` is ``UPDATE``, the status and/or value of the attribute associated with a Digest Credential need updates;
-    - if the Signal ``SignalType`` is ``CREATE``, the requested attributes of a specific Digital Credential are now available; 
+    - if the Signal ``SignalType`` is ``UPDATE`` (where ``objectId`` refers to the **Authentic Source's unique database identifier of the Digital Credential's attributes**), the status and/or value of the attribute associated with a Digital Credential need updates;
+    - if the Signal ``SignalType`` is ``CREATE`` (where ``objectId`` refers to the **request ``jti``**), the requested attributes of a specific Digital Credential are now available; 
 
     If the ``objectId`` does not correspond to any valid identifier known to the Credential Issuer, the Signal MUST be ignored. Otherwise, if it corresponds to a known and valid identifier, the Credential Issuer MUST use the :ref:`authentic-source-endpoint:Get Attribute Claims` PDND endpoint of the Authentic Source to retrieve the updated information and, if applicable, apply the new status to the corresponding Credential.
     
@@ -164,6 +164,4 @@ After the Signals have been successfully recovered by the Credential Issuer, the
 
 .. warning::
 
-  Given Signal Hub's currently supported security patterns, if the Authentic Source requires the `AUDIT_REST_02` security pattern from the Credential Issuer, the latter MUST revoke the Digital Credential referenced in Signals with ``signalType`` ``UPDATE`` since it cannot contact the Authentic Source to retrieve the updated information without having authenticated the User before.  
-
-
+  Given Signal Hub's currently supported security patterns, if the Authentic Source requires the `AUDIT_REST_02` security pattern from the Credential Issuer, the latter MUST revoke the Digital Credential referenced in Signals with ``signalType`` ``UPDATE`` since it cannot contact the Authentic Source to retrieve the updated information without having authenticated the User before. **In this scenario, revocation is the only allowed action.**

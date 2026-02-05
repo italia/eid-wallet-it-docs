@@ -4,7 +4,7 @@
 Fonti Autentiche
 ================
 
-Le Fonti Autentiche forniscono gli Attributi dell'Utente ai Fornitori di Attestati Elettronici consentendo loro il rilascio degli Attestati Elettronici. Durante il Flusso di Emissione, i Fornitori di Attestati Elettronici richiedono alle Fonti Autentiche gli attributi necessari per fornire l'Attestato Elettronico richiesto dall'Utente. Le Fonti Autentiche POSSONO anche fornire una Credential Offer legata ai loro Fornitori di Attestati Elettronici come definito nella Sezione :ref:`credential-issuance-endpoint:Credential Offer Endpoint`.
+Le Fonti Autentiche forniscono gli Attributi dell'Utente ai Fornitori di Attestati Elettronici consentendo loro il rilascio degli Attestati Elettronici. Durante il Flusso di Emissione, i Fornitori di Attestati Elettronici richiedono alle Fonti Autentiche gli attributi necessari per fornire l'Attestato Elettronico richiesto dall'Utente. Le Fonti Autentiche POSSONO anche fornire una Credential Offer legata ai loro Fornitori di Attestati Elettronici come definito nella Sezione :ref:`credential-issuance-low-level-credential-offer-flow`.
 
 Le Fonti Autentiche Pubbliche DEVONO interagire con i Fornitori di Attestati Elettronici tramite PDND secondo le regole definite nella Sezione :ref:`e-service-pdnd:e-Service PDND` e nella Sezione :ref:`credential-revocation:Aggiornamento dello Stato da parte delle Fonti Autentiche`. Vedere anche la Sezione :ref:`authentic-source-endpoint:Catalogo degli e-Service PDND delle Fonti Autentiche` per ulteriori dettagli.
 

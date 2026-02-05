@@ -130,6 +130,11 @@ jobs:
           mkdir -p html/templates/ && cp -r .github/templates/* html/templates/
           mkdir -p html/static/ && cp -r .github/static/* html/static/
 
+      # Copy official_resources for GitHub Pages deployment
+      - name: Copy official resources
+        run: |
+          mkdir -p html/official_resources/ && cp -r official_resources/* html/official_resources/
+
       # Check out the gh-pages branch in a temporary directory
       - name: Checkout gh-pages branch
         uses: actions/checkout@v3

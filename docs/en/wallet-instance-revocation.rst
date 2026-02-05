@@ -116,8 +116,6 @@ The verification of the Wallet Instance validity MUST be performed:
 
 - **During Digital Credential issuance** by the Credential Issuers. Only Wallet Instances in Operational or Valid state have valid Wallet App Attestation and Wallet Unit Attestation. The verification of the validity of a Wallet Instance is indirectly performed by Credential Issuers by checking the presence of a valid Wallet Unit Attestation (i.e., not expired, not revoked checking the Wallet Unit Attestation Status List, and signed by a trusted Wallet Provider). 
 
-- **During Digital Credential presentation phase** by the Relying Parties. The verification of the validity of a Wallet Instance is performed by Relying Parties through the checking of the presence of a valid Wallet App Attestation (i.e. not expired and signed by a trusted Wallet Provider). During proximity presentation the Wallet Instance might not be able to fetch a fresh Wallet App Attestation, in this case, the Wallet Instance SHOULD send the latest version of the Wallet App Attestation. It is left up to the Relying Party to determine whether a presentation with a valid but expired Wallet App Attestation is valid or not.
-
 - **During the validity period of the Digital Credential** by the Credential Issuers every 24 hours by checking the PID's Wallet Unit Attestation Status List. Indeed, if the Wallet Instance is revoked, the PID hosted within it MUST be revoked. Any other Digital Credential obtained through the presentation of the PID MUST therefore be revoked too. 
 
 - **During the Wallet Instance lifecycle** by the Wallet Instance. Each Wallet Provider may implement diffent methods to allow a Wallet Instance to check its status. The IT Wallet specification suggests to check the Status List of the Wallet Unit Attestation. 
@@ -127,4 +125,7 @@ The verification of the Wallet Instance validity MUST be performed:
 
 .. note::
   In the current version of the specification, Credential Issuers are directly notified of a Wallet Instance revocation by the Wallet Provider using a PDND e-service.
+
+.. note::
+  During the Digital Credential presentation phase, a Relying Party can indirectly check the Wallet Instance revocation by checking the Digital Credential revocation. Indeed if a Wallet Instance is revoked, the Wallet Provider will revoke the corresponding Wallet Unit Attestation, triggering the revocation of the Digital Credential by the Credential Issuer.
 
