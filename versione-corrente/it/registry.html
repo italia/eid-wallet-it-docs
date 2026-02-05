@@ -218,7 +218,7 @@ Content-Type: application/json
 <span class="w">  </span><span class="nt">&quot;endpoints&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;claims_registry&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/api/v1/claims&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;authentic_sources&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/api/v1/authentic-sources&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;credential_catalog&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/api/v1/credential-catalog&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;credential_catalog&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/api/v1/.well-known/credential-catalog&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;taxonomy&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/api/v1/taxonomy&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;schema_registry&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/api/v1/schemas&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;federation_list&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/list&quot;</span><span class="p">,</span>
@@ -1139,7 +1139,27 @@ Content-Type: application/json
 </tr>
 </tbody>
 </table>
-<p>Il Trust Anchor DEVE pubblicare e mantenere aggiornate tutte le informazioni all'endpoint <cite>.well-known</cite> del Catalogo degli Attestati Elettronici garantendo affidabilità, autenticità e integrità dei dati. In particolare, il Catalogo degli Attestati Elettronici, i claims e la tassonomia DEVONO essere disponibili attraverso l'endpoint <code class="docutils literal notranslate"><span class="pre">.well-known/credential-catalog</span></code>.</p>
+<p>Il Trust Anchor DEVE pubblicare e mantenere aggiornate tutte le informazioni all'endpoint <cite>.well-known</cite> del Catalogo degli Attestati Elettronici garantendo affidabilità, autenticità e integrità dei dati. In particolare, il Catalogo degli Attestati Elettronici DEVE essere disponibile attraverso l'endpoint <code class="docutils literal notranslate"><span class="pre">.well-known/credential-catalog</span></code>. DEVONO essere supportati <code class="docutils literal notranslate"><span class="pre">application/jose</span></code> e <code class="docutils literal notranslate"><span class="pre">application/json</span></code> come Content-Type.</p>
+<p>Di seguito è fornito un esempio non normativo.</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/.well-known/credential-catalog</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">trust-anchor.eid-wallet.example.it</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">application/jose</span>
+
+HTTP/1.1 200 OK
+Content-Type: application/jose
+
+eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
+</pre></div>
+</div>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/.well-known/credential-catalog</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">trust-anchor.eid-wallet.example.it</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">application/json</span>
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+</pre></div>
+</div>
+<p>Nella sezione <span class="xref std std-ref">Struttura del Catalogo degli Attestati Elettronici</span> è riportato un esempio di Catalogo degli Attestati Elettronici decodificato in JSON.</p>
 <section id="gerarchia-degli-attestati-elettronici">
 <h3><span class="section-number">7.6.1. </span>Gerarchia degli Attestati Elettronici<a class="headerlink" href="#gerarchia-degli-attestati-elettronici" title="Link to this heading">¶</a></h3>
 <p>Le Credenziali Digitali riconosciute all'interno dell'ecosistema IT-Wallet sono classificate e standardizzate secondo il seguente modello gerarchico multilivello, progettato per migliorare la chiarezza semantica, la scoperta delle credenziali e la compatibilità sia con flussi di verifica basati su credenziali specifiche che su singoli attributi (claims).</p>
@@ -2505,7 +2525,7 @@ I principali Percorsi di utilizzo illustrano di seguito le interazioni con l'Inf
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 04/02/2026.
+      Ultimo aggiornamento 05/02/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
