@@ -54,4 +54,5 @@ jobs:
       - name: Run a script
         run: |-
           pip install tox
+          tox -e labels
           tox -e build
