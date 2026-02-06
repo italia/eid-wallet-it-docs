@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     git \
     graphviz \
-    openjdk-17-jre-headless \
+    default-jre-headless \
     texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended \
     texlive-lang-italian texlive-lang-english \
     texlive-pictures texlive-font-utils \
