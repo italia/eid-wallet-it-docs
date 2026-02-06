@@ -29,6 +29,7 @@ Di seguito è riportato un esempio non normativo.
     Accept-Language: it-IT, it;q=0.9
 
 .. code-block:: http
+  
     GET /.well-known/openid-credential-issuer HTTP/1.1
     Host: issuer.example.com
     Accept: application/jwt
