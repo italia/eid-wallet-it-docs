@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>13.5. PDND Signal Hub Endpoints &#8212; IT-Wallet Technical Specifications - Release 1.4.0</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
+    <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <script src="_static/js/petite-vue.js"></script>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="14. Cryptographic Algorithms" href="algorithms.html" />
+    <link rel="prev" title="13.4. Authentic Source Endpoints" href="authentic-source-endpoint.html" /> 
+  </head><body data-dark_mode_code_blocks="true">
+
+<div id="top_nav">
+    
+
+    <nav>
+        
+            
+        
+
+        <p id="toggle_sidebar">
+            <a href="#" title="Toggle sidebar">|||</a>
+        </p>
+        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Specifications - Release 1.4.0</a></h1>
+            <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
+    
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+            <path fill="white" d="M 244.8,8 C 106.1,8 0,113.3 0,252 c 0,110.9 69.8,205.8 169.5,239.2 12.8,2.3 17.3,-5.6 17.3,-12.1 0,-6.2 -0.3,-40.4 -0.3,-61.4 0,0 -70,15 -84.7,-29.8 0,0 -11.4,-29.1 -27.8,-36.6 0,0 -22.9,-15.7 1.6,-15.4 0,0 24.9,2 38.6,25.8 21.9,38.6 58.6,27.5 72.9,20.9 2.3,-16 8.8,-27.1 16,-33.7 -55.9,-6.2 -112.3,-14.3 -112.3,-110.5 0,-27.5 7.6,-41.3 23.6,-58.9 -2.6,-6.5 -11.1,-33.3 2.6,-67.9 20.9,-6.5 69,27 69,27 20,-5.6 41.5,-8.5 62.8,-8.5 21.3,0 42.8,2.9 62.8,8.5 0,0 48.1,-33.6 69,-27 13.7,34.7 5.2,61.4 2.6,67.9 16,17.7 25.8,31.5 25.8,58.9 0,96.5 -58.9,104.2 -114.8,110.5 9.2,7.9 17,22.9 17,46.4 0,33.7 -0.3,75.4 -0.3,83.6 0,6.5 4.6,14.4 17.3,12.1 C 428.2,457.8 496,362.9 496,252 496,113.3 383.5,8 244.8,8 Z"/>
+        </svg>
+    
+</a>
+        
+
+        <a id="mode_toggle" href="#" @click.prevent="handleClick" :title="mode">
+    <template v-if="mode == 'light'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_light"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M67.48,18.073c1.913,-1.912 1.913,-5.018 0,-6.931c-1.912,-1.912 -5.018,-1.912 -6.931,0l-6.798,6.799c-1.912,1.912 -1.912,5.018 0,6.931c1.913,1.912 5.018,1.912 6.931,-0l6.798,-6.799Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.728,61.108c1.912,-1.913 1.912,-5.018 -0,-6.931c-1.913,-1.913 -5.019,-1.913 -6.931,-0l-6.799,6.798c-1.912,1.913 -1.912,5.019 0,6.931c1.913,1.913 5.019,1.913 6.931,0l6.799,-6.798Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.682,54.177c-1.913,-1.913 -5.018,-1.913 -6.931,-0c-1.912,1.913 -1.912,5.018 0,6.931l6.798,6.798c1.913,1.913 5.019,1.913 6.931,0c1.913,-1.912 1.913,-5.018 0,-6.931l-6.798,-6.798Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M4.901,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,-0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M18.929,11.142c-1.912,-1.912 -5.018,-1.912 -6.931,0c-1.912,1.913 -1.912,5.019 0,6.931l6.799,6.799c1.912,1.912 5.018,1.912 6.931,-0c1.912,-1.913 1.912,-5.019 -0,-6.931l-6.799,-6.799Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.108,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c-0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c-0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'dark'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_dark"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.901,2.196 -4.901,4.901c0,2.705 2.197,4.901 4.901,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.662,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.989,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.732,61.103c1.91,-1.91 1.91,-5.011 0,-6.921l-0.009,-0.01c-1.91,-1.91 -5.012,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.909,1.91 5.011,1.91 6.92,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.672,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.52,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l-0,-0.01c-0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.901,2.196 -4.901,4.901c0,2.704 2.197,4.9 4.901,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.73,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 -0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.098,34.623c-2.699,0 -4.891,2.192 -4.891,4.892l-0,0.019c-0,2.699 2.192,4.891 4.891,4.891c2.7,0 4.892,-2.192 4.892,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.892,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'darkest'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_darkest"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><path d="M39.315,23.791c8.684,-0 15.734,7.05 15.734,15.733c0,8.684 -7.05,15.734 -15.734,15.734c-8.683,0 -15.733,-7.05 -15.733,-15.734c-0,-8.683 7.05,-15.733 15.733,-15.733Zm0,4.737c6.069,0 10.997,4.927 10.997,10.996c-0,6.069 -4.928,10.996 -10.997,10.996c-6.068,0 -10.996,-4.927 -10.996,-10.996c0,-6.069 4.928,-10.996 10.996,-10.996Z" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.216,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.9,2.196 -4.9,4.901c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.666,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.99,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.737,61.103c1.909,-1.91 1.909,-5.011 -0,-6.921l-0.01,-0.01c-1.91,-1.91 -5.011,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.91,1.91 5.011,1.91 6.921,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.676,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.524,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l0,-0.01c0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.216,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901c-0,2.704 2.196,4.9 4.9,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.734,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.103,34.623c-2.7,0 -4.892,2.192 -4.892,4.892l-0,0.019c-0,2.699 2.192,4.891 4.892,4.891c2.699,0 4.891,-2.192 4.891,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.891,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+</a>
+
+<script>
+(function() {
+    const LOCAL_STORAGE_KEY = 'piccoloThemeMode'
+
+    var initialMode = localStorage.getItem(LOCAL_STORAGE_KEY)
+
+    if (initialMode) {
+        // Make sure the value in local storage is valid
+        if (['light', 'dark', 'darkest'].indexOf(initialMode) == -1) {
+            initialMode = 'light'
+            localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+        }
+    } else {
+        // Check if the client prefers dark mode
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            initialMode = 'dark'
+        } else {
+            initialMode = 'light'
+        }
+        localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+    }
+
+    document.documentElement.dataset.mode = initialMode
+
+    PetiteVue.createApp({
+        'mode': initialMode,
+        handleClick() {
+            let currentMode = this.mode
+
+            if (currentMode == 'light') {
+                this.mode = 'dark'
+            } else if (currentMode == 'dark') {
+                this.mode = 'darkest'
+            } else if (currentMode == 'darkest') {
+                this.mode = 'light'
+            }
+
+            document.documentElement.dataset.mode = this.mode
+            localStorage.setItem(LOCAL_STORAGE_KEY, this.mode)
+
+            console.log(this.mode)
+        }
+    }).mount('#mode_toggle')
+})()
+</script>
+            <p class="mobile_search_link">
+                <a href="search.html" title="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 64" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2">
+                        <path d="M14.873 40.009c-2.315-3.943-3.642-8.532-3.642-13.429C11.231 11.91 23.141 0 37.811 0s26.58 11.91 26.58 26.58-11.91 26.58-26.58 26.58a26.44 26.44 0 0 1-14.277-4.161L9.739 62.794a3.12 3.12 0 0 1-4.413 0L.913 58.382c-1.217-1.218-1.217-3.196 0-4.413l13.96-13.96zM37.811 8.054c10.225 0 18.526 8.301 18.526 18.526s-8.301 18.526-18.526 18.526-18.526-8.301-18.526-18.526S27.586 8.054 37.811 8.054z" fill="#fff" />
+                    </svg>
+                </a>
+            </p>
+        
+
+        <div class="searchbox_wrapper">
+            
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper"><p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2. Brand Identity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Architecture Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Onboarding System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. User Experience Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. The Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registry.html">7. Registry Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entity-onboarding.html">8. Entity Onboarding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="x5c-evaluation.html">9. X.509 Certificate Management Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">10. Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">11. Digital Credential Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">12. Digital Credential Flows</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="endpoints.html">13. Endpoints</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="wallet-provider-endpoint.html">13.1. Wallet Provider Endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credential-issuer-endpoint.html">13.2. Credential Issuer Endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html">13.3. Relying Party Endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentic-source-endpoint.html">13.4. Authentic Source Endpoints</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">13.5. PDND Signal Hub Endpoints</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">14. Cryptographic Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">15. Security and Privacy Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">16. General Log Retention Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">17. Defined Terms and References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">18. How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">19. Open Source Releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">20. Appendix</a></li>
+</ul>
+
+        </div>
+      </div>
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="pdnd-signal-hub-endpoints">
+<h1><span class="section-number">13.5. </span>PDND Signal Hub Endpoints<a class="headerlink" href="#pdnd-signal-hub-endpoints" title="Link to this heading">¶</a></h1>
+<dl class="simple">
+<dt>Within the PDND platform, the Signal Hub serves as an intermediary component between PDND Providers and their PDND Consumers to facilitate real-time data variation notifications. To enable this functionality, the PDND Manager, acting in the role of e-Service PDNDProvider, offers the following specialized PDND Signal Hub e-Services:</dt><dd><ul class="simple">
+<li><p>the Signal Collection e-Service which is used by e-Service PDNDProviders to deposit Signals, since the e-Service PDNDProvider acts as Consumer of the Signal Collection e-Service;</p></li>
+<li><p>the Signal Distribution e-Service which is used by e-Service PDNDConsumers to retrieve collected Signals, since the e-Service PDNDConsumer also acts as Consumer of the Signal Distribution e-Service.</p></li>
+</ul>
+</dd>
+</dl>
+<p>In order to protect the privacy of the Signal's subject, the PDND Manager requires each e-Service PDNDProvider to pseudonymize the subject's identifier used within the Signals and set up a pseudonymization endpoint for their PDND e-Service. This pseudonymization endpoint is used by e-Service Consumers to use the pseudonymization algorithm in order to calculate the Signal subject's pseudonym. Only the e-Service PDNDProvider and its e-Service PDNDConsumers are able to link a Signal to the subject's personal data, while the PDND Manager only handles pseudonymized identifiers.</p>
+<p>For detailed technical specifications and implementation guidelines, please refer to the <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub">Signal Hub Guide</a>.</p>
+<dl class="simple">
+<dt>In the context of the IT Wallet, Authentic Sources interact with the Signal Hub to notify Credential Issuers about changes in the status and/or value of attributes associated with Digital Credentials. Specifically,</dt><dd><ul class="simple">
+<li><p>the Authentic Source will deposit Signals in the Signal Hub, thus playing the role of PDND Consumer of the Signal Collection e-Service;</p></li>
+<li><p>the Credential Issuer will retrieve Signals from the Signal Hub, and will thus play the role of e-Service PDNDConsumer of the Signal Distribution e-Service.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the context of IT Wallet, due to the particular nature of the data exchanged, the pseudonymization of the Signal's subject is not needed since it is already an opaque identifier unrelated to the Digial Credential's subject. Thus, the Authentic Source does not need to set up a pseudonymization endpoint for its e-Services.</p>
+</div>
+<p>Authentic Sources that leverage PDND MUST use the Signal Hub e-Services.</p>
+<p>Below it is provided the description of how the Authentic Sources and Credential Issuers interact with the Signal Hub e-Services together with the detailed formats of the requests and responses.</p>
+<section id="prerequisites">
+<h2><span class="section-number">13.5.1. </span>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">¶</a></h2>
+<p>Before using the Signal Hub, all Authentic Sources MUST:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>have registered as Providers of their e-Service with the PDND;</p></li>
+<li><p>have registered as Consumers of the Signal Collection e-Service of the Signal Hub;</p></li>
+</ul>
+</div></blockquote>
+<p>Before using the Signal Hub, all Credential Issuers MUST:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>have registered as Consumers of the relevant Authentic Sources' e-Services;</p></li>
+<li><p>have registered as Consumers of the Signal Distribution e-Service of the Signal Hub;</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="signal-hub-e-services">
+<h2><span class="section-number">13.5.2. </span>Signal Hub e-Services<a class="headerlink" href="#signal-hub-e-services" title="Link to this heading">¶</a></h2>
+<p>This section describes the endpoints available for the Signal Hub Collection and Distribution e-Services, including their functionalities and the expected request and response formats.</p>
+<section id="signal-collection-e-service">
+<h3><span class="section-number">13.5.2.1. </span>Signal Collection e-Service<a class="headerlink" href="#signal-collection-e-service" title="Link to this heading">¶</a></h3>
+<p>Authentic Sources in the IT Wallet ecosystem use the Signal Collection e-Service to:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>notify the Credential Issuer of a change of status and/or value of a specific attribute associated with a Digital Credential issued by the Credential Issuer;</p></li>
+<li><p>notify the Credential Issuer of the availability of the attributes related to a specific Digital Credential which a User requested in its Wallet.</p></li>
+</ul>
+</div></blockquote>
+<p>The last case, referred to as deferred issuance, happens when the Credential Issuer has requested a Digital Credential's attributes from the Authentic Source (invoking the <a class="reference internal" href="authentic-source-endpoint.html#get-attribute-claims"><span class="std std-ref">Get Attribute Claims</span></a> PDND endpoint) and the Authentic Source cannot respond immediately with the requested attributes. Thus, the Authentic Source notifies the Credential Issuer via the Signal Hub at a later time that the requested attributes are now available.</p>
+<p>The Signal Collection e-Service endpoint is used by Authentic Sources to deposit Signals to the Signal Hub via a Signal Collection request. The latter MUST be a POST request with <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> set to <code class="docutils literal notranslate"><span class="pre">application/json</span></code>, whose header MUST have the parameters described in <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub">Signal Hub Guide</a> and whose body MUST contain the following parameters:</p>
+<table class="docutils align-default" id="table-signal-deposit-request-parameters">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 75.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Parameter Name</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>signalId</strong></p></td>
+<td><p>REQUIRED. A positive 64 bit integer number referencing the identifier of the Signal in chronological order.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>objectType</strong></p></td>
+<td><p>REQUIRED. Using this field the Authentic Source MAY use to further specify the Signal.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>objectId</strong></p></td>
+<td><p>REQUIRED. The subject to which the Signal is bound. If the Signal has <code class="docutils literal notranslate"><span class="pre">signalType</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CREATE</span></code>, then it MUST be set to the <code class="docutils literal notranslate"><span class="pre">jti</span></code> value the Credential Issuer used in the Agid-JWT-Signature token of the <cite>get attributes</cite> request to the Authentic Source to obtain the attributes related to a specific Digital Credential (see <a class="reference internal" href="authentic-source-endpoint.html#get-attribute-claims"><span class="std std-ref">Get Attribute Claims</span></a>);</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">UPDATE</span></code>, then it MUST be set to the Authentic Source's unique database identifier of the Digital Credential's attributes the Signal refers to.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>signalType</strong></p></td>
+<td><p>REQUIRED. Signal Type. It MUST be one of the following:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">UPDATE</span></code>, when the Signal refers to a change in the status and/or value of a specific attribute associated with a Digital Credential;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CREATE</span></code>, when the Signal refers to the availability of the attributes of a specific Digital Credential;</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>eserviceId</strong></p></td>
+<td><p>REQUIRED. e-Service to which the Signal is bound. It MUST correspond to the e-Service Id value the Authentic Source is a Provider of.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the deffered issuance flow, i.e., when the Authentic Source notifies the Credential Issuer of the availability of the Digital Credential's attributes via Signal Hub; both entities MUST keep track of the Credential Issuer's <code class="docutils literal notranslate"><span class="pre">jti</span></code> value used in the Agid-JWT-Signature of the <code class="docutils literal notranslate"><span class="pre">get</span> <span class="pre">attributes</span></code> request. This is necessary since the <code class="docutils literal notranslate"><span class="pre">objectId</span></code> of the Signal MUST be set to that <code class="docutils literal notranslate"><span class="pre">jti</span></code> value when the Signal has <code class="docutils literal notranslate"><span class="pre">signalType</span></code> with value <code class="docutils literal notranslate"><span class="pre">CREATE</span></code>.</p>
+</div>
+<p>A non normative example of the Signal Collection request can be found at <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-depositare-un-segnale">Signal Hub push</a>.</p>
+<p>The Signal Collection e-Service response, acknowledging the correct parsing of the request, is specified in <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-depositare-un-segnale">Signal Hub push</a>, and has <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> set to <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. The payload contains the body parameter:</p>
+<table class="docutils align-default" id="table-signal-deposit-response-parameters">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 75.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Parameter Name</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>signalId</strong></p></td>
+<td><p>REQUIRED. The identifier of the Signal that has been successfully collected by the Signal Collection e-Service.</p></td>
+</tr>
+</tbody>
+</table>
+<p>If any error occurs during the request parsing, the response MUST adhere to the error format defined in <a class="reference external" href="https://raw.githubusercontent.com/pagopa/interop-signalhub-core/refs/tags/1.0.1/docs/openAPI/push-signals.yaml">Signal Hub push-yaml</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A complete OpenAPI Specification of the Signal Collection e-Service is available <a class="reference external" href="https://raw.githubusercontent.com/pagopa/interop-signalhub-core/refs/tags/1.0.1/docs/openAPI/push-signals.yaml">Signal Hub push-yaml</a>.</p>
+</div>
+<p>The Authentic Source MUST implement the necessary logic to handle the requests to the Signal Collection e-Service endpoint, in doing this it has to consider the following aspects:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Signals are sent per PDND e-Service, therefore the Authentic Source SHOULD implement a Signal deposit cycle for each e-Service ID it is a PDND Provider of;</p></li>
+<li><p>Signals are labeled by a unique identifier, the <code class="docutils literal notranslate"><span class="pre">signalId</span></code>, which is a positive 64 bit integer number. The <code class="docutils literal notranslate"><span class="pre">signalId</span></code> MUST be incremented by 1 for each new Signal the Authentic Source wishes to deposit in the Signal Collection e-Service endpoint. It is up to the Authentic Source to keep track of the last <code class="docutils literal notranslate"><span class="pre">signalId</span></code> it has sent. Signals with lower <code class="docutils literal notranslate"><span class="pre">signalId</span></code> values are considered older by the Signal Collection e-Service endpoint and raise an error when received.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="signal-distribution-e-service">
+<h3><span class="section-number">13.5.2.2. </span>Signal Distribution e-Service<a class="headerlink" href="#signal-distribution-e-service" title="Link to this heading">¶</a></h3>
+<p>Credential Issuers in the IT Wallet ecosystem use the Signal Distribution e-Service to:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>check for changes in the status and/or value of a specific attribute associated with a Digital Credential issued by the Credential Issuer itself;</p></li>
+<li><p>check for the availability of attributes related to a Digital Credential requested by a User.</p></li>
+</ul>
+</div></blockquote>
+<p>The Signal Distribution e-Service endpoint is used by Credential Issuers to retrieve Signals from the Signal Hub via a Signal Distribution request. The latter MUST use an HTTP request using the method GET and the following parameters:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Path Parameters:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">eserviceId</span></code>. REQUIRED. e-Service to which the Signal is bound. It MUST correspond to the e-Service Id value the Credential Issuer is a Consumer of.</p></li>
+</ul>
+</li>
+<li><p>Query Parameters:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">signalId</span></code>. OPTIONAL. Integer representing the last Signal number processed by the Credential Issuer. The Signal Distribution e-Service will respond with Signals having progressively greater <code class="docutils literal notranslate"><span class="pre">signalId</span></code> values. If not specified, the default value is the lowest <code class="docutils literal notranslate"><span class="pre">signalId</span></code> value available in the Signal Distribution e-Service.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code>. OPTIONAL. Integer representing the maximum number of Signals to be returned in the Signal Distribution response. If not specified, the default value is <code class="docutils literal notranslate"><span class="pre">10</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Headers parameters: these are those described in <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-recuperare-i-segnali">Signal Hub pull</a>.</p></li>
+</ul>
+</div></blockquote>
+<p>If the Signal Distribution request is correctly processed, the e-Service will then respond with status code</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>HTTP 200 OK if the request is correctly formed and there are no more Signals to request;</p></li>
+<li><p>HTTP 206 OK if the request is correctly formed but there are more Signals to request.</p></li>
+</ul>
+</div></blockquote>
+<p>Regardless of the response code used, the response has <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> set to <code class="docutils literal notranslate"><span class="pre">application/json</span></code> an the header parameters indicated in <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-recuperare-i-segnali">Signal Hub pull</a>. The body parameter <code class="docutils literal notranslate"><span class="pre">lastSignalId</span></code>, referencing the <code class="docutils literal notranslate"><span class="pre">signalId</span></code> of the last Signal transmitted by the Signal Distribution e-Service is added to the response's payload.</p>
+<p>In <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-recuperare-i-segnali">Signal Hub pull</a> can be found non normative examples of a Signal Distribution requests and responses.</p>
+<p>If any error occurs during the request parsing, the response MUST adhere to the error format defined in <a class="reference external" href="https://raw.githubusercontent.com/pagopa/interop-signalhub-core/refs/tags/1.0.1/docs/openAPI/pull-signals.yaml">Signal Hub pull-yaml</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A complete OpenAPI Specification of the Signal Collection e-Service is available <a class="reference external" href="https://raw.githubusercontent.com/pagopa/interop-signalhub-core/refs/tags/1.0.1/docs/openAPI/pull-signals.yaml">Signal Hub pull-yaml</a>.</p>
+</div>
+<p>The Credential Issuer MUST implement the necessary logic to handle the Polling of the Signal Distribution e-Service endpoint, in doing this it has to consider the following aspects:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Signals are queried and retrieved per PDND e-Service, meaning that the Credential Issuer MUST implement a poll cycle for each e-Service ID;</p></li>
+<li><p>the retention period of Signals in the Signal Hub is specified in <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub">Signal Hub Guide</a>. Signals older than the specified retention period are not available for retrieval;</p></li>
+<li><p>the Signal Hub does not keep track of the last <code class="docutils literal notranslate"><span class="pre">signalId</span></code> notified to a specific Credential Issuer. Each Credential Issuer MUST keep track of the last <code class="docutils literal notranslate"><span class="pre">signalId</span></code> it has received for each e-Service PDNDID;</p></li>
+<li><p>the Signal Distribution e-Service endpoint returns Signals in batches. The maximal size the batch is specified in <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub">Signal Hub Guide</a>. The Signal Distribution e-Service will indicate if additional Signals are available for retrieval.</p></li>
+</ul>
+</div></blockquote>
+</section>
+</section>
+<section id="signals-processing">
+<h2><span class="section-number">13.5.3. </span>Signals Processing<a class="headerlink" href="#signals-processing" title="Link to this heading">¶</a></h2>
+<p>After the Signals have been successfully recovered by the Credential Issuer, the latter MUST process them as follows:</p>
+<blockquote>
+<div><ul>
+<li><p>For each Signal, the Credential Issuer MUST check the <code class="docutils literal notranslate"><span class="pre">SignalType</span></code> value:</p>
+<ul class="simple">
+<li><p>if the Signal <code class="docutils literal notranslate"><span class="pre">SignalType</span></code> is <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> (where <code class="docutils literal notranslate"><span class="pre">objectId</span></code> refers to the <strong>Authentic Source's unique database identifier of the Digital Credential's attributes</strong>), the status and/or value of the attribute associated with a Digital Credential need updates;</p></li>
+<li><p>if the Signal <code class="docutils literal notranslate"><span class="pre">SignalType</span></code> is <code class="docutils literal notranslate"><span class="pre">CREATE</span></code> (where <code class="docutils literal notranslate"><span class="pre">objectId</span></code> refers to the <strong>request ``jti``</strong>), the requested attributes of a specific Digital Credential are now available;</p></li>
+</ul>
+<p>If the <code class="docutils literal notranslate"><span class="pre">objectId</span></code> does not correspond to any valid identifier known to the Credential Issuer, the Signal MUST be ignored. Otherwise, if it corresponds to a known and valid identifier, the Credential Issuer MUST use the <a class="reference internal" href="authentic-source-endpoint.html#get-attribute-claims"><span class="std std-ref">Get Attribute Claims</span></a> PDND endpoint of the Authentic Source to retrieve the updated information and, if applicable, apply the new status to the corresponding Credential.</p>
+<p>When the Signal has been processed, the Credential Issuer will either move to the next Signal and update its <code class="docutils literal notranslate"><span class="pre">signalId</span></code> counter; or, if there are no more Signals to process, it will resume the Pull cycle.</p>
+</li>
+</ul>
+</div></blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Given Signal Hub's currently supported security patterns, if the Authentic Source requires the <cite>AUDIT_REST_02</cite> security pattern from the Credential Issuer, the latter MUST revoke the Digital Credential referenced in Signals with <code class="docutils literal notranslate"><span class="pre">signalType</span></code> <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> since it cannot contact the Authentic Source to retrieve the updated information without having authenticated the User before. <strong>In this scenario, revocation is the only allowed action.</strong></p>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+    
+        <div id="show_right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&lt;</span><span>Page contents</span></a></p>
+        </div>
+
+        <div id="right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
+            <div class="page_toc">
+                <ul>
+<li><a class="reference internal" href="#">13.5. PDND Signal Hub Endpoints</a><ul>
+<li><a class="reference internal" href="#prerequisites">13.5.1. Prerequisites</a></li>
+<li><a class="reference internal" href="#signal-hub-e-services">13.5.2. Signal Hub e-Services</a><ul>
+<li><a class="reference internal" href="#signal-collection-e-service">13.5.2.1. Signal Collection e-Service</a></li>
+<li><a class="reference internal" href="#signal-distribution-e-service">13.5.2.2. Signal Distribution e-Service</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#signals-processing">13.5.3. Signals Processing</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    
+
+      <div class="clearer"></div>
+    </div>
+    <div class="button_nav_wrapper">
+        <div class="button_nav">
+            <div class="left">
+                
+                <a href="authentic-source-endpoint.html">
+                    <span class="icon">&lt;</span><span><span class="section-number">13.4. </span>Authentic Source Endpoints</span></a>
+                
+            </div>
+
+            <div class="right">
+                
+                    <a href="algorithms.html"><span><span class="section-number">14. </span>Cryptographic Algorithms</span><span class="icon">&gt;</span></a>
+                
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer" role="contentinfo">
+      Last updated on 06/02/2026.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
+    </div>
+
+<p id="theme_credit"></p>
+  </body>
+</html>
