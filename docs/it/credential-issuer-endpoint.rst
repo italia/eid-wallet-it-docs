@@ -32,7 +32,6 @@ Di seguito è riportato un esempio non normativo.
     Content-Type: application/json
 
 .. code-block:: http
-  
     GET /.well-known/openid-credential-issuer HTTP/1.1
     Host: issuer.example.com
     Accept: application/jwt
