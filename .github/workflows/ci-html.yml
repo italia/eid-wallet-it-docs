@@ -14,7 +14,8 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  # Use branch name (or PR head branch) so push & PR for the same branch share the same group
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
   cancel-in-progress: true
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel

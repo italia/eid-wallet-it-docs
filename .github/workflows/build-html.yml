@@ -110,6 +110,11 @@ jobs:
             sed -i 's/\(settings_project_name = ".*\)"/\1 - Editor'"'"'s Copy"/' docs/en/conf.py
           fi
 
+      - name: Create build directories
+        run: |-
+          mkdir -p "html/${{ steps.deployment.outputs.path }}/it"
+          mkdir -p "html/${{ steps.deployment.outputs.path }}/en"
+
       # Fast check: labels and cross-references before heavy HTML build
       - name: Quick labels and xref check (IT/EN)
         run: |
@@ -119,10 +124,6 @@ jobs:
       # Run Sphinx build for HTML output
       - name: Build branch
         run: |-
-          # Create output directories
-          mkdir -p "html/${{ steps.deployment.outputs.path }}/it"
-          mkdir -p "html/${{ steps.deployment.outputs.path }}/en"
-
           echo "Building html/${{ steps.deployment.outputs.path }}/it"
           echo "Building html/${{ steps.deployment.outputs.path }}/en"
 
