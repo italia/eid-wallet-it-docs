@@ -1,7 +1,5 @@
 .. include:: ../common/common_definitions.rst
 
-.. _relying-party-remote-flow-endpoints-endpoint-per-flussi-remoti-della-relying-party:
-
 .. "included" file, so we start with '-' title level
 
 La Relying Party DEVE esporre una serie di endpoint per supportare i flussi di presentazione remoti come definiti in OpenID4VP 1.0. Questi endpoint abilitano la verifica sicura delle credenziali, l'instaurazione della fiducia e l'autenticazione dell'utente per modelli di interazione cross-device e same-device.
@@ -57,8 +55,6 @@ Endpoint di Cancellazione della Relying Party
 
 L'Endpoint di Cancellazione, che è descritto in :ref:`relying-party-metadata:Metadati della Relying Party`, consente alle Istanze di Wallet di richiedere la cancellazione degli attributi presentati alla Relying Party. La Relying Party DEVE richiedere l'autenticazione dell'Utente prima di procedere con la cancellazione degli attributi.
 
-.. _relying-party-remote-flow-endpoints-richiesta-di-cancellazione:
-
 Richiesta di Cancellazione
 ..........................
 
@@ -70,8 +66,6 @@ Di seguito è riportato un esempio non normativo di una Richiesta di Cancellazio
 
   GET /erasure-endpoint?callback_url=https://wallet-instance/erasure_response HTTP/1.1
   Host: relying-party.example.org
-
-.. _relying-party-remote-flow-endpoints-risposta-di-cancellazione:
 
 Risposta di Cancellazione
 .........................
@@ -122,8 +116,6 @@ Di seguito è riportato un esempio di Error Response dall'Endpoint di Cancellazi
 Alla ricezione di una Error Response, l'Istanza di Wallet che ha effettuato la Richiesta di Cancellazione DEVE informare l'Utente della condizione di errore in modo appropriato.
 
 
-.. _relying-party-remote-flow-endpoints-considerazioni-di-sicurezza:
-
 Considerazioni di Sicurezza
 """""""""""""""""""""""""""
 
@@ -135,7 +127,7 @@ Tutti gli endpoint della Relying Party DEVONO implementare appropriate misure di
 - **Rate Limiting**: Gli endpoint DOVREBBERO implementare rate limiting per prevenire abusi
 - **Audit Logging**: Tutte le interazioni degli endpoint DOVREBBERO essere registrate per il monitoraggio della sicurezza
 
-Per i requisiti di sicurezza dettagliati, vedere :ref:`relying-party-remote-flow-endpoints-considerazioni-di-sicurezza` e i casi di test pertinenti in :ref:`test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto`.
+Per i requisiti di sicurezza dettagliati, vedere :ref:`relying-party-remote-flow-endpoints:Considerazioni di Sicurezza` e i casi di test pertinenti in :ref:`test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto`.
 
 
 Note di Implementazione

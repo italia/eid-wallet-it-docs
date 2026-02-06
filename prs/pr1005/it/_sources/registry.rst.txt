@@ -558,7 +558,7 @@ Di seguito è fornito un esempio non normativo.
 
 .. _struttura-del-catalogo-degli-attestati-elettronici:
 
-Nella sezione :ref:`struttura-del-catalogo-degli-attestati-elettronici` è riportato un esempio di Catalogo degli Attestati Elettronici decodificato in JSON.
+Nella sezione :ref:`Struttura del Catalogo degli Attestati Elettronici <struttura-del-catalogo-degli-attestati-elettronici>` è riportato un esempio di Catalogo degli Attestati Elettronici decodificato in JSON.
 
 Gerarchia degli Attestati Elettronici
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
