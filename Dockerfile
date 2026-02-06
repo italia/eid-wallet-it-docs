@@ -4,7 +4,8 @@ ENV DEBIAN_FRONTEND=noninteractive \
     TZ=UTC
 
 # Base system + LaTeX + Graphviz + Java + image tooling for Sphinx/PlantUML/PDF
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends \
     build-essential \
     git \
     graphviz \
@@ -16,6 +17,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     texlive-luatex \
     texlive-fonts-extra texlive-science texlive-publishers texlive-formats-extra \
     ghostscript poppler-utils imagemagick netpbm \
+ && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /workspace
