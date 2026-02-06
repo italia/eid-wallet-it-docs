@@ -8,12 +8,12 @@ Matrice di Test per Wallet Provider
 Questa sezione fornisce l'insieme di casi di test per verificare la conformità di un'implementazione di Soluzione Wallet e Istanza del Wallet alle regole tecniche definite nell'ecosistema IT-Wallet.
 Il piano di test è basato sui requisiti estratti dalle seguenti Sezioni:
 
-- :ref:`trust-infrastructure:The Infrastructure of Trust`
-- :ref:`wallet-solution:Wallet Solution`
-- :ref:`credential-issuance:Digital Credential Issuance`
-- :ref:`credential-presentation:Digital Credential Presentation`
+- :ref:`trust-infrastructure:L'Infrastruttura di Trust`
+- :ref:`wallet-solution:Soluzione Wallet`
+- :ref:`credential-issuance:Emissione di Attestati Elettronici`
+- :ref:`credential-presentation:Presentazione dell'Attestato Elettronico`
 - :ref:`endpoints:Endpoints`
-- :ref:`mobile-application-instance:Mobile Application Instance`
+- :ref:`mobile-application-instance:Istanza dell'Applicazione Mobile`
 
 
 .. note::
@@ -25,11 +25,11 @@ Casi di Test per Backend del Fornitore del Wallet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Questa sezione elenca i casi di test dalle Sezioni:
 
-- :ref:`wallet-solution-requirements:Wallet Solution Requirements`
-- :ref:`wallet-solution-components:Wallet Solution Components`
-- :ref:`wallet-instance:Wallet Instance`
-- :ref:`wallet-provider-entity-configuration:Wallet Provider Entity Configuration`
-- :ref:`wallet-solution-metadata:Wallet Solution Metadata`
+- :ref:`wallet-solution-requirements:Requisiti della Soluzione Wallet`
+- :ref:`wallet-solution-components:Componenti della Soluzione Wallet`
+- :ref:`wallet-instance:Istanza del Wallet`
+- :ref:`wallet-provider-entity-configuration:Entity Configuration del Fornitore di Wallet`
+- :ref:`wallet-solution-metadata-metadati-della-soluzione-wallet`
 - `e-Service PDND Wallet Provider Catalogue <wallet-provider-endpoint.html#e-service-pdnd-wallet-provider-catalogue0>`_
 
 
@@ -148,8 +148,8 @@ Questa sezione elenca i casi di test dalle Sezioni:
 
 - `Configuration of the Federation <trust.html#configuration-of-the-federation>`_
 - `Trust Evaluation Mechanism <trust.html#trust-evaluation-mechanism>`_
-- :ref:`wallet-solution-requirements:Wallet Solution Requirements`
-- :ref:`wallet-solution-components:Wallet Solution Components`
+- :ref:`wallet-solution-requirements:Requisiti della Soluzione Wallet`
+- :ref:`wallet-solution-components:Componenti della Soluzione Wallet`
 - :ref:`wallet-instance:Wallet Instance`
 - `Error Handling for Wallet Instance Management <wallet-provider-endpoint.html#error-handling-for-wallet-instance-management>`__
 - `Mobile Application Instance Initialization <mobile-application-instance.html#mobile-application-instance-initialization>`_
@@ -336,9 +336,9 @@ Casi di Test per Fase di Issuance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Questa sezione elenca i casi di test dalle Sezioni:
 
-- :ref:`credential-issuance:Digital Credential Issuance`
+- :ref:`credential-issuance:Emissione di Attestati Elettronici`
 - `Trust Evaluation Mechanism <trust.html#trust-evaluation-mechanism>`_
-- :ref:`credential-issuer-endpoint:Credential Issuer Endpoints`
+- :ref:`credential-issuer-endpoint:Endpoint del Credential Issuer`
 
 
 .. list-table::
@@ -493,7 +493,7 @@ Questa sezione elenca i casi di test dalle Sezioni:
    * - WP_060
      - Issuance, Interoperabilità
      - Verificare tipo/schema di un Attestato Elettronico
-     - Istanza del Wallet recupera l'Attestato Elettronico rilasciata dal claim ``credential`` della risposta, verifica che il suo tipo corrisponda al tipo richiesto, e valida lo schema contro :ref:`credential-data-model:Digital Credential Data Model`; se uno dei controlli fallisce, rifiuta l'Attestato Elettronico.
+     - Istanza del Wallet recupera l'Attestato Elettronico rilasciata dal claim ``credential`` della risposta, verifica che il suo tipo corrisponda al tipo richiesto, e valida lo schema contro :ref:`credential-data-model:Modello di Dati degli Attestati Elettronici`; se uno dei controlli fallisce, rifiuta l'Attestato Elettronico.
    * - WP_061
      - Issuance, Sicurezza
      - Validare Trust Chain Credential Issuer
@@ -607,7 +607,7 @@ Questa sezione elenca i casi di test dalle Sezioni:
 
 Casi di Test per Fase di Presentazione
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Questa sezione elenca i casi di test dalla Sezione :ref:`credential-presentation:Digital Credential Presentation`,
+Questa sezione elenca i casi di test dalla Sezione :ref:`credential-presentation:Presentazione dell'Attestato Elettronico`,
 coprendo sia le fasi di presentazione **Flusso Remoto** che **Flusso di Prossimità**.
 
 
@@ -942,7 +942,7 @@ Casi di Test per Eliminazione Attributi dell'Utente Lato Relying Party
 
 Questa sezione elenca i casi di test dalle Sezioni:
 
-- :ref:`user-attribute-deletion:User's Attributes Deletion`
+- :ref:`user-attribute-deletion:Eliminazione degli Attributi dell'Utente`
 - `Relying Party Provider Backend Erasure Endpoint <relying-party-provider-backend-endpoint.html#relying-party-provider-backend-erasure-endpoint>`_
 
 
@@ -993,7 +993,7 @@ Questa sezione elenca i casi di test dalle Sezioni:
 Casi di Test per Backup e Ripristino degli Attestati Elettronici
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Questa sezione elenca i casi di test dalla Sezione :ref:`backup-restore:Backup and Restore`.
+Questa sezione elenca i casi di test dalla Sezione :ref:`backup-restore:Backup e Ripristino`.
 
 .. list-table::
    :class: longtable
