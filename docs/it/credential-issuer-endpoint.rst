@@ -28,9 +28,6 @@ Di seguito è riportato un esempio non normativo.
     Accept: application/json
     Accept-Language: it-IT, it;q=0.9
 
-    HTTP/1.1 200 OK
-    Content-Type: application/json
-
 .. code-block:: http
     GET /.well-known/openid-credential-issuer HTTP/1.1
     Host: issuer.example.com

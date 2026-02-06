@@ -34,10 +34,6 @@ Below is a non-normative example.
     Accept: application/jwt
     Accept-Language: it-IT, it;q=0.9
 
-.. code-block:: http
-
-    HTTP/1.1 200 OK
-    Content-Type: application/jwt
 The Credential Issuer MUST respond with HTTP Status Code 200 and return the Credential Issuer Metadata containing:
 
 - the parameters defined in :ref:`credential-issuer-metadata:Metadata for openid_credential_issuer` as an unsigned JSON document using the media type *application/json*.
