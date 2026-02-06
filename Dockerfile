@@ -24,7 +24,8 @@ WORKDIR /workspace
 
 # Install Python deps (including Sphinx, extensions, etc.) and tox
 COPY requirements-dev.txt ./
-RUN pip install --no-cache-dir -r requirements-dev.txt \
+RUN pip install --upgrade pip \
+ && pip install --no-cache-dir -r requirements-dev.txt \
  && pip install --no-cache-dir tox
 
 # Default command: show Sphinx version
