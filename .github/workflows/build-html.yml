@@ -31,6 +31,8 @@ concurrency:
 jobs:
   build-and-index:
     runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/${{ github.repository_owner }}/eidas-it-wallet-docs-builder:latest
     # Run job ONLY if:
     # 1. It's a push to a branch (e.g. versione-corrente)
     # 2. It's a PR from the same repository (not from a fork)
@@ -44,31 +46,6 @@ jobs:
     steps:
       # Check out your repository under $GITHUB_WORKSPACE
       - uses: actions/checkout@v3
-
-      # Install Python
-      - uses: actions/setup-python@v4
-        with:
-          python-version: "3.10"
-          architecture: "x64"
-
-      # Install Java
-      - name: Setup Java
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'temurin'
-          java-version: '17'
-
-      # Install Graphviz required for plantuml
-      - name: Install Graphviz
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y graphviz
-
-      # Install python dependencies
-      - name: Install deps
-        run: |-
-          python -m pip install -r requirements-dev.txt
-          python -m pip install Jinja2==3.1.6
 
       # Determine deployment path based on event type
       - name: Generate deployment paths
