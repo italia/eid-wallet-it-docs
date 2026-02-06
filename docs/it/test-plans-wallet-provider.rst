@@ -150,7 +150,7 @@ Questa sezione elenca i casi di test dalle Sezioni:
 - `Trust Evaluation Mechanism <trust.html#trust-evaluation-mechanism>`_
 - :ref:`wallet-solution-requirements:Requisiti della Soluzione Wallet`
 - :ref:`wallet-solution-components:Componenti della Soluzione Wallet`
-- :ref:`wallet-instance:Wallet Instance`
+- :ref:`wallet-instance:Istanza del Wallet`
 - `Error Handling for Wallet Instance Management <wallet-provider-endpoint.html#error-handling-for-wallet-instance-management>`__
 - `Mobile Application Instance Initialization <mobile-application-instance.html#mobile-application-instance-initialization>`_
 
@@ -1100,7 +1100,7 @@ Casi di Test Opzionali per Istanza del Wallet
 
 Questa sezione elenca i casi di test dalle Sezioni:
 
-- :ref:`wallet-instance:Wallet Instance`
+- :ref:`wallet-instance:Istanza del Wallet`
 - `Request-Specific Error Responses <wallet-provider-endpoint.html#request-specific-error-responses>`_
 - `Mobile Application Instance Initialization <mobile-application-instance.html#mobile-application-instance-initialization>`_
 

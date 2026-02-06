@@ -61,8 +61,6 @@ I Metadata *oauth_authorization_server* DEVONO contenere i seguenti parametri.
 .. important::
   Se ``token_endpoint_auth_methods_supported`` include ``attest_jwt_client_auth``, l'Authorization Server DEVE includere entrambi ``client_attestation_signing_alg_values_supported`` e ``client_attestation_pop_signing_alg_values_supported`` nei propri metadati. I client DOVREBBERO recuperare e analizzare i metadati per rilevare supporto e requisiti di algoritmo per l'Attestation-Based Client Authentication e, in caso di incompatibilità, POSSONO ottenere una nuova attestation con un algoritmo supportato.
 
-.. _credential-issuer-metadata-openid-credential-issuer-it:
-
 Metadata per openid_credential_issuer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
