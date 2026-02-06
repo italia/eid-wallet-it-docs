@@ -752,7 +752,7 @@ Inoltre, ogni nonce ha uno scopo di sicurezza specifico:
 Metadati del Provider PID
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In aggiunta ai valori ``trust_frameworks_supported`` definiti nella sezione :ref:`credential-issuer-metadata-openid-credential-issuer`, i Metadati del Provider PID per ``openid_credential_issuer`` DEVONO anche supportare il valore ``it_l2+document_proof`` indicante il protocollo di Autenticazione multi-step descritto in questa Specifica.
+In aggiunta ai valori ``trust_frameworks_supported`` definiti nella sezione :ref:`credential-issuer-metadata-openid-credential-issuer-it`, i Metadati del Provider PID per ``openid_credential_issuer`` DEVONO anche supportare il valore ``it_l2+document_proof`` indicante il protocollo di Autenticazione multi-step descritto in questa Specifica.
 
 Controlli di Sicurezza
 ^^^^^^^^^^^^^^^^^^^^^^^
