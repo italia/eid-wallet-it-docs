@@ -5,7 +5,7 @@
 La Relying Party DEVE esporre una serie di endpoint per supportare i flussi di presentazione remoti come definiti in OpenID4VP 1.0. Questi endpoint abilitano la verifica sicura delle credenziali, l'instaurazione della fiducia e l'autenticazione dell'utente per modelli di interazione cross-device e same-device.
 
 .. note::
-  I test relativi agli endpoint per flussi remoti della Relying Party sono definiti nella matrice di test per presentazione remota (:ref:`test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto`).
+  I test relativi agli endpoint per flussi remoti della Relying Party sono definiti nella matrice di test per presentazione remota (:ref:`test-plans-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto`).
 
 
 Endpoint di Federazione
@@ -127,7 +127,7 @@ Tutti gli endpoint della Relying Party DEVONO implementare appropriate misure di
 - **Rate Limiting**: Gli endpoint DOVREBBERO implementare rate limiting per prevenire abusi
 - **Audit Logging**: Tutte le interazioni degli endpoint DOVREBBERO essere registrate per il monitoraggio della sicurezza
 
-Per i requisiti di sicurezza dettagliati, vedere :ref:`relying-party-remote-flow-endpoints:Considerazioni di Sicurezza` e i casi di test pertinenti in :ref:`test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto`.
+Per i requisiti di sicurezza dettagliati, vedere :ref:`relying-party-endpoints:Considerazioni di Sicurezza` e i casi di test pertinenti in :ref:`test-plans-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto`.
 
 
 Note di Implementazione

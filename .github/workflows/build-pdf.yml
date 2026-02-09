@@ -43,7 +43,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build-image
     container:
-      image: ${{ env.IMAGE_NAME }}:latest
+      image: ${{ env.IMAGE_NAME }}:${{ github.sha }}
     env:
       SETTINGS_FILE_NAME: "eid-wallet-it-docs"
     steps:

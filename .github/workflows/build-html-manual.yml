@@ -22,7 +22,7 @@ jobs:
     steps:
       # Checkout the PR code
       - name: Checkout PR
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: refs/pull/${{ github.event.inputs.pr_number }}/head
 
@@ -67,7 +67,7 @@ jobs:
 
       # Check out the gh-pages branch in a temporary directory
       - name: Checkout gh-pages branch
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: gh-pages
           path: gh-pages-temp

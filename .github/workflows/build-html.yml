@@ -36,6 +36,12 @@ concurrency:
 jobs:
   build-image:
     runs-on: ubuntu-latest
+    # Run only when we can push to GHCR (same-repo PR, push, release, or manual)
+    if: |
+      github.event_name == 'push' ||
+      github.event_name == 'release' ||
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository)
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -61,7 +67,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build-image
     container:
-      image: ${{ env.IMAGE_NAME }}:latest
+      image: ${{ env.IMAGE_NAME }}:${{ github.sha }}
     # Run job ONLY if:
     # 1. It's a push to a branch (e.g. versione-corrente)
     # 2. It's a PR from the same repository (not from a fork)
@@ -74,7 +80,7 @@ jobs:
 
     steps:
       # Check out your repository under $GITHUB_WORKSPACE
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # Determine deployment path based on event type
       - name: Generate deployment paths
@@ -150,7 +156,7 @@ jobs:
 
       # Check out the gh-pages branch in a temporary directory
       - name: Checkout gh-pages branch
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: gh-pages
           path: gh-pages-temp
