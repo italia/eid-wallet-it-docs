@@ -16,13 +16,19 @@ env:
   IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/eidas-it-wallet-docs-builder
 
 jobs:
+  # On release we don't need to rebuild the image; use existing. Paths-filter can fail when ref is a tag (no push base), so we bypass it on release.
   check_image_deps:
     runs-on: ubuntu-latest
     outputs:
-      build-image: ${{ steps.filter.outputs.build-image }}
+      build-image: ${{ steps.set_default.outputs.build-image || steps.filter.outputs.build-image }}
     steps:
       - uses: actions/checkout@v4
+      - name: No image rebuild on release (use existing image)
+        if: github.event_name == 'release'
+        id: set_default
+        run: echo "build-image=false" >> $GITHUB_OUTPUT
       - uses: dorny/paths-filter@v3
+        if: github.event_name != 'release'
         id: filter
         with:
           filters: |
@@ -89,13 +95,14 @@ jobs:
     steps:
       - id: set_tag
         run: |
+          # On release or when build was skipped/failed, use latest; only use SHA when we just built.
           if [ "${{ needs.build-image.result }}" = "success" ]; then
             echo "tag=${{ github.sha }}" >> $GITHUB_OUTPUT
           else
             echo "tag=latest" >> $GITHUB_OUTPUT
           fi
 
-  # Always runs when get_image_tag provides a tag; on release get_image_tag is forced to run so PDFs are always produced.
+  # Produces PDFs and uploads as release assets on release; on manual run uploads as artifact. Always runs when get_image_tag provides a tag.
   build-pdf:
     runs-on: ubuntu-latest
     needs: [get_image_tag]
