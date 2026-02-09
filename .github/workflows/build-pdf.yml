@@ -4,12 +4,16 @@ on:
   release:
     types:
       - published
+  # Run on tag push so PDF is built and published even when release is created from tag later
+  push:
+    tags:
+      - '*'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write   # read + write; needed to upload release assets / create release on tag push
   packages: write
 
 env:
@@ -23,12 +27,12 @@ jobs:
       build-image: ${{ steps.set_default.outputs.build-image || steps.filter.outputs.build-image }}
     steps:
       - uses: actions/checkout@v4
-      - name: No image rebuild on release (use existing image)
-        if: github.event_name == 'release'
+      - name: No image rebuild on release or tag push (use existing image)
+        if: github.event_name == 'release' || (github.event_name == 'push' && github.ref_type == 'tag')
         id: set_default
         run: echo "build-image=false" >> $GITHUB_OUTPUT
       - uses: dorny/paths-filter@v3
-        if: github.event_name != 'release'
+        if: github.event_name != 'release' && !(github.event_name == 'push' && github.ref_type == 'tag')
         id: filter
         with:
           filters: |
@@ -89,7 +93,7 @@ jobs:
   get_image_tag:
     runs-on: ubuntu-latest
     needs: [build-image]
-    if: always() && (github.event_name == 'release' || needs.build-image.result == 'success' || needs.build-image.result == 'skipped' || needs.build-image.result == 'failure')
+    if: always() && (github.event_name == 'release' || (github.event_name == 'push' && github.ref_type == 'tag') || needs.build-image.result == 'success' || needs.build-image.result == 'skipped' || needs.build-image.result == 'failure')
     outputs:
       tag: ${{ steps.set_tag.outputs.tag }}
     steps:
@@ -122,6 +126,11 @@ jobs:
             sed -i 's/\(settings_project_name = ".*\)"/\1 - Release '"${TAG}"'"/' docs/it/conf.py
             sed -i 's/\(settings_project_name = ".*\)"/\1 - Release '"${TAG}"'"/' docs/en/conf.py
             echo "Applied release tag '${TAG}' to document titles"
+          elif [[ "${{ github.event_name }}" == "push" && "${{ github.ref_type }}" == "tag" ]]; then
+            TAG="${{ github.ref_name }}"
+            sed -i 's/\(settings_project_name = ".*\)"/\1 - Release '"${TAG}"'"/' docs/it/conf.py
+            sed -i 's/\(settings_project_name = ".*\)"/\1 - Release '"${TAG}"'"/' docs/en/conf.py
+            echo "Applied tag '${TAG}' to document titles"
           else
             # This is for workflow_dispatch, we use editor's copy designation
             echo "Using default title for manual build"
@@ -191,9 +200,10 @@ jobs:
           path: pdf_output/*.pdf
 
       - name: Upload Release Asset
-        if: github.event_name == 'release'
-        uses: softprops/action-gh-release@v1
+        if: github.event_name == 'release' || (github.event_name == 'push' && github.ref_type == 'tag')
+        uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ github.event_name == 'release' && github.event.release.tag_name || github.ref_name }}
           files: pdf_output/*.pdf
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
