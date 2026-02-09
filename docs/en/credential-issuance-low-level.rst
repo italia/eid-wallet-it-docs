@@ -127,7 +127,7 @@ The Credential Issuer performs the following checks upon the receipt of the PAR 
     10. It MUST check that the ``jti`` claim in the Request Object has not been used before by the Wallet Instance identified by the ``client_id``. This allows the Credential Issuer to mitigate replay attacks (:rfc:`7519`).
     11. It MUST validate the ``OAuth-Client-Attestation-PoP`` parameter based on Section 5 of [`OAUTH-ATTESTATION-CLIENT-AUTH`_].
 
-Below a non-normative example of the PAR Request.
+Below is a non-normative example of the PAR Request.
 
 .. code-block:: http
 
@@ -140,7 +140,7 @@ Below a non-normative example of the PAR Request.
     client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-app-attestation$&
     request=$SIGNED-JWT
 
-Below an non-normative example of the Wallet App Attestation Proof of Possession (WAA-PoP) header and body:
+Below is a non-normative example of the Wallet App Attestation Proof of Possession (WAA-PoP) header and body:
 
 .. literalinclude:: ../../examples/wa-pop-header.json
   :language: JSON
@@ -149,7 +149,7 @@ Below an non-normative example of the Wallet App Attestation Proof of Possession
   :language: JSON
 
 
-Below an non-normative example of the signed Request Object without encoding and signature applied:
+Below is a non-normative example of the signed Request Object without encoding and signature applied:
 
 .. literalinclude:: ../../examples/request-object-header.json
   :language: JSON

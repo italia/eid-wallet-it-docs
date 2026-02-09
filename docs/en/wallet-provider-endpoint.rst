@@ -453,14 +453,14 @@ The body of the Wallet App Attestation JWT contains the following claims:
       - REQUIRED. JSON object, containing the public part of an asymmetric key pair owned by the Wallet Instance.
       - :rfc:`7800`.
     * - **eudi_wallet_info**
-      - REQUIRED. JSON object, containing the general information about the Wallet and Wallet Provider. The following patameter MUST be included
+      - REQUIRED. JSON object, containing the general information about the Wallet and Wallet Provider. The following patameter MUST be included:
 
-          - **general_info**: REQUIRED. An object that has the following parameter
+        - **general_info**: REQUIRED. An object that has the following parameters:
 
-                - **wallet_provider_name**: REQUIRED. String value of the Wallet Provider name as listed on the trusted list of Wallet Providers.
-                - **wallet_solution_id**: REQUIRED. String value of the Wallet Solution identifier as listed on the trusted list of Wallet Providers. 
-                - **wallet_solution_version**: REQUIRED. String value of the Wallet Solution version.
-                - **wallet_solution_certification_information**: REQUIRED. String value that contains a URL that links to the certification of the Wallet Solution.
+          - **wallet_provider_name**: REQUIRED. String value of the Wallet Provider name as listed on the trusted list of Wallet Providers.
+          - **wallet_solution_id**: REQUIRED. String value of the Wallet Solution identifier as listed on the trusted list of Wallet Providers. 
+          - **wallet_solution_version**: REQUIRED. String value of the Wallet Solution version.
+          - **wallet_solution_certification_information**: REQUIRED. String value that contains a URL that links to the certification of the Wallet Solution.
       - `EIDAS-ARF`_.
     * - **sub**
       - REQUIRED. Identifier of the Wallet Instance which is the thumbprint of the Wallet App Attestation JWK.
@@ -552,20 +552,20 @@ The body of the Wallet Unit Attestation JWT contains the following claims:
       - REQUIRED. JSON Object representing the supported revocation check mechanisms, such as OAuth Status List.
       - `OpenID4VCI`_.
     * - **eudi_wallet_info**
-      - REQUIRED. JSON object, containing the general information about the Wallet and Wallet Provider. The following patameters MUST be included
+      - REQUIRED. JSON object, containing the general information about the Wallet and Wallet Provider. The following patameters MUST be included:
 
-          - **general_info**: REQUIRED. An object that has the following parameters
+        - **general_info**: REQUIRED. An object that has the following parameters:
 
-                - **wallet_provider_name**: REQUIRED. String value of the Wallet Provider name as listed on the trusted list of Wallet Providers.
-                - **wallet_solution_id**: REQUIRED. String value of the Wallet Solution identifier as listed on the trusted list of Wallet Providers. 
-                - **wallet_solution_version**: REQUIRED. String value of the Wallet Solution version.
-                - **wallet_solution_certification_information**: REQUIRED. String that contains a URL that links to the certification of the Wallet Solution.
+          - **wallet_provider_name**: REQUIRED. String value of the Wallet Provider name as listed on the trusted list of Wallet Providers.
+          - **wallet_solution_id**: REQUIRED. String value of the Wallet Solution identifier as listed on the trusted list of Wallet Providers. 
+          - **wallet_solution_version**: REQUIRED. String value of the Wallet Solution version.
+          - **wallet_solution_certification_information**: REQUIRED. String that contains a URL that links to the certification of the Wallet Solution.
 
-          - **key_storage_info**: REQUIRED. An object that has the following parameters
+        - **key_storage_info**: REQUIRED. An object that has the following parameters:
 
-              - **storage_type**: REQUIRED. String value that identifies the technical implementation of WSCD. It can have one of the following values, ``REMOTE``, ``LOCAL_EXTERNAK``, ``LOCAL_INTERNAL``, ``LOCAL_NATIVE``, or ``HYBRID``. 
-              - **keys_exportable**: REQUIRED. Boolean value that defines whether the private keys of the WSCD or keystore can be exported. It SHALL be set to ``true`` if the WSCD  allows the private keys to be exported (including if in encrypted format only) and ``false`` otherwise.
-              - **storage_certification_information**: REQUIRED. String that contains a URL that links to the certification of the key storage component. 
+          - **storage_type**: REQUIRED. String value that identifies the technical implementation of WSCD. It can have one of the following values, ``REMOTE``, ``LOCAL_EXTERNAK``, ``LOCAL_INTERNAL``, ``LOCAL_NATIVE``, or ``HYBRID``. 
+          - **keys_exportable**: REQUIRED. Boolean value that defines whether the private keys of the WSCD or keystore can be exported. It SHALL be set to ``true`` if the WSCD  allows the private keys to be exported (including if in encrypted format only) and ``false`` otherwise.
+          - **storage_certification_information**: REQUIRED. String that contains a URL that links to the certification of the key storage component. 
       - `EIDAS-ARF`_.
 
 
