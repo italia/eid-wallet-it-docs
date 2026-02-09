@@ -83,8 +83,11 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
+      # Ensure setuptools (pkg_resources) for sphinxcontrib.redoc in tox venv (Python 3.12)
+      - name: Install setuptools in container
+        run: pip install --no-cache-dir "setuptools>=65.0.0"
       # Runs tests inside the pre-built Sphinx/tox container
       - name: Run Sphinx/labels tests via tox
         run: |-
-          tox -e labels
+          tox -e labels --recreate
           tox -e build
