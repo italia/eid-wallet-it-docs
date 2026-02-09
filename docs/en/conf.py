@@ -50,6 +50,7 @@ extensions = [
     'sphinx.ext.coverage',
     'sphinx.ext.ifconfig',
     'sphinx.ext.autosectionlabel',
+    'sphinx.ext.imgconverter',
     'sphinxcontrib.redoc',
     'myst_parser',
     'sphinxcontrib.plantuml'

@@ -20,8 +20,13 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+permissions:
+  contents: read
+  packages: write
+
 env:
   DEFAULT_BRANCH: versione-corrente
+  IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/eidas-it-wallet-docs-builder
 
 # Allow one concurrent deployment
 concurrency:
@@ -29,8 +34,40 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  build-image:
+    runs-on: ubuntu-latest
+    # Run only when we can push to GHCR (same-repo PR, push, release, or manual)
+    if: |
+      github.event_name == 'push' ||
+      github.event_name == 'release' ||
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository)
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push Sphinx/LaTeX image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: |
+            ${{ env.IMAGE_NAME }}:latest
+            ${{ env.IMAGE_NAME }}:${{ github.sha }}
+
   build-and-index:
     runs-on: ubuntu-latest
+    needs: build-image
+    container:
+      image: ${{ env.IMAGE_NAME }}:${{ github.sha }}
     # Run job ONLY if:
     # 1. It's a push to a branch (e.g. versione-corrente)
     # 2. It's a PR from the same repository (not from a fork)
@@ -43,32 +80,7 @@ jobs:
 
     steps:
       # Check out your repository under $GITHUB_WORKSPACE
-      - uses: actions/checkout@v3
-
-      # Install Python
-      - uses: actions/setup-python@v4
-        with:
-          python-version: "3.10"
-          architecture: "x64"
-
-      # Install Java
-      - name: Setup Java
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'temurin'
-          java-version: '17'
-
-      # Install Graphviz required for plantuml
-      - name: Install Graphviz
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y graphviz
-
-      # Install python dependencies
-      - name: Install deps
-        run: |-
-          python -m pip install -r requirements-dev.txt
-          python -m pip install Jinja2==3.1.6
+      - uses: actions/checkout@v4
 
       # Determine deployment path based on event type
       - name: Generate deployment paths
@@ -110,13 +122,20 @@ jobs:
             sed -i 's/\(settings_project_name = ".*\)"/\1 - Editor'"'"'s Copy"/' docs/en/conf.py
           fi
 
-      # Run Sphinx build for HTML output
-      - name: Build branch
+      - name: Create build directories
         run: |-
-          # Create output directories
           mkdir -p "html/${{ steps.deployment.outputs.path }}/it"
           mkdir -p "html/${{ steps.deployment.outputs.path }}/en"
 
+      # Fast check: labels and cross-references before heavy HTML build
+      - name: Quick labels and xref check (IT/EN)
+        run: |
+          sphinx-build -b dummy -W docs/it  _build/labels/it
+          sphinx-build -b dummy -W docs/en  _build/labels/en
+
+      # Run Sphinx build for HTML output
+      - name: Build branch
+        run: |-
           echo "Building html/${{ steps.deployment.outputs.path }}/it"
           echo "Building html/${{ steps.deployment.outputs.path }}/en"
 
@@ -137,7 +156,7 @@ jobs:
 
       # Check out the gh-pages branch in a temporary directory
       - name: Checkout gh-pages branch
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: gh-pages
           path: gh-pages-temp
