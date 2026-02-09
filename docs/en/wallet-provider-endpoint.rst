@@ -452,15 +452,16 @@ The body of the Wallet App Attestation JWT contains the following claims:
     * - **cnf**
       - REQUIRED. JSON object, containing the public part of an asymmetric key pair owned by the Wallet Instance.
       - :rfc:`7800`.
-    * - **wallet_link**
-      - OPTIONAL. String containing a URL to get further information about the Wallet and the Wallet Provider.
-      - `OpenID4VCI`_.
-    * - **wallet_name**
-      - OPTIONAL. String containing a human-readable name of the Wallet.
-      - `OpenID4VCI`_.
-    * - **status**
-      - OPTIONAL. Status mechanism for the Wallet Attestation as defined in Section 6.2 of `TOKEN-STATUS-LIST`_.
-      - :rfc:`9126` and :rfc:`7519`.
+    * - **eudi_wallet_info**
+      - REQUIRED. JSON object, containing the general information about the Wallet and Wallet Provider. The following patameter MUST be included
+
+          - **general_info**: REQUIRED. An object that has the following parameter
+
+                - **wallet_provider_name**: REQUIRED. String value of the Wallet Provider name as listed on the trusted list of Wallet Providers.
+                - **wallet_solution_id**: REQUIRED. String value of the Wallet Solution identifier as listed on the trusted list of Wallet Providers. 
+                - **wallet_solution_version**: REQUIRED. String value of the Wallet Solution version.
+                - **wallet_solution_certification_information**: REQUIRED. String value that contains a URL that links to the certification of the Wallet Solution.
+      - `EIDAS-ARF`_.
     * - **sub**
       - REQUIRED. Identifier of the Wallet Instance which is the thumbprint of the Wallet App Attestation JWK.
       - :rfc:`9126` and :rfc:`7519`.
@@ -473,6 +474,12 @@ Below is a non-normative example of the Wallet App Attestation JWT header and pa
 
 .. literalinclude:: ../../examples/wa-jwt_example_payload.json
   :language: JSON
+
+
+.. note::
+    As the certification scheme has not yet been defined, the exact content of ``wallet_solution_certification_information`` is undefined. This content will be defined in a future update.
+
+
 
 
 Wallet Unit Attestation JWT
@@ -544,9 +551,22 @@ The body of the Wallet Unit Attestation JWT contains the following claims:
     * - **status**
       - REQUIRED. JSON Object representing the supported revocation check mechanisms, such as OAuth Status List.
       - `OpenID4VCI`_.
-    * - **certification**
-      - OPTIONAL. A String that contains a URL that links to the certification of the key storage component.
-      - `OpenID4VCI`_.
+    * - **eudi_wallet_info**
+      - REQUIRED. JSON object, containing the general information about the Wallet and Wallet Provider. The following patameters MUST be included
+
+          - **general_info**: REQUIRED. An object that has the following parameters
+
+                - **wallet_provider_name**: REQUIRED. String value of the Wallet Provider name as listed on the trusted list of Wallet Providers.
+                - **wallet_solution_id**: REQUIRED. String value of the Wallet Solution identifier as listed on the trusted list of Wallet Providers. 
+                - **wallet_solution_version**: REQUIRED. String value of the Wallet Solution version.
+                - **wallet_solution_certification_information**: REQUIRED. String that contains a URL that links to the certification of the Wallet Solution.
+
+          - **key_storage_info**: REQUIRED. An object that has the following parameters
+
+              - **storage_type**: REQUIRED. String value that identifies the technical implementation of WSCD. It can have one of the following values, ``REMOTE``, ``LOCAL_EXTERNAK``, ``LOCAL_INTERNAL``, ``LOCAL_NATIVE``, or ``HYBRID``. 
+              - **keys_exportable**: REQUIRED. Boolean value that defines whether the private keys of the WSCD or keystore can be exported. It SHALL be set to ``true`` if the WSCD  allows the private keys to be exported (including if in encrypted format only) and ``false`` otherwise.
+              - **storage_certification_information**: REQUIRED. String that contains a URL that links to the certification of the key storage component. 
+      - `EIDAS-ARF`_.
 
 
 Below is a non-normative example of the Wallet Unit Attestation JWT header and payload, without encoding and signature applied:
@@ -557,11 +577,19 @@ Below is a non-normative example of the Wallet Unit Attestation JWT header and p
 .. literalinclude:: ../../examples/wua-jwt_example_payload.json
   :language: JSON
 
+
+.. note::
+    As the certification scheme has not yet been defined, the exact content of ``wallet_solution_certification_information`` is undefined. 
+    This content will be defined in a future update. As the certification scheme has not yet been defined, the exact content of ``storage_certification_information`` is undefined. This content will be defined in a future update but it shall be possible to determine if a the key storage is a WSCD based upon the information in this field.  
+    Note that the OID4VCI specification does specify a ``certification`` attribute in the key_attestation element, that could be used instead of ``storage_ certification_information``.
+
+
 e-Service PDND Wallet Provider Catalog
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 User's death leads to the revocation of the Wallet Instances of the User and the deletion of the User account at the Wallet Provider. For this reason, the Wallet Provider provides the following e-service through PDND.
 A PID Provider that has been notified by the Authentic Source of the PID of the User's death MUST send a notification to Wallet Providers using this endpoint.
+
 
 .. only:: html
 
