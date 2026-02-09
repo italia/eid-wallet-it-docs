@@ -25,7 +25,7 @@ WORKDIR /workspace
 # Install Python deps (including Sphinx, extensions, etc.) and tox
 # setuptools required for pkg_resources (sphinxcontrib-redoc/stevedore on Python 3.12)
 COPY requirements-dev.txt ./
-RUN pip install --upgrade pip "setuptools>=65.0.0" \
+RUN pip install --upgrade pip "setuptools>=65.0.0,<82" \
  && pip install --no-cache-dir -r requirements-dev.txt \
  && pip install --no-cache-dir tox
 
