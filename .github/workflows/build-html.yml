@@ -84,22 +84,38 @@ jobs:
             echo "exists=false" >> $GITHUB_OUTPUT
           fi
 
-  # Build only when image deps changed OR when no image exists in GHCR yet
+  # On release/tag: never build a new image — reuse existing image (latest). Job runs only so dependents run.
+  # Otherwise: build when deps changed or image missing, and event allows build.
   build-image:
     runs-on: ubuntu-latest
     needs: [check_image_deps, check_image_exists]
+    outputs:
+      built: ${{ steps.built.outputs.built }}
     if: |
-      ((needs.check_image_deps.outputs.build-image == 'true') ||
-       (needs.check_image_exists.outputs.exists != 'true')) &&
-      (github.event_name == 'push' ||
-       github.event_name == 'release' ||
-       github.event_name == 'workflow_dispatch' ||
-       (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository))
+      (github.event_name == 'release' || (github.event_name == 'push' && github.ref_type == 'tag')) ||
+      (((needs.check_image_deps.outputs.build-image == 'true') ||
+        (needs.check_image_exists.outputs.exists != 'true')) &&
+       (github.event_name == 'push' ||
+        github.event_name == 'release' ||
+        github.event_name == 'workflow_dispatch' ||
+        (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository)))
     steps:
+      - name: Set built flag (reuse existing image on release/tag; build only when deps or image missing)
+        id: built
+        run: |
+          if [[ "${{ github.event_name }}" == "release" ]] || ( [[ "${{ github.event_name }}" == "push" ]] && [[ "${{ github.ref_type }}" == "tag" ]] ); then
+            echo "built=false" >> $GITHUB_OUTPUT
+            echo "Reusing existing image for release/tag — no image build"
+          else
+            echo "built=true" >> $GITHUB_OUTPUT
+          fi
+
       - name: Checkout repository
+        if: steps.built.outputs.built == 'true'
         uses: actions/checkout@v4
 
       - name: Log in to GitHub Container Registry
+        if: steps.built.outputs.built == 'true'
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
@@ -107,6 +123,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push Sphinx/LaTeX image
+        if: steps.built.outputs.built == 'true'
         uses: docker/build-push-action@v5
         with:
           context: .
@@ -119,13 +136,12 @@ jobs:
   get_image_tag:
     runs-on: ubuntu-latest
     needs: [build-image]
-    if: always() && (github.event_name == 'release' || (github.event_name == 'push' && github.ref_type == 'tag') || needs.build-image.result == 'success' || needs.build-image.result == 'skipped' || needs.build-image.result == 'failure')
     outputs:
       tag: ${{ steps.set_tag.outputs.tag }}
     steps:
       - id: set_tag
         run: |
-          if [ "${{ needs.build-image.result }}" = "success" ]; then
+          if [ "${{ needs.build-image.result }}" = "success" ] && [ "${{ needs.build-image.outputs.built }}" = "true" ]; then
             echo "tag=${{ github.sha }}" >> $GITHUB_OUTPUT
           else
             echo "tag=latest" >> $GITHUB_OUTPUT
