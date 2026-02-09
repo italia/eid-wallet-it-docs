@@ -44,6 +44,8 @@ Infrastructure of Trust
       - ETSI EN 319 132-1 v1.3.1 - Electronic Signatures and Infrastructures (ESI); XAdES digital signatures; Part 1: Building blocks and XAdES baseline signatures.
     * - `ETSI TS 119 182-1`_
       - ETSI TS 119 182-1 v1.2.1 - Electronic Signatures and Infrastructures (ESI); JAdES digital signatures; Part 1: Building blocks and JAdES baseline signatures.
+    * - `ETSI TS 119 412-6`_
+      - ETSI TS 119 412-6 v1.1.1 - Electronic Signatures and Infrastructures (ESI); Part 6: Certificate profile requirements for PID, Wallet, EAA, QEAA, and PSBEAA providers.
 
 
 Digital Credential Data Format
