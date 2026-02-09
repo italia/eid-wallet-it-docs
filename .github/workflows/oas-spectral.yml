@@ -14,10 +14,6 @@ on:
       - 'docs/en/oas3/**'
       - '.github/workflows/oas-spectral.yml'
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
-  cancel-in-progress: true
-
 jobs:
   spectral-oas3:
     name: Run Spectral on OAS3

@@ -1,26 +1,10 @@
 name: Check SVG/PDF references
 
-# Run once per update: on PR (when branch is pushed) and on push to default branch (after merge).
-# Do not trigger on both push and pull_request for the same branch to avoid duplicate runs.
 on:
-  pull_request:
-    paths:
-      - 'docs/**'
-      - 'official_resources/**'
-      - 'utils/check_svg_pdf.sh'
-      - '.github/workflows/check-svg-pdf.yml'
   push:
     branches:
-      - 'versione-corrente'
-    paths:
-      - 'docs/**'
-      - 'official_resources/**'
-      - 'utils/check_svg_pdf.sh'
-      - '.github/workflows/check-svg-pdf.yml'
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
-  cancel-in-progress: true
+      - '**'
+  pull_request:
 
 jobs:
   check-svg-pdf:
