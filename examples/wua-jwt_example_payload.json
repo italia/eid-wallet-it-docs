@@ -27,8 +27,8 @@
         },
         "key_storage_info": {
            "storage_type" : "LOCAL_NATIVE",	
-           "keys_exportable": "false",
-           "storage_certification_information" : "GlobalPlatform"
+           "keys_exportable": false,
+           "storage_certification_information" : "https://globalplatform.org/"
         }
       }
 }

@@ -453,7 +453,7 @@ The body of the Wallet App Attestation JWT contains the following claims:
       - REQUIRED. JSON object, containing the public part of an asymmetric key pair owned by the Wallet Instance.
       - :rfc:`7800`.
     * - **eudi_wallet_info**
-      - REQUIRED. JSON object, containing the general information about the Wallet and Wallet Provider. The following patameter MUST be included:
+      - REQUIRED. JSON object, containing the general information about the Wallet and Wallet Provider. The following parameter MUST be included:
 
         - **general_info**: REQUIRED. An object that has the following parameters:
 
@@ -552,7 +552,7 @@ The body of the Wallet Unit Attestation JWT contains the following claims:
       - REQUIRED. JSON Object representing the supported revocation check mechanisms, such as OAuth Status List.
       - `OpenID4VCI`_.
     * - **eudi_wallet_info**
-      - REQUIRED. JSON object, containing the general information about the Wallet and Wallet Provider. The following patameters MUST be included:
+      - REQUIRED. JSON object, containing the general information about the Wallet and Wallet Provider. The following parameters MUST be included:
 
         - **general_info**: REQUIRED. An object that has the following parameters:
 
@@ -563,7 +563,7 @@ The body of the Wallet Unit Attestation JWT contains the following claims:
 
         - **key_storage_info**: REQUIRED. An object that has the following parameters:
 
-          - **storage_type**: REQUIRED. String value that identifies the technical implementation of WSCD. It can have one of the following values, ``REMOTE``, ``LOCAL_EXTERNAK``, ``LOCAL_INTERNAL``, ``LOCAL_NATIVE``, or ``HYBRID``. 
+          - **storage_type**: REQUIRED. String value that identifies the technical implementation of WSCD. It can have one of the following values, ``REMOTE``, ``LOCAL_EXTERNAL``, ``LOCAL_INTERNAL``, ``LOCAL_NATIVE``, or ``HYBRID``. 
           - **keys_exportable**: REQUIRED. Boolean value that defines whether the private keys of the WSCD or keystore can be exported. It SHALL be set to ``true`` if the WSCD  allows the private keys to be exported (including if in encrypted format only) and ``false`` otherwise.
           - **storage_certification_information**: REQUIRED. String that contains a URL that links to the certification of the key storage component. 
       - `EIDAS-ARF`_.
@@ -580,8 +580,8 @@ Below is a non-normative example of the Wallet Unit Attestation JWT header and p
 
 .. note::
     As the certification scheme has not yet been defined, the exact content of ``wallet_solution_certification_information`` is undefined. 
-    This content will be defined in a future update. As the certification scheme has not yet been defined, the exact content of ``storage_certification_information`` is undefined. This content will be defined in a future update but it shall be possible to determine if a the key storage is a WSCD based upon the information in this field.  
-    Note that the OID4VCI specification does specify a ``certification`` attribute in the key_attestation element, that could be used instead of ``storage_ certification_information``.
+    This content will be defined in a future update. Similarly, the exact content of ``storage_certification_information`` is currently undefined and will be specified in a future update, but it SHALL provide sufficient information to determine whether the key storage is a WSCD.  
+    Note that the OID4VCI specification does specify a ``certification`` attribute in the ``key_attestation`` element that could be used instead of ``storage_certification_information``.
 
 
 e-Service PDND Wallet Provider Catalog
