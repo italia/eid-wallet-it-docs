@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # -- PROJECT Variables ----------------------------------------------------
-settings_project_name = "IT-Wallet Technical Specifications - Release 1.4.0"
+settings_project_name = "IT-Wallet Technical Specifications"
 # settings_copyright_copyleft = 'Dipartimento per la Trasformazione Digitale'
 settings_editor_name = 'Dipartimento per la Trasformazione Digitale'
 settings_doc_version = '1.4.0'
