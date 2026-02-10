@@ -282,6 +282,8 @@ latex_elements = {
         verbatimhintsturnover=false
     ''',
     'preamble': r'''
+        % Allow inclusion of PDF 1.6/1.7 images (default is 1.5)
+        \pdfminorversion=7
         \usepackage{luatex85}
         \usepackage{polyglossia}
         \setmainlanguage{english}
