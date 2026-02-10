@@ -31,28 +31,4 @@ jobs:
 
       - name: Check PDF versions in docs/en and docs/it
         run: |
-          REQUIRED='1.5'
-          FAIL=0
-          for dir in docs/en/images/pdf docs/it/images/pdf; do
-            if [ ! -d "$dir" ]; then
-              continue
-            fi
-            for f in "$dir"/*.pdf; do
-              [ -f "$f" ] || continue
-              VER=$(pdfinfo "$f" 2>/dev/null | sed -n 's/^PDF version:[[:space:]]*\([0-9.]*\).*/\1/p')
-              if [ -z "$VER" ]; then
-                echo "Failed: $f (could not read PDF version, file may be corrupt or invalid)"
-                echo "::error file=$f::Could not read PDF version (file may be corrupt or invalid)"
-                FAIL=1
-              elif [ "$VER" != "$REQUIRED" ]; then
-                echo "Failed: $f (version: $VER, required: $REQUIRED)"
-                echo "::error file=$f::PDF version is $VER (required: $REQUIRED)"
-                FAIL=1
-              fi
-            done
-          done
-          if [ "$FAIL" -ne 0 ]; then
-            echo "One or more PDFs are not version $REQUIRED. LuaLaTeX inclusion requires 1.5; use gs to convert: gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.5 -dNOPAUSE -dBATCH -sOutputFile=out.pdf in.pdf"
-            exit 1
-          fi
-          echo "All PDFs are version $REQUIRED."
+          bash utils/check_pdf_version.sh 1.5 docs/en/images/pdf docs/it/images/pdf
