@@ -19,7 +19,7 @@
            "wallet_provider_name": "ExampleOrg", 
            "wallet_solution_id": "Wallet-mobile",
            "wallet_solution_version": "1.0.0",
-           "wallet_solution_certification_information": "https://example.org/certification/WalletMobile/1-0-0/"
+           "wallet_solution_certification_information": ""
         }
     }
 }

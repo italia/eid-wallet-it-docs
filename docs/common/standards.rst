@@ -17,6 +17,18 @@ Wallet Architecture and Reference Frameworks
 
     * - `EIDAS-ARF`_
       - EUDI Wallet Architecture and Reference Framework (ARF) v2.8.0.
+    
+
+EUDI Wallet Standards and Technical Specifications
+--------------------------------------------------
+
+.. list-table::
+    :widths: 25 75
+    :header-rows: 0
+
+    * - `EUDI-TS 3`_
+      - Specification of Wallet Unit Attestations (WUA) used in issuance of PID and Attestations.
+
 
 
 Infrastructure of Trust

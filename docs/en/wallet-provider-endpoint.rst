@@ -461,7 +461,7 @@ The body of the Wallet App Attestation JWT contains the following claims:
           - **wallet_solution_id**: REQUIRED. String value of the Wallet Solution identifier as listed on the trusted list of Wallet Providers. 
           - **wallet_solution_version**: REQUIRED. String value of the Wallet Solution version.
           - **wallet_solution_certification_information**: REQUIRED. String value that contains a URL that links to the certification of the Wallet Solution.
-      - `EIDAS-ARF`_.
+      - `EUDI-TS 3`_.
     * - **sub**
       - REQUIRED. Identifier of the Wallet Instance which is the thumbprint of the Wallet App Attestation JWK.
       - :rfc:`9126` and :rfc:`7519`.
@@ -566,7 +566,7 @@ The body of the Wallet Unit Attestation JWT contains the following claims:
           - **storage_type**: REQUIRED. String value that identifies the technical implementation of WSCD. It can have one of the following values, ``REMOTE``, ``LOCAL_EXTERNAL``, ``LOCAL_INTERNAL``, ``LOCAL_NATIVE``, or ``HYBRID``. 
           - **keys_exportable**: REQUIRED. Boolean value that defines whether the private keys of the WSCD or keystore can be exported. It SHALL be set to ``true`` if the WSCD  allows the private keys to be exported (including if in encrypted format only) and ``false`` otherwise.
           - **storage_certification_information**: REQUIRED. String that contains a URL that links to the certification of the key storage component. 
-      - `EIDAS-ARF`_.
+      - `EUDI-TS 3`_.
 
 
 Below is a non-normative example of the Wallet Unit Attestation JWT header and payload, without encoding and signature applied:

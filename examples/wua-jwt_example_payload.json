@@ -23,12 +23,12 @@
             "wallet_provider_name": "ExampleOrg", 
             "wallet_solution_id": "Wallet-mobile",
             "wallet_solution_version": "1.0.0",
-            "wallet_solution_certification_information": "https://example.org/certification/WalletMobile/1-0-0/"
+            "wallet_solution_certification_information": ""
         },
         "key_storage_info": {
            "storage_type" : "LOCAL_NATIVE",	
            "keys_exportable": false,
-           "storage_certification_information" : "https://globalplatform.org/"
+           "storage_certification_information" : ""
         }
       }
 }
