@@ -137,7 +137,7 @@ The details of each step shown in the previous picture are described below.
       Content-Type: application/x-www-form-urlencoded
       Accept: application/oauth-authz-req+jwt
     
-      wallet_metadata=%7B%22authorization_endpoint%22%3A%20%22eudiw%3A%22%2C%20%22response_types_supported%22%3A%20%5B%22vp_token%22%5D%2C%20%22response_modes_supported%22%3A%20%5B%22query%22%5D%2C%20%22vp_formats_supported%22%3A%20%7B%22dc%2Bsd-jwt%22%3A%20%7B%22sd-jwt_alg_values%22%3A%20%5B%22ES256%22%2C%20%22ES384%22%5D%7D%7D%2C%20%22request_object_signing_alg_values_supported%22%3A%20%5B%22ES256%22%5D%7D%2C&wallet_nonce=%22qPmxiNFCR3QTm19POc8u%22
+      wallet_metadata=%7B%22authorization_endpoint%22%3A%20%22eudiw%3A%22%2C%20%22response_types_supported%22%3A%20%5B%22vp_token%22%5D%2C%20%22response_modes_supported%22%3A%20%5B%22query%22%5D%2C%20%22vp_formats_supported%22%3A%20%7B%22dc%2Bsd-jwt%22%3A%20%7B%22sd-jwt_alg_values%22%3A%20%5B%22ES256%22%2C%20%22ES384%22%5D%7D%2C%22mso_mdoc%22%3A%7B%22issuerauth_alg_values%22%3A%5B-9%2C-51%5D%2C%22deviceauth_alg_values%22%3A%5B-9%2C-51%5D%7D%7D%2C%22request_object_signing_alg_values_supported%22%3A%20%5B%22ES256%22%5D%2C%22client_id_prefixes_supported%22%3A%5B%22openid_federation%22%2C%22x509_hash%22%5D%7D&wallet_nonce=qPmxiNFCR3QTm19POc8u
     
     Where the body of the request prior to being encoded in `application/x-www-form-urlencoded` by the Wallet corresponds to:
     
@@ -154,16 +154,15 @@ The details of each step shown in the previous picture are described below.
           ],
           "vp_formats_supported": {
             "dc+sd-jwt": {
-                "sd-jwt_alg_values": [
-                  "ES256",
-                  "ES384"
-                ]
+                "sd-jwt_alg_values": ["ES256", "ES384"]
+            }, 
+            "mso_mdoc": {
+                "issuerauth_alg_values": [-9, -51],
+                "deviceauth_alg_values": [-9, -51]
             }
           },
-          "request_object_signing_alg_values_supported": [
-            "ES256"
-          ],
-          "client_id_prefixes_supported": ["openid_federation", "x509_hash"],
+          "request_object_signing_alg_values_supported": ["ES256"],
+          "client_id_prefixes_supported": ["openid_federation", "x509_hash"]
         },
         "wallet_nonce": "qPmxiNFCR3QTm19POc8u"
       }
@@ -222,6 +221,18 @@ The details of each step shown in the previous picture are described below.
               {"path": ["family_name"]},
               {"path": ["personal_administrative_number"]}
             ]
+          },
+          {
+            "id": "mobile driving license",
+            "format": "mso_mdoc",
+            "meta": {
+              "doctype_value": "org.iso.18013.5.1.mDL" 
+            },
+            "claims": [
+              {"path": ["org.iso.18013.5.1", "given_name"]},
+              {"path": ["org.iso.18013.5.1", "family_name"]},
+              {"path": ["org.iso.18013.5.1", "document_number"]}
+            ]
           }
         ]
       },
@@ -257,9 +268,13 @@ The details of each step shown in the previous picture are described below.
       {
         "state": "3be39b69-6ac1-41aa-921b-3e6c07ddcb03",
         "vp_token": {
-          "personal id data": ["eyJhbGciOiJFUzI1NiIs...PT0iXX0"]
+          "personal id data": ["eyJhbGciOiJFUzI1NiIs...PT0iXX0"],
+          "mobile driving license": ["o2Nkb2N0eXBlb3Jzby4xO...Nib3JfZHVtbXk"]
         }
       }
+
+.. note::
+  When returning a requested Credential in ``mso_mdoc`` format in the ``vp_token``, the Wallet MUST cryptographically bind the resulting mdoc presentation to the current OpenID4VP transaction. To achieve this, the Wallet builds the ISO ``SessionTranscript`` used for mdoc device authentication and applies the OpenID4VP profiling rules by setting ``DeviceEngagementBytes`` to ``null`` and ``EReaderKeyBytes`` to ``null``, and sets its ``Handover`` field to an OpenID4VP-defined structure (``OpenID4VPHandover``) derived from the Authorization Request parameters. The Wallet then computes the mdoc device authentication (device signature) over data that includes this ``SessionTranscript``, such that the resulting mdoc presentation is valid only for that specific OpenID4VP transaction. For the normative definition of ``OpenID4VPHandover`` and the corresponding ``SessionTranscript`` profiling rules, see `OpenID4VP`_ Appendix B.2.
 
 **Steps 19-22 (RP Checks)**: The Relying Party verifies the Authorization Response, extracts the ``vp_token``, which contains one or more Digital Credentials presentations, and validates the overall format of the VP Token. For each credential presentation, the Relying Party verifies its integrity according to the DCQL query criteria defined in the Authorization Request. The Relying Party MUST also attest trust with the corresponding Credentials Issuer, and validate the Wallet Instance's proof of possession of each presented Digital Credential. Finally, the Relying Party verifies the revocation status of each presented Digital Credential, as described in :ref:`credential-revocation:Digital Credential Revocation and Suspension`. If all previous verifications yielded positive result, the Relying Party updates the User session.
 
@@ -372,9 +387,7 @@ The request and its parameters are defined in Section 5 (Authorization Request) 
    * - Parameter
      - Description
    * - `vp_formats_supported`
-     - REQUIRED. Object with Credential format identifiers. See `OpenID4VP`_ Appendix B.
-   * - `alg_values_supported`
-     - OPTIONAL. Array of cryptographic suites supported. See `OpenID4VP`_ Appendix B.
+     - REQUIRED. Object containing a list of name/value pairs, where the name is a Credential Format Identifier and the value defines format-specific parameters that a Wallet supports. See `OpenID4VP`_ Appendix B. Wallet Instances MUST support the Credential Format Identifiers required by `OPENID4VC-HAIP`_ (including ``dc+sd-jwt`` and ``mso_mdoc``).
    * - `client_id_prefixes_supported`
      - RECOMMENDED. A non-empty array of the Client Identifier Prefixes that the Wallet Instance supports.  Valid values include ``openid_federation`` and ``x509_hash``; if omitted, the default is ``pre-registered``.
    * - `authorization_endpoint`
@@ -525,8 +538,13 @@ The JWT payload parameters are described herein:
   For security reasons and to prevent endpoint mix-up attacks, the value contained in the ``response_uri`` parameter MUST be one of those attested by a trusted third party, such as those provided in the ``openid_credential_verifier`` metadata within the ``response_uris`` parameter, obtained from the Trust Chain about the Relying Party (:ref:`WP_091a <wallet-credential-presentation-testcases>` and :ref:`RPR-112 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`).
 
 .. note::
-   The ``transaction_data`` parameter is intended for use cases where the Wallet Instance MUST authorize a specific transaction, such as payment initiation or digital signing. In these high-sensitivity scenarios, the transaction data can be cryptographically bound to the Authorization Response through ``transaction_data_hashes`` in the Key Binding JWT, ensuring integrity and non-repudiation. See `OpenID4VP`_, Section 8.4 for further details.
+  The ``transaction_data`` parameter is intended for use cases where the Wallet Instance MUST authorize a specific transaction, such as payment initiation or digital signing. In these high-sensitivity scenarios, the goal is to bind the transaction details to the Authorization Response so that integrity is preserved and the User’s approval can be proven afterwards (non-repudiation).
+   
+  The binding mechanism depends on the Credential Format:
 
+  - **dc+sd-jwt**: the Wallet binds the transaction data by returning ``transaction_data_hashes`` (and, when applicable, ``transaction_data_hashes_alg``) inside the Key Binding JWT (KB-JWT). See `OpenID4VP`_, Appendix B.3.3 for further details.
+  - **mso_mdoc**: transaction data is bound through mdoc device authentication. For this format, the Wallet MUST check that the requested transaction data ``type`` is supported by the document type and authorized by the issuer (KeyAuthorizations). If it is not authorized, the Wallet MUST reject the request due to an unsupported transaction data type. See `OpenID4VP`_, Appendix B.2.1 for further details.
+   
 .. note::
   The ``state`` parameter in an OAuth request is optional, but it is highly recommended. It is primarily used to prevent Cross-Site Request Forgery (CSRF) attacks by including a unique and unpredictable value that the Relying Party can verify upon receiving the response. Additionally, it helps maintain the state between the request and response, such as session information or other data the Relying Party needs after the authorization process.
 
@@ -554,9 +572,12 @@ Where the following parameters are used (:ref:`WP_093 <wallet-credential-present
     - **Description**
   * - **vp_token**
 
-    - This array MUST contain the requested Digital Credential(s) in format of SD-JWT VC (:ref:`WP_093a <wallet-credential-presentation-testcases>`).
-
-      The ``vp_token`` format is a JSON Object which keys corresponds to the requested credential ids in the ``dcql_query`` used in the request, and the values are arrays containing the presented Digital Credential(s).
+    - This object MUST contain the presented Digital Credential(s), keyed by the Credential ``id`` values from the ``dcql_query`` in the Authorization Request.
+      
+      The ``vp_token`` MUST be a JSON Object where each key corresponds to a requested Credential id, and each value is either a single presentation or an array of one or more presentations for that Credential. The encoding of each presentation depends on the Credential format, for example:
+      
+      - **dc+sd-jwt**: an SD-JWT VC string (including the appended Key Binding JWT) (:ref:`WP_093a <wallet-credential-presentation-testcases>`).
+      - **mso_mdoc**: a base64url-encoded CBOR ``DeviceResponse`` corresponding to the requested mdoc presentation (see `OpenID4VP`_ Appendix B.2). When multiple mdoc presentations are returned, each MUST be carried in a separate ``DeviceResponse`` aligned with the corresponding DCQL query item; in this case, the ``vp_token`` value for that Credential id MUST be an array of ``DeviceResponse`` values.
 
   * - **state**
     - Unique identifier provided by the Relying Party within the Authorization Request.
