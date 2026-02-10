@@ -77,7 +77,7 @@ cd "$OLDPWD"
 
 mkdir -p pdf_output
 TIMESTAMP=$(date +%Y%m%d-%H%M%S)
-cp build/latex/it/$SETTINGS_FILE_NAME.pdf pdf_output/$SETTINGS_FILE_NAME-it-${TIMESTAMP}.pdf
-cp build/latex/en/$SETTINGS_FILE_NAME.pdf pdf_output/$SETTINGS_FILE_NAME-en-${TIMESTAMP}.pdf
+cp "build/latex/it/${SETTINGS_FILE_NAME}.pdf" "pdf_output/${SETTINGS_FILE_NAME}-it-${TIMESTAMP}.pdf"
+cp "build/latex/en/${SETTINGS_FILE_NAME}.pdf" "pdf_output/${SETTINGS_FILE_NAME}-en-${TIMESTAMP}.pdf"
 echo "Done. PDFs in pdf_output/"
 ls -la pdf_output/*.pdf
