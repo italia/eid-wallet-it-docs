@@ -86,9 +86,9 @@ The following table contains all historical versions before 1.0.0, representing 
 | v0.4.1 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.4.1/en/) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.4.1/it/) |
 
 
-## Build
+## Build Previews
 
-Using Github Actions
+### Using Github Actions
 
 - access the manual [build frontend](https://github.com/italia/eid-wallet-it-docs/actions/workflows/build-html-manual.yml)
 - insert the Pull Request number using the form and submit the workflow as shown in the image below.
@@ -96,7 +96,7 @@ Using Github Actions
 <img width="1894" height="734" alt="image" src="https://github.com/user-attachments/assets/cdc81d14-4665-41c8-b251-385a1170a299" />
 
 
-HTML
+#### Build HTML with Sphinx
 ````
 pip install -r requirements-dev.txt
 
@@ -110,6 +110,58 @@ sphinx-build -b singlehtml docs/en/  html/
 cd html
 pandoc -o eid-it-wallet-docs.odt index.html
 ````
+
+### Build PDFs (EN and IT) with Docker
+
+You can build the English and Italian PDFs locally using Docker, without installing LaTeX or Sphinx on your machine.
+
+#### Option A: Use the prebuilt image from GitHub Container Registry
+
+A prebuilt image is published on GitHub Container Registry as [`ghcr.io/italia/eidas-it-wallet-docs-builder`](https://github.com/italia/eid-wallet-it-docs/pkgs/container/eidas-it-wallet-docs-builder).
+
+- **1. Pull the image and tag it as `eid-wallet-it-docs`**
+
+```bash
+docker pull ghcr.io/italia/eidas-it-wallet-docs-builder:latest
+docker tag ghcr.io/italia/eidas-it-wallet-docs-builder:latest eid-wallet-it-docs
+```
+
+You can also use a specific digest or tag shown on the package page, e.g.:
+
+```bash
+docker pull ghcr.io/italia/eidas-it-wallet-docs-builder:b235e366abbb852177eb2db39c9b2de2a7b71129
+docker tag ghcr.io/italia/eidas-it-wallet-docs-builder:b235e366abbb852177eb2db39c9b2de2a7b71129 eid-wallet-it-docs
+```
+
+#### Option B: Build the Docker image locally
+
+From the repository root:
+
+```bash
+docker build -t eid-wallet-it-docs .
+```
+
+#### Run the container to generate PDFs (shared for both options)
+
+From the repository root:
+
+```bash
+docker run --rm \
+  -e PDF_BUILD_TAG=1.4.0 \
+  -v "$PWD":/workspace \
+  -w /workspace \
+  eid-wallet-it-docs \
+  bash -lc "./utils/build-pdf-local.sh"
+```
+
+This command:
+
+- uses the `eid-wallet-it-docs` image (either pulled from GHCR and tagged, or built locally);
+- mounts the current repository into `/workspace` inside the container;
+- runs `./utils/build-pdf-local.sh`, which for each language in `docs/en` and `docs/it`:
+  - builds LaTeX with Sphinx,
+  - compiles the main `.tex` file with LuaLaTeX,
+  - and copies the resulting PDFs into the `pdf_output/` directory in your working tree.
 
 
 ## How to contribute
