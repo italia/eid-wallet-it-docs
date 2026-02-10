@@ -15,7 +15,7 @@ on:
       - '.github/workflows/check-pdf-version.yml'
 
 concurrency:
-  group: check-pdf-version-${{ github.ref }}-${{ github.sha }}
+  group: check-pdf-version-${{ github.event.pull_request.head.sha || github.sha }}
   cancel-in-progress: true
 
 jobs:
