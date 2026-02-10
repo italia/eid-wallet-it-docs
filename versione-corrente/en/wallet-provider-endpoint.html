@@ -662,21 +662,24 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <td><p>REQUIRED. JSON object, containing the public part of an asymmetric key pair owned by the Wallet Instance.</p></td>
 <td><p><span class="target" id="index-25"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7800.html"><strong>RFC 7800</strong></a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>wallet_link</strong></p></td>
-<td><p>OPTIONAL. String containing a URL to get further information about the Wallet and the Wallet Provider.</p></td>
-<td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>wallet_name</strong></p></td>
-<td><p>OPTIONAL. String containing a human-readable name of the Wallet.</p></td>
-<td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>status</strong></p></td>
-<td><p>OPTIONAL. Status mechanism for the Wallet Attestation as defined in Section 6.2 of <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/13/">TOKEN-STATUS-LIST</a>.</p></td>
-<td><p><span class="target" id="index-26"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-27"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<tr class="row-odd"><td><p><strong>eudi_wallet_info</strong></p></td>
+<td><p>REQUIRED. JSON object, containing the general information about the Wallet and Wallet Provider. The following parameter MUST be included:</p>
+<ul class="simple">
+<li><p><strong>general_info</strong>: REQUIRED. An object that has the following parameters:</p>
+<ul>
+<li><p><strong>wallet_provider_name</strong>: REQUIRED. String value of the Wallet Provider name as listed on the trusted list of Wallet Providers.</p></li>
+<li><p><strong>wallet_solution_id</strong>: REQUIRED. String value of the Wallet Solution identifier as listed on the trusted list of Wallet Providers.</p></li>
+<li><p><strong>wallet_solution_version</strong>: REQUIRED. String value of the Wallet Solution version.</p></li>
+<li><p><strong>wallet_solution_certification_information</strong>: REQUIRED. String value that contains a URL that links to the certification of the Wallet Solution.</p></li>
+</ul>
+</li>
+</ul>
+</td>
+<td><p><a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts3-wallet-unit-attestation.md#231-general_info">EUDI-TS 3</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>sub</strong></p></td>
 <td><p>REQUIRED. Identifier of the Wallet Instance which is the thumbprint of the Wallet App Attestation JWK.</p></td>
-<td><p><span class="target" id="index-28"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-29"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-26"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-27"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -713,10 +716,21 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <span class="w">    </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687281195</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687288395</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;wallet_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wallet_v1&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;wallet_link&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.com/wallet/detail_info.html&quot;</span>
+<span class="w">    </span><span class="nt">&quot;eudi_wallet_info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;general_info&quot;</span><span class="p">:</span><span class="w"> </span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">           </span><span class="nt">&quot;wallet_provider_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ExampleOrg&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">           </span><span class="nt">&quot;wallet_solution_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wallet-mobile&quot;</span><span class="p">,</span>
+<span class="w">           </span><span class="nt">&quot;wallet_solution_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+<span class="w">           </span><span class="nt">&quot;wallet_solution_certification_information&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As the certification scheme has not yet been defined, the exact content of <code class="docutils literal notranslate"><span class="pre">wallet_solution_certification_information</span></code> is undefined. This content will be defined in a future update.</p>
 </div>
 </section>
 <section id="wallet-unit-attestation-jwt">
@@ -737,11 +751,11 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <tbody>
 <tr class="row-even"><td><p><strong>alg</strong></p></td>
 <td><p>REQUIRED. A digital signature algorithm identifier such as per IANA &quot;JSON Web Signature and Encryption Algorithms&quot; registry. It MUST be one of the supported algorithms listed in the Section <a class="reference internal" href="algorithms.html#cryptographic-algorithms"><span class="std std-ref">Cryptographic Algorithms</span></a> and MUST NOT be set to <code class="docutils literal notranslate"><span class="pre">none</span></code> or any symmetric algorithm (MAC) identifier.</p></td>
-<td><p><span class="target" id="index-30"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>.</p></td>
+<td><p><span class="target" id="index-28"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>kid</strong></p></td>
 <td><p>REQUIRED. Unique identifier of the public key associated to the private key the Wallet Provider used to sign the Wallet Unit Attestation.</p></td>
-<td><p><span class="target" id="index-31"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html#section_3"><strong>RFC 7638#section_3</strong></a>.</p></td>
+<td><p><span class="target" id="index-29"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html#section_3"><strong>RFC 7638#section_3</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>typ</strong></p></td>
 <td><p>REQUIRED. It MUST be set to <code class="docutils literal notranslate"><span class="pre">key-attestation+jwt</span></code></p></td>
@@ -752,8 +766,8 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Section 4.3 <em>Trust Chain Header Parameter</em>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>x5c</strong></p></td>
-<td><p>REQUIRED. Contains the X.509 public key certificate or certificate chain (<span class="target" id="index-32"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>) corresponding to the key used to digitally sign the JWT.</p></td>
-<td><p><span class="target" id="index-33"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Section 4.1.8.</p></td>
+<td><p>REQUIRED. Contains the X.509 public key certificate or certificate chain (<span class="target" id="index-30"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>) corresponding to the key used to digitally sign the JWT.</p></td>
+<td><p><span class="target" id="index-31"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Section 4.1.8.</p></td>
 </tr>
 </tbody>
 </table>
@@ -773,19 +787,19 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <tbody>
 <tr class="row-even"><td><p><strong>iss</strong></p></td>
 <td><p>REQUIRED. Identifier of the Wallet Provider.</p></td>
-<td><p><span class="target" id="index-34"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-35"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-32"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-33"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>exp</strong></p></td>
 <td><p>REQUIRED. UNIX Timestamp with the expiry time of the JWT.</p></td>
-<td><p><span class="target" id="index-36"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-37"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-34"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-35"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>iat</strong></p></td>
 <td><p>REQUIRED. UNIX Timestamp with the time of JWT issuance.</p></td>
-<td><p><span class="target" id="index-38"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-39"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-36"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-37"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>attested_keys</strong></p></td>
 <td><p>REQUIRED. A non-empty array of attested keys from the same key storage component using the syntax of JWK, containing the public part of an asymmetric key pair owned by the Wallet Instance.</p></td>
-<td><p><span class="target" id="index-40"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>.</p></td>
+<td><p><span class="target" id="index-38"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>key_storage</strong></p></td>
 <td><p>REQUIRED. A non-empty array of case sensitive strings that assert the attack potential resistance of the key storage component and its keys attested in the <code class="docutils literal notranslate"><span class="pre">attested_keys</span></code> parameter. The following values are defined as a value for this claim:</p>
@@ -811,9 +825,27 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <td><p>REQUIRED. JSON Object representing the supported revocation check mechanisms, such as OAuth Status List.</p></td>
 <td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>certification</strong></p></td>
-<td><p>OPTIONAL. A String that contains a URL that links to the certification of the key storage component.</p></td>
-<td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>.</p></td>
+<tr class="row-odd"><td><p><strong>eudi_wallet_info</strong></p></td>
+<td><p>REQUIRED. JSON object, containing the general information about the Wallet and Wallet Provider. The following parameters MUST be included:</p>
+<ul class="simple">
+<li><p><strong>general_info</strong>: REQUIRED. An object that has the following parameters:</p>
+<ul>
+<li><p><strong>wallet_provider_name</strong>: REQUIRED. String value of the Wallet Provider name as listed on the trusted list of Wallet Providers.</p></li>
+<li><p><strong>wallet_solution_id</strong>: REQUIRED. String value of the Wallet Solution identifier as listed on the trusted list of Wallet Providers.</p></li>
+<li><p><strong>wallet_solution_version</strong>: REQUIRED. String value of the Wallet Solution version.</p></li>
+<li><p><strong>wallet_solution_certification_information</strong>: REQUIRED. String that contains a URL that links to the certification of the Wallet Solution.</p></li>
+</ul>
+</li>
+<li><p><strong>key_storage_info</strong>: REQUIRED. An object that has the following parameters:</p>
+<ul>
+<li><p><strong>storage_type</strong>: REQUIRED. String value that identifies the technical implementation of WSCD. It can have one of the following values, <code class="docutils literal notranslate"><span class="pre">REMOTE</span></code>, <code class="docutils literal notranslate"><span class="pre">LOCAL_EXTERNAL</span></code>, <code class="docutils literal notranslate"><span class="pre">LOCAL_INTERNAL</span></code>, <code class="docutils literal notranslate"><span class="pre">LOCAL_NATIVE</span></code>, or <code class="docutils literal notranslate"><span class="pre">HYBRID</span></code>.</p></li>
+<li><p><strong>keys_exportable</strong>: REQUIRED. Boolean value that defines whether the private keys of the WSCD or keystore can be exported. It SHALL be set to <code class="docutils literal notranslate"><span class="pre">true</span></code> if the WSCD  allows the private keys to be exported (including if in encrypted format only) and <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise.</p></li>
+<li><p><strong>storage_certification_information</strong>: REQUIRED. String that contains a URL that links to the certification of the key storage component.</p></li>
+</ul>
+</li>
+</ul>
+</td>
+<td><p><a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts3-wallet-unit-attestation.md#231-general_info">EUDI-TS 3</a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -853,9 +885,27 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <span class="w">    </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687288395</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;key_storage&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;iso_18045_moderate&quot;</span><span class="w"> </span><span class="p">],</span>
 <span class="w">    </span><span class="nt">&quot;user_authentication&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;iso_18045_moderate&quot;</span><span class="w"> </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;certification&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GP&quot;</span>
+<span class="w">    </span><span class="nt">&quot;eudi_wallet_info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;general_info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;wallet_provider_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ExampleOrg&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">            </span><span class="nt">&quot;wallet_solution_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wallet-mobile&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;wallet_solution_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;wallet_solution_certification_information&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;key_storage_info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">           </span><span class="nt">&quot;storage_type&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LOCAL_NATIVE&quot;</span><span class="p">,</span><span class="w">	</span>
+<span class="w">           </span><span class="nt">&quot;keys_exportable&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">           </span><span class="nt">&quot;storage_certification_information&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As the certification scheme has not yet been defined, the exact content of <code class="docutils literal notranslate"><span class="pre">wallet_solution_certification_information</span></code> is undefined.
+This content will be defined in a future update. Similarly, the exact content of <code class="docutils literal notranslate"><span class="pre">storage_certification_information</span></code> is currently undefined and will be specified in a future update, but it SHALL provide sufficient information to determine whether the key storage is a WSCD.
+Note that the OID4VCI specification does specify a <code class="docutils literal notranslate"><span class="pre">certification</span></code> attribute in the <code class="docutils literal notranslate"><span class="pre">key_attestation</span></code> element that could be used instead of <code class="docutils literal notranslate"><span class="pre">storage_certification_information</span></code>.</p>
 </div>
 </section>
 </section>
