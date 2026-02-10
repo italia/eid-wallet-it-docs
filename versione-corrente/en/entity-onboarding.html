@@ -576,7 +576,7 @@
 <li><p>A <code class="docutils literal notranslate"><span class="pre">metadata</span></code> claim containing entity-specific metadata organized by Metadata Types (see <a class="reference internal" href="credential-issuer-entity-configuration.html#credential-issuer-entity-configuration"><span class="std std-ref">Credential Issuer Entity Configuration</span></a>, <a class="reference internal" href="relying-party-entity-configuration.html#relying-party-entity-configuration"><span class="std std-ref">Relying Party Entity Configuration</span></a>, or <a class="reference internal" href="wallet-provider-entity-configuration.html#wallet-provider-entity-configuration"><span class="std std-ref">Wallet Provider Entity Configuration</span></a>) with application specific keys included in the metadata <code class="docutils literal notranslate"><span class="pre">jwks</span></code> fields and self-signed X.509 Certificates in the corresponding <code class="docutils literal notranslate"><span class="pre">x5c</span></code> claims.</p></li>
 </ul>
 </li>
-<li><p><strong>X.509 Certificate Signing Request (CSR)</strong>: The entities MUST prepare a X.509 Certificate Signing Request (CSR) in PKCS #10 format containing <strong>the Federation Entity Key</strong> for X.509 Certificate issuance by the Federation Authority, as defined in <span class="xref std std-ref">trust-infrastructure:Trust Infrastructure Requirements</span>.</p></li>
+<li><p><strong>X.509 Certificate Signing Request (CSR)</strong>: The entities MUST prepare a X.509 Certificate Signing Request (CSR) in PKCS #10 format containing <strong>the Federation Entity Key</strong> for X.509 Certificate issuance by the Federation Authority, as defined in <a class="reference internal" href="trust-infrastructure.html#x-509-certificates-issuance"><span class="std std-ref">X.509 Certificates Issuance</span></a>.</p></li>
 </ul>
 </div></blockquote>
 </section>
@@ -712,7 +712,7 @@
 <li><p>Verification of information provided in the registration request.</p></li>
 <li><p>Validation of the Entity Configuration, and the metadata contained in it, published at the entity's <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> endpoint (as defined in <a class="reference internal" href="trust-infrastructure.html#the-infrastructure-of-trust"><span class="std std-ref">The Infrastructure of Trust</span></a>).</p></li>
 <li><p><strong>Metadata Policy Application</strong>: Application of federation-specific metadata policies to the entity's metadata based on organizational characteristics and authorization scope as defined in <a class="reference internal" href="trust-infrastructure.html#subordinate-statements"><span class="std std-ref">Subordinate Statements</span></a>. When onboarded through an Intermediate, both Intermediate and Trust Anchor policies apply, with Trust Anchor policies taking precedence in case of conflicts.</p></li>
-<li><p><strong>X.509 Certificate Issuance</strong>: Certification of the Federation Entity Key with X.509 Certificate issuance using the trust infrastructure detailed in <span class="xref std std-ref">trust-infrastructure:Trust Infrastructure Requirements</span>. Intermediates MUST issue X.509 Certificates using appropriate <strong>naming constraints</strong> limiting the use of DNS names and URIs to their subordinates only.</p></li>
+<li><p><strong>X.509 Certificate Issuance</strong>: Certification of the Federation Entity Key with X.509 Certificate issuance using the trust infrastructure detailed in <a class="reference internal" href="trust-infrastructure.html#x-509-certificates-issuance"><span class="std std-ref">X.509 Certificates Issuance</span></a>. Intermediates MUST issue X.509 Certificates using appropriate <strong>naming constraints</strong> limiting the use of DNS names and URIs to their subordinates only.</p></li>
 </ul>
 </div></blockquote>
 <p>Upon successful validation, the entity receives a response containing an X.509 Certificate Chain where:</p>
@@ -1090,7 +1090,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 05/02/2026.
+      Last updated on 10/02/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

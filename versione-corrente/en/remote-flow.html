@@ -284,7 +284,7 @@ Below is a non-normative example with Request Object by reference:</p>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/x-www-form-urlencoded</span>
 <span class="na">Accept</span><span class="o">:</span> <span class="l">application/oauth-authz-req+jwt</span>
 
-<span class="nt">wallet_metadata</span><span class="o">=</span><span class="s">%7B%22authorization_endpoint%22%3A%20%22eudiw%3A%22%2C%20%22response_types_supported%22%3A%20%5B%22vp_token%22%5D%2C%20%22response_modes_supported%22%3A%20%5B%22query%22%5D%2C%20%22vp_formats_supported%22%3A%20%7B%22dc%2Bsd-jwt%22%3A%20%7B%22sd-jwt_alg_values%22%3A%20%5B%22ES256%22%2C%20%22ES384%22%5D%7D%7D%2C%20%22request_object_signing_alg_values_supported%22%3A%20%5B%22ES256%22%5D%7D%2C</span><span class="p">&amp;</span><span class="nt">wallet_nonce</span><span class="o">=</span><span class="s">%22qPmxiNFCR3QTm19POc8u%22</span>
+<span class="nt">wallet_metadata</span><span class="o">=</span><span class="s">%7B%22authorization_endpoint%22%3A%20%22eudiw%3A%22%2C%20%22response_types_supported%22%3A%20%5B%22vp_token%22%5D%2C%20%22response_modes_supported%22%3A%20%5B%22query%22%5D%2C%20%22vp_formats_supported%22%3A%20%7B%22dc%2Bsd-jwt%22%3A%20%7B%22sd-jwt_alg_values%22%3A%20%5B%22ES256%22%2C%20%22ES384%22%5D%7D%2C%22mso_mdoc%22%3A%7B%22issuerauth_alg_values%22%3A%5B-9%2C-51%5D%2C%22deviceauth_alg_values%22%3A%5B-9%2C-51%5D%7D%7D%2C%22request_object_signing_alg_values_supported%22%3A%20%5B%22ES256%22%5D%2C%22client_id_prefixes_supported%22%3A%5B%22openid_federation%22%2C%22x509_hash%22%5D%7D</span><span class="p">&amp;</span><span class="nt">wallet_nonce</span><span class="o">=</span><span class="s">qPmxiNFCR3QTm19POc8u</span>
 </pre></div>
 </div>
 <p>Where the body of the request prior to being encoded in <cite>application/x-www-form-urlencoded</cite> by the Wallet corresponds to:</p>
@@ -299,16 +299,15 @@ Below is a non-normative example with Request Object by reference:</p>
 <span class="w">    </span><span class="p">],</span>
 <span class="w">    </span><span class="nt">&quot;vp_formats_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;dc+sd-jwt&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;sd-jwt_alg_values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">            </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;ES384&quot;</span>
-<span class="w">          </span><span class="p">]</span>
+<span class="w">          </span><span class="nt">&quot;sd-jwt_alg_values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;ES384&quot;</span><span class="p">]</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;mso_mdoc&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;issuerauth_alg_values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">-9</span><span class="p">,</span><span class="w"> </span><span class="mi">-51</span><span class="p">],</span>
+<span class="w">          </span><span class="nt">&quot;deviceauth_alg_values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">-9</span><span class="p">,</span><span class="w"> </span><span class="mi">-51</span><span class="p">]</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;request_object_signing_alg_values_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="s2">&quot;ES256&quot;</span>
-<span class="w">    </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;client_id_prefixes_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;openid_federation&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;x509_hash&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;request_object_signing_alg_values_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ES256&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;client_id_prefixes_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;openid_federation&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;x509_hash&quot;</span><span class="p">]</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="nt">&quot;wallet_nonce&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;qPmxiNFCR3QTm19POc8u&quot;</span>
 <span class="p">}</span>
@@ -365,6 +364,18 @@ eyJhbGciOiJFUzI1NiIs...9t2LQ
 <span class="w">          </span><span class="p">{</span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;family_name&quot;</span><span class="p">]},</span>
 <span class="w">          </span><span class="p">{</span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;personal_administrative_number&quot;</span><span class="p">]}</span>
 <span class="w">        </span><span class="p">]</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mobile driving license&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mso_mdoc&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;doctype_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;org.iso.18013.5.1.mDL&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="p">{</span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;given_name&quot;</span><span class="p">]},</span>
+<span class="w">          </span><span class="p">{</span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;family_name&quot;</span><span class="p">]},</span>
+<span class="w">          </span><span class="p">{</span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;document_number&quot;</span><span class="p">]}</span>
+<span class="w">        </span><span class="p">]</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="w">  </span><span class="p">},</span>
@@ -395,12 +406,17 @@ eyJhbGciOiJFUzI1NiIs...9t2LQ
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;state&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3be39b69-6ac1-41aa-921b-3e6c07ddcb03&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;vp_token&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;personal id data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;eyJhbGciOiJFUzI1NiIs...PT0iXX0&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="nt">&quot;personal id data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;eyJhbGciOiJFUzI1NiIs...PT0iXX0&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;mobile driving license&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;o2Nkb2N0eXBlb3Jzby4xO...Nib3JfZHVtbXk&quot;</span><span class="p">]</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When returning a requested Credential in <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code> format in the <code class="docutils literal notranslate"><span class="pre">vp_token</span></code>, the Wallet MUST cryptographically bind the resulting mdoc presentation to the current OpenID4VP transaction. To achieve this, the Wallet builds the ISO <code class="docutils literal notranslate"><span class="pre">SessionTranscript</span></code> used for mdoc device authentication and applies the OpenID4VP profiling rules by setting <code class="docutils literal notranslate"><span class="pre">DeviceEngagementBytes</span></code> to <code class="docutils literal notranslate"><span class="pre">null</span></code> and <code class="docutils literal notranslate"><span class="pre">EReaderKeyBytes</span></code> to <code class="docutils literal notranslate"><span class="pre">null</span></code>, and sets its <code class="docutils literal notranslate"><span class="pre">Handover</span></code> field to an OpenID4VP-defined structure (<code class="docutils literal notranslate"><span class="pre">OpenID4VPHandover</span></code>) derived from the Authorization Request parameters. The Wallet then computes the mdoc device authentication (device signature) over data that includes this <code class="docutils literal notranslate"><span class="pre">SessionTranscript</span></code>, such that the resulting mdoc presentation is valid only for that specific OpenID4VP transaction. For the normative definition of <code class="docutils literal notranslate"><span class="pre">OpenID4VPHandover</span></code> and the corresponding <code class="docutils literal notranslate"><span class="pre">SessionTranscript</span></code> profiling rules, see <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a> Appendix B.2.</p>
+</div>
 <p><strong>Steps 19-22 (RP Checks)</strong>: The Relying Party verifies the Authorization Response, extracts the <code class="docutils literal notranslate"><span class="pre">vp_token</span></code>, which contains one or more Digital Credentials presentations, and validates the overall format of the VP Token. For each credential presentation, the Relying Party verifies its integrity according to the DCQL query criteria defined in the Authorization Request. The Relying Party MUST also attest trust with the corresponding Credentials Issuer, and validate the Wallet Instance's proof of possession of each presented Digital Credential. Finally, the Relying Party verifies the revocation status of each presented Digital Credential, as described in <a class="reference internal" href="credential-revocation.html#digital-credential-revocation-and-suspension"><span class="std std-ref">Digital Credential Revocation and Suspension</span></a>. If all previous verifications yielded positive result, the Relying Party updates the User session.</p>
 <p><strong>Steps 23-24 or 25 (Relying Party Response)</strong>: The Relying Party provides to the Wallet Instance the response about the presentation, which informs the User.</p>
 <blockquote>
@@ -517,24 +533,21 @@ The request and its parameters are defined in Section 5 (Authorization Request) 
 </thead>
 <tbody>
 <tr class="row-even"><td><p><cite>vp_formats_supported</cite></p></td>
-<td><p>REQUIRED. Object with Credential format identifiers. See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a> Appendix B.</p></td>
+<td><p>REQUIRED. Object containing a list of name/value pairs, where the name is a Credential Format Identifier and the value defines format-specific parameters that a Wallet supports. See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a> Appendix B. Wallet Instances MUST support the Credential Format Identifiers required by <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-06.html">OPENID4VC-HAIP</a> (including <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code> and <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code>).</p></td>
 </tr>
-<tr class="row-odd"><td><p><cite>alg_values_supported</cite></p></td>
-<td><p>OPTIONAL. Array of cryptographic suites supported. See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a> Appendix B.</p></td>
-</tr>
-<tr class="row-even"><td><p><cite>client_id_prefixes_supported</cite></p></td>
+<tr class="row-odd"><td><p><cite>client_id_prefixes_supported</cite></p></td>
 <td><p>RECOMMENDED. A non-empty array of the Client Identifier Prefixes that the Wallet Instance supports.  Valid values include <code class="docutils literal notranslate"><span class="pre">openid_federation</span></code> and <code class="docutils literal notranslate"><span class="pre">x509_hash</span></code>; if omitted, the default is <code class="docutils literal notranslate"><span class="pre">pre-registered</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><cite>authorization_endpoint</cite></p></td>
+<tr class="row-even"><td><p><cite>authorization_endpoint</cite></p></td>
 <td><p>URL of the authorization server's endpoint, see <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc6749">OAUTH2</a>. Using an universal link is preferable for enhanced security and fallback support, custom url schemes can also be used if necessary.</p></td>
 </tr>
-<tr class="row-even"><td><p><cite>response_types_supported</cite></p></td>
+<tr class="row-odd"><td><p><cite>response_types_supported</cite></p></td>
 <td><p>OPTIONAL. JSON array of OAuth 2.0 <code class="docutils literal notranslate"><span class="pre">response_type</span></code> values. If present it MUST be set to <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> (<a class="reference internal" href="test-plans-remote-presentation.html#remote-credential-verifier-test-matrix"><span class="std std-ref">RPR-82</span></a>).</p></td>
 </tr>
-<tr class="row-odd"><td><p><cite>response_modes_supported</cite></p></td>
+<tr class="row-even"><td><p><cite>response_modes_supported</cite></p></td>
 <td><p>OPTIONAL. JSON array of OAuth 2.0 &quot;response_mode&quot; values as specified in <a class="reference external" href="https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html">OAUTH-MULT-RESP-TYPE</a>. The supported value MUST be <em>query</em>.</p></td>
 </tr>
-<tr class="row-even"><td><p><cite>request_object_signing_alg_values_supported</cite></p></td>
+<tr class="row-odd"><td><p><cite>request_object_signing_alg_values_supported</cite></p></td>
 <td><p>OPTIONAL. See OpenID Connect Discovery.</p></td>
 </tr>
 </tbody>
@@ -722,7 +735,12 @@ Furthermore, universal links offer fallback mechanisms, allowing the flow to con
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">transaction_data</span></code> parameter is intended for use cases where the Wallet Instance MUST authorize a specific transaction, such as payment initiation or digital signing. In these high-sensitivity scenarios, the transaction data can be cryptographically bound to the Authorization Response through <code class="docutils literal notranslate"><span class="pre">transaction_data_hashes</span></code> in the Key Binding JWT, ensuring integrity and non-repudiation. See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>, Section 8.4 for further details.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">transaction_data</span></code> parameter is intended for use cases where the Wallet Instance MUST authorize a specific transaction, such as payment initiation or digital signing. In these high-sensitivity scenarios, the goal is to bind the transaction details to the Authorization Response so that integrity is preserved and the User’s approval can be proven afterwards (non-repudiation).</p>
+<p>The binding mechanism depends on the Credential Format:</p>
+<ul class="simple">
+<li><p><strong>dc+sd-jwt</strong>: the Wallet binds the transaction data by returning <code class="docutils literal notranslate"><span class="pre">transaction_data_hashes</span></code> (and, when applicable, <code class="docutils literal notranslate"><span class="pre">transaction_data_hashes_alg</span></code>) inside the Key Binding JWT (KB-JWT). See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>, Appendix B.3.3 for further details.</p></li>
+<li><p><strong>mso_mdoc</strong>: transaction data is bound through mdoc device authentication. For this format, the Wallet MUST check that the requested transaction data <code class="docutils literal notranslate"><span class="pre">type</span></code> is supported by the document type and authorized by the issuer (KeyAuthorizations). If it is not authorized, the Wallet MUST reject the request due to an unsupported transaction data type. See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>, Appendix B.2.1 for further details.</p></li>
+</ul>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -754,8 +772,12 @@ Furthermore, universal links offer fallback mechanisms, allowing the flow to con
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>vp_token</strong></p></td>
-<td><p>This array MUST contain the requested Digital Credential(s) in format of SD-JWT VC (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_093a</span></a>).</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> format is a JSON Object which keys corresponds to the requested credential ids in the <code class="docutils literal notranslate"><span class="pre">dcql_query</span></code> used in the request, and the values are arrays containing the presented Digital Credential(s).</p>
+<td><p>This object MUST contain the presented Digital Credential(s), keyed by the Credential <code class="docutils literal notranslate"><span class="pre">id</span></code> values from the <code class="docutils literal notranslate"><span class="pre">dcql_query</span></code> in the Authorization Request.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> MUST be a JSON Object where each key corresponds to a requested Credential id, and each value is either a single presentation or an array of one or more presentations for that Credential. The encoding of each presentation depends on the Credential format, for example:</p>
+<ul class="simple">
+<li><p><strong>dc+sd-jwt</strong>: an SD-JWT VC string (including the appended Key Binding JWT) (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_093a</span></a>).</p></li>
+<li><p><strong>mso_mdoc</strong>: a base64url-encoded CBOR <code class="docutils literal notranslate"><span class="pre">DeviceResponse</span></code> corresponding to the requested mdoc presentation (see <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a> Appendix B.2). When multiple mdoc presentations are returned, each MUST be carried in a separate <code class="docutils literal notranslate"><span class="pre">DeviceResponse</span></code> aligned with the corresponding DCQL query item; in this case, the <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> value for that Credential id MUST be an array of <code class="docutils literal notranslate"><span class="pre">DeviceResponse</span></code> values.</p></li>
+</ul>
 </td>
 </tr>
 <tr class="row-odd"><td><p><strong>state</strong></p></td>
@@ -1139,7 +1161,7 @@ The request url SHOULD include a parameter with a random value. The HTTP respons
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 05/02/2026.
+      Last updated on 10/02/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

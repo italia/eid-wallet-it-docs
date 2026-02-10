@@ -85,6 +85,8 @@ Struttura del payload JWT (decodificato):
 
 
 
+.. _registry-registro-claims:
+
 Registro dei Claims
 -------------------
 
@@ -554,7 +556,9 @@ Di seguito è fornito un esempio non normativo.
     HTTP/1.1 200 OK
     Content-Type: application/json
 
-Nella sezione :ref:`Struttura del Catalogo degli Attestati Elettronici` è riportato un esempio di Catalogo degli Attestati Elettronici decodificato in JSON.
+.. _struttura-del-catalogo-degli-attestati-elettronici:
+
+Nella sezione :ref:`Struttura del Catalogo degli Attestati Elettronici <struttura-del-catalogo-degli-attestati-elettronici>` è riportato un esempio di Catalogo degli Attestati Elettronici decodificato in JSON.
 
 Gerarchia degli Attestati Elettronici
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -582,7 +582,7 @@
 <li><p>Un claim <code class="docutils literal notranslate"><span class="pre">metadata</span></code> contenente metadati specifici dell'entità organizzati per Tipi di Metadati (vedere <a class="reference internal" href="credential-issuer-entity-configuration.html#entity-configuration-del-fornitore-di-attestati-elettronici"><span class="std std-ref">Entity Configuration del Fornitore di Attestati Elettronici</span></a>, <a class="reference internal" href="relying-party-entity-configuration.html#entity-configuration-di-una-relying-party"><span class="std std-ref">Entity Configuration di una Relying Party</span></a>, o <a class="reference internal" href="wallet-provider-entity-configuration.html#entity-configuration-del-fornitore-di-wallet"><span class="std std-ref">Entity Configuration del Fornitore di Wallet</span></a>) con Chiavi di Protocollo incluse nei campi <code class="docutils literal notranslate"><span class="pre">jwks</span></code> dei metadati e certificati auto-firmati nei corrispondenti claim <code class="docutils literal notranslate"><span class="pre">x5c</span></code>.</p></li>
 </ul>
 </li>
-<li><p><strong>Certificate Signing Request (CSR)</strong>: Le entità DEVONO preparare un CSR in formato PKCS #10 contenente <strong>solo la Chiave Pubblica dell'Entità di Federazione</strong> per l'emissione del certificato X.509 da parte dell'Autorità di Federazione come definito in <span class="xref std std-ref">trust-infrastructure:Requisiti dell'Infrastruttura di Trust</span>.</p></li>
+<li><p><strong>Certificate Signing Request (CSR)</strong>: Le entità DEVONO preparare un CSR in formato PKCS #10 contenente <strong>solo la Chiave Pubblica dell'Entità di Federazione</strong> per l'emissione del certificato X.509 da parte dell'Autorità di Federazione come definito in <a class="reference internal" href="trust-infrastructure.html#emissione-di-certificati-x-509"><span class="std std-ref">Emissione di Certificati X.509</span></a>.</p></li>
 </ul>
 </div></blockquote>
 </section>
@@ -715,7 +715,7 @@
 <li><p>Verifica delle informazioni fornite nella richiesta di registrazione.</p></li>
 <li><p>Validazione dell'Entity Configuration pubblicata all'endpoint <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> dell'entità e dei suoi metadati contenuti (come definito in <a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>).</p></li>
 <li><p><strong>Applicazione delle Metadata Policy</strong>: Applicazione di metadata policy specifiche della federazione ai metadati dell'entità basate su caratteristiche organizzative e ambito di autorizzazione come definito in <a class="reference internal" href="trust-infrastructure.html#subordinate-statement"><span class="std std-ref">Subordinate Statement</span></a>. Quando onboardata attraverso un Intermediario, si applicano sia le policy dell'Intermediario che del Trust Anchor, con le policy del Trust Anchor che hanno precedenza in caso di conflitti.</p></li>
-<li><p><strong>Emissione Certificato</strong>: Certificazione della Chiave Pubblica dell'Entità di Federazione con emissione del certificato X.509 utilizzando l'infrastruttura di trust dettagliata in <span class="xref std std-ref">trust-infrastructure:Requisiti dell'Infrastruttura di Trust</span>. Gli Intermediari emettono certificati con <strong>naming constraints</strong> appropriati per limitare l'uso del certificato solo ai loro subordinati.</p></li>
+<li><p><strong>Emissione Certificato</strong>: Certificazione della Chiave Pubblica dell'Entità di Federazione con emissione del certificato X.509 utilizzando l'infrastruttura di trust dettagliata in <a class="reference internal" href="trust-infrastructure.html#emissione-di-certificati-x-509"><span class="std std-ref">Emissione di Certificati X.509</span></a>. Gli Intermediari emettono certificati con <strong>naming constraints</strong> appropriati per limitare l'uso del certificato solo ai loro subordinati.</p></li>
 </ul>
 </div></blockquote>
 <p>Dopo la validazione con successo, l'entità riceve una risposta contenente una catena di certificati dove:</p>
@@ -792,7 +792,7 @@
 </div></blockquote>
 <ol class="arabic simple" start="2">
 <li><p><strong>Pubblicare Entity Configuration Aggiornata</strong>: Pubblicare l'EC aggiornata all'endpoint <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> come specificato in <a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>.</p></li>
-<li><p><strong>Inviare Richiesta Resolve</strong>: Chiamare l'endpoint <code class="docutils literal notranslate"><span class="pre">/resolve</span></code> del <strong>Trust Anchor</strong> (come definito in <span class="xref std std-ref">trust-infrastructure:Requisiti dell'Infrastruttura di Trust</span>) con parametri URL-encoded:</p></li>
+<li><p><strong>Inviare Richiesta Resolve</strong>: Chiamare l'endpoint <code class="docutils literal notranslate"><span class="pre">/resolve</span></code> del <strong>Trust Anchor</strong> (come definito in <a class="reference internal" href="trust-infrastructure.html#endpoint-api-di-federazione"><span class="std std-ref">Endpoint API di Federazione</span></a>) con parametri URL-encoded:</p></li>
 </ol>
 <blockquote>
 <div><ul class="simple">
@@ -1109,7 +1109,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 05/02/2026.
+      Ultimo aggiornamento 10/02/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
