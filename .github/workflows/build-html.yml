@@ -29,17 +29,32 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+
+  pre_job:
+    runs-on: ubuntu-latest
+    outputs:
+      should_skip: ${{ steps.skip_check.outputs.should_skip }}
+    steps:
+      - id: skip_check
+        uses: fkirc/skip-duplicate-actions@v3.4.0
+        with:
+          skip_after_successful_duplicate: 'true'
+          same_content_newer: 'true'
+
   build-and-index:
     runs-on: ubuntu-latest
+    needs: pre_job
     # Run job ONLY if:
-    # 1. It's a push to a branch (e.g. versione-corrente)
-    # 2. It's a PR from the same repository (not from a fork)
-    # 3. It's a release or a manual workflow_dispatch
+    # 1. It's not a duplicate run (skip-duplicate-actions)
+    # 2. It's a push, release, workflow_dispatch, or same-repo PR
     if: |
-      github.event_name == 'push' ||
-      github.event_name == 'release' ||
-      github.event_name == 'workflow_dispatch' ||
-      (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository)
+      needs.pre_job.outputs.should_skip != 'true' &&
+      (
+        github.event_name == 'push' ||
+        github.event_name == 'release' ||
+        github.event_name == 'workflow_dispatch' ||
+        (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository)
+      )
 
     steps:
       - uses: actions/checkout@v4
