@@ -54,7 +54,7 @@ Released versions are available in both Italian and English, and can be accessed
 
 | Version | English | Italian |
 |---------|---------|---------|
-| 1.4.0 (WiP) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.4.0/en/) \| [PDF]() | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.4.0/it/) \| [PDF]() |
+| 1.4.0 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.4.0/en/) \| [PDF]() | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.4.0/it/) \| [PDF]() |
 | 1.3.3 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.3.3/en/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.3.3/eid-wallet-it-docs-en-20251223-165425.pdf) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.3.3/it/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.3.3/eid-wallet-it-docs-it-20251223-165425.pdf) |
 | 1.3.2 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.3.2/en/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.3.2/eid-wallet-it-docs-en-20251210-170029.pdf) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.3.2/it/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.3.2/eid-wallet-it-docs-it-20251210-170029.pdf) |
 | 1.3.1 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.3.1/en/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.3.1/eid-wallet-it-docs-en-20251128-101201.pdf) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.3.1/it/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.3.1/eid-wallet-it-docs-it-20251128-101201.pdf) |
