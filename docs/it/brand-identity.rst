@@ -51,6 +51,7 @@ Il Logo è l'elemento grafico ufficiale che permette l'immediata riconoscibilit�
   .. figure:: ../../official_resources/logoIT-Wallet.svg
     :alt: Logo del Brand “IT-Wallet” su sfondo chiaro  
     :width: 100%
+    :align: center
 
     Logo del Brand “IT-Wallet” su sfondo chiaro  
 
@@ -59,6 +60,7 @@ Il Logo è l'elemento grafico ufficiale che permette l'immediata riconoscibilit�
   .. figure:: ./images/pdf/logoIT-Wallet.pdf
     :alt: Logo del Brand “IT-Wallet” su sfondo chiaro  
     :width: 100%
+    :align: center
 
     Logo del Brand “IT-Wallet” su sfondo chiaro 
 
@@ -68,6 +70,7 @@ Il Logo è l'elemento grafico ufficiale che permette l'immediata riconoscibilit�
   .. figure:: ../../official_resources/symbol-IT-Wallet.svg
     :alt: Pittogramma del Brand “IT-Wallet” su sfondo chiaro  
     :width: 100%
+    :align: center
 
     Pittogramma del Brand “IT-Wallet” su sfondo chiaro  
 
@@ -76,6 +79,7 @@ Il Logo è l'elemento grafico ufficiale che permette l'immediata riconoscibilit�
   .. figure:: ./images/pdf/symbol-IT-Wallet.pdf
     :alt: Pittogramma del Brand “IT-Wallet” su sfondo chiaro  
     :width: 100%
+    :align: center
 
     Pittogramma del Brand “IT-Wallet” su sfondo chiaro   
 
@@ -113,6 +117,7 @@ Il Trust Mark è l'elemento grafico ufficiale che dà prova all’Utente dell'ap
   .. figure:: ../../official_resources/trustmark-ITA.svg
     :alt: Trust Mark su sfondo chiaro  
     :width: 100%
+    :align: center
 
     Trust Mark su sfondo chiaro  
 
@@ -121,6 +126,7 @@ Il Trust Mark è l'elemento grafico ufficiale che dà prova all’Utente dell'ap
   .. figure:: ./images/pdf/trustmark-ITA.pdf
     :alt: Trust Mark su sfondo chiaro  
     :width: 100%
+    :align: center
 
     Trust Mark su sfondo chiaro 
 
