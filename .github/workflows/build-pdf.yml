@@ -149,3 +149,10 @@ jobs:
         with:
           name: lualatex-en-log
           path: build/latex/en/lualatex-en.log
+
+      - name: Upload LaTeX log (it) on failure
+        if: failure() && hashFiles('build/latex/it/lualatex-it.log') != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: lualatex-it-log
+          path: build/latex/it/lualatex-it.log
