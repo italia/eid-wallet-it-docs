@@ -2,7 +2,13 @@ openapi: 3.0.1
 info:
   title: IT Wallet API - AS web services
   version: 0.2.0
-  description: IT Wallet Authentic Source e-Service exposed via PDND.
+  description: |
+    # IT Wallet Authentic Source e-Service exposed via PDND.
+    ### ModI patterns to be used:
+      - <b>ID_AUTH_CHANNEL_01</b>: Direct Trust TLS (HTTPS)
+      - <b>ID_AUTH_REST_01</b>: Authorization via PDND token
+      - <b>INTEGRITY_REST_02</b>: Requests and responses are signed
+      - <b>AUDIT_REST_02</b>: Additional properties (optional if DPoP token is used, mandatory if Bearer token is used)
   termsOfService: "https://authentic-source.example.it/tos/"
   contact:
     name: IT-Wallet <credential_name> <credential_provider>
@@ -169,14 +175,14 @@ paths:
                   personal_administrative_number: "12345A123A"
                 attributeClaims:
                   - object_id: "6F9619FF-8B86-D011-B42D-00C04FC964FF"
-                    status: "VALID"
+                    status: valid
                     last_updated: "2025-01-15T10:30:00Z"
                     institute_name: "Nome Istituto Universitario"
                     programme_type_name: "Laurea Magistrale"
                     degree_course_name: "Computer Science - Informatica"
                     academic_qualification_date: "2025-06-25"
                   - object_id: "7A0720AB-9C97-E122-C53E-11D05FD075GG"
-                    status: "VALID"
+                    status: valid
                     last_updated: "2025-01-10T08:00:00Z"
                     institute_name: "Nome Istituto Universitario"
                     programme_type_name: "Laurea Triennale"
@@ -362,8 +368,15 @@ components:
               status:
                 description: Status of the Dataset.
                 type: string
-                enum: ["VALID", "INVALID", "SUSPENDED"]
-                example: "VALID"
+                enum:
+                  - valid
+                  - invalid
+                  - suspended
+                x-enum-description:
+                  - The credential is issued or expired
+                  - The credential is revoked
+                  - The credential is temporarily not available, for example due to a temporary hold or a pending verification process
+                example: valid
               last_updated:
                 description: Last time the status or attributes of the Dataset have been updated. Its format is `YYYY-MM-DDTHH:MM:SSZ`.
                 type: string
