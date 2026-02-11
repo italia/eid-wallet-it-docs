@@ -50,6 +50,7 @@ The Logo is the official graphical element that ensures immediate recognition of
   .. figure:: ../../official_resources/logoIT-Wallet.svg
     :alt: “IT-Wallet" Logo on a light background  
     :width: 100%
+    :align: center
 
     “IT-Wallet" Logo on a light background  
 
@@ -58,6 +59,7 @@ The Logo is the official graphical element that ensures immediate recognition of
   .. figure:: ./images/pdf/logoIT-Wallet.pdf
     :alt: “IT-Wallet" Logo on a light background  
     :width: 100%
+    :align: center
 
     “IT-Wallet" Logo on a light background 
 
@@ -66,7 +68,8 @@ The Logo is the official graphical element that ensures immediate recognition of
 
   .. figure:: ../../official_resources/symbol-IT-Wallet.svg
     :alt: “IT-Wallet” Logo symbol on a light background  
-    :width: 100%
+    :width: 25%
+    :align: center
 
     “IT-Wallet” Logo symbol on a light background  
 
@@ -74,7 +77,8 @@ The Logo is the official graphical element that ensures immediate recognition of
 
   .. figure:: ./images/pdf/symbol-IT-Wallet.pdf
     :alt: “IT-Wallet” Logo symbol on a light background  
-    :width: 100%
+    :width: 25%
+    :align: center
 
     “IT-Wallet” Logo symbol on a light background   
 
@@ -115,6 +119,7 @@ The Trust Mark is the official graphic element that guarantees the belonging of 
   .. figure:: ../../official_resources/trustmark-ENG.svg
     :alt: Trust Mark on a light background  
     :width: 100%
+    :align: center
 
     Trust Mark on a light background  
 
@@ -123,6 +128,7 @@ The Trust Mark is the official graphic element that guarantees the belonging of 
   .. figure:: ./images/pdf/trustmark-ENG.pdf
     :alt: Trust Mark on a light background  
     :width: 100%
+    :align: center
 
     Trust Mark on a light background 
 

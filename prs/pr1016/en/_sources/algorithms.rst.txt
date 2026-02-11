@@ -44,12 +44,24 @@ The following algorithms MUST be supported:
     - RSA Encryption Scheme with Optimal Asymmetric Encryption Padding (OAEP) using SHA-256 hash function and the MGF1 with SHA-256 mask generation function.
     - Key Encryption
     - :rfc:`7516`, :rfc:`7518`.
+  * - **ECDH-ES**
+    - Elliptic Curve Diffie-Hellman (ECDH) Ephemeral-Static key agreement.
+    - Key Agreement
+    - :rfc:`7516`, :rfc:`7518`.
   * - **A128CBC-HS256**
     - AES encryption in Cipher Block Chaining mode with 128-bit Initial Vector value, plus HMAC authentication using SHA-256 and truncating HMAC to 128 bits.
     - Content Encryption
     - :rfc:`7516`, :rfc:`7518`.
   * - **A256CBC-HS512**
     - AES encryption in Cipher Block Chaining mode with 256-bit Initial Vector value, plus HMAC authentication using SHA-512 and truncating HMAC to 256 bits.
+    - Content Encryption
+    - :rfc:`7516`, :rfc:`7518`.
+  * - **A128GCM**
+    - AES encryption with Galois/Counter Mode and a key length of 128.
+    - Content Encryption
+    - :rfc:`7516`, :rfc:`7518`.
+  * - **A256GCM**
+    - AES encryption with Galois/Counter Mode and a key length of 256.
     - Content Encryption
     - :rfc:`7516`, :rfc:`7518`.
 
