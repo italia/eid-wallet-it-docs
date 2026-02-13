@@ -23,11 +23,11 @@ All entities (Wallet Providers, Credential Issuers, Relying Parties) involved wi
 2.2 Code Management & Transparency
 """"""""""""""""""""""""""""""""""
 
-- **Version Control**: Project Owners **MUST** use code hosting platforms that allow public access without requiring a login (e.g., Github, Gitlab), ensuring a transparent history of changes.
+- **Version Control**: Project Owners **MUST** use code hosting platforms that allow public access without requiring a login (e.g., GitHub, GitLab), ensuring a transparent history of changes.
 - **Documentation**: Repositories **MUST** include clear documentation, such as:
 
   - ``README.md``: Project overview and setup instructions.
-  - ``LICENSE.md``: Terms under which the copyright holder allows the recipient to use the software (see subchapter 2.1 on Licensing).
+  - ``LICENSE.md``: Terms under which the copyright holder allows the recipient to use the software (as described in the *Licensing* section above).
   - ``CONTRIBUTING.md``: Guidelines for contributions to the codebase made by externals (e.g., community contributors).
 
 - **Community**: Project Owners **SHOULD** actively engage with the community for development and support, managing issues and requests for contributions in a timely manner.
@@ -62,7 +62,7 @@ To foster ecosystem interoperability and reduce integration costs:
 4.2 Backend infrastructure
 """"""""""""""""""""""""""
 
-Credential Issuers and Relying Parties **SHOULD** to release their backend core logic under an open source license, starting from the experimentation phase, to promote transparency and reuse.
+Credential Issuers and Relying Parties **SHOULD** release their backend core logic under an open-source license, starting from the experimentation phase, to promote transparency and reuse.
 
 5. Responsible Disclosure and Vulnerability Management
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
