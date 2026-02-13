@@ -36,6 +36,6 @@ piccolo_theme
 sphinxcontrib-redoc==1.6.0
 myst-parser==4.0.1
 sphinxcontrib-plantuml==0.30
-pillow==11.3.0
+pillow==12.1.1
 svglib==1.5.1
 reportlab==4.4.0
