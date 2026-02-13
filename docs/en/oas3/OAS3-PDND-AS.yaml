@@ -35,9 +35,9 @@ paths:
           headers:
             Cache-Control:
               $ref: "#/components/headers/CacheControlHeader"
-            RateLimit-Limit:
+            X-RateLimit-Limit:
               $ref: "#/components/headers/RateLimitLimitHeader"
-            RateLimit-Remaining:
+            X-RateLimit-Remaining:
               $ref: "#/components/headers/RateLimitRemainingHeader"
             RateLimit-Reset:
               $ref: "#/components/headers/RateLimitResetHeader"
@@ -48,11 +48,11 @@ paths:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
           headers:
-            RateLimit-Limit:
+            X-RateLimit-Limit:
               $ref: "#/components/headers/RateLimitLimitHeader"
-            RateLimit-Remaining:
+            X-RateLimit-Remaining:
               $ref: "#/components/headers/RateLimitRemainingHeader"
-            RateLimit-Reset:
+            X-RateLimit-Reset:
               $ref: "#/components/headers/RateLimitResetHeader"
         "503":
           description: Service Unavailable
@@ -148,11 +148,11 @@ paths:
                 example: SHA-256=79a20a744336420301830600ad9bdca993593f876209a004b599b583095b0a61
             Cache-Control:
               $ref: "#/components/headers/CacheControlHeader"
-            RateLimit-Limit:
+            X-RateLimit-Limit:
               $ref: "#/components/headers/RateLimitLimitHeader"
-            RateLimit-Remaining:
+            X-RateLimit-Remaining:
               $ref: "#/components/headers/RateLimitRemainingHeader"
-            RateLimit-Reset:
+            X-RateLimit-Reset:
               $ref: "#/components/headers/RateLimitResetHeader"
           content:
             application/json:
@@ -194,11 +194,11 @@ paths:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
           headers:
-            RateLimit-Limit:
+            X-RateLimit-Limit:
               $ref: "#/components/headers/RateLimitLimitHeader"
-            RateLimit-Remaining:
+            X-RateLimit-Remaining:
               $ref: "#/components/headers/RateLimitRemainingHeader"
-            RateLimit-Reset:
+            X-RateLimit-Reset:
               $ref: "#/components/headers/RateLimitResetHeader"
         "401":
           description: Unauthorized
@@ -207,11 +207,11 @@ paths:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
           headers:
-            RateLimit-Limit:
+            X-RateLimit-Limit:
               $ref: "#/components/headers/RateLimitLimitHeader"
-            RateLimit-Remaining:
+            X-RateLimit-Remaining:
               $ref: "#/components/headers/RateLimitRemainingHeader"
-            RateLimit-Reset:
+            X-RateLimit-Reset:
               $ref: "#/components/headers/RateLimitResetHeader"
             WWW-Authenticate:
               $ref: "#/components/headers/WWWAuthenticateHeader"
@@ -222,11 +222,11 @@ paths:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
           headers:
-            RateLimit-Limit:
+            X-RateLimit-Limit:
               $ref: "#/components/headers/RateLimitLimitHeader"
-            RateLimit-Remaining:
+            X-RateLimit-Remaining:
               $ref: "#/components/headers/RateLimitRemainingHeader"
-            RateLimit-Reset:
+            X-RateLimit-Reset:
               $ref: "#/components/headers/RateLimitResetHeader"
         "429":
           description: Too Many Requests
@@ -235,11 +235,11 @@ paths:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
           headers:
-            RateLimit-Limit:
+            X-RateLimit-Limit:
               $ref: "#/components/headers/RateLimitLimitHeader"
-            RateLimit-Remaining:
+            X-RateLimit-Remaining:
               $ref: "#/components/headers/RateLimitRemainingHeader"
-            RateLimit-Reset:
+            X-RateLimit-Reset:
               $ref: "#/components/headers/RateLimitResetHeader"
         "500":
           description: Internal Server Error.
