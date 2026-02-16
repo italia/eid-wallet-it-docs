@@ -140,4 +140,4 @@ The decomposition supports risk assessment per `CIR 2024/2981`_ Article 4(4)(d) 
 - **Threats**: Identified per component.
 - **Implemented controls**: Documented in the technical specifications and test plans.
 
-For test coverage, see :ref:`test-plans:Test Plans` and :ref:`test-plans-wallet-provider:Wallet Provider Test Plans`.
+For test coverage, see :ref:`Test Plans <test-plans>` and :ref:`Wallet Provider Test Plans <test-plans-wallet-provider>`.

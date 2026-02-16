@@ -140,4 +140,4 @@ La scomposizione supporta la valutazione del rischio ai sensi dell'articolo 4, p
 - **Minacce**: Identificate per componente.
 - **Controlli implementati**: Documentati nelle specifiche tecniche e nei piani di test.
 
-Per la copertura dei test, vedere :ref:`test-plans:Piani di Test` e :ref:`test-plans-wallet-provider:Piani di Test per il Fornitore di Wallet`.
+Per la copertura dei test, vedere :ref:`Piani di Test <test-plans>` e :ref:`Piani di Test per il Fornitore di Wallet <test-plans-wallet-provider>`.
