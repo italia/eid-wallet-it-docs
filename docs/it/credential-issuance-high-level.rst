@@ -34,7 +34,7 @@ Il flusso ad alto livello inizia con l'Utente che desidera ottenere un PID e avv
 Flusso ad Alto Livello per (Q)EAA
 ----------------------------------
 
-La :numref:`fig_High-Level-Flow-ITWallet-QEAA-Issuance` mostra un'architettura generale ed evidenzia le principali operazioni coinvolte nell'emissione di un (Q)EAA, seguendo le ipotesi elencate di seguito:
+La :numref:`fig_High-Level-Flow-ITWallet-QEAA-Issuance` mostra un'architettura generale ed evidenzia le principali operazioni coinvolte nell'emissione di un (Q)EAA. Il flusso considera:
 
   - l'Utente ha un PID valido memorizzato nella propria Istanza del Wallet;
   - il (Q)EAA richiede un profilo di implementazione ad alta sicurezza.

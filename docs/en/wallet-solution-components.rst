@@ -30,7 +30,7 @@ This section specifies the mapping between the Wallet Solution components descri
      - Local Data Store, Backup and Restore Component, Secure Storage interaction
      - In scope
    * - **Wallet Instance (WI)** — Presentation Interface (PI)
-     - Remote and Proximity PID/(Pub/Q)EAA presentation (OpenID4VP, ISO18013-5)
+     - Remote and Proximity PID/(Pub/Q)EAA presentation (`OpenID4VP`_, `ISO18013-5`_)
      - In scope
    * - **Wallet Instance (WI)** — Attestation Issuance Interface
      - PID Issuance Interface (PII), Attestation Issuance Interface (AII)

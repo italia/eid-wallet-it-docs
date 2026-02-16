@@ -9,14 +9,14 @@ Componenti della Soluzione Wallet
 
 .. _wallet-solution-components-decomposition:
 
-Decomposizione e Ambito di Certificazione
+Scomposizione e Ambito di Certificazione
 -----------------------------------------
 
-La **certificazione** è il processo con cui gli Organismi di Valutazione della Conformità valutano le soluzioni tecniche rispetto ai requisiti di sicurezza e conformità previsti dal `CIR 2024/2981`_. La **decomposizione dei componenti per la certificazione** è una struttura gerarchica (macro-componente di certificazione, componente, sottocomponente) utilizzata per definire l'ambito della valutazione della certificazione e stabilire la tracciabilità tra elementi architetturali e requisiti di certificazione.
+La **certificazione** è il processo con cui gli Organismi di Valutazione della Conformità valutano le soluzioni tecniche rispetto ai requisiti di sicurezza e conformità previsti dal `CIR 2024/2981`_. La **scomposizione dei componenti per la certificazione** è una struttura gerarchica (macro-componente di certificazione, componente, sottocomponente) utilizzata per definire l'ambito della valutazione della certificazione e stabilire la tracciabilità tra elementi architetturali e requisiti di certificazione.
 
-Questa sezione specifica la mappatura tra i componenti della Soluzione Wallet descritti in questa specifica tecnica e il macro-componente di certificazione **Servizi ICT Wallet** (proprietario: Fornitore di Wallet). Indica quali componenti sono conformi alla decomposizione e rientrano nell'ambito di certificazione.
+Questa sezione specifica la mappatura tra i componenti della Soluzione Wallet descritti in questa specifica tecnica e il macro-componente di certificazione **Servizi ICT Wallet** (proprietario: Fornitore di Wallet). Indica quali componenti sono conformi alla scomposizione e rientrano nell'ambito di certificazione.
 
-.. list-table:: Soluzione Wallet — Mappatura Decomposizione
+.. list-table:: Soluzione Wallet — Mappatura Scomposizione
    :widths: 30 40 15
    :header-rows: 1
 
@@ -30,7 +30,7 @@ Questa sezione specifica la mappatura tra i componenti della Soluzione Wallet de
      - Local Data Store, Backup and Restore Component, interazione Secure Storage
      - In scopo
    * - **Wallet Instance (WI)** — Presentation Interface (PI)
-     - Presentazione remota e di prossimità PID/(Pub/Q)EAA (OpenID4VP, ISO18013-5)
+     - Presentazione remota e di prossimità PID/(Pub/Q)EAA (`OpenID4VP`_, `ISO18013-5`_)
      - In scopo
    * - **Wallet Instance (WI)** — Attestation Issuance Interface
      - PID Issuance Interface (PII), Attestation Issuance Interface (AII)

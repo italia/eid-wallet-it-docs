@@ -6,7 +6,7 @@ Test Plans
 
 The purpose of the test plans is to support implementers, auditors, and conformance test environments in validating the behavior of the Wallet Solutions, Relying Parties and Credential Issuers under various operational and security scenarios.
 
-All test cases are derived from normative rules defined in the above specifications, with no assumptions or extensions.
+All test cases are derived from normative rules defined in the above specifications, with no extensions.
 
 .. note::
   Please note that the test plans matrix may be subject to future changes.

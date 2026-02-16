@@ -11,11 +11,11 @@ This annex describes the certification scheme and overall approach for the IT-Wa
 Regulatory Framework
 --------------------
 
-The certification of IT-Wallet System components is mandated by **Commission Implementing Regulation (EU) 2024/2981** (CIR 2024/2981). The regulation requires, under Article 4(4)(d), that risks, threats, and implemented controls be assessed as part of the certification process.
+The certification of IT-Wallet System components is mandated by `CIR 2024/2981`_ (**Commission Implementing Regulation (EU) 2024/2981**). The regulation requires, under Article 4(4)(d), that risks, threats, and implemented controls be assessed as part of the certification process.
 
 The decomposition follows:
 
-- **ARF** (Architecture Reference Framework) for EUDI-Wallet
+- **`ARF`_** (Architecture Reference Framework) for EUDI-Wallet
 - **IT-Wallet Technical Documentation** (this specification)
 - **ENISA National Schema** template for certification documentation
 
@@ -44,15 +44,15 @@ Each element may be classified as an **ICT product** or an **ICT process**. The 
 Components In Scope for Certification
 -------------------------------------
 
-The following components are **in scope** for certification per CIR 2024/2981:
+The following components are **in scope** for certification per `CIR 2024/2981`_:
 
 .. list-table:: In-Scope Components
    :widths: 35 35 30
    :header-rows: 1
 
    * - Certification Macro-component
-   * - Owner
-   * - Technical Specification Reference
+     - Owner
+     - Technical Specification Reference
    * - **Servizi ICT Wallet**
      - Wallet Provider
      - :ref:`wallet-solution-components:Wallet Solution Components`
@@ -76,7 +76,7 @@ The following components are **out of scope** for certification:
    :header-rows: 1
 
    * - Component
-   * - Notes
+     - Notes
    * - User Device (Operating System, platform, local crypto)
      - Provided by Device Manufacturer; not within certification scope.
    * - Attribute Attestation Provider ((Pub/Q)EAA)
@@ -122,10 +122,10 @@ The following table provides a consolidated cross-reference from decomposition e
      - National eID schemes; :ref:`credential-issuance:Digital Credential Issuance`
      - Regime di identificazione elettronica
 
-Mandatory Certification and Assumptions
-----------------------------------------
+Mandatory Certification
+------------------------
 
-The column **Mandatory Certification** in the full decomposition indicates whether security certification is required or whether **assumptions** apply. Conditional cases include:
+The **Certification Scope** column in the decomposition tables (see :ref:`wallet-solution-components-decomposition:Decomposition and Certification Scope` and :ref:`credential-issuer-solution-decomposition:Decomposition and Certification Scope`) indicates whether security certification is required. Conditional cases include:
 
 - **WSCD** provided by the User or Wallet Provider (device ownership affects scope).
 - **Wallet Instance** execution environment (User device vs. web-based interface).
@@ -134,9 +134,9 @@ The column **Mandatory Certification** in the full decomposition indicates wheth
 Risk Assessment
 ---------------
 
-The decomposition supports risk assessment per CIR 2024/2981 Article 4(4)(d) through:
+The decomposition supports risk assessment per `CIR 2024/2981`_ Article 4(4)(d) through:
 
-- **Risks (ID & Name)**: Linked to the certification scheme's risk catalogue (aligned with CIR 2024/2981 Annex I).
+- **Risks (ID & Name)**: Linked to the certification scheme's risk catalogue (aligned with `CIR 2024/2981`_ Annex I).
 - **Threats**: Identified per component.
 - **Implemented controls**: Documented in the technical specifications and test plans.
 

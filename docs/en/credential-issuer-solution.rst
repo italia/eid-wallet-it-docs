@@ -128,7 +128,7 @@ This component MUST ensure security through:
 Decomposition and Certification Scope
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For **PID issuance**, the Credential Issuer Solution corresponds to the **PID Provider Backend (PPBE)** within the certification macro-component **Servizi ICT PID Provider** (owner: PID Provider). See :ref:`annex-certification-scheme:Certification Scheme and Overall Approach` for the full decomposition. This component is **in scope** for certification per `CIR 2024/2981`_.
+For **PID issuance**, the Credential Issuer Solution corresponds to the **PID Provider Backend (PPBE)** within the certification macro-component **Servizi ICT PID Provider** (owner: PID Provider). See :ref:`annex-certification-scheme:Certification Scheme and Overall Approach` for the decomposition and certification scope. This component is **in scope** for certification per `CIR 2024/2981`_.
 
 .. list-table:: PID Provider Backend (PPBE) — Decomposition Mapping
    :widths: 30 45 15
