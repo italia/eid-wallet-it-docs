@@ -127,6 +127,11 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Entità Organizzativa designata a livello nazionale che agisce come radice di fiducia della federazione, operando la PKI nazionale e pubblicando le Trusted List e i Metadata di federazione autorevoli per le Entità Organizzative subordinate (ad esempio Intermediari e Foglie).
       Non presente in ARF 2.7.3; specifico di IT-Wallet.
 
+    **Dati Nazionali di Identificazione Personale**
+    **NPID**
+      Attestato Elettronico contenente Dati di Identificazione Personale a sostanziale Livello di Garanzia (WL2), utilizzabile come mezzo di identificazione elettronica esclusivamente a livello nazionale verso le Relying Party. Il NPID è emesso dal PID Provider e le chiavi associate DEVONO essere archiviate in un WSCD con livello di sicurezza almeno WL2 (ossia WL2 o WL3).
+      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+
     **Processo di Notifica**
       Procedura per l'invio delle informazioni alla Commissione Europea e l'inserimento all'interno delle Trusted List.
       Conforme con ARF 2.7.3.
@@ -321,6 +326,16 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Dispositivo antimanomissione che fornisce un ambiente in cui la WSCA può proteggere gli Asset Critici.
       Conforme con ARF 2.7.3.
 
+    **Livello Wallet 2**
+    **WL2**
+      Livello di sicurezza in cui il Wallet Secure Cryptographic Device (WSCD) che supporta le chiavi associate alle Credenziali Elettroniche non è facilmente certificabile come resistente ad attaccanti con alto potenziale d'attacco, come i Trusted Execution Environment (TEE) inclusi nei dispositivi mobili dell'Utente. Corrisponde a un sostanziale Livello di Garanzia.
+      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+
+    **Livello Wallet 3**
+    **WL3**
+      Livello di sicurezza in cui il Wallet Secure Cryptographic Device (WSCD) che supporta le chiavi associate alle Credenziali Elettroniche è certificabile come resistente ad attaccanti con alto potenziale d'attacco, come HSM o smart card certificate almeno Common Criteria EAL4+ AVA_VAN.5. Corrisponde a un elevato Livello di Garanzia.
+      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+
     **Soluzione Wallet**
       Insieme di Soluzioni Tecniche al fine di garantire il corretto funzionamento delle Istanze del Wallet.
       Conforme con ARF 2.7.3.
@@ -448,6 +463,8 @@ Di seguito gli acronimi usati più di frequente nel documento:
     - Person Identification Data (Attestato Elettronico di Dati di Identificazione Personale)
   * - **PII**
     - Personally Identifiable Information (Informazioni di Identificazione Personale)
+  * - **NPID**
+    - National Person Identification Data (Dati Nazionali di Identificazione Personale)
   * - **PPBE**
     - PID Provider Backend (Backend del Fornitore di Attestati Elettronici di Dati di Identificazione Personale)
   * - **QEAA**
@@ -466,6 +483,10 @@ Di seguito gli acronimi usati più di frequente nel documento:
     - Wallet Secure Cryptographic Application (Applicazione Crittografica Sicura per il Wallet)
   * - **WSCD**
     - Wallet Secure Cryptographic Device (Dispositivo Crittografico Sicuro per il Wallet)
+  * - **WL2**
+    - Wallet Level 2 / Livello Wallet 2 (Sostanziale)
+  * - **WL3**
+    - Wallet Level 3 / Livello Wallet 3 (Elevato)
   * - **WWI**
     - WSCD Interface (interfaccia tra la Wallet Secure Cryptographic Application e il Wallet Secure Cryptographic Device)
 
