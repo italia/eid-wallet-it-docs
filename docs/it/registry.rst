@@ -71,7 +71,7 @@ Struttura del payload JWT (decodificato):
     "endpoints": {
       "claims_registry": "https://trust-anchor.eid-wallet.example.it/api/v1/claims",
       "authentic_sources": "https://trust-anchor.eid-wallet.example.it/api/v1/authentic-sources",
-      "credential_catalog": "https://trust-anchor.eid-wallet.example.it/api/v1/credential-catalog",
+      "credential_catalog": "https://trust-anchor.eid-wallet.example.it/api/v1/.well-known/credential-catalog",
       "taxonomy": "https://trust-anchor.eid-wallet.example.it/api/v1/taxonomy",
       "schema_registry": "https://trust-anchor.eid-wallet.example.it/api/v1/schemas",
       "federation_list": "https://trust-anchor.eid-wallet.example.it/list",
@@ -84,6 +84,8 @@ Struttura del payload JWT (decodificato):
   }
 
 
+
+.. _registry-registro-claims:
 
 Registro dei Claims
 -------------------
@@ -530,7 +532,33 @@ La seguente tabella riassume le informazioni principali che DEVONO essere fornit
        - **Finalità della Credenziale Digitale**: Informazioni relative alle finalità consentite per cui la Credenziale Digitale può essere usata. Ogni tipo di Credenziale Digitale può essere usato per molteplici finalità.
 
 
-Il Trust Anchor DEVE pubblicare e mantenere aggiornate tutte le informazioni all'endpoint `.well-known` del Catalogo degli Attestati Elettronici garantendo affidabilità, autenticità e integrità dei dati. In particolare, il Catalogo degli Attestati Elettronici, i claims e la tassonomia DEVONO essere disponibili attraverso l'endpoint ``.well-known/credential-catalog``.
+Il Trust Anchor DEVE pubblicare e mantenere aggiornate tutte le informazioni all'endpoint `.well-known` del Catalogo degli Attestati Elettronici garantendo affidabilità, autenticità e integrità dei dati. In particolare, il Catalogo degli Attestati Elettronici DEVE essere disponibile attraverso l'endpoint ``.well-known/credential-catalog``. DEVONO essere supportati ``application/jose`` e ``application/json`` come Content-Type.
+
+Di seguito è fornito un esempio non normativo.
+
+.. code-block:: http
+
+    GET /.well-known/credential-catalog HTTP/1.1
+    Host: trust-anchor.eid-wallet.example.it
+    Accept: application/jose
+
+    HTTP/1.1 200 OK
+    Content-Type: application/jose
+
+    eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
+
+.. code-block:: http
+
+    GET /.well-known/credential-catalog HTTP/1.1
+    Host: trust-anchor.eid-wallet.example.it
+    Accept: application/json
+
+    HTTP/1.1 200 OK
+    Content-Type: application/json
+
+.. _struttura-del-catalogo-degli-attestati-elettronici:
+
+Nella sezione :ref:`Struttura del Catalogo degli Attestati Elettronici <struttura-del-catalogo-degli-attestati-elettronici>` è riportato un esempio di Catalogo degli Attestati Elettronici decodificato in JSON.
 
 Gerarchia degli Attestati Elettronici
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

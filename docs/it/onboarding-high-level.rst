@@ -123,9 +123,9 @@ Il modulo di registrazione DEVE raccogliere almeno le seguenti informazioni come
    * - **Elenco Attributi Richiesti**
      - OBBLIGATORIO, ove applicabile. Un elenco degli attributi che la wallet-relying party intende richiedere per ogni uso previsto. Questo DEVE fare riferimento a:
        
-       - Identificatori specifici di claim dal Registro Claims (es., ``given_name``, ``family_name``, ``driving_privileges``)
+       - Identificatori specifici di claim dal :ref:`registry-registro-claims` (es., ``given_name``, ``family_name``, ``driving_privileges``)
        - Classificazioni della Tassonomia (domini, classi, scopi) per la valutazione delle politiche di autorizzazione
-       - Vedere :ref:`registry:Registro Claims` per le definizioni standardizzate dei claim
+       - Vedere :ref:`registry-registro-claims` per le definizioni standardizzate dei claim
    * - **Descrizione dell'Uso Previsto**
      - OBBLIGATORIO, ove applicabile. Una descrizione dell'uso previsto dei dati, inclusi:
        

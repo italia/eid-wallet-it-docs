@@ -90,6 +90,14 @@ The requirements for the Wallet App Attestation are defined below:
    * - WAA-011
      - The Wallet Instance MUST secure a Wallet App Attestation as a prerequisite for transitioning to the Operational state, as defined by `EIDAS-ARF`_.
      - WI
+   * - WAA-012
+     - A Wallet Provider SHALL ensure that a non-revoked Wallet Unit at all times presents a temporally valid and non-revoked Wallet App Attestation to a PID Provider or Attestation Provider during the issuance process of a PID or attestation. Note: This requirement applies to both device-bound and non-device-bound attestations, as defined by `EIDAS-ARF`_.
+     - WPBE
+   * - WAA-013
+     - A Wallet Unit SHALL present a Wallet App Attestation only to a PID Provider or Attestation Provider, as part of the issuance process of a PID or an attestation, and not to a Relying Party or any other entity.
+     - WI
+
+
 
 
 .. note::
@@ -135,11 +143,24 @@ The requirements for the Wallet Unit Attestation are defined below:
      - The Wallet Unit Attestation MUST contain one or multiple attested credential's public key that are coming from the same WSCD.
      - WPBE
    * - WUA-009
-     - The Wallet Unit Attestation MUST be signed by the Wallet Provider that has authority over and is the owner of the Wallet Solution, as specified by the overseeing Registration Authority.
+     - The Wallet Unit Attestation MUST be signed by the Wallet Provider that has authority over and is the owner of the Wallet Solution, as specified by the overseeing Registration Authority. Wallet Providers SHALL ensure that the certificates they use for signing WUAs and WAAs comply with all applicable requirements in `ETSI TS 119 412-6`_, in particular Clause 5.
      - WPBE
    * - WUA-010
      - The Wallet Unit Attestation MUST NOT be issued by the Wallet Provider if the WSCD trustworthiness is not guaranteed. In this case, the Wallet Instance MUST be revoked.
      - WPBE, WI
+   * - WUA-011
+     - An Attestation Provider issuing non-device-bound attestations SHALL indicate in its Credential Issuer metadata that it does not need a WUA. A Wallet Unit SHALL NOT send a WUA to an Attestation Provider when requesting a non-device-bound attestation. Note: A Wallet Unit sends a WIA to the Attestation Provider regardless of whether the attestations it issues are device-bound or not.
+     - WPBE
+   * - WUA-012
+     - A Wallet Provider SHALL ensure that the presentation of a WUA is cryptographically bound to the specific context it is intended to be used in. Note: As specified in `OpenID4VCI`_, this is achieved by letting the signed WUA itself contain a nonce provided by the PID Provider or Attestation Provider during the issuance process. Alternatively, the Wallet Unit presents the WUA along with a Proof-of-Possession consisting of a signature over that nonce, created by the private key corresponding to one of the public keys attested in the WUA.
+     - WPBE
+   * - WUA-013
+     - If the WSCA/WSCD is able to export a private key, the Wallet Provider SHALL specify this capability as an attribute in the WUA.
+     - WPBE
+   * - WUA-014
+     - A Wallet Provider SHALL consider all relevant factors, including offline usage, interoperability, and the risk of a WUA becoming a vector to track the User, when deciding on the validity period of a WUA.
+     - WPBE
+
 
 
 WSCD Requirements

@@ -1,0 +1,44 @@
+name: Check PDF version (1.5 only)
+
+on:
+  push:
+    branches: [ "*" ]
+    paths:
+      - 'docs/en/images/pdf/**'
+      - 'docs/it/images/pdf/**'
+      - '.github/workflows/check-pdf-version.yml'
+  pull_request:
+    branches: [ "*" ]
+    paths:
+      - 'docs/en/images/pdf/**'
+      - 'docs/it/images/pdf/**'
+      - '.github/workflows/check-pdf-version.yml'
+
+jobs:
+
+  pre_job:
+    runs-on: ubuntu-latest
+    outputs:
+      should_skip: ${{ steps.skip_check.outputs.should_skip }}
+    steps:
+      - id: skip_check
+        uses: fkirc/skip-duplicate-actions@v3.4.0
+        with:
+          skip_after_successful_duplicate: 'true'
+          same_content_newer: 'true'
+
+  check-pdf-version:
+    name: Ensure all PDFs are version 1.5
+    needs: pre_job
+    if: needs.pre_job.outputs.should_skip != 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install pdfinfo (poppler-utils)
+        run: sudo apt-get update -qq && sudo apt-get install -y poppler-utils
+
+      - name: Check PDF versions in docs/en and docs/it
+        run: |
+          bash utils/check_pdf_version.sh 1.5 docs/en/images/pdf docs/it/images/pdf

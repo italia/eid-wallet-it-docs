@@ -17,6 +17,7 @@ The IT-Wallet System provides Users with a simpler, faster, and more secure way 
   .. figure:: ./images/svg/UX-phases-usage.svg
     :alt: User Experience phases of Wallet usage
     :width: 100%
+    :align: center
 
     User Experience phases of Wallet usage
 
@@ -25,6 +26,7 @@ The IT-Wallet System provides Users with a simpler, faster, and more secure way 
   .. figure:: ./images/pdf/UX-phases-usage.pdf
     :alt: User Experience phases of Wallet usage
     :width: 100%
+    :align: center
 
     User Experience phases of Wallet usage
 
@@ -69,6 +71,7 @@ The flow is shown below with illustrative wireframes.
   .. figure:: ./images/svg/IT-Wallet-Activation.svg
     :alt: Example of User Experience in Activating a Wallet Instance 
     :width: 100%
+    :align: center
 
     Example of User Experience in Activating a Wallet Instance
 
@@ -118,6 +121,7 @@ To ensure a consistent identification and representation of the PID across diffe
   .. figure:: ../../official_resources/IT-Wallet-ID.svg
     :alt: IT-Wallet ID official graphic asset on a light background 
     :width: 100%
+    :align: center
 
     IT-Wallet ID official graphic asset on a light background 
 
@@ -197,6 +201,7 @@ The flow is shown below with illustrative wireframes.
   .. figure:: ./images/svg/Issuance-from-catalog.svg
     :alt: Example of User Experience in the issuance an Electronic Attestation of Attributes from Catalog
     :width: 100%
+    :align: center
 
     Example of User Experience in the issuance an Electronic Attestation of Attributes from Catalog 
 
@@ -252,6 +257,7 @@ The flow is shown below with illustrative wireframes.
   .. figure:: ./images/svg/Issuance-from-Authentic-Source.svg
     :alt: Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source
     :width: 100%
+    :align: center
 
     Example of the User Experience during the issuance of an Electronic Attestation of Attributes from the Authentic Source.
 
@@ -381,6 +387,7 @@ Below an example of Electronic Attestation of Attribute layout, in a Preview Vie
   .. figure:: ./images/svg/Focus-EAA.svg
     :alt: Example of Electronic Attestation of Attribute layout, Preview View, and Detail View 
     :width: 100%
+    :align: center
 
     Example of Electronic Attestation of Attribute layout, Preview View, and Detail View.
 
@@ -442,6 +449,7 @@ The flow is shown below with illustrative wireframes.
   .. figure:: ./images/svg/proximity-presentation.svg
     :alt: Example of User Experience in proximity presentation
     :width: 100%
+    :align: center
 
     Example of User Experience in proximity presentation.
 
@@ -485,6 +493,7 @@ The flow is shown below with illustrative wireframes.
   .. figure:: ./images/svg/Remote-presentation-same-device.svg
     :alt: Example of User Experience in remote, same-device presentation
     :width: 100%
+    :align: center
 
     Example of User Experience in remote, same-device presentation.
 
@@ -525,6 +534,7 @@ The flow is shown below with illustrative wireframes.
   .. figure:: ./images/svg/Remote-presentation-cross-device.svg
     :alt: Example of User Experience in remote, cross-device presentation
     :width: 100%
+    :align: center
 
     Example of User Experience in remote, cross-device presentation.
 
@@ -606,6 +616,7 @@ To enable Authentication via the IT-Wallet System, the Relying Party MAY replace
   .. figure:: ./images/svg/discovery-page.svg
      :alt: Layout Model of Discovery Page in grid
      :width: 100%
+     :align: center
 
      Layout Model of Discovery Page in grid  
 
@@ -644,6 +655,7 @@ The Relying Party MUST implement the Selection Page made available in the :ref:`
   .. figure:: ./images/svg/selection-page.svg
      :alt: Selection Page
      :width: 100%
+     :align: center
 
      Selection Page 
 
@@ -684,6 +696,7 @@ Relying Parties MUST implement the QR Code Page (cross-device) provided in the :
   .. figure:: ./images/svg/QR-page.svg
      :alt: QR Code Page
      :width: 100%
+     :align: center
 
      QR Code Page 
  
@@ -723,6 +736,7 @@ Relying Parties MUST implement the Waiting Page (cross-device) provided in the :
   .. figure:: ./images/svg/waiting-page.svg
      :alt: Waiting Page
      :width: 100%
+     :align: center
 
      Waiting Page 
  
@@ -750,6 +764,7 @@ Relying Parties MUST implement the Thank You Page provided in the :ref:`official
   .. figure:: ./images/svg/thank-you-page.svg
      :alt: Thank You Page
      :width: 100%
+     :align: center
 
      Thank You Page 
  
@@ -778,6 +793,7 @@ Relying Parties MUST implement the Error Page provided in the :ref:`official-res
   .. figure:: ./images/svg/error-page.svg
      :alt: Error Page
      :width: 100%
+     :align: center
 
      Error Page 
  
@@ -802,6 +818,7 @@ Both flows are shown below with illustrative wireframes.
   .. figure:: ./images/svg/Authentication-same-device.svg
     :alt: Example of same-device Authentication User Experience
     :width: 100%
+    :align: center
 
     Example of same-device Authentication User Experience.
 
@@ -828,6 +845,7 @@ Both flows are shown below with illustrative wireframes.
   .. figure:: ./images/svg/Authentication-cross-device.svg
     :alt: Example of cross-device Authentication User Experience
     :width: 100%
+    :align: center
 
     Example of cross-device Authentication User Experience.
 
@@ -901,6 +919,7 @@ Below are some non-mandatory examples of Authentication Button layout:
   .. figure:: ./images/svg/authentication-button-layout.svg
      :alt: Variants of Authentication Button layout
      :width: 100% 
+     :align: center
 
      Variants of Authentication Button layout
 
@@ -919,6 +938,7 @@ The integration of the Authentication Button within the Discovery Page may vary 
   .. figure:: ./images/svg/discovery-page-layouts.svg
      :alt: Examples of Discovery Page layouts: grid, tab, and list
      :width: 100%
+     :align: center
 
      Examples of Discovery Page layouts: grid, tab, and list
 
@@ -947,18 +967,56 @@ For further information on the Authentication button refer to the Brand Manual, 
 .. only:: format_html
 
   .. figure:: ../../official_resources/Authentication-button-ENG.svg
-     :alt: Example of Authentication button in 3 variants
+     :alt: Authentication button in its dimension variants
      :width: 100%
+     :align: center
 
-     Example of Authentication button in 3 variants
+     Example of Authentication button in its dimension variants
 
 .. only:: format_latex 
 
   .. figure:: ./images/pdf/Authentication-button.pdf
-     :alt: Example of Authentication button in 3 variants
+     :alt: Example of Authentication button in its dimension variants
      :width: 100%
 
-     Example of Authentication button in 3 variants
+     Example of Authentication button in its dimension variants
+
+
+.. only:: format_html
+
+  .. figure:: ../../official_resources/Authentication-Button-ENG-Fixed-Justified.svg
+     :alt: Authentication button fixed justified 
+     :width: 100%
+     :align: center
+
+     Authentication button fixed justified
+
+.. only:: format_latex 
+
+  .. figure:: ./images/pdf/Authentication-Button-ENG-Fixed-Justified.pdf
+     :alt: Authentication Button fixed justified
+     :width: 100%
+
+     Authentication button fixed justified
+
+
+.. only:: format_html
+
+  .. figure:: ../../official_resources/Authentication-Button-ENG-Fixed-Centered.svg
+     :alt: Authentication button fixed centered
+     :width: 100%
+     :align: center
+
+     Authentication button fixed centered
+
+.. only:: format_latex 
+
+  .. figure:: ./images/pdf/Authentication-Button-ENG-Fixed-Centered.pdf
+     :alt: Authentication Button fixed centered
+     :width: 100%
+
+     Authentication button fixed centered
+
 
 Management of Electronic Attestations
 --------------------------------------
@@ -1041,6 +1099,9 @@ The flow is shown below with illustrative wireframes.
   .. figure:: ./images/svg/Revocation-EAA-from-wallet.svg
      :alt: Example of User Experience in Revoking an Electronic Attestation
      :width: 100%
+     :align: center
+
+     Example of User Experience in Revoking an Electronic Attestation
 
      Example of User Experience in Revoking an Electronic Attestation.
 
