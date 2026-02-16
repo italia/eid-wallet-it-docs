@@ -8,7 +8,7 @@ info:
       - <b>ID_AUTH_CHANNEL_01</b>: Direct Trust TLS (HTTPS)
       - <b>ID_AUTH_REST_01</b>: Authorization via PDND token
       - <b>INTEGRITY_REST_02</b>: Requests and responses are signed
-      - <b>AUDIT_REST_02</b>: Additional properties (optional if DPoP Token is used, mandatory if Bearer Token is used)
+      - <b>AUDIT_REST_02</b>: Additional properties (the pattern is optional if DPoP Token is used)
       - <b>DPoP Token</b>: Used as an alternative to a Bearer Token (optional)
   termsOfService: "https://authentic-source.example.it/tos/"
   contact:
@@ -374,9 +374,9 @@ components:
                   - invalid
                   - suspended
                 x-enum-description:
-                  - The credential is issued or expired
-                  - The credential is revoked
-                  - The credential is temporarily not available, for example due to a temporary hold or a pending verification process
+                  - valid - The credential is issued or expired
+                  - invalid - The credential is revoked
+                  - suspended - The credential is temporarily not available, for example due to a temporary hold or a pending verification process
                 example: valid
               last_updated:
                 description: Last time the status or attributes of the Dataset have been updated. Its format is `YYYY-MM-DDTHH:MM:SSZ`.
