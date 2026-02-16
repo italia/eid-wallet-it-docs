@@ -32,9 +32,9 @@ The decomposition paradigm structures the system into:
      - Description
    * - Certification Macro-component
      - Top-level grouping (e.g. Servizi ICT Wallet, Servizi ICT PID Provider); each has an owner (Wallet Provider, PID Provider).
-   * - Componente
+   * - Component
      - Main architectural component (e.g. Wallet Instance, Wallet Provider Backend, PID Provider Backend).
-   * - Sottocomponente
+   * - Sub-component
      - Sub-component with specific functional responsibility.
    * - Low-level sub-components
      - Optional further decomposition not tied to external standards.
