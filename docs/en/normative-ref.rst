@@ -17,6 +17,8 @@ Below the normative references and respective acronyms included in these Technic
       - Design Guidelines for websites and digital services provided by public administrations, pursuant to Article 53, paragraph 1-ter of Legislative Decree No. 82 of March 7, 2005, as amended.
     * - `EIDAS`_
       - Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC (eIDAS Regulation).
+    * - `CIR 2024/2981`_
+      - Commission Implementing Regulation (EU) 2024/2981 laying down technical specifications and procedures for conformity assessment for European Digital Identity Wallets.
 
 .. include:: official-resources.rst
 

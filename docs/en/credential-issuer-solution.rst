@@ -123,6 +123,41 @@ This component MUST ensure security through:
    - Security monitoring and incident response.
    - Compliance with IT-Wallet Federation security requirements.
 
+.. _credential-issuer-solution-decomposition:
+
+Decomposition and Certification Scope
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For **PID issuance**, the Credential Issuer Solution corresponds to the **PID Provider Backend (PPBE)** within the certification macro-component **Servizi ICT PID Provider** (owner: PID Provider). See :ref:`annex-certification-scheme:Certification Scheme and Overall Approach` for the full decomposition. This component is **in scope** for certification per `CIR 2024/2981`_.
+
+.. list-table:: PID Provider Backend (PPBE) — Decomposition Mapping
+   :widths: 30 45 15
+   :header-rows: 1
+
+   * - PPBE Sub-component
+     - Technical Specification Equivalent
+     - Certification Scope
+   * - Identity Proofing
+     - Relying Party Component (national eID) in remote use cases: for :ref:`CIE L3 (LoA High) <credential-issuance-high-level:High-Level PID flow>`; for :ref:`L2+ <credential-issuance-l2plus:eID Substantial Authentication with MRTD Verification for PID Issuance>`: PID Authorization Server, MRTD PoP Service
+     - In scope
+   * - PID issuance
+     - Credential Issuer Component (`OpenID4VCI`_)
+     - In scope
+   * - PID management / PID status management
+     - Credential Lifecycle Management
+     - In scope
+   * - Authentic Sources interaction
+     - API Interface (PDND, ANPR)
+     - In scope
+   * - PID Audit Logging
+     - Trust & Security Component (audit)
+     - In scope
+   * - Secure Cryptographic Device (Signature Device)
+     - Trust & Security (backend signing)
+     - In scope
+
+For the full certification scheme and cross-cutting elements, see :ref:`annex-certification-scheme:Certification Scheme and Overall Approach`.
+
 Interaction Patterns
 --------------------
 

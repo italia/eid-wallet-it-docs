@@ -7,6 +7,55 @@ Wallet Solution Components
 .. note::
   Tests related to the Wallet Solution components (Wallet Backend, and Wallet Unit) are summarized in :ref:`WP_012 <wallet-provider-backend-testcases>`, and :ref:`WP_013 <wallet-instance-testcases>`, accordingly.
 
+.. _wallet-solution-components-decomposition:
+
+Decomposition and Certification Scope
+-------------------------------------
+
+**Certification** is the process by which Conformity Assessment Bodies assess technical solutions against the security and compliance requirements mandated by `CIR 2024/2981`_. The **component decomposition for certification** is a hierarchical structure (certification macro-component, component, sub-component) used to define the scope of certification evaluation and to establish traceability between architectural elements and certification requirements.
+
+This section specifies the mapping between the Wallet Solution components described in this technical specification and the certification macro-component **Servizi ICT Wallet** (owner: Wallet Provider). It indicates which components conform to the decomposition and fall within certification scope.
+
+.. list-table:: Wallet Solution — Decomposition Mapping
+   :widths: 30 40 15
+   :header-rows: 1
+
+   * - Component / Sub-component
+     - Technical Specification Equivalent
+     - Certification Scope
+   * - **Wallet Instance (WI)** — Application Logic
+     - User Interface, Issuer Component, Presentation Component, Wallet Instance Lifecycle Management
+     - In scope
+   * - **Wallet Instance (WI)** — Local Data management
+     - Local Data Store, Backup and Restore Component, Secure Storage interaction
+     - In scope
+   * - **Wallet Instance (WI)** — Presentation Interface (PI)
+     - Remote and Proximity PID/(Pub/Q)EAA presentation (OpenID4VP, ISO18013-5)
+     - In scope
+   * - **Wallet Instance (WI)** — Attestation Issuance Interface
+     - PID Issuance Interface (PII), Attestation Issuance Interface (AII)
+     - In scope
+   * - **Wallet Secure Cryptographic Device (WSCD)**
+     - Hardware Secure Element, WSCD Firmware, Secure Key Storage System
+     - In scope
+   * - **Wallet Secure Cryptographic Application (WSCA)**
+     - WSCD Interface (WWI), WSCA Authentication, Cryptographic Keys and Functions Manager
+     - In scope
+   * - **Wallet Provider Backend (WPBE)** — API Interface
+     - API Interface (incl. PDND for PID Provider notifications)
+     - In scope
+   * - **Wallet Provider Backend (WPBE)** — Wallet Instance Lifecycle Management
+     - Registration, Attestation Issuance (WAA/WUA), Status and revocation
+     - In scope
+   * - **Wallet Provider Backend (WPBE)** — Trust & Security Component
+     - Key and certificate management, audit logging, incident response, Federation compliance
+     - In scope
+   * - **Wallet Provider Backend (WPBE)** — User web portal
+     - Frontend Component
+     - In scope
+
+For the full certification scheme and cross-cutting elements (e.g. eID Scheme), see :ref:`annex-certification-scheme:Certification Scheme and Overall Approach`.
+
 Wallet Backend
 --------------
 

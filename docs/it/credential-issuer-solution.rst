@@ -120,6 +120,41 @@ Questo componente DEVE garantire la sicurezza attraverso:
    - Monitoraggio della sicurezza e risposta agli incidenti.
    - Conformità ai requisiti di sicurezza della Federazione IT-Wallet.
 
+.. _credential-issuer-solution-decomposition:
+
+Decomposizione e Ambito di Certificazione
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Per **l'emissione di PID**, la Soluzione del Fornitore di Attestati Elettronici corrisponde al **PID Provider Backend (PPBE)** nel macro-componente di certificazione **Servizi ICT PID Provider** (proprietario: PID Provider). Questo componente è **in scopo** per la certificazione secondo il `CIR 2024/2981`_. Vedere :ref:`annex-certification-scheme:Schema di Certificazione e Approccio Complessivo` per la decomposizione completa.
+
+.. list-table:: PID Provider Backend (PPBE) — Mappatura Decomposizione
+   :widths: 30 45 15
+   :header-rows: 1
+
+   * - Sottocomponente PPBE
+     - Equivalente nella Specifica Tecnica
+     - Ambito Certificazione
+   * - Identity Proofing
+     - Componente Relying Party (eID nazionale) nei casi d'uso remote: per :ref:`CIE L3 (LoA High) <credential-issuance-high-level:Flusso ad Alto Livello per PID>`; per :ref:`L2+ <credential-issuance-l2plus:Autenticazione eID Substantial con Verifica MRTD per Emissione PID>`: PID Authorization Server, MRTD PoP Service
+     - In scopo
+   * - PID issuance
+     - Componente Credential Issuer (`OpenID4VCI`_)
+     - In scopo
+   * - PID management / PID status management
+     - Gestione del Ciclo di Vita degli Attestati Elettronici
+     - In scopo
+   * - Authentic Sources interaction
+     - Interfaccia API (PDND, ANPR)
+     - In scopo
+   * - PID Audit Logging
+     - Componente Trust & Security (audit)
+     - In scopo
+   * - Secure Cryptographic Device (Signature Device)
+     - Trust & Security (firma backend)
+     - In scopo
+
+Per lo schema di certificazione completo e gli elementi trasversali, vedere :ref:`annex-certification-scheme:Schema di Certificazione e Approccio Complessivo`.
+
 Modelli di Interazione
 ----------------------
 

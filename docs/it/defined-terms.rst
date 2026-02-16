@@ -30,6 +30,10 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Soggetto pubblico o privato responsabile di un archivio o sistema che è considerato fonte primaria per gli Attributi o per i Dati di Identificazione Personale.
       Conforme con ARF 2.7.3.
 
+    **Ambito di Certificazione**
+      Indicazione se un componente è valutato durante la certificazione (In scopo) o meno (No). Utilizzato per definire i confini della valutazione della certificazione.
+      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+
     **Processo di Certificazione**
       Procedura svolta dagli Organismi di Valutazione della conformità (CABs) per certificare le Soluzioni Wallet, che comprende anche le valutazioni tecniche periodiche.
       Non presente in ARF 2.7.3; specifico di IT-Wallet.
@@ -83,6 +87,10 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Framework per la gestione delle identità digitali e dell'accesso alle informazioni.
       Non presente in ARF 2.7.3.
 
+    **Identity Proofing**
+      Processo di verifica dell'identità di una persona, anche definito processo di identificazione. Nell'ecosistema IT-Wallet, il PID Provider implementa l'Identity Proofing nel contesto digitale come parte del PID Provider Backend (PPBE), tipicamente tramite autenticazione eID nazionale (es. CIEid LoA High).
+      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+
     **Sistema IT-Wallet**
       Insieme di Soluzioni Tecniche che implementano il Sistema di Wallet Digitale Italiano.
       Non presente in ARF 2.7.3; specifico di IT-Wallet.
@@ -98,6 +106,10 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
     **Livello di Garanzia**
       Grado di sicurezza della verifica dell'identità e nella presentazione degli Attestati Elettronici.
       Non presente in ARF 2.7.3.
+
+    **Macro-componente di certificazione**
+      Raggruppamento di alto livello nella decomposizione dei componenti per la certificazione (es. Servizi ICT Wallet, Servizi ICT PID Provider); ciascun macro-componente di certificazione ha un proprietario (ad es. Fornitore di Wallet o PID Provider) e un ambito di certificazione.
+      Non presente in ARF 2.7.3; specifico di IT-Wallet.
 
     **Metadata**
       Artefatto digitale contenente informazioni su un'entità organizzativa (endpoint, chiavi pubbliche, ecc.).
@@ -420,6 +432,8 @@ Di seguito gli acronimi usati più di frequente nel documento:
     - Carta di Identità Elettronica
   * - **EAA**
     - Electronic Attestation of Attributes (Attestato Elettronico di Attributi)
+  * - **ICT**
+    - Information and Communication Technology (Tecnologie dell'Informazione e della Comunicazione)
   * - **NAB**
     - National Accreditation Body (Ente Nazionale di Accreditamento)
   * - **IAM**
@@ -434,6 +448,8 @@ Di seguito gli acronimi usati più di frequente nel documento:
     - Person Identification Data (Attestato Elettronico di Dati di Identificazione Personale)
   * - **PII**
     - Personally Identifiable Information (Informazioni di Identificazione Personale)
+  * - **PPBE**
+    - PID Provider Backend (Backend del Fornitore di Attestati Elettronici di Dati di Identificazione Personale)
   * - **QEAA**
     - Qualified Electronic Attestation of Attributes (Attestato Elettronico di Attributi Qualificati)
   * - **Pub-EAA**
@@ -444,10 +460,14 @@ Di seguito gli acronimi usati più di frequente nel documento:
     - Verifiable Credential
   * - **VP**
     - Verifiable Presentation
+  * - **WPBE**
+    - Wallet Provider Backend (Backend del Fornitore di Wallet)
   * - **WSCA**
     - Wallet Secure Cryptographic Application (Applicazione Crittografica Sicura per il Wallet)
   * - **WSCD**
     - Wallet Secure Cryptographic Device (Dispositivo Crittografico Sicuro per il Wallet)
+  * - **WWI**
+    - WSCD Interface (interfaccia tra la Wallet Secure Cryptographic Application e il Wallet Secure Cryptographic Device)
 
 Linguaggio Normativo e Convenzioni
 ==================================

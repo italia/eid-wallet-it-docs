@@ -15,5 +15,7 @@ Di seguito i riferimenti normativi e i rispettivi acronimi inclusi in queste Spe
       - Linee Guida sull'Accessibilità degli strumenti informatici ai sensi dell'articolo 11 della Legge 4/2004. Direttiva (UE) 2019/882 del Parlamento europeo e del Consiglio del 17 aprile 2019 sui requisiti di accessibilità dei prodotti e dei servizi.
     * - LG_DESIGN
       - Linee Guida di design per i siti internet e i servizi digitali della pubblica amministrazione, ai sensi dell'articolo 53, comma 1-ter del Decreto Legislativo 7 marzo 2005, n. 82, e successive modifiche.
+    * - `CIR 2024/2981`_
+      - Regolamento di Esecuzione (UE) 2024/2981 che stabilisce le specifiche tecniche e le procedure per la valutazione della conformità dei portafogli dell'identità digitale europea.
 
 .. include:: official-resources.rst

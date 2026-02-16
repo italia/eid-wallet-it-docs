@@ -7,6 +7,29 @@ Soluzione Wallet
 
 La Wallet Solution è emessa dal Fornitore di Wallet sotto forma di applicazione mobile e servizi, come interfacce web. L'applicazione mobile funge da interfaccia principale per gli Utenti, consentendo loro di conservare i propri Attestati Elettronici e di interagire con altri partecipanti dell'ecosistema, come i Fornitori di Attributi Elettronici e le Relying Party. Questi Attestati Elettronici costituiscono un insieme di dati che possono identificare in modo univoco una persona fisica o giuridica, insieme ad altre Attestazioni Elettroniche Qualificate e non Qualificate di Attributi, note rispettivamente come QEAAs ed EAAs, o più brevemente (Q)EAAs. Una volta che un utente installa l'applicazione mobile sul proprio dispositivo, tale installazione viene definita come istanza del Wallet per quell'utente. Supportando l'applicazione mobile, il Fornitore di Wallet garantisce la sicurezza e l'affidabilità dell'intera Wallet Solution, poiché è responsabile dell'emissione della Wallet App Attestation (WAA) e della Wallet Unit Attestation (WUA). La WAA dimostra l'autenticità e l'integrità dell'istanza del Wallet, mentre la WUA fornisce la prova che le chiavi utilizzate per il collegamento crittografico delle credenziali sono archiviate in modo sicuro all'interno di un WSCD affidabile. Inoltre, la WUA conferma che la Wallet Unit non è stata revocata.
 
+Architettura e Decomposizione per la Certificazione
+--------------------------------------------------
+
+L'architettura della Soluzione Wallet è descritta secondo il macro-componente di certificazione **Servizi ICT Wallet** (proprietario: Fornitore di Wallet). Comprende i seguenti componenti e sottocomponenti, tutti in scopo per la certificazione:
+
+- **Wallet Instance (WI)**:
+  - Application Logic: User Interface, Issuer Component, Presentation Component, Wallet Instance Lifecycle Management
+  - Local Data management: Local Data Store, Backup and Restore Component, interazione Secure Storage
+  - Presentation Interface (PI): Presentazione remota e di prossimità PID/(Pub/Q)EAA (`OpenID4VP`_, `ISO18013-5`_)
+  - Attestation Issuance Interface: PID Issuance Interface (PII), Attestation Issuance Interface (AII)
+
+- **Wallet Secure Cryptographic Device (WSCD)**: Hardware Secure Element, WSCD Firmware, Secure Key Storage System
+
+- **Wallet Secure Cryptographic Application (WSCA)**: WSCD Interface (WWI), WSCA Authentication, Cryptographic Keys and Functions Manager
+
+- **Wallet Provider Backend (WPBE)**:
+  - API Interface (incl. PDND per notifiche da PID Provider)
+  - Wallet Instance Lifecycle Management: Registrazione, Attestation Issuance (WAA/WUA), Status e revoca
+  - Trust & Security Component: Gestione chiavi e certificati, audit logging, incident response, conformità Federation
+  - User web portal (Frontend Component)
+
+Per la mappatura completa della decomposizione e l'ambito di certificazione, vedere :ref:`wallet-solution-components-decomposition:Decomposizione e Ambito di Certificazione`.
+
 Il seguente diagramma illustra l'Architettura di Alto Livello della Soluzione Wallet.
 
 .. _fig_wallet-solution-high-level-architecture:

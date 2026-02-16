@@ -13,6 +13,7 @@ Appendix
     mobile-application-instance.rst
     e-service-pdnd.rst
     e-service-pdnd-template.rst
+    annex-certification-scheme.rst
     test-plans.rst
 
 .. only:: latex
