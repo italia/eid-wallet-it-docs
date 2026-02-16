@@ -8,23 +8,23 @@ The Infrastructure of Trust
 
 The IT-Wallet ecosystem operates within a federated trust infrastructure where participating entities establish cryptographic trust relationships and maintain compliance with common security standards. This infrastructure provides the foundation for secure Digital Credential operations across the ecosystem participants.
 
-This section outlines the implementation of the Trust Model in an infrastructure that complies with OpenID Federation 1.0 `OID-FED`_. This infrastructure involves a RESTful API for distributing metadata, metadata policies, trust marks, cryptographic public keys and X.509 Certificates, and the revocation status of the participants, also called Federation Entities.
+This section defines the implementation of the Trust Model in an infrastructure that complies with eIDAS ARF and OpenID Federation 1.0 `OID-FED`_. OpenID Federation operates at the national level and is complemented by Member State Trusted Lists for QEAA and EAA Providers, as detailed in :ref:`trust-infrastructure:national-provider-trusted-lists-implementation-profile`. The List of Trusted Lists (LoTL) maintained by the European Commission, in the role of eIDAS Trusted List provider, aggregates pointers to all published eIDAS Trusted Lists, enabling cross-border trust establishment and centralized discovery of Trusted List locations and signing keys.
 
-The Infrastructure of trust facilitates the application of a trust assessment mechanism among the parties defined in the `EIDAS-ARF`_.
+The national infrastructure involves a RESTful API for distributing metadata, metadata policies, trust marks, cryptographic public keys and X.509 Certificates, and the revocation status of the participants, also called Federation Entities.
+
 This trust infrastructure works in coordination with the Registry Infrastructure (see :ref:`registry:Registry Infrastructure`) to enable the entity onboarding processes detailed in :ref:`entity-onboarding:Entity Onboarding`. In particular, it enables the technical   implementation of the onboarding processes described in :ref:`entity-onboarding:Entity Onboarding` and supports the operational scenarios illustrated in :ref:`onboarding-high-level:Onboarding Journey Maps`.
 
-**Onboarding Enablement**: The Trust Infrastructure provides the cryptographic mechanisms that allow new entities (Credential Issuers, Relying Parties, Wallet Providers) to establish verifiable trust relationships during their registration process. Without this infrastructure, entities would not be able to prove their compliance status or operational capabilities to other ecosystem participants.
+The Trust Infrastructure provides the cryptographic mechanisms that allow new entities (Credential Issuers, Relying Parties, Wallet Providers) to establish verifiable trust relationships during their registration process. Without this infrastructure, entities would not be able to prove their compliance status or operational capabilities to other ecosystem participants.
 
-**Entity Lifecycle Support**: Throughout an entity's operational lifecycle, the Trust Infrastructure maintains up-to-date trust attestations, handles key rotation, manages revocation scenarios, and supports compliance monitoring. This directly supports the lifecycle management procedures detailed in :ref:`entity-onboarding:Entity Onboarding`.
+Throughout an entity's operational lifecycle, the Trust Infrastructure maintains up-to-date trust attestations, handles key rotation, manages revocation scenarios, and supports compliance monitoring. This directly supports the lifecycle management procedures detailed in :ref:`entity-onboarding:Entity Onboarding`.
 
-**Registry Infrastructure Integration**: The Trust Infrastructure implements the Federation Registry component of the broader Registry Infrastructure, providing the technical foundation for entity discovery and trust validation that underpins all onboarding procedures.
 
 .. plantuml:: plantuml/trust-roles.puml
    :width: 99%
    :alt: The figure illustrates the trust roles.
    :caption: `The roles within the Federation, where the Trust Anchor oversees its subordinates, which include one or more Intermediates and Leaves. <https://www.plantuml.com/plantuml/png/XT1HQy90303Wz_iLcNkMiIAoXo5AtK3OWup17aViPUxmcYkvd29Z_tsjThM2kBSc-P9UCesAegdqviPnuPCbUCn7T_de8m-iw9XaOapSEAvGi8GL5fkrXCGs3pu8g237kaIiFJKJ2RiZMFcwmnYXGf7Ndc3m9YagpBZu2Z80ZA08j_FnqyDpTkOMh2GbMOTA1-TOxplv3ymkZdmXt58y64_u6UjnZPcFhw6iGzTKTwu_3Ty6eDUG2rbYTUXX4MEYu-w5wnvwfj_HUr9OIjWwszfTTTc-ajyxNiCIHVS7AIVvOqpzZs6gXXDGDBkg_MwEQQGNPQOzIQ_UxjypJVeqhKcTeYcnJQN_1G00>`_
 
-In this representation, both the Trust Anchor and the Intermediates assume the role of Registration Authority.
+In this representation, both the :term:`National Trust Anchor` and the Intermediates assume the role of Registration Authority.
 
 Federation Roles
 ----------------
@@ -36,11 +36,11 @@ All the participants are Federation Entities that MUST be registered by a Regist
 
   This is called *Wallet Attestation* and is documented in the dedicated :ref:`wallet-attestation-issuance:Wallet App and Wallet Unit Attestation Issuance`.
 
-**Role in Onboarding**: During entity registration, the Trust Anchor and Intermediates act as Federation Authorities. This establishes the participant's position in the trust hierarchy and enables them to participate in credential operations. Leaves (Credential Issuers, Relying Parties, Wallet Providers) undergo registration to prove their eligibility and receive authorization to perform their designated functions.
+**Role in Onboarding**: Entity onboarding is split between **Registration Authorities (Registrars)** and **Federation Authorities** (Trust Anchor and Intermediates). Registrars handle **administrative registration** (legal identity, regulatory compliance, business justification, and eligibility), while Federation Authorities handle **federation registration** (issuing federation certificates, applying federation metadata policies, and placing entities in the trust hierarchy). Leaves (Credential Issuers, Relying Parties, Wallet Providers) undergo both steps: they first prove their eligibility to the Registrar and then obtain federation authorization from the Federation Authorities to perform their designated functions in Credential operations.
 
-**Role in Operations**: During credential issuance and presentation, these roles enable distributed trust validation without requiring centralized verification for each transaction. Leaves utilize their registered status to issue credentials, verify presentations, or provide wallet services to end users.
+**Role in Operations**: During Credential issuance and presentation, these roles enable distributed trust validation without requiring centralized verification for each transaction. Leaves utilize their registered status to issue Credentials, verify presentations, or provide Wallet services to end users.
 
-Below the table with the summary of the Federation Entity roles, mapped on the corresponding EUDI Wallet roles, as defined in the `EIDAS-ARF`_.
+Below the table with the summary of the Federation Entity roles, mapped on the corresponding EUDI Wallet roles.
 
 .. list-table::
    :class: longtable
@@ -51,8 +51,8 @@ Below the table with the summary of the Federation Entity roles, mapped on the c
      - Federation Role
      - Notes
    * - Public Key Infrastructure (PKI)
-     - Trust Anchor
-     - The Federation has PKI capabilities. The Entity that configures the entire infrastructure is the Trust Anchor.
+     - :term:`National Trust Anchor`
+     - The Federation has PKI capabilities and uses OpenID Federation 1.0 `OID-FED`_. The Entity that configures the entire infrastructure at national level is the :term:`National Trust Anchor`.
    * - Qualified Trust Service Provider (QTSP)
      - Leaf
      -
@@ -71,113 +71,113 @@ Below the table with the summary of the Federation Entity roles, mapped on the c
    * - Trust Service Provider (TSP)
      - Leaf
      -
-   * - Trusted List
-     - Trust Anchor
-     - The listing endpoint, the trust mark status endpoint, and the fetch endpoint MUST be exposed by both Trust Anchors and Intermediates, making the Trusted List distributed over multiple Federation Entities, where each of these is responsible for their registered subordinates. Other endpoints using different data formats MAY be implemented to facilitate interoperability with systems that do not support OpenID Federation 1.0. In such cases, the same information about federation entities MUST be synchronized across these endpoints, ensuring consistent availability of information through different channels.
    * - Wallet Provider
      - Leaf
      -
+   * - eIDAS Trusted List Provider
+     - eIDAS Trust Anchor
+     - Compiles, signs, and publishes the EU-level eIDAS Trusted Lists for QTSPs, Wallet Providers, PID Providers, Access CAs, and Registration Certificate Providers, as described in the EUDI Wallet trust infrastructure schema.
+   * - National eIDAS Trusted List Provider
+     - :term:`National Trust Anchor`
+     - Compiles, signs, and publishes national Trusted Lists for QEAA Providers and non-qualified EAA Providers according to the national trust services framework, as described in this document for QEAA and EAA Provider Trusted List publication.
 
 Trust Infrastructure and Registry Integration
 ---------------------------------------------
 
-The Trust Infrastructure implements the Federation Registry component of the Registry Infrastructure. The Federation Registry maintains the authoritative list of trusted entities through the federation endpoints defined in this section, including entity listing (/list), subordinate statements (/fetch), trust mark validation (/trust_mark_status), and historical key management (/historical-jwks).
+The Trust Infrastructure implements the Federation Registry component of the Registry Infrastructure. The Federation Registry maintains the authoritative list of trusted entities through the federation endpoints defined in this section, including entity listing (/list), subordinate statements (/fetch), trust mark validation (/trust_mark_status), subordinate events (/federation_subordinate_events_endpoint), and historical key management (/historical-jwks).
 
 This Federation Registry operates alongside other registry components (Claims Registry, AS Registry, Digital Credentials Catalog, Taxonomy) to provide comprehensive ecosystem support. For complete registry architecture and component interactions, see :ref:`registry:Registry Infrastructure`.
 
-General Properties
-------------------
+.. _trust-infrastructure:national-provider-trusted-lists-implementation-profile:
 
-The architecture of the trust infrastructure is built upon the following core principles:
+Trust Infrastructure Schema: Onboarding and Trusted Lists
+---------------------------------------------------------
 
-.. list-table::
-   :class: longtable
-   :widths: 20 20 80
-   :header-rows: 1
+The trust infrastructure relies on five distinct but complementary processes:
 
-   * - Identifier
-     - Property
-     - Description
-   * - P1
-     - **Security**
-     - Incorporates mechanisms to ensure the integrity, confidentiality, and authenticity of the Trust Relationships and interactions within the federation.
-   * - P2
-     - **Privacy**
-     - Designed to respect and protect the privacy of the entities involved, minimal disclosure is part of this.
-   * - P3
-     - **Interoperability**
-     - Supports seamless interaction and trust establishment between diverse systems and entities within the federation.
-   * - P4
-     - **Transitive Trust**
-     - Trust established indirectly through a chain of trusted relationships, enabling entities to trust each other based on common authorities and trusted intermediaries.
-   * - P5
-     - **Delegation**
-     - Technical ability or feature to delegate authority or responsibilities to other entities, allowing for a distributed trust mechanism.
-   * - P6
-     - **Scalability**
-     - Designed to efficiently manage an increasing number of entities or interactions without a significant increase in trust management complexity.
-   * - P7
-     - **Flexibility**
-     - Adaptable to various operational and organizational needs, allowing entities to define and adjust their Trust Relationships and policies.
-   * - P8
-     - **Autonomy**
-     - While part of a federated ecosystem, each entity retains control over its own definitions and configurations.
-   * - P9
-     - **Decentralization**
-     - Unlike traditional centralized systems, the trust infrastructure should allow a decentralized approach.
+1. **Registration/Onboarding**: Entities (PID Providers, Qualified Electronic Attestation of Attributes Providers, Electronic Attestation of Attributes Providers, Relying Parties, Wallet Providers) register with the National Registrar or the IT-Wallet onboarding system to define operational authorization and entitlements.
+2. **Notification**: The Member State notifies the European Commission, as operator of the EU-level eIDAS Trusted List Provider, of **PID Providers**, **PuB-EAA Providers**, **Wallet Providers**, **Access Certificate Authorities (Access CAs)**, and **Providers of Registration Certificates** for inclusion in the relevant Trusted Lists.
+3. **National Catalog and List Publication**: Publication of national catalogs and lists for registered entities via RESTful endpoints.
+4. **eIDAS Trusted List Publication**: Publication of EU-level eIDAS Trusted Lists by the European Commission, based on notifications from the Member State for Wallet Providers, PID Providers, PuB-EAA Providers, Access CAs, and Registration Certificate Providers.
+5. **National Trusted List Publication**: Publication of national Trusted Lists for QEAA Providers and non-qualified EAA Providers by the Member State Trusted List Provider (MS TLP), based on National Registrar data.
+
+National Provider Trusted Lists: Implementation Profile
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This section provides the implementation profile for national Trusted Lists compiled and published by the Member State Trusted List Provider (MS TLP) for both Qualified Electronic Attestation of Attributes (QEAA) Providers and non-qualified Electronic Attestation of Attributes (EAA) Providers, as required by the EUDI Wallet trust infrastructure.
+
+Regulatory Requirements and Motivations
+"""""""""""""""""""""""""""""""""""""""
+
+The requirements for EAA Provider Trusted Lists are established by the eIDAS trust services framework and ETSI technical standards:
+
+- **`ETSI TS 119 612`_**: XML-based Trusted Service Lists (TSL) format for Trusted Lists, including service type definitions and status management. This profile continues to be used for **QTSP Trusted Lists**, including **QEAA Providers**.
+- **`ETSI TS 119 602`_** and **Annex H**: Abstract data model and profile for Lists of Trusted Entities (LoTE), including **Attestation Provider Trusted Lists for non-qualified EAA Providers and, where applicable, Pub‑EAA Providers**. QEAA Providers remain in QTSP Trusted Lists under `ETSI TS 119 612`_, while Annex H is used for national EAA Provider Trusted Lists with JSON and XML bindings.
+
+Implementation Profile for QEAA Provider Trusted Lists
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+QEAA Providers are Qualified Trust Service Providers (QTSPs). After successful registration with the National Registrar, QEAA Providers are included in Member State QTSP Trusted Lists compiled and published by the Member State Trusted List Provider (MS TLP) in XML format compliant with `ETSI TS 119 612`_ and signed with XAdES Baseline B as per `ETSI EN 319 132-1`_.
 
 
-Trust Infrastructure Requirements
----------------------------------
+Below is a non-normative example of a QEAA Provider entry in a Member State QTSP Trusted List, following the `ETSI TS 119 612`_ XML format (payload only, without XAdES signature):
 
-This section includes the requirements necessary for the successful implementation and operation of the infrastructure of trust.
+.. literalinclude:: ../../examples/qeaa-provider-trusted-list-example.xml
+   :language: xml
+   :caption: Non-normative example of a QEAA Provider entry in a Member State QTSP Trusted List (XML format, `ETSI TS 119 612`_ payload only, without signature)
 
-.. list-table:: Functional Requirements
-   :class: longtable
-   :widths: 20 80
-   :header-rows: 1
+Implementation Profile for Non-Qualified EAA Provider Trusted Lists
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-   * - ID
-     - Description
-   * - FR1
-     - **Federation Trust Establishment**: the system must be able to establish trust between different entities (Credential Issuers, Relying Parties, etc.) within a federation, using cryptographic signatures for secure information exchange about the participants in the ecosystem.
-   * - FR2
-     - **Entity Authentication**: the system must implement mechanisms for authenticating entities within the federation, ensuring compliance with the shared rules.
-   * - FR3
-     - **Signature Validation**: the system must support the creation, verification, and validation of electronic signatures and provide standard and secure mechanisms to obtain the cryptographic public keys required for the signature validation.
-   * - FR4
-     - **Time Stamping**: the signed artifacts must contain time stamps to ensure the integrity and non-repudiation of transactions over time, thanks to the interfaces, services, storage model and approaches defined within the federation.
-   * - FR5
-     - **Certificate Validation**: the system requires confidential transmission, secured via TLS over HTTP, and validation of certificates for website authentication.
-   * - FR6
-     - **Interoperability and Standards Compliance**: ensure interoperability between federation members by adhering to technical standards, facilitating cross-border electronic transactions.
-   * - FR7
-     - **Data Protection and Privacy**: implement data protection measures in compliance with GDPR regulations, ensuring the privacy and security of personal data processed within the federation.
-   * - FR8
-     - **Dispute Resolution and Liability**: establish clear procedures for dispute resolution and define liability among federation members.
-   * - FR9
-     - **Emergency and Revocation Services**: implement mechanisms for the immediate revocation of participants in case of security breaches or other emergencies.
-   * - FR10
-     - **Scalable Trust Infrastructure**: the system must support scalable trust establishment mechanisms, leveraging approaches and technical solutions that complement delegation transitive approaches to efficiently manage Trust Relationships as the federation grows, removing central registries that might technically or administratively fail.
-   * - FR11
-     - **Efficient Storage Scalability**: implement a storage solution that scales horizontally to accommodate increasing data volumes while minimizing central storage and administrative costs. The system should enable members to independently store and present historical trust attestations and signed artifacts during dispute resolutions, with the federation infrastructure maintaining only a registry of historical keys to validate the historical data, stored and provided by the participants.
-   * - FR12
-     - **Verifiable Attestation (Trust Mark)**: incorporate a mechanism for issuing and verifying verifiable attestations that serve as proof of compliance with specific profiles or standards. This allows entities within the federation to demonstrate adherence to agreed-upon security, privacy, and operational standards.
-   * - FR13
-     - **Decentralized Dispute Resolution Mechanism**: design a decentralized mechanism for dispute resolution that allows federation members to independently verify historical trust establishment and signed artifacts, reducing reliance on central authorities and streamlining the resolution process.
-   * - FR14
-     - **Cross-Federation Interoperability**: ensure the system is capable of interoperating with other federations or Trust Frameworks, facilitating cross-federation transactions and trust establishment without compromising security or compliance.
-   * - FR15
-     - **Autonomous Registration Bodies**: the system must facilitate the integration of autonomous registration bodies that operate in compliance with federation rules. These bodies are tasked with evaluating and registering entities within the federation, according to the pre-established rules and their compliance that must be periodically asserted.
-   * - FR16
-     - **Periodic Auditing of Registration Bodies and Entities**: implement mechanisms for the periodic auditing and monitoring of the compliance status of both registration bodies and their registered entities.
-   * - FR17
-     - **Attestation of Compliance for Personal Devices**: trusted bodies, in the form of federation entities, should issue attestations of compliance and provide signed proof of such compliance for the hardware of personal devices used within the federation. These attestations should be attested and periodically renewed to ensure the devices meet current security standards.
-   * - FR18
-     - **Automated Compliance Monitoring**: the system should include automated tools for monitoring the compliance of entities with federation standards. This automation aids in the early detection of potential compliance issues.
-   * - FR19
-     - **Secure Protocol Capabilities Binding**: the secure protocol must enable the exchange of protocol-specific capabilities data as cryptographically-bound metadata attached to a specific identity. This metadata should define the technical capabilities associated with the identity, ensuring verifiable proof and tamper-proof association for robust trust establishment and access control.
+Non-qualified EAA Providers are included in national EAA Provider Trusted Lists, which represent national extensions complementing the QTSP Trusted Lists. These Trusted Lists are compiled and published by the Member State Trusted List Provider (MS TLP), which also submits their URLs to the European Commission for inclusion in the List of Trusted Lists (LoTL). National EAA Provider Trusted Lists may use the `ETSI TS 119 602`_ Annex H profile for Attestation Provider Trusted Lists, published either in JSON format with compact JAdES Baseline B signatures or in XML format with XAdES Baseline B signatures as per `ETSI EN 319 132-1`_, with enveloped XML signatures when XML is used. In all cases, Trust Lists in JSON format MUST be signed using compact JAdES Baseline B signatures as mandated by `ETSI TS 119 182-1`_, and Trust Lists in XML format MUST be signed using XAdES Baseline B signatures as mandated by `ETSI EN 319 132-1`_, to ensure the integrity, authenticity, and non-repudiation of the Trusted List content.
 
+ETSI requirements for EAA Provider Trusted Lists
+""""""""""""""""""""""""""""""""""""""""""""""""
+`ETSI TS 119 602`_ Annex H defines the requirements for non-qualified EAA Provider TLs, 
+summarized as follows:
+
+- **LoTE Type**: Appropriate URI for Attestation Provider Trusted Lists
+- **Service Types**: 
+  - Issuance service type URI
+  - Revocation service type URI (if applicable)
+- **Service Status**: ServiceStatus component MUST be present for Pub-EAA Providers; for non-qualified EAA Providers, status management follows Member State policy
+- **Status Starting Time**: StatusStartingTime component MUST be present when ServiceStatus is used
+- **Historical Information**: HistoricalInformationPeriod MUST be present with appropriate value when service history is maintained
+- **Next Update**: Maximum 6 months between updates
+- **Signature**: Compact JAdES Baseline B (JSON) or XAdES Baseline B (XML) - **MANDATORY** as per ETSI requirements
+
+Below is a non-normative example of a non-qualified EAA Provider Trusted List payload (without signature) following the `ETSI TS 119 602`_ Annex H profile in JSON format. The example shows only the Trusted List payload without the JAdES signature. In production, Trust Lists MUST be signed using compact JAdES Baseline B signatures as per `ETSI TS 119 182-1`_.
+
+.. literalinclude:: ../../examples/eaa-provider-trusted-list-example.json
+   :language: json
+   :caption: Non-normative example of a non-qualified EAA Provider Trusted List payload (JSON format, `ETSI TS 119 602`_ Annex H profile, payload only, without signature)
+
+**`ETSI TS 119 612`_ Requirements** (for QTSP TLs including QEAA Providers):
+
+- **TSL Type**: `http://uri.etsi.org/TrstSvc/TrustedList/TSLType/EUgeneric` or appropriate Member State TSL type
+- **Service Type Identifiers**: Appropriate service type URIs for QEAA services
+- **Service Status**: Standard eIDAS service status values
+- **Signature**: XAdES Baseline B (enveloped signature format) as mandatory per ETSI requirements
+
+List of Trusted Lists (LoTL) Integration
+""""""""""""""""""""""""""""""""""""""""
+
+Per `ETSI TS 119 612`_ clause D.5, the European Commission maintains a List of Trusted Lists (LoTL) that:
+
+- Contains pointers (TrustedListPointers) to all published Trusted Lists
+- Each pointer includes the Trusted List location (TSLLocation), scheme territory, and scheme operator name
+- Facilitates cross-border trust establishment
+- Centralizes trusted list distribution
+- Supports federation-level service discovery
+
+The European Commission:
+
+- Compiles the LoTL from:
+  - The directly compiled and published Trusted Lists (Wallet Provider TL, PID Provider TL, Access CA TL, Registration Cert Provider TL)
+  - Trusted List URL notifications received from Member State TLPs (for qualified and non-qualified EAA Providers)
+- Signs/seals the LoTL using the Commission's signing key
+- Publishes the LoTL in machine-readable and human-readable formats
+- Publishes LoTL location and trust anchors in the Official Journal of the European Union (OJEU)
 
 Federation API endpoints
 ------------------------
@@ -225,7 +225,17 @@ All the endpoints listed below are defined in the `OID-FED`_ specs.
      - Trust Anchor, Intermediate
 
 
-All the responses of the federation endpoints are in the form of signed JWT, with the exception of the **Subordinate Listing endpoint** and the **Trust Mark Status endpoint** that are served as plain JSON by default. The **Federation Subordinate Events Endpoint** also returns signed JWTs with the content type ``application/entity-events-statement+jwt``.
+All the responses of the federation endpoints are in the form of signed JWT, with the exception of the Subordinate Listing endpoint and the Trust Mark Status endpoint that are served as plain JSON by default. The Federation Subordinate Events Endpoint also returns signed JWTs with the content type ``application/entity-events-statement+jwt``.
+
+National Trusted List endpoints
+-------------------------------
+
+In addition to the OpenID Federation endpoints, the IT-Wallet ecosystem exposes HTTPS distribution points for eIDAS Trusted Lists and national EAA Provider Trusted Lists. These endpoints are operated by the Member State Trusted List Provider (MS TLP) and publish the authoritative, signed Trusted Lists that are referenced by the LoTL and consumed by Wallet Units, Credential Issuers, and Relying Parties.
+
+- QTSP Trusted List for QEAA Providers MUST be published by the :term:`National Trust Anchor` as XML TSL documents compliant with `ETSI TS 119 612`_, at HTTPS distribution points under the National Trust Anchor FQDN (for example, ``https://<NationalTrustAnchorFQDN>/tsl/qeaa-tsl.xml``), and signed with XAdES Baseline B according to `ETSI EN 319 132-1`_.
+- National EAA Provider Trusted List (for non-qualified EAA Providers and, where applicable, Pub-EAA Providers) MUST be published as LoTE documents following `ETSI TS 119 602`_ Annex H, at HTTPS distribution points under the National Trust Anchor FQDN (for example, ``https://<NationalTrustAnchorFQDN>/lote/eaa-providers.json``), in JSON (preferred) or XML, and signed with compact JAdES Baseline B or XAdES Baseline B as mandated by `ETSI TS 119 182-1`_ and `ETSI EN 319 132-1`_.
+
+Clients belonging from EUDI Wallet ecosystem consume these endpoints by periodically downloading the lists, validating the digital signatures, and applying the service status and sequence number semantics defined in `ETSI TS 119 612`_ and `ETSI TS 119 602`_ to build and refresh their local trust stores.
 
 Configuration of the Federation
 -------------------------------
@@ -307,7 +317,7 @@ The Entity Configuration MAY also contain one or more Trust Marks.
 
 **Role in Onboarding**: New entities publish their Entity Configuration as part of their registration process, declaring their capabilities, supported protocols, and compliance status to the federation. The configuration serves as the entity's initial declaration of its technical readiness and operational scope, enabling other participants to discover and validate its registration status.
 
-**Role in Operations**: During credential operations, Entity Configurations are retrieved by wallets, credential issuers, and relying parties to verify the current operational status, supported capabilities, and compliance attestations of other entities. This enables dynamic discovery of service endpoints, cryptographic keys, and protocol versions required for secure credential exchange.
+**Role in Operations**: During Credential operations, Entity Configurations are retrieved by wallets, credential issuers, and relying parties to verify the current operational status, supported capabilities, and compliance attestations of other entities. This enables dynamic discovery of service endpoints, cryptographic keys, and protocol versions required for secure Credential exchange.
 
 Technical details about Entity Configuration of Wallet Provider, Credential Issuer and Relying Party are given in Section :ref:`wallet-provider-entity-configuration:Wallet Provider Entity Configuration`, :ref:`credential-issuer-entity-configuration:Credential Issuer Entity Configuration` and :ref:`relying-party-entity-configuration:Relying Party Entity Configuration` respectively.
 
@@ -485,7 +495,7 @@ Trust Anchors and Intermediates MUST expose the Federation Fetch endpoint, where
 
 **Role in Onboarding**: During entity registration, Trust Anchors and Intermediates issue Subordinate Statements to formally attest the registration and capabilities of new entities. These statements establish the hierarchical trust relationship and apply any required metadata policies that constrain or enhance the entity's declared capabilities based on federation policies.
 
-**Role in Operations**: During credential operations, Subordinate Statements are retrieved to validate trust chains and apply current metadata policies. They enable real-time verification of an entity's registration status and ensure that operational capabilities comply with federation-wide policies and the entity's authorized scope.
+**Role in Operations**: During Credential operations, Subordinate Statements are retrieved to validate Trust Chains and apply current metadata policies. They enable real-time verification of an entity's registration status and ensure that operational capabilities comply with federation-wide policies and the entity's authorized scope.
 
 Below there is a non-normative example of an Subordinate Statement issued by an Registration Body (such as the Trust Anchor or its Intermediate) in relation to one of its Subordinates.
 
@@ -922,46 +932,11 @@ Below is a non-normative example, in plain text, illustrating the content of a C
 Federation Subordinate Events Endpoint
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Federation Subordinate Events Endpoint provides a mechanism for Trust Anchors and Intermediates to publish historical events related to their Immediate Subordinates registration status. This endpoint provides transparency and accountability within the federation by providing a comprehensive historical record of significant events affecting federation participants.
+The Federation Subordinate Events Endpoint is defined in `OID-FED-SUBORDINATE-EVENTS`_. This endpoint provides a mechanism for Trust Anchors and Intermediates to publish historical events related to their Immediate Subordinates registration status. It provides transparency and accountability within the federation by providing a comprehensive historical record of significant events affecting federation participants.
 
-**Endpoint Location**:
+For complete specification details, including endpoint location, request format, response format, JWT claims, event object parameters, and supported event types, refer to `OID-FED-SUBORDINATE-EVENTS`_.
 
-The Federation Subordinate Events Endpoint is published in the ``federation_entity`` metadata using the ``federation_subordinate_events_endpoint`` parameter.
-
-**Request Format**:
-
-The request to the ``federation_subordinate_events_endpoint`` MUST be an HTTP GET request with the following query parameters:
-
-- **sub**: (REQUIRED) The Entity Identifier of the subject for which the historical track is being requested.
-
-**Response Format**:
-
-A successful response MUST use the HTTP status code 200 and the content type ``application/entity-events-statement+jwt``. The response is a signed JWT that is explicitly typed by setting the ``typ`` header parameter to ``entity-events-statement+jwt`` to prevent cross-JWT confusion.
-
-**JWT Claims**:
-
-The claims in the Subordinate events statement response are:
-
-- **iss**: (REQUIRED) Entity Identifier of the issuer of the response
-- **sub**: (REQUIRED) Entity Identifier of the subject of the response  
-- **iat**: (REQUIRED) Time when this response was issued, expressed as Seconds Since the Epoch
-- **exp**: (OPTIONAL) Time when this resolution is no longer valid, expressed as Seconds Since the Epoch
-- **federation_registration_events**: (REQUIRED) Array of JSON objects, each representing an event of particular interest from the federation's perspective
-
-**Event Object Parameters**:
-
-- **iat**: (REQUIRED) Time when the event occurred, using the time format defined for the ``iat`` claim
-- **event**: (REQUIRED) String that identifies the event type
-- **event_description**: (OPTIONAL) String that may offer additional information about the event
-
-**Supported Event Types**:
-
-- **registration**: Indicates when an Entity was registered in the federation
-- **revocation**: Indicates when an Entity's registration was revoked
-- **suspension**: Indicates when an Entity's registration was suspended
-- **jwks_update**: Indicates when an Entity's Federation Entity Keys were updated
-- **metadata_update**: Indicates when an Entity's metadata was updated in the Subordinate Statement
-- **metadata_policy_update**: Indicates when an Entity's metadata policy was updated in the Subordinate Statement
+Below is a non-normative example of a Federation Subordinate Events Endpoint request and response:
 
 **Example Request**:
 
@@ -985,7 +960,7 @@ The claims in the Subordinate events statement response are:
        },
        {
          "iat": 1590000000,
-         "event": "jwks_updates"
+         "event": "jwks_update"
        },
        {
          "iat": 1600000000,

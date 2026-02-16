@@ -68,7 +68,7 @@ L'endpoint dell'e-Service di Raccolta Segnali viene utilizzato dalle Fonti Auten
     - OBBLIGATORIO. Questo è un campo libero che la Fonte Autentica PUÒ utilizzare per specificare ulteriormente il Segnale.
   * - **objectId**
     - OBBLIGATORIO. Il soggetto a cui è legato il Segnale. Se il Segnale ha ``signalType``:
-    
+      
       - ``CREATE``, allora DEVE essere impostato sul valore ``jti`` che il Fornitore di Attestati Elettronici ha utilizzato nel token Agid-JWT-Signature della richiesta `get attributes` alla Fonte Autentica per ottenere gli Attributi relativi a un Attestato Elettronico specifico (vedere :ref:`authentic-source-endpoint:Get Attribute Claims`);
       - ``UPDATE``, allora DEVE essere impostato sull'identificatore univoco del database della Fonte Autentica degli Attributi dell'Attestato Elettronico a cui si riferisce il Segnale.
       
@@ -155,8 +155,8 @@ Dopo che i Segnali sono stati recuperati con successo dal Fornitore di Attestati
 
   - Per ogni Segnale, il Fornitore di Attestati Elettronici DEVE verificare il valore ``SignalType``:
     
-    - se il ``SignalType`` del Segnale è ``UPDATE``, lo stato e/o il valore dell'Attributo associato a un Attestato Elettronico necessitano di aggiornamenti;
-    - se il ``SignalType`` del Segnale è ``CREATE``, gli Attributi richiesti di un Attestato Elettronico specifico sono ora disponibili;
+    - se il ``SignalType`` del Segnale è ``UPDATE`` (l'``objectId`` fa riferimento all'**identificativo univoco presente nella base dati della Fonte Autentica relativo agli Attributi dell'Attestato Elettronico**), lo stato e/o il valore dell'Attributo associato a un Attestato Elettronico necessitano di aggiornamenti;    
+    - se il ``SignalType`` del Segnale è ``CREATE`` (l'``objectId`` corrisponde al **``jti`` della richiesta**), gli Attributi richiesti di un Attestato Elettronico specifico sono ora disponibili;
 
     Se l'``objectId`` non corrisponde ad alcun identificativo valido noto al Fornitore di Attestati Elettronici, il Segnale DEVE essere ignorato. Altrimenti, se corrisponde a un identificativo noto e valido, il Fornitore di Attestati Elettronici DEVE utilizzare l'endpoint PDND :ref:`authentic-source-endpoint:Get Attribute Claims` della Fonte Autentica per recuperare le informazioni aggiornate e, se possibile, applicare il nuovo stato/attributo all'Attestato Elettronico corrispondente.
     
@@ -164,4 +164,4 @@ Dopo che i Segnali sono stati recuperati con successo dal Fornitore di Attestati
 
 .. warning::
 
-  Dati i pattern di sicurezza attualmente supportati da Signal Hub, se la Fonte Autentica richiede il pattern di sicurezza `AUDIT_REST_02` dal Fornitore di Attestati Elettronici, quest'ultimo DEVE revocare l'Attestato Elettronico referenziato nei Segnali con ``signalType`` ``UPDATE`` non potendo contattare la Fonte Autentica per recuperare le informazioni aggiornate senza aver prima autenticato l'Utente.
+  Dati i pattern di sicurezza attualmente supportati da Signal Hub, se la Fonte Autentica richiede il pattern di sicurezza `AUDIT_REST_02` dal Fornitore di Attestati Elettronici, quest'ultimo DEVE revocare l'Attestato Elettronico referenziato nei Segnali con ``signalType`` ``UPDATE`` non potendo contattare la Fonte Autentica per recuperare le informazioni aggiornate senza aver prima autenticato l'Utente. **In questo scenario, la revoca è l'unica azione ammessa.**

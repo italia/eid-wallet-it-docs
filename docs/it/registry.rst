@@ -71,7 +71,7 @@ Struttura del payload JWT (decodificato):
     "endpoints": {
       "claims_registry": "https://trust-anchor.eid-wallet.example.it/api/v1/claims",
       "authentic_sources": "https://trust-anchor.eid-wallet.example.it/api/v1/authentic-sources",
-      "credential_catalog": "https://trust-anchor.eid-wallet.example.it/api/v1/credential-catalog",
+      "credential_catalog": "https://trust-anchor.eid-wallet.example.it/api/v1/.well-known/credential-catalog",
       "taxonomy": "https://trust-anchor.eid-wallet.example.it/api/v1/taxonomy",
       "schema_registry": "https://trust-anchor.eid-wallet.example.it/api/v1/schemas",
       "federation_list": "https://trust-anchor.eid-wallet.example.it/list",
@@ -84,6 +84,8 @@ Struttura del payload JWT (decodificato):
   }
 
 
+
+.. _registry-registro-claims:
 
 Registro dei Claims
 -------------------
@@ -433,6 +435,19 @@ All'interno dell'architettura del Registro del Sistema IT-Wallet, il Registro di
 2. **Verifica della Catena di Fiducia**: Fornisce la fondazione crittografica per la validazione delle entità Emittenti di Credenziali, Relying Parties e Fornitori di Wallet
 3. **Verifica della Conformità**: Mantiene Trust Marks che attestano la conformità normativa e lo stato operativo
 
+Informazioni di Registrazione del Registro di Federazione
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Le entità che si registrano nel Registro di Federazione DEVONO fornire le informazioni specificate nei requisiti del modulo di registrazione come definito in :ref:`onboarding-high-level:Requisiti sulle Informazioni del Modulo di Registrazione`. Queste informazioni sono raccolte durante la fase di registrazione amministrativa e memorizzate nel Registro Nazionale, che alimenta il Registro di Federazione per scopi di validazione della fiducia.
+
+Il Registro di Federazione utilizza queste informazioni di registrazione per:
+- Validare l'identità dell'entità durante le operazioni crittografiche
+- Verificare i diritti e gli ambiti di autorizzazione
+- Supportare la validazione della catena di fiducia e l'emissione di certificati
+- Abilitare l'interoperabilità transfrontaliera attraverso formati di dati standardizzati
+
+Per informazioni dettagliate sui dati che le entità devono fornire durante la registrazione, vedere :ref:`onboarding-high-level:Requisiti sulle Informazioni del Modulo di Registrazione`.
+
 Accesso al Registro di Federazione
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -517,7 +532,33 @@ La seguente tabella riassume le informazioni principali che DEVONO essere fornit
        - **Finalità della Credenziale Digitale**: Informazioni relative alle finalità consentite per cui la Credenziale Digitale può essere usata. Ogni tipo di Credenziale Digitale può essere usato per molteplici finalità.
 
 
-Il Trust Anchor DEVE pubblicare e mantenere aggiornate tutte le informazioni all'endpoint `.well-known` del Catalogo degli Attestati Elettronici garantendo affidabilità, autenticità e integrità dei dati. In particolare, il Catalogo degli Attestati Elettronici, i claims e la tassonomia DEVONO essere disponibili attraverso l'endpoint ``.well-known/credential-catalog``.
+Il Trust Anchor DEVE pubblicare e mantenere aggiornate tutte le informazioni all'endpoint `.well-known` del Catalogo degli Attestati Elettronici garantendo affidabilità, autenticità e integrità dei dati. In particolare, il Catalogo degli Attestati Elettronici DEVE essere disponibile attraverso l'endpoint ``.well-known/credential-catalog``. DEVONO essere supportati ``application/jose`` e ``application/json`` come Content-Type.
+
+Di seguito è fornito un esempio non normativo.
+
+.. code-block:: http
+
+    GET /.well-known/credential-catalog HTTP/1.1
+    Host: trust-anchor.eid-wallet.example.it
+    Accept: application/jose
+
+    HTTP/1.1 200 OK
+    Content-Type: application/jose
+
+    eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
+
+.. code-block:: http
+
+    GET /.well-known/credential-catalog HTTP/1.1
+    Host: trust-anchor.eid-wallet.example.it
+    Accept: application/json
+
+    HTTP/1.1 200 OK
+    Content-Type: application/json
+
+.. _struttura-del-catalogo-degli-attestati-elettronici:
+
+Nella sezione :ref:`Struttura del Catalogo degli Attestati Elettronici <struttura-del-catalogo-degli-attestati-elettronici>` è riportato un esempio di Catalogo degli Attestati Elettronici decodificato in JSON.
 
 Gerarchia degli Attestati Elettronici
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

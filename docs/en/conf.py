@@ -4,7 +4,7 @@
 settings_project_name = "IT-Wallet Technical Specifications"
 # settings_copyright_copyleft = 'Dipartimento per la Trasformazione Digitale'
 settings_editor_name = 'Dipartimento per la Trasformazione Digitale'
-settings_doc_version = '1.3.3'
+settings_doc_version = '1.4.0'
 settings_doc_release = "versione-corrente"
 settings_basename = 'eid-wallet-it-docs'
 settings_file_name = 'eid-wallet-it-docs'
@@ -50,6 +50,7 @@ extensions = [
     'sphinx.ext.coverage',
     'sphinx.ext.ifconfig',
     'sphinx.ext.autosectionlabel',
+    'sphinx.ext.imgconverter',
     'sphinxcontrib.redoc',
     'myst_parser',
     'sphinxcontrib.plantuml'
@@ -281,6 +282,8 @@ latex_elements = {
         verbatimhintsturnover=false
     ''',
     'preamble': r'''
+        % Allow inclusion of PDF 1.6/1.7 images (default is 1.5)
+        \pdfminorversion=7
         \usepackage{luatex85}
         \usepackage{polyglossia}
         \setmainlanguage{english}
@@ -416,4 +419,10 @@ numfig = True
 smartquotes = False
 
 autosectionlabel_prefix_document= True
+
+# Add official_resources to static path so files are copied during build
+# Note: Sphinx will automatically copy image files referenced in RST figures,
+# but adding official_resources to html_static_path makes the entire folder
+# accessible for direct downloads
+html_static_path = ['../../static', '../../official_resources']
 

@@ -127,20 +127,20 @@ The Credential Issuer performs the following checks upon the receipt of the PAR 
     10. It MUST check that the ``jti`` claim in the Request Object has not been used before by the Wallet Instance identified by the ``client_id``. This allows the Credential Issuer to mitigate replay attacks (:rfc:`7519`).
     11. It MUST validate the ``OAuth-Client-Attestation-PoP`` parameter based on Section 5 of [`OAUTH-ATTESTATION-CLIENT-AUTH`_].
 
-Below a non-normative example of the PAR Request.
+Below is a non-normative example of the PAR Request.
 
 .. code-block:: http
 
     POST /as/par HTTP/1.1
     Host: eaa-provider.example.org
     Content-Type: application/x-www-form-urlencoded
-    OAuth-Client-Attestation: ew0KICAiYWxnIjogIkVTMjU2IiwNCiAgImtpZCI6ICIwYjQ5OGRkZTA5MTcyYWRhNzAxZDA3ZWI2Zjk4NjdhZCIsDQogICJ0eXAiOiAib2F1dGgtY2xpZW50LWF0dGVzdGF0aW9uK2p3dCIsDQogICAgIng1YyI6IFsNCiAgICAgICAgIk1JSURxakNDQXBLZ0F3SUJBZ0lFU0xORXZEQSAuLi4iLA0KICAgICAgICAiTUlJQ3d6Q0NBYXNDQ1FDS1Z5OWVLanZpK2pBIC4uLiIsDQogICAgICAgICJNSUlEVERDQ0FqU2dBd0lCQWdJSkFQbG5RWUguLi4iDQogICAgXQ0KfQ.ew0KICAiaXNzIjogImh0dHBzOi8vd2FsbGV0LXByb3ZpZGVyLmV4YW1wbGUub3JnIiwNCiAgInN1YiI6ICI0N2I5ODIzNjk3OTFkMDgwMDNhNzI4M2YwNTljYjBkMTQ3Yjk4MjM2OTc5MWQwODAwM2E3MjgzZjA1OWNiMGQxIiwNCiAgImNuZiI6IHsNCiAgICAiandrIjogew0KICAgICAgImNydiI6ICJQLTI1NiIsDQogICAgICAia3R5IjogIkVDIiwNCiAgICAgICJ4IjogIjRITnB0SS14cjJwanlSSktHTW56NFdtZG5RRF91SlNxNFI5NU5qOThiNDQiLA0KICAgICAgInkiOiAiTElablNCMzl2RkpoWWdTM2s3alhFNHIzLUNvR0ZRd1p0UEJJUnFwTmxyZyINCiAgICB9DQogIH0sDQogICJ3YWxsZXRfbmFtZSI6ICJXYWxsZXRfdjEiLA0KICAid2FsbGV0X2xpbmsiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS93YWxsZXQvZGV0YWlsX2luZm8uaHRtbCIsDQogICJpYXQiOiAxNzQwMTU4MDQ3LA0KICAiZXhwIjogMTc0MDE1ODE2Nw0KfQ.TCUOw--YhIFkem4gWC9DPovOOB7oBZE5QGjrSzKZHCDw-9s8Hj9OmsGi8M9sD9dJLtBxg_fNroe4E7uEFM5U4w
+    OAuth-Client-Attestation: eyJhbGciOiJFUzI1NiIsImtpZCI6IjBiNDk4ZGRlMDkxNzJhZGE3MDFkMDdlYjZmOTg2N2FkIiwidHlwIjoib2F1dGgtY2xpZW50LWF0dGVzdGF0aW9uK2p3dCIsIng1YyI6WyJNSUlEcWpDQ0FwS2dBd0lCQWdJRVNMTkV2REEgLi4uIiwiTUlJQ3d6Q0NBYXNDQ1FDS1Z5OWVLanZpK2pBIC4uLiIsIk1JSURURENDQWpTZ0F3SUJBZ0lKQVBsblFZSC4uLiJdfQ.eyJpc3MiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZyIsInN1YiI6IjQ3Yjk4MjM2OTc5MWQwODAwM2E3MjgzZjA1OWNiMGQxNDdiOTgyMzY5NzkxZDA4MDAzYTcyODNmMDU5Y2IwZDEiLCJjbmYiOnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiLCJ4IjoiNEhOcHRJLXhyMnBqeVJKS0dNbno0V21kblFEX3VKU3E0Ujk1Tmo5OGI0NCIsInkiOiJMSVpuU0IzOXZGSmhZZ1MzazdqWEU0cjMtQ29HRlF3WnRQQklScXBObHJnIn19LCJldWRpX3dhbGxldF9pbmZvIjp7ImdlbmVyYWxfaW5mbyI6eyJ3YWxsZXRfcHJvdmlkZXJfbmFtZSI6IkV4YW1wbGVPcmciLCJ3YWxsZXRfc29sdXRpb25faWQiOiJXYWxsZXQtbW9iaWxlIiwid2FsbGV0X3NvbHV0aW9uX3ZlcnNpb24iOiIxLjAuMCIsIndhbGxldF9zb2x1dGlvbl9jZXJ0aWZpY2F0aW9uX2luZm9ybWF0aW9uIjoiaHR0cHM6Ly9leGFtcGxlLm9yZy9jZXJ0aWZpY2F0aW9uL1dhbGxldE1vYmlsZS8xLTAtMC8ifX0sImlhdCI6MTc0MDE1ODA0NywiZXhwIjoxNzQwMTU4MTY3fQ.T6tD58u8A-xGXGqQOGp2kzd03YYKfL31Ax5cRZeXD5ksShWZl81jN6snPZMlon-s15KNV1yhJrbC-_n3dI1hMw
     OAuth-Client-Attestation-PoP: eyJhbGciOiJFUzI1NiIsInR5cCI6Im9hdXRoLWNsaWVudC1hdHRlc3RhdGlvbi1wb3Arand0In0.ew0KICAiaXNzIjogIiA0N2I5ODIzNjk3OTFkMDgwMDNhNzI4M2YwNTljYjBkMSIsDQogICJhdWQiOiAiaHR0cHM6Ly9hcy5leGFtcGxlLmNvbSIsDQogICJqdGkiOiAiZDI1ZDAwYWItNTUyYi00NmZjLWFlMTktOThmNDQwZjI1MDY0IiwNCiAgImlhdCI6IDE3NDAxNTg2MTcNCn0.B0KOkGi9vMxf3H2Y8rrF-mdLNsuluTvAUbjFfL1Hi-gdaPW7-8ziS9uVh7aTnSAHKWzMfkZLv5q-bxhkglR4PA
 
     client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-app-attestation$&
     request=$SIGNED-JWT
 
-Below an non-normative example of the Wallet App Attestation Proof of Possession (WAA-PoP) header and body:
+Below is a non-normative example of the Wallet App Attestation Proof of Possession (WAA-PoP) header and body:
 
 .. literalinclude:: ../../examples/wa-pop-header.json
   :language: JSON
@@ -149,7 +149,7 @@ Below an non-normative example of the Wallet App Attestation Proof of Possession
   :language: JSON
 
 
-Below an non-normative example of the signed Request Object without encoding and signature applied:
+Below is a non-normative example of the signed Request Object without encoding and signature applied:
 
 .. literalinclude:: ../../examples/request-object-header.json
   :language: JSON
@@ -236,7 +236,7 @@ The ``OAuth-Client-Attestation`` is signed using the private key bound to the Wa
     Host: eaa-provider.example.org
     Content-Type: application/x-www-form-urlencoded
     DPoP: eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwieCI6IjR2dDhNdEFISmlsMzBDNnpUTmt2c0VVcnlHTEUtQW5BNkc5LV8xa3l5Rk0iLCJ5IjoiTWdiNTFfbjNSRjNtbHNtS3dMd0xtRUFqVmlJM3Q1bTVWNTI2MFA5MzR3RSIsImNydiI6IlAtMjU2In19.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiR0VUIiwiaHR1IjoiaHR0cHM6Ly9yZXNvdXJjZS5leGFtcGxlLm9yZy9wcm90ZWN0ZWRyZXNvdXJjZSIsImlhdCI6MTU2MjI2MjYxOH0.3Tp1ZlZ05PQYeZUHhiZwaQ1etqnwYwoiJHFR_JHb32381lMJL-8o2rE3VZ8X3yuqrGFfCVeP90Ln4J5r8ASIBg
-    OAuth-Client-Attestation: ew0KICAiYWxnIjogIkVTMjU2IiwNCiAgImtpZCI6ICIwYjQ5OGRkZTA5MTcyYWRhNzAxZDA3ZWI2Zjk4NjdhZCIsDQogICJ0eXAiOiAib2F1dGgtY2xpZW50LWF0dGVzdGF0aW9uK2p3dCIsDQogICAgIng1YyI6IFsNCiAgICAgICAgIk1JSURxakNDQXBLZ0F3SUJBZ0lFU0xORXZEQSAuLi4iLA0KICAgICAgICAiTUlJQ3d6Q0NBYXNDQ1FDS1Z5OWVLanZpK2pBIC4uLiIsDQogICAgICAgICJNSUlEVERDQ0FqU2dBd0lCQWdJSkFQbG5RWUguLi4iDQogICAgXQ0KfQ.ew0KICAiaXNzIjogImh0dHBzOi8vd2FsbGV0LXByb3ZpZGVyLmV4YW1wbGUub3JnIiwNCiAgInN1YiI6ICI0N2I5ODIzNjk3OTFkMDgwMDNhNzI4M2YwNTljYjBkMTQ3Yjk4MjM2OTc5MWQwODAwM2E3MjgzZjA1OWNiMGQxIiwNCiAgImNuZiI6IHsNCiAgICAiandrIjogew0KICAgICAgImNydiI6ICJQLTI1NiIsDQogICAgICAia3R5IjogIkVDIiwNCiAgICAgICJ4IjogIjRITnB0SS14cjJwanlSSktHTW56NFdtZG5RRF91SlNxNFI5NU5qOThiNDQiLA0KICAgICAgInkiOiAiTElablNCMzl2RkpoWWdTM2s3alhFNHIzLUNvR0ZRd1p0UEJJUnFwTmxyZyINCiAgICB9DQogIH0sDQogICJ3YWxsZXRfbmFtZSI6ICJXYWxsZXRfdjEiLA0KICAid2FsbGV0X2xpbmsiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS93YWxsZXQvZGV0YWlsX2luZm8uaHRtbCIsDQogICJpYXQiOiAxNzQwMTU4MDQ3LA0KICAiZXhwIjogMTc0MDE1ODE2Nw0KfQ.Iz1iMua0B0iZyzmnR_hFrgTuHcMp8ryVrHV5IyRveoNFsNk9eop4Pl9SU_DgoVsIwRpyYaIwYvczmZ3n7Y49Bw
+    OAuth-Client-Attestation: eyJhbGciOiJFUzI1NiIsImtpZCI6IjBiNDk4ZGRlMDkxNzJhZGE3MDFkMDdlYjZmOTg2N2FkIiwidHlwIjoib2F1dGgtY2xpZW50LWF0dGVzdGF0aW9uK2p3dCIsIng1YyI6WyJNSUlEcWpDQ0FwS2dBd0lCQWdJRVNMTkV2REEgLi4uIiwiTUlJQ3d6Q0NBYXNDQ1FDS1Z5OWVLanZpK2pBIC4uLiIsIk1JSURURENDQWpTZ0F3SUJBZ0lKQVBsblFZSC4uLiJdfQ.eyJpc3MiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZyIsInN1YiI6IjQ3Yjk4MjM2OTc5MWQwODAwM2E3MjgzZjA1OWNiMGQxNDdiOTgyMzY5NzkxZDA4MDAzYTcyODNmMDU5Y2IwZDEiLCJjbmYiOnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiLCJ4IjoiNEhOcHRJLXhyMnBqeVJKS0dNbno0V21kblFEX3VKU3E0Ujk1Tmo5OGI0NCIsInkiOiJMSVpuU0IzOXZGSmhZZ1MzazdqWEU0cjMtQ29HRlF3WnRQQklScXBObHJnIn19LCJldWRpX3dhbGxldF9pbmZvIjp7ImdlbmVyYWxfaW5mbyI6eyJ3YWxsZXRfcHJvdmlkZXJfbmFtZSI6IkV4YW1wbGVPcmciLCJ3YWxsZXRfc29sdXRpb25faWQiOiJXYWxsZXQtbW9iaWxlIiwid2FsbGV0X3NvbHV0aW9uX3ZlcnNpb24iOiIxLjAuMCIsIndhbGxldF9zb2x1dGlvbl9jZXJ0aWZpY2F0aW9uX2luZm9ybWF0aW9uIjoiaHR0cHM6Ly9leGFtcGxlLm9yZy9jZXJ0aWZpY2F0aW9uL1dhbGxldE1vYmlsZS8xLTAtMC8ifX0sImlhdCI6MTc0MDE1ODA0NywiZXhwIjoxNzQwMTU4MTY3fQ.F9OYKHnDhN926exE199xzAzBOds0evt6i2aPD-zMY_yUsTtNmw9tRRjpEHdXcvKUsZSavVnPlatJEol3ztXVvA
     OAuth-Client-Attestation-PoP: eyJhbGciOiJFUzI1NiIsInR5cCI6Im9hdXRoLWNsaWVudC1hdHRlc3RhdGlvbi1wb3Arand0In0.ew0KICAiaXNzIjogIiA0N2I5ODIzNjk3OTFkMDgwMDNhNzI4M2YwNTljYjBkMSIsDQogICJhdWQiOiAiaHR0cHM6Ly9hcy5leGFtcGxlLmNvbSIsDQogICJqdGkiOiAiZDI1ZDAwYWItNTUyYi00NmZjLWFlMTktOThmNDQwZjI1MDY0IiwNCiAgImlhdCI6IDE3NDAxNTg2MTcNCn0.B0KOkGi9vMxf3H2Y8rrF-mdLNsuluTvAUbjFfL1Hi-gdaPW7-8ziS9uVh7aTnSAHKWzMfkZLv5q-bxhkglR4PA
 
     grant_type=authorization_code
@@ -385,7 +385,7 @@ Where a non-normative example of the decoded content of the ``jwt`` parameter is
 The decoded content of ``jwt`` elements in the ``jwt`` array is similar to what is explained in **Step 16**.
 
 
-**Steps 20-24 (Credential Response)**: The Credential Issuer MUST validate the *DPoP JWT Proof* based on the steps defined in Section 4.3 of (:rfc:`9449`) and whether the *Access Token* is valid and suitable for the requested Credential. The Credential Issuer MUST validate all the key proofs that are provided within ``proofs`` (**Step 15** and **Step 18**) parameter that the new Credentials SHALL be bound to, according to `OpenID4VCI`_ Appendix F1. If all checks succeed, the Credential Issuer returns the issued Credential inside the ``credentials`` parameter. The number of elements in the Credentials array matches the number of the keys that the Wallet Instance has provided either via the ``proofs`` parameter (**Step 16** and **Step 19**). The Wallet Instance MUST perform the following checks before proceeding with the secure storage of the Credential(s):
+**Steps 20-24 (Credential Response)**: The Credential Issuer MUST validate the *DPoP JWT Proof* based on the steps defined in Section 4.3 of (:rfc:`9449`) and whether the *Access Token* is valid and suitable for the requested Credential. The Credential Issuer MUST validate all the key proofs that are provided within ``proofs`` (**Step 15** and **Step 18**) parameter that the new Credentials MUST be bound to, according to `OpenID4VCI`_ Appendix F1. If all checks succeed, the Credential Issuer returns the issued Credential inside the ``credentials`` parameter. The number of elements in the Credentials array matches the number of the keys that the Wallet Instance has provided either via the ``proofs`` parameter (**Step 16** and **Step 19**). The Wallet Instance MUST perform the following checks before proceeding with the secure storage of the Credential(s):
 
     1. It MUST check that the PID/(Q)EAA contained in the Credential Response contains all the mandatory parameters and values are validated according to :ref:`Table of the Credential response parameters <table_credential_response_claim>` (:ref:`WP_059 <wallet-credential-issuance-testcases>`).
     2. It MUST check the Credential integrity by verifying the signature using the algorithm specified in the ``alg`` header parameter of SD-JWT (:ref:`credential-data-model:Digital Credential Data Model`) and the public key that is identified using the ``kid`` header of the SD-JWT (:ref:`WP_062a <wallet-credential-issuance-testcases>`).

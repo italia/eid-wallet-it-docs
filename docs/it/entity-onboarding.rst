@@ -252,7 +252,7 @@ Le Entità di Federazione DEVONO rispettare i seguenti requisiti tecnici prima d
     - Claim ``iat`` ed ``exp`` che definiscono un intervallo di tempo valido.
     - Un claim ``metadata`` contenente metadati specifici dell'entità organizzati per Tipi di Metadati (vedere :ref:`credential-issuer-entity-configuration:Entity Configuration del Fornitore di Attestati Elettronici`, :ref:`relying-party-entity-configuration:Entity Configuration di una Relying Party`, o :ref:`wallet-provider-entity-configuration:Entity Configuration del Fornitore di Wallet`) con Chiavi di Protocollo incluse nei campi ``jwks`` dei metadati e certificati auto-firmati nei corrispondenti claim ``x5c``.
 
-  - **Certificate Signing Request (CSR)**: Le entità DEVONO preparare un CSR in formato PKCS #10 contenente **solo la Chiave Pubblica dell'Entità di Federazione** per l'emissione del certificato X.509 da parte dell'Autorità di Federazione come definito in :ref:`trust-infrastructure:Requisiti dell'Infrastruttura di Trust`.
+  - **Certificate Signing Request (CSR)**: Le entità DEVONO preparare un CSR in formato PKCS #10 contenente **solo la Chiave Pubblica dell'Entità di Federazione** per l'emissione del certificato X.509 da parte dell'Autorità di Federazione come definito in :ref:`trust-infrastructure:Emissione di Certificati X.509`.
 
 Requisiti di Sicurezza per la Gestione delle Chiavi
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -348,7 +348,7 @@ Di seguito viene mostrato il contenuto decodificato dell'esempio CSR sopra ripor
   - Verifica delle informazioni fornite nella richiesta di registrazione.
   - Validazione dell'Entity Configuration pubblicata all'endpoint ``/.well-known/openid-federation`` dell'entità e dei suoi metadati contenuti (come definito in :ref:`trust-infrastructure:L'Infrastruttura di Trust`).
   - **Applicazione delle Metadata Policy**: Applicazione di metadata policy specifiche della federazione ai metadati dell'entità basate su caratteristiche organizzative e ambito di autorizzazione come definito in :ref:`trust-infrastructure:Subordinate Statement`. Quando onboardata attraverso un Intermediario, si applicano sia le policy dell'Intermediario che del Trust Anchor, con le policy del Trust Anchor che hanno precedenza in caso di conflitti.
-  - **Emissione Certificato**: Certificazione della Chiave Pubblica dell'Entità di Federazione con emissione del certificato X.509 utilizzando l'infrastruttura di trust dettagliata in :ref:`trust-infrastructure:Requisiti dell'Infrastruttura di Trust`. Gli Intermediari emettono certificati con **naming constraints** appropriati per limitare l'uso del certificato solo ai loro subordinati.
+  - **Emissione Certificato**: Certificazione della Chiave Pubblica dell'Entità di Federazione con emissione del certificato X.509 utilizzando l'infrastruttura di trust dettagliata in :ref:`trust-infrastructure:Emissione di Certificati X.509`. Gli Intermediari emettono certificati con **naming constraints** appropriati per limitare l'uso del certificato solo ai loro subordinati.
 
 Dopo la validazione con successo, l'entità riceve una risposta contenente una catena di certificati dove:
 
@@ -425,7 +425,7 @@ Esempio di risposta catena di certificati:
 
   2. **Pubblicare Entity Configuration Aggiornata**: Pubblicare l'EC aggiornata all'endpoint ``/.well-known/openid-federation`` come specificato in :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
 
-  3. **Inviare Richiesta Resolve**: Chiamare l'endpoint ``/resolve`` del **Trust Anchor** (come definito in :ref:`trust-infrastructure:Requisiti dell'Infrastruttura di Trust`) con parametri URL-encoded:
+  3. **Inviare Richiesta Resolve**: Chiamare l'endpoint ``/resolve`` del **Trust Anchor** (come definito in :ref:`trust-infrastructure:Endpoint API di Federazione`) con parametri URL-encoded:
 
     - ``sub``: Identificativo Entità di Federazione.
     - ``trust_anchor``: Identificativo Entità di Federazione del **Trust Anchor** (sempre il Trust Anchor radice, anche per onboarding mediato da Intermediario).

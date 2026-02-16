@@ -14,21 +14,19 @@ jobs:
   build-and-index:
     runs-on: ubuntu-latest
     steps:
-      # Checkout the PR code
       - name: Checkout PR
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: refs/pull/${{ github.event.inputs.pr_number }}/head
 
-      # Install Python
-      - uses: actions/setup-python@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.10"
           architecture: "x64"
+          cache: 'pip'
 
-      # Install Java
       - name: Setup Java
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
@@ -58,6 +56,12 @@ jobs:
           sed -i 's/\(settings_project_name = ".*\)"/\1 - PR #'"${PR_NUM}"'"/' docs/en/conf.py
           echo "Applied PR tag '#${PR_NUM}' to document titles for manual preview"
 
+      # Labels and xref check (Sphinx dummy build)
+      - name: Labels and xref check
+        run: |
+          sphinx-build -b dummy -W docs/it _build/labels/it
+          sphinx-build -b dummy -W docs/en _build/labels/en
+
       # Run Sphinx build for HTML output
       - name: Build branch
         run: |-
@@ -78,9 +82,13 @@ jobs:
           mkdir -p html/templates/ && cp -r .github/templates/* html/templates/
           mkdir -p html/static/ && cp -r .github/static/* html/static/
 
-      # Check out the gh-pages branch in a temporary directory
+      # Copy official_resources for GitHub Pages deployment
+      - name: Copy official resources
+        run: |
+          mkdir -p html/official_resources/ && cp -r official_resources/* html/official_resources/
+
       - name: Checkout gh-pages branch
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: gh-pages
           path: gh-pages-temp
