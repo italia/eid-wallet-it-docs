@@ -90,5 +90,4 @@
 .. _OAS3: https://spec.openapis.org/oas/v3.0.3
 .. _ICAO 9303: https://www.icao.int/publications/doc-series/doc-9303
 .. _BSI-03110: https://www.bundesanzeiger.de/download/BAnzAT1142010B1/03_BSI_TR-03110.pdf
-.. _IANA: https://www.iana.org/assignments/jwt/jwt.xhtml
 
