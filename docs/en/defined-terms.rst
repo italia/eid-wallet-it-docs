@@ -124,7 +124,7 @@ Below is the description of acronyms and definitions which are useful for furthe
     **National Person Identification Data**
     **NPID**
       Electronic Attestation containing Person Identification Data at a substantial Level of Assurance (WL2), usable as an electronic identification means exclusively at national level towards Relying Parties. The NPID is issued by the PID Provider and its associated keys MUST be stored in a WL2 WSCD.
-    Not present in ARF 2.7.3; specific to IT-Wallet.
+      Not present in ARF 2.7.3; specific to IT-Wallet.
 
     **National Trust Anchor**
       Organizational Entity designated at national level to act as the root of trust for the federation, operating the national PKI and publishing authoritative Trusted Lists and federation metadata for subordinate entities (for example, Intermediaries and Leaves).
