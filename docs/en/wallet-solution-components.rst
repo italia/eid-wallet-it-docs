@@ -144,7 +144,7 @@ The Wallet Instance MUST use this component to protect critical assets and to se
 
 The Secure Storage encompasses the following sub-components:
 
-- **Wallet Secure Cryptographic Device (WSCD)**: tamper-resistant device providing an environment to protect Critical Assets. The WSCD includes the Hardware Secure Element, WSCD Firmware, and Secure Key Storage System. The WSCD operates at two distinct security levels (WL3 and WL2) as described in :ref:`wallet-solution-requirements:wscd-security-levels`.
+- **Wallet Secure Cryptographic Device (WSCD)**: tamper-resistant device providing an environment to protect Critical Assets. The WSCD includes the Hardware Secure Element, WSCD Firmware, and Secure Key Storage System. The WSCD operates at two distinct security levels (WL3 and WL2) as described in :ref:`WSCD security levels <wscd-security-levels>`.
 - **Wallet Secure Cryptographic Application (WSCA)**: application managing Critical Assets using cryptographic functions provided by the WSCD. The WSCA includes the WSCD Interface (WWI), WSCA Authentication, and Cryptographic Keys and Functions Manager.
 
 

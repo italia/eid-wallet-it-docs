@@ -28,7 +28,7 @@ The Wallet Solution architecture is described according to the certification mac
   - Trust & Security Component: Key and certificate management, audit logging, incident response, Federation compliance
   - User web portal (Frontend Component)
 
-For the complete decomposition mapping and certification scope, see :ref:`wallet-solution-components-decomposition:Decomposition and Certification Scope`.
+For the complete decomposition mapping and certification scope, see :ref:`Decomposition and Certification Scope <wallet-solution-components-decomposition>`.
 
 The following diagram depicts the Wallet Solution High Level Architecture.
 

@@ -146,7 +146,7 @@ Regardless of your primary role, certain sections contain information relevant t
     Section :ref:`defined-terms-and-references:Defined Terms and References` provides normative references, defined terms, and technical standards to enable secure and proper interoperability among all participants.
 
 **Testing and Validation:**
-    Section :ref:`test-plans:Test Plans` provides a comprehensive test matrix for validating implementations across different roles and interaction flows.
+    Section :ref:`Test Plans <test-plans>` provides a comprehensive test matrix for validating implementations across different roles and interaction flows.
 
 Implementation Approach
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -156,7 +156,7 @@ The following phased reading approach is suggested:
     1. **Foundation Phase**: Read  Sections :ref:`introduction:Introduction`, :ref:`brand-identity:Brand Identity`, :ref:`architecture-overview:Architecture Overview`, and :ref:`trust-infrastructure:The Infrastructure of Trust` to establish conceptual understanding of the IT-Wallet paradigm, Brand Identity elements and trust infrastructure.
     2. **Role-Specific Phase**: Focus on primary role's essential sections to understand specific User Experience, functional and implementation requirements, main technical component, the general architecture and interaction flows (see Section :ref:`functionalities:User Experience Design`, :ref:`entities:Entities` and Section :ref:`endpoints:Endpoints` for more details).
     3. **Integration Phase**: Review secondary sections relevant to interactions with other ecosystem participants and platform integration requirements.
-    4. **Validation Phase**: Study security considerations, testing guidance, and compliance requirements according to Sections :ref:`security-privacy-considerations:Security and Privacy Considerations`, :ref:`log-retention-policy:General Log Retention Policies`, and :ref:`test-plans:Test Plans` for additional information.
+    4. **Validation Phase**: Study security considerations, testing guidance, and compliance requirements according to Sections :ref:`security-privacy-considerations:Security and Privacy Considerations`, :ref:`log-retention-policy:General Log Retention Policies`, and :ref:`Test Plans <test-plans>` for additional information.
 
 .. note::
 

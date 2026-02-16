@@ -5,7 +5,7 @@
 Requisiti della Soluzione Wallet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Questa sezione elenca i requisiti per la Soluzione Wallet, strutturati secondo la scomposizione per la certificazione definita nella :ref:`wallet-solution:Soluzione Wallet` e nella :ref:`wallet-solution-components-decomposition:Scomposizione e Ambito di Certificazione`. I requisiti si applicano ai componenti **Wallet Instance (WI)**, **Wallet Provider Backend (WPBE)**, **Wallet Secure Cryptographic Device (WSCD)** e **Wallet Secure Cryptographic Application (WSCA)** del macro-componente di certificazione **Servizi ICT Wallet**.
+Questa sezione elenca i requisiti per la Soluzione Wallet, strutturati secondo la scomposizione per la certificazione definita nella :ref:`wallet-solution:Soluzione Wallet` e nella :ref:`Scomposizione e Ambito di Certificazione <wallet-solution-components-decomposition>`. I requisiti si applicano ai componenti **Wallet Instance (WI)**, **Wallet Provider Backend (WPBE)**, **Wallet Secure Cryptographic Device (WSCD)** e **Wallet Secure Cryptographic Application (WSCA)** del macro-componente di certificazione **Servizi ICT Wallet**.
 
 .. list-table::
    :widths: 8 55 37
@@ -45,7 +45,7 @@ Questa sezione elenca i requisiti per la Soluzione Wallet, strutturati secondo l
 Requisiti della Wallet App Attestation
 """"""""""""""""""""""""""""""""""""""""
 
-La Wallet App Attestation è emessa dal **Wallet Provider Backend (WPBE)** come parte del sottocomponente Wallet Instance Lifecycle Management (vedere :ref:`wallet-solution-components-decomposition:Scomposizione e Ambito di Certificazione`). Contiene informazioni riguardanti il livello di sicurezza del dispositivo che ospita l'Istanza del Wallet.
+La Wallet App Attestation è emessa dal **Wallet Provider Backend (WPBE)** come parte del sottocomponente Wallet Instance Lifecycle Management (vedere :ref:`Scomposizione e Ambito di Certificazione <wallet-solution-components-decomposition>`). Contiene informazioni riguardanti il livello di sicurezza del dispositivo che ospita l'Istanza del Wallet.
 Esso dimostra principalmente l'**autenticità**, l'**integrità**, la **sicurezza** e in generale l'**affidabilità** di una particolare Istanza del Wallet.
 
 I requisiti per la Wallet App Attestation sono definiti di seguito:
@@ -98,7 +98,7 @@ I requisiti per la Wallet App Attestation sono definiti di seguito:
 Requisiti della Wallet Unit Attestation
 """""""""""""""""""""""""""""""""""""""""
 
-La Wallet Unit Attestation è emessa dal **Wallet Provider Backend (WPBE)** e attesta le proprietà della **Wallet Secure Cryptographic Application (WSCA)** e del **Wallet Secure Cryptographic Device (WSCD)** (vedere :ref:`wallet-solution-components-decomposition:Scomposizione e Ambito di Certificazione`). Contiene informazioni che garantiscono che le chiavi utilizzate per il collegamento crittografico degli Attestati Elettronici siano archiviate in un WSCD **affidabile**.
+La Wallet Unit Attestation è emessa dal **Wallet Provider Backend (WPBE)** e attesta le proprietà della **Wallet Secure Cryptographic Application (WSCA)** e del **Wallet Secure Cryptographic Device (WSCD)** (vedere :ref:`Scomposizione e Ambito di Certificazione <wallet-solution-components-decomposition>`). Contiene informazioni che garantiscono che le chiavi utilizzate per il collegamento crittografico degli Attestati Elettronici siano archiviate in un WSCD **affidabile**.
 Inoltre, fornisce un metodo per autenticare il WSCD presso il Fornitore di Attributi Elettronici e verifica che la Wallet Unit non sia stata revocata.
 
 I requisiti per la Wallet Unit Attestation sono definiti di seguito:
@@ -144,7 +144,7 @@ I requisiti per la Wallet Unit Attestation sono definiti di seguito:
 Requisiti WSCD
 """""""""""""""""
 
-Il **Wallet Secure Cryptographic Device (WSCD)** include l'Hardware Secure Element, il WSCD Firmware e il Secure Key Storage System (vedere :ref:`wallet-solution-components-decomposition:Scomposizione e Ambito di Certificazione`). Per garantire la massima sicurezza, le chiavi crittografiche associate a un'Istanza del Wallet (ad esempio, utilizzate per generare la Wallet App Attestation) DEVONO essere generate e memorizzate in modo sicuro all'interno del WSCD. Solo l'Utente legittimo può accedere alle chiavi crittografiche private, impedendo l'uso non autorizzato o la manomissione. Il WSCD PUÒ essere implementato utilizzando almeno uno degli approcci elencati di seguito:
+Il **Wallet Secure Cryptographic Device (WSCD)** include l'Hardware Secure Element, il WSCD Firmware e il Secure Key Storage System (vedere :ref:`Scomposizione e Ambito di Certificazione <wallet-solution-components-decomposition>`). Per garantire la massima sicurezza, le chiavi crittografiche associate a un'Istanza del Wallet (ad esempio, utilizzate per generare la Wallet App Attestation) DEVONO essere generate e memorizzate in modo sicuro all'interno del WSCD. Solo l'Utente legittimo può accedere alle chiavi crittografiche private, impedendo l'uso non autorizzato o la manomissione. Il WSCD PUÒ essere implementato utilizzando almeno uno degli approcci elencati di seguito:
 
 .. list-table::
    :widths: 8 55 37

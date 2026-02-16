@@ -28,7 +28,7 @@ L'architettura della Soluzione Wallet è descritta secondo il macro-componente d
   - Trust & Security Component: Gestione chiavi e certificati, audit logging, incident response, conformità Federation
   - User web portal (Frontend Component)
 
-Per la mappatura completa della scomposizione e l'ambito di certificazione, vedere :ref:`wallet-solution-components-decomposition:Scomposizione e Ambito di Certificazione`.
+Per la mappatura completa della scomposizione e l'ambito di certificazione, vedere :ref:`Scomposizione e Ambito di Certificazione <wallet-solution-components-decomposition>`.
 
 Il seguente diagramma illustra l'Architettura di Alto Livello della Soluzione Wallet.
 

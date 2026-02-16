@@ -5,7 +5,7 @@
 Wallet Solution Requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This section lists the requirements for the Wallet Solution, structured along the certification decomposition defined in :ref:`wallet-solution:Wallet Solution` and :ref:`wallet-solution-components-decomposition:Decomposition and Certification Scope`. Requirements apply to the **Wallet Instance (WI)**, **Wallet Provider Backend (WPBE)**, **Wallet Secure Cryptographic Device (WSCD)**, and **Wallet Secure Cryptographic Application (WSCA)** components of the certification macro-component **Servizi ICT Wallet**.
+This section lists the requirements for the Wallet Solution, structured along the certification decomposition defined in :ref:`wallet-solution:Wallet Solution` and :ref:`Decomposition and Certification Scope <wallet-solution-components-decomposition>`. Requirements apply to the **Wallet Instance (WI)**, **Wallet Provider Backend (WPBE)**, **Wallet Secure Cryptographic Device (WSCD)**, and **Wallet Secure Cryptographic Application (WSCA)** components of the certification macro-component **Servizi ICT Wallet**.
 
 .. list-table::
    :widths: 8 55 37
@@ -45,7 +45,7 @@ This section lists the requirements for the Wallet Solution, structured along th
 Wallet App Attestation Requirements
 """"""""""""""""""""""""""""""""""""
 
-The Wallet App Attestation is issued by the **Wallet Provider Backend (WPBE)** as part of the Wallet Instance Lifecycle Management sub-component (see :ref:`wallet-solution-components-decomposition:Decomposition and Certification Scope`). It contains information regarding the security level of the device hosting the Wallet Instance.
+The Wallet App Attestation is issued by the **Wallet Provider Backend (WPBE)** as part of the Wallet Instance Lifecycle Management sub-component (see :ref:`Decomposition and Certification Scope <wallet-solution-components-decomposition>`). It contains information regarding the security level of the device hosting the Wallet Instance.
 It primarily proves the **authenticity**, **integrity**, **security**, and in general the **trustworthiness** of a particular Wallet Instance.
 
 The requirements for the Wallet App Attestation are defined below:
@@ -90,14 +90,6 @@ The requirements for the Wallet App Attestation are defined below:
    * - WAA-011
      - The Wallet Instance MUST secure a Wallet App Attestation as a prerequisite for transitioning to the Operational state, as defined by `EIDAS-ARF`_.
      - WI
-   * - WAA-012
-     - A Wallet Provider SHALL ensure that a non-revoked Wallet Unit at all times presents a temporally valid and non-revoked Wallet App Attestation to a PID Provider or Attestation Provider during the issuance process of a PID or attestation. Note: This requirement applies to both device-bound and non-device-bound attestations, as defined by `EIDAS-ARF`_.
-     - WPBE
-   * - WAA-013
-     - A Wallet Unit SHALL present a Wallet App Attestation only to a PID Provider or Attestation Provider, as part of the issuance process of a PID or an attestation, and not to a Relying Party or any other entity.
-     - WI
-
-
 
 
 .. note::
@@ -107,7 +99,7 @@ The requirements for the Wallet App Attestation are defined below:
 Wallet Unit Attestation Requirements
 """"""""""""""""""""""""""""""""""""
 
-The Wallet Unit Attestation is issued by the **Wallet Provider Backend (WPBE)** and attests to the properties of the **Wallet Secure Cryptographic Application (WSCA)** and **Wallet Secure Cryptographic Device (WSCD)** (see :ref:`wallet-solution-components-decomposition:Decomposition and Certification Scope`). It contains information to ensure that keys used for Digital Credential key binding are stored in a **trustworthy** WSCD. It also provides a method to authenticate the WSCD with the Credential Issuer and verifies that the Wallet Unit has not been revoked.
+The Wallet Unit Attestation is issued by the **Wallet Provider Backend (WPBE)** and attests to the properties of the **Wallet Secure Cryptographic Application (WSCA)** and **Wallet Secure Cryptographic Device (WSCD)** (see :ref:`Decomposition and Certification Scope <wallet-solution-components-decomposition>`). It contains information to ensure that keys used for Digital Credential key binding are stored in a **trustworthy** WSCD. It also provides a method to authenticate the WSCD with the Credential Issuer and verifies that the Wallet Unit has not been revoked.
 
 The requirements for the Wallet Unit Attestation are defined below:
 
@@ -143,30 +135,17 @@ The requirements for the Wallet Unit Attestation are defined below:
      - The Wallet Unit Attestation MUST contain one or multiple attested credential's public key that are coming from the same WSCD.
      - WPBE
    * - WUA-009
-     - The Wallet Unit Attestation MUST be signed by the Wallet Provider that has authority over and is the owner of the Wallet Solution, as specified by the overseeing Registration Authority. Wallet Providers SHALL ensure that the certificates they use for signing WUAs and WAAs comply with all applicable requirements in `ETSI TS 119 412-6`_, in particular Clause 5.
+     - The Wallet Unit Attestation MUST be signed by the Wallet Provider that has authority over and is the owner of the Wallet Solution, as specified by the overseeing Registration Authority.
      - WPBE
    * - WUA-010
      - The Wallet Unit Attestation MUST NOT be issued by the Wallet Provider if the WSCD trustworthiness is not guaranteed. In this case, the Wallet Instance MUST be revoked.
      - WPBE, WI
-   * - WUA-011
-     - An Attestation Provider issuing non-device-bound attestations SHALL indicate in its Credential Issuer metadata that it does not need a WUA. A Wallet Unit SHALL NOT send a WUA to an Attestation Provider when requesting a non-device-bound attestation. Note: A Wallet Unit sends a WIA to the Attestation Provider regardless of whether the attestations it issues are device-bound or not.
-     - WPBE
-   * - WUA-012
-     - A Wallet Provider SHALL ensure that the presentation of a WUA is cryptographically bound to the specific context it is intended to be used in. Note: As specified in `OpenID4VCI`_, this is achieved by letting the signed WUA itself contain a nonce provided by the PID Provider or Attestation Provider during the issuance process. Alternatively, the Wallet Unit presents the WUA along with a Proof-of-Possession consisting of a signature over that nonce, created by the private key corresponding to one of the public keys attested in the WUA.
-     - WPBE
-   * - WUA-013
-     - If the WSCA/WSCD is able to export a private key, the Wallet Provider SHALL specify this capability as an attribute in the WUA.
-     - WPBE
-   * - WUA-014
-     - A Wallet Provider SHALL consider all relevant factors, including offline usage, interoperability, and the risk of a WUA becoming a vector to track the User, when deciding on the validity period of a WUA.
-     - WPBE
-
 
 
 WSCD Requirements
 """"""""""""""""""
 
-The **Wallet Secure Cryptographic Device (WSCD)** includes the Hardware Secure Element, WSCD Firmware, and Secure Key Storage System (see :ref:`wallet-solution-components-decomposition:Decomposition and Certification Scope`). To guarantee the utmost security, the cryptographic keys associated with a Wallet Instance (e.g., used to generate the Wallet App Attestation) MUST be securely generated and stored within the WSCD. Only the legitimate User can access the private cryptographic keys, preventing unauthorized usage or tampering. The WSCD MAY be implemented using at least one of the approaches listed below:
+The **Wallet Secure Cryptographic Device (WSCD)** includes the Hardware Secure Element, WSCD Firmware, and Secure Key Storage System (see :ref:`Decomposition and Certification Scope <wallet-solution-components-decomposition>`). To guarantee the utmost security, the cryptographic keys associated with a Wallet Instance (e.g., used to generate the Wallet App Attestation) MUST be securely generated and stored within the WSCD. Only the legitimate User can access the private cryptographic keys, preventing unauthorized usage or tampering. The WSCD MAY be implemented using at least one of the approaches listed below:
 
 .. list-table::
    :widths: 8 55 37
@@ -202,7 +181,7 @@ The **Wallet Secure Cryptographic Device (WSCD)** includes the Hardware Secure E
 
   The WSCD operates at two security levels:
   - **WL3 WSCD**: certified as resistant against attackers with a high attack potential (e.g., HSM, smart card certified at least Common Criteria EAL4+ AVA_VAN.5). Keys bound to PID and WUA WL3 MUST be stored in a WL3 WSCD.
-  **WL2 WSCD**: based on hardware environments not easily certifiable against high attack potential (e.g., TEE). Keys bound to NPID, (Pub/Q)EAA, EAA, and WUA WL2 MAY be stored in a WL2 WSCD.
+  - **WL2 WSCD**: based on hardware environments not easily certifiable against high attack potential (e.g., TEE). Keys bound to NPID, (Pub/Q)EAA, EAA, and WUA WL2 MAY be stored in a WL2 WSCD.
   
   The WL3 WSCD MAY also be used to store private keys corresponding to WL2 Digital Credentials, provided that each Digital Credential has its own distinct key. The WL2 WSCD MUST NOT be used to host PID keys under any circumstance.
   
