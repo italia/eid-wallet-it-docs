@@ -125,7 +125,7 @@ La seguente tabella fornisce un cross-riferimento consolidato dagli elementi del
 Certificazione Obbligatoria
 ---------------------------
 
-La colonna **Ambito Certificazione** nelle tabelle di scomposizione (vedere :ref:`wallet-solution-components-decomposition:Scomposizione e Ambito di Certificazione` e :ref:`credential-issuer-solution-decomposition:Scomposizione e Ambito di Certificazione`) indica se è richiesta una certificazione di sicurezza. I casi condizionali includono:
+La colonna **Ambito Certificazione** nelle tabelle di scomposizione (vedere :ref:`Scomposizione e Ambito di Certificazione <wallet-solution-components-decomposition>` e :ref:`Scomposizione e Ambito di Certificazione <credential-issuer-solution-decomposition>`) indica se è richiesta una certificazione di sicurezza. I casi condizionali includono:
 
 - **WSCD** fornito dall'Utente o dal Fornitore di Wallet (la proprietà del dispositivo influenza lo scopo).
 - **Wallet Instance** ambiente di esecuzione (dispositivo Utente vs. interfaccia web).
