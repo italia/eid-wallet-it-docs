@@ -15,7 +15,7 @@ Infrastructure of Trust
     * - DTS/ESI-0019602
       - Electronic Signatures and Trust Infrastructures (ESI); Trusted lists; Data model. Trusted lists in other formats, such as JSON, CBOR or ASN.1.
     * - ETSI EN 319 411-1
-      - Electronic Signatures and Trust Infrastructures (ESI); Policy and security requirements for Trust Service Providers issuing certificates; Part 1: General requirements Policy requirements for certification authorities issuing public key certificates; Part 1: General requirements (`ETSI EN 319 411-1 <https://portal.etsi.org/webapp/WorkProgram/Report_WorkItem.asp?WKI_ID=72980&curItemNr=47&totalNrItems=213&optDisplay=100000&qSORT=TB&qETSI_ALL=&SearchPage=TRUE&qINCLUDE_SUB_TB=&qINCLUDE_MOVED_ON=&qEND_CURRENT_STATUS_CODE=11+WI%3BM58&qSTOP_FLG=N&qKEYWORD_BOOLEAN=&qCLUSTER_BOOLEAN=&qCLUSTER=17&qFREQUENCIES_BOOLEAN=&qSTOPPING_OUTDATED=&butExpertSearch=Search&includeNonActiveTB=FALSE&includeSubProjectCode=&qREPORT_TYPE=>`_)
+      - Electronic Signatures and Trust Infrastructures (ESI); Policy and security requirements for Trust Service Providers issuing certificates; Part 1: General requirements Policy requirements for certification authorities issuing public key certificates; Part 1: General requirements (`ETSI EN 319 411-1 <https://portal.etsi.org/webapp/WorkProgram/Report_WorkItem.asp?WKI_ID=39364>`__)
     * - ISO-IEC_7367
       - ISO Compliant Mobile Vehicle Registration Certificates, Logical Data Structure
 

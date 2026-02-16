@@ -14,7 +14,7 @@ The Wallet Provider, responsible for delivering a Wallet Solution, MUST expose t
 .. note::
   Tests related to the use of Wallet Provider endpoints are defined in 
   :ref:`wallet-provider-test-matrix`, particularly 
-  :ref:`wallet-provider-backend-testcases`, 
+  :ref:`wallet-provider-backend-testcases`,
   :ref:`wallet-instance-testcases`, and 
   :ref:`wallet-instance-optional-testcases`.
 
@@ -36,7 +36,7 @@ See :ref:`mobile-application-instance:Mobile Application Nonce Request` and :ref
 Wallet Instance Management Endpoint
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This is a RESTful API endpoint provided by the Wallet Provider that enables Wallet Instance management, including registration, status retrieval, revocation upon request (e.g., by the User), and deletion.
+These are RESTful API endpoints provided by the Wallet Provider that enables Wallet Instance management, including registration, status retrieval, revocation upon request (e.g., by the User), and deletion.
 The following sections describe the registration, status retrieval and revocation requests, along with their corresponding responses, handled by this endpoint, which are required for core :ref:`wallet-instance-functionalities:Wallet Instance Functionalities`.
 
 Wallet Instance Registration Request
@@ -69,13 +69,11 @@ If any errors occur during the retrieval process, an error response MUST be retu
 
 Below is a non-normative example of an error response:
 
-.. code:: http
+.. code-block:: http
 
    HTTP/1.1 403 Forbidden
    Content-Type: application/json
    Cache-Control: no-store
-
-.. code:: json
 
    {
      "error": "forbidden",
@@ -100,13 +98,11 @@ If any errors occur during the Wallet Instance Revocation, an error response MUS
 
 Below is a non-normative example of an error response:
 
-.. code:: http
+.. code-block:: http
 
    HTTP/1.1 400 Bad Request
    Content-Type: application/json
    Cache-Control: no-store
-
-.. code:: json
 
    {
      "error": "bad_request",
@@ -200,7 +196,7 @@ Wallet App and Wallet Unit Attestation Issuance Request
 
 The Wallet App and Wallet Unit Attestation Issuance Request uses the HTTP POST method with ``Content-Type`` set to ``application/json``. (:ref:`WP_026 <wallet-instance-testcases>` and :ref:`WP_140–142 <wallet-instance-optional-testcases>`).
 
-The ``typ`` header of the Wallet App and Wallet Unit Attestation Issuance Request JWT assumes the value ``wp-war-wua+jwt``.
+The ``typ`` header of the Wallet App and Wallet Unit Attestation Issuance Request JWT assumes the value ``attestations-request+jwt``.
 
 The Wallet App and Wallet Unit Attestation Issuance Request body contains an ``assertion`` parameter whose value is a signed JWT including all header parameters and body claims described below.
 
@@ -234,7 +230,7 @@ In particular, the Wallet App and Wallet Unit Attestation Issuance JWT includes 
       - Thumbprint of the Wallet Instance's JWK contained in the ``cnf`` claim.
       - [:rfc:`7638#section_3`]
     * - **typ**
-      - The type of the JWT, it MUST set to ``wp-war-wua+jwt``.
+      - The type of the JWT, it MUST set to ``attestations-request+jwt``.
       -
 
 The Wallet App and Wallet Unit Attestation Request JWT includes the following body claims:
@@ -286,7 +282,7 @@ Below is a non-normative example of a Wallet App and Wallet Unit Attestation Req
     {
       "alg": "ES256",
       "kid": "OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
-      "typ": "wp-war-wua+jwt"
+      "typ": "attestations-request+jwt"
     }
 
 .. code-block:: json
@@ -313,7 +309,7 @@ Below is a non-normative example of a Wallet App and Wallet Unit Attestation Req
 Wallet App and Wallet Unit Attestation Issuance Response
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-If the Wallet App and Wallet Unit Attestation Issuance Request is successfully validated, the Wallet Provider returns an HTTP response with a status code of ``200 OK`` and ``Content-Type`` ``application/json``. The returned JSON Object MUST possess the ``wallet_attestations`` parameter, which includes ``wallet_app_attestations`` and ``wallet_unit_attestation`` elements (see :ref:`wallet-attestation-issuance:Wallet App and Wallet Unit Attestation Issuance`). ``wallet_app_attestations`` is an array containing the Wallet App Attestations in JWT, SD-JWT and mdoc format and ``wallet_unit_attestation`` is a single object containing the Wallet Unit Attestation. Both attestations are signed by the Wallet Provider (:ref:`WP_027–029 <wallet-instance-testcases>` and :ref:`WP_143–144 <wallet-instance-optional-testcases>`). The JWT formatted Wallet App Attestation is to be used for the Issuance phase, as an OAuth Client Attestation, and will be sent to the Credential Issuer as discussed in :ref:`credential-issuance:Digital Credential Issuance`. The SD-JWT and mdoc formatted Wallet App Attestation will instead be used during presentation respectively in the remote (:ref:`remote-flow:Remote Flow`) and proximity (:ref:`proximity-flow:Proximity Flow`) flows. The JWT formatted Wallet Unit Attestation is to be used for the Issuance phase, as an ``key_attestation`` JOSE header in the JWT ``proof`` type, and will be sent to the Credential Issuer as discussed in :ref:`credential-issuance:Digital Credential Issuance`.
+If the Wallet App and Wallet Unit Attestation Issuance Request is successfully validated, the Wallet Provider returns an HTTP response with a status code of ``200 OK`` and ``Content-Type`` ``application/json``. The returned JSON Object MUST possess the ``wallet_attestations`` parameter, which includes ``wallet_app_attestation`` and ``wallet_unit_attestation`` elements (see :ref:`wallet-attestation-issuance:Wallet App and Wallet Unit Attestation Issuance`). ``wallet_app_attestation`` and ``wallet_unit_attestation`` are single JSON objects containing the Wallet App Attestation and the Wallet Unit Attestation, respectively. Both attestations are signed by the Wallet Provider (:ref:`WP_027–029 <wallet-instance-testcases>` and :ref:`WP_143–144 <wallet-instance-optional-testcases>`). The JWT formatted Wallet App Attestation is to be used for the Issuance phase, as an OAuth Client Attestation, and will be sent to the Credential Issuer as discussed in :ref:`credential-issuance:Digital Credential Issuance`. The JWT formatted Wallet Unit Attestation is to be used for the Issuance phase, as an ``key_attestation`` JOSE header in the JWT ``proof`` type, and will be sent to the Credential Issuer as discussed in :ref:`credential-issuance:Digital Credential Issuance`.
 
 
 The JSON Object returned in the response has the following claim:
@@ -327,37 +323,14 @@ The JSON Object returned in the response has the following claim:
       - **Description**
       - **Reference**
     * - **wallet_attestations**
-      - REQUIRED. A JSON array containing one or more Wallet App Attestation and one Wallet Unit Attestation in ``wallet_app_attestations`` and ``wallet_unit_attestation`` elements, respectively. It MUST contain the following mandatory claims:
+      - REQUIRED. A JSON array containing one Wallet App Attestation and one Wallet Unit Attestation in ``wallet_app_attestation`` and ``wallet_unit_attestation`` elements, respectively. It MUST contain the following mandatory claims:
 
 
-        - **wallet_app_attestation**: A JSON array containing of one or more issued Wallet App Attestation. The elements of the array MUST be JSON Objects. At least two JSON Objects MUST be present.
+        - **wallet_app_attestation**: A JSON object containing of the issued Wallet App Attestation.
         - **wallet_unit_attestation**: A JSON object containing of the issued Wallet Unit Attestation.
       - This specification.
 
-Each JSON Object contained in the ``wallet_app_attestations`` array MUST have the following form:
-
-.. list-table::
-    :class: longtable
-    :widths: 20 60 20
-    :header-rows: 1
-
-    * - **Parameter**
-      - **Description**
-      - **Reference**
-    * - **format**
-      - A string identifying the Data Model used to create and represent the Wallet App Attestation. It MUST be either ``jwt``, ``dc+sd-jwt`` or ``mso_mdoc`` depending on the credential format.
-      - This specification.
-    * - **wallet_app_attestation**
-      - A string representing the Wallet App Attestation. If
-
-        - the Wallet App Attestation is in JWT format, then the claim's value MUST be a string that is a JWT.
-        - the Wallet App Attestation is in SD-JWT format, then the claim's value MUST be a string that is an SD-JWT VC.
-        - the Wallet App Attestation is in mdoc format, then the claim's value is the base64url-encoded representation of the CBOR-encoded IssuerSigned structure, as defined in [ISO.18013-5]. This structure MUST contain all Namespaces and IssuerSignedItems that are included in the MobileSecurityObject.
-
-      - This specification.
-
-
-In the case of ``wallet_unit_attestation`` parameter, its value is an string representing the Wallet Unit Attestation in a JWT. 
+The value of ``wallet_app_attestation`` and ``wallet_unit_attestation`` parameters are strings representing the Wallet App Attestation and Wallet Unit Attestation in a JWT, respectively. 
 
 If any errors occur during the process, an error response is returned. The response uses ``application/json`` as the ``Content-Type`` and includes the following parameters:
 
@@ -424,7 +397,6 @@ The following table lists HTTP Status Codes and related error codes that are sup
       - The service is unavailable. Please try again later.
 
 
-Di seguito forniamo i dettagli relativi alla Wallet App Attestation nei formati ``jwt``, ``dc+sd-jwt`` o ``mso_mdoc`` e alla Wallet Unit Attestation nel formato jwt.
 
 Wallet App Attestation JWT
 """""""""""""""""""""""""""
@@ -449,11 +421,11 @@ The JOSE header of the Wallet App Attestation JWT contains the following paramet
       - REQUIRED. It MUST be set to ``oauth-client-attestation+jwt``
       - `OPENID4VC-HAIP`_.
     * - **trust_chain**
-      - REQUIRED. Sequence of Entity Statements that composes the Trust Chain related to the Wallet Provider.
+      - OPTIONAL. Sequence of Entity Statements that composes the Trust Chain related to the Wallet Provider.
       - `OID-FED`_ Section 4.3 *Trust Chain Header Parameter*.
     * - **x5c**
       - REQUIRED. Contains the X.509 public key certificate or certificate chain (:rfc:`5280`) corresponding to the key used to digitally sign the JWT.
-      - :rfc:`7515` Section 4.1.8 and `SD-JWT-VC`_ Section 3.5.
+      - :rfc:`7515` Section 4.1.8, `SD-JWT-VC`_ Section 3.5 and `OPENID4VC-HAIP`_.
 
 The body of the Wallet App Attestation JWT contains the following claims:
 
@@ -472,17 +444,24 @@ The body of the Wallet App Attestation JWT contains the following claims:
       - REQUIRED. UNIX Timestamp with the expiry time of the JWT.
       - :rfc:`9126` and :rfc:`7519`.
     * - **iat**
-      - REQUIRED. UNIX Timestamp with the time of JWT issuance.
+      - OPTIONAL. UNIX Timestamp with the time of JWT issuance.
+      - :rfc:`9126` and :rfc:`7519`.
+    * - **nbf**
+      - OPTIONAL. UNIX Timestamp with the start time of validity of the JWT issuance.
       - :rfc:`9126` and :rfc:`7519`.
     * - **cnf**
       - REQUIRED. JSON object, containing the public part of an asymmetric key pair owned by the Wallet Instance.
       - :rfc:`7800`.
-    * - **wallet_link**
-      - OPTIONAL. String containing a URL to get further information about the Wallet and the Wallet Provider.
-      - `OpenID4VCI`_.
-    * - **wallet_name**
-      - OPTIONAL. String containing a human-readable name of the Wallet.
-      - `OpenID4VCI`_.
+    * - **eudi_wallet_info**
+      - REQUIRED. JSON object, containing the general information about the Wallet and Wallet Provider. The following parameter MUST be included:
+
+        - **general_info**: REQUIRED. An object that has the following parameters:
+
+          - **wallet_provider_name**: REQUIRED. String value of the Wallet Provider name as listed on the trusted list of Wallet Providers.
+          - **wallet_solution_id**: REQUIRED. String value of the Wallet Solution identifier as listed on the trusted list of Wallet Providers. 
+          - **wallet_solution_version**: REQUIRED. String value of the Wallet Solution version.
+          - **wallet_solution_certification_information**: REQUIRED. String value that contains a URL that links to the certification of the Wallet Solution.
+      - `EUDI-TS 3`_.
     * - **sub**
       - REQUIRED. Identifier of the Wallet Instance which is the thumbprint of the Wallet App Attestation JWK.
       - :rfc:`9126` and :rfc:`7519`.
@@ -497,146 +476,10 @@ Below is a non-normative example of the Wallet App Attestation JWT header and pa
   :language: JSON
 
 
-
-Wallet App Attestation SD-JWT
-""""""""""""""""""""""""""""""
-
-The JOSE header of the Wallet App Attestation SD-JWT MUST contain the following parameters:
-
-.. list-table::
-    :class: longtable
-    :widths: 20 60 20
-    :header-rows: 1
-
-    * - **JOSE header**
-      - **Description**
-      - **Reference**
-    * - **alg**
-      - REQUIRED. A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms listed in :ref:`algorithms:cryptographic algorithms` and MUST NOT be set to ``none`` or any symmetric algorithm (MAC) identifier.
-      - :rfc:`7516#section-4.1.1`.
-    * - **kid**
-      - REQUIRED. Unique identifier of the public key associated to the private key the Wallet Provider used to sign the Wallet App Attestation.
-      - :rfc:`7638#section_3`.
-    * - **typ**
-      - REQUIRED. It MUST be set to ``dc+sd-jwt``
-      - `OPENID4VC-HAIP`_.
-    * - **trust_chain**
-      - REQUIRED. Sequence of Entity Statements that composes the Trust Chain related to the Wallet Provider.
-      - `OID-FED`_ Section 4.3 *Trust Chain Header Parameter*.
-    * - **x5c**
-      - REQUIRED. Contains the X.509 public key certificate or certificate chain (:rfc:`5280`) corresponding to the key used to digitally sign the JWT.
-      - :rfc:`7515` Section 4.1.8 and `SD-JWT-VC`_ Section 3.5.
-
-The body of the Wallet App Attestation SD-JWT contains the following claims:
-
-.. list-table::
-    :class: longtable
-    :widths: 20 60 20
-    :header-rows: 1
-
-    * - **Claim**
-      - **Description**
-      - **Reference**
-    * - **iss**
-      - REQUIRED. Identifier of the Wallet Provider.
-      - :rfc:`9126` and :rfc:`7519`.
-    * - **exp**
-      - REQUIRED. UNIX Timestamp with the expiry time of the JWT.
-      - :rfc:`9126` and :rfc:`7519`.
-    * - **iat**
-      - REQUIRED. UNIX Timestamp with the time of JWT issuance.
-      - :rfc:`9126` and :rfc:`7519`.
-    * - **cnf**
-      - REQUIRED. JSON object, containing the public part of an asymmetric key pair owned by the Wallet Instance.
-      - :rfc:`7800`.
-    * - **vct**
-      - REQUIRED. Credential type value MUST be an URN and it MUST be of the type ``urn:eudi:wallet_app_attestation:it:{version}`` as described in :ref:`registry:Digital Credentials Catalog`.
-      - Section 3.2.2.2 `SD-JWT-VC`_.
-    * - **_sd**
-      - REQUIRED. JSON array containing a list of all disclusure's digests.
-      - `SD-JWT`_.
-    * - **_sd_alg**
-      - REQUIRED. String containing the hash algorithm used by the Wallet Provider to generate the disclusure's digests.
-      - `SD-JWT`_.
-    * - **sub**
-      - OPTIONAL. Identifier of the Wallet Instance which is the thumbprint of the Wallet App Attestation JWK.
-      - :rfc:`9126` and :rfc:`7519`.
-
-The following disclosures MAY be present:
-
-.. list-table::
-    :class: longtable
-    :widths: 20 60 20
-    :header-rows: 1
-
-    * - **Disclosure**
-      - **Description**
-      - **Reference**
-    * - **wallet_link**
-      - OPTIONAL. String containing a URL to get further information about the Wallet and the Wallet Provider.
-      - `OpenID4VCI`_.
-    * - **wallet_name**
-      - OPTIONAL. String containing a human-readable name of the Wallet.
-      - `OpenID4VCI`_.
-
-.. note:: 
-  Regardless of the fact that ``wallet_link`` and ``wallet_name`` are disclosable, these values MUST NOT be shown to the User, as they are not a User attribute.
-
-Below are described examples of values for the disclosures:
-
-**Claim** ``wallet_link``:
-
-- SHA-256 Hash: ``cD9/XC7t7QVHvmSiE1dGW0WYr0jcqm8n0GA6MGitaik=``
-- Disclosure: ``WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgIndhbGxldF9saW5rIiwgImh0dHBzOi8vZXhhbXBsZS5jb20vd2FsbGV0L2RldGFpbF9pbmZvLmh0bWwiXQ==``
-- Contents: ``["2GLC42sKQveCfGfryNRN9w", "wallet_link", "https://example.com/wallet/detail_info.html"]``
-
-**Claim** ``wallet_name``:
-
-- SHA-256 Hash: ``iQQhzf6+saYCzHH92N1QyJisKsZbApbTrJ1amHgLoOk=``
-- Disclosure:n``WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgIndhbGxldF9uYW1lIiwgIldhbGxldF9Ib2JiaXRvbl92MSJd``
-- Contents: ``["2GLC42sKQveCfGfryNRN9w", "wallet_name", "Wallet_v1"]``
-
-Below is a non-normative example of the SD-JWT Wallet App Attestation header and payload without encoding and signature applied:
-
-.. literalinclude:: ../../examples/wa_sd_jwt_example_header.json
-  :language: JSON
-
-.. literalinclude:: ../../examples/wa_sd_jwt_example_payload.json
-  :language: JSON
-
-Wallet App Attestation mdoc
-""""""""""""""""""""""""""""
-
-This description extends the MDOC-CBOR Credential Format guidelines, given in :ref:`credential-data-model:mdoc-CBOR Credential Format`, to support Wallet App Attestation data representation. The Wallet App Attestation MUST use ``docType`` of the form ``{Trust Anchor reverse domain}.{wallet_app_attestation}`` as described in :ref:`registry:Digital Credentials Catalog`.
-
-The ``nameSpaces`` for the domestic nameSpace Json Objects are defined as follows:
-
-.. list-table:: it.wallet.trust-registry.WalletAttestation
-    :class: longtable
-    :widths: 20 60 20
-    :header-rows: 1
-
-    * - **elementIdentifier**
-      - **Description**
-      - **Reference**
-    * - **sub**
-      - OPTIONAL. Identifier of the Wallet Instance which is the thumbprint of the Wallet App Attestation COSE Key.
-      - :rfc:`9126` and :rfc:`7519`.
-    * - **wallet_link**
-      - OPTIONAL. JSON String containing a URL to get further information about the Wallet and the Wallet Provider.
-      - `OpenID4VCI`_.
-    * - **wallet_name**
-      - OPTIONAL. JSON String, it MUST be the Identifier of the Wallet Provider.
-      - `OpenID4VCI`_.
-
-Below is a non-normative example of the mdoc Wallet App Attestation in CBOR diagnostic notation:
-
-.. literalinclude:: ../../examples/wa_mso_mdoc_example.txt
-  :language: text
+.. note::
+    As the certification scheme has not yet been defined, the exact content of ``wallet_solution_certification_information`` is undefined. This content will be defined in a future update.
 
 
-.. note:: 
-  Regardless of the fact that ``sub``, ``wallet_link`` and ``wallet_name`` are disclosable in the domestic namespace, these values MUST NOT be shown to the User, as they are not a User attribute.
 
 
 Wallet Unit Attestation JWT
@@ -663,10 +506,10 @@ The JOSE header of the Wallet Unit Attestation JWT contains the following parame
       - REQUIRED. It MUST be set to ``key-attestation+jwt``
       - `OPENID4VC-HAIP`_.
     * - **trust_chain**
-      - REQUIRED. Sequence of Entity Statements that composes the Trust Chain related to the Wallet Provider.
+      - OPTIONAL. Sequence of Entity Statements that composes the Trust Chain related to the Wallet Provider.
       - `OID-FED`_ Section 4.3 *Trust Chain Header Parameter*.
     * - **x5c**
-      - OPTIONAL. Contains the X.509 public key certificate or certificate chain (:rfc:`5280`) corresponding to the key used to digitally sign the JWT.
+      - REQUIRED. Contains the X.509 public key certificate or certificate chain (:rfc:`5280`) corresponding to the key used to digitally sign the JWT.
       - :rfc:`7515` Section 4.1.8.
 
 The body of the Wallet Unit Attestation JWT contains the following claims:
@@ -708,9 +551,22 @@ The body of the Wallet Unit Attestation JWT contains the following claims:
     * - **status**
       - REQUIRED. JSON Object representing the supported revocation check mechanisms, such as OAuth Status List.
       - `OpenID4VCI`_.
-    * - **certification**
-      - OPTIONAL. A String that contains a URL that links to the certification of the key storage component.
-      - `OpenID4VCI`_.
+    * - **eudi_wallet_info**
+      - REQUIRED. JSON object, containing the general information about the Wallet and Wallet Provider. The following parameters MUST be included:
+
+        - **general_info**: REQUIRED. An object that has the following parameters:
+
+          - **wallet_provider_name**: REQUIRED. String value of the Wallet Provider name as listed on the trusted list of Wallet Providers.
+          - **wallet_solution_id**: REQUIRED. String value of the Wallet Solution identifier as listed on the trusted list of Wallet Providers. 
+          - **wallet_solution_version**: REQUIRED. String value of the Wallet Solution version.
+          - **wallet_solution_certification_information**: REQUIRED. String that contains a URL that links to the certification of the Wallet Solution.
+
+        - **key_storage_info**: REQUIRED. An object that has the following parameters:
+
+          - **storage_type**: REQUIRED. String value that identifies the technical implementation of WSCD. It can have one of the following values, ``REMOTE``, ``LOCAL_EXTERNAL``, ``LOCAL_INTERNAL``, ``LOCAL_NATIVE``, or ``HYBRID``. 
+          - **keys_exportable**: REQUIRED. Boolean value that defines whether the private keys of the WSCD or keystore can be exported. It SHALL be set to ``true`` if the WSCD  allows the private keys to be exported (including if in encrypted format only) and ``false`` otherwise.
+          - **storage_certification_information**: REQUIRED. String that contains a URL that links to the certification of the key storage component. 
+      - `EUDI-TS 3`_.
 
 
 Below is a non-normative example of the Wallet Unit Attestation JWT header and payload, without encoding and signature applied:
@@ -721,11 +577,19 @@ Below is a non-normative example of the Wallet Unit Attestation JWT header and p
 .. literalinclude:: ../../examples/wua-jwt_example_payload.json
   :language: JSON
 
+
+.. note::
+    As the certification scheme has not yet been defined, the exact content of ``wallet_solution_certification_information`` is undefined. 
+    This content will be defined in a future update. Similarly, the exact content of ``storage_certification_information`` is currently undefined and will be specified in a future update, but it SHALL provide sufficient information to determine whether the key storage is a WSCD.  
+    Note that the OID4VCI specification does specify a ``certification`` attribute in the ``key_attestation`` element that could be used instead of ``storage_certification_information``.
+
+
 e-Service PDND Wallet Provider Catalog
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 User's death leads to the revocation of the Wallet Instances of the User and the deletion of the User account at the Wallet Provider. For this reason, the Wallet Provider provides the following e-service through PDND.
 A PID Provider that has been notified by the Authentic Source of the PID of the User's death MUST send a notification to Wallet Providers using this endpoint.
+
 
 .. only:: html
 

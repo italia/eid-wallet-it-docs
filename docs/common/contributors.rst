@@ -1,5 +1,6 @@
 - Alen Horvat
 - Amir Sharif
+- Andrea Misuraca
 - Andrea Moro
 - Andrea Prosseda
 - Chris Phillips
@@ -12,11 +13,13 @@
 - Francesco Ventola
 - Gabriella Cefalù
 - Giada Sciarretta
+- Gian Paolo Rossi
 - Giuseppe De Marco
 - Klaas Wierenga
 - Kristina Yasuda
 - Leif Johansson
 - Lorenzo Cerini
+- Lorenzo Nardi
 - Manuel Rafeli
 - Marco Basili
 - Marco Pernpruner

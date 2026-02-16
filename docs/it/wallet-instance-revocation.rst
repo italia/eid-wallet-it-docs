@@ -56,7 +56,7 @@ In entrambi i casi, utilizzando il portale del Fornitore di Wallet:
 
 Di seguito è riportato un esempio non normativo di una Richiesta di Recupero delle Istanze del Wallet.
 
-.. code:: http
+.. code-block:: http
 
    GET /wallet-instances HTTP/1.1
    Host: walletprovider.example.com
@@ -64,7 +64,7 @@ Di seguito è riportato un esempio non normativo di una Richiesta di Recupero de
 In caso di recupero riuscito, il Fornitore di Wallet DEVE restituire una risposta di conferma, con lo stato di tutte le Istanze del Wallet associate all'Utente (:ref:`WP_146 <wallet-instance-optional-testcases>`).
 Di seguito è riportato un esempio non normativo di una Risposta di Recupero delle Istanze del Wallet.
 
-.. code:: http
+.. code-block:: http
 
    HTTP/1.1 200 OK
    Content-Type: application/json
@@ -116,14 +116,18 @@ Meccanismi di Verifica della Revoca
 
 La verifica della validità dell'Istanza del Wallet DEVE essere eseguita:
 
-- **Durante l'emissione dell’Attestato Elettronico di Attributi** da parte dei Fornitori di Attestati. Solo le istanze del Wallet in stato Operativo o Valido possiedono una Wallet App Attestation e una Wallet Unit Attestation valide. La verifica della validità di un'Istanza del Wallet viene eseguita indirettamente dai Fornitori di Attestati tramite il controllo della presenza di una Wallet Unit Attestation valida (ossia non scaduta, non revocata — verificando la Wallet Unit Attestation Status List — e firmata da un Fornitore di Portafoglio fidato). 
-
-- **Durante la fase presentazione dell’Attestato Elettronico di Attributi** da parte delle Relying Parties. La verifica della validità di un'Istanza del Wallet viene eseguita dalle Relying Parties tramite il controllo della presenza di una Wallet App Attestation valida (ossia non scaduta e firmata da un Fornitore di Wallet fidato). Durante una presentazione in prossimità, l'istanza del Wallet potrebbe non essere in grado di recuperare una nuova Wallet App Attestation; in questo caso, l'istanza del Wallet DOVREBBE inviare l'ultima versione disponibile della Wallet App Attestation. Spetta alla Relying Party determinare se una presentazione con una Wallet App Attestation valida ma scaduta sia da considerarsi accettabile o meno.
+- **Durante l'emissione dell’Attestato Elettronico di Attributi** da parte dei Fornitori di Attestati. Solo le istanze del Wallet in stato Operativo o Valido possiedono una Wallet App Attestation e una Wallet Unit Attestation valide. La verifica della validità di un'Istanza del Wallet viene eseguita indirettamente dai Fornitori di Attestati tramite il controllo della presenza di una Wallet Unit Attestation valida (ossia non scaduta, non revocata — verificando la Wallet Unit Attestation Status List — e firmata da un Fornitore di Portafoglio fidato).
 
 - **Durante il periodo di validità dell’Attestato Elettronico di Attributi** da parte dei Fornitori di Attestati, ogni 24 ore mediante la verifica della Wallet Unit Attestation Status List del PID. Infatti, se l'Istanza del Wallet è revocata, il PID in essa contenuto DEVE essere revocato. Di conseguenza, qualsiasi altro Attestato Elettronico ottenuto attraverso la presentazione del PID DEVE anch'esso essere revocato.
+
+- **Durante il ciclo di vita dell'Istanza del Wallet** da parte dell'Istanza del Wallet. Ogni Fornitore di Wallet può implementare metodi diversi per consentire a un'Istanza del Wallet di verificarne il suo stato. La specifica IT Wallet suggerisce di controllare la Status List della Wallet Unit Attestation.
 
 .. note::
   Se i Fornitori di Attestati rilasciano Attestati Elettronico di Attributi con un periodo di validità inferiore a 24 ore, è sufficiente che verifichino il periodo di validità della WUA al momento dell'emissione.
 
 .. note::
   Nell'attuale versione della specifica, i Fornitori di Attestati vengono notificati direttamente della revoca di un'Istanza del Wallet dal Fornitore di Wallet tramite un servizio e-service PDND.
+
+.. note::
+  Durante la fase di presentazione degli Attestati Elettronici, una Relying Party può verificare indirettamente la revoca dell'Istanza del Wallet verificando la revoca degli Attestati Elettronici. Infatti, se un'Istanza del Wallet viene revocata, il Fornitore di Wallet revocherà la corrispondente Wallet Unit Attestation, innescando la revoca degli Attestati Elettronici da parte del Fornitore di Attestati Elettronici.
+

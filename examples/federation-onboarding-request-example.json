@@ -1,21 +1,21 @@
 {
-  "entity_id": "https://credential-issuer.example.gov",
-  "entity_type": "credential_issuer",
-  "jwks": {
-    "keys": [
-      {
-        "kid": "k1d2e3f4g5h6i7j8",
-        "kty": "EC",
-        "crv": "P-256",
-        "x": "8w1QwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw",
-        "y": "QwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw"
-      }
-    ]
-  },
-  "certificate_signing_requests": {
-    "k1d2e3f4g5h6i7j8": "-----BEGIN CERTIFICATE REQUEST-----\nMIIBWTCB/QIBADCBkDELMAkGA1UEBhMCSVQxDjAMBgNVBAgMBUxhemlvMQ0wCwYD\nVQQHDARSb21hMRYwFAYDVQQKDA1FeGFtcGxlIE9yZzEkMCIGA1UEAwwbY3JlZGVu\ndGlhbC1pc3N1ZXIuZXhhbXBsZS5nb3YwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNC\nAAR8w1QwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw\nQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw\nQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw\nQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw\n-----END CERTIFICATE REQUEST-----"
-  },
-  "submission_timestamp": "2025-09-25T14:30:00Z"
+    "entity_id": "https://credential-issuer.example.gov",
+    "entity_type": "credential_issuer",
+    "jwks": {
+        "keys": [
+            {
+                "kid": "k1d2e3f4g5h6i7j8",
+                "kty": "EC",
+                "crv": "P-256",
+                "x": "8w1QwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw",
+                "y": "QwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw"
+            }
+        ]
+    },
+    "certificate_signing_requests": {
+        "k1d2e3f4g5h6i7j8": "-----BEGIN CERTIFICATE REQUEST-----\nMIIBWTCB/QIBADCBkDELMAkGA1UEBhMCSVQxDjAMBgNVBAgMBUxhemlvMQ0wCwYD\nVQQHDARSb21hMRYwFAYDVQQKDA1FeGFtcGxlIE9yZzEkMCIGA1UEAwwbY3JlZGVu\ndGlhbC1pc3N1ZXIuZXhhbXBsZS5nb3YwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNC\nAAR8w1QwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw\nQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw\nQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw\nQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw\n-----END CERTIFICATE REQUEST-----"
+    },
+    "submission_timestamp": "2025-09-25T14:30:00Z"
 }
 
 

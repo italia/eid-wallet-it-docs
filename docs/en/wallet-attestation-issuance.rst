@@ -97,7 +97,7 @@ The Wallet Instance MUST send the signed Wallet App and Wallet Unit Attestation 
 
 Upon successful completion of all checks, the Wallet Provider issues a Wallet App Attestation valid for less than 24 hours (:ref:`WP_144 <wallet-instance-optional-testcases>`), and a Wallet Unit Attestation valid for at least one month.
 
-**Step 29 (Wallet App and Wallet Unit Attestation Issuance Response)**: Upon successful completion, the Wallet Provider MUST return a confirmation response using status code 200 and Content-Type ``application/json``, containing the Wallet App and Wallet Unit Attestations signed by the Wallet Provider. The Wallet provider MUST return the Wallet App Attestation in at least three formats: JWT, SD-JWT and mdoc. The Wallet Instance will then perform security and integrity verification of the Wallet App and Wallet Unit Attestations received in addition to trust verification of its Issuer (:ref:`WP_030–031 <wallet-instance-testcases>`).
+**Step 29 (Wallet App and Wallet Unit Attestation Issuance Response)**: Upon successful completion, the Wallet Provider MUST return a confirmation response using status code 200 and Content-Type ``application/json``, containing the Wallet App and Wallet Unit Attestations signed by the Wallet Provider. The Wallet provider MUST return the Wallet App Attestation in JWT format. The Wallet Instance will then perform security and integrity verification of the Wallet App and Wallet Unit Attestations received in addition to trust verification of its Issuer (:ref:`WP_030–031 <wallet-instance-testcases>`).
 
 
 Below is a non-normative example of the response.
@@ -109,21 +109,7 @@ Below is a non-normative example of the response.
 
   {
     "wallet_attestations": [
-      "wallet_app_attestations": [
-        {
-          "format": "jwt",
-          "wallet_app_attestation": "ey..."
-        },
-        {
-          "format": "dc+sd-jwt",
-          "wallet_app_attestation": "ey..."
-        },
-        {
-          "format": "mso_mdoc",
-          "wallet_app_attestation": "omppc3N1ZXJBdXRohEOhASahG...ArQwggKwMIICVqADAgEC"
-        }
-      ],
-
+      "wallet_app_attestation": "omppc3N1ZXJBdXRohEOhASaiBE...dElEAnFlbGVtZW50SWRl",
       "wallet_unit_attestation": "omppc3N1ZXJBdXRohEOhASahG...ArQwggKwMIICVqADAgEC"
     ]
   }

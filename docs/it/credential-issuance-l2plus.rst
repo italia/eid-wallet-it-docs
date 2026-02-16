@@ -100,7 +100,7 @@ L'Istanza del Wallet inizia il flusso di Autenticazione eID Substantial con Veri
 Authorization Details
 """""""""""""""""""""
 
-Il JWT Request Object DEVE contenere gli stessi parametri come definiti in :ref:`credential-issuance-endpoint:Endpoint di Pushed Authorization Request`. Quando l'Utente richiede un PID utilizzando Autenticazione eID Substantial con Verifica MRTD, l'Istanza del Wallet DEVE includere un **Authorization Details Object** aggiuntivo nel parametro ``authorization_details``, con la struttura e i claim come definiti nella Tabella dei parametri JWT Request della Sezione :ref:`credential-issuance-endpoint:Endpoint di Pushed Authorization Request`
+Il JWT Request Object DEVE contenere gli stessi parametri come definiti in :ref:`credential-issuance-endpoint:Pushed Authorization Request Endpoint`. Quando l'Utente richiede un PID utilizzando Autenticazione eID Substantial con Verifica MRTD, l'Istanza del Wallet DEVE includere un **Authorization Details Object** aggiuntivo nel parametro ``authorization_details``, con la struttura e i claim come definiti nella Tabella dei parametri JWT Request della Sezione :ref:`credential-issuance-endpoint:Pushed Authorization Request Endpoint`
 
 Di seguito un esempio non normativo di PAR:
 
@@ -124,6 +124,9 @@ Fase 2: Autenticazione Primaria
 Dopo l'elaborazione con successo del PAR, il Server di Autorizzazione reindirizza l'User Agent al Provider di Identità LoA3 configurato per l'autenticazione primaria. L'Utente completa il flusso di autenticazione LoA3 (SPID o CIEid Substantial) e il Server di Autorizzazione correla l'identità autenticata con la sessione OAuth attiva.
 
 Il Server di Autorizzazione PID DEVE assicurare che il parametro ``mrtd_auth_session`` sia mantenuto durante questa fase per la correlazione appropriata di sessione con gli step di autenticazione successivi.
+
+.. note::
+  Nel caso in cui l'Utente dovesse eseguire un'autenticazione LoA High, la successiva fase 3 DOVRA' essere saltata.
 
 Fase 3: Flusso di Validazione MRTD PoP
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -340,12 +343,23 @@ Di seguito un esempio non normativo di una Risposta MRTD PoP:
 
     HTTP/1.1 202 Accepted
     Content-Type: application/jwt; charset=utf-8
+    
+    eyJhbGciOiJFUzI1NiIsInR5cCI6Im1ydGQtaWFzLXBvcCtqd3QiLCJraWQiOiJiM2YxYTZjMmU5ZDU0YThmOWMzZTdkMWEyZjRiNmM3OCJ9.eyJpc3MiOiJodHRwczovL3BpZC1wcm92aWRlci5leGFtcGxlLm9yZyIsImF1ZCI6Imh0dHBzOi8vd2FsbGV0LmV4YW1wbGUub3JnL2luc3RhbmNlLzEyMzQ1IiwiaWF0IjoxNzUzNTU1ODAwLCJleHAiOjE3NTM1NTYwMDAsIm1ydGRfcG9wX25vbmNlIjoiOWYyYzRhN2UzYjFkOGM5YTZlNWY0YjJhMWMzZDdlOGYiLCJtcnoiOiIuLi4iLCJjaGFsbGVuZ2UiOiIuLi4iLCJodHUiOiIuLi4iLCJodG0iOiIuLi4ifQ.signature
+
+Header JWT decodificato:
+
+.. code-block:: json
+
     {
       "alg":"ES256",
       "typ":"mrtd-ias-pop+jwt",
       "kid":"b3f1a6c2e9d54a8f9c3e7d1a2f4b6c78"
     }
-    .
+
+Body JWT decodificato:
+
+.. code-block:: json
+
     {
       "iss":"https://pid-provider.example.org",
       "aud":"https://wallet.example.org/instance/12345",
@@ -515,7 +529,7 @@ Di seguito un esempio non normativo di una Richiesta di Validazione MRTD PoP:
     OAuth-Client-Attestation-PoP: eyJhbGciOiJFUz…
 
     {
-      "mrtd_validation_jwt":"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL3dhbGxldC5leGFtcGxlLm9yZy9pbnN0YW5jZS8xMjM0NSIsImF1ZCI6Imh0dHBzOi8vcGlkLXByb3ZpZGVyLmV4YW1wbGUub3JnIiwiaWF0IjoxNzUzNTU1NDAwLCJleHAiOjE3NTM1NTU3MDAsImRvY3VtZW50X3R5cGUiOiJjaWUiLCJtcnRkIjp7ImRnMSI6IlVEeEpWRUU4VTAxSlZFZzhQRXBQU0U0OFBFcFBTRTRnVTAxSlZFZzhQREU1T0RBME1UVThUVDxQTnpjM056SXpNUT09IiwiZGcxMSI6Ik1USXpORFUyTnpnNVFVSkRSRVZHUjBoSlNrdE1UVTVQVUVGT1IxSlRWRlZXV0ZsYVUwRkVSVVU9Iiwic29kX21ydGQiOiJNSUlGempDQ0JMYWdBd0lCQWdJSVFPWTJLSkdGVFVJd0RRWUpLb1pJaHZjTkFRRUxCUUF3WHpFTE1Baz0ifSwiaWFzIjp7Imlhc19wayI6Ik1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBejEyMzQ1Njc4OTA9Iiwic29kX2lhcyI6Ik1JSUZhRENDQkZDZ0F3SUJBZ0lKQUwyS0pHRlRVSXdEUVlKS29aSWh2Y05BUUVMQlFBd1h6RUxNQT09IiwiY2hhbGxlbmdlX3NpZ25lZCI6ImExYjJjM2Q0ZTVmNjc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MGFiY2RlZjEyMzQ1Njc4OTBhYmNkZWY9PSJ9fQ.xyz456abc789def012ghi345jkl678mno901pqr234stu567vwx890yz123”, 
+      "mrtd_validation_jwt":"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL3dhbGxldC5leGFtcGxlLm9yZy9pbnN0YW5jZS8xMjM0NSIsImF1ZCI6Imh0dHBzOi8vcGlkLXByb3ZpZGVyLmV4YW1wbGUub3JnIiwiaWF0IjoxNzUzNTU1NDAwLCJleHAiOjE3NTM1NTU3MDAsImRvY3VtZW50X3R5cGUiOiJjaWUiLCJtcnRkIjp7ImRnMSI6IlVEeEpWRUU4VTAxSlZFZzhQRXBQU0U0OFBFcFBTRTRnVTAxSlZFZzhQREU1T0RBME1UVThUVDxQTnpjM056SXpNUT09IiwiZGcxMSI6Ik1USXpORFUyTnpnNVFVSkRSRVZHUjBoSlNrdE1UVTVQVUVGT1IxSlRWRlZXV0ZsYVUwRkVSVVU9Iiwic29kX21ydGQiOiJNSUlGempDQ0JMYWdBd0lCQWdJSVFPWTJLSkdGVFVJd0RRWUpLb1pJaHZjTkFRRUxCUUF3WHpFTE1Baz0ifSwiaWFzIjp7Imlhc19wayI6Ik1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBejEyMzQ1Njc4OTA9Iiwic29kX2lhcyI6Ik1JSUZhRENDQkZDZ0F3SUJBZ0lKQUwyS0pHRlRVSXdEUVlKS29aSWh2Y05BUUVMQlFBd1h6RUxNQT09IiwiY2hhbGxlbmdlX3NpZ25lZCI6ImExYjJjM2Q0ZTVmNjc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MGFiY2RlZjEyMzQ1Njc4OTBhYmNkZWY9PSJ9fQ.xyz456abc789def012ghi345jkl678mno901pqr234stu567vwx890yz123",
       "mrtd_auth_session":"wxroVrBY2MCq4dDNGXACS",
       "mrtd_pop_nonce":"9f2c4a7e3b1d8c9a6e5f4b2a1c3d7e8f"
     }
@@ -618,7 +632,7 @@ L'Istanza del Wallet DEVE validare che il ``mrtd_val_pop_nonce`` corrisponda al 
 Fase 4: Risposta di Autorizzazione OAuth
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Dopo completamento con successo di tutti gli step di autenticazione e correlazione di identità, il Server di Autorizzazione DEVE emettere la Risposta di Autorizzazione OAuth finale. Se tutti i controlli di validazione sono stati superati, il Server di Autorizzazione DEVE reindirizzare l'User Agent nuovamente all'Istanza del Wallet con una Risposta di Autorizzazione OAuth includendo il codice di autorizzazione come definito negli step 6-7 di :ref:`credential-issuance-low-level:Issuance Flow`, e nella Sezione :ref:`credential-issuance-endpoint:Risposta di Autorizzazione`. Il Server di Autorizzazione DEVE utilizzare il ``redirect_uri`` incluso nel Request Object iniziale dall'Istanza del Wallet.
+Dopo completamento con successo di tutti gli step di autenticazione e correlazione di identità, il Server di Autorizzazione DEVE emettere la Risposta di Autorizzazione OAuth finale. Se tutti i controlli di validazione sono stati superati, il Server di Autorizzazione DEVE reindirizzare l'User Agent nuovamente all'Istanza del Wallet con una Risposta di Autorizzazione OAuth includendo il codice di autorizzazione come definito negli step 6-7 di :ref:`credential-issuance-low-level:Issuance Flow`, e nella Sezione :ref:`credential-issuance-endpoint:Pushed Authorization Request (PAR) Response`. Il Server di Autorizzazione DEVE utilizzare il ``redirect_uri`` incluso nel Request Object iniziale dall'Istanza del Wallet.
 
 Gestione Errori
 ---------------
@@ -738,7 +752,7 @@ Inoltre, ogni nonce ha uno scopo di sicurezza specifico:
 Metadati del Provider PID
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In aggiunta ai valori ``trust_frameworks_supported`` definiti nella sezione :ref:`credential-issuer-metadata:Metadata for openid_credential_issuer`, i Metadati del Provider PID per ``openid_credential_issuer`` DEVONO anche supportare il valore ``it_l2+document_proof`` indicante il protocollo di Autenticazione multi-step descritto in questa Specifica.
+In aggiunta ai valori ``trust_frameworks_supported`` definiti nella sezione :ref:`credential-issuer-metadata:Metadata per openid_credential_issuer`, i Metadati del Provider PID per ``openid_credential_issuer`` DEVONO anche supportare il valore ``it_l2+document_proof`` indicante il protocollo di Autenticazione multi-step descritto in questa Specifica.
 
 Controlli di Sicurezza
 ^^^^^^^^^^^^^^^^^^^^^^^

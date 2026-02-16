@@ -4,19 +4,28 @@
 Flusso Remoto
 =============
 
-A seconda di come l'Utente stia interagendo con il frontend dell'App di Verifica Web, usando cioè il dispositivo in cui risiede l'Unità Wallet (**Same Device**) oppure un altro dispositivo (**Cross Device**), la ``Relying Party`` DEVE supportare i seguenti flussi remoti (:ref:`RPR-84 <test-plans-remote-presentation>`):
+A seconda di come l'Utente stia interagendo con il frontend dell'App di Verifica Web, usando cioè il dispositivo in cui risiede l'Unità Wallet (**Same Device**) oppure un altro dispositivo (**Cross Device**), la Relying Party DEVE supportare i seguenti flussi remoti (:ref:`RPR-84 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`):
 
-* **Same Device**: essa DEVE fornire un indirizzo ``HTTP`` all'Istanza del Wallet utilizzando un *redirect* (``302``) o un href HTML nella pagina web (:ref:`RPR-01 <test-plans-remote-presentation>`);
-* **Cross Device**: essa DEVE fornire un indirizzo ``HTTP`` tramite un Codice QR che l'Utente scansiona con l'Istanza del Wallet (:ref:`RPR-03 <test-plans-remote-presentation>`).
+* **Same Device**: essa DEVE fornire un indirizzo ``HTTP`` all'Istanza del Wallet utilizzando un *redirect* (``302``) o un href HTML nella pagina web (:ref:`RPR-01 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`);
+* **Cross Device**: essa DEVE fornire un indirizzo ``HTTP`` tramite un Codice QR che l'Utente scansiona con la fotocamera del proprio dispositivo oppure con l'Istanza del Wallet (:ref:`RPR-03 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
 
+Per richiamare l'Istanza del Wallet corretta, la Relying Party DOVREBBE invocare l'Istanza del Wallet installata sul dispositivo dell'Utente che l'Utente desidera utilizzare. 
+Queste informazioni DOVREBBERO essere fornite dall'Utente utilizzando la Selection Page descritta in :ref:`functionalities:Design dell'Esperienza Utente`. 
 
-Successivamente, l'``Istanza del Wallet`` valida la trust con la ``Relying Party``, valuta ne la richiesta, e, se l'Utente fornisce il consenso per la divulgazione dei propri Attestati Elettronici, li invia sotto forma di ``Verifiable Presentation``.
+-  Se la Selection Page è disponibile, l'utente seleziona l'Istanza del Wallet, quindi la Relying Party recupera i Wallet metadata come descritto in :ref:`wallet-metadata-retrieval:Flusso di Recupero dei Wallet Metadata`. Il contenuto del HTML href o del QR Code dipende dal parametro ``authorization_endpoint`` nei Wallet metadata:
+
+  - Se ``authorization_endpoint`` è disponibile e contiene un URL HTTPS (Universal Link), la Relying Party DOVREBBE utilizzare quell'endpoint.
+  - Altrimenti, la Relying Party DEVE utilizzare uno degli schemi URL personalizzati: ``openid4vp://`` (come definito nella Sezione 13.1.2 di [`OpenID4VP`_]) o ``haip-vp://`` (come definito nella Sezione 5.1 di [`OPENID4VC-HAIP`_]). L'Istanza del Wallet DEVE supportare entrambi gli schemi URL personalizzati.
+
+-  Nel caso in cui la Relying Party non supporti la Selection Page o il recupero dei Wallet metadata fallisce per qualche motivo, la Relying Party richiamerà l'Istanza del Wallet utilizzando uno degli schemi URL personalizzati descritti precedentemente.
+
+Successivamente all'invocazione dell'Istanza del Wallet, l'Istanza del Wallet valida la trust con la Relying Party e ne valuta la richiesta. Se valida e l'Utente fornisce il consenso per la divulgazione dei propri Attestati Elettronici, li invia sotto forma di Verifiable Presentation.
 
 .. _fig_High-Level-Flow-Presentation:
 .. plantuml:: plantuml/credential-presentation-remote-high-level-flow.puml
     :width: 99%
     :alt: La figura illustra il Flusso Remoto ad Alto Livello.
-    :caption: `Flusso di Protocollo Remoto di Alto Livello. <https://www.plantuml.com/plantuml/svg/TL9TQ-em6BxFhtZmvXmBvvJpVV1YECHjmi2kKxmPIDU-sCoOP4bgSRz-YLNNAhjids_U3AtBZAis0dTyLUAUjYIGqaOvGcAKKxaIk16gPjhpUCvr9XrwYqm8SfX8BvSvzP1Pd55I4ZikLqZypzsUO3HZHkFR5Ue1Vdn755rNhbI6lsMEA-bZNokoBehmjOPfFfQLuNsuqgZArpDKS4EvWp9uI96hWc3pJE99EkLPX3Xkgdsnw9gFPQ4LbowE6Qj31wC7-1bA768nJoVj2hVZMOX9fe-pFaxkQUATsugsxsdShqjVgvMqr6mx8jFd5p-cprXzqFqEkiK4evBojVNa3-XFWEQM34R1I3gFjfRy3N3eUZQx6xpLIwVM92y7DQnF5eM0V_j9IRlQQUx_W7NktSbLEbJ9XDYXFfwmEImRaYpyuti7>`_
+    :caption: `Flusso di Protocollo Remoto di Alto Livello. <https://www.plantuml.com/plantuml/svg/TP9FJy904CNl-oacN9GcslZVS30OGWmdQeLmCI5BEz2LTNVTtThKJ-yEGcqndffqthptU-qCdUVMb--IcV0KcJ1SUUWjk9JeOQB2M6NO0-wWwafIbBLG6qZ2otedi8OnQ-3i0Qe1N9n353sMlj1MV74lj88KFqfqFeh05rQNcm8ivi9Yva5RU4uXqpc2oxW2huC6NnN4yG_AYOEksLZbHWlbuvWnBZs8zS4VfgitybpLmN-D5aC1nYhYicO0bmHsaCxJIGlhz6ay8vHa-ZBhxna2GPg4zFP6ExifVFNNrncj799nTGJNPmnLlgSAozUql9Z0gC1iwyB6x-Y6HdE75aRafWYqLUUMnWJS_Jv7wPzcwVKMrL6hHlLFBGgus_LAscXDvtkQTGwXawiDeN0fQwYQVxqihUYpOQWVhkuR>`_
 
 
 .. .. figure:: ../../images/High-Level-Flow-Presentation.svg
@@ -29,25 +38,25 @@ Successivamente, l'``Istanza del Wallet`` valida la trust con la ``Relying Party
 
 Una descrizione ad alto livello del flusso remoto, dal punto di vista dell'Utente, è fornita di seguito e mostrata in :ref:`fig_High-Level-Flow-Presentation`:
 
-  1. *Authorization Request*: l'Istanza del Wallet ottiene un ``URL`` nel flusso Same Device o un Codice QR contenente l'``URL`` nel flusso Cross Device dove il Request Object firmato è disponibile per il download.
-  2. *Richiesta URI Request*: l'Istanza del Wallet estrae dal payload i seguenti parametri: ``client_id``, ``request_uri``, ``state``, ``request_uri_method``.
+  1. *Authorization Request*: l'Istanza del Wallet ottiene un ``URL`` nel flusso Same Device o un Codice QR nel flusso Cross Device contenente direttamente il Request Object firmato (Request Object by value) oppure un puntatore a dove il Request Object firmato è disponibile per il download (Request Object by reference). Se Request Object by reference, vengono eseguiti anche i passaggi 2 e 3.
+  2. *Richiesta URI Request*: l'Istanza del Wallet estrae dal payload i seguenti parametri: ``client_id``, ``request_uri``, ``request_uri_method``.
 
     * Se ``request_uri_method`` è fornito e impostato con il valore ``post``, l'Istanza del Wallet DOVREBBE trasmettere i suoi metadata all'endpoint ``request_uri`` della Relying Party utilizzando il metodo HTTP ``POST``.
-    * Se ``request_uri_method`` è impostato con il valore ``get`` o non è presente, l'Istanza del Wallet DEVE recuperare il Request Object firmato utilizzando una richiesta HTTP con metodo ``GET`` all'endpoint fornito nel parametro ``request_uri`` (:ref:`RPR-78 <test-plans-remote-presentation>`).
+    * Se ``request_uri_method`` è impostato con il valore ``get`` o non è presente, l'Istanza del Wallet DEVE recuperare il Request Object firmato utilizzando una richiesta HTTP con metodo ``GET`` all'endpoint fornito nel parametro ``request_uri`` (:ref:`RPR-78 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
 
   3. *URI Request Response*: la Relying Party restituisce un Request Object firmato all'Istanza del Wallet.
   4. *Controlli Istanza di Wallet*: l'Istanza del Wallet:
 
     a. verifica la firma del Request Object firmato utilizzando la chiave pubblica identificata nell'intestazione JWT del Request Object. Utilizzando tale riferimento, l'Istanza del Wallet è in grado di selezionare la corretta chiave pubblica della Relying Party per la verifica della firma (:ref:`WP_085 <wallet-credential-presentation-testcases>`).
-    b. verifica che il ``client_id`` contenuto nel Request Object (Relying Party) corrisponda a quello ottenuto al passaggio numero 2:
+    b. verifica che il ``client_id`` contenuto nel Request Object (Relying Party) corrisponda a quello ottenuto al passaggio 2:
     
        * Se ``client_id`` utilizza il prefisso ``openid_federation``, DEVE corrispondere al parametro ``sub`` contenuto nella Entity Configuration della Relying Party all'interno della Trust Chain (:ref:`WP_086 <wallet-credential-presentation-testcases>`).
-       * Se ``client_id`` utilizza il prefisso ``x509_hash``, l'Istanza del Wallet DEVE verificare che l'hash del certificato X.509 della Relying Party (nell'intestazione ``x5c`` della richiesta) corrisponda all'hash contenuto in ``client_id`` dal passaggio 2 (come definito in `OpenID4VP`_, Sezione 5.9.3).
+       * Se ``client_id`` utilizza il prefisso ``x509_hash``, l'Istanza del Wallet DEVE verificare che l'hash del certificato X.509 della Relying Party (nell'intestazione ``x5c`` della richiesta) corrisponda all'hash contenuto in ``client_id`` del passaggio 2 (come definito in `OpenID4VP`_, Sezione 5.9.3).
 
     c. valuta gli Attestati Elettronici richiesti e verifica l'idoneità della Relying Party nel richiedere questi ultimi. Ad esempio, applicando le politiche relative a quella specifica Relying Party ottenute con la Trust Chain (:ref:`WP_087 <wallet-credential-presentation-testcases>`).
 
-  5. *Risposta di Autorizzazione POST*: l'Istanza del Wallet presenta le informazioni richieste alla Relying Party, insieme alla Wallet Attestation se richiesto.
-  6. *Controlli RP*: La Relying Party convalida le Credenziali presentate verificando la fiducia con i loro Fornitori di Attestati Elettronici e controlla la Wallet Attestation per garantire che il Fornitore di Wallet sia affidabile.
+  5. *Risposta di Autorizzazione POST*: l'Istanza del Wallet presenta le informazioni richieste alla Relying Party.
+  6. *Controlli RP*: La Relying Party convalida le Credenziali presentate verificando la fiducia con i loro Fornitori di Attestati Elettronici e controlla i rispettivi stati di validità.
   7. *Risposta della Relying Party*: l'Istanza del Wallet informa l'Utente dell'autenticazione riuscita con la Relying Party, e l'Utente continua la navigazione.
 
 Di seguito è riportato un diagramma di sequenza che dettaglia le interazioni tra tutte le parti coinvolte.
@@ -55,13 +64,13 @@ Di seguito è riportato un diagramma di sequenza che dettaglia le interazioni tr
 .. plantuml:: plantuml/credential-presentation-remote-flow.puml
     :width: 99%
     :alt: La figura illustra il Flusso Remoto.
-    :caption: `Flusso di Protocollo Remoto. <https://www.plantuml.com/plantuml/svg/fLPDRnit4BtpLmpKGsqWSPCU3RX8ehgsaxHMBIK-r8L1SKSIwnMv9OUhg4N-UuVaYgRy0GGeeClkSjvxy-Q3UkD9EWhhLiX0reJr79qGugqYws3qoQCRWVGGX9ZRB_d5znv-nbuhz2FuxgDUhkXT6r1qZAELxgGX65tBjaM22yFmHc72sEmV2GprKYxHK6QG0aq3p39GNM6xrMO94mxQFi-qT-p675o-3RI2SQiP-30XzmyYM1853ypMMJsmUxnd5q8gqhqavBG3lFo9jHt3DSvXYYxc3KRsUYb9MrCTbQB1Eb36o1wFuGh_3kW99iuIAiA6ttWRd48XJaxuDNhMck1Wif8UuUIau4RrFUwWnWxZEmcUqZV9TjoOkGsidIpSMmhAsZlzHAZBOcw3q-2oZFeK5wnZZJKIRJlcOFG6ANvIpdhF3ya9wy3BDUR739JjMj6wXOuHOAEv7hzVZMsJZgySBbWT9woDNWAj489hqwaRerBPRdNpeXRw8gVx0lweNjwkaLQs-RDsdRqIW_7X6AOhkqducJohOGLCekxYXwnb7eYisIkUlBT_8yJIsT2nVzRl6X-iQRTY4taspAEaOGvWajH58ZPD_lJHAjb271gGWHaDQPNxfaIVnY969dB1KtOhQYjM225R0hs0nyc3Zfqx14qkfpC10B3P5PCRhjUS-32C72CRIHB8HeOQhmn30gZzZC-bFIgngm9Bg8oEQIhPoRbkDMdq0bkFto3wx7GMIs8iGPVdG5GPbD69T5ul3JOxGB3pls8tBfnTFvjDhaQFGpcUXdZKG8ygixTYuDUTZT8qq5bk9iwt17r6fnVRn2GfE0IxgDINX2upTOcIhMwgyUIJdoS7_Z0V2FT6B6B_MfECsjzI6MXipKAxDJRxowWO6fi4ueQqJl-JEf6XVHSHuSRaclJTBTaxDCFOFREAwbR8MMivRt5_dIMS4bJbMVNFMoBq-VmHQyYFzO6XZHthqnxYAj-P-WlownJ9txWSLLIvUZWcjPV3diKqHvMQWMhi6CQGbYrSU1_GmIoEuW1P9B-_di5qLzOAXUKfz3uFRO4ImZ4hWktHyJ6-lYxEpcTdLwUdlucd8uu5l8Jn2datdTkM4uCFk8LtsZJSUqaAnt7Y_9jOxnaWEXny_0e28C5rOSuD2NSScMy5RUBxEaUoqEScJPMRv28TYKX_-eMSLDdzHdlLMeyDI2Advu7G9nagQUJPPgFBw6acW3mM3a7sKhUn7OxY22OdH6NPfwuqGTgDksGEygq58Nrl3iLk-Kxb6eVTctkKsPXHfN6l1lnyDflyyFheDVpuwXLSVk0I_ZkgZuxYnKITBrSEkA7xRrMy8huE0oTPeyy2w_3wje-9FNqtk4ToRQ1lL5oFxMP_CmqNcsV_u3qRF5LETvIhSVpWUicJ6oVw81AKZPTIpYOVtYVZKVWiACZ_xU5NKSjcw6nK_Nze0DlTGrtvNrJ-aEold29jylZa_htzmB4tJ1tMxNy0>`_
+    :caption: `Flusso di Protocollo Remoto. <https://www.plantuml.com/plantuml/svg/fLPDRnit4BtpLmpKGssWIPCU3RX8eXgnaxHMBIM-630exaXYJP5RSYX5BVBVEuFHhZwK5W6gcxGpxyrxyx5wLSXcgijWRAKKwtAAsHZpsb7ACFXOC0_05gZ6JDDd_U7x0h_WoZii0_ZkWvylw4seQ5h6ySwtDX8Cxcq8I70J6Juw50nO7uPKXdfcvnX96Qp1s02pRAdkC6nydCE8apR_pdGGzX3FRbzNMi0mU0O-5sHO7MLmILGBC5kR_9QzOC_E7-l8homXowxmx6UezWBkSGfZpA8RebtvkIMVubweDGtk9rh9NE45tE6V5Gl1A2T2HzZmBoNLxD2Ooql-6Gj6iW87euKj29UNFQvKly8EYlri6G9stW5jMdo8bA11GGUNKodyHGg5bA7O9UfN1L8r2re6Q1a1rfxj-lrkc1e9XqN66RZ4zVWejj82eUO0lJWjoMprrGiOBz9QmZeGGHKa5xnxaWUAEQr4AHvuP7SgryRCSwej3BdyRhuWnR0nQ-5PCu-paJb0IAHPHdgZZpuaPmF8R8Ajp1Z9EsrFdtsrig4A4-LQI5Lpf5J9uO-UuMmWyBE-NRVJFyJFwGQuVCmOsK3WppOiQzXZpVvnYRH83NYPeotsw7OyCQ2VTTS-de2LRn2ssy5fjh5aWPBKiW_PJsU7iMy-w6St5ZjnYnwSq4KljZZRsgaFdZmMISLGy1i4lBsQI1TZ8cXrGa_aT4u9Q_7pY4q72adDc-Mq_4zfA7rKBThB3kYm2qORVZI3fyqzE0RmQ-UlZGsqANWd5dH9dp3xsGQ4prBD26dMAJajO9TbWsVCNX57VXgTbNCDg3jJPYdB7ebnH_T4WOOfpdnUOdDuDdfpPO10RbdA_Yyz3dmsMa64XwWzMhMFb9um_W1oq_3aQ9nEXwhsTXhmyF2GuEmblIOI5SECZQoJ3N1JIiKC4zcVXoYUxinuTp-1SMUaedG3xx0KtRGUofWS4sUb5MOEuzD-y_PwylRkwkety_MC2mFFOBX0FYZNAJISzXutyCR7HhejfN1UcaaBHwaK1X1DjSXJaFaIkBPEWtVmn9dJL3d7H_bzNoCbhaV6GhqQgItFZT1VVQPidKvxuuiBgM03bYZxQIKi86KugL6souRG3xvd0j11p0XsPNsG1ZoNeHOdqEnPzh5jjhtIWzQ9ENCfFNc4Ai-nEJVTnHpBWTU3gLF1RCpeI9RDx1RhUZ8P_VZo-KluwSKBk7tFBVnxi1ywaBS2jKNEVGUay_RevAv_sOwuvHgB5dZ0j7VNHTZN3te-AJTL-iQAznTbVNGBz6rKs3zunmQFNVOjQJSkZju9kYkoGsT2q2soIbQJptTY2fgY1LNxlptyeYTi1wr67VnNKB3kbT3s_nco_cSuMVAkjD5fvD7Bzj2nLqnTb-4V>`_
 
 
 .. .. figure:: ../../images/cross_same_device_auth_seq_diagram.svg
 ..     :figwidth: 100%
 ..     :align: center
-..     :target: https://www.plantuml.com/plantuml/svg/fLPDRnit4BtpLmpKGst0TfCU3RY8uxgsaxHMBIK-r8L0SKSIwnMv9OTIr2B_lJEWbgPa1mXGtPRalFVuE1zw4qa7IijMwKJUfUKKWrBgt90FCFWOCGn0HqXAJVtdlF1zX9znPGt60NptmSuNzBPDg3h6iSPssX4CxdNR8i6DOtXdK31WlNiaCTIndgEZpA0LkWQOPKjrX-t6kZaCEMZpTQQTOm_kuFOyqG8kMil0Xu8Cgxq8baGf0hDrtcxP8nPs_cb3TgK98Qa4np-njbEunocCCCYzmUcLdMkotbL7jMgm3jGIkS9JkCE_4qQ2OV24Xh3XbUXJCAZKsHalOsIjMk1WkD0HuUoiu8hw5VPG5m5bJKCaBNkQxNXmKvzOEtbuiXICzu_sXT2GnKnIi12oZEgKF5Z76ciasdJCmUWDacoPu6Fa3t42V82ebvW_Cr2sQq7B5Zf6WBMb1Vn-T-4REGwBW3DMvqXRP-T02uGKMf1J3yx8iz74DaUrqADytIFuergSB94MllcpSbsyKblZqocC5duj-3svg145J68UPIDhcIOYxsgOf9_iNoir3pvrx9-FVUA3T-r6hOLdpJn6E-O08P4iKf8qUUk3Dxe5AHhGYHaTMPFpfaHVoYCA4uKKARibseeLIkcMmCxW-UN1IkPkWuQtex42_gtxn-I4Mza6OLkC7ACRJHh82qEDLuf10A3sKxvBUbHY5mMMq3WhrpIwqrFRMh8O5ROHlq7qrULOdiHvWYxNWIetg4f7wAATEsnwGF3JloGRPy4lltgR_1eYFtlz8iH-0Zr_cPqM0x_sDchNGESvcIp64lG9WvrjG9WqfO3WPvNwSg7RJ5sYT6kRgZpvvAVXGJpC1zAJ4JCVf7Z4gBqkbO4kl9lPiCHcjnaLGoL9G3ga3_QVt7BkC7Q220yklycgcv1_H5VAhgiwr2IcwTB6A3bSs_PoZcGxh9wskDldI0XAK6L0bLZdH1Zp-HCMbp-h0tr-1nPk8qYFxzt-1NbPIoJlQTUKg6ecIOpaNS0LYsbEAZMPIbfc8oMhMxY9CM60iTJe5h98VdS_Xb7_tXKAopCOOwxc0gLKO5O4lyB0ntYktLnTZw_kBYz_Koz7d2euXei5SjEwzct3OUzn0s-jQoGfHGh7-PdSVUXZP01nE4NP1IadWUlIb3CL7ZaoZmlhPBs-8tdM8zcRNswO7-b42VtbPmhQPFSR6qth8pQWYOAT9i8eCi28HYbwDhhKf6K2oFKI4FHAsrRIuKHgKvn0LLdsiUkJ83VD_Z87UPn1adri3bNVbKSoV79JpidBRCneIFf0LVdNu_7mXzSdh-77Lw_WzZq_uR-3-kX09XPriSmY2Dkoc1YP7L-sbQXPOym2TvYgsI4NUtbeX6ToVQ9lL5pNytglPUM95za_UCS6Zqom7UNNEDsRExcafTGFXA3lD_dAsUH3LR0ZgfW59Vs_FVoYH7O5dOtQ-QEKmVe1rPK_JEMVocxBATA6pq_k3VHTnzumTLgs_m40
+..     :target: https://www.plantuml.com/plantuml/svg/fLPDRnit4BtpLmpKGssWIPCU3RX8eXgnaxHMBIM-630exaXYJP5RSYX5BVBVEuFHhZwK5W6gcxGpxyrxyx5wLSXcgijWRAKKwtAAsHZpsb7ACFXOC0_05gZ6JDDd_U7x0h_WoZii0_ZkWvylw4seQ5h6ySwtDX8Cxcq8I70J6Juw50nO7uPKXdfcvnX96Qp1s02pRAdkC6nydCE8apR_pdGGzX3FRbzNMi0mU0O-5sHO7MLmILGBC5kR_9QzOC_E7-l8homXowxmx6UezWBkSGfZpA8RebtvkIMVubweDGtk9rh9NE45tE6V5Gl1A2T2HzZmBoNLxD2Ooql-6Gj6iW87euKj29UNFQvKly8EYlri6G9stW5jMdo8bA11GGUNKodyHGg5bA7O9UfN1L8r2re6Q1a1rfxj-lrkc1e9XqN66RZ4zVWejj82eUO0lJWjoMprrGiOBz9QmZeGGHKa5xnxaWUAEQr4AHvuP7SgryRCSwej3BdyRhuWnR0nQ-5PCu-paJb0IAHPHdgZZpuaPmF8R8Ajp1Z9EsrFdtsrig4A4-LQI5Lpf5J9uO-UuMmWyBE-NRVJFyJFwGQuVCmOsK3WppOiQzXZpVvnYRH83NYPeotsw7OyCQ2VTTS-de2LRn2ssy5fjh5aWPBKiW_PJsU7iMy-w6St5ZjnYnwSq4KljZZRsgaFdZmMISLGy1i4lBsQI1TZ8cXrGa_aT4u9Q_7pY4q72adDc-Mq_4zfA7rKBThB3kYm2qORVZI3fyqzE0RmQ-UlZGsqANWd5dH9dp3xsGQ4prBD26dMAJajO9TbWsVCNX57VXgTbNCDg3jJPYdB7ebnH_T4WOOfpdnUOdDuDdfpPO10RbdA_Yyz3dmsMa64XwWzMhMFb9um_W1oq_3aQ9nEXwhsTXhmyF2GuEmblIOI5SECZQoJ3N1JIiKC4zcVXoYUxinuTp-1SMUaedG3xx0KtRGUofWS4sUb5MOEuzD-y_PwylRkwkety_MC2mFFOBX0FYZNAJISzXutyCR7HhejfN1UcaaBHwaK1X1DjSXJaFaIkBPEWtVmn9dJL3d7H_bzNoCbhaV6GhqQgItFZT1VVQPidKvxuuiBgM03bYZxQIKi86KugL6souRG3xvd0j11p0XsPNsG1ZoNeHOdqEnPzh5jjhtIWzQ9ENCfFNc4Ai-nEJVTnHpBWTU3gLF1RCpeI9RDx1RhUZ8P_VZo-KluwSKBk7tFBVnxi1ywaBS2jKNEVGUay_RevAv_sOwuvHgB5dZ0j7VNHTZN3te-AJTL-iQAznTbVNGBz6rKs3zunmQFNVOjQJSkZju9kYkoGsT2q2soIbQJptTY2fgY1LNxlptyeYTi1wr67VnNKB3kbT3s_nco_cSuMVAkjD5fvD7Bzj2nLqnTb-4V
 
 ..     Remote Protocol Flow
 
@@ -70,47 +79,54 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
 
 **Passaggi 1-2**: L'Utente richiede di accedere a una risorsa protetta della Relying Party.
 
-**Passaggi 3-5**: La Relying Party crea un valore *state* legato allo user-agent (ad esempio, utilizzando un cookie HTTP contrassegnato *Secure* e *HttpOnly*), il Request Object disponibile per il download all'indirizzo ``request_uri``. Quindi ispeziona lo user-agent dell'utente per determinare se il flusso avviene sullo stesso dispositivo dello user-agent.
+**Passaggio 3**: La Relying Party crea un valore *state* legato allo user-agent (ad esempio, utilizzando un cookie HTTP contrassegnato *Secure* e *HttpOnly*) e ispeziona lo user-agent dell'utente per determinare se il flusso avviene sullo stesso dispositivo dello user-agent.
 
-**Passaggi 6-9 (Authorization Request)**: La Relying Party fornisce allo user-agent una pagina JavaScript che ispeziona lo *state endpoint* e all'Istanza del Wallet un URL contenente l'Authorization Request. 
+**Passaggi 4-7 (Authorization Request)**: La Relying Party fornisce allo user-agent una pagina JavaScript che ispeziona lo *state endpoint* e all'Istanza del Wallet un URL contenente l'Authorization Request. 
 
-  Nel **Flusso Cross Device**, l'URI dell'Authorization Request viene presentato attraverso un Codice QR mostrato all'Utente. L'Utente scansiona il Codice QR utilizzando l'Istanza del Wallet e recupera un URL con i parametri ``client_id``, ``request_uri``, ``state`` e ``request_uri_method`` (:ref:`WP_076–077 <wallet-credential-presentation-testcases>`).
-
+  Nel **Flusso Cross Device**, l'URI dell'Authorization Request viene presentato attraverso un Codice QR mostrato all'Utente. L'Utente scansiona il Codice QR utilizzando l'Istanza del Wallet e recupera un URL.
   Di seguito è rappresentato un esempio non normativo di un Codice QR emesso dalla Relying Party.
 
-.. only:: format_html
+  .. only:: format_html
 
-  .. figure:: ./images/svg/verifier_qr_code.svg
-    :figwidth: 50%
-    :align: center
+    .. figure:: ./images/svg/verifier_qr_code.svg
+      :figwidth: 50%
+      :align: center
 
-.. only:: format_latex
+  .. only:: format_latex
 
-  .. figure:: ./images/pdf/verifier_qr_code.pdf
-    :width: 50%
-    :align: center
+    .. figure:: ./images/pdf/verifier_qr_code.pdf
+      :width: 50%
+      :align: center
+
+  .. note::
+    Il *livello di correzione degli errori* scelto per il Codice QR DEVE essere Q (Quartile - fino al 25%), poiché offre un buon equilibrio tra capacità di correzione degli errori e densità/spazio dei dati. Questo livello di qualità e correzione degli errori consente al Codice QR di rimanere leggibile anche se è danneggiato o parzialmente oscurato (:ref:`RPR-77 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
+
+  Se il Request Object viene passato per valore (by value), l'URL all'interno del codice QR contiene i parametri ``client_id`` e ``request``. 
+  Di seguito è rappresentato un esempio non normativo del contenuto del Codice QR per un Request Object by value:
+
+  .. code-block:: text
+
+    https://wallet-solution.example.org/authorization?client_id=openid_federation%3A%2F%2Frelying-party.example.org&request=eyJhbGciOiJFUzI1NiIs...9t2LQ
+
+  Se invece il Request Object viene passato per riferimento (by reference), l'URL all'interno del codice QR contiene i parametri ``client_id``, ``request_uri`` e ``request_uri_method`` (:ref:`WP_076–077 <wallet-credential-presentation-testcases>`).
+  Di seguito è riportato un esempio non normativo del contenuto del codice QR per un Request Object by reference:
+
+  .. code-block:: text
+
+    https://wallet-solution.example.org/authorization?client_id=openid_federation%3A%2F%2Frelying-party.example.org&request_uri=https%3A%2F%2Frelying-party.example.org&request_uri_method=post
+
+  Mentre, nel **Flusso Same Device**, la Relying Party risponde tramite HTTP Response Redirect (con codice di stato impostato a ``302``) o mostra all'utente una pagina html con un pulsante href, aventi l'URL che fornisce le stesse informazioni del Flusso Cross Device (:ref:`WP_076–077 <wallet-credential-presentation-testcases>`). 
+  Di seguito è riportato un esempio non normativo per un Request Object by reference:
+
+  .. code-block:: http
+
+    HTTP/1.1 302 Found
+    Location: https://wallet-solution.digital-strategy.europa.eu?client_id=openid_federation%3A%2F%2Frelying-party.example.org%2Fcb&request_uri=https%3A%2F%2Frelying-party.example.org%2Frequest_uri&request_uri_method=post
 
 
-  Di seguito è rappresentato un esempio non normativo del contenuto del Codice QR:
+**Passaggio 8**: L'Istanza del Wallet valuta la trust con la Relying Party (:ref:`WP_078–080 <wallet-credential-presentation-testcases>`).
 
-.. code-block:: text
-
-  https://wallet-solution.example.org/authorization?client_id=openid_federation%3A%2F%2Frelying-party.example.org&request_uri=https%3A%2F%2Frelying-party.example.org&request_uri_method=post
-
-.. note::
-  Il *livello di correzione degli errori* scelto per il Codice QR DEVE essere Q (Quartile - fino al 25%), poiché offre un buon equilibrio tra capacità di correzione degli errori e densità/spazio dei dati. Questo livello di qualità e correzione degli errori consente al Codice QR di rimanere leggibile anche se è danneggiato o parzialmente oscurato (:ref:`RPR-77 <test-plans-remote-presentation>`).
-
-  Al contrario, nel **Flusso Same Device**, la Relying Party risponde tramite HTTP Response Redirect (con codice di stato impostato a ``302``) o mostra all'utente una pagina html con un pulsante href, aventi l'URL che fornisce le stesse informazioni del Flusso Cross Device (:ref:`WP_076–077 <wallet-credential-presentation-testcases>`). Di seguito è riportato un esempio non normativo:
-
-.. code-block:: http
-
-  HTTP/1.1 302 Found
-  Location: https://wallet-solution.digital-strategy.europa.eu?client_id=openid_federation%3A%2F%2Frelying-party.example.org%2Fcb&request_uri=https%3A%2F%2Frelying-party.example.org%2Frequest_uri&request_uri_method=post
-
-
-**Passaggio 10**: L'Istanza del Wallet valuta la trust con la Relying Party (:ref:`WP_078–080 <wallet-credential-presentation-testcases>`).
-
-**Passaggi 11-13 (Richiesta URI Request)**: L'Istanza del Wallet verifica se la Relying Party ha fornito il request_uri_method all'interno del suo Request Object firmato (:ref:`WP_083 <wallet-credential-presentation-testcases>`).
+**Passaggi 9-11 (Richiesta URI Request)**: L'Istanza del Wallet verifica se la Relying Party ha fornito il request_uri_method all'interno del suo Request Object firmato (:ref:`WP_083 <wallet-credential-presentation-testcases>`).
 
   - Se è fornito ed è uguale a post, l'Istanza del Wallet DOVREBBE fornire i suoi metadata alla Relying Party. La Relying Party aggiorna il Request Object in base alle capacità tecniche del Wallet.
 
@@ -127,7 +143,7 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
 
     Dove il corpo della richiesta prima di essere codificato in ``application/x-www-form-urlencoded`` dal Wallet corrisponde a:
 
-    .. code:: json
+    .. code-block:: json
 
       {
         "wallet_metadata": {
@@ -156,7 +172,7 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
 
   - Quando la Relying Party non supporta ``request_uri_method`` con valore ``post``, l'Istanza del Wallet richiede il Request Object firmato utilizzando il metodo HTTP GET (:ref:`WP_082 <wallet-credential-presentation-testcases>`).
 
-**Passaggio 14 (URI Request Response)**: La Relying Party emette il Request Object firmandolo utilizzando una delle sue chiavi crittografiche private, le cui corrispondenti chiavi pubbliche sono state pubblicate all'interno della sua Entity Configuration (`metadata.openid_credential_verifier.jwks`) come estratto dall'Istanza del Wallet per :ref:`WP_084 <wallet-credential-presentation-testcases>`. L'Istanza del Wallet ottiene il Request Object firmato.
+**Passaggio 12 (URI Request Response)**: La Relying Party emette il Request Object firmandolo utilizzando una delle sue chiavi crittografiche private, le cui corrispondenti chiavi pubbliche sono state pubblicate all'interno della sua Entity Configuration (`metadata.openid_credential_verifier.jwks`) come estratto dall'Istanza del Wallet per :ref:`WP_084 <wallet-credential-presentation-testcases>`. L'Istanza del Wallet ottiene il Request Object firmato.
 
   Di seguito è riportato un esempio non normativo della Risposta URI di Reindirizzamento:
 
@@ -179,6 +195,11 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
         "MIICajCCAdOgAwIBAgIC...awz",
         "MIICajCCAdOgAwIBAgIC...2w3",
         "MIICajCCAdOgAwIBAgIC...sf2"
+      ],
+      "x5c": [
+        "MIIDqjCCApKgAwIBAgIESLNEvDA ...",
+        "MIICwzCCAasCCQCKVy9eKjvi+jA ...",
+        "MIIDTDCCAjSgAwIBAgIJAPlnQYH..."
       ]
     }
 
@@ -201,17 +222,6 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
               {"path": ["family_name"]},
               {"path": ["personal_administrative_number"]}
             ]
-          },
-          {
-            "id": "wallet attestation",
-            "format": "dc+sd-jwt",
-            "meta": {
-              "vct_values": ["urn:eudi:WalletAttestation:it:1"]
-            },
-            "claims": [
-              {"path": ["wallet_link"]},
-              {"path": ["wallet_name"]}
-            ]
           }
         ]
       },
@@ -221,15 +231,14 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
       "state": "3be39b69-6ac1-41aa-921b-3e6c07ddcb03",
       "iss": "https://relying-party.example.org",
       "iat": 1672418465,
-      "exp": 1672422065,
-      "request_uri_method": "post"
+      "exp": 1672422065
     }
 
-**Passaggi 15-17 (Controlli WI)**: L'Istanza del Wallet verifica l'Oggetto di Richiesta, che è sotto forma di JWT firmato (:ref:`WP_085–086 <wallet-credential-presentation-testcases>`). Quindi elabora i metadati della Relying Party e applica le politiche pertinenti per determinare quali Credenziali Elettroniche e dati dell'Utente la Relying Party è autorizzata a richiedere (:ref:`WP_087 <wallet-credential-presentation-testcases>`).
+**Passaggi 13-15 (Controlli WI)**: L'Istanza del Wallet verifica l'Oggetto di Richiesta, che è sotto forma di JWT firmato (:ref:`WP_085–086 <wallet-credential-presentation-testcases>`). Quindi elabora i metadati della Relying Party e applica le politiche pertinenti per determinare quali Credenziali Elettroniche e dati dell'Utente la Relying Party è autorizzata a richiedere (:ref:`WP_087 <wallet-credential-presentation-testcases>`).
 
-**Passaggi 18-19 (Consenso dell'Utente)**: L'Istanza del Wallet richiede il consenso dell'Utente per divulgare gli Attetstati Elettronici richiesti mostrando l'identità della Relying Party e gli attributi richiesti. L'Utente autorizza e acconsente alla presentazione degli Attributi Elettronici selezionando/deselezionando i dati personali da rilasciare (:ref:`WP_088 <wallet-credential-presentation-testcases>`).
+**Passaggi 16-17 (Consenso dell'Utente)**: L'Istanza del Wallet richiede il consenso dell'Utente per divulgare gli Attetstati Elettronici richiesti mostrando l'identità della Relying Party e gli attributi richiesti. L'Utente autorizza e acconsente alla presentazione degli Attributi Elettronici selezionando e o deselezionando i dati personali da rilasciare (:ref:`WP_088 <wallet-credential-presentation-testcases>`).
 
-**Passaggio 20 (Authorization Response)**: L'Istanza del Wallet fornisce la Authorization Response alla Relying Party utilizzando una richiesta HTTP con il metodo POST (modalità di risposta ``direct_post.jwt``).
+**Passaggio 18 (Authorization Response)**: L'Istanza del Wallet fornisce la Authorization Response alla Relying Party utilizzando una richiesta HTTP con il metodo POST (modalità di risposta ``direct_post.jwt``).
 
   Di seguito è riportato un esempio non normativo della Authorization Response:
 
@@ -248,16 +257,15 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
       {
         "state": "3be39b69-6ac1-41aa-921b-3e6c07ddcb03",
         "vp_token": {
-          "personal id data": "eyJhbGciOiJFUzI1NiIs...PT0iXX0",
-          "wallet attestation": "eyJhbGciOiJFUzI1NiIs...NTi0XG"
+          "personal id data": ["eyJhbGciOiJFUzI1NiIs...PT0iXX0"]
         }
       }
 
-**Passaggi 21-25 (Controlli RP)**: La Relying Party verifica la Risposta di Autorizzazione, estrae la Wallet Attestation per stabilire la fiducia con la Soluzione Wallet. Quindi estrae il ``vp_token`` che contiene una o più presentazioni di Credenziali Elettroniche, e ne valida il formato complessivo.  Per ogni presentazione, la Relying Party ne verifica l’integrità e l’autenticità, controlla che soddisfi i criteri della query DCQL definiti nella Richiesta di Autorizzazione, attesta la fiducia con il relativo Fornitore di Credenziali e verifica la prova di possesso dell'Istanza del Wallet delle Credenziali Elettroniche presentate. Infine, la Relying Party verifica lo stato di revoca delle Credenziali Elettroniche presentate come descritto in :ref:`credential-revocation:Revoca e Sospensione degli Attestati Elettronici`. Se tutte le verifiche precedenti hanno dato esito positivo, la Relying Party aggiorna la sessione dell'Utente.
+**Passaggi 19-22 (Controlli RP)**: La Relying Party verifica la Risposta di Autorizzazione, estrae la Wallet Attestation per stabilire la fiducia con la Soluzione Wallet. Quindi estrae il ``vp_token`` che contiene una o più presentazioni di Attestati Elettronici di Attributi, e ne valida il formato complessivo.  Per ogni presentazione di un Attestato, la Relying Party ne verifica l’integrità secondo i criteri della query DCQL definiti nella Richiesta di Autorizzazione. La Relying Party DEVE anche attestare la fiducia con il relativo Fornitore di Attestati Elettronici e verificare la prova di possesso dell'Istanza del Wallet per ogni Attestato presentato. Infine, la Relying Party verifica lo stato di revoca di ogni Attestato presentato come descritto in :ref:`credential-revocation:Revoca e Sospensione degli Attestati Elettronici`. Se tutte le verifiche precedenti hanno dato esito positivo, la Relying Party aggiorna la sessione dell'Utente.
 
-**Passaggi 26-27 o 28 (Risposta della Relying Party)**: La Relying Party fornisce all'Istanza del Wallet la risposta sulla presentazione, che a sua volta informa l'Utente.
+**Passaggi 23-24 o 25 (Risposta della Relying Party)**: La Relying Party fornisce all'Istanza del Wallet la risposta sulla presentazione, che a sua volta informa l'Utente.
 
-  Dopo aver ricevuto e convalidato la Authorization Response al Response Endpoint, la Relying Party restituisce all'Istanza del Wallet un codice HTTP 200 OK. In particolare, nel Flusso Same Device, la Relying Party DOVREBBE anche passare il ``redirect_uri`` all'Istanza del Wallet. Dopo aver ricevuto il ``redirect_uri``, l'Istanza del Wallet DEVE eseguire un reindirizzamento all'URL specificato dal ``redirect_uri``. Questo reindirizzamento consente alla Relying Party di riprendere senza problemi l'interazione con l'Utente sul dispositivo che ha avviato il flusso. Quando la risposta non contiene il parametro ``redirect_uri``, l'Istanza del Wallet non è tenuta a eseguire ulteriori passaggi. L'Utente dovrebbe chiudere manualmente l'Istanza del Wallet e aprire lo user-agent per continuare il flusso (:ref:`RPR-83 <test-plans-remote-presentation>`).
+  Dopo aver ricevuto e convalidato la Authorization Response al Response Endpoint, la Relying Party restituisce all'Istanza del Wallet un codice HTTP 200 OK. In particolare, nel Flusso Same Device, la Relying Party DOVREBBE anche passare il ``redirect_uri`` all'Istanza del Wallet. Dopo aver ricevuto il ``redirect_uri``, l'Istanza del Wallet DEVE eseguire un reindirizzamento all'URL specificato dal ``redirect_uri``. Questo reindirizzamento consente alla Relying Party di riprendere senza problemi l'interazione con l'Utente sul dispositivo che ha avviato il flusso. Quando la risposta non contiene il parametro ``redirect_uri``, l'Istanza del Wallet non è tenuta a eseguire ulteriori passaggi. L'Utente dovrebbe chiudere manualmente l'Istanza del Wallet e aprire lo user-agent per continuare il flusso (:ref:`RPR-83 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
 
   Di seguito è riportato un esempio non normativo della risposta nel Flusso Same Device.
 
@@ -270,7 +278,7 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
       "redirect_uri": "https://relying-party.example.org/cb?response_code=091535f699ea575c7937fa5f0f454aee"
     }
 
-**Passaggi 29-30**: La pagina JavaScript continua ad ispezionare lo Status Endpoint.
+**Passaggi 26-27**: La pagina JavaScript continua ad ispezionare lo Status Endpoint.
 
   Di seguito è riportato un esempio non normativo della Richiesta HTTP allo Status Endpoint, dove il parametro ``id`` contiene un valore opaco e casuale:
 
@@ -291,14 +299,14 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
         "redirect_uri": "https://relying-party.example.org/cb?response_code=091535f699ea575c7937fa5f0f454aee"
       }
 
-**Passaggi 31-32**: Lo user-agent viene reindirizzato al ``redirect_uri`` per continuare la navigazione con la risorsa protetta resa disponibile all'Utente (:ref:`WP_094 <wallet-credential-presentation-testcases>`).
+**Passaggi 28-29**: Lo user-agent viene reindirizzato al ``redirect_uri`` per continuare la navigazione con la risorsa protetta resa disponibile all'Utente (:ref:`WP_094 <wallet-credential-presentation-testcases>`).
 
 
 
 Authorization Request
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-I parametri URL contenuti nella Authorization Request della Relying Party, che includono il ``request_uri`` dove il Request Object firmato può essere scaricato, sono descritti nella tabella seguente.
+I parametri URL contenuti nella Authorization Request della Relying Party sono descritti nella tabella seguente.
 
 .. list-table::
   :class: longtable
@@ -309,16 +317,23 @@ I parametri URL contenuti nella Authorization Request della Relying Party, che i
     - **Descrizione**
   * - **client_id**
     - OBBLIGATORIO. Identificatore univoco della Relying Party. Il valore DEVE utilizzare uno dei seguenti prefissi di identificatore del Client (come definito in OpenID4VP_, Sezione 5.9): ``openid_federation`` (identificatore dell’entità della Relying Party in una catena di fiducia) oppure ``x509_hash`` (hash SHA-256 codificato in base64url del certificato X.509 della Relying Party).
+  * - **request**
+    - CONDIZIONALE. OBBLIGATORIO a meno che ``request_uri`` non sia presente. Contiene il Request Object firmato e codificato in base64url. Per il contenuto dell'oggetto Request, vedere la Sezione :ref:`remote-flow:Request Object`.
   * - **request_uri**
-    - OBBLIGATORIO. L'URL HTTP dove la Relying Party fornisce il Request Object firmato all'Istanza del Wallet.
+    - CONDIZIONALE. OBBLIGATORIO a meno che ``request`` non sia presente. L'URL HTTP dove la Relying Party fornisce il Request Object firmato all'Istanza del Wallet.
   * - **request_uri_method**
-    - OPZIONALE. Il metodo HTTP DEVE essere impostato con ``get`` o ``post``. L'Istanza del Wallet dovrebbe utilizzare questo metodo per ottenere il Request Object firmato all'indirizzo fornito dal ``request_uri``. Se non fornito o uguale a ``get``, l'Istanza del Wallet DEVE utilizzare il metodo HTTP ``get``. Altrimenti, l'Istanza del Wallet DOVREBBE fornire i suoi metadata all'interno del body della richiesta HTTP POST codificati in ``application/x-www-form-urlencoded``.
+    - OPZIONALE solo se ``request_uri`` è presente. Il metodo HTTP DEVE essere impostato con ``get`` o ``post``. L'Istanza del Wallet dovrebbe utilizzare questo metodo per ottenere il Request Object firmato all'indirizzo fornito dal ``request_uri``. Se non fornito o uguale a ``get``, l'Istanza del Wallet DEVE utilizzare il metodo HTTP ``get``. Altrimenti, l'Istanza del Wallet DOVREBBE fornire i suoi metadata all'interno del body della richiesta HTTP POST codificati in ``application/x-www-form-urlencoded``.
+
+.. note::
+  Le specifiche IT Wallet raccomandano l'uso di ``request_uri``, ovvero Request Object by reference.
 
 .. warning::
-  Per motivi di sicurezza e per prevenire attacchi di tipo endpoint mix-up, il valore contenuto nel parametro ``request_uri`` DEVE essere uno di quelli attestati da una terza parte fidata, come quelli forniti nei metadata ``openid_credential_verifier`` all'interno del parametro ``request_uris``, ottenuti dalla Trust Chain relativa alla Relying Party (:ref:`WP_081 <wallet-credential-presentation-testcases>` and :ref:`RPR-99 <test-plans-remote-presentation>`).
+  Per motivi di sicurezza e per prevenire attacchi di tipo endpoint mix-up, il valore contenuto nel parametro ``request_uri`` DEVE essere uno di quelli attestati da una terza parte fidata, come quelli forniti nei metadata ``openid_credential_verifier`` all'interno del parametro ``request_uris``, ottenuti dalla Trust Chain relativa alla Relying Party (:ref:`WP_081 <wallet-credential-presentation-testcases>` and :ref:`RPR-99 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
 
 Il valore corrispondente all'endpoint ``request_uri`` DOVREBBE essere casuale, secondo quanto prescritto da `RFC 9101, The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR) <https://www.rfc-editor.org/rfc/rfc9101.html#section-5.2.1>`_ Sezione 5.2.1.
 
+
+.. _remote-flow-endpoint-uri-request:
 
 Richiesta all'Endpoint URI Request
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -330,8 +345,8 @@ Questa funzionalità può essere utile quando, ad esempio, l'Istanza del Wallet 
 .. warning::
   L'Istanza del Wallet, quando fornisce le sue capacità tecniche alla Relying Party, NON DEVE includere alcuna informazione dell'Utente o altre informazioni esplicite riguardanti l'hardware utilizzato o le preferenze di utilizzo del suo Utente.
 
-Se sia la Relying Party che l'Istanza del Wallet supportano il ``request_uri_method`` con HTTP POST, le capacità (metadata) dell'Istanza del Wallet DEVONO essere fornite utilizzando una richiesta HTTP all'endpoint ``request_uri`` della Relying Party, con il metodo POST e il tipo di contenuto impostato su `application/x-www-form-urlencoded` (:ref:`RPR-101 <test-plans-remote-presentation>` and :ref:`WP_083 <wallet-credential-presentation-testcases>`).
-La richiesta e i suoi parametri sono definiti nella Sezione numero 5 (Authorization Request) di `OpenID4VP`_. Di seguito sono riportati i dettagli normativi e i riferimenti sui parametri da utilizzare dall'Istanza del Wallet nella Richiesta URI Request (:ref:`WP_083a–083c <wallet-credential-presentation-testcases>`).
+Se sia la Relying Party che l'Istanza del Wallet supportano il ``request_uri_method`` con HTTP POST, le capacità (metadata) dell'Istanza del Wallet DEVONO essere fornite utilizzando una richiesta HTTP all'endpoint ``request_uri`` della Relying Party, con il metodo POST e il tipo di contenuto impostato su `application/x-www-form-urlencoded` (:ref:`RPR-101 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>` and :ref:`WP_083 <wallet-credential-presentation-testcases>`).
+La richiesta e i suoi parametri sono definiti nella Sezione 5 (Authorization Request) di `OpenID4VP`_. Di seguito sono riportati i dettagli normativi e i riferimenti sui parametri da utilizzare dall'Istanza del Wallet nella Richiesta URI Request (:ref:`WP_083a–083c <wallet-credential-presentation-testcases>`).
 
 .. list-table:: Parametri dell'Endpoint URI Request
    :class: longtable
@@ -346,6 +361,7 @@ La richiesta e i suoi parametri sono definiti nella Sezione numero 5 (Authorizat
      - RACCOMANDATO. Stringa utilizzata dall'Istanza del Wallet per prevenire il replay delle risposte della Relying Party. 
 
 
+.. _table_wallet_metadata_parameters:
 .. list-table:: Parametri dei metadata del Wallet
    :class: longtable
    :widths: 20 80
@@ -386,93 +402,9 @@ La richiesta e i suoi parametri sono definiti nella Sezione numero 5 (Authorizat
 Risposta dell'Endpoint URI Request
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-La Relying Party emette il Request Object firmato utilizzando il tipo di contenuto impostato su ``application/oauth-authz-req+jwt``.
+La Relying Party emette il Request Object firmato utilizzando il tipo di contenuto impostato su ``application/oauth-authz-req+jwt``. Per il contenuto dell'oggetto Request, vedere la Sezione :ref:`remote-flow:Request Object`.
 
-I parametri dell'header JWT sono descritti di seguito:
-
-.. list-table::
-  :class: longtable
-  :widths: 25 50
-  :header-rows: 1
-
-  * - **Nome**
-    - **Descrizione**
-  * - **alg**
-    - Algoritmo utilizzato per firmare il JWT, secondo [:rfc:`7516#section-4.1.1`]. DEVE essere uno degli algoritmi supportati nella Sezione :ref:`algorithms:Algoritmi Crittografici` e NON DEVE essere impostato su ``none`` o su un identificatore di algoritmo simmetrico (MAC) (:ref:`RPR-104 <test-plans-remote-presentation>`).
-  * - **typ**
-    - Media Type del JWT, come definito in [:rfc:`7519`] e [:rfc:`9101`]. DOVREBBE essere impostato sul valore ``oauth-authz-req+jwt`` (:ref:`RPR-105 <test-plans-remote-presentation>`).
-  * - **kid**
-    - ID della chiave della chiave pubblica necessaria per verificare la firma JWT, come definito in [:rfc:`7517`]. OBBLIGATORIO quando viene utilizzato ``trust_chain``.
-  * - **trust_chain**
-    - CONDIZIONALE. OBBLIGATORIO quando il prefisso ``client_id`` utilizzato nella richiesta è impostato con ``openid-federation``. È una sequenza di Entity Statement che compongono la Trust Chain relativa alla Relying Party, come definito in `OID-FED`_ Sezione 4.3 *Trust Chain Header Parameter*.
-  * - **x5c**
-    - CONDIZIONALE. OBBLIGATORIO quando ``client_id`` utilizza il prefisso ``x509_hash``; altrimenti viene utilizzato ``kid`` con ``jwks``. Contiene il certificato X.509 foglia della Relying Party (e opzionalmente i certificati intermedi), utilizzato per verificare la firma JWT con la chiave pubblica nel certificato della Relying Party come definito in :rfc:`7515`. Il certificato della Relying Party in ``x5c`` DEVE attestare informazioni di identità della Relying Party sufficienti per vincolare gli endpoint di rete referenziati dal flusso di presentazione. In particolare, gli endpoint utilizzati nella Authorization Request e Authorization Response (ad esempio, ``response_uri``, ``redirect_uri``) DEVONO corrispondere alle informazioni di identità contenute nel certificato della Relying Party (ad esempio, un SAN di tipo URI per il matching completo dell'URI o un DNS Name SAN per il matching del nome host).
-
-.. note::
-   L'intestazione ``x5c`` NON DEVE includere il certificato radice, come richiesto da `OPENID4VC-HAIP`_. La catena di certificati ``x5c`` DEVE validare a un certificato radice preconfigurato; vedere la Sezione :ref:`trust-infrastructure:PKI X.509` per informazioni di base sulla validazione della catena di certificati X.509.
-
-
-I parametri del payload JWT sono descritti qui:
-
-.. list-table::
-  :class: longtable
-  :widths: 25 50
-  :header-rows: 1
-
-  * - **Nome**
-    - **Descrizione**
-  * - **client_id**
-    - Identificatore univoco della Relying Party.
-  * - **client_metadata**
-    - Un oggetto JSON contenente i valori dei metadata della Relying Party, che DOVREBBE includere i seguenti parametri:
-        - **vp_formats_supported**. Utilizzato dall'Istanza del Wallet per determinare i formati di Verifiable Presentation supportati.
-        - **encrypted_response_enc_values_supported**. Array JSON che elenca gli algoritmi JWE ``enc`` supportati per le Authorization Response cifrate in ``direct_post.jwt``.
-        - **jwks**. JSON Web Key Set utilizzato dall'Istanza del Wallet per cifrare la Authorization Response o per l'accordo delle chiavi. Le chiavi contenute in questo set sono specifiche della richiesta e identificate dal loro valore ``kid``.
-        - **client_name** e **logo_uri**. OPZIONALE. Utilizzati per la visualizzazione del consenso dell'utente e per mostrare l'identità della Relying Party nell'interfaccia dell'Istanza del Wallet.
-  * - **response_mode**
-    - DEVE essere impostato su ``direct_post.jwt`` (:ref:`RPR-106 <test-plans-remote-presentation>`).
-  * - **dcql_query**
-    - Oggetto che rappresenta una richiesta di presentazione di Credenziali, secondo il linguaggio di query DCQL definito nella Sezione 6 di `OpenID4VP`_.
-  * - **transaction_data**  
-    - Un array opzionale non vuoto di oggetti JSON, ognuno dei quali descrive una transazione che la Relying Party richiede all’Utente di autorizzare.  Ogni oggetto di transazione include:  
-        - **type**. Stringa che identifica il tipo di dati della transazione.
-        - **credential_ids**. Array che fa riferimento a una o più Credenziali provenienti dalla ``dcql_query`` che possono autorizzare la transazione.
-  * - **transaction_data_hashes_alg**  
-    - Un array opzionale di stringhe, ciascuna delle quali rappresenta un identificatore di algoritmo di hash, corrispondente a un nome di algoritmo di hash elencato nel registro `IANA registry <https://www.iana.org/assignments/named-information/named-information.xhtml#hash-alg>`_. Uno di questi algoritmi DEVE essere utilizzato per calcolare gli hash nel parametro di risposta ``transaction_data_hashes``. Se omesso, l'algoritmo di hash predefinito è sha-256.
-  * - **response_type**
-    - DEVE essere impostato su ``vp_token`` (:ref:`RPR-107 <test-plans-remote-presentation>`).
-  * - **wallet_nonce**
-    - Valore stringa utilizzato per mitigare gli attacchi di replay della Request URI Response, come definito nella Sezione 5.10 (Request URI Method) di `OpenID4VP`_. DEVE essere presente se precedentemente fornito dall'Istanza del Wallet (:ref:`RPR-94 <test-plans-remote-presentation>`).
-  * - **response_uri**
-    - L'URI di Risposta a cui l'Istanza del Wallet DEVE inviare la Authorization Response utilizzando una HTTP Request con il metodo POST (:ref:`RPR-112 <test-plans-remote-presentation>`).
-  * - **nonce**
-    - Numero unico e casuale con sufficiente entropia, la cui lunghezza DEVE essere di almeno 32 cifre (:ref:`RPR-110 <test-plans-remote-presentation>`).
-  * - **state**
-    - Identificatore univoco della Authorization Request. È RACCOMANDATO di includere questo parametro e il valore DOVREBBE essere opaco per l’Istanza del Wallet.
-  * - **iss**
-    - L'entità che ha emesso il JWT. Sarà popolato con il ``client_id`` della Relying Party.
-  * - **iat**
-    - Timestamp Unix, che rappresenta l'ora in cui il JWT è stato emesso.
-  * - **exp**
-    - Timestamp Unix, che rappresenta l'ora di scadenza in cui o dopo la quale il JWT NON DEVE più essere valido (:ref:`RPR-111 <test-plans-remote-presentation>`).
-  * - **request_uri_method**
-    - Stringa che determina il metodo HTTP da utilizzare con l'endpoint ``request_uri`` per fornire i metadata dell'Istanza del Wallet alla Relying Party. Il valore non fa distinzione tra maiuscole e minuscole e può essere impostato su: `get` o `post`. Il metodo GET, come definito in :rfc:`9101`, prevede che l'Istanza del Wallet invii una richiesta GET per recuperare un Request Object. Il metodo POST prevede che l'Istanza del Wallet richieda la creazione di un nuovo Request Object inviando una richiesta HTTP POST, con i suoi metadata, al ``request_uri`` della Relying Party.
-
-.. warning::
-  Per motivi di sicurezza e per prevenire attacchi di tipo endpoint mix-up, il valore contenuto nel parametro ``response_uri`` DEVE essere uno di quelli attestati da una terza parte fidata, come quelli forniti nei metadata ``openid_credential_verifier`` all'interno del parametro ``response_uris``, ottenuti dalla Trust Chain relativa alla Relying Party (:ref:`WP_091a <wallet-credential-presentation-testcases>` and :ref:`RPR-112 <test-plans-remote-presentation>`).
-
-.. note::
-   Il parametro ``transaction_data`` è destinato ai casi d’uso in cui l’Istanza del Wallet DEVE autorizzare una transazione specifica, come l’inizio di un pagamento o la firma digitale.  In questi scenari ad alta sensibilità, i dati della transazione possono essere collegati crittograficamente alla Risposta di Autorizzazione tramite ``transaction_data_hashes`` all’interno del Key Binding JWT, garantendo integrità e non ripudio.  Per ulteriori dettagli, consultare `OpenID4VP`_, Sezione 8.4.
-
-.. note::
-  Il parametro ``state`` in una richiesta OAuth è opzionale, ma è altamente RACCOMANDATO. Viene utilizzato principalmente per prevenire attacchi Cross-Site Request Forgery (CSRF) includendo un valore unico e imprevedibile che la Relying Party può verificare al momento della ricezione della risposta. Inoltre, aiuta a mantenere lo stato tra Request e Response, come le informazioni di sessione o altri dati di cui la Relying Party ha bisogno dopo il processo di autorizzazione.
-
-.. note::
-  L'utilizzo del parametro ``client_metadata`` è condizionale. Se ``client_id`` utilizza il prefisso ``x509_hash``, tutti i metadata della Relying Party, oltre alla sua chiave pubblica utilizzata per firmare il Request Object, DEVONO essere forniti in ``client_metadata``. Tuttavia, se è presente e ``client_id`` utilizza il prefisso ``openid_federation``, l'Istanza del Wallet DEVE ignorarlo e ottenere i metadata attraverso la Trust Chain OpenID Federation (:ref:`RPR-113 <test-plans-remote-presentation>`).
-
-.. note:: **Richiesta dell'Attestazione del Wallet**
-  
-  La Relying Party che richiede un'Attestazione del Wallet DEVE farlo utilizzando una query DCQL standard, tuttavia NON DOVREBBE includere il parametro ``claims`` nella query. A seconda del formato dell'Attestazione del Wallet, la Relying Party DEVE richiedere il parametro ``vct_values`` nella query DCQL, il quale DEVE essere impostato al valore definito nella :ref:`registry:Struttura del Catalogo degli Attestati Elettronici` (:ref:`RPR-114 <test-plans-remote-presentation>`).
+.. _remote-flow-errori-endpoint-uri-request:
 
 Errori dell'Endpoint URI Request
 --------------------------------
@@ -517,6 +449,90 @@ Di seguito è riportato un esempio di *Error Response* dall'endpoint ``request_u
 
 Dopo aver ricevuto una *Error Response*, l'Istanza del Wallet DOVREBBE informare l'Utente della condizione di errore in modo appropriato (:ref:`WP_089 <wallet-credential-presentation-testcases>`). L'Istanza del Wallet DOVREBBE registrare l'errore e PUÒ tentare di recuperare da determinati errori se fattibile (:ref:`WP_089a <wallet-credential-presentation-testcases>`). Ad esempio, se l'errore è ``server_error``, l'Istanza del Wallet DOVREBBE chiedere all'Utente di reinserire o scansionare un nuovo codice QR, se possibile (:ref:`WP_089b <wallet-credential-presentation-testcases>`).
 
+Request Object
+^^^^^^^^^^^^^^
+
+I parametri dell'header JWT sono descritti di seguito:
+
+.. list-table::
+  :class: longtable
+  :widths: 25 50
+  :header-rows: 1
+
+  * - **Nome**
+    - **Descrizione**
+  * - **alg**
+    - OBBLIGATORIO. Algoritmo utilizzato per firmare il JWT, secondo [:rfc:`7516#section-4.1.1`]. DEVE essere uno degli algoritmi supportati nella Sezione :ref:`algorithms:Algoritmi Crittografici` e NON DEVE essere impostato su ``none`` o su un identificatore di algoritmo simmetrico (MAC) (:ref:`RPR-104 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
+  * - **typ**
+    - OBBLIGATORIO. Media Type del JWT, come definito in [:rfc:`7519`] e [:rfc:`9101`]. DOVREBBE essere impostato sul valore ``oauth-authz-req+jwt`` (:ref:`RPR-105 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
+  * - **kid**
+    - OBBLIGATORIO. ID della chiave della chiave pubblica necessaria per verificare la firma JWT, come definito in [:rfc:`7517`].
+  * - **trust_chain**
+    - OPZIONALE. È una sequenza di Entity Statement che compongono la Trust Chain relativa alla Relying Party, come definito in `OID-FED`_ Sezione 4.3 *Trust Chain Header Parameter*.
+  * - **x5c**
+    - OBBLIGATORIO. Contiene il certificato X.509 foglia della Relying Party (e opzionalmente i certificati intermedi), utilizzato per verificare la firma JWT con la chiave pubblica nel certificato della Relying Party come definito in :rfc:`7515`. Il certificato della Relying Party in ``x5c`` DEVE attestare informazioni di identità della Relying Party sufficienti per vincolare gli endpoint di rete referenziati dal flusso di presentazione. In particolare, gli endpoint utilizzati nella Authorization Request e Authorization Response (ad esempio, ``response_uri``, ``redirect_uri``) DEVONO corrispondere alle informazioni di identità contenute nel certificato della Relying Party (ad esempio, un SAN di tipo URI per il matching completo dell'URI o un DNS Name SAN per il matching del nome host).
+
+.. note::
+   L'intestazione ``x5c`` NON DEVE includere il certificato radice, come richiesto da `OPENID4VC-HAIP`_. La catena di certificati ``x5c`` DEVE validare a un certificato radice preconfigurato; vedere la Sezione :ref:`trust-infrastructure:X.509 PKI` per informazioni di base sulla validazione della catena di certificati X.509.
+
+
+I parametri del payload JWT sono descritti qui:
+
+.. list-table::
+  :class: longtable
+  :widths: 25 50
+  :header-rows: 1
+
+  * - **Nome**
+    - **Descrizione**
+  * - **client_id**
+    - OBBLIGATORIO. Identificatore univoco della Relying Party.
+  * - **client_metadata**
+    - OPZIONALE. Un oggetto JSON contenente i valori dei metadata della Relying Party, che DOVREBBE includere i seguenti parametri:
+        - **vp_formats_supported**. Utilizzato dall'Istanza del Wallet per determinare i formati di Verifiable Presentation supportati.
+        - **encrypted_response_enc_values_supported**. Array JSON che elenca gli algoritmi JWE ``enc`` supportati per le Authorization Response cifrate in ``direct_post.jwt``.
+        - **jwks**. JSON Web Key Set utilizzato dall'Istanza del Wallet per cifrare la Authorization Response o per l'accordo delle chiavi. Le chiavi contenute in questo set sono specifiche della richiesta e identificate dal loro valore ``kid``.
+        - **client_name** e **logo_uri**. OPZIONALE. Utilizzati per la visualizzazione del consenso dell'utente e per mostrare l'identità della Relying Party nell'interfaccia dell'Istanza del Wallet.
+  * - **response_mode**
+    - OBBLIGATORIO. DEVE essere impostato su ``direct_post.jwt`` (:ref:`RPR-106 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
+  * - **dcql_query**
+    - OBBLIGATORIO. Oggetto che rappresenta una richiesta di presentazione di Credenziali, secondo il linguaggio di query DCQL definito nella Sezione 6 di `OpenID4VP`_.
+  * - **transaction_data**  
+    - OPZIONALE. Un array non vuoto di oggetti JSON, ognuno dei quali descrive una transazione che la Relying Party richiede all’Utente di autorizzare.  Ogni oggetto di transazione include:  
+        - **type**. Stringa che identifica il tipo di dati della transazione.
+        - **credential_ids**. Array che fa riferimento a una o più Credenziali provenienti dalla ``dcql_query`` che possono autorizzare la transazione.
+  * - **transaction_data_hashes_alg**  
+    - OPZIONALE. Un array di stringhe, ciascuna delle quali rappresenta un identificatore di algoritmo di hash, corrispondente a un nome di algoritmo di hash elencato nel registro `IANA <https://www.iana.org/assignments/named-information/named-information.xhtml#hash-alg>`_. Uno di questi algoritmi DEVE essere utilizzato per calcolare gli hash nel parametro di risposta ``transaction_data_hashes``. Se omesso, l’algoritmo di hash predefinito è sha-256.
+  * - **response_type**
+    - OBBLIGATORIO. DEVE essere impostato su ``vp_token`` (:ref:`RPR-107 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
+  * - **wallet_nonce**
+    - OBBLIGATORIO se precedentemente fornito dall'Istanza del Wallet (:ref:`RPR-94 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`). Valore stringa utilizzato per mitigare gli attacchi di replay della Request URI Response, come definito nella Sezione 5.10 (Request URI Method) di `OpenID4VP`_.
+  * - **response_uri**
+    - OBBLIGATORIO. L'URI di Risposta a cui l'Istanza del Wallet DEVE inviare la Authorization Response utilizzando una HTTP Request con il metodo POST (:ref:`RPR-112 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
+  * - **nonce**
+    - OBBLIGATORIO. Numero unico e casuale con sufficiente entropia, la cui lunghezza DEVE essere di almeno 32 cifre (:ref:`RPR-110 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`)..
+  * - **state**
+    - RACCOMANDATO. Identificatore univoco della Authorization Request, il suo valore DOVREBBE essere opaco per l’Istanza del Wallet.
+  * - **iss**
+    - OBBLIGATORIO. L'entità che ha emesso il JWT. Sarà popolato con il ``client_id`` della Relying Party.
+  * - **iat**
+    - OBBLIGATORIO. Timestamp Unix, che rappresenta l'ora in cui il JWT è stato emesso.
+  * - **exp**
+    - OBBLIGATORIO. Timestamp Unix, che rappresenta l'ora di scadenza in cui o dopo la quale il JWT NON DEVE più essere valido (:ref:`RPR-111 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
+
+.. warning::
+  Per motivi di sicurezza e per prevenire attacchi di tipo endpoint mix-up, il valore contenuto nel parametro ``response_uri`` DEVE essere uno di quelli attestati da una terza parte fidata, come quelli forniti nei metadata ``openid_credential_verifier`` all'interno del parametro ``response_uris``, ottenuti dalla Trust Chain relativa alla Relying Party (:ref:`WP_091a <wallet-credential-presentation-testcases>` and :ref:`RPR-112 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
+
+.. note::
+   Il parametro ``transaction_data`` è destinato ai casi d’uso in cui l’Istanza del Wallet DEVE autorizzare una transazione specifica, come l’inizio di un pagamento o la firma digitale.  In questi scenari ad alta sensibilità, i dati della transazione possono essere collegati crittograficamente alla Risposta di Autorizzazione tramite ``transaction_data_hashes`` all’interno del Key Binding JWT, garantendo integrità e non ripudio.  Per ulteriori dettagli, consultare `OpenID4VP`_, Sezione 8.4.
+
+.. note::
+  Il parametro ``state`` in una richiesta OAuth è opzionale, ma è altamente RACCOMANDATO. Viene utilizzato principalmente per prevenire attacchi Cross-Site Request Forgery (CSRF) includendo un valore unico e imprevedibile che la Relying Party può verificare al momento della ricezione della risposta. Inoltre, aiuta a mantenere lo stato tra Request e Response, come le informazioni di sessione o altri dati di cui la Relying Party ha bisogno dopo il processo di autorizzazione.
+
+.. note::
+  L'utilizzo del parametro ``client_metadata`` è condizionale. Se ``client_id`` utilizza il prefisso ``x509_hash``, tutti i metadata della Relying Party, oltre alla sua chiave pubblica utilizzata per firmare il Request Object, DEVONO essere forniti in ``client_metadata``. Tuttavia, se è presente e ``client_id`` utilizza il prefisso ``openid_federation``, l'Istanza del Wallet DEVE ignorarlo e ottenere i metadata attraverso la Trust Chain OpenID Federation (:ref:`RPR-113 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
+
+
 Authorization Response
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -526,10 +542,6 @@ Dopo aver ottenuto l'autorizzazione e il consenso dell'Utente per la presentazio
     **Perché la risposta è cifrata?**
 
     La risposta inviata dall'Istanza del Wallet alla Relying Party è cifrata per impedire a un avversario di sfruttare possibili vulnerabilità per accedere alle informazioni trasmesse in chiaro all'interno della rete della Relying Party. Per esempio, ciò è possibile se l'ambiente di rete della Relying Party impiega un proxy per le operazioni di `TLS Termination <https://www.f5.com/glossary/ssl-termination>`_, il quale agisce come intermediario tra il client e il backend web server della Relying Party e gestisce tutte le operazioni relative a TLS. In questo caso specifico, il proxy decifra il contenuto della trasmissione, in seguito lo inoltra al backend web server della Relying Party. Questa operazione può avvenire in chiaro oppure negoziando una ulteriore sessione TLS con il web server della Relying Party (sempre raccomandato). Nel primo caso, trasmissione dei dati TLS in chiaro, qualsiasi avversario all'interno del segmento di rete fra proxy e web server backend che intercettasse i dati trasmessi, potrebbe ottenere informazioni sensibili; se però la risposta è cifrata, la fattispece descritta viene mitigata anche mandando i dati in chiaro.
-
-.. note:: **Presentazione dell'Attestazione del Wallet**
-  
-    L'Istanza del Wallet DEVE includere l'Attestazione del Wallet se richiesta dalla Relying Party usando la query DCQL. Durante la presentazione, l'Istanza del Wallet NON DOVREBBE richiedere il consenso dell'utente alla divulgazione degli attributi dell'Attestazione del Wallet, i quali sono dati tecnici non trasparenti per l'utente.
 
 Nella Authorization Response vengono utilizzati i seguenti parametri (:ref:`WP_093 <wallet-credential-presentation-testcases>`):
 
@@ -541,16 +553,15 @@ Nella Authorization Response vengono utilizzati i seguenti parametri (:ref:`WP_0
   * - **Nome**
     - **Descrizione**
   * - **vp_token**
-    - Ci DEVONO essere almeno due presentazioni firmate in questo Array (:ref:`WP_093a <wallet-credential-presentation-testcases>`):
+    - Questo array DEVE contenere gli Attestati Elettronici richiesti nel formato SD-JWT VC (:ref:`WP_093a <wallet-credential-presentation-testcases>`).
 
-      - L'Attestato Elettronico richiesto (uno o più, in formato SD-JWT VC)
-      - la Wallet Attestation (in formato SD-JWT VC)
-
-      Il formato ``vp_token`` è un JSON Object le cui chiavi corrispondono agli id degli Attestati Elettronici richieste nel ``dcql_query`` utilizzato nella richiesta, e i valori a ciascun Attestato Elettronico presentato.
+      Il formato ``vp_token`` è un JSON Object le cui chiavi corrispondono agli id degli Attestati Elettronici richieste nel ``dcql_query`` utilizzato nella richiesta, e i valori sono degli array contenenti il(gli) Attestato(i) Elettronico(i) presentato(i).
 
   * - **state**
     - Identificatore univoco fornito dalla Relying Party all'interno della Authorization Request.
 
+.. note:: 
+    Sebbene `OpenID4VP`_ prenda in considerazione la bozza -10 della specifica SD-JWT VC, la specifica IT Wallet considera la bozza -11 (`SD-JWT-VC`_) in linea con la versione identificata in `OpenID4VCI`_.
 
 SD-JWT definisce come un *Holder* può presentare una Attestato Elettronico a una Relying Party, dimostrando il legittimo possesso dell'Attestato Elettronico. Per fare ciò, l'*Holder* DEVE includere il ``KB-JWT`` nell'SD-JWT aggiungendo il ``KB-JWT`` alla termine della stringa contenente l'SD-JWT (:ref:`WP_093b <wallet-credential-presentation-testcases>`), come rappresentato nell'esempio seguente
 
@@ -597,7 +608,6 @@ Quando viene presentato un SD-JWT, la firma KB-JWT DEVE essere verificata dalla 
     - CONDIZIONALE. OBBLIGATORIO solo se la richiesta includeva ``transaction_data_hashes_alg``. Stringa che indica l’algoritmo di hash effettivamente utilizzato per calcolare ``transaction_data_hashes``; se tale parametro non è stato fornito, la funzione di hash DEVE essere ``sha-256``.  
 
 
-
 Errori della Authorization Response
 ---------------------------------------
 
@@ -637,13 +647,15 @@ Nella seguente tabella sono elencati gli *Error codes* e le descrizioni che sono
    * - ``invalid_request_uri_method``  
      - Il valore del parametro ``request_uri_method`` non è né ``get`` né ``post``.  `OpenID4VP`_
    * - ``invalid_request``
-     - La richiesta è malformata o incoerente, il prefisso dell'identificatore del Client non è supportato oppure i requisiti del prefisso non sono rispettati (ad esempio, ``client_id`` con il prefisso ``x509_hash`` senza il ``client_metadata`` richiesto). `OpenID4VP`_
+     - La richiesta è malformata o incoerente (ad esempio utilizza il Response Type ``vp_token`` ma non include il parametro ``dcql_query``), il prefisso dell'identificatore del Client non è supportato oppure i requisiti del prefisso non sono rispettati (ad esempio, ``client_id`` con il prefisso ``x509_hash`` senza il ``client_metadata`` richiesto). `OpenID4VP`_
    * - ``access_denied``
      - Il Wallet non aveva l'Attestato Elettronico richiesto, l'Utente non ha dato il consenso o il Wallet non è riuscito ad autenticare l'Utente. `OpenID4VP`_
    * - ``invalid_client``
-     - I metadata di federazione della Relying Party sono stati risolti basandosi sull'Identificatore del Client (utilizzando il prefisso ``openid_federation``), ma non possono essere autorizzati a causa di errori di convalida della trust oppure non è stata riconosciuta come partecipante valido della federazione. `OID-FED`_
+     - - I metadata della Relying Party sono stati risolti basandosi sull'Identificatore del Client (utilizzando il prefisso ``openid_federation`` o ``x509_hash``), ma la Relying Party non può essere autorizzata a causa di errori nella verifica della trust oppure dal fatto che non è stata riconosciuta come entità valida della federazione. `OID-FED`_ e `OpenID4VP`_
+       - Il parametro ``client_metadata`` è presente, ma il Wallet riconosce l'identificativo del client e conosce i metadati ad esso associati. `OpenID4VP`_
+       - I metadati pre-registrati del Relying Party sono stati trovati in base all'identificativo del client, ma è presente anche il parametro ``client_metadata``. `OpenID4VP`_
    * - ``invalid_transaction_data``  
-     - Uno o più oggetti nella struttura ``transaction_data`` non sono validi. Ad esempio, tali oggetti contengono tipi sconosciuti o non supportati, campi malformati o mancanti, valori non validi oppure riferimenti a Credenziali non disponibili. `OpenID4VP`_
+     - Uno o più oggetti nella struttura ``transaction_data`` non sono validi. Ad esempio, tali oggetti contengono tipi sconosciuti o non supportati, campi malformati (ad esempio è un oggetto di tipo noto ma contiene campi sconosciuti o campi di tipo errato per il tipo di transaction data) o mancanti, valori non validi (ad esempio il campo ``credential_ids`` non corrisponde) oppure riferimenti a Credenziali non disponibili. `OpenID4VP`_
 
 Risposta della Relying Party
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -697,9 +709,6 @@ La seguente tabella elenca gli Status Code HTTP e i relativi *Error codes* che D
       - Il valore del nonce fornito è errato o altrimenti non conforme agli standard.
     * - ``403 Forbidden``
       - ``invalid_request``
-      - La firma della Wallet Attestation non è valida o la fiducia non può essere stabilita con il suo Emittente.
-    * - ``403 Forbidden``
-      - ``invalid_request``
       - La trust non può essere stabilita con il Fornitore di Attestati Elettronici.
     * - ``500 Internal Server Error``
       - ``server_error``
@@ -746,6 +755,8 @@ La Relying Party lega la richiesta dello user-agent, con un cookie di sessione c
 * **201 Created**; quando il Request Object firmato è stato emesso dalla Relying Party che attende di essere scaricato dall'Istanza del Wallet all'endpoint ``request_uri``.
 * **202 Accepted**; quando il Request Object firmato è stato ottenuto dall'Istanza del Wallet.
 * **200 OK**; quando l'Istanza del Wallet ha fornito la presentazione all'endpoint ``response_uri`` della Relying Party e l'autenticazione dell'Utente ha avuto successo. La Relying Party aggiorna il cookie di sessione consentendo allo user-agent di accedere alla risorsa protetta. Viene fornito un ``redirect_uri`` che trasporta lo user-agent alla pagina in cui l'Utente deve navigare.
+
+.. _remote-flow-errori-status-endpoint:
 
 Errori dello Status Endpoint
 -----------------------------

@@ -72,7 +72,7 @@ The onboarding process follows a structured multi-phase approach:
   3. **IT-Wallet Registry Integration**:
 
     - **Claims Registry Integration**: Authentic Sources select standardized claim definitions from Claims Registry during capability declaration.
-    - **Taxonomy Integration**: All entities use Taxonomy hierarchical classification (domains, purposes) for organizational structure to categorize Credentials.
+    - **Taxonomy Integration**: All entities use Taxonomy hierarchical classification (domains, classes, purposes) for organizational structure to categorize Credentials.
     - **Authentic Source Registry Integration**: Authentic Sources registered with their declared claims and capabilities, enabling Credential Issuers discovery and coordination.
     - **Federation Registry Integration**: Operational entities included for trust validation during Credential operations.
     - **Catalog Integration**: Credential types published in :ref:`registry:Digital Credentials Catalog Structure` based on supervisory body policies for public discovery eligibility.
@@ -136,7 +136,7 @@ During registration, Authentic Sources MUST provide the following information:
      - **REQUIRED**. Available claims:
 
        - Array of claim identifiers from Claims Registry that the Authentic Source provides (e.g., ``["given_name", "family_name", "driving_privileges"]``).
-       - Taxonomy classification for Authentic Source scope (e.g., ``["AUTHORIZATION"]`` domains and ``["DRIVING_LICENSE"]`` purposes).
+       - Intended Purposes for verification (e.g. ``["DRIVING_RIGHTS"]``).
       
    * - **API Implementation Details**
      - **REQUIRED**. Integration information details:
@@ -154,7 +154,6 @@ During registration, Authentic Sources MUST provide the following information:
      - **OPTIONAL**. Visual branding suggestions for Digital Credentials using Authentic Source data:
 
        - Background color for Digital Credentials in hexadecimal format (e.g., ``"#003d82"``).
-       - Text color for Digital Credentials in hexadecimal format (e.g., ``"#ffffff"``).
        - Logo URI with cryptographic integrity verification for Digital Credential branding.
        - Visual template URI with integrity verification for Digital Credential presentation.
 
@@ -178,10 +177,10 @@ The Authentic Source registration follows a technical process as described below
 **Step 2 - Technical Validation**: Supervisory Body validates submitted registration focusing on:
 
   - **Claims Registry Compliance**: Validation of claims format, identifiers, and existence in Claims Registry.
-  - **Taxonomy Validation**: Verification that declared domains, and purposes are valid taxonomy entries.
+  - **Taxonomy Validation**: Verification that declared purposes are valid taxonomy entries.
   - **API Integration Verification**:
 
-    - **Public Entities**: PDND e-service specification compliance verification
+    - **Public Entities**: e-Service PDNDspecification compliance verification
     - **Private Entities**: `OAS3`_ specification completeness including authorization framework, request/response schemas, error handling mechanisms, and sandbox environment.
 
   - **Response Format Standards**: Verification of Claims Registry format usage and state mapping specification.
@@ -254,7 +253,7 @@ Federation Entities MUST comply with the following technical requirements before
     - ``iat`` and ``exp`` claims defining a valid time interval.
     - A ``metadata`` claim containing entity-specific metadata organized by Metadata Types (see :ref:`credential-issuer-entity-configuration:Credential Issuer Entity Configuration`, :ref:`relying-party-entity-configuration:Relying Party Entity Configuration`, or :ref:`wallet-provider-entity-configuration:Wallet Provider Entity Configuration`) with application specific keys included in the metadata ``jwks`` fields and self-signed X.509 Certificates in the corresponding ``x5c`` claims.
 
-  - **X.509 Certificate Signing Request (CSR)**: The entities MUST prepare a X.509 Certificate Signing Request (CSR) in PKCS #10 format containing **the Federation Entity Key** for X.509 Certificate issuance by the Federation Authority, as defined in :ref:`trust-infrastructure:Trust Infrastructure Requirements`.
+  - **X.509 Certificate Signing Request (CSR)**: The entities MUST prepare a X.509 Certificate Signing Request (CSR) in PKCS #10 format containing **the Federation Entity Key** for X.509 Certificate issuance by the Federation Authority, as defined in :ref:`trust-infrastructure:X.509 Certificates Issuance`.
 
 Key Management Security Requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -316,24 +315,11 @@ The federation onboarding follows a structured 4-step procedure, it can be perfo
 .. warning::
    Before submitting the technical onboarding request, Federation Entities MUST ensure that their ``/.well-known/openid-federation`` endpoint publishes a valid Entity Configuration (as defined in :ref:`trust-infrastructure:Entity Configuration`) signed with their Federation Entity Private Key corresponding to the Federation Entity Key provided in the request. The Entity Configuration MUST already include application specific keys in the metadata with self-signed X.509 Certificates in the ``x5c`` claims.
 
-
 A non-normative example of the technical information structure that Federation Entities submit during Step 1 onboarding request:
 
 .. literalinclude:: ../../examples/federation-onboarding-request-example.json
    :language: json
    :caption: Federation onboarding request example
-
-    .. rst-class:: rst-comment
-
-       Private JWK for kid "k1d2e3f4g5h6i7j8":
-       {
-         "kid": "k1d2e3f4g5h6i7j8",
-         "kty": "EC",
-         "crv": "P-256",
-         "x": "8w1QwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw",
-         "y": "QwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw",
-         "d": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-       }
 
 The example below shows the decoded content of the CSR:
 
@@ -355,7 +341,7 @@ The example below shows the decoded content of the CSR:
   - Verification of information provided in the registration request.
   - Validation of the Entity Configuration, and the metadata contained in it, published at the entity's ``/.well-known/openid-federation`` endpoint (as defined in :ref:`trust-infrastructure:The Infrastructure of Trust`).
   - **Metadata Policy Application**: Application of federation-specific metadata policies to the entity's metadata based on organizational characteristics and authorization scope as defined in :ref:`trust-infrastructure:Subordinate Statements`. When onboarded through an Intermediate, both Intermediate and Trust Anchor policies apply, with Trust Anchor policies taking precedence in case of conflicts.
-  - **X.509 Certificate Issuance**: Certification of the Federation Entity Key with X.509 Certificate issuance using the trust infrastructure detailed in :ref:`trust-infrastructure:Trust Infrastructure Requirements`. Intermediates MUST issue X.509 Certificates using appropriate **naming constraints** limiting the use of DNS names and URIs to their subordinates only.
+  - **X.509 Certificate Issuance**: Certification of the Federation Entity Key with X.509 Certificate issuance using the trust infrastructure detailed in :ref:`trust-infrastructure:X.509 Certificates Issuance`. Intermediates MUST issue X.509 Certificates using appropriate **naming constraints** limiting the use of DNS names and URIs to their subordinates only.
 
 Upon successful validation, the entity receives a response containing an X.509 Certificate Chain where:
 
@@ -527,7 +513,7 @@ The Trust Mark JWT (contained in the ``trust_mark`` claim above) includes the fo
    * - **email**
      - **RECOMMENDED**. Institutional or PEC email of the organization.
    * - **logo_uri**
-     - **OPTIONAL**. URL pointing to the Trust Mark logo for UI/UX purposes.
+     - **REQUIRED**. URL pointing to the :ref:`brand-identity:Trust Mark` for UI/UX purposes.
    * - **ref**
      - **OPTIONAL**. URL with additional web information about the Trust Mark.
 
@@ -565,8 +551,8 @@ The following non-normative examples illustrate different Trust Mark JWT content
      "authorized_claims": ["given_name", "family_name", "driving_privileges"],
      "authorized_credential_types": ["mobile-driving-license"],
      "scope_restrictions": {
-       "domains": ["AUTHORIZATION"],
-       "purposes": ["DRIVING_LICENSE"]
+       "domains": ["MOBILITY_TRAVEL"],
+       "purposes": ["DRIVING_RIGHTS"]
      }
    }
 

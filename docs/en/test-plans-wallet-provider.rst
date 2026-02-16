@@ -8,7 +8,7 @@ Wallet Provider Test Matrix
 This section provides the set of test cases for verifying conformance of a Wallet Solution and Wallet Instance implementation to the technical rules defined in the IT-Wallet ecosystem. 
 The test plan is based on the requirements extracted from the following Sections:
 
-- :ref:`trust:The Infrastructure of Trust`
+- :ref:`trust-infrastructure:The Infrastructure of Trust`
 - :ref:`wallet-solution:Wallet Solution`
 - :ref:`credential-issuance:Digital Credential Issuance`
 - :ref:`credential-presentation:Digital Credential Presentation`
@@ -29,7 +29,7 @@ This section lists the test cases from Sections:
 - :ref:`wallet-solution-components:Wallet Solution Components`
 - :ref:`wallet-instance:Wallet Instance`
 - :ref:`wallet-provider-entity-configuration:Wallet Provider Entity Configuration`
-- :ref:`wallet-provider-metadata:Wallet Provider Metadata`
+- :ref:`wallet-solution-metadata:Wallet Solution Metadata`
 - `e-Service PDND Wallet Provider Catalogue <wallet-provider-endpoint.html#e-service-pdnd-wallet-provider-catalogue0>`_
 
 
@@ -81,7 +81,7 @@ This section lists the test cases from Sections:
    * - WP_002h
      - Trust, Interoperability
      - Entity Configuration metadata
-     - The Entity Configuration JWT payload contains a ``metadata`` object that includes ``wallet_provider`` metadata and optionally ``federation_entity``, each following its schema.
+     - The Entity Configuration JWT payload contains a ``metadata`` object that includes ``wallet_solution`` metadata and optionally ``federation_entity``, each following its schema.
    * - WP_003
      - Trust, Interoperability
      - Metadata key usage
@@ -242,8 +242,8 @@ This section lists the test cases from Sections:
      - Upon successful validation of the Wallet Attestation Issuance Request, the Wallet Provider returns 200 OK with Content-Type: application/json, containing the Wallet Attestation as its structure defined in `Wallet Attestation JWT <wallet-provider-endpoint.html#wallet-attestation-jwt>`_.
    * - WP_029a
      - Wallet Attestation Issuance, Data Model and Lifecycle, Security
-     - Multi-format Wallet Attestation
-     - Wallet Provider provides the Wallet Attestation in at least three formats (JWT, SD-JWT, and mdoc), each signed by the Wallet Provider, and confirming the structures defined in `Wallet Attestation JWT <wallet-provider-endpoint.html#wallet-attestation-jwt>`_, `Wallet Attestation SD-JWT <wallet-provider-endpoint.html#wallet-attestation-sd-jwt>`_, and `Wallet Attestation mdoc <wallet-provider-endpoint.html#wallet-attestation-mdoc>`_.
+     - Wallet Attestation format
+     - Wallet Provider provides the Wallet Attestation in JWT format signed by the Wallet Provider, and confirming the structures defined in `Wallet Attestation JWT <wallet-provider-endpoint.html#wallet-attestation-jwt>`_.
    * - WP_029b
      - Wallet Attestation Issuance, Data Model and Lifecycle, Security
      - No PII in Wallet Attestation
@@ -368,12 +368,12 @@ This section lists the test cases from Sections:
      - Wallet Instance builds and verifies the full Trust Chain from the Credential Issuer through Intermediaries to the root Trust Anchor, ensuring each signature is valid and confirms the root.
    * - WP_047
      - Issuance, Interoperability
-     - Issuer-Initiated flow: Credential Offer QR scan & decode
-     - In an Issuer-Initiated cross-device flow, Wallet Instance successfully scans the QR code, and decodes the ``credential_offer`` URL.
+     - Third-Party-Initiated flow: Credential Offer QR scan & decode
+     - In a Third-Party-Initiated cross-device flow, Wallet Instance successfully scans the QR code, and retrieves the ``credential_offer`` or the ``credential_offer_uri`` parameter.
    * - WP_048
      - Issuance, Interoperability
-     - Issuer-Initiated flow: Credential Offer parsing
-     - In an Issuer-Initiated flow, Wallet Instance extracts and validates all required parameters present (``iss``, ``credential_offer``, etc.) in the URL-decoded ``credential_offer``.
+     - Third-Party-Initiated flow: Credential Offer parsing
+     - In a Third-Party-Initiated flow, Wallet Instance extracts and validates all required parameters present in the Credential Offer.
    * - WP_049
      - Issuance, Interoperability
      - Issuer-Initiated flow: Authorization Server identifier check
@@ -565,11 +565,11 @@ This section lists the test cases from Sections:
    * - WP_069
      - Issuance, Security
      - Check Digital Credential status
-     - Wallet Instance verifies the status of each stored Digital Credential by retrieving and validating either a Status List Token (per :ref:`credential-revocation:OAuth Status Lists`) or a Status Assertion (per :ref:`credential-revocation:OAuth Status Assertions`). 
+     - Wallet Instance verifies the status of each stored Digital Credential by retrieving and validating either a Status List Token (per :ref:`credential-revocation:Status List Token`). 
    * - WP_070
      - Issuance, Security
      - Re-issuance flow: detect re-issuance necessity (update status)
-     - Wallet Instance updates a Digital Credential when the Status List shows ``0x03`` (``UPDATE``) or ``0x04`` (``ATTRIBUTE_UPDATE``), or when the Status Assertion indicates ``credential_status_type`` of ``INVALID`` with ``credential_status_detail.state`` set to ``UPDATE`` or ``ATTRIBUTE_UPDATE`` for that Credential.
+     - Wallet Instance updates a Digital Credential when the Status List shows ``0x03`` (``UPDATE``) or ``0x0B`` (``ATTRIBUTE_UPDATE``) for that Credential.
    * - WP_071
      - Issuance, Security
      - Re-issuance flow: verify Access Token validity for re-issuance
@@ -719,7 +719,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_093a
      - Remote-flow, Presentation, Interoperability
      - Include signed presentations
-     - Within that ``vp_token``, there are the requested Credential(s) in SD JWT VC format and, if requested by the Relying Party, one SD JWT VC for the Wallet Attestation.
+     - Within that ``vp_token``, there are the requested Credential(s) in SD JWT VC format.
    * - WP_093b
      - Remote-flow, Presentation, Security
      - Append Key Binding JWT
@@ -851,31 +851,19 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_106
      - Proximity-flow, Presentation, Security
      - Validate ``SessionEstablishment`` contents
-     - Wallet Instance verifies the ``SessionEstablishment`` message includes the Relying Party’s Pub Key and a request for specific attribute(s), and an optional request for the Wallet Attestation from the Relying Party.
+     - Wallet Instance verifies the ``SessionEstablishment`` message includes the Relying Party’s Pub Key and a request for specific attribute(s) from the Relying Party.
    * - WP_107
      - Proximity-flow, Presentation, Privacy
      - Prompt attribute consent
      - Wallet Instance decrypts and displays the requested attributes to the User in a consent screen and proceeds only after receiving explicit User approval.
    * - WP_107a
      - Proximity-flow, Presentation, Privacy
-     - No consent for Wallet Attestation disclosure
-     - Wallet Instance does not request the User's consent for the Wallet Attestation, ensuring that its technical attributes are excluded from the list of data shown on the User consent screen.
-   * - WP_107b
-     - Proximity-flow, Presentation, Privacy
      - Display Relying Party certificate
      - Wallet Instance displays the full, parsed Relying Party Registration Certificate to the User for transparency before User consent and data disclosure.
    * - WP_108
      - Proximity-flow, Presentation, Interoperability
-     - Retrieve mdoc Credentials and Wallet Attestation
-     - Wallet Instance successfully retrieves each requested mdoc Credential from storage and obtains a fresh Wallet Attestation (if requested), preparing them for the mdoc Response.
-   * - WP_108a
-     - Proximity-flow, Presentation, Interoperability
-     - Use cached Wallet Attestation
-     - When a fresh Wallet Attestation cannot be fetched, Wallet Instance successfully includes its most recently cached version of the Wallet Attestation in the response.
-   * - WP_108b
-     - Proximity-flow, Presentation, Interoperability
-     - Wallet Attestation attributes
-     - When providing the Wallet Attestation, Wallet Instance includes all of its available disclosures, and the mandatory ``aal`` claim.
+     - Retrieve mdoc Credentials
+     - Wallet Instance successfully retrieves each requested mdoc Credential from storage, preparing it for the mdoc Response.
    * - WP_109
      - Proximity-flow, Presentation, Interoperability
      - Prepare mdoc Response
@@ -953,8 +941,7 @@ Test Cases for User Attribute Deletion on Relying Party Side
 This section lists the test cases from Sections: 
 
 - :ref:`user-attribute-deletion:User's Attributes Deletion`
-- `Relying Party Erasure Endpoint <relying-party-provider-backend-endpoint.html#relying-party-erasure-endpoint>`_
-
+- `Relying Party Provider Backend Erasure Endpoint <relying-party-provider-backend-endpoint.html#relying-party-provider-backend-erasure-endpoint>`_
 
 .. list-table::
    :class: longtable

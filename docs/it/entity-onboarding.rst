@@ -1,6 +1,8 @@
 .. include:: ../common/common_definitions.rst
 .. include:: ../common/symbols.rst
 
+.. _entity-onboarding-gestione-del-ciclo-di-vita-delle-entita:
+
 Onboarding delle Entità
 ========================
 
@@ -71,7 +73,7 @@ Il processo di onboarding segue un approccio strutturato multi-fase:
   3. **Integrazione del Registro IT-Wallet**:
 
     - **Integrazione del Registro Claims**: Le Fonti Autentiche selezionano definizioni di claim standardizzate dal Registro degli Attributi durante la dichiarazione delle specifiche.
-    - **Integrazione della Tassonomia**: Tutte le entità utilizzano la classificazione gerarchica della Tassonomia (domini, scopi) per la struttura organizzativa per categorizzare gli Attestati Elettronici.
+    - **Integrazione della Tassonomia**: Tutte le entità utilizzano la classificazione gerarchica della Tassonomia (domini, classi, scopi) per la struttura organizzativa per categorizzare gli Attestati Elettronici.
     - **Integrazione del Registro AS**: Le Fonti Autentiche registrate con i loro attributi dichiarati e le relative specifiche, abilitando la discovery e coordinamento con i Credential Issuer.
     - **Integrazione del Registro di Federazione**: Entità operative incluse per la validazione del trust durante le operazioni delle attestazioni elettroniche.
     - **Integrazione del Catalogo**: Tipi di attestati elettronici pubblicati in :ref:`registry:catalogo degli attestati elettronici` basati sulle policy dell'organismo di supervisione per l'eleggibilità alla discovery pubblica.
@@ -112,9 +114,12 @@ Le Fonti Autentiche DEVONO rispettare i seguenti requisiti tecnici per garantire
 Requisiti sulle Informazioni di Registrazione delle AS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. note::
+  Attualmente solo le Authentic Source italiane possono registrarsi ad IT-Wallet.
+
 Durante la registrazione, le Fonti Autentiche DEVONO fornire le seguenti informazioni:
 
-.. list-table:: sulle Informazioni di Registrazione delle AS
+.. list-table:: Requisiti sulle Informazioni di Registrazione delle AS
    :class: longtable
    :header-rows: 1
    :widths: 30 70
@@ -131,7 +136,7 @@ Durante la registrazione, le Fonti Autentiche DEVONO fornire le seguenti informa
      - **OBBLIGATORIO**. Claims disponibili:
 
        - Array che include identificativi dei claim censiti nel Registro Claims che la Fonte Autentica fornisce (es., ``["given_name", "family_name", "driving_privileges"]``).
-       - Classificazione tassonomica per l'ambito della Fonte Autentica (es., domini ``[AUTHORIZATION]`` e scopi ``["DRIVING_LICENSE"]``).
+       - Scopi previsti per la verifica (es. ``["DRIVING_RIGHTS"]``).
       
    * - **Dettagli di Implementazione API**
      - **OBBLIGATORIO**. Dettagli sulle informazioni di integrazione:
@@ -167,51 +172,14 @@ La registrazione della Fonte Autentica segue un processo tecnico come descritto 
 
 **Fase 1 - Preparazione del Pacchetto di Registrazione**: L'Entità prepara le informazioni di registrazione secondo la tabella dei requisiti sopra. Un esempio non normativo di informazioni in formato JSON è fornito di seguito.
 
-.. code-block:: json
-
-   {
-     "entity_id": "https://transport-authority.gov.example",
-     "organization_info": {
-       "organization_name": "Autorità Nazionale dei Trasporti",
-       "organization_type": "public",
-       "ipa_code": "nta_001",
-       "legal_identifier": "12345678901",
-       "organization_country": "XX",
-       "homepage_uri": "https://www.gov.example/transport",
-       "contacts": ["registry@transport-authority.gov.example", "technical-support@transport-authority.gov.example"],
-       "policy_uri": "https://www.gov.example/transport/privacy-policy",
-       "user_information": "I dati della patente di guida sono disponibili per le patenti rilasciate dopo il 1° gennaio 2020. Per patenti più vecchie, contattare l'ufficio dell'autorità dei trasporti locale.",
-       "logo_uri": "https://www.gov.example/assets/transport-logo.svg",
-       "logo_uri#integrity": "sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
-     },
-     "data_capabilities": [
-       {
-         "domains": ["IDENTITY", "AUTHORIZATION"],
-         "intended_purposes": ["DRIVING_LICENSE"],
-         "available_claims": [
-           "given_name", "family_name", "birth_date", "birth_place",
-           "issue_date", "expiry_date", "document_number", "driving_privileges"
-         ],
-         "integration_method": "pdnd",
-         "integration_endpoint": "https://api.gov.example/transport/driving-license",
-         "api_specification": "https://docs.gov.example/transport/api-oas3.yaml",
-         "data_provision": {
-           "immediate_flow": true,
-           "deferred_flow": false
-         },
-         "update_frequency": "real_time",
-         "display": {
-          "background_color": "#003d82",
-          "text_color": "#ffffff",
-         }
-       }
-     ]
-   }
+.. literalinclude:: ../../examples/as-registration-example.json
+   :language: json
+   :caption: Esempio di Registrazione Authentic Source
 
 **Fase 2 - Validazione Tecnica**: L'Organismo di Supervisione valida la registrazione presentata concentrandosi su:
 
   - **Conformità con il Registro dei Claims**: Validazione del formato dei claim, degli identificativi ed esistenza nel Registro dei Claims.
-  - **Validazione Tassonomia**: Verifica che i domini e finalità dichiarate siano voci tassonomiche valide.
+  - **Validazione Tassonomia**: Verifica che le finalità dichiarate siano voci tassonomiche valide.
   - **Verifica Integrazione API**:
 
     - **Entità Pubbliche**: Verifica della conformità della specifica e-service PDND
@@ -284,7 +252,7 @@ Le Entità di Federazione DEVONO rispettare i seguenti requisiti tecnici prima d
     - Claim ``iat`` ed ``exp`` che definiscono un intervallo di tempo valido.
     - Un claim ``metadata`` contenente metadati specifici dell'entità organizzati per Tipi di Metadati (vedere :ref:`credential-issuer-entity-configuration:Entity Configuration del Fornitore di Attestati Elettronici`, :ref:`relying-party-entity-configuration:Entity Configuration di una Relying Party`, o :ref:`wallet-provider-entity-configuration:Entity Configuration del Fornitore di Wallet`) con Chiavi di Protocollo incluse nei campi ``jwks`` dei metadati e certificati auto-firmati nei corrispondenti claim ``x5c``.
 
-  - **Certificate Signing Request (CSR)**: Le entità DEVONO preparare un CSR in formato PKCS #10 contenente **solo la Chiave Pubblica dell'Entità di Federazione** per l'emissione del certificato X.509 da parte dell'Autorità di Federazione come definito in :ref:`trust-infrastructure:Requisiti dell'Infrastruttura di Trust`.
+  - **Certificate Signing Request (CSR)**: Le entità DEVONO preparare un CSR in formato PKCS #10 contenente **solo la Chiave Pubblica dell'Entità di Federazione** per l'emissione del certificato X.509 da parte dell'Autorità di Federazione come definito in :ref:`trust-infrastructure:Emissione di Certificati X.509`.
 
 Requisiti di Sicurezza per la Gestione delle Chiavi
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -347,25 +315,9 @@ L'onboarding della federazione segue una procedura strutturata in 4 fasi che abi
 
 Un esempio non normativo della struttura delle informazioni tecniche che le Entità di Federazione inviano durante la richiesta di onboarding della Fase 1:
 
-.. code-block:: json
-
-  {
-    "entity_id": "https://credentials.example.gov",
-    "entity_type": "credential_issuer",
-    "jwks": {
-      "keys": [
-        {
-          "kid": "NsXymfIILEPR5Y0t",
-          "kty": "EC",
-          "x": "gXY4FApFJCj91Gpb1K9GEIouTq2X3L0K64Iq0ob4l_g",
-          "y": "l-6dcrIrFVdrzoY9cRJv9zNuFOR3MsDz6TSDhB0xEo4",
-          "crv": "P-256"
-        }
-      ]
-    },
-    "certificate_signing_request": "-----BEGIN CERTIFICATE REQUEST-----\nMIIBTTCB9QIBADCBkjELMAkGA1UEBhMCSVQxDjAMBgNVBAgMBUxhemlvMQ0wCwYD\nVQQHDARSb21hMRYwFAYDVQQKDA1QYWdvUEEgUy5wLkEuMSQwIgYDVQQDDBtmb28x\nMS5ibG9iLmNvcmUud2luZG93cy5uZXQxJjAkBgkqhkiG9w0BCQEWF3BhZ29wYXNw\nYUBwZWMucGFnb3BhLml0MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEgXY4FApF\nJCj91Gpb1K9GEIouTq2X3L0K64Iq0ob4l_g\n-----END CERTIFICATE REQUEST-----",
-    "submission_timestamp": "2025-09-25T14:30:00Z"
-  }
+.. literalinclude:: ../../examples/federation-onboarding-request-example.json
+   :language: json
+   :caption: Federation onboarding request example
 
 Di seguito viene mostrato il contenuto decodificato dell'esempio CSR sopra riportato per riferimento:
 
@@ -396,7 +348,7 @@ Di seguito viene mostrato il contenuto decodificato dell'esempio CSR sopra ripor
   - Verifica delle informazioni fornite nella richiesta di registrazione.
   - Validazione dell'Entity Configuration pubblicata all'endpoint ``/.well-known/openid-federation`` dell'entità e dei suoi metadati contenuti (come definito in :ref:`trust-infrastructure:L'Infrastruttura di Trust`).
   - **Applicazione delle Metadata Policy**: Applicazione di metadata policy specifiche della federazione ai metadati dell'entità basate su caratteristiche organizzative e ambito di autorizzazione come definito in :ref:`trust-infrastructure:Subordinate Statement`. Quando onboardata attraverso un Intermediario, si applicano sia le policy dell'Intermediario che del Trust Anchor, con le policy del Trust Anchor che hanno precedenza in caso di conflitti.
-  - **Emissione Certificato**: Certificazione della Chiave Pubblica dell'Entità di Federazione con emissione del certificato X.509 utilizzando l'infrastruttura di trust dettagliata in :ref:`trust-infrastructure:Requisiti dell'Infrastruttura di Trust`. Gli Intermediari emettono certificati con **naming constraints** appropriati per limitare l'uso del certificato solo ai loro subordinati.
+  - **Emissione Certificato**: Certificazione della Chiave Pubblica dell'Entità di Federazione con emissione del certificato X.509 utilizzando l'infrastruttura di trust dettagliata in :ref:`trust-infrastructure:Emissione di Certificati X.509`. Gli Intermediari emettono certificati con **naming constraints** appropriati per limitare l'uso del certificato solo ai loro subordinati.
 
 Dopo la validazione con successo, l'entità riceve una risposta contenente una catena di certificati dove:
 
@@ -473,7 +425,7 @@ Esempio di risposta catena di certificati:
 
   2. **Pubblicare Entity Configuration Aggiornata**: Pubblicare l'EC aggiornata all'endpoint ``/.well-known/openid-federation`` come specificato in :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
 
-  3. **Inviare Richiesta Resolve**: Chiamare l'endpoint ``/resolve`` del **Trust Anchor** (come definito in :ref:`trust-infrastructure:Requisiti dell'Infrastruttura di Trust`) con parametri URL-encoded:
+  3. **Inviare Richiesta Resolve**: Chiamare l'endpoint ``/resolve`` del **Trust Anchor** (come definito in :ref:`trust-infrastructure:Endpoint API di Federazione`) con parametri URL-encoded:
 
     - ``sub``: Identificativo Entità di Federazione.
     - ``trust_anchor``: Identificativo Entità di Federazione del **Trust Anchor** (sempre il Trust Anchor radice, anche per onboarding mediato da Intermediario).
@@ -575,7 +527,7 @@ Il JWT del Trust Mark (contenuto nel claim ``trust_mark`` sopra) include i segue
    * - **email**
      - **RACCOMANDATO**. Email istituzionale o PEC dell'organizzazione.
    * - **logo_uri**
-     - **OPZIONALE**. URL che punta al logo del Trust Mark per scopi UI/UX.
+     - **OBBLIGATORIO**. URL che punta al logo del :ref:`brand-identity:Trust Mark` per scopi UI/UX.
    * - **ref**
      - **OPZIONALE**. URL con informazioni web aggiuntive sul Trust Mark.
 
@@ -616,8 +568,8 @@ I seguenti esempi non normativi illustrano diversi JWT di Trust Mark che attesta
      "authorized_claims": ["given_name", "family_name", "driving_privileges"],
      "authorized_credential_types": ["mobile-driving-license"],
      "scope_restrictions": {
-       "domains": ["AUTHORIZATION"],
-       "purposes": ["DRIVING_LICENSE"]
+       "domains": ["MOBILITY_TRAVEL"],
+       "purposes": ["DRIVING_RIGHTS"]
      }
    }
 

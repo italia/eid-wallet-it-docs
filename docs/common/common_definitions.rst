@@ -1,4 +1,5 @@
 .. _ARF: https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework
+.. _EUDI-TS 3: https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts3-wallet-unit-attestation.md#231-general_info
 .. _attestKey: https://developer.apple.com/documentation/devicecheck/dcappattestservice/attestkey:clientdatahash:completionhandler
 .. _Device Check: https://developer.apple.com/documentation/devicecheck
 .. _EIDAS-ARF: https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework
@@ -7,7 +8,15 @@
 .. _Error Handling for Wallet Attestation Issuance: wallet-solution.html#error-handling-for-wallet-attestation-issuance
 .. _Error Handling for Wallet Instance Management: wallet-solution.html#error-handling-for-wallet-instance-management
 .. _ETSI TS 119 461: https://www.etsi.org/deliver/etsi_ts/119400_119499/119461/01.01.01_60/ts_119461v010101p.pdf
-.. _ETSI TS 119 612: https://www.etsi.org/deliver/etsi_ts/119600_119699/119612/02.03.01_60/ts_119612v020301p.pdf
+.. _ETSI TS 119 612: https://www.etsi.org/deliver/etsi_ts/119600_119699/119612/02.04.01_60/ts_119612v020401p.pdf
+.. _ETSI TS 119 602: https://www.etsi.org/deliver/etsi_ts/119600_119699/119602/01.01.01_60/ts_119602v010101p.pdf
+.. _ETSI EN 319 411-1: https://www.etsi.org/deliver/etsi_en/319400_319499/31941101/01.03.00_20/en_31941101v010300a.pdf
+.. _ETSI TS 119 411-8: https://www.etsi.org/deliver/etsi_ts/119400_119499/11941108/01.01.01_60/ts_11941108v010101p.pdf
+.. _ETSI TS 119 475: https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.01.01_60/ts_119475v010101p.pdf
+.. _ETSI TS 119 615: https://www.etsi.org/deliver/etsi_ts/119600_119699/119615/01.01.01_60/ts_119615v010101p.pdf
+.. _ETSI EN 319 132-1: https://www.etsi.org/deliver/etsi_en/319100_319199/31913201/01.03.01_60/en_31913201v010301p.pdf
+.. _ETSI TS 119 182-1: https://www.etsi.org/deliver/etsi_ts/119100_119199/11918201/01.02.01_60/ts_11918201v010201p.pdf
+.. _ETSI TS 119 412-6: https://www.etsi.org/deliver/etsi_ts/119400_119499/11941206/01.01.01_60/ts_11941206v010101p.pdf
 .. _EU_2024/2977: https://eur-lex.europa.eu/eli/reg_impl/2024/2977/
 .. _Federation endpoint: wallet-solution.html#federation-endpoint
 .. _ISO18013-5: https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf
@@ -20,13 +29,13 @@
 .. _Key Attestation: https://developer.android.com/privacy-and-security/security-key-attestation#attestation-v4
 .. _LG-AA: https://www.agid.gov.it/sites/default/files/repository_files/llgg_attribute_authorities_0.pdf
 .. _MODI: https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf
-.. _OAUTH-ATTESTATION-CLIENT-AUTH: https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/03/
+.. _OAUTH-ATTESTATION-CLIENT-AUTH: https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/07/
 .. _OAUTH-MULT-RESP-TYPE: https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html
-.. _OAUTH-STATUS-ASSERTION: https://datatracker.ietf.org/doc/draft-demarco-oauth-status-assertions/03/
 .. _OAUTH2: https://www.rfc-editor.org/rfc/rfc6749
 .. _OAuthCrossDeviceSec: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-cross-device-security-08
 .. _OID-FED-WALLET: https://openid.net/specs/openid-federation-wallet-1_0.html
-.. _OID-FED: https://openid.net/specs/openid-federation-1_0-41.html
+.. _OID-FED: https://openid.net/specs/openid-federation-1_0-46.html
+.. _OID-FED-SUBORDINATE-EVENTS: https://openid.net/specs/openid-federation-subordinate-events-1_0.html
 .. _OIDC-FED#Federation_Entity: https://openid.net/specs/openid-federation-1_0.html#Section-4.6
 .. _OIDC-FED#RP_metadata: https://openid.net/specs/openid-federation-1_0.html#Section-4.1
 .. _OIDC-FED#Section_1.2: https://openid.net/specs/openid-federation-1_0.html#Section-1.2
@@ -47,10 +56,10 @@
 .. _OIDC-FED#Section-7.4.1: https://openid.net/specs/openid-federation-1_0.html#Section-7.4.1
 .. _OIDC-FED#Section-7.5: https://openid.net/specs/openid-federation-1_0.html#Section-7.5
 .. _OIDC: https://openid.net/specs/openid-connect-core-1_0.html
-.. _OPENID4VC-HAIP: https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-01.html
+.. _OPENID4VC-HAIP: https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-06.html
 .. _OpenID4VC-SecTrust: https://openid.github.io/OpenID4VC_SecTrust/draft-oid4vc-security-and-trust.html
 .. _OpenID4VCI: https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html
-.. _OpenID4VP: https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html
+.. _OpenID4VP: https://openid.net/specs/openid-4-verifiable-presentations-1_0.html
 .. _PDND: https://www.agid.gov.it/sites/agid/files/2025-06/Linee_guida_Infrastruttura_Interoperabilit%C3%A0_PDND_v2_maggio_2025.pdf
 .. _RFC 2898: http://tools.ietf.org/html/rfc2898.html
 .. _RFC 4648: https://datatracker.ietf.org/doc/html/rfc4648
@@ -67,11 +76,11 @@
 .. _Signal Hub push-yaml: https://raw.githubusercontent.com/pagopa/interop-signalhub-core/refs/tags/1.0.1/docs/openAPI/push-signals.yaml
 .. _SIOPv2: https://openid.net/specs/openid-connect-self-issued-v2-1_0.html
 .. _SPID/CIE-OpenID-Connect-Specifications: https://italia.github.io/spid-cie-oidc-docs/en
-.. _TOKEN-STATUS-LIST: https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/07/
+.. _TOKEN-STATUS-LIST: https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/13/
 .. _Transition to Operational: wallet-solution.html#transition-to-operational
 .. _Trusty: https://source.android.com/docs/security/features/trusty
 .. _W3C-SRI: https://www.w3.org/TR/SRI/
-.. _W3C.CSS-COLOR: https://www.w3.org/TR/css-color/
+.. _W3C.CSS-COLOR: https://www.w3.org/TR/2022/REC-css-color-3-20220118/
 .. _Wallet Attestation Issuance endpoint: wallet-solution.html#wallet-attestation-issuance-endpoint
 .. _Wallet Attestation Issuance: wallet-solution.html#wallet-attestation-issuance
 .. _Wallet Instance Functionalities: wallet-solution.html#wallet-instance-functionalities

@@ -8,12 +8,12 @@ Matrice di Test per Wallet Provider
 Questa sezione fornisce l'insieme di casi di test per verificare la conformità di un'implementazione di Soluzione Wallet e Istanza del Wallet alle regole tecniche definite nell'ecosistema IT-Wallet.
 Il piano di test è basato sui requisiti estratti dalle seguenti Sezioni:
 
-- :ref:`trust:The Infrastructure of Trust`
-- :ref:`wallet-solution:Wallet Solution`
-- :ref:`credential-issuance:Digital Credential Issuance`
-- :ref:`credential-presentation:Digital Credential Presentation`
+- :ref:`trust-infrastructure:L'Infrastruttura di Trust`
+- :ref:`wallet-solution:Soluzione Wallet`
+- :ref:`credential-issuance:Emissione di Attestati Elettronici`
+- :ref:`credential-presentation:Presentazione dell'Attestato Elettronico`
 - :ref:`endpoints:Endpoints`
-- :ref:`mobile-application-instance:Mobile Application Instance`
+- :ref:`mobile-application-instance:Istanza dell'Applicazione Mobile`
 
 
 .. note::
@@ -25,11 +25,11 @@ Casi di Test per Backend del Fornitore del Wallet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Questa sezione elenca i casi di test dalle Sezioni:
 
-- :ref:`wallet-solution-requirements:Wallet Solution Requirements`
-- :ref:`wallet-solution-components:Wallet Solution Components`
-- :ref:`wallet-instance:Wallet Instance`
-- :ref:`wallet-provider-entity-configuration:Wallet Provider Entity Configuration`
-- :ref:`wallet-provider-metadata:Wallet Provider Metadata`
+- :ref:`wallet-solution-requirements:Requisiti della Soluzione Wallet`
+- :ref:`wallet-solution-components:Componenti della Soluzione Wallet`
+- :ref:`wallet-instance:Istanza del Wallet`
+- :ref:`wallet-provider-entity-configuration:Entity Configuration del Fornitore di Wallet`
+- :ref:`wallet-solution-metadata-metadati-della-soluzione-wallet`
 - `e-Service PDND Wallet Provider Catalogue <wallet-provider-endpoint.html#e-service-pdnd-wallet-provider-catalogue0>`_
 
 
@@ -81,15 +81,15 @@ Questa sezione elenca i casi di test dalle Sezioni:
    * - WP_002h
      - Trust, Interoperabilità
      - Metadata Entity Configuration
-     - Il payload del JWT Entity Configuration contiene un oggetto ``metadata`` che include il parametro ``wallet_provider`` e opzionalmente il parametro ``federation_entity``, ciascuno valorizzato seguendo il proprio schema.
+     - Il payload del JWT Entity Configuration contiene un oggetto ``metadata`` che include il parametro ``wallet_solution`` e opzionalmente il parametro ``federation_entity``, ciascuno valorizzato seguendo il proprio schema.
    * - WP_003
      - Trust, Interoperabilità
      - Utilizzo chiave metadata
-     - Le chiavi pubbliche nell'oggetto JSON con cui è valorizzato ``wallet_provider`` sono usate esclusivamente per la firma e/o cifratura quando l'Entità agisce come Fornitore del Wallet (es. per emettere la Wallet Attestation).
+     - Le chiavi pubbliche nell'oggetto JSON sono usate esclusivamente per la firma e/o cifratura quando l'Entità agisce come Fornitore del Wallet (es. per emettere la Wallet Attestation).
    * - WP_004
      - Trust, Interoperabilità
      - Riferimento chiave metadata
-     - Per riferire le chiavi pubbliche, l'oggetto JSON con cui è valorizzato ``wallet_provider`` contiene esattamente uno dei seguenti claim: ``jwks``, ``jwks_uri``, o ``signed_jwks_uri``.
+     - Per riferire le chiavi pubbliche, l'oggetto JSON contiene esattamente uno dei seguenti claim: ``jwks``, ``jwks_uri``, o ``signed_jwks_uri``.
    * - WP_004a
      - Trust, Interoperabilità
      - JWKS per valore
@@ -148,9 +148,9 @@ Questa sezione elenca i casi di test dalle Sezioni:
 
 - `Configuration of the Federation <trust.html#configuration-of-the-federation>`_
 - `Trust Evaluation Mechanism <trust.html#trust-evaluation-mechanism>`_
-- :ref:`wallet-solution-requirements:Wallet Solution Requirements`
-- :ref:`wallet-solution-components:Wallet Solution Components`
-- :ref:`wallet-instance:Wallet Instance`
+- :ref:`wallet-solution-requirements:Requisiti della Soluzione Wallet`
+- :ref:`wallet-solution-components:Componenti della Soluzione Wallet`
+- :ref:`wallet-instance:Istanza del Wallet`
 - `Error Handling for Wallet Instance Management <wallet-provider-endpoint.html#error-handling-for-wallet-instance-management>`__
 - `Mobile Application Instance Initialization <mobile-application-instance.html#mobile-application-instance-initialization>`_
 
@@ -242,8 +242,8 @@ Questa sezione elenca i casi di test dalle Sezioni:
      - Dopo la validazione riuscita della Richiesta di Emissione della Wallet Attestation, il Fornitore del Wallet restituisce un codice di stato 200 OK con Content-Type ``application/json``, nel cui payload si trova l'array ``wallet_attestations`` contenente le Wallet Attestation definite in `Wallet Attestation JWT <wallet-provider-endpoint.html#wallet-attestation-jwt>`_.
    * - WP_029a
      - Rilascio Wallet Attestation, Modello Dati e Ciclo di vita, Sicurezza
-     - Wallet Attestation multi-formato
-     - Il Fornitore del Wallet fornisce la Wallet Attestation in almeno tre formati (JWT, SD-JWT, e mdoc), ciascuno firmato dal Fornitore del Wallet, e strutturati come in `Wallet Attestation JWT <wallet-provider-endpoint.html#wallet-attestation-jwt>`_, `Wallet Attestation SD-JWT <wallet-provider-endpoint.html#wallet-attestation-sd-jwt>`_, e `Wallet Attestation mdoc <wallet-provider-endpoint.html#wallet-attestation-mdoc>`_.
+     - Formato della Wallet Attestation
+     - Il Fornitore del Wallet fornisce la Wallet Attestation formato JWT firmato dal Fornitore del Wallet, come definito in `Wallet Attestation JWT <wallet-provider-endpoint.html#wallet-attestation-jwt>`.
    * - WP_029b
      - Rilascio Wallet Attestation, Modello Dati e Ciclo di vita, Sicurezza
      - Nessun PII nella Wallet Attestation
@@ -336,9 +336,9 @@ Casi di Test per Fase di Issuance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Questa sezione elenca i casi di test dalle Sezioni:
 
-- :ref:`credential-issuance:Digital Credential Issuance`
+- :ref:`credential-issuance:Emissione di Attestati Elettronici`
 - `Trust Evaluation Mechanism <trust.html#trust-evaluation-mechanism>`_
-- :ref:`credential-issuer-endpoint:Credential Issuer Endpoints`
+- :ref:`credential-issuer-endpoint:Endpoint del Credential Issuer`
 
 
 .. list-table::
@@ -368,12 +368,12 @@ Questa sezione elenca i casi di test dalle Sezioni:
      - Istanza del Wallet costruisce e verifica la Trust Chain completa dal Credential Issuer attraverso Intermediari fino al Trust Anchor radice, assicurandosi che ogni firma sia valida.
    * - WP_047
      - Issuance, Interoperabilità
-     - Flusso Issuer-Initiated: scansione e decodifica QR Credential Offer
-     - In un flusso cross-device Issuer-Initiated, Istanza del Wallet scansiona con successo il codice QR, e decodifica l'URL ``credential_offer``.
+     - Flusso Third-Party-Initiated: scansione e decodifica QR Credential Offer
+     - In un flusso cross-device Third-Party-Initiated, l'Istanza del Wallet scansiona con successo il codice QR, e ottiene il parametro ``credential_offer`` o ``credential_offer_uri``.
    * - WP_048
      - Issuance, Interoperabilità
-     - Flusso Issuer-Initiated: parsing Credential Offer
-     - In un flusso Issuer-Initiated, Istanza del Wallet estrae e valida tutti i parametri richiesti presenti (``iss``, ``credential_offer``, ecc.) nell'URL decodificato ``credential_offer``.
+     - Flusso Third-Party-Initiated: parsing Credential Offer
+     - In un flusso Third-Party-Initiated, l'Istanza del Wallet estrae e valida tutti i parametri richiesti presenti nell'oggetto Credential Offer.
    * - WP_049
      - Issuance, Interoperabilità
      - Flusso Issuer-Initiated: controllo identificativo dell'Authorization Server
@@ -493,7 +493,7 @@ Questa sezione elenca i casi di test dalle Sezioni:
    * - WP_060
      - Issuance, Interoperabilità
      - Verificare tipo/schema di un Attestato Elettronico
-     - Istanza del Wallet recupera l'Attestato Elettronico rilasciata dal claim ``credential`` della risposta, verifica che il suo tipo corrisponda al tipo richiesto, e valida lo schema contro :ref:`credential-data-model:Digital Credential Data Model`; se uno dei controlli fallisce, rifiuta l'Attestato Elettronico.
+     - Istanza del Wallet recupera l'Attestato Elettronico rilasciata dal claim ``credential`` della risposta, verifica che il suo tipo corrisponda al tipo richiesto, e valida lo schema contro :ref:`credential-data-model:Modello di Dati degli Attestati Elettronici`; se uno dei controlli fallisce, rifiuta l'Attestato Elettronico.
    * - WP_061
      - Issuance, Sicurezza
      - Validare Trust Chain Credential Issuer
@@ -565,11 +565,11 @@ Questa sezione elenca i casi di test dalle Sezioni:
    * - WP_069
      - Issuance, Sicurezza
      - Controllo stato di un Attestato Elettronico
-     - Istanza del Wallet verifica lo stato di ogni Attestato Elettronico archiviato recuperando e validando un Status List Token (per :ref:`credential-revocation:OAuth Status Lists`) o una Status Assertion (per :ref:`credential-revocation:OAuth Status Assertions`).
+     - Istanza del Wallet verifica lo stato di ogni Attestato Elettronico archiviato recuperando e validando un Status List Token (per :ref:`credential-revocation:Token di Status List`).
    * - WP_070
      - Issuance, Sicurezza
      - Flusso re-Issuance: rilevare necessità re-Issuance (aggiornare stato)
-     - Istanza del Wallet aggiorna un Attestato Elettronico quando la Status List mostra ``0x03`` (``UPDATE``) o ``0x04`` (``ATTRIBUTE_UPDATE``), o quando il Status Assertion indica ``credential_status_type`` di ``INVALID`` con ``credential_status_detail.state`` impostato su ``UPDATE`` o ``ATTRIBUTE_UPDATE`` per quell'Attestato Elettronico.
+     - Istanza del Wallet aggiorna un Attestato Elettronico quando la Status List mostra ``0x03`` (``UPDATE``) o ``0x0B`` (``ATTRIBUTE_UPDATE``) per quell'Attestato Elettronico.
    * - WP_071
      - Issuance, Sicurezza
      - Flusso re-Issuance: verificare validità Access Token per re-Issuance
@@ -607,7 +607,7 @@ Questa sezione elenca i casi di test dalle Sezioni:
 
 Casi di Test per Fase di Presentazione
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Questa sezione elenca i casi di test dalla Sezione :ref:`credential-presentation:Digital Credential Presentation`,
+Questa sezione elenca i casi di test dalla Sezione :ref:`credential-presentation:Presentazione dell'Attestato Elettronico`,
 coprendo sia le fasi di presentazione **Flusso Remoto** che **Flusso di Prossimità**.
 
 
@@ -719,7 +719,7 @@ coprendo sia le fasi di presentazione **Flusso Remoto** che **Flusso di Prossimi
    * - WP_093a
      - Flusso-remoto, Presentazione, Interoperabilità
      - Includere presentazioni firmate
-     - All'interno di quel ``vp_token``, ci sono gli Attestati Elettronici richiesti in formato SD JWT VC e, se richiesto dalla Relying Party, un SD JWT VC per la Wallet Attestation.
+     - All'interno di quel ``vp_token``, ci sono gli Attestati Elettronici richiesti in formato SD JWT VC.
    * - WP_093b
      - Flusso-remoto, Presentazione, Sicurezza
      - Aggiungere Key Binding JWT
@@ -851,31 +851,19 @@ coprendo sia le fasi di presentazione **Flusso Remoto** che **Flusso di Prossimi
    * - WP_106
      - Flusso-prossimità, Presentazione, Sicurezza
      - Validare contenuti ``SessionEstablishment``
-     - Istanza del Wallet verifica che ``SessionEstablishment`` includa la chiave pubblica della Relying Party, la richiesta per specifici attributi, e l’eventuale richiesta di Wallet Attestation.
+     - Istanza del Wallet verifica che ``SessionEstablishment`` includa la chiave pubblica della Relying Party e la richiesta di specifici attributi.
    * - WP_107
      - Flusso-prossimità, Presentazione, Privacy
      - Richiedere consenso agli attributi
      - Istanza del Wallet decifra e mostra gli attributi richiesti all'Utente e procede solo dopo approvazione esplicita di quest'ultimo.
    * - WP_107a
      - Flusso-prossimità, Presentazione, Privacy
-     - Nessun consenso per Wallet Attestation
-     - Istanza del Wallet non richiede consenso utente per la Wallet Attestation, escludendone i dati tecnici dalla schermata di consenso.
-   * - WP_107b
-     - Flusso-prossimità, Presentazione, Privacy
      - Mostrare certificato Relying Party
      - Istanza del Wallet mostra all'Utente il Certificato di Registrazione della Relying Party prima di ottenere il consenso dell'Utente.
    * - WP_108
      - Flusso-prossimità, Presentazione, Interoperabilità
-     - Recuperare Attestati Elettronici mdoc e Wallet Attestation
-     - Istanza del Wallet recupera le Attestati Elettronici richiesti e, se richiesto, ottiene una nuova Wallet Attestation, preparandole per la risposta mdoc.
-   * - WP_108a
-     - Flusso-prossimità, Presentazione, Interoperabilità
-     - Usare Wallet Attestation in cache
-     - Se non è possibile ottenere una Wallet Attestation fresca, Istanza del Wallet include la versione più recente in suo possesso.
-   * - WP_108b
-     - Flusso-prossimità, Presentazione, Interoperabilità
-     - Attributi Wallet Attestation
-     - Fornendo la Wallet Attestation, Istanza del Wallet include tutte le selective disclosure disponibili e il claim obbligatorio ``aal``.
+     - Recuperare Attestati Elettronici mdoc
+     - Istanza del Wallet recupera gli Attestati Elettronici richiesti e li prepara per l'mdoc response.
    * - WP_109
      - Flusso-prossimità, Presentazione, Interoperabilità
      - Preparare la risposta mdoc
@@ -954,8 +942,8 @@ Casi di Test per Eliminazione Attributi dell'Utente Lato Relying Party
 
 Questa sezione elenca i casi di test dalle Sezioni:
 
-- :ref:`user-attribute-deletion:User's Attributes Deletion`
-- `Relying Party Erasure Endpoint <relying-party-provider-backend-endpoint.html#relying-party-erasure-endpoint>`_
+- :ref:`user-attribute-deletion:Eliminazione degli Attributi dell'Utente`
+- `Relying Party Provider Backend Erasure Endpoint <relying-party-provider-backend-endpoint.html#relying-party-provider-backend-erasure-endpoint>`_
 
 
 .. list-table::
@@ -1005,7 +993,7 @@ Questa sezione elenca i casi di test dalle Sezioni:
 Casi di Test per Backup e Ripristino degli Attestati Elettronici
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Questa sezione elenca i casi di test dalla Sezione :ref:`backup-restore:Backup and Restore`.
+Questa sezione elenca i casi di test dalla Sezione :ref:`backup-restore:Backup e Ripristino`.
 
 .. list-table::
    :class: longtable
@@ -1112,7 +1100,7 @@ Casi di Test Opzionali per Istanza del Wallet
 
 Questa sezione elenca i casi di test dalle Sezioni:
 
-- :ref:`wallet-instance:Wallet Instance`
+- :ref:`wallet-instance:Istanza del Wallet`
 - `Request-Specific Error Responses <wallet-provider-endpoint.html#request-specific-error-responses>`_
 - `Mobile Application Instance Initialization <mobile-application-instance.html#mobile-application-instance-initialization>`_
 

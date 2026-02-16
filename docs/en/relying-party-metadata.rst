@@ -3,7 +3,7 @@
 Relying Party Metadata
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The *openid_credential_verifier* metadata MUST contain the *client_metadata*, as included in the parameters shown below. (:ref:`test-plans-remote-presentation`). Please note that *openid_credential_verifier* is a OpenID Federation specific metadata used for OpenID4VP and it is used when the Relying Party's ``client_id`` is set with ``openid_federation``. When the Relying Party's ``client_id`` parameter is set with ``x509_hash``, the metadata is instead conveyed in the ``client_metadata`` parameter provided within the request.
+The *openid_credential_verifier* metadata MUST contain the *client_metadata*, as included in the parameters shown below. (:ref:`test-plans-remote-presentation:Remote Credential Verifier Test Matrix`). Please note that *openid_credential_verifier* is a OpenID Federation specific metadata used for OpenID4VP and it is used when the Relying Party's ``client_id`` is set with ``openid_federation``. When the Relying Party's ``client_id`` parameter is set with ``x509_hash``, the metadata is instead conveyed in the ``client_metadata`` parameter provided within the request.
 
 .. list-table::
   :class: longtable
@@ -27,7 +27,7 @@ The *openid_credential_verifier* metadata MUST contain the *client_metadata*, as
   * - **encrypted_response_enc_values_supported**
     - JSON array of content encryption algorithms ("enc") the Verifier supports for encrypting the authorization response when using response mode ``direct_post.jwt``. See `OpenID4VP`_ §5.1 and §8.3.1.
   * - **vp_formats_supported**
-    - JSON object defining the formats and proof types of Verifiable Presentations and Verifiable Credentials the RP supports. It consists of a list of name/value pairs, where each name uniquely identifies a supported type. The RP MUST support at least ``dc+sd-jwt``. For SD-JWT VC, the value associated with each name/value pair MUST include ``sd-jwt_alg_values`` listing acceptable signing algorithms; for mdoc, include ``alg_values_supported``. The JOSE/COSE headers of presented artifacts MUST match one of the advertised values. See `OpenID4VP`_ §11 and Appendix B.
+    - JSON object defining the formats and proof types of Verifiable Presentations and Verifiable Credentials the RP supports. It consists of a list of name/value pairs, where each name uniquely identifies a supported type. The RP MUST support at least ``dc+sd-jwt``. For SD-JWT VC, the value associated with each name/value pair MUST include ``sd-jwt_alg_values`` listing acceptable signing algorithms; for mdoc-CBOR, the value MUST include ``issuerauth_alg_values`` and ``deviceauth_alg_values``. The JOSE/COSE headers of presented artifacts MUST match one of the advertised values. See `OpenID4VP`_ §11 and Appendix B.
   * - **jwks**
     - JSON Web Key Set document, passed by value, containing the protocol specific keys for the Relying Party. See `OID-FED`_ Draft 41 Section 5.2.1 and `JWK`_.
   * - **erasure_endpoint**

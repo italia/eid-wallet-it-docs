@@ -107,7 +107,7 @@ le condizioni che hanno portato alla sua sospensione vengono risolte, o passa a 
 Ciclo di vita degli Attestati Elettronici ottenuti in batch
 -----------------------------------------------------------
 
-Ciascuna degli Attestati Elettronici emessi in batch, entra immediatamente nel proprio stato relativo al ciclo di vita. Tutte le transizioni di stato (Emessa → Valida → Scaduta/Sospesa/Revocata) avvengono a livello di singolo Attestato Elettronico, utilizzando i parametri individuali dell'Attestato Elettronico (ad esempio, date di validità, status assertion).
+Ciascuna degli Attestati Elettronici emessi in batch, entra immediatamente nel proprio stato relativo al ciclo di vita. Tutte le transizioni di stato (Emessa → Valida → Scaduta/Sospesa/Revocata) avvengono a livello di singolo Attestato Elettronico, utilizzando i parametri individuali dell'Attestato Elettronico (ad esempio, date di validità, Status List).
 
 Gestione del Ciclo di Vita degli Attestati Elettronici
 ------------------------------------------------------
@@ -120,7 +120,7 @@ e l'effetto sul loro storage locale.
 .. plantuml:: plantuml/credential-lifecycle.puml
     :width: 99%
     :alt: La figura illustra il Ciclo di Vita degli Attestati Elettronici.
-    :caption: `Gestione del Ciclo di Vita degli Attestati Elettronici. <https://www.plantuml.com/plantuml/svg/ZLHTRnCn47pthnYUQAMqLA9FAOM6faYH2gf2IeLQ5BbtUuc5OmVlNjBowucT3-LYABc7ABPdzcCywmiM7QIUMFNAkCBM9U7TvUcRozDXzzdfYIdUAwKIHZalX616Or5tOtBGw9gH4Mrn6QWa9qPREAAI8HwFX7fQQg6o1HdJDgR7N5DWVEvy1vCheU6ycCeKMentaHqPjqm1DHitWaQWaM6XG2LyBKU-EdhKhaJX9vFQhOd5M3j7zbZ5eB5SfTefYf-IOznfQqdGSopQ5NIcbAbmqAUPN_4d52COdk31uHnVHKlDk3Oi-708YKqVF1CVAYW0xJv9C3IZ1d3WVv93vKE4WCK7AhUQvxEqdxIqL4bQzUbNRI9k7bCuZvcsfan7UMXwCYoS3ZTjnaNiPKla5T4ut9yydRnjOV5x-cEdZVYHPSA1yuTGsFvO_5HXbSPKge5LSPahq66c4ANa_HI8RjfFWaRilqdmWWRdw7tvrhdkTVFkrwHYGnfo8WrB4ctiSLmHZDkWxszlkft1LGkTmQ3V-tWxk1ekTt9jzvIteV3Urx7yRJJHAGfYNjaawPULjFdo-Xh7oy6e0l5ultX0Uw5s43HPdwoVB-_xfNoP7i368ZjxM6RH3excwIM9eungaMSNEJSoJe_8QqQdZdNB-g7OWcPpbDz9ljhyYSyBkZV-1WtnnIEiHcC3ZVNc3-PQdCoxlFPkdDiMVC23-uzBppDF_lk-sd7WY2K9bEJnmVnEwfnjup9NDF34knaoJ_X0iVMivHVya3aYkuECk6_6dQbfTycI4AQ1PiRNtE2eLC35Wb9Fx1y0>`_
+    :caption: `Gestione del Ciclo di Vita degli Attestati Elettronici. <https://www.plantuml.com/plantuml/svg/ZLDTQnGn57tFhpW-sKAh1VkqzQErYr1GA5Kf8YBfp9sTO3PPSs-whR_U9BiRTvU8teSX8VUSSp_EdBFe875krHFZEXjxmilBq-UNfz-dZqxFJVTQALLobFD226OsYheToK5ZQcP6jCLbe9wSc7HqH3r3FEu8ST5heVu8Cj9spXLpfC3uSF45JAw7Hk8sW-cq6EyIkY0-CmL4Dcu6ZK0pmqA913xAiH-ExtH2Tdu-Zsu3x4Rj7DbdAfFcSfMQ51Q_8CUurTQIuCgnQDVHcO82CBaX2ORk2Hz5IsIyJqBuv7-Gm-13JW6BJyfRFN020qK3bWOfjnlw6KtEM-RnE8zxRKsVdnhKz93EN1vhjVbY1XpyqTa0ZSFNauUJ5qT8txVVtXn2iiR18_5XWO4i4mwSFuJ2Th3uXS9QnWoglcQXYwuZvdL5fTfzvXgLjYhLvqftGqCW7l-F3vYave9W5_NE-kLgk2szTcSbwZuKTcEbeXqSBOltyl8n99tzpAMHiTZkAUCYvhfbOwtjrFsLbQW3Rj_g8HiIqsj_ZPtXYqTO-x2cfdeRlrWTphvLU6MLLyKYVv_x9DkKM4gZfKqVpA_IvLbhtrLg9v-ugR2zMn-ejD0glRtNzcRhBDl0Vokst3-PaYKXB0BT6nzv1wDA0US94kVsDm00>`_
 
 .. .. figure:: ../../images/DigitalCredential_Lifecycle.svg
 ..     :figwidth: 100%
@@ -205,7 +205,7 @@ Aggiornamento dello Stato relativo all'Utente
 
 Gli Utenti POSSONO modificare lo stato di validità del loro Attestato Elettronico:
 
-  1. Eliminando l'Attestato Elettronico dalla propria Istanza del Wallet: l'Istanza del Wallet DOVREBBE proporre all'Utente un prompt per notificare opzionalmente al Fornitore di Attestati Elettronici il desiderio da parte dell'Utente di richiedere la revoca della Credenziale. Quando l'Utente utilizza questa funzionalità, la notifica da inviare al Fornitore di Attestati Elettronici DEVE utilizzare il Notification Endpoint messo a disposizione dal Fornitore di Attestati Elettronici, come descritto nella Sezione :ref:`credential-revocation:Status Update by Wallet Instance`.
+  1. Eliminando l'Attestato Elettronico dalla propria Istanza del Wallet: l'Istanza del Wallet DOVREBBE proporre all'Utente un prompt per notificare opzionalmente al Fornitore di Attestati Elettronici il desiderio da parte dell'Utente di richiedere la revoca della Credenziale. Quando l'Utente utilizza questa funzionalità, la notifica da inviare al Fornitore di Attestati Elettronici DEVE utilizzare il Notification Endpoint messo a disposizione dal Fornitore di Attestati Elettronici, come descritto nella Sezione :ref:`credential-revocation-status-update-by-wallet-instance`.
   2. Utilizzando il portale web del Fornitore di Attestati Elettronici:
 
     a. Gli Utenti POSSONO accedere ad un'area sicura con almeno lo stesso Livello di Garanzia utilizzato durante la fase di emissione.
@@ -215,16 +215,18 @@ Gli Utenti POSSONO modificare lo stato di validità del loro Attestato Elettroni
       - Verificare l'autenticità dei dati.
       - Visualizzare e aggiornare lo stato di validità (revocare i loro Attestati Elettronici e, se supportato dal Fornitore di Attestati Elettronici, sospenderle).
 
-Inoltre, quando gli Utenti rilevano dati non corretti in un Attestato Elettronico rilasciato, l'Istanza del Wallet DOVREBBE avviare una richiesta di correzione dati tramite il Notification Endpoint come specificato in :ref:`it-notification-data-correction`. A seguito della conferma della discrepanza, il Fornitore di Attestati Elettronici DOVREBBE seguire il :ref:`credential-issuance-low-level:Re-Issuance Flow`.
+Inoltre, quando gli Utenti rilevano dati non corretti in un Attestato Elettronico rilasciato, l'Istanza del Wallet DOVREBBE avviare una richiesta di correzione dati tramite il Notification Endpoint come specificato in :ref:`credential-issuance-endpoint:Correzione dati usando credential_failure`. A seguito della conferma della discrepanza, il Fornitore di Attestati Elettronici DOVREBBE seguire il :ref:`credential-issuance-low-level:Re-Issuance Flow`.
 
 .. note::
   Se l'Utente attiva un'altra Istanza del Wallet dello stesso Fornitore di Wallet e utilizzando la stessa Soluzione di Wallet e ottiene un nuovo PID, il PID precedente DEVE essere revocato e la precedente Istanza del Wallet DEVE passare allo stato operativo.
 
 In caso di morte dell'Utente, i Fornitori di Attestati Elettronici DEVONO garantire che gli Attestati Elettronici e le Istanze del Wallet di proprietà dell'Utente siano revocati.
-La morte dell'Utente comporta una modifica dello stato di validità degli attributi identificativi dell'Utente contenuti nel registro pubblico (ANPR). La morte dell'Utente DEVE produrre la revoca del PID. Pertanto, la Fonte Autentica del PID (ANPR) DEVE notificare al PID Provider che gli attributi dell'Utente non sono più validi a causa della morte dell'Utente. La Fonte Autentica e il PID Provider DEVONO utilizzare i meccanismi previsti nella Sezione :ref:`credential-revocation:Status Update by Authentic Sources`.
+La morte dell'Utente comporta una modifica dello stato di validità degli attributi identificativi dell'Utente contenuti nel registro pubblico (ANPR). La morte dell'Utente DEVE produrre la revoca del PID. Pertanto, la Fonte Autentica del PID (ANPR) DEVE notificare al PID Provider che gli attributi dell'Utente non sono più validi a causa della morte dell'Utente. La Fonte Autentica e il PID Provider DEVONO utilizzare i meccanismi previsti nella Sezione :ref:`credential-revocation-status-update-by-authentic-sources`.
 
 .. note::
   Le versioni future della presente specifica tecnica definiranno come le informazioni verso i Fornitori di (Q)EAA vengono propagate, in accordo alla normativa nazionale. Inoltre, saranno definite procedure automatizzate per la revoca degli Attestati dovuta ad attività illecite.
+
+.. _credential-revocation-status-update-by-wallet-instance:
 
 Aggiornamento dello Stato da parte dell'Istanza del Wallet
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -241,22 +243,25 @@ Per qualsiasi altro Attestato Elettronico diverso dal PID, il Fornitore di Attes
 Aggiornamento dello Stato da parte dei Fornitori di Wallet
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-In aggiunta a quanto definito in :ref:`credential-revocation:Ciclo di Vita degli Attestati Elettronici`, il Fornitore di Attestati Elettronici DEVE mettere a disposizione un servizio web (endpoint di Revoca dell'Istanza del Wallet) definito utilizzando PDND, come specificato nella Sezione :ref:`credential-issuer-endpoint:e-Service PDND Credential Issuer Catalog`.
-Il Fornitore di Wallet che per qualsiasi motivo revoca un'Istanza del Wallet DEVE inviare una notifica ai Fornitori di Attestati Elettronici utilizzando questo endpoint.
+Il Fornitore di Wallet che, per qualsiasi motivo, revoca una Wallet Instance DEVE garantire che lo stato aggiornato sia riportato all'interno della Status List della Wallet Unit Attestation.
+In aggiunta a quanto definito in :ref:`credential-revocation:Ciclo di Vita degli Attestati Elettronici`, il Fornitore di Attestati Elettronici DEVE implementare un meccanismo di monitoraggio degli stati correnti di tutte le Wallet Unit Attestation relative alle Wallet Instance a cui sono stati emessi gli Attestati Elettronici.
+In seguito alla revoca della Wallet Unit Attestation, il Credential Issuer procede alla revoca di tutti gli Attestati Elettronici emessi alla Wallet Instance.
+
+.. _credential-revocation-status-update-by-authentic-sources:
 
 Aggiornamento dello Stato da parte delle Fonti Autentiche
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Le Fonti Autentiche gestiscono gli attributi separatamente dagli Attestati Elettronici, i quali verificano l’autenticità in modo analogo ai documenti fisici. La perdita di un documento fisico non implica la perdita dei diritti che rappresenta; significa solo che l’Utente non può dimostrarli. Tuttavia, se un Utente perde determinati diritti a causa di una grave infrazione, la Fonte Autentica revocherà gli attributi correlati. In tali casi, quando gli attributi di un Utente vengono aggiornati, le Fonti Autentiche DEVONO notificare ai Fornitori di Attestati Elettronici di aggiornare lo stato di validità di qualsiasi Attestato Elettronico che contenga tali attributi.
 
-Le Fonti Autentiche che utilizzano il Signal Hub DEVONO depositare un Signal tramite il :ref:`signal-hub-endpoint:Signal Collection e-Service` nei seguenti casi:
+Le Fonti Autentiche che utilizzano PDND DEVONO usare Signal Hub come unico meccanismo di notifica degli aggiornamenti. In questo caso, le Fonti Autentiche DEVONO depositare un Signal tramite il :ref:`signal-hub-endpoint:e-Service di Raccolta Segnali` nei seguenti casi:
 
   - Il valore di uno o più Attributi contenuti nel database della Fonte Autentica è cambiato;
   - Lo stato di validità degli Attributi è aggiornato (revoca o sospensione).
 
 In entrambi i casi, il Signal DEVE avere ``signalType`` impostato a ``UPDATE``.
 
-I Fornitori di Attestati Elettronici DEVONO controllare periodicamente il PDND Signal Hub :ref:`signal-hub-endpoint:Signal Distribution e-Service` per nuovi Signal. Per il flusso di processamento dei Signal, fare riferimento alla Sezione :ref:`signal-hub-endpoint:Signals Processing`. Il Fornitore di Attestati Elettronici è in grado di identificare la natura del ``UPDATE`` Signal interrogando la API `get attribute` della Fonte Autentica e ispezionando il payload della risposta, come descritto nella Sezione :ref:`authentic-source-endpoint:Get Attribute Claims`.
+I Fornitori di Attestati Elettronici DEVONO controllare periodicamente il PDND Signal Hub :ref:`signal-hub-endpoint:e-Service di Distribuzione Segnali` per nuovi Signal. Per il flusso di processamento dei Signal, fare riferimento alla Sezione :ref:`signal-hub-endpoint:Elaborazione dei Segnali`. Il Fornitore di Attestati Elettronici è in grado di identificare la natura del ``UPDATE`` Signal interrogando la API `get attribute` della Fonte Autentica e ispezionando il payload della risposta, come descritto nella Sezione :ref:`authentic-source-endpoint:Get Attribute Claims`.
 
 La seguente figura illustra ad alto livello il processo di aggiornamento dello stato da parte delle Fonti Autentiche.
 
@@ -276,19 +281,18 @@ La seguente figura illustra ad alto livello il processo di aggiornamento dello s
 
 Il processo inizia con modifiche ai dati o alla validità dei dati che avvengono presso la Fonte Autentica. Le modifiche possono anche essere avviate da entità terze diverse dalla Fonte Autentica, ad esempio quando le autorità giudiziarie segnalano attività illecite.
 
-Una volta che i dati cambiano, la Fonte Autentica notifica i Fornitori di Attestati Elettronici che hanno ricevuto i dati originali utilizzando il Signal Hub. La Fonte Autentica deposita un Signal nel Signal Collection e-Service. :ref:`signal-hub-endpoint:Signal Collection e-Service`.
+Una volta che i dati cambiano, la Fonte Autentica notifica i Fornitori di Attestati Elettronici che hanno ricevuto i dati originali utilizzando il Signal Hub. La Fonte Autentica deposita un Signal nel Signal Collection e-Service. :ref:`signal-hub-endpoint:e-Service di Raccolta Segnali`.
 
-Il Fornitore di Attestati Elettronici interroga periodicamente il Signal Hub :ref:`signal-hub-endpoint:Signal Distribution e-Service` per nuovi Signal. Quando viene trovato un nuovo Signal, il Fornitore di Attestati Elettronici lo recupera e lo processa come descritto in :ref:`signal-hub-endpoint:Signals Processing`. Quindi, il Fornitore di Attestati Elettronici aggiorna lo Stato dell’Attestato secondo la modalità definita dal meccanismo di validità. Il Fornitore di Attestati Elettronici PUÒ notificare l’Utente tramite un canale di comunicazione registrato e out-of-band.
+Il Fornitore di Attestati Elettronici interroga periodicamente il Signal Hub :ref:`signal-hub-endpoint:e-Service di Distribuzione Segnali` per nuovi Signal. Quando viene trovato un nuovo Signal, il Fornitore di Attestati Elettronici lo recupera e lo processa come descritto in :ref:`signal-hub-endpoint:Elaborazione dei Segnali`. Quindi, il Fornitore di Attestati Elettronici aggiorna lo Stato dell’Attestato secondo la modalità definita dal meccanismo di validità. Il Fornitore di Attestati Elettronici PUÒ notificare l’Utente tramite un canale di comunicazione registrato e out-of-band.
 
-L’Istanza del Wallet, a seguito di controlli periodici dello stato di validità degli Attestati Elettronici memorizzati, riceve lo stato aggiornato. Quando lo Stato dell’Attestato viene modificato in INVALID, il Fornitore di Attestati Elettronici DEVE informare l’Utente di tale cambiamento. Nel caso in cui lo stato dell’Attestato venga modificato in UPDATE (risp. 0x03) o ATTRIBUTE_UPDATE (risp. 0x04), l’Istanza del Wallet DOVREBBE procedere alla riemissione dell’Attestato Elettronico, come descritto in :ref:`credential-issuance-low-level:Re-Issuance Flow`.
+L’Istanza del Wallet, a seguito di controlli periodici dello stato di validità degli Attestati Elettronici memorizzati, riceve lo stato aggiornato. Quando lo Stato dell’Attestato viene modificato in ``INVALID``, il Fornitore di Attestati Elettronici DEVE informare l’Utente di tale cambiamento. Nel caso in cui lo stato dell’Attestato venga modificato in ``UPDATE`` (risp. 0x03) o ``ATTRIBUTE_UPDATE`` (risp. 0x0B), l’Istanza del Wallet DOVREBBE procedere alla riemissione dell’Attestato Elettronico, come descritto in :ref:`credential-issuance-low-level:Re-Issuance Flow`.
 
 Gestione del ciclo di vita delle Credenziali in batch
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Quando più Attestati Elettronici vengono emessi insieme in un singolo batch, il loro ciclo di vita rimane completamente granulare:
 
-* **Trigger raggruppati, aggiornamenti indipendenti**: una singola richiesta di aggiornamento dello stato del batch che fa riferimento al ``notification_id`` del batch e inviata da un'entità autorizzata (ad esempio, l'Istanza del Wallet tramite il Notification Endpoint con ``event=credential_deleted``, un Wallet Provider tramite PDND) viene gestita come N modifiche di stato separate. Il Fornitore di Attestati Elettronici aggiorna lo stato di ciascun Attestato Elettronico singolarmente (ad esempio, impostando il bit della status-list su ``INVALID`` o ``SUSPENDED``). Per impostazione predefinita, un'Istanza del Wallet NON DEVE attivare aggiornamenti di stato del batch quando l'Utente elimina Attestati Elettronici localmente. In fase di eliminazione, l’Istanza del Wallet PUÒ, con il consenso esplicito dell’Utente, notificare al Fornitore di Attestati Elettronici l’intenzione dell’Utente di revocare gli Attestati Elettronici interessati; tale notifica non costituisce una richiesta di aggiornamento di stato a livello di batch.
-* **Revoca a livello di batch**: la stessa richiesta di aggiornamento del batch funge anche da richiesta di revoca totale. Il Credential Issuer contrassegna ogni Attestato Elettronico nel batch come revocato e PUÒ emettere una singola notifica per l'intero batch secondo la propria policy.
+* **Trigger raggruppati, aggiornamenti indipendenti**: indipendentemente dall'attore che ha innescato la variazione di stato del batch (ad esempio, la Wallet Instance tramite il Notification Endpoint con ``event=credential_deleted``, un Wallet Provider tramite l'aggiornamento della Status List della Wallet Unit Attestation) l'aggiornamento viene gestito come N modifiche di stato separate. Il Fornitore di Attestati Elettronici aggiorna lo stato di ciascun Attestato Elettronico singolarmente (ad esempio, impostando il bit della status-list su ``INVALID`` o ``SUSPENDED``). Per impostazione predefinita, un'Istanza del Wallet NON DEVE attivare aggiornamenti di stato del batch quando l'Utente elimina Attestati Elettronici localmente. In fase di eliminazione, l’Istanza del Wallet PUÒ, con il consenso esplicito dell’Utente, notificare al Fornitore di Attestati Elettronici l’intenzione dell’Utente di revocare gli Attestati Elettronici interessati.
 
 .. note::
   Poiché l'interfaccia utente del Wallet in genere visualizza un batch come un singolo Attestato Elettronico (ad esempio, con 3 utilizzi rimanenti), un'eliminazione da parte dell'utente rimuove l'intero batch localmente. Per impostazione predefinita non richiede la revoca presso il Fornitore di Attestati Elettronici. L’Istanza del Wallet PUÒ offrire all’Utente un prompt opzionale per richiedere la revoca presso il Fornitore di Attestati Elettronici nell’ambito del flusso di eliminazione.
@@ -297,7 +301,7 @@ Quando più Attestati Elettronici vengono emessi insieme in un singolo batch, il
 Meccanismi di Verifica della Validità
 -------------------------------------
 
-Per la verifica dello stato di validità di un Attestato Elettronico a lunga durata, l'OAuth Status List (`TOKEN-STATUS-LIST`_) DEVE essere supportato sia per lo scenario remoto che per quello di prossimità. Nello scenario remoto, il Fornitore di Attestati Elettronici, l'Istanza del Wallet e la Relying Party POSSONO supportare OAuth Status Assertions (`OAUTH-STATUS-ASSERTION`_). La seguente tabella riassume i meccanismi di revoca richiesti per verificare lo stato degli Attestati Elettronici a lunga durata.
+Per la verifica dello stato di validità di un Attestato Elettronico a lunga durata, Token Status List (`TOKEN-STATUS-LIST`_) DEVE essere supportato sia per lo scenario remoto che per quello di prossimità. La seguente tabella riassume i meccanismi di revoca richiesti per verificare lo stato degli Attestati Elettronici a lunga durata.
 
 .. _table_revocation_mechanisms:
 .. list-table::
@@ -310,458 +314,13 @@ Per la verifica dello stato di validità di un Attestato Elettronico a lunga dur
     - **Riferimento**
   * - Remoto
     -
-      - [OPZIONALE] OAuth Status Assertion,
-      - [RICHIESTO] OAuth Status Lists.
-    - `OAUTH-STATUS-ASSERTION`_, `TOKEN-STATUS-LIST`_.
+      - [RICHIESTO] Token Status List.
+    - `TOKEN-STATUS-LIST`_.
   * - Prossimità
-    - [RICHIESTO] OAuth Status Lists.
+    - [RICHIESTO] Token Status List.
     - `TOKEN-STATUS-LIST`_.
 
-OAuth Status Assertions
-^^^^^^^^^^^^^^^^^^^^^^^
-
-Una Status Assertion è un documento firmato che serve come prova dello stato di validità corrente di un Attestato Elettronico. Il Fornitore di Attestati Elettronici fornisce queste asserzioni agli Utenti che possono presentarle ai Relying Party insieme agli Attestati Elettronici corrispondenti.
-
-Le Status Assertion hanno le seguenti caratteristiche:
-
-  - emissione automatizzata, poiché l'autenticazione dell'Utente non è richiesta per la fornitura della Status Assertion;
-  - verifica dello stato di validità dell'Attestato Elettronico sia in scenari online che offline;
-  - preservazione della privacy, secondo le seguenti evidenze:
-
-    - la Relying Party può controllare la validità dell'Attestato Elettronico durante la fase di presentazione. Non è in grado di controllare la validità di un determinato Attestato Elettronico relativo all'Utente nel tempo e al di fuori dell'ambito dell'autenticazione dell'Utente;
-    - il Fornitore di Attestati Elettronici non è in grado di sapere a quale Relying Party verrà presentato l'Attestato Elettronico o la Status Assertion;
-    - non rivela alcuna informazione sugli Utenti o sul contenuto dei loro Attestati Elettronici.
-
-  - DEVE avere un periodo di validità non superiore a 24 ore.
-
-.. note::
-  Questa specifica supporta solo il formato JWT e la Status Assertion utilizza il claim ``credential_status_type`` invece di ``credential_status_validity``.
-
-Le seguenti sezioni descrivono come funziona il meccanismo di validazione degli Attestati Elettronici attraverso le sue fasi chiave.
-
-
-Gestione dello Stato degli Attestati Elettronici con OAuth Status Assertion
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-I Fornitori di Attestati Elettronici, una volta che un Attestato Elettronico è stato generato e rilasciato con successo, DEVONO:
-
-  - Memorizzarlo localmente con il set minimo di dati necessari per gestire il suo ciclo di vita, incluso lo stato di validità di quell'Attestato Elettronico;
-  - Includere un algoritmo di hash specificato nell'Attestato Elettronico utilizzando il claim ``credential_hash_alg`` all'interno del membro JSON ``status_assertion`` del claim status.
-
-Inoltre, i Fornitori di Attestati Elettronici DEVONO aggiungere i seguenti parametri nei loro Metadata:
-
-  - ``status_assertion_endpoint``
-  - ``credential_hash_alg_supported``
-
-
-Verifica dello Stato degli Attestati Elettronici da parte dell'Istanza del Wallet
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-Un'Istanza del Wallet DEVE controllare periodicamente lo stato di validità dell'Attestato Elettronico che è memorizzato in essa, richiedendo una Status Assertion per ogni Attestato Elettronico. In questo caso, l'Istanza del Wallet DEVE inviare una *Richiesta di Status Assertion* al Fornitore di Attestati Elettronici secondo la "Specifica OAuth Status Assertion" (vedere `OAUTH-STATUS-ASSERTION`_ per maggiori dettagli) ed è illustrato nel seguente diagramma.
-
-.. _fig_entity-relation-credential-revocation-2:
-.. plantuml:: plantuml/status-assertion-flow.puml
-    :width: 80%
-    :alt: La figura illustra il Flusso di Status Assertion.
-    :caption: `Flusso di Status Assertion. <https://www.plantuml.com/plantuml/svg/TOv1IyD048Nl-oiUYyUQ7z23L4Im9uiDU50fOpk7XSqapioIl--IQ27GdERmllU-sPcJUkboeEAzbEwRDGoadivf8774TygP7Nkff9mvWWnZMZ9FoXSMJvInDoki4vL261Fk7v2sEBmUMnoTl1WUpRYMUy5BsnxmnZ-5pV4fY3OH9_edJZg75h75HoM0ktdbEl9NtqnXqpJrVeKGghYQnwfUizhGY_6QTaujhcjdukhTtCIULNjT_hPZkPGk_m80>`_
-
-
-.. .. figure:: ../../images/High-Level-Flow-Status-Assertion-Request.svg
-..     :figwidth: 100%
-..     :align: center
-..     :target: https://www.plantuml.com/plantuml/svg/TOv1IyD048Nl-oiUYyUQ7z23L4Im9uiDU50fOpk7XSqapioIl--IQ27GdERmllU-sPcJUkboeEAzbEwRDGoadivf8774TygP7Nkff9mvWWnZMZ9FoXSMJvInDoki4vL261Fk7v2sEBmUMnoTl1WUpRYMUy5BsnxmnZ-5pV4fY3OH9_edJZg75h75HoM0ktdbEl9NtqnXqpJrVeKGghYQnwfUizhGY_6QTaujhcjdukhTtCIULNjT_hPZkPGk_m80
-
-..     Status Assertion Flow
-
-
-**Passo 1 (Richiesta di Status Assertion)**: L'Istanza del Wallet invia la Richiesta di Status Assertion al Fornitore di Attestati Elettronici, dove:
-
-  - La richiesta DEVE contenere il valore hash codificato in base64url della parte firmata dal Fornitore di Attestati Elettronici, come l'Issuer Signed JWT utilizzando il :ref:`credential-data-model:Attestato Elettronico in formato SD-JWT-VC` o il Mobile Security Object utilizzando il :ref:`credential-data-model:Attestato Elettronico in formato mdoc-CBOR`, e incluso in un Status Assertion Request object firmato.
-  - Lo Status Assertion Request object DEVE essere firmato con la chiave privata corrispondente al confirmation claim contenuto nell'Attestato Elettronico.
-
-La HTTP Status Assertion Request inviata a un singolo Fornitore di Attestati Elettronici può riguardare più Attestati Elettronici, e DEVE contenere un oggetto JSON con il membro `status_assertion_requests` come descritto nella Sezione :ref:`credential-revocation:HTTP Status Assertion Request`.
-
-Il Fornitore di Attestati Elettronici che riceve il Status Assertion Request object DEVE:
-
-  - validare che l'Istanza del Wallet che effettua la richiesta sia autorizzata a richiedere Status Assertion. Se si verificano errori durante questo controllo, il Fornitore di Attestati Elettronici DEVE fornire una Status Assertion Error Response secondo la Sezione :ref:`credential-revocation:HTTP Status Assertion Response`;
-  - verificare la conformità di tutti gli elementi nell'oggetto `status_assertion_requests` utilizzando il confirmation claim contenuto nell'Attestato Elettronico a cui si riferisce lo Status Assertion Request object. In caso di errori, DEVE essere fornita una Status Assertion Error Response (vedere la Sezione :ref:`credential-revocation:HTTP Status Assertion Response`);
-  - verificare che sia il legittimo Fornitore di Attestati Elettronici dell'Attestato Elettronico a cui si riferisce ciascun Status Assertion Request object;
-  - controllare lo stato di validità per gli Attestati Elettronici richiesti;
-  - creare la corrispondente Status Assertion.
-
-
-**Passo 2 (Risposta di Status Assertion)**: Il *status_assertion_responses* DEVE essere un array di stringhe contenente gli Oggetti JSON *StatusAssertionResponse* e/o *StatusAssertionErrors* relativi alla richiesta effettuata dall'Istanza del Wallet.
-
-L'Istanza del Wallet DEVE:
-
-  - validare la HTTP Status Assertion Response;
-  - estrarre e validare le firme di ciascun Oggetto JSON all'interno dell'Array JSON *status_assertion_responses*;
-  - presentare una Status Assertion valida a un Relying Party che la richiede per la verifica dello stato di un Attestato Elettronico (vedere la Sezione seguente per maggiori dettagli);
-  - informare l'Utente in caso di aggiornamento dello stato di validità di un Attestato Elettronico.
-
-.. note::
-  L'Oggetto JSON Status Assertion Errors PUÒ avere il *parametro dell'header alg* impostato su *none*. Se il Fornitore di Attestati Elettronici firma gli Status Assertion Errors, l'Istanza del Wallet DEVE validare la firma. Inoltre, gli Status Assertion Errors NON DEVONO essere presentati ai Relying Party.
-
-I dettagli tecnici sulla HTTP Status Assertion Response sono forniti nella Sezione :ref:`credential-revocation:HTTP Status Assertion Response`.
-
-HTTP Status Assertion Request
-..................................
-
-L'*endpoint di Status Assertion* DEVE essere fornito dal Fornitore di Attestati Elettronici nei suoi Metadata.
-Le richieste all'*endpoint di Status Assertion* DEVONO essere HTTP con metodo POST, utilizzando i parametri obbligatori elencati di seguito all'interno del body del messaggio della richiesta HTTP. Questi DEVONO essere codificati nel formato ``application/json``.
-
-.. _table_revocation_request_params:
-.. list-table::
-  :class: longtable
-  :widths: 20 60 20
-  :header-rows: 1
-
-  * - **Claim**
-    - **Descrizione**
-    - **Riferimento**
-  * - **status_assertion_requests**
-    - DEVE essere un array di stringhe, dove ciascuna rappresenta un *Status Assertion Request object*. Ogni elemento DEVE contenere un JWT firmato, codificato come una serie di valori codificati in base64url (alcuni dei quali possono essere stringhe vuote) separati da caratteri punto ('.'), come prova crittografica del possesso dell'Attestato Elettronico per cui viene richiesta la Status Assertion, in conformità con la Status Assertion Request descritta nella Sezione 7 di `OAUTH-STATUS-ASSERTION`_. Vedere la :ref:`Tabella <table_status_assertion_req_obj>` sottostante per maggiori dettagli.
-    - Questa Specifica.
-
-Di seguito un esempio non normativo che rappresenta un array di Status Assertion Request con Status Assertion Request object in formato JWT.
-
-.. code::
-
-  POST /status HTTP/1.1
-  Host: issuer.example.org
-  Content-Type: application/json
-
-	{
-		"status_assertion_requests" : [
-      $status_assertion_request,
-      $status_assertion_request,
-      ...
-    ]
-	}
-
-Lo **Status Assertion Request object** DEVE essere un JWT che DEVE contenere i parametri (Header e Payload) nella seguente tabella.
-
-.. _table_status_assertion_req_obj:
-.. list-table::
-  :class: longtable
-  :widths: 20 60 20
-  :header-rows: 1
-
-  * - **Header**
-    - **Descrizione**
-    - **Riferimento**
-  * - **typ**
-    - DEVE essere impostato su ``status-assertion-request+jwt``.
-    - :rfc:`7516#section-4.1.1`.
-  * - **alg**
-    - Un identificatore di algoritmo di firma digitale come per il registro IANA "JSON Web Signature and Encryption Algorithms". DEVE essere uno degli algoritmi supportati elencati nella Sezione :ref:`algorithms:Algoritmi Crittografici` e NON DEVE essere impostato su ``none`` o qualsiasi identificatore di algoritmo simmetrico (MAC).
-    - :rfc:`7516#section-4.1.1`.
-
-
-.. list-table::
-  :class: longtable
-  :widths: 20 60 20
-  :header-rows: 1
-
-  * - **Payload**
-    - **Descrizione**
-    - **Riferimento**
-  * - **iss**
-    -  JWT thumbprint nel parametro ``cnf`` dell'Attestato di Unità di Wallet.
-    - :rfc:`9126` e :rfc:`7519`.
-  * - **aud**
-    - DEVE corrispondere alla stringa URL dell'endpoint di Status Assertion del Fornitore di Attestati Elettronici.
-    - :rfc:`9126` e :rfc:`7519`.
-  * - **exp**
-    - Timestamp UNIX con il tempo di scadenza del JWT. DEVE essere maggiore del valore impostato per `iat`.
-    - :rfc:`9126` e :rfc:`7519`.
-  * - **iat**
-    - Timestamp UNIX con il tempo di emissione del JWT.
-    - :rfc:`9126` e :rfc:`7519`.
-  * - **jti**
-    - Identificatore univoco del JWT. Il valore DOVREBBE essere impostato utilizzando un valore *UUID v4* secondo [:rfc:`4122`].
-    - :rfc:`7519#section-4.1.7`.
-  * - **credential_hash**
-    - DEVE contenere il valore hash della parte firmata dal Fornitore di Attestati Elettronici dell'Attestato Elettronico a cui è legata la Status Assertion.
-    - `OAUTH-STATUS-ASSERTION`_.
-  * - **credential_hash_alg**
-    - DEVE contenere l'Algoritmo utilizzato per l'hashing dell'Attestato Elettronico. Il valore DOVREBBE essere impostato su `sha-256`.
-    - `OAUTH-STATUS-ASSERTION`_.
-
-Di seguito, viene fornito un esempio non normativo di un singolo *Status Assertion Request object* con header e payload JWT decodificati e senza firma per una migliore leggibilità:
-
-.. code-block:: json
-
-  {
-    "alg": "ES256",
-    "typ": "status-assertion-request+jwt"
-  }
-  
-.. code-block:: json
-
-  {
-    "iss": "0b434530-e151-4c40-98b7-74c75a5ef760",
-    "aud": "https://pid-provider.example.org/status",
-    "iat": 1698744039,
-    "exp": 1698744139,
-    "jti": "6f204f7e-e453-4dfd-814e-9d155319408c",
-    "credential_hash": "$Issuer-Signed-JWT-Hash",
-    "credential_hash_alg": "sha-256"
-  }
-
-HTTP Status Assertion Response
-.................................
-
-In caso di validazione riuscita della Status Assertion Resquest, il *Fornitore di Attestati Elettronici* DEVE restituire una risposta HTTP con il codice di stato impostato su *200 OK*. Se il *Fornitore di Attestati Elettronici* è in grado di fornire una Status Assertion valida per un Attestato Elettronico richiesto, la risposta DEVE contenere un oggetto Status Assertion all'interno di un Array JSON. Altrimenti, un Status Assertion Errors relativo a quell'Attestato Elettronico DEVE essere incluso nell'Array JSON di Risposta.
-
-Se la HTTP Status Assertion Request fallisce (ad esempio richiesta non valida, indisponibilità del server, ecc.), un Codice di Stato di Errore HTTP DEVE essere fornito all'interno della Risposta di Status Assertion.
-
-Nella seguente tabella sono elencati i Codici di Stato HTTP che DEVONO essere supportati:
-
-.. _table_http_status_assertion_codes:
-.. list-table::
-  :class: longtable
-  :widths: 20 20 60
-  :header-rows: 1
-
-  * - **Codice di Stato**
-    - **Corpo**
-    - **Descrizione**
-  * - *200 Ok*
-    - Risposta di Revoca
-    - La Risposta di Revoca è stata creata con successo.
-  * - *400 Bad Request*
-    - Codice di errore e descrizione
-    - Il Fornitore di Attestati Elettronici non può soddisfare la richiesta a causa di parametri non validi.
-  * - *500 Internal Server Error*
-    -
-    - Il Fornitore di Attestati Elettronici ha riscontrato un problema interno. (:rfc:`6749#section-5.2`).
-  * - *503 Service Unavailable*
-    -
-    - Il Fornitore di Attestati Elettronici è temporaneamente non disponibile. (:rfc:`6749#section-5.2`).
-
-La risposta HTTP DEVE:
-
-- Includere un oggetto JSON con un membro denominato `status_assertion_responses`. DEVE essere un array di stringhe, dove ciascuna rappresenta un *Status Assertion Response object*. Ogni elemento DEVE contenere un JWT firmato, codificato come una serie di valori codificati in base64url (alcuni dei quali possono essere stringhe vuote) separati dal carattere punto ('.'). Lo *Status Assertion Response object* DEVE contenere una Status Assertion Response e un Status Assertion Error in analogia con le Sezioni 8 e 9 di `OAUTH-STATUS-ASSERTION`_ per maggiori dettagli.
-
-- Essere codificata nel formato ``application/json``.
-
-Un esempio non normativo di una HTTP Status Assertion Response è fornito di seguito.
-
-.. code::
-
-    HTTP/1.1 200 Ok
-    Content-Type: application/json
-    {
-      "status_assertion_responses": [
-        $status_assertion_response,
-        $status_assertion_response,
-        ...
-      ]
-    }
-
-La Status Assertion DEVE contenere i parametri e i claim definiti di seguito
-
-
-.. _table_status_assertion_claims:
-.. list-table::
-  :class: longtable
-  :widths: 20 60 20
-  :header-rows: 1
-
-  * - **Header**
-    - **Descrizione**
-    - **Riferimento**
-  * - **alg**
-    - Un identificatore di algoritmo di firma digitale come per il registro IANA "JSON Web Signature and Encryption Algorithms". DEVE essere uno degli algoritmi supportati nella Sezione :ref:`Cryptographic Algorithms <algorithms:Algoritmi Crittografici>` e NON DEVE essere impostato su ``none`` o su un identificatore di algoritmo simmetrico (MAC).
-    - [:rfc:`7515`], [:rfc:`7517`].
-  * - **typ**
-    - DEVE corrispondere a `status-assertion+jwt`.
-    - [:rfc:`7515`], [:rfc:`7517`], `OAUTH-STATUS-ASSERTION`_.
-  * - **kid**
-    - Identificatore univoco del JWK del Fornitore di Attestati Elettronici. È RICHIESTO quando ``x5c`` non viene utilizzato.
-    - [:rfc:`7515`], `OAUTH-STATUS-ASSERTION`_.
-  * - **x5c**
-    - Catena di certificati X.509 relativa al Fornitore di Attestati Elettronici. È RICHIESTO quando ``kid`` non viene utilizzato.
-    - [:rfc:`7515`], `OAUTH-STATUS-ASSERTION`_.
-
-.. list-table::
-  :class: longtable
-  :widths: 20 60 20
-  :header-rows: 1
-
-  * - **Payload**
-    - **Descrizione**
-    - **Riferimento**
-  * - **iss**
-    - DEVE essere impostato sull'identificatore del Fornitore di Attestati Elettronici.
-    - :rfc:`9126` e :rfc:`7519`.
-  * - **iat**
-    - Timestamp UNIX con il tempo di emissione del JWT.
-    - :rfc:`9126` e :rfc:`7519`.
-  * - **exp**
-    - Timestamp UNIX con il tempo di scadenza del JWT. DEVE essere maggiore del valore impostato per `iat`.
-    - :rfc:`9126` e :rfc:`7519`.
-  * - **credential_hash**
-    - Valore hash dell'Attestato Elettronico a cui è legata la Status Assertion.
-    - `OAUTH-STATUS-ASSERTION`_.
-  * - **credential_hash_alg**
-    - L'Algoritmo utilizzato per l'hashing dell'Attestato Elettronico a cui è legata la Status Assertion. Il valore DOVREBBE essere impostato su ``sha-256``.
-    - `OAUTH-STATUS-ASSERTION`_.
-  * - **credential_status_type** [#]_
-    - Valore numerico che indica la validità dell'Attestato Elettronico collegato alla Status Assertion descrivendo il suo stato. Tutti i valori presi dal registro IANA "OAuth Status Types" per i valori di Status List (vedere la Sezione 7 di `TOKEN-STATUS-LIST`_) POSSONO essere supportati. I valori da ``0x00`` a ``0x02`` DEVONO essere supportati con il seguente significato:
-
-      - ``0x00 - VALID``: Lo stato dell'Attestato Elettronico è valido, corretto o legale.
-      - ``0x01 - INVALID``: Lo stato dell'Attestato Elettronico è revocato, annullato, ritirato, o cancellato. Questo stato è irreversibile.
-      - ``0x02 - SUSPENDED``: Lo stato dell'Attestato Elettronico è temporaneamente non valido, sospeso. Questo stato è reversibile.
-
-    - Questa Specifica, `TOKEN-STATUS-LIST`_ .
-  * - **credential_status_detail**
-    - RICHIESTO solo se **credential_status_type** non è impostato su `0x00`. Oggetto contenente informazioni dettagliate sullo stato dell'Attestato Elettronico. Contiene:
-
-        - **state**: (RICHIESTO). Stringa che rappresenta lo stato dell'Attestato Elettronico. Viene utilizzato per trasmettere una rappresentazione più granulare dello stato di un Attestato Elettronico, ad esempio "revoked", "annulled", "debarred", ecc. o in caso di stati di Attestato Elettronico specifici dell'applicazione. Il Fornitore di Attestati Elettronici DEVE fornire un elenco di stati supportati per l'Attestato Elettronico emesso nei Metadata del Fornitore di Attestati Elettronici.
-        - **description**: (RICHIESTO). Stringa contenente la descrizione dello stato dell'Attestato Elettronico.
-    - `OAUTH-STATUS-ASSERTION`_.
-  * - **cnf**
-    - Oggetto JSON contenente metodi di conferma. Il sotto-membro contenuto all'interno del membro `cnf`, come `jwk` per JWT, DEVE corrispondere a quello fornito all'interno del relativo Attestato Elettronico. Altri metodi di conferma possono essere utilizzati quando l'Attestato Elettronico di riferimento li supporta, in conformità con gli standard di riferimento.
-    - Sezione 3.1 di :rfc:`7800` e Sezione 3.1 di :rfc:`8747`.
-
-.. warning::
-  .. [#] Questa specifica utilizza ``credential_status_type`` invece di ``credential_status_validity`` attualmente supportato in `OAUTH-STATUS-ASSERTION`_ poiché il valore è semanticamente un tipo di stato e non un booleano.
-
-Di seguito un esempio non normativo di un Status Assertion Response object in formato JWT, con gli header e il payload rappresentati in JSON e senza applicare la firma.
-
-.. code::
-
-  {
-    "alg": "ES256",
-    "typ": "status-assertion+jwt",
-    "kid": "Issuer-JWK-KID"
-  }
- .
-  {
-    "iss": "https://issuer.example.org",
-    "jti": "6f204f7e-e453-4dfd-814e-9d155319408c"
-    "credential_hash": $CREDENTIAL-HASH,
-    "credential_hash_alg": "sha-256",
-    "credential_status_type": 0x01,
-    "credential_status_detail": {
-      "state": "revoked",
-      "description": "The Credential is no longer usable as it has been revoked. This state is irreversible"
-    },
-    "cnf": {
-      "jwk": {
-        "kty": "EC",
-        "crv": "P-256",
-        "x": "_2ySUmWFjwmraNlo15r6dIBXerVdy_NpJuwAKJMFdoc",
-        "y": "MV3C88MhhEMba6oyMBWuGeB3dKHP4YADJmGyJwwILsk"
-      }
-    }
-  }
-
-L'oggetto Status Assertion Error DEVE contenere i seguenti claim:
-
-
-.. _table_status_assertion_errors_obj:
-.. list-table::
-  :class: longtable
-  :widths: 20 60 20
-  :header-rows: 1
-
-  * - **Header**
-    - **Descrizione**
-    - **Riferimento**
-  * - **alg**
-    - Un identificatore di algoritmo di firma digitale come per il registro IANA "JSON Web Signature and Encryption Algorithms". DEVE essere uno degli algoritmi supportati nella Sezione :ref:`Cryptographic Algorithms <algorithms:Algoritmi Crittografici>` e NON DEVE essere impostato su ``none`` o su un identificatore di algoritmo simmetrico (MAC).
-    - Sezione 4.1.1 di [:rfc:`7516`].
-  * - **typ**
-    - DEVE corrispondere a `status-assertion+jwt`.
-    - Sezione 4.1.11 di [:rfc:`7516`].
-
-.. list-table::
-  :class: longtable
-  :widths: 20 60 20
-  :header-rows: 1
-
-  * - **Payload**
-    - **Descrizione**
-    - **Riferimento**
-  * - **iss**
-    - DEVE corrispondere all'identificatore del Fornitore di Attestati Elettronici.
-    - :rfc:`9126` e :rfc:`7519`.
-  * - **jti**
-    - Identificatore univoco per il JWT.
-    - :rfc:`9126` e :rfc:`7519`.
-  * - **credential_hash**
-    - Valore hash dell'Attestato Elettronico a cui è legato lo Status Assertion Error, DEVE corrispondere a quello contenuto nella Richiesta di Status Assertion.
-    - `OAUTH-STATUS-ASSERTION`_.
-  * - **credential_hash_alg**
-    - L'Algoritmo utilizzato per l'hashing dell'Attestato Elettronico a cui è legato lo Status Assertion Error, DEVE corrispondere a quello contenuto nella Richiesta di Status Assertion. Il valore DOVREBBE essere impostato su ``sha-256``.
-    - `OAUTH-STATUS-ASSERTION`_.
-  * - **error**
-    - Il codice di errore, come registrato nella tabella sottostante.
-    - Sezione 4.1.7 di :rfc:`7519`.
-  * - **error_description**
-    - Testo che fornisce ulteriori dettagli per chiarire la natura dell'errore riscontrato.
-    - Sezione 4.1.7 di :rfc:`7519`.
-
-Gli errori sono destinati a fornire informazioni aggiuntive sul fallimento in modo che l'Utente possa essere informato e intraprendere l'azione appropriata.
-Il claim `error` per l'oggetto Status Assertion Error DEVE essere impostato con uno dei valori definiti nella tabella sottostante, in aggiunta ai valori specificati in :rfc:`6749#section-5.2`:
-
-.. list-table::
-    :class: longtable
-    :widths: 20 80
-    :header-rows: 1
-
-    * - **Codice di Errore**
-      - **Descrizione**
-    * - ``invalid_request``
-      - La richiesta non è valida a causa della mancanza o dell'incorrettezza di uno o più parametri. (:rfc:`6749#section-5.2`).
-    * - ``invalid_request_signature``
-      - La validazione della firma della Status Assertion Request è fallita. Questo tipo di errore viene utilizzato quando la prova di possesso dell'Attestato Elettronico viene trovata non valida all'interno della Richiesta di Revocation Assertion. (Sezione 9.2 di `OAUTH-STATUS-ASSERTION`_).
-    * - ``credential_not_found``
-      - Il valore `credential_hash` fornito nella Status Assertion Request non corrisponde a nessun Attestato Elettronico attivo. (Sezione 9.2 di `OAUTH-STATUS-ASSERTION`_).
-    * - ``unsupported_hash_alg``
-      - L'algoritmo di hash impostato in `credential_hash_alg` non è supportato. (Sezione 9.2 di `OAUTH-STATUS-ASSERTION`_).
-
-Di seguito un esempio non normativo di un oggetto Status Assertion Error in formato JWT, con gli header e il payload rappresentati in JSON e senza applicare la firma.
-
-.. code::
-
-  {
-    "alg": "ES256",
-    "typ": "status-assertion-error+jwt",
-    "kid": "Issuer-JWK-KID"
-  }
-  .
-  {
-    "iss": "https://issuer.example.org",
-    "jti": "6f204f7e-e453-4dfd-814e-9d155319408c"
-    "credential_hash": $CREDENTIAL-HASH,
-    "credential_hash_alg": "sha-256",
-    "error": "unsupported_hash_alg",
-    "error_description": "The hash algorithm is not supported"
-  }
-
-Verifica dello Stato degli Attestati Elettronici da parte della Relying Party
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-Durante il flusso di presentazione, se una Status Assertion relativa a un Attestato Elettronico è disponibile, l'Istanza del Wallet DEVE includerla insieme al relativo Attestato Elettronico nell'Array JSON ``vp_token``.
-La Relying Party che vuole fare affidamento sul meccanismo fornito dalla Status Assertion DEVE estrarre la Status Assertion dall'Array ``vp_token`` e, in aggiunta ai controlli richiesti nel Flusso di Presentazione descritto nella Sezione :ref:`remote-flow:Flusso Remoto`, la Relying Party DEVE controllare la presenza del claim ``status.status_assertion`` nell'Attestato Elettronico. Se vero, i Relying Party DEVONO:
-
-  - validare la firma della Status Assertion;
-  - decodificare la Status Assertion fornita nella presentazione, abbinando il parametro dell'header JWS typ impostato su ``status-assertion+jwt`` e cercando il valore ``credential_hash`` che corrisponde all'hash della parte firmata dal Fornitore di Attestati Elettronici dell'Attestato Elettronico utilizzando l'algoritmo di hashing configurato in ``status.status_assertion.credential_hash_alg``;
-  - valutare la Status Assertion controllando i seguenti elementi:
-
-    - il valore del claim ``iss`` DEVE corrispondere a quello nell'Attestato Elettronico;
-    - il valore del claim ``iat`` DEVE essere uguale o successivo al valore del claim ``iat`` nell'Attestato Elettronico;
-    - il valore ``exp`` DEVE essere successivo all'ora corrente;
-    - il valore del claim ``nbf``, se presente, DEVE essere minore o uguale all'ora corrente;
-    - l'Oggetto JSON ``cnf`` DEVE corrispondere a quello incluso nel relativo Attestato Elettronico;
-    - i valori ``credential_status_type`` e ``credential_status_detail``.
-
-
-OAuth Status Lists
+Token Status Lists
 ------------------
 
 Questa sezione definisce una struttura di dati Status List, che viene utilizzata per trasmettere informazioni riguardanti gli stati individuali di più Attestati Elettronici. Gli Attestati Elettronici possono essere di qualsiasi formato, come SD-JWT o mdoc ISO/IEC 18013-5. Una Status List descrive lo stato degli Attestati Elettronici codificando la loro validità in un array di bit. A ciascun Attestato Elettronico viene assegnato un indice durante l'emissione; questo indice rappresenta la sua posizione all'interno dell'array di bit. Il valore del bit o dei bit in questo indice corrisponde allo stato degli Attestati Elettronici. Una Status List viene fornita all'interno di un Token di Status List firmato crittograficamente in formato JWT. Per i dettagli, vedere `TOKEN-STATUS-LIST`_.
@@ -783,13 +342,13 @@ Il Fornitore di Attestati Elettronici DEVE utilizzare i seguenti valori per i po
 
   - 0x00 - ``VALID`` - L'Attestato Elettronico è valido.
   - 0x01 - ``INVALID`` - L'Attestato Elettronico è revocato.
-  - 0x02 - ``SUSPENDED`` - L'Attestato Elettronico è temporaneamente non valido, sospeso. Questo stato è reversibile.
+  - 0x02 - ``SUSPENDED`` - L'Attestato Elettronico è temporaneamente non valido, sospeso. Questo stato è solitamente temporaneo.
   - 0x03 - ``UPDATE`` - I parametri dei metadata dell'Attestato Elettronico sono cambiati.
-  - 0x04 - ``ATTRIBUTE_UPDATE`` - Gli attributi dell'Attestato Elettronico sono cambiati.
+  - 0x0B - ``ATTRIBUTE_UPDATE`` - Gli attributi dell'Attestato Elettronico sono cambiati.
 
-Ad esempio, se sono possibili cinque stati per un certo Attestato Elettronico, allora k=4. Se il Fornitore di Attestati Elettronici crea un array per memorizzare gli stati di 6 Attestati Elettronici, i cui stati di validità sono 0, 0, 0, 4, 1, 2, rispettivamente; farà:
+Ad esempio, se sono possibili cinque stati per un certo Attestato Elettronico, allora k=4. Se il Fornitore di Attestati Elettronici crea un array per memorizzare gli stati di 6 Attestati Elettronici, i cui stati di validità sono 0, 0, 0, 3, 1, 2, rispettivamente; farà:
 
-  - creare l'array di bit ``[0, 0, 0, 0, 0, 0, 0, 0; 0, 1, 0, 0, 0, 0, 0, 0; 0, 0, 1, 0, 0, 0, 0, 1]`` che in notazione esadecimale genera l'array di byte ``[0x00, 0x40, 0x21]``.
+  - creare l'array di bit ``[0, 0, 0, 0, 0, 0, 0, 0; 0, 0, 1, 1, 0, 0, 0, 0; 0, 0, 1, 0, 0, 0, 0, 1]`` che in notazione esadecimale genera l'array di byte ``[0x00, 0x30, 0x21]``.
   - comprimere l'array utilizzando DEFLATE.
 
 .. note::
@@ -837,16 +396,16 @@ Il Token di Status List è disponibile all'Endpoint di Status List e contiene i 
     - **Descrizione**
     - **Riferimento**
   * - **sub**
-    - RICHIESTO. Il claim del soggetto DEVE specificare l'URI del Token di Status List. Il valore DEVE essere uguale a quello del claim uri contenuto nel claim status_list dell'Attestato Elettronico.
+    - RICHIESTO. Il claim del soggetto DEVE specificare l'URI del Token di Status List. Il valore DEVE essere uguale a quello del claim ``uri`` contenuto nel claim ``status_list`` dell'Attestato Elettronico.
     - [:rfc:`7519`]
   * - **iat**
     - RICHIESTO. Il claim issued at DEVE specificare l'ora in cui è stato emesso il Token di Status List.
     - [:rfc:`7519`]
   * - **exp**
-    - RICHIESTO. Il claim expiration time, se presente, DEVE specificare l'ora in cui il Token di Status List è considerato scaduto dal Fornitore di Attestati Elettronici.
+    - RACCOMANDATO. Il claim expiration time, se presente, DEVE specificare l'ora in cui il Token di Status List è considerato scaduto dal Fornitore di Attestati Elettronici.
     - [:rfc:`7519`]
   * - **ttl**
-    - OPZIONALE. Il claim time to live, se presente, DEVE specificare la quantità massima di tempo, in secondi, che il Token di Status List può essere memorizzato nella cache da un consumatore prima che una copia aggiornata DOVREBBE essere recuperata. Il valore del claim DEVE essere un numero positivo codificato in JSON come un numero. Questa quantità di tempo NON DOVREBBE superare il tempo di scadenza definito nel claim **exp**.
+    - RACCOMANDATO. Il claim time to live, se presente, DEVE specificare la quantità massima di tempo, in secondi, che il Token di Status List può essere memorizzato nella cache da un consumatore prima che una copia aggiornata DOVREBBE essere recuperata. Il valore del claim DEVE essere un numero positivo codificato in JSON come un numero. Questa quantità di tempo NON DOVREBBE superare il tempo di scadenza definito nel claim **exp**.
     - `TOKEN-STATUS-LIST`_
   * - **status_list**
     - RICHIESTO. Oggetto JSON che contiene una Status List.
@@ -878,14 +437,21 @@ Una Status List codificata in JSON ha la seguente struttura:
 
 Di seguito è riportato un esempio di Token di Status List prima di applicare la firma e la codifica:
 
-.. code::
+.. code-block:: json
 
   {
     "alg": "ES256",
     "kid": "$KID",
-    "typ": "statuslist+jwt"
+    "typ": "statuslist+jwt",
+    "x5c": [
+      "MIIDqjCCApKgAwIBAgIESLNEvDA ...",
+      "MIICwzCCAasCCQCKVy9eKjvi+jA ...",
+      "MIIDTDCCAjSgAwIBAgIJAPlnQYH..."
+    ]
   }
-  .
+
+.. code-block:: json
+
   {
     "exp": 2291720170,
     "iat": 1686920170,
@@ -928,7 +494,7 @@ Il valore del claim ``status_list`` DEVE essere a sua volta un Oggetto JSON con 
 Verifica degli Stati degli Attestati Elettronici
 """"""""""""""""""""""""""""""""""""""""""""""""
 
-Il recupero, l'elaborazione e la verifica di un Token di Status List possono essere effettuati sia dall'Istanza del Wallet che da una Relying Party. Di seguito viene descritto per la Relying Party, tuttavia, le stesse regole si applicherebbero anche all'Istanza del Wallet.
+Il recupero, l'elaborazione e la verifica di un Token di Status List possono essere effettuati sia dall'Istanza del Wallet che da una Relying Party. Di seguito viene descritto per la Wallet Instance, tuttavia, le stesse regole si applicherebbero anche al Relying Party.
 
 .. _fig_entity-relation-credential-revocation-SL:
 .. plantuml:: plantuml/status-list-flow.puml
@@ -953,7 +519,7 @@ La Relying Party DOVREBBE inviare l'Accept-Header ``application/statuslist+jwt``
 
 Di seguito è riportato un esempio non normativo di una richiesta per un Token di Status List:
 
-.. code::
+.. code-block:: http
 
   GET /statuslists HTTP/1.1
   Host: example-issuer.com
@@ -971,7 +537,7 @@ Se gli header HTTP relativi alla cache sono presenti nella risposta HTTP, le Rel
 
 Di seguito è riportato un esempio non normativo di una risposta per un Token di Status List con tipo ``application/statuslist+jwt``:
 
-.. code::
+.. code-block:: http
 
   HTTP/1.1 200 OK
   Content-Type: application/statuslist+jwt
@@ -984,16 +550,16 @@ Al ricevimento di un Attestato Elettronico, una Relying Party DEVE prima eseguir
 - Risolvere il Token di Status List dall'URI fornito.
 - Validare il Token di Status List:
 
-  - Validare la firma del Token di Status List seguendo le regole definite nella sezione 7.2 di [:rfc:`7519`]. Questo passaggio richiede la risoluzione di una chiave pubblica come descritto in :ref:`trust:L'Infrastruttura di Trust`.
+  - Validare la firma del Token di Status List seguendo le regole definite nella sezione 7.2 di [:rfc:`7519`]. Questo passaggio richiede la risoluzione di una chiave pubblica come descritto in :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
 
   - Controllare l'esistenza dei claim richiesti come definito nella Sezione :ref:`credential-revocation:Token di Status List`.
 
 - Tutti i claim esistenti nel Token di Status List DEVONO essere controllati secondo :ref:`credential-revocation:Token di Status List`.
 
-  - Il claim subject del Token di Status List DEVE essere uguale al claim `uri` nell'oggetto `status_list` dell'Attestato Elettronico.
-  - Se la Relying Party ha politiche personalizzate riguardanti la freschezza del Token di Status List, DOVREBBE controllare il claim `iat`.
+  - Il claim subject del Token di Status List DEVE essere uguale al claim ```uri``` nell'oggetto ``status_list`` dell'Attestato Elettronico.
+  - Se la Relying Party ha politiche personalizzate riguardanti la freschezza del Token di Status List, DOVREBBE controllare il claim ``iat``.
   - Se il tempo di scadenza è definito, DEVE essere controllato se il Token di Status List è scaduto.
-  - Se la Relying Party sta utilizzando un sistema per memorizzare nella cache il Token di Status List, DOVREBBE controllare il claim `ttl` del Token di Status List e recuperare una copia aggiornata se (tempo in cui lo stato è stato risolto + `ttl` < tempo corrente).
+  - Se la Relying Party sta utilizzando un sistema per memorizzare nella cache il Token di Status List, DOVREBBE controllare il claim ``ttl`` del Token di Status List e recuperare una copia aggiornata se (tempo in cui lo stato è stato risolto + `ttl` < tempo corrente).
 
 - Decomprimere la Status List con un decompressore compatibile con DEFLATE [:rfc:`1951`] e ZLIB [:rfc:`1950`].
 - Recuperare il valore di stato dell'indice specificato nell'Attestato Elettronico come descritto in :ref:`credential-revocation:Creazione delle Status List`. Fallire se l'indice fornito è fuori dai limiti della Status List.

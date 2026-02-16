@@ -1,176 +1,756 @@
 {
-  "version": "1.0",
-  "last_modified": "2025-04-10T12:00:00Z",
-  "id": "urn:taxonomy:claims",
-  "localization": {
-    "default_locale": "it",
-    "available_locales": ["en", "it", "fr", "de"],
-    "base_uri": "https://trust-registry.eid-wallet.example.it/.well-known/l10n/taxonomy/claims/",
-    "version": "1.0.0"
-  },
-  "name_l10n_id": "taxonomy.claims.name",
-  "description_l10n_id": "taxonomy.claims.description",
-  "claims": [
-            {
-              "id": "given_name",
-              "name_l10n_id": "claim.given_name.name",
-              "description_l10n_id": "claim.given_name.description",
-              "sensitivity": "RESTRICTED",
-              "type": "simple"
-            },
-            {
-              "id": "family_name",
-              "name_l10n_id": "claim.family_name.name",
-              "description_l10n_id": "claim.family_name.description",
-              "sensitivity": "RESTRICTED",
-              "type": "simple"
-            },
-            {
-              "id": "birthdate",
-              "name_l10n_id": "claim.birthdate.name",
-              "description_l10n_id": "claim.birthdate.description",
-              "sensitivity": "RESTRICTED",
-              "type": "simple"
-            },
-            {
-              "id": "place_of_birth",
-              "name_l10n_id": "claim.place_of_birth.name",
-              "description_l10n_id": "claim.place_of_birth.description",
-              "sensitivity": "RESTRICTED",
-              "type": "structured"
-            },
-            {
-              "id": "email",
-              "name_l10n_id": "claim.email.name",
-              "description_l10n_id": "claim.email.description",
-              "sensitivity": "RESTRICTED",
-              "type": "simple"
-            },
-            {
-              "id": "phone_number",
-              "name_l10n_id": "claim.phone_number.name",
-              "description_l10n_id": "claim.phone_number.description",
-              "sensitivity": "RESTRICTED",
-              "type": "simple"
-            },
-            {
-              "id": "address",
-              "name_l10n_id": "claim.address.name",
-              "description_l10n_id": "claim.address.description",
-              "sensitivity": "RESTRICTED",
-              "type": "structured"
-            },
-            {
-              "id": "tax_id",
-              "name_l10n_id": "claim.tax_id.name",
-              "description_l10n_id": "claim.tax_id.description",
-              "sensitivity": "RESTRICTED",
-              "type": "simple"
-            },
-            {
-              "id": "personal_administrative_number",
-              "name_l10n_id": "claim.personal_administrative_number.name",
-              "description_l10n_id": "claim.personal_administrative_number.description",
-              "sensitivity": "RESTRICTED",
-              "type": "simple"
-            },
-            {
-              "id": "portrait",
-              "name_l10n_id": "claim.portrait.name",
-              "description_l10n_id": "claim.portrait.description",
-              "sensitivity": "SENSITIVE",
-              "type": "simple"
-            },
-            {
-              "id": "document_type",
-              "name_l10n_id": "claim.document_type.name",
-              "description_l10n_id": "claim.document_type.description",
-              "sensitivity": "PUBLIC",
-              "type": "simple"
-            },
-            {
-              "id": "document_number",
-              "name_l10n_id": "claim.document_number.name",
-              "description_l10n_id": "claim.document_number.description",
-              "sensitivity": "RESTRICTED",
-              "type": "simple"
-            },
-            {
-              "id": "issuing_authority",
-              "name_l10n_id": "claim.issuing_authority.name",
-              "description_l10n_id": "claim.issuing_authority.description",
-              "sensitivity": "PUBLIC",
-              "type": "simple"
-            },
-            {
-              "id": "issuing_country",
-              "name_l10n_id": "claim.issuing_country.name",
-              "description_l10n_id": "claim.issuing_country.description",
-              "sensitivity": "PUBLIC",
-              "type": "simple"
-            },
-            {
-              "id": "issuing_jurisdiction",
-              "name_l10n_id": "claim.issuing_jurisdiction.name",
-              "description_l10n_id": "claim.issuing_jurisdiction.description",
-              "sensitivity": "PUBLIC",
-              "type": "simple"
-            },
-            {
-              "id": "driving_privileges",
-              "name_l10n_id": "claim.driving_privileges.name",
-              "description_l10n_id": "claim.driving_privileges.description",
-              "sensitivity": "PUBLIC",
-              "type": "structured"
-            },
-            {
-              "id": "vehicle_category_code",
-              "name_l10n_id": "claim.vehicle_category_code.name",
-              "description_l10n_id": "claim.vehicle_category_code.description",
-              "sensitivity": "PUBLIC",
-              "type": "simple"
-            },
-            {
-              "id": "income_indicator",
-              "name_l10n_id": "claim.income_indicator.name",
-              "description_l10n_id": "claim.income_indicator.description",
-              "sensitivity": "RESTRICTED",
-              "type": "simple"
-            },
-            {
-              "id": "income_certificate_type",
-              "name_l10n_id": "claim.income_certificate_type.name",
-              "description_l10n_id": "claim.income_certificate_type.description",
-              "sensitivity": "RESTRICTED",
-              "type": "simple"
-            },
-            {
-              "id": "reference_period",
-              "name_l10n_id": "claim.reference_period.name",
-              "description_l10n_id": "claim.reference_period.description",
-              "sensitivity": "RESTRICTED",
-              "type": "simple"
-            },
+    "version": "1.0",
+    "last_modified": "2025-04-10T12:00:00Z",
+    "id": "urn:taxonomy:claims",
+    "localization": {
+        "default_locale": "it",
+        "available_locales": ["en", "it", "fr", "de"],
+        "base_uri": "https://trust-registry.eid-wallet.example.it/.well-known/l10n/taxonomy/claims/",
+        "version": "1.0.0"
+    },
+    "name_l10n_id": "taxonomy.claims.name",
+    "description_l10n_id": "taxonomy.claims.description",
+    "domains": [
+        {
+            "id": "identity",
+            "name_l10n_id": "domain.identity.name",
+            "description_l10n_id": "domain.identity.description",
+            "classes": [
+                {
+                    "id": "identification_documents",
+                    "name_l10n_id": "domain.identity.class.identification_documents.name",
+                    "credential_types": [
                         {
-              "id": "issuance_date",
-              "name_l10n_id": "claim.issuance_date.name",
-              "description_l10n_id": "claim.issuance_date.description",
-              "sensitivity": "PUBLIC",
-              "type": "simple"
-            },
-            {
-              "id": "expiry_date",
-              "name_l10n_id": "claim.expiry_date.name",
-              "description_l10n_id": "claim.expiry_date.description",
-              "sensitivity": "PUBLIC",
-              "type": "simple"
-            },
-            {
-              "id": "validity_period",
-              "name_l10n_id": "claim.validity_period.name",
-              "description_l10n_id": "claim.validity_period.description",
-              "sensitivity": "PUBLIC",
-              "type": "simple"
-            }
-          ]
+                            "id": "digital_travel_credential",
+                            "name_l10n_id": "domain.identity.credential_type.digital_travel_credential.name"
+                        },
+                        {
+                            "id": "driving_license_italy",
+                            "name_l10n_id": "domain.identity.credential_type.driving_license_italy.name"
+                        },
+                        {
+                            "id": "tax_code_health_insurance_card",
+                            "name_l10n_id": "domain.identity.credential_type.tax_code_health_insurance_card.name"
+                        },
+                        {
+                            "id": "age_certification",
+                            "name_l10n_id": "domain.identity.credential_type.age_certification.name"
+                        }
+                    ]
+                },
+                {
+                    "id": "civil_registry_personal_status_certificates",
+                    "name_l10n_id": "domain.identity.class.civil_registry_personal_status_certificates.name",
+                    "credential_types": [
+                        {
+                            "id": "birth_certificate",
+                            "name_l10n_id": "domain.identity.credential_type.birth_certificate.name"
+                        },
+                        {
+                            "id": "residence_certificate",
+                            "name_l10n_id": "domain.identity.credential_type.residence_certificate.name"
+                        },
+                        {
+                            "id": "family_status_certificate",
+                            "name_l10n_id": "domain.identity.credential_type.family_status_certificate.name"
+                        },
+                        {
+                            "id": "marriage_certificate",
+                            "name_l10n_id": "domain.identity.credential_type.marriage_certificate.name"
+                        },
+                        {
+                            "id": "citizenship_certificate",
+                            "name_l10n_id": "domain.identity.credential_type.citizenship_certificate.name"
+                        }
+                    ]
+                },
+                {
+                    "id": "economic_legal_status",
+                    "name_l10n_id": "domain.identity.class.economic_legal_status.name",
+                    "credential_types": [
+                        {
+                            "id": "isee",
+                            "name_l10n_id": "domain.identity.credential_type.isee.name"
+                        },
+                        {
+                            "id": "residence_permit",
+                            "name_l10n_id": "domain.identity.credential_type.residence_permit.name"
+                        },
+                        {
+                            "id": "certificate_pending_charges",
+                            "name_l10n_id": "domain.identity.credential_type.certificate_pending_charges.name"
+                        },
+                        {
+                            "id": "criminal_record_certificate",
+                            "name_l10n_id": "domain.identity.credential_type.criminal_record_certificate.name"
+                        }
+                    ]
+                }
+            ],
+            "purposes": [
+                {
+                    "id": "identity_age_verification",
+                    "name_l10n_id": "domain.identity.purpose.identity_age_verification.name",
+                    "description_l10n_id": "domain.identity.purpose.identity_age_verification.description"
+                },
+                {
+                    "id": "civil_status_verification",
+                    "name_l10n_id": "domain.identity.purpose.civil_status_verification.name",
+                    "description_l10n_id": "domain.identity.purpose.civil_status_verification.description"
+                },
+                {
+                    "id": "access_services_minors",
+                    "name_l10n_id": "domain.identity.purpose.access_services_minors.name",
+                    "description_l10n_id": "domain.identity.purpose.access_services_minors.description"
+                },
+                {
+                    "id": "eligibility_services_benefits",
+                    "name_l10n_id": "domain.identity.purpose.eligibility_services_benefits.name",
+                    "description_l10n_id": "domain.identity.purpose.eligibility_services_benefits.description"
+                },
+                {
+                    "id": "right_residence",
+                    "name_l10n_id": "domain.identity.purpose.right_residence.name",
+                    "description_l10n_id": "domain.identity.purpose.right_residence.description"
+                }
+            ]
+        },
+        {
+            "id": "home_and_family",
+            "name_l10n_id": "domain.home_and_family.name",
+            "description_l10n_id": "domain.home_and_family.description",
+            "classes": [
+                {
+                    "id": "property_cadastral_documents",
+                    "name_l10n_id": "domain.home_and_family.class.property_cadastral_documents.name",
+                    "credential_types": [
+                        {
+                            "id": "deed_of_sale",
+                            "name_l10n_id": "domain.home_and_family.credential_type.deed_of_sale.name"
+                        },
+                        {
+                            "id": "cadastral_survey",
+                            "name_l10n_id": "domain.home_and_family.credential_type.cadastral_survey.name"
+                        },
+                        {
+                            "id": "cadastral_floor_plan",
+                            "name_l10n_id": "domain.home_and_family.credential_type.cadastral_floor_plan.name"
+                        },
+                        {
+                            "id": "cadastral_certificate",
+                            "name_l10n_id": "domain.home_and_family.credential_type.cadastral_certificate.name"
+                        }
+                    ]
+                },
+                {
+                    "id": "family_documents",
+                    "name_l10n_id": "domain.home_and_family.class.family_documents.name",
+                    "credential_types": [
+                        {
+                            "id": "children_tax_code_health_card",
+                            "name_l10n_id": "domain.home_and_family.credential_type.children_tax_code_health_card.name"
+                        },
+                        {
+                            "id": "birth_certificate",
+                            "name_l10n_id": "domain.home_and_family.credential_type.birth_certificate.name"
+                        },
+                        {
+                            "id": "family_status_certificate",
+                            "name_l10n_id": "domain.home_and_family.credential_type.family_status_certificate.name"
+                        }
+                    ]
+                },
+                {
+                    "id": "local_tax_documents",
+                    "name_l10n_id": "domain.home_and_family.class.local_tax_documents.name",
+                    "credential_types": [
+                        {
+                            "id": "imu_property_tax",
+                            "name_l10n_id": "domain.home_and_family.credential_type.imu_property_tax.name"
+                        },
+                        {
+                            "id": "tari_waste_tax",
+                            "name_l10n_id": "domain.home_and_family.credential_type.tari_waste_tax.name"
+                        }
+                    ]
+                }
+            ],
+            "purposes": [
+                {
+                    "id": "residence_household_verification",
+                    "name_l10n_id": "domain.home_and_family.purpose.residence_household_verification.name",
+                    "description_l10n_id": "domain.home_and_family.purpose.residence_household_verification.description"
+                },
+                {
+                    "id": "eligibility_housing_social_education_services",
+                    "name_l10n_id": "domain.home_and_family.purpose.eligibility_housing_social_education_services.name",
+                    "description_l10n_id": "domain.home_and_family.purpose.eligibility_housing_social_education_services.description"
+                },
+                {
+                    "id": "compliance_local_tax_obligations",
+                    "name_l10n_id": "domain.home_and_family.purpose.compliance_local_tax_obligations.name",
+                    "description_l10n_id": "domain.home_and_family.purpose.compliance_local_tax_obligations.description"
+                }
+            ]
+        },
+        {
+            "id": "education",
+            "name_l10n_id": "domain.education.name",
+            "description_l10n_id": "domain.education.description",
+            "classes": [
+                {
+                    "id": "educational_qualifications",
+                    "name_l10n_id": "domain.education.class.educational_qualifications.name",
+                    "credential_types": [
+                        {
+                            "id": "lower_secondary_school_diploma",
+                            "name_l10n_id": "domain.education.credential_type.lower_secondary_school_diploma.name"
+                        },
+                        {
+                            "id": "upper_secondary_school_diploma",
+                            "name_l10n_id": "domain.education.credential_type.upper_secondary_school_diploma.name"
+                        },
+                        {
+                            "id": "bachelor_degree",
+                            "name_l10n_id": "domain.education.credential_type.bachelor_degree.name"
+                        },
+                        {
+                            "id": "master_degree",
+                            "name_l10n_id": "domain.education.credential_type.master_degree.name"
+                        },
+                        {
+                            "id": "university_master",
+                            "name_l10n_id": "domain.education.credential_type.university_master.name"
+                        },
+                        {
+                            "id": "phd",
+                            "name_l10n_id": "domain.education.credential_type.phd.name"
+                        },
+                        {
+                            "id": "academic_qualifications_europass",
+                            "name_l10n_id": "domain.education.credential_type.academic_qualifications_europass.name"
+                        }
+                    ]
+                },
+                {
+                    "id": "professional_certifications",
+                    "name_l10n_id": "domain.education.class.professional_certifications.name",
+                    "credential_types": [
+                        {
+                            "id": "professional_licenses",
+                            "name_l10n_id": "domain.education.credential_type.professional_licenses.name"
+                        },
+                        {
+                            "id": "vocational_training_certificates",
+                            "name_l10n_id": "domain.education.credential_type.vocational_training_certificates.name"
+                        },
+                        {
+                            "id": "language_certifications",
+                            "name_l10n_id": "domain.education.credential_type.language_certifications.name"
+                        }
+                    ]
+                }
+            ],
+            "purposes": [
+                {
+                    "id": "qualification_degree_verification",
+                    "name_l10n_id": "domain.education.purpose.qualification_degree_verification.name",
+                    "description_l10n_id": "domain.education.purpose.qualification_degree_verification.description"
+                },
+                {
+                    "id": "skills_language_assessment",
+                    "name_l10n_id": "domain.education.purpose.skills_language_assessment.name",
+                    "description_l10n_id": "domain.education.purpose.skills_language_assessment.description"
+                },
+                {
+                    "id": "eligibility_education_pathways_licenses_opportunities",
+                    "name_l10n_id": "domain.education.purpose.eligibility_education_pathways_licenses_opportunities.name",
+                    "description_l10n_id": "domain.education.purpose.eligibility_education_pathways_licenses_opportunities.description"
+                }
+            ]
+        },
+        {
+            "id": "health",
+            "name_l10n_id": "domain.health.name",
+            "description_l10n_id": "domain.health.description",
+            "classes": [
+                {
+                    "id": "certifications_eligibility",
+                    "name_l10n_id": "domain.health.class.certifications_eligibility.name",
+                    "credential_types": [
+                        {
+                            "id": "health_insurance_card_team",
+                            "name_l10n_id": "domain.health.credential_type.health_insurance_card_team.name"
+                        },
+                        {
+                            "id": "european_health_card_ced",
+                            "name_l10n_id": "domain.health.credential_type.european_health_card_ced.name"
+                        },
+                        {
+                            "id": "disability_certificate",
+                            "name_l10n_id": "domain.health.credential_type.disability_certificate.name"
+                        },
+                        {
+                            "id": "vaccination_certificate",
+                            "name_l10n_id": "domain.health.credential_type.vaccination_certificate.name"
+                        },
+                        {
+                            "id": "sports_fitness_certificate",
+                            "name_l10n_id": "domain.health.credential_type.sports_fitness_certificate.name"
+                        },
+                        {
+                            "id": "work_fitness_certificate",
+                            "name_l10n_id": "domain.health.credential_type.work_fitness_certificate.name"
+                        }
+                    ]
+                },
+                {
+                    "id": "medical_records",
+                    "name_l10n_id": "domain.health.class.medical_records.name",
+                    "credential_types": [
+                        {
+                            "id": "medical_prescriptions",
+                            "name_l10n_id": "domain.health.credential_type.medical_prescriptions.name"
+                        },
+                        {
+                            "id": "digital_medical_report",
+                            "name_l10n_id": "domain.health.credential_type.digital_medical_report.name"
+                        }
+                    ]
+                }
+            ],
+            "purposes": [
+                {
+                    "id": "access_healthcare_services",
+                    "name_l10n_id": "domain.health.purpose.access_healthcare_services.name",
+                    "description_l10n_id": "domain.health.purpose.access_healthcare_services.description"
+                },
+                {
+                    "id": "identification_health_systems",
+                    "name_l10n_id": "domain.health.purpose.identification_health_systems.name",
+                    "description_l10n_id": "domain.health.purpose.identification_health_systems.description"
+                },
+                {
+                    "id": "verification_vaccination_fitness_status",
+                    "name_l10n_id": "domain.health.purpose.verification_vaccination_fitness_status.name",
+                    "description_l10n_id": "domain.health.purpose.verification_vaccination_fitness_status.description"
+                },
+                {
+                    "id": "access_sharing_medical_records",
+                    "name_l10n_id": "domain.health.purpose.access_sharing_medical_records.name",
+                    "description_l10n_id": "domain.health.purpose.access_sharing_medical_records.description"
+                }
+            ]
+        },
+        {
+            "id": "financial",
+            "name_l10n_id": "domain.financial.name",
+            "description_l10n_id": "domain.financial.description",
+            "classes": [
+                {
+                    "id": "payment_instruments",
+                    "name_l10n_id": "domain.financial.class.payment_instruments.name",
+                    "credential_types": [
+                        {
+                            "id": "digital_payment_card",
+                            "name_l10n_id": "domain.financial.credential_type.digital_payment_card.name"
+                        },
+                        {
+                            "id": "virtual_card",
+                            "name_l10n_id": "domain.financial.credential_type.virtual_card.name"
+                        },
+                        {
+                            "id": "bank_account_iban",
+                            "name_l10n_id": "domain.financial.credential_type.bank_account_iban.name"
+                        }
+                    ]
+                },
+                {
+                    "id": "payment_credentials_authorisations",
+                    "name_l10n_id": "domain.financial.class.payment_credentials_authorisations.name",
+                    "credential_types": [
+                        {
+                            "id": "strong_customer_authentication_sca",
+                            "name_l10n_id": "domain.financial.credential_type.strong_customer_authentication_sca.name"
+                        }
+                    ]
+                },
+                {
+                    "id": "public_payments_fees",
+                    "name_l10n_id": "domain.financial.class.public_payments_fees.name",
+                    "credential_types": [
+                        {
+                            "id": "pagopa_payment_receipt",
+                            "name_l10n_id": "domain.financial.credential_type.pagopa_payment_receipt.name"
+                        },
+                        {
+                            "id": "digital_stamp_duty",
+                            "name_l10n_id": "domain.financial.credential_type.digital_stamp_duty.name"
+                        },
+                        {
+                            "id": "tax_fee_payment_certificate",
+                            "name_l10n_id": "domain.financial.credential_type.tax_fee_payment_certificate.name"
+                        }
+                    ]
+                },
+                {
+                    "id": "recurring_payments_subscriptions",
+                    "name_l10n_id": "domain.financial.class.recurring_payments_subscriptions.name",
+                    "credential_types": [
+                        {
+                            "id": "subscription_mandate",
+                            "name_l10n_id": "domain.financial.credential_type.subscription_mandate.name"
+                        },
+                        {
+                            "id": "recurring_payment_credential",
+                            "name_l10n_id": "domain.financial.credential_type.recurring_payment_credential.name"
+                        }
+                    ]
+                }
+            ],
+            "purposes": [
+                {
+                    "id": "payment_authorization_execution",
+                    "name_l10n_id": "domain.financial.purpose.payment_authorization_execution.name",
+                    "description_l10n_id": "domain.financial.purpose.payment_authorization_execution.description"
+                },
+                {
+                    "id": "proof_payment",
+                    "name_l10n_id": "domain.financial.purpose.proof_payment.name",
+                    "description_l10n_id": "domain.financial.purpose.proof_payment.description"
+                },
+                {
+                    "id": "management_recurring_payments",
+                    "name_l10n_id": "domain.financial.purpose.management_recurring_payments.name",
+                    "description_l10n_id": "domain.financial.purpose.management_recurring_payments.description"
+                },
+                {
+                    "id": "compliance_security_regulatory_requirements",
+                    "name_l10n_id": "domain.financial.purpose.compliance_security_regulatory_requirements.name",
+                    "description_l10n_id": "domain.financial.purpose.compliance_security_regulatory_requirements.description"
+                }
+            ]
+        },
+        {
+            "id": "culture_and_leisure",
+            "name_l10n_id": "domain.culture_and_leisure.name",
+            "description_l10n_id": "domain.culture_and_leisure.description",
+            "classes": [
+                {
+                    "id": "cultural_cards_benefits",
+                    "name_l10n_id": "domain.culture_and_leisure.class.cultural_cards_benefits.name",
+                    "credential_types": [
+                        {
+                            "id": "culture_card",
+                            "name_l10n_id": "domain.culture_and_leisure.credential_type.culture_card.name"
+                        },
+                        {
+                            "id": "annual_museum_passes",
+                            "name_l10n_id": "domain.culture_and_leisure.credential_type.annual_museum_passes.name"
+                        },
+                        {
+                            "id": "cinema_card",
+                            "name_l10n_id": "domain.culture_and_leisure.credential_type.cinema_card.name"
+                        },
+                        {
+                            "id": "museum_card",
+                            "name_l10n_id": "domain.culture_and_leisure.credential_type.museum_card.name"
+                        }
+                    ]
+                },
+                {
+                    "id": "membership_loyalty_programs",
+                    "name_l10n_id": "domain.culture_and_leisure.class.membership_loyalty_programs.name",
+                    "credential_types": [
+                        {
+                            "id": "association_membership_cards",
+                            "name_l10n_id": "domain.culture_and_leisure.credential_type.association_membership_cards.name"
+                        },
+                        {
+                            "id": "library_card",
+                            "name_l10n_id": "domain.culture_and_leisure.credential_type.library_card.name"
+                        },
+                        {
+                            "id": "city_pass",
+                            "name_l10n_id": "domain.culture_and_leisure.credential_type.city_pass.name"
+                        }
+                    ]
+                }
+            ],
+            "purposes": [
+                {
+                    "id": "access_cultural_leisure_services",
+                    "name_l10n_id": "domain.culture_and_leisure.purpose.access_cultural_leisure_services.name",
+                    "description_l10n_id": "domain.culture_and_leisure.purpose.access_cultural_leisure_services.description"
+                },
+                {
+                    "id": "application_discounts_benefits_memberships",
+                    "name_l10n_id": "domain.culture_and_leisure.purpose.application_discounts_benefits_memberships.name",
+                    "description_l10n_id": "domain.culture_and_leisure.purpose.application_discounts_benefits_memberships.description"
+                }
+            ]
+        },
+        {
+            "id": "employment",
+            "name_l10n_id": "domain.employment.name",
+            "description_l10n_id": "domain.employment.description",
+            "classes": [
+                {
+                    "id": "employment_documents",
+                    "name_l10n_id": "domain.employment.class.employment_documents.name",
+                    "credential_types": [
+                        {
+                            "id": "digital_employment_contract",
+                            "name_l10n_id": "domain.employment.credential_type.digital_employment_contract.name"
+                        },
+                        {
+                            "id": "curriculum_vitae",
+                            "name_l10n_id": "domain.employment.credential_type.curriculum_vitae.name"
+                        },
+                        {
+                            "id": "residence_permit",
+                            "name_l10n_id": "domain.employment.credential_type.residence_permit.name"
+                        }
+                    ]
+                },
+                {
+                    "id": "employment_status",
+                    "name_l10n_id": "domain.employment.class.employment_status.name",
+                    "credential_types": [
+                        {
+                            "id": "employment_status_certificate",
+                            "name_l10n_id": "domain.employment.credential_type.employment_status_certificate.name"
+                        },
+                        {
+                            "id": "inps_contribution_record",
+                            "name_l10n_id": "domain.employment.credential_type.inps_contribution_record.name"
+                        }
+                    ]
+                }
+            ],
+            "purposes": [
+                {
+                    "id": "employment_status_verification",
+                    "name_l10n_id": "domain.employment.purpose.employment_status_verification.name",
+                    "description_l10n_id": "domain.employment.purpose.employment_status_verification.description"
+                },
+                {
+                    "id": "professional_profile_validation",
+                    "name_l10n_id": "domain.employment.purpose.professional_profile_validation.name",
+                    "description_l10n_id": "domain.employment.purpose.professional_profile_validation.description"
+                },
+                {
+                    "id": "verification_contribution_records",
+                    "name_l10n_id": "domain.employment.purpose.verification_contribution_records.name",
+                    "description_l10n_id": "domain.employment.purpose.verification_contribution_records.description"
+                },
+                {
+                    "id": "eligibility_employment_related_services_benefits",
+                    "name_l10n_id": "domain.employment.purpose.eligibility_employment_related_services_benefits.name",
+                    "description_l10n_id": "domain.employment.purpose.eligibility_employment_related_services_benefits.description"
+                }
+            ]
+        },
+        {
+            "id": "mobility_and_travel",
+            "name_l10n_id": "domain.mobility_and_travel.name",
+            "description_l10n_id": "domain.mobility_and_travel.description",
+            "classes": [
+                {
+                    "id": "licenses_authorizations",
+                    "name_l10n_id": "domain.mobility_and_travel.class.licenses_authorizations.name",
+                    "credential_types": [
+                        {
+                            "id": "mobile_driving_license",
+                            "name_l10n_id": "domain.mobility_and_travel.credential_type.mobile_driving_license.name"
+                        },
+                        {
+                            "id": "boating_license",
+                            "name_l10n_id": "domain.mobility_and_travel.credential_type.boating_license.name"
+                        }
+                    ]
+                },
+                {
+                    "id": "vehicle_documents",
+                    "name_l10n_id": "domain.mobility_and_travel.class.vehicle_documents.name",
+                    "credential_types": [
+                        {
+                            "id": "vehicle_registration_certificate",
+                            "name_l10n_id": "domain.mobility_and_travel.credential_type.vehicle_registration_certificate.name"
+                        },
+                        {
+                            "id": "digital_rca_insurance",
+                            "name_l10n_id": "domain.mobility_and_travel.credential_type.digital_rca_insurance.name"
+                        },
+                        {
+                            "id": "vehicle_inspection_certificate",
+                            "name_l10n_id": "domain.mobility_and_travel.credential_type.vehicle_inspection_certificate.name"
+                        },
+                        {
+                            "id": "green_card_international_insurance",
+                            "name_l10n_id": "domain.mobility_and_travel.credential_type.green_card_international_insurance.name"
+                        }
+                    ]
+                },
+                {
+                    "id": "subscriptions",
+                    "name_l10n_id": "domain.mobility_and_travel.class.subscriptions.name",
+                    "credential_types": [
+                        {
+                            "id": "public_transport_pass",
+                            "name_l10n_id": "domain.mobility_and_travel.credential_type.public_transport_pass.name"
+                        },
+                        {
+                            "id": "telepass_subscription",
+                            "name_l10n_id": "domain.mobility_and_travel.credential_type.telepass_subscription.name"
+                        }
+                    ]
+                },
+                {
+                    "id": "travel_documents",
+                    "name_l10n_id": "domain.mobility_and_travel.class.travel_documents.name",
+                    "credential_types": [
+                        {
+                            "id": "digital_travel_credential",
+                            "name_l10n_id": "domain.mobility_and_travel.credential_type.digital_travel_credential.name"
+                        },
+                        {
+                            "id": "travel_tickets",
+                            "name_l10n_id": "domain.mobility_and_travel.credential_type.travel_tickets.name"
+                        }
+                    ]
+                },
+                {
+                    "id": "travel_insurance",
+                    "name_l10n_id": "domain.mobility_and_travel.class.travel_insurance.name",
+                    "credential_types": [
+                        {
+                            "id": "travel_insurance_policy",
+                            "name_l10n_id": "domain.mobility_and_travel.credential_type.travel_insurance_policy.name"
+                        }
+                    ]
+                },
+                {
+                    "id": "bookings",
+                    "name_l10n_id": "domain.mobility_and_travel.class.bookings.name",
+                    "credential_types": [
+                        {
+                            "id": "hotel_reservation",
+                            "name_l10n_id": "domain.mobility_and_travel.credential_type.hotel_reservation.name"
+                        }
+                    ]
+                },
+                {
+                    "id": "discounts_benefits",
+                    "name_l10n_id": "domain.mobility_and_travel.class.discounts_benefits.name",
+                    "credential_types": [
+                        {
+                            "id": "discount_cards",
+                            "name_l10n_id": "domain.mobility_and_travel.credential_type.discount_cards.name"
+                        },
+                        {
+                            "id": "tourist_benefits",
+                            "name_l10n_id": "domain.mobility_and_travel.credential_type.tourist_benefits.name"
+                        }
+                    ]
+                }
+            ],
+            "purposes": [
+                {
+                    "id": "driving_vehicle_verification",
+                    "name_l10n_id": "domain.mobility_and_travel.purpose.driving_vehicle_verification.name",
+                    "description_l10n_id": "domain.mobility_and_travel.purpose.driving_vehicle_verification.description"
+                },
+                {
+                    "id": "right_travel_circulate",
+                    "name_l10n_id": "domain.mobility_and_travel.purpose.right_travel_circulate.name",
+                    "description_l10n_id": "domain.mobility_and_travel.purpose.right_travel_circulate.description"
+                },
+                {
+                    "id": "access_transport_accommodation_services",
+                    "name_l10n_id": "domain.mobility_and_travel.purpose.access_transport_accommodation_services.name",
+                    "description_l10n_id": "domain.mobility_and_travel.purpose.access_transport_accommodation_services.description"
+                },
+                {
+                    "id": "verification_travel_insurance_discounts",
+                    "name_l10n_id": "domain.mobility_and_travel.purpose.verification_travel_insurance_discounts.name",
+                    "description_l10n_id": "domain.mobility_and_travel.purpose.verification_travel_insurance_discounts.description"
+                }
+            ]
+        },
+        {
+            "id": "bonuses",
+            "name_l10n_id": "domain.bonuses.name",
+            "description_l10n_id": "domain.bonuses.description",
+            "classes": [
+                {
+                    "id": "economic_benefits_allowances",
+                    "name_l10n_id": "domain.bonuses.class.economic_benefits_allowances.name",
+                    "credential_types": [
+                        {
+                            "id": "family_allowance_credential",
+                            "name_l10n_id": "domain.bonuses.credential_type.family_allowance_credential.name"
+                        },
+                        {
+                            "id": "unemployment_benefit_credential",
+                            "name_l10n_id": "domain.bonuses.credential_type.unemployment_benefit_credential.name"
+                        }
+                    ]
+                },
+                {
+                    "id": "incentives_vouchers",
+                    "name_l10n_id": "domain.bonuses.class.incentives_vouchers.name",
+                    "credential_types": [
+                        {
+                            "id": "digital_voucher",
+                            "name_l10n_id": "domain.bonuses.credential_type.digital_voucher.name"
+                        },
+                        {
+                            "id": "purchase_incentive_credential",
+                            "name_l10n_id": "domain.bonuses.credential_type.purchase_incentive_credential.name"
+                        },
+                        {
+                            "id": "cashback_eligibility_credential",
+                            "name_l10n_id": "domain.bonuses.credential_type.cashback_eligibility_credential.name"
+                        }
+                    ]
+                },
+                {
+                    "id": "health_wellbeing_bonuses",
+                    "name_l10n_id": "domain.bonuses.class.health_wellbeing_bonuses.name",
+                    "credential_types": [
+                        {
+                            "id": "healthcare_bonus_credential",
+                            "name_l10n_id": "domain.bonuses.credential_type.healthcare_bonus_credential.name"
+                        },
+                        {
+                            "id": "mental_health_support_voucher",
+                            "name_l10n_id": "domain.bonuses.credential_type.mental_health_support_voucher.name"
+                        },
+                        {
+                            "id": "sports_physical_activity_bonus",
+                            "name_l10n_id": "domain.bonuses.credential_type.sports_physical_activity_bonus.name"
+                        }
+                    ]
+                }
+            ],
+            "purposes": [
+                {
+                    "id": "eligibility_verification",
+                    "name_l10n_id": "domain.bonuses.purpose.eligibility_verification.name",
+                    "description_l10n_id": "domain.bonuses.purpose.eligibility_verification.description"
+                },
+                {
+                    "id": "allocation_use_benefits",
+                    "name_l10n_id": "domain.bonuses.purpose.allocation_use_benefits.name",
+                    "description_l10n_id": "domain.bonuses.purpose.allocation_use_benefits.description"
+                },
+                {
+                    "id": "application_usage_conditions_limits",
+                    "name_l10n_id": "domain.bonuses.purpose.application_usage_conditions_limits.name",
+                    "description_l10n_id": "domain.bonuses.purpose.application_usage_conditions_limits.description"
+                }
+            ]
+        }
+    ]
 }

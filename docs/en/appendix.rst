@@ -22,5 +22,4 @@ Appendix
     :maxdepth: 3
 
     appendix-oas-pdnd-issuer.rst 
-    appendix-oas-pdnd-as.rst 
     appendix-oas-pdnd-wp.rst 

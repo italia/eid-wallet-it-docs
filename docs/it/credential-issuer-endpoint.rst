@@ -9,10 +9,56 @@
 Endpoint del Credential Issuer
 -------------------------------
 
-Endpoint di Federazione
+Endpoint Metadata
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-I Credential Issuer DEVONO fornire una Entity Configuration attraverso l'endpoint ``/.well-known/openid-federation``, secondo la Sezione :ref:`trust:Entity Configuration`. I dettagli tecnici sono forniti nella Sezione :ref:`credential-issuer-entity-configuration:Entity Configuration del Fornitore di Attestati Elettronici`.
+I Credential Issuer DEVONO fornire una Entity Configuration attraverso l'endpoint ``/.well-known/openid-federation``, secondo la Sezione :ref:`trust-infrastructure:Entity Configuration`. I dettagli tecnici sono forniti nella Sezione :ref:`credential-issuer-entity-configuration:Entity Configuration del Fornitore di Attestati Elettronici`.
+
+Alternativamente i metadati del Credential Issuer possono essere recuperati utilizzando l’identificativo del Credential Issuer. Il documento di metadata DEVE essere reso disponibile in formato JSON e JWT presso l’endpoint ``/.well-known/openid-credential-issuer`` come definito nella Sezione 12.2.2 di `OpenID4VCI`_.
+
+L’header ``Accept-Language`` nella richiesta HTTP GET può essere utilizzato per indicare la/le lingua/e preferite.
+In tal caso, il Credential Issuer può inviare un sottoinsieme dei metadati contenente dati di visualizzazione internazionalizzati per una o tutte le lingue richieste, e può indicare le lingue restituite utilizzando l’header HTTP ``Content-Language``.
+
+Di seguito è riportato un esempio non normativo.
+
+.. code-block:: http
+
+    GET /.well-known/openid-credential-issuer HTTP/1.1
+    Host: issuer.example.com
+    Accept: application/json
+    Accept-Language: it-IT, it;q=0.9
+
+.. code-block:: http
+  
+    GET /.well-known/openid-credential-issuer HTTP/1.1
+    Host: issuer.example.com
+    Accept: application/jwt
+    Accept-Language: it-IT, it;q=0.9
+
+Il Credential Issuer DEVE rispondere con il Status Code HTTP 200 e restituire i metadati del Credential Issuer contenenti:
+
+- i parametri definiti nella sezione :ref:`credential-issuer-metadata:Metadata per openid_credential_issuer` all’interno di un documento JSON non firmato utilizzando il media type *application/json*.
+
+          oppure
+
+- i parametri di header e payload definiti nella sezione 12.2.3 di `OpenID4VCI`_ oltre a quelli definiti nella sezione  :ref:`credential-issuer-metadata:Metadata per openid_credential_issuer` all'interno di un JSON Web Token firmato utilizzando il media type *application/jwt*.
+
+Di seguito è riportato un esempio non normativo dei metadati del Credential Issuer firmati:
+
+.. literalinclude:: ../../examples/credential-issuer-metadata.txt
+  :language: text
+
+Gli elementi contenuti in ``authorization_servers`` nei metadati del Credential Issuer possono essere utilizzati per ottenere i metadati dell'OAuth Authorization Server tramite l’endpoint ``/.well-known/oauth-authorization-server``, come definito nella Sezione 3 del :rfc:`8414`.
+Nel caso in cui il parametro ``authorization_servers`` venga omesso, è possibile utilizzare l’identificativo del Credential Issuer per recuperare i metadati del Authorization Server.
+
+Di seguito è riportato un esempio non normativo.
+
+.. code-block:: http
+
+    GET /.well-known/oauth-authorization-server HTTP/1.1
+    Host: oauth-authorization-server.example.com
+
+OAuth Authorization Server DEVE rispondere con Status Code HTTP 200 e restituire i metadati dell’OAuth Authorization Server, contenenti i parametri definiti nella sezione :ref:`credential-issuer-metadata:Metadata per oauth_authorization_server`, all’interno di un documento JSON utilizzando il media type *application/json*.
 
 Endpoint di Rilascio degli Attestati Elettronici
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

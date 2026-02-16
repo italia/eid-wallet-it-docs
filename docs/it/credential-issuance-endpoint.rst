@@ -1,54 +1,17 @@
 .. include:: ../common/common_definitions.rst
 
-Credential Offer Endpoint 
-"""""""""""""""""""""""""""""""""""""
-
-Il Credential Offer Endpoint di un Wallet è utilizzato dal Credential Issuer per interagire con l'Utente al fine di avviare un'Emissione di un Attestato Elettronico. DEVE essere utilizzato il *custom URL* ``openid-credential-offer://``.
-
-Credential Offer
-......................
-
-La Credential Offer effettuata dal Credential Issuer consiste in un singolo parametro da inviare in query URI ``credential_offer``. L'URL rappresentativa della Credential Offer PUÒ essere inclusa in un QR Code o in una pagina html con un pulsante href e DEVE contenere i seguenti parametri obbligatori:
-
-.. _table_credential_offer_claim:
-.. list-table::
-  :class: longtable
-  :widths: 20 60 20
-  :header-rows: 1
-
-  * - **Claim**
-    - **Descrizione**
-    - **Riferimento**
-  * - **credential_issuer**
-    - DEVE essere valorizzato con una URL HTTPS che identifica in modo univoco il Credential Issuer. Il Wallet utilizza il valore di questo parametro per ottenere i Metadata del Credential Issuer.
-    - Sezione 4.1.1 di [`OpenID4VCI`_].
-  * - **credential_configuration_ids**
-    - Array di Stringhe, ciascuna delle quali specifica un identificativo univoco dell'Attestato Elettronico descritta nel claim ``credential_configurations_supported`` presente nei Metadata del Credential Issuer (:ref:`WP_050b <wallet-credential-issuance-testcases>`).
-    - Sezione 4.1.1 di [`OpenID4VCI`_].
-  * - **grants**
-    - DEVE contenere un oggetto ``authorization_code`` con i seguenti parametri:
-
-        - **issuer_state**: OBBLIGATORIO. Stringa opaca creata dal Credential Issuer utilizzata per correlare la successiva Authorization Request con il Credential Issuer. Il Wallet DEVE includerla nella successiva Authorization Request.
-        - **authorization_server**: OBBLIGATORIO se il Credential Issuer utilizza più di un authorization server nella sua Soluzione di Fornitore di Attestati Elettronici. Stringa che identifica l'Authorization Server da utilizzare. Il valore DEVE corrispondere a uno dei valori censiti nell'array ``authorization_servers`` dei Metadata del Credential Issuer. NON DEVE essere utilizzato se ``authorization_servers`` è assente o non ha voci.
-    - Sezione 4.1.1 di [`OpenID4VCI`_].
-
-
-Credential Offer Response
-...................................
-Non è prevista alcuna response da parte del Wallet.
-
-
 Pushed Authorization Request Endpoint
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 Pushed Authorization Request (PAR) Request
 ............................................
 
+.. _table_http_request_claim:
+
 La request all'authorization endpoint del Credential Issuer DEVE contenere sia i parametri di header HTTP che i parametri HTTP POST.
 
 Il metodo HTTP POST DEVE avere i parametri nel body del messaggio codificati in formato ``application/x-www-form-urlencoded``.
 
-.. _table_http_request_claim:
 .. list-table:: Parametri della PAR request http
     :class: longtable
     :widths: 20 60 20
@@ -67,7 +30,6 @@ Il metodo HTTP POST DEVE avere i parametri nel body del messaggio codificati in 
 Il Pushed Authorization Endpoint è protetto con *OAuth 2.0 Attestation-based Client Authentication* [`OAUTH-ATTESTATION-CLIENT-AUTH`_], pertanto
 la richiesta all'authorization endpoint del Credential Issuer DEVE utilizzare i seguenti parametri di header HTTP:
 
-.. _table_http_request_headers_claim:
 .. list-table:: parametri di header della request http
     :class: longtable
     :widths: 20 60 20
@@ -79,6 +41,11 @@ la richiesta all'authorization endpoint del Credential Issuer DEVE utilizzare i 
     * - **OAuth-Client-Attestation-PoP**
       - DEVE contenere la Prova di Possesso del JWT dell'Attestato di Unità di Wallet.
       - `OAUTH-ATTESTATION-CLIENT-AUTH`_.
+
+
+.. note::
+  I client DOVREBBERO selezionare gli algoritmi da utilizzare per la Wallet App Attestation e la relativa prova di possesso sulla base dei campi di metadata dell'Authorization Server
+  ``client_attestation_signing_alg_values_supported`` e ``client_attestation_pop_signing_alg_values_supported`` documentati in :ref:`credential-issuer-metadata:Metadata per oauth_authorization_server`.
 
 
 Il JWT *Request Object* ha i seguenti parametri di header JOSE:
@@ -129,9 +96,6 @@ Il payload del JWT ``request`` contenuto nel messaggio HTTP POST contiene i segu
     * - **response_type**
       - DEVE essere valorizzato con ``code``.
       - :rfc:`6749`
-    * - **response_mode**
-      - DEVE essere una stringa che indica il "*response_mode*", come specificato in [`OAUTH-MULT-RESP-TYPE`_]. DEVE essere valorizzato con uno dei valori supportati (*response_modes_supported*) forniti nei Metadata del Credential Issuer. Tale claim informa il Credential Issuer sul meccanismo da utilizzare per la restituizione dei parametri da parte dell' Authorization Endpoint. In caso di *HTTP 302 Redirect Response* il valore DEVE essere *query*. In questa modalità, i parametri dell'Authorization Response sono codificati nella stringa di query aggiunta al ``redirect_uri`` durante il redirect all'Istanza del Wallet.
-      - Vedi [`OAUTH-MULT-RESP-TYPE`_].
     * - **client_id**
       - DEVE essere valorizzato come indicato nella :ref:`Tabella dei parametri HTTP <table_http_request_claim>`.
       - Vedi :ref:`Tabella dei parametri HTTP <table_http_request_claim>`.
@@ -184,11 +148,14 @@ Il JOSE Header della prova di possesso dell'Attestato di Unità di Wallet, conte
     * - **JOSE Header**
       - **Descrizione**
       - **Riferimento**
+    * - **typ**
+      - DEVE essere valorizzato con ``oauth-client-attestation-pop+jwt``
+      - `OAUTH-ATTESTATION-CLIENT-AUTH`_.
     * - **alg**
       - Identificativo dell'algoritmo di firma digitale come definito nel registro IANA "JSON Web Signature and Encryption Algorithms". DEVE essere uno degli algoritmi supportati elencati nella Sezione :ref:`algorithms:Algoritmi Crittografici` e NON DEVE essere valorizzato con ``none`` o con qualsiasi identificativo di algoritmo simmetrico (MAC).
       - :rfc:`7516#section-4.1.1`.
 
-Il body del JWT relativo alla prova di possesso dell'Attestato di Unità di Wallet, contenuto negli header della HTTP Request, DEVE contenere:
+Il body del JWT relativo alla prova di possesso dell'Attestato di Unità di Wallet, contenuto negli header della HTTP Request, contiene:
 
 .. list-table::
     :class: longtable
@@ -199,20 +166,20 @@ Il body del JWT relativo alla prova di possesso dell'Attestato di Unità di Wall
       - **Descrizione**
       - **Riferimento**
     * - **iss**
-      - *thumbprint* del JWK contenuto nel parametro ``cnf``.
+      - OBBLIGATORIO. *thumbprint* del JWK contenuto nel parametro ``cnf``.
       - :rfc:`9126` e :rfc:`7519`.
     * - **aud**
-      - DEVE essere valorizzato con l'identificativo del Credential Issuer.
-      - :rfc:`9126` e :rfc:`7519`.
-    * - **exp**
-      - Timestamp UNIX con data e orario di scadenza del JWT.
+      - OBBLIGATORIO. DEVE essere valorizzato con l'identificativo del Credential Issuer.
       - :rfc:`9126` e :rfc:`7519`.
     * - **iat**
-      - Timestamp UNIX con data e orario di emissione del JWT.
+      - OBBLIGATORIO. Timestamp UNIX con data e orario di emissione del JWT.
       - :rfc:`9126` e :rfc:`7519`.
     * - **jti**
-      - Identificativo univoco per il JWT *DPoP proof*. Il valore DOVREBBE essere impostato utilizzando un valore *UUID v4* secondo [:rfc:`4122`].
+      - OBBLIGATORIO. Identificativo univoco per il JWT *DPoP proof*. Il valore DOVREBBE essere impostato utilizzando un valore *UUID v4* secondo [:rfc:`4122`].
       - [:rfc:`7519`. Sezione 4.1.7].
+    * - **nbf**
+      - OPZIONALE. Timestamp UNIX con data e orario prima del quale il JWT NON DEVE essere accettato.
+      - :rfc:`9126` e :rfc:`7519`.
 
 Pushed Authorization Request (PAR) Response
 ......................................................
@@ -242,7 +209,7 @@ Se si verificano errori durante la PAR Request, l'Authorization Server DEVE rest
 
 Di seguito è riportato un esempio non normativo di una response di errore.
 
-.. code:: http
+.. code-block:: http
 
   HTTP/1.1 400 Bad Request
   Content-Type: application/json
@@ -266,6 +233,9 @@ Nella seguente tabella sono elencati gli *Status Code HTTP* e i relativi codici 
     * - *400 Bad Request* [OBBLIGATORIO]
       - ``invalid_scope``
       - Il Credential Issuer non può soddisfare la richiesta perché lo scope richiesto non è valido oppure è sconosciuto. (:rfc:`6749#section-5.2`).
+    * - *400 Bad Request* [REQUIRED]
+      - ``use_fresh_attestation``
+      - Il Wallet App Attestation JWT non è abbastanza recente per essere accettato dal server. Sezione 6.2 di `OAUTH-ATTESTATION-CLIENT-AUTH`_.
     * - *401 Unauthorized* [OBBLIGATORIO]
       - ``invalid_client``
       - Il Credential Issuer non può soddisfare la richiesta a causa del fallimento della *Client Authentication* (ad esempio in caso di client sconosciuto, nessun parametro relativo alla Client Authentication presente oppure se il metodo di autenticazione non è supportato). (:rfc:`6749#section-5.2`).
@@ -354,7 +324,7 @@ Se si verifica qualsiasi altro errore, l'Authorization Server DEVE reindirizzare
 
 Di seguito è riportato un esempio non normativo di una response di errore.
 
-.. code:: http
+.. code-block:: http
 
   HTTP/1.1 302 Found
   Location: https://client.example.com/cb?
@@ -538,7 +508,7 @@ Se si verificano errori durante la convalida della Token Request, l'Authorizatio
 
 Di seguito è riportato un esempio non normativo di una response di errore.
 
-.. code:: http
+.. code-block:: http
 
   HTTP/1.1 401 Unauthorized
   Content-Type: application/json;charset=UTF-8
@@ -570,6 +540,9 @@ Nella seguente tabella sono elencati i *status code HTTP* e i relativi codici di
     * - *400 Bad Request* [OBBLIGATORIO]
       - ``invalid_dpop_proof``
       - Il Credential Issuer non può soddisfare la richiesta a causa di un *DPoP proof* non valido. Sezione 5 del [:rfc:`9449`].
+    * - *400 Bad Request* [REQUIRED]
+      - ``use_fresh_attestation``
+      - Il Wallet App Attestation JWT non è abbastanza recente per essere accettato dal server. Sezione 6.2 di `OAUTH-ATTESTATION-CLIENT-AUTH`_.
     * - *401 Unauthorized* [OBBLIGATORIO]
       - ``invalid_client``
       - Il Credential Issuer non può soddisfare la richiesta a causa del fallimento della *Client Authentication* (ad esempio in caso di client sconosciuto, nessun parametro relativo alla Client Authentication presente oppure se il metodo di autenticazione non è supportato). (:rfc:`6749#section-5.2`).
@@ -858,7 +831,7 @@ Se si verifica qualsiasi altro errore, il Credential Issuer DEVE restituire una 
 
 Di seguito è riportato un esempio non normativo di una response di errore.
 
-.. code:: http
+.. code-block:: http
 
   HTTP/1.1 400 Bad Request
   Content-Type: application/json
@@ -961,7 +934,7 @@ Il seguente parametro viene utilizzato nella Deferred Credential Request:
 Il Credential Issuer DEVE invalidare il ``transaction_id`` dopo che l'Attestato Elettronico per cui era destinato è stata ottenuto dall'Istanza del Wallet.
 Di seguito è riportato un esempio non normativo di una Deferred Credential Request:
 
-.. code::
+.. code-block::
 
   POST /credential HTTP/1.1
   Host: eaa-provider.example.org
@@ -1047,7 +1020,7 @@ Se si verifica qualsiasi altro errore, il Credential Issuer DEVE restituire una 
 
 Di seguito è riportato un esempio non normativo di una response di errore.
 
-.. code:: http
+.. code-block:: http
 
   HTTP/1.1 400 Bad Request
   Content-Type: application/json
@@ -1082,8 +1055,6 @@ Nella seguente tabella sono elencati i *Status Code HTTP* e i relativi codici di
       - `-`
       - Il Credential Issuer non può soddisfare la richiesta entro l'intervallo di tempo definito.
 
-
-.. _it-notification-data-correction:
 
 Correzione dati usando credential_failure
 .........................................

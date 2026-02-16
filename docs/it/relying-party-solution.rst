@@ -10,7 +10,7 @@ Per implementare e fornire Soluzioni Tecniche, una Relying Party potrebbe avvale
 
 Una Relying Party fornisce almeno uno dei seguenti componenti:
 
-- **Backend della Relying Party**: Gestisce la registrazione delle Istanze di Relying Party e la relativa gestione dei Certificati. Ottiene il Certificato X.509 secondo l':ref:`trust:L'Infrastruttura di Trust`. DOVREBBE inoltre fornire un Certificato X.509 alle proprie App di Verifica. Può anche implementare servizi web aggiuntivi e logica di business per i propri scopi e casi d'uso.
+- **Backend della Relying Party**: Gestisce la registrazione delle Istanze di Relying Party e la relativa gestione dei Certificati. Ottiene il Certificato X.509 secondo l':ref:`trust-infrastructure:L'Infrastruttura di Trust`. DOVREBBE inoltre fornire un Certificato X.509 alle proprie App di Verifica. Può anche implementare servizi web aggiuntivi e logica di business per i propri scopi e casi d'uso.
 - **App di Verifica**: È un frontend fornito agli Utenti per accedere ai Servizi della Relying Party, e può essere fornito come:
 
   - **Client Web**.

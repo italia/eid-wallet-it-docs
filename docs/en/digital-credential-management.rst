@@ -6,8 +6,9 @@ Digital Credential Management
 
 .. toctree::
   :caption: Digital Credential Management Table of Contents
-  :maxdepth: 3
+  :maxdepth: 1
 
   credential-data-model.rst
+  credential-data-model-pid.rst
   credential-revocation.rst
  

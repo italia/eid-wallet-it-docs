@@ -5,13 +5,13 @@
 La Relying Party DEVE esporre una serie di endpoint per supportare i flussi di presentazione remoti come definiti in OpenID4VP 1.0. Questi endpoint abilitano la verifica sicura delle credenziali, l'instaurazione della fiducia e l'autenticazione dell'utente per modelli di interazione cross-device e same-device.
 
 .. note::
-  I test relativi agli endpoint per flussi remoti della Relying Party sono definiti nella matrice di test per presentazione remota (:ref:`test-plans-remote-presentation:Matrice di Test per la Presentazione di Credenziali Remota`).
+  I test relativi agli endpoint per flussi remoti della Relying Party sono definiti nella matrice di test per presentazione remota (:ref:`test-plans-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto`).
 
 
 Endpoint di Federazione
 """""""""""""""""""""""
 
-La Relying Party DEVE fornire la propria Entity Configuration attraverso l'endpoint ``/.well-known/openid-federation``, secondo la Sezione :ref:`trust:Entity Configuration`. Questo endpoint abilita l'instaurazione della fiducia e la scoperta delle capacità della Relying Party.
+La Relying Party DEVE fornire la propria Entity Configuration attraverso l'endpoint ``/.well-known/openid-federation``, secondo la Sezione :ref:`trust-infrastructure:Entity Configuration`. Questo endpoint abilita l'instaurazione della fiducia e la scoperta delle capacità della Relying Party.
 
 I dettagli tecnici sono forniti nella Sezione :ref:`relying-party-entity-configuration:Entity Configuration Relying Party`.
 
@@ -26,7 +26,7 @@ Endpoint Request URI
 
 L'Endpoint Request URI è dove la Relying Party fornisce il Request Object firmato all'Istanza del Wallet. Questo endpoint supporta sia i metodi GET che POST come definito nella specifica OpenID4VP 1.0.
 
-Per i requisiti di implementazione dettagliati, vedere :ref:`remote-flow:Endpoint URI Request` e :ref:`remote-flow:Richiesta all'Endpoint URI Request`.
+Per i requisiti di implementazione dettagliati, vedere :ref:`remote-flow-endpoint-uri-request` e :ref:`remote-flow:Richiesta all'Endpoint URI Request`.
 
 
 Endpoint Response URI
@@ -42,7 +42,7 @@ Endpoint Status (Opzionale)
 
 L'Endpoint Status è un endpoint opzionale che consente all'user-agent di monitorare il progresso del flusso di presentazione. Questo endpoint è particolarmente utile per i flussi Same Device dove l'user-agent deve sapere quando l'Istanza del Wallet ha completato la presentazione.
 
-Per i requisiti di implementazione dettagliati, vedere :ref:`remote-flow:Status Endpoint` e :ref:`remote-flow:Errori Status Endpoint`.
+Per i requisiti di implementazione dettagliati, vedere :ref:`remote-flow:Status Endpoint` e :ref:`remote-flow-errori-status-endpoint`.
 
 
 Endpoint di Gestione Dati Utente
@@ -127,7 +127,7 @@ Tutti gli endpoint della Relying Party DEVONO implementare appropriate misure di
 - **Rate Limiting**: Gli endpoint DOVREBBERO implementare rate limiting per prevenire abusi
 - **Audit Logging**: Tutte le interazioni degli endpoint DOVREBBERO essere registrate per il monitoraggio della sicurezza
 
-Per i requisiti di sicurezza dettagliati, vedere :ref:`remote-flow:Considerazioni di Sicurezza` e i casi di test pertinenti in :ref:`test-plans-remote-presentation:Matrice di Test per la Presentazione di Credenziali Remota`.
+Per i requisiti di sicurezza dettagliati, vedere :ref:`relying-party-endpoints:Considerazioni di Sicurezza` e i casi di test pertinenti in :ref:`test-plans-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto`.
 
 
 Note di Implementazione

@@ -3,7 +3,7 @@ Operazioni di Gestione dei Certificati X.509
 
 Questa sezione definisce le procedure operative per la gestione dei Certificati X.509 all'interno della federazione IT-Wallet, coprendo l'analisi delle catene di Certificati X.509, le procedure di validazione e la verifica di revoca. Queste procedure completano i processi di onboarding della federazione e supportano la gestione continua del ciclo di vita dei Certificati X.509 per tutti i partecipanti.
 
-Per l'infrastruttura PKI X.509 fondamentale e le procedure di emissione dei certificati, vedere :ref:`trust-infrastructure:PKI X.509`.
+Per l'infrastruttura PKI X.509 fondamentale e le procedure di emissione dei certificati, vedere :ref:`trust-infrastructure-pki-x509`.
 
 Architettura PKI della Federazione
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -82,7 +82,7 @@ La seguente procedura consente alle entità federate di:
 	- Scaricare le liste di revoca correnti.
 	- Analizzare il contenuto CRL e i periodi di validità.
 
-.. includeliteral:: ../../utils/crl-analysis.sh
+.. literalinclude:: ../../utils/crl-analysis.sh
    :language: bash
 
 
@@ -99,7 +99,7 @@ Le entità federate DOVREBBERO implementare controlli di revoca automatizzati pe
 
 Di seguito è fornito un esempio non normativo di script bash per la verifica dello stato di revoca dei certificati X.509:
 
-.. includeliteral:: ../../utils/certificate-revocation-verification.sh
+.. literalinclude:: ../../utils/certificate-revocation-verification.sh
    :language: bash
 
 
@@ -140,7 +140,7 @@ Le entità federate DEVONO implementare procedure diagnostiche per identificare 
 
 Il seguente esempio non normativo fornisce uno script per il test di connettività dell'infrastruttura dei certificati X.509 della Federazione:
 
-.. includeliteral:: ../../utils/federation-connectivity-test.sh
+.. literalinclude:: ../../utils/federation-connectivity-test.sh
    :language: bash
 
 
@@ -155,10 +155,80 @@ Le entità federate DEVONO coordinare la gestione dei Certificati X.509 con le p
 - **Uscita dalla Federazione**: Garantire la revoca corretta dei Certificati X.509 durante l'uscita volontaria o avviata dall'organo di supervisione dalla federazione.
 
 
+Procedure di Rotazione delle Chiavi
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Le entità federate DEVONO implementare meccanismi di rotazione delle chiavi per mantenere la postura di sicurezza e rispondere agli eventi di sicurezza. Questa sezione definisce le procedure operative per rilevare e rispondere alle rotazioni delle chiavi superiori e per il rinnovo delle chiavi subordinate.
+
+Rotazione delle Chiavi Superiori
+"""""""""""""""""""""""""""""""""""""
+
+Le entità subordinate DEVONO eseguire la verifica periodica della propria Trust Chain per rilevare le rotazioni delle chiavi superiori e garantire la continuità dell'appartenenza alla federazione.
+
+**Requisiti di Verifica**
+
+I Subordinati della federazione DEVONO:
+
+1. Recuperare il proprio Subordinate Statement dal superiore immediato ogni 24 ore utilizzando il fetch endpoint definito in :ref:`trust-infrastructure-endpoint-delle-api-della-federazione`. Ciò DOVREBBE essere fatto entro un intervallo di tempo non superiore a 24 ore.
+2. Verificare lo stato di revoca o sospensione.
+3. Aggiornare il proprio Entity Configuration quando cambiano i certificati superiori.
+
+**Meccanismi di Rilevamento**
+
+I Subordinati POSSONO utilizzare uno o più dei seguenti meccanismi per rilevare le modifiche:
+
+- **Verifica CRL/OCSP**: Monitorare le Certificate Revocation List o le risposte del protocollo Online Certificate Status Protocol per rilevare la revoca dei certificati superiori come definito in :ref:`trust-infrastructure-revoca-dei-certificati-x509`. La revoca del certificato indica che è in corso la rotazione della chiave superiore.
+- **Fetch Endpoint**: Recuperare il Subordinate Statement tramite ``GET {superiore}/fetch?sub={entity_id_subordinato}`` per ottenere i certificati correnti.
+- **Events Endpoint**: Monitorare ``GET {superiore}/federation_subordinate_events_endpoint?sub={entity_id_subordinato}`` per gli eventi ``jwks_update``. Il Federation Subordinate Events endpoint restituisce la traccia storica degli eventi di registrazione come definito in :ref:`trust-infrastructure-endpoint-delle-api-della-federazione`.
+
+I Subordinati DOVREBBERO implementare la pianificazione automatizzata per:
+
+- Operazioni di fetch giornaliere per recuperare il Subordinate Statement corrente.
+- Validazione della catena di certificati X.509 dopo ogni fetch.
+- Aggiornamenti automatici dell'Entity Configuration quando vengono rilevate modifiche ai certificati.
+- Monitoraggio degli eventi per il rilevamento proattivo delle modifiche.
+
+Quando un'entità superiore (Trust Anchor o Intermediate) ruota la propria Chiave dell'Entità Federata, tutti i certificati X.509 Subordinati DEVONO essere riemessi.
+
+**Procedura di Rotazione**
+
+1. **Revoca della Chiave**: Il superiore pubblica la Certificate Revocation List (CRL) o la voce Historical Keys (HK) revocando la vecchia chiave come definito in :ref:`trust-infrastructure-revoca-dei-certificati-x509`.
+2. **Aggiornamento Entity Configuration**: Il superiore pubblica la nuova Entity Configuration firmata con la nuova Chiave dell'Entità Federata.
+3. **Riemissione Certificati X.509**: Il superiore riemette i certificati X.509 a tutti i Subordinati utilizzando la nuova chiave.
+4. **Pubblicazione Certificati**: Il superiore rende disponibili i nuovi certificati sul fetch endpoint.
+5. **Rilevamento Subordinato**: I Subordinati rilevano la modifica al successivo fetch programmato (al massimo entro 24 ore dalla pubblicazione della modifica).
+6. **Aggiornamento Certificati**: I Subordinati aggiornano il campo ``x5c`` nella propria Entity Configuration con il nuovo certificato.
+
+**Priorità dei Certificati**
+
+Quando esistono più certificati X.509 per la stessa chiave pubblica subordinata, il certificato nel Subordinate Statement DEVE avere priorità sul certificato nella Entity Configuration del subordinato.
+
+.. note::
+  Un'entità superiore non può avviare autonomamente un processo di rotazione delle Chiavi Subordinate. Il meccanismo di rotazione delle Chiavi Subordinate è sempre avviato dall'entità Subordinata, vedi Sezione :ref:`x5c-evaluation:Rotazione delle Chiavi Subordinate`.
+
+Rotazione delle Chiavi Subordinate
+"""""""""""""""""""""""""""""""""""
+
+I Subordinati ruotano le proprie Chiavi dell'Entità Federata inviando Certificate Signing Request al proprio superiore immediato seguendo la stessa procedura dell'onboarding iniziale.
+
+**Procedura di Rotazione**
+
+1. **Generazione Nuova Chiave**: Il subordinato genera una nuova coppia di Chiavi dell'Entità Federata.
+2. **Generazione CSR**: Il subordinato genera un Certificate Signing Request PKCS #10 per la nuova chiave come definito in :ref:`entity-onboarding:Onboarding delle Entità`.
+3. **Invio CSR**: Il subordinato invia il CSR all'entità superiore utilizzando lo stesso endpoint di onboarding.
+4. **Emissione Certificato**: Il superiore valida il CSR ed emette un nuovo certificato X.509.
+5. **Pubblicazione Certificato**: Il superiore rende disponibile il nuovo certificato sul fetch endpoint.
+6. **Recupero Certificato**: Il subordinato recupera il Subordinate Statement aggiornato contenente il nuovo certificato.
+7. **Aggiornamento Entity Configuration**: Il subordinato aggiunge la nuova JWK con il nuovo certificato all'array ``jwks`` della Entity Configuration.
+
+.. note::
+   Durante la rotazione delle chiavi, i Subordinati DOVREBBERO mantenere sia le chiavi vecchie che quelle nuove per garantire la continuità del servizio. La vecchia chiave DOVREBBE essere rimossa solo dopo aver confermato la corretta propagazione della nuova chiave in tutta la federazione.
+
+
 Gestione del Ciclo di Vita dell'Entità
 --------------------------------------
 
-Questa sezione fornisce le procedure di implementazione tecnica per la gestione del ciclo di vita dell'entità. Per i concetti di alto livello del ciclo di vita e i processi aziendali, vedere :ref:`onboarding-high-level:Gestione del Ciclo di Vita dell'Entità`.
+Questa sezione fornisce le procedure di implementazione tecnica per la gestione del ciclo di vita dell'entità. Per i concetti di alto livello del ciclo di vita e i processi aziendali, vedere :ref:`onboarding-high-level:Gestione del Ciclo di Vita delle Entità`.
 
 Mentre l'aggiornamento dei dati amministrativi DEVE seguire processi di governance che sono fuori dall'ambito di questa specifica tecnica, gli aggiornamenti della configurazione tecnica sono descritti nelle seguenti sezioni.
 

@@ -1,0 +1,48 @@
+name: Check SVG/PDF references
+
+on:
+  push:
+    branches: [ "*" ]
+    paths:
+      - 'docs/**'
+      - 'utils/check_svg_pdf.sh'
+      - '.github/workflows/check-svg-pdf.yml'
+  pull_request:
+    branches: [ "*" ]
+    paths:
+      - 'docs/**'
+      - 'utils/check_svg_pdf.sh'
+      - '.github/workflows/check-svg-pdf.yml'
+
+jobs:
+
+  pre_job:
+    runs-on: ubuntu-latest
+    outputs:
+      should_skip: ${{ steps.skip_check.outputs.should_skip }}
+    steps:
+      - id: skip_check
+        uses: fkirc/skip-duplicate-actions@v3.4.0
+        with:
+          skip_after_successful_duplicate: 'true'
+          same_content_newer: 'true'
+
+  check-svg-pdf:
+    name: Validate SVG/PDF references in RST
+    needs: pre_job
+    if: needs.pre_job.outputs.should_skip != 'true'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: ShellCheck (lint bash scripts)
+        uses: ludeeus/action-shellcheck@master
+        with:
+          scandir: './utils'
+
+      - name: Run SVG/PDF reference check
+        run: |
+          echo "Running utils/check_svg_pdf.sh from project root..."
+          bash utils/check_svg_pdf.sh

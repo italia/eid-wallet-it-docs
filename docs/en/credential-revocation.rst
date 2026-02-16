@@ -108,7 +108,7 @@ the conditions leading to its suspension are resolved, or it changes in **Revoke
 Digital Credential Lifecycle in a Batch
 ---------------------------------------
 
-For Digital Credentials issued in a single batch, each Credential immediately enters its own lifecycle state machine. All state transitions (Issued → Valid → Expired/Suspended/Revoked) still occur on a per Credential basis, using Credential's individual parameters (e.g., validity dates, status assertion).
+For Digital Credentials issued in a single batch, each Credential immediately enters its own lifecycle state machine. All state transitions (Issued → Valid → Expired/Suspended/Revoked) still occur on a per Credential basis, using Credential's individual parameters (e.g., validity dates, Status List).
 
 
 Credential Lifecycle Management
@@ -122,7 +122,7 @@ and the effect on their local storage.
 .. plantuml:: plantuml/credential-lifecycle.puml
     :width: 99%
     :alt: The figure illustrates the Digital Credential Lifecycle.
-    :caption: `Digital Credential Lifecycle Management. <https://www.plantuml.com/plantuml/svg/ZLHTRnCn47pthnYUQAMqLA9FAOM6faYH2gf2IeLQ5BbtUuc5OmVlNjBowucT3-LYABc7ABPdzcCywmiM7QIUMFNAkCBM9U7TvUcRozDXzzdfYIdUAwKIHZalX616Or5tOtBGw9gH4Mrn6QWa9qPREAAI8HwFX7fQQg6o1HdJDgR7N5DWVEvy1vCheU6ycCeKMentaHqPjqm1DHitWaQWaM6XG2LyBKU-EdhKhaJX9vFQhOd5M3j7zbZ5eB5SfTefYf-IOznfQqdGSopQ5NIcbAbmqAUPN_4d52COdk31uHnVHKlDk3Oi-708YKqVF1CVAYW0xJv9C3IZ1d3WVv93vKE4WCK7AhUQvxEqdxIqL4bQzUbNRI9k7bCuZvcsfan7UMXwCYoS3ZTjnaNiPKla5T4ut9yydRnjOV5x-cEdZVYHPSA1yuTGsFvO_5HXbSPKge5LSPahq66c4ANa_HI8RjfFWaRilqdmWWRdw7tvrhdkTVFkrwHYGnfo8WrB4ctiSLmHZDkWxszlkft1LGkTmQ3V-tWxk1ekTt9jzvIteV3Urx7yRJJHAGfYNjaawPULjFdo-Xh7oy6e0l5ultX0Uw5s43HPdwoVB-_xfNoP7i368ZjxM6RH3excwIM9eungaMSNEJSoJe_8QqQdZdNB-g7OWcPpbDz9ljhyYSyBkZV-1WtnnIEiHcC3ZVNc3-PQdCoxlFPkdDiMVC23-uzBppDF_lk-sd7WY2K9bEJnmVnEwfnjup9NDF34knaoJ_X0iVMivHVya3aYkuECk6_6dQbfTycI4AQ1PiRNtE2eLC35Wb9Fx1y0>`_
+    :caption: `Digital Credential Lifecycle Management. <https://www.plantuml.com/plantuml/svg/ZLDTQnGn57tFhpW-sKAh1VkqzQErYr1GA5Kf8YBfp9sTO3PPSs-whR_U9BiRTvU8teSX8VUSSp_EdBFe875krHFZEXjxmilBq-UNfz-dZqxFJVTQALLobFD226OsYheToK5ZQcP6jCLbe9wSc7HqH3r3FEu8ST5heVu8Cj9spXLpfC3uSF45JAw7Hk8sW-cq6EyIkY0-CmL4Dcu6ZK0pmqA913xAiH-ExtH2Tdu-Zsu3x4Rj7DbdAfFcSfMQ51Q_8CUurTQIuCgnQDVHcO82CBaX2ORk2Hz5IsIyJqBuv7-Gm-13JW6BJyfRFN020qK3bWOfjnlw6KtEM-RnE8zxRKsVdnhKz93EN1vhjVbY1XpyqTa0ZSFNauUJ5qT8txVVtXn2iiR18_5XWO4i4mwSFuJ2Th3uXS9QnWoglcQXYwuZvdL5fTfzvXgLjYhLvqftGqCW7l-F3vYave9W5_NE-kLgk2szTcSbwZuKTcEbeXqSBOltyl8n99tzpAMHiTZkAUCYvhfbOwtjrFsLbQW3Rj_g8HiIqsj_ZPtXYqTO-x2cfdeRlrWTphvLU6MLLyKYVv_x9DkKM4gZfKqVpA_IvLbhtrLg9v-ugR2zMn-ejD0glRtNzcRhBDl0Vokst3-PaYKXB0BT6nzv1wDA0US94kVsDm00>`_
 
 .. .. figure:: ../../images/DigitalCredential_Lifecycle.svg
 ..     :figwidth: 100%
@@ -217,7 +217,7 @@ Users MAY change their Digital Credential validity status by:
       - Verify data authenticity.
       - View and update validity status (revoke their Digital Credentials and, if it is supported by the Issuer, suspend them).
 
-In addition, when Users detect incorrect data in an issued Digital Credential, the Wallet Instance SHOULD initiate a data correction request via the Notification Endpoint as specified in :ref:`notification-data-correction`. Upon confirmation of the discrepancy, the Issuer SHOULD follow the :ref:`credential-issuance-low-level:Re-Issuance Flow`.
+In addition, when Users detect incorrect data in an issued Digital Credential, the Wallet Instance SHOULD initiate a data correction request via the Notification Endpoint as specified in :ref:`credential-issuance-endpoint:Data Correction using credential_failure`. Upon confirmation of the discrepancy, the Issuer SHOULD follow the :ref:`credential-issuance-low-level:Re-Issuance Flow`.
 
 .. note::
   If the User activates another Wallet Instance from the same Wallet Provider and using the same Wallet Solution and obtains a new PID, the previous PID MUST be revoked, and the previous Wallet Instance MUST transition to operational status.
@@ -231,11 +231,11 @@ The User's death triggers a change in the validity status of the User's identifi
 Status Update by Wallet Instance
 """"""""""""""""""""""""""""""""
 
-When the User deletes a Digital Credential from the Wallet Instance, the Wallet Instance by default SHALL NOT notify the Credential Issuer of this deletion event. Deleting a Digital Credential from the Wallet Instance only removes the local copy and does not change the validity status at the Issuer.
+When the User deletes a Digital Credential from the Wallet Instance, the Wallet Instance by default MUST NOT notify the Credential Issuer of this deletion event. Deleting a Digital Credential from the Wallet Instance only removes the local copy and does not change the validity status at the Issuer.
 
 The Wallet Instance MAY inform the User, prior to deletion, that deletion is a local action and does not imply revocation at the Issuer, and MAY implement, under the User's explicit consent at deletion time, a notification feature to inform the Credential Issuer of the User's intention to revoke the Digital Credential.
 
-If the User wants the Issuer to revoke a Digital Credential, the User SHOULD explicitly confirm this intention via the Wallet Instance's deletion prompt (when available), which SHALL then notify the Credential Issuer; alternatively, the User MAY use the Issuer's web portal or other Issuer-provided channels.
+If the User wants the Issuer to revoke a Digital Credential, the User SHOULD explicitly confirm this intention via the Wallet Instance's deletion prompt (when available), which MUST then notify the Credential Issuer; alternatively, the User MAY use the Issuer's web portal or other Issuer-provided channels.
 
 When the revoked Credential is the PID, the Credential Issuer MUST send a notification of this event to the User within 24 hours.
 For any other Credential different from the PID, the Credential Issuer SHOULD send a notification of this event to the User. The notification to the User MAY be implemented in several ways, such as using a User's email address, telephone number, or any other verified and secure communication channel. The notification to the User MUST also include all the information about the Credential revocation status. The method used for the notification to the User is out of scope of the current technical implementation profile. When the revocation occurs, the Credential Issuer MUST update the status of the Digital Credential accordingly. When the Notification Response sent by the Credential Issuer is successfully received by the Wallet Instance, the Wallet Instance MUST delete the Digital Credential.
@@ -243,15 +243,16 @@ For any other Credential different from the PID, the Credential Issuer SHOULD se
 Status Update by Wallet Providers
 """""""""""""""""""""""""""""""""
 
-In addition to what already defined in :ref:`credential-revocation:Digital Credential Lifecycle`, the Credential Issuer MUST provide a web service (Wallet Instance Revocation endpoint) defined using PDND, as specified in the Section :ref:`credential-issuer-endpoint:e-Service PDND Credential Issuer Catalog`.
-The Wallet Provider that for any reason revokes a Wallet Instance MUST send a notification to Issuers using this endpoint.
+The Wallet Provider that, for any reason, revokes a Wallet Instance MUST ensure that the updated status is reflected in the status list of the related the Wallet Unit Attestation. 
+In addition to what already defined in :ref:`credential-revocation:Digital Credential Lifecycle`, the Credential Issuer MUST implement a monitoring mechanism of the current statuses of all the Wallet Unit Attestations related to the Wallet Instances to which the Credentials were issued.
+Afterwards the revocation of the Wallet Unit Attestation, the Credential Issuer proceeds with the revocation of all the Credentials issued to the Wallet Instance.
 
 Status Update by Authentic Sources
 """"""""""""""""""""""""""""""""""
 
 Authentic Sources manage attributes separately from Digital Credentials, which verify authenticity like physical documents. Losing a physical document doesn't mean losing the privileges it represents; it just means the User can't prove them. However, if a User loses privileges due to a serious infraction, the Authentic Source will revoke the related attributes. In such cases, when a User's attributes are updated, Authentic Sources MUST notify Credential Issuers to update the validity status of any Digital Credential containing those attributes.
 
-Authentic Sources that use Signal Hub MUST deposit a Signal through the :ref:`signal-hub-endpoint:Signal Collection e-Service` in the following cases:
+Authentic Sources using PDND MUST use Signal Hub as the only notification update mechanism. In this case, they MUST deposit a Signal through the :ref:`signal-hub-endpoint:Signal Collection e-Service` in the following cases:
 
   - The value of one or more Attributes contained in the Authentic Source's database has changed; 
   - The validity status of the Attributes is updated (revocation or suspension).
@@ -282,7 +283,7 @@ Once the data changes, the Authentic Source notifies the Credential Issuers who 
 
 The Credential Issuer periodically queries the Signal Hub :ref:`signal-hub-endpoint:Signal Distribution e-Service` for new Signals. When a new Signal is found, the Credential Issuer retrieves it and processes it as described in :ref:`signal-hub-endpoint:Signals Processing`. Then, the Credential Issuer updates the Credential Status according to the validity mechanism's defined mode. The Credential Issuer MAY notify the User through a registered out-of-band communication channel.
 
-The Wallet instance, following periodic checks of the validity status of the stored Digital Credentials, receives the updated status. When the Credential Status is changed to INVALID, the Credential Issuer MUST inform the User about this change. In case the Credential status is modified to UPDATE (resp. 0x03) or ATTRIBUTE_UPDATE (resp. 0x04), the Wallet Instance SHOULD proceed to the re-issuance of the Digital Credential, as described in :ref:`credential-issuance-low-level:Re-Issuance Flow`.
+The Wallet instance, following periodic checks of the validity status of the stored Digital Credentials, receives the updated status. When the Credential Status is changed to ``INVALID``, the Credential Issuer MUST inform the User about this change. In case the Credential status is modified to ``UPDATE`` (resp. 0x03) or ``ATTRIBUTE_UPDATE`` (resp. 0x0B), the Wallet Instance SHOULD proceed to the re-issuance of the Digital Credential, as described in :ref:`credential-issuance-low-level:Re-Issuance Flow`.
 
 
 Batch Credential Lifecycle Management
@@ -290,8 +291,7 @@ Batch Credential Lifecycle Management
 
 When multiple Digital Credentials are issued together in a single batch, their lifecycle remains fully granular:
 
-  * **Grouped triggers, independent updates**: A single batch status update request referencing the batch's ``notification_id`` and sent by an authorized entity (e.g. the Wallet Instance via Notification Endpoint with ``event=credential_deleted``, a Wallet Provider via PDND) is handled as N separate status changes. The Issuer updates each Credential's own status individually (for example, flipping its status-list bit to ``INVALID`` or ``SUSPENDED``). By default, a Wallet Instance SHALL NOT trigger batch status updates when the User deletes local Credentials. Upon deletion, the Wallet Instance MAY, under the User's explicit consent, notify the Credential Issuer of the User's intention to revoke the affected Credential(s); such a notification does not constitute a batch status update request.
-  * **Batch-wide revoke**: That same batch update request also serves as a revoke all request. The Issuer marks every Credential in the batch as revoked and MAY emit a single notification for the entire batch according to Issuer policy.
+  * **Grouped triggers, independent updates**: regardless of the actor that triggers a batch status update (e.g. the Wallet Instance via Notification Endpoint with ``event=credential_deleted``, Wallet Provider via updating Wallet Unit Attestation status list) the status updating is handled as N separate status changes.  The Credential Issuer updates each Credential's own status individually (for example, flipping its status-list bit to ``INVALID`` or ``SUSPENDED``). By default, a Wallet Instance MUST NOT trigger batch status updates when the User deletes local Credentials. Upon deletion, the Wallet Instance MAY, under the User's explicit consent, notify the Credential Issuer of the User's intention to revoke the affected Credential(s).
 
 .. note::
   As the Wallet UI typically surfaces a batch as one Credential (e.g., 3 uses remaining), a User-driven deletion in the Wallet removes the entire batch locally. By default it does not request revocation at the Issuer. The Wallet MAY offer the User an optional prompt to request revocation at the Issuer as part of the deletion flow.
@@ -301,7 +301,7 @@ When multiple Digital Credentials are issued together in a single batch, their l
 Validity Verification Mechanisms
 --------------------------------
 
-For the verification of the validity status of a long-lived Digital Credential the OAuth Status List (`TOKEN-STATUS-LIST`_) MUST be supported for both the remote and proximity scenario. In the remote scenario, the Credential Issuer, Wallet Instance and Relying Party MAY support OAuth Status Assertions (`OAUTH-STATUS-ASSERTION`_). The following table sums up the required revocation mechanisms for verifying the status of long-lived Digital Credentials.
+For the verification of the validity status of a long-lived Digital Credential the Token Status List (`TOKEN-STATUS-LIST`_) MUST be supported for both the remote and proximity scenario. The following table sums up the required revocation mechanisms for verifying the status of long-lived Digital Credentials.
 
 .. _table_revocation_mechanisms:
 .. list-table::
@@ -314,457 +314,14 @@ For the verification of the validity status of a long-lived Digital Credential t
     - **Reference**
   * - Remote
     -
-      - [OPTIONAL] OAuth Status Assertion,
-      - [REQUIRED] OAuth Status Lists.
-    - `OAUTH-STATUS-ASSERTION`_, `TOKEN-STATUS-LIST`_.
+      - [REQUIRED] Token Status List.
+    - `TOKEN-STATUS-LIST`_.
   * - Proximity
-    - [REQUIRED] OAuth Status Lists.
+    - [REQUIRED] Token Status List.
     - `TOKEN-STATUS-LIST`_.
 
-OAuth Status Assertions
-^^^^^^^^^^^^^^^^^^^^^^^
 
-A Status Assertion is a signed document serving as proof of a Digital Credential's current validity status. The Credential Issuer provides these assertions to Users who can present them to Relying Parties together with the corresponding Digital Credentials.
-
-The Status Assertions have the following features:
-
-  - automated issuance, as the User authentication is not required for the provisioning of the Status Assertion;
-  - verification of the Digital Credential validity status in both online and offline scenarios;
-  - privacy-preserving, according to the following evidences:
-
-    - the Relying Party can check the validity of the Credential during the presentation phase. It is not able to check the validity of a given Digital Credential related to the User over time and out of the scope of the User authentication;
-    - the Credential Issuers is not able to know to which Relying Party the Digital Credential or the Status Assertion will be presented;
-    - it doesn't reveal any information about the Users or the content of their Digital Credentials.
-
-  - MUST have a validity period not greater than 24 hours.
-
-.. note::
-  This specification only support JWT format and the Status Assertion uses ``credential_status_type`` claim instead of ``credential_status_validity``.
-
-The following sections describe how the Digital Credential validation mechanism works through its key phases.
-
-
-Handling Credential Status with OAuth Status Assertion
-""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-Credential Issuers, once a Digital Credential has been generated and successfully issued, MUST:
-
-  - Store it locally with minimum set of data required to manage its lifecycle, including the validity status of that Digital Credential;
-  - Include a specified hash algorithm in the Digital Credential using the ``credential_hash_alg`` claim within the ``status_assertion`` JSON member of the status claim.
-
-Moreover, Credential Issuers MUST add the following parameters within their Metadata:
-
-  - ``status_assertion_endpoint``
-  - ``credential_hash_alg_supported``
-
-
-Wallet Instance Checking Credentials Statuses
-"""""""""""""""""""""""""""""""""""""""""""""
-
-A Wallet Instance MUST check periodically the validity status of the Digital Credential that is stored in it, requesting a Status Assertion for each Digital Credential. In this case, the Wallet Instance MUST send a *Status Assertion Request* to the Credential Issuer according to "OAuth Status Assertion Specification" (see `OAUTH-STATUS-ASSERTION`_ for more details) and it is depicted in the following diagram.
-
-.. _fig_entity-relation-credential-revocation-2:
-.. plantuml:: plantuml/status-assertion-flow.puml
-    :width: 80%
-    :alt: The figure illustrates the Status Assertion Flow.
-    :caption: `Status Assertion Flow. <https://www.plantuml.com/plantuml/svg/TOv1IyD048Nl-oiUYyUQ7z23L4Im9uiDU50fOpk7XSqapioIl--IQ27GdERmllU-sPcJUkboeEAzbEwRDGoadivf8774TygP7Nkff9mvWWnZMZ9FoXSMJvInDoki4vL261Fk7v2sEBmUMnoTl1WUpRYMUy5BsnxmnZ-5pV4fY3OH9_edJZg75h75HoM0ktdbEl9NtqnXqpJrVeKGghYQnwfUizhGY_6QTaujhcjdukhTtCIULNjT_hPZkPGk_m80>`_
-
-
-.. .. figure:: ../../images/High-Level-Flow-Status-Assertion-Request.svg
-..     :figwidth: 100%
-..     :align: center
-..     :target: https://www.plantuml.com/plantuml/svg/TOv1IyD048Nl-oiUYyUQ7z23L4Im9uiDU50fOpk7XSqapioIl--IQ27GdERmllU-sPcJUkboeEAzbEwRDGoadivf8774TygP7Nkff9mvWWnZMZ9FoXSMJvInDoki4vL261Fk7v2sEBmUMnoTl1WUpRYMUy5BsnxmnZ-5pV4fY3OH9_edJZg75h75HoM0ktdbEl9NtqnXqpJrVeKGghYQnwfUizhGY_6QTaujhcjdukhTtCIULNjT_hPZkPGk_m80
-
-..     Status Assertion Flow
-
-
-**Step 1 (Status Assertion Request)**: The Wallet Instance sends the Status Assertion Request to the Credential Issuer, where:
-
-  - The request MUST contain the base64url encoded hash value of the Digital Credential's Issuer signed part, such as the Issuer Signed JWT using :ref:`credential-data-model:SD-JWT-VC Credential Format`, or the Mobile Security Object using :ref:`credential-data-model:mdoc-CBOR Credential Format`, and enveloped in a signed Status Assertion Request object.
-  - The Status Assertion Request object MUST be signed with the private key corresponding to the confirmation claim contained within the Digital Credential.
-
-The Status Assertion HTTP request can be sent to a single Credential Issuer regarding multiple Digital Credentials, and MUST contain a JSON object with the member `status_assertion_requests` as described in Section :ref:`credential-revocation:HTTP Status Assertion Request`.
-
-The Credential Issuer that receives the Status Assertion Request object MUST:
-
-  - validate that the Wallet Instance making the request is authorized to request Status Assertions. If errors occur during this check, the Credential Issuer MUST provide a Status Assertion Error Response according to Section :ref:`credential-revocation:HTTP Status Assertion Response`;
-  - verify the compliance of all elements in the `status_assertion_requests` object using the confirmation method contained within the Digital Credential where the Status Assertion Request object is referred to. In case of errors, a Status Assertion Error Response MUST be provided (see Section :ref:`credential-revocation:HTTP Status Assertion Response`);
-  - verify that it is the legitimate Issuer of the Digital Credential to which each Status Assertion Request object refers;
-  - check the validity status for the requested Credentials;
-  - creates the corresponding Status Assertion.
-
-
-**Step 2 (Status Assertion Response)**: The *status_assertion_responses* MUST be an array of strings containing the *StatusAssertionResponse* and/or the *StatusAssertionErrors* JSON Objects related to the request made by the Wallet Instance.
-
-The Wallet Instance MUST:
-
-  - validate the HTTP Status Assertion Response;
-  - extract and validate the signatures of each JSON Object within the *status_assertion_responses* JSON Array;
-  - present a valid Status Assertion to a Relying Party which request it for the status verification of a Digital Credential (see Section below for more details);
-  - inform the User in case of a validity state update of a Digital Credential.
-
-.. note::
-  Status Assertion Errors JSON Object MAY have the *alg header parameter* set to *none*. If the Credential Issuer signs the Status Assertion Errors the Wallet Instance MUST validate the signature. Moreover, Status Assertion Errors MUST not be presented to Relying Parties.
-
-Technical details about the HTTP Status Assertion Response is provided in the Section :ref:`credential-revocation:HTTP Status Assertion Response`.
-
-HTTP Status Assertion Request
-.............................
-
-The *Status Assertion endpoint* MUST be provided by the Credential Issuer within its Metadata.
-The requests to the *Status Assertion endpoint* MUST be HTTP with method POST, using the mandatory parameters listed below within the HTTP request message body. These MUST be encoded in ``application/json`` format.
-
-.. _table_revocation_request_params:
-.. list-table::
-  :class: longtable
-  :widths: 20 60 20
-  :header-rows: 1
-
-  * - **Claim**
-    - **Description**
-    - **Reference**
-  * - **status_assertion_requests**
-    - It MUST be an array of strings, where each represents a *Status Assertion Request object*. Each element MUST contain a signed JWT, encoded as a series of base64url-encoded values (some of which may be the empty string) separated by period ('.') characters, as a cryptographic proof of possession of the Digital Credential for which the Status Assertion is being requested, according with the Status Assertion Request described in Section 7 of `OAUTH-STATUS-ASSERTION`_. See the :ref:`Table <table_status_assertion_req_obj>` below for more details.
-    - This Specification.
-
-Below a non-normative example representing a Status Assertion Request array with Status Assertion Request objects in JWT format.
-
-.. code::
-
-  POST /status HTTP/1.1
-  Host: issuer.example.org
-  Content-Type: application/json
-
-	{
-		"status_assertion_requests" : [
-      $status_assertion_request,
-      $status_assertion_request,
-      ...
-    ]
-	}
-
-The **Status Assertion Request object** MUST be a JWT that MUST contain the parameters (Header and Payload) in the following table.
-
-.. _table_status_assertion_req_obj:
-.. list-table::
-  :class: longtable
-  :widths: 20 60 20
-  :header-rows: 1
-
-  * - **Header**
-    - **Description**
-    - **Reference**
-  * - **typ**
-    - It MUST be set to ``status-assertion-request+jwt``.
-    - :rfc:`7516#section-4.1.1`.
-  * - **alg**
-    - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms listed in the Section :ref:`algorithms:Cryptographic Algorithms` and MUST NOT be set to ``none`` or any symmetric algorithm (MAC) identifier.
-    - :rfc:`7516#section-4.1.1`.
-
-
-.. list-table::
-  :class: longtable
-  :widths: 20 60 20
-  :header-rows: 1
-
-  * - **Payload**
-    - **Description**
-    - **Reference**
-  * - **iss**
-    - Thumbprint of the JWK in the ``cnf`` parameter of the Wallet Attestation.
-    - :rfc:`9126` and :rfc:`7519`.
-  * - **aud**
-    - It MUST be set to the URL string of Credential Issuer Status Assertion endpoint.
-    - :rfc:`9126` and :rfc:`7519`.
-  * - **exp**
-    - UNIX Timestamp with the expiry time of the JWT. It MUST be greater than the value set for `iat`.
-    - :rfc:`9126` and :rfc:`7519`.
-  * - **iat**
-    - UNIX Timestamp with the time of JWT issuance.
-    - :rfc:`9126` and :rfc:`7519`.
-  * - **jti**
-    - Unique identifier for the proof of possession JWT. The value SHOULD be set using a *UUID v4* value according to [:rfc:`4122`].
-    - :rfc:`7519#section-4.1.7`.
-  * - **credential_hash**
-    - It MUST contain the hash value of the Digital Credential's Issuer signed part the Status Assertion is bound to.
-    - `OAUTH-STATUS-ASSERTION`_.
-  * - **credential_hash_alg**
-    - It MUST contain the Algorithm used for hashing the Digital Credential. The value SHOULD be set to `sha-256`.
-    - `OAUTH-STATUS-ASSERTION`_.
-
-Below, is given a non-normative example of a single *Status Assertion Request object* with decoded JWT header and payload and without signature for better readability:
-
-.. code-block:: json
-
-  {
-    "alg": "ES256",
-    "typ": "status-assertion-request+jwt"
-  }
-  
-.. code-block:: json
-
-  {
-    "iss": "0b434530-e151-4c40-98b7-74c75a5ef760",
-    "aud": "https://pid-provider.example.org/status",
-    "iat": 1698744039,
-    "exp": 1698744139,
-    "jti": "6f204f7e-e453-4dfd-814e-9d155319408c",
-    "credential_hash": "$Issuer-Signed-JWT-Hash",
-    "credential_hash_alg": "sha-256"
-  }
-
-HTTP Status Assertion Response
-..............................
-
-In case of successfully Status Assertion Request validation, the Credential Issuer MUST return an HTTP response with the status code set to ``200 OK``. If the Credential Issuer is able to provide a valid Status Assertion for a requested Credential, the response MUST contain a Status Assertion object within a JSON Array. Otherwise, a Status Assertion Errors related to that Credential MUST be included in the Response JSON Array as an entry.
-
-If the HTTP Status Assertion Request fails (e.g. invalid request, server unavailability, etc.), an HTTP Error Status Code MUST be provided within the Status Assertion Response.
-
-In the following table are listed HTTP Status Codes that MUST be supported:
-
-
-.. _table_http_status_assertion_codes:
-.. list-table::
-  :class: longtable
-  :widths: 20 20 60
-  :header-rows: 1
-
-  * - **Status Code**
-    - **Body**
-    - **Description**
-  * - *200 Ok*
-    - Revocation Response
-    - The Revocation Response has been successfully created.
-  * - *400 Bad Request*
-    - Error code and description
-    - The Credential Issuer cannot fulfill the request because of invalid parameters.
-  * - *500 Internal Server Error*
-    -
-    - The Credential Issuer encountered an internal problem. (:rfc:`6749#section-5.2`).
-  * - *503 Service Unavailable*
-    -
-    - The Credential Issuer is temporary unavailable. (:rfc:`6749#section-5.2`).
-
-The HTTP response MUST:
-
-- Include a JSON object with a member named `status_assertion_responses`. It MUST be an array of strings, where each represents a *Status Assertion Response object*. Each element MUST contain a signed JWT, encoded as a series of base64url-encoded values (some of which may be the empty string) separated by period ('.') characters. The *Status Assertion Response object* MUST contain a Status Assertion Response and Status Assertion Error in analogy with Sections 8 and 9 of `OAUTH-STATUS-ASSERTION`_ for more details.
-
-- Be encoded in ``application/json`` format.
-
-A non-normative example of a HTTP Status Assertion Response is given below.
-
-.. code::
-
-    HTTP/1.1 200 Ok
-    Content-Type: application/json
-    {
-      "status_assertion_responses": [
-        $status_assertion_response,
-        $status_assertion_response,
-        ...
-      ]
-    }
-
-The Status Assertion MUST contain the parameters and claims defined below
-
-.. _table_status_assertion_claims:
-.. list-table::
-  :class: longtable
-  :widths: 20 60 20
-  :header-rows: 1
-
-  * - **Header**
-    - **Description**
-    - **Reference**
-  * - **alg**
-    - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms in Section :ref:`Cryptographic Algorithms <algorithms:Cryptographic Algorithms>` and MUST NOT be set to ``none`` or to a symmetric algorithm (MAC) identifier.
-    - [:rfc:`7515`], [:rfc:`7517`].
-  * - **typ**
-    - It MUST be set to `status-assertion+jwt`.
-    - [:rfc:`7515`], [:rfc:`7517`], `OAUTH-STATUS-ASSERTION`_.
-  * - **kid**
-    - Unique identifier of the Issuer JWK. It is REQUIRED when ``x5c`` is not used.
-    - [:rfc:`7515`], `OAUTH-STATUS-ASSERTION`_.
-  * - **x5c**
-    -  X.509 certificate chain about the Issuer. It is REQUIRED when ``kid`` is not used.
-    - [:rfc:`7515`], `OAUTH-STATUS-ASSERTION`_.
-
-.. list-table::
-  :class: longtable
-  :widths: 20 60 20
-  :header-rows: 1
-
-  * - **Payload**
-    - **Description**
-    - **Reference**
-  * - **iss**
-    - It MUST be set to the identifier of the Credential Issuer.
-    - :rfc:`9126` and :rfc:`7519`.
-  * - **iat**
-    - UNIX Timestamp with the time of JWT issuance.
-    - :rfc:`9126` and :rfc:`7519`.
-  * - **exp**
-    - UNIX Timestamp with the expiry time of the JWT. It MUST be greater than the value set for `iat`.
-    - :rfc:`9126` and :rfc:`7519`.
-  * - **credential_hash**
-    - Hash value of the Credential the Status Assertion is bound to.
-    - `OAUTH-STATUS-ASSERTION`_.
-  * - **credential_hash_alg**
-    - The Algorithm used for hashing the Credential to which the Status Assertion is bound. The value SHOULD be set to ``sha-256``.
-    - `OAUTH-STATUS-ASSERTION`_.
-  * - **credential_status_type** [#]_
-    - Numerical value indicating the validity of the Credential linked to the Status Assertion describing its state. All values taken from IANA "OAuth Status Types" registry for Status List values (see Section 7 of `TOKEN-STATUS-LIST`_) MAY be supported. Values from ``0x00`` to ``0x02`` MUST be supported with the following meaning:
-
-      - ``0x00 - VALID``: The status of the Digital Credential is valid, correct or legal.
-      - ``0x01 - INVALID``: The status of the Digital Credential is revoked, annulled, taken back, or cancelled. This state is irreversible.
-      - ``0x02 - SUSPENDED``: The status of the Digital Credential is temporarily invalid, hanging. This state is reversible.
-
-    - This Specification, `TOKEN-STATUS-LIST`_ .
-  * - **credential_status_detail**
-    - REQUIRED only if **credential_status_type** is not set to `0x00`. Object containing detailed information about the status of the Credential. It contains:
-
-        - **state**: (REQUIRED). String value of the Credential status. It is used to convey a more granular representation of a Digital Credential status, for example "revoked", "annulled", "debarred", etc. or in case of application specific Credential states. The Credential Issuer MUST provide a list of status supported for the issued Credential in the Credential Issuer Metadata.
-        - **description**: (REQUIRED). String containing the description of the Credential status.
-    - `OAUTH-STATUS-ASSERTION`_.
-  * - **cnf**
-    - JSON object containing confirmation methods. The sub-member contained within `cnf` member, such as `jwk` for JWT, MUST match with the one provided within the related Digital Credential. Other confirmation methods can be utilized when the referenced Digital Credential supports them, in accordance with the relevant standards.
-    - Section 3.1 of :rfc:`7800` and Section 3.1 of :rfc:`8747`.
-
-.. warning::
-  .. [#] This specification uses ``credential_status_type`` instead of ``credential_status_validity`` currently supported in `OAUTH-STATUS-ASSERTION`_ as the value is semantically a status type and not a boolean.
-
-Below a non-normative example of a Status Assertion Response object in JWT format, with the headers and payload represented in JSON and without applying the signature.
-
-.. code::
-
-  {
-    "alg": "ES256",
-    "typ": "status-assertion+jwt",
-    "kid": "Issuer-JWK-KID"
-  }
- .
-  {
-    "iss": "https://issuer.example.org",
-    "jti": "6f204f7e-e453-4dfd-814e-9d155319408c"
-    "credential_hash": $CREDENTIAL-HASH,
-    "credential_hash_alg": "sha-256",
-    "credential_status_type": 0x01,
-    "credential_status_detail": {
-      "state": "revoked",
-      "description": "The Credential is no longer usable as it has been revoked. This state is irreversible"
-    },
-    "cnf": {
-      "jwk": {
-        "kty": "EC",
-        "crv": "P-256",
-        "x": "_2ySUmWFjwmraNlo15r6dIBXerVdy_NpJuwAKJMFdoc",
-        "y": "MV3C88MhhEMba6oyMBWuGeB3dKHP4YADJmGyJwwILsk"
-      }
-    }
-  }
-
-The Status Assertion Error object MUST contain the following claims:
-
-.. _table_status_assertion_errors_obj:
-.. list-table::
-  :class: longtable
-  :widths: 20 60 20
-  :header-rows: 1
-
-  * - **Header**
-    - **Description**
-    - **Reference**
-  * - **alg**
-    - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms in Section :ref:`Cryptographic Algorithms <algorithms:Cryptographic Algorithms>` and MUST NOT be set to ``none`` or to a symmetric algorithm (MAC) identifier.
-    - Section 4.1.1 of [:rfc:`7516`].
-  * - **typ**
-    - It MUST be set to `status-assertion+jwt`.
-    - Section 4.1.11 of [:rfc:`7516`].
-
-.. list-table::
-  :class: longtable
-  :widths: 20 60 20
-  :header-rows: 1
-
-  * - **Payload**
-    - **Description**
-    - **Reference**
-  * - **iss**
-    - It MUST be set to the identifier of the Credential Issuer.
-    - :rfc:`9126` and :rfc:`7519`.
-  * - **jti**
-    - Unique identifier for the JWT.
-    - :rfc:`9126` and :rfc:`7519`.
-  * - **credential_hash**
-    - Hash value of the Credential the Status Assertion Error is bound to, it MUST match the one contained in the Status Assertion Request.
-    - `OAUTH-STATUS-ASSERTION`_.
-  * - **credential_hash_alg**
-    - The Algorithm used for hashing the Credential to which the Status Assertion Error is bound, it MUST match the one contained in the Status Assertion Request. The value SHOULD be set to ``sha-256``.
-    - `OAUTH-STATUS-ASSERTION`_.
-  * - **error**
-    - The error code, as registered in the table below.
-    - Section 4.1.7 of :rfc:`7519`.
-  * - **error_description**
-    - Text providing further details to clarify the nature of the error encountered.
-    - Section 4.1.7 of :rfc:`7519`.
-
-Errors are meant to provide additional information about the failure so that the User can be informed and take the appropriate action.
-The `error` claim for the Status Assertion Error object MUST be set with one of the values defined in the table below, in addition to the values specified in :rfc:`6749#section-5.2`:
-
-.. list-table::
-    :class: longtable
-    :widths: 20 80
-    :header-rows: 1
-
-    * - **Error Code**
-      - **Description**
-    * - ``invalid_request``
-      - The request is not valid due to the lack or incorrectness of one or more parameters. (:rfc:`6749#section-5.2`).
-    * - ``invalid_request_signature``
-      - The Status Assertion Request signature validation has failed. This error type is used when the proof of possession of the Digital Credential is found not valid within the Revocation Assertion Request. (Section 9.2 of `OAUTH-STATUS-ASSERTION`_).
-    * - ``credential_not_found``
-      - The `credential_hash` value provided in the Status Assertion Request doesn't match with any active Digital Credential. (Section 9.2 of `OAUTH-STATUS-ASSERTION`_).
-    * - ``unsupported_hash_alg``
-      - The hash algorithm set in `credential_hash_alg` is not supported. (Section 9.2 of `OAUTH-STATUS-ASSERTION`_).
-
-Below a non-normative example of a Status Assertion Error object in JWT format, with the headers and payload represented in JSON and without applying the signature.
-
-.. code::
-
-  {
-    "alg": "ES256",
-    "typ": "status-assertion-error+jwt",
-    "kid": "Issuer-JWK-KID"
-  }
-  .
-  {
-    "iss": "https://issuer.example.org",
-    "jti": "6f204f7e-e453-4dfd-814e-9d155319408c"
-    "credential_hash": $CREDENTIAL-HASH,
-    "credential_hash_alg": "sha-256",
-    "error": "unsupported_hash_alg",
-    "error_description": "The hash algorithm is not supported"
-  }
-
-Relying Party Checking Credential Status
-""""""""""""""""""""""""""""""""""""""""
-
-During the presentation flow, if a Status Assertion related to a Digital Credential is available, the Wallet Instance MUST include it along with the related Digital Credential in the ``vp_token`` JSON Array.
-The Relying Party who wants to rely on the mechanism provided by Status Assertion MUST extract the Status Assertion from the ``vp_token`` Array, and, in addition to the checks required in the Presentation Flow described in the Section :ref:`remote-flow:Remote Flow`, the Relying Party MUST check the presence of ``status.status_assertion`` claim in the Digital Credential. If true, the Relying Parties MUST:
-
-  - validate the signature of the Status Assertion;
-  - decode the Status Assertion provided in the presentation, by matching the JWS Header parameter typ set to ``status-assertion+jwt`` and looking for the ``credential_hash`` value that matches with the hash of the Digital Credential's Issuer signed part using the hashing algorithm configured in ``status.status_assertion.credential_hash_alg``;
-  - evaluate the Status Assertion by checking the following items:
-
-    - the ``iss`` claim value MUST match the one in the Digital Credential;
-    - the ``iat`` claim value MUST be equal to or later than the ``iat`` claim value in the Digital Credential;
-    - the ``exp`` value MUST be later than the current time;
-    - the ``nbf`` claim value, if present, MUST be less than or equal to the current time;
-    - the ``cnf`` JSON Object MUST match the one included in the related Digital Credential;
-    - the ``credential_status_type`` and ``credential_status_detail`` values.
-
-
-OAuth Status Lists
+Token Status Lists
 ^^^^^^^^^^^^^^^^^^
 
 This section defines a Status List data structure, which is used to convey information regarding the individual statuses of multiple Digital Credentials. Digital Credentials may be of any format, such as SD-JWTs or ISO/IEC 18013-5 mdocs. A Status List describes the status of the Digital Credentials by encoding their status validity in a bit array. Each Digital Credential is allocated an index during issuance; this index represents its position within the bit array. The value of the bit(s) at this index corresponds to the Digital Credentials' status. A Status List is provided within a cryptographically signed Status List Token in JWT format. For details, see `TOKEN-STATUS-LIST`_.
@@ -783,13 +340,13 @@ The Issuer of a Digital Credential MUST use the following values for possible St
 
   - 0x00 - ``VALID`` - The Digital Credential is valid.
   - 0x01 - ``INVALID`` - The Digital Credential is revoked.
-  - 0x02 - ``SUSPENDED`` - The Digital Credential is temporarily invalid, hanging. This state is reversible.
+  - 0x02 - ``SUSPENDED`` - The Digital Credential is temporarily invalid, hanging. This state is usually temporary.
   - 0x03 - ``UPDATE`` - The Digital Credential metadata parameters have changed.
-  - 0x04 - ``ATTRIBUTE_UPDATE`` - The Digital Credential attributes have changed.
+  - 0x0B - ``ATTRIBUTE_UPDATE`` - The Digital Credential attributes have changed.
 
-For example, if five states for a certain Digital Credential are possible, then k=4. If the Credential Issuer creates an array to store the statuses of 6 Digital Credentials, whose validity statuses are 0, 0, 0, 4, 1, 2, respectively; it will:
+For example, if five states for a certain Digital Credential are possible, then k=4. If the Credential Issuer creates an array to store the statuses of 6 Digital Credentials, whose validity statuses are 0, 0, 0, 3, 1, 2, respectively; it will:
 
-  - create the bit array ``[0, 0, 0, 0, 0, 0, 0, 0; 0, 1, 0, 0, 0, 0, 0, 0; 0, 0, 1, 0, 0, 0, 0, 1]`` which in exadecimal notation generates the byte array ``[0x00, 0x40, 0x21]``.
+  - create the bit array ``[0, 0, 0, 0, 0, 0, 0, 0; 0, 0, 1, 1, 0, 0, 0, 0; 0, 0, 1, 0, 0, 0, 0, 1]`` which in exadecimal notation generates the byte array ``[0x00, 0x30, 0x21]``.
   - compress the array using DEFLATE.
 
 .. note::
@@ -838,16 +395,16 @@ The Status List Token is available at the Status List Endpoint and contains the 
     - **Description**
     - **Reference**
   * - **sub**
-    - REQUIRED. The subject claim MUST specify the URI of the Status List Token. The value MUST be equal to that of the uri claim contained in the status_list claim of the Digital Credential.
+    - REQUIRED. The subject claim MUST specify the URI of the Status List Token. The value MUST be equal to that of the ``uri`` claim contained in the ``status_list`` claim of the Digital Credential.
     - [:rfc:`7519`]
   * - **iat**
     - REQUIRED. The issued at claim MUST specify the time at which the Status List Token was issued.
     - [:rfc:`7519`]
   * - **exp**
-    - REQUIRED. The expiration time claim, if present, MUST specify the time at which the Status List Token is considered expired by the Credential Issuer.
+    - RECOMMENDED. The expiration time claim, if present, MUST specify the time at which the Status List Token is considered expired by the Credential Issuer.
     - [:rfc:`7519`]
   * - **ttl**
-    - OPTIONAL. The time to live claim, if present, MUST specify the maximum amount of time, in seconds, that the Status List Token can be cached by a consumer before a fresh copy SHOULD be retrieved. The value of the claim MUST be a positive number encoded in JSON as a number. This amount of time SHOULD NOT exceed the expiration time defined in **exp** claim.
+    - RECOMMENDED. The time to live claim, if present, MUST specify the maximum amount of time, in seconds, that the Status List Token can be cached by a consumer before a fresh copy SHOULD be retrieved. The value of the claim MUST be a positive number encoded in JSON as a number. This amount of time SHOULD NOT exceed the expiration time defined in **exp** claim.
     - `TOKEN-STATUS-LIST`_
   * - **status_list**
     - REQUIRED. JSON Object that contains a Status List.
@@ -879,14 +436,21 @@ A JSON-encoded Status List has the following structure:
 
 The following is an example of Status List Token before applying signature and encoding:
 
-.. code::
+.. code-block:: json
 
   {
     "alg": "ES256",
     "kid": "$KID",
-    "typ": "statuslist+jwt"
+    "typ": "statuslist+jwt",
+    "x5c": [
+      "MIIDqjCCApKgAwIBAgIESLNEvDA ...",
+      "MIICwzCCAasCCQCKVy9eKjvi+jA ...",
+      "MIIDTDCCAjSgAwIBAgIJAPlnQYH..."
+    ]
   }
-  .
+
+.. code-block:: json
+
   {
     "exp": 2291720170,
     "iat": 1686920170,
@@ -929,7 +493,7 @@ The value of the claim ``status_list`` MUST be itself a JSON Object with the fol
 Checking Credentials Statuses
 """""""""""""""""""""""""""""
 
-The fetching, processing and verifying of a Status List Token may be done by either the Wallet Instance or a Relying Party. Below it is described for the Relying Party, however, the same rules would also apply to the Wallet Instance.
+The fetching, processing and verifying of a Status List Token may be done by either the Wallet Instance or a Relying Party. Below it is described for the Wallet Instance, however, the same rules would also apply to the Relying Party.
 
 .. _fig_entity-relation-credential-revocation-SL:
 .. plantuml:: plantuml/status-list-flow.puml
@@ -945,7 +509,7 @@ The fetching, processing and verifying of a Status List Token may be done by eit
 
 ..   Status List Flow
 
-HTTP Status Lists Request
+HTTP Status List Request
 .........................
 
 To obtain the Status List Token, the Relying Party MUST send an HTTP GET request to the ``status.status_list.uri`` value provided within the Digital Credential.
@@ -954,14 +518,14 @@ The Relying Party SHOULD send the ``application/statuslist+jwt`` Accept-Header t
 
 The following is a non-normative example of a request for a Status List Token:
 
-.. code::
+.. code-block:: http
 
   GET /statuslists HTTP/1.1
   Host: example-issuer.com
   Accept: application/statuslist+jwt
 
 
-HTTP Status Lists Response
+HTTP Status List Response
 ..........................
 
 The Status List Endpoint responds with a Status List Token and MUST use an HTTP status code in the 2xx range. In the successful response, the Status Provider MUST use content-type ``application/statuslist+jwt`` for Status List Token in JWT format.
@@ -972,7 +536,7 @@ If caching-related HTTP headers are present in the HTTP response, Relying Partie
 
 The following is a non-normative example of a response for a Status List Token with type ``application/statuslist+jwt``:
 
-.. code::
+.. code-block:: http
 
   HTTP/1.1 200 OK
   Content-Type: application/statuslist+jwt
@@ -985,16 +549,16 @@ Upon receiving a Digital Credential, a Relying Party MUST first perform the vali
 - Resolve the Status List Token from the provided URI.
 - Validate the Status List Token:
 
-  - Validate the Status List Token's signature by following the rules defined in section 7.2 of [:rfc:`7519`]. This step requires the resolution of a public key as described in :ref:`trust:The Infrastructure of Trust`.
+  - Validate the Status List Token's signature by following the rules defined in section 7.2 of [:rfc:`7519`]. This step requires the resolution of a public key as described in :ref:`trust-infrastructure:The Infrastructure of Trust`.
 
   - Check for the existence of the required claims as defined in Section :ref:`credential-revocation:Status List Token`.
 
 - All existing claims in the Status List Token MUST be checked according to :ref:`credential-revocation:Status List Token`.
 
-  - The subject claim of the Status List Token MUST be equal to the `uri` claim in the `status_list` object of the Digital Credental.
-  - If the Relying Party has custom policies regarding the freshness of the Status List Token, it SHOULD check the `iat` claim.
+  - The subject claim of the Status List Token MUST be equal to the ``uri`` claim in the ``status_list`` object of the Digital Credental.
+  - If the Relying Party has custom policies regarding the freshness of the Status List Token, it SHOULD check the ``iat`` claim.
   - If the expiration time is defined, it MUST be checked if the Status List Token is expired.
-  - If the Relying Party is using a system for caching the Status List Token, it SHOULD check the `ttl` claim of the Status List Token and retrieve a fresh copy if (time status was resolved + `ttl` < current time).
+  - If the Relying Party is using a system for caching the Status List Token, it SHOULD check the ``ttl`` claim of the Status List Token and retrieve a fresh copy if (time status was resolved + ``ttl`` < current time).
 
 - Decompress the Status List with a decompressor that is compatible with DEFLATE [:rfc:`1951`] and ZLIB [:rfc:`1950`].
 - Retrieve the status value of the index specified in the Digital Credential as described in :ref:`credential-revocation:Checking Credentials Statuses`. Fail if the provided index is out of bounds of the Status List.

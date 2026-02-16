@@ -4,10 +4,10 @@
     "token_type": "DPoP",
     "expires_in": 3600,
     "authorization_details": [
-      {
-        "type": "openid_credential",
-        "credential_configuration_id": "dc_sd_jwt_Education_degree",
-        "credential_identifiers": [ "education_degree_unibo_2017_l31_informatica", "education_degree_unibo_2019_lm18_informatica", "education_degree_unibo_2022_phd_informatica" ]
-      }
+        {
+            "type": "openid_credential",
+            "credential_configuration_id": "dc_sd_jwt_Education_degree",
+            "credential_identifiers": [ "education_degree_unibo_2017_l31_informatica", "education_degree_unibo_2019_lm18_informatica", "education_degree_unibo_2022_phd_informatica" ]
+        }
     ]
 }

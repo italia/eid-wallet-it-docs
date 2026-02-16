@@ -5,13 +5,13 @@
 The Relying Party MUST expose a set of endpoints to support remote presentation flows as defined in OpenID4VP 1.0. These endpoints enable secure credential verification, trust establishment, and user authentication for cross-device and same-device interaction patterns.
 
 .. note::
-  Tests related to Relying Party remote flow endpoints are defined in the remote presentation test matrix (:ref:`test-plans-remote-presentation`).
+  Tests related to Relying Party remote flow endpoints are defined in the remote presentation test matrix (:ref:`test-plans-remote-presentation:Remote Credential Verifier Test Matrix`).
 
 
 Federation Endpoint
 """""""""""""""""""""""
 
-The Relying Party MUST provide its Entity Configuration through the ``/.well-known/openid-federation`` endpoint, according to Section :ref:`trust:Entity Configuration`. This endpoint enables trust establishment and discovery of the Relying Party's capabilities.
+The Relying Party MUST provide its Entity Configuration through the ``/.well-known/openid-federation`` endpoint, according to Section :ref:`trust-infrastructure:Entity Configuration`. This endpoint enables trust establishment and discovery of the Relying Party's capabilities.
 
 Technical details are provided in Section :ref:`relying-party-entity-configuration:Relying Party Entity Configuration`.
 
@@ -26,7 +26,7 @@ Request URI Endpoint
 
 The Request URI Endpoint is where the Relying Party provides the signed Request Object to the Wallet Instance. This endpoint supports both GET and POST methods as defined in the OpenID4VP 1.0 specification.
 
-For detailed implementation requirements, see :ref:`remote-flow:Request URI Endpoint` and :ref:`remote-flow:Request URI Request`.
+For detailed implementation requirements, see :ref:`remote-flow:Request URI Request` and :ref:`remote-flow:Request URI Response`.
 
 
 Response URI Endpoint
@@ -127,7 +127,7 @@ All Relying Party endpoints MUST implement appropriate security measures:
 - **Rate Limiting**: Endpoints SHOULD implement rate limiting to prevent abuse
 - **Audit Logging**: All endpoint interactions SHOULD be logged for security monitoring
 
-For detailed security requirements, see :ref:`remote-flow:Security Considerations` and the relevant test cases in :ref:`test-plans-remote-presentation`.
+For detailed security requirements, see :ref:`remote-flow:Remote Flow` and the relevant test cases in :ref:`test-plans-remote-presentation:Remote Credential Verifier Test Matrix`.
 
 
 Implementation Notes
