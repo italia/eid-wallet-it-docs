@@ -334,7 +334,7 @@ The instantiation process will result in a new e-service that <strong>MUST</stro
 <span class="linenos">  8</span><span class="w">      </span><span class="no">- &lt;b&gt;ID_AUTH_CHANNEL_01&lt;/b&gt;: Direct Trust TLS (HTTPS)</span>
 <span class="linenos">  9</span><span class="w">      </span><span class="no">- &lt;b&gt;ID_AUTH_REST_01&lt;/b&gt;: Authorization via PDND token</span>
 <span class="linenos"> 10</span><span class="w">      </span><span class="no">- &lt;b&gt;INTEGRITY_REST_02&lt;/b&gt;: Requests and responses are signed</span>
-<span class="linenos"> 11</span><span class="w">      </span><span class="no">- &lt;b&gt;AUDIT_REST_02&lt;/b&gt;: Additional properties (optional if DPoP Token is used, mandatory if Bearer Token is used)</span>
+<span class="linenos"> 11</span><span class="w">      </span><span class="no">- &lt;b&gt;AUDIT_REST_02&lt;/b&gt;: Additional properties (the pattern is optional if DPoP Token is used)</span>
 <span class="linenos"> 12</span><span class="w">      </span><span class="no">- &lt;b&gt;DPoP Token&lt;/b&gt;: Used as an alternative to a Bearer Token (optional)</span>
 <span class="linenos"> 13</span><span class="w">  </span><span class="nt">termsOfService</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://authentic-source.example.it/tos/&quot;</span>
 <span class="linenos"> 14</span><span class="w">  </span><span class="nt">contact</span><span class="p">:</span>
@@ -700,9 +700,9 @@ The instantiation process will result in a new e-service that <strong>MUST</stro
 <span class="linenos">374</span><span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">invalid</span>
 <span class="linenos">375</span><span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">suspended</span>
 <span class="linenos">376</span><span class="w">                </span><span class="nt">x-enum-description</span><span class="p">:</span>
-<span class="linenos">377</span><span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The credential is issued or expired</span>
-<span class="linenos">378</span><span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The credential is revoked</span>
-<span class="linenos">379</span><span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The credential is temporarily not available, for example due to a temporary hold or a pending verification process</span>
+<span class="linenos">377</span><span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">valid - The credential is issued or expired</span>
+<span class="linenos">378</span><span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">invalid - The credential is revoked</span>
+<span class="linenos">379</span><span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">suspended - The credential is temporarily not available, for example due to a temporary hold or a pending verification process</span>
 <span class="linenos">380</span><span class="w">                </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">valid</span>
 <span class="linenos">381</span><span class="w">              </span><span class="nt">last_updated</span><span class="p">:</span>
 <span class="linenos">382</span><span class="w">                </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Last time the status or attributes of the Dataset have been updated. Its format is `YYYY-MM-DDTHH:MM:SSZ`.</span>
