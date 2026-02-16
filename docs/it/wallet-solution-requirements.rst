@@ -90,6 +90,12 @@ I requisiti per la Wallet App Attestation sono definiti di seguito:
    * - WAA-011
      - L'Istanza del Wallet DEVE ottenere una Wallet App Attestation come prerequisito per passare allo stato Operativo, come definito da `EIDAS-ARF`_.
      - WI
+   * - WAA-012
+     - Un Fornitore di Wallet DEVE garantire che una Wallet Unit non revocata presenti sempre una Wallet App Attestation temporalmente valida e non revocata a un PID Provider o Attestation Provider durante il processo di emissione di un PID o attestazione. Nota: Questo requisito si applica sia alle attestazioni vincolate al dispositivo che a quelle non vincolate, come definito da `EIDAS-ARF`_.
+     - WPBE
+   * - WAA-013
+     - Una Wallet Unit DEVE presentare una Wallet App Attestation solo a un PID Provider o Attestation Provider, come parte del processo di emissione di un PID o un'attestazione, e non a una Relying Party o a qualsiasi altra entità.
+     - WI
 
 .. note::
   In questa sezione, i servizi utilizzati per attestare la genuinità dell'Istanza del Wallet e del dispositivo in cui è installata sono indicati come **API del Servizio di Integrità del Dispositivo**. L'API del Servizio di Integrità del Dispositivo è considerata in modo astratto e si presume sia un servizio fornito da una terza parte affidabile (cioè, l'API del Fornitore del Sistema Operativo) in grado di eseguire controlli di integrità sull'Istanza del Wallet e sul dispositivo in cui è installata.
@@ -120,13 +126,13 @@ I requisiti per la Wallet Unit Attestation sono definiti di seguito:
      - Un Fornitore di Wallet DEVE garantire che una Wallet Unit non revocata possa in ogni momento presentare una Wallet Unit Attestation, quando richiesta da un PID Provider o da un Attestation Provider.
      - WPBE
    * - WUA-004
-     - Durante l'emissione di un PID o di un'attestazione vincolata al dispositivo, una Wallet Unit DEVE recuperare, dai metadati dell'emittente (come specificato in `OpenID4VCI`_), i requisiti del PID Provider o dell'Attestation Provider riguardanti l'autenticazione dell'utente e l'archiviazione delle chiavi da parte del WSCA/WSCD. La Wallet Unit DEVE determinare quale dei propri WSCA/WSCD, se presente, soddisfi tali requisiti. Se un WSCA/WSCD conforme è disponibile per la Wallet Unit, quest'ultima DEVE richiederne la generazione di una nuova coppia di chiavi per il nuovo PID o l'attestazione. La Wallet Unit DEVE fornire al PID Provider o all'Attestation Provider la Wallet Unit Attestation che descrive le proprietà del WSCA/WSCD che ha generato la nuova chiave privata del PID o dell'attestazione.
+     - Durante l'emissione di un PID, la Wallet Unit DEVE fornire al PID Provider una WUA valida che descriva il WSCA/WSCD che ha generato la nuova chiave privata del PID. Nota: Una chiave privata PID è sempre generata e gestita dal WSCA/WSCD, che per definizione è conforme ai requisiti per il Livello di Garanzia Alto. Durante l'emissione di un'attestazione vincolata al dispositivo, una Wallet Unit DEVE recuperare dai metadati dell'emittente (come specificato in `OpenID4VCI`_) i requisiti dell'Attestation Provider riguardanti l'archiviazione delle chiavi da parte del WSCA/WSCD. La Wallet Unit DEVE determinare quale dei propri WSCA/WSCD o keystore, se presente, soddisfi tali requisiti. Se un WSCA/WSCD o keystore conforme è disponibile, la Wallet Unit DEVE fornire all'Attestation Provider una WUA valida che descriva il WSCA/WSCD o keystore selezionato. Nota: Una WUA descrive le proprietà del WSCA/WSCD o keystore e contiene una o più chiavi pubbliche corrispondenti alle chiavi private generate e archiviate in quel WSCA/WSCD o keystore.
      - WI, WSCA, WSCD
    * - WUA-005
      - Se una Wallet Unit contiene più WSCA, essa DEVE, in modo interno e sicuro, tenere traccia di quali PID e attestazioni sono associati a ciascun WSCA.
      - WI, WSCA
    * - WUA-006
-     - Una Wallet Unit DEVE presentare una Wallet Unit Attestation solo come parte del processo di emissione di un PID o di un'attestazione.
+     - Una Wallet Unit DEVE presentare una Wallet Unit Attestation solo come parte del processo di emissione di un PID o di un'attestazione vincolata alla chiave.
      - WI
    * - WUA-007
      - La Wallet Unit Attestation DEVE consentire ai PID Provider di richiedere a un Wallet Provider la revoca di una Wallet Unit, includendo un identificatore per la Wallet Unit all'interno della WUA (ad esempio, un URI e un indice a una Attestation Status List). Il Wallet Provider DEVE garantire che tale identificatore della Wallet Unit non consenta il tracciamento dell'utente.
@@ -135,11 +141,29 @@ I requisiti per la Wallet Unit Attestation sono definiti di seguito:
      - La Wallet Unit Attestation DEVE contenere una o più chiavi pubbliche di credenziali attestate provenienti dallo stesso WSCD.
      - WPBE
    * - WUA-009
-     - La Wallet Unit Attestation DEVE essere firmata dal Wallet Provider che ha autorità e proprietà sulla Wallet Solution, come specificato dall'Autorità di Registrazione di riferimento.
+     - La Wallet Unit Attestation DEVE essere firmata dal Wallet Provider che ha autorità e proprietà sulla Wallet Solution, come specificato dall'Autorità di Registrazione di riferimento. I Wallet Provider DEVONO garantire che i certificati utilizzati per firmare WUA e WAA siano conformi a tutti i requisiti applicabili di `ETSI TS 119 412-6`_, in particolare la Clausola 5.
      - WPBE
    * - WUA-010
      - La Wallet Unit Attestation NON DEVE essere emessa dal Wallet Provider se l'affidabilità del WSCD non è garantita. In tal caso, l'istanza del Wallet DEVE essere revocata.
      - WPBE, WI
+   * - WUA-011
+     - Un Attestation Provider che emette attestazioni non vincolate al dispositivo DEVE indicare nei propri metadati del Credential Issuer che non richiede una WUA. Una Wallet Unit NON DEVE inviare una WUA a un Attestation Provider quando richiede un'attestazione non vincolata al dispositivo. Nota: Una Wallet Unit invia una WIA all'Attestation Provider indipendentemente dal fatto che le attestazioni emesse siano vincolate o meno al dispositivo.
+     - WPBE
+   * - WUA-012
+     - Un Wallet Provider DEVE garantire che la presentazione di una WUA sia vincolata crittograficamente al contesto specifico in cui è destinata ad essere utilizzata. Nota: Come specificato in `OpenID4VCI`_, ciò si ottiene facendo sì che la WUA firmata contenga un nonce fornito dal PID Provider o dall'Attestation Provider durante il processo di emissione. In alternativa, la Wallet Unit presenta la WUA insieme a una Proof-of-Possession consistente in una firma su quel nonce, creata dalla chiave privata corrispondente a una delle chiavi pubbliche attestate nella WUA.
+     - WPBE
+   * - WUA-013
+     - Durante l'emissione di un PID o di un'attestazione vincolata al dispositivo, il PID Provider o l'Attestation Provider DEVE verificare la WUA in conformità con i requisiti dell'Appendice F.4 di `OpenID4VCI`_.
+     - -
+   * - WUA-014
+     - Durante l'emissione di un PID o di un'attestazione vincolata al dispositivo, il PID Provider o l'Attestation Provider DEVE ricevere una prova che la Wallet Unit possiede le chiavi private corrispondenti a tutte le chiavi pubbliche nella WUA.
+     - -
+   * - WUA-015
+     - Se il WSCA/WSCD è in grado di esportare una chiave privata, il Wallet Provider DEVE specificare questa capacità come attributo nella WUA.
+     - WPBE
+   * - WUA-016
+     - Un Wallet Provider DEVE considerare tutti i fattori rilevanti, inclusi l'utilizzo offline, l'interoperabilità e il rischio che una WUA diventi un vettore per tracciare l'Utente, quando decide sul periodo di validità di una WUA.
+     - WPBE
 
 Requisiti WSCD
 """""""""""""""""
