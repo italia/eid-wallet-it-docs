@@ -24,7 +24,7 @@ This section lists the requirements for the Wallet Solution, structured along th
      - The Wallet Instance MUST periodically reestablish trust with its Wallet Provider, obtaining a fresh Wallet App Attestation (:ref:`WP_018 <wallet-instance-testcases>`).
      - WI
    * - WS-004
-     - The Wallet Instance MUST establish trust with other participants of the Wallet ecosystem, such as Credential Issers. In case of Credential Issuers, Wallet Instance presents both Wallet App and Wallet Unit Attestations.
+     - The Wallet Instance MUST establish trust with other participants of the Wallet ecosystem, such as Credential Issuers. In case of Credential Issuers, Wallet Instance presents both Wallet App and Wallet Unit Attestations.
      - WI
    * - WS-005
      - The Wallet Instance MUST be compatible and functional on both Android and iOS operating systems and available on the Play Store and App Store, respectively (:ref:`WP_015 <wallet-instance-testcases>`).
@@ -129,7 +129,7 @@ The requirements for the Wallet Unit Attestation are defined below:
      - A Wallet Unit SHALL present a Wallet Unit Attestation only as part of the issuance of a PID or an attestation.
      - WI
    * - WUA-007
-     - The Wallet Unit Attestation SHALL enable PID Providers to request a Wallet Provider to revoke a Wallet Unit, by including an identifier for the Wallet Unit in the WUA (e.g., a URI and index to an Attestation Status Lis). The Wallet Provider SHALL ensure that this Wallet Unit identifier does not enable tracking of the User.
+     - The Wallet Unit Attestation SHALL enable PID Providers to request a Wallet Provider to revoke a Wallet Unit, by including an identifier for the Wallet Unit in the WUA (e.g., a URI and index to an Attestation Status List). The Wallet Provider SHALL ensure that this Wallet Unit identifier does not enable tracking of the User.
      - WPBE
    * - WUA-008
      - The Wallet Unit Attestation MUST contain one or multiple attested credential's public key that are coming from the same WSCD.
