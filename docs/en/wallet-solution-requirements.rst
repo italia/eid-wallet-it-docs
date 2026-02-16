@@ -173,11 +173,13 @@ The **Wallet Secure Cryptographic Device (WSCD)** includes the Hardware Secure E
      - **Remote Hybrid WSCD**: The WSCD involves a local component mixed with a remote service.
      - WSCD
 
+.. _wscd-security-levels:
+
 .. warning::
   At the current stage, the implementation profile defined in this document supports only the Local Internal WSCD (:ref:`WP_014 <wallet-instance-testcases>`).
   Future versions of this specification MAY include other approaches depending on the required Authenticator Assurance Level (AAL).
 
-  The WSCD operates at two security levels as described in Section :ref:`architecture-overview:Security Levels`:
+  The WSCD operates at two security levels:
   - **WL3 WSCD**: certified as resistant against attackers with a high attack potential (e.g., HSM, smart card certified at least Common Criteria EAL4+ AVA_VAN.5). Keys bound to PID and WUA WL3 MUST be stored in a WL3 WSCD.
   **WL2 WSCD**: based on hardware environments not easily certifiable against high attack potential (e.g., TEE). Keys bound to NPID, (Pub/Q)EAA, EAA, and WUA WL2 MAY be stored in a WL2 WSCD.
   

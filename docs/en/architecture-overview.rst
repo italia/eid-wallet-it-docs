@@ -33,50 +33,6 @@ External systems provide services that connect the IT-Wallet ecosystem to the na
 
 These three architectural layers work together to enable secure Digital Credential operations. The federated nature of this architecture require systematic onboarding processes to establish trust relationships between participants and standardise Credential semantics through the centralised Claims Registry and Taxonomy components, as detailed in :ref:`registry:Registry Infrastructure`.
 
-Security Levels
----------------
-
-The IT-Wallet System defines two security levels for the Wallet Secure Cryptographic Device (WSCD), maintaining an analogy with the existing national electronic identification means while referencing the wallet-specific ecosystem:
-
-.. list-table:: Wallet Security Levels
-   :widths: 15 25 60
-   :header-rows: 1
-
-   * - Level
-     - Assurance
-     - Description
-   * - WL3
-     - High
-     - The WSCD supporting the keys associated with the Digital Credentials is certifiable as resistant against attackers with a high attack potential, such as HSM or smart card devices certified at least Common Criteria EAL4+ AVA_VAN.5.
-   * - WL2
-     - Substantial
-     - The WSCD supporting the keys associated with the Digital Credentials is not easily certifiable as resistant against attackers with a high attack potential, such as Trusted Execution Environments (TEE) included in User mobile devices.
-
-Within the IT-Wallet System:
-
-- WL3 is primarily associated with the Person Identification Data (PID) usable at both national and European level as per Article 5a of Regulation (EU) No 910/2014 (eIDAS), and with the Wallet Unit Attestation (WUA) WL3.
-
-- WL2 is associated with all Electronic Attestations of Attributes ((Pub/Q)EAA, EAA), with the National Person Identification Data (NPID) usable exclusively at national level towards Relying Parties, and with the Wallet Unit Attestation (WUA) WL2.
-
-Although the WSCD dedicated to WL3 and WL2 are distinct, it is permitted to use the WL3 WSCD also for private keys corresponding to WUA WL2, NPID, PubEAA, QEAA, and generic EAA, provided that each individual Digital Credential has its own distinct key. It is not permitted under any circumstance to use the WL2 WSCD to host PID keys.
-
-.. list-table:: Credential Issuers and Security Levels
-   :widths: 30 70
-   :header-rows: 1
-
-   * - Actor
-     - Issued Credentials
-   * - PID Provider
-     - PID (WL3), NPID (WL2)
-   * - PubEAA Provider
-     - PubEAA (WL2)
-   * - QEAA Provider
-     - QEAA (WL2)
-   * - EAA Provider
-     - EAA (WL2)
-   * - Wallet Provider
-     - WUA (WL3, WL2)
-
 The architecture enables the following core interaction processes:
 
   1. **Entity Onboarding and Federation**: Only qualified entities can participate in the federation through systematic onboarding that ensures compliance and establishes cryptographic trust relationships. The onboarding system includes a **Claims Registry** and **Taxonomy** that standardize semantic definitions for all Credentials, enabling interoperability and governance. Entity authorization follows policy-based approach that grants specific operational scopes based on organizational characteristics and regulatory compliance. See Section :ref:`onboarding-high-level:Onboarding System` and :ref:`registry:Registry Infrastructure`.

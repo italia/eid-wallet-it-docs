@@ -27,7 +27,7 @@ Il flusso ad alto livello inizia con l'Utente che desidera ottenere un PID e avv
 .. note::
     Riguardo al punto 4, il metodo di autenticazione primario è basato su CieID LoA High (L3). Per scenari in cui il PIN CIE non è immediatamente disponibile, è disponibile un meccanismo di autenticazione multi-step alternativo che combina Autenticazione eID Substantial con Verifica MRTD.
 
-    Questo protocollo assicura livelli di sicurezza standard attraverso autenticazione multi-fattore fornendo accessibilità migliorata.
+    Indipendentemente dal metodo di autenticazione dell'Utente (CIEid LoA High o eID Substantial con Verifica MRTD), il PID Provider DEVE verificare che il livello di sicurezza WSCD della Wallet Unit sia WL3 prima di emettere un PID, in conformità con :ref:`wallet-solution-requirements:wscd-security-levels`.
 
     Per specifiche tecniche complete, vedere :ref:`credential-issuance-l2plus:Autenticazione eID Substantial con Verifica MRTD per Emissione PID`.
 

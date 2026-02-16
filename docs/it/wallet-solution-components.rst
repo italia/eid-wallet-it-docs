@@ -140,7 +140,12 @@ Per ogni Credenziale Elettronica emessa all'Istanza del Wallet, questo component
 Archiviazione Sicura
 ^^^^^^^^^^^^^^^^^^^^
 
-L'Istanza del Wallet DEVE utilizzare questo componente per proteggere gli asset critici e per eseguire in modo sicuro funzioni crittografiche.
+L'Istanza del Wallet DEVE utilizzare questo componente per proteggere gli Asset Critici e per eseguire in modo sicuro funzioni crittografiche.
+
+L'Archiviazione Sicura comprende i seguenti sottocomponenti:
+
+- **Wallet Secure Cryptographic Device (WSCD)**: dispositivo antimanomissione che fornisce un ambiente per proteggere gli Asset Critici. Il WSCD include l'Hardware Secure Element, il WSCD Firmware e il Secure Key Storage System. Il WSCD opera a due livelli di sicurezza distinti (WL3 e WL2) come descritto in :ref:`wallet-solution-requirements:wscd-security-levels`.
+- **Wallet Secure Cryptographic Application (WSCA)**: applicazione che gestisce gli Asset Critici utilizzando le funzioni crittografiche fornite dal WSCD. La WSCA include l'interfaccia WSCD (WWI), l'Autenticazione WSCA e il Cryptographic Keys and Functions Manager.
 
 
 Modelli di Interazione della Soluzione Wallet
