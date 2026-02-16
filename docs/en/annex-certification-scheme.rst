@@ -125,7 +125,7 @@ The following table provides a consolidated cross-reference from decomposition e
 Mandatory Certification
 ------------------------
 
-The **Certification Scope** column in the decomposition tables (see :ref:`wallet-solution-components-decomposition:Decomposition and Certification Scope` and :ref:`credential-issuer-solution-decomposition:Decomposition and Certification Scope`) indicates whether security certification is required. Conditional cases include:
+The **Certification Scope** column in the decomposition tables (see :ref:`Decomposition and Certification Scope <wallet-solution-components-decomposition>` and :ref:`Decomposition and Certification Scope <credential-issuer-solution-decomposition>`) indicates whether security certification is required. Conditional cases include:
 
 - **WSCD** provided by the User or Wallet Provider (device ownership affects scope).
 - **Wallet Instance** execution environment (User device vs. web-based interface).
