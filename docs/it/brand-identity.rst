@@ -48,7 +48,7 @@ Il Logo è l'elemento grafico ufficiale che permette l'immediata riconoscibilit�
 
 .. only:: format_html
 
-  .. figure:: ../../official_resources/IT-Wallet-Logo-Primary-BlueItalia.svg
+  .. figure:: ../../official_resources/IT-Wallet-Logo/IT-Wallet-Logo-Primary-BlueItalia.svg
     :alt: Logo del Brand “IT-Wallet” su sfondo chiaro  
     :width: 100%
 
@@ -65,7 +65,7 @@ Il Logo è l'elemento grafico ufficiale che permette l'immediata riconoscibilit�
 
 .. only:: format_html
 
-  .. figure:: ../../official_resources/IT-Wallet-Symbol-Primary-BlueItalia.svg
+  .. figure:: ../../official_resources/IT-Wallet-Symbol/IT-Wallet-Symbol-Primary-BlueItalia.svg
     :alt: Pittogramma del Brand “IT-Wallet” su sfondo chiaro  
     :width: 100%
 
