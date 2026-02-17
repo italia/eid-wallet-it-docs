@@ -2,12 +2,12 @@ name: Test PlantUML
 
 on:
   push:
-    branches: ['*']
+    branches: ['**']
     paths:
       - 'docs/**/*.puml'
       - '.github/workflows/test-plantuml.yml'
   pull_request:
-    branches: ['*']
+    branches: ['**']
     paths:
       - 'docs/**/*.puml'
       - '.github/workflows/test-plantuml.yml'
@@ -37,16 +37,19 @@ jobs:
 
       - name: Validate all PlantUML files
         run: |
-          PUML_FILES=$(find docs -name "*.puml" -type f | sort)
-          if [ -z "$PUML_FILES" ]; then
+          PUML_FILES=()
+          while IFS= read -r -d '' file; do
+            PUML_FILES+=("$file")
+          done < <(find docs -name "*.puml" -type f -print0 | sort -z)
+          if [ "${#PUML_FILES[@]}" -eq 0 ]; then
             echo "No PlantUML files found"
             exit 0
           fi
-          echo "Validating $(echo "$PUML_FILES" | wc -l) PlantUML file(s)..."
+          echo "Validating ${#PUML_FILES[@]} PlantUML file(s)..."
           fail=0
-          for file in $PUML_FILES; do
+          for file in "${PUML_FILES[@]}"; do
             echo "Checking $file"
-            if ! docker run --rm -v "$PWD:/workspace" -w /workspace plantuml/plantuml:latest \
+            if ! docker run --rm -v "$PWD:/workspace" -w /workspace plantuml/plantuml:1.2024.6 \
               -checkonly -failfast2 "$file" 2>&1; then
               echo "FAILED: $file"
               fail=1
