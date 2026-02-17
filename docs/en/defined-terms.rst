@@ -366,9 +366,9 @@ Below is the description of acronyms and definitions which are useful for furthe
      Data object issued by a Wallet Provider that proves the keys used for key binding of Credentials reside in a trustworthy WSCD,
      and checks the Wallet Unit has not been revoked. Specific to IT-Wallet. 
 
-    **Wallet App Attestation**
+    **Wallet Instance Attestation**
     **Wallet Attestation**
-      Data object issued by a Wallet Provider proving the integrity of the Wallet Application.
+      Data object issued by a Wallet Provider proving the integrity of the Wallet Instance.
       Specific to IT-Wallet. 
 
     **Digital Credential Catalog**

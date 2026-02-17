@@ -38,13 +38,13 @@ Il Key Binding Endpoint della Relying Party consente alle App di Verifica di ass
 Richiesta di Associazione Chiavi della Relying Party
 ....................................................
 
-Ulteriori dettagli sulla Relying Party Key Binding Request sono forniti nella sezione :ref:`wallet-provider-endpoint:Richiesta di Emissione della Wallet App e Wallet Unit Attestation`. 
+Ulteriori dettagli sulla Relying Party Key Binding Request sono forniti nella sezione :ref:`wallet-provider-endpoint:Richiesta di Emissione della Wallet Instance e Wallet Unit Attestation`. 
 
 Le uniche differenze sono le seguenti:
 
 - L'intestazione ``typ`` del JWT della Integrity Request assume il valore ``rp-kb+jwt``.
 - Il corpo del JWT della Integrity Request non include la dichiarazione ``attested_key``.
-- Il valore della dichiarazione ``hardware_signature`` viene ottenuto basandosi esclusivamente sul valore di ``client_data_hash_waa``.
+- Il valore della dichiarazione ``hardware_signature`` viene ottenuto basandosi esclusivamente sul valore di ``client_data_hash_wia``.
 
 
 Risposta di Associazione Chiavi della Relying Party

@@ -45,7 +45,7 @@ This section specifies the mapping between the Wallet Solution components descri
      - API Interface (incl. PDND for PID Provider notifications)
      - In scope
    * - **Wallet Provider Backend (WPBE)** — Wallet Instance Lifecycle Management
-     - Registration, Attestation Issuance (WAA/WUA), Status and revocation
+     - Registration, Attestation Issuance (WIA/WUA), Status and revocation
      - In scope
    * - **Wallet Provider Backend (WPBE)** — Trust & Security Component
      - Key and certificate management, audit logging, incident response, Federation compliance
@@ -82,7 +82,7 @@ Wallet Instance Lifecycle Management
 This component MUST handle:
 
 - Wallet Instance Registration (detailed in :ref:`wallet-instance-registration:Wallet Instance Initialization and Registration`).
-- Wallet App and Wallet Unit Attestation Issuance (detailed in :ref:`wallet-attestation-issuance:Wallet App and Wallet Unit Attestation Issuance`).
+- Wallet Instance and Wallet Unit Attestation Issuance (detailed in :ref:`wallet-attestation-issuance:Wallet Instance and Wallet Unit Attestation Issuance`).
 - Status management (maintaining and updating validity).
 - Revocation processes (implementing mechanisms to revoke Wallet Instances), according to Section :ref:`wallet-instance-revocation:Wallet Instance Revocation`.
 
@@ -112,7 +112,7 @@ Wallet Instance Lifecycle Management Component
 Interacting with the Wallet Backend, this component MUST handle:
 
 - Wallet Instance Registration (detailed in :ref:`wallet-instance-registration:Wallet Instance Initialization and Registration`).
-- Wallet App and Wallet Unit Attestation Issuance (detailed in :ref:`wallet-attestation-issuance:Wallet App and Wallet Unit Attestation Issuance`).
+- Wallet Instance and Wallet Unit Attestation Issuance (detailed in :ref:`wallet-attestation-issuance:Wallet Instance and Wallet Unit Attestation Issuance`).
 - Status management (maintaining and updating validity).
 - Revocation processes (implementing mechanisms to revoke Wallet Instances), according to Section :ref:`wallet-instance-revocation:Wallet Instance Revocation`.
 
@@ -154,7 +154,7 @@ Wallet Solution Interaction Patterns
 The Wallet Solution supports these interaction patterns:
 
 1. **User to Wallet Backend Frontend**: Web-based interactions for Wallet Instance management.
-2. **Wallet Instance to Wallet Backend API**: for Wallet Instance registration, Wallet App and Wallet Unit Attestation issuance.
+2. **Wallet Instance to Wallet Backend API**: for Wallet Instance registration, Wallet Instance and Wallet Unit Attestation issuance.
 3. **PID Provider to Wallet Backend API**: Secure API calls to request Wallet Instance revocation.
 4. **User to Wallet Instance User Interface**: for Digital Credential management (issuance, presentation, backup, restore, deletion).
 5. **Wallet Intance to Relying Party**: for Digital Credential presentation.

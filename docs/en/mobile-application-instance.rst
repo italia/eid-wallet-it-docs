@@ -276,7 +276,7 @@ The following table lists HTTP Status Codes and related error codes that are sup
 
 .. The Key Binding flow enables the Mobile Application Instance to bind a newly created pair of keys to the Mobile Application Instance, by relying on a proof of possession of the Cryptographic Hardware Keys generated during the :ref:`mobile-application-instance:Mobile Application Instance Initialization` phase. Before completing the process, the Application Provider also needs to verify the integrity of the Mobile Application Instance.
 
-.. Although the exact flow differs depending on the context (see the :ref:`relying-party-instance:Mobile Relying Party Instance Registration` and :ref:`wallet-attestation-issuance:Wallet App Attestation Issuance` sections), the Mobile Application Integrity Request and Error Response are consistent.
+.. Although the exact flow differs depending on the context (see the :ref:`relying-party-instance:Mobile Relying Party Instance Registration` and :ref:`wallet-attestation-issuance:Wallet Instance and Wallet Unit Attestation Issuance` sections), the Mobile Application Integrity Request and Error Response are consistent.
 
 
 .. Mobile Application Key Binding Request
@@ -393,7 +393,7 @@ The following table lists HTTP Status Codes and related error codes that are sup
 .. Mobile Application Key Binding Response
 .. ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. The Key Binding Response strictly depends on the context of the request; further details are provided in the :ref:`relying-party-provider-backend-endpoint:Relying Party Provider Backend Key Binding Response` and :ref:`wallet-provider-endpoint:Wallet App Attestation Issuance Response` sections.
+.. The Key Binding Response strictly depends on the context of the request; further details are provided in the :ref:`relying-party-provider-backend-endpoint:Relying Party Provider Backend Key Binding Response` and :ref:`wallet-provider-endpoint:Wallet Instance and Wallet Unit Attestation Issuance Response` sections.
 
 
 .. Mobile Application Key Binding Error Response

@@ -69,7 +69,7 @@ Dopo la verifica con successo, il Fornitore di Wallet DEVE emettere almeno una W
 
 Inoltre, se non è già stato fatto, gli Utenti DEVONO impostare il loro metodo preferito per sbloccare la loro Istanza del Wallet; questo PUÒ essere realizzato inserendo un
 PIN o utilizzando l'autenticazione biometrica, come l'impronta digitale o il riconoscimento facciale, secondo le preferenze
-personali e le capacità del dispositivo (:ref:`WP_025 <wallet-instance-testcases>`). Si prega di fare riferimento a :ref:`wallet-attestation-issuance:Emissione della Wallet App e Wallet Unit Attestation`.
+personali e le capacità del dispositivo (:ref:`WP_025 <wallet-instance-testcases>`). Si prega di fare riferimento a :ref:`wallet-attestation-issuance:Emissione della Wallet Instance e Wallet Unit Attestation`.
 
 Nello stato **Operativo**, gli Utenti possono richiedere l'emissione dell'Attestato Elettronico di Dati di Identificazione Personale (**PID ISS**) o di Attestati Elettronici di Attributi (Qualificati) se l'Attestato Elettronico di Dati di Identificazione Personale non è richiesto nell'emissione
 (**(Q)EEA ISS**). Inoltre, se le Credenziali Elettroniche sono Attestati Elettronici di Attributi (Qualificati) e per la presentazione non richiedono l'Attestato Elettronico di Dati di Identificazione Personale, possono essere presentate

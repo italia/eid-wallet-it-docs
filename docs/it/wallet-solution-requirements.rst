@@ -21,10 +21,10 @@ Questa sezione elenca i requisiti per la Soluzione Wallet, strutturati secondo l
      - Il Fornitore di Wallet DEVE esporre un insieme di endpoint, disponibili esclusivamente per le istanze della sua Soluzione Wallet, che supportano le funzionalità principali delle Istanze del Wallet.
      - WPBE
    * - WS-003
-     - L'Istanza del Wallet DEVE periodicamente ristabilire la trust con il suo Fornitore di Wallet, ottenendo una nuova Wallet App Attestation (:ref:`WP_018 <wallet-instance-testcases>`).
+     - L'Istanza del Wallet DEVE periodicamente ristabilire la trust con il suo Fornitore di Wallet, ottenendo una nuova Wallet Instance Attestation (:ref:`WP_018 <wallet-instance-testcases>`).
      - WI
    * - WS-004
-     - L'istanza del Wallet DEVE stabilire un rapporto di fiducia con gli altri partecipanti dell'ecosistema del Wallet, come i Fornitori di Attributi Elettronici. Nel caso dei Fornitori di Attributi Elettronici, l'istanza del Wallet presenta sia la Wallet App Attestation che la Wallet Unit Attestation.
+     - L'istanza del Wallet DEVE stabilire un rapporto di fiducia con gli altri partecipanti dell'ecosistema del Wallet, come i Fornitori di Attributi Elettronici. Nel caso dei Fornitori di Attributi Elettronici, l'istanza del Wallet presenta sia la Wallet Instance Attestation che la Wallet Unit Attestation.
      - WI
    * - WS-005
      - L'Istanza del Wallet DEVE essere compatibile e funzionale sia sui sistemi operativi Android che iOS e disponibile rispettivamente sul Play Store e sull'App Store (:ref:`WP_015 <wallet-instance-testcases>`).
@@ -40,15 +40,15 @@ Questa sezione elenca i requisiti per la Soluzione Wallet, strutturati secondo l
      - WI
 
 .. note::
-   Non esiste una corrispondenza stretta uno-a-uno tra i requisiti in questa sezione e i casi di test in :ref:`wallet-provider-test-matrix`. Alcuni requisiti sono espressi a un livello troppo alto per poter essere rappresentati come casi di test atomici, mentre altri sono già affrontati in modo più dettagliato all'interno dei flussi correlati (ad es. :ref:`wallet-attestation-issuance:Emissione della Wallet App e Wallet Unit Attestation`).
+   Non esiste una corrispondenza stretta uno-a-uno tra i requisiti in questa sezione e i casi di test in :ref:`wallet-provider-test-matrix`. Alcuni requisiti sono espressi a un livello troppo alto per poter essere rappresentati come casi di test atomici, mentre altri sono già affrontati in modo più dettagliato all'interno dei flussi correlati (ad es. :ref:`wallet-attestation-issuance:Emissione della Wallet Instance e Wallet Unit Attestation`).
 
-Requisiti della Wallet App Attestation
-""""""""""""""""""""""""""""""""""""""""
+Requisiti della Wallet Instance Attestation
+""""""""""""""""""""""""""""""""""""""""""""
 
-La Wallet App Attestation è emessa dal **Wallet Provider Backend (WPBE)** come parte del sottocomponente Wallet Instance Lifecycle Management (vedere :ref:`Scomposizione e Ambito di Certificazione <wallet-solution-components-decomposition>`). Contiene informazioni riguardanti il livello di sicurezza del dispositivo che ospita l'Istanza del Wallet.
+La Wallet Instance Attestation è emessa dal **Wallet Provider Backend (WPBE)** come parte del sottocomponente Wallet Instance Lifecycle Management (vedere :ref:`Scomposizione e Ambito di Certificazione <wallet-solution-components-decomposition>`). Contiene informazioni riguardanti il livello di sicurezza del dispositivo che ospita l'Istanza del Wallet.
 Esso dimostra principalmente l'**autenticità**, l'**integrità**, la **sicurezza** e in generale l'**affidabilità** di una particolare Istanza del Wallet.
 
-I requisiti per la Wallet App Attestation sono definiti di seguito:
+I requisiti per la Wallet Instance Attestation sono definiti di seguito:
 
 .. list-table::
    :widths: 8 55 37
@@ -57,44 +57,44 @@ I requisiti per la Wallet App Attestation sono definiti di seguito:
    * - ID Req.
      - Requisito
      - Ambito di certificazione
-   * - WAA-001
-     - La Wallet App Attestation DEVE fornire tutte le informazioni rilevanti per attestare l'**integrità** e la **sicurezza** del dispositivo in cui è installata l'Istanza del Wallet (:ref:`WP_019 <wallet-instance-testcases>`).
+   * - WIA-001
+     - La Wallet Instance Attestation DEVE fornire tutte le informazioni rilevanti per attestare l'**integrità** e la **sicurezza** del dispositivo in cui è installata l'Istanza del Wallet (:ref:`WP_019 <wallet-instance-testcases>`).
      - WPBE
-   * - WAA-002
-     - La Wallet App Attestation DEVE essere firmata dal Fornitore di Wallet che ha autorità e proprietà sulla Soluzione Wallet, come specificato dalla Registration Authority di supervisione. Questo garantisce che la Wallet App Attestation colleghi in modo univoco il Fornitore di Wallet a questa particolare Istanza del Wallet (:ref:`WP_020 <wallet-instance-testcases>`).
+   * - WIA-002
+     - La Wallet Instance Attestation DEVE essere firmata dal Fornitore di Wallet che ha autorità e proprietà sulla Soluzione Wallet, come specificato dalla Registration Authority di supervisione. Questo garantisce che la Wallet Instance Attestation colleghi in modo univoco il Fornitore di Wallet a questa particolare Istanza del Wallet (:ref:`WP_020 <wallet-instance-testcases>`).
      - WPBE
-   * - WAA-003
+   * - WIA-003
      - Il Fornitore di Wallet DEVE periodicamente valutare e garantire l'integrità, l'autenticità e la genuinità dell'Istanza del Wallet. Il Fornitore di Wallet verifica l'Istanza del Wallet utilizzando il flusso più sicuro reso disponibile dalle API del Fornitore del Sistema Operativo, come la *Play Integrity API* per Android e *App Attest* per iOS (:ref:`WP_011 <wallet-provider-backend-testcases>`).
      - WPBE
-   * - WAA-004
+   * - WIA-004
      - Il Fornitore di Wallet DEVE possedere un meccanismo di revoca per l'Istanza del Wallet, che consenta al Fornitore di Wallet di terminare il servizio per una specifica Istanza in qualsiasi momento (:ref:`WP_011 <wallet-provider-backend-testcases>`).
      - WPBE
-   * - WAA-005
-     - La Wallet App Attestation DEVE essere vincolata in modo sicuro alla chiave pubblica effimera dell'Istanza del Wallet (:ref:`WP_019b <wallet-instance-testcases>`).
+   * - WIA-005
+     - La Wallet Instance Attestation DEVE essere vincolata in modo sicuro alla chiave pubblica effimera dell'Istanza del Wallet (:ref:`WP_019b <wallet-instance-testcases>`).
      - WPBE
-   * - WAA-006
-     - La Wallet App Attestation PUÒ essere utilizzata più volte durante il suo periodo di validità, consentendo autenticazioni e autorizzazioni ripetute senza la necessità di richiedere nuovi attestati ad ogni interazione. Tuttavia, è RACCOMANDATO che le Istanze del Wallet evitino di utilizzare ripetutamente lo stesso attestato, a causa di preoccupazioni sulla privacy come la possibilità di collegamento tra diverse interazioni.
+   * - WIA-006
+     - La Wallet Instance Attestation PUÒ essere utilizzata più volte durante il suo periodo di validità, consentendo autenticazioni e autorizzazioni ripetute senza la necessità di richiedere nuovi attestati ad ogni interazione. Tuttavia, è RACCOMANDATO che le Istanze del Wallet evitino di utilizzare ripetutamente lo stesso attestato, a causa di preoccupazioni sulla privacy come la possibilità di collegamento tra diverse interazioni.
      - WI
-   * - WAA-007
-     - La Wallet App Attestation DEVE avere una durata limitata e DEVE includere un tempo di scadenza, oltre il quale NON DEVE più essere considerata valida.
+   * - WIA-007
+     - La Wallet Instance Attestation DEVE avere una durata limitata e DEVE includere un tempo di scadenza, oltre il quale NON DEVE più essere considerata valida.
      - WPBE
-   * - WAA-008
-     - La Wallet App Attestation NON DEVE essere rilasciata dal Fornitore di Wallet se l'autenticità, l'integrità e la genuinità dell'Istanza del Wallet che la richiede non possono essere garantite (:ref:`WP_019a <wallet-instance-testcases>`).
+   * - WIA-008
+     - La Wallet Instance Attestation NON DEVE essere rilasciata dal Fornitore di Wallet se l'autenticità, l'integrità e la genuinità dell'Istanza del Wallet che la richiede non possono essere garantite (:ref:`WP_019a <wallet-instance-testcases>`).
      - WPBE
-   * - WAA-009
-     - Ogni Istanza del Wallet DOVREBBE essere in grado di richiedere più Wallet App Attestation utilizzando diverse chiavi pubbliche crittografiche associate ad esse.
+   * - WIA-009
+     - Ogni Istanza del Wallet DOVREBBE essere in grado di richiedere più Wallet Instance Attestation utilizzando diverse chiavi pubbliche crittografiche associate ad esse.
      - WI
-   * - WAA-010
-     - La Wallet App Attestation NON DEVE contenere informazioni sull'Utente che controlla l'Istanza del Wallet (:ref:`WP_029b <wallet-instance-testcases>`).
+   * - WIA-010
+     - La Wallet Instance Attestation NON DEVE contenere informazioni sull'Utente che controlla l'Istanza del Wallet (:ref:`WP_029b <wallet-instance-testcases>`).
      - WPBE
-   * - WAA-011
-     - L'Istanza del Wallet DEVE ottenere una Wallet App Attestation come prerequisito per passare allo stato Operativo, come definito da `EIDAS-ARF`_.
+   * - WIA-011
+     - L'Istanza del Wallet DEVE ottenere una Wallet Instance Attestation come prerequisito per passare allo stato Operativo, come definito da `EIDAS-ARF`_.
      - WI
-   * - WAA-012
-     - Un Fornitore di Wallet DEVE garantire che una Wallet Unit non revocata presenti sempre una Wallet App Attestation temporalmente valida e non revocata a un PID Provider o Attestation Provider durante il processo di emissione di un PID o attestazione. Nota: Questo requisito si applica sia alle attestazioni vincolate al dispositivo che a quelle non vincolate, come definito da `EIDAS-ARF`_.
+   * - WIA-012
+     - Un Fornitore di Wallet DEVE garantire che una Wallet Unit non revocata presenti sempre una Wallet Instance Attestation temporalmente valida e non revocata a un PID Provider o Attestation Provider durante il processo di emissione di un PID o attestazione. Nota: Questo requisito si applica sia alle attestazioni vincolate al dispositivo che a quelle non vincolate, come definito da `EIDAS-ARF`_.
      - WPBE
-   * - WAA-013
-     - Una Wallet Unit DEVE presentare una Wallet App Attestation solo a un PID Provider o Attestation Provider, come parte del processo di emissione di un PID o un'attestazione, e non a una Relying Party o a qualsiasi altra entità.
+   * - WIA-013
+     - Una Wallet Unit DEVE presentare una Wallet Instance Attestation solo a un PID Provider o Attestation Provider, come parte del processo di emissione di un PID o un'attestazione, e non a una Relying Party o a qualsiasi altra entità.
      - WI
 
 .. note::
@@ -141,7 +141,7 @@ I requisiti per la Wallet Unit Attestation sono definiti di seguito:
      - La Wallet Unit Attestation DEVE contenere una o più chiavi pubbliche di credenziali attestate provenienti dallo stesso WSCD.
      - WPBE
    * - WUA-009
-     - La Wallet Unit Attestation DEVE essere firmata dal Wallet Provider che ha autorità e proprietà sulla Wallet Solution, come specificato dall'Autorità di Registrazione di riferimento. I Wallet Provider DEVONO garantire che i certificati utilizzati per firmare WUA e WAA siano conformi a tutti i requisiti applicabili di `ETSI TS 119 412-6`_, in particolare la Clausola 5.
+     - La Wallet Unit Attestation DEVE essere firmata dal Wallet Provider che ha autorità e proprietà sulla Wallet Solution, come specificato dall'Autorità di Registrazione di riferimento. I Wallet Provider DEVONO garantire che i certificati utilizzati per firmare WUA e WIA siano conformi a tutti i requisiti applicabili di `ETSI TS 119 412-6`_, in particolare la Clausola 5.
      - WPBE
    * - WUA-010
      - La Wallet Unit Attestation NON DEVE essere emessa dal Wallet Provider se l'affidabilità del WSCD non è garantita. In tal caso, l'istanza del Wallet DEVE essere revocata.
@@ -168,7 +168,7 @@ I requisiti per la Wallet Unit Attestation sono definiti di seguito:
 Requisiti WSCD
 """""""""""""""""
 
-Il **Wallet Secure Cryptographic Device (WSCD)** include l'Hardware Secure Element, il WSCD Firmware e il Secure Key Storage System (vedere :ref:`Scomposizione e Ambito di Certificazione <wallet-solution-components-decomposition>`). Per garantire la massima sicurezza, le chiavi crittografiche associate a un'Istanza del Wallet (ad esempio, utilizzate per generare la Wallet App Attestation) DEVONO essere generate e memorizzate in modo sicuro all'interno del WSCD. Solo l'Utente legittimo può accedere alle chiavi crittografiche private, impedendo l'uso non autorizzato o la manomissione. Il WSCD PUÒ essere implementato utilizzando almeno uno degli approcci elencati di seguito:
+Il **Wallet Secure Cryptographic Device (WSCD)** include l'Hardware Secure Element, il WSCD Firmware e il Secure Key Storage System (vedere :ref:`Scomposizione e Ambito di Certificazione <wallet-solution-components-decomposition>`). Per garantire la massima sicurezza, le chiavi crittografiche associate a un'Istanza del Wallet (ad esempio, utilizzate per generare la Wallet Instance Attestation) DEVONO essere generate e memorizzate in modo sicuro all'interno del WSCD. Solo l'Utente legittimo può accedere alle chiavi crittografiche private, impedendo l'uso non autorizzato o la manomissione. Il WSCD PUÒ essere implementato utilizzando almeno uno degli approcci elencati di seguito:
 
 .. list-table::
    :widths: 8 55 37
@@ -208,4 +208,4 @@ Il **Wallet Secure Cryptographic Device (WSCD)** include l'Hardware Secure Eleme
 
   Il WSCD WL3 PUÒ essere utilizzato anche per archiviare chiavi private corrispondenti alle Credenziali Elettroniche WL2, purché ogni singola Credenziale Elettronica abbia la propria chiave distinta. Il WSCD WL2 NON DEVE essere utilizzato per ospitare chiavi PID in alcuna circostanza.
 
-Per informazioni più dettagliate, fare riferimento a :ref:`wallet-instance-registration:Inizializzazione e Registrazione dell'Istanza del Wallet` e :ref:`wallet-attestation-issuance:Emissione della Wallet App e Wallet Unit Attestation` di questo documento.
+Per informazioni più dettagliate, fare riferimento a :ref:`wallet-instance-registration:Inizializzazione e Registrazione dell'Istanza del Wallet` e :ref:`wallet-attestation-issuance:Emissione della Wallet Instance e Wallet Unit Attestation` di questo documento.
