@@ -12,7 +12,7 @@ e-Service PDND Authentic Source Catalog
 
 Public Authentic Sources MUST provide the following e-Service through PDND to provide the Credential Issuer with User's attributes required to the issuance of a Digital Credential.
 
-The e-service is described via an openAPI definition where the request, response, and error messages are detailed. This OpenAPI specification can be extended by the Authentic Sources, in fact, the array ``attributeClaims`` can contain additional properties specific to a particular Credential. These additional properties, as defined in the OpenAPI specification, will be inserted into the Credential by the Credential Issuer.
+The e-service is described via an OpenAPI definition where the request, response, and error messages are detailed. This OpenAPI specification can be extended by the Authentic Sources, in fact, the array ``attributeClaims`` can contain additional properties specific to a particular Credential. These additional properties, as defined in the OpenAPI specification, will be inserted into the Credential by the Credential Issuer.
 
 .. only:: html
 
