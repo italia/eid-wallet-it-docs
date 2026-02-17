@@ -7,7 +7,7 @@ Open Source Releases
 1. General Principles
 ^^^^^^^^^^^^^^^^^^^^^
 
-The IT-Wallet ecosystem is built upon principles of openness and transparency. In accordance with the **Italian Digital Administration Code (CAD)** and the **European eIDAS 2.0 Regulation**, the adoption of open source frameworks, including during the experimentation phase, is a structural requirement to ensure trust, collaboration, peer review and shared improvements across the ecosystem. This framework aligns with the **Interoperable Europe Act**, aiming to maximize public value and security through transparency.
+The IT-Wallet ecosystem is built upon principles of openness and transparency. In accordance with the **Italian Digital Administration Code (CAD)** and the **European eIDAS 2.0 Regulation**, the adoption of open source frameworks, including during the experimentation phase, is strongly encouraged as a key enabler to ensure trust, collaboration, peer review and shared improvements across the ecosystem. This framework aligns with the **Interoperable Europe Act**, aiming to maximize public value and security through transparency.
 
 2. Standard Requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -45,7 +45,7 @@ All entities (Wallet Providers, Credential Issuers, Relying Parties) involved wi
 3.1 Mandatory Open Source 
 """""""""""""""""""""""""
 
-Pursuant to the **Consolidated Regulation (EU) 910/2014 (eIDAS 2.0)**, Art. 5a par. 3, the source code of the application software components of IT-Wallet solutions **MUST** be open-source licensed.
+Pursuant to the **Consolidated Regulation (EU) No 910/2014 (eIDAS 2.0)**, Art. 5a par. 3, the source code of the application software components of IT-Wallet solutions **MUST** be open-source licensed.
 
 For duly justified security reasons, the source code of specific components, other than those installed on user devices, **MAY** remain closed, provided this does not compromise the overall auditability of the solution.
 
@@ -57,7 +57,7 @@ For duly justified security reasons, the source code of specific components, oth
 
 To foster ecosystem interoperability and reduce integration costs:
 
-- Credential Issuers and Relying Parties **MUST** release Software Development Kits (SDKs), client libraries, and API specifications under an open-source license.
+- Credential Issuers and Relying Parties **SHOULD** release Software Development Kits (SDKs), client libraries, and API specifications under an open-source license.
 
 4.2 Backend infrastructure
 """"""""""""""""""""""""""
