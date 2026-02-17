@@ -6,7 +6,7 @@
 Certification Scheme and Overall Approach
 =========================================
 
-This annex describes the certification scheme and overall approach for the IT-Wallet system, aligning the technical specifications with the component decomposition paradigm used for certification evaluation.
+This annex describes the certification scheme and overall approach for the IT-Wallet System, aligning the technical specifications with the component decomposition paradigm used for certification evaluation.
 
 Regulatory Framework
 --------------------
