@@ -12,7 +12,7 @@ The IT-Wallet ecosystem is built upon principles of openness and transparency. I
 2. Standard Requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-All entities (Wallet Providers, Credential Issuers, Relying Parties) involved within the IT-Wallet ecosystem (hereinafter "Project Owners") adhere to industry best practices as listed in the sections below, to ensure the software is usable, compliant, and secure.
+All entities (Wallet Providers, Credential Issuers, Relying Parties) involved within the IT-Wallet ecosystem (hereinafter "Project Owners") **SHOULD** adhere to industry best practices to ensure the software is usable, compliant, and secure, following at least those listed in the sections below.
 
 2.1 Licensing
 """""""""""""
