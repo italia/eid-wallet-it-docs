@@ -18,13 +18,13 @@ L'e-service è descritto tramite una specifica OpenAPI in cui sono dettagliati i
 
   .. note::
     La Specifica OpenAPI è disponibile :raw-html:`<a href="OAS3-PDND-AS.html" target="_blank">qui</a>`.
-    Questa specifica OpenAPI può essere estesa dalle Fonti Autentiche, infatti, l'array ``attributeClaims`` può contenere proprietà aggiuntive specifiche di una particolare Credenziale. Queste proprietà aggiuntive, così come definito nella specifica OpenAPI, saranno inserite nella Credenziale dal Credential Issuer.
+    Questa specifica OpenAPI può essere estesa dalle Fonti Autentiche, infatti, l'array ``attributeClaims`` PUÒ contenere proprietà aggiuntive specifiche di una particolare Credenziale. Queste proprietà aggiuntive, così come definito nella specifica OpenAPI, saranno inserite nella Credenziale dal Credential Issuer.
 
 .. only:: latex
 
   .. note::
     La Specifica OpenAPI è disponibile :ref:`e-service-pdnd-template:Specifica OpenAPI della Fonte Autentica PDND`.
-    Questa specifica OpenAPI può essere estesa dalle Fonti Autentiche, infatti, l'array ``attributeClaims`` può contenere proprietà aggiuntive specifiche di una particolare Credenziale. Queste proprietà aggiuntive, così come definito nella specifica OpenAPI, saranno inserite nella Credenziale dal Credential Issuer.
+    Questa specifica OpenAPI può essere estesa dalle Fonti Autentiche, infatti, l'array ``attributeClaims`` PUÒ contenere proprietà aggiuntive specifiche di una particolare Credenziale. Queste proprietà aggiuntive, così come definito nella specifica OpenAPI, saranno inserite nella Credenziale dal Credential Issuer.
 
 Get Attribute Claims
 """""""""""""""""""""""""""""""""""

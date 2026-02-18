@@ -18,13 +18,13 @@ The e-service is described via an OpenAPI definition where the request, response
 
   .. note::
     The base OpenAPI Specification is available :raw-html:`<a href="OAS3-PDND-AS.html" target="_blank">here</a>`.
-    This OpenAPI specification can be extended by the Authentic Sources, in fact, the array ``attributeClaims`` can contain additional properties specific to a particular Credential. These additional properties, as defined in the OpenAPI specification, will be inserted into the Credential by the Credential Issuer.
+    This OpenAPI specification can be extended by the Authentic Sources, in fact, the array ``attributeClaims`` MAY contain additional properties specific to a particular Credential. These additional properties, as defined in the OpenAPI specification, will be inserted into the Credential by the Credential Issuer.
 
 .. only:: latex
 
   .. note::
     The base OpenAPI Specification is available :ref:`e-service-pdnd-template:Authentic Source PDND OpenAPI Specification`.
-    This OpenAPI specification can be extended by the Authentic Sources, in fact, the array ``attributeClaims`` can contain additional properties specific to a particular Credential. These additional properties, as defined in the OpenAPI specification, will be inserted into the Credential by the Credential Issuer.
+    This OpenAPI specification can be extended by the Authentic Sources, in fact, the array ``attributeClaims`` MAY contain additional properties specific to a particular Credential. These additional properties, as defined in the OpenAPI specification, will be inserted into the Credential by the Credential Issuer.
 
 Get Attribute Claims
 """"""""""""""""""""
