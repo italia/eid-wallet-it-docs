@@ -174,9 +174,11 @@
 <section id="catalogo-degli-e-service-pdnd-delle-fonti-autentiche">
 <h2><span class="section-number">13.4.1. </span>Catalogo degli e-Service PDND delle Fonti Autentiche<a class="headerlink" href="#catalogo-degli-e-service-pdnd-delle-fonti-autentiche" title="Link to this heading">¶</a></h2>
 <p>Le Fonti Autentiche pubbliche DEVONO realizzare e rendere disponibile tramite PDND il seguente e-service al fine di rilasciare al Fornitore di Attestati Elettronici gli Attributi dell'Utente necessari per l'emissione di un Attestato Elettronico.</p>
+<p>L'e-service è descritto tramite una specifica OpenAPI in cui sono dettagliati i messaggi di richiesta, risposta ed errore.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>La Specifica OpenAPI completa è disponibile <span class="raw-html"><a href="OAS3-PDND-AS.html" target="_blank">qui</a></span>.</p>
+<p>La Specifica OpenAPI è disponibile <span class="raw-html"><a href="OAS3-PDND-AS.html" target="_blank">qui</a></span>.
+Questa specifica OpenAPI può essere estesa dalle Fonti Autentiche, infatti, l'array <code class="docutils literal notranslate"><span class="pre">attributeClaims</span></code> PUÒ contenere proprietà aggiuntive specifiche di una particolare Credenziale. Queste proprietà aggiuntive, così come definito nella specifica OpenAPI, saranno inserite nella Credenziale dal Credential Issuer.</p>
 </div>
 <section id="get-attribute-claims">
 <h3><span class="section-number">13.4.1.1. </span>Get Attribute Claims<a class="headerlink" href="#get-attribute-claims" title="Link to this heading">¶</a></h3>

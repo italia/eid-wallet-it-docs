@@ -173,9 +173,11 @@
 <section id="e-service-pdnd-authentic-source-catalog">
 <h2><span class="section-number">13.4.1. </span>e-Service PDND Authentic Source Catalog<a class="headerlink" href="#e-service-pdnd-authentic-source-catalog" title="Link to this heading">¶</a></h2>
 <p>Public Authentic Sources MUST provide the following e-Service through PDND to provide the Credential Issuer with User's attributes required to the issuance of a Digital Credential.</p>
+<p>The e-service is described via an OpenAPI definition where the request, response, and error messages are detailed.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>A complete OpenAPI Specification is available <span class="raw-html"><a href="OAS3-PDND-AS.html" target="_blank">here</a></span>.</p>
+<p>The base OpenAPI Specification is available <span class="raw-html"><a href="OAS3-PDND-AS.html" target="_blank">here</a></span>.
+This OpenAPI specification can be extended by the Authentic Sources, in fact, the array <code class="docutils literal notranslate"><span class="pre">attributeClaims</span></code> MAY contain additional properties specific to a particular Credential. These additional properties, as defined in the OpenAPI specification, will be inserted into the Credential by the Credential Issuer.</p>
 </div>
 <section id="get-attribute-claims">
 <h3><span class="section-number">13.4.1.1. </span>Get Attribute Claims<a class="headerlink" href="#get-attribute-claims" title="Link to this heading">¶</a></h3>
