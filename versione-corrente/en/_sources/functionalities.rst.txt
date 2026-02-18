@@ -118,7 +118,7 @@ To ensure a consistent identification and representation of the PID across diffe
 
 .. only:: format_html
 
-  .. figure:: ../../official_resources/IT-Wallet-ID.svg
+  .. figure:: ../../official_resources/IT-Wallet-ID/IT-Wallet-ID-Primary-BlueItalia.svg
     :alt: IT-Wallet ID official graphic asset on a light background 
     :width: 100%
     :align: center
@@ -966,7 +966,7 @@ For further information on the Authentication button refer to the Brand Manual, 
 
 .. only:: format_html
 
-  .. figure:: ../../official_resources/Authentication-button-ENG.svg
+  .. figure:: ../../official_resources/Authentication-button-ENG_size_variants.svg
      :alt: Authentication button in its dimension variants
      :width: 100%
      :align: center
@@ -984,7 +984,7 @@ For further information on the Authentication button refer to the Brand Manual, 
 
 .. only:: format_html
 
-  .. figure:: ../../official_resources/Authentication-Button-ENG-Fixed-Justified.svg
+  .. figure:: ../../official_resources/IT-Wallet-Authentication-Button/ENG/IT-Wallet-Authentication-Button-ENG-Fixed-Justified.svg
      :alt: Authentication button fixed justified 
      :width: 100%
      :align: center
@@ -1002,7 +1002,7 @@ For further information on the Authentication button refer to the Brand Manual, 
 
 .. only:: format_html
 
-  .. figure:: ../../official_resources/Authentication-Button-ENG-Fixed-Centered.svg
+  .. figure:: ../../official_resources/IT-Wallet-Authentication-Button/ENG/IT-Wallet-Authentication-Button-ENG-Fixed-Centered.svg
      :alt: Authentication button fixed centered
      :width: 100%
      :align: center
