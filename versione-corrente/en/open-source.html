@@ -163,34 +163,73 @@
             
   <section id="open-source-releases">
 <h1><span class="section-number">19. </span>Open Source Releases<a class="headerlink" href="#open-source-releases" title="Link to this heading">¶</a></h1>
-<p>In line with the general principles of openness and transparency, Wallet Providers, Credential Issuers and Relying Parties are encouraged to consider adopting open-source approaches, including during the experimentation phase, to promote collaboration, peer review, and shared improvements across the ecosystem. This encouragement is part of an evolving framework, pending the definition of the relevant procedures by the <a class="reference external" href="https://docs.italia.it/italia/developers-italia/gl-acquisition-and-reuse-software-for-pa-docs/en/stabile/index.html">guidelines on the acquisition and reuse of software for public administrations</a> pursuant to Article 64-quater of the CAD, which refers to Article 69 regarding the release of source code. Open source is supported by the Italian Digital Administration Code (CAD) articles 68 and 69 (and related guidelines), European regulations (<a class="reference external" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32024R1689">Artificial Intelligence Act (AI Act)</a>, <a class="reference external" href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202402847">Cyber Resilience Act (CRA)</a>, <a class="reference external" href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202400903">Interoperable Europe Act</a>).</p>
-<p>All the implementers, be these Wallet Providers, Credential Issuers or Relying Parties, owning the product code (from now on Open Source Project Owner) SHOULD follow industry best practices for open-source software, including proper documentation, version control, and community engagement. In particular:</p>
+<section id="general-principles">
+<h2><span class="section-number">19.1. </span>1. General Principles<a class="headerlink" href="#general-principles" title="Link to this heading">¶</a></h2>
+<p>The IT-Wallet ecosystem is built upon principles of openness and transparency. In accordance with the <strong>Italian Digital Administration Code (CAD)</strong> and the <strong>European eIDAS 2.0 Regulation</strong>, the adoption of open source frameworks, including during the experimentation phase, is strongly encouraged as a key enabler to ensure trust, collaboration, peer review and shared improvements across the ecosystem. This framework aligns with the <strong>Interoperable Europe Act</strong>, aiming to maximize public value and security through transparency.</p>
+</section>
+<section id="standard-requirements">
+<h2><span class="section-number">19.2. </span>2. Standard Requirements<a class="headerlink" href="#standard-requirements" title="Link to this heading">¶</a></h2>
+<p>All entities (Wallet Providers, Credential Issuers, Relying Parties) involved within the IT-Wallet ecosystem (hereinafter &quot;Project Owners&quot;) <strong>SHOULD</strong> adhere to industry best practices to ensure the software is usable, compliant, and secure, following at least those listed in the sections below.</p>
+<section id="licensing">
+<h3><span class="section-number">19.2.1. </span>2.1 Licensing<a class="headerlink" href="#licensing" title="Link to this heading">¶</a></h3>
 <ul class="simple">
-<li><p><strong>Transparency and Documentation</strong>: Open Source Project Owners SHOULD produce clear documentation and contribution guidelines.</p></li>
-<li><p><strong>Community Engagement</strong>: Open Source Project Owners SHOULD foster active community involvement for development and support.</p></li>
-<li><p><strong>Software Version Control</strong>: Open Source Project Owners SHOULD use version control systems, such as Git, for managing code changes.</p></li>
-<li><p><strong>Security Practices</strong>: Open Source Project Owners SHOULD produce regular code audits and secure coding standards.</p></li>
-<li><p><strong>Licensing</strong>: Open Source Project Owners MUST use appropriate open-source licenses, recognized as &quot;free license&quot; or &quot;open source license&quot; by the Free Software Foundation or the Open Source Initiative.</p></li>
-<li><p><strong>Responsible Security Disclosure</strong>: Open Source Project Owners SHOULD configure responsible security disclosure procedures to handle the security issues in an appropriate way, mitigating any kind of threat derived by an unresponsible security issue disclosure.</p></li>
+<li><p>Project Owners <strong>MUST</strong> use an Open Source Initiative (OSI) approved license.</p></li>
+<li><p>Project Owners <strong>SHOULD</strong> prioritize the <strong>EUPL-1.2</strong> (European Union Public License version 1.2) to ensure legal compatibility within the EU public sector, or permissive licenses (e.g., Apache 2.0, MIT) for SDKs and libraries to maximize adoption.</p></li>
 </ul>
+</section>
+<section id="code-management-transparency">
+<h3><span class="section-number">19.2.2. </span>2.2 Code Management &amp; Transparency<a class="headerlink" href="#code-management-transparency" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Version Control</strong>: Project Owners <strong>MUST</strong> use code hosting platforms that allow public access without requiring a login (e.g., GitHub, GitLab), ensuring a transparent history of changes.</p></li>
+<li><p><strong>Documentation</strong>: Repositories <strong>MUST</strong> include clear documentation, such as:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">README.md</span></code>: Project overview and setup instructions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LICENSE.md</span></code>: Terms under which the copyright holder allows the recipient to use the software (as described in the <em>Licensing</em> section above).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CONTRIBUTING.md</span></code>: Guidelines for contributions to the codebase made by externals (e.g., community contributors).</p></li>
+</ul>
+</li>
+<li><p><strong>Community</strong>: Project Owners <strong>SHOULD</strong> actively engage with the community for development and support, managing issues and requests for contributions in a timely manner.</p></li>
+</ul>
+</section>
+<section id="security-quality">
+<h3><span class="section-number">19.2.3. </span>2.3 Security &amp; Quality<a class="headerlink" href="#security-quality" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Code Quality</strong>: Project Owners <strong>SHOULD</strong> implement automated testing (e.g., E2E and integration tests) and Continuous Integration pipelines. Such pipelines <strong>SHOULD</strong> be public to allow inspection.</p></li>
+<li><p><strong>Security Audits</strong>: Project Owners <strong>SHOULD</strong> perform regular code audits and static analysis.</p></li>
+<li><p><strong>SBOM</strong>: Project Owners <strong>SHOULD</strong> provide a Software Bill of Materials (SBOM) to facilitate vulnerability management, in line with the <strong>Cyber Resilience Act (CRA)</strong>.</p></li>
+</ul>
+</section>
+</section>
 <section id="wallet-providers">
-<h2><span class="section-number">19.1. </span>Wallet Providers<a class="headerlink" href="#wallet-providers" title="Link to this heading">¶</a></h2>
-<p>Wallet Providers are encouraged to release their source code, build system, and all other assets required to the reproducibility of the implementation in order to facilitate transparency, security auditing within the IT-Wallet ecosystem. Where applicable, the release of source code SHOULD follow the specifications below:</p>
+<h2><span class="section-number">19.3. </span>3. Wallet Providers<a class="headerlink" href="#wallet-providers" title="Link to this heading">¶</a></h2>
+<section id="mandatory-open-source">
+<h3><span class="section-number">19.3.1. </span>3.1 Mandatory Open Source<a class="headerlink" href="#mandatory-open-source" title="Link to this heading">¶</a></h3>
+<p>Pursuant to the <strong>Consolidated Regulation (EU) No 910/2014 (eIDAS 2.0)</strong>, Art. 5a par. 3, the source code of the application software components of IT-Wallet solutions <strong>MUST</strong> be open-source licensed.</p>
+<p>For duly justified security reasons, the source code of specific components, other than those installed on user devices, <strong>MAY</strong> remain closed, provided this does not compromise the overall auditability of the solution.</p>
+</section>
+</section>
+<section id="credential-issuers-and-relying-parties">
+<h2><span class="section-number">19.4. </span>4. Credential Issuers and Relying Parties<a class="headerlink" href="#credential-issuers-and-relying-parties" title="Link to this heading">¶</a></h2>
+<section id="integration-components">
+<h3><span class="section-number">19.4.1. </span>4.1 Integration components<a class="headerlink" href="#integration-components" title="Link to this heading">¶</a></h3>
+<p>To foster ecosystem interoperability and reduce integration costs:</p>
 <ul class="simple">
-<li><p><strong>European Regulations</strong>: According to the Consolidated Regulation (EU) 910/2014, Art 5a item 3, <cite>the source code of the application software components of European Digital Identity Wallets shall be open-source licensed. Member States may provide that, for duly justified reasons, the source code of specific components other than those installed on user devices shall not be disclosed</cite>.</p></li>
+<li><p>Credential Issuers and Relying Parties <strong>SHOULD</strong> release Software Development Kits (SDKs), client libraries, and API specifications under an open-source license.</p></li>
 </ul>
 </section>
-<section id="credential-issuers">
-<h2><span class="section-number">19.2. </span>Credential Issuers<a class="headerlink" href="#credential-issuers" title="Link to this heading">¶</a></h2>
-<p>Credential Issuers are encouraged to release their source code under an open-source license, starting from the experimentation phase.</p>
+<section id="backend-infrastructure">
+<h3><span class="section-number">19.4.2. </span>4.2 Backend infrastructure<a class="headerlink" href="#backend-infrastructure" title="Link to this heading">¶</a></h3>
+<p>Credential Issuers and Relying Parties <strong>SHOULD</strong> release their backend core logic under an open-source license, starting from the experimentation phase, to promote transparency and reuse.</p>
 </section>
-<section id="relying-parties">
-<h2><span class="section-number">19.3. </span>Relying Parties<a class="headerlink" href="#relying-parties" title="Link to this heading">¶</a></h2>
-<p>Relying Parties are are encouraged to follow the same conditions as Credential Issuers regarding the release of their source code.</p>
 </section>
-<section id="responsible-disclosure">
-<h2><span class="section-number">19.4. </span>Responsible Disclosure<a class="headerlink" href="#responsible-disclosure" title="Link to this heading">¶</a></h2>
-<p>In the European context, the Cyber Resilience Act (CRA) mandates procedures for handling vulnerability reports and requires reporting actively exploited vulnerabilities to Computer Security Incident Response Teams (CSIRTs). The Directive on Security of Network and Information Systems Directive (EU) 2022/2555 (<a class="reference external" href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32022L2555">NIS2</a>) also emphasizes vulnerability handling within cybersecurity risk management.</p>
+<section id="responsible-disclosure-and-vulnerability-management">
+<h2><span class="section-number">19.5. </span>5. Responsible Disclosure and Vulnerability Management<a class="headerlink" href="#responsible-disclosure-and-vulnerability-management" title="Link to this heading">¶</a></h2>
+<p>In compliance with the <strong>Cyber Resilience Act (CRA)</strong> and <strong>NIS2 Directive (EU) 2022/2555</strong>:</p>
+<ul class="simple">
+<li><p><strong>Security Policy</strong>: All Open Source repositories <strong>SHOULD</strong> contain a <code class="docutils literal notranslate"><span class="pre">SECURITY.md</span></code> file outlining the procedure for reporting vulnerabilities.</p></li>
+<li><p><strong>Reporting</strong>: Project Owners <strong>SHOULD</strong> establish a channel for responsible disclosure to handle security issues privately before public release.</p></li>
+<li><p><strong>Exploited vulnerabilities</strong>: Project Owners <strong>MUST</strong> cooperate with National Computer Security Incident Response Teams (CSIRTs) regarding actively exploited vulnerabilities and strictly follow coordinated disclosure protocols to mitigate threats derived from irresponsible disclosure.</p></li>
+</ul>
 </section>
 </section>
 
@@ -209,10 +248,23 @@
             <div class="page_toc">
                 <ul>
 <li><a class="reference internal" href="#">19. Open Source Releases</a><ul>
-<li><a class="reference internal" href="#wallet-providers">19.1. Wallet Providers</a></li>
-<li><a class="reference internal" href="#credential-issuers">19.2. Credential Issuers</a></li>
-<li><a class="reference internal" href="#relying-parties">19.3. Relying Parties</a></li>
-<li><a class="reference internal" href="#responsible-disclosure">19.4. Responsible Disclosure</a></li>
+<li><a class="reference internal" href="#general-principles">19.1. 1. General Principles</a></li>
+<li><a class="reference internal" href="#standard-requirements">19.2. 2. Standard Requirements</a><ul>
+<li><a class="reference internal" href="#licensing">19.2.1. 2.1 Licensing</a></li>
+<li><a class="reference internal" href="#code-management-transparency">19.2.2. 2.2 Code Management &amp; Transparency</a></li>
+<li><a class="reference internal" href="#security-quality">19.2.3. 2.3 Security &amp; Quality</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#wallet-providers">19.3. 3. Wallet Providers</a><ul>
+<li><a class="reference internal" href="#mandatory-open-source">19.3.1. 3.1 Mandatory Open Source</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#credential-issuers-and-relying-parties">19.4. 4. Credential Issuers and Relying Parties</a><ul>
+<li><a class="reference internal" href="#integration-components">19.4.1. 4.1 Integration components</a></li>
+<li><a class="reference internal" href="#backend-infrastructure">19.4.2. 4.2 Backend infrastructure</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#responsible-disclosure-and-vulnerability-management">19.5. 5. Responsible Disclosure and Vulnerability Management</a></li>
 </ul>
 </li>
 </ul>
@@ -242,7 +294,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 11/02/2026.
+      Last updated on 18/02/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
