@@ -1,0 +1,62 @@
+name: Test PlantUML
+
+on:
+  push:
+    branches: ['**']
+    paths:
+      - 'docs/**/*.puml'
+      - '.github/workflows/test-plantuml.yml'
+  pull_request:
+    branches: ['**']
+    paths:
+      - 'docs/**/*.puml'
+      - '.github/workflows/test-plantuml.yml'
+  workflow_dispatch:
+
+jobs:
+  pre_job:
+    runs-on: ubuntu-latest
+    outputs:
+      should_skip: ${{ steps.skip_check.outputs.should_skip }}
+    steps:
+      - id: skip_check
+        uses: fkirc/skip-duplicate-actions@v3.4.0
+        with:
+          skip_after_successful_duplicate: 'true'
+          same_content_newer: 'true'
+
+  test_puml:
+    needs: pre_job
+    if: needs.pre_job.outputs.should_skip != 'true'
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Validate all PlantUML files
+        run: |
+          PUML_FILES=()
+          while IFS= read -r -d '' file; do
+            PUML_FILES+=("$file")
+          done < <(find docs -name "*.puml" -type f -print0 | sort -z)
+          if [ "${#PUML_FILES[@]}" -eq 0 ]; then
+            echo "No PlantUML files found"
+            exit 0
+          fi
+          echo "Validating ${#PUML_FILES[@]} PlantUML file(s)..."
+          fail=0
+          for file in "${PUML_FILES[@]}"; do
+            echo "Checking $file"
+            if ! docker run --rm -v "$PWD:/workspace" -w /workspace plantuml/plantuml:1.2024.6 \
+              -checkonly -failfast2 "$file" 2>&1; then
+              echo "FAILED: $file"
+              fail=1
+            fi
+          done
+          if [ "$fail" -ne 0 ]; then
+            echo "One or more PlantUML files failed validation"
+            exit 1
+          fi
+          echo "All PlantUML files validated successfully"
