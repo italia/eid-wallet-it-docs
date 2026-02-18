@@ -39,7 +39,7 @@ paths:
               $ref: "#/components/headers/RateLimitLimitHeader"
             X-RateLimit-Remaining:
               $ref: "#/components/headers/RateLimitRemainingHeader"
-            RateLimit-Reset:
+            X-RateLimit-Reset:
               $ref: "#/components/headers/RateLimitResetHeader"
         "429":
           description: Too Many Requests
