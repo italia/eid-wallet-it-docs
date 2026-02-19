@@ -29,7 +29,7 @@ EUDI Wallet Standards and Technical Specifications
     * - `EUDI-TS 3`_
       - Specification of Wallet Unit Attestations (WUA) used in issuance of PID and Attestations.
     * - `EUDI-TS 10`_
-      - Data Portability and Download (Export)
+      - Data Portability and Download (Export).
     * - `EUDI-TS 12`_
       - Specification of Strong Customer Authentication (SCA) Implementation with the Wallet
 
