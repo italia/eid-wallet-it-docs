@@ -91,7 +91,7 @@ Dashboard and Transaction Log
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This component MUST provide the Wallet Unit dashboard and transaction log functionality. In particular, this component MUST:
 
-- provide a user-facing dashboard interface enabling the User to access transaction transparency information;
+- provide a user-accessible interface enabling the User to access transaction transparency information;
 - maintain a transaction log of transactions executed through the Wallet Unit, including non-completed transactions;
 - support User interaction with transaction records, including viewing, export, and deletion.
 
