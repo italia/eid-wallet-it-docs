@@ -10,9 +10,9 @@ The Wallet Instance MUST maintain a secure, Wallet-local transaction log to ensu
 - credential presentation to Relying Parties;
 - data deletion requests sent to Relying Parties.
 
-For each such transaction, the Wallet Instance MUST create a corresponding transaction record with the data elements specified in the applicable ARF requirements for transaction logging for the corresponding transaction category, and update it with the final outcome where applicable.
+For each such transaction, the Wallet Instance MUST create a corresponding transaction record with the data elements specified in the applicable ARF requirements for transaction logging for the corresponding transaction category, and update it with the final outcome where applicable as defined in `EUDI-TS 10`_.
 
-For presentation transactions, attribute values MUST NOT be logged. If a presentation request contains transactional data, the Wallet Instance MUST log the value of such transactional data only to the extent explicitly required by `EUDI-TS 12`_ associated with the requested attestation and in accordance with data minimization principles. Where no such requirement exists, transactional data values MUST NOT be logged.
+For presentation transactions, attribute values MUST NOT be logged. If a presentation request contains sensitive transactional data (such as a payment or a digital signature), the Wallet Instance MUST log the value of such transactional data only to the extent explicitly required by `EUDI-TS 12`_ associated with the requested attestation and in accordance with data minimization principles. Where no such requirement exists, transactional data values MUST NOT be logged.
 
 To support User access to the transaction log, the Wallet Instance MUST provide a dashboard interface, allowing the User to view an overview of transaction records in the log, access individual record details, export and delete records, and, where a transaction involves a Relying Party, initiate a data deletion request to the corresponding Relying Party (using logged contact information, if available).
 
