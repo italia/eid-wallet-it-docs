@@ -71,7 +71,7 @@ Un esempio non normativo dell'intestazione e del payload del JWT di backup è il
     "wallet_instance_version":"v1.0",
     "wallet_app_attestation":"eyJhbGciOiJFUzI1NiIsImVVfQz.eyJpc3MiOiAiaH...LCAibmJ",
     "credentials_backup": {
-        "https://issuer.example.org/v1.0/mdl": ["org.iso.18013-5.1.mDL"],
+        "https://issuer.example.org/v1.0/mDL": ["org.iso.18013-5.1.mDL"],
         "https://eaa-provider.example.org/": ["dc_sd_jwt_EuropeanDisabilityCard"]
      }
   }

@@ -269,17 +269,17 @@ Il formato combinato per l'emissione del (Q)EAA è rappresentato di seguito:
 Type Metadata dell'Attestato Elettronico
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Il documento di *Type Metadata*, se fornito, DEVE essere un *JSON object* e DEVE contenere i seguenti parametri.
+Il documento di *Type Metadata*, se fornito, DEVE essere un *JSON object* e DEVE essere conforme con la Sezione 6.2 di [`SD-JWT-VC`_].
 
 In conformità con la Sezione 6.3.3 di `SD-JWT-VC`_, il documento JSON del *Type Metadata* PUÒ essere recuperato tramite un *well-known* endpoint.
-Questo endpoint, fornito dal Fornitore di Attestati Elettronici, DEVE avere il seguente formato: ``https://{Dominio Credential Issuer}/.well-known/vct/{vct}``.
+Questo endpoint, fornito dal Fornitore di Attestati Elettronici, DEVE avere il seguente formato: ``https://{Dominio Credential Issuer}/.well-known/type-metadata``. A tale endpoint DEVE essere aggiunto il parametro di query ``vct``.
 L'endpoint restituisce un codice di stato ``200 OK`` e supporta ``application/json`` e ``application/jwt`` come content type.
 
 Di seguito è riportato un esempio non normativo.
 
 .. code-block:: http
 
-    GET /.well-known/vct/urn:eudi:pid:it:1 HTTP/1.1
+    GET /.well-known/type-metadata?vct=urn%3Aeudi%3Apid%3Ait%3A1 HTTP/1.1
     Host: issuer.example.it
     Accept: application/jwt
 
@@ -290,7 +290,7 @@ Di seguito è riportato un esempio non normativo.
 
 .. code-block:: http
 
-    GET /.well-known/vct/urn:eudi:pid:it:1 HTTP/1.1
+    GET /.well-known/type-metadata?vct=urn%3Aeudi%3Apid%3Ait%3A1 HTTP/1.1
     Host: issuer.example.it
     Accept: application/json
 
@@ -298,6 +298,7 @@ Di seguito è riportato un esempio non normativo.
     Content-Type: application/json
 
     {	
+      "vct": "urn:eudi:pid:it:1",
       "name": "...",
       "description": "...",
       ...
