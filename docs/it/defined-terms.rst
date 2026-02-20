@@ -127,6 +127,11 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Entità Organizzativa designata a livello nazionale che agisce come radice di fiducia della federazione, operando la PKI nazionale e pubblicando le Trusted List e i Metadata di federazione autorevoli per le Entità Organizzative subordinate (ad esempio Intermediari e Foglie).
       Non presente in ARF 2.7.3; specifico di IT-Wallet.
 
+    **Dati Nazionali di Identificazione Personale**
+    **NPID**
+      Attestato Elettronico contenente Dati di Identificazione Personale a sostanziale Livello di Garanzia (WL2), utilizzabile come mezzo di identificazione elettronica esclusivamente a livello nazionale verso le Relying Party. Il NPID è emesso dal PID Provider e le chiavi associate DEVONO essere archiviate in un WSCD con livello di sicurezza almeno WL2 (ossia WL2 o WL3).
+      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+
     **Processo di Notifica**
       Procedura per l'invio delle informazioni alla Commissione Europea e l'inserimento all'interno delle Trusted List.
       Conforme con ARF 2.7.3.
@@ -458,6 +463,8 @@ Di seguito gli acronimi usati più di frequente nel documento:
     - Person Identification Data (Attestato Elettronico di Dati di Identificazione Personale)
   * - **PII**
     - Personally Identifiable Information (Informazioni di Identificazione Personale)
+  * - **NPID**
+    - National Person Identification Data (Dati Nazionali di Identificazione Personale)
   * - **PPBE**
     - PID Provider Backend (Backend del Fornitore di Attestati Elettronici di Dati di Identificazione Personale)
   * - **QEAA**
