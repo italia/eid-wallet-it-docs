@@ -37,7 +37,7 @@ La Soluzione del Fornitore di Attestati Elettronici Elettronica DEVE:
    9. Rinnovare periodicamente la conformità e l'aderenza alla Federazione IT-Wallet .
    10. Registrare il Componente Relying Party all'interno dell'ecosistema di Federazione dell'Identità Digitale CIEid (per l'emissione di PID), e all'interno dell'ecosistema IT-Wallet (per l'emissione di (Q)EAA, se necessario).
    11. Per l'emissione di PID, autenticare gli Utenti con LoA High utilizzando l'infrastruttura nazionale di Identità Digitale.
-   12. Verificare che il livello di sicurezza WSCD della Wallet Unit sia appropriato per il tipo di Attestato Elettronico emesso, in conformità con :ref:`livelli di sicurezza WSCD <wscd-security-levels>`. L'emissione di PID richiede un WSCD WL3; l'emissione di (Q)EAA richiede almeno un WSCD WL2.
+   12. Verificare che il livello di sicurezza WSCD della Wallet Unit sia appropriato per il tipo di Attestato Elettronico emesso, in conformità con :ref:`livelli di sicurezza WSCD <wscd-security-levels>`. L'emissione di PID richiede un WSCD WL3; l'emissione di NPID e (Q)EAA richiede almeno un WSCD WL2.
    13. Per l'emissione di (Q)EAA che richiedono autenticazione, verificare che il PID dell'Utente sia valido tramite `OpenID4VP`_.
    14. Implementare procedure adeguate per l'intero ciclo di vita dell'Attestato Elettronico come dettagliato nella Sezione :ref:`credential-revocation:Ciclo di Vita degli Attestati Elettronici`.
 
@@ -89,7 +89,7 @@ Questo componente DEVE autenticare gli Utenti, se richiesto:
    - Per l'emissione di PID, tramite l'infrastruttura nazionale di Identità Digitale.
    - Per l'emissione di (Q)EAA, richiedendo, ottenendo e validando i PID dalle Istanze del Wallet dell'Utente utilizzando `OpenID4VP`_ in conformità con la Sezione :ref:`credential-presentation:Presentazione dell'Attestato Elettronico`.
 
-Per l'emissione di PID, il Fornitore di Attestati Elettronici DEVE garantire che la Wallet Unit fornisca un WSCD WL3 per l'archiviazione delle chiavi, poiché il PID richiede un Livello di Garanzia elevato. Per l'emissione di (Q)EAA, il Fornitore di Attestati Elettronici DEVE garantire che la Wallet Unit fornisca almeno un WSCD WL2. Vedere :ref:`livelli di sicurezza WSCD <wscd-security-levels>` per la definizione dei livelli di sicurezza.
+Per l'emissione di PID, il Fornitore di Attestati Elettronici DEVE garantire che la Wallet Unit fornisca un WSCD WL3 per l'archiviazione delle chiavi, poiché il PID richiede un Livello di Garanzia elevato. Per l'emissione di NPID, il Fornitore di Attestati Elettronici DEVE garantire che la Wallet Unit fornisca almeno un WSCD WL2. Per l'emissione di (Q)EAA, il Fornitore di Attestati Elettronici DEVE garantire che la Wallet Unit fornisca almeno un WSCD WL2. Vedere :ref:`livelli di sicurezza WSCD <wscd-security-levels>` per la definizione dei livelli di sicurezza.
 
 Interfaccia API
 ^^^^^^^^^^^^^^^
