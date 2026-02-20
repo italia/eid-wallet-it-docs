@@ -379,7 +379,7 @@ components:
                   - VALID - The Dataset is valid.
                   - INVALID - The Dataset is revoked
                   - SUSPENDED - The Dataset is suspended
-                example: valid
+                example: VALID
               last_updated:
                 description: Last time the status or attributes of the Dataset have been updated. Its format is `YYYY-MM-DDTHH:MM:SSZ`.
                 type: string
