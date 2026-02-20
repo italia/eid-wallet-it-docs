@@ -204,7 +204,7 @@ Il **Wallet Secure Cryptographic Device (WSCD)** include l'Hardware Secure Eleme
   Il WSCD opera a due livelli di sicurezza:
 
   - **WSCD WL3**: certificato come resistente ad attaccanti con alto potenziale d'attacco (es. HSM, smart card certificata almeno Common Criteria EAL4+ AVA_VAN.5). Le chiavi vincolate al PID e alla WUA WL3 DEVONO essere archiviate in un WSCD WL3.
-  - **WSCD WL2**: basato su ambienti hardware non facilmente certificabili contro alto potenziale d'attacco (es. TEE). Le chiavi vincolate a NPID, (Pub/Q)EAA, EAA e WUA WL2 POSSONO essere archiviate in un WSCD WL2.
+  - **WSCD WL2**: basato su ambienti hardware non facilmente certificabili contro alto potenziale d'attacco (es. TEE). Le chiavi vincolate a (Pub/Q)EAA, EAA e WUA WL2 POSSONO essere archiviate in un WSCD WL2.
 
   Il WSCD WL3 PUÒ essere utilizzato anche per archiviare chiavi private corrispondenti alle Credenziali Elettroniche WL2, purché ogni singola Credenziale Elettronica abbia la propria chiave distinta. Il WSCD WL2 NON DEVE essere utilizzato per ospitare chiavi PID in alcuna circostanza.
 

@@ -121,11 +121,6 @@ Below is the description of acronyms and definitions which are useful for furthe
       Preexisting identity systems (e.g. CIE) notified to eIDAS.
       Not present in ARF 2.7.3.
 
-    **National Person Identification Data**
-    **NPID**
-      Electronic Attestation containing Person Identification Data at a substantial Level of Assurance (WL2), usable as an electronic identification means exclusively at national level towards Relying Parties. The NPID is issued by the PID Provider and its associated keys MUST be stored in a WSCD with a security level of at least WL2 (i.e. WL2 or WL3).
-      Not present in ARF 2.7.3; specific to IT-Wallet.
-
     **National Trust Anchor**
       Organizational Entity designated at national level to act as the root of trust for the federation, operating the national PKI and publishing authoritative Trusted Lists and federation metadata for subordinate entities (for example, Intermediaries and Leaves).
       Not present in ARF 2.7.3; specific to IT-Wallet.
@@ -474,8 +469,6 @@ Below are the main acronyms used in the document:
     - Level of Assurance
   * - **NAB**
     - National Accreditation Body 
-  * - **NPID**
-    - National Person Identification Data
   * - **OID4VP**
     - OpenID for Verifiable Presentation
   * - **PDND**
