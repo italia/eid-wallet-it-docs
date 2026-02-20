@@ -298,36 +298,9 @@ State changes of a Digital Credential at the Credential Issuer level DO NOT impl
 <li><p><strong>metadataClaims</strong>: array of metadata per dataset (<code class="docutils literal notranslate"><span class="pre">object_id</span></code> required; <code class="docutils literal notranslate"><span class="pre">issuance_date</span></code> and <code class="docutils literal notranslate"><span class="pre">expiry_date</span></code> optional).</p></li>
 <li><p><strong>interval</strong>: required when the request does not include a <code class="docutils literal notranslate"><span class="pre">claims</span></code> parameter; indicates the number of seconds to wait before repeating the request (e.g. 864000 = 10 days).</p></li>
 </ul>
-<section id="dataset-status-and-digital-credential-lifecycle">
-<h4><span class="section-number">13.4.1.3.1. </span>Dataset Status and Digital Credential Lifecycle<a class="headerlink" href="#dataset-status-and-digital-credential-lifecycle" title="Link to this heading">¶</a></h4>
-<p>The Authentic Source manages the validity of the User's attributes (datasets); the Credential Issuer manages the Digital Credential lifecycle. When the Credential Issuer receives an UPDATE Signal or queries the Get Attribute Claims endpoint, it inspects the <code class="docutils literal notranslate"><span class="pre">status</span></code> of each dataset and updates the corresponding Digital Credential accordingly:</p>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>Dataset status</p></th>
-<th class="head"><p>Typical dataset condition</p></th>
-<th class="head"><p>Effect on Digital Credential (Credential Issuer action)</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>VALID</p></td>
-<td><p>Dataset not revoked/suspended (includes Issued and Expired; expiry verified via metadata)</p></td>
-<td><p>Credential may remain Valid (expiry checked via expiry_date, nbf/exp)</p></td>
-</tr>
-<tr class="row-odd"><td><p>INVALID</p></td>
-<td><p>Dataset actively revoked by the Authentic Source</p></td>
-<td><p>Credential status updated to Revoked (Status List: INVALID)</p></td>
-</tr>
-<tr class="row-even"><td><p>SUSPENDED</p></td>
-<td><p>Temporarily invalid (e.g. under review)</p></td>
-<td><p>Credential status updated to Suspended (Status List: SUSPENDED)</p></td>
-</tr>
-</tbody>
-</table>
-<p>Issued and Expired datasets fall within VALID; the Credential Issuer verifies expiry via metadata claims (e.g. <code class="docutils literal notranslate"><span class="pre">expiry_date</span></code>, <code class="docutils literal notranslate"><span class="pre">nbf</span></code>/<code class="docutils literal notranslate"><span class="pre">exp</span></code>). For full details on the status update flow, see <a class="reference internal" href="credential-revocation.html#status-update-by-authentic-sources"><span class="std std-ref">Status Update by Authentic Sources</span></a>.</p>
 <p>The successful response (HTTP 200) returns a <code class="docutils literal notranslate"><span class="pre">CredentialClaimsResponse</span></code> object formatted as a <strong>Payload JSON</strong>.</p>
-</section>
 <section id="signature-verification-and-key-management">
-<h4><span class="section-number">13.4.1.3.2. </span>Signature Verification and Key Management<a class="headerlink" href="#signature-verification-and-key-management" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">13.4.1.3.1. </span>Signature Verification and Key Management<a class="headerlink" href="#signature-verification-and-key-management" title="Link to this heading">¶</a></h4>
 <p>As the response token is signed, the Credential Issuer (Consumer) MUST verify the signature to ensure the integrity and authenticity of the data received from the Authentic Source.</p>
 <p>The signature verification and key retrieval process MUST strictly follow the standard pattern defined for <strong>PDND e-Services</strong>.
 Please refer to the Technical Appendix (Section <a class="reference internal" href="e-service-pdnd.html#e-service-pdnd"><span class="std std-ref">e-Service PDND</span></a>) for details on JWT validation and specifications for retrieving the Provider's public key via the Interoperability API.</p>
@@ -359,8 +332,7 @@ Please refer to the Technical Appendix (Section <a class="reference internal" hr
 <li><a class="reference internal" href="#get-attribute-claims">13.4.1.1. Get Attribute Claims</a></li>
 <li><a class="reference internal" href="#credential-lifecycle-states-mapping">13.4.1.2. Credential Lifecycle States Mapping</a></li>
 <li><a class="reference internal" href="#example-of-authentic-source-response">13.4.1.3. Example of Authentic Source response</a><ul>
-<li><a class="reference internal" href="#dataset-status-and-digital-credential-lifecycle">13.4.1.3.1. Dataset Status and Digital Credential Lifecycle</a></li>
-<li><a class="reference internal" href="#signature-verification-and-key-management">13.4.1.3.2. Signature Verification and Key Management</a></li>
+<li><a class="reference internal" href="#signature-verification-and-key-management">13.4.1.3.1. Signature Verification and Key Management</a></li>
 </ul>
 </li>
 </ul>

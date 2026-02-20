@@ -249,6 +249,9 @@
 <tr class="row-odd"><td><p><strong>[AUDIT_REST_02]</strong> Inoltro dati tracciati nel dominio del Fruitore REST con correlazione (<em>Allegato 2 - Pattern di sicurezza</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]): OPZIONALE. L'Erogatore PUÒ richiedere dati aggiuntivi tracciati nel dominio del Fruitore, con una correlazione tra tali dati e il metodo di autenticazione. In tal caso, questo pattern DEVE essere utilizzato.</p></td>
 <td><p>R3, R4</p></td>
 </tr>
+<tr class="row-even"><td><p><strong>[ID_AUTH_REST_01]</strong> Direct Trust su PDND tramite token JWT emessi dalla piattaforma (<em>Allegato 2 - Pattern di sicurezza</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]).</p></td>
+<td><p>R1, R2, R4, R5</p></td>
+</tr>
 </tbody>
 </table>
 <div class="admonition note">
@@ -261,9 +264,9 @@
 <li><p>I seguenti pattern possono essere utilizzati solo quando il Fruitore non può iscriversi all'Infrastruttura PDND (ossia quando la trust tra gli Aderenti deve essere stabilita in forma diretta), pertanto non risultano conformi a <strong>R1</strong>:</p>
 <ul>
 <li><p><strong>[ID_AUTH_CHANNEL_02]</strong> Direct Trust mutual Transport-Level Security (<em>Allegato 2 - Pattern di Sicurezza</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>])</p></li>
-<li><p><strong>[ID_AUTH_REST_01]</strong> Direct Trust con certificato X.509 su REST (<em>Allegato 2 - Pattern di sicurezza</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]).</p></li>
 <li><p><strong>[ID_AUTH_REST_02]</strong> Direct Trust con certificato X.509 su REST con unicità del token/messaggio (<em>Allegato 2 - Pattern di sicurezza</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]).</p></li>
 <li><p><strong>[INTEGRITY_REST_01]</strong> Integrità del payload messaggio REST (<em>Allegato 2 - Pattern di sicurezza</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]).</p></li>
+<li><p><strong>[ID_AUTH_REST_02]</strong> Direct Trust su PDND tramite token JWT emessi dalla piattaforma con caratteristiche di unicità (<em>Allegato 2 - Pattern di sicurezza</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]).</p></li>
 </ul>
 </li>
 <li><p>Il seguente pattern non fornisce correlazione tra i dati tracciati e il Voucher, pertanto non risulta conforme a <strong>R3</strong>:</p>

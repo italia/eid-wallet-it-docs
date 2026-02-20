@@ -93,29 +93,6 @@ In summary:
 - **metadataClaims**: array of metadata per dataset (``object_id`` required; ``issuance_date`` and ``expiry_date`` optional).
 - **interval**: required when the request does not include a ``claims`` parameter; indicates the number of seconds to wait before repeating the request (e.g. 864000 = 10 days).
 
-Dataset Status and Digital Credential Lifecycle
-''''''''''''''''''''''''''''''''''''''''''''''''''
-
-The Authentic Source manages the validity of the User's attributes (datasets); the Credential Issuer manages the Digital Credential lifecycle. When the Credential Issuer receives an UPDATE Signal or queries the Get Attribute Claims endpoint, it inspects the ``status`` of each dataset and updates the corresponding Digital Credential accordingly:
-
-.. list-table::
-  :header-rows: 1
-
-  * - Dataset status
-    - Typical dataset condition
-    - Effect on Digital Credential (Credential Issuer action)
-  * - VALID
-    - Dataset not revoked/suspended (includes Issued and Expired; expiry verified via metadata)
-    - Credential may remain Valid (expiry checked via expiry_date, nbf/exp)
-  * - INVALID
-    - Dataset actively revoked by the Authentic Source
-    - Credential status updated to Revoked (Status List: INVALID)
-  * - SUSPENDED
-    - Temporarily invalid (e.g. under review)
-    - Credential status updated to Suspended (Status List: SUSPENDED)
-
-Issued and Expired datasets fall within VALID; the Credential Issuer verifies expiry via metadata claims (e.g. ``expiry_date``, ``nbf``/``exp``). For full details on the status update flow, see :ref:`credential-revocation:Status Update by Authentic Sources`.
-
 The successful response (HTTP 200) returns a ``CredentialClaimsResponse`` object formatted as a **Payload JSON**.
 
 Signature Verification and Key Management
