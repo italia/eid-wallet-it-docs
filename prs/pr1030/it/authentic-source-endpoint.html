@@ -268,9 +268,36 @@ Questa specifica OpenAPI può essere estesa dalle Fonti Autentiche, infatti, l'a
 <li><p><strong>metadataClaims</strong>: array di metadati per dataset (<code class="docutils literal notranslate"><span class="pre">object_id</span></code> obbligatorio; <code class="docutils literal notranslate"><span class="pre">issuance_date</span></code> e <code class="docutils literal notranslate"><span class="pre">expiry_date</span></code> opzionali).</p></li>
 <li><p><strong>interval</strong>: obbligatorio se non è presente il parametro <code class="docutils literal notranslate"><span class="pre">claims</span></code> nella richiesta; indica i secondi da attendere prima di ripetere la richiesta (es. 864000 = 10 giorni).</p></li>
 </ul>
+<section id="stato-del-dataset-e-ciclo-di-vita-dell-attestato-elettronico">
+<h4><span class="section-number">13.4.1.2.1. </span>Stato del Dataset e Ciclo di Vita dell'Attestato Elettronico<a class="headerlink" href="#stato-del-dataset-e-ciclo-di-vita-dell-attestato-elettronico" title="Link to this heading">¶</a></h4>
+<p>La Fonte Autentica gestisce la validità degli Attributi dell'Utente (dataset); il Fornitore di Attestati Elettronici gestisce il ciclo di vita dell'Attestato Elettronico. Quando il Fornitore di Attestati Elettronici riceve un Segnale UPDATE o interroga l'endpoint Get Attribute Claims, ispeziona lo <code class="docutils literal notranslate"><span class="pre">status</span></code> di ogni dataset e aggiorna l'Attestato Elettronico corrispondente di conseguenza:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Stato del dataset</p></th>
+<th class="head"><p>Condizione tipica del dataset</p></th>
+<th class="head"><p>Effetto sull'Attestato Elettronico (azione del Fornitore di Attestati Elettronici)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>VALID</p></td>
+<td><p>Dataset non revocato/sospeso (include Issued e Expired; scadenza verificata via metadata)</p></td>
+<td><p>L'Attestato Elettronico può rimanere Valido (scadenza verificata via expiry_date, nbf/exp)</p></td>
+</tr>
+<tr class="row-odd"><td><p>INVALID</p></td>
+<td><p>Dataset attivamente revocato dalla Fonte Autentica</p></td>
+<td><p>Stato dell'Attestato Elettronico aggiornato a Revoked (Status List: INVALID)</p></td>
+</tr>
+<tr class="row-even"><td><p>SUSPENDED</p></td>
+<td><p>Temporaneamente non valido (es. in verifica)</p></td>
+<td><p>Stato dell'Attestato Elettronico aggiornato a Suspended (Status List: SUSPENDED)</p></td>
+</tr>
+</tbody>
+</table>
+<p>I dataset Issued e Expired ricadono in VALID; il Fornitore di Attestati Elettronici verifica la scadenza tramite metadata claims (es. <code class="docutils literal notranslate"><span class="pre">expiry_date</span></code>, <code class="docutils literal notranslate"><span class="pre">nbf</span></code>/<code class="docutils literal notranslate"><span class="pre">exp</span></code>). Per i dettagli completi sul flusso di aggiornamento dello stato, vedere <a class="reference internal" href="credential-revocation.html#aggiornamento-dello-stato-da-parte-delle-fonti-autentiche"><span class="std std-ref">Aggiornamento dello Stato da parte delle Fonti Autentiche</span></a>.</p>
 <p>La risposta in caso di successo (HTTP 200) restituisce un oggetto <code class="docutils literal notranslate"><span class="pre">CredentialClaimsResponse</span></code> formattato come <strong>Payload JSON</strong>.</p>
+</section>
 <section id="verifica-della-firma-e-gestione-chiavi">
-<h4><span class="section-number">13.4.1.2.1. </span>Verifica della Firma e Gestione Chiavi<a class="headerlink" href="#verifica-della-firma-e-gestione-chiavi" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">13.4.1.2.2. </span>Verifica della Firma e Gestione Chiavi<a class="headerlink" href="#verifica-della-firma-e-gestione-chiavi" title="Link to this heading">¶</a></h4>
 <p>Essendo il token di risposta firmato, il Credential Issuer (Fruitore) DEVE verificare la firma per garantire l'integrità e l'autenticità dei dati ricevuti dalla Fonte Autentica.</p>
 <p>Il processo di verifica e recupero delle chiavi DEVE seguire rigorosamente il pattern standard definito per gli <strong>e-Service PDND</strong>.
 Si rimanda all'Appendice tecnica (Sezione <a class="reference internal" href="e-service-pdnd.html#e-service-pdnd"><span class="std std-ref">e-Service PDND</span></a>) per i dettagli sulla validazione del JWT e per le specifiche sul recupero della chiave pubblica dell'Erogatore tramite API di Interoperabilità.</p>
@@ -301,7 +328,8 @@ Si rimanda all'Appendice tecnica (Sezione <a class="reference internal" href="e-
 <li><a class="reference internal" href="#catalogo-degli-e-service-pdnd-delle-fonti-autentiche">13.4.1. Catalogo degli e-Service PDND delle Fonti Autentiche</a><ul>
 <li><a class="reference internal" href="#get-attribute-claims">13.4.1.1. Get Attribute Claims</a></li>
 <li><a class="reference internal" href="#esempio-di-risposta-della-authentic-source">13.4.1.2. Esempio di risposta della Authentic Source</a><ul>
-<li><a class="reference internal" href="#verifica-della-firma-e-gestione-chiavi">13.4.1.2.1. Verifica della Firma e Gestione Chiavi</a></li>
+<li><a class="reference internal" href="#stato-del-dataset-e-ciclo-di-vita-dell-attestato-elettronico">13.4.1.2.1. Stato del Dataset e Ciclo di Vita dell'Attestato Elettronico</a></li>
+<li><a class="reference internal" href="#verifica-della-firma-e-gestione-chiavi">13.4.1.2.2. Verifica della Firma e Gestione Chiavi</a></li>
 </ul>
 </li>
 </ul>
