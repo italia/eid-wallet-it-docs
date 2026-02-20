@@ -210,8 +210,39 @@ This OpenAPI specification can be extended by the Authentic Sources, in fact, th
 </dl>
 </div>
 </section>
+<section id="credential-lifecycle-states-mapping">
+<h3><span class="section-number">13.4.1.2. </span>Credential Lifecycle States Mapping<a class="headerlink" href="#credential-lifecycle-states-mapping" title="Link to this heading">¶</a></h3>
+<p>To ensure consistency between the &quot;Electronic Attestation Lifecycle&quot; documented in <a class="reference internal" href="credential-revocation.html#digital-credential-lifecycle"><span class="std std-ref">Digital Credential Lifecycle</span></a> and the OpenAPI status Enum, the following mapping and operational logic MUST be applied for the <code class="docutils literal notranslate"><span class="pre">status</span></code> field in the <code class="docutils literal notranslate"><span class="pre">attributeClaims</span></code>.</p>
+<p><strong>Directionality and Responsibility:</strong>
+State changes of a Digital Credential at the Credential Issuer level DO NOT imply a change at the Authentic Source. Conversely, any state change of a dataset at the Authentic Source MUST be processed by the Credential Issuer to update the technical Digital Credential status.</p>
+<p><strong>Operational Guidance:</strong></p>
+<ul class="simple">
+<li><p><strong>Technical vs Administrative Validity</strong>: Digital Credentials distinguish between a <strong>technical validity</strong> set by the Credential Issuer (claims <code class="docutils literal notranslate"><span class="pre">iat</span></code> and <code class="docutils literal notranslate"><span class="pre">exp</span></code>) and an <strong>administrative validity</strong> determined by the Authentic Source (claims <code class="docutils literal notranslate"><span class="pre">issuance_date</span></code> and <code class="docutils literal notranslate"><span class="pre">expiry_date</span></code>).</p></li>
+<li><p><strong>Expiry Hierarchy</strong>: The technical expiry (<code class="docutils literal notranslate"><span class="pre">exp</span></code>) MUST NOT be later than the administrative expiry (<code class="docutils literal notranslate"><span class="pre">expiry_date</span></code>). For example, a driver's license may be administratively valid for 10 years, while the issued Digital Credential may have a technical expiry of 1 year.</p></li>
+<li><p><strong>Re-issuance</strong>: If a Digital Credential reaches its technical expiry (<code class="docutils literal notranslate"><span class="pre">exp</span></code>) but the dataset is still administratively valid, the OpenAPI status remains <code class="docutils literal notranslate"><span class="pre">VALID</span></code>, allowing the Digital Credential to be re-issued multiple times within the administrative timeframe.</p></li>
+<li><p><strong>Metadata Verification</strong>: The Credential Issuer MUST verify the effective usability by checking both the technical claims and the administrative dates.</p></li>
+<li><p><strong>Irreversibility</strong>: After a transition to <code class="docutils literal notranslate"><span class="pre">INVALID</span></code>, the Digital Credential cannot return to a <code class="docutils literal notranslate"><span class="pre">VALID</span></code> state. A new issuance is required for a new dataset. This applies to both explicit revocation and administrative expiry.</p></li>
+<li><p><strong>Signal Processing</strong>: Signals MUST be processed sequentially. If a Signal invalidates a Digital Credential, subsequent correction Signals for the same object are ignored.</p></li>
+</ul>
+<p><strong>Status Mapping and Case Logic:</strong></p>
+<p>The Credential Issuer MUST update the Digital Credential <code class="docutils literal notranslate"><span class="pre">status</span></code> based on Signals received from the Authentic Source via Signal Hub (<code class="docutils literal notranslate"><span class="pre">signalType=UPDATE</span></code>):</p>
+<ul class="simple">
+<li><p><strong>Revocation</strong>: If a dataset is revoked at the Authentic Source (status <code class="docutils literal notranslate"><span class="pre">INVALID</span></code>), the Credential Issuer MUST revoke the Digital Credentials that use that dataset (status transition from <code class="docutils literal notranslate"><span class="pre">VALID/SUSPENDED</span></code> to <code class="docutils literal notranslate"><span class="pre">INVALID</span></code>).</p></li>
+<li><p><strong>Suspension</strong>: If a dataset is suspended at the Authentic Source (status <code class="docutils literal notranslate"><span class="pre">SUSPENDED</span></code>), the Credential Issuer MUST suspend the Digital Credentials (status transition from <code class="docutils literal notranslate"><span class="pre">VALID</span></code> to <code class="docutils literal notranslate"><span class="pre">SUSPENDED</span></code>).</p></li>
+<li><p><strong>Restoration</strong>: If a suspended dataset returns to <code class="docutils literal notranslate"><span class="pre">VALID</span></code> at the Authentic Source, the Credential Issuer MUST restore the Digital Credential validity (status transition from <code class="docutils literal notranslate"><span class="pre">SUSPENDED</span></code> to <code class="docutils literal notranslate"><span class="pre">VALID</span></code>).</p></li>
+<li><p><strong>Modification</strong>: If a dataset is modified but remains <code class="docutils literal notranslate"><span class="pre">VALID</span></code> at the Authentic Source, the Credential Issuer—detecting the change via the <code class="docutils literal notranslate"><span class="pre">last_updated</span></code> field—assigns the technical status <code class="docutils literal notranslate"><span class="pre">ATTRIBUTE_UPDATE</span></code> to the Digital Credential. This triggers a re-issuance flow when the Wallet Instance checks the status.</p></li>
+<li><dl class="simple">
+<dt><strong>Administrative Expiry</strong>:</dt><dd><ul>
+<li><p><strong>Scenario A (Metadata-driven)</strong>: If <code class="docutils literal notranslate"><span class="pre">expiry_date</span></code> was shared with the Credential Issuer in metadata, the Authentic Source DOES NOT send Signals upon expiry; the Credential Issuer manages the lifecycle independently ensuring technical <code class="docutils literal notranslate"><span class="pre">exp</span></code> &lt;= <code class="docutils literal notranslate"><span class="pre">expiry_date</span></code>.</p></li>
+<li><p><strong>Scenario B (Signal-driven)</strong>: If <code class="docutils literal notranslate"><span class="pre">expiry_date</span></code> is NOT present in metadata and the dataset expires, the Authentic Source MUST set its status to <code class="docutils literal notranslate"><span class="pre">INVALID</span></code> and send a Signal via Signal Hub; the Credential Issuer then revokes the Digital Credentials (status transition to <code class="docutils literal notranslate"><span class="pre">INVALID</span></code>).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
 <section id="example-of-authentic-source-response">
-<h3><span class="section-number">13.4.1.2. </span>Example of Authentic Source response<a class="headerlink" href="#example-of-authentic-source-response" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">13.4.1.3. </span>Example of Authentic Source response<a class="headerlink" href="#example-of-authentic-source-response" title="Link to this heading">¶</a></h3>
 <p>The endpoint response MUST use the HTTP Content-Type set to <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. Below is a concrete example with fictitious data to clarify the expected shape and content.</p>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-number">Listing 13.1 </span><span class="caption-text">Example of the response JSON payload (Get Attribute Claims)</span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
@@ -268,7 +299,7 @@ This OpenAPI specification can be extended by the Authentic Sources, in fact, th
 <li><p><strong>interval</strong>: required when the request does not include a <code class="docutils literal notranslate"><span class="pre">claims</span></code> parameter; indicates the number of seconds to wait before repeating the request (e.g. 864000 = 10 days).</p></li>
 </ul>
 <section id="dataset-status-and-digital-credential-lifecycle">
-<h4><span class="section-number">13.4.1.2.1. </span>Dataset Status and Digital Credential Lifecycle<a class="headerlink" href="#dataset-status-and-digital-credential-lifecycle" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">13.4.1.3.1. </span>Dataset Status and Digital Credential Lifecycle<a class="headerlink" href="#dataset-status-and-digital-credential-lifecycle" title="Link to this heading">¶</a></h4>
 <p>The Authentic Source manages the validity of the User's attributes (datasets); the Credential Issuer manages the Digital Credential lifecycle. When the Credential Issuer receives an UPDATE Signal or queries the Get Attribute Claims endpoint, it inspects the <code class="docutils literal notranslate"><span class="pre">status</span></code> of each dataset and updates the corresponding Digital Credential accordingly:</p>
 <table class="docutils align-default">
 <thead>
@@ -296,7 +327,7 @@ This OpenAPI specification can be extended by the Authentic Sources, in fact, th
 <p>The successful response (HTTP 200) returns a <code class="docutils literal notranslate"><span class="pre">CredentialClaimsResponse</span></code> object formatted as a <strong>Payload JSON</strong>.</p>
 </section>
 <section id="signature-verification-and-key-management">
-<h4><span class="section-number">13.4.1.2.2. </span>Signature Verification and Key Management<a class="headerlink" href="#signature-verification-and-key-management" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">13.4.1.3.2. </span>Signature Verification and Key Management<a class="headerlink" href="#signature-verification-and-key-management" title="Link to this heading">¶</a></h4>
 <p>As the response token is signed, the Credential Issuer (Consumer) MUST verify the signature to ensure the integrity and authenticity of the data received from the Authentic Source.</p>
 <p>The signature verification and key retrieval process MUST strictly follow the standard pattern defined for <strong>PDND e-Services</strong>.
 Please refer to the Technical Appendix (Section <a class="reference internal" href="e-service-pdnd.html#e-service-pdnd"><span class="std std-ref">e-Service PDND</span></a>) for details on JWT validation and specifications for retrieving the Provider's public key via the Interoperability API.</p>
@@ -326,9 +357,10 @@ Please refer to the Technical Appendix (Section <a class="reference internal" hr
 <li><a class="reference internal" href="#">13.4. Authentic Source Endpoints</a><ul>
 <li><a class="reference internal" href="#e-service-pdnd-authentic-source-catalog">13.4.1. e-Service PDND Authentic Source Catalog</a><ul>
 <li><a class="reference internal" href="#get-attribute-claims">13.4.1.1. Get Attribute Claims</a></li>
-<li><a class="reference internal" href="#example-of-authentic-source-response">13.4.1.2. Example of Authentic Source response</a><ul>
-<li><a class="reference internal" href="#dataset-status-and-digital-credential-lifecycle">13.4.1.2.1. Dataset Status and Digital Credential Lifecycle</a></li>
-<li><a class="reference internal" href="#signature-verification-and-key-management">13.4.1.2.2. Signature Verification and Key Management</a></li>
+<li><a class="reference internal" href="#credential-lifecycle-states-mapping">13.4.1.2. Credential Lifecycle States Mapping</a></li>
+<li><a class="reference internal" href="#example-of-authentic-source-response">13.4.1.3. Example of Authentic Source response</a><ul>
+<li><a class="reference internal" href="#dataset-status-and-digital-credential-lifecycle">13.4.1.3.1. Dataset Status and Digital Credential Lifecycle</a></li>
+<li><a class="reference internal" href="#signature-verification-and-key-management">13.4.1.3.2. Signature Verification and Key Management</a></li>
 </ul>
 </li>
 </ul>
