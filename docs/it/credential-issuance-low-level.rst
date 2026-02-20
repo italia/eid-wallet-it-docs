@@ -598,6 +598,13 @@ Per garantire l'integrità e la sicurezza del Re-issuance Flow, si applicano le 
 
 .. _credential-issuance-low-level-credential-offer-flow:
 
+.. note::
+    Durante ogni transazione di emissione di un Attestato Elettronico e, ove supportato, ogni transazione di riemissione/aggiornamento eseguita tramite i flussi descritti in questa sezione, l'Istanza del Wallet DEVE creare e mantenere un corrispondente record di transazione nel registro delle transazioni dell'Istanza del Wallet (vedi :ref:`wallet-instance-dashboard:Dashboard dell’Istanza del Wallet e Registrazione delle Transazioni`).
+
+    L'Istanza del Wallet DEVE creare un record di transazione per ogni processo di emissione. Il record DEVE acquisire le informazioni di contesto rilevanti necessarie a garantire tracciabilità e responsabilizzazione della transazione.
+
+    Il record DEVE essere aggiornato man mano che il flusso progredisce per riflettere lo stato della transazione e l'esito (ad es., il/i tipo/i di Attestato emesso/i e la quantità). Nei casi in cui la transazione non si completi con successo, il record DEVE indicare la corrispondente motivazione della mancata conclusione.
+
 Flusso Credential Offer
 -----------------------
 

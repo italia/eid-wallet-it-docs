@@ -170,6 +170,15 @@ Di seguito è riportato un esempio non normativo di ``SessionData`` nella notazi
 
 **Considerazione Finale**: Il flusso di presentazione si è concentrato sullo scambio tecnico di dati in contesti di prossimità. È cruciale riconoscere che i flussi di prossimità supervisionati che coinvolgono un verificatore umano svolgono un ruolo vitale in molti casi d'uso (ad esempio, verifica dell'età in un negozio, controllo dell'identità da parte delle forze dell'ordine). L'elemento umano aggiunge un livello di verifica dell'identità attraverso l'ispezione visiva e il confronto, contribuendo agli aspetti di User Binding e garanzia di autenticazione complessiva non completamente catturati in un flusso di presentazione puramente tecnico.
 
+.. note::
+    Durante ciascuna transazione di presentazione di credenziali eseguita tramite il Proximity Flow, la Wallet Instance DEVE creare e mantenere un corrispondente record di transazione nel registro delle transazioni (vedere :ref:`wallet-instance-dashboard:Dashboard dell’Istanza del Wallet e Registrazione delle Transazioni`).
+
+    Il record di transazione DEVE essere creato una volta che la Wallet Instance ha stabilito con successo la sessione e ha accettato il reader per l’elaborazione (ossia, dopo aver decifrato il messaggio ``SessionEstablishment`` e verificato l’autenticazione del reader, Passo 10). A questo punto, il record DEVE includere i metadati della transazione e il contesto della richiesta disponibile in quella fase (ad esempio, il/i tipo/i di attestazione richiesti come ``docType`` e l’/gli identificativo/i degli attributi richiesti), senza registrare alcun valore degli attributi.
+
+    Il record DEVE essere aggiornato man mano che la transazione procede, in modo da riflettere l’evoluzione dello stato della transazione e il contesto del risultato (ad esempio, quanto effettivamente presentato dopo il consenso dell’Utente e la preparazione/invio della risposta, Passi 11–12), senza registrare alcun valore degli attributi.
+
+    Il record DEVE essere finalizzato al termine della transazione, indicando l’esito (ad esempio, completata, fallita o sessione terminata; Passi 13–14 e Session Termination).
+
 .. _sec-deviceengagement-qr:
 
 ``DeviceEngagement`` tramite QR Code

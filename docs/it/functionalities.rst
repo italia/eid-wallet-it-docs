@@ -1101,13 +1101,15 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
     Esempio di Esperienza Utente nella Revoca di un Attestato Elettronico da Wallet
 
 
-Storico degli Attestati Elettronici 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Registrazione delle Transazioni
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Al fine di garantire i principi di visibilità e trasparenza, il Fornitore di Wallet DEVE permettere all'Utente di visualizzare lo storico di tutte le transazioni effettuate, ovvero l'utilizzo degli Attestati Elettronici di Attributi tramite l'Istanza del Wallet. In particolare: 
+Al fine di garantire i principi di visibilità e trasparenza, il Fornitore di Wallet DEVE mettere a disposizione, nell’Istanza del Wallet, una dashboard intuitiva che consenta all’Utente di visualizzare lo storico delle transazioni effettuate tramite la propria Istanza del Wallet (ad esempio, emissione o presentazione di Attestati Elettronici). In particolare, la dashboard DEVE:
 
-- l'Istanza del Wallet DEVE mostrare all'Utente con quali Verificatori di Attestati Elettronici ha interagito e quali Attestati Elettronici sono stati oggetto di presentazione e verifica; 
-- l'Istanza del Wallet DEVE permettere all'Utente di richiedere facilmente al Verificatore di Attestati Elettronici la cancellazione delle proprie informazioni oggetto delle precedenti presentazioni. 
+- fornire una panoramica di tutte le transazioni registrate e consentire all’Utente di accedere a viste di dettaglio delle singole transazioni;
+- consentire all’Utente, qualora una transazione coinvolga una Relying Party, di avviare facilmente una richiesta di cancellazione dei dati verso la relativa Relying Party (utilizzando le informazioni di contatto registrate);
+- supportare l’esportazione di uno o più record di transazione in un file;
+- consentire all’Utente di cancellare uno o più record di transazione, previa adeguata informativa.
 
 Archiviazione e ripristino degli Attestati Elettronici di Attributi 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -87,6 +87,13 @@ For each Digital Credential that is issued to the Wallet Instance, this componen
 .. note::
    Currently the re-issuance of the PID is not managed by the Backup and Restore Component.
 
+Dashboard and Transaction Log
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+This component MUST provide the Wallet Unit dashboard and transaction log functionality. In particular, this component MUST:
+
+- provide a user-accessible interface enabling the User to access transaction transparency information;
+- maintain a transaction log of transactions executed through the Wallet Unit, including non-completed transactions;
+- support User interaction with transaction records, including viewing, export, and deletion.
 
 Secure Storage
 ^^^^^^^^^^^^^^

@@ -23,3 +23,4 @@ Ciascuna funzionalità è descritta in dettaglio nelle sezioni seguenti.
   wallet-attestation-issuance.rst
   wallet-instance-revocation.rst
   user-attribute-deletion.rst
+  wallet-instance-dashboard.rst

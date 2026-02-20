@@ -479,7 +479,6 @@ Below is a non-normative example of a successful response containing a batch of 
    For batch-issued Digital Credentials, a single ``notification_id`` covers the entire batch-issued Credentials. The notification response (e.g. ``credential_accepted`` or ``credential_stored``) applies to all Credentials, any partial failure is treated as a batch failure. 
 
 
-
 Refresh Token Flow
 ------------------
 
@@ -635,6 +634,13 @@ To ensure the integrity and security of the re-issuance process, the following s
   - Credential expiry: The Credential Issuer MUST set the same expiry date for the re-issued Digital Credential as the previous one. This prevents indefinite Credential renewals without proper User authentication.
   - User consent: For re-issuance processes triggered by attribute changes, User consent MUST be obtained before storing the new Digital Credential. This ensures that the User is aware of and agrees to the updated information.
   - Sender-constrained Refresh Token: Refresh Tokens MUST be cryptographically bound to the Wallet Instance using DPoP protocol. This mitigates the risk of token misuse by ensuring that only the intended Wallet Instance (the same that originally has obtained the Digital Credential) can use that Refresh Token.
+
+.. note::
+    During each credential issuance and, where supported, each re-issuance/refresh transaction executed through the flows described in this section, the Wallet Instance MUST create and maintain a corresponding transaction record in the Wallet Instance transaction log (see :ref:`wallet-instance-dashboard:Wallet Instance Dashboard and Transaction Logging`).
+
+    The Wallet Instance MUST create a transaction record for each credential issuance process. The record MUST capture relevant contextual information necessary to ensure traceability and accountability of the transaction.
+
+    The record MUST be updated as the flow progresses to reflect the evolving transaction state and outcome context (e.g., the issued credential type(s) and quantity). In cases where the transaction does not complete successfully, the record MUST indicate the corresponding reason for non-completion.
 
 
 Credential Offer Flow
