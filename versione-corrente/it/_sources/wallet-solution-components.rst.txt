@@ -87,6 +87,14 @@ Per ogni Credenziale Elettronica emessa all'Istanza del Wallet, questo component
 .. note::
    Attualmente la riemissione del PID non è gestita dal Componente di Backup e Ripristino.
 
+Dashboard e Registro delle Transazioni
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Questo componente DEVE fornire le funzionalità di dashboard e di registro delle transazioni della Wallet Unit. In particolare, questo componente DEVE:
+
+- fornire un’interfaccia accessibile all’Utente che consenta all’Utente di accedere alle informazioni di trasparenza delle transazioni;
+- mantenere un registro delle transazioni eseguite tramite la Wallet Unit, incluse le transazioni non completate;
+- supportare l’interazione dell’Utente con i record di transazione, inclusa la visualizzazione, l’esportazione e la cancellazione.
 
 Archiviazione Sicura
 ^^^^^^^^^^^^^^^^^^^^

@@ -8,7 +8,7 @@ The retention of logs is a key element for ensuring security, including fraud pr
 
 For all about log handling, Wallet Providers, Credential Issuers, and Relying Parties are considered Organizational Entities.
 
-Logs related to Wallet data exchange activities (accesses, transactions, Credential issuance/revocation) concerning the User, as the data subject, MUST be retained for a limited period for security, fraud prevention, dispute resolution, and legal obligations.
+Logs related to Wallet data exchange activities (e.g., accesses and transactions for Credential issuance and presentation) concerning the User, as the data subject, MUST be retained for a limited period for security, fraud prevention, dispute resolution, and legal obligations.
 
 Organizational Entities are responsible for log retention according to their respective roles. Solutions related to Wallet Providers, Credential Issuers, and Relying Parties MUST implement audit logging for the activities of administrators and service operators with access to data exchange processes and logs.
 

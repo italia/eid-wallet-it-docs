@@ -437,6 +437,13 @@ Di seguito è riportato un esempio non normativo della risposta con il redirect_
 </div>
 </div></blockquote>
 <p><strong>Passaggi 28-29</strong>: Lo user-agent viene reindirizzato al <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> per continuare la navigazione con la risorsa protetta resa disponibile all'Utente (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_094</span></a>).</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Durante ciascuna transazione di presentazione di credenziali eseguita tramite il flusso remoto, l'Istanza del Wallet DEVE creare e mantenere un corrispondente record di transazione nel registro delle transazioni (vedere <a class="reference internal" href="wallet-instance-dashboard.html#dashboard-dellistanza-del-wallet-e-registrazione-delle-transazioni"><span class="std std-ref">Dashboard dell’Istanza del Wallet e Registrazione delle Transazioni</span></a>).</p>
+<p>Il record di transazione DEVE essere creato una volta che l'Istanza del Wallet ha accettato la richiesta di presentazione per l’elaborazione (ossia, dopo la validazione della richiesta e i controlli di trust/policy della Relying Party, Passaggi 13–15). A questo punto, il record DEVE includere i metadati della transazione e il contesto della richiesta disponibile in quella fase (ad esempio, il/i tipo/i di Credenziale richiesti e l’/gli identificativo/i degli attributi richiesti), senza registrare alcun valore degli attributi.</p>
+<p>Il record DEVE essere aggiornato man mano che la transazione procede, in modo da riflettere l’evoluzione dello stato della transazione e il contesto del risultato (ad esempio, quanto effettivamente presentato dopo il consenso dell’Utente e la preparazione/invio della risposta, Passaggi 16–18), senza registrare alcun valore degli attributi.</p>
+<p>Il record DEVE essere finalizzato al termine della transazione, indicando l’esito (ad esempio, completata, fallita o interrotta; Passaggi 23–29).</p>
+</div>
 <section id="authorization-request">
 <h2><span class="section-number">12.2.1.1. </span>Authorization Request<a class="headerlink" href="#authorization-request" title="Link to this heading">¶</a></h2>
 <p>I parametri URL contenuti nella Authorization Request della Relying Party sono descritti nella tabella seguente.</p>

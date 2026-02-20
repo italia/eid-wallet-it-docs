@@ -27,7 +27,7 @@ This Wallet Instance functionality allows Users to obtain a list of all Relying 
 
 **Steps 4 - 5:** The Wallet Instance obtains the Relying Party Entity Configuration at the Federation ./well-known/ endpoint. The URL or the Erasure Endpoint (``erasure_endpoint``) can be found inside the metadata parameter (:ref:`WP_116 <user-attribute-deletion-testcases>`).
 
-**Step 6:** The Wallet Instance logs the Erasure Request's relevant information. These logs MUST include at least (:ref:`WP_117a <user-attribute-deletion-testcases>`):
+**Step 6:** The Wallet Instance logs the Erasure Request's relevant information as defined in :ref:`wallet-instance-dashboard:Wallet Instance Dashboard and Transaction Logging`. These logs MUST include at least (:ref:`WP_117a <user-attribute-deletion-testcases>`):
   * the date of request,
   * the Relying Party to which the request was made,
   * the attributes requested to be removed.

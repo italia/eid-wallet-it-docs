@@ -248,6 +248,9 @@
 <tr class="row-odd"><td><p><strong>[AUDIT_REST_02]</strong> Submission of audit data within the REST request with correlation (<em>Annex 2 - Security Patterns</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]): OPTIONAL. The Provider MAY request additional data tracked in the Consumer's domain, with a correlation between such data and the authentication method. In that case, this pattern MUST be used.</p></td>
 <td><p>R3, R4</p></td>
 </tr>
+<tr class="row-even"><td><p><strong>[ID_AUTH_REST_01]</strong> Direct Trust based on PDND via Platform-issued JWT tokens (<em>Annex 2 - Security Patterns</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]).</p></td>
+<td><p>R1, R2, R4, R5</p></td>
+</tr>
 </tbody>
 </table>
 <div class="admonition note">
@@ -260,8 +263,7 @@
 <li><p>The following patterns can only be used when the Consumer cannot subscribe to the PDND infrastructure (i.e., the trust between the Participants needs to be established in a direct form), thus not complying with <strong>R1</strong>:</p>
 <ul>
 <li><p><strong>[ID_AUTH_CHANNEL_02]</strong> Direct Trust mutual Transport-Level Security (<em>Annex 2 - Security Patterns</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>])</p></li>
-<li><p><strong>[ID_AUTH_REST_01]</strong> Direct Trust based on X.509 certificate with REST (<em>Annex 2 - Security Patterns</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]).</p></li>
-<li><p><strong>[ID_AUTH_REST_02]</strong> Direct Trust based on X.509 certificate with REST and token/message uniqueness (<em>Annex 2 - Security Patterns</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]).</p></li>
+<li><p><strong>[ID_AUTH_REST_02]</strong> Direct Trust based on PDND via Platform-issued JWT tokens and token/message uniqueness (<em>Annex 2 - Security Patterns</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]).</p></li>
 <li><p><strong>[INTEGRITY_REST_01]</strong> REST Payload Integrity (<em>Annex 2 - Security Patterns</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]).</p></li>
 </ul>
 </li>
