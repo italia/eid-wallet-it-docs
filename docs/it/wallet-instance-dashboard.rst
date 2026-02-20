@@ -1,5 +1,6 @@
 .. include:: ../common/common_definitions.rst
 
+.. _wallet-instance-dashboard-transaction-registry:
 
 Dashboard dell’Istanza del Wallet e Registrazione delle Transazioni
 ===================================================================
