@@ -389,7 +389,7 @@ The instantiation process will result in a new e-service that <strong>MUST</stro
 <span class="linenos"> 63</span><span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
 <span class="linenos"> 64</span><span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/ProblemDetails&quot;</span>
 <span class="linenos"> 65</span><span class="w">          </span><span class="nt">headers</span><span class="p">:</span>
-<span class="linenos"> 66</span><span class="w">            </span><span class="c1"># RFC 6585 defines Retry-After. X-RateLimit-Limit, X-RateLimit-Remaining and X-RateLimit-Reset are not requires because redundant with Retry-After.</span>
+<span class="linenos"> 66</span><span class="w">            </span><span class="c1"># RFC 6585 defines Retry-After. X-RateLimit-Limit, X-RateLimit-Remaining and X-RateLimit-Reset are not required because redundant along with Retry-After.</span>
 <span class="linenos"> 67</span><span class="w">            </span><span class="nt">Retry-After</span><span class="p">:</span>
 <span class="linenos"> 68</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RetryAfterHeader&quot;</span>
 <span class="linenos"> 69</span><span class="w">        </span><span class="s">&quot;503&quot;</span><span class="p p-Indicator">:</span>
@@ -573,7 +573,7 @@ The instantiation process will result in a new e-service that <strong>MUST</stro
 <span class="linenos">247</span><span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
 <span class="linenos">248</span><span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/ProblemDetails&quot;</span>
 <span class="linenos">249</span><span class="w">          </span><span class="nt">headers</span><span class="p">:</span>
-<span class="linenos">250</span><span class="w">            </span><span class="c1"># RFC 6585 defines Retry-After. X-RateLimit-Limit, X-RateLimit-Remaining and X-RateLimit-Reset are not requires because redundant with Retry-After.</span>
+<span class="linenos">250</span><span class="w">            </span><span class="c1"># RFC 6585 defines Retry-After. X-RateLimit-Limit, X-RateLimit-Remaining and X-RateLimit-Reset are not required because redundant along with Retry-After.</span>
 <span class="linenos">251</span><span class="w">            </span><span class="nt">Retry-After</span><span class="p">:</span>
 <span class="linenos">252</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RetryAfterHeader&quot;</span>
 <span class="linenos">253</span><span class="w">        </span><span class="s">&quot;500&quot;</span><span class="p p-Indicator">:</span>
