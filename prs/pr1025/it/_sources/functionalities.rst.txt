@@ -120,7 +120,7 @@ Per assicurare un’identificazione e una rappresentazione del PID coerente tra 
 
 .. only:: format_html
 
-  .. figure:: ../../official_resources/IT-Wallet-ID.svg
+  .. figure:: ../../official_resources/IT-Wallet-ID/IT-Wallet-ID-Primary-BlueItalia.svg
     :alt: Elemento grafico “IT-Wallet ID” su sfondo chiaro 
     :width: 100%
     :align: center
@@ -956,7 +956,7 @@ Per approfondimenti sull'Authentication button consultare il Brand Manual, indic
 
 .. only:: format_html
 
-  .. figure:: ../../official_resources/Authentication-button-ITA.svg
+  .. figure:: ../../official_resources/Authentication-button-ITA_size_variants.svg
      :alt: Authentication button nelle varianti di dimensione (S, M, L)
      :width: 100%
      :align: center
@@ -975,7 +975,7 @@ Per approfondimenti sull'Authentication button consultare il Brand Manual, indic
 
 .. only:: format_html
 
-  .. figure:: ../../official_resources/Authentication-Button-ITA-Fixed-Justified.svg
+  .. figure:: ../../official_resources/IT-Wallet-Authentication-Button/ITA/IT-Wallet-Authentication-Button-ITA-Fixed-Justified.svg
      :alt: Authentication button giustificato, a larghezza fissa
      :width: 100%
      :align: center
@@ -993,7 +993,7 @@ Per approfondimenti sull'Authentication button consultare il Brand Manual, indic
 
 .. only:: format_html
 
-  .. figure:: ../../official_resources/Authentication-Button-ITA-Fixed-Centered.svg
+  .. figure:: ../../official_resources/IT-Wallet-Authentication-Button/ITA/IT-Wallet-Authentication-Button-ITA-Fixed-Centered.svg
      :alt: Authentication button centrato, a larghezza fissa
      :width: 100%
      :align: center

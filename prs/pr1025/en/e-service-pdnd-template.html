@@ -362,11 +362,11 @@ The instantiation process will result in a new e-service that <strong>MUST</stro
 <span class="linenos"> 35</span><span class="w">          </span><span class="nt">headers</span><span class="p">:</span>
 <span class="linenos"> 36</span><span class="w">            </span><span class="nt">Cache-Control</span><span class="p">:</span>
 <span class="linenos"> 37</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/CacheControlHeader&quot;</span>
-<span class="linenos"> 38</span><span class="w">            </span><span class="nt">RateLimit-Limit</span><span class="p">:</span>
+<span class="linenos"> 38</span><span class="w">            </span><span class="nt">X-RateLimit-Limit</span><span class="p">:</span>
 <span class="linenos"> 39</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RateLimitLimitHeader&quot;</span>
-<span class="linenos"> 40</span><span class="w">            </span><span class="nt">RateLimit-Remaining</span><span class="p">:</span>
+<span class="linenos"> 40</span><span class="w">            </span><span class="nt">X-RateLimit-Remaining</span><span class="p">:</span>
 <span class="linenos"> 41</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RateLimitRemainingHeader&quot;</span>
-<span class="linenos"> 42</span><span class="w">            </span><span class="nt">RateLimit-Reset</span><span class="p">:</span>
+<span class="linenos"> 42</span><span class="w">            </span><span class="nt">X-RateLimit-Reset</span><span class="p">:</span>
 <span class="linenos"> 43</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RateLimitResetHeader&quot;</span>
 <span class="linenos"> 44</span><span class="w">        </span><span class="s">&quot;429&quot;</span><span class="p p-Indicator">:</span>
 <span class="linenos"> 45</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Too Many Requests</span>
@@ -375,11 +375,11 @@ The instantiation process will result in a new e-service that <strong>MUST</stro
 <span class="linenos"> 48</span><span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
 <span class="linenos"> 49</span><span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/ProblemDetails&quot;</span>
 <span class="linenos"> 50</span><span class="w">          </span><span class="nt">headers</span><span class="p">:</span>
-<span class="linenos"> 51</span><span class="w">            </span><span class="nt">RateLimit-Limit</span><span class="p">:</span>
+<span class="linenos"> 51</span><span class="w">            </span><span class="nt">X-RateLimit-Limit</span><span class="p">:</span>
 <span class="linenos"> 52</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RateLimitLimitHeader&quot;</span>
-<span class="linenos"> 53</span><span class="w">            </span><span class="nt">RateLimit-Remaining</span><span class="p">:</span>
+<span class="linenos"> 53</span><span class="w">            </span><span class="nt">X-RateLimit-Remaining</span><span class="p">:</span>
 <span class="linenos"> 54</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RateLimitRemainingHeader&quot;</span>
-<span class="linenos"> 55</span><span class="w">            </span><span class="nt">RateLimit-Reset</span><span class="p">:</span>
+<span class="linenos"> 55</span><span class="w">            </span><span class="nt">X-RateLimit-Reset</span><span class="p">:</span>
 <span class="linenos"> 56</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RateLimitResetHeader&quot;</span>
 <span class="linenos"> 57</span><span class="w">        </span><span class="s">&quot;503&quot;</span><span class="p p-Indicator">:</span>
 <span class="linenos"> 58</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service Unavailable</span>
@@ -475,11 +475,11 @@ The instantiation process will result in a new e-service that <strong>MUST</stro
 <span class="linenos">148</span><span class="w">                </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SHA-256=79a20a744336420301830600ad9bdca993593f876209a004b599b583095b0a61</span>
 <span class="linenos">149</span><span class="w">            </span><span class="nt">Cache-Control</span><span class="p">:</span>
 <span class="linenos">150</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/CacheControlHeader&quot;</span>
-<span class="linenos">151</span><span class="w">            </span><span class="nt">RateLimit-Limit</span><span class="p">:</span>
+<span class="linenos">151</span><span class="w">            </span><span class="nt">X-RateLimit-Limit</span><span class="p">:</span>
 <span class="linenos">152</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RateLimitLimitHeader&quot;</span>
-<span class="linenos">153</span><span class="w">            </span><span class="nt">RateLimit-Remaining</span><span class="p">:</span>
+<span class="linenos">153</span><span class="w">            </span><span class="nt">X-RateLimit-Remaining</span><span class="p">:</span>
 <span class="linenos">154</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RateLimitRemainingHeader&quot;</span>
-<span class="linenos">155</span><span class="w">            </span><span class="nt">RateLimit-Reset</span><span class="p">:</span>
+<span class="linenos">155</span><span class="w">            </span><span class="nt">X-RateLimit-Reset</span><span class="p">:</span>
 <span class="linenos">156</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RateLimitResetHeader&quot;</span>
 <span class="linenos">157</span><span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="linenos">158</span><span class="w">            </span><span class="nt">application/json</span><span class="p">:</span>
@@ -521,11 +521,11 @@ The instantiation process will result in a new e-service that <strong>MUST</stro
 <span class="linenos">194</span><span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
 <span class="linenos">195</span><span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/ProblemDetails&quot;</span>
 <span class="linenos">196</span><span class="w">          </span><span class="nt">headers</span><span class="p">:</span>
-<span class="linenos">197</span><span class="w">            </span><span class="nt">RateLimit-Limit</span><span class="p">:</span>
+<span class="linenos">197</span><span class="w">            </span><span class="nt">X-RateLimit-Limit</span><span class="p">:</span>
 <span class="linenos">198</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RateLimitLimitHeader&quot;</span>
-<span class="linenos">199</span><span class="w">            </span><span class="nt">RateLimit-Remaining</span><span class="p">:</span>
+<span class="linenos">199</span><span class="w">            </span><span class="nt">X-RateLimit-Remaining</span><span class="p">:</span>
 <span class="linenos">200</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RateLimitRemainingHeader&quot;</span>
-<span class="linenos">201</span><span class="w">            </span><span class="nt">RateLimit-Reset</span><span class="p">:</span>
+<span class="linenos">201</span><span class="w">            </span><span class="nt">X-RateLimit-Reset</span><span class="p">:</span>
 <span class="linenos">202</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RateLimitResetHeader&quot;</span>
 <span class="linenos">203</span><span class="w">        </span><span class="s">&quot;401&quot;</span><span class="p p-Indicator">:</span>
 <span class="linenos">204</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Unauthorized</span>
@@ -534,11 +534,11 @@ The instantiation process will result in a new e-service that <strong>MUST</stro
 <span class="linenos">207</span><span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
 <span class="linenos">208</span><span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/ProblemDetails&quot;</span>
 <span class="linenos">209</span><span class="w">          </span><span class="nt">headers</span><span class="p">:</span>
-<span class="linenos">210</span><span class="w">            </span><span class="nt">RateLimit-Limit</span><span class="p">:</span>
+<span class="linenos">210</span><span class="w">            </span><span class="nt">X-RateLimit-Limit</span><span class="p">:</span>
 <span class="linenos">211</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RateLimitLimitHeader&quot;</span>
-<span class="linenos">212</span><span class="w">            </span><span class="nt">RateLimit-Remaining</span><span class="p">:</span>
+<span class="linenos">212</span><span class="w">            </span><span class="nt">X-RateLimit-Remaining</span><span class="p">:</span>
 <span class="linenos">213</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RateLimitRemainingHeader&quot;</span>
-<span class="linenos">214</span><span class="w">            </span><span class="nt">RateLimit-Reset</span><span class="p">:</span>
+<span class="linenos">214</span><span class="w">            </span><span class="nt">X-RateLimit-Reset</span><span class="p">:</span>
 <span class="linenos">215</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RateLimitResetHeader&quot;</span>
 <span class="linenos">216</span><span class="w">            </span><span class="nt">WWW-Authenticate</span><span class="p">:</span>
 <span class="linenos">217</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/WWWAuthenticateHeader&quot;</span>
@@ -549,11 +549,11 @@ The instantiation process will result in a new e-service that <strong>MUST</stro
 <span class="linenos">222</span><span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
 <span class="linenos">223</span><span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/ProblemDetails&quot;</span>
 <span class="linenos">224</span><span class="w">          </span><span class="nt">headers</span><span class="p">:</span>
-<span class="linenos">225</span><span class="w">            </span><span class="nt">RateLimit-Limit</span><span class="p">:</span>
+<span class="linenos">225</span><span class="w">            </span><span class="nt">X-RateLimit-Limit</span><span class="p">:</span>
 <span class="linenos">226</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RateLimitLimitHeader&quot;</span>
-<span class="linenos">227</span><span class="w">            </span><span class="nt">RateLimit-Remaining</span><span class="p">:</span>
+<span class="linenos">227</span><span class="w">            </span><span class="nt">X-RateLimit-Remaining</span><span class="p">:</span>
 <span class="linenos">228</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RateLimitRemainingHeader&quot;</span>
-<span class="linenos">229</span><span class="w">            </span><span class="nt">RateLimit-Reset</span><span class="p">:</span>
+<span class="linenos">229</span><span class="w">            </span><span class="nt">X-RateLimit-Reset</span><span class="p">:</span>
 <span class="linenos">230</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RateLimitResetHeader&quot;</span>
 <span class="linenos">231</span><span class="w">        </span><span class="s">&quot;429&quot;</span><span class="p p-Indicator">:</span>
 <span class="linenos">232</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Too Many Requests</span>
@@ -562,11 +562,11 @@ The instantiation process will result in a new e-service that <strong>MUST</stro
 <span class="linenos">235</span><span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
 <span class="linenos">236</span><span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/ProblemDetails&quot;</span>
 <span class="linenos">237</span><span class="w">          </span><span class="nt">headers</span><span class="p">:</span>
-<span class="linenos">238</span><span class="w">            </span><span class="nt">RateLimit-Limit</span><span class="p">:</span>
+<span class="linenos">238</span><span class="w">            </span><span class="nt">X-RateLimit-Limit</span><span class="p">:</span>
 <span class="linenos">239</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RateLimitLimitHeader&quot;</span>
-<span class="linenos">240</span><span class="w">            </span><span class="nt">RateLimit-Remaining</span><span class="p">:</span>
+<span class="linenos">240</span><span class="w">            </span><span class="nt">X-RateLimit-Remaining</span><span class="p">:</span>
 <span class="linenos">241</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RateLimitRemainingHeader&quot;</span>
-<span class="linenos">242</span><span class="w">            </span><span class="nt">RateLimit-Reset</span><span class="p">:</span>
+<span class="linenos">242</span><span class="w">            </span><span class="nt">X-RateLimit-Reset</span><span class="p">:</span>
 <span class="linenos">243</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RateLimitResetHeader&quot;</span>
 <span class="linenos">244</span><span class="w">        </span><span class="s">&quot;500&quot;</span><span class="p p-Indicator">:</span>
 <span class="linenos">245</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Internal Server Error.</span>
@@ -824,7 +824,7 @@ The instantiation process will result in a new e-service that <strong>MUST</stro
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 17/02/2026.
+      Last updated on 20/02/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
