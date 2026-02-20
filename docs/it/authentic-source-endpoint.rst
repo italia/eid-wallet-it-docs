@@ -60,6 +60,29 @@ In sintesi:
 - **metadataClaims**: array di metadati per dataset (``object_id`` obbligatorio; ``issuance_date`` e ``expiry_date`` opzionali).
 - **interval**: obbligatorio se non è presente il parametro ``claims`` nella richiesta; indica i secondi da attendere prima di ripetere la richiesta (es. 864000 = 10 giorni).
 
+Stato del Dataset e Ciclo di Vita dell'Attestato Elettronico
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+La Fonte Autentica gestisce la validità degli Attributi dell'Utente (dataset); il Fornitore di Attestati Elettronici gestisce il ciclo di vita dell'Attestato Elettronico. Quando il Fornitore di Attestati Elettronici riceve un Segnale UPDATE o interroga l'endpoint Get Attribute Claims, ispeziona lo ``status`` di ogni dataset e aggiorna l'Attestato Elettronico corrispondente di conseguenza:
+
+.. list-table::
+  :header-rows: 1
+
+  * - Stato del dataset
+    - Condizione tipica del dataset
+    - Effetto sull'Attestato Elettronico (azione del Fornitore di Attestati Elettronici)
+  * - VALID
+    - Entro il periodo di validità, non revocato/sospeso
+    - L'Attestato Elettronico può rimanere Valido
+  * - INVALID
+    - Scaduto (oltre expiry_date), revocato o altrimenti non più valido
+    - Stato dell'Attestato Elettronico aggiornato a Revoked/Expired (Status List: INVALID)
+  * - SUSPENDED
+    - Temporaneamente non valido (es. in verifica)
+    - Stato dell'Attestato Elettronico aggiornato a Suspended (Status List: SUSPENDED)
+
+Quando il dataset ha superato la data di scadenza amministrativa ``expiry_date``, la Fonte Autentica DEVE impostare ``status`` a INVALID. Per i dettagli completi sul flusso di aggiornamento dello stato, vedere :ref:`credential-revocation:Aggiornamento dello Stato da parte delle Fonti Autentiche`.
+
 La risposta in caso di successo (HTTP 200) restituisce un oggetto ``CredentialClaimsResponse`` formattato come **Payload JSON**.
 
 Verifica della Firma e Gestione Chiavi
