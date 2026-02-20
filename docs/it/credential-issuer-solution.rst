@@ -138,7 +138,7 @@ Per **l'emissione di PID**, la Soluzione del Fornitore di Attestati Elettronici 
      - Equivalente nella Specifica Tecnica
      - Ambito Certificazione
    * - Identity Proofing
-     - Componente Relying Party (eID nazionale) nei casi d'uso remote: per :ref:`CIE L3 (LoA High) <credential-issuance-high-level:Flusso ad Alto Livello per PID>`; per :ref:`L2+ <credential-issuance-l2plus:Autenticazione eID Substantial con Verifica MRTD per Emissione PID>`: PID Authorization Server, MRTD PoP Service
+     - Componente Relying Party (eID nazionale) nei casi d'uso remoti: per :ref:`CIE L3 (LoA High) <credential-issuance-high-level:Flusso ad Alto Livello per PID>`; per :ref:`L2+ <credential-issuance-l2plus:Autenticazione eID Substantial con Verifica MRTD per Emissione PID>`: PID Authorization Server, MRTD PoP Service
      - In scopo
    * - PID issuance
      - Componente Credential Issuer (`OpenID4VCI`_)
