@@ -372,9 +372,9 @@ components:
                 description: Status of the Dataset.
                 type: string
                 enum:
-                  - valid
-                  - invalid
-                  - suspended
+                  - VALID
+                  - INVALID
+                  - SUSPENDED
                 x-enum-description:
                   - valid - The credential is issued or expired
                   - invalid - The credential is revoked
