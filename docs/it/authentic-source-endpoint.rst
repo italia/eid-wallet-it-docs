@@ -61,7 +61,7 @@ In sintesi:
 - **interval**: obbligatorio se non è presente il parametro ``claims`` nella richiesta; indica i secondi da attendere prima di ripetere la richiesta (es. 864000 = 10 giorni).
 
 Stato del Dataset e Ciclo di Vita dell'Attestato Elettronico
-''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 La Fonte Autentica gestisce la validità degli Attributi dell'Utente (dataset); il Fornitore di Attestati Elettronici gestisce il ciclo di vita dell'Attestato Elettronico. Quando il Fornitore di Attestati Elettronici riceve un Segnale UPDATE o interroga l'endpoint Get Attribute Claims, ispeziona lo ``status`` di ogni dataset e aggiorna l'Attestato Elettronico corrispondente di conseguenza:
 

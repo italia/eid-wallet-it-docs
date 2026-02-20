@@ -61,7 +61,7 @@ In summary:
 - **interval**: required when the request does not include a ``claims`` parameter; indicates the number of seconds to wait before repeating the request (e.g. 864000 = 10 days).
 
 Dataset Status and Digital Credential Lifecycle
-''''''''''''''''''''''''''''''''''''''''''''''
+''''''''''''''''''''''''''''''''''''''''''''''''''
 
 The Authentic Source manages the validity of the User's attributes (datasets); the Credential Issuer manages the Digital Credential lifecycle. When the Credential Issuer receives an UPDATE Signal or queries the Get Attribute Claims endpoint, it inspects the ``status`` of each dataset and updates the corresponding Digital Credential accordingly:
 
