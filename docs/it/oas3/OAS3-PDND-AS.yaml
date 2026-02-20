@@ -360,9 +360,20 @@ components:
                 type: string
                 example: "6F9619FF-8B86-D011-B42D-00C04FC964FF"
               status:
-                description: Status of the Dataset.
+                description: |
+                  Stato del Dataset. I dataset Issued e Expired ricadono in VALID; la scadenza è verificata
+                  tramite metadata claims (es. expiry_date, nbf/exp). INVALID indica revoca attiva da parte dell'AS.
+                  Per come questo stato influenza il ciclo di vita dell'Attestato Elettronico gestito dal
+                  Fornitore di Attestati Elettronici, vedere la sezione <a target="blank" href="https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/credential-revocation.html#aggiornamento-dello-stato-da-parte-delle-fonti-autentiche">Aggiornamento dello Stato da parte delle Fonti Autentiche</a>.
                 type: string
-                enum: ["VALID", "INVALID", "SUSPENDED"]
+                enum:
+                  - VALID
+                  - INVALID
+                  - SUSPENDED
+                x-enum-description:
+                  - VALID - Il dataset è valido (include Issued e Expired; la scadenza è verificata via metadata).
+                  - INVALID - Il dataset è stato attivamente revocato dalla Fonte Autentica.
+                  - SUSPENDED - Il dataset è temporaneamente non valido (tipicamente reversibile).
                 example: "VALID"
               last_updated:
                 description: Last time the status or attributes of the Dataset have been updated. Its format is `YYYY-MM-DDTHH:MM:SSZ`.

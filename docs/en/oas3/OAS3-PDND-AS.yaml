@@ -369,17 +369,21 @@ components:
                 type: string
                 example: "6F9619FF-8B86-D011-B42D-00C04FC964FF"
               status:
-                description: Status of the Dataset.
+                description: |
+                  Status of the Dataset. Issued and Expired datasets fall within VALID; expiry is verified
+                  via metadata claims (e.g. expiry_date, nbf/exp). INVALID indicates active revocation by the AS.
+                  For how this status affects the Digital Credential lifecycle managed by the Credential
+                  Issuer, see <a target="blank" href="https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/credential-revocation.html#status-update-by-authentic-sources">Status Update by Authentic Sources</a>.
                 type: string
                 enum:
                   - VALID
                   - INVALID
                   - SUSPENDED
                 x-enum-description:
-                  - VALID - The Dataset is valid.
-                  - INVALID - The Dataset is revoked
-                  - SUSPENDED - The Dataset is suspended
-                example: VALID
+                  - VALID - Dataset is valid (includes Issued and Expired; expiry checked via metadata).
+                  - INVALID - Dataset has been actively revoked by the Authentic Source.
+                  - SUSPENDED - Dataset is temporarily invalid (typically reversible).
+                example: "VALID"
               last_updated:
                 description: Last time the status or attributes of the Dataset have been updated. Its format is `YYYY-MM-DDTHH:MM:SSZ`.
                 type: string
