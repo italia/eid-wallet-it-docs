@@ -45,38 +45,33 @@ Get Attribute Claims
     - the Credential Issuer MUST read the ``last_updated`` value received in the response to be able to check if the User's attributes have changed since the last issuance of a Digital Credential.
 
 Credential Lifecycle States Mapping
-"""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""
 
-To ensure consistency between the "Electronic Attestation Lifecycle" documented in :ref:`credential-revocation:Digital Credential Lifecycle` and the OpenAPI status Enum, the following mapping MUST be applied for the ``status`` field in the ``attributeClaims``:
+To ensure consistency between the "Electronic Attestation Lifecycle" documented in :ref:`credential-revocation:Digital Credential Lifecycle` and the OpenAPI status Enum, the following mapping and operational logic MUST be applied for the ``status`` field in the ``attributeClaims``.
 
-.. list-table::
-   :widths: 25 25 50
-   :header-rows: 1
-
-   * - **Lifecycle State (Ch. 11.3)**
-     - **OpenAPI status enum**
-     - **Description and Logic**
-   * - **Issued** / **Valid**
-     - ``VALID``
-     - The dataset is administratively active and within its validity period.
-   * - **Expired**
-     - ``VALID``
-     - The technical credential (mDL/SD-JWT) has expired, but the underlying dataset remains administratively valid. This allows for credential re-issuance.
-   * - **Suspended**
-     - ``SUSPENDED``
-     - The attestation is temporarily invalid.
-   * - **Revoked**
-     - ``INVALID``
-     - The attestation has been actively revoked or terminated at the source.
+**Directionality and Responsibility:**
+State changes of a Digital Credential at the Credential Issuer level DO NOT imply a change at the Authentic Source. Conversely, any state change of a dataset at the Authentic Source MUST be processed by the Credential Issuer to update the technical Digital Credential status.
 
 **Operational Guidance:**
 
-* **Technical vs Administrative Validity**: Credentials distinguish between a **technical validity** set by the Issuer (claims ``iat`` and ``exp``) and an **administrative validity** determined by the Authentic Source (claims ``issuance_date`` and ``expiry_date``).
-* **Expiry Hierarchy**: The technical expiry (``exp``) MUST NOT be later than the administrative expiry (``expiry_date``). For example, a driver's license may be administratively valid for 10 years, while the issued mDL credential may have a technical expiry of 1 year.
-* **Re-issuance**: If a credential reaches its technical expiry (``exp``) but the dataset is still administratively valid, the OpenAPI status remains ``VALID``, allowing the credential to be re-issued multiple times within the administrative timeframe.
+* **Technical vs Administrative Validity**: Digital Credentials distinguish between a **technical validity** set by the Credential Issuer (claims ``iat`` and ``exp``) and an **administrative validity** determined by the Authentic Source (claims ``issuance_date`` and ``expiry_date``).
+* **Expiry Hierarchy**: The technical expiry (``exp``) MUST NOT be later than the administrative expiry (``expiry_date``). For example, a driver's license may be administratively valid for 10 years, while the issued Digital Credential may have a technical expiry of 1 year.
+* **Re-issuance**: If a Digital Credential reaches its technical expiry (``exp``) but the dataset is still administratively valid, the OpenAPI status remains ``VALID``, allowing the Digital Credential to be re-issued multiple times within the administrative timeframe.
 * **Metadata Verification**: The Credential Issuer MUST verify the effective usability by checking both the technical claims and the administrative dates.
-* **Irreversibility**: After a transition to ``INVALID``, the Credential cannot return to a ``VALID`` state. A new issuance is required for a new dataset.
-* **Signal Processing**: Signals MUST be processed sequentially. If a signal invalidates a Credential, subsequent correction signals for the same object are ignored.
+* **Irreversibility**: After a transition to ``INVALID``, the Digital Credential cannot return to a ``VALID`` state. A new issuance is required for a new dataset. This applies to both explicit revocation and administrative expiry.
+* **Signal Processing**: Signals MUST be processed sequentially. If a Signal invalidates a Digital Credential, subsequent correction Signals for the same object are ignored.
+
+**Status Mapping and Case Logic:**
+
+The Credential Issuer MUST update the Digital Credential ``status`` based on Signals received from the Authentic Source via Signal Hub (``signalType=UPDATE``):
+
+* **Revocation**: If a dataset is revoked at the Authentic Source (status ``INVALID``), the Credential Issuer MUST revoke the Digital Credentials that use that dataset (status transition from ``VALID/SUSPENDED`` to ``INVALID``).
+* **Suspension**: If a dataset is suspended at the Authentic Source (status ``SUSPENDED``), the Credential Issuer MUST suspend the Digital Credentials (status transition from ``VALID`` to ``SUSPENDED``).
+* **Restoration**: If a suspended dataset returns to ``VALID`` at the Authentic Source, the Credential Issuer MUST restore the Digital Credential validity (status transition from ``SUSPENDED`` to ``VALID``).
+* **Modification**: If a dataset is modified but remains ``VALID`` at the Authentic Source, the Credential Issuer—detecting the change via the ``last_updated`` field—assigns the technical status ``ATTRIBUTE_UPDATE`` to the Digital Credential. This triggers a re-issuance flow when the Wallet Instance checks the status.
+* **Administrative Expiry**:
+    * **Scenario A (Metadata-driven)**: If ``expiry_date`` was shared with the Credential Issuer in metadata, the Authentic Source DOES NOT send Signals upon expiry; the Credential Issuer manages the lifecycle independently ensuring technical ``exp`` <= ``expiry_date``.
+    * **Scenario B (Signal-driven)**: If ``expiry_date`` is NOT present in metadata and the dataset expires, the Authentic Source MUST set its status to ``INVALID`` and send a Signal via Signal Hub; the Credential Issuer then revokes the Digital Credentials (status transition to ``INVALID``).
 
 Example of Authentic Source response
 """""""""""""""""""""""""""""""""""""
