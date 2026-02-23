@@ -42,6 +42,11 @@ Get Attribute Claims
   * - **Consumer**
     - Credential Issuer
 
+This e-Service MUST be invoked by the Credential Issuer in the following cases:
+
+  - During the Credential issuance flow to retrieve the Digital Credential dataset(s). In this situation, the ``object_id`` claim MUST not be used in the e-service request payload, and the e-service response MUST include all Credential datasets that are ``VALID`` state and not administratively expired.
+  - After receiving an update notification through Signal Hub. In this situation, the ``object_id`` claim MUST be included in the request payload, and the e-service response MUST return only the Credential dataset identified by the ``object_id`` claim independently from its state.
+
 .. note::
   The Authentic Source and the Credential Issuer MUST implement the necessary logic to keep track of the requests and responses exchanged via this e-Service, in order to be able to correlate them with the related issuance of a Digital Credential. In particular,
     - both MUST save the ``jti`` value in the Agid-JWT-Signature payload of the request to manage Signals related to the deffered issuance of a Digital Credential (see :ref:`signal-hub-endpoint:Signals Processing`);
