@@ -2,7 +2,14 @@ openapi: 3.0.1
 info:
   title: IT Wallet API - AS web services
   version: 0.2.0
-  description: IT Wallet Authentic Source e-Service exposed via PDND.
+  description: |
+    # IT Wallet Authentic Source e-Service exposed via PDND.
+    ### ModI patterns to be used:
+      - <b>ID_AUTH_CHANNEL_01</b>: Direct Trust TLS (HTTPS)
+      - <b>ID_AUTH_REST_01</b>: Authorization via PDND token
+      - <b>INTEGRITY_REST_02</b>: Requests and responses are signed
+      - <b>AUDIT_REST_02</b>: Additional properties (the pattern is optional if DPoP Token is used)
+      - <b>DPoP Token</b>: Used as an alternative to a Bearer Token (optional)
   termsOfService: "https://authentic-source.example.it/tos/"
   contact:
     name: IT-Wallet <credential_name> <credential_provider>
@@ -25,6 +32,14 @@ paths:
       summary: Get Authentic Source API status.
       description: Health-check endpoint that returns the operational status of the Authentic Source API.
       operationId: authenticSourceStatus
+      parameters:
+        - name: DPoP
+          in: header
+          description: Use only if the DPoP voucher has been requested from PDND.
+          schema:
+            type: string
+            format: JWT
+          required: false
       responses:
         "200":
           description: Service available
@@ -35,11 +50,11 @@ paths:
           headers:
             Cache-Control:
               $ref: "#/components/headers/CacheControlHeader"
-            RateLimit-Limit:
+            X-RateLimit-Limit:
               $ref: "#/components/headers/RateLimitLimitHeader"
-            RateLimit-Remaining:
+            X-RateLimit-Remaining:
               $ref: "#/components/headers/RateLimitRemainingHeader"
-            RateLimit-Reset:
+            X-RateLimit-Reset:
               $ref: "#/components/headers/RateLimitResetHeader"
         "429":
           description: Too Many Requests
@@ -48,12 +63,9 @@ paths:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
           headers:
-            RateLimit-Limit:
-              $ref: "#/components/headers/RateLimitLimitHeader"
-            RateLimit-Remaining:
-              $ref: "#/components/headers/RateLimitRemainingHeader"
-            RateLimit-Reset:
-              $ref: "#/components/headers/RateLimitResetHeader"
+            # RFC 6585 defines Retry-After. X-RateLimit-Limit, X-RateLimit-Remaining and X-RateLimit-Reset are not required because redundant along with Retry-After.
+            Retry-After:
+              $ref: "#/components/headers/RetryAfterHeader"
         "503":
           description: Service Unavailable
           content:
@@ -148,11 +160,11 @@ paths:
                 example: SHA-256=79a20a744336420301830600ad9bdca993593f876209a004b599b583095b0a61
             Cache-Control:
               $ref: "#/components/headers/CacheControlHeader"
-            RateLimit-Limit:
+            X-RateLimit-Limit:
               $ref: "#/components/headers/RateLimitLimitHeader"
-            RateLimit-Remaining:
+            X-RateLimit-Remaining:
               $ref: "#/components/headers/RateLimitRemainingHeader"
-            RateLimit-Reset:
+            X-RateLimit-Reset:
               $ref: "#/components/headers/RateLimitResetHeader"
           content:
             application/json:
@@ -169,14 +181,14 @@ paths:
                   personal_administrative_number: "12345A123A"
                 attributeClaims:
                   - object_id: "6F9619FF-8B86-D011-B42D-00C04FC964FF"
-                    status: "VALID"
+                    status: VALID
                     last_updated: "2025-01-15T10:30:00Z"
                     institute_name: "Nome Istituto Universitario"
                     programme_type_name: "Laurea Magistrale"
                     degree_course_name: "Computer Science - Informatica"
                     academic_qualification_date: "2025-06-25"
                   - object_id: "7A0720AB-9C97-E122-C53E-11D05FD075GG"
-                    status: "VALID"
+                    status: VALID
                     last_updated: "2025-01-10T08:00:00Z"
                     institute_name: "Nome Istituto Universitario"
                     programme_type_name: "Laurea Triennale"
@@ -194,11 +206,11 @@ paths:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
           headers:
-            RateLimit-Limit:
+            X-RateLimit-Limit:
               $ref: "#/components/headers/RateLimitLimitHeader"
-            RateLimit-Remaining:
+            X-RateLimit-Remaining:
               $ref: "#/components/headers/RateLimitRemainingHeader"
-            RateLimit-Reset:
+            X-RateLimit-Reset:
               $ref: "#/components/headers/RateLimitResetHeader"
         "401":
           description: Unauthorized
@@ -207,11 +219,11 @@ paths:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
           headers:
-            RateLimit-Limit:
+            X-RateLimit-Limit:
               $ref: "#/components/headers/RateLimitLimitHeader"
-            RateLimit-Remaining:
+            X-RateLimit-Remaining:
               $ref: "#/components/headers/RateLimitRemainingHeader"
-            RateLimit-Reset:
+            X-RateLimit-Reset:
               $ref: "#/components/headers/RateLimitResetHeader"
             WWW-Authenticate:
               $ref: "#/components/headers/WWWAuthenticateHeader"
@@ -222,11 +234,11 @@ paths:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
           headers:
-            RateLimit-Limit:
+            X-RateLimit-Limit:
               $ref: "#/components/headers/RateLimitLimitHeader"
-            RateLimit-Remaining:
+            X-RateLimit-Remaining:
               $ref: "#/components/headers/RateLimitRemainingHeader"
-            RateLimit-Reset:
+            X-RateLimit-Reset:
               $ref: "#/components/headers/RateLimitResetHeader"
         "429":
           description: Too Many Requests
@@ -235,12 +247,9 @@ paths:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
           headers:
-            RateLimit-Limit:
-              $ref: "#/components/headers/RateLimitLimitHeader"
-            RateLimit-Remaining:
-              $ref: "#/components/headers/RateLimitRemainingHeader"
-            RateLimit-Reset:
-              $ref: "#/components/headers/RateLimitResetHeader"
+            # RFC 6585 defines Retry-After. X-RateLimit-Limit, X-RateLimit-Remaining and X-RateLimit-Reset are not required because redundant along with Retry-After.
+            Retry-After:
+              $ref: "#/components/headers/RetryAfterHeader"
         "500":
           description: Internal Server Error.
           content:
@@ -360,9 +369,20 @@ components:
                 type: string
                 example: "6F9619FF-8B86-D011-B42D-00C04FC964FF"
               status:
-                description: Status of the Dataset.
+                description: |
+                  Status of the Dataset. Issued and Expired datasets fall within VALID; expiry is verified
+                  via metadata claims (e.g. expiry_date, nbf/exp). INVALID indicates active revocation by the AS.
+                  For how this status affects the Digital Credential lifecycle managed by the Credential
+                  Issuer, see <a target="blank" href="https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/credential-revocation.html#status-update-by-authentic-sources">Status Update by Authentic Sources</a>.
                 type: string
-                enum: ["VALID", "INVALID", "SUSPENDED"]
+                enum:
+                  - VALID
+                  - INVALID
+                  - SUSPENDED
+                x-enum-description:
+                  - VALID - Dataset is valid (includes Issued and Expired; expiry checked via metadata).
+                  - INVALID - Dataset has been actively revoked by the Authentic Source.
+                  - SUSPENDED - Dataset is temporarily invalid (typically reversible).
                 example: "VALID"
               last_updated:
                 description: Last time the status or attributes of the Dataset have been updated. Its format is `YYYY-MM-DDTHH:MM:SSZ`.

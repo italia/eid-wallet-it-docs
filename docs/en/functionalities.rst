@@ -118,7 +118,7 @@ To ensure a consistent identification and representation of the PID across diffe
 
 .. only:: format_html
 
-  .. figure:: ../../official_resources/IT-Wallet-ID.svg
+  .. figure:: ../../official_resources/IT-Wallet-ID/IT-Wallet-ID-Primary-BlueItalia.svg
     :alt: IT-Wallet ID official graphic asset on a light background 
     :width: 100%
     :align: center
@@ -966,7 +966,7 @@ For further information on the Authentication button refer to the Brand Manual, 
 
 .. only:: format_html
 
-  .. figure:: ../../official_resources/Authentication-button-ENG.svg
+  .. figure:: ../../official_resources/Authentication-button-ENG_size_variants.svg
      :alt: Authentication button in its dimension variants
      :width: 100%
      :align: center
@@ -984,7 +984,7 @@ For further information on the Authentication button refer to the Brand Manual, 
 
 .. only:: format_html
 
-  .. figure:: ../../official_resources/Authentication-Button-ENG-Fixed-Justified.svg
+  .. figure:: ../../official_resources/IT-Wallet-Authentication-Button/ENG/IT-Wallet-Authentication-Button-ENG-Fixed-Justified.svg
      :alt: Authentication button fixed justified 
      :width: 100%
      :align: center
@@ -1002,7 +1002,7 @@ For further information on the Authentication button refer to the Brand Manual, 
 
 .. only:: format_html
 
-  .. figure:: ../../official_resources/Authentication-Button-ENG-Fixed-Centered.svg
+  .. figure:: ../../official_resources/IT-Wallet-Authentication-Button/ENG/IT-Wallet-Authentication-Button-ENG-Fixed-Centered.svg
      :alt: Authentication button fixed centered
      :width: 100%
      :align: center
@@ -1115,14 +1115,15 @@ The flow is shown below with illustrative wireframes.
 
     Example of User Experience in Revoking an Electronic Attestation.
 
-History of Electronic Attestations
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Transaction Logging
+^^^^^^^^^^^^^^^^^^^
+To ensure the principles of visibility and transparency, the Wallet Provider MUST provide a user-friendly dashboard in the Wallet Instance that allows the User to view the history of transactions performed using their Wallet Instance (e.g., Electronic Attestation issuance or presentation). In particular, the dashboard MUST:
 
-To ensure the principles of visibility and transparency, the Wallet Provider MUST guarantee the User to view the history of all Electronic Attestations presentations performed using their Wallet Instance. In particular:
-
-- The Wallet Instance MUST show the User which Relying Party they have interacted with and which Electronic Attestations have been presented and verified;
-- The Wallet Instance MUST allow the User to easily request the Relying Party to delete their information related to previous presentations.
-
+- provide an overview of all recorded transactions and allow the User to access detailed views of individual transactions;
+- enable the User, where a transaction involves a Relying Party, to easily initiate a data deletion request to the corresponding Relying Party (using logged contact information);
+- support export of one or more transaction records to a file;
+- allow the User to delete one or more transaction records with prior warning.
+  
 Backup and Restore of Electronic Attestation of Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

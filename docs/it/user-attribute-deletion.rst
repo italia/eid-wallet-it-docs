@@ -27,7 +27,7 @@ Questa funzionalità dell'Istanza del Wallet consente agli Utenti di ottenere un
 
 **Passi 4 - 5:** L'Istanza del Wallet ottiene la Entity Configuration della Relying Party all'endpoint ./well-known/ della Federazione. L'URL o l'Endpoint di Cancellazione (``erasure_endpoint``) può essere trovato all'interno del parametro dei metadati (:ref:`WP_116 <user-attribute-deletion-testcases>`).
 
-**Passo 6:** L'Istanza del Wallet registra le informazioni rilevanti della Richiesta di Cancellazione. Questi log DEVONO includere almeno (:ref:`WP_117a <user-attribute-deletion-testcases>`):
+**Passo 6:** L'Istanza del Wallet registra le informazioni rilevanti della Richiesta di Cancellazione come definito in :ref:`wallet-instance-dashboard-transaction-registry`. Questi log DEVONO includere almeno (:ref:`WP_117a <user-attribute-deletion-testcases>`):
   * la data della richiesta,
   * la Relying Party a cui è stata fatta la richiesta,
   * gli attributi di cui è stata richiesta la rimozione.

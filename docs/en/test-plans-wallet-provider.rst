@@ -569,7 +569,7 @@ This section lists the test cases from Sections:
    * - WP_070
      - Issuance, Security
      - Re-issuance flow: detect re-issuance necessity (update status)
-     - Wallet Instance updates a Digital Credential when the Status List shows ``0x03`` (``UPDATE``) or ``0x0B`` (``ATTRIBUTE_UPDATE``) for that Credential.
+     - Wallet Instance updates a Digital Credential when the Status List shows ``0x03`` (``UPDATE``) or ``0x0F`` (``ATTRIBUTE_UPDATE``) for that Credential.
    * - WP_071
      - Issuance, Security
      - Re-issuance flow: verify Access Token validity for re-issuance

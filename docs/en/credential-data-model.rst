@@ -270,14 +270,14 @@ Digital Credential Type Metadata Document
 When provided, the Type Metadata Document MUST be a *JSON object* compliant with Section 6.2 of [`SD-JWT-VC`_].
 
 The Credential Type Metadata JSON Document MAY be retrieved through a *well-known* endpoint. See Section 6.3.3 of `SD-JWT-VC`_.
-This endpoint, provided by the Credential Issuer, MUST have the following format: ``https://{Credential Issuer Domain}/.well-known/vct/{vct}``.
+This endpoint, provided by the Credential Issuer, MUST have the following format: ``https://{Credential Issuer Domain}/.well-known/type-metadata``. The ``vct`` query parameter MUST be added to that endpoint.
 The Endpoint returns a ``200 OK`` status code and supports ``application/json`` and ``application/jwt`` as content type.
 
 Below a non-normative example is given.
 
 .. code-block:: http
 
-    GET /.well-known/vct/urn:eudi:pid:it:1 HTTP/1.1
+    GET /.well-known/type-metadata?vct=urn%3Aeudi%3Apid%3Ait%3A1 HTTP/1.1
     Host: pidprovider.example.it
     Accept: application/jwt
 
@@ -288,7 +288,7 @@ Below a non-normative example is given.
 
 .. code-block:: http
 
-    GET /.well-known/vct/urn:eudi:pid:it:1 HTTP/1.1
+    GET /.well-known/type-metadata?vct=urn%3Aeudi%3Apid%3Ait%3A1 HTTP/1.1
     Host: pidprovider.example.it
     Accept: application/json
 
@@ -296,6 +296,7 @@ Below a non-normative example is given.
     Content-Type: application/json
 
     {
+      "vct": "urn:eudi:pid:it:1",
       "name": "Person Identification Data",
       "description": "Digital version of Person Identification Data",
       ...

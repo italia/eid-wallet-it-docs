@@ -62,6 +62,8 @@ Questa specifica si basa sul seguente insieme di requisiti:
     - R2, R4
   * - **[AUDIT_REST_02]** Inoltro dati tracciati nel dominio del Fruitore REST con correlazione (*Allegato 2 - Pattern di sicurezza* [`MODI`_]): OPZIONALE. L'Erogatore PUÒ richiedere dati aggiuntivi tracciati nel dominio del Fruitore, con una correlazione tra tali dati e il metodo di autenticazione. In tal caso, questo pattern DEVE essere utilizzato.
     - R3, R4
+  * - **[ID_AUTH_REST_01]** Direct Trust su PDND tramite token JWT emessi dalla piattaforma (*Allegato 2 - Pattern di sicurezza* [`MODI`_]).
+    - R1, R2, R4, R5
 
 .. note::
     In queste specifiche, il pattern di sicurezza ``REST_JWS_2021_POP`` è implementato di default in conformità con :rfc:`9449`. Se DPoP non è supportato dall'Infrastruttura PDND, la prova di possesso è attestata dal JWT ``TrackingEvidence`` (come dettagliato di seguito). Tuttavia, mentre il ``TrackingEvidence`` è definito in ``AUDIT_REST_02`` per fornire dati tracciati aggiuntivi, in questo contesto funge da prova di possesso del Voucher. Tali scelte di implementazione saranno indicate rispettivamente come ``POP_DPoP`` e ``POP_TPoP``.
@@ -71,9 +73,9 @@ I seguenti pattern di sicurezza definiti in `PDND`_ e `MODI`_ NON DEVONO essere 
     - I seguenti pattern possono essere utilizzati solo quando il Fruitore non può iscriversi all'Infrastruttura PDND (ossia quando la trust tra gli Aderenti deve essere stabilita in forma diretta), pertanto non risultano conformi a **R1**:
 
       - **[ID_AUTH_CHANNEL_02]** Direct Trust mutual Transport-Level Security (*Allegato 2 - Pattern di Sicurezza* [`MODI`_])
-      - **[ID_AUTH_REST_01]** Direct Trust con certificato X.509 su REST (*Allegato 2 - Pattern di sicurezza* [`MODI`_]).
       - **[ID_AUTH_REST_02]** Direct Trust con certificato X.509 su REST con unicità del token/messaggio (*Allegato 2 - Pattern di sicurezza* [`MODI`_]).
       - **[INTEGRITY_REST_01]** Integrità del payload messaggio REST (*Allegato 2 - Pattern di sicurezza* [`MODI`_]).
+      - **[ID_AUTH_REST_02]** Direct Trust su PDND tramite token JWT emessi dalla piattaforma con caratteristiche di unicità (*Allegato 2 - Pattern di sicurezza* [`MODI`_]).
 
     - Il seguente pattern non fornisce correlazione tra i dati tracciati e il Voucher, pertanto non risulta conforme a **R3**:
 

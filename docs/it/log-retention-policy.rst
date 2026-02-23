@@ -8,7 +8,7 @@ La conservazione dei log è un elemento chiave per garantire la sicurezza, inclu
 
 Per tutto ciò che riguarda la gestione dei log, i Fornitori di Wallet, i Fornitori di Credenziali e le Relying Party sono considerati Entità Organizzative.
 
-I log relativi alle attività di scambio dati del Wallet (accessi, transazioni, emissione/revoca di Credenziali) riguardanti l'Utente, in quanto interessato, DEVONO essere conservati per un periodo limitato per motivi di sicurezza, prevenzione delle frodi, risoluzione delle controversie e obblighi legali.
+I log relativi alle attività di scambio dati del Wallet (accessi e transazioni di emissione di Credenziali e presentazione) riguardanti l'Utente, in quanto interessato, DEVONO essere conservati per un periodo limitato per motivi di sicurezza, prevenzione delle frodi, risoluzione delle controversie e obblighi legali.
 
 Le Entità Organizzative sono responsabili della conservazione dei log in base ai rispettivi ruoli. Le soluzioni relative ai Fornitori di Wallet, ai Fornitori di Credenziali e alle Relying Party DEVONO implementare la registrazione di audit per le attività degli amministratori e degli operatori di servizio con accesso ai processi di scambio dati e ai log.
 

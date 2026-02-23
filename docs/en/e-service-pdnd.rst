@@ -62,6 +62,8 @@ This specification is based on the following set of requirements:
     - R2, R4
   * - **[AUDIT_REST_02]** Submission of audit data within the REST request with correlation (*Annex 2 - Security Patterns* [`MODI`_]): OPTIONAL. The Provider MAY request additional data tracked in the Consumer's domain, with a correlation between such data and the authentication method. In that case, this pattern MUST be used.
     - R3, R4
+  * - **[ID_AUTH_REST_01]** Direct Trust based on PDND via Platform-issued JWT tokens (*Annex 2 - Security Patterns* [`MODI`_]).
+    - R1, R2, R4, R5
 
 .. note::
     In these specifications, the ``REST_JWS_2021_POP`` security pattern is implemented by default in accordance with :rfc:`9449`. If DPoP is not supported by the PDND Infrastructure, the proof of possession is attested by the ``TrackingEvidence`` JWT (as detailed below). However, while the ``TrackingEvidence`` is defined in ``AUDIT_REST_02`` to provide additional tracked data, in this context, it acts as proof of possession of the Voucher. Such implementation choices will be referred to as ``POP_DPoP`` and ``POP_TPoP``, respectively.
@@ -71,8 +73,7 @@ The following security patterns defined in `PDND`_ and `MODI`_ MUST NOT be used 
     - The following patterns can only be used when the Consumer cannot subscribe to the PDND infrastructure (i.e., the trust between the Participants needs to be established in a direct form), thus not complying with **R1**:
 
       - **[ID_AUTH_CHANNEL_02]** Direct Trust mutual Transport-Level Security (*Annex 2 - Security Patterns* [`MODI`_])
-      - **[ID_AUTH_REST_01]** Direct Trust based on X.509 certificate with REST (*Annex 2 - Security Patterns* [`MODI`_]).
-      - **[ID_AUTH_REST_02]** Direct Trust based on X.509 certificate with REST and token/message uniqueness (*Annex 2 - Security Patterns* [`MODI`_]).
+      - **[ID_AUTH_REST_02]** Direct Trust based on PDND via Platform-issued JWT tokens and token/message uniqueness (*Annex 2 - Security Patterns* [`MODI`_]).
       - **[INTEGRITY_REST_01]** REST Payload Integrity (*Annex 2 - Security Patterns* [`MODI`_]).
 
     - The following pattern does not provide correlation between the tracked data and the Voucher, thus not complying with **R3**:
