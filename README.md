@@ -55,7 +55,7 @@ The repository follows a dual-track strategy:
 
 - **Transition to EUDIW** — When the IT-Wallet is officially notified as an EUDIW-compliant wallet, the `eudiw` branch will be merged into `versione-corrente`. At that point, the LTS line based on 1.4.x will be considered End-of-Life (EOL), and the merged documentation will become the new main specification.
 
-**LTS scope** — For the 1.4.x LTS series, the long support period is assumed to be **no longer than 18 months**. Within this window, LTS covers:
+**LTS scope** — For the 1.4.x LTS series, that may be less than 18 months, the period of support is counted from the publication date of the 1.4.0 release tag on GitHub. Within this window, LTS covers:
 
 - **Documentation fixes**: corrections of errors, clarifications, and alignment with implementation findings.
 - **Security-related updates**: changes required to reflect security fixes or hardening.
