@@ -365,7 +365,7 @@ components:
             type: object
             properties:
               object_id:
-                description: Unique identifier of the Dataset.
+                description: Unique identifier of the Dataset. It MUST NOT contain personal data.
                 type: string
                 example: "6F9619FF-8B86-D011-B42D-00C04FC964FF"
               status:
@@ -398,7 +398,7 @@ components:
             type: object
             properties:
               object_id:
-                description: Unique identifier of the Dataset.
+                description: Unique identifier of the Dataset. It MUST NOT contain personal data.
                 type: string
                 example: "6F9619FF-8B86-D011-B42D-00C04FC964FF"
               issuance_date:
@@ -416,7 +416,7 @@ components:
           format: int64
           example: 864000
         deferred_object_id:
-          description: Required if userClaims and AttributeClaim parameters are not present. A unique opaque identifier related to the request of User and Attribute claims. 
+          description: Required if userClaims and AttributeClaim parameters are not present. A unique opaque identifier related to the request of User and Attribute claims. It MUST NOT contain personal data.
           type: string
           example: "CF518451-0E54-4E52-B6C4-F1D952BE0505"
     CredentialClaimsRequest:
