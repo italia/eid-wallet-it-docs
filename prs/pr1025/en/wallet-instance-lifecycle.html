@@ -235,8 +235,11 @@ This specification mandates the use of at least a second-factor for User authent
 <p>As part of the activation, the Wallet Provider MUST evaluate the operating system, general technical capabilities of the device, and trustworthiness of the WSCD
 to check compliance with the technical and security requirements, the authenticity and integrity of the installed Wallet Instance, and ensure the keys used for
 key binding resides in a secure WSCD.
-As part of this evaluation, the Wallet Provider MUST classify the WSCD security level of the Wallet Unit as either WL2 or WL3, according to the criteria defined in <a class="reference internal" href="wallet-solution-requirements.html#wscd-security-levels"><span class="std std-ref">WSCD security levels</span></a>. This classification determines which types of Digital Credentials the Wallet Instance is eligible to receive (PID requires WL3; (Q)EAA requires at least WL2).
-Upon successful verification, the Wallet Provider MUST issue at least one valid Wallet Attestation to the Wallet Instance, therefore the Wallet Instance enters the <strong>Operational</strong> state.</p>
+As part of this evaluation, the Wallet Provider MUST classify the WSCD security level of the Wallet Unit as either WL2 or WL3, according to the criteria defined in <a class="reference internal" href="wallet-solution-requirements.html#wscd-security-levels"><span class="std std-ref">WSCD security levels</span></a>. This classification determines which types of Digital Credentials the Wallet Instance is eligible to receive (PID requires WL3; (Q)EAA requires at least WL2).</p>
+<div class="admonition note" id="wscd-wallet-instance-lifecycle-requirement">
+<p class="admonition-title">Note</p>
+<p>When the IT-Wallet will be notified EUDIW and the certification scheme will be published and made operative, the Wallet Provider MUST classify the WSCD security level of the Wallet Unit as either WL2 or WL3, according to the criteria defined in <a class="reference internal" href="wallet-solution-requirements.html#wscd-security-levels"><span class="std std-ref">WSCD security levels</span></a>. This classification determines which types of Digital Credentials the Wallet Instance is eligible to receive (PID requires WL3; (Q)EAA requires at least WL2).</p>
+</div>
 <p>In addition, if not already done, Users MUST set their preferred method of unlocking their Wallet Instance; this MAY be accomplished by entering a
 personal identification number (PIN) or by utilizing biometric authentication, such as fingerprint or facial recognition, according to personal
 preferences and device's capabilities (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_025</span></a>). Please refer to <a class="reference internal" href="wallet-attestation-issuance.html#wallet-app-and-wallet-unit-attestation-issuance"><span class="std std-ref">Wallet App and Wallet Unit Attestation Issuance</span></a>.</p>
@@ -338,7 +341,7 @@ delete the Wallet Cryptographic Hardware Key pairs (<a class="reference internal
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 20/02/2026.
+      Last updated on 26/02/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

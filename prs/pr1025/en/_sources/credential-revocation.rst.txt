@@ -283,7 +283,7 @@ Once the data changes, the Authentic Source notifies the Credential Issuers who 
 
 The Credential Issuer periodically queries the Signal Hub :ref:`signal-hub-endpoint:Signal Distribution e-Service` for new Signals. When a new Signal is found, the Credential Issuer retrieves it and processes it as described in :ref:`signal-hub-endpoint:Signals Processing`. Then, the Credential Issuer updates the Credential Status according to the validity mechanism's defined mode. The Credential Issuer MAY notify the User through a registered out-of-band communication channel.
 
-The Wallet instance, following periodic checks of the validity status of the stored Digital Credentials, receives the updated status. When the Credential Status is changed to ``INVALID``, the Credential Issuer MUST inform the User about this change. In case the Credential status is modified to ``UPDATE`` (resp. 0x03) or ``ATTRIBUTE_UPDATE`` (resp. 0x0B), the Wallet Instance SHOULD proceed to the re-issuance of the Digital Credential, as described in :ref:`credential-issuance-low-level:Re-Issuance Flow`.
+The Wallet instance, following periodic checks of the validity status of the stored Digital Credentials, receives the updated status. When the Credential Status is changed to ``INVALID``, the Credential Issuer MUST inform the User about this change. In case the Credential status is modified to ``UPDATE`` (resp. 0x03) or ``ATTRIBUTE_UPDATE`` (resp. 0x0F), the Wallet Instance SHOULD proceed to the re-issuance of the Digital Credential, as described in :ref:`credential-issuance-low-level:Re-Issuance Flow`.
 
 
 Batch Credential Lifecycle Management
@@ -342,7 +342,7 @@ The Issuer of a Digital Credential MUST use the following values for possible St
   - 0x01 - ``INVALID`` - The Digital Credential is revoked.
   - 0x02 - ``SUSPENDED`` - The Digital Credential is temporarily invalid, hanging. This state is usually temporary.
   - 0x03 - ``UPDATE`` - The Digital Credential metadata parameters have changed.
-  - 0x0B - ``ATTRIBUTE_UPDATE`` - The Digital Credential attributes have changed.
+  - 0x0F - ``ATTRIBUTE_UPDATE`` - The Digital Credential attributes have changed.
 
 For example, if five states for a certain Digital Credential are possible, then k=4. If the Credential Issuer creates an array to store the statuses of 6 Digital Credentials, whose validity statuses are 0, 0, 0, 3, 1, 2, respectively; it will:
 

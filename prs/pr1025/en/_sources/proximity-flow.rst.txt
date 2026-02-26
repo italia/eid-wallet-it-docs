@@ -173,6 +173,15 @@ Below is a non-normative example using the diagnostic notation of a CBOR-encoded
 
 **Final Consideration**: The presentation flow focused on the technical data exchange in proximity settings. It is crucial to recognise that supervised proximity flows involving a human verifier play a vital role in many use cases (e.g., age verification at a store, identity check by law enforcement). The human element adds a layer of identity verification through visual inspection and comparison, contributing to User Binding and overall authentication assurance aspects not fully captured in a purely technical presentation flow.
 
+.. note::
+    During each credential presentation transaction executed through the proximity flow, the Wallet Instance MUST create and maintain a corresponding transaction record in the transaction log (see :ref:`wallet-instance-dashboard:Wallet Instance Dashboard and Transaction Logging`).
+
+    The transaction record MUST be created once the Wallet Instance has successfully established the session and accepted the reader for processing (i.e., after decrypting the ``SessionEstablishment`` message and verifying reader authentication, Step 10). At this point, the record MUST include the transaction metadata and the request context available at that stage (e.g., requested attestation type(s) such as ``docType``, and the identifier(s) of the requested attributes), without logging any attribute values.
+
+    The record MUST be updated as the transaction progresses to reflect the evolving transaction state and result context (e.g., what was actually presented after User consent and response preparation/sending, Steps 11–12), without logging any attribute values.
+
+    The record MUST be finalized when the transaction ends, indicating the outcome (e.g., completed, failed, or session terminated; Steps 13–14 and Session Termination).
+
 .. _sec-deviceengagement-qr:
 
 ``DeviceEngagement`` over QR Code

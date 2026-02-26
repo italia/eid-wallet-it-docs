@@ -285,7 +285,7 @@ Una volta che i dati cambiano, la Fonte Autentica notifica i Fornitori di Attest
 
 Il Fornitore di Attestati Elettronici interroga periodicamente il Signal Hub :ref:`signal-hub-endpoint:e-Service di Distribuzione Segnali` per nuovi Signal. Quando viene trovato un nuovo Signal, il Fornitore di Attestati Elettronici lo recupera e lo processa come descritto in :ref:`signal-hub-endpoint:Elaborazione dei Segnali`. Quindi, il Fornitore di Attestati Elettronici aggiorna lo Stato dell’Attestato secondo la modalità definita dal meccanismo di validità. Il Fornitore di Attestati Elettronici PUÒ notificare l’Utente tramite un canale di comunicazione registrato e out-of-band.
 
-L’Istanza del Wallet, a seguito di controlli periodici dello stato di validità degli Attestati Elettronici memorizzati, riceve lo stato aggiornato. Quando lo Stato dell’Attestato viene modificato in ``INVALID``, il Fornitore di Attestati Elettronici DEVE informare l’Utente di tale cambiamento. Nel caso in cui lo stato dell’Attestato venga modificato in ``UPDATE`` (risp. 0x03) o ``ATTRIBUTE_UPDATE`` (risp. 0x0B), l’Istanza del Wallet DOVREBBE procedere alla riemissione dell’Attestato Elettronico, come descritto in :ref:`credential-issuance-low-level:Re-Issuance Flow`.
+L’Istanza del Wallet, a seguito di controlli periodici dello stato di validità degli Attestati Elettronici memorizzati, riceve lo stato aggiornato. Quando lo Stato dell’Attestato viene modificato in ``INVALID``, il Fornitore di Attestati Elettronici DEVE informare l’Utente di tale cambiamento. Nel caso in cui lo stato dell’Attestato venga modificato in ``UPDATE`` (risp. 0x03) o ``ATTRIBUTE_UPDATE`` (risp. 0x0F), l’Istanza del Wallet DOVREBBE procedere alla riemissione dell’Attestato Elettronico, come descritto in :ref:`credential-issuance-low-level:Re-Issuance Flow`.
 
 Gestione del ciclo di vita delle Credenziali in batch
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -344,7 +344,7 @@ Il Fornitore di Attestati Elettronici DEVE utilizzare i seguenti valori per i po
   - 0x01 - ``INVALID`` - L'Attestato Elettronico è revocato.
   - 0x02 - ``SUSPENDED`` - L'Attestato Elettronico è temporaneamente non valido, sospeso. Questo stato è solitamente temporaneo.
   - 0x03 - ``UPDATE`` - I parametri dei metadata dell'Attestato Elettronico sono cambiati.
-  - 0x0B - ``ATTRIBUTE_UPDATE`` - Gli attributi dell'Attestato Elettronico sono cambiati.
+  - 0x0F - ``ATTRIBUTE_UPDATE`` - Gli attributi dell'Attestato Elettronico sono cambiati.
 
 Ad esempio, se sono possibili cinque stati per un certo Attestato Elettronico, allora k=4. Se il Fornitore di Attestati Elettronici crea un array per memorizzare gli stati di 6 Attestati Elettronici, i cui stati di validità sono 0, 0, 0, 3, 1, 2, rispettivamente; farà:
 
