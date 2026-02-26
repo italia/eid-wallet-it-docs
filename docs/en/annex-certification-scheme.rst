@@ -9,7 +9,7 @@ Certification Scheme and Overall Approach
 This annex describes the certification scheme and overall approach for the IT-Wallet System, aligning the technical specifications with the component decomposition paradigm used for certification evaluation.
 
 Certification Context: IT-Wallet System vs. EUDI-Wallet
-------------------------------------------------------
+-------------------------------------------------------
 
 The **IT-Wallet System** is the national ecosystem enabling Digital Identity management and Credential exchange. A **EUDI-Wallet** is an IT-Wallet solution designated by the Member State as the national implementation of the European Digital Identity Wallet framework.
 
