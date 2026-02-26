@@ -8,6 +8,15 @@ Certification Scheme and Overall Approach
 
 This annex describes the certification scheme and overall approach for the IT-Wallet System, aligning the technical specifications with the component decomposition paradigm used for certification evaluation.
 
+Certification Context: IT-Wallet System vs. EUDI-Wallet
+------------------------------------------------------
+
+The **IT-Wallet System** is the national ecosystem enabling Digital Identity management and Credential exchange. A **EUDI-Wallet** is an IT-Wallet solution designated by the Member State as the national implementation of the European Digital Identity Wallet framework.
+
+Certification per `CIR 2024/2981`_ applies **only when the IT-Wallet operates in the EUDI-Wallet context**. A Wallet Provider offering a solution exclusively within the IT-Wallet System (e.g., a private-sector wallet not designated as EUDI-Wallet) is not required to obtain certification. Conversely, once a solution is designated as the Italian EUDI-Wallet, it undergoes certification and retains that certified status also when operating as a public solution within the IT-Wallet System.
+
+**Servizi ICT eID** and **Servizi ICT di Validazione** are unique elements identical in both ecosystems; they require certification in the EUDI-Wallet context and therefore carry that characteristic in the IT-Wallet System as well, even where certification is not otherwise mandated.
+
 Regulatory Framework
 --------------------
 
@@ -31,7 +40,7 @@ The decomposition paradigm structures the system into:
    * - Level
      - Description
    * - Certification Macro-component
-     - Top-level grouping (e.g. Servizi ICT Wallet, Servizi ICT PID Provider); each has an owner (Wallet Provider, PID Provider).
+     - Top-level grouping (e.g. ICT Wallet Services, eID ICT Services); each has an owner (Wallet Provider, PID Provider).
    * - Component
      - Main architectural component (e.g. Wallet Instance, Wallet Provider Backend, PID Provider Backend).
    * - Sub-component
@@ -56,13 +65,13 @@ The following components are **in scope** for certification per `CIR 2024/2981`_
    * - **Servizi ICT Wallet**
      - Wallet Provider
      - :ref:`wallet-solution-components:Wallet Solution Components`
-   * - **Servizi ICT PID Provider**
+   * - **Servizi ICT eID**
      - PID Provider
      - :ref:`credential-issuer-solution:Credential Issuer Solution`
-   * - **Servizi ICT di Validazione** (Trust List Backend Services)
+   * - **Servizi ICT di Validazione**
      - Validation Services Provider
      - :ref:`trust-infrastructure:The Infrastructure of Trust`
-   * - **Regime di identificazione elettronica** (eID Scheme)
+   * - **Regime di identificazione elettronica**
      - Cross-cutting (Wallet Provider and PID Provider)
      - National eID schemes (CIEid, SPID); :ref:`credential-issuance-l2plus:eID Substantial Authentication with MRTD Verification for PID Issuance`
 
@@ -106,15 +115,15 @@ The following table provides a consolidated cross-reference from decomposition e
    * - Wallet Provider Backend (WPBE)
      - :ref:`wallet-solution-components:Wallet Backend`
      - Servizi ICT Wallet
-   * - WSCD / WSCA
+   * - WSCD (WL3) / Cryptographic device (WL2) / WSCA
      - :ref:`wallet-solution-components:Secure Storage`
      - Servizi ICT Wallet
    * - PID Provider Backend (PPBE)
      - :ref:`credential-issuer-solution:Credential Issuer Solution`
-     - Servizi ICT PID Provider
+     - Servizi ICT eID
    * - Identity Proofing (PPBE)
      - :ref:`credential-issuer-solution:Relying Party Component`, :ref:`credential-issuance-l2plus:eID Substantial Authentication with MRTD Verification for PID Issuance`
-     - Servizi ICT PID Provider
+     - Servizi ICT eID
    * - Trust List Backend Services
      - :ref:`trust-infrastructure:The Infrastructure of Trust`
      - Servizi ICT di Validazione
@@ -125,11 +134,10 @@ The following table provides a consolidated cross-reference from decomposition e
 Mandatory Certification
 ------------------------
 
-The **Certification Scope** column in the decomposition tables (see :ref:`Decomposition and Certification Scope <wallet-solution-components-decomposition>` and :ref:`Decomposition and Certification Scope <credential-issuer-solution-decomposition>`) indicates whether security certification is required. Conditional cases include:
+The **Certification Scope** column in the decomposition tables (see :ref:`Decomposition and Certification Scope <wallet-solution-components-decomposition>` and :ref:`Decomposition and Certification Scope <credential-issuer-solution-decomposition>`) indicates whether security certification is required. The **eID Scheme** is always in scope for certification, as it is the cross-cutting element between Wallet Provider and PID Provider that triggers the certification requirement. Conditional cases include:
 
-- **WSCD** provided by the User or Wallet Provider (device ownership affects scope).
+- **WSCD** (WL3 level) or cryptographic device (WL2 level) provided by the User or Wallet Provider (device ownership affects scope).
 - **Wallet Instance** execution environment (User device vs. web-based interface).
-- **eID Scheme** as cross-cutting between Wallet Provider and PID Provider.
 
 Risk Assessment
 ---------------
