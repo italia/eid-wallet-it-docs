@@ -84,7 +84,7 @@ The following components are **out of scope** for certification:
    * - Authentic Source (AS)
      - External authoritative data sources.
    * - Relying Party (RP)
-     - Consumer of credentials; separate certification path.
+     - Consumer of Credentials; separate certification path.
    * - Qualified Signature/Seal Creation Device (QSCD)
      - Provided by QTSP under qualified trust services regulation.
 
