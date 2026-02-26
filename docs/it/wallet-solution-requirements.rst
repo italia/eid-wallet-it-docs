@@ -206,6 +206,6 @@ Il **Wallet Secure Cryptographic Device (WSCD)** include l'Hardware Secure Eleme
   - **WSCD WL3**: certificato come resistente ad attaccanti con alto potenziale d'attacco (es. HSM, smart card certificata almeno Common Criteria EAL4+ AVA_VAN.5). Le chiavi vincolate al PID e alla WUA WL3 DEVONO essere archiviate in un WSCD WL3.
   - **WSCD WL2**: basato su ambienti hardware non facilmente certificabili contro alto potenziale d'attacco (es. TEE). Le chiavi vincolate a (Pub/Q)EAA, EAA e WUA WL2 POSSONO essere archiviate in un WSCD WL2.
 
-  Il WSCD WL3 PUÒ essere utilizzato anche per archiviare chiavi private corrispondenti alle Credenziali Elettroniche WL2, purché ogni singola Credenziale Elettronica abbia la propria chiave distinta. Il WSCD WL2 NON DEVE essere utilizzato per ospitare chiavi PID in alcuna circostanza.
+  Il WSCD WL3 PUÒ essere utilizzato anche per archiviare chiavi private corrispondenti alle Credenziali Elettroniche WL2, purché ogni singola Credenziale Elettronica abbia la propria chiave distinta. Vedere :ref:`wscd-credential-issuance-requirement` per l'applicazione di tali requisiti una volta che l'IT-Wallet sarà notificato EUDIW e lo schema di certificazione sarà pubblicato e reso operativo.
 
 Per informazioni più dettagliate, fare riferimento a :ref:`wallet-instance-registration:Inizializzazione e Registrazione dell'Istanza del Wallet` e :ref:`wallet-attestation-issuance:Emissione della Wallet App e Wallet Unit Attestation` di questo documento.
