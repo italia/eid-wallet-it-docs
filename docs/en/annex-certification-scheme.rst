@@ -136,7 +136,7 @@ Risk Assessment
 
 The decomposition supports risk assessment per `CIR 2024/2981`_ Article 4(4)(d) through:
 
-- **Risks (ID & Name)**: Linked to the certification scheme's risk catalogue (aligned with `CIR 2024/2981`_ Annex I).
+- **Risks (ID & Name)**: in compliance with `CIR 2024/2981`_ Annex I requirements.
 - **Threats**: Identified per component.
 - **Implemented controls**: Documented in the technical specifications and test plans.
 

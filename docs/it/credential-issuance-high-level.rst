@@ -27,9 +27,13 @@ Il flusso ad alto livello inizia con l'Utente che desidera ottenere un PID e avv
 .. note::
     Riguardo al punto 4, il metodo di autenticazione primario è basato su CieID LoA High (L3). Per scenari in cui il PIN CIE non è immediatamente disponibile, è disponibile un meccanismo di autenticazione multi-step alternativo che combina Autenticazione eID Substantial con Verifica MRTD.
 
-    Indipendentemente dal metodo di autenticazione dell'Utente (CIEid LoA High o eID Substantial con Verifica MRTD), il PID Provider DEVE verificare che il livello di sicurezza WSCD della Wallet Unit sia WL3 prima di emettere un PID, in conformità con :ref:`livelli di sicurezza WSCD <wscd-security-levels>`.
-
     Per specifiche tecniche complete, vedere :ref:`credential-issuance-l2plus:Autenticazione eID Substantial con Verifica MRTD per Emissione PID`.
+
+.. _wscd-credential-issuance-requirement:
+
+.. note::
+   Per l'emissione di PID, il PID Provider DEVE garantire che la Wallet Unit fornisca un WSCD WL3 per l'archiviazione delle chiavi, poiché il PID richiede un Livello di Garanzia elevato. Tale requisito sarà considerato una volta che l'IT-Wallet sarà notificato EUDIW e lo schema di certificazione sarà pubblicato e reso operativo. Per l'emissione di (Q)EAA, il Fornitore di Attestati Elettronici DEVE garantire che la Wallet Unit fornisca almeno un WSCD WL2. Vedere :ref:`livelli di sicurezza WSCD <wscd-security-levels>` per la definizione dei livelli di sicurezza.
+
 
 Flusso ad Alto Livello per (Q)EAA
 ----------------------------------
