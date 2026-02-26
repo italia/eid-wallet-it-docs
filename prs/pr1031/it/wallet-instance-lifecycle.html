@@ -232,11 +232,13 @@ Questa associazione consente all'utente di richiedere direttamente al Fornitore 
 <p>Come risultato della creazione dell'account Utente, DEVE essere impostato un meccanismo di autenticazione per l'Utente per interagire con il portale del Fornitore di Wallet.
 Questa specifica impone l'uso di almeno un secondo fattore per l'autenticazione dell'Utente.</p>
 </div>
-<p>Come parte del processo di attivazione, il Fornitore di Wallet DEVE valutare il sistema operativo, le capacità tecniche generali del dispositivo e l'affidabilità del WSCD, al fine di verificare la conformità ai requisiti tecnici e di sicurezza, l'autenticità e l'integrità dell'Istanza del Wallet installata, e assicurarsi che le chiavi utilizzate per il binding crittografico risiedano in un WSCD sicuro. Come parte di questa valutazione, il Fornitore di Wallet DEVE classificare il livello di sicurezza WSCD della Wallet Unit come WL2 o WL3, secondo i criteri definiti in <a class="reference internal" href="wallet-solution-requirements.html#wscd-security-levels"><span class="std std-ref">livelli di sicurezza WSCD</span></a>. Questa classificazione determina quali tipi di Attestati Elettronici l'Istanza del Wallet è idonea a ricevere (il PID richiede WL3; NPID e (Q)EAA richiedono almeno WL2).
-Dopo la verifica con successo, il Fornitore di Wallet DEVE emettere almeno una Wallet Attestation valido all'Istanza del Wallet, quindi l'Istanza del Wallet entra nello stato <strong>Operativo</strong>.</p>
+<p>Come parte del processo di attivazione, il Fornitore di Wallet DEVE valutare il sistema operativo, le capacità tecniche generali del dispositivo e l'affidabilità del WSCD, al fine di verificare la conformità ai requisiti tecnici e di sicurezza, l'autenticità e l'integrità dell'Istanza del Wallet installata, e assicurarsi che le chiavi utilizzate per il binding crittografico risiedano in un WSCD sicuro.</p>
+<div class="admonition note" id="wscd-wallet-instance-lifecycle-requirement">
+<p class="admonition-title">Nota</p>
+<p>Quando l'IT-Wallet sarà notificato EUDIW e lo schema di certificazione sarà pubblicato e reso operativo, il Fornitore di Wallet DEVE classificare il livello di sicurezza WSCD della Wallet Unit come WL2 o WL3, secondo i criteri definiti in <a class="reference internal" href="wallet-solution-requirements.html#wscd-security-levels"><span class="std std-ref">livelli di sicurezza WSCD</span></a>. Questa classificazione determina quali tipi di Attestati Elettronici l'Istanza del Wallet è idonea a ricevere (il PID richiede WL3; (Q)EAA richiede almeno WL2).</p>
+</div>
 <p>Inoltre, se non è già stato fatto, gli Utenti DEVONO impostare il loro metodo preferito per sbloccare la loro Istanza del Wallet; questo PUÒ essere realizzato inserendo un
-PIN o utilizzando l'autenticazione biometrica, come l'impronta digitale o il riconoscimento facciale, secondo le preferenze
-personali e le capacità del dispositivo (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_025</span></a>). Si prega di fare riferimento a <a class="reference internal" href="wallet-attestation-issuance.html#emissione-della-wallet-instance-e-wallet-unit-attestation"><span class="std std-ref">Emissione della Wallet Instance e Wallet Unit Attestation</span></a>.</p>
+PIN o utilizzando l'autenticazione biometrica, come l'impronta digitale o il riconoscimento facciale, secondo le preferenze personali e le capacità del dispositivo (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_025</span></a>). Si prega di fare riferimento a <a class="reference internal" href="wallet-attestation-issuance.html#emissione-della-wallet-instance-e-wallet-unit-attestation"><span class="std std-ref">Emissione della Wallet Instance e Wallet Unit Attestation</span></a>.</p>
 <p>Nello stato <strong>Operativo</strong>, gli Utenti possono richiedere l'emissione dell'Attestato Elettronico di Dati di Identificazione Personale (<strong>PID ISS</strong>) o di Attestati Elettronici di Attributi (Qualificati) se l'Attestato Elettronico di Dati di Identificazione Personale non è richiesto nell'emissione
 (<strong>(Q)EEA ISS</strong>). Inoltre, se le Credenziali Elettroniche sono Attestati Elettronici di Attributi (Qualificati) e per la presentazione non richiedono l'Attestato Elettronico di Dati di Identificazione Personale, possono essere presentate
 senza far transitare l'Istanza del Wallet a un altro stato (transizione <strong>(Q)EEA PRE</strong>).</p>
@@ -335,7 +337,7 @@ eliminare le coppie di Cryptographic Hardware Key (<a class="reference internal"
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 17/02/2026.
+      Ultimo aggiornamento 26/02/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

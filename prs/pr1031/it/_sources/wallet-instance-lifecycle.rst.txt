@@ -64,12 +64,15 @@ Questa associazione consente all'utente di richiedere direttamente al Fornitore 
   Come risultato della creazione dell'account Utente, DEVE essere impostato un meccanismo di autenticazione per l'Utente per interagire con il portale del Fornitore di Wallet.
   Questa specifica impone l'uso di almeno un secondo fattore per l'autenticazione dell'Utente.
 
-Come parte del processo di attivazione, il Fornitore di Wallet DEVE valutare il sistema operativo, le capacità tecniche generali del dispositivo e l'affidabilità del WSCD, al fine di verificare la conformità ai requisiti tecnici e di sicurezza, l'autenticità e l'integrità dell'Istanza del Wallet installata, e assicurarsi che le chiavi utilizzate per il binding crittografico risiedano in un WSCD sicuro. Come parte di questa valutazione, il Fornitore di Wallet DEVE classificare il livello di sicurezza WSCD della Wallet Unit come WL2 o WL3, secondo i criteri definiti in :ref:`livelli di sicurezza WSCD <wscd-security-levels>`. Questa classificazione determina quali tipi di Attestati Elettronici l'Istanza del Wallet è idonea a ricevere (il PID richiede WL3; NPID e (Q)EAA richiedono almeno WL2).
-Dopo la verifica con successo, il Fornitore di Wallet DEVE emettere almeno una Wallet Attestation valido all'Istanza del Wallet, quindi l'Istanza del Wallet entra nello stato **Operativo**.
+Come parte del processo di attivazione, il Fornitore di Wallet DEVE valutare il sistema operativo, le capacità tecniche generali del dispositivo e l'affidabilità del WSCD, al fine di verificare la conformità ai requisiti tecnici e di sicurezza, l'autenticità e l'integrità dell'Istanza del Wallet installata, e assicurarsi che le chiavi utilizzate per il binding crittografico risiedano in un WSCD sicuro.
+
+.. _wscd-wallet-instance-lifecycle-requirement:
+
+.. note::
+   Quando l'IT-Wallet sarà notificato EUDIW e lo schema di certificazione sarà pubblicato e reso operativo, il Fornitore di Wallet DEVE classificare il livello di sicurezza WSCD della Wallet Unit come WL2 o WL3, secondo i criteri definiti in :ref:`livelli di sicurezza WSCD <wscd-security-levels>`. Questa classificazione determina quali tipi di Attestati Elettronici l'Istanza del Wallet è idonea a ricevere (il PID richiede WL3; (Q)EAA richiede almeno WL2).
 
 Inoltre, se non è già stato fatto, gli Utenti DEVONO impostare il loro metodo preferito per sbloccare la loro Istanza del Wallet; questo PUÒ essere realizzato inserendo un
-PIN o utilizzando l'autenticazione biometrica, come l'impronta digitale o il riconoscimento facciale, secondo le preferenze
-personali e le capacità del dispositivo (:ref:`WP_025 <wallet-instance-testcases>`). Si prega di fare riferimento a :ref:`wallet-attestation-issuance:Emissione della Wallet Instance e Wallet Unit Attestation`.
+PIN o utilizzando l'autenticazione biometrica, come l'impronta digitale o il riconoscimento facciale, secondo le preferenze personali e le capacità del dispositivo (:ref:`WP_025 <wallet-instance-testcases>`). Si prega di fare riferimento a :ref:`wallet-attestation-issuance:Emissione della Wallet Instance e Wallet Unit Attestation`.
 
 Nello stato **Operativo**, gli Utenti possono richiedere l'emissione dell'Attestato Elettronico di Dati di Identificazione Personale (**PID ISS**) o di Attestati Elettronici di Attributi (Qualificati) se l'Attestato Elettronico di Dati di Identificazione Personale non è richiesto nell'emissione
 (**(Q)EEA ISS**). Inoltre, se le Credenziali Elettroniche sono Attestati Elettronici di Attributi (Qualificati) e per la presentazione non richiedono l'Attestato Elettronico di Dati di Identificazione Personale, possono essere presentate

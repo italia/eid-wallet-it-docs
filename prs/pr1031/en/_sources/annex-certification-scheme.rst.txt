@@ -6,7 +6,7 @@
 Certification Scheme and Overall Approach
 =========================================
 
-This annex describes the certification scheme and overall approach for the IT-Wallet system, aligning the technical specifications with the component decomposition paradigm used for certification evaluation.
+This annex describes the certification scheme and overall approach for the IT-Wallet System, aligning the technical specifications with the component decomposition paradigm used for certification evaluation.
 
 Regulatory Framework
 --------------------
@@ -84,7 +84,7 @@ The following components are **out of scope** for certification:
    * - Authentic Source (AS)
      - External authoritative data sources.
    * - Relying Party (RP)
-     - Consumer of credentials; separate certification path.
+     - Consumer of Credentials; separate certification path.
    * - Qualified Signature/Seal Creation Device (QSCD)
      - Provided by QTSP under qualified trust services regulation.
 
@@ -136,7 +136,7 @@ Risk Assessment
 
 The decomposition supports risk assessment per `CIR 2024/2981`_ Article 4(4)(d) through:
 
-- **Risks (ID & Name)**: Linked to the certification scheme's risk catalogue (aligned with `CIR 2024/2981`_ Annex I).
+- **Risks (ID & Name)**: in compliance with `CIR 2024/2981`_ Annex I requirements.
 - **Threats**: Identified per component.
 - **Implemented controls**: Documented in the technical specifications and test plans.
 

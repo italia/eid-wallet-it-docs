@@ -340,7 +340,7 @@ Inoltre, fornisce un metodo per autenticare il WSCD presso il Fornitore di Attri
 <td><p>WPBE</p></td>
 </tr>
 <tr class="row-odd"><td><p>WUA-004</p></td>
-<td><p>Durante l'emissione di un PID, la Wallet Unit DEVE fornire al PID Provider una WUA valida che descriva il WSCA/WSCD che ha generato la nuova chiave privata del PID. Nota: Una chiave privata PID è sempre generata e gestita dal WSCA/WSCD, che per definizione è conforme ai requisiti per il Livello di Garanzia Alto. Durante l'emissione di un'attestazione vincolata al dispositivo, una Wallet Unit DEVE recuperare dai metadati dell'emittente (come specificato in <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>) i requisiti dell'Attestation Provider riguardanti l'archiviazione delle chiavi da parte del WSCA/WSCD. La Wallet Unit DEVE determinare quale dei propri WSCA/WSCD o keystore, se presente, soddisfi tali requisiti. Se un WSCA/WSCD o keystore conforme è disponibile, la Wallet Unit DEVE fornire all'Attestation Provider una WUA valida che descriva il WSCA/WSCD o keystore selezionato. Nota: Una WUA descrive le proprietà del WSCA/WSCD o keystore e contiene una o più chiavi pubbliche corrispondenti alle chiavi private generate e archiviate in quel WSCA/WSCD o keystore.</p></td>
+<td><p>Durante l'emissione di un PID, la Wallet Unit DEVE fornire al PID Provider una WUA valida che descriva il WSCA/WSCD che ha generato la nuova chiave privata del PID. Nota: Una chiave privata PID è sempre generata e gestita dal WSCA/WSCD. Durante l'emissione di un'attestazione vincolata al dispositivo, una Wallet Unit DEVE recuperare dai metadati dell'emittente (come specificato in <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>) i requisiti dell'Attestation Provider riguardanti l'archiviazione delle chiavi da parte del WSCA/WSCD. La Wallet Unit DEVE determinare quale dei propri WSCA/WSCD o keystore, se presente, soddisfi tali requisiti. Se un WSCA/WSCD o keystore conforme è disponibile, la Wallet Unit DEVE fornire all'Attestation Provider una WUA valida che descriva il WSCA/WSCD o keystore selezionato. Nota: Una WUA descrive le proprietà del WSCA/WSCD o keystore e contiene una o più chiavi pubbliche corrispondenti alle chiavi private generate e archiviate in quel WSCA/WSCD o keystore.</p></td>
 <td><p>WI, WSCA, WSCD</p></td>
 </tr>
 <tr class="row-even"><td><p>WUA-005</p></td>
@@ -372,7 +372,7 @@ Inoltre, fornisce un metodo per autenticare il WSCD presso il Fornitore di Attri
 <td><p>WPBE</p></td>
 </tr>
 <tr class="row-odd"><td><p>WUA-012</p></td>
-<td><p>Un Wallet Provider DEVE garantire che la presentazione di una WUA sia vincolata crittograficamente al contesto specifico in cui è destinata ad essere utilizzata. Nota: Come specificato in <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>, ciò si ottiene facendo sì che la WUA firmata contenga un nonce fornito dal PID Provider o dall'Attestation Provider durante il processo di emissione. In alternativa, la Wallet Unit presenta la WUA insieme a una Proof-of-Possession consistente in una firma su quel nonce, creata dalla chiave privata corrispondente a una delle chiavi pubbliche attestate nella WUA.</p></td>
+<td><p>Un Wallet Provider DEVE garantire che la presentazione di una WUA sia vincolata crittograficamente al contesto specifico in cui è destinata ad essere utilizzata. Nota: Come specificato in <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>, ciò si ottiene facendo sì che la Wallet Unit presenti la WUA insieme a una Proof-of-Possession consistente in una firma su un nonce fornito dal PID Provider o dall'Attestation Provider durante il processo di emissione, creata dalla chiave privata corrispondente a una delle chiavi pubbliche attestate nella WUA.</p></td>
 <td><p>WPBE</p></td>
 </tr>
 <tr class="row-even"><td><p>WUA-013</p></td>
@@ -393,12 +393,12 @@ Inoltre, fornisce un metodo per autenticare il WSCD presso il Fornitore di Attri
 <td><p>Se il WSCA/WSCD è in grado di esportare una chiave privata, il Wallet Provider DEVE specificare questa capacità come attributo nella WUA.</p></td>
 <td><p>WPBE</p></td>
 </tr>
-<tr class="row-odd"><td><p>WUA-016</p></td>
-<td><p>Un Wallet Provider DEVE considerare tutti i fattori rilevanti, inclusi l'utilizzo offline, l'interoperabilità e il rischio che una WUA diventi un vettore per tracciare l'Utente, quando decide sul periodo di validità di una WUA.</p></td>
-<td><p>WPBE</p></td>
-</tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Considerazione di sicurezza: nel decidere il periodo di validità di una WUA, il Wallet Provider dovrebbe considerare tutti i fattori rilevanti, inclusi l'utilizzo offline, l'interoperabilità e il rischio che una WUA diventi un vettore per tracciare l'Utente.</p>
+</div>
 </section>
 <section id="requisiti-wscd">
 <h2><span class="section-number">10.2.1.3. </span>Requisiti WSCD<a class="headerlink" href="#requisiti-wscd" title="Link to this heading">¶</a></h2>
@@ -448,9 +448,9 @@ Inoltre, fornisce un metodo per autenticare il WSCD presso il Fornitore di Attri
 <p>Il WSCD opera a due livelli di sicurezza:</p>
 <ul class="simple">
 <li><p><strong>WSCD WL3</strong>: certificato come resistente ad attaccanti con alto potenziale d'attacco (es. HSM, smart card certificata almeno Common Criteria EAL4+ AVA_VAN.5). Le chiavi vincolate al PID e alla WUA WL3 DEVONO essere archiviate in un WSCD WL3.</p></li>
-<li><p><strong>WSCD WL2</strong>: basato su ambienti hardware non facilmente certificabili contro alto potenziale d'attacco (es. TEE). Le chiavi vincolate a NPID, (Pub/Q)EAA, EAA e WUA WL2 POSSONO essere archiviate in un WSCD WL2.</p></li>
+<li><p><strong>WSCD WL2</strong>: basato su ambienti hardware non facilmente certificabili contro alto potenziale d'attacco (es. TEE). Le chiavi vincolate a (Pub/Q)EAA, EAA e WUA WL2 POSSONO essere archiviate in un WSCD WL2.</p></li>
 </ul>
-<p>Il WSCD WL3 PUÒ essere utilizzato anche per archiviare chiavi private corrispondenti alle Credenziali Elettroniche WL2, purché ogni singola Credenziale Elettronica abbia la propria chiave distinta. Il WSCD WL2 NON DEVE essere utilizzato per ospitare chiavi PID in alcuna circostanza.</p>
+<p>Il WSCD WL3 PUÒ essere utilizzato anche per archiviare chiavi private corrispondenti alle Credenziali Elettroniche WL2, purché ogni singola Credenziale Elettronica abbia la propria chiave distinta. Vedere <a class="reference internal" href="credential-issuance-high-level.html#wscd-credential-issuance-requirement"><span class="std std-ref">requisiti WSCD per l'emissione</span></a> per l'applicazione di tali requisiti una volta che l'IT-Wallet sarà notificato EUDIW e lo schema di certificazione sarà pubblicato e reso operativo.</p>
 </div>
 <p>Per informazioni più dettagliate, fare riferimento a <a class="reference internal" href="wallet-instance-registration.html#inizializzazione-e-registrazione-dell-istanza-del-wallet"><span class="std std-ref">Inizializzazione e Registrazione dell'Istanza del Wallet</span></a> e <a class="reference internal" href="wallet-attestation-issuance.html#emissione-della-wallet-instance-e-wallet-unit-attestation"><span class="std std-ref">Emissione della Wallet Instance e Wallet Unit Attestation</span></a> di questo documento.</p>
 </section>
@@ -503,7 +503,7 @@ Inoltre, fornisce un metodo per autenticare il WSCD presso il Fornitore di Attri
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 17/02/2026.
+      Ultimo aggiornamento 26/02/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

@@ -136,7 +136,7 @@ Valutazione del Rischio
 
 La scomposizione supporta la valutazione del rischio ai sensi dell'articolo 4, paragrafo 4, lettera d) del `CIR 2024/2981`_ attraverso:
 
-- **Rischi (ID e Nome)**: Collegati al catalogo dei rischi dello schema di certificazione (allineato con l'Allegato I del `CIR 2024/2981`_).
+- **Rischi (ID e Nome)**: In conformità dei requisiti dell'Allegato I del `CIR 2024/2981`_).
 - **Minacce**: Identificate per componente.
 - **Controlli implementati**: Documentati nelle specifiche tecniche e nei piani di test.
 
