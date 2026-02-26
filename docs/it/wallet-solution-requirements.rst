@@ -161,9 +161,9 @@ I requisiti per la Wallet Unit Attestation sono definiti di seguito:
    * - WUA-015
      - Se il WSCA/WSCD è in grado di esportare una chiave privata, il Wallet Provider DEVE specificare questa capacità come attributo nella WUA.
      - WPBE
-   * - WUA-016
-     - Un Wallet Provider DEVE considerare tutti i fattori rilevanti, inclusi l'utilizzo offline, l'interoperabilità e il rischio che una WUA diventi un vettore per tracciare l'Utente, quando decide sul periodo di validità di una WUA.
-     - WPBE
+
+.. note::
+   Considerazione di sicurezza: nel decidere il periodo di validità di una WUA, il Wallet Provider dovrebbe considerare tutti i fattori rilevanti, inclusi l'utilizzo offline, l'interoperabilità e il rischio che una WUA diventi un vettore per tracciare l'Utente.
 
 Requisiti WSCD
 """""""""""""""""
