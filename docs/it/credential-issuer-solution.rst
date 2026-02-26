@@ -37,7 +37,7 @@ La Soluzione del Fornitore di Attestati Elettronici Elettronica DEVE:
    9. Rinnovare periodicamente la conformità e l'aderenza alla Federazione IT-Wallet .
    10. Registrare il Componente Relying Party all'interno dell'ecosistema di Federazione dell'Identità Digitale CIEid (per l'emissione di PID), e all'interno dell'ecosistema IT-Wallet (per l'emissione di (Q)EAA, se necessario).
    11. Per l'emissione di PID, autenticare gli Utenti con LoA High utilizzando l'infrastruttura nazionale di Identità Digitale.
-   12. Verificare il livello di sicurezza WSCD della Wallet Unit come specificato in :ref:`wscd-credential-issuance-requirement`.
+   12. Verificare il livello di sicurezza WSCD della Wallet Unit come specificato in :ref:`requisiti WSCD per l'emissione <wscd-credential-issuance-requirement>`.
    13. Per l'emissione di (Q)EAA che richiedono autenticazione, verificare che il PID dell'Utente sia valido tramite `OpenID4VP`_.
    14. Implementare procedure adeguate per l'intero ciclo di vita dell'Attestato Elettronico come dettagliato nella Sezione :ref:`credential-revocation:Ciclo di Vita degli Attestati Elettronici`.
 
@@ -89,7 +89,7 @@ Questo componente DEVE autenticare gli Utenti, se richiesto:
    - Per l'emissione di PID, tramite l'infrastruttura nazionale di Identità Digitale.
    - Per l'emissione di (Q)EAA, richiedendo, ottenendo e validando i PID dalle Istanze del Wallet dell'Utente utilizzando `OpenID4VP`_ in conformità con la Sezione :ref:`credential-presentation:Presentazione dell'Attestato Elettronico`.
 
-Vedere :ref:`wscd-credential-issuance-requirement`.
+Vedere :ref:`requisiti WSCD per l'emissione <wscd-credential-issuance-requirement>`.
 
 Interfaccia API
 ^^^^^^^^^^^^^^^

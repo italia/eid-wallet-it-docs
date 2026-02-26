@@ -31,6 +31,8 @@ Il flusso ad alto livello inizia con l'Utente che desidera ottenere un PID e avv
 
 .. _wscd-credential-issuance-requirement:
 
+.. rubric:: Requisiti WSCD per l'emissione
+
 .. note::
    Per l'emissione di PID, il PID Provider DEVE garantire che la Wallet Unit fornisca un WSCD WL3 per l'archiviazione delle chiavi, poiché il PID richiede un Livello di Garanzia elevato. Tale requisito sarà considerato una volta che l'IT-Wallet sarà notificato EUDIW e lo schema di certificazione sarà pubblicato e reso operativo. Per l'emissione di (Q)EAA, il Fornitore di Attestati Elettronici DEVE garantire che la Wallet Unit fornisca almeno un WSCD WL2. Vedere :ref:`livelli di sicurezza WSCD <wscd-security-levels>` per la definizione dei livelli di sicurezza.
 
