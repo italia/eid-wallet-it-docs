@@ -423,7 +423,7 @@ components:
                 format: int64
                 example: 864000
             required: [object_id, description]
-      required: [userClaims, attributeClaims, metadataClaims]
+      required: [attributeClaims, metadataClaims]
     CredentialClaimsRequest:
       required:
         - unique_id
