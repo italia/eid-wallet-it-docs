@@ -87,7 +87,7 @@ The following components are **out of scope** for certification:
    * - Component
      - Notes
    * - User Device (Operating System, platform, local crypto)
-     - Provided by Device Manufacturer; not within certification scope.
+     - Provided by Device Manufacturer; not within the certification scope.
    * - Attribute Attestation Provider ((Pub/Q)EAA)
      - Certified under separate schemes.
    * - Authentic Source (AS)

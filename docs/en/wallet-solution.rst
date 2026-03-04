@@ -24,9 +24,9 @@ The Wallet Solution architecture is described according to the certification mac
 
 - **Wallet Provider Backend (WPBE)**:
   - API Interface (incl. PDND for PID Provider notifications)
-  - Wallet Instance Lifecycle Management: Registration, Attestation Issuance (WAA/WUA), Status and revocation
-  - Trust & Security Component: Key and certificate management, audit logging, incident response, Federation compliance
-  - User web portal (Frontend Component)
+  - Wallet Instance Lifecycle Management: Registration, Attestation Issuance (WAA/WUA), Status and Revocation
+  - Trust & Security Component: Key and Certificate Management, Audit Logging, Incident Response, Federation Compliance
+  - User Web Portal (Frontend Component)
 
 For the complete decomposition mapping and certification scope, see :ref:`Decomposition and Certification Scope <wallet-solution-components-decomposition>`.
 
