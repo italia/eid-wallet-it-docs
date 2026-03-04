@@ -181,14 +181,14 @@ paths:
                   personal_administrative_number: "12345A123A"
                 attributeClaims:
                   - object_id: "6F9619FF-8B86-D011-B42D-00C04FC964FF"
-                    status: VALID
+                    status: "VALID"
                     last_updated: "2025-01-15T10:30:00Z"
                     institute_name: "Nome Istituto Universitario"
                     programme_type_name: "Laurea Magistrale"
                     degree_course_name: "Computer Science - Informatica"
                     academic_qualification_date: "2025-06-25"
                   - object_id: "7A0720AB-9C97-E122-C53E-11D05FD075GG"
-                    status: VALID
+                    status: "VALID"
                     last_updated: "2025-01-10T08:00:00Z"
                     institute_name: "Nome Istituto Universitario"
                     programme_type_name: "Laurea Triennale"
@@ -365,12 +365,37 @@ components:
             type: object
             properties:
               object_id:
-                description: Unique identifier of the Dataset.
+                description: Unique identifier of the Dataset. It MUST NOT contain personal data. Required also if additionalProperties are not present. This parameter MUST be used to notify through Signal Hub data updating or availability.
                 type: string
                 example: "6F9619FF-8B86-D011-B42D-00C04FC964FF"
+              issuance_date:
+                description: Administrative validity start date of the Dataset
+                type: string
+                example: "2025-01-01"
+              expiry_date:
+                description: Administrative expiry date of the Dataset.
+                type: string
+                example: "2025-12-31"
+            additionalProperties:
+              type: string
+            required: [object_id]
+        metadataClaims:
+          description: List of Metadata of Attribute.
+          type: array
+          items:
+            type: object
+            properties:
+              object_id:
+                description: Unique identifier of the Dataset. It MUST NOT contain personal data.
+                type: string
+                example: "6F9619FF-8B86-D011-B42D-00C04FC964FF"
+              description:
+                description: Human-Readable description of the Dataset.
+                type: string
+                example: "Example: Master's Degree in Computer Science"
               status:
                 description: |
-                  Status of the Dataset. Issued and Expired datasets fall within VALID; expiry is verified
+                  Status of the Dataset. REQUIRED if additionalProperties of attributeClaims are present. Issued and Expired datasets fall within VALID; expiry is verified
                   via metadata claims (e.g. expiry_date, nbf/exp). INVALID indicates active revocation by the AS.
                   For how this status affects the Digital Credential lifecycle managed by the Credential
                   Issuer, see <a target="blank" href="https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/credential-revocation.html#status-update-by-authentic-sources">Status Update by Authentic Sources</a>.
@@ -384,37 +409,21 @@ components:
                   - INVALID - Dataset has been actively revoked by the Authentic Source.
                   - SUSPENDED - Dataset is temporarily invalid (typically reversible).
                 example: "VALID"
+              status_description:
+                description: Human-Readable description of the Status.
+                type: string
+                example: "Example: Master's Degree in Computer Science"
               last_updated:
-                description: Last time the status or attributes of the Dataset have been updated. Its format is `YYYY-MM-DDTHH:MM:SSZ`.
+                description: REQUIRED if additionalProperties of attributeClaims are present. Last time the status or attributes of the Dataset have been updated. Its format is `YYYY-MM-DDTHH:MM:SSZ`.
                 type: string
                 example: "2025-01-15T10:30:00Z"
-            additionalProperties:
-              type: string
-            required: [object_id, status, last_updated]
-        metadataClaims:
-          description: List of Metadata Claims.
-          type: array
-          items:
-            type: object
-            properties:
-              object_id:
-                description: Unique identifier of the Dataset.
-                type: string
-                example: "6F9619FF-8B86-D011-B42D-00C04FC964FF"
-              issuance_date:
-                description: Administrative validity start date of the Dataset
-                type: string
-                example: "2025-01-01"
-              expiry_date:
-                description: Administrative expiry date of the Dataset.
-                type: string
-                example: "2025-12-31"
-            required: [object_id]
-        interval:
-          description: Required if claims parameter is not present. This represents the estimated amount of time (in seconds) required before making the request of the attribute claims again.
-          type: integer
-          format: int64
-          example: 864000
+              interval:
+                description: Required if userClaims and additionalProperties of AttributeClaim parameters are not present. This represents the estimated amount of time (in seconds) required before making the request of the attribute claims again.
+                type: integer
+                format: int64
+                example: 864000
+            required: [object_id, description]
+      required: [attributeClaims, metadataClaims]
     CredentialClaimsRequest:
       required:
         - unique_id
@@ -425,7 +434,7 @@ components:
           description: ID ANPR or Tax identification number
         object_id:
           type: string
-          description: Unique identifier of the Credential dataset or `jti` of the Agid-JWT-Signature Credential Issuer deferred flow's request. If this parameter is present only the indicated dataset is returned
+          description: Unique identifier of the Credential dataset. If this parameter is present only the indicated dataset is returned.
     ProblemDetails:
       type: object
       description: RFC7807-compliant problem details object for error responses.
