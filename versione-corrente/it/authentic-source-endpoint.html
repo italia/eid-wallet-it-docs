@@ -203,7 +203,7 @@ Questa specifica OpenAPI può essere estesa dalle Fonti Autentiche, infatti, l'a
 <p class="admonition-title">Nota</p>
 <dl class="simple">
 <dt>La Fonte Autentica e il Credential Issuer DEVONO implementare la logica necessaria per tenere traccia delle richieste e delle risposte scambiate tramite questo e-Service, al fine di essere in grado di correlarle con la relativa emissione di un Attestato Elettronico. In particolare,</dt><dd><ul class="simple">
-<li><p>entrambi DEVONO salvare il valore <code class="docutils literal notranslate"><span class="pre">jti</span></code> contenuto nel payload del token Agid-JWT-Signature della richiesta per gestire i Segnali relativi alla disponibilità degli Attributi utili all'emissione in <em>deferred</em> di un Attestato Elettronico (vedere <a class="reference internal" href="signal-hub-endpoint.html#elaborazione-dei-segnali"><span class="std std-ref">Elaborazione dei Segnali</span></a>);</p></li>
+<li><p>entrambi DEVONO salvare il valore <code class="docutils literal notranslate"><span class="pre">object_id</span></code> contenuto nel payload della risposta per gestire i Segnali relativi alla disponibilità degli Attributi utili all'emissione in <em>deferred</em> di un Attestato Elettronico (vedere <a class="reference internal" href="signal-hub-endpoint.html#elaborazione-dei-segnali"><span class="std std-ref">Elaborazione dei Segnali</span></a>). Qualsiasi notifica successiva relativa a un set di dati specifico DEVE essere gestita tramite <code class="docutils literal notranslate"><span class="pre">object_id</span></code>.</p></li>
 <li><p>la Fonte Autentica DEVE registrare il valore datetime fornito all'interno del parametro <code class="docutils literal notranslate"><span class="pre">last_updated</span></code>, che indica data e orario dell'ultima volta che gli Attributi dell'Utente sono stati aggiornati nel database della Fonte Autentica;</p></li>
 <li><p>il Credential Issuer DEVE leggere il valore <code class="docutils literal notranslate"><span class="pre">last_updated</span></code> ricevuto nella risposta per essere in grado di verificare se gli Attributi dell'Utente sono cambiati dall'ultima emissione di un Attestato Elettronico.</p></li>
 </ul>
@@ -367,7 +367,7 @@ Si rimanda all'Appendice tecnica (Sezione <a class="reference internal" href="e-
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 20/02/2026.
+      Ultimo aggiornamento 04/03/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

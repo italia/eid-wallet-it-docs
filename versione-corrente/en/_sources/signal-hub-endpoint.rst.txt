@@ -67,10 +67,10 @@ The Signal Collection e-Service endpoint is used by Authentic Sources to deposit
   * - **objectType**
     - REQUIRED. Using this field the Authentic Source MAY use to further specify the Signal.
   * - **objectId**
-    - REQUIRED. The subject to which the Signal is bound. If the Signal has ``signalType``:
+    - REQUIRED. The subject to which the Signal is bound. It MUST be set to the ``object_id`` that the Authentic Source used in the `get attributes` payload response to the the Credential Issuer and that corresponds to the Authentic Source's unique database identifier of the dataset of Attribute (see :ref:`authentic-source-endpoint:Get Attribute Claims`). The Signal ``signalType`` MUST be valued with one of the following:
       
-      - ``CREATE``, then it MUST be set to the ``jti`` value the Credential Issuer used in the Agid-JWT-Signature token of the `get attributes` request to the Authentic Source to obtain the attributes related to a specific Digital Credential (see :ref:`authentic-source-endpoint:Get Attribute Claims`);
-      - ``UPDATE``, then it MUST be set to the Authentic Source's unique database identifier of the Digital Credential's attributes the Signal refers to.
+      - ``CREATE``, in order to notify the availability of the attributes related to a specific Digital Credential.
+      - ``UPDATE``, in order to notify the updating of the attributes related to a specific Digital Credential.
       
   * - **signalType**
     - REQUIRED. Signal Type. It MUST be one of the following: 
@@ -82,7 +82,7 @@ The Signal Collection e-Service endpoint is used by Authentic Sources to deposit
     - REQUIRED. e-Service to which the Signal is bound. It MUST correspond to the e-Service Id value the Authentic Source is a Provider of.
 
 .. note::
-  In the deffered issuance flow, i.e., when the Authentic Source notifies the Credential Issuer of the availability of the Digital Credential's attributes via Signal Hub; both entities MUST keep track of the Credential Issuer's ``jti`` value used in the Agid-JWT-Signature of the ``get attributes`` request. This is necessary since the ``objectId`` of the Signal MUST be set to that ``jti`` value when the Signal has ``signalType`` with value ``CREATE``.
+  In the deffered issuance flow, i.e., when the Authentic Source notifies the Credential Issuer of the availability of the Digital Credential's attributes via Signal Hub; both entities MUST keep track of the Authentic Source's ``object_id`` value used in the ``get attributes`` payload response. This is necessary since the ``objectId`` of the Signal MUST be set to that ``object_id`` value when the Signal has ``signalType`` with value ``CREATE``.
 
 A non normative example of the Signal Collection request can be found at `Signal Hub push`_.
 
@@ -156,7 +156,7 @@ After the Signals have been successfully recovered by the Credential Issuer, the
   - For each Signal, the Credential Issuer MUST check the ``SignalType`` value:
     
     - if the Signal ``SignalType`` is ``UPDATE`` (where ``objectId`` refers to the **Authentic Source's unique database identifier of the Digital Credential's attributes**), the status and/or value of the attribute associated with a Digital Credential need updates;
-    - if the Signal ``SignalType`` is ``CREATE`` (where ``objectId`` refers to the **request ``jti``**), the requested attributes of a specific Digital Credential are now available; 
+    - if the Signal ``SignalType`` is ``CREATE`` (where ``objectId`` refers to the **Authentic Source's unique database identifier of the Digital Credential's attributes**), the requested attributes of a specific Digital Credential are now available; 
 
     If the ``objectId`` does not correspond to any valid identifier known to the Credential Issuer, the Signal MUST be ignored. Otherwise, if it corresponds to a known and valid identifier, the Credential Issuer MUST use the :ref:`authentic-source-endpoint:Get Attribute Claims` PDND endpoint of the Authentic Source to retrieve the updated information and, if applicable, apply the new status to the corresponding Credential.
     

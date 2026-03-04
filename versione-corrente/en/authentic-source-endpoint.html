@@ -202,7 +202,7 @@ This OpenAPI specification can be extended by the Authentic Sources, in fact, th
 <p class="admonition-title">Note</p>
 <dl class="simple">
 <dt>The Authentic Source and the Credential Issuer MUST implement the necessary logic to keep track of the requests and responses exchanged via this e-Service, in order to be able to correlate them with the related issuance of a Digital Credential. In particular,</dt><dd><ul class="simple">
-<li><p>both MUST save the <code class="docutils literal notranslate"><span class="pre">jti</span></code> value in the Agid-JWT-Signature payload of the request to manage Signals related to the deffered issuance of a Digital Credential (see <a class="reference internal" href="signal-hub-endpoint.html#signals-processing"><span class="std std-ref">Signals Processing</span></a>);</p></li>
+<li><p>both MUST save the <code class="docutils literal notranslate"><span class="pre">object_id</span></code> value in the payload of the response to manage Signals related to the deffered issuance of a Digital Credential (see <a class="reference internal" href="signal-hub-endpoint.html#signals-processing"><span class="std std-ref">Signals Processing</span></a>). Any subsequent notification related to a specific dataset MUST be handled via <code class="docutils literal notranslate"><span class="pre">object_id</span></code>.</p></li>
 <li><p>the Authentic Source MUST record the datetime value provided within the <code class="docutils literal notranslate"><span class="pre">last_updated</span></code> parameter, which indicates the last time the User's attributes were updated in the Authentic Source's database;</p></li>
 <li><p>the Credential Issuer MUST read the <code class="docutils literal notranslate"><span class="pre">last_updated</span></code> value received in the response to be able to check if the User's attributes have changed since the last issuance of a Digital Credential.</p></li>
 </ul>
@@ -366,7 +366,7 @@ Please refer to the Technical Appendix (Section <a class="reference internal" hr
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 20/02/2026.
+      Last updated on 04/03/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

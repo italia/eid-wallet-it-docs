@@ -67,10 +67,10 @@ L'endpoint dell'e-Service di Raccolta Segnali viene utilizzato dalle Fonti Auten
   * - **objectType**
     - OBBLIGATORIO. Questo è un campo libero che la Fonte Autentica PUÒ utilizzare per specificare ulteriormente il Segnale.
   * - **objectId**
-    - OBBLIGATORIO. Il soggetto a cui è legato il Segnale. Se il Segnale ha ``signalType``:
+    - OBBLIGATORIO. Il soggetto a cui è legato il Segnale. DEVE essere impostato sul valore ``object_id`` che la Fonte Autentica ha utilizzato nel payload della risposta del `get attributes` verso il Credential Issuer e che corrisponde all'identificativo univoco del database della Fonte Autentica relativo al set di dati dell'Attributo (vedi :ref:`authentic-source-endpoint:Get Attribute Claims`). Il ``signalType`` del Segnale DEVE essere valorizzato con uno dei seguenti:
       
-      - ``CREATE``, allora DEVE essere impostato sul valore ``jti`` che il Fornitore di Attestati Elettronici ha utilizzato nel token Agid-JWT-Signature della richiesta `get attributes` alla Fonte Autentica per ottenere gli Attributi relativi a un Attestato Elettronico specifico (vedere :ref:`authentic-source-endpoint:Get Attribute Claims`);
-      - ``UPDATE``, allora DEVE essere impostato sull'identificatore univoco del database della Fonte Autentica degli Attributi dell'Attestato Elettronico a cui si riferisce il Segnale.
+      - ``CREATE``, al fine di notificare la disponibilità degli attributi relativi ad un specifico Attestato Elettronico.
+      - ``UPDATE``, al fine di notificare l'aggiornamento degli attributi relativi ad un specifico Attestato Elettronico.
       
   * - **signalType**
     - OBBLIGATORIO. Tipo di Segnale. DEVE essere uno dei seguenti:
@@ -82,7 +82,7 @@ L'endpoint dell'e-Service di Raccolta Segnali viene utilizzato dalle Fonti Auten
     - OBBLIGATORIO. e-Service a cui è legato il Segnale. DEVE corrispondere al valore dell'Id dell'e-Service di cui la Fonte Autentica è Provider.
 
 .. note::
-  Nel Deferred Issuance Flow, cioè quando la Fonte Autentica notifica al Fornitore di Attestati Elettronici la disponibilità degli Attributi dell'Attestato Elettronico tramite Signal Hub; entrambe le entità DEVONO tenere traccia del valore ``jti`` del Fornitore di Attestati Elettronici utilizzato nell'Agid-JWT-Signature della richiesta `get attributes`. Questo è necessario poiché l'``objectId`` del Segnale DEVE essere impostato su quel valore ``jti`` quando il Segnale ha ``signalType`` valorizzato con ``CREATE``.
+  Nel Deferred Issuance Flow, cioè quando la Fonte Autentica notifica al Fornitore di Attestati Elettronici la disponibilità degli Attributi dell'Attestato Elettronico tramite Signal Hub; entrambe le entità DEVONO tenere traccia del valore ``object_id`` della Fonte Autentica utilizzato nella risposta del `get attributes`. Questo è necessario poiché l'``objectId`` del Segnale DEVE essere impostato su quel valore ``object_id`` quando il Segnale ha il ``signalType`` valorizzato con ``CREATE``.
 
 Un esempio non normativo di richiesta di richiesta di Raccolta Segnali può essere trovato nel `Signal Hub push`_.
 
@@ -156,7 +156,7 @@ Dopo che i Segnali sono stati recuperati con successo dal Fornitore di Attestati
   - Per ogni Segnale, il Fornitore di Attestati Elettronici DEVE verificare il valore ``SignalType``:
     
     - se il ``SignalType`` del Segnale è ``UPDATE`` (l'``objectId`` fa riferimento all'**identificativo univoco presente nella base dati della Fonte Autentica relativo agli Attributi dell'Attestato Elettronico**), lo stato e/o il valore dell'Attributo associato a un Attestato Elettronico necessitano di aggiornamenti;    
-    - se il ``SignalType`` del Segnale è ``CREATE`` (l'``objectId`` corrisponde al **``jti`` della richiesta**), gli Attributi richiesti di un Attestato Elettronico specifico sono ora disponibili;
+    - se il ``SignalType`` del Segnale è ``CREATE`` (l'``objectId`` corrisponde al **identificativo univoco presente nella base dati della Fonte Autentica relativo agli Attributi dell'Attestato Elettronico**), gli Attributi richiesti di un Attestato Elettronico specifico sono ora disponibili;
 
     Se l'``objectId`` non corrisponde ad alcun identificativo valido noto al Fornitore di Attestati Elettronici, il Segnale DEVE essere ignorato. Altrimenti, se corrisponde a un identificativo noto e valido, il Fornitore di Attestati Elettronici DEVE utilizzare l'endpoint PDND :ref:`authentic-source-endpoint:Get Attribute Claims` della Fonte Autentica per recuperare le informazioni aggiornate e, se possibile, applicare il nuovo stato/attributo all'Attestato Elettronico corrispondente.
     

@@ -242,10 +242,10 @@
 <td><p>OBBLIGATORIO. Questo è un campo libero che la Fonte Autentica PUÒ utilizzare per specificare ulteriormente il Segnale.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>objectId</strong></p></td>
-<td><p>OBBLIGATORIO. Il soggetto a cui è legato il Segnale. Se il Segnale ha <code class="docutils literal notranslate"><span class="pre">signalType</span></code>:</p>
+<td><p>OBBLIGATORIO. Il soggetto a cui è legato il Segnale. DEVE essere impostato sul valore <code class="docutils literal notranslate"><span class="pre">object_id</span></code> che la Fonte Autentica ha utilizzato nel payload della risposta del <cite>get attributes</cite> verso il Credential Issuer e che corrisponde all'identificativo univoco del database della Fonte Autentica relativo al set di dati dell'Attributo (vedi <a class="reference internal" href="authentic-source-endpoint.html#get-attribute-claims"><span class="std std-ref">Get Attribute Claims</span></a>). Il <code class="docutils literal notranslate"><span class="pre">signalType</span></code> del Segnale DEVE essere valorizzato con uno dei seguenti:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">CREATE</span></code>, allora DEVE essere impostato sul valore <code class="docutils literal notranslate"><span class="pre">jti</span></code> che il Fornitore di Attestati Elettronici ha utilizzato nel token Agid-JWT-Signature della richiesta <cite>get attributes</cite> alla Fonte Autentica per ottenere gli Attributi relativi a un Attestato Elettronico specifico (vedere <a class="reference internal" href="authentic-source-endpoint.html#get-attribute-claims"><span class="std std-ref">Get Attribute Claims</span></a>);</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">UPDATE</span></code>, allora DEVE essere impostato sull'identificatore univoco del database della Fonte Autentica degli Attributi dell'Attestato Elettronico a cui si riferisce il Segnale.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CREATE</span></code>, al fine di notificare la disponibilità degli attributi relativi ad un specifico Attestato Elettronico.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">UPDATE</span></code>, al fine di notificare l'aggiornamento degli attributi relativi ad un specifico Attestato Elettronico.</p></li>
 </ul>
 </td>
 </tr>
@@ -264,7 +264,7 @@
 </table>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Nel Deferred Issuance Flow, cioè quando la Fonte Autentica notifica al Fornitore di Attestati Elettronici la disponibilità degli Attributi dell'Attestato Elettronico tramite Signal Hub; entrambe le entità DEVONO tenere traccia del valore <code class="docutils literal notranslate"><span class="pre">jti</span></code> del Fornitore di Attestati Elettronici utilizzato nell'Agid-JWT-Signature della richiesta <cite>get attributes</cite>. Questo è necessario poiché l'<code class="docutils literal notranslate"><span class="pre">objectId</span></code> del Segnale DEVE essere impostato su quel valore <code class="docutils literal notranslate"><span class="pre">jti</span></code> quando il Segnale ha <code class="docutils literal notranslate"><span class="pre">signalType</span></code> valorizzato con <code class="docutils literal notranslate"><span class="pre">CREATE</span></code>.</p>
+<p>Nel Deferred Issuance Flow, cioè quando la Fonte Autentica notifica al Fornitore di Attestati Elettronici la disponibilità degli Attributi dell'Attestato Elettronico tramite Signal Hub; entrambe le entità DEVONO tenere traccia del valore <code class="docutils literal notranslate"><span class="pre">object_id</span></code> della Fonte Autentica utilizzato nella risposta del <cite>get attributes</cite>. Questo è necessario poiché l'<code class="docutils literal notranslate"><span class="pre">objectId</span></code> del Segnale DEVE essere impostato su quel valore <code class="docutils literal notranslate"><span class="pre">object_id</span></code> quando il Segnale ha il <code class="docutils literal notranslate"><span class="pre">signalType</span></code> valorizzato con <code class="docutils literal notranslate"><span class="pre">CREATE</span></code>.</p>
 </div>
 <p>Un esempio non normativo di richiesta di richiesta di Raccolta Segnali può essere trovato nel <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-depositare-un-segnale">Signal Hub push</a>.</p>
 <p>La response dell'e-Service di Raccolta Segnale è specificata nel <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-depositare-un-segnale">Signal Hub push</a> e ha <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> impostato su <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. Il payload contiene il parametro del body:</p>
@@ -356,7 +356,7 @@
 <li><p>Per ogni Segnale, il Fornitore di Attestati Elettronici DEVE verificare il valore <code class="docutils literal notranslate"><span class="pre">SignalType</span></code>:</p>
 <ul class="simple">
 <li><p>se il <code class="docutils literal notranslate"><span class="pre">SignalType</span></code> del Segnale è <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> (l'<code class="docutils literal notranslate"><span class="pre">objectId</span></code> fa riferimento all'<strong>identificativo univoco presente nella base dati della Fonte Autentica relativo agli Attributi dell'Attestato Elettronico</strong>), lo stato e/o il valore dell'Attributo associato a un Attestato Elettronico necessitano di aggiornamenti;</p></li>
-<li><p>se il <code class="docutils literal notranslate"><span class="pre">SignalType</span></code> del Segnale è <code class="docutils literal notranslate"><span class="pre">CREATE</span></code> (l'<code class="docutils literal notranslate"><span class="pre">objectId</span></code> corrisponde al <strong>``jti`` della richiesta</strong>), gli Attributi richiesti di un Attestato Elettronico specifico sono ora disponibili;</p></li>
+<li><p>se il <code class="docutils literal notranslate"><span class="pre">SignalType</span></code> del Segnale è <code class="docutils literal notranslate"><span class="pre">CREATE</span></code> (l'<code class="docutils literal notranslate"><span class="pre">objectId</span></code> corrisponde al <strong>identificativo univoco presente nella base dati della Fonte Autentica relativo agli Attributi dell'Attestato Elettronico</strong>), gli Attributi richiesti di un Attestato Elettronico specifico sono ora disponibili;</p></li>
 </ul>
 <p>Se l'<code class="docutils literal notranslate"><span class="pre">objectId</span></code> non corrisponde ad alcun identificativo valido noto al Fornitore di Attestati Elettronici, il Segnale DEVE essere ignorato. Altrimenti, se corrisponde a un identificativo noto e valido, il Fornitore di Attestati Elettronici DEVE utilizzare l'endpoint PDND <a class="reference internal" href="authentic-source-endpoint.html#get-attribute-claims"><span class="std std-ref">Get Attribute Claims</span></a> della Fonte Autentica per recuperare le informazioni aggiornate e, se possibile, applicare il nuovo stato/attributo all'Attestato Elettronico corrispondente.</p>
 <p>Quando il Segnale è stato elaborato, il Fornitore di Attestati Elettronici passerà al Segnale successivo e aggiornerà il suo contatore <code class="docutils literal notranslate"><span class="pre">signalId</span></code>; oppure, se non ci sono più Segnali da elaborare, riprenderà il polling.</p>
@@ -421,7 +421,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 20/02/2026.
+      Ultimo aggiornamento 04/03/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

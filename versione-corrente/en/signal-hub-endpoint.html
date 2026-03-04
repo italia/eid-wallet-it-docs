@@ -241,10 +241,10 @@
 <td><p>REQUIRED. Using this field the Authentic Source MAY use to further specify the Signal.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>objectId</strong></p></td>
-<td><p>REQUIRED. The subject to which the Signal is bound. If the Signal has <code class="docutils literal notranslate"><span class="pre">signalType</span></code>:</p>
+<td><p>REQUIRED. The subject to which the Signal is bound. It MUST be set to the <code class="docutils literal notranslate"><span class="pre">object_id</span></code> that the Authentic Source used in the <cite>get attributes</cite> payload response to the the Credential Issuer and that corresponds to the Authentic Source's unique database identifier of the dataset of Attribute (see <a class="reference internal" href="authentic-source-endpoint.html#get-attribute-claims"><span class="std std-ref">Get Attribute Claims</span></a>). The Signal <code class="docutils literal notranslate"><span class="pre">signalType</span></code> MUST be valued with one of the following:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">CREATE</span></code>, then it MUST be set to the <code class="docutils literal notranslate"><span class="pre">jti</span></code> value the Credential Issuer used in the Agid-JWT-Signature token of the <cite>get attributes</cite> request to the Authentic Source to obtain the attributes related to a specific Digital Credential (see <a class="reference internal" href="authentic-source-endpoint.html#get-attribute-claims"><span class="std std-ref">Get Attribute Claims</span></a>);</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">UPDATE</span></code>, then it MUST be set to the Authentic Source's unique database identifier of the Digital Credential's attributes the Signal refers to.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CREATE</span></code>, in order to notify the availability of the attributes related to a specific Digital Credential.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">UPDATE</span></code>, in order to notify the updating of the attributes related to a specific Digital Credential.</p></li>
 </ul>
 </td>
 </tr>
@@ -263,7 +263,7 @@
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>In the deffered issuance flow, i.e., when the Authentic Source notifies the Credential Issuer of the availability of the Digital Credential's attributes via Signal Hub; both entities MUST keep track of the Credential Issuer's <code class="docutils literal notranslate"><span class="pre">jti</span></code> value used in the Agid-JWT-Signature of the <code class="docutils literal notranslate"><span class="pre">get</span> <span class="pre">attributes</span></code> request. This is necessary since the <code class="docutils literal notranslate"><span class="pre">objectId</span></code> of the Signal MUST be set to that <code class="docutils literal notranslate"><span class="pre">jti</span></code> value when the Signal has <code class="docutils literal notranslate"><span class="pre">signalType</span></code> with value <code class="docutils literal notranslate"><span class="pre">CREATE</span></code>.</p>
+<p>In the deffered issuance flow, i.e., when the Authentic Source notifies the Credential Issuer of the availability of the Digital Credential's attributes via Signal Hub; both entities MUST keep track of the Authentic Source's <code class="docutils literal notranslate"><span class="pre">object_id</span></code> value used in the <code class="docutils literal notranslate"><span class="pre">get</span> <span class="pre">attributes</span></code> payload response. This is necessary since the <code class="docutils literal notranslate"><span class="pre">objectId</span></code> of the Signal MUST be set to that <code class="docutils literal notranslate"><span class="pre">object_id</span></code> value when the Signal has <code class="docutils literal notranslate"><span class="pre">signalType</span></code> with value <code class="docutils literal notranslate"><span class="pre">CREATE</span></code>.</p>
 </div>
 <p>A non normative example of the Signal Collection request can be found at <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-depositare-un-segnale">Signal Hub push</a>.</p>
 <p>The Signal Collection e-Service response, acknowledging the correct parsing of the request, is specified in <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-depositare-un-segnale">Signal Hub push</a>, and has <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> set to <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. The payload contains the body parameter:</p>
@@ -355,7 +355,7 @@
 <li><p>For each Signal, the Credential Issuer MUST check the <code class="docutils literal notranslate"><span class="pre">SignalType</span></code> value:</p>
 <ul class="simple">
 <li><p>if the Signal <code class="docutils literal notranslate"><span class="pre">SignalType</span></code> is <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> (where <code class="docutils literal notranslate"><span class="pre">objectId</span></code> refers to the <strong>Authentic Source's unique database identifier of the Digital Credential's attributes</strong>), the status and/or value of the attribute associated with a Digital Credential need updates;</p></li>
-<li><p>if the Signal <code class="docutils literal notranslate"><span class="pre">SignalType</span></code> is <code class="docutils literal notranslate"><span class="pre">CREATE</span></code> (where <code class="docutils literal notranslate"><span class="pre">objectId</span></code> refers to the <strong>request ``jti``</strong>), the requested attributes of a specific Digital Credential are now available;</p></li>
+<li><p>if the Signal <code class="docutils literal notranslate"><span class="pre">SignalType</span></code> is <code class="docutils literal notranslate"><span class="pre">CREATE</span></code> (where <code class="docutils literal notranslate"><span class="pre">objectId</span></code> refers to the <strong>Authentic Source's unique database identifier of the Digital Credential's attributes</strong>), the requested attributes of a specific Digital Credential are now available;</p></li>
 </ul>
 <p>If the <code class="docutils literal notranslate"><span class="pre">objectId</span></code> does not correspond to any valid identifier known to the Credential Issuer, the Signal MUST be ignored. Otherwise, if it corresponds to a known and valid identifier, the Credential Issuer MUST use the <a class="reference internal" href="authentic-source-endpoint.html#get-attribute-claims"><span class="std std-ref">Get Attribute Claims</span></a> PDND endpoint of the Authentic Source to retrieve the updated information and, if applicable, apply the new status to the corresponding Credential.</p>
 <p>When the Signal has been processed, the Credential Issuer will either move to the next Signal and update its <code class="docutils literal notranslate"><span class="pre">signalId</span></code> counter; or, if there are no more Signals to process, it will resume the Pull cycle.</p>
@@ -420,7 +420,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 20/02/2026.
+      Last updated on 04/03/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
