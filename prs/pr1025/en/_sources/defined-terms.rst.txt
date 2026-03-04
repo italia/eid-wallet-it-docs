@@ -31,7 +31,7 @@ Below is the description of acronyms and definitions which are useful for furthe
       Aligned with ARF 2.7.3.
 
     **Certification Scope**
-      Indication of whether a component is evaluated during certification (In scope) or not (No). Used to define the boundaries of the certification evaluation.
+      Indication of whether a component is evaluated during certification (In scope) or not (Out of scope). Used to define the boundaries of the certification evaluation.
       Not present in ARF 2.7.3; specific to IT-Wallet.
 
     **Certification Process**
@@ -106,7 +106,7 @@ Below is the description of acronyms and definitions which are useful for furthe
       Not present in ARF 2.7.3.
 
     **Certification Macro-component**
-      Top-level grouping in the component decomposition for certification (e.g. ICT Wallet Services, ICT PID Provider Services); each certification macro-component has an owner (such as Wallet Provider or PID Provider) and a certification scope.
+      Top-level grouping in the component decomposition for certification (e.g. ICT Wallet Services, eID ICT Services); each certification macro-component has an owner (such as Wallet Provider or PID Provider) and a certification scope.
       Not present in ARF 2.7.3; specific to IT-Wallet.
 
     **Metadata**
