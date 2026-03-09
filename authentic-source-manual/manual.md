@@ -16,13 +16,13 @@ Ultimo aggiornamento: XX marzo 2026
 * [Scopo e ambito di applicazione](#Scopo-e-ambito-di-applicazione)
 * [Ruoli e responsabilità del Titolare di Fonte Autentica](#Ruoli-e-responsabilità-del-Titolare-di-Fonte-Autentica)
 * [Come diventare Titolare di Fonte Autentica](#Come-diventare-Titolare-di-Fonte-Autentica)
-    * [Step 1 | Progettazione EAA](##Step-1-|-Progettazione-EAA) 
-    * [Step 2 | Pubblicazione in collaudo](Step-2-|-Pubblicazione-in-collaudo) 
-    * [Step 3 | Test in collaudo](Step-3-|-Test-in-collaudo)
-    * [Step 4 | Pubblicazione in produzione](Step-4-|-Pubblicazione-in-produzione) 
-    * [Step 5 | Test in produzione](#Step-5-|-Test-in-produzione)
-    * [Step 6 | Pianficazione rilascio dell’EAA](#Step-6-|-Pianficazione-rilascio-dell-EAA)
-    * [Step 7 | Manutenzione e assistenza](Step-7-|-Manutenzione-e-assistenza)
+    * [Step 1 | Progettazione EAA](#step-1--progettazione-eaa) 
+    * [Step 2 | Pubblicazione in collaudo](step-2--pubblicazione-in-collaudo) 
+    * [Step 3 | Test in collaudo](Step-3--Test-in-collaudo)
+    * [Step 4 | Pubblicazione in produzione](Step-4--Pubblicazione-in-produzione) 
+    * [Step 5 | Test in produzione](#Step-5--Test-in-produzione)
+    * [Step 6 | Pianficazione rilascio dell’EAA](#Step-6--Pianficazione-rilascio-dell-EAA)
+    * [Step 7 | Manutenzione e assistenza](Step-7--Manutenzione-e-assistenza)
 * [Documenti da compilare](#Documenti-da-compilare)
 * [Template PDND Data Model](#Template-PDND-Data-Model)
 * [Riferimenti utili](#Riferimenti-utili)
@@ -106,7 +106,7 @@ Per assumere il ruolo di Titolare di Fonte Autentica, e quindi mettere a disposi
 * **Step 7 | Manutenzione e assistenza**: l’Ente effettua eventuali attività di gestione e manutenzione dell’e-service e contribuisce alla risoluzione di problematiche e segnalazioni, per le tematiche e i processi di competenza, secondo il modello di assistenza del Sistema IT-Wallet. [Vai allo Step 7](#Step-7-|-Manutenzione-e-assistenza) 
 
 
-## Step 1 | Progettazione EAA 
+## Step 1 | Progettazione EAA
 
 Questo step ha l’obiettivo di definire l'esperienza utente di scoperta, ottenimento, utilizzo e gestione dell’Attestato Elettronico di Attributi. Le attività previste in questa fase sono di piena responsabilità dell’Ente e determinano l’aspetto grafico, e più in generale la qualità del servizio, per l’utente finale (es. numerosità e valore aggiunto dei casi d’uso, facilità di lettura e comprensione degli attributi, l’efficacia dell’assistenza, le condizioni di validità dell’EAA, etc.). In questo step, l’Ente interessato deve: 
 
