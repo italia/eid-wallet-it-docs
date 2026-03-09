@@ -153,7 +153,7 @@ IT-Wallet consente all’utente di ottenere in formato digitale i propri documen
 L’Ente deve definire quali dati caratterizzeranno i propri EAA e in quale ordine, affinché siano adeguati all’utilizzo in versione digitale e subito comprensibili all’utente. 
  
 
-A tal fine, l'Ente deve compilare il foglio **01- Data Model** del documento [**e-service EAA.xlsx**](../e-service-EAA.xlsx) dell’Attestato Elettronico di Attributi, seguendo le istruzioni riportate al suo interno, dichiarando i dettagli sui dati che verranno messi a disposizione (es. tipologia, obbligatorietà, formato, lunghezza massima consentita, ordinamento, etc.).  
+A tal fine, l'Ente deve compilare il foglio **01- Data Model** del documento [**e-service EAA.xlsx**](../authentic-source-manual/e-service-EAA.xlsx) dell’Attestato Elettronico di Attributi, seguendo le istruzioni riportate al suo interno, dichiarando i dettagli sui dati che verranno messi a disposizione (es. tipologia, obbligatorietà, formato, lunghezza massima consentita, ordinamento, etc.).  
 Nella sezione [Template PDND Data Model](#Template-PDND-Data-Model) sono riportati i riferimenti dei template Data Model pubblicati su PDND relativi ad alcune tipologie di Attestati Elettronici di Attributi, che l’Ente dovrebbe prendere a riferimento per assicurare massima aderenza e compliance alle Specifiche Tecniche.
 
 In conclusione, un’adeguata definizione del Data Model pone le basi per una corretta implementazione dell’e-service da pubblicare su PDND (vedi [Step 2](#Step-2-|-Pubblicazione-in-collaudo)) ma è altresì importante considerare e rispettare i seguenti requisiti tecnici: 
