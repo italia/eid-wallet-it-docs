@@ -16,7 +16,7 @@ Ultimo aggiornamento: XX marzo 2026
 * [Scopo e ambito di applicazione](#Scopo-e-ambito-di-applicazione)
 * [Ruoli e responsabilità del Titolare di Fonte Autentica](#Ruoli-e-responsabilità-del-Titolare-di-Fonte-Autentica)
 * [Come diventare Titolare di Fonte Autentica](#Come-diventare-Titolare-di-Fonte-Autentica)
-    * [Step 1 | Progettazione EAA](#Step-1-|-Progettazione-EAA) 
+    * [Step 1 | Progettazione EAA](##Step-1-|-Progettazione-EAA) 
     * [Step 2 | Pubblicazione in collaudo](Step-2-|-Pubblicazione-in-collaudo) 
     * [Step 3 | Test in collaudo](Step-3-|-Test-in-collaudo)
     * [Step 4 | Pubblicazione in produzione](Step-4-|-Pubblicazione-in-produzione) 
