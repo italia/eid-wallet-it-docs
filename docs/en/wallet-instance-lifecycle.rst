@@ -72,7 +72,7 @@ key binding resides in a secure WSCD.
 .. _wscd-wallet-instance-lifecycle-requirement:
 
 .. note::
-   When the IT-Wallet will be notified EUDIW and the certification scheme will be published and made operative, the Wallet Provider MUST classify the WSCD security level of the Wallet Unit as either WL2 or WL3, according to the criteria defined in :ref:`WSCD security levels <wscd-security-levels>`. This classification determines which types of Digital Credentials the Wallet Instance is eligible to receive (PID requires WL3; (Q)EAA requires at least WL2).
+   When the IT-Wallet is notified EUDIW and the certification scheme is published and becomes operative, the Wallet Provider MUST classify the WSCD security level of the Wallet Unit as either WL2 or WL3, according to the criteria defined in :ref:`WSCD security levels <wscd-security-levels>`. This classification determines which types of Digital Credentials the Wallet Instance is eligible to receive (PID requires WL3; (Q)EAA requires at least WL2).
 
 
 In addition, if not already done, Users MUST set their preferred method of unlocking their Wallet Instance; this MAY be accomplished by entering a

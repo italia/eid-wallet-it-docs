@@ -14,7 +14,7 @@ Decomposition and Certification Scope
 
 **Certification** is the process by which Conformity Assessment Bodies assess technical solutions against the security and compliance requirements mandated by `CIR 2024/2981`_. The **component decomposition for certification** is a hierarchical structure (certification macro-component, component, sub-component) used to define the scope of certification evaluation and to establish traceability between architectural elements and certification requirements.
 
-This section specifies the mapping between the Wallet Solution components described in this technical specification and the certification macro-component **Servizi ICT Wallet** (owner: Wallet Provider). It indicates which components conform to the decomposition and fall within certification scope.
+This section specifies the mapping between the Wallet Solution components described in this technical specification and the certification macro-component **Servizi ICT Wallet** (owner: Wallet Provider). It indicates which components conform to the decomposition and fall within the certification scope.
 
 .. list-table:: Wallet Solution — Decomposition Mapping
    :widths: 30 40 15
@@ -26,7 +26,7 @@ This section specifies the mapping between the Wallet Solution components descri
    * - **Wallet Instance (WI)** — Application Logic
      - User Interface, Issuer Component, Presentation Component, Wallet Instance Lifecycle Management
      - In scope
-   * - **Wallet Instance (WI)** — Local Data management
+   * - **Wallet Instance (WI)** — Local Data Management
      - Local Data Store, Backup and Restore Component, Secure Storage interaction
      - In scope
    * - **Wallet Instance (WI)** — Presentation Interface (PI)
@@ -45,12 +45,16 @@ This section specifies the mapping between the Wallet Solution components descri
      - API Interface (incl. PDND for PID Provider notifications)
      - In scope
    * - **Wallet Provider Backend (WPBE)** — Wallet Instance Lifecycle Management
+<<<<<<< wia
      - Registration, Attestation Issuance (WIA/WUA), Status and revocation
+=======
+     - Registration, Attestation Issuance (WAA/WUA), Status and Revocation
+>>>>>>> scomposition_acn
      - In scope
    * - **Wallet Provider Backend (WPBE)** — Trust & Security Component
-     - Key and certificate management, audit logging, incident response, Federation compliance
+     - Key and Certificate Management, Audit Logging, Incident Response, Federation Compliance
      - In scope
-   * - **Wallet Provider Backend (WPBE)** — User web portal
+   * - **Wallet Provider Backend (WPBE)** — User Web Portal
      - Frontend Component
      - In scope
 

@@ -32,16 +32,16 @@ The high-level flow begins with the User who wants to obtain a PID and starts hi
     6. **PID Issuance**: the PID Provider releases a PID bound to the key material held by the requesting Wallet Instance.
 
 .. note::
-    Regarding point 4, the primary authentication method is based on CieID LoA High (L3). For scenarios where CIE PIN is not immediately available, an alternative multi-step authentication mechanism is available combining eID Substantial Authentication along with MRTD Verification.
+    Regarding point 4, the primary authentication method is based on CIEid LoA High (L3). For scenarios where CIE PIN is not immediately available, an alternative authentication mechanism is available based on eID Substantial augmented. Implementation details will be defined following the CIR draft developments.
 
-    For complete technical specifications, see :ref:`credential-issuance-l2plus:eID Substantial Authentication with MRTD Verification for PID Issuance`.
+    For the current technical specification of the augmented eID Substantial flow, see :ref:`eID Substantial augmented flow <credential-issuance-l2plus:eID Substantial Authentication with MRTD Verification for PID Issuance>`.
 
 .. _wscd-credential-issuance-requirement:
 
 .. rubric:: WSCD Requirements for Credential Issuance
 
 .. note::
-   For PID issuance, the PID Provider MUST ensure that the Wallet Unit provides a WL3 WSCD for key storage, as the PID requires a high Level of Assurance. This requirement will be considered once the IT-Wallet will be notified EUDIW and the certification scheme will be published and made operative. For (Q)EAA issuance, the Credential Issuer MUST ensure that the Wallet Unit provides at least a WL2 WSCD. See :ref:`WSCD security levels <wscd-security-levels>` for the definition of security levels.
+   For PID issuance, the PID Provider MUST ensure that the Wallet Unit provides a WL3 WSCD for key storage, as the PID requires a high Level of Assurance. This requirement applies once the IT-Wallet is a notified EUDIW and the certification scheme is published and becomes operative. For (Q)EAA issuance, the Credential Issuer MUST ensure that the Wallet Unit provides at least a WL2 WSCD. See :ref:`WSCD security levels <wscd-security-levels>` for the definition of security levels.
 
 High-Level (Q)EAA flow
 ----------------------

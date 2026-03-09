@@ -8,6 +8,15 @@ Schema di Certificazione e Approccio Complessivo
 
 Questa appendice descrive lo schema di certificazione e l'approccio complessivo per il sistema IT-Wallet, allineando le specifiche tecniche al paradigma di scomposizione dei componenti utilizzato per la valutazione della certificazione.
 
+Contesto della Certificazione: Sistema IT-Wallet vs. EUDI-Wallet
+----------------------------------------------------------------
+
+Il **Sistema IT-Wallet** è l'ecosistema nazionale che consente la gestione dell'Identità Digitale e lo scambio di Attestati Elettronici. Un **EUDI-Wallet** è una soluzione IT-Wallet designata dallo Stato Membro come implementazione nazionale del framework del Portafoglio di Identità Digitale Europeo.
+
+La certificazione ai sensi del `CIR 2024/2981`_ si applica **solo quando l'IT-Wallet opera nel contesto EUDI-Wallet**. Un Fornitore di Wallet che offre una soluzione esclusivamente nel Sistema IT-Wallet (ad es. un wallet del settore privato non designato come EUDI-Wallet) non è tenuto a richiedere la certificazione. Al contrario, una volta che una soluzione è designata come EUDI-Wallet italiano, viene sottoposta a certificazione e mantiene tale caratteristica anche quando opera come soluzione pubblica nel Sistema IT-Wallet.
+
+I **Servizi ICT eID** e i **Servizi ICT di Validazione** sono elementi unici e identici in entrambi gli ecosistemi; richiedono certificazione nel contesto EUDI-Wallet e pertanto conservano tale caratteristica anche nel Sistema IT-Wallet, anche dove la certificazione non è altrimenti richiesta.
+
 Quadro Normativo
 ----------------
 
@@ -31,7 +40,7 @@ Il paradigma della scomposizione struttura il sistema in:
    * - Livello
      - Descrizione
    * - Macro-componente di certificazione
-     - Raggruppamento di alto livello (es. Servizi ICT Wallet, Servizi ICT PID Provider); ciascuno ha un proprietario (Fornitore di Wallet, PID Provider).
+     - Raggruppamento di alto livello (es. Servizi ICT Wallet, Servizi ICT eID); ciascuno ha un proprietario (Fornitore di Wallet, PID Provider).
    * - Componente
      - Componente architetturale principale (es. Wallet Instance, Wallet Provider Backend, PID Provider Backend).
    * - Sottocomponente
@@ -56,13 +65,13 @@ I seguenti componenti sono **in scopo** per la certificazione ai sensi del `CIR 
    * - **Servizi ICT Wallet**
      - Fornitore di Wallet
      - :ref:`wallet-solution-components:Componenti della Soluzione Wallet`
-   * - **Servizi ICT PID Provider**
+   * - **Servizi ICT eID**
      - PID Provider
      - :ref:`credential-issuer-solution:Soluzione del Fornitore di Attestati Elettronici`
-   * - **Servizi ICT di Validazione** (Trust List Backend Services)
+   * - **Servizi ICT di Validazione**
      - Fornitore dei Servizi di Validazione
      - :ref:`trust-infrastructure:L'Infrastruttura di Trust`
-   * - **Regime di identificazione elettronica** (eID Scheme)
+   * - **Regime di identificazione elettronica**
      - Trasversale (Fornitore di Wallet e PID Provider)
      - Schemi eID nazionali (CIEid, SPID); :ref:`credential-issuance-l2plus:Autenticazione eID Substantial con Verifica MRTD per Emissione PID`
 
@@ -106,15 +115,15 @@ La seguente tabella fornisce un cross-riferimento consolidato dagli elementi del
    * - Wallet Provider Backend (WPBE)
      - :ref:`wallet-solution-components:Backend del Wallet`
      - Servizi ICT Wallet
-   * - WSCD / WSCA
+   * - WSCD (WL3) / Dispositivo crittografico (WL2) / WSCA
      - :ref:`wallet-solution-components:Archiviazione Sicura`
      - Servizi ICT Wallet
    * - PID Provider Backend (PPBE)
      - :ref:`credential-issuer-solution:Soluzione del Fornitore di Attestati Elettronici`
-     - Servizi ICT PID Provider
+     - Servizi ICT eID
    * - Identity Proofing (PPBE)
      - :ref:`credential-issuer-solution:Componente Relying Party`, :ref:`credential-issuance-l2plus:Autenticazione eID Substantial con Verifica MRTD per Emissione PID`
-     - Servizi ICT PID Provider
+     - Servizi ICT eID
    * - Trust List Backend Services
      - :ref:`trust-infrastructure:L'Infrastruttura di Trust`
      - Servizi ICT di Validazione
@@ -125,11 +134,10 @@ La seguente tabella fornisce un cross-riferimento consolidato dagli elementi del
 Certificazione Obbligatoria
 ---------------------------
 
-La colonna **Ambito Certificazione** nelle tabelle di scomposizione (vedere :ref:`Scomposizione e Ambito di Certificazione <wallet-solution-components-decomposition>` e :ref:`Scomposizione e Ambito di Certificazione <credential-issuer-solution-decomposition>`) indica se è richiesta una certificazione di sicurezza. I casi condizionali includono:
+La colonna **Ambito Certificazione** nelle tabelle di scomposizione (vedere :ref:`Scomposizione e Ambito di Certificazione <wallet-solution-components-decomposition>` e :ref:`Scomposizione e Ambito di Certificazione <credential-issuer-solution-decomposition>`) indica se è richiesta una certificazione di sicurezza. Lo **Schema eID** è sempre in scopo per la certificazione, essendo l'elemento trasversale tra Fornitore di Wallet e PID Provider che determina il requisito di certificazione. I casi condizionali includono:
 
-- **WSCD** fornito dall'Utente o dal Fornitore di Wallet (la proprietà del dispositivo influenza lo scopo).
+- **WSCD** (livello WL3) o dispositivo crittografico (livello WL2) fornito dall'Utente o dal Fornitore di Wallet (la proprietà del dispositivo influenza lo scopo).
 - **Wallet Instance** ambiente di esecuzione (dispositivo Utente vs. interfaccia web).
-- **eID Scheme** come elemento trasversale tra Fornitore di Wallet e PID Provider.
 
 Valutazione del Rischio
 ------------------------
