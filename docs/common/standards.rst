@@ -49,18 +49,6 @@ Infrastructure of Trust
       - De Marco, G., Hedberg, R., Jones, M.B., Bradley, J., Dzhuvinov, V., "OpenID Federation Wallet Architectures 1.0", October 2024, Draft 03.
     * - `OID-FED`_
       - Hedberg, R., Jones, M.B., Solberg, A.A., Bradley, J., De Marco, G., Dzhuvinov, V., "OpenID Federation 1.0", December 2025, Draft 46.
-    * - `OID-FED-SUBORDINATE-EVENTS`_
-      - De Marco, G., Jones, M.B., "OpenID Federation Subordinate Events Endpoint 1.0", January 2026, Draft 00.
-    * - `ETSI TS 119 612`_
-      - ETSI TS 119 612 v2.4.1 (2025-08) - Electronic Signatures and Infrastructures (ESI); Trusted Lists.
-    * - `ETSI TS 119 602`_
-      - ETSI TS 119 602 v1.1.1 (2025-11) - Electronic Signatures and Infrastructures (ESI); Lists of trusted entities; Data model.
-    * - `ETSI TS 119 615`_
-      - ETSI TS 119 615 v1.3.1 (2026-01) - Electronic Signatures and Trust Infrastructures (ESI); Trusted lists; Procedures for using and interpreting European Union Member States national trusted lists.
-    * - `ETSI EN 319 132-1`_
-      - ETSI EN 319 132-1 v1.3.1 - Electronic Signatures and Infrastructures (ESI); XAdES digital signatures; Part 1: Building blocks and XAdES baseline signatures.
-    * - `ETSI TS 119 182-1`_
-      - ETSI TS 119 182-1 v1.2.1 - Electronic Signatures and Infrastructures (ESI); JAdES digital signatures; Part 1: Building blocks and JAdES baseline signatures.
     * - `ETSI TS 119 412-6`_
       - ETSI TS 119 412-6 v1.1.1 - Electronic Signatures and Infrastructures (ESI); Part 6: Certificate profile requirements for PID, Wallet, EAA, QEAA, and PSBEAA providers.
 

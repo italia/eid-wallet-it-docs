@@ -431,19 +431,6 @@ Within the IT-Wallet System Register architecture, the Federation Registry serve
 2. **Trust Chain Verification**: Provides the cryptographic foundation for Credential Issuers, Relying Parties, and Wallet Providers entity validation
 3. **Compliance Verification**: Maintains Trust Marks that attest regulatory compliance and operational status
 
-Federation Registry Registration Information
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Entities registering in the Federation Registry MUST provide the information specified in the registration form requirements as defined in :ref:`onboarding-high-level:Registration Form Information Requirements`. This information is collected during the administrative registration phase and stored in the National Register, which feeds the Federation Registry for trust validation purposes.
-
-The Federation Registry uses this registration information to:
-
-  - Validate entity identity during cryptographic operations
-  - Verify entitlements and authorization scopes
-  - Support trust chain validation and certificate issuance
-  - Enable cross-border interoperability through standardized data formats
-
-
 Federation Registry Access
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -525,7 +512,7 @@ The following table summarizes the main information that MUST be provided by the
        - **Pricing policy**: Information related to pricing models of Digital Credential, such as `free`, `issuance_based`, `verification_based`.
        - **Digital Credential purposes**: Information related to the allowed purposes for which the Digital Credential can be used. Each Digital Credential type can be used for multiple purposes.
 
-The Trust Anchor MUST publish and keep up to date all the information at the Digital Credential Catalog `.well-known` endpoint ensuring data reliability, authenticity and integrity. In particular, the Digital Credential Catalog MUST be available through the ``.well-known/credential-catalog`` endpoint. It MUST support ``application/jose`` and ``application/json`` as content-type.
+The Trust Anchor MUST publish and keep up to date all the information at the Digital Credential Catalog `.well-known` endpoint ensuring data reliability, authenticity and integrity. In particular, the Digital Credential Catalog MUST be available through the ``.well-known/credential-catalog`` endpoint. It MUST support ``application/jose`` as content-type.
 
 Below a non-normative example is given.
 
@@ -539,15 +526,6 @@ Below a non-normative example is given.
     Content-Type: application/jose
 
     eyJhbGciOiJSUzI1NiIsImtpZCI6ImV4YW1w...
-
-.. code-block:: http
-
-    GET /.well-known/credential-catalog HTTP/1.1
-    Host: trust-anchor.eid-wallet.example.it
-    Accept: application/json
-
-    HTTP/1.1 200 OK
-    Content-Type: application/json
 
 In the section :ref:`registry:Digital Credentials Catalog Structure` an example of Digital Credentials Catalog is given as decoded in JSON.
 

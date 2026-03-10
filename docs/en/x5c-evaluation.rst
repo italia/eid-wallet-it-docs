@@ -179,7 +179,7 @@ Subordinates MAY use one or more of the following mechanisms to detect changes:
 
 - **CRL/OCSP Verification**: Monitor Certificate Revocation Lists or Online Certificate Status Protocol responses to detect revocation of superior certificates as defined in :ref:`trust-infrastructure:X.509 Certificate Revocation`. Certificate revocation indicates superior key rotation is in progress.
 - **Fetch Endpoint**: Retrieve Subordinate Statement via ``GET {superior}/fetch?sub={subordinate_entity_id}`` to obtain current certificates.
-- **Events Endpoint**: Monitor ``GET {superior}/federation_subordinate_events_endpoint?sub={subordinate_entity_id}`` for ``jwks_update`` events. The Federation Subordinate Events endpoint returns historical track of registration events as defined in :ref:`trust-infrastructure:Federation API endpoints`.
+- **Events Endpoint**: Monitor ``GET {superior}/federation_subordinate_events_endpoint?sub={subordinate_entity_id}`` for ``jwks_update`` events.
 
 Subordinates SHOULD implement automated scheduling for:
 
