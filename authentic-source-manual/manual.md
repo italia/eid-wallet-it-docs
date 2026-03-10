@@ -2,13 +2,6 @@
 
 ### Guida operativa per la messa a disposizione dei dati per l’emissione di Attestati Elettronici di Attributi sulle soluzioni IT-Wallet 
 
- 
-
-### SISTEMA IT-WALLET 
-
-
-Ultimo aggiornamento: XX marzo 2026 
-
 
 ## Indice dei contenuti 
 
