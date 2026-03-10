@@ -145,7 +145,7 @@ La definizione dei casi d'uso è fondamentale per:
 * **progettare un'esperienza d'uso che apporti valore reale** sia a cittadini che ai verificatori, è utile definire a monte quali potranno essere le occasioni d’uso del futuro Attestato Elettronico di Attributi, a partire dall’analisi dell’esperienza attuale di fruizione del corrispettivo documento fisico, se esistente (es. si pensi alla modalità di presentazione del codice a barre per l'uso della Tessera Sanitaria o del QR code per la verifica della Carta Europea della Disabilità); 
 * **determinare il tipo di formato con cui verrà emessa la EAA** da parte del Fornitore di Attestati Elettronici di Attributi (SD-JWT-VC per scenari in remoto e mdoc-CBOR per scenari in prossimità).
 
-A tal fine, l’Ente deve compilare il documento [**Casi d’uso EAA.docx**](Casi-d-uso.docx), seguendo le istruzioni riportate al suo interno. 
+A tal fine, l’Ente deve compilare il documento [**Casi d’uso EAA.docx**](Casi d'uso EAA.docx), seguendo le istruzioni riportate al suo interno. 
 
 ### **Definire il Data Model dell’EAA**
 
