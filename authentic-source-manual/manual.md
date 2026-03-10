@@ -17,10 +17,7 @@
     * [Step 6 | Pianificazione rilascio EAA](#step-6--Pianificazione-rilascio-eaa)
     * [Step 7 | Manutenzione e assistenza](#step-7--Manutenzione-e-assistenza)
 * [Documenti da compilare](#Documenti-da-compilare)
-* [Template PDND Data Model](#Template-PDND-Data-Model)
-* [Riferimenti utili](#Riferimenti-utili)
-* [Come contribuire](#Come-contribuire)
- 
+* [Template PDND Data Model](#Template-PDND-Data-Model) 
 
 ## Introduzione e contesto 
 
@@ -30,8 +27,7 @@ Il Sistema di portafoglio digitale italiano (Sistema IT-Wallet) è stato istitui
 
 La novità normativa si inquadra nella più ampia iniziativa europea introdotta dal [Regolamento (UE) 2024/1183 del Parlamento europeo e del Consiglio dell’11 aprile 2024](http://data.europa.eu/eli/reg/2024/1183/oj) – c.d. eIDAS 2 – che modifica il [Regolamento (UE) n. 910/2014](https://eur-lex.europa.eu/eli/reg/2014/910/oj) per quanto riguarda l’istituzione del quadro europeo relativo all’identità digitale.  
 
-Per la piena attuazione del Sistema IT-Wallet, all’articolo istitutivo del CAD seguono due decreti attuativi, di cui uno di adozione delle Linee Guida proposte da AgID, che vengono completate dalle Specifiche tecniche. La versione di riferimento di tali specifiche è la **[versione 1.4.0](https://https://italia.github.io/eid-wallet-it-docs/releases/1.4.0/it/)** ([versione inglese](https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/)), e le sue successive release correttive e compatibili (1.4.x).
-
+Per la piena attuazione del Sistema IT-Wallet, all’articolo istitutivo del CAD seguono due decreti attuativi, di cui uno di adozione delle Linee Guida proposte da AgID, che vengono completate dalle Specifiche tecniche. La versione di riferimento delle Specifiche è quella mantenuta nel branch **Long-Term Support (LTS)** come descritto nel relativo [README](https://github.com/italia/eid-wallet-it-docs) all’interno della sezione [Branching Approach](https://github.com/italia/eid-wallet-it-docs?tab=readme-ov-file#branching-approach). La versione corrente delle Specifiche è disponibile al link https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/ ([versione inglese](https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/)).  
 
 
 ## Scopo e ambito di applicazione 
@@ -84,7 +80,7 @@ Figura 2: Flusso di richiesta ed emissione di un EAA nel Sistema IT-Wallet
 Per assumere il ruolo di Titolare di Fonte Autentica, e quindi mettere a disposizione i propri dati per la creazione di Attestati Elettronici di Attributi per gli utenti che ne fanno richiesta, ciascun Ente interessato deve attenersi al seguente processo di onboarding tecnico, da considerarsi valido fino alla pubblicazione del Regolamento IT-Wallet e alla disponibilità del Portale di Onboarding, del Registro delle Fonti Autentiche e del Catalogo degli Attestati Elettronici. In particolare, il processo prevede i seguenti step: 
 
 
-* **Step 1 | Progettazione EAA**: l’Ente approfondisce le Specifiche Tecniche del Sistema IT-Wallet ([versione 1.4.0](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/index.html)) e definisce le caratteristiche del proprio Attestato Elettronico di Attributi, ovvero le modalità di scoperta e ottenimento dell’EAA, i casi d’uso, il data model e le modalità di gestione di errori e stati, al fine di garantire una corretta emissione, utilizzo e gestione dell’EAA nel tempo. [Vai allo Step 1](#Step-1--Progettazione-EAA)
+* **Step 1 | Progettazione EAA**: l’Ente approfondisce le [Specifiche Tecniche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/) del Sistema IT-Wallet e definisce le caratteristiche del proprio Attestato Elettronico di Attributi, ovvero le modalità di scoperta e ottenimento dell’EAA, i casi d’uso, il data model e le modalità di gestione di errori e stati, al fine di garantire una corretta emissione, utilizzo e gestione dell’EAA nel tempo. [Vai allo Step 1](#Step-1--Progettazione-EAA)
 
 * **Step 2 | Pubblicazione in collaudo**: l'Ente effettua l’onboarding nella Piattaforma Digitale Nazionale Dati (PDND), se non lo ha già fatto, rilascia l’e-service in ambiente di collaudo su PDND, e attiva il relativo servizio Signal Hub in ambiente di collaudo per la gestione del ciclo di vita dell’EAA nel tempo. Infine, l’Ente notifica al Fornitore di Attestati Elettronici di Attributi, configurato come fruitore dell’e-service, l'avvenuta pubblicazione. [Vai allo Step 2](#Step-2--Pubblicazione-in-collaudo)
 
@@ -105,7 +101,8 @@ Questo step ha l’obiettivo di definire l'esperienza utente di scoperta, otteni
 
 
 ### **Approfondire le Specifiche Tecniche del Sistema IT-Wallet**
-Le Specifiche Tecniche di riferimento sono rappresentate dalla [versione 1.4.0](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/). Si raccomanda l’approfondimento, in particolare, delle sezioni: 
+La versione corrente delle Specifiche Tecniche è disponibile al link https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/. 
+Si raccomanda l’approfondimento, in particolare, delle sezioni: 
 
 * [Design dell’Esperienza Utente ](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/functionalities.html)
 * [Fonti Autentiche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/authentic-sources.html)  
@@ -120,7 +117,7 @@ Il Sistema IT-Wallet rende possibili diverse modalità per scoprire, richiedere 
 
 * l'utente può avviare il flusso di ottenimento: 
     * **attraverso una sezione “catalogo” della soluzione IT-Wallet**, soluzione indicata per EAA di interesse nazionale o, comunque, rivolti ad un’ampia percentuale di popolazione (es. Tessera Sanitaria, Patente di guida, etc.). Per approfondimenti vai alle Specifiche Tecniche, sezioni [Ottenimento dal Catalogo dell'Istanza del Wallet](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/functionalities.html#ottenimento-dal-catalogo-dell-istanza-del-wallet) e [Issuance Flow](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/credential-issuance-low-level.html#issuance-flow);
-    * **attraverso uno dei touchpoint del Titolare di Fonte Autentica** (es. sito web), soluzione indicata per EAA di interesse locale o rivolte a un pubblico specifico (es. certificati, prenotazioni, etc.). Questo flusso può affiancarsi o sostituire il precedente a seconda del tipo di EAA. Per approfondimento vai alle Specifiche Tecniche, sezione [Ottenimento dal Touchpoint della Fonte Auntentica](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/functionalities.html#ottenimento-dal-touchpoint-della-fonte-autentica) e [Credential Offer](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/credential-issuance-low-level.html#flusso-credential-offer);
+    * **attraverso uno dei touchpoint del Titolare di Fonte Autentica** (es. sito web), soluzione indicata per EAA di interesse locale o rivolte a un pubblico specifico (es. certificati, prenotazioni, etc.). Questo flusso può affiancarsi o sostituire il precedente a seconda del tipo di EAA. Per approfondimento vai alle Specifiche Tecniche, sezione [Ottenimento dal Touchpoint della Fonte Auntentica](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/functionalities.html#ottenimento-dal-touchpoint-della-fonte-autentica) e [Credential Offer](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/credential-issuance-low-level.html#flusso-credential-offer).
 * l’Ente può rispondere alla richiesta di emissione in: 
     * **modalità sincrona**, che consente l’ottenimento immediato dell’EAA da parte dell’utente e si configura come l’opzione preferibile;
     * **modalità differita**, che consente all’utente di ottenere l'EAA non contestualmente al momento della richiesta e si configura come l’opzione non preferibile. 
@@ -280,7 +277,7 @@ L’Ente deve garantire il corretto funzionamento dell’e-service nel tempo, pr
 L’Ente deve garantire un costante aggiornamento delle informazioni riportate nel documento [**Assistenza EAA.docx**](Assistenza-EAA.docx), al fine di: 
 
 * **Contribuire alla risoluzione di bug** 
-Il referente dell’ambito sistemistico e il referente dell’ambito applicativo, così come definito dall’Ente nel documento [**Assistenza EAA.docx**](Assistenza-EAA.docx), devono contribuire alla diagnosi congiunta delle segnalazioni ricevute da Fornitore di Attestati Elettronici di Attributi (IPZS, nel caso di EAA di interesse pubblico) e Fornitori di Wallet (PagoPA, nel caso della soluzione pubblica IT-Wallet) e relativa risoluzione, secondo quanto definito dal modello di assistenza del Sistema IT-Wallet. 
+Il referente dell’ambito sistemistico e il referente dell’ambito applicativo, così come definito dall’Ente nel documento [**Assistenza EAA.docx**](Assistenza-EAA.docx), devono contribuire alla diagnosi congiunta delle segnalazioni ricevute da Fornitore di Attestati Elettronici di Attributi (IPZS, nel caso di EAA di interesse pubblico) e Fornitori di Wallet (PagoPA, nel caso della soluzione pubblica IT-Wallet) e relativa risoluzione, secondo quanto definito dal [modello di assistenza](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/functionalities.html#assistenza-utente) del Sistema IT-Wallet. 
 * **Garantire il supporto agli utenti** 
 Il referente per l’ambito assistenza ed almeno un canale di contatto dedicato agli utenti finali (es. indirizzo e-mail, numero telefonico, etc.), così come definito dall’Ente nel documento [**Assistenza EAA.docx**](Assistenza-EAA.docx), devono sempre essere disponibili per gestire eventuali problemi relativi all’EAA, come ad esempio la segnalazione di dati errati o di errori nella fase di ottenimento dell’EAA da parte dell’utente. 
 
@@ -300,21 +297,5 @@ Di seguito si condividono i data model di EAA già definiti o contenuti nella so
 * EAA di patenti o patentini 
 * EAA di titoli o qualifiche 
 * EAA di iscrizioni o frequenze 
-
-
-## Riferimenti utili 
-
-* Specifiche Tecniche IT-Wallet, versione 1.4.0 e successive release correttive e compatibili: [italiano](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/index.html), [inglese](https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/index.html) 
-* [Guida all’adesione PDND](https://docs.pagopa.it/interoperabilita-1/manuale-operativo/guida-alladesione) 
-
-
-## Come contribuire 
-
-Il manuale è da intendersi anche come uno strumento aperto alla condivisione e alla collaborazione tra gli Enti interessati.  
-
-Nella sezione Discussion è possibile iniziare o partecipare a discussioni, aprire segnalazioni o inviare contributi a beneficio di alti Enti interessati ad assumere il ruolo di Titolari di Fonte Autentica. 
-
-Si raccomanda di consultare il [Codice di condotta](https://github.com/italia/bootstrap-italia/blob/main/CODE_OF_CONDUCT.md) della community legata ai progetti dell'organizzazione Italia su GitHub, strumento utile a mantenere un ambiente di collaborazione inclusivo e propositivo.  
- 
 
  
