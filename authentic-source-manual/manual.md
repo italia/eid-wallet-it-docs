@@ -153,7 +153,7 @@ IT-Wallet consente all’utente di ottenere in formato digitale i propri documen
 L’Ente deve definire quali dati caratterizzeranno i propri EAA e in quale ordine, affinché siano adeguati all’utilizzo in versione digitale e subito comprensibili all’utente. 
  
 
-A tal fine, l'Ente deve compilare il foglio **01- Data Model** del documento [**e-service EAA.xlsx**](../authentic-source-manual/e-service-EAA.xlsx) dell’Attestato Elettronico di Attributi, seguendo le istruzioni riportate al suo interno, dichiarando i dettagli sui dati che verranno messi a disposizione (es. tipologia, obbligatorietà, formato, lunghezza massima consentita, ordinamento, etc.).  
+A tal fine, l'Ente deve compilare il foglio **01- Data Model** del documento [**e-service EAA.xlsx**](e-service-EAA.xlsx) dell’Attestato Elettronico di Attributi, seguendo le istruzioni riportate al suo interno, dichiarando i dettagli sui dati che verranno messi a disposizione (es. tipologia, obbligatorietà, formato, lunghezza massima consentita, ordinamento, etc.).  
 Nella sezione [Template PDND Data Model](#Template-PDND-Data-Model) sono riportati i riferimenti dei template Data Model pubblicati su PDND relativi ad alcune tipologie di Attestati Elettronici di Attributi, che l’Ente dovrebbe prendere a riferimento per assicurare massima aderenza e compliance alle Specifiche Tecniche.
 
 In conclusione, un’adeguata definizione del Data Model pone le basi per una corretta implementazione dell’e-service da pubblicare su PDND (vedi [Step 2](#Step-2-|-Pubblicazione-in-collaudo)) ma è altresì importante considerare e rispettare i seguenti requisiti tecnici: 
@@ -194,7 +194,7 @@ Per ottimizzare l’esperienza d’uso dell’IT-Wallet pubblico, il Titolare di
 
 ### **Definire i contenuti per l’informazione e l’assistenza all’utente**  
 L’Ente deve contribuire al [modello di assistenza](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/functionalities.html#assistenza-utente) del Sistema IT-Wallet rendendo disponibili contenuti utili alla predisposizione di nuove Domande Frequenti e/o testi informativi in app, e fornendo i recapiti necessari per la gestione dell’assistenza agli utenti.  
-A tal fine, l’Ente deve compilare il documento [**Assistenza EAA.docx**](authentic-source-manual/Assistenza-EAA.docx). 
+A tal fine, l’Ente deve compilare il documento [**Assistenza EAA.docx**](Assistenza-EAA.docx). 
 
  
 
@@ -213,7 +213,7 @@ Per effettuare l’onboarding alla PDND, qualora l’Ente ancora non abbia aderi
 ### **Pubblicare l’e-service su PDND in collaudo** 
 L’Ente deve sviluppare e rilasciare in collaudo un e-service coerente con il Data Model precedentemente definito, in linea con le informazioni presenti nella Guida all’adesione di PDND, con particolare riferimento alla [sezione e-service](https://docs.pagopa.it/interoperabilita-1/manuale-operativo/e-service), e in linea con le Specifiche Tecniche italiane, in particolare la sezione dedicata al [Titolare di Fonte Autentica](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/authentic-sources.html). 
 
-Contestualmente al flusso di pubblicazione dell’e-service, l’Ente deve allegare il documento **[Casi d’uso EAA.docx](casi-d-uso.docx)**, il documento [**e-service EAA.xlsx**](e-service-EAA.xlsx) e il documento [**Assistenza EAA.docx**](Assistenza-EAA.docx), precedentemente compilati in ogni loro foglio. 
+Contestualmente al flusso di pubblicazione dell’e-service, l’Ente deve allegare il documento **[Casi d’uso EAA.docx]**(Casi-d-uso-EAA.docx), il documento [**e-service EAA.xlsx**](e-service-EAA.xlsx) e il documento [**Assistenza EAA.docx**](Assistenza-EAA.docx), precedentemente compilati in ogni loro foglio. 
 Nel caso di EAA di interesse pubblico, l’Ente deve abilitare IPZS alla fruizione dell’e-service, se possibile con abilitazione automatica. 
 
 Si consiglia di nominare l’e-service in “Creazione EAA [Nome / Nome tipologia EAA] – IT-Wallet” (es. “Creazione EAA Patente di guida – IT-Wallet” oppure “Creazione EAA Titoli di studio – IT-Wallet") e di predisporre una descrizione in linea con la [Guida alla nomenclatura degli e-service PDND](https://italia.github.io/pdnd-guida-nomenclatura-eservice/index.html)referenziata nella Guida all’adesione PDND. 
@@ -284,12 +284,12 @@ Una volta reso disponibile l’EAA agli utenti finali, l’Ente Titolare di Font
 L’Ente deve garantire il corretto funzionamento dell’e-service nel tempo, programmare adeguate azioni di monitoraggio e aggiornamento se richieste, ad esempio, da cambiamenti normativi o procedurali (es. nuovi dati, stati, casistiche di errore, etc.). 
 
 ### **Gestire problematiche e fornire assistenza agli utenti** 
-L’Ente deve garantire un costante aggiornamento delle informazioni riportate nel documento [**Assistenza EAA.docx**](#Assistenza-EAA.docx), al fine di: 
+L’Ente deve garantire un costante aggiornamento delle informazioni riportate nel documento [**Assistenza EAA.docx**](Assistenza-EAA.docx), al fine di: 
 
 * **Contribuire alla risoluzione di bug** 
-Il referente dell’ambito sistemistico e il referente dell’ambito applicativo, così come definito dall’Ente nel documento [**Assistenza EAA.docx**](#Assistenza-EAA.docx), devono contribuire alla diagnosi congiunta delle segnalazioni ricevute da Fornitore di Attestati Elettronici di Attributi (IPZS, nel caso di EAA di interesse pubblico) e Fornitori di Wallet (PagoPA, nel caso della soluzione pubblica IT-Wallet) e relativa risoluzione, secondo quanto definito dal modello di assistenza del Sistema IT-Wallet. 
+Il referente dell’ambito sistemistico e il referente dell’ambito applicativo, così come definito dall’Ente nel documento [**Assistenza EAA.docx**](Assistenza-EAA.docx), devono contribuire alla diagnosi congiunta delle segnalazioni ricevute da Fornitore di Attestati Elettronici di Attributi (IPZS, nel caso di EAA di interesse pubblico) e Fornitori di Wallet (PagoPA, nel caso della soluzione pubblica IT-Wallet) e relativa risoluzione, secondo quanto definito dal modello di assistenza del Sistema IT-Wallet. 
 * **Garantire il supporto agli utenti** 
-Il referente per l’ambito assistenza ed almeno un canale di contatto dedicato agli utenti finali (es. indirizzo e-mail, numero telefonico, etc.), così come definito dall’Ente nel documento [**Assistenza EAA.docx**](#Assistenza-EAA.docx), devono sempre essere disponibili per gestire eventuali problemi relativi all’EAA, come ad esempio la segnalazione di dati errati o di errori nella fase di ottenimento dell’EAA da parte dell’utente. 
+Il referente per l’ambito assistenza ed almeno un canale di contatto dedicato agli utenti finali (es. indirizzo e-mail, numero telefonico, etc.), così come definito dall’Ente nel documento [**Assistenza EAA.docx**](Assistenza-EAA.docx), devono sempre essere disponibili per gestire eventuali problemi relativi all’EAA, come ad esempio la segnalazione di dati errati o di errori nella fase di ottenimento dell’EAA da parte dell’utente. 
 
 ## Documenti da compilare 
 
@@ -297,7 +297,7 @@ Di seguito l'elenco dei documenti da scaricare, compilare e condividere secondo 
 
 * [Casi d’uso EAA.docx](Casi-d-uso-EAA.docx)  
 * [e-service EAA.xlsx](e-service-EAA.xlsx) 
-* [Assistenza EAA.docx](Assistenza-EAA.docs)
+* [Assistenza EAA.docx](Assistenza-EAA.docx)
 
 ## Template PDND Data Model 
 
