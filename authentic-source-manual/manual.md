@@ -21,7 +21,7 @@ Ultimo aggiornamento: XX marzo 2026
     * [Step 3 | Test in collaudo](#step-3--Test-in-collaudo)
     * [Step 4 | Pubblicazione in produzione](#step-4--Pubblicazione-in-produzione) 
     * [Step 5 | Test in produzione](#step-5--Test-in-produzione)
-    * [Step 6 | Pianificazione rilascio dell’EAA](#step-6--Pianificazione-rilascio-dell-eaa)
+    * [Step 6 | Pianificazione rilascio EAA](#step-6--Pianificazione-rilascio-eaa)
     * [Step 7 | Manutenzione e assistenza](#step-7--Manutenzione-e-assistenza)
 * [Documenti da compilare](#Documenti-da-compilare)
 * [Template PDND Data Model](#Template-PDND-Data-Model)
@@ -266,7 +266,7 @@ Inoltre, deve essere eseguito anche un test di “long run” di 150 richieste a
 
 Una volta superati i test in produzione, l’Ente può proseguire con la fase successiva. 
 
-## Step 6 | Pianificazione rilascio dell’EAA 
+## Step 6 | Pianificazione rilascio EAA 
 
 Questo step ha l’obiettivo di pianificare e gestire le attività di rilascio e promozione dell’EAA agli utenti. A tale scopo, l’Ente deve: 
 
