@@ -546,7 +546,7 @@ The JWT payload parameters are described herein:
   * - **client_id**
     - REQUIRED. Unique Identifier of the Relying Party.
   * - **client_metadata**
-    - REQUIRED. A JSON object containing the Relying Party metadata values, that SHOULD include the following parameters:
+    - REQUIRED. A JSON object containing the Relying Party metadata values as defined in Section 5.1 of `OpenID4VP`_, that SHOULD include the following parameters:
         - **vp_formats_supported**. Used by the Wallet Instance to determine the supported Verifiable Presentation formats.
         - **encrypted_response_enc_values_supported**. JSON array listing the supported JWE ``enc`` algorithms for encrypted Authorization Responses in ``direct_post.jwt``.
         - **jwks**. JSON Web Key Set used by the Wallet Instance for encrypting the Authorization Response or for key agreement. Keys contained in this set are request-specific and identified by their ``kid`` value.
@@ -554,7 +554,7 @@ The JWT payload parameters are described herein:
   * - **response_mode**
     - REQUIRED. It MUST be set to ``direct_post.jwt`` (:ref:`RPR-106 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`).
   * - **dcql_query**
-    - REQUIRED. Object representing a request for a presentation of Credentials, according to the DCQL query language defined in Section 6 of `OpenID4VP`_ and aligned with `OPENID4VC-HAIP`_.  
+    - REQUIRED. Object representing a request for a presentation of Credentials, according to the DCQL query language defined in Section 6 of `OpenID4VP`_.  
   * - **response_type**
     - REQUIRED. It MUST be set to ``vp_token`` (:ref:`RPR-107 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`).
   * - **wallet_nonce**
@@ -584,7 +584,7 @@ The JWT payload parameters are described herein:
 
 Authorization Response
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-After obtaining the User authorization and consent for the presentation of the Digital Credentials, the Wallet Instance sends the Authorization Response to the Relying Party ``response_uri`` endpoint using an HTTP request with the method POST (:ref:`WP_091 <wallet-credential-presentation-testcases>`). The response content MUST be encrypted following the high-assurance profile defined in `OPENID4VC-HAIP`_, utilizing response mode ``direct_post.jwt`` per `OpenID4VP`_ Section 8.3.  This encryption requires the use of ECDH-ES key agreement on P-256 curve and AES-GCM content encryption (``A128GCM`` or ``A256GCM``, preferring ``A256GCM`` when both available), and using the request-specific public key of Relying Party selected from ``client_metadata.jwks``, that is identified by its ``kid`` (:ref:`WP_092 <wallet-credential-presentation-testcases>`).
+After obtaining the User authorization and consent for the presentation of the Digital Credentials, the Wallet Instance sends the Authorization Response to the Relying Party ``response_uri`` endpoint using an HTTP request with the method POST (:ref:`WP_091 <wallet-credential-presentation-testcases>`). The response content MUST be encrypted following the high-assurance profile defined in `OPENID4VC-HAIP`_, utilizing response mode ``direct_post.jwt`` per `OpenID4VP`_ Section 8.3.  This encryption requires the use of ECDH-ES key agreement on P-256 curve and AES-GCM content encryption (``A128GCM`` or ``A256GCM``, preferring ``A256GCM`` when both available), and using the request-specific public key of Relying Party selected from ``client_metadata.jwks``, that is identified by its ``kid`` (:ref:`WP_092 <wallet-credential-presentation-testcases>`). The Verifier’s public key used to encrypt the Authorization Response is retrieved by the Wallet from the JWKs in the ``client_metadata``. According to Section 14.5 of `OpenID4VP`_ it is RECOMMENDED the usage of ephemeral keys.
 
 .. note::
     **Why the response is encrypted?**

@@ -197,23 +197,23 @@ All the endpoints listed below are defined in the `OID-FED`_ specs.
      - Trust Anchor, Intermediate, Wallet Provider, Relying Party, Credential Issuer
    * - subordinate list endpoint
      - **GET** /list
-     - Lists the Subordinates. See `OID-FED`_ Section 5.1.1
+     - Lists the Subordinates. See `OID-FED`_ Section 8.2
      - Trust Anchor, Intermediate
    * - fetch endpoint
-     - **GET** /fetch?sub=https://rp.example.org
-     - Returns a signed JWT about a specific subject, its Subordinate. It's called Subordinate Statement. See `OID-FED`_ Section 5.1.1
+     - **GET** /federation_fetch_endpoint?sub=https://rp.example.org
+     - Returns a signed JWT about a specific subject, its Subordinate. It's called Subordinate Statement. See `OID-FED`_ Section 8.1
      - Trust Anchor, Intermediate
    * - trust mark status
-     - **POST** /status?sub=...&trust_mark_id=...
-     - Returns the status of the issuance (validity) of a Trust Mark related to a specific subject. See `OID-FED`_ Section 5.1.1
+     - **POST** /federation_trust_mark_status_endpoint
+     - Returns the status of the issuance (validity) of a Trust Mark related to a specific subject. See `OID-FED`_ Section 8.4
      - Trust Anchor, Intermediate
    * - trust marked listing
-     - **GET** /trust_mark_listing?trust_mark_id=...
-     - Lists all entities for which Trust Marks have been issued and are still valid. See `OID-FED`_ Section 5.1.1
+     - **GET** /trust_marked_list?trust_mark_type=...
+     - Lists all entities for which Trust Marks have been issued and are still valid. See `OID-FED`_ Section 8.5
      - Trust Anchor, Intermediate
    * - historical keys
-     - **GET** /historical-jwks
-     - Lists the expired and revoked keys, with the motivation of the revocation. See `OID-FED`_ Section 5.1.1
+     - **GET** /federation_historical_keys
+     - Lists the expired and revoked keys, with the motivation of the revocation. See `OID-FED`_ Section 8.7
      - Trust Anchor, Intermediate
 
 
@@ -457,7 +457,7 @@ The *federation_entity* metadata for Leaves MUST contain the following claims.
   * - **contacts**
     - Institutional verified email address (PEC) of the entity. See `OID-FED`_ Section 5.2.2
   * - **federation_resolve_endpoint**
-    - See `OID-FED`_ Section 5.1.1
+    - See `OID-FED`_ Section 8.3
   * - **tos_uri**
     - [OPTIONAL] URL string that points to a human-readable terms of service document for the client that describes a contractual relationship between the end-user and the client that the end-user accepts when authorizing the client. See `OID-FED`_.
 

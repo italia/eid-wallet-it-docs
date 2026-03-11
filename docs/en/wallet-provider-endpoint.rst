@@ -452,8 +452,17 @@ The body of the Wallet App Attestation JWT contains the following claims:
     * - **cnf**
       - REQUIRED. JSON object, containing the public part of an asymmetric key pair owned by the Wallet Instance.
       - :rfc:`7800`.
+    * - **wallet_link**
+      - REQUIRED. String containing a URL to get further information about the Wallet and the Wallet Provider.
+      - `OpenID4VCI`_.
+    * - **wallet_name**
+      - REQUIRED. String containing a human-readable name of the Wallet.
+      - `OpenID4VCI`_.
+    * - **status**
+      - REQUIRED. Status mechanism for the Wallet Attestation as defined in Section 6.2 of `TOKEN-STATUS-LIST`_.
+      - :rfc:`9126` and :rfc:`7519`.
     * - **eudi_wallet_info**
-      - REQUIRED. JSON object, containing the general information about the Wallet and Wallet Provider. The following parameter MUST be included:
+      - OPTIONAL. JSON object, containing the general information about the Wallet and Wallet Provider. The following parameter MUST be included:
 
         - **general_info**: REQUIRED. An object that has the following parameters:
 
@@ -551,8 +560,11 @@ The body of the Wallet Unit Attestation JWT contains the following claims:
     * - **status**
       - REQUIRED. JSON Object representing the supported revocation check mechanisms, such as OAuth Status List.
       - `OpenID4VCI`_.
+    * - **certification**
+      - REQUIRED. A String that contains a URL that links to the certification of the key storage component.
+      - `OpenID4VCI`_.
     * - **eudi_wallet_info**
-      - REQUIRED. JSON object, containing the general information about the Wallet and Wallet Provider. The following parameters MUST be included:
+      - OPTIONAL. JSON object, containing the general information about the Wallet and Wallet Provider. The following parameters MUST be included:
 
         - **general_info**: REQUIRED. An object that has the following parameters:
 
