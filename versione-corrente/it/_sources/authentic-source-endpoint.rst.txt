@@ -80,7 +80,7 @@ Il Fornitore di Attestati Elettronici DEVE aggiornare lo ``status`` dell'Attesta
 Esempio di risposta della Authentic Source
 """"""""""""""""""""""""""""""""""""""""""
 
-La risposta ha come HTTP Content-Type ``application/jwt``. mDi seguito un esempio concreto con dati fittizi per chiarire forma e contenuto attesi.
+La risposta ha come HTTP Content-Type ``application/json``. Di seguito un esempio concreto con dati fittizi per chiarire forma e contenuto attesi.
 
 .. literalinclude:: ../../examples/credential-claims-response-example.json
   :language: json
@@ -93,15 +93,15 @@ In sintesi:
 - **metadataClaims**: array di metadati per dataset (``object_id`` obbligatorio; ``issuance_date`` e ``expiry_date`` opzionali).
 - **interval**: obbligatorio se non è presente il parametro ``claims`` nella richiesta; indica i secondi da attendere prima di ripetere la richiesta (es. 864000 = 10 giorni).
 
-La risposta in caso di successo (HTTP 200) restituisce un oggetto ``CredentialClaimsResponse`` formattato come **Payload JSON**.
+La risposta in caso di successo (HTTP 200) restituisce un oggetto ``CredentialClaimsResponse`` formattato come **Payload JSON**, accompagnato dagli header di integrità ``Agid-JWT-Signature`` e ``Digest``.
 
 Verifica della Firma e Gestione Chiavi
 ''''''''''''''''''''''''''''''''''''''
 
-Essendo il token di risposta firmato, il Credential Issuer (Fruitore) DEVE verificare la firma per garantire l'integrità e l'autenticità dei dati ricevuti dalla Fonte Autentica.
+Il Credential Issuer (Fruitore) DEVE verificare l'integrità e l'autenticità della risposta JSON validando gli header ``Agid-JWT-Signature`` e ``Digest`` ricevuti dalla Fonte Autentica.
 
-Il processo di verifica e recupero delle chiavi DEVE seguire rigorosamente il pattern standard definito per gli **e-Service PDND**.
-Si rimanda all'Appendice tecnica (Sezione :ref:`e-service-pdnd:e-Service PDND`) per i dettagli sulla validazione del JWT e per le specifiche sul recupero della chiave pubblica dell'Erogatore tramite API di Interoperabilità.
+Il processo di verifica e recupero delle chiavi DEVE seguire rigorosamente il pattern di sicurezza **INTEGRITY_REST_02** definito per gli **e-Service PDND**.
+Si rimanda all'Appendice tecnica (Sezione :ref:`e-service-pdnd:e-Service PDND`) per i dettagli sulla validazione della firma JWT e per le specifiche sul recupero della chiave pubblica dell'Erogatore tramite API di Interoperabilità.
 
 .. warning::
   Non sono ammessi meccanismi alternativi di distribuzione del materiale crittografico (es. endpoint ``.well-known`` pubblici esposti direttamente dalla Fonte Autentica o distribuzione *out-of-band*). La gestione del trust DEVE rimanere centralizzata all'interno del perimetro dell'infrastruttura PDND come descritto nei riferimenti sopra citati.
