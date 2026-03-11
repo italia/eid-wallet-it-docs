@@ -27,7 +27,7 @@ Il Sistema di portafoglio digitale italiano (Sistema IT-Wallet) è stato istitui
 
 La novità normativa si inquadra nella più ampia iniziativa europea introdotta dal [Regolamento (UE) 2024/1183 del Parlamento europeo e del Consiglio dell’11 aprile 2024](http://data.europa.eu/eli/reg/2024/1183/oj) – c.d. eIDAS 2 – che modifica il [Regolamento (UE) n. 910/2014](https://eur-lex.europa.eu/eli/reg/2014/910/oj) per quanto riguarda l’istituzione del quadro europeo relativo all’identità digitale.  
 
-Per la piena attuazione del Sistema IT-Wallet, all’articolo istitutivo del CAD seguono due decreti attuativi, di cui uno di adozione delle Linee Guida proposte da AgID, che vengono completate dalle Specifiche tecniche. La versione di riferimento delle Specifiche è quella mantenuta nel branch **Long-Term Support (LTS)** come descritto nel relativo [README](https://github.com/italia/eid-wallet-it-docs) all’interno della sezione [Branching Approach](https://github.com/italia/eid-wallet-it-docs?tab=readme-ov-file#branching-approach). La versione corrente delle Specifiche è disponibile al link https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/ ([versione inglese](https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/)).  
+Per la piena attuazione del Sistema IT-Wallet, all’articolo istitutivo del CAD seguono due decreti attuativi, di cui uno di adozione delle Linee Guida proposte da AgID, che vengono completate dalle Specifiche tecniche. La versione di riferimento delle Specifiche è quella mantenuta nel branch **Long-Term Support (LTS)** come descritto nel relativo [README](https://github.com/italia/eid-wallet-it-docs) all’interno della sezione [Branching Approach](https://github.com/italia/eid-wallet-it-docs?tab=readme-ov-file#branching-approach). La versione corrente delle Specifiche è disponibile a [questo link](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/) ([versione inglese](https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/)).  
 
 
 ## Scopo e ambito di applicazione 
@@ -90,7 +90,7 @@ Per assumere il ruolo di Titolare di Fonte Autentica, e quindi mettere a disposi
 
 * **Step 5 | Test in produzione**: l’Ente, in ambiente di produzione, esegue i test di integrazione, di carico, di long run e di gestione del ciclo dell’EAA con il Fornitore di Attestati Elettronici di Attributi e, se possibile, con il Fornitore di Wallet per testare anche gli aspetti relativi alla UX/UI. [Vai allo Step 5](#Step-5--Test-in-produzione)  
 
-* **Step 6 | Pianificazione rilascio dell’EAA**: a valle del buon esito dei test in collaudo e in produzione, l’Ente concorda con il Fornitore di Attestati Elettronici di Attributi e il Fornitore di Wallet la data di rilascio dell’EAA, quindi la possibilità di ottenimento dell’EAA da parte degli utenti. Inoltre, l’Ente può valutare attività di comunicazione, in sinergia con gli altri attori interessati. [Vai allo Step 6](#Step-6--Pianificazione-rilascio-dell-EAA)
+* **Step 6 | Pianificazione rilascio EAA**: a valle del buon esito dei test in collaudo e in produzione, l’Ente concorda con il Fornitore di Attestati Elettronici di Attributi e il Fornitore di Wallet la data di rilascio dell’EAA, quindi la possibilità di ottenimento dell’EAA da parte degli utenti. Inoltre, l’Ente può valutare attività di comunicazione, in sinergia con gli altri attori interessati. [Vai allo Step 6](#Step-6--Pianificazione-rilascio-EAA)
 
 * **Step 7 | Manutenzione e assistenza**: l’Ente effettua eventuali attività di gestione e manutenzione dell’e-service e contribuisce alla risoluzione di problematiche e segnalazioni, per le tematiche e i processi di competenza, secondo il modello di assistenza del Sistema IT-Wallet. [Vai allo Step 7](#Step-7--Manutenzione-e-assistenza) 
 
@@ -101,8 +101,7 @@ Questo step ha l’obiettivo di definire l'esperienza utente di scoperta, otteni
 
 
 ### **Approfondire le Specifiche Tecniche del Sistema IT-Wallet**
-La versione corrente delle Specifiche Tecniche è disponibile al link https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/. 
-Si raccomanda l’approfondimento, in particolare, delle sezioni: 
+La versione corrente delle Specifiche Tecniche è disponibile a [questo link](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/). Si raccomanda l’approfondimento, in particolare, delle sezioni: 
 
 * [Design dell’Esperienza Utente ](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/functionalities.html)
 * [Fonti Autentiche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/authentic-sources.html)  
