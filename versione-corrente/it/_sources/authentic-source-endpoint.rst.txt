@@ -42,6 +42,11 @@ Get Attribute Claims
   * - **Fruitore**
     - Fornitore di Attestato Elettronico
 
+Questo e-Service DEVE essere invocato dal Credential Issuer nei seguenti casi:
+
+  - Durante il flusso di emissione delle Credenziali per recuperare i relativi dataset. In questo caso, il claim ``object_id`` NON DEVE essere utilizzato nel payload della request dell'e-Service e la response dell'e-Service DEVE includere tutti i dataset delle credenziali in stato ``VALID`` e non scaduti amministrativamente (ovvero, ``expiry_date`` > data corrente della request dell'e-service). 
+  - Dopo aver ricevuto una notifica di aggiornamento tramite Signal Hub. In questo caso, il claim ``object_id`` DEVE essere incluso nel payload della request dell'e-service e la risposta dell'e-Service DEVE restituire solamente il dataset delle credenziali identificato dal claim ``object_id``, indipendentemente dal suo stato.
+
 .. note::
   La Fonte Autentica e il Credential Issuer DEVONO implementare la logica necessaria per tenere traccia delle richieste e delle risposte scambiate tramite questo e-Service, al fine di essere in grado di correlarle con la relativa emissione di un Attestato Elettronico. In particolare,
     - entrambi DEVONO salvare il valore ``object_id`` contenuto nel payload della risposta per gestire i Segnali relativi alla disponibilità degli Attributi utili all'emissione in *deferred* di un Attestato Elettronico (vedere :ref:`signal-hub-endpoint:Elaborazione dei Segnali`). Qualsiasi notifica successiva relativa a un set di dati specifico DEVE essere gestita tramite ``object_id``.

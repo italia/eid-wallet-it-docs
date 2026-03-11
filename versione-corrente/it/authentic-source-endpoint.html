@@ -199,6 +199,13 @@ Questa specifica OpenAPI può essere estesa dalle Fonti Autentiche, infatti, l'a
 </tr>
 </tbody>
 </table>
+<p>Questo e-Service DEVE essere invocato dal Credential Issuer nei seguenti casi:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Durante il flusso di emissione delle Credenziali per recuperare i relativi dataset. In questo caso, il claim <code class="docutils literal notranslate"><span class="pre">object_id</span></code> NON DEVE essere utilizzato nel payload della request dell'e-Service e la response dell'e-Service DEVE includere tutti i dataset delle credenziali in stato <code class="docutils literal notranslate"><span class="pre">VALID</span></code> e non scaduti amministrativamente (ovvero, <code class="docutils literal notranslate"><span class="pre">expiry_date</span></code> &gt; data corrente della request dell'e-service).</p></li>
+<li><p>Dopo aver ricevuto una notifica di aggiornamento tramite Signal Hub. In questo caso, il claim <code class="docutils literal notranslate"><span class="pre">object_id</span></code> DEVE essere incluso nel payload della request dell'e-service e la risposta dell'e-Service DEVE restituire solamente il dataset delle credenziali identificato dal claim <code class="docutils literal notranslate"><span class="pre">object_id</span></code>, indipendentemente dal suo stato.</p></li>
+</ul>
+</div></blockquote>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <dl class="simple">
