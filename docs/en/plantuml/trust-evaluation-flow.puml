@@ -1,0 +1,28 @@
+@startuml Trust Evaluation Process
+participant Wallet
+participant CI as "Credential Issuer"
+participant IE as "Intermediate/Trust Anchor"
+
+Wallet ->> CI: Fetch CI's Entity Configuration\n at .well-known/openid-federation endpoint
+CI ->> Wallet: Return Entity Configuration
+
+Wallet ->> Wallet: Extract Authority Hints from CI's Configuration
+
+loop for each Authority Hint
+    Wallet ->> IE: Fetch Entity Configuration\n at .well-known/openid-federation endpoint
+    Wallet ->> IE: Fetch Subordinate Statement\n at fetch endpoint
+    Wallet ->> Wallet: Validate the previous statement\nusing the Federation Entity Keys\nprovided in the Subordinate Statement
+end
+
+Wallet ->> Wallet: Validate Trust Chain
+
+alt If Trust Chain is Valid and Unexpired
+    Wallet ->> Wallet: Proceed with Federation Process
+else
+    Wallet ->> Wallet: Abort Process with Error
+end
+
+Wallet ->> Wallet: Applies Policies
+Wallet ->> Wallet: Derive CI's final metadata
+Wallet ->> Wallet: Get available Credentials allowed for issuance
+@enduml

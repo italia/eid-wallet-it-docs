@@ -1,0 +1,207 @@
+{
+    "version": "1.0",
+    "last_modified": "2025-04-10T12:00:00Z",
+    "id": "urn:taxonomy:it-wallet",
+    "localization": {
+        "default_locale": "it",
+        "available_locales": [
+            "en",
+            "it",
+            "fr",
+            "de"
+        ],
+        "base_uri": "https://trust-registry.eid-wallet.example.it/.well-known/l10n/taxonomy/",
+        "version": "1.0.0"
+    },
+    "name_l10n_id": "taxonomy.name",
+    "description_l10n_id": "taxonomy.description",
+    "domains": [
+        {
+            "id": "IDENTITY",
+            "name_l10n_id": "domain.identity.name",
+            "description_l10n_id": "domain.identity.description",
+            "classes": [
+                {
+                    "id": "IDENTIFICATION_DOCUMENTS",
+                    "name_l10n_id": "class.id_docs.name",
+                    "purposes": [
+                        {
+                            "id": "IDENTITY_VERIFICATION",
+                            "name_l10n_id": "purpose.id_ver.name"
+                        },
+                        {
+                            "id": "AGE_VERIFICATION",
+                            "name_l10n_id": "purpose.age_ver.name"
+                        }
+                    ]
+                },
+                {
+                    "id": "CIVIL_REGISTRY_STATUS",
+                    "name_l10n_id": "class.civil_registry.name",
+                    "purposes": [
+                        {
+                            "id": "CIVIL_STATUS_VERIFICATION",
+                            "name_l10n_id": "purpose.civil_status.name"
+                        },
+                        {
+                            "id": "RESIDENCE_VERIFICATION",
+                            "name_l10n_id": "purpose.residence.name"
+                        }
+                    ]
+                },
+                {
+                    "id": "ECONOMIC_LEGAL_STATUS",
+                    "name_l10n_id": "class.economic_status.name",
+                    "purposes": [
+                        {
+                            "id": "ELIGIBILITY_VERIFICATION",
+                            "name_l10n_id": "purpose.eligibility.name"
+                        },
+                        {
+                            "id": "LEGAL_STATUS_CHECK",
+                            "name_l10n_id": "purpose.legal_status.name"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "HOME_FAMILY",
+            "name_l10n_id": "domain.home_family.name",
+            "description_l10n_id": "domain.home_family.description",
+            "classes": [
+                {
+                    "id": "PROPERTY_CADASTRAL_DOCS",
+                    "name_l10n_id": "class.property_docs.name",
+                    "purposes": [
+                        {
+                            "id": "OWNERSHIP_VERIFICATION",
+                            "name_l10n_id": "purpose.ownership.name"
+                        }
+                    ]
+                },
+                {
+                    "id": "LOCAL_TAX_DOCUMENTS",
+                    "name_l10n_id": "class.local_tax.name",
+                    "purposes": [
+                        {
+                            "id": "TAX_COMPLIANCE",
+                            "name_l10n_id": "purpose.tax_compliance.name"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "EDUCATION",
+            "name_l10n_id": "domain.education.name",
+            "description_l10n_id": "domain.education.description",
+            "classes": [
+                {
+                    "id": "EDUCATIONAL_QUALIFICATIONS",
+                    "name_l10n_id": "class.edu_qualifications.name",
+                    "purposes": [
+                        {
+                            "id": "DEGREE_VERIFICATION",
+                            "name_l10n_id": "purpose.degree_ver.name"
+                        }
+                    ]
+                },
+                {
+                    "id": "PROFESSIONAL_CERTIFICATIONS",
+                    "name_l10n_id": "class.prof_cert.name",
+                    "purposes": [
+                        {
+                            "id": "SKILLS_ASSESSMENT",
+                            "name_l10n_id": "purpose.skills.name"
+                        },
+                        {
+                            "id": "PROFESSIONAL_PRACTICE",
+                            "name_l10n_id": "purpose.prof_practice.name"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "HEALTH",
+            "name_l10n_id": "domain.health.name",
+            "description_l10n_id": "domain.health.description",
+            "classes": [
+                {
+                    "id": "CERTIFICATIONS_ELIGIBILITY",
+                    "name_l10n_id": "class.health_cert.name",
+                    "purposes": [
+                        {
+                            "id": "HEALTH_STATUS_VERIFICATION",
+                            "name_l10n_id": "purpose.health_status.name"
+                        }
+                    ]
+                },
+                {
+                    "id": "MEDICAL_RECORDS",
+                    "name_l10n_id": "class.medical_records.name",
+                    "purposes": [
+                        {
+                            "id": "HEALTHCARE_ACCESS",
+                            "name_l10n_id": "purpose.healthcare_access.name"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "FINANCIAL",
+            "name_l10n_id": "domain.financial.name",
+            "description_l10n_id": "domain.financial.description",
+            "classes": [
+                {
+                    "id": "PAYMENT_INSTRUMENTS",
+                    "name_l10n_id": "class.payments.name",
+                    "purposes": [
+                        {
+                            "id": "PAYMENT_EXECUTION",
+                            "name_l10n_id": "purpose.pay_exec.name"
+                        }
+                    ]
+                },
+                {
+                    "id": "PUBLIC_PAYMENTS_FEES",
+                    "name_l10n_id": "class.public_fees.name",
+                    "purposes": [
+                        {
+                            "id": "PROOF_OF_PAYMENT",
+                            "name_l10n_id": "purpose.proof_pay.name"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "MOBILITY_TRAVEL",
+            "name_l10n_id": "domain.mobility.name",
+            "classes": [
+                {
+                    "id": "LICENSES_AUTHORIZATIONS",
+                    "name_l10n_id": "class.licenses.name",
+                    "purposes": [
+                        {
+                            "id": "DRIVING_RIGHTS",
+                            "name_l10n_id": "purpose.driving.name"
+                        }
+                    ]
+                },
+                {
+                    "id": "VEHICLE_DOCUMENTS",
+                    "name_l10n_id": "class.vehicle_docs.name",
+                    "purposes": [
+                        {
+                            "id": "VEHICLE_VERIFICATION",
+                            "name_l10n_id": "purpose.vehicle.name"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

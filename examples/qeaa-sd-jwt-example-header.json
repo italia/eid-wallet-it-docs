@@ -1,0 +1,8 @@
+{
+    "alg": "ES256",
+    "typ": "dc+sd-jwt",
+    "kid": "dB67gL7ck3TFiIAf7N6_7SHvqk0MDYMEQcoGGlkUAAw",
+    "x5c": [
+        "<Issuer X.509 Certificate>"
+    ]
+}

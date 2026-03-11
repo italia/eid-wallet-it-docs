@@ -1,0 +1,21 @@
+@startuml Lifecycle of the Mobile Relying Party Instance
+hide empty description
+
+state Installed #FFA500
+state "Verified" as Ready #228B22
+state Unverified #ffff00
+state Uninstalled #D64545
+
+[*] -down-> Installed: RPI INST
+Installed -down-> Uninstalled: RPI UNINST
+Installed -right-> Ready: RPI REG
+Ready -down-> Uninstalled: RPI UNINST
+Ready -left-> Installed: RPI REV
+Ready -> Ready: <color:blue>PID/(Q)EAA PRE</color>
+Ready -down-> Unverified: CERT EXP
+Unverified -down-> Uninstalled: RPI UNINST
+Unverified -up-> Ready: CERT REISS
+Unverified -> Unverified: <color:blue>PID/(Q)EAA PRE*</color>
+Unverified -left-> Installed: RPI DEREG
+Uninstalled --> [*]: <size:12></size>
+@enduml

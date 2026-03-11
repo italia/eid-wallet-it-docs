@@ -1,0 +1,17 @@
+@startuml Key Retrieval - PDND
+title Key Retrieval - PDND
+
+autonumber
+
+box **PDND** #Azure
+  participant "**.well-known**" as W
+end box
+
+box **Provider** #HoneyDew
+  participant "**OAuth Resource Server**" as RS
+end box
+
+RS->W: Request for PDND keys
+
+W-->RS: PDND keys
+@enduml

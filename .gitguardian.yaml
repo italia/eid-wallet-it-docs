@@ -2,5 +2,11 @@ version: 2
 
 secret:
   ignored-paths:
-    - docs/it/userinfo_endpoint.rst
-    - docs/en/userinfo_endpoint.rst
+    - docs/it/oas3/OAS3-PDND-AS.yaml
+    - docs/it/oas3/OAS3-PDND-Issuer.yaml
+    - docs/it/oas3/OAS3-PDND-WP.yaml
+    - docs/en/oas3/OAS3-PDND-AS.yaml
+    - docs/en/oas3/OAS3-PDND-Issuer.yaml
+    - docs/en/oas3/OAS3-PDND-WP.yaml
+
+    

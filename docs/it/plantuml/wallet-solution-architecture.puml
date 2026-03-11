@@ -1,0 +1,82 @@
+@startuml
+!include <C4/C4_Component>
+
+' Define SPRITES
+!include <tupadr3/common>
+!include <tupadr3/font-awesome-5/certificate>
+!include <tupadr3/font-awesome-5/lock>
+!include <tupadr3/font-awesome-5/users>
+!include <tupadr3/font-awesome-5/cogs>
+!include <tupadr3/font-awesome-5/server>
+!include <tupadr3/font-awesome-5/id_card>
+!include <tupadr3/font-awesome-5/exchange_alt>
+!include <tupadr3/font-awesome-5/desktop>
+!include <tupadr3/font-awesome-5/mobile>
+!include <tupadr3/font-awesome/institution>
+
+' Custom styles
+AddElementTag("external", $bgColor="#999999", $fontColor="white", $borderColor="grey")
+AddElementTag("primary", $bgColor="#1168bd", $fontColor="white", $borderColor="#0b4884")
+AddElementTag("secondary", $bgColor="#6cb33f", $fontColor="white", $borderColor="#4a8329")
+AddElementTag("trust", $bgColor="#8A398F", $fontColor="white", $borderColor="#55235A")
+
+' Define the actors and external systems
+Person(user, "User", "Person holding Digital Credentials", $sprite="users")
+System_Ext(trust_anchor, "Trust Anchor", "Root of trust for the IT-Wallet Federation", $tags="external", $sprite="certificate")
+System_Ext(credential_issuers, "Credential Issuers", "", $tags="external", $sprite="id_card")
+System_Ext(relying_parties, "Relying Parties", "", $tags="external", $sprite="institution")
+System_Ext(dsi, "Device Integrity Service", "", $tags="external", $sprite="institution")
+
+' Define the Wallet Solution boundary
+Boundary(wallet_solution, "Wallet Solution") {
+
+' Define the Wallet Provider Backend boundary
+Boundary(wallet_backend, "Wallet Provider Backend") {
+
+Component(wp_frontend, "Frontend Component", "Web services and User frontend", "Provides additional services through a Web User interface (for example Shows/Verifies/Manages Wallet Instances)", $tags="primary", $sprite="desktop")
+Component(pdnd_eservices, "API Interface", "API e-services", "Authorized digital services accessing/exchanging data.", $tags="secondary", $sprite="exchange_alt")
+Component(wi_lifecycle, "Wallet Instance Lifecycle Management", "Service", "Handles Wallet Instance registration, status, and revocation", $tags="trust", $sprite="cogs")
+Component(trust_security, "Trust & Security Component", "Service", "Manages keys, certificates, and security monitoring", $tags="trust", $sprite="lock")
+}
+
+' Define the Wallet Unit boundary
+Boundary(wallet_unit, "Wallet Unit") {
+
+Boundary(wallet_instance, "Wallet Instance") {
+Component(ui_service, "User Interface", $tags="primary", $sprite="mobile")
+Component(issuer_service, "Issuer Component", "OpenID4VCI", "Requests Digital Credentials to Credential Issuers", $tags="secondary", $sprite="cogs")
+Component(presentation_service, "Presentation Component", "OpenID4VP, ISO18013-5", "Presents Digital Credentials to Relying Parties", $tags="secondary", $sprite="cogs")
+Component(backup_service, "Backup and Restore Component", $tags="secondary", $sprite="cogs")
+Component(wi_service, "Wallet Instance Lifecycle Management", "Service", "Handles Wallet Instance registration, status, and revocation",  $tags="trust", $sprite="cogs")
+
+}
+
+Component(wi_storage, "Secure Storage Component", "WSCA, WSCD, Memory", "Manages keys and credentials", $tags="trust", $sprite="lock")
+}
+
+}
+
+' Define the relationships
+
+Rel(user, wp_frontend, "Uses")
+Rel_L(wi_lifecycle, pdnd_eservices, "Interacts with")
+Rel_L(wp_frontend, pdnd_eservices, "Interacts with")
+BiRel(pdnd_eservices, wi_service, "Interacts with") 
+Rel_U(wi_lifecycle, trust_security, "Uses for cryptographic operations")
+Rel(wi_lifecycle, dsi, "Uses")
+BiRel(pdnd_eservices, credential_issuers, "Interacts with")
+Rel(user, ui_service, "Uses")
+
+BiRel(issuer_service, credential_issuers, "Interacts with")
+
+BiRel(presentation_service, relying_parties, "Interacts with")
+
+Rel_U(ui_service, wi_service, "Interacts with")
+Rel_L(wi_service, dsi, "Uses")
+BiRel(wi_service, issuer_service, "Digital Credential Issuance")
+BiRel(wi_service, presentation_service, "Digital Credential Presentation")
+BiRel(wi_service, backup_service, "Backup and restore Digital Credentials")
+Rel_L(wallet_instance, wi_storage, "Uses for cryptographic operations") 
+Rel_U(wallet_solution, trust_anchor, "Federates and obtains registration certificate from")
+
+@enduml

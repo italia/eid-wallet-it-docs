@@ -2,36 +2,64 @@
 
 name: test-html
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ "*" ]
+    paths:
+      - 'docs/**'
+      - 'official_resources/**'
+      - 'requirements-dev.txt'
+      - 'tox.ini'
   pull_request:
     branches: [ "*" ]
+    paths:
+      - 'docs/**'
+      - 'official_resources/**'
+      - 'requirements-dev.txt'
+      - 'tox.ini'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+
+  pre_job:
+    runs-on: ubuntu-latest
+    outputs:
+      should_skip: ${{ steps.skip_check.outputs.should_skip }}
+    steps:
+      - id: skip_check
+        uses: fkirc/skip-duplicate-actions@v3.4.0
+        with:
+          skip_after_successful_duplicate: 'true'
+          same_content_newer: 'true'
+
   # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  main_job:
+    needs: pre_job
+    if: needs.pre_job.outputs.should_skip != 'true'
+
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v2
+      - uses: actions/setup-python@v5
         with:
-          python-version: '3.8' # Version range or exact version of a Python version to use, using SemVer's version range syntax
-          architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
+          python-version: '3.10'
+          architecture: 'x64'
+          cache: 'pip'
+          cache-dependency-path: 'requirements-dev.txt'
 
-      # Runs a single command using the runners shell
-      - name: Run a script
-        run: |-
-          pip install tox
-          tox -e build
+      - name: Install dependencies
+        run: |
+          python -m pip install -r requirements-dev.txt
+          python -m pip install tox
+
+      - name: Run Sphinx labels and xref check
+        run: tox -e labels
+
+      - name: Run Sphinx HTML build test
+        run: tox -e build

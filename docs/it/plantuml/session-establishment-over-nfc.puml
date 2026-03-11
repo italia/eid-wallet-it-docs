@@ -1,0 +1,25 @@
+@startuml
+autonumber
+
+participant "Wallet Unit (PICC)" as w
+participant "RP Instance (PCD)" as v
+
+activate w
+activate v
+
+==  mdoc Application Selection ==
+v -> w: Open mdoc application \nSELECT command
+w -> v: Wallet confirms \n(OK or indicates more data to fetch)
+
+== ""SessionEstablishment"" ==
+v -> w: Encrypted ""SessionEstablishment"" request\nENVELOPE command
+w -> v: Wallet responds\n(OK or indicates more data to fetch)
+
+opt Session Binding
+w->w: Match ""SessionEstablishment"" message received during \n Negotiated Handover with the message received in Step 3-4
+w -x v: (Message Mismatch) Terminate NFC connection
+end
+
+deactivate w
+deactivate v
+@enduml

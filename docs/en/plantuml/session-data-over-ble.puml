@@ -1,0 +1,14 @@
+@startuml
+autonumber
+
+participant "Wallet Unit" as w
+participant "RP Instance" as v
+
+activate w
+activate v
+
+w->v: Send a signed and encrypted response (""SessionData"") \nwith requested attributes over BLE
+
+deactivate v
+deactivate w
+@enduml

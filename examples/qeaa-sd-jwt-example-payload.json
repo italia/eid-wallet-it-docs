@@ -1,0 +1,39 @@
+{
+    "_sd": [
+        "D4VkWjnA0WON7HdCGFtU869MSvORHPf8p5fQRD5gNj0",
+        "JOQk0kuBSVk80rFlv9VGY-yiIzsfzEJKk3d4RROfzkM",
+        "Q7TX7kL8CNUp3BFBKP5xxIuPu5gRgkO6HplM3E1iMIc",
+        "Wq3gFfmC0I9Lefw1mh-Bk5XPRtoSCg9aE23uOhxakas",
+        "_ckhwGvTwFceg8jAFrQwqbw978ZHsaLJE_hs-rqV9lQ",
+        "oF2qeWAbKO_qWGQ5z-HGKeifl2PMIEMbJe8L-PJ-wko",
+        "qbRtUHp9Oax9dm5GeKnw_W12Yu1E2DoU6wrFPee7aBo"
+    ],
+    "exp": 1883000000,
+    "iss": "https://issuer.example.org",
+    "sub": "NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs",
+    "iat": 1683000000,
+    "issuing_authority": "Credential Issuer Organization",
+    "issuing_country": "IT",
+    "date_of_expiry": "2033-03-19",
+    "status": {
+        "status_list": {
+            "idx": 5678,
+            "uri": "https://issuer.example.org/status"
+        }
+    },
+    "vct": "urn:it-wallet:disabilitycard:1",
+    "vct#integrity": "2e40bcd6799008085ffb1a1f3517efee335298fd976b3e655bfb3f4eaa11d171",
+    "verification": {
+        "trust_framework": "it_wallet",
+        "assurance_level": "high"
+    },
+    "_sd_alg": "sha-256",
+    "cnf": {
+        "jwk": {
+            "kty": "EC",
+            "crv": "P-256",
+            "x": "TCAER19Zvu3OHF4j4W4vfSVoHIP1ILilDls7vCeGemc",
+            "y": "ZxjiWWbZMQGHVWKVQ4hbSIirsVfuecCE6t4jT9F2HZQ"
+        }
+    }
+}

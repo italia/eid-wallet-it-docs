@@ -1,0 +1,111 @@
+{
+    "version": "1.0",
+    "last_modified": "2025-03-15T12:00:00Z",
+    "iss": "https://trust-registry.eid-wallet.example.it",
+    "credentials": [
+        {
+            "version": "1.0",
+            "credential_type": "mDL",
+            "credential_name_l10n_id": "mDL.name",
+            "legal_type": "pub-eaa",
+            "restriction_policy": {
+                "allowed_wallet_ids": [
+                    "https://wallet-provider.example.org/wallet_solution",
+                    "https://wallet-provider2.example.org/wallet_solution"
+                ],
+                "allowed_issuer_ids": [
+                    "https://issuer.example.org"
+                ]
+            },
+            "pricing_policy": {
+                "models": [
+                    {
+                        "pricing_type": "verification_based",
+                        "price": 0.01,
+                        "currency": "EUR"
+                    }
+                ],
+                "pricing_model_uri": "https://example.com/pricing"
+            },
+            "validity_info": {
+                "max_validity_days": 365,
+                "status_methods": [
+                    "status_list"
+                ],
+                "allowed_states": {
+                    "0x00": "VALID",
+                    "0x01": "INVALID",
+                    "0x02": "SUSPENDED",
+                    "0x03": "UPDATE",
+                    "0x0B": "ATTRIBUTE_UPDATE"
+                }
+            },
+            "authentication": {
+                "user_auth_required": true,
+                "min_loa": "high",
+                "supported_schemes": [
+                    "it-wallet"
+                ]
+            },
+            "domains": [
+                {
+                    "id": "IDENTITY"
+                },
+                {
+                    "id": "MOBILITY_TRAVEL"
+                }
+            ],
+            "classes": [
+                {
+                    "id": "IDENTIFICATION_DOCUMENTS"
+                },
+                {
+                    "id": "LICENSES_AUTHORIZATIONS"
+                }
+            ],
+            "purposes": [
+                {
+                    "id": "IDENTITY_VERIFICATION"
+                },
+                {
+                    "id": "AGE_VERIFICATION"
+                },
+                {
+                    "id": "DRIVING_RIGHTS"
+                }
+            ],
+            "issuers": [
+                {
+                    "id": "https://issuer.example.org",
+                    "organization_name_l10n_id": "mDL.issuer1.name",
+                    "organization_code": "ci_example_it",
+                    "organization_country": "IT",
+                    "contacts": [
+                        "mailto:informazioni@example.it",
+                        "mailto:protocollo@pec.example.it"
+                    ],
+                    "legal_type": "pub-eaa",
+                    "homepage_uri": "https://issuer.example.org",
+                    "logo_uri": "https://issuer.example.org/logo.svg",
+                    "policy_uri": "https://issuer.example.org/privacy",
+                    "tos_uri": "https://issuer.example.org/terms",
+                    "service_documentation": "https://issuer.example.org/.well-known/service-doc",
+                    "issuance_flows": {
+                        "deferred_flow": true,
+                        "max_deferred_issuance_time_minutes": 1440,
+                        "notification_methods": [
+                            "push",
+                            "polling"
+                        ]
+                    }
+                }
+            ],
+            "authentic_sources": [
+                {
+                    "id": "https://motorizzazione.gov.example",
+                    "dataset_id": "38832801"
+                }
+            ]
+        }
+    ]
+}

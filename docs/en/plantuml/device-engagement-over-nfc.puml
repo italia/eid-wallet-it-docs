@@ -1,0 +1,37 @@
+@startuml
+autonumber
+
+
+participant "Wallet Unit" as w
+participant "RP Instance" as v
+
+activate w
+activate v
+' --- NFC device engagement (static or negotiated) ---
+box "NFC device engagement"
+  alt Static handover
+    v-->w: Read Handover Select (Type 4 Tag)
+  else Negotiated handover
+    w-->v: Initial NDEF advertises handover service ("urn:nfc:sn:handover")
+    v->w: Handover Request (supported carriers)
+    w->v: Handover Select (""DeviceEngagement"" data)
+
+  end
+ 
+end box
+
+
+'== ""SessionEstablishment"" during Negotiated Handover (optional) ==
+
+opt ""SessionEstablishment"" during Negotiated Handover
+
+' Only if wallet advertised support in ""DeviceEngagement""; TNEP service is used.
+v -> w: Open TNEP service ""SessionEstablishment""
+v -> w: Send ""SessionEstablishment""
+v -> w: Close ""SessionEstablishment"" TNEP service
+
+end
+
+deactivate v
+deactivate w
+@enduml

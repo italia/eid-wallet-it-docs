@@ -1,0 +1,198 @@
+{
+  "loteTag": "http://uri.etsi.org/19602/LoTETag",
+  "schemeInformation": {
+    "loteVersionIdentifier": 1,
+    "loteSequenceNumber": 1,
+    "loteType": "http://uri.etsi.org/19602/LoTEType/EUAttestationProvidersList",
+    "schemeOperatorName": [
+      {
+        "lang": "en",
+        "value": "Member State Trusted List Provider"
+      },
+      {
+        "lang": "it",
+        "value": "Fornitore di Trusted Lists dello Stato Membro"
+      }
+    ],
+    "schemeOperatorAddress": {
+      "postalAddresses": [
+        {
+          "lang": "en",
+          "streetAddress": "Via Roma 123",
+          "locality": "Roma",
+          "postalCode": "00100",
+          "country": "IT"
+        }
+      ],
+      "electronicAddress": [
+        {
+          "lang": "en",
+          "uri": "mailto:trust-list@ms-tlp.gov.example"
+        },
+        {
+          "lang": "en",
+          "uri": "https://trust-list.ms-tlp.gov.example"
+        }
+      ]
+    },
+    "schemeName": [
+      {
+        "lang": "en",
+        "value": "National EAA Provider Trusted List"
+      },
+      {
+        "lang": "it",
+        "value": "Trusted List Nazionale degli EAA Provider"
+      }
+    ],
+    "schemeInformationURI": [
+      {
+        "lang": "en",
+        "uri": "https://trust-list.ms-tlp.gov.example/eaa-providers"
+      }
+    ],
+    "statusDeterminationApproach": "http://uri.etsi.org/19602/AttestationProvidersList/StatusDetn/EU",
+    "schemeTypeCommunityRules": [
+      {
+        "lang": "en",
+        "uri": "http://uri.etsi.org/19602/AttestationProviders/schemerules/EU"
+      }
+    ],
+    "schemeTerritory": "IT",
+    "listIssueDateTime": "2025-01-27T00:00:00Z",
+    "nextUpdate": "2025-07-27T00:00:00Z",
+    "distributionPoints": [
+      "https://trust-list.ms-tlp.gov.example/eaa-providers/eaa-provider-tl.json"
+    ]
+  },
+  "trustedEntitiesList": {
+    "trustedEntity": [
+      {
+        "trustedEntityInformation": {
+          "teName": [
+            {
+              "lang": "en",
+              "value": "Example EAA Provider S.p.A."
+            },
+            {
+              "lang": "it",
+              "value": "Example EAA Provider S.p.A."
+            }
+          ],
+          "teTradeName": [
+            {
+              "lang": "en",
+              "value": "EAA-Example-001"
+            }
+          ],
+          "teAddress": {
+            "tePostalAddress": [
+              {
+                "lang": "en",
+                "streetAddress": "Via Milano 456",
+                "locality": "Milano",
+                "postalCode": "20100",
+                "country": "IT"
+              }
+            ],
+            "teElectronicAddress": [
+              {
+                "lang": "en",
+                "uri": "mailto:info@eaa-provider.example.it"
+              },
+              {
+                "lang": "en",
+                "uri": "https://eaa-provider.example.it"
+              }
+            ]
+          },
+          "teInformationURI": [
+            {
+              "lang": "en",
+              "uri": "https://eaa-provider.example.it/policies"
+            },
+            {
+              "lang": "en",
+              "uri": "http://uri.etsi.org/19602/ListOfTrustedEntities/EAAProvider/IT"
+            }
+          ]
+        },
+        "trustedEntityServices": {
+          "trustedEntityService": [
+            {
+              "serviceInformation": {
+                "serviceTypeIdentifier": "http://uri.etsi.org/19602/SvcType/EAA/Issuance",
+                "serviceName": [
+                  {
+                    "lang": "en",
+                    "value": "EAA Issuance Service"
+                  },
+                  {
+                    "lang": "it",
+                    "value": "Servizio di Emissione EAA"
+                  }
+                ],
+                "serviceDigitalIdentity": {
+                  "x509Certificate": [
+                    "MIIFjTCCA3WgAwIBAgIQJ3L2W2jG8XK1Q2F3B4C5D6E7MA0GCSqGSIb3DQEBCQUAMIGEMQswCQYDVQQGEwJJVDEPMA0GA1UECAwGTG9tYmFyZDERMA8GA1UEBwwITWlsYW5vMRMwEQYDVQQKDApFQUEgUHJvdmlkZXIxGjAYBgNVBAMMEUVBQSBQcm92aWRlciBDQSAxMRcwFQYJKoZIhvcNAQkBFghpbmZvQGVhYS5leGFtcGxlLml0MB4XDTI1MDEyNzAwMDAwMFoXDTI2MDEyNzIzNTk1OVowgYQxCzAJBgNVBAYTAklUMQ8wDQYDVQQIDAZMb21iYXJkMREwDwYDVQQHDAhNaWxhbm8xEzARBgNVBAoMCkVBQSBQcm92aWRlcixGjAYBgNVBAMMEUVBQSBQcm92aWRlciBDQSAxMRcwFQYJKoZIhvcNAQkBFghpbmZvQGVhYS5leGFtcGxlLml0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA..."
+                  ]
+                },
+                "serviceCurrentStatus": "http://uri.etsi.org/19602/AttestationProvidersList/SvcStatus/granted",
+                "currentStatusStartingDateAndTime": "2025-01-27T00:00:00Z",
+                "serviceSupplyPoints": [
+                  {
+                    "uri": "https://eaa-provider.example.it/api/v1/issue"
+                  }
+                ]
+              },
+              "serviceHistory": {
+                "serviceHistoryInstance": [
+                  {
+                    "serviceName": [
+                      {
+                        "lang": "en",
+                        "value": "EAA Issuance Service"
+                      }
+                    ],
+                    "serviceDigitalIdentity": {
+                      "x509SKI": ["a1b2c3d4e5f6789012345678901234567890abcd"]
+                    },
+                    "servicePreviousStatus": "http://uri.etsi.org/19602/AttestationProvidersList/SvcStatus/suspended",
+                    "previousStatusStartingDateAndTime": "2024-12-15T10:30:00Z"
+                  }
+                ]
+              }
+            },
+            {
+              "serviceInformation": {
+                "serviceTypeIdentifier": "http://uri.etsi.org/19602/SvcType/EAA/Revocation",
+                "serviceName": [
+                  {
+                    "lang": "en",
+                    "value": "EAA Revocation Service"
+                  },
+                  {
+                    "lang": "it",
+                    "value": "Servizio di Revoca EAA"
+                  }
+                ],
+                "serviceDigitalIdentity": {
+                  "x509Certificate": [
+                    "MIIFjTCCA3WgAwIBAgIQJ3L2W2jG8XK1Q2F3B4C5D6E7MA0GCSqGSIb3DQEBCQUAMIGEMQswCQYDVQQGEwJJVDEPMA0GA1UECAwGTG9tYmFyZDERMA8GA1UEBwwITWlsYW5vMRMwEQYDVQQKDApFQUEgUHJvdmlkZXIxGjAYBgNVBAMMEUVBQSBQcm92aWRlciBDQSAxMRcwFQYJKoZIhvcNAQkBFghpbmZvQGVhYS5leGFtcGxlLml0MB4XDTI1MDEyNzAwMDAwMFoXDTI2MDEyNzIzNTk1OVowgYQxCzAJBgNVBAYTAklUMQ8wDQYDVQQIDAZMb21iYXJkMREwDwYDVQQHDAhNaWxhbm8xEzARBgNVBAoMCkVBQSBQcm92aWRlcixGjAYBgNVBAMMEUVBQSBQcm92aWRlciBDQSAxMRcwFQYJKoZIhvcNAQkBFghpbmZvQGVhYS5leGFtcGxlLml0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA..."
+                  ]
+                },
+                "serviceCurrentStatus": "http://uri.etsi.org/19602/AttestationProvidersList/SvcStatus/granted",
+                "currentStatusStartingDateAndTime": "2025-01-27T00:00:00Z",
+                "serviceSupplyPoints": [
+                  {
+                    "uri": "https://eaa-provider.example.it/api/v1/revoke"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+name: PR Bot for Fork Previews
+
+on:
+  pull_request_target:
+    types: [opened, reopened, synchronize]
+    paths:
+      - 'docs/**'  # Solo quando vengono modificati file in docs
+
+# Explicitly define required permissions
+permissions:
+  contents: read
+  pull-requests: write  # Explicit permission to write to PRs
+
+jobs:
+  post-helper-comments:
+    runs-on: ubuntu-latest
+    # Run only for PRs from external forks
+    if: github.event.pull_request.head.repo.full_name != github.repository
+    
+    steps:
+      - name: Post main helper comment
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const prNumber = context.payload.pull_request.number;
+            const { owner, repo } = context.repo;
+            
+            console.log(`Creating main helper comment for PR #${prNumber} in ${owner}/${repo}`);
+            
+            // Create message with options for maintainers
+            const message = `## 📢 Documentation Preview 🔍
+            
+            This PR comes from a forked repository, so the documentation preview was not automatically generated.
+            
+            ### ⚠️ For repository maintainers only:
+            
+            You can generate a preview using the [manual workflow](${process.env.GITHUB_SERVER_URL}/${owner}/${repo}/actions/workflows/build-html-manual.yml), with PR Number: \`${prNumber}\` as an input.
+            
+            Once generated, the preview link will be added as a comment to this PR.`;
+            
+            try {
+              // Post the comment with error handling
+              const response = await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number: prNumber,
+                body: message
+              });
+              console.log("Main helper comment created successfully");
+            } catch (error) {
+              console.error("Error creating main helper comment:", error.message);
+              core.setFailed(`Failed to create comment: ${error.message}`);
+            }
+      

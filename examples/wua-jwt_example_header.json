@@ -1,0 +1,13 @@
+{
+    "alg": "ES256",
+    "kid": "5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY",
+    "trust_chain": [
+        "eyJhbGciOiJFUz...6S0A",
+        "eyJhbGciOiJFUz...jJLA",
+        "eyJhbGciOiJFUz...H9gw"
+    ],
+    "x5c": [
+        "<Wallet Provider X.509 Certificate>"
+    ],
+    "typ": "key-attestation+jwt"
+}

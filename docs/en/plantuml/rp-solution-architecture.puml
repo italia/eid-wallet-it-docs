@@ -1,0 +1,39 @@
+@startuml Relying Party Solution High Level Architecture
+!include <C4/C4_Component>
+
+HIDE_STEREOTYPE()
+
+' Define actors and systems
+Person(user, "User", "End user with IT-Wallet")
+
+
+    Component_Ext(trust_anchor, "Trust Anchor", "", "Issues Registration Certificates and provides PKI capabilities for the entire IT-Wallet ecosystem")
+
+
+
+Boundary(relying_party_boundary, "Relying Party Solution") {
+    Component(rp_backend, "Relying Party Backend", "", "Handles RP Instance registration and certificate management. Implements business logic for specific use cases")
+    
+    Boundary(rp_instance_boundary, "Relying Party Instance") {
+        Component(rp_web_client, "Web Client", "", "Web-based frontend interface for User authentication and Digital Credential verification")
+        Component(rp_mobile_app, "Mobile Application", "", "Mobile-based frontend interface for User authentication and Digital Credential verification")
+    }
+}
+
+System_Ext(wallet_instance, "Wallet Instance", "User's Digital Wallet", "")
+
+' Define relationships
+BiRel(user, wallet_instance, "Uses")
+BiRel(user, rp_web_client, "Interacts with")
+BiRel(user, rp_mobile_app, "Interacts with")
+
+Rel(trust_anchor, rp_backend, "Issues Registration Certificate to")
+
+
+
+Rel(rp_backend, rp_web_client, "Provides web APIs to")
+Rel(rp_backend, rp_mobile_app, "Provides web APIs to")
+
+BiRel(wallet_instance, rp_web_client, "Authenticates and verifies credentials with")
+BiRel(wallet_instance, rp_mobile_app, "Authenticates and verifies credentials with")
+@enduml

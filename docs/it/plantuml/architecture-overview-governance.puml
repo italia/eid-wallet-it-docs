@@ -1,0 +1,41 @@
+@startuml IT-Wallet_System_Architecture - Governance
+!include <C4/C4_Component>
+HIDE_STEREOTYPE()
+' skinparam linetype ortho
+LAYOUT_LEFT_RIGHT()
+' LAYOUT_TOP_DOWN()
+' Define SPRITES
+!include <tupadr3/common>
+!include <tupadr3/font-awesome-5/certificate>
+!include <tupadr3/font-awesome-5/database>
+!include <tupadr3/font-awesome-5/cogs>
+!include <tupadr3/font-awesome-5/id_card>
+!include <tupadr3/font-awesome-5/exchange_alt>
+!include <tupadr3/font-awesome-5/wallet>
+!include <tupadr3/font-awesome/institution>
+
+' Custom styles
+AddElementTag("external", $bgColor="#999999", $fontColor="white", $borderColor="grey")
+AddElementTag("primary", $bgColor="#1168bd", $fontColor="white", $borderColor="#0b4884")
+AddElementTag("tech", $bgColor="#6cb33f", $fontColor="white", $borderColor="#4a8329")
+AddElementTag("governance", $bgColor="#8A398F", $fontColor="white", $borderColor="#55235A")
+
+title IT-Wallet System Architecture - Governance
+
+' Governance Actors
+Boundary(governance, "IT-Wallet System Governance Actors") {
+    Person(acn, "National Cybersecurity Authority (ACN)", "National authority that evaluates CAB reports and issues compliance attestations. Ensures cybersecurity of the IT-Wallet ecosystem and verifies adherence to national and European security standards.", $tags="governance",$sprite="institution")
+
+    Person(ab, "National Accreditation Body", "National accreditation organization that certifies the technical competence of CABs to assess IT-Wallet solutions.", $tags="governance",$sprite="institution")
+
+    Person(sb, "IT-Wallet Supervisory Body", "Supervisory body responsible for onboarding Entities into the IT-Wallet federation and continuous monitoring of their activities. It manages participant lifecycle and ensures compliance with governance rules.", $tags="governance",$sprite="institution")
+
+    System(cabs, "Conformity Assessment Bodies (CAB)", "Accredited conformity assessment bodies that perform technical, administrative and security assessments on IT-Wallet solutions. They verify adherence to technical standards and security requirements.", $tags="governance", $sprite="certificate")
+    
+    Lay_U(ab,cabs)
+    Lay_U(cabs,acn)
+    Lay_U(acn,sb)
+}
+
+
+@enduml
