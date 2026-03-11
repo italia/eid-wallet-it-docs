@@ -108,7 +108,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Non presente in ARF 2.7.3.
 
     **Macro-componente di Certificazione**
-      Raggruppamento di alto livello nella scomposizione dei componenti per la certificazione (es. Servizi ICT Wallet, Servizi ICT PID Provider); ciascun Macro-componente di Certificazione ha un proprietario (ad es. Fornitore di Wallet o PID Provider) e un Ambito di Certificazione.
+      Raggruppamento di alto livello nella scomposizione dei componenti per la certificazione (es. Servizi ICT Wallet, Servizi ICT eID); ciascun Macro-componente di Certificazione ha un proprietario (ad es. Fornitore di Wallet o PID Provider) e un Ambito di Certificazione.
       Non presente in ARF 2.7.3; specifico di IT-Wallet.
 
     **Metadata**

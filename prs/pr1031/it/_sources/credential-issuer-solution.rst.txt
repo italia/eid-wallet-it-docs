@@ -128,7 +128,7 @@ Questo componente DEVE garantire la sicurezza attraverso:
 Scomposizione e Ambito di Certificazione
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Per **l'emissione di PID**, la Soluzione del Fornitore di Attestati Elettronici corrisponde al **PID Provider Backend (PPBE)** nel macro-componente di certificazione **Servizi ICT PID Provider** (proprietario: PID Provider). Questo componente è **in scopo** per la certificazione secondo il `CIR 2024/2981`_. Vedere :ref:`annex-certification-scheme:Schema di Certificazione e Approccio Complessivo` per la scomposizione e l'ambito di certificazione.
+Per **l'emissione di PID**, la Soluzione del Fornitore di Attestati Elettronici corrisponde al **PID Provider Backend (PPBE)** nel macro-componente di certificazione **Servizi ICT eID** (proprietario: PID Provider). Questo componente è **in scopo** per la certificazione secondo il `CIR 2024/2981`_. Vedere :ref:`annex-certification-scheme:Schema di Certificazione e Approccio Complessivo` per la scomposizione e l'ambito di certificazione.
 
 .. list-table:: PID Provider Backend (PPBE) — Mappatura Scomposizione
    :widths: 30 70

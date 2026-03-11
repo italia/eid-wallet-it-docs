@@ -17,7 +17,7 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="10.2.4. Wallet Instance" href="wallet-instance.html" />
+    <link rel="next" title="10.2.6. Wallet Instance" href="wallet-instance.html" />
     <link rel="prev" title="10.2.1. Wallet Solution Requirements" href="wallet-solution-requirements.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
@@ -144,11 +144,13 @@
 <li class="toctree-l2 current"><a class="reference internal" href="wallet-solution.html#architecture-and-certification-decomposition">10.2. Architecture and Certification Decomposition</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="wallet-solution-requirements.html">10.2.1. Wallet Solution Requirements</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">10.2.2. Wallet Solution Components</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#wallet-solution-interaction-patterns">10.2.3. Wallet Solution Interaction Patterns</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance.html">10.2.4. Wallet Instance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="backup-restore.html">10.2.5. Backup and Restore</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-entity-configuration.html">10.2.6. Wallet Provider Entity Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution-metadata.html">10.2.7. Wallet Solution Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#decomposition-and-certification-scope">10.2.3. Decomposition and Certification Scope</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wallet-backend">10.2.4. Wallet Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wallet-unit">10.2.5. Wallet Unit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance.html">10.2.6. Wallet Instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="backup-restore.html">10.2.7. Backup and Restore</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-entity-configuration.html">10.2.8. Wallet Provider Entity Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution-metadata.html">10.2.9. Wallet Solution Metadata</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html">10.3. Credential Issuer Solution</a></li>
@@ -178,17 +180,70 @@
           <div class="body" role="main">
             
   <section id="wallet-solution-components">
-<h1><span class="section-number">10.2.2. </span>Wallet Solution Components<a class="headerlink" href="#wallet-solution-components" title="Link to this heading">¶</a></h1>
+<span id="id1"></span><h1><span class="section-number">10.2.2. </span>Wallet Solution Components<a class="headerlink" href="#wallet-solution-components" title="Link to this heading">¶</a></h1>
+<p>The following table describes the main components of the Wallet Solution.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 50.0%" />
+<col style="width: 30.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Component</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Mobile App</p></td>
+<td><p>Primary interface for Users to access and manage digital assets.</p></td>
+<td><p>Wallet Solution</p></td>
+</tr>
+<tr class="row-odd"><td><p>Wallet Instance</p></td>
+<td><p>Installation of the Wallet Solution on a User's device.</p></td>
+<td><p>Wallet Solution</p></td>
+</tr>
+<tr class="row-even"><td><p>Wallet Provider</p></td>
+<td><p>Entity that issues the Wallet Solution and Wallet Instance Attestations.</p></td>
+<td><p>Trust Model</p></td>
+</tr>
+<tr class="row-odd"><td><p>Wallet Instance Attestation</p></td>
+<td><p>Cryptographic proof of authenticity and integrity of the Wallet Instance.</p></td>
+<td><p>Wallet Instance Attestation</p></td>
+</tr>
+<tr class="row-even"><td><p>PID Provider</p></td>
+<td><p>Issues Personal Identification Data to the Wallet Instance.</p></td>
+<td><p>Trust Model</p></td>
+</tr>
+<tr class="row-odd"><td><p>(Q)EAA Provider</p></td>
+<td><p>Issues Qualified or non-qualified Electronic Attestations of Attributes.</p></td>
+<td><p>Trust Model</p></td>
+</tr>
+<tr class="row-even"><td><p>Relying Party</p></td>
+<td><p>Entity that accepts attestations from the Wallet Instance for authentication.</p></td>
+<td><p>Relying Party Solution</p></td>
+</tr>
+<tr class="row-odd"><td><p>Trust Anchor</p></td>
+<td><p>Root of trust in the federation.</p></td>
+<td><p>Trust Model</p></td>
+</tr>
+<tr class="row-even"><td><p>Federation Authority</p></td>
+<td><p>Public governance entity for guidelines and accreditation.</p></td>
+<td><p>Defined Terms</p></td>
+</tr>
+</tbody>
+</table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Tests related to the Wallet Solution components (Wallet Backend, and Wallet Unit) are summarized in <a class="reference internal" href="test-plans-wallet-provider.html#wallet-provider-backend-testcases"><span class="std std-ref">WP_012</span></a>, and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_013</span></a>, accordingly.</p>
 </div>
+</section>
 <section id="decomposition-and-certification-scope">
-<span id="wallet-solution-components-decomposition"></span><h2><span class="section-number">10.2.2.1. </span>Decomposition and Certification Scope<a class="headerlink" href="#decomposition-and-certification-scope" title="Link to this heading">¶</a></h2>
+<span id="wallet-solution-components-decomposition"></span><h1><span class="section-number">10.2.3. </span>Decomposition and Certification Scope<a class="headerlink" href="#decomposition-and-certification-scope" title="Link to this heading">¶</a></h1>
 <p><strong>Certification</strong> is the process by which Conformity Assessment Bodies assess technical solutions against the security and compliance requirements mandated by <a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2981/">CIR 2024/2981</a>. The <strong>component decomposition for certification</strong> is a hierarchical structure (certification macro-component, component, sub-component) used to define the scope of certification evaluation and to establish traceability between architectural elements and certification requirements.</p>
-<p>This section specifies the mapping between the Wallet Solution components described in this technical specification and the certification macro-component <strong>Servizi ICT Wallet</strong> (owner: Wallet Provider). It indicates which components conform to the decomposition and fall within certification scope.</p>
-<table class="docutils align-default" id="id1">
-<caption><span class="caption-number">Table 10.1 </span><span class="caption-text">Wallet Solution — Decomposition Mapping</span><a class="headerlink" href="#id1" title="Link to this table">¶</a></caption>
+<p>This section specifies the mapping between the Wallet Solution components described in this technical specification and the certification macro-component <strong>Servizi ICT Wallet</strong> (owner: Wallet Provider). It indicates which components conform to the decomposition and fall within the certification scope.</p>
+<table class="docutils align-default" id="id2">
+<caption><span class="caption-number">Table 10.1 </span><span class="caption-text">Wallet Solution — Decomposition Mapping</span><a class="headerlink" href="#id2" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 35.3%" />
 <col style="width: 47.1%" />
@@ -205,7 +260,7 @@
 <td><p>User Interface, Issuer Component, Presentation Component, Wallet Instance Lifecycle Management</p></td>
 <td><p>In scope</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Wallet Instance (WI)</strong> — Local Data management</p></td>
+<tr class="row-odd"><td><p><strong>Wallet Instance (WI)</strong> — Local Data Management</p></td>
 <td><p>Local Data Store, Backup and Restore Component, Secure Storage interaction</p></td>
 <td><p>In scope</p></td>
 </tr>
@@ -234,10 +289,10 @@
 <td><p>In scope</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Wallet Provider Backend (WPBE)</strong> — Trust &amp; Security Component</p></td>
-<td><p>Key and certificate management, audit logging, incident response, Federation compliance</p></td>
+<td><p>Key and Certificate Management, Audit Logging, Incident Response, Federation Compliance</p></td>
 <td><p>In scope</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Wallet Provider Backend (WPBE)</strong> — User web portal</p></td>
+<tr class="row-odd"><td><p><strong>Wallet Provider Backend (WPBE)</strong> — User Web Portal</p></td>
 <td><p>Frontend Component</p></td>
 <td><p>In scope</p></td>
 </tr>
@@ -246,9 +301,9 @@
 <p>For the full certification scheme and cross-cutting elements (e.g. eID Scheme), see <a class="reference internal" href="annex-certification-scheme.html#certification-scheme-and-overall-approach"><span class="std std-ref">Certification Scheme and Overall Approach</span></a>.</p>
 </section>
 <section id="wallet-backend">
-<h2><span class="section-number">10.2.2.2. </span>Wallet Backend<a class="headerlink" href="#wallet-backend" title="Link to this heading">¶</a></h2>
+<h1><span class="section-number">10.2.4. </span>Wallet Backend<a class="headerlink" href="#wallet-backend" title="Link to this heading">¶</a></h1>
 <section id="frontend-component">
-<h3><span class="section-number">10.2.2.2.1. </span>Frontend Component<a class="headerlink" href="#frontend-component" title="Link to this heading">¶</a></h3>
+<h2><span class="section-number">10.2.4.1. </span>Frontend Component<a class="headerlink" href="#frontend-component" title="Link to this heading">¶</a></h2>
 <p>The Frontend Component MUST provide a web-based User interface for Wallet Instance management, offering functionality to:</p>
 <ul class="simple">
 <li><p>Display and verify Wallet Instances and their status.</p></li>
@@ -257,7 +312,7 @@
 </ul>
 </section>
 <section id="api-interface">
-<h3><span class="section-number">10.2.2.2.2. </span>API Interface<a class="headerlink" href="#api-interface" title="Link to this heading">¶</a></h3>
+<h2><span class="section-number">10.2.4.2. </span>API Interface<a class="headerlink" href="#api-interface" title="Link to this heading">¶</a></h2>
 <p>This component MUST:</p>
 <ul class="simple">
 <li><p>forward the request from the Frontend Component or the Wallet Instance to the Wallet Instance Lifecycle Management component.</p></li>
@@ -265,7 +320,7 @@
 </ul>
 </section>
 <section id="wallet-instance-lifecycle-management">
-<h3><span class="section-number">10.2.2.2.3. </span>Wallet Instance Lifecycle Management<a class="headerlink" href="#wallet-instance-lifecycle-management" title="Link to this heading">¶</a></h3>
+<h2><span class="section-number">10.2.4.3. </span>Wallet Instance Lifecycle Management<a class="headerlink" href="#wallet-instance-lifecycle-management" title="Link to this heading">¶</a></h2>
 <p>This component MUST handle:</p>
 <ul class="simple">
 <li><p>Wallet Instance Registration (detailed in <a class="reference internal" href="wallet-instance-registration.html#id1"><span class="std std-ref">Wallet Instance Initialization and Registration</span></a>).</p></li>
@@ -275,7 +330,7 @@
 </ul>
 </section>
 <section id="trust-security-component">
-<h3><span class="section-number">10.2.2.2.4. </span>Trust &amp; Security Component<a class="headerlink" href="#trust-security-component" title="Link to this heading">¶</a></h3>
+<h2><span class="section-number">10.2.4.4. </span>Trust &amp; Security Component<a class="headerlink" href="#trust-security-component" title="Link to this heading">¶</a></h2>
 <p>This component MUST ensure security through:</p>
 <ul class="simple">
 <li><p>Key and certificate management.</p></li>
@@ -286,13 +341,13 @@
 </section>
 </section>
 <section id="wallet-unit">
-<h2><span class="section-number">10.2.2.3. </span>Wallet Unit<a class="headerlink" href="#wallet-unit" title="Link to this heading">¶</a></h2>
+<h1><span class="section-number">10.2.5. </span>Wallet Unit<a class="headerlink" href="#wallet-unit" title="Link to this heading">¶</a></h1>
 <section id="user-interface">
-<h3><span class="section-number">10.2.2.3.1. </span>User Interface<a class="headerlink" href="#user-interface" title="Link to this heading">¶</a></h3>
+<h2><span class="section-number">10.2.5.1. </span>User Interface<a class="headerlink" href="#user-interface" title="Link to this heading">¶</a></h2>
 <p>The User Interface is the point of interaction and communication between the User and the Wallet Instance.</p>
 </section>
 <section id="wallet-instance-lifecycle-management-component">
-<h3><span class="section-number">10.2.2.3.2. </span>Wallet Instance Lifecycle Management Component<a class="headerlink" href="#wallet-instance-lifecycle-management-component" title="Link to this heading">¶</a></h3>
+<h2><span class="section-number">10.2.5.2. </span>Wallet Instance Lifecycle Management Component<a class="headerlink" href="#wallet-instance-lifecycle-management-component" title="Link to this heading">¶</a></h2>
 <p>Interacting with the Wallet Backend, this component MUST handle:</p>
 <ul class="simple">
 <li><p>Wallet Instance Registration (detailed in <a class="reference internal" href="wallet-instance-registration.html#id1"><span class="std std-ref">Wallet Instance Initialization and Registration</span></a>).</p></li>
@@ -303,15 +358,15 @@
 <p>Based on the status of the Wallet Instance and the User request, this component interact with the other Wallet Instance components.</p>
 </section>
 <section id="issuer-component">
-<h3><span class="section-number">10.2.2.3.3. </span>Issuer Component<a class="headerlink" href="#issuer-component" title="Link to this heading">¶</a></h3>
+<h2><span class="section-number">10.2.5.3. </span>Issuer Component<a class="headerlink" href="#issuer-component" title="Link to this heading">¶</a></h2>
 <p>Following the <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a> specification and the implementation profile in Section <a class="reference internal" href="credential-issuance.html#digital-credential-issuance"><span class="std std-ref">Digital Credential Issuance</span></a>, this component MUST implement the Digital Credential issuance protocols and flows to request Digital Credentials to Credential Issuers.</p>
 </section>
 <section id="presentation-component">
-<h3><span class="section-number">10.2.2.3.4. </span>Presentation Component<a class="headerlink" href="#presentation-component" title="Link to this heading">¶</a></h3>
+<h2><span class="section-number">10.2.5.4. </span>Presentation Component<a class="headerlink" href="#presentation-component" title="Link to this heading">¶</a></h2>
 <p>Following the implementation profile in Section <a class="reference internal" href="credential-presentation.html#digital-credential-presentation"><span class="std std-ref">Digital Credential Presentation</span></a>, this component MUST be compliant with remote flows based on <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a> and proximity flow based on <a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> .</p>
 </section>
 <section id="backup-and-restore-component">
-<h3><span class="section-number">10.2.2.3.5. </span>Backup and Restore Component<a class="headerlink" href="#backup-and-restore-component" title="Link to this heading">¶</a></h3>
+<h2><span class="section-number">10.2.5.5. </span>Backup and Restore Component<a class="headerlink" href="#backup-and-restore-component" title="Link to this heading">¶</a></h2>
 <p>For each Digital Credential that is issued to the Wallet Instance, this component MUST add all data that is necessary to request re-issuance of that Digital Credential as specified in Section <a class="reference internal" href="backup-restore.html#backup-and-restore"><span class="std std-ref">Backup and Restore</span></a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -319,18 +374,15 @@
 </div>
 </section>
 <section id="secure-storage">
-<h3><span class="section-number">10.2.2.3.6. </span>Secure Storage<a class="headerlink" href="#secure-storage" title="Link to this heading">¶</a></h3>
+<h2><span class="section-number">10.2.5.6. </span>Secure Storage<a class="headerlink" href="#secure-storage" title="Link to this heading">¶</a></h2>
 <p>The Wallet Instance MUST use this component to protect critical assets and to securely execute cryptographic functions.</p>
 <p>The Secure Storage encompasses the following sub-components:</p>
 <ul class="simple">
 <li><p><strong>Wallet Secure Cryptographic Device (WSCD)</strong>: tamper-resistant device providing an environment to protect Critical Assets. The WSCD includes the Hardware Secure Element, WSCD Firmware, and Secure Key Storage System. The WSCD operates at two distinct security levels (WL3 and WL2) as described in <a class="reference internal" href="wallet-solution-requirements.html#wscd-security-levels"><span class="std std-ref">WSCD security levels</span></a>.</p></li>
 <li><p><strong>Wallet Secure Cryptographic Application (WSCA)</strong>: application managing Critical Assets using cryptographic functions provided by the WSCD. The WSCA includes the WSCD Interface (WWI), WSCA Authentication, and Cryptographic Keys and Functions Manager.</p></li>
 </ul>
-</section>
-</section>
-</section>
 <section id="wallet-solution-interaction-patterns">
-<h1><span class="section-number">10.2.3. </span>Wallet Solution Interaction Patterns<a class="headerlink" href="#wallet-solution-interaction-patterns" title="Link to this heading">¶</a></h1>
+<h3><span class="section-number">10.2.5.6.1. </span>Wallet Solution Interaction Patterns<a class="headerlink" href="#wallet-solution-interaction-patterns" title="Link to this heading">¶</a></h3>
 <p>The Wallet Solution supports these interaction patterns:</p>
 <ol class="arabic simple">
 <li><p><strong>User to Wallet Backend Frontend</strong>: Web-based interactions for Wallet Instance management.</p></li>
@@ -339,6 +391,8 @@
 <li><p><strong>User to Wallet Instance User Interface</strong>: for Digital Credential management (issuance, presentation, backup, restore, deletion).</p></li>
 <li><p><strong>Wallet Intance to Relying Party</strong>: for Digital Credential presentation.</p></li>
 </ol>
+</section>
+</section>
 </section>
 
 
@@ -355,27 +409,27 @@
             <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
             <div class="page_toc">
                 <ul>
-<li><a class="reference internal" href="#">10.2.2. Wallet Solution Components</a><ul>
-<li><a class="reference internal" href="#decomposition-and-certification-scope">10.2.2.1. Decomposition and Certification Scope</a></li>
-<li><a class="reference internal" href="#wallet-backend">10.2.2.2. Wallet Backend</a><ul>
-<li><a class="reference internal" href="#frontend-component">10.2.2.2.1. Frontend Component</a></li>
-<li><a class="reference internal" href="#api-interface">10.2.2.2.2. API Interface</a></li>
-<li><a class="reference internal" href="#wallet-instance-lifecycle-management">10.2.2.2.3. Wallet Instance Lifecycle Management</a></li>
-<li><a class="reference internal" href="#trust-security-component">10.2.2.2.4. Trust &amp; Security Component</a></li>
+<li><a class="reference internal" href="#">10.2.2. Wallet Solution Components</a></li>
+<li><a class="reference internal" href="#decomposition-and-certification-scope">10.2.3. Decomposition and Certification Scope</a></li>
+<li><a class="reference internal" href="#wallet-backend">10.2.4. Wallet Backend</a><ul>
+<li><a class="reference internal" href="#frontend-component">10.2.4.1. Frontend Component</a></li>
+<li><a class="reference internal" href="#api-interface">10.2.4.2. API Interface</a></li>
+<li><a class="reference internal" href="#wallet-instance-lifecycle-management">10.2.4.3. Wallet Instance Lifecycle Management</a></li>
+<li><a class="reference internal" href="#trust-security-component">10.2.4.4. Trust &amp; Security Component</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#wallet-unit">10.2.2.3. Wallet Unit</a><ul>
-<li><a class="reference internal" href="#user-interface">10.2.2.3.1. User Interface</a></li>
-<li><a class="reference internal" href="#wallet-instance-lifecycle-management-component">10.2.2.3.2. Wallet Instance Lifecycle Management Component</a></li>
-<li><a class="reference internal" href="#issuer-component">10.2.2.3.3. Issuer Component</a></li>
-<li><a class="reference internal" href="#presentation-component">10.2.2.3.4. Presentation Component</a></li>
-<li><a class="reference internal" href="#backup-and-restore-component">10.2.2.3.5. Backup and Restore Component</a></li>
-<li><a class="reference internal" href="#secure-storage">10.2.2.3.6. Secure Storage</a></li>
+<li><a class="reference internal" href="#wallet-unit">10.2.5. Wallet Unit</a><ul>
+<li><a class="reference internal" href="#user-interface">10.2.5.1. User Interface</a></li>
+<li><a class="reference internal" href="#wallet-instance-lifecycle-management-component">10.2.5.2. Wallet Instance Lifecycle Management Component</a></li>
+<li><a class="reference internal" href="#issuer-component">10.2.5.3. Issuer Component</a></li>
+<li><a class="reference internal" href="#presentation-component">10.2.5.4. Presentation Component</a></li>
+<li><a class="reference internal" href="#backup-and-restore-component">10.2.5.5. Backup and Restore Component</a></li>
+<li><a class="reference internal" href="#secure-storage">10.2.5.6. Secure Storage</a><ul>
+<li><a class="reference internal" href="#wallet-solution-interaction-patterns">10.2.5.6.1. Wallet Solution Interaction Patterns</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#wallet-solution-interaction-patterns">10.2.3. Wallet Solution Interaction Patterns</a></li>
 </ul>
 
             </div>
@@ -395,7 +449,7 @@
 
             <div class="right">
                 
-                    <a href="wallet-instance.html"><span><span class="section-number">10.2.4. </span>Wallet Instance</span><span class="icon">&gt;</span></a>
+                    <a href="wallet-instance.html"><span><span class="section-number">10.2.6. </span>Wallet Instance</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
@@ -403,7 +457,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 26/02/2026.
+      Last updated on 11/03/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

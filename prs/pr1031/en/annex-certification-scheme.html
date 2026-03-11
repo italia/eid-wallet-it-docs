@@ -173,8 +173,14 @@
   <section id="certification-scheme-and-overall-approach">
 <span id="annex-certification-scheme"></span><h1><span class="section-number">20.4. </span>Certification Scheme and Overall Approach<a class="headerlink" href="#certification-scheme-and-overall-approach" title="Link to this heading">¶</a></h1>
 <p>This annex describes the certification scheme and overall approach for the IT-Wallet System, aligning the technical specifications with the component decomposition paradigm used for certification evaluation.</p>
+<section id="certification-context-it-wallet-system-vs-eudi-wallet">
+<h2><span class="section-number">20.4.1. </span>Certification Context: IT-Wallet System vs. EUDI-Wallet<a class="headerlink" href="#certification-context-it-wallet-system-vs-eudi-wallet" title="Link to this heading">¶</a></h2>
+<p>The <strong>IT-Wallet System</strong> is the national ecosystem enabling Digital Identity management and Credential exchange. A <strong>EUDI-Wallet</strong> is an IT-Wallet solution designated by the Member State as the national implementation of the European Digital Identity Wallet framework.</p>
+<p>Certification per <a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2981/">CIR 2024/2981</a> applies <strong>only when the IT-Wallet operates in the EUDI-Wallet context</strong>. A Wallet Provider offering a solution exclusively within the IT-Wallet System (e.g., a private-sector wallet not designated as EUDI-Wallet) is not required to obtain certification. Conversely, once a solution is designated as the Italian EUDI-Wallet, it undergoes certification and retains that certified status also when operating as a public solution within the IT-Wallet System.</p>
+<p><strong>Servizi ICT eID</strong> and <strong>Servizi ICT di Validazione</strong> are unique elements identical in both ecosystems; they require certification in the EUDI-Wallet context and therefore carry that characteristic in the IT-Wallet System as well, even where certification is not otherwise mandated.</p>
+</section>
 <section id="regulatory-framework">
-<h2><span class="section-number">20.4.1. </span>Regulatory Framework<a class="headerlink" href="#regulatory-framework" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">20.4.2. </span>Regulatory Framework<a class="headerlink" href="#regulatory-framework" title="Link to this heading">¶</a></h2>
 <p>The certification of IT-Wallet System components is mandated by <a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2981/">CIR 2024/2981</a> (<strong>Commission Implementing Regulation (EU) 2024/2981</strong>). The regulation requires, under Article 4(4)(d), that risks, threats, and implemented controls be assessed as part of the certification process.</p>
 <p>The decomposition follows:</p>
 <ul class="simple">
@@ -184,7 +190,7 @@
 </ul>
 </section>
 <section id="paradigm-decomposition-hierarchy">
-<h2><span class="section-number">20.4.2. </span>Paradigm: Decomposition Hierarchy<a class="headerlink" href="#paradigm-decomposition-hierarchy" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">20.4.3. </span>Paradigm: Decomposition Hierarchy<a class="headerlink" href="#paradigm-decomposition-hierarchy" title="Link to this heading">¶</a></h2>
 <p>The decomposition paradigm structures the system into:</p>
 <table class="docutils align-default" id="id1">
 <caption><span class="caption-number">Table 20.1 </span><span class="caption-text">Decomposition Hierarchy</span><a class="headerlink" href="#id1" title="Link to this table">¶</a></caption>
@@ -199,7 +205,7 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Certification Macro-component</p></td>
-<td><p>Top-level grouping (e.g. Servizi ICT Wallet, Servizi ICT PID Provider); each has an owner (Wallet Provider, PID Provider).</p></td>
+<td><p>Top-level grouping (e.g. ICT Wallet Services, eID ICT Services); each has an owner (Wallet Provider, PID Provider).</p></td>
 </tr>
 <tr class="row-odd"><td><p>Component</p></td>
 <td><p>Main architectural component (e.g. Wallet Instance, Wallet Provider Backend, PID Provider Backend).</p></td>
@@ -215,7 +221,7 @@
 <p>Each element may be classified as an <strong>ICT product</strong> or an <strong>ICT process</strong>. The <strong>Certification Scope</strong> indicates whether the component is evaluated during certification (In scope / No).</p>
 </section>
 <section id="components-in-scope-for-certification">
-<h2><span class="section-number">20.4.3. </span>Components In Scope for Certification<a class="headerlink" href="#components-in-scope-for-certification" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">20.4.4. </span>Components In Scope for Certification<a class="headerlink" href="#components-in-scope-for-certification" title="Link to this heading">¶</a></h2>
 <p>The following components are <strong>in scope</strong> for certification per <a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2981/">CIR 2024/2981</a>:</p>
 <table class="docutils align-default" id="id2">
 <caption><span class="caption-number">Table 20.2 </span><span class="caption-text">In-Scope Components</span><a class="headerlink" href="#id2" title="Link to this table">¶</a></caption>
@@ -235,15 +241,15 @@
 <td><p>Wallet Provider</p></td>
 <td><p><a class="reference internal" href="wallet-solution-components.html#wallet-solution-components"><span class="std std-ref">Wallet Solution Components</span></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Servizi ICT PID Provider</strong></p></td>
+<tr class="row-odd"><td><p><strong>Servizi ICT eID</strong></p></td>
 <td><p>PID Provider</p></td>
 <td><p><a class="reference internal" href="credential-issuer-solution.html#credential-issuer-solution"><span class="std std-ref">Credential Issuer Solution</span></a></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Servizi ICT di Validazione</strong> (Trust List Backend Services)</p></td>
+<tr class="row-even"><td><p><strong>Servizi ICT di Validazione</strong></p></td>
 <td><p>Validation Services Provider</p></td>
 <td><p><a class="reference internal" href="trust-infrastructure.html#the-infrastructure-of-trust"><span class="std std-ref">The Infrastructure of Trust</span></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Regime di identificazione elettronica</strong> (eID Scheme)</p></td>
+<tr class="row-odd"><td><p><strong>Regime di identificazione elettronica</strong></p></td>
 <td><p>Cross-cutting (Wallet Provider and PID Provider)</p></td>
 <td><p>National eID schemes (CIEid, SPID); <a class="reference internal" href="credential-issuance-l2plus.html#eid-substantial-authentication-with-mrtd-verification-for-pid-issuance"><span class="std std-ref">eID Substantial Authentication with MRTD Verification for PID Issuance</span></a></p></td>
 </tr>
@@ -251,7 +257,7 @@
 </table>
 </section>
 <section id="components-out-of-scope-for-certification">
-<h2><span class="section-number">20.4.4. </span>Components Out of Scope for Certification<a class="headerlink" href="#components-out-of-scope-for-certification" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">20.4.5. </span>Components Out of Scope for Certification<a class="headerlink" href="#components-out-of-scope-for-certification" title="Link to this heading">¶</a></h2>
 <p>The following components are <strong>out of scope</strong> for certification:</p>
 <table class="docutils align-default" id="id3">
 <caption><span class="caption-number">Table 20.3 </span><span class="caption-text">Out-of-Scope Components</span><a class="headerlink" href="#id3" title="Link to this table">¶</a></caption>
@@ -266,7 +272,7 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p>User Device (Operating System, platform, local crypto)</p></td>
-<td><p>Provided by Device Manufacturer; not within certification scope.</p></td>
+<td><p>Provided by Device Manufacturer; not within the certification scope.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Attribute Attestation Provider ((Pub/Q)EAA)</p></td>
 <td><p>Certified under separate schemes.</p></td>
@@ -284,7 +290,7 @@
 </table>
 </section>
 <section id="cross-reference-decomposition-to-technical-specification">
-<h2><span class="section-number">20.4.5. </span>Cross-Reference: Decomposition to Technical Specification<a class="headerlink" href="#cross-reference-decomposition-to-technical-specification" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">20.4.6. </span>Cross-Reference: Decomposition to Technical Specification<a class="headerlink" href="#cross-reference-decomposition-to-technical-specification" title="Link to this heading">¶</a></h2>
 <p>The following table provides a consolidated cross-reference from decomposition elements to the relevant technical specification sections.</p>
 <table class="docutils align-default" id="id4">
 <caption><span class="caption-number">Table 20.4 </span><span class="caption-text">Cross-Reference Table</span><a class="headerlink" href="#id4" title="Link to this table">¶</a></caption>
@@ -308,17 +314,17 @@
 <td><p><a class="reference internal" href="wallet-solution-components.html#wallet-backend"><span class="std std-ref">Wallet Backend</span></a></p></td>
 <td><p>Servizi ICT Wallet</p></td>
 </tr>
-<tr class="row-even"><td><p>WSCD / WSCA</p></td>
+<tr class="row-even"><td><p>WSCD (WL3) / Cryptographic device (WL2) / WSCA</p></td>
 <td><p><a class="reference internal" href="wallet-solution-components.html#secure-storage"><span class="std std-ref">Secure Storage</span></a></p></td>
 <td><p>Servizi ICT Wallet</p></td>
 </tr>
 <tr class="row-odd"><td><p>PID Provider Backend (PPBE)</p></td>
 <td><p><a class="reference internal" href="credential-issuer-solution.html#credential-issuer-solution"><span class="std std-ref">Credential Issuer Solution</span></a></p></td>
-<td><p>Servizi ICT PID Provider</p></td>
+<td><p>Servizi ICT eID</p></td>
 </tr>
 <tr class="row-even"><td><p>Identity Proofing (PPBE)</p></td>
 <td><p><a class="reference internal" href="credential-issuer-solution.html#relying-party-component"><span class="std std-ref">Relying Party Component</span></a>, <a class="reference internal" href="credential-issuance-l2plus.html#eid-substantial-authentication-with-mrtd-verification-for-pid-issuance"><span class="std std-ref">eID Substantial Authentication with MRTD Verification for PID Issuance</span></a></p></td>
-<td><p>Servizi ICT PID Provider</p></td>
+<td><p>Servizi ICT eID</p></td>
 </tr>
 <tr class="row-odd"><td><p>Trust List Backend Services</p></td>
 <td><p><a class="reference internal" href="trust-infrastructure.html#the-infrastructure-of-trust"><span class="std std-ref">The Infrastructure of Trust</span></a></p></td>
@@ -332,16 +338,15 @@
 </table>
 </section>
 <section id="mandatory-certification">
-<h2><span class="section-number">20.4.6. </span>Mandatory Certification<a class="headerlink" href="#mandatory-certification" title="Link to this heading">¶</a></h2>
-<p>The <strong>Certification Scope</strong> column in the decomposition tables (see <a class="reference internal" href="wallet-solution-components.html#wallet-solution-components-decomposition"><span class="std std-ref">Decomposition and Certification Scope</span></a> and <a class="reference internal" href="credential-issuer-solution.html#credential-issuer-solution-decomposition"><span class="std std-ref">Decomposition and Certification Scope</span></a>) indicates whether security certification is required. Conditional cases include:</p>
+<h2><span class="section-number">20.4.7. </span>Mandatory Certification<a class="headerlink" href="#mandatory-certification" title="Link to this heading">¶</a></h2>
+<p>The <strong>Certification Scope</strong> column in the decomposition tables (see <a class="reference internal" href="wallet-solution-components.html#wallet-solution-components-decomposition"><span class="std std-ref">Decomposition and Certification Scope</span></a> and <a class="reference internal" href="credential-issuer-solution.html#credential-issuer-solution-decomposition"><span class="std std-ref">Decomposition and Certification Scope</span></a>) indicates whether security certification is required. The <strong>eID Scheme</strong> is always in scope for certification, as it is the cross-cutting element between Wallet Provider and PID Provider that triggers the certification requirement. Conditional cases include:</p>
 <ul class="simple">
-<li><p><strong>WSCD</strong> provided by the User or Wallet Provider (device ownership affects scope).</p></li>
+<li><p><strong>WSCD</strong> (WL3 level) or cryptographic device (WL2 level) provided by the User or Wallet Provider (device ownership affects scope).</p></li>
 <li><p><strong>Wallet Instance</strong> execution environment (User device vs. web-based interface).</p></li>
-<li><p><strong>eID Scheme</strong> as cross-cutting between Wallet Provider and PID Provider.</p></li>
 </ul>
 </section>
 <section id="risk-assessment">
-<h2><span class="section-number">20.4.7. </span>Risk Assessment<a class="headerlink" href="#risk-assessment" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">20.4.8. </span>Risk Assessment<a class="headerlink" href="#risk-assessment" title="Link to this heading">¶</a></h2>
 <p>The decomposition supports risk assessment per <a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2981/">CIR 2024/2981</a> Article 4(4)(d) through:</p>
 <ul class="simple">
 <li><p><strong>Risks (ID &amp; Name)</strong>: in compliance with <a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2981/">CIR 2024/2981</a> Annex I requirements.</p></li>
@@ -367,13 +372,14 @@
             <div class="page_toc">
                 <ul>
 <li><a class="reference internal" href="#">20.4. Certification Scheme and Overall Approach</a><ul>
-<li><a class="reference internal" href="#regulatory-framework">20.4.1. Regulatory Framework</a></li>
-<li><a class="reference internal" href="#paradigm-decomposition-hierarchy">20.4.2. Paradigm: Decomposition Hierarchy</a></li>
-<li><a class="reference internal" href="#components-in-scope-for-certification">20.4.3. Components In Scope for Certification</a></li>
-<li><a class="reference internal" href="#components-out-of-scope-for-certification">20.4.4. Components Out of Scope for Certification</a></li>
-<li><a class="reference internal" href="#cross-reference-decomposition-to-technical-specification">20.4.5. Cross-Reference: Decomposition to Technical Specification</a></li>
-<li><a class="reference internal" href="#mandatory-certification">20.4.6. Mandatory Certification</a></li>
-<li><a class="reference internal" href="#risk-assessment">20.4.7. Risk Assessment</a></li>
+<li><a class="reference internal" href="#certification-context-it-wallet-system-vs-eudi-wallet">20.4.1. Certification Context: IT-Wallet System vs. EUDI-Wallet</a></li>
+<li><a class="reference internal" href="#regulatory-framework">20.4.2. Regulatory Framework</a></li>
+<li><a class="reference internal" href="#paradigm-decomposition-hierarchy">20.4.3. Paradigm: Decomposition Hierarchy</a></li>
+<li><a class="reference internal" href="#components-in-scope-for-certification">20.4.4. Components In Scope for Certification</a></li>
+<li><a class="reference internal" href="#components-out-of-scope-for-certification">20.4.5. Components Out of Scope for Certification</a></li>
+<li><a class="reference internal" href="#cross-reference-decomposition-to-technical-specification">20.4.6. Cross-Reference: Decomposition to Technical Specification</a></li>
+<li><a class="reference internal" href="#mandatory-certification">20.4.7. Mandatory Certification</a></li>
+<li><a class="reference internal" href="#risk-assessment">20.4.8. Risk Assessment</a></li>
 </ul>
 </li>
 </ul>
@@ -403,7 +409,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 26/02/2026.
+      Last updated on 11/03/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

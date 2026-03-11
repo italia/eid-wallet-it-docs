@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>10.2.4.2.4. User&#39;s Attributes Deletion &#8212; IT-Wallet Technical Specifications - PR #1031</title>
+    <title>10.2.6.2.4. User&#39;s Attributes Deletion &#8212; IT-Wallet Technical Specifications - PR #1031</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -17,8 +17,8 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="10.2.5. Backup and Restore" href="backup-restore.html" />
-    <link rel="prev" title="10.2.4.2.3. Wallet Instance Revocation" href="wallet-instance-revocation.html" /> 
+    <link rel="next" title="10.2.7. Backup and Restore" href="backup-restore.html" />
+    <link rel="prev" title="10.2.6.2.3. Wallet Instance Revocation" href="wallet-instance-revocation.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -144,11 +144,13 @@
 <li class="toctree-l2 current"><a class="reference internal" href="wallet-solution.html#architecture-and-certification-decomposition">10.2. Architecture and Certification Decomposition</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="wallet-solution-requirements.html">10.2.1. Wallet Solution Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-solution-components.html">10.2.2. Wallet Solution Components</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution-components.html#wallet-solution-interaction-patterns">10.2.3. Wallet Solution Interaction Patterns</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="wallet-instance.html">10.2.4. Wallet Instance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="backup-restore.html">10.2.5. Backup and Restore</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-entity-configuration.html">10.2.6. Wallet Provider Entity Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution-metadata.html">10.2.7. Wallet Solution Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution-components.html#decomposition-and-certification-scope">10.2.3. Decomposition and Certification Scope</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution-components.html#wallet-backend">10.2.4. Wallet Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution-components.html#wallet-unit">10.2.5. Wallet Unit</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="wallet-instance.html">10.2.6. Wallet Instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="backup-restore.html">10.2.7. Backup and Restore</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-entity-configuration.html">10.2.8. Wallet Provider Entity Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution-metadata.html">10.2.9. Wallet Solution Metadata</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html">10.3. Credential Issuer Solution</a></li>
@@ -178,7 +180,7 @@
           <div class="body" role="main">
             
   <section id="user-s-attributes-deletion">
-<h1><span class="section-number">10.2.4.2.4. </span>User's Attributes Deletion<a class="headerlink" href="#user-s-attributes-deletion" title="Link to this heading">¶</a></h1>
+<h1><span class="section-number">10.2.6.2.4. </span>User's Attributes Deletion<a class="headerlink" href="#user-s-attributes-deletion" title="Link to this heading">¶</a></h1>
 <p>This Wallet Instance functionality allows Users to obtain a list of all Relying Parties towards which attributes that can uniquely identify Users (e.g., the tax_id_code claim of the PID) have been presented. Subsequently Users may request deletion of all attributes presented to a Relying Party of their choice. Below the high level flow regarding this interaction is presented (<a class="reference internal" href="test-plans-wallet-provider.html#user-attribute-deletion-testcases"><span class="std std-ref">WP_115</span></a>).</p>
 <figure class="align-default" id="id1">
 <p class="plantuml">
@@ -226,13 +228,13 @@
             <div class="left">
                 
                 <a href="wallet-instance-revocation.html">
-                    <span class="icon">&lt;</span><span><span class="section-number">10.2.4.2.3. </span>Wallet Instance Revocation</span></a>
+                    <span class="icon">&lt;</span><span><span class="section-number">10.2.6.2.3. </span>Wallet Instance Revocation</span></a>
                 
             </div>
 
             <div class="right">
                 
-                    <a href="backup-restore.html"><span><span class="section-number">10.2.5. </span>Backup and Restore</span><span class="icon">&gt;</span></a>
+                    <a href="backup-restore.html"><span><span class="section-number">10.2.7. </span>Backup and Restore</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
@@ -240,7 +242,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 26/02/2026.
+      Last updated on 11/03/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

@@ -1,8 +1,48 @@
 .. include:: ../common/common_definitions.rst
 
 
+.. _wallet-solution-components:
+
 Wallet Solution Components
-==========================
+--------------------------
+
+The following table describes the main components of the Wallet Solution.
+
+.. list-table::
+   :widths: 20 50 30
+   :header-rows: 1
+
+   * - **Component**
+     - **Description**
+     - **Reference**
+   * - Mobile App
+     - Primary interface for Users to access and manage digital assets.
+     - Wallet Solution
+   * - Wallet Instance
+     - Installation of the Wallet Solution on a User's device.
+     - Wallet Solution
+   * - Wallet Provider
+     - Entity that issues the Wallet Solution and Wallet Instance Attestations.
+     - Trust Model
+   * - Wallet Instance Attestation
+     - Cryptographic proof of authenticity and integrity of the Wallet Instance.
+     - Wallet Instance Attestation
+   * - PID Provider
+     - Issues Personal Identification Data to the Wallet Instance.
+     - Trust Model
+   * - (Q)EAA Provider
+     - Issues Qualified or non-qualified Electronic Attestations of Attributes.
+     - Trust Model
+   * - Relying Party
+     - Entity that accepts attestations from the Wallet Instance for authentication.
+     - Relying Party Solution
+   * - Trust Anchor
+     - Root of trust in the federation.
+     - Trust Model
+   * - Federation Authority
+     - Public governance entity for guidelines and accreditation.
+     - Defined Terms
+
 
 .. note::
   Tests related to the Wallet Solution components (Wallet Backend, and Wallet Unit) are summarized in :ref:`WP_012 <wallet-provider-backend-testcases>`, and :ref:`WP_013 <wallet-instance-testcases>`, accordingly.
@@ -14,7 +54,7 @@ Decomposition and Certification Scope
 
 **Certification** is the process by which Conformity Assessment Bodies assess technical solutions against the security and compliance requirements mandated by `CIR 2024/2981`_. The **component decomposition for certification** is a hierarchical structure (certification macro-component, component, sub-component) used to define the scope of certification evaluation and to establish traceability between architectural elements and certification requirements.
 
-This section specifies the mapping between the Wallet Solution components described in this technical specification and the certification macro-component **Servizi ICT Wallet** (owner: Wallet Provider). It indicates which components conform to the decomposition and fall within certification scope.
+This section specifies the mapping between the Wallet Solution components described in this technical specification and the certification macro-component **Servizi ICT Wallet** (owner: Wallet Provider). It indicates which components conform to the decomposition and fall within the certification scope.
 
 .. list-table:: Wallet Solution — Decomposition Mapping
    :widths: 30 40 15
@@ -26,7 +66,7 @@ This section specifies the mapping between the Wallet Solution components descri
    * - **Wallet Instance (WI)** — Application Logic
      - User Interface, Issuer Component, Presentation Component, Wallet Instance Lifecycle Management
      - In scope
-   * - **Wallet Instance (WI)** — Local Data management
+   * - **Wallet Instance (WI)** — Local Data Management
      - Local Data Store, Backup and Restore Component, Secure Storage interaction
      - In scope
    * - **Wallet Instance (WI)** — Presentation Interface (PI)
@@ -48,9 +88,9 @@ This section specifies the mapping between the Wallet Solution components descri
      - Registration, Attestation Issuance (WIA/WUA), Status and revocation
      - In scope
    * - **Wallet Provider Backend (WPBE)** — Trust & Security Component
-     - Key and certificate management, audit logging, incident response, Federation compliance
+     - Key and Certificate Management, Audit Logging, Incident Response, Federation Compliance
      - In scope
-   * - **Wallet Provider Backend (WPBE)** — User web portal
+   * - **Wallet Provider Backend (WPBE)** — User Web Portal
      - Frontend Component
      - In scope
 
@@ -158,4 +198,3 @@ The Wallet Solution supports these interaction patterns:
 3. **PID Provider to Wallet Backend API**: Secure API calls to request Wallet Instance revocation.
 4. **User to Wallet Instance User Interface**: for Digital Credential management (issuance, presentation, backup, restore, deletion).
 5. **Wallet Intance to Relying Party**: for Digital Credential presentation.
-
