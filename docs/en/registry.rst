@@ -395,6 +395,9 @@ The Authentic Source Registry MUST contain the following parameters for each reg
    * - **organization_info.contacts**
      - String Array
      - REQUIRED. Array of technical/administrative contact email addresses.
+   * - **organization_info.dpa_contact**
+     - string
+     - REQUIRED. An e-mail address of Authentic Source DPA.
    * - **organization_info.policy_uri**
      - string
      - REQUIRED. URL to privacy policy document.
@@ -1090,6 +1093,7 @@ Each element of the ``credentials`` array contains at least the following inform
 
       * **allowed_wallet_ids**: List of allowed Wallet Solutions identifiers.
       * **allowed_issuer_ids**: List of allowed Credential Issuers identifiers. If present, it represents a whitelist of Credential Issuers that may be added by the Trust Anchor in the **issuers** field of the corresponding Digital Credential.
+      * **presentation_flows**: Type of presentation flows supported; remote and/or proximity flow.
   * - **pricing_policy**
     - OPTIONAL. Information about Digital Credential pricing, including:
 
@@ -1105,7 +1109,8 @@ Each element of the ``credentials`` array contains at least the following inform
 
       * **max_validity_days**: Maximum validity period in days.
       * **status_methods**: Supported status verification methods (e.g. ``status_list``).
-      * **allowed_states**: Allowed Digital Credential states (e.g. ``VALID``, ``INVALID``, ``SUSPENDED``).
+      * **allowed_states**: Allowed Digital Credential states including display information (e.g. ``VALID``, ``INVALID``, ``SUSPENDED``).
+      * **administrative_expiration_user_info**: Display information about administrative expiration of the Credential.
   * - **authentication**
     - REQUIRED. Digital Credential authentication requirements.
 

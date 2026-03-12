@@ -68,25 +68,7 @@ e-Service PDND Credential Issuer Catalog
 
 Credential Issuers MUST provide the following e-services through PDND to:
 
-  - manage data availability notifications and attribute updates coming from an Authentic Source;
-  - revoke Digital Credentials issued to a revoked Wallet Instance
   - provide statistics about issued Credentials
-
-
-Notify Wallet Instance Revocation
-"""""""""""""""""""""""""""""""""
-
-.. list-table::
-  :class: longtable
-  :widths: 20 80
-  :stub-columns: 1
-  
-  * - **Description**
-    - This service revokes all Digital Credentials associated with a specific User.
-  * - **Provider**
-    - Credential Issuer
-  * - **Consumer**
-    - Wallet Provider
 
 
 Get Statistics

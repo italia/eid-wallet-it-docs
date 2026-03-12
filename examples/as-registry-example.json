@@ -19,6 +19,7 @@
                     "registry@motorizzazione.gov.example",
                     "technical-support@motorizzazione.gov.example"
                 ],
+                "dpa_contact": "dpa@motorizzazione.gov.example",
                 "homepage_uri": "https://www.gov.example/transport",
                 "ipa_code": "m_inf",
                 "legal_identifier": "80192770587",
@@ -144,6 +145,7 @@
                     "digital-credentials@bank.example",
                     "api-support@bank.example"
                 ],
+                "dpa_contact": "dpa@bank.example",
                 "homepage_uri": "https://www.bank.example",
                 "legal_identifier": "12345678901",
                 "logo_extended_uri": "https://trust-registry.eid-wallet.example.it/logos/12345678901/extended-image.svg",
