@@ -1,7 +1,7 @@
 .. include:: ../common/common_definitions.rst
 
 
-.. _registry-infrastruttura-di-registro:
+
 
 Infrastruttura del Registro
 ============================
@@ -82,10 +82,6 @@ Struttura del payload JWT (decodificato):
     },
     "content_negotiation": ["application/json", "application/jwt"]
   }
-
-
-
-.. _registry-registro-claims:
 
 Registro dei Claims
 -------------------
@@ -458,7 +454,7 @@ Le operazioni del Registro di Federazione sono accessibili attraverso gli endpoi
    
    Per le specifiche tecniche complete dei protocolli di federazione, configurazioni delle entità, meccanismi di valutazione della fiducia e validazione della catena di fiducia, vedere :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
 
-.. _registry-catalogo-delle-credenziali-digitali:
+
 
 Catalogo degli Attestati Elettronici
 ------------------------------------
@@ -547,18 +543,8 @@ Di seguito è fornito un esempio non normativo.
 
     eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
 
-.. code-block:: http
 
-    GET /.well-known/credential-catalog HTTP/1.1
-    Host: trust-anchor.eid-wallet.example.it
-    Accept: application/json
-
-    HTTP/1.1 200 OK
-    Content-Type: application/json
-
-.. _struttura-del-catalogo-degli-attestati-elettronici:
-
-Nella sezione :ref:`Struttura del Catalogo degli Attestati Elettronici <struttura-del-catalogo-degli-attestati-elettronici>` è riportato un esempio di Catalogo degli Attestati Elettronici decodificato in JSON.
+Nella sezione :ref:`registry:Struttura del Catalogo degli Attestati Elettronici` è riportato un esempio di Catalogo degli Attestati Elettronici decodificato in JSON.
 
 Gerarchia degli Attestati Elettronici
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -603,7 +589,7 @@ Ogni Credential Type **DEVE** dichiarare il proprio Dominio, Classe e le Finalit
 Le tabelle seguenti forniscono esempi non esaustivi che illustrano le relazioni tra Dominio, Credential Class e Credential Type, seguite dalla loro mappatura con gli Scopi di verifica.
 Ulteriori Domini, Classi, credenziali specifiche e Finalità di verifica POSSONO essere aggiunti nel tempo con l'evolversi dell'ecosistema IT-Wallet.
 
-.. _it-wallet-dc-taxonomy:
+
 .. list-table:: Tabella 1: Tassonomia delle Credenziali Digitali: Gerarchia e Classificazione
    :class: longtable
    :header-rows: 1
@@ -770,7 +756,6 @@ Ulteriori Domini, Classi, credenziali specifiche e Finalità di verifica POSSONO
        * Voucher Supporto Salute Mentale
        * Bonus Sport e Attività Fisica
 
-.. _it-wallet-dc-mapping:
 .. list-table:: Tabella 2: Mappatura tra Credential Class e Finalità (Purposes)
    :class: longtable
    :header-rows: 1

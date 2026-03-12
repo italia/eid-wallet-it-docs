@@ -572,7 +572,6 @@ Each Credential Type MUST declare its Domain, Class, and supported Purposes.
 The following tables provide non-exhaustive examples illustrating the relationships between Domains, Credential Classes, and Credential Types, followed by their mapping to verification Purposes.
 Additional Domains, Classes, specific Credentials, and verification Purposes **MAY** be added over time as the IT-Wallet ecosystem evolves.
 
-.. _it-wallet-dc-taxonomy:
 .. list-table:: Digital Credential Taxonomy: Hierarchy and Classification
    :class: longtable
    :header-rows: 1
@@ -739,7 +738,6 @@ Additional Domains, Classes, specific Credentials, and verification Purposes **M
        * Mental Health Support Voucher
        * Sports and Physical Activity Bonus
 
-.. _it-wallet-dc-mapping:
 .. list-table:: Table 2: Mapping between Credential Classes and Purposes
    :class: longtable
    :header-rows: 1
