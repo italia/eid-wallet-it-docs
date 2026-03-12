@@ -254,7 +254,7 @@ The details of each step shown in the previous picture are described below.
                 "crv": "P-256",
                 "x": "f83OJ3D2xF1Bg8vub9tLe1gHMzV76e8Tus9uPHvRVEU",
                 "y": "x_FEzRu9m36HLN_tue659LNpXW6pCyStikYjKIWI5a0",
-                "kid": "ephemeral-20260202-abc123",
+                "kid": "20260202-abc123",
                 "alg": "ECDH-ES"
               }
             ]
@@ -291,7 +291,7 @@ The details of each step shown in the previous picture are described below.
       {
         "alg": "ECDH-ES",
         "enc": "A256GCM",
-        "kid": "ephemeral-20260202-abc123",
+        "kid": "20260202-abc123",
         "epk": {
           "kty": "EC",
           "crv": "P-256",
