@@ -59,12 +59,46 @@ Below a non-normative example is given.
     HTTP/1.1 200 OK
     Content-Type: application/json
 
+Registry Discovery Endpoint Parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The JWT payload of the Registry Discovery response MUST contain the following parameters:
+
+.. list-table:: Registry Discovery Endpoint — JWT Payload Parameters
+   :class: longtable
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Field Name**
+     - **Description**
+   * - **id**
+     - REQUIRED. Unique identifier of the discovery document (e.g., ``urn:discovery:it-wallet``).
+   * - **version**
+     - REQUIRED. Version of the discovery document format (e.g., ``1.0.0``).
+   * - **last_updated**
+     - REQUIRED. Timestamp of the last modification to the discovery document (e.g., ``2024-03-15T10:30:00Z``).
+   * - **endpoints**
+     - REQUIRED. JSON object containing the URIs of all registry components. The following endpoint keys MUST be present:
+
+       * **claims_registry**: URI of the Claims Registry API.
+       * **authentic_sources**: URI of the Authentic Source Registry API.
+       * **credential_catalog**: URI of the Digital Credentials Catalog well-known endpoint.
+       * **taxonomy**: URI of the Taxonomy resource.
+       * **schema_registry**: URI of the Schema Registry API.
+       * **federation_list**: URI of the federation list endpoint (OpenID Federation ``/list``).
+       * **federation_fetch**: URI of the federation fetch endpoint (OpenID Federation ``/fetch``).
+       * **federation_resolve**: URI of the federation resolve endpoint (OpenID Federation ``/resolve``).
+       * **federation_trust_mark_status**: URI of the Trust Mark status endpoint.
+       * **federation_historical_keys**: URI of the historical JWKs endpoint.
+   * - **content_negotiation**
+     - REQUIRED. Array of content types supported by the discovery endpoint (e.g., ``["application/json", "application/jwt"]``).
+
 JWT payload structure (when decoded):
 
 .. code-block:: json
 
   {
-    "id": "urn:discovery:it-wallet",
+    "id": "urn:it-wallet-registry:it-wallet",
     "version": "1.0.0",
     "last_updated": "2024-03-15T10:30:00Z",
     "endpoints": {
@@ -247,7 +281,7 @@ The AS Registry architecture supports different coordination patterns reflecting
 
   1. **Public Administration AS** (Standardized Integration): Government entities provide authoritative data through regulated mechanisms:
 
-    - **PDND Integration**: ``"integration_method": "pdnd_eservice"`` for standardized government data access.
+    - **PDND Integration**: ``"integration_method": "pdnd"`` for standardized government data access.
     - **Regulatory Compliance**: Full transparency requirements with public catalog publication.
     - **Audit Requirements**: Complete traceability for government Credential issuance processes.
 
@@ -1047,8 +1081,8 @@ Each element of the ``credentials`` array contains at least the following inform
     - REQUIRED. Version of the Digital Credential definition.
   * - **credential_type**
     - REQUIRED. Unique identifier of the Digital Credential type. For PID it MUST be ``pid``.
-  * - **credential_name**
-    - REQUIRED. Human-readable name of the Digital Credential.
+  * - **credential_name_l10n_id**
+    - REQUIRED. Localization key referencing the human-readable name of the Digital Credential in the localization bundle (e.g., ``mDL.name``).
   * - **legal_type**
     - REQUIRED. Legal classification of the Credential (e.g., ``pub-eaa``, ``qeaa``, ``eaa``).
   * - **restriction_policy**
@@ -1077,11 +1111,11 @@ Each element of the ``credentials`` array contains at least the following inform
 
       * **user_auth_required**: REQUIRED. Flag indicating if User authentication is required during the issuance of the Digital Credential.
       * **min_loa**: REQUIRED. Minimum Level of Assurance required for Digital Credential authentication. It MUST include the Level of Assurance of the User authentication and the Wallet Instance requesting the Digital Credential.
-      * **supported_eid_schemes**: REQUIRED if ``user_auth_required`` is ``true``. Supported digital identity authentication schemes.
+      * **supported_schemes**: REQUIRED if ``user_auth_required`` is ``true``. Supported digital identity authentication schemes (e.g., ``["it-wallet"]``).
   * - **domains**
     - REQUIRED. Array of domains to which Digital Credential belongs, such as:
 
-      * **id**: Unique identifier for the purpose (e.g., "IDENTITY", "MOBILITY_TRAVEL").
+      * **id**: Unique identifier for the domain (e.g., ``"IDENTITY"``, ``"MOBILITY_TRAVEL"``).
   * - **classes**
     - REQUIRED. Array of classes to which Digital Credential belongs, such as:
 
@@ -1089,7 +1123,7 @@ Each element of the ``credentials`` array contains at least the following inform
   * - **purposes**
     - REQUIRED. Array of usage purposes for which the Digital Credential can be used, defining specific usage contexts and required claims for each purpose, such as:
 
-      * **id**: Unique identifier for the purpose (e.g., "IDENTITY_VERIFICATION", "AGE_VERIFICATION", "DRIVING_RIGHTS").
+      * **id**: Unique identifier for the purpose, referencing a purpose defined in the Taxonomy (e.g., ``"IDENTITY_VERIFICATION"``, ``"AGE_VERIFICATION"``, ``"DRIVING_RIGHTS_VERIFICATION"``).
   * - **issuers**
     - REQUIRED. Array of relevant information about authorized Credential Issuers, including administrative and technical data such as Organization name, a reference to the API specification document and supported issuance mechanisms (for example the deferred flow support).
   * - **authentic_sources**
@@ -1282,7 +1316,7 @@ The Schema Registry is accessible via the ``.well-known/it-wallet-registry`` dis
      - **Description**
    * - **version**
      - REQUIRED. The version of the Schema Registry (e.g., ``1.0.0``).
-   * - **last_modified**
+   * - **last_updated**
      - REQUIRED. The timestamp indicating when the list was last updated (e.g., ``2025-03-15T12:00:00Z``).
    * - **schemas**
      - REQUIRED. A JSON Array where each entry is a JSON Object representing a Credential Schema definition. Each object contains the parameters defined in the "Schema Definition Parameters" table below, including schema identification, format specifications, URIs, and integrity verification data.
@@ -1397,5 +1431,5 @@ This journey describes how a **Wallet Instance** and a **Relying Party (RP)** in
   * The RP performs the final check to ensure that the attributes presented comply with the specific requirements of the initial request and authorization policy.
 
 4.  **Acceptance or Rejection**: Based on cryptographic validation, schema compliance, and policy-based authorization, the RP accepts or rejects the Credential for service access.
-
+  
 
