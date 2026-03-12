@@ -64,7 +64,8 @@ JWT payload structure (when decoded):
 .. code-block:: json
 
   {
-    "registry_version": "1.0",
+    "id": "urn:discovery:it-wallet",
+    "version": "1.0.0",
     "last_updated": "2024-03-15T10:30:00Z",
     "endpoints": {
       "claims_registry": "https://trust-anchor.eid-wallet.example.it/api/v1/claims",
@@ -127,12 +128,81 @@ The Claims Registry MUST support the complete ecosystem lifecycle:
 Claims Registry Structure
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Claims Registry maintains language-neutral, technical definitions for semantic consistency across the ecosystem. User-facing localisations for claim names and descriptions are provided through the Digital Credentials Catalog localization bundles, enabling efficient multilingual support without compromising the registry's structural integrity. 
+The Claims Registry maintains language-neutral, technical definitions for semantic consistency across the ecosystem. User-facing localizations for claim names and descriptions are provided via dedicated localization bundles referenced through the ``localization.base_uri`` field, enabling efficient multilingual support without compromising the registry's structural integrity.
+
+.. list-table:: First-level Fields of the Claims Registry
+   :class: longtable
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Field Name**
+     - **Description**
+   * - **id**
+     - REQUIRED. Unique identifier of the Claims Registry (e.g., ``urn:claims:it-wallet``).
+   * - **version**
+     - REQUIRED. The version of the Claims Registry (e.g., ``1.0.0``).
+   * - **last_modified**
+     - REQUIRED. The timestamp indicating when the registry was last updated (e.g., ``2026-03-06T00:00:00Z``).
+   * - **localization**
+     - REQUIRED. Localization configuration object containing:
+
+       * **default_locale**: Default locale code (e.g., ``it``).
+       * **available_locales**: Array of supported locale codes (e.g., ``["en", "it"]``).
+       * **base_uri**: Base URI for localization bundle retrieval (e.g., ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/claims/``).
+       * **version**: Version of the localization bundle format.
+   * - **claims**
+     - REQUIRED. A JSON Object where each key is a claim name and each value is a JSON Object describing that claim. Each claim object contains the parameters defined in the "Claim Entry Parameters" table below.
+
+
+.. list-table:: Claim Entry Parameters
+   :class: longtable
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Field Name**
+     - **Description**
+   * - **description_l10n_id**
+     - REQUIRED. Localization key referencing the human-readable description of the claim in the localization bundle (e.g., ``claim.given_name.description``).
+   * - **type**
+     - REQUIRED. Data type of the claim. Supported values: ``string``, ``boolean``, ``array``, ``object``.
+   * - **format**
+     - OPTIONAL. Semantic format qualifier for string types (e.g., ``date`` for ISO 8601 dates, ``uri``, ``data`` for Base64-encoded binary).
+   * - **encoding**
+     - OPTIONAL. Encoding applied to the value (e.g., ``base64``). Present when ``format`` is ``data``.
+   * - **aliases**
+     - OPTIONAL. Array of alternative claim names used in other standards that map to this canonical claim (e.g., ``["birthdate"]`` for ``birth_date``, ``["date_of_expiry"]`` for ``expiry_date``).
+   * - **nested_claims**
+     - OPTIONAL. Array of claim names that form the properties of an ``object`` type claim (e.g., ``["country", "locality", "region"]`` for ``place_of_birth``).
+   * - **nested_item_claims**
+     - OPTIONAL. Array of claim names representing the properties of each item in an ``array`` type claim (e.g., ``["vehicle_category_code", "issue_date", "expiry_date", "codes"]`` for ``driving_privileges``).
+   * - **items**
+     - OPTIONAL. JSON object describing the schema of each element in a simple ``array`` type claim (e.g., ``{"type": "string"}`` for ``nationalities``).
 
 A non-normative example of Claims Registry structure is given below:
 
 .. literalinclude:: ../../examples/claims-registry-example.json
   :language: JSON
+
+.. note::
+  For a better and more efficient management of the localization of the information contained in the Claims Registry, an Entity consulting it SHOULD:
+
+  - Download the basic version of the Claims Registry (compact, without localizations) using the ``.well-known/claims`` endpoint.
+  - Determine the User's preferred language.
+  - Download only the necessary localization bundles.
+  - Dynamically merge localised content with the Claims Registry structure.
+
+A non-normative example of a localization bundle output is given below:
+
+.. code-block:: json
+
+  {
+    "claim.given_name.description": "Person's given name(s) as they appear on official documents.",
+    "claim.birth_date.description": "Date of birth, in ISO 8601 format (YYYY-MM-DD). Also known as birthdate.",
+    "claim.driving_privileges.description": "Array of authorized vehicle categories with details.",
+    "...": "..."
+  }
+
+Localization bundles MUST be available at the URI composed by appending the locale code and ``.json`` to the ``localization.base_uri`` value (e.g., ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/claims/it.json``).
 
 Authentic Source Registry
 -------------------------
@@ -239,10 +309,19 @@ The Authentic Source Registry MUST contain the following parameters for each reg
 
    * - **Field Name**
      - **Description**
+   * - **id**
+     - REQUIRED. Unique identifier of the Authentic Source Registry (e.g., ``urn:authentic-sources:it-wallet``).
    * - **version**
-     - REQUIRED. The version of the Authentic Source Registry (e.g., ``1.0``).
+     - REQUIRED. The version of the Authentic Source Registry (e.g., ``1.0.0``).
    * - **last_modified**
      - REQUIRED. The timestamp indicating when the list was last updated (e.g., ``2025-03-15T12:00:00Z``).
+   * - **localization**
+     - REQUIRED. Localization configuration object containing:
+
+       * **default_locale**: Default locale code (e.g., ``it``).
+       * **available_locales**: Array of supported locale codes (e.g., ``["en", "it"]``).
+       * **base_uri**: Base URI for localization bundle retrieval (e.g., ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/authentic-sources/``).
+       * **version**: Version of the localization bundle format.
    * - **authentic_sources**
      - REQUIRED. A JSON Array where each entry is a JSON Object representing an Authentic Source entity. Each object contains the parameters defined in the "Authentic Sources Parameters" table below, including entity identification, organizational information, data capabilities, and integration methods.
 
@@ -264,6 +343,9 @@ The Authentic Source Registry MUST contain the following parameters for each reg
    * - **organization_info.organization_name**
      - string
      - REQUIRED. Legal name of the organization.
+   * - **organization_info.organization_name_l10n_id**
+     - string
+     - REQUIRED. Localization key referencing the localized organization name in the localization bundle (e.g., ``authentic_source1.name``).
    * - **organization_info.organization_type**
      - string
      - REQUIRED. Entity classification: ``"public"`` or ``"private"``.
@@ -294,24 +376,24 @@ The Authentic Source Registry MUST contain the following parameters for each reg
    * - **organization_info.logo_uri#integrity**
      - string
      - CONDITIONAL. Cryptographic digest of the logo image resource for integrity verification. REQUIRED if ``logo_uri`` is present. Format: ``{digest_method}-{digest_value}`` (e.g., ``"sha-256-abc123..."``).
-   * - **organization_info.logo_uri_extended**
+   * - **organization_info.logo_extended_uri**
      - string
      - OPTIONAL. URL to the organization's extended logo image.
-   * - **organization_info.logo_uri_extended#integrity**
+   * - **organization_info.logo_extended_uri#integrity**
      - string
-     - CONDITIONAL. Cryptographic digest of the extended logo image resource for integrity verification. REQUIRED if ``logo_uri_extended`` is present. Format: ``{digest_method}-{digest_value}`` (e.g., ``"sha-256-abc123..."``).
+     - CONDITIONAL. Cryptographic digest of the extended logo image resource for integrity verification. REQUIRED if ``logo_extended_uri`` is present. Format: ``{digest_method}-{digest_value}`` (e.g., ``"sha-256-abc123..."``).
    * - **data_capabilities**
      - JSON Objects Array
      - REQUIRED. Array containing data capability specifications.
    * - **data_capabilities[].dataset_id**
      - string
      - REQUIRED. The unique identifier of the dataset within the scope of the Authentic Source, which MAY be used as a query parameter for the ``GetAttributeClaims`` service.
-   * - **data_capabilities[].data_origin**
+   * - **data_capabilities[].data_origin_l10n_id**
      - string
-     - OPTIONAL. Human-readable name of the specific data origin or department providing the data.
+     - OPTIONAL. Localization key referencing the human-readable name of the data origin or department providing the data (e.g., ``authentic_source1.dataset1.origin``).
    * - **data_capabilities[].intended_purposes**
      - String Array
-     - REQUIRED. Business purposes served (e.g., ``["driving-authorization", "identity-verification"]``).
+     - REQUIRED. Business purposes served, using taxonomy purpose identifiers (e.g., ``["IDENTITY_VERIFICATION", "DRIVING_RIGHTS_VERIFICATION"]``).
    * - **data_capabilities[].available_claims**
      - String Array
      - REQUIRED. Claims available from this data capability.
@@ -348,9 +430,9 @@ The Authentic Source Registry MUST contain the following parameters for each reg
    * - **data_capabilities[].data_provision.notification_methods**
      - String Array
      - CONDITIONAL. Array of notification methods supported by the Authentic Source for deferred data provision, such as ``"push"``, ``"poll"``. REQUIRED if ``deferred_flow`` is ``true``.
-   * - **data_capabilities[].user_information**
+   * - **data_capabilities[].user_information_l10n_id**
      - string
-     - OPTIONAL. A string containing human-readable information about the Digital Credential relevant to the User. This string MUST be provided by the Authentic Source to the Trust Anchor during onboarding and MUST be formatted using Markdown format as defined in :rfc:`7763`. The Markdown formatting can be plain text or a combination of text and links. For example, if the Authentic Source's database only contains the data required for Digital Credential attributes registered *after* a specific date, this information MUST be conveyed to the Trust Anchor in this Markdown string.
+     - OPTIONAL. Localization key referencing a Markdown-formatted string with human-readable information about the data capability relevant to the User (e.g., ``authentic_source1.dataset1.userinfo``). This string MUST be provided by the Authentic Source to the Trust Anchor during onboarding. The Markdown formatting can be plain text or a combination of text and links. For example, if the Authentic Source's database only contains data registered *after* a specific date, this information MUST be conveyed through this key.
    * - **data_capabilities[].service_documentation**
      - string
      - OPTIONAL. URL pointing to the Authentic Source service documentation.
@@ -385,14 +467,14 @@ A non-normative example of AS Registry structure is given below:
   :language: JSON
 
 .. note::
-  For a better and more efficient management of the localisation of the information contained in the Digital Credentials Catalog, an Entity consulting it SHOULD:
+  For a better and more efficient management of the localization of the information contained in the Authentic Source Registry, an Entity consulting it SHOULD:
 
-    - Download the basic version of the Digital Credentials Catalog (compact, without localisations) using the ``.well-known/authentic-sources`` endpoint.
-    - Determine the User's preferred language.
-    - Download only the necessary localisation bundles.
-    - Dynamically merge localised content with the Digital Credentials Catalog structure.
+  - Download the basic version of the Authentic Source Registry (compact, without localizations) using the ``.well-known/authentic-sources`` endpoint.
+  - Determine the User's preferred language.
+  - Download only the necessary localization bundles.
+  - Dynamically merge localised content with the Authentic Source Registry structure.
 
-A non-normative example of a localisation bundle output is given below:
+A non-normative example of a localization bundle output is given below:
 
 .. code-block:: json
 
@@ -400,17 +482,15 @@ A non-normative example of a localisation bundle output is given below:
     "authentic_source1.name": "Ministero delle infrastrutture e dei trasporti",
     "authentic_source1.dataset1.origin": "MIT -- Direzione Generale per la Motorizzazione",
     "authentic_source1.dataset1.userinfo": "###### Patente di Guida\nSono disponibili le patenti rilasciate dopo il 1° gennaio 2020. Per le patenti più vecchie, contattare l'ufficio motorizzazione locale.",
-    "authentic_source2.name": "Example Bank S.p.A.",
+    "authentic_source2.name": "Banca Esempio SpA",
     "authentic_source2.dataset1.origin": "Esempio origine dei dati 1",
     "authentic_source2.dataset1.userinfo": "###### Informazioni sulla disponibilità dei dati\nL'accesso ai dati finanziari richiede il consenso del cliente ed è soggetto alla normativa PSD2. Le informazioni sui conti sono disponibili solo per i conti attivi.",
     "...": "..."
   }
 
-Localization bundles MUST be available at the URI specified in the **localization_info.bundles_base_uri** claim of the Digital Credentials Catalog. Each locale bundle MUST be accessible following the naming pattern **{locale_code}.json**, where **{locale_code}** is replaced with the corresponding locale code from the **available_locales** array.
+Localization bundles MUST be available at the URI composed by appending the locale code and ``.json`` to the ``localization.base_uri`` value defined in the registry. Each locale bundle MUST be accessible following the naming pattern **{locale_code}.json**, where **{locale_code}** is replaced with the corresponding locale code from the **available_locales** array.
 
-A non-normative example of the Italian localization URI for the bundle would be **https://trust-registry.eid-wallet.example.it/.well-known/authentic-sources/it.json**. 
-
-Entities SHOULD verify the integrity of downloaded localization bundles using the digest method and values specified in the **localization_info.integrity** claim. This ensures that the localization data has not been tampered with during transmission.
+A non-normative example of the Italian localization URI for the bundle would be **https://trust-registry.eid-wallet.example.it/.well-known/l10n/authentic-sources/it.json**.
 
 AS-CI Coordination
 ^^^^^^^^^^^^^^^^^^
@@ -701,7 +781,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes **M
      - 
        * Licenses and Authorizations
        * Vehicle Documents
-       * Subscriptions
+       * Transport Subscriptions
        * Travel Documents
        * Travel Insurance
        * Bookings
@@ -737,6 +817,14 @@ Additional Domains, Classes, specific Credentials, and verification Purposes **M
        * Healthcare Bonus Credential
        * Mental Health Support Voucher
        * Sports and Physical Activity Bonus
+
+   * - *AUTHENTICATION*
+     - Credentials that attest authorisation to access restricted physical or digital spaces, services or resources.
+     - 
+       * Access
+     - 
+       * Physical Access Badge
+       * Digital Access Credential
 
 .. list-table:: Table 2: Mapping between Credential Classes and Purposes
    :class: longtable
@@ -838,7 +926,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes **M
        * Vehicle registration verification
        * Vehicle inspection verification
        * Insurance status check
-   * - Subscriptions
+   * - Transport Subscriptions
      - 
        * Access to transport services
        * Public transport pass verification
@@ -851,6 +939,10 @@ Additional Domains, Classes, specific Credentials, and verification Purposes **M
        * Verification of travel insurance coverage
        * Accommodation reservation check
        * Transport reservation check
+   * - Discounts and Benefits
+     - 
+       * Application of member discounts
+       * Access to tourist benefits
    * - Economic Benefits and Allowances
      - 
        * Eligibility verification for family benefits
@@ -866,6 +958,9 @@ Additional Domains, Classes, specific Credentials, and verification Purposes **M
        * Access to healthcare bonuses
        * Use of mental health vouchers
        * Use of sports vouchers
+   * - Access
+     - 
+       * Access permit verification
 
 Each Credential MUST specify domains, classes and purposes to enable both **Credential-Specific Scenarios** and **Credential-Agnostic Scenarios** according to Relying Party's requirements and presentation request patterns, as defined in the mapping tables above.
 
@@ -1015,14 +1110,14 @@ The corresponding example of Digital Credentials Catalog as decoded in JSON for 
   :language: JSON
 
 .. note::
-  For a better and more efficient management of the localisation of the information contained in the Digital Credentials Catalog, an Entity consulting it SHOULD:
+  For a better and more efficient management of the localization of the information contained in the Digital Credentials Catalog, an Entity consulting it SHOULD:
 
-  - Download the basic version of the Digital Credentials Catalog (compact, without localisations) using the ``.well-known/credential-catalog`` endpoint.
+  - Download the basic version of the Digital Credentials Catalog (compact, without localizations) using the ``.well-known/credential-catalog`` endpoint.
   - Determine the User's preferred language.
-  - Download only the necessary localisation bundles.
+  - Download only the necessary localization bundles.
   - Dynamically merge localised content with the Digital Credentials Catalog structure.
 
-A non-normative example of a localisation bundle output is given below:
+A non-normative example of a localization bundle output is given below:
 
 .. code-block:: json
 
@@ -1032,11 +1127,9 @@ A non-normative example of a localisation bundle output is given below:
     "...": "..."
   }
 
-Localization bundles MUST be available at the URI specified in the **localization_info.bundles_base_uri** claim of the Digital Credentials Catalog. Each locale bundle MUST be accessible following the naming pattern **{locale_code}.json**, where **{locale_code}** is replaced with the corresponding locale code from the **available_locales** array.
+Localization bundles MUST be available at the URI composed by appending the locale code and ``.json`` to the ``localization.base_uri`` value defined in the catalog. Each locale bundle MUST be accessible following the naming pattern **{locale_code}.json**, where **{locale_code}** is replaced with the corresponding locale code from the **available_locales** array.
 
-A non-normative example of the Italian localization URI for the bundle would be **https://trust-registry.eid-wallet.example.it/.well-known/credential-catalog/it.json**. 
-
-Entities SHOULD verify the integrity of downloaded localization bundles using the digest method and values specified in the **localization_info.integrity** claim. This ensures that the localization data has not been tampered with during transmission.
+A non-normative example of the Italian localization URI for the bundle would be **https://trust-registry.eid-wallet.example.it/.well-known/l10n/credential-catalog/it.json**.
 
 Decentralization of Display and Claim Information
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1068,10 +1161,13 @@ The Taxonomy provides, in a single resource, the hierarchical classification sys
 
 The taxonomy maintains a four level hierarchical structure:
 
-- **Domains**: Top-level classification representing broad functional areas (e.g., IDENTITY, HEALTH, FINANCIAL)
-- **Class (Credential Family)**: Family of Credentials sharing similar function, structure, or legal meaning (e.g., Identification Documents, Civil Status Certificates, Professional Licenses)
+- **Domains**: Top-level classification representing broad functional areas (e.g., IDENTITY, HEALTH, FINANCIAL, AUTHENTICATION)
+- **Class (Credential Family)**: Family of Credentials sharing similar function, structure, or legal meaning (e.g., Identification Documents, Civil Status Certificates, Professional Licenses, Access)
 - **Credential Type**: Specific Credential definition issued by an authority (e.g., Digital Travel Credential, Birth Certificate, Mobile Driving License).
-- **Purpose (Verification Intent)**: Verification objectives that a Credential can satisfy (e.g., Identity Verification, Age Verification, Eligibility for specific services).
+- **Purpose (Verification Intent)**: Verification objectives that a Credential can satisfy (e.g., Identity Verification, Age Verification, Eligibility for specific services, Access permit verification).
+
+.. note::
+  Credential Type is a concept defined at the Digital Credentials Catalog level, not within the Taxonomy. The Taxonomy provides the classification vocabulary (Domains, Classes, Purposes) that Credential Types in the Catalog reference.
 
 **Localization Support:**
 
@@ -1086,36 +1182,79 @@ The taxonomy supports multilingual environments through the ``_l10n_id`` suffix 
 
 The Taxonomy is accessible through the dedicated taxonomy endpoint as defined in the registry discovery mechanism and is maintained by the Supervisory Body to ensure regulatory compliance and semantic consistency.
 
+**Taxonomy JSON Structure:**
+
+.. list-table:: First-level Fields of the Taxonomy
+   :class: longtable
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Field Name**
+     - **Description**
+   * - **id**
+     - REQUIRED. Unique identifier of the Taxonomy (e.g., ``urn:taxonomy:it-wallet``).
+   * - **version**
+     - REQUIRED. The version of the Taxonomy (e.g., ``1.0.0``).
+   * - **last_modified**
+     - REQUIRED. The timestamp indicating when the Taxonomy was last updated (e.g., ``2026-03-11T00:00:00Z``).
+   * - **name_l10n_id**
+     - REQUIRED. Localization key referencing the human-readable name of the Taxonomy (e.g., ``taxonomy.name``).
+   * - **description_l10n_id**
+     - REQUIRED. Localization key referencing the human-readable description of the Taxonomy (e.g., ``taxonomy.description``).
+   * - **localization**
+     - REQUIRED. Localization configuration object containing:
+
+       * **default_locale**: Default locale code (e.g., ``it``).
+       * **available_locales**: Array of supported locale codes (e.g., ``["en", "it"]``).
+       * **base_uri**: Base URI for localization bundle retrieval (e.g., ``https://ta.wallet.ipzs.it/.well-known/l10n/taxonomy/``).
+       * **version**: Version of the localization bundle format.
+   * - **domains**
+     - REQUIRED. Array of Domain objects, each containing:
+
+       * **id**: Unique Domain identifier in SCREAMING_SNAKE_CASE (e.g., ``IDENTITY``, ``AUTHENTICATION``).
+       * **name_l10n_id**: Localization key for the domain name (e.g., ``domain.identity.name``).
+       * **description_l10n_id**: Localization key for the domain description (e.g., ``domain.identity.description``).
+       * **classes**: Array of Class objects. Each class contains ``id``, ``name_l10n_id``, and ``supported_purposes`` (array of purpose ID strings).
+   * - **purposes**
+     - REQUIRED. Flat array of all Purpose objects defined across the taxonomy, each containing:
+
+       * **id**: Unique Purpose identifier in SCREAMING_SNAKE_CASE (e.g., ``IDENTITY_VERIFICATION``, ``ACCESS_PERMIT``).
+       * **name_l10n_id**: Localization key for the purpose name (e.g., ``purpose.identity_verification.name``).
+
 A non-normative example of Taxonomy structure is given below:
 
 .. literalinclude:: ../../examples/taxonomy-example.json
   :language: JSON
 
 .. note::
-  For a better and more efficient management of the localisation of the information contained in the Digital Credentials Catalog, an Entity consulting it SHOULD:
+  For a better and more efficient management of the localization of the Taxonomy, an Entity consulting it SHOULD:
 
-    - Download the basic version of the Digital Credentials Catalog (compact, without localisations) using the ``.well-known/taxonomy`` endpoint.
-    - Determine the User's preferred language.
-    - Download only the necessary localisation bundles.
-    - Dynamically merge localised content with the Digital Credentials Catalog structure.
+  - Download the basic version of the Taxonomy (compact, without localizations) using the ``.well-known/taxonomy`` endpoint.
+  - Determine the User's preferred language.
+  - Download only the necessary localization bundles.
+  - Dynamically merge localised content with the Taxonomy structure.
 
-A non-normative example of a localisation bundle output is given below:
+A non-normative example of a localization bundle output is given below:
 
 .. code-block:: json
 
   {
-    "domain.identity.name": "IDENTITY",
-    "domain.identity.description": "Credentials that establish or confirm a person's legal identity and personal status",
-    "class.id_docs.name": "Identification Documents",
-    "purpose.id_ver.name": "Identity verification",
+    "taxonomy.name": "IT-Wallet Taxonomy",
+    "taxonomy.description": "Hierarchical classification system for Digital Credentials in the IT-Wallet ecosystem",
+    "domain.identity.name": "Identity",
+    "domain.identity.description": "Credentials that establish or confirm a person's legal identity and personal, civil or legal status.",
+    "class.identification_documents.name": "Identification Documents",
+    "purpose.identity_verification.name": "Identity verification",
+    "domain.authentication.name": "Authentication",
+    "domain.authentication.description": "Credentials that attest authorisation to access restricted physical or digital spaces, services or resources.",
+    "class.access.name": "Access",
+    "purpose.access_permit.name": "Access permit verification",
     "...": "..."
   }
 
-Localization bundles MUST be available at the URI specified in the **localization_info.bundles_base_uri** claim of the Digital Credentials Catalog. Each locale bundle MUST be accessible following the naming pattern **{locale_code}.json**, where **{locale_code}** is replaced with the corresponding locale code from the **available_locales** array.
+Localization bundles MUST be available at the URI composed by appending the locale code and ``.json`` to the ``localization.base_uri`` value defined in the taxonomy. Each locale bundle MUST be accessible following the naming pattern **{locale_code}.json**, where **{locale_code}** is replaced with the corresponding locale code from the **available_locales** array.
 
-A non-normative example of the Italian localization URI for the bundle would be **https://trust-registry.eid-wallet.example.it/.well-known/taxonomy/it.json**. 
-
-Entities SHOULD verify the integrity of downloaded localization bundles using the digest method and values specified in the **localization_info.integrity** claim. This ensures that the localization data has not been tampered with during transmission.
+A non-normative example of the Italian localization URI for the bundle would be **https://ta.wallet.ipzs.it/.well-known/l10n/taxonomy/it.json**.
 
 Schema Registry
 -----------------
@@ -1142,7 +1281,7 @@ The Schema Registry is accessible via the ``.well-known/it-wallet-registry`` dis
    * - **Field Name**
      - **Description**
    * - **version**
-     - REQUIRED. The version of the Schema Registry (e.g., ``1.0``).
+     - REQUIRED. The version of the Schema Registry (e.g., ``1.0.0``).
    * - **last_modified**
      - REQUIRED. The timestamp indicating when the list was last updated (e.g., ``2025-03-15T12:00:00Z``).
    * - **schemas**
@@ -1158,7 +1297,7 @@ The Schema Registry is accessible via the ``.well-known/it-wallet-registry`` dis
    * - **id**
      - REQUIRED. The unique identifier of the scheme (e.g., ``mDL+mso_mdoc+org.iso.18013.5.1.mDL``).
    * - **version**
-     - REQUIRED. The version of the schema definition (e.g., ``1.0``).
+     - REQUIRED. The version of the schema definition (e.g., ``1.0.0``).
    * - **credential_type**
      - REQUIRED. The unique identifier of the Digital Credential type (e.g., ``mDL``, ``pid``).
    * - **format**
@@ -1209,7 +1348,7 @@ This *Catalog Browsing* journey supports Users (both human users via a **Wallet 
 
 2.  **Navigation and Selection**:
 
-  * **Credential Discovery**: The entity browses the list of Credentials (``credentials`` field) to identify relevant Credential types (e.g., ``pid``, ``mDL``) and, if needed, uses the information on the **Taxonomy** to navigate their hierarchy and to provide different localisations.
+  * **Credential Discovery**: The entity browses the list of Credentials (``credentials`` field) to identify relevant Credential types (e.g., ``pid``, ``mDL``) and, if needed, uses the information on the **Taxonomy** to navigate their hierarchy and to provide different localizations.
   * **Issuer Metadata**: The entity extracts the **Issuer Identifier** (`entity_id` within the `issuers` field) associated with the desired Credential.
   * **Detail Consultation**: To obtain complete information oand specific technical requirements, the entity accesses the **Entity Configuration** (Issuer Metadata) using the retrieved identifier.
 
