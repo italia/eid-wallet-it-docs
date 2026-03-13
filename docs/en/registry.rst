@@ -72,7 +72,7 @@ The JWT payload of the Registry Discovery response MUST contain the following pa
    * - **Field Name**
      - **Description**
    * - **id**
-     - REQUIRED. Unique identifier of the discovery document (e.g., ``urn:discovery:it-wallet``).
+     - REQUIRED. Unique identifier of the discovery document (e.g., ``urn:it-wallet-registry:it-wallet``).
    * - **version**
      - REQUIRED. Version of the discovery document format (e.g., ``1.0.0``).
    * - **last_updated**
@@ -1057,6 +1057,8 @@ The JWS payload contains the following parameters:
 
    * - **Field Name**
      - **Description**
+   * - **id**
+     - REQUIRED. Unique identifier of the Digital Credentials Catalog (e.g., ``urn:credential-catalog:it-wallet``).
    * - **version**
      - REQUIRED. Version of the Digital Credential Catalog format.
    * - **last_modified**
@@ -1106,8 +1108,8 @@ Each element of the ``credentials`` array contains at least the following inform
 
       * **max_validity_days**: Maximum validity period in days.
       * **status_methods**: Supported status verification methods (e.g. ``status_list``).
-      * **allowed_states**: Allowed Digital Credential states including display information (e.g. ``VALID``, ``INVALID``, ``SUSPENDED``).
-      * **administrative_expiration_user_info**: Display information about administrative expiration of the Credential.
+      * **allowed_states**: Array of objects representing allowed Digital Credential states. Each object contains a hex status code (e.g., ``0x00`` for ``VALID``, ``0x01`` for ``INVALID``, ``0x02`` for ``SUSPENDED``, ``0x03`` for ``UPDATE``, ``0x0F`` for ``ATTRIBUTE_UPDATE``), a ``title_l10n_id`` localization key, and a ``description_l10n_id`` localization key for UI display.
+      * **administrative_expiration_user_info**: OPTIONAL. Object containing ``title_l10n_id`` and ``description_l10n_id`` keys for displaying administrative expiration information to the User.
   * - **authentication**
     - REQUIRED. Digital Credential authentication requirements.
 
@@ -1433,5 +1435,5 @@ This journey describes how a **Wallet Instance** and a **Relying Party (RP)** in
   * The RP performs the final check to ensure that the attributes presented comply with the specific requirements of the initial request and authorization policy.
 
 4.  **Acceptance or Rejection**: Based on cryptographic validation, schema compliance, and policy-based authorization, the RP accepts or rejects the Credential for service access.
-  
+
 

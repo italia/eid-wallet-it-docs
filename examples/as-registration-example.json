@@ -120,6 +120,6 @@
     "organization_name_l10n_id": "nta_001.name",
     "organization_type": "public",
     "policy_uri": "https://www.gov.example/transport/privacy-policy",
-    "tos_uri": "placeholder"
+    "tos_uri": "https://www.gov.example/transport/tos"
   }
 }

@@ -136,7 +136,7 @@ During registration, Authentic Sources MUST provide the following information:
      - **REQUIRED**. Available claims:
 
        - Array of claim identifiers from Claims Registry that the Authentic Source provides (e.g., ``["given_name", "family_name", "driving_privileges"]``).
-       - Intended Purposes for verification (e.g. ``["DRIVING_RIGHTS"]``).
+       - Intended Purposes for verification, using taxonomy purpose identifiers (e.g. ``["DRIVING_RIGHTS_VERIFICATION"]``).
       
    * - **API Implementation Details**
      - **REQUIRED**. Integration information details:
@@ -172,7 +172,7 @@ The Authentic Source registration follows a technical process as described below
 
 .. literalinclude:: ../../examples/as-registration-example.json
    :language: json
-   :caption: Authentic Source Registration example
+   :caption: Non-normative Authentic Source Registration example
 
 **Step 2 - Technical Validation**: Supervisory Body validates submitted registration focusing on:
 
@@ -552,7 +552,7 @@ The following non-normative examples illustrate different Trust Mark JWT content
      "authorized_credential_types": ["mobile-driving-license"],
      "scope_restrictions": {
        "domains": ["MOBILITY_TRAVEL"],
-       "purposes": ["DRIVING_RIGHTS"]
+       "purposes": ["DRIVING_RIGHTS_VERIFICATION"]
      }
    }
 
@@ -572,8 +572,8 @@ The following non-normative examples illustrate different Trust Mark JWT content
      "authorized_claims": ["given_name", "family_name", "company_id"],
      "authorized_credential_types": ["example-company-badge"],
      "scope_restrictions": {
-       "domains": ["MEMBERSHIP"],
-       "purposes": ["ASSOCIATION"]
+       "domains": ["AUTHENTICATION"],
+       "purposes": ["ACCESS_PERMIT"]
      }
    }
 
