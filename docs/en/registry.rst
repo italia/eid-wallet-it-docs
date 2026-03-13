@@ -374,9 +374,6 @@ The Authentic Source Registry MUST contain the following parameters for each reg
    * - **organization_info**
      - JSON object
      - REQUIRED. Legal entity details and organizational metadata.
-   * - **organization_info.organization_name**
-     - string
-     - REQUIRED. Legal name of the organization.
    * - **organization_info.organization_name_l10n_id**
      - string
      - REQUIRED. Localization key referencing the localized organization name in the localization bundle (e.g., ``authentic_source1.name``).
