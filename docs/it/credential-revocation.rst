@@ -314,10 +314,10 @@ Per la verifica dello stato di validità di un Attestato Elettronico a lunga dur
     - **Riferimento**
   * - Remoto
     -
-      - [RICHIESTO] Token Status List.
+      - [OBBLIGATORIO] Token Status List.
     - `TOKEN-STATUS-LIST`_.
   * - Prossimità
-    - [RICHIESTO] Token Status List.
+    - [OBBLIGATORIO] Token Status List.
     - `TOKEN-STATUS-LIST`_.
 
 Token Status Lists
@@ -375,16 +375,16 @@ Il Token di Status List è disponibile all'Endpoint di Status List e contiene i 
     - **Descrizione**
     - **Riferimento**
   * - **alg**
-    - RICHIESTO. Un identificatore di algoritmo di firma digitale come per il registro IANA "JSON Web Signature and Encryption Algorithms". DEVE essere uno degli algoritmi supportati nella Sezione :ref:`algorithms:Algoritmi Crittografici` e NON DEVE essere impostato su ``none`` o su un identificatore di algoritmo simmetrico (MAC).
+    - OBBLIGATORIO. Un identificatore di algoritmo di firma digitale come per il registro IANA "JSON Web Signature and Encryption Algorithms". DEVE essere uno degli algoritmi supportati nella Sezione :ref:`algorithms:Algoritmi Crittografici` e NON DEVE essere impostato su ``none`` o su un identificatore di algoritmo simmetrico (MAC).
     - [:rfc:`7515`], [:rfc:`7517`].
   * - **typ**
-    - RICHIESTO. DEVE corrispondere al valore ``statuslist+jwt``.
+    - OBBLIGATORIO. DEVE corrispondere al valore ``statuslist+jwt``.
     - `TOKEN-STATUS-LIST`_
   * - **kid**
-    - RICHIESTO. Identificatore univoco della chiave pubblica del Fornitore di Attestati Elettronici che firma il Token di Status.
+    - OBBLIGATORIO. Identificatore univoco della chiave pubblica del Fornitore di Attestati Elettronici che firma il Token di Status.
     - :rfc:`7638#section_3`.
   * - **x5c**
-    - RICHIESTO. Certificato di chiave pubblica X.509 o catena di certificati corrispondente alla chiave utilizzata per firmare il Token di Status List.
+    - OBBLIGATORIO. Certificato di chiave pubblica X.509 o catena di certificati corrispondente alla chiave utilizzata per firmare il Token di Status List.
     - :rfc:`5280`
 
 .. list-table::
@@ -396,10 +396,10 @@ Il Token di Status List è disponibile all'Endpoint di Status List e contiene i 
     - **Descrizione**
     - **Riferimento**
   * - **sub**
-    - RICHIESTO. Il claim del soggetto DEVE specificare l'URI del Token di Status List. Il valore DEVE essere uguale a quello del claim ``uri`` contenuto nel claim ``status_list`` dell'Attestato Elettronico.
+    - OBBLIGATORIO. Il claim del soggetto DEVE specificare l'URI del Token di Status List. Il valore DEVE essere uguale a quello del claim ``uri`` contenuto nel claim ``status_list`` dell'Attestato Elettronico.
     - [:rfc:`7519`]
   * - **iat**
-    - RICHIESTO. Il claim issued at DEVE specificare l'ora in cui è stato emesso il Token di Status List.
+    - OBBLIGATORIO. Il claim issued at DEVE specificare l'ora in cui è stato emesso il Token di Status List.
     - [:rfc:`7519`]
   * - **exp**
     - RACCOMANDATO. Il claim expiration time, se presente, DEVE specificare l'ora in cui il Token di Status List è considerato scaduto dal Fornitore di Attestati Elettronici.
@@ -408,7 +408,7 @@ Il Token di Status List è disponibile all'Endpoint di Status List e contiene i 
     - RACCOMANDATO. Il claim time to live, se presente, DEVE specificare la quantità massima di tempo, in secondi, che il Token di Status List può essere memorizzato nella cache da un consumatore prima che una copia aggiornata DOVREBBE essere recuperata. Il valore del claim DEVE essere un numero positivo codificato in JSON come un numero. Questa quantità di tempo NON DOVREBBE superare il tempo di scadenza definito nel claim **exp**.
     - `TOKEN-STATUS-LIST`_
   * - **status_list**
-    - RICHIESTO. Oggetto JSON che contiene una Status List.
+    - OBBLIGATORIO. Oggetto JSON che contiene una Status List.
     - `TOKEN-STATUS-LIST`_
 
 .. note::
@@ -426,10 +426,10 @@ Una Status List codificata in JSON ha la seguente struttura:
     - **Descrizione**
     - **Riferimento**
   * - **bits**
-    - RICHIESTO. Intero JSON che specifica il numero di bit per Attestato Elettronico nell'array di byte compresso (`lst`). I valori consentiti per bits sono 1,2,4 e 8.
+    - OBBLIGATORIO. Intero JSON che specifica il numero di bit per Attestato Elettronico nell'array di byte compresso (`lst`). I valori consentiti per bits sono 1,2,4 e 8.
     - `TOKEN-STATUS-LIST`_
   * - **lst**
-    - RICHIESTO. Stringa JSON che contiene i valori di stato per tutti gli Attestato Elettronici di cui trasmette gli stati. Il valore DEVE essere l'array di byte compresso codificato in base64url.
+    - OBBLIGATORIO. Stringa JSON che contiene i valori di stato per tutti gli Attestato Elettronici di cui trasmette gli stati. Il valore DEVE essere l'array di byte compresso codificato in base64url.
     - `TOKEN-STATUS-LIST`_
   * - **aggregation_uri**
     - OPZIONALE. Stringa JSON che contiene un URI per recuperare l'Aggregazione di Status List per questo tipo di Attestato Elettronico o Fornitore di Attestati Elettronici.
@@ -484,10 +484,10 @@ Il valore del claim ``status_list`` DEVE essere a sua volta un Oggetto JSON con 
     - **Descrizione**
     - **Riferimento**
   * - **idx**
-    - RICHIESTO. Il claim idx (indice) DEVE specificare un Intero che rappresenta l'indice da controllare per le informazioni sullo stato nella Status List per l'Attestato Elettronico corrente. Il valore di idx DEVE essere un numero non negativo, contenente il valore zero o maggiore.
+    - OBBLIGATORIO. Il claim idx (indice) DEVE specificare un Intero che rappresenta l'indice da controllare per le informazioni sullo stato nella Status List per l'Attestato Elettronico corrente. Il valore di idx DEVE essere un numero non negativo, contenente il valore zero o maggiore.
     - `TOKEN-STATUS-LIST`_
   * - **uri**
-    - RICHIESTO. Il claim uri (URI) DEVE specificare un valore String che identifica il Token di Status List contenente le informazioni sullo stato per l'Attestato Elettronico. Il valore di uri DEVE essere un URI conforme a [:rfc:`3986`].
+    - OBBLIGATORIO. Il claim uri (URI) DEVE specificare un valore String che identifica il Token di Status List contenente le informazioni sullo stato per l'Attestato Elettronico. Il valore di uri DEVE essere un URI conforme a [:rfc:`3986`].
     - `TOKEN-STATUS-LIST`_
 
 
@@ -578,9 +578,9 @@ In caso di errore durante la generazione della risposta da parte dell'Endpoint d
 
   * - **Codice di Stato**
     - **Descrizione**
-  * - *500 Internal Server Error* [RICHIESTO]
+  * - *500 Internal Server Error* [OBBLIGATORIO]
     - Il Provider di Status List ha riscontrato un problema interno.
-  * - *503 Service Unavailable* [RICHIESTO]
+  * - *503 Service Unavailable* [OBBLIGATORIO]
     - Il Provider di Status List è temporaneamente non disponibile.
   * - *504 Gateway Timeout* [OPZIONALE]
     - Il Provider di Status List non può soddisfare la richiesta entro l'intervallo di tempo definito.
