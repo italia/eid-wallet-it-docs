@@ -10,6 +10,14 @@
 .. _Error Handling for Wallet Attestation Issuance: wallet-solution.html#error-handling-for-wallet-attestation-issuance
 .. _Error Handling for Wallet Instance Management: wallet-solution.html#error-handling-for-wallet-instance-management
 .. _ETSI TS 119 461: https://www.etsi.org/deliver/etsi_ts/119400_119499/119461/01.01.01_60/ts_119461v010101p.pdf
+.. _ETSI TS 119 612: https://www.etsi.org/deliver/etsi_ts/119600_119699/119612/02.04.01_60/ts_119612v020401p.pdf
+.. _ETSI TS 119 602: https://www.etsi.org/deliver/etsi_ts/119600_119699/119602/01.01.01_60/ts_119602v010101p.pdf
+.. _ETSI EN 319 411-1: https://www.etsi.org/deliver/etsi_en/319400_319499/31941101/01.03.00_20/en_31941101v010300a.pdf
+.. _ETSI TS 119 411-8: https://www.etsi.org/deliver/etsi_ts/119400_119499/11941108/01.01.01_60/ts_11941108v010101p.pdf
+.. _ETSI TS 119 475: https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.01.01_60/ts_119475v010101p.pdf
+.. _ETSI TS 119 615: https://www.etsi.org/deliver/etsi_ts/119600_119699/119615/01.01.01_60/ts_119615v010101p.pdf
+.. _ETSI EN 319 132-1: https://www.etsi.org/deliver/etsi_en/319100_319199/31913201/01.03.01_60/en_31913201v010301p.pdf
+.. _ETSI TS 119 182-1: https://www.etsi.org/deliver/etsi_ts/119100_119199/11918201/01.02.01_60/ts_11918201v010201p.pdf
 .. _ETSI TS 119 412-6: https://www.etsi.org/deliver/etsi_ts/119400_119499/11941206/01.01.01_60/ts_11941206v010101p.pdf
 .. _EU_2024/2977: https://eur-lex.europa.eu/eli/reg_impl/2024/2977/
 .. _Federation endpoint: wallet-solution.html#federation-endpoint
@@ -29,6 +37,7 @@
 .. _OAuthCrossDeviceSec: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-cross-device-security-08
 .. _OID-FED-WALLET: https://openid.net/specs/openid-federation-wallet-1_0.html
 .. _OID-FED: https://openid.net/specs/openid-federation-1_0-46.html
+.. _OID-FED-SUBORDINATE-EVENTS: https://openid.net/specs/openid-federation-subordinate-events-1_0.html
 .. _OIDC-FED#Federation_Entity: https://openid.net/specs/openid-federation-1_0.html#Section-4.6
 .. _OIDC-FED#RP_metadata: https://openid.net/specs/openid-federation-1_0.html#Section-4.1
 .. _OIDC-FED#Section_1.2: https://openid.net/specs/openid-federation-1_0.html#Section-1.2
