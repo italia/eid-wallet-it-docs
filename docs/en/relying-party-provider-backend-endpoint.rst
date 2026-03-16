@@ -36,7 +36,7 @@ The Relying Party Key Binding Endpoint enables Verifier Apps to bind the newly c
 Relying Party Provider Backend Key Binding Request
 ..................................................
 
-Further details on the Relying Party Key Binding Request are provided in the :ref:`wallet-provider-endpoint:Wallet App and Wallet Unit Attestation Issuance Request` section.
+Further details on the Relying Party Key Binding Request are provided in the :ref:`wallet-provider-endpoint:Wallet Instance Attestation Issuance Request` section.
 
 
 The only difference are the following:
