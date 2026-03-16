@@ -10,7 +10,7 @@
             "en",
             "it"
         ],
-        "base_uri": "https://ta.wallet.ipzs.it/.well-known/l10n/taxonomy/",
+        "base_uri": "https://trust-registry.eid-wallet.example.it/.well-known/l10n/taxonomy/",
         "default_locale": "it",
         "version": "1.0.0"
     },

@@ -778,7 +778,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes **M
        * Virtual Card
        * Bank Account (IBAN)
        * Strong Customer Authentication (SCA) Credential
-       * PagoPA Payment Receipt
+       * Payment Receipt
        * Digital Stamp Duty (Bollo digitale)
        * Tax and Fee Payment Certificate
        * Subscription Mandate
@@ -1244,7 +1244,7 @@ The Taxonomy is accessible through the dedicated taxonomy endpoint as defined in
 
        * **default_locale**: Default locale code (e.g., ``it``).
        * **available_locales**: Array of supported locale codes (e.g., ``["en", "it"]``).
-       * **base_uri**: Base URI for localization bundle retrieval (e.g., ``https://ta.wallet.ipzs.it/.well-known/l10n/taxonomy/``).
+       * **base_uri**: Base URI for localization bundle retrieval (e.g., ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/taxonomy/``).
        * **version**: Version of the localization bundle format.
    * - **domains**
      - REQUIRED. Array of Domain objects, each containing:
@@ -1292,7 +1292,7 @@ A non-normative example of a localization bundle output is given below:
 
 Localization bundles MUST be available at the URI composed by appending the locale code and ``.json`` to the ``localization.base_uri`` value defined in the taxonomy. Each locale bundle MUST be accessible following the naming pattern **{locale_code}.json**, where **{locale_code}** is replaced with the corresponding locale code from the **available_locales** array.
 
-A non-normative example of the Italian localization URI for the bundle would be **https://ta.wallet.ipzs.it/.well-known/l10n/taxonomy/it.json**.
+A non-normative example of the Italian localization URI for the bundle would be **https://trust-registry.eid-wallet.example.it/.well-known/l10n/taxonomy/it.json**.
 
 Schema Registry
 -----------------

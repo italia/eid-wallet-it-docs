@@ -634,5 +634,3 @@ Federation participants validate Trust Mark status through two mechanisms:
 
 For comprehensive X.509 Certificate management procedures, including chain validation, revocation verification, and lifecycle management, see :ref:`x5c-evaluation:X.509 Certificate Management Operations`.
 
-
-
