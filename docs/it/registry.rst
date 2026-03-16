@@ -2,7 +2,7 @@
 
 
 Infrastruttura del Registro
-==========================
+===========================
 
 L'ecosistema IT-Wallet opera attraverso un'Infrastruttura del Registro che fornisce definizioni standardizzate dei dati, registrazione delle entità e capacità di discovery delle Credenziali. Il sistema di registro è composto da molteplici componenti interconnessi che supportano il ciclo di vita completo delle operazioni sulle Credenziali digitali, dall'onboarding delle entità alla presentazione delle Credenziali. 
 
