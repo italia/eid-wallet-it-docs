@@ -35,7 +35,7 @@ Il Trust Anchor DEVE pubblicare i metadati di discovery del registro all'endpoin
 Inoltre, il Registro di Sistema IT-Wallet DEVE utilizzare due distinti pattern di accesso:
 
 - **API dei Registri Dati**: DEVONO supportare capacità di paginazione e filtraggio.
-- **Infrastruttura di Fiducia della Federazione**: come definito in :ref:`trust-infrastructure:The Infrastructure of Trust`.
+- **Infrastruttura di Fiducia della Federazione**: come definito in :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
 
 Di seguito è riportato un esempio non normativo.
 
@@ -534,7 +534,7 @@ A seguito della registrazione FA, il Registro FA consente agli Emittenti di Cred
 Registro della Federazione
 ---------------------------
 
-Il **Registro della Federazione** fornisce l'infrastruttura di fiducia crittografica per tutti i partecipanti all'ecosistema IT-Wallet. Il Registro della Federazione mantiene l'elenco autorevole delle entità fidate e il loro stato operativo utilizzando endpoint specifici della federazione come definito in :ref:`trust-infrastructure:Federation API endpoints`.
+Il **Registro della Federazione** fornisce l'infrastruttura di fiducia crittografica per tutti i partecipanti all'ecosistema IT-Wallet. Il Registro della Federazione mantiene l'elenco autorevole delle entità fidate e il loro stato operativo utilizzando endpoint specifici della federazione come definito in :ref:`trust-infrastructure:Endpoint API di Federazione`.
 
 Ruolo di Integrazione del Registro
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -548,15 +548,15 @@ All'interno dell'architettura del Registro di Sistema IT-Wallet, il Registro del
 Accesso al Registro della Federazione
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Le operazioni del Registro della Federazione sono accessibili attraverso gli endpoint di federazione del Trust Anchor come dettagliato in :ref:`trust-infrastructure:Federation API endpoints`. L'architettura di discovery del registro fornisce informazioni sugli endpoint di federazione tramite l'endpoint di discovery del registro descritto in `Endpoint di Discovery del Registro`_.
+Le operazioni del Registro della Federazione sono accessibili attraverso gli endpoint di federazione del Trust Anchor come dettagliato in :ref:`trust-infrastructure:Endpoint API di Federazione`. L'architettura di discovery del registro fornisce informazioni sugli endpoint di federazione tramite l'endpoint di discovery del registro descritto in `Endpoint di Discovery del Registro`_.
 
 .. note::
    Gli endpoint di federazione sono disponibili sia attraverso il meccanismo di discovery del registro (per l'accesso unificato al registro) sia attraverso la Configurazione dell'Entità del Trust Anchor all'indirizzo ``.well-known/openid-federation`` (per operazioni specifiche della federazione). Entrambe le sorgenti forniscono gli stessi URL degli endpoint ma servono diversi pattern di discovery: la discovery del registro per l'orientamento iniziale nell'ecosistema, la Configurazione dell'Entità per la conformità standard a OpenID Federation 1.0.
    
-   Per le specifiche tecniche complete dei protocolli di federazione, le configurazioni delle entità, i meccanismi di valutazione della fiducia e la validazione della catena di fiducia, vedere :ref:`trust-infrastructure:The Infrastructure of Trust`.
+   Per le specifiche tecniche complete dei protocolli di federazione, le configurazioni delle entità, i meccanismi di valutazione della fiducia e la validazione della catena di fiducia, vedere :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
 
-Catalogo delle Credenziali Digitali
--------------------------------------
+Catalogo degli Attestati Elettronici
+--------------------------------------
 
 Il Catalogo delle Credenziali Digitali è il registro di tutte le Credenziali Digitali disponibili riconosciute nell'ecosistema IT-Wallet. È pubblicato dal Trust Anchor ed è pubblicamente disponibile per tutte le Entità tramite un endpoint specializzato della Federazione. Funge da unico punto di riferimento per tutti gli attori coinvolti nel processo di emissione, verifica e utilizzo delle Credenziali Digitali.
 
@@ -641,7 +641,7 @@ Di seguito è riportato un esempio non normativo.
 
     eyJhbGciOiJSUzI1NiIsImtpZCI6ImV4YW1w...
 
-Nella sezione :ref:`registry:Struttura del Catalogo delle Credenziali Digitali` è fornito un esempio del Catalogo delle Credenziali Digitali decodificato in JSON.
+Nella sezione :ref:`registry:Struttura del Catalogo degli Attestati Elettronici` è fornito un esempio del Catalogo delle Credenziali Digitali decodificato in JSON.
 
 Gerarchia delle Credenziali Digitali
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1016,8 +1016,8 @@ Questo approccio consente:
   - **Autorizzazione basata su politiche** tramite mappature **Dominio / Classe / Tipologia di Credenziale / Finalità**.
   - **Registrazione flessibile delle RP** a supporto sia delle esigenze di conformità governativa che dei requisiti operativi aziendali.
 
-Struttura del Catalogo delle Credenziali Digitali
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Struttura del Catalogo degli Attestati Elettronici
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Il contenuto del Catalogo delle Credenziali Digitali è protetto in un JWS che contiene i seguenti parametri dell'intestazione JOSE:
 
@@ -1035,7 +1035,7 @@ Il contenuto del Catalogo delle Credenziali Digitali è protetto in un JWS che c
      - OBBLIGATORIO. DEVE essere impostato su ``JOSE``.
      - [:rfc:`7515` Section 4.1.9].
    * - **alg**
-     - OBBLIGATORIO. Identificatore di algoritmo di firma digitale come da registro IANA "JSON Web Signature and Encryption Algorithms". DEVE essere uno degli algoritmi supportati nella Sezione :ref:`algorithms:Cryptographic Algorithms` e NON DEVE essere impostato su ``none`` né con un identificatore di algoritmo simmetrico (MAC).
+     - OBBLIGATORIO. Identificatore di algoritmo di firma digitale come da registro IANA "JSON Web Signature and Encryption Algorithms". DEVE essere uno degli algoritmi supportati nella Sezione :ref:`algorithms:Algoritmi Crittografici` e NON DEVE essere impostato su ``none`` né con un identificatore di algoritmo simmetrico (MAC).
      - [:rfc:`7515` Section 4.1.1].
    * - **kid**
      - OBBLIGATORIO. Identificatore univoco della chiave pubblica.
@@ -1153,7 +1153,7 @@ Il corrispondente esempio di Catalogo delle Credenziali Digitali decodificato in
   - Scaricare la versione base del Catalogo delle Credenziali Digitali (compatta, senza localizzazioni) utilizzando l'endpoint ``.well-known/credential-catalog``.
   - Determinare la lingua preferita dall'Utente.
   - Scaricare solo i bundle di localizzazione necessari.
-  - Unire dinamicamente il contenuto localizzato con la struttura del Catalogo delle Credenziali Digitali.
+  - Unire dinamicamente il contenuto localizzato con la Struttura del Catalogo degli Attestati Elettronici.
 
 Di seguito è fornito un esempio non normativo dell'output di un bundle di localizzazione:
 
@@ -1294,7 +1294,7 @@ I bundle di localizzazione DEVONO essere disponibili all'URI composto aggiungend
 
 Un esempio non normativo dell'URI di localizzazione italiana per il bundle sarebbe **https://trust-registry.eid-wallet.example.it/.well-known/l10n/taxonomy/it.json**.
 
-Registro degli Schemi
+Registro degli Schema
 ----------------------
 
 Il **Registro degli Schemi** è l'inventario autorevole di tutti gli **Schemi di Credenziale** (JSON Schema per SD-JWT, CBOR Schema per mDOC) noti e accettati nell'ecosistema IT-Wallet. È gestito dal Trust Anchor e fornisce un'unica fonte verificabile per il recupero delle specifiche tecniche necessarie per il parsing, la validazione e la visualizzazione delle Credenziali Digitali.
@@ -1426,7 +1426,7 @@ Questo percorso descrive come un'**Istanza Wallet** e una **Relying Party (RP)**
 2.  **Discovery e Integrità**:
 
   * La RP riceve la Credenziale Digitale dall'Utente.
-  * La RP consulta il **Registro della Federazione** tramite l'endpoint del Trust Anchor (`federation_resolve`, `federation_trust_mark_status`) per verificare la **fiducia crittografica** (Trust Mark) dell'Emittente e del Fornitore di Wallet come definito nella Sezione :ref:`trust-infrastructure:The Infrastructure of Trust`.
+  * La RP consulta il **Registro della Federazione** tramite l'endpoint del Trust Anchor (`federation_resolve`, `federation_trust_mark_status`) per verificare la **fiducia crittografica** (Trust Mark) dell'Emittente e del Fornitore di Wallet come definito nella Sezione :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
   * La RP consulta il **Registro degli Schemi** per scaricare lo schema della Credenziale presentata (`schema_uri`), verificandone l'integrità (`schema_uri#integrity`).
 
 3.  **Validazione dello Schema e della Politica Finale**:
