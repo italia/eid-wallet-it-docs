@@ -167,10 +167,6 @@ Requisiti ETSI per le Trusted Lists degli EAA Provider
 
 Di seguito è riportato un esempio non normativo del payload di una Trusted List di EAA Provider non qualificato (senza firma) seguendo il profilo `ETSI TS 119 602`_ Allegato H in formato JSON:
 
-.. literalinclude:: ../../examples/eaa-provider-trusted-list-example.json
-   :language: json
-   :caption: Esempio non normativo del payload di una Trusted List di EAA Provider non qualificato (formato JSON, profilo `ETSI TS 119 602`_ Allegato H, solo payload, senza firma)
-
 .. note::
   L'esempio sopra mostra solo il payload della Trusted List senza la firma JAdES. In produzione, le Trusted Lists DEVONO essere firmate utilizzando firme compact JAdES Baseline B secondo `ETSI TS 119 182-1`_.
 
