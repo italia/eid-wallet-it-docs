@@ -332,7 +332,7 @@ The JSON Object returned in the response has the following claim:
       - **Description**
       - **Reference**
     * - **wallet_instance_attestation**
-      - REQUIRED. A JSON object containing of the issued Wallet App Attestation.
+      - REQUIRED. A JSON object containing of the issued Wallet Instance Attestation.
       - This specification.
 
 The value of ``wallet_instance_attestation`` parameter is an string representing the Wallet Instance Attestation in a JWT. 
@@ -342,7 +342,7 @@ If any errors occur during the process, an error response is returned. The respo
   - *error*. The error code.
   - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered (:ref:`WP_035 <wallet-instance-testcases>`).
 
-Below is a non-normative example of a Wallet App and Wallet Unit Attestation Issuance Response.
+Below is a non-normative example of a Wallet Instance Attestation Issuance Response.
 
 .. code-block:: http
 
@@ -375,7 +375,7 @@ The following table lists HTTP Status Codes and related error codes that are sup
       - The device does not meet the Wallet Provider's minimum security requirements.
     * - ``403 Forbidden``
       - ``invalid_request``
-      - The signature of the Wallet App and Wallet Unit Attestation Request is invalid or does not match the associated public key (JWK).
+      - The signature of the Wallet Instance and Wallet Unit Attestation Request is invalid or does not match the associated public key (JWK).
     * - ``403 Forbidden``
       - ``invalid_request``
       - The Integrity Assertion validation failed; the Integrity Assertion is tampered with or improperly signed.
