@@ -34,7 +34,7 @@ All the participants are Federation Entities that MUST be registered by a Regist
 .. note::
   The Wallet Instance, as a personal device, is deemed reliable through a verifiable attestation issued and signed by a trusted third party.
 
-  This is called *Wallet Attestation* and is documented in the dedicated :ref:`wallet-attestation-issuance:Wallet App and Wallet Unit Attestation Issuance`.
+  This is called *Wallet Instance Attestation* and is documented in the dedicated :ref:`wallet-instance-attestation-issuance:Wallet Instance Attestation Issuance`.
 
 **Role in Onboarding**: Entity onboarding is split between **Registration Authorities (Registrars)** and **Federation Authorities** (Trust Anchor and Intermediates). Registrars handle **administrative registration** (legal identity, regulatory compliance, business justification, and eligibility), while Federation Authorities handle **federation registration** (issuing federation certificates, applying federation metadata policies, and placing entities in the trust hierarchy). Leaves (Credential Issuers, Relying Parties, Wallet Providers) undergo both steps: they first prove their eligibility to the Registrar and then obtain federation authorization from the Federation Authorities to perform their designated functions in Credential operations.
 
