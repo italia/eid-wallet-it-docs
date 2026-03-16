@@ -66,7 +66,7 @@ The *oauth_authorization_server* metadata MUST contain the following parameters.
 Metadata for openid_credential_issuer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The *openid_credential_issuer* metadata MUST contain the following claims.
+The *openid_credential_issuer* metadata contains the following claims.
 
 .. list-table::
   :class: longtable
@@ -76,19 +76,19 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
   * - **Claim**
     - **Description**
   * - **credential_issuer**
-    - The Credential Issuer identifier. It MUST be a case sensitive URL using HTTPS scheme as defined in `OpenID4VCI`_ Sections 12.2.1 and 12.2.4.
+    - REQUIRED. The Credential Issuer identifier. It MUST be a case sensitive URL using HTTPS scheme as defined in `OpenID4VCI`_ Sections 12.2.1 and 12.2.4.
   * - **credential_endpoint**
-    - URL of the Credential endpoint. See `OpenID4VCI`_ Section 12.2.4.
+    - REQUIRED. URL of the Credential endpoint. See `OpenID4VCI`_ Section 12.2.4.
   * - **nonce_endpoint**
-    - URL of the Nonce Endpoint, as defined in Section 7 of `OpenID4VCI`_.
+    - REQUIRED. URL of the Nonce Endpoint, as defined in Section 7 of `OpenID4VCI`_.
   * - **deferred_credential_endpoint**
-    - URL of the deferred Credential endpoint, as defined in Section 12.2.4 of `OpenID4VCI`_.
+    - OPTIONAL. URL of the deferred Credential endpoint, as defined in Section 12.2.4 of `OpenID4VCI`_.
   * - **notification_endpoint**
-    - It MUST be an HTTPs URL indicating the notification endpoint. See Section 12.2.4 of [`OpenID4VCI`_].
+    - REQUIRED. It MUST be an HTTPs URL indicating the notification endpoint. See Section 12.2.4 of [`OpenID4VCI`_].
   * - **authorization_servers**
     - OPTIONAL. Array of strings, where each string is an identifier of the OAuth 2.0 Authorization Server (as defined in [:rfc:`8414`]) the Credential Issuer relies on for authorization. If this parameter is omitted, the entity providing the Credential Issuer is also acting as the Authorization Server.
   * - **display**
-    - See `OpenID4VCI`_ Section 12.2.4. Array of objects containing display language properties. The parameters that MUST be included are:
+    - REQUIRED. See `OpenID4VCI`_ Section 12.2.4. Array of objects containing display language properties. The parameters that MUST be included are:
 
         - **name**: String value of a display name for the Credential Issuer.
         - **locale**: String value that identifies the language of this object represented as a language tag taken from values defined in *BCP47* :rfc:`5646`. There MUST be only one object for each language identifier.
@@ -99,7 +99,7 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
               - **alt_text**: OPTIONAL. String value of the alternative text for the logo image.
 
   * - **credential_configurations_supported**
-    - JSON object that outlines the details of the Digital Credentials supported by the Credential Issuer. It includes a list of name/value pairs, where each name uniquely identifies a specific supported Digital Credential. This identifier is utilized to inform the Wallet Instance which Digital Credential can be provided by the Credential Issuer. The associated value within the object MUST contain metadata specific to that Digital Credential, as defined following. See `OpenID4VCI`_ Sections 12.2.4 and A.3.2.
+    - REQUIRED. JSON object that outlines the details of the Digital Credentials supported by the Credential Issuer. It includes a list of name/value pairs, where each name uniquely identifies a specific supported Digital Credential. This identifier is utilized to inform the Wallet Instance which Digital Credential can be provided by the Credential Issuer. The associated value within the object MUST contain metadata specific to that Digital Credential, as defined following. See `OpenID4VCI`_ Sections 12.2.4 and A.3.2.
 
         - **format**: String identifying the format of this Credential. The Digital Credential MUST support the value string "*dc+sd-jwt*" in case of SD-JWT VC (See `OpenID4VCI`_ Section A.3.1.) and "*mso_mdoc*" in case of mdoc (see `OpenID4VCI`_ Section A.2.1.).
         - **scope**: JSON String identifying the supported *scope* value. The Wallet Instance MUST use this value in the Pushed Authorization Request. Scope values MUST be the entire set or a subset of the *scope* values in the *scopes_supported* parameter of the Authorization Server. If the Credential is included in the Digital Credentials Catalog the *scope* value MUST match with the ``credential_type`` parameter defined in :ref:`registry:Digital Credentials Catalog Structure` or in the :ref:`registry:Schema Registry`. [See `OpenID4VCI`_ Section 12.2.4].
@@ -132,7 +132,7 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
                   - **uri**: REQUIRED. A URI pointing to the background image.
                   - **uri#integrity**: REQUIRED. integrity metadata as defined in Section 3 of `W3C-SRI`_.
 
-          - **claims**: Array of JSON object each describing how a certain claim related to the Credential MUST be displayed to the User. This Array lists the claims in the order they MUST be displayed by the Wallet. To provide detailed information about the claim, the innermost value MUST contain at least the following parameters. See `OpenID4VCI`_ Section A.3.2.
+          - **claims**: REQUIRED. Array of JSON object each describing how a certain claim related to the Credential MUST be displayed to the User. This Array lists the claims in the order they MUST be displayed by the Wallet. To provide detailed information about the claim, the innermost value MUST contain at least the following parameters. See `OpenID4VCI`_ Section A.3.2.
 
             - **path**: It contains the pointer that specifies the path to a specific claim within the Digital Credential as defined in Appendix C of `OpenID4VCI`_.
             - **mandatory**: Boolean which, when set to `true`, indicates that the Credential Issuer will always include this claim in the issued Credential.
@@ -146,17 +146,17 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
         - **schema_id**: REQUIRED. Identifier of the credential schema as defined in the :ref:`registry:Schema Registry`.
         - **authentic_sources**: REQUIRED. Object containing ``entity_id`` and ``dataset_id`` parameters valued with the respective identifiers as registered in the :ref:`registry:Authentic Source Registry`.
   * - **jwks**
-    - JSON Web Key Set document, passed by value, containing the protocol specific keys for the Credential Issuer. See `OID-FED`_ Section 5.2.1 and `JWK`_.
+    - REQUIRED. JSON Web Key Set document, passed by value, containing the protocol specific keys for the Credential Issuer. See `OID-FED`_ Section 5.2.1 and `JWK`_.
   * - **trust_frameworks_supported**
-    - JSON array containing all supported trust frameworks. The supported values are:
+    - REQUIRED. JSON array containing all supported trust frameworks. The supported values are:
         - *it_cie*: CIE id trust framework supported.
         - *it_wallet*: IT-Wallet trust framework supported.
         - *eudi_wallet*: Member State EUDI Wallet trust framework supported.
         - *it_l2+document_proof*: eID Substantial Authentication with MRTD Verification protocol supported.
   * - **batch_credential_issuance**
-    - Object containing information about the Credential Issuer's support for issuance of Credentials in a batch at the Credential Endpoint. The presence of this parameter means that the Credential Issuer supports more than one key proof in the ``proofs`` parameter in the Credential request so can issue more than one Digital Credential for the same Credential with the same attributes about the Holder in a single request/response. The parameter that MUST be included is:
+    - OPTIONAL. Object containing information about the Credential Issuer's support for issuance of Credentials in a batch at the Credential Endpoint. The presence of this parameter means that the Credential Issuer supports more than one key proof in the ``proofs`` parameter in the Credential request so can issue more than one Digital Credential for the same Credential with the same attributes about the Holder in a single request/response. The parameter that MUST be included is:
 
             - **batch_size**: Integer value specifying the maximum array size for the ``proofs`` parameter in a Credential request.
   * - **status_list_aggregation_endpoint**
-    - URL of the Status List Aggregation Endpoint. See `TOKEN-STATUS-LIST`_ Section 9.
+    - REQUIRED. URL of the Status List Aggregation Endpoint. See `TOKEN-STATUS-LIST`_ Section 9.
 
