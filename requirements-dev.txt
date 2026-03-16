@@ -39,3 +39,4 @@ sphinxcontrib-plantuml==0.30
 pillow==12.1.1
 svglib==1.5.1
 reportlab==4.4.0
+jsonschema>=4.0.0

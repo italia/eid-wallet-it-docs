@@ -1,0 +1,168 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/italia/eid-wallet-it-docs/manuals/it/authentic-sources/json-schemas/template-compilazione-fonte-autentica.schema.json",
+  "$version": "1.0.0",
+  "title": "Template compilazione Fonte Autentica",
+  "description": "Schema di validazione per template-compilazione-fonte-autentica-completo.json. Richiede metadata, tipo_sezione, casi d'uso, assistenza e e_service.",
+  "type": "object",
+  "required": ["metadata", "tipo_sezione", "assistenza", "e_service"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "metadata": {
+      "type": "object",
+      "required": ["nome_ente_titolare", "nome_eaa"],
+      "properties": {
+        "nome_ente_titolare": { "type": "string", "minLength": 1 },
+        "nome_eaa": { "type": "string", "minLength": 1 },
+        "data_compilazione": { "type": "string" },
+        "versione": { "type": "string" }
+      }
+    },
+    "tipo_sezione": {
+      "type": "string",
+      "enum": ["documento_esistente", "documento_non_esistente"]
+    },
+    "sezione_documento_esistente": { "$ref": "#/$defs/sezione_documento_esistente" },
+    "sezione_documento_non_esistente": { "$ref": "#/$defs/sezione_documento_non_esistente" },
+    "assistenza": { "type": "object", "description": "Referenti, canali, FAQ, testi informativi. Struttura non validata." },
+    "e_service": { "type": "object", "description": "Data model, mappatura errori, stati, lista nome campo. Struttura non validata." }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "tipo_sezione": { "const": "documento_esistente" } }, "required": ["tipo_sezione"] },
+      "then": { "required": ["sezione_documento_esistente"] }
+    },
+    {
+      "if": { "properties": { "tipo_sezione": { "const": "documento_non_esistente" } }, "required": ["tipo_sezione"] },
+      "then": { "required": ["sezione_documento_non_esistente"] }
+    }
+  ],
+  "$defs": {
+    "campo_risposta": {
+      "type": "object",
+      "required": ["domanda", "risposta"],
+      "properties": {
+        "domanda": { "type": "string" },
+        "esempio": { "type": "string" },
+        "risposta": { "type": "string" }
+      }
+    },
+    "target_utenti_esistente": {
+      "type": "object",
+      "required": ["chi_puo_richiedere", "prerequisiti", "volume_rilascio", "limitazioni_estensioni"],
+      "properties": {
+        "chi_puo_richiedere": { "$ref": "#/$defs/campo_risposta" },
+        "prerequisiti": { "$ref": "#/$defs/campo_risposta" },
+        "volume_rilascio": { "$ref": "#/$defs/campo_risposta" },
+        "limitazioni_estensioni": { "$ref": "#/$defs/campo_risposta" }
+      }
+    },
+    "emissione_formato_esistente": {
+      "type": "object",
+      "required": ["dominio", "interesse_pubblico", "canali_richiesta", "formato_attuale", "possesso_documento", "modalita_sincrona_differita", "eaa_univoca", "identificazione_utente"],
+      "properties": {
+        "dominio": { "$ref": "#/$defs/campo_risposta" },
+        "interesse_pubblico": { "$ref": "#/$defs/campo_risposta" },
+        "canali_richiesta": { "$ref": "#/$defs/campo_risposta" },
+        "richieste_fisico_vs_digitale": { "$ref": "#/$defs/campo_risposta" },
+        "formato_attuale": { "$ref": "#/$defs/campo_risposta" },
+        "dettagli_digitale": { "$ref": "#/$defs/campo_risposta" },
+        "possesso_documento": { "$ref": "#/$defs/campo_risposta" },
+        "catalogo_o_touchpoint": { "$ref": "#/$defs/campo_risposta" },
+        "modalita_sincrona_differita": { "$ref": "#/$defs/campo_risposta" },
+        "variazioni_dati": { "$ref": "#/$defs/campo_risposta" },
+        "eaa_univoca": { "$ref": "#/$defs/campo_risposta" },
+        "identificazione_utente": { "$ref": "#/$defs/campo_risposta" }
+      }
+    },
+    "utilizzo_esistente": {
+      "type": "object",
+      "required": ["contesti_uso", "soggetti_verificatori", "verifica_validita", "strumenti_verificatore", "utilizzo_continuo", "contesto_online_dal_vivo", "tempo_validita", "rinnovo", "validita_europa", "eaa_tutti_contesti"],
+      "properties": {
+        "contesti_uso": { "$ref": "#/$defs/campo_risposta" },
+        "soggetti_verificatori": { "$ref": "#/$defs/campo_risposta" },
+        "verifica_validita": { "$ref": "#/$defs/campo_risposta" },
+        "strumenti_verificatore": { "$ref": "#/$defs/campo_risposta" },
+        "utilizzo_continuo": { "$ref": "#/$defs/campo_risposta" },
+        "contesto_online_dal_vivo": { "$ref": "#/$defs/campo_risposta" },
+        "tempo_validita": { "$ref": "#/$defs/campo_risposta" },
+        "rinnovo": { "$ref": "#/$defs/campo_risposta" },
+        "validita_europa": { "$ref": "#/$defs/campo_risposta" },
+        "limitazioni_territoriali": { "$ref": "#/$defs/campo_risposta" },
+        "eaa_tutti_contesti": { "$ref": "#/$defs/campo_risposta" },
+        "estensione_contesti": { "$ref": "#/$defs/campo_risposta" }
+      }
+    },
+    "pagamento": {
+      "type": "object",
+      "required": ["gratuito_o_pagamento"],
+      "properties": {
+        "gratuito_o_pagamento": { "$ref": "#/$defs/campo_risposta" },
+        "modalita_pagamento": { "$ref": "#/$defs/campo_risposta" },
+        "pagamento_rinnovo": { "$ref": "#/$defs/campo_risposta" }
+      }
+    },
+    "legale_privacy": {
+      "type": "object",
+      "required": ["normativa", "proprieta_dati", "dati_sensibili"],
+      "properties": {
+        "normativa": { "$ref": "#/$defs/campo_risposta" },
+        "proprieta_dati": { "$ref": "#/$defs/campo_risposta" },
+        "dati_sensibili": { "$ref": "#/$defs/campo_risposta" }
+      }
+    },
+    "sezione_documento_esistente": {
+      "type": "object",
+      "required": ["target_utenti", "emissione_formato", "utilizzo", "pagamento", "legale_privacy"],
+      "properties": {
+        "target_utenti": { "$ref": "#/$defs/target_utenti_esistente" },
+        "emissione_formato": { "$ref": "#/$defs/emissione_formato_esistente" },
+        "utilizzo": { "$ref": "#/$defs/utilizzo_esistente" },
+        "pagamento": { "$ref": "#/$defs/pagamento" },
+        "legale_privacy": { "$ref": "#/$defs/legale_privacy" }
+      }
+    },
+    "target_utenti_non_esistente": {
+      "type": "object",
+      "required": ["chi_potra_richiedere", "prerequisiti"],
+      "properties": {
+        "chi_potra_richiedere": { "$ref": "#/$defs/campo_risposta" },
+        "prerequisiti": { "$ref": "#/$defs/campo_risposta" }
+      }
+    },
+    "emissione_formato_non_esistente": {
+      "type": "object",
+      "required": ["dominio", "interesse_pubblico", "eaa_univoca", "catalogo_o_touchpoint", "modalita_sincrona_differita", "identificazione_utente"],
+      "properties": {
+        "dominio": { "$ref": "#/$defs/campo_risposta" },
+        "interesse_pubblico": { "$ref": "#/$defs/campo_risposta" },
+        "eaa_univoca": { "$ref": "#/$defs/campo_risposta" },
+        "catalogo_o_touchpoint": { "$ref": "#/$defs/campo_risposta" },
+        "modalita_sincrona_differita": { "$ref": "#/$defs/campo_risposta" },
+        "identificazione_utente": { "$ref": "#/$defs/campo_risposta" }
+      }
+    },
+    "utilizzo_non_esistente": {
+      "type": "object",
+      "required": ["contesti_uso", "soggetti_verificatori", "utilizzo_continuo", "tempo_validita", "validita_europa"],
+      "properties": {
+        "contesti_uso": { "$ref": "#/$defs/campo_risposta" },
+        "soggetti_verificatori": { "$ref": "#/$defs/campo_risposta" },
+        "utilizzo_continuo": { "$ref": "#/$defs/campo_risposta" },
+        "tempo_validita": { "$ref": "#/$defs/campo_risposta" },
+        "rinnovabile": { "$ref": "#/$defs/campo_risposta" },
+        "validita_europa": { "$ref": "#/$defs/campo_risposta" }
+      }
+    },
+    "sezione_documento_non_esistente": {
+      "type": "object",
+      "required": ["target_utenti", "emissione_formato", "utilizzo", "legale_privacy"],
+      "properties": {
+        "target_utenti": { "$ref": "#/$defs/target_utenti_non_esistente" },
+        "emissione_formato": { "$ref": "#/$defs/emissione_formato_non_esistente" },
+        "utilizzo": { "$ref": "#/$defs/utilizzo_non_esistente" },
+        "legale_privacy": { "$ref": "#/$defs/legale_privacy" }
+      }
+    }
+  }
+}

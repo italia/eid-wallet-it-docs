@@ -1,0 +1,845 @@
+{
+  "$schema": "./json-schemas/template-compilazione-fonte-autentica.schema.json",
+  "metadata": {
+    "nome_ente_titolare": "",
+    "nome_eaa": "",
+    "data_compilazione": "",
+    "versione": "1.0"
+  },
+  "tipo_sezione": "documento_esistente",
+  "sezione_documento_esistente": {
+    "target_utenti": {
+      "chi_puo_richiedere": {
+        "domanda": "Chi può ad oggi richiedere il documento? Può ottenerlo l'intera popolazione italiana o solo alcuni cittadini?",
+        "esempio": "Solo maggiorenni residenti in una specifica regione",
+        "risposta": ""
+      },
+      "prerequisiti": {
+        "domanda": "Esistono dei prerequisiti per richiedere il documento? Se sì, quali?",
+        "esempio": "Necessario essere in possesso di altro documento, rispettare determinati criteri",
+        "risposta": ""
+      },
+      "volume_rilascio": {
+        "domanda": "Qual è il volume di rilascio del documento attuale?",
+        "esempio": "200k Carte Europee della disabilità emesse in Italia",
+        "risposta": ""
+      },
+      "limitazioni_estensioni": {
+        "domanda": "L'EAA potrà essere richiesta da tutti coloro che attualmente possono richiedere il documento oppure sono previste limitazioni e/o estensioni? Se sì, quali?",
+        "esempio": "Ambito geografico; disponibilità limitata ai dati successivi a una determinata data",
+        "risposta": ""
+      }
+    },
+    "emissione_formato": {
+      "dominio": {
+        "domanda": "A quale dominio appartiene il documento?",
+        "esempio": "Istruzione, sanità",
+        "risposta": ""
+      },
+      "interesse_pubblico": {
+        "domanda": "Il documento è di interesse pubblico (Sì, No)? Perché?",
+        "esempio": "Sì, perché rilasciato da ente pubblico",
+        "risposta": ""
+      },
+      "canali_richiesta": {
+        "domanda": "Tramite quali canali il cittadino può ad oggi richiedere il documento?",
+        "esempio": "Sportello fisico, portale online",
+        "risposta": ""
+      },
+      "richieste_fisico_vs_digitale": {
+        "domanda": "Se possibile richiederlo anche online, quante sono le richieste fatte tramite canale fisico e quante tramite canale digitale?",
+        "esempio": "70% fisico, 30% digitale",
+        "risposta": ""
+      },
+      "formato_attuale": {
+        "domanda": "In quale formato viene emesso ad oggi il documento? Card plastica, cartaceo, digitale?",
+        "esempio": "Card plastica e versione digitale",
+        "risposta": ""
+      },
+      "dettagli_digitale": {
+        "domanda": "Se è già possibile ottenere il documento in formato digitale, fornisci dettagli sulle modalità di emissione",
+        "esempio": "Scaricabile dal portale istituzionale",
+        "risposta": ""
+      },
+      "possesso_documento": {
+        "domanda": "Per ottenere l'EAA sarà necessario essere già in possesso del documento? Se sì, specificare motivazioni e condizioni",
+        "esempio": "È sufficiente aver concluso l'iter di richiesta del documento",
+        "risposta": ""
+      },
+      "catalogo_o_touchpoint": {
+        "domanda": "L'utente potrà ottenere l'EAA solo dal catalogo di EAA del Wallet o anche da un touchpoint gestito dal tuo Ente?",
+        "esempio": "Entrambi: catalogo e touchpoint Ente",
+        "risposta": ""
+      },
+      "modalita_sincrona_differita": {
+        "domanda": "L'utente potrà ottenere l'EAA in modalità sincrona (preferibile) o in modalità differita? Se differita, perché?",
+        "esempio": "Sincrona",
+        "risposta": ""
+      },
+      "variazioni_dati": {
+        "domanda": "Sono previste variazioni tra i dati forniti per l'EAA e i dati attualmente presenti nel documento? Se sì, quali e perché?",
+        "esempio": "Disponibilità limitata di dati storici",
+        "risposta": ""
+      },
+      "eaa_univoca": {
+        "domanda": "È prevista un'EAA univoca per ciascun soggetto o potranno essere emesse più EAA per lo stesso soggetto?",
+        "esempio": "Una sola tessera sanitaria; molti titoli accademici",
+        "risposta": ""
+      },
+      "identificazione_utente": {
+        "domanda": "Per emettere l'EAA sarà necessario identificare l'utente (Sì, No)? Perché?",
+        "esempio": "Sì, tramite Codice Fiscale",
+        "risposta": ""
+      }
+    },
+    "utilizzo": {
+      "contesti_uso": {
+        "domanda": "Quali sono gli attuali contesti d'uso del documento? Per cosa viene utilizzato principalmente?",
+        "esempio": "Dimostrare possesso titoli professionali, accedere ad agevolazioni",
+        "risposta": ""
+      },
+      "soggetti_verificatori": {
+        "domanda": "Quali sono i principali soggetti che verificano ad oggi il documento?",
+        "esempio": "Soggetti privati addetti alla sicurezza, operatori pubblici allo sportello",
+        "risposta": ""
+      },
+      "verifica_validita": {
+        "domanda": "Come è possibile verificare la validità del documento? QR code, Barcode, altri strumenti?",
+        "esempio": "QR code, verifica de visu",
+        "risposta": ""
+      },
+      "strumenti_verificatore": {
+        "domanda": "Quali strumenti sono previsti da parte del verificatore per effettuare la verifica?",
+        "esempio": "App per scan, verifica de visu",
+        "risposta": ""
+      },
+      "utilizzo_continuo": {
+        "domanda": "Il documento consente un utilizzo continuo o perde di validità non appena utilizzato?",
+        "esempio": "Utilizzo continuo (tessera sanitaria); uso singolo (biglietto aereo)",
+        "risposta": ""
+      },
+      "contesto_online_dal_vivo": {
+        "domanda": "Il documento viene principalmente utilizzato online, dal vivo o in entrambi i contesti?",
+        "esempio": "Entrambi: verifica presso sportelli e online",
+        "risposta": ""
+      },
+      "tempo_validita": {
+        "domanda": "Per quanto tempo è valido il documento? Validità uguale per tutti o variabile?",
+        "esempio": "10 anni per tutti i cittadini",
+        "risposta": ""
+      },
+      "rinnovo": {
+        "domanda": "Il documento è rinnovabile? Se sì, cosa deve fare l'utente? Procedura digitale o uffici fisici?",
+        "esempio": "Sì, presso uffici territoriali o online",
+        "risposta": ""
+      },
+      "validita_europa": {
+        "domanda": "Il documento può essere utilizzato solo in Italia o anche in Europa?",
+        "esempio": "Solo Italia / Anche in Europa",
+        "risposta": ""
+      },
+      "limitazioni_territoriali": {
+        "domanda": "Il documento è valido su tutto il territorio o esistono limitazioni?",
+        "esempio": "Solo in alcune Regioni",
+        "risposta": ""
+      },
+      "eaa_tutti_contesti": {
+        "domanda": "Sarà possibile utilizzare l'EAA in tutti i contesti in cui ad oggi è possibile utilizzare il documento?",
+        "esempio": "Sì, con contesti remoto e di prossimità",
+        "risposta": ""
+      },
+      "estensione_contesti": {
+        "domanda": "L'EAA consentirà di estendere gli attuali contesti di utilizzo del documento?",
+        "esempio": "Sì, nuovi casi d'uso per verifica remota",
+        "risposta": ""
+      }
+    },
+    "pagamento": {
+      "gratuito_o_pagamento": {
+        "domanda": "Il documento è gratuito o prevede un pagamento a carico dell'utente?",
+        "esempio": "Gratuito",
+        "risposta": ""
+      },
+      "modalita_pagamento": {
+        "domanda": "Se prevede un pagamento, quali sono le modalità consentite?",
+        "esempio": "PagoPA, carta di credito",
+        "risposta": ""
+      },
+      "pagamento_rinnovo": {
+        "domanda": "Il rinnovo del documento prevede un pagamento?",
+        "esempio": "No",
+        "risposta": ""
+      }
+    },
+    "legale_privacy": {
+      "normativa": {
+        "domanda": "Le modalità di emissione/presentazione del documento sono regolate da normativa di settore?",
+        "esempio": "D.Lgs. 82/2005, CAD",
+        "risposta": ""
+      },
+      "proprieta_dati": {
+        "domanda": "I dati sono di proprietà dell'ente o condivisi con altri enti? Quali?",
+        "esempio": "Proprietà dell'ente, integrazione con ANPR",
+        "risposta": ""
+      },
+      "dati_sensibili": {
+        "domanda": "I dati contenuti nel documento sono sensibili? Se sì, perché?",
+        "esempio": "Sì, dati sanitari",
+        "risposta": ""
+      }
+    }
+  },
+  "sezione_documento_non_esistente": {
+    "target_utenti": {
+      "chi_potra_richiedere": {
+        "domanda": "Chi potrà richiedere l'emissione dell'EAA?",
+        "esempio": "Solo maggiorenni residenti in Italia",
+        "risposta": ""
+      },
+      "prerequisiti": {
+        "domanda": "Esistono dei prerequisiti per richiedere l'emissione dell'EAA? Se sì, quali?",
+        "esempio": "Iscrizione ad albo professionale",
+        "risposta": ""
+      }
+    },
+    "emissione_formato": {
+      "dominio": {
+        "domanda": "A quale dominio apparterrà l'EAA?",
+        "esempio": "Istruzione, sanità",
+        "risposta": ""
+      },
+      "interesse_pubblico": {
+        "domanda": "L'EAA sarà di interesse pubblico (Sì, No)? Perché?",
+        "esempio": "Sì",
+        "risposta": ""
+      },
+      "eaa_univoca": {
+        "domanda": "È prevista un'EAA univoca per ciascun soggetto o possono essere emesse più EAA?",
+        "esempio": "Più EAA possibili (es. titoli accademici)",
+        "risposta": ""
+      },
+      "catalogo_o_touchpoint": {
+        "domanda": "L'utente potrà ottenere l'EAA solo dal catalogo del Wallet o anche da touchpoint dell'Ente?",
+        "esempio": "Entrambi",
+        "risposta": ""
+      },
+      "modalita_sincrona_differita": {
+        "domanda": "L'utente potrà ottenere l'EAA in modalità sincrona o differita? Se differita, perché?",
+        "esempio": "Sincrona",
+        "risposta": ""
+      },
+      "identificazione_utente": {
+        "domanda": "Per emettere l'EAA sarà necessario identificare l'utente (Sì, No)? Perché?",
+        "esempio": "Sì, tramite SPID/CIE",
+        "risposta": ""
+      }
+    },
+    "utilizzo": {
+      "contesti_uso": {
+        "domanda": "Quali sono i contesti in cui potrà essere utilizzata l'EAA? Per cosa?",
+        "esempio": "Dimostrare qualifiche, accedere a servizi",
+        "risposta": ""
+      },
+      "soggetti_verificatori": {
+        "domanda": "Quali soggetti dovranno verificare l'EAA per permettere l'accesso ai servizi?",
+        "esempio": "Fornitori privati, operatori pubblici",
+        "risposta": ""
+      },
+      "utilizzo_continuo": {
+        "domanda": "L'EAA consentirà un utilizzo continuo o perderà validità dopo l'utilizzo?",
+        "esempio": "Utilizzo continuo",
+        "risposta": ""
+      },
+      "tempo_validita": {
+        "domanda": "Per quanto tempo sarà valida l'EAA?",
+        "esempio": "1 anno, rinnovabile",
+        "risposta": ""
+      },
+      "rinnovabile": {
+        "domanda": "L'EAA sarà rinnovabile? Se sì, a quali condizioni?",
+        "esempio": "Sì, ogni 12 mesi",
+        "risposta": ""
+      },
+      "validita_europa": {
+        "domanda": "L'EAA potrà essere utilizzata solo in Italia o anche in Europa?",
+        "esempio": "Anche in Europa",
+        "risposta": ""
+      }
+    },
+    "legale_privacy": {
+      "normativa": {
+        "domanda": "Le modalità di emissione/presentazione sono regolate da normativa?",
+        "esempio": "Regolamento eIDAS 2",
+        "risposta": ""
+      },
+      "proprieta_dati": {
+        "domanda": "I dati sono di proprietà dell'ente o condivisi? Quali?",
+        "esempio": "Proprietà dell'ente",
+        "risposta": ""
+      },
+      "dati_sensibili": {
+        "domanda": "I dati contenuti nell'EAA sono sensibili? Se sì, perché?",
+        "esempio": "No / Sì, perché...",
+        "risposta": ""
+      }
+    }
+  },
+  "assistenza": {
+    "referenti": [
+      {
+        "ruolo": "Referente ambito sistemistico",
+        "nome": "",
+        "cognome": "",
+        "email": "",
+        "telefono": ""
+      },
+      {
+        "ruolo": "Referente ambito applicativo",
+        "nome": "",
+        "cognome": "",
+        "email": "",
+        "telefono": ""
+      },
+      {
+        "ruolo": "Referente ambito assistenza",
+        "nome": "",
+        "cognome": "",
+        "email": "",
+        "telefono": ""
+      }
+    ],
+    "canali": [
+      {
+        "tipo": "Email assistenza",
+        "valore": "",
+        "note": ""
+      },
+      {
+        "tipo": "Numero telefonico",
+        "valore": "",
+        "note": ""
+      },
+      {
+        "tipo": "Altro",
+        "valore": "",
+        "note": ""
+      }
+    ],
+    "faq": [
+      {
+        "domanda": "",
+        "risposta": ""
+      }
+    ],
+    "testi_informativi": ""
+  },
+  "e_service": {
+    "data_model": [
+      {
+        "attestazione": "ISEE",
+        "parametro": "tax_code",
+        "descrizione": "codice fiscale dell'utente",
+        "nome_campo": "Codice Fiscale",
+        "esempio_campo_compilato": "DLNRSL88L51C348G",
+        "obbligatorio": "SI",
+        "tipologia": "ALFANUMERICO",
+        "lunghezza_massima_caratteri": "16",
+        "note": ""
+      }
+    ],
+    "mappatura_errori": [
+      {
+        "codice": "200",
+        "esito": "Attestato digitale valido",
+        "applicabile": "SI",
+        "causa": "Vengono ritornati correttamente i dati, nessuna risposta di errore",
+        "azione_utente": "N/A",
+        "note": ""
+      },
+      {
+        "codice": "400",
+        "esito": "Bad Request",
+        "applicabile": "",
+        "causa": "",
+        "azione_utente": "",
+        "note": ""
+      },
+      {
+        "codice": "401",
+        "esito": "Unauthorized",
+        "applicabile": "",
+        "causa": "",
+        "azione_utente": "",
+        "note": ""
+      },
+      {
+        "codice": "403",
+        "esito": "Forbidden",
+        "applicabile": "",
+        "causa": "",
+        "azione_utente": "",
+        "note": ""
+      },
+      {
+        "codice": "404",
+        "esito": "Not found",
+        "applicabile": "SI",
+        "causa": "Non sono stati trovati documenti di titolarità dell'utente",
+        "azione_utente": "Chiudere e riprovare successivamente",
+        "note": "L'utente deve prima acquisire la titolarità del documento per ottenerne la versione digitale"
+      },
+      {
+        "codice": "405",
+        "esito": "Method Not Allowed",
+        "applicabile": "",
+        "causa": "",
+        "azione_utente": "",
+        "note": ""
+      },
+      {
+        "codice": "406",
+        "esito": "Not Acceptable",
+        "applicabile": "",
+        "causa": "",
+        "azione_utente": "",
+        "note": ""
+      },
+      {
+        "codice": "408",
+        "esito": "Request timeout",
+        "applicabile": "",
+        "causa": "",
+        "azione_utente": "",
+        "note": ""
+      },
+      {
+        "codice": "409",
+        "esito": "Conflict",
+        "applicabile": "",
+        "causa": "",
+        "azione_utente": "",
+        "note": ""
+      },
+      {
+        "codice": "410",
+        "esito": "Gone",
+        "applicabile": "",
+        "causa": "",
+        "azione_utente": "",
+        "note": ""
+      },
+      {
+        "codice": "413",
+        "esito": "Payload Too Large",
+        "applicabile": "",
+        "causa": "",
+        "azione_utente": "",
+        "note": ""
+      },
+      {
+        "codice": "414",
+        "esito": "URI Too Long",
+        "applicabile": "",
+        "causa": "",
+        "azione_utente": "",
+        "note": ""
+      },
+      {
+        "codice": "421",
+        "esito": "Misdirected Request",
+        "applicabile": "",
+        "causa": "",
+        "azione_utente": "",
+        "note": ""
+      },
+      {
+        "codice": "429",
+        "esito": "Too Many Requests",
+        "applicabile": "",
+        "causa": "",
+        "azione_utente": "",
+        "note": ""
+      },
+      {
+        "codice": "431",
+        "esito": "Request Header Fields Too Large",
+        "applicabile": "",
+        "causa": "",
+        "azione_utente": "",
+        "note": ""
+      },
+      {
+        "codice": "451",
+        "esito": "Unavailable For Legal Reasons",
+        "applicabile": "",
+        "causa": "",
+        "azione_utente": "",
+        "note": ""
+      },
+      {
+        "codice": "500",
+        "esito": "Errore generico interno",
+        "applicabile": "",
+        "causa": "",
+        "azione_utente": "",
+        "note": ""
+      },
+      {
+        "codice": "501",
+        "esito": "L'Authentic Source non ha ancora implementato il servizio",
+        "applicabile": "",
+        "causa": "",
+        "azione_utente": "",
+        "note": ""
+      },
+      {
+        "codice": "503",
+        "esito": "Il servizio richiesto non è momentaneamente disponibile",
+        "applicabile": "",
+        "causa": "",
+        "azione_utente": "",
+        "note": ""
+      },
+      {
+        "codice": "540",
+        "esito": "EAA non esistente presso l'Authentic Source",
+        "applicabile": "",
+        "causa": "",
+        "azione_utente": "",
+        "note": ""
+      },
+      {
+        "codice": "541",
+        "esito": "EAA in stato non valido o sospeso",
+        "applicabile": "",
+        "causa": "",
+        "azione_utente": "",
+        "note": ""
+      }
+    ],
+    "stati": [
+      {
+        "stato": "Valido",
+        "descrizione": "L'EAA è valido e può essere utilizzato",
+        "applicabile": "SI",
+        "azione_utente": "N/A",
+        "messaggio": "",
+        "note": ""
+      },
+      {
+        "stato": "Non Valido",
+        "descrizione": "L'EAA non è più valido e dunque non può essere più utilizzato",
+        "applicabile": "",
+        "azione_utente": "L'utente deve scaricare nuovamente l'EAA in app",
+        "messaggio": "",
+        "note": ""
+      },
+      {
+        "stato": "Sospeso",
+        "descrizione": "L'EAA è sospeso e non può essere temporaneamente utilizzato",
+        "applicabile": "",
+        "azione_utente": "",
+        "messaggio": "",
+        "note": ""
+      },
+      {
+        "stato": "Scaduto",
+        "descrizione": "L'EAA è scaduto e necessita una riemissione",
+        "applicabile": "",
+        "azione_utente": "",
+        "messaggio": "",
+        "note": ""
+      }
+    ],
+    "lista_nome_campo": [
+      {
+        "categoria": "Dati anagrafici e di identità",
+        "parametro": "",
+        "nome_campo": "Nome",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Dati anagrafici e di identità",
+        "parametro": "",
+        "nome_campo": "Cognome",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Dati anagrafici e di identità",
+        "parametro": "",
+        "nome_campo": "Data di nascita",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Dati anagrafici e di identità",
+        "parametro": "",
+        "nome_campo": "Luogo di nascita",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Dati anagrafici e di identità",
+        "parametro": "",
+        "nome_campo": "Codice Fiscale",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Dati anagrafici e di identità",
+        "parametro": "",
+        "nome_campo": "Nazionalità",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Residenza e domicilio",
+        "parametro": "",
+        "nome_campo": "Comune di residenza",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Residenza e domicilio",
+        "parametro": "",
+        "nome_campo": "Frazione",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Residenza e domicilio",
+        "parametro": "",
+        "nome_campo": "Indirizzo",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Residenza e domicilio",
+        "parametro": "",
+        "nome_campo": "Seconda riga indirizzo",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Residenza e domicilio",
+        "parametro": "",
+        "nome_campo": "Codice postale",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Residenza e domicilio",
+        "parametro": "",
+        "nome_campo": "Provincia / Stato / Regione",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Residenza e domicilio",
+        "parametro": "",
+        "nome_campo": "Residente dal",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Residenza e domicilio",
+        "parametro": "",
+        "nome_campo": "Residenza estera",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Diploma conclusivo del primo ciclo di istruzione",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Diploma conclusivo del secondo ciclo di istruzione",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Diploma",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Descrizione diploma",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Istituto",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Codice istituto",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Qualifica",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Qualifica professionale",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Plesso scolastico",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Codice plesso scolastico",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Tipologia di corso",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Corso di laurea",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Classe di laurea",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Codice classe di laurea",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Anno di corso",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Anno accademico",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Anno scolastico",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Anno di conseguimento diploma",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Data di conseguimento",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Periodo didattico",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Tipologia di frequenza",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Data di scadenza",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Voto",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Voto finale",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Indirizzo",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Sanità e previdenza",
+        "parametro": "",
+        "nome_campo": "Diritto accompagnatore",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Patenti e veicoli",
+        "parametro": "",
+        "nome_campo": "Data di rilascio",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Patenti e veicoli",
+        "parametro": "",
+        "nome_campo": "Paese di rilascio",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Patenti e veicoli",
+        "parametro": "",
+        "nome_campo": "Categoria",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Patenti e veicoli",
+        "parametro": "",
+        "nome_campo": "Scadenza",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Patenti e veicoli",
+        "parametro": "",
+        "nome_campo": "Numero",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Patenti e veicoli",
+        "parametro": "",
+        "nome_campo": "Codici",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Generali",
+        "parametro": "",
+        "nome_campo": "Origine dei dati",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Generali",
+        "parametro": "",
+        "nome_campo": "Emissione versione digitale",
+        "descrizione": ""
+      }
+    ]
+  }
+}
