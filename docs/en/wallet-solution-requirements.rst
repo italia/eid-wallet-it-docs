@@ -20,7 +20,7 @@ This section lists the requirements about Wallet Providers and Wallet Solutions 
    There is no strict one-to-one mapping between the requirements in this section and the test cases in :ref:`wallet-provider-test-matrix`. Some requirements are expressed at too high a level to be represented as atomic test cases, while others are already addressed in greater detail within related flows (e.g., :ref:`wallet-instance-attestation-issuance:Wallet Instance Attestation Issuance`).
 
 Wallet Instance Attestation Requirements
-"""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""
 
 Wallet Instance Attestation contains information regarding the security level of the device hosting the Wallet Instance.
 It primarily proves the **authenticity**, **integrity**, **security**, and in general the **trustworthiness** of a particular Wallet Instance.
