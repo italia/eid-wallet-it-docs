@@ -1,8 +1,8 @@
 .. include:: ../common/common_definitions.rst
 
 
-Wallet App and Wallet Unit Attestation Issuance
-===============================================
+WalletvUnit Attestation Issuance
+=================================
 
 This section describes how the Wallet Provider issues a Wallet App and a Wallet Unit Attestations.
 
