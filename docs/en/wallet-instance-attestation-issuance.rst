@@ -80,7 +80,7 @@ The Wallet Instance MUST send the signed Wallet Instance Attestation Request JWT
 
 Upon successful completion of all checks, the Wallet Provider issues a Wallet Instance Attestation valid for less than 24 hours (:ref:`WP_144 <wallet-instance-optional-testcases>`).
 
-**Step 29 (Wallet Instance Attestation Issuance Response)**: Upon successful completion, the Wallet Provider MUST return a confirmation response using status code 200 and Content-Type ``application/json``, containing the Wallet Instance Attestation signed by the Wallet Provider. The Wallet provider MUST return the Wallet Instance Attestation in JWT format. The Wallet Instance will then perform security and integrity verification of the Wallet Instance Attestation received in addition to trust verification of its Issuer (:ref:`WP_030–031 <wallet-instance-testcases>`).
+**Step 18 (Wallet Instance Attestation Issuance Response)**: Upon successful completion, the Wallet Provider MUST return a confirmation response using status code 200 and Content-Type ``application/json``, containing the Wallet Instance Attestation signed by the Wallet Provider. The Wallet provider MUST return the Wallet Instance Attestation in JWT format. The Wallet Instance will then perform security and integrity verification of the Wallet Instance Attestation received in addition to trust verification of its Issuer (:ref:`WP_030–031 <wallet-instance-testcases>`).
 
 
 Below is a non-normative example of the response.

@@ -402,6 +402,92 @@ The following table lists HTTP Status Codes and related error codes that are sup
       - The service is unavailable. Please try again later.
 
 
+Wallet Instance Attestation JWT
+""""""""""""""""""""""""""""""""
+
+The JOSE header of the Wallet Instance Attestation JWT contains the following parameters:
+
+.. list-table::
+    :class: longtable
+    :widths: 20 60 20
+    :header-rows: 1
+
+    * - **JOSE header**
+      - **Description**
+      - **Reference**
+    * - **alg**
+      - REQUIRED. A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms listed in the Section :ref:`algorithms:cryptographic algorithms` and MUST NOT be set to ``none`` or any symmetric algorithm (MAC) identifier.
+      - :rfc:`7516#section-4.1.1`.
+    * - **kid**
+      - REQUIRED. Unique identifier of the public key associated to the private key the Wallet Provider used to sign the Wallet Instance Attestation.
+      - :rfc:`7638#section_3`.
+    * - **typ**
+      - REQUIRED. It MUST be set to ``oauth-client-attestation+jwt``
+      - `OPENID4VC-HAIP`_.
+    * - **trust_chain**
+      - OPTIONAL. Sequence of Entity Statements that composes the Trust Chain related to the Wallet Provider.
+      - `OID-FED`_ Section 4.3 *Trust Chain Header Parameter*.
+    * - **x5c**
+      - REQUIRED. Contains the X.509 public key certificate or certificate chain (:rfc:`5280`) corresponding to the key used to digitally sign the JWT.
+      - :rfc:`7515` Section 4.1.8, `SD-JWT-VC`_ Section 3.5 and `OPENID4VC-HAIP`_.
+
+The body of the Wallet Instance Attestation JWT contains the following claims:
+
+.. list-table::
+    :class: longtable
+    :widths: 20 60 20
+    :header-rows: 1
+
+    * - **Claim**
+      - **Description**
+      - **Reference**
+    * - **iss**
+      - REQUIRED. Identifier of the Wallet Provider.
+      - :rfc:`9126` and :rfc:`7519`.
+    * - **exp**
+      - REQUIRED. UNIX Timestamp with the expiry time of the JWT.
+      - :rfc:`9126` and :rfc:`7519`.
+    * - **iat**
+      - OPTIONAL. UNIX Timestamp with the time of JWT issuance.
+      - :rfc:`9126` and :rfc:`7519`.
+    * - **nbf**
+      - OPTIONAL. UNIX Timestamp with the start time of validity of the JWT issuance.
+      - :rfc:`9126` and :rfc:`7519`.
+    * - **cnf**
+      - REQUIRED. JSON object, containing the public part of an asymmetric key pair owned by the Wallet Instance.
+      - :rfc:`7800`.
+    * - **eudi_wallet_info**
+      - REQUIRED. JSON object, containing the general information about the Wallet and Wallet Provider. The following parameter MUST be included:
+
+        - **general_info**: REQUIRED. An object that has the following parameters:
+
+          - **wallet_provider_name**: REQUIRED. String value of the Wallet Provider name as listed on the trusted list of Wallet Providers.
+          - **wallet_solution_id**: REQUIRED. String value of the Wallet Solution identifier as listed on the trusted list of Wallet Providers. 
+          - **wallet_solution_version**: REQUIRED. String value of the Wallet Solution version.
+          - **wallet_solution_certification_information**: REQUIRED. String value that contains a URL that links to the certification of the Wallet Solution.
+      - `EUDI-TS 3`_.
+    * - **sub**
+      - REQUIRED. Identifier of the Wallet Instance which is the thumbprint of the Wallet instance Attestation JWK.
+      - :rfc:`9126` and :rfc:`7519`.
+
+
+Below is a non-normative example of the Wallet Instance Attestation JWT header and payload, without encoding and signature applied:
+
+.. literalinclude:: ../../examples/wa-jwt_example_header.json
+  :language: JSON
+
+.. literalinclude:: ../../examples/wa-jwt_example_payload.json
+  :language: JSON
+
+
+.. note::
+    As the certification scheme has not yet been defined, the exact content of ``wallet_solution_certification_information`` is undefined. This content will be defined in a future update.
+
+
+
+
+
+
 
 Wallet Unit Attestation Issuance Endpoint
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -584,86 +670,6 @@ The following table lists HTTP Status Codes and related error codes for the ones
 
 
 
-Wallet Instance Attestation JWT
-""""""""""""""""""""""""""""""""
-
-The JOSE header of the Wallet Instance Attestation JWT contains the following parameters:
-
-.. list-table::
-    :class: longtable
-    :widths: 20 60 20
-    :header-rows: 1
-
-    * - **JOSE header**
-      - **Description**
-      - **Reference**
-    * - **alg**
-      - REQUIRED. A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms listed in the Section :ref:`algorithms:cryptographic algorithms` and MUST NOT be set to ``none`` or any symmetric algorithm (MAC) identifier.
-      - :rfc:`7516#section-4.1.1`.
-    * - **kid**
-      - REQUIRED. Unique identifier of the public key associated to the private key the Wallet Provider used to sign the Wallet Instance Attestation.
-      - :rfc:`7638#section_3`.
-    * - **typ**
-      - REQUIRED. It MUST be set to ``oauth-client-attestation+jwt``
-      - `OPENID4VC-HAIP`_.
-    * - **trust_chain**
-      - OPTIONAL. Sequence of Entity Statements that composes the Trust Chain related to the Wallet Provider.
-      - `OID-FED`_ Section 4.3 *Trust Chain Header Parameter*.
-    * - **x5c**
-      - REQUIRED. Contains the X.509 public key certificate or certificate chain (:rfc:`5280`) corresponding to the key used to digitally sign the JWT.
-      - :rfc:`7515` Section 4.1.8, `SD-JWT-VC`_ Section 3.5 and `OPENID4VC-HAIP`_.
-
-The body of the Wallet Instance Attestation JWT contains the following claims:
-
-.. list-table::
-    :class: longtable
-    :widths: 20 60 20
-    :header-rows: 1
-
-    * - **Claim**
-      - **Description**
-      - **Reference**
-    * - **iss**
-      - REQUIRED. Identifier of the Wallet Provider.
-      - :rfc:`9126` and :rfc:`7519`.
-    * - **exp**
-      - REQUIRED. UNIX Timestamp with the expiry time of the JWT.
-      - :rfc:`9126` and :rfc:`7519`.
-    * - **iat**
-      - OPTIONAL. UNIX Timestamp with the time of JWT issuance.
-      - :rfc:`9126` and :rfc:`7519`.
-    * - **nbf**
-      - OPTIONAL. UNIX Timestamp with the start time of validity of the JWT issuance.
-      - :rfc:`9126` and :rfc:`7519`.
-    * - **cnf**
-      - REQUIRED. JSON object, containing the public part of an asymmetric key pair owned by the Wallet Instance.
-      - :rfc:`7800`.
-    * - **eudi_wallet_info**
-      - REQUIRED. JSON object, containing the general information about the Wallet and Wallet Provider. The following parameter MUST be included:
-
-        - **general_info**: REQUIRED. An object that has the following parameters:
-
-          - **wallet_provider_name**: REQUIRED. String value of the Wallet Provider name as listed on the trusted list of Wallet Providers.
-          - **wallet_solution_id**: REQUIRED. String value of the Wallet Solution identifier as listed on the trusted list of Wallet Providers. 
-          - **wallet_solution_version**: REQUIRED. String value of the Wallet Solution version.
-          - **wallet_solution_certification_information**: REQUIRED. String value that contains a URL that links to the certification of the Wallet Solution.
-      - `EUDI-TS 3`_.
-    * - **sub**
-      - REQUIRED. Identifier of the Wallet Instance which is the thumbprint of the Wallet instance Attestation JWK.
-      - :rfc:`9126` and :rfc:`7519`.
-
-
-Below is a non-normative example of the Wallet Instance Attestation JWT header and payload, without encoding and signature applied:
-
-.. literalinclude:: ../../examples/wa-jwt_example_header.json
-  :language: JSON
-
-.. literalinclude:: ../../examples/wa-jwt_example_payload.json
-  :language: JSON
-
-
-.. note::
-    As the certification scheme has not yet been defined, the exact content of ``wallet_solution_certification_information`` is undefined. This content will be defined in a future update.
 
 
 
