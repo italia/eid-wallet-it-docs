@@ -17,7 +17,7 @@ This section lists the requirements about Wallet Providers and Wallet Solutions 
 - The Wallet Instance MUST provide Users with a mechanism to request the erasure of personal attributes by a Relying Party pursuant to Article 17 of Regulation (EU) 2016/679, and to log each Erasure Request made.
 
 .. note::
-   There is no strict one-to-one mapping between the requirements in this section and the test cases in :ref:`wallet-provider-test-matrix`. Some requirements are expressed at too high a level to be represented as atomic test cases, while others are already addressed in greater detail within related flows (e.g., :ref:`wallet-instnace-attestation-issuance:Wallet Instance Attestation Issuance`).
+   There is no strict one-to-one mapping between the requirements in this section and the test cases in :ref:`wallet-provider-test-matrix`. Some requirements are expressed at too high a level to be represented as atomic test cases, while others are already addressed in greater detail within related flows (e.g., :ref:`wallet-instance-attestation-issuance:Wallet Instance Attestation Issuance`).
 
 Wallet App Attestation Requirements
 """""""""""""""""""""""""""""""""""
