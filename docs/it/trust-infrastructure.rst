@@ -135,10 +135,6 @@ I **QEAA Provider** sono Fornitori di Servizi Fiduciari Qualificati (QTSP) ai se
 
 Di seguito è riportato un esempio non normativo di una voce relativa a un QEAA Provider all'interno di una Trusted List QTSP di uno Stato Membro, seguendo il formato XML `ETSI TS 119 612`_ (solo payload, senza firma XAdES):
 
-.. literalinclude:: ../../examples/qeaa-provider-trusted-list-example.xml
-   :language: xml
-   :caption: Esempio non normativo di una voce relativa a un QEAA Provider in una Trusted List QTSP di uno Stato Membro (formato XML, `ETSI TS 119 612`_ solo payload, senza firma)
-
 Profilo di Implementazione per le Trusted Lists degli EAA Provider Non Qualificati
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
