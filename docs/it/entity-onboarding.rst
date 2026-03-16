@@ -39,7 +39,7 @@ La seguente tabella riepiloga le tipologie di entità, i loro ruoli e i relativi
    * - Fonti Autentiche
      - Fornitori di dati autorevoli per gli attributi delle Credenziali Digitali
      - :ref:`entity-onboarding:Procedura di registrazione delle Fonti Autentiche`
-     - Validazione dell'autorità sui dati; integrazione API (es. PDND)
+     - Validazione della titolarità dei dati; integrazione API (es. PDND)
    * - Emittenti di Credenziali
      - Generano ed emettono Credenziali Digitali utilizzando i dati delle Fonti Autentiche
      - :ref:`entity-onboarding:Processo di Onboarding delle Entità Federate`
