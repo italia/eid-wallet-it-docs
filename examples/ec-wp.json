@@ -32,6 +32,8 @@
         "wallet_name": "Wallet X",
         "authorization_endpoint": "https://wallet-solution.digital-strategy.europa.eu/authorization",
         "credential_offer_endpoint": "https://wallet-solution.digital-strategy.europa.eu/credential_offer",
+        "wallet_instance_attestation_endpoint": "https://wallet-provider.example.org/wb/wallet-instance-attestations",
+        "wallet_unit_attestation_endpoint": "https://wallet-provider.example.org/wb/wallet-unit-attestations",
         "response_types_supported": [
           "vp_token"
         ],

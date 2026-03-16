@@ -20,9 +20,9 @@
     "user_authentication": [ "iso_18045_moderate" ],
     "eudi_wallet_info": {
         "general_info": {
-            "wallet_provider_name": "ExampleOrg", 
-            "wallet_solution_id": "Wallet-mobile",
-            "wallet_solution_version": "1.0.0",
+            "wallet_provider_name": "https://wallet.io.pagopa.it", 
+            "wallet_solution_id": "appio",
+            "wallet_solution_version": "3.25.1.0",
             "wallet_solution_certification_information": ""
         },
         "key_storage_info": {
