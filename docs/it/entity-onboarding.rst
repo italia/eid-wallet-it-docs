@@ -6,7 +6,7 @@ Onboarding delle Entità
 
 Questa sezione definisce le specifiche tecniche per la gestione del ciclo di vita delle entità nell'ecosistema IT-Wallet, basate sull'**Infrastruttura del Registro** definita in :ref:`registry:Infrastruttura del Registro`. Sono incluse le procedure di onboarding iniziale, le operazioni di gestione continuativa, quali aggiornamenti e modifiche dei dati, e i processi di uscita dalla federazione.
 
-Per una panoramica di alto livello del processo di onboarding, vedere :ref:`onboarding-high-level:Onboarding System`. La sezione :ref:`onboarding-high-level:Onboarding Journey Maps` fornisce una mappa del percorso di onboarding dal punto di vista degli operatori dell'Entità.
+Per una panoramica di alto livello del processo di onboarding, vedere :ref:`onboarding-high-level:Sistema di Onboarding`. La sezione :ref:`onboarding-high-level:Onboarding Journey Maps` fornisce una mappa del percorso di onboarding dal punto di vista degli operatori dell'Entità.
 
 Panoramica
 ----------
@@ -38,23 +38,23 @@ La seguente tabella riepiloga le tipologie di entità, i loro ruoli e i relativi
      - **Requisiti Chiave**
    * - Fonti Autentiche
      - Fornitori di dati autorevoli per gli attributi delle Credenziali Digitali
-     - :ref:`entity-onboarding:Processo di Registrazione delle Fonti Autentiche`
+     - :ref:`entity-onboarding:Procedura di registrazione delle Fonti Autentiche`
      - Validazione dell'autorità sui dati; integrazione API (es. PDND)
    * - Emittenti di Credenziali
      - Generano ed emettono Credenziali Digitali utilizzando i dati delle Fonti Autentiche
      - :ref:`entity-onboarding:Processo di Onboarding delle Entità Federate`
-     - Conformità all'Infrastruttura di Fiducia IT-Wallet; vedere :ref:`trust-infrastructure:The Infrastructure of Trust`
+     - Conformità all'Infrastruttura di Fiducia IT-Wallet; vedere :ref:`trust-infrastructure:L'Infrastruttura di Trust`
    * - Relying Party
      - Verificano le Credenziali Digitali per l'accesso ai servizi
      - :ref:`entity-onboarding:Processo di Onboarding delle Entità Federate`
-     - Conformità all'Infrastruttura di Fiducia IT-Wallet; vedere :ref:`trust-infrastructure:The Infrastructure of Trust`
+     - Conformità all'Infrastruttura di Fiducia IT-Wallet; vedere :ref:`trust-infrastructure:L'Infrastruttura di Trust`
    * - Fornitori di Wallet
      - Forniscono soluzioni wallet ai cittadini
      - :ref:`entity-onboarding:Processo di Onboarding delle Entità Federate`
-     - Conformità all'Infrastruttura di Fiducia IT-Wallet (vedere :ref:`trust-infrastructure:The Infrastructure of Trust`); capacità di Attestazione del Wallet (vedere :ref:`wallet-instance-registration:Wallet Instance Initialization and Registration`)
+     - Conformità all'Infrastruttura di Fiducia IT-Wallet (vedere :ref:`trust-infrastructure:L'Infrastruttura di Trust`); capacità di Attestazione del Wallet (vedere :ref:`wallet-instance-registration:Inizializzazione e Registrazione dell'Istanza del Wallet`)
    * - Istanze di Wallet
      - Applicazioni di wallet digitale a livello utente
-     - Registrazione indiretta tramite il Fornitore di Wallet, vedere :ref:`wallet-instance-registration:Wallet Instance Initialization and Registration`
+     - Registrazione indiretta tramite il Fornitore di Wallet, vedere :ref:`wallet-instance-registration:Inizializzazione e Registrazione dell'Istanza del Wallet`
      - Attestazione del Wallet da un Fornitore di Wallet affidabile
 
 Registrazione Amministrativa e Tecnica
@@ -67,7 +67,7 @@ Il processo di onboarding segue un approccio strutturato in più fasi:
   2. **Registrazione Tecnica**: A seguito dell'approvazione amministrativa, le entità effettuano la registrazione tecnica attraverso percorsi specializzati:
     
     - **Registrazione Fonte Autentica**: Procedure di registrazione incentrate sui dati con validazione dell'integrazione API.
-    - **Registrazione in Federazione**: Instaurazione della fiducia crittografica come definito nella Sezione :ref:`trust-infrastructure:The Infrastructure of Trust`.
+    - **Registrazione in Federazione**: Instaurazione della fiducia crittografica come definito nella Sezione :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
 
   3. **Integrazione con il Registro IT-Wallet**:
 
@@ -75,7 +75,7 @@ Il processo di onboarding segue un approccio strutturato in più fasi:
     - **Integrazione nella Tassonomia**: Tutte le entità utilizzano la classificazione gerarchica della Tassonomia (domini, classi, finalità) per strutturare organizzativamente le Credenziali.
     - **Integrazione nel Registro delle Fonti Autentiche**: Le Fonti Autentiche vengono registrate con i claim e le capacità dichiarate, abilitando la discovery e il coordinamento degli Emittenti di Credenziali.
     - **Integrazione nel Registro della Federazione**: Le entità operative vengono incluse per la validazione della fiducia durante le operazioni sulle Credenziali.
-    - **Integrazione nel Catalogo**: I tipi di Credenziale vengono pubblicati in :ref:`registry:Struttura del Catalogo delle Credenziali Digitali` in base alle politiche dell'Organismo di Vigilanza per l'idoneità alla discovery pubblica.
+    - **Integrazione nel Catalogo**: I tipi di Credenziale vengono pubblicati in :ref:`registry:Struttura del Catalogo degli Attestati Elettronici` in base alle politiche dell'Organismo di Vigilanza per l'idoneità alla discovery pubblica.
 
 Tutti i componenti del registro e le loro interazioni sono descritti in dettaglio in :ref:`registry:Infrastruttura del Registro`.
 
@@ -83,7 +83,7 @@ Tutti i componenti del registro e le loro interazioni sono descritti in dettagli
 Processo di Registrazione delle Fonti Autentiche
 -------------------------------------------------
 
-Le Fonti Autentiche DEVONO completare un processo di registrazione strutturato per confermare il loro status di fornitori di dati autorevoli nell'ecosistema IT-Wallet. Tale processo include la specifica dei requisiti e la validazione procedurale, come descritto in :ref:`onboarding-high-level:Authentic Source Operator Journey`.
+Le Fonti Autentiche DEVONO completare un processo di registrazione strutturato per confermare il loro status di fornitori di dati autorevoli nell'ecosistema IT-Wallet. Tale processo include la specifica dei requisiti e la validazione procedurale, come descritto in :ref:`onboarding-high-level:Journey dell'Operatore della Fonte Autentica`.
 
 Requisiti di Registrazione delle Fonti Autentiche
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -111,8 +111,8 @@ Le Fonti Autentiche DEVONO rispettare i seguenti requisiti tecnici:
     - **Qualità dei Dati**: Le Entità DEVONO specificare la frequenza di aggiornamento e fornire garanzie sull'aggiornamento dei dati.
     - **Audit Trail**: Le Entità DEVONO implementare capacità di logging per tutte le attività di accesso e fornitura dei dati.
 
-Requisiti Informativi per la Registrazione delle Fonti Autentiche
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Requisiti sulle informazioni di registrazione delle Fonti Autentiche
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. note::
   Solo le Fonti Autentiche italiane possono essere registrate nella fase attuale di IT-Wallet.
@@ -158,8 +158,8 @@ Durante la registrazione, le Fonti Autentiche DEVONO fornire le seguenti informa
        - URI del modello visivo con verifica dell'integrità per la presentazione delle Credenziali Digitali.
 
 
-Procedura di Registrazione delle Fonti Autentiche
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Procedura di registrazione delle Fonti Autentiche
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 La registrazione della Fonte Autentica segue un processo tecnico descritto di seguito.
 
@@ -211,7 +211,7 @@ L'integrazione tecnica comprende:
 Processo di Onboarding delle Entità Federate
 ---------------------------------------------
 
-Le Entità Federate, tra cui Emittenti di Credenziali, Relying Party e Fornitori di Wallet, devono completare le procedure di onboarding per diventare partecipanti idonei nell'ecosistema IT-Wallet. Tale processo stabilisce la fiducia distribuita mediante l'emissione di Certificati X.509, la validazione delle Catene di Fiducia e la verifica della conformità, come descritto in :ref:`trust-infrastructure:The Infrastructure of Trust`.
+Le Entità Federate, tra cui Emittenti di Credenziali, Relying Party e Fornitori di Wallet, devono completare le procedure di onboarding per diventare partecipanti idonei nell'ecosistema IT-Wallet. Tale processo stabilisce la fiducia distribuita mediante l'emissione di Certificati X.509, la validazione delle Catene di Fiducia e la verifica della conformità, come descritto in :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
 
 Modello Gerarchico dell'Autorità di Federazione
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -238,22 +238,22 @@ Prerequisiti di Onboarding alla Federazione
 
 Le Entità Federate DEVONO rispettare i seguenti requisiti tecnici prima di avviare il processo di onboarding:
 
-  - **Generazione delle Chiavi**: Le entità DEVONO generare almeno due coppie di chiavi mediante crittografia a curva ellittica come specificato in :ref:`algorithms:Cryptographic Algorithms`:
+  - **Generazione delle Chiavi**: Le entità DEVONO generare almeno due coppie di chiavi mediante crittografia a curva ellittica come specificato in :ref:`algorithms:Algoritmi Crittografici`:
 
     - **Coppia di Chiavi della Federazione**: Utilizzata per firmare le Configurazioni dell'Entità e attestare le chiavi specifiche dell'applicazione. Per le best practice di sicurezza e la continuità operativa, le entità DOVREBBERO mantenere più Chiavi di Entità della Federazione (almeno due) per abilitare la rotazione sicura delle chiavi e la risposta agli incidenti senza impatto sulle entità che hanno memorizzato nella cache le Configurazioni dell'Entità.
     - **Coppia/i di Chiavi Specifiche dell'Applicazione**: Utilizzate per le operazioni protocollari specifiche dell'entità, come l'emissione e la presentazione delle Credenziali.
 
   - **Attestazione delle Chiavi Specifiche dell'Applicazione**: Le entità DEVONO creare Certificati X.509 auto-firmati per le proprie chiavi specifiche dell'applicazione utilizzando la Chiave Privata dell'Entità della Federazione.
 
-  - **Predisposizione della Configurazione dell'Entità**: Le entità DEVONO pubblicare una Configurazione dell'Entità (CE) firmata con la propria Chiave Privata dell'Entità della Federazione all'endpoint ``/.well-known/openid-federation`` come definito in :ref:`trust-infrastructure:The Infrastructure of Trust`. La CE DEVE includere:
+  - **Predisposizione della Configurazione dell'Entità**: Le entità DEVONO pubblicare una Configurazione dell'Entità (CE) firmata con la propria Chiave Privata dell'Entità della Federazione all'endpoint ``/.well-known/openid-federation`` come definito in :ref:`trust-infrastructure:L'Infrastruttura di Trust`. La CE DEVE includere:
 
     - Un claim ``jwks`` contenente le Chiavi dell'Entità della Federazione in formato JSON Web Key (JWK).
-    - Un claim ``iss`` con l'Identificatore dell'Entità della Federazione come definito in :ref:`trust-infrastructure:Federation Roles`.
+    - Un claim ``iss`` con l'Identificatore dell'Entità della Federazione come definito in :ref:`trust-infrastructure:Ruoli di Federazione`.
     - Un claim ``sub`` uguale al claim ``iss``.
     - I claim ``iat`` ed ``exp`` che definiscono un intervallo di tempo valido.
-    - Un claim ``metadata`` contenente i metadati specifici dell'entità organizzati per Tipologie di Metadati (vedere :ref:`credential-issuer-entity-configuration:Credential Issuer Entity Configuration`, :ref:`relying-party-entity-configuration:Relying Party Entity Configuration`, o :ref:`wallet-provider-entity-configuration:Wallet Provider Entity Configuration`) con chiavi specifiche dell'applicazione incluse nei campi ``jwks`` dei metadati e Certificati X.509 auto-firmati nei relativi claim ``x5c``.
+    - Un claim ``metadata`` contenente i metadati specifici dell'entità organizzati per Tipologie di Metadati (vedere :ref:`credential-issuer-entity-configuration:Entity Configuration del Fornitore di Attestati Elettronici`, :ref:`relying-party-entity-configuration:Entity Configuration Relying Party`, o :ref:`wallet-provider-entity-configuration:Entity Configuration del Fornitore di Wallet`) con chiavi specifiche dell'applicazione incluse nei campi ``jwks`` dei metadati e Certificati X.509 auto-firmati nei relativi claim ``x5c``.
 
-  - **Richiesta di Firma del Certificato X.509 (CSR)**: Le entità DEVONO predisporre una Richiesta di Firma del Certificato X.509 (CSR) in formato PKCS #10 contenente **la Chiave dell'Entità della Federazione** per l'emissione del Certificato X.509 da parte dell'Autorità di Federazione, come definito in :ref:`trust-infrastructure:X.509 Certificates Issuance`.
+  - **Richiesta di Firma del Certificato X.509 (CSR)**: Le entità DEVONO predisporre una Richiesta di Firma del Certificato X.509 (CSR) in formato PKCS #10 contenente **la Chiave dell'Entità della Federazione** per l'emissione del Certificato X.509 da parte dell'Autorità di Federazione, come definito in :ref:`trust-infrastructure:Emissione di Certificati X.509`.
 
 Requisiti di Sicurezza per la Gestione delle Chiavi
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -302,15 +302,15 @@ La procedura di onboarding alla federazione segue una procedura strutturata in 4
    * - **Categoria Informativa Tecnica**
      - **Requisiti e Descrizione**
    * - **Identificatore dell'Entità Federata**
-     - **OBBLIGATORIO**. Un URL univoco che identifica l'Entità Federata come definito in :ref:`trust-infrastructure:Federation Roles`.
+     - **OBBLIGATORIO**. Un URL univoco che identifica l'Entità Federata come definito in :ref:`trust-infrastructure:Ruoli di Federazione`.
    * - **Chiave dell'Entità Federata (JWK)**
-     - **OBBLIGATORIO**. Chiave pubblica a curva ellittica in formato JSON Web Key utilizzata per firmare le Configurazioni dell'Entità e attestare le chiavi specifiche dell'applicazione, con algoritmi crittografici specificati in :ref:`algorithms:Cryptographic Algorithms`.
+     - **OBBLIGATORIO**. Chiave pubblica a curva ellittica in formato JSON Web Key utilizzata per firmare le Configurazioni dell'Entità e attestare le chiavi specifiche dell'applicazione, con algoritmi crittografici specificati in :ref:`algorithms:Algoritmi Crittografici`.
    * - **Richiesta di Firma del Certificato X.509 (CSR)**
      - **OBBLIGATORIO**. CSR in formato PKCS #10 per l'emissione del Certificato X.509 da parte dell'Autorità di Federazione. La CSR DEVE:
 
        - Contenere **solo le Chiavi dell'Entità Federata**.
        - Essere firmata con la corrispondente Chiave Privata dell'Entità Federata.
-       - Definire il Soggetto del Certificato X.509 con gli attributi richiesti come specificato in :ref:`trust-infrastructure:X.509 Certificates Issuance` per le Entità Federate.
+       - Definire il Soggetto del Certificato X.509 con gli attributi richiesti come specificato in :ref:`trust-infrastructure:Emissione di Certificati X.509` per le Entità Federate.
 
 .. warning::
    Prima di inviare la richiesta tecnica di onboarding, le Entità Federate DEVONO assicurarsi che il proprio endpoint ``/.well-known/openid-federation`` pubblichi una Configurazione dell'Entità valida (come definito in :ref:`trust-infrastructure:Entity Configuration`) firmata con la propria Chiave Privata dell'Entità Federata corrispondente alla Chiave dell'Entità Federata fornita nella richiesta. La Configurazione dell'Entità DEVE già includere le chiavi specifiche dell'applicazione nei metadati con Certificati X.509 auto-firmati nei claim ``x5c``.
@@ -328,7 +328,7 @@ L'esempio seguente mostra il contenuto decodificato della CSR:
    :caption: Esempio di contenuto decodificato della CSR
 
 .. note::
-   Gli attributi del Soggetto della CSR DEVONO rispettare i requisiti specificati in :ref:`trust-infrastructure:X.509 Certificates Issuance` per le Entità Federate.
+   Gli attributi del Soggetto della CSR DEVONO rispettare i requisiti specificati in :ref:`trust-infrastructure:Emissione di Certificati X.509` per le Entità Federate.
 
 .. note::
    Le Chiavi dell'Entità Federata contenute nell'oggetto ``jwks`` e le chiavi pubbliche contenute nell'oggetto ``certificate_signing_requests`` DEVONO corrispondere. Le chiavi sono fornite in due formati: formato JWK e formato PKCS #10 CSR per l'emissione del Certificato X.509. Le chiavi specifiche dell'applicazione sono incluse solo nei metadati della Configurazione dell'Entità e NON DEVONO essere incluse nella richiesta di onboarding.
@@ -339,9 +339,9 @@ L'esempio seguente mostra il contenuto decodificato della CSR:
 **Fase 2 - Validazione dell'Autorità di Federazione ed Emissione del Certificato X.509**: A seguito dell'invio della richiesta di onboarding, l'**Autorità di Federazione** DEVE eseguire:
 
   - Verifica delle informazioni fornite nella richiesta di registrazione.
-  - Validazione della Configurazione dell'Entità, e dei metadati in essa contenuti, pubblicata all'endpoint ``/.well-known/openid-federation`` dell'entità (come definito in :ref:`trust-infrastructure:The Infrastructure of Trust`).
-  - **Applicazione delle Politiche sui Metadati**: Applicazione delle politiche sui metadati specifiche della federazione ai metadati dell'entità in base alle caratteristiche organizzative e all'ambito di autorizzazione come definito in :ref:`trust-infrastructure:Subordinate Statements`. Quando registrata tramite un Intermediario, si applicano le politiche sia dell'Intermediario che del Trust Anchor, con le politiche del Trust Anchor prevalenti in caso di conflitti.
-  - **Emissione del Certificato X.509**: Certificazione della Chiave dell'Entità Federata con l'emissione del Certificato X.509 utilizzando l'infrastruttura di fiducia dettagliata in :ref:`trust-infrastructure:X.509 Certificates Issuance`. Gli Intermediari DEVONO emettere Certificati X.509 utilizzando **vincoli di denominazione** appropriati che limitino l'uso di nomi DNS e URI ai soli propri subordinati.
+  - Validazione della Configurazione dell'Entità, e dei metadati in essa contenuti, pubblicata all'endpoint ``/.well-known/openid-federation`` dell'entità (come definito in :ref:`trust-infrastructure:L'Infrastruttura di Trust`).
+  - **Applicazione delle Politiche sui Metadati**: Applicazione delle politiche sui metadati specifiche della federazione ai metadati dell'entità in base alle caratteristiche organizzative e all'ambito di autorizzazione come definito in :ref:`trust-infrastructure:Subordinate Statement`. Quando registrata tramite un Intermediario, si applicano le politiche sia dell'Intermediario che del Trust Anchor, con le politiche del Trust Anchor prevalenti in caso di conflitti.
+  - **Emissione del Certificato X.509**: Certificazione della Chiave dell'Entità Federata con l'emissione del Certificato X.509 utilizzando l'infrastruttura di fiducia dettagliata in :ref:`trust-infrastructure:Emissione di Certificati X.509`. Gli Intermediari DEVONO emettere Certificati X.509 utilizzando **vincoli di denominazione** appropriati che limitino l'uso di nomi DNS e URI ai soli propri subordinati.
 
 Al termine della validazione positiva, l'entità riceve una risposta contenente una Catena di Certificati X.509 in cui:
 
@@ -365,7 +365,7 @@ Esempio di risposta con catena di Certificati X.509:
 .. note::
    Ciascuna entità può raccogliere la propria Catena di Certificati X.509 ottenendo il Certificato X.509 auto-firmato del Trust Anchor, incluso nell'oggetto ``jwks`` della Configurazione dell'Entità, e aggregando tutti i valori ``x5c`` pubblicati dalle entità superiori, dal Trust Anchor fino al suo superiore immediato. Questo consente all'entità di ricostruire la catena di certificati completa necessaria per la validazione e l'instaurazione della fiducia all'interno della federazione.
 
-**Fase 3 - Recupero della Dichiarazione del Subordinato**: come conferma del successo del processo di onboarding, l'entità DEVE recuperare la Dichiarazione del Subordinato che la riguarda dalla Federazione Immediata utilizzando l'endpoint ``/fetch`` come definito in :ref:`trust-infrastructure:Federation API endpoints`.
+**Fase 3 - Recupero della Dichiarazione del Subordinato**: come conferma del successo del processo di onboarding, l'entità DEVE recuperare la Dichiarazione del Subordinato che la riguarda dalla Federazione Immediata utilizzando l'endpoint ``/fetch`` come definito in :ref:`trust-infrastructure:Endpoint API di Federazione`.
 
 Esempio di richiesta fetch:
 
@@ -407,9 +407,9 @@ L'Entità Federata DEVE completare il processo di onboarding:
 
     Il contenuto dell'endpoint ``/.well-known/openid-federation`` deve essere aggiornato per includere i seguenti claim:
 
-     - Aggiungere un claim ``authority_hints`` con un Array JSON contenente l'Identificatore dell'Entità Federata dell'**Autorità di Federazione immediata** (Trust Anchor per l'onboarding diretto, o Intermediario per l'onboarding mediato) come definito in :ref:`trust-infrastructure:Federation Roles`.
+     - Aggiungere un claim ``authority_hints`` con un Array JSON contenente l'Identificatore dell'Entità Federata dell'**Autorità di Federazione immediata** (Trust Anchor per l'onboarding diretto, o Intermediario per l'onboarding mediato) come definito in :ref:`trust-infrastructure:Ruoli di Federazione`.
 
-     - **Integrare i Trust Mark**: Includere i Trust Mark della Dichiarazione del Subordinato nella Configurazione dell'Entità usando il claim ``trust_marks`` come specificato in :ref:`trust-infrastructure:Entity Configuration Leaves and Intermediates`.
+     - **Integrare i Trust Mark**: Includere i Trust Mark della Dichiarazione del Subordinato nella Configurazione dell'Entità usando il claim ``trust_marks`` come specificato in :ref:`trust-infrastructure:Entity Configuration Foglie e Intermediari`.
 
      Esempio di aggiunta di authority_hints:
 
@@ -437,13 +437,13 @@ L'Entità Federata DEVE completare il processo di onboarding:
          ]
 
 .. note::
-   Per aggiornare i Trust Mark dopo l'onboarding, l'entità può utilizzare l'endpoint fetch del proprio superiore immediato per ottenere tutti i Trust Mark aggiornati che la riguardano. Quando l'emittente del Trust Mark è diverso dall'entità superiore che ha registrato l'entità, le Entità Federate possono ottenere Trust Mark aggiornati in qualsiasi momento utilizzando l'endpoint Federation Trust Mark come definito in :ref:`trust-infrastructure:Federation API endpoints`.
+   Per aggiornare i Trust Mark dopo l'onboarding, l'entità può utilizzare l'endpoint fetch del proprio superiore immediato per ottenere tutti i Trust Mark aggiornati che la riguardano. Quando l'emittente del Trust Mark è diverso dall'entità superiore che ha registrato l'entità, le Entità Federate possono ottenere Trust Mark aggiornati in qualsiasi momento utilizzando l'endpoint Federation Trust Mark come definito in :ref:`trust-infrastructure:Endpoint API di Federazione`.
 
 Al completamento positivo della Fase 4, **l'onboarding dell'entità è completato con successo**. L'entità è ora operativa all'interno della federazione IT-Wallet e pronta per le attività operative.
    
 
 .. note::
-   **Integrazione nel Registro della Federazione**: Al completamento positivo dell'onboarding, l'Identificatore dell'Entità Federata dell'entità diventa rilevabile tramite i meccanismi di listing del Trust Anchor (come definito in :ref:`trust-infrastructure:The Infrastructure of Trust`), indicando la partecipazione attiva alla federazione. L'entità diventa parte dell'infrastruttura di federazione dettagliata in :ref:`registry:Infrastruttura del Registro`.
+   **Integrazione nel Registro della Federazione**: Al completamento positivo dell'onboarding, l'Identificatore dell'Entità Federata dell'entità diventa rilevabile tramite i meccanismi di listing del Trust Anchor (come definito in :ref:`trust-infrastructure:L'Infrastruttura di Trust`), indicando la partecipazione attiva alla federazione. L'entità diventa parte dell'infrastruttura di federazione dettagliata in :ref:`registry:Infrastruttura del Registro`.
 
 Trust Mark della Federazione IT-Wallet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -579,7 +579,7 @@ I seguenti esempi non normativi illustrano diversi contenuti del JWT del Trust M
 
 
 
-Le Entità Federate DEVONO integrare i Trust Mark nella propria Configurazione dell'Entità utilizzando il claim ``trust_marks`` come specificato in :ref:`trust-infrastructure:Entity Configuration Leaves and Intermediates`. Le Entità POSSONO ricevere più Trust Mark per diversi ambiti di autorizzazione.
+Le Entità Federate DEVONO integrare i Trust Mark nella propria Configurazione dell'Entità utilizzando il claim ``trust_marks`` come specificato in :ref:`trust-infrastructure:Entity Configuration Foglie e Intermediari`. Le Entità POSSONO ricevere più Trust Mark per diversi ambiti di autorizzazione.
 
 
 .. code-block:: json
@@ -630,7 +630,6 @@ Validazione dei Trust Mark
 I partecipanti alla federazione validano lo stato dei Trust Mark tramite due meccanismi:
 
 1. **Validazione Statica**: Verifica crittografica utilizzando la chiave pubblica dell'Autorità di Federazione emittente dalla Catena di Fiducia.
-2. **Validazione Dinamica**: Verifica dello stato in tempo reale, contro eventuali revoche, utilizzando l'endpoint ``/trust_mark_status`` dell'Autorità di Federazione come definito in :ref:`trust-infrastructure:Federation API endpoints`.
+2. **Validazione Dinamica**: Verifica dello stato in tempo reale, contro eventuali revoche, utilizzando l'endpoint ``/trust_mark_status`` dell'Autorità di Federazione come definito in :ref:`trust-infrastructure:Endpoint API di Federazione`.
 
-Per le procedure complete di gestione dei Certificati X.509, inclusa la validazione della catena, la verifica delle revoche e la gestione del ciclo di vita, vedere :ref:`x5c-evaluation:X.509 Certificate Management Operations`.
-
+Per le procedure complete di gestione dei Certificati X.509, inclusa la validazione della catena, la verifica delle revoche e la gestione del ciclo di vita, vedere :ref:`x5c-evaluation:Operazioni di Gestione dei Certificati X.509`.
