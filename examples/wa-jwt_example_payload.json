@@ -10,13 +10,13 @@
     },
     "eudi_wallet_info": {
       "general_info": {
-        "wallet_provider_name": "https://wallet.io.pagopa.it",
-        "wallet_solution_id": "appio",
-        "wallet_solution_version": "3.25.1.0",
+        "wallet_provider_name": "ExampleOrg",
+        "wallet_solution_id": "Wallet-mobile",
+        "wallet_solution_version": "1.0.0",
         "wallet_solution_certification_information": ""
       }
     },
-    "iss": "https://wallet.io.pagopa.it",
+    "iss": "https://wallet-provider.example.org",
     "sub": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c",
     "iat": 1772444318,
     "exp": 1772447918
