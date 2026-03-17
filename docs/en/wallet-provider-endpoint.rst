@@ -246,9 +246,6 @@ The Wallet Instance Attestation Request JWT includes the following body claims:
     * - **iss**
       - The identifier of the Wallet Provider concatenated with the thumbprint of the JWK in the ``cnf`` claim.
       - [:rfc:`9126`], [:rfc:`7519`].
-    * - **aud**
-      - The identifier of the Wallet Provider.
-      - [:rfc:`9126`], [:rfc:`7519`].
     * - **exp**
       - UNIX timestamp representing the JWT expiration time.
       - [:rfc:`9126`], [:rfc:`7519`].
@@ -274,7 +271,7 @@ The Wallet Instance Attestation Request JWT includes the following body claims:
       - String containing the value of the device operating system.
       - 
     * - **wallet_solution_id**
-      - String containing the identifier of the Wallet Solution .
+      - String containing the identifier of the Wallet Solution.
       - 
     * - **wallet_solution_version**
       - String containing the version of the Wallet Solution.
@@ -296,7 +293,6 @@ Below is a non-normative example of a Wallet Instance Attestation Request JWT he
   
     {
       "iss": "https://wallet-provider.example.org/instance/OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
-      "aud": "https://wallet-provider.example.org/",
       "nonce": "f3b29a81-45c7-4d12-b8b5-e1f6c9327aef",
       "hardware_signature": "KoZIhvcNAQcCoIAwgAIB...",
       "integrity_assertion": "o2NmbXRvYXBwbGUtYXBwYXNzZXJ0aW9uLXBheWxvYWQtYXBw...",
@@ -562,7 +558,7 @@ The Wallet Unit Attestation Request JWT includes the following body claims:
       - The ``nonce`` obtained from the Nonce Endpoint.
       -
     * - **keys_to_attest**
-      - JWT array containing the various ``Key_Attestation_Requests``
+      - JSON array of JWT strings, each representing a ``Key_Attestation_Requests``.
       -
     * - **hardware_signature**
       - The signature of ``client_data_hash`` obtained using the Cryptographic Hardware Key, encoded in the ``base64url`` format.

@@ -1,5 +1,5 @@
 {
-    "iss": "https://wallet-provider.example.org",
+    "iss": "https://wallet.io.pagopa.it",
     "attested_keys": [
         {
             "crv": "P-256",

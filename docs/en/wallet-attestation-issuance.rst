@@ -9,7 +9,7 @@ This section describes how the Wallet Provider issues a Wallet Unit Attestations
 .. plantuml:: plantuml/wallet-attestation-issuance.puml
     :width: 99%
     :alt: The figure illustrates the Sequence Diagram for Wallet Unit Attestations acquisition.
-    :caption: `Sequence Diagram for Wallet Unit Attestations acquisition. <https://www.plantuml.com/plantuml/svg/fLN1RkCs4BtpAmRSGnD06w05saE05ckaQHAqs1gRJNke2s4aZYt2yb0bARlfrvTa54jMcEqkUZ5CwitmpNl3uJldqVf-rmhilU5-Lv4LZLO4QsDyPVuMugjbGEXQTyZU2QoziI0V75a9wA1t8Q0R4I1_nxOb3tSSKdDD2OLT1wUed-aH5jvJ07bj61RBEvUWM_GEthZEQjviB16Vnlr8UrrJoEvfOxL_X7koSMTCWFC4MNfBQ_PQaOKAwosnIg5LlHKYLlJsXy3u4ZxGNpqv3mXC1p0TsIUola6_OXk-QaiE48Qa3wpzILLHBhr7Jr418SBFaFcgeNeBUWrNzh7pPcEnQtGDjsZL0Ir1b6V57t43Pr8smswvfSVIuqRAym9o0XQ0h60kKVe4CIlkKRTOjJIbSaCSwo87XWcC1OGAVTs0MKDjIH5xZIs4iw53RS_SENW35G6cqqc1vbS52EmZwQwlog-bB61OMhrFwukBYm962CyW72eLmhBn16PFDgfO19FWpIztDxSVRpvSNxyNJrBERTKEeksn2DyG_4HgC2z9P2gFca5x1plogD2Z85Rff46RSCpO05AoYRqiHqDJhuIVX1nLd43Jrq7aSLVHIOgS4m5TjvhObv5OsQ1hPEhF-zl5Dzz-TtPCLi0VetXvFVyyX-mHd-YxfLckUD9rJcyOVM_3WV0znDNPMOvX0VbMdMz7QyF-CotqxZ9VyThOQHSxHpOwA6B843ZLJ3z3Ito6IhdYolIiOiicqI15ZxPaWzB9ipaMwBO-tjW5AskqWhSlhk2wDOSKIbWtnmiZnfw9isqeUvlOrvPUytjCDBWfH8m9aVEwutSSQ6Hh3f5ZpRa0E7O8p3Exqfi1BENWVYP38UM9jOfcHLFhAAgdVxqVbCFFKIxH-cAf_b-79FCV5f_TA07xXG9civM77by8IQoo8-BLWJjCh4if9pJ7MvkjeiWmBI0_0GeOfy-ASnT-Ce2U5eT4jNIcxLETMkNtzsJTaK_NeW_Yxe88Cqd6wNnFh61Qw6mylp--6s5LGFxXqElvJGVjGBEEhvx-XrHwCFRXlnAzqxo1bpMBwm1Xusdw8lmMGqvUXCp7ZFBnl74WRvy6SZOqxsO6clSoZnozY-Uc1eyXeV0L_rVNJH9UMVf4cugJn_7rhAupx4ZC7itfCYGGxuXLlsl_1G00>`_
+    :caption: `Sequence Diagram for Wallet Unit Attestations acquisition. <https://www.plantuml.com/plantuml/svg/fLNVRzis47xdNt5W7-O0Qe0Ds1u2RAYHPKcmeJEQPdkO1-4adYt2yb4ZAMVPNp-IKIrPfRiMUp5CyRiVztt7kpVEe_NzlXNOUyFzlY8h6gq8DiRuolmjn5UhWD2rxf2z4rXxOq4-Eh8Iq47lWa4t8a3-ZcrB7kuvkEQQ4Wgx3avHFzCpBBsd0FBQC2nNzov1T-WTl7ATrRpTMY8-jVkH3hgcuDtJrch_30zauvVH0UOTpD9RMNFGYYnKME-8LJAjwfqGiQBNFuICh-0T_TMJyu30z0Ic8_kIh6_Ghzc6Mst90SBWz96rFwagqgKFw2ao84Ju6JnVDrJlG6_WsZvttcmjTeskuGwjUa9B4EbPytlSmaBAPlXQxkYvzBYLygA0784582kOKvIk87h50-eMgvQcgTmInxh8WM42Om6XGbytO3PGMrB4NcCB8JPqgEt2NO0tK15WYauAD9yZ86OVa-xwglnQoWA6ezM7TBwyl2nWXF0Cmg5I8ImRJs0EP2EBHH09NlroVtlt_lRTpSrRyKBbN5Rj8CeUY_0DmK-a1l4IHQRog1cqTx0dZmez2cAL8WtSX31Z0qZ99lQo70LDlH9-4d9aSG9DjmF9urT59ovoIWHqtMfYNyR4oWPT8rD_Fjmjl_dskyNHMG5_ZEJb-Vpp0d8XFjLtAxDQywJhdDuo-jw6WF0znDDYaSkmW7ohpZz7QQEmGrhetLM-uesnqovsZcnKK4IJmN3AcVu0BV43LCerLwPd5LisaGR9UfGbQvGYp-POIBVrySKkMLcZ5Rp-w0bkMlEKJ0dhvlXWnDWpSRODPUzIzhMbStgFZWOrXOWsqN9MTxp78OripT5oh3bZ0CSEWRbdLtepWAKSrCzuAAGyaLRHh6Xg7KNszAyF0tFuESobjBwSgl_L8Kdyn-NdDah4VY616MyP4ebLTZoS7RR3jBgISk9q27asPYRB0lAllu1nygmvzzWdm-Vby9HIBPrf-nYlr2h__K3M7VFfMlI1s7qWOKR9E9aVY1LC2fsFvhV7dH5E1UINXjxCNpbe1vfrt7Zw7r9fMHp2VoLwftaB7zSiRWA4ZQVfDlWjcfniWynbXlaORnp6kvTXd3VDgfc7vhJC8aVjOjpKtD4a5Bxc_-gwYSDhIvzeKt6o6CzxTPrXHsA-C2V7u42y8LRzllqN>`_
 
 
 .. .. figure:: ../../images/wallet_instance_acquisition.svg
@@ -35,7 +35,7 @@ Upon a successful request, the Wallet Provider generates and returns the nonce v
 
 **Step 7**: The Wallet Instance performs the following actions (:ref:`WP_140c <wallet-instance-optional-testcases>`):
 
-* Creates ``client_data``, a JSON object that includes the ``nonce`` and a ``jwk_thumbprints`` field containg a JSON array of the JWK thumbprints corresponding to the public keys ``(key_pub_1,...,key_pub_n)`` .
+* Creates ``client_data``, a JSON object that includes the ``nonce`` and a ``jwk_thumbprints`` field containing a JSON array of the JWK thumbprints corresponding to the public keys ``(key_pub_1,...,key_pub_n)`` .
 * Computes ``client_data_hash`` by applying the ``SHA256`` algorithm to the ``client_data``.
 
 Below is a non-normative example of the ``client_data`` JSON object.
@@ -44,7 +44,7 @@ Below is a non-normative example of the ``client_data`` JSON object.
 
   {
     "nonce": "i4ThI2Jhbu81i8mqyWEuDG5t",
-    "jwk_thumbprints": "[vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c]"
+    "jwk_thumbprints": ["vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c"]
   }
 
 
@@ -68,7 +68,7 @@ Below is a non-normative example of the ``client_data`` JSON object.
 
 **Steps 16-19**: The Wallet Instance:
 
-*  requests the Key Attestation API to create an ``key_attestation`` value for each ``client_data_hash`` per each ``key_pub``.
+*  requests the Device Integrity Service to create an ``key_attestation`` value for each ``client_data_hash`` per each ``key_pub``.
 *  receives a signed ``integrity_assertion`` value from the Device Integrity Service, authenticated by the OEM.
 *  generate ``keys_to_attest`` value by signing the ``integrity_assertion`` that is obtained for the Wallet Unit Attestation using the private key of the initially generated credential key pair (``priv_key``). 
 
@@ -87,7 +87,7 @@ The Wallet Instance MUST send the signed Wallet Unit Attestation Request JWT as 
   1. The request MUST include all required HTTP header parameters as defined in :ref:`wallet-provider-endpoint:Wallet Unit Attestation Issuance Request` (:ref:`WP_143a <wallet-instance-optional-testcases>`).
   2. The signature of the Wallet Unit Attestation Request MUST be valid and verifiable using the provided ``jwk`` (:ref:`WP_143b <wallet-instance-optional-testcases>`).
   3. The ``nonce`` value MUST have been generated by the Wallet Provider and not previously used (:ref:`WP_143c <wallet-instance-optional-testcases>`).
-  4. A valid and currently registered Wallet Instance associated with the provided MUST exist (:ref:`WP_143d <wallet-instance-optional-testcases>`).
+  4. A valid and currently registered Wallet Instance associated with the provided ``hardware_key_tag`` MUST exist (:ref:`WP_143d <wallet-instance-optional-testcases>`).
   5. The signature of the ``keys_to_attest`` parameter Must be first validated using the provided ``jwk`` and its value (``key_attestation`` in case of Android or ``integrity_assertion`` in case of iOS) MUST be validated according to the device manufacturer's guidelines.
   6. The ``client_data`` MUST be reconstructed using the ``nonce`` and their respective thumbprint JWKs ``[key_pub_1,...,key_pub_n]``. The ``hardware_signature`` parameter value is then validated using the registered Cryptographic Hardware Key's public key associated with the Wallet Instance (:ref:`WP_143e <wallet-instance-optional-testcases>`).
   7. The ``integrity_assertion`` MUST be validated according to the device manufacturer's guidelines. The specific checks performed by the Wallet Provider are detailed in the operating system manufacturer's documentation (:ref:`WP_143f <wallet-instance-optional-testcases>`).

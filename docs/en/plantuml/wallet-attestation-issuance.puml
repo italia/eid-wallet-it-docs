@@ -55,7 +55,7 @@ else if iOS - Key attestation flow for each key pair
 app->aats: create ""client_data_hash"" for each key_pub
 aats->aats: Generate ""integrity_assertion""\nbound to nonce for WUA
 aats-->app: ""integrity_assertion"" for WUA 
-app->app : Generate ""keys_to_attest""= sign(""integrity_assertion_wua"",""key_priv"")
+app->app : Generate ""keys_to_attest""= sign(""integrity_assertion"",""key_priv"")
 end
 
 
