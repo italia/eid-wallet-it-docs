@@ -41,9 +41,8 @@ Further details on the Relying Party Key Binding Request are provided in the :re
 
 The only difference are the following:
 
-- The ``typ`` header of the Integrity Request JWT assumes the value ``rp-kb+jwt``. 
-- The Integrity Request JWT Body does not include the ``attested_key`` claim, and
-- The ``hardware_signature`` claim value is obtained based on only ``client_data_hash_wia`` value.
+- The ``typ`` header of the Integrity Request JWT assumes the value ``rp-kb+jwt``, and
+- The ``hardware_signature`` claim value is obtained based on only ``client_data_hash`` value.
 
 
 Relying Party Provider Backend Key Binding Response

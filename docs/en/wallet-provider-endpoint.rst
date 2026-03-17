@@ -274,7 +274,7 @@ The Wallet Instance Attestation Request JWT includes the following body claims:
       - String containing the value of the device operating system.
       - 
     * - **wallet_solution_id**
-      - String containg the identifier of the Wallet Solution .
+      - String containing the identifier of the Wallet Solution .
       - 
     * - **wallet_solution_version**
       - String containing the version of the Wallet Solution.
@@ -332,10 +332,10 @@ The JSON Object returned in the response has the following claim:
       - **Description**
       - **Reference**
     * - **wallet_instance_attestation**
-      - REQUIRED. A JSON object containing of the issued Wallet Instance Attestation.
+      - REQUIRED. A String containing of the issued Wallet Instance Attestation.
       - This specification.
 
-The value of ``wallet_instance_attestation`` parameter is an string representing the Wallet Instance Attestation in a JWT. 
+The value of ``wallet_instance_attestation`` parameter is a string representing the Wallet Instance Attestation in a JWT. 
 
 If any errors occur during the process, an error response is returned. The response uses ``application/json`` as the ``Content-Type`` and includes the following parameters:
 
@@ -375,7 +375,7 @@ The following table lists HTTP Status Codes and related error codes that are sup
       - The device does not meet the Wallet Provider's minimum security requirements.
     * - ``403 Forbidden``
       - ``invalid_request``
-      - The signature of the Wallet Instance and Wallet Unit Attestation Request is invalid or does not match the associated public key (JWK).
+      - The signature of the Wallet Instance Attestation Request is invalid or does not match the associated public key (JWK).
     * - ``403 Forbidden``
       - ``invalid_request``
       - The Integrity Assertion validation failed; the Integrity Assertion is tampered with or improperly signed.
@@ -515,7 +515,7 @@ Below is a non-normative example of a Wallet Unit Attestation Request.
       "assertion": "eyJpc3MiOiJodHRwczovL3dhbGxldC1wcm92aWRlc..."
     }
 
-In particular, the Wallet Instance Attestation Issuance JWT includes the following HTTP header parameters:
+In particular, the Wallet Unit Attestation Issuance JWT includes the following HTTP header parameters:
 
 .. _table_wua_request_claim:
 .. list-table::
@@ -536,7 +536,7 @@ In particular, the Wallet Instance Attestation Issuance JWT includes the followi
       - The type of the JWT, it MUST set to ``wua-request+jwt``.
       -
 
-The Wallet Instance Attestation Request JWT includes the following body claims:
+The Wallet Unit Attestation Request JWT includes the following body claims:
 
 .. list-table::
     :class: longtable
@@ -642,10 +642,10 @@ The JSON Object returned in the response has the following claim:
       - **Description**
       - **Reference**
     * - **wallet_unit_attestation**
-      - REQUIRED. A JSON object containing of the issued Wallet Unit Attestation.
+      - REQUIRED. A String representing the issued Wallet Unit Attestation.
       - This specification.
 
-The value of ``wallet_unit_attestation`` parameter is an string representing the Wallet Unit Attestation in a JWT. 
+The value of ``wallet_unit_attestation`` parameter is a string representing the Wallet Unit Attestation in a JWT. 
 
 If any errors occur during the process, an error response is returned as it is defined in the previous section. 
 
@@ -666,6 +666,9 @@ The following table lists HTTP Status Codes and related error codes for the ones
     * - ``403 Forbidden``
       - ``invalid_request``
       - The Integrity Assertion or Key Attestation (``keys_to_attest``) validation failed; the Integrity Assertion or Key Attestation (``keys_to_attest``) is tampered with or improperly signed.
+    * - ``403 Forbidden``
+      - ``invalid_request``
+      - The signature of the Wallet Unit Attestation Request is invalid or does not match the associated public key (JWK).
    
 
 

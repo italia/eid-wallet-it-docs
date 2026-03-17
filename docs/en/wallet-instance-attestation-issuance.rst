@@ -4,7 +4,7 @@
 Wallet Instance Attestation Issuance
 =====================================
 
-This section describes how the Wallet Provider issues a Wallet Instance Attestations.
+This section describes how the Wallet Provider issues a Wallet Instance Attestation.
 
 .. plantuml:: plantuml/wallet-instance-attestation-issuance.puml
     :width: 99%
@@ -29,7 +29,7 @@ This section describes how the Wallet Provider issues a Wallet Instance Attestat
 
 **Steps 4-6 (Nonce Retrieval)**: The Wallet Instance requests a ``nonce`` value from the :ref:`wallet-provider-endpoint:Wallet Solution Nonce Endpoint` of the Wallet Provider Backend (:ref:`WP_140b <wallet-instance-optional-testcases>`). The ``nonce`` is required to be unpredictable and serves as the main defense against replay attacks. 
 
-The ``nonce`` MUST ensures single-use within a predetermined time frame.
+The ``nonce`` MUST ensure single-use within a predetermined time frame.
 
 Upon a successful request, the Wallet Provider generates and returns the nonce value to the Wallet Instance.
 

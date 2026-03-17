@@ -12,7 +12,8 @@
       "general_info": {
         "wallet_provider_name": "https://wallet.io.pagopa.it",
         "wallet_solution_id": "appio",
-        "wallet_solution_version": "3.25.1.0"
+        "wallet_solution_version": "3.25.1.0",
+        "wallet_solution_certification_information": ""
       }
     },
     "iss": "https://wallet.io.pagopa.it",
