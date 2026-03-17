@@ -14,7 +14,7 @@ activate app
 
 app->app: Check if Cryptographic Hardware Key \nTag (""hardware_key_tag""), Key Attestation APIs, and Device Integrity APIs are available
 
-app->app: Generates one or a batch of credential key pair(s) to be attested in Wallet Unit Attestation (""key_pub_1"", ""key_priv_1"",..., ""key_pub_n"", ""key_priv_n"")
+app->app: Generates one or a batch of Credential key pair(s) to be attested in Wallet Unit Attestation (""key_pub_1"", ""key_priv_1"",..., ""key_pub_n"", ""key_priv_n"")
 
 rnote over app,bck #LIGHTGREEN
 Check Wallet Provider is part of the Federation and obtain its metadata
