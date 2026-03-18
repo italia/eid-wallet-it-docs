@@ -20,7 +20,7 @@
         },
         {
           "claim_name": "birth_place",
-          "mandatory": false,
+          "mandatory": true,
           "order": 4
         },
         {
@@ -50,17 +50,17 @@
         },
         {
           "claim_name": "portrait",
-          "mandatory": false,
+          "mandatory": true,
           "order": 10
         },
         {
           "claim_name": "un_distinguishing_sign",
-          "mandatory": false,
+          "mandatory": true,
           "order": 11
         },
         {
           "claim_name": "restrictions_conditions",
-          "mandatory": false,
+          "mandatory": true,
           "order": 12
         },
         {
@@ -108,7 +108,6 @@
       "registry@transport-authority.gov.example",
       "technical-support@transport-authority.gov.example"
     ],
-    "data_origin_l10n_id": "nta_001.org.name",
     "homepage_uri": "https://www.gov.example/transport",
     "ipa_code": "nta_001",
     "legal_identifier": "12345678901",
