@@ -166,7 +166,6 @@
 <p>The IT-Wallet ecosystem operates within a federated trust infrastructure where participating entities establish cryptographic trust relationships and maintain compliance with common security standards. This infrastructure provides the foundation for secure Digital Credential operations across the ecosystem participants.</p>
 <p>This section outlines the implementation of the Trust Model in an infrastructure that complies with OpenID Federation 1.0 <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a>. This infrastructure involves a RESTful API for distributing metadata, metadata policies, trust marks, cryptographic public keys and X.509 Certificates, and the revocation status of the participants, also called Federation Entities.</p>
 <p>The national infrastructure involves a RESTful API for distributing metadata, metadata policies, trust marks, cryptographic public keys and X.509 Certificates, and the revocation status of the participants, also called Federation Entities.</p>
-<p>The national infrastructure involves a RESTful API for distributing metadata, metadata policies, trust marks, cryptographic public keys and X.509 Certificates, and the revocation status of the participants, also called Federation Entities.</p>
 <p>This trust infrastructure works in coordination with the Registry Infrastructure (see <a class="reference internal" href="registry.html#registry-infrastructure"><span class="std std-ref">Registry Infrastructure</span></a>) to enable the entity onboarding processes detailed in <a class="reference internal" href="entity-onboarding.html#entity-onboarding"><span class="std std-ref">Entity Onboarding</span></a>. In particular, it enables the technical   implementation of the onboarding processes described in <a class="reference internal" href="entity-onboarding.html#entity-onboarding"><span class="std std-ref">Entity Onboarding</span></a> and supports the operational scenarios illustrated in <a class="reference internal" href="onboarding-high-level.html#onboarding-journey-maps"><span class="std std-ref">Onboarding Journey Maps</span></a>.</p>
 <p>The Trust Infrastructure provides the cryptographic mechanisms that allow new entities (Credential Issuers, Relying Parties, Wallet Providers) to establish verifiable trust relationships during their registration process. Without this infrastructure, entities would not be able to prove their compliance status or operational capabilities to other ecosystem participants.</p>
 <p>Throughout an entity's operational lifecycle, the Trust Infrastructure maintains up-to-date trust attestations, handles key rotation, manages revocation scenarios, and supports compliance monitoring. This directly supports the lifecycle management procedures detailed in <a class="reference internal" href="entity-onboarding.html#entity-onboarding"><span class="std std-ref">Entity Onboarding</span></a>.</p>
@@ -244,7 +243,9 @@
 <h2><span class="section-number">6.2. </span>Trust Infrastructure and Registry Integration<a class="headerlink" href="#trust-infrastructure-and-registry-integration" title="Link to this heading">¶</a></h2>
 <p>The Trust Infrastructure implements the Federation Registry component of the Registry Infrastructure. The Federation Registry maintains the authoritative list of trusted entities through the federation endpoints defined in this section, including entity listing (/list), subordinate statements (/fetch), trust mark validation (/trust_mark_status), subordinate events (/federation_subordinate_events_endpoint), and historical key management (/historical-jwks).</p>
 <p>This Federation Registry operates alongside other registry components (Claims Registry, AS Registry, Digital Credentials Catalog, Taxonomy) to provide comprehensive ecosystem support. For complete registry architecture and component interactions, see <a class="reference internal" href="registry.html#registry-infrastructure"><span class="std std-ref">Registry Infrastructure</span></a>.</p>
-<p>General Properties</p>
+</section>
+<section id="general-properties">
+<h2><span class="section-number">6.3. </span>General Properties<a class="headerlink" href="#general-properties" title="Link to this heading">¶</a></h2>
 <p>The architecture of the trust infrastructure is built upon the following core principles:</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -299,7 +300,7 @@
 </table>
 </section>
 <section id="trust-infrastructure-requirements">
-<h2><span class="section-number">6.3. </span>Trust Infrastructure Requirements<a class="headerlink" href="#trust-infrastructure-requirements" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">6.4. </span>Trust Infrastructure Requirements<a class="headerlink" href="#trust-infrastructure-requirements" title="Link to this heading">¶</a></h2>
 <p>This section includes the requirements necessary for the successful implementation and operation of the infrastructure of trust.</p>
 <table class="longtable docutils align-default" id="id3">
 <caption><span class="caption-number">Table 6.1 </span><span class="caption-text">Functional Requirements</span><a class="headerlink" href="#id3" title="Link to this table">¶</a></caption>
@@ -374,7 +375,7 @@
 </table>
 </section>
 <section id="federation-api-endpoints">
-<h2><span class="section-number">6.4. </span>Federation API endpoints<a class="headerlink" href="#federation-api-endpoints" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">6.5. </span>Federation API endpoints<a class="headerlink" href="#federation-api-endpoints" title="Link to this heading">¶</a></h2>
 <p>OpenID Federation 1.0 uses RESTful Web Services secured over HTTPs. OpenID Federation 1.0 defines which are the web endpoints that the participants MUST make publicly available. The table below summarises the endpoints and their scopes.</p>
 <p>All the endpoints listed below are defined in the <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> specs.</p>
 <table class="longtable docutils align-default">
@@ -432,7 +433,7 @@
 <p>All the responses of the federation endpoints are in the form of signed JWT, with the exception of the Subordinate Listing endpoint and the Trust Mark Status endpoint that are served as plain JSON by default. The Federation Subordinate Events Endpoint also returns signed JWTs with the content type <code class="docutils literal notranslate"><span class="pre">application/entity-events-statement+jwt</span></code>.</p>
 </section>
 <section id="configuration-of-the-federation">
-<h2><span class="section-number">6.5. </span>Configuration of the Federation<a class="headerlink" href="#configuration-of-the-federation" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">6.6. </span>Configuration of the Federation<a class="headerlink" href="#configuration-of-the-federation" title="Link to this heading">¶</a></h2>
 <p>The configuration of the federation is published by the Trust Anchor within its Entity Configuration, it is available at the well-known web path corresponding to <strong>.well-known/openid-federation</strong>.</p>
 <p>All the participants in the federation MUST obtain the federation configuration before entering the operational phase, and they MUST keep it up-to-date. The federation configuration is the Trust Anchor's Entity Configuration, it contains the public keys for signature operations.</p>
 <p>Below is a non-normative example of a Trust Anchor Entity Configuration, where each parameter is documented in the <a class="reference external" href="OID-FED">OpenID Federation</a> specification:</p>
@@ -493,7 +494,7 @@
 </div>
 </section>
 <section id="entity-configuration">
-<h2><span class="section-number">6.6. </span>Entity Configuration<a class="headerlink" href="#entity-configuration" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">6.7. </span>Entity Configuration<a class="headerlink" href="#entity-configuration" title="Link to this heading">¶</a></h2>
 <p>The Entity Configuration is the verifiable document that each Federation Entity MUST publish on its own behalf, in the <strong>.well-known/openid-federation</strong> endpoint.</p>
 <p>The Entity Configuration HTTP Response MUST set the media type to <cite>application/entity-statement+jwt</cite>.</p>
 <p>The Entity Configuration MUST be cryptographically signed. The public part of this key MUST be provided in the Entity Configuration and within the Subordinate Statement issued by a immediate superior and related to its subordinate Federation Entity.</p>
@@ -507,7 +508,7 @@
 <p>All the signature-check operations regarding the Entity Configurations, Subordinate Statements and Trust Marks, are carried out with the Federation public keys. For the supported algorithms refer to Section <cite>Cryptografic Algorithm</cite>.</p>
 </div>
 <section id="entity-configurations-common-parameters">
-<h3><span class="section-number">6.6.1. </span>Entity Configurations Common Parameters<a class="headerlink" href="#entity-configurations-common-parameters" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">6.7.1. </span>Entity Configurations Common Parameters<a class="headerlink" href="#entity-configurations-common-parameters" title="Link to this heading">¶</a></h3>
 <p>The Entity Configurations of all the participants in the federation MUST have in common the parameters listed below.</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -544,7 +545,7 @@
 </table>
 </section>
 <section id="entity-configuration-trust-anchor">
-<h3><span class="section-number">6.6.2. </span>Entity Configuration Trust Anchor<a class="headerlink" href="#entity-configuration-trust-anchor" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">6.7.2. </span>Entity Configuration Trust Anchor<a class="headerlink" href="#entity-configuration-trust-anchor" title="Link to this heading">¶</a></h3>
 <p>The Trust Anchor Entity Configuration, in addition to the common parameters listed above, uses the following parameters:</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -567,7 +568,7 @@
 </table>
 </section>
 <section id="entity-configuration-leaves-and-intermediates">
-<h3><span class="section-number">6.6.3. </span>Entity Configuration Leaves and Intermediates<a class="headerlink" href="#entity-configuration-leaves-and-intermediates" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">6.7.3. </span>Entity Configuration Leaves and Intermediates<a class="headerlink" href="#entity-configuration-leaves-and-intermediates" title="Link to this heading">¶</a></h3>
 <p>In addition to the previously defined claims, the Entity Configuration of the Leaves and of the Intermediate Entities uses the following parameters:</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -594,7 +595,7 @@
 </table>
 </section>
 <section id="id1">
-<h3><span class="section-number">6.6.4. </span>Metadata Types<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">6.7.4. </span>Metadata Types<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
 <p>In this section are defined the main metadata types mapped to the roles of the ecosystem, giving the references of the metadata protocol for each of these.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -661,7 +662,7 @@ Furthermore, should there be a necessity for User Authentication by the Credenti
 </section>
 </section>
 <section id="metadata-of-federation-entity-leaves">
-<h2><span class="section-number">6.7. </span>Metadata of federation_entity Leaves<a class="headerlink" href="#metadata-of-federation-entity-leaves" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">6.8. </span>Metadata of federation_entity Leaves<a class="headerlink" href="#metadata-of-federation-entity-leaves" title="Link to this heading">¶</a></h2>
 <p>The <em>federation_entity</em> metadata for Leaves MUST contain the following claims.</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -699,7 +700,7 @@ Furthermore, should there be a necessity for User Authentication by the Credenti
 </table>
 </section>
 <section id="subordinate-statements">
-<h2><span class="section-number">6.8. </span>Subordinate Statements<a class="headerlink" href="#subordinate-statements" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">6.9. </span>Subordinate Statements<a class="headerlink" href="#subordinate-statements" title="Link to this heading">¶</a></h2>
 <p>Trust Anchors and Intermediates publish Subordinate Statements related to their immediate Subordinates.
 The Subordinate Statement MAY contain a metadata policy and the Trust Marks related to a Subordinate.</p>
 <p>The metadata policy, when applied, makes one or more changes to the final metadata of the Leaf. The final metadata of a Leaf is derived from the Trust Chain that contains all the statements, starting from the Entity Configuration up to the Subordinate Statement issued by the Trust Anchor.</p>
@@ -770,7 +771,7 @@ The Subordinate Statement MAY contain a metadata policy and the Trust Marks rela
 <p>The same considerations and requirements made for the Entity Configuration and in relation to the signature mechanisms MUST be applied for the Subordinate Statements.</p>
 </div>
 <section id="subordinate-statement">
-<h3><span class="section-number">6.8.1. </span>Subordinate Statement<a class="headerlink" href="#subordinate-statement" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">6.9.1. </span>Subordinate Statement<a class="headerlink" href="#subordinate-statement" title="Link to this heading">¶</a></h3>
 <p>The Subordinate Statement issued by Trust Anchors and Intermediates contains the following attributes:</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -822,7 +823,7 @@ The Subordinate Statement MAY contain a metadata policy and the Trust Marks rela
 </section>
 </section>
 <section id="federation-discovery">
-<h2><span class="section-number">6.9. </span>Federation Discovery<a class="headerlink" href="#federation-discovery" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">6.10. </span>Federation Discovery<a class="headerlink" href="#federation-discovery" title="Link to this heading">¶</a></h2>
 <p>Federation Entity Discovery is the process by which participants verify the identity and status of other federation entities. This involves querying federation endpoints to confirm entity validity status and compliance with the Trust Framework.</p>
 <p>The discovery process uses the Federation API to collect entity information and produces Trust Chains that validate entity compliance and authorization within the federation.</p>
 <p>The discovery process establishes the foundational concepts that are then applied in specific operational scenarios as detailed in the Trust Evaluation Mechanism section.</p>
@@ -844,7 +845,7 @@ The Subordinate Statement MAY contain a metadata policy and the Trust Marks rela
 </div>
 </section>
 <section id="trust-chain">
-<h2><span class="section-number">6.10. </span>Trust Chain<a class="headerlink" href="#trust-chain" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">6.11. </span>Trust Chain<a class="headerlink" href="#trust-chain" title="Link to this heading">¶</a></h2>
 <p>The Trust Chain is a sequence of verified statements that validates a participant's compliance with the Federation. It has an expiration date time, beyond which it MUST be renewed to obtain the fresh and updated metadata. The expiration date of the Trust Chain is determined by the earliest expiration timestamp among all the expiration timestamp contained in the statements. No Entity can force the expiration date of the Trust Chain to be higher than the one configured by the Trust Anchor.</p>
 <p><strong>Role in Onboarding</strong>: During the entity onboarding, Trust Chains are constructed to prove the complete hierarchical trust relationship from the Trust Anchor to the new entity.</p>
 <p><strong>Role in Operations</strong>: During Credential issuance and presentation, Trust Chains provide cryptographic proof of entity validity and compliance status.</p>
@@ -876,14 +877,14 @@ The Subordinate Statement MAY contain a metadata policy and the Trust Marks rela
 </ul>
 </div></blockquote>
 <section id="offline-trust-attestation-mechanisms">
-<h3><span class="section-number">6.10.1. </span>Offline Trust Attestation Mechanisms<a class="headerlink" href="#offline-trust-attestation-mechanisms" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">6.11.1. </span>Offline Trust Attestation Mechanisms<a class="headerlink" href="#offline-trust-attestation-mechanisms" title="Link to this heading">¶</a></h3>
 <p>The offline flows do not allow for real-time evaluation of an Entity's status, such as its revocation. At the same time, using short-lived Trust Chains enables the attainment of trust attestations compatible with the required revocation administrative protocols (e.g., a revocation must be propagated in less than 24 hours, thus the Trust Chain must not be valid for more than that period).</p>
 <section id="offline-wallet-trust-attestation">
-<h4><span class="section-number">6.10.1.1. </span>Offline Wallet Trust Attestation<a class="headerlink" href="#offline-wallet-trust-attestation" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">6.11.1.1. </span>Offline Wallet Trust Attestation<a class="headerlink" href="#offline-wallet-trust-attestation" title="Link to this heading">¶</a></h4>
 <p>Given that the Wallet Instance cannot publish its metadata online at the <em>.well-known/openid-federation</em> endpoint, it MUST obtain a Wallet Attestation issued by its Wallet Provider. The Wallet Attestation MUST contain all the relevant information regarding the security capabilities of the Wallet Instance and its protocol related configuration. It SHOULD contain the Trust Chain related to its issuer (Wallet Provider).</p>
 </section>
 <section id="offline-relying-party-metadata">
-<h4><span class="section-number">6.10.1.2. </span>Offline Relying Party Metadata<a class="headerlink" href="#offline-relying-party-metadata" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">6.11.1.2. </span>Offline Relying Party Metadata<a class="headerlink" href="#offline-relying-party-metadata" title="Link to this heading">¶</a></h4>
 <p>Since the Federation Entity Discovery is only applicable in online scenarios, it is possible to include the Trust Chain in the presentation requests that the Relying Party may issue for a Wallet Instance.</p>
 <p>The Relying Party MUST sign the presentation request, the request SHOULD include the <cite>trust_chain</cite> claim in its JWT header parameters, containing the Federation Trust Chain related to itself.</p>
 <p>The Wallet Instance that verifies the request issued by the Relying Party MUST use the Trust Anchor's public keys to validate the entire Trust Chain related to the Relying Party before attesting its reliability.</p>
@@ -891,13 +892,13 @@ The Subordinate Statement MAY contain a metadata policy and the Trust Marks rela
 </section>
 </section>
 <section id="trust-chain-fast-renewal">
-<h3><span class="section-number">6.10.2. </span>Trust Chain Fast Renewal<a class="headerlink" href="#trust-chain-fast-renewal" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">6.11.2. </span>Trust Chain Fast Renewal<a class="headerlink" href="#trust-chain-fast-renewal" title="Link to this heading">¶</a></h3>
 <p>The Trust Chain fast renewal method offers a streamlined way to maintain the validity of a trust chain without undergoing the full discovery process again. It's particularly useful for quickly updating Trust Relationships when minor changes occur or when the Trust Chain is close to expiration but the overall structure of the federation hasn't changed significantly.</p>
 <p>The Trust Chain fast renewal process is initiated by fetching the leaf's Entity Configuration anew. However, unlike the federation discovery process that may involve fetching Entity Configurations starting from the authority hints, the fast renewal focuses on directly obtaining the Subordinate Statements. These statements are requested using the <cite>source_endpoint</cite> provided within them, which points to the location where the statements can be fetched.</p>
 </section>
 </section>
 <section id="trust-evaluation-mechanism">
-<h2><span class="section-number">6.11. </span>Trust Evaluation Mechanism<a class="headerlink" href="#trust-evaluation-mechanism" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">6.12. </span>Trust Evaluation Mechanism<a class="headerlink" href="#trust-evaluation-mechanism" title="Link to this heading">¶</a></h2>
 <p>Trust Anchors MUST distribute their Federation Public Keys through secure out-of-band mechanisms, such as publishing them on a verified web page or storing them in a remote repository as part of a trust list. The rationale behind this requirement is that relying solely on the data provided within the Trust Anchor's Entity Configuration does not adequately mitigate risks associated with DNS and TLS manipulation attacks. To ensure security, all participants MUST obtain the Trust Anchor's public keys using these out-of-band methods. They should then compare these keys with those obtained from the Trust Anchor's Entity Configuration, discarding any keys that do not match. This process helps to ensure the integrity and authenticity of the Trust Anchor's public keys and the overall security of the federation.</p>
 <p>The Trust Anchor publishes the list of its Subordinates (Federation Subordinate Listing endpoint), the attestations of their metadata and public keys (Subordinate Statements), and historical events related to their lifecycle (Federation Subordinate Events endpoint).</p>
 <p>Each participant, including Trust Anchor, Intermediate, Credential Issuer, Wallet Provider, and Relying Party, publishes its own metadata and public keys (Entity Configuration endpoint) in the well-known web resource <strong>.well-known/openid-federation</strong>.</p>
@@ -917,7 +918,7 @@ The Subordinate Statement MAY contain a metadata policy and the Trust Marks rela
 <p><strong>Role in Onboarding</strong>: Trust evaluation mechanisms are essential during entity registration and lifecycle management to verify the compliance status of new participants and validate changes to existing entities. This includes validating the registration credentials of entities requesting onboarding and ensuring they meet federation policies before granting operational authorization.</p>
 <p><strong>Role in Operations</strong>: During credential issuance and presentation operations, trust evaluation provides real-time verification of entity validity and compliance status. This enables secure credential transactions by ensuring that all participating entities (credential issuers, relying parties, wallet providers) maintain their authorized status and comply with current federation policies.</p>
 <section id="establishing-trust-with-credential-issuers">
-<h3><span class="section-number">6.11.1. </span>Establishing Trust with Credential Issuers<a class="headerlink" href="#establishing-trust-with-credential-issuers" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">6.12.1. </span>Establishing Trust with Credential Issuers<a class="headerlink" href="#establishing-trust-with-credential-issuers" title="Link to this heading">¶</a></h3>
 <p>In the issuance process, Trust Evaluation ensures the integrity and authenticity of the Credentials being issued and the realiability of their Issuers. This section delineates the Trust Evaluation mechanisms distinct from the protocol flows, implemented by Wallet Instances and Relying Parties, as described in the dedicated section.</p>
 <p>Trust Evaluations implement different ways, as defined below:</p>
 <ul class="simple">
@@ -943,7 +944,7 @@ The Subordinate Statement MAY contain a metadata policy and the Trust Marks rela
 </div>
 </section>
 <section id="establishing-trust-with-relying-party">
-<h3><span class="section-number">6.11.2. </span>Establishing Trust with Relying Party<a class="headerlink" href="#establishing-trust-with-relying-party" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">6.12.2. </span>Establishing Trust with Relying Party<a class="headerlink" href="#establishing-trust-with-relying-party" title="Link to this heading">¶</a></h3>
 <p>In the context of evaluating Relying Parties, the responsibility for Trust Evaluation lies solely with the Wallet Instance.
 The Trust Evaluation mechanisms are distinct from protocol flows and are implemented by the Wallet Instance, as detailed in the dedicated section.</p>
 <p>Trust Evaluations are conducted as follows:</p>
@@ -970,21 +971,21 @@ The Trust Evaluation mechanisms are distinct from protocol flows and are impleme
 </div>
 </section>
 <section id="evaluating-trust-with-wallets">
-<h3><span class="section-number">6.11.3. </span>Evaluating Trust with Wallets<a class="headerlink" href="#evaluating-trust-with-wallets" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">6.12.3. </span>Evaluating Trust with Wallets<a class="headerlink" href="#evaluating-trust-with-wallets" title="Link to this heading">¶</a></h3>
 <p>The Wallet Provider issues the Wallet Attestation, certifying the operational status of its Wallet Instances and including one of their public keys.</p>
 <p>The Wallet Attestation MAY contain the Trust Chain that attests the reliability for its issuer (Wallet Provider) at the time of issuance.</p>
 <p>The Wallet Instance provides its Wallet Attestation within the signed request during the PID issuance phase. The Credential Issuer MUST evaluate the Trust Chain about the Wallet Attestation issuer (formally, the Wallet Provider).</p>
 </section>
 </section>
 <section id="non-repudiability-of-the-long-lived-attestations">
-<h2><span class="section-number">6.12. </span>Non-repudiability of the Long Lived Attestations<a class="headerlink" href="#non-repudiability-of-the-long-lived-attestations" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">6.13. </span>Non-repudiability of the Long Lived Attestations<a class="headerlink" href="#non-repudiability-of-the-long-lived-attestations" title="Link to this heading">¶</a></h2>
 <p>The Trust Anchor and its Intermediate MUST expose the Federation Historical Keys endpoint, where are published all the public part of the Federation Entity Keys that are no longer used, whether expired or revoked.</p>
 <p>The details of this endpoint are defined in the <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Section 8.7.</p>
 <p>Each JWT containing a Trust Chain in the JWT headers can be verified over time, since the entire Trust Chain is verifiable using the Trust Anchor's public key.</p>
 <p>Even if the Trust Anchor has changed its cryptographic keys for digital signature, the Federation Historical Keys endpoint always makes the keys no longer used available for historical signature verifications.</p>
 </section>
 <section id="x-509-pki">
-<h2><span class="section-number">6.13. </span>X.509 PKI<a class="headerlink" href="#x-509-pki" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">6.14. </span>X.509 PKI<a class="headerlink" href="#x-509-pki" title="Link to this heading">¶</a></h2>
 <p>The X.509 Public Key Infrastructure (PKI) is a framework designed to create, manage, distribute, use, store, and revoke digital X.509 Certificates. At the heart of X.509 PKI is the concept of a Certificate Authority (CA), which issues digital certificates to entities. These certificates are required for establishing secure communications over networks, including the internet, by enabling encryption and digital signature functionalities. The PKI hierarchy typically involves a root CA at the top, with one or more subordinate CAs beneath, forming a trusted chain. Entities rely on this chain of trust to verify the authenticity of certificates. X.509 standards define the format of public key certificates.</p>
 <p>The integration of OpenID Federation 1.0 with the traditional X.509 based PKI (rfc:5280), complemented by a RESTful API, aims to enhance the infrastructure with additional features, making it navigable and transparent.</p>
 <p>This approach leverages the dynamic and flexible nature of OpenID Federation alongside the requirement of the X.509 Certificates for legacy applications and interoperability purposes, aiming to addresses the evolving needs of verification of the registration status of the federation participants, their compliance to the shared rules and the general and interoperable trust management in multilateral digital ecosystems.</p>
@@ -1001,11 +1002,11 @@ The Trust Evaluation mechanisms are distinct from protocol flows and are impleme
 <li><p><strong>Registry of Expired Keys</strong>: Maintaining a registry of expired keys is crucial for both, ensuring non-repudiation of past signatures even when keys change.</p></li>
 </ul>
 <section id="federation-trust-anchor-and-x-509-ca">
-<h3><span class="section-number">6.13.1. </span>Federation Trust Anchor and X.509 CA<a class="headerlink" href="#federation-trust-anchor-and-x-509-ca" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">6.14.1. </span>Federation Trust Anchor and X.509 CA<a class="headerlink" href="#federation-trust-anchor-and-x-509-ca" title="Link to this heading">¶</a></h3>
 <p>In the context of OpenID Federation, the Trust Anchor plays a role similar to that of a Certificate Authority (CA) in X.509-based Public Key Infrastructures (PKIs). Both serve as foundational elements of trust within their respective systems. In this document, the term &quot;Trust Anchor&quot; is often used to encompass both concepts. The trust infrastructure described here aligns the OpenID Federation Trust Anchor with the X.509 PKI Certificate Authority, making therefore them a single unique entity supporting both <a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc5280">RFC 5280</a> and OpenID Federation 1.0.</p>
 </section>
 <section id="x-509-certificates-issuance">
-<h3><span class="section-number">6.13.2. </span>X.509 Certificates Issuance<a class="headerlink" href="#x-509-certificates-issuance" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">6.14.2. </span>X.509 Certificates Issuance<a class="headerlink" href="#x-509-certificates-issuance" title="Link to this heading">¶</a></h3>
 <p>In an OpenID Federation, each participant is required to self-issue its Entity Configuration, signing it with one of its cryptographic keys that are attested by Immediate Superiors.</p>
 <p>In the same way, each federation Entity has the autonomy to issue a signed statement about itself in the form of a X.509 Certificate.
 Federation participants that need to issue X.509 Certificates about themselves and for their specific purposes, can issue and sign X.509 Certificates using one of their Federation Entity Keys attested by their Federation Authorities (Immediate Superior). This process aligns the issuance of X.509 Certificates with the federation's delegation paradigm.</p>
@@ -1270,7 +1271,7 @@ BAMCA0gAMEUCIQDFmNugWs3S/qfzwhK09S8U0qfMF+pezrJpfqkPWpWrpgIgbbeb
 <p>Using the underlying layer established with OpenID Federation 1.0, all X.509 Certificates are issued in a properly decentralized manner using the delegation pattern.</p>
 </section>
 <section id="x-509-certificate-revocation">
-<h3><span class="section-number">6.13.3. </span>X.509 Certificate Revocation<a class="headerlink" href="#x-509-certificate-revocation" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">6.14.3. </span>X.509 Certificate Revocation<a class="headerlink" href="#x-509-certificate-revocation" title="Link to this heading">¶</a></h3>
 <p>An X.509 Certificate can be revoked by its Issuer.
 Revocation lists, and/or any other revocation control mechanism, are particularly required for X.509 Certificates with an expiration time greater than 24 hours; otherwise, they are not required.</p>
 <p>When the issuer of the X.509 Certificate is the Leaf and therefore the X.509 Certificate refers to itself, if the certificate expiration time is greater than 24 hours from the <code class="docutils literal notranslate"><span class="pre">X509_NOT_VALID_BEFORE</span></code> time, it MUST implement a CRL related to the issued certificate and keep it updated.
@@ -1298,7 +1299,7 @@ Signature:
 </div>
 </section>
 <section id="federation-subordinate-events-endpoint">
-<h3><span class="section-number">6.13.4. </span>Federation Subordinate Events Endpoint<a class="headerlink" href="#federation-subordinate-events-endpoint" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">6.14.4. </span>Federation Subordinate Events Endpoint<a class="headerlink" href="#federation-subordinate-events-endpoint" title="Link to this heading">¶</a></h3>
 <p>The Federation Subordinate Events Endpoint is defined in <a class="reference external" href="https://openid.net/specs/openid-federation-subordinate-events-1_0.html">OID-FED-SUBORDINATE-EVENTS</a>. This endpoint provides a mechanism for Trust Anchors and Intermediates to publish historical events related to their Immediate Subordinates registration status. It provides transparency and accountability within the federation by providing a comprehensive historical record of significant events affecting federation participants.</p>
 <p>For complete specification details, including endpoint location, request format, response format, JWT claims, event object parameters, and supported event types, refer to <a class="reference external" href="https://openid.net/specs/openid-federation-subordinate-events-1_0.html">OID-FED-SUBORDINATE-EVENTS</a>.</p>
 <p>Below is a non-normative example of a Federation Subordinate Events Endpoint request and response:</p>
@@ -1339,7 +1340,7 @@ Signature:
 </section>
 </section>
 <section id="privacy-remarks">
-<h2><span class="section-number">6.14. </span>Privacy Remarks<a class="headerlink" href="#privacy-remarks" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">6.15. </span>Privacy Remarks<a class="headerlink" href="#privacy-remarks" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>Wallet Instances MUST NOT publish their metadata through an online service.</p></li>
 <li><p>The trust infrastructure MUST be public, with all endpoints publicly accessible without any client credentials that may disclose who is requesting access.</p></li>
@@ -1349,7 +1350,7 @@ Signature:
 </ul>
 </section>
 <section id="considerations-about-decentralization">
-<h2><span class="section-number">6.15. </span>Considerations about Decentralization<a class="headerlink" href="#considerations-about-decentralization" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">6.16. </span>Considerations about Decentralization<a class="headerlink" href="#considerations-about-decentralization" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>There may be more than a single Trust Anchor.</p></li>
 <li><p>In some cases, a trust verifier may trust an Intermediate, especially when the Intermediate acts as a Trust Anchor within a specific perimeter, such as cases where the Leafs are both in the same perimeter like a Member State jurisdiction (eg: an Italian Relying Party with an Italian Wallet Instance may consider the Italian Intermediate as a Trust Anchor for the scopes of their interactions).</p></li>
@@ -1378,47 +1379,48 @@ Signature:
 <li><a class="reference internal" href="#">6. The Infrastructure of Trust</a><ul>
 <li><a class="reference internal" href="#federation-roles">6.1. Federation Roles</a></li>
 <li><a class="reference internal" href="#trust-infrastructure-and-registry-integration">6.2. Trust Infrastructure and Registry Integration</a></li>
-<li><a class="reference internal" href="#trust-infrastructure-requirements">6.3. Trust Infrastructure Requirements</a></li>
-<li><a class="reference internal" href="#federation-api-endpoints">6.4. Federation API endpoints</a></li>
-<li><a class="reference internal" href="#configuration-of-the-federation">6.5. Configuration of the Federation</a></li>
-<li><a class="reference internal" href="#entity-configuration">6.6. Entity Configuration</a><ul>
-<li><a class="reference internal" href="#entity-configurations-common-parameters">6.6.1. Entity Configurations Common Parameters</a></li>
-<li><a class="reference internal" href="#entity-configuration-trust-anchor">6.6.2. Entity Configuration Trust Anchor</a></li>
-<li><a class="reference internal" href="#entity-configuration-leaves-and-intermediates">6.6.3. Entity Configuration Leaves and Intermediates</a></li>
-<li><a class="reference internal" href="#id1">6.6.4. Metadata Types</a></li>
+<li><a class="reference internal" href="#general-properties">6.3. General Properties</a></li>
+<li><a class="reference internal" href="#trust-infrastructure-requirements">6.4. Trust Infrastructure Requirements</a></li>
+<li><a class="reference internal" href="#federation-api-endpoints">6.5. Federation API endpoints</a></li>
+<li><a class="reference internal" href="#configuration-of-the-federation">6.6. Configuration of the Federation</a></li>
+<li><a class="reference internal" href="#entity-configuration">6.7. Entity Configuration</a><ul>
+<li><a class="reference internal" href="#entity-configurations-common-parameters">6.7.1. Entity Configurations Common Parameters</a></li>
+<li><a class="reference internal" href="#entity-configuration-trust-anchor">6.7.2. Entity Configuration Trust Anchor</a></li>
+<li><a class="reference internal" href="#entity-configuration-leaves-and-intermediates">6.7.3. Entity Configuration Leaves and Intermediates</a></li>
+<li><a class="reference internal" href="#id1">6.7.4. Metadata Types</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#metadata-of-federation-entity-leaves">6.7. Metadata of federation_entity Leaves</a></li>
-<li><a class="reference internal" href="#subordinate-statements">6.8. Subordinate Statements</a><ul>
-<li><a class="reference internal" href="#subordinate-statement">6.8.1. Subordinate Statement</a></li>
+<li><a class="reference internal" href="#metadata-of-federation-entity-leaves">6.8. Metadata of federation_entity Leaves</a></li>
+<li><a class="reference internal" href="#subordinate-statements">6.9. Subordinate Statements</a><ul>
+<li><a class="reference internal" href="#subordinate-statement">6.9.1. Subordinate Statement</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#federation-discovery">6.9. Federation Discovery</a></li>
-<li><a class="reference internal" href="#trust-chain">6.10. Trust Chain</a><ul>
-<li><a class="reference internal" href="#offline-trust-attestation-mechanisms">6.10.1. Offline Trust Attestation Mechanisms</a><ul>
-<li><a class="reference internal" href="#offline-wallet-trust-attestation">6.10.1.1. Offline Wallet Trust Attestation</a></li>
-<li><a class="reference internal" href="#offline-relying-party-metadata">6.10.1.2. Offline Relying Party Metadata</a></li>
+<li><a class="reference internal" href="#federation-discovery">6.10. Federation Discovery</a></li>
+<li><a class="reference internal" href="#trust-chain">6.11. Trust Chain</a><ul>
+<li><a class="reference internal" href="#offline-trust-attestation-mechanisms">6.11.1. Offline Trust Attestation Mechanisms</a><ul>
+<li><a class="reference internal" href="#offline-wallet-trust-attestation">6.11.1.1. Offline Wallet Trust Attestation</a></li>
+<li><a class="reference internal" href="#offline-relying-party-metadata">6.11.1.2. Offline Relying Party Metadata</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#trust-chain-fast-renewal">6.10.2. Trust Chain Fast Renewal</a></li>
+<li><a class="reference internal" href="#trust-chain-fast-renewal">6.11.2. Trust Chain Fast Renewal</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#trust-evaluation-mechanism">6.11. Trust Evaluation Mechanism</a><ul>
-<li><a class="reference internal" href="#establishing-trust-with-credential-issuers">6.11.1. Establishing Trust with Credential Issuers</a></li>
-<li><a class="reference internal" href="#establishing-trust-with-relying-party">6.11.2. Establishing Trust with Relying Party</a></li>
-<li><a class="reference internal" href="#evaluating-trust-with-wallets">6.11.3. Evaluating Trust with Wallets</a></li>
+<li><a class="reference internal" href="#trust-evaluation-mechanism">6.12. Trust Evaluation Mechanism</a><ul>
+<li><a class="reference internal" href="#establishing-trust-with-credential-issuers">6.12.1. Establishing Trust with Credential Issuers</a></li>
+<li><a class="reference internal" href="#establishing-trust-with-relying-party">6.12.2. Establishing Trust with Relying Party</a></li>
+<li><a class="reference internal" href="#evaluating-trust-with-wallets">6.12.3. Evaluating Trust with Wallets</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#non-repudiability-of-the-long-lived-attestations">6.12. Non-repudiability of the Long Lived Attestations</a></li>
-<li><a class="reference internal" href="#x-509-pki">6.13. X.509 PKI</a><ul>
-<li><a class="reference internal" href="#federation-trust-anchor-and-x-509-ca">6.13.1. Federation Trust Anchor and X.509 CA</a></li>
-<li><a class="reference internal" href="#x-509-certificates-issuance">6.13.2. X.509 Certificates Issuance</a></li>
-<li><a class="reference internal" href="#x-509-certificate-revocation">6.13.3. X.509 Certificate Revocation</a></li>
-<li><a class="reference internal" href="#federation-subordinate-events-endpoint">6.13.4. Federation Subordinate Events Endpoint</a></li>
+<li><a class="reference internal" href="#non-repudiability-of-the-long-lived-attestations">6.13. Non-repudiability of the Long Lived Attestations</a></li>
+<li><a class="reference internal" href="#x-509-pki">6.14. X.509 PKI</a><ul>
+<li><a class="reference internal" href="#federation-trust-anchor-and-x-509-ca">6.14.1. Federation Trust Anchor and X.509 CA</a></li>
+<li><a class="reference internal" href="#x-509-certificates-issuance">6.14.2. X.509 Certificates Issuance</a></li>
+<li><a class="reference internal" href="#x-509-certificate-revocation">6.14.3. X.509 Certificate Revocation</a></li>
+<li><a class="reference internal" href="#federation-subordinate-events-endpoint">6.14.4. Federation Subordinate Events Endpoint</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#privacy-remarks">6.14. Privacy Remarks</a></li>
-<li><a class="reference internal" href="#considerations-about-decentralization">6.15. Considerations about Decentralization</a></li>
+<li><a class="reference internal" href="#privacy-remarks">6.15. Privacy Remarks</a></li>
+<li><a class="reference internal" href="#considerations-about-decentralization">6.16. Considerations about Decentralization</a></li>
 </ul>
 </li>
 </ul>
