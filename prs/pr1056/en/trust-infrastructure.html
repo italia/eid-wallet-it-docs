@@ -242,7 +242,7 @@
 </section>
 <section id="trust-infrastructure-and-registry-integration">
 <h2><span class="section-number">6.2. </span>Trust Infrastructure and Registry Integration<a class="headerlink" href="#trust-infrastructure-and-registry-integration" title="Link to this heading">¶</a></h2>
-<p>The Trust Infrastructure implements the Federation Registry component of the Registry Infrastructure. The Federation Registry maintains the authoritative list of trusted entities through the federation endpoints defined in this section, including entity listing (/list), subordinate statements (/fetch), trust mark validation (/trust_mark_status) and historical key management (/historical-jwks).</p>
+<p>The Trust Infrastructure implements the Federation Registry component of the Registry Infrastructure. The Federation Registry maintains the authoritative list of trusted entities through the federation endpoints defined in this section, including entity listing (/list), subordinate statements (/fetch), trust mark validation (/trust_mark_status), subordinate events (/federation_subordinate_events_endpoint), and historical key management (/historical-jwks).</p>
 <p>This Federation Registry operates alongside other registry components (Claims Registry, AS Registry, Digital Credentials Catalog, Taxonomy) to provide comprehensive ecosystem support. For complete registry architecture and component interactions, see <a class="reference internal" href="registry.html#registry-infrastructure"><span class="std std-ref">Registry Infrastructure</span></a>.</p>
 <p>General Properties</p>
 <p>The architecture of the trust infrastructure is built upon the following core principles:</p>
@@ -422,9 +422,14 @@
 <td><p>Lists the expired and revoked keys, with the motivation of the revocation. See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Section 8.7</p></td>
 <td><p>Trust Anchor, Intermediate</p></td>
 </tr>
+<tr class="row-even"><td><p>subordinate events</p></td>
+<td><p><strong>GET</strong> /federation_subordinate_events_endpoint?sub=https://rp.example.org</p></td>
+<td><p>Returns a historical track of registration events about Immediate Subordinates, such as registration, revocation, and updates of their Federation Entity Keys. See the section <a class="reference internal" href="#federation-subordinate-events-endpoint"><span class="std std-ref">Federation Subordinate Events Endpoint</span></a> for more details.</p></td>
+<td><p>Trust Anchor, Intermediate</p></td>
+</tr>
 </tbody>
 </table>
-<p>All the responses of the federation endpoints are in the form of signed JWT, with the exception of the Subordinate Listing endpoint and the Trust Mark Status endpoint that are served as plain JSON by default.</p>
+<p>All the responses of the federation endpoints are in the form of signed JWT, with the exception of the Subordinate Listing endpoint and the Trust Mark Status endpoint that are served as plain JSON by default. The Federation Subordinate Events Endpoint also returns signed JWTs with the content type <code class="docutils literal notranslate"><span class="pre">application/entity-events-statement+jwt</span></code>.</p>
 </section>
 <section id="configuration-of-the-federation">
 <h2><span class="section-number">6.5. </span>Configuration of the Federation<a class="headerlink" href="#configuration-of-the-federation" title="Link to this heading">¶</a></h2>
@@ -894,7 +899,7 @@ The Subordinate Statement MAY contain a metadata policy and the Trust Marks rela
 <section id="trust-evaluation-mechanism">
 <h2><span class="section-number">6.11. </span>Trust Evaluation Mechanism<a class="headerlink" href="#trust-evaluation-mechanism" title="Link to this heading">¶</a></h2>
 <p>Trust Anchors MUST distribute their Federation Public Keys through secure out-of-band mechanisms, such as publishing them on a verified web page or storing them in a remote repository as part of a trust list. The rationale behind this requirement is that relying solely on the data provided within the Trust Anchor's Entity Configuration does not adequately mitigate risks associated with DNS and TLS manipulation attacks. To ensure security, all participants MUST obtain the Trust Anchor's public keys using these out-of-band methods. They should then compare these keys with those obtained from the Trust Anchor's Entity Configuration, discarding any keys that do not match. This process helps to ensure the integrity and authenticity of the Trust Anchor's public keys and the overall security of the federation.</p>
-<p>The Trust Anchor publishes the list of its Subordinates (Federation Subordinate Listing endpoint), the attestations of their metadata and public keys (Subordinate Statements).</p>
+<p>The Trust Anchor publishes the list of its Subordinates (Federation Subordinate Listing endpoint), the attestations of their metadata and public keys (Subordinate Statements), and historical events related to their lifecycle (Federation Subordinate Events endpoint).</p>
 <p>Each participant, including Trust Anchor, Intermediate, Credential Issuer, Wallet Provider, and Relying Party, publishes its own metadata and public keys (Entity Configuration endpoint) in the well-known web resource <strong>.well-known/openid-federation</strong>.</p>
 <p>Each of these can be verified using the Subordinate Statement issued by a superior, such as the Trust Anchor or an Intermediate.</p>
 <p>Each Subordinate Statement is verifiable over time and MUST have an expiration date. The revocation of each statement is verifiable in real time and online (only for remote flows) through the federation endpoints.</p>
@@ -916,7 +921,7 @@ The Subordinate Statement MAY contain a metadata policy and the Trust Marks rela
 <p>In the issuance process, Trust Evaluation ensures the integrity and authenticity of the Credentials being issued and the realiability of their Issuers. This section delineates the Trust Evaluation mechanisms distinct from the protocol flows, implemented by Wallet Instances and Relying Parties, as described in the dedicated section.</p>
 <p>Trust Evaluations implement different ways, as defined below:</p>
 <ul class="simple">
-<li><p><strong>Federation Entity Discovery</strong>: Wallet Instances and Relying Parties MUST verify the identity of the Issuer using the Federation Entity Discovery process defined in <a class="reference internal" href="#federation-discovery"><span class="std std-ref">Federation Discovery</span></a>. This involves querying federation endpoints to confirm the Issuer's validity status and compliance with the Trust Framework.</p></li>
+<li><p><strong>Federation Entity Discovery</strong>: Wallet Instances and Relying Parties MUST verify the identity of the Issuer using the Federation Entity Discovery process defined in <a class="reference internal" href="#federation-discovery"><span class="std std-ref">Federation Discovery</span></a>. This involves querying federation endpoints to confirm the Issuer's validity status and compliance with the Trust Framework. Historical event data from the Federation Subordinate Events Endpoint can provide additional context about the entity's lifecycle and compliance history.</p></li>
 <li><p><strong>Trust Chains</strong>: Wallet Instances and Relying Parties evaluate Issuer's Trust Chains using the mechanisms defined in <a class="reference internal" href="#trust-chain"><span class="std std-ref">Trust Chain</span></a>. Trust Chains may be provided statically or built through a Federation Entity Discovery process, to ensure that the entity requesting the Credential is part of a recognized and trusted federation.</p></li>
 <li><p><strong>Trust Marks Evaluation</strong>: Trust Marks are assessed to ensure ongoing compliance with federation policies. These marks indicate adherence to specific standards and practices required by the federation.</p></li>
 <li><p><strong>Policy Evaluation</strong>: Wallet Instances and Relying Parties MUST check that the Credential Issuer is allowed in the issuance of the Credential of their interest. Metadata, metadata policies and Trust Marks are used for the implementation of these checks (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-issuance-testcases"><span class="std std-ref">WP_050a</span></a>).</p></li>
@@ -943,7 +948,7 @@ The Subordinate Statement MAY contain a metadata policy and the Trust Marks rela
 The Trust Evaluation mechanisms are distinct from protocol flows and are implemented by the Wallet Instance, as detailed in the dedicated section.</p>
 <p>Trust Evaluations are conducted as follows:</p>
 <ul class="simple">
-<li><p><strong>Federation Entity Discovery</strong>: When the Wallet Instance receives a signed request issued by a Relying Party, the Wallet Instance MUST verify the identity of the Relying Party using the Federation Entity Discovery process defined in <a class="reference internal" href="#federation-discovery"><span class="std std-ref">Federation Discovery</span></a>. This involves querying federation endpoints to confirm the Relying Party's validity status and compliance with the Trust Framework and evaluating the request signature using the cryptographic material obtained from the Trust Chain.</p></li>
+<li><p><strong>Federation Entity Discovery</strong>: When the Wallet Instance receives a signed request issued by a Relying Party, the Wallet Instance MUST verify the identity of the Relying Party using the Federation Entity Discovery process defined in <a class="reference internal" href="#federation-discovery"><span class="std std-ref">Federation Discovery</span></a>. This involves querying federation endpoints to confirm the Relying Party's validity status and compliance with the Trust Framework and evaluating the request signature using the cryptographic material obtained from the Trust Chain. Historical event data from the Federation Subordinate Events Endpoint can provide additional context about the Relying Party's lifecycle and compliance history.</p></li>
 <li><p><strong>Trust Chains</strong>: The Wallet Instance evaluates the Relying Party's Trust Chains using the mechanisms defined in <a class="reference internal" href="#trust-chain"><span class="std std-ref">Trust Chain</span></a>. Trust Chains may be provided statically or built through a Federation Entity Discovery process, to ensure that the Relying Party is part of a recognized and trusted federation. This involves checking the Trust Chain from the root authority (Trust Anchor) to the Relying Party (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_079</span></a>).</p></li>
 <li><p><strong>Trust Marks Evaluation</strong>: Trust Marks are assessed to ensure ongoing compliance with federation policies. These marks indicate adherence to specific standards and practices required by the federation. Relying Parties MAY include Trust Marks in their Entity Configuration to signal administrative properties and compliance to specific profiles, such as the grants in interacting with under-age users (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_080</span></a>).</p></li>
 <li><p><strong>Policy Evaluation</strong>: The Wallet Instance MUST verify that the Relying Party is authorized to request the Credential of interest. Metadata, metadata policies, and Trust Marks are used to implement these checks (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_087</span></a>).</p></li>
@@ -1292,6 +1297,46 @@ Signature:
 </pre></div>
 </div>
 </section>
+<section id="federation-subordinate-events-endpoint">
+<h3><span class="section-number">6.13.4. </span>Federation Subordinate Events Endpoint<a class="headerlink" href="#federation-subordinate-events-endpoint" title="Link to this heading">¶</a></h3>
+<p>The Federation Subordinate Events Endpoint is defined in <a class="reference external" href="https://openid.net/specs/openid-federation-subordinate-events-1_0.html">OID-FED-SUBORDINATE-EVENTS</a>. This endpoint provides a mechanism for Trust Anchors and Intermediates to publish historical events related to their Immediate Subordinates registration status. It provides transparency and accountability within the federation by providing a comprehensive historical record of significant events affecting federation participants.</p>
+<p>For complete specification details, including endpoint location, request format, response format, JWT claims, event object parameters, and supported event types, refer to <a class="reference external" href="https://openid.net/specs/openid-federation-subordinate-events-1_0.html">OID-FED-SUBORDINATE-EVENTS</a>.</p>
+<p>Below is a non-normative example of a Federation Subordinate Events Endpoint request and response:</p>
+<p><strong>Example Request</strong>:</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/federation_subordinate_events_endpoint?sub=https%3A%2F%2Frp%2Eexample%2Eorg</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">immediate-superior.example.org</span>
+</pre></div>
+</div>
+<p><strong>Example Response</strong>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://immediate-superior.example.org&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://rp.example.org&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1590000000</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;federation_registration_events&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1590000000</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;registration&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1590000000</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jwks_update&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1600000000</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;revocation&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;event_description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;compromised node&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1610000000</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;registration&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Integration with Entity Lifecycle Management</strong>:</p>
+<p>This endpoint complements the entity lifecycle management procedures defined in <a class="reference internal" href="entity-onboarding.html#entity-onboarding"><span class="std std-ref">Entity Onboarding</span></a> by providing detailed historical tracking of all significant events affecting federation participants. It supports both automated compliance monitoring and manual auditing processes.</p>
+</section>
 </section>
 <section id="privacy-remarks">
 <h2><span class="section-number">6.14. </span>Privacy Remarks<a class="headerlink" href="#privacy-remarks" title="Link to this heading">¶</a></h2>
@@ -1369,6 +1414,7 @@ Signature:
 <li><a class="reference internal" href="#federation-trust-anchor-and-x-509-ca">6.13.1. Federation Trust Anchor and X.509 CA</a></li>
 <li><a class="reference internal" href="#x-509-certificates-issuance">6.13.2. X.509 Certificates Issuance</a></li>
 <li><a class="reference internal" href="#x-509-certificate-revocation">6.13.3. X.509 Certificate Revocation</a></li>
+<li><a class="reference internal" href="#federation-subordinate-events-endpoint">6.13.4. Federation Subordinate Events Endpoint</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#privacy-remarks">6.14. Privacy Remarks</a></li>
@@ -1402,7 +1448,7 @@ Signature:
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 17/03/2026.
+      Last updated on 18/03/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

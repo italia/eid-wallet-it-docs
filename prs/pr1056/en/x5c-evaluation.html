@@ -452,6 +452,7 @@ openssl<span class="w"> </span>crl<span class="w"> </span>-in<span class="w"> </
 <ul class="simple">
 <li><p><strong>CRL/OCSP Verification</strong>: Monitor Certificate Revocation Lists or Online Certificate Status Protocol responses to detect revocation of superior certificates as defined in <a class="reference internal" href="trust-infrastructure.html#x-509-certificate-revocation"><span class="std std-ref">X.509 Certificate Revocation</span></a>. Certificate revocation indicates superior key rotation is in progress.</p></li>
 <li><p><strong>Fetch Endpoint</strong>: Retrieve Subordinate Statement via <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">{superior}/fetch?sub={subordinate_entity_id}</span></code> to obtain current certificates.</p></li>
+<li><p><strong>Events Endpoint</strong>: Monitor <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">{superior}/federation_subordinate_events_endpoint?sub={subordinate_entity_id}</span></code> for <code class="docutils literal notranslate"><span class="pre">jwks_update</span></code> events. The Federation Subordinate Events endpoint returns historical track of registration events as defined in <a class="reference internal" href="trust-infrastructure.html#federation-api-endpoints"><span class="std std-ref">Federation API endpoints</span></a>.</p></li>
 </ul>
 <p>Subordinates SHOULD implement automated scheduling for:</p>
 <ul class="simple">
@@ -725,7 +726,7 @@ curl<span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wall
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 17/03/2026.
+      Last updated on 18/03/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
