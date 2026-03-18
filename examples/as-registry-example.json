@@ -1,6 +1,6 @@
 {
     "id": "urn:authentic-sources:it-wallet",
-    "version": "1.0",
+    "version": "1.0.0",
     "last_modified": "2025-03-15T12:00:00Z",
     "localization": {
         "default_locale": "it",
