@@ -633,3 +633,4 @@ I partecipanti alla federazione validano lo stato dei Trust Mark tramite due mec
 2. **Validazione Dinamica**: Verifica dello stato in tempo reale, contro eventuali revoche, utilizzando l'endpoint ``/trust_mark_status`` dell'Autorità di Federazione come definito in :ref:`trust-infrastructure:Endpoint API di Federazione`.
 
 Per le procedure complete di gestione dei Certificati X.509, inclusa la validazione della catena, la verifica delle revoche e la gestione del ciclo di vita, vedere :ref:`x5c-evaluation:Operazioni di Gestione dei Certificati X.509`.
+
