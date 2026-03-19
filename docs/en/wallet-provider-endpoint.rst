@@ -204,7 +204,7 @@ Below is a non-normative example of a Wallet Instance Attestation Request.
 
 .. code-block:: http
 
-    POST /wallet-instance-attestations HTTP/1.1
+    POST /wallet-instance-attestation HTTP/1.1
     Host: application-provider.example.org
     Content-Type: application/json
 
@@ -306,8 +306,8 @@ Below is a non-normative example of a Wallet Instance Attestation Request JWT he
         }
       },
       "platform": "iOS",
-      "wallet_solution_id": "appio",
-      "wallet_solution_version": "3.25.1.0"
+      "wallet_solution_id": "Wallet-mobile",
+      "wallet_solution_version": "1.1.0"
     }
 
 
@@ -444,7 +444,7 @@ The body of the Wallet Instance Attestation JWT contains the following claims:
       - REQUIRED. UNIX Timestamp with the expiry time of the JWT.
       - :rfc:`9126` and :rfc:`7519`.
     * - **iat**
-      - OPTIONAL. UNIX Timestamp with the time of JWT issuance.
+      - REQUIRED. UNIX Timestamp with the time of JWT issuance.
       - :rfc:`9126` and :rfc:`7519`.
     * - **nbf**
       - OPTIONAL. UNIX Timestamp with the start time of validity of the JWT issuance.
@@ -503,7 +503,7 @@ Below is a non-normative example of a Wallet Unit Attestation Request.
 
 .. code-block:: http
 
-    POST /wallet-unit-attestations HTTP/1.1
+    POST /wallet-unit-attestation HTTP/1.1
     Host: application-provider.example.org
     Content-Type: application/json
 
@@ -616,8 +616,8 @@ Below is a non-normative example of a Wallet Unit Attestation Request JWT header
         "eyJ0eXAiOiJrZXktYXR0ZXN0YXRpb24tcmVxdWVzdCtqd3QiLCJhbGciOiJFUzI1NiIsImtpZCI6IkViUUJSQ2dLNWJrVzlZNU1idGEwZlpzMVdhVTBLZVpiek9iTXVvY2NLb28ifQ.eyJ3c2NkX2tleV9hdHRlc3RhdGlvbiI6eyJzdG9yYWdlX3R5cGUiOiJMT0NBTF9OQVRJVkUifSwiY25mIjp7Imp3ayI6eyJrdHkiOiJFQyIsIngiOiJEVVFWTGhLMUtRUmQtZ3g3UU5jYVNhWENnOXg0S3R6QmstNWIxWTNkeWU0IiwieSI6IkZxVjk0TWVrVm5fQ05mNTIxdm1vLVFIcWZObk12eGdIR3NFeDlCTlc4aFEiLCJjcnYiOiJQLTI1NiIsImtpZCI6IkViUUJSQ2dLNWJrVzlZNU1idGEwZlpzMVdhVTBLZVpiek9iTXVvY2NLb28ifX0sImlhdCI6MTc3MzA1Mzg2MSwiZXhwIjoxNzczMDU3NDYxfQ.wIYOmX8-dmuRnuaCVg1kFoTHhsvv01vbapQ8-3er-HIiAF819Kt3Uy0PUN_WgxP7eWMGwhkn_9tQnnhdgXLYyw"
       ],
       "platform": "iOS",
-      "wallet_solution_id": "appio",
-      "wallet_solution_version": "3.25.1.0"
+      "wallet_solution_id": "Wallet-mobile",
+      "wallet_solution_version": "1.1.0"
     }
 
 

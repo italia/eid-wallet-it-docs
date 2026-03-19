@@ -321,7 +321,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
     **Wallet Unit Attestation**
       Oggetto emesso da un Fornitore di Wallet che dimostra che le chiavi utilizzate per il binding crittografico degli Attestati Elettronici risiedono in un WSCD affidabile e verifica che la Wallet Unit non sia stata revocata. Specifico per l'IT-Wallet.  
 
-    **Wallet App Attestation**
+    **Wallet Instance Attestation**
     **Wallet Attestation**
       Oggetto emesso da un Fornitore di Wallet che attesta l'integrità dell'Istanza del Wallet.
       Specifico per l'IT-Wallet.

@@ -68,7 +68,7 @@ Below is a non-normative example of the ``client_data`` JSON object.
 
 **Steps 16-19**: The Wallet Instance:
 
-*  requests the Device Integrity Service to create an ``key_attestation`` value for each ``client_data_hash`` per each ``key_pub``.
+*  requests the Device Integrity Service to create an ``integrity_assertion`` value for each ``client_data_hash`` per each ``key_pub``.
 *  receives a signed ``integrity_assertion`` value from the Device Integrity Service, authenticated by the OEM.
 *  generate ``keys_to_attest`` value by signing the ``integrity_assertion`` that is obtained for the Wallet Unit Attestation using the private key of the initially generated credential key pair (``priv_key``). 
 
