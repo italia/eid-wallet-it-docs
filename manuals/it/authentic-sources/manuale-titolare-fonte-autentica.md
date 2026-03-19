@@ -55,14 +55,15 @@ L'Ente che fornisce i dati, in quanto Titolare di Fonte Autentica, è l'unico so
 
 Di seguito rappresentato il ruolo del Titolare di Fonte Autentica e delle altre entità nel Sistema IT-Wallet. 
 
-Figura 1
-Figura 1: Ruolo del Titolare di Fonte Autentica nel Sistema IT-Wallet
+![Ruolo del Titolare di Fonte Autentica nel Sistema IT-Wallet](https://github.com/user-attachments/assets/e23b1cd0-b547-408e-8354-58131e0977b4)
+
+*Figura 1: Ruolo del Titolare di Fonte Autentica nel Sistema IT-Wallet*
 
 Di seguito il ruolo del Titolare di Fonte Autentica nel contesto del flusso di richiesta ed emissione di un EAA. 
 
-Figura 2
+![Flusso di richiesta ed emissione di un EAA nel Sistema IT-Wallet](https://github.com/user-attachments/assets/9223e9fa-9830-4e1d-b1ac-6354554ef2ce)
 
-Figura 2: Flusso di richiesta ed emissione di un EAA nel Sistema IT-Wallet 
+*Figura 2: Flusso di richiesta ed emissione di un EAA nel Sistema IT-Wallet* 
 
 > **NB:** Nel Sistema IT-Wallet IPZS (Istituto Poligrafico e Zecca dello Stato) è l'unico Fornitore di Attestati Elettronici di Attributi di Interesse Pubblico, coerentemente con la normativa. PagoPA S.p.A. è l'unico fornitore di soluzione pubblica di IT-Wallet, ospitata all'interno dell'app IO, l'app dei servizi pubblici per la PA.
 
@@ -160,14 +161,14 @@ La definizione dei casi d'uso da parte della Fonte Autentica è fondamentale per
 - **progettare un'esperienza d'uso che apporti valore reale** sia a cittadini che ai verificatori; è utile definire a monte quali potranno essere le occasioni d'uso dell'EAA prodotto con i propri dati, a partire dall'analisi dell'esperienza attuale di fruizione del corrispettivo documento fisico, se esistente (es. si pensi alla modalità di presentazione del codice a barre per l'uso della Tessera Sanitaria o del QR code per la verifica della Carta Europea della Disabilità); 
 - **orientare il tipo di formato** con cui il Fornitore di Attestati Elettronici emetterà l'EAA (SD-JWT-VC per scenari in remoto e mdoc-CBOR per scenari in prossimità).
 
-A tal fine, la Fonte Autentica deve compilare il questionario Casi d'uso EAA in formato JSON, utilizzando il [template compilazione completo Fonte Autentica](template-compilazione-fonte-autentica-completo.json) (vedi [Appendice A](#appendice-a--casi-duso-eaa)). Valida il file JSON con lo strumento indicato nel [documento di validazione](validazione-json-schema-linter.md) prima della sottomissione. 
+A tal fine, la Fonte Autentica deve compilare il questionario Casi d'uso EAA in formato JSON, utilizzando il [template compilazione completo Fonte Autentica](template-form-onboarding-fonte-autentica.json) (vedi [Appendice A](#appendice-a--casi-duso-eaa)). Valida il file JSON con lo strumento indicato nel [documento di validazione](validazione-json-schema-linter.md) prima della sottomissione. 
 
 ### **Definire il Data Model dei dati forniti**
 
 Gli EAA sono attestati digitali costruiti sui dati forniti dalla Fonte Autentica tramite l'e-service. Il Fornitore di Attestati Elettronici produce l'EAA a partire da tali dati.  
 La Fonte Autentica deve definire quali dati fornirà e in quale ordine, affinché l'EAA prodotto risulti adeguato all'utilizzo in versione digitale e subito comprensibile all'utente. 
 
-A tal fine, l'Ente deve compilare la sezione **e_service.data_model** del [template compilazione completo Fonte Autentica](template-compilazione-fonte-autentica-completo.json), dichiarando i dettagli sui dati che verranno messi a disposizione (es. tipologia, obbligatorietà, formato, lunghezza massima consentita, ordinamento, etc.).  
+A tal fine, l'Ente deve compilare la sezione **e_service.data_model** del [template compilazione completo Fonte Autentica](template-form-onboarding-fonte-autentica.json), dichiarando i dettagli sui dati che verranno messi a disposizione (es. tipologia, obbligatorietà, formato, lunghezza massima consentita, ordinamento, etc.).  
 Nella sezione [Template PDND Data Model](#Template-PDND-Data-Model) sono riportati i riferimenti dei template Data Model pubblicati su PDND relativi ad alcune tipologie di attestati emessi in IT-Wallet; l'Ente allinea il proprio data model (sezione **e_service.data_model**) a tali template per garantire che i dati forniti siano conformi alla struttura dell'attestato che verrà emesso dal Fornitore di Attestati.
 
 In conclusione, un'adeguata definizione del Data Model pone le basi per una corretta implementazione dell'e-service da pubblicare su PDND (vedi [Step 2](#step-2--pubblicazione-in-collaudo)) ma è altresì importante considerare e rispettare i seguenti requisiti tecnici: 
@@ -179,7 +180,7 @@ In conclusione, un'adeguata definizione del Data Model pone le basi per una corr
 
 L'e-service messo a disposizione dall'Ente deve prevedere e gestire specifiche situazioni di errore che possono verificarsi nella fase di recupero dei dati da parte del Fornitore di Attestati.
 
-A tal fine, l'Ente deve compilare la sezione **e_service.mappatura_errori** del [template compilazione completo Fonte Autentica](template-compilazione-fonte-autentica-completo.json). La mappatura descrive le risposte che il servizio messo a disposizione dovrà obbligatoriamente gestire per garantire una **corretta informazione all'utente in caso di errori** durante l'ottenimento dell'EAA. 
+A tal fine, l'Ente deve compilare la sezione **e_service.mappatura_errori** del [template compilazione completo Fonte Autentica](template-form-onboarding-fonte-autentica.json). La mappatura descrive le risposte che il servizio messo a disposizione dovrà obbligatoriamente gestire per garantire una **corretta informazione all'utente in caso di errori** durante l'ottenimento dell'EAA. 
 
 ### **Definire la gestione degli stati del ciclo di vita**
 
@@ -202,7 +203,7 @@ Oltre agli stati sopra elencati, è bene specificare che lo stato di un Attestat
 
 Per approfondimenti vai alle Specifiche Tecniche, sezione [Ciclo di Vita degli Attestati Elettronici](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/credential-revocation.html). 
 
-A tal fine, l'Ente deve compilare la sezione **e_service.stati** del [template compilazione completo Fonte Autentica](template-compilazione-fonte-autentica-completo.json) per definire i dettagli sugli stati relativi al ciclo di vita dell'EAA, ovvero dichiarare la condizione di applicabilità dei tre stati sopracitati e l'eventuale relativo messaggio informativo da esporre all'utente.
+A tal fine, l'Ente deve compilare la sezione **e_service.stati** del [template compilazione completo Fonte Autentica](template-form-onboarding-fonte-autentica.json) per definire i dettagli sugli stati relativi al ciclo di vita dell'EAA, ovvero dichiarare la condizione di applicabilità dei tre stati sopracitati e l'eventuale relativo messaggio informativo da esporre all'utente.
 
 **Nota**: 
 Per ottimizzare l'esperienza d'uso dell'IT-Wallet pubblico, il Titolare di Fonte Autentica può anche valutare l'**integrazione con app IO per l'invio di messaggi informativi al cittadino**, quali ad esempio:
@@ -214,7 +215,7 @@ Per ottimizzare l'esperienza d'uso dell'IT-Wallet pubblico, il Titolare di Fonte
 ### **Definire i contenuti per l'informazione e l'assistenza all'utente**
 
 L'Ente deve contribuire al [modello di assistenza](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/functionalities.html#assistenza-utente) del Sistema IT-Wallet rendendo disponibili contenuti utili alla predisposizione di nuove Domande Frequenti e/o testi informativi in app, e fornendo i recapiti necessari per la gestione dell'assistenza agli utenti.  
-A tal fine, l'Ente deve compilare la sezione **assistenza** nel [template compilazione completo Fonte Autentica](template-compilazione-fonte-autentica-completo.json) (vedi [Appendice B](#appendice-b--assistenza-eaa)). 
+A tal fine, l'Ente deve compilare la sezione **assistenza** nel [template compilazione completo Fonte Autentica](template-form-onboarding-fonte-autentica.json) (vedi [Appendice B](#appendice-b--assistenza-eaa)). 
 
 ### **Definire le caratteristiche grafiche dell'EAA prodotto dai propri dati**
 
@@ -245,13 +246,13 @@ L'Ente deve sviluppare e rilasciare in collaudo un e-service coerente con il Dat
 
 Contestualmente al flusso di pubblicazione dell'e-service, l'Ente deve allegare i seguenti documenti, precedentemente compilati:
 
-- [Template compilazione completo Fonte Autentica](template-compilazione-fonte-autentica-completo.json) — include Casi d'uso, Assistenza e sezione **e_service** (data model, mappatura errori, stati, lista nome campo). Nel caso di EAA di interesse pubblico, l'Ente deve abilitare IPZS alla fruizione dell'e-service, se possibile con abilitazione automatica.
+- [Template compilazione completo Fonte Autentica](template-form-onboarding-fonte-autentica.json) — include Casi d'uso, Assistenza e sezione **e_service** (data model, mappatura errori, stati, lista nome campo). Nel caso di EAA di interesse pubblico, l'Ente deve abilitare IPZS alla fruizione dell'e-service, se possibile con abilitazione automatica.
 
 Si consiglia di nominare l'e-service in "Creazione EAA [Nome / Nome tipologia EAA] – IT-Wallet" (es. "Creazione EAA Patente di guida – IT-Wallet" oppure "Creazione EAA Titoli di studio – IT-Wallet") e di predisporre una descrizione in linea con la [Guida alla nomenclatura degli e-service PDND](https://italia.github.io/pdnd-guida-nomenclatura-eservice/index.html) referenziata nella Guida all'adesione PDND. 
 
 ### **Attivare il servizio Signal Hub in collaudo**
 
-L'Ente deve attivare in collaudo il servizio [Signal Hub](https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-pdnd-interoperabilita/v1.0/riferimenti-tecnici/signal-hub) di PDND per il relativo e-service, in coerenza con quanto definito dalle [Specifiche Tecniche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/signal-hub-endpoint.html) per la gestione degli stati, precedentemente mappati nella sezione **e_service.stati** del [template compilazione completo Fonte Autentica](template-compilazione-fonte-autentica-completo.json). 
+L'Ente deve attivare in collaudo il servizio [Signal Hub](https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-pdnd-interoperabilita/v1.0/riferimenti-tecnici/signal-hub) di PDND per il relativo e-service, in coerenza con quanto definito dalle [Specifiche Tecniche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/signal-hub-endpoint.html) per la gestione degli stati, precedentemente mappati nella sezione **e_service.stati** del [template compilazione completo Fonte Autentica](template-form-onboarding-fonte-autentica.json). 
 
 ### **Sviluppare il Credential Offer (opzionale)**
 
@@ -297,7 +298,7 @@ L'Ente deve rilasciare l'e-service su PDND in produzione. Nel caso di EAA di int
 
 ### **Attivare il servizio Signal Hub in produzione**
 
-L'Ente deve attivare in produzione il servizio Signal Hub di PDND per il relativo e-service, in coerenza con quanto definito dalle [Specifiche Tecniche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/signal-hub-endpoint.html) per la gestione degli stati, precedentemente mappati nella sezione **e_service.stati** del [template compilazione completo Fonte Autentica](template-compilazione-fonte-autentica-completo.json). 
+L'Ente deve attivare in produzione il servizio Signal Hub di PDND per il relativo e-service, in coerenza con quanto definito dalle [Specifiche Tecniche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/signal-hub-endpoint.html) per la gestione degli stati, precedentemente mappati nella sezione **e_service.stati** del [template compilazione completo Fonte Autentica](template-form-onboarding-fonte-autentica.json). 
 
 ### **Portare in produzione il Credential Offer (opzionale)**
 
@@ -354,7 +355,7 @@ L'Ente deve garantire il corretto funzionamento dell'e-service nel tempo, progra
 
 ### **Gestire problematiche e fornire assistenza agli utenti**
 
-L'Ente deve garantire un costante aggiornamento delle informazioni riportate nella sezione **assistenza** del [template compilazione completo Fonte Autentica](template-compilazione-fonte-autentica-completo.json), al fine di: 
+L'Ente deve garantire un costante aggiornamento delle informazioni riportate nella sezione **assistenza** del [template compilazione completo Fonte Autentica](template-form-onboarding-fonte-autentica.json), al fine di: 
 
 - **Contribuire alla risoluzione di bug** 
 Il referente dell'ambito sistemistico e il referente dell'ambito applicativo, così come definito nella sezione `assistenza.referenti` del template, devono contribuire alla diagnosi congiunta delle segnalazioni ricevute da Fornitore di Attestati Elettronici di Attributi (IPZS, nel caso di EAA di interesse pubblico) e Fornitori di Wallet (PagoPA, nel caso della soluzione pubblica IT-Wallet) e relativa risoluzione, secondo quanto definito dal [modello di assistenza](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/functionalities.html#assistenza-utente) del Sistema IT-Wallet. 
@@ -369,11 +370,11 @@ Di seguito l'elenco dei documenti da scaricare, compilare e condividere secondo 
 
 - [Step 1 - Progettazione dell'e-service e dei dati](#step-1--progettazione-dell-e-service-e-dei-dati)
 - [Step 2 - Pubblicazione in collaudo](#step-2--pubblicazione-in-collaudo)
-- [Template compilazione completo Fonte Autentica](template-compilazione-fonte-autentica-completo.json) — include Casi d'uso, Assistenza e **e_service** (data model, mappatura errori, stati, lista nome campo). Validare prima della sottomissione (vedi [Validazione JSON Schema e Linter](validazione-json-schema-linter.md)). Per le istruzioni dettagliate sulla sezione e_service, vedi [Appendice C](#appendice-c--guida-compilazione-e-service)
+- [Template compilazione completo Fonte Autentica](template-form-onboarding-fonte-autentica.json) — include Casi d'uso, Assistenza e **e_service** (data model, mappatura errori, stati, lista nome campo). Validare prima della sottomissione (vedi [Validazione JSON Schema e Linter](validazione-json-schema-linter.md)). Per le istruzioni dettagliate sulla sezione e_service, vedi [Appendice C](#appendice-c--guida-compilazione-e-service)
 
 ## Appendice A – Casi d'uso EAA
 
-Il questionario Casi d'uso EAA si compila in formato JSON ed è incluso nel [template compilazione completo Fonte Autentica](template-compilazione-fonte-autentica-completo.json). Le sezioni sotto riportate fungono da guida.
+Il questionario Casi d'uso EAA si compila in formato JSON ed è incluso nel [template compilazione completo Fonte Autentica](template-form-onboarding-fonte-autentica.json). Le sezioni sotto riportate fungono da guida.
 
 ### Obiettivo
 
@@ -451,7 +452,7 @@ Aree tematiche: **Target utenti**, **Emissione e formato**, **Utilizzo**, **Lega
 
 ## Appendice B – Assistenza EAA
 
-Il modulo Assistenza EAA è incluso nel [template compilazione completo Fonte Autentica](template-compilazione-fonte-autentica-completo.json), sezione `assistenza`. Ha lo scopo di supportare gli Enti nella definizione dei contenuti per l'informazione e l'assistenza all'utente relativi all'EAA.
+Il modulo Assistenza EAA è incluso nel [template compilazione completo Fonte Autentica](template-form-onboarding-fonte-autentica.json), sezione `assistenza`. Ha lo scopo di supportare gli Enti nella definizione dei contenuti per l'informazione e l'assistenza all'utente relativi all'EAA.
 
 L'Ente deve contribuire al [modello di assistenza](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/functionalities.html#assistenza-utente) del Sistema IT-Wallet rendendo disponibili:
 
@@ -480,7 +481,7 @@ L'Ente deve contribuire al [modello di assistenza](https://italia.github.io/eid-
 
 ## Appendice C – Guida compilazione e-service
 
-Il dataset dell'e-service (data model, mappatura errori, stati, lista nome campo) si compila nel [template compilazione completo Fonte Autentica](template-compilazione-fonte-autentica-completo.json), sezione **e_service**. Le matrici sottostanti fungono da guida e riferimento.
+Il dataset dell'e-service (data model, mappatura errori, stati, lista nome campo) si compila nel [template compilazione completo Fonte Autentica](template-form-onboarding-fonte-autentica.json), sezione **e_service**. Le matrici sottostanti fungono da guida e riferimento.
 
 ### Prima di iniziare
 

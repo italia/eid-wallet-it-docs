@@ -1,5 +1,5 @@
 {
-  "$schema": "./json-schemas/template-compilazione-fonte-autentica.schema.json",
+  "$schema": "./json-schemas/schema-validazione-form-onboarding-fonte-autentica.schema.json",
   "metadata": {
     "nome_ente_titolare": "",
     "nome_eaa": "",

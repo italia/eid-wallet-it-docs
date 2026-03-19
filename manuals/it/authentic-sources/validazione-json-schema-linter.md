@@ -4,8 +4,8 @@ Questo documento illustra le modalità di validazione e controllo qualità dei f
 
 ## Riferimenti
 
-- **Schema JSON**: `manuals/it/authentic-sources/json-schemas/template-compilazione-fonte-autentica.schema.json` (JSON Schema draft 2020-12)
-- **Template completo Fonte Autentica**: `manuals/it/authentic-sources/template-compilazione-fonte-autentica-completo.json`
+- **Schema JSON**: `manuals/it/authentic-sources/json-schemas/schema-validazione-form-onboarding-fonte-autentica.schema.json` (JSON Schema draft 2020-12)
+- **Template completo Fonte Autentica**: `manuals/it/authentic-sources/template-form-onboarding-fonte-autentica.json`
 - **Validatore Python**: `utils/validate_casi_d_uso_json.py`
 
 ---
@@ -33,7 +33,7 @@ OK: Il file JSON è valido e conforme allo schema.
 
 ```bash
 npm install -g ajv-cli
-ajv validate -s manuals/it/authentic-sources/json-schemas/template-compilazione-fonte-autentica.schema.json -d "manuals/it/authentic-sources/tuo-file-compilato.json" --spec=draft2020
+ajv validate -s manuals/it/authentic-sources/json-schemas/schema-validazione-form-onboarding-fonte-autentica.schema.json -d "manuals/it/authentic-sources/tuo-file-compilato.json" --spec=draft2020
 ```
 
 ---
@@ -62,7 +62,7 @@ In caso di errore sintattico, Python segnalerà la riga e la posizione.
 
 ## 3. Workflow consigliato
 
-1. **Compilazione** del template `template-compilazione-fonte-autentica-completo.json`
+1. **Compilazione** del template `template-form-onboarding-fonte-autentica.json`
 2. **Validazione sintattica** (JSON Linter) — es. `python -c "import json; json.load(open('file.json'))"`
 3. **Validazione strutturale** (JSON Schema) — es. `python utils/validate_casi_d_uso_json.py file.json`
 4. **Checklist pre-sottomissione**:
@@ -85,7 +85,7 @@ I file compilati fanno riferimento allo schema tramite `$schema`; in caso di agg
 
 ---
 
-## 5. Note sullo schema `json-schemas/template-compilazione-fonte-autentica.schema.json`
+## 5. Note sullo schema `json-schemas/schema-validazione-form-onboarding-fonte-autentica.schema.json`
 
 - Lo schema valida l'intera struttura del file, incluse le sezioni **casi d'uso**, **assistenza** e **e_service**; queste ultime due sono obbligatorie e validate dallo schema.
 - **`tipo_sezione`**: deve essere `"documento_esistente"` o `"documento_non_esistente"`. La sezione corrispondente è obbligatoria.
