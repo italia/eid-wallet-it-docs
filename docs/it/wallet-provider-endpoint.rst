@@ -520,7 +520,7 @@ In particolare, il JWT della Wallet Unit Attestation Issuance include i seguenti
       - **Description**
       - **Reference**
     * - **alg**
-      - Identificatore di algoritmo di firma digitale, come definito dal registro IANA "JSON Web Signature and Encryption Algorithms". DEVE essere uno degli algoritmi supportati elencati in :ref:`algorithms:cryptographic algorithms` e NON DEVE essere impostato a ``none`` né a un identificatore di algoritmo simmetrico (MAC).
+      - Identificatore di algoritmo di firma digitale, come definito dal registro IANA "JSON Web Signature and Encryption Algorithms". DEVE essere uno degli algoritmi supportati elencati in :ref:`algorithms:Algoritmi Crittografici` e NON DEVE essere impostato a ``none`` né a un identificatore di algoritmo simmetrico (MAC).
       - [:rfc:`7516#section-4.1.1`]
     * - **kid**
       - Thumbprint della JWK della Wallet Instance contenuta nel claim ``cnf``.
