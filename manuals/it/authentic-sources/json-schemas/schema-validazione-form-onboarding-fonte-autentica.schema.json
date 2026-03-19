@@ -5,7 +5,12 @@
   "title": "Schema validazione Fonte Autentica",
   "description": "Schema di validazione per template-form-onboarding-fonte-autentica.json. Richiede metadata, sezione_casi_uso (documento esistente o non), assistenza e e_service.",
   "type": "object",
-  "required": ["metadata", "sezione_casi_uso", "assistenza", "e_service"],
+  "required": [
+    "metadata",
+    "sezione_casi_uso",
+    "assistenza",
+    "e_service"
+  ],
   "properties": {
     "$schema": { "type": "string" },
     "metadata": {
@@ -21,18 +26,32 @@
     "sezione_casi_uso": { "$ref": "#/$defs/sezione_casi_uso" },
     "assistenza": {
       "type": "object",
-      "required": ["referenti", "canali", "faq", "testi_informativi"],
+      "required": [
+        "referenti",
+        "canali",
+        "faq",
+        "testi_informativi"
+      ],
       "properties": {
-        "referenti": { "type": "array", "items": { "type": "object" } },
+        "referenti": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/referente_assistenza" }
+        },
         "canali": {
           "type": "array",
           "items": { "$ref": "#/$defs/canale_assistenza" }
         },
-        "faq": { "type": "array", "items": { "type": "object" } },
+        "faq": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/faq_item" }
+        },
         "testi_informativi": { "type": "string" }
       }
     },
-    "e_service": { "type": "object", "description": "Data model, mappatura errori, stati, lista nome campo. Struttura non validata." }
+    "e_service": {
+      "type": "object",
+      "description": "Data model, mappatura errori, stati, lista nome campo. Struttura non validata." 
+    }
   },
   "$defs": {
     "campo_risposta": {
@@ -83,6 +102,39 @@
         "risposta": { "type": "boolean" }
       }
     },
+    "referente_assistenza": {
+      "type": "object",
+      "required": ["ruolo", "nome", "cognome", "email", "telefono"],
+      "properties": {
+        "ruolo": { "type": "string" },
+        "nome": { "type": "string" },
+        "cognome": { "type": "string" },
+        "email": {
+          "type": "string",
+          "oneOf": [
+            { "maxLength": 0 },
+            { "minLength": 1, "format": "email" }
+          ],
+          "description": "Indirizzo email del referente; vuoto se non disponibile"
+        },
+        "telefono": {
+          "type": "string",
+          "oneOf": [
+            { "maxLength": 0 },
+            { "minLength": 4, "pattern": "^[0-9+\\-\\s()]+$", "maxLength": 25 }
+          ],
+          "description": "Numero di telefono (es. +39 06 1234567); vuoto se non disponibile"
+        }
+      }
+    },
+    "faq_item": {
+      "type": "object",
+      "required": ["domanda", "risposta"],
+      "properties": {
+        "domanda": { "type": "string" },
+        "risposta": { "type": "string" }
+      }
+    },
     "target_utenti": {
       "type": "object",
       "required": ["documento_fisico_preesistente", "chi_puo_richiedere", "prerequisiti"],
@@ -96,7 +148,16 @@
     },
     "emissione_formato": {
       "type": "object",
-      "required": ["dominio", "interesse_pubblico", "interesse_pubblico_motivazione", "catalogo_o_touchpoint", "modalita_sincrona_differita", "eaa_univoca", "identificazione_utente", "identificazione_utente_motivazione"],
+      "required": [
+        "dominio",
+        "interesse_pubblico",
+        "interesse_pubblico_motivazione",
+        "catalogo_o_touchpoint",
+        "modalita_sincrona_differita",
+        "eaa_univoca",
+        "identificazione_utente",
+        "identificazione_utente_motivazione"
+      ],
       "properties": {
         "dominio": { "$ref": "#/$defs/campo_risposta" },
         "interesse_pubblico": { "$ref": "#/$defs/campo_booleano" },
@@ -110,14 +171,22 @@
         "catalogo_o_touchpoint": { "$ref": "#/$defs/campo_risposta" },
         "modalita_sincrona_differita": { "$ref": "#/$defs/campo_risposta" },
         "variazioni_dati": { "$ref": "#/$defs/campo_risposta" },
-        "eaa_univoca": { "$ref": "#/$defs/campo_risposta" },
+        "eaa_univoca": { "$ref": "#/$defs/campo_booleano" },
         "identificazione_utente": { "$ref": "#/$defs/campo_booleano" },
         "identificazione_utente_motivazione": { "$ref": "#/$defs/campo_risposta" }
       }
     },
     "utilizzo": {
       "type": "object",
-      "required": ["contesti_uso", "soggetti_verificatori", "utilizzo_continuo", "tempo_validita", "rinnovo", "rinnovo_procedura", "validita_europa"],
+      "required": [
+        "contesti_uso",
+        "soggetti_verificatori",
+        "utilizzo_continuo",
+        "tempo_validita",
+        "rinnovo",
+        "rinnovo_procedura",
+        "validita_europa"
+      ],
       "properties": {
         "contesti_uso": { "$ref": "#/$defs/campo_risposta" },
         "soggetti_verificatori": { "$ref": "#/$defs/campo_risposta" },
@@ -147,7 +216,12 @@
     },
     "legale_privacy": {
       "type": "object",
-      "required": ["normativa", "proprieta_dati", "dati_sensibili", "dati_sensibili_motivazione"],
+      "required": [
+        "normativa",
+        "proprieta_dati",
+        "dati_sensibili",
+        "dati_sensibili_motivazione"
+      ],
       "properties": {
         "normativa": { "$ref": "#/$defs/campo_risposta" },
         "proprieta_dati": { "$ref": "#/$defs/campo_risposta" },
@@ -157,7 +231,12 @@
     },
     "sezione_casi_uso": {
       "type": "object",
-      "required": ["target_utenti", "emissione_formato", "utilizzo", "legale_privacy"],
+      "required": [
+        "target_utenti",
+        "emissione_formato",
+        "utilizzo",
+        "legale_privacy"
+      ],
       "properties": {
         "target_utenti": { "$ref": "#/$defs/target_utenti" },
         "emissione_formato": { "$ref": "#/$defs/emissione_formato" },

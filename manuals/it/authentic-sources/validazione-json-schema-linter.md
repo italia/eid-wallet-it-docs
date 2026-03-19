@@ -92,3 +92,5 @@ I file compilati fanno riferimento allo schema tramite `$schema`; in caso di agg
 - **`metadata`**: `nome_ente_titolare` e `nome_eaa` sono obbligatori con `minLength: 1` (non possono essere stringa vuota).
 - **`campo_risposta`**: ogni domanda richiede `domanda` e `risposta`; `suggerimento` è facoltativo.
 - **`assistenza.canali`**: ogni elemento ha `tipo` (enum: "Email assistenza", "Numero telefonico", "Altro"), `risposta` (stringa: indirizzo email, numero di telefono o descrizione a seconda del tipo; vuota se il canale non è utilizzato) e `note` (stringa); per tipo "Email assistenza" con risposta non vuota, lo schema valida il formato email.
+- **`assistenza.referenti`**: ogni elemento ha `ruolo`, `nome`, `cognome`, `email`, `telefono` (tutti stringa).
+- **`assistenza.faq`**: ogni elemento ha `domanda` e `risposta` (stringa).
