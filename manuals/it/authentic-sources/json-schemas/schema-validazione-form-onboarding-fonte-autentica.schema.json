@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/italia/eid-wallet-it-docs/manuals/it/authentic-sources/json-schemas/schema-validazione-form-onboarding-fonte-autentica.schema.json",
-  "$version": "0.6.0",
+  "$version": "0.7.0",
   "title": "Schema validazione Fonte Autentica",
   "description": "Schema di validazione per template-form-onboarding-fonte-autentica.json. Richiede metadata, sezione_casi_uso (documento esistente o non), assistenza e e_service.",
   "type": "object",
@@ -50,7 +50,25 @@
     },
     "e_service": {
       "type": "object",
-      "description": "Data model, mappatura errori, stati, lista nome campo. Struttura non validata." 
+      "required": ["response"],
+      "description": "e_service: response (data_model, mappatura_errori, stati) e lista_nome_campo.",
+      "properties": {
+        "response": {
+          "type": "object",
+          "required": ["versione", "data_model", "mappatura_errori", "stati"],
+          "description": "Contratto della response dell'endpoint Fonte Autentica",
+          "properties": {
+            "versione": {
+              "type": "string",
+              "description": "Versione del contratto di response (es. 1.0, 1.1)"
+            },
+            "data_model": { "type": "array", "items": { "type": "object" } },
+            "mappatura_errori": { "type": "array", "items": { "type": "object" } },
+            "stati": { "type": "array", "items": { "type": "object" } }
+          }
+        },
+        "lista_nome_campo": { "type": "array", "items": { "type": "object" } }
+      }
     }
   },
   "$defs": {

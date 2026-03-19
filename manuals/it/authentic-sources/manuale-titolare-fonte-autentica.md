@@ -168,8 +168,8 @@ A tal fine, la Fonte Autentica deve compilare il questionario Casi d'uso EAA in 
 Gli EAA sono attestati digitali costruiti sui dati forniti dalla Fonte Autentica tramite l'e-service. Il Fornitore di Attestati Elettronici produce l'EAA a partire da tali dati.  
 La Fonte Autentica deve definire quali dati fornirà e in quale ordine, affinché l'EAA prodotto risulti adeguato all'utilizzo in versione digitale e subito comprensibile all'utente. 
 
-A tal fine, l'Ente deve compilare la sezione **e_service.data_model** del [template compilazione completo Fonte Autentica](template-form-onboarding-fonte-autentica.json), dichiarando i dettagli sui dati che verranno messi a disposizione (es. tipologia, obbligatorietà, formato, lunghezza massima consentita, ordinamento, etc.).  
-Nella sezione [Template PDND Data Model](#Template-PDND-Data-Model) sono riportati i riferimenti dei template Data Model pubblicati su PDND relativi ad alcune tipologie di attestati emessi in IT-Wallet; l'Ente allinea il proprio data model (sezione **e_service.data_model**) a tali template per garantire che i dati forniti siano conformi alla struttura dell'attestato che verrà emesso dal Fornitore di Attestati.
+A tal fine, l'Ente deve compilare la sezione **e_service.response.data_model** del [template compilazione completo Fonte Autentica](template-form-onboarding-fonte-autentica.json), dichiarando i dettagli sui dati che verranno messi a disposizione (es. tipologia, obbligatorietà, formato, lunghezza massima consentita, ordinamento, etc.).  
+Nella sezione [Template PDND Data Model](#Template-PDND-Data-Model) sono riportati i riferimenti dei template Data Model pubblicati su PDND relativi ad alcune tipologie di attestati emessi in IT-Wallet; l'Ente allinea il proprio data model (sezione **e_service.response.data_model**) a tali template per garantire che i dati forniti siano conformi alla struttura dell'attestato che verrà emesso dal Fornitore di Attestati.
 
 In conclusione, un'adeguata definizione del Data Model pone le basi per una corretta implementazione dell'e-service da pubblicare su PDND (vedi [Step 2](#step-2--pubblicazione-in-collaudo)) ma è altresì importante considerare e rispettare i seguenti requisiti tecnici: 
 
@@ -180,7 +180,7 @@ In conclusione, un'adeguata definizione del Data Model pone le basi per una corr
 
 L'e-service messo a disposizione dall'Ente deve prevedere e gestire specifiche situazioni di errore che possono verificarsi nella fase di recupero dei dati da parte del Fornitore di Attestati.
 
-A tal fine, l'Ente deve compilare la sezione **e_service.mappatura_errori** del [template compilazione completo Fonte Autentica](template-form-onboarding-fonte-autentica.json). La mappatura descrive le risposte che il servizio messo a disposizione dovrà obbligatoriamente gestire per garantire una **corretta informazione all'utente in caso di errori** durante l'ottenimento dell'EAA. 
+A tal fine, l'Ente deve compilare la sezione **e_service.response.mappatura_errori** del [template compilazione completo Fonte Autentica](template-form-onboarding-fonte-autentica.json). La mappatura descrive le risposte che il servizio messo a disposizione dovrà obbligatoriamente gestire per garantire una **corretta informazione all'utente in caso di errori** durante l'ottenimento dell'EAA. 
 
 ### **Definire la gestione degli stati del ciclo di vita**
 
@@ -203,7 +203,7 @@ Oltre agli stati sopra elencati, è bene specificare che lo stato di un Attestat
 
 Per approfondimenti vai alle Specifiche Tecniche, sezione [Ciclo di Vita degli Attestati Elettronici](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/credential-revocation.html). 
 
-A tal fine, l'Ente deve compilare la sezione **e_service.stati** del [template compilazione completo Fonte Autentica](template-form-onboarding-fonte-autentica.json) per definire i dettagli sugli stati relativi al ciclo di vita dell'EAA, ovvero dichiarare la condizione di applicabilità dei tre stati sopracitati e l'eventuale relativo messaggio informativo da esporre all'utente.
+A tal fine, l'Ente deve compilare la sezione **e_service.response.stati** del [template compilazione completo Fonte Autentica](template-form-onboarding-fonte-autentica.json) per definire i dettagli sugli stati relativi al ciclo di vita dell'EAA, ovvero dichiarare la condizione di applicabilità dei tre stati sopracitati e l'eventuale relativo messaggio informativo da esporre all'utente.
 
 **Nota**: 
 Per ottimizzare l'esperienza d'uso dell'IT-Wallet pubblico, il Titolare di Fonte Autentica può anche valutare l'**integrazione con app IO per l'invio di messaggi informativi al cittadino**, quali ad esempio:
@@ -252,7 +252,7 @@ Si consiglia di nominare l'e-service in "Creazione EAA [Nome / Nome tipologia EA
 
 ### **Attivare il servizio Signal Hub in collaudo**
 
-L'Ente deve attivare in collaudo il servizio [Signal Hub](https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-pdnd-interoperabilita/v1.0/riferimenti-tecnici/signal-hub) di PDND per il relativo e-service, in coerenza con quanto definito dalle [Specifiche Tecniche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/signal-hub-endpoint.html) per la gestione degli stati, precedentemente mappati nella sezione **e_service.stati** del [template compilazione completo Fonte Autentica](template-form-onboarding-fonte-autentica.json). 
+L'Ente deve attivare in collaudo il servizio [Signal Hub](https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-pdnd-interoperabilita/v1.0/riferimenti-tecnici/signal-hub) di PDND per il relativo e-service, in coerenza con quanto definito dalle [Specifiche Tecniche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/signal-hub-endpoint.html) per la gestione degli stati, precedentemente mappati nella sezione **e_service.response.stati** del [template compilazione completo Fonte Autentica](template-form-onboarding-fonte-autentica.json). 
 
 ### **Sviluppare il Credential Offer (opzionale)**
 
@@ -298,7 +298,7 @@ L'Ente deve rilasciare l'e-service su PDND in produzione. Nel caso di EAA di int
 
 ### **Attivare il servizio Signal Hub in produzione**
 
-L'Ente deve attivare in produzione il servizio Signal Hub di PDND per il relativo e-service, in coerenza con quanto definito dalle [Specifiche Tecniche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/signal-hub-endpoint.html) per la gestione degli stati, precedentemente mappati nella sezione **e_service.stati** del [template compilazione completo Fonte Autentica](template-form-onboarding-fonte-autentica.json). 
+L'Ente deve attivare in produzione il servizio Signal Hub di PDND per il relativo e-service, in coerenza con quanto definito dalle [Specifiche Tecniche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/signal-hub-endpoint.html) per la gestione degli stati, precedentemente mappati nella sezione **e_service.response.stati** del [template compilazione completo Fonte Autentica](template-form-onboarding-fonte-autentica.json). 
 
 ### **Portare in produzione il Credential Offer (opzionale)**
 
@@ -488,9 +488,9 @@ Il dataset dell'e-service (data model, mappatura errori, stati, lista nome campo
 
 Segui le istruzioni specifiche riportate per ciascuna sezione:
 
-1. **e_service.data_model** — elenca i dati che caratterizzeranno l'attestato emesso
-2. **e_service.mappatura_errori** — mappa gli errori che potrebbero occorrere interagendo con l'e-service
-3. **e_service.stati** — mappa gli stati che caratterizzano il ciclo di vita dell'attestato
+1. **e_service.response.data_model** — elenca i dati che caratterizzeranno l'attestato emesso
+2. **e_service.response.mappatura_errori** — mappa gli errori che potrebbero occorrere interagendo con l'e-service
+3. **e_service.response.stati** — mappa gli stati che caratterizzano il ciclo di vita dell'attestato
 
 ### Dopo la compilazione
 
@@ -498,7 +498,7 @@ Segui le istruzioni specifiche riportate per ciascuna sezione:
 2. Prosegui con le fasi successive descritte nel manuale.
 3. Mantieni sempre aggiornate le informazioni secondo le modalità definite nello Step 7.
 
-### 01 - Data Model (sezione `e_service.data_model`)
+### 01 - Data Model (sezione `e_service.response.data_model`)
 
 **Istruzioni di compilazione**
 
@@ -512,7 +512,7 @@ Segui le istruzioni specifiche riportate per ciascuna sezione:
 | ISEE         | tax_code  | codice fiscale dell'utente | Codice Fiscale | DLNRSL88L51C348G        | SI           | ALFANUMERICO | 16                          |      |
 
 
-### 02 - Mappatura degli errori (sezione `e_service.mappatura_errori`)
+### 02 - Mappatura degli errori (sezione `e_service.response.mappatura_errori`)
 
 **Istruzioni di compilazione**
 
@@ -533,7 +533,7 @@ Segui le istruzioni specifiche riportate per ciascuna sezione:
 | 541     | EAA in stato non valido o sospeso (VALIDITY ≠ 1)                     |             | Formato `"state": "description"`               |                                      |      |
 
 
-### 03 - Stati (sezione `e_service.stati`)
+### 03 - Stati (sezione `e_service.response.stati`)
 
 **Istruzioni di compilazione**
 
@@ -553,7 +553,7 @@ Segui le istruzioni specifiche riportate per ciascuna sezione:
 
 ### Lista nome campo
 
-Riferimento per il Data Model. Usa i nomi campo nella sezione `e_service.data_model` del template JSON.
+Riferimento per il Data Model. Usa i nomi campo nella sezione `e_service.response.data_model` del template JSON.
 
 
 | CATEGORIA                     | NOME CAMPO                                                                                                                                                                                                                                                                                                                                                                         |

@@ -94,3 +94,4 @@ I file compilati fanno riferimento allo schema tramite `$schema`; in caso di agg
 - **`assistenza.canali`**: ogni elemento ha `tipo` (enum: "Email assistenza", "Numero telefonico", "Altro"), `risposta` (stringa: indirizzo email, numero di telefono o descrizione a seconda del tipo; vuota se il canale non è utilizzato) e `note` (stringa); per tipo "Email assistenza" con risposta non vuota, lo schema valida il formato email.
 - **`assistenza.referenti`**: ogni elemento ha `ruolo`, `nome`, `cognome`, `email`, `telefono` (tutti stringa).
 - **`assistenza.faq`**: ogni elemento ha `domanda` e `risposta` (stringa).
+- **`e_service.response`**: obbligatorio; contiene `versione` (stringa, es. "1.0"), `data_model`, `mappatura_errori` e `stati` (tutti array) relativi alla response dell'endpoint Fonte Autentica. `lista_nome_campo` resta a livello `e_service`.
