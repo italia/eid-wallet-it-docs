@@ -4,7 +4,7 @@
 
 **Versione** 1.0.0
 
-> **Nota introduttiva** — Il presente documento non ridefinisce quanto già definito all'interno delle Specifiche Tecniche. Qualora dovessero emergere interpretazioni diverse tra il manuale e le Specifiche Tecniche, il testo di queste ultime rappresenta la fonte normativa alla quale i manuali, come quello presente, devono attenersi.
+> **Nota introduttiva** — Il presente documento non ridefinisce quanto già definito all'interno delle Specifiche Tecniche. Qualora dovessero emergere interpretazioni diverse tra il manuale e le Specifiche Tecniche, il testo di queste ultime rappresenta la fonte normativa alla quale gli Enti devono attenersi.
 
 ## Indice dei contenuti
 
@@ -19,17 +19,18 @@
   - [Step 5 | Test in produzione](#step-5--test-in-produzione)
   - [Step 6 | Pianificazione rilascio EAA](#step-6--pianificazione-rilascio-eaa)
   - [Step 7 | Manutenzione e assistenza](#step-7--manutenzione-e-assistenza)
-- [Documenti da compilare](#Documenti-da-compilare)
-- [Appendice A – Casi d'uso EAA](#appendice-a--casi-duso-eaa)
-- [Appendice B – Assistenza EAA](#appendice-b--assistenza-eaa)
-- [Appendice C – Guida compilazione e-service](#appendice-c--guida-compilazione-e-service)
+- [File da compilare](#file-da-compilare)
+- [Appendice A – Casi d'uso](#appendice-a--casi-duso)
+- [Appendice B – Data Model](#appendice-b--data-model)
+- [Appendice C – Mappatura errori](#appendice-c--mappatura-errori)
+- [Appendice D – Mappatura stati](#appendice-c--mappatura-stati)
+- [Appendice E – Assistenza](#appendice-e--assistenza)
 - [Template PDND Data Model](#Template-PDND-Data-Model)
 
 ## Introduzione e contesto
 
 Il presente manuale rappresenta una **guida per gli Enti pubblici e privati che sono interessati a svolgere il ruolo di Titolari di Fonte Autentica nel Sistema IT-Wallet** e a **esporre dati per l'emissione di Attestati Elettronici di Attributi (Electronic Attestation of Attributes - EAA) nelle soluzioni IT-Wallet**.
 
-I **Destinatari** del presente manuale sono gli **implementatori di Fonte Autentica**. Si precisa che le Fonti Autentiche **non emettono** Attestati Elettronici di Attributi (EAA): forniscono i dati tramite un **e-service PDND** al Fornitore di Attestati Elettronici (es. IPZS), che procede all'emissione degli EAA verso gli utenti.
 
 Il Sistema di portafoglio digitale italiano (Sistema IT-Wallet) è stato istituito con la pubblicazione del decreto-legge 2 marzo 2024, n. 19 convertito, con modificazioni, dalla L. 29 aprile 2024, n. 56 ed in particolare, con l'art. 20, comma 1, lettera e), che ha introdotto l'[art. 64-quater del Codice dell'Amministrazione Digitale (CAD)](https://www.normattiva.it/eli/id/2005/05/16/005G0104/CONSOLIDATED/20250429). 
 
@@ -41,6 +42,7 @@ Per la piena attuazione del Sistema IT-Wallet, all'articolo istitutivo del CAD s
 
 Questo manuale, che sovrascrive e supera i manuali in formato .pdf precedentemente condivisi, ha lo scopo di: 
 
+- supportare gli Enti nella definizione di tutti gli aspetti che contribuiscono a rendere possibile l’emissione, la fruizione e la manutenzione dell’EAA da parte dei soggetti interessati; 
 - fornire indicazioni sul processo di implementazione e pubblicazione dell'**e-service PDND** per la messa a disposizione dei dati al Fornitore di Attestati Elettronici; 
 - fornire riferimenti, risorse e strumenti pratici a supporto delle azioni richieste agli Enti nel corso di tale processo; 
 - facilitare l'aderenza alle Specifiche Tecniche e alla normativa vigente.
@@ -65,11 +67,11 @@ Di seguito il ruolo del Titolare di Fonte Autentica nel contesto del flusso di r
 
 *Figura 2: Flusso di richiesta ed emissione di un EAA nel Sistema IT-Wallet* 
 
-> **NB:** Nel Sistema IT-Wallet IPZS (Istituto Poligrafico e Zecca dello Stato) è l'unico Fornitore di Attestati Elettronici di Attributi di Interesse Pubblico, coerentemente con la normativa. PagoPA S.p.A. è l'unico fornitore di soluzione pubblica di IT-Wallet, ospitata all'interno dell'app IO, l'app dei servizi pubblici per la PA.
+> **NB:** Nel Sistema IT-Wallet, coerentemente con la normativa, IPZS (Istituto Poligrafico e Zecca dello Stato) è l'unico Fornitore di Attestati Elettronici di Attributi di Interesse Pubblico e PagoPA S.p.A. è l'unico fornitore di soluzione pubblica di IT-Wallet, ospitata all'interno dell'app IO, l'app dei servizi pubblici.
 
 ## Come diventare Titolare di Fonte Autentica
 
-Per rivestire il ruolo di Titolare di Fonte Autentica, e quindi **implementare e pubblicare un e-service PDND** che metta a disposizione i propri dati al Fornitore di Attestati Elettronici (il quale emetterà gli EAA agli utenti), ciascun Ente interessato deve attenersi al seguente processo di onboarding tecnico, da considerarsi valido fino alla pubblicazione del Regolamento IT-Wallet e alla disponibilità di:
+Per rivestire il ruolo di Titolare di Fonte Autentica, ciascun Ente interessato deve attenersi al seguente processo di onboarding tecnico, da considerarsi valido fino alla pubblicazione del Regolamento IT-Wallet e alla disponibilità di:
 
 - Portale di Onboarding
 - Registro delle Fonti Autentiche
@@ -82,12 +84,12 @@ In particolare, il processo prevede i seguenti step:
   - [Endpoint delle Fonti Autentiche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/authentic-source-endpoint.html)
   - [e-Service PDND](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/e-service-pdnd.html)
   [Vai allo Step 1](#step-1--progettazione-dell-e-service-e-dei-dati)
-- **Step 2 | Pubblicazione in collaudo**: l'Ente effettua l'onboarding nella Piattaforma Digitale Nazionale Dati (PDND), se non lo ha già fatto, rilascia l'e-service in ambiente di collaudo su PDND, e attiva il relativo servizio Signal Hub in ambiente di collaudo. Infine, l'Ente notifica al Fornitore di Attestati Elettronici di Attributi, configurato come fruitore dell'e-service, l'avvenuta pubblicazione. Per i dettagli implementativi, consultare le Specifiche Tecniche italiane:
+- **Step 2 | Pubblicazione in collaudo**: l'Ente effettua l'onboarding nella Piattaforma Digitale Nazionale Dati (PDND), se non lo ha già fatto, rilascia l'e-service in ambiente di collaudo su PDND, e attiva il relativo servizio Signal Hub in ambiente di collaudo per la gestione del ciclo di vita dell’EAA nel tempo. Infine, l'Ente notifica al Fornitore di Attestati Elettronici di Attributi, configurato come fruitore dell'e-service, l'avvenuta pubblicazione. 
   - [e-Service PDND](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/e-service-pdnd.html)
   - [Endpoint delle Fonti Autentiche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/authentic-source-endpoint.html)
   - [Signal Hub](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/signal-hub-endpoint.html)
   [Vai allo Step 2](#step-2--pubblicazione-in-collaudo)
-- **Step 3 | Test in collaudo**: l'Ente, in ambiente di collaudo PDND, può eseguire i test di integrazione dell'e-service e di Signal Hub con il Fornitore di Attestati Elettronici di Attributi indicato come fruitore e, se ritenuto necessario, con il Fornitore di Wallet. Per i dettagli implementativi, consultare le Specifiche Tecniche italiane:
+- **Step 3 | Test in collaudo**: l'Ente, in ambiente di collaudo PDND, può eseguire i test di integrazione dell'e-service e di Signal Hub con il Fornitore di Attestati Elettronici di Attributi indicato come fruitore e, se ritenuto necessario, con il Fornitore di Wallet, anche gli aspetti relativi alla UX/UI dell’EAA. 
   - [Endpoint delle Fonti Autentiche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/authentic-source-endpoint.html)
   - [Signal Hub](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/signal-hub-endpoint.html)
   [Vai allo Step 3](#step-3--test-in-collaudo)
