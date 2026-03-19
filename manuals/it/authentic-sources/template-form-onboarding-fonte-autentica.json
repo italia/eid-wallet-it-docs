@@ -6,280 +6,224 @@
     "data_compilazione": "",
     "versione": "1.0"
   },
-  "tipo_sezione": "documento_esistente",
-  "sezione_documento_esistente": {
+  "sezione_casi_uso": {
     "target_utenti": {
+      "documento_fisico_preesistente": {
+        "domanda": "Il dataset è relativo a un documento fisico preesistente?",
+        "suggerimento": "true (es. patente, titolo di studio); false (es. dato derivato da elaborazione)",
+        "risposta": false
+      },
       "chi_puo_richiedere": {
-        "domanda": "Chi può ad oggi richiedere il documento? Può ottenerlo l'intera popolazione italiana o solo alcuni cittadini?",
-        "esempio": "Solo maggiorenni residenti in una specifica regione",
+        "domanda": "Chi può o potrà richiedere l'EAA relativa al dataset? Può ottenerla l'intera popolazione italiana o solo alcuni cittadini?",
+        "suggerimento": "Solo maggiorenni residenti in una specifica regione",
         "risposta": ""
       },
       "prerequisiti": {
-        "domanda": "Esistono dei prerequisiti per richiedere il documento? Se sì, quali?",
-        "esempio": "Necessario essere in possesso di altro documento, rispettare determinati criteri",
+        "domanda": "Esistono prerequisiti per richiedere l'EAA relativa al dataset? Se sì, quali?",
+        "suggerimento": "Necessario essere in possesso di altro documento, rispettare determinati criteri",
         "risposta": ""
       },
       "volume_rilascio": {
         "domanda": "Qual è il volume di rilascio del documento attuale?",
-        "esempio": "200k Carte Europee della disabilità emesse in Italia",
+        "suggerimento": "200k Carte Europee della disabilità emesse in Italia",
         "risposta": ""
       },
       "limitazioni_estensioni": {
-        "domanda": "L'EAA potrà essere richiesta da tutti coloro che attualmente possono richiedere il documento oppure sono previste limitazioni e/o estensioni? Se sì, quali?",
-        "esempio": "Ambito geografico; disponibilità limitata ai dati successivi a una determinata data",
+        "domanda": "L'EAA relativa al dataset potrà essere richiesta da tutti coloro che attualmente possono richiedere il documento oppure sono previste limitazioni e/o estensioni? Se sì, quali?",
+        "suggerimento": "Ambito geografico; disponibilità limitata ai dati successivi a una determinata data",
         "risposta": ""
       }
     },
     "emissione_formato": {
       "dominio": {
-        "domanda": "A quale dominio appartiene il documento?",
-        "esempio": "Istruzione, sanità",
+        "domanda": "A quale dominio appartiene il dataset relativo all'EAA?",
+        "suggerimento": "Istruzione, sanità",
         "risposta": ""
       },
       "interesse_pubblico": {
-        "domanda": "Il documento è di interesse pubblico (Sì, No)? Perché?",
-        "esempio": "Sì, perché rilasciato da ente pubblico",
+        "domanda": "L'EAA relativa al dataset è di interesse pubblico?",
+        "suggerimento": "true",
+        "risposta": false
+      },
+      "interesse_pubblico_motivazione": {
+        "domanda": "Perché?",
+        "suggerimento": "Rilasciato da ente pubblico, l’uso è richiesto o centrale per diritti/servizi di interesse generale, o per conformità/regolazione con impatto su terzi",
         "risposta": ""
       },
       "canali_richiesta": {
         "domanda": "Tramite quali canali il cittadino può ad oggi richiedere il documento?",
-        "esempio": "Sportello fisico, portale online",
+        "suggerimento": "Sportello fisico, portale online",
         "risposta": ""
       },
       "richieste_fisico_vs_digitale": {
-        "domanda": "Se possibile richiederlo anche online, quante sono le richieste fatte tramite canale fisico e quante tramite canale digitale?",
-        "esempio": "70% fisico, 30% digitale",
+        "domanda": "Se possibile richiederlo anche online, quante sono le richieste fatte tramite canale fisico e quante tramite canale digitale, all'interno di un arco temporale individuato negli ultimi 5 anni.",
+        "suggerimento": "70% fisico, 30% digitale (ultimi 5 anni)",
         "risposta": ""
       },
       "formato_attuale": {
         "domanda": "In quale formato viene emesso ad oggi il documento? Card plastica, cartaceo, digitale?",
-        "esempio": "Card plastica e versione digitale",
+        "suggerimento": "Card plastica e versione digitale",
         "risposta": ""
       },
       "dettagli_digitale": {
         "domanda": "Se è già possibile ottenere il documento in formato digitale, fornisci dettagli sulle modalità di emissione",
-        "esempio": "Scaricabile dal portale istituzionale",
+        "suggerimento": "Scaricabile dal portale istituzionale in formato PDF",
         "risposta": ""
       },
       "possesso_documento": {
-        "domanda": "Per ottenere l'EAA sarà necessario essere già in possesso del documento? Se sì, specificare motivazioni e condizioni",
-        "esempio": "È sufficiente aver concluso l'iter di richiesta del documento",
+        "domanda": "Per ottenere l'EAA relativa al dataset sarà necessario essere già in possesso di un relativo documento fisico associabile al dataset?",
+        "suggerimento": "true (es. è sufficiente aver concluso l'iter di richiesta); false",
+        "risposta": false
+      },
+      "possesso_documento_condizioni": {
+        "domanda": "Se sì, specificare motivazioni e condizioni",
+        "suggerimento": "È sufficiente aver concluso l'iter di richiesta del documento",
         "risposta": ""
       },
       "catalogo_o_touchpoint": {
-        "domanda": "L'utente potrà ottenere l'EAA solo dal catalogo di EAA del Wallet o anche da un touchpoint gestito dal tuo Ente?",
-        "esempio": "Entrambi: catalogo e touchpoint Ente",
+        "domanda": "L'utente potrà ottenere l'EAA relativa al dataset solo dal catalogo EAA del Wallet o anche da un touchpoint gestito dal tuo Ente?",
+        "suggerimento": "Entrambi: catalogo e touchpoint Ente",
         "risposta": ""
       },
       "modalita_sincrona_differita": {
-        "domanda": "L'utente potrà ottenere l'EAA in modalità sincrona (preferibile) o in modalità differita? Se differita, perché?",
-        "esempio": "Sincrona",
+        "domanda": "L'utente potrà ottenere l'EAA relativa al dataset in modalità sincrona (preferibile) o in modalità differita? Se differita, perché?",
+        "suggerimento": "Differita, per motivi di controlli aggiuntivi",
         "risposta": ""
       },
       "variazioni_dati": {
-        "domanda": "Sono previste variazioni tra i dati forniti per l'EAA e i dati attualmente presenti nel documento? Se sì, quali e perché?",
-        "esempio": "Disponibilità limitata di dati storici",
+        "domanda": "Sono previste variazioni tra i dati dell'EAA relativa al dataset e i dati attualmente presenti nel documento? Se sì, quali e perché?",
+        "suggerimento": "Disponibilità limitata di dati storici",
         "risposta": ""
       },
       "eaa_univoca": {
-        "domanda": "È prevista un'EAA univoca per ciascun soggetto o potranno essere emesse più EAA per lo stesso soggetto?",
-        "esempio": "Una sola tessera sanitaria; molti titoli accademici",
-        "risposta": ""
+        "domanda": "È prevista un'EAA relativa al dataset univoca per ciascun soggetto o potranno essere emesse più EAA per lo stesso soggetto?",
+        "suggerimento": "true per Una sola tessera sanitaria; false per molti titoli accademici",
+        "risposta": true
       },
       "identificazione_utente": {
-        "domanda": "Per emettere l'EAA sarà necessario identificare l'utente (Sì, No)? Perché?",
-        "esempio": "Sì, tramite Codice Fiscale",
+        "domanda": "Per fornire l'EAA relativa al dataset sarà necessario identificare l'utente?",
+        "suggerimento": "true",
+        "risposta": true
+      },
+      "identificazione_utente_motivazione": {
+        "domanda": "Perché? Con quale mezzo?",
+        "suggerimento": "Tramite Codice Fiscale/Carta Di Identità e riconoscimento de-visu",
         "risposta": ""
       }
     },
     "utilizzo": {
       "contesti_uso": {
-        "domanda": "Quali sono gli attuali contesti d'uso del documento? Per cosa viene utilizzato principalmente?",
-        "esempio": "Dimostrare possesso titoli professionali, accedere ad agevolazioni",
+        "domanda": "Quali sono (o saranno) i contesti d'uso dell'EAA relativa al dataset? Per cosa viene utilizzato?",
+        "suggerimento": "Dimostrare possesso titoli professionali, accedere ad agevolazioni",
         "risposta": ""
       },
       "soggetti_verificatori": {
-        "domanda": "Quali sono i principali soggetti che verificano ad oggi il documento?",
-        "esempio": "Soggetti privati addetti alla sicurezza, operatori pubblici allo sportello",
+        "domanda": "Quali sono i principali soggetti che verificano (o verificheranno) l'EAA relativa al dataset?",
+        "suggerimento": "Soggetti privati addetti alla sicurezza, operatori pubblici allo sportello",
         "risposta": ""
       },
       "verifica_validita": {
         "domanda": "Come è possibile verificare la validità del documento? QR code, Barcode, altri strumenti?",
-        "esempio": "QR code, verifica de visu",
+        "suggerimento": "QR code, verifica de visu",
         "risposta": ""
       },
       "strumenti_verificatore": {
         "domanda": "Quali strumenti sono previsti da parte del verificatore per effettuare la verifica?",
-        "esempio": "App per scan, verifica de visu",
+        "suggerimento": "App per scan, verifica de visu",
         "risposta": ""
       },
       "utilizzo_continuo": {
         "domanda": "Il documento consente un utilizzo continuo o perde di validità non appena utilizzato?",
-        "esempio": "Utilizzo continuo (tessera sanitaria); uso singolo (biglietto aereo)",
+        "suggerimento": "Utilizzo continuo (tessera sanitaria); uso singolo (biglietto aereo)",
         "risposta": ""
       },
       "contesto_online_dal_vivo": {
         "domanda": "Il documento viene principalmente utilizzato online, dal vivo o in entrambi i contesti?",
-        "esempio": "Entrambi: verifica presso sportelli e online",
+        "suggerimento": "Entrambi: verifica presso sportelli e online",
         "risposta": ""
       },
       "tempo_validita": {
         "domanda": "Per quanto tempo è valido il documento? Validità uguale per tutti o variabile?",
-        "esempio": "10 anni per tutti i cittadini",
+        "suggerimento": "10 anni per tutti i cittadini",
         "risposta": ""
       },
       "rinnovo": {
-        "domanda": "Il documento è rinnovabile? Se sì, cosa deve fare l'utente? Procedura digitale o uffici fisici?",
-        "esempio": "Sì, presso uffici territoriali o online",
+        "domanda": "L'EAA relativa al dataset è rinnovabile?",
+        "suggerimento": "true",
+        "risposta": false
+      },
+      "rinnovo_procedura": {
+        "domanda": "Se sì, cosa deve fare l'utente? Procedura digitale o uffici fisici?",
+        "suggerimento": "Presso uffici territoriali o online",
         "risposta": ""
       },
       "validita_europa": {
-        "domanda": "Il documento può essere utilizzato solo in Italia o anche in Europa?",
-        "esempio": "Solo Italia / Anche in Europa",
+        "domanda": "L'EAA relativa al dataset può essere utilizzata solo in Italia o anche in Europa?",
+        "suggerimento": "Solo Italia / Anche in Europa",
         "risposta": ""
       },
       "limitazioni_territoriali": {
         "domanda": "Il documento è valido su tutto il territorio o esistono limitazioni?",
-        "esempio": "Solo in alcune Regioni",
+        "suggerimento": "Solo in alcune Regioni",
         "risposta": ""
       },
       "eaa_tutti_contesti": {
-        "domanda": "Sarà possibile utilizzare l'EAA in tutti i contesti in cui ad oggi è possibile utilizzare il documento?",
-        "esempio": "Sì, con contesti remoto e di prossimità",
+        "domanda": "Sarà possibile utilizzare l'EAA relativa al dataset in tutti i contesti in cui ad oggi è possibile utilizzare il documento?",
+        "suggerimento": "true",
+        "risposta": false
+      },
+      "eaa_tutti_contesti_dettaglio": {
+        "domanda": "Se sì, quali contesti?",
+        "suggerimento": "Contesti remoto e di prossimità",
         "risposta": ""
       },
       "estensione_contesti": {
-        "domanda": "L'EAA consentirà di estendere gli attuali contesti di utilizzo del documento?",
-        "esempio": "Sì, nuovi casi d'uso per verifica remota",
+        "domanda": "L'EAA relativa al dataset consentirà di estendere gli attuali contesti di utilizzo del documento?",
+        "suggerimento": "true (es. nuovi casi d'uso per verifica remota)",
+        "risposta": false
+      },
+      "estensione_contesti_dettaglio": {
+        "domanda": "Se sì, quali estensioni?",
+        "suggerimento": "Nuovi casi d'uso per verifica remota",
         "risposta": ""
       }
     },
     "pagamento": {
       "gratuito_o_pagamento": {
-        "domanda": "Il documento è gratuito o prevede un pagamento a carico dell'utente?",
-        "esempio": "Gratuito",
-        "risposta": ""
+        "domanda": "L'EAA relativa al dataset è gratuita o prevede un pagamento a carico dell'utente?",
+        "suggerimento": "true (Gratuito); false (Pagamento)",
+        "risposta": false
       },
       "modalita_pagamento": {
         "domanda": "Se prevede un pagamento, quali sono le modalità consentite?",
-        "esempio": "PagoPA, carta di credito",
+        "suggerimento": "PagoPA, carta di credito",
         "risposta": ""
       },
       "pagamento_rinnovo": {
-        "domanda": "Il rinnovo del documento prevede un pagamento?",
-        "esempio": "No",
-        "risposta": ""
+        "domanda": "Il rinnovo prevede un pagamento?",
+        "suggerimento": "false",
+        "risposta": false
       }
     },
     "legale_privacy": {
       "normativa": {
-        "domanda": "Le modalità di emissione/presentazione del documento sono regolate da normativa di settore?",
-        "esempio": "D.Lgs. 82/2005, CAD",
+        "domanda": "Le modalità di emissione/presentazione dell'EAA relativa al dataset sono regolate da normativa?",
+        "suggerimento": "D.Lgs. 82/2005, CAD",
         "risposta": ""
       },
       "proprieta_dati": {
         "domanda": "I dati sono di proprietà dell'ente o condivisi con altri enti? Quali?",
-        "esempio": "Proprietà dell'ente, integrazione con ANPR",
+        "suggerimento": "Proprietà dell'ente, integrazione con ANPR (Dati sanitari)",
         "risposta": ""
       },
       "dati_sensibili": {
-        "domanda": "I dati contenuti nel documento sono sensibili? Se sì, perché?",
-        "esempio": "Sì, dati sanitari",
-        "risposta": ""
-      }
-    }
-  },
-  "sezione_documento_non_esistente": {
-    "target_utenti": {
-      "chi_potra_richiedere": {
-        "domanda": "Chi potrà richiedere l'emissione dell'EAA?",
-        "esempio": "Solo maggiorenni residenti in Italia",
-        "risposta": ""
+        "domanda": "I dati contenuti nel dataset sono sensibili?",
+        "suggerimento": "true (es. dati sanitari)",
+        "risposta": false
       },
-      "prerequisiti": {
-        "domanda": "Esistono dei prerequisiti per richiedere l'emissione dell'EAA? Se sì, quali?",
-        "esempio": "Iscrizione ad albo professionale",
-        "risposta": ""
-      }
-    },
-    "emissione_formato": {
-      "dominio": {
-        "domanda": "A quale dominio apparterrà l'EAA?",
-        "esempio": "Istruzione, sanità",
-        "risposta": ""
-      },
-      "interesse_pubblico": {
-        "domanda": "L'EAA sarà di interesse pubblico (Sì, No)? Perché?",
-        "esempio": "Sì",
-        "risposta": ""
-      },
-      "eaa_univoca": {
-        "domanda": "È prevista un'EAA univoca per ciascun soggetto o possono essere emesse più EAA?",
-        "esempio": "Più EAA possibili (es. titoli accademici)",
-        "risposta": ""
-      },
-      "catalogo_o_touchpoint": {
-        "domanda": "L'utente potrà ottenere l'EAA solo dal catalogo del Wallet o anche da touchpoint dell'Ente?",
-        "esempio": "Entrambi",
-        "risposta": ""
-      },
-      "modalita_sincrona_differita": {
-        "domanda": "L'utente potrà ottenere l'EAA in modalità sincrona o differita? Se differita, perché?",
-        "esempio": "Sincrona",
-        "risposta": ""
-      },
-      "identificazione_utente": {
-        "domanda": "Per emettere l'EAA sarà necessario identificare l'utente (Sì, No)? Perché?",
-        "esempio": "Sì, tramite SPID/CIE",
-        "risposta": ""
-      }
-    },
-    "utilizzo": {
-      "contesti_uso": {
-        "domanda": "Quali sono i contesti in cui potrà essere utilizzata l'EAA? Per cosa?",
-        "esempio": "Dimostrare qualifiche, accedere a servizi",
-        "risposta": ""
-      },
-      "soggetti_verificatori": {
-        "domanda": "Quali soggetti dovranno verificare l'EAA per permettere l'accesso ai servizi?",
-        "esempio": "Fornitori privati, operatori pubblici",
-        "risposta": ""
-      },
-      "utilizzo_continuo": {
-        "domanda": "L'EAA consentirà un utilizzo continuo o perderà validità dopo l'utilizzo?",
-        "esempio": "Utilizzo continuo",
-        "risposta": ""
-      },
-      "tempo_validita": {
-        "domanda": "Per quanto tempo sarà valida l'EAA?",
-        "esempio": "1 anno, rinnovabile",
-        "risposta": ""
-      },
-      "rinnovabile": {
-        "domanda": "L'EAA sarà rinnovabile? Se sì, a quali condizioni?",
-        "esempio": "Sì, ogni 12 mesi",
-        "risposta": ""
-      },
-      "validita_europa": {
-        "domanda": "L'EAA potrà essere utilizzata solo in Italia o anche in Europa?",
-        "esempio": "Anche in Europa",
-        "risposta": ""
-      }
-    },
-    "legale_privacy": {
-      "normativa": {
-        "domanda": "Le modalità di emissione/presentazione sono regolate da normativa?",
-        "esempio": "Regolamento eIDAS 2",
-        "risposta": ""
-      },
-      "proprieta_dati": {
-        "domanda": "I dati sono di proprietà dell'ente o condivisi? Quali?",
-        "esempio": "Proprietà dell'ente",
-        "risposta": ""
-      },
-      "dati_sensibili": {
-        "domanda": "I dati contenuti nell'EAA sono sensibili? Se sì, perché?",
-        "esempio": "No / Sì, perché...",
+      "dati_sensibili_motivazione": {
+        "domanda": "Se sì, perché?",
+        "suggerimento": "Dati sanitari",
         "risposta": ""
       }
     }
@@ -311,17 +255,17 @@
     "canali": [
       {
         "tipo": "Email assistenza",
-        "valore": "",
+        "risposta": "",
         "note": ""
       },
       {
         "tipo": "Numero telefonico",
-        "valore": "",
+        "risposta": "",
         "note": ""
       },
       {
         "tipo": "Altro",
-        "valore": "",
+        "risposta": "",
         "note": ""
       }
     ],

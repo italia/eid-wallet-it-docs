@@ -385,11 +385,11 @@ Supportare gli Enti nella definizione dei casi d'uso e delle modalità di utiliz
 1. Rinomina il file in `Compilazione-EAA_[Nome Ente]_[Nome EAA].json` (es. `Compilazione-EAA_MIM_Titolo-di-studio.json`).
 2. Crea una copia del file per ciascun EAA di interesse.
 
-### Compilazione (sezione `sezione_documento_esistente` / `sezione_documento_non_esistente`)
+### Compilazione (sezione `sezione_casi_uso`)
 
 1. **metadata**: inserisci `nome_ente_titolare`, `nome_eaa` e `data_compilazione` (formato ISO: `AAAA-MM-GG`)
-2. **tipo_sezione**: imposta `"documento_esistente"` se esiste un documento fisico/digitale di riferimento, oppure `"documento_non_esistente"` se l'EAA non deriva da un documento esistente
-3. **risposta**: compila il campo `risposta` di ogni domanda nella sezione pertinente; il campo `esempio` è solo indicativo
+2. **risposta**: compila il campo `risposta` di ogni domanda; il campo `suggerimento` è solo indicativo
+3. **campi opzionali**: i campi relativi al documento esistente (`volume_rilascio`, `limitazioni_estensioni`, `canali_richiesta`, `formato_attuale`, `pagamento`, ecc.) vanno compilati solo se l'EAA deriva da un documento già esistente
 
 **Esempio di compilazione** (fragmento):
 
@@ -401,12 +401,11 @@ Supportare gli Enti nella definizione dei casi d'uso e delle modalità di utiliz
     "data_compilazione": "2026-03-16",
     "versione": "1.0"
   },
-  "tipo_sezione": "documento_esistente",
-  "sezione_documento_esistente": {
+  "sezione_casi_uso": {
     "target_utenti": {
       "chi_puo_richiedere": {
         "domanda": "Chi può ad oggi richiedere il documento? ...",
-        "esempio": "Solo maggiorenni residenti in una specifica regione",
+        "suggerimento": "Solo maggiorenni residenti in una specifica regione",
         "risposta": "Tutti i cittadini italiani in possesso di diploma rilasciato da istituto italiano"
       }
     }
@@ -414,13 +413,13 @@ Supportare gli Enti nella definizione dei casi d'uso e delle modalità di utiliz
 }
 ```
 
-**Nota**: compila solo la sezione indicata da `tipo_sezione`. L'altra può restare vuota.
+**Nota**: usa il [template form onboarding](template-form-onboarding-fonte-autentica.json). Compila tutti i campi obbligatori; i campi opzionali relativi al documento esistente vanno compilati solo se l'EAA deriva da un documento già esistente.
 
 ### Durante la compilazione
 
-1. Compila il file rispondendo in maniera chiara ed esaustiva alle domande della sezione di pertinenza:
-  - Nel caso esista ad oggi un documento, compila solo la sezione **1. EAA relativo a un documento esistente**
-  - Nel caso non esista ad oggi documento, compila solo la sezione **2. EAA non relativo a un documento esistente**
+1. Compila il file rispondendo in maniera chiara ed esaustiva alle domande:
+  - Nel caso esista ad oggi un documento, compila anche i campi specifici (volume_rilascio, canali_richiesta, formato_attuale, pagamento, ecc.)
+  - Nel caso non esista ad oggi documento, compila solo i campi obbligatori e lascia vuoti quelli opzionali relativi al documento esistente
 2. Compila allo stesso modo i file delle altre EAA di interesse.
 
 ### Validazione e checklist pre-sottomissione
@@ -431,7 +430,7 @@ Supportare gli Enti nella definizione dei casi d'uso e delle modalità di utiliz
 
 - Validazione JSON Schema superata
 - JSON Linter senza errori
-- Tutti i campi obbligatori (`risposta`) compilati per la sezione scelta
+- Tutti i campi obbligatori (`risposta`) compilati
 - File rinominato correttamente e pronto per lo Step 2
 
 ### Dopo la compilazione
@@ -440,13 +439,9 @@ Supportare gli Enti nella definizione dei casi d'uso e delle modalità di utiliz
 2. Prosegui con le fasi successive descritte nel manuale.
 3. Mantieni sempre aggiornate le informazioni secondo le modalità definite nello Step 7.
 
-### 1. EAA relativo a un documento esistente
+### Sezione casi d'uso (documento esistente o non)
 
-Aree tematiche: **Target utenti**, **Emissione e formato**, **Utilizzo**, **Pagamento**, **Legale e privacy**.
-
-### 2. EAA non relativo a un documento esistente
-
-Aree tematiche: **Target utenti**, **Emissione e formato**, **Utilizzo**, **Legale e privacy**.
+Aree tematiche: **Target utenti**, **Emissione e formato**, **Utilizzo**, **Pagamento** (solo se documento esistente), **Legale e privacy**. I campi relativi al documento esistente sono opzionali.
 
 ---
 
