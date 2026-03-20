@@ -140,20 +140,20 @@ Il Sistema IT-Wallet consente agli utenti di utilizzare gli EAA in diverse modal
   - [Presentazione in prossimità](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/functionalities.html#presentazione-in-prossimita)
   - [Flusso di prossimità](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/proximity-flow.html)
 
-La definizione dei casi d'uso da parte della Fonte Autentica è fondamentale per: 
+La definizione dei casi d'uso da parte dell'Ente è fondamentale per: 
 
 - **progettare un'esperienza d'uso che apporti valore reale** sia a cittadini che ai verificatori; è utile definire a monte quali potranno essere le occasioni d'uso dell'EAA prodotto con i propri dati, a partire dall'analisi dell'esperienza attuale di fruizione del corrispettivo documento fisico, se esistente (es. si pensi alla modalità di presentazione del codice a barre per l'uso della Tessera Sanitaria o del QR code per la verifica della Carta Europea della Disabilità); 
 - **orientare il tipo di formato** con cui il Fornitore di Attestati Elettronici emetterà l'EAA (SD-JWT-VC per scenari in remoto e mdoc-CBOR per scenari in prossimità).
 
-A tal fine, la Fonte Autentica deve compilare il questionario Casi d'uso EAA in formato JSON, utilizzando il [template compilazione completo Fonte Autentica](template-form-onboarding-fonte-autentica.json) (vedi [Appendice A](#appendice-a--casi-duso-eaa)). Valida il file JSON con lo strumento indicato nel [documento di validazione](validazione-json-schema-linter.md) prima della sottomissione. 
+A tal fine, l’Ente deve compilare la sezione `casi_d_uso` del file [Progettazione caratteristiche EAA](progettazione-caratteristiche-eaa.json). Per riferimenti e istruzioni di compilazione vedi [Appendice A](https://github.com/italia/eid-wallet-it-docs/blob/9f6806493b550eb60cdcff8f95d5422c9a05a10a/manuals/it/authentic-sources/manuale-titolare-fonte-autentica.md#appendice-a--casi-duso).
 
-### **Definire il Data Model dei dati forniti**
+### **Definire il Data Model**
 
-Gli EAA sono attestati digitali costruiti sui dati forniti dalla Fonte Autentica tramite l'e-service. Il Fornitore di Attestati Elettronici produce l'EAA a partire da tali dati.  
-La Fonte Autentica deve definire quali dati fornirà e in quale ordine, affinché l'EAA prodotto risulti adeguato all'utilizzo in versione digitale e subito comprensibile all'utente. 
+Il Sistema IT-Wallet consente all’utente di ottenere in formato digitale i propri documenti, titoli e certificati sotto forma di EAA. Gli EAA sono rilasciati dal Fornitore di Attestati Elettronici di Attributi sulla base dei dati forniti dalla Fonte Autentica tramite l'e-service.
+L’Ente deve quindi definire quali dati fornirà e in quale ordine, affinché l'EAA prodotto risulti adeguato all'utilizzo da parte dell’utente. 
 
-A tal fine, l'Ente deve compilare la sezione **e_service.response.data_model** del [template compilazione completo Fonte Autentica](template-form-onboarding-fonte-autentica.json), dichiarando i dettagli sui dati che verranno messi a disposizione (es. tipologia, obbligatorietà, formato, lunghezza massima consentita, ordinamento, etc.).  
-Nella sezione [Template PDND Data Model](#Template-PDND-Data-Model) sono riportati i riferimenti dei template Data Model pubblicati su PDND relativi ad alcune tipologie di attestati emessi in IT-Wallet; l'Ente allinea il proprio data model (sezione **e_service.response.data_model**) a tali template per garantire che i dati forniti siano conformi alla struttura dell'attestato che verrà emesso dal Fornitore di Attestati.
+A tal fine, l’Ente deve compilare la sezione `e_service.response.data_model ` del file [Progettazione caratteristiche EAA](template-form-onboarding-fonte-autentica.json) così da definire i dettagli sui dati che verranno messi a disposizione (es. tipologia, obbligatorietà, formato, lunghezza massima consentita, ordinamento, etc.). Per riferimenti e istruzioni di compilazione vedi [Appendice B](https://github.com/italia/eid-wallet-it-docs/blob/9f6806493b550eb60cdcff8f95d5422c9a05a10a/manuals/it/authentic-sources/manuale-titolare-fonte-autentica.md#appendice-b--data-model).
+Nella sezione [Template PDND Data Model](#Template-PDND-Data-Model) sono riportati i riferimenti dei template Data Model pubblicati su PDND relativi ad alcune tipologie di attestati emessi in IT-Wallet; l'Ente allinea il proprio data model (sezione `e_service.response.data_model`) a tali template per garantire che i dati forniti siano conformi alla struttura dell'Attestato che verrà emesso dal Fornitore di Attestati di Attributi.
 
 In conclusione, un'adeguata definizione del Data Model pone le basi per una corretta implementazione dell'e-service da pubblicare su PDND (vedi [Step 2](#step-2--pubblicazione-in-collaudo)) ma è altresì importante considerare e rispettare i seguenti requisiti tecnici: 
 
@@ -162,13 +162,13 @@ In conclusione, un'adeguata definizione del Data Model pone le basi per una corr
 
 ### **Definire le casistiche di errore**
 
-L'e-service messo a disposizione dall'Ente deve prevedere e gestire specifiche situazioni di errore che possono verificarsi nella fase di recupero dei dati da parte del Fornitore di Attestati.
+L'e-service messo a disposizione dall'Ente deve prevedere e gestire specifiche situazioni di errore che possono verificarsi nella fase di recupero dei dati da parte del Fornitore di Attestati di Attributi.
 
-A tal fine, l'Ente deve compilare la sezione **e_service.response.mappatura_errori** del [template compilazione completo Fonte Autentica](template-form-onboarding-fonte-autentica.json). La mappatura descrive le risposte che il servizio messo a disposizione dovrà obbligatoriamente gestire per garantire una **corretta informazione all'utente in caso di errori** durante l'ottenimento dell'EAA. 
+A tal fine, l'Ente deve compilare la sezione `e_service.response.mappatura_errori `del file [Progettazione caratteristiche EAA](template-form-onboarding-fonte-autentica.json). La mappatura descrive le risposte che il servizio messo a disposizione dovrà obbligatoriamente gestire per garantire una corretta informazione all'utente in caso di errori durante l'ottenimento dell'EAA. Per riferimenti e istruzioni di compilazione vedi [Appendice C](https://github.com/italia/eid-wallet-it-docs/blob/9f6806493b550eb60cdcff8f95d5422c9a05a10a/manuals/it/authentic-sources/manuale-titolare-fonte-autentica.md#appendice-c--mappatura-errori).
 
 ### **Definire la gestione degli stati del ciclo di vita**
 
-Gli stati che l'Ente comunica tramite Signal Hub influenzano il ciclo di vita degli EAA prodotti dai propri dati.  
+Il Sistema IT-Wallet supporta dei meccanismi per l’aggiornamento dello stato e la gestione del ciclo di vita dell’EAA. Gli stati che l'Ente comunica tramite Signal Hub determinano il ciclo di vita degli EAA prodotti dai propri dati.  
 Si precisa che, pur essendo strettamente correlato, **il ciclo di vita dell'EAA non è completamente sovrapponibile a quello della versione fisica del documento**. In particolare: 
 
 - Se il documento fisico viene invalidato dal Titolare di Fonte Autentica, l'EAA viene anch'essa invalidata;  
@@ -187,7 +187,8 @@ Oltre agli stati sopra elencati, è bene specificare che lo stato di un Attestat
 
 Per approfondimenti vai alle Specifiche Tecniche, sezione [Ciclo di Vita degli Attestati Elettronici](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/credential-revocation.html). 
 
-A tal fine, l'Ente deve compilare la sezione **e_service.response.stati** del [template compilazione completo Fonte Autentica](template-form-onboarding-fonte-autentica.json) per definire i dettagli sugli stati relativi al ciclo di vita dell'EAA, ovvero dichiarare la condizione di applicabilità dei tre stati sopracitati e l'eventuale relativo messaggio informativo da esporre all'utente.
+A tal fine, l'Ente deve compilare la sezione `mappatura-stati` del file [Progettazione caratteristiche EAA](e_service.response.data_model) per definire i dettagli sugli stati relativi al ciclo di vita dell'EAA, ovvero dichiarare la condizione di applicabilità dei tre stati sopracitati e l'eventuale relativo messaggio informativo da esporre all'utente.
+Per riferimenti e istruzioni di compilazione vedi [Appendice D](https://github.com/italia/eid-wallet-it-docs/blob/9f6806493b550eb60cdcff8f95d5422c9a05a10a/manuals/it/authentic-sources/manuale-titolare-fonte-autentica.md#appendice-d--mappatura-stati).
 
 **Nota**: 
 Per ottimizzare l'esperienza d'uso dell'IT-Wallet pubblico, il Titolare di Fonte Autentica può anche valutare l'**integrazione con app IO per l'invio di messaggi informativi al cittadino**, quali ad esempio:
@@ -199,12 +200,12 @@ Per ottimizzare l'esperienza d'uso dell'IT-Wallet pubblico, il Titolare di Fonte
 ### **Definire i contenuti per l'informazione e l'assistenza all'utente**
 
 L'Ente deve contribuire al [modello di assistenza](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/functionalities.html#assistenza-utente) del Sistema IT-Wallet rendendo disponibili contenuti utili alla predisposizione di nuove Domande Frequenti e/o testi informativi in app, e fornendo i recapiti necessari per la gestione dell'assistenza agli utenti.  
-A tal fine, l'Ente deve compilare la sezione **assistenza** nel [template compilazione completo Fonte Autentica](template-form-onboarding-fonte-autentica.json) (vedi [Appendice B](#appendice-b--assistenza-eaa)). 
+A tal fine, l'Ente deve compilare la sezione `assistenza` del file [Progettazione caratteristiche EAA](template-form-onboarding-fonte-autentica.json). Per riferimenti e istruzioni di compilazione vedi [Appendice E](https://github.com/italia/eid-wallet-it-docs/blob/9f6806493b550eb60cdcff8f95d5422c9a05a10a/manuals/it/authentic-sources/manuale-titolare-fonte-autentica.md#appendice-e--assistenza).
 
-### **Definire le caratteristiche grafiche dell'EAA prodotto dai propri dati**
+### **Predisporre gli elementi necessari per la rappresentazione grafica dell'EAA**
 
-La rappresentazione grafica dell'EAA nell'IT-Wallet può dipendere, per specifici aspetti, da parametri definiti nelle Specifiche Tecniche, sezione [Focus sugli Attestati Elettronici di Attributi](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/functionalities.html#focus-sugli-attestati-elettronici-di-attributi). 
-L'Ente interessato a personalizzare la resa grafica dell'EAA prodotto dai propri dati deve trasmettere i propri materiali come documentazione allegata all'e-service su PDND.  
+Il Sistema IT-Wallet consente ai Titolari di Fonte Autentica di contribuire alla resa grafica degli EAA prodotti a partire dai propri dati. La rappresentazione visiva di un EAA all’interno di un IT-Wallet può dipendere quindi, per specifici aspetti, da parametri definiti nelle Specifiche Tecniche, sezione [Focus sugli Attestati Elettronici di Attributi](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/functionalities.html#focus-sugli-attestati-elettronici-di-attributi). 
+L'Ente interessato a personalizzare la resa grafica dell'EAA prodotto dai propri dati deve trasmettere i propri materiali come documentazione allegata all'e-service su PDND (vedi [Step 2](https://github.com/italia/eid-wallet-it-docs/blob/9f6806493b550eb60cdcff8f95d5422c9a05a10a/manuals/it/authentic-sources/manuale-titolare-fonte-autentica.md#step-2--pubblicazione-in-collaudo)).
 
 ## Step 2 | Pubblicazione in collaudo
 
