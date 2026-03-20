@@ -206,38 +206,47 @@ A tal fine, l'Ente deve compilare la sezione `assistenza` del file [Progettazion
 
 Il Sistema IT-Wallet consente ai Titolari di Fonte Autentica di contribuire alla resa grafica degli EAA prodotti a partire dai propri dati. La rappresentazione visiva di un EAA all’interno di un IT-Wallet può dipendere quindi, per specifici aspetti, da parametri definiti nelle Specifiche Tecniche, sezione [Focus sugli Attestati Elettronici di Attributi](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/functionalities.html#focus-sugli-attestati-elettronici-di-attributi). 
 L'Ente interessato a personalizzare la resa grafica dell'EAA prodotto dai propri dati deve trasmettere i propri materiali come documentazione allegata all'e-service su PDND (vedi [Step 2](https://github.com/italia/eid-wallet-it-docs/blob/9f6806493b550eb60cdcff8f95d5422c9a05a10a/manuals/it/authentic-sources/manuale-titolare-fonte-autentica.md#step-2--pubblicazione-in-collaudo)).
+### **Validare il file “progettazione_EAA”**
 
+A conclusione delle azioni sopra elencate, l’Ente deve validare il file ”progettazione_EAA" in tutte le sue parti (sezioni `casi_d_uso`, `data_model`, `mappatura_errori`, `mappatura_stati` e `assistenza`) utilizzando lo strumento indicato nel file ”validazione_progettazione_caratteristiche_EAA”. 
+
+Per poter proseguire con gli step successivi, è infatti obbligatorio eseguire validazione JSON Schema e controllo sintattico. Per i comandi e il workflow, vedi [Validazione JSON Schema e Linter](https://github.com/italia/eid-wallet-it-docs/blob/9f6806493b550eb60cdcff8f95d5422c9a05a10a/manuals/it/authentic-sources/validazione-json-schema-linter.md). La checklist prevede: 
+
+- validazione JSON Schema superata; 
+- JSON Linter senza errori; 
+- tutti i campi obbligatori (risposta) compilati per la sezione scelta; 
+- file rinominato correttamente.
 ## Step 2 | Pubblicazione in collaudo
 
-Questo step ha l'obiettivo di rilasciare in collaudo su PDND l'e-service che espone i dati per la produzione degli EAA e di attivare il relativo servizio Signal Hub per la gestione dei dati nel tempo. Inoltre, l'Ente può rilasciare in collaudo il Credential Offer se ritenuto utile per guidare gli utenti all'ottenimento degli EAA prodotti con i propri dati.
+Questo step ha l'obiettivo di rilasciare in collaudo su PDND l'e-service che espone i dati per la produzione degli EAA e di attivare il relativo servizio Signal Hub per la gestione dei dati nel tempo. Inoltre, l'Ente può rilasciare in collaudo il Credential Offer se ritenuto utile durate lo [Step 1](https://github.com/italia/eid-wallet-it-docs/blob/9f6806493b550eb60cdcff8f95d5422c9a05a10a/manuals/it/authentic-sources/manuale-titolare-fonte-autentica.md#step-1--progettazione-caratteristiche-eaa)).
 
-Per i dettagli implementativi, consultare le Specifiche Tecniche (IT), in particolare:
+Per i dettagli implementativi, consultare le Specifiche Tecniche, in particolare:
 
 - [e-Service PDND](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/e-service-pdnd.html)
 - [Endpoint delle Fonti Autentiche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/authentic-source-endpoint.html)
 - [Signal Hub](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/signal-hub-endpoint.html)
 - [Template e-service PDND](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/e-service-pdnd-template.html)
-
+In questo step, l'Ente interessato deve: 
 ### **Aderire alla Piattaforma Digitale Nazionale Dati (PDND)**
 
-Per effettuare l'onboarding alla PDND, qualora l'Ente ancora non abbia aderito, consultare la [Guida all'adesione](https://docs.pagopa.it/interoperabilita-1/manuale-operativo/guida-alladesione). 
+Per effettuare l'onboarding alla PDND, qualora l'Ente ancora non abbia aderito, consultare il [Manuale Operativo PDND Interoperabilità](https://docs.pagopa.it/interoperabilita-1/manuale-operativo/guida-alladesione). 
 
 ### **Pubblicare l'e-service su PDND in collaudo**
 
-L'Ente deve sviluppare e rilasciare in collaudo un e-service coerente con il Data Model precedentemente definito, in linea con le informazioni presenti nella Guida all'adesione di PDND e con le Specifiche Tecniche italiane. Per i dettagli operativi e le specifiche tecniche, consultare:
+L'Ente deve sviluppare e rilasciare in collaudo un e-service coerente con il Data Model precedentemente definito, in linea con le informazioni presenti nel [Manuale Operativo PDND Interoperabilità](https://docs.pagopa.it/interoperabilita-1/manuale-operativo/guida-alladesione) e con le Specifiche Tecniche italiane. Per i dettagli operativi e le Specifiche Tecniche, consultare:
 
-- [sezione e-service](https://docs.pagopa.it/interoperabilita-1/manuale-operativo/e-service)
-- [Titolare di Fonte Autentica](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/authentic-sources.html)
+- [sezione e-service del Manuale Operativo PDND Interoperabilità](https://docs.pagopa.it/interoperabilita-1/manuale-operativo/e-service)
+- [sezione Titolare di Fonte Autentica delle Specifiche Tecniche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/authentic-sources.html)
 
-Contestualmente al flusso di pubblicazione dell'e-service, l'Ente deve allegare i seguenti documenti, precedentemente compilati:
+Contestualmente al flusso di pubblicazione dell'e-service, l'Ente deve allegare il file [Progettazione caratteristiche EAA](template-form-onboarding-fonte-autentica.json) precedentemente compilato in tutte le sue parti e e validato (sezioni `casi_d_uso`, `data_model`, `mappatura_errori`, `mappatura_stati` e `assistenza`). 
 
-- [Template compilazione completo Fonte Autentica](template-form-onboarding-fonte-autentica.json) — include Casi d'uso, Assistenza e sezione **e_service** (data model, mappatura errori, stati, lista nome campo). Nel caso di EAA di interesse pubblico, l'Ente deve abilitare IPZS alla fruizione dell'e-service, se possibile con abilitazione automatica.
+Nel caso di EAA di interesse pubblico, l'Ente deve abilitare IPZS alla fruizione dell'e-service, se possibile con abilitazione automatica.
 
-Si consiglia di nominare l'e-service in "Creazione EAA [Nome / Nome tipologia EAA] – IT-Wallet" (es. "Creazione EAA Patente di guida – IT-Wallet" oppure "Creazione EAA Titoli di studio – IT-Wallet") e di predisporre una descrizione in linea con la [Guida alla nomenclatura degli e-service PDND](https://italia.github.io/pdnd-guida-nomenclatura-eservice/index.html) referenziata nella Guida all'adesione PDND. 
+Si consiglia di nominare l'e-service in "Creazione EAA [Nome / Nome tipologia EAA] – IT-Wallet" (es. "Creazione EAA Patente di guida – IT-Wallet" oppure "Creazione EAA Titoli di studio – IT-Wallet") e di predisporre una descrizione in linea con il [Manuale Operativo PDND Interoperabilità](https://italia.github.io/pdnd-guida-nomenclatura-eservice/index.html) referenziata nella Guida all'adesione PDND. 
 
 ### **Attivare il servizio Signal Hub in collaudo**
 
-L'Ente deve attivare in collaudo il servizio [Signal Hub](https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-pdnd-interoperabilita/v1.0/riferimenti-tecnici/signal-hub) di PDND per il relativo e-service, in coerenza con quanto definito dalle [Specifiche Tecniche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/signal-hub-endpoint.html) per la gestione degli stati, precedentemente mappati nella sezione **e_service.response.stati** del [template compilazione completo Fonte Autentica](template-form-onboarding-fonte-autentica.json). 
+L'Ente deve attivare in collaudo il servizio [Signal Hub](https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-pdnd-interoperabilita/v1.0/riferimenti-tecnici/signal-hub) di PDND per il relativo e-service, in coerenza con quanto definito dalle [Specifiche Tecniche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/signal-hub-endpoint.html) per la gestione degli stati, precedentemente mappati nella sezione `mappatura_stati` del file [Progettazione caratteristiche EAA](template-form-onboarding-fonte-autentica.json).  
 
 ### **Sviluppare il Credential Offer (opzionale)**
 
@@ -245,17 +254,17 @@ L'Ente, se ritenuto necessario e/o utile per ingaggiare l'utente nel flusso di o
 
 ### **Notificare l'avvenuto rilascio in collaudo**
 
-L'Ente deve notificare il Fornitore di Attestati di Attributi circa l'avvenuto rilascio dell'e-service in collaudo su PDND, dei servizi di Signal Hub in collaudo e, se previsto, del Credential Offer. In caso di EAA di interesse pubblico, l'Ente deve notificare IPZS inviando una mail all'indirizzo XX.
+L'Ente deve notificare il Fornitore di Attestati di Attributi circa l'avvenuto rilascio dell'e-service in collaudo su PDND, dei servizi di Signal Hub in collaudo e, se previsto, del Credential Offer. In caso di EAA di interesse pubblico, l'Ente deve notificare IPZS inviando una mail all'indirizzo identitadigitale@pec.ipzs.it.
 
 ## Step 3 | Test in collaudo
 
-Questo step, suggerito ma non vincolante per le fasi successive, ha l'obiettivo di eseguire i test propedeutici al rilascio in produzione. In caso di disponibilità da parte del Fornitore di Attestati Elettronici di Attributi, l'Ente può:
+Questo step, suggerito ma non vincolante per le fasi successive, ha l'obiettivo di eseguire i test propedeutici al rilascio in produzione. 
 
-Per i dettagli implementativi, consultare le Specifiche Tecniche (IT), in particolare:
+Per i dettagli implementativi, consultare le Specifiche Tecniche, in particolare:
 
 - [Endpoint delle Fonti Autentiche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/authentic-source-endpoint.html)
 - [Signal Hub](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/signal-hub-endpoint.html)
-
+In questo step, in caso di disponibilità da parte del Fornitore di Attestati Elettronici di Attributi, l'Ente interessato può: 
 ### **Eseguire i test in collaudo**
 
 L'Ente **può** testare in collaudo con il Fornitore di Attestati Elettronici di Attributi (e.g. IPZS, nel caso di Attestati Elettronici di interesse pubblico):
@@ -270,20 +279,20 @@ Una volta superati i test in collaudo, se eseguiti, l'Ente può proseguire con l
 
 ## Step 4 | Pubblicazione in produzione
 
-Questo step ha l'obiettivo di rilasciare in produzione l'e-service che espone i dati per la produzione degli EAA e di attivare il relativo servizio Signal Hub per la gestione dei dati nel tempo. Inoltre, l'Ente può rilasciare in produzione il Credential Offer se ritenuto utile per guidare gli utenti all'ottenimento degli EAA prodotti con i propri dati. A tale scopo, l'Ente deve:
+Questo step ha l'obiettivo di rilasciare in produzione l'e-service che espone i dati per la produzione degli EAA e di attivare il relativo servizio Signal Hub per la gestione dei dati nel tempo. Inoltre, l'Ente può rilasciare in produzione il Credential Offer se ritenuto utile per guidare gli utenti all'ottenimento degli EAA prodotti con i propri dati. 
 
-Per i dettagli implementativi, consultare le Specifiche Tecniche (IT), in particolare:
+Per i dettagli implementativi, consultare le Specifiche Tecniche, in particolare:
 
 - [e-Service PDND](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/e-service-pdnd.html)
 - [Signal Hub](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/signal-hub-endpoint.html)
-
+In questo step, l'Ente interessato deve:
 ### **Pubblicare l'e-service su PDND in produzione**
 
 L'Ente deve rilasciare l'e-service su PDND in produzione. Nel caso di EAA di interesse pubblico, l'Ente deve abilitare IPZS alla fruizione del servizio, se possibile con abilitazione automatica. 
 
 ### **Attivare il servizio Signal Hub in produzione**
 
-L'Ente deve attivare in produzione il servizio Signal Hub di PDND per il relativo e-service, in coerenza con quanto definito dalle [Specifiche Tecniche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/signal-hub-endpoint.html) per la gestione degli stati, precedentemente mappati nella sezione **e_service.response.stati** del [template compilazione completo Fonte Autentica](template-form-onboarding-fonte-autentica.json). 
+L'Ente deve attivare in produzione il servizio Signal Hub di PDND per il relativo e-service, in coerenza con quanto definito dalle [Specifiche Tecniche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/signal-hub-endpoint.html) per la gestione degli stati, precedentemente mappati nella sezione `mappatura_stati` del file [Progettazione caratteristiche EAA](template-form-onboarding-fonte-autentica.json).  
 
 ### **Portare in produzione il Credential Offer (opzionale)**
 
@@ -291,7 +300,7 @@ L'Ente, se precedentemente sviluppato in collaudo, deve provvedere in questo ste
 
 ### **Notificare l'avvenuto rilascio in produzione**
 
-L'Ente deve notificare il Fornitore di Attestati di Attributi circa l'avvenuto rilascio dell'e-service in produzione su PDND, dei servizi di Signal Hub in produzione e, se previsto, del Credential Offer. In caso di EAA di interesse pubblico, l'Ente deve notificare IPZS inviando una mail all'indirizzo XX e, in caso di EAA disponibile nella soluzione pubblica di IT-Wallet, l'Ente deve notificare PagoPA inviando una mail all'indirizzo XX. 
+L'Ente deve notificare il Fornitore di Attestati di Attributi circa l'avvenuto rilascio dell'e-service in produzione su PDND, dei servizi di Signal Hub in produzione e, se previsto, del Credential Offer. In caso di EAA di interesse pubblico, l'Ente deve notificare IPZS inviando una mail all'indirizzo identitadigitale@pec.ipzs.it e, in caso di EAA disponibile nella soluzione pubblica di IT-Wallet, l'Ente deve notificare PagoPA inviando una mail all'indirizzo XX.
 
 ## Step 5 | Test in produzione
 
