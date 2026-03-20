@@ -402,7 +402,7 @@ L’obiettivo della sezione `casi_d_uso` è quello di supportare gli Enti nella 
     "data_compilazione": "2026-03-16",
     "versione": "1.0"
   },
-  "sezione_casi_uso": {
+  "casi_d_uso": {
     "target_utenti": {
       "chi_puo_richiedere": {
         "domanda": "Chi può ad oggi richiedere il documento? ...",
@@ -440,24 +440,84 @@ L’obiettivo della sezione `data_model `è quello di supportare gli Enti nella 
 2. Associa a ciascun dato che si intende rende disponibile all’interno dell’EAA un "nome campo" tra quelli definiti nella Lista nome campo sottostante o, se necessario, creane uno nuovo assicurandoti che sia parlante e che descriva adeguatamente il dato. 
 3. Ordina i campi in modo da facilitare la leggibilità: inserisci per primi i dati anagrafici (nome, cognome, data di nascita, luogo di nascita, codice fiscale), poi i dati specifici dell'attestato.
 
-| ATTESTAZIONE | PARAMETRO | DESCRIZIONE                | NOME CAMPO     | ESEMPIO CAMPO COMPILATO | OBBLIGATORIO | TIPOLOGIA    | LUNGHEZZA MASSIMA CARATTERI | NOTE |
-| ------------ | --------- | -------------------------- | -------------- | ----------------------- | ------------ | ------------ | --------------------------- | ---- |
-| ISEE         | tax_code  | codice fiscale dell'utente | Codice Fiscale | DLNRSL88L51C348G        | SI           | ALFANUMERICO | 16                          |      |
+```json
+"e_service": {
+  "response": {
+    "data_model": [
+      {
+        "attestazione": "ISEE",
+        "parametro": "tax_code",
+        "descrizione": "codice fiscale dell'utente",
+        "nome_campo": "Codice Fiscale",
+        "esempio_campo_compilato": "DLNRSL88L51C348G",
+        "obbligatorio": "SI",
+        "tipologia": "ALFANUMERICO",
+        "lunghezza_massima_caratteri": "16",
+        "note": ""
+      }
+    ]
+  }
+}
+```
 
-Tabella 1 Struttura Data Model 
+*Tabella 1 – Struttura Data Model (sezione `e_service.response.data_model`)*
 
+```json
+"e_service": {
+  "lista_nome_campo": [
+    {
+      "categoria": "Dati anagrafici e di identità",
+      "parametro": "",
+      "nome_campo": "Nome",
+      "descrizione": ""
+    },
+    {
+      "categoria": "Dati anagrafici e di identità",
+      "parametro": "",
+      "nome_campo": "Cognome",
+      "descrizione": ""
+    },
+    {
+      "categoria": "Dati anagrafici e di identità",
+      "parametro": "",
+      "nome_campo": "Codice Fiscale",
+      "descrizione": ""
+    },
+    {
+      "categoria": "Residenza e domicilio",
+      "parametro": "",
+      "nome_campo": "Comune di residenza",
+      "descrizione": ""
+    },
+    {
+      "categoria": "Istruzione e formazione",
+      "parametro": "",
+      "nome_campo": "Qualifica",
+      "descrizione": ""
+    },
+    {
+      "categoria": "Patenti e veicoli",
+      "parametro": "",
+      "nome_campo": "Data di rilascio",
+      "descrizione": ""
+    },
+    {
+      "categoria": "Patenti e veicoli",
+      "parametro": "",
+      "nome_campo": "Scadenza",
+      "descrizione": ""
+    },
+    {
+      "categoria": "Generali",
+      "parametro": "",
+      "nome_campo": "Origine dei dati",
+      "descrizione": ""
+    }
+  ]
+}
+```
 
-
-| CATEGORIA                     | NOME CAMPO                                                                                                                                                                                                                                                                                                                                                                         |
-| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Dati anagrafici e di identità | Nome, Cognome, Data di nascita, Luogo di nascita, Codice Fiscale, Nazionalità                                                                                                                                                                                                                                                                                                      |
-| Residenza e domicilio         | Comune di residenza, Frazione, Indirizzo, Seconda riga indirizzo, Codice postale, Provincia / Stato / Regione, Residente dal, Residenza estera                                                                                                                                                                                                                                     |
-| Istruzione e formazione       | Diploma conclusivo del primo/secondo ciclo, Diploma, Descrizione diploma, Istituto, Codice istituto, Qualifica, Qualifica professionale, Plesso scolastico, Codice plesso, Tipologia di corso, Corso di laurea, Classe di laurea, Anno di corso, Anno accademico/scolastico, Data di conseguimento, Periodo didattico, Tipologia di frequenza, Data di scadenza, Voto, Voto finale |
-| Sanità e previdenza           | Diritto accompagnatore                                                                                                                                                                                                                                                                                                                                                             |
-| Patenti e veicoli             | Data di rilascio, Paese di rilascio, Categoria, Scadenza, Numero, Codici                                                                                                                                                                                                                                                                                                           |
-| Generali                      | Origine dei dati, Emissione versione digitale                                                                                                                                                                                                                                                                                                                                      |
-
-Tabella 2 Lista nome campo
+*Tabella 2 – Lista nome campo (sezione `e_service.lista_nome_campo`)*
 
 ## Appendice C – Mappatura errori
 
@@ -475,15 +535,48 @@ L’obiettivo della sezione `mappatura_errori` è quello di supportare gli Enti 
 4. Descrivi l'azione necessaria per risolvere il problema nel campo "Azione utente". (es. Ti invitiamo a riprovare più tardi). Usa il campo "Note" per aggiungere ulteriori informazioni utili o una spiegazione del perché proponiamo all'utente di compiere un'azione specifica. 
 5. Aggiungi nuovi codici errore se necessari per lo specifico attestato.
 
-| CODICE  | ESITO                                                                | APPLICABILE | CAUSA                                          | AZIONE UTENTE                        | NOTE |
-| ------- | -------------------------------------------------------------------- | ----------- | ---------------------------------------------- | ------------------------------------ | ---- |
-| 200     | Attestato digitale valido                                            | SI          | Dati ritornati correttamente                   | N/A                                  |      |
-| 400-451 | Errori client (Bad Request, Unauthorized, ecc.)                      |             |                                                |                                      |      |
-| 404     | Not found                                                            | SI          | Non sono stati trovati documenti di titolarità | Chiudere e riprovare successivamente |      |
-| 500-503 | Errori server (generico, servizio non implementato, non disponibile) |             |                                                |                                      |      |
-| 540     | EAA non esistente presso l'Authentic Source                          |             | Formato `"state": "description"`               |                                      |      |
+```json
+"e_service": {
+  "response": {
+    "mappatura_errori": [
+      {
+        "codice": "200",
+        "esito": "Attestato digitale valido",
+        "applicabile": "SI",
+        "causa": "Vengono ritornati correttamente i dati, nessuna risposta di errore. Qualora non ci fossero azioni utente da eseguire, riportare stringa vuota.",
+        "azione_utente": "",
+        "note": ""
+      },
+      {
+        "codice": "404",
+        "esito": "Not found",
+        "applicabile": "SI",
+        "causa": "Non sono stati trovati documenti di titolarità dell'utente",
+        "azione_utente": "Chiudere e riprovare successivamente",
+        "note": "L'utente deve prima acquisire la titolarità del documento per ottenerne la versione digitale"
+      },
+      {
+        "codice": "540",
+        "esito": "EAA non esistente presso l'Authentic Source",
+        "applicabile": "",
+        "causa": "",
+        "azione_utente": "",
+        "note": ""
+      },
+      {
+        "codice": "541",
+        "esito": "EAA in stato non valido o sospeso",
+        "applicabile": "",
+        "causa": "",
+        "azione_utente": "",
+        "note": ""
+      }
+    ]
+  }
+}
+```
 
-Tabella 3 Mappatura Errori
+*Tabella 3 – Mappatura Errori (sezione `e_service.response.mappatura_errori`)*
 
 ## Appendice C – Mappatura stati
 
@@ -500,14 +593,48 @@ L’obiettivo della sezione `mappatura_stati `è quello di supportare gli Enti n
 3. Definisci il messaggio da condividere con l'utente (es. I tuoi dati sono stati aggiornati nella banca dati ANIS, scarica la nuova versione digitale del documento). Usa il campo "Note" per aggiungere ulteriori informazioni utili o una spiegazione del perché proponiamo all'utente di compiere un'azione specifica. 
 4. Per approfondimenti: [Ciclo di Vita degli Attestati Elettronici](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/credential-revocation.html).
 
-| STATO      | DESCRIZIONE                                    | APPLICABILE | AZIONE UTENTE                                         | MESSAGGIO | NOTE |
-| ---------- | ---------------------------------------------- | ----------- | ----------------------------------------------------- | --------- | ---- |
-| Valido     | L'attestato è valido e può essere utilizzato   | SI          | N/A                                                   |           |      |
-| Non Valido | L'attestato non è più valido                   |             | L'utente deve scaricare nuovamente l'attestato in app |           |      |
-| Sospeso    | L'attestato è temporaneamente non utilizzabile |             |                                                       |           |      |
-| Scaduto    | L'attestato è scaduto e necessita riemissione  |             |                                                       |           |      |
+```json
+"e_service": {
+  "response": {
+    "stati": [
+      {
+        "stato": "Valido",
+        "descrizione": "L'EAA è valido e può essere utilizzato",
+        "applicabile": "SI",
+        "azione_utente": "",
+        "messaggio": "",
+        "note": ""
+      },
+      {
+        "stato": "Non Valido",
+        "descrizione": "L'EAA non è più valido e dunque non può essere più utilizzato",
+        "applicabile": "",
+        "azione_utente": "L'utente deve scaricare nuovamente l'EAA in app",
+        "messaggio": "",
+        "note": ""
+      },
+      {
+        "stato": "Sospeso",
+        "descrizione": "L'EAA è sospeso e non può essere temporaneamente utilizzato",
+        "applicabile": "",
+        "azione_utente": "",
+        "messaggio": "",
+        "note": ""
+      },
+      {
+        "stato": "Scaduto",
+        "descrizione": "L'EAA è scaduto e necessita una riemissione",
+        "applicabile": "",
+        "azione_utente": "",
+        "messaggio": "",
+        "note": ""
+      }
+    ]
+  }
+}
+```
 
-Tabella 4 Mappatura stati
+*Tabella 4 – Mappatura stati (sezione `e_service.response.stati`)*
 
 ## Appendice E – Assistenza
 
@@ -526,24 +653,84 @@ L’obiettivo della sezione `data_model `è quello di supportare gli Enti nella 
 2. Associa a ciascun dato che si intende rende disponibile all’interno dell’EAA un "nome campo" tra quelli definiti nella Lista nome campo sottostante o, se necessario, creane uno nuovo assicurandoti che sia parlante e che descriva adeguatamente il dato. 
 3. Ordina i campi in modo da facilitare la leggibilità: inserisci per primi i dati anagrafici (nome, cognome, data di nascita, luogo di nascita, codice fiscale), poi i dati specifici dell'attestato.
 
-| ATTESTAZIONE | PARAMETRO | DESCRIZIONE                | NOME CAMPO     | ESEMPIO CAMPO COMPILATO | OBBLIGATORIO | TIPOLOGIA    | LUNGHEZZA MASSIMA CARATTERI | NOTE |
-| ------------ | --------- | -------------------------- | -------------- | ----------------------- | ------------ | ------------ | --------------------------- | ---- |
-| ISEE         | tax_code  | codice fiscale dell'utente | Codice Fiscale | DLNRSL88L51C348G        | SI           | ALFANUMERICO | 16                          |      |
+```json
+"e_service": {
+  "response": {
+    "data_model": [
+      {
+        "attestazione": "ISEE",
+        "parametro": "tax_code",
+        "descrizione": "codice fiscale dell'utente",
+        "nome_campo": "Codice Fiscale",
+        "esempio_campo_compilato": "DLNRSL88L51C348G",
+        "obbligatorio": "SI",
+        "tipologia": "ALFANUMERICO",
+        "lunghezza_massima_caratteri": "16",
+        "note": ""
+      }
+    ]
+  }
+}
+```
 
-Tabella 1 Struttura Data Model 
+*Tabella 1 – Struttura Data Model (sezione `e_service.response.data_model`)*
 
+```json
+"e_service": {
+  "lista_nome_campo": [
+    {
+      "categoria": "Dati anagrafici e di identità",
+      "parametro": "",
+      "nome_campo": "Nome",
+      "descrizione": ""
+    },
+    {
+      "categoria": "Dati anagrafici e di identità",
+      "parametro": "",
+      "nome_campo": "Cognome",
+      "descrizione": ""
+    },
+    {
+      "categoria": "Dati anagrafici e di identità",
+      "parametro": "",
+      "nome_campo": "Codice Fiscale",
+      "descrizione": ""
+    },
+    {
+      "categoria": "Residenza e domicilio",
+      "parametro": "",
+      "nome_campo": "Comune di residenza",
+      "descrizione": ""
+    },
+    {
+      "categoria": "Istruzione e formazione",
+      "parametro": "",
+      "nome_campo": "Qualifica",
+      "descrizione": ""
+    },
+    {
+      "categoria": "Patenti e veicoli",
+      "parametro": "",
+      "nome_campo": "Data di rilascio",
+      "descrizione": ""
+    },
+    {
+      "categoria": "Patenti e veicoli",
+      "parametro": "",
+      "nome_campo": "Scadenza",
+      "descrizione": ""
+    },
+    {
+      "categoria": "Generali",
+      "parametro": "",
+      "nome_campo": "Origine dei dati",
+      "descrizione": ""
+    }
+  ]
+}
+```
 
-
-| CATEGORIA                     | NOME CAMPO                                                                                                                                                                                                                                                                                                                                                                         |
-| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Dati anagrafici e di identità | Nome, Cognome, Data di nascita, Luogo di nascita, Codice Fiscale, Nazionalità                                                                                                                                                                                                                                                                                                      |
-| Residenza e domicilio         | Comune di residenza, Frazione, Indirizzo, Seconda riga indirizzo, Codice postale, Provincia / Stato / Regione, Residente dal, Residenza estera                                                                                                                                                                                                                                     |
-| Istruzione e formazione       | Diploma conclusivo del primo/secondo ciclo, Diploma, Descrizione diploma, Istituto, Codice istituto, Qualifica, Qualifica professionale, Plesso scolastico, Codice plesso, Tipologia di corso, Corso di laurea, Classe di laurea, Anno di corso, Anno accademico/scolastico, Data di conseguimento, Periodo didattico, Tipologia di frequenza, Data di scadenza, Voto, Voto finale |
-| Sanità e previdenza           | Diritto accompagnatore                                                                                                                                                                                                                                                                                                                                                             |
-| Patenti e veicoli             | Data di rilascio, Paese di rilascio, Categoria, Scadenza, Numero, Codici                                                                                                                                                                                                                                                                                                           |
-| Generali                      | Origine dei dati, Emissione versione digitale                                                                                                                                                                                                                                                                                                                                      |
-
-Tabella 2 Lista nome campo
+*Tabella 2 – Lista nome campo (sezione `e_service.lista_nome_campo`)*
 
 ## Appendice C – Mappatura errori
 
@@ -561,15 +748,48 @@ L’obiettivo della sezione `mappatura_errori` è quello di supportare gli Enti 
 4. Descrivi l'azione necessaria per risolvere il problema nel campo "Azione utente". (es. Ti invitiamo a riprovare più tardi). Usa il campo "Note" per aggiungere ulteriori informazioni utili o una spiegazione del perché proponiamo all'utente di compiere un'azione specifica. 
 5. Aggiungi nuovi codici errore se necessari per lo specifico attestato.
 
-| CODICE  | ESITO                                                                | APPLICABILE | CAUSA                                          | AZIONE UTENTE                        | NOTE |
-| ------- | -------------------------------------------------------------------- | ----------- | ---------------------------------------------- | ------------------------------------ | ---- |
-| 200     | Attestato digitale valido                                            | SI          | Dati ritornati correttamente                   | N/A                                  |      |
-| 400-451 | Errori client (Bad Request, Unauthorized, ecc.)                      |             |                                                |                                      |      |
-| 404     | Not found                                                            | SI          | Non sono stati trovati documenti di titolarità | Chiudere e riprovare successivamente |      |
-| 500-503 | Errori server (generico, servizio non implementato, non disponibile) |             |                                                |                                      |      |
-| 540     | EAA non esistente presso l'Authentic Source                          |             | Formato `"state": "description"`               |                                      |      |
+```json
+"e_service": {
+  "response": {
+    "mappatura_errori": [
+      {
+        "codice": "200",
+        "esito": "Attestato digitale valido",
+        "applicabile": "SI",
+        "causa": "Vengono ritornati correttamente i dati, nessuna risposta di errore. Qualora non ci fossero azioni utente da eseguire, riportare stringa vuota.",
+        "azione_utente": "",
+        "note": ""
+      },
+      {
+        "codice": "404",
+        "esito": "Not found",
+        "applicabile": "SI",
+        "causa": "Non sono stati trovati documenti di titolarità dell'utente",
+        "azione_utente": "Chiudere e riprovare successivamente",
+        "note": "L'utente deve prima acquisire la titolarità del documento per ottenerne la versione digitale"
+      },
+      {
+        "codice": "540",
+        "esito": "EAA non esistente presso l'Authentic Source",
+        "applicabile": "",
+        "causa": "",
+        "azione_utente": "",
+        "note": ""
+      },
+      {
+        "codice": "541",
+        "esito": "EAA in stato non valido o sospeso",
+        "applicabile": "",
+        "causa": "",
+        "azione_utente": "",
+        "note": ""
+      }
+    ]
+  }
+}
+```
 
-Tabella 3 Mappatura Errori
+*Tabella 3 – Mappatura Errori (sezione `e_service.response.mappatura_errori`)*
 
 ## Appendice C – Mappatura stati
 
@@ -586,14 +806,48 @@ L’obiettivo della sezione `mappatura_stati `è quello di supportare gli Enti n
 3. Definisci il messaggio da condividere con l'utente (es. I tuoi dati sono stati aggiornati nella banca dati ANIS, scarica la nuova versione digitale del documento). Usa il campo "Note" per aggiungere ulteriori informazioni utili o una spiegazione del perché proponiamo all'utente di compiere un'azione specifica. 
 4. Per approfondimenti: [Ciclo di Vita degli Attestati Elettronici](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/credential-revocation.html).
 
-| STATO      | DESCRIZIONE                                    | APPLICABILE | AZIONE UTENTE                                         | MESSAGGIO | NOTE |
-| ---------- | ---------------------------------------------- | ----------- | ----------------------------------------------------- | --------- | ---- |
-| Valido     | L'attestato è valido e può essere utilizzato   | SI          | N/A                                                   |           |      |
-| Non Valido | L'attestato non è più valido                   |             | L'utente deve scaricare nuovamente l'attestato in app |           |      |
-| Sospeso    | L'attestato è temporaneamente non utilizzabile |             |                                                       |           |      |
-| Scaduto    | L'attestato è scaduto e necessita riemissione  |             |                                                       |           |      |
+```json
+"e_service": {
+  "response": {
+    "stati": [
+      {
+        "stato": "Valido",
+        "descrizione": "L'EAA è valido e può essere utilizzato",
+        "applicabile": "SI",
+        "azione_utente": "",
+        "messaggio": "",
+        "note": ""
+      },
+      {
+        "stato": "Non Valido",
+        "descrizione": "L'EAA non è più valido e dunque non può essere più utilizzato",
+        "applicabile": "",
+        "azione_utente": "L'utente deve scaricare nuovamente l'EAA in app",
+        "messaggio": "",
+        "note": ""
+      },
+      {
+        "stato": "Sospeso",
+        "descrizione": "L'EAA è sospeso e non può essere temporaneamente utilizzato",
+        "applicabile": "",
+        "azione_utente": "",
+        "messaggio": "",
+        "note": ""
+      },
+      {
+        "stato": "Scaduto",
+        "descrizione": "L'EAA è scaduto e necessita una riemissione",
+        "applicabile": "",
+        "azione_utente": "",
+        "messaggio": "",
+        "note": ""
+      }
+    ]
+  }
+}
+```
 
-Tabella 4 Mappatura stati
+*Tabella 4 – Mappatura stati (sezione `e_service.response.stati`)*
 
 **Obiettivo**
 
@@ -619,7 +873,7 @@ Nello specifico, l'Ente deve contribuire al [modello di assistenza](https://ital
 
 ## Appendice C – Guida compilazione e-service
 
-Il dataset dell'e-service (data model, mappatura errori, stati, lista nome campo) si compila nel [template compilazione completo Fonte Autentica](progettazione-caratteristiche-eaa.json), sezione **e_service**. Le matrici sottostanti fungono da guida e riferimento.
+Il dataset dell'e-service (data model, mappatura errori, stati, lista nome campo) si compila nel [template compilazione completo Fonte Autentica](progettazione-caratteristiche-eaa.json), sezione **e_service**. Gli esempi JSON sottostanti fungono da guida e riferimento.
 
 ### Prima di iniziare
 
@@ -649,11 +903,25 @@ Segui le istruzioni specifiche riportate per ciascuna sezione:
 2. Associa a ciascun dato un "nome campo" tra quelli definiti nella [Lista nome campo](#lista-nome-campo) sottostante o, se necessario, creane uno nuovo assicurandoti che sia parlante e che descriva adeguatamente il dato.
 3. Ordina i campi in modo da facilitare la leggibilità: inserisci per primi i dati anagrafici (nome, cognome, data di nascita, luogo di nascita, codice fiscale), poi i dati specifici dell'attestato.
 
-
-| ATTESTAZIONE | PARAMETRO | DESCRIZIONE                | NOME CAMPO     | ESEMPIO CAMPO COMPILATO | OBBLIGATORIO | TIPOLOGIA    | LUNGHEZZA MASSIMA CARATTERI | NOTE |
-| ------------ | --------- | -------------------------- | -------------- | ----------------------- | ------------ | ------------ | --------------------------- | ---- |
-| ISEE         | tax_code  | codice fiscale dell'utente | Codice Fiscale | DLNRSL88L51C348G        | SI           | ALFANUMERICO | 16                          |      |
-
+```json
+"e_service": {
+  "response": {
+    "data_model": [
+      {
+        "attestazione": "ISEE",
+        "parametro": "tax_code",
+        "descrizione": "codice fiscale dell'utente",
+        "nome_campo": "Codice Fiscale",
+        "esempio_campo_compilato": "DLNRSL88L51C348G",
+        "obbligatorio": "SI",
+        "tipologia": "ALFANUMERICO",
+        "lunghezza_massima_caratteri": "16",
+        "note": ""
+      }
+    ]
+  }
+}
+```
 
 ### 02 - Mappatura degli errori (sezione `e_service.response.mappatura_errori`)
 
@@ -665,16 +933,46 @@ Segui le istruzioni specifiche riportate per ciascuna sezione:
 4. Descrivi l'azione necessaria per risolvere il problema nel campo "Azione utente".
 5. Aggiungi nuovi codici errore se necessari per lo specifico attestato.
 
-
-| CODICE  | ESITO                                                                | APPLICABILE | CAUSA                                          | AZIONE UTENTE                        | NOTE |
-| ------- | -------------------------------------------------------------------- | ----------- | ---------------------------------------------- | ------------------------------------ | ---- |
-| 200     | Attestato digitale valido                                            | SI          | Dati ritornati correttamente                   | N/A                                  |      |
-| 400-451 | Errori client (Bad Request, Unauthorized, ecc.)                      |             |                                                |                                      |      |
-| 404     | Not found                                                            | SI          | Non sono stati trovati documenti di titolarità | Chiudere e riprovare successivamente |      |
-| 500-503 | Errori server (generico, servizio non implementato, non disponibile) |             |                                                |                                      |      |
-| 540     | EAA non esistente presso l'Authentic Source                          |             | Formato `"state": "description"`               |                                      |      |
-| 541     | EAA in stato non valido o sospeso (VALIDITY ≠ 1)                     |             | Formato `"state": "description"`               |                                      |      |
-
+```json
+"e_service": {
+  "response": {
+    "mappatura_errori": [
+      {
+        "codice": "200",
+        "esito": "Attestato digitale valido",
+        "applicabile": "SI",
+        "causa": "Vengono ritornati correttamente i dati, nessuna risposta di errore. Qualora non ci fossero azioni utente da eseguire, riportare stringa vuota.",
+        "azione_utente": "",
+        "note": ""
+      },
+      {
+        "codice": "404",
+        "esito": "Not found",
+        "applicabile": "SI",
+        "causa": "Non sono stati trovati documenti di titolarità dell'utente",
+        "azione_utente": "Chiudere e riprovare successivamente",
+        "note": "L'utente deve prima acquisire la titolarità del documento per ottenerne la versione digitale"
+      },
+      {
+        "codice": "540",
+        "esito": "EAA non esistente presso l'Authentic Source",
+        "applicabile": "",
+        "causa": "",
+        "azione_utente": "",
+        "note": ""
+      },
+      {
+        "codice": "541",
+        "esito": "EAA in stato non valido o sospeso",
+        "applicabile": "",
+        "causa": "",
+        "azione_utente": "",
+        "note": ""
+      }
+    ]
+  }
+}
+```
 
 ### 03 - Stati (sezione `e_service.response.stati`)
 
@@ -685,29 +983,105 @@ Segui le istruzioni specifiche riportate per ciascuna sezione:
 3. Definisci il messaggio da condividere con l'utente.
 4. Per approfondimenti: [Ciclo di Vita degli Attestati Elettronici](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/credential-revocation.html).
 
-
-| STATO      | DESCRIZIONE                                    | APPLICABILE | AZIONE UTENTE                                         | MESSAGGIO | NOTE |
-| ---------- | ---------------------------------------------- | ----------- | ----------------------------------------------------- | --------- | ---- |
-| Valido     | L'attestato è valido e può essere utilizzato   | SI          | N/A                                                   |           |      |
-| Non Valido | L'attestato non è più valido                   |             | L'utente deve scaricare nuovamente l'attestato in app |           |      |
-| Sospeso    | L'attestato è temporaneamente non utilizzabile |             |                                                       |           |      |
-| Scaduto    | L'attestato è scaduto e necessita riemissione  |             |                                                       |           |      |
-
+```json
+"e_service": {
+  "response": {
+    "stati": [
+      {
+        "stato": "Valido",
+        "descrizione": "L'EAA è valido e può essere utilizzato",
+        "applicabile": "SI",
+        "azione_utente": "",
+        "messaggio": "",
+        "note": ""
+      },
+      {
+        "stato": "Non Valido",
+        "descrizione": "L'EAA non è più valido e dunque non può essere più utilizzato",
+        "applicabile": "",
+        "azione_utente": "L'utente deve scaricare nuovamente l'EAA in app",
+        "messaggio": "",
+        "note": ""
+      },
+      {
+        "stato": "Sospeso",
+        "descrizione": "L'EAA è sospeso e non può essere temporaneamente utilizzato",
+        "applicabile": "",
+        "azione_utente": "",
+        "messaggio": "",
+        "note": ""
+      },
+      {
+        "stato": "Scaduto",
+        "descrizione": "L'EAA è scaduto e necessita una riemissione",
+        "applicabile": "",
+        "azione_utente": "",
+        "messaggio": "",
+        "note": ""
+      }
+    ]
+  }
+}
+```
 
 ### Lista nome campo
 
 Riferimento per il Data Model. Usa i nomi campo nella sezione `e_service.response.data_model` del template JSON.
 
-
-| CATEGORIA                     | NOME CAMPO                                                                                                                                                                                                                                                                                                                                                                         |
-| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Dati anagrafici e di identità | Nome, Cognome, Data di nascita, Luogo di nascita, Codice Fiscale, Nazionalità                                                                                                                                                                                                                                                                                                      |
-| Residenza e domicilio         | Comune di residenza, Frazione, Indirizzo, Seconda riga indirizzo, Codice postale, Provincia / Stato / Regione, Residente dal, Residenza estera                                                                                                                                                                                                                                     |
-| Istruzione e formazione       | Diploma conclusivo del primo/secondo ciclo, Diploma, Descrizione diploma, Istituto, Codice istituto, Qualifica, Qualifica professionale, Plesso scolastico, Codice plesso, Tipologia di corso, Corso di laurea, Classe di laurea, Anno di corso, Anno accademico/scolastico, Data di conseguimento, Periodo didattico, Tipologia di frequenza, Data di scadenza, Voto, Voto finale |
-| Sanità e previdenza           | Diritto accompagnatore                                                                                                                                                                                                                                                                                                                                                             |
-| Patenti e veicoli             | Data di rilascio, Paese di rilascio, Categoria, Scadenza, Numero, Codici                                                                                                                                                                                                                                                                                                           |
-| Generali                      | Origine dei dati, Emissione versione digitale                                                                                                                                                                                                                                                                                                                                      |
-
+```json
+"e_service": {
+  "lista_nome_campo": [
+    {
+      "categoria": "Dati anagrafici e di identità",
+      "parametro": "",
+      "nome_campo": "Nome",
+      "descrizione": ""
+    },
+    {
+      "categoria": "Dati anagrafici e di identità",
+      "parametro": "",
+      "nome_campo": "Cognome",
+      "descrizione": ""
+    },
+    {
+      "categoria": "Dati anagrafici e di identità",
+      "parametro": "",
+      "nome_campo": "Codice Fiscale",
+      "descrizione": ""
+    },
+    {
+      "categoria": "Residenza e domicilio",
+      "parametro": "",
+      "nome_campo": "Comune di residenza",
+      "descrizione": ""
+    },
+    {
+      "categoria": "Istruzione e formazione",
+      "parametro": "",
+      "nome_campo": "Qualifica",
+      "descrizione": ""
+    },
+    {
+      "categoria": "Patenti e veicoli",
+      "parametro": "",
+      "nome_campo": "Data di rilascio",
+      "descrizione": ""
+    },
+    {
+      "categoria": "Patenti e veicoli",
+      "parametro": "",
+      "nome_campo": "Scadenza",
+      "descrizione": ""
+    },
+    {
+      "categoria": "Generali",
+      "parametro": "",
+      "nome_campo": "Origine dei dati",
+      "descrizione": ""
+    }
+  ]
+}
+```
 
 ---
 

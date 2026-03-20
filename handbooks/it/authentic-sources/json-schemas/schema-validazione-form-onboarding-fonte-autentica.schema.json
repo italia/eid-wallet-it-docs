@@ -3,11 +3,11 @@
   "$id": "https://github.com/italia/eid-wallet-it-docs/handbooks/it/authentic-sources/json-schemas/schema-validazione-form-onboarding-fonte-autentica.schema.json",
   "$version": "0.7.0",
   "title": "Schema validazione Fonte Autentica",
-  "description": "Schema di validazione per progettazione-caratteristiche-eaa.json. Richiede metadata, sezione_casi_uso (documento esistente o non), assistenza e e_service.",
+  "description": "Schema di validazione per progettazione-caratteristiche-eaa.json. Richiede metadata, casi_d_uso (documento esistente o non), assistenza e e_service.",
   "type": "object",
   "required": [
     "metadata",
-    "sezione_casi_uso",
+    "casi_d_uso",
     "assistenza",
     "e_service"
   ],
@@ -23,7 +23,7 @@
         "versione": { "type": "string" }
       }
     },
-    "sezione_casi_uso": { "$ref": "#/$defs/sezione_casi_uso" },
+    "casi_d_uso": { "$ref": "#/$defs/casi_d_uso" },
     "assistenza": {
       "type": "object",
       "required": [
@@ -247,7 +247,7 @@
         "dati_sensibili_motivazione": { "$ref": "#/$defs/campo_risposta" }
       }
     },
-    "sezione_casi_uso": {
+    "casi_d_uso": {
       "type": "object",
       "required": [
         "target_utenti",

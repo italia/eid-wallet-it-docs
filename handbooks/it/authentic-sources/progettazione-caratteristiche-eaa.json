@@ -6,7 +6,7 @@
     "data_compilazione": "",
     "versione": "0.6.0"
   },
-  "sezione_casi_uso": {
+  "casi_d_uso": {
     "target_utenti": {
       "documento_fisico_preesistente": {
         "domanda": "Il dataset è relativo a un documento fisico preesistente?",

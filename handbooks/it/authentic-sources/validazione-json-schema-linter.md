@@ -88,7 +88,7 @@ I file compilati fanno riferimento allo schema tramite `$schema`; in caso di agg
 ## 5. Note sullo schema `json-schemas/schema-validazione-form-onboarding-fonte-autentica.schema.json`
 
 - Lo schema valida l'intera struttura del file, incluse le sezioni **casi d'uso**, **assistenza** e **e_service**; queste ultime due sono obbligatorie e validate dallo schema.
-- **Sezione casi d'uso**: `sezione_casi_uso` è obbligatoria e unifica i casi documento esistente e non; i campi opzionali si compilano in base al caso.
+- **Sezione casi d'uso**: `casi_d_uso` è obbligatoria e unifica i casi documento esistente e non; i campi opzionali si compilano in base al caso.
 - **`metadata`**: `nome_ente_titolare` e `nome_eaa` sono obbligatori con `minLength: 1` (non possono essere stringa vuota).
 - **`campo_risposta`**: ogni domanda richiede `domanda` e `risposta`; `suggerimento` è facoltativo.
 - **`assistenza.canali`**: ogni elemento ha `tipo` (enum: "Email assistenza", "Numero telefonico", "Altro"), `risposta` (stringa: indirizzo email, numero di telefono o descrizione a seconda del tipo; vuota se il canale non è utilizzato) e `note` (stringa); per tipo "Email assistenza" con risposta non vuota, lo schema valida il formato email.
