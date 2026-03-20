@@ -12,7 +12,7 @@
 - [Scopo e ambito di applicazione](#Scopo-e-ambito-di-applicazione)
 - [Ruoli e responsabilità del Titolare di Fonte Autentica](#Ruoli-e-responsabilità-del-Titolare-di-Fonte-Autentica)
 - [Come diventare Titolare di Fonte Autentica](#Come-diventare-Titolare-di-Fonte-Autentica)
-  - [Step 1 | Progettazione dell'e-service e dei dati](#step-1--progettazione-dell-e-service-e-dei-dati) 
+  - [Step 1 | Progettazione caratteristiche EAA](#step-1--progettazione-caratteristiche-eaa) 
   - [Step 2 | Pubblicazione in collaudo](#step-2--pubblicazione-in-collaudo) 
   - [Step 3 | Test in collaudo](#step-3--test-in-collaudo)
   - [Step 4 | Pubblicazione in produzione](#step-4--pubblicazione-in-produzione) 
@@ -79,44 +79,26 @@ Per rivestire il ruolo di Titolare di Fonte Autentica, ciascun Ente interessato 
 
 In particolare, il processo prevede i seguenti step: 
 
-- **Step 1 | Progettazione dell'e-service e dei dati**: l'Ente approfondisce le Specifiche Tecniche del Sistema IT-Wallet e definisce il data model dell'e-service, i casi d'uso, le modalità di gestione di errori e stati dei dati. Per i dettagli implementativi, consultare le Specifiche Tecniche (IT), in particolare:
-  - [Fonti Autentiche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/authentic-sources.html)
-  - [Endpoint delle Fonti Autentiche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/authentic-source-endpoint.html)
-  - [e-Service PDND](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/e-service-pdnd.html)
-  [Vai allo Step 1](#step-1--progettazione-dell-e-service-e-dei-dati)
+- **Step 1 | Progettazione caratteristiche EAA**: l'Ente approfondisce le Specifiche Tecniche del Sistema IT-Wallet e definisce le caratteristiche del Attestato Elettronico di Attributi relativo al proprio dataset, in relazione alle modalità di scoperta e ottenimento dell’EAA, i casi d’uso, il data model e le modalità di gestione di errori e stati. 
+  [Vai allo Step 1](#step-1--progettazione-caratteristiche-eaa)
 - **Step 2 | Pubblicazione in collaudo**: l'Ente effettua l'onboarding nella Piattaforma Digitale Nazionale Dati (PDND), se non lo ha già fatto, rilascia l'e-service in ambiente di collaudo su PDND, e attiva il relativo servizio Signal Hub in ambiente di collaudo per la gestione del ciclo di vita dell’EAA nel tempo. Infine, l'Ente notifica al Fornitore di Attestati Elettronici di Attributi, configurato come fruitore dell'e-service, l'avvenuta pubblicazione. 
-  - [e-Service PDND](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/e-service-pdnd.html)
-  - [Endpoint delle Fonti Autentiche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/authentic-source-endpoint.html)
-  - [Signal Hub](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/signal-hub-endpoint.html)
   [Vai allo Step 2](#step-2--pubblicazione-in-collaudo)
 - **Step 3 | Test in collaudo**: l'Ente, in ambiente di collaudo PDND, può eseguire i test di integrazione dell'e-service e di Signal Hub con il Fornitore di Attestati Elettronici di Attributi indicato come fruitore e, se ritenuto necessario, con il Fornitore di Wallet, anche gli aspetti relativi alla UX/UI dell’EAA. 
-  - [Endpoint delle Fonti Autentiche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/authentic-source-endpoint.html)
-  - [Signal Hub](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/signal-hub-endpoint.html)
   [Vai allo Step 3](#step-3--test-in-collaudo)
-- **Step 4 | Pubblicazione in produzione**: l'Ente rilascia l'e-service in ambiente di produzione su PDND e attiva il relativo servizio Signal Hub in produzione. Infine, l'Ente notifica al Fornitore di Attestati Elettronici di Attributi. Per i dettagli implementativi, consultare le Specifiche Tecniche italiane:
-  - [e-Service PDND](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/e-service-pdnd.html)
-  - [Signal Hub](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/signal-hub-endpoint.html)
+- **Step 4 | Pubblicazione in produzione**: l'Ente rilascia l'e-service in ambiente di produzione su PDND e attiva il relativo servizio Signal Hub in produzione, al fine di supportare una corretta gestione del ciclo di vita dell’EAA. Infine, l'Ente notifica al Fornitore di Attestati Elettronici di Attributi l'avvenuta pubblicazione.
   [Vai allo Step 4](#step-4--pubblicazione-in-produzione)
 - **Step 5 | Test in produzione**: l'Ente, in ambiente di produzione, esegue i test di integrazione, di carico e long run dell'e-service. Per i dettagli implementativi, consultare le Specifiche Tecniche italiane:
-  - [Endpoint delle Fonti Autentiche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/authentic-source-endpoint.html)
   [Vai allo Step 5](#step-5--test-in-produzione)
-- **Step 6 | Pianificazione rilascio EAA**: a valle del buon esito dei test in collaudo e in produzione, l'Ente concorda con il Fornitore di Attestati Elettronici di Attributi la data di rilascio. Per la comunicazione e il rilascio, consultare le Specifiche Tecniche italiane:
-  - [Brand Identity](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/brand-identity.html)
+- **Step 6 | Pianificazione rilascio EAA**: a valle del buon esito dei test in collaudo e in produzione, l'Ente concorda con il Fornitore di Attestati Elettronici di Attributi la data di rilascio, per l'ottenimento dell’EAA da parte degli utenti. Inoltre, l’Ente può valutare attività di comunicazione, in sinergia con gli altri attori interessati.
   [Vai allo Step 6](#step-6--pianificazione-rilascio-eaa)
-- **Step 7 | Manutenzione e assistenza**: l'Ente effettua attività di gestione e manutenzione dell'e-service e contribuisce alla risoluzione di problematiche. Per il modello di assistenza, consultare le Specifiche Tecniche italiane:
-  - [Assistenza utente](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/functionalities.html#assistenza-utente)
+- **Step 7 | Manutenzione e assistenza**: l'Ente effettua attività di gestione e manutenzione dell'e-service e contribuisce alla risoluzione di problematiche e segnalazioni, per le tematiche e i processi di competenza, secondo il modello di assistenza del Sistema IT-Wallet. 
   [Vai allo Step 7](#step-7--manutenzione-e-assistenza)
 
-## Step 1 | Progettazione dell'e-service e dei dati
+## Step 1 | Progettazione caratteristiche EAA
 
-Questo step ha l'obiettivo di definire, in qualità di Fonte Autentica, come guidare gli utenti all'ottenimento degli EAA prodotti mediante i propri dati, quali dati fornire e come gestirli nel tempo. Le attività previste in questa fase sono di piena responsabilità della Fonte Autentica e contribuiscono all'esperienza utente (es. modalità di discovery, casi d'uso, qualità dei dati, assistenza, condizioni di validità dell'EAA prodotto). In questo step, l'Ente interessato deve:
+Questo step ha l'obiettivo di definire l'esperienza utente di scoperta, ottenimento, utilizzo e gestione dell’Attestato Elettronico di Attributi relativo al dataset rilasciato dalla Fonte Autentica. Le attività previste in questa fase riguardano l'Ente nei limiti delle proprie responsabilità, contribuendo all'esperienza utente e più in generale alla qualità del servizio finale (es. modalità di discovery, casi d'uso, qualità dei dati, assistenza, condizioni di validità dell'EAA). In questo step, l'Ente interessato deve: 
 
-Per i dettagli implementativi, consultare le Specifiche Tecniche (IT), in particolare:
 
-- [Fonti Autentiche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/authentic-sources.html)
-- [Endpoint delle Fonti Autentiche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/authentic-source-endpoint.html)
-- [e-Service PDND](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/e-service-pdnd.html)
-- [Design UX](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/functionalities.html)
 
 ### **Approfondire le Specifiche Tecniche del Sistema IT-Wallet**
 
@@ -130,9 +112,9 @@ La versione corrente delle Specifiche Tecniche è disponibile a [questo link](ht
 - [Soluzione del Fornitore di Attestati Elettronici](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/credential-issuer-solution.html)
 - [Gestione degli Attestati Elettronici](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/digital-credential-management.html)
 
-### **Definire come guidare l'utente all'ottenimento dell'EAA**
+### **Definire come l'utente può ottenere l'EAA**
 
-Il Sistema IT-Wallet consente agli utenti di scoprire e ottenere gli EAA attraverso diverse modalità. La Fonte Autentica, fornendo i dati da cui vengono prodotti gli EAA, può **orientare gli utenti** verso l'ottenimento di tali attestati. In particolare: 
+Il Sistema IT-Wallet consente agli utenti di ottenere gli EAA attraverso diverse modalità. In particolare: 
 
 - l'utente può avviare il flusso di ottenimento dell'EAA prodotto con i propri dati: 
   - **attraverso una sezione "catalogo" della soluzione IT-Wallet**, soluzione indicata per EAA di interesse nazionale o rivolti a un'ampia percentuale di popolazione (es. Tessera Sanitaria, Patente di guida, etc.). Per approfondimenti vai alle Specifiche Tecniche:
