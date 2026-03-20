@@ -4,8 +4,8 @@ Questo documento illustra le modalità di validazione e controllo qualità dei f
 
 ## Riferimenti
 
-- **Schema JSON**: `manuals/it/authentic-sources/json-schemas/schema-validazione-form-onboarding-fonte-autentica.schema.json` (JSON Schema draft 2020-12)
-- **Template completo Fonte Autentica**: `manuals/it/authentic-sources/template-form-onboarding-fonte-autentica.json`
+- **Schema JSON**: `handbooks/it/authentic-sources/json-schemas/schema-validazione-form-onboarding-fonte-autentica.schema.json` (JSON Schema draft 2020-12)
+- **Template completo Fonte Autentica**: `handbooks/it/authentic-sources/progettazione-caratteristiche-eaa.json`
 - **Validatore Python**: `utils/validate_casi_d_uso_json.py`
 
 ---
@@ -19,7 +19,7 @@ La validazione JSON Schema verifica che il file rispetti la struttura e i vincol
 ```bash
 # Dalla root del repository
 pip install jsonschema
-python utils/validate_casi_d_uso_json.py manuals/it/authentic-sources/tuo-file-compilato.json
+python utils/validate_casi_d_uso_json.py handbooks/it/authentic-sources/tuo-file-compilato.json
 ```
 
 **Esito positivo**:
@@ -33,7 +33,7 @@ OK: Il file JSON è valido e conforme allo schema.
 
 ```bash
 npm install -g ajv-cli
-ajv validate -s manuals/it/authentic-sources/json-schemas/schema-validazione-form-onboarding-fonte-autentica.schema.json -d "manuals/it/authentic-sources/tuo-file-compilato.json" --spec=draft2020
+ajv validate -s handbooks/it/authentic-sources/json-schemas/schema-validazione-form-onboarding-fonte-autentica.schema.json -d "handbooks/it/authentic-sources/tuo-file-compilato.json" --spec=draft2020
 ```
 
 ---
@@ -49,7 +49,7 @@ L'estensione **JSON Language Support** evidenzia errori in tempo reale durante l
 ### Da riga di comando
 
 ```bash
-python -c "import json; json.load(open('manuals/it/authentic-sources/tuo-file.json'))"
+python -c "import json; json.load(open('handbooks/it/authentic-sources/tuo-file.json'))"
 ```
 
 In caso di errore sintattico, Python segnalerà la riga e la posizione.
@@ -62,7 +62,7 @@ In caso di errore sintattico, Python segnalerà la riga e la posizione.
 
 ## 3. Workflow consigliato
 
-1. **Compilazione** del template `template-form-onboarding-fonte-autentica.json`
+1. **Compilazione** del template `progettazione-caratteristiche-eaa.json`
 2. **Validazione sintattica** (JSON Linter) — es. `python -c "import json; json.load(open('file.json'))"`
 3. **Validazione strutturale** (JSON Schema) — es. `python utils/validate_casi_d_uso_json.py file.json`
 4. **Checklist pre-sottomissione**:
