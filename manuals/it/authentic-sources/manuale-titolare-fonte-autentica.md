@@ -613,11 +613,7 @@ Nello specifico, l'Ente deve contribuire al [modello di assistenza](https://ital
 - Poniti le seguenti domande (puoi fare riferimento alla sezione “casi_d_uso”, già compilato):  A chi si rivolge o a chi è dedicato l’EAA? (es. pensionati, studenti, etc.) Sussistono dei limiti, delle restrizioni o dei prerequisiti per poter ottenere l’EAA? (es. aver ottenuto la versione fisica del documento, aver conseguito la titolarità al documento dopo il 2020, etc.) Dove e come è possibile usare l’EAA? 
 - Formula un testo informativo rivolto all’utente a partire dai contenuti sopra raccolti, assicurandoti che sia chiaro, semplice, diretto e conciso (circa 300 - 450 caratteri, spazi inclusi).
 
-### Dopo la compilazione
 
-1. Condivi il file adeguatamente rinominato e compilato, secondo le modalità previste dallo Step 2.
-2. Prosegui con le fasi successive descritte nel manuale.
-3. Mantieni sempre aggiornate le informazioni nella sezione `assistenza` secondo le modalità definite nello Step 7.
 
 ---
 
