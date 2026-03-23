@@ -803,12 +803,14 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive **POSS
      - 
        * Documenti di Lavoro
        * Stato Occupazionale
+       * Accesso
      - 
        * Contratto di Lavoro Digitale
        * Curriculum Vitae (CV)
        * Permesso di Soggiorno
        * Certificato di Stato Occupazionale
        * Estratto Contributivo INPS
+       * Badge di Accesso Fisico
 
    * - *MOBILITÀ E VIAGGI*
      - Credenziali che attestano diritti di mobilità, stato del veicolo e titolarità in ambito di viaggio.
@@ -851,14 +853,6 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive **POSS
        * Credenziale Bonus Sanitario
        * Voucher Supporto Salute Mentale
        * Bonus Sport e Attività Fisica
-
-   * - *AUTENTICAZIONE*
-     - Credenziali che attestano l'autorizzazione ad accedere a spazi fisici o digitali, servizi o risorse riservati.
-     - 
-       * Accesso
-     - 
-       * Badge di Accesso Fisico
-       * Credenziale di Accesso Digitale
 
 .. list-table:: Tabella 2: Mappatura tra Classi di Credenziale e Finalità
    :class: longtable
@@ -1249,7 +1243,7 @@ La Tassonomia è accessibile attraverso l'endpoint dedicato alla tassonomia come
    * - **domains**
      - OBBLIGATORIO. Array di oggetti Dominio, ciascuno contenente:
 
-       * **id**: Identificatore univoco del Dominio in SCREAMING_SNAKE_CASE (es. ``IDENTITY``, ``AUTHENTICATION``).
+       * **id**: Identificatore univoco del Dominio in SCREAMING_SNAKE_CASE (es. ``IDENTITY``).
        * **name_l10n_id**: Chiave di localizzazione per il nome del dominio (es. ``domain.identity.name``).
        * **description_l10n_id**: Chiave di localizzazione per la descrizione del dominio (es. ``domain.identity.description``).
        * **classes**: Array di oggetti Classe. Ogni classe contiene ``id``, ``name_l10n_id`` e ``supported_purposes`` (array di stringhe di ID finalità).

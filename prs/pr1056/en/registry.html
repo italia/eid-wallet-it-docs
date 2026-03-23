@@ -1744,6 +1744,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 <td><ul class="simple">
 <li><p>Employment Documents</p></li>
 <li><p>Employment Status</p></li>
+<li><p>Access</p></li>
 </ul>
 </td>
 <td><ul class="simple">
@@ -1752,6 +1753,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 <li><p>Residence Permit</p></li>
 <li><p>Employment Status Certificate</p></li>
 <li><p>INPS Contribution Record</p></li>
+<li><p>Physical Access Badge</p></li>
 </ul>
 </td>
 </tr>
@@ -1802,18 +1804,6 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 <li><p>Healthcare Bonus Credential</p></li>
 <li><p>Mental Health Support Voucher</p></li>
 <li><p>Sports and Physical Activity Bonus</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-odd"><td><p><em>AUTHENTICATION</em></p></td>
-<td><p>Credentials that attest authorisation to access restricted physical or digital spaces, services or resources.</p></td>
-<td><ul class="simple">
-<li><p>Access</p></li>
-</ul>
-</td>
-<td><ul class="simple">
-<li><p>Physical Access Badge</p></li>
-<li><p>Digital Access Credential</p></li>
 </ul>
 </td>
 </tr>
@@ -2447,7 +2437,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 <p><strong>Taxonomy Structure:</strong></p>
 <p>The taxonomy maintains a four level hierarchical structure:</p>
 <ul class="simple">
-<li><p><strong>Domains</strong>: Top-level classification representing broad functional areas (e.g., IDENTITY, HEALTH, FINANCIAL, AUTHENTICATION)</p></li>
+<li><p><strong>Domains</strong>: Top-level classification representing broad functional areas (e.g., IDENTITY, HEALTH, FINANCIAL)</p></li>
 <li><p><strong>Class (Credential Family)</strong>: Family of Credentials sharing similar function, structure, or legal meaning (e.g., Identification Documents, Civil Status Certificates, Professional Licenses, Access)</p></li>
 <li><p><strong>Credential Type</strong>: Specific Credential definition issued by an authority (e.g., Digital Travel Credential, Birth Certificate, Mobile Driving License).</p></li>
 <li><p><strong>Purpose (Verification Intent)</strong>: Verification objectives that a Credential can satisfy (e.g., Identity Verification, Age Verification, Eligibility for specific services, Access permit verification).</p></li>
@@ -2507,7 +2497,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 <tr class="row-even"><td><p><strong>domains</strong></p></td>
 <td><p>REQUIRED. Array of Domain objects, each containing:</p>
 <ul class="simple">
-<li><p><strong>id</strong>: Unique Domain identifier in SCREAMING_SNAKE_CASE (e.g., <code class="docutils literal notranslate"><span class="pre">IDENTITY</span></code>, <code class="docutils literal notranslate"><span class="pre">AUTHENTICATION</span></code>).</p></li>
+<li><p><strong>id</strong>: Unique Domain identifier in SCREAMING_SNAKE_CASE (e.g., <code class="docutils literal notranslate"><span class="pre">IDENTITY</span></code>).</p></li>
 <li><p><strong>name_l10n_id</strong>: Localization key for the domain name (e.g., <code class="docutils literal notranslate"><span class="pre">domain.identity.name</span></code>).</p></li>
 <li><p><strong>description_l10n_id</strong>: Localization key for the domain description (e.g., <code class="docutils literal notranslate"><span class="pre">domain.identity.description</span></code>).</p></li>
 <li><p><strong>classes</strong>: Array of Class objects. Each class contains <code class="docutils literal notranslate"><span class="pre">id</span></code>, <code class="docutils literal notranslate"><span class="pre">name_l10n_id</span></code>, and <code class="docutils literal notranslate"><span class="pre">supported_purposes</span></code> (array of purpose ID strings).</p></li>
@@ -2739,6 +2729,13 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 <span class="w">                        </span><span class="s2">&quot;CONTRIBUTION_RECORDS_VERIFICATION&quot;</span><span class="p">,</span>
 <span class="w">                        </span><span class="s2">&quot;EMPLOYMENT_BENEFITS_ELIGIBILITY&quot;</span>
 <span class="w">                    </span><span class="p">]</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ACCESS&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;class.access.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;supported_purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="s2">&quot;ACCESS_PERMIT&quot;</span>
+<span class="w">                    </span><span class="p">]</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">],</span>
 <span class="w">            </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.employment.description&quot;</span><span class="p">,</span>
@@ -2836,20 +2833,6 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 <span class="w">            </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.bonuses.description&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BONUSES&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.bonuses.name&quot;</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;classes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ACCESS&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;class.access.name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;supported_purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                        </span><span class="s2">&quot;ACCESS_PERMIT&quot;</span>
-<span class="w">                    </span><span class="p">]</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.authentication.description&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AUTHENTICATION&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.authentication.name&quot;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">],</span>
 <span class="w">    </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
@@ -3454,7 +3437,7 @@ The main Journeys below illustrate the interactions with the Registry Infrastruc
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 18/03/2026.
+      Last updated on 23/03/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

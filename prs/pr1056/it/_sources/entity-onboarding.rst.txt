@@ -572,7 +572,7 @@ I seguenti esempi non normativi illustrano diversi contenuti del JWT del Trust M
      "authorized_claims": ["given_name", "family_name", "company_id"],
      "authorized_credential_types": ["example-company-badge"],
      "scope_restrictions": {
-       "domains": ["AUTHENTICATION"],
+       "domains": ["EMPLOYMENT"],
        "purposes": ["ACCESS_PERMIT"]
      }
    }

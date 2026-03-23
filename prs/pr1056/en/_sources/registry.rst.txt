@@ -803,12 +803,14 @@ Additional Domains, Classes, specific Credentials, and verification Purposes **M
      - 
        * Employment Documents
        * Employment Status
+       * Access
      - 
        * Digital Employment Contract
        * Curriculum Vitae (CV)
        * Residence Permit
        * Employment Status Certificate
        * INPS Contribution Record
+       * Physical Access Badge
 
    * - *MOBILITY AND TRAVEL*
      - Credentials that attest mobility rights, vehicle-related status, and travel-related entitlements.
@@ -851,14 +853,6 @@ Additional Domains, Classes, specific Credentials, and verification Purposes **M
        * Healthcare Bonus Credential
        * Mental Health Support Voucher
        * Sports and Physical Activity Bonus
-
-   * - *AUTHENTICATION*
-     - Credentials that attest authorisation to access restricted physical or digital spaces, services or resources.
-     - 
-       * Access
-     - 
-       * Physical Access Badge
-       * Digital Access Credential
 
 .. list-table:: Table 2: Mapping between Credential Classes and Purposes
    :class: longtable
@@ -1199,7 +1193,7 @@ The Taxonomy provides, in a single resource, the hierarchical classification sys
 
 The taxonomy maintains a four level hierarchical structure:
 
-- **Domains**: Top-level classification representing broad functional areas (e.g., IDENTITY, HEALTH, FINANCIAL, AUTHENTICATION)
+- **Domains**: Top-level classification representing broad functional areas (e.g., IDENTITY, HEALTH, FINANCIAL)
 - **Class (Credential Family)**: Family of Credentials sharing similar function, structure, or legal meaning (e.g., Identification Documents, Civil Status Certificates, Professional Licenses, Access)
 - **Credential Type**: Specific Credential definition issued by an authority (e.g., Digital Travel Credential, Birth Certificate, Mobile Driving License).
 - **Purpose (Verification Intent)**: Verification objectives that a Credential can satisfy (e.g., Identity Verification, Age Verification, Eligibility for specific services, Access permit verification).
@@ -1249,7 +1243,7 @@ The Taxonomy is accessible through the dedicated taxonomy endpoint as defined in
    * - **domains**
      - REQUIRED. Array of Domain objects, each containing:
 
-       * **id**: Unique Domain identifier in SCREAMING_SNAKE_CASE (e.g., ``IDENTITY``, ``AUTHENTICATION``).
+       * **id**: Unique Domain identifier in SCREAMING_SNAKE_CASE (e.g., ``IDENTITY``).
        * **name_l10n_id**: Localization key for the domain name (e.g., ``domain.identity.name``).
        * **description_l10n_id**: Localization key for the domain description (e.g., ``domain.identity.description``).
        * **classes**: Array of Class objects. Each class contains ``id``, ``name_l10n_id``, and ``supported_purposes`` (array of purpose ID strings).
