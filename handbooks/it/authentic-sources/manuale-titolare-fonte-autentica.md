@@ -21,9 +21,9 @@
 - [Appendice A – Casi d'uso](#appendice-a--casi-duso)
 - [Appendice B – Data Model](#appendice-b--data-model)
 - [Appendice C – Mappatura errori](#appendice-c--mappatura-errori)
-- [Appendice D – Mappatura stati](#appendice-c--mappatura-stati)
+- [Appendice D – Mappatura stati](#appendice-d--mappatura-stati)
 - [Appendice E – Assistenza](#appendice-e--assistenza)
-- [Template PDND Data Model](#Template-PDND-Data-Model)
+- [Template e-service PDND](#Template-eservice-PDND)
 
 ## Introduzione e contesto
 
@@ -85,9 +85,9 @@ In particolare, il processo prevede i seguenti step:
   [Vai allo Step 3](#step-3--test-in-collaudo)
 - **Step 4 | Pubblicazione in produzione**: l'Ente rilascia l'e-service in ambiente di produzione su PDND e attiva il relativo servizio Signal Hub in produzione, al fine di supportare una corretta gestione del ciclo di vita dell’EAA. Infine, l'Ente notifica al Fornitore di Attestati Elettronici di Attributi l'avvenuta pubblicazione.
   [Vai allo Step 4](#step-4--pubblicazione-in-produzione)
-- **Step 5 | Test in produzione**: l'Ente, in ambiente di produzione, esegue i test di integrazione, di carico e long run dell'e-service. Per i dettagli implementativi, consultare le Specifiche Tecniche italiane:
+- **Step 5 | Test in produzione**: l'Ente, in ambiente di produzione, esegue i test di integrazione, di carico e long run dell'e-service con il Fornitore di Attestati Elettronici di Attributi e, ove possibile se richiesto, con il Fornitore di Wallet per testare anche gli aspetti relativi alla UX/UI.
   [Vai allo Step 5](#step-5--test-in-produzione)
-- **Step 6 | Pianificazione rilascio EAA**: a valle del buon esito dei test in collaudo e in produzione, l'Ente concorda con il Fornitore di Attestati Elettronici di Attributi la data di rilascio, per l'ottenimento dell’EAA da parte degli utenti. Inoltre, l’Ente può valutare attività di comunicazione, in sinergia con gli altri attori interessati.
+- **Step 6 | Pianificazione rilascio EAA**: a valle del buon esito dei test in collaudo e in produzione, l'Ente concorda con il Fornitore di Attestati Elettronici di Attributi, e se possibile con il Fornitore di Wallet, la data di rilascio, per l'ottenimento dell’EAA da parte degli utenti. Inoltre, l’Ente può valutare attività di comunicazione, in sinergia con gli altri attori interessati.
   [Vai allo Step 6](#step-6--pianificazione-rilascio-eaa)
 - **Step 7 | Manutenzione e assistenza**: l'Ente effettua attività di gestione e manutenzione dell'e-service e contribuisce alla risoluzione di problematiche e segnalazioni, per le tematiche e i processi di competenza, secondo il modello di assistenza del Sistema IT-Wallet. 
   [Vai allo Step 7](#step-7--manutenzione-e-assistenza)
@@ -151,7 +151,7 @@ Il Sistema IT-Wallet consente all’utente di ottenere in formato digitale i pro
 L’Ente deve quindi definire quali dati fornirà e in quale ordine, affinché l'EAA prodotto risulti adeguato all'utilizzo da parte dell’utente. 
 
 A tal fine, l’Ente deve compilare la sezione `e_service.response.data_model ` del file [Progettazione caratteristiche EAA](progettazione-caratteristiche-eaa.json) così da definire i dettagli sui dati che verranno messi a disposizione (es. tipologia, obbligatorietà, formato, lunghezza massima consentita, ordinamento, etc.). Per riferimenti e istruzioni di compilazione vedi [Appendice B](https://github.com/italia/eid-wallet-it-docs/blob/9f6806493b550eb60cdcff8f95d5422c9a05a10a/handbooks/it/authentic-sources/manuale-titolare-fonte-autentica.md#appendice-b--data-model).
-Nella sezione [Template PDND Data Model](#Template-PDND-Data-Model) sono riportati i riferimenti dei template Data Model pubblicati su PDND relativi ad alcune tipologie di attestati emessi in IT-Wallet; l'Ente allinea il proprio data model (sezione `e_service.response.data_model`) a tali template per garantire che i dati forniti siano conformi alla struttura dell'Attestato che verrà emesso dal Fornitore di Attestati di Attributi.
+Nella sezione [Template e-service PDND](#Template-eservice-PDND) sono riportati i template e-service pubblicati su PDND relativi ad alcune tipologie di Attestati IT-Wallet; l'Ente interessato può adottare uno dei template messi a disposizione oppure utilizzarlo come punto di partenza per la definizione del proprio data model (sezione `e_service.response.data_model`).
 
 In conclusione, un'adeguata definizione del Data Model pone le basi per una corretta implementazione dell'e-service da pubblicare su PDND (vedi [Step 2](#step-2--pubblicazione-in-collaudo)) ma è altresì importante considerare e rispettare i seguenti requisiti tecnici: 
 
@@ -162,8 +162,8 @@ In conclusione, un'adeguata definizione del Data Model pone le basi per una corr
 
 L'e-service messo a disposizione dall'Ente deve prevedere e gestire specifiche situazioni di errore che possono verificarsi nella fase di recupero dei dati da parte del Fornitore di Attestati di Attributi.
 
-A tal fine, l'Ente deve compilare la sezione `e_service.response.mappatura_errori `del file [Progettazione caratteristiche EAA](progettazione-caratteristiche-eaa.json). La mappatura descrive le risposte che il servizio messo a disposizione dovrà obbligatoriamente gestire per garantire una corretta informazione all'utente in caso di errori durante l'ottenimento dell'EAA. Per riferimenti e istruzioni di compilazione vedi [Appendice C](https://github.com/italia/eid-wallet-it-docs/blob/9f6806493b550eb60cdcff8f95d5422c9a05a10a/handbooks/it/authentic-sources/manuale-titolare-fonte-autentica.md#appendice-c--mappatura-errori).
-
+A tal fine, l'Ente deve compilare la sezione `e_service.response.mappatura_errori `del file [Progettazione caratteristiche EAA](progettazione-caratteristiche-eaa.json). La mappatura descrive le risposte che il servizio messo a disposizione dovrà obbligatoriamente gestire, consentendo comunque l'aggiunta di eventuali errori specifici, per garantire una corretta informazione all'utente in caso di errori durante l'ottenimento dell'EAA. Per riferimenti e istruzioni di compilazione vedi [Appendice C](https://github.com/italia/eid-wallet-it-docs/blob/9f6806493b550eb60cdcff8f95d5422c9a05a10a/handbooks/it/authentic-sources/manuale-titolare-fonte-autentica.md#appendice-c--mappatura-errori).
+Nella sezione [Template e-service PDND](#Template-eservice-PDND) sono riportati i template e-service pubblicati su PDND relativi ad alcune tipologie di Attestati IT-Wallet; l'Ente interessato può adottare uno dei template messi a disposizione oppure utilizzarlo come punto di partenza per la mappatura degli errori  (sezione `e_service.response.mappatura_errori`).
 ### **Definire la gestione degli stati del ciclo di vita**
 
 Il Sistema IT-Wallet supporta dei meccanismi per l’aggiornamento dello stato e la gestione del ciclo di vita dell’EAA. Gli stati che l'Ente comunica tramite Signal Hub determinano il ciclo di vita degli EAA prodotti dai propri dati.  
@@ -186,6 +186,8 @@ Oltre agli stati sopra elencati, è bene specificare che lo stato di un Attestat
 Per approfondimenti vai alle Specifiche Tecniche, sezione [Ciclo di Vita degli Attestati Elettronici](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/credential-revocation.html). 
 
 A tal fine, l'Ente deve compilare la sezione `mappatura-stati` del file [Progettazione caratteristiche EAA](progettazione-caratteristiche-eaa.json) per definire i dettagli sugli stati relativi al ciclo di vita dell'EAA, ovvero dichiarare la condizione di applicabilità dei tre stati sopracitati e l'eventuale relativo messaggio informativo da esporre all'utente.
+
+Nella sezione [Template e-service PDND](#Template-eservice-PDND) sono riportati i template e-service pubblicati su PDND relativi ad alcune tipologie di Attestati IT-Wallet; l'Ente interessato può adottare uno dei template messi a disposizione oppure utilizzarlo come punto di partenza per la mappatura degli stati  (sezione `e_service.response.mappatura_stati`).
 Per riferimenti e istruzioni di compilazione vedi [Appendice D](https://github.com/italia/eid-wallet-it-docs/blob/9f6806493b550eb60cdcff8f95d5422c9a05a10a/handbooks/it/authentic-sources/manuale-titolare-fonte-autentica.md#appendice-d--mappatura-stati).
 
 **Nota**: 
@@ -236,9 +238,9 @@ L'Ente deve sviluppare e rilasciare in collaudo un e-service coerente con il Dat
 - [sezione e-service del Manuale Operativo PDND Interoperabilità](https://docs.pagopa.it/interoperabilita-1/manuale-operativo/e-service)
 - [sezione Titolare di Fonte Autentica delle Specifiche Tecniche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/authentic-sources.html)
 
-Contestualmente al flusso di pubblicazione dell'e-service, l'Ente deve allegare il file [Progettazione caratteristiche EAA](progettazione-caratteristiche-eaa.json) precedentemente compilato in tutte le sue parti e e validato (sezioni `casi_d_uso`, `data_model`, `mappatura_errori`, `mappatura_stati` e `assistenza`). 
+Contestualmente al flusso di pubblicazione dell'e-service, l'Ente deve allegare, come documentazione aggiuntiva su PDND, il file [Progettazione caratteristiche EAA](progettazione-caratteristiche-eaa.json) precedentemente compilato in tutte le sue parti e e validato (sezioni `casi_d_uso`, `data_model`, `mappatura_errori`, `mappatura_stati` e `assistenza`). 
 
-Nel caso di EAA di interesse pubblico, l'Ente deve abilitare IPZS alla fruizione dell'e-service, se possibile con abilitazione automatica.
+Nel caso di EAA di interesse pubblico, l'Ente deve aggiungere l'attributo certificato Istituto Poligrafico e Zecca dello Stato S.P.A. all'e-service erogato, se possibile impostando l'accettazione automatica delle richieste di fruizione.
 
 Si consiglia di nominare l'e-service in "Creazione EAA [Nome / Nome tipologia EAA] – IT-Wallet" (es. "Creazione EAA Patente di guida – IT-Wallet" oppure "Creazione EAA Titoli di studio – IT-Wallet") e di predisporre una descrizione in linea con il [Manuale Operativo PDND Interoperabilità](https://italia.github.io/pdnd-guida-nomenclatura-eservice/index.html) referenziata nella Guida all'adesione PDND. 
 
@@ -357,11 +359,11 @@ Il referente per l'ambito assistenza ed almeno un canale di contatto dedicato ag
 ## File da compilare
 
 
-
+Per assolvere a quanto previsto dallo Step 1, l‘Ente deve: 
 - scaricare il file JSON [Progettazione caratteristiche EAA](progettazione-caratteristiche-eaa.json)
 - duplicare il file JSON per ciascuna EAA di interesse e rinomina ciascun file in "progettazione_ caratteristiche_eaa_[Nome Ente Titolare]_[Nome EAA]" (es. "progettazione_eaa_mim_titolo_di_studio.json"). 
-- compilare ciascun file Json in tutte le sue parti al fine di definire a monte tutte le caratteristiche che assumerà l’Attestato Elettronico emesso dal Fornitore di Attestati Elettronici di Attributi a livello di dati esposti, casi d'uso, assistenza, mappatura errori e stati.  
-- validare ciascun il file Json compilato utilizzando lo strumento indicato nel [file di validazione](https://github.com/italia/eid-wallet-it-docs/pull/1063/changes#diff-2337c8d8533155cad677214d3d5b723d77fa1f18fe26b99df6e9f6c91b4da9f5).
+- compilare ciascun file JSON in tutte le sue parti al fine di definire a monte tutte le caratteristiche che assumerà l’Attestato Elettronico emesso dal Fornitore di Attestati Elettronici di Attributi a livello di dati esposti, casi d'uso, assistenza, mappatura errori e stati.  
+- validare ciascun il file JSON compilato utilizzando lo strumento indicato nel [file di validazione](https://github.com/italia/eid-wallet-it-docs/pull/1063/changes#diff-2337c8d8533155cad677214d3d5b723d77fa1f18fe26b99df6e9f6c91b4da9f5).
 
 A compilazione e validazione conclusa, l’Ente può procedere con la sottomissione del file secondo quanto descritto nello [Step 2](#step-2--pubblicazione-in-collaudo), ricordando di mantenere sempre aggiornate le informazioni di questa sezione secondo le modalità definite nello [Step 7](#step-7--manutenzione-e-assistenza).
 
@@ -386,9 +388,9 @@ L’obiettivo della sezione `casi_d_uso` è quello di supportare gli Enti nella 
 
 ### Istruzioni di compilazione 
 
-1. **metadata**: inserisci `nome_ente_titolare`, `nome_eaa` e `data_compilazione` (formato ISO: `AAAA-MM-GG`)
-2. **campi opzionali** e **campi obbligatori**: nel caso l'EAA si riferisce a un documento fisico o digitale già esistente (es. patente) compila sia i campi obbligatori che i campi opzionali (`volume_rilascio`, `canali_richiesta`, `formato_attuale,` `pagamento`, ecc.). Nel caso invece l'EAA non abbia un documento preesistente corrispondente, compila solo i campi obbligatori e lascia vuoti i campi opzionali. 
-3. **risposta**: compila il campo `risposta` rispondendo in maniera chiara ed esaustiva ad ogni domanda; il campo `suggerimento` è solo indicativo
+1. **metadata**: inserisci `nome_ente_titolare`, `nome_eaa` e `data_compilazione` (formato ISO: `AAAA-MM-GG`);
+2. **campi opzionali** e **campi obbligatori**: nel caso l'EAA si riferisce a un documento fisico o digitale già esistente (es. patente) compila sia i campi obbligatori che i campi opzionali (`volume_rilascio`, `canali_richiesta`, `formato_attuale,` `pagamento`, ecc.). Nel caso invece l'EAA non abbia un documento preesistente corrispondente, compila solo i campi obbligatori e lascia vuoti i campi opzionali;
+3. **risposta**: compila il campo `risposta` rispondendo in maniera chiara ed esaustiva ad ogni domanda; il campo `suggerimento` è solo indicativo.
 
 **Esempio di compilazione** (fragmento):
 
@@ -435,7 +437,7 @@ L’obiettivo della sezione `data_model `è quello di supportare gli Enti nella 
 **Istruzioni di compilazione**
 
 1. Prima di iniziare la compilazione, consulta i [Template PDND Data Model](https://github.com/italia/eid-wallet-it-docs/blob/9f6806493b550eb60cdcff8f95d5422c9a05a10a/handbooks/it/authentic-sources/manuale-titolare-fonte-autentica.md#Template-PDND-Data-Model) e usali come punto di partenza per il tuo e-service così da assicurare un'elevata aderenza e compliance alle Specifiche Tecniche. 
-2. Associa a ciascun dato che si intende rende disponibile all’interno dell’EAA un "nome campo" tra quelli definiti nella Lista nome campo sottostante o, se necessario, creane uno nuovo assicurandoti che sia parlante e che descriva adeguatamente il dato. 
+2. Associa a ciascun dato che si intende rende disponibile all’interno dell’EAA un "nome campo" tra quelli definiti nella "Lista nome campo" sottostante o, se necessario, creane uno nuovo assicurandoti che sia parlante e che descriva adeguatamente il dato. 
 3. Ordina i campi in modo da facilitare la leggibilità: inserisci per primi i dati anagrafici (nome, cognome, data di nascita, luogo di nascita, codice fiscale), poi i dati specifici dell'attestato.
 
 ```json
@@ -528,10 +530,8 @@ L’obiettivo della sezione `mappatura_errori` è quello di supportare gli Enti 
 **Istruzioni di compilazione**
 
 1. Definisci la motivazione che ha scatenato l'errore e popola il campo "Causa" per ciascuna casistica (es. Servizio momentaneamente non disponibile). 
-2. Per l'errore 540 (EAA non esistente presso l'Authentic Source), utilizza il formato "state": "description", es.: "NOT_EXISTING": "l'EAA non è presente presso l'Authentic Source", "PENDING": "l'EAA è in attesa di emissione". 
-3. Per l'errore 541 (EAA in stato non valido o sospeso), descrivi la causa secondo le [Specifiche Tecniche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/OAS3-PDND-Issuer.html#tag/e-services-PDND/operation/notifyStatusCredentials) (es. scaduto, sospeso, revocato, annullato). 
-4. Descrivi l'azione necessaria per risolvere il problema nel campo "Azione utente". (es. Ti invitiamo a riprovare più tardi). Usa il campo "Note" per aggiungere ulteriori informazioni utili o una spiegazione del perché proponiamo all'utente di compiere un'azione specifica. 
-5. Aggiungi nuovi codici errore se necessari per lo specifico attestato.
+- Per l'errore 540 (EAA non esistente presso l'Authentic Source), utilizza il formato "state": "description", es.: "NOT_EXISTING": "l'EAA non è presente presso l'Authentic Source", "PENDING": "l'EAA è in attesa di emissione". 
+- Per l'errore 541 (EAA in stato non valido o sospeso), descrivi la causa secondo le [Specifiche Tecniche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/OAS3-PDND-Issuer.html#tag/e-services-PDND/operation/notifyStatusCredentials) (es. scaduto, sospeso, revocato, annullato). 
 
 ```json
 "e_service": {
@@ -576,7 +576,7 @@ L’obiettivo della sezione `mappatura_errori` è quello di supportare gli Enti 
 
 *Tabella 3 – Mappatura Errori (sezione `e_service.response.mappatura_errori`)*
 
-## Appendice C – Mappatura stati
+## Appendice D – Mappatura stati
 
 Questa appendice descrive le istruzioni di compilazione della sezione `mappatura_stati` del file JSON [Progettazione caratteristiche EAA](progettazione-caratteristiche-eaa.json). Assicurati di aver letto quanto riportato nella sezione [File da compilare](#file-da-compilare) prima di proseguire. 
 
