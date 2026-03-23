@@ -29,7 +29,7 @@ The e-service is described via an OpenAPI definition where the request, response
 Get Attribute Claims
 """"""""""""""""""""
 
-.. _authentic-source-endpoint-get-attribute-claims:
+.. _table_authentic-source-endpoint-get-attribute-claims:
 .. list-table::
   :class: longtable
   :widths: 20 80

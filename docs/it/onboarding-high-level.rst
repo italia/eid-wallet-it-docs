@@ -57,7 +57,7 @@ Entrambe i flussi DEVONO assicurare standard di qualità dei dati e stabilire tr
 
 Le Fonti Autentiche registrate con successo DEVONO essere incluse nel Registro AS con i loro Attributi dell'Utente dichiarati e le relative specifiche. I tipi di Credenziali DEVONO diventare pubblicamente scopribili nel :ref:`registry:Catalogo degli Attestati Elettronici` solo dopo l'integrazione AS-CI riuscita e l'approvazione della politica dell'Organismo di Supervisione per l'eleggibilità del catalogo.
 
-Le procedure di implementazione tecnica per la registrazione della Fonte Autentica sono fornite in :ref:`entity-onboarding:Procedura di Registrazione AS`.
+Le procedure di implementazione tecnica per la registrazione della Fonte Autentica sono fornite in :ref:`entity-onboarding:Procedura di Registrazione delle Fonti Autentiche`.
 
 
 Processo di Onboarding della Federazione
@@ -123,9 +123,9 @@ Il modulo di registrazione DEVE raccogliere almeno le seguenti informazioni come
    * - **Elenco Attributi Richiesti**
      - OBBLIGATORIO, ove applicabile. Un elenco degli attributi che la wallet-relying party intende richiedere per ogni uso previsto. Questo DEVE fare riferimento a:
        
-       - Identificatori specifici di claim dal :ref:`registry-registro-claims` (es., ``given_name``, ``family_name``, ``driving_privileges``)
+       - Identificatori specifici di claim dal :ref:`registry:Registro dei Claims` (es., ``given_name``, ``family_name``, ``driving_privileges``)
        - Classificazioni della Tassonomia (domini, classi, scopi) per la valutazione delle politiche di autorizzazione
-       - Vedere :ref:`registry-registro-claims` per le definizioni standardizzate dei claim
+       - Vedere :ref:`registry:Registro dei Claims` per le definizioni standardizzate dei claim
    * - **Descrizione dell'Uso Previsto**
      - OBBLIGATORIO, ove applicabile. Una descrizione dell'uso previsto dei dati, inclusi:
        
@@ -166,7 +166,7 @@ Tutte le informazioni fornite nel modulo di registrazione DEVONO essere:
 - Mantenute e aggiornate senza indebito ritardo quando si verificano cambiamenti
 - Conformi alle normative applicabili sulla protezione dei dati e sulla privacy
 
-Per i requisiti sulle informazioni di registrazione delle Fonti Autentiche, vedere :ref:`entity-onboarding:Requisiti sulle Informazioni di Registrazione delle AS`.
+Per i requisiti sulle informazioni di registrazione delle Fonti Autentiche, vedere :ref:`entity-onboarding:Requisiti di Registrazione delle Fonti Autentiche`.
 
 Per i requisiti sulle informazioni di registrazione dei Wallet Provider, vedere la sezione :ref:`onboarding-high-level:Notifica dello Stato Membro alla Commissione Europea`, che specifica i requisiti di valutazione della conformità e le procedure di inclusione nelle Trusted Lists.
 
@@ -312,7 +312,7 @@ La gestione del ciclo di vita nell'ecosistema IT-Wallet necessita di coordinamen
     - **Sincronizzazione del registro:** Quando un'entità apporta cambiamenti che influenzano altre entità, tutti i sistemi di registro DEVONO essere aggiornati correttamente assicurando che tutti i cambiamenti siano registrati in modo sicuro con timestamp e ragioni.
     - **Garanzia di continuità aziendale:** Le entità DOVREBBERO bilanciare tra l'apportare aggiornamenti necessari e mantenere i loro obblighi verso utenti e normative. Questo include assicurare che il servizio sia il più disponibile possibile, gestire i dati personali correttamente durante i cambiamenti e rimanere conformi ai requisiti legali anche in situazioni di emergenza.
 
-Le procedure tecniche e i requisiti di conformità specifici per la gestione del ciclo di vita sono dettagliati nella Sezione :ref:`entity-onboarding-gestione-del-ciclo-di-vita-delle-entita`.
+Le procedure tecniche e i requisiti di conformità specifici per la gestione del ciclo di vita sono dettagliati nella Sezione :ref:`entity-onboarding:Onboarding delle Entità`.
 
 Onboarding Journey Maps
 ------------------------
