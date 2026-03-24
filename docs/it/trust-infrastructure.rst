@@ -36,7 +36,7 @@ Tutti i partecipanti sono Entità di Federazione che DEVONO essere registrate da
 .. note::
   L'Istanza del Wallet, come dispositivo personale, è considerata affidabile attraverso un'attestazione verificabile rilasciata e firmata da una terza parte fidata.
 
-  Questo è chiamato *Wallet Attestation* ed è documentato nella sezione dedicata :ref:`wallet-attestation-issuance:Emissione della Wallet App e Wallet Unit Attestation`.
+  Questo è chiamato *Wallet Instance Attestation* ed è documentato nella sezione dedicata :ref:`wallet-instance-attestation-issuance:Emissione della Wallet Instance Attestation`.
 
 **Ruolo nell'Onboarding**: Il processo di onboarding delle entità è suddiviso tra **Registration Authority (Registrar)** e **Autorità di Federazione** (Trust Anchor e Intermediari). I Registrar gestiscono la **registrazione amministrativa** (identità legale, conformità normativa, giustificazione di business e idoneità), mentre le Autorità di Federazione gestiscono la **registrazione di federazione** (emissione di certificati di federazione, applicazione delle federation metadata policy e posizionamento delle entità nella gerarchia di trust). Le Foglie (Credential Issuer, Relying Party, Fornitori di Wallet) attraversano entrambi i passaggi: prima dimostrano la loro idoneità al Registrar, poi ottengono l'autorizzazione di federazione dalle Autorità di Federazione per svolgere le loro funzioni nelle operazioni sulle Credenziali.
 
