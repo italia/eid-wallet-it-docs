@@ -29,7 +29,7 @@ The e-service is described via an OpenAPI definition where the request, response
 Get Attribute Claims
 """"""""""""""""""""
 
-.. _authentic-source-endpoint-get-attribute-claims:
+.. _table_authentic-source-endpoint-get-attribute-claims:
 .. list-table::
   :class: longtable
   :widths: 20 80
@@ -41,6 +41,11 @@ Get Attribute Claims
     - Authentic Source
   * - **Consumer**
     - Credential Issuer
+
+This e-Service MUST be invoked by the Credential Issuer in the following cases:
+
+  - During the Credential issuance flow to retrieve the Digital Credential dataset(s). In this situation, the ``object_id`` claim MUST not be used in the e-service request payload, and the e-service response MUST include all Credential datasets that are ``VALID`` state and not administratively expired (i.e., ``expiry_date`` > current date of the e-service request).
+  - After receiving an update notification through Signal Hub. In this situation, the ``object_id`` claim MUST be included in the request payload, and the e-service response MUST return only the Credential dataset identified by the ``object_id`` claim independently from its state.
 
 .. note::
   The Authentic Source and the Credential Issuer MUST implement the necessary logic to keep track of the requests and responses exchanged via this e-Service, in order to be able to correlate them with the related issuance of a Digital Credential. In particular,
@@ -93,15 +98,15 @@ In summary:
 - **metadataClaims**: array of metadata per dataset (``object_id`` required; ``issuance_date`` and ``expiry_date`` optional).
 - **interval**: required when the request does not include a ``claims`` parameter; indicates the number of seconds to wait before repeating the request (e.g. 864000 = 10 days).
 
-The successful response (HTTP 200) returns a ``CredentialClaimsResponse`` object formatted as a **Payload JSON**.
+The successful response (HTTP 200) returns a ``CredentialClaimsResponse`` object formatted as a **JSON Payload**, accompanied by the ``Agid-JWT-Signature`` and ``Digest`` integrity headers.
 
 Signature Verification and Key Management
 '''''''''''''''''''''''''''''''''''''''''
 
-As the response token is signed, the Credential Issuer (Consumer) MUST verify the signature to ensure the integrity and authenticity of the data received from the Authentic Source.
+The Credential Issuer (Consumer) MUST verify the integrity and authenticity of the JSON response by validating the ``Agid-JWT-Signature`` and ``Digest`` headers received from the Authentic Source.
 
-The signature verification and key retrieval process MUST strictly follow the standard pattern defined for **PDND e-Services**.
-Please refer to the Technical Appendix (Section :ref:`e-service-pdnd:e-Service PDND`) for details on JWT validation and specifications for retrieving the Provider's public key via the Interoperability API.
+The signature verification and key retrieval process MUST strictly follow the **INTEGRITY_REST_02** standard pattern defined for **PDND e-Services**.
+Please refer to the Technical Appendix (Section :ref:`e-service-pdnd:e-Service PDND`) for details on JWT signature validation and specifications for retrieving the Provider's public key via the Interoperability API.
 
 .. warning::
   Alternative mechanisms for distributing cryptographic material (e.g., public ``.well-known`` endpoints directly exposed by the Authentic Source or *out-of-band* distribution) are not allowed. Trust management MUST remain centralized within the perimeter of the PDND infrastructure as described in the references cited above.

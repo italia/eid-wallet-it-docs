@@ -58,12 +58,6 @@ extensions = [
 
 redoc = [
     {
-        'name': 'OAS3-PDND-Issuer',
-        'page': 'OAS3-PDND-Issuer',
-        'spec': './oas3/OAS3-PDND-Issuer.yaml',
-        'embed': True,
-    },
-    {
         'name': 'OAS3-PDND-AS',
         'page': 'OAS3-PDND-AS',
         'spec': './oas3/OAS3-PDND-AS.yaml',

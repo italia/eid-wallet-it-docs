@@ -12,10 +12,10 @@ Infrastructure of Trust
       - Hedberg, R., Jones, M.B., Solberg, A.Å., Bradley, J., De Marco, G., Dzhuvinov, V.,  "OpenID Federation 1.0", December 2024, Draft 41.
     * - `ETSI TS 119 612`_
       - Electronic Signatures and Trust Infrastructures (ESI); Trusted Lists
+    * - `ETSI EN 319 411-1`_
+      - Electronic Signatures and Trust Infrastructures (ESI); Policy and security requirements for Trust Service Providers issuing certificates; Part 1: General requirements Policy requirements for certification authorities issuing public key certificates; Part 1: General requirements
     * - DTS/ESI-0019602
       - Electronic Signatures and Trust Infrastructures (ESI); Trusted lists; Data model. Trusted lists in other formats, such as JSON, CBOR or ASN.1.
-    * - ETSI EN 319 411-1
-      - Electronic Signatures and Trust Infrastructures (ESI); Policy and security requirements for Trust Service Providers issuing certificates; Part 1: General requirements Policy requirements for certification authorities issuing public key certificates; Part 1: General requirements (`ETSI EN 319 411-1 <https://portal.etsi.org/webapp/WorkProgram/Report_WorkItem.asp?WKI_ID=39364>`__)
     * - ISO-IEC_7367
       - ISO Compliant Mobile Vehicle Registration Certificates, Logical Data Structure
 
