@@ -183,12 +183,11 @@
 <p>The Relying Party Key Binding Endpoint enables Verifier Apps to bind the newly created pair of keys, which will be associated with an Access Certificate, to the Verifier App, by relying on a proof of possession of the Cryptographic Hardware Keys generated during the <a class="reference internal" href="mobile-application-instance.html#mobile-application-instance-initialization"><span class="std std-ref">Mobile Application Instance Initialization</span></a> phase. Before completing the process, the Relying Party Provider Backend also needs to verify the integrity of the Verifier App.</p>
 <section id="relying-party-provider-backend-key-binding-request">
 <h2>Relying Party Provider Backend Key Binding Request<a class="headerlink" href="#relying-party-provider-backend-key-binding-request" title="Link to this heading">¶</a></h2>
-<p>Further details on the Relying Party Key Binding Request are provided in the <a class="reference internal" href="wallet-provider-endpoint.html#wallet-app-and-wallet-unit-attestation-issuance-request"><span class="std std-ref">Wallet App and Wallet Unit Attestation Issuance Request</span></a> section.</p>
+<p>Further details on the Relying Party Key Binding Request are provided in the <a class="reference internal" href="wallet-provider-endpoint.html#wallet-instance-attestation-issuance-request"><span class="std std-ref">Wallet Instance Attestation Issuance Request</span></a> section.</p>
 <p>The only difference are the following:</p>
 <ul class="simple">
-<li><p>The <code class="docutils literal notranslate"><span class="pre">typ</span></code> header of the Integrity Request JWT assumes the value <code class="docutils literal notranslate"><span class="pre">rp-kb+jwt</span></code>.</p></li>
-<li><p>The Integrity Request JWT Body does not include the <code class="docutils literal notranslate"><span class="pre">attested_key</span></code> claim, and</p></li>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code> claim value is obtained based on only <code class="docutils literal notranslate"><span class="pre">client_data_hash_waa</span></code> value.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">typ</span></code> header of the Integrity Request JWT assumes the value <code class="docutils literal notranslate"><span class="pre">rp-kb+jwt</span></code>, and</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code> claim value is obtained based on only <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> value.</p></li>
 </ul>
 </section>
 <section id="relying-party-provider-backend-key-binding-response">
@@ -456,7 +455,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 23/03/2026.
+      Last updated on 24/03/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

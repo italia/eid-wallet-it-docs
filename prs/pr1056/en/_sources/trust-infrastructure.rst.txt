@@ -34,7 +34,7 @@ All the participants are Federation Entities that MUST be registered by a Regist
 .. note::
   The Wallet Instance, as a personal device, is deemed reliable through a verifiable attestation issued and signed by a trusted third party.
 
-  This is called *Wallet Attestation* and is documented in the dedicated :ref:`wallet-attestation-issuance:Wallet App and Wallet Unit Attestation Issuance`.
+  This is called *Wallet Instance Attestation* and is documented in the dedicated :ref:`wallet-instance-attestation-issuance:Wallet Instance Attestation Issuance`.
 
 **Role in Onboarding**: During entity registration, the Trust Anchor and Intermediates act as Federation Authorities. This establishes the participant's position in the trust hierarchy and enables them to participate in credential operations. Leaves (Credential Issuers, Relying Parties, Wallet Providers) undergo registration to prove their eligibility and receive authorization to perform their designated functions.
 

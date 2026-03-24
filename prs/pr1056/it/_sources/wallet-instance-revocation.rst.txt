@@ -116,7 +116,7 @@ Meccanismi di Verifica della Revoca
 
 La verifica della validità dell'Istanza del Wallet DEVE essere eseguita:
 
-- **Durante l'emissione dell’Attestato Elettronico di Attributi** da parte dei Fornitori di Attestati. Solo le istanze del Wallet in stato Operativo o Valido possiedono una Wallet App Attestation e una Wallet Unit Attestation valide. La verifica della validità di un'Istanza del Wallet viene eseguita indirettamente dai Fornitori di Attestati tramite il controllo della presenza di una Wallet Unit Attestation valida (ossia non scaduta, non revocata — verificando la Wallet Unit Attestation Status List — e firmata da un Fornitore di Portafoglio fidato).
+- **Durante l'emissione dell’Attestato Elettronico di Attributi** da parte dei Fornitori di Attestati. Solo le istanze del Wallet in stato Operativo o Valido possiedono una Wallet Instance Attestation e una Wallet Unit Attestation valide. La verifica della validità di un'Istanza del Wallet viene eseguita indirettamente dai Fornitori di Attestati tramite il controllo della presenza di una Wallet Unit Attestation valida (ossia non scaduta, non revocata — verificando la Wallet Unit Attestation Status List — e firmata da un Fornitore di Portafoglio fidato).
 
 - **Durante il periodo di validità dell’Attestato Elettronico di Attributi** da parte dei Fornitori di Attestati, ogni 24 ore mediante la verifica della Wallet Unit Attestation Status List del PID. Infatti, se l'Istanza del Wallet è revocata, il PID in essa contenuto DEVE essere revocato. Di conseguenza, qualsiasi altro Attestato Elettronico ottenuto attraverso la presentazione del PID DEVE anch'esso essere revocato.
 
