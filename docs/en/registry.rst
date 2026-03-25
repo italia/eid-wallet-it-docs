@@ -830,7 +830,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes **M
        * Vehicle Inspection Certificate
        * Green Card / International Insurance
        * Public Transport Pass
-       * Telepass Subscription
+       * Road Charging Subscription
        * Digital Travel Credential
        * Travel Tickets (air, train, etc.)
        * Travel Insurance Policy
