@@ -55,13 +55,13 @@ L'Ente che fornisce i dati, in quanto Titolare di Fonte Autentica, è l'unico so
 
 Di seguito rappresentato il ruolo del Titolare di Fonte Autentica e delle altre entità nel Sistema IT-Wallet. 
 
-![Ruolo del Titolare di Fonte Autentica nel Sistema IT-Wallet](https://github.com/user-attachments/assets/e23b1cd0-b547-408e-8354-58131e0977b4)
+![Ruolo del Titolare di Fonte Autentica nel Sistema IT-Wallet](images/figura-1-ruolo-titolare-fonte-autentica.svg)
 
 *Figura 1: Ruolo del Titolare di Fonte Autentica nel Sistema IT-Wallet*
 
 Di seguito il ruolo del Titolare di Fonte Autentica nel contesto del flusso di richiesta ed emissione di un EAA. 
 
-![Flusso di richiesta ed emissione di un EAA nel Sistema IT-Wallet](https://github.com/user-attachments/assets/9223e9fa-9830-4e1d-b1ac-6354554ef2ce)
+![Flusso di richiesta ed emissione di un EAA nel Sistema IT-Wallet](images/figura-2-flusso-richiesta-emissione-eaa.svg)
 
 *Figura 2: Flusso di richiesta ed emissione di un EAA nel Sistema IT-Wallet* 
 
