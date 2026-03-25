@@ -418,17 +418,6 @@ L’obiettivo della sezione `casi_d_uso` è quello di supportare gli Enti nella 
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
-
 ---
 ## Appendice B – Data Model
 
