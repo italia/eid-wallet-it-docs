@@ -214,8 +214,8 @@
                     ]
                 },
                 {
-                    "id": "ACCESS",
-                    "name_l10n_id": "class.access.name",
+                    "id": "EMPLOYMENT_AFFILIATION",
+                    "name_l10n_id": "class.employment_affiliation.name",
                     "supported_purposes": [
                         "ACCESS_PERMIT"
                     ]

@@ -1,6 +1,5 @@
 .. include:: ../common/common_definitions.rst
 
-
 Registry Infrastructure
 ==========================
 
@@ -116,8 +115,6 @@ JWT payload structure (when decoded):
     "content_negotiation": ["application/json", "application/jwt"]
   }
 
-
-
 Claims Registry
 ---------------
 
@@ -140,7 +137,6 @@ The Claims Registry MUST ensure:
 .. note::
   The Claims Registry defines semantic properties of individual attributes, but MUST NOT specify selective disclosure capabilities. Selective disclosure depends on Credential format implementations (SD-JWT, mDocs), issuer technical configurations, and presentation context. These capabilities are specified at the Credential type level within the Digital Credentials Catalog and implemented during Credential presentation flows.
 
-
 Claims Registry Usage
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -157,7 +153,6 @@ The Claims Registry MUST support the complete ecosystem lifecycle:
   - **Credential Issuance**: Claims definitions ensure consistent data representation across different Credential types.
   - **Presentation Requests**: RPs reference claims for schema validation and authorization verification in both credential-specific and credential-agnostic scenarios.
   - **Policy Enforcement**: Authorization policies leverage domain/purpose classifications for access control.
-
 
 Claims Registry Structure
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -186,7 +181,6 @@ The Claims Registry maintains language-neutral, technical definitions for semant
        * **version**: Version of the localization bundle format.
    * - **claims**
      - REQUIRED. A JSON Object where each key is a claim name and each value is a JSON Object describing that claim. Each claim object contains the parameters defined in the "Claim Entry Parameters" table below.
-
 
 .. list-table:: Claim Entry Parameters
    :class: longtable
@@ -314,7 +308,6 @@ Each Authentic Source MUST be assigned a unique identifier that follows the HTTP
 - **organization_domain**: DNS domain controlled by the organization
 - **optional_path**: Additional path component for specific services or departments
 
-
 The AS identifier MUST follow these normative rules:
 
 1. **HTTPS Protocol**: MUST use HTTPS scheme for security and trust verification
@@ -329,12 +322,10 @@ The AS identifier MUST follow these normative rules:
 - ``https://registry.anpr.example``: Public - National Registry of Resident Population
 - ``https://api.bank.example/auth-source``: Private - Example Bank Financial Services
 
-
 Authentic Source Registry Parameters
 """"""""""""""""""""""""""""""""""""""
 
 The Authentic Source Registry MUST contain the following parameters for each registered Authentic Source:
-
 
 .. list-table:: First-level Fields of the Authentic Source Registry
    :class: longtable
@@ -358,7 +349,6 @@ The Authentic Source Registry MUST contain the following parameters for each reg
        * **version**: Version of the localization bundle format.
    * - **authentic_sources**
      - REQUIRED. A JSON Array where each entry is a JSON Object representing an Authentic Source entity. Each object contains the parameters defined in the "Authentic Sources Parameters" table below, including entity identification, organizational information, data capabilities, and integration methods.
-
 
 .. list-table:: Authentic Sources Parameters
    :class: longtable
@@ -451,7 +441,7 @@ The Authentic Source Registry MUST contain the following parameters for each reg
      - REQUIRED. Authorization framework used for data access. MUST be ``"pdnd"`` for Public AS. Private AS MAY use other authorization frameworks such as: ``"oauth2"``, ``"api_key"``, ``"mtls"``, etc.
    * - **data_capabilities[].integration_endpoint**
      - string
-     - REQUIRED. Service access point (PDND endpoint for Public AS, API endpoint for Private AS).
+     - OPTIONAL. Service access point (PDND endpoint for Public AS, API endpoint for Private AS).
    * - **data_capabilities[].api_specification**
      - string
      - REQUIRED. URL to `OAS3`_ specification document for this data capability.
@@ -497,8 +487,10 @@ The Authentic Source Registry MUST contain the following parameters for each reg
    * - **data_capabilities[].contacts**
      - String Array
      - OPTIONAL. Array of customer service contact email addresses.
+  
 .. note::
-  For further details on the required features and the expected outcome in terms of user experience, see the section “[Issuance from the Wallet instance Catalog](https://italia.github.io/eid-wallet-it-docs/releases/1.4.0/en/functionalities.html#issuance-from-the-wallet-instance-catalog)” for the parameter `data_capabilities.user_information` and the section “[Focus on Electronic Attestation of Attributes](https://italia.github.io/eid-wallet-it-docs/releases/1.4.0/en/functionalities.html#focus-on-electronic-attestations-of-attributes)” for the parameters `organization_info.logo_uri`, `organization_info.logo_extended_uri`, `data_capabilities.logo_uri`, `data_capabilities.background_image`, `data_capabilities.watermark_image`, `data_capabilities.background_color` and `data_capabilities.available_claims.order`.
+  For further details on the required features and the expected outcome in terms of user experience, see the Section :ref:`functionalities:Issuance from the Wallet Instance Catalog` for the parameter `data_capabilities.user_information` and Section :ref:`functionalities:Focus on Electronic Attestations of Attributes` for the parameters `organization_info.logo_uri`, `organization_info.logo_extended_uri`, `data_capabilities.logo_uri`, `data_capabilities.background_image`, `data_capabilities.watermark_image`, `data_capabilities.background_color` and `data_capabilities.available_claims.order`.
+
 AS Registry Example
 """""""""""""""""""
 
@@ -576,7 +568,6 @@ The Digital Credential Catalog aims to:
   5. Ensure trust in the ecosystem through verifiable and trustworthy information.
   6. Provide transparency on the ecosystem of available Digital Credentials.
 
-
 The main Entities involved in the Digital Credential Catalog are:
 
   - **Trust Anchor**: It manages and maintains the Digital Credential Catalog, guaranteeing its authenticity and integrity.
@@ -587,16 +578,13 @@ The main Entities involved in the Digital Credential Catalog are:
   - **Users**: The Users who indirectly use the Digital Credentials Catalog through their Wallet Instances to discover and request Digital Credentials.
   - **Authentic Sources**: The Entities that hold the original data that is attested in the Digital Credentials. They provide support to Issuers in registering the Digital Credentials in the Catalog.
 
-
 .. _fig_catalog:
 .. plantuml:: plantuml/credential-catalog-entities.puml
     :width: 99%
     :alt: The figure illustrates the Digital Credential Entities.
     :caption: `Entity-Relationship diagram of Digital Credential Catalog. <https://www.plantuml.com/plantuml/svg/ZLJ1Rkis4BpxAxP6WQP00X-QtjeWgPEsFXGmuXGz6ZIvbeb8fCfTEbM__YrDELAUb6ST34khuSnmESjxOXKuLYKysiAoAc4PqA1ZcnwL57mH4Pwam1Pfzfrrkem6uPVbxM9vkrtwglPEy7UpsG_mY7lh43RhvzNBqwO7vbWh4tvQQ5zLtjsDVDbxnpVg3SbNUFFpGcDWkxTQCKv06p6wKpG5MdhzEW4M2GDDyUcBAJ1XEsAO07p5PgAx2J1hjbe5Cm69_-c3SWLkLSbJ-etqohwUW7nJPOaNAHVM4LkER5CuPhFtL5tfSmIlOJvCA7KHdGlW6GjB79hql1H4471eQ-3t85v07PKjrQv46A6JXTzJ7IpZh_DpfkO_Yg4r1lBkAlLTkF-MlvE6PVi_EeAtWmTZINivP53EYEg_4OalQIG-uU-soo4IFpXzy4dd9Rr1VarwwVUNSgf0EgbKoZgM7m4Vy9i3t1ULY8dcfY76wefYBT6qv4FpcpUD26ow2gJIITGxopxGkPig7HJK1qK8w2W6wmeWrFB0pScQQ1sLRlgwlP7kz2rHn42Zfmkh_34vU8WiJP1k6y3sBf9DAuP4SF4isq7eP0EMZNXUgv2OKdHo0ThAF9_ogQ_l4GJsK2Wf1R1kxqELsw1sFZBeSUN-O7NoUIhMmH-joRl_vrI1jjJkMMia6dgmZh48Yh4lcgeUCl471xdKQIlfP5gZDpu64KX2vnAqjQJ-foyD-22DTTBOD0sWc54uZ6XTx7Wtq6c0fBqVijrjg8lqTPVd7A6uAoqTiflVHQMD7JfJUm4Ahz0E4_nnXbQEPQ5c6LBBX_4rVJkVXZtuT1gPe8jjVs6-VZ2CzGQiQvSE-tyc6pSxo6fVyezFuZXc8TCDizVnTP7pO4_BzatlmjG3hdmV3XZJw12qaLuvOkKqGfq11dPDNhvzR0dw3bREs82Qo-RzHgN-bKfVsRYNECIg_080>`_
 
-
 The following table summarizes the main information that MUST be provided by the Digital Credential Catalog:
-
 
 .. list-table:: Digital Credential Catalog - Main information
    :class: longtable
@@ -1022,7 +1010,6 @@ Digital Credentials Catalog Structure
 
 Digital Credentials Catalog contents is secured in a JWS that contains the following JOSE header parameters:
 
-
 .. _table_catalog_parameters:
 .. list-table::
    :class: longtable
@@ -1050,7 +1037,6 @@ Digital Credentials Catalog contents is secured in a JWS that contains the follo
 
 The JWS payload contains the following parameters:
 
-
 .. list-table:: First-level Fields of the Digital Credentials Catalog
    :class: longtable
    :header-rows: 1
@@ -1070,7 +1056,6 @@ The JWS payload contains the following parameters:
      - REQUIRED. Array containing Digital Credential definitions.
 
 Each element of the ``credentials`` array contains at least the following information:
-
 
 .. _table_catalog_parameters_first_level:
 .. list-table:: First-level Fields of Each Credential Entry
@@ -1311,7 +1296,6 @@ The **Schema Registry** is the authoritative inventory of all known and accepted
 
 The Schema Registry is accessible via the ``.well-known/it-wallet-registry`` discovery endpoint under the `schema_registry` field. It allows for the discovery of schema URIs and their cryptographic integrity checks.
 
-
 .. list-table:: First-level Fields of the Schema Registry
    :class: longtable
    :widths: 30 70
@@ -1325,7 +1309,6 @@ The Schema Registry is accessible via the ``.well-known/it-wallet-registry`` dis
      - REQUIRED. The timestamp indicating when the list was last updated (e.g., ``2025-03-15T12:00:00Z``).
    * - **schemas**
      - REQUIRED. A JSON Array where each entry is a JSON Object representing a Credential Schema definition. Each object contains the parameters defined in the "Schema Definition Parameters" table below, including schema identification, format specifications, URIs, and integrity verification data.
-
 
 .. list-table:: Schema Definition Parameters
    :widths: 25 75
@@ -1370,10 +1353,8 @@ The registry components are interconnected and work together to support the comp
 4. **Federation Registry** ↔ **All Components**: Provides cryptographic trust validation for all registry operations and entity authentication.
 5. **Schema Registry** ↔ **Issuer/RPs**: Provides the verifiable link to all known Credential format specifications used in the ecosystem.
 
-
 Registry Infrastructure Usage Journeys
 ------------------------------------------
-
 
 The components of the Registry Infrastructure are designed to support various operational phases of the IT-Wallet ecosystem, each involving specific interactions between entities. 
 The main Journeys below illustrate the interactions with the Registry Infrastructure.
