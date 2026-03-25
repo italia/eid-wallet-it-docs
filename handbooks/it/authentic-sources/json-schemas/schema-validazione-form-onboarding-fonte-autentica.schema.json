@@ -3,13 +3,13 @@
   "$id": "https://github.com/italia/eid-wallet-it-docs/handbooks/it/authentic-sources/json-schemas/schema-validazione-form-onboarding-fonte-autentica.schema.json",
   "$version": "0.7.0",
   "title": "Schema validazione Fonte Autentica",
-  "description": "Schema di validazione per progettazione-caratteristiche-eaa.json. Richiede metadata, casi_d_uso (documento esistente o non), assistenza e e_service.",
+  "description": "Schema di validazione per progettazione-caratteristiche-eaa.json. Ordine sezioni allineato al manuale (Appendici A–E): metadata, casi_d_uso, e_service (data_model, mappatura_errori, stati), assistenza.",
   "type": "object",
   "required": [
     "metadata",
     "casi_d_uso",
-    "assistenza",
-    "e_service"
+    "e_service",
+    "assistenza"
   ],
   "properties": {
     "$schema": { "type": "string" },
@@ -24,6 +24,28 @@
       }
     },
     "casi_d_uso": { "$ref": "#/$defs/casi_d_uso" },
+    "e_service": {
+      "type": "object",
+      "required": ["response"],
+      "description": "e_service: response (data_model, mappatura_errori, stati) e lista_nome_campo.",
+      "properties": {
+        "response": {
+          "type": "object",
+          "required": ["versione", "data_model", "mappatura_errori", "stati"],
+          "description": "Contratto della response dell'endpoint Fonte Autentica",
+          "properties": {
+            "versione": {
+              "type": "string",
+              "description": "Versione del contratto di response (es. 1.0, 1.1)"
+            },
+            "data_model": { "type": "array", "items": { "type": "object" } },
+            "mappatura_errori": { "type": "array", "items": { "type": "object" } },
+            "stati": { "type": "array", "items": { "type": "object" } }
+          }
+        },
+        "lista_nome_campo": { "type": "array", "items": { "type": "object" } }
+      }
+    },
     "assistenza": {
       "type": "object",
       "required": [
@@ -46,28 +68,6 @@
           "items": { "$ref": "#/$defs/faq_item" }
         },
         "testi_informativi": { "type": "string" }
-      }
-    },
-    "e_service": {
-      "type": "object",
-      "required": ["response"],
-      "description": "e_service: response (data_model, mappatura_errori, stati) e lista_nome_campo.",
-      "properties": {
-        "response": {
-          "type": "object",
-          "required": ["versione", "data_model", "mappatura_errori", "stati"],
-          "description": "Contratto della response dell'endpoint Fonte Autentica",
-          "properties": {
-            "versione": {
-              "type": "string",
-              "description": "Versione del contratto di response (es. 1.0, 1.1)"
-            },
-            "data_model": { "type": "array", "items": { "type": "object" } },
-            "mappatura_errori": { "type": "array", "items": { "type": "object" } },
-            "stati": { "type": "array", "items": { "type": "object" } }
-          }
-        },
-        "lista_nome_campo": { "type": "array", "items": { "type": "object" } }
       }
     }
   },

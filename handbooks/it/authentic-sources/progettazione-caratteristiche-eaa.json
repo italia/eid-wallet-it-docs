@@ -228,95 +228,6 @@
       }
     }
   },
-  "assistenza": {
-    "referenti": [
-      {
-        "ruolo": "Referente ambito sistemistico",
-        "nome": "",
-        "cognome": "",
-        "email": "",
-        "telefono": ""
-      },
-      {
-        "ruolo": "Referente ambito applicativo",
-        "nome": "",
-        "cognome": "",
-        "email": "",
-        "telefono": ""
-      },
-      {
-        "ruolo": "Referente ambito assistenza",
-        "nome": "",
-        "cognome": "",
-        "email": "",
-        "telefono": ""
-      }
-    ],
-    "canali": [
-      {
-        "tipo": "Email assistenza",
-        "risposta": "",
-        "note": ""
-      },
-      {
-        "tipo": "Numero telefonico",
-        "risposta": "",
-        "note": ""
-      },
-      {
-        "tipo": "Altro",
-        "risposta": "",
-        "note": ""
-      }
-    ],
-    "faq": [
-          { 
-        "domanda": "Descrivi quali sono i requisiti che l’utente deve avere per richiedere l’EAA ", 
-        "risposta": "" 
-      }, 
-   { 
-        "domanda": "Racconta nel dettaglio i contesti e le modalità in cui può essere usato l’EAA e i casi in cui non può essere accettato. ", 
-        "risposta": "" 
-      }, 
-      { 
-"domanda": "Descrivi la procedura da seguire nei diversi stati “di invalidità” (es. Scaduto, annullato, revocato, etc.) che l’EAA potrebbe assumere (es. per riottenere una patente scaduta, assicurati prima di essere in possesso della nuova patente e, successivamente, richiedi la nuova versione digitale). ", 
-        "risposta": "" 
-      }, 
-{
-"domanda": "Descrivi le tipologie di errore possibili che si riferiscono ai dati presenti nell’EAA e cosa potrebbe dare l’utente per risolvere l’errore. ", 
-        "risposta": "" 
-      }, 
-{ 
-"domanda": "A chi si rivolge oggi il cittadino in caso di problemi con il documento fisico / digitale corrispondente all’EAA? Quali sono i canali messi a disposizione per supportarlo nelle diverse situazioni di necessità? (es. uffici territoriali, numero verde, e-mail, etc.) ", 
-        "risposta": "" 
-      }, 
-{ 
-"domanda": "Sono già previsti canali digitali di supporto? Se sì, quali sono le tempistiche medie di risposta? (anche indicativo) ", 
-        "risposta": "" 
-      }, 
-{ 
-"domanda": "Quali sono i principali motivi di contatto per cui i cittadini si rivolgono alla vostra assistenza? Come vengono indirizzati e risolti attualmente? ", 
-        "risposta": "" 
-      }, 
-{ 
-"domanda": "Si ritiene che i motivi di contatto possano essere simili una volta ottenuta la versione digitale del documento?", 
-        "risposta": "" 
-      }, 
-{ 
-"domanda": "Per quali altri motivi potrebbero aver bisogno di aiuto i cittadini una volta ottenuta la versione digitale del documento?", 
-        "risposta": "" 
-      }, 
-{ 
-"domanda": "Condividi a seguire i link ad eventuale documentazione utile pertinente all'EAA oggetto di analisi. (es. una Knowledge Base o un repository di FAQ già predisposto)", 
-        "risposta": "" 
-      }, 
-      {
-        "domanda": "",
-        "risposta": ""
-      }
-    ],
-    "testi_informativi": ""
-  },
   "e_service": {
     "response": {
       "versione": "0.1.0",
@@ -828,5 +739,94 @@
         "descrizione": ""
       }
     ]
+  },
+  "assistenza": {
+    "referenti": [
+      {
+        "ruolo": "Referente ambito sistemistico",
+        "nome": "",
+        "cognome": "",
+        "email": "",
+        "telefono": ""
+      },
+      {
+        "ruolo": "Referente ambito applicativo",
+        "nome": "",
+        "cognome": "",
+        "email": "",
+        "telefono": ""
+      },
+      {
+        "ruolo": "Referente ambito assistenza",
+        "nome": "",
+        "cognome": "",
+        "email": "",
+        "telefono": ""
+      }
+    ],
+    "canali": [
+      {
+        "tipo": "Email assistenza",
+        "risposta": "",
+        "note": ""
+      },
+      {
+        "tipo": "Numero telefonico",
+        "risposta": "",
+        "note": ""
+      },
+      {
+        "tipo": "Altro",
+        "risposta": "",
+        "note": ""
+      }
+    ],
+    "faq": [
+          { 
+        "domanda": "Descrivi quali sono i requisiti che l’utente deve avere per richiedere l’EAA ", 
+        "risposta": "" 
+      }, 
+   { 
+        "domanda": "Racconta nel dettaglio i contesti e le modalità in cui può essere usato l’EAA e i casi in cui non può essere accettato. ", 
+        "risposta": "" 
+      }, 
+      { 
+"domanda": "Descrivi la procedura da seguire nei diversi stati “di invalidità” (es. Scaduto, annullato, revocato, etc.) che l’EAA potrebbe assumere (es. per riottenere una patente scaduta, assicurati prima di essere in possesso della nuova patente e, successivamente, richiedi la nuova versione digitale). ", 
+        "risposta": "" 
+      }, 
+{
+"domanda": "Descrivi le tipologie di errore possibili che si riferiscono ai dati presenti nell’EAA e cosa potrebbe dare l’utente per risolvere l’errore. ", 
+        "risposta": "" 
+      }, 
+{ 
+"domanda": "A chi si rivolge oggi il cittadino in caso di problemi con il documento fisico / digitale corrispondente all’EAA? Quali sono i canali messi a disposizione per supportarlo nelle diverse situazioni di necessità? (es. uffici territoriali, numero verde, e-mail, etc.) ", 
+        "risposta": "" 
+      }, 
+{ 
+"domanda": "Sono già previsti canali digitali di supporto? Se sì, quali sono le tempistiche medie di risposta? (anche indicativo) ", 
+        "risposta": "" 
+      }, 
+{ 
+"domanda": "Quali sono i principali motivi di contatto per cui i cittadini si rivolgono alla vostra assistenza? Come vengono indirizzati e risolti attualmente? ", 
+        "risposta": "" 
+      }, 
+{ 
+"domanda": "Si ritiene che i motivi di contatto possano essere simili una volta ottenuta la versione digitale del documento?", 
+        "risposta": "" 
+      }, 
+{ 
+"domanda": "Per quali altri motivi potrebbero aver bisogno di aiuto i cittadini una volta ottenuta la versione digitale del documento?", 
+        "risposta": "" 
+      }, 
+{ 
+"domanda": "Condividi a seguire i link ad eventuale documentazione utile pertinente all'EAA oggetto di analisi. (es. una Knowledge Base o un repository di FAQ già predisposto)", 
+        "risposta": "" 
+      }, 
+      {
+        "domanda": "",
+        "risposta": ""
+      }
+    ],
+    "testi_informativi": ""
   }
 }
