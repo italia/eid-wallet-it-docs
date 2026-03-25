@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/italia/eid-wallet-it-docs/handbooks/it/authentic-sources/json-schemas/schema-validazione-form-onboarding-fonte-autentica.schema.json",
-  "$version": "0.8.0",
+  "$version": "0.8.1",
   "title": "Schema validazione Fonte Autentica",
   "description": "Schema di validazione per progettazione-caratteristiche-eaa.json. Ordine sezioni allineato al manuale (Appendici A–E): metadata, casi_d_uso, e_service (data_model, mappatura_errori, stati), assistenza.",
   "type": "object",
@@ -122,17 +122,56 @@
       "properties": {
         "codice": {
           "type": "string",
-          "description": "Codice HTTP o di dominio (es. 200, 404, 540)"
+          "description": "Codice HTTP o di dominio (es. 200, 404, 540). Obbligatorietà di applicabile vincolata da allOf sotto."
         },
         "esito": { "type": "string" },
         "applicabile": {
           "type": "boolean",
-          "description": "true se l’errore è applicabile al singolo EAA / obbligatorio da documentare; false altrimenti"
+          "description": "true per codici obbligatori (200, 400, 401, 404, 429, 500, 503); false per codici opzionali (403, 405, 406, 408, 409, 410, 413, 414, 421, 431, 451, 501, 540, 541)."
         },
         "causa": { "type": "string" },
         "azione_utente": { "type": "string" },
         "note": { "type": "string" }
-      }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "codice": {
+                "enum": [
+                  "403",
+                  "405",
+                  "406",
+                  "408",
+                  "409",
+                  "410",
+                  "413",
+                  "414",
+                  "421",
+                  "431",
+                  "451",
+                  "501",
+                  "540",
+                  "541"
+                ]
+              }
+            },
+            "required": ["codice"]
+          },
+          "then": { "properties": { "applicabile": { "const": false } } }
+        },
+        {
+          "if": {
+            "properties": {
+              "codice": {
+                "enum": ["200", "400", "401", "404", "429", "500", "503"]
+              }
+            },
+            "required": ["codice"]
+          },
+          "then": { "properties": { "applicabile": { "const": true } } }
+        }
+      ]
     },
     "mappatura_stato": {
       "type": "object",
