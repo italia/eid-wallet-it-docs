@@ -269,11 +269,9 @@ Relying Party operators begin by identifying which EAA types are required for th
     - **Authorization Scope**: Granted access to ``MEMBERSHIP`` domain, ``ASSOCIATION`` purpose.
     - **Credential Discovery**: Badge available only via private Credential Offer (non-eligible for Credential Catalog).
 
-
 Technical integration focuses on developing authentication flows that can verify Digital Credentials presented by Users. This includes implementing cryptographic verification mechanisms and establishing secure communication channels with the federation infrastructure.
 
 Service authorization by the Supervisory Body MUST involve policy-based evaluation that considers organizational type (private vs public administration), business sector classification, and legitimate service requirements. The authorization process grants specific operational scopes that define which Credential domains and purposes the Relying Party can request. Following approval, the Relying Party is registered in the Federation Registry with clearly defined authorization boundaries for Digital Credentials and User's attributes acceptance.
-
 
 User Experience Journey
 -------------------------------
