@@ -491,7 +491,8 @@ The Authentic Source Registry MUST contain the following parameters for each reg
    * - **data_capabilities[].contacts**
      - String Array
      - OPTIONAL. Array of customer service contact email addresses.
-
+.. note::
+  For further details on the required features and the expected outcome in terms of user experience, see the section “[Issuance from the Wallet instance Catalog](https://italia.github.io/eid-wallet-it-docs/releases/1.4.0/en/functionalities.html#issuance-from-the-wallet-instance-catalog)” for the parameter `data_capabilities.user_information` and the section “[Focus on Electronic Attestation of Attributes](https://italia.github.io/eid-wallet-it-docs/releases/1.4.0/en/functionalities.html#focus-on-electronic-attestations-of-attributes)” for the parameters `organization_info.logo_uri`, `organization_info.logo_extended_uri`, `data_capabilities.logo_uri`, `data_capabilities.background_image`, `data_capabilities.watermark_image`, `data_capabilities.background_color` and `data_capabilities.available_claims.order`.
 AS Registry Example
 """""""""""""""""""
 
