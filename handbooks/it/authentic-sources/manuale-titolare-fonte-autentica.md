@@ -242,7 +242,7 @@ Contestualmente al flusso di pubblicazione dell'e-service, l'Ente deve allegare,
 
 Nel caso di EAA di interesse pubblico, l'Ente deve aggiungere l'attributo certificato Istituto Poligrafico e Zecca dello Stato S.P.A. all'e-service erogato, se possibile impostando l'accettazione automatica delle richieste di fruizione.
 
-Si consiglia di nominare l'e-service in "Creazione EAA [Nome / Nome tipologia EAA] – IT-Wallet" (es. "Creazione EAA Patente di guida – IT-Wallet" oppure "Creazione EAA Titoli di studio – IT-Wallet") e di predisporre una descrizione in linea con il [Manuale Operativo PDND Interoperabilità](https://italia.github.io/pdnd-guida-nomenclatura-eservice/index.html) referenziata nella Guida all'adesione PDND. 
+Si consiglia di nominare l'e-service in "Creazione EAA [Nome / Nome tipologia EAA] – IT-Wallet" (es. "Creazione EAA Patente di guida – IT-Wallet" oppure "Creazione EAA Titoli di studio – IT-Wallet") e di predisporre una descrizione in linea con le Linee Guida sull’infrastruttura tecnologica della PDND per l’interoperabilità dei sistemi informativi e delle basi di dati ([Allegato 7 - Regole di popolamento](https://italia.github.io/pdnd-guida-nomenclatura-eservice/index.html)) emanate da AgID. 
 
 ### **Attivare il servizio Signal Hub in collaudo**
 
@@ -345,7 +345,9 @@ Per i dettagli implementativi, consultare le Specifiche Tecniche, in particolare
 In questo step, l'Ente interessato deve:
 ### **Garantire la gestione e manutenzione dell'e-service**
 
-L'Ente deve garantire il corretto funzionamento dell'e-service nel tempo, programmare adeguate azioni di monitoraggio e aggiornamento se richieste, ad esempio, da cambiamenti normativi o procedurali (es. nuovi dati, stati, casistiche di errore, etc.). 
+L'Ente deve garantire il corretto funzionamento dell'e-service nel tempo, programmare adeguate azioni di monitoraggio e aggiornamento se richieste, ad esempio, da cambiamenti normativi o procedurali (es. nuovi dati, stati, casistiche di errore, etc.).
+
+È altresì importante che l’ente mantenga il proprio e-service aggiornato all’ultima versione indicata dalle Linee Guida IT-Wallet, facendo riferimento al branch LTS e assicurandosi in particolare di implementare sempre l’ultima versione di patch disponibile.
 
 ### **Gestire problematiche e fornire assistenza agli utenti**
 
@@ -529,7 +531,11 @@ L’obiettivo della sezione `mappatura_errori` è quello di supportare gli Enti 
 
 **Istruzioni di compilazione**
 
-1. Definisci la motivazione che ha scatenato l'errore e popola il campo "Causa" per ciascuna casistica (es. Servizio momentaneamente non disponibile). 
+1. Per il codice 200 e per tutti gli errori obbligatori (400, 401, 404, 429, 500, 503) definisci la motivazione che ha scatenato l'errore e popola il campo "Causa"(es. Servizio momentaneamente non disponibile);
+2. Per ciascun errore descrivi l'azione necessaria per risolvere il problema nel campo "Azione utente". (es. Ti invitiamo a riprovare più tardi). Usa il campo "Note" per aggiungere ulteriori informazioni utili o una spiegazione del perché proponiamo all'utente di compiere un'azione specifica;
+3. Se ritenuto utile, compila allo stesso modo gli errori non obbligatori (es. 540 e 541) e/o aggiungi eventuali ulteriori errori specifici.
+
+Nel caso di compilazione degli errori opzionali:
 - Per l'errore 540 (EAA non esistente presso l'Authentic Source), utilizza il formato "state": "description", es.: "NOT_EXISTING": "l'EAA non è presente presso l'Authentic Source", "PENDING": "l'EAA è in attesa di emissione". 
 - Per l'errore 541 (EAA in stato non valido o sospeso), descrivi la causa secondo le [Specifiche Tecniche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/OAS3-PDND-Issuer.html#tag/e-services-PDND/operation/notifyStatusCredentials) (es. scaduto, sospeso, revocato, annullato). 
 
@@ -551,6 +557,7 @@ L’obiettivo della sezione `mappatura_errori` è quello di supportare gli Enti 
         "applicabile": "SI",
         "causa": "Non sono stati trovati documenti di titolarità dell'utente",
         "azione_utente": "Chiudere e riprovare successivamente",
+        "messaggio": "Ti invitiamo ad ottenere il documento presso l'Ente titolare prima di richiedere la sua versione digitale"
         "note": "L'utente deve prima acquisire la titolarità del documento per ottenerne la versione digitale"
       },
       {
