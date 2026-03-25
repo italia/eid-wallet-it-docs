@@ -183,11 +183,13 @@ Oltre agli stati sopra elencati, è bene specificare che lo stato di un Attestat
 - **Scaduto**: EAA con data di scadenza amministrativa superata. La scadenza amministrativa può essere definita dal Titolare di Fonte Autentica e, se ritenuta utile o necessaria, deve essere inclusa come attributo all'interno del data model dell'EAA per garantire messaggi informativi all'interno della soluzione IT-Wallet (es. La tua Patente scade tra 30 giorni);
 - **Da aggiornare**: EAA con data di scadenza tecnica superata. La scadenza tecnica è definita del Fornitore di Attestati Elettronici di Attributi ed è impostata generalmente a 1 anno o comunque a un valore inferiore o uguale alla data di scadenza amministrativa. Tale scadenza ha l'obiettivo di richiedere un'azione di riemissione esplicita all'utente e mitigare rischi di sicurezza.
 
+**Corrispondenza con l'API Fonte Autentica (OpenAPI).** Nel file [Progettazione caratteristiche EAA](progettazione-caratteristiche-eaa.json), l'array `e_service.response.stati` ammette per il campo `stato` esattamente questi valori testuali: **Valido**, **Non Valido**, **Sospeso** e **Scaduto**. Nei contratti OpenAPI dell'e-service Fonte Autentica (es. `OAS3-PDND-AS.yaml`), il campo `status` di ciascun dataset in `attributeClaims` è invece limitato a **`VALID`**, **`INVALID`** e **`SUSPENDED`**: le scadenze si desumono dai metadati e dai claim (`expiry_date`, `last_updated`, `exp`/`nbf`, ecc.) e, lato specifica, i casi *Issued* ed *Expired* rientrano in `VALID` se non sussistono revoca o sospensione. Indicazione operativa: **Non Valido** corrisponde a `INVALID`; **Sospeso** a `SUSPENDED`; **Valido** a `VALID`; **Scaduto** descrive nello Strumento di progettazione la casistica percepita dall'utente quando l'EAA non è più utilizzabile per scadenza, mentre sul canale OpenAPI il dataset resta caratterizzato da uno dei tre `status` precedenti (di norma `VALID` con scadenza nei metadati, oppure `INVALID` se l'Ente imposta la cessazione — inclusa la scadenza amministrativa senza metadato idoneo — come da Specifiche Tecniche).
+
 Per approfondimenti vai alle Specifiche Tecniche, sezione [Ciclo di Vita degli Attestati Elettronici](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/credential-revocation.html). 
 
-A tal fine, l'Ente deve compilare la sezione `mappatura-stati` del file [Progettazione caratteristiche EAA](progettazione-caratteristiche-eaa.json) per definire i dettagli sugli stati relativi al ciclo di vita dell'EAA, ovvero dichiarare la condizione di applicabilità dei tre stati sopracitati e l'eventuale relativo messaggio informativo da esporre all'utente.
+A tal fine, l'Ente deve compilare la sezione `e_service.response.stati` del file [Progettazione caratteristiche EAA](progettazione-caratteristiche-eaa.json) per definire i messaggi e l'applicabilità dei quattro valori **Valido**, **Non Valido**, **Sospeso** e **Scaduto**.
 
-Nella sezione [Template e-service PDND](#Template-eservice-PDND) sono riportati i template e-service pubblicati su PDND relativi ad alcune tipologie di Attestati IT-Wallet; l'Ente interessato può adottare uno dei template messi a disposizione oppure utilizzarlo come punto di partenza per la mappatura degli stati  (sezione `e_service.response.mappatura_stati`).
+Nella sezione [Template e-service PDND](#Template-eservice-PDND) sono riportati i template e-service pubblicati su PDND relativi ad alcune tipologie di Attestati IT-Wallet; l'Ente interessato può adottare uno dei template messi a disposizione oppure utilizzarlo come punto di partenza per la mappatura degli stati (sezione `e_service.response.stati`).
 Per riferimenti e istruzioni di compilazione vedi [Appendice D](#appendice-d--mappatura-stati).
 
 **Nota**: 
@@ -208,7 +210,7 @@ Il Sistema IT-Wallet consente ai Titolari di Fonte Autentica di contribuire alla
 L'Ente interessato a personalizzare la resa grafica dell'EAA prodotto dai propri dati deve trasmettere i propri materiali come documentazione allegata all'e-service su PDND (vedi [Step 2](#step-2--pubblicazione-in-collaudo)).
 ### **Validare il file “progettazione_EAA”**
 
-A conclusione delle azioni sopra elencate, l’Ente deve validare il file ”progettazione_EAA" in tutte le sue parti (sezioni `casi_d_uso`, `data_model`, `mappatura_errori`, `mappatura_stati` e `assistenza`) utilizzando lo strumento indicato nel file ”validazione_progettazione_caratteristiche_EAA”. 
+A conclusione delle azioni sopra elencate, l’Ente deve validare il file ”progettazione_EAA" in tutte le sue parti (sezioni `casi_d_uso`, `data_model`, `mappatura_errori`, `e_service.response.stati` e `assistenza`) utilizzando lo strumento indicato nel file ”validazione_progettazione_caratteristiche_EAA”. 
 
 Per poter proseguire con gli step successivi, è infatti obbligatorio eseguire validazione JSON Schema e controllo sintattico. Per i comandi e il workflow, vedi [Validazione JSON Schema e Linter](validazione-json-schema-linter.md). La checklist prevede: 
 
@@ -238,7 +240,7 @@ L'Ente deve sviluppare e rilasciare in collaudo un e-service coerente con il Dat
 - [sezione e-service del Manuale Operativo PDND Interoperabilità](https://docs.pagopa.it/interoperabilita-1/manuale-operativo/e-service)
 - [sezione Titolare di Fonte Autentica delle Specifiche Tecniche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/authentic-sources.html)
 
-Contestualmente al flusso di pubblicazione dell'e-service, l'Ente deve allegare, come documentazione aggiuntiva su PDND, il file [Progettazione caratteristiche EAA](progettazione-caratteristiche-eaa.json) precedentemente compilato in tutte le sue parti e e validato (sezioni `casi_d_uso`, `data_model`, `mappatura_errori`, `mappatura_stati` e `assistenza`). 
+Contestualmente al flusso di pubblicazione dell'e-service, l'Ente deve allegare, come documentazione aggiuntiva su PDND, il file [Progettazione caratteristiche EAA](progettazione-caratteristiche-eaa.json) precedentemente compilato in tutte le sue parti e e validato (sezioni `casi_d_uso`, `data_model`, `mappatura_errori`, `e_service.response.stati` e `assistenza`). 
 
 Nel caso di EAA di interesse pubblico, l'Ente deve aggiungere l'attributo certificato Istituto Poligrafico e Zecca dello Stato S.P.A. all'e-service erogato, se possibile impostando l'accettazione automatica delle richieste di fruizione.
 
@@ -246,7 +248,7 @@ Si consiglia di nominare l'e-service in "Creazione EAA [Nome / Nome tipologia EA
 
 ### **Attivare il servizio Signal Hub in collaudo**
 
-L'Ente deve attivare in collaudo il servizio [Signal Hub](https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-pdnd-interoperabilita/v1.0/riferimenti-tecnici/signal-hub) di PDND per il relativo e-service, in coerenza con quanto definito dalle [Specifiche Tecniche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/signal-hub-endpoint.html) per la gestione degli stati, precedentemente mappati nella sezione `mappatura_stati` del file [Progettazione caratteristiche EAA](progettazione-caratteristiche-eaa.json).  
+L'Ente deve attivare in collaudo il servizio [Signal Hub](https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-pdnd-interoperabilita/v1.0/riferimenti-tecnici/signal-hub) di PDND per il relativo e-service, in coerenza con quanto definito dalle [Specifiche Tecniche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/signal-hub-endpoint.html) per la gestione degli stati, precedentemente mappati nella sezione `e_service.response.stati` del file [Progettazione caratteristiche EAA](progettazione-caratteristiche-eaa.json).  
 
 ### **Sviluppare il Credential Offer (opzionale)**
 
@@ -292,7 +294,7 @@ L'Ente deve rilasciare l'e-service su PDND in produzione. Nel caso di EAA di int
 
 ### **Attivare il servizio Signal Hub in produzione**
 
-L'Ente deve attivare in produzione il servizio Signal Hub di PDND per il relativo e-service, in coerenza con quanto definito dalle [Specifiche Tecniche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/signal-hub-endpoint.html) per la gestione degli stati, precedentemente mappati nella sezione `mappatura_stati` del file [Progettazione caratteristiche EAA](progettazione-caratteristiche-eaa.json).  
+L'Ente deve attivare in produzione il servizio Signal Hub di PDND per il relativo e-service, in coerenza con quanto definito dalle [Specifiche Tecniche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/signal-hub-endpoint.html) per la gestione degli stati, precedentemente mappati nella sezione `e_service.response.stati` del file [Progettazione caratteristiche EAA](progettazione-caratteristiche-eaa.json).  
 
 ### **Portare in produzione il Credential Offer (opzionale)**
 
@@ -585,11 +587,13 @@ Nel caso di compilazione degli errori opzionali:
 
 ## Appendice D – Mappatura stati
 
-Questa appendice descrive le istruzioni di compilazione della sezione `mappatura_stati` del file JSON [Progettazione caratteristiche EAA](progettazione-caratteristiche-eaa.json). Assicurati di aver letto quanto riportato nella sezione [File da compilare](#file-da-compilare) prima di proseguire. 
+Questa appendice descrive le istruzioni di compilazione della sezione `e_service.response.stati` del file JSON [Progettazione caratteristiche EAA](progettazione-caratteristiche-eaa.json). Assicurati di aver letto quanto riportato nella sezione [File da compilare](#file-da-compilare) prima di proseguire. 
 
 **Obiettivo**
 
-L’obiettivo della sezione `mappatura_stati `è quello di supportare gli Enti nella definizione delle caratteristiche dell'e-service - e quindi del corrispettivo Attestato Elettronico di Attributi (EAA) - in termini di stati che potrebbero caratterizzare l’EAA nel corso del suo ciclo di vita.
+L’obiettivo della sezione `e_service.response.stati `è quello di supportare gli Enti nella definizione delle caratteristiche dell'e-service - e quindi del corrispettivo Attestato Elettronico di Attributi (EAA) - in termini di stati che potrebbero caratterizzare l’EAA nel corso del suo ciclo di vita.
+
+**Valori ammessi per `stato` e uso in OpenAPI.** Nel JSON di progettazione il campo `stato` di ogni elemento dell'array può assumere solo: **Valido**, **Non Valido**, **Sospeso**, **Scaduto** (come da schema di validazione). Sul canale tecnico, il campo `status` dei dataset nell'OpenAPI Fonte Autentica (`OAS3-PDND-AS.yaml`) resta limitato a **VALID**, **INVALID**, **SUSPENDED**; per la correlazione con i metadati di scadenza vedi il paragrafo *Corrispondenza con l'API Fonte Autentica* in [Step 1 | Progettazione caratteristiche EAA](#step-1--progettazione-caratteristiche-eaa).
 
 **Istruzioni di compilazione**
 
@@ -811,13 +815,15 @@ L’obiettivo della sezione `mappatura_errori` è quello di supportare gli Enti 
 
 *Tabella 3 – Mappatura Errori (sezione `e_service.response.mappatura_errori`)*
 
-## Appendice C – Mappatura stati
+### Riferimento — mappatura stati (JSON)
 
-Questa appendice descrive le istruzioni di compilazione della sezione `mappatura_stati` del file JSON [Progettazione caratteristiche EAA](progettazione-caratteristiche-eaa.json). Assicurati di aver letto quanto riportato nella sezione [File da compilare](#file-da-compilare) prima di proseguire. 
+Questa sezione ripete la struttura di `e_service.response.stati` come riferimento rapido durante la compilazione guidata.
 
 **Obiettivo**
 
-L’obiettivo della sezione `mappatura_stati `è quello di supportare gli Enti nella definizione delle caratteristiche dell'e-service - e quindi del corrispettivo Attestato Elettronico di Attributi (EAA) - in termini di stati che potrebbero caratterizzare l’EAA nel corso del suo ciclo di vita.
+L’obiettivo della sezione `e_service.response.stati `è quello di supportare gli Enti nella definizione delle caratteristiche dell'e-service - e quindi del corrispettivo Attestato Elettronico di Attributi (EAA) - in termini di stati che potrebbero caratterizzare l’EAA nel corso del suo ciclo di vita.
+
+**Valori ammessi per `stato` e uso in OpenAPI.** Come in [Appendice D – Mappatura stati](#appendice-d--mappatura-stati): nel JSON di progettazione solo **Valido**, **Non Valido**, **Sospeso**, **Scaduto**; in OpenAPI Fonte Autentica solo **VALID**, **INVALID**, **SUSPENDED** per `status` in `attributeClaims`.
 
 **Istruzioni di compilazione**
 

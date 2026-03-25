@@ -184,7 +184,11 @@
         "note"
       ],
       "properties": {
-        "stato": { "type": "string" },
+        "stato": {
+          "type": "string",
+          "enum": ["Valido", "Non Valido", "Sospeso", "Scaduto"],
+          "description": "Valore del form di onboarding. L'OpenAPI dell'e-service Fonte Autentica (PDND AS) espone per i dataset solo status: VALID, INVALID, SUSPENDED; cfr. manuale Appendice D per la corrispondenza."
+        },
         "descrizione": { "type": "string" },
         "applicabile": {
           "type": "boolean",
