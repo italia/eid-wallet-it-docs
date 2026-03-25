@@ -950,7 +950,7 @@ Content-Type: application/json
 </tr>
 <tr class="row-odd"><td><p><strong>organization_info.contacts</strong></p></td>
 <td><p>Array di stringhe</p></td>
-<td><p>OBBLIGATORIO. Array di indirizzi email di contatto tecnico/amministrativo.</p></td>
+<td><p>OBBLIGATORIO. Array di indirizzi email di contatto per almeno un referente di supporto utenti, uno applicativo e uno sistemistico.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>organization_info.dpa_contact</strong></p></td>
 <td><p>string</p></td>
@@ -976,13 +976,21 @@ Content-Type: application/json
 <td><p>string</p></td>
 <td><p>CONDIZIONALE. Digest crittografico della risorsa immagine del logo per la verifica dell'integrità. OBBLIGATORIO se <code class="docutils literal notranslate"><span class="pre">logo_uri</span></code> è presente. Formato: <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code> (es. <code class="docutils literal notranslate"><span class="pre">&quot;sha-256-abc123...&quot;</span></code>).</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>organization_info.logo_extended_uri</strong></p></td>
+<tr class="row-even"><td><p><strong>organization_info.logo_alt_text_l10n_id</strong></p></td>
+<td><p>string</p></td>
+<td><p>OPZIONALE. Testo alternativo per l'immagine del logo dell'organizzazione.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>organization_info.logo_extended_uri</strong></p></td>
 <td><p>string</p></td>
 <td><p>OPZIONALE. URL dell'immagine del logo esteso dell'organizzazione.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>organization_info.logo_extended_uri#integrity</strong></p></td>
+<tr class="row-even"><td><p><strong>organization_info.logo_extended_uri#integrity</strong></p></td>
 <td><p>string</p></td>
 <td><p>CONDIZIONALE. Digest crittografico della risorsa immagine del logo esteso per la verifica dell'integrità. OBBLIGATORIO se <code class="docutils literal notranslate"><span class="pre">logo_extended_uri</span></code> è presente. Formato: <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code> (es. <code class="docutils literal notranslate"><span class="pre">&quot;sha-256-abc123...&quot;</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>organization_info.logo_extended_alt_text_l10n_id</strong></p></td>
+<td><p>string</p></td>
+<td><p>OPZIONALE. Testo alternativo per l'immagine del logo esteso dell'organizzazione.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>data_capabilities</strong></p></td>
 <td><p>Array di oggetti JSON</p></td>
@@ -994,7 +1002,7 @@ Content-Type: application/json
 </tr>
 <tr class="row-even"><td><p><strong>data_capabilities[].data_origin_l10n_id</strong></p></td>
 <td><p>string</p></td>
-<td><p>OPZIONALE. Chiave di localizzazione che fa riferimento al nome leggibile dell'origine o del dipartimento che fornisce i dati (es. <code class="docutils literal notranslate"><span class="pre">authentic_source1.dataset1.origin</span></code>).</p></td>
+<td><p>OBBLIGATORIO. Chiave di localizzazione che fa riferimento al nome leggibile dell'origine o del dipartimento che fornisce i dati (es. <code class="docutils literal notranslate"><span class="pre">authentic_source1.dataset1.origin</span></code>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>data_capabilities[].intended_purposes</strong></p></td>
 <td><p>Array di stringhe</p></td>
@@ -1022,7 +1030,7 @@ Content-Type: application/json
 </tr>
 <tr class="row-odd"><td><p><strong>data_capabilities[].integration_endpoint</strong></p></td>
 <td><p>string</p></td>
-<td><p>OBBLIGATORIO. Punto di accesso al servizio (endpoint PDND per FA Pubbliche, endpoint API per FA Private).</p></td>
+<td><p>OPZIONALE. Punto di accesso al servizio (endpoint PDND per FA Pubbliche, endpoint API per FA Private).</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>data_capabilities[].api_specification</strong></p></td>
 <td><p>string</p></td>
@@ -1086,6 +1094,10 @@ Content-Type: application/json
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Per ulteriori dettagli sulle funzionalità richieste e sul risultato atteso in termini di esperienza utente, si rimanda alla Sezione <a class="reference internal" href="functionalities.html#ottenimento-degli-attestati-elettronici-di-attributi"><span class="std std-ref">Ottenimento degli Attestati Elettronici di Attributi</span></a> per il parametro <code class="docutils literal notranslate"><span class="pre">data_capabilities.user_information</span></code> e alla Sezione <a class="reference internal" href="functionalities.html#focus-sugli-attestati-elettronici-di-attributi"><span class="std std-ref">Focus sugli Attestati Elettronici di Attributi</span></a> per i parametri <code class="docutils literal notranslate"><span class="pre">organization_info.logo_uri</span></code>, <code class="docutils literal notranslate"><span class="pre">organization_info.logo_extended_uri</span></code>, <code class="docutils literal notranslate"><span class="pre">data_capabilities.logo_uri</span></code>, <code class="docutils literal notranslate"><span class="pre">data_capabilities.background_image</span></code>, <code class="docutils literal notranslate"><span class="pre">data_capabilities.watermark_image</span></code>, <code class="docutils literal notranslate"><span class="pre">data_capabilities.background_color</span></code> e <code class="docutils literal notranslate"><span class="pre">data_capabilities.available_claims.order</span></code>.</p>
+</div>
 </section>
 <section id="esempio-di-registro-fa">
 <h4><span class="section-number">7.4.3.3. </span>Esempio di Registro FA<a class="headerlink" href="#esempio-di-registro-fa" title="Link to this heading">¶</a></h4>
@@ -1778,7 +1790,7 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive <stron
 <li><p>Certificato di Revisione del Veicolo</p></li>
 <li><p>Carta Verde / Assicurazione Internazionale</p></li>
 <li><p>Abbonamento ai Trasporti Pubblici</p></li>
-<li><p>Abbonamento Telepass</p></li>
+<li><p>Abbonamento Pedaggi Stradali</p></li>
 <li><p>Credenziale di Viaggio Digitale</p></li>
 <li><p>Biglietti di Viaggio (aereo, treno, ecc.)</p></li>
 <li><p>Polizza di Assicurazione Viaggio</p></li>
@@ -2027,7 +2039,7 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive <stron
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><p>Accesso</p></td>
+<tr class="row-odd"><td><p>Affiliazione Lavorativa</p></td>
 <td><ul class="simple">
 <li><p>Verifica del permesso di accesso</p></li>
 </ul>
@@ -2732,8 +2744,8 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive <stron
 <span class="w">                    </span><span class="p">]</span>
 <span class="w">                </span><span class="p">},</span>
 <span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ACCESS&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;class.access.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EMPLOYMENT_AFFILIATION&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;class.employment_affiliation.name&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;supported_purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                        </span><span class="s2">&quot;ACCESS_PERMIT&quot;</span>
 <span class="w">                    </span><span class="p">]</span>

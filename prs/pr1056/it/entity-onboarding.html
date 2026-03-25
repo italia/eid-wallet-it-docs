@@ -370,8 +370,232 @@
 </figcaption>
 </figure>
 <p><strong>Fase 1 - Predisposizione del Pacchetto di Registrazione</strong>: L'Entità predispone le informazioni di registrazione conformemente alla tabella dei requisiti sopra riportata. Di seguito è fornito un esempio non normativo delle informazioni in formato JSON.</p>
-<div class="literal-block-wrapper docutils container" id="id4">
-<div class="code-block-caption"><span class="caption-number">Listato 8.1 </span><span class="caption-text">Esempio non normativo di Registrazione Fonte Autentica</span><a class="headerlink" href="#id4" title="Link to this code">¶</a></div>
+<table class="longtable docutils align-default" id="id4">
+<caption><span class="caption-number">Tabella 8.3 </span><span class="caption-text">Campi di Primo Livello del Registro delle Fonti Autentiche</span><a class="headerlink" href="#id4" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Nome Campo</strong></p></th>
+<th class="head"><p><strong>Descrizione</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>id</strong></p></td>
+<td><p>OBBLIGATORIO. Identificatore univoco del Registro delle Fonti Autentiche (es. <code class="docutils literal notranslate"><span class="pre">urn:authentic-sources:it-wallet</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>version</strong></p></td>
+<td><p>OBBLIGATORIO. La versione del Registro delle Fonti Autentiche (es. <code class="docutils literal notranslate"><span class="pre">1.0.0</span></code>).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>last_modified</strong></p></td>
+<td><p>OBBLIGATORIO. Il timestamp che indica quando l'elenco è stato aggiornato l'ultima volta (es. <code class="docutils literal notranslate"><span class="pre">2025-03-15T12:00:00Z</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>localization</strong></p></td>
+<td><p>OBBLIGATORIO. Oggetto di configurazione della localizzazione contenente:</p>
+<ul class="simple">
+<li><p><strong>default_locale</strong>: Codice locale predefinito (es. <code class="docutils literal notranslate"><span class="pre">it</span></code>).</p></li>
+<li><p><strong>available_locales</strong>: Array dei codici locale supportati (es. <code class="docutils literal notranslate"><span class="pre">[&quot;en&quot;,</span> <span class="pre">&quot;it&quot;]</span></code>).</p></li>
+<li><p><strong>base_uri</strong>: URI base per il recupero del bundle di localizzazione (es. <code class="docutils literal notranslate"><span class="pre">https://trust-registry.eid-wallet.example.it/.well-known/l10n/authentic-sources/</span></code>).</p></li>
+<li><p><strong>version</strong>: Versione del formato del bundle di localizzazione.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>authentic_sources</strong></p></td>
+<td><p>OBBLIGATORIO. Un Array JSON in cui ogni voce è un Oggetto JSON che rappresenta un'entità Fonte Autentica. Ogni oggetto contiene i parametri definiti nella tabella &quot;Parametri delle Fonti Autentiche&quot; di seguito, inclusi identificazione dell'entità, informazioni organizzative, capacità sui dati e metodi di integrazione.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="longtable docutils align-default" id="id5">
+<caption><span class="caption-number">Tabella 8.4 </span><span class="caption-text">Parametri delle Fonti Autentiche</span><a class="headerlink" href="#id5" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 15.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Parametro</strong></p></th>
+<th class="head"><p><strong>Tipo</strong></p></th>
+<th class="head"><p><strong>Descrizione</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>entity_id</strong></p></td>
+<td><p>string</p></td>
+<td><p>OBBLIGATORIO. Identificatore univoco che segue lo schema normativo: <code class="docutils literal notranslate"><span class="pre">https://{organization_domain}[/{optional_path}]</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>organization_info</strong></p></td>
+<td><p>oggetto JSON</p></td>
+<td><p>OBBLIGATORIO. Dettagli della persona giuridica e metadati organizzativi.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>organization_info.organization_name_l10n_id</strong></p></td>
+<td><p>string</p></td>
+<td><p>OBBLIGATORIO. Chiave di localizzazione che fa riferimento al nome localizzato dell'organizzazione nel bundle di localizzazione (es. <code class="docutils literal notranslate"><span class="pre">authentic_source1.name</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>organization_info.organization_type</strong></p></td>
+<td><p>string</p></td>
+<td><p>OBBLIGATORIO. Classificazione dell'entità: <code class="docutils literal notranslate"><span class="pre">&quot;public&quot;</span></code> o <code class="docutils literal notranslate"><span class="pre">&quot;private&quot;</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>organization_info.ipa_code</strong></p></td>
+<td><p>string</p></td>
+<td><p>OBBLIGATORIO solo per FA Pubbliche. Codice di registrazione IPA per gli enti pubblici.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>organization_info.legal_identifier</strong></p></td>
+<td><p>string</p></td>
+<td><p>OBBLIGATORIO. Identificativo di registrazione legale (Codice Fiscale/Partita IVA, o equivalente identificativo nazionale per entità straniere).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>organization_info.homepage_uri</strong></p></td>
+<td><p>string</p></td>
+<td><p>OBBLIGATORIO. URL della homepage dell'organizzazione.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>organization_info.contacts</strong></p></td>
+<td><p>Array di stringhe</p></td>
+<td><p>OBBLIGATORIO. Array di indirizzi email di contatto per almeno un referente di supporto utenti, uno applicativo e uno sistemistico.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>organization_info.dpa_contact</strong></p></td>
+<td><p>string</p></td>
+<td><p>OBBLIGATORIO. Indirizzo email del DPA della Fonte Autentica.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>organization_info.policy_uri</strong></p></td>
+<td><p>string</p></td>
+<td><p>OBBLIGATORIO. URL del documento di informativa sulla privacy.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>organization_info.tos_uri</strong></p></td>
+<td><p>string</p></td>
+<td><p>OBBLIGATORIO solo per FA Private. URL del documento dei termini di servizio.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>organization_info.organization_country</strong></p></td>
+<td><p>string</p></td>
+<td><p>OBBLIGATORIO. Codice paese ISO 3166-1 alpha-2 a due lettere dell'organizzazione.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>organization_info.logo_uri</strong></p></td>
+<td><p>string</p></td>
+<td><p>OPZIONALE. URL dell'immagine del logo dell'organizzazione.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>organization_info.logo_uri#integrity</strong></p></td>
+<td><p>string</p></td>
+<td><p>CONDIZIONALE. Digest crittografico della risorsa immagine del logo per la verifica dell'integrità. OBBLIGATORIO se <code class="docutils literal notranslate"><span class="pre">logo_uri</span></code> è presente. Formato: <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code> (es. <code class="docutils literal notranslate"><span class="pre">&quot;sha-256-abc123...&quot;</span></code>).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>organization_info.logo_alt_text_l10n_id</strong></p></td>
+<td><p>string</p></td>
+<td><p>OPZIONALE. Testo alternativo per l'immagine del logo dell'organizzazione.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>organization_info.logo_extended_uri</strong></p></td>
+<td><p>string</p></td>
+<td><p>OPZIONALE. URL dell'immagine del logo esteso dell'organizzazione.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>organization_info.logo_extended_uri#integrity</strong></p></td>
+<td><p>string</p></td>
+<td><p>CONDIZIONALE. Digest crittografico della risorsa immagine del logo esteso per la verifica dell'integrità. OBBLIGATORIO se <code class="docutils literal notranslate"><span class="pre">logo_extended_uri</span></code> è presente. Formato: <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code> (es. <code class="docutils literal notranslate"><span class="pre">&quot;sha-256-abc123...&quot;</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>organization_info.logo_extended_alt_text_l10n_id</strong></p></td>
+<td><p>string</p></td>
+<td><p>OPZIONALE. Testo alternativo per l'immagine del logo esteso dell'organizzazione.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>data_capabilities</strong></p></td>
+<td><p>Array di oggetti JSON</p></td>
+<td><p>OBBLIGATORIO. Array contenente le specifiche delle capacità sui dati.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>data_capabilities[].dataset_id</strong></p></td>
+<td><p>string</p></td>
+<td><p>OBBLIGATORIO. L'identificatore univoco del dataset nell'ambito della Fonte Autentica, che PUÒ essere utilizzato come parametro di query per il servizio <code class="docutils literal notranslate"><span class="pre">GetAttributeClaims</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>data_capabilities[].data_origin_l10n_id</strong></p></td>
+<td><p>string</p></td>
+<td><p>OBBLIGATORIO. Chiave di localizzazione che fa riferimento al nome leggibile dell'origine o del dipartimento che fornisce i dati (es. <code class="docutils literal notranslate"><span class="pre">authentic_source1.dataset1.origin</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>data_capabilities[].intended_purposes</strong></p></td>
+<td><p>Array di stringhe</p></td>
+<td><p>OBBLIGATORIO. Finalità aziendali soddisfatte, utilizzando gli identificatori di finalità della tassonomia (es. <code class="docutils literal notranslate"><span class="pre">[&quot;IDENTITY_VERIFICATION&quot;,</span> <span class="pre">&quot;DRIVING_RIGHTS_VERIFICATION&quot;]</span></code>).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>data_capabilities[].available_claims</strong></p></td>
+<td><p>Array di stringhe</p></td>
+<td><p>OBBLIGATORIO. Claim disponibili da questa capacità dati.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>data_capabilities[].available_claims.claim_name</strong></p></td>
+<td><p>string</p></td>
+<td><p>OBBLIGATORIO. Contiene il nome del claim.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>data_capabilities[].available_claims.order</strong></p></td>
+<td><p>number</p></td>
+<td><p>OBBLIGATORIO. Definisce l'ordine in cui le informazioni vengono mostrate.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>data_capabilities[].available_claims.mandatory</strong></p></td>
+<td><p>boolean</p></td>
+<td><p>OBBLIGATORIO. Definisce se un claim è sempre disponibile o meno.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>data_capabilities[].integration_method</strong></p></td>
+<td><p>string</p></td>
+<td><p>OBBLIGATORIO. Framework di autorizzazione utilizzato per l'accesso ai dati. DEVE essere <code class="docutils literal notranslate"><span class="pre">&quot;pdnd&quot;</span></code> per le FA Pubbliche. Le FA Private POSSONO utilizzare altri framework di autorizzazione come: <code class="docutils literal notranslate"><span class="pre">&quot;oauth2&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;api_key&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;mtls&quot;</span></code>, ecc.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>data_capabilities[].integration_endpoint</strong></p></td>
+<td><p>string</p></td>
+<td><p>OBBLIGATORIO. Punto di accesso al servizio (endpoint PDND per FA Pubbliche, endpoint API per FA Private).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>data_capabilities[].api_specification</strong></p></td>
+<td><p>string</p></td>
+<td><p>OBBLIGATORIO. URL del documento di specifica <a class="reference external" href="https://spec.openapis.org/oas/v3.0.3">OAS3</a> per questa capacità dati.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>data_capabilities[].data_provision</strong></p></td>
+<td><p>oggetto JSON</p></td>
+<td><p>OPZIONALE. Capacità di fornitura dei dati e specifiche temporali.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>data_capabilities[].data_provision.immediate_flow</strong></p></td>
+<td><p>boolean</p></td>
+<td><p>OBBLIGATORIO. Indica se la Fonte Autentica supporta la fornitura immediata dei dati.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>data_capabilities[].data_provision.deferred_flow</strong></p></td>
+<td><p>boolean</p></td>
+<td><p>OBBLIGATORIO. Indica se la Fonte Autentica supporta la fornitura differita dei dati.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>data_capabilities[].data_provision.max_response_time_minutes</strong></p></td>
+<td><p>integer</p></td>
+<td><p>CONDIZIONALE. Tempo massimo in minuti per la risposta della Fonte Autentica a una richiesta di fornitura dati differita. OBBLIGATORIO se <code class="docutils literal notranslate"><span class="pre">deferred_flow</span></code> è <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>data_capabilities[].data_provision.notification_methods</strong></p></td>
+<td><p>Array di stringhe</p></td>
+<td><p>CONDIZIONALE. Array dei metodi di notifica supportati dalla Fonte Autentica per la fornitura dati differita, come <code class="docutils literal notranslate"><span class="pre">&quot;push&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;poll&quot;</span></code>. OBBLIGATORIO se <code class="docutils literal notranslate"><span class="pre">deferred_flow</span></code> è <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>data_capabilities[].user_information_l10n_id</strong></p></td>
+<td><p>string</p></td>
+<td><p>OPZIONALE. Chiave di localizzazione che fa riferimento a una stringa in formato Markdown con informazioni leggibili sulla capacità dati rilevanti per l'Utente (es. <code class="docutils literal notranslate"><span class="pre">authentic_source1.dataset1.userinfo</span></code>). Questa stringa DEVE essere fornita dalla Fonte Autentica al Trust Anchor durante l'onboarding. La formattazione Markdown può essere testo semplice o una combinazione di testo e link. Ad esempio, se il database della Fonte Autentica contiene solo dati registrati <em>dopo</em> una data specifica, questa informazione DEVE essere comunicata tramite questa chiave.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>data_capabilities[].service_documentation</strong></p></td>
+<td><p>string</p></td>
+<td><p>OPZIONALE. URL che punta alla documentazione del servizio della Fonte Autentica.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>data_capabilities[].update_frequency</strong></p></td>
+<td><p>string</p></td>
+<td><p>OPZIONALE. Indica la frequenza con cui la Fonte Autentica aggiorna i propri dati. Valori possibili: <code class="docutils literal notranslate"><span class="pre">&quot;real_time&quot;</span></code> (aggiornamenti quasi in tempo reale, tipicamente entro minuti), <code class="docutils literal notranslate"><span class="pre">&quot;daily&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;weekly&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;monthly&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;on_demand&quot;</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>data_capabilities[].logo_uri</strong></p></td>
+<td><p>string</p></td>
+<td><p>OPZIONALE. URL dell'immagine del logo relativa ai dati.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>data_capabilities[].logo_uri#integrity</strong></p></td>
+<td><p>string</p></td>
+<td><p>CONDIZIONALE. Digest crittografico della risorsa immagine del logo per la verifica dell'integrità. OBBLIGATORIO se <code class="docutils literal notranslate"><span class="pre">logo_uri</span></code> è presente. Formato: <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code> (es. <code class="docutils literal notranslate"><span class="pre">&quot;sha-256-abc123...&quot;</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>data_capabilities[].background_image</strong></p></td>
+<td><p>oggetto JSON</p></td>
+<td><p>OPZIONALE. Oggetto contenente informazioni sull'immagine di sfondo da visualizzare insieme ai dati. L'oggetto contiene i parametri <code class="docutils literal notranslate"><span class="pre">uri</span></code> e <code class="docutils literal notranslate"><span class="pre">uri#integrity</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>data_capabilities[].watermark_image</strong></p></td>
+<td><p>oggetto JSON</p></td>
+<td><p>OPZIONALE. Oggetto contenente informazioni sull'immagine filigrana da visualizzare insieme ai dati. L'oggetto contiene i parametri <code class="docutils literal notranslate"><span class="pre">uri</span></code> e <code class="docutils literal notranslate"><span class="pre">uri#integrity</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>data_capabilities[].background_color</strong></p></td>
+<td><p>string</p></td>
+<td><p>OPZIONALE. Valore stringa del colore di sfondo da visualizzare insieme ai dati.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>data_capabilities[].contacts</strong></p></td>
+<td><p>Array di stringhe</p></td>
+<td><p>OPZIONALE. Array di indirizzi email di contatto del servizio clienti.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-number">Listato 8.1 </span><span class="caption-text">Esempio non normativo di Registrazione Fonte Autentica</span><a class="headerlink" href="#id6" title="Link to this code">¶</a></div>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;data_capabilities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
@@ -620,19 +844,19 @@
 <p class="admonition-title">Nota</p>
 <p>Questa sezione copre i requisiti di registrazione tecnica. Tutte le informazioni amministrative, quali la validazione della persona giuridica, la conformità normativa e l'idoneità organizzativa, si considerano già raccolte e validate dall'Organismo di Vigilanza durante la fase di registrazione amministrativa, che esula dalla presente specifica tecnica. Esempi di informazioni amministrative includono: denominazione legale, numeri di registrazione dell'impresa, persone di contatto, documentazione di conformità legale e autorizzazioni operative.</p>
 </div>
-<figure class="align-default" id="id5">
+<figure class="align-default" id="id7">
 <p class="plantuml">
 <object data="_images/plantuml-1bcf87d7d6deb4e2d1e5e5caf18348f7e29fc537.svg" type="image/svg+xml" style="width:99%">
 <a href="_images/plantuml-1bcf87d7d6deb4e2d1e5e5caf18348f7e29fc537.png"><img src="_images/plantuml-1bcf87d7d6deb4e2d1e5e5caf18348f7e29fc537.png" alt="Processo di onboarding dell'entità federata che mostra la procedura in 4 fasi" style="width: 99.0%"/></a>
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 8.2 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/dLHHRnit37w_Nq7qOKYmfF6wz646l3NmqY4BXXPEr-t1G41BF5khZhf9L5B_-vqi7quvtu1XRmSToUyZFtvy5mIznCR2UzBaKOnZk6KnieSFl77ejU4jVFHEKGWLHd4ScmtvgcgxHADCYopmwYJx5M20clurwYRApla-KB2g5Wju46hXktc9lAA_8mM1XxXfJ0WfTR6egfhWyaSGdESV0cv8yJbbpMV7Hkv-le2FSMEDWdlQmwz_t5_0yc5rFc2-cSCKD_YCrkZyYAnXILvCRHGAmLq84LdHWOvWJ-SpULFlmTFM13dMCrmxtno-oyXSc_fnBntNPXkFETZnlthzJDPUVc7tp5Uk9JRwiXve4klM6PQYvatRsZqq9AXH45fdZJ8KuDd83XG6XOS9KLsJAlDICmH_ldux-m5KqMJ7UyqdsXR3h2gqKeufH9KsfOws0W3843NDNynExT0mU0gjuq23K2Nqju2z3ELxEA_81YeXQpIMz0XkHN-HIhzpxqOJfnAamQHUGqMi1_s_dq-hy7jxK2XflwBWx1Fr2rbiOOBBWPD5vck-X1kjXtuUTuObWB9eclxdrxSgFnor6azhmChJ3pk81qmDjyl_i2s3O_fE2fzS-VpqKuYR1R4aZaP_8pu6UKHM7Us5OFTKMEPwABJAGkOv5TvTkgQrbD179bcHwkAxyahWAGa91wZSQH7t2t6YJwKvFnqYVqF_9MqdPBRbAhEoKLCPPpXT2PT8fM8FWa8DiKmX1RDbqjsD-9I5A8XThFdfw5azU2prZCbsgUCJvsL_z8CQp05dRsOp-71_VhAsERBtHYRHiUbKAgXqxZYbaciDEhydKRlfpfFcTVhzKl4ncydSJ6aORu6QScw_YaSbBtJohfckDSgzOw6jHncfDschVY2FJHTqD5FcV-gKsZ3Q_tjdyxtfXSd71iwkPxEhwzdrU6AttZi_KYyV7107Hvlbs_EEMCV6_WC0">Processo di Onboarding dell'Entità Federata.</a></span><a class="headerlink" href="#id5" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 8.2 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/dLHHRnit37w_Nq7qOKYmfF6wz646l3NmqY4BXXPEr-t1G41BF5khZhf9L5B_-vqi7quvtu1XRmSToUyZFtvy5mIznCR2UzBaKOnZk6KnieSFl77ejU4jVFHEKGWLHd4ScmtvgcgxHADCYopmwYJx5M20clurwYRApla-KB2g5Wju46hXktc9lAA_8mM1XxXfJ0WfTR6egfhWyaSGdESV0cv8yJbbpMV7Hkv-le2FSMEDWdlQmwz_t5_0yc5rFc2-cSCKD_YCrkZyYAnXILvCRHGAmLq84LdHWOvWJ-SpULFlmTFM13dMCrmxtno-oyXSc_fnBntNPXkFETZnlthzJDPUVc7tp5Uk9JRwiXve4klM6PQYvatRsZqq9AXH45fdZJ8KuDd83XG6XOS9KLsJAlDICmH_ldux-m5KqMJ7UyqdsXR3h2gqKeufH9KsfOws0W3843NDNynExT0mU0gjuq23K2Nqju2z3ELxEA_81YeXQpIMz0XkHN-HIhzpxqOJfnAamQHUGqMi1_s_dq-hy7jxK2XflwBWx1Fr2rbiOOBBWPD5vck-X1kjXtuUTuObWB9eclxdrxSgFnor6azhmChJ3pk81qmDjyl_i2s3O_fE2fzS-VpqKuYR1R4aZaP_8pu6UKHM7Us5OFTKMEPwABJAGkOv5TvTkgQrbD179bcHwkAxyahWAGa91wZSQH7t2t6YJwKvFnqYVqF_9MqdPBRbAhEoKLCPPpXT2PT8fM8FWa8DiKmX1RDbqjsD-9I5A8XThFdfw5azU2prZCbsgUCJvsL_z8CQp05dRsOp-71_VhAsERBtHYRHiUbKAgXqxZYbaciDEhydKRlfpfFcTVhzKl4ncydSJ6aORu6QScw_YaSbBtJohfckDSgzOw6jHncfDschVY2FJHTqD5FcV-gKsZ3Q_tjdyxtfXSd71iwkPxEhwzdrU6AttZi_KYyV7107Hvlbs_EEMCV6_WC0">Processo di Onboarding dell'Entità Federata.</a></span><a class="headerlink" href="#id7" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Fase 1 - Invio della Richiesta di Onboarding</strong>: L'Entità Federata avvia il processo di onboarding inviando una richiesta di registrazione tecnica contenente le seguenti informazioni.</p>
-<table class="longtable docutils align-default" id="id6">
-<caption><span class="caption-number">Tabella 8.3 </span><span class="caption-text">Informazioni della Richiesta Tecnica di Onboarding alla Federazione</span><a class="headerlink" href="#id6" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id8">
+<caption><span class="caption-number">Tabella 8.5 </span><span class="caption-text">Informazioni della Richiesta Tecnica di Onboarding alla Federazione</span><a class="headerlink" href="#id8" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 30.0%" />
 <col style="width: 70.0%" />
@@ -665,8 +889,8 @@
 <p>Prima di inviare la richiesta tecnica di onboarding, le Entità Federate DEVONO assicurarsi che il proprio endpoint <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> pubblichi una Configurazione dell'Entità valida (come definito in <a class="reference internal" href="trust-infrastructure.html#entity-configuration"><span class="std std-ref">Entity Configuration</span></a>) firmata con la propria Chiave Privata dell'Entità Federata corrispondente alla Chiave dell'Entità Federata fornita nella richiesta. La Configurazione dell'Entità DEVE già includere le chiavi specifiche dell'applicazione nei metadati con Certificati X.509 auto-firmati nei claim <code class="docutils literal notranslate"><span class="pre">x5c</span></code>.</p>
 </div>
 <p>Un esempio non normativo della struttura delle informazioni tecniche che le Entità Federate inviano durante la richiesta di onboarding della Fase 1:</p>
-<div class="literal-block-wrapper docutils container" id="id7">
-<div class="code-block-caption"><span class="caption-number">Listato 8.2 </span><span class="caption-text">Esempio di richiesta di onboarding alla federazione</span><a class="headerlink" href="#id7" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-number">Listato 8.2 </span><span class="caption-text">Esempio di richiesta di onboarding alla federazione</span><a class="headerlink" href="#id9" title="Link to this code">¶</a></div>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;entity_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://credential-issuer.example.gov&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;entity_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;credential_issuer&quot;</span><span class="p">,</span>
@@ -690,8 +914,8 @@
 </div>
 </div>
 <p>L'esempio seguente mostra il contenuto decodificato della CSR:</p>
-<div class="literal-block-wrapper docutils container" id="id8">
-<div class="code-block-caption"><span class="caption-number">Listato 8.3 </span><span class="caption-text">Esempio di contenuto decodificato della CSR</span><a class="headerlink" href="#id8" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-number">Listato 8.3 </span><span class="caption-text">Esempio di contenuto decodificato della CSR</span><a class="headerlink" href="#id10" title="Link to this code">¶</a></div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Certificate Request:
     Data:
         Version: 0 (0x0)
@@ -849,8 +1073,8 @@
 <section id="struttura-dei-trust-mark">
 <h4><span class="section-number">8.4.5.2. </span>Struttura dei Trust Mark<a class="headerlink" href="#struttura-dei-trust-mark" title="Link to this heading">¶</a></h4>
 <p>I Trust Mark nella Configurazione dell'Entità DEVONO essere rappresentati come oggetti JSON contenenti i seguenti claim:</p>
-<table class="longtable docutils align-default" id="id9">
-<caption><span class="caption-number">Tabella 8.4 </span><span class="caption-text">Claim dell'Oggetto Trust Mark (nella Configurazione dell'Entità)</span><a class="headerlink" href="#id9" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id11">
+<caption><span class="caption-number">Tabella 8.6 </span><span class="caption-text">Claim dell'Oggetto Trust Mark (nella Configurazione dell'Entità)</span><a class="headerlink" href="#id11" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 80.0%" />
@@ -870,8 +1094,8 @@
 </tbody>
 </table>
 <p>Il JWT del Trust Mark (contenuto nel claim <code class="docutils literal notranslate"><span class="pre">trust_mark</span></code> di cui sopra) include i seguenti claim:</p>
-<table class="longtable docutils align-default" id="id10">
-<caption><span class="caption-number">Tabella 8.5 </span><span class="caption-text">Claim del JWT del Trust Mark</span><a class="headerlink" href="#id10" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id12">
+<caption><span class="caption-number">Tabella 8.7 </span><span class="caption-text">Claim del JWT del Trust Mark</span><a class="headerlink" href="#id12" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 80.0%" />

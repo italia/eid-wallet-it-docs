@@ -975,13 +975,21 @@ Content-Type: application/json
 <td><p>string</p></td>
 <td><p>CONDITIONAL. Cryptographic digest of the logo image resource for integrity verification. REQUIRED if <code class="docutils literal notranslate"><span class="pre">logo_uri</span></code> is present. Format: <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;sha-256-abc123...&quot;</span></code>).</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>organization_info.logo_extended_uri</strong></p></td>
+<tr class="row-even"><td><p><strong>organization_info.logo_alt_text_l10n_id</strong></p></td>
+<td><p>string</p></td>
+<td><p>OPTIONAL. Alternative text for the organization's logo image.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>organization_info.logo_extended_uri</strong></p></td>
 <td><p>string</p></td>
 <td><p>OPTIONAL. URL to the organization's extended logo image.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>organization_info.logo_extended_uri#integrity</strong></p></td>
+<tr class="row-even"><td><p><strong>organization_info.logo_extended_uri#integrity</strong></p></td>
 <td><p>string</p></td>
 <td><p>CONDITIONAL. Cryptographic digest of the extended logo image resource for integrity verification. REQUIRED if <code class="docutils literal notranslate"><span class="pre">logo_extended_uri</span></code> is present. Format: <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;sha-256-abc123...&quot;</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>organization_info.logo_extended_alt_text_l10n_id</strong></p></td>
+<td><p>string</p></td>
+<td><p>OPTIONAL. Alternative text for the organization's extended logo image.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>data_capabilities</strong></p></td>
 <td><p>JSON Objects Array</p></td>
@@ -993,7 +1001,7 @@ Content-Type: application/json
 </tr>
 <tr class="row-even"><td><p><strong>data_capabilities[].data_origin_l10n_id</strong></p></td>
 <td><p>string</p></td>
-<td><p>OPTIONAL. Localization key referencing the human-readable name of the data origin or department providing the data (e.g., <code class="docutils literal notranslate"><span class="pre">authentic_source1.dataset1.origin</span></code>).</p></td>
+<td><p>REQUIRED. Localization key referencing the human-readable name of the data origin or department providing the data (e.g., <code class="docutils literal notranslate"><span class="pre">authentic_source1.dataset1.origin</span></code>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>data_capabilities[].intended_purposes</strong></p></td>
 <td><p>String Array</p></td>
@@ -1021,7 +1029,7 @@ Content-Type: application/json
 </tr>
 <tr class="row-odd"><td><p><strong>data_capabilities[].integration_endpoint</strong></p></td>
 <td><p>string</p></td>
-<td><p>REQUIRED. Service access point (PDND endpoint for Public AS, API endpoint for Private AS).</p></td>
+<td><p>OPTIONAL. Service access point (PDND endpoint for Public AS, API endpoint for Private AS).</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>data_capabilities[].api_specification</strong></p></td>
 <td><p>string</p></td>
@@ -1085,6 +1093,10 @@ Content-Type: application/json
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For further details on the required features and the expected outcome in terms of user experience, see the Section <a class="reference internal" href="functionalities.html#issuance-from-the-wallet-instance-catalog"><span class="std std-ref">Issuance from the Wallet Instance Catalog</span></a> for the parameter <cite>data_capabilities.user_information</cite> and Section <a class="reference internal" href="functionalities.html#focus-on-electronic-attestations-of-attributes"><span class="std std-ref">Focus on Electronic Attestations of Attributes</span></a> for the parameters <cite>organization_info.logo_uri</cite>, <cite>organization_info.logo_extended_uri</cite>, <cite>data_capabilities.logo_uri</cite>, <cite>data_capabilities.background_image</cite>, <cite>data_capabilities.watermark_image</cite>, <cite>data_capabilities.background_color</cite> and <cite>data_capabilities.available_claims.order</cite>.</p>
+</div>
 </section>
 <section id="as-registry-example">
 <h4><span class="section-number">7.4.3.3. </span>AS Registry Example<a class="headerlink" href="#as-registry-example" title="Link to this heading">¶</a></h4>
@@ -1744,7 +1756,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 <td><ul class="simple">
 <li><p>Employment Documents</p></li>
 <li><p>Employment Status</p></li>
-<li><p>Access</p></li>
+<li><p>Employment Affiliation</p></li>
 </ul>
 </td>
 <td><ul class="simple">
@@ -1777,7 +1789,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 <li><p>Vehicle Inspection Certificate</p></li>
 <li><p>Green Card / International Insurance</p></li>
 <li><p>Public Transport Pass</p></li>
-<li><p>Telepass Subscription</p></li>
+<li><p>Road Charging Subscription</p></li>
 <li><p>Digital Travel Credential</p></li>
 <li><p>Travel Tickets (air, train, etc.)</p></li>
 <li><p>Travel Insurance Policy</p></li>
@@ -2026,7 +2038,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><p>Access</p></td>
+<tr class="row-odd"><td><p>Employment Affiliation</p></td>
 <td><ul class="simple">
 <li><p>Access permit verification</p></li>
 </ul>
@@ -2731,8 +2743,8 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 <span class="w">                    </span><span class="p">]</span>
 <span class="w">                </span><span class="p">},</span>
 <span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ACCESS&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;class.access.name&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EMPLOYMENT_AFFILIATION&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;class.employment_affiliation.name&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;supported_purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                        </span><span class="s2">&quot;ACCESS_PERMIT&quot;</span>
 <span class="w">                    </span><span class="p">]</span>
@@ -3271,7 +3283,7 @@ The main Journeys below illustrate the interactions with the Registry Infrastruc
 <h3><span class="section-number">7.10.1. </span>Catalog Browsing<a class="headerlink" href="#catalog-browsing" title="Link to this heading">¶</a></h3>
 <p>This <em>Catalog Browsing</em> journey supports Users (both human users via a <strong>Wallet Instance</strong> and automated systems like <strong>Relying Parties</strong> or web portals) in discovering and selecting available Digital Credentials.</p>
 <ol class="arabic simple">
-<li><p><strong>Accessing the Discovery Endpoint</strong>: The entity (e.g., a Wallet Provider or informational portal) accesses the <cite>Registry Discovery Endpoint</cite> (<code class="docutils literal notranslate"><span class="pre">.well-known/it-wallet-registry</span></code>) to obtain the URI of the <strong>Digital Credentials Catalog</strong> ad of the <strong>Taxonomy</strong>.</p></li>
+<li><p><strong>Accessing the Discovery Endpoint</strong>: The entity (e.g., a Wallet Provider or informational portal) accesses the <cite>Registry Discovery Endpoint</cite> (<code class="docutils literal notranslate"><span class="pre">.well-known/it-wallet-registry</span></code>) to obtain the URI of the <strong>Digital Credentials Catalog</strong> and of the <strong>Taxonomy</strong>.</p></li>
 <li><p><strong>Navigation and Selection</strong>:</p></li>
 </ol>
 <blockquote>
