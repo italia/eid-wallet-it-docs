@@ -204,9 +204,9 @@ The Authentic Source registration follows a technical process as described below
    * - **organization_info**
      - JSON object
      - REQUIRED. Legal entity details and organizational metadata.
-   * - **organization_info.organization_name_l10n_id**
-     - string
-     - REQUIRED. Localization key referencing the localized organization name in the localization bundle (e.g., ``authentic_source1.name``).
+   * - **organization_info.organization_name**
+     - JSON Object Array
+     - REQUIRED. Object array containing the organization name in multiple languages. It MUST contain ``locale`` and ``name`` claims.
    * - **organization_info.organization_type**
      - string
      - REQUIRED. Entity classification: ``"public"`` or ``"private"``.
@@ -258,9 +258,9 @@ The Authentic Source registration follows a technical process as described below
    * - **data_capabilities[].dataset_id**
      - string
      - REQUIRED. The unique identifier of the dataset within the scope of the Authentic Source, which MAY be used as a query parameter for the ``GetAttributeClaims`` service.
-   * - **data_capabilities[].data_origin_l10n_id**
-     - string
-     - REQUIRED. Localization key referencing the human-readable name of the data origin or department providing the data (e.g., ``authentic_source1.dataset1.origin``).
+   * - **data_capabilities[].data_origin**
+     - JSON Object Array
+     - REQUIRED. Object array containing the human-readable name of the data origin or department providing the data in multiple languages. It MUST contain ``locale`` and ``name`` claims.
    * - **data_capabilities[].intended_purposes**
      - String Array
      - REQUIRED. Business purposes served, using taxonomy purpose identifiers (e.g., ``["IDENTITY_VERIFICATION", "DRIVING_RIGHTS_VERIFICATION"]``).
@@ -300,9 +300,15 @@ The Authentic Source registration follows a technical process as described below
    * - **data_capabilities[].data_provision.notification_methods**
      - String Array
      - CONDITIONAL. Array of notification methods supported by the Authentic Source for deferred data provision, such as ``"push"``, ``"poll"``. REQUIRED if ``deferred_flow`` is ``true``.
-   * - **data_capabilities[].user_information_l10n_id**
-     - string
-     - OPTIONAL. Localization key referencing a Markdown-formatted string with human-readable information about the data capability relevant to the User (e.g., ``authentic_source1.dataset1.userinfo``). This string MUST be provided by the Authentic Source to the Trust Anchor during onboarding. The Markdown formatting can be plain text or a combination of text and links. For example, if the Authentic Source's database only contains data registered *after* a specific date, this information MUST be conveyed through this key.
+   * - **data_capabilities[].user_information**
+     - JSON object Array
+     - OPTIONAL. Object array containing information about the data capability relevant to the User in multiple languages. This string MUST be provided by the Authentic Source to the Trust Anchor during onboarding. The Markdown formatting can be plain text or a combination of text and links. For example, if the Authentic Source's database only contains data registered *after* a specific date, this information MUST be conveyed through this key. It MUST contain ``locale`` and ``description`` claims.
+   * - **data_capabilities[].administrative_expiration_user_info**
+     - JSON object Array
+     - OPTIONAL. Object array containing information in multiple languages for the User about the administrative expiration status of the dataset and, eventually recommended actions. This string MUST be provided by the Authentic Source to the Trust Anchor during onboarding. The Markdown formatting can be plain text or a combination of text and links. It MUST contain ``locale``, ``title`` and ``description`` claims.
+   * - **data_capabilities[].allowed_states**
+     - JSON object Array
+     - OPTIONAL. Object array containing information in multiple languages for the User about the current status of the dataset and, eventually recommended actions. The status values are defined in the :ref:`credential-revocation:Token Status Lists` Section. It MUST contain ``locale``, ``title``, ``description`` and ``<Status-Type-Value>`` claims.
    * - **data_capabilities[].service_documentation**
      - string
      - OPTIONAL. URL pointing to the Authentic Source service documentation.
