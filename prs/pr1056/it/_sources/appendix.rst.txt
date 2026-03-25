@@ -21,5 +21,4 @@ Appendice
     :caption: Indice dell'Appendice
     :maxdepth: 3
 
-    appendix-oas-pdnd-issuer.rst 
     appendix-oas-pdnd-wp.rst

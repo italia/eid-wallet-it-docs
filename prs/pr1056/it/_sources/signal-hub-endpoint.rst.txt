@@ -101,7 +101,7 @@ La response dell'e-Service di Raccolta Segnale è specificata nel `Signal Hub pu
 Se si verifica un errore, la response DEVE aderire alla specifica definita nel `Signal Hub push-yaml`_.
 
 .. note::
-    Lna Specifica OpenAPI completa dell'e-Service di Raccolta Segnali è disponibile nel `Signal Hub push-yaml`_.
+    La Specifica OpenAPI completa dell'e-Service di Raccolta Segnali è disponibile nel `Signal Hub push-yaml`_.
 
 La Fonte Autentica DEVE implementare la logica necessaria per gestire le richieste all'endpoint dell'e-Service di Raccolta Segnali, nel fare ciò deve considerare i seguenti aspetti:
 

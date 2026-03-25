@@ -70,35 +70,7 @@ Catalogo degli e-Service PDND del Credential Issuer
 
 I Credential Issuer DEVONO fornire i seguenti e-service attraverso PDND per:
 
-  - gestire le notifiche di disponibilità dei dati e gli aggiornamenti degli Attributi provenienti da una Fonte Autentica;
-  - revocare gli Attestati Elettronici emessi per un'Istanza del Wallet revocata
-  - fornire statistiche sugli Attestati Elettronici emessi
-
-.. only:: html
-
-  .. note::
-    Lna Specifica OpenAPI completa è disponibile :raw-html:`<a href="OAS3-PDND-Issuer.html" target="_blank">qui</a>`.
-
-.. only:: latex
-
-  .. note::
-    Lna Specifica OpenAPI completa è disponibile :ref:`appendix-oas-pdnd-issuer:Specifica OpenAPI del Credential Issuer PDND`.
-
-
-Notify Wallet Instance Revocation
-""""""""""""""""""""""""""""""""""
-
-.. list-table::
-  :class: longtable
-  :widths: 20 80
-  :stub-columns: 1
-  
-  * - **Descrizione**
-    - Questo servizio revoca tutti gli Attestati Elettronici associati a uno specifico Utente.
-  * - **Erogatore**
-    - Fornitore di Attestato Elettronico
-  * - **fruitore**
-    - Fornitore di Wallet
+   - fornire statistiche sugli Attestati Elettronici emessi
 
 
 Get Statistics
