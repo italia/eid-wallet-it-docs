@@ -308,7 +308,6 @@ A ciascuna Fonte Autentica DEVE essere assegnato un identificatore univoco che s
 - **organization_domain**: Dominio DNS controllato dall'organizzazione
 - **optional_path**: Componente di percorso aggiuntivo per servizi o dipartimenti specifici
 
-
 L'identificatore FA DEVE seguire le seguenti regole normative:
 
 1. **Protocollo HTTPS**: DEVE utilizzare lo schema HTTPS per sicurezza e verifica della fiducia
@@ -1418,3 +1417,5 @@ Questo percorso descrive come un'**Istanza Wallet** e una **Relying Party (RP)**
   * La RP esegue la verifica finale per assicurarsi che gli attributi presentati siano conformi ai requisiti specifici della richiesta iniziale e alla politica di autorizzazione.
 
 4.  **Accettazione o Rifiuto**: Sulla base della validazione crittografica, della conformità allo schema e dell'autorizzazione basata su politiche, la RP accetta o rifiuta la Credenziale per l'accesso al servizio.
+
+
