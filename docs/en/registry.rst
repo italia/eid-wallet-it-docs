@@ -986,7 +986,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes **M
        * Access to healthcare bonuses
        * Use of mental health vouchers
        * Use of sports vouchers
-   * - Access
+   * - Employment Affiliation
      - 
        * Access permit verification
 
