@@ -391,7 +391,7 @@ The Authentic Source Registry MUST contain the following parameters for each reg
      - REQUIRED. URL pointing to the organization's homepage.
    * - **organization_info.contacts**
      - String Array
-     - REQUIRED. Array of technical/administrative contact email addresses.
+     - REQUIRED. Array of contact email addresses for at least one user-support, one application, and one systems specialist.
    * - **organization_info.dpa_contact**
      - string
      - REQUIRED. An e-mail address of Authentic Source DPA.
