@@ -23,7 +23,6 @@
 - [Appendice C – Mappatura errori](#appendice-c--mappatura-errori)
 - [Appendice D – Mappatura stati](#appendice-d--mappatura-stati)
 - [Appendice E – Assistenza](#appendice-e--assistenza)
-- [Template e-service PDND](#Template-eservice-PDND)
 
 ## Introduzione e contesto
 
@@ -151,7 +150,6 @@ Il Sistema IT-Wallet consente all’utente di ottenere in formato digitale i pro
 L’Ente deve quindi definire quali dati fornirà e in quale ordine, affinché l'EAA prodotto risulti adeguato all'utilizzo da parte dell’utente. 
 
 A tal fine, l’Ente deve compilare la sezione `e_service.response.data_model ` del file [Progettazione caratteristiche EAA](progettazione-caratteristiche-eaa.json) così da definire i dettagli sui dati che verranno messi a disposizione (es. tipologia, obbligatorietà, formato, lunghezza massima consentita, ordinamento, etc.). Per riferimenti e istruzioni di compilazione vedi [Appendice B](#appendice-b--data-model).
-Nella sezione [Template e-service PDND](#Template-eservice-PDND) sono riportati i template e-service pubblicati su PDND relativi ad alcune tipologie di Attestati IT-Wallet; l'Ente interessato può adottare uno dei template messi a disposizione oppure utilizzarlo come punto di partenza per la definizione del proprio data model (sezione `e_service.response.data_model`).
 
 In conclusione, un'adeguata definizione del Data Model pone le basi per una corretta implementazione dell'e-service da pubblicare su PDND (vedi [Step 2](#step-2--pubblicazione-in-collaudo)) ma è altresì importante considerare e rispettare i seguenti requisiti tecnici: 
 
@@ -163,7 +161,6 @@ In conclusione, un'adeguata definizione del Data Model pone le basi per una corr
 L'e-service messo a disposizione dall'Ente deve prevedere e gestire specifiche situazioni di errore che possono verificarsi nella fase di recupero dei dati da parte del Fornitore di Attestati di Attributi.
 
 A tal fine, l'Ente deve compilare la sezione `e_service.response.mappatura_errori `del file [Progettazione caratteristiche EAA](progettazione-caratteristiche-eaa.json). La mappatura descrive le risposte che il servizio messo a disposizione dovrà obbligatoriamente gestire, consentendo comunque l'aggiunta di eventuali errori specifici, per garantire una corretta informazione all'utente in caso di errori durante l'ottenimento dell'EAA. Per riferimenti e istruzioni di compilazione vedi [Appendice C](#appendice-c--mappatura-errori).
-Nella sezione [Template e-service PDND](#Template-eservice-PDND) sono riportati i template e-service pubblicati su PDND relativi ad alcune tipologie di Attestati IT-Wallet; l'Ente interessato può adottare uno dei template messi a disposizione oppure utilizzarlo come punto di partenza per la mappatura degli errori  (sezione `e_service.response.mappatura_errori`).
 ### **Definire la gestione degli stati del ciclo di vita**
 
 Il Sistema IT-Wallet supporta dei meccanismi per l’aggiornamento dello stato e la gestione del ciclo di vita dell’EAA. Gli stati che l'Ente comunica tramite Signal Hub determinano il ciclo di vita degli EAA prodotti dai propri dati.  
@@ -189,7 +186,6 @@ Per approfondimenti vai alle Specifiche Tecniche, sezione [Ciclo di Vita degli A
 
 A tal fine, l'Ente deve compilare la sezione `e_service.response.stati` del file [Progettazione caratteristiche EAA](progettazione-caratteristiche-eaa.json) per definire i messaggi e l'applicabilità dei quattro valori **Valido**, **Non Valido**, **Sospeso** e **Scaduto**.
 
-Nella sezione [Template e-service PDND](#Template-eservice-PDND) sono riportati i template e-service pubblicati su PDND relativi ad alcune tipologie di Attestati IT-Wallet; l'Ente interessato può adottare uno dei template messi a disposizione oppure utilizzarlo come punto di partenza per la mappatura degli stati (sezione `e_service.response.stati`).
 Per riferimenti e istruzioni di compilazione vedi [Appendice D](#appendice-d--mappatura-stati).
 
 **Nota**: 
@@ -227,7 +223,6 @@ Per i dettagli implementativi, consultare le Specifiche Tecniche, in particolare
 - [e-Service PDND](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/e-service-pdnd.html)
 - [Endpoint delle Fonti Autentiche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/authentic-source-endpoint.html)
 - [Signal Hub](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/signal-hub-endpoint.html)
-- [Template e-service PDND](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/e-service-pdnd-template.html)
 In questo step, l'Ente interessato deve: 
 ### **Aderire alla Piattaforma Digitale Nazionale Dati (PDND)**
 
@@ -656,12 +651,5 @@ Nello specifico, l'Ente deve contribuire al [modello di assistenza](https://ital
 
 ---
 
-## Template e-service PDND
 
-Di seguito si condividono i template e-service PDND già definiti o contenuti nella soluzione pubblica IT-Wallet, che l'Ente dovrebbe prendere a riferimento per allineare il proprio e-service (sezione **e_service**) quando intende rendere disponibili dati appartenenti alle stesse categorie semantico-funzionali. In particolare: 
-
-- EAA di affiliazione ad un ente o organizzazione 
-- EAA di patenti o patentini 
-- EAA di titoli o qualifiche 
-- EAA di iscrizioni o frequenze
 
