@@ -297,7 +297,7 @@ L'Ente, se precedentemente sviluppato in collaudo, deve provvedere in questo ste
 
 ### **Notificare l'avvenuto rilascio in produzione**
 
-L'Ente deve notificare il Fornitore di Attestati di Attributi circa l'avvenuto rilascio dell'e-service in produzione su PDND, dei servizi di Signal Hub in produzione e, se previsto, del Credential Offer. In caso di EAA di interesse pubblico, l'Ente deve notificare IPZS inviando una mail all'indirizzo identitadigitale@pec.ipzs.it e, in caso di EAA disponibile nella soluzione pubblica di IT-Wallet, l'Ente deve notificare PagoPA inviando una mail all'indirizzo XX.
+L'Ente deve notificare il Fornitore di Attestati di Attributi circa l'avvenuto rilascio dell'e-service in produzione su PDND, dei servizi di Signal Hub in produzione e, se previsto, del Credential Offer. In caso di EAA di interesse pubblico, l'Ente deve notificare IPZS inviando una mail all'indirizzo e-mail [identitadigitale@pec.ipzs.it](mailto:identitadigitale@pec.ipzs.it) e, in caso di EAA disponibile nella soluzione pubblica di IT-Wallet, l'Ente deve notificare PagoPA inviando una mail all'indirizzo e-mail [itwallet@pagopa.it](mailto:itwallet@pagopa.it).
 
 ## Step 5 | Test in produzione
 
