@@ -1,0 +1,876 @@
+{
+  "$schema": "./json-schemas/schema-validazione-form-onboarding-fonte-autentica.schema.json",
+  "metadata": {
+    "nome_ente_titolare": "Denominazione ente titolare (da compilare)",
+    "nome_eaa": "Denominazione EAA (da compilare)",
+    "data_compilazione": "",
+    "versione": "0.6.0"
+  },
+  "casi_d_uso": {
+    "target_utenti": {
+      "documento_fisico_preesistente": {
+        "domanda": "Il dataset è relativo a un documento fisico preesistente?",
+        "suggerimento": "true (es. patente, titolo di studio); false",
+        "risposta": false
+      },
+      "chi_puo_richiedere": {
+        "domanda": "Chi può o potrà richiedere l'EAA relativa al dataset? Può ottenerla l'intera popolazione italiana o solo alcuni cittadini?",
+        "suggerimento": "Solo maggiorenni residenti in una specifica regione",
+        "risposta": ""
+      },
+      "prerequisiti": {
+        "domanda": "Esistono prerequisiti per richiedere l'EAA relativa al dataset? Se sì, quali?",
+        "suggerimento": "Necessario essere in possesso di altro documento, rispettare determinati criteri",
+        "risposta": ""
+      },
+      "volume_rilascio": {
+        "domanda": "Qual è il volume di rilascio del documento attuale?",
+        "suggerimento": "200k Carte Europee della disabilità emesse in Italia",
+        "risposta": ""
+      },
+      "limitazioni_estensioni": {
+        "domanda": "L'EAA relativa al dataset potrà essere richiesta da tutti coloro che attualmente possono richiedere il documento oppure sono previste limitazioni e/o estensioni? Se sì, quali?",
+        "suggerimento": "Ambito geografico; disponibilità limitata ai dati successivi a una determinata data",
+        "risposta": ""
+      }
+    },
+    "emissione_formato": {
+      "dominio": {
+        "domanda": "A quale dominio appartiene il dataset relativo all'EAA?",
+        "suggerimento": "Istruzione, sanità",
+        "risposta": ""
+      },
+      "interesse_pubblico": {
+        "domanda": "L'EAA relativa al dataset è di interesse pubblico?",
+        "suggerimento": "true",
+        "risposta": false
+      },
+      "interesse_pubblico_motivazione": {
+        "domanda": "Perché?",
+        "suggerimento": "Rilasciato da ente pubblico, l’uso è richiesto o centrale per diritti/servizi di interesse generale, o per conformità/regolazione con impatto su terzi",
+        "risposta": ""
+      },
+      "canali_richiesta": {
+        "domanda": "Tramite quali canali il cittadino può ad oggi richiedere il documento?",
+        "suggerimento": "Sportello fisico, portale online",
+        "risposta": ""
+      },
+      "richieste_fisico_vs_digitale": {
+        "domanda": "Se possibile richiederlo anche online, quante sono le richieste fatte tramite canale fisico e quante tramite canale digitale, all'interno di un arco temporale individuato negli ultimi 5 anni.",
+        "suggerimento": "70% fisico, 30% digitale (ultimi 5 anni)",
+        "risposta": ""
+      },
+      "formato_attuale": {
+        "domanda": "In quale formato viene emesso ad oggi il documento? Card plastica, cartaceo, digitale?",
+        "suggerimento": "Card plastica e versione digitale",
+        "risposta": ""
+      },
+      "dettagli_digitale": {
+        "domanda": "Se è già possibile ottenere il documento in formato digitale, fornisci dettagli sulle modalità di emissione",
+        "suggerimento": "Scaricabile dal portale istituzionale in formato PDF",
+        "risposta": ""
+      },
+      "possesso_documento": {
+        "domanda": "Per ottenere l'EAA relativa al dataset sarà necessario essere già in possesso di un relativo documento fisico associabile al dataset?",
+        "suggerimento": "true (es. è sufficiente aver concluso l'iter di richiesta); false",
+        "risposta": false
+      },
+      "possesso_documento_condizioni": {
+        "domanda": "Se sì, specificare motivazioni e condizioni",
+        "suggerimento": "È sufficiente aver concluso l'iter di richiesta del documento",
+        "risposta": ""
+      },
+      "catalogo_o_touchpoint": {
+        "domanda": "L'utente potrà ottenere l'EAA relativa al dataset solo dal catalogo EAA del Wallet o anche da un touchpoint gestito dal tuo Ente?",
+        "suggerimento": "Entrambi: catalogo e touchpoint Ente",
+        "risposta": ""
+      },
+      "modalita_sincrona_differita": {
+        "domanda": "L'utente potrà ottenere l'EAA relativa al dataset in modalità sincrona (preferibile) o in modalità differita? Se differita, perché?",
+        "suggerimento": "Differita, per motivi di controlli aggiuntivi",
+        "risposta": ""
+      },
+      "variazioni_dati": {
+        "domanda": "Sono previste variazioni tra i dati dell'EAA relativa al dataset e i dati attualmente presenti nel documento? Se sì, quali e perché?",
+        "suggerimento": "Disponibilità limitata di dati storici",
+        "risposta": ""
+      },
+      "eaa_univoca": {
+        "domanda": "È prevista un'EAA relativa al dataset univoca per ciascun soggetto o potranno essere emesse più EAA per lo stesso soggetto?",
+        "suggerimento": "true per Una sola tessera sanitaria; false per molti titoli accademici",
+        "risposta": true
+      },
+      "identificazione_utente": {
+        "domanda": "Per fornire l'EAA relativa al dataset sarà necessario identificare l'utente?",
+        "suggerimento": "true",
+        "risposta": true
+      },
+      "identificazione_utente_motivazione": {
+        "domanda": "Perché? Con quale mezzo?",
+        "suggerimento": "Tramite Codice Fiscale/Carta Di Identità e riconoscimento de-visu",
+        "risposta": ""
+      }
+    },
+    "utilizzo": {
+      "contesti_uso": {
+        "domanda": "Quali sono (o saranno) i contesti d'uso dell'EAA relativa al dataset? Per cosa viene utilizzato?",
+        "suggerimento": "Dimostrare possesso titoli professionali, accedere ad agevolazioni",
+        "risposta": ""
+      },
+      "soggetti_verificatori": {
+        "domanda": "Quali sono i principali soggetti che verificano (o verificheranno) l'EAA relativa al dataset?",
+        "suggerimento": "Soggetti privati addetti alla sicurezza, operatori pubblici allo sportello",
+        "risposta": ""
+      },
+      "verifica_validita": {
+        "domanda": "Come è possibile verificare la validità del documento? QR code, Barcode, altri strumenti?",
+        "suggerimento": "QR code, verifica de visu",
+        "risposta": ""
+      },
+      "strumenti_verificatore": {
+        "domanda": "Quali strumenti sono previsti da parte del verificatore per effettuare la verifica?",
+        "suggerimento": "App per scan, verifica de visu",
+        "risposta": ""
+      },
+      "utilizzo_continuo": {
+        "domanda": "Il documento consente un utilizzo continuo o perde di validità non appena utilizzato?",
+        "suggerimento": "Utilizzo continuo (tessera sanitaria); uso singolo (biglietto aereo)",
+        "risposta": ""
+      },
+      "contesto_online_dal_vivo": {
+        "domanda": "Il documento viene principalmente utilizzato online, dal vivo o in entrambi i contesti?",
+        "suggerimento": "Entrambi: verifica presso sportelli e online",
+        "risposta": ""
+      },
+      "tempo_validita": {
+        "domanda": "Per quanto tempo è valido il documento? Validità uguale per tutti o variabile?",
+        "suggerimento": "10 anni per tutti i cittadini",
+        "risposta": ""
+      },
+      "rinnovo": {
+        "domanda": "L'EAA relativa al dataset è rinnovabile?",
+        "suggerimento": "true",
+        "risposta": false
+      },
+      "rinnovo_procedura": {
+        "domanda": "Se sì, cosa deve fare l'utente? Procedura digitale o uffici fisici?",
+        "suggerimento": "Presso uffici territoriali o online",
+        "risposta": ""
+      },
+      "validita_europa": {
+        "domanda": "L'EAA relativa al dataset può essere utilizzata solo in Italia o anche in Europa?",
+        "suggerimento": "Solo Italia / Anche in Europa",
+        "risposta": ""
+      },
+      "limitazioni_territoriali": {
+        "domanda": "Il documento è valido su tutto il territorio o esistono limitazioni?",
+        "suggerimento": "Solo in alcune Regioni",
+        "risposta": ""
+      },
+      "eaa_tutti_contesti": {
+        "domanda": "Sarà possibile utilizzare l'EAA relativa al dataset in tutti i contesti in cui ad oggi è possibile utilizzare il documento?",
+        "suggerimento": "true",
+        "risposta": false
+      },
+      "eaa_tutti_contesti_dettaglio": {
+        "domanda": "Se sì, quali contesti?",
+        "suggerimento": "Contesti remoto e di prossimità",
+        "risposta": ""
+      },
+      "estensione_contesti": {
+        "domanda": "L'EAA relativa al dataset consentirà di estendere gli attuali contesti di utilizzo del documento?",
+        "suggerimento": "true (es. nuovi casi d'uso per verifica remota)",
+        "risposta": false
+      },
+      "estensione_contesti_dettaglio": {
+        "domanda": "Se sì, quali estensioni?",
+        "suggerimento": "Nuovi casi d'uso per verifica remota",
+        "risposta": ""
+      }
+    },
+    "pagamento": {
+      "gratuito_o_pagamento": {
+        "domanda": "L'EAA relativa al dataset è gratuita o prevede un pagamento a carico dell'utente?",
+        "suggerimento": "true (Gratuito); false (Pagamento)",
+        "risposta": false
+      },
+      "modalita_pagamento": {
+        "domanda": "Se prevede un pagamento, quali sono le modalità consentite?",
+        "suggerimento": "PagoPA, carta di credito",
+        "risposta": ""
+      },
+      "pagamento_rinnovo": {
+        "domanda": "Il rinnovo prevede un pagamento?",
+        "suggerimento": "false",
+        "risposta": false
+      }
+    },
+    "legale_privacy": {
+      "normativa": {
+        "domanda": "Le modalità di emissione/presentazione dell'EAA relativa al dataset sono regolate da normativa?",
+        "suggerimento": "D.Lgs. 82/2005, CAD",
+        "risposta": ""
+      },
+      "proprieta_dati": {
+        "domanda": "I dati sono di proprietà dell'ente o condivisi con altri enti? Quali?",
+        "suggerimento": "Proprietà dell'ente, integrazione con ANPR (Dati sanitari)",
+        "risposta": ""
+      },
+      "dati_sensibili": {
+        "domanda": "I dati contenuti nel dataset sono sensibili?",
+        "suggerimento": "true (es. dati sanitari)",
+        "risposta": false
+      },
+      "dati_sensibili_motivazione": {
+        "domanda": "Se sì, perché?",
+        "suggerimento": "Dati sanitari",
+        "risposta": ""
+      }
+    }
+  },
+  "e_service": {
+    "pdnd_metadata": {
+      "pdnd_eservice_id_prod": "",
+      "pdnd_eservice_id_uat": "",
+      "pdnd_eservice_name": "",
+      "token_type": "Bearer",
+      "is_audit_rest_02_required": true
+    },
+    "request": {
+      "parametri_input": [
+      {
+        "nome_parametro": "datasetId",
+        "descrizione": "Identificativo del set di dati trasmesso al CI",
+        "nome_campo": "ID del Dataset",
+        "esempio_campo_compilato": "fofi",
+        "obbligatorio": true,
+        "tipologia": "ALFANUMERICO",
+        "lunghezza_massima_caratteri": 4,
+        "possibili_valori_ammessi": ["fofi"],
+        "note": ""
+      },
+      {
+        "nome_parametro": "unique_id",
+        "descrizione": "Identificativo univoco del cittadino",
+        "nome_campo": "Codice Fiscale o IdANPR",
+        "esempio_campo_compilato": "fofi",
+        "obbligatorio": true,
+        "tipologia": "ALFANUMERICO",
+        "lunghezza_massima_caratteri": 16,
+        "possibili_valori_ammessi": "",
+        "note": ""
+      },
+      {
+        "nome_parametro": "object_id",
+        "descrizione": "Identificativo univoco di un dataset relativo ad una specifica Credenziale",
+        "nome_campo": "ID del Credential Dataset",
+        "esempio_campo_compilato": "c9cb2bab-4188-4f48-9fd2-8d523edcbeeb",
+        "obbligatorio": false,
+        "tipologia": "ALFANUMERICO",
+        "lunghezza_massima_caratteri": 36,
+        "possibili_valori_ammessi": "",
+        "note": "Non deve contenere dati personali"
+      }
+    ]
+    },
+    "response": {
+      "versione": "0.1.0",
+      "dataset": [
+      {
+        "attestazione": "ISEE",
+        "parametro": "tax_code",
+        "descrizione": "codice fiscale dell'utente",
+        "nome_campo": "Codice Fiscale",
+        "esempio_campo_compilato": "DLNRSL88L51C348G",
+        "obbligatorio": true,
+        "tipologia": "ALFANUMERICO",
+        "lunghezza_massima_caratteri": 16,
+        "note": ""
+      }
+      ]
+    },
+    "mappatura_errori": [
+      {
+        "codice": 200,
+        "esito": "Attestato digitale valido",
+        "applicabile": true,
+        "causa": "Vengono ritornati correttamente i dati, nessuna risposta di errore. Qualora non ci fossero azioni utente da eseguire, riportare stringa vuota.",
+        "azione_utente": "",
+        "note": ""
+      },
+      {
+        "codice": 400,
+        "esito": "Bad Request",
+        "applicabile": true,
+        "causa": "La richiesta non può essere elaborata: parametri richiesti assenti, valori non validi, richiesta malformata, oppure DPoP proof non valida (ove applicabile).",
+        "azione_utente": "Verificare i dati inseriti e ripetere l'operazione; se il problema persiste, contattare l'assistenza dell'Ente.",
+        "note": "Allineare il messaggio al dettaglio restituito in application/problem+json (title/detail) ove presente."
+      },
+      {
+        "codice": 401,
+        "esito": "Unauthorized",
+        "applicabile": true,
+        "causa": "Il voucher o il token di accesso è scaduto, revocato, non valido o la richiesta non risulta autenticata correttamente.",
+        "azione_utente": "Ripetere il flusso da capo per ottenere un nuovo accesso autorizzato al servizio.",
+        "note": "Coerente con le Specifiche Tecniche su autenticazione verso l'endpoint e-service PDND."
+      },
+      {
+        "codice": 403,
+        "esito": "Forbidden",
+        "applicabile": false,
+        "causa": "Il Fruitore è autenticato ma non ha permesso di accedere alla risorsa o ai dati richiesti.",
+        "azione_utente": "Rivolgersi all'Ente titolare per verificare abilitazioni e profili di accesso.",
+        "note": ""
+      },
+      {
+        "codice": 404,
+        "esito": "Not found",
+        "applicabile": true,
+        "causa": "Non sono stati trovati documenti o attestazioni di titolarità per l'utente richiesto, oppure l'endpoint/risorsa indicata non esiste.",
+        "azione_utente": "Chiudere e riprovare successivamente, dopo aver verificato i prerequisiti (es. titolarità del documento).",
+        "note": "L'utente deve prima acquisire la titolarità del documento per ottenerne la versione digitale, ove pertinente."
+      },
+      {
+        "codice": 405,
+        "esito": "Method Not Allowed",
+        "applicabile": false,
+        "causa": "È stato usato un metodo HTTP non consentito per l'endpoint e-service.",
+        "azione_utente": "Contattare il referente tecnico: la configurazione del client o del proxy deve usare il metodo previsto dall'OpenAPI.",
+        "note": "Errore tipicamente lato integrazione, non risolvibile dall'utente finale."
+      },
+      {
+        "codice": 406,
+        "esito": "Not Acceptable",
+        "applicabile": false,
+        "causa": "Il server non può produrre una risposta compatibile con gli header Accept inviati dal client.",
+        "azione_utente": "Aggiornare il client secondo i Content-Type accettati dall'API (es. application/json).",
+        "note": ""
+      },
+      {
+        "codice": 408,
+        "esito": "Request timeout",
+        "applicabile": false,
+        "causa": "La richiesta non è stata completata entro il tempo massimo previsto (timeout lato server o rete).",
+        "azione_utente": "Riprovare più tardi; se il problema è ricorrente, segnalare all'assistenza.",
+        "note": ""
+      },
+      {
+        "codice": 409,
+        "esito": "Conflict",
+        "applicabile": false,
+        "causa": "La richiesta è in conflitto con lo stato attuale della risorsa (es. operazione non coerente con lo stato del documento).",
+        "azione_utente": "Verificare lo stato del documento presso l'Ente e ripetere l'operazione quando ammesso.",
+        "note": ""
+      },
+      {
+        "codice": 410,
+        "esito": "Gone",
+        "applicabile": false,
+        "causa": "La risorsa richiesta non è più disponibile in modo permanente presso l'URL indicato.",
+        "azione_utente": "Utilizzare il canale o l'endpoint aggiornato indicato dall'Ente o dalla documentazione PDND.",
+        "note": ""
+      },
+      {
+        "codice": 413,
+        "esito": "Payload Too Large",
+        "applicabile": false,
+        "causa": "Il corpo della richiesta supera i limiti di dimensione accettati dall'endpoint.",
+        "azione_utente": "Ridurre il payload o contattare il referente tecnico per i limiti previsti.",
+        "note": ""
+      },
+      {
+        "codice": 414,
+        "esito": "URI Too Long",
+        "applicabile": false,
+        "causa": "L'URI della richiesta eccede la lunghezza massima consentita dal server.",
+        "azione_utente": "Accorciare query string o parametri; rivedere l'integrazione del client.",
+        "note": ""
+      },
+      {
+        "codice": 421,
+        "esito": "Misdirected Request",
+        "applicabile": false,
+        "causa": "La richiesta è stata diretta a un server che non può produrre una risposta (es. SNI/host non coerente).",
+        "azione_utente": "Verificare URL, certificati e instradamento con il team infrastrutturale.",
+        "note": ""
+      },
+      {
+        "codice": 429,
+        "esito": "Too Many Requests",
+        "applicabile": true,
+        "causa": "È stato superato il limite di richieste consentite nell'unità di tempo (rate limiting / throttling).",
+        "azione_utente": "Attendere il tempo indicato (es. header Retry-After) e ripetere la richiesta con moderazione.",
+        "note": "Obbligatorio gestire in modo informativo verso il Fruitore/issuer secondo policy PDND."
+      },
+      {
+        "codice": 431,
+        "esito": "Request Header Fields Too Large",
+        "applicabile": false,
+        "causa": "Un singolo header o l'insieme degli header supera il limite accettato dal server.",
+        "azione_utente": "Ridurre dimensione degli header (es. token, cookie) o rivedere la configurazione del client.",
+        "note": ""
+      },
+      {
+        "codice": 451,
+        "esito": "Unavailable For Legal Reasons",
+        "applicabile": false,
+        "causa": "L'accesso alla risorsa è negato per motivi legali o normativi.",
+        "azione_utente": "Consultare le comunicazioni dell'Ente o rivolgersi all'assistenza per le vie legalmente previste.",
+        "note": ""
+      },
+      {
+        "codice": 500,
+        "esito": "Errore generico interno",
+        "applicabile": true,
+        "causa": "L'endpoint e-service ha riscontrato un errore interno non previsto durante l'elaborazione della richiesta.",
+        "azione_utente": "Riprovare più tardi; se l'errore persiste, contattare l'assistenza dell'Ente.",
+        "note": "Non esporre dettagli sensibili di stack trace all'utente finale."
+      },
+      {
+        "codice": 501,
+        "esito": "L'Authentic Source non ha ancora implementato il servizio",
+        "applicabile": false,
+        "causa": "La funzionalità richiesta non è implementata sull'endpoint.",
+        "azione_utente": "Verificare la versione dell'e-service pubblicata su PDND e la roadmap dell'Ente.",
+        "note": ""
+      },
+      {
+        "codice": 503,
+        "esito": "Il servizio richiesto non è momentaneamente disponibile",
+        "applicabile": true,
+        "causa": "L'endpoint e-service è temporaneamente non disponibile (manutenzione, sovraccarico o indisponibilità infrastrutturale).",
+        "azione_utente": "Attendere e ripetere la richiesta dopo alcuni minuti.",
+        "note": "Può essere utile indicare finestre di manutenzione note nelle note operative."
+      },
+      {
+        "codice": 540,
+        "esito": "EAA non esistente presso l'Authentic Source",
+        "applicabile": false,
+        "causa": "Nel dominio dell'Authentic Source non risulta un EAA/dataset associabile all'utente nella richiesta (es. \"NOT_EXISTING\": \"l'EAA non è presente presso l'Authentic Source\").",
+        "azione_utente": "Completare i prerequisiti presso l'Ente (es. richiesta documento) o attendere l'elaborazione (es. \"PENDING\": \"l'EAA è in attesa di emissione\").",
+        "note": "Per la compilazione fine usare coppie \"state\": \"description\" come da Appendice C del manuale."
+      },
+      {
+        "codice": 541,
+        "esito": "EAA in stato non valido o sospeso",
+        "applicabile": false,
+        "causa": "I dati esistono ma lo stato del ciclo di vita non consente l'emissione o l'uso richiesto (es. scaduto, sospeso, revocato, annullato), coerente con Signal Hub / notifiche stato.",
+        "azione_utente": "Seguire la procedura indicata dall'Ente per il ripristino (es. rinnovo, revoca della sospensione) e richiedere nuovamente l'EAA.",
+        "note": "Dettagliare per ciascuno stato previsto nelle Specifiche Tecniche (notify status / ciclo di vita)."
+      }
+    ],
+    "stati": [
+      {
+        "stato": "Valido",
+        "descrizione": "L'EAA è valido e può essere utilizzato",
+        "applicabile": true,
+        "azione_utente": "",
+        "messaggio": "",
+        "note": ""
+      },
+      {
+        "stato": "Non Valido",
+        "descrizione": "L'EAA non è più valido e dunque non può essere più utilizzato",
+        "applicabile": false,
+        "azione_utente": "L'utente deve scaricare nuovamente l'EAA in app",
+        "messaggio": "",
+        "note": ""
+      },
+      {
+        "stato": "Sospeso",
+        "descrizione": "L'EAA è sospeso e non può essere temporaneamente utilizzato",
+        "applicabile": false,
+        "azione_utente": "",
+        "messaggio": "",
+        "note": ""
+      },
+      {
+        "stato": "Scaduto",
+        "descrizione": "L'EAA è scaduto e necessita una riemissione",
+        "applicabile": false,
+        "azione_utente": "",
+        "messaggio": "",
+        "note": ""
+      }
+    ],
+    "lista_nome_campo": [
+      {
+        "categoria": "Dati anagrafici e di identità",
+        "parametro": "",
+        "nome_campo": "Nome",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Dati anagrafici e di identità",
+        "parametro": "",
+        "nome_campo": "Cognome",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Dati anagrafici e di identità",
+        "parametro": "",
+        "nome_campo": "Data di nascita",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Dati anagrafici e di identità",
+        "parametro": "",
+        "nome_campo": "Luogo di nascita",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Dati anagrafici e di identità",
+        "parametro": "",
+        "nome_campo": "Codice Fiscale",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Dati anagrafici e di identità",
+        "parametro": "",
+        "nome_campo": "Nazionalità",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Residenza e domicilio",
+        "parametro": "",
+        "nome_campo": "Comune di residenza",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Residenza e domicilio",
+        "parametro": "",
+        "nome_campo": "Frazione",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Residenza e domicilio",
+        "parametro": "",
+        "nome_campo": "Indirizzo",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Residenza e domicilio",
+        "parametro": "",
+        "nome_campo": "Seconda riga indirizzo",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Residenza e domicilio",
+        "parametro": "",
+        "nome_campo": "Codice postale",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Residenza e domicilio",
+        "parametro": "",
+        "nome_campo": "Provincia / Stato / Regione",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Residenza e domicilio",
+        "parametro": "",
+        "nome_campo": "Residente dal",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Residenza e domicilio",
+        "parametro": "",
+        "nome_campo": "Residenza estera",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Diploma conclusivo del primo ciclo di istruzione",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Diploma conclusivo del secondo ciclo di istruzione",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Diploma",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Descrizione diploma",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Istituto",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Codice istituto",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Qualifica",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Qualifica professionale",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Plesso scolastico",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Codice plesso scolastico",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Tipologia di corso",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Corso di laurea",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Classe di laurea",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Codice classe di laurea",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Anno di corso",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Anno accademico",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Anno scolastico",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Anno di conseguimento diploma",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Data di conseguimento",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Periodo didattico",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Tipologia di frequenza",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Data di scadenza",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Voto",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Voto finale",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Istruzione e formazione",
+        "parametro": "",
+        "nome_campo": "Indirizzo",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Sanità e previdenza",
+        "parametro": "",
+        "nome_campo": "Diritto accompagnatore",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Patenti e veicoli",
+        "parametro": "",
+        "nome_campo": "Data di rilascio",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Patenti e veicoli",
+        "parametro": "",
+        "nome_campo": "Paese di rilascio",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Patenti e veicoli",
+        "parametro": "",
+        "nome_campo": "Categoria",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Patenti e veicoli",
+        "parametro": "",
+        "nome_campo": "Scadenza",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Patenti e veicoli",
+        "parametro": "",
+        "nome_campo": "Numero",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Patenti e veicoli",
+        "parametro": "",
+        "nome_campo": "Codici",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Generali",
+        "parametro": "",
+        "nome_campo": "Origine dei dati",
+        "descrizione": ""
+      },
+      {
+        "categoria": "Generali",
+        "parametro": "",
+        "nome_campo": "Emissione versione digitale",
+        "descrizione": ""
+      }
+    ]
+  },
+  "assistenza": {
+    "referenti": [
+      {
+        "ruolo": "Referente ambito sistemistico",
+        "nome": "",
+        "cognome": "",
+        "email": "",
+        "telefono": ""
+      },
+      {
+        "ruolo": "Referente ambito applicativo",
+        "nome": "",
+        "cognome": "",
+        "email": "",
+        "telefono": ""
+      },
+      {
+        "ruolo": "Referente ambito assistenza",
+        "nome": "",
+        "cognome": "",
+        "email": "",
+        "telefono": ""
+      }
+    ],
+    "canali": [
+      {
+        "tipo": "Email assistenza",
+        "risposta": "",
+        "note": ""
+      },
+      {
+        "tipo": "Numero telefonico",
+        "risposta": "",
+        "note": ""
+      },
+      {
+        "tipo": "Altro",
+        "risposta": "",
+        "note": ""
+      }
+    ],
+    "faq": [
+          { 
+        "domanda": "Descrivi quali sono i requisiti che l’utente deve avere per richiedere l’EAA ", 
+        "risposta": "" 
+      }, 
+   { 
+        "domanda": "Racconta nel dettaglio i contesti e le modalità in cui può essere usato l’EAA e i casi in cui non può essere accettato. ", 
+        "risposta": "" 
+      }, 
+      { 
+"domanda": "Descrivi la procedura da seguire nei diversi stati “di invalidità” (es. Scaduto, annullato, revocato, etc.) che l’EAA potrebbe assumere (es. per riottenere una patente scaduta, assicurati prima di essere in possesso della nuova patente e, successivamente, richiedi la nuova versione digitale). ", 
+        "risposta": "" 
+      }, 
+{
+"domanda": "Descrivi le tipologie di errore possibili che si riferiscono ai dati presenti nell’EAA e cosa potrebbe dare l’utente per risolvere l’errore. ", 
+        "risposta": "" 
+      }, 
+{ 
+"domanda": "A chi si rivolge oggi il cittadino in caso di problemi con il documento fisico / digitale corrispondente all’EAA? Quali sono i canali messi a disposizione per supportarlo nelle diverse situazioni di necessità? (es. uffici territoriali, numero verde, e-mail, etc.) ", 
+        "risposta": "" 
+      }, 
+{ 
+"domanda": "Sono già previsti canali digitali di supporto? Se sì, quali sono le tempistiche medie di risposta? (anche indicativo) ", 
+        "risposta": "" 
+      }, 
+{ 
+"domanda": "Quali sono i principali motivi di contatto per cui i cittadini si rivolgono alla vostra assistenza? Come vengono indirizzati e risolti attualmente? ", 
+        "risposta": "" 
+      }, 
+{ 
+"domanda": "Si ritiene che i motivi di contatto possano essere simili una volta ottenuta la versione digitale del documento?", 
+        "risposta": "" 
+      }, 
+{ 
+"domanda": "Per quali altri motivi potrebbero aver bisogno di aiuto i cittadini una volta ottenuta la versione digitale del documento?", 
+        "risposta": "" 
+      }, 
+{ 
+"domanda": "Condividi a seguire i link ad eventuale documentazione utile pertinente all'EAA oggetto di analisi. (es. una Knowledge Base o un repository di FAQ già predisposto)", 
+        "risposta": "" 
+      }, 
+      {
+        "domanda": "",
+        "risposta": ""
+      }
+    ],
+    "testi_informativi": ""
+  }
+}

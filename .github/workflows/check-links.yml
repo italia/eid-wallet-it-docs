@@ -1,0 +1,50 @@
+# Verify external and absolute links in Sphinx sources and handbooks.
+
+name: check-links
+
+on:
+  push:
+    branches: ["*"]
+    paths:
+      - "docs/**"
+      - "handbooks/**"
+      - "lychee.toml"
+      - ".github/workflows/check-links.yml"
+  pull_request:
+    branches: ["*"]
+    paths:
+      - "docs/**"
+      - "handbooks/**"
+      - "lychee.toml"
+      - ".github/workflows/check-links.yml"
+  workflow_dispatch:
+
+jobs:
+  pre_job:
+    runs-on: ubuntu-latest
+    outputs:
+      should_skip: ${{ steps.skip_check.outputs.should_skip }}
+    steps:
+      - id: skip_check
+        uses: fkirc/skip-duplicate-actions@v3.4.0
+        with:
+          skip_after_successful_duplicate: "true"
+          same_content_newer: "true"
+
+  link-check:
+    needs: pre_job
+    if: needs.pre_job.outputs.should_skip != 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check links (docs + handbooks)
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --config lychee.toml
+            'docs/**/*.rst'
+            'docs/**/*.md'
+            'handbooks/**/*.md'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fail: true
