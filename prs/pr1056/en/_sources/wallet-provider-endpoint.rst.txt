@@ -752,7 +752,7 @@ The body of the Wallet Unit Attestation JWT contains the following claims:
       - REQUIRED. JSON Object representing the supported revocation check mechanisms, such as OAuth Status List.
       - `OpenID4VCI`_.
     * - **certification**
-      - REQUIRED. A String that contains a URL that links to the certification of the key storage component.
+      - OPTIONAL. A String that contains a URL that links to the certification of the key storage component.
       - `OpenID4VCI`_.
     * - **eudi_wallet_info**
       - OPTIONAL. JSON object, containing the general information about the Wallet and Wallet Provider. The following parameters MUST be included:

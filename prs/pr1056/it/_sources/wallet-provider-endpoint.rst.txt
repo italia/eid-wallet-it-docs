@@ -454,8 +454,17 @@ Il corpo del JWT della Wallet Instance Attestation contiene i seguenti claim:
     * - **cnf**
       - OBBLIGATORIO. Oggetto JSON, contenente la parte pubblica di una coppia di chiavi asimmetriche posseduta dall'Istanza di Wallet.
       - :rfc:`7800`.
+    * - **wallet_link**
+      - OBBLIGATORIO. Stringa contenente un URL per ottenere ulteriori informazioni sul Wallet e sul Fornitore di Wallet.
+      - `OpenID4VCI`_.
+    * - **wallet_name**
+      - OBBLIGATORIO. Stringa contenente un nome leggibile dall'uomo del Wallet.
+      - `OpenID4VCI`_.
+    * - **status**
+      - OBBLIGATORIO. Stringa contenente le informazioni su come leggere lo stato della Wallet App Attestation come definito nella Sezione 6.2 di `TOKEN-STATUS-LIST`_.
+      - `OpenID4VCI`_.
     * - **eudi_wallet_info**
-      - OBBLIGATORIO. Oggetto JSON contenente le informazioni generali sul Wallet e sul Wallet Provider. Il seguente parametro DEVE essere incluso:
+      - OPTIONAL. Oggetto JSON contenente le informazioni generali sul Wallet e sul Wallet Provider. Il seguente parametro DEVE essere incluso:
 
         - **general_info**: OBBLIGATORIO. Un oggetto che contiene i seguenti parametri:
 
@@ -737,8 +746,11 @@ Il corpo del Wallet Unit Attestation JWT contiene le seguenti dichiarazioni (cla
     * - **status**
       - OBBLIGATORIO. Oggetto JSON che rappresenta i meccanismi supportati per la verifica della revoca, come ad esempio OAuth Status List.
       - `OpenID4VCI`_.
+    * - **certification**
+      - OPZIONALE. Una stringa che contiene un URL che rimanda alla certificazione del componente di archiviazione delle chiavi.
+      - `OpenID4VCI`_.
     * - **eudi_wallet_info**
-      - OBBLIGATORIO. Oggetto JSON contenente le informazioni generali sul Wallet e sul Wallet Provider. Il seguente parametro DEVE essere incluso:
+      - OPZIONALE. Oggetto JSON contenente le informazioni generali sul Wallet e sul Wallet Provider. Il seguente parametro DEVE essere incluso:
 
         - **general_info**: OBBLIGATORIO. Un oggetto che contiene i seguenti parametri:
 

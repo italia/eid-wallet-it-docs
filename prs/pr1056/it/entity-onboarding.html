@@ -428,9 +428,9 @@
 <td><p>oggetto JSON</p></td>
 <td><p>OBBLIGATORIO. Dettagli della persona giuridica e metadati organizzativi.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>organization_info.organization_name_l10n_id</strong></p></td>
-<td><p>string</p></td>
-<td><p>OBBLIGATORIO. Chiave di localizzazione che fa riferimento al nome localizzato dell'organizzazione nel bundle di localizzazione (es. <code class="docutils literal notranslate"><span class="pre">authentic_source1.name</span></code>).</p></td>
+<tr class="row-even"><td><p><strong>organization_info.organization_name</strong></p></td>
+<td><p>JSON Object Array</p></td>
+<td><p>OBBLIGATORIO. Array di oggetti che contengono il nome dell'organizzazione in più lingue. DEVE contenere i claim <code class="docutils literal notranslate"><span class="pre">locale</span></code> e <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>organization_info.organization_type</strong></p></td>
 <td><p>string</p></td>
@@ -476,9 +476,9 @@
 <td><p>string</p></td>
 <td><p>CONDIZIONALE. Digest crittografico della risorsa immagine del logo per la verifica dell'integrità. OBBLIGATORIO se <code class="docutils literal notranslate"><span class="pre">logo_uri</span></code> è presente. Formato: <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code> (es. <code class="docutils literal notranslate"><span class="pre">&quot;sha-256-abc123...&quot;</span></code>).</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>organization_info.logo_alt_text_l10n_id</strong></p></td>
-<td><p>string</p></td>
-<td><p>OPZIONALE. Testo alternativo per l'immagine del logo dell'organizzazione.</p></td>
+<tr class="row-even"><td><p><strong>organization_info.logo_alt_text</strong></p></td>
+<td><p>JSON Object Array</p></td>
+<td><p>OPZIONALE. Array di oggetti contenente il testo alternativo per l'immagine del logo dell'organizzazione in più lingue. DEVE contenere i claim <code class="docutils literal notranslate"><span class="pre">locale</span></code> e <code class="docutils literal notranslate"><span class="pre">description</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>organization_info.logo_extended_uri</strong></p></td>
 <td><p>string</p></td>
@@ -488,9 +488,9 @@
 <td><p>string</p></td>
 <td><p>CONDIZIONALE. Digest crittografico della risorsa immagine del logo esteso per la verifica dell'integrità. OBBLIGATORIO se <code class="docutils literal notranslate"><span class="pre">logo_extended_uri</span></code> è presente. Formato: <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code> (es. <code class="docutils literal notranslate"><span class="pre">&quot;sha-256-abc123...&quot;</span></code>).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>organization_info.logo_extended_alt_text_l10n_id</strong></p></td>
-<td><p>string</p></td>
-<td><p>OPZIONALE. Testo alternativo per l'immagine del logo esteso dell'organizzazione.</p></td>
+<tr class="row-odd"><td><p><strong>organization_info.logo_extended_alt_text</strong></p></td>
+<td><p>JSON Object Array</p></td>
+<td><p>OPZIONALE. Array di oggetti contenente il testo alternativo per l'immagine del logo esteso dell'organizzazione in più lingue. DEVE contenere i claim <code class="docutils literal notranslate"><span class="pre">locale</span></code> e <code class="docutils literal notranslate"><span class="pre">description</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>data_capabilities</strong></p></td>
 <td><p>Array di oggetti JSON</p></td>
@@ -500,9 +500,9 @@
 <td><p>string</p></td>
 <td><p>OBBLIGATORIO. L'identificatore univoco del dataset nell'ambito della Fonte Autentica, che PUÒ essere utilizzato come parametro di query per il servizio <code class="docutils literal notranslate"><span class="pre">GetAttributeClaims</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].data_origin_l10n_id</strong></p></td>
-<td><p>string</p></td>
-<td><p>OBBLIGATORIO. Chiave di localizzazione che fa riferimento al nome leggibile dell'origine o del dipartimento che fornisce i dati (es. <code class="docutils literal notranslate"><span class="pre">authentic_source1.dataset1.origin</span></code>).</p></td>
+<tr class="row-even"><td><p><strong>data_capabilities[].data_origin</strong></p></td>
+<td><p>JSON Object Array</p></td>
+<td><p>OBBLIGATORIO. Array di oggetti contenente il nome leggibile dell'origine o del dipartimento che fornisce i dati in più lingue. DEVE contenere i claim <code class="docutils literal notranslate"><span class="pre">locale</span></code> e <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>data_capabilities[].intended_purposes</strong></p></td>
 <td><p>Array di stringhe</p></td>
@@ -556,9 +556,17 @@
 <td><p>Array di stringhe</p></td>
 <td><p>CONDIZIONALE. Array dei metodi di notifica supportati dalla Fonte Autentica per la fornitura dati differita, come <code class="docutils literal notranslate"><span class="pre">&quot;push&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;poll&quot;</span></code>. OBBLIGATORIO se <code class="docutils literal notranslate"><span class="pre">deferred_flow</span></code> è <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].user_information_l10n_id</strong></p></td>
-<td><p>string</p></td>
-<td><p>OPZIONALE. Chiave di localizzazione che fa riferimento a una stringa in formato Markdown con informazioni leggibili sulla capacità dati rilevanti per l'Utente (es. <code class="docutils literal notranslate"><span class="pre">authentic_source1.dataset1.userinfo</span></code>). Questa stringa DEVE essere fornita dalla Fonte Autentica al Trust Anchor durante l'onboarding. La formattazione Markdown può essere testo semplice o una combinazione di testo e link. Ad esempio, se il database della Fonte Autentica contiene solo dati registrati <em>dopo</em> una data specifica, questa informazione DEVE essere comunicata tramite questa chiave.</p></td>
+<tr class="row-even"><td><p><strong>data_capabilities[].user_information</strong></p></td>
+<td><p>JSON object Array</p></td>
+<td><p>OPZIONALE. Array di Oggetti contenenti informazioni per l'Utente in più lingue sulla disponibilità dei dati. Questa stringa DEVE essere fornita dalla Fonte Autentica al Trust Anchor durante l'onboarding. La formattazione Markdown può essere testo semplice o una combinazione di testo e link. Ad esempio, se il database della Fonte Autentica contiene solo dati registrati <em>dopo</em> una data specifica, questa informazione DEVE essere comunicata tramite questa chiave. DEVE contenere i claim <code class="docutils literal notranslate"><span class="pre">locale</span></code> e <code class="docutils literal notranslate"><span class="pre">description</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>data_capabilities[].administrative_expiration_user_info</strong></p></td>
+<td><p>JSON object Array</p></td>
+<td><p>OPZIONALE. Array di Oggetti contenenti informazioni per l'Utente in più lingue sulla scadenza amministrativa dei dati ed eventualmente le azioni raccomandate. Questa stringa DEVE essere fornita dalla Fonte Autentica al Trust Anchor durante l'onboarding. La formattazione Markdown può essere testo semplice o una combinazione di testo e link. DEVE contenere i claim <code class="docutils literal notranslate"><span class="pre">locale</span></code>, <code class="docutils literal notranslate"><span class="pre">title</span></code> e <code class="docutils literal notranslate"><span class="pre">description</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>data_capabilities[].allowed_states</strong></p></td>
+<td><p>JSON object Array</p></td>
+<td><p>OPZIONALE. Array di Oggetti contenente informazioni per l'Utente in più lingue sullo stato corrente dei dati forniti ed eventualmente le azioni raccomandate. I valori degli stati sono definiti nella sezione <a class="reference internal" href="credential-revocation.html#token-status-lists"><span class="std std-ref">Token Status Lists</span></a>. DEVE contenere i claim <code class="docutils literal notranslate"><span class="pre">locale</span></code>, <code class="docutils literal notranslate"><span class="pre">title</span></code>, <code class="docutils literal notranslate"><span class="pre">description</span></code> e <code class="docutils literal notranslate"><span class="pre">&lt;Status-Type-Value&gt;</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>data_capabilities[].service_documentation</strong></p></td>
 <td><p>string</p></td>
@@ -1415,7 +1423,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 25/03/2026.
+      Ultimo aggiornamento 27/03/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

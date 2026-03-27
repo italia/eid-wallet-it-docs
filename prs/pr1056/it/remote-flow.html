@@ -720,7 +720,7 @@ Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo
 </tr>
 <tr class="row-odd"><td><p><strong>client_metadata</strong></p></td>
 <td><dl class="simple">
-<dt>OBBLIGATORIO. Un oggetto JSON contenente i valori dei metadata della Relying Party, che DOVREBBE includere i seguenti parametri:</dt><dd><ul class="simple">
+<dt>OBBLIGATORIO. Un oggetto JSON contenente i valori dei metadata della Relying Party come definito nella sezione 5.1 di <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>, che DOVREBBE includere i seguenti parametri:</dt><dd><ul class="simple">
 <li><p><strong>vp_formats_supported</strong>. Utilizzato dall'Istanza del Wallet per determinare i formati di Verifiable Presentation supportati.</p></li>
 <li><p><strong>encrypted_response_enc_values_supported</strong>. Array JSON che elenca gli algoritmi JWE <code class="docutils literal notranslate"><span class="pre">enc</span></code> supportati per le Authorization Response cifrate in <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code>.</p></li>
 <li><p><strong>jwks</strong>. JSON Web Key Set utilizzato dall'Istanza del Wallet per cifrare la Authorization Response o per l'accordo delle chiavi. Le chiavi contenute in questo set sono specifiche della richiesta e identificate dal loro valore <code class="docutils literal notranslate"><span class="pre">kid</span></code>.</p></li>
@@ -734,7 +734,7 @@ Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo
 <td><p>OBBLIGATORIO. DEVE essere impostato su <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code> (<a class="reference internal" href="test-plans-remote-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-remoto"><span class="std std-ref">RPR-106</span></a>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>dcql_query</strong></p></td>
-<td><p>OBBLIGATORIO. Oggetto che rappresenta una richiesta di presentazione di Credenziali, secondo il linguaggio di query DCQL definito nella Sezione 6 di <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>, e allineato con <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-06.html">OPENID4VC-HAIP</a>.</p></td>
+<td><p>OBBLIGATORIO. Oggetto che rappresenta una richiesta di presentazione di Credenziali, secondo il linguaggio di query DCQL definito nella Sezione 6 di <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>transaction_data</strong></p></td>
 <td><dl class="simple">
@@ -799,7 +799,7 @@ Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo
 </section>
 <section id="authorization-response">
 <h2><span class="section-number">12.2.1.5. </span>Authorization Response<a class="headerlink" href="#authorization-response" title="Link to this heading">¶</a></h2>
-<p>Dopo aver ottenuto l'autorizzazione e il consenso dell'Utente per la presentazione degli Attestati Elettronici, l'Istanza del Wallet invia la Authorization Response all'endpoint <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> della Relying Party utilizzando una richiesta HTTP con il metodo POST (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_091</span></a>). Il contenuto della risposta DEVE essere cifrato secondo il profilo ad alta affidabilità definito in <cite>OPENID4VC-HAIP`*, utilizzando la modalità di risposta `direct_post.jwt</cite> come previsto dalla Sezione 8.3 di <cite>OpenID4VP</cite>. Tale cifratura richiede l'uso dell'accordo di chiave ECDH-ES sulla curva P-256 e della cifratura del contenuto AES-GCM (<cite>A128GCM</cite> oppure <cite>A256GCM</cite>, preferendo <cite>A256GCM</cite> quando entrambi sono disponibili), utilizzando la chiave pubblica specifica della richiesta della Relying Party selezionata da <cite>client_metadata.jwks</cite> e identificata dal relativo <cite>kid</cite> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_092</span></a>).</p>
+<p>Dopo aver ottenuto l'autorizzazione e il consenso dell'Utente per la presentazione degli Attestati Elettronici, l'Istanza del Wallet invia la Authorization Response all'endpoint <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> della Relying Party utilizzando una richiesta HTTP con il metodo POST (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_091</span></a>). Il contenuto della risposta DEVE essere cifrato secondo il profilo ad alta affidabilità definito in <cite>OPENID4VC-HAIP`*, utilizzando la modalità di risposta `direct_post.jwt</cite> come previsto dalla Sezione 8.3 di <cite>OpenID4VP</cite>. Tale cifratura richiede l'uso dell'accordo di chiave ECDH-ES sulla curva P-256 e della cifratura del contenuto AES-GCM (<cite>A128GCM</cite> oppure <cite>A256GCM</cite>, preferendo <cite>A256GCM</cite> quando entrambi sono disponibili), utilizzando la chiave pubblica specifica della richiesta della Relying Party selezionata da <cite>client_metadata.jwks</cite> e identificata dal relativo <cite>kid</cite> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_092</span></a>). La chiave pubblica usata per criptare l'Authorization Response viene recuperata dal Wallet dal JWKs presente nel <code class="docutils literal notranslate"><span class="pre">client_metadata</span></code>. In accordo alla sezione 14.5 di <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a> è RACCOMANDATO l'utilizzo di chiavi effimere.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p><strong>Perché la risposta è cifrata?</strong></p>
@@ -1201,7 +1201,7 @@ Anche se un avversario riesce a rubare il valore casuale utilizzato nella richie
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 25/03/2026.
+      Ultimo aggiornamento 27/03/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

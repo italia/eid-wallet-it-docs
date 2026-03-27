@@ -204,9 +204,9 @@ La registrazione della Fonte Autentica segue un processo tecnico descritto di se
    * - **organization_info**
      - oggetto JSON
      - OBBLIGATORIO. Dettagli della persona giuridica e metadati organizzativi.
-   * - **organization_info.organization_name_l10n_id**
-     - string
-     - OBBLIGATORIO. Chiave di localizzazione che fa riferimento al nome localizzato dell'organizzazione nel bundle di localizzazione (es. ``authentic_source1.name``).
+   * - **organization_info.organization_name**
+     -  JSON Object Array
+     - OBBLIGATORIO. Array di oggetti che contengono il nome dell'organizzazione in più lingue. DEVE contenere i claim ``locale`` e ``name``.
    * - **organization_info.organization_type**
      - string
      - OBBLIGATORIO. Classificazione dell'entità: ``"public"`` o ``"private"``.
@@ -240,27 +240,27 @@ La registrazione della Fonte Autentica segue un processo tecnico descritto di se
    * - **organization_info.logo_uri#integrity**
      - string
      - CONDIZIONALE. Digest crittografico della risorsa immagine del logo per la verifica dell'integrità. OBBLIGATORIO se ``logo_uri`` è presente. Formato: ``{digest_method}-{digest_value}`` (es. ``"sha-256-abc123..."``).
-   * - **organization_info.logo_alt_text_l10n_id**
-     - string
-     - OPZIONALE. Testo alternativo per l'immagine del logo dell'organizzazione.
+   * - **organization_info.logo_alt_text**
+     - JSON Object Array
+     - OPZIONALE. Array di oggetti contenente il testo alternativo per l'immagine del logo dell'organizzazione in più lingue. DEVE contenere i claim ``locale`` e ``description``.
    * - **organization_info.logo_extended_uri**
      - string
      - OPZIONALE. URL dell'immagine del logo esteso dell'organizzazione.
    * - **organization_info.logo_extended_uri#integrity**
      - string
      - CONDIZIONALE. Digest crittografico della risorsa immagine del logo esteso per la verifica dell'integrità. OBBLIGATORIO se ``logo_extended_uri`` è presente. Formato: ``{digest_method}-{digest_value}`` (es. ``"sha-256-abc123..."``).
-   * - **organization_info.logo_extended_alt_text_l10n_id**
-     - string
-     - OPZIONALE. Testo alternativo per l'immagine del logo esteso dell'organizzazione.
+   * - **organization_info.logo_extended_alt_text**
+     - JSON Object Array
+     - OPZIONALE. Array di oggetti contenente il testo alternativo per l'immagine del logo esteso dell'organizzazione in più lingue. DEVE contenere i claim ``locale`` e ``description``.
    * - **data_capabilities**
      - Array di oggetti JSON
      - OBBLIGATORIO. Array contenente le specifiche delle capacità sui dati.
    * - **data_capabilities[].dataset_id**
      - string
      - OBBLIGATORIO. L'identificatore univoco del dataset nell'ambito della Fonte Autentica, che PUÒ essere utilizzato come parametro di query per il servizio ``GetAttributeClaims``.
-   * - **data_capabilities[].data_origin_l10n_id**
-     - string
-     - OBBLIGATORIO. Chiave di localizzazione che fa riferimento al nome leggibile dell'origine o del dipartimento che fornisce i dati (es. ``authentic_source1.dataset1.origin``).
+   * - **data_capabilities[].data_origin**
+     - JSON Object Array
+     - OBBLIGATORIO. Array di oggetti contenente il nome leggibile dell'origine o del dipartimento che fornisce i dati in più lingue. DEVE contenere i claim ``locale`` e ``name``.
    * - **data_capabilities[].intended_purposes**
      - Array di stringhe
      - OBBLIGATORIO. Finalità aziendali soddisfatte, utilizzando gli identificatori di finalità della tassonomia (es. ``["IDENTITY_VERIFICATION", "DRIVING_RIGHTS_VERIFICATION"]``).
@@ -300,9 +300,15 @@ La registrazione della Fonte Autentica segue un processo tecnico descritto di se
    * - **data_capabilities[].data_provision.notification_methods**
      - Array di stringhe
      - CONDIZIONALE. Array dei metodi di notifica supportati dalla Fonte Autentica per la fornitura dati differita, come ``"push"``, ``"poll"``. OBBLIGATORIO se ``deferred_flow`` è ``true``.
-   * - **data_capabilities[].user_information_l10n_id**
-     - string
-     - OPZIONALE. Chiave di localizzazione che fa riferimento a una stringa in formato Markdown con informazioni leggibili sulla capacità dati rilevanti per l'Utente (es. ``authentic_source1.dataset1.userinfo``). Questa stringa DEVE essere fornita dalla Fonte Autentica al Trust Anchor durante l'onboarding. La formattazione Markdown può essere testo semplice o una combinazione di testo e link. Ad esempio, se il database della Fonte Autentica contiene solo dati registrati *dopo* una data specifica, questa informazione DEVE essere comunicata tramite questa chiave.
+   * - **data_capabilities[].user_information**
+     - JSON object Array
+     - OPZIONALE. Array di Oggetti contenenti informazioni per l'Utente in più lingue sulla disponibilità dei dati. Questa stringa DEVE essere fornita dalla Fonte Autentica al Trust Anchor durante l'onboarding. La formattazione Markdown può essere testo semplice o una combinazione di testo e link. Ad esempio, se il database della Fonte Autentica contiene solo dati registrati *dopo* una data specifica, questa informazione DEVE essere comunicata tramite questa chiave. DEVE contenere i claim ``locale`` e ``description``.
+   * - **data_capabilities[].administrative_expiration_user_info**
+     - JSON object Array
+     - OPZIONALE. Array di Oggetti contenenti informazioni per l'Utente in più lingue sulla scadenza amministrativa dei dati ed eventualmente le azioni raccomandate. Questa stringa DEVE essere fornita dalla Fonte Autentica al Trust Anchor durante l'onboarding. La formattazione Markdown può essere testo semplice o una combinazione di testo e link. DEVE contenere i claim ``locale``, ``title`` e ``description``.
+   * - **data_capabilities[].allowed_states**
+     - JSON object Array
+     - OPZIONALE. Array di Oggetti contenente informazioni per l'Utente in più lingue sullo stato corrente dei dati forniti ed eventualmente le azioni raccomandate. I valori degli stati sono definiti nella sezione :ref:`credential-revocation:Token Status Lists`. DEVE contenere i claim ``locale``, ``title``, ``description`` e ``<Status-Type-Value>``.
    * - **data_capabilities[].service_documentation**
      - string
      - OPZIONALE. URL che punta alla documentazione del servizio della Fonte Autentica.

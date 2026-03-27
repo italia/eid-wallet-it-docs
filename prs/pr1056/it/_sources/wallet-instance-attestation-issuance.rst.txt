@@ -11,14 +11,6 @@ Questa sezione descrive come il Fornitore di Wallet emette una Wallet Instance A
     :alt: La figura illustra il Diagramma di Sequenza per l'acquisizione della Wallet Instance Attestation.
     :caption: `Diagramma di Sequenza per l'acquisizione della Wallet Instance Attestation. <https://www.plantuml.com/plantuml/svg/ZLHFJni_4BtxKupCuHUa_2wLsWDIAn2bW5fL4T3s4YcQh2UxespihJsxQVhfQsyWku2XlQpYyVFyUMzUJeEWbtPJAsp5sNQp9AygDWGhvsJfVYdrNnCHN723LXGMuZpeRu6y1WpGXeWV0K3_mBecWMiR16r1FGgR1XwZFbB71KMKKEbPTd1Ble-SpQx3_WrAWAFGUBPbwObijipCkuuDULXYiIPh-gVBOgsKIgtz_o6MFe4R-jbI442mj0NNa4TXPq4gbBdryPOz1K1uqZoSYL2G7fn6vmw5qZHAnSzzylEAYZNm2ixzhX5NUcmgBk0AlTcY9_XCEvZREonXedLr7rsiQRSGBBK-1Ww07NADovhKEFCbsTHfwim2DHLjuh66-1GQP9_o7Q9zmgPTQZs5Ps7FNIoabBTE25n7FWqnZJp1qPVhowkxovkBYwzgFybJPZb0OXxS2gGY-4JcWJwq1jnIa2sm1DYGe451HTQaIeTXOfr10wsjItkX1q9xlUAdHmvZmyfJg8O7UymzDqFKq3XHbi28BcecAulKtwB2KEb-KswlpjwyVJSv99j2bjBZRD9Nz9wvsToEr0vSMfJMnnBm7j9fCidrD8NiYep3Ww93MoZX93kZIbS3PVnWjmM6G3w9g7LsjbUCS51oorAzb7GA-UcdC70zjxbXynBquQP6MJc_sP-sVOkBuEesrLomoSSxyg7l2UOsTK9ct_bWgBnVHhjxIzRy2oMFLtfmMpg-u3PUFKlC0TYoCDRycqpliYx-DgeDRCliXWoM6spqFRr1eO7np6LUlomqgsWMcLSmcM84FlVqbqKRs_rryaFZRA1d_mIZSqoYJicQTbF_0G00>`_
 
-
-.. .. figure:: ../../images/wallet_instance_acquisition.svg
-..   :figwidth: 100%
-..   :align: center
-..   :target: https://www.plantuml.com/plantuml/svg/VLHFRnC_4BtxKupSmo-LyhiWmQ4Ig5LLsWg4ehR09L8qkvxiMjcC5tisfNnwx4s9jy7qiehjDt_UcpSv3u9UXcsdS137mxOYhrfh2DREIUL-gl_w2B2rxP55AQp5UT1V0taD66084Jz1WFwENKS2jnm4kQOHXNqFBr6Vw0akH2Y2n3g6YyLjs4DH0fo4tbjk6a_4nUmBxtRMa8SAwmsn6KEhUgEKIXtz_o5MF8Cx-Z5G441WUWJNazyNanPboJw-May14FPPfmqbedQ7GgbtfUBdEUTbI_K6x1ek_LClhl7OjxQ66_Jc4Jr18hRa1snWfdNxVBlQqDDAiD7w56m0tA7jiEf8JJDV4wS6KqCCrBUqZSSEOYZqQ7tATxWT4_P3fVKS_hhsTXSBAUNP2O7RaKyavb4UEFbyUttpS7rtTVL5xPaS2se39C71hK5QWeza_gY6RC1LWfR1Ie0j2HeKLCGcLJgGYNMoz5gpIoxGMT1nJF4p8ZDjM7iARGxOOvwroRU6fecA0aPqtLbYMQN-LYs6Ley6kR-vUFFstUoGR0v5IK-BIL-Pzy8jbZoPTh0Demm-be3ta4wpMQcdEHGjChtE4yrjeOIp8aULdh9aAHIpfRKkyIfu_p2yHojjASySocJdaALTSedRFnGVDIApBvYjNtRsn6NtnEOL0YyzbzSX7Slha1Rxw0yiROHbAnOx-ulCk0Qx-Dke8LXkYYFCEv5z_Yt5e53MgF1OKBi4A-fVH9RrJewTW2yzbPqmMS6opA5t7EXuAQVd6AlEYSsmxNu3
-
-..   Sequence Diagram for Wallet Attestation acquisition
-
 **Passo 1**: L'Utente avvia una nuova operazione che richiede l'acquisizione di una Wallet Instance Attestation.
 
 **Passi 2-3**: L'Istanza del Wallet DEVE:
@@ -73,7 +65,7 @@ L'Istanza del Wallet DEVE inviare il JWT firmato della Richiesta di Wallet Insta
   2. La firma della Richiesta di Wallet Instance Attestation DEVE essere valida e verificabile utilizzando la ``jwk`` fornita (:ref:`WP_143b <wallet-instance-optional-testcases>`).
   3. Il valore ``nonce`` DEVE essere stato generato dal Fornitore di Wallet e non essere stato utilizzato in precedenza (:ref:`WP_143c <wallet-instance-optional-testcases>`).
   4. DEVE esistere un'Istanza del Wallet valida e attualmente registrata associata al ``hardware_key_tag`` (:ref:`WP_143d <wallet-instance-optional-testcases>`).
-  5. Il ``client_data`` DEVE essere ricostruito utilizzando il ``nonce`` e e la chiave pubblica ``jwk``. Il valore del parametro ``hardware_signature`` viene quindi convalidato utilizzando la chiave pubblica della Cryptographic Hardware Key registrata associata all'Istanza del Wallet (:ref:`WP_143e <wallet-instance-optional-testcases>`).
+  5. Il ``client_data`` DEVE essere ricostruito utilizzando il ``nonce`` e la chiave pubblica ``jwk``. Il valore del parametro ``hardware_signature`` viene quindi convalidato utilizzando la chiave pubblica della Cryptographic Hardware Key registrata associata all'Istanza del Wallet (:ref:`WP_143e <wallet-instance-optional-testcases>`).
   6. L'``integrity_assertion`` DEVE essere convalidato secondo le linee guida del produttore del dispositivo. I controlli specifici eseguiti dal Fornitore di Wallet sono dettagliati nella documentazione del produttore del sistema operativo  (:ref:`WP_143f <wallet-instance-optional-testcases>`).
   7. Il dispositivo in uso DEVE essere privo di difetti di sicurezza noti e soddisfare i requisiti minimi di sicurezza definiti dal Fornitore di Wallet.
   8. L'URL nel parametro ``iss`` DEVE corrispondere all'identificatore URL del Fornitore di Wallet  (:ref:`WP_143g <wallet-instance-optional-testcases>`).

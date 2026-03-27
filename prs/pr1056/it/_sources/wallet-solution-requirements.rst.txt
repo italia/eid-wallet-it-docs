@@ -38,6 +38,8 @@ I requisiti per la Wallet Instance Attestation sono definiti di seguito:
 - Ogni Istanza del Wallet DOVREBBE essere in grado di richiedere più Wallet Instance Attestation utilizzando diverse chiavi pubbliche crittografiche associate ad essi.
 - la Wallet Instance Attestation NON DEVE contenere informazioni sull'Utente che controlla l'Istanza del Wallet (:ref:`WP_029b <wallet-instance-testcases>`).
 - L'Istanza del Wallet DEVE ottenere una Wallet Instance Attestation come prerequisito per passare allo stato Operativo, come definito da `EIDAS-ARF`_.
+- Un Wallet provider DEVE garantire che una Wallet Unit non revocata presenti in ogni momento una Wallet Instance valida e non revocata a un fornitore di PID o a un fornitore di attestazioni durante il processo di emissione di un PID o di un'attestazione. Nota: questo requisito si applica sia alle attestazioni associate a un dispositivo che a quelle non associate a un dispositivo, come definito da `EIDAS-ARF`_.
+- Una Wallet Unit DEVE presentare una Wallet Instance Attestation esclusivamente a un fornitore di PID o a un fornitore di attestazioni, nell'ambito del processo di emissione di un PID o di un'attestazione, e non a una parte affidabile o a qualsiasi altra entità.
 
 .. note::
   In questa sezione, i servizi utilizzati per attestare la genuinità dell'Istanza del Wallet e del dispositivo in cui è installata sono indicati come **API del Servizio di Integrità del Dispositivo**. L'API del Servizio di Integrità del Dispositivo è considerata in modo astratto e si presume sia un servizio fornito da una terza parte affidabile (cioè, l'API del Fornitore del Sistema Operativo) in grado di eseguire controlli di integrità sull'Istanza del Wallet e sul dispositivo in cui è installata.
