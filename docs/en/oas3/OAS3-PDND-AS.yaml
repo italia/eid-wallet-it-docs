@@ -377,7 +377,23 @@ components:
                 type: string
                 example: "2025-12-31"
             additionalProperties:
-              type: string
+              oneOf:
+                - type: string
+                - type: integer
+                  format: int32
+                - type: integer
+                  format: int64
+                - type: number
+                  format: float
+                - type: number
+                  format: double
+                - type: boolean
+                - type: array
+                  items:
+                    $ref: '#/components/schemas/additionalPropertiesArray'
+                - type: object
+                  additionalProperties:
+                    $ref: '#/components/schemas/additionalPropertiesObject'
             required: [object_id]
         metadataClaims:
           description: List of Metadata of Attribute.
@@ -435,6 +451,36 @@ components:
         object_id:
           type: string
           description: Unique identifier of the Credential dataset. If this parameter is present only the indicated dataset is returned.
+    additionalPropertiesArray:
+      type: array
+      items:
+        oneOf:
+        - type: string
+        - type: integer
+          format: int32
+        - type: integer
+          format: int64
+        - type: number
+          format: float
+        - type: number
+          format: double
+        - type: boolean
+        - type: object
+          additionalProperties:
+            $ref: '#/components/schemas/additionalPropertiesObject'
+    additionalPropertiesObject:
+      type: object
+      oneOf:
+        - type: string
+        - type: integer
+          format: int32
+        - type: integer
+          format: int64
+        - type: number
+          format: float
+        - type: number
+          format: double
+        - type: boolean
     ProblemDetails:
       type: object
       description: RFC7807-compliant problem details object for error responses.

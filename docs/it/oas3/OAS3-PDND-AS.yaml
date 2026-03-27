@@ -377,7 +377,23 @@ components:
                 type: string
                 example: "2025-12-31"
             additionalProperties:
-              type: string
+              oneOf:
+                - type: string
+                - type: integer
+                  format: int32
+                - type: integer
+                  format: int64
+                - type: number
+                  format: float
+                - type: number
+                  format: double
+                - type: boolean
+                - type: array
+                  items:
+                    $ref: '#/components/schemas/additionalPropertiesArray'
+                - type: object
+                  additionalProperties:
+                    $ref: '#/components/schemas/additionalPropertiesObject'
             required: [object_id]
         metadataClaims:
           description: List of Metadata of Attribute.
@@ -395,7 +411,7 @@ components:
                 example: "Example: Master's Degree in Computer Science"
               status:
                 description: |
-                  Stato del Dataset. OBBILIGATORIO se additionalProperties di attributeClaims sono presenti. I dataset Issued e Expired ricadono in VALID; la scadenza è verificata
+                  Stato del Dataset. OBBLIGATORIO se additionalProperties di attributeClaims sono presenti. I dataset Issued e Expired ricadono in VALID; la scadenza è verificata
                   tramite metadata claims (es. expiry_date, nbf/exp). INVALID indica revoca attiva da parte dell'AS.
                   Per come questo stato influenza il ciclo di vita dell'Attestato Elettronico gestito dal
                   Fornitore di Attestati Elettronici, vedere la sezione <a target="blank" href="https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/credential-revocation.html#aggiornamento-dello-stato-da-parte-delle-fonti-autentiche">Aggiornamento dello Stato da parte delle Fonti Autentiche</a>.
@@ -414,7 +430,7 @@ components:
                 type: string
                 example: "Example: Master's Degree in Computer Science"
               last_updated:
-                description: OBBILIGATORIO se additionalProperties di attributeClaims sono presenti. Last time the status or attributes of the Dataset have been updated. Its format is `YYYY-MM-DDTHH:MM:SSZ`.
+                description: OBBLIGATORIO se additionalProperties di attributeClaims sono presenti. Last time the status or attributes of the Dataset have been updated. Its format is `YYYY-MM-DDTHH:MM:SSZ`.
                 type: string
                 example: "2025-01-15T10:30:00Z"
               interval:
@@ -435,6 +451,36 @@ components:
         object_id:
           type: string
           description: Unique identifier of the Credential dataset. If this parameter is present only the indicated dataset is returned.
+    additionalPropertiesArray:
+      type: array
+      items:
+        oneOf:
+        - type: string
+        - type: integer
+          format: int32
+        - type: integer
+          format: int64
+        - type: number
+          format: float
+        - type: number
+          format: double
+        - type: boolean
+        - type: object
+          additionalProperties:
+            $ref: '#/components/schemas/additionalPropertiesObject'
+    additionalPropertiesObject:
+      type: object
+      oneOf:
+        - type: string
+        - type: integer
+          format: int32
+        - type: integer
+          format: int64
+        - type: number
+          format: float
+        - type: number
+          format: double
+        - type: boolean
     ProblemDetails:
       type: object
       description: RFC7807-compliant problem details object for error responses.
