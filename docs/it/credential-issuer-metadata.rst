@@ -64,7 +64,7 @@ I Metadata *oauth_authorization_server* DEVONO contenere i seguenti parametri.
 Metadata per openid_credential_issuer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-I Metadata *openid_credential_issuer* DEVONO contenere i seguenti *claims*.
+I Metadata *openid_credential_issuer* contiene i seguenti *claims*.
 
 .. list-table::
   :class: longtable
@@ -74,19 +74,19 @@ I Metadata *openid_credential_issuer* DEVONO contenere i seguenti *claims*.
   * - **Claim**
     - **Descrizione**
   * - **credential_issuer**
-    - L'identificativo del Fornitore di Attestati Elettronici. DEVE essere un HTTPS URL *case sensitive* come definito in `OpenID4VCI`_ Sezioni 12.2.1 e 12.2.4.
+    - OBBLIGATORIO. L'identificativo del Fornitore di Attestati Elettronici. DEVE essere un HTTPS URL *case sensitive* come definito in `OpenID4VCI`_ Sezioni 12.2.1 e 12.2.4.
   * - **credential_endpoint**
-    - URL del *Credential endpoint*. Vedi `OpenID4VCI`_ Sezione 12.2.4.
+    - OBBLIGATORIO. URL del *Credential endpoint*. Vedi `OpenID4VCI`_ Sezione 12.2.4.
   * - **nonce_endpoint**
-    - URL del *Nonce endpoint*, come definito nella Sezione 7 di `OpenID4VCI`_.
+    - OBBLIGATORIO. URL del *Nonce endpoint*, come definito nella Sezione 7 di `OpenID4VCI`_.
   * - **deferred_credential_endpoint**
-    - URL del *deferred credential endpoint*, come definito nella Sezione 12.2.4 di `OpenID4VCI`_.
+    - OPZIONALE. URL del *deferred credential endpoint*, come definito nella Sezione 12.2.4 di `OpenID4VCI`_.
   * - **notification_endpoint**
-    - DEVE essere un URL HTTPS che indica il *notification endpoint*. Vedi Sezione 12.2.4 di [`OpenID4VCI`_].
+    - OBBLIGATORIO. DEVE essere un URL HTTPS che indica il *notification endpoint*. Vedi Sezione 12.2.4 di [`OpenID4VCI`_].
   * - **authorization_servers**
     - OPZIONALE. Array di stringhe, dove ogni stringa è un identificativo dell'*authorization server* OAuth 2.0 (come definito in [:rfc:`8414`]) usato dal Fornitore di Attestati Elettronici per gestire l'autenticazione/autorizzazione. Se questo parametro è omesso vuol dire che il Fornitore di Attestati Elettronici agisce direttamente anche come *authorization server*.
   * - **display**
-    - Vedi `OpenID4VCI`_ Sezione 12.2.4 Array di oggetti contenenti proprietà di visualizzazione della lingua. I parametri che DEVONO essere inclusi sono:
+    - OBBLIGATORIO. Vedi `OpenID4VCI`_ Sezione 12.2.4 Array di oggetti contenenti proprietà di visualizzazione della lingua. I parametri che DEVONO essere inclusi sono:
 
         - **name**: Denominazione in formato stringa del Fornitore di Attestati Elettronici. 
         - **locale**: Valore stringa che identifica la localizzazione rappresentato come un tag linguistico come definito in *BCP47* :rfc:`5646`. DEVE esserci un solo oggetto per ogni identificativo di localizzazione.
@@ -97,7 +97,7 @@ I Metadata *openid_credential_issuer* DEVONO contenere i seguenti *claims*.
             - **alt_text**: OPZIONALE. Stringa contenente il testo da mostrare in alternativa all’immagine del logo.
 
   * - **credential_configurations_supported**
-    - Oggetto JSON che delinea i dettagli dell'Attestato Elettronico supportato dal Fornitore di Attestato Elettronico. Include un elenco di coppie nome/valore, dove ogni nome identifica in modo univoco un specific Attestato Elettronico supportato. Questo identificativo viene utilizzato per informare l'Istanza del Wallet su quale Attestato Elettronico può essere emesso. Il valore associato all'interno dell'oggetto DEVE contenere Metadata specifici per quell'Attestato Elettronico, come definito di seguito. Vedi `OpenID4VCI`_ Sezioni 12.2.4 e A.3.2.
+    - OBBLIGATORIO. Oggetto JSON che delinea i dettagli dell'Attestato Elettronico supportato dal Fornitore di Attestato Elettronico. Include un elenco di coppie nome/valore, dove ogni nome identifica in modo univoco un specific Attestato Elettronico supportato. Questo identificativo viene utilizzato per informare l'Istanza del Wallet su quale Attestato Elettronico può essere emesso. Il valore associato all'interno dell'oggetto DEVE contenere Metadata specifici per quell'Attestato Elettronico, come definito di seguito. Vedi `OpenID4VCI`_ Sezioni 12.2.4 e A.3.2.
 
         - **format**: Stringa che identifica il formato di questo Attestato Elettronico. L'Attestato Elettronico DEVE supportare il valore stringa "*dc+sd-jwt*" nel caso di SD-JWT VC (Vedi `OpenID4VCI`_ Sezione A.3.1.) e "*mso_mdoc*" nel caso di mdoc (vedi `OpenID4VCI`_ Sezione A.2.1.).
         - **scope**: Stringa JSON che identifica il valore *scope* supportato. L'Istanza del Wallet DEVE utilizzare questo valore nella *Pushed Authorization Request* inviata. I valori di scope DEVONO essere l'intero insieme o un sottoinsieme dei valori *scope* presenti nel parametro *scopes_supported* del *authorization server*. Se l’Attestato Elettronico è incluso nel Catalogo degli Attestati Elettronici, il valore scope DEVE corrispondere al parametro ``credential_type`` definito in :ref:`registry:Struttura del Catalogo degli Attestati Elettronici` oppure in :ref:`registry:Registro degli Schema`. [Vedi `OpenID4VCI`_ Sezione 12.2.4]. 
@@ -129,7 +129,7 @@ I Metadata *openid_credential_issuer* DEVONO contenere i seguenti *claims*.
                   - **uri**: OBBLIGATORIO. Stringa che contiene la URI da cui il Wallet può ottenere il logo dell’Attestato Elettronico dal Fornitore di Attestati Elettronici.
                   - **uri#integrity**: OBBLIGATORIO. "integrity metadata" come definito nella Sezione 3 del documento `W3C-SRI`_.  
 
-          - **claims**: Array di oggetti JSON ciascuno che descrive come un determinato attributo relativo all'Attestato Elettronico DEVE essere visualizzato all'Utente. Questo array elenca le attestazioni nell’ordine in cui DEVONO essere mostrate dal Wallet. Per fornire informazioni dettagliate sull’attestazione, il valore più interno DEVE contenere almeno i seguenti parametri. Vedi OpenID4VCI_ Sezione A.3.2.
+          - **claims**: OBBLIGATORIO. Array di oggetti JSON ciascuno che descrive come un determinato attributo relativo all'Attestato Elettronico DEVE essere visualizzato all'Utente. Questo array elenca le attestazioni nell’ordine in cui DEVONO essere mostrate dal Wallet. Per fornire informazioni dettagliate sull’attestazione, il valore più interno DEVE contenere almeno i seguenti parametri. Vedi OpenID4VCI_ Sezione A.3.2.
 
 
             - **path**: Contiene il puntatore che specifica il percorso all'attributo specifico all'interno dell'Attestato Elettronico come definito nell'Appendice C di `OpenID4VCI`_.
@@ -145,17 +145,17 @@ I Metadata *openid_credential_issuer* DEVONO contenere i seguenti *claims*.
         - **authentic_sources**: OBBLIGATORIO. Oggetto contenente il parametro ``entity_id`` e ``dataset_id``, valorizzato con i rispettivi dentificativi come censiti all'interno del :ref:`registry:Registro delle Fonti Autentiche`.
 
   * - **jwks**
-    - JSON Web Key Set, passato per valore, contenente le chiavi specifiche del protocollo usato dal Fornitore di Attestato Elettronico. Vedi `OID-FED`_ Sezione 5.2.1 e `JWK`_.
+    - OBBLIGATORIO. JSON Web Key Set, passato per valore, contenente le chiavi specifiche del protocollo usato dal Fornitore di Attestato Elettronico. Vedi `OID-FED`_ Sezione 5.2.1 e `JWK`_.
   * - **trust_frameworks_supported**
-    - Array JSON contenente tutti i trust framework supportati. I valori supportati sono:
+    - OBBLIGATORIO. Array JSON contenente tutti i trust framework supportati. I valori supportati sono:
         - *it_cie*: trust framework CIE id supportato.
         - *it_wallet*: trust framework IT-Wallet supportato.
         - *eudi_wallet*: trust framework Member State EUDI Wallet supportato.
         - *it_l2+document_proof*: protocollo Autenticazione eID Substantial con Verifica MRTD supportato.
   * - **batch_credential_issuance**
-    - Oggetto contenente informazioni sull'emissione di Credenziali in batch da parte del Credential Issuer presso il Credential Endpoint. La presenza di questo parametro indica che il Credential Issuer supporta più di una prova di possesso nel parametro ``proofs`` nella Credential Request, pertanto può emettere più di un Attestato Elettronico con gli stessi attributi relativi al titolare in un'unica richiesta/risposta. Il parametro che DEVE essere incluso è:
+    - OPZIONALE. Oggetto contenente informazioni sull'emissione di Credenziali in batch da parte del Credential Issuer presso il Credential Endpoint. La presenza di questo parametro indica che il Credential Issuer supporta più di una prova di possesso nel parametro ``proofs`` nella Credential Request, pertanto può emettere più di un Attestato Elettronico con gli stessi attributi relativi al titolare in un'unica richiesta/risposta. Il parametro che DEVE essere incluso è:
 
             - **batch_size**: Valore intero che specifica la dimensione massima dell'array per il parametro ``proofs`` nella Credential Request.
   * - **status_list_aggregation_endpoint**
-    - URL del *Status List Aggregation Endpoint*. Vedi `TOKEN-STATUS-LIST`_ Sezione 9.
+    - OBBLIGATORIO. URL del *Status List Aggregation Endpoint*. Vedi `TOKEN-STATUS-LIST`_ Sezione 9.
 
