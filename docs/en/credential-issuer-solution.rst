@@ -37,8 +37,9 @@ The Digital Credential Issuer Solution MUST:
    9. Periodically renew its trust with the Federation.
    10. Register the Relying Party Component within the CIEid Digital Identity Federation ecosystem (for PID issuance), and within the IT-Wallet ecosystem (for (Q)EAA issuance, if required).
    11. For PID issuance, authenticate Users with LoA High using national Digital Identity infrastructure.
-   12. For (Q)EAA issuance requiring authentication, verify a valid PID from the User's Wallet Instance via `OpenID4VP`_.
-   13. Implement proper procedures for the entire Digital Credential lifecycle as detailed in Section :ref:`credential-revocation:Digital Credential Lifecycle`.
+   12. Verify the Wallet Unit's WSCD security level as specified in :ref:`wscd-credential-issuance-requirement`.
+   13. For (Q)EAA issuance requiring authentication, verify a valid PID from the User's Wallet Instance via `OpenID4VP`_.
+   14. Implement proper procedures for the entire Digital Credential lifecycle as detailed in Section :ref:`credential-revocation:Digital Credential Lifecycle`.
 
    For the Frontend Component (if implemented):
 
@@ -88,6 +89,8 @@ When User authentication is required, this component MUST authenticate Users:
    - For PID issuance, via national Digital Identity Providers.
    - For (Q)EAA issuance, requesting, obtaining and validating PIDs from User Wallet Instances using `OpenID4VP`_ in accordance with Section :ref:`credential-presentation:Digital Credential Presentation`.
 
+See :ref:`wscd-credential-issuance-requirement`.
+
 API Interface
 ^^^^^^^^^^^^^
 
@@ -119,6 +122,34 @@ This component MUST ensure security through:
    - Audit logging.
    - Security monitoring and incident response.
    - Compliance with IT-Wallet Federation security requirements.
+
+.. _credential-issuer-solution-decomposition:
+
+Decomposition and Certification Scope
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For **PID issuance**, the Credential Issuer Solution corresponds to the **PID Provider Backend (PPBE)** within the certification macro-component **eID ICT Services** (owner: PID Provider). See :ref:`annex-certification-scheme:Certification Scheme and Overall Approach` for the decomposition and certification scope. This component is **in scope** for certification per `CIR 2024/2981`_.
+
+.. list-table:: PID Provider Backend (PPBE) — Decomposition Mapping
+   :widths: 30 70
+   :header-rows: 1
+
+   * - PPBE Sub-component
+     - Technical Specification Equivalent
+   * - Identity Proofing
+     - Relying Party Component (national eID) in remote use cases: for :ref:`CIE L3 (LoA High) <credential-issuance-high-level:High-Level PID flow>`; for :ref:`L2+ <credential-issuance-l2plus:eID Substantial Authentication with MRTD Verification for PID Issuance>`: PID Authorization Server, MRTD PoP Service
+   * - PID issuance
+     - Credential Issuer Component (`OpenID4VCI`_)
+   * - PID management / PID status management
+     - Credential Lifecycle Management
+   * - Authentic Sources interaction
+     - API Interface (PDND, ANPR)
+   * - PID Audit Logging
+     - Trust & Security Component (audit)
+   * - Secure Cryptographic Device (Signature Device)
+     - Trust & Security (backend signing)
+
+For the full certification scheme and cross-cutting elements, see :ref:`annex-certification-scheme:Certification Scheme and Overall Approach`.
 
 Interaction Patterns
 --------------------

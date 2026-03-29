@@ -36,14 +36,15 @@ La Soluzione del Fornitore di Attestati Elettronici Elettronica DEVE:
    8. Emettere Attestati Elettronici che supportano la Divulgazione Selettiva (*Selective Disclosure*).
    9. Rinnovare periodicamente la conformità e l'aderenza alla Federazione IT-Wallet .
    10. Registrare il Componente Relying Party all'interno dell'ecosistema di Federazione dell'Identità Digitale CIEid (per l'emissione di PID), e all'interno dell'ecosistema IT-Wallet (per l'emissione di (Q)EAA, se necessario).
-   11. Per l'emissione di PID, autenticare gli Utenti con LoA High utilizzando l'infrastruttura nazione di Identità Digitale.
-   12. Per l'emissione di (Q)EAA che richiedono autenticazione, verificare che il PID dell'Utente sia valido tramite `OpenID4VP`_.
-   13. Implementare procedure adeguate per l'intero ciclo di vita dell'Attestato Elettronico come dettagliato nella Sezione :ref:`credential-revocation:Ciclo di Vita degli Attestati Elettronici`.
+   11. Per l'emissione di PID, autenticare gli Utenti con LoA High utilizzando l'infrastruttura nazionale di Identità Digitale.
+   12. Verificare il livello di sicurezza WSCD della Wallet Unit come specificato in :ref:`requisiti WSCD per l'emissione <wscd-credential-issuance-requirement>`.
+   13. Per l'emissione di (Q)EAA che richiedono autenticazione, verificare che il PID dell'Utente sia valido tramite `OpenID4VP`_.
+   14. Implementare procedure adeguate per l'intero ciclo di vita dell'Attestato Elettronico come dettagliato nella Sezione :ref:`credential-revocation:Ciclo di Vita degli Attestati Elettronici`.
 
    Per il Componente Frontend (se implementato):
 
-   14. Autenticare gli Utenti con un Livello di Garanzia (LoA) almeno pari a quello utilizzato per ottenere l'Attestato Elettronico che viene emesso o gestito.
-   15. Fornire misure di sicurezza appropriate per proteggere i dati dell'Utente e le informazioni dell'Attestato Elettronico.
+   15. Autenticare gli Utenti con un Livello di Garanzia (LoA) almeno pari a quello utilizzato per ottenere l'Attestato Elettronico che viene emesso o gestito.
+   16. Fornire misure di sicurezza appropriate per proteggere i dati dell'Utente e le informazioni dell'Attestato Elettronico.
 
 Dettagli dei Componenti
 -----------------------
@@ -88,6 +89,8 @@ Questo componente DEVE autenticare gli Utenti, se richiesto:
    - Per l'emissione di PID, tramite l'infrastruttura nazionale di Identità Digitale.
    - Per l'emissione di (Q)EAA, richiedendo, ottenendo e validando i PID dalle Istanze del Wallet dell'Utente utilizzando `OpenID4VP`_ in conformità con la Sezione :ref:`credential-presentation:Presentazione dell'Attestato Elettronico`.
 
+Vedere :ref:`requisiti WSCD per l'emissione <wscd-credential-issuance-requirement>`.
+
 Interfaccia API
 ^^^^^^^^^^^^^^^
 
@@ -119,6 +122,34 @@ Questo componente DEVE garantire la sicurezza attraverso:
    - Log di audit.
    - Monitoraggio della sicurezza e risposta agli incidenti.
    - Conformità ai requisiti di sicurezza della Federazione IT-Wallet.
+
+.. _credential-issuer-solution-decomposition:
+
+Scomposizione e Ambito di Certificazione
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Per **l'emissione di PID**, la Soluzione del Fornitore di Attestati Elettronici corrisponde al **PID Provider Backend (PPBE)** nel macro-componente di certificazione **Servizi ICT eID** (proprietario: PID Provider). Questo componente è **in scopo** per la certificazione secondo il `CIR 2024/2981`_. Vedere :ref:`annex-certification-scheme:Schema di Certificazione e Approccio Complessivo` per la scomposizione e l'ambito di certificazione.
+
+.. list-table:: PID Provider Backend (PPBE) — Mappatura Scomposizione
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Sottocomponente PPBE
+     - Equivalente nella Specifica Tecnica
+   * - Identity Proofing
+     - Componente Relying Party (eID nazionale) nei casi d'uso remoti: per :ref:`CIE L3 (LoA High) <credential-issuance-high-level:Flusso ad Alto Livello per PID>`; per :ref:`L2+ <credential-issuance-l2plus:Autenticazione eID Substantial con Verifica MRTD per Emissione PID>`: PID Authorization Server, MRTD PoP Service
+   * - PID issuance
+     - Componente Credential Issuer (`OpenID4VCI`_)
+   * - PID management / PID status management
+     - Gestione del Ciclo di Vita degli Attestati Elettronici
+   * - Authentic Sources interaction
+     - Interfaccia API (PDND, ANPR)
+   * - PID Audit Logging
+     - Componente Trust & Security (audit)
+   * - Secure Cryptographic Device (Signature Device)
+     - Trust & Security (firma backend)
+
+Per lo schema di certificazione completo e gli elementi trasversali, vedere :ref:`annex-certification-scheme:Schema di Certificazione e Approccio Complessivo`.
 
 Modelli di Interazione
 ----------------------

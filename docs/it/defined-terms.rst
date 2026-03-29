@@ -14,37 +14,41 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
     :sorted:
 
     **Processo di Accreditamento**
-      Procedura svolta dall'Ente di Accreditamento Nazionale per accreditare gli Organismi di Valutazione della conformità (CABs), che si conclude con il rilascio di un certificato di accreditamento.
+      Procedura svolta dall'Ente di Accreditamento Nazionale per accreditare gli Organismi di Valutazione della Conformità (CABs), che si conclude con il rilascio di un certificato di accreditamento.
       Non presente in ARF 2.7.3; specifico di IT-Wallet.
 
     **Attributi**
     **Attributi dell'Utente**
-      Un insieme di caratteristiche, qualità, diritti o autorizzazioni di una persona fisica o giuridica o di un oggetto o anche una sola di queste informazioni. 
+      Insieme di caratteristiche, qualità, diritti o autorizzazioni di una persona fisica o giuridica o di un oggetto o anche una sola di queste informazioni. 
       Conforme con ARF 2.7.3.
 
     **Autenticazione**
-      Processo elettronico che consente di confermare l'Identificazione di una persona fisica o giuridica, oppure l'origine/integrità dei dati.
+      Processo elettronico che consente di confermare l'identificazione di una persona fisica o giuridica, oppure l'origine/integrità dei dati.
       Conforme con ARF 2.7.3.
 
     **Fonte Autentica**
       Soggetto pubblico o privato responsabile di un archivio o sistema che è considerato fonte primaria per gli Attributi o per i Dati di Identificazione Personale.
       Conforme con ARF 2.7.3.
 
+    **Ambito di Certificazione**
+      Indicazione se un componente è valutato durante la Certificazione (In Scopo) o meno (No). Utilizzato per definire i confini della valutazione della Certificazione.
+      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+
     **Processo di Certificazione**
-      Procedura svolta dagli Organismi di Valutazione della conformità (CABs) per certificare le Soluzioni Wallet, che comprende anche le valutazioni tecniche periodiche.
+      Procedura svolta dagli Organismi di Valutazione della Conformità (CABs) per certificare le Soluzioni Wallet, che comprende anche le valutazioni tecniche periodiche.
       Non presente in ARF 2.7.3; specifico di IT-Wallet.
 
     **Organismo di Valutazione della Conformità**
-      Organismo accreditato valuta e certifica le Soluzioni di Portafogli o i Fornitori di Servizi Fiduciari.
+      Organismo accreditato che valuta e certifica le Soluzioni di Portafogli o i Fornitori di Servizi Fiduciari.
       Conforme con ARF 2.7.3.
 
     **Fornitore di Attestati Elettronici**
     **Credential Issuer**
-      Soggetto pubblico o privato che fornisce Attestati Elettronici agli Utenti (può essere un fornitore di PID oppure un fornitore di (Q)EAA).
+      Soggetto pubblico o privato che fornisce Attestati Elettronici agli Utenti (può essere un Fornitore di PID oppure un Fornitore di (Q)EAA).
       Conforme con ARF 2.7.3.; IT-Wallet aggrega sotto questo termine sia il fornitore di PID che di (Q)EAA .
 
     **Asset Critici**
-      Asset (ad esempio, le chiavi crittografiche) la cui perdita avrebbe gravi ripercussioni sulla Istanza del Wallet.
+      Asset (ad esempio, le chiavi crittografiche) la cui perdita avrebbe gravi ripercussioni sull'Istanza del Wallet.
       Conforme con ARF 2.7.3.
 
     **Cryptographic Hardware Key Tag**
@@ -62,7 +66,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 
     **Attestato Elettronico**
     **Attestato**
-      Un set firmato di Attributi in un formato specifico (ad esempio mDoc-CBOR, SD-JWT VC), può essere un PID oppure una (Q)EAA.
+      Set firmato di Attributi in un formato specifico (ad esempio mDoc-CBOR, SD-JWT VC); può essere un PID oppure una (Q)EAA.
       Conforme con ARF 2.7.3.
 
     **Autorità di Federazione**
@@ -83,8 +87,12 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Framework per la gestione delle identità digitali e dell'accesso alle informazioni.
       Non presente in ARF 2.7.3.
 
+    **Identity Proofing**
+      Processo di verifica dell'identità di una persona, anche definito processo di identificazione. Nel Sistema IT-Wallet, il PID Provider implementa l'Identity Proofing nel contesto digitale come parte del PID Provider Backend (PPBE), tipicamente tramite Autenticazione eID nazionale (es. CIEid LoA High).
+      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+
     **Sistema IT-Wallet**
-      Insieme di Soluzioni Tecniche che implementano il Sistema di Wallet Digitale Italiano.
+      Insieme di Soluzioni Tecniche che implementano il Sistema di Portafoglio Digitale Italiano.
       Non presente in ARF 2.7.3; specifico di IT-Wallet.
 
     **Registro del Sistema IT-Wallet**
@@ -96,11 +104,15 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Non presente in ARF 2.7.3.
 
     **Livello di Garanzia**
-      Grado di sicurezza della verifica dell'identità e nella presentazione degli Attestati Elettronici.
+      Grado di sicurezza della verifica dell'Identità e nella presentazione degli Attestati Elettronici.
       Non presente in ARF 2.7.3.
 
+    **Macro-componente di Certificazione**
+      Raggruppamento di alto livello nella scomposizione dei componenti per la certificazione (es. Servizi ICT Wallet, Servizi ICT eID); ciascun Macro-componente di Certificazione ha un proprietario (ad es. Fornitore di Wallet o PID Provider) e un Ambito di Certificazione.
+      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+
     **Metadata**
-      Artefatto digitale contenente informazioni su un'entità organizzativa (endpoint, chiavi pubbliche, ecc.).
+      Artefatto digitale contenente informazioni su un'Entità Organizzativa (endpoint, chiavi pubbliche, ecc.).
       Non presente in ARF 2.7.3.
 
     **Enti Nazionali di Accreditamento**
@@ -112,7 +124,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Non presente in ARF 2.7.3.
 
     **National Trust Anchor**
-      Entità organizzativa designata a livello nazionale che agisce come radice di fiducia della federazione, operando la PKI nazionale e pubblicando le Trusted List e i metadati di federazione autorevoli per le entità subordinate (ad esempio Intermediari e Foglie).
+      Entità Organizzativa designata a livello nazionale che agisce come radice di fiducia della federazione, operando la PKI nazionale e pubblicando le Trusted List e i Metadata di federazione autorevoli per le Entità Organizzative subordinate (ad esempio Intermediari e Foglie).
       Non presente in ARF 2.7.3; specifico di IT-Wallet.
 
     **Processo di Notifica**
@@ -129,7 +141,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 
     **Fornitore di Attestati Elettronici di Dati di Identificazione Personale**
     **PID Provider**
-      Fornitore di Attestato Elettronico responsabile dell'emissione/revoca del PID, che garantisce l'associazione crittografica con la Wallet Unit.
+      Fornitore di Attestati Elettronici responsabile dell'emissione/revoca del PID, che garantisce l'associazione crittografica con la Wallet Unit.
       Conforme con ARF 2.7.3.
 
     **Policy Language**
@@ -145,11 +157,11 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Conforme con ARF 2.7.3.
 
     **Attestato Elettronico di Attributi Qualificati**
-      Attestazione verificabile digitalmente emessa da un QTSP, che comprova il possesso di attributi.
+      Attestazione verificabile digitalmente emessa da un QTSP, che comprova il possesso di Attributi.
       Conforme con ARF 2.7.3.
     
     **Attestato Elettronico di Attributi**
-      Attestato verificabile digitalmente in forma elettronica, comprovante il possesso di attributi.
+      Attestato verificabile digitalmente in forma elettronica, comprovante il possesso di Attributi.
       Conforme con ARF 2.7.3.
     
     **Attestato Elettronico di Attributi rilasciato da o per conto di un ente pubblico**
@@ -162,7 +174,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Non presente in ARF 2.7.3; specifico di IT-Wallet.
       
     **Attestato Elettronico di Dati di Identificazione Personale**
-      Attestato Elettronico che consente di autenticare il soggetto a cui si riferiscono i Dati Personali Identificativi.
+      Attestato Elettronico che consente di autenticare il soggetto a cui si riferiscono i Dati di Identificazione Personale.
       Conforme con ARF 2.7.3.
 
     **Fornitore di Attestati Elettronici di Attributi Qualificati**
@@ -199,7 +211,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Non presente in ARF 2.7.3; specifico di IT-Wallet.
 
     **Backend della Relying Party**
-      Infrastruttura remota composta da componenti server gestiti da un fornitore di Soluzioni di Relying Party.
+      Infrastruttura remota composta da componenti server gestiti da un Fornitore di Soluzioni di Relying Party.
       Non presente in ARF 2.7.3; specifico di IT-Wallet.
 
     **Istanza di Relying Party**
@@ -216,17 +228,17 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Non presente in ARF 2.7.3.
 
     **Processo di Supervisione**
-      Procedimento svolto da parte di un Organismo di Vigilanza per esaminare e garantire il corretto funzionamento del Fornitore di Wallet e di altre entità.
+      Procedimento svolto da parte di un Organismo di Vigilanza per esaminare e garantire il corretto funzionamento del Fornitore di Wallet e di altre Entità Organizzative.
       Non presente in ARF 2.7.3; specifico di IT-Wallet.
 
     **Signal Hub**
       La piattaforma PDND gestita dal Gestore PDND che abilita la raccolta e distribuzione di Segnali. Consiste di due e-Service PDND: Raccolta Segnali e Distribuzione Segnali.
 
     **Segnale (Signal Hub)**
-      Un segnale digitale propagato attraverso Signal Hub PDND. È utilizzato dalle Fonti Autentiche per notificare ai Fornitore di Attestati Elettronici aggiornamenti su stati e/o informazioni all'interno di un dominio gestito dalla Fonte Autentica stessa.
+      Segnale digitale propagato attraverso Signal Hub PDND. È utilizzato dalle Fonti Autentiche per notificare ai Fornitori di Attestati Elettronici aggiornamenti su stati e/o informazioni all'interno di un dominio gestito dalla Fonte Autentica stessa.
 
     **Soluzioni Tecniche**
-      Insieme dei sistemi hardware/software e dei servizi realizzati dai Fornitori di Wallet, Fornitori di Attestati Elettronici di Dati di Identificazione Personale, ecc.
+      Insieme dei sistemi hardware/software e dei servizi realizzati dai Fornitori di Wallet, dai Fornitori di Attestati Elettronici di Dati di Identificazione Personale, ecc.
       Non presente in ARF 2.7.3; specifico di IT-Wallet.
 
     **Specifiche Tecniche**
@@ -254,7 +266,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Non presente in ARF 2.7.3.
 
     **Trust Model**
-      Insieme di regole che garantiscono la legittimità dei componenti/entità nell'ecosistema IT-Wallet.
+      Insieme di regole che garantiscono la legittimità dei componenti/Entità Organizzative nel Sistema IT-Wallet.
       Non presente in ARF 2.7.3.
 
     **Relazione di Fiducia**
@@ -290,11 +302,11 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Simile ad ARF 2.7.3. ARF utilizza questo termine solo nei casi di interazione tra Wallet.
 
     **Istanza del Wallet**
-      Applicazione installata sul dispositivo di un Utente, parte di un'Istanza del Wallet, che fornisce interfacce utente.
+      Applicazione installata sul dispositivo di un Utente, parte di una Wallet Unit, che fornisce interfacce utente.
       Conforme con ARF 2.7.3.
 
     **Fornitore di Wallet**
-      Entità organizzativa responsabile della gestione e della fornitura di una Soluzione Wallet.
+      Entità Organizzativa responsabile della gestione e della fornitura di una Soluzione Wallet.
       Conforme con ARF 2.7.3.
 
     **Backend del Fornitore di Wallet**
@@ -303,18 +315,28 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Non presente in ARF 2.7.3.
 
     **Wallet Secure Cryptographic Application**
-      Applicazione che gestisce gli Asset critici utilizzando le funzioni crittografiche fornite dal WSCD. Conforme con ARF 2.7.3.
+      Applicazione che gestisce gli Asset Critici utilizzando le funzioni crittografiche fornite dal WSCD. Conforme con ARF 2.7.3.
 
     **Wallet Secure Cryptographic Device**
-      Dispositivo antimanomissione che fornisce un ambiente in cui la WSCA può proteggere gli Asset critici.
+      Dispositivo antimanomissione che fornisce un ambiente in cui la WSCA può proteggere gli Asset Critici.
       Conforme con ARF 2.7.3.
 
+    **Livello Wallet 2**
+    **WL2**
+      Livello di sicurezza in cui il Wallet Secure Cryptographic Device (WSCD) che supporta le chiavi associate alle Credenziali Elettroniche non è facilmente certificabile come resistente ad attaccanti con alto potenziale d'attacco, come i Trusted Execution Environment (TEE) inclusi nei dispositivi mobili dell'Utente. Corrisponde a un sostanziale Livello di Garanzia.
+      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+
+    **Livello Wallet 3**
+    **WL3**
+      Livello di sicurezza in cui il Wallet Secure Cryptographic Device (WSCD) che supporta le chiavi associate alle Credenziali Elettroniche è certificabile come resistente ad attaccanti con alto potenziale d'attacco, come HSM o smart card certificate almeno Common Criteria EAL4+ AVA_VAN.5. Corrisponde a un elevato Livello di Garanzia.
+      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+
     **Soluzione Wallet**
-      Insieme di Soluzioni Tecniche al fine di garantire il corretto funzionamento delle istanze di IT-Wallet.
+      Insieme di Soluzioni Tecniche al fine di garantire il corretto funzionamento delle Istanze del Wallet.
       Conforme con ARF 2.7.3.
   
     **Wallet Unit**
-      Configurazione univoca di una soluzione Wallet per un singolo utente, comprensiva delle funzionalità di sicurezza.
+      Configurazione univoca di una Soluzione Wallet per un singolo Utente, comprensiva delle funzionalità di sicurezza.
       Unique configuration of a Wallet Solution for an individual User, including security features.
       Conforme con ARF 2.7.3.
 
@@ -379,13 +401,13 @@ Di seguito sono riportati i principali termini e definizioni relativi agli aspet
       È la pagina presente nel Touchpoint della Relying Party o delle terze parti che supportano un Credential Offer dove l'Utente viene a conoscenza di tutte le Soluzioni Wallet presenti nel Registro del Sistema IT-Wallet e può scegliere con quale proseguire il processo di Autenticazione, presentazione o erogazione. 
 
     **Modello di Servizio**
-      Insieme di interazioni tra attori e Touchpoint necessari per l'erogazione e la fruizione del servizio.
+      Insieme di interazioni tra Attori Primari e Touchpoint necessari per l'erogazione e la fruizione del servizio.
     
     **Touchpoint**
       Punto di contatto (digitale e non) tra l'Utente e il prodotto o servizio.
     
     **Trust Mark**
-      Un elemento grafico che fornisce la prova della partecipazione degli Attori Primari al Sistema IT-Wallet e garantisce quindi il rispetto dei suoi standard.
+      Elemento grafico che fornisce la prova della partecipazione degli Attori Primari al Sistema IT-Wallet e garantisce quindi il rispetto dei suoi standard.
     
     **Esperienza Utente**
       L'insieme delle percezioni e delle reazioni delle persone derivanti dall'uso e/o dalle aspettative d'uso di un prodotto, sistema o servizio.
@@ -420,6 +442,8 @@ Di seguito gli acronimi usati più di frequente nel documento:
     - Carta di Identità Elettronica
   * - **EAA**
     - Electronic Attestation of Attributes (Attestato Elettronico di Attributi)
+  * - **ICT**
+    - Information and Communication Technology (Tecnologie dell'Informazione e della Comunicazione)
   * - **NAB**
     - National Accreditation Body (Ente Nazionale di Accreditamento)
   * - **IAM**
@@ -434,6 +458,8 @@ Di seguito gli acronimi usati più di frequente nel documento:
     - Person Identification Data (Attestato Elettronico di Dati di Identificazione Personale)
   * - **PII**
     - Personally Identifiable Information (Informazioni di Identificazione Personale)
+  * - **PPBE**
+    - PID Provider Backend (Backend del Fornitore di Attestati Elettronici di Dati di Identificazione Personale)
   * - **QEAA**
     - Qualified Electronic Attestation of Attributes (Attestato Elettronico di Attributi Qualificati)
   * - **Pub-EAA**
@@ -444,10 +470,18 @@ Di seguito gli acronimi usati più di frequente nel documento:
     - Verifiable Credential
   * - **VP**
     - Verifiable Presentation
+  * - **WPBE**
+    - Wallet Provider Backend (Backend del Fornitore di Wallet)
   * - **WSCA**
     - Wallet Secure Cryptographic Application (Applicazione Crittografica Sicura per il Wallet)
   * - **WSCD**
     - Wallet Secure Cryptographic Device (Dispositivo Crittografico Sicuro per il Wallet)
+  * - **WL2**
+    - Wallet Level 2 / Livello Wallet 2 (Sostanziale)
+  * - **WL3**
+    - Wallet Level 3 / Livello Wallet 3 (Elevato)
+  * - **WWI**
+    - WSCD Interface (interfaccia tra la Wallet Secure Cryptographic Application e il Wallet Secure Cryptographic Device)
 
 Linguaggio Normativo e Convenzioni
 ==================================

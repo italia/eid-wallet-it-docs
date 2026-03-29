@@ -44,6 +44,8 @@ The architecture enables the following core interaction processes:
   4. **Credential Storage and Management**: IT-Wallet Solutions receive and manage Digital Credentials on User devices, enabling secure Credential lifecycle management.
 
   5. **Credential Presentation and Verification**: Users present Digital Credentials to Relying Parties, which verify claims through cryptographic validation and status verification. Relying Parties operate within authorized scopes that define which Credential types and purposes they can request, with validation against the :ref:`registry:Claims Registry` for schema verification.
+  
+  6. **Certification and Conformity Assessment**: The IT-Wallet System components are subject to certification processes as required by `CIR 2024/2981`_. The certification scope encompasses the Wallet Instance, WSCD, WSCA, Wallet Provider Backend, eID Scheme components, Trust List Backend Services, and PID Provider Backend. Components outside the certification scope include the User Device, the Operating System, Attribute Attestation Providers ((Pub/Q)EAA), Authentic Sources, Relying Parties, and Qualified Signature/Seal Creation Devices. The electronic identification scheme, encompassing services and processes that are cross-cutting to the Wallet Provider and the PID Provider, is also within the certification scope.
 
 
  

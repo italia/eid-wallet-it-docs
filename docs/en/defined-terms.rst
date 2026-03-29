@@ -30,6 +30,10 @@ Below is the description of acronyms and definitions which are useful for furthe
       Public or private entity responsible for a repository/system considered a primary source for Attributes or PID.
       Aligned with ARF 2.7.3.
 
+    **Certification Scope**
+      Indication of whether a component is evaluated during certification (In scope) or not (Out of scope). Used to define the boundaries of the certification evaluation.
+      Not present in ARF 2.7.3; specific to IT-Wallet.
+
     **Certification Process**
       Process by Conformity Assessment Bodies to certify the Wallet Solution, including periodic technical assessments.
       Not present in ARF 2.7.3; specific to IT-Wallet.
@@ -81,6 +85,10 @@ Below is the description of acronyms and definitions which are useful for furthe
       Framework for managing digital identities and access to information.
       Not present in ARF 2.7.3.
 
+    **Identity Proofing**
+      Process by which an issuing entity verifies the identity of a person, which may take place in physical or digital contexts. In the IT-Wallet ecosystem, the PID Provider implements Identity Proofing in the digital context as part of the PID Provider Backend (PPBE), typically through national eID authentication (e.g. CIEid LoA High).
+      Not present in ARF 2.7.3; specific to IT-Wallet.
+
     **IT-Wallet System**
       Set of Technical Solutions implementing the Italian Digital Wallet System.
       Not present in ARF 2.7.3; specific to IT-Wallet.
@@ -96,6 +104,10 @@ Below is the description of acronyms and definitions which are useful for furthe
     **Level of Assurance**
       Degree of confidence in identity vetting and credential presentation.
       Not present in ARF 2.7.3.
+
+    **Certification Macro-component**
+      Top-level grouping in the component decomposition for certification (e.g. ICT Wallet Services, eID ICT Services); each certification macro-component has an owner (such as Wallet Provider or PID Provider) and a certification scope.
+      Not present in ARF 2.7.3; specific to IT-Wallet.
 
     **Metadata**
       Digital artifact with information about an Organizational Entity (endpoints, public keys, etc.).
@@ -307,6 +319,16 @@ Below is the description of acronyms and definitions which are useful for furthe
       A person or entity using a Relying Party Instance.
       Similar with ARF 2.7.3. ARF uses this term only in Wallet-to-Wallet interactions.
 
+    **Wallet Level 2**
+    **WL2**
+      Security level where the Wallet Secure Cryptographic Device (WSCD) supporting the keys associated with Digital Credentials is not easily certifiable as resistant against attackers with a high attack potential, such as Trusted Execution Environments (TEE) included in User mobile devices. Corresponds to a substantial Level of Assurance.
+      Not present in ARF 2.7.3; specific to IT-Wallet.
+
+    **Wallet Level 3**
+    **WL3**
+      Security level where the Wallet Secure Cryptographic Device (WSCD) supporting the keys associated with Digital Credentials is certifiable as resistant against attackers with a high attack potential, such as HSM or smart card devices certified at least Common Criteria EAL4+ AVA_VAN.5. Corresponds to a high Level of Assurance.
+      Not present in ARF 2.7.3; specific to IT-Wallet.
+
     **Wallet Instance**
       Application installed on a User's device, part of the Wallet Unit, providing user interfaces.
       Aligned with ARF 2.7.3.
@@ -441,6 +463,8 @@ Below are the main acronyms used in the document:
     - Electronic Attestation of Attributes
   * - **IAM**
     - Identity and Access Management
+  * - **ICT**
+    - Information and Communication Technology
   * - **LoA**
     - Level of Assurance
   * - **NAB**
@@ -453,6 +477,8 @@ Below are the main acronyms used in the document:
     - Person Identification Data
   * - **PII**
     - Personally Identifiable Information
+  * - **PPBE**
+    - PID Provider Backend
   * - **QEAA**
     - Qualified Electronic Attestation of Attributes
   * - **Pub-EAA**
@@ -463,8 +489,16 @@ Below are the main acronyms used in the document:
     - Verifiable Credential
   * - **VP**
     - Verifiable Presentation
+  * - **WL2**
+    - Wallet Level 2 (Substantial)
+  * - **WL3**
+    - Wallet Level 3 (High)
+  * - **WPBE**
+    - Wallet Provider Backend
   * - **WSCA**
     - Wallet Secure Cryptographic Application
   * - **WSCD**
     - Wallet Secure Cryptographic Device
+  * - **WWI**
+    - WSCD Interface (interface between the Wallet Secure Cryptographic Application and the Wallet Secure Cryptographic Device)
 

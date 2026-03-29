@@ -25,16 +25,22 @@ Il flusso ad alto livello inizia con l'Utente che desidera ottenere un PID e avv
     6. **Emissione del PID**: il PID Provider rilascia un PID vincolato al materiale crittografico posseduto dall'Istanza del Wallet richiedente.
 
 .. note::
-    Riguardo al punto 4, il metodo di autenticazione primario è basato su CieID LoA High (L3). Per scenari in cui il PIN CIE non è immediatamente disponibile, è disponibile un meccanismo di autenticazione multi-step alternativo che combina Autenticazione eID Substantial con Verifica MRTD.
+    Riguardo al punto 4, il metodo di autenticazione primario è basato su CIEid LoA High (L3). Per scenari in cui il PIN CIE non è immediatamente disponibile, è disponibile un meccanismo di autenticazione alternativo basato su eID Substantial aumentato. I dettagli implementativi saranno definiti a seguito degli sviluppi della bozza del CIR.
 
-    Questo protocollo assicura livelli di sicurezza standard attraverso autenticazione multi-fattore fornendo accessibilità migliorata.
+    Per la specifica tecnica attuale del flusso eID Substantial aumentato, vedere :ref:`flusso eID Substantial aumentato <credential-issuance-l2plus:Autenticazione eID Substantial con Verifica MRTD per Emissione PID>`.
 
-    Per specifiche tecniche complete, vedere :ref:`credential-issuance-l2plus:Autenticazione eID Substantial con Verifica MRTD per Emissione PID`.
+.. _wscd-credential-issuance-requirement:
+
+.. rubric:: Requisiti WSCD per l'emissione
+
+.. note::
+   Per l'emissione di PID, il PID Provider DEVE garantire che la Wallet Unit fornisca un WSCD WL3 per l'archiviazione delle chiavi, poiché il PID richiede un Livello di Garanzia elevato. Tale requisito sarà considerato una volta che l'IT-Wallet sarà notificato EUDIW e lo schema di certificazione sarà pubblicato e reso operativo. Per l'emissione di (Q)EAA, il Fornitore di Attestati Elettronici DEVE garantire che la Wallet Unit fornisca almeno un WSCD WL2. Vedere :ref:`livelli di sicurezza WSCD <wscd-security-levels>` per la definizione dei livelli di sicurezza.
+
 
 Flusso ad Alto Livello per (Q)EAA
 ----------------------------------
 
-La :numref:`fig_High-Level-Flow-ITWallet-QEAA-Issuance` mostra un'architettura generale ed evidenzia le principali operazioni coinvolte nell'emissione di un (Q)EAA, seguendo le ipotesi elencate di seguito:
+La :numref:`fig_High-Level-Flow-ITWallet-QEAA-Issuance` mostra un'architettura generale ed evidenzia le principali operazioni coinvolte nell'emissione di un (Q)EAA. Il flusso considera:
 
   - l'Utente ha un PID valido memorizzato nella propria Istanza del Wallet;
   - il (Q)EAA richiede un profilo di implementazione ad alta sicurezza.

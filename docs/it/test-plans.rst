@@ -1,12 +1,13 @@
 .. include:: ../common/common_definitions.rst
 
+.. _test-plans:
 
 Test Plans
 ==========
 
 Lo scopo dei piani di test è supportare implementatori, auditor e ambienti di test di conformità nella validazione del comportamento delle Soluzioni Wallet, delle Relying Party e degli Provider di Credenziali in vari scenari operativi e di sicurezza.
 
-Tutti i casi di test sono derivati da regole normative definite nelle specifiche sopra indicate, senza presupposti o estensioni.
+Tutti i casi di test sono derivati da regole normative definite nelle specifiche sopra indicate, senza estensioni.
 
 .. note::
   Si prega di notare che la matrice dei piani di test potrebbe essere soggetta a modifiche future.

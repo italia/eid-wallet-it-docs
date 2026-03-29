@@ -7,6 +7,55 @@ Componenti della Soluzione Wallet
 .. note::
    I test relativi ai componenti della Wallet Solution (Backend del Wallet e Unità di Wallet) sono riassunti in :ref:`WP_012 <wallet-provider-backend-testcases>` e in :ref:`WP_013 <wallet-instance-testcases>`, rispettivamente.
 
+.. _wallet-solution-components-decomposition:
+
+Scomposizione e Ambito di Certificazione
+-----------------------------------------
+
+La **certificazione** è il processo con cui gli Organismi di Valutazione della Conformità valutano le soluzioni tecniche rispetto ai requisiti di sicurezza e conformità previsti dal `CIR 2024/2981`_. La **scomposizione dei componenti per la certificazione** è una struttura gerarchica (macro-componente di certificazione, componente, sottocomponente) utilizzata per definire l'ambito della valutazione della certificazione e stabilire la tracciabilità tra elementi architetturali e requisiti di certificazione.
+
+Questa sezione specifica la mappatura tra i componenti della Soluzione Wallet descritti in questa specifica tecnica e il macro-componente di certificazione **Servizi ICT Wallet** (proprietario: Fornitore di Wallet). Indica quali componenti sono conformi alla scomposizione e rientrano nell'ambito di certificazione.
+
+.. list-table:: Soluzione Wallet — Mappatura Scomposizione
+   :widths: 30 40 15
+   :header-rows: 1
+
+   * - Componente / Sottocomponente
+     - Equivalente nella Specifica Tecnica
+     - Ambito Certificazione
+   * - **Wallet Instance (WI)** — Application Logic
+     - User Interface, Issuer Component, Presentation Component, Wallet Instance Lifecycle Management
+     - In scopo
+   * - **Wallet Instance (WI)** — Local Data management
+     - Local Data Store, Backup and Restore Component, interazione Secure Storage
+     - In scopo
+   * - **Wallet Instance (WI)** — Presentation Interface (PI)
+     - Presentazione remota e di prossimità PID/(Pub/Q)EAA (`OpenID4VP`_, `ISO18013-5`_)
+     - In scopo
+   * - **Wallet Instance (WI)** — Attestation Issuance Interface
+     - PID Issuance Interface (PII), Attestation Issuance Interface (AII)
+     - In scopo
+   * - **Wallet Secure Cryptographic Device (WSCD)**
+     - Hardware Secure Element, WSCD Firmware, Secure Key Storage System
+     - In scopo
+   * - **Wallet Secure Cryptographic Application (WSCA)**
+     - WSCD Interface (WWI), WSCA Authentication, Cryptographic Keys and Functions Manager
+     - In scopo
+   * - **Wallet Provider Backend (WPBE)** — API Interface
+     - API Interface (incl. PDND per notifiche da PID Provider)
+     - In scopo
+   * - **Wallet Provider Backend (WPBE)** — Wallet Instance Lifecycle Management
+     - Registrazione, Attestation Issuance (WAA/WUA), Status e revoca
+     - In scopo
+   * - **Wallet Provider Backend (WPBE)** — Trust & Security Component
+     - Gestione chiavi e certificati, audit logging, incident response, conformità Federation
+     - In scopo
+   * - **Wallet Provider Backend (WPBE)** — User web portal
+     - Frontend Component
+     - In scopo
+
+Per lo schema di certificazione completo e gli elementi trasversali (ad es. eID Scheme), vedere :ref:`annex-certification-scheme:Schema di Certificazione e Approccio Complessivo`.
+
 Backend del Wallet
 ------------------
 
@@ -99,7 +148,12 @@ Questo componente DEVE fornire le funzionalità di dashboard e di registro delle
 Archiviazione Sicura
 ^^^^^^^^^^^^^^^^^^^^
 
-L'Istanza del Wallet DEVE utilizzare questo componente per proteggere gli asset critici e per eseguire in modo sicuro funzioni crittografiche.
+L'Istanza del Wallet DEVE utilizzare questo componente per proteggere gli Asset Critici e per eseguire in modo sicuro funzioni crittografiche.
+
+L'Archiviazione Sicura comprende i seguenti sottocomponenti:
+
+- **Wallet Secure Cryptographic Device (WSCD)**: dispositivo antimanomissione che fornisce un ambiente per proteggere gli Asset Critici. Il WSCD include l'Hardware Secure Element, il WSCD Firmware e il Secure Key Storage System. Il WSCD opera a due livelli di sicurezza distinti (WL3 e WL2) come descritto in :ref:`livelli di sicurezza WSCD <wscd-security-levels>`.
+- **Wallet Secure Cryptographic Application (WSCA)**: applicazione che gestisce gli Asset Critici utilizzando le funzioni crittografiche fornite dal WSCD. La WSCA include l'interfaccia WSCD (WWI), l'Autenticazione WSCA e il Cryptographic Keys and Functions Manager.
 
 
 Modelli di Interazione della Soluzione Wallet

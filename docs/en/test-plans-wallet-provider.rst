@@ -1,5 +1,6 @@
 .. include:: ../common/common_definitions.rst
 
+.. _test-plans-wallet-provider:
 .. _wallet-provider-test-matrix:
 
 Wallet Provider Test Matrix
