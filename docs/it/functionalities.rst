@@ -332,18 +332,18 @@ La Fonte Autentica:
  - DEVE fornire il logo secondo una ratio di 1:1, nella sua versione compatta; 
  - DEVE fornire un logo che non ecceda il peso massimo di 80 KB, nella sua versione compatta; 
  - DEVE fornire il logo con una dimensione minima di 200 × 30 pixel e una dimensione massima di 650 × 180 pixel, nella sua versione estesa; 
- - DEVE fornire un logo che non ecceda il peso massimo di 150 KB, nella sua versione estesa;
+ - DEVE fornire un logo che non ecceda il peso massimo di 150 KB, nella sua versione estesa.
 
 - PUÒ rendere disponibile un **logo distintivo** associato a una specifica EAA tramite il parametro data_capabilities.logo_uri. In particolare, la Fonte Autentica: 
 
  - DEVE fornire il logo in uno dei seguenti formati: ``image/png``, ``image/svg+xml``, or ``image/webp``; 
  - DEVE fornire il logo sia in versione positiva che negativa, se disponibile; 
  - DEVE fornire il logo con una dimensione minima di 200 × 30 pixel e una dimensione massima di 650 x 180 pixel; 
- - DEVE fornire un logo che non ecceda il peso massimo di 150 KB;
+ - DEVE fornire un logo che non ecceda il peso massimo di 150 KB.
 
 - PUÒ definire un **colore** distintivo da associare a una specifica EAA tramite il parametro data_capabilities.background_color. In particolare, la Fonte Autentica: 
 
- - DEVE fornire il colore utilizzando esclusivamente una delle seguenti modalità colore: HEX, HSB, RGB, sRGB, HSL, or HSV; 
+ - DEVE fornire il colore utilizzando esclusivamente una delle seguenti modalità colore: HEX, HSB, RGB, sRGB, HSL, or HSV.
 
 - L’EAA DEVE essere caratterizzato da un particolare **ordinamento dei dati**. La Fonte Autentica DEVE fornire l’ordine desiderato degli Attributi tramite il parametro ``data_capabilities.available_claims_order``. In particolare, la Fonte Autentica: 
 
