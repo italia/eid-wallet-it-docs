@@ -1,0 +1,501 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/italia/eid-wallet-it-docs/handbooks/it/authentic-sources/json-schemas/schema-validazione-form-onboarding-fonte-autentica.schema.json",
+  "$version": "0.10.1",
+  "title": "Schema validazione Fonte Autentica",
+  "description": "Schema di validazione per progettazione-caratteristiche-eaa.json. Ordine sezioni: metadata, casi_d_uso, e_service (pdnd_metadata, request, response.dataset, mappatura_errori, stati, lista_nome_campo), assistenza.",
+  "type": "object",
+  "required": [
+    "metadata",
+    "casi_d_uso",
+    "e_service",
+    "assistenza"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "metadata": {
+      "type": "object",
+      "required": ["nome_ente_titolare", "nome_eaa"],
+      "properties": {
+        "nome_ente_titolare": { "type": "string", "minLength": 1 },
+        "nome_eaa": { "type": "string", "minLength": 1 },
+        "data_compilazione": { "type": "string" },
+        "versione": { "type": "string" }
+      }
+    },
+    "casi_d_uso": { "$ref": "#/$defs/casi_d_uso" },
+    "e_service": {
+      "type": "object",
+      "required": [
+        "pdnd_metadata",
+        "request",
+        "response",
+        "mappatura_errori",
+        "stati"
+      ],
+      "description": "e_service: metadati PDND, parametri in ingresso (request), dataset in risposta (response), mappatura_errori, stati, lista_nome_campo.",
+      "properties": {
+        "pdnd_metadata": {
+          "type": "object",
+          "required": [
+            "pdnd_eservice_id_prod",
+            "pdnd_eservice_id_uat",
+            "pdnd_eservice_name",
+            "token_type",
+            "is_audit_rest_02_required"
+          ],
+          "properties": {
+            "pdnd_eservice_id_prod": {
+              "type": "string",
+              "description": "UUID e-service PDND ambiente di produzione"
+            },
+            "pdnd_eservice_id_uat": {
+              "type": "string",
+              "description": "UUID e-service PDND ambiente UAT/collaudo"
+            },
+            "pdnd_eservice_name": {
+              "type": "string",
+              "description": "Denominazione e-service su PDND"
+            },
+            "token_type": {
+              "type": "string",
+              "description": "Tipo token di accesso (es. Bearer)"
+            },
+            "is_audit_rest_02_required": {
+              "type": "boolean",
+              "description": "Indica se è richiesta conformità audit REST 02 (PDND)"
+            }
+          }
+        },
+        "request": {
+          "type": "object",
+          "required": ["parametri_input"],
+          "properties": {
+            "parametri_input": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/parametro_input" }
+            }
+          }
+        },
+        "response": {
+          "type": "object",
+          "required": ["versione", "dataset"],
+          "description": "Contratto della response dell'endpoint Fonte Autentica (campi del dataset restituito)",
+          "properties": {
+            "versione": {
+              "type": "string",
+              "description": "Versione del contratto di response (es. 1.0, 1.1)"
+            },
+            "dataset": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/data_model_campo" }
+            }
+          }
+        },
+        "mappatura_errori": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/mappatura_errore" }
+        },
+        "stati": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/mappatura_stato" }
+        },
+        "lista_nome_campo": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/lista_nome_campo_riga" }
+        }
+      }
+    },
+    "assistenza": {
+      "type": "object",
+      "required": [
+        "referenti",
+        "canali",
+        "faq",
+        "testi_informativi"
+      ],
+      "properties": {
+        "referenti": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/referente_assistenza" }
+        },
+        "canali": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/canale_assistenza" }
+        },
+        "faq": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/faq_item" }
+        },
+        "testi_informativi": { "type": "string" }
+      }
+    }
+  },
+  "$defs": {
+    "data_model_campo": {
+      "type": "object",
+      "required": [
+        "attestazione",
+        "parametro",
+        "descrizione",
+        "nome_campo",
+        "esempio_campo_compilato",
+        "obbligatorio",
+        "tipologia",
+        "lunghezza_massima_caratteri",
+        "note"
+      ],
+      "properties": {
+        "attestazione": { "type": "string" },
+        "parametro": { "type": "string" },
+        "descrizione": { "type": "string" },
+        "nome_campo": { "type": "string" },
+        "esempio_campo_compilato": { "type": "string" },
+        "obbligatorio": {
+          "type": "boolean",
+          "description": "true se il campo è obbligatorio nella response; false se opzionale"
+        },
+        "tipologia": { "type": "string" },
+        "lunghezza_massima_caratteri": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Lunghezza massima in caratteri (intero senza segno)"
+        },
+        "note": { "type": "string" }
+      }
+    },
+    "parametro_input": {
+      "type": "object",
+      "required": [
+        "nome_parametro",
+        "descrizione",
+        "nome_campo",
+        "esempio_campo_compilato",
+        "obbligatorio",
+        "tipologia",
+        "lunghezza_massima_caratteri",
+        "possibili_valori_ammessi",
+        "note"
+      ],
+      "properties": {
+        "nome_parametro": { "type": "string" },
+        "descrizione": { "type": "string" },
+        "nome_campo": { "type": "string" },
+        "esempio_campo_compilato": { "type": "string" },
+        "obbligatorio": {
+          "type": "boolean",
+          "description": "true se il parametro è obbligatorio in input; false se opzionale"
+        },
+        "tipologia": { "type": "string" },
+        "lunghezza_massima_caratteri": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Lunghezza massima in caratteri (intero senza segno)"
+        },
+        "possibili_valori_ammessi": {
+          "oneOf": [
+            { "type": "string" },
+            {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          ],
+          "description": "Valori ammessi come stringa o elenco (es. enum)"
+        },
+        "note": { "type": "string" }
+      }
+    },
+    "mappatura_errore": {
+      "type": "object",
+      "required": [
+        "codice",
+        "esito",
+        "applicabile",
+        "causa",
+        "azione_utente",
+        "note"
+      ],
+      "properties": {
+        "codice": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Codice HTTP o di dominio (es. 200, 404, 540). Obbligatorietà di applicabile vincolata da allOf sotto."
+        },
+        "esito": { "type": "string" },
+        "applicabile": {
+          "type": "boolean",
+          "description": "true per codici obbligatori (200, 400, 401, 404, 429, 500, 503); false per codici opzionali (403, 405, 406, 408, 409, 410, 413, 414, 421, 431, 451, 501, 540, 541)."
+        },
+        "causa": { "type": "string" },
+        "azione_utente": { "type": "string" },
+        "note": { "type": "string" }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "codice": {
+                "enum": [
+                  403,
+                  405,
+                  406,
+                  408,
+                  409,
+                  410,
+                  413,
+                  414,
+                  421,
+                  431,
+                  451,
+                  501,
+                  540,
+                  541
+                ]
+              }
+            },
+            "required": ["codice"]
+          },
+          "then": { "properties": { "applicabile": { "const": false } } }
+        },
+        {
+          "if": {
+            "properties": {
+              "codice": {
+                "enum": [200, 400, 401, 404, 429, 500, 503]
+              }
+            },
+            "required": ["codice"]
+          },
+          "then": { "properties": { "applicabile": { "const": true } } }
+        }
+      ]
+    },
+    "mappatura_stato": {
+      "type": "object",
+      "required": [
+        "stato",
+        "descrizione",
+        "applicabile",
+        "azione_utente",
+        "messaggio",
+        "note"
+      ],
+      "properties": {
+        "stato": {
+          "type": "string",
+          "enum": ["Valido", "Non Valido", "Sospeso", "Scaduto"],
+          "description": "Valore del form di onboarding. L'OpenAPI dell'e-service Fonte Autentica (PDND AS) espone per i dataset solo status: VALID, INVALID, SUSPENDED; cfr. manuale Appendice D per la corrispondenza."
+        },
+        "descrizione": { "type": "string" },
+        "applicabile": {
+          "type": "boolean",
+          "description": "true se lo stato si applica a questo EAA; false altrimenti"
+        },
+        "azione_utente": { "type": "string" },
+        "messaggio": { "type": "string" },
+        "note": { "type": "string" }
+      }
+    },
+    "lista_nome_campo_riga": {
+      "type": "object",
+      "required": ["categoria", "parametro", "nome_campo", "descrizione"],
+      "properties": {
+        "categoria": { "type": "string" },
+        "parametro": { "type": "string" },
+        "nome_campo": { "type": "string" },
+        "descrizione": { "type": "string" }
+      }
+    },
+    "campo_risposta": {
+      "type": "object",
+      "required": ["domanda", "risposta"],
+      "properties": {
+        "domanda": { "type": "string" },
+        "suggerimento": { "type": "string" },
+        "risposta": { "type": "string" }
+      }
+    },
+    "canale_assistenza": {
+      "type": "object",
+      "required": ["tipo", "risposta", "note"],
+      "properties": {
+        "tipo": {
+          "type": "string",
+          "enum": ["Email assistenza", "Numero telefonico", "Altro"],
+          "description": "Tipo di canale di assistenza disponibile"
+        },
+        "risposta": {
+          "type": "string",
+          "description": "Valore del canale: indirizzo email (Email assistenza), numero di telefono (Numero telefonico), descrizione (Altro). Vuoto se il canale non è utilizzato."
+        },
+        "note": { "type": "string", "description": "Note aggiuntive sul canale" }
+      },
+      "if": {
+        "properties": { "tipo": { "const": "Email assistenza" } },
+        "required": ["tipo"]
+      },
+      "then": {
+        "properties": {
+          "risposta": {
+            "oneOf": [
+              { "type": "string", "maxLength": 0 },
+              { "type": "string", "minLength": 1, "format": "email" }
+            ]
+          }
+        }
+      }
+    },
+    "campo_booleano": {
+      "type": "object",
+      "required": ["domanda", "risposta"],
+      "properties": {
+        "domanda": { "type": "string" },
+        "suggerimento": { "type": "string" },
+        "risposta": { "type": "boolean" }
+      }
+    },
+    "referente_assistenza": {
+      "type": "object",
+      "required": ["ruolo", "nome", "cognome", "email", "telefono"],
+      "properties": {
+        "ruolo": { "type": "string" },
+        "nome": { "type": "string" },
+        "cognome": { "type": "string" },
+        "email": {
+          "type": "string",
+          "oneOf": [
+            { "maxLength": 0 },
+            { "minLength": 1, "format": "email" }
+          ],
+          "description": "Indirizzo email del referente; vuoto se non disponibile"
+        },
+        "telefono": {
+          "type": "string",
+          "oneOf": [
+            { "maxLength": 0 },
+            { "minLength": 4, "pattern": "^[0-9+\\-\\s()]+$", "maxLength": 25 }
+          ],
+          "description": "Numero di telefono (es. +39 06 1234567); vuoto se non disponibile"
+        }
+      }
+    },
+    "faq_item": {
+      "type": "object",
+      "required": ["domanda", "risposta"],
+      "properties": {
+        "domanda": { "type": "string" },
+        "risposta": { "type": "string" }
+      }
+    },
+    "target_utenti": {
+      "type": "object",
+      "required": ["documento_fisico_preesistente", "chi_puo_richiedere", "prerequisiti"],
+      "properties": {
+        "documento_fisico_preesistente": { "$ref": "#/$defs/campo_booleano" },
+        "chi_puo_richiedere": { "$ref": "#/$defs/campo_risposta" },
+        "prerequisiti": { "$ref": "#/$defs/campo_risposta" },
+        "volume_rilascio": { "$ref": "#/$defs/campo_risposta" },
+        "limitazioni_estensioni": { "$ref": "#/$defs/campo_risposta" }
+      }
+    },
+    "emissione_formato": {
+      "type": "object",
+      "required": [
+        "dominio",
+        "interesse_pubblico",
+        "interesse_pubblico_motivazione",
+        "catalogo_o_touchpoint",
+        "modalita_sincrona_differita",
+        "eaa_univoca",
+        "identificazione_utente",
+        "identificazione_utente_motivazione"
+      ],
+      "properties": {
+        "dominio": { "$ref": "#/$defs/campo_risposta" },
+        "interesse_pubblico": { "$ref": "#/$defs/campo_booleano" },
+        "interesse_pubblico_motivazione": { "$ref": "#/$defs/campo_risposta" },
+        "canali_richiesta": { "$ref": "#/$defs/campo_risposta" },
+        "richieste_fisico_vs_digitale": { "$ref": "#/$defs/campo_risposta" },
+        "formato_attuale": { "$ref": "#/$defs/campo_risposta" },
+        "dettagli_digitale": { "$ref": "#/$defs/campo_risposta" },
+        "possesso_documento": { "$ref": "#/$defs/campo_booleano" },
+        "possesso_documento_condizioni": { "$ref": "#/$defs/campo_risposta" },
+        "catalogo_o_touchpoint": { "$ref": "#/$defs/campo_risposta" },
+        "modalita_sincrona_differita": { "$ref": "#/$defs/campo_risposta" },
+        "variazioni_dati": { "$ref": "#/$defs/campo_risposta" },
+        "eaa_univoca": { "$ref": "#/$defs/campo_booleano" },
+        "identificazione_utente": { "$ref": "#/$defs/campo_booleano" },
+        "identificazione_utente_motivazione": { "$ref": "#/$defs/campo_risposta" }
+      }
+    },
+    "utilizzo": {
+      "type": "object",
+      "required": [
+        "contesti_uso",
+        "soggetti_verificatori",
+        "utilizzo_continuo",
+        "tempo_validita",
+        "rinnovo",
+        "rinnovo_procedura",
+        "validita_europa"
+      ],
+      "properties": {
+        "contesti_uso": { "$ref": "#/$defs/campo_risposta" },
+        "soggetti_verificatori": { "$ref": "#/$defs/campo_risposta" },
+        "verifica_validita": { "$ref": "#/$defs/campo_risposta" },
+        "strumenti_verificatore": { "$ref": "#/$defs/campo_risposta" },
+        "utilizzo_continuo": { "$ref": "#/$defs/campo_risposta" },
+        "contesto_online_dal_vivo": { "$ref": "#/$defs/campo_risposta" },
+        "tempo_validita": { "$ref": "#/$defs/campo_risposta" },
+        "rinnovo": { "$ref": "#/$defs/campo_booleano" },
+        "rinnovo_procedura": { "$ref": "#/$defs/campo_risposta" },
+        "validita_europa": { "$ref": "#/$defs/campo_risposta" },
+        "limitazioni_territoriali": { "$ref": "#/$defs/campo_risposta" },
+        "eaa_tutti_contesti": { "$ref": "#/$defs/campo_booleano" },
+        "eaa_tutti_contesti_dettaglio": { "$ref": "#/$defs/campo_risposta" },
+        "estensione_contesti": { "$ref": "#/$defs/campo_booleano" },
+        "estensione_contesti_dettaglio": { "$ref": "#/$defs/campo_risposta" }
+      }
+    },
+    "pagamento": {
+      "type": "object",
+      "required": ["gratuito_o_pagamento", "pagamento_rinnovo"],
+      "properties": {
+        "gratuito_o_pagamento": { "$ref": "#/$defs/campo_booleano" },
+        "modalita_pagamento": { "$ref": "#/$defs/campo_risposta" },
+        "pagamento_rinnovo": { "$ref": "#/$defs/campo_booleano" }
+      }
+    },
+    "legale_privacy": {
+      "type": "object",
+      "required": [
+        "normativa",
+        "proprieta_dati",
+        "dati_sensibili",
+        "dati_sensibili_motivazione"
+      ],
+      "properties": {
+        "normativa": { "$ref": "#/$defs/campo_risposta" },
+        "proprieta_dati": { "$ref": "#/$defs/campo_risposta" },
+        "dati_sensibili": { "$ref": "#/$defs/campo_booleano" },
+        "dati_sensibili_motivazione": { "$ref": "#/$defs/campo_risposta" }
+      }
+    },
+    "casi_d_uso": {
+      "type": "object",
+      "required": [
+        "target_utenti",
+        "emissione_formato",
+        "utilizzo",
+        "legale_privacy"
+      ],
+      "properties": {
+        "target_utenti": { "$ref": "#/$defs/target_utenti" },
+        "emissione_formato": { "$ref": "#/$defs/emissione_formato" },
+        "utilizzo": { "$ref": "#/$defs/utilizzo" },
+        "pagamento": { "$ref": "#/$defs/pagamento" },
+        "legale_privacy": { "$ref": "#/$defs/legale_privacy" }
+      }
+    }
+  }
+}

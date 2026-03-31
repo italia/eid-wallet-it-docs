@@ -42,6 +42,11 @@ Get Attribute Claims
   * - **Fruitore**
     - Fornitore di Attestato Elettronico
 
+Questo e-Service DEVE essere invocato dal Credential Issuer nei seguenti casi:
+
+  - Durante il flusso di emissione delle Credenziali per recuperare i relativi dataset. In questo caso, il claim ``object_id`` NON DEVE essere utilizzato nel payload della request dell'e-Service e la response dell'e-Service DEVE includere tutti i dataset delle credenziali in stato ``VALID`` e non scaduti amministrativamente (ovvero, ``expiry_date`` > data corrente della request dell'e-service). 
+  - Dopo aver ricevuto una notifica di aggiornamento tramite Signal Hub. In questo caso, il claim ``object_id`` DEVE essere incluso nel payload della request dell'e-service e la risposta dell'e-Service DEVE restituire solamente il dataset delle credenziali identificato dal claim ``object_id``, indipendentemente dal suo stato.
+
 .. note::
   La Fonte Autentica e il Credential Issuer DEVONO implementare la logica necessaria per tenere traccia delle richieste e delle risposte scambiate tramite questo e-Service, al fine di essere in grado di correlarle con la relativa emissione di un Attestato Elettronico. In particolare,
     - entrambi DEVONO salvare il valore ``object_id`` contenuto nel payload della risposta per gestire i Segnali relativi alla disponibilità degli Attributi utili all'emissione in *deferred* di un Attestato Elettronico (vedere :ref:`signal-hub-endpoint:Elaborazione dei Segnali`). Qualsiasi notifica successiva relativa a un set di dati specifico DEVE essere gestita tramite ``object_id``.
@@ -80,7 +85,7 @@ Il Fornitore di Attestati Elettronici DEVE aggiornare lo ``status`` dell'Attesta
 Esempio di risposta della Authentic Source
 """"""""""""""""""""""""""""""""""""""""""
 
-La risposta ha come HTTP Content-Type ``application/jwt``. mDi seguito un esempio concreto con dati fittizi per chiarire forma e contenuto attesi.
+La risposta ha come HTTP Content-Type ``application/json``. Di seguito un esempio concreto con dati fittizi per chiarire forma e contenuto attesi.
 
 .. literalinclude:: ../../examples/credential-claims-response-example.json
   :language: json
@@ -93,15 +98,15 @@ In sintesi:
 - **metadataClaims**: array di metadati per dataset (``object_id`` obbligatorio; ``issuance_date`` e ``expiry_date`` opzionali).
 - **interval**: obbligatorio se non è presente il parametro ``claims`` nella richiesta; indica i secondi da attendere prima di ripetere la richiesta (es. 864000 = 10 giorni).
 
-La risposta in caso di successo (HTTP 200) restituisce un oggetto ``CredentialClaimsResponse`` formattato come **Payload JSON**.
+La risposta in caso di successo (HTTP 200) restituisce un oggetto ``CredentialClaimsResponse`` formattato come **Payload JSON**, accompagnato dagli header di integrità ``Agid-JWT-Signature`` e ``Digest``.
 
 Verifica della Firma e Gestione Chiavi
 ''''''''''''''''''''''''''''''''''''''
 
-Essendo il token di risposta firmato, il Credential Issuer (Fruitore) DEVE verificare la firma per garantire l'integrità e l'autenticità dei dati ricevuti dalla Fonte Autentica.
+Il Credential Issuer (Fruitore) DEVE verificare l'integrità e l'autenticità della risposta JSON validando gli header ``Agid-JWT-Signature`` e ``Digest`` ricevuti dalla Fonte Autentica.
 
-Il processo di verifica e recupero delle chiavi DEVE seguire rigorosamente il pattern standard definito per gli **e-Service PDND**.
-Si rimanda all'Appendice tecnica (Sezione :ref:`e-service-pdnd:e-Service PDND`) per i dettagli sulla validazione del JWT e per le specifiche sul recupero della chiave pubblica dell'Erogatore tramite API di Interoperabilità.
+Il processo di verifica e recupero delle chiavi DEVE seguire rigorosamente il pattern di sicurezza **INTEGRITY_REST_02** definito per gli **e-Service PDND**.
+Si rimanda all'Appendice tecnica (Sezione :ref:`e-service-pdnd:e-Service PDND`) per i dettagli sulla validazione della firma JWT e per le specifiche sul recupero della chiave pubblica dell'Erogatore tramite API di Interoperabilità.
 
 .. warning::
   Non sono ammessi meccanismi alternativi di distribuzione del materiale crittografico (es. endpoint ``.well-known`` pubblici esposti direttamente dalla Fonte Autentica o distribuzione *out-of-band*). La gestione del trust DEVE rimanere centralizzata all'interno del perimetro dell'infrastruttura PDND come descritto nei riferimenti sopra citati.
