@@ -583,14 +583,6 @@
 <td><p>string</p></td>
 <td><p>CONDITIONAL. Cryptographic digest of the logo image resource for integrity verification. REQUIRED if <code class="docutils literal notranslate"><span class="pre">logo_uri</span></code> is present. Format: <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;sha-256-abc123...&quot;</span></code>).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].background_image</strong></p></td>
-<td><p>JSON object</p></td>
-<td><p>OPTIONAL. Object containing information about the background image to be displayed together with the data. The object contains <code class="docutils literal notranslate"><span class="pre">uri</span></code> and <code class="docutils literal notranslate"><span class="pre">uri#integrity</span></code> parameters.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].watermark_image</strong></p></td>
-<td><p>JSON object</p></td>
-<td><p>OPTIONAL. Object containing information about the watermark image to be displayed together with the data. The object contains <code class="docutils literal notranslate"><span class="pre">uri</span></code> and <code class="docutils literal notranslate"><span class="pre">uri#integrity</span></code> parameters.</p></td>
-</tr>
 <tr class="row-odd"><td><p><strong>data_capabilities[].background_color</strong></p></td>
 <td><p>string</p></td>
 <td><p>OPTIONAL. String value of the background color related to be displayed together with the data.</p></td>
@@ -737,10 +729,6 @@
 <span class="w">        </span><span class="p">}</span>
 <span class="w">      </span><span class="p">],</span>
 <span class="w">      </span><span class="nt">&quot;background_color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#12107c&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;background_image&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/assets/background-image.svg&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg==&quot;</span>
-<span class="w">      </span><span class="p">},</span>
 <span class="w">      </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="s2">&quot;citizen-support@gov.example&quot;</span>
 <span class="w">      </span><span class="p">],</span>
@@ -780,11 +768,7 @@
 <span class="w">        </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Only driving licences issued or renewed from DD-MM-YYYY will be available.&quot;</span>
 <span class="w">        </span><span class="p">}</span>
-<span class="w">      </span><span class="p">],</span>
-<span class="w">      </span><span class="nt">&quot;watermark_image&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/assets/watermark-image.svg&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg==&quot;</span>
-<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">],</span>
 <span class="w">  </span><span class="nt">&quot;entity_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://transport-authority.gov.example&quot;</span><span class="p">,</span>
@@ -1422,7 +1406,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 31/03/2026.
+      Last updated on 01/04/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

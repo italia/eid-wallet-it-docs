@@ -1076,14 +1076,6 @@ Content-Type: application/json
 <td><p>string</p></td>
 <td><p>CONDIZIONALE. Digest crittografico della risorsa immagine del logo per la verifica dell'integrità. OBBLIGATORIO se <code class="docutils literal notranslate"><span class="pre">logo_uri</span></code> è presente. Formato: <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code> (es. <code class="docutils literal notranslate"><span class="pre">&quot;sha-256-abc123...&quot;</span></code>).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].background_image</strong></p></td>
-<td><p>oggetto JSON</p></td>
-<td><p>OPZIONALE. Oggetto contenente informazioni sull'immagine di sfondo da visualizzare insieme ai dati. L'oggetto contiene i parametri <code class="docutils literal notranslate"><span class="pre">uri</span></code> e <code class="docutils literal notranslate"><span class="pre">uri#integrity</span></code>.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].watermark_image</strong></p></td>
-<td><p>oggetto JSON</p></td>
-<td><p>OPZIONALE. Oggetto contenente informazioni sull'immagine filigrana da visualizzare insieme ai dati. L'oggetto contiene i parametri <code class="docutils literal notranslate"><span class="pre">uri</span></code> e <code class="docutils literal notranslate"><span class="pre">uri#integrity</span></code>.</p></td>
-</tr>
 <tr class="row-odd"><td><p><strong>data_capabilities[].background_color</strong></p></td>
 <td><p>string</p></td>
 <td><p>OPZIONALE. Valore stringa del colore di sfondo da visualizzare insieme ai dati.</p></td>
@@ -1096,7 +1088,7 @@ Content-Type: application/json
 </table>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Per ulteriori dettagli sulle funzionalità richieste e sul risultato atteso in termini di esperienza utente, si rimanda alla Sezione <a class="reference internal" href="functionalities.html#ottenimento-degli-attestati-elettronici-di-attributi"><span class="std std-ref">Ottenimento degli Attestati Elettronici di Attributi</span></a> per il parametro <code class="docutils literal notranslate"><span class="pre">data_capabilities.user_information</span></code> e alla Sezione <a class="reference internal" href="functionalities.html#focus-sugli-attestati-elettronici-di-attributi"><span class="std std-ref">Focus sugli Attestati Elettronici di Attributi</span></a> per i parametri <code class="docutils literal notranslate"><span class="pre">organization_info.logo_uri</span></code>, <code class="docutils literal notranslate"><span class="pre">organization_info.logo_extended_uri</span></code>, <code class="docutils literal notranslate"><span class="pre">data_capabilities.logo_uri</span></code>, <code class="docutils literal notranslate"><span class="pre">data_capabilities.background_image</span></code>, <code class="docutils literal notranslate"><span class="pre">data_capabilities.watermark_image</span></code>, <code class="docutils literal notranslate"><span class="pre">data_capabilities.background_color</span></code> e <code class="docutils literal notranslate"><span class="pre">data_capabilities.available_claims.order</span></code>.</p>
+<p>Per ulteriori dettagli sulle funzionalità richieste e sul risultato atteso in termini di esperienza utente, si rimanda alla Sezione <a class="reference internal" href="functionalities.html#ottenimento-degli-attestati-elettronici-di-attributi"><span class="std std-ref">Ottenimento degli Attestati Elettronici di Attributi</span></a> per il parametro <code class="docutils literal notranslate"><span class="pre">data_capabilities.user_information</span></code> e alla Sezione <a class="reference internal" href="functionalities.html#focus-sugli-attestati-elettronici-di-attributi"><span class="std std-ref">Focus sugli Attestati Elettronici di Attributi</span></a> per i parametri <code class="docutils literal notranslate"><span class="pre">organization_info.logo_uri</span></code>, <code class="docutils literal notranslate"><span class="pre">organization_info.logo_extended_uri</span></code>, <code class="docutils literal notranslate"><span class="pre">data_capabilities.logo_uri</span></code>, <code class="docutils literal notranslate"><span class="pre">data_capabilities.background_color</span></code> e <code class="docutils literal notranslate"><span class="pre">data_capabilities.available_claims.order</span></code>.</p>
 </div>
 </section>
 <section id="esempio-di-registro-fa">
@@ -1209,10 +1201,6 @@ Content-Type: application/json
 <span class="w">                        </span><span class="p">}</span>
 <span class="w">                    </span><span class="p">],</span>
 <span class="w">                    </span><span class="nt">&quot;background_color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#12107c&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;background_image&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/images/38832801/image.svg&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-b1946ac92492d2347c6235b4d2611184e2a3f8b8c8f8f8e8f8f8f8f8f8f8f8f8&quot;</span>
-<span class="w">                    </span><span class="p">},</span>
 <span class="w">                    </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                        </span><span class="s2">&quot;citizen-support@motorizzazione.gov.example&quot;</span>
 <span class="w">                    </span><span class="p">],</span>
@@ -1234,11 +1222,7 @@ Content-Type: application/json
 <span class="w">                    </span><span class="nt">&quot;logo_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-b1946ac92492d2347c6235b4d2611184e2a3f8b8c8f8f8e8f8f8f8f8f8f8f8f8&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;service_documentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://docs.gov.example/transport/api-docs&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;update_frequency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;real_time&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;user_information_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;authentic_source1.dataset1.userinfo&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;watermark_image&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/images/38832801/image-watermark.svg&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-c9f0f895fb98ab9159f51fd0297e236d0a3f8b8c8f8f8e8f8f8f8f8f8f8f8f8f&quot;</span>
-<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="nt">&quot;user_information_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;authentic_source1.dataset1.userinfo&quot;</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">]</span>
 <span class="w">        </span><span class="p">},</span>
@@ -1319,10 +1303,6 @@ Content-Type: application/json
 <span class="w">                        </span><span class="p">}</span>
 <span class="w">                    </span><span class="p">],</span>
 <span class="w">                    </span><span class="nt">&quot;background_color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#003366&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;background_image&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/images/38854801/image.svg&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-d8e8fca2dc0f896fd7cb4cb0031ba249e3f8b8c8f8f8e8f8f8f8f8f8f8f8f8f9&quot;</span>
-<span class="w">                    </span><span class="p">},</span>
 <span class="w">                    </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                        </span><span class="s2">&quot;digital-credentials@bank.example&quot;</span>
 <span class="w">                    </span><span class="p">],</span>
@@ -1342,11 +1322,7 @@ Content-Type: application/json
 <span class="w">                    </span><span class="nt">&quot;logo_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-d8e8fca2dc0f896fd7cb4cb0031ba249e3f8b8c8f8f8e8f8f8f8f8f8f8f8f8f9&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;service_documentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://docs.bank.example/psd2-api&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;update_frequency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;daily&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;user_information_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;authentic_source2.dataset1.userinfo&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;watermark_image&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/images/38854801/image-watermark.svg&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-e5e0f8c3dc0f896fd7cb4cb0031ba249e3f8b8c8f8f8e8f8f8f8f8f8f8f8f8fa&quot;</span>
-<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="nt">&quot;user_information_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;authentic_source2.dataset1.userinfo&quot;</span>
 <span class="w">                </span><span class="p">},</span>
 <span class="w">                </span><span class="p">{</span>
 <span class="w">                    </span><span class="nt">&quot;api_specification&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.bank.example/docs/psd2-openapi.yaml&quot;</span><span class="p">,</span>
@@ -1383,10 +1359,6 @@ Content-Type: application/json
 <span class="w">                        </span><span class="p">}</span>
 <span class="w">                    </span><span class="p">],</span>
 <span class="w">                    </span><span class="nt">&quot;background_color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#003366&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;background_image&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/images/38854802/image.svg&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-f4a2b7e1dc0f896fd7cb4cb0031ba249e3f8b8c8f8f8e8f8f8f8f8f8f8f8f8fb&quot;</span>
-<span class="w">                    </span><span class="p">},</span>
 <span class="w">                    </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                        </span><span class="s2">&quot;digital-credentials@bank.example&quot;</span>
 <span class="w">                    </span><span class="p">],</span>
@@ -1411,11 +1383,7 @@ Content-Type: application/json
 <span class="w">                    </span><span class="nt">&quot;logo_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-f4a2b7e1dc0f896fd7cb4cb0031ba249e3f8b8c8f8f8e8f8f8f8f8f8f8f8f8fb&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;service_documentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://docs.bank.example/psd2-api&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;update_frequency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;weekly&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;user_information_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;authentic_source2.dataset2.userinfo&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;watermark_image&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/images/38854802/image-watermark.svg&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-a1c3d5e7dc0f896fd7cb4cb0031ba249e3f8b8c8f8f8e8f8f8f8f8f8f8f8f8fc&quot;</span>
-<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="nt">&quot;user_information_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;authentic_source2.dataset2.userinfo&quot;</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">]</span>
 <span class="w">        </span><span class="p">}</span>
@@ -3450,7 +3418,7 @@ I principali Percorsi di seguito illustrano le interazioni con l'Infrastruttura 
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 31/03/2026.
+      Ultimo aggiornamento 01/04/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

@@ -122,15 +122,6 @@ The *openid_credential_issuer* metadata contains the following claims.
                   - **alt_text**: OPTIONAL. String value of the alternative text for the logo image.
                 
                 - **background_color**: OPTIONAL. String value of a background color of the Digital Credential represented as numerical color values defined in `W3C.CSS-COLOR`_.
-                - **background_image**: OPTIONAL. Object containing information about the background image to be displayed for the type. The object contains the following sub-values:
-                  
-                  - **uri**: REQUIRED. A URI pointing to the background image.
-                  - **uri#integrity**: REQUIRED. integrity metadata as defined in Section 3 of `W3C-SRI`_.
-                  
-                - **watermark_image**: OPTIONAL. Object containing information about the watermanrk image to be displayed for the type. The object contains the following sub-values:
-                  
-                  - **uri**: REQUIRED. A URI pointing to the background image.
-                  - **uri#integrity**: REQUIRED. integrity metadata as defined in Section 3 of `W3C-SRI`_.
 
           - **claims**: REQUIRED. Array of JSON object each describing how a certain claim related to the Credential MUST be displayed to the User. This Array lists the claims in the order they MUST be displayed by the Wallet. To provide detailed information about the claim, the innermost value MUST contain at least the following parameters. See `OpenID4VCI`_ Section A.3.2.
 

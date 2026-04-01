@@ -321,12 +321,6 @@ The Authentic Source registration follows a technical process as described below
    * - **data_capabilities[].logo_uri#integrity**
      - string
      - CONDITIONAL. Cryptographic digest of the logo image resource for integrity verification. REQUIRED if ``logo_uri`` is present. Format: ``{digest_method}-{digest_value}`` (e.g., ``"sha-256-abc123..."``).
-   * - **data_capabilities[].background_image**
-     - JSON object
-     - OPTIONAL. Object containing information about the background image to be displayed together with the data. The object contains ``uri`` and ``uri#integrity`` parameters.
-   * - **data_capabilities[].watermark_image**
-     - JSON object
-     - OPTIONAL. Object containing information about the watermark image to be displayed together with the data. The object contains ``uri`` and ``uri#integrity`` parameters.
    * - **data_capabilities[].background_color**
      - string
      - OPTIONAL. String value of the background color related to be displayed together with the data.

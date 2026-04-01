@@ -321,12 +321,6 @@ La registrazione della Fonte Autentica segue un processo tecnico descritto di se
    * - **data_capabilities[].logo_uri#integrity**
      - string
      - CONDIZIONALE. Digest crittografico della risorsa immagine del logo per la verifica dell'integrità. OBBLIGATORIO se ``logo_uri`` è presente. Formato: ``{digest_method}-{digest_value}`` (es. ``"sha-256-abc123..."``).
-   * - **data_capabilities[].background_image**
-     - oggetto JSON
-     - OPZIONALE. Oggetto contenente informazioni sull'immagine di sfondo da visualizzare insieme ai dati. L'oggetto contiene i parametri ``uri`` e ``uri#integrity``.
-   * - **data_capabilities[].watermark_image**
-     - oggetto JSON
-     - OPZIONALE. Oggetto contenente informazioni sull'immagine filigrana da visualizzare insieme ai dati. L'oggetto contiene i parametri ``uri`` e ``uri#integrity``.
    * - **data_capabilities[].background_color**
      - string
      - OPZIONALE. Valore stringa del colore di sfondo da visualizzare insieme ai dati.
