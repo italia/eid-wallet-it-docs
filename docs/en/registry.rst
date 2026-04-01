@@ -475,7 +475,7 @@ The Authentic Source Registry MUST contain the following parameters for each reg
    * - **data_capabilities[].logo_uri#integrity**
      - string
      - CONDITIONAL. Cryptographic digest of the logo image resource for integrity verification. REQUIRED if ``logo_uri`` is present. Format: ``{digest_method}-{digest_value}`` (e.g., ``"sha-256-abc123..."``).
-  * - **data_capabilities[].logo_alt_text_l10n_id**
+   * - **data_capabilities[].logo_alt_text_l10n_id**
      - string
      - OPTIONAL. Alternative text for the organization's logo image.
    * - **data_capabilities[].background_color**
