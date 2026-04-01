@@ -475,12 +475,6 @@ Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciasc
    * - **data_capabilities[].logo_uri#integrity**
      - string
      - CONDIZIONALE. Digest crittografico della risorsa immagine del logo per la verifica dell'integrità. OBBLIGATORIO se ``logo_uri`` è presente. Formato: ``{digest_method}-{digest_value}`` (es. ``"sha-256-abc123..."``).
-   * - **data_capabilities[].background_image**
-     - oggetto JSON
-     - OPZIONALE. Oggetto contenente informazioni sull'immagine di sfondo da visualizzare insieme ai dati. L'oggetto contiene i parametri ``uri`` e ``uri#integrity``.
-   * - **data_capabilities[].watermark_image**
-     - oggetto JSON
-     - OPZIONALE. Oggetto contenente informazioni sull'immagine filigrana da visualizzare insieme ai dati. L'oggetto contiene i parametri ``uri`` e ``uri#integrity``.
    * - **data_capabilities[].background_color**
      - string
      - OPZIONALE. Valore stringa del colore di sfondo da visualizzare insieme ai dati.
@@ -489,7 +483,7 @@ Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciasc
      - OPZIONALE. Array di indirizzi email di contatto del servizio clienti.
 
 .. note::
-  Per ulteriori dettagli sulle funzionalità richieste e sul risultato atteso in termini di esperienza utente, si rimanda alla Sezione :ref:`functionalities:Ottenimento degli Attestati Elettronici di Attributi` per il parametro ``data_capabilities.user_information`` e alla Sezione :ref:`functionalities:Focus sugli Attestati Elettronici di Attributi` per i parametri ``organization_info.logo_uri``, ``organization_info.logo_extended_uri``, ``data_capabilities.logo_uri``, ``data_capabilities.background_image``, ``data_capabilities.watermark_image``, ``data_capabilities.background_color`` e ``data_capabilities.available_claims.order``.
+  Per ulteriori dettagli sulle funzionalità richieste e sul risultato atteso in termini di esperienza utente, si rimanda alla Sezione :ref:`functionalities:Ottenimento degli Attestati Elettronici di Attributi` per il parametro ``data_capabilities.user_information`` e alla Sezione :ref:`functionalities:Focus sugli Attestati Elettronici di Attributi` per i parametri ``organization_info.logo_uri``, ``organization_info.logo_extended_uri``, ``data_capabilities.logo_uri``, ``data_capabilities.background_color`` e ``data_capabilities.available_claims.order``.
 
 Esempio di Registro FA
 """""""""""""""""""""""

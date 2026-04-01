@@ -105,10 +105,6 @@
                         }
                     ],
                     "background_color": "#12107c",
-                    "background_image": {
-                        "uri": "https://trust-registry.eid-wallet.example.it/images/38832801/image.svg",
-                        "uri#integrity": "sha-256-b1946ac92492d2347c6235b4d2611184e2a3f8b8c8f8f8e8f8f8f8f8f8f8f8f8"
-                    },
                     "contacts": [
                         "citizen-support@motorizzazione.gov.example"
                     ],
@@ -130,11 +126,7 @@
                     "logo_uri#integrity": "sha-256-b1946ac92492d2347c6235b4d2611184e2a3f8b8c8f8f8e8f8f8f8f8f8f8f8f8",
                     "service_documentation": "https://docs.gov.example/transport/api-docs",
                     "update_frequency": "real_time",
-                    "user_information_l10n_id": "authentic_source1.dataset1.userinfo",
-                    "watermark_image": {
-                        "uri": "https://trust-registry.eid-wallet.example.it/images/38832801/image-watermark.svg",
-                        "uri#integrity": "sha-256-c9f0f895fb98ab9159f51fd0297e236d0a3f8b8c8f8f8e8f8f8f8f8f8f8f8f8f"
-                    }
+                    "user_information_l10n_id": "authentic_source1.dataset1.userinfo"
                 }
             ]
         },
@@ -215,10 +207,6 @@
                         }
                     ],
                     "background_color": "#003366",
-                    "background_image": {
-                        "uri": "https://trust-registry.eid-wallet.example.it/images/38854801/image.svg",
-                        "uri#integrity": "sha-256-d8e8fca2dc0f896fd7cb4cb0031ba249e3f8b8c8f8f8e8f8f8f8f8f8f8f8f8f9"
-                    },
                     "contacts": [
                         "digital-credentials@bank.example"
                     ],
@@ -238,11 +226,7 @@
                     "logo_uri#integrity": "sha-256-d8e8fca2dc0f896fd7cb4cb0031ba249e3f8b8c8f8f8e8f8f8f8f8f8f8f8f8f9",
                     "service_documentation": "https://docs.bank.example/psd2-api",
                     "update_frequency": "daily",
-                    "user_information_l10n_id": "authentic_source2.dataset1.userinfo",
-                    "watermark_image": {
-                        "uri": "https://trust-registry.eid-wallet.example.it/images/38854801/image-watermark.svg",
-                        "uri#integrity": "sha-256-e5e0f8c3dc0f896fd7cb4cb0031ba249e3f8b8c8f8f8e8f8f8f8f8f8f8f8f8fa"
-                    }
+                    "user_information_l10n_id": "authentic_source2.dataset1.userinfo"
                 },
                 {
                     "api_specification": "https://api.bank.example/docs/psd2-openapi.yaml",
@@ -279,10 +263,6 @@
                         }
                     ],
                     "background_color": "#003366",
-                    "background_image": {
-                        "uri": "https://trust-registry.eid-wallet.example.it/images/38854802/image.svg",
-                        "uri#integrity": "sha-256-f4a2b7e1dc0f896fd7cb4cb0031ba249e3f8b8c8f8f8e8f8f8f8f8f8f8f8f8fb"
-                    },
                     "contacts": [
                         "digital-credentials@bank.example"
                     ],
@@ -307,11 +287,7 @@
                     "logo_uri#integrity": "sha-256-f4a2b7e1dc0f896fd7cb4cb0031ba249e3f8b8c8f8f8e8f8f8f8f8f8f8f8f8fb",
                     "service_documentation": "https://docs.bank.example/psd2-api",
                     "update_frequency": "weekly",
-                    "user_information_l10n_id": "authentic_source2.dataset2.userinfo",
-                    "watermark_image": {
-                        "uri": "https://trust-registry.eid-wallet.example.it/images/38854802/image-watermark.svg",
-                        "uri#integrity": "sha-256-a1c3d5e7dc0f896fd7cb4cb0031ba249e3f8b8c8f8f8e8f8f8f8f8f8f8f8f8fc"
-                    }
+                    "user_information_l10n_id": "authentic_source2.dataset2.userinfo"
                 }
             ]
         }

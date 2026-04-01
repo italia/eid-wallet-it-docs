@@ -132,10 +132,6 @@
         }
       ],
       "background_color": "#12107c",
-      "background_image": {
-        "uri": "https://www.gov.example/assets/background-image.svg",
-        "uri#integrity": "3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg=="
-      },
       "contacts": [
         "citizen-support@gov.example"
       ],
@@ -175,11 +171,7 @@
         "locale": "en-US",
         "description": "Only driving licences issued or renewed from DD-MM-YYYY will be available."
         }
-      ],
-      "watermark_image": {
-        "uri": "https://www.gov.example/assets/watermark-image.svg",
-        "uri#integrity": "3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg=="
-      }
+      ]
     }
   ],
   "entity_id": "https://transport-authority.gov.example",

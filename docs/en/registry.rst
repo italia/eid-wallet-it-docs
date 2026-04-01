@@ -475,12 +475,6 @@ The Authentic Source Registry MUST contain the following parameters for each reg
    * - **data_capabilities[].logo_uri#integrity**
      - string
      - CONDITIONAL. Cryptographic digest of the logo image resource for integrity verification. REQUIRED if ``logo_uri`` is present. Format: ``{digest_method}-{digest_value}`` (e.g., ``"sha-256-abc123..."``).
-   * - **data_capabilities[].background_image**
-     - JSON object
-     - OPTIONAL. Object containing information about the background image to be displayed together with the data. The object contains ``uri`` and ``uri#integrity`` parameters.
-   * - **data_capabilities[].watermark_image**
-     - JSON object
-     - OPTIONAL. Object containing information about the watermark image to be displayed together with the data. The object contains ``uri`` and ``uri#integrity`` parameters.
    * - **data_capabilities[].background_color**
      - string
      - OPTIONAL. String value of the background color related to be displayed together with the data.
@@ -489,7 +483,7 @@ The Authentic Source Registry MUST contain the following parameters for each reg
      - OPTIONAL. Array of customer service contact email addresses.
   
 .. note::
-  For further details on the required features and the expected outcome in terms of user experience, see the Section :ref:`functionalities:Issuance from the Wallet Instance Catalog` for the parameter `data_capabilities.user_information` and Section :ref:`functionalities:Focus on Electronic Attestations of Attributes` for the parameters `organization_info.logo_uri`, `organization_info.logo_extended_uri`, `data_capabilities.logo_uri`, `data_capabilities.background_image`, `data_capabilities.watermark_image`, `data_capabilities.background_color` and `data_capabilities.available_claims.order`.
+  For further details on the required features and the expected outcome in terms of user experience, see the Section :ref:`functionalities:Issuance from the Wallet Instance Catalog` for the parameter `data_capabilities.user_information` and Section :ref:`functionalities:Focus on Electronic Attestations of Attributes` for the parameters `organization_info.logo_uri`, `organization_info.logo_extended_uri`, `data_capabilities.logo_uri`, `data_capabilities.background_color` and `data_capabilities.available_claims.order`.
 
 AS Registry Example
 """""""""""""""""""

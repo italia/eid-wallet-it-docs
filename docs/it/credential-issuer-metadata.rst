@@ -118,16 +118,7 @@ I Metadata *openid_credential_issuer* contiene i seguenti *claims*.
                   - **uri**: OBBLIGATORIO. Stringa che contiene la URI da cui il Wallet può ottenere il logo dell’Attestato Elettronico dal Fornitore di Attestati Elettronici. Il MIME type del logo DEVE essere ``application/svg``.
                   - **uri#integrity**: OBBLIGATORIO. "integrity metadata" come definito nella Sezione 3 del documento `W3C-SRI`_.
                   - **alt_text**: OPZIONALE. Stringa contenente il testo da mostrare in alternativa all’immagine del logo.
-                - **background_color**: OBBLIGATORIO. Stringa che rappresenta il colore di sfondo dell’Attestato Elettronico, espresso come valore numerico secondo la definizione del documento `W3C.CSS-COLOR`_
-                - **background_image**: OPZIONALE. Oggetto contiene informazioni sull’immagine di sfondo da visualizzare per l'Attestato Elettronico. L’oggetto include i seguenti sotto-valori:
-
-                  - **uri**: OBBLIGATORIO. Stringa che contiene la URI da cui il Wallet può ottenere il logo dell’Attestato Elettronico dal Fornitore di Attestati Elettronici.
-                  - **uri#integrity**: OBBLIGATORIO. "integrity metadata" come definito nella Sezione 3 del documento `W3C-SRI`_.
-
-                - **watermark_image**: OPZIONALE. Oggetto contiene informazioni sull’immagine di filigrana da visualizzare per l'Attestato Elettronico. L’oggetto include i seguenti sotto-valori:
-
-                  - **uri**: OBBLIGATORIO. Stringa che contiene la URI da cui il Wallet può ottenere il logo dell’Attestato Elettronico dal Fornitore di Attestati Elettronici.
-                  - **uri#integrity**: OBBLIGATORIO. "integrity metadata" come definito nella Sezione 3 del documento `W3C-SRI`_.  
+                - **background_color**: OBBLIGATORIO. Stringa che rappresenta il colore di sfondo dell’Attestato Elettronico, espresso come valore numerico secondo la definizione del documento `W3C.CSS-COLOR`_  
 
           - **claims**: OBBLIGATORIO. Array di oggetti JSON ciascuno che descrive come un determinato attributo relativo all'Attestato Elettronico DEVE essere visualizzato all'Utente. Questo array elenca le attestazioni nell’ordine in cui DEVONO essere mostrate dal Wallet. Per fornire informazioni dettagliate sull’attestazione, il valore più interno DEVE contenere almeno i seguenti parametri. Vedi OpenID4VCI_ Sezione A.3.2.
 
