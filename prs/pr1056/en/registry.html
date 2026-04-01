@@ -1075,13 +1075,17 @@ Content-Type: application/json
 <td><p>string</p></td>
 <td><p>CONDITIONAL. Cryptographic digest of the logo image resource for integrity verification. REQUIRED if <code class="docutils literal notranslate"><span class="pre">logo_uri</span></code> is present. Format: <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;sha-256-abc123...&quot;</span></code>).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].background_color</strong></p></td>
+<tr class="row-odd"><td><p><strong>data_capabilities[].logo_alt_text_l10n_id</strong></p></td>
+<td><p>string</p></td>
+<td><p>OPTIONAL. Alternative text for the organization's logo image.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>data_capabilities[].background_color</strong></p></td>
 <td><p>string</p></td>
 <td><p>OPTIONAL. String value of the background color related to be displayed together with the data.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].contacts</strong></p></td>
+<tr class="row-odd"><td><p><strong>data_capabilities[].contacts</strong></p></td>
 <td><p>String Array</p></td>
-<td><p>OPTIONAL. Array of customer service contact email addresses.</p></td>
+<td><p>OPTIONAL. Array of customer service contacts or user support channels (e.g., email address).</p></td>
 </tr>
 </tbody>
 </table>

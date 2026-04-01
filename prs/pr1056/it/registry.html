@@ -1076,13 +1076,17 @@ Content-Type: application/json
 <td><p>string</p></td>
 <td><p>CONDIZIONALE. Digest crittografico della risorsa immagine del logo per la verifica dell'integrità. OBBLIGATORIO se <code class="docutils literal notranslate"><span class="pre">logo_uri</span></code> è presente. Formato: <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code> (es. <code class="docutils literal notranslate"><span class="pre">&quot;sha-256-abc123...&quot;</span></code>).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].background_color</strong></p></td>
+<tr class="row-odd"><td><p><strong>data_capabilities[].logo_alt_text_l10n_id</strong></p></td>
+<td><p>string</p></td>
+<td><p>OPZIONALE. Testo alternativo per l'immagine del logo dell'organizzazione.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>data_capabilities[].background_color</strong></p></td>
 <td><p>string</p></td>
 <td><p>OPZIONALE. Valore stringa del colore di sfondo da visualizzare insieme ai dati.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>data_capabilities[].contacts</strong></p></td>
+<tr class="row-odd"><td><p><strong>data_capabilities[].contacts</strong></p></td>
 <td><p>Array di stringhe</p></td>
-<td><p>OPZIONALE. Array di indirizzi email di contatto del servizio clienti.</p></td>
+<td><p>OPZIONALE. Array di indirizzi email di contatto del servizio clienti o dei canali di supporto per gli utenti.</p></td>
 </tr>
 </tbody>
 </table>
