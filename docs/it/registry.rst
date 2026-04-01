@@ -475,12 +475,15 @@ Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciasc
    * - **data_capabilities[].logo_uri#integrity**
      - string
      - CONDIZIONALE. Digest crittografico della risorsa immagine del logo per la verifica dell'integrità. OBBLIGATORIO se ``logo_uri`` è presente. Formato: ``{digest_method}-{digest_value}`` (es. ``"sha-256-abc123..."``).
+   * - **data_capabilities[].logo_alt_text_l10n_id**
+     - string
+     - OPZIONALE. Testo alternativo per l'immagine del logo dell'organizzazione.
    * - **data_capabilities[].background_color**
      - string
      - OPZIONALE. Valore stringa del colore di sfondo da visualizzare insieme ai dati.
    * - **data_capabilities[].contacts**
      - Array di stringhe
-     - OPZIONALE. Array di indirizzi email di contatto del servizio clienti.
+     - OPZIONALE. Array di indirizzi email di contatto del servizio clienti o dei canali di supporto per gli utenti .
 
 .. note::
   Per ulteriori dettagli sulle funzionalità richieste e sul risultato atteso in termini di esperienza utente, si rimanda alla Sezione :ref:`functionalities:Ottenimento degli Attestati Elettronici di Attributi` per il parametro ``data_capabilities.user_information`` e alla Sezione :ref:`functionalities:Focus sugli Attestati Elettronici di Attributi` per i parametri ``organization_info.logo_uri``, ``organization_info.logo_extended_uri``, ``data_capabilities.logo_uri``, ``data_capabilities.background_color`` e ``data_capabilities.available_claims.order``.
