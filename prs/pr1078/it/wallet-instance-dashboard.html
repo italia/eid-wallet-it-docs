@@ -5,8 +5,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>10.1.4.2.5. Dashboard dell’Istanza del Wallet e Registrazione delle Transazioni &#8212; IT-Wallet Specifiche Tecniche - PR #1078</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <title>10.1.4.2.6. Dashboard dell’Istanza del Wallet e Registrazione delle Transazioni &#8212; IT-Wallet Specifiche Tecniche - PR #1078</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
     <script src="_static/documentation_options.js?v=3fd72285"></script>
@@ -19,7 +19,7 @@
     <link rel="index" title="Indice" href="genindex.html" />
     <link rel="search" title="Cerca" href="search.html" />
     <link rel="next" title="10.1.5. Backup e Ripristino" href="backup-restore.html" />
-    <link rel="prev" title="10.1.4.2.4. Eliminazione degli Attributi dell&#39;Utente" href="user-attribute-deletion.html" /> 
+    <link rel="prev" title="10.1.4.2.5. Eliminazione degli Attributi dell&#39;Utente" href="user-attribute-deletion.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -178,7 +178,7 @@
           <div class="body" role="main">
             
   <section id="dashboard-dellistanza-del-wallet-e-registrazione-delle-transazioni">
-<span id="wallet-instance-dashboard-transaction-registry"></span><h1><span class="section-number">10.1.4.2.5. </span>Dashboard dell’Istanza del Wallet e Registrazione delle Transazioni<a class="headerlink" href="#dashboard-dellistanza-del-wallet-e-registrazione-delle-transazioni" title="Link to this heading">¶</a></h1>
+<span id="wallet-instance-dashboard-transaction-registry"></span><h1><span class="section-number">10.1.4.2.6. </span>Dashboard dell’Istanza del Wallet e Registrazione delle Transazioni<a class="headerlink" href="#dashboard-dellistanza-del-wallet-e-registrazione-delle-transazioni" title="Link to this heading">¶</a></h1>
 <p>L’Istanza del Wallet DEVE mantenere un registro delle transazioni sicuro e locale al Wallet, al fine di garantire trasparenza, tracciabilità e consapevolezza dell’Utente rispetto alle azioni eseguite tramite l’Istanza del Wallet, come definito in <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a> (Annex 2.02 HLRs, Topic 19). Il registro DEVE coprire tutte le transazioni (incluse quelle non completate) nelle seguenti categorie:</p>
 <ul class="simple">
 <li><p>rilascio e ri-rilascio delle credenziali;</p></li>
@@ -191,7 +191,7 @@
 <p>Il Fornitore del Wallet DEVE proteggere la riservatezza, l’integrità e l’autenticità del registro delle transazioni e di eventuali oggetti di log esportati in conformità a <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts10-data-portability-and-download-(export).md">EUDI-TS 10</a>; l’accesso al registro DEVE essere limitato all’Utente e all’Istanza del Wallet.</p>
 <p>I record DEVONO essere conservati per almeno il periodo minimo previsto dalla normativa applicabile, come definito in <a class="reference internal" href="log-retention-policy.html#politiche-generali-di-conservazione-dei-log"><span class="std std-ref">Politiche Generali di Conservazione dei Log</span></a>. Qualora limiti di spazio richiedano una cancellazione automatica, l’Istanza del Wallet DEVE notificare l’Utente tramite la dashboard, avvertire delle possibili conseguenze e offrire la possibilità di esportare i record interessati prima della cancellazione.</p>
 <section id="esportazione-e-cancellazione-dei-record-di-transazione">
-<h2><span class="section-number">10.1.4.2.5.1. </span>Esportazione e Cancellazione dei Record di Transazione<a class="headerlink" href="#esportazione-e-cancellazione-dei-record-di-transazione" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">10.1.4.2.6.1. </span>Esportazione e Cancellazione dei Record di Transazione<a class="headerlink" href="#esportazione-e-cancellazione-dei-record-di-transazione" title="Link to this heading">¶</a></h2>
 <p><strong>Esportazione</strong>: la dashboard DEVE consentire all’Utente di esportare uno o più record di transazione in un file utilizzando il formato comune e le misure di sicurezza definite in <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts10-data-portability-and-download-(export).md">EUDI-TS 10</a>.</p>
 <p>Il file esportato DEVE poter essere salvato in una posizione di archiviazione esterna o remota scelta dall’Utente, tra le opzioni di archiviazione supportate dall’Istanza del Wallet.</p>
 <p><strong>Cancellazione</strong>: la dashboard DEVE consentire all’Utente di cancellare uno o più record di transazione dall’Istanza del Wallet in qualsiasi momento.</p>
@@ -220,8 +220,8 @@
             <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
             <div class="page_toc">
                 <ul>
-<li><a class="reference internal" href="#">10.1.4.2.5. Dashboard dell’Istanza del Wallet e Registrazione delle Transazioni</a><ul>
-<li><a class="reference internal" href="#esportazione-e-cancellazione-dei-record-di-transazione">10.1.4.2.5.1. Esportazione e Cancellazione dei Record di Transazione</a></li>
+<li><a class="reference internal" href="#">10.1.4.2.6. Dashboard dell’Istanza del Wallet e Registrazione delle Transazioni</a><ul>
+<li><a class="reference internal" href="#esportazione-e-cancellazione-dei-record-di-transazione">10.1.4.2.6.1. Esportazione e Cancellazione dei Record di Transazione</a></li>
 </ul>
 </li>
 </ul>
@@ -237,7 +237,7 @@
             <div class="left">
                 
                 <a href="user-attribute-deletion.html">
-                    <span class="icon">&lt;</span><span><span class="section-number">10.1.4.2.4. </span>Eliminazione degli Attributi dell'Utente</span></a>
+                    <span class="icon">&lt;</span><span><span class="section-number">10.1.4.2.5. </span>Eliminazione degli Attributi dell'Utente</span></a>
                 
             </div>
 

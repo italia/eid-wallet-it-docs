@@ -245,9 +245,6 @@ internal WSCD that uses hardware-based keys. However, the lack of a
 certification profile that certifies the local internal WSCD against highly capable attackers (the certification for current TEE solutions on the market reaches AVA_VAN.3 at most
 as shown for example in this `Certification Report <https://www.tuv-nederland.nl/assets/files/cerfiticaten/2021/08/nscib-cc-0244671-cr-1.0.pdf>`_ or `Global Platform site <https://globalplatform.org/specs-library/tee-protection-profile-v1-3/>`_ makes the requirement only partially satisfied.
 
-.. note::
-   In the EUDI Wallet context, the local internal WSCD and other WSCD deployments are still under certification according to `CEN_ETSI_Workshop <https://docbox.etsi.org/ESI/Open/workshops/202409_CEN_ETSI_Workshop/DAY3-8%20Certification%20for%20EU%20Digital%20Identity%20Wallets/DAY3-8-26%20ETSI_CEN_WS_WSCA%20Jan%20Kjaersgaard.pdf>`_.
-
 SR-V-10
 ^^^^^^^
 .. list-table::

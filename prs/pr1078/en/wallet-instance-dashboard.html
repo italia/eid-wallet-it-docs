@@ -5,8 +5,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>10.1.4.2.5. Wallet Instance Dashboard and Transaction Logging &#8212; IT-Wallet Technical Specifications - PR #1078</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <title>10.1.4.2.6. Wallet Instance Dashboard and Transaction Logging &#8212; IT-Wallet Technical Specifications - PR #1078</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
     <script src="_static/documentation_options.js?v=5929fcd5"></script>
@@ -18,7 +18,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="10.1.5. Backup and Restore" href="backup-restore.html" />
-    <link rel="prev" title="10.1.4.2.4. User&#39;s Attributes Deletion" href="user-attribute-deletion.html" /> 
+    <link rel="prev" title="10.1.4.2.5. User&#39;s Attributes Deletion" href="user-attribute-deletion.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -177,7 +177,7 @@
           <div class="body" role="main">
             
   <section id="wallet-instance-dashboard-and-transaction-logging">
-<h1><span class="section-number">10.1.4.2.5. </span>Wallet Instance Dashboard and Transaction Logging<a class="headerlink" href="#wallet-instance-dashboard-and-transaction-logging" title="Link to this heading">¶</a></h1>
+<h1><span class="section-number">10.1.4.2.6. </span>Wallet Instance Dashboard and Transaction Logging<a class="headerlink" href="#wallet-instance-dashboard-and-transaction-logging" title="Link to this heading">¶</a></h1>
 <p>The Wallet Instance MUST maintain a secure, Wallet-local transaction log to ensure transparency, traceability, and User awareness of actions performed through the Wallet Instance as defined in <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a> (Annex 2.02 HLRs, Topic 19). The log MUST cover all transactions (including non-completed) in these categories:</p>
 <ul class="simple">
 <li><p>credential issuance and re-issuance;</p></li>
@@ -190,7 +190,7 @@
 <p>The Wallet Provider MUST protect the confidentiality, integrity, and authenticity of the transaction log and of any exported log objects in accordance with <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts10-data-portability-and-download-(export).md">EUDI-TS 10</a>; access to the log MUST be restricted to the User and the Wallet Instance.</p>
 <p>Records MUST be retained for at least the minimum legal period as defined in <a class="reference internal" href="log-retention-policy.html#general-log-retention-policies"><span class="std std-ref">General Log Retention Policies</span></a>. If storage limits require automatic deletion, the Wallet Instance MUST notify the User via the dashboard, warn of consequences, and offer export of affected records before deletion.</p>
 <section id="export-and-deletion-of-transaction-records">
-<h2><span class="section-number">10.1.4.2.5.1. </span>Export and Deletion of Transaction Records<a class="headerlink" href="#export-and-deletion-of-transaction-records" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">10.1.4.2.6.1. </span>Export and Deletion of Transaction Records<a class="headerlink" href="#export-and-deletion-of-transaction-records" title="Link to this heading">¶</a></h2>
 <p><strong>Export</strong>: The dashboard MUST allow the User to export one or more transaction records to a file using the common format and security measures defined in <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts10-data-portability-and-download-(export).md">EUDI-TS 10</a>.</p>
 <p>The exported file MUST be storable in an external or remote storage location of the User’s choice, from among the storage options supported by the Wallet Instance.</p>
 <p><strong>Deletion</strong>: The dashboard MUST allow the User to delete one or more transaction records from the Wallet Instance at any time.</p>
@@ -219,8 +219,8 @@
             <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
             <div class="page_toc">
                 <ul>
-<li><a class="reference internal" href="#">10.1.4.2.5. Wallet Instance Dashboard and Transaction Logging</a><ul>
-<li><a class="reference internal" href="#export-and-deletion-of-transaction-records">10.1.4.2.5.1. Export and Deletion of Transaction Records</a></li>
+<li><a class="reference internal" href="#">10.1.4.2.6. Wallet Instance Dashboard and Transaction Logging</a><ul>
+<li><a class="reference internal" href="#export-and-deletion-of-transaction-records">10.1.4.2.6.1. Export and Deletion of Transaction Records</a></li>
 </ul>
 </li>
 </ul>
@@ -236,7 +236,7 @@
             <div class="left">
                 
                 <a href="user-attribute-deletion.html">
-                    <span class="icon">&lt;</span><span><span class="section-number">10.1.4.2.4. </span>User's Attributes Deletion</span></a>
+                    <span class="icon">&lt;</span><span><span class="section-number">10.1.4.2.5. </span>User's Attributes Deletion</span></a>
                 
             </div>
 

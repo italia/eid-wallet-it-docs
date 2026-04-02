@@ -84,7 +84,7 @@ The Signal Collection e-Service endpoint is used by Authentic Sources to deposit
 .. note::
   In the deffered issuance flow, i.e., when the Authentic Source notifies the Credential Issuer of the availability of the Digital Credential's attributes via Signal Hub; both entities MUST keep track of the Authentic Source's ``object_id`` value used in the ``get attributes`` payload response. This is necessary since the ``objectId`` of the Signal MUST be set to that ``object_id`` value when the Signal has ``signalType`` with value ``CREATE``.
 
-A non normative example of the Signal Collection request can be found at `Signal Hub push`_.
+A non-normative example of the Signal Collection request can be found at `Signal Hub push`_.
 
 The Signal Collection e-Service response, acknowledging the correct parsing of the request, is specified in `Signal Hub push`_, and has ``Content-Type`` set to ``application/json``. The payload contains the body parameter:
 
@@ -135,7 +135,7 @@ If the Signal Distribution request is correctly processed, the e-Service will th
 
 Regardless of the response code used, the response has ``Content-Type`` set to ``application/json`` an the header parameters indicated in `Signal Hub pull`_. The body parameter ``lastSignalId``, referencing the ``signalId`` of the last Signal transmitted by the Signal Distribution e-Service is added to the response's payload.
 
-In `Signal Hub pull`_ can be found non normative examples of a Signal Distribution requests and responses.
+In `Signal Hub pull`_ can be found non-normative examples of a Signal Distribution requests and responses.
 
 If any error occurs during the request parsing, the response MUST adhere to the error format defined in `Signal Hub pull-yaml`_.
 

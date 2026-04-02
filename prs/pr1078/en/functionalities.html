@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>5. User Experience Design &#8212; IT-Wallet Technical Specifications - PR #1078</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
     <script src="_static/documentation_options.js?v=5929fcd5"></script>
@@ -328,11 +328,11 @@
 </section>
 <section id="focus-on-electronic-attestations-of-attributes">
 <h3><span class="section-number">5.4.3. </span>Focus on Electronic Attestations of Attributes<a class="headerlink" href="#focus-on-electronic-attestations-of-attributes" title="Link to this heading">¶</a></h3>
-<p>The graphical representation of EAA within Wallet Solutions depends, at the level of specific content and UI aspects, on what is defined in the Authentic Sources Registry and in the Digital Credentials Catalog (see :ref:registry:Registry Infrastructure).</p>
-<p>Below are the requirements for the representation of EAA within Wallet Solutions (see :ref:registry:Authentic Sources Registry and :ref:registry:Digital Credentials Catalog). In particular:</p>
+<p>The graphical representation of EAA within Wallet Solutions depends, at the level of specific content and UI aspects, on what is defined in the Authentic Source Registry and in the Digital Credentials Catalog (see :ref:registry:Registry Infrastructure).</p>
+<p>Below are the requirements for the representation of EAA within Wallet Solutions (see :ref:registry:Authentic Source Registry and :ref:registry:Digital Credentials Catalog). In particular:</p>
 <p>The Autentic Source:</p>
 <ul class="simple">
-<li><p>MAY provide the <strong>Authentic Source’s logo</strong> in two versions, a compact version via the organization_info.logo_uri parameter and an extended version via the organization_info.logo_extended_uri parameter. In particular, the Authentic Source:</p></li>
+<li><p>MAY provide the <strong>Authentic Source’s logo</strong> in two versions, a compact version via the <cite>organization_info.logo_uri</cite> parameter and an extended version via the <cite>organization_info.logo_extended_uri</cite> parameter. In particular, the Authentic Source:</p></li>
 </ul>
 <blockquote>
 <div><ul class="simple">
@@ -346,7 +346,7 @@
 </ul>
 </div></blockquote>
 <ul class="simple">
-<li><p>MAY provide a <strong>distinctive logo</strong> associated with a specific EAA via the data_capabilities.logo_uri parameter. In particular, the Authentic Source:</p></li>
+<li><p>MAY provide a <strong>distinctive logo</strong> associated with a specific EAA via the <cite>data_capabilities.logo_uri</cite> parameter. In particular, the Authentic Source:</p></li>
 </ul>
 <blockquote>
 <div><ul class="simple">
@@ -357,7 +357,7 @@
 </ul>
 </div></blockquote>
 <ul class="simple">
-<li><p>MAY define a distinctive <strong>color</strong> to be associated with a specific EAA via the data_capabilities.background_color parameter. In particular, the Authentic Source:</p></li>
+<li><p>MAY define a distinctive <strong>color</strong> to be associated with a specific EAA via the <cite>data_capabilities.background_color</cite> parameter. In particular, the Authentic Source:</p></li>
 </ul>
 <blockquote>
 <div><ul class="simple">
@@ -376,10 +376,10 @@
 <p>To ensure a consistent identification and representation of the EAAs across different Wallet Solutions, the Electronic Attestation of Attributes Provider MUST define a name/naming convention for each EAA provided, that is comprehensible and user-friendly, thus avoiding technical terms or acronyms whenever possible.</p>
 <p>The Wallet Provider:</p>
 <ul class="simple">
-<li><p>MUST clearly and accessibly display the identifying name of the EAA as defined by the credential_name parameter within the :ref:registry:Digital Credentials Catalog;</p></li>
-<li><p>MUST clearly and accessibly display the EAA Attributes, respecting the ordering defined by the data_capabilities.available_claims_order parameter within the :ref:registry:Authentic Sources Registry;</p></li>
+<li><p>MUST clearly and accessibly display the identifying name of the EAA as defined by the <cite>credential_name</cite> parameter within the :ref:registry:Digital Credentials Catalog;</p></li>
+<li><p>MUST clearly and accessibly display the EAA Attributes, respecting the ordering defined by the <cite>data_capabilities.available_claims_order</cite> parameter within the :ref:registry:Authentic Source Registry;</p></li>
 <li><p>MUST include any identifying logos of the Authentic Source and/or of the specific EAA if provided by the Authentic Source through the :ref:registry:Authentic Sources Registry;</p></li>
-<li><p>MUST ensure the adoption of the color defined by the Authentic Source, if specified within the :ref:registry:Authentic Sources Registry, at the hue (H) level. The Wallet Provider MAY optimize saturation (S) and brightness (B) values to adapt the specific color to accessibility requirements and/or to the graphical design choices of its Wallet Solution. If the Authentic Source does not provide color specifications, the Wallet Provider is required to define and adopt its own default graphical choices.</p></li>
+<li><p>MUST ensure the adoption of the color defined by the Authentic Source, if specified within the :ref:registry:Authentic Source Registry, at the hue (H) level. The Wallet Provider MAY optimize saturation (S) and brightness (B) values to adapt the specific color to accessibility requirements and/or to the graphical design choices of its Wallet Solution. If the Authentic Source does not provide color specifications, the Wallet Provider is required to define and adopt its own default graphical choices.</p></li>
 </ul>
 <p>The Wallet Provider is responsible for the graphical representation of the Electronic Attestation of Attributes within its Wallet Solutions and MUST ensure high level of accessibility [REF_ACCESSIBILITY] and usability [GL_DESIGN] in their representation. Below are illustrated the User Experience requirements. In particular, the Wallet Provider:</p>
 <ul class="simple">

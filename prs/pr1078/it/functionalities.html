@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>5. Design dell&#39;Esperienza Utente &#8212; IT-Wallet Specifiche Tecniche - PR #1078</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
     <script src="_static/documentation_options.js?v=3fd72285"></script>
@@ -253,7 +253,7 @@ Di seguito sono riportati i requisiti di Esperienza Utente per assicurare una vi
 <p>Ad attivazione conclusa, l'Utente PUÒ ottenere uno o più Attestati Elettronici di Attributi all'interno della sua Istanza del Wallet.</p>
 <p>A seconda delle specifiche esigenze dell'Utente, della tipologia di Attestato Elettronico di Attributi e delle disponibilità offerte dal Fornitore di Wallet, dal Fornitore di Attestati Elettronici di Attributi e dalla Fonte Autentica, l'ottenimento degli Attestati Elettronici di Attributi può avvenire attraverso due modalità:</p>
 <ul class="simple">
-<li><p><strong>dal Catalogo dell'Istanza del Wallet</strong>: l'Utente esplora l'elenco degli Attestati Elettronici di Attributi forniti dalla Soluzione Wallet, seleziona quello di interesse e avvia il processo di richiesta, concludendo con il rilascio dell'Attestato Elettronico di Attributi nell'Istanza del Wallet. Questo percorso è disponibile per i tipi di credenziale idonei per la discovery pubblica come determinato dalle politiche dell'organismo di supervisione durante il processo di onboarding (vedere <a class="reference internal" href="registry.html#registry-catalogo-delle-credenziali-digitali"><span class="std std-ref">Catalogo degli Attestati Elettronici</span></a>).</p></li>
+<li><p><strong>dal Catalogo dell'Istanza del Wallet</strong>: l'Utente esplora l'elenco degli Attestati Elettronici di Attributi forniti dalla Soluzione Wallet, seleziona quello di interesse e avvia il processo di richiesta, concludendo con il rilascio dell'Attestato Elettronico di Attributi nell'Istanza del Wallet. Questo percorso è disponibile per i tipi di credenziale idonei per la discovery pubblica come determinato dalle politiche dell'organismo di supervisione durante il processo di onboarding (vedere <a class="reference internal" href="registry.html#catalogo-degli-attestati-elettronici"><span class="std std-ref">Catalogo degli Attestati Elettronici</span></a>).</p></li>
 <li><p><strong>da un Touchpoint della Fonte Autentica</strong> (o del Fornitore di Attestati Elettronici di Attributi se coincide con la Fonte Autentica): l'Utente interagisce con il servizio digitale della Fonte Autentica, consentendogli di ottenere un Attestato Elettronico di Attributi specifico nella propria Istanza del Wallet tramite un Engagement Button.</p></li>
 </ul>
 <p>Nonostante le modalità di avvio della richiesta siano diverse, i flussi di ottenimento condividono una struttura e un processo simili.</p>
@@ -333,7 +333,7 @@ Di seguito sono riportati i requisiti di Esperienza Utente per assicurare una vi
 <p>Di seguito sono riportati i requisiti per la rappresentazione degli EAA all’interno delle Soluzioni Wallet (vedi <a class="reference internal" href="registry.html#registro-delle-fonti-autentiche"><span class="std std-ref">Registro delle Fonti Autentiche</span></a> e <a class="reference internal" href="registry.html#catalogo-degli-attestati-elettronici"><span class="std std-ref">Catalogo degli Attestati Elettronici</span></a>). In particolare:</p>
 <p>La Fonte Autentica:</p>
 <ul class="simple">
-<li><p>PUÒ rendere disponibile il <strong>Logo della Fonte Autentica</strong> in due versioni, una versione compatta tramite il parametro organization_info.logo_uri parameter e una versione estesa tramite il parametro organization_info.logo_extended_uri. In particolare, la Fonte Autentica:</p></li>
+<li><p>PUÒ rendere disponibile il <strong>Logo della Fonte Autentica</strong> in due versioni, una versione compatta tramite il parametro <cite>organization_info.logo_uri</cite> e una versione estesa tramite il parametro <cite>organization_info.logo_extended_uri</cite>. In particolare, la Fonte Autentica:</p></li>
 </ul>
 <blockquote>
 <div><ul class="simple">
@@ -347,7 +347,7 @@ Di seguito sono riportati i requisiti di Esperienza Utente per assicurare una vi
 </ul>
 </div></blockquote>
 <ul class="simple">
-<li><p>PUÒ rendere disponibile un <strong>logo distintivo</strong> associato a una specifica EAA tramite il parametro data_capabilities.logo_uri. In particolare, la Fonte Autentica:</p></li>
+<li><p>PUÒ rendere disponibile un <strong>logo distintivo</strong> associato a una specifica EAA tramite il parametro <cite>data_capabilities.logo_uri</cite>. In particolare, la Fonte Autentica:</p></li>
 </ul>
 <blockquote>
 <div><ul class="simple">
@@ -358,7 +358,7 @@ Di seguito sono riportati i requisiti di Esperienza Utente per assicurare una vi
 </ul>
 </div></blockquote>
 <ul class="simple">
-<li><p>PUÒ definire un <strong>colore</strong> distintivo da associare a una specifica EAA tramite il parametro data_capabilities.background_color. In particolare, la Fonte Autentica:</p></li>
+<li><p>PUÒ definire un <strong>colore</strong> distintivo da associare a una specifica EAA tramite il parametro <cite>data_capabilities.background_color</cite>. In particolare, la Fonte Autentica:</p></li>
 </ul>
 <blockquote>
 <div><ul class="simple">
@@ -366,7 +366,7 @@ Di seguito sono riportati i requisiti di Esperienza Utente per assicurare una vi
 </ul>
 </div></blockquote>
 <ul class="simple">
-<li><p>L’EAA DEVE essere caratterizzato da un particolare <strong>ordinamento dei dati</strong>. La Fonte Autentica DEVE fornire l’ordine desiderato degli Attributi tramite il parametro <code class="docutils literal notranslate"><span class="pre">data_capabilities.available_claims_order</span></code>. In particolare, la Fonte Autentica:</p></li>
+<li><p>L’EAA DEVE essere caratterizzato da un particolare <strong>ordinamento dei dati</strong>. La Fonte Autentica DEVE fornire l’ordine desiderato degli Attributi tramite il parametro <code class="docutils literal notranslate"><span class="pre">data_capabilities.available_claims_order</span></code>. In accordo all'Appendice B.3 di <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>, questo ordine DEVE essere utilizzato per ordinare gli oggetti di descrizione delle attestazioni nell'array <code class="docutils literal notranslate"><span class="pre">claims</span></code> presente nei metadati del Credential Issuer. In particolare, la Fonte Autentica:</p></li>
 </ul>
 <blockquote>
 <div><ul class="simple">
@@ -377,7 +377,7 @@ Di seguito sono riportati i requisiti di Esperienza Utente per assicurare una vi
 <p>Il Fornitore di Wallet:</p>
 <ul class="simple">
 <li><p>DEVE mostrare in modo chiaro e accessibile il nome identificativo dell’EAA così come definito dal parametro ‘credential_name’ all’interno del <a class="reference internal" href="registry.html#catalogo-degli-attestati-elettronici"><span class="std std-ref">Catalogo degli Attestati Elettronici</span></a>;</p></li>
-<li><p>DEVE mostrare in modo chiaro e accessibile gli Attributi dell’EAA rispettando l’ordinamento definito dal parametro data_capabilities.available_claims_order all’interno del <a class="reference internal" href="registry.html#registro-delle-fonti-autentiche"><span class="std std-ref">Registro delle Fonti Autentiche</span></a>;</p></li>
+<li><p>DEVE mostrare in modo chiaro e accessibile gli Attributi dell’EAA rispettando l’ordinamento definito dal parametro <cite>data_capabilities.available_claims_order</cite> all’interno del <a class="reference internal" href="registry.html#registro-delle-fonti-autentiche"><span class="std std-ref">Registro delle Fonti Autentiche</span></a>;</p></li>
 <li><p>DEVE includere eventuali loghi identificativi della Fonte Autentica e/o dello specifico EAA se forniti dalla Fonte Autentica per mezzo del <a class="reference internal" href="registry.html#registro-delle-fonti-autentiche"><span class="std std-ref">Registro delle Fonti Autentiche</span></a>;</p></li>
 <li><p>DEVE garantire l’adozione del colore definito dalla Fonte Autentica se indicato all’interno del <a class="reference internal" href="registry.html#registro-delle-fonti-autentiche"><span class="std std-ref">Registro delle Fonti Autentiche</span></a> a livello di tonalità colore (H). Il Wallet Provider PUÒ ottimizzare i valori di saturazione (S) e luminosità (B) per adattare il colore specifico ad esigenze legate all’accessibilità e/o alle scelte grafiche di prodotto della propria Soluzione Wallet. Qualora la Fonte Autentica non fornisca specifiche cromatiche, il Wallet Provider è tenuto a definire e adottare proprie scelte grafiche di default.</p></li>
 </ul>
@@ -386,14 +386,14 @@ Di seguito sono riportati i requisiti di Esperienza Utente per assicurare una vi
 <li><p>DEVE mostrare l’EAA correttamente su tutti i dispositivi, garantendo un’esperienza coerente su schermi di dimensioni diverse;</p></li>
 <li><p>PUÒ mostrare gli EAA ottenuti in formato tessera nella Vista in Anteprima, in linea con gli approcci già utilizzati da altri portafogli digitali nel mercato;</p></li>
 <li><p>DEVE garantire un layout dell'EAA ottimizzato per scalabilità e usabilità, nella Vista in Anteprima, specialmente quando più EAA vengono visualizzati sulla stessa schermata;</p></li>
-<li><p>DEVE mostrare chiaramente il nome dell'EAA, così come definito dal Catalogo delle Credenziali Digitali attraverso il parametro credential_name (vedi <a class="reference internal" href="registry.html#catalogo-degli-attestati-elettronici"><span class="std std-ref">Catalogo degli Attestati Elettronici</span></a>), sia nella Vista di Anteprima che nelle Vista di Dettaglio;</p></li>
+<li><p>DEVE mostrare chiaramente il nome dell'EAA, così come definito dal Catalogo delle Credenziali Digitali attraverso il parametro <cite>credential_name</cite> (vedi <a class="reference internal" href="registry.html#catalogo-degli-attestati-elettronici"><span class="std std-ref">Catalogo degli Attestati Elettronici</span></a>), sia nella Vista di Anteprima che nelle Vista di Dettaglio;</p></li>
 <li><p>DEVE mostrare lo stato dell’EAA, se diverso da valido, per fornire trasparenza sul suo ciclo di vita, e PUÒ visualizzarlo se valido, sia nella Vista di Anteprima che nella Vista di Dettaglio. Evidenze specifiche sullo stato dell’EAA, se non valido, POSSONO essere fornite nella Vista di Dettaglio (ad esempio, il motivo per cui l’EAA è stato revocato);</p></li>
 <li><p>PUÒ includere informazioni opzionali per migliorare l’Esperienza Utente e la riconoscibilità dell’EAA, sia nella Vista di Anteprima che nella Vista di Dettaglio, come ad esempio il logo e/o il colore, come definito della Fonte Autentica attraverso il Registro delle Fonti Autentiche (vedi <a class="reference internal" href="registry.html#registro-delle-fonti-autentiche"><span class="std std-ref">Registro delle Fonti Autentiche</span></a>);</p></li>
 <li><p>DEVE includere le stesse informazioni della Vista di Anteprima nella Vista di Dettaglio e dare una rappresentazione esaustiva di tutti gli altri Attributi, seguendo l’ordine definito dalla Fonte Autentica nel Registro delle Fonti Autentiche (vedi <a class="reference internal" href="registry.html#registro-delle-fonti-autentiche"><span class="std std-ref">Registro delle Fonti Autentiche</span></a>);</p></li>
 <li><p>PUÒ includere elementi informativi aggiuntivi nella Vista di Dettaglio, ad esempio informazioni relative agli scenari di utilizzo o al motivo dell'eventuale invalidità dell’EAA;</p></li>
 <li><p>DEVE includere uno o più Engagement Buttons nella Vista di Dettaglio per consentire la gestione del ciclo di vita dell’EAA e permettere all'Utente di revocare o aggiornare un'EAA in qualsiasi momento (vedi <a class="reference internal" href="#gestione-degli-attestati-elettronici"><span class="std std-ref">Gestione degli Attestati Elettronici</span></a>);</p></li>
 <li><p>DEVE garantire che l’EAA sia un elemento funzionale, affinché l'Utente possa accedere ai servizi forniti dai Verificatori di Attestati Elettronici in contesti digitali e di prossimità (vedi <a class="reference internal" href="#presentazione-degli-attestati-elettronici"><span class="std std-ref">Presentazione degli Attestati Elettronici</span></a>);</p></li>
-<li><p>DEVE mostrare nella Vista di Dettaglio un metodo di assistenza reso disponibile dalla Fonte Autentica tramite il parametro data_capabilities.contacts (vedi <a class="reference internal" href="#assistenza-utente"><span class="std std-ref">Assistenza Utente</span></a> e vedi <a class="reference internal" href="registry.html#registro-delle-fonti-autentiche"><span class="std std-ref">Registro delle Fonti Autentiche</span></a>).</p></li>
+<li><p>DEVE mostrare nella Vista di Dettaglio un metodo di assistenza reso disponibile dalla Fonte Autentica tramite il parametro <cite>data_capabilities.contacts `(vedi :ref:`functionalities:Assistenza Utente</cite> e vedi <a class="reference internal" href="registry.html#registro-delle-fonti-autentiche"><span class="std std-ref">Registro delle Fonti Autentiche</span></a>).</p></li>
 </ul>
 <p>Di seguito un esempio di layout di Attestato Elettronico di Attributi, all'interno della Vista in Anteprima e Vista di Dettaglio.</p>
 <figure class="align-center" id="id113">

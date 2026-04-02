@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>13.3. Relying Party Endpoints &#8212; IT-Wallet Technical Specifications - PR #1078</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
     <script src="_static/documentation_options.js?v=5929fcd5"></script>
@@ -323,12 +323,11 @@
 <p>The Relying Party Key Binding Endpoint enables Verifier Apps to bind the newly created pair of keys, which will be associated with an Access Certificate, to the Verifier App, by relying on a proof of possession of the Cryptographic Hardware Keys generated during the <a class="reference internal" href="mobile-application-instance.html#mobile-application-instance-initialization"><span class="std std-ref">Mobile Application Instance Initialization</span></a> phase. Before completing the process, the Relying Party Provider Backend also needs to verify the integrity of the Verifier App.</p>
 <section id="relying-party-provider-backend-key-binding-request">
 <h4><span class="section-number">13.3.2.4.1. </span>Relying Party Provider Backend Key Binding Request<a class="headerlink" href="#relying-party-provider-backend-key-binding-request" title="Link to this heading">¶</a></h4>
-<p>Further details on the Relying Party Key Binding Request are provided in the <a class="reference internal" href="wallet-provider-endpoint.html#wallet-app-and-wallet-unit-attestation-issuance-request"><span class="std std-ref">Wallet App and Wallet Unit Attestation Issuance Request</span></a> section.</p>
+<p>Further details on the Relying Party Key Binding Request are provided in the <a class="reference internal" href="wallet-provider-endpoint.html#wallet-instance-attestation-issuance-request"><span class="std std-ref">Wallet Instance Attestation Issuance Request</span></a> section.</p>
 <p>The only difference are the following:</p>
 <ul class="simple">
-<li><p>The <code class="docutils literal notranslate"><span class="pre">typ</span></code> header of the Integrity Request JWT assumes the value <code class="docutils literal notranslate"><span class="pre">rp-kb+jwt</span></code>.</p></li>
-<li><p>The Integrity Request JWT Body does not include the <code class="docutils literal notranslate"><span class="pre">attested_key</span></code> claim, and</p></li>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code> claim value is obtained based on only <code class="docutils literal notranslate"><span class="pre">client_data_hash_waa</span></code> value.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">typ</span></code> header of the Integrity Request JWT assumes the value <code class="docutils literal notranslate"><span class="pre">rp-kb+jwt</span></code>, and</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code> claim value is obtained based on only <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> value.</p></li>
 </ul>
 </section>
 <section id="relying-party-provider-backend-key-binding-response">

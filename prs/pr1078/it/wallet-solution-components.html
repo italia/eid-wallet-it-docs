@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>10.1.2. Componenti della Soluzione Wallet &#8212; IT-Wallet Specifiche Tecniche - PR #1078</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
     <script src="_static/documentation_options.js?v=3fd72285"></script>
@@ -207,7 +207,8 @@
 <p>Questo componente DEVE gestire:</p>
 <ul class="simple">
 <li><p>Registrazione dell'Istanza del Wallet (dettagliata in <a class="reference internal" href="wallet-instance-registration.html#inizializzazione-e-registrazione-dell-istanza-del-wallet"><span class="std std-ref">Inizializzazione e Registrazione dell'Istanza del Wallet</span></a>).</p></li>
-<li><p>Emissione della Wallet App e Wallet Unit Attestation (dettagliata in <a class="reference internal" href="wallet-attestation-issuance.html#emissione-della-wallet-app-e-wallet-unit-attestation"><span class="std std-ref">Emissione della Wallet App e Wallet Unit Attestation</span></a>).</p></li>
+<li><p>Emissione della Wallet Instance Attestation (dettagliata in <a class="reference internal" href="wallet-instance-attestation-issuance.html#emissione-della-wallet-instance-attestation"><span class="std std-ref">Emissione della Wallet Instance Attestation</span></a>).</p></li>
+<li><p>Emissione della Wallet Unit Attestation (dettagliata in <a class="reference internal" href="wallet-attestation-issuance.html#emissione-della-wallet-unit-attestation"><span class="std std-ref">Emissione della Wallet Unit Attestation</span></a>).</p></li>
 <li><p>Gestione dello stato (mantenimento e aggiornamento della validità).</p></li>
 <li><p>Processi di revoca (implementazione di meccanismi per revocare le Istanze del Wallet), secondo la Sezione <a class="reference internal" href="wallet-instance-revocation.html#revoca-dell-istanza-del-wallet"><span class="std std-ref">Revoca dell'Istanza del Wallet</span></a>.</p></li>
 </ul>
@@ -234,7 +235,8 @@
 <p>Interagendo con il Backend del Wallet, questo componente DEVE gestire:</p>
 <ul class="simple">
 <li><p>Registrazione dell'Istanza del Wallet (dettagliata in <a class="reference internal" href="wallet-instance-registration.html#inizializzazione-e-registrazione-dell-istanza-del-wallet"><span class="std std-ref">Inizializzazione e Registrazione dell'Istanza del Wallet</span></a>).</p></li>
-<li><p>Emissione della Wallet Unit Attestation (dettagliata in <a class="reference internal" href="wallet-attestation-issuance.html#emissione-della-wallet-app-e-wallet-unit-attestation"><span class="std std-ref">Emissione della Wallet App e Wallet Unit Attestation</span></a>).</p></li>
+<li><p>Emissione della Wallet Instance Attestation (dettagliata in <a class="reference internal" href="wallet-instance-attestation-issuance.html#emissione-della-wallet-instance-attestation"><span class="std std-ref">Emissione della Wallet Instance Attestation</span></a>).</p></li>
+<li><p>Emissione della Wallet Unit Attestation (dettagliata in <a class="reference internal" href="wallet-attestation-issuance.html#emissione-della-wallet-unit-attestation"><span class="std std-ref">Emissione della Wallet Unit Attestation</span></a>).</p></li>
 <li><p>Gestione dello stato (mantenimento e aggiornamento della validità).</p></li>
 <li><p>Processi di revoca (implementazione di meccanismi per revocare le Istanze del Wallet), secondo la Sezione <a class="reference internal" href="wallet-instance-revocation.html#revoca-dell-istanza-del-wallet"><span class="std std-ref">Revoca dell'Istanza del Wallet</span></a>.</p></li>
 </ul>
@@ -276,7 +278,7 @@
 <p>La Soluzione Wallet supporta questi modelli di interazione:</p>
 <ol class="arabic simple">
 <li><p><strong>Utente verso Frontend del Backend del Wallet</strong>: Interazioni basate sul web per la gestione dell'Istanza del Wallet.</p></li>
-<li><p><strong>Istanza del Wallet verso API del Backend del Wallet</strong>: per la registrazione dell'Istanza del Wallet e l'emissione della Wallet App e Wallet Unit Attestation.</p></li>
+<li><p><strong>Istanza del Wallet verso API del Backend del Wallet</strong>: per la registrazione dell'Istanza del Wallet e l'emissione della Wallet Instance e Wallet Unit Attestation.</p></li>
 <li><p><strong>Fornitore di Attestati Elettronici di Dati di Identificazione Personale verso API del Backend del Wallet</strong>: Chiamate API sicure per richiedere la revoca dell'Istanza del Wallet.</p></li>
 <li><p><strong>Utente verso Interfaccia Utente dell'Istanza del Wallet</strong>: per la gestione delle Credenziali Elettroniche (emissione, presentazione, backup, ripristino, eliminazione).</p></li>
 <li><p><strong>Istanza del Wallet verso Relying Party</strong>: per la presentazione delle Credenziali Elettroniche.</p></li>

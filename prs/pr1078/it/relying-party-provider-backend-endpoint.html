@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Endpoint di Federazione della Relying Party &#8212; IT-Wallet Specifiche Tecniche - PR #1078</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
     <script src="_static/documentation_options.js?v=3fd72285"></script>
@@ -184,12 +184,11 @@
 <p>Il Key Binding Endpoint della Relying Party consente alle App di Verifica di associare la coppia di chiavi appena creata, che sarà associata a un Certificato di Accesso, all'App di Verifica, basandosi su una dimostrazione di possesso delle Cryptographic Hardware Keys generate durante la fase di <a class="reference internal" href="mobile-application-instance.html#inizializzazione-dell-istanza-dell-applicazione-mobile"><span class="std std-ref">Inizializzazione dell'Istanza dell'Applicazione Mobile</span></a>. Prima di completare il processo, il Backend del Provider di Relying Party deve anche verificare l'integrità dell'App di Verifica.</p>
 <section id="richiesta-di-associazione-chiavi-della-relying-party">
 <h2>Richiesta di Associazione Chiavi della Relying Party<a class="headerlink" href="#richiesta-di-associazione-chiavi-della-relying-party" title="Link to this heading">¶</a></h2>
-<p>Ulteriori dettagli sulla Relying Party Key Binding Request sono forniti nella sezione <a class="reference internal" href="wallet-provider-endpoint.html#richiesta-di-emissione-della-wallet-app-e-wallet-unit-attestation"><span class="std std-ref">Richiesta di Emissione della Wallet App e Wallet Unit Attestation</span></a>.</p>
+<p>Ulteriori dettagli sulla Relying Party Key Binding Request sono forniti nella sezione <a class="reference internal" href="wallet-provider-endpoint.html#richiesta-di-emissione-della-wallet-instance-attestation"><span class="std std-ref">Richiesta di Emissione della Wallet Instance Attestation</span></a>.</p>
 <p>Le uniche differenze sono le seguenti:</p>
 <ul class="simple">
 <li><p>L'intestazione <code class="docutils literal notranslate"><span class="pre">typ</span></code> del JWT della Integrity Request assume il valore <code class="docutils literal notranslate"><span class="pre">rp-kb+jwt</span></code>.</p></li>
-<li><p>Il corpo del JWT della Integrity Request non include la dichiarazione <code class="docutils literal notranslate"><span class="pre">attested_key</span></code>.</p></li>
-<li><p>Il valore della dichiarazione <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code> viene ottenuto basandosi esclusivamente sul valore di <code class="docutils literal notranslate"><span class="pre">client_data_hash_waa</span></code>.</p></li>
+<li><p>Il valore della dichiarazione <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code> viene ottenuto basandosi esclusivamente sul valore di <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code>.</p></li>
 </ul>
 </section>
 <section id="risposta-di-associazione-chiavi-della-relying-party">

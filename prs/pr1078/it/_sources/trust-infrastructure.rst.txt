@@ -8,18 +8,16 @@ L'Infrastruttura di Trust
 
 L'ecosistema IT-Wallet opera all'interno di un'infrastruttura di trust federata dove le entità partecipanti stabiliscono relazioni di trust crittografiche e mantengono la conformità con standard di sicurezza comuni. Questa infrastruttura fornisce le fondamenta per operazioni sicure di Credenziali Elettroniche tra i partecipanti dell'ecosistema.
 
-Questa sezione definisce l'implementazione del Trust Model in un'infrastruttura che è conforme all'`EIDAS-ARF`_ e a OpenID Federation 1.0 `OID-FED`_. OpenID Federation opera a livello nazionale ed è completata dalle eIDAS Trusted Lists per QEAA ed EAA Provider, come dettagliato in :ref:`trust-infrastructure:trusted-lists-eaa-provider-profilo-implementazione`. La List of Trusted Lists (LoTL), mantenuta dalla Commissione Europea, aggrega i puntatori a tutte le eIDAS Trusted Lists pubblicate, abilitando l'instaurazione del trust transfrontaliero e la scoperta centralizzata delle posizioni delle Trusted Lists e delle relative chiavi di firma.
-
-L'infrastruttura nazionale prevede un'API RESTful per la distribuzione di metadati, policy dei metadati, trust mark, chiavi pubbliche crittografiche e certificati X.509, e lo stato di revoca dei partecipanti, chiamati anche Entità di Federazione.
+Questa sezione definisce l'implementazione del Trust Model in un'infrastruttura che è conforme a OpenID Federation 1.0 `OID-FED`_. Tale infrastruttura nazionale prevede un'API RESTful per la distribuzione di metadati, policy dei metadati, trust mark, chiavi pubbliche crittografiche e certificati X.509, e lo stato di revoca dei partecipanti, chiamati anche Entità di Federazione.
 
 
-Questa infrastruttura di trust lavora in coordinamento con l'Infrastruttura di Registro (vedi :ref:`registry:Infrastruttura del Registro`) per abilitare i processi di onboarding delle entità dettagliati in :ref:`entity-onboarding:Onboarding delle Entità`. In particolare, abilita l'implementazione tecnica dei processi di onboarding descritti in :ref:`entity-onboarding:Onboarding delle Entità` e supporta gli scenari operativi illustrati in :ref:`onboarding-high-level:Onboarding Journey Maps`.
+Questa infrastruttura di trust lavora in coordinamento con l'Infrastruttura del Registro (vedi :ref:`registry:Infrastruttura del Registro`) per abilitare i processi di onboarding delle entità dettagliati in :ref:`entity-onboarding:Onboarding delle Entità`. In particolare, abilita l'implementazione tecnica dei processi di onboarding descritti in :ref:`entity-onboarding:Onboarding delle Entità` e supporta gli scenari operativi illustrati in :ref:`onboarding-high-level:Onboarding Journey Maps`.
 
 **Abilitazione dell'Onboarding**: L'Infrastruttura di Trust fornisce i meccanismi crittografici che consentono alle nuove entità (Credential Issuer, Relying Party, Fornitori di Wallet) di stabilire relazioni di trust verificabili durante il loro processo di registrazione. Senza questa infrastruttura, le entità non sarebbero in grado di dimostrare il loro stato di conformità o le capacità operative agli altri partecipanti dell'ecosistema.
 
 **Supporto al Ciclo di Vita delle Entità**: Durante tutto il ciclo di vita operativo di un'entità, l'Infrastruttura di Trust mantiene attestazioni di trust aggiornate, gestisce la rotazione delle chiavi, gestisce scenari di revoca e supporta il monitoraggio della conformità. Questo supporta direttamente le procedure di gestione del ciclo di vita dettagliate in :ref:`entity-onboarding:Onboarding delle Entità`.
 
-**Integrazione con l'Infrastruttura di Registro**: L'Infrastruttura di Trust implementa il componente Federation Registry dell'Infrastruttura di Registro più ampia, fornendo le fondamenta tecniche per la scoperta delle entità e la validazione del trust che sottende tutte le procedure di onboarding.
+**Integrazione con l'Infrastruttura del Registro**: L'Infrastruttura di Trust implementa il componente Federation Registry dell'Infrastruttura del Registro più ampia, fornendo le fondamenta tecniche per la scoperta delle entità e la validazione del trust che sottende tutte le procedure di onboarding.
 
 .. plantuml:: plantuml/trust-roles.puml
    :width: 99%
@@ -36,9 +34,9 @@ Tutti i partecipanti sono Entità di Federazione che DEVONO essere registrate da
 .. note::
   L'Istanza del Wallet, come dispositivo personale, è considerata affidabile attraverso un'attestazione verificabile rilasciata e firmata da una terza parte fidata.
 
-  Questo è chiamato *Wallet Attestation* ed è documentato nella sezione dedicata :ref:`wallet-attestation-issuance:Emissione della Wallet App e Wallet Unit Attestation`.
+  Questo è chiamato *Wallet Instance Attestation* ed è documentato nella sezione dedicata :ref:`wallet-instance-attestation-issuance:Emissione della Wallet Instance Attestation`.
 
-**Ruolo nell'Onboarding**: Il processo di onboarding delle entità è suddiviso tra **Registration Authority (Registrar)** e **Autorità di Federazione** (Trust Anchor e Intermediari). I Registrar gestiscono la **registrazione amministrativa** (identità legale, conformità normativa, giustificazione di business e idoneità), mentre le Autorità di Federazione gestiscono la **registrazione di federazione** (emissione di certificati di federazione, applicazione delle federation metadata policy e posizionamento delle entità nella gerarchia di trust). Le Foglie (Credential Issuer, Relying Party, Fornitori di Wallet) attraversano entrambi i passaggi: prima dimostrano la loro idoneità al Registrar, poi ottengono l'autorizzazione di federazione dalle Autorità di Federazione per svolgere le loro funzioni nelle operazioni sulle Credenziali.
+**Ruolo nell'Onboarding**: Durante la registrazione dell'entità, il Trust Anchor e gli Intermediate agiscono come Autorità di Federazione. Ciò stabilisce la posizione del partecipante nella gerarchia di fiducia e gli consente di partecipare alle operazioni di credenziali. Le foglie (Emittenti di credenziali, Relying Party, Wallet Provider) si sottopongono a registrazione per dimostrare la propria idoneità e ricevere l'autorizzazione a svolgere le funzioni loro assegnate.
 
 **Ruolo nelle Operazioni**: Durante l'emissione e la presentazione delle Credenziali, questi ruoli abilitano la validazione del trust distribuita senza richiedere la verifica centralizzata per ogni transazione. Le Foglie utilizzano il loro stato registrato per emettere Credenziali, verificare presentazioni o fornire servizi di Wallet agli utenti finali.
 
@@ -76,136 +74,16 @@ Di seguito la tabella con il riepilogo dei ruoli delle Entità di Federazione, m
    * - Fornitore di Wallet
      - Leaf
      -
-   * - eIDAS Trusted List Provider
-     - eIDAS Trust Anchor
-     - Compila, firma e pubblica le eIDAS Trusted Lists a livello UE per QTSP, Fornitori di Wallet, PID Provider, Access CA e Fornitori di Certificati di Registrazione, come descritto nello schema dell'infrastruttura di trust dell'EUDI Wallet.
-   * - National eIDAS Trusted List Provider
-     - :term:`National Trust Anchor`
-     - Compila, firma e pubblica le Trusted Lists nazionali per i QEAA Provider e per gli EAA Provider non qualificati secondo il quadro nazionale dei servizi fiduciari, come descritto in questo documento per la pubblicazione delle Trusted Lists degli EAA Provider e dei QEAA Provider.
 
 .. _trust-infrastructure-integrazione-tra-infrastruttura-di-trust-e-registry:
 
 Integrazione dell'Infrastruttura di Trust e del Registro
 --------------------------------------------------------
 
-L'Infrastruttura di Trust implementa il componente Federation Registry dell'Infrastruttura di Registro. Il Federation Registry mantiene l'elenco autorevole delle entità fidate attraverso gli endpoint di federazione definiti in questa sezione, inclusi l'elenco delle entità (/list), le dichiarazioni dei subordinati (/fetch), la validazione dei trust mark (/trust_mark_status), gli eventi sui subordinati (/federation_subordinate_events_endpoint) e la gestione delle chiavi storiche (/historical-jwks).
+L'Infrastruttura di Trust implementa il componente Federation Registry dell'Infrastruttura del Registro. Il Federation Registry mantiene l'elenco autorevole delle entità fidate attraverso gli endpoint di federazione definiti in questa sezione, inclusi l'elenco delle entità (/list), le dichiarazioni dei subordinati (/fetch), la validazione dei trust mark (/trust_mark_status), gli eventi sui subordinati (/federation_subordinate_events_endpoint) e la gestione delle chiavi storiche (/historical-jwks).
 
 Questo Federation Registry opera insieme ad altri componenti del registro (Claims Registry, AS Registry, Catalogo degli Attestati Elettronici, Taxonomy) per fornire supporto completo all'ecosistema. Per l'architettura completa del registro e le interazioni dei componenti, vedi :ref:`registry:Infrastruttura del Registro`.
 
-Schema dell'Infrastruttura di Trust: Onboarding e Trusted Lists
------------------------------------------------------------------
-
-L'infrastruttura di trust si basa su cinque processi distinti ma complementari:
-
-1. **Registrazione/Onboarding**: Le entità (PID Provider, QEAA Provider, EAA Provider, Relying Party, Wallet Provider) si registrano con il Registrar nazionale o tramite il sistema di onboarding dell'IT-Wallet per definire l'autorizzazione operativa e i diritti.
-2. **Notifica**: Lo Stato Membro notifica alla Commissione Europea, in qualità di operatore dell'eIDAS Trusted List Provider a livello UE, i **PID Provider**, i **PuB-EAA Provider**, i **Wallet Provider**, le **Autorità Certificatrici di Accesso (Access CA)** e i **Fornitori di Certificati di Registrazione** per l'inclusione nelle relative Trusted Lists.
-3. **Pubblicazione di Cataloghi e Liste Nazionali**: Pubblicazione di cataloghi e liste nazionali relative alle entità registrate tramite endpoint RESTful.
-4. **Pubblicazione delle eIDAS Trusted Lists**: Pubblicazione delle eIDAS Trusted Lists a livello UE da parte della Commissione Europea, basata sulle notifiche dello Stato Membro per Wallet Provider, PID Provider, PuB-EAA Provider, Access CA e Fornitori di Certificati di Registrazione.
-5. **Pubblicazione delle Trusted Lists Nazionali**: Pubblicazione delle Trusted Lists nazionali per i QEAA Provider e per gli EAA Provider non qualificati da parte del Fornitore di Trusted Lists dello Stato Membro (MS TLP), basata sui dati del Registrar nazionale.
-
-.. _trust-infrastructure:trusted-lists-eaa-provider-profilo-implementazione:
-
-Trusted Lists per EAA Provider: Profilo di Implementazione
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Questa sezione fornisce il profilo di implementazione per le Trusted Lists nazionali, compilate e pubblicate dal Fornitore di Trusted Lists dello Stato Membro (MS TLP), sia per i Fornitori di Attestazioni Elettroniche di Attributi Qualificati (QEAA Provider) che per i Fornitori di Attestazioni Elettroniche di Attributi non qualificati (EAA Provider), come richiesto dall'infrastruttura di trust dell'EUDI Wallet.
-
-Requisiti Normativi e Motivazioni
-"""""""""""""""""""""""""""""""""
-
-Il requisito per le Trusted Lists degli EAA Provider è stabilito dal quadro dei servizi fiduciari e dalle specifiche tecniche ETSI:
-
-- **`ETSI TS 119 612`_**: definisce il formato Trusted Service Lists (TSL) basato su XML per le trusted lists, inclusi i tipi di servizio e la gestione dello stato. Questo profilo continua a essere utilizzato per le **Trusted Lists QTSP**, inclusi i **QEAA Provider**.
-- **`ETSI TS 119 602`_** e il relativo Allegato H: definiscono il modello di dati astratto e il profilo per le Liste di Entità Fidate (LoTE), incluse le **Trusted Lists degli Attestation Provider per gli EAA Provider non qualificati e, ove applicabile, per i PuB‑EAA Provider**. I QEAA Provider rimangono invece nelle Trusted Lists QTSP secondo `ETSI TS 119 612`_, mentre l'Allegato H viene utilizzato per le Trusted Lists nazionali degli EAA Provider con binding JSON e XML.
-
-Profilo di Implementazione per le Trusted Lists dei QEAA Provider
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-I **QEAA Provider** sono Fornitori di Servizi Fiduciari Qualificati (QTSP) ai sensi del `EIDAS`_. Dopo la registrazione riuscita con un Registrar dello Stato Membro, i QEAA Provider sono inclusi nelle **Trusted Lists QTSP degli Stati Membri**, che sono:
-
-- **Compilate e Pubblicate Da**: Fornitore di Trusted Lists dello Stato Membro (MS TLP)
-- **Base Legale**: `EIDAS`_ Articolo 22 e Decisione di Implementazione della Commissione (UE) 2015/1505
-- **Notifica**: Gli Stati Membri notificano queste Trusted Lists QTSP alla Commissione Europea ai sensi dell'`EIDAS`_ Articolo 22(3) in modo che le posizioni delle TL QTSP e le chiavi di firma possano essere esposte tramite la **Lista delle Trusted Lists (LoTL)**
-- **Formato**: DEVE essere conforme alle specifiche `ETSI TS 119 612`_ (formato XML) - **OBBLIGATORIO** secondo la Decisione di Implementazione della Commissione (UE) 2015/1505
-- **Firma**: XAdES Baseline B (formato firma avvolta) - **OBBLIGATORIA** secondo `ETSI TS 119 612`_ e `ETSI EN 319 132-1`_
-
-.. note::
-  Il requisito del formato XML per le Trusted Lists QTSP (inclusi i QEAA Provider) è obbligatorio secondo la Decisione di Implementazione della Commissione (UE) 2015/1505, che stabilisce le specifiche tecniche per le Trusted Lists ai sensi dell'`EIDAS`_ Articolo 22(5). Questa decisione richiede agli Stati Membri di pubblicare le Trusted Lists QTSP in formato XML secondo `ETSI TS 119 612`_ con firme XAdES Baseline B.
-
-
-Di seguito è riportato un esempio non normativo di una voce relativa a un QEAA Provider all'interno di una Trusted List QTSP di uno Stato Membro, seguendo il formato XML `ETSI TS 119 612`_ (solo payload, senza firma XAdES):
-
-.. literalinclude:: ../../examples/qeaa-provider-trusted-list-example.xml
-   :language: xml
-   :caption: Esempio non normativo di una voce relativa a un QEAA Provider in una Trusted List QTSP di uno Stato Membro (formato XML, `ETSI TS 119 612`_ solo payload, senza firma)
-
-Profilo di Implementazione per le Trusted Lists degli EAA Provider Non Qualificati
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-Gli **EAA Provider non qualificati** sono inclusi nelle **Trusted Lists nazionali degli EAA Provider**, che rappresentano un'estensione nazionale complementare alle Trusted Lists QTSP:
-
-- **Compilate e Pubblicate Da**: Fornitore di Trusted Lists dello Stato Membro (MS TLP)
-- **Base Legale**: Estensione nazionale decisa dallo Stato Membro
-- **Notifica**: Gli Stati Membri inviano gli URL delle Trusted Lists degli EAA Provider non qualificati alla Commissione Europea per l'inclusione nella LoTL
-- **Formato**: Può utilizzare il profilo `ETSI TS 119 602`_ Allegato H (Trusted Lists degli Attestation Provider), pubblicato in formato JSON con firma compact JAdES Baseline B OPPURE formato XML con firma XAdES Baseline B (per `ETSI EN 319 132-1`_). Quando viene utilizzato XML, deve essere una firma digitale avvolta.
-- **Firma**: Compact JAdES Baseline B (JSON) o XAdES Baseline B (XML) secondo `ETSI TS 119 182-1`_ o `ETSI EN 319 132-1`_
-
-**Requisiti di Firma**:
-
-Le Trusted Lists in formato JSON DEVONO essere firmate utilizzando firme compact JAdES Baseline B come richiesto da `ETSI TS 119 182-1`_. Le Trusted Lists in formato XML DEVONO essere firmate utilizzando firme XAdES Baseline B come richiesto da `ETSI EN 319 132-1`_. La firma garantisce l'integrità, l'autenticità e il non-ripudio del contenuto della Trusted List.
-
-Requisiti ETSI per le Trusted Lists degli EAA Provider
-""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-**Requisiti del Profilo `ETSI TS 119 602`_ Allegato H** (per TL degli EAA Provider non qualificati):
-
-- **Tipo LoTE**: URI appropriato per le Trusted Lists degli Attestation Provider
-- **Tipi di Servizio**: 
-  - URI del tipo di servizio di emissione
-  - URI del tipo di servizio di revoca (se applicabile)
-- **Stato del Servizio**: Il componente ServiceStatus **deve** essere presente per i PuB-EAA Provider; per gli EAA Provider non qualificati, la gestione dello stato segue la politica dello Stato Membro
-- **Tempo di Inizio dello Stato**: Il componente StatusStartingTime **deve** essere presente quando viene utilizzato ServiceStatus
-- **Informazioni Storiche**: HistoricalInformationPeriod **deve** essere presente con un valore appropriato quando viene mantenuta la cronologia del servizio
-- **Prossimo Aggiornamento**: Massimo 6 mesi tra gli aggiornamenti
-- **Firma**: Compact JAdES Baseline B (JSON) o XAdES Baseline B (XML) - **OBBLIGATORIA** secondo i requisiti ETSI
-
-Di seguito è riportato un esempio non normativo del payload di una Trusted List di EAA Provider non qualificato (senza firma) seguendo il profilo `ETSI TS 119 602`_ Allegato H in formato JSON:
-
-.. literalinclude:: ../../examples/eaa-provider-trusted-list-example.json
-   :language: json
-   :caption: Esempio non normativo del payload di una Trusted List di EAA Provider non qualificato (formato JSON, profilo `ETSI TS 119 602`_ Allegato H, solo payload, senza firma)
-
-.. note::
-  L'esempio sopra mostra solo il payload della Trusted List senza la firma JAdES. In produzione, le Trusted Lists DEVONO essere firmate utilizzando firme compact JAdES Baseline B secondo `ETSI TS 119 182-1`_.
-
-**Requisiti `ETSI TS 119 612`_** (per TL QTSP inclusi QEAA Provider):
-
-- **Tipo TSL**: `http://uri.etsi.org/TrstSvc/TrustedList/TSLType/EUgeneric` o tipo TSL appropriato dello Stato Membro
-- **Identificatori del Tipo di Servizio**: URI del tipo di servizio appropriati per i servizi QEAA
-- **Stato del Servizio**: Valori di stato del servizio eIDAS standard
-- **Firma**: XAdES Baseline B (formato firma avvolta)
-
-Integrazione con la Lista delle Trusted Lists (LoTL)
-"""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-Per la clausola D.5 di `ETSI TS 119 612`_, la Commissione Europea mantiene una Lista delle Trusted Lists (LoTL) che:
-
-- Contiene puntatori (TrustedListPointers) a tutte le Trusted Lists pubblicate
-- Ogni puntatore include la posizione della Trusted List (TSLLocation), il territorio dello schema e il nome dell'operatore dello schema
-- Facilita l'istituzione di trust transfrontaliera
-- Centralizza la distribuzione delle trusted lists
-- Supporta la discovery dei servizi a livello di federazione
-
-La Commissione Europea:
-
-- Compila la LoTL da:
-  - Le Trusted Lists direttamente compilate e pubblicate (TL Wallet Provider, TL PID Provider, TL Access CA, TL Fornitore Cert. Reg.)
-  - Le notifiche degli URL delle Trusted Lists ricevute dai MS TLP (per EAA Provider qualificati e non qualificati)
-- Firma/sigilla la LoTL utilizzando la chiave di firma della Commissione
-- Pubblica la LoTL in formati leggibili da macchina e da uomo
-- Pubblica la posizione della LoTL e gli anchor di trust nella Gazzetta Ufficiale dell'Unione Europea (GUUE)
-
-.. _trust-infrastructure-endpoint-delle-api-della-federazione:
 
 Endpoint API di Federazione
 ---------------------------
@@ -229,23 +107,23 @@ Tutti gli endpoint elencati di seguito sono definiti nelle specifiche `OID-FED`_
      - Trust Anchor, Intermediario, Fornitore di Wallet, Relying Party, Credential Issuer
    * - subordinate list endpoint
      - **GET** /list
-     - Elenca i Subordinati. Vedi `OID-FED`_ Sezione 5.1.1
+     - Elenca i Subordinati. Vedi `OID-FED`_ Sezione 8.2
      - Trust Anchor, Intermediario
    * - fetch endpoint
-     - **GET** /fetch?sub=https://rp.example.org
-     - Restituisce un JWT firmato su un soggetto specifico, il suo Subordinato. È chiamato Subordinate Statement. Vedi `OID-FED`_ Sezione 5.1.1
+     - **GET** /federation_fetch_endpoint?sub=https://rp.example.org
+     - Restituisce un JWT firmato su un soggetto specifico, il suo Subordinato. È chiamato Subordinate Statement. Vedi `OID-FED`_ Sezione 8.1
      - Trust Anchor, Intermediario
    * - trust mark status
-     - **POST** /status?sub=...&trust_mark_id=...
-     - Restituisce lo stato dell'emissione (validità) di un Trust Mark relativo a un soggetto specifico. Vedi `OID-FED`_ Sezione 5.1.1
+     - **POST** /federation_trust_mark_status_endpoint
+     - Restituisce lo stato dell'emissione (validità) di un Trust Mark relativo a un soggetto specifico. Vedi `OID-FED`_ Sezione 8.4
      - Trust Anchor, Intermediario
    * - trust marked listing
-     - **GET** /trust_mark_listing?trust_mark_id=...
-     - Elenca tutte le entità per le quali sono stati emessi Trust Mark e sono ancora validi. Vedi `OID-FED`_ Sezione 5.1.1
+     - **GET** /trust_marked_list?trust_mark_type=...
+     - Elenca tutte le entità per le quali sono stati emessi Trust Mark e sono ancora validi. Vedi `OID-FED`_ Sezione 8.5
      - Trust Anchor, Intermediario
    * - historical keys
-     - **GET** /historical-jwks
-     - Elenca le chiavi scadute e revocate, con la motivazione della revoca. Vedi `OID-FED`_ Sezione 5.1.1
+     - **GET** /federation_historical_keys
+     - Elenca le chiavi scadute e revocate, con la motivazione della revoca. Vedi `OID-FED`_ Sezione 8.7
      - Trust Anchor, Intermediario
    * - subordinate events
      - **GET** /federation_subordinate_events_endpoint?sub=https://rp.example.org
@@ -254,16 +132,6 @@ Tutti gli endpoint elencati di seguito sono definiti nelle specifiche `OID-FED`_
 
 
 Tutte le risposte degli endpoint di federazione sono sotto forma di JWT firmato, ad eccezione dell'endpoint di Elenco Subordinati e dell'endpoint di Stato Trust Mark che sono serviti come JSON semplice per impostazione predefinita. L'Endpoint Eventi Subordinati della Federazione restituisce anche JWT firmati con il tipo di contenuto ``application/entity-events-statement+jwt``.
-
-Endpoint delle Trusted Lists Nazionali
---------------------------------------
-
-In aggiunta agli endpoint di OpenID Federation, l'ecosistema IT-Wallet espone punti di distribuzione HTTPS per le eIDAS Trusted Lists e per le Trusted Lists nazionali degli EAA Provider. Questi endpoint sono operati dal Fornitore di Trusted Lists dello Stato Membro (MS TLP) e pubblicano le Trusted Lists autorevoli e firmate che sono referenziate dalla LoTL e consumate da Wallet Unit, Credential Issuer e Relying Party.
-
-- La Trusted List per QEAA Provider DEVE essere pubblicate dal :term:`National Trust Anchor` come documenti TSL XML conformi a `ETSI TS 119 612`_, in punti di distribuzione HTTPS sotto il FQDN del National Trust Anchor (ad esempio, ``https://<FQDNNationalTrustAnchor>/tsl/qeaa-tsl.xml``), e firmate con XAdES Baseline B in accordo con `ETSI EN 319 132-1`_.
-- La Trusted List nazionale degli EAA Provider (per EAA Provider non qualificati e, ove applicabile, per i PuB-EAA Provider) DEVE essere pubblicate come documenti LoTE che seguono il profilo `ETSI TS 119 602`_ Allegato H, in punti di distribuzione HTTPS sotto il FQDN del National Trust Anchor (ad esempio, ``https://<FQDNNationalTrustAnchor>/lote/eaa-providers.json``), in formato JSON (preferibile) o XML, e firmate con firme compact JAdES Baseline B o XAdES Baseline B come previsto da `ETSI TS 119 182-1`_ e `ETSI EN 319 132-1`_.
-
-I client afferenti all'ecosistema EUDI Wallet consumano questi endpoint scaricando periodicamente le liste, validando le firme digitali e applicando le semantiche di stato del servizio e di numero di sequenza definite in `ETSI TS 119 612`_ e `ETSI TS 119 602`_ per costruire e aggiornare i propri trust store locali.
 
 Federation Subordinate Events Endpoint
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -531,7 +399,7 @@ In questa sezione sono definiti i principali tipi di metadati mappati sui ruoli 
 Metadati di federation_entity Foglie
 ------------------------------------
 
-I metadati *federation_entity* per le Foglie DEVONO contenere i seguenti claim.
+I metadati *federation_entity* per le Foglie contiene i seguenti claim.
 
 
 .. list-table::
@@ -542,19 +410,19 @@ I metadati *federation_entity* per le Foglie DEVONO contenere i seguenti claim.
   * - **Claim**
     - **Descrizione**
   * - **organization_name**
-    - Vedi `OID-FED`_ Sezione 5.2.2
+    - OBBLIGATORIO. Vedi `OID-FED`_ Sezione 5.2.2
   * - **homepage_uri**
-    - Vedi `OID-FED`_ Sezione 5.2.2
+    - OBBLIGATORIO. Vedi `OID-FED`_ Sezione 5.2.2
   * - **policy_uri**
-    - Vedi `OID-FED`_ Sezione 5.2.2
+    - OBBLIGATORIO. Vedi `OID-FED`_ Sezione 5.2.2
   * - **logo_uri**
-    - URL del logo dell'entità; DEVE essere in formato SVG. Vedi `OID-FED`_ Sezione 5.2.2
+    - OBBLIGATORIO. URL del logo dell'entità; DEVE essere in formato SVG. Vedi `OID-FED`_ Sezione 5.2.2
   * - **contacts**
-    - Indirizzo email verificato istituzionale (PEC) dell'entità. Vedi `OID-FED`_ Sezione 5.2.2
+    - OBBLIGATORIO. Indirizzo email verificato istituzionale (PEC) dell'entità. Vedi `OID-FED`_ Sezione 5.2.2
   * - **federation_resolve_endpoint**
-    - Vedi `OID-FED`_ Sezione 5.1.1
+    - OBBLIGATORIO. Vedi `OID-FED`_ Sezione 5.1.1
   * - **tos_uri**
-    - [OPZIONALE] Stringa URL che punta a un documento di termini di servizio leggibile dall'uomo per il client che descrive una relazione contrattuale tra l'utente finale e il client che l'utente finale accetta quando autorizza il client. Vedi `OID-FED`_.
+    - OPZIONALE. Stringa URL che punta a un documento di termini di servizio leggibile dall'uomo per il client che descrive una relazione contrattuale tra l'utente finale e il client che l'utente finale accetta quando autorizza il client. Vedi `OID-FED`_.
 
 
 I Subordinate Statement

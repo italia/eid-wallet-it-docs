@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>13.5. PDND Signal Hub Endpoints &#8212; IT-Wallet Technical Specifications - PR #1078</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
     <script src="_static/documentation_options.js?v=5929fcd5"></script>
@@ -265,7 +265,7 @@
 <p class="admonition-title">Note</p>
 <p>In the deffered issuance flow, i.e., when the Authentic Source notifies the Credential Issuer of the availability of the Digital Credential's attributes via Signal Hub; both entities MUST keep track of the Authentic Source's <code class="docutils literal notranslate"><span class="pre">object_id</span></code> value used in the <code class="docutils literal notranslate"><span class="pre">get</span> <span class="pre">attributes</span></code> payload response. This is necessary since the <code class="docutils literal notranslate"><span class="pre">objectId</span></code> of the Signal MUST be set to that <code class="docutils literal notranslate"><span class="pre">object_id</span></code> value when the Signal has <code class="docutils literal notranslate"><span class="pre">signalType</span></code> with value <code class="docutils literal notranslate"><span class="pre">CREATE</span></code>.</p>
 </div>
-<p>A non normative example of the Signal Collection request can be found at <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-depositare-un-segnale">Signal Hub push</a>.</p>
+<p>A non-normative example of the Signal Collection request can be found at <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-depositare-un-segnale">Signal Hub push</a>.</p>
 <p>The Signal Collection e-Service response, acknowledging the correct parsing of the request, is specified in <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-depositare-un-segnale">Signal Hub push</a>, and has <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> set to <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. The payload contains the body parameter:</p>
 <table class="docutils align-default" id="table-signal-deposit-response-parameters">
 <colgroup>
@@ -330,7 +330,7 @@
 </ul>
 </div></blockquote>
 <p>Regardless of the response code used, the response has <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> set to <code class="docutils literal notranslate"><span class="pre">application/json</span></code> an the header parameters indicated in <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-recuperare-i-segnali">Signal Hub pull</a>. The body parameter <code class="docutils literal notranslate"><span class="pre">lastSignalId</span></code>, referencing the <code class="docutils literal notranslate"><span class="pre">signalId</span></code> of the last Signal transmitted by the Signal Distribution e-Service is added to the response's payload.</p>
-<p>In <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-recuperare-i-segnali">Signal Hub pull</a> can be found non normative examples of a Signal Distribution requests and responses.</p>
+<p>In <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-recuperare-i-segnali">Signal Hub pull</a> can be found non-normative examples of a Signal Distribution requests and responses.</p>
 <p>If any error occurs during the request parsing, the response MUST adhere to the error format defined in <a class="reference external" href="https://raw.githubusercontent.com/pagopa/interop-signalhub-core/refs/tags/1.0.1/docs/openAPI/pull-signals.yaml">Signal Hub pull-yaml</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>10.1.6. Wallet Provider Entity Configuration &#8212; IT-Wallet Technical Specifications - PR #1078</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
     <script src="_static/documentation_options.js?v=5929fcd5"></script>
@@ -238,7 +238,7 @@
 <td><p>REQUIRED. A JSON Web Key Set (JWKS) representing the public part of the Federation Entity signing keys. The corresponding private key is used by the Wallet Solution to sign the Entity Configuration about itself.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">metadata</span></code></p></td>
-<td><p>REQUIRED.JSON object that represents the Entity's Types and the metadata for those Entity Types. Each member name of the JSON object is an Entity Type Identifier, and each value MUST be a JSON object containing metadata parameters according to the metadata schema of the Entity Type. It MUST contain the <code class="docutils literal notranslate"><span class="pre">wallet_solution</span></code> and OPTIONALLY the <code class="docutils literal notranslate"><span class="pre">federation_entity</span></code> metadata.</p></td>
+<td><p>REQUIRED.JSON object that represents the Entity's Types and the metadata for those Entity Types. Each member name of the JSON object is an Entity Type Identifier, and each value MUST be a JSON object containing metadata parameters according to the metadata schema of the Entity Type. It MUST contain the <code class="docutils literal notranslate"><span class="pre">wallet_solution</span></code> and the <code class="docutils literal notranslate"><span class="pre">federation_entity</span></code> metadata.</p></td>
 </tr>
 </tbody>
 </table>
@@ -283,6 +283,7 @@
 <span class="w">            </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;749b495837819c00cfee1749b495837819c00cfee1&quot;</span>
 <span class="w">          </span><span class="p">}</span>
 <span class="w">        </span><span class="p">]</span>
+
 <span class="w">      </span><span class="p">},</span>
 <span class="w">      </span><span class="nt">&quot;wallet_metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;wallet_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wallet X&quot;</span><span class="p">,</span>

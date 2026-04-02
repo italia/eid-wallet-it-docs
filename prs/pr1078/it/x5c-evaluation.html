@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>9. Operazioni di Gestione dei Certificati X.509 &#8212; IT-Wallet Specifiche Tecniche - PR #1078</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
     <script src="_static/documentation_options.js?v=3fd72285"></script>
@@ -165,7 +165,7 @@
   <section id="operazioni-di-gestione-dei-certificati-x-509">
 <h1><span class="section-number">9. </span>Operazioni di Gestione dei Certificati X.509<a class="headerlink" href="#operazioni-di-gestione-dei-certificati-x-509" title="Link to this heading">¶</a></h1>
 <p>Questa sezione definisce le procedure operative per la gestione dei Certificati X.509 all'interno della federazione IT-Wallet, coprendo l'analisi delle catene di Certificati X.509, le procedure di validazione e la verifica di revoca. Queste procedure completano i processi di onboarding della federazione e supportano la gestione continua del ciclo di vita dei Certificati X.509 per tutti i partecipanti.</p>
-<p>Per l'infrastruttura PKI X.509 fondamentale e le procedure di emissione dei certificati, vedere <a class="reference internal" href="trust-infrastructure.html#trust-infrastructure-pki-x509"><span class="std std-ref">X.509 PKI</span></a>.</p>
+<p>Per l'infrastruttura PKI X.509 fondamentale e le procedure di emissione dei certificati, vedere <a class="reference internal" href="trust-infrastructure.html#x-509-pki"><span class="std std-ref">X.509 PKI</span></a>.</p>
 <section id="architettura-pki-della-federazione">
 <h2><span class="section-number">9.1. </span>Architettura PKI della Federazione<a class="headerlink" href="#architettura-pki-della-federazione" title="Link to this heading">¶</a></h2>
 <p>La federazione IT-Wallet opera con un'infrastruttura a chiave pubblica gerarchica dove:</p>
@@ -444,16 +444,16 @@ openssl<span class="w"> </span>crl<span class="w"> </span>-in<span class="w"> </
 <p><strong>Requisiti di Verifica</strong></p>
 <p>I Subordinati della federazione DEVONO:</p>
 <ol class="arabic simple">
-<li><p>Recuperare il proprio Subordinate Statement dal superiore immediato ogni 24 ore utilizzando il fetch endpoint definito in <a class="reference internal" href="trust-infrastructure.html#trust-infrastructure-endpoint-delle-api-della-federazione"><span class="std std-ref">Endpoint API di Federazione</span></a>. Ciò DOVREBBE essere fatto entro un intervallo di tempo non superiore a 24 ore.</p></li>
+<li><p>Recuperare il proprio Subordinate Statement dal superiore immediato ogni 24 ore utilizzando il fetch endpoint definito in <a class="reference internal" href="trust-infrastructure.html#endpoint-api-di-federazione"><span class="std std-ref">Endpoint API di Federazione</span></a>. Ciò DOVREBBE essere fatto entro un intervallo di tempo non superiore a 24 ore.</p></li>
 <li><p>Verificare lo stato di revoca o sospensione.</p></li>
 <li><p>Aggiornare il proprio Entity Configuration quando cambiano i certificati superiori.</p></li>
 </ol>
 <p><strong>Meccanismi di Rilevamento</strong></p>
 <p>I Subordinati POSSONO utilizzare uno o più dei seguenti meccanismi per rilevare le modifiche:</p>
 <ul class="simple">
-<li><p><strong>Verifica CRL/OCSP</strong>: Monitorare le Certificate Revocation List o le risposte del protocollo Online Certificate Status Protocol per rilevare la revoca dei certificati superiori come definito in <a class="reference internal" href="trust-infrastructure.html#trust-infrastructure-revoca-dei-certificati-x509"><span class="std std-ref">Revoca di Certificati X.509</span></a>. La revoca del certificato indica che è in corso la rotazione della chiave superiore.</p></li>
+<li><p><strong>Verifica CRL/OCSP</strong>: Monitorare le Certificate Revocation List o le risposte del protocollo Online Certificate Status Protocol per rilevare la revoca dei certificati superiori come definito in <a class="reference internal" href="trust-infrastructure.html#revoca-di-certificati-x-509"><span class="std std-ref">Revoca di Certificati X.509</span></a>. La revoca del certificato indica che è in corso la rotazione della chiave superiore.</p></li>
 <li><p><strong>Fetch Endpoint</strong>: Recuperare il Subordinate Statement tramite <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">{superiore}/fetch?sub={entity_id_subordinato}</span></code> per ottenere i certificati correnti.</p></li>
-<li><p><strong>Events Endpoint</strong>: Monitorare <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">{superiore}/federation_subordinate_events_endpoint?sub={entity_id_subordinato}</span></code> per gli eventi <code class="docutils literal notranslate"><span class="pre">jwks_update</span></code>. Il Federation Subordinate Events endpoint restituisce la traccia storica degli eventi di registrazione come definito in <a class="reference internal" href="trust-infrastructure.html#trust-infrastructure-endpoint-delle-api-della-federazione"><span class="std std-ref">Endpoint API di Federazione</span></a>.</p></li>
+<li><p><strong>Events Endpoint</strong>: Monitorare <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">{superiore}/federation_subordinate_events_endpoint?sub={entity_id_subordinato}</span></code> per gli eventi <code class="docutils literal notranslate"><span class="pre">jwks_update</span></code>. Il Federation Subordinate Events endpoint restituisce la traccia storica degli eventi di registrazione come definito in <a class="reference internal" href="trust-infrastructure.html#endpoint-api-di-federazione"><span class="std std-ref">Endpoint API di Federazione</span></a>.</p></li>
 </ul>
 <p>I Subordinati DOVREBBERO implementare la pianificazione automatizzata per:</p>
 <ul class="simple">
@@ -465,7 +465,7 @@ openssl<span class="w"> </span>crl<span class="w"> </span>-in<span class="w"> </
 <p>Quando un'entità superiore (Trust Anchor o Intermediate) ruota la propria Chiave dell'Entità Federata, tutti i certificati X.509 Subordinati DEVONO essere riemessi.</p>
 <p><strong>Procedura di Rotazione</strong></p>
 <ol class="arabic simple">
-<li><p><strong>Revoca della Chiave</strong>: Il superiore pubblica la Certificate Revocation List (CRL) o la voce Historical Keys (HK) revocando la vecchia chiave come definito in <a class="reference internal" href="trust-infrastructure.html#trust-infrastructure-revoca-dei-certificati-x509"><span class="std std-ref">Revoca di Certificati X.509</span></a>.</p></li>
+<li><p><strong>Revoca della Chiave</strong>: Il superiore pubblica la Certificate Revocation List (CRL) o la voce Historical Keys (HK) revocando la vecchia chiave come definito in <a class="reference internal" href="trust-infrastructure.html#revoca-di-certificati-x-509"><span class="std std-ref">Revoca di Certificati X.509</span></a>.</p></li>
 <li><p><strong>Aggiornamento Entity Configuration</strong>: Il superiore pubblica la nuova Entity Configuration firmata con la nuova Chiave dell'Entità Federata.</p></li>
 <li><p><strong>Riemissione Certificati X.509</strong>: Il superiore riemette i certificati X.509 a tutti i Subordinati utilizzando la nuova chiave.</p></li>
 <li><p><strong>Pubblicazione Certificati</strong>: Il superiore rende disponibili i nuovi certificati sul fetch endpoint.</p></li>

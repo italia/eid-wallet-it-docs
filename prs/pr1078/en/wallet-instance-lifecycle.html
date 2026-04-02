@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>10.1.4.1. Wallet Instance Lifecycle &#8212; IT-Wallet Technical Specifications - PR #1078</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
     <script src="_static/documentation_options.js?v=5929fcd5"></script>
@@ -237,7 +237,7 @@ key binding resides in a secure WSCD.
 Upon successful verification, the Wallet Provider MUST issue at least one valid Wallet Attestation to the Wallet Instance, therefore the Wallet Instance enters the <strong>Operational</strong> state.</p>
 <p>In addition, if not already done, Users MUST set their preferred method of unlocking their Wallet Instance; this MAY be accomplished by entering a
 personal identification number (PIN) or by utilizing biometric authentication, such as fingerprint or facial recognition, according to personal
-preferences and device's capabilities (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_025</span></a>). Please refer to <a class="reference internal" href="wallet-attestation-issuance.html#wallet-app-and-wallet-unit-attestation-issuance"><span class="std std-ref">Wallet App and Wallet Unit Attestation Issuance</span></a>.</p>
+preferences and device's capabilities (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_025</span></a>). Please refer to <a class="reference internal" href="wallet-instance-attestation-issuance.html#wallet-instance-attestation-issuance"><span class="std std-ref">Wallet Instance Attestation Issuance</span></a>.</p>
 <p>In the <strong>Operational</strong> state, Users can request the issuance of PID (<strong>PID ISS</strong>) or (Q)EAAs if the PID is not required in the issuance
 (<strong>(Q)EEA ISS</strong>). In addition, if the Digital Credentials are (Q)EEAs and for the presentation they do not require the PID, they can be presented
 without transitioning the Wallet Instance to another state (<strong>(Q)EEA PRE</strong> transition).</p>
