@@ -318,70 +318,60 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 Focus sugli Attestati Elettronici di Attributi
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Gli Attestati Elettronici di Attributi (EAA) ottenuti all'interno dell'Istanza del Wallet DEVONO garantire un elevato livello di riconoscibilità e accessibilità [RIF_ACCESSIBILITÀ] delle informazioni contenute. 
+La rappresentazione grafica degli EAA all’interno delle Soluzioni Wallet dipende, a livello di specifici contenuti e di specifici aspetti di UI, da quanto definito nel Registro delle Fonti Autentiche e nel Catalogo delle Credenziali Digitali (vedi :ref:`registry:Infrastruttura del Registro`).  
 
-La rappresentazione degli EAA dipende dalla UI e dalle scelte di design della Soluzione Wallet e, per specifici aspetti, da quanto definito nel Registro delle Fonti Autentiche e nel Catalogo delle Credenziali Digitali (vedi :ref:`registry:Infrastruttura del Registro`). 
+Di seguito sono riportati i requisiti per la rappresentazione degli EAA all’interno delle Soluzioni Wallet (vedi :ref:`registry:Registro delle Fonti Autentiche` e :ref:`registry:Catalogo degli Attestati Elettronici`). In particolare:
 
-Di seguito sono riportati i requisiti che ogni Fonte Autentica DEVE rispettare per personalizzare i propri EAA (vedi :ref:`registry:Registro delle Fonti Autentiche`):  
+La Fonte Autentica:
 
-- L’EAA PUÒ essere caratterizzato dal **logo della Fonte Autentica**. La Fonte Autentica PUÒ rendere disponibile questo logo in due versioni, una versione compatta tramite il parametro ``organization_info.logo_uri`` parameter e una versione estesa tramite il parametro ``organization_info.logo_extended_uri``. In particolare, la Fonte Autentica: 
+- PUÒ rendere disponibile il **Logo della Fonte Autentica** in due versioni, una versione compatta tramite il parametro `organization_info.logo_uri` e una versione estesa tramite il parametro `organization_info.logo_extended_uri`. In particolare, la Fonte Autentica: 
 
- - DEVE fornire il logo in uno dei seguenti formati: ``image/png``, ``image/svg+xml``, or ``image/webp``; ; 
+ - DEVE fornire il logo in uno dei seguenti formati: ``image/png``, ``image/svg+xml``, or ``image/webp``;
  - DEVE fornire il logo sia in versione positiva che negativa, se disponibile; 
  - DEVE fornire il logo con una dimensione minima di 30 × 30 pixel e una dimensione massima di 60 x 60 pixel, nella sua versione compatta; 
  - DEVE fornire il logo secondo una ratio di 1:1, nella sua versione compatta; 
  - DEVE fornire un logo che non ecceda il peso massimo di 80 KB, nella sua versione compatta; 
  - DEVE fornire il logo con una dimensione minima di 200 × 30 pixel e una dimensione massima di 650 × 180 pixel, nella sua versione estesa; 
- - DEVE fornire un logo che non ecceda il peso massimo di 150 KB, nella sua versione estesa.  
+ - DEVE fornire un logo che non ecceda il peso massimo di 150 KB, nella sua versione estesa.
 
-- L’EAA PUÒ essere caratterizzato da un **logo distintivo**. La Fonte Autentica PUÒ rendere disponibile questo logo tramite il parametro ``data_capabilities.logo_uri``. In particolare, la Fonte Autentica: 
+- PUÒ rendere disponibile un **logo distintivo** associato a una specifica EAA tramite il parametro `data_capabilities.logo_uri`. In particolare, la Fonte Autentica: 
 
  - DEVE fornire il logo in uno dei seguenti formati: ``image/png``, ``image/svg+xml``, or ``image/webp``; 
  - DEVE fornire il logo sia in versione positiva che negativa, se disponibile; 
  - DEVE fornire il logo con una dimensione minima di 200 × 30 pixel e una dimensione massima di 650 x 180 pixel; 
  - DEVE fornire un logo che non ecceda il peso massimo di 150 KB.
 
-- L’EAA PUÒ essere caratterizzato da un’**immagine di background**. La Fonte Autentica PUÒ rendere disponibile l’immagine desiderata tramite il parametro ``data_capabilities.background_image``. In particolare, la Fonte Autentica: 
+- PUÒ definire un **colore** distintivo da associare a una specifica EAA tramite il parametro `data_capabilities.background_color`. In particolare, la Fonte Autentica: 
 
- - DEVE fornire esclusivamente una singola immagine; 
- - DEVE fornire l’immagine in uno dei seguenti formati: ``image/png``, ``image/svg+xml``, ``image/jpeg``, or ``image/webp``; 
- - DEVE fornire l’immagine con una dimensione minima di 321 × 205 pixel e una dimensione massima di 1284 × 820 pixel; 
- - DEVE fornire un’immagine che non ecceda il peso massimo di 200 KB. 
-
-- L’EAA PUÒ essere caratterizzato da una **filigrana di background**. La Fonte Autentica PUÒ rendere disponibile la filigrana desiderata tramite il parametro ``data_capabilities.watermark_image``. In particolare, la Fonte Autentica: 
-
- - DEVE fornire esclusivamente una singola filigrana; 
- - DEVE fornire la filigrana in uno dei seguenti formati: ``image/png``, ``image/svg+xml``; 
- - DEVE fornire la filigrana con una dimensione minima di 321 × 205 pixel e una dimensione massima di 1284 × 820 pixel; 
- - DEVE fornire una filigrana che non ecceda il peso massimo di 200 KB. 
-
-- L’EAA PUÒ essere caratterizzato da un **colore di background**. La Fonte Autentica PUÒ rendere disponibile il colore desiderato tramite il parametro ``data_capabilities.background_color``. In particolare, la Fonte Autentica: 
-
- - DEVE fornire il colore utilizzando esclusivamente una delle seguenti modalità colore: HEX, HSB, RGB, sRGB, HSL, or HSV; 
- - PUÒ fornire il colore anche con un gradiente. Valori del gradiente DEVONO essere forniti in una delle modalità colore accettate. 
+ - DEVE fornire il colore utilizzando esclusivamente una delle seguenti modalità colore: HEX, HSB, RGB, sRGB, HSL, or HSV.
 
 - L’EAA DEVE essere caratterizzato da un particolare **ordinamento dei dati**. La Fonte Autentica DEVE fornire l’ordine desiderato degli Attributi tramite il parametro ``data_capabilities.available_claims_order``. In accordo all'Appendice B.3 di `OpenID4VCI`_, questo ordine DEVE essere utilizzato per ordinare gli oggetti di descrizione delle attestazioni nell'array ``claims`` presente nei metadati del Credential Issuer. In particolare, la Fonte Autentica: 
 
  - DEVE fornire in primo luogo dettagli personali, se previsti, nel seguente ordine: nome, cognome, data di nascita, luogo di nascita, codice fiscale, etc; 
  - DEVE fornire ulteriori dettagli specifici seguendo un ordine logico chiaro per l’Utente. 
 
-Per assicurare un’identificazione e una rappresentazione dell’EAA coerente tra tutte le Soluzioni Wallet, il Fornitore di Attestati Elettronici di Attributi DEVE definire un nome/ convenzione per ogni EAA fornita, che sia comprensibile e user-friendly, evitando termini tecnici o acronimi ove possibile. 
+Il Fornitore di Wallet: 
 
-Di seguito sono riportati i requisiti di Esperienza Utente per assicurare una visualizzazione e un utilizzo delle EAA uniforme e coerente. Il Fornitore di Wallet: 
+- DEVE mostrare in modo chiaro e accessibile il nome identificativo dell’EAA così come definito dal parametro ‘credential_name’ all’interno del :ref:`registry:Catalogo degli Attestati Elettronici`; 
+- DEVE mostrare in modo chiaro e accessibile gli Attributi dell’EAA rispettando l’ordinamento definito dal parametro `data_capabilities.available_claims_order` all’interno del :ref:`registry:Registro delle Fonti Autentiche`; 
+- DEVE includere eventuali loghi identificativi della Fonte Autentica e/o dello specifico EAA se forniti dalla Fonte Autentica per mezzo del :ref:`registry:Registro delle Fonti Autentiche`; 
+- DEVE garantire l’adozione del colore definito dalla Fonte Autentica se indicato all’interno del :ref:`registry:Registro delle Fonti Autentiche` a livello di tonalità colore (H). Il Wallet Provider PUÒ ottimizzare i valori di saturazione (S) e luminosità (B) per adattare il colore specifico ad esigenze legate all’accessibilità e/o alle scelte grafiche di prodotto della propria Soluzione Wallet. Qualora la Fonte Autentica non fornisca specifiche cromatiche, il Wallet Provider è tenuto a definire e adottare proprie scelte grafiche di default. 
+
+Il Fornitore di Wallet è responsabile di rappresentare graficamente gli Attestati Elettronici di Attributi (EAA) nelle proprie Soluzioni Wallet e DEVE garantire un elevato livello accessibilità [RIF_ACCESSIBILITÀ] e usabilità [LG_DESIGN] nella rappresentazione grafica degli Attestati Elettronici di Attributi. Di seguito sono riportati quindi i requisiti di Esperienza Utente. In particolare, il Fornitore di Wallet: 
 
 - DEVE mostrare l’EAA correttamente su tutti i dispositivi, garantendo un’esperienza coerente su schermi di dimensioni diverse; 
 - PUÒ mostrare gli EAA ottenuti in formato tessera nella Vista in Anteprima, in linea con gli approcci già utilizzati da altri portafogli digitali nel mercato; 
 - DEVE garantire un layout dell'EAA ottimizzato per scalabilità e usabilità, nella Vista in Anteprima, specialmente quando più EAA vengono visualizzati sulla stessa schermata; 
-- DEVE mostrare chiaramente il nome dell'EAA, così come definito dal Catalogo delle Credenziali Digitali attraverso il parametro credential_name (vedi :ref:`registry:Catalogo degli Attestati Elettronici`), sia nella Vista di Anteprima che nelle Vista di Dettaglio; 
+- DEVE mostrare chiaramente il nome dell'EAA, così come definito dal Catalogo delle Credenziali Digitali attraverso il parametro `credential_name` (vedi :ref:`registry:Catalogo degli Attestati Elettronici`), sia nella Vista di Anteprima che nelle Vista di Dettaglio; 
 - DEVE mostrare lo stato dell’EAA, se diverso da valido, per fornire trasparenza sul suo ciclo di vita, e PUÒ visualizzarlo se valido, sia nella Vista di Anteprima che nella Vista di Dettaglio. Evidenze specifiche sullo stato dell’EAA, se non valido, POSSONO essere fornite nella Vista di Dettaglio (ad esempio, il motivo per cui l’EAA è stato revocato); 
-- PUÒ includere informazioni opzionali per migliorare l’Esperienza Utente e la riconoscibilità dell’EAA, sia nella Vista di Anteprima che nella Vista di Dettaglio, come ad esempio il logo, il colore, l’immagine o la filigrana come definito della Fonte Autentica attraverso il Registro delle Fonti Autentiche (vedi :ref:`registry:Registro delle Fonti Autentiche`); 
-- DEVE includere le stesse informazioni della Vista di Anteprima nella Vista di Dettaglio e dare una rappresentazione esaustiva di tutti gli altri Attributi, seguendo l’ordine indicato nel Metadata del Credential issuer e definito dalla Fonte Autentica nel Registro delle Fonti Autentiche (vedi :ref:`registry:Registro delle Fonti Autentiche`); 
+- PUÒ includere informazioni opzionali per migliorare l’Esperienza Utente e la riconoscibilità dell’EAA, sia nella Vista di Anteprima che nella Vista di Dettaglio, come ad esempio il logo e/o il colore, come definito della Fonte Autentica attraverso il Registro delle Fonti Autentiche (vedi :ref:`registry:Registro delle Fonti Autentiche`); 
+- DEVE includere le stesse informazioni della Vista di Anteprima nella Vista di Dettaglio e dare una rappresentazione esaustiva di tutti gli altri Attributi, seguendo l’ordine definito dalla Fonte Autentica nel Registro delle Fonti Autentiche (vedi :ref:`registry:Registro delle Fonti Autentiche`); 
 - PUÒ includere elementi informativi aggiuntivi nella Vista di Dettaglio, ad esempio informazioni relative agli scenari di utilizzo o al motivo dell'eventuale invalidità dell’EAA; 
 - DEVE includere uno o più Engagement Buttons nella Vista di Dettaglio per consentire la gestione del ciclo di vita dell’EAA e permettere all'Utente di revocare o aggiornare un'EAA in qualsiasi momento (vedi :ref:`functionalities:Gestione degli Attestati Elettronici`); 
 - DEVE garantire che l’EAA sia un elemento funzionale, affinché l'Utente possa accedere ai servizi forniti dai Verificatori di Attestati Elettronici in contesti digitali e di prossimità (vedi :ref:`functionalities:Presentazione degli Attestati Elettronici`); 
-- DEVE mostrare nella Vista di Dettaglio un metodo di assistenza reso disponibile dalla Fonte Autentica tramite il parametro ``data_capabilities.contacts`` (vedi :ref:`functionalities:Assistenza Utente` e vedi :ref:`registry:Registro delle Fonti Autentiche`).
+- DEVE mostrare nella Vista di Dettaglio un metodo di assistenza reso disponibile dalla Fonte Autentica tramite il parametro `data_capabilities.contacts `(vedi :ref:`functionalities:Assistenza Utente` e vedi :ref:`registry:Registro delle Fonti Autentiche`). 
 
-Di seguito un esempio di layout di Attestato Elettronico di Attributi, all'interno della Vista in Anteprima e Vista di Dettaglio
+Di seguito un esempio di layout di Attestato Elettronico di Attributi, all'interno della Vista in Anteprima e Vista di Dettaglio.
 
 .. only:: format_html
 
