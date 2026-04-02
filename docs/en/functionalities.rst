@@ -320,13 +320,13 @@ The flow is shown below with illustrative wireframes.
 Focus on Electronic Attestations of Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The graphical representation of EAA within Wallet Solutions depends, at the level of specific content and UI aspects, on what is defined in the Authentic Sources Registry and in the Digital Credentials Catalog (see :ref:registry:Registry Infrastructure). 
+The graphical representation of EAA within Wallet Solutions depends, at the level of specific content and UI aspects, on what is defined in the Authentic Source Registry and in the Digital Credentials Catalog (see :ref:registry:Registry Infrastructure). 
 
-Below are the requirements for the representation of EAA within Wallet Solutions (see :ref:registry:Authentic Sources Registry and :ref:registry:Digital Credentials Catalog). In particular: 
+Below are the requirements for the representation of EAA within Wallet Solutions (see :ref:registry:Authentic Source Registry and :ref:registry:Digital Credentials Catalog). In particular: 
 
 The Autentic Source: 
 
-- MAY provide the **Authentic Source’s logo** in two versions, a compact version via the organization_info.logo_uri parameter and an extended version via the organization_info.logo_extended_uri parameter. In particular, the Authentic Source: 
+- MAY provide the **Authentic Source’s logo** in two versions, a compact version via the `organization_info.logo_uri` parameter and an extended version via the `organization_info.logo_extended_uri` parameter. In particular, the Authentic Source: 
 
  - MUST provide the logo only in one of the following formats: ``image/png``, ``image/svg+xml``, or ``image/webp``; 
  - MUST provide the logo in both a positive and a negative version, if available; 
@@ -336,14 +336,14 @@ The Autentic Source:
  - MUST provide the logo with a minimum size of 200 × 30 pixels and a maximum size of 650 × 180 pixels, in its extended version; 
  - MUST provide the logo which does not exceed the maximum file size of 150 KB, in its extended version. 
 
-- MAY provide a **distinctive logo** associated with a specific EAA via the data_capabilities.logo_uri parameter. In particular, the Authentic Source: 
+- MAY provide a **distinctive logo** associated with a specific EAA via the `data_capabilities.logo_uri` parameter. In particular, the Authentic Source: 
 
  - MUST provide the logo only in one of the following formats: ``image/png``, ``image/svg+xml``, or ``image/webp``; 
  - MUST provide the logo in both a positive and a negative version, if available; 
  - MUST provide the logo with a minimum size of 200 × 30 pixels and a maximum size of 650 × 180 pixels; 
  - MUST provide the logo with a maximum file size of 150 KB. 
 
-- MAY define a distinctive **color** to be associated with a specific EAA via the data_capabilities.background_color parameter. In particular, the Authentic Source: 
+- MAY define a distinctive **color** to be associated with a specific EAA via the `data_capabilities.background_color` parameter. In particular, the Authentic Source: 
 
  - MUST provide the background color only using one of the following color modes: HEX, HSB, RGB, sRGB, HSL, or HSV.
 
@@ -356,7 +356,7 @@ To ensure a consistent identification and representation of the EAAs across diff
 
 The Wallet Provider: 
 
-- MUST clearly and accessibly display the identifying name of the EAA as defined by the credential_name parameter within the :ref:registry:Digital Credentials Catalog; 
+- MUST clearly and accessibly display the identifying name of the EAA as defined by the `credential_name` parameter within the :ref:registry:Digital Credentials Catalog; 
 - MUST clearly and accessibly display the EAA Attributes, respecting the ordering defined by the data_capabilities.available_claims_order parameter within the :ref:registry:Authentic Sources Registry; 
 - MUST include any identifying logos of the Authentic Source and/or of the specific EAA if provided by the Authentic Source through the :ref:registry:Authentic Sources Registry; 
 - MUST ensure the adoption of the color defined by the Authentic Source, if specified within the :ref:registry:Authentic Sources Registry, at the hue (H) level. The Wallet Provider MAY optimize saturation (S) and brightness (B) values to adapt the specific color to accessibility requirements and/or to the graphical design choices of its Wallet Solution. If the Authentic Source does not provide color specifications, the Wallet Provider is required to define and adopt its own default graphical choices. 
