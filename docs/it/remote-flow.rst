@@ -545,7 +545,7 @@ I parametri del payload JWT sono descritti qui:
   * - **client_id**
     - OBBLIGATORIO. Identificatore univoco della Relying Party.
   * - **client_metadata**
-    - OBBLIGATORIO. Un oggetto JSON contenente i valori dei metadata della Relying Party, che DOVREBBE includere i seguenti parametri:
+    - OBBLIGATORIO. Un oggetto JSON contenente i valori dei metadata della Relying Party come definito nella sezione 5.1 di `OpenID4VP`_, che DOVREBBE includere i seguenti parametri:
         - **vp_formats_supported**. Utilizzato dall'Istanza del Wallet per determinare i formati di Verifiable Presentation supportati.
         - **encrypted_response_enc_values_supported**. Array JSON che elenca gli algoritmi JWE ``enc`` supportati per le Authorization Response cifrate in ``direct_post.jwt``.
         - **jwks**. JSON Web Key Set utilizzato dall'Istanza del Wallet per cifrare la Authorization Response o per l'accordo delle chiavi. Le chiavi contenute in questo set sono specifiche della richiesta e identificate dal loro valore ``kid``.
@@ -553,7 +553,7 @@ I parametri del payload JWT sono descritti qui:
   * - **response_mode**
     - OBBLIGATORIO. DEVE essere impostato su ``direct_post.jwt`` (:ref:`RPR-106 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
   * - **dcql_query**
-    - OBBLIGATORIO. Oggetto che rappresenta una richiesta di presentazione di Credenziali, secondo il linguaggio di query DCQL definito nella Sezione 6 di `OpenID4VP`_, e allineato con OPENID4VC-HAIP_.
+    - OBBLIGATORIO. Oggetto che rappresenta una richiesta di presentazione di Credenziali, secondo il linguaggio di query DCQL definito nella Sezione 6 di `OpenID4VP`_.
   * - **transaction_data**  
     - OPZIONALE. Un array non vuoto di oggetti JSON, ognuno dei quali descrive una transazione che la Relying Party richiede all’Utente di autorizzare.  Ogni oggetto di transazione include:  
         - **type**. Stringa che identifica il tipo di dati della transazione.
@@ -597,7 +597,7 @@ I parametri del payload JWT sono descritti qui:
 Authorization Response
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Dopo aver ottenuto l'autorizzazione e il consenso dell'Utente per la presentazione degli Attestati Elettronici, l'Istanza del Wallet invia la Authorization Response all'endpoint ``response_uri`` della Relying Party utilizzando una richiesta HTTP con il metodo POST (:ref:`WP_091 <wallet-credential-presentation-testcases>`). Il contenuto della risposta DEVE essere cifrato secondo il profilo ad alta affidabilità definito in `OPENID4VC-HAIP`*, utilizzando la modalità di risposta `direct_post.jwt` come previsto dalla Sezione 8.3 di `OpenID4VP`. Tale cifratura richiede l'uso dell'accordo di chiave ECDH-ES sulla curva P-256 e della cifratura del contenuto AES-GCM (`A128GCM` oppure `A256GCM`, preferendo `A256GCM` quando entrambi sono disponibili), utilizzando la chiave pubblica specifica della richiesta della Relying Party selezionata da `client_metadata.jwks` e identificata dal relativo `kid` (:ref:`WP_092 <wallet-credential-presentation-testcases>`).
+Dopo aver ottenuto l'autorizzazione e il consenso dell'Utente per la presentazione degli Attestati Elettronici, l'Istanza del Wallet invia la Authorization Response all'endpoint ``response_uri`` della Relying Party utilizzando una richiesta HTTP con il metodo POST (:ref:`WP_091 <wallet-credential-presentation-testcases>`). Il contenuto della risposta DEVE essere cifrato secondo il profilo ad alta affidabilità definito in `OPENID4VC-HAIP`*, utilizzando la modalità di risposta `direct_post.jwt` come previsto dalla Sezione 8.3 di `OpenID4VP`. Tale cifratura richiede l'uso dell'accordo di chiave ECDH-ES sulla curva P-256 e della cifratura del contenuto AES-GCM (`A128GCM` oppure `A256GCM`, preferendo `A256GCM` quando entrambi sono disponibili), utilizzando la chiave pubblica specifica della richiesta della Relying Party selezionata da `client_metadata.jwks` e identificata dal relativo `kid` (:ref:`WP_092 <wallet-credential-presentation-testcases>`). La chiave pubblica usata per criptare l'Authorization Response viene recuperata dal Wallet dal JWKs presente nel ``client_metadata``. In accordo alla sezione 14.5 di `OpenID4VP`_ è RACCOMANDATO l'utilizzo di chiavi effimere.
 
 .. note::
     **Perché la risposta è cifrata?**

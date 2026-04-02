@@ -1,263 +1,293 @@
 {
-    "version": "1.0",
+    "id": "urn:authentic-sources:it-wallet",
+    "version": "1.0.0",
     "last_modified": "2025-03-15T12:00:00Z",
+    "localization": {
+        "default_locale": "it",
+        "available_locales": [
+            "en",
+            "it"
+        ],
+        "base_uri": "https://trust-registry.eid-wallet.example.it/.well-known/l10n/authentic-sources/",
+        "version": "1.0.0"
+    },
     "authentic_sources": [
         {
             "entity_id": "https://motorizzazione.gov.example",
             "organization_info": {
-                "organization_name_l10n_id": "authentic_source1.name",
-                "organization_type": "public",
+                "contacts": [
+                    "registry@motorizzazione.gov.example",
+                    "technical-support@motorizzazione.gov.example"
+                ],
+                "dpa_contact": "dpa@motorizzazione.gov.example",
+                "homepage_uri": "https://www.gov.example/transport",
                 "ipa_code": "m_inf",
                 "legal_identifier": "80192770587",
-                "organization_country": "IT",
-                "homepage_uri": "https://www.gov.example/transport",
-                "policy_uri": "https://www.gov.example/transport/privacy-policy",
-                "logo_uri": "https://trust-registry.it-wallet.example.it/logos/{ipa_code}/image.svg",
-                "logo_uri#integrity": "sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
-                "logo_extended_uri": "https://trust-registry.it-wallet.example.it/logos/{ipa_code}/extended-image.svg",
+                "logo_extended_uri": "https://trust-registry.eid-wallet.example.it/logos/m_inf/extended-image.svg",
                 "logo_extended_uri#integrity": "sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
-                "contacts": [
-                    "registry@gov.example",
-                    "technical-support@gov.example"
-                ]
+                "logo_uri": "https://trust-registry.eid-wallet.example.it/logos/m_inf/image.svg",
+                "logo_uri#integrity": "sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+                "organization_country": "IT",
+                "organization_name": "Ministero dei Trasporti - Direzione generale per la Motorizzazione",
+                "organization_name_l10n_id": "authentic_source1.name",
+                "organization_type": "public",
+                "policy_uri": "https://www.gov.example/transport/privacy-policy",
+                "tos_uri": "https://www.gov.example/transport/terms-of-service"
             },
             "data_capabilities": [
                 {
-                    "dataset_id": "38832801",
-                    "data_origin_l10n_id": "authentic_source1.dataset1.origin",
-                    "intended_purposes": [
-                        "DRIVING_LICENSE",
-                        "PERSON_IDENTIFICATION"
-                    ],
+                    "api_specification": "https://docs.gov.example/transport/api-oas3.yaml",
                     "available_claims": [
                         {
                             "claim_name": "given_name",
-                            "order": 1,
-                            "mandatory": true
+                            "mandatory": true,
+                            "order": 1
                         },
                         {
                             "claim_name": "family_name",
-                            "order": 2,
-                            "mandatory": true
+                            "mandatory": true,
+                            "order": 2
                         },
                         {
                             "claim_name": "birth_date",
-                            "order": 3,
-                            "mandatory": true
+                            "mandatory": true,
+                            "order": 3
                         },
                         {
                             "claim_name": "birth_place",
-                            "order": 4,
-                            "mandatory": false
-                        },
-                        {
-                            "claim_name": "document_number",
-                            "order": 5,
-                            "mandatory": true
+                            "mandatory": true,
+                            "order": 4
                         },
                         {
                             "claim_name": "issue_date",
-                            "order": 6,
-                            "mandatory": true
-                        },
-                        {
-                            "claim_name": "expiry_date",
-                            "order": 7,
-                            "mandatory": true
-                        },
-                        {
-                            "claim_name": "driving_privileges",
-                            "order": 8,
-                            "mandatory": true
-                        },
-                        {
-                            "claim_name": "portrait",
-                            "order": 9,
-                            "mandatory": false
-                        },
-                        {
-                            "claim_name": "un_distinguishing_sign",
-                            "order": 10,
-                            "mandatory": false
+                            "mandatory": true,
+                            "order": 5
                         },
                         {
                             "claim_name": "document_iss_country",
-                            "order": 11,
-                            "mandatory": true
+                            "mandatory": true,
+                            "order": 6
                         },
                         {
                             "claim_name": "document_iss_authority",
-                            "order": 12,
-                            "mandatory": true
+                            "mandatory": true,
+                            "order": 7
+                        },
+                        {
+                            "claim_name": "expiry_date",
+                            "mandatory": true,
+                            "order": 8
+                        },
+                        {
+                            "claim_name": "document_number",
+                            "mandatory": true,
+                            "order": 9
+                        },
+                        {
+                            "claim_name": "portrait",
+                            "mandatory": true,
+                            "order": 10
+                        },
+                        {
+                            "claim_name": "un_distinguishing_sign",
+                            "mandatory": true,
+                            "order": 11
+                        },
+                        {
+                            "claim_name": "restrictions_conditions",
+                            "mandatory": false,
+                            "order": 12
+                        },
+                        {
+                            "claim_name": "driving_privileges",
+                            "mandatory": true,
+                            "order": 13
                         }
                     ],
-                    "integration_method": "pdnd",
-                    "integration_endpoint": "https://api.gov.example/transport/driving-license",
-                    "api_specification": "https://docs.gov.example/transport/api-oas3.yaml",
+                    "background_color": "#12107c",
+                    "contacts": [
+                        "citizen-support@motorizzazione.gov.example"
+                    ],
+                    "data_origin_l10n_id": "authentic_source1.dataset1.origin",
                     "data_provision": {
-                        "immediate_flow": true,
-                        "deferred_flow": false
+                        "deferred_flow": false,
+                        "immediate_flow": true
                     },
-                    "user_information_l10n_id": "authentic_source1.dataset1.userinfo",
+                    "dataset_id": "38832801",
+                    "integration_endpoint": "https://api.gov.example/transport/driving-license",
+                    "integration_method": "pdnd",
+                    "intended_purposes": [
+                        "IDENTITY_VERIFICATION",
+                        "PERSON_IDENTIFICATION",
+                        "DRIVING_RIGHTS_VERIFICATION",
+                        "LAW_ENFORCEMENT_CONTROLS"
+                    ],
+                    "logo_uri": "https://trust-registry.eid-wallet.example.it/logos/38832801/image.svg",
+                    "logo_uri#integrity": "sha-256-b1946ac92492d2347c6235b4d2611184e2a3f8b8c8f8f8e8f8f8f8f8f8f8f8f8",
                     "service_documentation": "https://docs.gov.example/transport/api-docs",
                     "update_frequency": "real_time",
-                    "logo_uri": "https://trust-registry.it-wallet.example.it/logos/{dataset_id}/image.svg",
-                    "logo_uri#integrity": "sha-256-b1946ac92492d2347c6235b4d2611184e2a3f8b8c8f8f8e8f8f8f8f8f8f8f8f8",
-                    "contacts": [
-                        "citizen-support@gov.example"
-                    ],
-                    "background_image": {
-                        "uri": "https://trust-registry.it-wallet.example.it/images/{dataset_id}/image.svg",
-                        "uri#integrity": "3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg=="
-                    },
-                    "watermark_image": {
-                        "uri": "https://trust-registry.it-wallet.example.it/images/{dataset_id}/imag-watermark.svg",
-                        "uri#integrity": "3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg=="
-                    },
-                    "background_color" : "#12107c"
+                    "user_information_l10n_id": "authentic_source1.dataset1.userinfo"
                 }
             ]
         },
         {
             "entity_id": "https://api.bank.example/auth-source",
             "organization_info": {
-                "organization_name_l10n_id": "authentic_source2.name",
-                "organization_type": "private",
-                "legal_identifier": "12345678901",
-                "homepage_uri": "https://www.bank.example",
                 "contacts": [
                     "digital-credentials@bank.example",
                     "api-support@bank.example"
                 ],
-                "policy_uri": "https://www.bank.example/privacy-policy",
-                "tos_uri": "https://www.bank.example/terms-of-service",
+                "dpa_contact": "dpa@bank.example",
+                "homepage_uri": "https://www.bank.example",
+                "legal_identifier": "12345678901",
+                "logo_extended_uri": "https://trust-registry.eid-wallet.example.it/logos/12345678901/extended-image.svg",
+                "logo_extended_uri#integrity": "sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+                "logo_uri": "https://trust-registry.eid-wallet.example.it/logos/12345678901/image.svg",
+                "logo_uri#integrity": "sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
                 "organization_country": "IT",
-                "logo_uri": "https://trust-registry.it-wallet.example.it/logos/{legal_identifier}/image.svg",
-                "logo_uri#integrity": "sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
+                "organization_name": "Banca Esempio SpA",
+                "organization_name_l10n_id": "authentic_source2.name",
+                "organization_type": "private",
+                "policy_uri": "https://www.bank.example/privacy-policy",
+                "tos_uri": "https://www.bank.example/terms-of-service"
             },
             "data_capabilities": [
                 {
-                    "dataset_id": "38854801",
-                    "data_origin_l10n_id": "authentic_source2.dataset1.origin",
-                    "intended_purposes": [
-                        "BANK_ACCOUNT",
-                        "INCOME_CERTIFICATE"
-                    ],
+                    "api_specification": "https://api.bank.example/docs/psd2-openapi.yaml",
                     "available_claims": [
                         {
                             "claim_name": "given_name",
-                            "order": 1,
-                            "mandatory": true
+                            "mandatory": true,
+                            "order": 1
                         },
                         {
                             "claim_name": "family_name",
-                            "order": 2,
-                            "mandatory": true
+                            "mandatory": true,
+                            "order": 2
                         },
                         {
                             "claim_name": "birth_date",
-                            "order": 3,
-                            "mandatory": false
+                            "mandatory": false,
+                            "order": 3
                         },
                         {
-                            "claim_name": "tax_code",
-                            "order": 4,
-                            "mandatory": true
+                            "claim_name": "tax_id_code",
+                            "mandatory": true,
+                            "order": 4
                         },
                         {
                             "claim_name": "account_holder_name",
-                            "order": 5,
-                            "mandatory": true
+                            "mandatory": true,
+                            "order": 5
                         },
                         {
                             "claim_name": "iban",
-                            "order": 6,
-                            "mandatory": true
+                            "mandatory": true,
+                            "order": 6
                         },
                         {
                             "claim_name": "account_status",
-                            "order": 7,
-                            "mandatory": false
+                            "mandatory": false,
+                            "order": 7
                         },
                         {
                             "claim_name": "account_opening_date",
-                            "order": 8,
-                            "mandatory": false
+                            "mandatory": false,
+                            "order": 8
                         },
                         {
                             "claim_name": "bank_name",
-                            "order": 9,
-                            "mandatory": true
+                            "mandatory": true,
+                            "order": 9
                         },
                         {
                             "claim_name": "bank_code",
-                            "order": 10,
-                            "mandatory": true
+                            "mandatory": true,
+                            "order": 10
                         }
                     ],
-                    "integration_method": "oauth2",
-                    "integration_endpoint": "https://api.bank.example/psd2/v1/accounts",
-                    "api_specification": "https://api.bank.example/docs/psd2-openapi.yaml",
+                    "background_color": "#003366",
+                    "contacts": [
+                        "digital-credentials@bank.example"
+                    ],
+                    "data_origin_l10n_id": "authentic_source2.dataset1.origin",
                     "data_provision": {
-                        "immediate_flow": true,
-                        "deferred_flow": false
+                        "deferred_flow": false,
+                        "immediate_flow": true
                     },
-                    "user_information_l10n_id": "authentic_source2.dataset1.userinfo",
-                    "update_frequency": "daily"
+                    "dataset_id": "38854801",
+                    "integration_endpoint": "https://api.bank.example/psd2/v1/accounts",
+                    "integration_method": "oauth2",
+                    "intended_purposes": [
+                        "PAYMENT_AUTHORIZATION",
+                        "ELIGIBILITY_VERIFICATION"
+                    ],
+                    "logo_uri": "https://trust-registry.eid-wallet.example.it/logos/38854801/image.svg",
+                    "logo_uri#integrity": "sha-256-d8e8fca2dc0f896fd7cb4cb0031ba249e3f8b8c8f8f8e8f8f8f8f8f8f8f8f8f9",
+                    "service_documentation": "https://docs.bank.example/psd2-api",
+                    "update_frequency": "daily",
+                    "user_information_l10n_id": "authentic_source2.dataset1.userinfo"
                 },
                 {
-                    "dataset_id": "38854802",
-                    "data_origin_l10n_id": "authentic_source2.dataset2.origin",
-                    "intended_purposes": [
-                        "PAYMENT_HISTORY"
-                    ],
+                    "api_specification": "https://api.bank.example/docs/psd2-openapi.yaml",
                     "available_claims": [
                         {
                             "claim_name": "given_name",
-                            "order": 1,
-                            "mandatory": true
+                            "mandatory": true,
+                            "order": 1
                         },
                         {
                             "claim_name": "family_name",
-                            "order": 2,
-                            "mandatory": true
+                            "mandatory": true,
+                            "order": 2
                         },
                         {
-                            "claim_name": "tax_code",
-                            "order": 3,
-                            "mandatory": true
+                            "claim_name": "tax_id_code",
+                            "mandatory": true,
+                            "order": 3
                         },
                         {
                             "claim_name": "transaction_history",
-                            "order": 4,
-                            "mandatory": true
+                            "mandatory": true,
+                            "order": 4
                         },
                         {
                             "claim_name": "average_balance",
-                            "order": 5,
-                            "mandatory": false
+                            "mandatory": false,
+                            "order": 5
                         },
                         {
                             "claim_name": "credit_score_indicator",
-                            "order": 6,
-                            "mandatory": false
+                            "mandatory": false,
+                            "order": 6
                         }
                     ],
-                    "integration_method": "oauth2",
-                    "integration_endpoint": "https://api.bank.example/psd2/v1/transactions",
-                    "api_specification": "https://api.bank.example/docs/psd2-openapi.yaml",
+                    "background_color": "#003366",
+                    "contacts": [
+                        "digital-credentials@bank.example"
+                    ],
+                    "data_origin_l10n_id": "authentic_source2.dataset2.origin",
                     "data_provision": {
-                        "immediate_flow": false,
                         "deferred_flow": true,
+                        "immediate_flow": false,
                         "max_response_time_minutes": 1440,
                         "notification_methods": [
                             "push",
                             "poll"
                         ]
                     },
-                    "user_information_l10n_id": "authentic_source2.dataset2.userinfo",
+                    "dataset_id": "38854802",
+                    "integration_endpoint": "https://api.bank.example/psd2/v1/transactions",
+                    "integration_method": "oauth2",
+                    "intended_purposes": [
+                        "PROOF_OF_PAYMENT",
+                        "RECURRING_PAYMENT_MANAGEMENT"
+                    ],
+                    "logo_uri": "https://trust-registry.eid-wallet.example.it/logos/38854802/image.svg",
+                    "logo_uri#integrity": "sha-256-f4a2b7e1dc0f896fd7cb4cb0031ba249e3f8b8c8f8f8e8f8f8f8f8f8f8f8f8fb",
                     "service_documentation": "https://docs.bank.example/psd2-api",
-                    "update_frequency": "weekly"
+                    "update_frequency": "weekly",
+                    "user_information_l10n_id": "authentic_source2.dataset2.userinfo"
                 }
             ]
         }

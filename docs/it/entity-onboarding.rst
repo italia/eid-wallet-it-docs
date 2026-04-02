@@ -1,14 +1,12 @@
 .. include:: ../common/common_definitions.rst
 .. include:: ../common/symbols.rst
 
-.. _entity-onboarding-gestione-del-ciclo-di-vita-delle-entita:
-
 Onboarding delle Entità
-========================
+=======================
 
-Questa sezione definisce le Specifiche Tecniche per la gestione del ciclo di vita delle entità nell'ecosistema IT-Wallet basato sull'**Infrastruttura di Registro** definita in :ref:`registry:Infrastruttura del Registro`. Questo include le procedure di onboarding iniziale, le operazioni di gestione continua (aggiornamenti dei dati, modifiche) e i processi di uscita dalla federazione. Il sistema di gestione del ciclo di vita stabilisce e mantiene l'infrastruttura di trust federata e il coordinamento del registro necessari per le operazioni sicure degli Attestati Elettronici.
+Questa sezione definisce le specifiche tecniche per la gestione del ciclo di vita delle entità nell'ecosistema IT-Wallet, basate sull'**Infrastruttura del Registro** definita in :ref:`registry:Infrastruttura del Registro`. Sono incluse le procedure di onboarding iniziale, le operazioni di gestione continuativa, quali aggiornamenti e modifiche dei dati, e i processi di uscita dalla federazione.
 
-Per una panoramica di alto livello del processo di onboarding, vedere :ref:`onboarding-high-level:Sistema di Onboarding`. In particolare, la Sezione :ref:`onboarding-high-level:Onboarding Journey Maps` fornisce una mappa delle Journey di onboarding dal punto di vista degli operatori delle Entità.
+Per una panoramica di alto livello del processo di onboarding, vedere :ref:`onboarding-high-level:Sistema di Onboarding`. La sezione :ref:`onboarding-high-level:Onboarding Journey Maps` fornisce una mappa del percorso di onboarding dal punto di vista degli operatori dell'Entità.
 
 Panoramica
 ----------
@@ -16,348 +14,496 @@ Panoramica
 Architettura del Sistema di Onboarding delle Entità
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-L'ecosistema IT-Wallet è basato su un'infrastruttura di trust federata dove le entità partecipanti DEVONO stabilire relazioni di trust crittografiche e mantenere la conformità A standard di sicurezza comuni.
+L'ecosistema IT-Wallet opera su un'infrastruttura di fiducia federata, che richiede alle entità partecipanti di stabilire una fiducia reciproca prima di intraprendere qualsiasi interazione che coinvolga attributi dell'Utente.
 
-Il framework di onboarding DEVE consentire procedure di registrazione tecnica specifiche rispetto al ruolo del partecipante nell'ecosistema IT-Wallet:
+Il framework di onboarding definisce procedure di registrazione tecnica in base alla tipologia di partecipante:
 
-  1. Per le Fonti Autentiche sono richieste procedure di registrazione focalizzate sui dati.
-  2. Per le Entità operative (Credential Issuer, Relying Party, Fornitori di Wallet) è richiesta l'istituzione di trust crittografico attraverso protocolli di federazione.
+  1. Le Fonti Autentiche seguono processi di registrazione incentrati sui dati.
+  2. Le Entità Operative (Emittenti di Credenziali, Relying Party, Fornitori di Wallet) seguono procedure di instaurazione della fiducia.
 
-Tipi di Entità e percorsi di Onboarding
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Tipologie di Entità e Percorsi di Onboarding
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-La seguente tabella riassume i tipi di entità, i loro ruoli e i corrispondenti percorsi di onboarding:
+La seguente tabella riepiloga le tipologie di entità, i loro ruoli e i relativi percorsi di onboarding:
 
-.. list-table:: Tipi di Entità e percorsi di Onboarding
+.. list-table:: Tipologie di Entità e Percorsi di Onboarding
    :class: longtable
    :widths: 20 30 25 25
    :header-rows: 1
 
-   * - **Tipo di Entità**
-     - **Ruolo Primario**
+   * - **Tipologia di Entità**
+     - **Ruolo Principale**
      - **Percorso di Onboarding**
      - **Requisiti Chiave**
    * - Fonti Autentiche
-     - Fornitori di dati autorevoli per gli Attributi degli Attestati Elettronici
-     - :ref:`entity-onboarding:Processo di Registrazione delle Fonti Autentiche`
-     - Validazione dell'autorità dei dati, integrazione API (PDND/Custom).
-   * - Credential Issuer
-     - Generano ed emettono Attestati Elettronici utilizzando i dati delle Fonti Autentiche
-     - :ref:`entity-onboarding:Processo di Onboarding delle Entità di Federazione`
-     - Conformità all'Infrastruttura di Trust IT-Wallet, :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
+     - Fornitori di dati autorevoli per gli attributi delle Credenziali Digitali
+     - :ref:`entity-onboarding:Procedura di registrazione delle Fonti Autentiche`
+     - Validazione della titolarità dei dati; integrazione API (es. PDND)
+   * - Emittenti di Credenziali
+     - Generano ed emettono Credenziali Digitali utilizzando i dati delle Fonti Autentiche
+     - :ref:`entity-onboarding:Processo di Onboarding delle Entità Federate`
+     - Conformità all'Infrastruttura di Fiducia IT-Wallet; vedere :ref:`trust-infrastructure:L'Infrastruttura di Trust`
    * - Relying Party
-     - Verificano gli Attestati Elettronici per l'accesso ai servizi
-     - :ref:`entity-onboarding:Processo di Onboarding delle Entità di Federazione`
-     - Conformità all'Infrastruttura di Trust IT-Wallet, :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
+     - Verificano le Credenziali Digitali per l'accesso ai servizi
+     - :ref:`entity-onboarding:Processo di Onboarding delle Entità Federate`
+     - Conformità all'Infrastruttura di Fiducia IT-Wallet; vedere :ref:`trust-infrastructure:L'Infrastruttura di Trust`
    * - Fornitori di Wallet
-     - Forniscono Soluzioni Wallet ai cittadini
-     - :ref:`entity-onboarding:Processo di Onboarding delle Entità di Federazione`
-     - Conformità all'Infrastruttura di Trust IT-Wallet :ref:`trust-infrastructure:L'Infrastruttura di Trust`, capacità di emissione della Wallet Attestation :ref:`wallet-instance-registration:Inizializzazione e Registrazione dell'Istanza del Wallet`.
-   * - Istanze del Wallet
-     - Applicazioni di portafoglio digitale reso disponibile all'Utente
-     - Registrazione indiretta tramite Fornitore di Wallet, vedere :ref:`wallet-instance-registration:Inizializzazione e Registrazione dell'Istanza del Wallet`.
-     - Wallet Attestation emessa da Fornitore di Wallet affidabile.
+     - Forniscono soluzioni wallet ai cittadini
+     - :ref:`entity-onboarding:Processo di Onboarding delle Entità Federate`
+     - Conformità all'Infrastruttura di Fiducia IT-Wallet (vedere :ref:`trust-infrastructure:L'Infrastruttura di Trust`); capacità di Attestazione del Wallet (vedere :ref:`wallet-instance-registration:Inizializzazione e Registrazione dell'Istanza del Wallet`)
+   * - Istanze di Wallet
+     - Applicazioni di wallet digitale a livello utente
+     - Registrazione indiretta tramite il Fornitore di Wallet, vedere :ref:`wallet-instance-registration:Inizializzazione e Registrazione dell'Istanza del Wallet`
+     - Attestazione del Wallet da un Fornitore di Wallet affidabile
 
-Registrazione Amministrativa vs Tecnica
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Registrazione Amministrativa e Tecnica
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Il processo di onboarding segue un approccio strutturato multi-fase:
+Il processo di onboarding segue un approccio strutturato in più fasi:
 
-  1. **Registrazione Amministrativa**: Tutte le entità DEVONO completare la registrazione amministrativa iniziale che valida la loro posizione legale, conformità normativa ed eleggibilità organizzativa per partecipare all'ecosistema IT-Wallet.
+  1. **Registrazione Amministrativa**: Tutte le entità DEVONO completare la registrazione amministrativa iniziale che ne valida la posizione giuridica, la conformità normativa e l'idoneità organizzativa a partecipare all'ecosistema IT-Wallet.
 
-  2. **Registrazione Tecnica**: Dopo l'approvazione amministrativa, le entità effettuano la registrazione tecnica secondo il proprio percorso previsto:
+  2. **Registrazione Tecnica**: A seguito dell'approvazione amministrativa, le entità effettuano la registrazione tecnica attraverso percorsi specializzati:
     
-    - **Registrazione Fonte Autentica**: Procedure di registrazione focalizzate sui dati con validazione dell'integrazione API.
-    - **Registrazione di Federazione**: Istituzione di trust crittografico come definito nella Sezione :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
+    - **Registrazione Fonte Autentica**: Procedure di registrazione incentrate sui dati con validazione dell'integrazione API.
+    - **Registrazione in Federazione**: Instaurazione della fiducia crittografica come definito nella Sezione :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
 
-  3. **Integrazione del Registro IT-Wallet**:
+  3. **Integrazione con il Registro IT-Wallet**:
 
-    - **Integrazione del Registro Claims**: Le Fonti Autentiche selezionano definizioni di claim standardizzate dal Registro degli Attributi durante la dichiarazione delle specifiche.
-    - **Integrazione della Tassonomia**: Tutte le entità utilizzano la classificazione gerarchica della Tassonomia (domini, classi, scopi) per la struttura organizzativa per categorizzare gli Attestati Elettronici.
-    - **Integrazione del Registro AS**: Le Fonti Autentiche registrate con i loro attributi dichiarati e le relative specifiche, abilitando la discovery e coordinamento con i Credential Issuer.
-    - **Integrazione del Registro di Federazione**: Entità operative incluse per la validazione del trust durante le operazioni delle attestazioni elettroniche.
-    - **Integrazione del Catalogo**: Tipi di attestati elettronici pubblicati in :ref:`registry:catalogo degli attestati elettronici` basati sulle policy dell'organismo di supervisione per l'eleggibilità alla discovery pubblica.
+    - **Integrazione nel Registro dei Claims**: Le Fonti Autentiche selezionano definizioni standardizzate di claim dal Registro dei Claims durante la dichiarazione delle capacità.
+    - **Integrazione nella Tassonomia**: Tutte le entità utilizzano la classificazione gerarchica della Tassonomia (domini, classi, finalità) per strutturare organizzativamente le Credenziali.
+    - **Integrazione nel Registro delle Fonti Autentiche**: Le Fonti Autentiche vengono registrate con i claim e le capacità dichiarate, abilitando la discovery e il coordinamento degli Emittenti di Credenziali.
+    - **Integrazione nel Registro della Federazione**: Le entità operative vengono incluse per la validazione della fiducia durante le operazioni sulle Credenziali.
+    - **Integrazione nel Catalogo**: I tipi di Credenziale vengono pubblicati in :ref:`registry:Struttura del Catalogo degli Attestati Elettronici` in base alle politiche dell'Organismo di Vigilanza per l'idoneità alla discovery pubblica.
 
-Tutti i componenti del registro e le loro interazioni sono dettagliati in :ref:`registry:Infrastruttura del Registro`.
+Tutti i componenti del registro e le loro interazioni sono descritti in dettaglio in :ref:`registry:Infrastruttura del Registro`.
 
 Processo di Registrazione delle Fonti Autentiche
 -------------------------------------------------
 
-Le Fonti Autentiche subiscono una registrazione sistematica per stabilire il loro ruolo come fornitori di dati autorevoli all'interno dell'ecosistema IT-Wallet. Il processo di registrazione consiste nella specifica dei requisiti e nella validazione procedurale come descritto in :ref:`onboarding-high-level:Journey dell'Operatore della Fonte Autentica`.
+Le Fonti Autentiche DEVONO completare un processo di registrazione strutturato per confermare il loro status di fornitori di dati autorevoli nell'ecosistema IT-Wallet. Tale processo include la specifica dei requisiti e la validazione procedurale, come descritto in :ref:`onboarding-high-level:Journey dell'Operatore della Fonte Autentica`.
 
-Requisiti di Registrazione AS
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Requisiti di Registrazione delle Fonti Autentiche
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Le Fonti Autentiche DEVONO rispettare i seguenti requisiti tecnici per garantire l'interoperabilità dell'ecosistema:
+Le Fonti Autentiche DEVONO rispettare i seguenti requisiti tecnici:
 
   - **Conformità dei Claims**:
 
-    - **Adozione del Registro dei Claims**: Le Entità DEVONO necessariamente utilizzare identificativi standardizzati censiti nel Registro dei Claims all'interno delle response.
+    - **Adozione del Registro dei Claims**: Le Entità DEVONO utilizzare identificatori standardizzati del Registro dei Claims nelle risposte ai dati. La mappatura personalizzata dei claim non è consentita.
 
   - **Standard di Integrazione API**:
 
-    - **Entità Pubbliche**: DEVONO integrarsi attraverso la piattaforma PDND con implementazione di e-service seguendo gli standard governativi.
-    - **Entità Private**: DEVONO fornire un documento completo di Specifica `OAS3`_ che include framework di autorizzazione, schemi di request/response, meccanismi di gestione degli errori e ambiente sandbox per i test.
+    - **Entità Pubbliche**: DEVONO integrarsi tramite la piattaforma PDND con un'implementazione dell'e-service conforme alle specifiche nazionali.
+    - **Entità Private**: DEVONO fornire un documento di Specifica `OAS3`_ completo che includa il framework di autorizzazione, gli schemi di richiesta/risposta, i meccanismi di gestione degli errori e un ambiente sandbox per i test.
 
-  - **Standardizzazione del Formato di Response**:
+  - **Standardizzazione del Formato di Risposta**:
 
-    - **Formato Standard dei Claims**: Le Entità DEVONO utilizzare identificativi e formati censiti nel Registro dei Claims in tutte le response relative ai dati.
-    - **Mappatura degli Stati**: Le Entità DEVONO gestire una mappatura chiara tra i loro stati interni e gli stati standard delle attestazioni elettroniche (valido, sospeso, revocato).
+    - **Formato Standard dei Claims**: Le Entità DEVONO utilizzare gli identificatori e i formati del Registro dei Claims in tutte le risposte ai dati.
+    - **Mappatura degli Stati**: Le Entità DEVONO gestire una mappatura chiara tra i propri stati interni e gli stati standard delle Credenziali (valida, sospesa, revocata).
 
-  - **Sicurezza e Garanzia di Qualità**:
+  - **Sicurezza e Garanzia della Qualità**:
 
-    - **Standard di Sicurezza**: Le Entità DEVONO implementare minimo TLS 1.3 con meccanismi di autenticazione e sicurezza appropriati.
-    - **Evidenza di Autenticazione dell'Utente**: Le Entità POSSONO richiedere l'evidenza di autenticazione dell'Utente dal Credential Issuer prima di concedere l'accesso agli e-service per ottenere gli Attributi dell'Utente.
-    - **Qualità dei Dati**: Le Entità DEVONO specificare la frequenza di aggiornamento e fornire garanzie sulla freschezza dei dati.
-    - **Traccia di Audit**: Le Entità DEVONO implementare capacità di logging per tutte le attività di accesso e fornitura dei dati.
+    - **Standard di Sicurezza**: Le Entità DEVONO implementare TLS 1.3 o superiore con robusti meccanismi di autenticazione, perfect forward secrecy e algoritmi crittografici conformi agli standard di sicurezza attuali ed emergenti, con riservatezza e integrità end-to-end di tutte le comunicazioni, mantenendo la conformità ai requisiti normativi in evoluzione e alle best practice di settore.
+    - **Evidenza di Autenticazione dell'Utente**: Le Entità POSSONO richiedere all'Emittente di Credenziali un'evidenza di autenticazione dell'Utente prima di concedere l'accesso agli e-service per l'ottenimento degli attributi dell'Utente.
+    - **Qualità dei Dati**: Le Entità DEVONO specificare la frequenza di aggiornamento e fornire garanzie sull'aggiornamento dei dati.
+    - **Audit Trail**: Le Entità DEVONO implementare capacità di logging per tutte le attività di accesso e fornitura dei dati.
 
-Requisiti sulle Informazioni di Registrazione delle AS
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. note::
-  Attualmente solo le Authentic Source italiane possono registrarsi ad IT-Wallet.
-
-Durante la registrazione, le Fonti Autentiche DEVONO fornire le seguenti informazioni:
-
-.. list-table:: Requisiti sulle Informazioni di Registrazione delle AS
-   :class: longtable
-   :header-rows: 1
-   :widths: 30 70
-
-   * - Categoria delle Informazioni
-     - Descrizione ed Esempi
-   * - **Informazioni Organizzazione**
-     - **OBBLIGATORIO**. Dettagli dell'organizzazione inclusi:
-
-       - Nome dell'organizzazione, tipo ("publico" o "privata") e paese (ISO 3166-1 alpha-2).
-       - Codici identificativi amministrativi come codice di registrazione IPA (OBBLIGATORIO solo per Fonti Autentiche pubbliche) e identificatore legale (Codice Fiscale/Partita IVA).
-       - Informazioni di contatto inclusi indirizzi email di contatto tecnico e amministrativo, URI homepage, URI politica privacy, ecc.
-   * - **Dichiarazione Disponibilità dei Dati**
-     - **OBBLIGATORIO**. Claims disponibili:
-
-       - Array che include identificativi dei claim censiti nel Registro Claims che la Fonte Autentica fornisce (es., ``["given_name", "family_name", "driving_privileges"]``).
-       - Scopi previsti per la verifica (es. ``["DRIVING_RIGHTS"]``).
-      
-   * - **Dettagli di Implementazione API**
-     - **OBBLIGATORIO**. Dettagli sulle informazioni di integrazione:
-
-       - Framework di autorizzazione per l'accesso API.
-       - Definizioni delle API come i formati di Request/Response, inclusa la gestione degli errori.
-   * - **Capacità di Fornitura Dati**
-     - **OBBLIGATORIO**. Indica se la Fonte Autentica supporta la fornitura di dati in modalità immediate/deferred (booleano).    
-   * - **Informazioni Utente**
-     - **OBBLIGATORIO**. Testo formattato in Markdown contenente informazioni leggibili dall'uomo sui vincoli o limitazioni di disponibilità dei dati. Ad esempio, se il database AS contiene solo dati registrati dopo una data specifica, questa informazione DEVE essere comunicata agli utenti.
-
-       **Esempio**: "I dati della patente di guida sono disponibili per le patenti rilasciate dopo il 1° gennaio 2020. Per patenti più vecchie, contattare l'ufficio di motorizzazione locale.".
-   * - **Proprietà di Visualizzazione**
-     - **OPZIONALE**. Suggerimenti di branding visivo per le attestati elettronici che utilizzano i dati AS:
-
-       - Colore di sfondo per gli Attestati Elettronici in formato esadecimale (es., ``"#003d82"``).
-       - Colore del testo per gli Attestati Elettronici in formato esadecimale (es., ``"#ffffff"``).
-       - URI del logo con verifica dell'integrità crittografica per il branding degli Attestati Elettronici.
-       - URI del template visivo con verifica dell'integrità per la presentazione degli Attestati Elettronici.
+Requisiti sulle informazioni di registrazione delle Fonti Autentiche
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. note::
   Solo le Fonti Autentiche italiane possono essere registrate nella fase attuale di IT-Wallet.
 
-Procedura di Registrazione AS
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Durante la registrazione, le Fonti Autentiche DEVONO fornire le seguenti informazioni:
 
-La registrazione della Fonte Autentica segue un processo tecnico come descritto di seguito.
+.. list-table:: Requisiti Informativi per la Registrazione delle Fonti Autentiche
+   :class: longtable
+   :header-rows: 1
+   :widths: 30 70
+
+   * - Categoria Informativa
+     - Descrizione ed Esempi
+   * - **Informazioni sull'Organizzazione**
+     - **OBBLIGATORIO**. Dettagli dell'organizzazione inclusi:
+
+       - Nome dell'organizzazione, tipologia ("public" o "private") e paese (ISO 3166-1 alpha-2).
+       - Codici identificativi amministrativi, come il codice di registrazione IPA (OBBLIGATORIO solo per le Fonti Autentiche pubbliche) e l'identificativo legale (codice fiscale o partita IVA).
+       - Informazioni di contatto, compresi riferimenti tecnici e amministrativi, quali indirizzi email, URI della homepage, URI dell'informativa sulla privacy.
+   * - **Dichiarazione delle Capacità sui Dati**
+     - **OBBLIGATORIO**. Claim disponibili:
+
+       - Array di identificatori di claim del Registro dei Claims forniti dalla Fonte Autentica (es. ``["given_name", "family_name", "driving_privileges"]``).
+       - Finalità previste per la verifica, utilizzando gli identificatori di finalità della tassonomia (es. ``["DRIVING_RIGHTS_VERIFICATION"]``).
+      
+   * - **Dettagli di Implementazione API**
+     - **OBBLIGATORIO**. Informazioni dettagliate sull'integrazione:
+
+       - Framework di autorizzazione per l'accesso API.
+       - Definizioni API quali Formati di Richiesta/Risposta, inclusa la gestione degli errori.
+   * - **Capacità di Fornitura dei Dati**
+     - **OBBLIGATORIO**. Indica se la Fonte Autentica supporta la fornitura immediata/differita dei dati (booleano).    
+   * - **Informazioni per l'Utente**
+     - **OPZIONALE**. Testo in formato Markdown contenente informazioni in linguaggio naturale sui vincoli o limitazioni nella disponibilità dei dati. Ad esempio, se il database della Fonte Autentica contiene solo dati registrati dopo una data specifica, questa informazione DEVE essere comunicata agli Utenti.
+
+       **Esempio**: "I dati della patente di guida sono disponibili per le patenti rilasciate dopo il 1° gennaio 2020. Per le patenti più vecchie, contattare l'ufficio motorizzazione locale.".
+
+   * - **Proprietà di Visualizzazione**
+     - **OPZIONALE**. Suggerimenti di branding visivo per le Credenziali Digitali che utilizzano i dati della Fonte Autentica:
+
+       - Colore di sfondo per le Credenziali Digitali in formato esadecimale (es. ``"#003d82"``).
+       - URI del logo con verifica dell'integrità crittografica per il branding delle Credenziali Digitali.
+       - URI del modello visivo con verifica dell'integrità per la presentazione delle Credenziali Digitali.
+
+Procedura di registrazione delle Fonti Autentiche
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+La registrazione della Fonte Autentica segue un processo tecnico descritto di seguito.
 
 .. plantuml:: plantuml/as-registration-process.puml
     :width: 99%
     :alt: Processo di registrazione della Fonte Autentica che mostra la procedura in 3 fasi
     :caption: `Processo di Registrazione della Fonte Autentica. <https://www.plantuml.com/plantuml/svg/TLD1Rziw3BxxLn0zlG1vhs_hBK26TkqEFMmBbcAdNcY9SRJAaaPARRDVFzfE6iVBWXmCyUF7Z_p8Qyd8kRGURahUKiZEm3eMDWJVg76I6REB0LOS3ObKM78CfQs9goeXAzmb31akfkaNWAB_Kz2w9E9d9v5ty37QNG-IUiAqFfGUuanDLIsNiCwKuDrYeWlD4pQa-YZX_csvh2hD-_U3PY_s4OB83GRtQu2ui8dSzj-FuP_xrGsOQ6aEdXhqu6pNoSOHp_KzP3HPPYFAEpA-exIO4Gmch9rtsP4erwr7ryfR1oCkcSC3liOGsnreleY-cbx2AVV61OARrJsuDdbgDNtGR2cZyrsDrTsNkyklYKA7klhlVv14vYpRkW_i1gM9eyvU4LFDhct9EinqQMb3p6HXu-CBI4afSZuGIgs4fMvT1XvxmFIpaEIZIUyNy41c6rIGX-_edJqQ8_MUwX0Wc8xCH6tSOJ2asWQVvgTpf5T5aW9cOpvYRVLlCrOg6rjqGTFrXPh8ZlGx5KvHICPCjrioJuC5GP7xDf-9nsoT2IEf41b6bipEDSeaAGOX69e2oHWiiZstDqMmeRb2kiGMKtAXcUbU-poUg1JJdUMc-0hqDzH4cHm9fivwz5hc-PZRQwUiCoGlD6RTeFDa_s3yGQOFlxYyXH6H4odz7dMBuBXVMO4S0QrbLQS5WZrknzK2HYSEgr9xPwOBmjGiXf1iE_WdDJ_lr0_WVQBMEtG0TZX8ErviBQlGDwxF-4GTaNLYebg9jIUebUMMgLyjz73VDSAYwtvsZ8ToYyV0X7RNsGWnqH16FxcogWfHjNN5b6lUgr01MgkN1pKf8PqAUhj4hygABil9gD9nL5LrJS6Mrly6>`_ 
 
-**Fase 1 - Preparazione del Pacchetto di Registrazione**: L'Entità prepara le informazioni di registrazione secondo la tabella dei requisiti sopra. Un esempio non normativo di informazioni in formato JSON è fornito di seguito.
+**Fase 1 - Predisposizione del Pacchetto di Registrazione**: L'Entità predispone le informazioni di registrazione conformemente alla tabella dei requisiti sopra riportata. Di seguito è fornito un esempio non normativo delle informazioni in formato JSON. 
+
+.. list-table:: Campi di Primo Livello del Registro delle Fonti Autentiche
+   :class: longtable
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Nome Campo**
+     - **Descrizione**
+   * - **id**
+     - OBBLIGATORIO. Identificatore univoco del Registro delle Fonti Autentiche (es. ``urn:authentic-sources:it-wallet``).
+   * - **version**
+     - OBBLIGATORIO. La versione del Registro delle Fonti Autentiche (es. ``1.0.0``).
+   * - **last_modified**
+     - OBBLIGATORIO. Il timestamp che indica quando l'elenco è stato aggiornato l'ultima volta (es. ``2025-03-15T12:00:00Z``).
+   * - **localization**
+     - OBBLIGATORIO. Oggetto di configurazione della localizzazione contenente:
+
+       * **default_locale**: Codice locale predefinito (es. ``it``).
+       * **available_locales**: Array dei codici locale supportati (es. ``["en", "it"]``).
+       * **base_uri**: URI base per il recupero del bundle di localizzazione (es. ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/authentic-sources/``).
+       * **version**: Versione del formato del bundle di localizzazione.
+   * - **authentic_sources**
+     - OBBLIGATORIO. Un Array JSON in cui ogni voce è un Oggetto JSON che rappresenta un'entità Fonte Autentica. Ogni oggetto contiene i parametri definiti nella tabella "Parametri delle Fonti Autentiche" di seguito, inclusi identificazione dell'entità, informazioni organizzative, capacità sui dati e metodi di integrazione.
+
+.. list-table:: Parametri delle Fonti Autentiche
+   :class: longtable
+   :widths: 25 15 60
+   :header-rows: 1
+
+   * - **Parametro**
+     - **Tipo**
+     - **Descrizione**
+   * - **entity_id**
+     - string
+     - OBBLIGATORIO. Identificatore univoco che segue lo schema normativo: ``https://{organization_domain}[/{optional_path}]``.
+   * - **organization_info**
+     - oggetto JSON
+     - OBBLIGATORIO. Dettagli della persona giuridica e metadati organizzativi.
+   * - **organization_info.organization_name**
+     -  JSON Object Array
+     - OBBLIGATORIO. Array di oggetti che contengono il nome dell'organizzazione in più lingue. DEVE contenere i claim ``locale`` e ``name``.
+   * - **organization_info.organization_type**
+     - string
+     - OBBLIGATORIO. Classificazione dell'entità: ``"public"`` o ``"private"``.
+   * - **organization_info.ipa_code**
+     - string
+     - OBBLIGATORIO solo per FA Pubbliche. Codice di registrazione IPA per gli enti pubblici.
+   * - **organization_info.legal_identifier**
+     - string
+     - OBBLIGATORIO. Identificativo di registrazione legale (Codice Fiscale/Partita IVA, o equivalente identificativo nazionale per entità straniere).
+   * - **organization_info.homepage_uri**
+     - string
+     - OBBLIGATORIO. URL della homepage dell'organizzazione.
+   * - **organization_info.contacts**
+     - Array di stringhe
+     - OBBLIGATORIO. Array di indirizzi email di contatto per almeno un referente di supporto utenti, uno applicativo e uno sistemistico.
+   * - **organization_info.dpa_contact**
+     - string
+     - OBBLIGATORIO. Indirizzo email del DPA della Fonte Autentica.
+   * - **organization_info.policy_uri**
+     - string
+     - OBBLIGATORIO. URL del documento di informativa sulla privacy.
+   * - **organization_info.tos_uri**
+     - string
+     - OBBLIGATORIO solo per FA Private. URL del documento dei termini di servizio.
+   * - **organization_info.organization_country**
+     - string
+     - OBBLIGATORIO. Codice paese ISO 3166-1 alpha-2 a due lettere dell'organizzazione.
+   * - **organization_info.logo_uri**
+     - string
+     - OPZIONALE. URL dell'immagine del logo dell'organizzazione.
+   * - **organization_info.logo_uri#integrity**
+     - string
+     - CONDIZIONALE. Digest crittografico della risorsa immagine del logo per la verifica dell'integrità. OBBLIGATORIO se ``logo_uri`` è presente. Formato: ``{digest_method}-{digest_value}`` (es. ``"sha-256-abc123..."``).
+   * - **organization_info.logo_alt_text**
+     - JSON Object Array
+     - OPZIONALE. Array di oggetti contenente il testo alternativo per l'immagine del logo dell'organizzazione in più lingue. DEVE contenere i claim ``locale`` e ``description``.
+   * - **organization_info.logo_extended_uri**
+     - string
+     - OPZIONALE. URL dell'immagine del logo esteso dell'organizzazione.
+   * - **organization_info.logo_extended_uri#integrity**
+     - string
+     - CONDIZIONALE. Digest crittografico della risorsa immagine del logo esteso per la verifica dell'integrità. OBBLIGATORIO se ``logo_extended_uri`` è presente. Formato: ``{digest_method}-{digest_value}`` (es. ``"sha-256-abc123..."``).
+   * - **organization_info.logo_extended_alt_text**
+     - JSON Object Array
+     - OPZIONALE. Array di oggetti contenente il testo alternativo per l'immagine del logo esteso dell'organizzazione in più lingue. DEVE contenere i claim ``locale`` e ``description``.
+   * - **data_capabilities**
+     - Array di oggetti JSON
+     - OBBLIGATORIO. Array contenente le specifiche delle capacità sui dati.
+   * - **data_capabilities[].dataset_id**
+     - string
+     - OBBLIGATORIO. L'identificatore univoco del dataset nell'ambito della Fonte Autentica, che PUÒ essere utilizzato come parametro di query per il servizio ``GetAttributeClaims``.
+   * - **data_capabilities[].data_origin**
+     - JSON Object Array
+     - OBBLIGATORIO. Array di oggetti contenente il nome leggibile dell'origine o del dipartimento che fornisce i dati in più lingue. DEVE contenere i claim ``locale`` e ``name``.
+   * - **data_capabilities[].intended_purposes**
+     - Array di stringhe
+     - OBBLIGATORIO. Finalità aziendali soddisfatte, utilizzando gli identificatori di finalità della tassonomia (es. ``["IDENTITY_VERIFICATION", "DRIVING_RIGHTS_VERIFICATION"]``).
+   * - **data_capabilities[].available_claims**
+     - Array di stringhe
+     - OBBLIGATORIO. Claim disponibili da questa capacità dati.
+   * - **data_capabilities[].available_claims.claim_name**
+     - string
+     - OBBLIGATORIO. Contiene il nome del claim.
+   * - **data_capabilities[].available_claims.order**
+     - number
+     - OBBLIGATORIO. Definisce l'ordine in cui le informazioni vengono mostrate.
+   * - **data_capabilities[].available_claims.mandatory**
+     - boolean
+     - OBBLIGATORIO. Definisce se un claim è sempre disponibile o meno.
+   * - **data_capabilities[].integration_method**
+     - string
+     - OBBLIGATORIO. Framework di autorizzazione utilizzato per l'accesso ai dati. DEVE essere ``"pdnd"`` per le FA Pubbliche. Le FA Private POSSONO utilizzare altri framework di autorizzazione come: ``"oauth2"``, ``"api_key"``, ``"mtls"``, ecc.
+   * - **data_capabilities[].integration_endpoint**
+     - string
+     - OBBLIGATORIO. Punto di accesso al servizio (endpoint PDND per FA Pubbliche, endpoint API per FA Private).
+   * - **data_capabilities[].api_specification**
+     - string
+     - OBBLIGATORIO. URL del documento di specifica `OAS3`_ per questa capacità dati.
+   * - **data_capabilities[].data_provision**
+     - oggetto JSON
+     - OPZIONALE. Capacità di fornitura dei dati e specifiche temporali.
+   * - **data_capabilities[].data_provision.immediate_flow**
+     - boolean
+     - OBBLIGATORIO. Indica se la Fonte Autentica supporta la fornitura immediata dei dati.
+   * - **data_capabilities[].data_provision.deferred_flow**
+     - boolean
+     - OBBLIGATORIO. Indica se la Fonte Autentica supporta la fornitura differita dei dati.
+   * - **data_capabilities[].data_provision.max_response_time_minutes**
+     - integer
+     - CONDIZIONALE. Tempo massimo in minuti per la risposta della Fonte Autentica a una richiesta di fornitura dati differita. OBBLIGATORIO se ``deferred_flow`` è ``true``.
+   * - **data_capabilities[].data_provision.notification_methods**
+     - Array di stringhe
+     - CONDIZIONALE. Array dei metodi di notifica supportati dalla Fonte Autentica per la fornitura dati differita, come ``"push"``, ``"poll"``. OBBLIGATORIO se ``deferred_flow`` è ``true``.
+   * - **data_capabilities[].user_information**
+     - JSON object Array
+     - OPZIONALE. Array di Oggetti contenenti informazioni per l'Utente in più lingue sulla disponibilità dei dati. Questa stringa DEVE essere fornita dalla Fonte Autentica al Trust Anchor durante l'onboarding. La formattazione Markdown può essere testo semplice o una combinazione di testo e link. Ad esempio, se il database della Fonte Autentica contiene solo dati registrati *dopo* una data specifica, questa informazione DEVE essere comunicata tramite questa chiave. DEVE contenere i claim ``locale`` e ``description``.
+   * - **data_capabilities[].administrative_expiration_user_info**
+     - JSON object Array
+     - OPZIONALE. Array di Oggetti contenenti informazioni per l'Utente in più lingue sulla scadenza amministrativa dei dati ed eventualmente le azioni raccomandate. Questa stringa DEVE essere fornita dalla Fonte Autentica al Trust Anchor durante l'onboarding. La formattazione Markdown può essere testo semplice o una combinazione di testo e link. DEVE contenere i claim ``locale``, ``title`` e ``description``.
+   * - **data_capabilities[].allowed_states**
+     - JSON object Array
+     - OPZIONALE. Array di Oggetti contenente informazioni per l'Utente in più lingue sullo stato corrente dei dati forniti ed eventualmente le azioni raccomandate. I valori degli stati sono definiti nella sezione :ref:`credential-revocation:Token Status Lists`. DEVE contenere i claim ``locale``, ``title``, ``description`` e ``<Status-Type-Value>``.
+   * - **data_capabilities[].service_documentation**
+     - string
+     - OPZIONALE. URL che punta alla documentazione del servizio della Fonte Autentica.
+   * - **data_capabilities[].update_frequency**
+     - string
+     - OPZIONALE. Indica la frequenza con cui la Fonte Autentica aggiorna i propri dati. Valori possibili: ``"real_time"`` (aggiornamenti quasi in tempo reale, tipicamente entro minuti), ``"daily"``, ``"weekly"``, ``"monthly"``, ``"on_demand"``.
+   * - **data_capabilities[].logo_uri**
+     - string
+     - OPZIONALE. URL dell'immagine del logo relativa ai dati.
+   * - **data_capabilities[].logo_uri#integrity**
+     - string
+     - CONDIZIONALE. Digest crittografico della risorsa immagine del logo per la verifica dell'integrità. OBBLIGATORIO se ``logo_uri`` è presente. Formato: ``{digest_method}-{digest_value}`` (es. ``"sha-256-abc123..."``).
+   * - **data_capabilities[].background_color**
+     - string
+     - OPZIONALE. Valore stringa del colore di sfondo da visualizzare insieme ai dati.
+   * - **data_capabilities[].contacts**
+     - Array di stringhe
+     - OPZIONALE. Array di indirizzi email di contatto del servizio clienti.
 
 .. literalinclude:: ../../examples/as-registration-example.json
    :language: json
-   :caption: Esempio di Registrazione Authentic Source
+   :caption: Esempio non normativo di Registrazione Fonte Autentica
 
-**Fase 2 - Validazione Tecnica**: L'Organismo di Supervisione valida la registrazione presentata concentrandosi su:
+**Fase 2 - Validazione Tecnica**: L'Organismo di Vigilanza valida la registrazione inviata con focus su:
 
-  - **Conformità con il Registro dei Claims**: Validazione del formato dei claim, degli identificativi ed esistenza nel Registro dei Claims.
-  - **Validazione Tassonomia**: Verifica che le finalità dichiarate siano voci tassonomiche valide.
-  - **Verifica Integrazione API**:
+  - **Conformità al Registro dei Claims**: Validazione del formato dei claim, degli identificatori e della loro esistenza nel Registro dei Claims.
+  - **Validazione della Tassonomia**: Verifica che le finalità dichiarate siano voci valide della tassonomia.
+  - **Verifica dell'Integrazione API**:
 
-    - **Entità Pubbliche**: Verifica della conformità della specifica e-service PDND
-    - **Entità Private**: Completezza della specifica `OAS3`_ inclusi framework di autorizzazione, schemi di request/response, meccanismi di gestione degli errori e ambiente sandbox.
+    - **Entità Pubbliche**: Verifica della conformità alla specifica PDND dell'e-service
+    - **Entità Private**: Completezza della specifica `OAS3`_ inclusi framework di autorizzazione, schemi richiesta/risposta, meccanismi di gestione errori e ambiente sandbox.
 
-  - **Formato Standard della Response**: Verifica dell'utilizzo del formato del Registro dei Claims e specifica della mappatura degli stati.
+  - **Standard del Formato di Risposta**: Verifica dell'utilizzo del formato del Registro dei Claims e delle specifiche di mappatura degli stati.
 
-**Fase 3 - Pubblicazione Registro AS**: Dopo la validazione con successo:
+**Fase 3 - Pubblicazione nel Registro delle Fonti Autentiche**: Al termine della validazione positiva:
 
-  - L'Entità Fonte Autentica viene pubblicata nel Registro AS con le informazioni dichiarate complete.
-  - La Fonte Autentica diventa scopribile dai Credential Issuer per le richieste di integrazione.
+  - L'Entità Fonte Autentica viene pubblicata nel Registro delle Fonti Autentiche con le capacità dichiarate complete.
+  - La Fonte Autentica diventa rilevabile dagli Emittenti di Credenziali per le richieste di integrazione.
   - La Fonte Autentica è pronta per la fornitura operativa dei dati.
 
 .. note::
-   La registrazione AS è completa e indipendente dall'integrazione CI. Le entità AS diventano scopribili immediatamente dopo la pubblicazione del Registro AS, mentre la disponibilità degli Attestati Elettronici agli utenti finali dipende dall'autorizzazione amministrativa AS-CI seguita da un'integrazione tecnica di successo e dall'approvazione della politica dell'Organismo di Supervisione per l'eleggibilità al catalogo.
+   La registrazione della Fonte Autentica è completa e indipendente dall'integrazione con l'Emittente di Credenziali. Le Fonti Autentiche diventano rilevabili immediatamente dopo la pubblicazione nel Registro delle Fonti Autentiche, mentre la disponibilità delle Credenziali per gli Utenti finali dipende dall'autorizzazione amministrativa dalla Fonte Autentica all'Emittente di Credenziali, seguita dalla riuscita integrazione tecnica e dall'approvazione dell'Organismo di Vigilanza per l'idoneità al catalogo.
 
-Processo di Integrazione AS-CI
--------------------------------
+Processo di Autorizzazione dalla Fonte Autentica all'Emittente di Credenziali
+------------------------------------------------------------------------------
 
-Dopo l'autorizzazione amministrativa AS-CI ottenuta durante la fase di registrazione amministrativa, le procedure di integrazione tecnica stabiliscono le connessioni API operative e i meccanismi di accesso ai dati tra Credential Issuer e Fonti Autentiche.
+A seguito dell'autorizzazione amministrativa dalla Fonte Autentica all'Emittente di Credenziali ottenuta durante la fase di registrazione amministrativa, le procedure di integrazione tecnica stabiliscono le connessioni API operative e i meccanismi di accesso ai dati tra gli Emittenti di Credenziali e le Fonti Autentiche.
 
 L'integrazione tecnica comprende:
 
-- **Configurazione degli Endpoint API**: Istituzione di connessioni API sicure come specificato nelle Specifiche Tecniche AS (e-service PDND per AS pubbliche, implementazioni `OAS3`_ per AS private).
-- **Validazione Mappatura Claims**: Verifica che l'implementazione CI mappi correttamente le response dei dati AS agli identificativi standardizzati del Registro dei Claims.
-- **Test Flusso Dati**: Validazione delle specifiche di fornitura dati immediate/deferred e meccanismi di gestione degli errori.
-- **Implementazione Sicurezza**: Configurazione di autenticazione, autorizzazione e logging di audit come richiesto dagli standard di sicurezza AS.
+- **Configurazione degli Endpoint API**: Instaurazione di connessioni API sicure come specificato nelle specifiche tecniche delle Fonti Autentiche (e-service PDND per le Fonti Autentiche pubbliche, implementazioni `OAS3`_ per le Fonti Autentiche private).
+- **Validazione della Mappatura dei Claims**: Verifica che l'implementazione dell'Emittente di Credenziali mappi correttamente le risposte della Fonte Autentica agli identificatori standardizzati del Registro dei Claims.
+- **Test del Flusso dei Dati**: Validazione delle capacità di fornitura dei dati immediata o differita e dei meccanismi di gestione degli errori.
+- **Implementazione della Sicurezza**: Configurazione dell'autenticazione, dell'autorizzazione e del logging di audit come richiesto dagli standard di sicurezza delle Fonti Autentiche.
 
-Processo di Onboarding delle Entità di Federazione
----------------------------------------------------
+Processo di Onboarding delle Entità Federate
+---------------------------------------------
 
-Le Entità di Federazione (Credential Issuer, Relying Party e Fornitori di Wallet) DEVONO sottoporsi a procedure di onboarding per stabilire relazioni di trust crittografiche all'interno dell'ecosistema IT-Wallet. Il processo di onboarding della federazione stabilisce l'infrastruttura di trust distribuita attraverso l'emissione di certificati, la configurazione della catena di trust e l'attestazione di conformità come dettagliato in :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
+Le Entità Federate, tra cui Emittenti di Credenziali, Relying Party e Fornitori di Wallet, devono completare le procedure di onboarding per diventare partecipanti idonei nell'ecosistema IT-Wallet. Tale processo stabilisce la fiducia distribuita mediante l'emissione di Certificati X.509, la validazione delle Catene di Fiducia e la verifica della conformità, come descritto in :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
 
 Modello Gerarchico dell'Autorità di Federazione
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-La federazione IT-Wallet implementa un **modello di onboarding gerarchico** dove le Entità di Federazione POSSONO essere registrate da:
+La federazione IT-Wallet implementa un **modello di onboarding gerarchico** in cui le Entità Federate DEVONO essere registrate da uno dei seguenti attori:
 
-  1. **Trust Anchor**: L'autorità radice che ha la capacità di onboardare direttamente qualsiasi Entità di Federazione.
-  2. **Intermediari**: Autorità delegate che onboardano Entità Foglia per conto del Trust Anchor.
+  1. **Trust Anchor**: L'autorità radice con la capacità di registrare direttamente qualsiasi Entità Federata.
+  2. **Intermediari**: Autorità delegate che registrano le Entità Foglia per conto del Trust Anchor.
 
-Questo approccio gerarchico abilita la **gestione distribuita dell'onboarding** mantenendo un'istituzione di trust unificata. Sia i Trust Anchor che gli Intermediari agiscono come **Autorità di Federazione** con le seguenti capacità di onboarding:
+Sia i Trust Anchor che gli Intermediari agiscono come **Autorità di Federazione** con le seguenti capacità di onboarding:
 
-  - **Emissione dei Certificati**: Emettono certificati X.509 ai loro subordinati immediati con vincoli di denominazione appropriati come definito in :ref:`trust-infrastructure:X.509 PKI`.
-  - **Applicazione delle Metadata Policy**: Applicano le metadata policy specifiche della federazione con **effetto a cascata** (le policy del Trust Anchor prevalgono sulle policy degli Intermediari).
-  - **Emissione del Trust Mark**: Emettono Trust Mark di Federazione attestando la conformità dei subordinati ai requisiti della federazione.
+  - **Emissione di Certificati X.509**: Emettono Certificati X.509 ai propri Subordinati Immediati con opportuni vincoli di denominazione come definito in :ref:`trust-infrastructure:X.509 PKI`.
+  - **Applicazione di Politiche sui Metadati**: Applicano politiche sui metadati specifiche della federazione con **effetto a cascata** (le politiche del Trust Anchor prevalgono su quelle degli Intermediari).
+  - **Emissione di Trust Mark**: Emettono Trust Mark di Federazione attestanti le capacità e le concessioni dei Subordinati, conformemente al framework di fiducia.
 
-Pertanto, le Entità di Federazione POSSONO essere registrate attraverso percorsi diversi:
+Pertanto, le Entità Federate POSSONO essere registrate attraverso percorsi differenti:
 
-  - **Onboarding Diretto dal Trust Anchor**: L'entità si registra direttamente con il Trust Anchor.
-  - **Onboarding Mediato da Intermediario**: L'entità si registra con un Intermediario appropriato.
+  - **Onboarding Diretto dal Trust Anchor**: L'Entità si registra direttamente presso il Trust Anchor.
+  - **Onboarding Mediato da un Intermediario**: L'Entità si registra presso un Intermediario appropriato.
 
-Prerequisiti di Onboarding della Federazione
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Prerequisiti di Onboarding alla Federazione
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Le Entità di Federazione DEVONO rispettare i seguenti requisiti tecnici prima di iniziare il processo di onboarding:
+Le Entità Federate DEVONO rispettare i seguenti requisiti tecnici prima di avviare il processo di onboarding:
 
-  - **Generazione delle Chiavi**: Le entità DEVONO generare almeno due coppie di chiavi utilizzando la crittografia a curva ellittica come specificato in :ref:`algorithms:Algoritmi Crittografici`:
+  - **Generazione delle Chiavi**: Le entità DEVONO generare almeno due coppie di chiavi mediante crittografia a curva ellittica come specificato in :ref:`algorithms:Algoritmi Crittografici`:
 
-    - **Coppia di Chiavi di Federazione**: Utilizzata per firmare Entity Configuration e attestare Chiavi di Protocollo. Per le migliori pratiche di sicurezza e continuità operativa, le entità DOVREBBERO mantenere multiple Chiavi dell'Entità di Federazione (almeno due) per abilitare la rotazione sicura delle chiavi e la risposta agli incidenti senza impattare le entità che hanno memorizzato nella cache le Entity Configuration.
-    - **Coppia/e di Chiavi di Protocollo**: Utilizzate per operazioni di protocollo specifiche dell'entità (emissione attestati elettronici, verifica presentazione, ecc.).
+    - **Coppia di Chiavi della Federazione**: Utilizzata per firmare le Configurazioni dell'Entità e attestare le chiavi specifiche dell'applicazione. Per le best practice di sicurezza e la continuità operativa, le entità DOVREBBERO mantenere più Chiavi di Entità della Federazione (almeno due) per abilitare la rotazione sicura delle chiavi e la risposta agli incidenti senza impatto sulle entità che hanno memorizzato nella cache le Configurazioni dell'Entità.
+    - **Coppia/i di Chiavi Specifiche dell'Applicazione**: Utilizzate per le operazioni protocollari specifiche dell'entità, come l'emissione e la presentazione delle Credenziali.
 
-  - **Attestazione delle Chiavi di Protocollo**: Le entità DEVONO creare certificati X.509 auto-firmati per le loro Chiavi di Protocollo utilizzando la Chiave Privata di Federazione. Questi certificati stabiliscono la relazione di autorità tra le chiavi di Federazione e di Protocollo.
+  - **Attestazione delle Chiavi Specifiche dell'Applicazione**: Le entità DEVONO creare Certificati X.509 auto-firmati per le proprie chiavi specifiche dell'applicazione utilizzando la Chiave Privata dell'Entità della Federazione.
 
-  - **Preparazione Entity Configuration**: Le entità DEVONO pubblicare una Entity Configuration (EC) firmata con la loro Chiave Privata di Federazione all'endpoint ``/.well-known/openid-federation`` come definito in :ref:`trust-infrastructure:L'Infrastruttura di Trust`. L'EC DEVE includere:
+  - **Predisposizione della Configurazione dell'Entità**: Le entità DEVONO pubblicare una Configurazione dell'Entità (CE) firmata con la propria Chiave Privata dell'Entità della Federazione all'endpoint ``/.well-known/openid-federation`` come definito in :ref:`trust-infrastructure:L'Infrastruttura di Trust`. La CE DEVE includere:
 
-    - Un claim ``jwks`` contenente le Chiavi dell'Entità di Federazione in formato JSON Web Key (JWK).
-    - Un claim ``iss`` con l'Identificativo dell'Entità di Federazione come definito in :ref:`trust-infrastructure:Ruoli di Federazione`.
+    - Un claim ``jwks`` contenente le Chiavi dell'Entità della Federazione in formato JSON Web Key (JWK).
+    - Un claim ``iss`` con l'Identificatore dell'Entità della Federazione come definito in :ref:`trust-infrastructure:Ruoli di Federazione`.
     - Un claim ``sub`` uguale al claim ``iss``.
-    - Claim ``iat`` ed ``exp`` che definiscono un intervallo di tempo valido.
-    - Un claim ``metadata`` contenente metadati specifici dell'entità organizzati per Tipi di Metadati (vedere :ref:`credential-issuer-entity-configuration:Entity Configuration del Fornitore di Attestati Elettronici`, :ref:`relying-party-entity-configuration:Entity Configuration di una Relying Party`, o :ref:`wallet-provider-entity-configuration:Entity Configuration del Fornitore di Wallet`) con Chiavi di Protocollo incluse nei campi ``jwks`` dei metadati e certificati auto-firmati nei corrispondenti claim ``x5c``.
+    - I claim ``iat`` ed ``exp`` che definiscono un intervallo di tempo valido.
+    - Un claim ``metadata`` contenente i metadati specifici dell'entità organizzati per Tipologie di Metadati (vedere :ref:`credential-issuer-entity-configuration:Entity Configuration del Fornitore di Attestati Elettronici`, :ref:`relying-party-entity-configuration:Entity Configuration Relying Party`, o :ref:`wallet-provider-entity-configuration:Entity Configuration del Fornitore di Wallet`) con chiavi specifiche dell'applicazione incluse nei campi ``jwks`` dei metadati e Certificati X.509 auto-firmati nei relativi claim ``x5c``.
 
-  - **Certificate Signing Request (CSR)**: Le entità DEVONO preparare un CSR in formato PKCS #10 contenente **solo la Chiave Pubblica dell'Entità di Federazione** per l'emissione del certificato X.509 da parte dell'Autorità di Federazione come definito in :ref:`trust-infrastructure:Emissione di Certificati X.509`.
+  - **Richiesta di Firma del Certificato X.509 (CSR)**: Le entità DEVONO predisporre una Richiesta di Firma del Certificato X.509 (CSR) in formato PKCS #10 contenente **la Chiave dell'Entità della Federazione** per l'emissione del Certificato X.509 da parte dell'Autorità di Federazione, come definito in :ref:`trust-infrastructure:Emissione di Certificati X.509`.
 
 Requisiti di Sicurezza per la Gestione delle Chiavi
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Tutte le entità di federazione DOVREBBERO mantenere almeno due chiavi di firma certificate dal Trust Anchor:
+Tutte le entità federate DOVREBBERO mantenere almeno due chiavi di firma attestate dal Trust Anchor:
 
 - **Chiave Attiva**: Utilizzata per le operazioni di firma correnti
 - **Chiave di Backup**: Disponibile per l'attivazione immediata durante incidenti o rotazione pianificata delle chiavi
 
-Questo approccio a doppia chiave abilita:
+Questo approccio a doppia chiave consente:
 - Rotazione sicura delle chiavi senza interruzione del servizio
-- Risposta rapida agli incidenti quando le chiavi primarie sono compromesse
-- Continuità per le entità con Entity Configuration memorizzate nella cache
-- Prevenzione di problemi di validazione durante le transizioni delle chiavi
+- Risposta rapida agli incidenti in caso di compromissione della chiave primaria
+- Continuità per le entità con Configurazioni dell'Entità in cache
+- Prevenzione di problemi di validazione durante le transizioni di chiave
 
 La chiave di backup DEVE essere:
 - Registrata dal Trust Anchor prima del deployment
-- Pubblicata nel JWKS dell'entità insieme alla chiave attiva
-- Pronta per l'attivazione immediata senza passaggi di certificazione aggiuntivi
+- Pubblicata nel JWKS dell'entità accanto alla chiave attiva
+- Pronta per l'attivazione immediata senza ulteriori fasi di certificazione
 - Mantenuta con gli stessi standard di sicurezza della chiave attiva
 
-Procedura di Onboarding della Federazione
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-L'onboarding della federazione segue una procedura strutturata in 4 fasi che abilita interazioni sicure tra i partecipanti della federazione, **indipendentemente dal fatto che l'onboarding sia eseguito dal Trust Anchor o da un Intermediario**.
-
-.. note::
-   La seguente procedura si applica ai Fornitori di Wallet, Credential Issuer e Relying Party che desiderano eseguire l'onboarding nella federazione IT-Wallet. L'**Autorità di Federazione** si riferisce al Trust Anchor o Intermediario secondo le caratteristiche organizzative e le policy di governance della federazione.
+Procedura di Onboarding alla Federazione
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+La procedura di onboarding alla federazione segue una procedura strutturata in 4 fasi e può essere eseguita dal Trust Anchor o da un Intermediario.
 
 .. note::
-   Questa sezione copre solo i requisiti di registrazione tecnica. Tutte le informazioni amministrative (validazione dell'entità legale, conformità normativa, eleggibilità organizzativa, ecc.) si presume siano state raccolte e validate dall'Organismo di Supervisione durante la fase di registrazione amministrativa, che è fuori dall'ambito di questa specifica tecnica. Esempi di informazioni amministrative includono: nome dell'entità legale, numeri di registrazione aziendale, persone di contatto, documentazione di conformità legale e autorizzazioni operative.
+   La seguente procedura si applica ai Fornitori di Wallet, agli Emittenti di Credenziali e alle Relying Party che desiderano effettuare l'onboarding nella federazione IT-Wallet. L'**Autorità di Federazione** si riferisce al Trust Anchor o all'Intermediario in base alle caratteristiche organizzative e alle politiche di governance della federazione.
+
+.. note::
+   Questa sezione copre i requisiti di registrazione tecnica. Tutte le informazioni amministrative, quali la validazione della persona giuridica, la conformità normativa e l'idoneità organizzativa, si considerano già raccolte e validate dall'Organismo di Vigilanza durante la fase di registrazione amministrativa, che esula dalla presente specifica tecnica. Esempi di informazioni amministrative includono: denominazione legale, numeri di registrazione dell'impresa, persone di contatto, documentazione di conformità legale e autorizzazioni operative.
 
 .. plantuml:: plantuml/federation-onboarding-process.puml
     :width: 99%
-    :alt: Processo di onboarding dell'entità di federazione che mostra la procedura in 4 fasi
-    :caption: `Processo di Onboarding dell'Entità di Federazione. <https://www.plantuml.com/plantuml/svg/dLHHRnit37w_Nq7qOKYmfF6wz646l3NmqY4BXXPEr-t1G41BF5khZhf9L5B_-vqi7quvtu1XRmSToUyZFtvy5mIznCR2UzBaKOnZk6KnieSFl77ejU4jVFHEKGWLHd4ScmtvgcgxHADCYopmwYJx5M20clurwYRApla-KB2g5Wju46hXktc9lAA_8mM1XxXfJ0WfTR6egfhWyaSGdESV0cv8yJbbpMV7Hkv-le2FSMEDWdlQmwz_t5_0yc5rFc2-cSCKD_YCrkZyYAnXILvCRHGAmLq84LdHWOvWJ-SpULFlmTFM13dMCrmxtno-oyXSc_fnBntNPXkFETZnlthzJDPUVc7tp5Uk9JRwiXve4klM6PQYvatRsZqq9AXH45fdZJ8KuDd83XG6XOS9KLsJAlDICmH_ldux-m5KqMJ7UyqdsXR3h2gqKeufH9KsfOws0W3843NDNynExT0mU0gjuq23K2Nqju2z3ELxEA_81YeXQpIMz0XkHN-HIhzpxqOJfnAamQHUGqMi1_s_dq-hy7jxK2XflwBWx1Fr2rbiOOBBWPD5vck-X1kjXtuUTuObWB9eclxdrxSgFnor6azhmChJ3pk81qmDjyl_i2s3O_fE2fzS-VpqKuYR1R4aZaP_8pu6UKHM7Us5OFTKMEPwABJAGkOv5TvTkgQrbD179bcHwkAxyahWAGa91wZSQH7t2t6YJwKvFnqYVqF_9MqdPBRbAhEoKLCPPpXT2PT8fM8FWa8DiKmX1RDbqjsD-9I5A8XThFdfw5azU2prZCbsgUCJvsL_z8CQp05dRsOp-71_VhAsERBtHYRHiUbKAgXqxZYbaciDEhydKRlfpfFcTVhzKl4ncydSJ6aORu6QScw_YaSbBtJohfckDSgzOw6jHncfDschVY2FJHTqD5FcV-gKsZ3Q_tjdyxtfXSd71iwkPxEhwzdrU6AttZi_KYyV7107Hvlbs_EEMCV6_WC0>`_
+    :alt: Processo di onboarding dell'entità federata che mostra la procedura in 4 fasi
+    :caption: `Processo di Onboarding dell'Entità Federata. <https://www.plantuml.com/plantuml/svg/dLHHRnit37w_Nq7qOKYmfF6wz646l3NmqY4BXXPEr-t1G41BF5khZhf9L5B_-vqi7quvtu1XRmSToUyZFtvy5mIznCR2UzBaKOnZk6KnieSFl77ejU4jVFHEKGWLHd4ScmtvgcgxHADCYopmwYJx5M20clurwYRApla-KB2g5Wju46hXktc9lAA_8mM1XxXfJ0WfTR6egfhWyaSGdESV0cv8yJbbpMV7Hkv-le2FSMEDWdlQmwz_t5_0yc5rFc2-cSCKD_YCrkZyYAnXILvCRHGAmLq84LdHWOvWJ-SpULFlmTFM13dMCrmxtno-oyXSc_fnBntNPXkFETZnlthzJDPUVc7tp5Uk9JRwiXve4klM6PQYvatRsZqq9AXH45fdZJ8KuDd83XG6XOS9KLsJAlDICmH_ldux-m5KqMJ7UyqdsXR3h2gqKeufH9KsfOws0W3843NDNynExT0mU0gjuq23K2Nqju2z3ELxEA_81YeXQpIMz0XkHN-HIhzpxqOJfnAamQHUGqMi1_s_dq-hy7jxK2XflwBWx1Fr2rbiOOBBWPD5vck-X1kjXtuUTuObWB9eclxdrxSgFnor6azhmChJ3pk81qmDjyl_i2s3O_fE2fzS-VpqKuYR1R4aZaP_8pu6UKHM7Us5OFTKMEPwABJAGkOv5TvTkgQrbD179bcHwkAxyahWAGa91wZSQH7t2t6YJwKvFnqYVqF_9MqdPBRbAhEoKLCPPpXT2PT8fM8FWa8DiKmX1RDbqjsD-9I5A8XThFdfw5azU2prZCbsgUCJvsL_z8CQp05dRsOp-71_VhAsERBtHYRHiUbKAgXqxZYbaciDEhydKRlfpfFcTVhzKl4ncydSJ6aORu6QScw_YaSbBtJohfckDSgzOw6jHncfDschVY2FJHTqD5FcV-gKsZ3Q_tjdyxtfXSd71iwkPxEhwzdrU6AttZi_KYyV7107Hvlbs_EEMCV6_WC0>`_
 
-**Fase 1 - Invio Richiesta di Onboarding**: L'Entità di Federazione inizia il processo di onboarding inviando una richiesta di registrazione tecnica includendo le seguenti informazioni.
+**Fase 1 - Invio della Richiesta di Onboarding**: L'Entità Federata avvia il processo di onboarding inviando una richiesta di registrazione tecnica contenente le seguenti informazioni.
 
-.. list-table:: Informazioni della Richiesta Tecnica di Onboarding della Federazione
+.. list-table:: Informazioni della Richiesta Tecnica di Onboarding alla Federazione
    :class: longtable
    :header-rows: 1
    :widths: 30 70
 
-   * - **Categoria delle Informazioni Tecniche**
+   * - **Categoria Informativa Tecnica**
      - **Requisiti e Descrizione**
-   * - **Identificativo Entità di Federazione**
-     - **OBBLIGATORIO**. Un URL unico che identifica l'Entità di Federazione come definito in :ref:`trust-infrastructure:Ruoli di Federazione`.
-   * - **Chiave Pubblica Entità di Federazione (JWK)**
-     - **OBBLIGATORIO**. Chiave pubblica ellittica in formato JSON Web Key utilizzata per firmare Entity Configuration e attestare Chiavi di Protocollo, utilizzando algoritmi crittografici specificati in :ref:`algorithms:Algoritmi Crittografici`.
-   * - **Certificate Signing Request (CSR)**
-     - **OBBLIGATORIO**. CSR in formato PKCS #10 per l'emissione del certificato X.509 da parte dell'Autorità di Federazione. Il CSR DEVE:
+   * - **Identificatore dell'Entità Federata**
+     - **OBBLIGATORIO**. Un URL univoco che identifica l'Entità Federata come definito in :ref:`trust-infrastructure:Ruoli di Federazione`.
+   * - **Chiave dell'Entità Federata (JWK)**
+     - **OBBLIGATORIO**. Chiave pubblica a curva ellittica in formato JSON Web Key utilizzata per firmare le Configurazioni dell'Entità e attestare le chiavi specifiche dell'applicazione, con algoritmi crittografici specificati in :ref:`algorithms:Algoritmi Crittografici`.
+   * - **Richiesta di Firma del Certificato X.509 (CSR)**
+     - **OBBLIGATORIO**. CSR in formato PKCS #10 per l'emissione del Certificato X.509 da parte dell'Autorità di Federazione. La CSR DEVE:
 
-       - Contenere **solo la Chiave Pubblica dell'Entità di Federazione** da certificare.
-       - Essere firmato con la corrispondente Chiave Privata di Federazione.
-       - Definire il Subject del certificato con gli attributi richiesti come specificato in :ref:`trust-infrastructure:Emissione di Certificati X.509` per le Entità di Federazione.
+       - Contenere **solo le Chiavi dell'Entità Federata**.
+       - Essere firmata con la corrispondente Chiave Privata dell'Entità Federata.
+       - Definire il Soggetto del Certificato X.509 con gli attributi richiesti come specificato in :ref:`trust-infrastructure:Emissione di Certificati X.509` per le Entità Federate.
 
 .. warning::
-   Prima di inviare la richiesta di onboarding tecnico, le Entità di Federazione DEVONO assicurarsi che il loro endpoint ``/.well-known/openid-federation`` pubblichi una Entity Configuration valida (come definita in :ref:`trust-infrastructure:Entity Configuration`) firmata con la loro Chiave Privata di Federazione corrispondente alla Chiave Pubblica dell'Entità di Federazione fornita nella richiesta. L'Entity Configuration DEVE già includere le Chiavi di Protocollo nei metadati con certificati X.509 auto-firmati nei claim ``x5c``.
+   Prima di inviare la richiesta tecnica di onboarding, le Entità Federate DEVONO assicurarsi che il proprio endpoint ``/.well-known/openid-federation`` pubblichi una Configurazione dell'Entità valida (come definito in :ref:`trust-infrastructure:Entity Configuration`) firmata con la propria Chiave Privata dell'Entità Federata corrispondente alla Chiave dell'Entità Federata fornita nella richiesta. La Configurazione dell'Entità DEVE già includere le chiavi specifiche dell'applicazione nei metadati con Certificati X.509 auto-firmati nei claim ``x5c``.
 
-Un esempio non normativo della struttura delle informazioni tecniche che le Entità di Federazione inviano durante la richiesta di onboarding della Fase 1:
+Un esempio non normativo della struttura delle informazioni tecniche che le Entità Federate inviano durante la richiesta di onboarding della Fase 1:
 
 .. literalinclude:: ../../examples/federation-onboarding-request-example.json
    :language: json
-   :caption: Federation onboarding request example
+   :caption: Esempio di richiesta di onboarding alla federazione
 
-Di seguito viene mostrato il contenuto decodificato dell'esempio CSR sopra riportato per riferimento:
+L'esempio seguente mostra il contenuto decodificato della CSR:
 
-.. code-block:: text
-
-   Certificate Request:
-       Data:
-           Version: 0 (0x0)
-           Subject: CN=credentials.example.gov, OU=Digital Credentials, O=Example Organization, L=Roma, ST=Lazio, C=IT, emailAddress=technical@credentials.example.gov
-           Subject Public Key Info:
-               Public Key Algorithm: id-ecPublicKey
-                   Public-Key: (256 bit)
-                   ASN1 OID: prime256v1
-                   NIST CURVE: P-256
-       Signature Algorithm: ecdsa-with-SHA256
+.. literalinclude:: ../../examples/csr-decoded-example.txt
+   :language: text
+   :caption: Esempio di contenuto decodificato della CSR
 
 .. note::
-   Gli attributi Subject del CSR DEVONO rispettare i requisiti specificati in :ref:`trust-infrastructure:Emissione di Certificati X.509` per le Entità di Federazione.
+   Gli attributi del Soggetto della CSR DEVONO rispettare i requisiti specificati in :ref:`trust-infrastructure:Emissione di Certificati X.509` per le Entità Federate.
 
 .. note::
-   La Chiave Pubblica dell'Entità di Federazione nel campo ``jwks`` e la chiave pubblica contenuta nel ``certificate_signing_request`` DEVONO essere la stessa chiave. La chiave è fornita in due formati: formato JWK per le operazioni OpenID Federation e formato CSR PKCS #10 per l'emissione del certificato X.509 da parte dell'Autorità di Federazione. Le Chiavi di Protocollo sono incluse solo nei metadati dell'Entity Configuration e NON DEVONO essere incluse nella richiesta di onboarding.
+   Le Chiavi dell'Entità Federata contenute nell'oggetto ``jwks`` e le chiavi pubbliche contenute nell'oggetto ``certificate_signing_requests`` DEVONO corrispondere. Le chiavi sono fornite in due formati: formato JWK e formato PKCS #10 CSR per l'emissione del Certificato X.509. Le chiavi specifiche dell'applicazione sono incluse solo nei metadati della Configurazione dell'Entità e NON DEVONO essere incluse nella richiesta di onboarding.
 
 .. note::
-   L'Endpoint Entity Configuration è costruito automaticamente aggiungendo ``/.well-known/openid-federation`` all'Identificativo dell'Entità di Federazione (``entity_id``). Le Entità di Federazione non devono specificare questo endpoint separatamente nella richiesta di registrazione.
+   L'Endpoint della Configurazione dell'Entità è costruito automaticamente aggiungendo ``/.well-known/openid-federation`` all'Identificatore dell'Entità Federata (``entity_id``). Le Entità Federate non devono specificare separatamente questo endpoint nella richiesta di registrazione.
 
-**Fase 2 - Validazione dell'Autorità di Federazione ed Emissione Certificato**: Dopo l'invio della richiesta di onboarding, l'**Autorità di Federazione** DEVE eseguire:
+**Fase 2 - Validazione dell'Autorità di Federazione ed Emissione del Certificato X.509**: A seguito dell'invio della richiesta di onboarding, l'**Autorità di Federazione** DEVE eseguire:
 
   - Verifica delle informazioni fornite nella richiesta di registrazione.
-  - Validazione dell'Entity Configuration pubblicata all'endpoint ``/.well-known/openid-federation`` dell'entità e dei suoi metadati contenuti (come definito in :ref:`trust-infrastructure:L'Infrastruttura di Trust`).
-  - **Applicazione delle Metadata Policy**: Applicazione di metadata policy specifiche della federazione ai metadati dell'entità basate su caratteristiche organizzative e ambito di autorizzazione come definito in :ref:`trust-infrastructure:Subordinate Statement`. Quando onboardata attraverso un Intermediario, si applicano sia le policy dell'Intermediario che del Trust Anchor, con le policy del Trust Anchor che hanno precedenza in caso di conflitti.
-  - **Emissione Certificato**: Certificazione della Chiave Pubblica dell'Entità di Federazione con emissione del certificato X.509 utilizzando l'infrastruttura di trust dettagliata in :ref:`trust-infrastructure:Emissione di Certificati X.509`. Gli Intermediari emettono certificati con **naming constraints** appropriati per limitare l'uso del certificato solo ai loro subordinati.
+  - Validazione della Configurazione dell'Entità, e dei metadati in essa contenuti, pubblicata all'endpoint ``/.well-known/openid-federation`` dell'entità (come definito in :ref:`trust-infrastructure:L'Infrastruttura di Trust`).
+  - **Applicazione delle Politiche sui Metadati**: Applicazione delle politiche sui metadati specifiche della federazione ai metadati dell'entità in base alle caratteristiche organizzative e all'ambito di autorizzazione come definito in :ref:`trust-infrastructure:Subordinate Statement`. Quando registrata tramite un Intermediario, si applicano le politiche sia dell'Intermediario che del Trust Anchor, con le politiche del Trust Anchor prevalenti in caso di conflitti.
+  - **Emissione del Certificato X.509**: Certificazione della Chiave dell'Entità Federata con l'emissione del Certificato X.509 utilizzando l'infrastruttura di fiducia dettagliata in :ref:`trust-infrastructure:Emissione di Certificati X.509`. Gli Intermediari DEVONO emettere Certificati X.509 utilizzando **vincoli di denominazione** appropriati che limitino l'uso di nomi DNS e URI ai soli propri subordinati.
 
-Dopo la validazione con successo, l'entità riceve una risposta contenente una catena di certificati dove:
+Al termine della validazione positiva, l'entità riceve una risposta contenente una Catena di Certificati X.509 in cui:
 
-  - Il primo elemento è il certificato X.509 che certifica la Chiave Pubblica dell'Entità di Federazione (emesso dall'Autorità di Federazione).
-  - **Per onboarding attraverso Trust Anchor**: Il secondo elemento è il certificato X.509 auto-firmato del Trust Anchor per validare il primo certificato.
-  - **Per onboarding attraverso Intermediario**: Elementi aggiuntivi includono il certificato dell'Intermediario e il certificato auto-firmato del Trust Anchor, formando una catena di certificati completa.
-  - Tutti i certificati sono espressi in formato DER codificato in Base64.
+  - Il primo elemento è il Certificato X.509 contenente la Chiave dell'Entità Federata (emesso dall'Autorità di Federazione).
+  - **Per l'onboarding da Trust Anchor**: Il secondo elemento è il Certificato X.509 auto-firmato del Trust Anchor per la validazione del primo Certificato X.509.
+  - **Per l'onboarding da Intermediario**: Gli elementi aggiuntivi includono il Certificato X.509 dell'Intermediario e il Certificato auto-firmato del Trust Anchor, formando una catena di Certificati X.509 completa.
+  - Tutti i Certificati X.509 sono espressi in formato DER e codificati in Base64.
 
-Esempio di risposta catena di certificati:
+Esempio di risposta con catena di Certificati X.509:
 
 .. code-block:: json
 
@@ -367,127 +513,113 @@ Esempio di risposta catena di certificati:
    ]
 
 .. note::
-   Se la validazione fallisce, l'entità riceve una response con i problemi identificati che devono essere risolti prima di inviare una nuova richiesta di onboarding.
-
-**Fase 3 - Aggiornamento Entity Configuration e Richiesta Resolve**: Dopo aver ricevuto la catena di certificati dall'Autorità di Federazione, l'entità DEVE:
-
-  1. **Aggiornare Entity Configuration**:
-
-    - Aggiungere un claim ``authority_hints`` con un Array JSON contenente l'Identificativo dell'Entità di Federazione dell'**immediate Federation Authority** (Trust Anchor per onboarding diretto, o Intermediario per onboarding mediato) come definito in :ref:`trust-infrastructure:Ruoli di Federazione`.
-    - Aggiornare la Chiave Pubblica dell'Entità di Federazione nel claim ``jwks`` aggiungendo un claim ``x5c`` con la catena di certificati completa ricevuta dall'Autorità di Federazione.
-    - Aggiornare le Chiavi di Protocollo nei claim ``jwks`` dei metadati estendendo i loro claim ``x5c`` esistenti per includere la catena di certificati di Federazione, creando catene di trust complete dalle Chiavi di Protocollo all'Autorità Radice.
-
-    Esempio aggiunta authority_hints:
-
-    .. code-block:: json
-
-        {
-          "iat": 1718207217,
-          "exp": 1749743216,
-          "iss": "https://credentials.example.gov",
-          "sub": "https://credentials.example.gov",
-          "authority_hints": ["https://trust-anchor.example.gov"],
-          //...
-        }
-
-    Esempio JWK di Federazione con catena di certificati:
-
-    .. code-block:: json
-
-        {
-          "kid": "NsXymfIILEPR5Y0t",
-          "kty": "EC",
-          "x": "gXY4FApFJCj91Gpb1K9GEIouTq2X3L0K64Iq0ob4l_g",
-          "y": "l-6dcrIrFVdrzoY9cRJv9zNuFOR3MsDz6TSDhB0xEo4",
-          "crv": "P-256",
-          "x5c": [
-            "MIIDqjCCA1GgAwIBAgIGAZc6/V9qMAoGCCqGSM49BAMCMIGzMQsw...",
-            "MIIDQzCCAuigAwIBAgIGAZc6+XlDMAoGCCqGSM49BAMCMIGzMQsw..."
-          ]
-        }
-
-    Esempio JWK di Protocollo con catena di certificati estesa:
-
-    .. code-block:: json
-
-        {
-          "kid": "ProtocolKeyId123",
-          "kty": "EC",
-          "x": "protocol_key_x_coordinate...",
-          "y": "protocol_key_y_coordinate...",
-          "crv": "P-256",
-          "x5c": [
-            "MIIDprotocolCert...",  // Cert protocollo (firmato da chiave federazione)
-            "MIIDqjCCA1GgAwIBAgIGAZc6/V9qMAoGCCqGSM49BAMCMIGzMQsw...",  // Cert federazione
-            "MIIDQzCCAuigAwIBAgIGAZc6+XlDMAoGCCqGSM49BAMCMIGzMQsw..."   // Cert radice
-          ]
-        }
-
-  2. **Pubblicare Entity Configuration Aggiornata**: Pubblicare l'EC aggiornata all'endpoint ``/.well-known/openid-federation`` come specificato in :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
-
-  3. **Inviare Richiesta Resolve**: Chiamare l'endpoint ``/resolve`` del **Trust Anchor** (come definito in :ref:`trust-infrastructure:Endpoint API di Federazione`) con parametri URL-encoded:
-
-    - ``sub``: Identificativo Entità di Federazione.
-    - ``trust_anchor``: Identificativo Entità di Federazione del **Trust Anchor** (sempre il Trust Anchor radice, anche per onboarding mediato da Intermediario).
-
-    Esempio richiesta resolve:
-
-    .. code-block:: http
-
-        GET /resolve?sub=https%3A%2F%2Fcredentials.example.gov&trust_anchor=https%3A%2F%2Ftrust-anchor.example.gov HTTP/1.1
-        Host: trust-anchor.example.gov
-
-**Fase 4: Risposta Resolve e Completamento Onboarding**
-
-Dopo la resolve request, l'**Autorità di Federazione** esegue:
-
-  - La **Ricostruzione della Catena di Trust**: Ricostruzione di una catena di trust valida per l'entità come definito in :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
-  - La **Generazione delTrust Mark di Federazione**: Generazione di un Trust Mark di Federazione IT-Wallet come attestazione JWT firmata dell'appartenenza alla federazione dell'entità e conformità ai requisiti tecnici IT-Wallet.
-  - L'**Integrazione del Trust Mark nel Subordinate Statement**: Il Trust Mark generato è incluso nel Subordinate Statement dell'entità come definito in :ref:`trust-infrastructure:Subordinate Statement`.
-  - L'**Applicazione di Metadata Policy**: Applicazione di metadata policy a cascata durante la costruzione della catena di trust, assicurando che le policy del Trust Anchor abbiano precedenza sulle policy degli Intermediari.
-  - Generazione di un JSON Web Token (JWT) firmato utilizzando algoritmi specificati in :ref:`algorithms:Algoritmi Crittografici` contenente la catena di trust ricostruita e i metadati dell'entità validati.
-  - Trasmissione di una HTTP response contenente il JWT creato (Resolve Response).
-
-Se lo status code della responsr è 200 OK, l'Entità di Federazione DEVE completare il processo di onboarding, seguendo i seguenti step:
-
-  - **Validare la Resolve Response**: Validare il JWT contenuto nella Resolve Response ed estrarre la catena di trust e i metadati validati dal payload JWT.
-  - **Recuperare i Subordinate Statement**: Recuperare il proprio Subordinate Statement dall'Autorità di Federazione immediata utilizzando l'endpoint ``/fetch`` come definito in :ref:`trust-infrastructure:Endpoint API di Federazione`.
-  - **Estrarre il Trust Mark**: Estrarre il Trust Mark di Federazione dal claim ``trust_marks`` del Subordinate Statement.
-  - **Integrazione del Trust Mark**: Includere il Trust Mark estratto nella sua Entity Configuration utilizzando il claim ``trust_marks`` come specificato in :ref:`trust-infrastructure:Entity Configuration Foglie e intermediari`.
-  - **Aggiornamento Finale Entity Configuration**: Pubblicare l'Entity Configuration aggiornata con il Trust Mark integrato all'endpoint ``/.well-known/openid-federation``.
-
-Dopo il completamento con successo della Fase 4, **l'onboarding dell'entità è completato con successo**. L'entità è ora operativa all'interno della federazione IT-Wallet e pronta per le attività operative.
+   Se il processo di emissione fallisce, l'entità richiedente riceve una risposta con i problemi identificati da risolvere prima di inviare una nuova richiesta di onboarding.
 
 .. note::
-   Se l'endpoint ``/resolve`` risponde con status code 400 o 404, l'entità deve risolvere i problemi descritti nel messaggio di risposta prima di chiamare nuovamente l'endpoint resolve.
+   Ciascuna entità può raccogliere la propria Catena di Certificati X.509 ottenendo il Certificato X.509 auto-firmato del Trust Anchor, incluso nell'oggetto ``jwks`` della Configurazione dell'Entità, e aggregando tutti i valori ``x5c`` pubblicati dalle entità superiori, dal Trust Anchor fino al suo superiore immediato. Questo consente all'entità di ricostruire la catena di certificati completa necessaria per la validazione e l'instaurazione della fiducia all'interno della federazione.
+
+**Fase 3 - Recupero della Dichiarazione del Subordinato**: come conferma del successo del processo di onboarding, l'entità DEVE recuperare la Dichiarazione del Subordinato che la riguarda dalla Federazione Immediata utilizzando l'endpoint ``/fetch`` come definito in :ref:`trust-infrastructure:Endpoint API di Federazione`.
+
+Esempio di richiesta fetch:
+
+.. code-block:: http
+
+    GET /fetch?sub=https%3A%2F%2Fcredentials.example.gov HTTP/1.1
+    Host: trust-anchor.example.gov
 
 .. note::
-   **Integrazione del Registro di Federazione**: Dopo il completamento con successo dell'onboarding, l'Identificativo dell'Entità di Federazione diventa scopribile attraverso i meccanismi di elenco delle entità del Trust Anchor (come definito in :ref:`trust-infrastructure:L'Infrastruttura di Trust`), indicando la partecipazione attiva alla federazione. L'entità diventa parte dell'infrastruttura di federazione dettagliata in :ref:`registry:Infrastruttura del Registro`.
+   Se l'endpoint ``/fetch`` risponde con codice di stato ``400`` o ``404``, l'entità DEVE risolvere i problemi descritti nel messaggio di risposta prima di richiamare nuovamente l'endpoint fetch. 
 
-Trust Mark di Federazione IT-Wallet
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Fase 4: Aggiornamento della Configurazione dell'Entità e Completamento dell'Onboarding**
 
-Le Entità di Federazione ricevono il Trust Mark di Federazione IT-Wallet durante il completamento con successo dell'onboarding. **I Trust Mark sono emessi dall'Autorità di Federazione** (Trust Anchor per onboarding diretto, Intermediario per onboarding mediato) e servono come attestazioni verificabili dell'appartenenza alla federazione, conformità ai requisiti tecnici IT-Wallet e politiche di autorizzazione per ambiti operativi specifici.
+A seguito della richiesta fetch, l'**Autorità di Federazione** restituisce la Dichiarazione del Subordinato dell'entità, un JWT firmato contenente:
 
-Tipi di Trust Mark e Schema
-"""""""""""""""""""""""""""
+  - **Metadati dell'Entità**: I metadati validati dell'entità con le politiche di federazione applicate.
+  - **Informazioni sulla Fiducia**: Informazioni sul rapporto di fiducia tra l'Autorità di Federazione e l'entità, inclusa la `x5c` emessa nell'oggetto `jwk` relativo al Subordinato.
+  - **Trust Mark**: I Trust Mark emessi dall'Autorità di Federazione per l'ambito operativo e le capacità specifiche dell'entità.
 
-Le entità POSSONO ricevere più Trust Mark per scopi diversi e tipi di entità, abilitando l'applicazione granulare delle politiche di autorizzazione. Gli identificativi dei Trust Mark DEVONO seguire uno schema gerarchico che riflette l'ambito di autorizzazione:
+     Esempio di JWK di Federazione relativo al Subordinato incluso il Certificato X.509 emesso:
+
+     .. code-block:: json
+
+         {
+           "kid": "NsXymfIILEPR5Y0t",
+           "kty": "EC",
+           "x": "gXY4FApFJCj91Gpb1K9GEIouTq2X3L0K64Iq0ob4l_g",
+           "y": "l-6dcrIrFVdrzoY9cRJv9zNuFOR3MsDz6TSDhB0xEo4",
+           "crv": "P-256",
+           "x5c": [
+             "MIIDqjCCA1GgAwIBAgIGAZc6/V9qMAoGCCqGSM49BAMCMIGzMQsw..."
+           ]
+         }
+
+L'Entità Federata DEVE completare il processo di onboarding:
+
+  1. **Aggiornare e Pubblicare la Configurazione dell'Entità**:
+
+    Il contenuto dell'endpoint ``/.well-known/openid-federation`` deve essere aggiornato per includere i seguenti claim:
+
+     - Aggiungere un claim ``authority_hints`` con un Array JSON contenente l'Identificatore dell'Entità Federata dell'**Autorità di Federazione immediata** (Trust Anchor per l'onboarding diretto, o Intermediario per l'onboarding mediato) come definito in :ref:`trust-infrastructure:Ruoli di Federazione`.
+
+     - **Integrare i Trust Mark**: Includere i Trust Mark della Dichiarazione del Subordinato nella Configurazione dell'Entità usando il claim ``trust_marks`` come specificato in :ref:`trust-infrastructure:Entity Configuration Foglie e Intermediari`.
+
+     Esempio di aggiunta di authority_hints:
+
+     .. code-block:: json
+
+         {
+           "iat": 1718207217,
+           "exp": 1749743216,
+           "iss": "https://credentials.example.gov",
+           "sub": "https://credentials.example.gov",
+           "authority_hints": ["https://trust-anchor.example.gov"],
+           //...
+         }
+
+     Esempio di integrazione dei Trust Mark:
+
+     .. code-block:: json
+
+         "trust_marks": [
+           {
+             "trust_mark_type": "https://trust-anchor.example.gov/trust_marks/federation-entity/credential-issuer",
+             "trust_mark": "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL3RydXN0LWFuY2hvci5leGFtcGxlLmdvdiIsInN1YiI6Imh0dHBzOi8vY3JlZGVudGlhbC1pc3N1ZXIuZXhhbXBsZS5nb3YiLCJ0cnVzdF9tYXJrX3R5cGUiOiJodHRwczovL3RydXN0LWFuY2hvci5leGFtcGxlLmdvdi90cnVzdF9tYXJrcy9mZWRlcmF0aW9uLWVudGl0eS9jcmVkZW50aWFsLWlzc3VlciIsImlhdCI6MTcwMDAwMDAwMCwiZXhwIjoxNzMwMDAwMDAwfQ.abc123signature"
+           }
+         ]
+
+.. note::
+   Per aggiornare i Trust Mark dopo l'onboarding, l'entità può utilizzare l'endpoint fetch del proprio superiore immediato per ottenere tutti i Trust Mark aggiornati che la riguardano. Quando l'emittente del Trust Mark è diverso dall'entità superiore che ha registrato l'entità, le Entità Federate possono ottenere Trust Mark aggiornati in qualsiasi momento utilizzando l'endpoint Federation Trust Mark come definito in :ref:`trust-infrastructure:Endpoint API di Federazione`.
+
+Al completamento positivo della Fase 4, **l'onboarding dell'entità è completato con successo**. L'entità è ora operativa all'interno della federazione IT-Wallet e pronta per le attività operative.
+   
+
+.. note::
+   **Integrazione nel Registro della Federazione**: Al completamento positivo dell'onboarding, l'Identificatore dell'Entità Federata dell'entità diventa rilevabile tramite i meccanismi di listing del Trust Anchor (come definito in :ref:`trust-infrastructure:L'Infrastruttura di Trust`), indicando la partecipazione attiva alla federazione. L'entità diventa parte dell'infrastruttura di federazione dettagliata in :ref:`registry:Infrastruttura del Registro`.
+
+Trust Mark della Federazione IT-Wallet
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Le Entità Federate ricevono i Trust Mark della Federazione IT-Wallet al completamento positivo dell'onboarding. **I Trust Mark sono emessi dall'Autorità di Federazione** (Trust Anchor per l'onboarding diretto, Intermediario per l'onboarding mediato) e fungono da attestazioni verificabili sulla conformità ai profili tecnici IT-Wallet e/o alle politiche di autorizzazione.
+
+Tipologie e Schema dei Trust Mark
+""""""""""""""""""""""""""""""""""
+
+Le Entità POSSONO ricevere più Trust Mark per finalità diverse. Gli identificatori dei Trust Mark DEVONO seguire uno schema gerarchico che rispecchia l'ambito di autorizzazione:
 
 ``https://<federation_authority_domain>/trust_marks/<purpose>/<entity_type>``
 
 Dove:
 
   - ``<federation_authority_domain>``: Il dominio dell'Autorità di Federazione emittente.
-  - ``<purpose>``: Lo scopo del Trust Mark. Lo scopo ``federation-entity`` è **OBBLIGATORIO** per tutte le entità. Scopi aggiuntivi di Trust Mark POSSONO essere supportati, come ``authorization_policy`` per definizioni granulari dell'ambito operativo.
-  - ``<entity_type>``: Il tipo di entità destinataria (es., ``credential-issuer``, ``relying-party``, ``wallet-provider``).
+  - ``<purpose>``: La finalità del Trust Mark. La finalità ``federation-entity`` è **OBBLIGATORIA** per tutte le entità. Finalità aggiuntive dei Trust Mark POSSONO essere supportate, come ``authorization_policy`` per definizioni granulari dell'ambito operativo.
+  - ``<entity_type>``: La tipologia dell'entità destinataria (es. ``credential-issuer``, ``relying-party``, ``wallet-provider``).
 
-Struttura Trust Mark
-""""""""""""""""""""
+Struttura dei Trust Mark
+"""""""""""""""""""""""""
 
-I Trust Mark nell'Entity Configuration DEVONO essere rappresentati come oggetti JSON contenenti i seguenti claim:
+I Trust Mark nella Configurazione dell'Entità DEVONO essere rappresentati come oggetti JSON contenenti i seguenti claim:
 
-.. list-table:: Trust Mark Object Claims (nell'Entity Configuration)
+.. list-table:: Claim dell'Oggetto Trust Mark (nella Configurazione dell'Entità)
    :class: longtable
    :header-rows: 1
    :widths: 20 80
@@ -495,13 +627,13 @@ I Trust Mark nell'Entity Configuration DEVONO essere rappresentati come oggetti 
    * - **Claim**
      - **Descrizione**
    * - **trust_mark_type**
-     - **OBBLIGATORIO**. Identificativo del tipo di Trust Mark in accordo allo schema: ``https://<federation_authority_domain>/trust_marks/<purpose>/<entity_type>``.
+     - **OBBLIGATORIO**. Identificatore della tipologia di Trust Mark secondo lo schema: ``https://<federation_authority_domain>/trust_marks/<purpose>/<entity_type>``.
    * - **trust_mark**
      - **OBBLIGATORIO**. Un JSON Web Token firmato che rappresenta il Trust Mark emesso dall'Autorità di Federazione.
 
-Il JWT del Trust Mark (contenuto nel claim ``trust_mark`` sopra) include i seguenti claim:
+Il JWT del Trust Mark (contenuto nel claim ``trust_mark`` di cui sopra) include i seguenti claim:
 
-.. list-table:: Claim JWT Trust Mark
+.. list-table:: Claim del JWT del Trust Mark
    :class: longtable
    :header-rows: 1
    :widths: 20 80
@@ -509,44 +641,46 @@ Il JWT del Trust Mark (contenuto nel claim ``trust_mark`` sopra) include i segue
    * - **Claim**
      - **Descrizione**
    * - **iss**
-     - **OBBLIGATORIO**. Autorità di Federazione che emette il Trust Mark (superiore immediato: Trust Anchor o Intermediario).
+     - **OBBLIGATORIO**. Autorità di Federazione emittente il Trust Mark (superiore immediato: Trust Anchor o Intermediario).
    * - **sub**
-     - **OBBLIGATORIO**. Identificativo dell'Entità di Federazione del destinatario.
-   * - **id**
-     - **OBBLIGATORIO**. Identificativo unico del Trust Mark, DEVE corrispondere al claim ``trust_mark_type``.
+     - **OBBLIGATORIO**. Identificatore dell'Entità Federata del soggetto.
+   * - **trust_mark_type**
+     - **OBBLIGATORIO**. Identificatore univoco del Trust Mark, DEVE corrispondere al claim ``trust_mark_type``.
    * - **iat**
      - **OBBLIGATORIO**. Timestamp di emissione del Trust Mark.
    * - **exp**
      - **OBBLIGATORIO**. Timestamp di scadenza del Trust Mark.
    * - **organization_type**
-     - **OBBLIGATORIO**. Tipo di organizzazione dell'entità (``public`` o ``private``).
-   * - **id_code**
-     - **RACCOMANDATO**. Oggetto JSON con codici di identificazione (es., codice IPA per entità pubbliche, partita IVA).
+     - **OBBLIGATORIO**. Tipologia organizzativa dell'entità (``public`` o ``private``).
+   * - **vat_number**
+     - **RACCOMANDATO**. Partita IVA dell'entità (tipicamente per le organizzazioni private).
+   * - **legal_identifier**
+     - **RACCOMANDATO**. Numero o identificativo di registrazione legale dell'entità (es. numero di registrazione dell'impresa, codice fiscale).
+   * - **ipa_code**
+     - **RACCOMANDATO**. Codice IPA (Indice delle Pubbliche Amministrazioni) per le entità del settore pubblico.
    * - **organization_name**
-     - **RACCOMANDATO**. Nome completo dell'Entità Organizzativa.
+     - **RACCOMANDATO**. Denominazione completa dell'Entità Organizzativa.
    * - **email**
      - **RACCOMANDATO**. Email istituzionale o PEC dell'organizzazione.
    * - **logo_uri**
-     - **OBBLIGATORIO**. URL che punta al logo del :ref:`brand-identity:Trust Mark` per scopi UI/UX.
+     - **OBBLIGATORIO**. URL che punta al :ref:`brand-identity:Trust Mark` per scopi UI/UX.
    * - **ref**
      - **OPZIONALE**. URL con informazioni web aggiuntive sul Trust Mark.
 
-I seguenti esempi non normativi illustrano diversi JWT di Trust Mark che attestano l'appartenenza alla federazione con differenti politiche di autorizzazione:
+I seguenti esempi non normativi illustrano diversi contenuti del JWT del Trust Mark per l'appartenenza alla federazione e diverse politiche di autorizzazione:
 
 .. code-block:: json
 
    {
      "iss": "https://trust-anchor.eid-wallet.example.it",
      "sub": "https://ci.public-authority.gov.example",
-     "id": "https://trust-anchor.eid-wallet.example.it/trust_marks/federation-entity/credential-issuer",
+     "trust_mark_type": "https://trust-anchor.eid-wallet.example.it/trust_marks/federation-entity/credential-issuer",
      "iat": 1718207217,
      "exp": 1749743216,
      "organization_type": "public",
-     "id_code": {
-       "ipa_code": "pub_001",
-       "legal_identifier": "12345678901"
-     },
-     "organization_name": "Servizi Autorità Pubblica",
+     "ipa_code": "pub_001",
+     "legal_identifier": "12345678901",
+     "organization_name": "Public Authority Services",
      "email": "registry@public-authority.gov.example"
    }
 
@@ -555,21 +689,19 @@ I seguenti esempi non normativi illustrano diversi JWT di Trust Mark che attesta
    {
      "iss": "https://trust-anchor.eid-wallet.example.it",
      "sub": "https://rental.cars.example.com",
-     "id": "https://trust-anchor.eid-wallet.example.it/trust_marks/authorization_policy/relying-party",
+     "trust_mark_type": "https://trust-anchor.eid-wallet.example.it/trust_marks/authorization_policy/relying-party",
      "iat": 1718207217,
      "exp": 1749743216,
      "organization_type": "private",
-     "id_code": {
-       "vat_number": "IT12345678901",
-       "legal_identifier": "12345678901"
-     },
+     "vat_number": "IT12345678901",
+     "legal_identifier": "12345678901",
      "organization_name": "Premium Car Rental Services Ltd",
      "email": "compliance@rental.cars.example.com",
      "authorized_claims": ["given_name", "family_name", "driving_privileges"],
      "authorized_credential_types": ["mobile-driving-license"],
      "scope_restrictions": {
        "domains": ["MOBILITY_TRAVEL"],
-       "purposes": ["DRIVING_RIGHTS"]
+       "purposes": ["DRIVING_RIGHTS_VERIFICATION"]
      }
    }
 
@@ -578,25 +710,23 @@ I seguenti esempi non normativi illustrano diversi JWT di Trust Mark che attesta
    {
      "iss": "https://trust-anchor.eid-wallet.example.it",
      "sub": "https://private-badge.ci.example.com",
-     "id": "https://trust-anchor.eid-wallet.example.it/trust_marks/authorization_policy/credential-issuer",
+     "trust_mark_type": "https://trust-anchor.eid-wallet.example.it/trust_marks/authorization_policy/credential-issuer",
      "iat": 1718207217,
      "exp": 1749743216,
      "organization_type": "private",
-     "id_code": {
-       "vat_number": "IT98765432101",
-       "legal_identifier": "98765432101"
-     },
+     "vat_number": "IT98765432101",
+     "legal_identifier": "98765432101",
      "organization_name": "Badge Services Ltd",
      "email": "compliance@rprivate-badge.ci.example.com",
      "authorized_claims": ["given_name", "family_name", "company_id"],
      "authorized_credential_types": ["example-company-badge"],
      "scope_restrictions": {
-       "domains": ["MEMBERSHIP"],
-       "purposes": ["ASSOCIATION"]
+       "domains": ["EMPLOYMENT"],
+       "purposes": ["ACCESS_PERMIT"]
      }
    }
 
-Le Entità di Federazione DEVONO integrare i Trust Mark nella loro Entity Configuration utilizzando il claim ``trust_marks`` come specificato in :ref:`trust-infrastructure:Entity Configuration Foglie e intermediari`. Le entità POSSONO ricevere più Trust Mark per diversi ambiti autorizzativi.
+Le Entità Federate DEVONO integrare i Trust Mark nella propria Configurazione dell'Entità utilizzando il claim ``trust_marks`` come specificato in :ref:`trust-infrastructure:Entity Configuration Foglie e Intermediari`. Le Entità POSSONO ricevere più Trust Mark per diversi ambiti di autorizzazione.
 
 .. code-block:: json
 
@@ -604,7 +734,7 @@ Le Entità di Federazione DEVONO integrare i Trust Mark nella loro Entity Config
      "iss": "https://credentials.example.gov",
      "sub": "https://credentials.example.gov",
      "jwks": { 
-      // jwks content
+      // contenuto jwks
      },
      "authority_hints": ["https://trust-anchor.eid-wallet.example.it"],
      "trust_marks": [
@@ -614,7 +744,7 @@ Le Entità di Federazione DEVONO integrare i Trust Mark nella loro Entity Config
        }
      ],
      "metadata": { 
-      // Metadata content
+      // contenuto dei Metadati
      }
    }
 
@@ -624,7 +754,7 @@ Le Entità di Federazione DEVONO integrare i Trust Mark nella loro Entity Config
      "iss": "https://healthcare-ci.example.gov",
      "sub": "https://healthcare-ci.example.gov",
      "jwks": { 
-           // jwks content
+      // contenuto jwks
      },
      "authority_hints": ["https://healthcare.intermediate.eid-wallet.example.it"],
      "trust_marks": [
@@ -634,16 +764,18 @@ Le Entità di Federazione DEVONO integrare i Trust Mark nella loro Entity Config
        }
      ],
      "metadata": { 
-      // Metadata content
-     }
+      // contenuto dei Metadati  
+    }
    }
 
-Validazione Trust Mark
-""""""""""""""""""""""
+Validazione dei Trust Mark
+"""""""""""""""""""""""""""
 
-I partecipanti alla federazione validano lo stato del Trust Mark attraverso due meccanismi:
+I partecipanti alla federazione validano lo stato dei Trust Mark tramite due meccanismi:
 
-1. **Validazione Statica**: Verifica crittografica utilizzando la chiave pubblica dell'Autorità di Federazione emittente dalla catena di trust.
-2. **Validazione Dinamica**: Verifica dello stato in tempo reale tramite l'endpoint ``/trust_mark_status`` dell'Autorità di Federazione emittente come definito in :ref:`trust-infrastructure:Endpoint API di Federazione`.
+1. **Validazione Statica**: Verifica crittografica utilizzando la chiave pubblica dell'Autorità di Federazione emittente dalla Catena di Fiducia.
+2. **Validazione Dinamica**: Verifica dello stato in tempo reale, contro eventuali revoche, utilizzando l'endpoint ``/trust_mark_status`` dell'Autorità di Federazione come definito in :ref:`trust-infrastructure:Endpoint API di Federazione`.
 
-Per le procedure complete di gestione dei certificati X.509, inclusa la validazione delle catene, la verifica della revoca e la gestione del ciclo di vita, vedere :ref:`x5c-evaluation:Operazioni di Gestione dei Certificati X.509`.
+Per le procedure complete di gestione dei Certificati X.509, inclusa la validazione della catena, la verifica delle revoche e la gestione del ciclo di vita, vedere :ref:`x5c-evaluation:Operazioni di Gestione dei Certificati X.509`.
+
+

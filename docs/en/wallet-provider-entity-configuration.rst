@@ -50,7 +50,7 @@ Wallet Provider Entity Configuration JWT Payload
     * - ``jwks``
       - REQUIRED. A JSON Web Key Set (JWKS) representing the public part of the Federation Entity signing keys. The corresponding private key is used by the Wallet Solution to sign the Entity Configuration about itself.
     * - ``metadata``
-      - REQUIRED.JSON object that represents the Entity's Types and the metadata for those Entity Types. Each member name of the JSON object is an Entity Type Identifier, and each value MUST be a JSON object containing metadata parameters according to the metadata schema of the Entity Type. It MUST contain the ``wallet_solution`` and OPTIONALLY the ``federation_entity`` metadata.
+      - REQUIRED.JSON object that represents the Entity's Types and the metadata for those Entity Types. Each member name of the JSON object is an Entity Type Identifier, and each value MUST be a JSON object containing metadata parameters according to the metadata schema of the Entity Type. It MUST contain the ``wallet_solution`` and the ``federation_entity`` metadata.
 
 
 .. note::

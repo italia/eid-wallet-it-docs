@@ -546,7 +546,7 @@ The JWT payload parameters are described herein:
   * - **client_id**
     - REQUIRED. Unique Identifier of the Relying Party.
   * - **client_metadata**
-    - REQUIRED. A JSON object containing the Relying Party metadata values, that SHOULD include the following parameters:
+    - REQUIRED. A JSON object containing the Relying Party metadata values as defined in Section 5.1 of `OpenID4VP`_, that SHOULD include the following parameters:
         - **vp_formats_supported**. Used by the Wallet Instance to determine the supported Verifiable Presentation formats.
         - **encrypted_response_enc_values_supported**. JSON array listing the supported JWE ``enc`` algorithms for encrypted Authorization Responses in ``direct_post.jwt``.
         - **jwks**. JSON Web Key Set used by the Wallet Instance for encrypting the Authorization Response or for key agreement. Keys contained in this set are request-specific and identified by their ``kid`` value.
@@ -554,7 +554,7 @@ The JWT payload parameters are described herein:
   * - **response_mode**
     - REQUIRED. It MUST be set to ``direct_post.jwt`` (:ref:`RPR-106 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`).
   * - **dcql_query**
-    - REQUIRED. Object representing a request for a presentation of Credentials, according to the DCQL query language defined in Section 6 of `OpenID4VP`_ and aligned with `OPENID4VC-HAIP`_.
+    - REQUIRED. Object representing a request for a presentation of Credentials, according to the DCQL query language defined in Section 6 of `OpenID4VP`_.  
   * - **transaction_data**
     - OPTIONAL. Non-empty array of JSON objects, each describing a transaction that the Relying Party requests the User to authorize. Each transaction object includes: 
         - **type**.  String that identifies the transaction data type.
@@ -598,7 +598,7 @@ The JWT payload parameters are described herein:
 
 Authorization Response
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-After obtaining the User authorization and consent for the presentation of the Digital Credentials, the Wallet Instance sends the Authorization Response to the Relying Party ``response_uri`` endpoint using an HTTP request with the method POST (:ref:`WP_091 <wallet-credential-presentation-testcases>`). The response content MUST be encrypted following the high-assurance profile defined in `OPENID4VC-HAIP`_, utilizing response mode ``direct_post.jwt`` per `OpenID4VP`_ Section 8.3.  This encryption requires the use of ECDH-ES key agreement on P-256 curve and AES-GCM content encryption (``A128GCM`` or ``A256GCM``, preferring ``A256GCM`` when both available), and using the request-specific public key of Relying Party selected from ``client_metadata.jwks``, that is identified by its ``kid`` (:ref:`WP_092 <wallet-credential-presentation-testcases>`).
+After obtaining the User authorization and consent for the presentation of the Digital Credentials, the Wallet Instance sends the Authorization Response to the Relying Party ``response_uri`` endpoint using an HTTP request with the method POST (:ref:`WP_091 <wallet-credential-presentation-testcases>`). The response content MUST be encrypted following the high-assurance profile defined in `OPENID4VC-HAIP`_, utilizing response mode ``direct_post.jwt`` per `OpenID4VP`_ Section 8.3.  This encryption requires the use of ECDH-ES key agreement on P-256 curve and AES-GCM content encryption (``A128GCM`` or ``A256GCM``, preferring ``A256GCM`` when both available), and using the request-specific public key of Relying Party selected from ``client_metadata.jwks``, that is identified by its ``kid`` (:ref:`WP_092 <wallet-credential-presentation-testcases>`). The Verifier’s public key used to encrypt the Authorization Response is retrieved by the Wallet from the JWKs in the ``client_metadata``. According to Section 14.5 of `OpenID4VP`_ it is RECOMMENDED the usage of ephemeral keys.
 
 .. note::
     **Why the response is encrypted?**
@@ -721,7 +721,6 @@ In the following table are listed error codes and descriptions that are supporte
      - The Relying Party’s metadata has been resolved based on the Client Identifier (using the ``openid_federation`` or ``x509_hash`` prefix), but cannot be authorized due to trust validation failures or is not a valid participant of the federation. `OID-FED`_ and `OpenID4VP`_
    * - ``invalid_transaction_data``
      - One or more objects in the ``transaction_data`` structure are invalid. For instance, those objects contain unknown or unsupported types, malformed (e.g., it is an object of a known type but containing unknown fields or contains fields of the wrong type for the transaction data type) or missing fields, invalid values (e.g., the ``credential_ids`` does not match), or references to unavailable Credentials. `OpenID4VP`_
-
 
 Relying Party Response
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
