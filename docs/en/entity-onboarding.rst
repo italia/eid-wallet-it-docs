@@ -21,7 +21,6 @@ The onboarding framework defines technical registration procedures based on the 
   1. Authentic Sources follow data-focused registration processes.
   2. Operational Entities (Credential Issuers, Relying Parties, Wallet Providers) follow trust establishment procedures.
 
-
 Entity Types and Onboarding Pathways
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -79,7 +78,6 @@ The onboarding process follows a structured multi-phase approach:
 
 All registry components and their interactions are detailed in :ref:`registry:Registry Infrastructure`.
 
-
 Authentic Sources Registration Process
 --------------------------------------
 
@@ -136,7 +134,7 @@ During registration, Authentic Sources MUST provide the following information:
      - **REQUIRED**. Available claims:
 
        - Array of claim identifiers from Claims Registry that the Authentic Source provides (e.g., ``["given_name", "family_name", "driving_privileges"]``).
-       - Intended Purposes for verification (e.g. ``["DRIVING_RIGHTS"]``).
+       - Intended Purposes for verification, using taxonomy purpose identifiers (e.g. ``["DRIVING_RIGHTS_VERIFICATION"]``).
       
    * - **API Implementation Details**
      - **REQUIRED**. Integration information details:
@@ -157,7 +155,6 @@ During registration, Authentic Sources MUST provide the following information:
        - Logo URI with cryptographic integrity verification for Digital Credential branding.
        - Visual template URI with integrity verification for Digital Credential presentation.
 
-
 Authentic Source Registration Procedure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -170,9 +167,170 @@ The Authentic Source registration follows a technical process as described below
 
 **Step 1 - Registration Package Preparation**: The Entity prepares registration information according to the requirements table above. A non-normative example of information in JSON format is provided below. 
 
+.. list-table:: First-level Fields of the Authentic Source Registration
+   :class: longtable
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Field Name**
+     - **Description**
+   * - **id**
+     - REQUIRED. Unique identifier of the Authentic Source Registry (e.g., ``urn:authentic-sources:it-wallet``).
+   * - **version**
+     - REQUIRED. The version of the Authentic Source Registry (e.g., ``1.0.0``).
+   * - **last_modified**
+     - REQUIRED. The timestamp indicating when the list was last updated (e.g., ``2025-03-15T12:00:00Z``).
+   * - **localization**
+     - REQUIRED. Localization configuration object containing:
+
+       * **default_locale**: Default locale code (e.g., ``it``).
+       * **available_locales**: Array of supported locale codes (e.g., ``["en", "it"]``).
+       * **base_uri**: Base URI for localization bundle retrieval (e.g., ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/authentic-sources/``).
+       * **version**: Version of the localization bundle format.
+   * - **authentic_sources**
+     - REQUIRED. A JSON Array where each entry is a JSON Object representing an Authentic Source entity. Each object contains the parameters defined in the "Authentic Sources Parameters" table below, including entity identification, organizational information, data capabilities, and integration methods.
+
+.. list-table:: Authentic Sources Parameters
+   :class: longtable
+   :widths: 25 15 60
+   :header-rows: 1
+
+   * - **Parameter**
+     - **Type**
+     - **Description**
+   * - **entity_id**
+     - string
+     - REQUIRED. Unique identifier following the normative schema: ``https://{organization_domain}[/{optional_path}]``.
+   * - **organization_info**
+     - JSON object
+     - REQUIRED. Legal entity details and organizational metadata.
+   * - **organization_info.organization_name**
+     - JSON Object Array
+     - REQUIRED. Object array containing the organization name in multiple languages. It MUST contain ``locale`` and ``name`` claims.
+   * - **organization_info.organization_type**
+     - string
+     - REQUIRED. Entity classification: ``"public"`` or ``"private"``.
+   * - **organization_info.ipa_code**
+     - string
+     - REQUIRED only for Public AS. IPA registration code for government entities.
+   * - **organization_info.legal_identifier**
+     - string
+     - REQUIRED. Legal registration identifier (Fiscal Code/VAT Number, or equivalent national identifier for foreign entities).
+   * - **organization_info.homepage_uri**
+     - string
+     - REQUIRED. URL pointing to the organization's homepage.
+   * - **organization_info.contacts**
+     - String Array
+     - REQUIRED. Array of contact email addresses for at least one user-support, one application, and one systems specialist.
+   * - **organization_info.dpa_contact**
+     - string
+     - REQUIRED. An e-mail address of Authentic Source DPA.
+   * - **organization_info.policy_uri**
+     - string
+     - REQUIRED. URL to privacy policy document.
+   * - **organization_info.tos_uri**
+     - string
+     - REQUIRED only for Private AS. URL to terms of service document.
+   * - **organization_info.organization_country**
+     - string
+     - REQUIRED. Two-letter ISO 3166-1 alpha-2 country code of the organization.
+   * - **organization_info.logo_uri**
+     - string
+     - OPTIONAL. URL to the organization's logo image.
+   * - **organization_info.logo_uri#integrity**
+     - string
+     - CONDITIONAL. Cryptographic digest of the logo image resource for integrity verification. REQUIRED if ``logo_uri`` is present. Format: ``{digest_method}-{digest_value}`` (e.g., ``"sha-256-abc123..."``).
+   * - **organization_info.logo_alt_text_l10n_id**
+     - string
+     - OPTIONAL. Alternative text for the organization's logo image.
+   * - **organization_info.logo_extended_uri**
+     - string
+     - OPTIONAL. URL to the organization's extended logo image.
+   * - **organization_info.logo_extended_uri#integrity**
+     - string
+     - CONDITIONAL. Cryptographic digest of the extended logo image resource for integrity verification. REQUIRED if ``logo_extended_uri`` is present. Format: ``{digest_method}-{digest_value}`` (e.g., ``"sha-256-abc123..."``).
+   * - **organization_info.logo_extended_alt_text_l10n_id**
+     - string
+     - OPTIONAL. Alternative text for the organization's extended logo image.
+   * - **data_capabilities**
+     - JSON Objects Array
+     - REQUIRED. Array containing data capability specifications.
+   * - **data_capabilities[].dataset_id**
+     - string
+     - REQUIRED. The unique identifier of the dataset within the scope of the Authentic Source, which MAY be used as a query parameter for the ``GetAttributeClaims`` service.
+   * - **data_capabilities[].data_origin**
+     - JSON Object Array
+     - REQUIRED. Object array containing the human-readable name of the data origin or department providing the data in multiple languages. It MUST contain ``locale`` and ``name`` claims.
+   * - **data_capabilities[].intended_purposes**
+     - String Array
+     - REQUIRED. Business purposes served, using taxonomy purpose identifiers (e.g., ``["IDENTITY_VERIFICATION", "DRIVING_RIGHTS_VERIFICATION"]``).
+   * - **data_capabilities[].available_claims**
+     - String Array
+     - REQUIRED. Claims available from this data capability.
+   * - **data_capabilities[].available_claims.claim_name**
+     - string
+     - REQUIRED. It Contains the name of the claim.
+   * - **data_capabilities[].available_claims.order**
+     - number
+     - REQUIRED. Defines the order in which the information would be shown.
+   * - **data_capabilities[].available_claims.mandatory**
+     - boolean
+     - REQUIRED. Defines if a claim is always available or not.
+   * - **data_capabilities[].integration_method**
+     - string
+     - REQUIRED. Authorization framework used for data access. MUST be ``"pdnd"`` for Public AS. Private AS MAY use other authorization frameworks such as: ``"oauth2"``, ``"api_key"``, ``"mtls"``, etc.
+   * - **data_capabilities[].integration_endpoint**
+     - string
+     - REQUIRED. Service access point (PDND endpoint for Public AS, API endpoint for Private AS).
+   * - **data_capabilities[].api_specification**
+     - string
+     - REQUIRED. URL to `OAS3`_ specification document for this data capability.
+   * - **data_capabilities[].data_provision**
+     - JSON object
+     - OPTIONAL. Data provision capabilities and timing specifications.
+   * - **data_capabilities[].data_provision.immediate_flow**
+     - boolean
+     - REQUIRED. Indicates if the Authentic Source supports immediate data provision.
+   * - **data_capabilities[].data_provision.deferred_flow**
+     - boolean
+     - REQUIRED. Indicates if the Authentic Source supports deferred data provision.
+   * - **data_capabilities[].data_provision.max_response_time_minutes**
+     - integer
+     - CONDITIONAL. Maximum time in minutes for the Authentic Source to respond to a deferred data provision request. REQUIRED if ``deferred_flow`` is ``true``.
+   * - **data_capabilities[].data_provision.notification_methods**
+     - String Array
+     - CONDITIONAL. Array of notification methods supported by the Authentic Source for deferred data provision, such as ``"push"``, ``"poll"``. REQUIRED if ``deferred_flow`` is ``true``.
+   * - **data_capabilities[].user_information**
+     - JSON object Array
+     - OPTIONAL. Object array containing information about the data capability relevant to the User in multiple languages. This string MUST be provided by the Authentic Source to the Trust Anchor during onboarding. The Markdown formatting can be plain text or a combination of text and links. For example, if the Authentic Source's database only contains data registered *after* a specific date, this information MUST be conveyed through this key. It MUST contain ``locale`` and ``description`` claims.
+   * - **data_capabilities[].administrative_expiration_user_info**
+     - JSON object Array
+     - OPTIONAL. Object array containing information in multiple languages for the User about the administrative expiration status of the dataset and, eventually recommended actions. This string MUST be provided by the Authentic Source to the Trust Anchor during onboarding. The Markdown formatting can be plain text or a combination of text and links. It MUST contain ``locale``, ``title`` and ``description`` claims.
+   * - **data_capabilities[].allowed_states**
+     - JSON object Array
+     - OPTIONAL. Object array containing information in multiple languages for the User about the current status of the dataset and, eventually recommended actions. The status values are defined in the :ref:`credential-revocation:Token Status Lists` Section. It MUST contain ``locale``, ``title``, ``description`` and ``<Status-Type-Value>`` claims.
+   * - **data_capabilities[].service_documentation**
+     - string
+     - OPTIONAL. URL pointing to the Authentic Source service documentation.
+   * - **data_capabilities[].update_frequency**
+     - string
+     - OPTIONAL. Indicates how frequently the Authentic Source updates its data. Possible values: ``"real_time"`` (near real-time updates, typically within minutes), ``"daily"``, ``"weekly"``, ``"monthly"``, ``"on_demand"``.
+   * - **data_capabilities[].logo_uri**
+     - string
+     - OPTIONAL. URL to the logo image related to the data.
+   * - **data_capabilities[].logo_uri#integrity**
+     - string
+     - CONDITIONAL. Cryptographic digest of the logo image resource for integrity verification. REQUIRED if ``logo_uri`` is present. Format: ``{digest_method}-{digest_value}`` (e.g., ``"sha-256-abc123..."``).
+   * - **data_capabilities[].background_color**
+     - string
+     - OPTIONAL. String value of the background color related to be displayed together with the data.
+   * - **data_capabilities[].contacts**
+     - String Array
+     - OPTIONAL. Array of customer service contact email addresses.
+
 .. literalinclude:: ../../examples/as-registration-example.json
    :language: json
-   :caption: Authentic Source Registration example
+   :caption: Non-normative Authentic Source Registration example
 
 **Step 2 - Technical Validation**: Supervisory Body validates submitted registration focusing on:
 
@@ -194,7 +352,6 @@ The Authentic Source registration follows a technical process as described below
 .. note::
    Authentic Source registration is complete and independent of Credential Issuer integration. Authentic Sources become discoverable immediately upon Authentic Source Registry publication, while Credential availability to end Users depends on administrative Authentic Source to Credential Issuer authorization followed by successful technical integration and Supervisory Body policy approval for catalog eligibility.
 
-
 Authentic Source to Credential Issuer Authorization Process
 -----------------------------------------------------------
 
@@ -206,7 +363,6 @@ Technical integration encompasses:
 - **Claims Mapping Validation**: Verification that Credential Issuer implementation correctly maps Authentic Source data responses to standardized Claims Registry identifiers.
 - **Data Flow Testing**: Validation of immediate or deferred data provision capabilities and error handling mechanisms.
 - **Security Implementation**: Configuration of authentication, authorization, and audit logging as required by Authentic Source security standards.
-
 
 Federation Entities Onboarding Process
 ---------------------------------------
@@ -231,7 +387,6 @@ Therefore, Federation Entities MAY be onboarded through different paths:
 
   - **Direct Trust Anchor Onboarding**: Entity directly registers with the Trust Anchor.
   - **Intermediate-mediated Onboarding**: Entity registers with an appropriate Intermediate.
-
 
 Federation Onboarding Prerequisites
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -289,8 +444,6 @@ The federation onboarding follows a structured 4-step procedure, it can be perfo
     :width: 99%
     :alt: Federation entity onboarding process showing the 4-step procedure
     :caption: `Federation Entity Onboarding Process. <https://www.plantuml.com/plantuml/svg/dLHHRnit37w_Nq7qOKYmfF6wz646l3NmqY4BXXPEr-t1G41BF5khZhf9L5B_-vqi7quvtu1XRmSToUyZFtvy5mIznCR2UzBaKOnZk6KnieSFl77ejU4jVFHEKGWLHd4ScmtvgcgxHADCYopmwYJx5M20clurwYRApla-KB2g5Wju46hXktc9lAA_8mM1XxXfJ0WfTR6egfhWyaSGdESV0cv8yJbbpMV7Hkv-le2FSMEDWdlQmwz_t5_0yc5rFc2-cSCKD_YCrkZyYAnXILvCRHGAmLq84LdHWOvWJ-SpULFlmTFM13dMCrmxtno-oyXSc_fnBntNPXkFETZnlthzJDPUVc7tp5Uk9JRwiXve4klM6PQYvatRsZqq9AXH45fdZJ8KuDd83XG6XOS9KLsJAlDICmH_ldux-m5KqMJ7UyqdsXR3h2gqKeufH9KsfOws0W3843NDNynExT0mU0gjuq23K2Nqju2z3ELxEA_81YeXQpIMz0XkHN-HIhzpxqOJfnAamQHUGqMi1_s_dq-hy7jxK2XflwBWx1Fr2rbiOOBBWPD5vck-X1kjXtuUTuObWB9eclxdrxSgFnor6azhmChJ3pk81qmDjyl_i2s3O_fE2fzS-VpqKuYR1R4aZaP_8pu6UKHM7Us5OFTKMEPwABJAGkOv5TvTkgQrbD179bcHwkAxyahWAGa91wZSQH7t2t6YJwKvFnqYVqF_9MqdPBRbAhEoKLCPPpXT2PT8fM8FWa8DiKmX1RDbqjsD-9I5A8XThFdfw5azU2prZCbsgUCJvsL_z8CQp05dRsOp-71_VhAsERBtHYRHiUbKAgXqxZYbaciDEhydKRlfpfFcTVhzKl4ncydSJ6aORu6QScw_YaSbBtJohfckDSgzOw6jHncfDschVY2FJHTqD5FcV-gKsZ3Q_tjdyxtfXSd71iwkPxEhwzdrU6AttZi_KYyV7107Hvlbs_EEMCV6_WC0>`_
-
-
 
 **Step 1 - Onboarding Request Submission**: Federation Entity initiates the onboarding process by submitting a technical registration request including the following information.
 
@@ -377,7 +530,6 @@ Example fetch request:
 .. note::
    If the ``/fetch`` endpoint responds with status code set to ``400`` or ``404``, the entity MUST resolve the issues described in the response message, before calling the fetch endpoint again. 
 
-
 **Step 4: Entity Configuration Update and Onboarding Completion**
 
 Following the fetch request, the **Federation Authority** returns the entity's Subordinate Statement, which is a signed JWT containing:
@@ -423,7 +575,6 @@ The Federation Entity MUST complete the onboarding process by:
            "authority_hints": ["https://trust-anchor.example.gov"],
            //...
          }
-
 
      Example Trust Marks integration:
 
@@ -480,7 +631,6 @@ Trust Marks in Entity Configuration MUST be represented as JSON objects containi
    * - **trust_mark**
      - **REQUIRED**. A signed JSON Web Token representing the Trust Mark issued by the Federation Authority.
 
-
 The Trust Mark JWT (contained in the ``trust_mark`` claim above) includes the following claims:
 
 .. list-table:: Trust Mark JWT Claims
@@ -517,7 +667,6 @@ The Trust Mark JWT (contained in the ``trust_mark`` claim above) includes the fo
    * - **ref**
      - **OPTIONAL**. URL with additional web information about the Trust Mark.
 
-
 The following non-normative examples illustrate different Trust Mark JWT contents for federation membership and different authorization policies:
 
 .. code-block:: json
@@ -552,7 +701,7 @@ The following non-normative examples illustrate different Trust Mark JWT content
      "authorized_credential_types": ["mobile-driving-license"],
      "scope_restrictions": {
        "domains": ["MOBILITY_TRAVEL"],
-       "purposes": ["DRIVING_RIGHTS"]
+       "purposes": ["DRIVING_RIGHTS_VERIFICATION"]
      }
    }
 
@@ -572,15 +721,12 @@ The following non-normative examples illustrate different Trust Mark JWT content
      "authorized_claims": ["given_name", "family_name", "company_id"],
      "authorized_credential_types": ["example-company-badge"],
      "scope_restrictions": {
-       "domains": ["MEMBERSHIP"],
-       "purposes": ["ASSOCIATION"]
+       "domains": ["EMPLOYMENT"],
+       "purposes": ["ACCESS_PERMIT"]
      }
    }
 
-
-
 Federation Entities MUST integrate Trust Marks in their Entity Configuration using the ``trust_marks`` claim as specified in :ref:`trust-infrastructure:Entity Configuration Leaves and Intermediates`. Entities MAY receive multiple Trust Marks for different authorization scopes.
-
 
 .. code-block:: json
 
@@ -602,7 +748,6 @@ Federation Entities MUST integrate Trust Marks in their Entity Configuration usi
      }
    }
 
-
 .. code-block:: json
 
    {
@@ -623,7 +768,6 @@ Federation Entities MUST integrate Trust Marks in their Entity Configuration usi
     }
    }
 
-
 Trust Mark Validation
 """""""""""""""""""""
 
@@ -633,6 +777,5 @@ Federation participants validate Trust Mark status through two mechanisms:
 2. **Dynamic Validation**: Real-time status verification, against any revocations, using the Federation Authority's ``/trust_mark_status`` endpoint as defined in :ref:`trust-infrastructure:Federation API endpoints`.
 
 For comprehensive X.509 Certificate management procedures, including chain validation, revocation verification, and lifecycle management, see :ref:`x5c-evaluation:X.509 Certificate Management Operations`.
-
 
 

@@ -21,10 +21,10 @@ The HTTP POST method MUST use the parameters in the message body encoded in ``ap
       - **Description**
       - **Reference**
     * - **client_id**
-      - MUST be set to the thumbprint of the ``jwk`` value in the ``cnf`` parameter inside the Wallet App Attestation.
+      - MUST be set to the thumbprint of the ``jwk`` value in the ``cnf`` parameter inside the Wallet Instance Attestation.
       - :rfc:`6749`
     * - **request**
-      - It MUST be a signed JWT. The private key corresponding to the public one in the ``cnf`` parameter inside the Wallet App Attestation MUST be used for signing the Request Object.
+      - It MUST be a signed JWT. The private key corresponding to the public one in the ``cnf`` parameter inside the Wallet Instance Attestation MUST be used for signing the Request Object.
       - `OpenID Connect Core. Section 6 <https://openid.net/specs/openid-connect-core-1_0.html#JWTRequests>`_
 
 The Pushed Authorization Endpoint is protected with OAuth 2.0 Attestation-based Client Authentication [`OAUTH-ATTESTATION-CLIENT-AUTH`_], therefore
@@ -36,14 +36,14 @@ the request to the Credential Issuer authorization endpoint MUST use the followi
     :header-rows: 1
 
     * - **OAuth-Client-Attestation**
-      - It MUST be set to a value containing the Wallet App Attestation JWT.
+      - It MUST be set to a value containing the Wallet Instance Attestation JWT.
       - `OAUTH-ATTESTATION-CLIENT-AUTH`_.
     * - **OAuth-Client-Attestation-PoP**
-      - It MUST be set to a value containing the Wallet App Attestation JWT Proof of Possession.
+      - It MUST be set to a value containing the Wallet Instance Attestation JWT Proof of Possession.
       - `OAUTH-ATTESTATION-CLIENT-AUTH`_.
 
 .. note::
-  Clients SHOULD select the algorithms for the Wallet App Attestation and its proof of possession according to the Authorization Server metadata fields
+  Clients SHOULD select the algorithms for the Wallet Instance Attestation and its proof of possession according to the Authorization Server metadata fields
   ``client_attestation_signing_alg_values_supported`` and ``client_attestation_pop_signing_alg_values_supported`` documented in :ref:`credential-issuer-metadata:Metadata for oauth_authorization_server`.
 
 
@@ -62,7 +62,7 @@ The JWT *Request Object* has the following JOSE header parameters:
       - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms listed in the Section :ref:`algorithms:Cryptographic Algorithms` and MUST NOT be set to ``none`` or any symmetric algorithm (MAC) identifier.
       - :rfc:`7516#section-4.1.1`.
     * - **kid**
-      - Unique identifier of the ``jwk`` inside the ``cnf`` claim of Wallet App Attestation as base64url-encoded JWK Thumbprint value.
+      - Unique identifier of the ``jwk`` inside the ``cnf`` claim of Wallet Instance Attestation as base64url-encoded JWK Thumbprint value.
       - :rfc:`7638#section_3`.
 
 .. note::
@@ -136,7 +136,7 @@ The ``request`` JWT payload contained in the HTTP POST message is given with the
 .. note::
   If the request cointains scope value and the *authorization_details* parameter the Credential Issuer MUST interpret these individually. However, if both request the same Credential type, then the Credential Issuer MUST follow the request as given by the authorization details object.
 
-The JOSE header of the Wallet App Attestation proof of possession, contained in the HTTP Request headers, MUST contain:
+The JOSE header of the Wallet Instance Attestation proof of possession, contained in the HTTP Request headers, MUST contain:
 
 .. _table_jwt_pop:
 .. list-table::
@@ -154,7 +154,7 @@ The JOSE header of the Wallet App Attestation proof of possession, contained in 
       - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms listed in the Section :ref:`algorithms:Cryptographic Algorithms` and MUST NOT be set to ``none`` or any symmetric algorithm (MAC) identifier.
       - :rfc:`7516#section-4.1.1`.
 
-The body of the Wallet App Attestation proof of possession JWT, contained in the HTTP Request headers, contains:
+The body of the Wallet Instance Attestation proof of possession JWT, contained in the HTTP Request headers, contains:
 
 .. list-table::
     :class: longtable
@@ -237,7 +237,7 @@ In the following table are listed HTTP Status Codes and related error codes that
       - The Credential Issuer cannot fulfill the request because the requested scope is invalid or unknown. (:rfc:`6749#section-5.2`).
     * - *400 Bad Request* [REQUIRED]
       - ``use_fresh_attestation``
-      - The Wallet App Attestation JWT is not fresh enough to be acceptable by the server.  Section 6.2 of `OAUTH-ATTESTATION-CLIENT-AUTH`_.
+      - The Wallet Instance Attestation JWT is not fresh enough to be acceptable by the server.  Section 6.2 of `OAUTH-ATTESTATION-CLIENT-AUTH`_.
     * - *401 Unauthorized* [REQUIRED]
       - ``invalid_client``
       - The Credential Issuer cannot fulfill the request because of Client Authentication failed (for example in case of unknown client, no parameters Client Authentication included, or unsupported authentication method). (:rfc:`6749#section-5.2`).
@@ -544,7 +544,7 @@ In the following table are listed HTTP Status Codes and related error codes that
       - The Credential Issuer cannot fulfill the request because of invalid *DPoP proof*. Section 5 of [:rfc:`9449`].
     * - *400 Bad Request* [REQUIRED]
       - ``use_fresh_attestation``
-      - The Wallet App Attestation JWT is not fresh enough to be acceptable by the server.  Section 6.2 of `OAUTH-ATTESTATION-CLIENT-AUTH`_.
+      - The Wallet Instance Attestation JWT is not fresh enough to be acceptable by the server.  Section 6.2 of `OAUTH-ATTESTATION-CLIENT-AUTH`_.
     * - *401 Unauthorized* [REQUIRED]
       - ``invalid_client``
       - The Credential Issuer cannot fulfill the request because of invalid parameters Client Authentication failed (for example in case of unknown client, no parameters Client Authentication included, or unsupported authentication method). (:rfc:`6749#section-5.2`).
@@ -599,7 +599,7 @@ The **DPoP JWT** contains the following JOSE header parameters and claims.
     - REQUIRED. It identifies the subject of the JWT.
     - [:rfc:`9068`], [:rfc:`7519`] and Section 8 of [`OIDC`_].
   * - **client_id**
-    - REQUIRED. The identifier for the Wallet Instance that requested the Access Token; it MUST be equal to the to kid of the public key of the Wallet Instance specified into the Wallet App Attestation (``cnf.jwk``).
+    - REQUIRED. The identifier for the Wallet Instance that requested the Access Token; it MUST be equal to the to kid of the public key of the Wallet Instance specified into the Wallet Instance Attestation (``cnf.jwk``).
     - [:rfc:`9068`], [:rfc:`7519`] and Section 8 of [`OIDC`_].
   * - **aud**
     - REQUIRED. It MUST be set to the identifier of the Credential Issuer.
@@ -658,7 +658,7 @@ The **DPoP JWT** MUST contain the following JOSE header parameters and claims.
     - It identifies the subject of the JWT. It MUST be set to the value of the ``sub`` field in the SD-JWT VC Credential.
     - [:rfc:`9068`], [:rfc:`7519`] and Section 8 of [`OIDC`_].
   * - **client_id**
-    - The identifier for the Wallet Instance that requested the Access Token; it MUST be equal to the to `kid` value identifying the public key used in the Wallet Instance, used in the Wallet App Attestation (``cnf.jwk``).
+    - The identifier for the Wallet Instance that requested the Access Token; it MUST be equal to the to `kid` value identifying the public key used in the Wallet Instance, used in the Wallet Instance Attestation (``cnf.jwk``).
     - [:rfc:`9068`], [:rfc:`7519`] and Section 8 of [`OIDC`_].
   * - **aud**
     - It MUST be set to the identifier of the Credential Issuer.

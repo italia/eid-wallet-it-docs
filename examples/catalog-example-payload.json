@@ -1,5 +1,6 @@
 {
-    "version": "1.0",
+    "id": "urn:credential-catalog:it-wallet",
+    "version": "1.0.0",
     "last_modified": "2025-03-15T12:00:00Z",
     "iss": "https://trust-registry.eid-wallet.example.it",
     "credentials": [
@@ -15,7 +16,11 @@
                 ],
                 "allowed_issuer_ids": [
                     "https://issuer.example.org"
-                ]
+                ],
+                "presentation_flows": {
+                    "remote": true,
+                    "proximity": true
+                }
             },
             "pricing_policy": {
                 "models": [
@@ -32,13 +37,37 @@
                 "status_methods": [
                     "status_list"
                 ],
-                "allowed_states": {
+                "administrative_expiration_user_info": {                  
+                    "title_l10n_id": "mDL.administrative_expiration_user_info.title",
+                    "description_l10n_id": "mDL.administrative_expiration_user_info.description"
+                },
+                "allowed_states": [
+                    {
                     "0x00": "VALID",
+                    "title_l10n_id": "mDL.VALID.title",
+                    "description_l10n_id": "mDL.VALID.description"
+                    },
+                    {
                     "0x01": "INVALID",
+                    "title_l10n_id": "mDL.INVALID.title",
+                    "description_l10n_id": "mDL.INVALID.description"
+                    },
+                    {
                     "0x02": "SUSPENDED",
+                    "title_l10n_id": "mDL.SUSPENDED.title",
+                    "description_l10n_id": "mDL.SUSPENDED.description"
+                    },
+                    {
                     "0x03": "UPDATE",
-                    "0x0B": "ATTRIBUTE_UPDATE"
-                }
+                    "title_l10n_id": "mDL.UPDATE.title",
+                    "description_l10n_id": "mDL.UPDATE.description"
+                    },
+                    {
+                    "0x0F": "ATTRIBUTE_UPDATE",
+                    "title_l10n_id": "mDL.ATTRIBUTE_UPDATE.title",
+                    "description_l10n_id": "mDL.ATTRIBUTE_UPDATE.description"
+                    }
+                ]
             },
             "authentication": {
                 "user_auth_required": true,

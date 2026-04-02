@@ -1,207 +1,599 @@
 {
-    "version": "1.0",
-    "last_modified": "2025-04-10T12:00:00Z",
     "id": "urn:taxonomy:it-wallet",
-    "localization": {
-        "default_locale": "it",
-        "available_locales": [
-            "en",
-            "it",
-            "fr",
-            "de"
-        ],
-        "base_uri": "https://trust-registry.eid-wallet.example.it/.well-known/l10n/taxonomy/",
-        "version": "1.0.0"
-    },
+    
+    "version": "1.0.0",
+    "last_modified": "2026-03-11T00:00:00Z",
     "name_l10n_id": "taxonomy.name",
     "description_l10n_id": "taxonomy.description",
+    "localization": {
+        "available_locales": [
+            "en",
+            "it"
+        ],
+        "base_uri": "https://trust-registry.eid-wallet.example.it/.well-known/l10n/taxonomy/",
+        "default_locale": "it",
+        "version": "1.0.0"
+    },
     "domains": [
         {
-            "id": "IDENTITY",
-            "name_l10n_id": "domain.identity.name",
-            "description_l10n_id": "domain.identity.description",
             "classes": [
                 {
                     "id": "IDENTIFICATION_DOCUMENTS",
-                    "name_l10n_id": "class.id_docs.name",
-                    "purposes": [
-                        {
-                            "id": "IDENTITY_VERIFICATION",
-                            "name_l10n_id": "purpose.id_ver.name"
-                        },
-                        {
-                            "id": "AGE_VERIFICATION",
-                            "name_l10n_id": "purpose.age_ver.name"
-                        }
+                    "name_l10n_id": "class.identification_documents.name",
+                    "supported_purposes": [
+                        "IDENTITY_VERIFICATION",
+                        "AGE_VERIFICATION",
+                        "PERSON_IDENTIFICATION"
                     ]
                 },
                 {
                     "id": "CIVIL_REGISTRY_STATUS",
-                    "name_l10n_id": "class.civil_registry.name",
-                    "purposes": [
-                        {
-                            "id": "CIVIL_STATUS_VERIFICATION",
-                            "name_l10n_id": "purpose.civil_status.name"
-                        },
-                        {
-                            "id": "RESIDENCE_VERIFICATION",
-                            "name_l10n_id": "purpose.residence.name"
-                        }
+                    "name_l10n_id": "class.civil_registry_status.name",
+                    "supported_purposes": [
+                        "CIVIL_STATUS_VERIFICATION",
+                        "RIGHT_OF_RESIDENCE",
+                        "HOUSEHOLD_COMPOSITION_VERIFICATION"
                     ]
                 },
                 {
                     "id": "ECONOMIC_LEGAL_STATUS",
-                    "name_l10n_id": "class.economic_status.name",
-                    "purposes": [
-                        {
-                            "id": "ELIGIBILITY_VERIFICATION",
-                            "name_l10n_id": "purpose.eligibility.name"
-                        },
-                        {
-                            "id": "LEGAL_STATUS_CHECK",
-                            "name_l10n_id": "purpose.legal_status.name"
-                        }
+                    "name_l10n_id": "class.economic_legal_status.name",
+                    "supported_purposes": [
+                        "ELIGIBILITY_VERIFICATION",
+                        "LEGAL_STATUS_VERIFICATION",
+                        "CRIMINAL_RECORD_CHECK"
                     ]
                 }
-            ]
+            ],
+            "description_l10n_id": "domain.identity.description",
+            "id": "IDENTITY",
+            "name_l10n_id": "domain.identity.name"
         },
         {
-            "id": "HOME_FAMILY",
-            "name_l10n_id": "domain.home_family.name",
-            "description_l10n_id": "domain.home_family.description",
             "classes": [
                 {
                     "id": "PROPERTY_CADASTRAL_DOCS",
-                    "name_l10n_id": "class.property_docs.name",
-                    "purposes": [
-                        {
-                            "id": "OWNERSHIP_VERIFICATION",
-                            "name_l10n_id": "purpose.ownership.name"
-                        }
+                    "name_l10n_id": "class.property_cadastral_docs.name",
+                    "supported_purposes": [
+                        "RESIDENCE_HOUSEHOLD_VERIFICATION",
+                        "PROPERTY_OWNERSHIP_VERIFICATION",
+                        "REAL_ESTATE_COMPLIANCE"
+                    ]
+                },
+                {
+                    "id": "FAMILY_DOCUMENTS",
+                    "name_l10n_id": "class.family_documents.name",
+                    "supported_purposes": [
+                        "HOUSEHOLD_COMPOSITION_VERIFICATION",
+                        "FAMILY_SOCIAL_SERVICES_ELIGIBILITY"
                     ]
                 },
                 {
                     "id": "LOCAL_TAX_DOCUMENTS",
-                    "name_l10n_id": "class.local_tax.name",
-                    "purposes": [
-                        {
-                            "id": "TAX_COMPLIANCE",
-                            "name_l10n_id": "purpose.tax_compliance.name"
-                        }
+                    "name_l10n_id": "class.local_tax_documents.name",
+                    "supported_purposes": [
+                        "LOCAL_TAX_COMPLIANCE",
+                        "PROPERTY_TAX_VERIFICATION"
                     ]
                 }
-            ]
+            ],
+            "description_l10n_id": "domain.home_family.description",
+            "id": "HOME_FAMILY",
+            "name_l10n_id": "domain.home_family.name"
         },
         {
-            "id": "EDUCATION",
-            "name_l10n_id": "domain.education.name",
-            "description_l10n_id": "domain.education.description",
             "classes": [
                 {
                     "id": "EDUCATIONAL_QUALIFICATIONS",
-                    "name_l10n_id": "class.edu_qualifications.name",
-                    "purposes": [
-                        {
-                            "id": "DEGREE_VERIFICATION",
-                            "name_l10n_id": "purpose.degree_ver.name"
-                        }
+                    "name_l10n_id": "class.educational_qualifications.name",
+                    "supported_purposes": [
+                        "QUALIFICATION_DEGREE_VERIFICATION",
+                        "EDUCATION_PATHWAY_ELIGIBILITY"
                     ]
                 },
                 {
                     "id": "PROFESSIONAL_CERTIFICATIONS",
-                    "name_l10n_id": "class.prof_cert.name",
-                    "purposes": [
-                        {
-                            "id": "SKILLS_ASSESSMENT",
-                            "name_l10n_id": "purpose.skills.name"
-                        },
-                        {
-                            "id": "PROFESSIONAL_PRACTICE",
-                            "name_l10n_id": "purpose.prof_practice.name"
-                        }
+                    "name_l10n_id": "class.professional_certifications.name",
+                    "supported_purposes": [
+                        "PROFESSIONAL_LICENSE_VERIFICATION",
+                        "SKILLS_ASSESSMENT"
                     ]
                 }
-            ]
+            ],
+            "description_l10n_id": "domain.education.description",
+            "id": "EDUCATION",
+            "name_l10n_id": "domain.education.name"
         },
         {
-            "id": "HEALTH",
-            "name_l10n_id": "domain.health.name",
-            "description_l10n_id": "domain.health.description",
             "classes": [
                 {
                     "id": "CERTIFICATIONS_ELIGIBILITY",
-                    "name_l10n_id": "class.health_cert.name",
-                    "purposes": [
-                        {
-                            "id": "HEALTH_STATUS_VERIFICATION",
-                            "name_l10n_id": "purpose.health_status.name"
-                        }
+                    "name_l10n_id": "class.certifications_eligibility.name",
+                    "supported_purposes": [
+                        "VACCINATION_STATUS_VERIFICATION",
+                        "FITNESS_STATUS_VERIFICATION",
+                        "HEALTH_RESTRICTED_ACCESS"
                     ]
                 },
                 {
                     "id": "MEDICAL_RECORDS",
                     "name_l10n_id": "class.medical_records.name",
-                    "purposes": [
-                        {
-                            "id": "HEALTHCARE_ACCESS",
-                            "name_l10n_id": "purpose.healthcare_access.name"
-                        }
+                    "supported_purposes": [
+                        "HEALTHCARE_SERVICES_ACCESS",
+                        "MEDICAL_RECORDS_SHARING",
+                        "MEDICAL_HISTORY_VALIDATION"
                     ]
                 }
-            ]
+            ],
+            "description_l10n_id": "domain.health.description",
+            "id": "HEALTH",
+            "name_l10n_id": "domain.health.name"
         },
         {
-            "id": "FINANCIAL",
-            "name_l10n_id": "domain.financial.name",
-            "description_l10n_id": "domain.financial.description",
             "classes": [
                 {
                     "id": "PAYMENT_INSTRUMENTS",
-                    "name_l10n_id": "class.payments.name",
-                    "purposes": [
-                        {
-                            "id": "PAYMENT_EXECUTION",
-                            "name_l10n_id": "purpose.pay_exec.name"
-                        }
+                    "name_l10n_id": "class.payment_instruments.name",
+                    "supported_purposes": [
+                        "PAYMENT_AUTHORIZATION",
+                        "PAYMENT_EXECUTION",
+                        "PROOF_OF_PAYMENT"
+                    ]
+                },
+                {
+                    "id": "PAYMENT_CREDENTIALS_AUTHORIZATIONS",
+                    "name_l10n_id": "class.payment_credentials_authorizations.name",
+                    "supported_purposes": [
+                        "FINANCIAL_AUTHORIZATION_MANAGEMENT",
+                        "STRONG_CUSTOMER_AUTHENTICATION"
                     ]
                 },
                 {
                     "id": "PUBLIC_PAYMENTS_FEES",
-                    "name_l10n_id": "class.public_fees.name",
-                    "purposes": [
-                        {
-                            "id": "PROOF_OF_PAYMENT",
-                            "name_l10n_id": "purpose.proof_pay.name"
-                        }
+                    "name_l10n_id": "class.public_payments_fees.name",
+                    "supported_purposes": [
+                        "PROOF_OF_TAX_PAYMENT",
+                        "PROOF_OF_FEE_PAYMENT",
+                        "DIGITAL_STAMP_DUTY_VALIDATION"
+                    ]
+                },
+                {
+                    "id": "RECURRING_PAYMENTS_SUBSCRIPTIONS",
+                    "name_l10n_id": "class.recurring_payments_subscriptions.name",
+                    "supported_purposes": [
+                        "RECURRING_PAYMENT_MANAGEMENT",
+                        "SUBSCRIPTION_MANDATE_VERIFICATION"
                     ]
                 }
-            ]
+            ],
+            "description_l10n_id": "domain.financial.description",
+            "id": "FINANCIAL",
+            "name_l10n_id": "domain.financial.name"
         },
         {
-            "id": "MOBILITY_TRAVEL",
-            "name_l10n_id": "domain.mobility.name",
+            "classes": [
+                {
+                    "id": "CULTURAL_CARDS_BENEFITS",
+                    "name_l10n_id": "class.cultural_cards_benefits.name",
+                    "supported_purposes": [
+                        "CULTURAL_SERVICES_ACCESS",
+                        "LEISURE_SERVICES_ACCESS",
+                        "MEMBER_DISCOUNT_APPLICATION"
+                    ]
+                },
+                {
+                    "id": "MEMBERSHIP_LOYALTY_PROGRAMS",
+                    "name_l10n_id": "class.membership_loyalty_programs.name",
+                    "supported_purposes": [
+                        "AFFILIATION_VERIFICATION",
+                        "PARTICIPATION_VERIFICATION",
+                        "LOYALTY_BENEFITS_USE"
+                    ]
+                }
+            ],
+            "description_l10n_id": "domain.culture_leisure.description",
+            "id": "CULTURE_LEISURE",
+            "name_l10n_id": "domain.culture_leisure.name"
+        },
+        {
+            "classes": [
+                {
+                    "id": "EMPLOYMENT_DOCUMENTS",
+                    "name_l10n_id": "class.employment_documents.name",
+                    "supported_purposes": [
+                        "EMPLOYMENT_STATUS_VERIFICATION",
+                        "PROFESSIONAL_PROFILE_VALIDATION"
+                    ]
+                },
+                {
+                    "id": "EMPLOYMENT_STATUS",
+                    "name_l10n_id": "class.employment_status.name",
+                    "supported_purposes": [
+                        "CONTRIBUTION_RECORDS_VERIFICATION",
+                        "EMPLOYMENT_BENEFITS_ELIGIBILITY"
+                    ]
+                },
+                {
+                    "id": "EMPLOYMENT_AFFILIATION",
+                    "name_l10n_id": "class.employment_affiliation.name",
+                    "supported_purposes": [
+                        "ACCESS_PERMIT"
+                    ]
+                }
+            ],
+            "description_l10n_id": "domain.employment.description",
+            "id": "EMPLOYMENT",
+            "name_l10n_id": "domain.employment.name"
+        },
+        {
             "classes": [
                 {
                     "id": "LICENSES_AUTHORIZATIONS",
-                    "name_l10n_id": "class.licenses.name",
-                    "purposes": [
-                        {
-                            "id": "DRIVING_RIGHTS",
-                            "name_l10n_id": "purpose.driving.name"
-                        }
+                    "name_l10n_id": "class.licenses_authorizations.name",
+                    "supported_purposes": [
+                        "DRIVING_RIGHTS_VERIFICATION",
+                        "NAVIGATION_RIGHTS_VERIFICATION",
+                        "LAW_ENFORCEMENT_CONTROLS"
                     ]
                 },
                 {
                     "id": "VEHICLE_DOCUMENTS",
-                    "name_l10n_id": "class.vehicle_docs.name",
-                    "purposes": [
-                        {
-                            "id": "VEHICLE_VERIFICATION",
-                            "name_l10n_id": "purpose.vehicle.name"
-                        }
+                    "name_l10n_id": "class.vehicle_documents.name",
+                    "supported_purposes": [
+                        "VEHICLE_REGISTRATION_VERIFICATION",
+                        "VEHICLE_INSPECTION_VERIFICATION",
+                        "INSURANCE_STATUS_CHECK"
+                    ]
+                },
+                {
+                    "id": "TRANSPORT_SUBSCRIPTIONS",
+                    "name_l10n_id": "class.transport_subscriptions.name",
+                    "supported_purposes": [
+                        "TRANSPORT_SERVICES_ACCESS",
+                        "PUBLIC_TRANSPORT_PASS_VERIFICATION"
+                    ]
+                },
+                {
+                    "id": "TRAVEL_DOCUMENTS",
+                    "name_l10n_id": "class.travel_documents.name",
+                    "supported_purposes": [
+                        "RIGHT_TO_TRAVEL",
+                        "CROSS_BORDER_IDENTITY_CHECK"
+                    ]
+                },
+                {
+                    "id": "TRAVEL_INSURANCE_BOOKINGS",
+                    "name_l10n_id": "class.travel_insurance_bookings.name",
+                    "supported_purposes": [
+                        "TRAVEL_INSURANCE_VERIFICATION",
+                        "ACCOMMODATION_RESERVATION_CHECK",
+                        "TRANSPORT_RESERVATION_CHECK"
+                    ]
+                },
+                {
+                    "id": "DISCOUNTS_BENEFITS",
+                    "name_l10n_id": "class.discounts_benefits.name",
+                    "supported_purposes": [
+                        "MEMBER_DISCOUNT_APPLICATION",
+                        "TOURIST_BENEFITS_ACCESS"
                     ]
                 }
-            ]
+            ],
+            "description_l10n_id": "domain.mobility_travel.description",
+            "id": "MOBILITY_TRAVEL",
+            "name_l10n_id": "domain.mobility_travel.name"
+        },
+        {
+            "classes": [
+                {
+                    "id": "ECONOMIC_BENEFITS_ALLOWANCES",
+                    "name_l10n_id": "class.economic_benefits_allowances.name",
+                    "supported_purposes": [
+                        "FAMILY_BENEFITS_ELIGIBILITY",
+                        "UNEMPLOYMENT_BENEFITS_ELIGIBILITY",
+                        "ECONOMIC_SUPPORT_ALLOCATION"
+                    ]
+                },
+                {
+                    "id": "INCENTIVES_VOUCHERS",
+                    "name_l10n_id": "class.incentives_vouchers.name",
+                    "supported_purposes": [
+                        "DIGITAL_VOUCHER_USE",
+                        "PURCHASE_INCENTIVE_USE",
+                        "CASHBACK_ELIGIBILITY_VERIFICATION"
+                    ]
+                },
+                {
+                    "id": "HEALTH_WELLBEING_BONUSES",
+                    "name_l10n_id": "class.health_wellbeing_bonuses.name",
+                    "supported_purposes": [
+                        "HEALTHCARE_BONUS_ACCESS",
+                        "MENTAL_HEALTH_VOUCHER_USE",
+                        "SPORTS_VOUCHER_USE"
+                    ]
+                }
+            ],
+            "description_l10n_id": "domain.bonuses.description",
+            "id": "BONUSES",
+            "name_l10n_id": "domain.bonuses.name"
+        }
+    ],
+    "purposes": [
+        {
+            "id": "IDENTITY_VERIFICATION",
+            "name_l10n_id": "purpose.identity_verification.name"
+        },
+        {
+            "id": "AGE_VERIFICATION",
+            "name_l10n_id": "purpose.age_verification.name"
+        },
+        {
+            "id": "PERSON_IDENTIFICATION",
+            "name_l10n_id": "purpose.person_identification.name"
+        },
+        {
+            "id": "CIVIL_STATUS_VERIFICATION",
+            "name_l10n_id": "purpose.civil_status_verification.name"
+        },
+        {
+            "id": "RIGHT_OF_RESIDENCE",
+            "name_l10n_id": "purpose.right_of_residence.name"
+        },
+        {
+            "id": "HOUSEHOLD_COMPOSITION_VERIFICATION",
+            "name_l10n_id": "purpose.household_composition_verification.name"
+        },
+        {
+            "id": "ELIGIBILITY_VERIFICATION",
+            "name_l10n_id": "purpose.eligibility_verification.name"
+        },
+        {
+            "id": "LEGAL_STATUS_VERIFICATION",
+            "name_l10n_id": "purpose.legal_status_verification.name"
+        },
+        {
+            "id": "CRIMINAL_RECORD_CHECK",
+            "name_l10n_id": "purpose.criminal_record_check.name"
+        },
+        {
+            "id": "RESIDENCE_HOUSEHOLD_VERIFICATION",
+            "name_l10n_id": "purpose.residence_household_verification.name"
+        },
+        {
+            "id": "PROPERTY_OWNERSHIP_VERIFICATION",
+            "name_l10n_id": "purpose.property_ownership_verification.name"
+        },
+        {
+            "id": "REAL_ESTATE_COMPLIANCE",
+            "name_l10n_id": "purpose.real_estate_compliance.name"
+        },
+        {
+            "id": "FAMILY_SOCIAL_SERVICES_ELIGIBILITY",
+            "name_l10n_id": "purpose.family_social_services_eligibility.name"
+        },
+        {
+            "id": "LOCAL_TAX_COMPLIANCE",
+            "name_l10n_id": "purpose.local_tax_compliance.name"
+        },
+        {
+            "id": "PROPERTY_TAX_VERIFICATION",
+            "name_l10n_id": "purpose.property_tax_verification.name"
+        },
+        {
+            "id": "QUALIFICATION_DEGREE_VERIFICATION",
+            "name_l10n_id": "purpose.qualification_degree_verification.name"
+        },
+        {
+            "id": "EDUCATION_PATHWAY_ELIGIBILITY",
+            "name_l10n_id": "purpose.education_pathway_eligibility.name"
+        },
+        {
+            "id": "PROFESSIONAL_LICENSE_VERIFICATION",
+            "name_l10n_id": "purpose.professional_license_verification.name"
+        },
+        {
+            "id": "SKILLS_ASSESSMENT",
+            "name_l10n_id": "purpose.skills_assessment.name"
+        },
+        {
+            "id": "VACCINATION_STATUS_VERIFICATION",
+            "name_l10n_id": "purpose.vaccination_status_verification.name"
+        },
+        {
+            "id": "FITNESS_STATUS_VERIFICATION",
+            "name_l10n_id": "purpose.fitness_status_verification.name"
+        },
+        {
+            "id": "HEALTH_RESTRICTED_ACCESS",
+            "name_l10n_id": "purpose.health_restricted_access.name"
+        },
+        {
+            "id": "HEALTHCARE_SERVICES_ACCESS",
+            "name_l10n_id": "purpose.healthcare_services_access.name"
+        },
+        {
+            "id": "MEDICAL_RECORDS_SHARING",
+            "name_l10n_id": "purpose.medical_records_sharing.name"
+        },
+        {
+            "id": "MEDICAL_HISTORY_VALIDATION",
+            "name_l10n_id": "purpose.medical_history_validation.name"
+        },
+        {
+            "id": "PAYMENT_AUTHORIZATION",
+            "name_l10n_id": "purpose.payment_authorization.name"
+        },
+        {
+            "id": "PAYMENT_EXECUTION",
+            "name_l10n_id": "purpose.payment_execution.name"
+        },
+        {
+            "id": "PROOF_OF_PAYMENT",
+            "name_l10n_id": "purpose.proof_of_payment.name"
+        },
+        {
+            "id": "FINANCIAL_AUTHORIZATION_MANAGEMENT",
+            "name_l10n_id": "purpose.financial_authorization_management.name"
+        },
+        {
+            "id": "STRONG_CUSTOMER_AUTHENTICATION",
+            "name_l10n_id": "purpose.strong_customer_authentication.name"
+        },
+        {
+            "id": "PROOF_OF_TAX_PAYMENT",
+            "name_l10n_id": "purpose.proof_of_tax_payment.name"
+        },
+        {
+            "id": "PROOF_OF_FEE_PAYMENT",
+            "name_l10n_id": "purpose.proof_of_fee_payment.name"
+        },
+        {
+            "id": "DIGITAL_STAMP_DUTY_VALIDATION",
+            "name_l10n_id": "purpose.digital_stamp_duty_validation.name"
+        },
+        {
+            "id": "RECURRING_PAYMENT_MANAGEMENT",
+            "name_l10n_id": "purpose.recurring_payment_management.name"
+        },
+        {
+            "id": "SUBSCRIPTION_MANDATE_VERIFICATION",
+            "name_l10n_id": "purpose.subscription_mandate_verification.name"
+        },
+        {
+            "id": "CULTURAL_SERVICES_ACCESS",
+            "name_l10n_id": "purpose.cultural_services_access.name"
+        },
+        {
+            "id": "LEISURE_SERVICES_ACCESS",
+            "name_l10n_id": "purpose.leisure_services_access.name"
+        },
+        {
+            "id": "MEMBER_DISCOUNT_APPLICATION",
+            "name_l10n_id": "purpose.member_discount_application.name"
+        },
+        {
+            "id": "AFFILIATION_VERIFICATION",
+            "name_l10n_id": "purpose.affiliation_verification.name"
+        },
+        {
+            "id": "PARTICIPATION_VERIFICATION",
+            "name_l10n_id": "purpose.participation_verification.name"
+        },
+        {
+            "id": "LOYALTY_BENEFITS_USE",
+            "name_l10n_id": "purpose.loyalty_benefits_use.name"
+        },
+        {
+            "id": "EMPLOYMENT_STATUS_VERIFICATION",
+            "name_l10n_id": "purpose.employment_status_verification.name"
+        },
+        {
+            "id": "PROFESSIONAL_PROFILE_VALIDATION",
+            "name_l10n_id": "purpose.professional_profile_validation.name"
+        },
+        {
+            "id": "CONTRIBUTION_RECORDS_VERIFICATION",
+            "name_l10n_id": "purpose.contribution_records_verification.name"
+        },
+        {
+            "id": "EMPLOYMENT_BENEFITS_ELIGIBILITY",
+            "name_l10n_id": "purpose.employment_benefits_eligibility.name"
+        },
+        {
+            "id": "DRIVING_RIGHTS_VERIFICATION",
+            "name_l10n_id": "purpose.driving_rights_verification.name"
+        },
+        {
+            "id": "NAVIGATION_RIGHTS_VERIFICATION",
+            "name_l10n_id": "purpose.navigation_rights_verification.name"
+        },
+        {
+            "id": "LAW_ENFORCEMENT_CONTROLS",
+            "name_l10n_id": "purpose.law_enforcement_controls.name"
+        },
+        {
+            "id": "VEHICLE_REGISTRATION_VERIFICATION",
+            "name_l10n_id": "purpose.vehicle_registration_verification.name"
+        },
+        {
+            "id": "VEHICLE_INSPECTION_VERIFICATION",
+            "name_l10n_id": "purpose.vehicle_inspection_verification.name"
+        },
+        {
+            "id": "INSURANCE_STATUS_CHECK",
+            "name_l10n_id": "purpose.insurance_status_check.name"
+        },
+        {
+            "id": "TRANSPORT_SERVICES_ACCESS",
+            "name_l10n_id": "purpose.transport_services_access.name"
+        },
+        {
+            "id": "PUBLIC_TRANSPORT_PASS_VERIFICATION",
+            "name_l10n_id": "purpose.public_transport_pass_verification.name"
+        },
+        {
+            "id": "RIGHT_TO_TRAVEL",
+            "name_l10n_id": "purpose.right_to_travel.name"
+        },
+        {
+            "id": "CROSS_BORDER_IDENTITY_CHECK",
+            "name_l10n_id": "purpose.cross_border_identity_check.name"
+        },
+        {
+            "id": "TRAVEL_INSURANCE_VERIFICATION",
+            "name_l10n_id": "purpose.travel_insurance_verification.name"
+        },
+        {
+            "id": "ACCOMMODATION_RESERVATION_CHECK",
+            "name_l10n_id": "purpose.accommodation_reservation_check.name"
+        },
+        {
+            "id": "TRANSPORT_RESERVATION_CHECK",
+            "name_l10n_id": "purpose.transport_reservation_check.name"
+        },
+        {
+            "id": "TOURIST_BENEFITS_ACCESS",
+            "name_l10n_id": "purpose.tourist_benefits_access.name"
+        },
+        {
+            "id": "FAMILY_BENEFITS_ELIGIBILITY",
+            "name_l10n_id": "purpose.family_benefits_eligibility.name"
+        },
+        {
+            "id": "UNEMPLOYMENT_BENEFITS_ELIGIBILITY",
+            "name_l10n_id": "purpose.unemployment_benefits_eligibility.name"
+        },
+        {
+            "id": "ECONOMIC_SUPPORT_ALLOCATION",
+            "name_l10n_id": "purpose.economic_support_allocation.name"
+        },
+        {
+            "id": "DIGITAL_VOUCHER_USE",
+            "name_l10n_id": "purpose.digital_voucher_use.name"
+        },
+        {
+            "id": "PURCHASE_INCENTIVE_USE",
+            "name_l10n_id": "purpose.purchase_incentive_use.name"
+        },
+        {
+            "id": "CASHBACK_ELIGIBILITY_VERIFICATION",
+            "name_l10n_id": "purpose.cashback_eligibility_verification.name"
+        },
+        {
+            "id": "HEALTHCARE_BONUS_ACCESS",
+            "name_l10n_id": "purpose.healthcare_bonus_access.name"
+        },
+        {
+            "id": "MENTAL_HEALTH_VOUCHER_USE",
+            "name_l10n_id": "purpose.mental_health_voucher_use.name"
+        },
+        {
+            "id": "SPORTS_VOUCHER_USE",
+            "name_l10n_id": "purpose.sports_voucher_use.name"
+        },
+        {
+            "id": "ACCESS_PERMIT",
+            "name_l10n_id": "purpose.access_permit.name"
         }
     ]
 }

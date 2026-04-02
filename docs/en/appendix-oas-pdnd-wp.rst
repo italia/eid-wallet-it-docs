@@ -1,6 +1,6 @@
 
 Wallet Provider PDND OpenAPI Specification 
----------------------------------------------
+----------------------------------------------
 
 Below is the complete OpenAPI Specification for the Wallet Provider PDND e-services:
 
