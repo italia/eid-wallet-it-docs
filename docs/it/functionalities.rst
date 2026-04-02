@@ -320,7 +320,7 @@ Focus sugli Attestati Elettronici di Attributi
 
 La rappresentazione grafica degli EAA all’interno delle Soluzioni Wallet dipende, a livello di specifici contenuti e di specifici aspetti di UI, da quanto definito nel Registro delle Fonti Autentiche e nel Catalogo delle Credenziali Digitali (vedi :ref:`registry:Infrastruttura del Registro`).  
 
-Di seguito sono riportati i requisiti per la rappresentazione degli EAA all’interno delle Soluzioni Wallet (vedi :ref:`registry:Registro delle Fonti e Autentiche`:ref:`registry:Catalogo degli Attestati Elettronici` ). In particolare:
+Di seguito sono riportati i requisiti per la rappresentazione degli EAA all’interno delle Soluzioni Wallet (vedi :ref:`registry:Registro delle Fonti Autentiche` e :ref:`registry:Catalogo degli Attestati Elettronici`). In particolare:
 
 La Fonte Autentica:
 
