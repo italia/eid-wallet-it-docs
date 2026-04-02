@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>10.3.1. App di Verifica &#8212; IT-Wallet Specifiche Tecniche - Versione Corrente</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
     <script src="_static/documentation_options.js?v=3fd72285"></script>
@@ -211,10 +211,10 @@
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 10.11 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/XP7VQ_em5CNVyrTSzENx5SIkw1X5Ycx6KTYaYpyOZ3reSwk1c4gRRdH__M8DZJZ4FlMU--avXzjHeTUvBlSINaIAIPL8X2m5lKDupJR2J0nb9TGMOiDL42dpWKgGx0H7mFt1Q1oB91S7BJ95Y5bhF65I8eVsT3eUU9xLMolCHIgGjs1T6Eirhw3j-m-Flc-9fVgo2BHJytXUin3ET7BV7_G7X7nqFg7Bis_L3Lrc02oE89hD5wJH6ihQE6uvkoHpiTrfWzRrJX2ZpwGUR_fOIcAg_tPYT6K1PpzCCfdbmKQM6CRHfFVlxJyTZo5cTDYhL-55ihjG04-KBO2-nyI9DnkUe-N15Qcz68tcytFa8l1wsqvJr_7NxZ2XnuEwWWOqaFcP9g0GFnZS-U6mTtmBoGWLB_Vo5m00">Ciclo di vita della App di Verifica Mobile.</a></span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 10.12 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/XP7VQ_em5CNVyrTSzENx5SIkw1X5Ycx6KTYaYpyOZ3reSwk1c4gRRdH__M8DZJZ4FlMU--avXzjHeTUvBlSINaIAIPL8X2m5lKDupJR2J0nb9TGMOiDL42dpWKgGx0H7mFt1Q1oB91S7BJ95Y5bhF65I8eVsT3eUU9xLMolCHIgGjs1T6Eirhw3j-m-Flc-9fVgo2BHJytXUin3ET7BV7_G7X7nqFg7Bis_L3Lrc02oE89hD5wJH6ihQE6uvkoHpiTrfWzRrJX2ZpwGUR_fOIcAg_tPYT6K1PpzCCfdbmKQM6CRHfFVlxJyTZo5cTDYhL-55ihjG04-KBO2-nyI9DnkUe-N15Qcz68tcytFa8l1wsqvJr_7NxZ2XnuEwWWOqaFcP9g0GFnZS-U6mTtmBoGWLB_Vo5m00">Ciclo di vita della App di Verifica Mobile.</a></span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<p>Come mostrato in <a class="reference internal" href="#fig-relyingparty-instance-mobile-lifecycle"><span class="std std-numref">Fig. 10.11</span></a>, l'App di Verifica Mobile ha quattro stati distinti: <strong>Installed</strong>, <strong>Unverified</strong>, <strong>Verified</strong> e <strong>Uninstalled</strong>. Ogni stato rappresenta uno stato funzionale specifico e determina le azioni che possono essere eseguite.</p>
+<p>Come mostrato in <a class="reference internal" href="#fig-relyingparty-instance-mobile-lifecycle"><span class="std std-numref">Fig. 10.12</span></a>, l'App di Verifica Mobile ha quattro stati distinti: <strong>Installed</strong>, <strong>Unverified</strong>, <strong>Verified</strong> e <strong>Uninstalled</strong>. Ogni stato rappresenta uno stato funzionale specifico e determina le azioni che possono essere eseguite.</p>
 <section id="transizione-a-installed">
 <h3><span class="section-number">10.3.2.1.1. </span>Transizione a Installed<a class="headerlink" href="#transizione-a-installed" title="Link to this heading">¶</a></h3>
 <p>La macchina a stati inizia con l'installazione della App di Verifica (transizione <strong>RPI INST</strong>), dove gli Utenti scaricano e installano una App di Verifica utilizzando l'app store ufficiale del sistema operativo del loro dispositivo, portando allo stato <strong>Installed</strong>.</p>
@@ -269,7 +269,7 @@
 <p>Questo processo consente la registrazione di un'App di Verifica con il Backend della Relying Party e l'emissione di un Certificato di Accesso che sarà utilizzato per autenticarsi verso le Istanze del Wallet durante i flussi di presentazione. Il processo consiste in due sottofasi:</p>
 <ol class="arabic simple">
 <li><p><strong>Inizializzazione</strong>: L'App di Verifica richiede un'asserzione di sicurezza e integrità dal produttore del sistema operativo, che lega anche una coppia di chiavi crittografiche asimmetriche a lunga durata memorizzata in un adeguato storage sicuro all'interno del dispositivo stesso; l'asserzione viene quindi convalidata dal Backend della Relying Party. Ulteriori dettagli sono forniti nella Sezione <a class="reference internal" href="mobile-application-instance.html#istanza-dell-applicazione-mobile"><span class="std std-ref">Istanza dell'Applicazione Mobile</span></a>.</p></li>
-<li><p><strong>Emissione del Certificato di Accesso</strong>: L'App di Verifica richiede un Certificato di Accesso dal Backend della Relying Party. Prima di interagire con l'Autorità di Certificazione per l'emissione del Certificato di Accesso, il Backend della Relying Party convalida l'integrità e la sicurezza dell'App di Verifica sfruttando le chiavi attestate a lunga durata generate nella sottofase precedente. Il flusso è mostrato in <a class="reference internal" href="#fig-relyingparty-instance-mobile-registration-accesscertificateissuance"><span class="std std-numref">Fig. 10.12</span></a>, mentre una descrizione passo-passo è fornita di seguito.</p></li>
+<li><p><strong>Emissione del Certificato di Accesso</strong>: L'App di Verifica richiede un Certificato di Accesso dal Backend della Relying Party. Prima di interagire con l'Autorità di Certificazione per l'emissione del Certificato di Accesso, il Backend della Relying Party convalida l'integrità e la sicurezza dell'App di Verifica sfruttando le chiavi attestate a lunga durata generate nella sottofase precedente. Il flusso è mostrato in <a class="reference internal" href="#fig-relyingparty-instance-mobile-registration-accesscertificateissuance"><span class="std std-numref">Fig. 10.13</span></a>, mentre una descrizione passo-passo è fornita di seguito.</p></li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
@@ -282,7 +282,7 @@
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 10.12 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/ZLF1ZjD03BtdAwpX04Zm0psWBMM1QeMqQijjfSYPkCsewSmmdXJozpXX89tL2EsXKMg_Ppy_EtSSCSJXqbSuH6U7IqEXwanBS7GkDkvNLRr-58JHngEDNA6EBe3wpXGK8CF0Gl0B0jGtrvYUO4VzQEm99lO8MokDhAQPWzv3plb4LwD9K95EmGX-Js6Eh1-tVoWO6Lwn3rBo58Xipi-RVKHz9jlEn4QVoz1SrvDTQqtCi2717et6ACs7sBb9pbn9etYnFwnt1zZSxmxRpzlD-d1VoJ3lFyXZ1PkEz1dC4JPXzD6T0lhEQFYAeVs9WU21HeRf1QzeUcnwgcxONyXIm4W2WJEDuD44UAEKlDT-Q9Hw1-bFC5UbtYQkpBSIhtyCn540raqcgsbDvegHvldbDmEN9WjoJYO9Ix2bh411fe1rRyZ6kiM8IW7QzibgT_73ysJT8NTID5N1oAiYO14zOGGkpqMQ-NiRDJ9FIt8s5vf89QLTMa7DvcGn3a5cB48VIAx7s7Owa6JghS_bTCdgT0qCpfPPDxRdUVREChrW0zcfxcMmc_hJuMWEpyuanNB5HSa9cP8Q2zpfSz0u9-Vk2qUY_nhY_5NLUf6QBqrZPiN_2GKpzj45UW5DmDKTsNQuzBy1">Flusso di Emissione del Certificato di Accesso della App di Verifica Mobile.</a></span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 10.13 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/ZLF1ZjD03BtdAwpX04Zm0psWBMM1QeMqQijjfSYPkCsewSmmdXJozpXX89tL2EsXKMg_Ppy_EtSSCSJXqbSuH6U7IqEXwanBS7GkDkvNLRr-58JHngEDNA6EBe3wpXGK8CF0Gl0B0jGtrvYUO4VzQEm99lO8MokDhAQPWzv3plb4LwD9K95EmGX-Js6Eh1-tVoWO6Lwn3rBo58Xipi-RVKHz9jlEn4QVoz1SrvDTQqtCi2717et6ACs7sBb9pbn9etYnFwnt1zZSxmxRpzlD-d1VoJ3lFyXZ1PkEz1dC4JPXzD6T0lhEQFYAeVs9WU21HeRf1QzeUcnwgcxONyXIm4W2WJEDuD44UAEKlDT-Q9Hw1-bFC5UbtYQkpBSIhtyCn540raqcgsbDvegHvldbDmEN9WjoJYO9Ix2bh411fe1rRyZ6kiM8IW7QzibgT_73ysJT8NTID5N1oAiYO14zOGGkpqMQ-NiRDJ9FIt8s5vf89QLTMa7DvcGn3a5cB48VIAx7s7Owa6JghS_bTCdgT0qCpfPPDxRdUVREChrW0zcfxcMmc_hJuMWEpyuanNB5HSa9cP8Q2zpfSz0u9-Vk2qUY_nhY_5NLUf6QBqrZPiN_2GKpzj45UW5DmDKTsNQuzBy1">Flusso di Emissione del Certificato di Accesso della App di Verifica Mobile.</a></span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Passi 1-2:</strong> La App di Verifica Mobile:</p>
@@ -452,7 +452,7 @@ Di conseguenza, la revoca dell'App di Verifica Mobile DEVE essere legata alla va
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 11/03/2026.
+      Ultimo aggiornamento 02/04/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

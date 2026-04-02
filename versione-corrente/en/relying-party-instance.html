@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>10.3.1. Relying Party Instance &#8212; IT-Wallet Technical Specifications - Editor&#39;s Copy</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
     <script src="_static/documentation_options.js?v=5929fcd5"></script>
@@ -206,10 +206,10 @@
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 10.11 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/XP7VQ_em5CNVyrTSzENx5SIkw1X5Ycx6KTYaYpyOZ3reSwk1c4gRRdH__M8DZJZ4FlMU--avXzjHeTUvBlSINaIAIPL8X2m5lKDupJR2J0nb9TGMOiDL42dpWKgGx0H7mFt1Q1oB91S7BJ95Y5bhF65I8eVsT3eUU9xLMolCHIgGjs1T6Eirhw3j-m-Flc-9fVgo2BHJytXUin3ET7BV7_G7X7nqFg7Bis_L3Lrc02oE89hD5wJH6ihQE6uvkoHpiTrfWzRrJX2ZpwGUR_fOIcAg_tPYT6K1PpzCCfdbmKQM6CRHfFVlxJyTZo5cTDYhL-55ihjG04-KBO2-nyI9DnkUe-N15Qcz68tcytFa8l1wsqvJr_7NxZ2XnuEwWWOqaFcP9g0GFnZS-U6mTtmBoGWLB_Vo5m00">Lifecycle of the Mobile Relying Party Instance.</a></span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 10.12 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/XP7VQ_em5CNVyrTSzENx5SIkw1X5Ycx6KTYaYpyOZ3reSwk1c4gRRdH__M8DZJZ4FlMU--avXzjHeTUvBlSINaIAIPL8X2m5lKDupJR2J0nb9TGMOiDL42dpWKgGx0H7mFt1Q1oB91S7BJ95Y5bhF65I8eVsT3eUU9xLMolCHIgGjs1T6Eirhw3j-m-Flc-9fVgo2BHJytXUin3ET7BV7_G7X7nqFg7Bis_L3Lrc02oE89hD5wJH6ihQE6uvkoHpiTrfWzRrJX2ZpwGUR_fOIcAg_tPYT6K1PpzCCfdbmKQM6CRHfFVlxJyTZo5cTDYhL-55ihjG04-KBO2-nyI9DnkUe-N15Qcz68tcytFa8l1wsqvJr_7NxZ2XnuEwWWOqaFcP9g0GFnZS-U6mTtmBoGWLB_Vo5m00">Lifecycle of the Mobile Relying Party Instance.</a></span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<p>As shown in <a class="reference internal" href="#fig-relyingparty-instance-mobile-lifecycle"><span class="std std-numref">Fig. 10.11</span></a>, the Mobile Relying Party Instance has four distinct states: <strong>Installed</strong>, <strong>Unverified</strong>, <strong>Verified</strong>, and <strong>Uninstalled</strong>. Each state represents a specific functional status and determines the actions that can be performed.</p>
+<p>As shown in <a class="reference internal" href="#fig-relyingparty-instance-mobile-lifecycle"><span class="std std-numref">Fig. 10.12</span></a>, the Mobile Relying Party Instance has four distinct states: <strong>Installed</strong>, <strong>Unverified</strong>, <strong>Verified</strong>, and <strong>Uninstalled</strong>. Each state represents a specific functional status and determines the actions that can be performed.</p>
 <section id="transition-to-installed">
 <h3><span class="section-number">10.3.2.1.1. </span>Transition to Installed<a class="headerlink" href="#transition-to-installed" title="Link to this heading">¶</a></h3>
 <p>The state machine begins with the Relying Party Instance installation (<strong>RPI INST</strong> transition), where Users download and install a Relying Party Instance using the official app store of their device's operating system, leading to the <strong>Installed</strong> state.</p>
@@ -264,7 +264,7 @@
 <p>This process allows for the registration of a Relying Party Instance with the Relying Party Backend, and the issuance of an Access Certificate that will be used for authentication purposes towards Wallet Instances during presentation flows. The process consists of two subphases:</p>
 <ol class="arabic simple">
 <li><p><strong>Initialization</strong>: The Relying Party Instance requests a security and integrity assertion from the OS manufacturer, which also binds a long-lived key pair stored in a proper secure storage within the device itself; the assertion is then validated by the Relying Party Backend. Further details are provided in Section <a class="reference internal" href="mobile-application-instance.html#mobile-application-instance"><span class="std std-ref">Mobile Application Instance</span></a>.</p></li>
-<li><p><strong>Access Certificate Issuance</strong>: The Relying Party Instance requests an Access Certificate from the Relying Party Backend. Before interacting with the Relying Party Instance Access Certificate Authority for the issuance of the Access Certificate, the Relying Party Backend validates the Relying Party Instance's integrity and security by leveraging the long-lived, attested keys generated in the previous subphase. The flow is displayed in <a class="reference internal" href="#fig-relyingparty-instance-mobile-registration-accesscertificateissuance"><span class="std std-numref">Fig. 10.12</span></a>, while a step-by-step description is provided below.</p></li>
+<li><p><strong>Access Certificate Issuance</strong>: The Relying Party Instance requests an Access Certificate from the Relying Party Backend. Before interacting with the Relying Party Instance Access Certificate Authority for the issuance of the Access Certificate, the Relying Party Backend validates the Relying Party Instance's integrity and security by leveraging the long-lived, attested keys generated in the previous subphase. The flow is displayed in <a class="reference internal" href="#fig-relyingparty-instance-mobile-registration-accesscertificateissuance"><span class="std std-numref">Fig. 10.13</span></a>, while a step-by-step description is provided below.</p></li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -277,7 +277,7 @@
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 10.12 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/ZLF1ZjD03BtdAwpX04Zm0psWBMM1QeMqQijjfSYPkCsewSmmdXJozpXX89tL2EsXKMg_Ppy_EtSSCSJXqbSuH6U7IqEXwanBS7GkDkvNLRr-58JHngEDNA6EBe3wpXGK8CF0Gl0B0jGtrvYUO4VzQEm99lO8MokDhAQPWzv3plb4LwD9K95EmGX-Js6Eh1-tVoWO6Lwn3rBo58Xipi-RVKHz9jlEn4QVoz1SrvDTQqtCi2717et6ACs7sBb9pbn9etYnFwnt1zZSxmxRpzlD-d1VoJ3lFyXZ1PkEz1dC4JPXzD6T0lhEQFYAeVs9WU21HeRf1QzeUcnwgcxONyXIm4W2WJEDuD44UAEKlDT-Q9Hw1-bFC5UbtYQkpBSIhtyCn540raqcgsbDvegHvldbDmEN9WjoJYO9Ix2bh411fe1rRyZ6kiM8IW7QzibgT_73ysJT8NTID5N1oAiYO14zOGGkpqMQ-NiRDJ9FIt8s5vf89QLTMa7DvcGn3a5cB48VIAx7s7Owa6JghS_bTCdgT0qCpfPPDxRdUVREChrW0zcfxcMmc_hJuMWEpyuanNB5HSa9cP8Q2zpfSz0u9-Vk2qUY_nhY_5NLUf6QBqrZPiN_2GKpzj45UW5DmDKTsNQuzBy1">Flow of the Mobile Relying Party Instance Access Certificate Issuance.</a></span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 10.13 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/ZLF1ZjD03BtdAwpX04Zm0psWBMM1QeMqQijjfSYPkCsewSmmdXJozpXX89tL2EsXKMg_Ppy_EtSSCSJXqbSuH6U7IqEXwanBS7GkDkvNLRr-58JHngEDNA6EBe3wpXGK8CF0Gl0B0jGtrvYUO4VzQEm99lO8MokDhAQPWzv3plb4LwD9K95EmGX-Js6Eh1-tVoWO6Lwn3rBo58Xipi-RVKHz9jlEn4QVoz1SrvDTQqtCi2717et6ACs7sBb9pbn9etYnFwnt1zZSxmxRpzlD-d1VoJ3lFyXZ1PkEz1dC4JPXzD6T0lhEQFYAeVs9WU21HeRf1QzeUcnwgcxONyXIm4W2WJEDuD44UAEKlDT-Q9Hw1-bFC5UbtYQkpBSIhtyCn540raqcgsbDvegHvldbDmEN9WjoJYO9Ix2bh411fe1rRyZ6kiM8IW7QzibgT_73ysJT8NTID5N1oAiYO14zOGGkpqMQ-NiRDJ9FIt8s5vf89QLTMa7DvcGn3a5cB48VIAx7s7Owa6JghS_bTCdgT0qCpfPPDxRdUVREChrW0zcfxcMmc_hJuMWEpyuanNB5HSa9cP8Q2zpfSz0u9-Vk2qUY_nhY_5NLUf6QBqrZPiN_2GKpzj45UW5DmDKTsNQuzBy1">Flow of the Mobile Relying Party Instance Access Certificate Issuance.</a></span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Steps 1-2:</strong> The Mobile Relying Party Instance:</p>
@@ -447,7 +447,7 @@ As a result, Mobile Relying Party Instance revocation MUST be tied to X.509 Acce
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 11/03/2026.
+      Last updated on 02/04/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

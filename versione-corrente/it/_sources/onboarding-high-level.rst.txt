@@ -57,7 +57,7 @@ Entrambe i flussi DEVONO assicurare standard di qualità dei dati e stabilire tr
 
 Le Fonti Autentiche registrate con successo DEVONO essere incluse nel Registro AS con i loro Attributi dell'Utente dichiarati e le relative specifiche. I tipi di Credenziali DEVONO diventare pubblicamente scopribili nel :ref:`registry:Catalogo degli Attestati Elettronici` solo dopo l'integrazione AS-CI riuscita e l'approvazione della politica dell'Organismo di Supervisione per l'eleggibilità del catalogo.
 
-Le procedure di implementazione tecnica per la registrazione della Fonte Autentica sono fornite in :ref:`entity-onboarding:Procedura di Registrazione AS`.
+Le procedure di implementazione tecnica per la registrazione della Fonte Autentica sono fornite in :ref:`entity-onboarding:Procedura di Registrazione delle Fonti Autentiche`.
 
 
 Processo di Onboarding della Federazione
@@ -74,176 +74,6 @@ Per PID Provider, Attestation Provider e Relying Party, il processo di onboardin
 
 .. note::
   I **PID Provider**, i **PuB-EAA Provider** e i **Wallet Provider** sono registrati attraverso il sistema di onboarding dell'IT-Wallet e successivamente notificati alla Commissione Europea per l'inclusione nelle Trusted Lists. I Wallet Provider non ricevono certificati di accesso o certificati di registrazione dai Registrar nazionali. La Soluzione Wallet fornita dal Wallet Provider deve essere certificata da Organismi di Valutazione della Conformità (CAB) secondo il quadro nazionale di valutazione della conformità.
-
-Requisiti sulle Informazioni del Modulo di Registrazione
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Secondo i Requisiti di Alto Livello dell'Architettura e del Framework di Riferimento (ARF) e il Regolamento (UE) 2025/848, Allegato I, tutte le entità che si registrano presso i Registrar Nazionali DEVONO fornire le seguenti informazioni nel modulo di registrazione. Queste informazioni sono richieste per PID Provider, Attestation Provider (QEAA Provider, PuB-EAA Provider ed EAA Provider non qualificati) e Relying Party.
-
-Il modulo di registrazione DEVE raccogliere almeno le seguenti informazioni come specificato nell'`Allegato I del Regolamento (UE) 2025/848 <https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202500848>`_ e allineato con i casi d'uso definiti nella documentazione di onboarding dell'infrastruttura di trust:
-
-.. list-table:: Requisiti sulle Informazioni del Modulo di Registrazione (Allegato I)
-   :class: longtable
-   :widths: 30 70
-   :header-rows: 1
-
-   * - **Campo di Informazione**
-     - **Descrizione e Requisiti**
-   * - **Nome Ufficiale**
-     - OBBLIGATORIO. Il nome legale ufficiale della wallet-relying party (nome dell'entità come registrato nei registri aziendali o governativi).
-   * - **Identificatori Ufficiali**
-     - OBBLIGATORIO. Uno o più identificatori ufficiali della wallet-relying party, come:
-       
-       - EORI (Economic Operators Registration and Identification)
-       - LEI (Legal Entity Identifier)
-       - Numero di partita IVA (Value Added Tax identification number)
-       - Numero di registrazione aziendale nazionale
-       - Altri identificatori nazionali equivalenti
-   * - **Indirizzo Fisico e Stato Membro**
-     - OBBLIGATORIO. Indirizzo fisico dell'entità e Stato Membro se non presente nell'identificatore ufficiale. L'indirizzo DEVE includere:
-       
-       - Indirizzo stradale
-       - Città
-       - Codice postale
-       - Paese (Stato Membro)
-   * - **URL**
-     - OBBLIGATORIO. URL appartenente alla wallet-relying party dove applicabile (es., homepage dell'organizzazione, sito web del servizio).
-   * - **Informazioni di Contatto**
-     - OBBLIGATORIO. Informazioni di contatto dettagliate inclusi:
-       
-       - Numero di telefono
-       - URL del sito web (se diverso dall'URL principale)
-       - Indirizzo/i email per contatti amministrativi e tecnici
-   * - **Descrizione del Servizio**
-     - OBBLIGATORIO. Descrizione del tipo di servizi forniti dall'entità, inclusi:
-       
-       - Categorie di servizi
-       - Base di utenti target
-       - Ambito e capacità del servizio
-   * - **Elenco Attributi Richiesti**
-     - OBBLIGATORIO, ove applicabile. Un elenco degli attributi che la wallet-relying party intende richiedere per ogni uso previsto. Questo DEVE fare riferimento a:
-       
-       - Identificatori specifici di claim dal :ref:`registry-registro-claims` (es., ``given_name``, ``family_name``, ``driving_privileges``)
-       - Classificazioni della Tassonomia (domini, classi, scopi) per la valutazione delle politiche di autorizzazione
-       - Vedere :ref:`registry-registro-claims` per le definizioni standardizzate dei claim
-   * - **Descrizione dell'Uso Previsto**
-     - OBBLIGATORIO, ove applicabile. Una descrizione dell'uso previsto dei dati, inclusi:
-       
-       - Scopo commerciale per la richiesta di attributi
-       - Contesto del servizio e casi d'uso
-       - Base legale per l'accesso ai dati (ove applicabile)
-   * - **Indicazione Ente Pubblico**
-     - OBBLIGATORIO. Indicazione se la wallet-relying party è un ente pubblico (valore booleano).
-   * - **Diritti Applicabili**
-     - OBBLIGATORIO. Diritto/i applicabile/i della wallet-relying party scelto/i dalla seguente lista:
-       
-       - ``Service_Provider``
-       - ``QEAA_Provider``
-       - ``Non_Q_EAA_Provider``
-       - ``PUB_EAA_Provider``
-       - ``PID_Provider``
-       - ``QCert_for_ESeal_Provider``
-       - ``QCert_for_ESig_Provider``
-       - ``rQSigCDs_Provider``
-       - ``rQSealCDs_Provider``
-       - ``ESig_ESeal_Creation_Provider``
-   * - **Indicazione Intermediario**
-     - OBBLIGATORIO. Indicazione se la wallet-relying party intende agire come intermediario o fare affidamento su un intermediario (valore booleano).
-   * - **Informazioni Specifiche dell'Entità**
-     - CONDIZIONALE. Informazioni aggiuntive richieste in base al tipo di entità:
-       
-       - **Per PID/EAA Provider**: Tipo/i di attestazione che il Provider intende emettere (QEAA, PuB-EAA, EAA non qualificato, PID)
-       - **Per QEAA Provider**: Prova di qualificazione (rapporto di valutazione della conformità, stato QTSP)
-       - **Per PuB-EAA Provider**: Prova di ente pubblico
-       - **Per EAA Provider non qualificati**: Informazioni sul provider di servizi
-       - **Per Relying Party**: Punto/i di fornitura del servizio e informazioni sugli endpoint tecnici
-
-Il modulo di registrazione DEVE essere progettato per supportare sia l'inserimento manuale dei dati che i processi di registrazione automatizzati attraverso registri autorevoli qualificati. Il Registrar PUÒ importare informazioni sull'entità da registri qualificati (es., registri aziendali, registri IVA, registri di qualificazione professionale, GLEIF per record LEI) per ridurre la duplicazione e semplificare l'onboarding.
-
-Tutte le informazioni fornite nel modulo di registrazione DEVONO essere:
-- Accurate e aggiornate al momento della registrazione
-- Verificabili rispetto alla documentazione di supporto o alle fonti autorevoli
-- Mantenute e aggiornate senza indebito ritardo quando si verificano cambiamenti
-- Conformi alle normative applicabili sulla protezione dei dati e sulla privacy
-
-Per i requisiti sulle informazioni di registrazione delle Fonti Autentiche, vedere :ref:`entity-onboarding:Requisiti sulle Informazioni di Registrazione delle AS`.
-
-Per i requisiti sulle informazioni di registrazione dei Wallet Provider, vedere la sezione :ref:`onboarding-high-level:Notifica dello Stato Membro alla Commissione Europea`, che specifica i requisiti di valutazione della conformità e le procedure di inclusione nelle Trusted Lists.
-
-Matrice delle Responsabilità
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-La seguente tabella riassume il requisito di registrazione e l'autorità responsabile per la compilazione della Trusted List (TL) per ogni tipo di entità:
-
-.. list-table:: Matrice delle Responsabilità dell'Onboarding di Federazione
-   :class: longtable
-   :widths: 25 25 25 25
-   :header-rows: 1
-
-   * - Tipo di Entità
-     - Processo di Registrazione
-     - Compilazione Trusted List (EC / MS TLP)
-     - Ruolo MS TLP
-   * - **PID Provider**
-     - **Registrazione presso il Registrar**
-     - **Commissione Europea** (TL a livello UE per PID Provider)
-     - Nessuno (nessuna TL nazionale per PID Provider)
-   * - **Attestation Provider**
-     - **Registrazione presso il Registrar**
-     - **Stato Membro / MS TLP** (TL QTSP nazionale per QEAA Provider; TL nazionale per EAA Provider non qualificati)
-     - Compila, firma e pubblica le Trusted Lists nazionali per QEAA Provider ed EAA Provider non qualificati secondo il quadro nazionale dei servizi fiduciari.
-   * - **Relying Party (RP)**
-     - **Registrazione presso il Registrar**
-     - N/A (Utilizza Certificati di Accesso/Registro)
-     - Nessuno (non elencati nelle TL)
-   * - **Wallet Provider**
-     - *Solo notifica* (verso EC)
-     - **Commissione Europea** (TL a livello UE per Wallet Provider)
-     - Non applicabile nel pilot (solo notifica da Stato Membro a EC)
-   * - **Access CA**
-     - *Solo notifica* (verso EC)
-     - **Commissione Europea** (TL a livello UE per Access CA)
-     - Non applicabile nel pilot (solo notifica da Stato Membro a EC)
-   * - **Fornitore Cert. Reg.**
-     - *Solo notifica* (verso EC)
-     - **Commissione Europea** (TL a livello UE per Fornitori Cert. Reg.)
-     - Non applicabile nel pilot (solo notifica da Stato Membro a EC)
-
-.. note::
-  **Trusted Lists e Registro di Federazione**: Le entità elencate nelle Trusted Lists nazionali sono anche registrate nel Registro di Federazione nazionale, che mantiene informazioni tecniche aggiuntive (es., endpoint di federazione). La validazione delle chiavi può avvenire tramite entrambi i meccanismi: verifica rispetto alla Trusted List e verifica tramite gli endpoint di federazione.
-
-Notifica dello Stato Membro alla Commissione Europea
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Lo Stato Membro DEVE notificare tutti i PID Provider, PuB-EAA Provider, Wallet Provider, Autorità Certificatrici di Accesso e Fornitori di Certificati di Registrazione alla Commissione Europea. Le informazioni notificate variano per tipo di entità:
-
-- **PID Provider**: Dati di identificazione, chiavi pubbliche/certificati del PID Provider, chiavi pubbliche/certificati dell'Autorità Certificatrice di Accesso per PID Provider, Punto di Fornitura del Servizio (URL)
-- **Wallet Provider**: Dati di identificazione, chiavi pubbliche/certificati del Wallet Provider
-- **PuB-EAA Provider**: Dati di identificazione (incluso rapporto di valutazione della conformità), Punto di Fornitura del Servizio (URL)
-- **Autorità Certificatrici di Accesso e Fornitori di Certificati di Registrazione**: Dati di identificazione, chiavi pubbliche/certificati
-
-La Commissione Europea compila, firma/sigilla e pubblica le Trusted Lists per Wallet Provider, PID Provider, Access CA e Fornitori di Certificati di Registrazione.
-
-Pubblicazione delle Trusted Lists per Attestation Provider
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Per gli **Attestation Provider** (sia QEAA che EAA non qualificati), il processo di registrazione attiva la pubblicazione delle Trusted Lists:
-
-**QEAA Provider**:
-- Dopo la registrazione riuscita con il Registrar dello Stato Membro, i QEAA Provider sono inclusi nelle **Trusted Lists QTSP degli Stati Membri** pubblicate dagli Stati Membri per **`EIDAS`_ Articolo 22**
-- Queste Trusted Lists QTSP sono **notificate alla Commissione Europea** per `EIDAS`_ Articolo 22(3) in modo che le posizioni delle TL QTSP e le chiavi di firma possano essere esposte tramite la **Lista delle Trusted Lists (LoTL)**
-
-**EAA Provider non qualificati**:
-- Dopo la registrazione riuscita con il Registrar dello Stato Membro, gli EAA Provider non qualificati sono inclusi nelle **Trusted Lists nazionali degli EAA Provider** compilate e pubblicate dai Fornitori di Trusted Lists degli Stati Membri (MS TLP)
-- Queste Trusted Lists nazionali sono pubblicate utilizzando il profilo `ETSI TS 119 602`_ Allegato H (Trusted Lists degli Attestation Provider), in formato JSON con firma compact JAdES Baseline B OPPURE formato XML con firma XAdES Baseline B
-- Il MS TLP invia l'URL della Trusted List pubblicata degli EAA Provider non qualificati alla Commissione Europea per l'inclusione nella LoTL
-
-Il Fornitore di Trusted Lists dello Stato Membro (MS TLP):
-- Riceve la notifica della registrazione riuscita dal Registrar (o accede ai dati del Registro)
-- Estrae le chiavi pubbliche crittografiche, i certificati e i dati rilevanti dal Registro
-- Compila le Trusted Lists secondo le specifiche `ETSI TS 119 612`_ o `ETSI TS 119 602`_
-- Firma/sigilla e pubblica le Trusted Lists agli URL pubblicamente accessibili
-- Invia l'URL della Trusted List alla Commissione Europea
 
 Gestione del Ciclo di Vita delle Entità
 ----------------------------------------
@@ -312,7 +142,7 @@ La gestione del ciclo di vita nell'ecosistema IT-Wallet necessita di coordinamen
     - **Sincronizzazione del registro:** Quando un'entità apporta cambiamenti che influenzano altre entità, tutti i sistemi di registro DEVONO essere aggiornati correttamente assicurando che tutti i cambiamenti siano registrati in modo sicuro con timestamp e ragioni.
     - **Garanzia di continuità aziendale:** Le entità DOVREBBERO bilanciare tra l'apportare aggiornamenti necessari e mantenere i loro obblighi verso utenti e normative. Questo include assicurare che il servizio sia il più disponibile possibile, gestire i dati personali correttamente durante i cambiamenti e rimanere conformi ai requisiti legali anche in situazioni di emergenza.
 
-Le procedure tecniche e i requisiti di conformità specifici per la gestione del ciclo di vita sono dettagliati nella Sezione :ref:`entity-onboarding-gestione-del-ciclo-di-vita-delle-entita`.
+Le procedure tecniche e i requisiti di conformità specifici per la gestione del ciclo di vita sono dettagliati nella Sezione :ref:`entity-onboarding:Onboarding delle Entità`.
 
 Onboarding Journey Maps
 ------------------------
@@ -408,7 +238,7 @@ Journey dell'Operatore del Fornitore di Wallet
 
 Gli operatori del Fornitore di Wallet seguono un Journey di onboarding indipendente che si concentra sulla certificazione dell'applicazione e sulla validazione della sicurezza. Il processo evidenzia lo sviluppo e la certificazione di applicazioni Wallet che possono memorizzare e gestire in modo sicuro gli Attestati Elettronici per i cittadini.
 
-Un requisito tecnico chiave coinvolge l'implementazione di meccanismi di controllo dell'integrità e autenticità del Wallet. Questi controlli consentono al Wallet di ottenere un Wallet App Attestation, che serve come prova dello stato di sicurezza e conformità del Wallet durante le operazioni delle Credenziali.
+Un requisito tecnico chiave coinvolge l'implementazione di meccanismi di controllo dell'integrità e autenticità del Wallet. Questi controlli consentono al Wallet di ottenere un Wallet Instance Attestation, che serve come prova dello stato di sicurezza e conformità del Wallet durante le operazioni delle Credenziali.
 
 Il processo di certificazione include la valutazione della sicurezza, coprendo l'architettura del Wallet, i meccanismi di protezione dei dati e le caratteristiche di privacy dell'utente. I fornitori di Wallet certificati con successo sono registrati nel Registro di Federazione e possono distribuire le loro applicazioni attraverso gli app store.
 

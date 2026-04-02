@@ -114,7 +114,7 @@ Revocation Check Mechanisms
 
 The verification of the Wallet Instance validity MUST be performed:
 
-- **During Digital Credential issuance** by the Credential Issuers. Only Wallet Instances in Operational or Valid state have valid Wallet App Attestation and Wallet Unit Attestation. The verification of the validity of a Wallet Instance is indirectly performed by Credential Issuers by checking the presence of a valid Wallet Unit Attestation (i.e., not expired, not revoked checking the Wallet Unit Attestation Status List, and signed by a trusted Wallet Provider). 
+- **During Digital Credential issuance** by the Credential Issuers. Only Wallet Instances in Operational or Valid state have valid Wallet Instance Attestation and Wallet Unit Attestation. The verification of the validity of a Wallet Instance is indirectly performed by Credential Issuers by checking the presence of a valid Wallet Unit Attestation (i.e., not expired, not revoked checking the Wallet Unit Attestation Status List, and signed by a trusted Wallet Provider). 
 
 - **During the validity period of the Digital Credential** by the Credential Issuers every 24 hours by checking the PID's Wallet Unit Attestation Status List. Indeed, if the Wallet Instance is revoked, the PID hosted within it MUST be revoked. Any other Digital Credential obtained through the presentation of the PID MUST therefore be revoked too. 
 

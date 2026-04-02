@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>5. User Experience Design &#8212; IT-Wallet Technical Specifications - Editor&#39;s Copy</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
     <script src="_static/documentation_options.js?v=5929fcd5"></script>
@@ -388,7 +388,7 @@ Below are the requirements that every Authentic Source MUST follow to personaliz
 </ul>
 </div></blockquote>
 <ul class="simple">
-<li><p>The EAA MUST be characterized by a particular data order. The Authentic Source MUST provide the desired Attributes order via <code class="docutils literal notranslate"><span class="pre">data_capabilities.available_claims.order</span></code> parameter. In particular, the Authentic Source:</p></li>
+<li><p>The EAA MUST be characterized by a particular data order. The Authentic Source MUST provide the desired Attributes order via <code class="docutils literal notranslate"><span class="pre">data_capabilities.available_claims.order</span></code> parameter. This order, according to Appendix B.3 of OpenID4VCI, MUST be used to order the claims description objects in the <code class="docutils literal notranslate"><span class="pre">claims</span></code> array present in the Credential Issuer metadata. In particular, the Authentic Source:</p></li>
 </ul>
 <blockquote>
 <div><ul class="simple">
@@ -405,7 +405,7 @@ Below are the requirements that every Authentic Source MUST follow to personaliz
 <li><p>MUST display clearly the name of the EAA, as defined within the Digital Credentials Catalog via the <code class="docutils literal notranslate"><span class="pre">credential_name</span></code> parameter (see <a class="reference internal" href="registry.html#digital-credentials-catalog"><span class="std std-ref">Digital Credentials Catalog</span></a>), in both the Detail View and the Preview View;</p></li>
 <li><p>MUST display the EAA status, if different from valid to provide transparency on its lifecycle and MAY display it if valid, in both the Detail View and the Preview View. Specific details about the EAA status, if invalid, MAY be provided in the Detail View (e.g., the reason why the EAA is revoked);</p></li>
 <li><p>MAY include optional information to enhance the User Experience and the EAA recognizability, both in the Preview View and the Detail View, such as the logo, the color, the image and/or the watermark as defined by the Authentic Source within the Authentic Source Registry (see <a class="reference internal" href="registry.html#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>);</p></li>
-<li><p>MUST include the same data of the Preview View in the Detail View and give a complete representation of all the other Attributes, following the order defined by the Authentic Source within the Authentic Source Registry (see <a class="reference internal" href="registry.html#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>); MAY include specific details in the Detail View, for example information about use case scenario or the reason for the invalid state of the EAA;</p></li>
+<li><p>MUST include the same data of the Preview View in the Detail View and give a complete representation of all the other Attributes, following the order reported in the Credential Issuer Metadata and defined by the Authentic Source within the Authentic Source Registry (see <a class="reference internal" href="registry.html#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>); MAY include specific details in the Detail View, for example information about use case scenario or the reason for the invalid state of the EAA;</p></li>
 <li><p>MUST include Action Buttons in the Detail View to enable the EAA lifecycle management and allow the User to revoke or to update a EAA at any time (see <a class="reference internal" href="#management-of-electronic-attestations"><span class="std std-ref">Management of Electronic Attestations</span></a>);</p></li>
 <li><p>MUST guarantee that the EAA is a functional element, for the User to access services provided by Relying Parties in digital and proximity contexts (see <a class="reference internal" href="#presentation-of-electronic-attestations"><span class="std std-ref">Presentation of Electronic Attestations</span></a>);</p></li>
 <li><p>MUST display in the Detail View a method of assistance given by the Authentic Source via the <code class="docutils literal notranslate"><span class="pre">data_capabilities.contacts</span></code> parameter (see <a class="reference internal" href="#user-assistance"><span class="std std-ref">User Assistance</span></a> and see <a class="reference internal" href="registry.html#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>).</p></li>
@@ -1147,7 +1147,7 @@ For further information on the Authentication button refer to the Brand Manual, 
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 11/03/2026.
+      Last updated on 02/04/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

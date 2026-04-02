@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>10.1.4.2.6. Dashboard dell’Istanza del Wallet e Registrazione delle Transazioni &#8212; IT-Wallet Specifiche Tecniche - Versione Corrente</title>
+    <title>10.1.4.2.2. Emissione della Wallet Instance Attestation &#8212; IT-Wallet Specifiche Tecniche - Versione Corrente</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -18,8 +18,8 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Indice" href="genindex.html" />
     <link rel="search" title="Cerca" href="search.html" />
-    <link rel="next" title="10.1.5. Backup e Ripristino" href="backup-restore.html" />
-    <link rel="prev" title="10.1.4.2.5. Eliminazione degli Attributi dell&#39;Utente" href="user-attribute-deletion.html" /> 
+    <link rel="next" title="10.1.4.2.3. Emissione della Wallet Unit Attestation" href="wallet-attestation-issuance.html" />
+    <link rel="prev" title="10.1.4.2.1. Inizializzazione e Registrazione dell&#39;Istanza del Wallet" href="wallet-instance-registration.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -177,33 +177,83 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="dashboard-dellistanza-del-wallet-e-registrazione-delle-transazioni">
-<span id="wallet-instance-dashboard-transaction-registry"></span><h1><span class="section-number">10.1.4.2.6. </span>Dashboard dell’Istanza del Wallet e Registrazione delle Transazioni<a class="headerlink" href="#dashboard-dellistanza-del-wallet-e-registrazione-delle-transazioni" title="Link to this heading">¶</a></h1>
-<p>L’Istanza del Wallet DEVE mantenere un registro delle transazioni sicuro e locale al Wallet, al fine di garantire trasparenza, tracciabilità e consapevolezza dell’Utente rispetto alle azioni eseguite tramite l’Istanza del Wallet, come definito in <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a> (Annex 2.02 HLRs, Topic 19). Il registro DEVE coprire tutte le transazioni (incluse quelle non completate) nelle seguenti categorie:</p>
+  <section id="emissione-della-wallet-instance-attestation">
+<h1><span class="section-number">10.1.4.2.2. </span>Emissione della Wallet Instance Attestation<a class="headerlink" href="#emissione-della-wallet-instance-attestation" title="Link to this heading">¶</a></h1>
+<p>Questa sezione descrive come il Fornitore di Wallet emette una Wallet Instance Attestation.</p>
+<figure class="align-default" id="id1">
+<p class="plantuml">
+<object data="_images/plantuml-90a492c90d3eb0b7fac4d1543720c71c675fa84c.svg" type="image/svg+xml" style="width:99%">
+<a href="_images/plantuml-90a492c90d3eb0b7fac4d1543720c71c675fa84c.png"><img src="_images/plantuml-90a492c90d3eb0b7fac4d1543720c71c675fa84c.png" alt="La figura illustra il Diagramma di Sequenza per l'acquisizione della Wallet Instance Attestation." style="width: 99.0%"/></a>
+
+</object></p>
+<figcaption>
+<p><span class="caption-number">Fig. 10.4 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/ZLHFJni_4BtxKupCuHUa_2wLsWDIAn2bW5fL4T3s4YcQh2UxespihJsxQVhfQsyWku2XlQpYyVFyUMzUJeEWbtPJAsp5sNQp9AygDWGhvsJfVYdrNnCHN723LXGMuZpeRu6y1WpGXeWV0K3_mBecWMiR16r1FGgR1XwZFbB71KMKKEbPTd1Ble-SpQx3_WrAWAFGUBPbwObijipCkuuDULXYiIPh-gVBOgsKIgtz_o6MFe4R-jbI442mj0NNa4TXPq4gbBdryPOz1K1uqZoSYL2G7fn6vmw5qZHAnSzzylEAYZNm2ixzhX5NUcmgBk0AlTcY9_XCEvZREonXedLr7rsiQRSGBBK-1Ww07NADovhKEFCbsTHfwim2DHLjuh66-1GQP9_o7Q9zmgPTQZs5Ps7FNIoabBTE25n7FWqnZJp1qPVhowkxovkBYwzgFybJPZb0OXxS2gGY-4JcWJwq1jnIa2sm1DYGe451HTQaIeTXOfr10wsjItkX1q9xlUAdHmvZmyfJg8O7UymzDqFKq3XHbi28BcecAulKtwB2KEb-KswlpjwyVJSv99j2bjBZRD9Nz9wvsToEr0vSMfJMnnBm7j9fCidrD8NiYep3Ww93MoZX93kZIbS3PVnWjmM6G3w9g7LsjbUCS51oorAzb7GA-UcdC70zjxbXynBquQP6MJc_sP-sVOkBuEesrLomoSSxyg7l2UOsTK9ct_bWgBnVHhjxIzRy2oMFLtfmMpg-u3PUFKlC0TYoCDRycqpliYx-DgeDRCliXWoM6spqFRr1eO7np6LUlomqgsWMcLSmcM84FlVqbqKRs_rryaFZRA1d_mIZSqoYJicQTbF_0G00">Diagramma di Sequenza per l'acquisizione della Wallet Instance Attestation.</a></span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p><strong>Passo 1</strong>: L'Utente avvia una nuova operazione che richiede l'acquisizione di una Wallet Instance Attestation.</p>
+<p><strong>Passi 2-3</strong>: L'Istanza del Wallet DEVE:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Verificare l'esistenza delle Cryptographic Hardware Keys. Se non esistono, è necessaria la reinizializzazione dell'Istanza del Wallet (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_140a</span></a>).</p></li>
+<li><p>Generare una coppia di chiavi asimmetriche effimere per la Wallet Instance Attestation (<code class="docutils literal notranslate"><span class="pre">ephemeral_key_pub</span></code>, <code class="docutils literal notranslate"><span class="pre">ephemeral_key_priv</span></code>), collegando la chiave pubblica all'attestazione (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_026</span></a>).</p></li>
+<li><p>Verificare l'appartenenza del Fornitore di Wallet alla federazione e recuperare i suoi metadati (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_023</span></a>).</p></li>
+</ol>
+</div></blockquote>
+<p><strong>Passi 4-6 (Recupero del Nonce)</strong>: L'Istanza del Wallet richiede un <code class="docutils literal notranslate"><span class="pre">nonce</span></code> all'endpoint <a class="reference internal" href="wallet-provider-endpoint.html#endpoint-nonce-della-soluzione-wallet"><span class="std std-ref">Endpoint Nonce della Soluzione Wallet</span></a> del Backend del Fornitore del Wallet (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_140b</span></a>). Il <code class="docutils literal notranslate"><span class="pre">nonce</span></code> deve essere imprevedibile e funge da principale difesa contro gli attacchi di replay.</p>
+<p>Il <code class="docutils literal notranslate"><span class="pre">nonce</span></code> DEVE garantire un utilizzo singolo entro un intervallo di tempo predeterminato.</p>
+<p>In caso di richiesta riuscita, il Fornitore di Wallet genera e restituisce il valore del nonce all'Istanza del Wallet.</p>
+<p><strong>Passo 7</strong>: L'Istanza del Wallet esegue le seguenti azioni (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_140c</span></a>):</p>
 <ul class="simple">
-<li><p>rilascio e ri-rilascio delle credenziali;</p></li>
-<li><p>presentazione delle credenziali alle Relying Party;</p></li>
-<li><p>richieste di cancellazione dei dati inviate alle Relying Party.</p></li>
+<li><p>Crea <code class="docutils literal notranslate"><span class="pre">client_data</span></code>, un oggetto JSON che include il <code class="docutils literal notranslate"><span class="pre">nonce</span></code> e la thumbprint JWK di <code class="docutils literal notranslate"><span class="pre">ephemeral_key_pub</span></code>.</p></li>
+<li><p>Calcola i corrispondenti hash, <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> applicando l'algoritmo SHA256 a <code class="docutils literal notranslate"><span class="pre">client_data</span></code>.</p></li>
 </ul>
-<p>Per ciascuna di tali transazioni, l’Istanza del Wallet DEVE creare un record di transazione corrispondente contenente gli elementi informativi previsti dai requisiti ARF applicabili per la relativa categoria di registrazione, e DEVE aggiornarlo con l’esito finale, ove applicabile.</p>
-<p>Per le transazioni di presentazione, i valori degli attributi NON DEVONO essere registrati. Qualora una richiesta di presentazione contenga dati transazionali, l’Istanza del Wallet DEVE registrare il valore di tali dati transazionali esclusivamente nella misura esplicitamente richiesta da <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md">EUDI-TS 12</a> in relazione all’attestazione richiesta e nel rispetto dei principi di minimizzazione dei dati. In assenza di tale requisito, i valori dei dati transazionali NON DEVONO essere registrati.</p>
-<p>Per supportare l’accesso dell’Utente al registro delle transazioni, l’Istanza del Wallet DEVE fornire un’interfaccia di dashboard che consenta all’Utente di visualizzare una panoramica dei record di transazione presenti nel registro, accedere ai dettagli dei singoli record, esportare e cancellare i record e, ove una transazione coinvolga una Relying Party, avviare una richiesta di cancellazione dei dati verso la relativa Relying Party (utilizzando, se disponibili, le informazioni di contatto registrate).</p>
-<p>Il Fornitore del Wallet DEVE proteggere la riservatezza, l’integrità e l’autenticità del registro delle transazioni e di eventuali oggetti di log esportati in conformità a <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts10-data-portability-and-download-(export).md">EUDI-TS 10</a>; l’accesso al registro DEVE essere limitato all’Utente e all’Istanza del Wallet.</p>
-<p>I record DEVONO essere conservati per almeno il periodo minimo previsto dalla normativa applicabile, come definito in <a class="reference internal" href="log-retention-policy.html#politiche-generali-di-conservazione-dei-log"><span class="std std-ref">Politiche Generali di Conservazione dei Log</span></a>. Qualora limiti di spazio richiedano una cancellazione automatica, l’Istanza del Wallet DEVE notificare l’Utente tramite la dashboard, avvertire delle possibili conseguenze e offrire la possibilità di esportare i record interessati prima della cancellazione.</p>
-<section id="esportazione-e-cancellazione-dei-record-di-transazione">
-<h2><span class="section-number">10.1.4.2.6.1. </span>Esportazione e Cancellazione dei Record di Transazione<a class="headerlink" href="#esportazione-e-cancellazione-dei-record-di-transazione" title="Link to this heading">¶</a></h2>
-<p><strong>Esportazione</strong>: la dashboard DEVE consentire all’Utente di esportare uno o più record di transazione in un file utilizzando il formato comune e le misure di sicurezza definite in <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts10-data-portability-and-download-(export).md">EUDI-TS 10</a>.</p>
-<p>Il file esportato DEVE poter essere salvato in una posizione di archiviazione esterna o remota scelta dall’Utente, tra le opzioni di archiviazione supportate dall’Istanza del Wallet.</p>
-<p><strong>Cancellazione</strong>: la dashboard DEVE consentire all’Utente di cancellare uno o più record di transazione dall’Istanza del Wallet in qualsiasi momento.</p>
-<p>Prima di cancellare qualsiasi record di transazione, l’Istanza del Wallet DEVE mostrare all’Utente un avviso chiaro sulle possibili conseguenze per i diritti dell’Utente in materia di protezione dei dati.</p>
-<p>La cancellazione dei record di transazione DEVE:</p>
+<p>Di seguito è riportato un esempio non normativo dell'oggetto JSON <code class="docutils literal notranslate"><span class="pre">client_data</span></code>.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;nonce&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;i4ThI2Jhbu81i8mqyWEuDG5t&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;jwk_thumbprint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Passi 8-10</strong>: L'Istanza del Wallet:</p>
 <ul class="simple">
-<li><p>applicarsi esclusivamente alle copie locali al Wallet dei record;</p></li>
-<li><p>essere irreversibile per l’Istanza del Wallet una volta completata.</p></li>
+<li><p>produce un valore <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code> firmando <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> con la chiave privata dell'Hardware del Wallet, servendo come prova di possesso delle Cryptographic Hardware Keys (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_140d</span></a>).</p></li>
+<li><p>richiede al Servizio di Integrità del Dispositivo di creare un valore <code class="docutils literal notranslate"><span class="pre">integrity_assertion</span></code> collegato al <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code>.</p></li>
+<li><p>riceve un valore <code class="docutils literal notranslate"><span class="pre">integrity_assertion</span></code> firmato per l'Istanza del Wallet dal Servizio di Integrità del Dispositivo, autenticato dall'OEM (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_140e</span></a>).</p></li>
 </ul>
-<p>L’Istanza del Wallet DEVE continuare a proteggere eventuali record di transazione rimanenti in conformità ai requisiti di riservatezza, integrità e autenticità definiti per il registro delle transazioni nella presente sezione.</p>
-<p>Nessuna entità diversa dall’Utente PUÒ cancellare i record di transazione.</p>
-</section>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p><code class="docutils literal notranslate"><span class="pre">integrity_assertion</span></code> è un payload personalizzato generato dal Servizio di Integrità del Dispositivo, firmato dall'OEM del dispositivo e codificato in base64 per avere uniformità tra diversi dispositivi.</p>
+</div>
+<p><strong>Passi 11-12 (Richiesta di Emissione della Wallet Instance Attestation)</strong>: L'Istanza del Wallet:</p>
+<ul class="simple">
+<li><p>Costruisce la Wallet Instance Attestation Request sotto forma di JWT. Questo JWT include l'<code class="docutils literal notranslate"><span class="pre">integrity_assertion</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code>, <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>, <code class="docutils literal notranslate"><span class="pre">cnf</span></code>, <code class="docutils literal notranslate"><span class="pre">platform</span></code>, <code class="docutils literal notranslate"><span class="pre">wallet_solution_id</span></code>, <code class="docutils literal notranslate"><span class="pre">wallet_solution_version</span></code>  e altri parametri relativi alla configurazione (vedi <a class="reference internal" href="wallet-provider-endpoint.html#table-wia-request-claim"><span class="std std-ref">Tabella del Corpo della Richiesta di Wallet Instance Attestation</span></a>) ed è firmato utilizzando la chiave privata la cui chiave pubblica è indicata nella richiesta tramite <code class="docutils literal notranslate"><span class="pre">cnf</span></code> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_140–141</span></a>).</p></li>
+<li><p>Invia la Wallet Instance Attestation Request all'endpoint <a class="reference internal" href="wallet-provider-endpoint.html#endpoint-di-emissione-della-wallet-instance-attestation"><span class="std std-ref">Endpoint di Emissione della Wallet Instance Attestation</span></a> del Backend del Fornitore del Wallet.</p></li>
+</ul>
+<p>L'Istanza del Wallet DEVE inviare il JWT firmato della Richiesta di Wallet Instance Attestation come parametro <code class="docutils literal notranslate"><span class="pre">assertion</span></code> nel corpo di una richiesta HTTP all'endpoint <a class="reference internal" href="wallet-provider-endpoint.html#endpoint-di-emissione-della-wallet-instance-attestation"><span class="std std-ref">Endpoint di Emissione della Wallet Instance Attestation</span></a> del Fornitore di Wallet (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_142</span></a>).</p>
+<p><strong>Passi 13-17</strong>: Il Backend del Fornitore del Wallet valuta la Richiesta di Wallet Instance Attestation e DEVE eseguire i seguenti controlli (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_143</span></a>):</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>La richiesta DEVE includere tutti i parametri dell'intestazione HTTP richiesti come definito in <a class="reference internal" href="wallet-provider-endpoint.html#richiesta-di-emissione-della-wallet-instance-attestation"><span class="std std-ref">Richiesta di Emissione della Wallet Instance Attestation</span></a> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_143a</span></a>).</p></li>
+<li><p>La firma della Richiesta di Wallet Instance Attestation DEVE essere valida e verificabile utilizzando la <code class="docutils literal notranslate"><span class="pre">jwk</span></code> fornita (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_143b</span></a>).</p></li>
+<li><p>Il valore <code class="docutils literal notranslate"><span class="pre">nonce</span></code> DEVE essere stato generato dal Fornitore di Wallet e non essere stato utilizzato in precedenza (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_143c</span></a>).</p></li>
+<li><p>DEVE esistere un'Istanza del Wallet valida e attualmente registrata associata al <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_143d</span></a>).</p></li>
+<li><p>Il <code class="docutils literal notranslate"><span class="pre">client_data</span></code> DEVE essere ricostruito utilizzando il <code class="docutils literal notranslate"><span class="pre">nonce</span></code> e la chiave pubblica <code class="docutils literal notranslate"><span class="pre">jwk</span></code>. Il valore del parametro <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code> viene quindi convalidato utilizzando la chiave pubblica della Cryptographic Hardware Key registrata associata all'Istanza del Wallet (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_143e</span></a>).</p></li>
+<li><p>L'<code class="docutils literal notranslate"><span class="pre">integrity_assertion</span></code> DEVE essere convalidato secondo le linee guida del produttore del dispositivo. I controlli specifici eseguiti dal Fornitore di Wallet sono dettagliati nella documentazione del produttore del sistema operativo  (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_143f</span></a>).</p></li>
+<li><p>Il dispositivo in uso DEVE essere privo di difetti di sicurezza noti e soddisfare i requisiti minimi di sicurezza definiti dal Fornitore di Wallet.</p></li>
+<li><p>L'URL nel parametro <code class="docutils literal notranslate"><span class="pre">iss</span></code> DEVE corrispondere all'identificatore URL del Fornitore di Wallet  (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_143g</span></a>).</p></li>
+</ol>
+</div></blockquote>
+<p>Al completamento con successo di tutte le verifiche, il Fornitore di Wallet emette una Wallet Instance Attestation valida per meno di 24 ore (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_144</span></a>).</p>
+<p><strong>Passo 18 (Risposta di Emissione della Wallet Instance Attestation)</strong>: Al completamento con successo, il Fornitore di Wallet DEVE restituire una risposta di conferma utilizzando il codice di stato 200 e il Content-Type <code class="docutils literal notranslate"><span class="pre">application/json</span></code>, contenente la Wallet Instance Attestations firmate dal Fornitore di Wallet. Il Fornitore di Wallet DEVE restituire la Wallet Instance Attestation in formato <code class="docutils literal notranslate"><span class="pre">JWT</span></code>. L'Istanza del Wallet eseguirà quindi la verifica di sicurezza e integrità della Wallet Instance Attestations ricevute, oltre alla verifica di fiducia del relativo emittente (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_030–031</span></a>).</p>
+<p>Di seguito è riportato un esempio non normativo della risposta.</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;wallet_instance_attestation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;omppc3N1ZXJBdXRohEOhASaiBE...dElEAnFlbGVtZW50SWRl&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </section>
 
 
@@ -212,23 +262,6 @@
         </div>
       </div>
     
-        <div id="show_right_sidebar">
-            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&lt;</span><span>Page contents</span></a></p>
-        </div>
-
-        <div id="right_sidebar">
-            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
-            <div class="page_toc">
-                <ul>
-<li><a class="reference internal" href="#">10.1.4.2.6. Dashboard dell’Istanza del Wallet e Registrazione delle Transazioni</a><ul>
-<li><a class="reference internal" href="#esportazione-e-cancellazione-dei-record-di-transazione">10.1.4.2.6.1. Esportazione e Cancellazione dei Record di Transazione</a></li>
-</ul>
-</li>
-</ul>
-
-            </div>
-        </div>
-    
 
       <div class="clearer"></div>
     </div>
@@ -236,14 +269,14 @@
         <div class="button_nav">
             <div class="left">
                 
-                <a href="user-attribute-deletion.html">
-                    <span class="icon">&lt;</span><span><span class="section-number">10.1.4.2.5. </span>Eliminazione degli Attributi dell'Utente</span></a>
+                <a href="wallet-instance-registration.html">
+                    <span class="icon">&lt;</span><span><span class="section-number">10.1.4.2.1. </span>Inizializzazione e Registrazione dell'Istanza del Wallet</span></a>
                 
             </div>
 
             <div class="right">
                 
-                    <a href="backup-restore.html"><span><span class="section-number">10.1.5. </span>Backup e Ripristino</span><span class="icon">&gt;</span></a>
+                    <a href="wallet-attestation-issuance.html"><span><span class="section-number">10.1.4.2.3. </span>Emissione della Wallet Unit Attestation</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>

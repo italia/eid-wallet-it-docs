@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>10.1. Wallet Solution &#8212; IT-Wallet Technical Specifications - Editor&#39;s Copy</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
     <script src="_static/documentation_options.js?v=5929fcd5"></script>
@@ -178,7 +178,7 @@
             
   <section id="wallet-solution">
 <h1><span class="section-number">10.1. </span>Wallet Solution<a class="headerlink" href="#wallet-solution" title="Link to this heading">¶</a></h1>
-<p>The Wallet Solution is issued by the Wallet Provider in the form of a mobile app and services, such as web interfaces. The mobile app serves as the primary interface for Users, allowing them to hold their Digital Credentials and interact with other participants of the ecosystem, such as Credential Issuers and Relying Parties. These Digital Credentials are a set of data that can uniquely identify a natural or legal person, along with other Qualified and non-qualified Electronic Attestations of Attributes, also known as QEAAs and EAAs respectively, or (Q)EAAs for short. Once a User installs the mobile app on their device, such an installation is referred to as a Wallet Instance for the User. By supporting the mobile app, the Wallet Provider ensures the security and reliability of the entire Wallet Solution, as it is responsible for issuing the Wallet App Attestation (WAA) and Wallet Unit Attestation (WUA). WAA proves the authenticity and integrity of the Wallet Instance, while WUA provides evidence that the keys used for Credential key binding are securely stored in a trustworthy WSCD. Additionally, WUA confirms that the Wallet Unit has not been revoked.</p>
+<p>The Wallet Solution is issued by the Wallet Provider in the form of a mobile app and services, such as web interfaces. The mobile app serves as the primary interface for Users, allowing them to hold their Digital Credentials and interact with other participants of the ecosystem, such as Credential Issuers and Relying Parties. These Digital Credentials are a set of data that can uniquely identify a natural or legal person, along with other Qualified and non-qualified Electronic Attestations of Attributes, also known as QEAAs and EAAs respectively, or (Q)EAAs for short. Once a User installs the mobile app on their device, such an installation is referred to as a Wallet Instance for the User. By supporting the mobile app, the Wallet Provider ensures the security and reliability of the entire Wallet Solution, as it is responsible for issuing the Wallet Instance Attestation (WIA) and Wallet Unit Attestation (WUA). WIA proves the authenticity and integrity of the Wallet Instance, while WUA provides evidence that the keys used for Credential key binding are securely stored in a trustworthy WSCD. Additionally, WUA confirms that the Wallet Unit has not been revoked.</p>
 <p>The following diagram depicts the Wallet Solution High Level Architecture.</p>
 <figure class="align-default" id="id1">
 <span id="fig-wallet-solution-high-level-architecture"></span><p class="plantuml">
@@ -194,7 +194,7 @@
 <p class="caption" role="heading"><span class="caption-text">Wallet Solution Table of Contents</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution-requirements.html">10.1.1. Wallet Solution Requirements</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution-requirements.html#wallet-app-attestation-requirements">10.1.1.1. Wallet App Attestation Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution-requirements.html#wallet-instance-attestation-requirements">10.1.1.1. Wallet Instance Attestation Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution-requirements.html#wallet-unit-attestation-requirements">10.1.1.2. Wallet Unit Attestation Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution-requirements.html#wscd-requirements">10.1.1.3. WSCD Requirements</a></li>
 </ul>
@@ -254,7 +254,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 11/03/2026.
+      Last updated on 02/04/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
