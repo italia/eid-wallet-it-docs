@@ -6,6 +6,15 @@ Onboarding System
 
 The onboarding system registers operational entities (PID Providers, Attestation Providers, Relying Parties, Wallet Providers, and Authentic Sources) so that they can participate in the IT-Wallet ecosystem with clearly defined authorizations and trust relationships.
 
+.. rubric:: How to read this chapter (quick guide)
+
+1. **Phase 1 — Qualify and be validated** — Complete administrative eligibility and technical federation onboarding so your organization is trusted inside the ecosystem (:ref:`entity-onboarding:Entity Onboarding`, :ref:`trust-infrastructure:The Infrastructure of Trust`).
+2. **Phase 2 — Submit and define your data** — Register claims, Authentic Source relationships, and catalog entries through the registry components (:ref:`onboarding-high-level:Onboarding System Architecture`, :ref:`registry:Registry Infrastructure`).
+3. **Phase 3 — Obtain authorizations** — Satisfy policy checks, trust marks, and publication flows that unlock operational scopes (:ref:`entity-onboarding:Entity Onboarding`, :ref:`onboarding-high-level:Federation Onboarding Process`).
+
+.. note::
+   **FAQ-style hint** — If the chapter feels long, jump to the phase that matches your question, then return to the detailed subsections. Journey maps are in :ref:`onboarding-high-level:Onboarding Journey Maps`.
+
 Onboarding System Architecture
 ------------------------------
 

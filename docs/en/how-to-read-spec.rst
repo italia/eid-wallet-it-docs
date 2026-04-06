@@ -45,6 +45,20 @@ The specification is organized into the following major sections:
   Provides supplementary technical details, implementation patterns, and testing frameworks including mobile application instance management, national platform integration specifications, and comprehensive test matrices for ecosystem validation.
 
 
+Quick paths by objective
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Use these summaries when you already know your goal; the role sections below expand each path.
+
+**Wallet Provider** — *Ship a Wallet Solution:* :ref:`wallet-solution:Wallet Solution`, :ref:`wallet-provider-endpoint:Wallet Provider Endpoints`; *move Credentials end-to-end:* :ref:`digital-credential-flows:Digital Credential Flows`; *federation and crypto:* :ref:`trust-infrastructure:The Infrastructure of Trust`, :ref:`algorithms:Cryptographic Algorithms`; *security and privacy:* :ref:`security-privacy-considerations:Security and Privacy Considerations`.
+
+**Credential Issuer** — *Issue Credentials:* :ref:`credential-issuer-solution:Credential Issuer Solution`, :ref:`credential-issuance:Digital Credential Issuance`, :ref:`credential-issuer-endpoint:Credential Issuer Endpoints`; *authoritative data:* :ref:`authentic-sources:Authentic Sources`; *if you authenticate Users:* :ref:`credential-presentation:Digital Credential Presentation`; *security:* :ref:`security-privacy-considerations:Security and Privacy Considerations`.
+
+**Authentic Source** — *Expose authoritative data:* :ref:`authentic-sources:Authentic Sources`, :ref:`authentic-source-endpoint:Authentic Source Endpoints`; *integrity and national platforms:* :ref:`algorithms:Cryptographic Algorithms`, :ref:`e-service-pdnd:e-Service PDND`.
+
+**Relying Party** — *Verify User Credentials:* :ref:`relying-party-solution:Relying Party Solution`, :ref:`credential-presentation:Digital Credential Presentation`, :ref:`relying-party-endpoints:Relying Party Endpoints`; *formats and validity:* :ref:`digital-credential-management:Digital Credential Management`; *security:* :ref:`security-privacy-considerations:Security and Privacy Considerations`.
+
+
 Reading Paths by Role
 ^^^^^^^^^^^^^^^^^^^^^
 

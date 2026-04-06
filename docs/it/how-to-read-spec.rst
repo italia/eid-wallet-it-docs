@@ -47,6 +47,20 @@ La specifica è organizzata nelle seguenti sezioni principali:
   Fornisce dettagli tecnici supplementari, modelli di implementazione e framework di test, inclusa la gestione delle istanze di applicazioni mobili, specifiche di integrazione della piattaforma nazionale e matrici di test complete per la validazione dell'ecosistema.
 
 
+Percorsi rapidi per obiettivo
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Da usare quando si conosce già il compito da svolgere; le sezioni per ruolo sotto approfondiscono ciascun percorso.
+
+**Fornitore di Wallet** — *Realizzare la Soluzione Wallet:* :ref:`wallet-solution:Soluzione Wallet`, :ref:`wallet-provider-endpoint:Endpoint del Fornitore di Wallet`; *far circolare gli attestati:* :ref:`digital-credential-flows:Flussi relativi agli Attestati Elettronici`; *federazione e crittografia:* :ref:`trust-infrastructure:L'Infrastruttura di Trust`, :ref:`algorithms:Algoritmi Crittografici`; *sicurezza e privacy:* :ref:`security-privacy-considerations:Considerazioni di Sicurezza e Privacy`.
+
+**Credential Issuer** — *Emettere attestati:* :ref:`credential-issuer-solution:Soluzione del Fornitore di Attestati Elettronici`, :ref:`credential-issuance:Emissione di Attestati Elettronici`, :ref:`credential-issuer-endpoint:Endpoint del Credential Issuer`; *dati da Fonti Autentiche:* :ref:`authentic-sources:Fonti Autentiche`; *se si autentica l'Utente:* :ref:`credential-presentation:Presentazione dell'Attestato Elettronico`; *sicurezza:* :ref:`security-privacy-considerations:Considerazioni di Sicurezza e Privacy`.
+
+**Fonte Autentica** — *Erogare dati autorevoli:* :ref:`authentic-sources:Fonti Autentiche`, :ref:`authentic-source-endpoint:Endpoint delle Fonti Autentiche`; *integrità e piattaforme nazionali:* :ref:`algorithms:Algoritmi Crittografici`, :ref:`e-service-pdnd:e-Service PDND`.
+
+**Relying Party** — *Verificare le credenziali presentate:* :ref:`relying-party-solution:Soluzione di Relying Party`, :ref:`credential-presentation:Presentazione dell'Attestato Elettronico`, :ref:`relying-party-endpoints:Endpoint della Relying Party`; *formati e validità:* :ref:`digital-credential-management:Gestione degli Attestati Elettronici`; *sicurezza:* :ref:`security-privacy-considerations:Considerazioni di Sicurezza e Privacy`.
+
+
 Journey di Lettura per Ruolo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

@@ -3,6 +3,8 @@
 User Experience Design
 =======================
 
+.. note::
+   **Audience and resources** — UX designers, frontend engineers, and product owners responsible for Wallet, Issuer, Authentic Source, or Relying Party Touchpoints. Cross-link: :ref:`brand-identity:Brand Identity`, :ref:`official-resources:Official Resources`, :ref:`normative-ref:Normative References` (GL_DESIGN / REF_ACCESSIBILITY), :ref:`security-privacy-considerations:Security and Privacy Considerations`.
 
 .. include:: design.rst 
 
@@ -30,7 +32,7 @@ The IT-Wallet System provides Users with a simpler, faster, and more secure way 
 
     User Experience phases of Wallet usage
 
-The following sections focus on the usage and post-usage phases. They define the functional requirements supporting the User Experience for the activation, acquisition, presentation, management, and deactivation phases, along with interaction requirements related to error management, assistance requests, and feedback collection.
+The following sections explain how the service works for the User: from activation and obtaining a document through use and deactivation. They also include requirements for handling errors, receiving assistance, and collecting feedback.
 
 Additional documentation and resources will be provided in the :ref:`official-resources:Official Resources` section.  
 
@@ -139,13 +141,11 @@ The IT-Wallet ID Official Resource is provided in the related :ref:`official-res
 Issuance of Electronic Attestations of Attributes
 --------------------------------------------------
 
-Once activation is complete, the User MAY obtain one or more Electronic Attestations of Attributes within their Wallet Instance.
-
-Depending on the User's specific needs, the type of Electronic Attestation of Attributes, and the offerings available from the Wallet Provider, the Electronic Attestation of Attributes Provider, and the Authentic Source, the request of Electronic Attestations of Attributes can occur in two ways:
+Once activation is complete, the User MAY obtain one or more Electronic Attestations of Attributes within their Wallet Instance in two ways:
 
 - **from the Wallet Instance Catalog**: the User explores the list of Electronic Attestations of Attributes provided by the Wallet Solution, selects the one of interest, and initiates the request process, concluding with the issuance of the Electronic Attestation of Attributes in the Wallet Instance. This pathway is available for Credential types eligible for public discovery as determined by the Supervisory body policies during the onboarding process (see :ref:`registry:Digital Credentials Catalog`).
 
-- **from a Touchpoint of the Authentic Source** (or the Electronic Attestation of Attributes Provider if it coincides with the Authentic Source): the User interacts with the digital service of the Authentic Source, allowing them to get a specific Electronic Attestation of Attributes in their Wallet Instance via an Engagement Button.
+- **from a Touchpoint of the Authentic Source** (or the Electronic Attestation of Attributes Provider if it coincides with the Authentic Source): the User interacts with the digital service of the Authentic Source, allowing them to get a specific Electronic Attestation of Attributes in their Wallet Instance via an Engagement Button (see :ref:`functionalities:Authentication Button` for the shared visual pattern).
 
 Although the methods for initiating the request are different, the issuance flows share a similar structure and process. 
 
@@ -173,7 +173,7 @@ The Authentic Source MAY provide additional information related to an Electronic
 
 - MUST ensure that the information is constantly updated; 
 
-- MUST include a title and text in which it MAY include references to external channels to direct Users to a procedure, explore a specific topic and/or open support requests. 
+- MUST include a title and body text; the body MAY include references to external channels to direct Users to a procedure, explore a specific topic and/or open support requests. 
 
 Following is an example of informative text: 
 
@@ -236,7 +236,7 @@ Issuance from a Touchpoint of the Authentic Source
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Below are illustrated the User Experience requirements for the issuance of an Electronic Attribute Attestation from the Catalog that the Wallet Solution Provider MUST guarantee through their own Wallet Solution: 
 
-- The User interacts with the Engagement Button clearly displayed in the Touchpoint interface; 
+- The User interacts with the Engagement Button clearly displayed in the Touchpoint interface (see :ref:`functionalities:Authentication Button`); 
 - The User selects the Wallet Solution with which to proceed, through an interface that MUST follow the directions and functionalities described for the *Selection Page* in the :ref:`functionalities:Authentication` section; 
 - (*cross-device only*) the User scans the QR code that invokes the opening of their chosen Wallet Instance, through an interface that MUST follow the directions and functionalities described for the *QR Code Page* in the :ref:`functionalities:Authentication` section; 
 - (*cross-device only*) the User displays a message inviting them to continue on their chosen Wallet Instance, through an interface that MUST follow the directions and functionalities described for the *Waiting Page* in the :ref:`functionalities:Authentication` section; 
@@ -1187,8 +1187,6 @@ Error Management
 -----------------
 
 The IT-Wallet System involves the interaction of multiple services provided by different actors. It is therefore important to define an effective error management model with the goal of improving the perception and reliability of the entire ecosystem and enabling the User to feel guided during interactions with the various Technical Solutions and to consciously manage any issues while using the service.
-
-Effective communication in case of an error also provides benefits for the actors involved, as it contributes to the reduction of assistance requests and, thus, to the minimisation of the impact on support systems.
 
 Each Primary Actor MUST implement a proper error management, in compliance with current Technical Specification, in order to communicate errors and exceptions to the User and through the IT-Wallet Instance. Errors can be categorized, based on their nature, as follows: 
 

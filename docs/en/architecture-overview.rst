@@ -4,6 +4,12 @@
 Architecture Overview
 =====================
 
+.. note::
+   **Audience and resources** — This chapter is for architects, product owners, and compliance leads who need the governance and operational picture. Deep onboarding detail is in :ref:`onboarding-high-level:Onboarding System` and :ref:`registry:Registry Infrastructure`.
+
+.. note::
+   **Simplified view** — IT-Wallet is an ecosystem for secure exchange of certified data between **citizens and businesses**. It rests on three pillars: **Rules** (governance), **Solutions** (Primary Actors such as Credential Issuers and Wallet Providers), and **Services** (national supporting systems). In day-to-day operation, participants collaborate on document lifecycles while **Security**, **Privacy**, and a straightforward User Experience remain guaranteed. National digital services connect through **authorization**, **exchange**, and **verification** of data.
+
 The IT-Wallet System is a federated ecosystem that enables secure Digital Identity management and Digital Credential exchange for citizens and organizations. 
 The IT-Wallet ecosystem is built on a multi-layered architecture, where governance bodies establish and maintain the trust infrastructure, Primary Actors implement and operate the technical solutions, and external systems provide additional services.
 
@@ -44,6 +50,8 @@ The architecture enables the following core interaction processes:
   4. **Credential Storage and Management**: IT-Wallet Solutions receive and manage Digital Credentials on User devices, enabling secure Credential lifecycle management.
 
   5. **Credential Presentation and Verification**: Users present Digital Credentials to Relying Parties, which verify claims through cryptographic validation and status verification. Relying Parties operate within authorized scopes that define which Credential types and purposes they can request, with validation against the :ref:`registry:Claims Registry` for schema verification.
+
+**Clarification (items 2–5).** Item **2** concerns how Credential types are **discovered** (public catalog vs private offers). Item **3** is **issuance**: Credential Issuers and Authentic Sources produce new Credentials for the User's Wallet. Item **4** is **storage and lifecycle** on the User device. Item **5** is **presentation and verification** toward Relying Parties—distinct from issuance and from catalog discovery.
 
 
  

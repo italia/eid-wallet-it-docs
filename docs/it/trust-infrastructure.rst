@@ -6,25 +6,27 @@
 L'Infrastruttura di Trust
 ==========================
 
-L'ecosistema IT-Wallet opera all'interno di un'infrastruttura di trust federata dove le entità partecipanti stabiliscono relazioni di trust crittografiche e mantengono la conformità con standard di sicurezza comuni. Questa infrastruttura fornisce le fondamenta per operazioni sicure di Credenziali Elettroniche tra i partecipanti dell'ecosistema.
+.. note::
+   **Destinatari e risorse** — Legal, compliance, architetti della sicurezza e sviluppatori che implementano gli endpoint di federazione. Per la terminologia vedere il capitolo :ref:`defined-terms-and-references:Termini Definiti e Riferimenti` (in particolare :ref:`defined-terms:Definizioni e Acronimi`); riferimenti normativi in :ref:`normative-ref:Riferimenti Normativi` e nelle specifiche `OID-FED`_.
 
-Questa sezione definisce l'implementazione del Trust Model in un'infrastruttura conforme a OpenID Federation 1.0 `OID-FED`_. Tale infrastruttura prevede un'API RESTful per la distribuzione di metadati, policy dei metadati, trust mark, chiavi pubbliche crittografiche e certificati X.509, e lo stato di revoca dei partecipanti, chiamati anche Entità di Federazione.
+L'ecosistema IT-Wallet si basa su un'infrastruttura di trust federata all'interno della quale tutti gli attori coinvolti stabiliscono relazioni di trust crittografiche conformi a standard di sicurezza comuni. Questa infrastruttura è alla base dello scambio sicuro di Credenziali Elettroniche tra i partecipanti.
 
+Questa sezione definisce il Trust Model secondo gli standard `EIDAS-ARF`_ e OpenID Federation 1.0 `OID-FED`_. OpenID Federation opera a livello nazionale ed è completato dalle Trusted List eIDAS per Provider QEAA ed EAA—incluse le liste nazionali e la List of Trusted Lists (LoTL)—che garantiscono la validità dei documenti (EAA e QEAA) in tutto il territorio europeo.
 
-Questa infrastruttura di trust lavora in coordinamento con l'Infrastruttura del Registro (vedi :ref:`registry:Infrastruttura del Registro`) per abilitare i processi di onboarding delle entità dettagliati in :ref:`entity-onboarding:Onboarding delle Entità`. In particolare, abilita l'implementazione tecnica dei processi di onboarding descritti in :ref:`entity-onboarding:Onboarding delle Entità` e supporta gli scenari operativi illustrati in :ref:`onboarding-high-level:Onboarding Journey Maps`.
+L'infrastruttura nazionale mette a disposizione un'interfaccia tecnica (API RESTful) per distribuire metadati, policy, certificati X.509 e chiavi di firma di tutti i partecipanti. Consente inoltre di verificare in tempo reale se un attore (Entità di Federazione) è stato rimosso o sospeso.
+
+In coordinamento con l'Infrastruttura del Registro (vedi :ref:`registry:Infrastruttura del Registro`), abilita i processi di onboarding delle entità e l'implementazione tecnica di tali processi (vedi :ref:`entity-onboarding:Onboarding delle Entità`), a supporto degli scenari operativi (vedi :ref:`onboarding-high-level:Onboarding Journey Maps`).
 
 **Abilitazione dell'Onboarding**: L'Infrastruttura di Trust fornisce i meccanismi crittografici che consentono alle nuove entità (Credential Issuer, Relying Party, Fornitori di Wallet) di stabilire relazioni di trust verificabili durante il loro processo di registrazione. Senza questa infrastruttura, le entità non sarebbero in grado di dimostrare il loro stato di conformità o le capacità operative agli altri partecipanti dell'ecosistema.
 
 **Supporto al Ciclo di Vita delle Entità**: Durante tutto il ciclo di vita operativo di un'entità, l'Infrastruttura di Trust mantiene attestazioni di trust aggiornate, gestisce la rotazione delle chiavi, gestisce scenari di revoca e supporta il monitoraggio della conformità. Questo supporta direttamente le procedure di gestione del ciclo di vita dettagliate in :ref:`entity-onboarding:Onboarding delle Entità`.
-
-**Integrazione con l'Infrastruttura del Registro**: L'Infrastruttura di Trust implementa il componente Federation Registry dell'Infrastruttura del Registro più ampia, fornendo le fondamenta tecniche per la scoperta delle entità e la validazione del trust che sottende tutte le procedure di onboarding.
 
 .. plantuml:: plantuml/trust-roles.puml
    :width: 99%
    :alt: La figura illustra i ruoli di trust.
    :caption: `I ruoli all'interno della Federazione, dove il National Trust Anchor supervisiona i suoi subordinati, che includono uno o più Intermediari e Foglie. <https://www.plantuml.com/plantuml/png/XT1HQy90303Wz_iLcNkMiIAoXo5AtK3OWup17aViPUxmcYkvd29Z_tsjThM2kBSc-P9UCesAegdqviPnuPCbUCn7T_de8m-iw9XaOapSEAvGi8GL5fkrXCGs3pu8g237kaIiFJKJ2RiZMFcwmnYXGf7Ndc3m9YagpBZu2Z80ZA08j_FnqyDpTkOMh2GbMOTA1-TOxplv3ymkZdmXt58y64_u6UjnZPcFhw6iGzTKTwu_3Ty6eDUG2rbYTUXX4MEYu-w5wnvwfj_HUr9OIjWwszfTTTc-ajyxNiCIHVS7AIVvOqpzZs6gXXDGDBkg_MwEQQGNPQOzIQ_UxjypJVeqhKcTeYcnJQN_1G00>`_
 
-In questa rappresentazione, sia il :term:`National Trust Anchor` che gli Intermediari assumono il ruolo di Registration Authority.
+In questa rappresentazione, sia il :term:`National Trust Anchor` che gli Intermediari agiscono come Registration Authority per l'ammissione delle entità alla federazione (funzione di registrar) e, in termini di protocollo, come Autorità di Federazione che emettono Subordinate Statement e applicano policy sui metadati.
 
 Ruoli di Federazione
 --------------------
@@ -80,9 +82,9 @@ Di seguito la tabella con il riepilogo dei ruoli delle Entità di Federazione, m
 Integrazione dell'Infrastruttura di Trust e del Registro
 --------------------------------------------------------
 
-L'Infrastruttura di Trust implementa il componente Federation Registry dell'Infrastruttura del Registro. Il Federation Registry mantiene l'elenco autorevole delle entità fidate attraverso gli endpoint di federazione definiti in questa sezione, inclusi l'elenco delle entità (/list), le dichiarazioni dei subordinati (/fetch), la validazione dei trust mark (/trust_mark_status), gli eventi sui subordinati (/federation_subordinate_events_endpoint) e la gestione delle chiavi storiche (/historical-jwks).
+L'Infrastruttura di Trust implementa il Federation Registry dell'Infrastruttura del Registro. Il Federation Registry è l'elenco autorevole delle entità fidate verificate attraverso gli endpoint di federazione definiti in questa sezione, inclusi l'elenco delle entità (/list), le dichiarazioni dei subordinati (/fetch), la validazione dei trust mark (/trust_mark_status), gli eventi sui subordinati (/federation_subordinate_events_endpoint) e la gestione delle chiavi storiche (/historical-jwks).
 
-Questo Federation Registry opera insieme ad altri componenti del registro (Claims Registry, AS Registry, Catalogo degli Attestati Elettronici, Taxonomy) per fornire supporto completo all'ecosistema. Per l'architettura completa del registro e le interazioni dei componenti, vedi :ref:`registry:Infrastruttura del Registro`.
+Il Federation Registry opera insieme ad altri componenti del registro (Claims Registry, AS Registry, Catalogo degli Attestati Elettronici, Taxonomy) per fornire supporto completo all'ecosistema. Per l'architettura completa del registro e le interazioni dei componenti, vedi :ref:`registry:Infrastruttura del Registro`.
 
 
 Endpoint API di Federazione
@@ -575,7 +577,7 @@ Le Trust Chain possono anche essere verificate offline, utilizzando una delle ch
 Trust Chain
 -----------
 
-La Trust Chain è una sequenza di dichiarazioni verificate che valida la conformità di un partecipante con la Federazione. Ha una data di scadenza, oltre la quale DEVE essere rinnovata per ottenere i metadati freschi e aggiornati. La data di scadenza della Trust Chain è determinata dal timestamp di scadenza più precoce tra tutti i timestamp di scadenza contenuti nelle dichiarazioni. Nessuna Entità può forzare la data di scadenza della Trust Chain ad essere superiore a quella configurata dal Trust Anchor.
+La Trust Chain è una sequenza di dichiarazioni verificate che attesta l'appartenenza di un'entità alla Federazione e la sua conformità alle regole della federazione. Per garantire che i dati tecnici di trust restino attuali e sicuri, la catena ha una scadenza; una volta scaduta, DEVE essere rinnovata per confermare la validità dell'entità e ottenere metadati aggiornati. La data di scadenza della Trust Chain è determinata dal timestamp di scadenza più precoce tra tutti i timestamp di scadenza contenuti nelle dichiarazioni. Nessuna Entità può forzare la data di scadenza della Trust Chain ad essere superiore a quella configurata dal Trust Anchor.
 
 **Ruolo nell'Onboarding**: Durante la registrazione delle entità, le Trust Chain sono costruite per dimostrare la relazione di trust gerarchica completa dal Trust Anchor alla nuova entità. Questo stabilisce la posizione legittima dell'entità nella federazione e valida la sua conformità con tutte le policy e i vincoli applicabili.
 

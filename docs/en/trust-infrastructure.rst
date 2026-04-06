@@ -6,11 +6,16 @@
 The Infrastructure of Trust
 ===========================
 
-The IT-Wallet ecosystem operates within a federated trust infrastructure where participating entities establish cryptographic trust relationships and maintain compliance with common security standards. This infrastructure provides the foundation for secure Digital Credential operations across the ecosystem participants.
+.. note::
+   **Audience and resources** — Legal, compliance, security architects, and developers implementing federation endpoints. For terminology see the :ref:`defined-terms-and-references:Defined Terms and References` chapter (notably :ref:`defined-terms:Defined Terms and Acronyms`); normative anchors include :ref:`normative-ref:Normative References` and `OID-FED`_.
 
-This section outlines the implementation of the Trust Model in an infrastructure that complies with OpenID Federation 1.0 `OID-FED`_. This infrastructure involves a RESTful API for distributing metadata, metadata policies, trust marks, cryptographic public keys and X.509 Certificates, and the revocation status of the participants, also called Federation Entities.
+The IT-Wallet ecosystem relies on a federated trust infrastructure in which all participants establish cryptographic trust relationships aligned with common security standards. This infrastructure underpins secure exchange of Digital Credentials among participants.
 
-This trust infrastructure works in coordination with the Registry Infrastructure (see :ref:`registry:Registry Infrastructure`) to enable the entity onboarding processes detailed in :ref:`entity-onboarding:Entity Onboarding`. In particular, it enables the technical   implementation of the onboarding processes described in :ref:`entity-onboarding:Entity Onboarding` and supports the operational scenarios illustrated in :ref:`onboarding-high-level:Onboarding Journey Maps`.
+This section defines the Trust Model according to `EIDAS-ARF`_ and OpenID Federation 1.0 `OID-FED`_. OpenID Federation operates at national level and is complemented by :term:`eIDAS Trusted List` mechanisms for QEAA and EAA Providers—including national Trusted Lists and the List of Trusted Lists (LoTL)—so that EAA and QEAA documents can be validated across the European Union.
+
+The national infrastructure exposes a RESTful technical interface for distributing metadata, policies, X.509 Certificates, and signing keys of all participants. It also enables real-time verification of whether a Federation Entity has been suspended or removed.
+
+In coordination with the Registry Infrastructure (see :ref:`registry:Registry Infrastructure`), it enables entity onboarding and the technical implementation of onboarding processes (see :ref:`entity-onboarding:Entity Onboarding`), supporting the operational scenarios in :ref:`onboarding-high-level:Onboarding Journey Maps`.
 
 The Trust Infrastructure provides the cryptographic mechanisms that allow new entities (Credential Issuers, Relying Parties, Wallet Providers) to establish verifiable trust relationships during their registration process. Without this infrastructure, entities would not be able to prove their compliance status or operational capabilities to other ecosystem participants.
 
@@ -22,7 +27,7 @@ Throughout an entity's operational lifecycle, the Trust Infrastructure maintains
    :alt: The figure illustrates the trust roles.
    :caption: `The roles within the Federation, where the Trust Anchor oversees its subordinates, which include one or more Intermediates and Leaves. <https://www.plantuml.com/plantuml/png/XT1HQy90303Wz_iLcNkMiIAoXo5AtK3OWup17aViPUxmcYkvd29Z_tsjThM2kBSc-P9UCesAegdqviPnuPCbUCn7T_de8m-iw9XaOapSEAvGi8GL5fkrXCGs3pu8g237kaIiFJKJ2RiZMFcwmnYXGf7Ndc3m9YagpBZu2Z80ZA08j_FnqyDpTkOMh2GbMOTA1-TOxplv3ymkZdmXt58y64_u6UjnZPcFhw6iGzTKTwu_3Ty6eDUG2rbYTUXX4MEYu-w5wnvwfj_HUr9OIjWwszfTTTc-ajyxNiCIHVS7AIVvOqpzZs6gXXDGDBkg_MwEQQGNPQOzIQ_UxjypJVeqhKcTeYcnJQN_1G00>`_
 
-In this representation, both the :term:`National Trust Anchor` and the Intermediates assume the role of Registration Authority.
+In this representation, both the :term:`National Trust Anchor` and the Intermediates act as Registration Authorities for admitting entities to the federation (registrar function) and, in protocol terms, as Federation Authorities that issue Subordinate Statements and apply metadata policy.
 
 Federation Roles
 ----------------
@@ -76,9 +81,9 @@ Below the table with the summary of the Federation Entity roles, mapped on the c
 Trust Infrastructure and Registry Integration
 ---------------------------------------------
 
-The Trust Infrastructure implements the Federation Registry component of the Registry Infrastructure. The Federation Registry maintains the authoritative list of trusted entities through the federation endpoints defined in this section, including entity listing (/list), subordinate statements (/fetch), trust mark validation (/trust_mark_status), subordinate events (/federation_subordinate_events_endpoint), and historical key management (/historical-jwks).
+The Trust Infrastructure implements the Federation Registry of the Registry Infrastructure. The Federation Registry is the authoritative list of trusted entities, verified through the federation endpoints defined in this section, including entity listing (/list), subordinate statements (/fetch), trust mark validation (/trust_mark_status), subordinate events (/federation_subordinate_events_endpoint), and historical key management (/historical-jwks).
 
-This Federation Registry operates alongside other registry components (Claims Registry, AS Registry, Digital Credentials Catalog, Taxonomy) to provide comprehensive ecosystem support. For complete registry architecture and component interactions, see :ref:`registry:Registry Infrastructure`.
+The Federation Registry operates alongside other registry components (Claims Registry, AS Registry, Digital Credentials Catalog, Taxonomy) to provide comprehensive ecosystem support. For complete registry architecture and component interactions, see :ref:`registry:Registry Infrastructure`.
 
 General Properties
 -------------------
@@ -611,7 +616,7 @@ The Trust Chains can also be verified offline, using one of the Trust Anchor's p
 Trust Chain
 -----------
 
-The Trust Chain is a sequence of verified statements that validates a participant's compliance with the Federation. It has an expiration date time, beyond which it MUST be renewed to obtain the fresh and updated metadata. The expiration date of the Trust Chain is determined by the earliest expiration timestamp among all the expiration timestamp contained in the statements. No Entity can force the expiration date of the Trust Chain to be higher than the one configured by the Trust Anchor.
+The Trust Chain is a sequence of verified statements that confirms an entity's membership in the Federation and its compliance with federation rules. To keep technical trust data current and secure, the chain carries an expiration time; once expired, it MUST be renewed to confirm the entity's validity and obtain fresh metadata. The expiration time is determined by the earliest expiration timestamp among all timestamps contained in the statements. No Entity can force the Trust Chain expiration to exceed the limit configured by the Trust Anchor.
 
 **Role in Onboarding**: During the entity onboarding, Trust Chains are constructed to prove the complete hierarchical trust relationship from the Trust Anchor to the new entity.
 

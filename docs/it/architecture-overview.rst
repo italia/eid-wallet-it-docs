@@ -4,6 +4,12 @@
 Panoramica dell'Architettura
 =============================
 
+.. note::
+   **Destinatari e risorse** — Il capitolo è rivolto a responsabili di architettura, prodotto e conformità che devono collocare governance e processi operativi. Per l'onboarding operativo approfondire :ref:`onboarding-high-level:Sistema di Onboarding` e :ref:`registry:Infrastruttura del Registro`.
+
+.. note::
+   **Sintesi** — IT-Wallet è un ecosistema per lo scambio sicuro di dati certificati tra **cittadini e imprese**. Poggia su tre pilastri: **Regole** (governance), **Soluzioni** (Attori Primari come Credential Issuer e Fornitore di Wallet) e **Servizi** (sistemi nazionali di supporto). Nel funzionamento quotidiano i partecipanti collaborano sul ciclo di vita dei documenti garantendo **Sicurezza**, **Privacy** e un'**Esperienza Utente** chiara. I servizi digitali nazionali si collegano attraverso **autorizzazione**, **scambio** e **verifica** dei dati.
+
 Il Sistema IT-Wallet è un ecosistema federato che consente la gestione sicura dell'Identità Digitale e lo scambio di Attestati Elettronici per cittadini e organizzazioni. 
 L'ecosistema IT-Wallet è costruito su un'architettura multi-livello, dove gli organi di governance stabiliscono e mantengono l'infrastruttura di trust, gli Attori Primari implementano e gestiscono le Soluzioni Tecniche, e i sistemi esterni forniscono servizi aggiuntivi.
 
@@ -44,3 +50,5 @@ L'architettura abilita i seguenti processi di interazione principali:
   4. **Archiviazione e Gestione degli Attestati**: Le Soluzioni IT-Wallet ricevono e gestiscono gli Attestati Elettronici sui dispositivi degli utenti, consentendo una gestione sicura del ciclo di vita degli attestati.
 
   5. **Presentazione e Verifica degli Attestati**: Gli Utenti presentano gli Attestati Elettronici alle Relying Party, che verificano i claim attraverso validazione crittografica e verifica dello stato. Le Relying Party operano all'interno di ambiti autorizzati che definiscono quali tipi di attestati e scopi possono richiedere, con validazione contro il :ref:`registry:Registro dei Claims` per la verifica dello schema.
+
+**Chiarimento (punti 2–5).** Il punto **2** riguarda la **discovery** dei tipi di attestato (catalogo pubblico vs offerte private). Il punto **3** è l'**emissione**: Credential Issuer e Fonti Autentiche producono nuovi Attestati Elettronici per l'Istanza del Wallet. Il punto **4** è **archiviazione e ciclo di vita** sul dispositivo dell'Utente. Il punto **5** è **presentazione e verifica** verso le Relying Party—distinto dall'emissione e dalla sola discovery in catalogo.

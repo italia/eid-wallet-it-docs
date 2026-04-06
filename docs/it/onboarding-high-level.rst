@@ -6,6 +6,15 @@ Sistema di Onboarding
 
 Il sistema di onboarding registra le entità operative (PID Provider, Attestation Provider, Relying Party, Fornitori di Wallet e Fonti Autentiche) affinché possano partecipare all'ecosistema IT-Wallet con autorizzazioni e relazioni di trust chiaramente definite.
 
+.. rubric:: Come leggere questo capitolo (bigino)
+
+1. **Fase 1 — Qualificarsi ed essere validati** — Completare eleggibilità amministrativa e onboarding tecnico in federazione perché l'organizzazione risulti attendibile nell'ecosistema (:ref:`entity-onboarding:Onboarding delle Entità`, :ref:`trust-infrastructure:L'Infrastruttura di Trust`).
+2. **Fase 2 — Inviare e definire i dati** — Registrare claim, integrazioni con Fonti Autentiche e voci di catalogo attraverso i componenti di registro (:ref:`onboarding-high-level:Architettura del Sistema di Onboarding`, :ref:`registry:Infrastruttura del Registro`).
+3. **Fase 3 — Ottenere le autorizzazioni** — Soddisfare policy, trust mark e flussi di pubblicazione che abilitano gli ambiti operativi (:ref:`entity-onboarding:Onboarding delle Entità`, :ref:`onboarding-high-level:Processo di Onboarding della Federazione`).
+
+.. note::
+   **Suggerimento (FAQ)** — Se il capitolo risulta lungo, aprire prima la fase che corrisponde al problema, poi tornare alle sottosezioni. Le mappe di percorso sono in :ref:`onboarding-high-level:Onboarding Journey Maps`.
+
 Architettura del Sistema di Onboarding
 ---------------------------------------
 

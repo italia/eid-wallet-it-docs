@@ -5,12 +5,16 @@
 Brand Identity
 ===============
 
-The IT-Wallet Brand Identity defines the system's personality and it's expressed through a set of standardized elements that distinguish it, such as its naming and the elements of the Visual Identity. It strengthens and promotes a Trust Model at the basis of the entire ecosystem, by introducing recognizable visual elements. 
+.. note::
+   **Audience and resources** — Designers, developers, and communications staff building or promoting IT-Wallet Technical Solutions. Use this chapter with the :ref:`official-resources:Official Resources` pack and the Brand Manual linked there.
+
+The IT-Wallet Brand Identity defines the system's personality and it's expressed through a set of standardized elements that distinguish it, such as its naming and the elements of the Visual Identity. It aims to increase trust in and recognition of the brand. 
 
 It is important to strengthen the User awareness and trust in the ecosystem by integrating coherent graphical elements into the Technical Solutions and across the various Touchpoints. 
 
 Therefore, to ensure that the Brand Identity is applied consistently and coherently across the different Technical Solutions, and that it supports a high-quality User Experience, Primary Actors MUST comply with the requirements for applying the IT-Wallet System Brand Identity within their Technical Solutions. 
-In particular, all Primary Actors:  
+
+**DO / DON'TS (Primary Actors)**
 
 - MUST exclusively follow the indications specified in the Brand Manual, indicated in the :ref:`official-resources:Official Resources` section. 
 - MUST exclusively use the Official Resources that will be made available in the related :ref:`official-resources:Official Resources` folder of these Technical Specifications.  
@@ -19,12 +23,9 @@ In particular, all Primary Actors:
 Naming
 -------
 
-The term "IT-Wallet System", as defined by the establishing regulation, is the official name that SHOULD be used in institutional, formal, or legal contexts to refer to the system. 
+"IT-Wallet System" is the official name established by regulation. It SHOULD be used in institutional, formal, and legal contexts. In all communications and disclosures, whether written or verbal, physical or digital, the official contracted brand name "IT-Wallet" MUST be used to refer to the "IT-Wallet System".
 
-The contracted form "IT-Wallet" is the official Brand name that MUST be used in all communications and disclosures, whether written or verbal, physical or digital, to refer to the "IT-Wallet System".  
- 
-Below are the requirements for the correct spelling and pronunciation.  
-All those who intend to refer to the IT-Wallet System: 
+**Writing and pronunciation**
 
 - MUST use of the uppercase letters in the term “IT” and in the initial letters of Wallet and System; 
 
@@ -35,6 +36,8 @@ All those who intend to refer to the IT-Wallet System:
 
 Visual Identity
 ----------------
+
+**DO / DON'TS (Visual Identity)**
 
 The “IT-Wallet" Brand has its own Visual Identity. All actors within the ecosystem MUST apply it to provide visibility of their participation in the IT-Wallet System but MUST NOT use “IT-Wallet” Visual Identity as a replacement of the Visual Identity of their own organization or their own Technical Solutions. 
 
@@ -83,7 +86,7 @@ The Logo is the official graphical element that ensures immediate recognition of
     “IT-Wallet” Logo symbol on a light background   
 
 
-Below are illustrated the requirements for the use of the Logo. All actors intending to refer to the System: 
+**DO / DON'TS (Logo)**
 
 - MAY use the Logo to refer to the IT-Wallet System but MUST NOT use the Logo to identify a specific Technical Solution; 
 
@@ -93,7 +96,7 @@ Below are illustrated the requirements for the use of the Logo. All actors inten
 
 - MUST NOT alter, distort, modify the Logo, or replace it with unofficial logos; 
 
-- MUST maintain the minimum clear space as defined in the Brand Manual to ensure visibility and recognizability. They MUST NOT allow other graphic or textual elements interfere with this space; 
+- MUST maintain the minimum clear space defined in the Brand Manual. They MUST NOT allow other graphic or textual elements to interfere with this space; 
 
 - MUST NOT resized the Logo below the minimum dimensions specified in the Brand Manual, to maintain legibility across formats and devices; 
 
@@ -132,7 +135,7 @@ The Trust Mark is the official graphic element that guarantees the belonging of 
 
     Trust Mark on a light background 
 
-Below are illustrated the requirements for the use of the Trust Mark, that apply to both physical and digital contexts (e.g., websites, apps, documents, printed materials, videos, etc.). All Primary Actors: 
+**DO / DON'TS (Trust Mark)** — Requirements for physical and digital contexts (for example websites, apps, documents, printed materials, videos).
 
 - MUST use the Trust Mark exclusively to indicate their participation in the IT-Wallet System and MUST NOT use it for any other purpose; 
 
@@ -144,7 +147,7 @@ Below are illustrated the requirements for the use of the Trust Mark, that apply
 
 - MUST NOT resize the Trust Mark below the minimum dimensions specified in the Brand Manual to maintain legibility across formats and devices; 
 
-- MUST maintain the minimum clear space as defined in the Brand Manual to ensure visibility and recognizability. They MUST NOT allow other graphic or textual elements to interfere with this space; 
+- MUST maintain the minimum clear space defined in the Brand Manual. They MUST NOT allow other graphic or textual elements to interfere with this space; 
 
 - MUST NOT place the Trust Mark on backgrounds that compromise its visibility or legibility. They MUST ensure adequate contrast between the Trust Mark and the background, in accordance with the Brand Manual; 
 
