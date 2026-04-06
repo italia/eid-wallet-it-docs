@@ -254,7 +254,7 @@ If early ``SessionEstablishment`` is supported, it also lists the TNEP (Tag NDEF
 .. note::
    Proceed only if the ``DeviceEngagement`` Capabilities include ``HandoverSessionEstablishmentSupport`` set to ``true`` (:ref:`WP_103c <wallet-credential-presentation-testcases>`). Otherwise, skip the early ``SessionEstablishment``. The early ``SessionEstablishment`` is sent via a dedicated TNEP service; the same ``SessionEstablishment`` MUST also be sent again during data retrieval and MUST match. If it does not match, the Wallet Instance terminates (:ref:`WP_103g <wallet-credential-presentation-testcases>`). If the early ``SessionEstablishment`` fails to send, proceed as normal (:ref:`WP_103h <wallet-credential-presentation-testcases>`).
 
-**Step 5**: [Optional] Relying Party Instance opens the TNEP service named [urn:placeholder] with the Wallet Instance during the negotiated handover to deliver the early ``SessionEstablishment`` message.
+**Step 5**: [Optional] Relying Party Instance opens the TNEP service named ``urn:example:it-wallet:tnep-handover`` (replace with the service URN defined for your deployment) with the Wallet Instance during the negotiated handover to deliver the early ``SessionEstablishment`` message.
 
 **Step 6**: Relying Party Instance sends ``SessionEstablishment`` (e.g., ``EReaderKey`` + encrypted ``DeviceRequest``). Wallet Instance processes it; data retrieval has not started yet.
 

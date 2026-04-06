@@ -314,7 +314,7 @@ The following table lists HTTP Status Codes and related error codes that are sup
       - [:rfc:`7516#section-4.1.1`]
     * - **kid**
       - Thumbprint of the Mobile Application Instance's JWK contained in the ``cnf`` claim.
-      - [:rfc:`7638#section_3`]
+      - [:rfc:`7638#section-3`]
     * - **typ**
       - The type of the JWT, which can assume different values depending on the context.
       -

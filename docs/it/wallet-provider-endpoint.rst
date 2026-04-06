@@ -230,7 +230,7 @@ In particolare, il JWT della richiesta di emissione della Wallet Instance Attest
       - [:rfc:`7516#section-4.1.1`]
     * - **kid**
       - thumbprint della JWK dell'Istanza del Wallet contenuta nella dichiarazione ``cnf``.
-      - [:rfc:`7638#section_3`]
+      - [:rfc:`7638#section-3`]
     * - **typ**
       - Il tipo del JWT, che DEVE essere impostato su ``wia-request+jwt``.
       - 
@@ -418,7 +418,7 @@ L'header JOSE del JWT della Wallet Instance Attestation contiene i seguenti para
       - :rfc:`7516#section-4.1.1`.
     * - **kid**
       - OBBLIGATORIO. Identificatore univoco della chiave pubblica associata alla chiave privata che il Fornitore di Wallet ha utilizzato per firmare la Wallet Instance Attestation.
-      - :rfc:`7638#section_3`.
+      - :rfc:`7638#section-3`.
     * - **typ**
       - OBBLIGATORIO. DEVE essere impostato su ``oauth-client-attestation+jwt``
       - `OPENID4VC-HAIP`_.
@@ -533,7 +533,7 @@ In particolare, il JWT della Wallet Unit Attestation Issuance include i seguenti
       - [:rfc:`7516#section-4.1.1`]
     * - **kid**
       - Thumbprint della JWK della Wallet Instance contenuta nel claim ``cnf``.
-      - [:rfc:`7638#section_3`]
+      - [:rfc:`7638#section-3`]
     * - **typ**
       - Il tipo del JWT; DEVE essere impostato a ``wua-request+jwt``.
       -
@@ -696,7 +696,7 @@ L'intestazione JOSE del Wallet Unit Attestation JWT contiene i seguenti parametr
       - :rfc:`7516#section-4.1.1`.
     * - **kid**
       - OBBLIGATORIO. Identificatore univoco della chiave pubblica associata alla chiave privata che il Fornitore di Wallet ha utilizzato per firmare la Wallet Unit Attestation.
-      - :rfc:`7638#section_3`.
+      - :rfc:`7638#section-3`.
     * - **typ**
       - OBBLIGATORIO. Deve essere impostato su ``key-attestation+jwt``
       - `OPENID4VC-HAIP`_.

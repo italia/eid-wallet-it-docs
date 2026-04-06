@@ -420,3 +420,8 @@ autosectionlabel_prefix_document= True
 # accessible for direct downloads
 html_static_path = ['../../static', '../../official_resources']
 
+# External site TLS was failing linkcheck (expired certificate, 2026).
+linkcheck_ignore = [
+    r'^https://www\.wallet\.gov\.it/?$',
+]
+

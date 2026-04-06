@@ -382,7 +382,7 @@ Il Token di Status List è disponibile all'Endpoint di Status List e contiene i 
     - `TOKEN-STATUS-LIST`_
   * - **kid**
     - OBBLIGATORIO. Identificatore univoco della chiave pubblica del Fornitore di Attestati Elettronici che firma il Token di Status.
-    - :rfc:`7638#section_3`.
+    - :rfc:`7638#section-3`.
   * - **x5c**
     - OBBLIGATORIO. Certificato di chiave pubblica X.509 o catena di certificati corrispondente alla chiave utilizzata per firmare il Token di Status List.
     - :rfc:`5280`

@@ -11,11 +11,11 @@ The specification is organized into the following major sections:
 **Section** :ref:`introduction:Introduction`: 
   Establishes scope, and normative language for the IT-Wallet ecosystem.
 
-**Section** :ref:`brand-identity:Brand Identity`: 
-  Provides the IT-Wallet Brand Identity requirements, guidance on the naming convention and on the application of the visual elements that identify the ecosystem.
-
 **Section** :ref:`architecture-overview:Architecture Overview`:
   Provides high-level view on the Architecture in terms of governance and operational processes enabled.
+
+**Section** :ref:`brand-identity:Brand Identity`:
+  Provides the IT-Wallet Brand Identity requirements, guidance on the naming convention and on the application of the visual elements that identify the ecosystem.
 
 **Section** :ref:`functionalities:User Experience Design`: 
   Provides design principles and high-level functional requirements to ensure a high-quality User Experience across all stages of interaction between the User and the service.
@@ -48,7 +48,7 @@ The specification is organized into the following major sections:
 Reading Paths by Role
 ^^^^^^^^^^^^^^^^^^^^^
 
-Before diving into role-specific sections, all readers should be familiar with the foundational concepts outlined in Sections :ref:`introduction:Introduction`, :ref:`brand-identity:Brand Identity`, :ref:`architecture-overview:Architecture Overview`, and :ref:`trust-infrastructure:The Infrastructure of Trust`, which establish the common vocabulary, and trust infrastructure that provide the underlying framework for the entire ecosystem.
+Before diving into role-specific sections, all readers should be familiar with the foundational concepts outlined in Sections :ref:`introduction:Introduction`, :ref:`architecture-overview:Architecture Overview`, :ref:`brand-identity:Brand Identity`, and :ref:`trust-infrastructure:The Infrastructure of Trust`, which establish the common vocabulary, and trust infrastructure that provide the underlying framework for the entire ecosystem.
 
 Wallet Provider
 """""""""""""""
@@ -153,7 +153,7 @@ Implementation Approach
 
 The following phased reading approach is suggested:
 
-    1. **Foundation Phase**: Read  Sections :ref:`introduction:Introduction`, :ref:`brand-identity:Brand Identity`, :ref:`architecture-overview:Architecture Overview`, and :ref:`trust-infrastructure:The Infrastructure of Trust` to establish conceptual understanding of the IT-Wallet paradigm, Brand Identity elements and trust infrastructure.
+    1. **Foundation Phase**: Read Sections :ref:`introduction:Introduction`, :ref:`architecture-overview:Architecture Overview`, :ref:`brand-identity:Brand Identity`, and :ref:`trust-infrastructure:The Infrastructure of Trust` to establish conceptual understanding of the IT-Wallet paradigm, Brand Identity elements and trust infrastructure.
     2. **Role-Specific Phase**: Focus on primary role's essential sections to understand specific User Experience, functional and implementation requirements, main technical component, the general architecture and interaction flows (see Section :ref:`functionalities:User Experience Design`, :ref:`entities:Entities` and Section :ref:`endpoints:Endpoints` for more details).
     3. **Integration Phase**: Review secondary sections relevant to interactions with other ecosystem participants and platform integration requirements.
     4. **Validation Phase**: Study security considerations, testing guidance, and compliance requirements according to Sections :ref:`security-privacy-considerations:Security and Privacy Considerations`, :ref:`log-retention-policy:General Log Retention Policies`, and :ref:`test-plans:Test Plans` for additional information.

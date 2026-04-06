@@ -12,8 +12,8 @@ Questo documento fornisce l'architettura tecnica, il framework di implementazion
   :numbered:
 
   introduction.rst
-  brand-identity.rst
   architecture-overview.rst
+  brand-identity.rst
   onboarding-high-level.rst
   functionalities.rst
   trust-infrastructure.rst

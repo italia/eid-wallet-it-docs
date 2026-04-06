@@ -64,7 +64,7 @@ Il JWT *Request Object* ha i seguenti parametri di header JOSE:
       - :rfc:`7516#section-4.1.1`.
     * - **kid**
       - Identificativo univoco del ``jwk`` presente all'interno del claim ``cnf`` dell'Attestato di Unità di Wallet, ovvero il valore del *thumbprint* del JWK codificato in base64url.
-      - :rfc:`7638#section_3`.
+      - :rfc:`7638#section-3`.
 
 .. note::
   Il parametro **typ**, se omesso, assume il valore implicito **JWT**.
@@ -411,7 +411,7 @@ La token request contiene i seguenti claim:
       - [:rfc:`6749`].
     * - **redirect_uri**
       - OBBLIGATORIO solo se il *grant type* è ``authorization_code``. DEVE essere valorizzato come nel Request Object  :ref:`Tabella dei parametri della Richiesta JWT <table_jwt_request>`. NON DEVE essere presente se il *grant type* è ``refresh_token``.
-      - [:rfc:`67491`].
+      - [:rfc:`6749`].
     * - **code_verifier**
       - OBBLIGATORIO solo se il *grant type* è ``authorization_code``. Codice di verifica del **code_challenge**.
       - `Proof Key for Code Exchange by OAuth Public Clients <https://datatracker.ietf.org/doc/html/rfc7636>`_. NON DEVE essere presente se il *grant type* è ``refresh_token``.
@@ -579,7 +579,7 @@ Il **JWT DPoP** contiene i seguenti parametri di header JOSE e claim.
       - [:rfc:`7515`].
     * - **kid**
       - OBBLIGATORIO. Identificativo univoco del ``jwk`` utilizzato dal Credential Issuer per firmare l'Access Token.
-      - :rfc:`7638#section_3`.
+      - :rfc:`7638#section-3`.
 
 
 .. list-table::
@@ -638,7 +638,7 @@ Il **JWT DPoP** DEVE contenere i seguenti parametri di header JOSE e claim.
       - [:rfc:`7515`].
     * - **kid**
       - Identificativo univoco del ``jwk`` utilizzato dal Credential Issuer per firmare l'Access Token.
-      - :rfc:`7638#section_3`.
+      - :rfc:`7638#section-3`.
 
 
 .. list-table::

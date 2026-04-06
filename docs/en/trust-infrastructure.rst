@@ -10,8 +10,6 @@ The IT-Wallet ecosystem operates within a federated trust infrastructure where p
 
 This section outlines the implementation of the Trust Model in an infrastructure that complies with OpenID Federation 1.0 `OID-FED`_. This infrastructure involves a RESTful API for distributing metadata, metadata policies, trust marks, cryptographic public keys and X.509 Certificates, and the revocation status of the participants, also called Federation Entities.
 
-The national infrastructure involves a RESTful API for distributing metadata, metadata policies, trust marks, cryptographic public keys and X.509 Certificates, and the revocation status of the participants, also called Federation Entities.
-
 This trust infrastructure works in coordination with the Registry Infrastructure (see :ref:`registry:Registry Infrastructure`) to enable the entity onboarding processes detailed in :ref:`entity-onboarding:Entity Onboarding`. In particular, it enables the technical   implementation of the onboarding processes described in :ref:`entity-onboarding:Entity Onboarding` and supports the operational scenarios illustrated in :ref:`onboarding-high-level:Onboarding Journey Maps`.
 
 The Trust Infrastructure provides the cryptographic mechanisms that allow new entities (Credential Issuers, Relying Parties, Wallet Providers) to establish verifiable trust relationships during their registration process. Without this infrastructure, entities would not be able to prove their compliance status or operational capabilities to other ecosystem participants.
@@ -228,7 +226,7 @@ The configuration of the federation is published by the Trust Anchor within its 
 
 All the participants in the federation MUST obtain the federation configuration before entering the operational phase, and they MUST keep it up-to-date. The federation configuration is the Trust Anchor's Entity Configuration, it contains the public keys for signature operations.
 
-Below is a non-normative example of a Trust Anchor Entity Configuration, where each parameter is documented in the `OpenID Federation <OID-FED>`_ specification:
+Below is a non-normative example of a Trust Anchor Entity Configuration, where each parameter is documented in the `OID-FED`_ specification:
 
 .. code-block:: json
 
@@ -336,7 +334,7 @@ The Entity Configurations of all the participants in the federation MUST have in
 
        **x5c**: The `x5c` parameter included in Entity Configuration's `jwks` parameter MUST only contain the self-issued X.509 Certificate about the corresponding `jwk`.
    * - **metadata**
-     - JSON Object. Each key of the JSON Object represents a metadata type identifier containing JSON Object representing the metadata, according to the metadata schema of that type. An Entity Configuration MAY contain more metadata statements, but only one for each type of metadata (<**entity_type**>). the metadata types are defined in the section `Metadata Types <Metadata Types>`_.
+     - JSON Object. Each key of the JSON Object represents a metadata type identifier containing JSON Object representing the metadata, according to the metadata schema of that type. An Entity Configuration MAY contain more metadata statements, but only one for each type of metadata (<**entity_type**>). The metadata types are defined in `OID-FED`_ (see *Metadata*); metadata types for OpenID Federation Wallet Architectures are defined in `OID-FED-WALLET`_.
 
 
 Entity Configuration Trust Anchor

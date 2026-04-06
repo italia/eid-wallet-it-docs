@@ -13,11 +13,11 @@ La specifica è organizzata nelle seguenti sezioni principali:
 **Sezione** :ref:`introduction:Introduzione`: 
   Stabilisce l'ambito e il linguaggio normativo per l'ecosistema IT-Wallet.
 
-**Sezione** :ref:`brand-identity:Brand Identity`: 
-  Fornisce i requisiti relativi alla Brand Identity del Sistema IT-Wallet, le indicazioni relative al naming e all'applicazione degli elementi visivi che identificano l’ecosistema.  
-
 **Sezione** :ref:`architecture-overview:Panoramica dell'Architettura`:
-  Fornisce una visione di alto livello dell’Architettura, in termini di governance e processi operativi abilitati.
+  Fornisce una visione di alto livello dell'Architettura, in termini di governance e processi operativi abilitati.
+
+**Sezione** :ref:`brand-identity:Brand Identity`:
+  Fornisce i requisiti relativi alla Brand Identity del Sistema IT-Wallet, le indicazioni relative al naming e all'applicazione degli elementi visivi che identificano l'ecosistema.
 
 **Sezione** :ref:`functionalities:Design dell'Esperienza Utente`: 
   Fornisce i principi di design e i requisiti funzionali di alto livello per garantire un’Esperienza Utente di qualità in tutte le fasi di interazione tra l’Utente e il servizio. 
@@ -50,7 +50,7 @@ La specifica è organizzata nelle seguenti sezioni principali:
 Journey di Lettura per Ruolo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Prima di immergersi nelle sezioni specifiche per ruolo, tutti i lettori dovrebbero familiarizzare con i concetti fondamentali delineati nelle Sezioni :ref:`introduction:Introduzione`, :ref:`brand-identity:Brand Identity`, :ref:`architecture-overview:Panoramica dell'Architettura` e :ref:`trust-infrastructure:L'Infrastruttura di Trust`, che stabiliscono il vocabolario comune e l'infrastruttura di fiducia che forniscono il quadro sottostante per l'intero ecosistema.
+Prima di immergersi nelle sezioni specifiche per ruolo, tutti i lettori dovrebbero familiarizzare con i concetti fondamentali delineati nelle Sezioni :ref:`introduction:Introduzione`, :ref:`architecture-overview:Panoramica dell'Architettura`, :ref:`brand-identity:Brand Identity` e :ref:`trust-infrastructure:L'Infrastruttura di Trust`, che stabiliscono il vocabolario comune e l'infrastruttura di fiducia che forniscono il quadro sottostante per l'intero ecosistema.
 
 Fornitore di Wallet
 """""""""""""""""""
@@ -157,7 +157,7 @@ Approccio all'Implementazione
 
 Si suggerisce il seguente approccio di lettura in fasi:
 
-    1. **Fase di Fondazione**: Leggere le Sezioni :ref:`introduction:Introduzione`, :ref:`brand-identity:Brand Identity`, :ref:`architecture-overview:Panoramica dell'Architettura` e :ref:`trust-infrastructure:L'Infrastruttura di Trust` per stabilire una comprensione concettuale del paradigma IT-Wallet, degli elementi di Brand Identity e dell'infrastruttura di fiducia.
+    1. **Fase di Fondazione**: Leggere le Sezioni :ref:`introduction:Introduzione`, :ref:`architecture-overview:Panoramica dell'Architettura`, :ref:`brand-identity:Brand Identity` e :ref:`trust-infrastructure:L'Infrastruttura di Trust` per stabilire una comprensione concettuale del paradigma IT-Wallet, degli elementi di Brand Identity e dell'infrastruttura di fiducia.
     2. **Fase Specifica per Ruolo**: Concentrarsi sulle sezioni essenziali del ruolo primario per comprendere i requisiti specifici di Esperienza Utente, funzionali e di implementazione, i componenti tecnici principali, l'architettura generale e i flussi di interazione (vedere la Sezione :ref:`functionalities:Design dell'Esperienza Utente`, :ref:`entities:Entità` e la Sezione :ref:`endpoints:Endpoints` per maggiori dettagli).
     3. **Fase di Integrazione**: Rivedere le sezioni secondarie rilevanti per le interazioni con altri partecipanti all'ecosistema e i requisiti di integrazione della piattaforma.
     4. **Fase di Validazione**: Studiare le considerazioni sulla sicurezza, le linee guida per i test e i requisiti di conformità secondo le Sezioni :ref:`security-privacy-considerations:Considerazioni di Sicurezza e Privacy`, :ref:`log-retention-policy:Politiche Generali di Conservazione dei Log` e :ref:`test-plans:Test Plans` per ulteriori informazioni.

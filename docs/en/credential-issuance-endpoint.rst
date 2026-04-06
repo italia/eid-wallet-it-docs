@@ -63,7 +63,7 @@ The JWT *Request Object* has the following JOSE header parameters:
       - :rfc:`7516#section-4.1.1`.
     * - **kid**
       - Unique identifier of the ``jwk`` inside the ``cnf`` claim of Wallet Instance Attestation as base64url-encoded JWK Thumbprint value.
-      - :rfc:`7638#section_3`.
+      - :rfc:`7638#section-3`.
 
 .. note::
   The parameter **typ**, if omitted, assumes the implicit value **JWT**.
@@ -413,7 +413,7 @@ The token request contains the following claims:
       - [:rfc:`6749`].
     * - **redirect_uri**
       - REQUIRED only if the grant type is ``authorization_code``. It MUST be set as in the Request Object :ref:`Table of the JWT Request parameters <table_jwt_request>`. It MUST NOT be present if grant type is ``refresh_token``.
-      - [:rfc:`67491`].
+      - [:rfc:`6749`].
     * - **code_verifier**
       - REQUIRED only if the grant type is ``authorization_code``. Verification code of the **code_challenge**.
       - `Proof Key for Code Exchange by OAuth Public Clients <https://datatracker.ietf.org/doc/html/rfc7636>`_. It MUST NOT be present if grant type is ``refresh_token``.
@@ -581,7 +581,7 @@ The **DPoP JWT** contains the following JOSE header parameters and claims.
       - [:rfc:`7515`].
     * - **kid**
       - REQUIRED. Unique identifier of the ``jwk`` used by the Credential Issuer to sign the Access Token.
-      - :rfc:`7638#section_3`.
+      - :rfc:`7638#section-3`.
 
 
 .. list-table::
@@ -640,7 +640,7 @@ The **DPoP JWT** MUST contain the following JOSE header parameters and claims.
       - [:rfc:`7515`].
     * - **kid**
       - Unique identifier of the ``jwk`` used by the Credential Issuer to sign the Access Token.
-      - :rfc:`7638#section_3`.
+      - :rfc:`7638#section-3`.
 
 
 .. list-table::

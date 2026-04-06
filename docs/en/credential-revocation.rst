@@ -381,7 +381,7 @@ The Status List Token is available at the Status List Endpoint and contains the 
     - `TOKEN-STATUS-LIST`_
   * - **kid**
     - REQUIRED. Unique identifier of the Credential Issuer's public key which signs the Status Token.
-    - :rfc:`7638#section_3`.
+    - :rfc:`7638#section-3`.
   * - **x5c**
     - REQUIRED. X.509 public key certificate or certificate chain corresponding to the key used to sign the Status List Token.
     - :rfc:`5280`

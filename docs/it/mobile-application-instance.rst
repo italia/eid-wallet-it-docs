@@ -314,7 +314,7 @@ La seguente tabella elenca i Codici di Stato HTTP e i relativi codici di errore 
       - [:rfc:`7516#section-4.1.1`]
     * - **kid**
       - Impronta digitale della JWK dell'Istanza dell'Applicazione Mobile contenuta nell'attributo ``cnf``.
-      - [:rfc:`7638#section_3`]
+      - [:rfc:`7638#section-3`]
     * - **typ**
       - Il tipo del JWT, che può assumere valori diversi a seconda del contesto.
       -

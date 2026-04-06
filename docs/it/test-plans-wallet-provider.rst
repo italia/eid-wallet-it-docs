@@ -30,7 +30,7 @@ Questa sezione elenca i casi di test dalle Sezioni:
 - :ref:`wallet-instance:Istanza del Wallet`
 - :ref:`wallet-provider-entity-configuration:Entity Configuration del Fornitore di Wallet`
 - :ref:`wallet-solution-metadata-metadati-della-soluzione-wallet`
-- `e-Service PDND Wallet Provider Catalogue <wallet-provider-endpoint.html#e-service-pdnd-wallet-provider-catalogue0>`_
+- :ref:`wallet-provider-endpoint:Catalogo e-Service PDND del Fornitore di Wallet`
 
 
 .. list-table::
@@ -146,13 +146,13 @@ Casi di Test per Istanza del Wallet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Questa sezione elenca i casi di test dalle Sezioni:
 
-- `Configuration of the Federation <trust.html#configuration-of-the-federation>`_
-- `Trust Evaluation Mechanism <trust.html#trust-evaluation-mechanism>`_
+- :ref:`trust-infrastructure:Configurazione della Federazione`
+- :ref:`trust-infrastructure:Meccanismo di Trust Evaluation`
 - :ref:`wallet-solution-requirements:Requisiti della Soluzione Wallet`
 - :ref:`wallet-solution-components:Componenti della Soluzione Wallet`
 - :ref:`wallet-instance:Istanza del Wallet`
-- `Error Handling for Wallet Instance Management <wallet-provider-endpoint.html#error-handling-for-wallet-instance-management>`__
-- `Mobile Application Instance Initialization <mobile-application-instance.html#mobile-application-instance-initialization>`_
+- :ref:`wallet-provider-endpoint:Gestione degli Errori per la Gestione dell'Istanza di Wallet`
+- :ref:`mobile-application-instance:Inizializzazione dell'Istanza dell'Applicazione Mobile`
 
 
 .. list-table::
@@ -239,11 +239,11 @@ Questa sezione elenca i casi di test dalle Sezioni:
    * - WP_029
      - Rilascio Wallet Attestation, Modello Dati e Ciclo di vita, Interoperabilità
      - Busta risposta HTTP 200 / JSON
-     - Dopo la validazione riuscita della Richiesta di Emissione della Wallet Attestation, il Fornitore del Wallet restituisce un codice di stato 200 OK con Content-Type ``application/json``, nel cui payload si trova l'array ``wallet_attestations`` contenente le Wallet Attestation definite in `Wallet Attestation JWT <wallet-provider-endpoint.html#wallet-attestation-jwt>`_.
+     - Dopo la validazione riuscita della Richiesta di Emissione della Wallet Attestation, il Fornitore del Wallet restituisce un codice di stato 200 OK con Content-Type ``application/json``, nel cui payload si trova l'array ``wallet_attestations`` contenente le Wallet Attestation definite in :ref:`wallet-provider-endpoint:JWT della Wallet Instance Attestation`.
    * - WP_029a
      - Rilascio Wallet Attestation, Modello Dati e Ciclo di vita, Sicurezza
      - Formato della Wallet Attestation
-     - Il Fornitore del Wallet fornisce la Wallet Attestation formato JWT firmato dal Fornitore del Wallet, come definito in `Wallet Attestation JWT <wallet-provider-endpoint.html#wallet-attestation-jwt>`.
+     - Il Fornitore del Wallet fornisce la Wallet Attestation formato JWT firmato dal Fornitore del Wallet, come definito in :ref:`wallet-provider-endpoint:JWT della Wallet Instance Attestation`.
    * - WP_029b
      - Rilascio Wallet Attestation, Modello Dati e Ciclo di vita, Sicurezza
      - Nessun PII nella Wallet Attestation
@@ -337,7 +337,7 @@ Casi di Test per Fase di Issuance
 Questa sezione elenca i casi di test dalle Sezioni:
 
 - :ref:`credential-issuance:Emissione di Attestati Elettronici`
-- `Trust Evaluation Mechanism <trust.html#trust-evaluation-mechanism>`_
+- :ref:`trust-infrastructure:Meccanismo di Trust Evaluation`
 - :ref:`credential-issuer-endpoint:Endpoint del Credential Issuer`
 
 
@@ -767,7 +767,7 @@ coprendo sia le fasi di presentazione **Flusso Remoto** che **Flusso di Prossimi
    * - WP_099
      - Flusso-prossimità, Presentazione, Interoperabilità
      - Supporto mDL domestico
-     - Istanza del Wallet supporta e processa senza errore Attestati Elettronici mDL utilizzando le definizioni standard `ISO18013-5`_ ed eventuali aggiunte nel namespace domestico di IT Wallet (vedi `mdoc-CBOR Credential Format <credential-data-model.html#mdoc-cbor-credential-format>`_ per maggiori dettagli).
+     - Istanza del Wallet supporta e processa senza errore Attestati Elettronici mDL utilizzando le definizioni standard `ISO18013-5`_ ed eventuali aggiunte nel namespace domestico di IT Wallet (vedi :ref:`credential-data-model:Formato Attestato Elettronico mdoc-CBOR` per maggiori dettagli).
    * - WP_100
      - Flusso-prossimità, Presentazione, Sicurezza
      - Autenticazione WSCA
@@ -943,7 +943,7 @@ Casi di Test per Eliminazione Attributi dell'Utente Lato Relying Party
 Questa sezione elenca i casi di test dalle Sezioni:
 
 - :ref:`user-attribute-deletion:Eliminazione degli Attributi dell'Utente`
-- `Relying Party Provider Backend Erasure Endpoint <relying-party-provider-backend-endpoint.html#relying-party-provider-backend-erasure-endpoint>`_
+- :ref:`relying-party-provider-backend-endpoint:Endpoint di Cancellazione della Relying Party del Provider Backend`
 
 
 .. list-table::
@@ -1101,8 +1101,8 @@ Casi di Test Opzionali per Istanza del Wallet
 Questa sezione elenca i casi di test dalle Sezioni:
 
 - :ref:`wallet-instance:Istanza del Wallet`
-- `Request-Specific Error Responses <wallet-provider-endpoint.html#request-specific-error-responses>`_
-- `Mobile Application Instance Initialization <mobile-application-instance.html#mobile-application-instance-initialization>`_
+- :ref:`wallet-provider-endpoint:Risposte di Errore Specifiche della Richiesta`
+- :ref:`mobile-application-instance:Inizializzazione dell'Istanza dell'Applicazione Mobile`
 
 Questi casi di test sono opzionali e sono stati progettati per l'implementazione IT Wallet, gestita da PagoPA. Sono destinati agli implementatori che devono verificare la compatibilità con le caratteristiche specifiche di questo modello di riferimento.
 

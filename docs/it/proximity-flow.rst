@@ -251,7 +251,7 @@ Se è supportato il ``SessionEstablishment`` anticipato, elenca anche il nome de
 .. note::
     Procedere solo se le Capabilities di ``DeviceEngagement`` includono ``HandoverSessionEstablishmentSupport`` impostato su ``true``  (:ref:`WP_103c <wallet-credential-presentation-testcases>`). Altrimenti, saltare il ``SessionEstablishment`` anticipato. Il ``SessionEstablishment`` anticipato viene inviato tramite un servizio TNEP dedicato; lo stesso ``SessionEstablishment`` DEVE anche essere inviato nuovamente durante il *Device Retrieval* e DEVE corrispondere. Se non corrisponde, l'Istanza del Wallet termina (:ref:`WP_103g <wallet-credential-presentation-testcases>`). Se il ``SessionEstablishment`` anticipato non riesce a essere inviato, procedere normalmente (:ref:`WP_103h <wallet-credential-presentation-testcases>`).
 
-**Passo 5**: [Opzionale] L'Istanza di Relying Party apre il servizio TNEP denominato [urn:placeholder] con l'Istanza del Wallet durante l'handover negoziato per consegnare il messaggio ``SessionEstablishment`` anticipato.
+**Passo 5**: [Opzionale] L'Istanza di Relying Party apre il servizio TNEP denominato ``urn:example:it-wallet:tnep-handover`` (sostituire con l'URN del servizio definito per la propria distribuzione) con l'Istanza del Wallet durante l'handover negoziato per consegnare il messaggio ``SessionEstablishment`` anticipato.
 
 **Passo 6**: L'Istanza di Relying Party invia ``SessionEstablishment`` (ad esempio, ``EReaderKey`` + ``DeviceRequest`` cifrato). L'Istanza del Wallet lo elabora; il *Device Retrieval* non è ancora iniziato.
 

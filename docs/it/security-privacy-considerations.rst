@@ -431,7 +431,7 @@ Inoltre, la Risposta di Autorizzazione è crittografata con la chiave pubblica d
 proteggendo ulteriormente la trasmissione.
 
 Un altro endpoint da validare è il **redirect_uri**, che viene utilizzato per reindirizzare l'Utente al Verificatore di Attestati Elettronici dopo che la presentazione della Credenziale è completata.
-Nella specifica IT-Wallet, il **redirect_uri** è registrato e validato in anticipo durante l'onboarding del Verificatore di Attestati Elettronici utilizzando OpenID Federation. Durante la fase di presentazione, il Wallet deve validare questo valore verificando la fiducia con il Verificatore di Attestati Elettronici secondo la Sezione `Meccanismo di Valutazione della Fiducia <trust.html#trust-evaluation-mechanism>`_
+Nella specifica IT-Wallet, il **redirect_uri** è registrato e validato in anticipo durante l'onboarding del Verificatore di Attestati Elettronici utilizzando OpenID Federation. Durante la fase di presentazione, il Wallet deve validare questo valore verificando la fiducia con il Verificatore di Attestati Elettronici secondo la Sezione :ref:`trust-infrastructure:Meccanismo di Trust Evaluation`
 
 
 Per essere sicuri che il **redirect_uri** sia ricevuto da un Wallet legittimo e non dall'attaccante, l'endpoint di risposta del Verificatore di Attestati Elettronici al ricevimento di una risposta di autorizzazione valida crea un valore crittografico fresco che è collegato alla risposta di autorizzazione e lo allega al **redirect_uri** che viene inviato al Wallet.

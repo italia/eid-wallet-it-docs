@@ -30,7 +30,7 @@ This section lists the test cases from Sections:
 - :ref:`wallet-instance:Wallet Instance`
 - :ref:`wallet-provider-entity-configuration:Wallet Provider Entity Configuration`
 - :ref:`wallet-solution-metadata:Wallet Solution Metadata`
-- `e-Service PDND Wallet Provider Catalogue <wallet-provider-endpoint.html#e-service-pdnd-wallet-provider-catalogue0>`_
+- :ref:`wallet-provider-endpoint:e-Service PDND Wallet Provider Catalog`
 
 
 .. list-table::
@@ -146,13 +146,13 @@ Test Cases for Wallet Instance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This section lists the test cases from Sections:
 
-- `Configuration of the Federation <trust.html#configuration-of-the-federation>`_
-- `Trust Evaluation Mechanism <trust.html#trust-evaluation-mechanism>`_
+- :ref:`trust-infrastructure:Configuration of the Federation`
+- :ref:`trust-infrastructure:Trust Evaluation Mechanism`
 - :ref:`wallet-solution-requirements:Wallet Solution Requirements`
 - :ref:`wallet-solution-components:Wallet Solution Components`
 - :ref:`wallet-instance:Wallet Instance`
-- `Error Handling for Wallet Instance Management <wallet-provider-endpoint.html#error-handling-for-wallet-instance-management>`__
-- `Mobile Application Instance Initialization <mobile-application-instance.html#mobile-application-instance-initialization>`_
+- :ref:`wallet-provider-endpoint:Error Handling for Wallet Instance Management`
+- :ref:`mobile-application-instance:Mobile Application Instance Initialization`
 
 
 .. list-table::
@@ -239,11 +239,11 @@ This section lists the test cases from Sections:
    * - WP_029
      - Wallet Attestation Issuance, Data Model and Lifecycle, Interoperability
      - HTTP 200 / JSON response envelope
-     - Upon successful validation of the Wallet Attestation Issuance Request, the Wallet Provider returns 200 OK with Content-Type: application/json, containing the Wallet Attestation as its structure defined in `Wallet Attestation JWT <wallet-provider-endpoint.html#wallet-attestation-jwt>`_.
+     - Upon successful validation of the Wallet Attestation Issuance Request, the Wallet Provider returns 200 OK with Content-Type: application/json, containing the Wallet Attestation as its structure defined in :ref:`wallet-provider-endpoint:Wallet Instance Attestation JWT`.
    * - WP_029a
      - Wallet Attestation Issuance, Data Model and Lifecycle, Security
      - Wallet Attestation format
-     - Wallet Provider provides the Wallet Attestation in JWT format signed by the Wallet Provider, and confirming the structures defined in `Wallet Attestation JWT <wallet-provider-endpoint.html#wallet-attestation-jwt>`_.
+     - Wallet Provider provides the Wallet Attestation in JWT format signed by the Wallet Provider, and confirming the structures defined in :ref:`wallet-provider-endpoint:Wallet Instance Attestation JWT`.
    * - WP_029b
      - Wallet Attestation Issuance, Data Model and Lifecycle, Security
      - No PII in Wallet Attestation
@@ -337,7 +337,7 @@ Test Cases for Issuance Phase
 This section lists the test cases from Sections:
 
 - :ref:`credential-issuance:Digital Credential Issuance`
-- `Trust Evaluation Mechanism <trust.html#trust-evaluation-mechanism>`_
+- :ref:`trust-infrastructure:Trust Evaluation Mechanism`
 - :ref:`credential-issuer-endpoint:Credential Issuer Endpoints`
 
 
@@ -767,7 +767,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_099
      - Proximity-flow, Presentation, Interoperability
      - Domestic mDL support
-     - Wallet Instance supports and processes mDL Credentials using both the IT Wallet domestic document type and namespaces and the standard `ISO18013-5`_ definitions without error (see `mdoc-CBOR Credential Format <credential-data-model.html#mdoc-cbor-credential-format>`_ for more details).
+     - Wallet Instance supports and processes mDL Credentials using both the IT Wallet domestic document type and namespaces and the standard `ISO18013-5`_ definitions without error (see :ref:`credential-data-model:mdoc-CBOR Credential Format` for more details).
    * - WP_100
      - Proximity-flow, Presentation, Security
      - WSCA authentication
@@ -941,7 +941,7 @@ Test Cases for User Attribute Deletion on Relying Party Side
 This section lists the test cases from Sections: 
 
 - :ref:`user-attribute-deletion:User's Attributes Deletion`
-- `Relying Party Provider Backend Erasure Endpoint <relying-party-provider-backend-endpoint.html#relying-party-provider-backend-erasure-endpoint>`_
+- :ref:`relying-party-provider-backend-endpoint:Relying Party Provider Backend Erasure Endpoint`
 
 .. list-table::
    :class: longtable
@@ -1098,8 +1098,8 @@ Optional Test Cases for Wallet Instance
 This section lists the test cases from Sections: 
 
 - :ref:`wallet-instance:Wallet Instance`
-- `Request-Specific Error Responses <wallet-provider-endpoint.html#request-specific-error-responses>`_
-- `Mobile Application Instance Initialization <mobile-application-instance.html#mobile-application-instance-initialization>`_
+- :ref:`wallet-provider-endpoint:Request-Specific Error Responses`
+- :ref:`mobile-application-instance:Mobile Application Instance Initialization`
 
 These test cases are optional and have been designed for the IT Wallet implementation, managed by PagoPA. They are intended for implementers who need to verify compatibility with the specific features of this reference model.
 

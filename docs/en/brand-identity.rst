@@ -68,7 +68,7 @@ The Logo is the official graphical element that ensures immediate recognition of
 
   .. figure:: ../../official_resources/IT-Wallet-Symbol/IT-Wallet-Symbol-Primary-BlueItalia.svg
     :alt: “IT-Wallet” Logo symbol on a light background  
-    :width: 25%
+    :width: 12%
     :align: center
 
     “IT-Wallet” Logo symbol on a light background  
@@ -77,7 +77,7 @@ The Logo is the official graphical element that ensures immediate recognition of
 
   .. figure:: ./images/pdf/symbol-IT-Wallet.pdf
     :alt: “IT-Wallet” Logo symbol on a light background  
-    :width: 25%
+    :width: 12%
     :align: center
 
     “IT-Wallet” Logo symbol on a light background   
