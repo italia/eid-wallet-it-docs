@@ -11,9 +11,7 @@ L'Infrastruttura di Trust
 
 L'ecosistema IT-Wallet si basa su un'infrastruttura di trust federata all'interno della quale tutti gli attori coinvolti stabiliscono relazioni di trust crittografiche conformi a standard di sicurezza comuni. Questa infrastruttura è alla base dello scambio sicuro di Credenziali Elettroniche tra i partecipanti.
 
-Questa sezione definisce il Trust Model secondo gli standard `EIDAS-ARF`_ e OpenID Federation 1.0 `OID-FED`_. OpenID Federation opera a livello nazionale ed è completato dalle Trusted List eIDAS per Provider QEAA ed EAA—incluse le liste nazionali e la List of Trusted Lists (LoTL)—che garantiscono la validità dei documenti (EAA e QEAA) in tutto il territorio europeo.
-
-L'infrastruttura nazionale mette a disposizione un'interfaccia tecnica (API RESTful) per distribuire metadati, policy, certificati X.509 e chiavi di firma di tutti i partecipanti. Consente inoltre di verificare in tempo reale se un attore (Entità di Federazione) è stato rimosso o sospeso.
+Questa sezione illustra l'implementazione del Trust Model in un'infrastruttura conforme a OpenID Federation 1.0 `OID-FED`_. Tale infrastruttura prevede un'API RESTful per la distribuzione di metadati, policy dei metadati, trust mark, chiavi pubbliche crittografiche e certificati X.509, nonché lo stato di revoca dei partecipanti, chiamati anche Entità di Federazione.
 
 In coordinamento con l'Infrastruttura del Registro (vedi :ref:`registry:Infrastruttura del Registro`), abilita i processi di onboarding delle entità e l'implementazione tecnica di tali processi (vedi :ref:`entity-onboarding:Onboarding delle Entità`), a supporto degli scenari operativi (vedi :ref:`onboarding-high-level:Onboarding Journey Maps`).
 
