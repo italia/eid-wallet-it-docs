@@ -6,6 +6,8 @@
 .. _Device Check: https://developer.apple.com/documentation/devicecheck
 .. _EIDAS-ARF: https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework
 .. _EIDAS: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv%3AOJ.L_.2014.257.01.0073.01.ENG
+.. _EU_2024_1183: https://eur-lex.europa.eu/eli/reg/2024/1183/oj
+.. _ARF_TOPIC_X_RP: https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/discussion-topics/x-relying-party-registration.md
 .. _Error Handling for Nonce Generation: wallet-solution.html#error-handling-for-nonce-generation
 .. _Error Handling for Wallet Attestation Issuance: wallet-solution.html#error-handling-for-wallet-attestation-issuance
 .. _Error Handling for Wallet Instance Management: wallet-solution.html#error-handling-for-wallet-instance-management

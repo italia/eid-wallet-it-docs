@@ -350,8 +350,12 @@ Below is the description of acronyms and definitions which are useful for furthe
 
     **Intermediate Entity**
     **Intermediary**
-      Intermediate Entity as defined in `OID-FED`_ Section 1.2, for example in IT-Wallet it could be a Relying Party intermediary that offers and manages, on behalf of Relying Party, the Technical Solutions for the remote or proximity verification of Electronic Attestations.
-      Aligned with ARF 2.7.3.
+      Intermediate Entity as defined in `OID-FED`_ Section 1.2 within the OpenID Federation trust chain between a Trust Anchor and Leaf entities. This federation role is **distinct** from a **Relying Party Intermediary** under the European Digital Identity framework (`EU_2024_1183`_).
+      Aligned with ARF 2.7.3 for federation structures.
+
+    **Relying Party Intermediary**
+      Organizational Entity that acts on behalf of one or more Relying Parties to provide Technical Solutions for connecting to Wallet Instances and for User authentication or verification of Electronic Attestations. In Union law (`EU_2024_1183`_, Article 5b(8)), intermediaries acting on behalf of relying parties are **deemed to be relying parties** for registration and authentication towards European Digital Identity Wallets and **shall not store data about the content of the transaction** between the Wallet user and the intermediated Relying Party. High-level requirements for wallet-relying party registration—including intermediaries, minimum registration data, transparency, and common authentication mechanisms towards Wallets—are discussed in the EUDI Wallet Architecture and Reference Framework (`ARF`_; *Topic X – Relying Party registration*, `ARF_TOPIC_X_RP`_). IT-Wallet specifies onboarding to the national trust framework, metadata, and technical controls that implement these obligations together with applicable national implementing measures.
+      Distinct from a federation **Intermediary** (`OID-FED`_).
 
 .. note::
    For any term not present in ARF 2.7.3, the IT-Wallet definition is provided as authoritative for the Italian context.

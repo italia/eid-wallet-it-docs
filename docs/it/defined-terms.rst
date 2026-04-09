@@ -331,8 +331,12 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Non presente in ARF 2.7.3; specifico di IT-Wallet.
 
     **Intermediario**
-      Intermediario come definito nella Sezione 1.2 di `OID-FED`_, ad esempio in IT-Wallet potrebbe esistere intermediari della Relying Party, ovvero coloro che offrono e gestiscono, per conto della Relying Party, le Soluzioni Tecniche per la verifica remota o di prossimità degli Attestati Elettronici.
-      Conforme con ARF 2.7.3.
+      Entità intermedia come definita nella Sezione 1.2 di `OID-FED`_ nella catena di fiducia OpenID Federation tra Trust Anchor ed entità foglia. Tale ruolo di federazione **non** coincide con l'**Intermediario di Relying Party** previsto dal quadro europeo di identità digitale (`EU_2024_1183`_).
+      Conforme con ARF 2.7.3 per le strutture di federazione.
+
+    **Intermediario di Relying Party**
+      Entità Organizzativa che agisce per conto di una o più Relying Party per fornire Soluzioni Tecniche di collegamento alle Istanze del Wallet e per l'autenticazione dell'Utente o la verifica degli Attestati Elettronici. Nel diritto dell'Unione (`EU_2024_1183`_, articolo 5b, paragrafo 8), gli intermediari che agiscono per conto delle relying party sono **considerati relying party** ai fini della registrazione e dell'autenticazione verso i Portafogli di identità digitale europea e **non devono conservare dati sul contenuto della transazione** tra l'utente del Portafoglio e la Relying Party intermediata. I requisiti di alto livello sulla registrazione delle wallet-relying party—inclusi gli intermediari, i dati minimi di registrazione, la trasparenza e i meccanismi comuni di autenticazione verso i Portafogli—sono trattati nell'Architecture and Reference Framework del Portafoglio EUDI (`ARF`_; *Topic X – Relying Party registration*, `ARF_TOPIC_X_RP`_). IT-Wallet disciplina l'onboarding nell'infrastruttura di fiducia nazionale, i metadati e i controlli tecnici che attuano tali obblighi insieme alle misure nazionali di esecuzione applicabili.
+      Distinto dall'**Intermediario** di federazione (`OID-FED`_).
 
 .. note::
    Qualora un termine non è presente nell'ARF 2.7.3, la definizione fornita in IT-Wallet è da ritenersi valida per il solo contesto italiano.
