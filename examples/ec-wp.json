@@ -27,31 +27,28 @@
             "kid": "749b495837819c00cfee1749b495837819c00cfee1"
           }
         ]
-
       },
-      "wallet_metadata": {
-        "wallet_name": "Wallet X",
-        "authorization_endpoint": "https://wallet-solution.digital-strategy.europa.eu/authorization",
-        "credential_offer_endpoint": "https://wallet-solution.digital-strategy.europa.eu/credential_offer",
-        "response_types_supported": [
-          "vp_token"
-        ],
-        "response_modes_supported": [
-          "query"
-        ],
-        "vp_formats_supported": {
-          "dc+sd-jwt": {
-            "sd-jwt_alg_values": [
-              "ES256",
-              "ES384"
-            ]
-          }
-        },
-        "request_object_signing_alg_values_supported": [
-          "ES256"
-        ],
-        "client_id_prefixes_supported": ["openid_federation", "x509_hash"]
-      }
+      "wallet_name": "Wallet X",
+      "authorization_endpoint": "https://wallet-solution.digital-strategy.europa.eu/authorization",
+      "credential_offer_endpoint": "https://wallet-solution.digital-strategy.europa.eu/credential_offer",
+      "response_types_supported": [
+        "vp_token"
+      ],
+      "response_modes_supported": [
+        "query"
+      ],
+      "vp_formats_supported": {
+        "dc+sd-jwt": {
+          "sd-jwt_alg_values": [
+            "ES256",
+            "ES384"
+          ]
+        }
+      },
+      "request_object_signing_alg_values_supported": [
+        "ES256"
+      ],
+      "client_id_prefixes_supported": ["openid_federation", "x509_hash"]
     },
     "federation_entity": {
       "organization_name": "IT-Wallet Provider",
