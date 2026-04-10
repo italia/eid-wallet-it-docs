@@ -1,0 +1,32 @@
+# Lychee link checker configuration (used by `.github/workflows/check-links.yml`).
+# Docs and handbooks use RFC 2606-style example hosts that must not be HTTP-checked.
+
+verbose = "info"
+no_progress = true
+
+# Follow redirects; require a successful final response.
+accept = ["200..=299", "429"]
+
+include_mail = false
+
+exclude = [
+  # Example / documentation hosts (not meant to resolve on the public Internet)
+  "^https?://([a-zA-Z0-9.-]+\\.)*example\\.(com|org|net|it|gov)(/|\\?|#|$)",
+  "^https?://(www\\.)?example\\.(com|org|net|it|gov)(/|\\?|#|$)",
+  "^https?://example-issuer\\.com",
+  # Reserved documentation hosts used in specs
+  "^https?://trust-anchor\\.eid-wallet\\.example\\.it",
+  "^https?://ci\\.example\\.it",
+  "^https?://localhost(:/|$)",
+  "^https?://127\\.0\\.0\\.1",
+  # Illustrative federation / wallet-instance identifiers (not real HTTP origins)
+  "^https?://wallet-instance/",
+  "^https://private\\.other\\.intermediary\\.org",
+  "^https://public\\.intermediary\\.other\\.org",
+  # JWT issuer/audience-style identifiers in examples (not public HTML pages)
+  "^https://interop\\.pagopa\\.it/(api/v1|authorization-server)$",
+  # Reference host in EU remote-flow examples (often not resolvable as a “site”)
+  "^https://wallet-solution\\.digital-strategy\\.europa\\.eu",
+  # External: certificate/TLS issues should not block doc PRs (revisit periodically)
+  "^https://www\\.wallet\\.gov\\.it",
+]

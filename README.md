@@ -26,10 +26,7 @@ The repository is structured as sphinx project tree. **The first stable release 
 
 ## Versioning and preview
 
-This project adheres to the [*Semantic
-Versioning*](https://semver.org/) model.
-
-Furthermore, this project uses the git *branches* and *tags* in the following way:
+This project uses the git *branches* and *tags* in the following way:
 * the branch `versione-corrente` contains the last stable version of the documentation;
 * The [release page](https://github.com/italia/eid-wallet-it-docs/releases) of
   this project contains all the released versions of the specifications. For the sake of coherence, the *releases* are made according to the tag names.
