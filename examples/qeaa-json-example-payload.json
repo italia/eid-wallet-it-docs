@@ -22,7 +22,6 @@
     "given_name": "Mario",
     "family_name": "Rossi",
     "birth_date": "1980-01-10",
-    "expiry_date": "2024-01-01",
     "tax_id_code": "TINIT-XXXXXXXXXXXXXXXX",
     "constant_attendance_allowance": true
 }

@@ -106,11 +106,13 @@ JWT payload structure (when decoded):
       "credential_catalog": "https://trust-anchor.eid-wallet.example.it/api/v1/.well-known/credential-catalog",
       "taxonomy": "https://trust-anchor.eid-wallet.example.it/api/v1/taxonomy",
       "schema_registry": "https://trust-anchor.eid-wallet.example.it/api/v1/schemas",
-      "federation_list": "https://trust-anchor.eid-wallet.example.it/list",
-      "federation_fetch": "https://trust-anchor.eid-wallet.example.it/fetch",
-      "federation_resolve": "https://trust-anchor.eid-wallet.example.it/resolve",
-      "federation_trust_mark_status": "https://trust-anchor.eid-wallet.example.it/trust_mark_status",
-      "federation_historical_keys": "https://trust-anchor.eid-wallet.example.it/historical-jwks"
+      "federation_list_endpoint": "https://trust-anchor.eid-wallet.example.it/list",
+      "federation_fetch_endpoint": "https://trust-anchor.eid-wallet.example.it/federation_fetch_endpoint",
+      "federation_resolve_endpoint": "https://trust-anchor.eid-wallet.example.it/resolve",
+      "federation_trust_mark_status_endpoint": "https://trust-anchor.eid-wallet.example.it/trust_mark_status",
+      "federation_trust_mark_list_endpoint": "https://dev.ta.wallet.ipzs.it/trust_mark_listing",
+      "federation_trust_mark_endpoint": "https://dev.ta.wallet.ipzs.it/trust_mark",
+      "federation_historical_keys_endpoint": "https://trust-anchor.eid-wallet.example.it/federation_historical_keys"
     },
     "content_negotiation": ["application/json", "application/jwt"]
   }
@@ -1100,19 +1102,20 @@ Each element of the ``credentials`` array contains at least the following inform
       * **min_loa**: REQUIRED. Minimum Level of Assurance required for Digital Credential authentication. It MUST include the Level of Assurance of the User authentication and the Wallet Instance requesting the Digital Credential.
       * **supported_schemes**: REQUIRED if ``user_auth_required`` is ``true``. Supported digital identity authentication schemes (e.g., ``["it-wallet"]``).
   * - **domains**
-    - REQUIRED. Array of domains to which Digital Credential belongs, such as:
-
-      * **id**: Unique identifier for the domain (e.g., ``"IDENTITY"``, ``"MOBILITY_TRAVEL"``).
+    - REQUIRED. Array of domain IDs to which Digital Credential belongs (e.g., ``"IDENTITY"``, ``"MOBILITY_TRAVEL"``).
   * - **classes**
-    - REQUIRED. Array of classes to which Digital Credential belongs, such as:
-
-      * **id**: Unique identifier for the class (e.g., "IDENTIFICATION_DOCUMENTS", "LICENSES_AUTHORIZATIONS").
+    - REQUIRED. Array of classesi IDs to which Digital Credential belongs (e.g., "IDENTIFICATION_DOCUMENTS", "LICENSES_AUTHORIZATIONS").
   * - **purposes**
-    - REQUIRED. Array of usage purposes for which the Digital Credential can be used, defining specific usage contexts and required claims for each purpose, such as:
-
-      * **id**: Unique identifier for the purpose, referencing a purpose defined in the Taxonomy (e.g., ``"IDENTITY_VERIFICATION"``, ``"AGE_VERIFICATION"``, ``"DRIVING_RIGHTS_VERIFICATION"``).
+    - REQUIRED. Array of usage purpose IDs for which the Digital Credential can be used, defining specific usage contexts and required claims for each purpose (e.g., ``"IDENTITY_VERIFICATION"``, ``"AGE_VERIFICATION"``, ``"DRIVING_RIGHTS_VERIFICATION"``).
   * - **issuers**
     - REQUIRED. Array of relevant information about authorized Credential Issuers, including administrative and technical data such as Organization name, a reference to the API specification document and supported issuance mechanisms (for example the deferred flow support).
+  * - **localization**
+    - REQUIRED. Localization configuration object containing:
+
+       * **default_locale**: Default locale code (e.g., ``it``).
+       * **available_locales**: Array of supported locale codes (e.g., ``["en", "it"]``).
+       * **base_uri**: Base URI for localization bundle retrieval (e.g., ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/credential-catalog/``).
+       * **version**: Version of the localization bundle format.
   * - **authentic_sources**
     - REQUIRED. Array of Authentic Source JSON objects referencing authorized Authentic Sources. Each object MUST contain the AS entity identifier and the specific data capability identifier:
 

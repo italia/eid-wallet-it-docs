@@ -588,7 +588,7 @@ The Federation Entity MUST complete the onboarding process by:
          ]
 
 .. note::
-   To update Trust Marks after onboarding, the entity can use the fetch endpoint of its immediate superior to obtain all the updated Trust Marks about itself. When the Trust Mark issuer is different from the superior entity that has onboarded the entity, Federation Entities can obtain fresh Trust Marks anytime needed by using the Federation Trust Mark endpoint as defined in :ref:`trust-infrastructure:Federation API endpoints`.
+  Federation Entities can obtain Trust Marks anytime needed by using the Trust Mark endpoint exposed by a Trust Mark Issuer as defined in :ref:`trust-infrastructure:Federation API endpoints`.
 
 Upon successful completion of Step 4, the **entity onboarding is successfully completed**. The entity is now operational within the IT-Wallet federation and ready for operational activities.
    
@@ -599,7 +599,7 @@ Upon successful completion of Step 4, the **entity onboarding is successfully co
 IT-Wallet Federation Trust Marks
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Federation Entities receive IT-Wallet Federation Trust Marks during successful onboarding completion. **Trust Marks are issued by the Federation Authority** (Trust Anchor for direct onboarding, Intermediate for mediated onboarding) and serve as verifiable attestations about compliance with IT-Wallet technical profiles and or authorization policies.
+Federation Entities receive IT-Wallet Federation Trust Marks during successful onboarding completion. **Trust Marks are issued by the Federation Authority** (Trust Anchor for direct onboarding, Intermediate for mediated onboarding) through the Federation Trust Mark Endpoint and serve as verifiable attestations about compliance with IT-Wallet technical profiles and or authorization policies.
 
 Trust Mark Types and Schema
 """""""""""""""""""""""""""
