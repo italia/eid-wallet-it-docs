@@ -1104,7 +1104,7 @@ Each element of the ``credentials`` array contains at least the following inform
   * - **domains**
     - REQUIRED. Array of domain IDs to which Digital Credential belongs (e.g., ``"IDENTITY"``, ``"MOBILITY_TRAVEL"``).
   * - **classes**
-    - REQUIRED. Array of classesi IDs to which Digital Credential belongs (e.g., "IDENTIFICATION_DOCUMENTS", "LICENSES_AUTHORIZATIONS").
+    - REQUIRED. Array of class IDs to which Digital Credential belongs (e.g., ``"IDENTIFICATION_DOCUMENTS"``, ``"LICENSES_AUTHORIZATIONS"``).
   * - **purposes**
     - REQUIRED. Array of usage purpose IDs for which the Digital Credential can be used, defining specific usage contexts and required claims for each purpose (e.g., ``"IDENTITY_VERIFICATION"``, ``"AGE_VERIFICATION"``, ``"DRIVING_RIGHTS_VERIFICATION"``).
   * - **issuers**

@@ -385,7 +385,7 @@ The `MobileSecurityObject` MUST have the following attributes, unless otherwise 
 
         - When defined by an ISO standard, It MUST be a string of the form ``iso.org.{iso-number}.{part}.{version}.{credential_type}`` (e.g. for an mDL, the value MUST be ``org.iso.18013.5.1.mDL``).
 
-        - When defined at the european level, it MUST be a string of the form ``eu.europa.ec.eudi.{credential_type}.{version}`` (e.g., ``eu.europa.ec.eudi.loyaltycard.1.0``).
+        - When defined at the european level, it MUST be a string of the form ``eu.europa.ec.eudi.{credential_type}.{version}`` (e.g., ``eu.europa.ec.eudi.pid.1``).
 
         - When defined at national level, it MUST be a string of the form ``{Trust Anchor reverse domain}.{credential_type}.{version}`` (e.g., ``it.wallet.trust-registry.pid.1``).
 

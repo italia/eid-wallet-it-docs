@@ -106,11 +106,13 @@ Struttura del payload JWT (in forma decodificata):
       "credential_catalog": "https://trust-anchor.eid-wallet.example.it/api/v1/.well-known/credential-catalog",
       "taxonomy": "https://trust-anchor.eid-wallet.example.it/api/v1/taxonomy",
       "schema_registry": "https://trust-anchor.eid-wallet.example.it/api/v1/schemas",
-      "federation_list": "https://trust-anchor.eid-wallet.example.it/list",
-      "federation_fetch": "https://trust-anchor.eid-wallet.example.it/fetch",
-      "federation_resolve": "https://trust-anchor.eid-wallet.example.it/resolve",
-      "federation_trust_mark_status": "https://trust-anchor.eid-wallet.example.it/trust_mark_status",
-      "federation_historical_keys": "https://trust-anchor.eid-wallet.example.it/historical-jwks"
+      "federation_list_endpoint": "https://trust-anchor.eid-wallet.example.it/list",
+      "federation_fetch_endpoint": "https://trust-anchor.eid-wallet.example.it/federation_fetch_endpoint",
+      "federation_resolve_endpoint": "https://trust-anchor.eid-wallet.example.it/resolve",
+      "federation_trust_mark_status_endpoint": "https://trust-anchor.eid-wallet.example.it/trust_mark_status",
+      "federation_trust_mark_list_endpoint": "https://dev.ta.wallet.ipzs.it/trust_mark_listing",
+      "federation_trust_mark_endpoint": "https://dev.ta.wallet.ipzs.it/trust_mark",
+      "federation_historical_keys_endpoint": "https://trust-anchor.eid-wallet.example.it/federation_historical_keys"
     },
     "content_negotiation": ["application/json", "application/jwt"]
   }
@@ -1100,19 +1102,22 @@ Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazion
       * **min_loa**: OBBLIGATORIO. Livello Minimo di Garanzia richiesto per l'autenticazione della Credenziale Digitale. DEVE includere il Livello di Garanzia dell'autenticazione dell'Utente e dell'Istanza Wallet che richiede la Credenziale Digitale.
       * **supported_schemes**: OBBLIGATORIO se ``user_auth_required`` è ``true``. Schemi di autenticazione dell'identità digitale supportati (es. ``["it-wallet"]``).
   * - **domains**
-    - OBBLIGATORIO. Array di domini a cui appartiene la Credenziale Digitale, quali:
+    - OBBLIGATORIO. Array contenente gli ID dei domini a cui appartiene la Credenziale Digitale (es. ``"IDENTITY"``, ``"MOBILITY_TRAVEL"``).
 
-      * **id**: Identificatore univoco del dominio (es. ``"IDENTITY"``, ``"MOBILITY_TRAVEL"``).
   * - **classes**
-    - OBBLIGATORIO. Array di classi a cui appartiene la Credenziale Digitale, quali:
+    - OBBLIGATORIO. Array contenente gli ID delle classi a cui appartiene la Credenziale Digitale (es. ``"IDENTIFICATION_DOCUMENTS"``, ``"LICENSES_AUTHORIZATIONS"``).
 
-      * **id**: Identificatore univoco della classe (es. "IDENTIFICATION_DOCUMENTS", "LICENSES_AUTHORIZATIONS").
   * - **purposes**
-    - OBBLIGATORIO. Array delle finalità di utilizzo per cui la Credenziale Digitale può essere impiegata, definendo contesti d'uso specifici e claim richiesti per ciascuna finalità, quali:
-
-      * **id**: Identificatore univoco della finalità, che fa riferimento a una finalità definita nella Tassonomia (es. ``"IDENTITY_VERIFICATION"``, ``"AGE_VERIFICATION"``, ``"DRIVING_RIGHTS_VERIFICATION"``).
+    - OBBLIGATORIO. Array contenente gli ID delle finalità (definita nella Tassonomia) di utilizzo per cui la Credenziale Digitale può essere impiegata, definendo contesti d'uso specifici e claim richiesti per ciascuna finalità (es. ``"IDENTITY_VERIFICATION"``, ``"AGE_VERIFICATION"``, ``"DRIVING_RIGHTS_VERIFICATION"``).
   * - **issuers**
     - OBBLIGATORIO. Array di informazioni rilevanti sugli Emittenti di Credenziali autorizzati, inclusi dati amministrativi e tecnici quali nome dell'organizzazione, riferimento al documento di specifica API e meccanismi di emissione supportati (ad esempio il supporto al flusso differito).
+  * - **localization**
+    - OBBLIGATORIO. Oggetto di configurazione della localizzazione contenente:
+
+       * **default_locale**: Codice locale predefinito (es. ``it``).
+       * **available_locales**: Array dei codici locale supportati (es. ``["en", "it"]``).
+       * **base_uri**: URI base per il recupero del bundle di localizzazione (es. ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/credential-catalog/``).
+       * **version**: Versione del formato del bundle di localizzazione.
   * - **authentic_sources**
     - OBBLIGATORIO. Array di oggetti JSON delle Fonti Autentiche che fanno riferimento alle Fonti Autentiche autorizzate. Ogni oggetto DEVE contenere l'identificatore dell'entità FA e l'identificatore specifico della capacità dati:
 

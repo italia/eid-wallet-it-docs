@@ -588,7 +588,7 @@ L'Entità Federata DEVE completare il processo di onboarding:
          ]
 
 .. note::
-   Per aggiornare i Trust Mark dopo l'onboarding, l'entità può utilizzare l'endpoint fetch del proprio superiore immediato per ottenere tutti i Trust Mark aggiornati che la riguardano. Quando l'emittente del Trust Mark è diverso dall'entità superiore che ha registrato l'entità, le Entità Federate possono ottenere Trust Mark aggiornati in qualsiasi momento utilizzando l'endpoint Federation Trust Mark come definito in :ref:`trust-infrastructure:Endpoint API di Federazione`.
+   Le Entità Federate possono ottenere Trust Mark in qualsiasi momento utilizzando il Federation Trust Mark Endpoint come definito in :ref:`trust-infrastructure:Endpoint API di Federazione`.
 
 Al completamento positivo della Fase 4, **l'onboarding dell'entità è completato con successo**. L'entità è ora operativa all'interno della federazione IT-Wallet e pronta per le attività operative.
    
@@ -599,7 +599,7 @@ Al completamento positivo della Fase 4, **l'onboarding dell'entità è completat
 Trust Mark della Federazione IT-Wallet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Le Entità Federate ricevono i Trust Mark della Federazione IT-Wallet al completamento positivo dell'onboarding. **I Trust Mark sono emessi dall'Autorità di Federazione** (Trust Anchor per l'onboarding diretto, Intermediario per l'onboarding mediato) e fungono da attestazioni verificabili sulla conformità ai profili tecnici IT-Wallet e/o alle politiche di autorizzazione.
+Le Entità Federate ricevono i Trust Mark della Federazione IT-Wallet al completamento positivo dell'onboarding. **I Trust Mark sono emessi dall'Autorità di Federazione** (Trust Anchor per l'onboarding diretto, Intermediario per l'onboarding mediato) attraverso il Federation Trust Mark Endpoint e fungono da attestazioni verificabili sulla conformità ai profili tecnici IT-Wallet e/o alle politiche di autorizzazione.
 
 Tipologie e Schema dei Trust Mark
 """"""""""""""""""""""""""""""""""

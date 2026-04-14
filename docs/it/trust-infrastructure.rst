@@ -114,13 +114,17 @@ Tutti gli endpoint elencati di seguito sono definiti nelle specifiche `OID-FED`_
      - Restituisce un JWT firmato su un soggetto specifico, il suo Subordinato. È chiamato Subordinate Statement. Vedi `OID-FED`_ Sezione 8.1
      - Trust Anchor, Intermediario
    * - trust mark status
-     - **POST** /federation_trust_mark_status_endpoint
+     - **POST** /trust_mark_status
      - Restituisce lo stato dell'emissione (validità) di un Trust Mark relativo a un soggetto specifico. Vedi `OID-FED`_ Sezione 8.4
      - Trust Anchor, Intermediario
-   * - trust marked listing
-     - **GET** /trust_marked_list?trust_mark_type=...
+   * - trust mark  list
+     - **GET** /trust_mark_listing?trust_mark_type=...
      - Elenca tutte le entità per le quali sono stati emessi Trust Mark e sono ancora validi. Vedi `OID-FED`_ Sezione 8.5
      - Trust Anchor, Intermediario
+   * - trust mark
+     - **GET** /trust_mark?trust_mark_type=...
+     - Restituisce il Trust Mark relativo a un soggetto specifico. Vedi `OID-FED`_ Sezione 8.6
+     - Trust Anchor, Intermediate
    * - historical keys
      - **GET** /federation_historical_keys
      - Elenca le chiavi scadute e revocate, con la motivazione della revoca. Vedi `OID-FED`_ Sezione 8.7
@@ -315,7 +319,7 @@ L'Entity Configuration del Trust Anchor, oltre ai parametri comuni elencati sopr
      - **Richiesto**
    * - **trust_mark_issuers**
      - Array JSON che definisce quali autorità di Federazione sono considerate affidabili per l'emissione di Trust Mark specifici, assegnati con i loro identificatori unici.
-     - |uncheck-icon|
+     - |check-icon|
 
 
 Entity Configuration Foglie e Intermediari
