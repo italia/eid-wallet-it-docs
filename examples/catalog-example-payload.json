@@ -5,7 +5,7 @@
     "iss": "https://trust-registry.eid-wallet.example.it",
     "credentials": [
         {
-            "version": "1.0",
+            "version": "1",
             "credential_type": "mDL",
             "credential_name_l10n_id": "mDL.name",
             "legal_type": "pub-eaa",
