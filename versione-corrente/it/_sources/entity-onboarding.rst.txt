@@ -38,7 +38,7 @@ La seguente tabella riepiloga le tipologie di entità, i loro ruoli e i relativi
    * - Fonti Autentiche
      - Fornitori di dati autorevoli per gli attributi delle Credenziali Digitali
      - :ref:`entity-onboarding:Procedura di registrazione delle Fonti Autentiche`
-     - Validazione della titolarità dei dati; integrazione API (es. PDND)
+     - Validazione della titolarità dei dati; integrazione API (PDND)
    * - Emittenti di Credenziali
      - Generano ed emettono Credenziali Digitali utilizzando i dati delle Fonti Autentiche
      - :ref:`entity-onboarding:Processo di Onboarding delle Entità Federate`
@@ -230,7 +230,7 @@ La registrazione della Fonte Autentica segue un processo tecnico descritto di se
      - OBBLIGATORIO. URL del documento di informativa sulla privacy.
    * - **organization_info.tos_uri**
      - string
-     - OBBLIGATORIO solo per FA Private. URL del documento dei termini di servizio.
+     - OPZIONALE. URL del documento dei termini di servizio.
    * - **organization_info.organization_country**
      - string
      - OBBLIGATORIO. Codice paese ISO 3166-1 alpha-2 a due lettere dell'organizzazione.
@@ -278,13 +278,13 @@ La registrazione della Fonte Autentica segue un processo tecnico descritto di se
      - OBBLIGATORIO. Definisce se un claim è sempre disponibile o meno.
    * - **data_capabilities[].integration_method**
      - string
-     - OBBLIGATORIO. Framework di autorizzazione utilizzato per l'accesso ai dati. DEVE essere ``"pdnd"`` per le FA Pubbliche. Le FA Private POSSONO utilizzare altri framework di autorizzazione come: ``"oauth2"``, ``"api_key"``, ``"mtls"``, ecc.
+     - OBBLIGATORIO. Framework di autorizzazione utilizzato per l'accesso ai dati. DEVE essere ``"pdnd"``.
    * - **data_capabilities[].integration_endpoint**
      - string
-     - OBBLIGATORIO. Punto di accesso al servizio (endpoint PDND per FA Pubbliche, endpoint API per FA Private).
+     - OPZIONALE. Punto di accesso al servizio (endpoint PDND).
    * - **data_capabilities[].api_specification**
      - string
-     - OBBLIGATORIO. URL del documento di specifica `OAS3`_ per questa capacità dati.
+     - OPZIONALE. URL del documento di specifica `OAS3`_ per questa capacità dati.
    * - **data_capabilities[].data_provision**
      - oggetto JSON
      - OPZIONALE. Capacità di fornitura dei dati e specifiche temporali.
@@ -359,7 +359,7 @@ A seguito dell'autorizzazione amministrativa dalla Fonte Autentica all'Emittente
 
 L'integrazione tecnica comprende:
 
-- **Configurazione degli Endpoint API**: Instaurazione di connessioni API sicure come specificato nelle specifiche tecniche delle Fonti Autentiche (e-service PDND per le Fonti Autentiche pubbliche, implementazioni `OAS3`_ per le Fonti Autentiche private).
+- **Configurazione degli Endpoint API**: Instaurazione di connessioni API sicure come specificato nelle specifiche tecniche delle Fonti Autentiche (e-service PDND).
 - **Validazione della Mappatura dei Claims**: Verifica che l'implementazione dell'Emittente di Credenziali mappi correttamente le risposte della Fonte Autentica agli identificatori standardizzati del Registro dei Claims.
 - **Test del Flusso dei Dati**: Validazione delle capacità di fornitura dei dati immediata o differita e dei meccanismi di gestione degli errori.
 - **Implementazione della Sicurezza**: Configurazione dell'autenticazione, dell'autorizzazione e del logging di audit come richiesto dagli standard di sicurezza delle Fonti Autentiche.

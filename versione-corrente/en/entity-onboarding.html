@@ -200,7 +200,7 @@
 <tr class="row-even"><td><p>Authentic Sources</p></td>
 <td><p>Authoritative data providers for Digital Credential attributes</p></td>
 <td><p><a class="reference internal" href="#authentic-sources-registration-process"><span class="std std-ref">Authentic Sources Registration Process</span></a></p></td>
-<td><p>Data authority validation; API integration (e.g., PDND)</p></td>
+<td><p>Data authority validation; API integration (PDND)</p></td>
 </tr>
 <tr class="row-odd"><td><p>Credential Issuers</p></td>
 <td><p>Generate and issue Digital Credentials using Authentic Source data</p></td>
@@ -461,7 +461,7 @@
 </tr>
 <tr class="row-even"><td><p><strong>organization_info.tos_uri</strong></p></td>
 <td><p>string</p></td>
-<td><p>REQUIRED only for Private AS. URL to terms of service document.</p></td>
+<td><p>OPTIONAL. URL to terms of service document.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>organization_info.organization_country</strong></p></td>
 <td><p>string</p></td>
@@ -525,15 +525,15 @@
 </tr>
 <tr class="row-even"><td><p><strong>data_capabilities[].integration_method</strong></p></td>
 <td><p>string</p></td>
-<td><p>REQUIRED. Authorization framework used for data access. MUST be <code class="docutils literal notranslate"><span class="pre">&quot;pdnd&quot;</span></code> for Public AS. Private AS MAY use other authorization frameworks such as: <code class="docutils literal notranslate"><span class="pre">&quot;oauth2&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;api_key&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;mtls&quot;</span></code>, etc.</p></td>
+<td><p>REQUIRED. Authorization framework used for data access. MUST be <code class="docutils literal notranslate"><span class="pre">&quot;pdnd&quot;</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>data_capabilities[].integration_endpoint</strong></p></td>
 <td><p>string</p></td>
-<td><p>REQUIRED. Service access point (PDND endpoint for Public AS, API endpoint for Private AS).</p></td>
+<td><p>OPTIONAL. Service access point (PDND endpoint).</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>data_capabilities[].api_specification</strong></p></td>
 <td><p>string</p></td>
-<td><p>REQUIRED. URL to <a class="reference external" href="https://spec.openapis.org/oas/v3.0.3">OAS3</a> specification document for this data capability.</p></td>
+<td><p>OPTIONAL. URL to <a class="reference external" href="https://spec.openapis.org/oas/v3.0.3">OAS3</a> specification document for this data capability.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>data_capabilities[].data_provision</strong></p></td>
 <td><p>JSON object</p></td>
@@ -837,7 +837,7 @@
 <p>Following administrative Authentic Source to Credential Issuer authorization obtained during the administrative registration phase, technical integration procedures establish the operational API connections and data access mechanisms between Credential Issuers and Authentic Sources.</p>
 <p>Technical integration encompasses:</p>
 <ul class="simple">
-<li><p><strong>API Endpoint Configuration</strong>: Establishment of secure API connections as specified in Authentic Source technical specifications (PDND e-services for public Authentic Sources, <a class="reference external" href="https://spec.openapis.org/oas/v3.0.3">OAS3</a> implementations for private Authentic Sources).</p></li>
+<li><p><strong>API Endpoint Configuration</strong>: Establishment of secure API connections as specified in Authentic Source technical specifications (PDND e-services).</p></li>
 <li><p><strong>Claims Mapping Validation</strong>: Verification that Credential Issuer implementation correctly maps Authentic Source data responses to standardized Claims Registry identifiers.</p></li>
 <li><p><strong>Data Flow Testing</strong>: Validation of immediate or deferred data provision capabilities and error handling mechanisms.</p></li>
 <li><p><strong>Security Implementation</strong>: Configuration of authentication, authorization, and audit logging as required by Authentic Source security standards.</p></li>
@@ -1406,7 +1406,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 13/04/2026.
+      Last updated on 16/04/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

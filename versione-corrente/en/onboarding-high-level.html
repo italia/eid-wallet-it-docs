@@ -208,9 +208,8 @@
 <h2><span class="section-number">4.2. </span>Authentic Source Registration Process<a class="headerlink" href="#authentic-source-registration-process" title="Link to this heading">¶</a></h2>
 <p>Authentic Source registration allows data providers to establish their authoritative role in the Digital Credential ecosystem through the registration of their data capabilities and standardized access mechanisms based on the Claims Registry and Taxonomy classifications.</p>
 <p>Authentic Source entities MUST undergo registration procedures that validate their data authority, declare their available claims from the standardized Claims Registry, and establish technical integration mechanisms. Authentic Source entities specify intended use cases (formally <code class="docutils literal notranslate"><span class="pre">purposes</span></code>) that determine catalog eligibility per Supervisory Body policies.</p>
-<p>Public Authentic Sources MUST leverage PDND integration to provide government data through standardized national infrastructure.</p>
-<p>Private Authentic Sources MAY establish custom service interfaces that accommodate specific organizational or regulatory requirements.</p>
-<p>Both pathways MUST assure data quality standards and establish audit trails for all data provisioning activities.</p>
+<p>Public and Private Authentic Sources MUST leverage PDND integration to provide government data through standardized national infrastructure.</p>
+<p>This pathway MUST assure data quality standards and establish audit trails for all data provisioning activities.</p>
 <p><strong>AS-CI Coordination Process</strong>: Following AS registration, Credential Issuers identify suitable AS entities through the AS Registry and request integration authorization during the administrative registration phase. For regulatory mandates, authorization MUST be automatic. Otherwise, Authentic Sources entities evaluate and authorize Credential Issuers requests based on business and technical criteria. Following administrative authorization, technical integration procedures establish the operational data access relationships before Credential type catalog publication.</p>
 <p>Successfully registered Authentic Sources MUST be included in the AS Registry with their declared claims and capability. Credential types MUST become publicly discoverable in the <a class="reference internal" href="registry.html#digital-credentials-catalog"><span class="std std-ref">Digital Credentials Catalog</span></a> only after successful AS-CI integration and Supervisory Body policy approval for catalog eligibility.</p>
 <p>Technical implementation procedures for Authentic Source registration are provided in <a class="reference internal" href="entity-onboarding.html#authentic-sources-registration-process"><span class="std std-ref">Authentic Sources Registration Process</span></a>.</p>
@@ -323,7 +322,7 @@ Operational entities (PID Providers, Attestation Providers, Relying Parties, and
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Public Catalog Scenario</strong>: Mobile Driving License (mDL) provided for a public discovery via Credential Catalog.</p></li>
-<li><p><strong>Private Credential Scenario</strong>: Corporate Employee Badge from Company (Private AS, and therefore provided for discovery via Credential Offer only).</p></li>
+<li><p><strong>Private Credential Scenario</strong>: Corporate Employee Badge from Company (Private AS, provided for a public discovery via Credential Catalog but obtainable via Credential Offer only).</p></li>
 </ul>
 </div></blockquote>
 </section>
@@ -335,8 +334,8 @@ Operational entities (PID Providers, Attestation Providers, Relying Parties, and
 <div><ul class="simple">
 <li><p><strong>Claims Declaration</strong>: Selects standardized claims (<code class="docutils literal notranslate"><span class="pre">given_name</span></code>, <code class="docutils literal notranslate"><span class="pre">family_name</span></code>, <code class="docutils literal notranslate"><span class="pre">driving_privileges</span></code>, etc. ) from Claims Registry.</p></li>
 <li><p><strong>Taxonomy Classification</strong>: Domain <code class="docutils literal notranslate"><span class="pre">MOBILITY_TRAVEL</span></code>, Purpose <code class="docutils literal notranslate"><span class="pre">DRIVING_RIGHTS</span></code>.</p></li>
-<li><p><strong>Use Case</strong>: Public service - driving authorization verification (eligible for Credential Catalog).</p></li>
-<li><p><strong>Integration</strong>: e-Service PDNDintegration following government standards (see <a class="reference internal" href="e-service-pdnd.html#e-service-pdnd"><span class="std std-ref">e-Service PDND</span></a>).</p></li>
+<li><p><strong>Use Case</strong>: Public service - driving authorization verification.</p></li>
+<li><p><strong>Integration</strong>: e-Service PDND integration following government standards (see <a class="reference internal" href="e-service-pdnd.html#e-service-pdnd"><span class="std std-ref">e-Service PDND</span></a>).</p></li>
 <li><p><strong>Catalog Outcome</strong>: mDL becomes publicly discoverable after CI integration.</p></li>
 </ul>
 </div></blockquote>
@@ -345,9 +344,9 @@ Operational entities (PID Providers, Attestation Providers, Relying Parties, and
 <div><ul class="simple">
 <li><p><strong>Claims Declaration</strong>: Selects claims (<code class="docutils literal notranslate"><span class="pre">given_name</span></code>, <code class="docutils literal notranslate"><span class="pre">family_name</span></code>, <code class="docutils literal notranslate"><span class="pre">employee.job_title</span></code>, etc.) from Claims Registry.</p></li>
 <li><p><strong>Taxonomy Classification</strong>: Domain <code class="docutils literal notranslate"><span class="pre">MEMBERSHIP</span></code>, Purpose <code class="docutils literal notranslate"><span class="pre">ASSOCIATION</span></code>.</p></li>
-<li><p><strong>Use Case</strong>: Private corporate access control (non-eligible for Credential Catalog).</p></li>
-<li><p><strong>Integration</strong>: Custom API for Credential Issuer integration.</p></li>
-<li><p><strong>Catalog Outcome</strong>: Badge remains private, available only via Credential Offer.</p></li>
+<li><p><strong>Use Case</strong>: Private corporate access control.</p></li>
+<li><p><strong>Integration</strong>: e-Service PDND integration following government standards (see <a class="reference internal" href="e-service-pdnd.html#e-service-pdnd"><span class="std std-ref">e-Service PDND</span></a>).</p></li>
+<li><p><strong>Catalog Outcome</strong>: Badge becomes publicly discoverable but it is available for the issuance only via Credential Offer.</p></li>
 </ul>
 </div></blockquote>
 <p>Critical phases include administrative verification by the Supervisory Body (which involves regulatory compliance checks outside the technical scope) and technical validation. The process concludes with registration in the AS Registry, making the declared claims discoverable by Credential Issuers for integration requests. The integration requests can be also send by the Authentic Sources to a specific Credential Issuers.</p>
@@ -364,7 +363,7 @@ Operational entities (PID Providers, Attestation Providers, Relying Parties, and
 <div><ul class="simple">
 <li><p><strong>AS Discovery</strong> or <strong>AS Integration Request</strong>: Identifies the Authentic Source providing mDL attributes in AS Registry with required driving license claims. Alternatively, Credential Issuer receives the integration request directly by mDL Authentic Source.</p></li>
 <li><p><strong>Integration Request</strong>: Automatic approval due to regulatory mandate.</p></li>
-<li><p><strong>Technical Setup</strong>: e-Service PDNDintegration following government standards (see <a class="reference internal" href="e-service-pdnd.html#e-service-pdnd"><span class="std std-ref">e-Service PDND</span></a>).</p></li>
+<li><p><strong>Technical Setup</strong>: e-Service PDND integration following government standards (see <a class="reference internal" href="e-service-pdnd.html#e-service-pdnd"><span class="std std-ref">e-Service PDND</span></a>).</p></li>
 <li><p><strong>Catalog Publication</strong>: mDL automatically published in the Credential Catalog.</p></li>
 <li><p><strong>User Access</strong>: Citizens discover mDL through a public catalog in Wallet.</p></li>
 </ul>
@@ -374,22 +373,15 @@ Operational entities (PID Providers, Attestation Providers, Relying Parties, and
 <div><ul class="simple">
 <li><p><strong>AS Discovery</strong> or <strong>AS Integration Request</strong>: Identifies the Authentic Source in AS Registry with employee access claims. Alternatively, Credential Issuer receives the integration request by the Authentic Source.</p></li>
 <li><p><strong>Integration Request</strong>: Requires recipient approval.</p></li>
-<li><p><strong>Technical Setup</strong>: Custom API integration with authentication.</p></li>
-<li><p><strong>Catalog Publication</strong>: Badge excluded from public catalog per supervisory policy.</p></li>
+<li><p><strong>Technical Setup</strong>: e-Service PDND integration following government standards (see <a class="reference internal" href="e-service-pdnd.html#e-service-pdnd"><span class="std std-ref">e-Service PDND</span></a>).</p></li>
+<li><p><strong>Catalog Publication</strong>: Badge automatically published in the Credential Catalog.</p></li>
 <li><p><strong>User Access</strong>: Employees receive badges only via direct Credential Offer from company systems.</p></li>
-</ul>
-</div></blockquote>
-<p>The technical setup phase offers two distinct integration pathways depending on the Authentic Source type:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Public AS Integration</strong>: Uses the PDND platform for accessing government data through standardized APIs.</p></li>
-<li><p><strong>Private AS Integration</strong>: Establishes direct API connections with custom endpoints provided by private organizations.</p></li>
 </ul>
 </div></blockquote>
 <p>Following successful integration testing and Authentic Source approval, the Credential Issuer is registered in the Federation Registry as a trusted Entity, enabling actual Credential issuance to end-users.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>This step activates Credential availability for end-users. Public Credentials become discoverable through the catalog, while other Credentials remain available only via direct Credential Offers.</p>
+<p>This step activates Credential availability for end-users. Public and Private Credentials become discoverable through the catalog, but the Private Credentials will be available only via direct Credential Offers.</p>
 </div>
 </section>
 <section id="wallet-provider-operator-journey">
@@ -505,7 +497,7 @@ Operational entities (PID Providers, Attestation Providers, Relying Parties, and
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 13/04/2026.
+      Last updated on 16/04/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

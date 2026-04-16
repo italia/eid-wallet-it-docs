@@ -239,7 +239,7 @@ The Supervisory Body MUST maintain the Authentic Source Registry to enable coord
 
   - **Organization Information**: Legal entity details, regulatory status, and authoritative role within specific domains.
   - **Data Capabilities**: Declared claims availability referencing standardized definitions from the Claims Registry with corresponding Taxonomy classifications.
-  - **Integration Methods**: Technical access mechanisms (PDND for public AS, custom APIs for private AS).
+  - **Integration Methods**: Technical access mechanisms (PDND).
   - **Intended Purposes**: Supported Credential types and business contexts for AS-CI coordination.
   - **Data Quality Assurance**: Authoritative status, update frequency, and audit trail capabilities.
 
@@ -281,7 +281,8 @@ The AS Registry architecture supports different coordination patterns reflecting
 
   2. **Private Sector AS** (Flexible Integration): Private entities provide specialized data through custom arrangements:
 
-    - **Custom APIs**: ``"integration_method": "custom_api"`` for business-specific data access patterns.
+    - **Custom APIs**: ``"integration_method": "pdnd"``  for business-specific data access.
+    - **Regulatory Compliance**: Full transparency requirements with public catalog publication.
     - **Selective Disclosure**: Limited public visibility with CI-specific approval workflows.
     - **Business Flexibility**: Tailored integration supporting diverse private sector use cases.
 
@@ -390,7 +391,7 @@ The Authentic Source Registry MUST contain the following parameters for each reg
      - REQUIRED. URL to privacy policy document.
    * - **organization_info.tos_uri**
      - string
-     - REQUIRED only for Private AS. URL to terms of service document.
+     - OPTIONAL. URL to terms of service document.
    * - **organization_info.organization_country**
      - string
      - REQUIRED. Two-letter ISO 3166-1 alpha-2 country code of the organization.
@@ -438,13 +439,13 @@ The Authentic Source Registry MUST contain the following parameters for each reg
      - REQUIRED. Defines if a claim is always available or not.
    * - **data_capabilities[].integration_method**
      - string
-     - REQUIRED. Authorization framework used for data access. MUST be ``"pdnd"`` for Public AS. Private AS MAY use other authorization frameworks such as: ``"oauth2"``, ``"api_key"``, ``"mtls"``, etc.
+     - REQUIRED. Authorization framework used for data access. MUST be ``"pdnd"``.
    * - **data_capabilities[].integration_endpoint**
      - string
-     - OPTIONAL. Service access point (PDND endpoint for Public AS, API endpoint for Private AS).
+     - OPTIONAL. Service access point (PDND endpoint).
    * - **data_capabilities[].api_specification**
      - string
-     - REQUIRED. URL to `OAS3`_ specification document for this data capability.
+     - OPTIONAL. URL to `OAS3`_ specification document for this data capability.
    * - **data_capabilities[].data_provision**
      - JSON object
      - OPTIONAL. Data provision capabilities and timing specifications.

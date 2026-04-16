@@ -774,7 +774,7 @@ Content-Type: application/json
 <div><ul class="simple">
 <li><p><strong>Informazioni sull'Organizzazione</strong>: Dettagli della persona giuridica, stato normativo e ruolo autorevole in domini specifici.</p></li>
 <li><p><strong>Capacità sui Dati</strong>: Disponibilità dei claim dichiarati facendo riferimento alle definizioni standardizzate del Registro dei Claims con le corrispondenti classificazioni della Tassonomia.</p></li>
-<li><p><strong>Metodi di Integrazione</strong>: Meccanismi tecnici di accesso (PDND per FA pubbliche, API personalizzate per FA private).</p></li>
+<li><p><strong>Metodi di Integrazione</strong>: Meccanismi tecnici di accesso (PDND).</p></li>
 <li><p><strong>Finalità Previste</strong>: Tipologie di Credenziale supportate e contesti aziendali per il coordinamento FA-EI.</p></li>
 <li><p><strong>Garanzia della Qualità dei Dati</strong>: Stato autorevole, frequenza di aggiornamento e capacità di audit trail.</p></li>
 </ul>
@@ -829,7 +829,8 @@ Content-Type: application/json
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>API Personalizzate</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;integration_method&quot;:</span> <span class="pre">&quot;custom_api&quot;</span></code> per pattern di accesso ai dati specifici del business.</p></li>
+<li><p><strong>API Personalizzate</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;integration_method&quot;:</span> <span class="pre">&quot;pdnd&quot;</span></code> per l'accesso ai dati specifici del business.</p></li>
+<li><p><strong>Conformità Normativa</strong>: Requisiti di piena trasparenza con pubblicazione pubblica nel catalogo.</p></li>
 <li><p><strong>Selective Disclosure</strong>: Visibilità pubblica limitata con flussi di approvazione specifici per EI.</p></li>
 <li><p><strong>Flessibilità Aziendale</strong>: Integrazione su misura a supporto di casi d'uso diversificati del settore privato.</p></li>
 </ul>
@@ -962,7 +963,7 @@ Content-Type: application/json
 </tr>
 <tr class="row-even"><td><p><strong>organization_info.tos_uri</strong></p></td>
 <td><p>string</p></td>
-<td><p>OBBLIGATORIO solo per FA Private. URL del documento dei termini di servizio.</p></td>
+<td><p>OPZIONALE. URL del documento dei termini di servizio.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>organization_info.organization_country</strong></p></td>
 <td><p>string</p></td>
@@ -1026,15 +1027,15 @@ Content-Type: application/json
 </tr>
 <tr class="row-even"><td><p><strong>data_capabilities[].integration_method</strong></p></td>
 <td><p>string</p></td>
-<td><p>OBBLIGATORIO. Framework di autorizzazione utilizzato per l'accesso ai dati. DEVE essere <code class="docutils literal notranslate"><span class="pre">&quot;pdnd&quot;</span></code> per le FA Pubbliche. Le FA Private POSSONO utilizzare altri framework di autorizzazione come: <code class="docutils literal notranslate"><span class="pre">&quot;oauth2&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;api_key&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;mtls&quot;</span></code>, ecc.</p></td>
+<td><p>OBBLIGATORIO. Framework di autorizzazione utilizzato per l'accesso ai dati. DEVE essere <code class="docutils literal notranslate"><span class="pre">&quot;pdnd&quot;</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>data_capabilities[].integration_endpoint</strong></p></td>
 <td><p>string</p></td>
-<td><p>OPZIONALE. Punto di accesso al servizio (endpoint PDND per FA Pubbliche, endpoint API per FA Private).</p></td>
+<td><p>OPZIONALE. Punto di accesso al servizio (endpoint PDND).</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>data_capabilities[].api_specification</strong></p></td>
 <td><p>string</p></td>
-<td><p>OBBLIGATORIO. URL del documento di specifica <a class="reference external" href="https://spec.openapis.org/oas/v3.0.3">OAS3</a> per questa capacità dati.</p></td>
+<td><p>OPZIONALE. URL del documento di specifica <a class="reference external" href="https://spec.openapis.org/oas/v3.0.3">OAS3</a> per questa capacità dati.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>data_capabilities[].data_provision</strong></p></td>
 <td><p>oggetto JSON</p></td>
@@ -1317,7 +1318,7 @@ Content-Type: application/json
 <span class="w">                    </span><span class="p">},</span>
 <span class="w">                    </span><span class="nt">&quot;dataset_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;38854801&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;integration_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.bank.example/psd2/v1/accounts&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;integration_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;oauth2&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;integration_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pdnd&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;intended_purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                        </span><span class="s2">&quot;PAYMENT_AUTHORIZATION&quot;</span><span class="p">,</span>
 <span class="w">                        </span><span class="s2">&quot;ELIGIBILITY_VERIFICATION&quot;</span>
@@ -1378,7 +1379,7 @@ Content-Type: application/json
 <span class="w">                    </span><span class="p">},</span>
 <span class="w">                    </span><span class="nt">&quot;dataset_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;38854802&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;integration_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.bank.example/psd2/v1/transactions&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;integration_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;oauth2&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;integration_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pdnd&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;intended_purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                        </span><span class="s2">&quot;PROOF_OF_PAYMENT&quot;</span><span class="p">,</span>
 <span class="w">                        </span><span class="s2">&quot;RECURRING_PAYMENT_MANAGEMENT&quot;</span>
@@ -2240,7 +2241,7 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive <stron
 <span class="w">    </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;credentials&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;credential_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mDL&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;credential_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mDL.name&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;legal_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pub-eaa&quot;</span><span class="p">,</span>
@@ -3209,12 +3210,12 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive <stron
 <p><strong>Esempio di Registro degli Schemi:</strong></p>
 <p>Un esempio non normativo del payload del Registro degli Schemi:</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;last_updated&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-03-15T12:00:00Z&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;schemas&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mDL+mso_mdoc+org.iso.18013.5.1.mDL&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;credential_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mDL&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mso_mdoc&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;docType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;org.iso.18013.5.1.mDL&quot;</span><span class="p">,</span>
@@ -3224,7 +3225,7 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive <stron
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pid+dc+sd-jwt+urn:eudi:pid:it:1&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;credential_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pid&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc+sd-jwt&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:eudi:pid:it:1&quot;</span><span class="p">,</span>
@@ -3422,7 +3423,7 @@ I principali Percorsi di seguito illustrano le interazioni con l'Infrastruttura 
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 13/04/2026.
+      Ultimo aggiornamento 16/04/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

@@ -201,7 +201,7 @@
 <tr class="row-even"><td><p>Fonti Autentiche</p></td>
 <td><p>Fornitori di dati autorevoli per gli attributi delle Credenziali Digitali</p></td>
 <td><p><a class="reference internal" href="#procedura-di-registrazione-delle-fonti-autentiche"><span class="std std-ref">Procedura di registrazione delle Fonti Autentiche</span></a></p></td>
-<td><p>Validazione della titolarità dei dati; integrazione API (es. PDND)</p></td>
+<td><p>Validazione della titolarità dei dati; integrazione API (PDND)</p></td>
 </tr>
 <tr class="row-odd"><td><p>Emittenti di Credenziali</p></td>
 <td><p>Generano ed emettono Credenziali Digitali utilizzando i dati delle Fonti Autentiche</p></td>
@@ -462,7 +462,7 @@
 </tr>
 <tr class="row-even"><td><p><strong>organization_info.tos_uri</strong></p></td>
 <td><p>string</p></td>
-<td><p>OBBLIGATORIO solo per FA Private. URL del documento dei termini di servizio.</p></td>
+<td><p>OPZIONALE. URL del documento dei termini di servizio.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>organization_info.organization_country</strong></p></td>
 <td><p>string</p></td>
@@ -526,15 +526,15 @@
 </tr>
 <tr class="row-even"><td><p><strong>data_capabilities[].integration_method</strong></p></td>
 <td><p>string</p></td>
-<td><p>OBBLIGATORIO. Framework di autorizzazione utilizzato per l'accesso ai dati. DEVE essere <code class="docutils literal notranslate"><span class="pre">&quot;pdnd&quot;</span></code> per le FA Pubbliche. Le FA Private POSSONO utilizzare altri framework di autorizzazione come: <code class="docutils literal notranslate"><span class="pre">&quot;oauth2&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;api_key&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;mtls&quot;</span></code>, ecc.</p></td>
+<td><p>OBBLIGATORIO. Framework di autorizzazione utilizzato per l'accesso ai dati. DEVE essere <code class="docutils literal notranslate"><span class="pre">&quot;pdnd&quot;</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>data_capabilities[].integration_endpoint</strong></p></td>
 <td><p>string</p></td>
-<td><p>OBBLIGATORIO. Punto di accesso al servizio (endpoint PDND per FA Pubbliche, endpoint API per FA Private).</p></td>
+<td><p>OPZIONALE. Punto di accesso al servizio (endpoint PDND).</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>data_capabilities[].api_specification</strong></p></td>
 <td><p>string</p></td>
-<td><p>OBBLIGATORIO. URL del documento di specifica <a class="reference external" href="https://spec.openapis.org/oas/v3.0.3">OAS3</a> per questa capacità dati.</p></td>
+<td><p>OPZIONALE. URL del documento di specifica <a class="reference external" href="https://spec.openapis.org/oas/v3.0.3">OAS3</a> per questa capacità dati.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>data_capabilities[].data_provision</strong></p></td>
 <td><p>oggetto JSON</p></td>
@@ -838,7 +838,7 @@
 <p>A seguito dell'autorizzazione amministrativa dalla Fonte Autentica all'Emittente di Credenziali ottenuta durante la fase di registrazione amministrativa, le procedure di integrazione tecnica stabiliscono le connessioni API operative e i meccanismi di accesso ai dati tra gli Emittenti di Credenziali e le Fonti Autentiche.</p>
 <p>L'integrazione tecnica comprende:</p>
 <ul class="simple">
-<li><p><strong>Configurazione degli Endpoint API</strong>: Instaurazione di connessioni API sicure come specificato nelle specifiche tecniche delle Fonti Autentiche (e-service PDND per le Fonti Autentiche pubbliche, implementazioni <a class="reference external" href="https://spec.openapis.org/oas/v3.0.3">OAS3</a> per le Fonti Autentiche private).</p></li>
+<li><p><strong>Configurazione degli Endpoint API</strong>: Instaurazione di connessioni API sicure come specificato nelle specifiche tecniche delle Fonti Autentiche (e-service PDND).</p></li>
 <li><p><strong>Validazione della Mappatura dei Claims</strong>: Verifica che l'implementazione dell'Emittente di Credenziali mappi correttamente le risposte della Fonte Autentica agli identificatori standardizzati del Registro dei Claims.</p></li>
 <li><p><strong>Test del Flusso dei Dati</strong>: Validazione delle capacità di fornitura dei dati immediata o differita e dei meccanismi di gestione degli errori.</p></li>
 <li><p><strong>Implementazione della Sicurezza</strong>: Configurazione dell'autenticazione, dell'autorizzazione e del logging di audit come richiesto dagli standard di sicurezza delle Fonti Autentiche.</p></li>
@@ -1407,7 +1407,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 13/04/2026.
+      Ultimo aggiornamento 16/04/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
