@@ -517,7 +517,7 @@ Example X.509 X.509 Certificate chain within ``jwks`` claim:
 
 .. code-block:: json
 
-"jwks": {
+ {
     "keys": [
       {
         "crv": "P-256",

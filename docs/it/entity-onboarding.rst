@@ -517,7 +517,7 @@ Esempio di risposta con catena di Certificati X.509 all'interno del claim ``jwks
 
 .. code-block:: json
 
-"jwks": {
+ {
     "keys": [
       {
         "crv": "P-256",
