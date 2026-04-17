@@ -38,7 +38,7 @@ The following table summarizes entity types, their roles, and corresponding onbo
    * - Authentic Sources
      - Authoritative data providers for Digital Credential attributes
      - :ref:`entity-onboarding:Authentic Sources Registration Process`
-     - Data authority validation; API integration (e.g., PDND)
+     - Data authority validation; API integration (PDND)
    * - Credential Issuers
      - Generate and issue Digital Credentials using Authentic Source data
      - :ref:`entity-onboarding:Federation Entities Onboarding Process`
@@ -230,7 +230,7 @@ The Authentic Source registration follows a technical process as described below
      - REQUIRED. URL to privacy policy document.
    * - **organization_info.tos_uri**
      - string
-     - REQUIRED only for Private AS. URL to terms of service document.
+     - OPTIONAL. URL to terms of service document.
    * - **organization_info.organization_country**
      - string
      - REQUIRED. Two-letter ISO 3166-1 alpha-2 country code of the organization.
@@ -278,13 +278,13 @@ The Authentic Source registration follows a technical process as described below
      - REQUIRED. Defines if a claim is always available or not.
    * - **data_capabilities[].integration_method**
      - string
-     - REQUIRED. Authorization framework used for data access. MUST be ``"pdnd"`` for Public AS. Private AS MAY use other authorization frameworks such as: ``"oauth2"``, ``"api_key"``, ``"mtls"``, etc.
+     - REQUIRED. Authorization framework used for data access. MUST be ``"pdnd"``.
    * - **data_capabilities[].integration_endpoint**
      - string
-     - REQUIRED. Service access point (PDND endpoint for Public AS, API endpoint for Private AS).
+     - OPTIONAL. Service access point (PDND endpoint).
    * - **data_capabilities[].api_specification**
      - string
-     - REQUIRED. URL to `OAS3`_ specification document for this data capability.
+     - OPTIONAL. URL to `OAS3`_ specification document for this data capability.
    * - **data_capabilities[].data_provision**
      - JSON object
      - OPTIONAL. Data provision capabilities and timing specifications.
@@ -359,7 +359,7 @@ Following administrative Authentic Source to Credential Issuer authorization obt
 
 Technical integration encompasses:
 
-- **API Endpoint Configuration**: Establishment of secure API connections as specified in Authentic Source technical specifications (PDND e-services for public Authentic Sources, `OAS3`_ implementations for private Authentic Sources).
+- **API Endpoint Configuration**: Establishment of secure API connections as specified in Authentic Source technical specifications (PDND e-services).
 - **Claims Mapping Validation**: Verification that Credential Issuer implementation correctly maps Authentic Source data responses to standardized Claims Registry identifiers.
 - **Data Flow Testing**: Validation of immediate or deferred data provision capabilities and error handling mechanisms.
 - **Security Implementation**: Configuration of authentication, authorization, and audit logging as required by Authentic Source security standards.
