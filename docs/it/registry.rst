@@ -239,7 +239,7 @@ L'Organismo di Vigilanza DEVE mantenere il Registro delle Fonti Autentiche per a
 
   - **Informazioni sull'Organizzazione**: Dettagli della persona giuridica, stato normativo e ruolo autorevole in domini specifici.
   - **Capacità sui Dati**: Disponibilità dei claim dichiarati facendo riferimento alle definizioni standardizzate del Registro dei Claims con le corrispondenti classificazioni della Tassonomia.
-  - **Metodi di Integrazione**: Meccanismi tecnici di accesso (PDND per FA pubbliche, API personalizzate per FA private).
+  - **Metodi di Integrazione**: Meccanismi tecnici di accesso (PDND).
   - **Finalità Previste**: Tipologie di Credenziale supportate e contesti aziendali per il coordinamento FA-EI.
   - **Garanzia della Qualità dei Dati**: Stato autorevole, frequenza di aggiornamento e capacità di audit trail.
 
@@ -281,7 +281,8 @@ L'architettura del Registro FA supporta diversi pattern di coordinamento che rif
 
   2. **FA del Settore Privato** (Integrazione Flessibile): Le entità private forniscono dati specializzati tramite accordi personalizzati:
 
-    - **API Personalizzate**: ``"integration_method": "custom_api"`` per pattern di accesso ai dati specifici del business.
+    - **API Personalizzate**: ``"integration_method": "pdnd"`` per l'accesso ai dati specifici del business.
+    - **Conformità Normativa**: Requisiti di piena trasparenza con pubblicazione pubblica nel catalogo.
     - **Selective Disclosure**: Visibilità pubblica limitata con flussi di approvazione specifici per EI.
     - **Flessibilità Aziendale**: Integrazione su misura a supporto di casi d'uso diversificati del settore privato.
 
@@ -390,7 +391,7 @@ Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciasc
      - OBBLIGATORIO. URL del documento di informativa sulla privacy.
    * - **organization_info.tos_uri**
      - string
-     - OBBLIGATORIO solo per FA Private. URL del documento dei termini di servizio.
+     - OPZIONALE. URL del documento dei termini di servizio.
    * - **organization_info.organization_country**
      - string
      - OBBLIGATORIO. Codice paese ISO 3166-1 alpha-2 a due lettere dell'organizzazione.
@@ -438,13 +439,13 @@ Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciasc
      - OBBLIGATORIO. Definisce se un claim è sempre disponibile o meno.
    * - **data_capabilities[].integration_method**
      - string
-     - OBBLIGATORIO. Framework di autorizzazione utilizzato per l'accesso ai dati. DEVE essere ``"pdnd"`` per le FA Pubbliche. Le FA Private POSSONO utilizzare altri framework di autorizzazione come: ``"oauth2"``, ``"api_key"``, ``"mtls"``, ecc.
+     - OBBLIGATORIO. Framework di autorizzazione utilizzato per l'accesso ai dati. DEVE essere ``"pdnd"``.
    * - **data_capabilities[].integration_endpoint**
      - string
-     - OPZIONALE. Punto di accesso al servizio (endpoint PDND per FA Pubbliche, endpoint API per FA Private).
+     - OPZIONALE. Punto di accesso al servizio (endpoint PDND).
    * - **data_capabilities[].api_specification**
      - string
-     - OBBLIGATORIO. URL del documento di specifica `OAS3`_ per questa capacità dati.
+     - OPZIONALE. URL del documento di specifica `OAS3`_ per questa capacità dati.
    * - **data_capabilities[].data_provision**
      - oggetto JSON
      - OPZIONALE. Capacità di fornitura dei dati e specifiche temporali.

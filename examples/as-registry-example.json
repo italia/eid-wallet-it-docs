@@ -217,7 +217,7 @@
                     },
                     "dataset_id": "38854801",
                     "integration_endpoint": "https://api.bank.example/psd2/v1/accounts",
-                    "integration_method": "oauth2",
+                    "integration_method": "pdnd",
                     "intended_purposes": [
                         "PAYMENT_AUTHORIZATION",
                         "ELIGIBILITY_VERIFICATION"
@@ -278,7 +278,7 @@
                     },
                     "dataset_id": "38854802",
                     "integration_endpoint": "https://api.bank.example/psd2/v1/transactions",
-                    "integration_method": "oauth2",
+                    "integration_method": "pdnd",
                     "intended_purposes": [
                         "PROOF_OF_PAYMENT",
                         "RECURRING_PAYMENT_MANAGEMENT"

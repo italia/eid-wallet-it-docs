@@ -6,6 +6,7 @@
 .. _Device Check: https://developer.apple.com/documentation/devicecheck
 .. _EIDAS-ARF: https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework
 .. _EIDAS: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv%3AOJ.L_.2014.257.01.0073.01.ENG
+.. _EU_2024_1183: https://eur-lex.europa.eu/eli/reg/2024/1183/oj
 .. _Error Handling for Nonce Generation: wallet-solution.html#error-handling-for-nonce-generation
 .. _Error Handling for Wallet Attestation Issuance: wallet-solution.html#error-handling-for-wallet-attestation-issuance
 .. _Error Handling for Wallet Instance Management: wallet-solution.html#error-handling-for-wallet-instance-management
@@ -88,7 +89,7 @@
 .. _Wallet Instance Functionalities: wallet-solution.html#wallet-instance-functionalities
 .. _Wallet Instance Initialization and Registration: wallet-solution.html#wallet-instance-initialization-and-registration
 .. _Wallet Provider metadata: wallet-solution.html#wallet-provider-metadata
-.. _OIDC-RP-Metadata: https://openid.net/specs/openid-connect-rp-metadata-choices-1_0.html
+.. _OIDC-RP-Metadata: https://openid.net/specs/openid-connect-rp-metadata-choices-1_0-final.html
 .. _OAS3: https://spec.openapis.org/oas/v3.0.3
 .. _ICAO 9303: https://www.icao.int/publications/doc-series/doc-9303
 .. _BSI-03110: https://www.bundesanzeiger.de/download/BAnzAT1142010B1/03_BSI_TR-03110.pdf
