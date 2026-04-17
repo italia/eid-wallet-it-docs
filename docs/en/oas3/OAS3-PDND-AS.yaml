@@ -176,7 +176,10 @@ paths:
                   given_name: "Mario"
                   family_name: "Rossi"
                   birth_date: "1980-01-10"
-                  birth_place: "Roma"
+                  place_of_birth:
+                    country: "IT"
+                    region: "Roma"
+                    locality: "Roma"
                   tax_id_code: "TINIT-RSSMRA80A01H501Z"
                   personal_administrative_number: "12345A123A"
                 attributeClaims:
@@ -346,10 +349,8 @@ components:
               description: Date of Birth.
               type: string
               example: "1980-01-10"
-            birth_place:
-              description: Place of Birth.
-              type: string
-              example: "Roma"
+            place_of_birth:
+              $ref: "#/components/schemas/place_of_birth"
             tax_id_code:
               description: National tax identification number. REQUIRED if personal_administrative_number is absent.
               type: string
@@ -377,7 +378,23 @@ components:
                 type: string
                 example: "2025-12-31"
             additionalProperties:
-              type: string
+              oneOf:
+                - type: string
+                - type: integer
+                  format: int32
+                - type: integer
+                  format: int64
+                - type: number
+                  format: float
+                - type: number
+                  format: double
+                - type: boolean
+                - type: array
+                  items:
+                    $ref: '#/components/schemas/additionalPropertiesArray'
+                - type: object
+                  additionalProperties:
+                    $ref: '#/components/schemas/additionalPropertiesObject'
             required: [object_id]
         metadataClaims:
           description: List of Metadata of Attribute.
@@ -435,6 +452,56 @@ components:
         object_id:
           type: string
           description: Unique identifier of the Credential dataset. If this parameter is present only the indicated dataset is returned.
+    additionalPropertiesArray:
+      type: array
+      items:
+        oneOf:
+        - type: string
+        - type: integer
+          format: int32
+        - type: integer
+          format: int64
+        - type: number
+          format: float
+        - type: number
+          format: double
+        - type: boolean
+        - type: object
+          additionalProperties:
+            $ref: '#/components/schemas/additionalPropertiesObject'
+    additionalPropertiesObject:
+      type: object
+      oneOf:
+        - type: string
+        - type: integer
+          format: int32
+        - type: integer
+          format: int64
+        - type: number
+          format: float
+        - type: number
+          format: double
+        - type: boolean
+    place_of_birth:
+      description: Place of Birth.
+      type: object
+      properties:
+        country:
+          description: "alpha-2 country code as specified in ISO 3166-1"
+          type: string
+          example: "IT"
+        region:
+          description: "Name of a state, province, district, or local area"
+          type: string
+          example: "Roma"
+        locality:
+          description: "Name of a municipality, city, town, or village"
+          type: string
+          example: "Roma"
+      anyOf:
+        - required: [country]
+        - required: [region]
+        - required: [locality]
     ProblemDetails:
       type: object
       description: RFC7807-compliant problem details object for error responses.

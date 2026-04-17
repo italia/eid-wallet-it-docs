@@ -47,11 +47,9 @@ Authentic Source registration allows data providers to establish their authorita
 
 Authentic Source entities MUST undergo registration procedures that validate their data authority, declare their available claims from the standardized Claims Registry, and establish technical integration mechanisms. Authentic Source entities specify intended use cases (formally ``purposes``) that determine catalog eligibility per Supervisory Body policies. 
 
-Public Authentic Sources MUST leverage PDND integration to provide government data through standardized national infrastructure.
+Public and Private Authentic Sources MUST leverage PDND integration to provide government data through standardized national infrastructure.
 
-Private Authentic Sources MAY establish custom service interfaces that accommodate specific organizational or regulatory requirements. 
-
-Both pathways MUST assure data quality standards and establish audit trails for all data provisioning activities.
+This pathway MUST assure data quality standards and establish audit trails for all data provisioning activities.
 
 **AS-CI Coordination Process**: Following AS registration, Credential Issuers identify suitable AS entities through the AS Registry and request integration authorization during the administrative registration phase. For regulatory mandates, authorization MUST be automatic. Otherwise, Authentic Sources entities evaluate and authorize Credential Issuers requests based on business and technical criteria. Following administrative authorization, technical integration procedures establish the operational data access relationships before Credential type catalog publication.
 
@@ -169,7 +167,7 @@ The IT-Wallet Registry system coordinates all registrations through five main co
 The following journey maps illustrate two distinct Credential scenarios:
 
     - **Public Catalog Scenario**: Mobile Driving License (mDL) provided for a public discovery via Credential Catalog.
-    - **Private Credential Scenario**: Corporate Employee Badge from Company (Private AS, and therefore provided for discovery via Credential Offer only).
+    - **Private Credential Scenario**: Corporate Employee Badge from Company (Private AS, provided for a public discovery via Credential Catalog but obtainable via Credential Offer only).
 
 Authentic Source Operator Journey
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -180,17 +178,17 @@ From the Authentic Source operator perspective, the onboarding process begins wi
 
     - **Claims Declaration**: Selects standardized claims (``given_name``, ``family_name``, ``driving_privileges``, etc. ) from Claims Registry.
     - **Taxonomy Classification**: Domain ``MOBILITY_TRAVEL``, Purpose ``DRIVING_RIGHTS``.
-    - **Use Case**: Public service - driving authorization verification (eligible for Credential Catalog).
-    - **Integration**: e-Service PDNDintegration following government standards (see :ref:`e-service-pdnd:e-Service PDND`).
+    - **Use Case**: Public service - driving authorization verification.
+    - **Integration**: e-Service PDND integration following government standards (see :ref:`e-service-pdnd:e-Service PDND`).
     - **Catalog Outcome**: mDL becomes publicly discoverable after CI integration.
 
 **Example - Corporate AS (Employee Badge Scenario)**:
 
     - **Claims Declaration**: Selects claims (``given_name``, ``family_name``, ``employee.job_title``, etc.) from Claims Registry.
     - **Taxonomy Classification**: Domain ``MEMBERSHIP``, Purpose ``ASSOCIATION``.
-    - **Use Case**: Private corporate access control (non-eligible for Credential Catalog).
-    - **Integration**: Custom API for Credential Issuer integration.
-    - **Catalog Outcome**: Badge remains private, available only via Credential Offer.
+    - **Use Case**: Private corporate access control.
+    - **Integration**: e-Service PDND integration following government standards (see :ref:`e-service-pdnd:e-Service PDND`).
+    - **Catalog Outcome**: Badge becomes publicly discoverable but it is available for the issuance only via Credential Offer.
 
 Critical phases include administrative verification by the Supervisory Body (which involves regulatory compliance checks outside the technical scope) and technical validation. The process concludes with registration in the AS Registry, making the declared claims discoverable by Credential Issuers for integration requests. The integration requests can be also send by the Authentic Sources to a specific Credential Issuers.
  
@@ -207,7 +205,7 @@ Credential Issuer operators start by discovering available Authentic Source enti
 
     - **AS Discovery** or **AS Integration Request**: Identifies the Authentic Source providing mDL attributes in AS Registry with required driving license claims. Alternatively, Credential Issuer receives the integration request directly by mDL Authentic Source.
     - **Integration Request**: Automatic approval due to regulatory mandate. 
-    - **Technical Setup**: e-Service PDNDintegration following government standards (see :ref:`e-service-pdnd:e-Service PDND`).
+    - **Technical Setup**: e-Service PDND integration following government standards (see :ref:`e-service-pdnd:e-Service PDND`).
     - **Catalog Publication**: mDL automatically published in the Credential Catalog.
     - **User Access**: Citizens discover mDL through a public catalog in Wallet.
 
@@ -215,20 +213,15 @@ Credential Issuer operators start by discovering available Authentic Source enti
 
     - **AS Discovery** or **AS Integration Request**: Identifies the Authentic Source in AS Registry with employee access claims. Alternatively, Credential Issuer receives the integration request by the Authentic Source.
     - **Integration Request**: Requires recipient approval.
-    - **Technical Setup**: Custom API integration with authentication.
-    - **Catalog Publication**: Badge excluded from public catalog per supervisory policy.
+    - **Technical Setup**: e-Service PDND integration following government standards (see :ref:`e-service-pdnd:e-Service PDND`).
+    - **Catalog Publication**: Badge automatically published in the Credential Catalog.
     - **User Access**: Employees receive badges only via direct Credential Offer from company systems.
-
-The technical setup phase offers two distinct integration pathways depending on the Authentic Source type:
-
-    - **Public AS Integration**: Uses the PDND platform for accessing government data through standardized APIs.
-    - **Private AS Integration**: Establishes direct API connections with custom endpoints provided by private organizations.
 
 Following successful integration testing and Authentic Source approval, the Credential Issuer is registered in the Federation Registry as a trusted Entity, enabling actual Credential issuance to end-users. 
 
 .. warning::
 
-    This step activates Credential availability for end-users. Public Credentials become discoverable through the catalog, while other Credentials remain available only via direct Credential Offers.
+    This step activates Credential availability for end-users. Public and Private Credentials become discoverable through the catalog, but the Private Credentials will be available only via direct Credential Offers.
 
 Wallet Provider Operator Journey
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -269,11 +262,9 @@ Relying Party operators begin by identifying which EAA types are required for th
     - **Authorization Scope**: Granted access to ``MEMBERSHIP`` domain, ``ASSOCIATION`` purpose.
     - **Credential Discovery**: Badge available only via private Credential Offer (non-eligible for Credential Catalog).
 
-
 Technical integration focuses on developing authentication flows that can verify Digital Credentials presented by Users. This includes implementing cryptographic verification mechanisms and establishing secure communication channels with the federation infrastructure.
 
 Service authorization by the Supervisory Body MUST involve policy-based evaluation that considers organizational type (private vs public administration), business sector classification, and legitimate service requirements. The authorization process grants specific operational scopes that define which Credential domains and purposes the Relying Party can request. Following approval, the Relying Party is registered in the Federation Registry with clearly defined authorization boundaries for Digital Credentials and User's attributes acceptance.
-
 
 User Experience Journey
 -------------------------------

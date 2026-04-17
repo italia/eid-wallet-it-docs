@@ -1,6 +1,5 @@
 .. include:: ../common/common_definitions.rst
 
-
 Registry Infrastructure
 ==========================
 
@@ -116,8 +115,6 @@ JWT payload structure (when decoded):
     "content_negotiation": ["application/json", "application/jwt"]
   }
 
-
-
 Claims Registry
 ---------------
 
@@ -140,7 +137,6 @@ The Claims Registry MUST ensure:
 .. note::
   The Claims Registry defines semantic properties of individual attributes, but MUST NOT specify selective disclosure capabilities. Selective disclosure depends on Credential format implementations (SD-JWT, mDocs), issuer technical configurations, and presentation context. These capabilities are specified at the Credential type level within the Digital Credentials Catalog and implemented during Credential presentation flows.
 
-
 Claims Registry Usage
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -157,7 +153,6 @@ The Claims Registry MUST support the complete ecosystem lifecycle:
   - **Credential Issuance**: Claims definitions ensure consistent data representation across different Credential types.
   - **Presentation Requests**: RPs reference claims for schema validation and authorization verification in both credential-specific and credential-agnostic scenarios.
   - **Policy Enforcement**: Authorization policies leverage domain/purpose classifications for access control.
-
 
 Claims Registry Structure
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -186,7 +181,6 @@ The Claims Registry maintains language-neutral, technical definitions for semant
        * **version**: Version of the localization bundle format.
    * - **claims**
      - REQUIRED. A JSON Object where each key is a claim name and each value is a JSON Object describing that claim. Each claim object contains the parameters defined in the "Claim Entry Parameters" table below.
-
 
 .. list-table:: Claim Entry Parameters
    :class: longtable
@@ -245,7 +239,7 @@ The Supervisory Body MUST maintain the Authentic Source Registry to enable coord
 
   - **Organization Information**: Legal entity details, regulatory status, and authoritative role within specific domains.
   - **Data Capabilities**: Declared claims availability referencing standardized definitions from the Claims Registry with corresponding Taxonomy classifications.
-  - **Integration Methods**: Technical access mechanisms (PDND for public AS, custom APIs for private AS).
+  - **Integration Methods**: Technical access mechanisms (PDND).
   - **Intended Purposes**: Supported Credential types and business contexts for AS-CI coordination.
   - **Data Quality Assurance**: Authoritative status, update frequency, and audit trail capabilities.
 
@@ -287,7 +281,8 @@ The AS Registry architecture supports different coordination patterns reflecting
 
   2. **Private Sector AS** (Flexible Integration): Private entities provide specialized data through custom arrangements:
 
-    - **Custom APIs**: ``"integration_method": "custom_api"`` for business-specific data access patterns.
+    - **Custom APIs**: ``"integration_method": "pdnd"``  for business-specific data access.
+    - **Regulatory Compliance**: Full transparency requirements with public catalog publication.
     - **Selective Disclosure**: Limited public visibility with CI-specific approval workflows.
     - **Business Flexibility**: Tailored integration supporting diverse private sector use cases.
 
@@ -314,7 +309,6 @@ Each Authentic Source MUST be assigned a unique identifier that follows the HTTP
 - **organization_domain**: DNS domain controlled by the organization
 - **optional_path**: Additional path component for specific services or departments
 
-
 The AS identifier MUST follow these normative rules:
 
 1. **HTTPS Protocol**: MUST use HTTPS scheme for security and trust verification
@@ -329,12 +323,10 @@ The AS identifier MUST follow these normative rules:
 - ``https://registry.anpr.example``: Public - National Registry of Resident Population
 - ``https://api.bank.example/auth-source``: Private - Example Bank Financial Services
 
-
 Authentic Source Registry Parameters
 """"""""""""""""""""""""""""""""""""""
 
 The Authentic Source Registry MUST contain the following parameters for each registered Authentic Source:
-
 
 .. list-table:: First-level Fields of the Authentic Source Registry
    :class: longtable
@@ -358,7 +350,6 @@ The Authentic Source Registry MUST contain the following parameters for each reg
        * **version**: Version of the localization bundle format.
    * - **authentic_sources**
      - REQUIRED. A JSON Array where each entry is a JSON Object representing an Authentic Source entity. Each object contains the parameters defined in the "Authentic Sources Parameters" table below, including entity identification, organizational information, data capabilities, and integration methods.
-
 
 .. list-table:: Authentic Sources Parameters
    :class: longtable
@@ -391,7 +382,7 @@ The Authentic Source Registry MUST contain the following parameters for each reg
      - REQUIRED. URL pointing to the organization's homepage.
    * - **organization_info.contacts**
      - String Array
-     - REQUIRED. Array of technical/administrative contact email addresses.
+     - REQUIRED. Array of contact email addresses for at least one user-support, one application, and one systems specialist.
    * - **organization_info.dpa_contact**
      - string
      - REQUIRED. An e-mail address of Authentic Source DPA.
@@ -400,7 +391,7 @@ The Authentic Source Registry MUST contain the following parameters for each reg
      - REQUIRED. URL to privacy policy document.
    * - **organization_info.tos_uri**
      - string
-     - REQUIRED only for Private AS. URL to terms of service document.
+     - OPTIONAL. URL to terms of service document.
    * - **organization_info.organization_country**
      - string
      - REQUIRED. Two-letter ISO 3166-1 alpha-2 country code of the organization.
@@ -410,12 +401,18 @@ The Authentic Source Registry MUST contain the following parameters for each reg
    * - **organization_info.logo_uri#integrity**
      - string
      - CONDITIONAL. Cryptographic digest of the logo image resource for integrity verification. REQUIRED if ``logo_uri`` is present. Format: ``{digest_method}-{digest_value}`` (e.g., ``"sha-256-abc123..."``).
+   * - **organization_info.logo_alt_text_l10n_id**
+     - string
+     - OPTIONAL. Alternative text for the organization's logo image.
    * - **organization_info.logo_extended_uri**
      - string
      - OPTIONAL. URL to the organization's extended logo image.
    * - **organization_info.logo_extended_uri#integrity**
      - string
      - CONDITIONAL. Cryptographic digest of the extended logo image resource for integrity verification. REQUIRED if ``logo_extended_uri`` is present. Format: ``{digest_method}-{digest_value}`` (e.g., ``"sha-256-abc123..."``).
+   * - **organization_info.logo_extended_alt_text_l10n_id**
+     - string
+     - OPTIONAL. Alternative text for the organization's extended logo image.
    * - **data_capabilities**
      - JSON Objects Array
      - REQUIRED. Array containing data capability specifications.
@@ -424,7 +421,7 @@ The Authentic Source Registry MUST contain the following parameters for each reg
      - REQUIRED. The unique identifier of the dataset within the scope of the Authentic Source, which MAY be used as a query parameter for the ``GetAttributeClaims`` service.
    * - **data_capabilities[].data_origin_l10n_id**
      - string
-     - OPTIONAL. Localization key referencing the human-readable name of the data origin or department providing the data (e.g., ``authentic_source1.dataset1.origin``).
+     - REQUIRED. Localization key referencing the human-readable name of the data origin or department providing the data (e.g., ``authentic_source1.dataset1.origin``).
    * - **data_capabilities[].intended_purposes**
      - String Array
      - REQUIRED. Business purposes served, using taxonomy purpose identifiers (e.g., ``["IDENTITY_VERIFICATION", "DRIVING_RIGHTS_VERIFICATION"]``).
@@ -442,13 +439,13 @@ The Authentic Source Registry MUST contain the following parameters for each reg
      - REQUIRED. Defines if a claim is always available or not.
    * - **data_capabilities[].integration_method**
      - string
-     - REQUIRED. Authorization framework used for data access. MUST be ``"pdnd"`` for Public AS. Private AS MAY use other authorization frameworks such as: ``"oauth2"``, ``"api_key"``, ``"mtls"``, etc.
+     - REQUIRED. Authorization framework used for data access. MUST be ``"pdnd"``.
    * - **data_capabilities[].integration_endpoint**
      - string
-     - REQUIRED. Service access point (PDND endpoint for Public AS, API endpoint for Private AS).
+     - OPTIONAL. Service access point (PDND endpoint).
    * - **data_capabilities[].api_specification**
      - string
-     - REQUIRED. URL to `OAS3`_ specification document for this data capability.
+     - OPTIONAL. URL to `OAS3`_ specification document for this data capability.
    * - **data_capabilities[].data_provision**
      - JSON object
      - OPTIONAL. Data provision capabilities and timing specifications.
@@ -479,18 +476,18 @@ The Authentic Source Registry MUST contain the following parameters for each reg
    * - **data_capabilities[].logo_uri#integrity**
      - string
      - CONDITIONAL. Cryptographic digest of the logo image resource for integrity verification. REQUIRED if ``logo_uri`` is present. Format: ``{digest_method}-{digest_value}`` (e.g., ``"sha-256-abc123..."``).
-   * - **data_capabilities[].background_image**
-     - JSON object
-     - OPTIONAL. Object containing information about the background image to be displayed together with the data. The object contains ``uri`` and ``uri#integrity`` parameters.
-   * - **data_capabilities[].watermark_image**
-     - JSON object
-     - OPTIONAL. Object containing information about the watermark image to be displayed together with the data. The object contains ``uri`` and ``uri#integrity`` parameters.
+   * - **data_capabilities[].logo_alt_text_l10n_id**
+     - string
+     - OPTIONAL. Alternative text for the organization's logo image.
    * - **data_capabilities[].background_color**
      - string
      - OPTIONAL. String value of the background color related to be displayed together with the data.
    * - **data_capabilities[].contacts**
      - String Array
-     - OPTIONAL. Array of customer service contact email addresses.
+     - OPTIONAL. Array of customer service contacts or user support channels (e.g., email address).
+  
+.. note::
+  For further details on the required features and the expected outcome in terms of user experience, see the Section :ref:`functionalities:Issuance from the Wallet Instance Catalog` for the parameter `data_capabilities.user_information` and Section :ref:`functionalities:Focus on Electronic Attestations of Attributes` for the parameters `organization_info.logo_uri`, `organization_info.logo_extended_uri`, `data_capabilities.logo_uri`, `data_capabilities.background_color` and `data_capabilities.available_claims.order`.
 
 AS Registry Example
 """""""""""""""""""
@@ -569,7 +566,6 @@ The Digital Credential Catalog aims to:
   5. Ensure trust in the ecosystem through verifiable and trustworthy information.
   6. Provide transparency on the ecosystem of available Digital Credentials.
 
-
 The main Entities involved in the Digital Credential Catalog are:
 
   - **Trust Anchor**: It manages and maintains the Digital Credential Catalog, guaranteeing its authenticity and integrity.
@@ -580,16 +576,13 @@ The main Entities involved in the Digital Credential Catalog are:
   - **Users**: The Users who indirectly use the Digital Credentials Catalog through their Wallet Instances to discover and request Digital Credentials.
   - **Authentic Sources**: The Entities that hold the original data that is attested in the Digital Credentials. They provide support to Issuers in registering the Digital Credentials in the Catalog.
 
-
 .. _fig_catalog:
 .. plantuml:: plantuml/credential-catalog-entities.puml
     :width: 99%
     :alt: The figure illustrates the Digital Credential Entities.
     :caption: `Entity-Relationship diagram of Digital Credential Catalog. <https://www.plantuml.com/plantuml/svg/ZLJ1Rkis4BpxAxP6WQP00X-QtjeWgPEsFXGmuXGz6ZIvbeb8fCfTEbM__YrDELAUb6ST34khuSnmESjxOXKuLYKysiAoAc4PqA1ZcnwL57mH4Pwam1Pfzfrrkem6uPVbxM9vkrtwglPEy7UpsG_mY7lh43RhvzNBqwO7vbWh4tvQQ5zLtjsDVDbxnpVg3SbNUFFpGcDWkxTQCKv06p6wKpG5MdhzEW4M2GDDyUcBAJ1XEsAO07p5PgAx2J1hjbe5Cm69_-c3SWLkLSbJ-etqohwUW7nJPOaNAHVM4LkER5CuPhFtL5tfSmIlOJvCA7KHdGlW6GjB79hql1H4471eQ-3t85v07PKjrQv46A6JXTzJ7IpZh_DpfkO_Yg4r1lBkAlLTkF-MlvE6PVi_EeAtWmTZINivP53EYEg_4OalQIG-uU-soo4IFpXzy4dd9Rr1VarwwVUNSgf0EgbKoZgM7m4Vy9i3t1ULY8dcfY76wefYBT6qv4FpcpUD26ow2gJIITGxopxGkPig7HJK1qK8w2W6wmeWrFB0pScQQ1sLRlgwlP7kz2rHn42Zfmkh_34vU8WiJP1k6y3sBf9DAuP4SF4isq7eP0EMZNXUgv2OKdHo0ThAF9_ogQ_l4GJsK2Wf1R1kxqELsw1sFZBeSUN-O7NoUIhMmH-joRl_vrI1jjJkMMia6dgmZh48Yh4lcgeUCl471xdKQIlfP5gZDpu64KX2vnAqjQJ-foyD-22DTTBOD0sWc54uZ6XTx7Wtq6c0fBqVijrjg8lqTPVd7A6uAoqTiflVHQMD7JfJUm4Ahz0E4_nnXbQEPQ5c6LBBX_4rVJkVXZtuT1gPe8jjVs6-VZ2CzGQiQvSE-tyc6pSxo6fVyezFuZXc8TCDizVnTP7pO4_BzatlmjG3hdmV3XZJw12qaLuvOkKqGfq11dPDNhvzR0dw3bREs82Qo-RzHgN-bKfVsRYNECIg_080>`_
 
-
 The following table summarizes the main information that MUST be provided by the Digital Credential Catalog:
-
 
 .. list-table:: Digital Credential Catalog - Main information
    :class: longtable
@@ -803,12 +796,14 @@ Additional Domains, Classes, specific Credentials, and verification Purposes **M
      - 
        * Employment Documents
        * Employment Status
+       * Employment Affiliation
      - 
        * Digital Employment Contract
        * Curriculum Vitae (CV)
        * Residence Permit
        * Employment Status Certificate
        * INPS Contribution Record
+       * Physical Access Badge
 
    * - *MOBILITY AND TRAVEL*
      - Credentials that attest mobility rights, vehicle-related status, and travel-related entitlements.
@@ -828,7 +823,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes **M
        * Vehicle Inspection Certificate
        * Green Card / International Insurance
        * Public Transport Pass
-       * Telepass Subscription
+       * Road Charging Subscription
        * Digital Travel Credential
        * Travel Tickets (air, train, etc.)
        * Travel Insurance Policy
@@ -851,14 +846,6 @@ Additional Domains, Classes, specific Credentials, and verification Purposes **M
        * Healthcare Bonus Credential
        * Mental Health Support Voucher
        * Sports and Physical Activity Bonus
-
-   * - *AUTHENTICATION*
-     - Credentials that attest authorisation to access restricted physical or digital spaces, services or resources.
-     - 
-       * Access
-     - 
-       * Physical Access Badge
-       * Digital Access Credential
 
 .. list-table:: Table 2: Mapping between Credential Classes and Purposes
    :class: longtable
@@ -992,7 +979,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes **M
        * Access to healthcare bonuses
        * Use of mental health vouchers
        * Use of sports vouchers
-   * - Access
+   * - Employment Affiliation
      - 
        * Access permit verification
 
@@ -1021,7 +1008,6 @@ Digital Credentials Catalog Structure
 
 Digital Credentials Catalog contents is secured in a JWS that contains the following JOSE header parameters:
 
-
 .. _table_catalog_parameters:
 .. list-table::
    :class: longtable
@@ -1049,7 +1035,6 @@ Digital Credentials Catalog contents is secured in a JWS that contains the follo
 
 The JWS payload contains the following parameters:
 
-
 .. list-table:: First-level Fields of the Digital Credentials Catalog
    :class: longtable
    :header-rows: 1
@@ -1069,7 +1054,6 @@ The JWS payload contains the following parameters:
      - REQUIRED. Array containing Digital Credential definitions.
 
 Each element of the ``credentials`` array contains at least the following information:
-
 
 .. _table_catalog_parameters_first_level:
 .. list-table:: First-level Fields of Each Credential Entry
@@ -1199,7 +1183,7 @@ The Taxonomy provides, in a single resource, the hierarchical classification sys
 
 The taxonomy maintains a four level hierarchical structure:
 
-- **Domains**: Top-level classification representing broad functional areas (e.g., IDENTITY, HEALTH, FINANCIAL, AUTHENTICATION)
+- **Domains**: Top-level classification representing broad functional areas (e.g., IDENTITY, HEALTH, FINANCIAL)
 - **Class (Credential Family)**: Family of Credentials sharing similar function, structure, or legal meaning (e.g., Identification Documents, Civil Status Certificates, Professional Licenses, Access)
 - **Credential Type**: Specific Credential definition issued by an authority (e.g., Digital Travel Credential, Birth Certificate, Mobile Driving License).
 - **Purpose (Verification Intent)**: Verification objectives that a Credential can satisfy (e.g., Identity Verification, Age Verification, Eligibility for specific services, Access permit verification).
@@ -1249,7 +1233,7 @@ The Taxonomy is accessible through the dedicated taxonomy endpoint as defined in
    * - **domains**
      - REQUIRED. Array of Domain objects, each containing:
 
-       * **id**: Unique Domain identifier in SCREAMING_SNAKE_CASE (e.g., ``IDENTITY``, ``AUTHENTICATION``).
+       * **id**: Unique Domain identifier in SCREAMING_SNAKE_CASE (e.g., ``IDENTITY``).
        * **name_l10n_id**: Localization key for the domain name (e.g., ``domain.identity.name``).
        * **description_l10n_id**: Localization key for the domain description (e.g., ``domain.identity.description``).
        * **classes**: Array of Class objects. Each class contains ``id``, ``name_l10n_id``, and ``supported_purposes`` (array of purpose ID strings).
@@ -1310,7 +1294,6 @@ The **Schema Registry** is the authoritative inventory of all known and accepted
 
 The Schema Registry is accessible via the ``.well-known/it-wallet-registry`` discovery endpoint under the `schema_registry` field. It allows for the discovery of schema URIs and their cryptographic integrity checks.
 
-
 .. list-table:: First-level Fields of the Schema Registry
    :class: longtable
    :widths: 30 70
@@ -1324,7 +1307,6 @@ The Schema Registry is accessible via the ``.well-known/it-wallet-registry`` dis
      - REQUIRED. The timestamp indicating when the list was last updated (e.g., ``2025-03-15T12:00:00Z``).
    * - **schemas**
      - REQUIRED. A JSON Array where each entry is a JSON Object representing a Credential Schema definition. Each object contains the parameters defined in the "Schema Definition Parameters" table below, including schema identification, format specifications, URIs, and integrity verification data.
-
 
 .. list-table:: Schema Definition Parameters
    :widths: 25 75
@@ -1369,10 +1351,8 @@ The registry components are interconnected and work together to support the comp
 4. **Federation Registry** ↔ **All Components**: Provides cryptographic trust validation for all registry operations and entity authentication.
 5. **Schema Registry** ↔ **Issuer/RPs**: Provides the verifiable link to all known Credential format specifications used in the ecosystem.
 
-
 Registry Infrastructure Usage Journeys
 ------------------------------------------
-
 
 The components of the Registry Infrastructure are designed to support various operational phases of the IT-Wallet ecosystem, each involving specific interactions between entities. 
 The main Journeys below illustrate the interactions with the Registry Infrastructure.
@@ -1382,7 +1362,7 @@ Catalog Browsing
 
 This *Catalog Browsing* journey supports Users (both human users via a **Wallet Instance** and automated systems like **Relying Parties** or web portals) in discovering and selecting available Digital Credentials.
 
-1.  **Accessing the Discovery Endpoint**: The entity (e.g., a Wallet Provider or informational portal) accesses the `Registry Discovery Endpoint` (``.well-known/it-wallet-registry``) to obtain the URI of the **Digital Credentials Catalog** ad of the **Taxonomy**.
+1.  **Accessing the Discovery Endpoint**: The entity (e.g., a Wallet Provider or informational portal) accesses the `Registry Discovery Endpoint` (``.well-known/it-wallet-registry``) to obtain the URI of the **Digital Credentials Catalog** and of the **Taxonomy**.
 
 2.  **Navigation and Selection**:
 

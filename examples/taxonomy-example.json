@@ -212,6 +212,13 @@
                         "CONTRIBUTION_RECORDS_VERIFICATION",
                         "EMPLOYMENT_BENEFITS_ELIGIBILITY"
                     ]
+                },
+                {
+                    "id": "EMPLOYMENT_AFFILIATION",
+                    "name_l10n_id": "class.employment_affiliation.name",
+                    "supported_purposes": [
+                        "ACCESS_PERMIT"
+                    ]
                 }
             ],
             "description_l10n_id": "domain.employment.description",
@@ -309,20 +316,6 @@
             "description_l10n_id": "domain.bonuses.description",
             "id": "BONUSES",
             "name_l10n_id": "domain.bonuses.name"
-        },
-        {
-            "classes": [
-                {
-                    "id": "ACCESS",
-                    "name_l10n_id": "class.access.name",
-                    "supported_purposes": [
-                        "ACCESS_PERMIT"
-                    ]
-                }
-            ],
-            "description_l10n_id": "domain.authentication.description",
-            "id": "AUTHENTICATION",
-            "name_l10n_id": "domain.authentication.name"
         }
     ],
     "purposes": [

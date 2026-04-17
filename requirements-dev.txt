@@ -13,12 +13,12 @@ Jinja2==3.1.6
 MarkupSafe==2.1.5
 packaging==24.1
 pbr==6.0.0
-Pygments==2.18.0
+Pygments==2.20.0
 pyparsing==3.1.2
 pytz==2024.1
 PyYAML==6.0.1
 recommonmark==0.7.1
-requests==2.32.4
+requests==2.33.0
 restructuredtext-lint==1.4.0
 snowballstemmer==2.2.0
 Sphinx==7.4.5
@@ -39,3 +39,4 @@ sphinxcontrib-plantuml==0.30
 pillow==12.1.1
 svglib==1.5.1
 reportlab==4.4.0
+jsonschema>=4.0.0

@@ -438,7 +438,7 @@ In this section are defined the main metadata types mapped to the roles of the e
 Metadata of federation_entity Leaves
 ------------------------------------
 
-The *federation_entity* metadata for Leaves MUST contain the following claims.
+The *federation_entity* metadata for Leaves contain the following claims.
 
 
 .. list-table::
@@ -449,19 +449,19 @@ The *federation_entity* metadata for Leaves MUST contain the following claims.
   * - **Claim**
     - **Description**
   * - **organization_name**
-    - See `OID-FED`_ Section 5.2.2
+    - REQUIRED. See `OID-FED`_ Section 5.2.2
   * - **homepage_uri**
-    - See `OID-FED`_ Section 5.2.2
+    - REQUIRED. See `OID-FED`_ Section 5.2.2
   * - **policy_uri**
-    - See `OID-FED`_ Section 5.2.2
+    - REQUIRED. See `OID-FED`_ Section 5.2.2
   * - **logo_uri**
-    - URL of the entity's logo; it MUST be in SVG format. See `OID-FED`_ Section 5.2.2
+    - REQUIRED. URL of the entity's logo; it MUST be in SVG format. See `OID-FED`_ Section 5.2.2
   * - **contacts**
-    - Institutional verified email address (PEC) of the entity. See `OID-FED`_ Section 5.2.2
+    - REQUIRED. Institutional verified email address (PEC) of the entity. See `OID-FED`_ Section 5.2.2
   * - **federation_resolve_endpoint**
-    - See `OID-FED`_ Section 8.3
+    - OPTIONAL. See `OID-FED`_ Section 8.3
   * - **tos_uri**
-    - [OPTIONAL] URL string that points to a human-readable terms of service document for the client that describes a contractual relationship between the end-user and the client that the end-user accepts when authorizing the client. See `OID-FED`_.
+    - OPTIONAL. URL string that points to a human-readable terms of service document for the client that describes a contractual relationship between the end-user and the client that the end-user accepts when authorizing the client. See `OID-FED`_.
 
 
 Subordinate Statements

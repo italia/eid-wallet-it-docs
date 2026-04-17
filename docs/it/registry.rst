@@ -1,6 +1,5 @@
 .. include:: ../common/common_definitions.rst
 
-
 Infrastruttura del Registro
 ===========================
 
@@ -116,8 +115,6 @@ Struttura del payload JWT (in forma decodificata):
     "content_negotiation": ["application/json", "application/jwt"]
   }
 
-
-
 Registro dei Claims
 -------------------
 
@@ -140,7 +137,6 @@ Il Registro dei Claims DEVE garantire:
 .. note::
   Il Registro dei Claims definisce le proprietà semantiche dei singoli attributi, ma NON DEVE specificare le capacità di selective disclosure. La selective disclosure dipende dalle implementazioni del formato della Credenziale (SD-JWT, mDocs), dalle configurazioni tecniche dell'emittente e dal contesto di presentazione. Queste capacità sono specificate a livello di tipologia di Credenziale all'interno del Catalogo delle Credenziali Digitali e implementate durante i flussi di presentazione delle Credenziali.
 
-
 Utilizzo del Registro dei Claims
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -157,7 +153,6 @@ Il Registro dei Claims DEVE supportare il ciclo di vita completo dell'ecosistema
   - **Emissione di Credenziali**: Le definizioni dei claim garantiscono una rappresentazione coerente dei dati tra le diverse tipologie di Credenziale.
   - **Richieste di Presentazione**: Le RP fanno riferimento ai claim per la validazione degli schemi e la verifica dell'autorizzazione in scenari sia credential-specific che credential-agnostic.
   - **Applicazione delle Politiche**: Le politiche di autorizzazione sfruttano le classificazioni per dominio/finalità per il controllo degli accessi.
-
 
 Struttura del Registro dei Claims
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -186,7 +181,6 @@ Il Registro dei Claims mantiene definizioni tecniche neutrali rispetto alla ling
        * **version**: Versione del formato del bundle di localizzazione.
    * - **claims**
      - OBBLIGATORIO. Un Oggetto JSON in cui ogni chiave è il nome di un claim e ogni valore è un Oggetto JSON che descrive tale claim. Ogni oggetto claim contiene i parametri definiti nella tabella "Parametri di una Voce di Claim" di seguito.
-
 
 .. list-table:: Parametri di una Voce di Claim
    :class: longtable
@@ -245,7 +239,7 @@ L'Organismo di Vigilanza DEVE mantenere il Registro delle Fonti Autentiche per a
 
   - **Informazioni sull'Organizzazione**: Dettagli della persona giuridica, stato normativo e ruolo autorevole in domini specifici.
   - **Capacità sui Dati**: Disponibilità dei claim dichiarati facendo riferimento alle definizioni standardizzate del Registro dei Claims con le corrispondenti classificazioni della Tassonomia.
-  - **Metodi di Integrazione**: Meccanismi tecnici di accesso (PDND per FA pubbliche, API personalizzate per FA private).
+  - **Metodi di Integrazione**: Meccanismi tecnici di accesso (PDND).
   - **Finalità Previste**: Tipologie di Credenziale supportate e contesti aziendali per il coordinamento FA-EI.
   - **Garanzia della Qualità dei Dati**: Stato autorevole, frequenza di aggiornamento e capacità di audit trail.
 
@@ -287,7 +281,8 @@ L'architettura del Registro FA supporta diversi pattern di coordinamento che rif
 
   2. **FA del Settore Privato** (Integrazione Flessibile): Le entità private forniscono dati specializzati tramite accordi personalizzati:
 
-    - **API Personalizzate**: ``"integration_method": "custom_api"`` per pattern di accesso ai dati specifici del business.
+    - **API Personalizzate**: ``"integration_method": "pdnd"`` per l'accesso ai dati specifici del business.
+    - **Conformità Normativa**: Requisiti di piena trasparenza con pubblicazione pubblica nel catalogo.
     - **Selective Disclosure**: Visibilità pubblica limitata con flussi di approvazione specifici per EI.
     - **Flessibilità Aziendale**: Integrazione su misura a supporto di casi d'uso diversificati del settore privato.
 
@@ -314,7 +309,6 @@ A ciascuna Fonte Autentica DEVE essere assegnato un identificatore univoco che s
 - **organization_domain**: Dominio DNS controllato dall'organizzazione
 - **optional_path**: Componente di percorso aggiuntivo per servizi o dipartimenti specifici
 
-
 L'identificatore FA DEVE seguire le seguenti regole normative:
 
 1. **Protocollo HTTPS**: DEVE utilizzare lo schema HTTPS per sicurezza e verifica della fiducia
@@ -329,12 +323,10 @@ L'identificatore FA DEVE seguire le seguenti regole normative:
 - ``https://registry.anpr.example``: Pubblico - Anagrafe Nazionale della Popolazione Residente
 - ``https://api.bank.example/auth-source``: Privato - Servizi Finanziari Banca Esempio
 
-
 Parametri del Registro delle Fonti Autentiche
 """"""""""""""""""""""""""""""""""""""""""""""
 
 Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciascuna Fonte Autentica registrata:
-
 
 .. list-table:: Campi di Primo Livello del Registro delle Fonti Autentiche
    :class: longtable
@@ -358,7 +350,6 @@ Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciasc
        * **version**: Versione del formato del bundle di localizzazione.
    * - **authentic_sources**
      - OBBLIGATORIO. Un Array JSON in cui ogni voce è un Oggetto JSON che rappresenta un'entità Fonte Autentica. Ogni oggetto contiene i parametri definiti nella tabella "Parametri delle Fonti Autentiche" di seguito, inclusi identificazione dell'entità, informazioni organizzative, capacità sui dati e metodi di integrazione.
-
 
 .. list-table:: Parametri delle Fonti Autentiche
    :class: longtable
@@ -391,7 +382,7 @@ Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciasc
      - OBBLIGATORIO. URL della homepage dell'organizzazione.
    * - **organization_info.contacts**
      - Array di stringhe
-     - OBBLIGATORIO. Array di indirizzi email di contatto tecnico/amministrativo.
+     - OBBLIGATORIO. Array di indirizzi email di contatto per almeno un referente di supporto utenti, uno applicativo e uno sistemistico.
    * - **organization_info.dpa_contact**
      - string
      - OBBLIGATORIO. Indirizzo email del DPA della Fonte Autentica.
@@ -400,7 +391,7 @@ Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciasc
      - OBBLIGATORIO. URL del documento di informativa sulla privacy.
    * - **organization_info.tos_uri**
      - string
-     - OBBLIGATORIO solo per FA Private. URL del documento dei termini di servizio.
+     - OPZIONALE. URL del documento dei termini di servizio.
    * - **organization_info.organization_country**
      - string
      - OBBLIGATORIO. Codice paese ISO 3166-1 alpha-2 a due lettere dell'organizzazione.
@@ -410,12 +401,18 @@ Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciasc
    * - **organization_info.logo_uri#integrity**
      - string
      - CONDIZIONALE. Digest crittografico della risorsa immagine del logo per la verifica dell'integrità. OBBLIGATORIO se ``logo_uri`` è presente. Formato: ``{digest_method}-{digest_value}`` (es. ``"sha-256-abc123..."``).
+   * - **organization_info.logo_alt_text_l10n_id**
+     - string
+     - OPZIONALE. Testo alternativo per l'immagine del logo dell'organizzazione.
    * - **organization_info.logo_extended_uri**
      - string
      - OPZIONALE. URL dell'immagine del logo esteso dell'organizzazione.
    * - **organization_info.logo_extended_uri#integrity**
      - string
      - CONDIZIONALE. Digest crittografico della risorsa immagine del logo esteso per la verifica dell'integrità. OBBLIGATORIO se ``logo_extended_uri`` è presente. Formato: ``{digest_method}-{digest_value}`` (es. ``"sha-256-abc123..."``).
+   * - **organization_info.logo_extended_alt_text_l10n_id**
+     - string
+     - OPZIONALE. Testo alternativo per l'immagine del logo esteso dell'organizzazione.
    * - **data_capabilities**
      - Array di oggetti JSON
      - OBBLIGATORIO. Array contenente le specifiche delle capacità sui dati.
@@ -424,7 +421,7 @@ Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciasc
      - OBBLIGATORIO. L'identificatore univoco del dataset nell'ambito della Fonte Autentica, che PUÒ essere utilizzato come parametro di query per il servizio ``GetAttributeClaims``.
    * - **data_capabilities[].data_origin_l10n_id**
      - string
-     - OPZIONALE. Chiave di localizzazione che fa riferimento al nome leggibile dell'origine o del dipartimento che fornisce i dati (es. ``authentic_source1.dataset1.origin``).
+     - OBBLIGATORIO. Chiave di localizzazione che fa riferimento al nome leggibile dell'origine o del dipartimento che fornisce i dati (es. ``authentic_source1.dataset1.origin``).
    * - **data_capabilities[].intended_purposes**
      - Array di stringhe
      - OBBLIGATORIO. Finalità aziendali soddisfatte, utilizzando gli identificatori di finalità della tassonomia (es. ``["IDENTITY_VERIFICATION", "DRIVING_RIGHTS_VERIFICATION"]``).
@@ -442,13 +439,13 @@ Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciasc
      - OBBLIGATORIO. Definisce se un claim è sempre disponibile o meno.
    * - **data_capabilities[].integration_method**
      - string
-     - OBBLIGATORIO. Framework di autorizzazione utilizzato per l'accesso ai dati. DEVE essere ``"pdnd"`` per le FA Pubbliche. Le FA Private POSSONO utilizzare altri framework di autorizzazione come: ``"oauth2"``, ``"api_key"``, ``"mtls"``, ecc.
+     - OBBLIGATORIO. Framework di autorizzazione utilizzato per l'accesso ai dati. DEVE essere ``"pdnd"``.
    * - **data_capabilities[].integration_endpoint**
      - string
-     - OBBLIGATORIO. Punto di accesso al servizio (endpoint PDND per FA Pubbliche, endpoint API per FA Private).
+     - OPZIONALE. Punto di accesso al servizio (endpoint PDND).
    * - **data_capabilities[].api_specification**
      - string
-     - OBBLIGATORIO. URL del documento di specifica `OAS3`_ per questa capacità dati.
+     - OPZIONALE. URL del documento di specifica `OAS3`_ per questa capacità dati.
    * - **data_capabilities[].data_provision**
      - oggetto JSON
      - OPZIONALE. Capacità di fornitura dei dati e specifiche temporali.
@@ -479,18 +476,18 @@ Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciasc
    * - **data_capabilities[].logo_uri#integrity**
      - string
      - CONDIZIONALE. Digest crittografico della risorsa immagine del logo per la verifica dell'integrità. OBBLIGATORIO se ``logo_uri`` è presente. Formato: ``{digest_method}-{digest_value}`` (es. ``"sha-256-abc123..."``).
-   * - **data_capabilities[].background_image**
-     - oggetto JSON
-     - OPZIONALE. Oggetto contenente informazioni sull'immagine di sfondo da visualizzare insieme ai dati. L'oggetto contiene i parametri ``uri`` e ``uri#integrity``.
-   * - **data_capabilities[].watermark_image**
-     - oggetto JSON
-     - OPZIONALE. Oggetto contenente informazioni sull'immagine filigrana da visualizzare insieme ai dati. L'oggetto contiene i parametri ``uri`` e ``uri#integrity``.
+   * - **data_capabilities[].logo_alt_text_l10n_id**
+     - string
+     - OPZIONALE. Testo alternativo per l'immagine del logo dell'organizzazione.
    * - **data_capabilities[].background_color**
      - string
      - OPZIONALE. Valore stringa del colore di sfondo da visualizzare insieme ai dati.
    * - **data_capabilities[].contacts**
      - Array di stringhe
-     - OPZIONALE. Array di indirizzi email di contatto del servizio clienti.
+     - OPZIONALE. Array di indirizzi email di contatto del servizio clienti o dei canali di supporto per gli utenti.
+
+.. note::
+  Per ulteriori dettagli sulle funzionalità richieste e sul risultato atteso in termini di esperienza utente, si rimanda alla Sezione :ref:`functionalities:Ottenimento degli Attestati Elettronici di Attributi` per il parametro ``data_capabilities.user_information`` e alla Sezione :ref:`functionalities:Focus sugli Attestati Elettronici di Attributi` per i parametri ``organization_info.logo_uri``, ``organization_info.logo_extended_uri``, ``data_capabilities.logo_uri``, ``data_capabilities.background_color`` e ``data_capabilities.available_claims.order``.
 
 Esempio di Registro FA
 """""""""""""""""""""""
@@ -569,7 +566,6 @@ Il Catalogo delle Credenziali Digitali si prefigge di:
   5. Garantire la fiducia nell'ecosistema attraverso informazioni verificabili e attendibili.
   6. Fornire trasparenza sull'ecosistema delle Credenziali Digitali disponibili.
 
-
 Le principali Entità coinvolte nel Catalogo delle Credenziali Digitali sono:
 
   - **Trust Anchor**: Gestisce e mantiene il Catalogo delle Credenziali Digitali, garantendone l'autenticità e l'integrità.
@@ -580,16 +576,13 @@ Le principali Entità coinvolte nel Catalogo delle Credenziali Digitali sono:
   - **Utenti**: Gli Utenti che utilizzano indirettamente il Catalogo delle Credenziali Digitali attraverso le proprie Istanze Wallet per scoprire e richiedere Credenziali Digitali.
   - **Fonti Autentiche**: Le Entità che detengono i dati originali attestati nelle Credenziali Digitali. Forniscono supporto agli Emittenti nella registrazione delle Credenziali Digitali nel Catalogo.
 
-
 .. _fig_catalog:
 .. plantuml:: plantuml/credential-catalog-entities.puml
     :width: 99%
     :alt: La figura illustra le Entità delle Credenziali Digitali.
     :caption: `Diagramma Entità-Relazione del Catalogo delle Credenziali Digitali. <https://www.plantuml.com/plantuml/svg/ZLJ1Rkis4BpxAxP6WQP00X-QtjeWgPEsFXGmuXGz6ZIvbeb8fCfTEbM__YrDELAUb6ST34khuSnmESjxOXKuLYKysiAoAc4PqA1ZcnwL57mH4Pwam1Pfzfrrkem6uPVbxM9vkrtwglPEy7UpsG_mY7lh43RhvzNBqwO7vbWh4tvQQ5zLtjsDVDbxnpVg3SbNUFFpGcDWkxTQCKv06p6wKpG5MdhzEW4M2GDDyUcBAJ1XEsAO07p5PgAx2J1hjbe5Cm69_-c3SWLkLSbJ-etqohwUW7nJPOaNAHVM4LkER5CuPhFtL5tfSmIlOJvCA7KHdGlW6GjB79hql1H4471eQ-3t85v07PKjrQv46A6JXTzJ7IpZh_DpfkO_Yg4r1lBkAlLTkF-MlvE6PVi_EeAtWmTZINivP53EYEg_4OalQIG-uU-soo4IFpXzy4dd9Rr1VarwwVUNSgf0EgbKoZgM7m4Vy9i3t1ULY8dcfY76wefYBT6qv4FpcpUD26ow2gJIITGxopxGkPig7HJK1qK8w2W6wmeWrFB0pScQQ1sLRlgwlP7kz2rHn42Zfmkh_34vU8WiJP1k6y3sBf9DAuP4SF4isq7eP0EMZNXUgv2OKdHo0ThAF9_ogQ_l4GJsK2Wf1R1kxqELsw1sFZBeSUN-O7NoUIhMmH-joRl_vrI1jjJkMMia6dgmZh48Yh4lcgeUCl471xdKQIlfP5gZDpu64KX2vnAqjQJ-foyD-22DTTBOD0sWc54uZ6XTx7Wtq6c0fBqVijrjg8lqTPVd7A6uAoqTiflVHQMD7JfJUm4Ahz0E4_nnXbQEPQ5c6LBBX_4rVJkVXZtuT1gPe8jjVs6-VZ2CzGQiQvSE-tyc6pSxo6fVyezFuZXc8TCDizVnTP7pO4_BzatlmjG3hdmV3XZJw12qaLuvOkKqGfq11dPDNhvzR0dw3bREs82Qo-RzHgN-bKfVsRYNECIg_080>`_
 
-
 La seguente tabella riepiloga le principali informazioni che DEVONO essere fornite dal Catalogo delle Credenziali Digitali:
-
 
 .. list-table:: Catalogo delle Credenziali Digitali - Informazioni principali
    :class: longtable
@@ -803,12 +796,14 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive **POSS
      - 
        * Documenti di Lavoro
        * Stato Occupazionale
+       * Accesso
      - 
        * Contratto di Lavoro Digitale
        * Curriculum Vitae (CV)
        * Permesso di Soggiorno
        * Certificato di Stato Occupazionale
        * Estratto Contributivo INPS
+       * Badge di Accesso Fisico
 
    * - *MOBILITÀ E VIAGGI*
      - Credenziali che attestano diritti di mobilità, stato del veicolo e titolarità in ambito di viaggio.
@@ -828,7 +823,7 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive **POSS
        * Certificato di Revisione del Veicolo
        * Carta Verde / Assicurazione Internazionale
        * Abbonamento ai Trasporti Pubblici
-       * Abbonamento Telepass
+       * Abbonamento Pedaggi Stradali
        * Credenziale di Viaggio Digitale
        * Biglietti di Viaggio (aereo, treno, ecc.)
        * Polizza di Assicurazione Viaggio
@@ -851,14 +846,6 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive **POSS
        * Credenziale Bonus Sanitario
        * Voucher Supporto Salute Mentale
        * Bonus Sport e Attività Fisica
-
-   * - *AUTENTICAZIONE*
-     - Credenziali che attestano l'autorizzazione ad accedere a spazi fisici o digitali, servizi o risorse riservati.
-     - 
-       * Accesso
-     - 
-       * Badge di Accesso Fisico
-       * Credenziale di Accesso Digitale
 
 .. list-table:: Tabella 2: Mappatura tra Classi di Credenziale e Finalità
    :class: longtable
@@ -992,7 +979,7 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive **POSS
        * Accesso ai bonus sanitari
        * Utilizzo dei voucher per la salute mentale
        * Utilizzo dei voucher per lo sport
-   * - Accesso
+   * - Affiliazione Lavorativa
      - 
        * Verifica del permesso di accesso
 
@@ -1021,7 +1008,6 @@ Struttura del Catalogo degli Attestati Elettronici
 
 Il contenuto del Catalogo delle Credenziali Digitali è protetto in un JWS che contiene i seguenti parametri dell'intestazione JOSE:
 
-
 .. _table_catalog_parameters:
 .. list-table::
    :class: longtable
@@ -1049,7 +1035,6 @@ Il contenuto del Catalogo delle Credenziali Digitali è protetto in un JWS che c
 
 Il payload JWS contiene i seguenti parametri:
 
-
 .. list-table:: Campi di Primo Livello del Catalogo delle Credenziali Digitali
    :class: longtable
    :header-rows: 1
@@ -1069,7 +1054,6 @@ Il payload JWS contiene i seguenti parametri:
      - OBBLIGATORIO. Array contenente le definizioni delle Credenziali Digitali.
 
 Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazioni:
-
 
 .. _table_catalog_parameters_first_level:
 .. list-table:: Campi di Primo Livello di Ogni Voce di Credenziale
@@ -1249,7 +1233,7 @@ La Tassonomia è accessibile attraverso l'endpoint dedicato alla tassonomia come
    * - **domains**
      - OBBLIGATORIO. Array di oggetti Dominio, ciascuno contenente:
 
-       * **id**: Identificatore univoco del Dominio in SCREAMING_SNAKE_CASE (es. ``IDENTITY``, ``AUTHENTICATION``).
+       * **id**: Identificatore univoco del Dominio in SCREAMING_SNAKE_CASE (es. ``IDENTITY``).
        * **name_l10n_id**: Chiave di localizzazione per il nome del dominio (es. ``domain.identity.name``).
        * **description_l10n_id**: Chiave di localizzazione per la descrizione del dominio (es. ``domain.identity.description``).
        * **classes**: Array di oggetti Classe. Ogni classe contiene ``id``, ``name_l10n_id`` e ``supported_purposes`` (array di stringhe di ID finalità).
@@ -1310,7 +1294,6 @@ Il **Registro degli Schemi** è l'inventario autorevole di tutti gli **Schemi di
 
 Il Registro degli Schemi è accessibile tramite l'endpoint di discovery ``.well-known/it-wallet-registry`` nel campo `schema_registry`. Consente la discovery degli URI degli schemi e i relativi controlli di integrità crittografica.
 
-
 .. list-table:: Campi di Primo Livello del Registro degli Schemi
    :class: longtable
    :widths: 30 70
@@ -1324,7 +1307,6 @@ Il Registro degli Schemi è accessibile tramite l'endpoint di discovery ``.well-
      - OBBLIGATORIO. Il timestamp che indica quando l'elenco è stato aggiornato l'ultima volta (es. ``2025-03-15T12:00:00Z``).
    * - **schemas**
      - OBBLIGATORIO. Un Array JSON in cui ogni voce è un Oggetto JSON che rappresenta una definizione di Schema di Credenziale. Ogni oggetto contiene i parametri definiti nella tabella "Parametri di Definizione dello Schema" di seguito, inclusi identificazione dello schema, specifiche del formato, URI e dati di verifica dell'integrità.
-
 
 .. list-table:: Parametri di Definizione dello Schema
    :widths: 25 75
@@ -1369,10 +1351,8 @@ I componenti del registro sono interconnessi e operano congiuntamente per suppor
 4. **Registro della Federazione** ↔ **Tutti i Componenti**: Fornisce la validazione crittografica della fiducia per tutte le operazioni di registro e l'autenticazione delle entità.
 5. **Registro degli Schemi** ↔ **Emittenti/RP**: Fornisce il collegamento verificabile a tutte le specifiche di formato delle Credenziali note nell'ecosistema.
 
-
 Percorsi di Utilizzo dell'Infrastruttura del Registro
 ------------------------------------------------------
-
 
 I componenti dell'Infrastruttura del Registro sono progettati per supportare diverse fasi operative dell'ecosistema IT-Wallet, ciascuna con specifiche interazioni tra le entità. 
 I principali Percorsi di seguito illustrano le interazioni con l'Infrastruttura del Registro.
