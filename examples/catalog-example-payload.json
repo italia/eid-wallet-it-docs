@@ -82,7 +82,7 @@
                 "user_auth_required": true,
                 "min_loa": "high",
                 "supported_schemes": [
-                    "it-wallet"
+                    "it_wallet"
                 ]
             },
             "domains": ["IDENTITY", "MOBILITY_TRAVEL"],

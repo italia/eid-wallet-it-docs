@@ -1101,7 +1101,7 @@ Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazion
 
       * **user_auth_required**: OBBLIGATORIO. Flag che indica se l'autenticazione dell'Utente è richiesta durante l'emissione della Credenziale Digitale.
       * **min_loa**: OBBLIGATORIO. Livello Minimo di Garanzia richiesto per l'autenticazione della Credenziale Digitale. DEVE includere il Livello di Garanzia dell'autenticazione dell'Utente e dell'Istanza Wallet che richiede la Credenziale Digitale.
-      * **supported_schemes**: OBBLIGATORIO se ``user_auth_required`` è ``true``. Schemi di autenticazione dell'identità digitale supportati (es. ``["it-wallet"]``).
+      * **supported_schemes**: OBBLIGATORIO se ``user_auth_required`` è ``true``. Schemi di autenticazione dell'identità digitale supportati (es. ``["it_wallet"]``).
   * - **domains**
     - OBBLIGATORIO. Array contenente gli ID dei domini a cui appartiene la Credenziale Digitale (es. ``"IDENTITY"``, ``"MOBILITY_TRAVEL"``).
 

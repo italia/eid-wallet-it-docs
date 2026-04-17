@@ -1101,7 +1101,7 @@ Each element of the ``credentials`` array contains at least the following inform
 
       * **user_auth_required**: REQUIRED. Flag indicating if User authentication is required during the issuance of the Digital Credential.
       * **min_loa**: REQUIRED. Minimum Level of Assurance required for Digital Credential authentication. It MUST include the Level of Assurance of the User authentication and the Wallet Instance requesting the Digital Credential.
-      * **supported_schemes**: REQUIRED if ``user_auth_required`` is ``true``. Supported digital identity authentication schemes (e.g., ``["it-wallet"]``).
+      * **supported_schemes**: REQUIRED if ``user_auth_required`` is ``true``. Supported digital identity authentication schemes (e.g., ``["it_wallet"]``).
   * - **domains**
     - REQUIRED. Array of domain IDs to which Digital Credential belongs (e.g., ``"IDENTITY"``, ``"MOBILITY_TRAVEL"``).
   * - **classes**
