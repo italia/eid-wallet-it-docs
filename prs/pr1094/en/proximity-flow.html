@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>12.2.2. Proximity Flow &#8212; IT-Wallet Technical Specifications - PR #1094</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
+    <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <script src="_static/js/petite-vue.js"></script>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="12.3. Wallet Metadata Retrieval Flow" href="wallet-metadata-retrieval.html" />
+    <link rel="prev" title="12.2.1. Remote Flow" href="remote-flow.html" /> 
+  </head><body data-dark_mode_code_blocks="true">
+
+<div id="top_nav">
+    
+
+    <nav>
+        
+            
+        
+
+        <p id="toggle_sidebar">
+            <a href="#" title="Toggle sidebar">|||</a>
+        </p>
+        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Specifications - PR #1094</a></h1>
+            <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
+    
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+            <path fill="white" d="M 244.8,8 C 106.1,8 0,113.3 0,252 c 0,110.9 69.8,205.8 169.5,239.2 12.8,2.3 17.3,-5.6 17.3,-12.1 0,-6.2 -0.3,-40.4 -0.3,-61.4 0,0 -70,15 -84.7,-29.8 0,0 -11.4,-29.1 -27.8,-36.6 0,0 -22.9,-15.7 1.6,-15.4 0,0 24.9,2 38.6,25.8 21.9,38.6 58.6,27.5 72.9,20.9 2.3,-16 8.8,-27.1 16,-33.7 -55.9,-6.2 -112.3,-14.3 -112.3,-110.5 0,-27.5 7.6,-41.3 23.6,-58.9 -2.6,-6.5 -11.1,-33.3 2.6,-67.9 20.9,-6.5 69,27 69,27 20,-5.6 41.5,-8.5 62.8,-8.5 21.3,0 42.8,2.9 62.8,8.5 0,0 48.1,-33.6 69,-27 13.7,34.7 5.2,61.4 2.6,67.9 16,17.7 25.8,31.5 25.8,58.9 0,96.5 -58.9,104.2 -114.8,110.5 9.2,7.9 17,22.9 17,46.4 0,33.7 -0.3,75.4 -0.3,83.6 0,6.5 4.6,14.4 17.3,12.1 C 428.2,457.8 496,362.9 496,252 496,113.3 383.5,8 244.8,8 Z"/>
+        </svg>
+    
+</a>
+        
+
+        <a id="mode_toggle" href="#" @click.prevent="handleClick" :title="mode">
+    <template v-if="mode == 'light'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_light"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M67.48,18.073c1.913,-1.912 1.913,-5.018 0,-6.931c-1.912,-1.912 -5.018,-1.912 -6.931,0l-6.798,6.799c-1.912,1.912 -1.912,5.018 0,6.931c1.913,1.912 5.018,1.912 6.931,-0l6.798,-6.799Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.728,61.108c1.912,-1.913 1.912,-5.018 -0,-6.931c-1.913,-1.913 -5.019,-1.913 -6.931,-0l-6.799,6.798c-1.912,1.913 -1.912,5.019 0,6.931c1.913,1.913 5.019,1.913 6.931,0l6.799,-6.798Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.682,54.177c-1.913,-1.913 -5.018,-1.913 -6.931,-0c-1.912,1.913 -1.912,5.018 0,6.931l6.798,6.798c1.913,1.913 5.019,1.913 6.931,0c1.913,-1.912 1.913,-5.018 0,-6.931l-6.798,-6.798Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M4.901,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,-0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M18.929,11.142c-1.912,-1.912 -5.018,-1.912 -6.931,0c-1.912,1.913 -1.912,5.019 0,6.931l6.799,6.799c1.912,1.912 5.018,1.912 6.931,-0c1.912,-1.913 1.912,-5.019 -0,-6.931l-6.799,-6.799Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.108,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c-0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c-0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'dark'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_dark"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.901,2.196 -4.901,4.901c0,2.705 2.197,4.901 4.901,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.662,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.989,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.732,61.103c1.91,-1.91 1.91,-5.011 0,-6.921l-0.009,-0.01c-1.91,-1.91 -5.012,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.909,1.91 5.011,1.91 6.92,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.672,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.52,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l-0,-0.01c-0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.901,2.196 -4.901,4.901c0,2.704 2.197,4.9 4.901,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.73,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 -0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.098,34.623c-2.699,0 -4.891,2.192 -4.891,4.892l-0,0.019c-0,2.699 2.192,4.891 4.891,4.891c2.7,0 4.892,-2.192 4.892,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.892,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'darkest'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_darkest"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><path d="M39.315,23.791c8.684,-0 15.734,7.05 15.734,15.733c0,8.684 -7.05,15.734 -15.734,15.734c-8.683,0 -15.733,-7.05 -15.733,-15.734c-0,-8.683 7.05,-15.733 15.733,-15.733Zm0,4.737c6.069,0 10.997,4.927 10.997,10.996c-0,6.069 -4.928,10.996 -10.997,10.996c-6.068,0 -10.996,-4.927 -10.996,-10.996c0,-6.069 4.928,-10.996 10.996,-10.996Z" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.216,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.9,2.196 -4.9,4.901c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.666,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.99,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.737,61.103c1.909,-1.91 1.909,-5.011 -0,-6.921l-0.01,-0.01c-1.91,-1.91 -5.011,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.91,1.91 5.011,1.91 6.921,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.676,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.524,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l0,-0.01c0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.216,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901c-0,2.704 2.196,4.9 4.9,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.734,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.103,34.623c-2.7,0 -4.892,2.192 -4.892,4.892l-0,0.019c-0,2.699 2.192,4.891 4.892,4.891c2.699,0 4.891,-2.192 4.891,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.891,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+</a>
+
+<script>
+(function() {
+    const LOCAL_STORAGE_KEY = 'piccoloThemeMode'
+
+    var initialMode = localStorage.getItem(LOCAL_STORAGE_KEY)
+
+    if (initialMode) {
+        // Make sure the value in local storage is valid
+        if (['light', 'dark', 'darkest'].indexOf(initialMode) == -1) {
+            initialMode = 'light'
+            localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+        }
+    } else {
+        // Check if the client prefers dark mode
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            initialMode = 'dark'
+        } else {
+            initialMode = 'light'
+        }
+        localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+    }
+
+    document.documentElement.dataset.mode = initialMode
+
+    PetiteVue.createApp({
+        'mode': initialMode,
+        handleClick() {
+            let currentMode = this.mode
+
+            if (currentMode == 'light') {
+                this.mode = 'dark'
+            } else if (currentMode == 'dark') {
+                this.mode = 'darkest'
+            } else if (currentMode == 'darkest') {
+                this.mode = 'light'
+            }
+
+            document.documentElement.dataset.mode = this.mode
+            localStorage.setItem(LOCAL_STORAGE_KEY, this.mode)
+
+            console.log(this.mode)
+        }
+    }).mount('#mode_toggle')
+})()
+</script>
+            <p class="mobile_search_link">
+                <a href="search.html" title="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 64" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2">
+                        <path d="M14.873 40.009c-2.315-3.943-3.642-8.532-3.642-13.429C11.231 11.91 23.141 0 37.811 0s26.58 11.91 26.58 26.58-11.91 26.58-26.58 26.58a26.44 26.44 0 0 1-14.277-4.161L9.739 62.794a3.12 3.12 0 0 1-4.413 0L.913 58.382c-1.217-1.218-1.217-3.196 0-4.413l13.96-13.96zM37.811 8.054c10.225 0 18.526 8.301 18.526 18.526s-8.301 18.526-18.526 18.526-18.526-8.301-18.526-18.526S27.586 8.054 37.811 8.054z" fill="#fff" />
+                    </svg>
+                </a>
+            </p>
+        
+
+        <div class="searchbox_wrapper">
+            
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper"><p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2. Brand Identity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Architecture Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Onboarding System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. User Experience Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. The Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registry.html">7. Registry Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entity-onboarding.html">8. Entity Onboarding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="x5c-evaluation.html">9. X.509 Certificate Management Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">10. Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">11. Digital Credential Management</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="digital-credential-flows.html">12. Digital Credential Flows</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="credential-issuance.html">12.1. Digital Credential Issuance</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="credential-presentation.html">12.2. Digital Credential Presentation</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="remote-flow.html">12.2.1. Remote Flow</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">12.2.2. Proximity Flow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-metadata-retrieval.html">12.3. Wallet Metadata Retrieval Flow</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">13. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">14. Cryptographic Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">15. Security and Privacy Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">16. General Log Retention Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">17. Defined Terms and References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">18. How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">19. Open Source Releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">20. Appendix</a></li>
+</ul>
+
+        </div>
+      </div>
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="proximity-flow">
+<h1><span class="section-number">12.2.2. </span>Proximity Flow<a class="headerlink" href="#proximity-flow" title="Link to this heading">¶</a></h1>
+<p>This section describes how a Relying Party Instance requests the presentation of an <em>mdoc-CBOR</em> Credential to a Wallet Instance as specified in the <em>ISO 18013-5 Specification</em>.</p>
+<p>The high-level presentation phase is structured into three broad sub-phases as depicted in the following figure:</p>
+<figure class="align-default" id="id1">
+<p class="plantuml">
+<object data="_images/plantuml-d9c002bb4919bf88011c8d3d11fab3c79bc5efe0.svg" type="image/svg+xml" style="width:90%">
+<a href="_images/plantuml-d9c002bb4919bf88011c8d3d11fab3c79bc5efe0.png"><img src="_images/plantuml-d9c002bb4919bf88011c8d3d11fab3c79bc5efe0.png" alt="The figure illustrates the High-Level Presentation Flow in proximity." style="width: 90.0%"/></a>
+
+</object></p>
+<figcaption>
+<p><span class="caption-number">Fig. 12.13 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/VLBHYjim47pNLsppv8CcHzjxBELeOaYXK9DSANqoEccmHMN9bUHSJUc_T-qanWr9zIAyEpCxE_9ZJ3Aahh6qDLMz_8m3B1K14Ix9PBoZefOHufLnodOQz7xzSBz-ADU-QRrZq0SXjfysURb_odVvbwVlHPxT2P5Cig35VpKNGXG8qRkiYmYlQV6LhmNVZVQAQcyrVxAM-EWxfsNeitQcKRQ31gEl2D_HRq5y9fEPni4eb72LhD1mXOblLhGPovHFvM7y7geBe5Zxa9P1kWgal7DGuuHdf1V0qJTfBH99fsa7snjNKS59zeD2pg4-MnDhH3BE92CjnQEggYLBMTwB-5ouZ8XnM0rd_idfsnNjZotAvwrnbbEXRnFqtEIBIJKl80ENJwBq0_rnknIfQyz-CD5FkElEb6-QpXarfimgxrRSd9LeUSvoXnGC3jB-Qsvyqu2V7MAw3uYi6q7ufUenu8EHbmanVSlfMiIPIIsJd5XizOyGd7wvEVr2rvxv-009aU43TfTTGTrAtaBgICbFt1l0otpWk3kEV8JJNMF_0W00">High-Level Presentation Flow in proximity.</a></span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>The sub-phases are described below:</p>
+<blockquote>
+<div><p>1. <strong>Device Engagement</strong>: This subphase begins when the User is prompted to disclose specific attributes from the mdoc(s). The objective of this subphase is to establish a secure communication channel between the Wallet Instance and the Relying Party Instance, so that the mdoc requests and responses can be exchanged during the communication subphase.
+The messages exchanged in this subphase are transmitted through short-range technologies to limit the possibility of interception and eavesdropping. Device Engagement data may be transferred using either QR code or NFC technologies.</p>
+<p>2. <strong>Session Establishment</strong>: During the session establishment phase, the Relying Party Instance sets up a secure connection. All data transmitted over this connection is encrypted using a session key, which is known to both the Wallet Instance and the Relying Party Instance at this stage.
+The established session MAY be later terminated based on the conditions as detailed in [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #12.2.4].</p>
+<p>3. <strong>Communication - Device Retrieval</strong>: The Relying Party Instance encrypts the mdoc request with the appropriate session key and sends it to the Wallet Instance together with its public key in a session establishment message. The Wallet Instance uses the data from the session establishment message to derive the session key and then to decrypt the mdoc request.
+During the communication subphase, the Relying Party Instance has the option to request information from the Wallet Instance using mdoc requests and responses. The primary mode of communication is the secure channel established during the session setup. The Wallet Instance encrypts the mdoc response using the session key and transmits it to the mobile Relying Party Instance via a session data message.</p>
+</div></blockquote>
+<p>Relying Party and Wallet Instances registered in the IT-Wallet ecosystem MUST support at least the following flows:</p>
+<ul class="simple">
+<li><p><em>Supervised Device Retrieval flow</em> where a human Relying Party is overseeing the verification process in person, or <em>unsupervised flow</em> where verification might happen through automated systems without human oversight (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_095</span></a>).</p></li>
+<li><p><em>Relying Party Instance Authentication</em> following the mechanisms defined in the <a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> for the <em>reader authentication</em> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_098</span></a>).</p></li>
+<li><p>Domestic <em>Document Type</em> and <em>Namespaces</em> defined in this technical specification in addition to those already defined in the <a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> for the mDL (see <a class="reference internal" href="credential-data-model.html#mdoc-cbor-credential-format"><span class="std std-ref">mdoc-CBOR Credential Format</span></a> for more details) (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_099</span></a>).</p></li>
+</ul>
+<p>The following table shows the supported Device Engagement technologies (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_097</span></a>), specifying which are mandatory.</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 15.0%" />
+<col style="width: 15.0%" />
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Transmission technology</strong></p></th>
+<th class="head"><p><strong>ISO 18013-5</strong></p></th>
+<th class="head"><p><strong>ISO 18013-5</strong></p></th>
+<th class="head"><p><strong>IT Wallet</strong></p></th>
+<th class="head"><p><strong>IT Wallet</strong></p></th>
+</tr>
+<tr class="row-even"><th class="head"></th>
+<th class="head"><p><strong>Wallet Instance</strong></p></th>
+<th class="head"><p><strong>RP Instance</strong></p></th>
+<th class="head"><p><strong>Wallet Instance</strong></p></th>
+<th class="head"><p><strong>RP Instance</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p><strong>QR code</strong></p></td>
+<td><p>C<sup>a</sup></p></td>
+<td><p>M</p></td>
+<td><p>MUST</p></td>
+<td><p>C – MUST if the device is equipped with a camera or QR code reader and BLE.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>NFC</strong></p></td>
+<td><p>C<sup>a</sup></p></td>
+<td><p>M</p></td>
+<td><p>RECOMMENDED</p></td>
+<td><p>C – MUST if the device is equipped with an NFC reader.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Key: C = Conditional | M = Mandatory | <sup>a</sup>Support for at least one of these methods is mandatory (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_097a</span></a>)</p>
+<p>The following table shows the supported Device Retrieval technologies, specifying which are mandatory.</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 15.0%" />
+<col style="width: 15.0%" />
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Transmission technology</strong></p></th>
+<th class="head"><p><strong>ISO 18013-5</strong></p></th>
+<th class="head"><p><strong>ISO 18013-5</strong></p></th>
+<th class="head"><p><strong>IT Wallet</strong></p></th>
+<th class="head"><p><strong>IT Wallet</strong></p></th>
+</tr>
+<tr class="row-even"><th class="head"></th>
+<th class="head"><p><strong>Wallet Instance</strong></p></th>
+<th class="head"><p><strong>RP Instance</strong></p></th>
+<th class="head"><p><strong>Wallet Instance</strong></p></th>
+<th class="head"><p><strong>RP Instance</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p><strong>BLE</strong></p></td>
+<td><p>C<sup>a</sup></p></td>
+<td><p>M</p></td>
+<td><p>MUST</p></td>
+<td><p>C – MUST if the device is equipped with a camera or QR code reader and BLE.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>NFC</strong></p></td>
+<td><p>C<sup>a</sup></p></td>
+<td><p>M</p></td>
+<td><p>RECOMMENDED</p></td>
+<td><p>C – MUST if the device is equipped with an NFC reader.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Key: C = Conditional | M = Mandatory | <sup>a</sup>Support for at least one of these methods is mandatory (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_096b</span></a>)</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>From the second edition, version 3, <a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> does not define or support Server Retrieval as a transport option. Only proximity retrieval methods (NFC, BLE, and optionally Wi-Fi Aware) are specified (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_096</span></a>). Therefore, Server Retrieval is not considered in this flow (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_096a</span></a> and <a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-023</span></a>).</p>
+</div>
+<p>The following figure illustrates the low-level flow compliant with ISO 18013-5 for proximity flow.</p>
+<figure class="align-default" id="id2">
+<span id="fig-high-level-flow-itwallet-presentation-iso-updated"></span><p class="plantuml">
+<object data="_images/plantuml-96f175912196246bb3ce770e7a80f2901aec32b4.svg" type="image/svg+xml" style="width:99%">
+<a href="_images/plantuml-96f175912196246bb3ce770e7a80f2901aec32b4.png"><img src="_images/plantuml-96f175912196246bb3ce770e7a80f2901aec32b4.png" alt="The figure illustrates the Low-Level Presentation Flow in proximity." style="width: 99.0%"/></a>
+
+</object></p>
+<figcaption>
+<p><span class="caption-number">Fig. 12.14 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/ZLJBRjim4BppAnRgfGQS5kYn28muZki6JTFKJf1BBXIrjeb8IvKFAVxxBacvTLe7oKtIScTsPeSwSrvQ7vfQoE0DXQP4AuHKtbYuSsX1EWX2j7n8AzrAyb3Soxf63tUaVH7h_VFoyWOkYM59OIftGeIJIVyPVhH8uBS80y3-LAJJdVJ8IE4q7StKWGyJ0qkl3K6vEzOCF2XN9DolPjCzKsftMAFoBZMrrZpfHliTFw5Zq0ov3gJYWwov94phuRkaIhBu7UWrh3osy0cq0p8UMhHhOnki8bzYwtdOyEAmwGXI9KIVXbeWeOqg2Nl0TeiDlzRmY3oKr1OUw7rHp2-mqmg_uUx3ZTLTKOpX-STG5iL82CiJiVQEcVjn1--kBXTVRnVB-VnQd9QJwUZqOpdXpjmufutSC1tveW2M9m6Vr5RIPa3ukGHbgcJbzPTPd3d1Yx-BuHrs9vFkhIAMA2kq_uWu-9X5PCIPQTh0W0wTYyunr9xinY8d2tcvJc-8ZUVb09AokzR7D--jBcFl0rdy5T1vOFPL1ffpFifQkstM_QfdvtlFZlT3mv_PnJ_MLHdf_6e--COALE1fOvcmFh1n2C0nfRboWKdJo-HHEBFfDUUI8ntja9x98dJAu7BGBrkEUiSRuQZkiwvfCro6GzFSc6rJXZoVS63MO76ZdRSvlmhvHgzZcd6uKzC1-JKVPzd75Sj_QN4yLcl8uS6sBZYLl2GGlVPR6BRvRDnCADzaU8xFVwvcal5H9sDogtHReDHKiMUZDBNQedg4fZ8AMBokueyYNNmc663X5csZAHadAZouD0SllJZZ-VX7-ni0">Low-Level Presentation Flow in proximity.</a></span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p><strong>Step 1</strong>: The User opens the Wallet Instance initiating the process.</p>
+<p><strong>Step 2</strong>: The User authenticates itself to the Wallet Instance. This can be done by the Wallet Instance or a Wallet Secure Cryptographic Application (WSCA). It is a prerequisite for accessing sensitive data and presenting attributes  (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_100</span></a>).</p>
+<p><strong>Step 3</strong>: The User selects the proximity presentation functionality.</p>
+<p><strong>Step 4</strong>: [Optional] If the initial authentication in Step 2 was not done through WSCA, a separate authentication via WSCA MAY be required  (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_100</span></a>).</p>
+<p><strong>Step 5</strong>: The Wallet Instance generates a new ephemeral Elliptic Curve key pair for secure communication (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_101</span></a>). The public key (<code class="docutils literal notranslate"><span class="pre">EDeviceKey.Pub</span></code>) will be exchanged with the Relying Party Instance to derive a shared session key, which is then used for session encryption. This is part of the device engagement process.</p>
+<div class="admonition-box-a admonition">
+<p class="admonition-title">Box A</p>
+<p>The Wallet Instance and Relying Party Instance exchange <em>Device Engagement</em> data via QR code or via NFC Connection Handover (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_097</span></a>).</p>
+<p>Refer to:</p>
+<ul class="simple">
+<li><p>Sec 8.2.2.1 for <code class="docutils literal notranslate"><span class="pre">DeviceEngagement</span></code> over QR code</p></li>
+<li><p>Sec 8.2.2.2 for <code class="docutils literal notranslate"><span class="pre">DeviceEngagement</span></code> over NFC</p></li>
+</ul>
+</div>
+<p><strong>Step 6</strong>: The Relying Party Instance generates its ephemeral key pair (<code class="docutils literal notranslate"><span class="pre">EReaderKey.Priv</span></code>, <code class="docutils literal notranslate"><span class="pre">EReaderKey.Pub</span></code>). The private key (<code class="docutils literal notranslate"><span class="pre">EReaderKey.Priv</span></code>) MUST be kept secret, and the public key (<code class="docutils literal notranslate"><span class="pre">EReaderKey.Pub</span></code>) MUST be used in establishing the session.</p>
+<p><strong>Step 7</strong>: The Wallet Instance and Relying Party Instance independently MUST derive the session keys using their private ephemeral key and the other party's public ephemeral key through a key agreement protocol. This ensures session encryption. In this particular step, the Relying Party Instance MUST compute its session key  (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-002</span></a> and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_104</span></a>).</p>
+<p><strong>Step 8</strong>: The Relying Party Instance MUST prepare a <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message. This message MUST be signed by the Relying Party Instance (mdoc reader authentication as specified in [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #12.5]) and encrypted using the session keys derived in the previous step. The <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message MUST include the <code class="docutils literal notranslate"><span class="pre">EReaderKey.Pub</span></code> and a request for specific attribute(s) (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-002</span></a>).</p>
+<p>Below is a non-normative example using the diagnostic notation of a CBOR-encoded <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message that contains an mdoc request for an mDL Digital Credential.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+  &quot;version&quot;: &quot;1.0&quot;,  % Version
+  &quot;docRequests&quot;: 
+  [
+    {
+    &quot;itemsRequest&quot;: 
+    24(&lt;&lt;  % Embedded CBOR data item
+      {
+        &quot;docType&quot;: &quot;org.iso.18013.5.1.mDL&quot;,
+        &quot;nameSpaces&quot;: 
+        {
+          &quot;org.iso.18013.5.1&quot;: 
+          {
+            &quot;family_name&quot;: true,
+            &quot;document_number&quot;: true,
+            &quot;driving_privileges&quot;: true,
+            &quot;issue_date&quot;: true,
+            &quot;expiry_date&quot;: true,
+            &quot;portrait&quot;: false
+          }
+        }
+      }
+    &gt;&gt;)
+    }
+  ],
+  &quot;readerAuthAll&quot;: 
+  [
+    h&#39;a10126&#39;, % COSE_Sign1 authentication header
+    {
+      33: h&#39;308201253081cda00302010202012a300a06082a8648ce3d0403023020311e301c06035504030c15536f6d652052656164657220417574686f72697479301e170d3233313132343130323832325a170d3238313132323130323832325a301a3118301606035504030c0f536f6d6520526561646572204b65793059301306072a8648ce3d020106082a8648ce3d03010703420004aa1092fb59e26ddd182cfdbc85f1aa8217a4f0fae6a6a5536b57c5ef7be2fb6d0dfd319839e6c24d087cd26499ec4f87c8c766200ba4c6218c74de50cd1243b&#39;
+    },
+    null, % No additional reader authentication
+    h&#39;58a0d421a7e53b7db0412a196fea50ca6d4c8a530a47dd84d88588ab145374bd0ab2a724cf2ed2facf32c7184591c5969efd53f5aba63194105440bc1904e1b9&#39;  % Reader authentication signature
+  ]
+}
+</pre></div>
+</div>
+<div class="admonition-box-b admonition">
+<p class="admonition-title">Box B</p>
+<p>The Relying Party Instance MUST transmit the encrypted and signed <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message to the Wallet Instance over an NFC or a BLE secure connection that was established based on the Device Engagement information.
+Refer to:</p>
+<ul class="simple">
+<li><p>Sec 8.2.2.3 for <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> over BLE, and</p></li>
+<li><p>Sec 8.2.2.5 for <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> over NFC</p></li>
+</ul>
+</div>
+<p><strong>Step 9</strong>: The Wallet Instance MUST compute the session key, as described in Step 7.</p>
+<p><strong>Step 10</strong>: Upon receiving the <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message, the Wallet Instance MUST decrypt it using the shared session key and MUST verify the Relying Party Instance's signature (mdoc reader authentication as specified in [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #12.5]) to ensure its authenticity (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-002</span></a> and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_105–106</span></a>).</p>
+<p><strong>Step 11</strong>: The Wallet Instance MUST decrypt the attribute request and MUST prompt the User for their consent to release the requested attributes (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_107</span></a>). It MUST also display the contents of the Relying Party's Registration Certificate to ensure transparency about the requested attributes and its registered purpose (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_107a</span></a>).</p>
+<p><strong>Step 12</strong>: The User reviews the request and the Relying Party's registration information and then approves the presentation of the requested attributes.</p>
+<div class="admonition-box-c admonition">
+<p class="admonition-title">Box C</p>
+<p>After receiving User approval, the Wallet Instance MUST retrieve the requested mdoc Digital Credentials (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-006</span></a> and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_108</span></a>). It then MUST prepare a <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> message containing these Digital Credentials, and it MUST sign the required authentication data (as part of the mdoc authentication process, as specified in [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #12.4]) as per (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_109–110</span></a>). It MUST encrypt it using the established session keys before transmitting it to the Relying Party Instance over the secure channel (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_111</span></a>). The signing ensures device binding and data integrity. The mdoc response MUST be encoded in CBOR, with its structure outlined in [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #10.3] (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-029</span></a>, <a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-030</span></a>, and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_112</span></a>).
+Refer to (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_112a–112b</span></a>):</p>
+<ul class="simple">
+<li><p>Sec 8.2.2.4 for <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> over BLE, and</p></li>
+<li><p>Sec 8.2.2.5 for <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> over NFC</p></li>
+</ul>
+</div>
+<p>Below is a non-normative example using the diagnostic notation of a CBOR-encoded <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> that contains the mdoc response of an mDL Digital Credential.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+    &quot;version&quot;: &quot;1.0&quot;,
+    &quot;documents&quot;:
+    [
+      {
+        &quot;docType&quot;: &quot;org.iso.18013.5.1.mDL&quot;,
+        &quot;issuerSigned&quot;:
+        {
+          &quot;nameSpaces&quot;:
+          {
+            &quot;org.iso.18013.5.1&quot;:
+            [
+              24(&lt;&lt;
+                {
+                    &quot;digestID&quot;: 0,
+                    &quot;random&quot;: h&#39;790401ed5d0822d1aced942e4b0c41f754eee67b89c5ee3b8fd2c97491a96406&#39;,
+                    &quot;elementIdentifier&quot;: &quot;family_name&quot;,
+                    &quot;elementValue&quot;: &quot;Rossi&quot;
+                }
+              &gt;&gt;),
+              24(&lt;&lt;
+                {
+                    &quot;digestID&quot;: 3,
+                    &quot;random&quot;: h&#39;0c8f68d1ec3aa445ef68aa10b7a5875fa18ca222a821e23890a227cdc7d25e8f&#39;,
+                    &quot;elementIdentifier&quot;: &quot;issue_date&quot;,
+                    &quot;elementValue&quot;: 1004(2025-03-27)
+                }
+              &gt;&gt;),
+              24(&lt;&lt;
+                {
+                    &quot;digestID&quot;: 4,
+                    &quot;random&quot;: h&#39;0a9ed0d4937673152e52fb3fac0722baf4252e0d0c9869919e3339670203178e&#39;,
+                    &quot;elementIdentifier&quot;: &quot;expiry_date&quot;,
+                    &quot;elementValue&quot;: 1004(2030-03-27)
+                }
+              &gt;&gt;),
+              24(&lt;&lt;
+                {
+                    &quot;digestID&quot;: 8,
+                    &quot;random&quot;: h&#39;88e94c0365c611b523518d9a1b179ae52e242383576249f4965c40c6c97cf214&#39;,
+                    &quot;elementIdentifier&quot;: &quot;document_number&quot;,
+                    &quot;elementValue&quot;: &quot;XX1234567&quot;
+                }
+              &gt;&gt;),
+              24(&lt;&lt;
+                {
+                    &quot;digestID&quot;: 9,
+                    &quot;random&quot;: h&#39;944758b43602b01ad68911b062349845492c04c6a78129bcf8cb5fb1396af2fc&#39;,
+                    &quot;elementIdentifier&quot;: &quot;portrait&quot;,
+                    &quot;elementValue&quot;: h&#39;ffd8ffe000104a46494600010101009000900000ffdb004300130d0e110e0c
+                    13110f11151413171d301f1d1a1a1d3a2a2c2330453d4947443d43414c566d5d4c51685241435f82
+                    606871757b7c7b4a5c869085778f6d787b76ffdb0043011415151d191d381f1f38764f434f767676
+                    76767676767676767676767676767676767676767676767676767676767676767676767676767676
+                    76767676767676ffc00011080018006403012200021101031101ffc4001b00000301000301000000
+                    000000000000000005060401020307ffc40032100001030303020502030900000000000001020304
+                    0005110612211331141551617122410781a1163542527391b2c1f1ffc40015010101000000000000
+                    00000000000000000001ffc4001a110101010003010000000000000000000000014111213161ffda
+                    000c03010002110311003f00a5bbde22da2329c7d692bc7d0d03f52cfb0ff75e7a7ef3e7709723a1
+                    d0dae146ddfbb3c039ce07ad2bd47a7e32dbb8dd1d52d6ef4b284f64a480067dfb51f87ffb95ff00
+                    eb9ff14d215de66af089ce44b7dbde9cb6890a2838eddf18078f7add62d411ef4db9b10a65d6b95a
+                    147381ea0d495b933275fe6bba75c114104a8ba410413e983dff004f5af5d34b4b4cde632d0bf1fd
+                    1592bdd91c6411f3934c2fa6af6b54975d106dcf4a65ae56e856001ebc03c7ce29dd9eef1ef10fc4
+                    47dc9da76ad2aee93537a1ba7e4f70dd8eff0057c6dffb5e1a19854a83758e54528750946ec67048
+                    50cd037bceb08b6d7d2cc76d3317fc7b5cc04fb6707269c5c6e0c5b60ae549242123b0e493f602a0
+                    75559e359970d98db89525456b51c951c8afa13ea8e98e3c596836783d5c63f5a61a99fdb7290875
+                    db4be88ab384bbbbbfc7183fdeaa633e8951db7da396dc48524fb1a8bd611a5aa2a2432f30ab420a
+                    7a6d3240c718cf031fa9ef4c9ad550205aa02951df4a1d6c8421b015b769db8c9229837ea2be8b1b
+                    0d39d0eba9c51484efdb8c0efd8d258daf3c449699f2edbd4584e7af9c64e3f96b9beb28d4ac4093
+                    1e6478c8e76a24a825449501d867d2b1dcdebae99b9c752ae4ecd6dde4a179c1c1e460938f9149ef
+                    655e515c03919a289cb3dca278fb7bf177f4faa829dd8ce3f2ac9a7ecde490971fafd7dce15eed9b
+                    71c018c64fa514514b24e8e4f8c5c9b75c1e82579dc1233dfec08238f6add62d391acc1c5256a79e
+                    706d52d431c7a0145140b9fd149eb3a60dc5e88cbbc2da092411e9dc71f39a7766b447b344e847dc
+                    ac9dcb5abba8d145061d43a6fcf1e65cf15d0e90231d3dd9cfe62995c6dcc5ca12a2c904a15f71dd
+                    27d451453e09d1a21450961cbb3ea8a956433b781f1ce33dfed54f0e2b50a2b71d84ed6db18028a2
+                    8175f74fc6bda105c529a791c25c4f3c7a11f71586268f4a66b726e33de9ea6f1b52b181c760724e
+                    47b514520a5a28a283ffd9&#39;
+                }
+              &gt;&gt;),
+              24(&lt;&lt;
+                {
+                    &quot;digestID&quot;: 10,
+                    &quot;random&quot;: h&#39;577e4822125f55fe923117aba01fdaefcc67d4aea80018fc22efa8d48e17982f&#39;,
+                    &quot;elementIdentifier&quot;: &quot;driving_privileges&quot;,
+                    &quot;elementValue&quot;: [
+                      {
+                        &quot;vehicle_category_code&quot;: &quot;A&quot;,
+                        &quot;issue_date&quot;: 1004(&quot;2020-09-17&quot;),
+                        &quot;expiry_date&quot;: 1004(&quot;2031-06-10&quot;)
+                        }
+                      ]
+                }
+              &gt;&gt;)
+            ]
+          },
+          &quot;issuerAuth&quot;:
+          [
+            &lt;&lt; {1: -7} &gt;&gt;,
+            {
+              33: h&#39;30820208308201afa00302010202142eb39c647c81836bcf79fa9cd0b201ec0bf52307300a0
+              6082a8648ce3d0403023064310b30090603550406130255533113301106035504080c0a43616c6966
+              6f726e69613116301406035504070c0d53616e204672616e636973636f31133011060355040a0c0a4
+              d7920436f6d70616e793113301106035504030c0a6d79736974652e636f6d301e170d323530333237
+              3135353532305a170d3235303430363135353532305a3064310b30090603550406130255533113301
+              106035504080c0a43616c69666f726e69613116301406035504070c0d53616e204672616e63697363
+              6f31133011060355040a0c0a4d7920436f6d70616e793113301106035504030c0a6d79736974652e6
+              36f6d3059301306072a8648ce3d020106082a8648ce3d03010703420004f33da72d0dd0009b62221b
+              0e839099b12dab5e01021124ebf9060422e648f3c3ec6614a86da1e91e552b2ae35e04d3058ae82b5
+              c65a7f1f26800cb4499652a09a33f303d303b0603551d1104343032863068747470733a2f2f637265
+              64656e7469616c2d6973737565722e6f6964632d66656465726174696f6e2e6f6e6c696e65300a060
+              82a8648ce3d040302034700304402204d1f0819971652b79ebe4825547de3d5554d2f41410225e6b1
+              3dab949cda125e022079ba71b823619e49719dce5daa565bf745d3d97e2b87c7f7d6a626f981e653ed&#39;
+            },
+            &lt;&lt;
+              24(&lt;&lt;
+                {
+                  &quot;version&quot;: &quot;1.0&quot;,
+                  &quot;digestAlgorithm&quot;: &quot;SHA-256&quot;,
+                  &quot;docType&quot;: &quot;org.iso.18013.5.1.mDL&quot;,
+                  &quot;valueDigests&quot;: {
+                    &quot;org.iso.18013.5.1&quot;:
+                    {
+                        0: h&#39;f46b65d5060ad060ab9be62ff22ea8633437619ebdc7fa81f2d151159e92bffe&#39;,
+                        1: h&#39;e506545f6a6fd5d982670b4d62fc2b0688dc8f26754e7b0c574d63f5d72a85ac&#39;,
+                        2: h&#39;cfcf96fa12d100eeed5f00183d3b6a0888baa47eae85b5b95037eca7bbc0d07e&#39;,
+                        3: h&#39;8b0772252b0e06b611676b6b3402eb33bf866eb145e49f4d5f23215e6a047772&#39;,
+                        4: h&#39;14135c96693e2ab08d956876ee491357d906a6dd125557196dfb9811ba54aa8d&#39;,
+                        5: h&#39;86dcbd99233fbb84a9a2dce3a864a425e6e809300067a4475e3ea2a4d233dc74&#39;,
+                        6: h&#39;2e9512d35ea225e69e7b2180ecc1678dcc3e77a16e36427e64b4f0e2861b4d3a&#39;,
+                        7: h&#39;4efe55c36f6249d23c473a125afc5181aa30633936494781554971b72ff13700&#39;,
+                        8: h&#39;cc44a4f9983c5b0b1efc0e82e2867c8d5bbdf89c34bff16a1953c923bb4e4b3e&#39;,
+                        9: h&#39;775eb2af0aa55f2071d62662b35c99698ae3bc0e2c4af5724ff88476cddd152f&#39;,
+                       10: h&#39;915d0ad53dd23dace34968c263d307c04701a9bb9dc9865af91dc409786fd833&#39;,
+                       11: h&#39;47d89ff4fb513044e6f2394236755ac0abf3e4f4a46f40454a458a59f8b7a6fb&#39;
+                    },
+                    &quot;org.iso.18013.5.1.IT&quot;: {
+                       12: h&#39;d665c50c4364c7cbf4ab9461b9bbb228f37ad278b9fb61283550951624d4d9ae&#39;,
+                       13: h&#39;dc9d032a64866e33d06f48a882989b5747da3638f0d216a2275191ed3395fdec&#39;
+                      }
+                  },
+                  &quot;deviceKeyInfo&quot;: {
+                    &quot;deviceKey&quot;: {
+                        1: 2,
+                       -1: 1,
+                       -2: h&#39;f96b29873b61f05403e2963a7ecbc799c9aab28d8a6629e5848cfdef85442866&#39;,
+                       -3: h&#39;a9fef033a900c63e3894d8deb805a2a1fb55ef0d2b88e3c0d3336408186485ef&#39;
+                    }
+                  },
+                  &quot;validityInfo&quot;: {
+                    &quot;signed&quot;: 0(&quot;2025-03-27T00:00:00Z&quot;),
+                    &quot;validFrom&quot;: 0(&quot;2025-03-27T00:00:00Z&quot;),
+                    &quot;validUntil&quot;: 0(&quot;2026-03-27T00:00:00Z&quot;)
+                  },
+                  &quot;status&quot;: {
+                    &quot;status_list&quot;: {
+                      &quot;idx&quot;: 1340,
+                      &quot;uri&quot;: &quot;https://statusprovider.example.org/statuslists/1&quot;
+                    }
+                  }
+                }
+              &gt;&gt;)
+            &gt;&gt;,
+            h&#39;d09f9acdf7a6be5e4aeb405bfb3b297b1b8003bcf52558a2f39fc6e5cffed40f18f49d2cc0e72a2a5645
+            8d8aade591dee8d6540e639bca637f94bd9fa56f345c&#39;
+          ]
+        },
+        &quot;deviceSigned&quot;:
+        {
+          &quot;nameSpaces&quot;: 24(&lt;&lt; {} &gt;&gt;),
+          &quot;deviceAuth&quot;:
+          {
+            &quot;deviceSignature&quot;:
+            [
+              &lt;&lt; {1: -7} &gt;&gt;,
+              {},
+              null,
+              h&#39;E99521A85AD75943BF5AEAE68943BF5AE249943BF5AE943BF5AE43BF5AEDE99521A85AD75943BF5AEAE
+              68943BF5AE249943BF5AE943BF5AE43BF5AED&#39;
+
+            ]
+          }
+        }
+      }
+    ],
+    &quot;status&quot;: 0
+}
+</pre></div>
+</div>
+<p><strong>Step 13</strong>: The Relying Party Instance receives the <code class="docutils literal notranslate"><span class="pre">SessionData</span></code>, then it MUST decrypt it, and it MUST verify the Wallet Instance's signature to ensure the data's integrity and that it originates from the expected device (device binding). It also MUST check the validity of the mdoc, including its Issuer's signature. In case of long-lived Digital Credentials, it SHOULD also check the revocation status using the <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/13/">TOKEN-STATUS-LIST</a>.</p>
+<p><strong>Step 14</strong>: Once the data exchange is complete, either party can terminate the session. The session can be terminated by sending the status code for session termination in a <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> message; this can be sent together with an mdoc request or response [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #12.2.4] (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_113c</span></a>). If BLE is used, this can involve sending a status code for session termination or the “End” command. In this scenario, the GATT Client (Relying Party Instance) MUST unsubscribe from characteristics and disconnect from the GATT server (Wallet Instance) (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-007</span></a>, <a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_113b</span></a>, and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_114</span></a>).</p>
+<p><strong>Final Consideration</strong>: The presentation flow focused on the technical data exchange in proximity settings. It is crucial to recognise that supervised proximity flows involving a human verifier play a vital role in many use cases (e.g., age verification at a store, identity check by law enforcement). The human element adds a layer of identity verification through visual inspection and comparison, contributing to User Binding and overall authentication assurance aspects not fully captured in a purely technical presentation flow.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>During each credential presentation transaction executed through the proximity flow, the Wallet Instance MUST create and maintain a corresponding transaction record in the transaction log (see <a class="reference internal" href="wallet-instance-dashboard.html#wallet-instance-dashboard-and-transaction-logging"><span class="std std-ref">Wallet Instance Dashboard and Transaction Logging</span></a>).</p>
+<p>The transaction record MUST be created once the Wallet Instance has successfully established the session and accepted the reader for processing (i.e., after decrypting the <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message and verifying reader authentication, Step 10). At this point, the record MUST include the transaction metadata and the request context available at that stage (e.g., requested attestation type(s) such as <code class="docutils literal notranslate"><span class="pre">docType</span></code>, and the identifier(s) of the requested attributes), without logging any attribute values.</p>
+<p>The record MUST be updated as the transaction progresses to reflect the evolving transaction state and result context (e.g., what was actually presented after User consent and response preparation/sending, Steps 11–12), without logging any attribute values.</p>
+<p>The record MUST be finalized when the transaction ends, indicating the outcome (e.g., completed, failed, or session terminated; Steps 13–14 and Session Termination).</p>
+</div>
+<section id="deviceengagement-over-qr-code">
+<span id="sec-deviceengagement-qr"></span><h2><span class="section-number">12.2.2.1. </span><code class="docutils literal notranslate"><span class="pre">DeviceEngagement</span></code> over QR Code<a class="headerlink" href="#deviceengagement-over-qr-code" title="Link to this heading">¶</a></h2>
+<p>The following figure illustrates the low-level flow compliant with ISO 18013-5 for <code class="docutils literal notranslate"><span class="pre">DeviceEngagement</span></code> over QR Code corresponding to Box A in Figure <a class="reference internal" href="#fig-high-level-flow-itwallet-presentation-iso-updated"><span class="std std-ref">Low-Level Presentation Flow in proximity.</span></a>.</p>
+<figure class="align-default" id="id3">
+<span id="fig-deviceengagement-qr"></span><p class="plantuml">
+<object data="_images/plantuml-6f6fb2cd076434de8c56879c0a77f57f55ebfede.svg" type="image/svg+xml" style="width:90%">
+<a href="_images/plantuml-6f6fb2cd076434de8c56879c0a77f57f55ebfede.png"><img src="_images/plantuml-6f6fb2cd076434de8c56879c0a77f57f55ebfede.png" alt="The figure illustrates the Device Engagement over QR Code Presentation Flow in proximity." style="width: 90.0%"/></a>
+
+</object></p>
+<figcaption>
+<p><span class="caption-number">Fig. 12.15 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/PP0n3i8m34NtdCBAtWimL4Z0m0P5YDaaLcifTQlMIQvFbAK5F5Zoz__Fae-hug9n30QZJXB7Doq6IjKsbnqxdb4Kx0j388Mdi5h05VA_fRl1LGfH75LBCXiBdN92fPghIcxQT837C6NGWU3UmMdo12mkHC_IWxLdIkpe8ZtsD9AejT-iLCVKD6qk98Uo9sstFVqaTa8sHn9VFl01">Device Engagement over QR Code.</a></span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p><strong>Step 1</strong>: The Wallet Instance presents a QR Code to the Relying Party Instance. The QR code MUST contain a URI with “mdoc:” as scheme and the <code class="docutils literal notranslate"><span class="pre">DeviceEngagement</span></code> structure specified in Section 9.1 encoded using base64url-without-padding, according to <a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc4648">RFC 4648</a>, as path  (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_102a</span></a>).</p>
+<section id="non-normative-example-with-ble-as-data-retrieval">
+<h3><span class="section-number">12.2.2.1.1. </span>Non-Normative Example with BLE as Data Retrieval<a class="headerlink" href="#non-normative-example-with-ble-as-data-retrieval" title="Link to this heading">¶</a></h3>
+<p>Below is a non-normative example using the diagnostic notation of a CBOR-encoded <code class="docutils literal notranslate"><span class="pre">DeviceEngagement</span></code> that utilizes QR for Device Engagement and Bluetooth Low Energy (BLE) for data retrieval.</p>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+  0: &quot;1.1&quot;, % Version (Updated to 1.1 because Capabilities and OriginInfos are present)
+  1: % Security
+  [
+    1, % defines the cipher suite , which contains only EC curves
+    24(&lt;&lt; % embedded CBOR data item
+    {
+      1: 2, % kty:EC2 (Elliptic curves with x and y coordinate pairs)
+      -1: 1, % crv:p256
+      -2:h&#39;5A88D182BCE5F42EFA59943F33359D2E8A968FF289D93E5FA444B624343167FE&#39;, % x-coordinate
+      -3:h&#39;B16E8CF858DDC7690407BA61D4C338237A8CFCF3DE6AA672FC60A557AA32FC67&#39; % y-coordinate
+    }
+    &gt;&gt;)
+  ],
+  2: % DeviceRetrievalMethods (Device engagement using QR code with BLE for retrieval)
+  [
+    [
+      2, % BLE
+      1, % Version
+      { % BLE options
+        0: false, % no support for mdoc peripheral server mode
+        1: true,  % support for mdoc central client mode
+        11: h&#39;45EFEF742B2C4837A9A3B0E1D05A6917&#39; % UUID of mdoc client central mode
+      }
+    ]
+  ],
+  5: % OriginInfos (Required because Capabilities is present)
+  [],
+  6: % Capabilities (Defines supported features)
+  {
+    2: false, % HandoverSessionEstablishmentSupport (Supports negotiated handover)
+    3: true % ReaderAuthAllSupport (Supports reader authentication)
+  }
+}
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="non-normative-example-with-nfc-as-data-retrieval">
+<h3><span class="section-number">12.2.2.1.2. </span>Non-Normative Example with NFC as Data Retrieval<a class="headerlink" href="#non-normative-example-with-nfc-as-data-retrieval" title="Link to this heading">¶</a></h3>
+<p>Below is a non-normative example using the diagnostic notation of a CBOR-encoded <code class="docutils literal notranslate"><span class="pre">DeviceEngagement</span></code> that utilizes QR for Device Engagement and NFC for data retrieval.</p>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+  0: &quot;1.1&quot;, % Version (Updated to 1.1 because Capabilities and OriginInfos are present)
+  1: % Security
+  [
+    1, % defines the cipher suite , which contains only EC curves
+    24(&lt;&lt; % embedded CBOR data item
+    {
+      1: 2, % kty:EC2 (Elliptic curves with x and y coordinate pairs)
+      -1: 1, % crv:p256
+      -2:h&#39;5A88D182BCE5F42EFA59943F33359D2E8A968FF289D93E5FA444B624343167FE&#39;, % x-coordinate
+      -3:h&#39;B16E8CF858DDC7690407BA61D4C338237A8CFCF3DE6AA672FC60A557AA32FC67&#39; % y-coordinate
+    }
+    &gt;&gt;)
+  ],
+  2: % DeviceRetrievalMethods (Device engagement using QR code with BLE for retrieval)
+  [
+    [
+      1, % NFC
+      1, % Version
+      { % NFC options
+        0: uint, % Maximum length of command data field
+        1: uint, % Maximum length of response data field
+      }
+    ]
+  ],
+  5: % OriginInfos (Required because Capabilities is present)
+  [],
+  6: % Capabilities (Defines supported features)
+  {
+    2: false, % HandoverSessionEstablishmentSupport (Supports negotiated handover)
+    3: true % ReaderAuthAllSupport (Supports reader authentication)
+  }
+}
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Step 2</strong>: The Relying Party uses its Relying Party Instance to scan the QR code and retrieve the <code class="docutils literal notranslate"><span class="pre">DeviceEngagement</span></code> data from the mdoc. It MUST select one of the transmission technologies from the ones provided in the <code class="docutils literal notranslate"><span class="pre">DeviceEngagement</span></code> structure.</p>
+</section>
+</section>
+<section id="deviceengagement-over-nfc">
+<span id="sec-deviceengagement-nfc"></span><h2><span class="section-number">12.2.2.2. </span><code class="docutils literal notranslate"><span class="pre">DeviceEngagement</span></code> over NFC<a class="headerlink" href="#deviceengagement-over-nfc" title="Link to this heading">¶</a></h2>
+<p>The following figure illustrates the low-level flow compliant with ISO 18013-5 for <code class="docutils literal notranslate"><span class="pre">DeviceEngagement</span></code> over NFC corresponding to Box A in Figure <a class="reference internal" href="#fig-high-level-flow-itwallet-presentation-iso-updated"><span class="std std-ref">Low-Level Presentation Flow in proximity.</span></a> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_103</span></a>).</p>
+<figure class="align-default" id="id4">
+<span id="fig-deviceengagement-nfc"></span><p class="plantuml">
+<object data="_images/plantuml-bd60b7de10ef997660703912ae29ca90609c2647.svg" type="image/svg+xml" style="width:90%">
+<a href="_images/plantuml-bd60b7de10ef997660703912ae29ca90609c2647.png"><img src="_images/plantuml-bd60b7de10ef997660703912ae29ca90609c2647.png" alt="The figure illustrates the Device Engagement over NFC Presentation Flow in proximity." style="width: 90.0%"/></a>
+
+</object></p>
+<figcaption>
+<p><span class="caption-number">Fig. 12.16 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/img/dLDDJ-Cm4BtFhtZoXUOGJfooAaA28hWKr7QrPpSUWYNNpjfEilpxdPIIRRLKIEGG9NdpFkObkKbPnzpj7Eak1z_jjXo9g9M7jhQjzXdgbtQECtvwcnLqmd0Ahvxnw4N6rxo7Uo9TPzlhp38wNVPqWR8iiRo_XU7UrWpsZMvunw8o4m6HH8Zmt8HiXMAAaK3Ry0VgKvOYGBkCzJltLNiJUiaFEVgol1ugh5WRF1m0hDbnBMQRjvPnXOrk2XbcbnZBoVLKPn2Tlf8DhQ0Eoxl5FRGHDDl4QPf5uhXFDrDTz9L_gQlagmzK5OTCOwGfpOf_Tvp6tRks3N6qhdMCbcCg3jwZzN_fbRhRDx7uLuI2qLaND6xZ3O7a32bENkN5V0wbrfoI3NuXDM-TJQyVh2vQtnmlFxdDGfk5eLs1-Pn8xhuZ8_vuykuDzWN3-tSqjMTmM1pMuxEbVc2pN3nFrTg4JbYNrAEyXZJvrB8_7JcNSAAinsA-dBfr8PqNEx6aiMeYmqSV-j7DG3U2o__r5m00">Device Engagement over NFC.</a></span><a class="headerlink" href="#id4" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p><code class="docutils literal notranslate"><span class="pre">DeviceEngagement</span></code> over NFC is based on the NFC Forum Connection Handover Technical Specification, Version 1.5. Only Reader/ Writer mode using a Type 4 Tag is supported. The Connection Handover protocol is always initiated by the Relying Party Instance, which makes the role of Handover Requester. The Wallet Instance MUST use either Static Handover or Negotiated Handover:
+- <strong>Static Handover</strong>: The Relying Party Instance retrieves a Handover Select message directly from the Wallet Instance's Type 4 Tag. This message contains at least one Alternative Carrier Record, each indicating a retrieval method supported by the Wallet Instance (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_103a</span></a>). The Relying Party Instance MUST select one of these transmission technologies. (see Step 1)
+- <strong>Negotiated Handover</strong>: The Wallet Instance includes the service <code class="docutils literal notranslate"><span class="pre">urn:nfc:sn:handover</span></code> in a Service Parameter Record of the initial NDEF (NFC Data Exchange Format) message  (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_103b</span></a>). Upon selecting this service, the Relying Party Instance sends a Handover Request with an Alternative Carrier Record for each carrier it supports. The Wallet Instance replies with a Handover Select message containing exactly one selected carrier. (See Step 2-4)</p>
+<p><strong>Step 1</strong>: The Relying Party Instance reads the Wallet’s NFC Type 4 Tag to obtain a Handover Select message, which includes:
+- Alternative Carrier Record is an NDEF record inside a Handover Select or Handover Request message. It points to one possible communication technology (called a “carrier”), such as NFC or BLE. It tells the reader about the supported carrier and a pointer (Auxiliary Data Reference) to more detailed information. The Alternative Carrier Record for the NFC device retrieval transmission technology MUST reference the Carrier Configuration Record with the ID reference “nfc”.
+- Carrier Configuration Record provides the technical parameters needed actually to use that carrier. For NFC device retrieval transmission technology, it MUST have the type “iso.org:18013:nfc” and the ID reference “nfc”. The binary content of the Carrier Configuration Record MUST be encoded according to Table 1 of [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #9.2.2] (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_103d</span></a>).</p>
+<p>For example:
+For NFC, this defines maximum APDU (Application Protocol Data Unit) command/response lengths;
+For BLE, it defines the Wallet Instance service UUID, characteristic UUIDs, MTU (Maximum Transmission Unit) size, and optional connection parameters;
+If early <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> is supported, it also lists the TNEP (Tag NDEF Exchange Protocol) service name used to send the <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message during handover.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For the NFC device retrieval transmission technology, the contents of the Alternative Carrier Record and Carrier Configuration Record(s) MUST comply with [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #9.2.2]. For the BLE device retrieval transmission technology, the contents of the Alternative Carrier Record and Carrier Configuration Record(s) MUST comply with [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #11.1.2].</p>
+</div>
+<ul class="simple">
+<li><p>Auxiliary Data Record MUST carry the DeviceEngagement structure from the Wallet Instance to the Relying Party Instance as part of the auxiliary NDEF record in the Handover Select message. This record has the type <code class="docutils literal notranslate"><span class="pre">iso.org:18013:deviceengagement</span></code>, the ID reference “mdoc”, and uses the NFC forum external type format (<code class="docutils literal notranslate"><span class="pre">0x04</span></code>). For each Alternative Carrier record, the Auxiliary Data Reference MUST point to the NDEF record containing the <code class="docutils literal notranslate"><span class="pre">DeviceEngagement</span></code> Structure (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_103e</span></a>).</p></li>
+</ul>
+<p><strong>Step 2</strong>: The Relying Party Instance reads the Wallet Instance's Initial NDEF (NFC Data Exchange Format) message, which contains a service parameter record for <code class="docutils literal notranslate"><span class="pre">urn:nfc:sn:handover</span></code>, indicating the Wallet supports Negotiated Handover.</p>
+<p><strong>Step 3</strong>: The Relying Party Instance sends a Handover Request to the Wallet Instance listing the supported carriers.</p>
+<p><strong>Step 4</strong>: The Wallet Instance returns Handover Select constructed in response to the received Handover Request message. The contents of the Handover Select message is the same as Step 1 (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_103f</span></a>).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use of Negotiated Handover for Device Engagement allows negotiation of transfer methods. For BLE, it additionally allows negotiation of keys used by the transmission layer. This provides improved user experience and enhances the security of data transmission [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #9.2.1].</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Proceed only if the <code class="docutils literal notranslate"><span class="pre">DeviceEngagement</span></code> Capabilities include <code class="docutils literal notranslate"><span class="pre">HandoverSessionEstablishmentSupport</span></code> set to <code class="docutils literal notranslate"><span class="pre">true</span></code> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_103c</span></a>). Otherwise, skip the early <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code>. The early <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> is sent via a dedicated TNEP service; the same <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> MUST also be sent again during data retrieval and MUST match. If it does not match, the Wallet Instance terminates (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_103g</span></a>). If the early <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> fails to send, proceed as normal (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_103h</span></a>).</p>
+</div>
+<p><strong>Step 5</strong>: [Optional] Relying Party Instance opens the TNEP service named [<a class="reference external" href="urn:placeholder">urn:placeholder</a>] with the Wallet Instance during the negotiated handover to deliver the early <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message.</p>
+<p><strong>Step 6</strong>: Relying Party Instance sends <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">EReaderKey</span></code> + encrypted <code class="docutils literal notranslate"><span class="pre">DeviceRequest</span></code>). Wallet Instance processes it; data retrieval has not started yet.</p>
+<p><strong>Step 7</strong>: Relying Party Instance closes the TNEP service.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If an optional <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message is sent during Negotiated Handover (Step 5), the Wallet Instance MUST verify that it matches the <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message received during Device Retrieval (using BLE or NFC secure channel). This verification is required to ensure a correct Session Binding.</p>
+</div>
+<section id="non-normative-example">
+<h3><span class="section-number">12.2.2.2.1. </span>Non-Normative Example<a class="headerlink" href="#non-normative-example" title="Link to this heading">¶</a></h3>
+<dl>
+<dt>Below is a non-normative example of a <code class="docutils literal notranslate"><span class="pre">DeviceEngagement</span></code> structure for Data Retrieval over BLE and NFC.</dt><dd><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+  0: &quot;1.1&quot;, % Version (Updated to 1.1 because Capabilities and OriginInfos are present)
+  1: % Security
+  [
+    1, % defines the cipher suite , which contains only EC curves
+    24(&lt;&lt; % embedded CBOR data item
+    {
+      1: 2, % kty:EC2 (Elliptic curves with x and y coordinate pairs)
+      -1: 1, % crv:p256
+      -2:h&#39;5A88D182BCE5F42EFA59943F33359D2E8A968FF289D93E5FA444B624343167FE&#39;, % x-coordinate
+      -3:h&#39;B16E8CF858DDC7690407BA61D4C338237A8CFCF3DE6AA672FC60A557AA32FC67&#39; % y-coordinate
+    }
+    &gt;&gt;)
+  ],
+  2: % DeviceRetrievalMethods (Absent when using NFC for device engagement)
+  [],
+  5: % OriginInfos (Required because Capabilities is present)
+  [],
+  6: % Capabilities (Defines supported features)
+  {
+    2: true, % HandoverSessionEstablishmentSupport (Supports negotiated handover)
+    3: true % ReaderAuthAllSupport (Supports reader authentication)
+  }
+}
+</pre></div>
+</div>
+</dd>
+</dl>
+</section>
+</section>
+<section id="sessionestablishment-over-ble">
+<h2><span class="section-number">12.2.2.3. </span><code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> over BLE<a class="headerlink" href="#sessionestablishment-over-ble" title="Link to this heading">¶</a></h2>
+<p>The following figure illustrates the low-level flow compliant with <a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> for <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> over BLE corresponding to Boxes B in Figure 8.10.</p>
+<figure class="align-default" id="id5">
+<span id="fig-sessionestablishment-ble"></span><p class="plantuml">
+<object data="_images/plantuml-7588c545d71a216ff8e5832d6a4055f5f8567f7b.svg" type="image/svg+xml" style="width:90%">
+<a href="_images/plantuml-7588c545d71a216ff8e5832d6a4055f5f8567f7b.png"><img src="_images/plantuml-7588c545d71a216ff8e5832d6a4055f5f8567f7b.png" alt="The figure illustrates the Session Establishment over BLE Presentation Flow in proximity." style="width: 90.0%"/></a>
+
+</object></p>
+<figcaption>
+<p><span class="caption-number">Fig. 12.17 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/ZLHDRzim3BthLn2-r3aaG3PWXs8RYYu15c0PXcRfBhimCki8ioLDakNq5-r_x9UDabitmVeL184Zak_nFLA-y05TwDf6O1UCxjeTEI4idocfBEe0nGzi6WgmrIeKW1xwq_3LDrXfHj6ISZWAWJAeY84uTNpaupFuyDI7OvTVbY2DriGLHWCnvAvHVjyIivGtphImtQuMu4YIYbI1qh2Wg2J1KjTOKqgSF4iYTkO0HIBo53eBfJCDJR7MnhEUII40ullfn_uSblViC6JBpX78FN9xZI1T0IEz9EYQdBgvPKsEMmvWYHn4XR2gaY86SsmEvoHkAF_-cSzdyzdRsPldDMG9zn0aVq7PLaP2J6IAF8GzZPIEi2ANTV7Ns01N-MHeJKbCJdEapve_cTPsF2awM2vcWpFB48xdkVJntYCs7Pt08BirpccewLNOZz0ZCamFmDZbaBDMliKWznFuJgvLEktDwLfm3RlFl_0mXPXfYs93tdFAydXnYW8CM_FO54Nouwu6BfMkbAx5866TcdWQiULZthS7XLNdk1X-QlXAjGaAatkVKLUPEojFO_clZZTu4yZ2Ep4QiRxBUOKLoGXnDWndazn0yAhMZClCR9DqjpOruiXRepr1EIfQOC2Yc737kJb7lpk-Rwao1ATsl0L-z4s8YevkyT6VNbmmBRyx_W40">Session Establishment over BLE.</a></span><a class="headerlink" href="#id5" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p><strong>Step 1</strong>: The Wallet Instance and Relying Party Instance establish a secure BLE connection [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #11.1]. The Relying Party Instance (central) connects to the Wallet Instance (peripheral) using the Wallet Instance service UUID provided by DeviceEngagement, then discovers services/characteristics, and enables notifications as needed (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_112c</span></a>).</p>
+<p><strong>Step 2-5</strong>: [Optional] Wallet Instance initiates verification by preparing to check the Relying Party’s identity via the Ident characteristic, that is a BLE GATT characteristic that carries an identifier value as described in [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #11.1.3.2]. The Wallet Instance derives the expected Ident value and reads the Relying Party's Ident characteristic, comparing it to the expected Ident, and terminating the BLE connection if a mismatch may occur .</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The purpose of the Ident characteristic is only to verify whether the Wallet Instance is connected to the correct Relying Party Instance before starting data retrieval. If the Wallet Instance is connected to the wrong Relying Party Instance, session establishment will fail. Connecting and disconnecting to a Relying Party Instance takes a relatively large amount of time; therefore, it is faster to implement methods to identify the correct Relying Party Instance [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #11.1.3.1] (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_112d</span></a>).</p>
+</div>
+<p><strong>Step 6</strong>: Relying Party Instance sends the encrypted <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message (includes <code class="docutils literal notranslate"><span class="pre">EReaderKey</span></code> and encrypted <code class="docutils literal notranslate"><span class="pre">DeviceRequest</span></code>) over the established BLE connection.</p>
+<p><strong>Step 7-8</strong>: [Optional] If the Wallet Unit receives the <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message during Negotiated Handover, the Wallet Unit MUST verify if this <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message matches the <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message received during the data retrieval phase (i.e., Step 6). In the event of a mismatch, the Wallet Unit MUST terminate the BLE connection [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #9.2.3].</p>
+</section>
+<section id="sessiondata-over-ble">
+<h2><span class="section-number">12.2.2.4. </span><code class="docutils literal notranslate"><span class="pre">SessionData</span></code> over BLE<a class="headerlink" href="#sessiondata-over-ble" title="Link to this heading">¶</a></h2>
+<p>The following figure illustrates the low-level flow compliant with <a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> for <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> over BLE corresponding to Boxes C in Figure 8.10.</p>
+<figure class="align-default" id="id6">
+<span id="fig-sessiondata-ble"></span><p class="plantuml">
+<object data="_images/plantuml-54986cef06b3469ff9342d5ae71380daf25525e0.svg" type="image/svg+xml" style="width:90%">
+<a href="_images/plantuml-54986cef06b3469ff9342d5ae71380daf25525e0.png"><img src="_images/plantuml-54986cef06b3469ff9342d5ae71380daf25525e0.png" alt="The figure illustrates the Session Data over BLE Presentation Flow in proximity." style="width: 90.0%"/></a>
+
+</object></p>
+<figcaption>
+<p><span class="caption-number">Fig. 12.18 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/LO-n3i8m34JtV8ML2GP-W05L20Oa1aI5M5ZSr898hLjYfn5_Zs50PRjtT_B9bIWcpNtdCEl0kMyeEJUQ5qCSaHNy5RkE52uSrGCAbF_uV883snKEz8qdvp1ed539gZzfTbbjfZNKn2qWIBmpcJ0W3kargb4Y6GSMWeNtDOd4WNUewFqIRboYFgpnp2IVBggcs6GbWM6Y1DlZthcMPeCpAAwoMNlp3G00">Session Data over BLE.</a></span><a class="headerlink" href="#id6" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p><strong>Step 1</strong>: The Wallet Instance sends the final APDU containing either the last block DeviceResponse (with requested attributes) or a status code, after which the session may end or continue with a new request.</p>
+</section>
+<section id="sessionestablishment-over-nfc">
+<h2><span class="section-number">12.2.2.5. </span><code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> over NFC<a class="headerlink" href="#sessionestablishment-over-nfc" title="Link to this heading">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If Device Engagement is initiated via a QR code, the Relying Party Instance has no standardised way to signal its intent to use NFC for subsequent data transfer. This could lead to a poor user experience, as the User might not be aware that they need to use NFC. This issue is avoided when NFC is used for the Device Engagement, as it implicitly establishes the data transfer method [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #8.2.5].</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Due to the limited data transfer rate of NFC, if a large amount of data is required for a transaction, it may be neither practical nor reasonable for a User to keep the device within the RF range of the Relying Party Instance for the duration of the transaction. Furthermore, loss of signal when a device leaves the RF field necessitates re-initiating the transaction. This can only be avoided if all necessary User interactions with the Wallet Instance are performed while the device remains in the field, or if no User interaction is required during the active transmission phase [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #8.2.5].</p>
+<p>The following figure illustrates the low-level flow compliant with <a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> for <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> over NFC corresponding to Box B in Figure 8.10.</p>
+</div>
+<figure class="align-default" id="id7">
+<span id="fig-sessionestablishment-nfc"></span><p class="plantuml">
+<object data="_images/plantuml-f2958664494fe16697d9486dbe78379f8670297c.svg" type="image/svg+xml" style="width:90%">
+<a href="_images/plantuml-f2958664494fe16697d9486dbe78379f8670297c.png"><img src="_images/plantuml-f2958664494fe16697d9486dbe78379f8670297c.png" alt="The figure illustrates the Session Establishment over NFC Presentation Flow in proximity." style="width: 90.0%"/></a>
+
+</object></p>
+<figcaption>
+<p><span class="caption-number">Fig. 12.19 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/ZP9BJyCm383l-HLMJzjX9pWX3G6b20HxYF6uSCbIRutKE25nM_ZtE6n2GsWIjyJv77-ESv5OH-vSgtJ7dZgtngXKa9WrDcXYA5vrsoB3Crc6qVAkBCS5w0J3R-fn2NSabv51eShh7TGhfGtRNZDAmizImjCfWAkzWSiGMciqMq-mmXRDzsewLJrCpc4uWqL0sg7w07sZLVLGbKzWl7EQQZLal3-3lQxnjB7H9G57Ytlm4IpLEHaJE1yHQiqQsCC6sJJZRw6YM65ASdibZQnRcng7n4LnQ5EHYP-1iJvEHtplCF4RLVENwc6nh8uvHap1Kvt-g-W3mxucN6MMjcgOd8lLJ0jntCX9M6zH2XgqlRZNNPHaUHkOuzQprRcXMr7qFKOOB3V03VxDip8ZnW0dazFSp4TkPZJRKpERNFOOmnD6PobFUdvJvb7GRgmAvH5KZGT_uc3Jgmivbx_u1G00">Session Establishment over NFC.</a></span><a class="headerlink" href="#id7" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<section id="definitions-acronyms-and-commands">
+<h3><span class="section-number">12.2.2.5.1. </span>Definitions (Acronyms and Commands)<a class="headerlink" href="#definitions-acronyms-and-commands" title="Link to this heading">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 15.0%" />
+<col style="width: 85.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Acronym/Command</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>PICC</strong></p></td>
+<td><p>Proximity Integrated Circuit Card, implemented by Wallet Units acting as a NFC tag.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>PCD</strong></p></td>
+<td><p>Proximity Coupling Device, impletented by Relying Party instances using <cite>APDU</cite> exchanges.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>AID</strong></p></td>
+<td><p>Application Identifier, unique ID used in SELECT <cite>APDU</cite> command to engage the Wallet Instance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>APDU</strong></p></td>
+<td><p>Application Protocol Data Unit, a standard message format for communication between Relying Party Instance (PCD) and Wallet (PICC) consists of Command APDUs (e.g., <cite>SELECT</cite>, <cite>ENVELOPE</cite>, <cite>GET RESPONSE</cite>) from the reader and Response <cite>APDUs</cite> from the wallet, which include data exhange and end exchange using status words (<cite>SW1/SW2</cite>).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>SELECT APDU</strong></p></td>
+<td><p>Command that opens the Wallet Instance by <cite>AID</cite>.  Response includes File Control Information (FCI) and Status Word (<cite>SW1/SW2</cite>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>ENVELOPE APDU</strong></p></td>
+<td><p>Command that carries session messages (e.g., <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code>).  Response indicates processing status (<cite>OK</cite> or <cite>more data</cite>).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>GET RESPONSE APDU</strong></p></td>
+<td><p>Command that retrieves additional response data when the Wallet signals &quot;more data&quot; is available (<cite>SW1=61</cite>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>SW1/SW2</strong></p></td>
+<td><p><cite>SW1/SW2</cite> (Status Words) — Two-byte status code at the end of every response.  Common values: <cite>90 00 = success</cite>, <cite>61 XX = more data</cite>, <cite>6A 82 = file/application not found</cite>.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 1</strong>: The Relying Party Instance (PCD) sends a SELECT <cite>APDU</cite> command with the Application Identifier (<cite>AID: A0 00 00 02 48 04 00</cite>) to engage the Wallet Instance.</p>
+<p><strong>Step 2</strong>: The Wallet Instance (PICC) responds with File Control Information (FCI) and status words (SW1/SW2), either confirming success (<cite>90 00</cite>) or indicating that more data (<cite>61 XX</cite>) (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_112e</span></a>).</p>
+<p><strong>Step 3</strong>: The Relying Party Instance sends an ENVELOPE <cite>APDU</cite> carrying the <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message, which contains the encrypted <code class="docutils literal notranslate"><span class="pre">DeviceRequest</span></code> and its ephemeral public key for session setup.</p>
+<p><strong>Step 4</strong>: The Wallet Instance processes <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> and returns an <cite>APDU</cite> response with <cite>SW1/SW2</cite> (<cite>OK</cite> or <cite>more data</cite> to fetch), confirming the start of secure session context (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_112f</span></a>).</p>
+<p><strong>Step 5-6</strong>: [Optional] The Wallet Instance receives the <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message during Negotiated Handover, the Wallet Instance MUST verify that this <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message matches the same message received during the data retrieval phase (i.e., Step 3-4). In the event of a mismatch, the Wallet Instance MUST terminate the NFC connection [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #9.2.3].</p>
+</section>
+</section>
+<section id="sessiondata-over-nfc">
+<h2><span class="section-number">12.2.2.6. </span><code class="docutils literal notranslate"><span class="pre">SessionData</span></code> over NFC<a class="headerlink" href="#sessiondata-over-nfc" title="Link to this heading">¶</a></h2>
+<p>The following figure illustrates the low-level flow compliant with <a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> for <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> over NFC corresponding to Box C in Figure 8.10.</p>
+<figure class="align-default" id="id8">
+<span id="fig-sessiondata-nfc"></span><p class="plantuml">
+<object data="_images/plantuml-370bf7fd139f84e4a45d4da044363ee6b646662d.svg" type="image/svg+xml" style="width:90%">
+<a href="_images/plantuml-370bf7fd139f84e4a45d4da044363ee6b646662d.png"><img src="_images/plantuml-370bf7fd139f84e4a45d4da044363ee6b646662d.png" alt="The figure illustrates the Session Data over NFC Presentation Flow in proximity." style="width: 90.0%"/></a>
+
+</object></p>
+<figcaption>
+<p><span class="caption-number">Fig. 12.20 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/PP3DJiD038Jl-nIZN4WEl42be4ffGBr0b81wuU8afbrfVyAkavItPn6YAkhDjkORZMSRXOBCrYYQnRlPzXoKcj9D3teY9yWEP0mBtfmMvCs-geeC5B7-LxKDzYwPkO6JgjhzYXQbQ12za702BcCwgxkoH9Pr7AFsRaT2MORwF9p87HbbgOpt4mudRHZM1yQO9D0Hj90sr1jMm8Bx1wmRjFmvSnGuFWi-0XqjfqnuTtYgNz7MNVFotDKOlBNanWIkF-2okGbmONDsG_YQXCT2SKB-W4VjoDnWEOa4tS_24JuWrI1pB9GQ-UhxgsLHssIQMly6">Session Data over NFC.</a></span><a class="headerlink" href="#id8" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p><strong>Step 1-2</strong>: As long as the Wallet Instance signals that more data is available (<cite>61 XX</cite>), the Relying Party Instance issues <cite>GET RESPONSE APDUs</cite> to request the next block.  The Wallet Instance returns encrypted <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> fragments until all data is delivered.</p>
+<p><strong>Step 3</strong>: The Wallet Instance sends the final <cite>APDU</cite> containing either the last block DeviceResponse (with requested attributes) or a status code, after which the session may end or continue with a new request.</p>
+</section>
+<section id="device-engagement">
+<h2><span class="section-number">12.2.2.7. </span>Device Engagement<a class="headerlink" href="#device-engagement" title="Link to this heading">¶</a></h2>
+<p>The Device Engagement structure MUST be CBOR encoded and have at least the following components (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-001</span></a>, <a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-021</span></a>, <a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-022</span></a>, and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_102</span></a>):</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Component</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Version</strong></p></td>
+<td><p><em>(tstr)</em>. Version of the Device Engagement structure.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Security</strong></p></td>
+<td><p><em>(array)</em>. Contains two mandatory values:</p>
+<ul class="simple">
+<li><p><em>(int)</em>. Cipher suite identifier. See Table 22 of <a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a>.</p></li>
+<li><p><em>(bstr)</em>. Public ephemeral key generated by the Wallet Instance, used by the Relying Party Instance to derive the Session Key. The key MUST be of a type allowed by the selected cipher suite (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-022</span></a>).</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>DeviceRetrievalMode-BLEOptions</strong></p></td>
+<td><p><em>(map)</em>. Provides options for the BLE connection, such as Peripheral Server or Central Client mode, and the device UUID. See Table 2 of <a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> for the detailed mapping.</p>
+<p>If the Wallet Instance indicates during Device Engagement that it supports both modes, the Relying Party Instance  SHOULD select the mdoc central client mode  [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #11.1.3.1].</p>
+<p>Only present when performing Device Engagement using the QR code. Absent when using NFC to perform Device Engagement.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>DeviceRetrievalMode-NFCOptions</strong></p></td>
+<td><p><em>(map)</em>. Provides options for NFC connections, including the supported role (PICC or PCD) and maximum PDU command/response sizes. See Table 2 of <a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> for the detailed mapping.</p>
+<p>In case NFC is used for Device Retrieval, the Wallet Instance MUST support PICC mode and the Relying Party Instance MUST support PCD mode [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #11.2].</p>
+<p>Only present when performing Device Engagement using the QR code. Absent when using NFC to perform Device Engagement.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Capabilities</strong></p></td>
+<td><p><em>(map)</em>. Declares optional capabilities supported by the mdoc, that are:</p>
+<ul class="simple">
+<li><p><strong>HandoverSessionEstablishmentSupport</strong> <em>(bool)</em>. If present, it MUST be set to <cite>true</cite>. Indicates support for receiving the <cite>SessionEstablishment</cite> message during Negotiated Handover, as defined in [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #9.2.3] (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-024</span></a>).</p></li>
+<li><p><strong>ReaderAuthAllSupport</strong> <em>(bool)</em>. If present, it MUST be set to <cite>true</cite>. Indicates support for receiving the <cite>ReaderAuthAll</cite> structure in the mdoc request, as defined in [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #10.2.6] (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-025</span></a>).</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>OriginInfos</strong></p></td>
+<td><p><em>(array)</em>. Describes the interface used to receive and deliver the engagement structure.</p>
+<p><cite>OriginInfos</cite> MAY be an empty array.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<section id="mdoc-request">
+<h3><span class="section-number">12.2.2.7.1. </span>mdoc Request<a class="headerlink" href="#mdoc-request" title="Link to this heading">¶</a></h3>
+<p>The messages in the mdoc Request MUST be encoded using CBOR. The resulting CBOR byte string for the mdoc Request MUST be encrypted with the Session Key obtained after the Device Engagement phase and MUST be transmitted using the BLE or NFC protocol (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-026</span></a>, <a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-027</span></a>, <a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-028</span></a>).</p>
+<p>Each mdoc Request MUST be compliant with the following structure, and MUST include the following components, unless otherwise specified:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Component</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>version</strong></p></td>
+<td><p><em>(tstr)</em>. Version of the mdoc Request structure. Enables compatibility management across different versions or implementation profiles.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>docRequests</strong></p></td>
+<td><p><em>(array)</em>. Each entry is a <cite>DocRequest</cite> containing:</p>
+<ul>
+<li><p><strong>itemsRequest</strong>. CBOR-encoded <cite>ItemsRequest</cite> structure, formatted as:</p>
+<ul>
+<li><p><strong>docType</strong> <em>(tstr)</em>. The type of document requested. See <a class="reference internal" href="credential-data-model.html#mdoc-cbor-credential-format"><span class="std std-ref">mdoc-CBOR Credential Format</span></a>.</p></li>
+<li><p><strong>nameSpaces</strong> <em>(map)</em>. A map of namespace identifiers to requested <em>DataElements</em>.</p>
+<p>Each entry in <cite>DataElements</cite> includes:</p>
+<ul class="simple">
+<li><p><strong>DataElementIdentifier</strong> <em>(tstr)</em>. The identifier of the requested data element.</p></li>
+<li><p><strong>IntentToRetain</strong> <em>(bool)</em>. Indicates whether the Relying Party intends to retain the value of the data element.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>readerAuth</strong> <em>(COSE_Sign1, CONDITIONAL)</em>. Used to authenticate the the Relying Party Instance for each <cite>DocRequest</cite>. The signature is computed over <cite>ReaderAuthentication</cite> data, as defined in [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #12.5].</p>
+<p>This component MUST be present only if <cite>readerAuthAll</cite> is not used (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-025</span></a>).</p>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>readerAuthAll</strong></p></td>
+<td><p><em>(COSE_Sign1, CONDITIONAL)</em>. Used to authenticate the Relying Party once for all <cite>DocRequest`s. The signature is computed over `ReaderAuthenticationAll</cite> data, as defined in [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #12.5].</p>
+<p>This component MUST be present only if <cite>ReaderAuthAllSupport</cite> is set to <cite>true</cite> in the DeviceEngagement structure, and individual <cite>readerAuth</cite> fields are not used (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-025</span></a>).</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="mdoc-response">
+<h3><span class="section-number">12.2.2.7.2. </span>mdoc Response<a class="headerlink" href="#mdoc-response" title="Link to this heading">¶</a></h3>
+<p>The messages in the mdoc Response MUST be encoded using CBOR and MUST be encrypted with the Session Key obtained after the Device Engagement phase (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-029</span></a>, <a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-030</span></a>).</p>
+<p>Each mdoc Response MUST be compliant with the following structure, and MUST include the following components, unless otherwise specified:</p>
+<table class="longtable docutils align-default" id="table-mdoc-attributes">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 75.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Component</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>version</strong></p></td>
+<td><p><em>(tstr)</em>. Version of the mdoc Response structure. Enables tracking changes and maintaining compatibility across versions of the standard or implementation profiles.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>documents</strong></p></td>
+<td><p><em>(array of Documents, OPTIONAL)</em>. CBOR-encoded collection of documents returned in response to the request. Each document includes <cite>issuerSigned</cite> and <cite>deviceSigned</cite> components, and follows the structure defined in [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #10.3.3].</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>documentErrors</strong></p></td>
+<td><p><em>(map, OPTIONAL)</em>. A map of error codes for unreturned documents, as defined in [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #10.3.6]. Each key is a <cite>docType</cite>, and each value is an <cite>ErrorCode</cite> (int) indicating the reason why the document was not returned.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>status</strong></p></td>
+<td><p><em>(uint)</em>. Status code indicating the outcome of the request. For example, <cite>&quot;status&quot;: 0</cite> means successful processing. For details, see Table 3 (ResponseStatus) of [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #10.3.5].</p></td>
+</tr>
+</tbody>
+</table>
+<p>Each document in <strong>documents</strong> MUST be compliant with the following structure, and it MUST include the following components, unless otherwise specified (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-029</span></a>):</p>
+<table class="longtable docutils align-default" id="table-mdoc-documents-attributes">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Component</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>docType</strong></p></td>
+<td><p><em>(tstr)</em>. Document type identifier. For example, for an mDL, the value MUST be <code class="docutils literal notranslate"><span class="pre">org.iso.18013.5.1.mDL</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>issuerSigned</strong></p></td>
+<td><p><em>(bstr)</em>. Contains the <cite>IssuerNameSpaces</cite> structure, which includes data elements signed by the Issuer, and the <cite>issuerAuth</cite> structure, which ensures their authenticity and integrity using the Mobile Security Object (MSO). See <a class="reference internal" href="credential-data-model.html#mdoc-cbor-credential-format"><span class="std std-ref">mdoc-CBOR Credential Format</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>deviceSigned</strong></p></td>
+<td><p><em>(bstr)</em>. Contains the <cite>DeviceNameSpaces</cite> structure (data elements signed by the Wallet Instance), and the <cite>deviceAuth</cite> structure, which includes the authentication data signed by the Wallet Instance. See the table below for details.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>errors</strong></p></td>
+<td><p><em>(map, OPTIONAL)</em>. A map of error codes for each unreturned data element grouped by namespace. Each key represents a namespace, and each value is a map of data element identifiers to corresponding error codes. See [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #10.3.6] for details on the errors structure.</p></td>
+</tr>
+</tbody>
+</table>
+<p>A <strong>deviceSigned</strong> data structure MUST be compliant with the following structure (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_111a</span></a>), and MUST include the following components:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 75.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Component</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>nameSpaces</strong></p></td>
+<td><p><em>(bstr)</em>. Contains the <cite>DeviceNameSpaces</cite> structure. It MAY be an empty structure. <cite>DeviceNameSpaces</cite> maps namespace identifiers to a set of data elements signed by the Wallet Instance.</p>
+<p>Each namespace contains one or more <cite>DeviceSignedItem</cite>, where each item includes:</p>
+<ul class="simple">
+<li><p><strong>DataItemName</strong> <em>(tstr)</em>. The identifier of the data element.</p></li>
+<li><p><strong>DataItemValue</strong> <em>(any)</em>. The value of the data element.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>deviceAuth</strong></p></td>
+<td><p><em>(COSE_Sign1)</em>. Contains the <cite>DeviceAuth</cite> structure, which MUST include the <strong>deviceSignature</strong> for the Wallet Instance authentication. The signature is computed over the <cite>DeviceAuthentication</cite> data, which binds the returned elements to the session and the request. See [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #12.4] for details on the authentication structure.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="session-termination">
+<h3><span class="section-number">12.2.2.7.3. </span>Session Termination<a class="headerlink" href="#session-termination" title="Link to this heading">¶</a></h3>
+<p>The session MUST be terminated if at least one of the following conditions occur (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-007</span></a> and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_113–113a</span></a>):</p>
+<ul class="simple">
+<li><p>After a time-out of no activity of receiving or sending session establishment or session data messages occurs. The time-out for no activity implemented by the Wallet Instance and the Relying Party Instance SHOULD be no less than 300 seconds;</p></li>
+<li><p>When the Wallet Instance does not accept any more requests;</p></li>
+<li><p>When the Relying Party Instance does not send any further requests.</p></li>
+</ul>
+<p>If the Wallet Instance and the Relying Party Instance do not send or receive any further requests, the session termination MUST be initiated as follows (<a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-verifier-test-matrix"><span class="std std-ref">PPR-007</span></a> and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_113</span></a>):</p>
+<ul class="simple">
+<li><p>Send the status code for session termination, or</p></li>
+<li><p>Dispatch the &quot;End&quot; command as outlined in [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #11.1.3.3].</p></li>
+</ul>
+<p>When a session is terminated, the Wallet Instance and the Relying Party Instance MUST perform at least the following actions (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_114</span></a>):</p>
+<ul class="simple">
+<li><p>Destruction of session keys and related ephemeral key material;</p></li>
+<li><p>Closure of the communication channel used for data retrieval.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See <a class="reference internal" href="credential-data-model.html#mdoc-cbor-credential-format"><span class="std std-ref">mdoc-CBOR Credential Format</span></a> for the meaning of CBOR type acronyms.</p>
+</div>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+    
+        <div id="show_right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&lt;</span><span>Page contents</span></a></p>
+        </div>
+
+        <div id="right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
+            <div class="page_toc">
+                <ul>
+<li><a class="reference internal" href="#">12.2.2. Proximity Flow</a><ul>
+<li><a class="reference internal" href="#deviceengagement-over-qr-code">12.2.2.1. <code class="docutils literal notranslate"><span class="pre">DeviceEngagement</span></code> over QR Code</a><ul>
+<li><a class="reference internal" href="#non-normative-example-with-ble-as-data-retrieval">12.2.2.1.1. Non-Normative Example with BLE as Data Retrieval</a></li>
+<li><a class="reference internal" href="#non-normative-example-with-nfc-as-data-retrieval">12.2.2.1.2. Non-Normative Example with NFC as Data Retrieval</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#deviceengagement-over-nfc">12.2.2.2. <code class="docutils literal notranslate"><span class="pre">DeviceEngagement</span></code> over NFC</a><ul>
+<li><a class="reference internal" href="#non-normative-example">12.2.2.2.1. Non-Normative Example</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#sessionestablishment-over-ble">12.2.2.3. <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> over BLE</a></li>
+<li><a class="reference internal" href="#sessiondata-over-ble">12.2.2.4. <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> over BLE</a></li>
+<li><a class="reference internal" href="#sessionestablishment-over-nfc">12.2.2.5. <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> over NFC</a><ul>
+<li><a class="reference internal" href="#definitions-acronyms-and-commands">12.2.2.5.1. Definitions (Acronyms and Commands)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#sessiondata-over-nfc">12.2.2.6. <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> over NFC</a></li>
+<li><a class="reference internal" href="#device-engagement">12.2.2.7. Device Engagement</a><ul>
+<li><a class="reference internal" href="#mdoc-request">12.2.2.7.1. mdoc Request</a></li>
+<li><a class="reference internal" href="#mdoc-response">12.2.2.7.2. mdoc Response</a></li>
+<li><a class="reference internal" href="#session-termination">12.2.2.7.3. Session Termination</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    
+
+      <div class="clearer"></div>
+    </div>
+    <div class="button_nav_wrapper">
+        <div class="button_nav">
+            <div class="left">
+                
+                <a href="remote-flow.html">
+                    <span class="icon">&lt;</span><span><span class="section-number">12.2.1. </span>Remote Flow</span></a>
+                
+            </div>
+
+            <div class="right">
+                
+                    <a href="wallet-metadata-retrieval.html"><span><span class="section-number">12.3. </span>Wallet Metadata Retrieval Flow</span><span class="icon">&gt;</span></a>
+                
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer" role="contentinfo">
+      Last updated on 19/04/2026.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
+    </div>
+
+<p id="theme_credit"></p>
+  </body>
+</html>
