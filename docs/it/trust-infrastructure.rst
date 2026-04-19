@@ -8,16 +8,11 @@ L'Infrastruttura di Trust
 
 L'ecosistema IT-Wallet opera all'interno di un'infrastruttura di trust federata dove le entità partecipanti stabiliscono relazioni di trust crittografiche e mantengono la conformità con standard di sicurezza comuni. Questa infrastruttura fornisce le fondamenta per operazioni sicure di Credenziali Elettroniche tra i partecipanti dell'ecosistema.
 
-Questa sezione definisce l'implementazione del Trust Model in un'infrastruttura che è conforme a OpenID Federation 1.0 `OID-FED`_. Tale infrastruttura nazionale prevede un'API RESTful per la distribuzione di metadati, policy dei metadati, trust mark, chiavi pubbliche crittografiche e certificati X.509, e lo stato di revoca dei partecipanti, chiamati anche Entità di Federazione.
+Questa sezione definisce il Trust Model con OpenID Federation 1.0 `OID-FED`_ e con endpoint REST per metadati, policy, trust mark e registrazione delle Entità di Federazione.
 
+Il livello federativo riguarda la partecipazione all'ecosistema, la scoperta delle controparti e i flussi di enrolment attraverso cui un partecipante **richiede e ottiene** il materiale certificato X.509 presso la propria Certificate Authority superiore. Una volta emesso, il certificato diventa un artefatto PKIX nel senso di `RFC 5280`_. Ne derivano periodo di validità, costruzione della catena, rinnovo e revoca secondo la pratica PKIX, e ogni consumatore DEVE valutarlo con strumenti X.509 o PKIX consolidati. Le risposte dei protocolli di federazione NON DEVONO mai sostituire quella valutazione PKIX. Le regole normative di emissione PKIX per IT-Wallet sono in :ref:`trust-infrastructure:X.509 PKI`. Le operazioni PKIX quotidiane sono raccolte in :ref:`annex/x5c-evaluation:Operazioni di Gestione dei Certificati X.509`.
 
-Questa infrastruttura di trust lavora in coordinamento con l'Infrastruttura del Registro (vedi :ref:`registry:Infrastruttura del Registro`) per abilitare i processi di onboarding delle entità dettagliati in :ref:`entity-onboarding:Onboarding delle Entità`. In particolare, abilita l'implementazione tecnica dei processi di onboarding descritti in :ref:`entity-onboarding:Onboarding delle Entità` e supporta gli scenari operativi illustrati in :ref:`onboarding-high-level:Onboarding Journey Maps`.
-
-**Abilitazione dell'Onboarding**: L'Infrastruttura di Trust fornisce i meccanismi crittografici che consentono alle nuove entità (Credential Issuer, Relying Party, Fornitori di Wallet) di stabilire relazioni di trust verificabili durante il loro processo di registrazione. Senza questa infrastruttura, le entità non sarebbero in grado di dimostrare il loro stato di conformità o le capacità operative agli altri partecipanti dell'ecosistema.
-
-**Supporto al Ciclo di Vita delle Entità**: Durante tutto il ciclo di vita operativo di un'entità, l'Infrastruttura di Trust mantiene attestazioni di trust aggiornate, gestisce la rotazione delle chiavi, gestisce scenari di revoca e supporta il monitoraggio della conformità. Questo supporta direttamente le procedure di gestione del ciclo di vita dettagliate in :ref:`entity-onboarding:Onboarding delle Entità`.
-
-**Integrazione con l'Infrastruttura del Registro**: L'Infrastruttura di Trust implementa il componente Federation Registry dell'Infrastruttura del Registro più ampia, fornendo le fondamenta tecniche per la scoperta delle entità e la validazione del trust che sottende tutte le procedure di onboarding.
+L'infrastruttura di trust è coordinata con :ref:`registry:Infrastruttura del Registro`. Sostiene :ref:`entity-onboarding:Onboarding delle Entità` e i percorsi descritti in :ref:`onboarding-high-level:Onboarding Journey Maps`. Offre inoltre attestazioni di trust, rotazione delle chiavi crittografiche e gestione delle revoche per le entità registrate, e implementa il Federation Registry per la scoperta delle entità e la validazione del trust sotteso all'onboarding.
 
 .. plantuml:: plantuml/trust-roles.puml
    :width: 99%
@@ -293,9 +288,7 @@ Le Entity Configuration di tutti i partecipanti nella federazione DEVONO avere i
    * - **exp**
      - UNIX Timestamp con il tempo di scadenza del JWT, codificato come NumericDate come indicato in :rfc:`7519`.
    * - **jwks**
-     - Un JSON Web Key Set (JWKS) :rfc:`7517` che rappresenta la parte pubblica delle chiavi di firma dell'Entità in questione. Ogni JWK nel set JWK DEVE avere un ID chiave (claim kid) e PUÒ avere un parametro `x5c`, come definito in :rfc:`7517`. Contiene le Chiavi dell'Entità di Federazione richieste per le operazioni di Trust Evaluation.
-
-       **x5c**: Il parametro `x5c` incluso nel parametro `jwks` dell'Entity Configuration DEVE contenere solo il Certificato X.509 auto-emesso relativo al corrispondente `jwk`.
+     - Un JSON Web Key Set (JWKS) :rfc:`7517` che rappresenta la parte pubblica delle chiavi di firma dell'Entità in questione. Ogni JWK nel set JWK DEVE avere un ID chiave (claim kid). Contiene le Chiavi dell'Entità di Federazione richieste per le operazioni di Trust Evaluation.
    * - **metadata**
      - Oggetto JSON. Ogni chiave dell'Oggetto JSON rappresenta un identificatore di tipo di metadati contenente un Oggetto JSON che rappresenta i metadati, secondo lo schema di metadati di quel tipo. Un'Entity Configuration PUÒ contenere più dichiarazioni di metadati, ma solo una per ogni tipo di metadati (<**entity_type**>). i tipi di metadati sono definiti nella sezione `Tipi di Metadati <Metadata Types>`_.
 
@@ -750,46 +743,23 @@ Anche se il Trust Anchor ha cambiato le sue chiavi crittografiche per la firma d
 X.509 PKI
 ---------
 
-L'Infrastruttura a Chiave Pubblica (PKI) X.509 è un framework progettato per creare, gestire, distribuire, utilizzare, archiviare e revocare certificati digitali X.509. Al centro della PKI X.509 c'è il concetto di Autorità di Certificazione (CA), che emette certificati digitali alle entità. Questi certificati sono richiesti per stabilire comunicazioni sicure su reti, incluso internet, abilitando funzionalità di crittografia e firma digitale. La gerarchia PKI tipicamente coinvolge una CA radice in cima, con una o più CA subordinate sotto, formando una catena di trust. Le entità si affidano a questa catena di trust per verificare l'autenticità dei certificati. Gli standard X.509 definiscono il formato dei certificati a chiave pubblica.
+La parte restante di questa sottosezione specifica il profilo PKIX che IT-Wallet applica sopra `RFC 5280`_. Questa specifica spiega come il livello di enrolment OpenID Federation si relaziona con PKIX e come si ottiene il materiale certificato. Indicazioni operative sugli strumenti PKIX sono in :ref:`annex/x5c-evaluation:Operazioni di Gestione dei Certificati X.509`. Quando il distinguished name del soggetto o un subject alternative name riportano informazioni presenti anche in una Entity Configuration, tale ripetizione serve solo ad **allineare i nomi in fase di enrolment**.
 
-L'integrazione di OpenID Federation 1.0 con la PKI tradizionale basata su X.509 (rfc:5280), completata da un'API RESTful, mira a migliorare l'infrastruttura con funzionalità aggiuntive, rendendola navigabile e trasparente.
+Trust Anchor di Federazione e Certificate Authority X.509
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Questo approccio sfrutta la natura dinamica e flessibile di OpenID Federation insieme al requisito dei Certificati X.509 per applicazioni legacy e scopi di interoperabilità, mirando ad affrontare le esigenze in evoluzione di verifica dello stato di registrazione dei partecipanti alla federazione, la loro conformità alle regole condivise e la gestione generale e interoperabile del trust in ecosistemi digitali multilaterali.
-
-**Ruolo nell'Onboarding**: Durante la registrazione delle entità, i certificati X.509 completano i meccanismi di OpenID Federation fornendo interoperabilità con sistemi legacy e abilitando l'integrazione con infrastrutture PKI esistenti. Le entità auto-emettono certificati X.509 utilizzando le loro chiavi di federazione, estendendo le relazioni di trust ai sistemi tradizionali basati su certificati.
-
-**Ruolo nelle Operazioni**: Durante le operazioni di credenziali, i certificati X.509 abilitano comunicazioni sicure con sistemi legacy e forniscono percorsi di verifica alternativi per entità che richiedono validazione PKI tradizionale. Questo approccio duale garantisce che l'infrastruttura IT-Wallet possa interoperare con sistemi legacy esistenti mantenendo meccanismi di trust moderni basati su federazione.
-
-OpenID Federation e PKI basata su X.509 condividono diverse cose in comune, come elencato di seguito:
-
-- **Approccio Gerarchico**: entrambi utilizzano un Trust Model gerarchico con una singola terza parte fidata sovrastante, nota come Trust Anchor, che è fidata sopra tutte le altre.
-- **Decentralizzazione con Multipli Trust Anchor e Intermediari**: nonostante un modello gerarchico unico, la possibilità di avere multipli Trust Anchor e Intermediari, sotto uno o più Trust Anchor, introduce un livello di decentralizzazione.
-- **Estensioni Personalizzate**: entrambi i sistemi consentono estensioni personalizzate per soddisfare requisiti specifici o per migliorare la funzionalità. I Certificati X.509 supportano estensioni personalizzate, OpenID Federation consente la definizione di metadati specifici del protocollo personalizzati, Trust Mark e policy utilizzando un Policy Language.
-- **Catena di Trust/Certificato**: si affidano a una prova concatenata di trust, dove il trust è passato dall'autorità radice (Trust Anchor) attraverso Intermediari all'entità finale (Foglia).
-- **Vincoli nella Catena**: i vincoli possono essere applicati all'interno della Trust Chain riguardo aspetti critici come la delegazione del trust, il numero di intermediari e i domini coinvolti.
-- **Distribuzione di Chiavi Pubbliche**: Entrambi i sistemi coinvolgono la distribuzione della chiave pubblica del Trust Anchor per garantire che le entità possano verificare la catena di trust.
-- **Registro di Chiavi Scadute**: Mantenere un registro di chiavi scadute è cruciale per entrambi, garantendo il non-ripudio delle firme passate anche quando le chiavi cambiano.
-
-
-Trust Anchor di Federazione e CA X.509
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Nel contesto di OpenID Federation, il Trust Anchor gioca un ruolo simile a quello di un'Autorità di Certificazione (CA) nelle Infrastrutture a Chiave Pubblica (PKI) basate su X.509. Entrambi servono come elementi fondamentali di trust all'interno dei loro rispettivi sistemi. In questo documento, il termine "Trust Anchor" è spesso utilizzato per comprendere entrambi i concetti. L'infrastruttura di trust descritta qui allinea il Trust Anchor di OpenID Federation con l'Autorità di Certificazione PKI X.509, rendendoli quindi un'unica entità unica che supporta sia `RFC 5280`_ che OpenID Federation 1.0.
+La stessa organizzazione PUÒ fungere da Trust Anchor per gli artefatti di federazione e da Certificate Authority per PKIX. A livello di comportamento di protocollo i due ruoli restano separati. Il materiale di fiducia della federazione si valuta con `OID-FED`_. I certificati X.509 si valutano con `RFC 5280`_ e con le regole PKIX di questa sottosezione.
 
 Emissione di Certificati X.509
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In una Federazione OpenID, ogni partecipante è richiesto di auto-emettere la sua Entity Configuration, firmandola con una delle sue chiavi crittografiche che sono attestate dai Superiori Immediati.
 
-Allo stesso modo, ogni Entità di federazione ha l'autonomia di emettere una dichiarazione firmata su se stessa sotto forma di un Certificato X.509.
-I partecipanti alla federazione che hanno bisogno di emettere Certificati X.509 su se stessi e per i loro scopi specifici, possono emettere e firmare Certificati X.509 utilizzando una delle loro Chiavi dell'Entità di Federazione attestate dalle loro Autorità di Federazione (Superiore Immediato). Questo processo allinea l'emissione di Certificati X.509 con il paradigma di delegazione della federazione.
+Ove questo profilo preveda certificati X.509 emessi da un **Intermediario di Federazione** nel proprio ambito delegato, emissione e firma seguono PKIX e i requisiti di seguito. **Le Foglie di Federazione NON DEVONO auto-emettere certificati X.509.** Ogni Foglia riceve certificati di protocollo end-entity dal proprio Superiore Immediato o da una Certificate Authority esplicitamente delegata dal superiore. Il superiore PUÒ allineare i distinguished name agli identificativi federati per semplificare l'enrolment. Indipendentemente da tale allineamento, la verifica PKIX del certificato emesso DEVE restare indipendente da ogni successivo recupero di metadati di federazione.
 
-Questo è fattibile perché il Certificato X.509 può essere verificato utilizzando una Catena di Certificati X.509, simile all'approccio utilizzato per le Entity Configuration in OpenID Federation.
+L'accettazione di un certificato X.509 DEVE essere decisa con la validazione della catena PKIX secondo `RFC 5280`_, indipendentemente dalla verifica dei metadati di federazione.
 
-Le Foglie di Federazione non sono Autorità di Certificazione (CA) o intermediari CA autorizzati a emettere certificati X.509 per i loro subordinati. Invece, le Foglie di Federazione agiscono come intermediari per l'emissione di certificati esclusivamente su se stesse. Questo è realizzato applicando vincoli di denominazione appropriati per garantire che i certificati X.509 siano correttamente delimitati.
-I vincoli di denominazione sono applicati dai Superiori Immediati all'interno dei certificati emessi all'entità Foglia, specificamente riguardo alle Chiavi dell'Entità di Federazione della Foglia. Di conseguenza, la Foglia può emettere certificati X.509 solo su se stessa, mantenendo così l'integrità della Trust Chain.
-
-Quando un partecipante auto-emette un Certificato X.509, aderisce ai seguenti requisiti:
+Quando un Superiore Immediato o un Intermediario di Federazione emette un Certificato X.509 sotto questo profilo (inclusi i certificati end-entity rilasciati a una Foglia), il certificato rispetta i seguenti requisiti:
 
 1. **Nome del Soggetto**: Il nome del soggetto del Certificato X.509 DEVE corrispondere all'identità del partecipante. Il nome del soggetto degli Intermediari e delle Foglie DEVE includere i seguenti attributi:
 
@@ -805,8 +775,8 @@ Quando un partecipante auto-emette un Certificato X.509, aderisce ai seguenti re
 2. **Subject Alternative Name (SAN)**: Il Certificato X.509 DEVE includere un ``SAN URI`` che DEVE corrispondere ai valori **sub** e **iss** della sua Entity Configuration di federazione.
 3. **Nome DNS**: Il Certificato X.509 DEVE includere un Nome DNS nel SAN che corrisponde al nome DNS contenuto all'interno dei valori **sub** e **iss** della sua Entity Configuration, rimuovendo ``https://`` e qualsiasi path web.
 4. **Certificate Revocation List (CRL)**: Se il Certificato X.509 emesso ha un tempo di scadenza superiore a 24 ore, l'Emittente X.509 DEVE pubblicare una CRL per i Certificati X.509 emessi. Questo elenco DEVE essere accessibile e regolarmente aggiornato per garantire che qualsiasi Certificato X.509 compromesso o non valido sia prontamente revocato con la motivazione della revoca, se presente.
-5. **Basic Constraints**: Il Certificato X.509 DEVE includere un'estensione ``Basic Constraints`` con ``CA:TRUE`` e una lunghezza massima del path di 1 se l'emittente del certificato è un Intermediario di Federazione. Se è una Foglia, la lunghezza massima del path DEVE essere impostata a 0. Questo indica che il Subordinato a cui il certificato si riferisce, può emettere Certificati X.509 solo su se stesso. L'estensione ``BasicConstraints`` DEVE essere impostata ``critical``.
-6. **Key Usage**: ``Digital Signature``, ``Key Encipherment``, ``Certificate Sign``, ``CRL Sign`` DEVONO essere inclusi. L'estensione ``KeyUsage`` DEVE essere impostata ``critical``.
+5. **Basic Constraints**: i certificati di **emissione dell'entità** degli Intermediari di Federazione DEVONO includere ``Basic Constraints`` con ``CA:TRUE`` e ``pathLen`` impostato dal Superiore (tipicamente ``0`` quando l'Intermediario emette solo certificati end-entity verso le Foglie). I certificati di **protocollo** end-entity rilasciati **alle** Foglie di Federazione DEVONO impostare ``CA:FALSE``. ``BasicConstraints`` DEVE essere ``critical`` ove PKIX lo richieda per questi ruoli.
+6. **Key Usage**: i certificati di emissione dell'entità degli Intermediari di Federazione DEVONO includere ``Digital Signature``, ``Key Encipherment``, ``Certificate Sign`` e ``CRL Sign`` come richiesto dal ruolo PKIX di una Certificate Authority, e DEVONO impostare ``KeyUsage`` ``critical``. I certificati di protocollo end-entity rilasciati **alle** Foglie NON DEVONO includere ``Certificate Sign`` né ``CRL Sign``; DEVONO includere ``Digital Signature`` e POSSONO includere ``Key Encipherment`` secondo il profilo applicativo.
 7. **Name Constraints**: Il Certificato X.509 DEVE includere ``Name Constraints`` per specificare domini e URI permessi ed esclusi. Per esempio:
 
    - Permessi:
@@ -823,12 +793,12 @@ Quando un partecipante auto-emette un Certificato X.509, aderisce ai seguenti re
 
 8. **AuthorityKeyIdentifier**: Il Certificato X.509 DEVE includere un'estensione ``AuthorityKeyIdentifier``. Il campo ``keyIdentifier`` dell'estensione ``AuthorityKeyIdentifier`` DEVE essere presente e DEVE essere identico al campo ``SubjectKeyIdentifier`` del certificato dell'emittente. Questo consolida la costruzione e validazione della catena di certificati.
 
-Di seguito è riportato un esempio non normativo, in testo semplice (formato OpenSSL), di una catena di certificati X.509 con una CA intermedia, a partire dal certificato Foglia.
+Di seguito è riportato un esempio non normativo, in testo semplice (formato OpenSSL), di una catena di certificati X.509 con una Certificate Authority intermedia, a partire dal certificato Foglia.
 
 .. literalinclude:: ../../examples/x5c.json
   :language: text
 
-Utilizzando il livello sottostante stabilito con OpenID Federation 1.0, tutti i certificati X.509 sono emessi in modo propriamente decentralizzato utilizzando il pattern di delegazione.
+L'emissione segue sempre la delegazione PKIX dalle Certificate Authority superiori. Il dispiegamento PUÒ riusare i canali di distribuzione della federazione per trasportare o annunciare il materiale certificato quando ciò è comodo. Semantica e verifica restano comunque solo PKIX ai sensi di `RFC 5280`_.
 
 
 .. _trust-infrastructure-revoca-dei-certificati-x509:
@@ -839,8 +809,8 @@ Revoca di Certificati X.509
 Un Certificato X.509 può essere revocato dal suo Emittente.
 Le liste di revoca, e/o qualsiasi altro meccanismo di controllo della revoca, sono particolarmente richieste per i Certificati X.509 con un tempo di scadenza superiore a 24 ore; altrimenti, non sono richieste.
 
-Quando l'emittente del Certificato X.509 è la Foglia e quindi il Certificato X.509 si riferisce a se stesso, se il tempo di scadenza del certificato è superiore a 24 ore dal tempo ``X509_NOT_VALID_BEFORE``, DEVE implementare una CRL relativa al certificato emesso e mantenerla aggiornata.
-Quando l'emittente del Certificato X.509 è un Superiore immediato, come il Trust Anchor o un Intermediario, e revoca il certificato relativo alla Foglia, cioè il Certificato X.509 relativo a una delle Chiavi dell'Entità di Federazione della Foglia, questa azione invalida l'intera Trust Chain associata a quella chiave pubblica crittografica della Foglia, rimuovendo effettivamente la sua capacità di emettere ulteriori Certificati X.509 su se stessa. Questo meccanismo di revoca gerarchico garantisce che qualsiasi compromissione o comportamento scorretto da parte di un'entità Foglia possa essere rapidamente affrontato.
+Quando un certificato end-entity che ha come soggetto una Foglia ha un tempo di scadenza superiore a 24 ore da ``X509_NOT_VALID_BEFORE``, l'**emittente X.509** (il Superiore) DEVE pubblicare una CRL per i certificati da esso emessi e mantenerla aggiornata.
+Quando un Superiore immediato revoca il certificato X.509 di una Foglia, incluso un certificato legato a una Chiave dell'Entità di Federazione, i consumatori PKIX DEVONO trattare il certificato come non valido usando i dati CRL o OCSP dell'emittente PKIX. Ogni coordinamento aggiuntivo sulle chiavi di federazione segue la governance del trust al di fuori di PKIX. L'insieme delle regole consente comunque una risposta rapida in caso di compromissione o comportamento scorretto della Foglia.
 
 Di seguito è riportato un esempio non normativo, in testo semplice, che illustra il contenuto di una CRL.
 

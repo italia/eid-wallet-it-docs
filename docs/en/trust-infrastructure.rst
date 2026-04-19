@@ -8,15 +8,15 @@ The Infrastructure of Trust
 
 The IT-Wallet ecosystem operates within a federated trust infrastructure where participating entities establish cryptographic trust relationships and maintain compliance with common security standards. This infrastructure provides the foundation for secure Digital Credential operations across the ecosystem participants.
 
-This section outlines the implementation of the Trust Model in an infrastructure that complies with OpenID Federation 1.0 `OID-FED`_. This infrastructure involves a RESTful API for distributing metadata, metadata policies, trust marks, cryptographic public keys and X.509 Certificates, and the revocation status of the participants, also called Federation Entities.
+This section defines the Trust Model using OpenID Federation 1.0 `OID-FED`_ together with REST endpoints for metadata, policies, trust marks, and registration of Federation Entities.
 
-The national infrastructure involves a RESTful API for distributing metadata, metadata policies, trust marks, cryptographic public keys and X.509 Certificates, and the revocation status of the participants, also called Federation Entities.
+The federation layer covers participation in the ecosystem, discovery of peers, and the enrolment flows through which a participant **requests and obtains** X.509 certificate material from its superior certification authority.
 
-This trust infrastructure works in coordination with the Registry Infrastructure (see :ref:`registry:Registry Infrastructure`) to enable the entity onboarding processes detailed in :ref:`entity-onboarding:Entity Onboarding`. In particular, it enables the technical   implementation of the onboarding processes described in :ref:`entity-onboarding:Entity Onboarding` and supports the operational scenarios illustrated in :ref:`onboarding-high-level:Onboarding Journey Maps`.
+Once a certificate has been issued, it becomes a PKIX artefact as defined in `RFC 5280`_. Its validity period, chain construction, renewal, and revocation therefore follow PKIX practice, and every consumer MUST assess it with standard X.509 or PKIX tooling. Responses from federation protocols MUST NOT be treated as a substitute for that PKIX assessment.
 
-The Trust Infrastructure provides the cryptographic mechanisms that allow new entities (Credential Issuers, Relying Parties, Wallet Providers) to establish verifiable trust relationships during their registration process. Without this infrastructure, entities would not be able to prove their compliance status or operational capabilities to other ecosystem participants.
+The normative PKIX issuance rules for IT-Wallet are documented in :ref:`trust-infrastructure:X.509 PKI`. Practical PKIX operations are documented in :ref:`annex/x5c-evaluation:X.509 Certificate Management Operations`.
 
-Throughout an entity's operational lifecycle, the Trust Infrastructure maintains up-to-date trust attestations, handles key rotation, manages revocation scenarios, and supports compliance monitoring. This directly supports the lifecycle management procedures detailed in :ref:`entity-onboarding:Entity Onboarding`.
+This trust infrastructure coordinates with the :ref:`registry:Registry Infrastructure`. It underpins :ref:`entity-onboarding:Entity Onboarding` and the journeys described in :ref:`onboarding-high-level:Onboarding Journey Maps`. It also supports trust attestations, cryptographic key rotation, and revocation handling for registered entities.
 
 
 .. plantuml:: plantuml/trust-roles.puml
@@ -332,9 +332,7 @@ The Entity Configurations of all the participants in the federation MUST have in
    * - **exp**
      - UNIX Timestamp with the expiry time of the JWT, coded as NumericDate as indicated at :rfc:`7519`.
    * - **jwks**
-     - A JSON Web Key Set (JWKS) :rfc:`7517` that represents the public part of the signing keys of the Entity at issue. Each JWK in the JWK set MUST have a key ID (claim kid) and MAY have a `x5c` parameter, as defined in :rfc:`7517`. It contains the Federation Entity Keys required for the operations of Trust Evaluation.
-
-       **x5c**: The `x5c` parameter included in Entity Configuration's `jwks` parameter MUST only contain the self-issued X.509 Certificate about the corresponding `jwk`.
+     - A JSON Web Key Set (JWKS) :rfc:`7517` that represents the public part of the signing keys of the Entity at issue. Each JWK in the JWK set MUST have a key ID (claim kid). It contains the Federation Entity Keys required for the operations of Trust Evaluation.
    * - **metadata**
      - JSON Object. Each key of the JSON Object represents a metadata type identifier containing JSON Object representing the metadata, according to the metadata schema of that type. An Entity Configuration MAY contain more metadata statements, but only one for each type of metadata (<**entity_type**>). the metadata types are defined in the section `Metadata Types <Metadata Types>`_.
 
@@ -786,46 +784,23 @@ Even if the Trust Anchor has changed its cryptographic keys for digital signatur
 X.509 PKI
 ---------
 
-The X.509 Public Key Infrastructure (PKI) is a framework designed to create, manage, distribute, use, store, and revoke digital X.509 Certificates. At the heart of X.509 PKI is the concept of a Certificate Authority (CA), which issues digital certificates to entities. These certificates are required for establishing secure communications over networks, including the internet, by enabling encryption and digital signature functionalities. The PKI hierarchy typically involves a root CA at the top, with one or more subordinate CAs beneath, forming a trusted chain. Entities rely on this chain of trust to verify the authenticity of certificates. X.509 standards define the format of public key certificates.
-
-The integration of OpenID Federation 1.0 with the traditional X.509 based PKI (rfc:5280), complemented by a RESTful API, aims to enhance the infrastructure with additional features, making it navigable and transparent.
-
-This approach leverages the dynamic and flexible nature of OpenID Federation alongside the requirement of the X.509 Certificates for legacy applications and interoperability purposes, aiming to addresses the evolving needs of verification of the registration status of the federation participants, their compliance to the shared rules and the general and interoperable trust management in multilateral digital ecosystems.
-
-**Role in Onboarding**: During entity registration, X.509 Certificates complement OpenID Federation mechanisms by providing interoperability with legacy systems and enabling integration with existing PKI infrastructures.
-
-**Role in Operations**: During Credential operations, X.509 Certificates enable secure communications with legacy systems and provide alternative verification paths for entities that require traditional PKI validation. 
-
-OpenID Federation and X.509 based PKI share several things in common, as listed below:
-
-- **Hierarchical Approach**: both utilize a hierarchical Trust Model with a single, overarching trusted third party, known as the Trust Anchor, which is trusted above all others.
-- **Scalability with Multiple Trust Anchors and Intermediates**: despite a unique hierarchical model, the possibility of having multiple Trust Anchors and Intermediates, below one or more Trust Anchors, scales the responsibilities.
-- **Custom Extensions**: both systems allow for custom extensions to meet specific requirements or to enhance functionality. X.509 Certificates support custom extensions, OpenID Federation allows definition of custom protocol specific metadata, Trust Marks and policies using a Policy Language.
-- **Trust/Certificate Chain**: they rely on a chained proof of trust, where trust is passed down from the root authority (Trust Anchor) through Intermediaries to the end entity (Leaf).
-- **Constraints in the Chain**: constraints can be applied within the Trust Chain regarding critical aspects such as the delegation of trust, the number of intermediaries, and the domains involved.
-- **Public Key Distribution**: Both systems involve the distribution of the public key of the Trust Anchor to ensure entities can verify the trust chain.
-- **Registry of Expired Keys**: Maintaining a registry of expired keys is crucial for both, ensuring non-repudiation of past signatures even when keys change.
-
+The remainder of this subsection specifies the PKIX profile that IT-Wallet applies on top of `RFC 5280`_. The specification explains how the OpenID Federation enrolment layer relates to PKIX and how certificate material is obtained. Operational guidance for PKIX tooling appears in :ref:`annex/x5c-evaluation:X.509 Certificate Management Operations`. When a subject distinguished name or a subject alternative name repeats information that also appears in an Entity Configuration, that repetition serves **enrolment naming alignment** only.
 
 Federation Trust Anchor and X.509 CA
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In the context of OpenID Federation, the Trust Anchor plays a role similar to that of a Certificate Authority (CA) in X.509-based Public Key Infrastructures (PKIs). Both serve as foundational elements of trust within their respective systems. In this document, the term "Trust Anchor" is often used to encompass both concepts. The trust infrastructure described here aligns the OpenID Federation Trust Anchor with the X.509 PKI Certificate Authority, making therefore them a single unique entity supporting both `RFC 5280`_ and OpenID Federation 1.0.
+The same organisation MAY act as Trust Anchor for federation artefacts and as a certification authority for PKIX. At the level of protocol behaviour the two roles stay separate. Federation trust material is evaluated with `OID-FED`_. X.509 certificates are evaluated with `RFC 5280`_ and with the PKIX rules in this subsection.
 
 X.509 Certificates Issuance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In an OpenID Federation, each participant is required to self-issue its Entity Configuration, signing it with one of its cryptographic keys that are attested by Immediate Superiors.
 
-In the same way, each federation Entity has the autonomy to issue a signed statement about itself in the form of a X.509 Certificate.
-Federation participants that need to issue X.509 Certificates about themselves and for their specific purposes, can issue and sign X.509 Certificates using one of their Federation Entity Keys attested by their Federation Authorities (Immediate Superior). This process aligns the issuance of X.509 Certificates with the federation's delegation paradigm.
+Where this profile uses X.509 certificates issued by a Federation **Intermediate** within its delegated scope, issuance and signing follow PKIX and the requirements below. Each Leaf receives end-entity protocol certificates from its Immediate Superior or from a certification authority, recognizable within the federation. A superior MAY align distinguished names with federated identifiers to simplify enrolment. Regardless of that alignment, PKIX verification of the issued certificate MUST remain independent of any later federation metadata fetch.
 
-This is feasible because the X.509 Certificate can be verified using a X.509 Certificate Chain, similar to the approach used for Entity Configurations in OpenID Federation.
+X.509 certificate acceptance MUST be decided with PKIX chain validation per `RFC 5280`_, independent of federation metadata verification.
 
-Federation Leaves are not Certificate Authorities (CAs) or CA intermediaries authorized to issue X.509 Certificates for their subordinates. Instead, Federation Leaves act as intermediaries for issuing certificates solely about themselves. This is accomplished by applying appropriate naming constraints to ensure that X.509 Certificates are correctly scoped.
-Naming constraints are applied by Immediate Superiors within the certificates issued to the Leaf entity, specifically concerning the Leaf's Federation Entity Keys. As a result, the Leaf can only issue X.509 Certificates about itself, thereby maintaining the integrity of the Trust Chain.
-
-When a participant self-issues an X.509 Certificate, it adheres to the following requirements:
+When an Immediate Superior or Federation Intermediate issues an X.509 certificate under this profile (including end-entity certificates issued to a Leaf), the certificate adheres to the following requirements:
 
 1. **Subject Name**: The X.509 Certificate's subject name MUST match the participant's identity. The subject name for Intermediaries and Leaves MUST include the following attributes:
 
@@ -855,8 +830,8 @@ When a participant self-issues an X.509 Certificate, it adheres to the following
 2. **Subject Alternative Name (SAN)**: The X.509 Certificate MUST include a ``SAN URI`` that MUST match the **sub** and the **iss** values of its federation Entity Configuration.
 3. **DNS Name**: The X.509 Certificate MUST include a DNS Name in the SAN that matches the DNS name contained within the **sub** and the **iss** values of its Entity Configuration, removing ``https://`` and any webpaths.
 4. **Certificate Revocation List (CRL)**: If the issued X.509 Certificates has an expiration time superior to 24 hours, the X.509 Issuer MUST publish a CRL for the issued X.509 Certificates. This list MUST be accessible and regularly updated to ensure that any compromised or invalid X.509 Certificates are promptly revoked with the motivation of the revocation, if any.
-5. **Basic Constraints**: The X.509 Certificate MUST include a ``Basic Constraints`` extension with ``CA:TRUE`` and a maximum path length of 1 if the certificate issuer is a Federation Intermediate. If it is a Leaf, the maximum path length MUST be set to 0. This indicates that the Subordinate to which certificate is about, can only issue X.509 Certificates about itself. ``BasicConstraints`` extension MUST be set ``critical``.
-6. **Key Usage**: ``Digital Signature``, ``Key Encipherment``, ``Certificate Sign``, ``CRL Sign`` MUST be included. ``KeyUsage`` extension MUST be set ``critical``.
+5. **Basic Constraints**: Federation Intermediate **entity issuance** certificates MUST include ``Basic Constraints`` with ``CA:TRUE`` and a ``pathLen`` set by the Superior (typically ``0`` when the Intermediate only issues end-entity certificates to Leaves). End-entity **protocol** certificates issued **to** Federation Leaves MUST set ``CA:FALSE``. ``BasicConstraints`` MUST be ``critical`` where PKIX requires it for these roles.
+6. **Key Usage**: Federation Intermediate entity issuance certificates MUST include ``Digital Signature``, ``Key Encipherment``, ``Certificate Sign``, and ``CRL Sign`` as required for the PKIX CA role, and MUST set ``KeyUsage`` ``critical``. End-entity protocol certificates issued **to** Leaves MUST NOT include ``Certificate Sign`` or ``CRL Sign``; they MUST include ``Digital Signature`` and MAY include ``Key Encipherment`` as required by the application profile.
 7. **Name Constraints**: The X.509 Certificate MUST include ``Name Constraints`` to specify permitted and excluded domains and URIs. For instance:
 
    - Permitted:
@@ -878,7 +853,7 @@ Below is a non-normative example, in plain text (OpenSSL format), of an X.509 ce
 .. literalinclude:: ../../examples/x5c.json
   :language: text
 
-Using the underlying layer established with OpenID Federation 1.0, all X.509 Certificates are issued in a properly decentralized manner using the delegation pattern.
+Issuance always follows PKIX delegation from superior certification authorities. The deployment MAY reuse federation distribution channels to carry or announce certificate material when that is convenient. Semantics and verification nevertheless remain PKIX-only under `RFC 5280`_.
 
 
 X.509 Certificate Revocation
@@ -887,8 +862,8 @@ X.509 Certificate Revocation
 An X.509 Certificate can be revoked by its Issuer.
 Revocation lists, and/or any other revocation control mechanism, are particularly required for X.509 Certificates with an expiration time greater than 24 hours; otherwise, they are not required.
 
-When the issuer of the X.509 Certificate is the Leaf and therefore the X.509 Certificate refers to itself, if the certificate expiration time is greater than 24 hours from the ``X509_NOT_VALID_BEFORE`` time, it MUST implement a CRL related to the issued certificate and keep it updated.
-When the issuer of the X.509 Certificate is an immediate Superior, such as the Trust Anchor or an Intermediary, and revokes the certificate related to the Leaf, i.e., the X.509 Certificate related to one of the Federation Entity Keys of the Leaf, this action invalidates the entire Trust Chain associated with that cryptographic public key of the Leaf, effectively removing its ability to issue further X.509 Certificates about itself. This hierarchical revocation mechanism ensures that any compromise or misbehavior by a Leaf entity can be quickly addressed.
+When an end-entity certificate naming a Leaf has an expiration time greater than 24 hours from the ``X509_NOT_VALID_BEFORE`` time, the **X.509 Issuer** (the Superior) MUST publish a CRL for the certificates it has issued and keep it updated.
+When an immediate Superior revokes a Leaf's X.509 certificate, including a certificate that was bound to a Federation Entity Key, PKIX consumers MUST treat the certificate as invalid using CRL or OCSP data from the PKIX issuer. Any additional coordination on federation keys follows trust governance outside PKIX. The arrangement still allows a rapid response when a Leaf is compromised or misbehaves.
 
 Below is a non-normative example, in plain text, illustrating the content of a CRL.
 

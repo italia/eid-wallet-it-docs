@@ -10,6 +10,7 @@ Appendix
     :caption: Appendix Table of Contents
     :maxdepth: 3
 
+    annex/x5c-evaluation.rst
     mobile-application-instance.rst
     e-service-pdnd.rst
     e-service-pdnd-template.rst

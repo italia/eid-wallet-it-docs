@@ -367,7 +367,7 @@ L'integrazione tecnica comprende:
 Processo di Onboarding delle Entità Federate
 ---------------------------------------------
 
-Le Entità Federate, tra cui Emittenti di Credenziali, Relying Party e Fornitori di Wallet, devono completare le procedure di onboarding per diventare partecipanti idonei nell'ecosistema IT-Wallet. Tale processo stabilisce la fiducia distribuita mediante l'emissione di Certificati X.509, la validazione delle Catene di Fiducia e la verifica della conformità, come descritto in :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
+Le Entità Federate (Emittenti di Credenziali, Relying Party e Fornitori di Wallet) completano l'onboarding secondo :ref:`trust-infrastructure:L'Infrastruttura di Trust` e le procedure di questo capitolo. Il profilo di emissione PKIX normativo è in :ref:`trust-infrastructure:X.509 PKI`, mentre le operazioni PKIX quotidiane sono in :ref:`annex/x5c-evaluation:Operazioni di Gestione dei Certificati X.509`.
 
 Modello Gerarchico dell'Autorità di Federazione
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -406,7 +406,7 @@ Le Entità Federate DEVONO rispettare i seguenti requisiti tecnici prima di avvi
     - Un claim ``iss`` con l'Identificatore dell'Entità della Federazione come definito in :ref:`trust-infrastructure:Ruoli di Federazione`.
     - Un claim ``sub`` uguale al claim ``iss``.
     - I claim ``iat`` ed ``exp`` che definiscono un intervallo di tempo valido.
-    - Un claim ``metadata`` contenente i metadati specifici dell'entità organizzati per Tipologie di Metadati (vedere :ref:`credential-issuer-entity-configuration:Entity Configuration del Fornitore di Attestati Elettronici`, :ref:`relying-party-entity-configuration:Entity Configuration Relying Party`, o :ref:`wallet-provider-entity-configuration:Entity Configuration del Fornitore di Wallet`) con chiavi specifiche dell'applicazione incluse nei campi ``jwks`` dei metadati e Certificati X.509 auto-firmati nei relativi claim ``x5c``.
+    - Un claim ``metadata`` contenente i metadati specifici dell'entità organizzati per Tipologie di Metadati (vedere :ref:`credential-issuer-entity-configuration:Entity Configuration del Fornitore di Attestati Elettronici`, :ref:`relying-party-entity-configuration:Entity Configuration Relying Party`, o :ref:`wallet-provider-entity-configuration:Entity Configuration del Fornitore di Wallet`) con chiavi specifiche dell'applicazione incluse nei campi ``jwks`` dei metadati.
 
   - **Richiesta di Firma del Certificato X.509 (CSR)**: Le entità DEVONO predisporre una Richiesta di Firma del Certificato X.509 (CSR) in formato PKCS #10 contenente **la Chiave dell'Entità della Federazione** per l'emissione del Certificato X.509 da parte dell'Autorità di Federazione, come definito in :ref:`trust-infrastructure:Emissione di Certificati X.509`.
 
@@ -466,7 +466,7 @@ La procedura di onboarding alla federazione segue una procedura strutturata in 4
        - Definire il Soggetto del Certificato X.509 con gli attributi richiesti come specificato in :ref:`trust-infrastructure:Emissione di Certificati X.509` per le Entità Federate.
 
 .. warning::
-   Prima di inviare la richiesta tecnica di onboarding, le Entità Federate DEVONO assicurarsi che il proprio endpoint ``/.well-known/openid-federation`` pubblichi una Configurazione dell'Entità valida (come definito in :ref:`trust-infrastructure:Entity Configuration`) firmata con la propria Chiave Privata dell'Entità Federata corrispondente alla Chiave dell'Entità Federata fornita nella richiesta. La Configurazione dell'Entità DEVE già includere le chiavi specifiche dell'applicazione nei metadati con Certificati X.509 auto-firmati nei claim ``x5c``.
+   Prima di inviare la richiesta tecnica di onboarding, le Entità Federate DEVONO assicurarsi che il proprio endpoint ``/.well-known/openid-federation`` pubblichi una Configurazione dell'Entità valida (come definito in :ref:`trust-infrastructure:Entity Configuration`) firmata con la propria Chiave Privata dell'Entità Federata corrispondente alla Chiave dell'Entità Federata fornita nella richiesta. La Configurazione dell'Entità DEVE già includere le chiavi specifiche dell'applicazione nei metadati.
 
 Un esempio non normativo della struttura delle informazioni tecniche che le Entità Federate inviano durante la richiesta di onboarding della Fase 1:
 
@@ -514,9 +514,6 @@ Esempio di risposta con catena di Certificati X.509:
 
 .. note::
    Se il processo di emissione fallisce, l'entità richiedente riceve una risposta con i problemi identificati da risolvere prima di inviare una nuova richiesta di onboarding.
-
-.. note::
-   Ciascuna entità può raccogliere la propria Catena di Certificati X.509 ottenendo il Certificato X.509 auto-firmato del Trust Anchor, incluso nell'oggetto ``jwks`` della Configurazione dell'Entità, e aggregando tutti i valori ``x5c`` pubblicati dalle entità superiori, dal Trust Anchor fino al suo superiore immediato. Questo consente all'entità di ricostruire la catena di certificati completa necessaria per la validazione e l'instaurazione della fiducia all'interno della federazione.
 
 **Fase 3 - Recupero della Dichiarazione del Subordinato**: come conferma del successo del processo di onboarding, l'entità DEVE recuperare la Dichiarazione del Subordinato che la riguarda dalla Federazione Immediata utilizzando l'endpoint ``/fetch`` come definito in :ref:`trust-infrastructure:Endpoint API di Federazione`.
 
@@ -776,6 +773,6 @@ I partecipanti alla federazione validano lo stato dei Trust Mark tramite due mec
 1. **Validazione Statica**: Verifica crittografica utilizzando la chiave pubblica dell'Autorità di Federazione emittente dalla Catena di Fiducia.
 2. **Validazione Dinamica**: Verifica dello stato in tempo reale, contro eventuali revoche, utilizzando l'endpoint ``/trust_mark_status`` dell'Autorità di Federazione come definito in :ref:`trust-infrastructure:Endpoint API di Federazione`.
 
-Per le procedure complete di gestione dei Certificati X.509, inclusa la validazione della catena, la verifica delle revoche e la gestione del ciclo di vita, vedere :ref:`x5c-evaluation:Operazioni di Gestione dei Certificati X.509`.
+Per le procedure complete di gestione dei Certificati X.509, inclusa la validazione della catena, la verifica delle revoche e la gestione del ciclo di vita, vedere :ref:`annex/x5c-evaluation:Operazioni di Gestione dei Certificati X.509`.
 
 
