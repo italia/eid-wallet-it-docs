@@ -118,12 +118,12 @@ After generating a new key pair, the participant obtains a matching certificate 
 
 
 Entity Lifecycle Management
-----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 High-level lifecycle and business rules are documented in :ref:`onboarding-high-level:Entity Lifecycle Management`. Administrative updates that sit outside PKIX remain governed by the wider programme rules.
 
 Operational maintenance (PKIX)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""
 
   - **Renewal.** Generate a CSR, submit it through the trust registration process described in :ref:`entity-onboarding:Entity Onboarding`, install the issued certificates, and PKIX-validate them before production use.
   - **Key rotation.** Follow the same registration path for replacement keys, PKIX-validate the new material, and retire superseded certificates according to local policy and :ref:`trust-infrastructure:X.509 Certificate Revocation`.
@@ -132,7 +132,7 @@ Operational maintenance (PKIX)
 After substantive technical changes, PKIX-validate all impacted X.509 material using this section together with :ref:`trust-infrastructure:X.509 Certificate Revocation`. Additional deployment checks remain in the trust framework chapters.
 
 Technical Exit Procedures (PKIX)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""
 
 Business context for exit appears in :ref:`onboarding-high-level:Federation Exit and Removal Processes`. Removal of federation registrations is specified in :ref:`trust-infrastructure:The Infrastructure of Trust`.
 

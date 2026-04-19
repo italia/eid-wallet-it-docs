@@ -118,12 +118,12 @@ Dopo aver generato una nuova coppia di chiavi, il partecipante ottiene il certif
 
 
 Gestione del Ciclo di Vita dell'Entità
---------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Le regole di ciclo di vita e i processi di alto livello sono in :ref:`onboarding-high-level:Gestione del Ciclo di Vita delle Entità`. Gli aggiornamenti amministrativi restano governati dal programma più ampio e questa sezione PKIX non li tratta.
 
 Manutenzione operativa (PKIX)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""
 
   - **Rinnovo.** Generare una CSR, inoltrarla tramite il processo di registrazione in :ref:`entity-onboarding:Onboarding delle Entità`, installare i certificati emessi e validarli in PKIX prima dell'uso in produzione.
   - **Rotazione delle chiavi.** Seguire lo stesso percorso di registrazione per le chiavi sostitutive, validare in PKIX il nuovo materiale e ritirare i certificati obsoleti secondo policy e :ref:`trust-infrastructure:Revoca di Certificati X.509`.
@@ -132,7 +132,7 @@ Manutenzione operativa (PKIX)
 Dopo cambiamenti tecnici sostanziali, validare in PKIX tutto il materiale X.509 impattato usando questa sezione insieme a :ref:`trust-infrastructure:Revoca di Certificati X.509`. Ulteriori verifiche di deployment restano nei capitoli del trust framework.
 
 Procedure di uscita (PKIX)
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""
 
 Il contesto di uscita è descritto in :ref:`onboarding-high-level:Processi di Uscita e Rimozione dalla Federazione`. La rimozione delle registrazioni nel trust layer è specificata in :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
 
@@ -179,7 +179,7 @@ Esempio CRR in formato DER (codificato Base64):
    -----END CERTIFICATE REVOCATION REQUEST-----
 
 Rimozione da parte dell'organo di supervisione (PKIX)
-"""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
 
   1. **Revoca di emergenza**: l'autorità emittente revoca il certificato con motivazione appropriata.
   2. **Aggiornamento CRL**: il Trust Anchor pubblica una CRL aggiornata entro la finestra di emergenza.
