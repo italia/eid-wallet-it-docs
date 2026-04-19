@@ -19,7 +19,6 @@ This document provides the technical architecture, implementation framework and 
   trust-infrastructure.rst
   registry.rst
   entity-onboarding.rst
-  x5c-evaluation.rst
   entities.rst
   digital-credential-management.rst
   digital-credential-flows.rst
