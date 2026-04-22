@@ -828,7 +828,7 @@
     "faq": {
       "requisiti_eaa": {
         "domanda": "Quali sono i requisiti che l’utente deve soddisfare per richiedere l’EAA?", 
-        "esempio": "Per ottenere la patente di guida nel Wallet, assicurati di essere in possesso del corrispettivo documento fisico in stato di validità”,
+        "esempio": "Per ottenere la patente di guida nel Wallet, assicurati di essere in possesso del corrispettivo documento fisico in stato di validità",
         "risposta": ""
       },
       "casi_d_uso_modalita": { 
