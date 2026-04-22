@@ -167,7 +167,7 @@
       "esempio": "Dimostrare dal vivo il possesso di titoli professionali in sede di colloquio lavorativo / Accedere ad agevolazioni online e dal vivo / Accedere a spazi dedicati / ...", 
       "risposta": "" 
     }, 
-    "durata_utilizzo_eaa: { 
+    "durata_utilizzo_eaa": { 
       "domanda": "In caso l’EAA relativo al dataset non corrisponda ad un documento già esistente, l’EAA consentirà un utilizzo continuo o perderà di valore non appena utilizzato?", 
       "esempio": "Utilizzo continuo (es. prova di età +18) / Uso singolo (es. biglietto aereo)", 
       "risposta": "" 
@@ -184,12 +184,12 @@
       "esempio": "true (se gratuito) / false (se a pagamento)", 
       "risposta": true
     }, 
-    "pagamento_rinnovo_doc_preesistente ": {
+    "pagamento_rinnovo_doc_preesistente": {
       "domanda": "In caso di documento già esistente, l’eventuale rinnovo prevede un pagamento", 
       "esempio": "true (se è previsto un pagamento) / false (se il rinnovo non è previsto o se non è previsto un pagamento)", 
       "risposta": true
     }, 
-    "modalita_pagamento_doc_preesistente ": { 
+    "modalita_pagamento_doc_preesistente": { 
       "domanda": "In caso di documento già esistente con pagamento a carico dell’utente, quali sono le modalità di pagamento previste?", 
       "esempio": "PagoPA / Bonifico / ...", 
       "risposta": ""
