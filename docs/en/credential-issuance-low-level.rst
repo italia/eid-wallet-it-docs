@@ -684,7 +684,6 @@ The Credential Offer object is a JSON object containing the parameters defined i
 
         - **issuer_state**: OPTIONAL. Opaque string created by the Credential Issuer used to bind the subsequent Authorization Request with the Credential Issuer. The Wallet MUST include it in the subsequent Authorization Request when present.
         - **authorization_server**: REQUIRED when the Credential Issuer uses more than one authorization server in its Issuer Solution. This string identifies the Authorization Server to use. The value MUST match with one of the values mapped in the ``authorization_servers`` array of the Credential Issuer metadata. It MUST NOT be used if ``authorization_servers`` is absent or it has no multiple entries.
-        - **scope**: REQUIRED. String value that maps to a specific Credential type. The Wallet MUST use this scope value in the Authorization Request. See Section 4.1 of [`OPENID4VC-HAIP`_] for details.
     - Section 4.1.1 of [`OpenID4VCI`_] and Section 4.1 of [`OPENID4VC-HAIP`_].
 
 .. note::
