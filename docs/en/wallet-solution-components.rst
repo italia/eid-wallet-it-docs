@@ -34,7 +34,7 @@ This component MUST handle:
 
 - Wallet Instance Registration (detailed in :ref:`wallet-instance-registration:Wallet Instance Initialization and Registration`).
 - Wallet Instance Attestation Issuance (detailed in :ref:`wallet-instance-attestation-issuance:Wallet Instance Attestation Issuance`)
-- Wallet Unit Attestation Issuance (detailed in :ref:`wallet-attestation-issuance:Wallet Unit Attestation Issuance`).
+- Key Attestation Issuance (detailed in :ref:`wallet-attestation-issuance:Key Attestation Issuance`).
 - Status management (maintaining and updating validity).
 - Revocation processes (implementing mechanisms to revoke Wallet Instances), according to Section :ref:`wallet-instance-revocation:Wallet Instance Revocation`.
 
@@ -65,7 +65,7 @@ Interacting with the Wallet Backend, this component MUST handle:
 
 - Wallet Instance Registration (detailed in :ref:`wallet-instance-registration:Wallet Instance Initialization and Registration`).
 - Wallet Instance Attestation Issuance (detailed in :ref:`wallet-instance-attestation-issuance:Wallet Instance Attestation Issuance`)
-- Wallet Unit Attestation Issuance (detailed in :ref:`wallet-attestation-issuance:Wallet Unit Attestation Issuance`).
+- Key Attestation Issuance (detailed in :ref:`wallet-attestation-issuance:Key Attestation Issuance`).
 - Status management (maintaining and updating validity).
 - Revocation processes (implementing mechanisms to revoke Wallet Instances), according to Section :ref:`wallet-instance-revocation:Wallet Instance Revocation`.
 
