@@ -89,9 +89,6 @@ Below is the description of acronyms and definitions which are useful for furthe
       Register of entities participating in the IT-Wallet System.
       Not present in ARF 2.7.3; specific to IT-Wallet.
 
-    **Key Attestation**
-      Attestation from device OEM about secure key storage in hardware-backed keystore.
-      Not present in ARF 2.7.3.
 
     **Level of Assurance**
       In the Union **electronic identification** framework, **levels of assurance** express the degree of confidence in the **correctness of the identification** of natural or legal persons and in the possibility to **rely on electronic identification means**. For **notified electronic identification schemes**, `EIDAS`_ (as amended, including the European Digital Identity Framework codified by `EU_2024_1183`_) defines the levels **low**, **substantial**, and **high**.
