@@ -336,7 +336,7 @@ Below is the description of acronyms and definitions which are useful for furthe
       Unique configuration of a Wallet Solution for an individual User, including security features.
       Aligned with ARF 2.7.3.
 
-    **Wallet Unit Attestation**
+    **Key Attestation**
      Data object issued by a Wallet Provider that proves the keys used for key binding of Credentials reside in a trustworthy WSCD,
      and checks the Wallet Unit has not been revoked. Specific to IT-Wallet. 
 

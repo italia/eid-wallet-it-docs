@@ -437,15 +437,9 @@ The body of the Wallet Instance Attestation JWT contains the following claims:
     * - **Claim**
       - **Description**
       - **Reference**
-    * - **iss**
-      - REQUIRED. Identifier of the Wallet Provider.
-      - :rfc:`9126` and :rfc:`7519`.
     * - **exp**
-      - REQUIRED. UNIX Timestamp with the expiry time of the JWT.
-      - :rfc:`9126` and :rfc:`7519`.
-    * - **iat**
-      - REQUIRED. UNIX Timestamp with the time of JWT issuance.
-      - :rfc:`9126` and :rfc:`7519`.
+      - REQUIRED. UNIX Timestamp with the expiry time of the JWT. This should be set to the maximum of 24 hours.
+      - :rfc:`9126` and :rfc:`7519` and `EUDI-TS 3`_.
     * - **nbf**
       - OPTIONAL. UNIX Timestamp with the start time of validity of the JWT issuance.
       - :rfc:`9126` and :rfc:`7519`.
@@ -458,22 +452,21 @@ The body of the Wallet Instance Attestation JWT contains the following claims:
     * - **wallet_name**
       - REQUIRED. String containing a human-readable name of the Wallet.
       - `OpenID4VCI`_.
-    * - **status**
-      - REQUIRED. Status mechanism for the Wallet Attestation as defined in Section 6.2 of `TOKEN-STATUS-LIST`_.
-      - :rfc:`9126` and :rfc:`7519`.
-    * - **eudi_wallet_info**
-      - OPTIONAL. JSON object, containing the general information about the Wallet and Wallet Provider. The following parameter MUST be included:
+    * - **wallet_version**
+      - REQUIRED. String value of the Wallet Solution version.
+      - `OpenID4VCI`_ and `EUDI-TS 3`_.
+    * - **wallet_solution_certification_information**
+      - REQUIRED. String value that contains a URL that links to the certification of the Wallet Solution.
+      - `EUDI-TS 3`_.
+    * - **client_status**
+      - REQUIRED. Status mechanism for the Wallet Attestation.
 
-        - **general_info**: REQUIRED. An object that has the following parameters:
-
-          - **wallet_provider_name**: REQUIRED. String value of the Wallet Provider name as listed on the trusted list of Wallet Providers.
-          - **wallet_solution_id**: REQUIRED. String value of the Wallet Solution identifier as listed on the trusted list of Wallet Providers. 
-          - **wallet_solution_version**: REQUIRED. String value of the Wallet Solution version.
-          - **wallet_solution_certification_information**: REQUIRED. String value that contains a URL that links to the certification of the Wallet Solution.
+        - **status**: REQUIRED. a status list reference as specified in Appendix E of `OpenID4VCI`_. The value represents the revocation state of the Wallet Instance.
+        - **exp**: REQUIRED. UNIX Timestamp specifying the time until which the Wallet Provider commits to maintaining the revocation status at the status list index referenced in ``status``.
       - `EUDI-TS 3`_.
     * - **sub**
-      - REQUIRED. Identifier of the Wallet Instance which is the thumbprint of the Wallet instance Attestation JWK.
-      - :rfc:`9126` and :rfc:`7519`.
+      - REQUIRED. Identifier of the Wallet Instance which is the unique identifier of Wallet Solution in ULR format.
+      - `EUDI-TS 3`_.
 
 
 Below is a non-normative example of the Wallet Instance Attestation JWT header and payload, without encoding and signature applied:
@@ -489,30 +482,31 @@ Below is a non-normative example of the Wallet Instance Attestation JWT header a
     As the certification scheme has not yet been defined, the exact content of ``wallet_solution_certification_information`` is undefined. This content will be defined in a future update.
 
 
+.. note::
+    As a revocation mechnism for WIA, the per-issuer reuse option described in Section 2.5.1 of `EUDI-TS 3`_ is prefered. 
 
 
 
 
-
-Wallet Unit Attestation Issuance Endpoint
+Key Attestation Issuance Endpoint
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This is a RESTful API endpoint provided by the Wallet Provider that enables the Wallet Instance to obtain Wallet Unit Attestation, by sending a Wallet Unit Attestation Issuance Request.
+This is a RESTful API endpoint provided by the Wallet Provider that enables the Wallet Instance to obtain Key Attestation, by sending a Key Attestation Issuance Request.
 
-Wallet Unit Attestation Issuance Request
+Key Attestation Issuance Request
 """""""""""""""""""""""""""""""""""""""""""""
 
-The Wallet Unit Attestation Issuance Request uses the HTTP POST method with ``Content-Type`` set to ``application/json``. (:ref:`WP_026 <wallet-instance-testcases>` and :ref:`WP_140–142 <wallet-instance-optional-testcases>`).
+The Key Attestation Issuance Request uses the HTTP POST method with ``Content-Type`` set to ``application/json``. (:ref:`WP_026 <wallet-instance-testcases>` and :ref:`WP_140–142 <wallet-instance-optional-testcases>`).
 
-The ``typ`` header of the Wallet Unit Attestation Issuance Request JWT assumes the value ``wua-request+jwt``.
+The ``typ`` header of the Key Attestation Issuance Request JWT assumes the value ``keyattestation-request+jwt``.
 
-The Wallet Unit Attestation Issuance Request body contains an ``assertion`` parameter whose value is a signed JWT including all header parameters and body claims described below.
+The Key Attestation Issuance Request body contains an ``assertion`` parameter whose value is a signed JWT including all header parameters and body claims described below.
 
-Below is a non-normative example of a Wallet Unit Attestation Request.
+Below is a non-normative example of a Key Attestation Request.
 
 .. code-block:: http
 
-    POST /wallet-unit-attestation HTTP/1.1
+    POST /key-attestation HTTP/1.1
     Host: application-provider.example.org
     Content-Type: application/json
 
@@ -520,7 +514,7 @@ Below is a non-normative example of a Wallet Unit Attestation Request.
       "assertion": "eyJpc3MiOiJodHRwczovL3dhbGxldC1wcm92aWRlc..."
     }
 
-In particular, the Wallet Unit Attestation Issuance JWT includes the following HTTP header parameters:
+In particular, the Key Attestation Issuance JWT includes the following HTTP header parameters:
 
 .. _table_wua_request_claim:
 .. list-table::
@@ -538,10 +532,10 @@ In particular, the Wallet Unit Attestation Issuance JWT includes the following H
       - Thumbprint of the Wallet Instance's JWK contained in the ``cnf`` claim.
       - [:rfc:`7638#section_3`]
     * - **typ**
-      - The type of the JWT, it MUST set to ``wua-request+jwt``.
+      - The type of the JWT, it MUST set to ``keyattestation-request+jwt``.
       -
 
-The Wallet Unit Attestation Request JWT includes the following body claims:
+The Key Attestation Request JWT includes the following body claims:
 
 .. list-table::
     :class: longtable
@@ -584,15 +578,9 @@ The Wallet Unit Attestation Request JWT includes the following body claims:
     * - **platform**
       - String containing the value of the device operating system.
       - 
-    * - **wallet_solution_id**
-      - String containg the identifier of the Wallet Solution .
-      - 
-    * - **wallet_solution_version**
-      - String containing the version of the Wallet Solution.
-      - 
 
 
-Below is a non-normative example of a Wallet Unit Attestation Request JWT header and payload.
+Below is a non-normative example of a Key Attestation Request JWT header and payload.
 
 
 .. code-block:: json
@@ -600,7 +588,7 @@ Below is a non-normative example of a Wallet Unit Attestation Request JWT header
     {
       "alg": "ES256",
       "kid": "OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
-      "typ": "wua-request+jwt"
+      "typ": "keyattestation-request+jwt"
     }
 
 .. code-block:: json
@@ -624,16 +612,14 @@ Below is a non-normative example of a Wallet Unit Attestation Request JWT header
         "eyJ0eXAiOiJrZXktYXR0ZXN0YXRpb24tcmVxdWVzdCtqd3QiLCJhbGciOiJFUzI1NiIsImtpZCI6Ik9LSEhrVk5PckthUFZKdWZsREt3MVNRSEZOWTVpeTlPaXdBdHBBMGNvSUEifQ.eyJ3c2NkX2tleV9hdHRlc3RhdGlvbiI6eyJzdG9yYWdlX3R5cGUiOiJMT0NBTF9OQVRJVkUifSwiY25mIjp7Imp3ayI6eyJrdHkiOiJFQyIsIngiOiJ4QUg5U05mYXE5SjVkbWt6WFlRTGVrNVlmcFBjOGlfUHBNUlQzMTVoak1rIiwieSI6IlBFMlhMY3BXNmVYSDRGbFlHTlA5Qmh3UVFkRWlaRTF0QWRULUVpaEFDQzgiLCJjcnYiOiJQLTI1NiIsImtpZCI6Ik9LSEhrVk5PckthUFZKdWZsREt3MVNRSEZOWTVpeTlPaXdBdHBBMGNvSUEifX0sImlhdCI6MTc3MzA1Mzg2MSwiZXhwIjoxNzczMDU3NDYxfQ.Rn3D0GwYYZJaupzJ6617V0xav_HH6bGnttoGrD4lwY8ICPH9NiEbTF9ZBYD3aHh20Z9GCjQ8Fhit5Fbps8v9Aw",
         "eyJ0eXAiOiJrZXktYXR0ZXN0YXRpb24tcmVxdWVzdCtqd3QiLCJhbGciOiJFUzI1NiIsImtpZCI6IkViUUJSQ2dLNWJrVzlZNU1idGEwZlpzMVdhVTBLZVpiek9iTXVvY2NLb28ifQ.eyJ3c2NkX2tleV9hdHRlc3RhdGlvbiI6eyJzdG9yYWdlX3R5cGUiOiJMT0NBTF9OQVRJVkUifSwiY25mIjp7Imp3ayI6eyJrdHkiOiJFQyIsIngiOiJEVVFWTGhLMUtRUmQtZ3g3UU5jYVNhWENnOXg0S3R6QmstNWIxWTNkeWU0IiwieSI6IkZxVjk0TWVrVm5fQ05mNTIxdm1vLVFIcWZObk12eGdIR3NFeDlCTlc4aFEiLCJjcnYiOiJQLTI1NiIsImtpZCI6IkViUUJSQ2dLNWJrVzlZNU1idGEwZlpzMVdhVTBLZVpiek9iTXVvY2NLb28ifX0sImlhdCI6MTc3MzA1Mzg2MSwiZXhwIjoxNzczMDU3NDYxfQ.wIYOmX8-dmuRnuaCVg1kFoTHhsvv01vbapQ8-3er-HIiAF819Kt3Uy0PUN_WgxP7eWMGwhkn_9tQnnhdgXLYyw"
       ],
-      "platform": "iOS",
-      "wallet_solution_id": "Wallet-mobile",
-      "wallet_solution_version": "1.1.0"
+      "platform": "iOS"
     }
 
 
-Wallet Unit Attestation Issuance Response
+Key Attestation Issuance Response
 """"""""""""""""""""""""""""""""""""""""""
 
-If the Wallet Unit Attestation Issuance Request is successfully validated, the Wallet Provider returns an HTTP response with a status code of ``200 OK`` and ``Content-Type`` ``application/json``. The returned JSON Object includes ``wallet_unit_attestation`` (see :ref:`wallet-attestation-issuance:Wallet Unit Attestation Issuance`). ``wallet_unit_attestation`` is signed by the Wallet Provider (:ref:`WP_027–029 <wallet-instance-testcases>` and :ref:`WP_143–144 <wallet-instance-optional-testcases>`). The JWT formatted Wallet Unit Attestation is to be used for the Issuance phase, as an ``key_attestation`` JOSE header in JWT ``proof`` type, and will be sent to the Credential Issuer as discussed in :ref:`credential-issuance:Digital Credential Issuance`.
+If the Key Attestation Issuance Request is successfully validated, the Wallet Provider returns an HTTP response with a status code of ``200 OK`` and ``Content-Type`` ``application/json``. The returned JSON Object includes ``key_attestation`` (see :ref:`wallet-attestation-issuance:Key Attestation Issuance`). ``key_attestation`` is signed by the Wallet Provider (:ref:`WP_027–029 <wallet-instance-testcases>` and :ref:`WP_143–144 <wallet-instance-optional-testcases>`). The JWT formatted Key Attestation is to be used for the Issuance phase, as an ``key_attestation`` JOSE header in JWT ``proof`` type, and will be sent to the Credential Issuer as discussed in :ref:`credential-issuance:Digital Credential Issuance`.
 
 
 The JSON Object returned in the response has the following claim:
@@ -646,11 +632,11 @@ The JSON Object returned in the response has the following claim:
     * - **Parameter**
       - **Description**
       - **Reference**
-    * - **wallet_unit_attestation**
-      - REQUIRED. A String representing the issued Wallet Unit Attestation.
+    * - **key_attestation**
+      - REQUIRED. A String representing the issued Key Attestation.
       - This specification.
 
-The value of ``wallet_unit_attestation`` parameter is a string representing the Wallet Unit Attestation in a JWT. 
+The value of ``key_attestation`` parameter is a string representing the Key Attestation in a JWT. 
 
 If any errors occur during the process, an error response is returned as it is defined in the previous section. 
 
@@ -673,7 +659,7 @@ The following table lists HTTP Status Codes and related error codes for the ones
       - The Integrity Assertion or Key Attestation (``keys_to_attest``) validation failed; the Integrity Assertion or Key Attestation (``keys_to_attest``) is tampered with or improperly signed.
     * - ``403 Forbidden``
       - ``invalid_request``
-      - The signature of the Wallet Unit Attestation Request is invalid or does not match the associated public key (JWK).
+      - The signature of the Key Attestation Request is invalid or does not match the associated public key (JWK).
    
 
 
@@ -682,10 +668,10 @@ The following table lists HTTP Status Codes and related error codes for the ones
 
 
 
-Wallet Unit Attestation JWT
+Key Attestation JWT
 """"""""""""""""""""""""""""
 
-The JOSE header of the Wallet Unit Attestation JWT contains the following parameters:
+The JOSE header of the Key Attestation JWT contains the following parameters:
 
 
 .. list-table::
@@ -700,10 +686,10 @@ The JOSE header of the Wallet Unit Attestation JWT contains the following parame
       - REQUIRED. A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms listed in the Section :ref:`algorithms:cryptographic algorithms` and MUST NOT be set to ``none`` or any symmetric algorithm (MAC) identifier.
       - :rfc:`7516#section-4.1.1`.
     * - **kid**
-      - REQUIRED. Unique identifier of the public key associated to the private key the Wallet Provider used to sign the Wallet Unit Attestation.
+      - REQUIRED. Unique identifier of the public key associated to the private key the Wallet Provider used to sign the Key Attestation.
       - :rfc:`7638#section_3`.
     * - **typ**
-      - REQUIRED. It MUST be set to ``key-attestation+jwt``
+      - REQUIRED. It MUST be set to ``keyattestation+jwt``
       - `OPENID4VC-HAIP`_.
     * - **trust_chain**
       - OPTIONAL. Sequence of Entity Statements that composes the Trust Chain related to the Wallet Provider.
@@ -712,7 +698,7 @@ The JOSE header of the Wallet Unit Attestation JWT contains the following parame
       - REQUIRED. Contains the X.509 public key certificate or certificate chain (:rfc:`5280`) corresponding to the key used to digitally sign the JWT.
       - :rfc:`7515` Section 4.1.8.
 
-The body of the Wallet Unit Attestation JWT contains the following claims:
+The body of the Key Attestation JWT contains the following claims:
 
 .. list-table::
     :class: longtable
@@ -722,9 +708,6 @@ The body of the Wallet Unit Attestation JWT contains the following claims:
     * - **Claim**
       - **Description**
       - **Reference**
-    * - **iss**
-      - REQUIRED. Identifier of the Wallet Provider.
-      - :rfc:`9126` and :rfc:`7519`.
     * - **exp**
       - REQUIRED. UNIX Timestamp with the expiry time of the JWT.
       - :rfc:`9126` and :rfc:`7519`.
@@ -748,31 +731,19 @@ The body of the Wallet Unit Attestation JWT contains the following claims:
         - ``iso_18045_moderate``: It MUST be used when user authentication is resistant to attack with attack potential ``Moderate``.
         - ``iso_18045_basic``: It MUST be used when user authentication is resistant to attack with attack potential ``Basic``.
       - `OpenID4VCI`_.
-    * - **status**
-      - REQUIRED. JSON Object representing the supported revocation check mechanisms, such as OAuth Status List.
-      - `OpenID4VCI`_.
+    * - **key_storage_status**
+      - REQUIRED. Status mechanism for the Key Attestation.
+
+        - **status**: REQUIRED. a status list reference as specified in Appendix D of `OpenID4VCI`_. The value represents the revocation state of the WSCD or Keystore.
+        - **exp**: REQUIRED. UNIX Timestamp specifying the time until which the Wallet Provider commits to maintaining the revocation status at the status list index referenced in ``status``.
+      - `EUDI-TS 3`_.
     * - **certification**
       - OPTIONAL. A String that contains a URL that links to the certification of the key storage component.
       - `OpenID4VCI`_.
-    * - **eudi_wallet_info**
-      - OPTIONAL. JSON object, containing the general information about the Wallet and Wallet Provider. The following parameters MUST be included:
-
-        - **general_info**: REQUIRED. An object that has the following parameters:
-
-          - **wallet_provider_name**: REQUIRED. String value of the Wallet Provider name as listed on the trusted list of Wallet Providers.
-          - **wallet_solution_id**: REQUIRED. String value of the Wallet Solution identifier as listed on the trusted list of Wallet Providers. 
-          - **wallet_solution_version**: REQUIRED. String value of the Wallet Solution version.
-          - **wallet_solution_certification_information**: REQUIRED. String that contains a URL that links to the certification of the Wallet Solution.
-
-        - **key_storage_info**: REQUIRED. An object that has the following parameters:
-
-          - **storage_type**: REQUIRED. String value that identifies the technical implementation of WSCD. It can have one of the following values, ``REMOTE``, ``LOCAL_EXTERNAL``, ``LOCAL_INTERNAL``, ``LOCAL_NATIVE``, or ``HYBRID``. 
-          - **keys_exportable**: REQUIRED. Boolean value that defines whether the private keys of the WSCD or keystore can be exported. It SHALL be set to ``true`` if the WSCD  allows the private keys to be exported (including if in encrypted format only) and ``false`` otherwise.
-          - **storage_certification_information**: REQUIRED. String that contains a URL that links to the certification of the key storage component. 
-      - `EUDI-TS 3`_.
+    
 
 
-Below is a non-normative example of the Wallet Unit Attestation JWT header and payload, without encoding and signature applied:
+Below is a non-normative example of the Key Attestation JWT header and payload, without encoding and signature applied:
 
 .. literalinclude:: ../../examples/wua-jwt_example_header.json
   :language: JSON
@@ -782,9 +753,13 @@ Below is a non-normative example of the Wallet Unit Attestation JWT header and p
 
 
 .. note::
-    As the certification scheme has not yet been defined, the exact content of ``wallet_solution_certification_information`` is undefined. 
-    This content will be defined in a future update. Similarly, the exact content of ``storage_certification_information`` is currently undefined and will be specified in a future update, but it SHALL provide sufficient information to determine whether the key storage is a WSCD.  
-    Note that the OID4VCI specification does specify a ``certification`` attribute in the ``key_attestation`` element that could be used instead of ``storage_certification_information``.
+    As the certification scheme has not yet been defined, the exact content of ``certification`` is undefined and will be specified in a future update.
+
+
+.. note::
+    As a revocation mechnism for KA, the Type-shared index described in Section 2.5.2 of `EUDI-TS 3`_ is prefered. 
+
+
 
 
 e-Service PDND Wallet Provider Catalog

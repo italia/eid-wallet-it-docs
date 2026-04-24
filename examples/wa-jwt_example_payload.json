@@ -8,16 +8,19 @@
         "kid": "dd762e6f8b613193"
       }
     },
-    "eudi_wallet_info": {
-      "general_info": {
-        "wallet_provider_name": "ExampleOrg",
-        "wallet_solution_id": "Wallet-mobile",
-        "wallet_solution_version": "1.0.0",
-        "wallet_solution_certification_information": ""
-      }
+    "client_status": {
+      "status": {
+        "status_list": {
+          "idx": 1337,
+          "uri": "https://revocation_url/wia-statuslists/42"
+        }
+      },
+      "exp": 1303497780
     },
-    "iss": "https://wallet-provider.example.org",
-    "sub": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c",
-    "iat": 1772444318,
+    "wallet_name": "ExampleOrg",
+    "wallet_version": "1.0.0",
+    "wallet_link": "https://example.org/wallets/ExampleOrg/info",
+    "wallet_solution_certification_information": "",
+    "sub": "https://wallet-solution.example.org",
     "exp": 1772447918
   }

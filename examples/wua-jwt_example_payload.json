@@ -1,5 +1,4 @@
 {
-    "iss": "https://wallet-provider.example.org",
     "attested_keys": [
         {
             "crv": "P-256",
@@ -8,27 +7,17 @@
             "y": "LIZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg"
         }
     ],
-    "status": {
+    "key_storage_status": {
         "status_list": {
             "idx": 412,
             "uri": "https://revocation_url/statuslists/1"
-        }
+        },
+        "exp": 1544172124
     },
     "iat": 1687281195,
     "exp": 1687288395,
+    "certification" : "",
     "key_storage": [ "iso_18045_moderate" ],
-    "user_authentication": [ "iso_18045_moderate" ],
-    "eudi_wallet_info": {
-        "general_info": {
-            "wallet_provider_name": "ExampleOrg", 
-            "wallet_solution_id": "Wallet-mobile",
-            "wallet_solution_version": "1.0.0",
-            "wallet_solution_certification_information": ""
-        },
-        "key_storage_info": {
-           "storage_type" : "LOCAL_NATIVE",	
-           "keys_exportable": false,
-           "storage_certification_information" : ""
-        }
-      }
+    "user_authentication": [ "iso_18045_moderate" ]
 }
+

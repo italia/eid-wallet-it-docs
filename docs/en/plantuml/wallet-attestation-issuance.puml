@@ -9,12 +9,12 @@ participant "Key Attestation APIs" as kats #springgreen
 participant "Device Integrity Service APIs" as aats #springgreen
 participant "Wallet Provider backend" as bck
 
-user->app: Request a new operation that\nrequires a Wallet Unit Attestation 
+user->app: Request a new operation that\nrequires a Key Attestation 
 activate app
 
 app->app: Check if Cryptographic Hardware Key \nTag (""hardware_key_tag""), Key Attestation APIs, and Device Integrity APIs are available
 
-app->app: Generates one or a batch of Credential key pair(s) to be attested in Wallet Unit Attestation (""key_pub_1"", ""key_priv_1"",..., ""key_pub_n"", ""key_priv_n"")
+app->app: Generates one or a batch of credential key pair(s) to be attested in Key Attestation (""key_pub_1"", ""key_priv_1"",..., ""key_pub_n"", ""key_priv_n"")
 
 rnote over app,bck #LIGHTGREEN
 Check Wallet Provider is part of the Federation and obtain its metadata
@@ -59,7 +59,7 @@ app->app : Generate ""keys_to_attest""= sign(""integrity_assertion"",""key_priv"
 end
 
 
-app->app: Generate Wallet Unit Attestation Request:""assertion""= sign((""integrity_assertion"", ""keys_to_attest"", ""hardware_signature"", ""nonce"",\n""hardware_key_tag"", ""key_pub"", ""wallet_solution_id"", ""wallet_solution_version"", ""platform""),""key_priv"")
+app->app: Generate Key Attestation Request:""assertion""= sign((""integrity_assertion"", ""keys_to_attest"", ""hardware_signature"", ""nonce"",\n""hardware_key_tag"", ""key_pub"", ""wallet_solution_id"", ""wallet_solution_version"", ""platform""),""key_priv"")
 app->bck: Send ""assertion""
 activate bck
 Note over bck, bck #LIGHTGREEN
@@ -71,11 +71,11 @@ bck->bck: Validate ""nonce""
 bck->bck: Validate ""keys_to_attest"" and Hardware key PoP
 bck->bck: Validate ""integrity_assertion""
 bck->bck: Validate ""hardware_signature""
-bck->bck: Validate ""key_pub"" PoP for signing\n Wallet Unit Attestation Request
-bck->bck: Create Wallet Unit Attestation
+bck->bck: Validate ""key_pub"" PoP for signing\n Key Attestation Request
+bck->bck: Create Key Attestation
 
 
-bck-->app: Wallet Unit Attestation Response
+bck-->app: Key Attestation Response
 
 deactivate bck
 deactivate app
