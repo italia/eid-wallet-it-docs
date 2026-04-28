@@ -25,11 +25,11 @@ L'oggetto JSON dei metadati la cui chiave è ``wallet_solution`` contiene i segu
     * - ``wallet_name`` 
       - OBBLIGATORIO. Stringa contenente il nome del Wallet. 
     * - ``authorization_endpoint``
-      - OBBLIGATORIO. URL dell'endpoint del server di autorizzazione, vedi `OAUTH2`_. L'utilizzo di un link universale è preferibile per una sicurezza migliorata e supporto di fallback, *URL schems* personalizzati possono anche essere utilizzati se necessario.
+      - OBBLIGATORIO. URL dell'endpoint del server di autorizzazione, vedi `OAUTH2`_. L'utilizzo di un link universale è preferibile per una sicurezza migliorata e supporto di fallback, *URL schemes* personalizzati possono anche essere utilizzati se necessario.
     * - ``credential_offer_endpoint`` 
       - OBBLIGATORIO. Credential Offer Endpoint del Wallet.
     * - ``response_types_supported``
-      - OPZIONALE. Array JSON di valori "response_type" di OAuth 2.0. Se presente DEVE essere impostato su `vp_token`. Il valore predefinito è `vp_token`.
+      - OPZIONALE. Array JSON di valori "response_type" di OAuth 2.0. Se presente DEVE essere impostato su ``vp_token``. Il valore predefinito è ``vp_token``.
     * - ``response_modes_supported``
       - OPZIONALE. Array JSON di valori "response_mode" di OAuth 2.0 come specificato in `OAUTH-MULT-RESP-TYPE`_. Il valore supportato DEVE essere *query*.
     * - ``vp_formats_supported``
@@ -39,11 +39,11 @@ L'oggetto JSON dei metadati la cui chiave è ``wallet_solution`` contiene i segu
     * - ``request_object_signing_alg_values_supported``
       - OPZIONALE. Vedi OpenID Connect Discovery.
 
-.. nota::
+.. note::
   Alcuni flussi relativi agli Attestati Elettronici richiedono il recupero delle informazioni del Wallet prima di interagire con il Wallet stesso. Il flusso è descritto in :ref:`wallet-metadata-retrieval:Flusso di Recupero dei Wallet Metadata`.
 
 .. note::
-  Per l'``authorization_endpoint`` l'uso di *univarsal link* è preferito rispetto a *URL scheme* personalizzati perché, quando configurati correttamente utilizzando Assetlinks JSON per Android e Apple App Site Association per iOS, forniscono una sicurezza migliorata riducendo il rischio di dirottamento degli URL.
-  Inoltre, gli *univarsal link* offrono meccanismi di fallback, consentendo al flusso di continuare senza problemi in un browser anche se l'Istanza del Wallet non è installata, garantendo un'esperienza Utente più fluida. Per garantire l'interoperabilità, il supporto degli *URL scheme* personalizzati è anche RACCOMANDATO secondo il profilo di interoperabilità HAIP `OPENID4VC-HAIP`_, e in particolare utilizzando l'url personalizzato ``haip://``.
+  Per l'``authorization_endpoint`` l'uso di *universal link* è preferito rispetto a *URL scheme* personalizzati perché, quando configurati correttamente utilizzando Assetlinks JSON per Android e Apple App Site Association per iOS, forniscono una sicurezza migliorata riducendo il rischio di dirottamento degli URL.
+  Inoltre, gli *universal link* offrono meccanismi di fallback, consentendo al flusso di continuare senza problemi in un browser anche se l'Istanza del Wallet non è installata, garantendo un'esperienza Utente più fluida. Per garantire l'interoperabilità, il supporto degli *URL scheme* personalizzati è anche RACCOMANDATO secondo il profilo di interoperabilità HAIP `OPENID4VC-HAIP`_, e in particolare utilizzando l'url personalizzato ``haip://``.
 
 
