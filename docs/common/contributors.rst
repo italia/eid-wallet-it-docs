@@ -26,6 +26,7 @@
 - Mart Aarma
 - Marta Sciunnach
 - Matteo Fortini
+- Michele Massetti
 - Michele Silletti
 - Nicola Saitto
 - Niels van Dijk
