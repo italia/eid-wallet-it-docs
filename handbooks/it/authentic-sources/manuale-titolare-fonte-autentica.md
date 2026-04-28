@@ -163,11 +163,11 @@ L’Ente deve quindi accuratamente definire, sulla base dei requisiti illustrati
 
 A scopo esemplificativo, di seguito sono riportati due esempi di rappresentazione grafica dell’EAA nella Soluzione Wallet di PagoPA S.p.A. Le configurazioni illustrate differiscono in relazione alle modalità di gestione degli attributi di II livello. 
 
-![Esempio lista di attributi con valore](images/figura-3-esempio-lista-di-attibuti-con-valore.pdf)
+![Esempio lista di attributi con valore](images/figura-3-esempio-lista-di-attibuti-con-valore.svg)
 
 *Figura 3: Esempio di resa grafica della Vista di dettaglio di un’EAA nella Soluzione Wallet di PagoPA, caratterizzata da attributi di II livello strutturati come lista di attributi con valore*
 
-![Esempio lista di descrizioni](images/figura-4-esempio-lista-di-descrizioni.pdf)
+![Esempio lista di descrizioni](images/figura-4-esempio-lista-di-descrizioni.svg)
 
 *Figura 4: Esempio di resa grafica della Vista di dettaglio di un’EAA nella Soluzione Wallet di PagoPA, caratterizzata da attributi di II livello strutturati come lista di descrizioni*
 
