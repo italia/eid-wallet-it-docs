@@ -48,9 +48,13 @@ Il presente manuale è da intendersi anche come uno strumento aperto alla condiv
 
 ## Ruoli e responsabilità del Titolare di Fonte Autentica
 
-Il Titolare di Fonte Autentica (Authentic Source - AS) è il soggetto che, nel Sistema IT-Wallet, detiene i dati da cui vengono creati gli Attestati Elettronici di Attributi rilasciati nelle soluzioni IT-Wallet. Ad esempio, per la Patente di Guida il Titolare di Fonte Autentica è la Direzione Generale di Motorizzazione del Ministero delle Infrastrutture e dei Trasporti. 
+Il Titolare di Fonte Autentica (Authentic Source - AS) è il soggetto che, nel Sistema IT-Wallet, detiene i dati da cui vengono creati gli Attestati Elettronici di Attributi (EAA) rilasciati nelle soluzioni IT-Wallet. Ad esempio, per la Patente di Guida il Titolare di Fonte Autentica è la Direzione Generale di Motorizzazione del Ministero delle Infrastrutture e dei Trasporti. 
 
-L'Ente che fornisce i dati, in quanto Titolare di Fonte Autentica, è l'unico soggetto che può definire mezzi e finalità di uso degli stessi. L'Ente rimarrà sempre il "proprietario" del dato e sarà responsabile del ciclo di vita del dato quindi di eventuali modifiche o cambiamenti di stato. Il Sistema IT-Wallet è concepito in modo che l'Ente possa continuare a gestire il dato in modo autonomo e conforme alle proprie politiche e alle normative vigenti. 
+Gli Attestati Elettronici di Attributi sono oggetti dinamici che consentono all’utente di dimostrare o attestare, in modo affidabile e verificabile, una condizione, uno stato o un diritto, sulla base delle informazioni in essi contenute.  
+
+Il Titolare di Fonte Autentica ha quindi non solo il ruolo di mettere a disposizione i propri dati per la creazione di Attestati Elettronici da parte del Fornitore di Attestati Elettronici, ma anche la **responsabilità di progettare le caratteristiche di tali Attestati Elettronici al fine di renderli effettivamente utili e verificabili**. Ciò implica la **definizione dei contesti in cui si ritiene utile dimostrare le condizioni o diritti che gli Attestati Elettronici rappresentano, e più in particolare la definizione accurata degli attributi in essi contenuti**, ossia delle singole unità informative che rappresentano le specifiche caratteristiche o qualità del soggetto.  
+
+Infatti, il Titolare di Fonte Autentica, in quanto Ente che fornisce i dati, è l'unico soggetto che può definire mezzi e finalità di uso degli stessi. L'Ente rimarrà sempre il "proprietario" del dato e sarà responsabile del ciclo di vita del dato quindi di eventuali modifiche o cambiamenti di stato. Il Sistema IT-Wallet è concepito in modo che l'Ente possa continuare a gestire il dato in modo autonomo e conforme alle proprie politiche e alle normative vigenti. 
 
 Di seguito rappresentato il ruolo del Titolare di Fonte Autentica e delle altre entità nel Sistema IT-Wallet. 
 
@@ -76,7 +80,7 @@ Per rivestire il ruolo di Titolare di Fonte Autentica, ciascun Ente interessato 
 
 In particolare, il processo prevede i seguenti step: 
 
-- **Step 1 | Progettazione caratteristiche EAA**: l'Ente approfondisce le Specifiche Tecniche del Sistema IT-Wallet e definisce le caratteristiche del Attestato Elettronico di Attributi relativo al proprio dataset, in relazione alle modalità di scoperta e ottenimento dell’EAA, i casi d’uso, il data model e le modalità di gestione di errori e stati. 
+- **Step 1 | Progettazione caratteristiche EAA**: l'Ente approfondisce le Specifiche Tecniche del Sistema IT-Wallet e definisce le caratteristiche dell' Attestato Elettronico di Attributi relativo al proprio dataset, in relazione alle modalità di scoperta e ottenimento dell’EAA, i casi d’uso, il data model e le modalità di gestione di errori e stati. 
   [Vai allo Step 1](#step-1--progettazione-caratteristiche-eaa)
 - **Step 2 | Pubblicazione in collaudo**: l'Ente effettua l'onboarding nella Piattaforma Digitale Nazionale Dati (PDND), se non lo ha già fatto, rilascia l'e-service in ambiente di collaudo su PDND, e attiva il relativo servizio Signal Hub in ambiente di collaudo per la gestione del ciclo di vita dell’EAA nel tempo. Infine, l'Ente notifica al Fornitore di Attestati Elettronici di Attributi, configurato come fruitore dell'e-service, l'avvenuta pubblicazione. 
   [Vai allo Step 2](#step-2--pubblicazione-in-collaudo)
@@ -93,7 +97,7 @@ In particolare, il processo prevede i seguenti step:
 
 ## Step 1 | Progettazione caratteristiche EAA
 
-Questo step ha l'obiettivo di definire l'esperienza utente di scoperta, ottenimento, utilizzo e gestione dell’Attestato Elettronico di Attributi relativo al dataset rilasciato dalla Fonte Autentica. Le attività previste in questa fase riguardano l'Ente nei limiti delle proprie responsabilità, contribuendo all'esperienza utente e più in generale alla qualità del servizio finale (es. modalità di discovery, casi d'uso, qualità dei dati, assistenza, condizioni di validità dell'EAA). In questo step, l'Ente interessato deve: 
+Questo step ha l'obiettivo di definire l'esperienza utente di scoperta, ottenimento, utilizzo e gestione dell’Attestato Elettronico di Attributi relativo al dataset rilasciato dalla Fonte Autentica.  Le attività previste in questa fase sono fondamentali per supportare l’Ente nella progettazione dell’EAA relativo al dataset e, attraverso la presentazione di criteri chiari da seguire, contribuiscono alla definizione dell’esperienza utente e più in generale alla qualità del servizio finale  (es. modalità di discovery, casi d'uso, qualità dei dati, assistenza, condizioni di validità dell'EAA). In questo step, l'Ente interessato deve: 
 
 
 
@@ -146,10 +150,28 @@ A tal fine, l’Ente deve compilare la sezione `casi_d_uso` del file [Progettazi
 
 ### **Definire il Data Model**
 
-Il Sistema IT-Wallet consente all’utente di ottenere in formato digitale i propri documenti, titoli e certificati sotto forma di EAA. Gli EAA sono rilasciati dal Fornitore di Attestati Elettronici di Attributi sulla base dei dati forniti dalla Fonte Autentica tramite l'e-service.
-L’Ente deve quindi definire quali dati fornirà e in quale ordine, affinché l'EAA prodotto risulti adeguato all'utilizzo da parte dell’utente. 
+Il Sistema IT-Wallet consente all’utente di ottenere in formato digitale i propri documenti, titoli e certificati sotto forma di EAA. Gli EAA sono rilasciati dal Fornitore di Attestati Elettronici di Attributi sulla base dei dati forniti dalla Fonte Autentica tramite l'e-service.  
 
-A tal fine, l’Ente deve compilare la sezione `e_service.response.dataset ` del file [Progettazione caratteristiche EAA](progettazione-caratteristiche-eaa.json) così da definire i dettagli sui dati che verranno messi a disposizione (es. tipologia, obbligatorietà, formato, lunghezza massima consentita, ordinamento, etc.). Per riferimenti e istruzioni di compilazione vedi [Appendice B](#appendice-b--data-model).
+Nel fornire i propri dati, i Titolari di Fonte Autentica non devono limitarsi a rendere disponibili le informazioni presenti nei propri sistemi, ma devono adottare una logica orientata al loro utilizzo. Ciò implica definire quali informazioni includere e come rappresentarle in funzione dello scopo dell’Attestato Elettronico, al fine di garantirne la comprensione, la verificabilità e l’interoperabilità tra sistemi. 
+
+L’Ente deve quindi accuratamente definire, sulla base dei requisiti illustrati nella sezione [Focus sugli Attestati Elettronici di Attributi](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/functionalities.html#focus-sugli-attestati-elettronici-di-attributi) delle Specifiche Tecniche, la la struttura, tipologia, la numerosità e l’ordinamento degli attributi che intende fornire, nel rispetto dei seguenti principi: 
+
+- **Valore**: assicurare che l’EAA abbia un chiaro scopo e una concreta utilità (*Cosa l’EAA permette di dimostrare o attestare?*) 
+- **Verificabilità**: garantire che i dati strutturati rappresentino in modo attendibile le caratteristiche e le qualità dell’utente necessarie, e che tali informazioni possano essere effettivamente verificate (*È possibile verificare la condizione o i diritti dell’utente attraverso uno o più attributi?*) 
+- **Comprensibilità**: assicurare che le informazioni siano immediatamente comprensibili, attraverso un linguaggio semplice e una semplificazione di contenuti complessi (*Le informazioni complesse sono state semplificate? Gli attributi sono espressi con un linguaggio chiaro e comprensibile?*) 
+- **Pertinenza**: selezionare e includere esclusivamente gli attributi essenziali e rilevanti rispetto allo scopo dell’EAA, evitando informazioni superflue o non significative (*Quali attributi sono realmente necessari? Quali risultano poco rilevanti, superflui o ridondanti?*)
+
+A scopo esemplificativo, di seguito sono riportati due esempi di rappresentazione grafica dell’EAA nella Soluzione Wallet di PagoPA S.p.A. Le configurazioni illustrate differiscono in relazione alle modalità di gestione degli attributi di II livello. 
+
+![Esempio lista di attributi con valore](images/figura-3-esempio-lista-di-attibuti-con-valore.png)
+
+*Figura 3: Esempio di resa grafica della Vista di dettaglio di un’EAA nella Soluzione Wallet di PagoPA, caratterizzata da attributi di II livello strutturati come lista di attributi con valore*
+
+![Esempio lista di descrizioni](images/figura-4-esempio-lista-di-descrizioni.png)
+
+*Figura 4: Esempio di resa grafica della Vista di dettaglio di un’EAA nella Soluzione Wallet di PagoPA, caratterizzata da attributi di II livello strutturati come lista di descrizioni*
+
+A tal fine, l’Ente deve compilare la sezione `e_service.response.dataset ` del file [Progettazione caratteristiche EAA](progettazione-caratteristiche-eaa.json) riportando gli attributi adeguatamente definiti e i relativi dettagli (es. tipologia, obbligatorietà, formato, lunghezza massima consentita, ordinamento, etc.). Per riferimenti e istruzioni di compilazione vedi [Appendice B](#appendice-b--data-model).
 
 In conclusione, un'adeguata definizione del Data Model pone le basi per una corretta implementazione dell'e-service da pubblicare su PDND (vedi [Step 2](#step-2--pubblicazione-in-collaudo)) ma è altresì importante considerare e rispettare i seguenti requisiti tecnici: 
 
