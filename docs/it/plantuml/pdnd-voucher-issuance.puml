@@ -1,0 +1,28 @@
+@startuml Voucher Issuance - e-Service
+title Voucher Issuance - e-Service
+
+autonumber
+
+box **Consumer** #Ivory
+  participant "**OAuth Client**" as CF
+end box
+
+box **PDND** #Azure
+  participant "**OAuth Authorization Server**" as AS
+end box
+
+opt For AUDIT_REST_02
+  CF->CF:Prepare JWT with complementary data (""TrackingEvidence"")
+
+  CF->CF:Compute SHA256 hash of ""TrackingEvidence"" (""H(TrackingEvidence)"")
+end
+
+CF->CF:Create DPoP key pair and proof
+CF->AS: Voucher Request (""client_id"", ""client_assertion"", ""client_assertion_type"", ""grant_type"")
+
+rnote over AS #LightPink
+  Checks
+endrnote
+
+AS-->CF:Voucher Response (""access_token"", ""token_type"", ""expires_in"")
+@enduml

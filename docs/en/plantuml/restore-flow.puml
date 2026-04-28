@@ -1,0 +1,30 @@
+@startuml Restore Flow
+!include <C4/C4_Container>
+
+actor User as "User"
+
+System_Boundary(walletSolution, "User's Device") {
+    System_Boundary(walletInstance, "Wallet Instance") {
+        Container(ui, "User Interface")
+        Container(backupApiService, "Backup API Service")
+    }
+
+    Container(mobileStorage, "Mobile Device Local Storage") {
+    }
+}
+
+System_Ext(Issuer, "Issuer")
+
+' Explicit layout adjustment for positioning
+mobileStorage -[hidden]-> walletInstance
+
+' Relationships
+User -> ui : "<b>1. Restore Wallet</b>"
+User <- ui : "<b>2. Prompt to Upload Backup File</b>"
+User <-> mobileStorage : "<b>3. Select Backup File from Storage</b>"
+User -> ui: "<b>4. Provide Encrypted Backup File and Enter Key Phrases</b>"
+ui -> backupApiService: "<b>5. Encrypted Backup File and Key Phrases</b>"
+backupApiService -> backupApiService: "<b>6. Decrypted</b> \n<b>Backup </b>"
+Issuer -> walletInstance: "<b>7. Obtain Metadata </b>"
+Issuer <-> walletInstance: "<b>8. Issue (Q)EEA</b>"
+@enduml

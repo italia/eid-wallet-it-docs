@@ -1,0 +1,31 @@
+{
+  "iss": "https://pidprovider.example.org",
+  "sub": "NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs",
+  "iat": 1683000000,
+  "exp": 1883000000,
+  "issuing_authority": "PID Provider Organization",
+  "issuing_country": "IT",
+  "date_of_expiry": "2033-03-19",
+  "status": {
+    "status_list": {
+      "idx": 1234,
+      "uri": "https://pidprovider.example.org/status"
+    }
+  },
+  "vct": "urn:eudi:pid:it:1",
+  "vct#integrity": "55f5fe57f1e491d49f33672784528532d9d",
+  "verification": {
+    "trust_framework": "it_cie",
+    "assurance_level": "high"
+  },
+  "given_name": "Mario",
+  "family_name": "Rossi",
+  "birthdate": "1980-01-10",
+  "tax_id_code": "TINIT-XXXXXXXXXXXXXXXX",
+  "place_of_birth": {
+    "locality": "Roma"
+  },
+  "nationalities": [
+    "IT"
+  ]
+}

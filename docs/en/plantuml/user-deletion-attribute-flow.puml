@@ -1,0 +1,40 @@
+@startuml Deletion of User's Attributes
+autonumber
+actor "User" as user
+
+box User's Device
+participant "Wallet Instance" as app 
+participant "User Agent" as ua
+end box
+
+box Relying Party
+participant "Erasure Endoint" as eept
+participant "Federation Endpoint" as fept
+end box
+
+  user -> app: Invoke attribute deletion functionality
+  app -> user: Show list of Relying Parties \nin possession of User's Attribute
+  user -> app: Select the Relying Party to \nrequest the deletion of attributes
+  app -> fept: Relying Party's EC Request
+  fept --> app: EC Response
+
+  note over app
+    The Wallet Instance obtains
+    the Erasure Endpoint from the
+    metadata of the Relying Party
+  end note
+
+  app -> app: The Wallet Instance logs \nthe Erasure Request
+  app -> ua:
+  ua -> eept: Erasure Request
+  
+  note over user, eept
+    The Relying Party authenticates the User. The flow continues when the User has been successfully authenticated.
+  end note
+
+  eept -> eept: Delete attributes \nbound to the User
+  eept --> ua: Erasure Response
+
+  ua --> app:
+  app -> user: Notify User
+@enduml

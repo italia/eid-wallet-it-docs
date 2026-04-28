@@ -1,92 +1,164 @@
-# EUDI Wallet Technical Specifications
+# IT-Wallet Technical Specifications
 
-[![GitHub release](https://img.shields.io/github/release/italia/eidas-it-wallet-docs.svg?style=plastic)](https://github.com/italia/eidas-it-wallet-docs/releases)
+[![GitHub release](https://img.shields.io/github/release/italia/eid-wallet-it-docs.svg?style=plastic)](https://github.com/italia/eid-wallet-it-docs/releases)
 [![Get invited](https://slack.developers.italia.it/badge.svg)](https://slack.developers.italia.it/)
-[![Docs Italia](https://docs.italia.it/media/static/projects/badges/passing.svg)](https://docs.italia.it/italia/eidas-it-wallet-docs/it/master/index.html)
-[![Documentation](https://img.shields.io/badge/Documentation-Docs%20Italia-blue.svg)](https://docs.italia.it/italia/eidas-it-wallet-docs/)
 
 ---
 
 ## Table of Contents
 
-- [Description](#description)
-- [Documentation](#documentation)
-- [Versioning](#versioning)
+- [Intro](#intro)
+- [Versioning and preview](#versioning-and-preview)
+  - [Branching approach](#branching-approach)
+- [Releases](#releases)
 - [Contributing](#how-to-contribute)
 - [Authors](#authors)
 - [License](#license)
 
 ## Intro
 
-This repository hosts the sphinx project tree of EUDI Wallet Technical Specifications.
+This repository hosts the IT-Wallet Technical Specifications: the technical architecture, implementation framework and design requirements to be adopoted by the IT-Wallet System Technical Solutions.
 
-> This repository may contain contents to be considered experimental until the publication of the first release.
+For more information on the IT-Wallet System please refer to the [official page]([url](https://innovazione.gov.it/progetti/sistema-it-wallet/)).
 
-## Preview
-
-The stable release in different languages is published at the link below:
-
- - [English](https://italia.github.io/eudi-wallet-it-docs/versione-corrente/en/)
-
-### Preview of a branch
-
-Preview of other branches can be navigated by adding the branch name in the webpath, as follows:
-
- - https://italia.github.io/eudi-wallet-it-docs/$branch-name/en
-
-### Preview of released versions
-
-Released versions can be navigated by adding the tag in the webpath leaded by a _v_, as follows:
-
- - https://italia.github.io/eudi-wallet-it-docs/v0.4.1/en
+The repository is structured as sphinx project tree. **The first stable release is v1.0**; older releases are considered experimental.
 
 
-## Documentation
+## Versioning and preview
 
-This repository is structured to be compliant with 
-[Docs Italia](https://docs.italia.it/italia/developers-italia/publiccodeyml/it/master/index.html).
-This is why the content of the relevant folders will be compiled and rendered inside such platform.
-`Docs Italia` is designed to support documents, localized in different languages and for this
-reason it is the reference platform for displaying this standard.
+This project uses the git *branches* and *tags* in the following way:
+* the branch `versione-corrente` contains the last stable version of the documentation;
+* The [release page](https://github.com/italia/eid-wallet-it-docs/releases) of
+  this project contains all the released versions of the specifications. For the sake of coherence, the *releases* are made according to the tag names.
+
+Each time a release is created or edited, a preview is built based on the tag the release refers to.
+A preview of the latest editor's copy build, corresponding to the branch `versione-corrente` can be navigated using the following link:
+
+English version:
+
+ - [Editor's Copy](https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/)
+
+Versione Italiana:
+
+ - [Ultima versione in corso di sviluppo](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/)
+
+### Branching approach
+
+The repository follows a dual-track strategy:
+
+- **Long-Term Support (LTS)** — The 1.4.x series is the LTS line, maintained on the branch `versione-corrente`. This branch receives fixes and minor updates (e.g. 1.4.1, 1.4.2) to ensure stability for production deployments.
+
+- **Future development (EUDIW)** — Milestones from version 1.5 onward are developed on the `eudiw` branch and tagged as separate scopes. This keeps the EUDI Wallet framework evolution distinct from the current LTS documentation.
+
+- **Transition to EUDIW** — When the IT-Wallet is officially notified as an EUDIW-compliant wallet, the `eudiw` branch will be merged into `versione-corrente`. At that point, the LTS line based on 1.4.x will be considered End-of-Life (EOL), and the merged documentation will become the new main specification.
+
+**LTS scope** — For the 1.4.x LTS series, that may be less than 18 months, the period of support is counted from the publication date of the 1.4.0 release tag on GitHub. Within this window, LTS covers:
+
+- **Documentation fixes**: corrections of errors, clarifications, and alignment with implementation findings.
+- **Security-related updates**: changes required to reflect security fixes or hardening.
+- **Regulatory adjustments**: minor updates needed to stay aligned with national regulation or authoritative guidance, without introducing new features.
+
+LTS does not cover new features, API changes, or modifications that would imply a minor or major version bump beyond the 1.4.x series.
+
+### Releases
+
+This section contains the references about the official releases of this project.
+
+#### Stable release
+
+| Version | English | Italian |
+|---------|---------|---------|
+| 1.4.0 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.4.0/en/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.4.0/eid-wallet-it-docs-en-20260210-125829.pdf) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.4.0/it/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.4.0/eid-wallet-it-docs-it-20260210-125829.pdf) |
+
+For previous releases (1.3.x through v0.4.1), see [RELEASES-HISTORY.md](RELEASES-HISTORY.md).
 
 
-## Build
+## Build Previews
 
-HTML
+### Using Github Actions
+
+- access the manual [build frontend](https://github.com/italia/eid-wallet-it-docs/actions/workflows/build-html-manual.yml)
+- insert the Pull Request number using the form and submit the workflow as shown in the image below.
+
+<img width="1894" height="734" alt="image" src="https://github.com/user-attachments/assets/cdc81d14-4665-41c8-b251-385a1170a299" />
+
+
+#### Build HTML with Sphinx
 ````
-pip install -r requirements.txt
+pip install -r requirements-dev.txt
 
-# italian version
-sphinx-build -b html -d html/it/doctrees docs/it/  html/it
-
-# english version
-sphinx-build -b html -d html/en/doctrees docs/en/  html/en
+sphinx-build -b html -d html/en/doctrees docs/en/ html/en
 ````
 
 ODT
 ````
 sudo apt install pandoc
-sphinx-build -b singlehtml docs/it/  html/
+sphinx-build -b singlehtml docs/en/  html/
 cd html
-pandoc -o eidas-it-wallet-docs.odt index.html
+pandoc -o eid-it-wallet-docs.odt index.html
 ````
 
-## Versioning
+### Build PDFs (EN and IT) with Docker
 
-This project participates in the versioning model [*Semantic
-Versioning*](https://semver.org/).
+You can build the English and Italian PDFs locally using Docker, without installing LaTeX or Sphinx on your machine.
 
-Furthermore, this project uses the git *branches* and *tags* in the following way:
-* the branch `versione-corrente` contains the last stable version of the standard;
-* The [release page](https://github.com/italia/publiccode.yml/releases) of
-  GitHub contains all the released versions of the standard. For the sake of coherence, the *releases* are made according to the tag names.
+#### Option A: Use the prebuilt image from GitHub Container Registry
 
-Each time a release is created or edited, a preview is built based on the tag the release refers to. See [the preview section](preview-of-released-versions) for more.
+A prebuilt image is published on GitHub Container Registry as [`ghcr.io/italia/eidas-it-wallet-docs-builder`](https://github.com/italia/eid-wallet-it-docs/pkgs/container/eidas-it-wallet-docs-builder).
+
+- **1. Pull the image and tag it as `eid-wallet-it-docs`**
+
+```bash
+docker pull ghcr.io/italia/eidas-it-wallet-docs-builder:latest
+docker tag ghcr.io/italia/eidas-it-wallet-docs-builder:latest eid-wallet-it-docs
+```
+
+You can also use a specific digest or tag shown on the package page, e.g.:
+
+```bash
+docker pull ghcr.io/italia/eidas-it-wallet-docs-builder:b235e366abbb852177eb2db39c9b2de2a7b71129
+docker tag ghcr.io/italia/eidas-it-wallet-docs-builder:b235e366abbb852177eb2db39c9b2de2a7b71129 eid-wallet-it-docs
+```
+
+#### Option B: Build the Docker image locally
+
+From the repository root:
+
+```bash
+docker build -t eid-wallet-it-docs .
+```
+
+#### Run the container to generate PDFs (shared for both options)
+
+From the repository root:
+
+```bash
+docker run --rm \
+  -e PDF_BUILD_TAG=1.4.0 \
+  -v "$PWD":/workspace \
+  -w /workspace \
+  eid-wallet-it-docs \
+  bash -lc "./utils/build-pdf-local.sh"
+```
+
+This command:
+
+- uses the `eid-wallet-it-docs` image (either pulled from GHCR and tagged, or built locally);
+- mounts the current repository into `/workspace` inside the container;
+- runs `./utils/build-pdf-local.sh`, which for each language in `docs/en` and `docs/it`:
+  - builds LaTeX with Sphinx,
+  - compiles the main `.tex` file with LuaLaTeX,
+  - and copies the resulting PDFs into the `pdf_output/` directory in your working tree.
+
 
 ## How to contribute
 
-Don't hesitate to submit [Pull Requests or raise Issues](CONTRIBUTING.md) if you encounter any problems.
 
+Refer to [Contributing Rules Section](CONTRIBUTING-RULES.md) for an editorial guideline. Don't hesitate to submit [Pull Requests or raise Issues](CONTRIBUTING.md) if you encounter any problems.
+
+
+## Authors
+These Technical Specifications are drafted and maintained by the [Department for Digital Transformation]([url](https://innovazione.gov.it/)), [IPZS Istituto Poligrafico e Zecca dello Stato]([url](https://www.ipzs.it/ext/index.html)) and [PagoPA]([url](https://www.pagopa.it/it/)), with the supervision of [AGID, Agency for Digital Italy]([url](https://www.agid.gov.it/it)). 
 
 ## License
 

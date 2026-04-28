@@ -1,0 +1,43 @@
+@startuml
+autonumber
+
+participant "Wallet Unit" as w
+participant "RP Instance" as v
+
+activate w
+activate v
+
+' =========================
+' BLE connection establishment (from UUID received in Device Engagement)
+' =========================
+
+box "BLE setup (role-agnostic)"
+  v<->w: Establish BLE secure channel
+end box
+
+' =========================
+' Verify correct peer via Ident characteristic (§11.1.3.2)
+' =========================
+box "Ident check (mdoc verifies the correct reader)"
+  
+  opt Reader Verification
+  w->w: Compute expected Ident
+  w->v: Read Ident characteristic value
+  w->w: Compare received Ident with expectedIdent
+  w -x v: (Ident Mismatch) Terminate BLE connection
+  end
+   
+end box
+
+v->w: ""SessionEstablishment"" over BLE secure channel
+
+opt Session Binding
+w->w: Match ""SessionEstablishment"" message received during \n Negotiated Handover with the message received in Step 6
+w -x v: (Message Mismatch) Terminate BLE connection
+end
+
+'w->v: Send a signed and encrypted response (""SessionData"") \nwith requested attributes over BLE
+
+deactivate v
+deactivate w
+@enduml

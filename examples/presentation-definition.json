@@ -1,0 +1,128 @@
+{
+    "id": "presentation definitions",
+    "input_descriptors": [
+        {
+            "id": "eu.europa.ec.eudiw.pid.it.1",
+            "name": "Person Identification Data",
+            "group": [
+                "group1"
+            ],
+            "format": {
+                "dc+sd-jwt": {
+                    "alg": [
+                        "ES256",
+                        "ES384",
+                        "ES512"
+                    ]
+                }
+            },
+            "constraints": {
+                "limit_disclosure": "preferred",
+                "fields": [
+                    {
+                        "filter": {
+                            "const": "given_name",
+                            "type": "string"
+                        },
+                        "path": [
+                            "$.credentialSubject.given_name"
+                        ]
+                    },
+                    {
+                        "filter": {
+                            "const": "family_name",
+                            "type": "string"
+                        },
+                        "path": [
+                            "$.credentialSubject.family_name"
+                        ]
+                    },
+                    {
+                        "filter": {
+                            "const": "bith_date",
+                            "type": "string"
+                        },
+                        "path": [
+                            "$.credentialSubject.bith_date"
+                        ]
+                    },
+                    {
+                        "filter": {
+                            "const": "personal_administrative_number",
+                            "type": "string"
+                        },
+                        "path": [
+                            "$.credentialSubject.personal_administrative_number"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "wallet_attestation",
+            "name": "Wallet Attestation",
+            "format": "jwt",
+            "group": [
+                "group2"
+            ],
+            "constraints": {
+                "fields": [
+                    {
+                        "filter": {
+                            "enum": [
+                                "https://issuer.example.org"
+                            ],
+                            "type": "string"
+                        },
+                        "path": [
+                            "$.iss"
+                        ]
+                    },
+                    {
+                        "filter": {
+                            "minimum": 1504700136,
+                            "type": "number"
+                        },
+                        "path": [
+                            "$.exp"
+                        ]
+                    },
+                    {
+                        "filter": {
+                            "minimum": 1504700136,
+                            "type": "number"
+                        },
+                        "path": [
+                            "$.iat"
+                        ]
+                    },
+                    {
+                        "filter": {
+                            "type": "object"
+                        },
+                        "path": [
+                            "$.cnf.jwk"
+                        ]
+                    },
+                    {
+                        "filter": {
+                            "const": "aal",
+                            "type": "string"
+                        },
+                        "path": [
+                            "$.aal"
+                        ]
+                    }
+                ]
+            }
+        }
+    ],
+    "submission_requirements": [
+        {
+            "name": "Sample requirement",
+            "count": 1,
+            "rule": "pick",
+            "from": "group1"
+        }
+    ]
+}

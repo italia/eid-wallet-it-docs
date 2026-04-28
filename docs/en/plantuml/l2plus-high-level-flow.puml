@@ -1,0 +1,47 @@
+@startuml OAuth Multi-Step Authentication High-Level Flow
+!include <C4/C4_Component>
+HIDE_STEREOTYPE()
+!include <tupadr3/font-awesome-5/user>
+!include <tupadr3/font-awesome-5/mobile_alt>
+!include <tupadr3/font-awesome-5/shield_alt>
+!include <tupadr3/font-awesome-5/key>
+!include <tupadr3/font-awesome-5/file_alt>
+!include <tupadr3/font-awesome-5/certificate>
+!include <tupadr3/font-awesome-5/database>
+!include <tupadr3/font-awesome-5/cogs>
+!include <tupadr3/font-awesome-5/id_card>
+!include <tupadr3/font-awesome-5/exchange_alt>
+!include <tupadr3/font-awesome-5/wallet>
+!include <tupadr3/font-awesome/institution>
+
+' Custom style definitions for flow phases
+AddElementTag("phase1", $bgColor="#1168bd", $fontColor="white", $borderColor="#0b4884")
+AddElementTag("phase2", $bgColor="#7b2d8e", $fontColor="white", $borderColor="#5a1f68")
+'AddElementTag("phase3", $bgColor="#d73502", $fontColor="white", $borderColor="#a02701")
+AddElementTag("phase3", $bgColor="#f18f01", $fontColor="white", $borderColor="#c17001")
+AddElementTag("phase4", $bgColor="#2d5a27", $fontColor="white", $borderColor="#1e3d1b")
+
+title
+<size:18><b>eID Substantial Authentication with MRTD Verification</b></size>
+<size:14>High-Level Protocol Phases</size>
+end title
+
+'left to right direction
+
+' Define the 5 main phases as per input specification
+Component(phase1, "Phase 1", "OAuth Authorization Request", "PAR and authorization request with multi-step challenge requirements", $sprite="shield_alt", $tags="phase1")
+
+Component(phase2, "Phase 2", "Primary Authentication", "LoA3 electronic identification (SPID/CIEid L2)", $sprite="key", $tags="phase2")
+
+'Component(phase3, "Phase 3", "Challenge Request", "Document proof of possession requirement", $sprite="id_card", $tags="phase3")
+
+Component(phase3, "Phase 3", "Document PoP Validation", "Electronic document reading and cryptographic verification", $sprite="id_card",$tags="phase3")
+
+Component(phase4, "Phase 4", "OAuth Authorization Response", "Final authorization code issuance", $sprite="shield_alt",$tags="phase4")
+
+' Sequential flow between phases
+Rel_R(phase1, phase2, "Proceed to Authentication", "Multi-step challenge initiated")
+Rel_R(phase2, phase3, "Identity Verified", "Trigger document PoP challenge")
+'Rel_R(phase3, phase4, "Document Required", "Start PoP validation")
+Rel_R(phase3, phase4, "PoP Validated", "Complete authorization")
+@enduml

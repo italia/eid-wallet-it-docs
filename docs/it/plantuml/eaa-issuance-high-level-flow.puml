@@ -1,0 +1,46 @@
+@startuml High-Level (Q)EAA Issuance Flow
+!include <C4/C4_Component>
+
+HIDE_STEREOTYPE()
+LAYOUT_LEFT_RIGHT()
+
+skinparam linetype ortho
+skinparam nodesep 100
+skinparam ranksep 239
+
+' Define SPRITES
+!include <tupadr3/common>
+!include <tupadr3/font-awesome-5/certificate>
+!include <tupadr3/font-awesome-5/database>
+!include <tupadr3/font-awesome-5/lock>
+!include <tupadr3/font-awesome-5/users>
+!include <tupadr3/font-awesome-5/cogs>
+!include <tupadr3/font-awesome-5/server>
+!include <tupadr3/font-awesome-5/key>
+!include <tupadr3/font-awesome-5/user>
+!include <tupadr3/font-awesome-5/id_card>
+!include <tupadr3/font-awesome-5/exchange_alt>
+!include <tupadr3/font-awesome-5/desktop>
+!include <tupadr3/font-awesome-5/wallet>
+!include <tupadr3/font-awesome/institution>
+
+AddRelTag("async", $textColor=$ARROW_FONT_COLOR, $lineColor=$ARROW_COLOR, $lineStyle=DashedLine())
+
+Person(user, "User", "Wallet Instance holder")
+Component(wi, "Wallet Instance", "OID4VCI / OID4VP", "",$sprite="wallet")
+Boundary(qeaaProvider, "(Q)EAA Provider") {
+    Component(vci, "VCI Components", "OID4VCI", "",$sprite="id_card")
+    Component(rp, "Relying Party Component", "OID4VP", "",$sprite="cogs")
+}
+Component_Ext(as, "Authentic Source", "", "",$sprite="database")
+Component_Ext(ta, "Federation Services and Digital Credentials Catalog", "OID-FED registry", "",$sprite="lock")
+
+Rel(user,wi,"<size:16><color red><b>0</b></color></size>\nWants a (Q)EAA","")
+Rel(wi,ta,"<size:16><color red><b>1</b></color></size>\n(Q)EAA Provider Discovery\nand Trust","")
+Rel(wi,vci,"<size:16><color red><b>2</b></color></size>\nRequests\n(Q)EAA","")
+Rel(vci,ta,"<size:16><color red><b>3</b></color></size>\nWallet Provider Discovery and Trust","")
+Rel_U(rp,wi,"<size:16><color red><b>4</b></color></size>\nAuthenticates\nthe User","")
+Rel_U(vci,as,"<size:16><color red><b>5</b></color></size>\nObtains\nAttributes","")
+BiRel(vci,rp,"","",$tags="async")
+Rel(vci,wi,"<size:16><color red><b>6</b></color></size>\nIssues\n(Q)EAA","")
+@enduml

@@ -1,0 +1,4 @@
+{
+    "typ": "oauth-client-attestation-pop+jwt",
+    "alg": "ES256"
+}

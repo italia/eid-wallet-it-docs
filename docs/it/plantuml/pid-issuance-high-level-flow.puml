@@ -1,0 +1,49 @@
+@startuml High-Level PID Issuance Flow
+!include <C4/C4_Container>
+
+HIDE_STEREOTYPE()
+LAYOUT_LEFT_RIGHT()
+
+skinparam linetype ortho
+skinparam nodesep 100
+skinparam ranksep 170
+
+' Define SPRITES
+!include <tupadr3/common>
+!include <tupadr3/font-awesome-5/certificate>
+!include <tupadr3/font-awesome-5/database>
+!include <tupadr3/font-awesome-5/lock>
+!include <tupadr3/font-awesome-5/users>
+!include <tupadr3/font-awesome-5/cogs>
+!include <tupadr3/font-awesome-5/server>
+!include <tupadr3/font-awesome-5/key>
+!include <tupadr3/font-awesome-5/user>
+!include <tupadr3/font-awesome-5/id_card>
+!include <tupadr3/font-awesome-5/exchange_alt>
+!include <tupadr3/font-awesome-5/desktop>
+!include <tupadr3/font-awesome-5/wallet>
+!include <tupadr3/font-awesome/institution>
+
+AddRelTag("async", $textColor=$ARROW_FONT_COLOR, $lineColor=$ARROW_COLOR, $lineStyle=DashedLine())
+
+Person(user, "User", "Wallet Instance holder")
+Container(wi, "Wallet Instance", "OID4VCI", " ", $sprite="wallet")
+Boundary(pidProvider, "PID Provider") {
+    Container(vci, "VCI Components", "OID4VCI", "",$sprite="id_card")
+    Container(rp, "Relying Party Component", "OIDC / SAML", "",$sprite="cogs")
+}
+Boundary(IdentityProvider, "CIEid Digital Identity\n Federation") {
+    System_Ext(idp, "Identity Provider", "Digital Identity scheme based on CIEid LoA High (L3)", $sprite="institution")
+}
+Container_Ext(as, "Authentic Source", "ANPR", "",$sprite="database")
+Container_Ext(ta, "Federation Services and Digital Credentials Catalog", "OID-FED registry", "",$sprite="lock")
+
+Rel(user,wi,"<size:16><color red><b>0</b></color></size>\nWants a PID","")
+Rel(wi,ta,"<size:16><color red><b>1</b></color></size>\nPID Provider Discovery\nand Trust","")
+Rel(wi,vci,"<size:16><color red><b>2</b></color></size>\nRequests PID","")
+Rel(vci,ta,"<size:16><color red><b>3</b></color></size>\nWallet Provider Discovery and Trust","")
+Rel(rp,idp,"<size:16><color red><b>4</b></color></size>\nAuthenticates\nthe User","")
+Rel_U(vci,as,"<size:16><color red><b>5</b></color></size>\nObtains\nAttributes","")
+BiRel(vci,rp,"","",$tags="async")
+Rel(vci,wi,"<size:16><color red><b>6</b></color></size>\nIssues PID","")
+@enduml

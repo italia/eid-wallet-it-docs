@@ -1,0 +1,63 @@
+@startuml Mobile Relying Party Instance Access Certificate Issuance
+autonumber
+hide footbox
+
+'Participants
+actor "User" as user
+participant "Mobile Relying Party Instance" as app 
+participant "Device Integrity Service API" as aats #springgreen
+participant "Relying Party Backend" as bck
+participant "Relying Party Instance\nAccess Certificate Authority" as ca
+
+'START CERTIFICATE
+app->app: Check if Cryptographic Hardware Keys are available
+
+app->app: Generates a key pair (""key_pub"", ""key_priv"")
+
+app->bck: Request ""nonce""
+activate bck
+bck->bck: Generate ""nonce""
+bck-->app: ""nonce""
+deactivate bck
+
+app->app: Generate ""client_data"" and\ncompute ""client_data_hash""
+
+app->aats: ""client_data_hash""
+activate aats
+
+aats-->app: ""integrity_assertion""
+deactivate aats
+
+app->app: Generate ""hardware_signature""
+
+app->app: Generate Key Binding Request
+
+app->bck: Key Binding Request
+
+activate bck
+bck->bck: Checks on Key Binding Request
+
+bck-->app: Key Binding Response
+deactivate bck
+
+app->app: Generate Certificate Signing Request (""csr"")
+
+app->bck: ""csr""
+activate bck
+
+bck->bck: Checks on ""csr""
+
+bck->ca: ""csr""
+activate ca
+
+ca->ca: Sign ""csr""
+
+ca-->bck: ""access_certificate""
+deactivate ca
+
+bck-->app: ""access_certificate""
+deactivate bck
+
+app->app: Store ""access_certificate""
+deactivate app
+@enduml

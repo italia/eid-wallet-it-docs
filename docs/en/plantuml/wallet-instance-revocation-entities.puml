@@ -1,0 +1,29 @@
+@startuml Entities involved in the Wallet Instance revocation process
+!include <C4/C4_Component>
+
+HIDE_STEREOTYPE()
+
+Person(user, "User", "Entity owning the \nWallet Instance")
+
+Boundary(wallet_system, "Wallet System") {
+    Component(wallet_instance, "Wallet Instance", "", "Manages user's Digital Credentials")
+    Component(wallet_provider,"Wallet Provider", "", "Provides Wallet Instance and web services")
+}
+
+Component(authentic_source, "Authentic Source", "", "Provides User attributes to the Issuer and manages the validity status")
+Component_Ext(authorized_body, "Authorized Entities", "", "Supervisory Body and Judicial Authority")
+
+Component(issuer, "PID Provider", "", "Issues and manages PID and provides web services")
+
+
+Rel(user, wallet_provider, "Wallet Instance Revocation Request")
+
+Rel(wallet_provider, wallet_instance, "Revoke Wallet Instances")
+Rel(issuer, wallet_provider, "Wallet Instance Revocation Request")
+
+Rel(authentic_source, issuer, "Notify User's \ndeath")
+Rel(authorized_body, wallet_provider, "Notify Illegal Activities")
+
+Rel_L(wallet_provider, user, "Notify \nRevocation")
+
+@enduml

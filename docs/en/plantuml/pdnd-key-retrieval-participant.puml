@@ -1,0 +1,17 @@
+@startuml Key Retrieval - Participants
+title Key Retrieval - Participants
+
+autonumber
+
+box **PDND** #Azure
+  participant "**Interoperability API**" as I
+end box
+
+box **Participant** #HoneyDew
+  participant "**OAuth Client**" as CE
+end box
+
+CE->I:Request for Participant's public key\ncorresponding to specific ""kid""
+ 
+I->CE:Participant's public key\ncorresponding to specific ""kid""
+@enduml

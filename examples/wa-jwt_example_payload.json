@@ -1,0 +1,23 @@
+{
+    "cnf": {
+      "jwk": {
+        "kty": "EC",
+        "x": "8g9qKk3tRCBHsu57pNy3oMPc-jeJW8zU1LvfG9H5__M",
+        "y": "KD0MNCPtJqUd1RGiTdAxEL6OCw5trfzqSrU6BHKOy2g",
+        "crv": "P-256",
+        "kid": "dd762e6f8b613193"
+      }
+    },
+    "eudi_wallet_info": {
+      "general_info": {
+        "wallet_provider_name": "ExampleOrg",
+        "wallet_solution_id": "Wallet-mobile",
+        "wallet_solution_version": "1.0.0",
+        "wallet_solution_certification_information": ""
+      }
+    },
+    "iss": "https://wallet-provider.example.org",
+    "sub": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c",
+    "iat": 1772444318,
+    "exp": 1772447918
+  }

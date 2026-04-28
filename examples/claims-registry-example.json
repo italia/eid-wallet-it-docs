@@ -1,0 +1,341 @@
+{
+    "id": "urn:claims:it-wallet",
+    "version": "1.0.0",
+    "last_modified": "2026-03-06T00:00:00Z",
+    "localization": {
+        "available_locales": [
+            "en",
+            "it"
+        ],
+        "base_uri": "https://trust-registry.eid-wallet.example.it/.well-known/l10n/claims/",
+        "default_locale": "it",
+        "version": "1.0.0"
+    },
+    "claims": {
+        "academic_qualification_date": {
+            "description_l10n_id": "claim.academic_qualification_date.description",
+            "format": "date",
+            "type": "string"
+        },
+        "academic_year": {
+            "description_l10n_id": "claim.academic_year.description",
+            "type": "string"
+        },
+        "address": {
+            "description_l10n_id": "claim.address.description",
+            "nested_claims": [
+                "country",
+                "house_number",
+                "locality",
+                "locality_fraction",
+                "postal_code",
+                "region",
+                "street_address"
+            ],
+            "type": "object"
+        },
+        "birth_date": {
+            "aliases": [
+                "birthdate"
+            ],
+            "description_l10n_id": "claim.birth_date.description",
+            "format": "date",
+            "type": "string"
+        },
+        "birth_place": {
+            "description_l10n_id": "claim.birth_place.description",
+            "type": "string"
+        },
+        "codes": {
+            "description_l10n_id": "claim.codes.description",
+            "items": {
+                "properties": {
+                    "code": {
+                        "description_l10n_id": "claim.code.description",
+                        "type": "string"
+                    },
+                    "sign": {
+                        "description_l10n_id": "claim.sign.description",
+                        "type": "string"
+                    },
+                    "value": {
+                        "description_l10n_id": "claim.value.description",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "nested_item_claims": [
+                "code",
+                "sign",
+                "value"
+            ],
+            "type": "array"
+        },
+        "constant_attendance_allowance": {
+            "description_l10n_id": "claim.constant_attendance_allowance.description",
+            "type": "boolean"
+        },
+        "consulate_code": {
+            "description_l10n_id": "claim.consulate_code.description",
+            "type": "string"
+        },
+        "consulate_name": {
+            "description_l10n_id": "claim.consulate_name.description",
+            "type": "string"
+        },
+        "content": {
+            "description_l10n_id": "claim.content.description",
+            "encoding": "base64",
+            "format": "data",
+            "type": "string"
+        },
+        "country": {
+            "description_l10n_id": "claim.country.description",
+            "type": "string"
+        },
+        "cpia_school_year": {
+            "description_l10n_id": "claim.cpia_school_year.description",
+            "type": "string"
+        },
+        "degree_class": {
+            "description_l10n_id": "claim.degree_class.description",
+            "type": "string"
+        },
+        "degree_class_name": {
+            "description_l10n_id": "claim.degree_class_name.description",
+            "type": "string"
+        },
+        "degree_course_name": {
+            "description_l10n_id": "claim.degree_course_name.description",
+            "type": "string"
+        },
+        "degree_course_year": {
+            "description_l10n_id": "claim.degree_course_year.description",
+            "type": "string"
+        },
+        "document_iss_authority": {
+            "description_l10n_id": "claim.document_iss_authority.description",
+            "type": "string"
+        },
+        "document_iss_country": {
+            "description_l10n_id": "claim.document_iss_country.description",
+            "type": "string"
+        },
+        "document_number": {
+            "description_l10n_id": "claim.document_number.description",
+            "type": "string"
+        },
+        "driving_privileges": {
+            "description_l10n_id": "claim.driving_privileges.description",
+            "nested_item_claims": [
+                "vehicle_category_code",
+                "issue_date",
+                "expiry_date",
+                "codes"
+            ],
+            "type": "array"
+        },
+        "education_degrees": {
+            "description_l10n_id": "claim.education_degrees.description",
+            "nested_item_claims": [
+                "academic_qualification_date",
+                "degree_class",
+                "degree_class_name",
+                "degree_course_name",
+                "institute_name",
+                "programme_type_name",
+                "qualification_grade_value",
+                "qualification_name"
+            ],
+            "type": "array"
+        },
+        "education_enrollments": {
+            "description_l10n_id": "claim.education_enrollments.description",
+            "nested_item_claims": [
+                "academic_year",
+                "degree_class",
+                "degree_class_name",
+                "degree_course_name",
+                "degree_course_year",
+                "institute_name",
+                "programme_type_name"
+            ],
+            "type": "array"
+        },
+        "educational_track": {
+            "description_l10n_id": "claim.educational_track.description",
+            "type": "string"
+        },
+        "effective_date": {
+            "description_l10n_id": "claim.effective_date.description",
+            "format": "date",
+            "type": "string"
+        },
+        "expiry_date": {
+            "aliases": [
+                "date_of_expiry"
+            ],
+            "description_l10n_id": "claim.expiry_date.description",
+            "format": "date",
+            "type": "string"
+        },
+        "family_name": {
+            "description_l10n_id": "claim.family_name.description",
+            "type": "string"
+        },
+        "foreign_residence": {
+            "description_l10n_id": "claim.foreign_residence.description",
+            "type": "boolean"
+        },
+        "given_name": {
+            "description_l10n_id": "claim.given_name.description",
+            "type": "string"
+        },
+        "house_number": {
+            "description_l10n_id": "claim.house_number.description",
+            "type": "string"
+        },
+        "institute_code": {
+            "description_l10n_id": "claim.institute_code.description",
+            "type": "string"
+        },
+        "institute_name": {
+            "description_l10n_id": "claim.institute_name.description",
+            "type": "string"
+        },
+        "issue_date": {
+            "description_l10n_id": "claim.issue_date.description",
+            "format": "date",
+            "type": "string"
+        },
+        "link_qr_code": {
+            "description_l10n_id": "claim.link_qr_code.description",
+            "format": "uri",
+            "type": "string"
+        },
+        "locality": {
+            "description_l10n_id": "claim.locality.description",
+            "type": "string"
+        },
+        "locality_fraction": {
+            "description_l10n_id": "claim.locality_fraction.description",
+            "type": "string"
+        },
+        "nationalities": {
+            "description_l10n_id": "claim.nationalities.description",
+            "items": {
+                "type": "string"
+            },
+            "type": "array"
+        },
+        "place_of_birth": {
+            "description_l10n_id": "claim.place_of_birth.description",
+            "nested_claims": [
+                "country",
+                "locality",
+                "region"
+            ],
+            "type": "object"
+        },
+        "portrait": {
+            "description_l10n_id": "claim.portrait.description",
+            "encoding": "base64",
+            "format": "data",
+            "type": "string"
+        },
+        "postal_code": {
+            "description_l10n_id": "claim.postal_code.description",
+            "type": "string"
+        },
+        "professional_qualification": {
+            "description_l10n_id": "claim.professional_qualification.description",
+            "type": "string"
+        },
+        "programme_type_name": {
+            "description_l10n_id": "claim.programme_type_name.description",
+            "type": "string"
+        },
+        "qualification_grade_value": {
+            "description_l10n_id": "claim.qualification_grade_value.description",
+            "type": "string"
+        },
+        "qualification_name": {
+            "description_l10n_id": "claim.qualification_name.description",
+            "type": "string"
+        },
+        "qualification_type": {
+            "description_l10n_id": "claim.qualification_type.description",
+            "type": "string"
+        },
+        "qualification_type_description": {
+            "description_l10n_id": "claim.qualification_type_description.description",
+            "type": "string"
+        },
+        "qualification_year": {
+            "description_l10n_id": "claim.qualification_year.description",
+            "type": "string"
+        },
+        "region": {
+            "description_l10n_id": "claim.region.description",
+            "type": "string"
+        },
+        "restrictions_conditions": {
+            "description_l10n_id": "claim.restrictions_conditions.description",
+            "type": "string"
+        },
+        "school_attendance_type": {
+            "description_l10n_id": "claim.school_attendance_type.description",
+            "type": "string"
+        },
+        "school_code": {
+            "description_l10n_id": "claim.school_code.description",
+            "type": "string"
+        },
+        "school_course_year": {
+            "description_l10n_id": "claim.school_course_year.description",
+            "type": "string"
+        },
+        "school_name": {
+            "description_l10n_id": "claim.school_name.description",
+            "type": "string"
+        },
+        "school_qualifications": {
+            "description_l10n_id": "claim.school_qualifications.description",
+            "nested_item_claims": [
+                "educational_track",
+                "institute_code",
+                "institute_name",
+                "professional_qualification",
+                "qualification_grade_value",
+                "qualification_type",
+                "qualification_type_description",
+                "qualification_year",
+                "school_code",
+                "school_name",
+                "school_year"
+            ],
+            "type": "array"
+        },
+        "school_year": {
+            "description_l10n_id": "claim.school_year.description",
+            "type": "string"
+        },
+        "street_address": {
+            "description_l10n_id": "claim.street_address.description",
+            "type": "string"
+        },
+        "tax_id_code": {
+            "description_l10n_id": "claim.tax_id_code.description",
+            "type": "string"
+        },
+        "un_distinguishing_sign": {
+            "description_l10n_id": "claim.un_distinguishing_sign.description",
+            "type": "string"
+        },
+        "vehicle_category_code": {
+            "description_l10n_id": "claim.vehicle_category_code.description",
+            "type": "string"
+        }
+    }
+}

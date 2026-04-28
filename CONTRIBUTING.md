@@ -1,51 +1,55 @@
-# Contributing to this standard
+# Contributing to Technical Documentation
 
-🙇‍♀️ Thank you for contributing!
+## Introduction
 
-We – the maintainers and contributors of this project – understand that a standard like this can only be set in collaboration with as many public technologists, policy makers and interested folk as possible. Thus we appreciate your input, enjoy feedback and welcome improvements to this project and are very open to collaboration.
+This document outlines the formal procedures for contributing to the Technical Documentation project. As a national technical specification, this documentation requires rigorous standards of contribution and collaboration to ensure accuracy, completeness, and compliance with relevant regulations.
 
-We love issues and pull requests from everyone.
+## Official Communication Channels
 
-## Problems, suggestions and questions in Issues
+Contributors are advised to report issues, propose modifications, or request clarifications through the official GitHub Issue tracking system: [GitHub Issues for publiccode.yml](https://github.com/italia/publiccode.yml/issues). Each submission must adhere to standardized documentation protocols.
 
-Please help development by reporting problems, suggesting changes and asking questions. To do this, you can [create a GitHub Issue](https://help.github.com/articles/creating-an-issue/) for this project in the [GitHub Issues for publiccode.yml](https://github.com/italia/publiccode.yml/issues).
+Contributing does not necessarily require modifications to the existing documentation; valuable contributions include identification of inconsistencies, clarification requests, and technical inquiries.
 
-You don't need to change any of our code or documentation to be a contributor!
+## Contribution Process
 
-## Documentation and code in Pull Requests
+To contribute content or code modifications to the Technical Documentation, adherence to the following protocol is required:
 
-If you want to add to the documentation or code of one of our projects you should make a Pull Request. 
+### Documentation Submission Requirements
 
-If you never used GitHub, get up to speed with [Understanding the GitHub Flow](https://guides.github.com/introduction/flow/) or follow one of the great free interactive courses in the [GitHub learning lab](https://lab.github.com/) on working with GitHub and working with MarkDown, the syntax this project's documentation is in.
+Contributions to this project must be submitted via the GitHub Pull Request mechanism. Contributors unfamiliar with GitHub procedures are directed to review the [GitHub Flow documentation](https://guides.github.com/introduction/flow/) or complete relevant training modules in the [GitHub learning lab](https://lab.github.com/).
 
-This project is [licenced CC-0](LICENSE), which essentially means that the project, along with your contributions is in the Public Domain in whatever jusrisdiction possible, and everyone can do whatever they want with it.
+This documentation is published under [CC-0 license](LICENSE), designating it as Public Domain content within applicable jurisdictions. All contributions are subject to the same licensing terms.
 
-### 1. Make your changes
+### Procedural Guidelines
 
-This project uses the [**GitFlow branching model** and workflow](http://nvie.com/posts/a-successful-git-branching-model/). When you've forked this repository, please make sure to create a feature branch following the GitFlow model.
+#### 1. Implementation of Modifications
 
-Add your changes in commits [with a message that explains them](https://robots.thoughtbot.com/5-useful-tips-for-a-better-commit-message). Document choices or decisions you make in the commit message, this will enable everyone to be informed of your choices in the future.
+This repository implements the [**GitFlow branching model** and workflow](http://nvie.com/posts/a-successful-git-branching-model/). Contributors must create feature branches in accordance with this model when submitting modifications.
 
-If you are adding code, make sure you've added and updated the relevant documentation and tests before you submit your pull request. Make sure to write tests that show the behaviour of the newly added or changed code.
+All changes must be documented with comprehensive [commit messages](https://robots.thoughtbot.com/5-useful-tips-for-a-better-commit-message) detailing:
+- The nature of the modification
+- Technical justification for the change
+- References to relevant standards or requirements
 
-### 2. Pull Request
+#### 2. Submission Protocol
 
-When submitting the pull request, please accompany it with a description of the problem you are trying to address and the issue numbers that this Pull Request fixes/addresses.
+Pull Requests must include:
+- A formal description of the addressed technical issue
+- References to corresponding issue numbers
+- Confirmation of compliance with documentation standards
 
-### 3. Improve
+#### 3. Review Process
 
-All contributions have to be reviewed by someone.
+Modifications may require revision based on technical feedback before acceptance. The designated maintainers will provide standardized guidance for necessary improvements.
 
-It could be that your contribution can be merged immediately by a maintainer. However, usually, a new Pull Request needs some improvements before it can be merged. Other contributors (or helper robots) might have feedback. If this is the case the reviewing maintainer will help you improve your documentation and code.
+Contributions fulfilling all technical and formal requirements will be integrated into the main documentation.
 
-If your documentation and code have passed human review, it is merged.
+#### 4. Acknowledgment of Contribution
 
-### 4. Celebrate
+Upon successful integration, contributors will be formally recognized for their technical input to this specification.
 
-Your ideas, documentation and code have become an integral part of this project. You are the Open Source hero we need! 
-
-In fact, feel free to open a PR to add your name to the [`AUTHORS`](AUTHORS.md) file and get eternal attribution.
+Contributors may submit a Pull Request to add their credentials to the [AUTHORS](AUTHORS.md) file for permanent attribution in accordance with project protocols.
 
 ---
 
-For more information on how to use and contribute to this project, please read the [`README`](README.md).
+For complete technical specifications and additional contribution guidelines, refer to the [README](README.md) documentation and [Contributing Rules Section](CONTRIBUTING-RULES.md).

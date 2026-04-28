@@ -1,0 +1,181 @@
+name: gh-pages
+
+on:
+  push:
+    branches:
+      - 'versione-corrente'
+    paths:
+      - 'docs/**' # Trigger only if there are changes in docs path
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+    paths:
+      - 'docs/**' # Trigger only if there are changes in docs path
+  release:
+    types:
+      - published
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+env:
+  DEFAULT_BRANCH: versione-corrente
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+
+  pre_job:
+    runs-on: ubuntu-latest
+    outputs:
+      should_skip: ${{ steps.skip_check.outputs.should_skip }}
+    steps:
+      - id: skip_check
+        uses: fkirc/skip-duplicate-actions@v3.4.0
+        with:
+          skip_after_successful_duplicate: 'true'
+          same_content_newer: 'true'
+
+  build-and-index:
+    runs-on: ubuntu-latest
+    needs: pre_job
+    # Run job ONLY if:
+    # 1. It's not a duplicate run (skip-duplicate-actions)
+    # 2. It's a push, release, workflow_dispatch, or same-repo PR
+    if: |
+      needs.pre_job.outputs.should_skip != 'true' &&
+      (
+        github.event_name == 'push' ||
+        github.event_name == 'release' ||
+        github.event_name == 'workflow_dispatch' ||
+        (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository)
+      )
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+          architecture: "x64"
+          cache: 'pip'
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      # Install Graphviz required for plantuml
+      - name: Install Graphviz
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y graphviz
+
+      - name: Install deps
+        run: python -m pip install -r requirements-dev.txt
+
+      # Determine deployment path based on event type
+      - name: Generate deployment paths
+        id: deployment
+        run: |
+          # Debug information
+          echo "GitHub ref: $GITHUB_REF"
+          echo "GitHub head ref: $GITHUB_HEAD_REF"
+          echo "GitHub ref type: $GITHUB_REF_TYPE"
+          echo "Event name: ${{ github.event_name }}"
+
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            echo "path=prs/pr${{ github.event.pull_request.number }}" >> $GITHUB_OUTPUT
+          elif [[ "${{ github.event_name }}" == "release" ]]; then
+            TAG="${{ github.event.release.tag_name }}"
+            echo "path=releases/${TAG}" >> $GITHUB_OUTPUT
+          else 
+            # Default case - push to default branch
+            echo "path=$DEFAULT_BRANCH" >> $GITHUB_OUTPUT
+          fi
+
+      # Append appropriate tags to document title based on build context
+      - name: Append tags to document title
+        run: |
+          if [[ "${{ github.event_name }}" == "release" ]]; then
+            TAG="${{ github.event.release.tag_name }}"
+            sed -i 's/\(settings_project_name = ".*\)"/\1 - Release '"${TAG}"'"/' docs/it/conf.py
+            sed -i 's/\(settings_project_name = ".*\)"/\1 - Release '"${TAG}"'"/' docs/en/conf.py
+            echo "Applied release tag '${TAG}' to document titles"
+          elif [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            PR_NUM="${{ github.event.pull_request.number }}"
+            sed -i 's/\(settings_project_name = ".*\)"/\1 - PR #'"${PR_NUM}"'"/' docs/it/conf.py
+            sed -i 's/\(settings_project_name = ".*\)"/\1 - PR #'"${PR_NUM}"'"/' docs/en/conf.py
+            echo "Applied PR tag '#${PR_NUM}' to document titles"
+          else
+            # This is for push to main branch or workflow_dispatch
+            echo "Using default title for main branch"
+            sed -i 's/\(settings_project_name = ".*\)"/\1 - Versione Corrente"/' docs/it/conf.py
+            sed -i 's/\(settings_project_name = ".*\)"/\1 - Editor'"'"'s Copy"/' docs/en/conf.py
+          fi
+
+      # Labels and xref check (Sphinx dummy build)
+      - name: Labels and xref check
+        run: |
+          sphinx-build -b dummy -W docs/it _build/labels/it
+          sphinx-build -b dummy -W docs/en _build/labels/en
+
+      # Run Sphinx build for HTML output
+      - name: Build branch
+        run: |-
+          # Create output directories
+          mkdir -p "html/${{ steps.deployment.outputs.path }}/it"
+          mkdir -p "html/${{ steps.deployment.outputs.path }}/en"
+
+          echo "Building html/${{ steps.deployment.outputs.path }}/it"
+          echo "Building html/${{ steps.deployment.outputs.path }}/en"
+
+          sphinx-build -b html docs/it/ html/${{ steps.deployment.outputs.path }}/it
+          sphinx-build -b html docs/en/ html/${{ steps.deployment.outputs.path }}/en
+
+      # Copy scripts and templates for deployment
+      - name: Copy python scripts for deploy
+        run: |
+          mkdir -p html/scripts/ && cp -r .github/scripts/* html/scripts/
+          mkdir -p html/templates/ && cp -r .github/templates/* html/templates/
+          mkdir -p html/static/ && cp -r .github/static/* html/static/
+
+      # Copy official_resources for GitHub Pages deployment
+      - name: Copy official resources
+        run: |
+          mkdir -p html/official_resources/ && cp -r official_resources/* html/official_resources/
+
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: gh-pages-temp
+
+      # Integrate new content and update gh-pages
+      - name: Integrate and update gh-pages content
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Copy all generated files to the temporary directory
+          rsync -av html/ gh-pages-temp/
+          
+          cd gh-pages-temp
+          
+          # Clean up old PR directories and generate index
+          python ./scripts/cleanup_old_prs.py
+          python ./scripts/generate_index.py
+          
+          # Configure git for commit
+          git config --local user.name 'GitHub Actions'
+          git config --local user.email 'actions@github.com'
+          
+          # Add modified files and commit
+          git add .
+          git commit -m "Update documentation and regenerate index"
+          git push

@@ -1,0 +1,206 @@
+{
+  "data_capabilities": [
+    {
+      "api_specification": "https://docs.gov.example/transport/api-oas3.yaml",
+      "available_claims": [
+        {
+          "claim_name": "given_name",
+          "mandatory": true,
+          "order": 1
+        },
+        {
+          "claim_name": "family_name",
+          "mandatory": true,
+          "order": 2
+        },
+        {
+          "claim_name": "birth_date",
+          "mandatory": true,
+          "order": 3
+        },
+        {
+          "claim_name": "birth_place",
+          "mandatory": true,
+          "order": 4
+        },
+        {
+          "claim_name": "issue_date",
+          "mandatory": true,
+          "order": 5
+        },
+        {
+          "claim_name": "document_iss_country",
+          "mandatory": true,
+          "order": 6
+        },
+        {
+          "claim_name": "document_iss_authority",
+          "mandatory": true,
+          "order": 7
+        },
+        {
+          "claim_name": "expiry_date",
+          "mandatory": true,
+          "order": 8
+        },
+        {
+          "claim_name": "document_number",
+          "mandatory": true,
+          "order": 9
+        },
+        {
+          "claim_name": "portrait",
+          "mandatory": true,
+          "order": 10
+        },
+        {
+          "claim_name": "un_distinguishing_sign",
+          "mandatory": true,
+          "order": 11
+        },
+        {
+          "claim_name": "restrictions_conditions",
+          "mandatory": true,
+          "order": 12
+        },
+        {
+          "claim_name": "driving_privileges",
+          "mandatory": true,
+          "order": 13
+        }
+      ],
+      "administrative_expiration_user_info": [
+        {
+        "locale": "it-IT",                    
+        "title": "La tua Patente risulta scaduta",
+        "description": "In questo momento non puoi guidare le categorie di veicoli associate alla tua Patente. Rinnova il documento presso l'ente abilitato del tuo territori."
+        },
+        {
+        "locale": "en-US",                    
+        "title": "Your driving licence has expired",
+        "description": "At this time, you cannot drive the vehicle categories associated with your licence. Renew the document at the authorised office in your area."
+        }
+      ],
+      "allowed_states": [      
+        {
+        "locale": "it-IT",
+        "0x00": "VALID",
+        "title": "La tua Patente risulta valida",
+        "description": "In questo momento puoi guidare le categorie di veicoli associate alla tua Patente"
+        },
+        {
+        "locale": "en-US",
+        "0x00": "VALID",
+        "title": "Your driving licence is valid",
+        "description": "At this time, you can drive the vehicle categories associated with your licence."
+        },
+        {
+        "locale": "it-IT",
+        "0x01": "INVALID",
+        "title": "La tua Patente risulta non valida",
+        "description": "Rivolgiti all'ente preposto per maggiori dettagli."
+        },
+        {
+        "locale": "en-US",
+        "0x01": "INVALID",
+        "title": "Your driving licence is not valid",
+        "description": "Contact the competent authority for more details."
+        },
+        {
+        "locale": "it-IT",
+        "0x02": "SUSPENDED",
+        "title": "La tua Patente risulta sospesa",
+        "description": "In questo momento non puoi guidare le categorie di veicoli associate alla tua Patente. Rivolgiti all'ente preposto per maggiori dettagli sul termine del periodo di sospensione."
+        },
+        {
+        "locale": "en-US",
+        "0x02": "SUSPENDED",
+        "title": "Your driving licence is suspended",
+        "description": "At this time, you cannot drive the vehicle categories associated with your licence. Contact the competent authority for more details on the end of the suspension period."
+        },
+        {
+        "locale": "it-IT",
+        "0x0F": "ATTRIBUTE_UPDATE",
+        "title": "La tua Patente risulta essere stata aggiornata",
+        "description": "In questo momento non puoi guidare le categorie di veicoli associate alla tua Patente. Aggiorna il documento su IT-Wallet."
+        },
+        {
+        "locale": "en-US",
+        "0x0F": "ATTRIBUTE_UPDATE",
+        "title": "Your driving licence has been updated",
+        "description": "At this time, you cannot drive the vehicle categories associated with your licence. Update the document in the IT-Wallet."
+        }
+      ],
+      "background_color": "#12107c",
+      "contacts": [
+        "citizen-support@gov.example"
+      ],
+      "data_origin": [
+        {
+        "locale": "it-IT",
+        "name":"Ufficio/Dipartimento XXX Autorità dei Trasporti"
+        },
+        {
+        "locale": "en-US",
+        "name":"Office/Department XXX Transport Authority"
+        }
+      ],
+      "data_provision": {
+        "deferred_flow": false,
+        "immediate_flow": true
+      },
+      "dataset_id": "38832801",
+      "integration_endpoint": "https://api.gov.example/transport/driving-license",
+      "integration_method": "pdnd",
+      "intended_purposes": [
+        "IDENTITY_VERIFICATION",
+        "PERSON_IDENTIFICATION",
+        "DRIVING_RIGHTS_VERIFICATION",
+        "LAW_ENFORCEMENT_CONTROLS"
+      ],
+      "logo_uri": "https://www.gov.example/assets/transport-data-logo.svg",
+      "logo_uri#integrity": "sha-256-b1946ac92492d2347c6235b4d2611184e2a3f8b8c8f8f8e8f8f8f8f8f8f8f8f8",
+      "service_documentation": "https://docs.gov.example/transport/api-docs",
+      "update_frequency": "real_time",
+      "user_information": [  
+        {
+        "locale": "it-IT",
+        "description": "Sono disponibili le patenti di guida rilasciate o rinnovate a partire dal DD-MM-YYYY."
+        },
+        {
+        "locale": "en-US",
+        "description": "Only driving licences issued or renewed from DD-MM-YYYY will be available."
+        }
+      ]
+    }
+  ],
+  "entity_id": "https://transport-authority.gov.example",
+  "organization_info": {
+    "contacts": [
+      "registry@transport-authority.gov.example",
+      "technical-support@transport-authority.gov.example"
+    ],
+    "homepage_uri": "https://www.gov.example/transport",
+    "ipa_code": "nta_001",
+    "legal_identifier": "12345678901",
+    "logo_extended_uri": "https://www.gov.example/assets/transport-authority-logo-extended.svg",
+    "logo_extended_uri#integrity": "sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+    "logo_uri": "https://www.gov.example/assets/transport-authority-logo.svg",
+    "logo_uri#integrity": "sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+    "organization_country": "XX",
+    "organization_name": [
+      {
+      "locale": "it-IT",
+      "name": "Autorità dei Trasporti"
+      },
+      {
+      "locale": "en-US",
+      "name": "Transport Authority"
+      }
+    ],
+
+    "organization_type": "public",
+    "policy_uri": "https://www.gov.example/transport/privacy-policy",
+    "tos_uri": "https://www.gov.example/transport/tos"
+  }
+}

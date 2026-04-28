@@ -1,0 +1,74 @@
+@startuml IT-Wallet_System_Architecture_Primary
+!include <C4/C4_Component>
+HIDE_STEREOTYPE()
+' skinparam linetype ortho
+LAYOUT_LEFT_RIGHT()
+' LAYOUT_TOP_DOWN()
+' Define SPRITES
+!include <tupadr3/common>
+!include <tupadr3/font-awesome-5/certificate>
+!include <tupadr3/font-awesome-5/database>
+!include <tupadr3/font-awesome-5/cogs>
+!include <tupadr3/font-awesome-5/id_card>
+!include <tupadr3/font-awesome-5/exchange_alt>
+!include <tupadr3/font-awesome-5/wallet>
+!include <tupadr3/font-awesome/institution>
+
+' Custom styles
+AddElementTag("external", $bgColor="#999999", $fontColor="white", $borderColor="grey")
+AddElementTag("primary", $bgColor="#1168bd", $fontColor="white", $borderColor="#0b4884")
+AddElementTag("tech", $bgColor="#6cb33f", $fontColor="white", $borderColor="#4a8329")
+AddElementTag("governance", $bgColor="#8A398F", $fontColor="white", $borderColor="#55235A")
+
+title IT-Wallet System Architecture - Primary Actors
+
+
+' Primary Actors
+Boundary(primary, "Primary System Actors") {
+    Boundary(authentic_sources, "Authentic Sources", "Authoritative sources of User's digital data and attributes"){
+
+        Component(as_api, "e-services API", "RESTful Services", "Web services exposed for accessing authentic source data. It implements standardized protocols for interoperability and secure communications with authentication, authorization and audit trails.", $tags="primary", $sprite="exchange_alt")
+
+        Component(as_db, "Authentic Source Database", "Database", "Secure repository storing user's digital attributes from authoritative sources (registries, professional registers). Implements granular access controls and operation logging to ensure data integrity and traceability.", $tags="tech", $sprite="database")
+
+        Rel_D(as_api,as_db,"Secure data access")
+        
+    }
+    
+    ' Aligned providers on the same level
+    Boundary(wallet_provider, "Wallet Solution Providers", "") {
+        Container(ws, "Wallet Solutions", "Mobile/Web App", "Mobile and web applications implementing IT-Wallet functionalities. They manage secure storage of Digital Credentials, authentication, end-to-end encryption and user interface for digital identity management.", $tags="primary",$sprite="wallet")
+    }
+    
+    Boundary(dc_provider, "Credential Issuers", "") {
+        Container(dc_solution, "Credential Issuers Solutions", "Issuing Services", "Technical solutions for issuing, managing and revoking Digital Credentials. They handle digital signatures, and integration with Authentic Sources.", $tags="primary",$sprite="id_card")
+    }
+  
+    Boundary(rp_provider, "Relying Parties", "") {
+        Container(rp_solution, "Relying Parties Solutions", "Mobile/Web Verifier", "Solutions for verifying Digital Credentials at public and private services. Implement standardized verification protocols, cryptographic validation, revocation checks and privacy-by-design management.", $tags="primary",$sprite="cogs")
+    }
+    
+    Boundary(ta, "Trust Infrastructure Provider", ""){
+        Component(ta_services, "Onboarding and Federation\nWeb Services", "Federation Services", "Web services for onboarding new Entities into the IT-Wallet federation and managing trust relationships. Implements federation protocols, certificate management and participant status monitoring.",$tags="primary", $sprite="cogs")
+        
+        Component(trust_registry, "IT-Wallet Registry", "Trust Registry", "Distributed registry maintaining the catalog of available Digital Credentials, Credential Schemas, authorized providers and their certifications. Provides discovery services and federated entity status verification.", $tags="tech", $sprite="database")
+
+        Rel_D(ta_services,trust_registry,"Updates registry")
+    }
+
+    Lay_U(as_api,dc_provider)
+    Lay_U(dc_provider,wallet_provider)
+    Lay_U(wallet_provider,rp_provider)
+    Lay_U(rp_provider,ta_services)
+}
+
+
+' Key relationships for architecture understanding
+Rel(dc_solution, as_api, "Requests attributes")
+Rel(ws, dc_solution, "Receives credentials")
+Rel(ws, rp_solution, "Presents credentials")
+
+
+
+
+@enduml

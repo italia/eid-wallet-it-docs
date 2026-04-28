@@ -1,0 +1,20 @@
+@startuml
+autonumber
+
+participant "Wallet Unit (PICC)" as w
+participant "RP Instance (PCD)" as v
+
+activate w
+activate v
+
+
+'== ""SessionData"" Exchange ==
+loop While more data is available
+  v -> w: Request next fragment  \n GET RESPONSE command
+  w -> v: ""SessionData"" fragment (encrypted)
+end
+w -> v: Final ""SessionData"" (attributes or status)
+
+deactivate w
+deactivate v
+@enduml
