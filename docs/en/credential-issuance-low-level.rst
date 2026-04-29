@@ -684,7 +684,6 @@ The Credential Offer object is a JSON object containing the parameters defined i
 
         - **issuer_state**: OPTIONAL. Opaque string created by the Credential Issuer used to bind the subsequent Authorization Request with the Credential Issuer. The Wallet MUST include it in the subsequent Authorization Request when present.
         - **authorization_server**: REQUIRED when the Credential Issuer uses more than one authorization server in its Issuer Solution. This string identifies the Authorization Server to use. The value MUST match with one of the values mapped in the ``authorization_servers`` array of the Credential Issuer metadata. It MUST NOT be used if ``authorization_servers`` is absent or it has no multiple entries.
-        - **scope**: REQUIRED. String value that maps to a specific Credential type. The Wallet MUST use this scope value in the Authorization Request. See Section 4.1 of [`OPENID4VC-HAIP`_] for details.
     - Section 4.1.1 of [`OpenID4VCI`_] and Section 4.1 of [`OPENID4VC-HAIP`_].
 
 .. note::
@@ -700,7 +699,7 @@ The Credential Offer can be transmitted by value using any supported invocation 
 
 .. code-block:: text
 
-  openid-credential-offer://?credential_offer=%7B%22credential_issuer%22%3A%22https%3A//credential-issuer.example.org%22%2C%22credential_configuration_ids%22%3A%5B%22dc_sd_jwt_Education_degree%22%5D%2C%22grants%22%3A%7B%22authorization_code%22%3A%7B%22scope%22%3A%22Education_degree%22%7D%7D%7D
+  openid-credential-offer://?credential_offer=%7B%22credential_issuer%22%3A%22https%3A//credential-issuer.example.org%22%2C%22credential_configuration_ids%22%3A%5B%22dc_sd_jwt_Education_degree%22%5D%2C%22grants%22%3A%7B%22authorization_code%22%3A%7B%issuer_state%22%3A%22eyJhbGciOiJSU0Et...F77QK8%22%7D%7D%7D
 
 The decoded Credential Offer object:
 
@@ -711,7 +710,7 @@ The decoded Credential Offer object:
     "credential_configuration_ids": ["dc_sd_jwt_Education_degree"],
     "grants": {
       "authorization_code": {
-        "scope": "Education_degree"
+        "issuer_state": "eyJhbGciOiJSU0Et...F77QK8",
       }
     }
   }
@@ -746,7 +745,6 @@ The Credential Issuer responds:
     "grants": {
       "authorization_code": {
         "issuer_state": "eyJhbGciOiJSU0Et...F77QK8",
-        "scope": "EuropeanDisabilityCard"
       }
     }
   }
@@ -782,7 +780,7 @@ The Authentic Source responds:
     "credential_configuration_ids": ["mso_mdoc_mDL"],
     "grants": {
       "authorization_code": {
-        "scope": "mDL"
+        "issuer_state": "eyJhbGciOiJSU0Et...F77QK8",
       }
     }
   }
