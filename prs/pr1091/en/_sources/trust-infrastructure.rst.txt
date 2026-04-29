@@ -276,7 +276,7 @@ Below is a non-normative example of a Trust Anchor Entity Configuration, where e
                 "federation_resolve_endpoint": "https://trust-anchor.eid-wallet.example.it/resolve",
                 "federation_list_endpoint": "https://trust-anchor.eid-wallet.example.it/list",
                 "federation_trust_mark_status_endpoint": "https://trust-anchor.eid-wallet.example.it/trust_mark_status",
-                "federation_trust_mark_listing_endpoint": "https://trust-anchor.eid-wallet.example.it/trust_mark_listing",
+                "federation_trust_mark_list_endpoint": "https://trust-anchor.eid-wallet.example.it/trust_mark_listing",
                 "federation_subordinate_events_endpoint": "https://trust-anchor.eid-wallet.example.it/events"
             }
         },
