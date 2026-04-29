@@ -465,7 +465,7 @@ The body of the Wallet Instance Attestation JWT contains the following claims:
         - **exp**: REQUIRED. UNIX Timestamp specifying the time until which the Wallet Provider commits to maintaining the revocation status at the status list index referenced in ``status``.
       - `EUDI-TS 3`_.
     * - **sub**
-      - REQUIRED. Identifier of the Wallet Solution, expressed as its unique identifier in URL format.
+      - REQUIRED. Identifier of the Wallet Instance, which is the unique identifier of Wallet Solution in URL format.
       - `EUDI-TS 3`_.
 
 
@@ -484,6 +484,11 @@ Below is a non-normative example of the Wallet Instance Attestation JWT header a
 
 .. note::
     As a revocation mechanism for WIA, the per-issuer reuse option described in Section 2.5.1 of `EUDI-TS 3`_ is preferred. 
+
+
+.. note::
+    The ``iss`` claim is not needed anymore in the WIA body as Wallet Provider identity is now inferred from the signing certificate in the ``x5c`` JOSE header parameter.
+
 
 
 
@@ -516,7 +521,7 @@ Below is a non-normative example of a Key Attestation Request.
 
 In particular, the Key Attestation Issuance JWT includes the following HTTP header parameters:
 
-.. _table_wua_request_claim:
+.. _table_ka_request_claim:
 .. list-table::
     :class: longtable
     :widths: 20 60 20
@@ -758,6 +763,10 @@ Below is a non-normative example of the Key Attestation JWT header and payload, 
 
 .. note::
     As a revocation mechanism for KA, the Type-shared index described in Section 2.5.2 of `EUDI-TS 3`_ is preferred. 
+
+
+.. note::
+    The ``iss`` claim is not needed anymore in the KA body as Wallet Provider identity is now inferred from the signing certificate in the ``x5c`` JOSE header parameter.
 
 
 

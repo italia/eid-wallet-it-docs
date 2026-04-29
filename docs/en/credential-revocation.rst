@@ -243,7 +243,7 @@ For any other Credential different from the PID, the Credential Issuer SHOULD se
 Status Update by Wallet Providers
 """""""""""""""""""""""""""""""""
 
-In case of device loss, theft, or a general vulnerability, the Wallet Provider MUST revoke the Wallet Instance and MUST ensure that the updated status is reflected in the status list of the related Wallet Instance Attestation. In case of a vulnerability on the WSCD, the Wallet Provider MUST revoke the related Key Attestation.
+In case of device loss, theft, or a general vulnerability, the Wallet Provider MUST revoke the Wallet Instance. Therefore, the Wallet Provider MUST ensure that the updated status is reflected in the status list of the related Wallet Instance Attestation. In case of a vulnerability on the WSCD, the Wallet Provider MUST revoke the related Key Attestation.
 In addition to what already defined in :ref:`credential-revocation:Digital Credential Lifecycle`, the Credential Issuer MUST implement a monitoring mechanism of the current statuses of all the Wallet Instance and Key Attestations related to the Wallet Instances to which the Credentials were issued.
 After the revocation of the Wallet Instance Attestation, the Credential Issuer proceeds with the revocation of all the Credentials issued to the Wallet Instance.
 
