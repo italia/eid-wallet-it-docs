@@ -118,7 +118,7 @@ The verification of the Wallet Instance validity MUST be performed:
 
 - **During the validity period of the Digital Credential** by the Credential Issuers every 24 hours by checking the PID's Wallet Instance Attestation Status List and Key Attestation Status List. Indeed, if the Wallet Instance or the Key Attestation is revoked, the PID hosted within it MUST be revoked. Any other Digital Credential obtained through the presentation of the PID MUST therefore be revoked too. 
 
-- **During the Wallet Instance lifecycle** by the Wallet Instance. Each Wallet Provider may implement diffent methods to allow a Wallet Instance to check its status. The IT Wallet specification suggests to check the Status List of the Wallet Instance Attestation. 
+- **During the Wallet Instance lifecycle** by the Wallet Instance. Each Wallet Provider may implement different methods to allow a Wallet Instance to check its status. The IT Wallet specification suggests to check the Status List of the Wallet Instance Attestation. 
 
 .. note::
   If Credential Issuers issue credentials with a validity period of less than 24 hours, they only need to verify the validity period of the WIA upon issuance.

@@ -311,7 +311,7 @@ Below is a non-normative example of a Nonce Response:
  3. The header parameter ``alg`` MUST indicate a registered asymmetric digital signature algorithm, and MUST NOT be set to `none`.
  4. The signature on the key proof MUST be verified using the public key specified in the header parameter.
  5. The header parameter MUST NOT contain a private key.
- 6. The signature on the Wallet Unit Attestion JWT as the value of the ``key_attestation`` header parameter MUST be verified using the Wallet Provider's public key which is identified by the ``kid`` header parameter inside the Key Attestation JWT.
+ 6. The signature on the Key Attestation JWT as the value of the ``key_attestation`` header parameter MUST be verified using the Wallet Provider's public key which is identified by the ``kid`` header parameter inside the Key Attestation JWT.
  7. If a ``c_nonce`` value was previously provided by the server, the ``nonce`` claim in the JWT MUST match this ``c_nonce`` value. Furthermore, the creation time of the JWT, as indicated by the ``iat`` claim or a server-managed timestamp via the ``nonce`` claim, MUST be within an acceptable window of time as determined by the server.
 
 

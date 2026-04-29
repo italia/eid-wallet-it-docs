@@ -49,9 +49,9 @@ When the state is **Installed**, the Wallet Instance MUST interact only with the
 * illegal activities reported by Judicial or Supervisory Bodies.
 
 .. note::
-  As it is stated in the ARF (see Topic 9 and Topic 38 in Annex 2), the revocation of the Wallet Instance is accomplished by revoking the Key Attestation by
-  using the status management mechanism. The Wallet Provider can simply change the status of the Wallet Unit in the Status List to mark the Wallet Unit as revoked and
-  inform the users concerning the reason to revoke the Wallet Unit.  
+  As it is stated in the ARF (see Topic 9 and Topic 38 in Annex 2), the revocation of the Wallet Instance is accomplished by revoking the Wallet Instance Attestation by
+  using the status management mechanism. The Wallet Provider can simply change the status of the Wallet Instance Attestation in the Wallet Instance Attestation Status List to mark it as revoked and
+  inform the users concerning the reason for revoking the Wallet Instance.
 
 Transition to Operational
 .........................

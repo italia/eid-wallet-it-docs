@@ -74,7 +74,7 @@ Below is a non-normative example of the ``client_data`` JSON object.
 
 **Steps 20-21 (Key Attestation Issuance Request)**: The Wallet Instance:
 
-* Constructs the Key Attestation Request in the form of a JWT. This JWT includes the ``integrity_assertion``, ``keys_to_attest``, ``hardware_signature``, ``nonce``, ``hardware_key_tag``, ``cnf``, ``platform``, ``wallet_solution_id``, ``wallet_solution_version`` and other configuration related parameters (see :ref:`Table of the Key Attestation Request Body <table_wua_request_claim>`) and is signed using the private key that it is public key illustrated in the request through ``cnf`` (first element of ``keys_to_attest``) (:ref:`WP_140–141 <wallet-instance-optional-testcases>`).
+* Constructs the Key Attestation Request in the form of a JWT. This JWT includes the ``integrity_assertion``, ``keys_to_attest``, ``hardware_signature``, ``nonce``, ``hardware_key_tag``, ``cnf``, ``platform`` and other configuration related parameters (see :ref:`Table of the Key Attestation Request Body <table_wua_request_claim>`) and is signed using the private key that it is public key illustrated in the request through ``cnf`` (first element of ``keys_to_attest``) (:ref:`WP_140–141 <wallet-instance-optional-testcases>`).
 * Submits the Key Attestation Request to the :ref:`wallet-provider-endpoint:Key Attestation Issuance Endpoint` of the Wallet Provider Backend.
 
 .. note:: 

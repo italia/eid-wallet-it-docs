@@ -8,15 +8,16 @@
         }
     ],
     "key_storage_status": {
-        "status_list": {
-            "idx": 412,
-            "uri": "https://revocation_url/statuslists/1"
+        "status": {
+            "status_list": {
+                "idx": 412,
+                "uri": "https://revocation_url/statuslists/1"
+            }
         },
         "exp": 1544172124
     },
     "iat": 1687281195,
     "exp": 1687288395,
-    "certification" : "",
     "key_storage": [ "iso_18045_moderate" ],
     "user_authentication": [ "iso_18045_moderate" ]
 }
