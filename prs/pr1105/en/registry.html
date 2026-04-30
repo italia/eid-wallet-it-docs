@@ -266,11 +266,13 @@ Content-Type: application/json
 <span class="w">    </span><span class="nt">&quot;credential_catalog&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/api/v1/.well-known/credential-catalog&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;taxonomy&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/api/v1/taxonomy&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;schema_registry&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/api/v1/schemas&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;federation_list&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/list&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;federation_fetch&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/fetch&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;federation_resolve&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/resolve&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;federation_trust_mark_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/trust_mark_status&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;federation_historical_keys&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/historical-jwks&quot;</span>
+<span class="w">    </span><span class="nt">&quot;federation_list_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/list&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;federation_fetch_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/federation_fetch_endpoint&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;federation_resolve_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/resolve&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;federation_trust_mark_status_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/trust_mark_status&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;federation_trust_mark_list_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://dev.ta.wallet.ipzs.it/trust_mark_listing&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;federation_trust_mark_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://dev.ta.wallet.ipzs.it/trust_mark&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;federation_historical_keys_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/federation_historical_keys&quot;</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="nt">&quot;content_negotiation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;application/jwt&quot;</span><span class="p">]</span>
 <span class="p">}</span>
@@ -2182,35 +2184,35 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 <ul class="simple">
 <li><p><strong>user_auth_required</strong>: REQUIRED. Flag indicating if User authentication is required during the issuance of the Digital Credential.</p></li>
 <li><p><strong>min_loa</strong>: REQUIRED. Minimum Level of Assurance required for Digital Credential authentication. It MUST include the Level of Assurance of the User authentication and the Wallet Instance requesting the Digital Credential.</p></li>
-<li><p><strong>supported_schemes</strong>: REQUIRED if <code class="docutils literal notranslate"><span class="pre">user_auth_required</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>. Supported digital identity authentication schemes (e.g., <code class="docutils literal notranslate"><span class="pre">[&quot;it-wallet&quot;]</span></code>).</p></li>
+<li><p><strong>supported_schemes</strong>: REQUIRED if <code class="docutils literal notranslate"><span class="pre">user_auth_required</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>. Supported digital identity authentication schemes (e.g., <code class="docutils literal notranslate"><span class="pre">[&quot;it_wallet&quot;]</span></code>).</p></li>
 </ul>
 </td>
 </tr>
 <tr class="row-even"><td><p><strong>domains</strong></p></td>
-<td><p>REQUIRED. Array of domains to which Digital Credential belongs, such as:</p>
-<ul class="simple">
-<li><p><strong>id</strong>: Unique identifier for the domain (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;IDENTITY&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;MOBILITY_TRAVEL&quot;</span></code>).</p></li>
-</ul>
-</td>
+<td><p>REQUIRED. Array of domain IDs to which Digital Credential belongs (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;IDENTITY&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;MOBILITY_TRAVEL&quot;</span></code>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>classes</strong></p></td>
-<td><p>REQUIRED. Array of classes to which Digital Credential belongs, such as:</p>
-<ul class="simple">
-<li><p><strong>id</strong>: Unique identifier for the class (e.g., &quot;IDENTIFICATION_DOCUMENTS&quot;, &quot;LICENSES_AUTHORIZATIONS&quot;).</p></li>
-</ul>
-</td>
+<td><p>REQUIRED. Array of class IDs to which Digital Credential belongs (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;IDENTIFICATION_DOCUMENTS&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;LICENSES_AUTHORIZATIONS&quot;</span></code>).</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>purposes</strong></p></td>
-<td><p>REQUIRED. Array of usage purposes for which the Digital Credential can be used, defining specific usage contexts and required claims for each purpose, such as:</p>
-<ul class="simple">
-<li><p><strong>id</strong>: Unique identifier for the purpose, referencing a purpose defined in the Taxonomy (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;IDENTITY_VERIFICATION&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;AGE_VERIFICATION&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;DRIVING_RIGHTS_VERIFICATION&quot;</span></code>).</p></li>
-</ul>
-</td>
+<td><p>REQUIRED. Array of usage purpose IDs for which the Digital Credential can be used, defining specific usage contexts and required claims for each purpose (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;IDENTITY_VERIFICATION&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;AGE_VERIFICATION&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;DRIVING_RIGHTS_VERIFICATION&quot;</span></code>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>issuers</strong></p></td>
 <td><p>REQUIRED. Array of relevant information about authorized Credential Issuers, including administrative and technical data such as Organization name, a reference to the API specification document and supported issuance mechanisms (for example the deferred flow support).</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>authentic_sources</strong></p></td>
+<tr class="row-even"><td><p><strong>localization</strong></p></td>
+<td><p>REQUIRED. Localization configuration object containing:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>default_locale</strong>: Default locale code (e.g., <code class="docutils literal notranslate"><span class="pre">it</span></code>).</p></li>
+<li><p><strong>available_locales</strong>: Array of supported locale codes (e.g., <code class="docutils literal notranslate"><span class="pre">[&quot;en&quot;,</span> <span class="pre">&quot;it&quot;]</span></code>).</p></li>
+<li><p><strong>base_uri</strong>: Base URI for localization bundle retrieval (e.g., <code class="docutils literal notranslate"><span class="pre">https://trust-registry.eid-wallet.example.it/.well-known/l10n/credential-catalog/</span></code>).</p></li>
+<li><p><strong>version</strong>: Version of the localization bundle format.</p></li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>authentic_sources</strong></p></td>
 <td><p>REQUIRED. Array of Authentic Source JSON objects referencing authorized Authentic Sources. Each object MUST contain the AS entity identifier and the specific data capability identifier:</p>
 <ul class="simple">
 <li><p><strong>id</strong>: String identifier referencing the Authentic Source entity_id as registered in the <a class="reference internal" href="#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>.</p></li>
@@ -2238,6 +2240,15 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 <span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;last_modified&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-03-15T12:00:00Z&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;localization&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;available_locales&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;it&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;base_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/.well-known/l10n/credential-catalog&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;default_locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span>
+<span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="nt">&quot;credentials&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
@@ -2308,36 +2319,12 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 <span class="w">                </span><span class="nt">&quot;user_auth_required&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">&quot;min_loa&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;high&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">&quot;supported_schemes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="s2">&quot;it-wallet&quot;</span>
+<span class="w">                    </span><span class="s2">&quot;it_wallet&quot;</span>
 <span class="w">                </span><span class="p">]</span>
 <span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="nt">&quot;domains&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDENTITY&quot;</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MOBILITY_TRAVEL&quot;</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;classes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDENTIFICATION_DOCUMENTS&quot;</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LICENSES_AUTHORIZATIONS&quot;</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDENTITY_VERIFICATION&quot;</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AGE_VERIFICATION&quot;</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DRIVING_RIGHTS&quot;</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;domains&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;IDENTITY&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;MOBILITY_TRAVEL&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;classes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;IDENTIFICATION_DOCUMENTS&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;LICENSES_AUTHORIZATIONS&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;IDENTITY_VERIFICATION&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;AGE_VERIFICATION&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;DRIVING_RIGHTS&quot;</span><span class="p">],</span>
 <span class="w">            </span><span class="nt">&quot;issuers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="p">{</span>
 <span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org&quot;</span><span class="p">,</span>
@@ -3422,7 +3409,7 @@ The main Journeys below illustrate the interactions with the Registry Infrastruc
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 29/04/2026.
+      Last updated on 30/04/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
