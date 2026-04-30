@@ -227,16 +227,6 @@ In the following the disclosure list is given:
    ``["-z34cJ1gC5UBPCIx8OhNiQ", "birth_date", "1980-01-10"]``
 
 
-**Claim** ``expiry_date``:
-
- * SHA-256 Hash: ``_ckhwGvTwFceg8jAFrQwqbw978ZHsaLJE_hs-rqV9lQ``
- * Disclosure:
-   ``WyJYY1hsUFZDcWpITnZlQkNubFZQWWdBIiwgImV4cGlyeV9kYXRlIiwgIjIw``
-   ``MjQtMDEtMDEiXQ``
- * Contents:
-   ``["XcXlPVCqjHNveBCnlVPYgA", "expiry_date", "2024-01-01"]``
-
-
 **Claim** ``tax_id_code``:
 
  * SHA-256 Hash: ``Wq3gFfmC0I9Lefw1mh-Bk5XPRtoSCg9aE23uOhxakas``
@@ -271,20 +261,9 @@ When provided, the Type Metadata Document MUST be a *JSON object* compliant with
 
 The Credential Type Metadata JSON Document MAY be retrieved through a *well-known* endpoint. See Section 6.3.3 of `SD-JWT-VC`_.
 This endpoint, provided by the Credential Issuer, MUST have the following format: ``https://{Credential Issuer Domain}/.well-known/type-metadata``. The ``vct`` query parameter MUST be added to that endpoint.
-The Endpoint returns a ``200 OK`` status code and supports ``application/json`` and ``application/jwt`` as content type.
+The Endpoint returns a ``200 OK`` status code and supports ``application/json`` as content type.
 
 Below a non-normative example is given.
-
-.. code-block:: http
-
-    GET /.well-known/type-metadata?vct=urn%3Aeudi%3Apid%3Ait%3A1 HTTP/1.1
-    Host: pidprovider.example.it
-    Accept: application/jwt
-
-    HTTP/1.1 200 OK
-    Content-Type: application/jwt
-
-    eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
 
 .. code-block:: http
 
@@ -406,7 +385,7 @@ The `MobileSecurityObject` MUST have the following attributes, unless otherwise 
 
         - When defined by an ISO standard, It MUST be a string of the form ``iso.org.{iso-number}.{part}.{version}.{credential_type}`` (e.g. for an mDL, the value MUST be ``org.iso.18013.5.1.mDL``).
 
-        - When defined at the european level, it MUST be a string of the form ``eu.europa.ec.{credential_type}.{version}`` (e.g., ``eu.europa.ec.loyaltycard.1.0``).
+        - When defined at the european level, it MUST be a string of the form ``eu.europa.ec.eudi.{credential_type}.{version}`` (e.g., ``eu.europa.ec.eudi.pid.1``).
 
         - When defined at national level, it MUST be a string of the form ``{Trust Anchor reverse domain}.{credential_type}.{version}`` (e.g., ``it.wallet.trust-registry.pid.1``).
 

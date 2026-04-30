@@ -280,21 +280,26 @@
 <td><p>Trust Anchor, Intermediario</p></td>
 </tr>
 <tr class="row-odd"><td><p>trust mark status</p></td>
-<td><p><strong>POST</strong> /federation_trust_mark_status_endpoint</p></td>
+<td><p><strong>POST</strong> /trust_mark_status</p></td>
 <td><p>Restituisce lo stato dell'emissione (validità) di un Trust Mark relativo a un soggetto specifico. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Sezione 8.4</p></td>
 <td><p>Trust Anchor, Intermediario</p></td>
 </tr>
-<tr class="row-even"><td><p>trust marked listing</p></td>
-<td><p><strong>GET</strong> /trust_marked_list?trust_mark_type=...</p></td>
+<tr class="row-even"><td><p>trust mark  list</p></td>
+<td><p><strong>GET</strong> /trust_mark_listing?trust_mark_type=...</p></td>
 <td><p>Elenca tutte le entità per le quali sono stati emessi Trust Mark e sono ancora validi. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Sezione 8.5</p></td>
 <td><p>Trust Anchor, Intermediario</p></td>
 </tr>
-<tr class="row-odd"><td><p>historical keys</p></td>
+<tr class="row-odd"><td><p>trust mark</p></td>
+<td><p><strong>GET</strong> /trust_mark?trust_mark_type=...</p></td>
+<td><p>Restituisce il Trust Mark relativo a un soggetto specifico. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Sezione 8.6</p></td>
+<td><p>Trust Anchor, Intermediate</p></td>
+</tr>
+<tr class="row-even"><td><p>historical keys</p></td>
 <td><p><strong>GET</strong> /federation_historical_keys</p></td>
 <td><p>Elenca le chiavi scadute e revocate, con la motivazione della revoca. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Sezione 8.7</p></td>
 <td><p>Trust Anchor, Intermediario</p></td>
 </tr>
-<tr class="row-even"><td><p>subordinate events</p></td>
+<tr class="row-odd"><td><p>subordinate events</p></td>
 <td><p><strong>GET</strong> /federation_subordinate_events_endpoint?sub=https://rp.example.org</p></td>
 <td><p>Restituisce una traccia storica degli eventi di registrazione sui Subordinati Immediati, come registrazione, revoca e aggiornamenti delle loro Chiavi dell'Entità di Federazione. Vedi la sezione <a class="reference internal" href="#federation-subordinate-events-endpoint"><span class="std std-ref">Federation Subordinate Events Endpoint</span></a> per maggiori dettagli.</p></td>
 <td><p>Trust Anchor, Intermediario</p></td>
@@ -387,7 +392,7 @@
 <span class="w">            </span><span class="nt">&quot;federation_resolve_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/resolve&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;federation_list_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/list&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;federation_trust_mark_status_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/trust_mark_status&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;federation_trust_mark_listing_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/trust_mark_listing&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;federation_trust_mark_list_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/trust_mark_listing&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;federation_subordinate_events_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/events&quot;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">},</span>
@@ -473,7 +478,7 @@
 <tbody>
 <tr class="row-even"><td><p><strong>trust_mark_issuers</strong></p></td>
 <td><p>Array JSON che definisce quali autorità di Federazione sono considerate affidabili per l'emissione di Trust Mark specifici, assegnati con i loro identificatori unici.</p></td>
-<td><p><a class="reference internal" href="_images/Eo_circle_red_letter-x.png"><img alt="uncheck-icon" src="_images/Eo_circle_red_letter-x.png" style="width: 25px;" /></a></p></td>
+<td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 </tr>
 </tbody>
 </table>
@@ -1297,7 +1302,7 @@ Signature:
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 16/04/2026.
+      Ultimo aggiornamento 30/04/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

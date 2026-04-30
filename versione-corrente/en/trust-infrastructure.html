@@ -409,21 +409,26 @@
 <td><p>Trust Anchor, Intermediate</p></td>
 </tr>
 <tr class="row-odd"><td><p>trust mark status</p></td>
-<td><p><strong>POST</strong> /federation_trust_mark_status_endpoint</p></td>
+<td><p><strong>POST</strong> /trust_mark_status</p></td>
 <td><p>Returns the status of the issuance (validity) of a Trust Mark related to a specific subject. See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Section 8.4</p></td>
 <td><p>Trust Anchor, Intermediate</p></td>
 </tr>
-<tr class="row-even"><td><p>trust marked listing</p></td>
-<td><p><strong>GET</strong> /trust_marked_list?trust_mark_type=...</p></td>
+<tr class="row-even"><td><p>trust mark list</p></td>
+<td><p><strong>GET</strong> /trust_mark_listing?trust_mark_type=...</p></td>
 <td><p>Lists all entities for which Trust Marks have been issued and are still valid. See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Section 8.5</p></td>
 <td><p>Trust Anchor, Intermediate</p></td>
 </tr>
-<tr class="row-odd"><td><p>historical keys</p></td>
+<tr class="row-odd"><td><p>trust mark</p></td>
+<td><p><strong>GET</strong> /trust_mark?trust_mark_type=...</p></td>
+<td><p>Returns the Trust Mark related to a specific subject. See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Section 8.6</p></td>
+<td><p>Trust Anchor, Intermediate</p></td>
+</tr>
+<tr class="row-even"><td><p>historical keys</p></td>
 <td><p><strong>GET</strong> /federation_historical_keys</p></td>
 <td><p>Lists the expired and revoked keys, with the motivation of the revocation. See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Section 8.7</p></td>
 <td><p>Trust Anchor, Intermediate</p></td>
 </tr>
-<tr class="row-even"><td><p>subordinate events</p></td>
+<tr class="row-odd"><td><p>subordinate events</p></td>
 <td><p><strong>GET</strong> /federation_subordinate_events_endpoint?sub=https://rp.example.org</p></td>
 <td><p>Returns a historical track of registration events about Immediate Subordinates, such as registration, revocation, and updates of their Federation Entity Keys. See the section <a class="reference internal" href="#federation-subordinate-events-endpoint"><span class="std std-ref">Federation Subordinate Events Endpoint</span></a> for more details.</p></td>
 <td><p>Trust Anchor, Intermediate</p></td>
@@ -476,7 +481,7 @@
 <span class="w">            </span><span class="nt">&quot;federation_resolve_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/resolve&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;federation_list_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/list&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;federation_trust_mark_status_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/trust_mark_status&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;federation_trust_mark_listing_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/trust_mark_listing&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;federation_trust_mark_list_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/trust_mark_listing&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;federation_subordinate_events_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/events&quot;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">},</span>
@@ -562,7 +567,7 @@
 <tbody>
 <tr class="row-even"><td><p><strong>trust_mark_issuers</strong></p></td>
 <td><p>JSON Array that defines which Federation authorities are considered trustworthy for issuing specific Trust Marks, assigned with their unique identifiers.</p></td>
-<td><p><a class="reference internal" href="_images/Eo_circle_red_letter-x.png"><img alt="uncheck-icon" src="_images/Eo_circle_red_letter-x.png" style="width: 25px;" /></a></p></td>
+<td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 </tr>
 </tbody>
 </table>
@@ -1450,7 +1455,7 @@ Signature:
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 16/04/2026.
+      Last updated on 30/04/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
