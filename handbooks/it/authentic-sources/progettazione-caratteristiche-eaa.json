@@ -4,7 +4,7 @@
     "nome_ente_titolare": "Denominazione ente titolare (da compilare)",
     "nome_eaa": "Denominazione EAA (da compilare)",
     "data_compilazione": "",
-    "versione": "0.6.0"
+    "versione": "1.0.0"
   }, 
 "casi_d_uso": {
   "target_utenti": { 
@@ -274,7 +274,7 @@
     ]
     },
     "response": {
-      "versione": "0.1.0",
+      "versione": "1.0.0",
       "dataset": [
       {
         "attestazione": "ISEE",
