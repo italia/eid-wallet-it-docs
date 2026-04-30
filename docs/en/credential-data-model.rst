@@ -120,7 +120,7 @@ The JWT payload contains the following claims. Unless otherwise specifed, the fo
       - OPTIONAL. UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in :rfc:`7519`.
       - `[RFC7519, Section 4.1.6] <https://www.iana.org/go/rfc7519>`_.
     * - **exp**
-      - REQUIRED. UNIX Timestamp with the expiry time of the JWT, coded as NumericDate as indicated in :rfc:`7519`. It MUST NOT later than the expiration date of the Wallet Unit Attestation presented as part of the Digital Credential issuance process.
+      - REQUIRED. UNIX Timestamp with the expiry time of the JWT, coded as NumericDate as indicated in :rfc:`7519`. It MUST NOT be later than the expiration date of the Wallet Unit Attestation presented as part of the Digital Credential issuance process.
       - `[RFC7519, Section 4.1.4] <https://www.iana.org/go/rfc7519>`_.
     * - **nbf**
       - OPTIONAL. UNIX Timestamp with the start time of validity of the JWT, coded as NumericDate as indicated in :rfc:`7519`.
