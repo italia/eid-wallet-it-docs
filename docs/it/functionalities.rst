@@ -343,22 +343,25 @@ Al fine di guidare la Fonte Autentica nel progettare e il Fornitore di Wallet ne
 - **Nome EAA**, ossia la denominazione ufficiale, distintiva e comprensibile dall’Utente di un EAA;
 
 - **Attributi identificativi** (se previsti), ossia le informazioni anagrafiche di base dell’Utente secondo l’ordine: 
- - Nome 
- - Cognome 
- - Codice Fiscale  
- - Data di nascita 
- - Luogo di nascita 
- - Etc. 
+
+  - Nome 
+  - Cognome 
+  - Codice Fiscale  
+  - Data di nascita 
+  - Luogo di nascita 
+  - Etc. 
 
 - **Attributi I livello**, ossia i dati che rappresentano e identificano la natura specifica dell’EAA (es. Numero patente, Categoria, Data scadenza, etc.); 
 
 - **Attributi II livello** (se previsti), ossia i dati di dettaglio utili a descrivere o approfondire un determinato Attributo di I livello. Tali Attributi di II livello possono essere strutturati attraverso una: 
- - **Lista di descrizioni**, ossia una lista di valori afferenti allo stesso oggetto; 
- - **Lista di Attributi con valore**, ossia una lista di ulteriori oggetti con valore associato; 
+
+  - **Lista di descrizioni**, ossia una lista di valori afferenti allo stesso oggetto; 
+  - **Lista di Attributi con valore**, ossia una lista di ulteriori oggetti con valore associato; 
 
 - **Metadati**, ossia i dati che identificano gli estremi dell’EAA a livello di: 
- - **Nome Fonte Autentica**, ossia il nome identificativo del soggetto titolare o della base dati ufficiale che detiene le informazioni alla base dell’EAA, definito dal parametro ``data_capabilities.data_origin``; 
- - **Nome Fornitore di Attestati Elettronici di Attributi**, ossia il nome identificativo del soggetto che realizza ed emette operativamente l’EAA, definito dal parametro ``organization_name``. 
+
+  - **Nome Fonte Autentica**, ossia il nome identificativo del soggetto titolare o della base dati ufficiale che detiene le informazioni alla base dell’EAA, definito dal parametro ``data_capabilities.data_origin``; 
+  - **Nome Fornitore di Attestati Elettronici di Attributi**, ossia il nome identificativo del soggetto che realizza ed emette operativamente l’EAA, definito dal parametro ``organization_name``. 
 
 .. only:: format_html
 
