@@ -419,7 +419,7 @@ The `MobileSecurityObject` MUST have the following attributes, unless otherwise 
 
           * **signed** *(tdate, OPTIONAL)*. The timestamp indicating when the `MobileSecurityObject` was signed.
           * **validFrom** *(tdate, OPTIONAL)*. Timestamp before which the `MobileSecurityObject` is not considered valid. When present, it MUST be equal to or later than the `signed` time.
-          * **validUntil** *(tdate, REQUIRED)*. Timestamp after which the `MobileSecurityObject` is no longer considered valid. It MUST NOT later than the expiration date of the Wallet Unit Attestation presented as part of the Digital Credential issuance process.
+          * **validUntil** *(tdate, REQUIRED)*. Timestamp after which the `MobileSecurityObject` is no longer considered valid. It MUST NOT be later than the expiration date of the Wallet Unit Attestation presented as part of the Digital Credential issuance process.
 
       - [ISO 18013-5#9.1.2.4]
     * - **digestAlgorithm**
