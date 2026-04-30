@@ -165,7 +165,7 @@
   <section id="l-infrastruttura-di-trust">
 <h1><span class="section-number">6. </span>L'Infrastruttura di Trust<a class="headerlink" href="#l-infrastruttura-di-trust" title="Link to this heading">¶</a></h1>
 <p>L'ecosistema IT-Wallet opera all'interno di un'infrastruttura di trust federata dove le entità partecipanti stabiliscono relazioni di trust crittografiche e mantengono la conformità con standard di sicurezza comuni. Questa infrastruttura fornisce le fondamenta per operazioni sicure di Credenziali Elettroniche tra i partecipanti dell'ecosistema.</p>
-<p>Questa sezione definisce l'implementazione del Trust Model in un'infrastruttura che è conforme a OpenID Federation 1.0 <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a>. Tale infrastruttura nazionale prevede un'API RESTful per la distribuzione di metadati, policy dei metadati, trust mark, chiavi pubbliche crittografiche e certificati X.509, e lo stato di revoca dei partecipanti, chiamati anche Entità di Federazione.</p>
+<p>Questa sezione definisce l'implementazione del Trust Model in un'infrastruttura che è conforme a OpenID Federation 1.0 <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a>. Tale infrastruttura nazionale prevede un'API RESTful per la distribuzione di metadati, policy dei metadati, trust mark, chiavi pubbliche crittografiche e certificati X.509, e lo stato di revoca dei partecipanti, chiamati anche Entità di Federazione.</p>
 <p>Questa infrastruttura di trust lavora in coordinamento con l'Infrastruttura del Registro (vedi <a class="reference internal" href="registry.html#infrastruttura-del-registro"><span class="std std-ref">Infrastruttura del Registro</span></a>) per abilitare i processi di onboarding delle entità dettagliati in <a class="reference internal" href="entity-onboarding.html#onboarding-delle-entita"><span class="std std-ref">Onboarding delle Entità</span></a>. In particolare, abilita l'implementazione tecnica dei processi di onboarding descritti in <a class="reference internal" href="entity-onboarding.html#onboarding-delle-entita"><span class="std std-ref">Onboarding delle Entità</span></a> e supporta gli scenari operativi illustrati in <a class="reference internal" href="onboarding-high-level.html#onboarding-journey-maps"><span class="std std-ref">Onboarding Journey Maps</span></a>.</p>
 <p><strong>Abilitazione dell'Onboarding</strong>: L'Infrastruttura di Trust fornisce i meccanismi crittografici che consentono alle nuove entità (Credential Issuer, Relying Party, Fornitori di Wallet) di stabilire relazioni di trust verificabili durante il loro processo di registrazione. Senza questa infrastruttura, le entità non sarebbero in grado di dimostrare il loro stato di conformità o le capacità operative agli altri partecipanti dell'ecosistema.</p>
 <p><strong>Supporto al Ciclo di Vita delle Entità</strong>: Durante tutto il ciclo di vita operativo di un'entità, l'Infrastruttura di Trust mantiene attestazioni di trust aggiornate, gestisce la rotazione delle chiavi, gestisce scenari di revoca e supporta il monitoraggio della conformità. Questo supporta direttamente le procedure di gestione del ciclo di vita dettagliate in <a class="reference internal" href="entity-onboarding.html#onboarding-delle-entita"><span class="std std-ref">Onboarding delle Entità</span></a>.</p>
@@ -207,7 +207,7 @@
 <tbody>
 <tr class="row-even"><td><p>Public Key Infrastructure (PKI)</p></td>
 <td><p><a class="reference internal" href="defined-terms.html#term-National-Trust-Anchor"><span class="xref std std-term">National Trust Anchor</span></a></p></td>
-<td><p>La Federazione ha capacità PKI e utilizza OpenID Federation 1.0 <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a>. L'Entità che configura l'intera infrastruttura a livello nazionale è il <a class="reference internal" href="defined-terms.html#term-National-Trust-Anchor"><span class="xref std std-term">National Trust Anchor</span></a>.</p></td>
+<td><p>La Federazione ha capacità PKI e utilizza OpenID Federation 1.0 <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a>. L'Entità che configura l'intera infrastruttura a livello nazionale è il <a class="reference internal" href="defined-terms.html#term-National-Trust-Anchor"><span class="xref std std-term">National Trust Anchor</span></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Qualified Trust Service Provider (QTSP)</p></td>
 <td><p>Leaf</p></td>
@@ -248,7 +248,7 @@
 <section id="endpoint-api-di-federazione">
 <h2><span class="section-number">6.3. </span>Endpoint API di Federazione<a class="headerlink" href="#endpoint-api-di-federazione" title="Link to this heading">¶</a></h2>
 <p>OpenID Federation 1.0 utilizza Servizi Web RESTful protetti su HTTPs. OpenID Federation 1.0 definisce quali sono gli endpoint web che i partecipanti DEVONO rendere pubblicamente disponibili. La tabella sottostante riassume gli endpoint e i loro ambiti.</p>
-<p>Tutti gli endpoint elencati di seguito sono definiti nelle specifiche <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a>.</p>
+<p>Tutti gli endpoint elencati di seguito sono definiti nelle specifiche <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a>.</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 25.0%" />
@@ -271,32 +271,32 @@
 </tr>
 <tr class="row-odd"><td><p>subordinate list endpoint</p></td>
 <td><p><strong>GET</strong> /list</p></td>
-<td><p>Elenca i Subordinati. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Sezione 8.2</p></td>
+<td><p>Elenca i Subordinati. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 8.2</p></td>
 <td><p>Trust Anchor, Intermediario</p></td>
 </tr>
 <tr class="row-even"><td><p>fetch endpoint</p></td>
 <td><p><strong>GET</strong> /federation_fetch_endpoint?sub=https://rp.example.org</p></td>
-<td><p>Restituisce un JWT firmato su un soggetto specifico, il suo Subordinato. È chiamato Subordinate Statement. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Sezione 8.1</p></td>
+<td><p>Restituisce un JWT firmato su un soggetto specifico, il suo Subordinato. È chiamato Subordinate Statement. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 8.1</p></td>
 <td><p>Trust Anchor, Intermediario</p></td>
 </tr>
 <tr class="row-odd"><td><p>trust mark status</p></td>
 <td><p><strong>POST</strong> /trust_mark_status</p></td>
-<td><p>Restituisce lo stato dell'emissione (validità) di un Trust Mark relativo a un soggetto specifico. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Sezione 8.4</p></td>
+<td><p>Restituisce lo stato dell'emissione (validità) di un Trust Mark relativo a un soggetto specifico. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 8.4</p></td>
 <td><p>Trust Anchor, Intermediario</p></td>
 </tr>
 <tr class="row-even"><td><p>trust mark  list</p></td>
 <td><p><strong>GET</strong> /trust_mark_listing?trust_mark_type=...</p></td>
-<td><p>Elenca tutte le entità per le quali sono stati emessi Trust Mark e sono ancora validi. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Sezione 8.5</p></td>
+<td><p>Elenca tutte le entità per le quali sono stati emessi Trust Mark e sono ancora validi. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 8.5</p></td>
 <td><p>Trust Anchor, Intermediario</p></td>
 </tr>
 <tr class="row-odd"><td><p>trust mark</p></td>
 <td><p><strong>GET</strong> /trust_mark?trust_mark_type=...</p></td>
-<td><p>Restituisce il Trust Mark relativo a un soggetto specifico. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Sezione 8.6</p></td>
+<td><p>Restituisce il Trust Mark relativo a un soggetto specifico. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 8.6</p></td>
 <td><p>Trust Anchor, Intermediate</p></td>
 </tr>
 <tr class="row-even"><td><p>historical keys</p></td>
 <td><p><strong>GET</strong> /federation_historical_keys</p></td>
-<td><p>Elenca le chiavi scadute e revocate, con la motivazione della revoca. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Sezione 8.7</p></td>
+<td><p>Elenca le chiavi scadute e revocate, con la motivazione della revoca. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 8.7</p></td>
 <td><p>Trust Anchor, Intermediario</p></td>
 </tr>
 <tr class="row-odd"><td><p>subordinate events</p></td>
@@ -535,12 +535,12 @@
 <tr class="row-even"><td><p>Trust Anchor</p></td>
 <td><p>Trust Anchor</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code></p></td>
-<td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a></p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a></p></td>
 </tr>
 <tr class="row-odd"><td><p>Intermediario</p></td>
 <td><p>Intermediario</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code></p></td>
-<td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a></p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a></p></td>
 </tr>
 <tr class="row-even"><td><p>Fornitore di Wallet</p></td>
 <td><p>Fornitore di Wallet</p></td>
@@ -560,7 +560,7 @@
 <tr class="row-odd"><td><p>Relying Party</p></td>
 <td><p>Relying Party</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code>, <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code></p></td>
-<td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a>, <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a></p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a>, <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -592,25 +592,25 @@ Inoltre, se dovesse esserci la necessità di Autenticazione dell'Utente da parte
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>organization_name</strong></p></td>
-<td><p>OBBLIGATORIO. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Sezione 5.2.2</p></td>
+<td><p>OBBLIGATORIO. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 5.2.2</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>homepage_uri</strong></p></td>
-<td><p>OBBLIGATORIO. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Sezione 5.2.2</p></td>
+<td><p>OBBLIGATORIO. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 5.2.2</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>policy_uri</strong></p></td>
-<td><p>OBBLIGATORIO. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Sezione 5.2.2</p></td>
+<td><p>OBBLIGATORIO. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 5.2.2</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>logo_uri</strong></p></td>
-<td><p>OBBLIGATORIO. URL del logo dell'entità; DEVE essere in formato SVG. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Sezione 5.2.2</p></td>
+<td><p>OBBLIGATORIO. URL del logo dell'entità; DEVE essere in formato SVG. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 5.2.2</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>contacts</strong></p></td>
-<td><p>OBBLIGATORIO. Indirizzo email verificato istituzionale (PEC) dell'entità. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Sezione 5.2.2</p></td>
+<td><p>OBBLIGATORIO. Indirizzo email verificato istituzionale (PEC) dell'entità. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 5.2.2</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>federation_resolve_endpoint</strong></p></td>
-<td><p>OBBLIGATORIO. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Sezione 5.1.1</p></td>
+<td><p>OBBLIGATORIO. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 5.1.1</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>tos_uri</strong></p></td>
-<td><p>OPZIONALE. Stringa URL che punta a un documento di termini di servizio leggibile dall'uomo per il client che descrive una relazione contrattuale tra l'utente finale e il client che l'utente finale accetta quando autorizza il client. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a>.</p></td>
+<td><p>OPZIONALE. Stringa URL che punta a un documento di termini di servizio leggibile dall'uomo per il client che descrive una relazione contrattuale tra l'utente finale e il client che l'utente finale accetta quando autorizza il client. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -703,27 +703,27 @@ Il Subordinate Statement PUÒ contenere una policy di metadati e i Trust Mark re
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>iss</strong></p></td>
-<td><p>Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Sezione 3 per ulteriori dettagli.</p></td>
+<td><p>Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 3 per ulteriori dettagli.</p></td>
 <td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>sub</strong></p></td>
-<td><p>Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Sezione 3 per ulteriori dettagli.</p></td>
+<td><p>Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 3 per ulteriori dettagli.</p></td>
 <td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>iat</strong></p></td>
-<td><p>Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Sezione 3 per ulteriori dettagli.</p></td>
+<td><p>Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 3 per ulteriori dettagli.</p></td>
 <td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>exp</strong></p></td>
-<td><p>Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Sezione 3 per ulteriori dettagli.</p></td>
+<td><p>Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 3 per ulteriori dettagli.</p></td>
 <td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>jwks</strong></p></td>
-<td><p>JWKS di Federazione dell'entità <em>sub</em>. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Sezione 3 per ulteriori dettagli.</p></td>
+<td><p>JWKS di Federazione dell'entità <em>sub</em>. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 3 per ulteriori dettagli.</p></td>
 <td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>metadata_policy</strong></p></td>
-<td><p>Oggetto JSON che descrive la policy dei Metadati. Ogni chiave dell'Oggetto JSON rappresenta un identificatore del tipo di metadati e ogni valore DEVE essere un Oggetto JSON che rappresenta la policy dei metadati secondo quel tipo di metadati. Si prega di fare riferimento alle specifiche <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a>, Sezione 6.1, per i dettagli di implementazione.</p></td>
+<td><p>Oggetto JSON che descrive la policy dei Metadati. Ogni chiave dell'Oggetto JSON rappresenta un identificatore del tipo di metadati e ogni valore DEVE essere un Oggetto JSON che rappresenta la policy dei metadati secondo quel tipo di metadati. Si prega di fare riferimento alle specifiche <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a>, Sezione 6.1, per i dettagli di implementazione.</p></td>
 <td><p><a class="reference internal" href="_images/Eo_circle_red_letter-x.png"><img alt="uncheck-icon" src="_images/Eo_circle_red_letter-x.png" style="width: 25px;" /></a></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>trust_marks</strong></p></td>
@@ -896,7 +896,7 @@ I meccanismi di Trust Evaluation sono distinti dai flussi di protocollo e sono i
 <section id="non-ripudio-delle-attestazioni-di-lunga-durata">
 <h2><span class="section-number">6.11. </span>Non-ripudio delle Attestazioni di Lunga Durata<a class="headerlink" href="#non-ripudio-delle-attestazioni-di-lunga-durata" title="Link to this heading">¶</a></h2>
 <p>Il Trust Anchor e i suoi Intermediari DEVONO esporre l'endpoint delle Chiavi Storiche di Federazione, dove sono pubblicate tutte le parti pubbliche delle Chiavi dell'Entità di Federazione che non sono più utilizzate, sia scadute che revocate.</p>
-<p>I dettagli di questo endpoint sono definiti nella <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Sezione 8.7.</p>
+<p>I dettagli di questo endpoint sono definiti nella <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 8.7.</p>
 <p>Ogni JWT contenente una Trust Chain negli header JWT può essere verificato nel tempo, poiché l'intera Trust Chain è verificabile utilizzando la chiave pubblica del Trust Anchor.</p>
 <p>Anche se il Trust Anchor ha cambiato le sue chiavi crittografiche per la firma digitale, l'endpoint delle Chiavi Storiche di Federazione rende sempre disponibili le chiavi non più utilizzate per le verifiche di firma storiche.</p>
 </section>
