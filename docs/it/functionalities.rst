@@ -640,7 +640,7 @@ In alternativa, il Verificatore di Attestati Elettronici PUÒ mantenere la propr
 
 Il Verificatore di Attestati Elettronici che implementa la pagina: 
 
-- DEVE garantire la presenza di tutte le modalità di Autenticazione attraverso l'identità digitale tra cui la modalità di Autenticazione del Sistema IT-Wallet, quindi tramite l'Authentication Button; 
+- DEVE garantire la presenza di tutte le modalità di Autenticazione tramite l'identità digitale tra cui la modalità di Autenticazione del Sistema IT-Wallet, quindi tramite l'Authentication Button; 
 - PUÒ presentare anche modalità di Autenticazione alternative, se disponibili; 
 - DOVREBBE garantire informazioni minime a supporto, per permettere all'Utente di compiere una scelta consapevole e informata. 
 
@@ -694,7 +694,7 @@ Il Verificatore di Attestati Elettronici PUÒ inserire un componente testuale pe
 
 **QR Code Page (*solo per modalità cross-device*)** 
 
-La QR Code Page è la pagina su cui atterra l'Utente che ha scelto l'Autenticazione tramite il Sistema IT-Wallet in un flusso cross-device, e ha lo scopo di invitare l'Utente a scannerizzare, con la propria Istanza del Wallet, il codice QR generato. 
+La QR Code Page è la pagina su cui atterra l'Utente che ha scelto l'Autenticazione tramite il Sistema IT-Wallet in un flusso cross-device, e ha lo scopo di invitare l'Utente a scannerizzare, con la propria Istanza del Wallet o con la fotocamera del proprio dispositivo, il codice QR generato. 
 
 Il Verificatore di Attestati Elettronici DEVE implementare la QR Code Page (flusso cross-device) resa disponibile nelle :ref:`official-resources:Risorse Ufficiali`. 
 
@@ -719,10 +719,10 @@ Il Verificatore di Attestati Elettronici che implementa la pagina:
 
 - DEVE includere gli elementi propri dell'Identità Visiva del Sistema IT-Wallet, tra cui il Logo; 
 - DEVE assicurare che i copy presenti nella pagina rispecchino quelli riportati nelle :ref:`official-resources:Risorse Ufficiali`; 
-- DEVE includere una Call to Action che, in caso di timeout, permetta all'Utente di generare un nuovo codice QR; 
+- DEVE includere una Call to Action che, se prevista la scadenza del codice QR, permetta all'Utente di generare un nuovo codice QR; 
 - DEVE includere una Call to Action che permetta all'Utente di annullare l'operazione e tornare alla Discovery Page. 
 
-Inoltre, nei rispetto di [RIF_ACCESSIBILITÁ], relativamente al codice QR, il Verificatore di Attestati Elettronici: 
+Inoltre, nel rispetto di [RIF_ACCESSIBILITÁ], relativamente al codice QR, il Verificatore di Attestati Elettronici: 
 
 - DEVE rispettare le dimensioni minime raccomandate per garantire una scansione efficace. Una misura di 150x150 pixel è generalmente adeguata, ma per codici con alta densità di dati (e.g. URL lunghi o numerosi caratteri), è consigliabile aumentarla a 300x300 pixel o più; 
 - DEVE garantire un contrasto minimo tra il codice QR e lo sfondo (la condizione ideale prevede uno sfondo bianco con un codice QR nero); 
@@ -735,7 +735,7 @@ Inoltre, nei rispetto di [RIF_ACCESSIBILITÁ], relativamente al codice QR, il Ve
 
 **Thank You Page** 
 
-La Thank You Page è la pagina sui cui l'Utente atterra una volta concluso il processo di Autenticazione attraverso la propria Istanza del Wallet e ha l'obiettivo di invitare l'Utente a proseguire nell'area riservata. 
+La Thank You Page è la pagina sui cui l'Utente atterra una volta concluso il processo di Autenticazione attraverso la propria Istanza del Wallet e ha l'obiettivo di informare l’Utente sull’avvenuta Autenticazione. 
 
 Il Verificatore di Attestati Elettronici DEVE implementare la Thank You Page resa disponibile nelle :ref:`official-resources:Risorse Ufficiali`. 
 
