@@ -70,7 +70,7 @@ Lettura per fasi di progetto
 Per un accesso semplificato agli argomenti di queste specifiche, di seguito viene presentato un percorso di lettura per ruoli che tiene conto della fase in cui si trovano a operare all’interno del sistema IT-Wallet con un rimando preciso alla sezione di interesse del documento. 
 
 Fonti Autentiche (Authentic Source)  
-"""""""""""""""""""""""""""""""""""
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 L’Authentic Source è il proprietario del dato. Il suo ruolo è garantire che le informazioni originali siano trasmesse correttamente e rese disponibili ai sistemi di emissione in modo sicuro e sempre aggiornato.  
 **Focus**: disponibilità del dato, correttezza delle informazioni trasmesse, allineamento costante tra il database originale e le credenziali emesse.  
@@ -120,7 +120,7 @@ Fornitore di Credenziali
 
 
 **Wallet Provider**
-"""""""""""""""""""
+~~~~~~~~~~~~~~~~~~~
 
 Il Wallet Provider è colui che progetta il portafoglio digitale, pubblico o privato. Funge da punto di contatto diretto con il cittadino e la sua sfida consiste nel coniugare un'esperienza utente fluida e intuitiva con i più alti standard di sicurezza. 
 **Focus**: rispetto dei protocolli e degli standard di sicurezza, fluidità dell’esperienza utente, rispetto delle linee guida del sistema IT-Wallet. 
@@ -173,7 +173,7 @@ Il Wallet Provider è colui che progetta il portafoglio digitale, pubblico o pri
 
 
 Fornitori di Credenziali (Credential Issuer)
-""""""""""""""""""""""""""""""""""""""""""""
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Il Credential Issuer è il fornitore tecnico delle credenziali. Il suo compito principale è trasformare i dati ricevuti dalle Fonti Autentiche in attestati digitali sicuri, pronti per essere emessi verso il Wallet. È il fulcro tecnico che garantisce l'interoperabilità attraverso l'uso di standard internazionali come OpenID4VCI. 
 **Focus**: progettazione delle credenziali a partire dal dato grezzo, sicurezza del dato ottenuto, ciclo di vita delle credenziali. 
@@ -226,7 +226,7 @@ Il Credential Issuer è il fornitore tecnico delle credenziali. Il suo compito p
 
 
 Fornitori di servizi (Relying Party)
-""""""""""""""""""""""""""""""""""""""""""""
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Il Relying Party è l'utilizzatore finale delle credenziali. Il suo compito è trasformare la verifica digitale in un valore aggiunto per il proprio business, garantendo al contempo all'utente un processo di identificazione rapido, sicuro e rispettoso della minimizzazione dei dati richiesti. 
 **Focus**: progettazione dell’esperienza di verifica delle credenziali, rispetto della privacy dell’utente  
