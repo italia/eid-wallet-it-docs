@@ -61,28 +61,28 @@ Da usare quando si conosce già il compito da svolgere; le sezioni per ruolo sot
 **Relying Party** — *Verificare le credenziali presentate:* :ref:`relying-party-solution:Soluzione di Relying Party`, :ref:`credential-presentation:Presentazione dell'Attestato Elettronico`, :ref:`relying-party-endpoints:Endpoint della Relying Party`; *formati e validità:* :ref:`digital-credential-management:Gestione degli Attestati Elettronici`; *sicurezza:* :ref:`security-privacy-considerations:Considerazioni di Sicurezza e Privacy`.
 
 
-Journey di Lettura per Ruolo
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Lettura per ruolo
+^^^^^^^^^^^^^^^^^
 
-Prima di immergersi nelle sezioni specifiche per ruolo, tutti i lettori dovrebbero familiarizzare con i concetti fondamentali delineati nelle Sezioni :ref:`introduction:Introduzione`, :ref:`architecture-overview:Panoramica dell'Architettura`, :ref:`brand-identity:Brand Identity` e :ref:`trust-infrastructure:L'Infrastruttura di Trust`, che stabiliscono il vocabolario comune e l'infrastruttura di fiducia che forniscono il quadro sottostante per l'intero ecosistema.
+Per un accesso semplificato agli argomenti di queste specifiche, di seguito viene presentato un percorso di lettura per ruoli che tiene conto della fase in cui si trovano a operare all’interno del sistema IT-Wallet con un rimando preciso alla sezione di interesse del documento. 
 
-Fornitore di Wallet
-"""""""""""""""""""
+FONTI AUTENTICHE (AUTHENTIC SOURCE)  
+"""""""""""""""""""""""""""""""""""
 
-I lettori che implementano o gestiscono una Soluzione di **Fornitore di Wallet** dovrebbero concentrarsi sulla comprensione di come gestire in modo sicuro le Credenziali Elettroniche e facilitare le interazioni dell'Utente con altri partecipanti all'ecosistema.
+L’Authentic Source è il proprietario del dato. Il suo ruolo è garantire che le informazioni originali siano trasmesse correttamente e rese disponibili ai sistemi di emissione in modo sicuro e sempre aggiornato.  
+Focus: disponibilità del dato, correttezza delle informazioni trasmesse, allineamento costante tra il database originale e le credenziali emesse.  
 
-**Sezioni essenziali:**
+**Fase 1: Discovery**
 
-* **Sezione** :ref:`functionalities:Design dell'Esperienza Utente`: Requisiti funzionali di alto livello a supporto dell’Esperienza Utente in tutte le fasi di interazione tra l’Utente e il servizio. 
-* **Sezione** :ref:`wallet-solution:Soluzione Wallet`: Requisiti completi di implementazione del Wallet, componenti e processi di interazione.
-* **Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`: Modelli di dati, formati e gestione del ciclo di vita delle Credenziali Elettroniche.
-* **Sezione** :ref:`digital-credential-flows:Flussi relativi agli Attestati Elettronici`: Flussi di emissione e presentazione per le Credenziali Elettroniche.
-* **Sezione** :ref:`wallet-provider-endpoint:Endpoint del Fornitore di Wallet`: Specifiche API per la federazione e specifiche per IT-Wallet.
-* **Sezione** :ref:`algorithms:Algoritmi Crittografici`: Requisiti di implementazione per sicurezza e crittografia.
-* **Sezione** :ref:`mobile-application-instance:Istanza dell'Applicazione Mobile`: Modelli di implementazione specifici per dispositivi mobili.
-* **Sezione** :ref:`e-service-pdnd:e-Service PDND`: Integrazione con la Piattaforma Nazionale di Interoperabilità dei Dati.
+**Obiettivo**: conoscere il contesto di riferimento, i requisiti tecnici e la normativa per entrare a far parte della Trust Chain (catena di fiducia) su cui si fonda tutto il sistema.  
 
-**Sezioni secondarie:**
+- **Introduzione**: per comprendere l’ambito e il linguaggio normativo dell'ecosistema IT-Wallet. 
+
+- **:ref:`architecture-overview: Panoramica dell’Architettura`**: per conoscere l’Architettura del sistema IT-Wallet, in termini di governance e processi operativi abilitati. 
+
+- **:ref:`trust-infrastructure: Infrastruttura di Trust`**: per conoscere i requisiti chiave della Trust Chain e come essere registrati nella Trust List per poter operare sia a livello nazionale che europeo.  
+
+- Cap. 17: Termini e riferimenti: per conoscere i riferimenti normativi, i termini definiti e gli standard tecnici per consentire un'interoperabilità sicura e corretta tra tutti i partecipanti (puoi ricorrere a questa sezione per ogni dubbio su terminologia, standard di riferimento, acronimi...) 
 
 * **Sezione** :ref:`credential-issuer-solution:Soluzione del Fornitore di Attestati Elettronici`: Comprensione delle interazioni e dei requisiti del Fornitore di Credenziali.
 * **Sezione** :ref:`relying-party-solution:Soluzione di Relying Party`: Comprensione delle interazioni con le Relying Party e dei protocolli di presentazione.
