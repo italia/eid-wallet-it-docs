@@ -732,33 +732,6 @@ Inoltre, nei rispetto di [RIF_ACCESSIBILITÁ], relativamente al codice QR, il Ve
 - DEVE garantire il formato SVG; 
 - DEVE garantire che non venga parzialmente nascosto da testo o altri elementi.
 
-**Waiting Page (*solo per modalità cross-device*)** 
-
-La Waiting Page è la pagina che invita l'Utente a proseguire il processo di Autenticazione sulla propria Istanza del Wallet, a valle della scansione del codice QR. 
-
-Il Verificatore di Attestati Elettronici DEVE implementare la Waiting Page (cross-device) resa disponibile nelle :ref:`official-resources:Risorse Ufficiali`. 
-
-.. only:: format_html 
-
-  .. figure:: ./images/svg/waiting-page.svg
-     :alt: Waiting Page
-     :width: 100%
-     :align: center
-
-     Waiting Page 
- 
-.. only:: format_latex  
-
-  .. figure:: ./images/pdf/waiting-page.pdf
-     :alt: Waiting Page
-     :width: 100%
-
-     Waiting Page 
-
-Il Verificatore di Attestati Elettronici che implementa la pagina: 
-
-- DEVE includere gli elementi propri dell'Identità Visiva del Sistema IT-Wallet, tra cui il Logo e un'icona o altro elemento grafico che aiuti a veicolare il messaggio della pagina; 
-- DEVE assicurare che i copy presenti nella pagina rispecchino quelli riportati nelle :ref:`official-resources:Risorse Ufficiali`.  
 
 **Thank You Page** 
 
