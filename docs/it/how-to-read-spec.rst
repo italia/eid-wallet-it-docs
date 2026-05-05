@@ -92,7 +92,7 @@ L’Authentic Source è il proprietario del dato. Il suo ruolo è garantire che 
 **Obiettivo**: conoscere i requisiti di implementazione degli attributi ritenuti necessari per tradurre i dati in un formato digitale standardizzato (EAA) riconosciuto dal Wallet.  
 Fornitore di Credenziali
 
-- **Sezione** :ref:`functionalities:Design dell'Esperienza Utente`: per conoscere le modalità di ottenimento degli Attestati Elettronici da parte dell’utente (paragrafo 5.4). 
+- **Sezione** :ref:`functionalities:Design dell'Esperienza Utente`: per conoscere le modalità di ottenimento degli Attestati Elettronici da parte dell’utente (:ref:`functionalities:Ottenimento degli Attestati Elettronici di Attributi'). 
 
 - **Sezione** :ref:`entities:Entità`: per conoscere i requisiti di implementazione e in particolare gli attributi necessari per fornire l'Attestato Elettronico richiesto dall'Utente (:ref:`authentic-sources:paragrafo 10.4`) 
 
