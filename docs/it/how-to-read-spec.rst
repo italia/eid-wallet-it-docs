@@ -92,9 +92,9 @@ L’Authentic Source è il proprietario del dato. Il suo ruolo è garantire che 
 **Obiettivo**: conoscere i requisiti di implementazione degli attributi ritenuti necessari per tradurre i dati in un formato digitale standardizzato (EAA) riconosciuto dal Wallet.  
 Fornitore di Credenziali
 
-- **Sezione** :ref:`functionalities:Design dell'Esperienza Utente`: per conoscere le modalità di ottenimento degli Attestati Elettronici da parte dell’utente (:ref:`functionalities:Ottenimento degli Attestati Elettronici di Attributi'). 
+- **Sezione** :ref:`functionalities:Design dell'Esperienza Utente`: per conoscere le modalità di ottenimento degli Attestati Elettronici da parte dell’utente (riferimento al paragrafo :ref:`functionalities:Ottenimento degli Attestati Elettronici di Attributi'). 
 
-- **Sezione** :ref:`entities:Entità`: per conoscere i requisiti di implementazione e in particolare gli attributi necessari per fornire l'Attestato Elettronico richiesto dall'Utente (:ref:`authentic-sources:paragrafo 10.4`) 
+- **Sezione** :ref:`entities:Entità`: per conoscere i requisiti di implementazione e in particolare gli attributi necessari per fornire l'Attestato Elettronico richiesto dall'Utente (riferimento a paragrafo:ref:`entities:Fonti Autentiche`) 
 
 **Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`:  per conoscere come i dati autorevoli e gli attributi diventano Credenziali Elettroniche e in cosa consiste il loro ciclo di vita.
 
@@ -102,9 +102,9 @@ Fornitore di Credenziali
 
 **Obiettivo**: adottare i requisiti che servono a realizzare le interfacce tecnologiche (API) necessarie per dialogare con i Credential Issuer gestendo l'intero ciclo di vita del dato. 
 
-- **Sezione** :ref:`endpoints:Endpoint`: per implementare correttamente le interfacce (API) che permettono al Credential Issuer di recuperare i dati autorevoli in modo sicuro e standardizzato (:ref:`authentic-source-endpoint:paragrafo 13.4`) 
+- **Sezione** :ref:`endpoints:Endpoint`: per implementare correttamente le interfacce (API) che permettono al Credential Issuer di recuperare i dati autorevoli in modo sicuro e standardizzato (riferimento a paragrafo :ref:`endpoints:Endpoint delle Fonti Autentiche`) 
 
-- **Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`: per conoscere nello specifico il ciclo di vita e la gestione degli Attestati elettronici (particolare riferimento al :ref:`credential-revocation:paragrafo 11.3`) 
+- **Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`: per conoscere nello specifico il ciclo di vita e la gestione degli Attestati elettronici (riferimento al paragrafo :ref:`cdigital-credential-management:Ciclo di vita degli Attestati Elettronici`) 
 
 - **Sezione** :ref:`security-privacy-considerations:Considerazioni di Sicurezza e Privacy` per implementare soluzioni che rispettino tutti i parametri di sicurezza  
 
@@ -114,7 +114,7 @@ Fornitore di Credenziali
 
 **Obiettivo**: accreditarsi come Fonte Autentica nel sistema rispettando le procedure amministrative e tecniche che garantiscono sull’affidabilità dell'ente. 
 
-- **Sezione** :ref:`onboarding-high-level:Sistema di Onboarding`: per conoscere le modalità di partecipazione all’ecosistema IT-Wallet e tutto ciò che riguarda la riconoscibilità dei propri dati da parte di tutti gli attori (:ref:`processo-di-registrazione-della-fonte-autentica:paragrafo 4.2`).  
+- **Sezione** :ref:`onboarding-high-level:Sistema di Onboarding`: per conoscere le modalità di partecipazione all’ecosistema IT-Wallet e tutto ciò che riguarda la riconoscibilità dei propri dati da parte di tutti gli attori (riferimento al paragrafo :ref:`onboarding-high-level:Processo di registrazione della Fonte Autentica`).  
 
 - **Sezione** :ref:`x5c-evaluation:Operazioni di Gestione dei Certificati X.509`: per conoscere le procedure operative per la gestione dei Certificati X.509 all'interno della federazione IT-Wallet. 
 
@@ -145,7 +145,7 @@ Il Wallet Provider è colui che progetta il portafoglio digitale, pubblico o pri
 
 - **Sezione** :ref:`functionalities:Design dell'Esperienza Utente`: per progettare interfacce semplici e sicure garantendo che l’esperienza utente sia immediata e intuitiva. 
 
-- **Sezione** :ref:`entities:Entità`: per conoscere i requisiti di implementazione e gli attributi necessari per configurare la propria entità (:ref:`wallet-solution:paragrafo 10.1`). 
+- **Sezione** :ref:`entities:Entità`: per conoscere i requisiti di implementazione e gli attributi necessari per configurare la propria entità (riferimento al paragrafo :ref:`entities:Soluzione Wallet`). 
 
 **Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`: per progettare come l'App gestirà tecnicamente il ciclo di vita dei dati (archiviazione protetta e presentazione). 
 
@@ -155,7 +155,7 @@ Il Wallet Provider è colui che progetta il portafoglio digitale, pubblico o pri
 
 **Obiettivo**: implementare gli endpoint per la comunicazione e adottare gli standard tecnologici (es. SD-JWT) che assicurano al Wallet di interfacciarsi con gli altri attori.
 
-- **Sezione** ref:`endpoints:Endpoints`: per implementare correttamente le interfacce (API) del Wallet Provider necessarie all'interoperabilità del sistema (ref:`wallet-provider-endpoint:paragrafo 13.1`). 
+- **Sezione** ref:`endpoints:Endpoints`: per implementare correttamente le interfacce (API) del Wallet Provider necessarie all'interoperabilità del sistema (riferimento al paragrafo ref:`endpoints:Endpoint del Fornitore di Wallet`). 
 
 - **Sezione** :ref:`security-privacy-considerations:Considerazioni di Sicurezza e Privacy`: per implementare soluzioni che rispettino tutti i parametri di sicurezza.  
 
@@ -165,7 +165,7 @@ Il Wallet Provider è colui che progetta il portafoglio digitale, pubblico o pri
 
 **Obiettivo**: accreditarsi come Wallet Provider nel sistema in modo tale che le Wallet Instance dei cittadini siano riconosciute come valide dal sistema.  
 
-- **Sezione** :ref:`onboarding-high-level:Sistema di Onboarding`: per conoscere le modalità di partecipazione all’ecosistema IT-Wallet e tutto ciò che riguarda la riconoscibilità dei propri dati da parte di tutti gli attori (:ref:`journey-dell-operatore-del-fornitore-di-wallet:paragrafo 4.5.4`).  
+- **Sezione** :ref:`onboarding-high-level:Sistema di Onboarding`: per conoscere le modalità di partecipazione all’ecosistema IT-Wallet e tutto ciò che riguarda la riconoscibilità dei propri dati da parte di tutti gli attori (riferimento al paragrafo :ref:`onboarding-high-level:Journey dell'Operatore del Fornitore di Wallet`).  
 
 - **Sezione** :ref:`x5c-evaluation:Operazioni di Gestione dei Certificati X.509`: per conoscere le procedure operative per la gestione dei Certificati X.509 all'interno della federazione IT-Wallet. 
 
@@ -196,7 +196,7 @@ Il Credential Issuer è il fornitore tecnico delle credenziali. Il suo compito p
 
 - **Sezione** :ref:`functionalities:Design dell'Esperienza Utente`: per conoscere i requisiti funzionali di alto livello a supporto dell’Esperienza Utente in tutte le fasi di interazione tra l’Utente e il servizio. 
 
-- **Sezione** :ref:`entities:Entità`: per conoscere i requisiti di implementazione e gli attributi necessari per configurare il proprio profilo di Issuer (:ref:`credential-issuer-solution:paragrafo 10.2` e :ref:`authentic-sources:paragrafo 10.4`).
+- **Sezione** :ref:`entities:Entità`: per conoscere i requisiti di implementazione e gli attributi necessari per configurare il proprio profilo di Issuer (riferimento ai paragrafi :ref:`entities:Soluzione del Fornitore di Attestati Elettronici` e :ref:`aentities:Fonti Autentiche`).
 
 **Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`:  per conoscere i requisiti tecnici necessari per la progettazione e gestione degli attestati e il loro ciclo di vita. 
 
@@ -208,7 +208,7 @@ Il Credential Issuer è il fornitore tecnico delle credenziali. Il suo compito p
 
 - **Sezione** ref:`digital-credential-flows:Flussi relativi agli attestati elettronici`: per conoscere le specifiche di dettaglio per implementare i flussi di emissione, le modalità di presentazione dell’attestato elettronico e il flusso di recupero delle informazioni del wallet. 
 
-- **Sezione** ref:`endpoints:Endpoints`: per implementare correttamente le interfacce (API) di emissione, in particolare il Credential Endpoint e il Token Endpoint  (ref:`credential-issuer-endpoint:paragrafo 13.2`). 
+- **Sezione** ref:`endpoints:Endpoints`: per implementare correttamente le interfacce (API) di emissione, in particolare il Credential Endpoint e il Token Endpoint  (riferimento al paragrafo ref:`endpoints:Endpoint del Credential Issuer`). 
 
 - **Sezione** :ref:`security-privacy-considerations:Considerazioni di Sicurezza e Privacy`: per implementare soluzioni che rispettino tutti i parametri di sicurezza.  
 
@@ -218,7 +218,7 @@ Il Credential Issuer è il fornitore tecnico delle credenziali. Il suo compito p
 
 **Obiettivo**: accreditarsi nel sistema in modo tale che gli attestati emessi verso il Wallet risultino ufficialmente “fidati” e verificabili. 
 
-- **Sezione** :ref:`onboarding-high-level:Sistema di Onboarding`: per conoscere le modalità di partecipazione all’ecosistema IT-Wallet  (:ref:`journey-dell-operatore-del-credential-issuer:paragrafo 4.5.3`).  
+- **Sezione** :ref:`onboarding-high-level:Sistema di Onboarding`: per conoscere le modalità di partecipazione all’ecosistema IT-Wallet  (riferimento al paragrafo :ref:`onboarding-high-level:Journey dell'Operatore del Credential Issuer`).  
 
 - **Sezione** :ref:`x5c-evaluation:Operazioni di Gestione dei Certificati X.509`: per conoscere le procedure operative per la gestione dei Certificati X.509 all'interno della federazione IT-Wallet. 
 
@@ -251,7 +251,7 @@ Il Relying Party è l'utilizzatore finale delle credenziali. Il suo compito è t
 
 - **Sezione** :ref:`functionalities:Design dell'Esperienza Utente`: per conoscere i requisiti funzionali di alto livello a supporto dell’Esperienza Utente in tutte le fasi di interazione tra l’Utente e il servizio.  
 
-- **Sezione** :ref:`entities:Entità`: per conoscere i requisiti di implementazione e gli attributi necessari per configurare il profilo del Verificatore (:ref:`relying-party-solution:paragrafo 10.3`). 
+- **Sezione** :ref:`entities:Entità`: per conoscere i requisiti di implementazione e gli attributi necessari per configurare il profilo del Verificatore (riferimento al paragrafo :ref:`entities:Soluzione di Relying Party`). 
 
 **Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`: per comprendere quali sono i formati delle Credenziali Elettroniche e verifica della validità. 
 
@@ -263,7 +263,7 @@ Il Relying Party è l'utilizzatore finale delle credenziali. Il suo compito è t
 
 - **Sezione** ref:`digital-credential-flows:Flussi relativi agli attestati elettronici`: per l’implementazione del flusso di presentazione sia per scenari remoti che di prossimità (ref:`dcredential-presentation:12.2`. 
 
-- **Sezione** ref:`endpoints:Endpoints`: per implementare correttamente le interfacce di ricezione e verifica dei dati (ref:`relying-party-endpoints:paragrafo 13.3` e ref:`relying-party-provider-backend-endpoint-endpoint-del-backend-del-provider-di-relying-party:Sezione Endpoint del Backend del Provider di Relying Party`). 
+- **Sezione** ref:`endpoints:Endpoints`: per implementare correttamente le interfacce di ricezione e verifica dei dati (riferimento ai paragrafi ref:`endpoints:Endpoint della Relying Party` e ref:`endpoints:Endpoint del Backend del Provider di Relying Party`). 
 
 - **Sezione** :ref:`security-privacy-considerations:Considerazioni di Sicurezza e Privacy`: per implementare soluzioni che rispettino tutti i parametri di sicurezza.  
 
@@ -273,7 +273,7 @@ Il Relying Party è l'utilizzatore finale delle credenziali. Il suo compito è t
 
 **Obiettivo**: accreditarsi nel sistema in modo tale da essere riconosciuti come attore sicuro e affidabile nel momento della richiesta dei dati dell’utente.  
 
-- **Sezione** :ref:`onboarding-high-level:Sistema di Onboarding`: per conoscere le modalità di partecipazione all’ecosistema IT-Wallet  (:ref:`journey-dell-operatore-della-relying-party:paragrafo 4.5.5`).  
+- **Sezione** :ref:`onboarding-high-level:Sistema di Onboarding`: per conoscere le modalità di partecipazione all’ecosistema IT-Wallet (riferimento al paragrafo :ref:`onboarding-high-level:Journey dell'Operatore della Relying Party`).  
 
 - **Sezione** :ref:`x5c-evaluation:Operazioni di Gestione dei Certificati X.509`: per conoscere le procedure operative per la gestione dei Certificati X.509 all'interno della federazione IT-Wallet. 
 
