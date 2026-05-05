@@ -59,122 +59,219 @@ Use these summaries when you already know your goal; the role sections below exp
 **Relying Party** — *Verify User Credentials:* :ref:`relying-party-solution:Relying Party Solution`, :ref:`credential-presentation:Digital Credential Presentation`, :ref:`relying-party-endpoints:Relying Party Endpoints`; *formats and validity:* :ref:`digital-credential-management:Digital Credential Management`; *security:* :ref:`security-privacy-considerations:Security and Privacy Considerations`.
 
 
-Reading Paths by Role
-^^^^^^^^^^^^^^^^^^^^^
+Reading by project phase
+------------------------
 
-Before diving into role-specific sections, all readers should be familiar with the foundational concepts outlined in Sections :ref:`introduction:Introduction`, :ref:`architecture-overview:Architecture Overview`, :ref:`brand-identity:Brand Identity`, and :ref:`trust-infrastructure:The Infrastructure of Trust`, which establish the common vocabulary, and trust infrastructure that provide the underlying framework for the entire ecosystem.
+For easier access to the topics in these specifications, a role-based reading path is presented below. This path considers the phase in which each role operates within the IT-Wallet system and includes direct references to the relevant sections of the document. 
+
+Authentic Sources
+^^^^^^^^^^^^^^^^^
+
+The Authentic Source is the owner of the data. Their role is to ensure that original information is transmitted correctly and made securely available to issuing systems, and kept up to date. 
+**Focus**: Data availability, accuracy of transmitted information, constant alignment between the original database and the issued credentials. 
+
+**Phase 1: Discovery**
+
+**Objective**: To understand the reference context, technical requirements, and regulations necessary to become part of the Trust Chain upon which the entire system is founded. 
+
+- **Section** :ref:`introduction:Introduction`: Understanding the scope and regulatory language of the IT-Wallet ecosystem. 
+
+- **Section** :ref:`architecture-overview:Architecture Overview`: Overview of the IT-Wallet system architecture in terms of governance and enabled operational processes. 
+
+- **Section** :ref:`trust-infrastructure:The Infrastructure of Trust`: Key requirements of the Trust Chain and registration in the Trust List to operate at both national and European levels. 
+
+- **Section** :ref:`defined-terms-and-references:Defined Terms and References`: Regulatory references, defined terms, and technical standards enabling secure and correct interoperability between all participants. (Use this section for any questions regarding terminology, reference standards, or acronyms). 
+
+**Phase 2: Design**
+
+**Objective**: To understand the implementation requirements for the attributes deemed necessary to translate data into a standardized digital format (EAA) recognized by the Wallet. 
+
+- **Section** :ref:`functionalities:User Experience Design`: How users obtain Electronic Attestations (:ref:`issuance-of-electronic-attestations-of-attributes:paragraph 5.4'). 
+
+- **Section** :ref:`entities:Entities`: Including the attributes necessary to provide the Electronic Attestation requested by the User (:ref:`entities:authentic-sources`paragraph 10.4'). 
+
+- **Section** :ref:`digital-credential-management:Digital Credential Management`: Technical requirements for designing and managing the lifecycle of attestations. 
+
+**Phase 3: Implementation**
+
+**Objective**: To adopt the requirements needed to create the technological interfaces (APIs) required to communicate with Credential Issuers, managing the entire data lifecycle. 
+
+- **Section** :ref:`endpoints:Endpoints`: Implementation of APIs enabling the Credential Issuer to securely and consistently retrieve authoritative data (:ref:`authentic-source-endpoint:paragraph 13.4'). 
+
+- **Section** :ref:`digital-credential-management:Digital Credential Management`: Lifecycle and management of Electronic Attestations (with particular reference to :ref:`credential-revocation:paragraph 11.3'). 
+
+- **Section** :ref:`security-privacy-considerations:Security and Privacy Considerations`: Security and compliance requirements for implemented solutions. 
+
+- **Section** :ref:`log-retention-policy:General Log Retention Policies`: Log retention requirements in accordance with ISO/IEC 27001 
+
+**Phase 4: Registration**
+
+**Objective**: To become accredited as an Authentic Source within the system by following the administrative and technical procedures that guarantee the entity's reliability. 
+
+- **Section** :ref:`onboarding-high-level:Onboarding System': Participation in the IT-Wallet ecosystem and data recognition across all actors (:ref:`authentic-source-registration-process:paragraph 4.2'). 
+
+- **Section** :ref:`x5c-evaluation:X.509 Certificate Management Operations': Operational procedures for managing X.509 Certificates within the IT-Wallet federation
 
 Wallet Provider
-"""""""""""""""
+^^^^^^^^^^^^^^^
 
-Readers implementing or operating a **Wallet Provider** Solution should focus on understanding how to securely manage Digital Credentials and facilitate User interactions with other ecosystem participants.
+The Wallet Provider is the entity that designs the digital wallet, whether public or private. They serve as the direct point of contact for the citizen; their challenge is to combine a fluid and intuitive user experience with the highest security standards. 
+**Focus**: Compliance with protocols and security standards, fluidity of the user experience, adherence to IT-Wallet system guidelines. 
 
-**Essential sections:**
+**Phase 1: Discovery**
 
-* **Section** :ref:`functionalities:User Experience Design`: High-level functional requirements supporting the User Experience across all stages of interaction between the User and the service. 
-* **Section** :ref:`wallet-solution:Wallet Solution`: Complete wallet implementation requirements, components, and interaction processes.
-* **Section** :ref:`digital-credential-management:Digital Credential Management`: Digital Credential data models, formats and lifecycle management.
-* **Section** :ref:`digital-credential-flows:Digital Credential Flows`: Issuance and presentation flows for Digital Credentials.
-* **Section** :ref:`wallet-provider-endpoint:Wallet Provider Endpoints`: Federation and IT-Wallet specific API specifications.
-* **Section** :ref:`algorithms:Cryptographic Algorithms`: Security and cryptographic implementation requirements.
-* **Section** :ref:`mobile-application-instance:Mobile Application Instance`: Mobile-specific implementation patterns.
-* **Section** :ref:`e-service-pdnd:e-Service PDND`: Integration with the National Data Interoperability Platform.
+**Objective**: To understand the reference context, technical requirements, and regulations necessary to become part of the Trust Chain.  
 
-**Secondary sections:**
+- **Section** :ref:`introduction:Introduction`: Understanding the scope and regulatory language of the IT-Wallet ecosystem. 
 
-* **Section** :ref:`credential-issuer-solution:Credential Issuer Solution`: Understanding issuer interactions and requirements.
-* **Section** :ref:`relying-party-solution:Relying Party Solution`: Understanding RP interactions and presentation protocols.
+- **Section** :ref:`architecture-overview:Architecture Overview`: Overview of the IT-Wallet system architecture in terms of governance and enabled operational processes. 
 
+- **Section** :ref:`trust-infrastructure:The Infrastructure of Trust`: Key requirements of the Trust Chain and registration in the Trust List to operate at both national and European levels. 
+
+- **Section** :ref:`defined-terms-and-references:Defined Terms and References`: Regulatory references, defined terms, and technical standards enabling secure and correct interoperability between all participants. (Use this section for any questions regarding terminology, reference standards, or acronyms). 
+
+**Phase 2: Design**
+
+**Objective**: To define the Wallet's visual identity, design the user experience, model the technical entity, and select the cryptographic algorithms that will ensure data protection on the device. 
+
+- **Section** :ref:`brand-identity:Brand Identity': Ensuring the App complies with communication guidelines and the visual identity of the IT-Wallet system. 
+
+- **Section** :ref:`functionalities:User Experience Design`: Designing simple and secure interfaces, ensuring an immediate and intuitive user experience. 
+
+- **Section** :ref:`entities:Entities`: Implementation requirements and attributes needed to configure the entity (:ref:`wallet-solution:paragraph 10.1'). 
+
+- **Section** :ref:`digital-credential-management:Digital Credential Management`: Technical requirements for designing and managing the lifecycle of attestations. 
+
+- **Section** :ref:`algorithms:Cryptographic Algorithms': Selection and implementation of cryptographic standards required to secure keys and transactions. 
+
+**Phase 3: Implementation**
+
+**Objective**: To implement communication endpoints and adopt technological standards (e.g., SD-JWT) that ensure the Wallet can interface with other actors.
+
+- **Section** :ref:`endpoints:Endpoints`: Implementation of the Wallet Provider’s interfaces (APIs) required for system interoperability (:ref:`wallet-provider-endpoint:paragraph 13.1'). 
+
+- **Section** :ref:`security-privacy-considerations:Security and Privacy Considerations`: Security and compliance requirements for implemented solutions. 
+
+- **Section** :ref:`log-retention-policy:General Log Retention Policies`: Log retention requirements in accordance with ISO/IEC 27001 
+
+**Phase 4: Registration**
+
+**Objective**: To become accredited as a Wallet Provider so that citizens' Wallet Instances are recognized as valid by the system.  
+
+- **Section** :ref:`onboarding-high-level:Onboarding System': Participation methods and data recognizability (:ref:`wallet-provider-operator-journey:paragraph 4.5.4'). 
+
+- **Section** :ref:`x5c-evaluation:X.509 Certificate Management Operations': Operational procedures for managing X.509 Certificates within the IT-Wallet federation
+
+- **Section**: :ref:`est-plans:Test Plans': Information on how test environments support implementers, auditors, and compliance testing in validating Wallet Solution behavior. 
 
 Credential Issuer
-"""""""""""""""""
+^^^^^^^^^^^^^^^^^
 
-For readers who are interested in implementing a **Credential Issuer** Solution, they should focus on the Digital Credential lifecycle and issuance interaction flows.
+The Credential Issuer is the technical provider of credentials. Its main task is to transform data received from Authentic Sources into secure digital attestations, ready to be issued to the Wallet. It is the technical hub ensuring interoperability through international standards like OpenID4VCI. 
+**Focus**: Designing credentials from raw data, security of obtained data, credential lifecycle. 
 
-**Essential sections:**
+**Phase 1: Discovery**
 
-* **Section** :ref:`functionalities:User Experience Design`: High-level functional requirements supporting the User Experience across all stages of interaction between the User and the service. 
-* **Section** :ref:`credential-issuer-solution:Credential Issuer Solution`: Credential Issuer Solution - Complete Issuer implementation requirements and component details.
-* **Section** :ref:`authentic-sources:Authentic Sources`: Understanding authoritative data source integration patterns.
-* **Section** :ref:`digital-credential-management:Digital Credential Management`: Digital Credential formats and lifecycle management.
-* **Section** :ref:`credential-issuance:Digital Credential Issuance`: Detailed issuance flow implementation.
-* **Section** :ref:`credential-issuer-endpoint:Credential Issuer Endpoints`: Federation and issuance-specific API specifications.
-* **Section** :ref:`algorithms:Cryptographic Algorithms`:  Signing algorithms and security implementation requirements.
+**Objective**: To understand the reference context, technical requirements, and regulations to join the Trust Chain.
 
-**Secondary sections:**
+- **Section** :ref:`introduction:Introduction`: Understanding the scope and regulatory language of the IT-Wallet ecosystem. 
 
-* **Section** :ref:`wallet-solution:Wallet Solution`: Understanding Wallet Instance interactions and requirements.
-* **Section** :ref:`credential-presentation:Digital Credential Presentation`: Understanding how Digital Credentials are presented in both remote and proximity scenario.
-* **Section** :ref:`e-service-pdnd:e-Service PDND`: Integration with the National Data Interoperability Platform.
+- **Section** :ref:`architecture-overview:Architecture Overview`: Overview of the IT-Wallet system architecture in terms of governance and enabled operational processes. 
 
-.. note::
+- **Section** :ref:`trust-infrastructure:The Infrastructure of Trust`: Key requirements of the Trust Chain and registration in the Trust List to operate at both national and European levels. 
 
-    If the Credential Issuer authenticates the User it must comply with Section :ref:`credential-presentation:Digital Credential Presentation`. If the Authentic Source providing User's attributes belongs to the public sector it must comply with Section :ref:`e-service-pdnd:e-Service PDND`.  
+- **Section** :ref:`defined-terms-and-references:Defined Terms and References`: Regulatory references, defined terms, and technical standards enabling secure and correct interoperability between all participants. (Use this section for any questions regarding terminology, reference standards, or acronyms).
 
-Authentic Source
-""""""""""""""""
+**Phase 2: Design**
 
-If the reader wants to operate an **Authentic Source**, the focus should be on secure data provision and integration with Credential Issuers.
+****Objective**: To technically design attestations by structuring metadata to meet technical and regulatory requirements, allowing the user to share only necessary information. 
 
-**Essential sections:**
+- **Section** :ref:`functionalities:User Experience Design`: For high-level functional requirements supporting the User Experience during all interaction phases. 
 
-* **Section** :ref:`functionalities:User Experience Design`: High-level functional requirements supporting the User Experience across all stages of interaction between the User and the service. 
-* **Section** :ref:`authentic-sources:Authentic Sources`: Requirements and integration patterns with Credential Issuers.
-* **Section** :ref:`authentic-source-endpoint:Authentic Source Endpoints`: API specifications and catalog integration.
-* **Section** :ref:`algorithms:Cryptographic Algorithms`: Data integrity, authentication, and security requirements.
-* **Section** :ref:`e-service-pdnd:e-Service PDND`: PDND integration and interoperability requirements.
+- **Section** :ref:`entities:Entities`: Implementation requirements and attributes for configuring the Issuer profile (:ref:`credential-issuer-solution:paragraphs 10.2', :ref:`authentic-sources:10.4')
 
-**Secondary sections:**
+- **Section** :ref:`digital-credential-management:Digital Credential Management`: Technical requirements for designing and managing the lifecycle of attestations. 
 
-* **Section** :ref:`credential-issuer-solution:Credential Issuer Solution`: Understanding Credential Issuers main components and integration processes.
-* **Section** :ref:`digital-credential-management:Digital Credential Management`: Understanding how authoritative data and attributes becomes Digital Credentials, and how their lifecycle is managed.
+- **Section** :ref:`algorithms:Cryptographic Algorithms': To meet security requirements by designing digital signature systems that make attestations unfalsifiable. 
+
+**Phase 3: Implementation**
+
+**Objective**: To develop issuing endpoints based on the OpenID4VCI protocol, implementing release, renewal, and technical lifecycle management functions.
+
+- **Section** ref:`digital-credential-flows:`Digital Credential Flows': Detailed specifications on implementing issuance flows, presentation methods, and wallet information retrieval. 
+
+- **Section** :ref:`endpoints:Endpoints`: Implementation of issuance interfaces, including the Credential Endpoint and Token Endpoint (:ref:`credential-issuer-endpoint:`paragraph 13.2'). 
+
+- **Section** :ref:`security-privacy-considerations:Security and Privacy Considerations`: Security and compliance requirements for implemented solutions. 
+
+- **Section** :ref:`log-retention-policy:General Log Retention Policies`: Log retention requirements in accordance with ISO/IEC 27001
+
+**Phase 4: Registration**
+
+**Objective**: To become accredited so that credentials issued to the Wallet are officially "trusted" and verifiable.  
+
+- **Section** :ref:`onboarding-high-level:Onboarding System': Participation methods and data recognizability (:ref:`credential-issuer-operator-journey:paragraph 4.5.3'). 
+
+- **Section** :ref:`x5c-evaluation:X.509 Certificate Management Operations': Operational procedures for managing X.509 Certificates within the IT-Wallet federation
+
+- **Section**: :ref:`est-plans:Test Plans': Information on how test environments support implementers, auditors, and compliance testing in validating Wallet Solution behavior. 
+
 
 Relying Party
-"""""""""""""
+^^^^^^^^^^^^^
 
-Readers interested in implementing or operating a **Relying Party** Solution to accept and verify Digital Credentials should focus on presentation protocols and verification mechanisms.
+The Relying Party is the end-user of the credentials. Its task is to transform digital verification into business value, while ensuring a fast, secure identification process that complies with data minimization principles. 
+**Focus**: Designing the credential verification experience, respecting user privacy. 
 
-**Essential sections:**
+**Phase 1: Discovery**
 
-* **Section** :ref:`functionalities:User Experience Design`: High-level functional requirements supporting the User Experience across all stages of interaction between the User and the service. 
-* **Section** :ref:`relying-party-solution:Relying Party Solution`: Complete verifier implementation requirements and Entity Configuration.
-* **Section** :ref:`digital-credential-management:Digital Credential Management`: Understanding Digital Credential formats and validity verification.
-* **Section** :ref:`credential-presentation:Digital Credential Presentation`: Presentation flow implementation for both remote and proximity scenarios.
-* **Section** :ref:`relying-party-endpoints:Relying Party Endpoints`: Complete overview of all Relying Party endpoints and their scopes.
-* **Section** :ref:`algorithms:Cryptographic Algorithms`: Cryptographic suite requirements.
+**Objective**: To understand the context and regulations to join the Trust Chain.
 
-**Secondary sections:**
+- **Section** :ref:`introduction:Introduction`: Understanding the scope and regulatory language of the IT-Wallet ecosystem. 
 
-* **Section** :ref:`wallet-solution:Wallet Solution`: Understanding Wallet Instance interactions and presentation protocols.
-* **Section** :ref:`mobile-application-instance:Mobile Application Instance`: Mobile-specific implementation patterns.
+- **Section** :ref:`architecture-overview:Architecture Overview`: Overview of the IT-Wallet system architecture in terms of governance and enabled operational processes. 
 
-Cross-Cutting Topics
-^^^^^^^^^^^^^^^^^^^^
+- **Section** :ref:`trust-infrastructure:The Infrastructure of Trust`: Key requirements of the Trust Chain and registration in the Trust List to operate at both national and European levels. 
 
-Regardless of your primary role, certain sections contain information relevant to all ecosystem participants:
+- **Section** :ref:`defined-terms-and-references:Defined Terms and References`: Regulatory references, defined terms, and technical standards enabling secure and correct interoperability between all participants. (Use this section for any questions regarding terminology, reference standards, or acronyms).
 
-**Security and Compliance:**
-    All implementers must implement their solutions according to Section :ref:`security-privacy-considerations:Security and Privacy Considerations` and Section :ref:`log-retention-policy:General Log Retention Policies`.
+**Phase 2: Design**
 
-**Standards and References:**
-    Section :ref:`defined-terms-and-references:Defined Terms and References` provides normative references, defined terms, and technical standards to enable secure and proper interoperability among all participants.
+****Objective**: To define verification requirements by establishing the attributes necessary to provide the service, and to design the request experience by defining data-sharing methods.  
 
-**Testing and Validation:**
-    Section :ref:`test-plans:Test Plans` provides a comprehensive test matrix for validating implementations across different roles and interaction flows.
+- **Section** :ref:`brand-identity:Brand Identity': Ensuring that any verification applications comply with the communication guidelines and visual identity of the IT-Wallet system. 
 
-Implementation Approach
-^^^^^^^^^^^^^^^^^^^^^^^
+- **Section** :ref:`functionalities:User Experience Design`: High-level functional requirements supporting the user experience across all interaction phases between the User and the service.  
 
-The following phased reading approach is suggested:
+- **Section** :ref:`entities:Entities`: Implementation requirements and attributes necessary to configure the Verifier profile (:ref:`relying-party-solution:paragraphs 10.3', :ref:`).
 
-    1. **Foundation Phase**: Read Sections :ref:`introduction:Introduction`, :ref:`architecture-overview:Architecture Overview`, :ref:`brand-identity:Brand Identity`, and :ref:`trust-infrastructure:The Infrastructure of Trust` to establish conceptual understanding of the IT-Wallet paradigm, Brand Identity elements and trust infrastructure.
-    2. **Role-Specific Phase**: Focus on primary role's essential sections to understand specific User Experience, functional and implementation requirements, main technical component, the general architecture and interaction flows (see Section :ref:`functionalities:User Experience Design`, :ref:`entities:Entities` and Section :ref:`endpoints:Endpoints` for more details).
-    3. **Integration Phase**: Review secondary sections relevant to interactions with other ecosystem participants and platform integration requirements.
-    4. **Validation Phase**: Study security considerations, testing guidance, and compliance requirements according to Sections :ref:`security-privacy-considerations:Security and Privacy Considerations`, :ref:`log-retention-policy:General Log Retention Policies`, and :ref:`test-plans:Test Plans` for additional information.
+- **Section** :ref:`digital-credential-management:Digital Credential Management`: Formats of Electronic Credentials and methods for verifying their validity. 
 
-.. note::
+- **Section** :ref:`algorithms:Cryptographic Algorithms': Design and implementation of digital signature validation systems ensuring the integrity of the data presented by the user. 
 
-    For implementers working on solutions that span multiple roles (e.g., a combined Issuer Relying Party Solutions), it is recommended reviewing the sections for all relevant roles before proceeding with the developments. It is important to take particular note of Entity Configuration requirements and federation flows that apply to multiple roles.
+**Phase 3: Implementation**
+
+**Objective**: To implement the OpenID4VP protocol to send requests to the Wallet and receive attestations, ensuring correct format decoding. 
+
+- **Section** ref:`digital-credential-flows:`Digital Credential Flows':  Implementation of presentation flows for both remote and proximity scenarios (ref:`credential-presentation:`paragraph 12.2'). 
+
+- **Section** :ref:`endpoints:Endpoints`: Implementation of receiving and verification interfaces (:ref:`relying-party-endpoints:`paragraph 13.3' and :ref:`relying-party-provider-backend-endpoints:`Relying Party Provider Backend Endpoints'). 
+
+- **Section** :ref:`security-privacy-considerations:Security and Privacy Considerations`: Security and compliance requirements for implemented solutions. 
+
+- **Section** :ref:`log-retention-policy:General Log Retention Policies`: Log retention requirements in accordance with ISO/IEC 27001
+
+**Phase 4: Registration**
+
+**Objective**: To become accredited as a secure and reliable actor when requesting user data.   
+
+- **Section** :ref:`onboarding-high-level:Onboarding System': learning the methods for participating in the IT-Wallet ecosystem  (:ref:`relying-party-operator-journey:paragraph 4.5.5'). 
+
+- **Section** :ref:`x5c-evaluation:X.509 Certificate Management Operations': Operational procedures for managing X.509 Certificates within the IT-Wallet federation
+
+- **Section**: :ref:`est-plans:Test Plans': Information on how test environments support implementers, auditors, and compliance testing in validating Wallet Solution behavior. 
+
+
 
 
 
