@@ -331,7 +331,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
     Fasi dell'Esperienza Utente di utilizzo di un'Istanza del Wallet
 
-Di seguito sono rappresentate a titolo esemplificativo la pagina con l’Engagement Button_, la Selection Page e la QR Code Page, dove gli elementi dell’interfaccia e i testi sono adattati al flusso di `Ottenimento dal Touchpoint della Fonte Autentica`_. 
+Di seguito sono rappresentate a titolo esemplificativo la pagina con l’`Engagement Button`_, la Selection Page e la QR Code Page, dove gli elementi dell’interfaccia e i testi sono adattati al flusso di `Ottenimento dal Touchpoint della Fonte Autentica`_. 
 
 .. only:: format_html 
  
