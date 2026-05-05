@@ -34,7 +34,7 @@ Questo componente DEVE gestire:
 
 - Registrazione dell'Istanza del Wallet (dettagliata in :ref:`wallet-instance-registration:Inizializzazione e Registrazione dell'Istanza del Wallet`).
 - Emissione della Wallet Instance Attestation (dettagliata in :ref:`wallet-instance-attestation-issuance:Emissione della Wallet Instance Attestation`).
-- Emissione della Wallet Unit Attestation (dettagliata in :ref:`wallet-attestation-issuance:Emissione della Wallet Unit Attestation`).
+- Emissione della Key Attestation (dettagliata in :ref:`wallet-attestation-issuance:Emissione della Key Attestation`).
 - Gestione dello stato (mantenimento e aggiornamento della validità).
 - Processi di revoca (implementazione di meccanismi per revocare le Istanze del Wallet), secondo la Sezione :ref:`wallet-instance-revocation:Revoca dell'Istanza del Wallet`.
 
@@ -65,7 +65,7 @@ Interagendo con il Backend del Wallet, questo componente DEVE gestire:
 
 - Registrazione dell'Istanza del Wallet (dettagliata in :ref:`wallet-instance-registration:Inizializzazione e Registrazione dell'Istanza del Wallet`).
 - Emissione della Wallet Instance Attestation (dettagliata in :ref:`wallet-instance-attestation-issuance:Emissione della Wallet Instance Attestation`).
-- Emissione della Wallet Unit Attestation (dettagliata in :ref:`wallet-attestation-issuance:Emissione della Wallet Unit Attestation`).
+- Emissione della Key Attestation (dettagliata in :ref:`wallet-attestation-issuance:Emissione della Key Attestation`).
 - Gestione dello stato (mantenimento e aggiornamento della validità).
 - Processi di revoca (implementazione di meccanismi per revocare le Istanze del Wallet), secondo la Sezione :ref:`wallet-instance-revocation:Revoca dell'Istanza del Wallet`.
 
@@ -110,7 +110,7 @@ Modelli di Interazione della Soluzione Wallet
 La Soluzione Wallet supporta questi modelli di interazione:
 
 1. **Utente verso Frontend del Backend del Wallet**: Interazioni basate sul web per la gestione dell'Istanza del Wallet.
-2. **Istanza del Wallet verso API del Backend del Wallet**: per la registrazione dell'Istanza del Wallet e l'emissione della Wallet Instance e Wallet Unit Attestation.
+2. **Istanza del Wallet verso API del Backend del Wallet**: per la registrazione dell'Istanza del Wallet e l'emissione della Wallet Instance e key Attestation.
 3. **Fornitore di Attestati Elettronici di Dati di Identificazione Personale verso API del Backend del Wallet**: Chiamate API sicure per richiedere la revoca dell'Istanza del Wallet.
 4. **Utente verso Interfaccia Utente dell'Istanza del Wallet**: per la gestione delle Credenziali Elettroniche (emissione, presentazione, backup, ripristino, eliminazione).
 5. **Istanza del Wallet verso Relying Party**: per la presentazione delle Credenziali Elettroniche.
