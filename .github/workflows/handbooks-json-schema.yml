@@ -6,11 +6,17 @@ on:
     branches: ["*"]
     paths:
       - "handbooks/**"
+      - "handbooks/it/authentic-sources/progettazione-caratteristiche-eaa.json"
+      - "handbooks/it/authentic-sources/json-schemas/schema-validazione-form-onboarding-fonte-autentica.schema.json"
+      - "utils/validate_casi_d_uso_json.py"
       - ".github/workflows/handbooks-json-schema.yml"
   pull_request:
     branches: ["*"]
     paths:
       - "handbooks/**"
+      - "handbooks/it/authentic-sources/progettazione-caratteristiche-eaa.json"
+      - "handbooks/it/authentic-sources/json-schemas/schema-validazione-form-onboarding-fonte-autentica.schema.json"
+      - "utils/validate_casi_d_uso_json.py"
       - ".github/workflows/handbooks-json-schema.yml"
   workflow_dispatch:
 
@@ -29,7 +35,7 @@ jobs:
   validate:
     name: Validate handbook JSON (Makefiles)
     needs: pre_job
-    if: needs.pre_job.outputs.should_skip != "true"
+    if: needs.pre_job.outputs.should_skip != 'true'
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
