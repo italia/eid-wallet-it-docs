@@ -29,4 +29,5 @@ exclude = [
   "^https://wallet-solution\\.digital-strategy\\.europa\\.eu",
   # External: certificate/TLS issues should not block doc PRs (revisit periodically)
   "^https://www\\.wallet\\.gov\\.it",
+  "^https?://dev\\.ta\\.wallet\\.ipzs\\.it(/|\\?|#|$)",
 ]
