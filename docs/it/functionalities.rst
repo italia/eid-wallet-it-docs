@@ -659,6 +659,86 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
     Esempio di Esperienza Utente nella presentazione da remoto, cross-device - 03
 
+Di seguito sono rappresentate a titolo esemplificativo la pagina con l’Engagement Button_, la Selection Page e la QR Code Page, dove gli elementi dell’interfaccia e i testi sono adattati al flusso di `Presentazione da remoto`_. 
+
+.. only:: format_html 
+ 
+.. figure:: ./images/svg/Presentazione-remota-engagement-button.svg 
+   :alt: Esempio di pagina con Engagement Button per la presentazione da remoto 
+   :width: 100% 
+   :align: center 
+ 
+   Esempio di pagina con Engagement Button per la presentazione da remoto 
+
+ 
+.. only:: format_latex 
+ 
+.. figure:: ./images/pdf/ Presentazione-remota- engagement-button.pdf 
+   :alt: Esempio di pagina con Engagement Button per la presentazione da remoto 
+   :width: 100% 
+ 
+   Esempio di pagina con Engagement Button per la presentazione da remoto 
+
+ 
+
+.. only:: format_html 
+ 
+.. figure:: ./images/svg/Presentazione-remota-selection-page.svg 
+   :alt: Esempio di Selection Page per la presentazione da remoto 
+   :width: 100% 
+   :align: center 
+ 
+   Esempio di Selection Page per la presentazione da remoto 
+
+ 
+.. only:: format_latex 
+ 
+.. figure:: ./images/pdf/Presentazione-remota-selection-page.pdf 
+   :alt: Esempio di Selection Page per la presentazione da remoto 
+   :width: 100% 
+ 
+   Esempio di Selection Page per la presentazione da remoto 
+
+ 
+
+.. only:: format_html 
+ 
+.. figure:: ./images/svg/Presentazione-remota-qr-code-page.svg 
+   :alt: Esempio di Qr Code Page per la presentazione da remoto 
+   :width: 100% 
+   :align: center 
+ 
+   Esempio di Qr Code Page per la presentazione da remoto 
+
+ 
+.. only:: format_latex 
+ 
+.. figure:: ./images/pdf/Presentazione-remota-qr-code-page.pdf 
+   :alt: Esempio di Qr Code Page per la presentazione da remoto 
+   :width: 100% 
+ 
+   Esempio di Qr Code Page per la presentazione da remoto 
+
+ 
+
+.. only:: format_html 
+ 
+.. figure:: ./images/svg/Presentazione-remota-thank-you-page.svg 
+   :alt: Esempio di Thank you Page per la presentazione da remoto 
+   :width: 100% 
+   :align: center 
+ 
+   Esempio di Thank You Page per la presentazione da remoto 
+
+ 
+.. only:: format_latex 
+ 
+.. figure:: ./images/pdf/Presentazione-remota-thank-you-page.pdf 
+   :alt: Esempio di Qr Code Page per la presentazione da remoto 
+   :width: 100% 
+ 
+   Esempio di Thank You Page per la presentazione da remoto 
+
 
 Autenticazione
 """""""""""""""
