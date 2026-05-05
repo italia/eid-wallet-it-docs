@@ -314,8 +314,85 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
     Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico da Touchpoint della Fonte Autentica, cross device - 04
 
+.. only:: format_html
+
+  .. figure:: ./images/svg/UX-phases-usage.svg
+    :alt: Fasi dell'Esperienza Utente di utilizzo di un'Istanza del Wallet
+    :width: 100%
+    :align: center
+
+    Fasi dell'Esperienza Utente di utilizzo di un'Istanza del Wallet
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/UX-phases-usage.pdf
+    :alt: Fasi dell'Esperienza Utente di utilizzo di un'Istanza del Wallet
+    :width: 100%
+
+    Fasi dell'Esperienza Utente di utilizzo di un'Istanza del Wallet
+
+Di seguito sono rappresentate a titolo esemplificativo la pagina con l’Engagement Button_, la Selection Page e la QR Code Page, dove gli elementi dell’interfaccia e i testi sono adattati al flusso di `Ottenimento dal Touchpoint della Fonte Autentica`_. 
+
+.. only:: format_html 
+ 
+.. figure:: ./images/svg/Credential-offer-engagement-button.svg 
+   :alt: Esempio di pagina con Engagement Button 
+   :width: 100% 
+   :align: center 
+ 
+   Esempio di pagina con Engagement Button 
+
+ 
+.. only:: format_latex 
+ 
+.. figure:: ./images/pdf/Credential-offer-engagement-button.pdf 
+   :alt: Esempio di pagina con Engagement Button 
+   :width: 100% 
+ 
+   Esempio di pagina con Engagement Button 
+
+ 
+
+.. only:: format_html 
+ 
+.. figure:: ./images/svg/Credential-offer-selection-page.svg 
+   :alt: Esempio di Selection Page per il Credential Offer 
+   :width: 100% 
+   :align: center 
+ 
+   Esempio di Selection Page per il Credential Offer 
+
+ 
+.. only:: format_latex 
+ 
+.. figure:: ./images/pdf/Credential-offer-selection-page.pdf 
+   :alt: Esempio di Selection Page per il Credential Offer 
+   :width: 100% 
+ 
+   Esempio di Selection Page per il Credential Offer 
+
+ 
+
+.. only:: format_html 
+ 
+.. figure:: ./images/svg/Credential-offer-qr-code-page.svg 
+   :alt: Esempio di Qr Code Page per il Credential Offer 
+   :width: 100% 
+   :align: center 
+ 
+   Esempio di Qr Code Page per il Credential Offer 
+
+ 
+.. only:: format_latex 
+ 
+.. figure:: ./images/pdf/Credential-offer-qr-code-page.pdf 
+   :alt: Esempio di Qr Code Page per il Credential Offer 
+   :width: 100% 
+ 
+   Esempio di Qr Code Page per il Credential Offer 
+
 Engagement Button
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^
 L'Engagement Button è un elemento interattivo dell'interfaccia che consente all'Utente di avviare un processo, ad esempio di Autenticazione (“Entra con IT-Wallet"), di ottenimento di un Attestato Elettronico (“Aggiungi a IT-Wallet”) o di verifica (“Verifica con IT-Wallet”).  
 
 I Verificatori di Attestati Elettronici POSSONO rendere disponibile l'Engagement Button all'interno della pagina di un Touchpoint per permettere all'Utente di fruire dei servizi tramite un'Istanza del Wallet. 
