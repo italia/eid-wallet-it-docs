@@ -384,54 +384,65 @@ Di seguito sono riportati i requisiti di dettaglio per la progettazione e la rap
 
 La Fonte Autentica:
 
-- DEVE indicare il **nome dell’EAA** tramite il parametro ``credential_name``. In particolare, la Fonte Autentica: 
- - DEVE utilizzare termini o locuzioni corrispondenti o affini al nome di una eventuale versione preesistente del documento a cui corrisponde l’EAA, così da agevolare la riconoscibilità da parte dell’Utente; 
- - DEVE utilizzare termini chiari e semplici evitando, dove possibile, inglesismi, acronimi o termini tecnici; 
- - DOVREBBE definire un nome breve e conciso. 
+- DEVE indicare il **nome dell’EAA** tramite il parametro ``credential_name``. In particolare, la Fonte Autentica:
 
-- DEVE indicare il **nome del responsabile dei dati o della fonte dei dati** tramite il parametro ``data_capabilities.data_origin``. In particolare, la Fonte Autentica: 
- - DEVE utilizzare il nome ufficiale per garantire massima riconoscibilità e fiducia da parte dell’Utente; 
- - DEVE seguire la struttura “[Acronimo] - [Nome]” in caso voglia utilizzare un acronimo unitamente al nome per esteso (es. “ANIS - Anagrafe Nazionale dell’istruzione superiore”); 
- - PUÒ seguire la struttura “[Acronimo soggetto primario] - [Nome soggetto secondario]” in caso sia utile disaccoppiare l’acronimo dal nome per esteso così da aggiungere un ulteriore livello di dettaglio e favorire la riconoscibilità e il senso di affidabilità del soggetto titolare (es. “MIT - Direzione Generale per la Motorizzazione”). 
+  - DEVE utilizzare termini o locuzioni corrispondenti o affini al nome di una eventuale versione preesistente del documento a cui corrisponde l’EAA, così da agevolare la riconoscibilità da parte dell’Utente;
+  - DEVE utilizzare termini chiari e semplici evitando, dove possibile, inglesismi, acronimi o termini tecnici;
+  - DOVREBBE definire un nome breve e conciso.
 
-- PUÒ rendere disponibile il **logo della Fonte Autentica** in due versioni, una versione compatta tramite il parametro ``organization_info.logo_uri`` e una versione estesa tramite il parametro ``organization_info.logo_extended_uri``. In particolare, la Fonte Autentica: 
- - DEVE fornire il logo in uno dei seguenti formati: ``image/png``, ``image/svg+xml`` o ``image/webp``; 
- - DEVE fornire il logo sia in versione positiva che negativa, se disponibile; 
- - DEVE fornire il logo con una dimensione minima di 30 × 30 pixel e una dimensione massima di 60 x 60 pixel, nella sua versione compatta; 
- - DEVE fornire il logo secondo una ratio di 1:1, nella sua versione compatta; 
- - DEVE fornire un logo che non ecceda il peso massimo di 80 KB, nella sua versione compatta; 
- - DEVE fornire il logo con una dimensione minima di 200 × 30 pixel e una dimensione massima di 650 × 180 pixel, nella sua versione estesa; 
- - DEVE fornire un logo che non ecceda il peso massimo di 150 KB, nella sua versione estesa. 
+- DEVE indicare il **nome del responsabile dei dati o della fonte dei dati** tramite il parametro ``data_capabilities.data_origin``. In particolare, la Fonte Autentica:
 
-- PUÒ rendere disponibile un **logo dell’EAA** tramite il parametro ``data_capabilities.logo_uri``. In particolare, la Fonte Autentica: 
- - DEVE fornire il logo in uno dei seguenti formati: ``image/png``, ``image/svg+xml``, or ``image/webp``; 
- - DEVE fornire il logo sia in versione positiva che negativa, se disponibile; 
- - DEVE fornire il logo con una dimensione minima di 200 × 30 pixel e una dimensione massima di 650 x 180 pixel; 
- - DEVE fornire un logo che non ecceda il peso massimo di 150 KB. 
+  - DEVE utilizzare il nome ufficiale per garantire massima riconoscibilità e fiducia da parte dell’Utente;
+  - DEVE seguire la struttura “[Acronimo] - [Nome]” in caso voglia utilizzare un acronimo unitamente al nome per esteso (es. “ANIS - Anagrafe Nazionale dell’istruzione superiore”);
+  - PUÒ seguire la struttura “[Acronimo soggetto primario] - [Nome soggetto secondario]” in caso sia utile disaccoppiare l’acronimo dal nome per esteso così da aggiungere un ulteriore livello di dettaglio e favorire la riconoscibilità e il senso di affidabilità del soggetto titolare (es. “MIT - Direzione Generale per la Motorizzazione”).
 
-- PUÒ definire un **colore dell'EAA** tramite il parametro ``data_capabilities.background_color``. In particolare, la Fonte Autentica: 
- - DEVE fornire il colore utilizzando esclusivamente una delle seguenti modalità colore: HEX, HSB, RGB, sRGB, HSL, o HSV. 
+- PUÒ rendere disponibile il **logo della Fonte Autentica** in due versioni, una versione compatta tramite il parametro ``organization_info.logo_uri`` e una versione estesa tramite il parametro ``organization_info.logo_extended_uri``. In particolare, la Fonte Autentica:
 
-- DEVE fornire l’**ordine degli Attributi** desiderato tramite il parametro ``data_capabilities.available_claims_order``. In particolare, la Fonte Autentica: 
- - DEVE ordinare i dati secondo la struttura predefinita:  
-  - Attributi identificativi (opzionali); 
-  - Attributi I livello; 
-  - Attributi II livello (opzionali). 
- - NON DEVE superare i due livelli di annidamento nell’organizzazione degli Attributi; 
- - NON DOVREBBE superare il numero massimo di 15 Attributi per ciascun livello; 
- - NON DOVREBBE superare un massimo di 85 caratteri per la valorizzazione degli Attributi; 
- - NON DOVREBBE superare un massimo di 181 caratteri per la valorizzazione di ciascuna descrizione in caso di Attributi di II livello con “lista di descrizioni”. 
+  - DEVE fornire il logo in uno dei seguenti formati: ``image/png``, ``image/svg+xml`` o ``image/webp``;
+  - DEVE fornire il logo sia in versione positiva che negativa, se disponibile;
+  - DEVE fornire il logo con una dimensione minima di 30 × 30 pixel e una dimensione massima di 60 x 60 pixel, nella sua versione compatta;
+  - DEVE fornire il logo secondo una ratio di 1:1, nella sua versione compatta;
+  - DEVE fornire un logo che non ecceda il peso massimo di 80 KB, nella sua versione compatta;
+  - DEVE fornire il logo con una dimensione minima di 200 × 30 pixel e una dimensione massima di 650 × 180 pixel, nella sua versione estesa;
+  - DEVE fornire un logo che non ecceda il peso massimo di 150 KB, nella sua versione estesa.
+
+- PUÒ rendere disponibile un **logo dell’EAA** tramite il parametro ``data_capabilities.logo_uri``. In particolare, la Fonte Autentica:
+
+  - DEVE fornire il logo in uno dei seguenti formati: ``image/png``, ``image/svg+xml``, or ``image/webp``;
+  - DEVE fornire il logo sia in versione positiva che negativa, se disponibile;
+  - DEVE fornire il logo con una dimensione minima di 200 × 30 pixel e una dimensione massima di 650 x 180 pixel;
+  - DEVE fornire un logo che non ecceda il peso massimo di 150 KB.
+
+- PUÒ definire un **colore dell'EAA** tramite il parametro ``data_capabilities.background_color``. In particolare, la Fonte Autentica:
+
+  - DEVE fornire il colore utilizzando esclusivamente una delle seguenti modalità colore: HEX, HSB, RGB, sRGB, HSL, o HSV.
+
+- DEVE fornire l’**ordine degli Attributi** desiderato tramite il parametro ``data_capabilities.available_claims_order``. In particolare, la Fonte Autentica:
+
+  - DEVE ordinare i dati secondo la struttura predefinita:
+
+    - Attributi identificativi (opzionali);
+    - Attributi I livello;
+    - Attributi II livello (opzionali).
+
+  - NON DEVE superare i due livelli di annidamento nell’organizzazione degli Attributi;
+  - NON DOVREBBE superare il numero massimo di 15 Attributi per ciascun livello;
+  - NON DOVREBBE superare un massimo di 85 caratteri per la valorizzazione degli Attributi;
+  - NON DOVREBBE superare un massimo di 181 caratteri per la valorizzazione di ciascuna descrizione in caso di Attributi di II livello con “lista di descrizioni”.
 
 Il Fornitore di Wallet: 
 
-- DEVE mostrare in modo chiaro e accessibile il **nome dell’EAA** così come definito dal parametro ``credential_name`` all’interno del registry:`Catalogo degli Attestati Elettronici`; 
-- DEVE mostrare in modo chiaro e accessibile tutti gli **Attributi dell’EAA** rispettando la macro-struttura predefinita a livello di Vista di Dettaglio, la suddivisione degli Attributi tra I e II livello, se prevista, e l’ordinamento degli Attributi come definito dal parametro ``data_capabilities.available_claims_order`` all’interno del registry:`Registro delle Fonti Autentiche`. In particolare, la Fornitore di Wallet: 
- - DEVE rappresentare l’EAA secondo la struttura predefinita: 
-  - Nome EAA 
-  - Attributi identificativi (opzionali) 
-  - Attributi I livello 
-  - Attributi II livello (opzionali) 
-  - Metadati 
+- DEVE mostrare in modo chiaro e accessibile il **nome dell’EAA** così come definito dal parametro ``credential_name`` all’interno del registry:`Catalogo degli Attestati Elettronici`;
+- DEVE mostrare in modo chiaro e accessibile tutti gli **Attributi dell’EAA** rispettando la macro-struttura predefinita a livello di Vista di Dettaglio, la suddivisione degli Attributi tra I e II livello, se prevista, e l’ordinamento degli Attributi come definito dal parametro ``data_capabilities.available_claims_order`` all’interno del registry:`Registro delle Fonti Autentiche`. In particolare, la Fornitore di Wallet:
+
+  - DEVE rappresentare l’EAA secondo la struttura predefinita:
+
+    - Nome EAA
+    - Attributi identificativi (opzionali)
+    - Attributi I livello
+    - Attributi II livello (opzionali)
+    - Metadati
+
 - DEVE includere il **logo della Fonte Autentica** e/o il **logo dell’EAA** specifico se forniti dalla Fonte Autentica per mezzo del registry:`Registro delle Fonti Autentiche`;
 - DEVE garantire l’adozione del colore dell’EAA definito dalla Fonte Autentica se indicato all’interno del registry:`Registro delle Fonti Autentiche` a livello di tonalità colore (H). Il Wallet Provider PUÒ ottimizzare i valori di saturazione (S) e luminosità (B) per adattare il colore specifico ad esigenze legate all’accessibilità e/o alle scelte grafiche di prodotto della propria Soluzione Wallet. Qualora la Fonte Autentica non fornisca specifiche cromatiche, il Wallet Provider è tenuto a definire e adottare proprie scelte grafiche di default. 
 
