@@ -389,66 +389,69 @@ Below are the detailed requirements for the design and the representation of EAA
 
 The Authentic Source: 
 
-- MUST specify the **EAA name** using the ``credential_name`` parameter. In particular, the Authentic Source:  
+- MUST specify the **EAA name** using the ``credential_name`` parameter. In particular, the Authentic Source:
 
- - MUST use terms or phrases that correspond to or are similar to the name of any pre-existing version of the document to which the EAA corresponds, so as to facilitate recognition by the User;  
- - MUST use clear and simple terms, avoiding anglicisms, acronyms or technical terms where possible; 
- - SHOULD define a short and concise name. 
+  - MUST use terms or phrases that correspond to or are similar to the name of any pre-existing version of the document to which the EAA corresponds, so as to facilitate recognition by the User;
+  - MUST use clear and simple terms, avoiding anglicisms, acronyms or technical terms where possible;
+  - SHOULD define a short and concise name.
 
-- MUST specify the data owner or data source name using the parameter ``data_capabilities.data_origin``. In particular, the Authentic Source:  
+- MUST specify the data owner or data source name using the parameter ``data_capabilities.data_origin``. In particular, the Authentic Source:
 
- - MUST use the official name to ensure maximum recognisability and trust by the User;  
- - MUST follow the structure “[Acronym] - [Name]” if it wishes to use an acronym alongside the full name (e.g. “ANIS - National Register of higher education”);  
- - MAY follow the structure “[Primary entity acronym] - [Secondary entity name]” if it is useful to separate the acronym from the full name in order to add a further level of detail and enhance the recognisability and sense of reliability of the entity in charge (e.g. “MIT - General Directorate for Motor Vehicles”). 
+  - MUST use the official name to ensure maximum recognisability and trust by the User;
+  - MUST follow the structure “[Acronym] - [Name]” if it wishes to use an acronym alongside the full name (e.g. “ANIS - National Register of higher education”);
+  - MAY follow the structure “[Primary entity acronym] - [Secondary entity name]” if it is useful to separate the acronym from the full name in order to add a further level of detail and enhance the recognisability and sense of reliability of the entity in charge (e.g. “MIT - General Directorate for Motor Vehicles”).
 
-- MAY provide the **Authentic Source’s logo** in two versions, a compact version via the ``organization_info.logo_uri`` parameter and an extended version via the ``organization_info.logo_extended_uri`` parameter. In particular, the Authentic Source: 
+- MAY provide the **Authentic Source’s logo** in two versions, a compact version via the ``organization_info.logo_uri`` parameter and an extended version via the ``organization_info.logo_extended_uri`` parameter. In particular, the Authentic Source:
 
- - MUST provide the logo only in one of the following formats: ``image/png``, ``image/svg+xml``, or ``image/webp``; 
- - MUST provide the logo in both a positive and a negative version, if available; 
- - MUST provide the logo with a minimum size of 30 × 30 pixels and a maximum size of 60 x 60 pixels, in its compact version; 
- - MUST provide the logo with an aspect ratio of 1:1, in its compact version; 
- - MUST provide the logo which does not exceed the maximum file size of 80 KB, in its compact version; 
- - MUST provide the logo with a minimum size of 200 × 30 pixels and a maximum size of 650 × 180 pixels, in its extended version; 
- - MUST provide the logo which does not exceed the maximum file size of 150 KB, in its extended version. 
+  - MUST provide the logo only in one of the following formats: ``image/png``, ``image/svg+xml``, or ``image/webp``;
+  - MUST provide the logo in both a positive and a negative version, if available;
+  - MUST provide the logo with a minimum size of 30 × 30 pixels and a maximum size of 60 x 60 pixels, in its compact version;
+  - MUST provide the logo with an aspect ratio of 1:1, in its compact version;
+  - MUST provide the logo which does not exceed the maximum file size of 80 KB, in its compact version;
+  - MUST provide the logo with a minimum size of 200 × 30 pixels and a maximum size of 650 × 180 pixels, in its extended version;
+  - MUST provide the logo which does not exceed the maximum file size of 150 KB, in its extended version.
 
-- MAY provide a distinctive **EAA logo** via the ``data_capabilities.logo_uri`` parameter. In particular, the Authentic Source: 
+- MAY provide a distinctive **EAA logo** via the ``data_capabilities.logo_uri`` parameter. In particular, the Authentic Source:
 
- - MUST provide the logo only in one of the following formats: ``image/png``, ``image/svg+xml``, or ``image/webp``; 
- - MUST provide the logo in both a positive and a negative version, if available; 
- - MUST provide the logo with a minimum size of 200 × 30 pixels and a maximum size of 650 × 180 pixels; 
- - MUST provide the logo with a maximum file size of 150 KB. 
+  - MUST provide the logo only in one of the following formats: ``image/png``, ``image/svg+xml``, or ``image/webp``;
+  - MUST provide the logo in both a positive and a negative version, if available;
+  - MUST provide the logo with a minimum size of 200 × 30 pixels and a maximum size of 650 × 180 pixels;
+  - MUST provide the logo with a maximum file size of 150 KB.
 
-- MAY define a distinctive **EAA color** to be associated with a specific EAA via the ``data_capabilities.background_color`` parameter. In particular, the Authentic Source: 
+- MAY define a distinctive **EAA color** to be associated with a specific EAA via the ``data_capabilities.background_color`` parameter. In particular, the Authentic Source:
 
- - MUST provide the background color only using one of the following color modes: HEX, HSB, RGB, sRGB, HSL, or HSV.
+  - MUST provide the background color only using one of the following color modes: HEX, HSB, RGB, sRGB, HSL, or HSV.
 
-- MUST specify the desired **Attributes order** via the ``data_capabilities.available_claims.order`` parameter. In particular, the Authentic Source:  
+- MUST specify the desired **Attributes order** via the ``data_capabilities.available_claims.order`` parameter. In particular, the Authentic Source:
 
- - MUST order the data according to the default structure:
-  - Identification Attributes (optional);  
-  - Level I Attributes; 
-  - Level II Attributes (optional); 
- - MUST not exceed two levels of nesting in the organisation of attributes; 
- - SHOULD NOT exceed a maximum of 15 Attributes per level; 
- - SHOULD NOT exceed a maximum of 85 characters for Attribute values; 
- - SHOULD NOT exceed a maximum of 181 characters for the value of each description in the case of Level II Attributes with a “list of descriptions”. 
+  - MUST order the data according to the default structure:
+
+    - Identification Attributes (optional);
+    - Level I Attributes;
+    - Level II Attributes (optional);
+
+  - MUST not exceed two levels of nesting in the organisation of attributes;
+  - SHOULD NOT exceed a maximum of 15 Attributes per level;
+  - SHOULD NOT exceed a maximum of 85 characters for Attribute values;
+  - SHOULD NOT exceed a maximum of 181 characters for the value of each description in the case of Level II Attributes with a “list of descriptions”.
 
 The Wallet Provider: 
 
 - MUST clearly and accessibly display the identifying **EAA name** as defined by the ``credential_name`` parameter within the :ref:`registry:Digital Credentials Catalog`; 
 
-- MUST clearly and accessibly display the **EAA Attributes**, respecting the predefined macro-structure of the Detail View, the division of Attributes into level I and level II (where available), and the data ordering as defined by the parameter ``data_capabilities.available_claims_order`` within the :ref:`registry:Authentic Source Registry`. In particular, the Wallet Provider: 
+- MUST clearly and accessibly display the **EAA Attributes**, respecting the predefined macro-structure of the Detail View, the division of Attributes into level I and level II (where available), and the data ordering as defined by the parameter ``data_capabilities.available_claims_order`` within the :ref:`registry:Authentic Source Registry`. In particular, the Wallet Provider:
 
- - MUST represent the EAA in accordance with the predefined structure:  
-  - EAA name; 
-  - Identification Attributes (optional);  
-  - Level I Attributes;  
-  - Level II Attributes (optional); 
-  - Metadata. 
+  - MUST represent the EAA in accordance with the predefined structure:
 
- - MUST include the **Authentic Source’s logo** and/or the specific **EAA logo** if provided by the Authentic Source through the :ref:`registry:Authentic Source Registry`; 
+    - EAA name;
+    - Identification Attributes (optional);
+    - Level I Attributes;
+    - Level II Attributes (optional);
+    - Metadata.
 
- - MUST ensure the adoption of the **EAA color** defined by the Authentic Source, if specified within the :ref:`registry:Authentic Source Registry`, at the hue (H) level. The Wallet Provider MAY optimize saturation (S) and brightness (B) values to adapt the specific color to accessibility requirements and/or to the graphical design choices of its Wallet Solution. If the Authentic Source does not provide color specifications, the Wallet Provider is required to define and adopt its own default graphical choices. 
+  - MUST include the **Authentic Source’s logo** and/or the specific **EAA logo** if provided by the Authentic Source through the :ref:`registry:Authentic Source Registry`;
+
+  - MUST ensure the adoption of the **EAA color** defined by the Authentic Source, if specified within the :ref:`registry:Authentic Source Registry`, at the hue (H) level. The Wallet Provider MAY optimize saturation (S) and brightness (B) values to adapt the specific color to accessibility requirements and/or to the graphical design choices of its Wallet Solution. If the Authentic Source does not provide color specifications, the Wallet Provider is required to define and adopt its own default graphical choices.
 
 The Wallet Provider is the ultimate responsible party for the visual presentation of the Electronic Attestation of Attributes within its Wallet Solutions. Therefore, to ensure a high level of accessibility [REF_ACCESSIBILITY] and usability [GL_DESIGN], further user experience requirements are set out below. In particular, the Wallet Provider: 
 
