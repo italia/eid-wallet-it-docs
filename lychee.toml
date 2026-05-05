@@ -7,6 +7,12 @@ no_progress = true
 # Follow redirects; require a successful final response.
 accept = ["200..=299", "429"]
 
+# Be gentler with remote hosts to reduce 509/rate-limit failures.
+max_concurrency = 3
+max_retries = 2
+retry_wait_time = "4s"
+timeout = "10s"
+
 include_mail = false
 
 exclude = [
