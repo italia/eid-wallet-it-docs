@@ -153,7 +153,7 @@ The JWT payload contains the following claims. Unless otherwise specifed, the fo
       - OPTIONAL. *JSON object*. Format-encoded data identifier `verification` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. It includes the following sub-value:
 
           * ``trust_framework``: REQUIRED. *String* identifying the trust framework used for User authentication. It MUST be set using one of the values described in the `trust_frameworks_supported` map provided within the Credential Issuer Metadata.
-          * ``assurance_level``: REQUIRED. *String* identifying the level of identity assurance guaranteed during the User authentication process. The value MUST match with one of the values mapped in the ``acr_values_supported`` array of the :ref:`credential-issuer-entity-configuration:Credential Issuer Metadata`.
+          * ``assurance_level``: REQUIRED. *String* identifying the level of identity assurance guaranteed during the User authentication process. The value MUST match with one of the values mapped in the ``acr_values_supported`` array of the :ref:`credential-issuer-metadata:Credential Issuer Metadata`.
 
       - Domestic extension.
     * - **_sd**
@@ -488,7 +488,7 @@ The following **elementIdentifiers** representing format-encoded metadata attrib
      - *(map, OPTIONAL)*. Format-encoded data identifier `verification` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. The CBOR map includes the following members:
 
          * ``trust_framework`` *(tstr, REQUIRED)*: trust framework used for User authentication.
-         * ``assurance_level`` *(tstr, REQUIRED)*: level of identity assurance guaranteed during User authentication. The value MUST match with one of the values mapped in the ``acr_values_supported`` array of the :ref:`credential-issuer-entity-configuration:Credential Issuer Metadata`.
+         * ``assurance_level`` *(tstr, REQUIRED)*: level of identity assurance guaranteed during User authentication. The value MUST match with one of the values mapped in the ``acr_values_supported`` array of the :ref:`credential-issuer-metadata:Credential Issuer Metadata`.
 
      - Domestic extension.
 
