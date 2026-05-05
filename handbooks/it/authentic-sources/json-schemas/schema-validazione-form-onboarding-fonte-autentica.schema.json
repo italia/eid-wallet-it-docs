@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/italia/eid-wallet-it-docs/handbooks/it/authentic-sources/json-schemas/schema-validazione-form-onboarding-fonte-autentica.schema.json",
-  "$version": "0.10.1",
+  "$version": "1.0.0",
   "title": "Schema validazione Fonte Autentica",
   "description": "Schema di validazione per progettazione-caratteristiche-eaa.json. Ordine sezioni: metadata, casi_d_uso, e_service (pdnd_metadata, request, response.dataset, mappatura_errori, stati, lista_nome_campo), assistenza.",
   "type": "object",
@@ -124,8 +124,16 @@
           "items": { "$ref": "#/$defs/canale_assistenza" }
         },
         "faq": {
-          "type": "array",
-          "items": { "$ref": "#/$defs/faq_item" }
+          "oneOf": [
+            {
+              "type": "array",
+              "items": { "$ref": "#/$defs/faq_item" }
+            },
+            {
+              "type": "object",
+              "additionalProperties": { "$ref": "#/$defs/campo_risposta" }
+            }
+          ]
         },
         "testi_informativi": { "type": "string" }
       }
@@ -389,8 +397,12 @@
     },
     "target_utenti": {
       "type": "object",
-      "required": ["documento_fisico_preesistente", "chi_puo_richiedere", "prerequisiti"],
+      "required": ["presenza_doc_preesistente"],
       "properties": {
+        "presenza_doc_preesistente": { "$ref": "#/$defs/campo_booleano" },
+        "utenti_doc_preesistente_": { "$ref": "#/$defs/campo_risposta" },
+        "utenti_doc_preesistente_eaa": { "$ref": "#/$defs/campo_risposta" },
+        "utenti_eaa": { "$ref": "#/$defs/campo_risposta" },
         "documento_fisico_preesistente": { "$ref": "#/$defs/campo_booleano" },
         "chi_puo_richiedere": { "$ref": "#/$defs/campo_risposta" },
         "prerequisiti": { "$ref": "#/$defs/campo_risposta" },
@@ -400,17 +412,19 @@
     },
     "emissione_formato": {
       "type": "object",
-      "required": [
-        "dominio",
-        "interesse_pubblico",
-        "interesse_pubblico_motivazione",
-        "catalogo_o_touchpoint",
-        "modalita_sincrona_differita",
-        "eaa_univoca",
-        "identificazione_utente",
-        "identificazione_utente_motivazione"
-      ],
+      "required": ["prerequisiti_eaa", "catalogo_o_touchpoint_eaa", "modalita_sincrona_differita_eaa", "eaa_multipla_o_singola", "identificazione_utente"],
       "properties": {
+        "prerequisiti_eaa": { "$ref": "#/$defs/campo_risposta" },
+        "prerequisiti_possesso_doc_preesistente": { "$ref": "#/$defs/campo_risposta" },
+        "canali_richiesta_ doc_preesistente": { "$ref": "#/$defs/campo_risposta" },
+        "formato_doc_preesistente": { "$ref": "#/$defs/campo_risposta" },
+        "volume_rilascio_doc_preesistente": { "$ref": "#/$defs/campo_risposta" },
+        "richieste_fisico_vs_digitale_ doc_preesistente": { "$ref": "#/$defs/campo_risposta" },
+        "variazioni_dati_doc_preesistente_eaa": { "$ref": "#/$defs/campo_risposta" },
+        "variazioni_dati_doc_preesistente_eaa_dettagli": { "$ref": "#/$defs/campo_risposta" },
+        "catalogo_o_touchpoint_eaa": { "$ref": "#/$defs/campo_risposta" },
+        "modalita_sincrona_differita_eaa": { "$ref": "#/$defs/campo_risposta" },
+        "eaa_multipla_o_singola": { "$ref": "#/$defs/campo_booleano" },
         "dominio": { "$ref": "#/$defs/campo_risposta" },
         "interesse_pubblico": { "$ref": "#/$defs/campo_booleano" },
         "interesse_pubblico_motivazione": { "$ref": "#/$defs/campo_risposta" },
@@ -430,16 +444,25 @@
     },
     "utilizzo": {
       "type": "object",
-      "required": [
-        "contesti_uso",
-        "soggetti_verificatori",
-        "utilizzo_continuo",
-        "tempo_validita",
-        "rinnovo",
-        "rinnovo_procedura",
-        "validita_europa"
-      ],
+      "required": ["dominio_eaa", "interesse_pubblico_eaa", "interesse_pubblico_motivazione_eaa"],
       "properties": {
+        "dominio_eaa": { "$ref": "#/$defs/campo_risposta" },
+        "interesse_pubblico_eaa": { "$ref": "#/$defs/campo_booleano" },
+        "interesse_pubblico_motivazione_eaa": { "$ref": "#/$defs/campo_risposta" },
+        "casi_d_uso_doc_preesistente": { "$ref": "#/$defs/campo_risposta" },
+        "casi_d_uso_doc_preesistente_eaa": { "$ref": "#/$defs/campo_risposta" },
+        "soggetti_verificatori_doc_preesistente": { "$ref": "#/$defs/campo_risposta" },
+        "modalita_verifica_doc_preesistente": { "$ref": "#/$defs/campo_risposta" },
+        "strumenti_verifica_doc_preesistente": { "$ref": "#/$defs/campo_risposta" },
+        "durata_utilizzo_doc_preesistente": { "$ref": "#/$defs/campo_risposta" },
+        "duarata_validita_doc_preesistente": { "$ref": "#/$defs/campo_risposta" },
+        "validita_territoriale_doc_preesistente": { "$ref": "#/$defs/campo_risposta" },
+        "validita_territoriale_doc_preesistente_eaa": { "$ref": "#/$defs/campo_risposta" },
+        "rinnovo_doc_preesistente": { "$ref": "#/$defs/campo_booleano" },
+        "modalita_rinnovo_doc_preesistente": { "$ref": "#/$defs/campo_risposta" },
+        "casi_d_uso_eaa": { "$ref": "#/$defs/campo_risposta" },
+        "durata_utilizzo_eaa": { "$ref": "#/$defs/campo_risposta" },
+        "validita_territoriale_eaa": { "$ref": "#/$defs/campo_risposta" },
         "contesti_uso": { "$ref": "#/$defs/campo_risposta" },
         "soggetti_verificatori": { "$ref": "#/$defs/campo_risposta" },
         "verifica_validita": { "$ref": "#/$defs/campo_risposta" },
@@ -459,8 +482,12 @@
     },
     "pagamento": {
       "type": "object",
-      "required": ["gratuito_o_pagamento", "pagamento_rinnovo"],
+      "required": ["gratuito_o_pagamento_doc_preesistente", "pagamento_rinnovo_doc_preesistente"],
       "properties": {
+        "gratuito_o_pagamento_doc_preesistente": { "$ref": "#/$defs/campo_booleano" },
+        "pagamento_rinnovo_doc_preesistente": { "$ref": "#/$defs/campo_booleano" },
+        "modalita_pagamento_doc_preesistente": { "$ref": "#/$defs/campo_risposta" },
+        "gratuito_o_pagamento_eaa": { "$ref": "#/$defs/campo_booleano" },
         "gratuito_o_pagamento": { "$ref": "#/$defs/campo_booleano" },
         "modalita_pagamento": { "$ref": "#/$defs/campo_risposta" },
         "pagamento_rinnovo": { "$ref": "#/$defs/campo_booleano" }
@@ -468,13 +495,13 @@
     },
     "legale_privacy": {
       "type": "object",
-      "required": [
-        "normativa",
-        "proprieta_dati",
-        "dati_sensibili",
-        "dati_sensibili_motivazione"
-      ],
+      "required": ["normativa _doc_preesistente", "normativa_eaa", "titolarita_dati_eaa", "dati_sensibili_eaa", "dati_sensibili_eaa_motivazione"],
       "properties": {
+        "normativa _doc_preesistente": { "$ref": "#/$defs/campo_risposta" },
+        "normativa_eaa": { "$ref": "#/$defs/campo_risposta" },
+        "titolarita_dati_eaa": { "$ref": "#/$defs/campo_risposta" },
+        "dati_sensibili_eaa": { "$ref": "#/$defs/campo_booleano" },
+        "dati_sensibili_eaa_motivazione": { "$ref": "#/$defs/campo_risposta" },
         "normativa": { "$ref": "#/$defs/campo_risposta" },
         "proprieta_dati": { "$ref": "#/$defs/campo_risposta" },
         "dati_sensibili": { "$ref": "#/$defs/campo_booleano" },
