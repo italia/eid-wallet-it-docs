@@ -335,7 +335,7 @@ La Fonte Autentica è responsabile della progettazione di tutte le caratteristic
 Il Fornitore di Wallet è responsabile della rappresentazione dell’Attestato Elettronico di Attributi in linea con: 
 
 - quanto definito dalle presenti Specifiche Tecniche in ottica di coerenza di sistema e di aderenza ai principi di usabilità [LG_DESIGN] e di accessibilità [RIF_ACCESSIBILITÀ]; 
-- quanto veicolato dal Registro delle Fonti Autentiche e dal Catalogo delle Credenziali Digitali (vedi registry:`Infrastruttura del Registro`); 
+- quanto veicolato dal Registro delle Fonti Autentiche e dal Catalogo delle Credenziali Digitali (vedi :ref:`registry:Infrastruttura del Registro`); 
 - quanto progettato a livello di UX/UI nella propria Soluzione Wallet. 
 
 Al fine di guidare la Fonte Autentica nel progettare e il Fornitore di Wallet nel rappresentare adeguatamente un EAA, si definiscono a seguire gli elementi da considerare e la struttura da adottare a livello di Vista di Dettaglio: 
@@ -432,8 +432,8 @@ La Fonte Autentica:
 
 Il Fornitore di Wallet: 
 
-- DEVE mostrare in modo chiaro e accessibile il **nome dell’EAA** così come definito dal parametro ``credential_name`` all’interno del registry:`Catalogo degli Attestati Elettronici`;
-- DEVE mostrare in modo chiaro e accessibile tutti gli **Attributi dell’EAA** rispettando la macro-struttura predefinita a livello di Vista di Dettaglio, la suddivisione degli Attributi tra I e II livello, se prevista, e l’ordinamento degli Attributi come definito dal parametro ``data_capabilities.available_claims_order`` all’interno del registry:`Registro delle Fonti Autentiche`. In particolare, la Fornitore di Wallet:
+- DEVE mostrare in modo chiaro e accessibile il **nome dell’EAA** così come definito dal parametro ``credential_name`` all’interno del :ref:`registry:Catalogo degli Attestati Elettronici`;
+- DEVE mostrare in modo chiaro e accessibile tutti gli **Attributi dell’EAA** rispettando la macro-struttura predefinita a livello di Vista di Dettaglio, la suddivisione degli Attributi tra I e II livello, se prevista, e l’ordinamento degli Attributi come definito dal parametro ``data_capabilities.available_claims_order`` all’interno del :ref:`registry:Registro delle Fonti Autentiche`. In particolare, la Fornitore di Wallet:
 
   - DEVE rappresentare l’EAA secondo la struttura predefinita:
 
@@ -443,8 +443,8 @@ Il Fornitore di Wallet:
     - Attributi II livello (opzionali)
     - Metadati
 
-- DEVE includere il **logo della Fonte Autentica** e/o il **logo dell’EAA** specifico se forniti dalla Fonte Autentica per mezzo del registry:`Registro delle Fonti Autentiche`;
-- DEVE garantire l’adozione del colore dell’EAA definito dalla Fonte Autentica se indicato all’interno del registry:`Registro delle Fonti Autentiche` a livello di tonalità colore (H). Il Wallet Provider PUÒ ottimizzare i valori di saturazione (S) e luminosità (B) per adattare il colore specifico ad esigenze legate all’accessibilità e/o alle scelte grafiche di prodotto della propria Soluzione Wallet. Qualora la Fonte Autentica non fornisca specifiche cromatiche, il Wallet Provider è tenuto a definire e adottare proprie scelte grafiche di default. 
+- DEVE includere il **logo della Fonte Autentica** e/o il **logo dell’EAA** specifico se forniti dalla Fonte Autentica per mezzo del :ref:`registry:Registro delle Fonti Autentiche`;
+- DEVE garantire l’adozione del colore dell’EAA definito dalla Fonte Autentica se indicato all’interno del :ref:`registry:Registro delle Fonti Autentiche` a livello di tonalità colore (H). Il Wallet Provider PUÒ ottimizzare i valori di saturazione (S) e luminosità (B) per adattare il colore specifico ad esigenze legate all’accessibilità e/o alle scelte grafiche di prodotto della propria Soluzione Wallet. Qualora la Fonte Autentica non fornisca specifiche cromatiche, il Wallet Provider è tenuto a definire e adottare proprie scelte grafiche di default. 
 
 Il Fornitore di Wallet è il responsabile ultimo della resa grafica degli Attestati Elettronici di Attributi nelle proprie Soluzioni Wallet. Pertanto, per garantire un elevato livello di accessibilità [RIF_ACCESSIBILITÀ] e usabilità [LG_DESIGN], di seguito sono riportati ulteriori requisiti di Esperienza Utente. In particolare, il Fornitore di Wallet: 
 

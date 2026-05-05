@@ -340,7 +340,7 @@ Designing and implementing an Electronic Attestation of Attributes properly is e
 - The Wallet Provider is responsible for presenting the Electronic Attestation of Attributes in accordance with: 
 
  - the provisions set out in these Technical Specifications, with a view to ensuring system consistency and adherence to the principles of usability [GL_DESIGN] and accessibility [REF_ACCESSIBILITY];  
- - the provisions of the Authentic Sources Registry and the Digital Credentials Catalog (see registry:`Register Infrastructure`);  
+ - the provisions of the Authentic Sources Registry and the Digital Credentials Catalog (see :ref:`registry:Registry Infrastructure`);  
  - the UX/UI design of their Wallet Solution.  
 
 In order to guide the Authentic Source in designing and the Wallet Provider in accurately representing an EAA, below are the elements to be considered and the structure to be adopted at the Detail View level: 
@@ -385,7 +385,7 @@ In order to guide the Authentic Source in designing and the Wallet Provider in a
 
     Example of Electronic Attestation of Attributes layout, Detail View.
 
-Below are the detailed requirements for the design and the representation of EAA within the Wallet Solutions (see :ref:registry:`Authentic Source Registry` and :ref:registry:`Digital Credentials Catalog`). In particular: 
+Below are the detailed requirements for the design and the representation of EAA within the Wallet Solutions (see :ref:`registry:Authentic Source Registry` and :ref:`registry:Digital Credentials Catalog`). In particular: 
 
 The Authentic Source: 
 
@@ -435,9 +435,9 @@ The Authentic Source:
 
 The Wallet Provider: 
 
-- MUST clearly and accessibly display the identifying **EAA name** as defined by the ``credential_name`` parameter within the :ref:registry:`Digital Credentials Catalog`; 
+- MUST clearly and accessibly display the identifying **EAA name** as defined by the ``credential_name`` parameter within the :ref:`registry:Digital Credentials Catalog`; 
 
-- MUST clearly and accessibly display the **EAA Attributes**, respecting the predefined macro-structure of the Detail View, the division of Attributes into level I and level II (where available), and the data ordering as defined by the parameter ``data_capabilities.available_claims_order`` within the :ref:registry:`Authentic Source Registry`. In particular, the Wallet Provider: 
+- MUST clearly and accessibly display the **EAA Attributes**, respecting the predefined macro-structure of the Detail View, the division of Attributes into level I and level II (where available), and the data ordering as defined by the parameter ``data_capabilities.available_claims_order`` within the :ref:`registry:Authentic Source Registry`. In particular, the Wallet Provider: 
 
  - MUST represent the EAA in accordance with the predefined structure:  
   - EAA name; 
@@ -446,9 +446,9 @@ The Wallet Provider:
   - Level II Attributes (optional); 
   - Metadata. 
 
- - MUST include the **Authentic Source’s logo** and/or the specific **EAA logo** if provided by the Authentic Source through the :ref:registry:`Authentic Sources Registry`; 
+ - MUST include the **Authentic Source’s logo** and/or the specific **EAA logo** if provided by the Authentic Source through the :ref:`registry:Authentic Source Registry`; 
 
- - MUST ensure the adoption of the **EAA color** defined by the Authentic Source, if specified within the :ref:registry:`Authentic Source Registry`, at the hue (H) level. The Wallet Provider MAY optimize saturation (S) and brightness (B) values to adapt the specific color to accessibility requirements and/or to the graphical design choices of its Wallet Solution. If the Authentic Source does not provide color specifications, the Wallet Provider is required to define and adopt its own default graphical choices. 
+ - MUST ensure the adoption of the **EAA color** defined by the Authentic Source, if specified within the :ref:`registry:Authentic Source Registry`, at the hue (H) level. The Wallet Provider MAY optimize saturation (S) and brightness (B) values to adapt the specific color to accessibility requirements and/or to the graphical design choices of its Wallet Solution. If the Authentic Source does not provide color specifications, the Wallet Provider is required to define and adopt its own default graphical choices. 
 
 The Wallet Provider is the ultimate responsible party for the visual presentation of the Electronic Attestation of Attributes within its Wallet Solutions. Therefore, to ensure a high level of accessibility [REF_ACCESSIBILITY] and usability [GL_DESIGN], further user experience requirements are set out below. In particular, the Wallet Provider: 
 
