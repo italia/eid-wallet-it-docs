@@ -25,7 +25,7 @@ La specifica è organizzata nelle seguenti sezioni principali:
 **Sezione** :ref:`trust-infrastructure:L'Infrastruttura di Trust`:
   Definisce il modello di trust basato sulla federazione, le relazioni tra entità e i meccanismi di valutazione della fiducia che proteggono l'intero ecosistema.
 
-**Sezione** :ref:`Entità`: 
+**Sezione** :ref:`entities:Entità`: 
   Requisiti di implementazione completi per ogni partecipante all'ecosistema: Soluzioni Wallet, Fornitori di Credenziali, Relying Party e Fonti Autentiche, inclusi i loro componenti, modelli di interazione e requisiti di configurazione.
 
 **Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`: 
@@ -94,7 +94,7 @@ L’Authentic Source è il proprietario del dato. Il suo ruolo è garantire che 
 
 - **Sezione** :ref:`functionalities:Design dell'Esperienza Utente`: per conoscere le modalità di ottenimento degli Attestati Elettronici da parte dell’utente (riferimento al paragrafo :ref:`functionalities:Ottenimento degli Attestati Elettronici di Attributi`). 
 
-- **Sezione** :ref:`Entità`: per conoscere i requisiti di implementazione e in particolare gli attributi necessari per fornire l'Attestato Elettronico richiesto dall'Utente (riferimento a paragrafo :ref:`authentic-sources:Fonti Autentiche`) 
+- **Sezione** :ref:`entities:Entità`: per conoscere i requisiti di implementazione e in particolare gli attributi necessari per fornire l'Attestato Elettronico richiesto dall'Utente (riferimento a paragrafo :ref:`authentic-sources:Fonti Autentiche`) 
 
 **Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`:  per conoscere come i dati autorevoli e gli attributi diventano Credenziali Elettroniche e in cosa consiste il loro ciclo di vita.
 
@@ -145,7 +145,7 @@ Il Wallet Provider è colui che progetta il portafoglio digitale, pubblico o pri
 
 - **Sezione** :ref:`functionalities:Design dell'Esperienza Utente`: per progettare interfacce semplici e sicure garantendo che l’esperienza utente sia immediata e intuitiva. 
 
-- **Sezione** :ref:`Entità`: per conoscere i requisiti di implementazione e gli attributi necessari per configurare la propria entità (riferimento al paragrafo :ref:`Soluzione Wallet`). 
+- **Sezione** :ref:`entities:Entità`: per conoscere i requisiti di implementazione e gli attributi necessari per configurare la propria entità (riferimento al paragrafo :ref:`Soluzione Wallet`). 
 
 **Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`: per progettare come l'App gestirà tecnicamente il ciclo di vita dei dati (archiviazione protetta e presentazione). 
 
@@ -196,7 +196,7 @@ Il Credential Issuer è il fornitore tecnico delle credenziali. Il suo compito p
 
 - **Sezione** :ref:`functionalities:Design dell'Esperienza Utente`: per conoscere i requisiti funzionali di alto livello a supporto dell’Esperienza Utente in tutte le fasi di interazione tra l’Utente e il servizio. 
 
-- **Sezione** :ref:`Entità`: per conoscere i requisiti di implementazione e gli attributi necessari per configurare il proprio profilo di Issuer (riferimento ai paragrafi :ref:`Soluzione del Fornitore di Attestati Elettronici` e :ref:`aFonti Autentiche`).
+- **Sezione** :ref:`entities:Entità`: per conoscere i requisiti di implementazione e gli attributi necessari per configurare il proprio profilo di Issuer (riferimento ai paragrafi :ref:`Soluzione del Fornitore di Attestati Elettronici` e :ref:`aFonti Autentiche`).
 
 **Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`:  per conoscere i requisiti tecnici necessari per la progettazione e gestione degli attestati e il loro ciclo di vita. 
 
