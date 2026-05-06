@@ -41,8 +41,8 @@
                 "S256"
             ],
             "acr_values_supported": [
-                "https://trust-registry.it-wallet.example.it/loa/substantial",
-                "https://trust-registry.it-wallet.example.it/loa/high"
+                "https://trust-anchor.example.it/loa/substantial",
+                "https://trust-anchor.example.it/loa/high"
             ],
             "scopes_supported": [
                 "EuropeanDisabilityCard",

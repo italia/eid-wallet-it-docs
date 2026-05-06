@@ -156,7 +156,7 @@ Il payload JWT contiene i seguenti claim. Salvo diversamente specificato, i segu
         Include i seguenti sotto-valori:
 
           * ``trust_framework``: OBBLIGATORIO. *Stringa* che identifica il trust framework utilizzato per l'autenticazione dell'Utente. DEVE essere impostato utilizzando uno dei valori descritti nella mappa `trust_frameworks_supported` fornita nei Metadata del Fornitore di Attestati Elettronici.
-          * ``assurance_level``: OBBLIGATORIO. *Stringa* che identifica il livello di garanzia dell'identità garantito durante il processo di autenticazione dell'Utente.
+          * ``assurance_level``: OBBLIGATORIO. *Stringa* che identifica il livello di garanzia dell'identità garantito durante il processo di autenticazione dell'Utente. Il valore DEVE corrispondere a uno dei valori mappati nell'array ``acr_values_supported`` presente nel :ref:`credential-issuer-metadata:Metadata del Fornitore di Attestati Elettronici`.
 
       - Estensione domestica.
     * - **_sd**
@@ -492,7 +492,7 @@ I seguenti **elementIdentifiers** che rappresentano attributi metadata format-en
      - *(map, OPZIONALE)*. Identificativo del dato format-encoded `verification` come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`. La CBOR map include i seguenti membri:
 
          * ``trust_framework`` *(tstr, OBBLIGATORIO)*: trust framework utilizzato per l'autenticazione dell'Utente.
-         * ``assurance_level`` *(tstr, OBBLIGATORIO)*: livello di garanzia dell'identità garantito durante l'autenticazione dell'Utente.
+         * ``assurance_level`` *(tstr, OBBLIGATORIO)*: livello di garanzia dell'identità garantito durante l'autenticazione dell'Utente. Il valore DEVE corrispondere a uno dei valori mappati nell'array ``acr_values_supported`` presente nel :ref:`credential-issuer-metadata:Metadata del Fornitore di Attestati Elettronici`.
 
      - Estensione domestica.
 
