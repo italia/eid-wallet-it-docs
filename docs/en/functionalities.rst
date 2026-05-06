@@ -642,7 +642,82 @@ The Authentication process can be carried out using both the same-device and cro
 
 From a User Experience perspective, the Authentication process differs from the Presentation process only in how it is initiated, which is through a dedicated `Authentication Button`_.
 
-To ensure a consistent and seamless Authentication process across all Relying Parties, each Relying Party MUST follow the visual and User Experience requirements outlined below, together with compliance with [REF_ACCESSIBILITY] and, in the case of public entities, with [GL_DESIGN]
+To ensure a consistent and seamless Authentication process across all Relying Parties, each Relying Party MUST follow the visual and User Experience requirements outlined below, together with compliance with [REF_ACCESSIBILITY] and, in the case of public entities, with [GL_DESIGN].
+
+Both flows are shown below with illustrative wireframes.
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/Authentication-same-device.svg
+    :alt: Example of same-device Authentication User Experience
+    :width: 100%
+    :align: center
+
+    Example of same-device Authentication User Experience.
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Authentication-same-device-01.pdf
+    :alt: Example of same-device Authentication User Experience - 01
+    :width: 100%
+    :align: center
+
+    Example of same-device Authentication User Experience - 01
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Authentication-same-device-02.pdf
+    :alt: Example of same-device Authentication User Experience - 02
+    :width: 100%
+    :align: center
+
+    Example of same-device Authentication User Experience - 02
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/Authentication-cross-device.svg
+    :alt: Example of cross-device Authentication User Experience
+    :width: 100%
+    :align: center
+
+    Example of cross-device Authentication User Experience.
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Authentication-cross-device-01.pdf
+    :alt: Example of cross-device Authentication User Experience - 01
+    :width: 100%
+    :align: center
+
+    Example of cross-device Authentication User Experience - 01
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Authentication-cross-device-02.pdf
+    :alt: Example of cross-device Authentication User Experience - 02
+    :width: 100%
+    :align: center
+
+    Example of cross-device Authentication User Experience - 02
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Authentication-cross-device-03.pdf
+    :alt: Example of cross-device Authentication User Experience - 03
+    :width: 100%
+    :align: center
+
+    Example of cross-device Authentication User Experience - 03
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Authentication-cross-device-04.pdf
+    :alt: Example of cross-device Authentication User Experience - 04
+    :width: 100%
+    :align: center
+
+    Example of cross-device Authentication User Experience - 04
+
 
 Relying Parties SHOULD use the :ref:`official-resources:Official Resources` for design and development. If a Relying Party does not intend to use such open source resources, it MAY independently develop the Technical Solutions enabling the Authentication flow, ensuring that it follows the specifications herein provided.
 
@@ -841,79 +916,6 @@ The Relying Party implementing the page:
 - MUST ensure that the copy on the page mirrors that reported in the :ref:`official-resources:Official Resources`;
 - MUST include one or more Call To Action guiding the User toward the appropriate next step (e.g., retry, contact support, etc.).
 
-Both flows are shown below with illustrative wireframes.
-
-.. only:: format_html
-
-  .. figure:: ./images/svg/Authentication-same-device.svg
-    :alt: Example of same-device Authentication User Experience
-    :width: 100%
-    :align: center
-
-    Example of same-device Authentication User Experience.
-
-.. only:: format_latex
-
-  .. figure:: ./images/pdf/A4-Authentication-same-device-01.pdf
-    :alt: Example of same-device Authentication User Experience - 01
-    :width: 100%
-    :align: center
-
-    Example of same-device Authentication User Experience - 01
-
-.. only:: format_latex
-
-  .. figure:: ./images/pdf/A4-Authentication-same-device-02.pdf
-    :alt: Example of same-device Authentication User Experience - 02
-    :width: 100%
-    :align: center
-
-    Example of same-device Authentication User Experience - 02
-
-.. only:: format_html
-
-  .. figure:: ./images/svg/Authentication-cross-device.svg
-    :alt: Example of cross-device Authentication User Experience
-    :width: 100%
-    :align: center
-
-    Example of cross-device Authentication User Experience.
-
-.. only:: format_latex
-
-  .. figure:: ./images/pdf/A4-Authentication-cross-device-01.pdf
-    :alt: Example of cross-device Authentication User Experience - 01
-    :width: 100%
-    :align: center
-
-    Example of cross-device Authentication User Experience - 01
-
-.. only:: format_latex
-
-  .. figure:: ./images/pdf/A4-Authentication-cross-device-02.pdf
-    :alt: Example of cross-device Authentication User Experience - 02
-    :width: 100%
-    :align: center
-
-    Example of cross-device Authentication User Experience - 02
-
-.. only:: format_latex
-
-  .. figure:: ./images/pdf/A4-Authentication-cross-device-03.pdf
-    :alt: Example of cross-device Authentication User Experience - 03
-    :width: 100%
-    :align: center
-
-    Example of cross-device Authentication User Experience - 03
-
-.. only:: format_latex
-
-  .. figure:: ./images/pdf/A4-Authentication-cross-device-04.pdf
-    :alt: Example of cross-device Authentication User Experience - 04
-    :width: 100%
-    :align: center
-
-    Example of cross-device Authentication User Experience - 04
 
 Authentication Button
 ~~~~~~~~~~~~~~~~~~~~~~
