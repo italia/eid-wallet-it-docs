@@ -378,7 +378,7 @@ Di seguito alcuni esempi non normativi di dicitura dell'Engagement Button:
 
 - Entra con IT-Wallet / Login with IT-Wallet (vedere `Authentication Button`_) 
 
-- Aggiungi a IT-Wallet / Add to IT-Wallet (vedere :ref:`functionalities:Ottenimento da Touchpoint di Fonte Autentica`) 
+- Aggiungi a IT-Wallet / Add to IT-Wallet (vedere :ref:`functionalities:Ottenimento dal Touchpoint della Fonte Autentica`) 
 
 - Verifica con IT-Wallet / Verify with IT-wallet (vedere :ref:`functionalities:Presentazione da remoto`)
 
