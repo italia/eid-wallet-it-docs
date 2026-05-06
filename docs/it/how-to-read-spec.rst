@@ -251,7 +251,7 @@ Il Relying Party è l'utilizzatore finale delle credenziali. Il suo compito è t
 
 - **Sezione** :ref:`functionalities:Design dell'Esperienza Utente`: per conoscere i requisiti funzionali di alto livello a supporto dell’Esperienza Utente in tutte le fasi di interazione tra l’Utente e il servizio.  
 
-- **Sezione** :ref:entities:`Entità`: per conoscere i requisiti di implementazione e gli attributi necessari per configurare il profilo del Verificatore (riferimento al paragrafo :ref:`Soluzione di Relying Party`). 
+- **Sezione** :ref:`entities:Entità`: per conoscere i requisiti di implementazione e gli attributi necessari per configurare il profilo del Verificatore (riferimento al paragrafo :ref:`Soluzione di Relying Party`). 
 
 **Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`: per comprendere quali sono i formati delle Credenziali Elettroniche e verifica della validità. 
 
