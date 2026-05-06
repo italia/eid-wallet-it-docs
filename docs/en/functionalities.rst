@@ -316,6 +316,27 @@ The flow is shown below with illustrative wireframes.
 
     Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source, cross device - 04
 
+Following is represented for illustrative purposesthe page withthe `Engagement Button`_, together with the Selection Page and the QR Code Page with the interface elements and texts updated according to the `Issuance from the Touchpoint of the Authentic Source`_. 
+
+.. only:: format_html 
+ 
+.. figure:: ./images/svg/Credential-offer-ENG.svg 
+   :alt: Illustrative page with Engagement Button, Selection page and QR code page for the credential offer
+   :width: 100% 
+   :align: center 
+ 
+   Illustrative page with Engagement Button, Selection page and QR code page for the credential offer
+
+ 
+.. only:: format_latex 
+ 
+.. figure:: ./images/pdf/Credential-offer-ENG.pdf 
+   :alt: Illustrative page with Engagement Button, Selection page and QR code page for the credential offer
+   :width: 100% 
+ 
+   Illustrative page with Engagement Button, Selection page and QR code page for the credential offer
+
+
 Engagement Button
 ^^^^^^^^^^^^^^^^^^
 
