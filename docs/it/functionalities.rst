@@ -621,7 +621,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
     Esempio di Esperienza Utente nella presentazione da remoto, cross-device - 03
 
-Di seguito è rappresentata a titolo esemplificativo la pagina con l’Engagement Button_, oltre alla Selection Page, alla QR Code Page e alla Thank You Page con gli elementi dell’interfaccia e i testi adattati al flusso di `Presentazione da remoto`_. 
+Di seguito è rappresentata a titolo esemplificativo la pagina con l’`Engagement Button`_, oltre alla Selection Page, alla QR Code Page e alla Thank You Page con gli elementi dell’interfaccia e i testi adattati al flusso di `Presentazione da remoto`_. 
 
 .. only:: format_html 
  
