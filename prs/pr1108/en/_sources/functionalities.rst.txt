@@ -139,15 +139,7 @@ The IT-Wallet ID Official Resource is provided in the related :ref:`official-res
 Issuance of Electronic Attestations of Attributes
 --------------------------------------------------
 
-Once activation is complete, the User MAY request and obtain one or more Electronic Attestations of Attributes within their Wallet Instance.
-
-The Electronic Attestations of Attributes is a dynamic object that enables the User to demonstrate or certify in a reliable and verifiable manner, a condition, status or right, based on the information it contains. In particular, the Electronic Attestations of Attributes: 
-
-- **is defined by an Authentic Source**, the entity holding the source data; 
-
-- **consists of a set of Attributes**, the granular data that define it (no static images or PDFs), such as, for example, a characteristic (e.g. “resident”) ora a status (e.g. “student”); 
-
-- **is issued by a Provider of Electronic Attestation of Attributes**, the entity that emits it on the basis of the information acquired and manages its lifecycle. 
+Once activation is complete, the User MAY obtain one or more Electronic Attestations of Attributes within their Wallet Instance.
 
 Depending on the User's specific needs, the type of Electronic Attestation of Attributes, and the offerings available from the Wallet Provider, the Electronic Attestation of Attributes Provider, and the Authentic Source, the request of Electronic Attestations of Attributes can occur in two ways:
 
@@ -380,132 +372,48 @@ Below are some non-mandatory examples of Engagement Button labels:
 Focus on Electronic Attestations of Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Designing and implementing an Electronic Attestation of Attributes properly is essential to bring real value to the entire system. In this regard, the role of the Authentic Source and the Wallet Provider is crucial.
+The graphical representation of EAA within Wallet Solutions depends, at the level of specific content and UI aspects, on what is defined in the Authentic Source Registry and in the Digital Credentials Catalog (see :ref:registry:Registry Infrastructure). 
 
-- The Authentic Source is responsible for designing all the core features of the Electronic Attestation of Attributes in terms of:  
+Below are the requirements for the representation of EAA within Wallet Solutions (see :ref:registry:Authentic Source Registry and :ref:registry:Digital Credentials Catalog). In particular: 
 
- - **opportunity and perceived value**: what the EAA can attest, in which contexts of use and by whom; 
- - **ease of understanding**: how simple and intuitive it is for those who use it and for those who verify it; 
- - **communicative effectiveness**: how recognizable or reliable it is perceived to be by those who use or verify it. 
+The Autentic Source: 
 
+- MAY provide the **Authentic Source’s logo** in two versions, a compact version via the `organization_info.logo_uri` parameter and an extended version via the `organization_info.logo_extended_uri` parameter. In particular, the Authentic Source: 
 
-- The Wallet Provider is responsible for presenting the Electronic Attestation of Attributes in accordance with: 
+ - MUST provide the logo only in one of the following formats: ``image/png``, ``image/svg+xml``, or ``image/webp``; 
+ - MUST provide the logo in both a positive and a negative version, if available; 
+ - MUST provide the logo with a minimum size of 30 × 30 pixels and a maximum size of 60 x 60 pixels, in its compact version; 
+ - MUST provide the logo with an aspect ratio of 1:1, in its compact version; 
+ - MUST provide the logo which does not exceed the maximum file size of 80 KB, in its compact version; 
+ - MUST provide the logo with a minimum size of 200 × 30 pixels and a maximum size of 650 × 180 pixels, in its extended version; 
+ - MUST provide the logo which does not exceed the maximum file size of 150 KB, in its extended version. 
 
- - the provisions set out in these Technical Specifications, with a view to ensuring system consistency and adherence to the principles of usability [GL_DESIGN] and accessibility [REF_ACCESSIBILITY];  
- - the provisions of the Authentic Sources Registry and the Digital Credentials Catalog (see :ref:`registry:Registry Infrastructure`);  
- - the UX/UI design of their Wallet Solution.  
+- MAY provide a **distinctive logo** associated with a specific EAA via the `data_capabilities.logo_uri` parameter. In particular, the Authentic Source: 
 
-In order to guide the Authentic Source in designing and the Wallet Provider in accurately representing an EAA, below are the elements to be considered and the structure to be adopted at the Detail View level: 
+ - MUST provide the logo only in one of the following formats: ``image/png``, ``image/svg+xml``, or ``image/webp``; 
+ - MUST provide the logo in both a positive and a negative version, if available; 
+ - MUST provide the logo with a minimum size of 200 × 30 pixels and a maximum size of 650 × 180 pixels; 
+ - MUST provide the logo with a maximum file size of 150 KB. 
 
-- **EAA name**, which is the official, distinctive and human-readable name of an EAA; 
+- MAY define a distinctive **color** to be associated with a specific EAA via the `data_capabilities.background_color` parameter. In particular, the Authentic Source: 
 
-- **Identification Attributes** (if available), the User’s basic personal details in the following order:  
+ - MUST provide the background color only using one of the following color modes: HEX, HSB, RGB, sRGB, HSL, or HSV.
 
- - Given name  
- - Last name 
- - Tax code 
- - Date of birth  
- - Place of birth  
- - Etc. 
+- MUST define the data order that characterize a specific EAA via ``data_capabilities.available_claims.order`` parameter. In particular, the Authentic Source: 
 
-- **Level I Attributes**, which are the data that represent and identify the specific type of EAA (e.g. driving licence number, category, expiry date, etc.) 
+ - MUST firstly provide personal details, if included, in the following order: first name, last name, date of birth, place of birth, tax code, etc; 
+ - MUST provide additional specific details following a logical order that is clear to the User. 
 
-- **Level II Attributes** (if available), which are detailed data used to describe or elaborate on a specific Level I Attribute. These Level II Attributes may be structured as:  
-
- - **List of descriptions**, which is a list of values relating to the same object;  
- - **List of Attributes with value**, which is a list of additional objects with associated values;  
-
-- **Metadata**, which are data identifying the details of the EAA at the level of:  
-
- - **Authentic Source name**, which is the identifying name of the data owner or the official database holding the information behind the EAA, defined by the parameter ``data_capabilities.data_origin``;  
- - **Provider of Electronic Attestation of Attributes name**, which is the identifying name of the entity that creates and issues the EAA, defined by the parameter ``organization_name``. 
-
-.. only:: format_html
-
-  .. figure:: ./images/svg/Focus-EAA-I-II-Level-ENG.svg
-    :alt: Example of Electronic Attestation of Attributes layout, Detail View  
-    :width: 100%
-    :align: center
-
-    Example of Electronic Attestation of Attributes layout, Detail View.
-
-.. only:: format_latex
-
-  .. figure:: ./images/pdf/A4-focus-EAA-I-II-Level-ENG.pdf
-    :alt: Example of Electronic Attestation of Attributes layout, Detail View    
-    :width: 100%
-
-    Example of Electronic Attestation of Attributes layout, Detail View.
-
-Below are the detailed requirements for the design and the representation of EAA within the Wallet Solutions (see :ref:`registry:Authentic Source Registry` and :ref:`registry:Digital Credentials Catalog`). In particular: 
-
-The Authentic Source: 
-
-- MUST specify the **EAA name** using the ``credential_name`` parameter. In particular, the Authentic Source:
-
-  - MUST use terms or phrases that correspond to or are similar to the name of any pre-existing version of the document to which the EAA corresponds, so as to facilitate recognition by the User;
-  - MUST use clear and simple terms, avoiding anglicisms, acronyms or technical terms where possible;
-  - SHOULD define a short and concise name.
-
-- MUST specify the data owner or data source name using the parameter ``data_capabilities.data_origin``. In particular, the Authentic Source:
-
-  - MUST use the official name to ensure maximum recognisability and trust by the User;
-  - MUST follow the structure “[Acronym] - [Name]” if it wishes to use an acronym alongside the full name (e.g. “ANIS - National Register of higher education”);
-  - MAY follow the structure “[Primary entity acronym] - [Secondary entity name]” if it is useful to separate the acronym from the full name in order to add a further level of detail and enhance the recognisability and sense of reliability of the entity in charge (e.g. “MIT - General Directorate for Motor Vehicles”).
-
-- MAY provide the **Authentic Source’s logo** in two versions, a compact version via the ``organization_info.logo_uri`` parameter and an extended version via the ``organization_info.logo_extended_uri`` parameter. In particular, the Authentic Source:
-
-  - MUST provide the logo only in one of the following formats: ``image/png``, ``image/svg+xml``, or ``image/webp``;
-  - MUST provide the logo in both a positive and a negative version, if available;
-  - MUST provide the logo with a minimum size of 30 × 30 pixels and a maximum size of 60 x 60 pixels, in its compact version;
-  - MUST provide the logo with an aspect ratio of 1:1, in its compact version;
-  - MUST provide the logo which does not exceed the maximum file size of 80 KB, in its compact version;
-  - MUST provide the logo with a minimum size of 200 × 30 pixels and a maximum size of 650 × 180 pixels, in its extended version;
-  - MUST provide the logo which does not exceed the maximum file size of 150 KB, in its extended version.
-
-- MAY provide a distinctive **EAA logo** via the ``data_capabilities.logo_uri`` parameter. In particular, the Authentic Source:
-
-  - MUST provide the logo only in one of the following formats: ``image/png``, ``image/svg+xml``, or ``image/webp``;
-  - MUST provide the logo in both a positive and a negative version, if available;
-  - MUST provide the logo with a minimum size of 200 × 30 pixels and a maximum size of 650 × 180 pixels;
-  - MUST provide the logo with a maximum file size of 150 KB.
-
-- MAY define a distinctive **EAA color** to be associated with a specific EAA via the ``data_capabilities.background_color`` parameter. In particular, the Authentic Source:
-
-  - MUST provide the background color only using one of the following color modes: HEX, HSB, RGB, sRGB, HSL, or HSV.
-
-- MUST specify the desired **Attributes order** via the ``data_capabilities.available_claims.order`` parameter. In particular, the Authentic Source:
-
-  - MUST order the data according to the default structure:
-
-    - Identification Attributes (optional);
-    - Level I Attributes;
-    - Level II Attributes (optional);
-
-  - MUST not exceed two levels of nesting in the organisation of attributes;
-  - SHOULD NOT exceed a maximum of 15 Attributes per level;
-  - SHOULD NOT exceed a maximum of 85 characters for Attribute values;
-  - SHOULD NOT exceed a maximum of 181 characters for the value of each description in the case of Level II Attributes with a “list of descriptions”.
+To ensure a consistent identification and representation of the EAAs across different Wallet Solutions, the Electronic Attestation of Attributes Provider MUST define a name/naming convention for each EAA provided, that is comprehensible and user-friendly, thus avoiding technical terms or acronyms whenever possible.  
 
 The Wallet Provider: 
 
-- MUST clearly and accessibly display the identifying **EAA name** as defined by the ``credential_name`` parameter within the :ref:`registry:Digital Credentials Catalog`; 
+- MUST clearly and accessibly display the identifying name of the EAA as defined by the `credential_name` parameter within the :ref:registry:Digital Credentials Catalog; 
+- MUST clearly and accessibly display the EAA Attributes, respecting the ordering defined by the `data_capabilities.available_claims_order` parameter within the :ref:registry:Authentic Source Registry; 
+- MUST include any identifying logos of the Authentic Source and/or of the specific EAA if provided by the Authentic Source through the :ref:registry:Authentic Sources Registry; 
+- MUST ensure the adoption of the color defined by the Authentic Source, if specified within the :ref:registry:Authentic Source Registry, at the hue (H) level. The Wallet Provider MAY optimize saturation (S) and brightness (B) values to adapt the specific color to accessibility requirements and/or to the graphical design choices of its Wallet Solution. If the Authentic Source does not provide color specifications, the Wallet Provider is required to define and adopt its own default graphical choices. 
 
-- MUST clearly and accessibly display the **EAA Attributes**, respecting the predefined macro-structure of the Detail View, the division of Attributes into level I and level II (where available), and the data ordering as defined by the parameter ``data_capabilities.available_claims_order`` within the :ref:`registry:Authentic Source Registry`. In particular, the Wallet Provider:
-
-  - MUST represent the EAA in accordance with the predefined structure:
-
-    - EAA name;
-    - Identification Attributes (optional);
-    - Level I Attributes;
-    - Level II Attributes (optional);
-    - Metadata.
-
-  - MUST include the **Authentic Source’s logo** and/or the specific **EAA logo** if provided by the Authentic Source through the :ref:`registry:Authentic Source Registry`;
-
-  - MUST ensure the adoption of the **EAA color** defined by the Authentic Source, if specified within the :ref:`registry:Authentic Source Registry`, at the hue (H) level. The Wallet Provider MAY optimize saturation (S) and brightness (B) values to adapt the specific color to accessibility requirements and/or to the graphical design choices of its Wallet Solution. If the Authentic Source does not provide color specifications, the Wallet Provider is required to define and adopt its own default graphical choices.
-
-The Wallet Provider is the ultimate responsible party for the visual presentation of the Electronic Attestation of Attributes within its Wallet Solutions. Therefore, to ensure a high level of accessibility [REF_ACCESSIBILITY] and usability [GL_DESIGN], further user experience requirements are set out below. In particular, the Wallet Provider: 
+The Wallet Provider is responsible for the graphical representation of the Electronic Attestation of Attributes within its Wallet Solutions and MUST ensure high level of accessibility [REF_ACCESSIBILITY] and usability [GL_DESIGN] in their representation. Below are illustrated the User Experience requirements. In particular, the Wallet Provider: 
 
 - MUST correctly display the EAA across all devices, ensuring a consistent experience on screens of varying sizes; 
 - MAY display the EAAs issued in the form of cards stacked in a list in the Preview View, in line with approaches already used by other digital wallets in the market; 
@@ -734,7 +642,82 @@ The Authentication process can be carried out using both the same-device and cro
 
 From a User Experience perspective, the Authentication process differs from the Presentation process only in how it is initiated, which is through a dedicated `Authentication Button`_.
 
-To ensure a consistent and seamless Authentication process across all Relying Parties, each Relying Party MUST follow the visual and User Experience requirements outlined below, together with compliance with [REF_ACCESSIBILITY] and, in the case of public entities, with [GL_DESIGN]
+To ensure a consistent and seamless Authentication process across all Relying Parties, each Relying Party MUST follow the visual and User Experience requirements outlined below, together with compliance with [REF_ACCESSIBILITY] and, in the case of public entities, with [GL_DESIGN].
+
+Both flows are shown below with illustrative wireframes.
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/Authentication-same-device.svg
+    :alt: Example of same-device Authentication User Experience
+    :width: 100%
+    :align: center
+
+    Example of same-device Authentication User Experience.
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Authentication-same-device-01.pdf
+    :alt: Example of same-device Authentication User Experience - 01
+    :width: 100%
+    :align: center
+
+    Example of same-device Authentication User Experience - 01
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Authentication-same-device-02.pdf
+    :alt: Example of same-device Authentication User Experience - 02
+    :width: 100%
+    :align: center
+
+    Example of same-device Authentication User Experience - 02
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/Authentication-cross-device.svg
+    :alt: Example of cross-device Authentication User Experience
+    :width: 100%
+    :align: center
+
+    Example of cross-device Authentication User Experience.
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Authentication-cross-device-01.pdf
+    :alt: Example of cross-device Authentication User Experience - 01
+    :width: 100%
+    :align: center
+
+    Example of cross-device Authentication User Experience - 01
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Authentication-cross-device-02.pdf
+    :alt: Example of cross-device Authentication User Experience - 02
+    :width: 100%
+    :align: center
+
+    Example of cross-device Authentication User Experience - 02
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Authentication-cross-device-03.pdf
+    :alt: Example of cross-device Authentication User Experience - 03
+    :width: 100%
+    :align: center
+
+    Example of cross-device Authentication User Experience - 03
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Authentication-cross-device-04.pdf
+    :alt: Example of cross-device Authentication User Experience - 04
+    :width: 100%
+    :align: center
+
+    Example of cross-device Authentication User Experience - 04
+
 
 Relying Parties SHOULD use the :ref:`official-resources:Official Resources` for design and development. If a Relying Party does not intend to use such open source resources, it MAY independently develop the Technical Solutions enabling the Authentication flow, ensuring that it follows the specifications herein provided.
 
@@ -933,79 +916,6 @@ The Relying Party implementing the page:
 - MUST ensure that the copy on the page mirrors that reported in the :ref:`official-resources:Official Resources`;
 - MUST include one or more Call To Action guiding the User toward the appropriate next step (e.g., retry, contact support, etc.).
 
-Both flows are shown below with illustrative wireframes.
-
-.. only:: format_html
-
-  .. figure:: ./images/svg/Authentication-same-device.svg
-    :alt: Example of same-device Authentication User Experience
-    :width: 100%
-    :align: center
-
-    Example of same-device Authentication User Experience.
-
-.. only:: format_latex
-
-  .. figure:: ./images/pdf/A4-Authentication-same-device-01.pdf
-    :alt: Example of same-device Authentication User Experience - 01
-    :width: 100%
-    :align: center
-
-    Example of same-device Authentication User Experience - 01
-
-.. only:: format_latex
-
-  .. figure:: ./images/pdf/A4-Authentication-same-device-02.pdf
-    :alt: Example of same-device Authentication User Experience - 02
-    :width: 100%
-    :align: center
-
-    Example of same-device Authentication User Experience - 02
-
-.. only:: format_html
-
-  .. figure:: ./images/svg/Authentication-cross-device.svg
-    :alt: Example of cross-device Authentication User Experience
-    :width: 100%
-    :align: center
-
-    Example of cross-device Authentication User Experience.
-
-.. only:: format_latex
-
-  .. figure:: ./images/pdf/A4-Authentication-cross-device-01.pdf
-    :alt: Example of cross-device Authentication User Experience - 01
-    :width: 100%
-    :align: center
-
-    Example of cross-device Authentication User Experience - 01
-
-.. only:: format_latex
-
-  .. figure:: ./images/pdf/A4-Authentication-cross-device-02.pdf
-    :alt: Example of cross-device Authentication User Experience - 02
-    :width: 100%
-    :align: center
-
-    Example of cross-device Authentication User Experience - 02
-
-.. only:: format_latex
-
-  .. figure:: ./images/pdf/A4-Authentication-cross-device-03.pdf
-    :alt: Example of cross-device Authentication User Experience - 03
-    :width: 100%
-    :align: center
-
-    Example of cross-device Authentication User Experience - 03
-
-.. only:: format_latex
-
-  .. figure:: ./images/pdf/A4-Authentication-cross-device-04.pdf
-    :alt: Example of cross-device Authentication User Experience - 04
-    :width: 100%
-    :align: center
-
-    Example of cross-device Authentication User Experience - 04
 
 Authentication Button
 ~~~~~~~~~~~~~~~~~~~~~~
