@@ -331,65 +331,27 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
     Fasi dell'Esperienza Utente di utilizzo di un'Istanza del Wallet
 
-Di seguito sono rappresentate a titolo esemplificativo la pagina con l’`Engagement Button`_, la Selection Page e la QR Code Page, dove gli elementi dell’interfaccia e i testi sono adattati al flusso di `Ottenimento dal Touchpoint della Fonte Autentica`_. 
+Di seguito è rappresentata a titolo esemplificativo la pagina con l’`Engagement Button`_, insieme alla Selection Page e alla QR Code Page con gli elementi dell’interfaccia e i testi adattati al flusso di `Ottenimento dal Touchpoint della Fonte Autentica`_. 
 
 .. only:: format_html 
  
-.. figure:: ./images/svg/Credential-offer-engagement-button.svg 
-   :alt: Esempio di pagina con Engagement Button 
+.. figure:: ./images/svg/Credential-offer-ITA.svg 
+   :alt: Esempio di pagina con Engagement Button, Selection page e QR code page per il credential offer
    :width: 100% 
    :align: center 
  
-   Esempio di pagina con Engagement Button 
+   Esempio di pagina con Engagement Button, Selection page e QR code page per il credential offer
 
  
 .. only:: format_latex 
  
-.. figure:: ./images/pdf/Credential-offer-engagement-button.pdf 
-   :alt: Esempio di pagina con Engagement Button 
+.. figure:: ./images/pdf/Credential-offer-ITA.pdf 
+   :alt: Esempio di pagina con Engagement Button, Selection page e QR code page per il credential offer
    :width: 100% 
  
-   Esempio di pagina con Engagement Button 
+   Esempio di pagina con Engagement Button, Selection page e QR code page per il credential offer
 
  
-
-.. only:: format_html 
- 
-.. figure:: ./images/svg/Credential-offer-selection-page.svg 
-   :alt: Esempio di Selection Page per il Credential Offer 
-   :width: 100% 
-   :align: center 
- 
-   Esempio di Selection Page per il Credential Offer 
-
- 
-.. only:: format_latex 
- 
-.. figure:: ./images/pdf/Credential-offer-selection-page.pdf 
-   :alt: Esempio di Selection Page per il Credential Offer 
-   :width: 100% 
- 
-   Esempio di Selection Page per il Credential Offer 
-
- 
-
-.. only:: format_html 
- 
-.. figure:: ./images/svg/Credential-offer-qr-code-page.svg 
-   :alt: Esempio di Qr Code Page per il Credential Offer 
-   :width: 100% 
-   :align: center 
- 
-   Esempio di Qr Code Page per il Credential Offer 
-
- 
-.. only:: format_latex 
- 
-.. figure:: ./images/pdf/Credential-offer-qr-code-page.pdf 
-   :alt: Esempio di Qr Code Page per il Credential Offer 
-   :width: 100% 
- 
-   Esempio di Qr Code Page per il Credential Offer 
 
 Engagement Button
 ^^^^^^^^^^^^^^^^^^^
@@ -659,85 +621,26 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
     Esempio di Esperienza Utente nella presentazione da remoto, cross-device - 03
 
-Di seguito sono rappresentate a titolo esemplificativo la pagina con l’Engagement Button_, la Selection Page e la QR Code Page, dove gli elementi dell’interfaccia e i testi sono adattati al flusso di `Presentazione da remoto`_. 
+Di seguito è rappresentata a titolo esemplificativo la pagina con l’Engagement Button_, oltre alla Selection Page, alla QR Code Page e alla Thank You Page con gli elementi dell’interfaccia e i testi adattati al flusso di `Presentazione da remoto`_. 
 
 .. only:: format_html 
  
-.. figure:: ./images/svg/Presentazione-remota-engagement-button.svg 
-   :alt: Esempio di pagina con Engagement Button per la presentazione da remoto 
+.. figure:: ./images/svg/presentazione-remota.svg 
+   :alt: Esempio di pagina con Engagement Button, Selection page, QR code page, Thank you page per la presentazione da remoto 
    :width: 100% 
    :align: center 
  
-   Esempio di pagina con Engagement Button per la presentazione da remoto 
+   Esempio di pagina con Engagement Button, Selection page, QR code page, Thank you page per la presentazione da remoto 
 
  
 .. only:: format_latex 
  
-.. figure:: ./images/pdf/ Presentazione-remota- engagement-button.pdf 
-   :alt: Esempio di pagina con Engagement Button per la presentazione da remoto 
+.. figure:: ./images/pdf/presentazione-remota.pdf 
+   :alt: Esempio di pagina con Engagement Button, Selection page, QR code page, Thank you page per la presentazione da remoto  
    :width: 100% 
  
-   Esempio di pagina con Engagement Button per la presentazione da remoto 
+   Esempio di pagina con Engagement Button, Selection page, QR code page, Thank you page per la presentazione da remoto  
 
- 
-
-.. only:: format_html 
- 
-.. figure:: ./images/svg/Presentazione-remota-selection-page.svg 
-   :alt: Esempio di Selection Page per la presentazione da remoto 
-   :width: 100% 
-   :align: center 
- 
-   Esempio di Selection Page per la presentazione da remoto 
-
- 
-.. only:: format_latex 
- 
-.. figure:: ./images/pdf/Presentazione-remota-selection-page.pdf 
-   :alt: Esempio di Selection Page per la presentazione da remoto 
-   :width: 100% 
- 
-   Esempio di Selection Page per la presentazione da remoto 
-
- 
-
-.. only:: format_html 
- 
-.. figure:: ./images/svg/Presentazione-remota-qr-code-page.svg 
-   :alt: Esempio di Qr Code Page per la presentazione da remoto 
-   :width: 100% 
-   :align: center 
- 
-   Esempio di Qr Code Page per la presentazione da remoto 
-
- 
-.. only:: format_latex 
- 
-.. figure:: ./images/pdf/Presentazione-remota-qr-code-page.pdf 
-   :alt: Esempio di Qr Code Page per la presentazione da remoto 
-   :width: 100% 
- 
-   Esempio di Qr Code Page per la presentazione da remoto 
-
- 
-
-.. only:: format_html 
- 
-.. figure:: ./images/svg/Presentazione-remota-thank-you-page.svg 
-   :alt: Esempio di Thank you Page per la presentazione da remoto 
-   :width: 100% 
-   :align: center 
- 
-   Esempio di Thank You Page per la presentazione da remoto 
-
- 
-.. only:: format_latex 
- 
-.. figure:: ./images/pdf/Presentazione-remota-thank-you-page.pdf 
-   :alt: Esempio di Qr Code Page per la presentazione da remoto 
-   :width: 100% 
- 
-   Esempio di Thank You Page per la presentazione da remoto 
 
 
 Autenticazione
@@ -825,11 +728,19 @@ Il Verificatore di Attestati Elettronici DEVE implementare la Selection Page res
 
 .. only:: format_latex  
 
-  .. figure:: ./images/pdf/selection-page.pdf
-     :alt: Selection Page
+  .. figure:: ./images/pdf/selection-page-desktop.pdf
+     :alt: Selection Page desktop
      :width: 100%
 
-     Selection Page 
+     Selection Page desktop
+
+.. only:: format_latex  
+
+  .. figure:: ./images/pdf/selection-page-mobile.pdf
+     :alt: Selection Page mobile
+     :width: 100%
+
+     Selection Page mobile
 
 Il Verificatore di Attestati Elettronici che implementa la pagina: 
 
