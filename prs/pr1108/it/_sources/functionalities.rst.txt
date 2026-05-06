@@ -320,42 +320,26 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
     Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico da Touchpoint della Fonte Autentica, cross device - 04
 
-.. only:: format_html
-
-  .. figure:: ./images/svg/UX-phases-usage.svg
-    :alt: Fasi dell'Esperienza Utente di utilizzo di un'Istanza del Wallet
-    :width: 100%
-    :align: center
-
-    Fasi dell'Esperienza Utente di utilizzo di un'Istanza del Wallet
-
-.. only:: format_latex
-
-  .. figure:: ./images/pdf/UX-phases-usage.pdf
-    :alt: Fasi dell'Esperienza Utente di utilizzo di un'Istanza del Wallet
-    :width: 100%
-
-    Fasi dell'Esperienza Utente di utilizzo di un'Istanza del Wallet
 
 Di seguito è rappresentata a titolo esemplificativo la pagina con l’`Engagement Button`_, insieme alla Selection Page e alla QR Code Page con gli elementi dell’interfaccia e i testi adattati al flusso di `Ottenimento dal Touchpoint della Fonte Autentica`_. 
 
 .. only:: format_html 
  
-.. figure:: ./images/svg/Credential-offer-ITA.svg 
-   :alt: Esempio di pagina con Engagement Button, Selection page e QR code page per il credential offer
-   :width: 100% 
-   :align: center 
+  .. figure:: ./images/svg/Credential-offer-ITA.svg 
+    :alt: Esempio di pagina con Engagement Button, Selection page e QR code page per il credential offer
+    :width: 100% 
+    :align: center 
  
-   Esempio di pagina con Engagement Button, Selection page e QR code page per il credential offer
+    Esempio di pagina con Engagement Button, Selection page e QR code page per il credential offer
 
  
 .. only:: format_latex 
  
-.. figure:: ./images/pdf/Credential-offer-ITA.pdf 
-   :alt: Esempio di pagina con Engagement Button, Selection page e QR code page per il credential offer
-   :width: 100% 
+  .. figure:: ./images/pdf/Credential-offer-ITA.pdf 
+    :alt: Esempio di pagina con Engagement Button, Selection page e QR code page per il credential offer
+    :width: 100% 
  
-   Esempio di pagina con Engagement Button, Selection page e QR code page per il credential offer
+    Esempio di pagina con Engagement Button, Selection page e QR code page per il credential offer
 
  
 
@@ -713,21 +697,21 @@ Di seguito è rappresentata a titolo esemplificativo la pagina con l’`Engageme
 
 .. only:: format_html 
  
-.. figure:: ./images/svg/presentazione-remota.svg 
-   :alt: Esempio di pagina con Engagement Button, Selection page, QR code page, Thank you page per la presentazione da remoto 
-   :width: 100% 
-   :align: center 
+  .. figure:: ./images/svg/presentazione-remota.svg 
+    :alt: Esempio di pagina con Engagement Button, Selection page, QR code page, Thank you page per la presentazione da remoto 
+    :width: 100% 
+    :align: center 
  
-   Esempio di pagina con Engagement Button, Selection page, QR code page, Thank you page per la presentazione da remoto 
+    Esempio di pagina con Engagement Button, Selection page, QR code page, Thank you page per la presentazione da remoto 
 
  
 .. only:: format_latex 
  
-.. figure:: ./images/pdf/presentazione-remota.pdf 
-   :alt: Esempio di pagina con Engagement Button, Selection page, QR code page, Thank you page per la presentazione da remoto  
-   :width: 100% 
+  .. figure:: ./images/pdf/presentazione-remota.pdf 
+    :alt: Esempio di pagina con Engagement Button, Selection page, QR code page, Thank you page per la presentazione da remoto  
+    :width: 100% 
  
-   Esempio di pagina con Engagement Button, Selection page, QR code page, Thank you page per la presentazione da remoto  
+    Esempio di pagina con Engagement Button, Selection page, QR code page, Thank you page per la presentazione da remoto  
 
 
 
