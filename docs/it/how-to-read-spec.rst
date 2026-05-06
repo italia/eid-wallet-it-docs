@@ -102,7 +102,7 @@ L’Authentic Source è il proprietario del dato. Il suo ruolo è garantire che 
 
 **Obiettivo**: adottare i requisiti che servono a realizzare le interfacce tecnologiche (API) necessarie per dialogare con i Credential Issuer gestendo l'intero ciclo di vita del dato. 
 
-- **Sezione** :ref:`endpoints:Endpoint`: per implementare correttamente le interfacce (API) che permettono al Credential Issuer di recuperare i dati autorevoli in modo sicuro e standardizzato (riferimento a paragrafo :ref:`endpoints:Endpoint delle Fonti Autentiche`) 
+- **Sezione** :ref:`endpoints`: per implementare correttamente le interfacce (API) che permettono al Credential Issuer di recuperare i dati autorevoli in modo sicuro e standardizzato (riferimento a paragrafo :ref:`authentic-source-endpoint:Endpoint delle Fonti Autentiche`) 
 
 - **Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`: per conoscere nello specifico il ciclo di vita e la gestione degli Attestati elettronici (riferimento al paragrafo :ref:`cdigital-credential-management:Ciclo di vita degli Attestati Elettronici`) 
 
