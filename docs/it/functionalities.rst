@@ -638,6 +638,75 @@ Infatti, a livello di Esperienza Utente, il processo di Autenticazione si distin
 
 Al fine di garantire un processo di Autenticazione adeguato e coerente tra tutti i Verificatori di Attestati Elettronici, ciascun Verificatore di Attestati Elettronici DEVE rispettare i requisiti relativi all'aspetto grafico e all'Esperienza Utente descritti di seguito, unitamente al rispetto di [RIF_ACCESSIBILITÀ] e, nel caso di enti pubblici, delle [LG_DESIGN].
 
+Entrambi i flussi sono rappresentati di seguito con wireframe esemplificativi.
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/Autenticazione-same-device.svg
+    :alt: Esempio di Esperienza Utente di Autenticazione same-device
+    :width: 100%
+    :align: center
+
+    Esempio di Esperienza Utente di Autenticazione same-device.
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Autenticazione-same-device-01.pdf
+    :alt: Esempio di Esperienza Utente di Autenticazione same-device - 01
+    :width: 100%
+
+    Esempio di Esperienza Utente di Autenticazione same-device - 01
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Autenticazione-same-device-02.pdf
+    :alt: Esempio di Esperienza Utente di Autenticazione same-device - 02
+    :width: 100%
+
+    Esempio di Esperienza Utente di Autenticazione same-device - 02
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/Autenticazione-cross-device.svg
+    :alt: Esempio di Esperienza Utente di Autenticazione cross-device
+    :width: 100%
+    :align: center
+
+    Esempio di Esperienza Utente di Autenticazione cross-device
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Autenticazione-cross-device-01.pdf
+    :alt: Esempio di Esperienza Utente di Autenticazione cross-device - 01
+    :width: 100%
+
+    Esempio di Esperienza Utente di Autenticazione cross-device - 01
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Autenticazione-cross-device-02.pdf
+    :alt: Esempio di Esperienza Utente di Autenticazione cross-device - 02
+    :width: 100%
+
+    Esempio di Esperienza Utente di Autenticazione cross-device - 02
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Autenticazione-cross-device-03.pdf
+    :alt: Esempio di Esperienza Utente di Autenticazione cross-device - 03
+    :width: 100%
+
+    Esempio di Esperienza Utente di Autenticazione cross-device - 03
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Autenticazione-cross-device-04.pdf
+    :alt: Esempio di Esperienza Utente di Autenticazione cross-device - 04
+    :width: 100%
+
+    Esempio di Esperienza Utente di Autenticazione cross-device - 04
+
+
 I Verificatori di Attestati Elettronici DOVREBBERO utilizzare le :ref:`official-resources:Risorse Ufficiali` per la progettazione. Qualora non intendano utilizzare tali risorse open source, i Verificatori di Attestati Elettronici POSSONO sviluppare in autonomia le Soluzioni Tecniche abilitanti il flusso di Autenticazione, assicurando coerenza con le specifiche fornite di seguito.
 
 .. note::
@@ -843,74 +912,6 @@ Il Verificatore di Attestati Elettronici che implementa la pagina:
 - DEVE includere gli elementi propri dell'Identità Visiva del Sistema IT-Wallet, tra cui il Logo e un'icona o altro elemento grafico che aiuti a veicolare la natura dell'errore; 
 - DEVE assicurare che i copy presenti nella pagina rispecchino quelli riportati nelle :ref:`official-resources:Risorse Ufficiali`;  
 - DEVE prevedere una o più Call to Action che invitino l'Utente a intraprendere le azioni previste (es. riprova, contatta l'assistenza, etc.). 
-
-Entrambi i flussi sono rappresentati di seguito con wireframe esemplificativi.
-
-.. only:: format_html
-
-  .. figure:: ./images/svg/Autenticazione-same-device.svg
-    :alt: Esempio di Esperienza Utente di Autenticazione same-device
-    :width: 100%
-    :align: center
-
-    Esempio di Esperienza Utente di Autenticazione same-device.
-
-.. only:: format_latex
-
-  .. figure:: ./images/pdf/A4-Autenticazione-same-device-01.pdf
-    :alt: Esempio di Esperienza Utente di Autenticazione same-device - 01
-    :width: 100%
-
-    Esempio di Esperienza Utente di Autenticazione same-device - 01
-
-.. only:: format_latex
-
-  .. figure:: ./images/pdf/A4-Autenticazione-same-device-02.pdf
-    :alt: Esempio di Esperienza Utente di Autenticazione same-device - 02
-    :width: 100%
-
-    Esempio di Esperienza Utente di Autenticazione same-device - 02
-
-.. only:: format_html
-
-  .. figure:: ./images/svg/Autenticazione-cross-device.svg
-    :alt: Esempio di Esperienza Utente di Autenticazione cross-device
-    :width: 100%
-    :align: center
-
-    Esempio di Esperienza Utente di Autenticazione cross-device
-
-.. only:: format_latex
-
-  .. figure:: ./images/pdf/A4-Autenticazione-cross-device-01.pdf
-    :alt: Esempio di Esperienza Utente di Autenticazione cross-device - 01
-    :width: 100%
-
-    Esempio di Esperienza Utente di Autenticazione cross-device - 01
-
-.. only:: format_latex
-
-  .. figure:: ./images/pdf/A4-Autenticazione-cross-device-02.pdf
-    :alt: Esempio di Esperienza Utente di Autenticazione cross-device - 02
-    :width: 100%
-
-    Esempio di Esperienza Utente di Autenticazione cross-device - 02
-
-.. only:: format_latex
-
-  .. figure:: ./images/pdf/A4-Autenticazione-cross-device-03.pdf
-    :alt: Esempio di Esperienza Utente di Autenticazione cross-device - 03
-    :width: 100%
-
-    Esempio di Esperienza Utente di Autenticazione cross-device - 03
-
-.. only:: format_latex
-
-  .. figure:: ./images/pdf/A4-Autenticazione-cross-device-04.pdf
-    :alt: Esempio di Esperienza Utente di Autenticazione cross-device - 04
-    :width: 100%
-
-    Esempio di Esperienza Utente di Autenticazione cross-device - 04
 
 
 Authentication Button
