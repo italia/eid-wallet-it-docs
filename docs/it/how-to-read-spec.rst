@@ -94,7 +94,7 @@ L’Authentic Source è il proprietario del dato. Il suo ruolo è garantire che 
 
 - **Sezione** :ref:`functionalities:Design dell'Esperienza Utente`: per conoscere le modalità di ottenimento degli Attestati Elettronici da parte dell’utente (riferimento al paragrafo :ref:`functionalities:Ottenimento degli Attestati Elettronici di Attributi`). 
 
-- **Sezione** :ref:`entities:Entità`: per conoscere i requisiti di implementazione e in particolare gli attributi necessari per fornire l'Attestato Elettronico richiesto dall'Utente (riferimento a paragrafo :ref:`entities:Fonti Autentiche`) 
+- **Sezione** :ref:`entities:Entità`: per conoscere i requisiti di implementazione e in particolare gli attributi necessari per fornire l'Attestato Elettronico richiesto dall'Utente (riferimento a paragrafo :ref:`authentic-sources:Fonti Autentiche`) 
 
 **Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`:  per conoscere come i dati autorevoli e gli attributi diventano Credenziali Elettroniche e in cosa consiste il loro ciclo di vita.
 
