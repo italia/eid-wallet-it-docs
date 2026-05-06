@@ -316,7 +316,7 @@ The flow is shown below with illustrative wireframes.
 
     Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source, cross device - 04
 
-Following is represented for illustrative purposesthe page withthe `Engagement Button`_, together with the Selection Page and the QR Code Page with the interface elements and texts updated according to the `Issuance from the Touchpoint of the Authentic Source`_. 
+Following is represented for illustrative purposes the page with the `Engagement Button`_, together with the Selection Page and the QR Code Page with the interface elements and texts updated according to the `Issuance from a Touchpoint of the Authentic Source`_ flow. 
 
 .. only:: format_html 
  
@@ -611,6 +611,26 @@ The flow is shown below with illustrative wireframes.
     :align: center
 
     Example of User Experience in remote, cross-device presentation - 03
+
+Following is represented for illustrative purposes the page with the `Engagement Button`_, together with the Selection Page, the QR Code Page and the Thank You Page with the interface elements and texts updated according to the `Remote Presentation`_ flow.
+
+.. only:: format_html 
+ 
+.. figure:: ./images/svg/remote-presentation.svg 
+   :alt: Illustrative page with Engagement Button, Selection page, QR code page, Thank you page for the remote presentation 
+   :width: 100% 
+   :align: center 
+ 
+   Illustrative page with Engagement Button, Selection page, QR code page, Thank you page for the remote presentation
+
+ 
+.. only:: format_latex 
+ 
+.. figure:: ./images/pdf/remote-presentation.pdf 
+   :alt: Illustrative page with Engagement Button, Selection page, QR code page, Thank you page for the remote presentation
+   :width: 100% 
+ 
+   Illustrative page with Engagement Button, Selection page, QR code page, Thank you page for the remote presentation
 
 
 Authentication
