@@ -25,7 +25,7 @@ La specifica è organizzata nelle seguenti sezioni principali:
 **Sezione** :ref:`trust-infrastructure:L'Infrastruttura di Trust`:
   Definisce il modello di trust basato sulla federazione, le relazioni tra entità e i meccanismi di valutazione della fiducia che proteggono l'intero ecosistema.
 
-**Sezione** :ref:`entities:Entità`: 
+**Sezione** :ref:`Entità`: 
   Requisiti di implementazione completi per ogni partecipante all'ecosistema: Soluzioni Wallet, Fornitori di Credenziali, Relying Party e Fonti Autentiche, inclusi i loro componenti, modelli di interazione e requisiti di configurazione.
 
 **Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`: 
@@ -94,7 +94,7 @@ L’Authentic Source è il proprietario del dato. Il suo ruolo è garantire che 
 
 - **Sezione** :ref:`functionalities:Design dell'Esperienza Utente`: per conoscere le modalità di ottenimento degli Attestati Elettronici da parte dell’utente (riferimento al paragrafo :ref:`functionalities:Ottenimento degli Attestati Elettronici di Attributi`). 
 
-- **Sezione** :ref:`entities:Entità`: per conoscere i requisiti di implementazione e in particolare gli attributi necessari per fornire l'Attestato Elettronico richiesto dall'Utente (riferimento a paragrafo :ref:`authentic-sources:Fonti Autentiche`) 
+- **Sezione** :ref:`Entità`: per conoscere i requisiti di implementazione e in particolare gli attributi necessari per fornire l'Attestato Elettronico richiesto dall'Utente (riferimento a paragrafo :ref:`authentic-sources:Fonti Autentiche`) 
 
 **Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`:  per conoscere come i dati autorevoli e gli attributi diventano Credenziali Elettroniche e in cosa consiste il loro ciclo di vita.
 
@@ -104,7 +104,7 @@ L’Authentic Source è il proprietario del dato. Il suo ruolo è garantire che 
 
 - **Sezione** :ref:`endpoints`: per implementare correttamente le interfacce (API) che permettono al Credential Issuer di recuperare i dati autorevoli in modo sicuro e standardizzato (riferimento a paragrafo :ref:`authentic-source-endpoint:Endpoint delle Fonti Autentiche`) 
 
-- **Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`: per conoscere nello specifico il ciclo di vita e la gestione degli Attestati elettronici (riferimento al paragrafo :ref:`cdigital-credential-management:Ciclo di vita degli Attestati Elettronici`) 
+- **Sezione** :ref:`digital-credential-management`: per conoscere nello specifico il ciclo di vita e la gestione degli Attestati elettronici (riferimento al paragrafo :ref:`credential-revocation:Ciclo di vita degli Attestati Elettronici`) 
 
 - **Sezione** :ref:`security-privacy-considerations:Considerazioni di Sicurezza e Privacy` per implementare soluzioni che rispettino tutti i parametri di sicurezza  
 
@@ -145,7 +145,7 @@ Il Wallet Provider è colui che progetta il portafoglio digitale, pubblico o pri
 
 - **Sezione** :ref:`functionalities:Design dell'Esperienza Utente`: per progettare interfacce semplici e sicure garantendo che l’esperienza utente sia immediata e intuitiva. 
 
-- **Sezione** :ref:`entities:Entità`: per conoscere i requisiti di implementazione e gli attributi necessari per configurare la propria entità (riferimento al paragrafo :ref:`entities:Soluzione Wallet`). 
+- **Sezione** :ref:`Entità`: per conoscere i requisiti di implementazione e gli attributi necessari per configurare la propria entità (riferimento al paragrafo :ref:`Soluzione Wallet`). 
 
 **Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`: per progettare come l'App gestirà tecnicamente il ciclo di vita dei dati (archiviazione protetta e presentazione). 
 
@@ -196,7 +196,7 @@ Il Credential Issuer è il fornitore tecnico delle credenziali. Il suo compito p
 
 - **Sezione** :ref:`functionalities:Design dell'Esperienza Utente`: per conoscere i requisiti funzionali di alto livello a supporto dell’Esperienza Utente in tutte le fasi di interazione tra l’Utente e il servizio. 
 
-- **Sezione** :ref:`entities:Entità`: per conoscere i requisiti di implementazione e gli attributi necessari per configurare il proprio profilo di Issuer (riferimento ai paragrafi :ref:`entities:Soluzione del Fornitore di Attestati Elettronici` e :ref:`aentities:Fonti Autentiche`).
+- **Sezione** :ref:`Entità`: per conoscere i requisiti di implementazione e gli attributi necessari per configurare il proprio profilo di Issuer (riferimento ai paragrafi :ref:`Soluzione del Fornitore di Attestati Elettronici` e :ref:`aFonti Autentiche`).
 
 **Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`:  per conoscere i requisiti tecnici necessari per la progettazione e gestione degli attestati e il loro ciclo di vita. 
 
@@ -251,7 +251,7 @@ Il Relying Party è l'utilizzatore finale delle credenziali. Il suo compito è t
 
 - **Sezione** :ref:`functionalities:Design dell'Esperienza Utente`: per conoscere i requisiti funzionali di alto livello a supporto dell’Esperienza Utente in tutte le fasi di interazione tra l’Utente e il servizio.  
 
-- **Sezione** :ref:`entities:Entità`: per conoscere i requisiti di implementazione e gli attributi necessari per configurare il profilo del Verificatore (riferimento al paragrafo :ref:`entities:Soluzione di Relying Party`). 
+- **Sezione** :ref:entities:`Entità`: per conoscere i requisiti di implementazione e gli attributi necessari per configurare il profilo del Verificatore (riferimento al paragrafo :ref:`Soluzione di Relying Party`). 
 
 **Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`: per comprendere quali sono i formati delle Credenziali Elettroniche e verifica della validità. 
 
@@ -261,9 +261,9 @@ Il Relying Party è l'utilizzatore finale delle credenziali. Il suo compito è t
 
 **Obiettivo**: implementare il protocollo OpenID4VP per inviare le richieste al Wallet e ricevere gli attestati, assicurando la corretta decodifica dei formati. 
 
-- **Sezione** ref:`digital-credential-flows:Flussi relativi agli attestati elettronici`: per l’implementazione del flusso di presentazione sia per scenari remoti che di prossimità (ref:`dcredential-presentation:12.2`. 
+- **Sezione** ref:`digital-credential-flows:Flussi relativi agli attestati elettronici`: per l’implementazione del flusso di presentazione sia per scenari remoti che di prossimità (ref:`credential-presentation:12.2`. 
 
-- **Sezione** ref:`endpoints:Endpoints`: per implementare correttamente le interfacce di ricezione e verifica dei dati (riferimento ai paragrafi ref:`endpoints:Endpoint della Relying Party` e ref:`endpoints:Endpoint del Backend del Provider di Relying Party`). 
+- **Sezione** ref:`endpoints:Endpoints`: per implementare correttamente le interfacce di ricezione e verifica dei dati (riferimento ai paragrafi ref:`relying-party-endpoints:Endpoint della Relying Party` e ref:`relying-party-endpoints:Endpoint del Backend del Provider di Relying Party`). 
 
 - **Sezione** :ref:`security-privacy-considerations:Considerazioni di Sicurezza e Privacy`: per implementare soluzioni che rispettino tutti i parametri di sicurezza.  
 
