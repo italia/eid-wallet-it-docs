@@ -338,7 +338,8 @@ Di seguito è rappresentata a titolo esemplificativo la pagina con l’`Engageme
  
 
 Engagement Button
-^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""
+
 L'Engagement Button è un elemento interattivo dell'interfaccia che consente all'Utente di avviare un processo, ad esempio di Autenticazione (“Entra con IT-Wallet"), di ottenimento di un Attestato Elettronico (“Aggiungi a IT-Wallet”) o di verifica (“Verifica con IT-Wallet”).  
 
 I Verificatori di Attestati Elettronici POSSONO rendere disponibile l'Engagement Button all'interno della pagina di un Touchpoint per permettere all'Utente di fruire dei servizi tramite un'Istanza del Wallet. 
