@@ -346,7 +346,7 @@ Following is represented for illustrative purposes the page with the `Engagement
 
 
 Engagement Button
-^^^^^^^^^^^^^^^^^^
+""""""""""""""""""
 
 The Engagement Button is an interactive element of the interface that allows the USer to start a process, for example of Authentication ("Login with IT-Wallet"), of issuance of an Electronic Attestation ("Add to It-Wallet") or of remote presentation ("Verify with It-Wallet).
 
