@@ -7,6 +7,12 @@ no_progress = true
 # Follow redirects; require a successful final response.
 accept = ["200..=299", "429"]
 
+# Be gentler with remote hosts to reduce 509/rate-limit failures.
+max_concurrency = 3
+max_retries = 2
+retry_wait_time = 4
+timeout = 10
+
 include_mail = false
 
 exclude = [
@@ -29,4 +35,5 @@ exclude = [
   "^https://wallet-solution\\.digital-strategy\\.europa\\.eu",
   # External: certificate/TLS issues should not block doc PRs (revisit periodically)
   "^https://www\\.wallet\\.gov\\.it",
+  "^https?://dev\\.ta\\.wallet\\.ipzs\\.it(/|\\?|#|$)",
 ]
