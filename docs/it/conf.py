@@ -4,7 +4,7 @@
 settings_project_name = "IT-Wallet Specifiche Tecniche"
 # settings_copyright_copyleft = 'Dipartimento per la Trasformazione Digitale'
 settings_editor_name = 'Dipartimento per la Trasformazione Digitale'
-settings_doc_version = '1.4.0'
+settings_doc_version = '1.4.1'
 settings_doc_release = "versione-corrente"
 settings_basename = 'eid-wallet-it-docs'
 settings_file_name = 'eid-wallet-it-docs'
