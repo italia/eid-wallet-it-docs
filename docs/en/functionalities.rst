@@ -32,7 +32,7 @@ The IT-Wallet System provides Users with a simpler, faster, and more secure way 
 
 The following sections focus on the usage and post-usage phases. They define the functional requirements supporting the User Experience for the activation, acquisition, presentation, management, and deactivation phases, along with interaction requirements related to error management, assistance requests, and feedback collection.
 
-Additional documentation and resources will be provided in the :ref:`official-resources:Official Resources` section.  
+Additional documentation and resources are provided in the :ref:`official-resources:Official Resources` section.  
 
 The Official Resources include recommendations on the required User-Wallet Instance interactions and design best practices that promote consistency across different Wallet Solutions in terms of how functionalities are accessed and used.
 
@@ -40,7 +40,7 @@ To ensure a correct and consistent implementation, Primary Actors:
 
 - MUST use the :ref:`official-resources:Official Resources` and MUST comply with all related usage specifications provided; 
 
-- MAY choose from the available configurations provided. Primary Actors MUST ensure the correct use of atomic components, such as the Engagement Buttons; 
+- MAY choose from the available configurations provided. Primary Actors MUST ensure the correct use of atomic components, such as the `Engagement Button`_ or the `Authentication Button`_ ; 
 
 - MUST keep used resources up to date, in line with the latest available version of the :ref:`official-resources:Official Resources`. 
 
@@ -153,7 +153,7 @@ Depending on the User's specific needs, the type of Electronic Attestation of At
 
 - **from the Wallet Instance Catalog**: the User explores the list of Electronic Attestations of Attributes provided by the Wallet Solution, selects the one of interest, and initiates the request process, concluding with the issuance of the Electronic Attestation of Attributes in the Wallet Instance. This pathway is available for Credential types eligible for public discovery as determined by the Supervisory body policies during the onboarding process (see :ref:`registry:Digital Credentials Catalog`).
 
-- **from a Touchpoint of the Authentic Source** (or the Electronic Attestation of Attributes Provider if it coincides with the Authentic Source): the User interacts with the digital service of the Authentic Source, allowing them to get a specific Electronic Attestation of Attributes in their Wallet Instance via an Engagement Button.
+- **from a Touchpoint of the Authentic Source** (or the Electronic Attestation of Attributes Provider if it coincides with the Authentic Source; (see :ref:`credential-issuance-low-level:Credential Offer Flow` ): the User interacts with the digital service of the Authentic Source, allowing them to get a specific Electronic Attestation of Attributes in their Wallet Instance via an `Engagement Button`_.
 
 Although the methods for initiating the request are different, the issuance flows share a similar structure and process. 
 
@@ -242,12 +242,11 @@ The flow is shown below with illustrative wireframes.
 
 Issuance from a Touchpoint of the Authentic Source 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Below are illustrated the User Experience requirements for the issuance of an Electronic Attribute Attestation from the Catalog that the Wallet Solution Provider MUST guarantee through their own Wallet Solution: 
+Below are illustrated the User Experience requirements for the issuance of an Electronic Attribute Attestation from a Touchpoint of the Authentic Source (also known as :ref:`credential-issuance-low-level:Credential Offer Flow` that the Authentic Source MUST guarantee through their Touchpoint: 
 
-- The User interacts with the Engagement Button clearly displayed in the Touchpoint interface; 
+- The User interacts with the `Engagement Button`_ clearly displayed in the Touchpoint interface; 
 - The User selects the Wallet Solution with which to proceed, through an interface that MUST follow the directions and functionalities described for the *Selection Page* in the :ref:`functionalities:Authentication` section; 
-- (*cross-device only*) the User scans the QR code that invokes the opening of their chosen Wallet Instance, through an interface that MUST follow the directions and functionalities described for the *QR Code Page* in the :ref:`functionalities:Authentication` section; 
-- (*cross-device only*) the User displays a message inviting them to continue on their chosen Wallet Instance, through an interface that MUST follow the directions and functionalities described for the *Waiting Page* in the :ref:`functionalities:Authentication` section; 
+- (*cross-device only*) the User scans the QR code that invokes the opening of their chosen Wallet Instance, through an interface that MUST follow the directions and functionalities described for the *QR Code Page* in the :ref:`functionalities:Authentication` section; alternatively the User can exit the flow.
 - The User accesses their Wallet Instance using the unlock method previously set; 
 - The User views the PID data, if required for the request of the Electronic Attestation of Attributes, the name of the related Electronic Attestation of Attributes Provider, and any related information policy. The User gives their consent to proceed, presenting their PID data to the Electronic Attestation of Attributes Provider, or cancels the operation; 
 - The User views any additional information on requirements and/or limitations related to obtaining the Electronic Attestation of Attributes; 
@@ -324,6 +323,59 @@ The flow is shown below with illustrative wireframes.
     :align: center
 
     Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source, cross device - 04
+
+Following is represented for illustrative purposes the page with the `Engagement Button`_, together with the Selection Page and the QR Code Page with the interface elements and texts updated according to the `Issuance from a Touchpoint of the Authentic Source`_ flow. 
+
+.. only:: format_html 
+ 
+  .. figure:: ./images/svg/Credential-offer-ENG.svg 
+    :alt: Illustrative page with Engagement Button, Selection page and QR code page for the credential offer
+    :width: 100% 
+    :align: center 
+ 
+    Illustrative page with Engagement Button, Selection page and QR code page for the credential offer
+
+ 
+.. only:: format_latex 
+ 
+  .. figure:: ./images/pdf/Credential-offer-ENG.pdf 
+    :alt: Illustrative page with Engagement Button, Selection page and QR code page for the credential offer
+    :width: 100% 
+ 
+    Illustrative page with Engagement Button, Selection page and QR code page for the credential offer
+
+
+Engagement Button
+""""""""""""""""""
+
+The Engagement Button is an interactive element of the interface that allows the USer to start a process, for example of Authentication ("Login with IT-Wallet"), of issuance of an Electronic Attestation ("Add to It-Wallet") or of remote presentation ("Verify with It-Wallet).
+
+Relying Parties MAY make available the Engagement Button in their Touchpoint's page to allow the User to use their services through a Wallet Instance.
+
+The Engagement Button:
+
+- MUST be used exactly as outlined in the Official Resources and MUST NOT be redesigned ad hoc;
+
+- MUST be used only in the shapes, colors and proportions defined and MUST NOT be altered, distorted, or hidden;
+
+- MUST be responsive to all screen resolutions and MUST be integrated in the Discovery Page in order to meet minimum usability and accessibility requirements;
+
+- MUST maintain a minimum distance from other elements (quiet zone) of at least 24px;
+
+-  MUST state in their label the action to be done followed by "IT-Wallet", for example "Login with IT-Wallet", "Add to IT-Wallet", "Verify with IT-Wallet";
+
+- MAY be accompanied by text explaining the added value of performing that action using the IT-Wallet system. 
+
+- Actors wishing to integrate the Engagement Button into their Touchpoints MUST ensure that it is translated into other languages, at least English.
+
+Below are some non-mandatory examples of Engagement Button labels:
+- Login with IT-Wallet (see :ref:`functionalities:Authentication Button`) 
+
+- Add to IT-Wallet (see :ref:`functionalities:Issuance from a Touchpoint of the Authentic Source`) 
+
+- Verify with IT-wallet (see :ref:`functionalities:Remote Presentation`) 
+
+
 
 Focus on Electronic Attestations of Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -551,12 +603,12 @@ The flow is shown below with illustrative wireframes.
 Remote Presentation
 ^^^^^^^^^^^^^^^^^^^^
 
-Remote presentation allows the User to present the PID and/or EAA data by interacting with a Relying Party's Touchpoint through a designated Engagement Button.
+Remote presentation allows the User to present the PID and/or EAA data by interacting with a Relying Party's Touchpoint through the designated `Engagement Button`_.
 
 This presentation can occur in two different modes, depending on the type of device used to access the service:
 
-- **Same-device mode**: when the User accesses an online digital service integrated with a special verification system (:ref:`relying-party-instance:Web Relying Party Instance`) using the same device on which the Wallet Instance is installed;
-- **Cross-device mode**: when the User accesses a digital service integrated with a special verification system (:ref:`relying-party-instance:Web Relying Party Instance`) using a different device from the one where the Wallet Instance is installed.
+- **Same-device mode**: when the User accesses an online digital service integrated with a special verification system (:ref:`relying-party-instance:Web Relying Party Instance`) using the same device which the Wallet Instance is installed on;
+- **Cross-device mode**: when the User accesses a digital service integrated with a special verification system (:ref:`relying-party-instance:Web Relying Party Instance`) using a different device from the one which the Wallet Instance is installed on.
 
 Below are the User Experience requirements related to both methods that the Wallet Provider MUST guarantee via their Wallet Solution.
 
@@ -652,14 +704,26 @@ The flow is shown below with illustrative wireframes.
 
     Example of User Experience in remote, cross-device presentation - 03
 
-.. only:: format_latex
+Following is represented for illustrative purposes the page with the `Engagement Button`_, together with the Selection Page, the QR Code Page and the Thank You Page with the interface elements and texts updated according to the `Remote Presentation`_ flow.
 
-  .. figure:: ./images/pdf/A4-Remote-presentation-cross-device-04.pdf
-    :alt: Example of User Experience in remote, cross-device presentation - 04
-    :width: 100%
-    :align: center
+.. only:: format_html 
+ 
+  .. figure:: ./images/svg/remote-presentation.svg 
+    :alt: Illustrative page with Engagement Button, Selection page, QR code page, Thank you page for the remote presentation 
+    :width: 100% 
+    :align: center 
+ 
+    Illustrative page with Engagement Button, Selection page, QR code page, Thank you page for the remote presentation
 
-    Example of User Experience in remote, cross-device presentation - 04
+ 
+.. only:: format_latex 
+ 
+  .. figure:: ./images/pdf/remote-presentation.pdf 
+    :alt: Illustrative page with Engagement Button, Selection page, QR code page, Thank you page for the remote presentation
+    :width: 100% 
+ 
+    Illustrative page with Engagement Button, Selection page, QR code page, Thank you page for the remote presentation
+
 
 Authentication
 """""""""""""""
@@ -670,19 +734,93 @@ The Authentication process can be carried out using both the same-device and cro
 
 From a User Experience perspective, the Authentication process differs from the Presentation process only in how it is initiated, which is through a dedicated `Authentication Button`_.
 
-To ensure a consistent and seamless Authentication process across all Relying Parties, each Relying Party MUST follow the visual and User Experience requirements outlined below, together with compliance with [REF_ACCESSIBILITY] and, in the case of public entities, with [GL_DESIGN]
+To ensure a consistent and seamless Authentication process across all Relying Parties, each Relying Party MUST follow the visual and User Experience requirements outlined below, together with compliance with [REF_ACCESSIBILITY] and, in the case of public entities, with [GL_DESIGN].
+
+Both flows are shown below with illustrative wireframes.
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/Authentication-same-device.svg
+    :alt: Example of same-device Authentication User Experience
+    :width: 100%
+    :align: center
+
+    Example of same-device Authentication User Experience.
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Authentication-same-device-01.pdf
+    :alt: Example of same-device Authentication User Experience - 01
+    :width: 100%
+    :align: center
+
+    Example of same-device Authentication User Experience - 01
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Authentication-same-device-02.pdf
+    :alt: Example of same-device Authentication User Experience - 02
+    :width: 100%
+    :align: center
+
+    Example of same-device Authentication User Experience - 02
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/Authentication-cross-device.svg
+    :alt: Example of cross-device Authentication User Experience
+    :width: 100%
+    :align: center
+
+    Example of cross-device Authentication User Experience.
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Authentication-cross-device-01.pdf
+    :alt: Example of cross-device Authentication User Experience - 01
+    :width: 100%
+    :align: center
+
+    Example of cross-device Authentication User Experience - 01
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Authentication-cross-device-02.pdf
+    :alt: Example of cross-device Authentication User Experience - 02
+    :width: 100%
+    :align: center
+
+    Example of cross-device Authentication User Experience - 02
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Authentication-cross-device-03.pdf
+    :alt: Example of cross-device Authentication User Experience - 03
+    :width: 100%
+    :align: center
+
+    Example of cross-device Authentication User Experience - 03
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Authentication-cross-device-04.pdf
+    :alt: Example of cross-device Authentication User Experience - 04
+    :width: 100%
+    :align: center
+
+    Example of cross-device Authentication User Experience - 04
+
 
 Relying Parties SHOULD use the :ref:`official-resources:Official Resources` for design and development. If a Relying Party does not intend to use such open source resources, it MAY independently develop the Technical Solutions enabling the Authentication flow, ensuring that it follows the specifications herein provided.
 
 .. note::
-  The images in this section are to be considered illustrative as they are the subject of interface (UI) evolutions, pending the definition of the branding of the IT-Wallet System. 
+  The images in this section are to be considered illustrative as they are the subject of interface (UI) evolutions. 
 
 Relying Parties MUST implement and provide the following pages as part of the Authentication process:
 
 - **Discovery Page**: lists all the available Authentication methods;
 - **Selection Page**: shows the User all the Wallet Solutions available in the IT-Wallet System Register and let them choose which one to continue the Authentication process with; 
 - **QR Code Page** (*cross-device only*): prompts the User to scan a QR code;
-- **Waiting Page** (*cross-device only*): instructs the User to continue the Authentication process on their Wallet Instance;
 - **Thank You Page**: confirms the successful Authentication;
 - **Error Page**: displays error messages related to the Authentication process.
 
@@ -773,7 +911,7 @@ The Relying Party MAY also include a text component on the Selection Page to pro
 
 **QR Code Page (cross-device only)**
 
-The QR Code Page is presented to the User who selects IT-Wallet System Authentication within a cross-device process. Its purpose is to prompt the User to scan the generated QR code using their Wallet Instance.
+The QR Code Page is presented to the User who selects IT-Wallet System Authentication within a cross-device process. Its purpose is to prompt the User to scan the generated QR code using their Wallet Instance or the camera of their device.
 
 Relying Parties MUST implement the QR Code Page (cross-device) provided in the :ref:`official-resources:Official Resources`. 
 
@@ -798,7 +936,7 @@ The Relying Party implementing the page:
 
 - MUST include the Visual Identity elements of the IT-Wallet System, including the logo;
 - MUST ensure that the copy on the page mirrors that reported in the :ref:`official-resources:Official Resources`; 
-- MUST include a Call To Action allowing the User to generate a new QR code in case of timeout;
+- MUST include a Call To Action allowing the User to generate a new QR code, if it has an expiration;
 - MUST include a Call To Action allowing the User to cancel the operation and return to the Discovery Page.
 
 Furthermore, in compliance with [REF_ACCESSIBILITY], regarding the QR code, the Relying Parties:
@@ -811,37 +949,10 @@ Furthermore, in compliance with [REF_ACCESSIBILITY], regarding the QR code, the 
 - MUST ensure SVG format;
 - MUST ensure that it is not partially hidden by text or other elements.
 
-**Waiting Page (cross-device only)**
-
-The Waiting Page is shown after the QR code has been scanned and prompts the User to continue the Authentication process within their Wallet Instance.
-
-Relying Parties MUST implement the Waiting Page (cross-device) provided in the :ref:`official-resources:Official Resources`. 
-
-.. only:: format_html 
-
-  .. figure:: ./images/svg/waiting-page.svg
-     :alt: Waiting Page
-     :width: 100%
-     :align: center
-
-     Waiting Page 
- 
-.. only:: format_latex  
-
-  .. figure:: ./images/pdf/waiting-page.pdf
-     :alt: Waiting Page
-     :width: 100%
-
-     Waiting Page 
-
-The Relying Party implementing the page:
-
-- MUST include the Visual Identity elements of the IT-Wallet System, including the logo and an icon or graphical element consolidating the message;
-- MUST ensure that the copy on the page mirrors that reported in the :ref:`official-resources:Official Resources`.
 
 **Thank You Page**
 
-The Thank You Page is displayed after the User completes the Authentication process via their Wallet Instance. Its purpose is to prompt the User to proceed to the authenticated area of the Relying Party's Touchpoint.
+The Thank You Page is displayed after the User completes the Authentication process via their Wallet Instance. Its purpose is to inform the User about the successful Authentication.
 
 Relying Parties MUST implement the Thank You Page provided in the :ref:`official-resources:Official Resources`. 
 
@@ -897,84 +1008,11 @@ The Relying Party implementing the page:
 - MUST ensure that the copy on the page mirrors that reported in the :ref:`official-resources:Official Resources`;
 - MUST include one or more Call To Action guiding the User toward the appropriate next step (e.g., retry, contact support, etc.).
 
-Both flows are shown below with illustrative wireframes.
-
-.. only:: format_html
-
-  .. figure:: ./images/svg/Authentication-same-device.svg
-    :alt: Example of same-device Authentication User Experience
-    :width: 100%
-    :align: center
-
-    Example of same-device Authentication User Experience.
-
-.. only:: format_latex
-
-  .. figure:: ./images/pdf/A4-Authentication-same-device-01.pdf
-    :alt: Example of same-device Authentication User Experience - 01
-    :width: 100%
-    :align: center
-
-    Example of same-device Authentication User Experience - 01
-
-.. only:: format_latex
-
-  .. figure:: ./images/pdf/A4-Authentication-same-device-02.pdf
-    :alt: Example of same-device Authentication User Experience - 02
-    :width: 100%
-    :align: center
-
-    Example of same-device Authentication User Experience - 02
-
-.. only:: format_html
-
-  .. figure:: ./images/svg/Authentication-cross-device.svg
-    :alt: Example of cross-device Authentication User Experience
-    :width: 100%
-    :align: center
-
-    Example of cross-device Authentication User Experience.
-
-.. only:: format_latex
-
-  .. figure:: ./images/pdf/A4-Authentication-cross-device-01.pdf
-    :alt: Example of cross-device Authentication User Experience - 01
-    :width: 100%
-    :align: center
-
-    Example of cross-device Authentication User Experience - 01
-
-.. only:: format_latex
-
-  .. figure:: ./images/pdf/A4-Authentication-cross-device-02.pdf
-    :alt: Example of cross-device Authentication User Experience - 02
-    :width: 100%
-    :align: center
-
-    Example of cross-device Authentication User Experience - 02
-
-.. only:: format_latex
-
-  .. figure:: ./images/pdf/A4-Authentication-cross-device-03.pdf
-    :alt: Example of cross-device Authentication User Experience - 03
-    :width: 100%
-    :align: center
-
-    Example of cross-device Authentication User Experience - 03
-
-.. only:: format_latex
-
-  .. figure:: ./images/pdf/A4-Authentication-cross-device-04.pdf
-    :alt: Example of cross-device Authentication User Experience - 04
-    :width: 100%
-    :align: center
-
-    Example of cross-device Authentication User Experience - 04
 
 Authentication Button
 ~~~~~~~~~~~~~~~~~~~~~~
 
-The Authentication Button "Login with IT-Wallet" serves as an Engagement Button, providing Users with a standardized way to Authenticate themselves using their digital Wallet.
+The Authentication Button "Login with IT-Wallet" serves as an `Engagement Button`_, providing Users with a standardized way to Authenticate themselves using their digital Wallet.
 
 Relying Parties MUST make the Authentication Button available within the Discovery Page of their Technical Solutions to allow the User to get authenticated into their services using the Wallet Instance under their control.
 
@@ -994,7 +1032,7 @@ The Authentication Button has the following requirements:
 
 - The Authentication Button SHOULD always be accompanied by an external link (e.g., "Learn more") that links to the official website of the IT-Wallet System, indicated in the :ref:`official-resources:Official Resources` section; 
 
-- Where space allows and/or the context requires it, the Authentication Button SHOULD be accompanied by a descriptive text, e.g., "IT-Wallet is the Italian Digital Wallet System that gives you full control over your information, without the issuing entity being aware of when and how it is used” or "Login through an IT-Wallet app, the Italian Digital Wallet System that simplifies interactions between citizens, public administrations and private entities, in the physical and digital world. With IT-Wallet you have full control over your information, sharing it only when necessary and securely, without the issuing entity knowing when and how it is used.". 
+- Where space allows and/or the context requires it, the Authentication Button SHOULD be accompanied by a descriptive text, e.g., "IT-Wallet is the Italian digital wallet system that allows you to authenticate yourself online and access public and private services quickly and securely, using the data, documents, and attestations you can obtain digitally in one of the participating wallets.". 
 
 
 Below are some non-mandatory examples of Authentication Button layout: 
