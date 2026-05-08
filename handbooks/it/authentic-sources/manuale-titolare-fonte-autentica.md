@@ -380,7 +380,7 @@ Il referente dell'ambito sistemistico e il referente dell'ambito applicativo, co
 - **Garantire il supporto agli utenti** 
 Il referente per l'ambito assistenza ed almeno un canale di contatto dedicato agli utenti finali (es. indirizzo e-mail, numero telefonico, etc.), così come definito nella sezione `assistenza` del modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa), devono sempre essere disponibili per gestire eventuali problemi relativi all'EAA, come ad esempio la segnalazione di dati errati o di errori nella fase di ottenimento dell'EAA da parte dell'utente.
 
-## File da compilare
+## Modulo da compilare
 
 
 Per assolvere a quanto previsto dallo Step 1, l‘Ente deve: 
@@ -587,7 +587,6 @@ L’obiettivo della sezione `mappatura stati` è quello di supportare gli Enti n
 3. Definisci l’ ”azione utente” da condividere con l'utente (es. I tuoi dati sono stati aggiornati nella banca dati ANIS, scarica la nuova versione digitale del documento). Usa il campo "Note" per aggiungere ulteriori informazioni utili o una spiegazione del perché proponiamo all'utente di compiere un'azione specifica. 
 4. Per approfondimenti: [Ciclo di Vita degli Attestati Elettronici](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/credential-revocation.html).
 
-```json
 "mappatura stati": [
     {
       "stato": "Valido",
@@ -617,15 +616,7 @@ L’obiettivo della sezione `mappatura stati` è quello di supportare gli Enti n
       "stato": "Scaduto",
       "descrizione": "L'EAA è scaduto e necessita una riemissione",
       "applicabile": false,
-      "azione_utente": "",
-      "messaggio": "",
-      "note": ""
-    }
-  ]
-}
-```
 
-*Tabella 4 – Mappatura stati (sezione `mappatura stati`)*
 
 ## Appendice E – Assistenza
 
@@ -643,9 +634,8 @@ Nello specifico, l'Ente deve contribuire al [modello di assistenza](https://ital
 - Canali: fornisci almeno un canale di assistenza (es. e-mail assistenza, numero di telefono, etc.) di responsabilità dell’Ente che rappresenti, nel ruolo di Titolare di Fonte Autentica, a cui si possa indirizzare l’utente per quelle richieste di supporto e segnalazioni non gestibili all’interno della soluzione IT-Wallet.  
 - FAQ: contribuisci alla definizione dei contenuti utili a predisporre le domande più frequenti e comuni relative all’EAA in analisi, dall’emissione all’utilizzo fino alla gestione del suo ciclo vita. 
 - testi informativi (opzionale): se ritenuto utile o necessario dal Titolare di Fonte Autentica, approfondisci la casistica all’interno delle [Specifiche Tecniche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/functionalities.html#ottenimento-dal-catalogo-dell-istanza-del-wallet)); se ritenuto utile, definisci le informazioni essenziali da esporre agli utenti nella soluzione IT-Wallet prima di avviare l’ottenimento dell’EAA e sintetizzale in un testo adeguato. In particolare: 
-1) Poniti le seguenti domande (puoi fare riferimento alla sezione “casi d'uso”, già compilato):  A chi si rivolge o a chi è dedicato l’EAA? (es. pensionati, studenti, etc.) Sussistono dei limiti, delle restrizioni o dei prerequisiti per poter ottenere l’EAA? (es. aver ottenuto la versione fisica del documento, aver conseguito la titolarità al documento dopo il 2020, etc.) Dove e come è possibile usare l’EAA? 
+1) Poniti le seguenti domande (puoi fare riferimento alla sezione `casi d'uso`, già compilata):  A chi si rivolge o a chi è dedicato l’EAA? (es. pensionati, studenti, etc.) Sussistono dei limiti, delle restrizioni o dei prerequisiti per poter ottenere l’EAA? (es. aver ottenuto la versione fisica del documento, aver conseguito la titolarità al documento dopo il 2020, etc.) Dove e come è possibile usare l’EAA? 
 2) Formula un testo informativo rivolto all’utente a partire dai contenuti sopra raccolti, assicurandoti che sia chiaro, semplice, diretto e conciso (circa 300 - 450 caratteri, spazi inclusi).
-## Appendice B – Data Model
 
 ---
 
