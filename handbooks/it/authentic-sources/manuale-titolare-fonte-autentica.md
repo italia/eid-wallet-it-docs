@@ -620,7 +620,7 @@ L’obiettivo della sezione `mappatura stati` è quello di supportare gli Enti n
 
 ## Appendice E – Assistenza
 
-Questa appendice descrive le istruzioni di compilazione della sezione `assistenza` del file JSON [Progettazione caratteristiche EAA](progettazione-caratteristiche-eaa.json). Assicurati di aver letto quanto riportato nella sezione [File da compilare](#file-da-compilare) prima di proseguire. 
+Questa appendice descrive le istruzioni di compilazione della sezione `assistenza` del modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa). Assicurati di aver letto quanto riportato nella sezione [Modulo da compilare](#modulo-da-compilare) prima di proseguire. 
 
 **Obiettivo** 
 
