@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Digital Credentials Catalogue &#8212; IT-Wallet Technical Documentation - Editor&#39;s Copy</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
+    <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <script src="_static/js/petite-vue.js"></script>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+  </head><body data-dark_mode_code_blocks="true">
+
+<div id="top_nav">
+    
+
+    <nav>
+        
+            
+        
+
+        <p id="toggle_sidebar">
+            <a href="#" title="Toggle sidebar">|||</a>
+        </p>
+        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Documentation - Editor's Copy</a></h1>
+            <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
+    
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+            <path fill="white" d="M 244.8,8 C 106.1,8 0,113.3 0,252 c 0,110.9 69.8,205.8 169.5,239.2 12.8,2.3 17.3,-5.6 17.3,-12.1 0,-6.2 -0.3,-40.4 -0.3,-61.4 0,0 -70,15 -84.7,-29.8 0,0 -11.4,-29.1 -27.8,-36.6 0,0 -22.9,-15.7 1.6,-15.4 0,0 24.9,2 38.6,25.8 21.9,38.6 58.6,27.5 72.9,20.9 2.3,-16 8.8,-27.1 16,-33.7 -55.9,-6.2 -112.3,-14.3 -112.3,-110.5 0,-27.5 7.6,-41.3 23.6,-58.9 -2.6,-6.5 -11.1,-33.3 2.6,-67.9 20.9,-6.5 69,27 69,27 20,-5.6 41.5,-8.5 62.8,-8.5 21.3,0 42.8,2.9 62.8,8.5 0,0 48.1,-33.6 69,-27 13.7,34.7 5.2,61.4 2.6,67.9 16,17.7 25.8,31.5 25.8,58.9 0,96.5 -58.9,104.2 -114.8,110.5 9.2,7.9 17,22.9 17,46.4 0,33.7 -0.3,75.4 -0.3,83.6 0,6.5 4.6,14.4 17.3,12.1 C 428.2,457.8 496,362.9 496,252 496,113.3 383.5,8 244.8,8 Z"/>
+        </svg>
+    
+</a>
+        
+
+        <a id="mode_toggle" href="#" @click.prevent="handleClick" :title="mode">
+    <template v-if="mode == 'light'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_light"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M67.48,18.073c1.913,-1.912 1.913,-5.018 0,-6.931c-1.912,-1.912 -5.018,-1.912 -6.931,0l-6.798,6.799c-1.912,1.912 -1.912,5.018 0,6.931c1.913,1.912 5.018,1.912 6.931,-0l6.798,-6.799Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.728,61.108c1.912,-1.913 1.912,-5.018 -0,-6.931c-1.913,-1.913 -5.019,-1.913 -6.931,-0l-6.799,6.798c-1.912,1.913 -1.912,5.019 0,6.931c1.913,1.913 5.019,1.913 6.931,0l6.799,-6.798Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.682,54.177c-1.913,-1.913 -5.018,-1.913 -6.931,-0c-1.912,1.913 -1.912,5.018 0,6.931l6.798,6.798c1.913,1.913 5.019,1.913 6.931,0c1.913,-1.912 1.913,-5.018 0,-6.931l-6.798,-6.798Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M4.901,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,-0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M18.929,11.142c-1.912,-1.912 -5.018,-1.912 -6.931,0c-1.912,1.913 -1.912,5.019 0,6.931l6.799,6.799c1.912,1.912 5.018,1.912 6.931,-0c1.912,-1.913 1.912,-5.019 -0,-6.931l-6.799,-6.799Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.108,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c-0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c-0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'dark'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_dark"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.901,2.196 -4.901,4.901c0,2.705 2.197,4.901 4.901,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.662,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.989,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.732,61.103c1.91,-1.91 1.91,-5.011 0,-6.921l-0.009,-0.01c-1.91,-1.91 -5.012,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.909,1.91 5.011,1.91 6.92,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.672,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.52,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l-0,-0.01c-0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.901,2.196 -4.901,4.901c0,2.704 2.197,4.9 4.901,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.73,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 -0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.098,34.623c-2.699,0 -4.891,2.192 -4.891,4.892l-0,0.019c-0,2.699 2.192,4.891 4.891,4.891c2.7,0 4.892,-2.192 4.892,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.892,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'darkest'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_darkest"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><path d="M39.315,23.791c8.684,-0 15.734,7.05 15.734,15.733c0,8.684 -7.05,15.734 -15.734,15.734c-8.683,0 -15.733,-7.05 -15.733,-15.734c-0,-8.683 7.05,-15.733 15.733,-15.733Zm0,4.737c6.069,0 10.997,4.927 10.997,10.996c-0,6.069 -4.928,10.996 -10.997,10.996c-6.068,0 -10.996,-4.927 -10.996,-10.996c0,-6.069 4.928,-10.996 10.996,-10.996Z" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.216,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.9,2.196 -4.9,4.901c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.666,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.99,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.737,61.103c1.909,-1.91 1.909,-5.011 -0,-6.921l-0.01,-0.01c-1.91,-1.91 -5.011,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.91,1.91 5.011,1.91 6.921,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.676,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.524,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l0,-0.01c0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.216,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901c-0,2.704 2.196,4.9 4.9,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.734,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.103,34.623c-2.7,0 -4.892,2.192 -4.892,4.892l-0,0.019c-0,2.699 2.192,4.891 4.892,4.891c2.699,0 4.891,-2.192 4.891,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.891,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+</a>
+
+<script>
+(function() {
+    const LOCAL_STORAGE_KEY = 'piccoloThemeMode'
+
+    var initialMode = localStorage.getItem(LOCAL_STORAGE_KEY)
+
+    if (initialMode) {
+        // Make sure the value in local storage is valid
+        if (['light', 'dark', 'darkest'].indexOf(initialMode) == -1) {
+            initialMode = 'light'
+            localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+        }
+    } else {
+        // Check if the client prefers dark mode
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            initialMode = 'dark'
+        } else {
+            initialMode = 'light'
+        }
+        localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+    }
+
+    document.documentElement.dataset.mode = initialMode
+
+    PetiteVue.createApp({
+        'mode': initialMode,
+        handleClick() {
+            let currentMode = this.mode
+
+            if (currentMode == 'light') {
+                this.mode = 'dark'
+            } else if (currentMode == 'dark') {
+                this.mode = 'darkest'
+            } else if (currentMode == 'darkest') {
+                this.mode = 'light'
+            }
+
+            document.documentElement.dataset.mode = this.mode
+            localStorage.setItem(LOCAL_STORAGE_KEY, this.mode)
+
+            console.log(this.mode)
+        }
+    }).mount('#mode_toggle')
+})()
+</script>
+            <p class="mobile_search_link">
+                <a href="search.html" title="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 64" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2">
+                        <path d="M14.873 40.009c-2.315-3.943-3.642-8.532-3.642-13.429C11.231 11.91 23.141 0 37.811 0s26.58 11.91 26.58 26.58-11.91 26.58-26.58 26.58a26.44 26.44 0 0 1-14.277-4.161L9.739 62.794a3.12 3.12 0 0 1-4.413 0L.913 58.382c-1.217-1.218-1.217-3.196 0-4.413l13.96-13.96zM37.811 8.054c10.225 0 18.526 8.301 18.526 18.526s-8.301 18.526-18.526 18.526-18.526-8.301-18.526-18.526S27.586 8.054 37.811 8.054z" fill="#fff" />
+                    </svg>
+                </a>
+            </p>
+        
+
+        <div class="searchbox_wrapper">
+            
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper"><p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2. Brand Identity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Architecture Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Onboarding System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. User Experience Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. The Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registry.html">7. Registry Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entity-onboarding.html">8. Entity Onboarding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="x5c-evaluation.html">9. X.509 Certificate Management Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">10. Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">11. Digital Credential Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">12. Digital Credential Flows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">13. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">14. Cryptographic Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">15. Security and Privacy Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">16. General Log Retention Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">17. Defined Terms and References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">18. How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">19. Open Source Releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">20. Appendix</a></li>
+</ul>
+
+        </div>
+      </div>
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="digital-credentials-catalogue">
+<h1>Digital Credentials Catalogue<a class="headerlink" href="#digital-credentials-catalogue" title="Link to this heading">¶</a></h1>
+<p>The Digital Credentials Catalogue is the registry of all available Digital Credentials recognized within the IT-Wallet ecosystem. It is published by the Trust Anchor and publicly available by all Entities through a specialized Federation endpoint. It acts as a single reference point for all actors involved in the process of issuing, verifying and using Digital Credentials.</p>
+<p>The Digital Credential Catalogue aims to:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Facilitate Digital Credential discovery for Users.</p></li>
+<li><p>Standardize the technical and functional description of Digital Credentials.</p></li>
+<li><p>Enable interoperability between different Issuers and Relying Parties.</p></li>
+<li><p>Simplify the integration process for Wallet Providers and Relying Parties.</p></li>
+<li><p>Ensure trust in the ecosystem through verifiable and trustworthy information.</p></li>
+<li><p>Provide transparency on the ecosystem of available Digital Credentials.</p></li>
+</ol>
+</div></blockquote>
+<p>The main Entities involved in the Digital Credential Catalogue are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Trust Anchor</strong>: It manages and maintains the Digital Credential Catalogue, guaranteeing its authenticity and integrity.</p></li>
+<li><p><strong>Supervisory Body</strong>: It interacts with the Trust Anchor and the Digital Credential Catalogue to monitor the registration phase ensuring security and privacy according to national/European regulations, keeping all the information reliable and updated.</p></li>
+<li><p><strong>Digital Credential Issuers</strong>: The entities authorized to issue Digital Credentials, registering them in the Catalogue.</p></li>
+<li><p><strong>Relying Parties</strong>: They use the Digital Credential Catalogue to gather all the information needed about the Digital Credentials they intend to request during the presentation phase.</p></li>
+<li><p><strong>Wallet Providers</strong>: They access the Digital Credential Catalogue to identify the available Digital Credentials and to retrieve all necessary information for integrating them into their Wallet Solutions.</p></li>
+<li><p><strong>Users</strong>: The Users who indirectly use the Digital Credentials Catalogue through their Wallet Instances to discover and request Digital Credentials.</p></li>
+<li><p><strong>Authentic Sources</strong>: The Entities that hold the original data that is attested in the Digital Credentials. They provide support to Issuers in registering the Digital Credentials in the Catalogue.</p></li>
+</ul>
+</div></blockquote>
+<span class="target" id="fig-catalogue-svg"></span><p>The following table summarizes the main information that MUST be provided by the Digital Credential Catalogue:</p>
+<span id="table-catalogue-main-information"></span><table class="longtable docutils align-default" id="id1">
+<caption><span class="caption-text">Digital Credential Catalogue - Main information</span><a class="headerlink" href="#id1" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Information related to</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Digital Credential Metadata</p></td>
+<td><p>Essential identifying information and characteristics of the Digital Credential, including:</p>
+<ul class="simple">
+<li><p><strong>Credential Unique identifier</strong>: A unique identifier string of each Digital Credential.</p></li>
+<li><p><strong>User authentication methods</strong>: User authentication mechanisms used to request the Digital Credential, if required by Issuers or Authentic Sources.</p></li>
+<li><p><strong>Minimum Level of Assurance</strong>: The minimum Level of Assurance required for the Digital Credential's reliability. It MUST take into account the Level of Assurance of User authentication, when applicable, and Wallet Instance.</p></li>
+<li><p><strong>Additional display characteristics</strong>: Visual and formatting specifications, such as a background reference image, logo, etc.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Digital Credential Issuers</p></td>
+<td><p>Details about the organization authorized to issue the Digital Credential, such as:</p>
+<ul class="simple">
+<li><p><strong>Issuer identifiers</strong>: Unique identifier for the Digital Credential issuer.</p></li>
+<li><p><strong>Issuer type</strong>: Classification as PID, (Q)EAA, or Pub-EAA Provider.</p></li>
+<li><p><strong>Additional information</strong>: Organizational details including name, code, and contact information.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>Authentic Sources</p></td>
+<td><p>Information about the authoritative data source, such as:</p>
+<ul class="simple">
+<li><p><strong>Authentic Source identifiers</strong>: Unique identifier for the Digital Credential's authoritative source.</p></li>
+<li><p><strong>Authentic Source type</strong>: Classification as Public or Private entity.</p></li>
+<li><p><strong>Additional information</strong>: Organizational details including name, code, and contact information.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Technical Specification</p></td>
+<td><p>Technical details, including:</p>
+<ul class="simple">
+<li><p><strong>Digital Credential schemes</strong>: Framework and structure specifications.</p></li>
+<li><p><strong>Digital Credential formats</strong>: Data format and encoding standards.</p></li>
+<li><p><strong>Authentication policy</strong>: Methods and requirements for verification.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>Terms of Use</p></td>
+<td><p>Conditions and limitations for Digital Credential usage, such as:</p>
+<ul class="simple">
+<li><p><strong>Credential validity</strong>: Time period during which the Digital Credential is valid and, when applicable, mechanisms and technical details for invalidating Digital Credentials (revocation/suspension methods).</p></li>
+<li><p><strong>Restriction policy</strong>: If applicable, rules governing the Digital Credential's use and limitations according to national regulations. It is used, for example, to specify if only specific legal type Entities, for example Pub-EAA Provider and public Wallet Solutions, are allowed to issue and obtain the Digital Credential.</p></li>
+<li><p><strong>Pricing policy</strong>: Information related to pricing models of Digital Credential, such as <cite>free</cite>, <cite>issuance_based</cite>, <cite>verification_based</cite>.</p></li>
+<li><p><strong>Digital Credential purposes</strong>: Information related to the allowed purposes for which the Digital Credential can be used. Each Digital Credential type can be used for multiple purposes.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Claims and Taxonomy References</p></td>
+<td><p>Content and classification information:</p>
+<ul class="simple">
+<li><p><strong>List of displayed claims</strong>: Specific Digital Credential content displayed to the User.</p></li>
+<li><p><strong>Structured taxonomy references</strong>: Classification systems and controlled vocabularies used.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The Trust Anchor MUST publish and keep up to date all the information at the Digital Credential Catalogue <cite>.well-known</cite> endpoint ensuring data reliability, authenticity and integrity. In particular, the Digital Credential Catalogue, claims and taxonomy MUST be available through the <code class="docutils literal notranslate"><span class="pre">.well-known/credential-catalogue</span></code> endpoint.</p>
+<section id="digital-credentials-categories">
+<h2>Digital Credentials Categories<a class="headerlink" href="#digital-credentials-categories" title="Link to this heading">¶</a></h2>
+<p>Digital Credentials recognized within the IT-Wallet ecosystem are hierarchically classified and standardized according to the following main domains and categories. Additional categories MAY be added as the IT-Wallet ecosystem grows.</p>
+<span id="it-wallet-dc-domains"></span><table class="longtable docutils align-default" id="id2">
+<caption><span class="caption-text">Digital Credential Domains and Categories</span><a class="headerlink" href="#id2" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 30.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Domain</strong></p></th>
+<th class="head"><p><strong>Category</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>IDENTITY</em></p></td>
+<td><ul class="simple">
+<li><p>PERSON_IDENTIFICATION</p></li>
+<li><p>ELECTRONIC_RESIDENCY</p></li>
+</ul>
+</td>
+<td><p>Credentials that establish or verify the identity of a person, including physical and digital identity documents legally recognized by national laws.</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>AUTHORIZATION</em></p></td>
+<td><ul class="simple">
+<li><p>DRIVING_LICENSE</p></li>
+<li><p>PROFESSIONAL_LICENSE</p></li>
+<li><p>TRAVEL_DOCUMENT</p></li>
+<li><p>ACCESS_PERMIT</p></li>
+</ul>
+</td>
+<td><p>Credentials that grant specific permissions, rights or authorizations to perform certain activities or access restricted areas.</p></td>
+</tr>
+<tr class="row-even"><td><p><em>EDUCATION</em></p></td>
+<td><ul class="simple">
+<li><p>ACADEMIC_DEGREE</p></li>
+<li><p>CERTIFICATE</p></li>
+<li><p>TRAINING_RECOGNITION</p></li>
+</ul>
+</td>
+<td><p>Credentials related to educational achievements, qualifications, and professional training recognition.</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>HEALTH</em></p></td>
+<td><ul class="simple">
+<li><p>INSURANCE_CARD</p></li>
+<li><p>DISABILITY_CARD</p></li>
+<li><p>MEDICAL_PRESCRIPTION</p></li>
+</ul>
+</td>
+<td><p>Credentials related to healthcare access, medical history, insurance coverage, and health-related documents.</p></td>
+</tr>
+<tr class="row-even"><td><p><em>FINANCIAL</em></p></td>
+<td><ul class="simple">
+<li><p>INCOME_CERTIFICATE</p></li>
+<li><p>TAX_STATEMENT</p></li>
+<li><p>FAMILY_ECONOMIC_STATUS</p></li>
+</ul>
+</td>
+<td><p>Credentials that attest to financial status, income levels, taxation, or economic situation of individuals or families.</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>MEMBERSHIP</em></p></td>
+<td><ul class="simple">
+<li><p>ASSOCIATION</p></li>
+<li><p>LOYALTY_PROGRAM</p></li>
+<li><p>CLUB_MEMBERSHIP</p></li>
+</ul>
+</td>
+<td><p>Credentials that confirm affiliation with organizations, participation in programs, or membership status.</p></td>
+</tr>
+<tr class="row-even"><td><p><em>ATTESTATION</em></p></td>
+<td><ul class="simple">
+<li><p>PUBLIC_STATEMENT</p></li>
+<li><p>CIVIL_STATUS</p></li>
+<li><p>CERTIFICATION</p></li>
+</ul>
+</td>
+<td><p>Credentials that provide official statements, confirmations of status, or certifications issued by authorities.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="digital-credentials-catalogue-structure">
+<h2>Digital Credentials Catalogue Structure<a class="headerlink" href="#digital-credentials-catalogue-structure" title="Link to this heading">¶</a></h2>
+<p>Digital Credentials Catalogue contents is secured in a JWS that contains the following JOSE header parameters:</p>
+<table class="longtable docutils align-default" id="table-catalogue-parameters">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 50.0%" />
+<col style="width: 25.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>JOSE header</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Reference</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>typ</strong></p></td>
+<td><p>REQUIRED. It MUST be set to <code class="docutils literal notranslate"><span class="pre">JOSE</span></code>.</p></td>
+<td><p>[<span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Section 4.1.9].</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>alg</strong></p></td>
+<td><p>REQUIRED. A digital signature algorithm identifier such as per IANA &quot;JSON Web Signature and Encryption Algorithms&quot; registry. It MUST be one of the supported algorithms in Section <a class="reference internal" href="algorithms.html#cryptographic-algorithms"><span class="std std-ref">Cryptographic Algorithms</span></a> and MUST NOT be set to <code class="docutils literal notranslate"><span class="pre">none</span></code> or with a symmetric algorithm (MAC) identifier.</p></td>
+<td><p>[<span class="target" id="index-1"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Section 4.1.1].</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>kid</strong></p></td>
+<td><p>REQUIRED. Unique identifier of the public key.</p></td>
+<td><p>[<span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Section 4.1.4].</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>x5c</strong></p></td>
+<td><p>OPTIONAL. Contains the X.509 public key Certificate or Certificate chain [<span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>] corresponding to the key used to digitally sign the JWS. When the header parameter <cite>kid</cite> value is present, it MUST refer to the same leaf's cryptographic public key used with the X.509 Certificate.</p></td>
+<td><p>[<span class="target" id="index-4"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Section 4.1.6.].</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>cty</strong></p></td>
+<td><p>REQUIRED. It MUST be set to <code class="docutils literal notranslate"><span class="pre">application/json</span></code>.</p></td>
+<td><p>[<span class="target" id="index-5"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Section 4.1.6.].</p></td>
+</tr>
+</tbody>
+</table>
+<p>The JWS payload contains the following parameters:</p>
+<table class="longtable docutils align-default" id="id3">
+<caption><span class="caption-text">First-level Fields of the Catalog</span><a class="headerlink" href="#id3" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>catalog_version</strong></p></td>
+<td><p>REQUIRED. Version of the Digital Credential Catalogue format.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>iss</strong></p></td>
+<td><p>REQUIRED. Issuer identifier of the Digital Credential Catalogue.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>last_modified</strong></p></td>
+<td><p>REQUIRED. Timestamp of the last modification to the Digital Credential Catalogue.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>taxonomy_uri</strong></p></td>
+<td><p>REQUIRED. URI of the claims taxonomy reference document.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>taxonomy_uri#integrity</strong></p></td>
+<td><p>OPTIONAL. Cryptographic digest of the taxonomy document for integrity verification.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>credentials</strong></p></td>
+<td><p>REQUIRED. Array containing Digital Credential definitions.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>wallet_attestation</strong></p></td>
+<td><p>REQUIRED. A JSON Object containing definitions for Wallet Attestations, including their supported formats, associated claims, and Levels of Assurance (LoA). This Object is used by other entities, such as Issuers and Relying Parties, to retrieve information about the Wallet Attestation formats supported within the ecosystem.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Each element of the <code class="docutils literal notranslate"><span class="pre">credentials</span></code> array contains at least the following information:</p>
+<span id="table-catalogue-credentials-parameters"></span><table class="longtable docutils align-default" id="id4">
+<caption><span class="caption-text">First-level Fields of Each Credential Entry</span><a class="headerlink" href="#id4" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>version</strong></p></td>
+<td><p>REQUIRED. Version of the Digital Credential definition.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>credential_type</strong></p></td>
+<td><p>REQUIRED. Unique identifier of the Digital Credential type.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>legal_type</strong></p></td>
+<td><p>REQUIRED. Legal classification of the Credential (e.g., <code class="docutils literal notranslate"><span class="pre">pub-eaa</span></code>, <code class="docutils literal notranslate"><span class="pre">qeaa</span></code>, <code class="docutils literal notranslate"><span class="pre">eaa</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>localization</strong></p></td>
+<td><p>OPTIONAL. Localization settings, including:</p>
+<ul class="simple">
+<li><p><strong>default_locale</strong>: Default language for text.</p></li>
+<li><p><strong>available_locales</strong>: List of supported languages.</p></li>
+<li><p><strong>base_uri</strong>: Base URI for localization resources.</p></li>
+<li><p><strong>version</strong>: Version of the localization files.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>name</strong></p></td>
+<td><p>REQUIRED. Human-readable name of the Digital Credential. A suffix <code class="docutils literal notranslate"><span class="pre">_l10n_id</span></code> MAY be added for content localisation management.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>description</strong></p></td>
+<td><p>REQUIRED. Human-readable Digital Credential description. A suffix <code class="docutils literal notranslate"><span class="pre">_l10n_id</span></code> MAY be added for content localisation management.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>restriction_policy</strong></p></td>
+<td><p>OPTIONAL. Legal restrictions on Wallet Solutions and/or Credential Issuers allowed to request/issue the Digital Credential.</p>
+<ul class="simple">
+<li><p><strong>allowed_wallet_ids</strong>: List of allowed Wallet Solutions identifiers.</p></li>
+<li><p><strong>allowed_issuer_ids</strong>: List of allowed Credential Issuers identifiers. If present, it represents a whitelist of Credential Issuers that may be added by the Trust Anchor in the <strong>issuers</strong> field of the corresponding Digital Credential.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>pricing_policy</strong></p></td>
+<td><p>OPTIONAL. Information about Digital Credential pricing, including:</p>
+<ul class="simple">
+<li><p><strong>models</strong>: REQUIRED. Array of pricing models applicable to the Digital Credential, each containing</p>
+<ul>
+<li><p><strong>pricing_type</strong>: Type of pricing model, such as <code class="docutils literal notranslate"><span class="pre">issuance_based</span></code>, <code class="docutils literal notranslate"><span class="pre">verification_based</span></code>, <code class="docutils literal notranslate"><span class="pre">subscription_based</span></code>, <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p></li>
+<li><p><strong>price</strong>: Cost associated with the model.</p></li>
+<li><p><strong>currency</strong>: Currency of the price.</p></li>
+</ul>
+</li>
+<li><p><strong>pricing_model_uri</strong>: URI to the detailed pricing model documentation.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>validity_info</strong></p></td>
+<td><p>Information about Digital Credential validity, including at least:</p>
+<ul class="simple">
+<li><p><strong>max_validity_days</strong>: Maximum validity period in days.</p></li>
+<li><p><strong>status_methods</strong>: Supported status verification methods (e.g. <code class="docutils literal notranslate"><span class="pre">status_list</span></code>).</p></li>
+<li><p><strong>allowed_states</strong>: Allowed Digital Credential states (e.g. <code class="docutils literal notranslate"><span class="pre">valid</span></code>, <code class="docutils literal notranslate"><span class="pre">revoked</span></code>, <code class="docutils literal notranslate"><span class="pre">suspended</span></code>).</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>authentication</strong></p></td>
+<td><p>REQUIRED. Digital Credential authentication requirements.</p>
+<ul class="simple">
+<li><p><strong>user_auth_required</strong>: REQUIRED. Flag indicating if User authentication is required during the issuance of the Digital Credential.</p></li>
+<li><p><strong>min_loa</strong>: REQUIRED. Minimum Level of Assurance required for Digital Credential authentication. It MUST include the Level of Assurance of the User authentication and the Wallet Instance requesting the Digital Credential.</p></li>
+<li><p><strong>supported_eid_schemes</strong>: REQUIRED if <code class="docutils literal notranslate"><span class="pre">user_auth_required</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>. Supported digital identity authentication schemes.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>purposes</strong></p></td>
+<td><p>REQUIRED. Array of usage purposes for which the Digital Credential can be used, defining specific usage contexts and required claims for each purpose, such as:</p>
+<ul class="simple">
+<li><p><strong>id</strong>: Unique identifier for the purpose (e.g., &quot;driving-authorization&quot;, &quot;person-identification&quot;).</p></li>
+<li><p><strong>description</strong>: Human-readable purpose description with a suffix <code class="docutils literal notranslate"><span class="pre">_l10n_id</span></code> for content localisation.</p></li>
+<li><p><strong>category</strong>: Main category in the Credential taxonomy (e.g., <code class="docutils literal notranslate"><span class="pre">AUTHORIZATION</span></code>, <code class="docutils literal notranslate"><span class="pre">IDENTITY</span></code>).</p></li>
+<li><p><strong>subcategory</strong>: Subcategory within the taxonomy (e.g., <code class="docutils literal notranslate"><span class="pre">DRIVING_LICENSE</span></code>, <code class="docutils literal notranslate"><span class="pre">PERSON_IDENTIFICATION</span></code>).</p></li>
+<li><p><strong>claims_required</strong>: Array of claim identifiers that are required when using the Credential for this purpose.</p></li>
+<li><p><strong>claims_recommended</strong>: Array of claim identifiers that are recommended but not mandatory for this purpose.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>issuers</strong></p></td>
+<td><p>REQUIRED. Array of relevant information about authorized Credential Issuers, including administrative and technical data such as Organization name, a reference to the API specification document and supported issuance mechanisms (for example the deferred flow support).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>authentic_sources</strong></p></td>
+<td><p>REQUIRED. Array of relevant information about authorized Authentic Sources, including administrative and technical data related the provisioning of data to the Credential Issuers. The array MUST include at least the following information, unless otherwise specified:</p>
+<ul class="simple">
+<li><p><strong>id</strong>: Unique identifier of the Authentic Source.</p></li>
+<li><p><strong>organization_name</strong>: human-readable name of the Authentic Source organization.</p></li>
+<li><p><strong>organization_code</strong>: Administrative code of the Authentic Source organization.</p></li>
+<li><p><strong>organization_country</strong>: Country of the Authentic Source organization, represented as a two-letter ISO 3166-1 alpha-2 code.</p></li>
+<li><p><strong>contacts</strong>:[OPTIONAL] JSON array with one or more strings representing contact persons at the Entity. These MAY contain names, e-mail addresses, descriptions, phone numbers, etc.</p></li>
+<li><p><strong>homepage_uri</strong>: [OPTIONAL] URI of the Authentic Source organization homepage.</p></li>
+<li><p><strong>logo_uri</strong>: [OPTIONAL] URI of the Authentic Source organization logo.</p></li>
+<li><p><strong>source_type</strong>: Type of Authentic Source, such as <code class="docutils literal notranslate"><span class="pre">public</span></code> or <code class="docutils literal notranslate"><span class="pre">private</span></code>.</p></li>
+<li><p><strong>service_documentation</strong>: [OPTIONAL] URI pointing to the Authentic Source service documentation.</p></li>
+<li><p><strong>data_provision</strong>: [OPTIONAL] JSON Object containing information about the data provision methods supported by the Authentic Source, including:</p>
+<ul>
+<li><p><strong>immediate_flow</strong>: REQUIRED. Boolean indicating if the Authentic Source supports immediate data provision.</p></li>
+<li><p><strong>deferred_flow</strong>: REQUIRED. Boolean indicating if the Authentic Source supports deferred data provision.</p></li>
+<li><p><strong>max_response_time_minutes</strong>: CONDITIONAL. Maximum time in minutes for the Authentic Source to respond to a deferred data provision request. REQUIRED if <code class="docutils literal notranslate"><span class="pre">deferred_flow</span></code> is set to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></li>
+<li><p><strong>notification_methods</strong>: CONDITIONAL. Array of notification methods supported by the Authentic Source for deferred data provision, such as <code class="docutils literal notranslate"><span class="pre">push</span></code>, <code class="docutils literal notranslate"><span class="pre">poll</span></code>.</p></li>
+</ul>
+</li>
+<li><p><strong>user_information</strong>: [OPTIONAL] A string containing human-readable information about the Digital Credential relevant to the User. This string MUST be provided by the Authentic Source to the Trust Anchor during onboarding and MUST be formatted using Markdown format as defined in <span class="target" id="index-6"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7763.html"><strong>RFC 7763</strong></a>. The Markdown formatting can be plain text or a combination of text and links. For example, if the Authentic Source's database only contains the data required for Digital Credential attributes registered <em>after</em> a specific date, this information MUST be conveyed to the Trust Anchor in this Markdown string.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>formats</strong></p></td>
+<td><p>REQUIRED. Array of supported technical formats of Digital Credentials, including:</p>
+<ul class="simple">
+<li><p><strong>format</strong>: Type of format (e.g., <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code>, <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code>)</p></li>
+<li><p><strong>configuration_id</strong>: Configuration identifier of the :term:Credential format. This is formed by concatenating the <code class="docutils literal notranslate"><span class="pre">credential_type</span></code> value to the <code class="docutils literal notranslate"><span class="pre">format</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">dc_sd_jwt_mDL</span></code> or <code class="docutils literal notranslate"><span class="pre">mso_mdoc_mDL</span></code>), and is used to uniquely reference the configuration for this :term:Credential format.</p></li>
+<li><p><strong>vct</strong>: CONDITIONAL. It is only REQUIRED if the <code class="docutils literal notranslate"><span class="pre">format</span></code> is <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code>. It MUST be set as a URI String of the form <code class="docutils literal notranslate"><span class="pre">https://{Trust</span> <span class="pre">Anchor</span> <span class="pre">domain}/{version}/{credential_type}</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">https://trust-registry.it-wallet.example.it/v1.0/mDL</span></code>). Matching of the literals included in this URI string MUST be performed in a case-insensitive manner.</p></li>
+<li><p><strong>docType</strong>: CONDITIONAL. It is only REQUIRED if the <code class="docutils literal notranslate"><span class="pre">format</span></code> is <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code>. If the :term:Credential is:</p>
+<ul>
+<li><p>defined by an ISO standard, it MUST be a string of the form <code class="docutils literal notranslate"><span class="pre">iso.org.{iso-number}.{part}.{version}.{credential_type}</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">iso.org.18013.5.1.mDL</span></code>).</p></li>
+<li><p>defined at the european level, it MUST be a string of the form <code class="docutils literal notranslate"><span class="pre">eu.europa.ec.{credential_type}.{version}</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">eu.europa.ec.loyaltycard.1.0</span></code>).</p></li>
+<li><p>defined by a national standard, it MUST be a string of the form <code class="docutils literal notranslate"><span class="pre">{Trust</span> <span class="pre">Anchor</span> <span class="pre">reverse</span> <span class="pre">domain}.{credential_type}.{version}</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">it.wallet.trust-registry.pid.1</span></code>).</p></li>
+</ul>
+</li>
+<li><p><strong>schema_uri</strong>: URI pointing to the format specification document.</p></li>
+<li><p><strong>schema_uri#integrity</strong>: Cryptographic digest of the format specification document for integrity verification. It MUST be a string of the form <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code>, where <code class="docutils literal notranslate"><span class="pre">{digest_method}</span></code> is the digest algorithm used (e.g., <code class="docutils literal notranslate"><span class="pre">sha-256</span></code>) and <code class="docutils literal notranslate"><span class="pre">{digest_value}</span></code> is the base64url-encoded digest value.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>display_properties</strong></p></td>
+<td><p>REQUIRED. Visual presentation properties of Digital Credentials, e.g.:</p>
+<ul class="simple">
+<li><p><strong>templates</strong>: Visual templates for the Credential, e.g. <cite>svg</cite> template.</p></li>
+<li><p><strong>background_color</strong>: Background color in hexadecimal format.</p></li>
+<li><p><strong>text_color</strong>: Text color in hexadecimal format.</p></li>
+<li><p><strong>logo_uri</strong>: URI to the Digital Credential logo.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>claims</strong></p></td>
+<td><p>REQUIRED. Array of claims contained in the Digital Credential. It MUST include at least the following claims:</p>
+<ul class="simple">
+<li><p><strong>name</strong>: The name of the claim in the Digital Credential.</p></li>
+<li><p><strong>taxonomy_ref</strong>: String containing the path to the claim type as defined in <a class="reference internal" href="#it-wallet-dc-domains"><span class="std std-ref">Digital Credential Domains and Categories</span></a>.</p></li>
+<li><p><strong>namespaces</strong>: CONDITIONAL. Namespace to which the claim belongs.</p></li>
+<li><p><strong>display_name_l10n_id</strong>: OPTIONAL. Human-readable name of the claim with a suffix <code class="docutils literal notranslate"><span class="pre">_l10n_id</span></code> for content localisation management.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The <code class="docutils literal notranslate"><span class="pre">wallet_attestation</span></code> Object contains at least the following information:</p>
+<table class="longtable docutils align-default" id="id5">
+<caption><span class="caption-text">First-level Fields of Each Credential Entry</span><a class="headerlink" href="#id5" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>credential_type</strong></p></td>
+<td><p>REQUIRED. Unique identifier of the Wallet Attestation. It MUST be set to <code class="docutils literal notranslate"><span class="pre">WalletAttestation</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>name</strong></p></td>
+<td><p>REQUIRED. Human-readable name of the Wallet Attestation. It MUST be set to <code class="docutils literal notranslate"><span class="pre">Wallet</span> <span class="pre">Attestation</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>description</strong></p></td>
+<td><p>REQUIRED. Human-readable Digital Credential description.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>aal_values_supported</strong></p></td>
+<td><p>REQUIRED. Array of Strings each of which is a Level of Assurance (LoA) supported by the Wallet Attestation. It MUST include at least the levels <code class="docutils literal notranslate"><span class="pre">low</span></code>, <code class="docutils literal notranslate"><span class="pre">medium</span></code> and <code class="docutils literal notranslate"><span class="pre">high</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>formats</strong></p></td>
+<td><p>REQUIRED. Array of supported formats for the Wallet Attestation, including:</p>
+<ul class="simple">
+<li><p><strong>format</strong>: Type of format (e.g., <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code>, <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code> or <code class="docutils literal notranslate"><span class="pre">oauth-client-attestation+jwt</span></code>)</p></li>
+<li><p><strong>configuration_id</strong>: Configuration identifier of the Wallet Attestation. This is formed by concatenating the string <code class="docutils literal notranslate"><span class="pre">wa</span></code> to the <code class="docutils literal notranslate"><span class="pre">format</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">dc_sd_jwt_wa</span></code>, <code class="docutils literal notranslate"><span class="pre">mso_mdoc_wa</span></code>, or <code class="docutils literal notranslate"><span class="pre">jwt_wa</span></code>), and is used to uniquely reference the configuration of the Wallet Attestation format.</p></li>
+<li><p><strong>vct</strong>: CONDITIONAL. It is only present if the <code class="docutils literal notranslate"><span class="pre">format</span></code> is <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code>. It MUST be set as a URI String of the form <code class="docutils literal notranslate"><span class="pre">https://{Trust</span> <span class="pre">Anchor</span> <span class="pre">domain}/{credential_type}</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">https://trust-registry.it-wallet.example.it/WalletAttestation</span></code>). Matching of the literals included in this URI string MUST be performed in a case-insensitive manner.</p></li>
+<li><p><strong>docType</strong>: CONDITIONAL. It is only present if the <code class="docutils literal notranslate"><span class="pre">format</span></code> is <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code>. It is a string of the form <code class="docutils literal notranslate"><span class="pre">{Trust</span> <span class="pre">Anchor</span> <span class="pre">reverse</span> <span class="pre">domain}.{credential_type}</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">it.wallet.trust-registry.WalletAttestation</span></code>).</p></li>
+<li><p><strong>schema_uri</strong>: URI pointing to the format specification document.</p></li>
+<li><p><strong>schema_uri#integrity</strong>: Cryptographic digest of the format specification document for integrity verification. It MUST be a string of the form <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code>, where <code class="docutils literal notranslate"><span class="pre">{digest_method}</span></code> is the digest algorithm used (e.g., <code class="docutils literal notranslate"><span class="pre">sha-256</span></code>) and <code class="docutils literal notranslate"><span class="pre">{digest_value}</span></code> is the base64url-encoded digest value.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>claims</strong></p></td>
+<td><p>REQUIRED. Array of claims contained in the Wallet Attestation. It MUST include at least the following claims:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: The name of the claim (e.g., <code class="docutils literal notranslate"><span class="pre">sub</span></code>, <code class="docutils literal notranslate"><span class="pre">aal</span></code>, <code class="docutils literal notranslate"><span class="pre">wallet_link</span></code>, <code class="docutils literal notranslate"><span class="pre">wallet_name</span></code>).</p></li>
+<li><p><strong>Namespaces</strong>: CONDITIONAL. Array of namespaces to which the claim belongs. It MUST be set to <code class="docutils literal notranslate"><span class="pre">{Trust</span> <span class="pre">Anchor</span> <span class="pre">reverse</span> <span class="pre">domain}.{credential_type}</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">it.wallet.trust-registry.WalletAttestation</span></code>).</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The corresponding example of Digital Credentials Catalogue as decoded in JSON for both header and payload is the following:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For a better and more efficient management of the localisation of the information contained in the Digital Credentials Catalogue, an Entity consulting it SHOULD:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Download the basic version of the Digital Credentials Catalogue (compact, without localisations) using the <code class="docutils literal notranslate"><span class="pre">.well-known/credential-catalogue</span></code> endpoint.</p></li>
+<li><p>Determine the User's preferred language.</p></li>
+<li><p>Download only the necessary localisation bundles.</p></li>
+<li><p>Dynamically merge localised content with the Digital Credentials Catalogue structure.</p></li>
+</ul>
+</div></blockquote>
+<p>A non-normative example of a localisation bundle output is given below:</p>
+<blockquote>
+<div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;driving_license.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Patente di Guida&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;driving_license.description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Patente di guida ufficiale valida in Italia e nell&#39;UE&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;purpose.driving_authorization.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Abilitazione alla guida&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;purpose.driving_authorization.description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Verifica di Abilitazione alla guida&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;claims.given_name.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Nome&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;...&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Localization bundles MUST be available at the URI specified in the <strong>localization_info.bundles_base_uri</strong> claim of the Digital Credentials Catalogue. Each locale bundle MUST be accessible following the naming pattern <strong>{locale_code}.json</strong>, where <strong>{locale_code}</strong> is replaced with the corresponding locale code from the <strong>available_locales</strong> array.</p>
+<p>A non-normative example of the Italian localization URI for the mDL bundle would be <strong>https://trust-registry.eid-wallet.example.it/.well-known/l10n/mdl/it.json</strong>.</p>
+<p>Entities SHOULD verify the integrity of downloaded localization bundles using the digest method and values specified in the <strong>localization_info.integrity</strong> claim. This ensures that the localization data has not been tampered with during transmission.</p>
+</div>
+</section>
+<section id="claims-taxonomy">
+<h2>Claims Taxonomy<a class="headerlink" href="#claims-taxonomy" title="Link to this heading">¶</a></h2>
+<p>The Digital Credential Catalogue, MUST include also a reference URI to Claim Taxonomy providing, in a single resource, the semantic information of all registered and available claims within the IT-Wallet ecosystem. It MUST be Credential format neutral and has the aim of facilitating Digital Credentials integrations in the IT-Wallet Technical Solutions.</p>
+<p>A non-normative example of the Claim Taxonomy is given below.</p>
+</section>
+<section id="digital-credentials-catalogue-endpoint">
+<h2>Digital Credentials Catalogue Endpoint<a class="headerlink" href="#digital-credentials-catalogue-endpoint" title="Link to this heading">¶</a></h2>
+<p>The Digital Credentials Catalogue Endpoint MUST be a well-known HTTPS URI [<span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8615.html"><strong>RFC 8615</strong></a>] that provides public access to information related to the Credentials available in IT-Wallet.</p>
+<section id="digital-credentials-catalogue-request">
+<h3>Digital Credentials Catalogue Request<a class="headerlink" href="#digital-credentials-catalogue-request" title="Link to this heading">¶</a></h3>
+<p>The Digital Credentials Catalogue Request MUST be an HTTP GET using the <code class="docutils literal notranslate"><span class="pre">application/jose</span></code> media type as in the following non-normative example.</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/.well-known/credential-catalogue</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">www.trust-registry.eid-wallet.example.it</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/jose</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As a future enhancement, the Trust Anchor MAY implement a dynamic endpoint that enables filtering credentials by type, while offering pagination capabilities, to support more efficient and flexible browsing of the Digital Credentials Catalogue.</p>
+</div>
+</section>
+<section id="digital-credentials-catalogue-response">
+<h3>Digital Credentials Catalogue Response<a class="headerlink" href="#digital-credentials-catalogue-response" title="Link to this heading">¶</a></h3>
+<p>The Digital Credentials Catalogue Response MUST be a JWS that contains the parameters listed in the <a class="reference internal" href="#table-catalogue-parameters"><span class="std std-ref">table of Digital Credentials Catalogue parameters</span></a>.</p>
+<p>A non-normative example of the response is provided below.</p>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+    
+        <div id="show_right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&lt;</span><span>Page contents</span></a></p>
+        </div>
+
+        <div id="right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
+            <div class="page_toc">
+                <ul>
+<li><a class="reference internal" href="#">Digital Credentials Catalogue</a><ul>
+<li><a class="reference internal" href="#digital-credentials-categories">Digital Credentials Categories</a></li>
+<li><a class="reference internal" href="#digital-credentials-catalogue-structure">Digital Credentials Catalogue Structure</a></li>
+<li><a class="reference internal" href="#claims-taxonomy">Claims Taxonomy</a></li>
+<li><a class="reference internal" href="#digital-credentials-catalogue-endpoint">Digital Credentials Catalogue Endpoint</a><ul>
+<li><a class="reference internal" href="#digital-credentials-catalogue-request">Digital Credentials Catalogue Request</a></li>
+<li><a class="reference internal" href="#digital-credentials-catalogue-response">Digital Credentials Catalogue Response</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    
+
+      <div class="clearer"></div>
+    </div>
+    <div class="button_nav_wrapper">
+        <div class="button_nav">
+            <div class="left">
+                
+            </div>
+
+            <div class="right">
+                
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer" role="contentinfo">
+      Last updated on 31/10/2025.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
+    </div>
+
+<p id="theme_credit"></p>
+  </body>
+</html>
