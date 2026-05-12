@@ -1,9 +1,8 @@
 {
   "$schema": "./json-schemas/schema-validazione-form-onboarding-fonte-autentica.schema.json",
   "metadata": {
-    "nome ente titolare": "Denominazione ente titolare (da compilare)",
-    "nome eaa": "Denominazione EAA (da compilare)",
-    "versione": "1.0.1",
+    "nome ente titolare": "",
+    "nome eaa": "",
     "readonly": [
       "versione"
     ]
@@ -43,28 +42,26 @@
     ],
     "canali": [
       {
-        "tipo": "Email assistenza",
+        "tipo canale": "Email assistenza",
         "note": "",
         "dettaglio canale": "",
-        "esempio": "",
+        "note": "",
         "readonly": [
           "tipo"
         ]
       },
       {
-        "tipo": "Numero telefonico",
-        "note": "",
+        "tipo canale": "Numero telefonico",
         "dettaglio canale": "",
-        "esempio": "",
+        "note": "",
         "readonly": [
           "tipo"
         ]
       },
       {
-        "tipo": "Altro",
-        "note": "",
+        "tipo canale": "Altro",
         "dettaglio canale": "",
-        "esempio": ""
+        "note": ""
       }
     ],
     "faq": {
@@ -122,7 +119,6 @@
     "testi informativi": [
       {
         "contenuto": "",
-        "esempio": ""
       }
     ]
   },
@@ -173,7 +169,6 @@
     ]
   },
   "data model": {
-    "versione": "1.0.1",
     "dataset": [
       {
         "attestazione": "ISEE",
@@ -183,7 +178,6 @@
         "esempio campo compilato": "DLNRSL88L51C348G",
         "obbligatorio": true,
         "tipologia": "ALFANUMERICO",
-        "lunghezza massima caratteri": 16,
         "note": ""
       }
     ],
@@ -450,8 +444,8 @@
       "stato": "Valido",
       "descrizione": "L'EAA è valido e può essere utilizzato",
       "applicabile": true,
+      "causa": "",
       "azione utente": "",
-      "messaggio": "",
       "note": "",
       "readonly": [
         "stato",
@@ -462,8 +456,8 @@
       "stato": "Non valido",
       "descrizione": "L'EAA non è più valido e dunque non può essere più utilizzato",
       "applicabile": false,
-      "azione utente": "L'utente deve scaricare nuovamente l'EAA in app",
-      "messaggio": "",
+      "causa": "L'EAA non è più valido per cui l'utente deve effettuare delle operazioni per poter scaricare nuovamente l'EAA aggiornato in app",
+      "azione utente": "",
       "note": "",
       "readonly": [
         "stato",
@@ -474,8 +468,8 @@
       "stato": "Sospeso",
       "descrizione": "L'EAA è sospeso e non può essere temporaneamente utilizzato",
       "applicabile": false,
+      "causa": "",
       "azione utente": "",
-      "messaggio": "",
       "note": "",
       "readonly": [
         "stato",
