@@ -195,19 +195,19 @@ Gli stati ammissibili per un Attestato Elettronico di Attributi sono i seguenti:
 
 - **Valido**: EAA emesso, nessun segnale di modifica su uno dei suoi attributi o sul suo stato, entro la data di scadenza. L'utente può utilizzarlo in ogni scenario d'uso;
 - **Sospeso**: EAA temporaneamente non valido, in uno stato di reversibilità. L'utente deve aspettare che lo stato torni ad essere valido (es. Patente ritirata);
-- **Non Valido**: EAA non più valido, in uno stato di irreversibilità. L'utente può solo eliminarlo e/o richiedere l'emissione di nuovo EAA che sovrascriva il precedente (es. Patente annullata).
+- **Non Valido** (valore letterale del campo `stato` nel modulo): EAA non più valido, in uno stato di irreversibilità. L'utente può solo eliminarlo e/o richiedere l'emissione di nuovo EAA che sovrascriva il precedente (es. Patente annullata).
 
 Oltre agli stati sopra elencati, è bene specificare che lo stato di un Attestato Elettronico può essere influenzato anche dalla **scadenza amministrativa** e/o dalla **scadenza tecnica**. Rispettivamente l'EAA può, quindi, assumere anche i seguenti stati: 
 
 - **Scaduto**: EAA con data di scadenza amministrativa superata. La scadenza amministrativa può essere definita dal Titolare di Fonte Autentica e, se ritenuta utile o necessaria, deve essere inclusa come attributo all'interno del data model dell'EAA per garantire messaggi informativi all'interno della soluzione IT-Wallet (es. La tua Patente scade tra 30 giorni);
 - **Da aggiornare**: EAA con data di scadenza tecnica superata. La scadenza tecnica è definita del Fornitore di Attestati Elettronici di Attributi ed è impostata generalmente a 1 anno o comunque a un valore inferiore o uguale alla data di scadenza amministrativa. Tale scadenza ha l'obiettivo di richiedere un'azione di riemissione esplicita all'utente e mitigare rischi di sicurezza.
 
-**Corrispondenza con l'API Fonte Autentica (OpenAPI).** Nel modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa), la sezione `mappatura stati` ammette per il campo `stato` esattamente questi valori testuali: **Valido**, **Non Valido**, **Sospeso** e **Scaduto**. Nei contratti OpenAPI dell'e-service Fonte Autentica (es. `OAS3-PDND-AS.yaml`), il campo `status` di ciascun dataset in `attributeClaims` è invece limitato a **`VALID`**, **`INVALID`** e **`SUSPENDED`**: le scadenze si desumono dai metadati e dai claim (`expiry_date`, `last_updated`, `exp`/`nbf`, ecc.) e, lato specifica, i casi *Issued* ed *Expired* rientrano in `VALID` se non sussistono revoca o sospensione. Indicazione operativa: **Non Valido** corrisponde a `INVALID`; **Sospeso** a `SUSPENDED`; **Valido** a `VALID`; **Scaduto** descrive nello Strumento di progettazione la casistica percepita dall'utente quando l'EAA non è più utilizzabile per scadenza, mentre sul canale OpenAPI il dataset resta caratterizzato da uno dei tre `status` precedenti (di norma `VALID` con scadenza nei metadati, oppure `INVALID` se l'Ente imposta la cessazione — inclusa la scadenza amministrativa senza metadato idoneo — come da Specifiche Tecniche).
+**Corrispondenza con l'API Fonte Autentica (OpenAPI).** Nel modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa), la sezione `mappatura stati` ammette per il campo `stato` esattamente questi valori testuali (da usare così come scritti nel JSON): **`Valido`**, **`Non Valido`**, **`Sospeso`** e **`Scaduto`**. Nei contratti OpenAPI dell'e-service Fonte Autentica (es. `OAS3-PDND-AS.yaml`), il campo `status` di ciascun dataset in `attributeClaims` è invece limitato a **`VALID`**, **`INVALID`** e **`SUSPENDED`**: le scadenze si desumono dai metadati e dai claim (`expiry_date`, `last_updated`, `exp`/`nbf`, ecc.) e, lato specifica, i casi *Issued* ed *Expired* rientrano in `VALID` se non sussistono revoca o sospensione. Indicazione operativa: **Non Valido** corrisponde a `INVALID`; **Sospeso** a `SUSPENDED`; **Valido** a `VALID`; **Scaduto** descrive nello Strumento di progettazione la casistica percepita dall'utente quando l'EAA non è più utilizzabile per scadenza, mentre sul canale OpenAPI il dataset resta caratterizzato da uno dei tre `status` precedenti (di norma `VALID` con scadenza nei metadati, oppure `INVALID` se l'Ente imposta la cessazione — inclusa la scadenza amministrativa senza metadato idoneo — come da Specifiche Tecniche).
 
 
 Per approfondimenti vai alle Specifiche Tecniche, sezione [Ciclo di Vita degli Attestati Elettronici](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/credential-revocation.html). 
 
-A tal fine, l'Ente deve compilare la sezione `mappatura stati` del modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa) per definire i messaggi e l'applicabilità dei quattro valori **Valido**, **Non Valido**, **Sospeso** e **Scaduto**.
+A tal fine, l'Ente deve compilare la sezione `mappatura stati` del modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa) per definire messaggi, testi informativi aggiuntivi (campo opzionale `messaggio`) e l'applicabilità dei quattro valori **`Valido`**, **`Non Valido`**, **`Sospeso`** e **`Scaduto`**.
 
 Per riferimenti e istruzioni di compilazione vedi [Appendice D](#appendice-d--mappatura-stati).
 
@@ -393,11 +393,12 @@ A compilazione, validazione ed export conclusi, l’Ente può procedere con la s
 
 Il modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa) contiene le seguenti sezioni: 
 
-- Casi d’uso (istruzioni di compilazione in [Appendice A](#appendix-a)) 
-- Data Model (istruzioni di compilazione in [Appendice B](#appendix-b)) 
-- Mappatura errori (istruzioni di compilazione in [Appendice C](#appendix-c)) 
+- Casi d’uso (istruzioni di compilazione in [Appendice A](#appendice-a--casi-duso)) 
+- Data Model (istruzioni di compilazione in [Appendice B](#appendice-b--data-model)) 
+- Lista attributi (opzionale; vedi [Appendice B](#appendice-b--data-model))
+- Mappatura errori (istruzioni di compilazione in [Appendice C](#appendice-c--mappatura-errori)) 
 - Mappatura stati (istruzioni di compilazione in [Appendice D](#appendice-d--mappatura-stati)) 
-- Assistenza (istruzioni di compilazione in [Appendice E](#appendix-e)) 
+- Assistenza (istruzioni di compilazione in [Appendice E](#appendice-e--assistenza)) 
 
 
 ## Appendice A – Casi d'uso EAA
@@ -412,9 +413,10 @@ L’obiettivo della sezione `casi d'uso` è quello di supportare gli Enti nella 
 
 ### Istruzioni di compilazione 
 
-1. **Denominazioni ufficiali per Ente e EAA**: inserisci `nome ente titolare`, `nome eaa` e data_compilazione (formato ISO: AAAA-MM-GG); 
+1. **Denominazioni ufficiali per Ente e EAA**: nella sezione `metadata` compila `nome ente titolare` e `nome eaa`; il campo `versione` è il numero di versione del template di progettazione (valore fisso indicato nello schema, es. `1.1.0`) e non va confuso con una data di compilazione. 
 2. **domande pertinenti**: nel caso l'EAA non si riferisca a un documento fisico o digitale già esistente (es. patente), non compilare le domande che iniziano con "In caso di documento già esistente..";
-3. **risposta**: compila il campo `risposta` rispondendo in maniera chiara ed esaustiva ad ogni domanda; il campo `esempio` è solo indicativo.
+3. **Domande a risposta aperta o sì/no**: ogni voce ha sempre tre campi; nell'interfaccia del modulo l'ordine è **`domanda`** (testo fisso), **`risposta`** (da compilare: stringa, oppure `true`/`false`/`null` in JSON per sì/no o bozza) e **`esempio`** (testo guida con esempio di risposta). Il campo `esempio` non sostituisce la `risposta`.
+4. **Nomi delle proprietà nel JSON**: usa le chiavi esattamente come nello schema di validazione (parole separate da **un solo spazio**; evita doppi spazi, ad esempio `canali richiesta doc preesistente`, `richieste fisico vs digitale doc preesistente`, `normativa doc preesistente`).
 
 **Esempio di compilazione** (fragmento):
 
@@ -423,20 +425,22 @@ L’obiettivo della sezione `casi d'uso` è quello di supportare gli Enti nella 
   "metadata": {
     "nome ente titolare": "Ministero dell'Istruzione",
     "nome eaa": "Titolo di studio",
-    "versione": "1.0"
+    "versione": "1.1.0"
   },
   "casi d'uso": {
-    "target_utenti": {
-      "chi_puo_richiedere": {
+    "target utenti": {
+      "utenti doc preesistente": {
         "domanda": "Chi può ad oggi richiedere il documento? ...",
-        "suggerimento": "Solo maggiorenni residenti in una specifica regione",
-        "risposta": "Tutti i cittadini italiani in possesso di diploma rilasciato da istituto italiano"
+        "risposta": "Tutti i cittadini italiani in possesso di diploma rilasciato da istituto italiano",
+        "esempio": "Solo maggiorenni residenti in una specifica regione / ..."
       }
     }
   }
 }
+```
 
 ---
+
 ## Appendice B – Data Model
 
 Questa appendice descrive le istruzioni di compilazione della sezione `data model` del modulo (https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa). Assicurati di aver letto quanto riportato nella sezione [Modulo da compilare](#modulo-da-compilare) prima di proseguire. 
@@ -449,76 +453,9 @@ L’obiettivo della sezione `data model` è quello di supportare gli Enti nella 
 
 1. Associa a ciascun dato che si intende rende disponibile all’interno dell’EAA un "nome campo", assicurandoti che sia parlante e che descriva adeguatamente il dato. 
 2. Ordina i campi in modo da facilitare la leggibilità: inserisci per primi i dati anagrafici (nome, cognome, data di nascita, luogo di nascita, codice fiscale), poi i dati specifici dell'attestato.
+3. (Opzionale) Compila la sezione di primo livello **`lista attributi`** del modulo JSON: è una tabella di supporto (categoria, parametro, nome campo, descrizione) per organizzare e documentare come presentare gli attributi in app (coerente con le viste a «lista di attributi» descritte in questa appendice); se non ti è utile, puoi omettere la proprietà o lasciare le righe vuote dove consentito dallo schema.
 
-"pdnd metadata": {
-  "pdnd_metadata": {
-    "pdnd_eservice_id_prod": "",
-    "pdnd_eservice_id_uat": "",
-    "pdnd_eservice_name": "",
-    "token_type": "Bearer",
-    "is_audit_rest_02_required": true
-  },
-  "request": {
-    "parametri_input": []
-  },
-  "response": {
-    "versione": "0.1.0",
-    "dataset": [
-      {
-        "attestazione": "ISEE",
-        "parametro": "tax_code",
-        "descrizione": "codice fiscale dell'utente",
-        "nome_campo": "Codice Fiscale",
-        "esempio_campo_compilato": "DLNRSL88L51C348G",
-        "obbligatorio": true,
-        "tipologia": "ALFANUMERICO",
-
-
-"pdnd metadata": {
-  "lista_nome_campo": [
-    {
-      "categoria": "Dati anagrafici e di identità",
-      "parametro": "",
-      "nome_campo": "Nome",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Dati anagrafici e di identità",
-      "parametro": "",
-      "nome_campo": "Cognome",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Dati anagrafici e di identità",
-      "parametro": "",
-      "nome_campo": "Codice Fiscale",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Residenza e domicilio",
-      "parametro": "",
-      "nome_campo": "Comune di residenza",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Istruzione e formazione",
-      "parametro": "",
-      "nome_campo": "Qualifica",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Patenti e veicoli",
-      "parametro": "",
-      "nome_campo": "Data di rilascio",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Patenti e veicoli",
-      "parametro": "",
-      "nome_campo": "Scadenza",
-      "descrizione": ""
-    },
-    {
+---
 
 ## Appendice C – Mappatura errori
 
@@ -578,45 +515,52 @@ Questa appendice descrive le istruzioni di compilazione della sezione `mappatura
 
 L’obiettivo della sezione `mappatura stati` è quello di supportare gli Enti nella definizione delle caratteristiche dell'e-service - e quindi del corrispettivo Attestato Elettronico di Attributi (EAA) - in termini di stati che potrebbero caratterizzare l’EAA nel corso del suo ciclo di vita.
 
-**Valori ammessi per `stato` e uso in OpenAPI.** Il campo `stato` di ogni elemento dell'array può assumere solo: **Valido**, **Non Valido**, **Sospeso**, **Scaduto**. Sul canale tecnico, il campo `status` dei dataset nell'OpenAPI Fonte Autentica (`OAS3-PDND-AS.yaml`) resta limitato a **VALID**, **INVALID**, **SUSPENDED**; per la correlazione con i metadati di scadenza vedi il paragrafo *Corrispondenza con l'API Fonte Autentica* in [Step 1 | Progettazione caratteristiche EAA](#step-1--progettazione-caratteristiche-eaa).
+**Valori ammessi per `stato` e uso in OpenAPI.** Il campo `stato` di ogni elemento dell'array può assumere solo i valori letterali **`Valido`**, **`Non Valido`**, **`Sospeso`**, **`Scaduto`** (nell'ordine fisso previsto dal template). Per compatibilità con file già esportati, lo schema accetta anche la variante **`Non valido`** (v minuscola) al posto di **Non Valido** per il secondo elemento dell'array. Sul canale tecnico, il campo `status` dei dataset nell'OpenAPI Fonte Autentica (`OAS3-PDND-AS.yaml`) resta limitato a **VALID**, **INVALID**, **SUSPENDED**; per la correlazione con i metadati di scadenza vedi il paragrafo *Corrispondenza con l'API Fonte Autentica* in [Step 1 | Progettazione caratteristiche EAA](#step-1--progettazione-caratteristiche-eaa).
+
+Per ciascuno dei quattro stati, il modulo prevede una **descrizione** testuale fissa (vincolata dallo schema): personalizza i messaggi rivolti all'utente tramite **`azione utente`**, **`note`** e, se utile, il campo opzionale **`messaggio`** (testo informativo aggiuntivo in IT-Wallet).
 
 **Istruzioni di compilazione**
 
-1. Mappa la condizione di applicabilità di ciascuno stato relativamente all'attestato in analisi;
-2. Descrivi l'azione necessaria per ripristinare lo stato di validità all’interno del campo "causa" (es. Chiedere la riemissione del documento presso uffici fisici / in digitale);  
-3. Definisci l’ ”azione utente” da condividere con l'utente (es. I tuoi dati sono stati aggiornati nella banca dati ANIS, scarica la nuova versione digitale del documento). Usa il campo "Note" per aggiungere ulteriori informazioni utili o una spiegazione del perché proponiamo all'utente di compiere un'azione specifica. 
-4. Per approfondimenti: [Ciclo di Vita degli Attestati Elettronici](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/credential-revocation.html).
+1. Mappa la condizione di applicabilità di ciascuno stato relativamente all'attestato in analisi (`applicabile`: `true` / `false`);
+2. Il campo **descrizione** per ciascuno stato è quello predefinito del template (vincolato dallo schema e non modificabile); usa **`azione utente`**, **`note`** e opzionalmente **`messaggio`** per chiarire al cittadino cosa fare;
+3. Definisci l'**azione utente** da condividere con l'utente (es. «I tuoi dati sono stati aggiornati nella banca dati ANIS, scarica la nuova versione digitale del documento»). Usa il campo **note** per ulteriori indicazioni operative;
+4. Se serve un messaggio dedicato in app oltre a descrizione e azione utente, valorizza opzionalmente **messaggio**; altrimenti ometti il campo o lascialo vuoto;
+5. Per approfondimenti: [Ciclo di Vita degli Attestati Elettronici](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/credential-revocation.html).
 
+Estratto strutturale (nomi campo come nel JSON del modulo; `messaggio` è opzionale):
+
+```json
 "mappatura stati": [
-    {
-      "stato": "Valido",
-      "descrizione": "L'EAA è valido e può essere utilizzato",
-      "applicabile": true,
-      "azione_utente": "",
-      "messaggio": "",
-      "note": ""
-    },
-    {
-      "stato": "Non Valido",
-      "descrizione": "L'EAA non è più valido e dunque non può essere più utilizzato",
-      "applicabile": false,
-      "azione_utente": "L'utente deve scaricare nuovamente l'EAA in app",
-      "messaggio": "",
-      "note": ""
-    },
-    {
-      "stato": "Sospeso",
-      "descrizione": "L'EAA è sospeso e non può essere temporaneamente utilizzato",
-      "applicabile": false,
-      "azione_utente": "",
-      "messaggio": "",
-      "note": ""
-    },
-    {
-      "stato": "Scaduto",
-      "descrizione": "L'EAA è scaduto e necessita una riemissione",
-      "applicabile": false,
-
+  {
+    "stato": "Valido",
+    "descrizione": "L'EAA è valido e può essere utilizzato",
+    "applicabile": true,
+    "azione utente": "",
+    "note": ""
+  },
+  {
+    "stato": "Non Valido",
+    "descrizione": "L'EAA non è più valido e dunque non può essere più utilizzato",
+    "applicabile": false,
+    "azione utente": "L'utente deve scaricare nuovamente l'EAA in app",
+    "note": ""
+  },
+  {
+    "stato": "Sospeso",
+    "descrizione": "L'EAA è sospeso e non può essere temporaneamente utilizzato",
+    "applicabile": false,
+    "azione utente": "",
+    "note": ""
+  },
+  {
+    "stato": "Scaduto",
+    "descrizione": "L'EAA ha superato la data di scadenza amministrativa e richiede rinnovo o nuova emissione",
+    "applicabile": false,
+    "azione utente": "",
+    "note": ""
+  }
+]
+```
 
 ## Appendice E – Assistenza
 
@@ -632,7 +576,7 @@ Nello specifico, l'Ente deve contribuire al [modello di assistenza](https://ital
 
 - Referenti: fornisci e mantieni aggiornati, i dati di contatto (nome, cognome, email, telefono) di almeno 1 referente per l’assistenza agli utenti, 1 referente in ambito applicativo e 1 referente in ambito sistemistico che possano prontamente collaborare con il Fornitore di Attestati Elettronici di Attributi (IPZS per gli Attestati Elettronici di interesse pubblico) e con il Fornitore di Wallet (PagoPA per la soluzione IT-Wallet pubblica) per la risoluzione congiunta di segnalazioni degli utenti e/o malfunzionamenti tra i servizi. 
 - Canali: fornisci almeno un canale di assistenza (es. e-mail assistenza, numero di telefono, etc.) di responsabilità dell’Ente che rappresenti, nel ruolo di Titolare di Fonte Autentica, a cui si possa indirizzare l’utente per quelle richieste di supporto e segnalazioni non gestibili all’interno della soluzione IT-Wallet.  
-- FAQ: contribuisci alla definizione dei contenuti utili a predisporre le domande più frequenti e comuni relative all’EAA in analisi, dall’emissione all’utilizzo fino alla gestione del suo ciclo vita. 
+- FAQ: per ciascuna voce compila **`risposta`** (stringa, booleano o null); **`domanda`** e **`esempio`** sono testi guida preimpostati nello stesso ordine usato per i casi d'uso (`domanda`, poi `risposta` da valorizzare, poi `esempio` con esempio di risposta).
 - testi informativi (opzionale): se ritenuto utile o necessario dal Titolare di Fonte Autentica, approfondisci la casistica all’interno delle [Specifiche Tecniche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/functionalities.html#ottenimento-dal-catalogo-dell-istanza-del-wallet)); se ritenuto utile, definisci le informazioni essenziali da esporre agli utenti nella soluzione IT-Wallet prima di avviare l’ottenimento dell’EAA e sintetizzale in un testo adeguato. In particolare: 
 1) Poniti le seguenti domande (puoi fare riferimento alla sezione `casi d'uso`, già compilata):  A chi si rivolge o a chi è dedicato l’EAA? (es. pensionati, studenti, etc.) Sussistono dei limiti, delle restrizioni o dei prerequisiti per poter ottenere l’EAA? (es. aver ottenuto la versione fisica del documento, aver conseguito la titolarità al documento dopo il 2020, etc.) Dove e come è possibile usare l’EAA? 
 2) Formula un testo informativo rivolto all’utente a partire dai contenuti sopra raccolti, assicurandoti che sia chiaro, semplice, diretto e conciso (circa 300 - 450 caratteri, spazi inclusi).

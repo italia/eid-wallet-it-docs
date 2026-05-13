@@ -89,9 +89,13 @@ I file compilati fanno riferimento allo schema tramite `$schema`; in caso di agg
 
 - Lo schema valida l'intera struttura del file, incluse le sezioni **casi d'uso**, **assistenza** e **e_service**; queste ultime due sono obbligatorie e validate dallo schema.
 - **Sezione casi d'uso**: `casi_d_uso` è obbligatoria e unifica i casi documento esistente e non; i campi opzionali si compilano in base al caso.
+- **`casi d'uso` → `target utenti`**: la proprietà canonica è **`utenti doc preesistente`**.
 - **`metadata`**: `nome_ente_titolare` e `nome_eaa` sono obbligatori con `minLength: 1` (non possono essere stringa vuota).
-- **`campo_risposta`**: ogni domanda richiede `domanda` e `risposta`; `suggerimento` è facoltativo.
-- **`assistenza.canali`**: ogni elemento ha `tipo` (enum: "Email assistenza", "Numero telefonico", "Altro"), `risposta` (stringa: indirizzo email, numero di telefono o descrizione a seconda del tipo; vuota se il canale non è utilizzato) e `note` (stringa); per tipo "Email assistenza" con risposta non vuota, lo schema valida il formato email.
+- **`campo_risposta`** (casi d'uso e stessa forma per le FAQ in `assistenza.faq`): ogni voce richiede **`domanda`**, **`risposta`** e **`esempio`** (`risposta` stringa, booleano o null; in bozza testuale di solito stringa vuota).
+- **`assistenza.canali`**: ogni elemento ha `tipo` (enum: "Email assistenza", "Numero telefonico", "Altro") e `dettaglio canale`; il campo `note` è **opzionale**. Per tipo "Email assistenza" con `dettaglio canale` non vuoto, lo schema valida il formato email.
 - **`assistenza.referenti`**: ogni elemento ha `ruolo`, `nome`, `cognome`, `email`, `telefono` (tutti stringa).
-- **`assistenza.faq`**: ogni elemento ha `domanda` e `risposta` (stringa).
+- **`assistenza.faq`**: ogni voce ha `domanda`, `risposta`, `esempio` (stessa struttura di `campo_risposta`).
+- **`data model`**: array di oggetti `data_model_campo` (campi del dataset in risposta); non usare più il wrapper `dataset` né il campo `versione` a questo livello (contratto 1.0 come da schema/Specifiche). Il campo **`lunghezza massima caratteri`** è opzionale in `data_model_campo` (obbligatorio invece per `parametri input` / `parametro_input`).
+- **`lista attributi`** (opzionale, radice del JSON di progettazione): array di oggetti con `categoria`, `parametro`, `nome campo`, `descrizione` (definizione `lista_attributi_riga` nello schema).
+- **Nomi proprietà**: nelle chiavi del JSON (in particolare sotto `casi d'uso`) non usare **doppi spazi** tra le parole; lo schema e il template ufficiale usano un solo spazio (es. `canali richiesta doc preesistente`, non `canali richiesta  doc preesistente`).
 - **`e_service`**: obbligatorie le sezioni `pdnd_metadata`, `request` (con `parametri_input`), `response` (con `versione` e `dataset`, ossia il data model dei dati in risposta), `mappatura_errori` e `stati` (array di primo livello sotto `e_service`). Facoltativa `lista_nome_campo`.

@@ -1,9 +1,9 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/italia/eid-wallet-it-docs/handbooks/it/authentic-sources/json-schemas/schema-validazione-form-onboarding-fonte-autentica.schema.json",
-  "$version": "1.1.2",
+  "$version": "1.2.2",
   "title": "Schema validazione Fonte Autentica",
-  "description": "Schema di validazione per progettazione-caratteristiche-eaa.json. Ordine sezioni: metadata, casi d'uso, pdnd metadata, request, data model, mappatura errori, mappatura stati, assistenza.",
+  "description": "Schema di validazione per progettazione-caratteristiche-eaa.json. Ordine sezioni di primo livello: metadata, casi d'uso, pdnd metadata, request, data model (array di campi dataset), mappatura errori, mappatura stati, lista attributi (opzionale), assistenza. Nella sezione assistenza l'ordine è: referenti, canali, faq, testi informativi.",
   "type": "object",
   "required": [
     "metadata",
@@ -44,6 +44,9 @@
         }
       },
       "title": "Denominazioni ufficiali per Ente e EAA"
+    },
+    "casi d'uso": {
+      "$ref": "#/$defs/casi_d_uso"
     },
     "pdnd metadata": {
       "type": "object",
@@ -92,26 +95,12 @@
       }
     },
     "data model": {
-      "type": "object",
-      "required": [
-        "versione",
-        "dataset"
-      ],
-      "description": "Contratto della response dell'endpoint Fonte Autentica (campi del dataset restituito)",
-      "properties": {
-        "versione": {
-          "type": "string",
-          "const": "1.0",
-          "description": "Versione del contratto di response dell'endpoint Fonte Autentica (valore fisso per il template corrente)."
-        },
-        "dataset": {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/data_model_campo"
-          }
-        }
-      },
-      "title": "Data Model"
+      "type": "array",
+      "title": "Data Model",
+      "description": "Elenco dei campi del dataset restituito dall'endpoint Fonte Autentica (contratto di response **1.0** come da Specifiche Tecniche; non è richiesto un campo `versione` nel JSON). Ogni elemento segue la definizione `data_model_campo`.",
+      "items": {
+        "$ref": "#/$defs/data_model_campo"
+      }
     },
     "mappatura errori": {
       "type": "array",
@@ -229,8 +218,8 @@
     },
     "mappatura stati": {
       "type": "array",
-      "minItems": 3,
-      "maxItems": 3,
+      "minItems": 4,
+      "maxItems": 4,
       "prefixItems": [
         {
           "allOf": [
@@ -255,14 +244,28 @@
               "$ref": "#/$defs/mappatura_stato"
             },
             {
-              "properties": {
-                "stato": {
-                  "const": "Non valido"
+              "oneOf": [
+                {
+                  "properties": {
+                    "stato": {
+                      "const": "Non Valido"
+                    },
+                    "descrizione": {
+                      "const": "L'EAA non è più valido e dunque non può essere più utilizzato"
+                    }
+                  }
                 },
-                "descrizione": {
-                  "const": "L'EAA non è più valido e dunque non può essere più utilizzato"
+                {
+                  "properties": {
+                    "stato": {
+                      "const": "Non valido"
+                    },
+                    "descrizione": {
+                      "const": "L'EAA non è più valido e dunque non può essere più utilizzato"
+                    }
+                  }
                 }
-              }
+              ]
             }
           ]
         },
@@ -282,18 +285,38 @@
               }
             }
           ]
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "#/$defs/mappatura_stato"
+            },
+            {
+              "properties": {
+                "stato": {
+                  "const": "Scaduto"
+                },
+                "descrizione": {
+                  "const": "L'EAA ha superato la data di scadenza amministrativa e richiede rinnovo o nuova emissione"
+                }
+              }
+            }
+          ]
         }
       ],
       "title": "Mappatura stati"
     },
-    "lista nome campo": {
+    "lista attributi": {
       "type": "array",
+      "description": "Elenco opzionale per organizzare e descrivere gli attributi dell'EAA in vista (es. categorie, parametri, etichette UI); ogni riga segue lo stesso modello di `lista_attributi_riga`.",
       "items": {
-        "$ref": "#/$defs/lista_nome_campo_riga"
+        "$ref": "#/$defs/lista_attributi_riga"
       }
     },
     "assistenza": {
       "type": "object",
+      "title": "Assistenza",
+      "description": "Ordine di compilazione e presentazione: referenti, canali, FAQ, testi informativi.",
       "required": [
         "referenti",
         "canali",
@@ -302,6 +325,7 @@
       ],
       "properties": {
         "referenti": {
+          "title": "Referenti",
           "type": "array",
           "items": {
             "$ref": "#/$defs/referente_assistenza"
@@ -352,6 +376,7 @@
           ]
         },
         "canali": {
+          "title": "Canali",
           "type": "array",
           "minItems": 3,
           "maxItems": 3,
@@ -401,6 +426,7 @@
           ]
         },
         "faq": {
+          "title": "FAQ",
           "oneOf": [
             {
               "type": "array",
@@ -417,15 +443,13 @@
           ]
         },
         "testi informativi": {
+          "title": "Testi informativi",
           "type": "array",
           "items": {
             "$ref": "#/$defs/testo_informativo_item"
           }
         }
       }
-    },
-    "casi d'uso": {
-      "$ref": "#/$defs/casi_d_uso"
     }
   },
   "$defs": {
@@ -439,7 +463,6 @@
         "esempio campo compilato",
         "obbligatorio",
         "tipologia",
-        "lunghezza massima caratteri",
         "note"
       ],
       "properties": {
@@ -468,7 +491,7 @@
         "lunghezza massima caratteri": {
           "type": "integer",
           "minimum": 0,
-          "description": "Lunghezza massima in caratteri (intero senza segno)"
+          "description": "Lunghezza massima in caratteri quando il dato è serializzato come stringa (es. tipologie testuali). Opzionale: omettere se non applicabile al tipo di attributo; in compilazione si consiglia di valorizzarlo per i campi con limite noto."
         },
         "note": {
           "type": "string"
@@ -568,7 +591,7 @@
         },
         "applicabile": {
           "type": "boolean",
-          "description": "true per codici obbligatori (200, 400, 401, 404, 429, 500, 503); false per codici opzionali (403, 405, 406, 408, 409, 410, 413, 414, 421, 431, 451, 501, 540, 541)."
+          "description": "Obbligatoriamente true se il codice è tra quelli obbligatori del template (200, 400, 401, 404, 429, 500, 503); obbligatoriamente false per qualsiasi altro codice ammesso dall'enum (codici opzionali o futuri aggiunti all'enum ma non nella lista obbligatoria)."
         },
         "causa": {
           "type": "string",
@@ -608,35 +631,8 @@
                 "const": true
               }
             }
-          }
-        },
-        {
-          "if": {
-            "properties": {
-              "codice": {
-                "enum": [
-                  403,
-                  405,
-                  406,
-                  408,
-                  409,
-                  410,
-                  413,
-                  414,
-                  421,
-                  431,
-                  451,
-                  501,
-                  540,
-                  541
-                ]
-              }
-            },
-            "required": [
-              "codice"
-            ]
           },
-          "then": {
+          "else": {
             "properties": {
               "applicabile": {
                 "const": false
@@ -653,7 +649,6 @@
         "descrizione",
         "applicabile",
         "azione utente",
-        "messaggio",
         "note"
       ],
       "properties": {
@@ -661,9 +656,12 @@
           "type": "string",
           "enum": [
             "Valido",
+            "Non Valido",
             "Non valido",
-            "Sospeso"
-          ]
+            "Sospeso",
+            "Scaduto"
+          ],
+          "description": "Valore letterale dello stato: **Non Valido** è il valore canonico (come in documentazione); è accettata anche la variante **Non valido** per compatibilità con JSON già esportati. Valori: Valido, Non Valido | Non valido, Sospeso, Scaduto."
         },
         "descrizione": {
           "type": "string",
@@ -678,14 +676,15 @@
           "description": "Messaggio per l'utente"
         },
         "messaggio": {
-          "type": "string"
+          "type": "string",
+          "description": "Testo informativo aggiuntivo per la soluzione IT-Wallet (opzionale; se assente o vuoto non viene esposto alcun messaggio dedicato oltre a descrizione/azione utente)."
         },
         "note": {
           "type": "string"
         }
       }
     },
-    "lista_nome_campo_riga": {
+    "lista_attributi_riga": {
       "type": "object",
       "required": [
         "categoria",
@@ -710,19 +709,31 @@
     },
     "campo_risposta": {
       "type": "object",
+      "description": "Domanda, campo risposta (testo, booleano JSON o null in bozza) ed esempio guida; in anteprima/form l'ordine consigliato è domanda → risposta → esempio.",
       "required": [
         "domanda",
-        "risposta"
+        "risposta",
+        "esempio"
       ],
       "properties": {
         "domanda": {
-          "type": "string"
-        },
-        "suggerimento": {
-          "type": "string"
+          "type": "string",
+          "description": "Testo della domanda",
+          "propertyOrder": 10
         },
         "risposta": {
-          "type": "string"
+          "description": "Risposta dell'Ente: stringa (testo libero), booleano (domande sì/no) o null in bozza non ancora compilata.",
+          "propertyOrder": 20,
+          "type": [
+            "string",
+            "boolean",
+            "null"
+          ]
+        },
+        "esempio": {
+          "type": "string",
+          "description": "Esempio di risposta compilata (guida per l'Ente)",
+          "propertyOrder": 30
         }
       }
     },
@@ -730,8 +741,7 @@
       "type": "object",
       "required": [
         "tipo",
-        "dettaglio canale",
-        "note"
+        "dettaglio canale"
       ],
       "properties": {
         "tipo": {
@@ -744,7 +754,8 @@
           "description": "Tipo di canale"
         },
         "note": {
-          "type": "string"
+          "type": "string",
+          "description": "Note aggiuntive sul canale (opzionale)."
         },
         "dettaglio canale": {
           "type": "string",
@@ -779,24 +790,6 @@
               }
             ]
           }
-        }
-      }
-    },
-    "campo_booleano": {
-      "type": "object",
-      "required": [
-        "domanda",
-        "risposta"
-      ],
-      "properties": {
-        "domanda": {
-          "type": "string"
-        },
-        "suggerimento": {
-          "type": "string"
-        },
-        "risposta": {
-          "type": "boolean"
         }
       }
     },
@@ -848,53 +841,93 @@
     },
     "faq_item": {
       "type": "object",
+      "description": "Voce FAQ: stessa struttura di campo_risposta (domanda, risposta, esempio; risposta stringa, booleano o null).",
       "required": [
         "domanda",
-        "risposta"
+        "risposta",
+        "esempio"
       ],
       "properties": {
         "domanda": {
-          "type": "string"
+          "type": "string",
+          "description": "Testo della domanda",
+          "propertyOrder": 10
         },
         "risposta": {
-          "type": "string"
+          "description": "Risposta dell'Ente: stringa (testo libero), booleano (domande sì/no) o null in bozza non ancora compilata.",
+          "propertyOrder": 20,
+          "type": [
+            "string",
+            "boolean",
+            "null"
+          ]
+        },
+        "esempio": {
+          "type": "string",
+          "description": "Esempio di risposta compilata",
+          "propertyOrder": 30
         }
       }
     },
     "target_utenti": {
-      "type": "object",
-      "required": [
-        "presenza doc preesistente"
-      ],
-      "properties": {
-        "presenza doc preesistente": {
-          "$ref": "#/$defs/campo_booleano"
+      "allOf": [
+        {
+          "type": "object",
+          "required": [
+            "presenza doc preesistente"
+          ],
+          "properties": {
+            "presenza doc preesistente": {
+              "$ref": "#/$defs/campo_risposta"
+            },
+            "utenti doc preesistente": {
+              "$ref": "#/$defs/campo_risposta",
+              "description": "Chi può richiedere il documento preesistente (nome chiave canonico, senza spazio finale)."
+            },
+            "utenti doc preesistente ": {
+              "$ref": "#/$defs/campo_risposta",
+              "description": "Deprecato: stessa semantica di «utenti doc preesistente»; accettato solo per compatibilità con moduli già esportati. Non usare nei nuovi file."
+            },
+            "utenti doc preesistente eaa": {
+              "$ref": "#/$defs/campo_risposta"
+            },
+            "utenti eaa": {
+              "$ref": "#/$defs/campo_risposta"
+            },
+            "documento fisico preesistente": {
+              "$ref": "#/$defs/campo_risposta"
+            },
+            "chi puo richiedere": {
+              "$ref": "#/$defs/campo_risposta"
+            },
+            "prerequisiti": {
+              "$ref": "#/$defs/campo_risposta"
+            },
+            "volume rilascio": {
+              "$ref": "#/$defs/campo_risposta"
+            },
+            "limitazioni estensioni": {
+              "$ref": "#/$defs/campo_risposta"
+            }
+          }
         },
-        "utenti doc preesistente ": {
-          "$ref": "#/$defs/campo_risposta"
-        },
-        "utenti doc preesistente eaa": {
-          "$ref": "#/$defs/campo_risposta"
-        },
-        "utenti eaa": {
-          "$ref": "#/$defs/campo_risposta"
-        },
-        "documento fisico preesistente": {
-          "$ref": "#/$defs/campo_booleano"
-        },
-        "chi puo richiedere": {
-          "$ref": "#/$defs/campo_risposta"
-        },
-        "prerequisiti": {
-          "$ref": "#/$defs/campo_risposta"
-        },
-        "volume rilascio": {
-          "$ref": "#/$defs/campo_risposta"
-        },
-        "limitazioni estensioni": {
-          "$ref": "#/$defs/campo_risposta"
+        {
+          "not": {
+            "allOf": [
+              {
+                "required": [
+                  "utenti doc preesistente"
+                ]
+              },
+              {
+                "required": [
+                  "utenti doc preesistente "
+                ]
+              }
+            ]
+          }
         }
-      }
+      ]
     },
     "emissione_formato": {
       "type": "object",
@@ -912,7 +945,7 @@
         "prerequisiti possesso doc preesistente": {
           "$ref": "#/$defs/campo_risposta"
         },
-        "canali richiesta  doc preesistente": {
+        "canali richiesta doc preesistente": {
           "$ref": "#/$defs/campo_risposta"
         },
         "formato doc preesistente": {
@@ -921,7 +954,7 @@
         "volume rilascio doc preesistente": {
           "$ref": "#/$defs/campo_risposta"
         },
-        "richieste fisico vs digitale  doc preesistente": {
+        "richieste fisico vs digitale doc preesistente": {
           "$ref": "#/$defs/campo_risposta"
         },
         "variazioni dati doc preesistente eaa": {
@@ -937,13 +970,13 @@
           "$ref": "#/$defs/campo_risposta"
         },
         "eaa multipla o singola": {
-          "$ref": "#/$defs/campo_booleano"
+          "$ref": "#/$defs/campo_risposta"
         },
         "dominio": {
           "$ref": "#/$defs/campo_risposta"
         },
         "interesse pubblico": {
-          "$ref": "#/$defs/campo_booleano"
+          "$ref": "#/$defs/campo_risposta"
         },
         "interesse pubblico motivazione": {
           "$ref": "#/$defs/campo_risposta"
@@ -961,7 +994,7 @@
           "$ref": "#/$defs/campo_risposta"
         },
         "possesso documento": {
-          "$ref": "#/$defs/campo_booleano"
+          "$ref": "#/$defs/campo_risposta"
         },
         "possesso documento condizioni": {
           "$ref": "#/$defs/campo_risposta"
@@ -976,10 +1009,10 @@
           "$ref": "#/$defs/campo_risposta"
         },
         "eaa univoca": {
-          "$ref": "#/$defs/campo_booleano"
+          "$ref": "#/$defs/campo_risposta"
         },
         "identificazione utente": {
-          "$ref": "#/$defs/campo_booleano"
+          "$ref": "#/$defs/campo_risposta"
         },
         "identificazione utente motivazione": {
           "$ref": "#/$defs/campo_risposta"
@@ -998,7 +1031,7 @@
           "$ref": "#/$defs/campo_risposta"
         },
         "interesse pubblico eaa": {
-          "$ref": "#/$defs/campo_booleano"
+          "$ref": "#/$defs/campo_risposta"
         },
         "interesse pubblico motivazione eaa": {
           "$ref": "#/$defs/campo_risposta"
@@ -1031,7 +1064,7 @@
           "$ref": "#/$defs/campo_risposta"
         },
         "rinnovo doc preesistente": {
-          "$ref": "#/$defs/campo_booleano"
+          "$ref": "#/$defs/campo_risposta"
         },
         "modalita rinnovo doc preesistente": {
           "$ref": "#/$defs/campo_risposta"
@@ -1067,7 +1100,7 @@
           "$ref": "#/$defs/campo_risposta"
         },
         "rinnovo": {
-          "$ref": "#/$defs/campo_booleano"
+          "$ref": "#/$defs/campo_risposta"
         },
         "rinnovo procedura": {
           "$ref": "#/$defs/campo_risposta"
@@ -1079,13 +1112,13 @@
           "$ref": "#/$defs/campo_risposta"
         },
         "eaa tutti contesti": {
-          "$ref": "#/$defs/campo_booleano"
+          "$ref": "#/$defs/campo_risposta"
         },
         "eaa tutti contesti dettaglio": {
           "$ref": "#/$defs/campo_risposta"
         },
         "estensione contesti": {
-          "$ref": "#/$defs/campo_booleano"
+          "$ref": "#/$defs/campo_risposta"
         },
         "estensione contesti dettaglio": {
           "$ref": "#/$defs/campo_risposta"
@@ -1100,39 +1133,39 @@
       ],
       "properties": {
         "gratuito o pagamento doc preesistente": {
-          "$ref": "#/$defs/campo_booleano"
+          "$ref": "#/$defs/campo_risposta"
         },
         "pagamento rinnovo doc preesistente": {
-          "$ref": "#/$defs/campo_booleano"
+          "$ref": "#/$defs/campo_risposta"
         },
         "modalita pagamento doc preesistente": {
           "$ref": "#/$defs/campo_risposta"
         },
         "gratuito o pagamento eaa": {
-          "$ref": "#/$defs/campo_booleano"
+          "$ref": "#/$defs/campo_risposta"
         },
         "gratuito o pagamento": {
-          "$ref": "#/$defs/campo_booleano"
+          "$ref": "#/$defs/campo_risposta"
         },
         "modalita pagamento": {
           "$ref": "#/$defs/campo_risposta"
         },
         "pagamento rinnovo": {
-          "$ref": "#/$defs/campo_booleano"
+          "$ref": "#/$defs/campo_risposta"
         }
       }
     },
     "legale_privacy": {
       "type": "object",
       "required": [
-        "normativa  doc preesistente",
+        "normativa doc preesistente",
         "normativa eaa",
         "titolarita dati eaa",
         "dati sensibili eaa",
         "dati sensibili eaa motivazione"
       ],
       "properties": {
-        "normativa  doc preesistente": {
+        "normativa doc preesistente": {
           "$ref": "#/$defs/campo_risposta"
         },
         "normativa eaa": {
@@ -1142,7 +1175,7 @@
           "$ref": "#/$defs/campo_risposta"
         },
         "dati sensibili eaa": {
-          "$ref": "#/$defs/campo_booleano"
+          "$ref": "#/$defs/campo_risposta"
         },
         "dati sensibili eaa motivazione": {
           "$ref": "#/$defs/campo_risposta"
@@ -1154,7 +1187,7 @@
           "$ref": "#/$defs/campo_risposta"
         },
         "dati sensibili": {
-          "$ref": "#/$defs/campo_booleano"
+          "$ref": "#/$defs/campo_risposta"
         },
         "dati sensibili motivazione": {
           "$ref": "#/$defs/campo_risposta"
