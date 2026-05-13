@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/italia/eid-wallet-it-docs/handbooks/it/authentic-sources/json-schemas/schema-validazione-form-onboarding-fonte-autentica.schema.json",
-  "$version": "1.1.1",
+  "$version": "1.1.2",
   "title": "Schema validazione Fonte Autentica",
   "description": "Schema di validazione per progettazione-caratteristiche-eaa.json. Ordine sezioni: metadata, casi d'uso, pdnd metadata, request, data model, mappatura errori, mappatura stati, assistenza.",
   "type": "object",
@@ -23,7 +23,8 @@
       "type": "object",
       "required": [
         "nome ente titolare",
-        "nome eaa"
+        "nome eaa",
+        "versione"
       ],
       "properties": {
         "nome ente titolare": {
@@ -37,14 +38,9 @@
           "description": "Nome ufficiale dell'EAA, es. Patente di guida"
         },
         "versione": {
-          "type": "string"
-        },
-        "readonly": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "Elenco opzionale dei campi allo stesso livello da considerare non modificabili."
+          "type": "string",
+          "const": "1.1.0",
+          "description": "Versione del template di progettazione (valore fisso; aggiornare lo schema se si incrementa il template)."
         }
       },
       "title": "Denominazioni ufficiali per Ente e EAA"
@@ -105,20 +101,14 @@
       "properties": {
         "versione": {
           "type": "string",
-          "description": "Versione del contratto di response (es. 1.0, 1.1)"
+          "const": "1.0",
+          "description": "Versione del contratto di response dell'endpoint Fonte Autentica (valore fisso per il template corrente)."
         },
         "dataset": {
           "type": "array",
           "items": {
             "$ref": "#/$defs/data_model_campo"
           }
-        },
-        "readonly": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "Elenco opzionale dei campi allo stesso livello da considerare non modificabili."
         }
       },
       "title": "Data Model"
@@ -239,9 +229,61 @@
     },
     "mappatura stati": {
       "type": "array",
-      "items": {
-        "$ref": "#/$defs/mappatura_stato"
-      },
+      "minItems": 3,
+      "maxItems": 3,
+      "prefixItems": [
+        {
+          "allOf": [
+            {
+              "$ref": "#/$defs/mappatura_stato"
+            },
+            {
+              "properties": {
+                "stato": {
+                  "const": "Valido"
+                },
+                "descrizione": {
+                  "const": "L'EAA è valido e può essere utilizzato"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "#/$defs/mappatura_stato"
+            },
+            {
+              "properties": {
+                "stato": {
+                  "const": "Non valido"
+                },
+                "descrizione": {
+                  "const": "L'EAA non è più valido e dunque non può essere più utilizzato"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "#/$defs/mappatura_stato"
+            },
+            {
+              "properties": {
+                "stato": {
+                  "const": "Sospeso"
+                },
+                "descrizione": {
+                  "const": "L'EAA è sospeso e non può essere temporaneamente utilizzato"
+                }
+              }
+            }
+          ]
+        }
+      ],
       "title": "Mappatura stati"
     },
     "lista nome campo": {
@@ -311,9 +353,52 @@
         },
         "canali": {
           "type": "array",
-          "items": {
-            "$ref": "#/$defs/canale_assistenza"
-          }
+          "minItems": 3,
+          "maxItems": 3,
+          "prefixItems": [
+            {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/canale_assistenza"
+                },
+                {
+                  "properties": {
+                    "tipo": {
+                      "const": "Email assistenza"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/canale_assistenza"
+                },
+                {
+                  "properties": {
+                    "tipo": {
+                      "const": "Numero telefonico"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/canale_assistenza"
+                },
+                {
+                  "properties": {
+                    "tipo": {
+                      "const": "Altro"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
         },
         "faq": {
           "oneOf": [
@@ -453,8 +538,30 @@
       "properties": {
         "codice": {
           "type": "integer",
-          "minimum": 0,
-          "description": "Codice HTTP o di dominio (es. 200, 404, 540). Obbligatorietà di applicabile vincolata da allOf sotto."
+          "enum": [
+            200,
+            400,
+            401,
+            403,
+            404,
+            405,
+            406,
+            408,
+            409,
+            410,
+            413,
+            414,
+            421,
+            429,
+            431,
+            451,
+            500,
+            501,
+            503,
+            540,
+            541
+          ],
+          "description": "Codice HTTP o di dominio ammesso nel template (coppia codice/applicabile fissata dallo schema)."
         },
         "esito": {
           "type": "string"
@@ -473,12 +580,6 @@
         },
         "note": {
           "type": "string"
-        },
-        "readonly": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
         }
       },
       "allOf": [
@@ -505,6 +606,40 @@
             "properties": {
               "applicabile": {
                 "const": true
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "codice": {
+                "enum": [
+                  403,
+                  405,
+                  406,
+                  408,
+                  409,
+                  410,
+                  413,
+                  414,
+                  421,
+                  431,
+                  451,
+                  501,
+                  540,
+                  541
+                ]
+              }
+            },
+            "required": [
+              "codice"
+            ]
+          },
+          "then": {
+            "properties": {
+              "applicabile": {
+                "const": false
               }
             }
           }
@@ -547,12 +682,6 @@
         },
         "note": {
           "type": "string"
-        },
-        "readonly": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
         }
       }
     },
@@ -623,12 +752,6 @@
         },
         "esempio": {
           "type": "string"
-        },
-        "readonly": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
         }
       },
       "if": {
@@ -720,12 +843,6 @@
               "maxLength": 25
             }
           ]
-        },
-        "readonly": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
         }
       }
     },

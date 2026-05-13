@@ -3,10 +3,7 @@
   "metadata": {
     "nome ente titolare": "",
     "nome eaa": "",
-    "versione": "1.1.0",
-    "readonly": [
-      "versione"
-    ]
+    "versione": "1.1.0"
   },
   "assistenza": {
     "referenti": [
@@ -15,53 +12,38 @@
         "nome": "",
         "cognome": "",
         "email": "",
-        "telefono": "",
-        "readonly": [
-          "ruolo"
-        ]
+        "telefono": ""
       },
       {
         "ruolo": "Referente ambito applicativo",
         "nome": "",
         "cognome": "",
         "email": "",
-        "telefono": "",
-        "readonly": [
-          "ruolo"
-        ]
+        "telefono": ""
       },
       {
         "ruolo": "Referente ambito assistenza",
         "nome": "",
         "cognome": "",
         "email": "",
-        "telefono": "",
-        "readonly": [
-          "ruolo"
-        ]
+        "telefono": ""
       }
     ],
     "canali": [
       {
-        "tipo canale": "Email assistenza",
         "note": "",
         "dettaglio canale": "",
-        "readonly": [
-          "tipo"
-        ]
+        "tipo": "Email assistenza"
       },
       {
-        "tipo canale": "Numero telefonico",
         "dettaglio canale": "",
         "note": "",
-        "readonly": [
-          "tipo"
-        ]
+        "tipo": "Numero telefonico"
       },
       {
-        "tipo canale": "Altro",
         "dettaglio canale": "",
-        "note": ""
+        "note": "",
+        "tipo": "Altro"
       }
     ],
     "faq": {
@@ -112,7 +94,7 @@
       },
       "risorse utili": {
         "domanda": "Sono disponibili link o repository ad eventuale documentazione di assistenza pertinente al documento fisico e all'EAA? Condividi a seguire il materiale utile?",
-        "esempio": "Knowledge Base /  Repository di FAQ già predisposto / ...",
+        "esempio": "Knowledge Base / Repository di FAQ già predisposto / ...",
         "risposta": ""
       }
     },
@@ -178,12 +160,11 @@
         "esempio campo compilato": "DLNRSL88L51C348G",
         "obbligatorio": true,
         "tipologia": "ALFANUMERICO",
-        "note": ""
+        "note": "",
+        "lunghezza massima caratteri": 16
       }
     ],
-    "readonly": [
-      "versione"
-    ]
+    "versione": "1.0"
   },
   "mappatura errori": [
     {
@@ -192,11 +173,7 @@
       "applicabile": true,
       "causa": "Vengono ritornati correttamente i dati, nessuna risposta di errore. Qualora non ci fossero azioni utente da eseguire, riportare stringa vuota.",
       "azione utente": "",
-      "note": "",
-      "readonly": [
-        "codice",
-        "applicabile"
-      ]
+      "note": ""
     },
     {
       "codice": 400,
@@ -204,11 +181,7 @@
       "applicabile": true,
       "causa": "La richiesta non può essere elaborata: parametri richiesti assenti, valori non validi, richiesta malformata, oppure DPoP proof non valida (ove applicabile).",
       "azione utente": "Verificare i dati inseriti e ripetere l'operazione; se il problema persiste, contattare l'assistenza dell'Ente.",
-      "note": "Allineare il messaggio al dettaglio restituito in application/problem+json (title/detail) ove presente.",
-      "readonly": [
-        "codice",
-        "applicabile"
-      ]
+      "note": "Allineare il messaggio al dettaglio restituito in application/problem+json (title/detail) ove presente."
     },
     {
       "codice": 401,
@@ -216,11 +189,7 @@
       "applicabile": true,
       "causa": "Il voucher o il token di accesso è scaduto, revocato, non valido o la richiesta non risulta autenticata correttamente.",
       "azione utente": "Ripetere il flusso da capo per ottenere un nuovo accesso autorizzato al servizio.",
-      "note": "Coerente con le Specifiche Tecniche su autenticazione verso l'endpoint e-service PDND.",
-      "readonly": [
-        "codice",
-        "applicabile"
-      ]
+      "note": "Coerente con le Specifiche Tecniche su autenticazione verso l'endpoint e-service PDND."
     },
     {
       "codice": 403,
@@ -228,11 +197,7 @@
       "applicabile": false,
       "causa": "Il Fruitore è autenticato ma non ha permesso di accedere alla risorsa o ai dati richiesti.",
       "azione utente": "Rivolgersi all'Ente titolare per verificare abilitazioni e profili di accesso.",
-      "note": "",
-      "readonly": [
-        "codice",
-        "applicabile"
-      ]
+      "note": ""
     },
     {
       "codice": 404,
@@ -240,11 +205,7 @@
       "applicabile": true,
       "causa": "Non sono stati trovati documenti o attestazioni di titolarità per l'utente richiesto, oppure l'endpoint/risorsa indicata non esiste.",
       "azione utente": "Chiudere e riprovare successivamente, dopo aver verificato i prerequisiti (es. titolarità del documento).",
-      "note": "L'utente deve prima acquisire la titolarità del documento per ottenerne la versione digitale, ove pertinente.",
-      "readonly": [
-        "codice",
-        "applicabile"
-      ]
+      "note": "L'utente deve prima acquisire la titolarità del documento per ottenerne la versione digitale, ove pertinente."
     },
     {
       "codice": 405,
@@ -252,11 +213,7 @@
       "applicabile": false,
       "causa": "È stato usato un metodo HTTP non consentito per l'endpoint e-service.",
       "azione utente": "Contattare il referente tecnico: la configurazione del client o del proxy deve usare il metodo previsto dall'OpenAPI.",
-      "note": "Errore tipicamente lato integrazione, non risolvibile dall'utente finale.",
-      "readonly": [
-        "codice",
-        "applicabile"
-      ]
+      "note": "Errore tipicamente lato integrazione, non risolvibile dall'utente finale."
     },
     {
       "codice": 406,
@@ -264,11 +221,7 @@
       "applicabile": false,
       "causa": "Il server non può produrre una risposta compatibile con gli header Accept inviati dal client.",
       "azione utente": "Aggiornare il client secondo i Content-Type accettati dall'API (es. application/json).",
-      "note": "",
-      "readonly": [
-        "codice",
-        "applicabile"
-      ]
+      "note": ""
     },
     {
       "codice": 408,
@@ -276,11 +229,7 @@
       "applicabile": false,
       "causa": "La richiesta non è stata completata entro il tempo massimo previsto (timeout lato server o rete).",
       "azione utente": "Riprovare più tardi; se il problema è ricorrente, segnalare all'assistenza.",
-      "note": "",
-      "readonly": [
-        "codice",
-        "applicabile"
-      ]
+      "note": ""
     },
     {
       "codice": 409,
@@ -288,11 +237,7 @@
       "applicabile": false,
       "causa": "La richiesta è in conflitto con lo stato attuale della risorsa (es. operazione non coerente con lo stato del documento).",
       "azione utente": "Verificare lo stato del documento presso l'Ente e ripetere l'operazione quando ammesso.",
-      "note": "",
-      "readonly": [
-        "codice",
-        "applicabile"
-      ]
+      "note": ""
     },
     {
       "codice": 410,
@@ -300,11 +245,7 @@
       "applicabile": false,
       "causa": "La risorsa richiesta non è più disponibile in modo permanente presso l'URL indicato.",
       "azione utente": "Utilizzare il canale o l'endpoint aggiornato indicato dall'Ente o dalla documentazione PDND.",
-      "note": "",
-      "readonly": [
-        "codice",
-        "applicabile"
-      ]
+      "note": ""
     },
     {
       "codice": 413,
@@ -312,11 +253,7 @@
       "applicabile": false,
       "causa": "Il corpo della richiesta supera i limiti di dimensione accettati dall'endpoint.",
       "azione utente": "Ridurre il payload o contattare il referente tecnico per i limiti previsti.",
-      "note": "",
-      "readonly": [
-        "codice",
-        "applicabile"
-      ]
+      "note": ""
     },
     {
       "codice": 414,
@@ -324,11 +261,7 @@
       "applicabile": false,
       "causa": "L'URI della richiesta eccede la lunghezza massima consentita dal server.",
       "azione utente": "Accorciare query string o parametri; rivedere l'integrazione del client.",
-      "note": "",
-      "readonly": [
-        "codice",
-        "applicabile"
-      ]
+      "note": ""
     },
     {
       "codice": 421,
@@ -336,11 +269,7 @@
       "applicabile": false,
       "causa": "La richiesta è stata diretta a un server che non può produrre una risposta (es. SNI/host non coerente).",
       "azione utente": "Verificare URL, certificati e instradamento con il team infrastrutturale.",
-      "note": "",
-      "readonly": [
-        "codice",
-        "applicabile"
-      ]
+      "note": ""
     },
     {
       "codice": 429,
@@ -348,11 +277,7 @@
       "applicabile": true,
       "causa": "È stato superato il limite di richieste consentite nell'unità di tempo (rate limiting / throttling).",
       "azione utente": "Attendere il tempo indicato (es. header Retry-After) e ripetere la richiesta con moderazione.",
-      "note": "Obbligatorio gestire in modo informativo verso il Fruitore/issuer secondo policy PDND.",
-      "readonly": [
-        "codice",
-        "applicabile"
-      ]
+      "note": "Obbligatorio gestire in modo informativo verso il Fruitore/issuer secondo policy PDND."
     },
     {
       "codice": 431,
@@ -360,11 +285,7 @@
       "applicabile": false,
       "causa": "Un singolo header o l'insieme degli header supera il limite accettato dal server.",
       "azione utente": "Ridurre dimensione degli header (es. token, cookie) o rivedere la configurazione del client.",
-      "note": "",
-      "readonly": [
-        "codice",
-        "applicabile"
-      ]
+      "note": ""
     },
     {
       "codice": 451,
@@ -372,11 +293,7 @@
       "applicabile": false,
       "causa": "L'accesso alla risorsa è negato per motivi legali o normativi.",
       "azione utente": "Consultare le comunicazioni dell'Ente o rivolgersi all'assistenza per le vie legalmente previste.",
-      "note": "",
-      "readonly": [
-        "codice",
-        "applicabile"
-      ]
+      "note": ""
     },
     {
       "codice": 500,
@@ -384,11 +301,7 @@
       "applicabile": true,
       "causa": "L'endpoint e-service ha riscontrato un errore interno non previsto durante l'elaborazione della richiesta.",
       "azione utente": "Riprovare più tardi; se l'errore persiste, contattare l'assistenza dell'Ente.",
-      "note": "Non esporre dettagli sensibili di stack trace all'utente finale.",
-      "readonly": [
-        "codice",
-        "applicabile"
-      ]
+      "note": "Non esporre dettagli sensibili di stack trace all'utente finale."
     },
     {
       "codice": 501,
@@ -396,11 +309,7 @@
       "applicabile": false,
       "causa": "La funzionalità richiesta non è implementata sull'endpoint.",
       "azione utente": "Verificare la versione dell'e-service pubblicata su PDND e la roadmap dell'Ente.",
-      "note": "",
-      "readonly": [
-        "codice",
-        "applicabile"
-      ]
+      "note": ""
     },
     {
       "codice": 503,
@@ -408,11 +317,7 @@
       "applicabile": true,
       "causa": "L'endpoint e-service è temporaneamente non disponibile (manutenzione, sovraccarico o indisponibilità infrastrutturale).",
       "azione utente": "Attendere e ripetere la richiesta dopo alcuni minuti.",
-      "note": "Può essere utile indicare finestre di manutenzione note nelle note operative.",
-      "readonly": [
-        "codice",
-        "applicabile"
-      ]
+      "note": "Può essere utile indicare finestre di manutenzione note nelle note operative."
     },
     {
       "codice": 540,
@@ -420,11 +325,7 @@
       "applicabile": false,
       "causa": "Nel dominio dell'Authentic Source non risulta un EAA/dataset associabile all'utente nella richiesta (es. \"NOT_EXISTING\": \"l'EAA non è presente presso l'Authentic Source\").",
       "azione utente": "Completare i prerequisiti presso l'Ente (es. richiesta documento) o attendere l'elaborazione (es. \"PENDING\": \"l'EAA è in attesa di emissione\").",
-      "note": "Per la compilazione fine usare coppie \"state\": \"description\" come da Appendice C del manuale.",
-      "readonly": [
-        "codice",
-        "applicabile"
-      ]
+      "note": "Per la compilazione fine usare coppie \"state\": \"description\" come da Appendice C del manuale."
     },
     {
       "codice": 541,
@@ -432,11 +333,7 @@
       "applicabile": false,
       "causa": "I dati esistono ma lo stato del ciclo di vita non consente l'emissione o l'uso richiesto (es. scaduto, sospeso, revocato, annullato), coerente con Signal Hub / notifiche stato.",
       "azione utente": "Seguire la procedura indicata dall'Ente per il ripristino (es. rinnovo, revoca della sospensione) e richiedere nuovamente l'EAA.",
-      "note": "Dettagliare per ciascuno stato previsto nelle Specifiche Tecniche (notify status / ciclo di vita).",
-      "readonly": [
-        "codice",
-        "applicabile"
-      ]
+      "note": "Dettagliare per ciascuno stato previsto nelle Specifiche Tecniche (notify status / ciclo di vita)."
     }
   ],
   "mappatura stati": [
@@ -444,37 +341,25 @@
       "stato": "Valido",
       "descrizione": "L'EAA è valido e può essere utilizzato",
       "applicabile": true,
-      "causa": "",
       "azione utente": "",
       "note": "",
-      "readonly": [
-        "stato",
-        "descrizione"
-      ]
+      "messaggio": ""
     },
     {
       "stato": "Non valido",
       "descrizione": "L'EAA non è più valido e dunque non può essere più utilizzato",
       "applicabile": false,
-      "causa": "L'EAA non è più valido per cui l'utente deve effettuare delle operazioni per poter scaricare nuovamente l'EAA aggiornato in app",
-      "azione utente": "",
+      "azione utente": "L'EAA non è più valido per cui l'utente deve effettuare delle operazioni per poter scaricare nuovamente l'EAA aggiornato in app",
       "note": "",
-      "readonly": [
-        "stato",
-        "descrizione"
-      ]
+      "messaggio": ""
     },
     {
       "stato": "Sospeso",
       "descrizione": "L'EAA è sospeso e non può essere temporaneamente utilizzato",
       "applicabile": false,
-      "causa": "",
       "azione utente": "",
       "note": "",
-      "readonly": [
-        "stato",
-        "descrizione"
-      ]
+      "messaggio": ""
     }
   ],
   "lista nome campo": [
