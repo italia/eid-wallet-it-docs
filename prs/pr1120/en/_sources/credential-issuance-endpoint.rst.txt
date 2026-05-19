@@ -115,7 +115,7 @@ The ``request`` JWT payload contained in the HTTP POST message is given with the
 
             - **type**: REQUIRED. It MUST be set to ``openid_credential``,
             - **credential_configuration_id**: REQUIRED. JSON String. String specifying a unique identifier of the Credential in a specific format that MUST be mapped in the `credential_configurations_supported` metadata claim of the Credential Issuer. For instance,``dc_sd_jwt_pid`` can be used for PID in SD-JWT VC format, ``dc_sd_jwt_mDL`` for mobile driving licence in SD-JWT VC format and ``mso_mdoc_mDL`` for mobile driving license in mdoc format.
-            - **email**: OPTIONAl in case of PID issuance, otherwise it MUST not be present. If present, it MUST contain the User's email address to be used for notifying PID revocation events.
+            - **email**: OPTIONAL in case of PID issuance, otherwise it MUST not be present. If present, it MUST contain the User's email address to be used for notifying PID revocation events.
 
         When eID Substantial Authentication with MRTD Verification is requested, an additional JSON Object MUST be included with the following claims:
 
