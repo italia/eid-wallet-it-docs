@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+
+<html lang="it" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>8. Onboarding delle Entità &#8212; IT-Wallet Specifiche Tecniche - PR #1120</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
+    <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
+    <script src="_static/documentation_options.js?v=53f44254"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=da26b4cc"></script>
+    <script src="_static/js/theme.js"></script>
+    <script src="_static/js/petite-vue.js"></script>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
+    <link rel="index" title="Indice" href="genindex.html" />
+    <link rel="search" title="Cerca" href="search.html" />
+    <link rel="next" title="9. Operazioni di Gestione dei Certificati X.509" href="x5c-evaluation.html" />
+    <link rel="prev" title="7. Infrastruttura del Registro" href="registry.html" /> 
+  </head><body data-dark_mode_code_blocks="true">
+
+<div id="top_nav">
+    
+
+    <nav>
+        
+            
+        
+
+        <p id="toggle_sidebar">
+            <a href="#" title="Toggle sidebar">|||</a>
+        </p>
+        <h1><a href="index.html" title="Go to homepage">IT-Wallet Specifiche Tecniche - PR #1120</a></h1>
+            <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
+    
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+            <path fill="white" d="M 244.8,8 C 106.1,8 0,113.3 0,252 c 0,110.9 69.8,205.8 169.5,239.2 12.8,2.3 17.3,-5.6 17.3,-12.1 0,-6.2 -0.3,-40.4 -0.3,-61.4 0,0 -70,15 -84.7,-29.8 0,0 -11.4,-29.1 -27.8,-36.6 0,0 -22.9,-15.7 1.6,-15.4 0,0 24.9,2 38.6,25.8 21.9,38.6 58.6,27.5 72.9,20.9 2.3,-16 8.8,-27.1 16,-33.7 -55.9,-6.2 -112.3,-14.3 -112.3,-110.5 0,-27.5 7.6,-41.3 23.6,-58.9 -2.6,-6.5 -11.1,-33.3 2.6,-67.9 20.9,-6.5 69,27 69,27 20,-5.6 41.5,-8.5 62.8,-8.5 21.3,0 42.8,2.9 62.8,8.5 0,0 48.1,-33.6 69,-27 13.7,34.7 5.2,61.4 2.6,67.9 16,17.7 25.8,31.5 25.8,58.9 0,96.5 -58.9,104.2 -114.8,110.5 9.2,7.9 17,22.9 17,46.4 0,33.7 -0.3,75.4 -0.3,83.6 0,6.5 4.6,14.4 17.3,12.1 C 428.2,457.8 496,362.9 496,252 496,113.3 383.5,8 244.8,8 Z"/>
+        </svg>
+    
+</a>
+        
+
+        <a id="mode_toggle" href="#" @click.prevent="handleClick" :title="mode">
+    <template v-if="mode == 'light'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_light"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M67.48,18.073c1.913,-1.912 1.913,-5.018 0,-6.931c-1.912,-1.912 -5.018,-1.912 -6.931,0l-6.798,6.799c-1.912,1.912 -1.912,5.018 0,6.931c1.913,1.912 5.018,1.912 6.931,-0l6.798,-6.799Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.728,61.108c1.912,-1.913 1.912,-5.018 -0,-6.931c-1.913,-1.913 -5.019,-1.913 -6.931,-0l-6.799,6.798c-1.912,1.913 -1.912,5.019 0,6.931c1.913,1.913 5.019,1.913 6.931,0l6.799,-6.798Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.682,54.177c-1.913,-1.913 -5.018,-1.913 -6.931,-0c-1.912,1.913 -1.912,5.018 0,6.931l6.798,6.798c1.913,1.913 5.019,1.913 6.931,0c1.913,-1.912 1.913,-5.018 0,-6.931l-6.798,-6.798Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M4.901,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,-0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M18.929,11.142c-1.912,-1.912 -5.018,-1.912 -6.931,0c-1.912,1.913 -1.912,5.019 0,6.931l6.799,6.799c1.912,1.912 5.018,1.912 6.931,-0c1.912,-1.913 1.912,-5.019 -0,-6.931l-6.799,-6.799Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.108,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c-0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c-0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'dark'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_dark"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.901,2.196 -4.901,4.901c0,2.705 2.197,4.901 4.901,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.662,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.989,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.732,61.103c1.91,-1.91 1.91,-5.011 0,-6.921l-0.009,-0.01c-1.91,-1.91 -5.012,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.909,1.91 5.011,1.91 6.92,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.672,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.52,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l-0,-0.01c-0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.901,2.196 -4.901,4.901c0,2.704 2.197,4.9 4.901,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.73,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 -0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.098,34.623c-2.699,0 -4.891,2.192 -4.891,4.892l-0,0.019c-0,2.699 2.192,4.891 4.891,4.891c2.7,0 4.892,-2.192 4.892,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.892,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'darkest'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_darkest"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><path d="M39.315,23.791c8.684,-0 15.734,7.05 15.734,15.733c0,8.684 -7.05,15.734 -15.734,15.734c-8.683,0 -15.733,-7.05 -15.733,-15.734c-0,-8.683 7.05,-15.733 15.733,-15.733Zm0,4.737c6.069,0 10.997,4.927 10.997,10.996c-0,6.069 -4.928,10.996 -10.997,10.996c-6.068,0 -10.996,-4.927 -10.996,-10.996c0,-6.069 4.928,-10.996 10.996,-10.996Z" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.216,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.9,2.196 -4.9,4.901c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.666,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.99,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.737,61.103c1.909,-1.91 1.909,-5.011 -0,-6.921l-0.01,-0.01c-1.91,-1.91 -5.011,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.91,1.91 5.011,1.91 6.921,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.676,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.524,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l0,-0.01c0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.216,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901c-0,2.704 2.196,4.9 4.9,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.734,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.103,34.623c-2.7,0 -4.892,2.192 -4.892,4.892l-0,0.019c-0,2.699 2.192,4.891 4.892,4.891c2.699,0 4.891,-2.192 4.891,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.891,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+</a>
+
+<script>
+(function() {
+    const LOCAL_STORAGE_KEY = 'piccoloThemeMode'
+
+    var initialMode = localStorage.getItem(LOCAL_STORAGE_KEY)
+
+    if (initialMode) {
+        // Make sure the value in local storage is valid
+        if (['light', 'dark', 'darkest'].indexOf(initialMode) == -1) {
+            initialMode = 'light'
+            localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+        }
+    } else {
+        // Check if the client prefers dark mode
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            initialMode = 'dark'
+        } else {
+            initialMode = 'light'
+        }
+        localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+    }
+
+    document.documentElement.dataset.mode = initialMode
+
+    PetiteVue.createApp({
+        'mode': initialMode,
+        handleClick() {
+            let currentMode = this.mode
+
+            if (currentMode == 'light') {
+                this.mode = 'dark'
+            } else if (currentMode == 'dark') {
+                this.mode = 'darkest'
+            } else if (currentMode == 'darkest') {
+                this.mode = 'light'
+            }
+
+            document.documentElement.dataset.mode = this.mode
+            localStorage.setItem(LOCAL_STORAGE_KEY, this.mode)
+
+            console.log(this.mode)
+        }
+    }).mount('#mode_toggle')
+})()
+</script>
+            <p class="mobile_search_link">
+                <a href="search.html" title="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 64" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2">
+                        <path d="M14.873 40.009c-2.315-3.943-3.642-8.532-3.642-13.429C11.231 11.91 23.141 0 37.811 0s26.58 11.91 26.58 26.58-11.91 26.58-26.58 26.58a26.44 26.44 0 0 1-14.277-4.161L9.739 62.794a3.12 3.12 0 0 1-4.413 0L.913 58.382c-1.217-1.218-1.217-3.196 0-4.413l13.96-13.96zM37.811 8.054c10.225 0 18.526 8.301 18.526 18.526s-8.301 18.526-18.526 18.526-18.526-8.301-18.526-18.526S27.586 8.054 37.811 8.054z" fill="#fff" />
+                    </svg>
+                </a>
+            </p>
+        
+
+        <div class="searchbox_wrapper">
+            
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Ricerca veloce</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Vai" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper"><p class="caption" role="heading"><span class="caption-text">Indice dei Contenuti</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduzione</a></li>
+<li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2. Brand Identity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Panoramica dell'Architettura</a></li>
+<li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Sistema di Onboarding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. Design dell'Esperienza Utente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. L'Infrastruttura di Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registry.html">7. Infrastruttura del Registro</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">8. Onboarding delle Entità</a></li>
+<li class="toctree-l1"><a class="reference internal" href="x5c-evaluation.html">9. Operazioni di Gestione dei Certificati X.509</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">10. Entità</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">11. Gestione degli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">12. Flussi relativi agli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">13. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">14. Algoritmi Crittografici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">15. Considerazioni di Sicurezza e Privacy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">16. Politiche Generali di Conservazione dei Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">17. Termini Definiti e Riferimenti</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">18. Come contribuire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">19. Rilasci Open Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">20. Appendice</a></li>
+</ul>
+
+        </div>
+      </div>
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="onboarding-delle-entita">
+<h1><span class="section-number">8. </span>Onboarding delle Entità<a class="headerlink" href="#onboarding-delle-entita" title="Link to this heading">¶</a></h1>
+<p>Questa sezione definisce le specifiche tecniche per la gestione del ciclo di vita delle entità nell'ecosistema IT-Wallet, basate sull'<strong>Infrastruttura del Registro</strong> definita in <a class="reference internal" href="registry.html#infrastruttura-del-registro"><span class="std std-ref">Infrastruttura del Registro</span></a>. Sono incluse le procedure di onboarding iniziale, le operazioni di gestione continuativa, quali aggiornamenti e modifiche dei dati, e i processi di uscita dalla federazione.</p>
+<p>Per una panoramica di alto livello del processo di onboarding, vedere <a class="reference internal" href="onboarding-high-level.html#sistema-di-onboarding"><span class="std std-ref">Sistema di Onboarding</span></a>. La sezione <a class="reference internal" href="onboarding-high-level.html#onboarding-journey-maps"><span class="std std-ref">Onboarding Journey Maps</span></a> fornisce una mappa del percorso di onboarding dal punto di vista degli operatori dell'Entità.</p>
+<section id="panoramica">
+<h2><span class="section-number">8.1. </span>Panoramica<a class="headerlink" href="#panoramica" title="Link to this heading">¶</a></h2>
+<section id="architettura-del-sistema-di-onboarding-delle-entita">
+<h3><span class="section-number">8.1.1. </span>Architettura del Sistema di Onboarding delle Entità<a class="headerlink" href="#architettura-del-sistema-di-onboarding-delle-entita" title="Link to this heading">¶</a></h3>
+<p>L'ecosistema IT-Wallet opera su un'infrastruttura di fiducia federata, che richiede alle entità partecipanti di stabilire una fiducia reciproca prima di intraprendere qualsiasi interazione che coinvolga attributi dell'Utente.</p>
+<p>Il framework di onboarding definisce procedure di registrazione tecnica in base alla tipologia di partecipante:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Le Fonti Autentiche seguono processi di registrazione incentrati sui dati.</p></li>
+<li><p>Le Entità Operative (Emittenti di Credenziali, Relying Party, Fornitori di Wallet) seguono procedure di instaurazione della fiducia.</p></li>
+</ol>
+</div></blockquote>
+</section>
+<section id="tipologie-di-entita-e-percorsi-di-onboarding">
+<h3><span class="section-number">8.1.2. </span>Tipologie di Entità e Percorsi di Onboarding<a class="headerlink" href="#tipologie-di-entita-e-percorsi-di-onboarding" title="Link to this heading">¶</a></h3>
+<p>La seguente tabella riepiloga le tipologie di entità, i loro ruoli e i relativi percorsi di onboarding:</p>
+<table class="longtable docutils align-default" id="id1">
+<caption><span class="caption-number">Tabella 8.1 </span><span class="caption-text">Tipologie di Entità e Percorsi di Onboarding</span><a class="headerlink" href="#id1" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 30.0%" />
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Tipologia di Entità</strong></p></th>
+<th class="head"><p><strong>Ruolo Principale</strong></p></th>
+<th class="head"><p><strong>Percorso di Onboarding</strong></p></th>
+<th class="head"><p><strong>Requisiti Chiave</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Fonti Autentiche</p></td>
+<td><p>Fornitori di dati autorevoli per gli attributi delle Credenziali Digitali</p></td>
+<td><p><a class="reference internal" href="#procedura-di-registrazione-delle-fonti-autentiche"><span class="std std-ref">Procedura di registrazione delle Fonti Autentiche</span></a></p></td>
+<td><p>Validazione della titolarità dei dati; integrazione API (PDND)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Emittenti di Credenziali</p></td>
+<td><p>Generano ed emettono Credenziali Digitali utilizzando i dati delle Fonti Autentiche</p></td>
+<td><p><a class="reference internal" href="#processo-di-onboarding-delle-entita-federate"><span class="std std-ref">Processo di Onboarding delle Entità Federate</span></a></p></td>
+<td><p>Conformità all'Infrastruttura di Fiducia IT-Wallet; vedere <a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Relying Party</p></td>
+<td><p>Verificano le Credenziali Digitali per l'accesso ai servizi</p></td>
+<td><p><a class="reference internal" href="#processo-di-onboarding-delle-entita-federate"><span class="std std-ref">Processo di Onboarding delle Entità Federate</span></a></p></td>
+<td><p>Conformità all'Infrastruttura di Fiducia IT-Wallet; vedere <a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Fornitori di Wallet</p></td>
+<td><p>Forniscono soluzioni wallet ai cittadini</p></td>
+<td><p><a class="reference internal" href="#processo-di-onboarding-delle-entita-federate"><span class="std std-ref">Processo di Onboarding delle Entità Federate</span></a></p></td>
+<td><p>Conformità all'Infrastruttura di Fiducia IT-Wallet (vedere <a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>); capacità di Attestazione del Wallet (vedere <a class="reference internal" href="wallet-instance-registration.html#inizializzazione-e-registrazione-dell-istanza-del-wallet"><span class="std std-ref">Inizializzazione e Registrazione dell'Istanza del Wallet</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p>Istanze di Wallet</p></td>
+<td><p>Applicazioni di wallet digitale a livello utente</p></td>
+<td><p>Registrazione indiretta tramite il Fornitore di Wallet, vedere <a class="reference internal" href="wallet-instance-registration.html#inizializzazione-e-registrazione-dell-istanza-del-wallet"><span class="std std-ref">Inizializzazione e Registrazione dell'Istanza del Wallet</span></a></p></td>
+<td><p>Attestazione del Wallet da un Fornitore di Wallet affidabile</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="registrazione-amministrativa-e-tecnica">
+<h3><span class="section-number">8.1.3. </span>Registrazione Amministrativa e Tecnica<a class="headerlink" href="#registrazione-amministrativa-e-tecnica" title="Link to this heading">¶</a></h3>
+<p>Il processo di onboarding segue un approccio strutturato in più fasi:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p><strong>Registrazione Amministrativa</strong>: Tutte le entità DEVONO completare la registrazione amministrativa iniziale che ne valida la posizione giuridica, la conformità normativa e l'idoneità organizzativa a partecipare all'ecosistema IT-Wallet.</p></li>
+<li><p><strong>Registrazione Tecnica</strong>: A seguito dell'approvazione amministrativa, le entità effettuano la registrazione tecnica attraverso percorsi specializzati:</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Registrazione Fonte Autentica</strong>: Procedure di registrazione incentrate sui dati con validazione dell'integrazione API.</p></li>
+<li><p><strong>Registrazione in Federazione</strong>: Instaurazione della fiducia crittografica come definito nella Sezione <a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>.</p></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p><strong>Integrazione con il Registro IT-Wallet</strong>:</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Integrazione nel Registro dei Claims</strong>: Le Fonti Autentiche selezionano definizioni standardizzate di claim dal Registro dei Claims durante la dichiarazione delle capacità.</p></li>
+<li><p><strong>Integrazione nella Tassonomia</strong>: Tutte le entità utilizzano la classificazione gerarchica della Tassonomia (domini, classi, finalità) per strutturare organizzativamente le Credenziali.</p></li>
+<li><p><strong>Integrazione nel Registro delle Fonti Autentiche</strong>: Le Fonti Autentiche vengono registrate con i claim e le capacità dichiarate, abilitando la discovery e il coordinamento degli Emittenti di Credenziali.</p></li>
+<li><p><strong>Integrazione nel Registro della Federazione</strong>: Le entità operative vengono incluse per la validazione della fiducia durante le operazioni sulle Credenziali.</p></li>
+<li><p><strong>Integrazione nel Catalogo</strong>: I tipi di Credenziale vengono pubblicati in <a class="reference internal" href="registry.html#struttura-del-catalogo-degli-attestati-elettronici"><span class="std std-ref">Struttura del Catalogo degli Attestati Elettronici</span></a> in base alle politiche dell'Organismo di Vigilanza per l'idoneità alla discovery pubblica.</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p>Tutti i componenti del registro e le loro interazioni sono descritti in dettaglio in <a class="reference internal" href="registry.html#infrastruttura-del-registro"><span class="std std-ref">Infrastruttura del Registro</span></a>.</p>
+</section>
+</section>
+<section id="processo-di-registrazione-delle-fonti-autentiche">
+<h2><span class="section-number">8.2. </span>Processo di Registrazione delle Fonti Autentiche<a class="headerlink" href="#processo-di-registrazione-delle-fonti-autentiche" title="Link to this heading">¶</a></h2>
+<p>Le Fonti Autentiche DEVONO completare un processo di registrazione strutturato per confermare il loro status di fornitori di dati autorevoli nell'ecosistema IT-Wallet. Tale processo include la specifica dei requisiti e la validazione procedurale, come descritto in <a class="reference internal" href="onboarding-high-level.html#journey-dell-operatore-della-fonte-autentica"><span class="std std-ref">Journey dell'Operatore della Fonte Autentica</span></a>.</p>
+<section id="requisiti-di-registrazione-delle-fonti-autentiche">
+<h3><span class="section-number">8.2.1. </span>Requisiti di Registrazione delle Fonti Autentiche<a class="headerlink" href="#requisiti-di-registrazione-delle-fonti-autentiche" title="Link to this heading">¶</a></h3>
+<p>Le Fonti Autentiche DEVONO rispettare i seguenti requisiti tecnici:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Conformità dei Claims</strong>:</p>
+<ul>
+<li><p><strong>Adozione del Registro dei Claims</strong>: Le Entità DEVONO utilizzare identificatori standardizzati del Registro dei Claims nelle risposte ai dati. La mappatura personalizzata dei claim non è consentita.</p></li>
+</ul>
+</li>
+<li><p><strong>Standard di Integrazione API</strong>:</p>
+<ul>
+<li><p><strong>Entità Pubbliche</strong>: DEVONO integrarsi tramite la piattaforma PDND con un'implementazione dell'e-service conforme alle specifiche nazionali.</p></li>
+<li><p><strong>Entità Private</strong>: DEVONO fornire un documento di Specifica <a class="reference external" href="https://spec.openapis.org/oas/v3.0.3">OAS3</a> completo che includa il framework di autorizzazione, gli schemi di richiesta/risposta, i meccanismi di gestione degli errori e un ambiente sandbox per i test.</p></li>
+</ul>
+</li>
+<li><p><strong>Standardizzazione del Formato di Risposta</strong>:</p>
+<ul>
+<li><p><strong>Formato Standard dei Claims</strong>: Le Entità DEVONO utilizzare gli identificatori e i formati del Registro dei Claims in tutte le risposte ai dati.</p></li>
+<li><p><strong>Mappatura degli Stati</strong>: Le Entità DEVONO gestire una mappatura chiara tra i propri stati interni e gli stati standard delle Credenziali (valida, sospesa, revocata).</p></li>
+</ul>
+</li>
+<li><p><strong>Sicurezza e Garanzia della Qualità</strong>:</p>
+<ul>
+<li><p><strong>Standard di Sicurezza</strong>: Le Entità DEVONO implementare TLS 1.3 o superiore con robusti meccanismi di autenticazione, perfect forward secrecy e algoritmi crittografici conformi agli standard di sicurezza attuali ed emergenti, con riservatezza e integrità end-to-end di tutte le comunicazioni, mantenendo la conformità ai requisiti normativi in evoluzione e alle best practice di settore.</p></li>
+<li><p><strong>Evidenza di Autenticazione dell'Utente</strong>: Le Entità POSSONO richiedere all'Emittente di Credenziali un'evidenza di autenticazione dell'Utente prima di concedere l'accesso agli e-service per l'ottenimento degli attributi dell'Utente.</p></li>
+<li><p><strong>Qualità dei Dati</strong>: Le Entità DEVONO specificare la frequenza di aggiornamento e fornire garanzie sull'aggiornamento dei dati.</p></li>
+<li><p><strong>Audit Trail</strong>: Le Entità DEVONO implementare capacità di logging per tutte le attività di accesso e fornitura dei dati.</p></li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+</section>
+<section id="requisiti-sulle-informazioni-di-registrazione-delle-fonti-autentiche">
+<h3><span class="section-number">8.2.2. </span>Requisiti sulle informazioni di registrazione delle Fonti Autentiche<a class="headerlink" href="#requisiti-sulle-informazioni-di-registrazione-delle-fonti-autentiche" title="Link to this heading">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Solo le Fonti Autentiche italiane possono essere registrate nella fase attuale di IT-Wallet.</p>
+</div>
+<p>Durante la registrazione, le Fonti Autentiche DEVONO fornire le seguenti informazioni:</p>
+<table class="longtable docutils align-default" id="id2">
+<caption><span class="caption-number">Tabella 8.2 </span><span class="caption-text">Requisiti Informativi per la Registrazione delle Fonti Autentiche</span><a class="headerlink" href="#id2" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Categoria Informativa</p></th>
+<th class="head"><p>Descrizione ed Esempi</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Informazioni sull'Organizzazione</strong></p></td>
+<td><p><strong>OBBLIGATORIO</strong>. Dettagli dell'organizzazione inclusi:</p>
+<ul class="simple">
+<li><p>Nome dell'organizzazione, tipologia (&quot;public&quot; o &quot;private&quot;) e paese (ISO 3166-1 alpha-2).</p></li>
+<li><p>Codici identificativi amministrativi, come il codice di registrazione IPA (OBBLIGATORIO solo per le Fonti Autentiche pubbliche) e l'identificativo legale (codice fiscale o partita IVA).</p></li>
+<li><p>Informazioni di contatto, compresi riferimenti tecnici e amministrativi, quali indirizzi email, URI della homepage, URI dell'informativa sulla privacy.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Dichiarazione delle Capacità sui Dati</strong></p></td>
+<td><p><strong>OBBLIGATORIO</strong>. Claim disponibili:</p>
+<ul class="simple">
+<li><p>Array di identificatori di claim del Registro dei Claims forniti dalla Fonte Autentica (es. <code class="docutils literal notranslate"><span class="pre">[&quot;given_name&quot;,</span> <span class="pre">&quot;family_name&quot;,</span> <span class="pre">&quot;driving_privileges&quot;]</span></code>).</p></li>
+<li><p>Finalità previste per la verifica, utilizzando gli identificatori di finalità della tassonomia (es. <code class="docutils literal notranslate"><span class="pre">[&quot;DRIVING_RIGHTS_VERIFICATION&quot;]</span></code>).</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Dettagli di Implementazione API</strong></p></td>
+<td><p><strong>OBBLIGATORIO</strong>. Informazioni dettagliate sull'integrazione:</p>
+<ul class="simple">
+<li><p>Framework di autorizzazione per l'accesso API.</p></li>
+<li><p>Definizioni API quali Formati di Richiesta/Risposta, inclusa la gestione degli errori.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Capacità di Fornitura dei Dati</strong></p></td>
+<td><p><strong>OBBLIGATORIO</strong>. Indica se la Fonte Autentica supporta la fornitura immediata/differita dei dati (booleano).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Informazioni per l'Utente</strong></p></td>
+<td><p><strong>OPZIONALE</strong>. Testo in formato Markdown contenente informazioni in linguaggio naturale sui vincoli o limitazioni nella disponibilità dei dati. Ad esempio, se il database della Fonte Autentica contiene solo dati registrati dopo una data specifica, questa informazione DEVE essere comunicata agli Utenti.</p>
+<p><strong>Esempio</strong>: &quot;I dati della patente di guida sono disponibili per le patenti rilasciate dopo il 1° gennaio 2020. Per le patenti più vecchie, contattare l'ufficio motorizzazione locale.&quot;.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Proprietà di Visualizzazione</strong></p></td>
+<td><p><strong>OPZIONALE</strong>. Suggerimenti di branding visivo per le Credenziali Digitali che utilizzano i dati della Fonte Autentica:</p>
+<ul class="simple">
+<li><p>Colore di sfondo per le Credenziali Digitali in formato esadecimale (es. <code class="docutils literal notranslate"><span class="pre">&quot;#003d82&quot;</span></code>).</p></li>
+<li><p>URI del logo con verifica dell'integrità crittografica per il branding delle Credenziali Digitali.</p></li>
+<li><p>URI del modello visivo con verifica dell'integrità per la presentazione delle Credenziali Digitali.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="procedura-di-registrazione-delle-fonti-autentiche">
+<h3><span class="section-number">8.2.3. </span>Procedura di registrazione delle Fonti Autentiche<a class="headerlink" href="#procedura-di-registrazione-delle-fonti-autentiche" title="Link to this heading">¶</a></h3>
+<p>La registrazione della Fonte Autentica segue un processo tecnico descritto di seguito.</p>
+<figure class="align-default" id="id3">
+<p class="plantuml">
+<object data="_images/plantuml-b41cfb6b927d5db984f7ae8a5bd541f10e7d14f6.svg" type="image/svg+xml" style="width:99%">
+<a href="_images/plantuml-b41cfb6b927d5db984f7ae8a5bd541f10e7d14f6.png"><img src="_images/plantuml-b41cfb6b927d5db984f7ae8a5bd541f10e7d14f6.png" alt="Processo di registrazione della Fonte Autentica che mostra la procedura in 3 fasi" style="width: 99.0%"/></a>
+
+</object></p>
+<figcaption>
+<p><span class="caption-number">Fig. 8.1 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/TLD1Rziw3BxxLn0zlG1vhs_hBK26TkqEFMmBbcAdNcY9SRJAaaPARRDVFzfE6iVBWXmCyUF7Z_p8Qyd8kRGURahUKiZEm3eMDWJVg76I6REB0LOS3ObKM78CfQs9goeXAzmb31akfkaNWAB_Kz2w9E9d9v5ty37QNG-IUiAqFfGUuanDLIsNiCwKuDrYeWlD4pQa-YZX_csvh2hD-_U3PY_s4OB83GRtQu2ui8dSzj-FuP_xrGsOQ6aEdXhqu6pNoSOHp_KzP3HPPYFAEpA-exIO4Gmch9rtsP4erwr7ryfR1oCkcSC3liOGsnreleY-cbx2AVV61OARrJsuDdbgDNtGR2cZyrsDrTsNkyklYKA7klhlVv14vYpRkW_i1gM9eyvU4LFDhct9EinqQMb3p6HXu-CBI4afSZuGIgs4fMvT1XvxmFIpaEIZIUyNy41c6rIGX-_edJqQ8_MUwX0Wc8xCH6tSOJ2asWQVvgTpf5T5aW9cOpvYRVLlCrOg6rjqGTFrXPh8ZlGx5KvHICPCjrioJuC5GP7xDf-9nsoT2IEf41b6bipEDSeaAGOX69e2oHWiiZstDqMmeRb2kiGMKtAXcUbU-poUg1JJdUMc-0hqDzH4cHm9fivwz5hc-PZRQwUiCoGlD6RTeFDa_s3yGQOFlxYyXH6H4odz7dMBuBXVMO4S0QrbLQS5WZrknzK2HYSEgr9xPwOBmjGiXf1iE_WdDJ_lr0_WVQBMEtG0TZX8ErviBQlGDwxF-4GTaNLYebg9jIUebUMMgLyjz73VDSAYwtvsZ8ToYyV0X7RNsGWnqH16FxcogWfHjNN5b6lUgr01MgkN1pKf8PqAUhj4hygABil9gD9nL5LrJS6Mrly6">Processo di Registrazione della Fonte Autentica.</a></span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p><strong>Fase 1 - Predisposizione del Pacchetto di Registrazione</strong>: L'Entità predispone le informazioni di registrazione conformemente alla tabella dei requisiti sopra riportata. Di seguito è fornito un esempio non normativo delle informazioni in formato JSON.</p>
+<table class="longtable docutils align-default" id="id4">
+<caption><span class="caption-number">Tabella 8.3 </span><span class="caption-text">Campi di Primo Livello del Registro delle Fonti Autentiche</span><a class="headerlink" href="#id4" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Nome Campo</strong></p></th>
+<th class="head"><p><strong>Descrizione</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>id</strong></p></td>
+<td><p>OBBLIGATORIO. Identificatore univoco del Registro delle Fonti Autentiche (es. <code class="docutils literal notranslate"><span class="pre">urn:authentic-sources:it-wallet</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>version</strong></p></td>
+<td><p>OBBLIGATORIO. La versione del Registro delle Fonti Autentiche (es. <code class="docutils literal notranslate"><span class="pre">1.0.0</span></code>).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>last_modified</strong></p></td>
+<td><p>OBBLIGATORIO. Il timestamp che indica quando l'elenco è stato aggiornato l'ultima volta (es. <code class="docutils literal notranslate"><span class="pre">2025-03-15T12:00:00Z</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>localization</strong></p></td>
+<td><p>OBBLIGATORIO. Oggetto di configurazione della localizzazione contenente:</p>
+<ul class="simple">
+<li><p><strong>default_locale</strong>: Codice locale predefinito (es. <code class="docutils literal notranslate"><span class="pre">it</span></code>).</p></li>
+<li><p><strong>available_locales</strong>: Array dei codici locale supportati (es. <code class="docutils literal notranslate"><span class="pre">[&quot;en&quot;,</span> <span class="pre">&quot;it&quot;]</span></code>).</p></li>
+<li><p><strong>base_uri</strong>: URI base per il recupero del bundle di localizzazione (es. <code class="docutils literal notranslate"><span class="pre">https://trust-registry.eid-wallet.example.it/.well-known/l10n/authentic-sources/</span></code>).</p></li>
+<li><p><strong>version</strong>: Versione del formato del bundle di localizzazione.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>authentic_sources</strong></p></td>
+<td><p>OBBLIGATORIO. Un Array JSON in cui ogni voce è un Oggetto JSON che rappresenta un'entità Fonte Autentica. Ogni oggetto contiene i parametri definiti nella tabella &quot;Parametri delle Fonti Autentiche&quot; di seguito, inclusi identificazione dell'entità, informazioni organizzative, capacità sui dati e metodi di integrazione.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="longtable docutils align-default" id="id5">
+<caption><span class="caption-number">Tabella 8.4 </span><span class="caption-text">Parametri delle Fonti Autentiche</span><a class="headerlink" href="#id5" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 15.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Parametro</strong></p></th>
+<th class="head"><p><strong>Tipo</strong></p></th>
+<th class="head"><p><strong>Descrizione</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>entity_id</strong></p></td>
+<td><p>string</p></td>
+<td><p>OBBLIGATORIO. Identificatore univoco che segue lo schema normativo: <code class="docutils literal notranslate"><span class="pre">https://{organization_domain}[/{optional_path}]</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>organization_info</strong></p></td>
+<td><p>oggetto JSON</p></td>
+<td><p>OBBLIGATORIO. Dettagli della persona giuridica e metadati organizzativi.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>organization_info.organization_name</strong></p></td>
+<td><p>JSON Object Array</p></td>
+<td><p>OBBLIGATORIO. Array di oggetti che contengono il nome dell'organizzazione in più lingue. DEVE contenere i claim <code class="docutils literal notranslate"><span class="pre">locale</span></code> e <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>organization_info.organization_type</strong></p></td>
+<td><p>string</p></td>
+<td><p>OBBLIGATORIO. Classificazione dell'entità: <code class="docutils literal notranslate"><span class="pre">&quot;public&quot;</span></code> o <code class="docutils literal notranslate"><span class="pre">&quot;private&quot;</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>organization_info.ipa_code</strong></p></td>
+<td><p>string</p></td>
+<td><p>OBBLIGATORIO solo per FA Pubbliche. Codice di registrazione IPA per gli enti pubblici.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>organization_info.legal_identifier</strong></p></td>
+<td><p>string</p></td>
+<td><p>OBBLIGATORIO. Identificativo di registrazione legale (Codice Fiscale/Partita IVA, o equivalente identificativo nazionale per entità straniere).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>organization_info.homepage_uri</strong></p></td>
+<td><p>string</p></td>
+<td><p>OBBLIGATORIO. URL della homepage dell'organizzazione.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>organization_info.contacts</strong></p></td>
+<td><p>Array di stringhe</p></td>
+<td><p>OBBLIGATORIO. Array di indirizzi email di contatto per almeno un referente di supporto utenti, uno applicativo e uno sistemistico.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>organization_info.dpa_contact</strong></p></td>
+<td><p>string</p></td>
+<td><p>OBBLIGATORIO. Indirizzo email del DPA della Fonte Autentica.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>organization_info.policy_uri</strong></p></td>
+<td><p>string</p></td>
+<td><p>OBBLIGATORIO. URL del documento di informativa sulla privacy.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>organization_info.tos_uri</strong></p></td>
+<td><p>string</p></td>
+<td><p>OPZIONALE. URL del documento dei termini di servizio.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>organization_info.organization_country</strong></p></td>
+<td><p>string</p></td>
+<td><p>OBBLIGATORIO. Codice paese ISO 3166-1 alpha-2 a due lettere dell'organizzazione.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>organization_info.logo_uri</strong></p></td>
+<td><p>string</p></td>
+<td><p>OPZIONALE. URL dell'immagine del logo dell'organizzazione.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>organization_info.logo_uri#integrity</strong></p></td>
+<td><p>string</p></td>
+<td><p>CONDIZIONALE. Digest crittografico della risorsa immagine del logo per la verifica dell'integrità. OBBLIGATORIO se <code class="docutils literal notranslate"><span class="pre">logo_uri</span></code> è presente. Formato: <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code> (es. <code class="docutils literal notranslate"><span class="pre">&quot;sha-256-abc123...&quot;</span></code>).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>organization_info.logo_alt_text</strong></p></td>
+<td><p>JSON Object Array</p></td>
+<td><p>OPZIONALE. Array di oggetti contenente il testo alternativo per l'immagine del logo dell'organizzazione in più lingue. DEVE contenere i claim <code class="docutils literal notranslate"><span class="pre">locale</span></code> e <code class="docutils literal notranslate"><span class="pre">description</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>organization_info.logo_extended_uri</strong></p></td>
+<td><p>string</p></td>
+<td><p>OPZIONALE. URL dell'immagine del logo esteso dell'organizzazione.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>organization_info.logo_extended_uri#integrity</strong></p></td>
+<td><p>string</p></td>
+<td><p>CONDIZIONALE. Digest crittografico della risorsa immagine del logo esteso per la verifica dell'integrità. OBBLIGATORIO se <code class="docutils literal notranslate"><span class="pre">logo_extended_uri</span></code> è presente. Formato: <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code> (es. <code class="docutils literal notranslate"><span class="pre">&quot;sha-256-abc123...&quot;</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>organization_info.logo_extended_alt_text</strong></p></td>
+<td><p>JSON Object Array</p></td>
+<td><p>OPZIONALE. Array di oggetti contenente il testo alternativo per l'immagine del logo esteso dell'organizzazione in più lingue. DEVE contenere i claim <code class="docutils literal notranslate"><span class="pre">locale</span></code> e <code class="docutils literal notranslate"><span class="pre">description</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>data_capabilities</strong></p></td>
+<td><p>Array di oggetti JSON</p></td>
+<td><p>OBBLIGATORIO. Array contenente le specifiche delle capacità sui dati.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>data_capabilities[].dataset_id</strong></p></td>
+<td><p>string</p></td>
+<td><p>OBBLIGATORIO. L'identificatore univoco del dataset nell'ambito della Fonte Autentica, che PUÒ essere utilizzato come parametro di query per il servizio <code class="docutils literal notranslate"><span class="pre">GetAttributeClaims</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>data_capabilities[].data_origin</strong></p></td>
+<td><p>JSON Object Array</p></td>
+<td><p>OBBLIGATORIO. Array di oggetti contenente il nome leggibile dell'origine o del dipartimento che fornisce i dati in più lingue. DEVE contenere i claim <code class="docutils literal notranslate"><span class="pre">locale</span></code> e <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>data_capabilities[].intended_purposes</strong></p></td>
+<td><p>Array di stringhe</p></td>
+<td><p>OBBLIGATORIO. Finalità aziendali soddisfatte, utilizzando gli identificatori di finalità della tassonomia (es. <code class="docutils literal notranslate"><span class="pre">[&quot;IDENTITY_VERIFICATION&quot;,</span> <span class="pre">&quot;DRIVING_RIGHTS_VERIFICATION&quot;]</span></code>).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>data_capabilities[].available_claims</strong></p></td>
+<td><p>Array di stringhe</p></td>
+<td><p>OBBLIGATORIO. Claim disponibili da questa capacità dati.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>data_capabilities[].available_claims.claim_name</strong></p></td>
+<td><p>string</p></td>
+<td><p>OBBLIGATORIO. Contiene il nome del claim.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>data_capabilities[].available_claims.order</strong></p></td>
+<td><p>number</p></td>
+<td><p>OBBLIGATORIO. Definisce l'ordine in cui le informazioni vengono mostrate.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>data_capabilities[].available_claims.mandatory</strong></p></td>
+<td><p>boolean</p></td>
+<td><p>OBBLIGATORIO. Definisce se un claim è sempre disponibile o meno.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>data_capabilities[].integration_method</strong></p></td>
+<td><p>string</p></td>
+<td><p>OBBLIGATORIO. Framework di autorizzazione utilizzato per l'accesso ai dati. DEVE essere <code class="docutils literal notranslate"><span class="pre">&quot;pdnd&quot;</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>data_capabilities[].integration_endpoint</strong></p></td>
+<td><p>string</p></td>
+<td><p>OPZIONALE. Punto di accesso al servizio (endpoint PDND).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>data_capabilities[].api_specification</strong></p></td>
+<td><p>string</p></td>
+<td><p>OPZIONALE. URL del documento di specifica <a class="reference external" href="https://spec.openapis.org/oas/v3.0.3">OAS3</a> per questa capacità dati.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>data_capabilities[].data_provision</strong></p></td>
+<td><p>oggetto JSON</p></td>
+<td><p>OPZIONALE. Capacità di fornitura dei dati e specifiche temporali.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>data_capabilities[].data_provision.immediate_flow</strong></p></td>
+<td><p>boolean</p></td>
+<td><p>OBBLIGATORIO. Indica se la Fonte Autentica supporta la fornitura immediata dei dati.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>data_capabilities[].data_provision.deferred_flow</strong></p></td>
+<td><p>boolean</p></td>
+<td><p>OBBLIGATORIO. Indica se la Fonte Autentica supporta la fornitura differita dei dati.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>data_capabilities[].data_provision.max_response_time_minutes</strong></p></td>
+<td><p>integer</p></td>
+<td><p>CONDIZIONALE. Tempo massimo in minuti per la risposta della Fonte Autentica a una richiesta di fornitura dati differita. OBBLIGATORIO se <code class="docutils literal notranslate"><span class="pre">deferred_flow</span></code> è <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>data_capabilities[].data_provision.notification_methods</strong></p></td>
+<td><p>Array di stringhe</p></td>
+<td><p>CONDIZIONALE. Array dei metodi di notifica supportati dalla Fonte Autentica per la fornitura dati differita, come <code class="docutils literal notranslate"><span class="pre">&quot;push&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;poll&quot;</span></code>. OBBLIGATORIO se <code class="docutils literal notranslate"><span class="pre">deferred_flow</span></code> è <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>data_capabilities[].user_information</strong></p></td>
+<td><p>JSON object Array</p></td>
+<td><p>OPZIONALE. Array di Oggetti contenenti informazioni per l'Utente in più lingue sulla disponibilità dei dati. Questa stringa DEVE essere fornita dalla Fonte Autentica al Trust Anchor durante l'onboarding. La formattazione Markdown può essere testo semplice o una combinazione di testo e link. Ad esempio, se il database della Fonte Autentica contiene solo dati registrati <em>dopo</em> una data specifica, questa informazione DEVE essere comunicata tramite questa chiave. DEVE contenere i claim <code class="docutils literal notranslate"><span class="pre">locale</span></code> e <code class="docutils literal notranslate"><span class="pre">description</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>data_capabilities[].administrative_expiration_user_info</strong></p></td>
+<td><p>JSON object Array</p></td>
+<td><p>OPZIONALE. Array di Oggetti contenenti informazioni per l'Utente in più lingue sulla scadenza amministrativa dei dati ed eventualmente le azioni raccomandate. Questa stringa DEVE essere fornita dalla Fonte Autentica al Trust Anchor durante l'onboarding. La formattazione Markdown può essere testo semplice o una combinazione di testo e link. DEVE contenere i claim <code class="docutils literal notranslate"><span class="pre">locale</span></code>, <code class="docutils literal notranslate"><span class="pre">title</span></code> e <code class="docutils literal notranslate"><span class="pre">description</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>data_capabilities[].allowed_states</strong></p></td>
+<td><p>JSON object Array</p></td>
+<td><p>OPZIONALE. Array di Oggetti contenente informazioni per l'Utente in più lingue sullo stato corrente dei dati forniti ed eventualmente le azioni raccomandate. I valori degli stati sono definiti nella sezione <a class="reference internal" href="credential-revocation.html#token-status-lists"><span class="std std-ref">Token Status Lists</span></a>. DEVE contenere i claim <code class="docutils literal notranslate"><span class="pre">locale</span></code>, <code class="docutils literal notranslate"><span class="pre">title</span></code>, <code class="docutils literal notranslate"><span class="pre">description</span></code> e <code class="docutils literal notranslate"><span class="pre">&lt;Status-Type-Value&gt;</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>data_capabilities[].service_documentation</strong></p></td>
+<td><p>string</p></td>
+<td><p>OPZIONALE. URL che punta alla documentazione del servizio della Fonte Autentica.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>data_capabilities[].update_frequency</strong></p></td>
+<td><p>string</p></td>
+<td><p>OPZIONALE. Indica la frequenza con cui la Fonte Autentica aggiorna i propri dati. Valori possibili: <code class="docutils literal notranslate"><span class="pre">&quot;real_time&quot;</span></code> (aggiornamenti quasi in tempo reale, tipicamente entro minuti), <code class="docutils literal notranslate"><span class="pre">&quot;daily&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;weekly&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;monthly&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;on_demand&quot;</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>data_capabilities[].logo_uri</strong></p></td>
+<td><p>string</p></td>
+<td><p>OPZIONALE. URL dell'immagine del logo relativa ai dati.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>data_capabilities[].logo_uri#integrity</strong></p></td>
+<td><p>string</p></td>
+<td><p>CONDIZIONALE. Digest crittografico della risorsa immagine del logo per la verifica dell'integrità. OBBLIGATORIO se <code class="docutils literal notranslate"><span class="pre">logo_uri</span></code> è presente. Formato: <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code> (es. <code class="docutils literal notranslate"><span class="pre">&quot;sha-256-abc123...&quot;</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>data_capabilities[].background_color</strong></p></td>
+<td><p>string</p></td>
+<td><p>OPZIONALE. Valore stringa del colore di sfondo da visualizzare insieme ai dati.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>data_capabilities[].contacts</strong></p></td>
+<td><p>Array di stringhe</p></td>
+<td><p>OPZIONALE. Array di indirizzi email di contatto del servizio clienti.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-number">Listato 8.1 </span><span class="caption-text">Esempio non normativo di Registrazione Fonte Autentica</span><a class="headerlink" href="#id6" title="Link to this code">¶</a></div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;data_capabilities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;api_specification&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://docs.gov.example/transport/api-oas3.yaml&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;available_claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;given_name&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;family_name&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;birth_date&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;birth_place&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;issue_date&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;document_iss_country&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;document_iss_authority&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;expiry_date&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;document_number&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;portrait&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;un_distinguishing_sign&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;restrictions_conditions&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;claim_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;driving_privileges&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;mandatory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;administrative_expiration_user_info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span><span class="p">,</span><span class="w">                    </span>
+<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;La tua Patente risulta scaduta&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;In questo momento non puoi guidare le categorie di veicoli associate alla tua Patente. Rinnova il documento presso l&#39;ente abilitato del tuo territori.&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span><span class="p">,</span><span class="w">                    </span>
+<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Your driving licence has expired&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;At this time, you cannot drive the vehicle categories associated with your licence. Renew the document at the authorised office in your area.&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;allowed_states&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">      </span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;0x00&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;VALID&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;La tua Patente risulta valida&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;In questo momento puoi guidare le categorie di veicoli associate alla tua Patente&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;0x00&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;VALID&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Your driving licence is valid&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;At this time, you can drive the vehicle categories associated with your licence.&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;0x01&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;INVALID&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;La tua Patente risulta non valida&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Rivolgiti all&#39;ente preposto per maggiori dettagli.&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;0x01&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;INVALID&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Your driving licence is not valid&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Contact the competent authority for more details.&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;0x02&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SUSPENDED&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;La tua Patente risulta sospesa&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;In questo momento non puoi guidare le categorie di veicoli associate alla tua Patente. Rivolgiti all&#39;ente preposto per maggiori dettagli sul termine del periodo di sospensione.&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;0x02&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SUSPENDED&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Your driving licence is suspended&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;At this time, you cannot drive the vehicle categories associated with your licence. Contact the competent authority for more details on the end of the suspension period.&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;0x0F&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ATTRIBUTE_UPDATE&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;La tua Patente risulta essere stata aggiornata&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;In questo momento non puoi guidare le categorie di veicoli associate alla tua Patente. Aggiorna il documento su IT-Wallet.&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;0x0F&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ATTRIBUTE_UPDATE&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Your driving licence has been updated&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;At this time, you cannot drive the vehicle categories associated with your licence. Update the document in the IT-Wallet.&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;background_color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#12107c&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;citizen-support@gov.example&quot;</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;data_origin&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;Ufficio/Dipartimento XXX Autorità dei Trasporti&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;Office/Department XXX Transport Authority&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;data_provision&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;deferred_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;immediate_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;dataset_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;38832801&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;integration_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.gov.example/transport/driving-license&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;integration_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pdnd&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;intended_purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;IDENTITY_VERIFICATION&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;PERSON_IDENTIFICATION&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;DRIVING_RIGHTS_VERIFICATION&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;LAW_ENFORCEMENT_CONTROLS&quot;</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/assets/transport-data-logo.svg&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;logo_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-b1946ac92492d2347c6235b4d2611184e2a3f8b8c8f8f8e8f8f8f8f8f8f8f8f8&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;service_documentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://docs.gov.example/transport/api-docs&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;update_frequency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;real_time&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;user_information&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">  </span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Sono disponibili le patenti di guida rilasciate o rinnovate a partire dal DD-MM-YYYY.&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Only driving licences issued or renewed from DD-MM-YYYY will be available.&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;entity_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://transport-authority.gov.example&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;organization_info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;registry@transport-authority.gov.example&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;technical-support@transport-authority.gov.example&quot;</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;homepage_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/transport&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;ipa_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nta_001&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;legal_identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;12345678901&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;logo_extended_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/assets/transport-authority-logo-extended.svg&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;logo_extended_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/assets/transport-authority-logo.svg&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;logo_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;organization_country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;XX&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;organization_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Autorità dei Trasporti&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Transport Authority&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+
+<span class="w">    </span><span class="nt">&quot;organization_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;public&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;policy_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/transport/privacy-policy&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tos_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/transport/tos&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p><strong>Fase 2 - Validazione Tecnica</strong>: L'Organismo di Vigilanza valida la registrazione inviata con focus su:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Conformità al Registro dei Claims</strong>: Validazione del formato dei claim, degli identificatori e della loro esistenza nel Registro dei Claims.</p></li>
+<li><p><strong>Validazione della Tassonomia</strong>: Verifica che le finalità dichiarate siano voci valide della tassonomia.</p></li>
+<li><p><strong>Verifica dell'Integrazione API</strong>:</p>
+<ul>
+<li><p><strong>Entità Pubbliche</strong>: Verifica della conformità alla specifica PDND dell'e-service</p></li>
+<li><p><strong>Entità Private</strong>: Completezza della specifica <a class="reference external" href="https://spec.openapis.org/oas/v3.0.3">OAS3</a> inclusi framework di autorizzazione, schemi richiesta/risposta, meccanismi di gestione errori e ambiente sandbox.</p></li>
+</ul>
+</li>
+<li><p><strong>Standard del Formato di Risposta</strong>: Verifica dell'utilizzo del formato del Registro dei Claims e delle specifiche di mappatura degli stati.</p></li>
+</ul>
+</div></blockquote>
+<p><strong>Fase 3 - Pubblicazione nel Registro delle Fonti Autentiche</strong>: Al termine della validazione positiva:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>L'Entità Fonte Autentica viene pubblicata nel Registro delle Fonti Autentiche con le capacità dichiarate complete.</p></li>
+<li><p>La Fonte Autentica diventa rilevabile dagli Emittenti di Credenziali per le richieste di integrazione.</p></li>
+<li><p>La Fonte Autentica è pronta per la fornitura operativa dei dati.</p></li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>La registrazione della Fonte Autentica è completa e indipendente dall'integrazione con l'Emittente di Credenziali. Le Fonti Autentiche diventano rilevabili immediatamente dopo la pubblicazione nel Registro delle Fonti Autentiche, mentre la disponibilità delle Credenziali per gli Utenti finali dipende dall'autorizzazione amministrativa dalla Fonte Autentica all'Emittente di Credenziali, seguita dalla riuscita integrazione tecnica e dall'approvazione dell'Organismo di Vigilanza per l'idoneità al catalogo.</p>
+</div>
+</section>
+</section>
+<section id="processo-di-autorizzazione-dalla-fonte-autentica-all-emittente-di-credenziali">
+<h2><span class="section-number">8.3. </span>Processo di Autorizzazione dalla Fonte Autentica all'Emittente di Credenziali<a class="headerlink" href="#processo-di-autorizzazione-dalla-fonte-autentica-all-emittente-di-credenziali" title="Link to this heading">¶</a></h2>
+<p>A seguito dell'autorizzazione amministrativa dalla Fonte Autentica all'Emittente di Credenziali ottenuta durante la fase di registrazione amministrativa, le procedure di integrazione tecnica stabiliscono le connessioni API operative e i meccanismi di accesso ai dati tra gli Emittenti di Credenziali e le Fonti Autentiche.</p>
+<p>L'integrazione tecnica comprende:</p>
+<ul class="simple">
+<li><p><strong>Configurazione degli Endpoint API</strong>: Instaurazione di connessioni API sicure come specificato nelle specifiche tecniche delle Fonti Autentiche (e-service PDND).</p></li>
+<li><p><strong>Validazione della Mappatura dei Claims</strong>: Verifica che l'implementazione dell'Emittente di Credenziali mappi correttamente le risposte della Fonte Autentica agli identificatori standardizzati del Registro dei Claims.</p></li>
+<li><p><strong>Test del Flusso dei Dati</strong>: Validazione delle capacità di fornitura dei dati immediata o differita e dei meccanismi di gestione degli errori.</p></li>
+<li><p><strong>Implementazione della Sicurezza</strong>: Configurazione dell'autenticazione, dell'autorizzazione e del logging di audit come richiesto dagli standard di sicurezza delle Fonti Autentiche.</p></li>
+</ul>
+</section>
+<section id="processo-di-onboarding-delle-entita-federate">
+<h2><span class="section-number">8.4. </span>Processo di Onboarding delle Entità Federate<a class="headerlink" href="#processo-di-onboarding-delle-entita-federate" title="Link to this heading">¶</a></h2>
+<p>Le Entità Federate, tra cui Emittenti di Credenziali, Relying Party e Fornitori di Wallet, devono completare le procedure di onboarding per diventare partecipanti idonei nell'ecosistema IT-Wallet. Tale processo stabilisce la fiducia distribuita mediante l'emissione di Certificati X.509, la validazione delle Catene di Fiducia e la verifica della conformità, come descritto in <a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>.</p>
+<section id="modello-gerarchico-dell-autorita-di-federazione">
+<h3><span class="section-number">8.4.1. </span>Modello Gerarchico dell'Autorità di Federazione<a class="headerlink" href="#modello-gerarchico-dell-autorita-di-federazione" title="Link to this heading">¶</a></h3>
+<p>La federazione IT-Wallet implementa un <strong>modello di onboarding gerarchico</strong> in cui le Entità Federate DEVONO essere registrate da uno dei seguenti attori:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p><strong>Trust Anchor</strong>: L'autorità radice con la capacità di registrare direttamente qualsiasi Entità Federata.</p></li>
+<li><p><strong>Intermediari</strong>: Autorità delegate che registrano le Entità Foglia per conto del Trust Anchor.</p></li>
+</ol>
+</div></blockquote>
+<p>Sia i Trust Anchor che gli Intermediari agiscono come <strong>Autorità di Federazione</strong> con le seguenti capacità di onboarding:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Emissione di Certificati X.509</strong>: Emettono Certificati X.509 ai propri Subordinati Immediati con opportuni vincoli di denominazione come definito in <a class="reference internal" href="trust-infrastructure.html#x-509-pki"><span class="std std-ref">X.509 PKI</span></a>.</p></li>
+<li><p><strong>Applicazione di Politiche sui Metadati</strong>: Applicano politiche sui metadati specifiche della federazione con <strong>effetto a cascata</strong> (le politiche del Trust Anchor prevalgono su quelle degli Intermediari).</p></li>
+<li><p><strong>Emissione di Trust Mark</strong>: Emettono Trust Mark di Federazione attestanti le capacità e le concessioni dei Subordinati, conformemente al framework di fiducia.</p></li>
+</ul>
+</div></blockquote>
+<p>Pertanto, le Entità Federate POSSONO essere registrate attraverso percorsi differenti:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Onboarding Diretto dal Trust Anchor</strong>: L'Entità si registra direttamente presso il Trust Anchor.</p></li>
+<li><p><strong>Onboarding Mediato da un Intermediario</strong>: L'Entità si registra presso un Intermediario appropriato.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="prerequisiti-di-onboarding-alla-federazione">
+<h3><span class="section-number">8.4.2. </span>Prerequisiti di Onboarding alla Federazione<a class="headerlink" href="#prerequisiti-di-onboarding-alla-federazione" title="Link to this heading">¶</a></h3>
+<p>Le Entità Federate DEVONO rispettare i seguenti requisiti tecnici prima di avviare il processo di onboarding:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Generazione delle Chiavi</strong>: Le entità DEVONO generare almeno due coppie di chiavi mediante crittografia a curva ellittica come specificato in <a class="reference internal" href="algorithms.html#algoritmi-crittografici"><span class="std std-ref">Algoritmi Crittografici</span></a>:</p>
+<ul>
+<li><p><strong>Coppia di Chiavi della Federazione</strong>: Utilizzata per firmare le Configurazioni dell'Entità e attestare le chiavi specifiche dell'applicazione. Per le best practice di sicurezza e la continuità operativa, le entità DOVREBBERO mantenere più Chiavi di Entità della Federazione (almeno due) per abilitare la rotazione sicura delle chiavi e la risposta agli incidenti senza impatto sulle entità che hanno memorizzato nella cache le Configurazioni dell'Entità.</p></li>
+<li><p><strong>Coppia/i di Chiavi Specifiche dell'Applicazione</strong>: Utilizzate per le operazioni protocollari specifiche dell'entità, come l'emissione e la presentazione delle Credenziali.</p></li>
+</ul>
+</li>
+<li><p><strong>Attestazione delle Chiavi Specifiche dell'Applicazione</strong>: Le entità DEVONO creare Certificati X.509 auto-firmati per le proprie chiavi specifiche dell'applicazione utilizzando la Chiave Privata dell'Entità della Federazione.</p></li>
+<li><p><strong>Predisposizione della Configurazione dell'Entità</strong>: Le entità DEVONO pubblicare una Configurazione dell'Entità (CE) firmata con la propria Chiave Privata dell'Entità della Federazione all'endpoint <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> come definito in <a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>. La CE DEVE includere:</p>
+<ul>
+<li><p>Un claim <code class="docutils literal notranslate"><span class="pre">jwks</span></code> contenente le Chiavi dell'Entità della Federazione in formato JSON Web Key (JWK).</p></li>
+<li><p>Un claim <code class="docutils literal notranslate"><span class="pre">iss</span></code> con l'Identificatore dell'Entità della Federazione come definito in <a class="reference internal" href="trust-infrastructure.html#ruoli-di-federazione"><span class="std std-ref">Ruoli di Federazione</span></a>.</p></li>
+<li><p>Un claim <code class="docutils literal notranslate"><span class="pre">sub</span></code> uguale al claim <code class="docutils literal notranslate"><span class="pre">iss</span></code>.</p></li>
+<li><p>I claim <code class="docutils literal notranslate"><span class="pre">iat</span></code> ed <code class="docutils literal notranslate"><span class="pre">exp</span></code> che definiscono un intervallo di tempo valido.</p></li>
+<li><p>Un claim <code class="docutils literal notranslate"><span class="pre">metadata</span></code> contenente i metadati specifici dell'entità organizzati per Tipologie di Metadati (vedere <a class="reference internal" href="credential-issuer-entity-configuration.html#entity-configuration-del-fornitore-di-attestati-elettronici"><span class="std std-ref">Entity Configuration del Fornitore di Attestati Elettronici</span></a>, <a class="reference internal" href="relying-party-entity-configuration.html#entity-configuration-relying-party"><span class="std std-ref">Entity Configuration Relying Party</span></a>, o <a class="reference internal" href="wallet-provider-entity-configuration.html#entity-configuration-del-fornitore-di-wallet"><span class="std std-ref">Entity Configuration del Fornitore di Wallet</span></a>) con chiavi specifiche dell'applicazione incluse nei campi <code class="docutils literal notranslate"><span class="pre">jwks</span></code> dei metadati e Certificati X.509 auto-firmati nei relativi claim <code class="docutils literal notranslate"><span class="pre">x5c</span></code>.</p></li>
+</ul>
+</li>
+<li><p><strong>Richiesta di Firma del Certificato X.509 (CSR)</strong>: Le entità DEVONO predisporre una Richiesta di Firma del Certificato X.509 (CSR) in formato PKCS #10 contenente <strong>la Chiave dell'Entità della Federazione</strong> per l'emissione del Certificato X.509 da parte dell'Autorità di Federazione, come definito in <a class="reference internal" href="trust-infrastructure.html#emissione-di-certificati-x-509"><span class="std std-ref">Emissione di Certificati X.509</span></a>.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="requisiti-di-sicurezza-per-la-gestione-delle-chiavi">
+<h3><span class="section-number">8.4.3. </span>Requisiti di Sicurezza per la Gestione delle Chiavi<a class="headerlink" href="#requisiti-di-sicurezza-per-la-gestione-delle-chiavi" title="Link to this heading">¶</a></h3>
+<p>Tutte le entità federate DOVREBBERO mantenere almeno due chiavi di firma attestate dal Trust Anchor:</p>
+<ul class="simple">
+<li><p><strong>Chiave Attiva</strong>: Utilizzata per le operazioni di firma correnti</p></li>
+<li><p><strong>Chiave di Backup</strong>: Disponibile per l'attivazione immediata durante incidenti o rotazione pianificata delle chiavi</p></li>
+</ul>
+<p>Questo approccio a doppia chiave consente:
+- Rotazione sicura delle chiavi senza interruzione del servizio
+- Risposta rapida agli incidenti in caso di compromissione della chiave primaria
+- Continuità per le entità con Configurazioni dell'Entità in cache
+- Prevenzione di problemi di validazione durante le transizioni di chiave</p>
+<p>La chiave di backup DEVE essere:
+- Registrata dal Trust Anchor prima del deployment
+- Pubblicata nel JWKS dell'entità accanto alla chiave attiva
+- Pronta per l'attivazione immediata senza ulteriori fasi di certificazione
+- Mantenuta con gli stessi standard di sicurezza della chiave attiva</p>
+</section>
+<section id="procedura-di-onboarding-alla-federazione">
+<h3><span class="section-number">8.4.4. </span>Procedura di Onboarding alla Federazione<a class="headerlink" href="#procedura-di-onboarding-alla-federazione" title="Link to this heading">¶</a></h3>
+<p>La procedura di onboarding alla federazione segue una procedura strutturata in 4 fasi e può essere eseguita dal Trust Anchor o da un Intermediario.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>La seguente procedura si applica ai Fornitori di Wallet, agli Emittenti di Credenziali e alle Relying Party che desiderano effettuare l'onboarding nella federazione IT-Wallet. L'<strong>Autorità di Federazione</strong> si riferisce al Trust Anchor o all'Intermediario in base alle caratteristiche organizzative e alle politiche di governance della federazione.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Questa sezione copre i requisiti di registrazione tecnica. Tutte le informazioni amministrative, quali la validazione della persona giuridica, la conformità normativa e l'idoneità organizzativa, si considerano già raccolte e validate dall'Organismo di Vigilanza durante la fase di registrazione amministrativa, che esula dalla presente specifica tecnica. Esempi di informazioni amministrative includono: denominazione legale, numeri di registrazione dell'impresa, persone di contatto, documentazione di conformità legale e autorizzazioni operative.</p>
+</div>
+<figure class="align-default" id="id7">
+<p class="plantuml">
+<object data="_images/plantuml-494c639e9c24dfa740961d175d4a561a3b6f51eb.svg" type="image/svg+xml" style="width:99%">
+<a href="_images/plantuml-494c639e9c24dfa740961d175d4a561a3b6f51eb.png"><img src="_images/plantuml-494c639e9c24dfa740961d175d4a561a3b6f51eb.png" alt="Processo di onboarding dell'entità federata che mostra la procedura in 4 fasi" style="width: 99.0%"/></a>
+
+</object></p>
+<figcaption>
+<p><span class="caption-number">Fig. 8.2 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/ZLDDRnCn4BtxLunwQgIavOCUY4W_b1PKAWHAeN2e54tiSJEjrrxMOqB-FVknoswL8769el6yjs_Up3kFWeMap2bC4dpALbGebPSrrfoZ5pXuJuOA50uUhhomR0y08rZwPzT5adKekaP1fMOpk1NAuUKKFljLmCAmVu05_KmK1MxJAkCOA-XiffGbc9o2uBHv40Wzf6WWz_wmaGBNbsFuabQEDTpG5Zv-lubZcDykugZ_wgifx5C7T-ZOD4Nq1kPK25lMA0JNCIRqccf1WfsWEohORg6W1uxIyh6teSZg_trdnqtGwfm7R_aXjHWi9pW-sf1paoSVDluuvEJPJ6mlaxp90tiPS5xakTj2He861I4FZZLJX0tB6ZH6ZRL7P2tf8QuQXk37qScBjyCX8-0gf5B9pe87ZaPWN_ivuFj0lkgdeQjVYnG5Fc7n5A7q0wWcKWgT37sEIMkAqIQd000QJajJM3opr5HmorGeSf6611RPaTa1FvAkdoihUhW1haQFYhpfp-7r57OdlgmSNP0KJB_GjNVO3rmVQQXk48LA6XJAo5TtU6n9zFeifjMicNd9PgHwRNjniA2O1ny93alW61utfMs7Eni2lKRsSJJ-k_HblVJjIBaGyiPerElMRP1jJhtimKwwg5LwfQekix9wrlzTLj3Pk-htj5S_f1X8xekZvyw-cSB-U_-Mrrb0RuRvduSiToHjxYrr7sswzp9Dx_q4Bem1x5AyNBEN2DeXPztZxnFT5Bfix5ZQTVOEj1IzZ2O4SGsfbcFWQluVkLNdv4tAt1y0">Processo di Onboarding dell'Entità Federata.</a></span><a class="headerlink" href="#id7" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p><strong>Fase 1 - Invio della Richiesta di Onboarding</strong>: L'Entità Federata avvia il processo di onboarding inviando una richiesta di registrazione tecnica contenente le seguenti informazioni.</p>
+<table class="longtable docutils align-default" id="id8">
+<caption><span class="caption-number">Tabella 8.5 </span><span class="caption-text">Informazioni della Richiesta Tecnica di Onboarding alla Federazione</span><a class="headerlink" href="#id8" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Categoria Informativa Tecnica</strong></p></th>
+<th class="head"><p><strong>Requisiti e Descrizione</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Identificatore dell'Entità Federata</strong></p></td>
+<td><p><strong>OBBLIGATORIO</strong>. Un URL univoco che identifica l'Entità Federata come definito in <a class="reference internal" href="trust-infrastructure.html#ruoli-di-federazione"><span class="std std-ref">Ruoli di Federazione</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Chiave dell'Entità Federata (JWK)</strong></p></td>
+<td><p><strong>OBBLIGATORIO</strong>. Chiave pubblica a curva ellittica in formato JSON Web Key utilizzata per firmare le Configurazioni dell'Entità e attestare le chiavi specifiche dell'applicazione, con algoritmi crittografici specificati in <a class="reference internal" href="algorithms.html#algoritmi-crittografici"><span class="std std-ref">Algoritmi Crittografici</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Richiesta di Firma del Certificato X.509 (CSR)</strong></p></td>
+<td><p><strong>OBBLIGATORIO</strong>. CSR in formato PKCS #10 per l'emissione del Certificato X.509 da parte dell'Autorità di Federazione. La CSR DEVE:</p>
+<ul class="simple">
+<li><p>Contenere <strong>solo le Chiavi dell'Entità Federata</strong>.</p></li>
+<li><p>Essere firmata con la corrispondente Chiave Privata dell'Entità Federata.</p></li>
+<li><p>Definire il Soggetto del Certificato X.509 con gli attributi richiesti come specificato in <a class="reference internal" href="trust-infrastructure.html#emissione-di-certificati-x-509"><span class="std std-ref">Emissione di Certificati X.509</span></a> per le Entità Federate.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Avvertimento</p>
+<p>Prima di inviare la richiesta tecnica di onboarding, le Entità Federate DEVONO assicurarsi che il proprio endpoint <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> pubblichi una Configurazione dell'Entità valida (come definito in <a class="reference internal" href="trust-infrastructure.html#entity-configuration"><span class="std std-ref">Entity Configuration</span></a>) firmata con la propria Chiave Privata dell'Entità Federata corrispondente alla Chiave dell'Entità Federata fornita nella richiesta. La Configurazione dell'Entità DEVE già includere le chiavi specifiche dell'applicazione nei metadati con Certificati X.509 auto-firmati nei claim <code class="docutils literal notranslate"><span class="pre">x5c</span></code>.</p>
+</div>
+<p>Un esempio non normativo della struttura delle informazioni tecniche che le Entità Federate inviano durante la richiesta di onboarding della Fase 1:</p>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-number">Listato 8.2 </span><span class="caption-text">Esempio di richiesta di onboarding alla federazione</span><a class="headerlink" href="#id9" title="Link to this code">¶</a></div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;entity_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://credential-issuer.example.gov&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;entity_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;credential_issuer&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;jwks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;keys&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;k1d2e3f4g5h6i7j8&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;crv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8w1QwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;QwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;certificate_signing_requests&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;k1d2e3f4g5h6i7j8&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;-----BEGIN CERTIFICATE REQUEST-----\nMIIBWTCB/QIBADCBkDELMAkGA1UEBhMCSVQxDjAMBgNVBAgMBUxhemlvMQ0wCwYD\nVQQHDARSb21hMRYwFAYDVQQKDA1FeGFtcGxlIE9yZzEkMCIGA1UEAwwbY3JlZGVu\ndGlhbC1pc3N1ZXIuZXhhbXBsZS5nb3YwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNC\nAAR8w1QwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw\nQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw\nQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw\nQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw\n-----END CERTIFICATE REQUEST-----&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;submission_timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-09-25T14:30:00Z&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>L'esempio seguente mostra il contenuto decodificato della CSR:</p>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-number">Listato 8.3 </span><span class="caption-text">Esempio di contenuto decodificato della CSR</span><a class="headerlink" href="#id10" title="Link to this code">¶</a></div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Certificate Request:
+    Data:
+        Version: 0 (0x0)
+        Subject: CN=credentials.example.gov, OU=Digital Credentials, O=Example Organization, L=Roma, ST=Lazio, C=IT, emailAddress=technical@credentials.example.gov
+        Subject Public Key Info:
+            Public Key Algorithm: id-ecPublicKey
+                Public-Key: (256 bit)
+                ASN1 OID: prime256v1
+                NIST CURVE: P-256
+    Signature Algorithm: ecdsa-with-SHA256
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Gli attributi del Soggetto della CSR DEVONO rispettare i requisiti specificati in <a class="reference internal" href="trust-infrastructure.html#emissione-di-certificati-x-509"><span class="std std-ref">Emissione di Certificati X.509</span></a> per le Entità Federate.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Le Chiavi dell'Entità Federata contenute nell'oggetto <code class="docutils literal notranslate"><span class="pre">jwks</span></code> e le chiavi pubbliche contenute nell'oggetto <code class="docutils literal notranslate"><span class="pre">certificate_signing_requests</span></code> DEVONO corrispondere. Le chiavi sono fornite in due formati: formato JWK e formato PKCS #10 CSR per l'emissione del Certificato X.509. Le chiavi specifiche dell'applicazione sono incluse solo nei metadati della Configurazione dell'Entità e NON DEVONO essere incluse nella richiesta di onboarding.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>L'Endpoint della Configurazione dell'Entità è costruito automaticamente aggiungendo <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> all'Identificatore dell'Entità Federata (<code class="docutils literal notranslate"><span class="pre">entity_id</span></code>). Le Entità Federate non devono specificare separatamente questo endpoint nella richiesta di registrazione.</p>
+</div>
+<p><strong>Fase 2 - Validazione dell'Autorità di Federazione ed Emissione del Certificato X.509</strong>: A seguito dell'invio della richiesta di onboarding, l'<strong>Autorità di Federazione</strong> DEVE eseguire:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Verifica delle informazioni fornite nella richiesta di registrazione.</p></li>
+<li><p>Validazione della Configurazione dell'Entità, e dei metadati in essa contenuti, pubblicata all'endpoint <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> dell'entità (come definito in <a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>).</p></li>
+<li><p><strong>Applicazione delle Politiche sui Metadati</strong>: Applicazione delle politiche sui metadati specifiche della federazione ai metadati dell'entità in base alle caratteristiche organizzative e all'ambito di autorizzazione come definito in <a class="reference internal" href="trust-infrastructure.html#subordinate-statement"><span class="std std-ref">Subordinate Statement</span></a>. Quando registrata tramite un Intermediario, si applicano le politiche sia dell'Intermediario che del Trust Anchor, con le politiche del Trust Anchor prevalenti in caso di conflitti.</p></li>
+<li><p><strong>Emissione del Certificato X.509</strong>: Certificazione della Chiave dell'Entità Federata con l'emissione del Certificato X.509 utilizzando l'infrastruttura di fiducia dettagliata in <a class="reference internal" href="trust-infrastructure.html#emissione-di-certificati-x-509"><span class="std std-ref">Emissione di Certificati X.509</span></a>. Gli Intermediari DEVONO emettere Certificati X.509 utilizzando <strong>vincoli di denominazione</strong> appropriati che limitino l'uso di nomi DNS e URI ai soli propri subordinati.</p></li>
+</ul>
+<p>In caso di esito positivo, l'entità riceve un identificativo di registrazione.</p>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Se il processo di emissione fallisce, l'entità richiedente riceve una risposta con i problemi identificati da risolvere prima di inviare una nuova richiesta di onboarding.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Ciascuna entità può raccogliere la propria Catena di Certificati X.509 ottenendo il Certificato X.509 auto-firmato del Trust Anchor, incluso nell'oggetto <code class="docutils literal notranslate"><span class="pre">jwks</span></code> della Configurazione dell'Entità, e aggregando tutti i valori <code class="docutils literal notranslate"><span class="pre">x5c</span></code> pubblicati dalle entità superiori, dal Trust Anchor fino al suo superiore immediato. Questo consente all'entità di ricostruire la catena di certificati completa necessaria per la validazione e l'instaurazione della fiducia all'interno della federazione.</p>
+</div>
+<p><strong>Fase 3 - Recupero della Dichiarazione del Subordinato</strong>: come conferma del successo del processo di onboarding, l'entità DEVE recuperare la Dichiarazione del Subordinato che la riguarda dalla Federazione Immediata utilizzando l'endpoint <code class="docutils literal notranslate"><span class="pre">/fetch</span></code> come definito in <a class="reference internal" href="trust-infrastructure.html#endpoint-api-di-federazione"><span class="std std-ref">Endpoint API di Federazione</span></a>.</p>
+<p>In questo modo, l'entità riceve la Catena di Certificati X.509 all'interno del claim <code class="docutils literal notranslate"><span class="pre">jwks</span></code> in cui:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Il primo elemento è il Certificato X.509 contenente la Chiave dell'Entità Federata (emesso dall'Autorità di Federazione).</p></li>
+<li><p><strong>Per l'onboarding da Trust Anchor</strong>: Il secondo elemento è il Certificato X.509 auto-firmato del Trust Anchor per la validazione del primo Certificato X.509.</p></li>
+<li><p><strong>Per l'onboarding da Intermediario</strong>: Gli elementi aggiuntivi includono il Certificato X.509 dell'Intermediario e il Certificato auto-firmato del Trust Anchor, formando una catena di Certificati X.509 completa.</p></li>
+<li><p>Tutti i Certificati X.509 sono espressi in formato DER e codificati in Base64.</p></li>
+</ul>
+</div></blockquote>
+<p>Esempio di risposta con catena di Certificati X.509 all'interno del claim <code class="docutils literal notranslate"><span class="pre">jwks</span></code>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;keys&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">     </span><span class="p">{</span>
+<span class="w">       </span><span class="nt">&quot;crv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
+<span class="w">       </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
+<span class="w">       </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;qrJrj3Af_B57sbOIRrcBM7br7wOc8ynj7lHFPTeffUk&quot;</span><span class="p">,</span>
+<span class="w">       </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1H0cWDyGgvU8w-kPKU_xycOCUNT2o0bwslIQtnPU6iM&quot;</span><span class="p">,</span>
+<span class="w">       </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY&quot;</span><span class="p">,</span>
+<span class="w">                   </span><span class="nt">&quot;x5c&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;MIIDqjCCA1GgAwIBAgIGAZc6/V9qMAoGCCqGSM49BAMCMIGzMQsw...&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;MIIDQzCCAuigAwIBAgIGAZc6+XlDMAoGCCqGSM49BAMCMIGzMQsw...&quot;</span><span class="p">]</span>
+<span class="w">     </span><span class="p">}</span>
+<span class="w">   </span><span class="p">]</span>
+<span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Esempio di richiesta fetch:</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/fetch?sub=https%3A%2F%2Fcredentials.example.gov</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">trust-anchor.example.gov</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Se l'endpoint <code class="docutils literal notranslate"><span class="pre">/fetch</span></code> risponde con codice di stato <code class="docutils literal notranslate"><span class="pre">400</span></code> o <code class="docutils literal notranslate"><span class="pre">404</span></code>, l'entità DEVE risolvere i problemi descritti nel messaggio di risposta prima di richiamare nuovamente l'endpoint fetch.</p>
+</div>
+<p>Inoltre, l'entità può recuperare i Trust Mark tramite l'endpoint Trust Mark come definito in <a class="reference internal" href="trust-infrastructure.html#endpoint-api-di-federazione"><span class="std std-ref">Endpoint API di Federazione</span></a>.</p>
+<p><strong>Fase 4: Aggiornamento della Configurazione dell'Entità e Completamento dell'Onboarding</strong></p>
+<p>A seguito della richiesta fetch, l'<strong>Autorità di Federazione</strong> restituisce la Dichiarazione del Subordinato dell'entità, un JWT firmato contenente:</p>
+<blockquote>
+<div><ul>
+<li><p><strong>Metadati dell'Entità</strong>: I metadati validati dell'entità con le politiche di federazione applicate.</p></li>
+<li><p><strong>Informazioni sulla Fiducia</strong>: Informazioni sul rapporto di fiducia tra l'Autorità di Federazione e l'entità, inclusa la <cite>x5c</cite> emessa nell'oggetto <cite>jwk</cite> relativo al Subordinato.</p></li>
+<li><p><strong>Trust Mark</strong>: I Trust Mark emessi dall'Autorità di Federazione per l'ambito operativo e le capacità specifiche dell'entità.</p>
+<blockquote>
+<div><p>Esempio di JWK di Federazione relativo al Subordinato incluso il Certificato X.509 emesso:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NsXymfIILEPR5Y0t&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gXY4FApFJCj91Gpb1K9GEIouTq2X3L0K64Iq0ob4l_g&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;l-6dcrIrFVdrzoY9cRJv9zNuFOR3MsDz6TSDhB0xEo4&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;crv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;x5c&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;MIIDqjCCA1GgAwIBAgIGAZc6/V9qMAoGCCqGSM49BAMCMIGzMQsw...&quot;</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+<p>L'Entità Federata DEVE completare il processo di onboarding:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p><strong>Aggiornare e Pubblicare la Configurazione dell'Entità</strong>:</p></li>
+</ol>
+<blockquote>
+<div><p>Il contenuto dell'endpoint <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> deve essere aggiornato per includere i seguenti claim:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Aggiungere un claim <code class="docutils literal notranslate"><span class="pre">authority_hints</span></code> con un Array JSON contenente l'Identificatore dell'Entità Federata dell'<strong>Autorità di Federazione immediata</strong> (Trust Anchor per l'onboarding diretto, o Intermediario per l'onboarding mediato) come definito in <a class="reference internal" href="trust-infrastructure.html#ruoli-di-federazione"><span class="std std-ref">Ruoli di Federazione</span></a>.</p></li>
+<li><p><strong>Integrare i Trust Mark</strong>: Includere i Trust Mark della Dichiarazione del Subordinato nella Configurazione dell'Entità usando il claim <code class="docutils literal notranslate"><span class="pre">trust_marks</span></code> come specificato in <a class="reference internal" href="trust-infrastructure.html#entity-configuration-foglie-e-intermediari"><span class="std std-ref">Entity Configuration Foglie e Intermediari</span></a>.</p></li>
+</ul>
+<p>Esempio di aggiunta di authority_hints:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1718207217</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1749743216</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://credentials.example.gov&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://credentials.example.gov&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;authority_hints&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;https://trust-anchor.example.gov&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="c1">//...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Esempio di integrazione dei Trust Mark:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;trust_marks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;trust_mark_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.example.gov/trust_marks/federation-entity/credential-issuer&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;trust_mark&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL3RydXN0LWFuY2hvci5leGFtcGxlLmdvdiIsInN1YiI6Imh0dHBzOi8vY3JlZGVudGlhbC1pc3N1ZXIuZXhhbXBsZS5nb3YiLCJ0cnVzdF9tYXJrX3R5cGUiOiJodHRwczovL3RydXN0LWFuY2hvci5leGFtcGxlLmdvdi90cnVzdF9tYXJrcy9mZWRlcmF0aW9uLWVudGl0eS9jcmVkZW50aWFsLWlzc3VlciIsImlhdCI6MTcwMDAwMDAwMCwiZXhwIjoxNzMwMDAwMDAwfQ.abc123signature&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Le Entità Federate possono ottenere Trust Mark in qualsiasi momento utilizzando il Federation Trust Mark Endpoint come definito in <a class="reference internal" href="trust-infrastructure.html#endpoint-api-di-federazione"><span class="std std-ref">Endpoint API di Federazione</span></a>.</p>
+</div>
+<p>Al completamento positivo della Fase 4, <strong>l'onboarding dell'entità è completato con successo</strong>. L'entità è ora operativa all'interno della federazione IT-Wallet e pronta per le attività operative.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p><strong>Integrazione nel Registro della Federazione</strong>: Al completamento positivo dell'onboarding, l'Identificatore dell'Entità Federata dell'entità diventa rilevabile tramite i meccanismi di listing del Trust Anchor (come definito in <a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>), indicando la partecipazione attiva alla federazione. L'entità diventa parte dell'infrastruttura di federazione dettagliata in <a class="reference internal" href="registry.html#infrastruttura-del-registro"><span class="std std-ref">Infrastruttura del Registro</span></a>.</p>
+</div>
+</section>
+<section id="trust-mark-della-federazione-it-wallet">
+<h3><span class="section-number">8.4.5. </span>Trust Mark della Federazione IT-Wallet<a class="headerlink" href="#trust-mark-della-federazione-it-wallet" title="Link to this heading">¶</a></h3>
+<p>Le Entità Federate ricevono i Trust Mark della Federazione IT-Wallet al completamento positivo dell'onboarding. <strong>I Trust Mark sono emessi dall'Autorità di Federazione</strong> (Trust Anchor per l'onboarding diretto, Intermediario per l'onboarding mediato) attraverso il Federation Trust Mark Endpoint e fungono da attestazioni verificabili sulla conformità ai profili tecnici IT-Wallet e/o alle politiche di autorizzazione.</p>
+<section id="tipologie-e-schema-dei-trust-mark">
+<h4><span class="section-number">8.4.5.1. </span>Tipologie e Schema dei Trust Mark<a class="headerlink" href="#tipologie-e-schema-dei-trust-mark" title="Link to this heading">¶</a></h4>
+<p>Le Entità POSSONO ricevere più Trust Mark per finalità diverse. Gli identificatori dei Trust Mark DEVONO seguire uno schema gerarchico che rispecchia l'ambito di autorizzazione:</p>
+<p><code class="docutils literal notranslate"><span class="pre">https://&lt;federation_authority_domain&gt;/trust_marks/&lt;purpose&gt;/&lt;entity_type&gt;</span></code></p>
+<p>Dove:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;federation_authority_domain&gt;</span></code>: Il dominio dell'Autorità di Federazione emittente.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;purpose&gt;</span></code>: La finalità del Trust Mark. La finalità <code class="docutils literal notranslate"><span class="pre">federation-entity</span></code> è <strong>OBBLIGATORIA</strong> per tutte le entità. Finalità aggiuntive dei Trust Mark POSSONO essere supportate, come <code class="docutils literal notranslate"><span class="pre">authorization_policy</span></code> per definizioni granulari dell'ambito operativo.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;entity_type&gt;</span></code>: La tipologia dell'entità destinataria (es. <code class="docutils literal notranslate"><span class="pre">credential-issuer</span></code>, <code class="docutils literal notranslate"><span class="pre">relying-party</span></code>, <code class="docutils literal notranslate"><span class="pre">wallet-provider</span></code>).</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="struttura-dei-trust-mark">
+<h4><span class="section-number">8.4.5.2. </span>Struttura dei Trust Mark<a class="headerlink" href="#struttura-dei-trust-mark" title="Link to this heading">¶</a></h4>
+<p>I Trust Mark nella Configurazione dell'Entità DEVONO essere rappresentati come oggetti JSON contenenti i seguenti claim:</p>
+<table class="longtable docutils align-default" id="id11">
+<caption><span class="caption-number">Tabella 8.6 </span><span class="caption-text">Claim dell'Oggetto Trust Mark (nella Configurazione dell'Entità)</span><a class="headerlink" href="#id11" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Claim</strong></p></th>
+<th class="head"><p><strong>Descrizione</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>trust_mark_type</strong></p></td>
+<td><p><strong>OBBLIGATORIO</strong>. Identificatore della tipologia di Trust Mark secondo lo schema: <code class="docutils literal notranslate"><span class="pre">https://&lt;federation_authority_domain&gt;/trust_marks/&lt;purpose&gt;/&lt;entity_type&gt;</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>trust_mark</strong></p></td>
+<td><p><strong>OBBLIGATORIO</strong>. Un JSON Web Token firmato che rappresenta il Trust Mark emesso dall'Autorità di Federazione.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Il JWT del Trust Mark (contenuto nel claim <code class="docutils literal notranslate"><span class="pre">trust_mark</span></code> di cui sopra) include i seguenti claim:</p>
+<table class="longtable docutils align-default" id="id12">
+<caption><span class="caption-number">Tabella 8.7 </span><span class="caption-text">Claim del JWT del Trust Mark</span><a class="headerlink" href="#id12" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Claim</strong></p></th>
+<th class="head"><p><strong>Descrizione</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>iss</strong></p></td>
+<td><p><strong>OBBLIGATORIO</strong>. Autorità di Federazione emittente il Trust Mark (superiore immediato: Trust Anchor o Intermediario).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>sub</strong></p></td>
+<td><p><strong>OBBLIGATORIO</strong>. Identificatore dell'Entità Federata del soggetto.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>trust_mark_type</strong></p></td>
+<td><p><strong>OBBLIGATORIO</strong>. Identificatore univoco del Trust Mark, DEVE corrispondere al claim <code class="docutils literal notranslate"><span class="pre">trust_mark_type</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>iat</strong></p></td>
+<td><p><strong>OBBLIGATORIO</strong>. Timestamp di emissione del Trust Mark.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>exp</strong></p></td>
+<td><p><strong>OBBLIGATORIO</strong>. Timestamp di scadenza del Trust Mark.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>organization_type</strong></p></td>
+<td><p><strong>OBBLIGATORIO</strong>. Tipologia organizzativa dell'entità (<code class="docutils literal notranslate"><span class="pre">public</span></code> o <code class="docutils literal notranslate"><span class="pre">private</span></code>).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>vat_number</strong></p></td>
+<td><p><strong>RACCOMANDATO</strong>. Partita IVA dell'entità (tipicamente per le organizzazioni private).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>legal_identifier</strong></p></td>
+<td><p><strong>RACCOMANDATO</strong>. Numero o identificativo di registrazione legale dell'entità (es. numero di registrazione dell'impresa, codice fiscale).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>ipa_code</strong></p></td>
+<td><p><strong>RACCOMANDATO</strong>. Codice IPA (Indice delle Pubbliche Amministrazioni) per le entità del settore pubblico.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>organization_name</strong></p></td>
+<td><p><strong>RACCOMANDATO</strong>. Denominazione completa dell'Entità Organizzativa.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>email</strong></p></td>
+<td><p><strong>RACCOMANDATO</strong>. Email istituzionale o PEC dell'organizzazione.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>logo_uri</strong></p></td>
+<td><p><strong>OBBLIGATORIO</strong>. URL che punta al <a class="reference internal" href="brand-identity.html#trust-mark"><span class="std std-ref">Trust Mark</span></a> per scopi UI/UX.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>ref</strong></p></td>
+<td><p><strong>OPZIONALE</strong>. URL con informazioni web aggiuntive sul Trust Mark.</p></td>
+</tr>
+</tbody>
+</table>
+<p>I seguenti esempi non normativi illustrano diversi contenuti del JWT del Trust Mark per l'appartenenza alla federazione e diverse politiche di autorizzazione:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://ci.public-authority.gov.example&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;trust_mark_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/trust_marks/federation-entity/credential-issuer&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1718207217</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1749743216</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;organization_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;public&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;ipa_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pub_001&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;legal_identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;12345678901&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;organization_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Public Authority Services&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;registry@public-authority.gov.example&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://rental.cars.example.com&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;trust_mark_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/trust_marks/authorization_policy/relying-party&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1718207217</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1749743216</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;organization_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;private&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;vat_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IT12345678901&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;legal_identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;12345678901&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;organization_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Premium Car Rental Services Ltd&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;compliance@rental.cars.example.com&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;authorized_claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;given_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;family_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;driving_privileges&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;authorized_credential_types&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;mobile-driving-license&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;scope_restrictions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;domains&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;MOBILITY_TRAVEL&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;DRIVING_RIGHTS_VERIFICATION&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://private-badge.ci.example.com&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;trust_mark_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/trust_marks/authorization_policy/credential-issuer&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1718207217</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1749743216</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;organization_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;private&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;vat_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IT98765432101&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;legal_identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;98765432101&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;organization_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Badge Services Ltd&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;compliance@rprivate-badge.ci.example.com&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;authorized_claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;given_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;family_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;company_id&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;authorized_credential_types&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;example-company-badge&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;scope_restrictions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;domains&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;EMPLOYMENT&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ACCESS_PERMIT&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Le Entità Federate DEVONO integrare i Trust Mark nella propria Configurazione dell'Entità utilizzando il claim <code class="docutils literal notranslate"><span class="pre">trust_marks</span></code> come specificato in <a class="reference internal" href="trust-infrastructure.html#entity-configuration-foglie-e-intermediari"><span class="std std-ref">Entity Configuration Foglie e Intermediari</span></a>. Le Entità POSSONO ricevere più Trust Mark per diversi ambiti di autorizzazione.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://credentials.example.gov&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://credentials.example.gov&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;jwks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="c1">// contenuto jwks</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;authority_hints&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;trust_marks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;trust_mark_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/trust_marks/federation-entity/credential-issuer&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;trust_mark&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJhbGciOiJFUzI1NiIsImtpZCI6IlRydXN0QW5jaG9yS2V5SWQiLCJ0eXAiOiJKV1QifQ...&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="c1">// contenuto dei Metadati</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://healthcare-ci.example.gov&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://healthcare-ci.example.gov&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;jwks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="c1">// contenuto jwks</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;authority_hints&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;https://healthcare.intermediate.eid-wallet.example.it&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;trust_marks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;trust_mark_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://healthcare.intermediate.eid-wallet.example.it/trust_marks/federation-entity/credential-issuer&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;trust_mark&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJhbGciOiJFUzI1NiIsImtpZCI6IkhlYWx0aGNhcmVJbnRlcm1lZGlhdGVLZXlJZCIsInR5cCI6IkpXVCJ9...&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="c1">// contenuto dei Metadati</span>
+<span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="validazione-dei-trust-mark">
+<h4><span class="section-number">8.4.5.3. </span>Validazione dei Trust Mark<a class="headerlink" href="#validazione-dei-trust-mark" title="Link to this heading">¶</a></h4>
+<p>I partecipanti alla federazione validano lo stato dei Trust Mark tramite due meccanismi:</p>
+<ol class="arabic simple">
+<li><p><strong>Validazione Statica</strong>: Verifica crittografica utilizzando la chiave pubblica dell'Autorità di Federazione emittente dalla Catena di Fiducia.</p></li>
+<li><p><strong>Validazione Dinamica</strong>: Verifica dello stato in tempo reale, contro eventuali revoche, utilizzando l'endpoint <code class="docutils literal notranslate"><span class="pre">/trust_mark_status</span></code> dell'Autorità di Federazione come definito in <a class="reference internal" href="trust-infrastructure.html#endpoint-api-di-federazione"><span class="std std-ref">Endpoint API di Federazione</span></a>.</p></li>
+</ol>
+<p>Per le procedure complete di gestione dei Certificati X.509, inclusa la validazione della catena, la verifica delle revoche e la gestione del ciclo di vita, vedere <a class="reference internal" href="x5c-evaluation.html#operazioni-di-gestione-dei-certificati-x-509"><span class="std std-ref">Operazioni di Gestione dei Certificati X.509</span></a>.</p>
+</section>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+    
+        <div id="show_right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&lt;</span><span>Page contents</span></a></p>
+        </div>
+
+        <div id="right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
+            <div class="page_toc">
+                <ul>
+<li><a class="reference internal" href="#">8. Onboarding delle Entità</a><ul>
+<li><a class="reference internal" href="#panoramica">8.1. Panoramica</a><ul>
+<li><a class="reference internal" href="#architettura-del-sistema-di-onboarding-delle-entita">8.1.1. Architettura del Sistema di Onboarding delle Entità</a></li>
+<li><a class="reference internal" href="#tipologie-di-entita-e-percorsi-di-onboarding">8.1.2. Tipologie di Entità e Percorsi di Onboarding</a></li>
+<li><a class="reference internal" href="#registrazione-amministrativa-e-tecnica">8.1.3. Registrazione Amministrativa e Tecnica</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#processo-di-registrazione-delle-fonti-autentiche">8.2. Processo di Registrazione delle Fonti Autentiche</a><ul>
+<li><a class="reference internal" href="#requisiti-di-registrazione-delle-fonti-autentiche">8.2.1. Requisiti di Registrazione delle Fonti Autentiche</a></li>
+<li><a class="reference internal" href="#requisiti-sulle-informazioni-di-registrazione-delle-fonti-autentiche">8.2.2. Requisiti sulle informazioni di registrazione delle Fonti Autentiche</a></li>
+<li><a class="reference internal" href="#procedura-di-registrazione-delle-fonti-autentiche">8.2.3. Procedura di registrazione delle Fonti Autentiche</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#processo-di-autorizzazione-dalla-fonte-autentica-all-emittente-di-credenziali">8.3. Processo di Autorizzazione dalla Fonte Autentica all'Emittente di Credenziali</a></li>
+<li><a class="reference internal" href="#processo-di-onboarding-delle-entita-federate">8.4. Processo di Onboarding delle Entità Federate</a><ul>
+<li><a class="reference internal" href="#modello-gerarchico-dell-autorita-di-federazione">8.4.1. Modello Gerarchico dell'Autorità di Federazione</a></li>
+<li><a class="reference internal" href="#prerequisiti-di-onboarding-alla-federazione">8.4.2. Prerequisiti di Onboarding alla Federazione</a></li>
+<li><a class="reference internal" href="#requisiti-di-sicurezza-per-la-gestione-delle-chiavi">8.4.3. Requisiti di Sicurezza per la Gestione delle Chiavi</a></li>
+<li><a class="reference internal" href="#procedura-di-onboarding-alla-federazione">8.4.4. Procedura di Onboarding alla Federazione</a></li>
+<li><a class="reference internal" href="#trust-mark-della-federazione-it-wallet">8.4.5. Trust Mark della Federazione IT-Wallet</a><ul>
+<li><a class="reference internal" href="#tipologie-e-schema-dei-trust-mark">8.4.5.1. Tipologie e Schema dei Trust Mark</a></li>
+<li><a class="reference internal" href="#struttura-dei-trust-mark">8.4.5.2. Struttura dei Trust Mark</a></li>
+<li><a class="reference internal" href="#validazione-dei-trust-mark">8.4.5.3. Validazione dei Trust Mark</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    
+
+      <div class="clearer"></div>
+    </div>
+    <div class="button_nav_wrapper">
+        <div class="button_nav">
+            <div class="left">
+                
+                <a href="registry.html">
+                    <span class="icon">&lt;</span><span><span class="section-number">7. </span>Infrastruttura del Registro</span></a>
+                
+            </div>
+
+            <div class="right">
+                
+                    <a href="x5c-evaluation.html"><span><span class="section-number">9. </span>Operazioni di Gestione dei Certificati X.509</span><span class="icon">&gt;</span></a>
+                
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer" role="contentinfo">
+      Ultimo aggiornamento 19/05/2026.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
+    </div>
+
+<p id="theme_credit"></p>
+  </body>
+</html>
