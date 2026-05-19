@@ -112,10 +112,11 @@ Il payload del JWT ``request`` contenuto nel messaggio HTTP POST contiene i segu
       - Stringa JSON. Stringa contenente un identificativo univoco dell'Attestato Elettronico indipendentemente dal suo formato. DEVE essere mappato nel claim `credential_configurations_supported` presente nei Metadata del Credential Issuer. Il valore dell'identificativo univoco DEVE corrispondere al parametro `credential_type` del :ref:`registry:Catalogo degli Attestati Elettronici`. Ad esempio, nel caso del PID, può essere valorizzato con ``pid`` mentre nel caso della patente di guida ``mDL``. Poiché PUÒ essere multivalore, quando ciò si verifica ogni valore DEVE essere separato da uno spazio.
       - :rfc:`6749`
     * - **authorization_details**
-      - Array di Oggetti JSON. Ogni Oggetto JSON DEVE includere i seguenti claim:
+      - Array di Oggetti JSON. Ogni Oggetto JSON include i seguenti claim:
 
-            - **type**: DEVE essere valorizzato con ``openid_credential``,
-            - **credential_configuration_id**: Stringa JSON. Stringa che indica un identificativo univoco dell'Attestato Elettronico in uno specifico formato che DEVE essere mappato nel claim `credential_configurations_supported` presente nei Metadata del Credential Issuer. Ad esempio, ``dc_sd_jwt_pid`` può essere utilizzato per il PID in formato SD-JWT VC, ``dc_sd_jwt_mDL`` per la patente di guida in formato SD-JWT VC e ``mso_mdoc_mDL`` per la patente di guida in formato mdoc.
+            - **type**: OBBLIGATORIO. DEVE essere valorizzato con ``openid_credential``,
+            - **credential_configuration_id**: OBBLIGATORIO. Stringa JSON. Stringa che indica un identificativo univoco dell'Attestato Elettronico in uno specifico formato che DEVE essere mappato nel claim `credential_configurations_supported` presente nei Metadata del Credential Issuer. Ad esempio, ``dc_sd_jwt_pid`` può essere utilizzato per il PID in formato SD-JWT VC, ``dc_sd_jwt_mDL`` per la patente di guida in formato SD-JWT VC e ``mso_mdoc_mDL`` per la patente di guida in formato mdoc.
+            - **email**: OPZIONALE in caso di PID issuance, altrimenti non DEVE essere presente. Se presente, DEVE contenere l'indirizzo email dell'utente da utilizzare per la notifica degli eventi di revoca del PID.
 
         Inoltre, nel caso in cui l'Autenticazione eID Substantial con Verifica MRTD viene richiesta, DEVE essere incluso un Oggetto JSON opzionale con i seguenti claim:
 
