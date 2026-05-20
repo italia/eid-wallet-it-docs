@@ -172,50 +172,50 @@
         "esempio": "Utilizzo continuo (es. prova di età +18) / Uso singolo (es. biglietto aereo)"
       },
       "validita territoriale eaa": {
-        "domanda": "In caso l’EAA relativo al dataset non sia relativo ad un documento già esistente, l’EAA sarà valido solo in Italia o anche in Europa? Dettaglio eventuali limitazioni o restrizioni territoriali.",
-        "risposta": "",
-        "esempio": "Solo Italia / Solo in alcune Regioni italiane / In tutta Europa, ad esclusione di alcuni Paesi / ..."
+        "domanda": "In caso l’EAA relativo al dataset non sia relativo ad un documento già esistente, l’EAA sarà valido solo in Italia o anche in Europa? Dettaglia eventuali limitazioni o restrizioni territoriali.",
+        "esempio": "Solo Italia / Solo in alcune Regioni italiane / In tutta Europa, ad esclusione di alcuni Paesi / ...",
+        "risposta": ""
       }
     },
     "pagamento": {
       "gratuito o pagamento doc preesistente": {
         "domanda": "In caso di documento già esistente, il documento è gratuito o è previsto un pagamento a carico dell’utente?",
-        "risposta": null,
-        "esempio": "true (se gratuito) / false (se a pagamento)"
+        "esempio": "true (se gratuito) / false (se a pagamento)",
+        "risposta": null
       },
       "pagamento rinnovo doc preesistente": {
-        "domanda": "In caso di documento già esistente, l’eventuale rinnovo prevede un pagamento",
-        "risposta": null,
-        "esempio": "true (se è previsto un pagamento) / false (se il rinnovo non è previsto o se non è previsto un pagamento)"
+        "domanda": "In caso di documento già esistente, l’eventuale rinnovo prevede un pagamento?",
+        "esempio": "true (se è previsto un pagamento) / false (se il rinnovo non è previsto o se non è previsto un pagamento)",
+        "risposta": null
       },
-      "modalita pagamento doc preesistente": {
+      "modalità pagamento doc preesistente": {
         "domanda": "In caso di documento già esistente con pagamento a carico dell’utente, quali sono le modalità di pagamento previste?",
-        "risposta": "",
-        "esempio": "PagoPA / Bonifico / ..."
+        "esempio": "PagoPA / Bonifico / ...",
+        "risposta": ""
       },
-      "gratuito o pagamento eaa": {
+      "gratuito o pagamento EAA": {
         "domanda": "L'EAA relativa al dataset è gratuita o prevede un pagamento a carico dell'utente?",
-        "risposta": null,
-        "esempio": "true (se gratuito) / false (se a pagamento)"
+        "esempio": "true (se gratuito) / false (se a pagamento)",
+        "risposta": null
       }
     },
     "legale privacy": {
       "normativa doc preesistente": {
         "domanda": "In caso di documento già esistente, le modalità di emissione e/o di presentazione del documento sono regolate da normativa? Se sì quale e cosa prevede?",
-        "risposta": "",
-        "esempio": "D.Lgs. 82/2005 / CAD / ..."
+        "esempio": "D.Lgs. 82/2005 / CAD / ...",
+        "risposta": ""
       },
-      "normativa eaa": {
+      "normativa EAA": {
         "domanda": "Le modalità di emissione e/o di presentazione dell'EAA relativo al dataset sono regolate da normativa? Se sì quale e cosa prevede?",
-        "risposta": "",
-        "esempio": "D.Lgs. 82/2005 / CAD / ..."
+        "esempio": "D.Lgs. 82/2005 / CAD / ...",
+        "risposta": ""
       },
       "titolarita dati eaa": {
         "domanda": "I dati dell’EAA relativo al dataset sono di titolarità di un singolo Ente o condivisi tra più Enti? Quali?",
         "risposta": "",
         "esempio": "Titolarità della Regione / Titolarità della Regione e dell’Azienda Sanitaria Locale / ..."
       },
-      "dati sensibili eaa": {
+      "dati sensibili EAA": {
         "domanda": "I dati contenuti nell’EAA relativo al dataset sono sensibili? ",
         "risposta": null,
         "esempio": "true (es. dati sanitari) / false"
