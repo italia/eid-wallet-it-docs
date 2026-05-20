@@ -227,29 +227,6 @@
       }
     }
   },
-  "pdnd metadata": {
-    "pdnd eservice id prod": "",
-    "pdnd eservice id uat": "",
-    "pdnd eservice name": "",
-    "token type": "Bearer",
-    "audit_rest_02_richiesto": true
-  },
-  "request": {
-    "parametri input": [
-      {
-        "nome parametro": "datasetId",
-        "descrizione": "Identificativo del set di dati trasmesso al CI",
-        "nome campo": "ID del Dataset",
-        "esempio campo compilato": "fofi",
-        "obbligatorio": true,
-        "tipologia": "ALFANUMERICO",
-        "lunghezza massima caratteri": 4,
-        "note": "",
-        "valori ammessi": [
-          "fofi"
-        ]
-      },
-      {
         "nome parametro": "unique_id",
         "descrizione": "Identificativo univoco del cittadino",
         "nome campo": "Codice Fiscale o IdANPR",
