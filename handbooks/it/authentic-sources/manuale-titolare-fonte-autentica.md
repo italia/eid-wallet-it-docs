@@ -22,7 +22,13 @@
 - [Appendice B – Data Model](#appendice-b--data-model)
 - [Appendice C – Mappatura errori](#appendice-c--mappatura-errori)
 - [Appendice D – Mappatura stati](#appendice-d--mappatura-stati)
-- [Appendice E – Assistenza](#appendice-e--assistenza)
+  - [Modulo da compilare](#modulo-da-compilare)
+           - [Denominazioni ufficiali](#denominazioni-ufficiali)
+           - [Casi d'uso](#casi-duso)
+           - [Data Model](#data-model)
+           - [Mappatura errori](#mappatura-errori)
+           - [Mappatura stati](#mappatura-stati)
+           - [Assistenza](#assistenza)
 
 ## Introduzione e contesto
 
@@ -112,7 +118,17 @@ La versione corrente delle Specifiche Tecniche è disponibile a [questo link](ht
 - [e-Service PDND](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/e-service-pdnd.html) 
 - [Soluzione del Fornitore di Attestati Elettronici](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/credential-issuer-solution.html)
 - [Gestione degli Attestati Elettronici](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/digital-credential-management.html)
+### **Definire le denominazioni ufficiali **
 
+Il Sistema IT-Wallet consente agli utenti di ottenere più EAA relativi a diversi Titolari Fonte Autentica. E’ quindi importante definire in maniera ufficiale e chiara per l’utente: 
+
+- la denominazione con cui si intende veicolare il nome dell’Ente titolare; 
+- la denominazione con cui si intende identificare in maniera univoca l’EAA relativo a ciascun dataset.  
+
+Per approfondimenti vai alle Specifiche Tecniche: 
+- [Focus sugli Attestati Elettronici di Attributi](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/functionalities.html#focus-sugli-attestati-elettronici-di-attributi)
+
+A tal fine, l’Ente deve compilare la sezione “Denominazioni ufficiali” del modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa). Per riferimenti e istruzioni di compilazione vai all'apposita sezione del capitolo Modulo da compilare.
 ### **Definire come l'utente può ottenere l'EAA**
 
 Il Sistema IT-Wallet consente agli utenti di ottenere gli EAA attraverso diverse modalità. In particolare: 
@@ -151,13 +167,17 @@ A tal fine, l’Ente deve compilare la sezione "Casi d'uso" del modulo [Progetta
 ### **Definire il Data Model**
 
 Il Sistema IT-Wallet consente all’utente di ottenere in formato digitale i propri documenti, titoli e certificati sotto forma di EAA. Gli EAA sono rilasciati dal Fornitore di Attestati Elettronici di Attributi sulla base dei dati forniti dalla Fonte Autentica tramite l'e-service.  
+In questa fase il Titolare di Fonte Autentica deve progettare il dataset dell'EAA di interesse.  
+
+Ogni tipologia di EAA è infatti caratterizzata  da uno specifico dataset ed è identificata in maniera univoca dal valore `**datasetid**`, definito dalla Fonte Autentica. Grazie al `dataset_id` è possibile, quindi, individuare univocamente uno specifico dataset, utile soprattutto nei casi in cui, all’interno dello stesso e-service, coesistano più dataset distinti (es. e-service relativo all’ordine dei medici che raggruppa al suo interno più figure professionali: tesserino-chirurghi, tesserino-odontoiatri, etc.). 
+
+Il parametro `datasetID` non va confuso con il parametro `**ObjectID**`, definito anch’esso dalla Fonte Autentica e che identifica univocamente ogni istanza di EAA, e che quindi consente di individuare l’istanza associata a uno specifico soggetto o utente. 
+Nel definire ciascun dataset, i Titolari di Fonte Autentica non devono limitarsi a rendere disponibili le informazioni presenti nei propri sistemi, ma devono adottare una logica orientata al loro utilizzo. Ciò implica definire quali informazioni includere e come rappresentarle in funzione dello scopo dell’Attestato Elettronico, al fine di garantirne la comprensione e l’utilità per l’utente, nonché la verificabilità e l’interoperabilità tra sistemi.
 
-Nel fornire i propri dati, i Titolari di Fonte Autentica non devono limitarsi a rendere disponibili le informazioni presenti nei propri sistemi, ma devono adottare una logica orientata al loro utilizzo. Ciò implica definire quali informazioni includere e come rappresentarle in funzione dello scopo dell’Attestato Elettronico, al fine di garantirne la comprensione, la verificabilità e l’interoperabilità tra sistemi. 
-
-L’Ente deve quindi accuratamente definire, sulla base dei requisiti illustrati nella sezione [Focus sugli Attestati Elettronici di Attributi](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/functionalities.html#focus-sugli-attestati-elettronici-di-attributi) delle Specifiche Tecniche, la la struttura, tipologia, la numerosità e l’ordinamento degli attributi che intende fornire, nel rispetto dei seguenti principi: 
+L’Ente deve quindi accuratamente definire, sulla base dei requisiti illustrati nella sezione [Focus sugli Attestati Elettronici di Attributi](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/functionalities.html#focus-sugli-attestati-elettronici-di-attributi) delle Specifiche Tecniche, la struttura, la tipologia, la numerosità e l’ordinamento degli attributi che intende fornire all'interno di uno specifico dataset, nel rispetto dei seguenti principi: 
 
 - **Valore**: assicurare che l’EAA abbia un chiaro scopo e una concreta utilità (*Cosa l’EAA permette di dimostrare o attestare?*) 
-- **Verificabilità**: garantire che i dati strutturati rappresentino in modo attendibile le caratteristiche e le qualità dell’utente necessarie, e che tali informazioni possano essere effettivamente verificate (*È possibile verificare la condizione o i diritti dell’utente attraverso uno o più attributi?*) 
+- **Verificabilità**: garantire che i dati strutturati rappresentino in modo attendibile le caratteristiche e le qualità dell’utente, e che tali informazioni possano essere effettivamente verificate (*È possibile verificare la condizione o i diritti dell’utente attraverso uno o più attributi?*) 
 - **Comprensibilità**: assicurare che le informazioni siano immediatamente comprensibili, attraverso un linguaggio semplice e una semplificazione di contenuti complessi (*Le informazioni complesse sono state semplificate? Gli attributi sono espressi con un linguaggio chiaro e comprensibile?*) 
 - **Pertinenza**: selezionare e includere esclusivamente gli attributi essenziali e rilevanti rispetto allo scopo dell’EAA, evitando informazioni superflue o non significative (*Quali attributi sono realmente necessari? Quali risultano poco rilevanti, superflui o ridondanti?*)
 
