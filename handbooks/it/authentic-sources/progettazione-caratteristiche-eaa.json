@@ -1,6 +1,6 @@
 {
   "$schema": "./json-schemas/schema-validazione-form-onboarding-fonte-autentica.schema.json",
-  "metadata": {
+  "denominazioni ufficiali": {
     "nome ente titolare": "",
     "nome eaa": "",
     "versione": "1.1.0"
@@ -9,157 +9,157 @@
     "target utenti": {
       "presenza doc preesistente": {
         "domanda": "Il dataset dell’EAA di interesse è relativo a un documento già esistente?",
-        "risposta": null,
-        "esempio": "true (es. patente, titolo di studio) / false (es. prova di età +18)"
+        "esempio": "true (es. patente, titolo di studio) / false (es. prova di età +18)",
+        "risposta": null
       },
       "utenti doc preesistente": {
         "domanda": "In caso di documento già esistente, chi può oggi richiederlo? L'intera popolazione italiana o solo alcuni cittadini?",
-        "risposta": "",
-        "esempio": "Solo maggiorenni / Solo residenti in una specifica Regione / ..."
+        "esempio": "Solo maggiorenni / Solo residenti in una specifica Regione / ...",
+        "risposta": ""
       },
-      "utenti doc preesistente eaa": {
+      "utenti doc preesistente EAA": {
         "domanda": "In caso di documento già esistente, l’EAA relativa al dataset potrà essere richiesta da tutti coloro che attualmente possono farne richiesta oppure sono previste limitazioni e/o estensioni? Se sì, quali?",
-        "risposta": "",
-        "esempio": "Ambito geografico / Disponibilità limitata ai dati successivi a una determinata data / ..."
+        "esempio": "Ambito geografico / Disponibilità limitata ai dati successivi a una determinata data / ...",
+                "risposta": ""
       },
-      "utenti eaa": {
+      "utenti EAA": {
         "domanda": "In caso l’EAA relativo al dataset non corrisponda ad un documento già esistente, chi potrà richiedere l’EAA? L'intera popolazione italiana o solo alcuni cittadini?",
-        "risposta": "",
-        "esempio": "Solo maggiorenni / Solo residenti in una specifica Regione / ..."
+        "esempio": "Solo maggiorenni / Solo residenti in una specifica Regione / ...",
+        "risposta": ""
       }
     },
     "emissione formato": {
-      "prerequisiti eaa": {
+      "prerequisiti EAA": {
         "domanda": "Esistono prerequisiti per richiedere l'EAA relativa al dataset? Se sì, quali?",
-        "risposta": "",
-        "esempio": "Necessario essere in possesso di altro documento / Rispettare determinati criteri / ..."
+        "esempio": "Necessario essere in possesso di altro documento / Rispettare determinati criteri / ...",
+        "risposta": ""
       },
       "prerequisiti possesso doc preesistente": {
         "domanda": "In caso di documento già esistente, è necessario esserne in possesso per ottenere il corrispettivo EAA relativo al dataset?",
-        "risposta": null,
-        "esempio": "true (es. se è necessario essere in possesso del documento fisico) / false (es. se è sufficiente aver concluso l'iter di richiesta)"
+        "esempio": "true (es. se è necessario essere in possesso del documento fisico) / false (es. se è sufficiente aver concluso l'iter di richiesta)",
+                "risposta": null
       },
       "canali richiesta doc preesistente": {
         "domanda": "In caso di documento già esistente, tramite quali canali il cittadino può ad oggi richiederlo?",
-        "risposta": "",
-        "esempio": "Sportello fisico / Portale online / ..."
+        "esempio": "Sportello fisico / Portale online / ...",
+        "risposta": ""
       },
       "formato doc preesistente": {
         "domanda": "In caso di documento già esistente, in quale formato viene emesso ad oggi? Card plastica, cartaceo, digitale? Se digitale, specificare le modalità di emissione in termini di formato e canale.",
-        "risposta": "",
-        "esempio": "Card plastica / Versione digitale scaricabile dal portale istituzionale in formato PDF / ..."
+        "esempio": "Card plastica / Versione digitale scaricabile dal portale istituzionale in formato PDF / ...",
+        "risposta": ""
       },
       "volume rilascio doc preesistente": {
         "domanda": "In caso di documento già esistente, qual è l’attuale volume di rilascio?",
-        "risposta": "",
-        "esempio": "200k Carte Europee della disabilità emesse in Italia"
+        "esempio": "200k Carte Europee della disabilità emesse in Italia",
+        "risposta": ""
       },
       "richieste fisico vs digitale doc preesistente": {
         "domanda": "In caso di documento già esistente richiedibile anche online, quante sono le richieste fatte tramite canale fisico e quante tramite canale digitale (ultimi 5 anni)",
-        "risposta": "",
-        "esempio": "70% fisico, 30% digitale"
+        "esempio": "70% fisico, 30% digitale",
+        "risposta": ""
       },
-      "variazioni dati doc preesistente eaa": {
+      "variazioni dati doc preesistente EAA": {
         "domanda": "In caso di documento già esistente, sono previste variazioni tra i dati dell'EAA e i dati attualmente presenti nel documento?",
-        "risposta": null,
-        "esempio": "true / false (es. dati parziali)"
+        "esempio": "true / false (es. dati parziali)",
+                "risposta": null
       },
-      "variazioni dati doc preesistente eaa dettagli": {
-        "domanda": "In caso di documento già esistente, quali sono le differenze tra i dati dati dell'EAA e i dati attualmente presenti nel documento?Quali sono le motivazioni?",
-        "risposta": "",
-        "esempio": "Informazioni non adeguate al formato EAA (es. PDF)"
+      "variazioni dati doc preesistente EAA dettagli": {
+        "domanda": "In caso di documento già esistente, quali sono le differenze tra i dati dell'EAA e i dati attualmente presenti nel documento? Quali sono le motivazioni?",
+        "esempio": "Informazioni non adeguate al formato EAA (es. PDF)",
+        "risposta": ""
       },
-      "catalogo o touchpoint eaa": {
+      "catalogo o touchpoint EAA": {
         "domanda": "L’utente potrà ottenere l'EAA relativo al dataset solo dal catalogo EAA del Wallet o anche da un touchpoint gestito dall’Ente titolare?",
-        "risposta": "",
-        "esempio": "Entrambi, sia da catalogo che da touchpoint Ente"
+        "esempio": "Entrambi, sia da catalogo che da touchpoint Ente",
+        "risposta": ""
       },
-      "modalita sincrona differita eaa": {
+      "modalità sincrona differita EAA": {
         "domanda": "L'utente potrà ottenere l'EAA in modalità sincrona (preferibile) o in modalità differita? Se differita, perché?",
-        "risposta": "",
-        "esempio": "Differita, per motivi di controlli aggiuntivi"
+        "esempio": "Differita, per motivi di controlli aggiuntivi",
+        "risposta": ""
       },
-      "eaa multipla o singola": {
-        "domanda": "È prevista un EAA univoco per ciascun soggetto o potranno essere emesse più EAA per lo stesso soggetto?",
-        "risposta": null,
-        "esempio": "true (es. una sola tessera sanitaria p per singolo soggettoer singolo utente) / false (es. molti titoli accademici per singolo utente) per singolo soggetto)"
+      "EAA multiplo o singolo": {
+        "domanda": "È previsto un EAA univoco per ciascun soggetto o potranno essere emessi più EAA per lo stesso soggetto?",
+        "esempio": "true (es. una sola tessera sanitaria per singolo singolo utente) / false (es. molti titoli accademici per singolo utente)",
+        "risposta": null
       },
       "identificazione utente": {
         "domanda": "Per poter fornire l'EAA relativo al dataset di interesse sarà necessario identificare l'utente?",
-        "risposta": null,
-        "esempio": "true / false"
+        "esempio": "true / false",
+        "risposta": null
       }
     },
     "utilizzo": {
-      "dominio eaa": {
+      "dominio EAA": {
         "domanda": "A quale/i dominio/i appartiene l’EAA relativo al dataset?",
-        "risposta": "",
-        "esempio": "Identità / Mobilità e viaggi (per la patente di guida) / ..."
+        "esempio": "Identità / Mobilità e viaggi (per la patente di guida) / ...",
+        "risposta": ""
       },
-      "interesse pubblico eaa": {
+      "interesse pubblico EAA": {
         "domanda": "L'EAA relativo al dataset è di interesse pubblico?",
-        "risposta": null,
-        "esempio": "true / false"
+        "esempio": "true / false",
+        "risposta": null
       },
-      "interesse pubblico motivazione eaa": {
+      "interesse pubblico motivazione EAA": {
         "domanda": "Se è di interesse pubblico, perché?",
-        "risposta": "",
-        "esempio": "Rilasciato da Ente pubblico a tutta la popolazione per l’erogazione di servizi di interesse generale (es. tessera sanitaria)"
+        "esempio": "Rilasciato da Ente pubblico a tutta la popolazione per l’erogazione di servizi di interesse generale (es. tessera sanitaria)",
+        "risposta": ""
       },
-      "casi d uso doc preesistente": {
+      "casi d' uso doc preesistente": {
         "domanda": "In caso di documento già esistente, quali sono i suoi attuali casi d’uso? Per cosa viene utilizzato? Dettaglia per ciascuno caso il contesto d’uso (remoto e/o di prossimità). ",
-        "risposta": "",
-        "esempio": "Dimostrare dal vivo il possesso di titoli professioni in sede di colloquio lavorativo / Accedere ad agevolazioni online e dal vivo / Accedere a spazi dedicati / ..."
+        "esempio": "Dimostrare dal vivo il possesso di titoli professioni in sede di colloquio lavorativo / Accedere ad agevolazioni online e dal vivo / Accedere a spazi dedicati / ...",
+        "risposta": ""
       },
-      "casi d uso doc preesistente eaa": {
+      "casi d' uso doc preesistente EAA": {
         "domanda": "In caso di documento già esistente, i contesti d'uso dell'EAA relativo al dataset saranno i medesimi o si prevedono limitazioni/ estensioni? Dettaglia quali limitazioni ed estensioni specificando per quest’ultime il contesto di utilizzo (remoto e/o di prossimità).",
-        "risposta": "",
-        "esempio": "Impossibilità di prendere annotazioni sul documento (es. per il tesserino venatorio) / Possibilità aggiuntiva di presentare in remoto il documento (es. patente di guida per accesso a servizi di car sharing) / ..."
+        "esempio": "Impossibilità di prendere annotazioni sul documento (es. per il tesserino venatorio) / Possibilità aggiuntiva di presentare in remoto il documento (es. patente di guida per accesso a servizi di car sharing) / ...",
+        "risposta": ""
       },
       "soggetti verificatori doc preesistente": {
         "domanda": "In caso di documento già esistente, quali sono i principali soggetti che ne verificano la validità e/o titolarità?",
-        "risposta": "",
-        "esempio": "Soggetti privati addetti alla sicurezza / Operatori pubblici allo sportello / ..."
+        "esempio": "Soggetti privati addetti alla sicurezza / Operatori pubblici allo sportello / ...",
+         "risposta": ""
       },
       "modalita verifica doc preesistente": {
         "domanda": "In caso di documento già esistente, com’è possibile verificarne la validità e/o titolarità?",
-        "risposta": "",
-        "esempio": "Lettura QR code / Lettura Barcode / Verifica de visu / ..."
+        "esempio": "Lettura QR code / Lettura Barcode / Verifica de visu / ...",
+        "risposta": ""
       },
       "strumenti verifica doc preesistente": {
         "domanda": "In caso di documento già esistente, quali strumenti sono previsti a supporto del verificatore per effettuare la verifica?",
-        "risposta": "",
-        "esempio": "Verifica de visu / App per scan / Software per lettura di una carta / ..."
+        "esempio": "Verifica de visu / App per scan / Software per lettura di una carta / ...",
+        "risposta": ""
       },
       "durata utilizzo doc preesistente": {
         "domanda": "In caso di documento già esistente, è possibile un utilizzo continuo o il documento perde di validità non appena utilizzato?",
-        "risposta": "",
-        "esempio": "Utilizzo continuo (es. tessera sanitaria) / Uso singolo (es. biglietto aereo) / ..."
+        "esempio": "Utilizzo continuo (es. tessera sanitaria) / Uso singolo (es. biglietto aereo) / ...",
+        "risposta": ""
       },
-      "duarata validita doc preesistente": {
+      "durata validità doc preesistente": {
         "domanda": "In caso di documento già esistente, qual è il suo periodo di validità? Ha una scadenza?",
-        "risposta": "",
-        "esempio": "10 anni / Nessuna scadenza / ..."
+        "esempio": "10 anni / Nessuna scadenza / ...",
+        "risposta": ""
       },
-      "validita territoriale doc preesistente": {
+      "validità territoriale doc preesistente": {
         "domanda": "In caso di documento già esistente, il documento è valido solo in Italia o anche in Europa? Dettaglia eventuali limitazioni o restrizioni territoriali.",
-        "risposta": "",
-        "esempio": "Solo Italia / Solo in alcune Regioni italiane / In tutta Europa, ad esclusione di alcuni Paesi / ..."
+        "esempio": "Solo Italia / Solo in alcune Regioni italiane / In tutta Europa, ad esclusione di alcuni Paesi / ...",
+        "risposta": ""
       },
-      "validita territoriale doc preesistente eaa": {
+      "validità territoriale doc preesistente EAA": {
         "domanda": "In caso di documento già esistente, la validità dell‘EAA relativo al dataset sarà la stessa del documento o si prevedono limitazioni/ estensioni?",
-        "risposta": "",
         "esempio": "Stessa validità / Validità limitata all’Italia / ..."
+        "risposta": ""
       },
       "rinnovo doc preesistente": {
         "domanda": "In caso di documento già esistente, è possibile rinnovare il documento?",
-        "risposta": null,
-        "esempio": "true / false"
+        "esempio": "true / false",
+        "risposta": null
       },
-      "modalita rinnovo doc preesistente": {
+      "modalità rinnovo doc preesistente": {
         "domanda": "In caso il documento già esistente fosse soggetto a rinnovo, cosa deve fare l’utente per rinnovarlo? La procedura è digitale o è necessario recarsi presso uffici fisici?",
-        "risposta": "",
-        "esempio": "Procedura presso uffici territoriali / Procedure tramite canali online dell’ente / ..."
+        "esempio": "Procedura presso uffici territoriali / Procedure tramite canali online dell’ente / ...", 
+        "risposta": ""          
       },
       "casi d uso eaa": {
         "domanda": " In caso l’EAA relativo al dataset non corrisponda ad un documento già esistente, quali sono i principali casi in cui l’EAA potrà essere utilizzato? Per cosa potrà essere utilizzato? Dettaglia per ciascuno caso il contesto d’uso (remoto e/o di prossimità)",
