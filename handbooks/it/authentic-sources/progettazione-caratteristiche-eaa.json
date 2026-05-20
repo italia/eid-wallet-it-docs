@@ -20,7 +20,7 @@
       "utenti doc preesistente EAA": {
         "domanda": "In caso di documento già esistente, l’EAA relativa al dataset potrà essere richiesta da tutti coloro che attualmente possono farne richiesta oppure sono previste limitazioni e/o estensioni? Se sì, quali?",
         "esempio": "Ambito geografico / Disponibilità limitata ai dati successivi a una determinata data / ...",
-                "risposta": ""
+        "risposta": ""
       },
       "utenti EAA": {
         "domanda": "In caso l’EAA relativo al dataset non corrisponda ad un documento già esistente, chi potrà richiedere l’EAA? L'intera popolazione italiana o solo alcuni cittadini?",
@@ -37,7 +37,7 @@
       "prerequisiti possesso doc preesistente": {
         "domanda": "In caso di documento già esistente, è necessario esserne in possesso per ottenere il corrispettivo EAA relativo al dataset?",
         "esempio": "true (es. se è necessario essere in possesso del documento fisico) / false (es. se è sufficiente aver concluso l'iter di richiesta)",
-                "risposta": null
+        "risposta": null
       },
       "canali richiesta doc preesistente": {
         "domanda": "In caso di documento già esistente, tramite quali canali il cittadino può ad oggi richiederlo?",
@@ -62,7 +62,7 @@
       "variazioni dati doc preesistente EAA": {
         "domanda": "In caso di documento già esistente, sono previste variazioni tra i dati dell'EAA e i dati attualmente presenti nel documento?",
         "esempio": "true / false (es. dati parziali)",
-                "risposta": null
+        "risposta": null
       },
       "variazioni dati doc preesistente EAA dettagli": {
         "domanda": "In caso di documento già esistente, quali sono le differenze tra i dati dell'EAA e i dati attualmente presenti nel documento? Quali sono le motivazioni?",
@@ -119,7 +119,7 @@
       "soggetti verificatori doc preesistente": {
         "domanda": "In caso di documento già esistente, quali sono i principali soggetti che ne verificano la validità e/o titolarità?",
         "esempio": "Soggetti privati addetti alla sicurezza / Operatori pubblici allo sportello / ...",
-         "risposta": ""
+        "risposta": ""
       },
       "modalita verifica doc preesistente": {
         "domanda": "In caso di documento già esistente, com’è possibile verificarne la validità e/o titolarità?",
@@ -148,7 +148,7 @@
       },
       "validità territoriale doc preesistente EAA": {
         "domanda": "In caso di documento già esistente, la validità dell‘EAA relativo al dataset sarà la stessa del documento o si prevedono limitazioni/ estensioni?",
-        "esempio": "Stessa validità / Validità limitata all’Italia / ..."
+        "esempio": "Stessa validità / Validità limitata all’Italia / ...",
         "risposta": ""
       },
       "rinnovo doc preesistente": {
@@ -158,11 +158,11 @@
       },
       "modalità rinnovo doc preesistente": {
         "domanda": "In caso il documento già esistente fosse soggetto a rinnovo, cosa deve fare l’utente per rinnovarlo? La procedura è digitale o è necessario recarsi presso uffici fisici?",
-        "esempio": "Procedura presso uffici territoriali / Procedure tramite canali online dell’ente / ...", 
-        "risposta": ""          
+        "esempio": "Procedura presso uffici territoriali / Procedure tramite canali online dell’ente / ...",
+        "risposta": ""
       },
       "casi d'uso EAA": {
-        "domanda": " In caso l’EAA relativo al dataset non corrisponda ad un documento già esistente, quali sono i principali casi in cui l’EAA potrà essere utilizzato? Per cosa potrà essere utilizzato? Dettaglia per ciascuno caso il contesto d’uso (remoto e/o di prossimità)",
+        "domanda": "In caso l’EAA relativo al dataset non corrisponda ad un documento già esistente, quali sono i principali casi in cui l’EAA potrà essere utilizzato? Per cosa potrà essere utilizzato? Dettaglia per ciascuno caso il contesto d’uso (remoto e/o di prossimità)",
         "esempio": "Dimostrare dal vivo il possesso di titoli professionali in sede di colloquio lavorativo / Accedere ad agevolazioni online e dal vivo / Accedere a spazi dedicati / ...",
         "risposta": ""
       },
@@ -227,30 +227,20 @@
       }
     }
   },
-        "nome parametro": "unique_id",
-        "descrizione": "Identificativo univoco del cittadino",
-        "nome campo": "Codice Fiscale o IdANPR",
-        "esempio campo compilato": "fofi",
-        "obbligatorio": true,
-        "tipologia": "ALFANUMERICO",
-        "lunghezza massima caratteri": 16,
-        "note": "",
-        "valori ammessi": []
-      },
-      {
-        "nome parametro": "object_id",
-        "descrizione": "Identificativo univoco di un dataset relativo ad una specifica Credenziale",
-        "nome campo": "ID del Credential Dataset",
-        "esempio campo compilato": "c9cb2bab-4188-4f48-9fd2-8d523edcbeeb",
-        "obbligatorio": false,
-        "tipologia": "ALFANUMERICO",
-        "lunghezza massima caratteri": 36,
-        "note": "Non deve contenere dati personali",
-        "valori ammessi": []
-      }
-    ]
-  },
-  "data model": [
+  "parametri di richiesta": [
+    {
+      "nome parametro": "tax_code",
+      "descrizione": "codice fiscale dell'utente",
+      "nome campo": "Codice Fiscale",
+      "esempio campo compilato": "DLNRSL88L51C348G",
+      "obbligatorio": true,
+      "tipologia": "ALFANUMERICO",
+      "lunghezza massima caratteri": 16,
+      "valori ammessi": [],
+      "note": ""
+    }
+  ],
+  "dati di risposta": [
     {
       "attestazione": "ISEE",
       "parametro": "tax_code",
@@ -438,12 +428,13 @@
       "stato": "Valido",
       "descrizione": "L'EAA è valido e può essere utilizzato",
       "applicabile": true,
-      "note": ""
+      "note": "",
+      "azione utente": ""
     },
     {
       "stato": "Non Valido",
       "descrizione": "L'EAA non è più valido e dunque non può essere più utilizzato",
-      "applicabile": null,
+      "applicabile": false,
       "causa": "",
       "azione utente": "L'EAA non è più valido per cui l'utente deve effettuare delle operazioni per poter scaricare nuovamente l'EAA aggiornato in app",
       "note": ""
@@ -451,8 +442,8 @@
     {
       "stato": "Sospeso",
       "descrizione": "L'EAA è sospeso e non può essere temporaneamente utilizzato",
-      "applicabile": null,
-      "causa": "", 
+      "applicabile": false,
+      "causa": "",
       "azione utente": "",
       "note": ""
     },
@@ -462,17 +453,16 @@
       "applicabile": false,
       "azione utente": "",
       "note": ""
+    },
+    {
+      "stato": "Da aggiornare",
+      "descrizione": "L'EAA contiene dei dati obsoleti che necessitano di essere aggiornati tramite un rinnovo o nuova emissione",
+      "applicabile": false,
+      "causa": "",
+      "azione utente": "",
+      "note": ""
     }
-    { 
-      "stato": "Da aggiornare", 
-      "descrizione": "L'EAA contiene dei dati obsoleti che necessitano di essere aggiornati tramite un rinnovo o nuova emissione", 
-      "applicabile": null, 
-      "causa": "", 
-      "azione utente": "", 
-      "note": "" 
-    } 
   ],
- 
   "assistenza": {
     "referenti": [
       {
@@ -501,12 +491,10 @@
       {
         "tipo": "Email assistenza",
         "dettaglio canale": ""
-
       },
       {
         "tipo": "Numero telefonico",
         "dettaglio canale": ""
-
       },
       {
         "tipo": "Altro",
@@ -532,7 +520,7 @@
       "errori dati azioni": {
         "domanda": "Quali errori l’utente potrebbe notare nei dati nell’EAA e cosa potrebbe fare per risolverli?",
         "esempio": "In caso l’indirizzo di residenza non risultasse aggiornato, accedi al portale ANPR per chiedere la rettifica / Non si prevedono errori nei dati / Al momento non esiste un procedura di rettifica dei dati / ...",
-        "risposta": "",
+        "risposta": ""
       },
       "canali supporto documento": {
         "domanda": "A chi può rivolgersi oggi il cittadino in caso di problemi con il documento relativo all’EAA? E in caso di problemi con l’EAA quali canali possono essere utilizzati?",
@@ -546,13 +534,13 @@
       },
       "motivi contatto documento": {
         "domanda": "Quali sono i principali motivi di contatto per cui i cittadini si rivolgono alla vostra assistenza?Come vengono indirizzati e risolti attualmente?",
-        "esempio": "Gli utenti contattano l’assistenza soprattutto in caso di errore nei dati. In tal caso gli utenti vengono invitati a rettificare il dato presso il portale dedicato (www.xxx.it). / Al momento non è disponibile un servizio di assistenza / ...", 
+        "esempio": "Gli utenti contattano l’assistenza soprattutto in caso di errore nei dati. In tal caso gli utenti vengono invitati a rettificare il dato presso il portale dedicato (www.xxx.it). / Al momento non è disponibile un servizio di assistenza / ...",
         "risposta": ""
       },
       "motivi contatto documento EAA": {
         "domanda": "Si ritiene che i motivi di contatto possano essere simili una volta ottenuta la versione EAA del documento?",
         "esempio": "Sì, in quanto la base dati è la medesima. / No, la versione digitale non può essere oggetto di deterioramento / ...",
-        "risposta": "",
+        "risposta": ""
       },
       "motivi contatto EAA": {
         "domanda": "Per quali altri motivi potrebbero aver bisogno di aiuto i cittadini una volta ottenuta la versione EAA del documento?",
