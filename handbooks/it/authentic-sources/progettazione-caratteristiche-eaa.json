@@ -217,13 +217,13 @@
       },
       "dati sensibili EAA": {
         "domanda": "I dati contenuti nell’EAA relativo al dataset sono sensibili? ",
-        "risposta": null,
-        "esempio": "true (es. dati sanitari) / false"
+        "esempio": "true (es. dati sanitari) / false",
+        "risposta": null
       },
-      "dati sensibili eaa motivazione": {
+      "dati sensibili EAA motivazione": {
         "domanda": "Come mai i dati dell’EAA relativo al dataset sono sensibili? Dettaglia il tipo di dato.",
-        "risposta": "",
-        "esempio": "Dati sanitari / Dati riferiti a persone con disabilità / ..."
+        "esempio": "Dati sanitari / Dati riferiti a persone con disabilità / ...",
+        "risposta": ""
       }
     }
   },
@@ -461,7 +461,6 @@
       "stato": "Valido",
       "descrizione": "L'EAA è valido e può essere utilizzato",
       "applicabile": true,
-      "azione utente": "",
       "note": ""
     },
     {
