@@ -827,43 +827,43 @@
       },
       "non validita azioni": {
         "domanda": "Qual è la procedura da seguire in caso l’EAA non sia in stato “valido”?",
-        "risposta": "",
-        "esempio": "Se la tua patente di guida risulta scaduta, provvedi a rinnovarla presso gli uffici competenti sul territorio, successivamente potrai riottenerla in versione digitale nel Wallet. / Se la tua patente di guida risulta sospesa... / Se la tua patente di guida risulta non valida / ..."
+        "esempio": "Se la tua patente di guida risulta scaduta, provvedi a rinnovarla presso gli uffici competenti sul territorio, successivamente potrai riottenerla in versione digitale nel Wallet. / Se la tua patente di guida risulta sospesa... / Se la tua patente di guida risulta non valida / ...",
+        "risposta": ""
       },
       "errori dati azioni": {
         "domanda": "Quali errori l’utente potrebbe notare nei dati nell’EAA e cosa potrebbe fare per risolverli?",
+        "esempio": "In caso l’indirizzo di residenza non risultasse aggiornato, accedi al portale ANPR per chiedere la rettifica / Non si prevedono errori nei dati / Al momento non esiste un procedura di rettifica dei dati / ...",
         "risposta": "",
-        "esempio": "In caso l’indirizzo di residenza non risultasse aggiornato, accedi al portale ANPR per chiedere la rettifica / Non si prevedono errori nei dati / Al momento non esiste un procedura di rettifica dei dati / ..."
       },
       "canali supporto documento": {
         "domanda": "A chi può rivolgersi oggi il cittadino in caso di problemi con il documento relativo all’EAA? E in caso di problemi con l’EAA quali canali possono essere utilizzati?",
-        "risposta": "",
-        "esempio": "Sia per problematiche con il documento fisico della patente, che con la sua corrispettiva versione digitale puoi rivolgerti agli uffici territoriali o chiamare il numero verde (xxx)"
+        "esempio": "Sia per problematiche con il documento fisico della patente, che con la sua corrispettiva versione digitale puoi rivolgerti agli uffici territoriali o chiamare il numero verde (xxx)",
+        "risposta": ""
       },
       "canali supporto digitali": {
         "domanda": "Sono già previsti canali digitali di supporto? Se sì, quali sono le tempistiche medie di risposta? (anche indicativo)",
-        "risposta": "",
-        "esempio": "Sì, è previsto un contatto mail (xxx@xxx.it). I tempi di risposta sono di circa 1 giorno"
+        "esempio": "Sì, è previsto un contatto mail (xxx@xxx.it). I tempi di risposta sono di circa 1 giorno",
+        "risposta": ""
       },
       "motivi contatto documento": {
         "domanda": "Quali sono i principali motivi di contatto per cui i cittadini si rivolgono alla vostra assistenza?Come vengono indirizzati e risolti attualmente?",
-        "risposta": "",
-        "esempio": "Gli utenti contattano l’assistenza soprattutto in caso di errore nei dati. In tal caso gli utenti vengono invitati a rettificare il dato presso il portale dedicato (www.xxx.it). / Al momento non è disponibile un servizio di assistenza / ..."
+        "esempio": "Gli utenti contattano l’assistenza soprattutto in caso di errore nei dati. In tal caso gli utenti vengono invitati a rettificare il dato presso il portale dedicato (www.xxx.it). / Al momento non è disponibile un servizio di assistenza / ...", 
+        "risposta": ""
       },
-      "motivi contatto documento eaa": {
+      "motivi contatto documento EAA": {
         "domanda": "Si ritiene che i motivi di contatto possano essere simili una volta ottenuta la versione EAA del documento?",
+        "esempio": "Sì, in quanto la base dati è la medesima. / No, la versione digitale non può essere oggetto di deterioramento / ...",
         "risposta": "",
-        "esempio": "Sì, in quanto la base dati è la medesima. / No, la versione digitale non può essere oggetto di deterioramento / ..."
       },
-      "motivi contatto eaa": {
+      "motivi contatto EAA": {
         "domanda": "Per quali altri motivi potrebbero aver bisogno di aiuto i cittadini una volta ottenuta la versione EAA del documento?",
-        "risposta": "",
-        "esempio": "Potrebbero necessitare di supporto relativo alle modalità di utilizzo, aggiornamento, eliminazione dell’EAA / Furto o smarrimento del dispositivo / ..."
+        "esempio": "Potrebbero necessitare di supporto relativo alle modalità di utilizzo, aggiornamento, eliminazione dell’EAA / Furto o smarrimento del dispositivo / ...",
+        "risposta": ""
       },
       "risorse utili": {
         "domanda": "Sono disponibili link o repository ad eventuale documentazione di assistenza pertinente al documento fisico e all'EAA? Condividi a seguire il materiale utile?",
-        "risposta": "",
-        "esempio": "Knowledge Base / Repository di FAQ già predisposto / ..."
+        "esempio": "Knowledge Base / Repository di FAQ già predisposto / ...",
+        "risposta": ""
       }
     },
     "testi informativi": [
