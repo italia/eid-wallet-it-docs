@@ -161,17 +161,17 @@
         "esempio": "Procedura presso uffici territoriali / Procedure tramite canali online dell’ente / ...", 
         "risposta": ""          
       },
-      "casi d uso eaa": {
+      "casi d'uso EAA": {
         "domanda": " In caso l’EAA relativo al dataset non corrisponda ad un documento già esistente, quali sono i principali casi in cui l’EAA potrà essere utilizzato? Per cosa potrà essere utilizzato? Dettaglia per ciascuno caso il contesto d’uso (remoto e/o di prossimità)",
-        "risposta": "",
-        "esempio": "Dimostrare dal vivo il possesso di titoli professionali in sede di colloquio lavorativo / Accedere ad agevolazioni online e dal vivo / Accedere a spazi dedicati / ..."
+        "esempio": "Dimostrare dal vivo il possesso di titoli professionali in sede di colloquio lavorativo / Accedere ad agevolazioni online e dal vivo / Accedere a spazi dedicati / ...",
+        "risposta": ""
       },
-      "durata utilizzo eaa": {
+      "durata utilizzo EAA": {
         "domanda": "In caso l’EAA relativo al dataset non corrisponda ad un documento già esistente, l’EAA consentirà un utilizzo continuo o perderà di valore non appena utilizzato?",
-        "risposta": "",
-        "esempio": "Utilizzo continuo (es. prova di età +18) / Uso singolo (es. biglietto aereo)"
+        "esempio": "Utilizzo continuo (es. prova di età +18) / Uso singolo (es. biglietto aereo)",
+        "risposta": ""
       },
-      "validita territoriale eaa": {
+      "validità territoriale EAA": {
         "domanda": "In caso l’EAA relativo al dataset non sia relativo ad un documento già esistente, l’EAA sarà valido solo in Italia o anche in Europa? Dettaglia eventuali limitazioni o restrizioni territoriali.",
         "esempio": "Solo Italia / Solo in alcune Regioni italiane / In tutta Europa, ad esclusione di alcuni Paesi / ...",
         "risposta": ""
@@ -210,10 +210,10 @@
         "esempio": "D.Lgs. 82/2005 / CAD / ...",
         "risposta": ""
       },
-      "titolarita dati eaa": {
+      "titolarità dati EAA": {
         "domanda": "I dati dell’EAA relativo al dataset sono di titolarità di un singolo Ente o condivisi tra più Enti? Quali?",
-        "risposta": "",
-        "esempio": "Titolarità della Regione / Titolarità della Regione e dell’Azienda Sanitaria Locale / ..."
+        "esempio": "Titolarità della Regione / Titolarità della Regione e dell’Azienda Sanitaria Locale / ...",
+        "risposta": ""
       },
       "dati sensibili EAA": {
         "domanda": "I dati contenuti nell’EAA relativo al dataset sono sensibili? ",
