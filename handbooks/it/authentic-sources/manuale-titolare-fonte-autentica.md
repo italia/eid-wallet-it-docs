@@ -146,7 +146,7 @@ La definizione dei casi d'uso da parte dell'Ente è fondamentale per:
 - **progettare un'esperienza d'uso che apporti valore reale** sia a cittadini che ai verificatori; è utile definire a monte quali potranno essere le occasioni d'uso dell'EAA prodotto con i propri dati, a partire dall'analisi dell'esperienza attuale di fruizione del corrispettivo documento fisico, se esistente (es. si pensi alla modalità di presentazione del codice a barre per l'uso della Tessera Sanitaria o del QR code per la verifica della Carta Europea della Disabilità); 
 - **orientare il tipo di formato** con cui il Fornitore di Attestati Elettronici emetterà l'EAA (SD-JWT-VC per scenari in remoto e mdoc-CBOR per scenari in prossimità).
 
-A tal fine, l’Ente deve compilare la sezione `casi d'uso` del modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa). Per riferimenti e istruzioni di compilazione vedi [Appendice A](#appendice-a--casi-duso).
+A tal fine, l’Ente deve compilare la sezione "Casi d'uso" del modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa). Per riferimenti e istruzioni di compilazione vedi [Appendice A](#appendice-a--casi-duso).
 
 ### **Definire il Data Model**
 
@@ -171,7 +171,7 @@ A scopo esemplificativo, di seguito sono riportati due esempi di rappresentazion
 
 *Figura 4: Esempio di resa grafica della Vista di dettaglio di un’EAA nella Soluzione Wallet di PagoPA, caratterizzata da attributi di II livello strutturati come lista di descrizioni*
 
-A tal fine, l’Ente deve compilare la sezione `data model` del modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa) riportando gli attributi adeguatamente definiti e i relativi dettagli (es. tipologia, obbligatorietà, formato, lunghezza massima consentita, ordinamento, etc.). Per riferimenti e istruzioni di compilazione vedi [Appendice B](#appendice-b--data-model).
+A tal fine, l’Ente deve compilare la sezione "Data model" del modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa) relativa a ciascun dataset specificando il DatasetID e riportando gli attributi adeguatamente definiti e i relativi dettagli (es. tipologia, obbligatorietà, formato, ordinamento, etc.). Per riferimenti e istruzioni di compilazione vai all'apposita sezione del capitolo [Modulo da compilare](#modulo-da-compilare).
 
 Un'adeguata definizione del Data Model pone le basi per una corretta implementazione dell'e-service da pubblicare su PDND (vedi [Step 2](#step-2--pubblicazione-in-collaudo)) ma è altresì importante considerare e rispettare i seguenti requisiti tecnici: 
 
@@ -182,7 +182,7 @@ Un'adeguata definizione del Data Model pone le basi per una corretta implementaz
 
 L'e-service messo a disposizione dall'Ente deve prevedere e gestire specifiche situazioni di errore che possono verificarsi nella fase di recupero dei dati da parte del Fornitore di Attestati di Attributi.
 
-A tal fine, l'Ente deve compilare la sezione `mappatura errori` del modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa). La mappatura descrive le risposte che il servizio messo a disposizione dovrà obbligatoriamente gestire, consentendo comunque l'aggiunta di eventuali errori specifici, per garantire una corretta informazione all'utente in caso di errori durante l'ottenimento dell'EAA. Per riferimenti e istruzioni di compilazione vedi [Appendice C](#appendice-c--mappatura-errori).
+A tal fine, l'Ente deve compilare la sezione "Mappatura errori" del modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa). La mappatura descrive le risposte che il servizio messo a disposizione dovrà obbligatoriamente gestire, consentendo comunque l'aggiunta di eventuali errori specifici, per garantire una corretta informazione all'utente in caso di errori durante l'ottenimento dell'EAA. Per riferimenti e istruzioni di compilazione vai all'apposita sezione del capitolo [Modulo da compilare](#modulo-da-compilare).
 ### **Definire la gestione degli stati del ciclo di vita**
 
 Il Sistema IT-Wallet supporta dei meccanismi per l’aggiornamento dello stato e la gestione del ciclo di vita dell’EAA. Gli stati che l'Ente comunica tramite Signal Hub determinano il ciclo di vita degli EAA prodotti dai propri dati.  
@@ -193,23 +193,26 @@ Si precisa che, pur essendo strettamente correlato, **il ciclo di vita dell'EAA 
 
 Gli stati ammissibili per un Attestato Elettronico di Attributi sono i seguenti: 
 
-- **Valido**: EAA emesso, nessun segnale di modifica su uno dei suoi attributi o sul suo stato, entro la data di scadenza. L'utente può utilizzarlo in ogni scenario d'uso;
-- **Sospeso**: EAA temporaneamente non valido, in uno stato di reversibilità. L'utente deve aspettare che lo stato torni ad essere valido (es. Patente ritirata);
-- **Non Valido** (valore letterale del campo `stato` nel modulo): EAA non più valido, in uno stato di irreversibilità. L'utente può solo eliminarlo e/o richiedere l'emissione di nuovo EAA che sovrascriva il precedente (es. Patente annullata).
+- **Valido** (valid): EAA emesso senza alcun segnale o nota di criticità verso l’utente; 
+- **Sospeso** (suspended): EAA temporaneamente non valido, in uno stato di reversibilità. L'utente è invitato ad aspettare che lo stato torni ad essere valido (es. Patente ritirata); 
+- **Non Valido** (invalid): EAA non più valido, in uno stato di irreversibilità. L'utente è invitato adeliminarlo oppure ad effettuare eventuali procedure propedeutiche ad avviare una nuova emissione che sovrascriva il precedente EAA (es. Patente riemessa);
+ - **Da aggiornare** (attribute_update): EAA contenente una o più informazioni obsolete. L’utente è invitato ad aggiornare l’EAA attraverso un nuovo processo di emissione. 
 
-Oltre agli stati sopra elencati, è bene specificare che lo stato di un Attestato Elettronico può essere influenzato anche dalla **scadenza amministrativa** e/o dalla **scadenza tecnica**. Rispettivamente l'EAA può, quindi, assumere anche i seguenti stati: 
+Oltre agli stati sopra elencati, è bene specificare che il ciclo di vita di un Attestato Elettronico sè influenzato anche dalla **scadenza tecnica** (definita dalla Fonte Autentica in sinergia con il Fornitore di Attestati Elettronici con l’obiettivo di innescare periodici aggiornamenti automatici dell’EAA per mitigare potenziali rischi di sicurezza) e dalla **scadenza amministrativa** (se resa disponibile tra gli attributi dell’EAA dal Titolare di Fonte Autentica). 
 
-- **Scaduto**: EAA con data di scadenza amministrativa superata. La scadenza amministrativa può essere definita dal Titolare di Fonte Autentica e, se ritenuta utile o necessaria, deve essere inclusa come attributo all'interno del data model dell'EAA per garantire messaggi informativi all'interno della soluzione IT-Wallet (es. La tua Patente scade tra 30 giorni);
-- **Da aggiornare**: EAA con data di scadenza tecnica superata. La scadenza tecnica è definita del Fornitore di Attestati Elettronici di Attributi ed è impostata generalmente a 1 anno o comunque a un valore inferiore o uguale alla data di scadenza amministrativa. Tale scadenza ha l'obiettivo di richiedere un'azione di riemissione esplicita all'utente e mitigare rischi di sicurezza.
+ Nel caso sia prevista una scadenza amministrativa, l’EAA può assumere anche i seguenti stati: 
 
-**Corrispondenza con l'API Fonte Autentica (OpenAPI).** Nel modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa), la sezione `mappatura stati` ammette per il campo `stato` esattamente questi valori testuali (da usare così come scritti nel JSON): **`Valido`**, **`Non Valido`**, **`Sospeso`** e **`Scaduto`**. Nei contratti OpenAPI dell'e-service Fonte Autentica (es. `OAS3-PDND-AS.yaml`), il campo `status` di ciascun dataset in `attributeClaims` è invece limitato a **`VALID`**, **`INVALID`** e **`SUSPENDED`**: le scadenze si desumono dai metadati e dai claim (`expiry_date`, `last_updated`, `exp`/`nbf`, ecc.) e, lato specifica, i casi *Issued* ed *Expired* rientrano in `VALID` se non sussistono revoca o sospensione. Indicazione operativa: **Non Valido** corrisponde a `INVALID`; **Sospeso** a `SUSPENDED`; **Valido** a `VALID`; **Scaduto** descrive nello Strumento di progettazione la casistica percepita dall'utente quando l'EAA non è più utilizzabile per scadenza, mentre sul canale OpenAPI il dataset resta caratterizzato da uno dei tre `status` precedenti (di norma `VALID` con scadenza nei metadati, oppure `INVALID` se l'Ente imposta la cessazione — inclusa la scadenza amministrativa senza metadato idoneo — come da Specifiche Tecniche).
+- **In scadenza**: EAA in prossimità della data di scadenza amministrativa, se resa disponibile dalla Fonte Autentica. L’utente è invitato a compiere eventuali azioni necessarie per poter riottenere l’EAA aggiornato (es. La tua patente di guida è in scadenza, ricordati di rinnovarla presso gli uffici competenti); 
+- **Scaduto**: EAA con data di scadenza amministrativa superata, se resa disponibile dalla Fonte Autentica. L’utente è invitato a compiere eventuali azioni necessarie per riottenere l’EAA aggiornato (es. La tua patente di guida è scaduta. Rinnovala presso gli uffici competenti). 
+
+**Corrispondenza con l'API Fonte Autentica (OpenAPI).** Nel modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa), la sezione "Mappatura stati" ammette per il campo `stato` esattamente questi valori testuali (da usare così come scritti nel JSON): **`Valido`**, **`Non Valido`**, **`Scaduto`** e **`Da aggiornare`** . Nei contratti OpenAPI dell'e-service Fonte Autentica (es. `OAS3-PDND-AS.yaml`), il campo `status` di ciascun dataset in `attributeClaims` è invece limitato a **`VALID`**, **`INVALID`** e **`SUSPENDED`**: le scadenze si desumono dai metadati e dai claim (`expiry_date`, `last_updated`, `exp`/`nbf`, ecc.) e, lato specifica, i casi *Issued* ed *Expired* rientrano in `VALID` se non sussistono revoca o sospensione. Indicazione operativa: **Non Valido** corrisponde a `INVALID`; **Sospeso** a `SUSPENDED`; **Valido** a `VALID`; **Scaduto** descrive nello Strumento di progettazione la casistica percepita dall'utente quando l'EAA non è più utilizzabile per scadenza, mentre sul canale OpenAPI il dataset resta caratterizzato da uno dei tre `status` precedenti (di norma `VALID` con scadenza nei metadati, oppure `INVALID` se l'Ente imposta la cessazione — inclusa la scadenza amministrativa senza metadato idoneo — come da Specifiche Tecniche).
 
 
 Per approfondimenti vai alle Specifiche Tecniche, sezione [Ciclo di Vita degli Attestati Elettronici](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/credential-revocation.html). 
 
-A tal fine, l'Ente deve compilare la sezione `mappatura stati` del modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa) per definire messaggi, testi informativi aggiuntivi (campo opzionale `messaggio`) e l'applicabilità dei quattro valori **`Valido`**, **`Non Valido`**, **`Sospeso`** e **`Scaduto`**.
+A tal fine, l'Ente deve compilare la sezione "Mappatura stati" del modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa) per definire messaggi, testi informativi aggiuntivi (campo opzionale `messaggio`) e l'applicabilità dei quattro valori **`Valido`**, **`Non Valido`**, **`Sospeso`**, **`Scaduto`** e **`Da aggiornare`**.
 
-Per riferimenti e istruzioni di compilazione vedi [Appendice D](#appendice-d--mappatura-stati).
+Per riferimenti e istruzioni di compilazione vai all'apposita sezione del capitolo [Modulo da compilare](#modulo-da-compilare). 
 
 **Nota**: 
 Per ottimizzare l'esperienza d'uso dell'IT-Wallet pubblico, il Titolare di Fonte Autentica può anche valutare l'**integrazione con app IO per l'invio di messaggi informativi al cittadino**, quali ad esempio:
@@ -221,7 +224,7 @@ Per ottimizzare l'esperienza d'uso dell'IT-Wallet pubblico, il Titolare di Fonte
 ### **Definire i contenuti per l'informazione e l'assistenza all'utente**
 
 L'Ente deve contribuire al [modello di assistenza](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/functionalities.html#assistenza-utente) del Sistema IT-Wallet rendendo disponibili contenuti utili alla predisposizione di nuove Domande Frequenti e/o testi informativi in app, e fornendo i recapiti necessari per la gestione dell'assistenza agli utenti.  
-A tal fine, l'Ente deve compilare la sezione `assistenza` del modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa). Per riferimenti e istruzioni di compilazione vedi [Appendice E](#appendice-e--assistenza).
+A tal fine, l'Ente deve compilare la sezione "Assistenza" del modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa). Per riferimenti e istruzioni di compilazione vai all'apposita sezione del capitolo [Modulo da compilare](#modulo-da-compilare). 
 
 ### **Predisporre gli elementi necessari per la rappresentazione grafica dell'EAA**
 
@@ -233,11 +236,7 @@ A conclusione delle azioni sopra elencate, per proseguire con gli step successiv
 -  validare il modulo Progettazione caratteristiche EAA compilato in tutte le sue parti utilizzando la funzionalità “valida” visibile in testa al modulo, che permette di validare il JSON Schema di cui è composto il modulo, e la corretta compilazione di tutti i campi; 
 - esportare il modulo compilato e validato in formato JSON. L'export del modulo in formato JSON è funzionale a quanto previsto nello Step 2. 
 
-Per poter proseguire con gli step successivi, è infatti obbligatorio eseguire validazione JSON Schema e controllo sintattico. Per i comandi e il workflow, vedi [Validazione JSON Schema e Linter](validazione-json-schema-linter.md). La checklist prevede: 
 
-- validazione JSON Schema superata; 
-- JSON Linter senza errori; 
-- tutti i campi obbligatori (risposta) compilati per la sezione scelta; 
 ## Step 2 | Pubblicazione in collaudo
 
 Questo step ha l'obiettivo di rilasciare in collaudo su PDND l'e-service che espone i dati per la produzione degli EAA e di attivare il relativo servizio Signal Hub per la gestione dei dati nel tempo. Inoltre, l'Ente può rilasciare in collaudo il Credential Offer se ritenuto utile durate lo [Step 1](#step-1--progettazione-caratteristiche-eaa)).
@@ -267,7 +266,7 @@ Si consiglia di nominare l'e-service in "Creazione EAA [Nome / Nome tipologia EA
 
 ### **Attivare il servizio Signal Hub in collaudo**
 
-L'Ente deve attivare in collaudo il servizio [Signal Hub](https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-pdnd-interoperabilita/v1.0/riferimenti-tecnici/signal-hub) di PDND per il relativo e-service, in coerenza con quanto definito dalle [Specifiche Tecniche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/signal-hub-endpoint.html) per la gestione degli stati, precedentemente mappati nella sezione `mappatura stati` del modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa).
+L'Ente deve attivare in collaudo il servizio [Signal Hub](https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-pdnd-interoperabilita/v1.0/riferimenti-tecnici/signal-hub) di PDND per il relativo e-service, in coerenza con quanto definito dalle [Specifiche Tecniche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/signal-hub-endpoint.html) per la gestione degli stati, precedentemente mappati nella sezione "Mappatura stati" del modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa).
 
 ### **Sviluppare il Credential Offer (opzionale)**
 
@@ -313,7 +312,7 @@ L'Ente deve rilasciare l'e-service su PDND in produzione. Nel caso di EAA di int
 
 ### **Attivare il servizio Signal Hub in produzione**
 
-L'Ente deve attivare in produzione il servizio Signal Hub di PDND per il relativo e-service, in coerenza con quanto definito dalle [Specifiche Tecniche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/signal-hub-endpoint.html) per la gestione degli stati, precedentemente mappati nella sezione `mappatura stati` del modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa).
+L'Ente deve attivare in produzione il servizio Signal Hub di PDND per il relativo e-service, in coerenza con quanto definito dalle [Specifiche Tecniche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/signal-hub-endpoint.html) per la gestione degli stati, precedentemente mappati nella sezione "Mappatura stati" del modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa).
 
 ### **Portare in produzione il Credential Offer (opzionale)**
 
@@ -373,45 +372,54 @@ L'Ente deve garantire il corretto funzionamento dell'e-service nel tempo, progra
 
 ### **Gestire problematiche e fornire assistenza agli utenti**
 
-L'Ente deve garantire un costante aggiornamento delle informazioni riportate delle informazioni riportate nella sezione `assistenza` del file [Progettazione caratteristiche EAA](progettazione-caratteristiche-eaa.json) al fine di:
+L'Ente deve garantire un costante aggiornamento delle informazioni riportate delle informazioni riportate nella sezione "Assistenza" del modulo [Progettazione caratteristiche EAA(https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa) al fine di:
 
 - **Contribuire alla risoluzione di bug** 
-Il referente dell'ambito sistemistico e il referente dell'ambito applicativo, così come definito nella sezione `assistenza` del modulo, devono contribuire alla diagnosi congiunta delle segnalazioni ricevute da Fornitore di Attestati Elettronici di Attributi (IPZS, nel caso di EAA di interesse pubblico) e Fornitori di Wallet (PagoPA, nel caso della soluzione pubblica IT-Wallet) e relativa risoluzione, secondo quanto definito dal [modello di assistenza](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/functionalities.html#assistenza-utente) del Sistema IT-Wallet. 
+Il referente dell'ambito sistemistico e il referente dell'ambito applicativo, così come definito nella sezione "Assistenza" del modulo, devono contribuire alla diagnosi congiunta delle segnalazioni ricevute da Fornitore di Attestati Elettronici di Attributi (IPZS, nel caso di EAA di interesse pubblico) e Fornitori di Wallet (PagoPA, nel caso della soluzione pubblica IT-Wallet) e relativa risoluzione, secondo quanto definito dal [modello di assistenza](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/functionalities.html#assistenza-utente) del Sistema IT-Wallet. 
 - **Garantire il supporto agli utenti** 
-Il referente per l'ambito assistenza ed almeno un canale di contatto dedicato agli utenti finali (es. indirizzo e-mail, numero telefonico, etc.), così come definito nella sezione `assistenza` del modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa), devono sempre essere disponibili per gestire eventuali problemi relativi all'EAA, come ad esempio la segnalazione di dati errati o di errori nella fase di ottenimento dell'EAA da parte dell'utente.
+Il referente per l'ambito assistenza ed almeno un canale di contatto dedicato agli utenti finali (es. indirizzo e-mail, numero telefonico, etc.), così come definito nella sezione "Assistenza" del modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa), devono sempre essere disponibili per gestire eventuali problemi relativi all'EAA, come ad esempio la segnalazione di dati errati o di errori nella fase di ottenimento dell'EAA da parte dell'utente.
 
 ## Modulo da compilare
 
 
 Per assolvere a quanto previsto dallo Step 1, l‘Ente deve: 
 - Accedere al modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa);
-- rinominare il modulo in "progettazione_ caratteristiche_eaa_[Nome Ente Titolare]_[Nome EAA]" (es. "progettazione_eaa_mim_titolo_di_studio");
-- compilare il modulo in tutte le sue parti al fine di definire a monte tutte le caratteristiche che assumerà l’Attestato Elettronico emesso dal Fornitore di Attestati Elettronici di Attributi a livello di casi d'uso, dati, mappatura errori, stati e assistenza. E' possibile salvare localmente nel web browser un modulo in fase di compulazione ed è possibile l'import di JSON/CSV;
-- validare il modulo compilato utilizzando la funzionalità “valida” in testa al modulo ed esportarlo in formato JSON.
-L’ente dovrà creare, rinominare, compilare, validare ed esportare un modulo per ciascuna EAA di interesse. 
-A compilazione, validazione ed export conclusi, l’Ente può procedere con la sottomissione del modulo secondo quanto descritto nello [Step 2](#step-2--pubblicazione-in-collaudo), ricordando di mantenere sempre aggiornate le informazioni secondo le modalità definite nello [Step 7](#step-7--manutenzione-e-assistenza).
+- Rinominare il modulo in "Caratteristiche EAA - [Nome EAA] - [Nome Ente Titolare]" (es. "Caratteristiche EAA – Titolo di studio - MIM");
+- Compilare il modulo in tutte le sue parti al fine di definire a monte tutte le caratteristiche che assumerà l’Attestato Elettronico emesso dal Fornitore di Attestati Elettronici di Attributi a livello di casi d'uso, dati, mappatura errori, stati e assistenza. E' possibile salvare localmente nel web browser un modulo in fase di compulazione ed è possibile l'import di JSON/CSV. Nel caso in cui più soggetti siano incaricati della compilazione del modulo, è quindi possibile esportare e condividere una bozza parzialmente compilata affinché possa essere successivamente caricata e completata da un altro soggetto. È inoltre possibile lavorare in parallelo su copie distinte del modulo; in tal caso, è necessario assicurarsi che tutti i contributi confluiscano in un’unica versione finale completa in ogni sua parte; 
+- Validare il modulo compilato utilizzando la funzionalità “valida” in testa al modulo ed esportarlo in formato JSON.
+A compilazione, validazione ed export conclusi, l’Ente deve procedere con la sottomissione del modulo secondo quanto descritto nello [Step 2](#step-2--pubblicazione-in-collaudo), ricordando di mantenere sempre aggiornate le informazioni secondo le modalità definite nello [Step 7](#step-7--manutenzione-e-assistenza).
+
+L’ente dovrà creare, rinominare, compilare e validare un modulo per ciascun dataset relativo a un EAA di interesse.
 
 Il modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa) contiene le seguenti sezioni: 
 
-- Casi d’uso (istruzioni di compilazione in [Appendice A](#appendice-a--casi-duso)) 
-- Data Model (istruzioni di compilazione in [Appendice B](#appendice-b--data-model)) 
-- Lista attributi (opzionale; vedi [Appendice B](#appendice-b--data-model))
-- Mappatura errori (istruzioni di compilazione in [Appendice C](#appendice-c--mappatura-errori)) 
-- Mappatura stati (istruzioni di compilazione in [Appendice D](#appendice-d--mappatura-stati)) 
-- Assistenza (istruzioni di compilazione in [Appendice E](#appendice-e--assistenza)) 
+- Denominazioni ufficiali
+- Casi d’uso
+- Data Model
+- Mappatura errori
+- Mappatura stati 
+- Assistenza
+Di seguito le indicazioni di compilazione di ciascuna sezione del modulo. 
+### Denominazioni ufficiali 
+ 
+L’obiettivo della sezione “Denominazioni ufficiali” è quello di definire la denominazione ufficiale con cui si intende veicolare il nome dell’Ente titolare e definire la denominazione ufficiale dell’EAA relativa allo specifico dataset, secondo quanto definito nello Step 1. 
+
+Destinatari: 
+La sezione “Denominazioni ufficiali” si rivolge ad utenti funzionari, amministrativi, dirigenti o responsabili di prodotto. 
+ 
+Istruzioni di compilazione: 
+- Compila i campi `nome ente titolare `e `nome eaa` seguendo i suggerimenti di compilazione.  
+- Il campo `versione` è il numero di versione del modulo (valore fisso, es. 1.1.0) e non va confuso con una data di compilazione. 
+### Casi d'uso 
 
 
-## Appendice A – Casi d'uso EAA
 
-Questa appendice descrive le istruzioni di compilazione della sezione `casi d'uso` del modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa). Assicurati di aver letto quanto riportato nella sezione [Modulo da compilare](#modulo-da-compilare) prima di proseguire.
+L’obiettivo della sezione "Casi d'uso" è quello di supportare gli Enti nella definizione dei casi d'uso e delle modalità di utilizzo degli EAA di cui intendono fornire i dati, a partire dall'analisi delle attuali modalità di utilizzo dei corrispettivi documenti, ove esistenti. 
 
-### Obiettivo
+Destinatari: 
+La sezione “Casi d’uso” si rivolge ad utenti funzionari, amministrativi, dirigenti o responsabili di prodotto. 
 
-L’obiettivo della sezione `casi d'uso` è quello di supportare gli Enti nella definizione dei casi d'uso e delle modalità di utilizzo degli EAA di cui intendono fornire i dati, a partire dall'analisi delle attuali modalità di utilizzo dei corrispettivi documenti, ove esistenti. 
-
-
-
-### Istruzioni di compilazione 
+Istruzioni di compilazione:
 
 1. **Denominazioni ufficiali per Ente e EAA**: nella sezione `metadata` compila `nome ente titolare` e `nome eaa`; il campo `versione` è il numero di versione del template di progettazione (valore fisso indicato nello schema, es. `1.1.0`) e non va confuso con una data di compilazione. 
 2. **domande pertinenti**: nel caso l'EAA non si riferisca a un documento fisico o digitale già esistente (es. patente), non compilare le domande che iniziano con "In caso di documento già esistente..";
