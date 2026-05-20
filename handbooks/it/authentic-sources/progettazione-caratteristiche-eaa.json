@@ -467,14 +467,16 @@
     {
       "stato": "Non Valido",
       "descrizione": "L'EAA non è più valido e dunque non può essere più utilizzato",
-      "applicabile": false,
+      "applicabile": null,
+      "causa": "",
       "azione utente": "L'EAA non è più valido per cui l'utente deve effettuare delle operazioni per poter scaricare nuovamente l'EAA aggiornato in app",
       "note": ""
     },
     {
       "stato": "Sospeso",
       "descrizione": "L'EAA è sospeso e non può essere temporaneamente utilizzato",
-      "applicabile": false,
+      "applicabile": null,
+      "causa": "", 
       "azione utente": "",
       "note": ""
     },
@@ -485,297 +487,16 @@
       "azione utente": "",
       "note": ""
     }
+    { 
+      "stato": "Da aggiornare", 
+      "descrizione": "L'EAA contiene dei dati obsoleti che necessitano di essere aggiornati tramite un rinnovo o nuova emissione", 
+      "applicabile": null, 
+      "causa": "", 
+      "azione utente": "", 
+      "note": "" 
+    } 
   ],
-  "lista attributi": [
-    {
-      "categoria": "Dati anagrafici e di identità",
-      "parametro": "",
-      "nome campo": "Nome",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Dati anagrafici e di identità",
-      "parametro": "",
-      "nome campo": "Cognome",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Dati anagrafici e di identità",
-      "parametro": "",
-      "nome campo": "Data di nascita",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Dati anagrafici e di identità",
-      "parametro": "",
-      "nome campo": "Luogo di nascita",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Dati anagrafici e di identità",
-      "parametro": "",
-      "nome campo": "Codice Fiscale",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Dati anagrafici e di identità",
-      "parametro": "",
-      "nome campo": "Nazionalità",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Residenza e domicilio",
-      "parametro": "",
-      "nome campo": "Comune di residenza",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Residenza e domicilio",
-      "parametro": "",
-      "nome campo": "Frazione",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Residenza e domicilio",
-      "parametro": "",
-      "nome campo": "Indirizzo",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Residenza e domicilio",
-      "parametro": "",
-      "nome campo": "Seconda riga indirizzo",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Residenza e domicilio",
-      "parametro": "",
-      "nome campo": "Codice postale",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Residenza e domicilio",
-      "parametro": "",
-      "nome campo": "Provincia / Stato / Regione",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Residenza e domicilio",
-      "parametro": "",
-      "nome campo": "Residente dal",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Residenza e domicilio",
-      "parametro": "",
-      "nome campo": "Residenza estera",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Istruzione e formazione",
-      "parametro": "",
-      "nome campo": "Diploma conclusivo del primo ciclo di istruzione",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Istruzione e formazione",
-      "parametro": "",
-      "nome campo": "Diploma conclusivo del secondo ciclo di istruzione",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Istruzione e formazione",
-      "parametro": "",
-      "nome campo": "Diploma",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Istruzione e formazione",
-      "parametro": "",
-      "nome campo": "Descrizione diploma",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Istruzione e formazione",
-      "parametro": "",
-      "nome campo": "Istituto",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Istruzione e formazione",
-      "parametro": "",
-      "nome campo": "Codice istituto",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Istruzione e formazione",
-      "parametro": "",
-      "nome campo": "Qualifica",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Istruzione e formazione",
-      "parametro": "",
-      "nome campo": "Qualifica professionale",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Istruzione e formazione",
-      "parametro": "",
-      "nome campo": "Plesso scolastico",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Istruzione e formazione",
-      "parametro": "",
-      "nome campo": "Codice plesso scolastico",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Istruzione e formazione",
-      "parametro": "",
-      "nome campo": "Tipologia di corso",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Istruzione e formazione",
-      "parametro": "",
-      "nome campo": "Corso di laurea",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Istruzione e formazione",
-      "parametro": "",
-      "nome campo": "Classe di laurea",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Istruzione e formazione",
-      "parametro": "",
-      "nome campo": "Codice classe di laurea",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Istruzione e formazione",
-      "parametro": "",
-      "nome campo": "Anno di corso",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Istruzione e formazione",
-      "parametro": "",
-      "nome campo": "Anno accademico",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Istruzione e formazione",
-      "parametro": "",
-      "nome campo": "Anno scolastico",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Istruzione e formazione",
-      "parametro": "",
-      "nome campo": "Anno di conseguimento diploma",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Istruzione e formazione",
-      "parametro": "",
-      "nome campo": "Data di conseguimento",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Istruzione e formazione",
-      "parametro": "",
-      "nome campo": "Periodo didattico",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Istruzione e formazione",
-      "parametro": "",
-      "nome campo": "Tipologia di frequenza",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Istruzione e formazione",
-      "parametro": "",
-      "nome campo": "Data di scadenza",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Istruzione e formazione",
-      "parametro": "",
-      "nome campo": "Voto",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Istruzione e formazione",
-      "parametro": "",
-      "nome campo": "Voto finale",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Istruzione e formazione",
-      "parametro": "",
-      "nome campo": "Indirizzo",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Sanità e previdenza",
-      "parametro": "",
-      "nome campo": "Diritto accompagnatore",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Patenti e veicoli",
-      "parametro": "",
-      "nome campo": "Data di rilascio",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Patenti e veicoli",
-      "parametro": "",
-      "nome campo": "Paese di rilascio",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Patenti e veicoli",
-      "parametro": "",
-      "nome campo": "Categoria",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Patenti e veicoli",
-      "parametro": "",
-      "nome campo": "Scadenza",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Patenti e veicoli",
-      "parametro": "",
-      "nome campo": "Numero",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Patenti e veicoli",
-      "parametro": "",
-      "nome campo": "Codici",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Generali",
-      "parametro": "",
-      "nome campo": "Origine dei dati",
-      "descrizione": ""
-    },
-    {
-      "categoria": "Generali",
-      "parametro": "",
-      "nome campo": "Emissione versione digitale",
-      "descrizione": ""
-    }
-  ],
+ 
   "assistenza": {
     "referenti": [
       {
@@ -802,30 +523,32 @@
     ],
     "canali": [
       {
-        "dettaglio canale": "",
-        "tipo": "Email assistenza"
+        "tipo": "Email assistenza",
+        "dettaglio canale": ""
+
       },
       {
-        "dettaglio canale": "",
-        "tipo": "Numero telefonico"
+        "tipo": "Numero telefonico",
+        "dettaglio canale": ""
+
       },
       {
-        "dettaglio canale": "",
-        "tipo": "Altro"
+        "tipo": "Altro",
+        "dettaglio canale": ""
       }
     ],
     "faq": {
-      "requisiti eaa": {
+      "requisiti EAA": {
         "domanda": "Quali sono i requisiti che l’utente deve soddisfare per richiedere l’EAA?",
-        "risposta": "",
-        "esempio": "Per ottenere la patente di guida nel Wallet, assicurati di essere in possesso del corrispettivo documento fisico in stato di validità"
+        "esempio": "Per ottenere la patente di guida nel Wallet, assicurati di essere in possesso del corrispettivo documento fisico in stato di validità",
+        "risposta": ""
       },
-      "casi d uso modalita": {
+      "casi d' uso modalità": {
         "domanda": "Quali sono nel dettaglio i casi d’uso e le modalità (da remoto / in prossimità) in cui può essere usato l’EAA, e i casi in cui non può essere accettato?",
-        "risposta": "",
-        "esempio": "Potrai presentare la patente di guida in prossimità per dimostrare la tua identità e/o idoneità alla guida"
+        "esempio": "Potrai presentare la patente di guida in prossimità per dimostrare la tua identità e/o idoneità alla guida",
+        "risposta": ""
       },
-      "non validita azioni": {
+      "non validità azioni": {
         "domanda": "Qual è la procedura da seguire in caso l’EAA non sia in stato “valido”?",
         "esempio": "Se la tua patente di guida risulta scaduta, provvedi a rinnovarla presso gli uffici competenti sul territorio, successivamente potrai riottenerla in versione digitale nel Wallet. / Se la tua patente di guida risulta sospesa... / Se la tua patente di guida risulta non valida / ...",
         "risposta": ""
