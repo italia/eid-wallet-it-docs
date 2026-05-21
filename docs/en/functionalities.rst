@@ -718,7 +718,15 @@ Following is represented for illustrative purposes the page with the `Engagement
  
 .. only:: format_latex 
  
-  .. figure:: ./images/pdf/remote-presentation.pdf 
+  .. figure:: ./images/pdf/remote-presentation-1.pdf 
+    :alt: Illustrative page with Engagement Button, Selection page, QR code page, Thank you page for the remote presentation
+    :width: 100% 
+ 
+    Illustrative page with Engagement Button, Selection page, QR code page, Thank you page for the remote presentation
+
+.. only:: format_latex 
+ 
+  .. figure:: ./images/pdf/remote-presentation-2.pdf 
     :alt: Illustrative page with Engagement Button, Selection page, QR code page, Thank you page for the remote presentation
     :width: 100% 
  
