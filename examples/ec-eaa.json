@@ -640,9 +640,9 @@
                         "cose_key"
                     ],
                     "credential_signing_alg_values_supported": [
-                        "ES256",
-                        "ES384",
-                        "ES512"
+                        "-7",
+                        "-35",
+                        "-36"
                     ],
                     "credential_metadata": {
                         "display": [
