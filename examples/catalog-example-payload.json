@@ -105,6 +105,8 @@
                     "tos_uri": "https://issuer.example.org/terms",
                     "service_documentation": "https://issuer.example.org/.well-known/service-doc",
                     "issuance_flows": {
+                        "wallet_initiated": true,
+                        "issuer_initiated": true,
                         "deferred_flow": true,
                         "max_deferred_issuance_time_minutes": 1440,
                         "notification_methods": [
