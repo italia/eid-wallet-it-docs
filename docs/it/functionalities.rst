@@ -708,12 +708,19 @@ Di seguito è rappresentata a titolo esemplificativo la pagina con l’`Engageme
  
 .. only:: format_latex 
  
-  .. figure:: ./images/pdf/presentazione-remota.pdf 
+  .. figure:: ./images/pdf/presentazione-remota-1.pdf 
     :alt: Esempio di pagina con Engagement Button, Selection page, QR code page, Thank you page per la presentazione da remoto  
     :width: 100% 
  
     Esempio di pagina con Engagement Button, Selection page, QR code page, Thank you page per la presentazione da remoto  
 
+.. only:: format_latex 
+ 
+  .. figure:: ./images/pdf/presentazione-remota-2.pdf 
+    :alt: Esempio di pagina con Engagement Button, Selection page, QR code page, Thank you page per la presentazione da remoto  
+    :width: 100% 
+ 
+    Esempio di pagina con Engagement Button, Selection page, QR code page, Thank you page per la presentazione da remoto  
 
 
 Autenticazione
