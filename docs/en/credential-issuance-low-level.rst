@@ -690,9 +690,9 @@ The Credential Offer object is a JSON object containing the parameters defined i
 
             - *datasetId:* REQUIRED. The unique identifier of the dataset provided by the Authentic Source as registered in the :ref:`registry:Authentic Source Registry`. 
 
-            - *objectId:* OPTIONAL. Unique identifier of the Credential Dataset available from the authentic source. 
+            - *objectId:* OPTIONAL. Unique identifier of the Credential Dataset available from the Authentic Source. 
 
-        The ``issuer_state`` MUST follow the following structure: ``urn:credential-offer:{authenticSourceId}:{datasetId}:{objectId}``. This URN value MUST be encrypted using the PDND public key related to the ``GetAttributeClaims`` e-service Consumer.
+        The ``issuer_state`` MUST follow the following structure: ``urn:it-wallet:credential-offer:{authenticSourceId}:{datasetId}:{objectId}``. This URN value MUST be encrypted using the PDND public key related to the ``GetAttributeClaims`` e-service Consumer.
 
         - **authorization_server**: REQUIRED when the Credential Issuer uses more than one authorization server in its Issuer Solution. This string identifies the Authorization Server to use. The value MUST match with one of the values mapped in the ``authorization_servers`` array of the Credential Issuer metadata. It MUST NOT be used if ``authorization_servers`` is absent or it has no multiple entries.
     - Section 4.1.1 of [`OpenID4VCI`_] and Section 4.1 of [`OPENID4VC-HAIP`_].
