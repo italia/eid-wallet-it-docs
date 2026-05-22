@@ -893,11 +893,35 @@ The Relying Party MUST implement the Selection Page made available in the :ref:`
 
 .. only:: format_latex  
 
-  .. figure:: ./images/pdf/selection-page.pdf
-     :alt: Selection Page
+  .. figure:: ./images/pdf/selection-page-desktop-1.pdf
+     :alt: Selection Page desktop
      :width: 100%
 
-     Selection Page 
+     Selection Page desktop
+
+.. only:: format_latex  
+
+  .. figure:: ./images/pdf/selection-page-desktop-2.pdf
+     :alt: Selection Page desktop
+     :width: 100%
+
+     Selection Page desktop
+
+.. only:: format_latex  
+
+  .. figure:: ./images/pdf/selection-page-desktop-3.pdf
+     :alt: Selection Page desktop
+     :width: 100%
+
+     Selection Page desktop
+
+.. only:: format_latex  
+
+  .. figure:: ./images/pdf/selection-page-mobile.pdf
+     :alt: Selection Page mobile
+     :width: 100%
+
+     Selection Page mobile
 
 The Relying Party implementing the page: 
 
