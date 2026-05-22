@@ -466,7 +466,7 @@ The Authentic Source Registry MUST contain the following parameters for each reg
    * - **data_capabilities[].user_information_l10n_id**
      - string
      - OPTIONAL. Localization key referencing a Markdown-formatted string with human-readable information about the data capability relevant to the User (e.g., ``authentic_source1.dataset1.userinfo``). This string MUST be provided by the Authentic Source to the Trust Anchor during onboarding. The Markdown formatting can be plain text or a combination of text and links. For example, if the Authentic Source's database only contains data registered *after* a specific date, this information MUST be conveyed through this key.
-   * - **data_capabilities[].service_documentation**
+   * - **data_capabilities[].service_documentation_uri**
      - string
      - OPTIONAL. URL pointing to the Authentic Source service documentation.
    * - **data_capabilities[].update_frequency**
@@ -1111,7 +1111,7 @@ Each element of the ``credentials`` array contains at least the following inform
   * - **issuers**
     - REQUIRED. Array of relevant information about authorized Credential Issuers, including administrative and technical data such as Organization name, a reference to the API specification document and supported issuance mechanisms. Each array element contains:
 
-       * **id**: REQUIRED. String. Unique identifier of the Credential Issuer.
+       * **entity_id**: REQUIRED. String. Unique identifier of the Credential Issuer. It MUST match with the value contained in the ``iss`` parameter of the Credential Issuer Entity Configuration.
        * **organization_name_l10n_id**: REQUIRED. String. Localization key referencing the localized organization name in the localization bundle (e.g., ``issuer1.name``).
        * **organization_code**: REQUIRED. String. Credential Issuer IPA code for government entities or VAT number for private entities.
        * **organization_country**: REQUIRED. String. Two-letter ISO 3166-1 alpha-2 country code of the organization.
@@ -1121,7 +1121,7 @@ Each element of the ``credentials`` array contains at least the following inform
        * **logo_uri**: OPTIONAL. String. URL to the organization's logo image.
        * **policy_uri**: REQUIRED. String. URL to privacy policy document.
        * **tos_uri**: OPTIONAL. String. URL to terms of service document.
-       * **service_documentation**: OPTIONAL. String. URL pointing to the Authentic Source service documentation.
+       * **service_documentation_uri**: OPTIONAL. String. URL pointing to the Credential Issuer service documentation.
        * **issuance_flows**: REQUIRED. Object. It contains the following parameters:
 
           * **deferred_flow**: REQUIRED. Boolean. Indicates if the deferred issuance is supported.
