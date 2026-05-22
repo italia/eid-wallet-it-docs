@@ -877,7 +877,23 @@ Il Verificatore di Attestati Elettronici DEVE implementare la Selection Page res
 
 .. only:: format_latex  
 
-  .. figure:: ./images/pdf/selection-page-desktop.pdf
+  .. figure:: ./images/pdf/selection-page-desktop-1.pdf
+     :alt: Selection Page desktop
+     :width: 100%
+
+     Selection Page desktop
+
+.. only:: format_latex  
+
+  .. figure:: ./images/pdf/selection-page-desktop-2.pdf
+     :alt: Selection Page desktop
+     :width: 100%
+
+     Selection Page desktop
+
+.. only:: format_latex  
+
+  .. figure:: ./images/pdf/selection-page-desktop-3.pdf
      :alt: Selection Page desktop
      :width: 100%
 
