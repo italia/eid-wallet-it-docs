@@ -720,7 +720,7 @@ Di seguito è rappresentata a titolo esemplificativo la pagina con l’`Engageme
     :alt: Esempio di pagina con Engagement Button, Selection page, QR code page, Thank you page per la presentazione da remoto  
     :width: 100% 
  
-    Esempio di pagina con Engagement Button, Selection page, QR code page, Thank you page per la presentazione da remoto  
+    Esempio di pagina con Engagement Button, Selection page, QR code page, Thank You Page per la presentazione da remoto  
 
 
 Autenticazione
