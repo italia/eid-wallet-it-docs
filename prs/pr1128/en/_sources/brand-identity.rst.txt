@@ -138,6 +138,8 @@ Below are illustrated the requirements for the use of the Trust Mark, that apply
 
 - MUST display the Trust Mark only in the Technical Solutions that have successfully completed the registration process; 
 
+- MUST display the Trust Mark in a clear and visible manner to the User from the moment they access the Technical Solution and MUST make it available for consultation within the Technical Solution;
+
 - MUST exclusively use the Trust Mark provided in the Official Resources and MUST comply with the related usage specifications provided in the Brand Manual; 
 
 - MUST NOT alter, distort, modify the Trust Mark, or replace it with unofficial elements; 
