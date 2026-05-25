@@ -1032,7 +1032,7 @@ The Authentication Button has the following requirements:
 
 - The Authentication Button SHOULD always be accompanied by an external link (e.g., "Learn more") that links to the official website of the IT-Wallet System, indicated in the :ref:`official-resources:Official Resources` section; 
 
-- Where space allows and/or the context requires it, the Authentication Button SHOULD be accompanied by a descriptive text, e.g., "IT-Wallet is the Italian digital wallet system that allows you to authenticate yourself online and access public and private services quickly and securely, using the data, documents, and attestations you can obtain digitally in one of the participating wallets.". 
+- Where space allows and/or the context requires it, the Authentication Button SHOULD be accompanied by a descriptive text: "IT-Wallet is the Italian digital wallet system that allows you to authenticate yourself online and access public and private services quickly and securely, using the data, documents, and attestations you can obtain digitally in one of the participating wallets.". 
 
 
 Below are some non-mandatory examples of Authentication Button layout: 
