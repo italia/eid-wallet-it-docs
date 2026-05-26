@@ -455,7 +455,9 @@ Istruzioni di compilazione:
 
 ### Parametri di richiesta
 
+Destinatari: 
 
+La sezione “Parametri di richiesta” si rivolge ad utenti con profilo tecnico, tra cui sviluppatori, referenti dei Sistemi Informativi, partner tecnologici o fornitori IT. 
 L’obiettivo della sezione “Parametri di richiesta” è quello di supportare gli Enti nella definizione dei parametri necessari al Fornitore di Attestati Elettronici di Attributi per l’identificazione di uno specifico dataset. 
 Destinatari: 
 
@@ -472,7 +474,9 @@ Definisci il valore `dataset_id`, necessario per identificare in maniera univoca
 
 L’obiettivo della sezione `dati di risposta` è supportare gli Enti nella definizione dei campi del dataset restituito dall'e-service (Attestato Elettronico di Attributi).
 Destinatari: 
+Destinatari: 
 
+La sezione “Data model” si rivolge ad utenti con profilo tecnico, tra cui sviluppatori, referenti dei Sistemi Informativi, partner tecnologici o fornitori IT. Per la definizione di alcuni aspetti, si suggerisce il coinvolgimento di utenti con profilo amministrativo o dirigenziale (es. per la definizione del tipo di dati e dell’ordinamento). 
 La sezione “Data model” si rivolge ad utenti con profilo tecnico, tra cui sviluppatori, referenti dei Sistemi Informativi, partner tecnologici o fornitori IT. Per la definizione di alcuni aspetti, si suggerisce il coinvolgimento di utenti con profilo amministrativo o dirigenziale (es. per la definizione del tipo di dati e dell’ordinamento). 
 Istruzioni di compilazione:
 
@@ -487,7 +491,9 @@ Istruzioni di compilazione:
 
 L’obiettivo della sezione "Mappatura errori" è quello di supportare gli Enti nella definizione delle caratteristiche dell'e-service - e quindi del corrispettivo Attestato Elettronico di Attributi (EAA) - in termini di errori che potrebbero occorrere interagendo con l'e-service corrispondente.
 Destinatari: 
+Destinatari: 
 
+La sezione “Mappatura errori” si rivolge ad utenti con profilo tecnico, tra cui sviluppatori, referenti dei Sistemi Informativi, partner tecnologici o fornitori IT. Per la definizione di alcuni aspetti, si suggerisce il coinvolgimento di utenti con profilo amministrativo o dirigenziale (es. per la formulazione di contenuti informativi e messaggi). 
 La sezione “Mappatura errori” si rivolge ad utenti con profilo tecnico, tra cui sviluppatori, referenti dei Sistemi Informativi, partner tecnologici o fornitori IT. Per la definizione di alcuni aspetti, si suggerisce il coinvolgimento di utenti con profilo amministrativo o dirigenziale (es. per la formulazione di contenuti informativi e messaggi). 
 Istruzioni di compilazione:
 
