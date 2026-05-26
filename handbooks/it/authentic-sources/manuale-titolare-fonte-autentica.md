@@ -555,15 +555,17 @@ Estratto strutturale (nomi campo come nel JSON del modulo; `messaggio` è opzion
 
 ### Assistenza
 
-L’obiettivo della sezione `assistenza` è quello di supportare gli Enti nella definizione dei contenuti per l'informazione e il supporto all'utente nell’interazione con l'EAA.  
+L’obiettivo della sezione "Assistenza" è quello di supportare gli Enti nella definizione dei contenuti per l'informazione e il supporto all'utente nell’interazione con l'EAA.  
 
 Nello specifico, l'Ente deve contribuire al [modello di assistenza](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/functionalities.html#assistenza-utente) del Sistema IT-Wallet rendendo disponibili i recapiti necessari per la risoluzione di eventuali malfunzionamenti, i canali disponibili per la gestione dell'assistenza agli utenti e i contenuti utili alla predisposizione di nuove Domande Frequenti e/o testi informativi da esporre all’utente in IT-Wallet. 
+Destinatari: 
 
-**Istruzioni di compilazione** 
+La sezione “Assistenza” si rivolge ad utenti amministrativi, responsabili di servizio o della comunicazione, operatori URP, gestori help desk o referenti del supporto tecnico dei fornitori IT. 
+Istruzioni di compilazione:
 
 - Referenti: fornisci e mantieni aggiornati, i dati di contatto (nome, cognome, email, telefono) di almeno 1 referente per l’assistenza agli utenti, 1 referente in ambito applicativo e 1 referente in ambito sistemistico che possano prontamente collaborare con il Fornitore di Attestati Elettronici di Attributi (IPZS per gli Attestati Elettronici di interesse pubblico) e con il Fornitore di Wallet (PagoPA per la soluzione IT-Wallet pubblica) per la risoluzione congiunta di segnalazioni degli utenti e/o malfunzionamenti tra i servizi. 
 - Canali: fornisci almeno un canale di assistenza (es. e-mail assistenza, numero di telefono, etc.) di responsabilità dell’Ente che rappresenti, nel ruolo di Titolare di Fonte Autentica, a cui si possa indirizzare l’utente per quelle richieste di supporto e segnalazioni non gestibili all’interno della soluzione IT-Wallet.  
-- FAQ: per ciascuna voce compila **`risposta`** (stringa, booleano o null); **`domanda`** e **`esempio`** sono testi guida preimpostati nello stesso ordine usato per i casi d'uso (`domanda`, poi `risposta` da valorizzare, poi `esempio` con esempio di risposta).
+- FAQ: per ciascuna voce compila `risposta` (stringa, booleano o null); `domanda` e `esempio` sono testi guida preimpostati nello stesso ordine usato per i casi d'uso (`domanda`, poi `esempio` con esempio di risposta, poi `risposta` da valorizzare).
 - testi informativi (opzionale): se ritenuto utile o necessario dal Titolare di Fonte Autentica, approfondisci la casistica all’interno delle [Specifiche Tecniche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/functionalities.html#ottenimento-dal-catalogo-dell-istanza-del-wallet)); se ritenuto utile, definisci le informazioni essenziali da esporre agli utenti nella soluzione IT-Wallet prima di avviare l’ottenimento dell’EAA e sintetizzale in un testo adeguato. In particolare: 
 1) Poniti le seguenti domande (puoi fare riferimento alla sezione `casi d'uso`, già compilata):  A chi si rivolge o a chi è dedicato l’EAA? (es. pensionati, studenti, etc.) Sussistono dei limiti, delle restrizioni o dei prerequisiti per poter ottenere l’EAA? (es. aver ottenuto la versione fisica del documento, aver conseguito la titolarità al documento dopo il 2020, etc.) Dove e come è possibile usare l’EAA? 
 2) Formula un testo informativo rivolto all’utente a partire dai contenuti sopra raccolti, assicurandoti che sia chiaro, semplice, diretto e conciso (circa 300 - 450 caratteri, spazi inclusi).
