@@ -451,6 +451,7 @@
       "stato": "Scaduto",
       "descrizione": "L'EAA ha superato la data di scadenza amministrativa e richiede rinnovo o nuova emissione",
       "applicabile": false,
+      "causa": "", 
       "azione utente": "",
       "note": ""
     },

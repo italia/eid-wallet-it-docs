@@ -87,8 +87,8 @@ I file compilati fanno riferimento allo schema tramite `$schema`; in caso di agg
 
 ## 5. Note sullo schema `json-schemas/schema-validazione-form-onboarding-fonte-autentica.schema.json`
 
-- Lo schema valida l'intera struttura del file, incluse le sezioni **casi d'uso**, **assistenza** e **e_service**; queste ultime due sono obbligatorie e validate dallo schema.
-- **Sezione casi d'uso**: `casi_d_uso` è obbligatoria e unifica i casi documento esistente e non; i campi opzionali si compilano in base al caso.
+- Lo schema valida l'intera struttura del modulo, incluse le sezioni `casi d'uso`, `parametri di richiesta`, `data model`, `mappatura errori`, `mappatura stati `e `assistenza`, obbligatorie e validate dallo schema.
+- **Sezione casi d'uso**: `casi d' uso` è obbligatoria e unifica i casi documento esistente e non; i campi opzionali si compilano in base al caso.
 - **`casi d'uso` → `target utenti`**: la proprietà canonica è **`utenti doc preesistente`**.
 - **`denominazioni ufficiali`**: sezione obbligatoria con `nome ente titolare`, `nome eaa` e `versione`.
 - **`campo_risposta`** (casi d'uso e stessa forma per le FAQ in `assistenza.faq`): ogni voce richiede **`domanda`**, **`risposta`** e **`esempio`** (`risposta` stringa, booleano o null; in bozza testuale di solito stringa vuota).
@@ -98,6 +98,4 @@ I file compilati fanno riferimento allo schema tramite `$schema`; in caso di agg
 - **`parametri di richiesta`**: array obbligatorio di oggetti `parametro_input` (parametri in ingresso all'e-service). Legacy: `request` con `parametri input`.
 - **`dati di risposta`**: array obbligatorio di oggetti `data_model_campo` (campi in risposta; contratto 1.0). Il campo **`lunghezza massima caratteri`** è opzionale in `data_model_campo` (obbligatorio in `parametro_input`). Legacy: `dataset`, `data model`.
 - **`mappatura stati`**: array di **5** elementi fissi (`Valido`, `Non Valido`, `Sospeso`, `Scaduto`, `Da aggiornare`); ogni voce richiede `stato`, `descrizione`, `applicabile`, `azione utente`, `note` (campo opzionale `causa`).
-- **`lista attributi`** (opzionale, radice del JSON di progettazione): array di oggetti con `categoria`, `parametro`, `nome campo`, `descrizione` (definizione `lista_attributi_riga` nello schema).
 - **Nomi proprietà**: nelle chiavi del JSON (in particolare sotto `casi d'uso`) non usare **doppi spazi** tra le parole; lo schema e il template ufficiale usano un solo spazio (es. `canali richiesta doc preesistente`, non `canali richiesta  doc preesistente`).
-- **`e_service`**: obbligatorie le sezioni `pdnd_metadata`, `request` (con `parametri_input`), `response` (con `versione` e `dataset`, ossia il data model dei dati in risposta), `mappatura_errori` e `stati` (array di primo livello sotto `e_service`). Facoltativa `lista_nome_campo`.
