@@ -146,7 +146,7 @@ Below are illustrated the requirements for the use of the Trust Mark, that apply
 
 - MUST NOT resize the Trust Mark below the minimum dimensions specified in the :ref:`official-resources:Brand Manual` to maintain legibility across formats and devices; 
 
-- MUST maintain the minimum clear space as defined in the :ref:`official-resources:Brand Manual` to ensure visibility and recognizability. They MUST NOT allow other graphic or textual elements to interfere with this space; 
+- MUST maintain the minimum clear space as defined in the :ref:`official-resources:Brand Manual` to ensure visibility and recognizability and MUST NOT allow other graphic or textual elements to interfere with this space; 
 
 - MUST NOT place the Trust Mark on backgrounds that compromise its visibility or legibility. They MUST ensure adequate contrast between the Trust Mark and the background, in accordance with the :ref:`official-resources:Brand Manual`; 
 
