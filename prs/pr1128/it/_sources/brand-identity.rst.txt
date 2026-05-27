@@ -147,7 +147,7 @@ Di seguito sono riportati i requisiti di utilizzo del Trust Mark, validi sia in 
 
 - DEVONO utilizzare il Trust Mark garantendo l'area di rispetto minima definita nel :ref:`official-resources:Brand Manual`, al fine di garantirne un'adeguata visibilità e riconoscibilità. NON DEVONO permettere ad altri elementi grafici o testuali di interferire con questa area di rispetto;  
 
-- NON DEVONO utilizzare il Trust Mark su sfondi di colore che ne compromettano la visibilità o la leggibilità. DEVONO garantito un contrasto adeguato tra il Trust Mark e lo sfondo, in conformità con quanto definito nel :ref:`official-resources:Brand Manual`; 
+- NON DEVONO utilizzare il Trust Mark su sfondi di colore che ne compromettano la visibilità o la leggibilità e DEVONO garantire un contrasto adeguato tra il Trust Mark e lo sfondo, in conformità con quanto definito nel :ref:`official-resources:Brand Manual`; 
 
 - POSSONO associare il Trust Mark a loghi, marchi o simboli di altri attori del sistema, purchè in accordo con quando stabilito nel Brand Manual. 
 
