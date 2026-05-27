@@ -16,11 +16,11 @@ Risorse Grafiche
 
 Di seguito sono elencate le risorse grafiche ufficiali, disponibili per il download nella cartella `official_resources/ <https://github.com/italia/eid-wallet-it-docs/tree/versione-corrente/official_resources>`_ di questo repository:
 
-- **Logo IT-Wallet**: Logo ufficiale del Sistema IT-Wallet (formato SVG) - `Scarica il logo <_static/IT-Wallet-Logo>`_
-- **Pittogramma IT-Wallet**: Pittogramma ufficiale del Sistema IT-Wallet - `Scarica il pittogramma <_static/IT-Wallet-Symbol>`_
-- **IT-Wallet ID**: Elemento grafico ufficiale che assicura l’identificazione e rappresentazione univoca del PID tra tutte le Soluzioni Wallet (formato SVG) - `Scarica IT-Wallet ID <_static/IT-Wallet-ID>`_
-- **Trust Mark**: Elemento grafico ufficiale per l'attestazione dell'appartenenza al Sistema IT-Wallet - `Scarica Trust Mark <_static/IT-Wallet-Trust-Mark>`_ - Consulta la sezione :ref:`brand-identity:Trust Mark`;
-- **Authentication Button**: Pulsante ufficiale per l'autenticazione tramite IT-Wallet - `Scarica Authentication Button <_static/IT-Wallet-Authentication-Button>`_
+- **Logo IT-Wallet**: Logo ufficiale del Sistema IT-Wallet (formato SVG) - `Scarica il logo <_static/IT-Wallet-Logo/IT-Wallet-Logo-Primary-BlueItalia.svg>`_
+- **Pittogramma IT-Wallet**: Pittogramma ufficiale del Sistema IT-Wallet - `Scarica il pittogramma <_static/IT-Wallet-Symbol/IT-Wallet-Symbol-Primary-BlueItalia.svg>`_
+- **IT-Wallet ID**: Elemento grafico ufficiale che assicura l’identificazione e rappresentazione univoca del PID tra tutte le Soluzioni Wallet (formato SVG) - `Scarica IT-Wallet ID <_static/IT-Wallet-ID/IT-Wallet-ID-Primary-BlueItalia.svg>`_
+- **Trust Mark**: Elemento grafico ufficiale per l'attestazione dell'appartenenza al Sistema IT-Wallet - `Scarica Trust Mark <_static/IT-Wallet-Trust-Mark/ITA/Trust-Mark-ITA-Blue-Primary.svg>`_ - Consulta la sezione :ref:`brand-identity:Trust Mark`;
+- **Authentication Button**: Pulsante ufficiale per l'autenticazione tramite IT-Wallet - `Scarica Authentication Button <_static/IT-Wallet-Authentication-Button/ITA/IT-Wallet-Authentication-Button-ITA-Standard-Default.svg>`_
 
 Componenti HTML
 ^^^^^^^^^^^^^^^^
