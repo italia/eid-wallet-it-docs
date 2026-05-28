@@ -718,7 +718,15 @@ Following is represented for illustrative purposes the page with the `Engagement
  
 .. only:: format_latex 
  
-  .. figure:: ./images/pdf/remote-presentation.pdf 
+  .. figure:: ./images/pdf/remote-presentation-1.pdf 
+    :alt: Illustrative page with Engagement Button, Selection page, QR code page, Thank you page for the remote presentation
+    :width: 100% 
+ 
+    Illustrative page with Engagement Button, Selection page, QR code page, Thank you page for the remote presentation
+
+.. only:: format_latex 
+ 
+  .. figure:: ./images/pdf/remote-presentation-2.pdf 
     :alt: Illustrative page with Engagement Button, Selection page, QR code page, Thank you page for the remote presentation
     :width: 100% 
  
@@ -885,11 +893,35 @@ The Relying Party MUST implement the Selection Page made available in the :ref:`
 
 .. only:: format_latex  
 
-  .. figure:: ./images/pdf/selection-page.pdf
-     :alt: Selection Page
+  .. figure:: ./images/pdf/selection-page-desktop-1.pdf
+     :alt: Selection Page desktop
      :width: 100%
 
-     Selection Page 
+     Selection Page desktop
+
+.. only:: format_latex  
+
+  .. figure:: ./images/pdf/selection-page-desktop-2.pdf
+     :alt: Selection Page desktop
+     :width: 100%
+
+     Selection Page desktop
+
+.. only:: format_latex  
+
+  .. figure:: ./images/pdf/selection-page-desktop-3.pdf
+     :alt: Selection Page desktop
+     :width: 100%
+
+     Selection Page desktop
+
+.. only:: format_latex  
+
+  .. figure:: ./images/pdf/selection-page-mobile.pdf
+     :alt: Selection Page mobile
+     :width: 100%
+
+     Selection Page mobile
 
 The Relying Party implementing the page: 
 
