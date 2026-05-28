@@ -309,7 +309,7 @@ The Authentic Source registration follows a technical process as described below
    * - **data_capabilities[].allowed_states**
      - JSON object Array
      - OPTIONAL. Object array containing information in multiple languages for the User about the current status of the dataset and, eventually recommended actions. The status values are defined in the :ref:`credential-revocation:Token Status Lists` Section. It MUST contain ``locale``, ``title``, ``description`` and ``<Status-Type-Value>`` claims.
-   * - **data_capabilities[].service_documentation**
+   * - **data_capabilities[].service_documentation_uri**
      - string
      - OPTIONAL. URL pointing to the Authentic Source service documentation.
    * - **data_capabilities[].update_frequency**
