@@ -124,7 +124,7 @@
                     ],
                     "logo_uri": "https://trust-registry.eid-wallet.example.it/logos/38832801/image.svg",
                     "logo_uri#integrity": "sha-256-b1946ac92492d2347c6235b4d2611184e2a3f8b8c8f8f8e8f8f8f8f8f8f8f8f8",
-                    "service_documentation": "https://docs.gov.example/transport/api-docs",
+                    "service_documentation_uri": "https://docs.gov.example/transport/api-docs",
                     "update_frequency": "real_time",
                     "user_information_l10n_id": "authentic_source1.dataset1.userinfo"
                 }
@@ -224,7 +224,7 @@
                     ],
                     "logo_uri": "https://trust-registry.eid-wallet.example.it/logos/38854801/image.svg",
                     "logo_uri#integrity": "sha-256-d8e8fca2dc0f896fd7cb4cb0031ba249e3f8b8c8f8f8e8f8f8f8f8f8f8f8f8f9",
-                    "service_documentation": "https://docs.bank.example/psd2-api",
+                    "service_documentation_uri": "https://docs.bank.example/psd2-api",
                     "update_frequency": "daily",
                     "user_information_l10n_id": "authentic_source2.dataset1.userinfo"
                 },
@@ -285,7 +285,7 @@
                     ],
                     "logo_uri": "https://trust-registry.eid-wallet.example.it/logos/38854802/image.svg",
                     "logo_uri#integrity": "sha-256-f4a2b7e1dc0f896fd7cb4cb0031ba249e3f8b8c8f8f8e8f8f8f8f8f8f8f8f8fb",
-                    "service_documentation": "https://docs.bank.example/psd2-api",
+                    "service_documentation_uri": "https://docs.bank.example/psd2-api",
                     "update_frequency": "weekly",
                     "user_information_l10n_id": "authentic_source2.dataset2.userinfo"
                 }
