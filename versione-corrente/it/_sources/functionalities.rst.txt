@@ -708,12 +708,19 @@ Di seguito è rappresentata a titolo esemplificativo la pagina con l’`Engageme
  
 .. only:: format_latex 
  
-  .. figure:: ./images/pdf/presentazione-remota.pdf 
+  .. figure:: ./images/pdf/presentazione-remota-1.pdf 
     :alt: Esempio di pagina con Engagement Button, Selection page, QR code page, Thank you page per la presentazione da remoto  
     :width: 100% 
  
     Esempio di pagina con Engagement Button, Selection page, QR code page, Thank you page per la presentazione da remoto  
 
+.. only:: format_latex 
+ 
+  .. figure:: ./images/pdf/presentazione-remota-2.pdf 
+    :alt: Esempio di pagina con Engagement Button, Selection page, QR code page, Thank you page per la presentazione da remoto  
+    :width: 100% 
+ 
+    Esempio di pagina con Engagement Button, Selection page, QR code page, Thank You Page per la presentazione da remoto  
 
 
 Autenticazione
@@ -870,7 +877,23 @@ Il Verificatore di Attestati Elettronici DEVE implementare la Selection Page res
 
 .. only:: format_latex  
 
-  .. figure:: ./images/pdf/selection-page-desktop.pdf
+  .. figure:: ./images/pdf/selection-page-desktop-1.pdf
+     :alt: Selection Page desktop
+     :width: 100%
+
+     Selection Page desktop
+
+.. only:: format_latex  
+
+  .. figure:: ./images/pdf/selection-page-desktop-2.pdf
+     :alt: Selection Page desktop
+     :width: 100%
+
+     Selection Page desktop
+
+.. only:: format_latex  
+
+  .. figure:: ./images/pdf/selection-page-desktop-3.pdf
      :alt: Selection Page desktop
      :width: 100%
 

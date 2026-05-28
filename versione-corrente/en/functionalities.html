@@ -622,16 +622,16 @@
 <p>From a User Experience perspective, the Authentication process differs from the Presentation process only in how it is initiated, which is through a dedicated <a class="reference internal" href="#authentication-button">Authentication Button</a>.</p>
 <p>To ensure a consistent and seamless Authentication process across all Relying Parties, each Relying Party MUST follow the visual and User Experience requirements outlined below, together with compliance with [REF_ACCESSIBILITY] and, in the case of public entities, with [GL_DESIGN].</p>
 <p>Both flows are shown below with illustrative wireframes.</p>
-<figure class="align-center" id="id131">
+<figure class="align-center" id="id132">
 <a class="reference internal image-reference" href="_images/Authentication-same-device.svg"><img alt="Example of same-device Authentication User Experience" src="_images/Authentication-same-device.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.36 </span><span class="caption-text">Example of same-device Authentication User Experience.</span><a class="headerlink" href="#id131" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.37 </span><span class="caption-text">Example of same-device Authentication User Experience.</span><a class="headerlink" href="#id132" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id134">
+<figure class="align-center" id="id135">
 <a class="reference internal image-reference" href="_images/Authentication-cross-device.svg"><img alt="Example of cross-device Authentication User Experience" src="_images/Authentication-cross-device.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.39 </span><span class="caption-text">Example of cross-device Authentication User Experience.</span><a class="headerlink" href="#id134" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.40 </span><span class="caption-text">Example of cross-device Authentication User Experience.</span><a class="headerlink" href="#id135" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Relying Parties SHOULD use the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a> for design and development. If a Relying Party does not intend to use such open source resources, it MAY independently develop the Technical Solutions enabling the Authentication flow, ensuring that it follows the specifications herein provided.</p>
@@ -655,10 +655,10 @@
 <p>Specific requirements for each individual page are detailed below.</p>
 <p><strong>Discovery Page</strong></p>
 <p>To enable Authentication via the IT-Wallet System, the Relying Party MAY replace its existing Discovery Page with the version provided in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p>
-<figure class="align-center" id="id139">
+<figure class="align-center" id="id140">
 <a class="reference internal image-reference" href="_images/discovery-page.svg"><img alt="Layout Model of Discovery Page in grid" src="_images/discovery-page.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.44 </span><span class="caption-text">Layout Model of Discovery Page in grid</span><a class="headerlink" href="#id139" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.45 </span><span class="caption-text">Layout Model of Discovery Page in grid</span><a class="headerlink" href="#id140" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Alternatively, the Relying Party MAY maintain its own Discovery Page but MUST integrate the Authentication Button as specified in the <a class="reference internal" href="#authentication-button">Authentication Button</a> section.</p>
@@ -677,10 +677,10 @@
 <p>This section describes the display of a Selection Page as part of the Authentication process use case. The same page SHOULD be used also by the Relying Parties during presentation and by third parties offering the Credential Offer to enable the Wallet Solution selection option. Further details are provided in <a class="reference internal" href="remote-flow.html#remote-flow"><span class="std std-ref">Remote Flow</span></a> and <a class="reference internal" href="credential-issuance-low-level.html#credential-offer-flow"><span class="std std-ref">Credential Offer Flow</span></a>.</p>
 </div>
 <p>The Relying Party MUST implement the Selection Page made available in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p>
-<figure class="align-center" id="id141">
+<figure class="align-center" id="id142">
 <a class="reference internal image-reference" href="_images/selection-page.svg"><img alt="Selection Page" src="_images/selection-page.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.46 </span><span class="caption-text">Selection Page</span><a class="headerlink" href="#id141" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.47 </span><span class="caption-text">Selection Page</span><a class="headerlink" href="#id142" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>The Relying Party implementing the page:</p>
@@ -697,10 +697,10 @@
 <p><strong>QR Code Page (cross-device only)</strong></p>
 <p>The QR Code Page is presented to the User who selects IT-Wallet System Authentication within a cross-device process. Its purpose is to prompt the User to scan the generated QR code using their Wallet Instance or the camera of their device.</p>
 <p>Relying Parties MUST implement the QR Code Page (cross-device) provided in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p>
-<figure class="align-center" id="id143">
+<figure class="align-center" id="id147">
 <a class="reference internal image-reference" href="_images/QR-page.svg"><img alt="QR Code Page" src="_images/QR-page.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.48 </span><span class="caption-text">QR Code Page</span><a class="headerlink" href="#id143" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.52 </span><span class="caption-text">QR Code Page</span><a class="headerlink" href="#id147" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>The Relying Party implementing the page:</p>
@@ -723,10 +723,10 @@
 <p><strong>Thank You Page</strong></p>
 <p>The Thank You Page is displayed after the User completes the Authentication process via their Wallet Instance. Its purpose is to inform the User about the successful Authentication.</p>
 <p>Relying Parties MUST implement the Thank You Page provided in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p>
-<figure class="align-center" id="id145">
+<figure class="align-center" id="id149">
 <a class="reference internal image-reference" href="_images/thank-you-page.svg"><img alt="Thank You Page" src="_images/thank-you-page.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.50 </span><span class="caption-text">Thank You Page</span><a class="headerlink" href="#id145" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.54 </span><span class="caption-text">Thank You Page</span><a class="headerlink" href="#id149" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>The Relying Party implementing the page:</p>
@@ -738,10 +738,10 @@
 <p><strong>Error Page</strong></p>
 <p>The Error Page is displayed when an issue occurs during the Authentication process. Its purpose is to inform the User about the nature of the error (e.g., technical issue, network issues, Wallet Instance malfunction, denied data sharing, etc.) and to present the available next steps. For further details, refer to the <a class="reference internal" href="#error-management"><span class="std std-ref">Error Management</span></a> section.</p>
 <p>Relying Parties MUST implement the Error Page provided in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p>
-<figure class="align-center" id="id147">
+<figure class="align-center" id="id151">
 <a class="reference internal image-reference" href="_images/error-page.svg"><img alt="Error Page" src="_images/error-page.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.52 </span><span class="caption-text">Error Page</span><a class="headerlink" href="#id147" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.56 </span><span class="caption-text">Error Page</span><a class="headerlink" href="#id151" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>The Relying Party implementing the page:</p>
@@ -766,17 +766,17 @@
 <li><p>Where space allows and/or the context requires it, the Authentication Button SHOULD be accompanied by a descriptive text, e.g., &quot;IT-Wallet is the Italian digital wallet system that allows you to authenticate yourself online and access public and private services quickly and securely, using the data, documents, and attestations you can obtain digitally in one of the participating wallets.&quot;.</p></li>
 </ul>
 <p>Below are some non-mandatory examples of Authentication Button layout:</p>
-<figure class="align-center" id="id149">
+<figure class="align-center" id="id153">
 <a class="reference internal image-reference" href="_images/authentication-button-layout.svg"><img alt="Variants of Authentication Button layout" src="_images/authentication-button-layout.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.54 </span><span class="caption-text">Variants of Authentication Button layout</span><a class="headerlink" href="#id149" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.58 </span><span class="caption-text">Variants of Authentication Button layout</span><a class="headerlink" href="#id153" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>The integration of the Authentication Button within the Discovery Page may vary depending on the page layout. Below are illustrative, non-exhaustive examples of Discovery Pages using grid, tab, and list layouts, respectively.</p>
-<figure class="align-center" id="id151">
+<figure class="align-center" id="id155">
 <a class="reference internal image-reference" href="_images/discovery-page-layouts.svg"><img alt="Examples of Discovery Page layouts: grid, tab, and list" src="_images/discovery-page-layouts.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.56 </span><span class="caption-text">Examples of Discovery Page layouts: grid, tab, and list</span><a class="headerlink" href="#id151" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.60 </span><span class="caption-text">Examples of Discovery Page layouts: grid, tab, and list</span><a class="headerlink" href="#id155" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>For further details on the use of the Authentication Button, please refer to the <a class="reference internal" href="#authentication"><span class="std std-ref">Authentication</span></a> section.</p>
@@ -789,22 +789,22 @@
 <p>The Official Resource of the Authentication Button is available in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a> of these Technical Specification.</p>
 <p><strong>&quot;Login with IT-Wallet&quot; button – svg</strong>
 For further information on the Authentication button refer to the Brand Manual, indicated in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a> section. The Authentication button Official Resource is available in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a> section of these Technical Specifications.</p>
-<figure class="align-center" id="id153">
+<figure class="align-center" id="id157">
 <a class="reference internal image-reference" href="_images/Authentication-button-ENG_size_variants.svg"><img alt="Authentication button in its dimension variants" src="_images/Authentication-button-ENG_size_variants.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.58 </span><span class="caption-text">Example of Authentication button in its dimension variants</span><a class="headerlink" href="#id153" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.62 </span><span class="caption-text">Example of Authentication button in its dimension variants</span><a class="headerlink" href="#id157" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id155">
+<figure class="align-center" id="id159">
 <a class="reference internal image-reference" href="_images/IT-Wallet-Authentication-Button-ENG-Fixed-Justified.svg"><img alt="Authentication button fixed justified" src="_images/IT-Wallet-Authentication-Button-ENG-Fixed-Justified.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.60 </span><span class="caption-text">Authentication button fixed justified</span><a class="headerlink" href="#id155" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.64 </span><span class="caption-text">Authentication button fixed justified</span><a class="headerlink" href="#id159" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id157">
+<figure class="align-center" id="id161">
 <a class="reference internal image-reference" href="_images/IT-Wallet-Authentication-Button-ENG-Fixed-Centered.svg"><img alt="Authentication button fixed centered" src="_images/IT-Wallet-Authentication-Button-ENG-Fixed-Centered.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.62 </span><span class="caption-text">Authentication button fixed centered</span><a class="headerlink" href="#id157" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.66 </span><span class="caption-text">Authentication button fixed centered</span><a class="headerlink" href="#id161" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
@@ -932,10 +932,10 @@ For further information on the Authentication button refer to the Brand Manual, 
 <li><p>The User sees specific Call To Action buttons in the Detail View to delete the Electronic Attestation or update it if no longer valid.</p></li>
 </ul>
 <p>The flow is shown below with illustrative wireframes.</p>
-<figure class="align-default" id="id159">
+<figure class="align-default" id="id163">
 <a class="reference internal image-reference" href="_images/Update-EAA.svg"><img alt="Example of User Experience in Updating an Electronic Attestation" src="_images/Update-EAA.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.64 </span><span class="caption-text">Example of User Experience in Updating an Electronic Attestation.</span><a class="headerlink" href="#id159" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.68 </span><span class="caption-text">Example of User Experience in Updating an Electronic Attestation.</span><a class="headerlink" href="#id163" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <section id="revocation-of-electronic-attestations">
@@ -968,10 +968,10 @@ For further information on the Authentication button refer to the Brand Manual, 
 - The User reviews all information relevant to the action being performed and either gives their consent to proceed or denies consent to cancel the operation;
 - The User sees the successful outcome of the revocation.</p>
 <p>The flow is shown below with illustrative wireframes.</p>
-<figure class="align-center" id="id161">
+<figure class="align-center" id="id165">
 <a class="reference internal image-reference" href="_images/Revocation-EAA-from-wallet.svg"><img alt="Example of User Experience in Revoking an Electronic Attestation" src="_images/Revocation-EAA-from-wallet.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.66 </span><span class="caption-text">Example of User Experience in Revoking an Electronic Attestation</span><a class="headerlink" href="#id161" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.70 </span><span class="caption-text">Example of User Experience in Revoking an Electronic Attestation</span><a class="headerlink" href="#id165" title="Link to this image">¶</a></p>
 <div class="legend">
 <p>Example of User Experience in Revoking an Electronic Attestation.</p>
 </div>
@@ -1038,10 +1038,10 @@ For further information on the Authentication button refer to the Brand Manual, 
 <p>Once the Wallet Instance is reactivated, Electronic Attestations of Attributes can be re-obtained by starting the issuance or restore process again. For more details, please refer to sections <a class="reference internal" href="#issuance-of-electronic-attestations-of-attributes">Issuance of Electronic Attestations of Attributes</a> and <a class="reference internal" href="#backup-and-restore-of-electronic-attestation-of-attributes">Backup and Restore of Electronic Attestation of Attributes</a>.</p>
 <p>In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For more details, please refer to the <a class="reference internal" href="#error-management">Error Management</a> section.</p>
 <p>The flow is shown below with illustrative wireframes.</p>
-<figure class="align-default" id="id163">
+<figure class="align-default" id="id167">
 <a class="reference internal image-reference" href="_images/wallet-deactivation.svg"><img alt="Example of User Experience in Deactivating a Wallet Instance" src="_images/wallet-deactivation.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.68 </span><span class="caption-text">Example of User Experience in Deactivating a Wallet Instance.</span><a class="headerlink" href="#id163" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.72 </span><span class="caption-text">Example of User Experience in Deactivating a Wallet Instance.</span><a class="headerlink" href="#id167" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
