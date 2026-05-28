@@ -1174,9 +1174,9 @@ The admissible statuses for an Electronic Attestation are as follows:
 
   - If one or more of the EAA metadata is obsolete: 
 
-    - SHOULD automatically receive the EAA update managed by the Electronic Attestations Provider without informing or requiring action from the User. 
+    - SHOULD automatically receive the EAA update managed by the Electronic Attestations Provider without informing or requiring action from the User or cause service interruptions in terms of EAA management and presentation. 
 
-  - If one or more of the EAA Attributes is obsolete: 
+  - If one or more of the EAA Attributes are obsolete: 
 
     - MUST provide the User with adequate evidence; 
     - MUST invite the User to update the EAA through a new issuance process; 
