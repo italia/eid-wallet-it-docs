@@ -708,12 +708,19 @@ Di seguito è rappresentata a titolo esemplificativo la pagina con l’`Engageme
  
 .. only:: format_latex 
  
-  .. figure:: ./images/pdf/presentazione-remota.pdf 
+  .. figure:: ./images/pdf/presentazione-remota-1.pdf 
     :alt: Esempio di pagina con Engagement Button, Selection page, QR code page, Thank you page per la presentazione da remoto  
     :width: 100% 
  
     Esempio di pagina con Engagement Button, Selection page, QR code page, Thank you page per la presentazione da remoto  
 
+.. only:: format_latex 
+ 
+  .. figure:: ./images/pdf/presentazione-remota-2.pdf 
+    :alt: Esempio di pagina con Engagement Button, Selection page, QR code page, Thank you page per la presentazione da remoto  
+    :width: 100% 
+ 
+    Esempio di pagina con Engagement Button, Selection page, QR code page, Thank You Page per la presentazione da remoto  
 
 
 Autenticazione
@@ -870,7 +877,23 @@ Il Verificatore di Attestati Elettronici DEVE implementare la Selection Page res
 
 .. only:: format_latex  
 
-  .. figure:: ./images/pdf/selection-page-desktop.pdf
+  .. figure:: ./images/pdf/selection-page-desktop-1.pdf
+     :alt: Selection Page desktop
+     :width: 100%
+
+     Selection Page desktop
+
+.. only:: format_latex  
+
+  .. figure:: ./images/pdf/selection-page-desktop-2.pdf
+     :alt: Selection Page desktop
+     :width: 100%
+
+     Selection Page desktop
+
+.. only:: format_latex  
+
+  .. figure:: ./images/pdf/selection-page-desktop-3.pdf
      :alt: Selection Page desktop
      :width: 100%
 
@@ -1151,15 +1174,97 @@ Di seguito i principali aspetti che impattano e determinano l'Esperienza Utente 
 Stato degli Attestati Elettronici
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Per garantire l'affidabilità e promuovere il corretto utilizzo della propria Soluzione Wallet, il Fornitore di Wallet DEVE dare all'Utente visibilità dello stato degli Attestati Elettronici ottenuti nella propria Istanza del Wallet sulla base delle informazioni ricevute dal Fornitore di Attestati Elettronici, gestore del loro ciclo di vita. 
+Per garantire l'affidabilità e promuovere il corretto utilizzo della propria Soluzione Wallet, il Fornitore di Wallet DEVE dare all'Utente visibilità dello stato degli Attestati Elettronici ottenuti nella propria Istanza del Wallet sulla base delle informazioni ricevute dal Fornitore di Attestati Elettronici che ne gestisce il ciclo di vita. 
 
-Ogni Attestato Elettronico può assumere lo stato valido o non valido, con conseguenti impatti circa le sue possibilità di utilizzo, in particolare: 
+Gli stati ammissibili per un Attestato Elettronico sono i seguenti: 
 
-- **valido**: gli Attestati Elettronici validi DEVONO essere utilizzabili quindi presentabili. Tra questi rientrano anche gli Attestati Elettronici in scadenza. Qualora un Attestato Elettronico fosse in scadenza, l'Istanza del Wallet DOVREBBE informare l'Utente con un adeguato preavviso utile ad avviare per tempo una richiesta di ri-ottenimento o, se necessario, di revoca; 
+- **Valido** (``valid``): l’EAA risulta emesso senza alcuna evidenza di criticità o problematiche. In questo caso, l’Istanza del Wallet DEVE garantire all’Utente piene funzionalità a livello di presentazione, sia in prossimità che in remoto; 
 
-- **non valido**: gli Attestati Elettronici non validi NON DEVONO essere utilizzabili quindi presentabili. Rientrano in questa categoria gli Attestati Elettronici scaduti o revocati. In questi casi l'Istanza del Wallet DEVE informare l'Utente circa lo stato di non validità e DOVREBBE dare evidenza della motivazione. Qualora l'Attestato Elettronico non fosse più valido, e non fosse quindi più possibile alcuno scenario di utilizzo, l'Istanza del Wallet DEVE permettere all'Utente di aggiornarlo o eliminarlo tramite apposita Call To Action. 
+- **Sospeso** (``suspended``): l’EAA risulta temporaneamente non valido, in una condizione di reversibilità (es. patente di guida sospesa). In questo caso, l’Istanza del Wallet: 
+
+  - DEVE darne all’Utente adeguata evidenza; 
+  - DEVE invitare l’Utente ad attendere che l’EAA torni automaticamente in stato valido alla fine del periodo di sospensione; 
+  - DEVE garantire all’Utente la funzionalità di presentazione, sia in prossimità che in remoto. Conseguentemente, l’Istanza di Relying Party DEVE adeguatamente informare il Verificatore circa lo specifico stato dell’EAA.
+
+- **Da aggiornare** (``update`` o ``attribute_update``): l’EAA risulta non valido in quanto una o più delle sue informazioni, a livello di metadata o di Attributi, è obsoleta. In questo caso, l’Istanza del Wallet: 
+
+  - Qualora ad essere obsoleto sia uno o più dei metadata dell’EAA:
+
+    - DOVREBBE recepire in automatico l’aggiornamento dell’EAA gestito dal Fornitore di Attestati Elettronici senza informare e richiedere azioni da parte dell’Utente. 
+
+  - Qualora ad essere obsoleto sia uno o più degli Attributi dell’EAA:
+
+    - DEVE darne all’Utente adeguata evidenza; 
+    - DEVE invitare l’Utente ad aggiornare l’EAA attraverso un nuovo processo di emissione; 
+    - DEVE garantire all’Utente la funzionalità di presentazione, sia in prossimità che in remoto. Conseguentemente, l’Istanza di Relying Party DEVE adeguatamente informare il Verificatore circa lo specifico stato dell’EAA. 
+
+- **Non valido** (``invalid``): l’EAA risulta non valido, in una condizione di irreversibilità (es. patente di guida revocata). In questo caso, l’Istanza del Wallet: 
+
+  - DEVE darne all’Utente adeguata evidenza; 
+  - DEVE invitare l’Utente ad aggiornare o eliminare l’EAA a seconda che sia o meno titolato a riottenerlo e, quindi, ad usarlo ancora (es. patente di guida rinnovata – e quindi riottenibile sotto forma di EAA - oppure prescrizione medica utilizzata – e quindi non più riottenibile sotto forma di EAA); 
+  - DEVE garantire all’Utente la funzionalità di presentazione, sia in prossimità che in remoto. Conseguentemente, l’Istanza di Relying Party DEVE adeguatamente informare il Verificatore circa lo specifico stato dell’EAA. 
+
+Oltre agli stati sopra elencati, è bene specificare che un EAA è soggetto a scadenza. Si distinguono due tipologie di scadenza: 
+
+- **La scadenza amministrativa**: caratterizza alcuni EAA ed è fornita dalla Fonte Autentica tra gli Attributi dell’EAA stesso (es. data di scadenza della patente di guida); 
+- **La scadenza tecnica**: caratterizza tutti gli EAA ed è definita dalla Fonte Autentica in sinergia con il Fornitore di Attestati Elettronici con l’obiettivo di mitigare i rischi di sicurezza. Tale scadenza è generalmente fissata a 1 anno o comunque a un periodo inferiore o uguale alla data di scadenza amministrativa. 
+
+Di conseguenza, l’EAA assume i seguenti ulteriori stati: 
+
+- **In scadenza**: l’EAA risulta valido ma vicino alla data di scadenza amministrativa, se resa disponibile dalla Fonte Autentica, oppure alla data di scadenza tecnica. In questo caso, l’Istanza del Wallet:
+
+  - Qualora ad essere vicina sia la data di scadenza amministrativa (es. mancano 30 giorni): 
+
+    - DOVREBBE darne all’Utente adeguata evidenza; 
+    - DOVREBBE invitare l’Utente a compiere eventuali azioni necessarie per poter riottenere l’EAA aggiornato (es. rinnovare la patente di guida presso gli uffici competenti); 
+
+  - Qualora ad essere vicina sia la data di scadenza tecnica (es. mancano 7 giorni): 
+
+    - DOVREBBE innescare in automatico l’aggiornamento dell’EAA gestito dal Fornitore di Attestati Elettronici senza richiedere azioni da parte dell’Utente. 
+    - Se l’aggiornamento automatico va a buon fine e restituisce l’EAA aggiornato:
+
+     - DEVE sostituirlo al precedente senza generare duplicazioni inattese, disservizi o notifiche all’Utente; 
+
+    - Se l’aggiornamento automatico va a buon fine ma non restituisce alcun EAA:  
+
+     - DEVE adeguatamente informare l’Utente circa la potenziale perdita di titolarità nei confronti dell’EAA stesso; 
+     - DEVE invitare l’Utente ad aggiornare o eliminare l’EAA a seconda che sia o meno titolato a riottenerlo e, quindi, ad usarlo ancora (es. patente di guida rinnovata – e quindi riottenibile sotto forma di EAA - oppure prescrizione medica utilizzata – e quindi non più riottenibile sotto forma di EAA); 
+     - DEVE garantire all’Utente la funzionalità di presentazione, sia in prossimità che in remoto. Conseguentemente, l’Istanza di Relying Party DEVE adeguatamente informare il Verificatore circa lo specifico stato dell’EAA. 
+
+    - Se l’aggiornamento automatico non dovesse andare a buon fine per indisponibilità del servizio o altri errori tecnici:  
+
+     - DOVREBBE effettuare almeno un nuovo tentativo di aggiornamento prima che l’EAA superi la data di scadenza tecnica. 
+
+- **Scaduto**: l’EAA risulta valido ma ha superato la data di scadenza amministrativa, se resa disponibile dalla Fonte Autentica, oppure ha superato la data di scadenza tecnica. In questo caso, l’Istanza del Wallet: 
+
+  - Qualora sia stata superata la data di scadenza amministrativa: 
+
+    - DEVE darne all’Utente adeguata evidenza; 
+    - DEVE invitare l’Utente a compiere eventuali azioni necessarie per riottenere l’EAA aggiornato (es. rinnovare la patente presso gli uffici competenti); 
+    - DEVE garantire all’Utente la funzionalità di presentazione, sia in prossimità che in remoto. Conseguentemente, l’Istanza di Relying Party DEVE adeguatamente informare il Verificatore circa lo specifico stato dell’EAA. 
+
+  - Qualora sia stata superata la data di scadenza tecnica (aggiornamento automatico non effettuato o fallito): 
+
+    - DEVE darne all’Utente adeguata evidenza, distinguendo il caso specifico da quello di un’eventuale scadenza amministrativa; 
+    - DEVE invitare l’Utente ad aggiornare l’EAA, ossia ad intraprendere un flusso di riemissione dell’EAA stesso; 
+    - DEVE consentire all’Utente la funzionalità di presentazione, sia in prossimità che in remoto. Conseguentemente, l’Istanza di Relying Party DEVE adeguatamente informare il Verificatore circa lo specifico stato dell’EAA. 
+
+A prescindere dalla condizione dello specifico EAA (valido, sospeso, da aggiornare, non valido, in scadenza, scaduto), le variazioni di stato del PID hanno un impatto sul suo ciclo di vita. A tal proposito, l’Istanza del Wallet: 
+
+- **Se il PID è in stato valido**: 
+
+  - DEVE garantire all’Utente l’utilizzo dell’EAA in tutti gli scenari ammessi, sia in remoto che in prossimità. 
+
+- **Se il PID è in stato non valido**: 
+
+  - DEVE darne all’Utente adeguata evidenza; 
+  - DEVE invitare l’Utente ad aggiornare il PID, ossia ad intraprendere un flusso di riemissione del PID stesso, senza il quale non sarebbero possibili alcuni scenari (es. l'emissione di un EAA, quale la patente di guida); 
+  - DEVE garantire all’Utente la funzionalità di presentazione degli EAA, sia in prossimità che in remoto; 
+  - DEVE garantire all’Utente la funzionalità di presentazione degli EAA contestualmente al PID in prossimità; 
+  - NON DEVE consentire all’Utente la funzionalità di presentazione degli EAA contestualmente al PID in remoto.  
 
 Di seguito i requisiti funzionali a supporto dell'Esperienza Utente relativi all’aggiornamento dell'Attestato Elettronico che il Fornitore di Attestati Elettronici DEVE garantire attraverso la Soluzione Wallet:
+
 - L'Utente visualizza nella Vista in Anteprima dell’Attestato che il suo stato è diverso da valido;
 - L'Utente visualizza nella Vista di Dettaglio un messaggio che lo informa del nuovo stato dell’Attestato e PUÒ scoprire maggiori informazioni;
 - L’Utente visualizza eventuali informazioni aggiuntive sui requisiti e/o limitazioni relative allo stato dell’Attestato Elettronico di Attributi e PUÒ chiudere il messaggio oppure procedere con un eventuale azione richiesta dal Fornitore di Attestati Elettronici.

@@ -622,16 +622,16 @@
 <p>From a User Experience perspective, the Authentication process differs from the Presentation process only in how it is initiated, which is through a dedicated <a class="reference internal" href="#authentication-button">Authentication Button</a>.</p>
 <p>To ensure a consistent and seamless Authentication process across all Relying Parties, each Relying Party MUST follow the visual and User Experience requirements outlined below, together with compliance with [REF_ACCESSIBILITY] and, in the case of public entities, with [GL_DESIGN].</p>
 <p>Both flows are shown below with illustrative wireframes.</p>
-<figure class="align-center" id="id131">
+<figure class="align-center" id="id132">
 <a class="reference internal image-reference" href="_images/Authentication-same-device.svg"><img alt="Example of same-device Authentication User Experience" src="_images/Authentication-same-device.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.36 </span><span class="caption-text">Example of same-device Authentication User Experience.</span><a class="headerlink" href="#id131" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.37 </span><span class="caption-text">Example of same-device Authentication User Experience.</span><a class="headerlink" href="#id132" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id134">
+<figure class="align-center" id="id135">
 <a class="reference internal image-reference" href="_images/Authentication-cross-device.svg"><img alt="Example of cross-device Authentication User Experience" src="_images/Authentication-cross-device.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.39 </span><span class="caption-text">Example of cross-device Authentication User Experience.</span><a class="headerlink" href="#id134" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.40 </span><span class="caption-text">Example of cross-device Authentication User Experience.</span><a class="headerlink" href="#id135" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Relying Parties SHOULD use the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a> for design and development. If a Relying Party does not intend to use such open source resources, it MAY independently develop the Technical Solutions enabling the Authentication flow, ensuring that it follows the specifications herein provided.</p>
@@ -655,10 +655,10 @@
 <p>Specific requirements for each individual page are detailed below.</p>
 <p><strong>Discovery Page</strong></p>
 <p>To enable Authentication via the IT-Wallet System, the Relying Party MAY replace its existing Discovery Page with the version provided in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p>
-<figure class="align-center" id="id139">
+<figure class="align-center" id="id140">
 <a class="reference internal image-reference" href="_images/discovery-page.svg"><img alt="Layout Model of Discovery Page in grid" src="_images/discovery-page.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.44 </span><span class="caption-text">Layout Model of Discovery Page in grid</span><a class="headerlink" href="#id139" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.45 </span><span class="caption-text">Layout Model of Discovery Page in grid</span><a class="headerlink" href="#id140" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Alternatively, the Relying Party MAY maintain its own Discovery Page but MUST integrate the Authentication Button as specified in the <a class="reference internal" href="#authentication-button">Authentication Button</a> section.</p>
@@ -677,10 +677,10 @@
 <p>This section describes the display of a Selection Page as part of the Authentication process use case. The same page SHOULD be used also by the Relying Parties during presentation and by third parties offering the Credential Offer to enable the Wallet Solution selection option. Further details are provided in <a class="reference internal" href="remote-flow.html#remote-flow"><span class="std std-ref">Remote Flow</span></a> and <a class="reference internal" href="credential-issuance-low-level.html#credential-offer-flow"><span class="std std-ref">Credential Offer Flow</span></a>.</p>
 </div>
 <p>The Relying Party MUST implement the Selection Page made available in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p>
-<figure class="align-center" id="id141">
+<figure class="align-center" id="id142">
 <a class="reference internal image-reference" href="_images/selection-page.svg"><img alt="Selection Page" src="_images/selection-page.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.46 </span><span class="caption-text">Selection Page</span><a class="headerlink" href="#id141" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.47 </span><span class="caption-text">Selection Page</span><a class="headerlink" href="#id142" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>The Relying Party implementing the page:</p>
@@ -697,10 +697,10 @@
 <p><strong>QR Code Page (cross-device only)</strong></p>
 <p>The QR Code Page is presented to the User who selects IT-Wallet System Authentication within a cross-device process. Its purpose is to prompt the User to scan the generated QR code using their Wallet Instance or the camera of their device.</p>
 <p>Relying Parties MUST implement the QR Code Page (cross-device) provided in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p>
-<figure class="align-center" id="id143">
+<figure class="align-center" id="id147">
 <a class="reference internal image-reference" href="_images/QR-page.svg"><img alt="QR Code Page" src="_images/QR-page.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.48 </span><span class="caption-text">QR Code Page</span><a class="headerlink" href="#id143" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.52 </span><span class="caption-text">QR Code Page</span><a class="headerlink" href="#id147" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>The Relying Party implementing the page:</p>
@@ -723,10 +723,10 @@
 <p><strong>Thank You Page</strong></p>
 <p>The Thank You Page is displayed after the User completes the Authentication process via their Wallet Instance. Its purpose is to inform the User about the successful Authentication.</p>
 <p>Relying Parties MUST implement the Thank You Page provided in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p>
-<figure class="align-center" id="id145">
+<figure class="align-center" id="id149">
 <a class="reference internal image-reference" href="_images/thank-you-page.svg"><img alt="Thank You Page" src="_images/thank-you-page.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.50 </span><span class="caption-text">Thank You Page</span><a class="headerlink" href="#id145" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.54 </span><span class="caption-text">Thank You Page</span><a class="headerlink" href="#id149" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>The Relying Party implementing the page:</p>
@@ -738,10 +738,10 @@
 <p><strong>Error Page</strong></p>
 <p>The Error Page is displayed when an issue occurs during the Authentication process. Its purpose is to inform the User about the nature of the error (e.g., technical issue, network issues, Wallet Instance malfunction, denied data sharing, etc.) and to present the available next steps. For further details, refer to the <a class="reference internal" href="#error-management"><span class="std std-ref">Error Management</span></a> section.</p>
 <p>Relying Parties MUST implement the Error Page provided in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p>
-<figure class="align-center" id="id147">
+<figure class="align-center" id="id151">
 <a class="reference internal image-reference" href="_images/error-page.svg"><img alt="Error Page" src="_images/error-page.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.52 </span><span class="caption-text">Error Page</span><a class="headerlink" href="#id147" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.56 </span><span class="caption-text">Error Page</span><a class="headerlink" href="#id151" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>The Relying Party implementing the page:</p>
@@ -766,17 +766,17 @@
 <li><p>Where space allows and/or the context requires it, the Authentication Button SHOULD be accompanied by a descriptive text, e.g., &quot;IT-Wallet is the Italian digital wallet system that allows you to authenticate yourself online and access public and private services quickly and securely, using the data, documents, and attestations you can obtain digitally in one of the participating wallets.&quot;.</p></li>
 </ul>
 <p>Below are some non-mandatory examples of Authentication Button layout:</p>
-<figure class="align-center" id="id149">
+<figure class="align-center" id="id153">
 <a class="reference internal image-reference" href="_images/authentication-button-layout.svg"><img alt="Variants of Authentication Button layout" src="_images/authentication-button-layout.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.54 </span><span class="caption-text">Variants of Authentication Button layout</span><a class="headerlink" href="#id149" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.58 </span><span class="caption-text">Variants of Authentication Button layout</span><a class="headerlink" href="#id153" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>The integration of the Authentication Button within the Discovery Page may vary depending on the page layout. Below are illustrative, non-exhaustive examples of Discovery Pages using grid, tab, and list layouts, respectively.</p>
-<figure class="align-center" id="id151">
+<figure class="align-center" id="id155">
 <a class="reference internal image-reference" href="_images/discovery-page-layouts.svg"><img alt="Examples of Discovery Page layouts: grid, tab, and list" src="_images/discovery-page-layouts.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.56 </span><span class="caption-text">Examples of Discovery Page layouts: grid, tab, and list</span><a class="headerlink" href="#id151" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.60 </span><span class="caption-text">Examples of Discovery Page layouts: grid, tab, and list</span><a class="headerlink" href="#id155" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>For further details on the use of the Authentication Button, please refer to the <a class="reference internal" href="#authentication"><span class="std std-ref">Authentication</span></a> section.</p>
@@ -789,22 +789,22 @@
 <p>The Official Resource of the Authentication Button is available in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a> of these Technical Specification.</p>
 <p><strong>&quot;Login with IT-Wallet&quot; button – svg</strong>
 For further information on the Authentication button refer to the Brand Manual, indicated in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a> section. The Authentication button Official Resource is available in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a> section of these Technical Specifications.</p>
-<figure class="align-center" id="id153">
+<figure class="align-center" id="id157">
 <a class="reference internal image-reference" href="_images/Authentication-button-ENG_size_variants.svg"><img alt="Authentication button in its dimension variants" src="_images/Authentication-button-ENG_size_variants.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.58 </span><span class="caption-text">Example of Authentication button in its dimension variants</span><a class="headerlink" href="#id153" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.62 </span><span class="caption-text">Example of Authentication button in its dimension variants</span><a class="headerlink" href="#id157" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id155">
+<figure class="align-center" id="id159">
 <a class="reference internal image-reference" href="_images/IT-Wallet-Authentication-Button-ENG-Fixed-Justified.svg"><img alt="Authentication button fixed justified" src="_images/IT-Wallet-Authentication-Button-ENG-Fixed-Justified.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.60 </span><span class="caption-text">Authentication button fixed justified</span><a class="headerlink" href="#id155" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.64 </span><span class="caption-text">Authentication button fixed justified</span><a class="headerlink" href="#id159" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id157">
+<figure class="align-center" id="id161">
 <a class="reference internal image-reference" href="_images/IT-Wallet-Authentication-Button-ENG-Fixed-Centered.svg"><img alt="Authentication button fixed centered" src="_images/IT-Wallet-Authentication-Button-ENG-Fixed-Centered.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.62 </span><span class="caption-text">Authentication button fixed centered</span><a class="headerlink" href="#id157" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.66 </span><span class="caption-text">Authentication button fixed centered</span><a class="headerlink" href="#id161" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
@@ -823,22 +823,119 @@ For further information on the Authentication button refer to the Brand Manual, 
 <p>Below are the key aspects that impact and define the User Experience in managing Electronic Attestations though the Wallet Instance, along with the functional requirements associated with each category.</p>
 <section id="status-of-electronic-attestations">
 <h3><span class="section-number">5.6.1. </span>Status of Electronic Attestations<a class="headerlink" href="#status-of-electronic-attestations" title="Link to this heading">¶</a></h3>
-<p>To ensure reliability and promote the proper use of a Wallet Solution, the Wallet Provider MUST guarantee the User to always have visibility of the status of the Electronic Attestations stored within their Wallet Instance, based on the information received from the Electronic Attestation Provider, which manages their lifecycle.</p>
-<p>Each Electronic Attestation can be either valid or invalid, with corresponding impacts on its usage opportunities:</p>
+<p>To ensure reliability and promote the proper use of a Wallet Solution, the Wallet Provider MUST guarantee the User to always have visibility of the status of the Electronic Attestations issued within their Wallet Instance, based on the information received from the Electronic Attestations Provider, which manages their lifecycle.</p>
+<p>The admissible statuses for an Electronic Attestation are as follows:</p>
 <ul class="simple">
-<li><p><strong>Valid</strong>: Valid Electronic Attestations MUST be usable and therefore presentable. This category also includes Electronic Attestations that are nearing expiration. If an Electronic Attestation is about to expire, the Wallet Instance SHOULD inform the User with adequate advance notice to allow sufficient time to request its reissuance or, if necessary, revoke it.</p></li>
-<li><p><strong>Invalid</strong>: Invalid Electronic Attestations MUST NOT be usable or presentable. This category includes expired or revoked Electronic Attestations. In such cases, the Wallet Instance MUST inform the User of the invalid status and SHOULD give the reason why. If an Electronic Attestation is no longer valid and cannot be used in any scenario, the Wallet Instance MUST implement mechanisms to update or delete the Electronic Attestation by providing appropriate Call to Action.</p></li>
+<li><p><strong>Valid</strong> (<code class="docutils literal notranslate"><span class="pre">valid</span></code>): the EAA is issued without any evidence of criticalities or issues. In this case, the Wallet Instance MUST guarantee the User full presentation functionalities, both in proximity and remote scenarios;</p></li>
+<li><p><strong>Suspended</strong> (<code class="docutils literal notranslate"><span class="pre">suspended</span></code>): the EAA is temporarily invalid, in a reversible condition (e.g., suspended driving license). In this case, the Wallet Instance:</p>
+<ul>
+<li><p>MUST provide the User with adequate evidence of this status;</p></li>
+<li><p>MUST invite the User to wait for the EAA to automatically return to a valid status at the end of the suspension period;</p></li>
+<li><p>MUST guarantee the User presentation functionality, both in proximity and remote scenarios. Consequently, the Relying Party Instance MUST adequately inform the Verifier about the specific status of the EAA.</p></li>
 </ul>
-<p>Below are the functional requirements supporting the User Experience regarding the update of the Electronic Attestation that the Electronic Attestation Provider MUST guarantee through the Wallet Solution:
-- The User sees in the Electronic Attestation Preview View that its status is not valid;
-- The User sees a message in the Detail View informing them of the new status of the Electronic Attestation and CAN find out more information;
-- The User sees any additional information on the requirements and/or limitations relating to the status of the Electronic Attestation of Attributes and CAN close the message or proceed with any action requested by the Electronic Attestation Provider;
-- The User sees specific Call To Action buttons in the Detail View to delete the Electronic Attestation or update it if no longer valid.</p>
+</li>
+<li><p><strong>To be Updated</strong> (<code class="docutils literal notranslate"><span class="pre">update</span></code> or <code class="docutils literal notranslate"><span class="pre">attribute_update</span></code>): the EAA is invalid because one or more of its information elements, at the metadata or Attribute level, is obsolete. In this case, the Wallet Instance:</p>
+<ul>
+<li><p>If one or more of the EAA metadata is obsolete:</p>
+<ul>
+<li><p>SHOULD automatically receive the EAA update managed by the Electronic Attestations Provider without informing or requiring action from the User or cause service interruptions in terms of EAA management and presentation.</p></li>
+</ul>
+</li>
+<li><p>If one or more of the EAA Attributes are obsolete:</p>
+<ul>
+<li><p>MUST provide the User with adequate evidence;</p></li>
+<li><p>MUST invite the User to update the EAA through a new issuance process;</p></li>
+<li><p>MUST guarantee the User presentation functionality, both in proximity and remote scenarios. Consequently, the Relying Party Instance MUST adequately inform the Verifier about the specific status of the EAA.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Invalid</strong> (<code class="docutils literal notranslate"><span class="pre">invalid</span></code>): the EAA is invalid, in an irreversible condition (e.g., revoked driving license). In this case, the Wallet Instance:</p>
+<ul>
+<li><p>MUST provide the User with adequate evidence;</p></li>
+<li><p>MUST invite the User to update or delete the EAA depending on whether they are entitled to re-obtain it and, therefore, use it again (e.g., a renewed driving license – which can be re-obtained as an EAA – or an exhausted medical prescription – which cannot be re-obtained as an EAA);</p></li>
+<li><p>MUST guarantee the User presentation functionality, both in proximity and remote scenarios. Consequently, the Relying Party Instance MUST adequately inform the Verifier about the specific status of the EAA.</p></li>
+</ul>
+</li>
+</ul>
+<p>In addition to the statuses listed above, it should be specified that an EAA is subject to expiration. Two types of expiration are distinguished:</p>
+<ul class="simple">
+<li><p><strong>Administrative expiration</strong>: characterizes certain EAAs and is provided by the Authentic Source within the Attributes of the EAA itself (e.g., driving license expiration date);</p></li>
+<li><p><strong>Technical expiration</strong>: characterizes all EAAs and is defined by the Authentic Source in synergy with the Electronic Attestations Provider with the aim of mitigating security risks. This expiration is generally set at 1 year or, in any case, at a period less than or equal to the administrative expiration date.</p></li>
+</ul>
+<p>Consequently, the EAA assumes the following additional statuses:</p>
+<ul>
+<li><p><strong>Expiring</strong>: the EAA is valid but close to the administrative expiration date, if made available by the Authentic Source, or to the technical expiration. In this case, the Wallet Instance:</p>
+<ul>
+<li><p>If the administrative expiration is approaching (e.g. 30 days remaining):</p>
+<ul class="simple">
+<li><p>SHOULD provide the User with adequate evidence;</p></li>
+<li><p>SHOULD invite the User to perform any necessary actions to re-obtain the updated EAA (e.g., renew the driving license at the competent offices);</p></li>
+<li><p>MUST guarantee the User presentation functionality, both in proximity and remote scenarios.</p></li>
+</ul>
+</li>
+<li><p>If the technical expiration is approaching (e.g. 7 days remaining):</p>
+<ul class="simple">
+<li><p>SHOULD automatically trigger the EAA update managed by the Electronic Attestations Provider without requiring action from the User.</p></li>
+<li><p>If the automatic update is successful and returns an updated EAA:</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>MUST replace the previous one without resulting in unexpected duplicates, disruption or notification to the User;</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>If the automatic update is successful but does not return any EAA:</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>MUST provide the User with adequate evidence of the potential loss of entitlement to the EAA itself;</p></li>
+<li><p>MUST invite the User to update or delete the EAA depending on whether they are entitled to re-obtain it and, therefore, use it again (e.g., a renewed driving license – which can be re-obtained as an EAA – or an exhausted medical prescription – which cannot be re-obtained as an EAA);</p></li>
+<li><p>MUST guarantee the User presentation functionality, both in proximity and remote scenarios. Consequently, the Relying Party Instance MUST adequately inform the Verifier about the specific status of the EAA.</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>If the automatic update fails due to the service being unavailable or other technical errors:</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>SHOULD attempt the update at least once more before the EAA reaches its technical expiration date.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</li>
+<li><p><strong>Expired</strong>: the EAA is valid but has passed the administrative expiration date, if provided by the Authentic Source, or has passed the technical expiration date. In this case, the Wallet Instance:</p>
+<ul class="simple">
+<li><p>If the administrative expiration date has passed:</p>
+<ul>
+<li><p>MUST provide the User with adequate evidence;</p></li>
+<li><p>MUST invite the User to perform any necessary actions to re-obtain the updated EAA (e.g., renew the license at the competent offices);</p></li>
+<li><p>MUST guarantee the User presentation functionality, both in proximity and remote scenarios. Consequently, the Relying Party Instance MUST adequately inform the Verifier about the specific status of the EAA.</p></li>
+</ul>
+</li>
+<li><p>If the technical expiration date has passed (automatic update not performed or failed):</p>
+<ul>
+<li><p>MUST provide the User with adequate evidence, distinguishing this specific case from an administrative expiration;</p></li>
+<li><p>MUST invite the User to update the EAA by initiating an EAA re-issuance flow;</p></li>
+<li><p>MUST allow the User presentation functionality, both in proximity and remote scenarios. Consequently, the Relying Party Instance MUST adequately inform the Verifier about the specific status of the EAA.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Below are the functional requirements supporting the User Experience regarding the update of the Electronic Attestation that the Electronic Attestation Provider MUST guarantee through the Wallet Solution:</p>
+<ul class="simple">
+<li><p>The User sees in the Electronic Attestation Preview View that its status is not valid;</p></li>
+<li><p>The User sees a message in the Detail View informing them of the new status of the Electronic Attestation and CAN find out more information;</p></li>
+<li><p>The User sees any additional information on the requirements and/or limitations relating to the status of the Electronic Attestation of Attributes and CAN close the message or proceed with any action requested by the Electronic Attestation Provider;</p></li>
+<li><p>The User sees specific Call To Action buttons in the Detail View to delete the Electronic Attestation or update it if no longer valid.</p></li>
+</ul>
 <p>The flow is shown below with illustrative wireframes.</p>
-<figure class="align-default" id="id159">
+<figure class="align-default" id="id163">
 <a class="reference internal image-reference" href="_images/Update-EAA.svg"><img alt="Example of User Experience in Updating an Electronic Attestation" src="_images/Update-EAA.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.64 </span><span class="caption-text">Example of User Experience in Updating an Electronic Attestation.</span><a class="headerlink" href="#id159" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.68 </span><span class="caption-text">Example of User Experience in Updating an Electronic Attestation.</span><a class="headerlink" href="#id163" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <section id="revocation-of-electronic-attestations">
@@ -871,10 +968,10 @@ For further information on the Authentication button refer to the Brand Manual, 
 - The User reviews all information relevant to the action being performed and either gives their consent to proceed or denies consent to cancel the operation;
 - The User sees the successful outcome of the revocation.</p>
 <p>The flow is shown below with illustrative wireframes.</p>
-<figure class="align-center" id="id161">
+<figure class="align-center" id="id165">
 <a class="reference internal image-reference" href="_images/Revocation-EAA-from-wallet.svg"><img alt="Example of User Experience in Revoking an Electronic Attestation" src="_images/Revocation-EAA-from-wallet.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.66 </span><span class="caption-text">Example of User Experience in Revoking an Electronic Attestation</span><a class="headerlink" href="#id161" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.70 </span><span class="caption-text">Example of User Experience in Revoking an Electronic Attestation</span><a class="headerlink" href="#id165" title="Link to this image">¶</a></p>
 <div class="legend">
 <p>Example of User Experience in Revoking an Electronic Attestation.</p>
 </div>
@@ -941,10 +1038,10 @@ For further information on the Authentication button refer to the Brand Manual, 
 <p>Once the Wallet Instance is reactivated, Electronic Attestations of Attributes can be re-obtained by starting the issuance or restore process again. For more details, please refer to sections <a class="reference internal" href="#issuance-of-electronic-attestations-of-attributes">Issuance of Electronic Attestations of Attributes</a> and <a class="reference internal" href="#backup-and-restore-of-electronic-attestation-of-attributes">Backup and Restore of Electronic Attestation of Attributes</a>.</p>
 <p>In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For more details, please refer to the <a class="reference internal" href="#error-management">Error Management</a> section.</p>
 <p>The flow is shown below with illustrative wireframes.</p>
-<figure class="align-default" id="id163">
+<figure class="align-default" id="id167">
 <a class="reference internal image-reference" href="_images/wallet-deactivation.svg"><img alt="Example of User Experience in Deactivating a Wallet Instance" src="_images/wallet-deactivation.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.68 </span><span class="caption-text">Example of User Experience in Deactivating a Wallet Instance.</span><a class="headerlink" href="#id163" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.72 </span><span class="caption-text">Example of User Experience in Deactivating a Wallet Instance.</span><a class="headerlink" href="#id167" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1243,7 +1340,7 @@ For further information on the Authentication button refer to the Brand Manual, 
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 15/05/2026.
+      Last updated on 29/05/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
