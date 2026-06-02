@@ -90,7 +90,7 @@
             "purposes": ["IDENTITY_VERIFICATION", "AGE_VERIFICATION", "DRIVING_RIGHTS"],
             "issuers": [
                 {
-                    "id": "https://issuer.example.org",
+                    "entity_id": "https://issuer.example.org",
                     "organization_name_l10n_id": "mDL.issuer1.name",
                     "organization_code": "ci_example_it",
                     "organization_country": "IT",
@@ -103,8 +103,10 @@
                     "logo_uri": "https://issuer.example.org/logo.svg",
                     "policy_uri": "https://issuer.example.org/privacy",
                     "tos_uri": "https://issuer.example.org/terms",
-                    "service_documentation": "https://issuer.example.org/.well-known/service-doc",
+                    "service_documentation_uri": "https://issuer.example.org/.well-known/service-doc",
                     "issuance_flows": {
+                        "wallet_initiated": true,
+                        "issuer_initiated": true,
                         "deferred_flow": true,
                         "max_deferred_issuance_time_minutes": 1440,
                         "notification_methods": [
