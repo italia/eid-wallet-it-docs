@@ -15,7 +15,9 @@
   ],
   "properties": {
     "$schema": {
-      "type": "string"
+      "type": "string",
+      "readOnly": true,
+      "description": "Riferimento allo schema di validazione (valore tecnico, non modificabile)."
     },
     "denominazioni ufficiali": {
       "type": "object",
