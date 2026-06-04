@@ -694,7 +694,7 @@
     },
     "campo_risposta": {
       "type": "object",
-      "description": "Domanda, campo risposta (testo, booleano JSON o null in bozza) ed esempio guida; in anteprima/form l'ordine consigliato è domanda → risposta → esempio.",
+      "description": "Domanda, campo risposta (testo libero) ed esempio guida; in anteprima/form l'ordine consigliato è domanda → risposta → esempio.",
       "required": [
         "domanda",
         "risposta",
@@ -707,13 +707,9 @@
           "propertyOrder": 10
         },
         "risposta": {
-          "description": "Risposta dell'Ente: stringa (testo libero), booleano (domande sì/no) o null in bozza non ancora compilata.",
+          "description": "Risposta dell'Ente: stringa di testo libero (vuota in bozza non ancora compilata).",
           "propertyOrder": 20,
-          "type": [
-            "string",
-            "boolean",
-            "null"
-          ]
+          "type": "string"
         },
         "esempio": {
           "type": "string",
@@ -855,7 +851,7 @@
     },
     "faq_item": {
       "type": "object",
-      "description": "Voce FAQ: stessa struttura di campo_risposta (domanda, risposta, esempio; risposta stringa, booleano o null).",
+      "description": "Voce FAQ: stessa struttura di campo_risposta (domanda, risposta, esempio; risposta di testo libero).",
       "required": [
         "domanda",
         "risposta",
@@ -868,13 +864,9 @@
           "propertyOrder": 10
         },
         "risposta": {
-          "description": "Risposta dell'Ente: stringa (testo libero), booleano (domande sì/no) o null in bozza non ancora compilata.",
+          "description": "Risposta dell'Ente: stringa di testo libero (vuota in bozza non ancora compilata).",
           "propertyOrder": 20,
-          "type": [
-            "string",
-            "boolean",
-            "null"
-          ]
+          "type": "string"
         },
         "esempio": {
           "type": "string",
