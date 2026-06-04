@@ -23,7 +23,7 @@ The following official graphic assets are available for download in the `officia
 - **Trust Mark**: Official graphic element for attesting the participation in the IT-Wallet System - `Download Trust Mark <_static/IT-Wallet-Trust-Mark/ENG/Trust-Mark-ENG-Primary-BlueItalia.svg>`_ - Read more at section :ref:`brand-identity:Trust Mark`
 - **Authentication Button**: Official button for authentication via IT-Wallet - `Download Authentication Button <_static/IT-Wallet-Authentication-Button/ENG/IT-Wallet-Authentication-Button-ENG-Standard-Default.svg>`_
 - **Pages templates**: the models of the pages that belong to the Authentication flow: Discovery page, Selection page, QR code page, Thank you page and Error page  – Go to `Pages-templates/ <https://github.com/italia/eid-wallet-it-docs/tree/versione-corrente/official_resources/Pages-templates>`
-- **Icons and pictograms**: icons and pictograms useful to implement the Authentication flow – `Download OK State <_static/official_resources/Icons-and-pictograms/OK_State.svg>`_ - `Download KO state <_static/official_resources/Icons-and-pictograms/KO_State.svg>`_ - `Download order <_static/official_resources/Icons-and-pictograms/Order.svg>`_
+- **Icons and pictograms**: icons and pictograms useful to implement the Authentication flow – `Download OK State <_static/Icons-and-pictograms/OK_State.svg>`_ - `Download KO state <_static/Icons-and-pictograms/KO_State.svg>`_ - `Download order <_static/Icons-and-pictograms/Order.svg>`_
 
 HTML Components
 ^^^^^^^^^^^^^^^
