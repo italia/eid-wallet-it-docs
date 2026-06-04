@@ -257,7 +257,7 @@ The Authentic Source registration follows a technical process as described below
      - REQUIRED. Array containing data capability specifications.
    * - **data_capabilities[].dataset_id**
      - string
-     - REQUIRED. The unique identifier of the dataset within the scope of the Authentic Source, which MAY be used as a query parameter for the ``GetAttributeClaims`` service.
+     - REQUIRED. The :term:`Dataset_id` within the scope of the Authentic Source, which MAY be used as a query parameter for the ``GetAttributeClaims`` service.
    * - **data_capabilities[].data_origin**
      - JSON Object Array
      - REQUIRED. Object array containing the human-readable name of the data origin or department providing the data in multiple languages. It MUST contain ``locale`` and ``name`` claims.
