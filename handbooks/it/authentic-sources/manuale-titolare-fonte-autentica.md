@@ -442,6 +442,8 @@ La sezione “Denominazioni ufficiali” si rivolge ad utenti funzionari, ammini
 - Compila i campi `nome ente titolare` e `nome eaa` seguendo i suggerimenti di compilazione.
 - Il campo `versione` è il numero di versione del modulo (valore fisso, es. 1.1.0) e non va confuso con una data di compilazione.
 
+---
+
 ### Casi d'uso
 
 L’obiettivo della sezione "Casi d'uso" è quello di supportare gli Enti nella definizione dei casi d'uso e delle modalità di utilizzo degli EAA di cui intendono fornire i dati, a partire dall'analisi delle attuali modalità di utilizzo dei corrispettivi documenti, ove esistenti.
