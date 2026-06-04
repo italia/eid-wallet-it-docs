@@ -426,7 +426,6 @@ Il modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-walle
 - Mappatura errori
 - Mappatura stati
 - Assistenza
-
 Di seguito le indicazioni di compilazione di ciascuna sezione del modulo.
 
 ### Denominazioni ufficiali
@@ -506,12 +505,11 @@ L’obiettivo della sezione "Mappatura stati" è quello di supportare gli Enti n
 #### Destinatari
 
 La sezione “Mappatura stati” si rivolge ad utenti con profilo tecnico, tra cui sviluppatori, referenti dei Sistemi Informativi, partner tecnologici o fornitori IT. Per la definizione di alcuni aspetti, si suggerisce il coinvolgimento di utenti con profilo amministrativo o dirigenziale (es. per la definizione del ciclo vita e la relativa formulazione di contenuti informativi e messaggi).
-
+#### Istruzioni di compilazione
 **Valori ammessi per `stato` e uso in OpenAPI.** Il campo `stato` di ogni elemento dell'array può assumere solo i valori letterali `Valido`, `Non Valido`, `Sospeso`, `Scaduto`, `Da aggiornare` (nell'ordine fisso previsto dal manuale). Per compatibilità con file già esportati, lo schema accetta anche la variante `Non valido` (v minuscola) al posto di `Non Valido` per il secondo elemento dell'array. Sul canale tecnico, il campo `status` dei dataset nell'OpenAPI Fonte Autentica (`OAS3-PDND-AS.yaml`) resta limitato a **VALID**, **INVALID**, **SUSPENDED**; per la correlazione con i metadati di scadenza vedi il paragrafo *Corrispondenza con l'API Fonte Autentica* in [Step 1 | Progettazione caratteristiche EAA](#step-1--progettazione-caratteristiche-eaa).
 
 Per ciascuno dei **cinque** stati, il modulo prevede una `descrizione` testuale fissa (vincolata dallo schema): personalizza i messaggi rivolti all'utente tramite `azione utente`, `note` e, se utile, il campo opzionale `messaggio` (testo informativo aggiuntivo in IT-Wallet).
 
-#### Istruzioni di compilazione
 
 1. Mappa la condizione di applicabilità di ciascuno stato relativamente all'attestato in analisi (`applicabile`: `true` / `false`);
 2. Il campo `descrizione` per ciascuno stato è quello predefinito del modulo (vincolato dallo schema e non modificabile); usa `azione utente`, `note` e opzionalmente `messaggio` per chiarire al cittadino cosa fare;
