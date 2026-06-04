@@ -227,32 +227,35 @@
       }
     }
   },
-  "parametri di richiesta": [
-    {
-      "nome parametro": "tax_code",
-      "descrizione": "codice fiscale dell'utente",
-      "nome campo": "Codice Fiscale",
-      "esempio campo compilato": "DLNRSL88L51C348G",
-      "obbligatorio": true,
-      "tipologia": "ALFANUMERICO",
-      "lunghezza massima caratteri": 16,
-      "valori ammessi": [],
-      "note": ""
-    }
-  ],
-  "dati di risposta": [
-    {
-      "attestazione": "ISEE",
-      "parametro": "tax_code",
-      "descrizione": "codice fiscale dell'utente",
-      "nome campo": "Codice Fiscale",
-      "esempio campo compilato": "DLNRSL88L51C348G",
-      "obbligatorio": true,
-      "tipologia": "ALFANUMERICO",
-      "note": "",
-      "lunghezza massima caratteri": 16
-    }
-  ],
+  "dataset": {
+    "dataset_id": "",
+    "parametri di richiesta": [
+      {
+        "nome parametro": "tax_code",
+        "descrizione": "codice fiscale dell'utente",
+        "nome campo": "Codice Fiscale",
+        "esempio campo compilato": "DLNRSL88L51C348G",
+        "obbligatorio": true,
+        "tipologia": "ALFANUMERICO",
+        "lunghezza massima caratteri": 16,
+        "valori ammessi": [],
+        "note": ""
+      }
+    ],
+    "dati di risposta": [
+      {
+        "attestazione": "ISEE",
+        "parametro": "tax_code",
+        "descrizione": "codice fiscale dell'utente",
+        "nome campo": "Codice Fiscale",
+        "esempio campo compilato": "DLNRSL88L51C348G",
+        "obbligatorio": true,
+        "tipologia": "ALFANUMERICO",
+        "note": "",
+        "lunghezza massima caratteri": 16
+      }
+    ]
+  },
   "mappatura errori": [
     {
       "codice": 200,
@@ -412,7 +415,7 @@
       "applicabile": false,
       "causa": "Nel dominio dell'Authentic Source non risulta un EAA/dataset associabile all'utente nella richiesta (es. \"NOT_EXISTING\": \"l'EAA non è presente presso l'Authentic Source\").",
       "azione utente": "Completare i prerequisiti presso l'Ente (es. richiesta documento) o attendere l'elaborazione (es. \"PENDING\": \"l'EAA è in attesa di emissione\").",
-      "note": "Per la compilazione fine usare coppie \"state\": \"description\" come da Appendice C del manuale."
+      "note": "Per la compilazione fine usare coppie \"esito\": \"causa\" (es. \"NOT_EXISTING\", \"PENDING\") come descritto nella sezione Mappatura errori del manuale."
     },
     {
       "codice": 541,

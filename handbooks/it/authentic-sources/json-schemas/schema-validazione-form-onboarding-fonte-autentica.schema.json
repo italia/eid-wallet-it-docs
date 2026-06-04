@@ -1,15 +1,14 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/italia/eid-wallet-it-docs/handbooks/it/authentic-sources/json-schemas/schema-validazione-form-onboarding-fonte-autentica.schema.json",
-  "$version": "1.4.0",
+  "$version": "2.0.0",
   "title": "Schema validazione Fonte Autentica",
-  "description": "Schema di validazione per progettazione-caratteristiche-eaa.json. Ordine sezioni di primo livello: denominazioni ufficiali, casi d'uso, parametri di richiesta, dati di risposta, mappatura errori, mappatura stati, lista attributi (opzionale), assistenza. Nella sezione assistenza l'ordine è: referenti, canali, faq, testi informativi. Nomi legacy accettati: metadata, request, dataset, data model.",
+  "description": "Schema di validazione per progettazione-caratteristiche-eaa.json. Ordine sezioni di primo livello: denominazioni ufficiali, casi d'uso, dataset, mappatura errori, mappatura stati, lista attributi (opzionale), assistenza. La sezione dataset contiene, nell'ordine: dataset_id, parametri di richiesta, dati di risposta. Nella sezione assistenza l'ordine è: referenti, canali, faq, testi informativi. Versione 2.0.0: break netto senza retrocompatibilità (rimossi l'alias 'metadata' e la variante di stato 'Non valido'); restano accettate unicamente le chiavi-alias storiche all'interno della sezione casi d'uso.",
   "type": "object",
   "required": [
     "denominazioni ufficiali",
     "casi d'uso",
-    "parametri di richiesta",
-    "dati di risposta",
+    "dataset",
     "mappatura errori",
     "mappatura stati",
     "assistenza"
@@ -42,75 +41,39 @@
       },
       "title": "Denominazioni ufficiali per Ente e EAA"
     },
-    "metadata": {
-      "type": "object",
-      "description": "Deprecato: usare denominazioni ufficiali. Accettato per compatibilità con export precedenti.",
-      "required": [
-        "nome ente titolare",
-        "nome eaa",
-        "versione"
-      ],
-      "properties": {
-        "nome ente titolare": {
-          "type": "string"
-        },
-        "nome eaa": {
-          "type": "string"
-        },
-        "versione": {
-          "type": "string",
-          "const": "1.1.0"
-        }
-      }
-    },
     "casi d'uso": {
       "$ref": "#/$defs/casi_d_uso"
     },
-    "parametri di richiesta": {
-      "type": "array",
-      "title": "Parametri di richiesta",
-      "description": "Parametri in ingresso all'endpoint e-service Fonte Autentica. Ogni elemento segue `parametro_input`.",
-      "items": {
-        "$ref": "#/$defs/parametro_input"
-      }
-    },
-    "dati di risposta": {
-      "type": "array",
-      "title": "Dati di risposta",
-      "description": "Campi del dataset restituito dall'endpoint Fonte Autentica (contratto di response **1.0**). Ogni elemento segue `data_model_campo`.",
-      "items": {
-        "$ref": "#/$defs/data_model_campo"
-      }
-    },
-    "request": {
+    "dataset": {
       "type": "object",
-      "description": "Deprecato: usare parametri di richiesta (array di primo livello). Accettato per compatibilità.",
+      "title": "Dataset",
+      "description": "Dataset relativo all'EAA: identificativo univoco, parametri di richiesta dell'e-service e dati di risposta restituiti. Si compila un dataset per ciascun modulo/EAA.",
       "required": [
-        "parametri input"
+        "dataset_id",
+        "parametri di richiesta",
+        "dati di risposta"
       ],
       "properties": {
-        "parametri input": {
+        "dataset_id": {
+          "type": "string",
+          "description": "Identificativo univoco del dataset definito dal Titolare di Fonte Autentica. Si consiglia un UUID oppure una stringa breve, descrittiva e priva di spazi in formato kebab-case per nomi composti (es. tesserino-medici)."
+        },
+        "parametri di richiesta": {
           "type": "array",
+          "title": "Parametri di richiesta",
+          "description": "Parametri in ingresso all'endpoint e-service Fonte Autentica. Ogni elemento segue `parametro_input`.",
           "items": {
             "$ref": "#/$defs/parametro_input"
           }
+        },
+        "dati di risposta": {
+          "type": "array",
+          "title": "Dati di risposta",
+          "description": "Campi del dataset restituito dall'endpoint Fonte Autentica (contratto di response **1.0**). Ogni elemento segue `data_model_campo`.",
+          "items": {
+            "$ref": "#/$defs/data_model_campo"
+          }
         }
-      }
-    },
-    "dataset": {
-      "type": "array",
-      "title": "Dataset (legacy)",
-      "description": "Deprecato: usare dati di risposta.",
-      "items": {
-        "$ref": "#/$defs/data_model_campo"
-      }
-    },
-    "data model": {
-      "type": "array",
-      "title": "Data model (legacy)",
-      "description": "Deprecato: usare dati di risposta.",
-      "items": {
-        "$ref": "#/$defs/data_model_campo"
       }
     },
     "mappatura errori": {
@@ -255,28 +218,14 @@
               "$ref": "#/$defs/mappatura_stato"
             },
             {
-              "oneOf": [
-                {
-                  "properties": {
-                    "stato": {
-                      "const": "Non Valido"
-                    },
-                    "descrizione": {
-                      "const": "L'EAA non è più valido e dunque non può essere più utilizzato"
-                    }
-                  }
+              "properties": {
+                "stato": {
+                  "const": "Non Valido"
                 },
-                {
-                  "properties": {
-                    "stato": {
-                      "const": "Non valido"
-                    },
-                    "descrizione": {
-                      "const": "L'EAA non è più valido e dunque non può essere più utilizzato"
-                    }
-                  }
+                "descrizione": {
+                  "const": "L'EAA non è più valido e dunque non può essere più utilizzato"
                 }
-              ]
+              }
             }
           ]
         },
@@ -685,20 +634,19 @@
           "enum": [
             "Valido",
             "Non Valido",
-            "Non valido",
             "Sospeso",
             "Scaduto",
             "Da aggiornare"
           ],
-          "description": "Valore letterale dello stato: **Non Valido** è il valore canonico (come in documentazione); è accettata anche la variante **Non valido** per compatibilità con JSON già esportati."
+          "description": "Valore letterale dello stato (valore canonico come in documentazione): Valido, Non Valido, Sospeso, Scaduto, Da aggiornare."
         },
         "descrizione": {
           "type": "string",
-          "description": "Causa del cambiamento di stato"
+          "description": "Descrizione testuale fissa dello stato (vincolata dallo schema, non modificabile)."
         },
         "causa": {
           "type": "string",
-          "description": "Dettaglio opzionale della causa (campo di supporto alla compilazione)."
+          "description": "Dettaglio opzionale della causa del cambiamento di stato (campo di supporto alla compilazione)."
         },
         "applicabile": {
           "type": [
