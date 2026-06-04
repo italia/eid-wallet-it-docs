@@ -3,7 +3,7 @@
   "$id": "https://github.com/italia/eid-wallet-it-docs/handbooks/it/authentic-sources/json-schemas/schema-validazione-form-onboarding-fonte-autentica.schema.json",
   "$version": "2.0.0",
   "title": "Schema validazione Fonte Autentica",
-  "description": "Schema di validazione per progettazione-caratteristiche-eaa.json. Ordine sezioni di primo livello: denominazioni ufficiali, casi d'uso, dataset, mappatura errori, mappatura stati, lista attributi (opzionale), assistenza. La sezione dataset contiene, nell'ordine: dataset_id, parametri di richiesta, dati di risposta. Nella sezione assistenza l'ordine è: referenti, canali, faq, testi informativi. Versione 2.0.0: break netto senza retrocompatibilità (rimossi l'alias 'metadata' e la variante di stato 'Non valido'); restano accettate unicamente le chiavi-alias storiche all'interno della sezione casi d'uso.",
+  "description": "Schema di validazione per la compilazione del json form dedicato alla progettazione delle risorse EAA prodotte dalle Fonti Autentiche.",
   "type": "object",
   "required": [
     "denominazioni ufficiali",
@@ -721,6 +721,35 @@
         }
       }
     },
+    "campo_risposta_booleano": {
+      "type": "object",
+      "description": "Variante di campo_risposta per domande chiuse sì/no: la risposta è esclusivamente un booleano JSON (true/false) oppure null in bozza non ancora compilata; non è ammesso testo libero.",
+      "required": [
+        "domanda",
+        "risposta",
+        "esempio"
+      ],
+      "properties": {
+        "domanda": {
+          "type": "string",
+          "description": "Testo della domanda",
+          "propertyOrder": 10
+        },
+        "risposta": {
+          "description": "Risposta dell'Ente: booleano (true/false) o null in bozza non ancora compilata. Non è ammesso testo libero.",
+          "propertyOrder": 20,
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "esempio": {
+          "type": "string",
+          "description": "Esempio di risposta compilata (guida per l'Ente)",
+          "propertyOrder": 30
+        }
+      }
+    },
     "canale_assistenza": {
       "type": "object",
       "required": [
@@ -862,7 +891,7 @@
           ],
           "properties": {
             "presenza doc preesistente": {
-              "$ref": "#/$defs/campo_risposta"
+              "$ref": "#/$defs/campo_risposta_booleano"
             },
             "utenti doc preesistente": {
               "$ref": "#/$defs/campo_risposta",
@@ -937,7 +966,7 @@
           "$ref": "#/$defs/campo_risposta"
         },
         "prerequisiti possesso doc preesistente": {
-          "$ref": "#/$defs/campo_risposta"
+          "$ref": "#/$defs/campo_risposta_booleano"
         },
         "canali richiesta doc preesistente": {
           "$ref": "#/$defs/campo_risposta"
@@ -952,10 +981,10 @@
           "$ref": "#/$defs/campo_risposta"
         },
         "variazioni dati doc preesistente EAA": {
-          "$ref": "#/$defs/campo_risposta"
+          "$ref": "#/$defs/campo_risposta_booleano"
         },
         "variazioni dati doc preesistente eaa": {
-          "$ref": "#/$defs/campo_risposta"
+          "$ref": "#/$defs/campo_risposta_booleano"
         },
         "variazioni dati doc preesistente eaa dettagli": {
           "$ref": "#/$defs/campo_risposta"
@@ -976,10 +1005,10 @@
           "$ref": "#/$defs/campo_risposta"
         },
         "EAA multiplo o singolo": {
-          "$ref": "#/$defs/campo_risposta"
+          "$ref": "#/$defs/campo_risposta_booleano"
         },
         "eaa multipla o singola": {
-          "$ref": "#/$defs/campo_risposta"
+          "$ref": "#/$defs/campo_risposta_booleano"
         },
         "dominio": {
           "$ref": "#/$defs/campo_risposta"
@@ -1021,7 +1050,7 @@
           "$ref": "#/$defs/campo_risposta"
         },
         "identificazione utente": {
-          "$ref": "#/$defs/campo_risposta"
+          "$ref": "#/$defs/campo_risposta_booleano"
         },
         "identificazione utente motivazione": {
           "$ref": "#/$defs/campo_risposta"
@@ -1043,10 +1072,10 @@
           "$ref": "#/$defs/campo_risposta"
         },
         "interesse pubblico EAA": {
-          "$ref": "#/$defs/campo_risposta"
+          "$ref": "#/$defs/campo_risposta_booleano"
         },
         "interesse pubblico eaa": {
-          "$ref": "#/$defs/campo_risposta"
+          "$ref": "#/$defs/campo_risposta_booleano"
         },
         "interesse pubblico motivazione EAA": {
           "$ref": "#/$defs/campo_risposta"
@@ -1097,7 +1126,7 @@
           "$ref": "#/$defs/campo_risposta"
         },
         "rinnovo doc preesistente": {
-          "$ref": "#/$defs/campo_risposta"
+          "$ref": "#/$defs/campo_risposta_booleano"
         },
         "modalità rinnovo doc preesistente": {
           "$ref": "#/$defs/campo_risposta"
@@ -1178,10 +1207,10 @@
       ],
       "properties": {
         "gratuito o pagamento doc preesistente": {
-          "$ref": "#/$defs/campo_risposta"
+          "$ref": "#/$defs/campo_risposta_booleano"
         },
         "pagamento rinnovo doc preesistente": {
-          "$ref": "#/$defs/campo_risposta"
+          "$ref": "#/$defs/campo_risposta_booleano"
         },
         "modalità pagamento doc preesistente": {
           "$ref": "#/$defs/campo_risposta"
@@ -1190,10 +1219,10 @@
           "$ref": "#/$defs/campo_risposta"
         },
         "gratuito o pagamento EAA": {
-          "$ref": "#/$defs/campo_risposta"
+          "$ref": "#/$defs/campo_risposta_booleano"
         },
         "gratuito o pagamento eaa": {
-          "$ref": "#/$defs/campo_risposta"
+          "$ref": "#/$defs/campo_risposta_booleano"
         },
         "gratuito o pagamento": {
           "$ref": "#/$defs/campo_risposta"
@@ -1232,10 +1261,10 @@
           "$ref": "#/$defs/campo_risposta"
         },
         "dati sensibili EAA": {
-          "$ref": "#/$defs/campo_risposta"
+          "$ref": "#/$defs/campo_risposta_booleano"
         },
         "dati sensibili eaa": {
-          "$ref": "#/$defs/campo_risposta"
+          "$ref": "#/$defs/campo_risposta_booleano"
         },
         "dati sensibili EAA motivazione": {
           "$ref": "#/$defs/campo_risposta"
