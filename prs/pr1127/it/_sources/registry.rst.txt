@@ -420,7 +420,7 @@ Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciasc
      - OBBLIGATORIO. Array contenente le specifiche delle capacità sui dati.
    * - **data_capabilities[].dataset_id**
      - string
-     - OBBLIGATORIO. L'identificatore univoco del dataset nell'ambito della Fonte Autentica, che PUÒ essere utilizzato come parametro di query per il servizio ``GetAttributeClaims``.
+     - OBBLIGATORIO. Il :term:`Dataset_id` nell'ambito della Fonte Autentica, che PUÒ essere utilizzato come parametro di query per il servizio ``GetAttributeClaims``.
    * - **data_capabilities[].data_origin_l10n_id**
      - string
      - OBBLIGATORIO. Chiave di localizzazione che fa riferimento al nome leggibile dell'origine o del dipartimento che fornisce i dati (es. ``authentic_source1.dataset1.origin``).

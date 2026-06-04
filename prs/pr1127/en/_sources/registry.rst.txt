@@ -420,7 +420,7 @@ The Authentic Source Registry MUST contain the following parameters for each reg
      - REQUIRED. Array containing data capability specifications.
    * - **data_capabilities[].dataset_id**
      - string
-     - REQUIRED. The unique identifier of the dataset within the scope of the Authentic Source, which MAY be used as a query parameter for the ``GetAttributeClaims`` service.
+     - REQUIRED. The :term:`Dataset_id` within the scope of the Authentic Source, which MAY be used as a query parameter for the ``GetAttributeClaims`` service.
    * - **data_capabilities[].data_origin_l10n_id**
      - string
      - REQUIRED. Localization key referencing the human-readable name of the data origin or department providing the data (e.g., ``authentic_source1.dataset1.origin``).
