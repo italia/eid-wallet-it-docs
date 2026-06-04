@@ -718,7 +718,15 @@ Following is represented for illustrative purposes the page with the `Engagement
  
 .. only:: format_latex 
  
-  .. figure:: ./images/pdf/remote-presentation.pdf 
+  .. figure:: ./images/pdf/remote-presentation-1.pdf 
+    :alt: Illustrative page with Engagement Button, Selection page, QR code page, Thank you page for the remote presentation
+    :width: 100% 
+ 
+    Illustrative page with Engagement Button, Selection page, QR code page, Thank you page for the remote presentation
+
+.. only:: format_latex 
+ 
+  .. figure:: ./images/pdf/remote-presentation-2.pdf 
     :alt: Illustrative page with Engagement Button, Selection page, QR code page, Thank you page for the remote presentation
     :width: 100% 
  
@@ -885,11 +893,35 @@ The Relying Party MUST implement the Selection Page made available in the :ref:`
 
 .. only:: format_latex  
 
-  .. figure:: ./images/pdf/selection-page.pdf
-     :alt: Selection Page
+  .. figure:: ./images/pdf/selection-page-desktop-1.pdf
+     :alt: Selection Page desktop
      :width: 100%
 
-     Selection Page 
+     Selection Page desktop
+
+.. only:: format_latex  
+
+  .. figure:: ./images/pdf/selection-page-desktop-2.pdf
+     :alt: Selection Page desktop
+     :width: 100%
+
+     Selection Page desktop
+
+.. only:: format_latex  
+
+  .. figure:: ./images/pdf/selection-page-desktop-3.pdf
+     :alt: Selection Page desktop
+     :width: 100%
+
+     Selection Page desktop
+
+.. only:: format_latex  
+
+  .. figure:: ./images/pdf/selection-page-mobile.pdf
+     :alt: Selection Page mobile
+     :width: 100%
+
+     Selection Page mobile
 
 The Relying Party implementing the page: 
 
@@ -1158,15 +1190,85 @@ Below are the key aspects that impact and define the User Experience in managing
 Status of Electronic Attestations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To ensure reliability and promote the proper use of a Wallet Solution, the Wallet Provider MUST guarantee the User to always have visibility of the status of the Electronic Attestations stored within their Wallet Instance, based on the information received from the Electronic Attestation Provider, which manages their lifecycle.
+To ensure reliability and promote the proper use of a Wallet Solution, the Wallet Provider MUST guarantee the User to always have visibility of the status of the Electronic Attestations issued within their Wallet Instance, based on the information received from the Electronic Attestations Provider, which manages their lifecycle. 
 
-Each Electronic Attestation can be either valid or invalid, with corresponding impacts on its usage opportunities:
+The admissible statuses for an Electronic Attestation are as follows: 
 
-- **Valid**: Valid Electronic Attestations MUST be usable and therefore presentable. This category also includes Electronic Attestations that are nearing expiration. If an Electronic Attestation is about to expire, the Wallet Instance SHOULD inform the User with adequate advance notice to allow sufficient time to request its reissuance or, if necessary, revoke it.
+- **Valid** (``valid``): the EAA is issued without any evidence of criticalities or issues. In this case, the Wallet Instance MUST guarantee the User full presentation functionalities, both in proximity and remote scenarios;
 
-- **Invalid**: Invalid Electronic Attestations MUST NOT be usable or presentable. This category includes expired or revoked Electronic Attestations. In such cases, the Wallet Instance MUST inform the User of the invalid status and SHOULD give the reason why. If an Electronic Attestation is no longer valid and cannot be used in any scenario, the Wallet Instance MUST implement mechanisms to update or delete the Electronic Attestation by providing appropriate Call to Action.
+- **Suspended** (``suspended``): the EAA is temporarily invalid, in a reversible condition (e.g., suspended driving license). In this case, the Wallet Instance: 
+
+  - MUST provide the User with adequate evidence of this status; 
+  - MUST invite the User to wait for the EAA to automatically return to a valid status at the end of the suspension period; 
+  - MUST guarantee the User presentation functionality, both in proximity and remote scenarios. Consequently, the Relying Party Instance MUST adequately inform the Verifier about the specific status of the EAA. 
+
+- **To be Updated** (``update`` or ``attribute_update``): the EAA is invalid because one or more of its information elements, at the metadata or Attribute level, is obsolete. In this case, the Wallet Instance: 
+
+  - If one or more of the EAA metadata is obsolete: 
+
+    - SHOULD automatically receive the EAA update managed by the Electronic Attestations Provider without informing or requiring action from the User or cause service interruptions in terms of EAA management and presentation. 
+
+  - If one or more of the EAA Attributes are obsolete: 
+
+    - MUST provide the User with adequate evidence; 
+    - MUST invite the User to update the EAA through a new issuance process; 
+    - MUST guarantee the User presentation functionality, both in proximity and remote scenarios. Consequently, the Relying Party Instance MUST adequately inform the Verifier about the specific status of the EAA. 
+
+- **Invalid** (``invalid``): the EAA is invalid, in an irreversible condition (e.g., revoked driving license). In this case, the Wallet Instance: 
+
+  - MUST provide the User with adequate evidence; 
+  - MUST invite the User to update or delete the EAA depending on whether they are entitled to re-obtain it and, therefore, use it again (e.g., a renewed driving license – which can be re-obtained as an EAA – or an exhausted medical prescription – which cannot be re-obtained as an EAA); 
+  - MUST guarantee the User presentation functionality, both in proximity and remote scenarios. Consequently, the Relying Party Instance MUST adequately inform the Verifier about the specific status of the EAA. 
+
+In addition to the statuses listed above, it should be specified that an EAA is subject to expiration. Two types of expiration are distinguished: 
+
+- **Administrative expiration**: characterizes certain EAAs and is provided by the Authentic Source within the Attributes of the EAA itself (e.g., driving license expiration date); 
+- **Technical expiration**: characterizes all EAAs and is defined by the Authentic Source in synergy with the Electronic Attestations Provider with the aim of mitigating security risks. This expiration is generally set at 1 year or, in any case, at a period less than or equal to the administrative expiration date. 
+
+Consequently, the EAA assumes the following additional statuses: 
+
+- **Expiring**: the EAA is valid but close to the administrative expiration date, if made available by the Authentic Source, or to the technical expiration. In this case, the Wallet Instance: 
+
+  - If the administrative expiration is approaching (e.g. 30 days remaining): 
+
+    - SHOULD provide the User with adequate evidence; 
+    - SHOULD invite the User to perform any necessary actions to re-obtain the updated EAA (e.g., renew the driving license at the competent offices); 
+    - MUST guarantee the User presentation functionality, both in proximity and remote scenarios. 
+
+  - If the technical expiration is approaching (e.g. 7 days remaining): 
+
+    - SHOULD automatically trigger the EAA update managed by the Electronic Attestations Provider without requiring action from the User. 
+
+    - If the automatic update is successful and returns an updated EAA:  
+
+     - MUST replace the previous one without resulting in unexpected duplicates, disruption or notification to the User; 
+
+    - If the automatic update is successful but does not return any EAA:  
+
+     - MUST provide the User with adequate evidence of the potential loss of entitlement to the EAA itself; 
+     - MUST invite the User to update or delete the EAA depending on whether they are entitled to re-obtain it and, therefore, use it again (e.g., a renewed driving license – which can be re-obtained as an EAA – or an exhausted medical prescription – which cannot be re-obtained as an EAA); 
+     - MUST guarantee the User presentation functionality, both in proximity and remote scenarios. Consequently, the Relying Party Instance MUST adequately inform the Verifier about the specific status of the EAA. 
+
+    - If the automatic update fails due to the service being unavailable or other technical errors:  
+
+     - SHOULD attempt the update at least once more before the EAA reaches its technical expiration date. 
+
+- **Expired**: the EAA is valid but has passed the administrative expiration date, if provided by the Authentic Source, or has passed the technical expiration date. In this case, the Wallet Instance: 
+
+  - If the administrative expiration date has passed: 
+
+    - MUST provide the User with adequate evidence; 
+    - MUST invite the User to perform any necessary actions to re-obtain the updated EAA (e.g., renew the license at the competent offices); 
+    - MUST guarantee the User presentation functionality, both in proximity and remote scenarios. Consequently, the Relying Party Instance MUST adequately inform the Verifier about the specific status of the EAA. 
+
+  - If the technical expiration date has passed (automatic update not performed or failed): 
+
+    - MUST provide the User with adequate evidence, distinguishing this specific case from an administrative expiration; 
+    - MUST invite the User to update the EAA by initiating an EAA re-issuance flow; 
+    - MUST allow the User presentation functionality, both in proximity and remote scenarios. Consequently, the Relying Party Instance MUST adequately inform the Verifier about the specific status of the EAA. 
 
 Below are the functional requirements supporting the User Experience regarding the update of the Electronic Attestation that the Electronic Attestation Provider MUST guarantee through the Wallet Solution:
+
 - The User sees in the Electronic Attestation Preview View that its status is not valid;
 - The User sees a message in the Detail View informing them of the new status of the Electronic Attestation and CAN find out more information;
 - The User sees any additional information on the requirements and/or limitations relating to the status of the Electronic Attestation of Attributes and CAN close the message or proceed with any action requested by the Electronic Attestation Provider;

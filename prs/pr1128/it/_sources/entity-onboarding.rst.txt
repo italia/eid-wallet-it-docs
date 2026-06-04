@@ -309,7 +309,7 @@ La registrazione della Fonte Autentica segue un processo tecnico descritto di se
    * - **data_capabilities[].allowed_states**
      - JSON object Array
      - OPZIONALE. Array di Oggetti contenente informazioni per l'Utente in più lingue sullo stato corrente dei dati forniti ed eventualmente le azioni raccomandate. I valori degli stati sono definiti nella sezione :ref:`credential-revocation:Token Status Lists`. DEVE contenere i claim ``locale``, ``title``, ``description`` e ``<Status-Type-Value>``.
-   * - **data_capabilities[].service_documentation**
+   * - **data_capabilities[].service_documentation_uri**
      - string
      - OPZIONALE. URL che punta alla documentazione del servizio della Fonte Autentica.
    * - **data_capabilities[].update_frequency**
