@@ -228,31 +228,118 @@
     }
   },
   "dataset": {
-    "dataset_id": "",
+    "dataset_id": "isee-ordinario",
     "parametri di richiesta": [
       {
         "nome parametro": "tax_code",
-        "descrizione": "codice fiscale dell'utente",
+        "descrizione": "Codice fiscale del dichiarante, utilizzato come identificativo univoco per la chiamata all'e-service",
         "nome campo": "Codice Fiscale",
         "esempio campo compilato": "DLNRSL88L51C348G",
         "obbligatorio": true,
         "tipologia": "ALFANUMERICO",
         "lunghezza massima caratteri": 16,
         "valori ammessi": [],
-        "note": ""
+        "note": "Qualora sia necessario identificare l'utente, il Codice Fiscale è l'identificativo da utilizzare per le chiamate all'e-service."
       }
     ],
     "dati di risposta": [
       {
         "attestazione": "ISEE",
         "parametro": "tax_code",
-        "descrizione": "codice fiscale dell'utente",
+        "descrizione": "Codice fiscale del dichiarante",
         "nome campo": "Codice Fiscale",
         "esempio campo compilato": "DLNRSL88L51C348G",
         "obbligatorio": true,
         "tipologia": "ALFANUMERICO",
         "note": "",
         "lunghezza massima caratteri": 16
+      },
+      {
+        "attestazione": "ISEE",
+        "parametro": "given_name",
+        "descrizione": "Nome del dichiarante",
+        "nome campo": "Nome",
+        "esempio campo compilato": "Rosalia",
+        "obbligatorio": true,
+        "tipologia": "ALFANUMERICO",
+        "note": "",
+        "lunghezza massima caratteri": 50
+      },
+      {
+        "attestazione": "ISEE",
+        "parametro": "family_name",
+        "descrizione": "Cognome del dichiarante",
+        "nome campo": "Cognome",
+        "esempio campo compilato": "De Leon",
+        "obbligatorio": true,
+        "tipologia": "ALFANUMERICO",
+        "note": "",
+        "lunghezza massima caratteri": 50
+      },
+      {
+        "attestazione": "ISEE",
+        "parametro": "birth_date",
+        "descrizione": "Data di nascita del dichiarante",
+        "nome campo": "Data di nascita",
+        "esempio campo compilato": "1988-07-11",
+        "obbligatorio": true,
+        "tipologia": "DATA",
+        "note": "Formato ISO 8601 (AAAA-MM-GG).",
+        "lunghezza massima caratteri": 10
+      },
+      {
+        "attestazione": "ISEE",
+        "parametro": "birth_place",
+        "descrizione": "Comune (o Stato estero) di nascita del dichiarante",
+        "nome campo": "Luogo di nascita",
+        "esempio campo compilato": "Caltanissetta",
+        "obbligatorio": false,
+        "tipologia": "ALFANUMERICO",
+        "note": "",
+        "lunghezza massima caratteri": 100
+      },
+      {
+        "attestazione": "ISEE",
+        "parametro": "isee_value",
+        "descrizione": "Valore dell'indicatore ISEE espresso in euro",
+        "nome campo": "Valore ISEE",
+        "esempio campo compilato": "12.500,00",
+        "obbligatorio": true,
+        "tipologia": "NUMERICO",
+        "note": "Importo in euro con due decimali."
+      },
+      {
+        "attestazione": "ISEE",
+        "parametro": "isee_type",
+        "descrizione": "Tipologia di ISEE rilasciato",
+        "nome campo": "Tipo ISEE",
+        "esempio campo compilato": "Ordinario",
+        "obbligatorio": true,
+        "tipologia": "ALFANUMERICO",
+        "note": "Es. Ordinario, Corrente, Minorenni, Università, Sociosanitario.",
+        "lunghezza massima caratteri": 30
+      },
+      {
+        "attestazione": "ISEE",
+        "parametro": "dsu_protocol",
+        "descrizione": "Numero di protocollo della Dichiarazione Sostitutiva Unica (DSU) a cui l'attestazione è riferita",
+        "nome campo": "Protocollo DSU",
+        "esempio campo compilato": "INPS-ISEE-2026-01234567A-00",
+        "obbligatorio": true,
+        "tipologia": "ALFANUMERICO",
+        "note": "",
+        "lunghezza massima caratteri": 30
+      },
+      {
+        "attestazione": "ISEE",
+        "parametro": "expiry_date",
+        "descrizione": "Data di scadenza della validità dell'attestazione ISEE",
+        "nome campo": "Data di scadenza",
+        "esempio campo compilato": "2026-12-31",
+        "obbligatorio": true,
+        "tipologia": "DATA",
+        "note": "Formato ISO 8601 (AAAA-MM-GG).",
+        "lunghezza massima caratteri": 10
       }
     ]
   },
