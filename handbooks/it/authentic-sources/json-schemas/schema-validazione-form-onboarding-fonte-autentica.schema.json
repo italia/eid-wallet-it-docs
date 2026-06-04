@@ -1,141 +1,451 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/italia/eid-wallet-it-docs/handbooks/it/authentic-sources/json-schemas/schema-validazione-form-onboarding-fonte-autentica.schema.json",
-  "$version": "1.0.0",
+  "$version": "2.0.0",
   "title": "Schema validazione Fonte Autentica",
-  "description": "Schema di validazione per progettazione-caratteristiche-eaa.json. Ordine sezioni: metadata, casi_d_uso, e_service (pdnd_metadata, request, response.dataset, mappatura_errori, stati, lista_nome_campo), assistenza.",
+  "description": "Schema di validazione per la compilazione del json form dedicato alla progettazione delle risorse EAA prodotte dalle Fonti Autentiche.",
   "type": "object",
   "required": [
-    "metadata",
-    "casi_d_uso",
-    "e_service",
+    "denominazioni ufficiali",
+    "casi d'uso",
+    "dataset",
+    "mappatura errori",
+    "mappatura stati",
     "assistenza"
   ],
   "properties": {
-    "$schema": { "type": "string" },
-    "metadata": {
-      "type": "object",
-      "required": ["nome_ente_titolare", "nome_eaa"],
-      "properties": {
-        "nome_ente_titolare": { "type": "string", "minLength": 1 },
-        "nome_eaa": { "type": "string", "minLength": 1 },
-        "data_compilazione": { "type": "string" },
-        "versione": { "type": "string" }
-      }
+    "$schema": {
+      "type": "string",
+      "readOnly": true,
+      "description": "Riferimento allo schema di validazione (valore tecnico, non modificabile)."
     },
-    "casi_d_uso": { "$ref": "#/$defs/casi_d_uso" },
-    "e_service": {
+    "denominazioni ufficiali": {
       "type": "object",
       "required": [
-        "pdnd_metadata",
-        "request",
-        "response",
-        "mappatura_errori",
-        "stati"
+        "nome ente titolare",
+        "nome eaa",
+        "versione"
       ],
-      "description": "e_service: metadati PDND, parametri in ingresso (request), dataset in risposta (response), mappatura_errori, stati, lista_nome_campo.",
       "properties": {
-        "pdnd_metadata": {
+        "nome ente titolare": {
+          "type": "string",
+          "description": "Nome ufficiale dell'Ente titolare, es. MIT - Direzione generale per la Motorizzazione"
+        },
+        "nome eaa": {
+          "type": "string",
+          "description": "Nome ufficiale dell'EAA, es. Patente di guida"
+        },
+        "versione": {
+          "type": "string",
+          "const": "2.0.0",
+          "readOnly": true,
+          "description": "Versione del template di progettazione (valore fisso; aggiornare lo schema se si incrementa il template)."
+        }
+      },
+      "title": "Denominazioni ufficiali per Ente e EAA"
+    },
+    "casi d'uso": {
+      "$ref": "#/$defs/casi_d_uso"
+    },
+    "dataset": {
+      "type": "object",
+      "title": "Dataset",
+      "description": "Dataset relativo all'EAA: identificativo univoco, parametri di richiesta dell'e-service e dati di risposta restituiti. Si compila un dataset per ciascun modulo/EAA.",
+      "required": [
+        "dataset_id",
+        "parametri di richiesta",
+        "dati di risposta"
+      ],
+      "properties": {
+        "dataset_id": {
           "type": "object",
+          "title": "Dataset ID",
+          "description": "Identificativo univoco del dataset definito dal Titolare di Fonte Autentica. Si consiglia un UUID oppure una stringa breve, descrittiva e priva di spazi in formato kebab-case per nomi composti (es. tesserino-medici).",
           "required": [
-            "pdnd_eservice_id_prod",
-            "pdnd_eservice_id_uat",
-            "pdnd_eservice_name",
-            "token_type",
-            "is_audit_rest_02_required"
+            "descrizione",
+            "esempio campo compilato",
+            "note"
           ],
           "properties": {
-            "pdnd_eservice_id_prod": {
-              "type": "string",
-              "description": "UUID e-service PDND ambiente di produzione"
+            "descrizione": {
+              "type": "string"
             },
-            "pdnd_eservice_id_uat": {
-              "type": "string",
-              "description": "UUID e-service PDND ambiente UAT/collaudo"
+            "esempio campo compilato": {
+              "type": "string"
             },
-            "pdnd_eservice_name": {
-              "type": "string",
-              "description": "Denominazione e-service su PDND"
-            },
-            "token_type": {
-              "type": "string",
-              "description": "Tipo token di accesso (es. Bearer)"
-            },
-            "is_audit_rest_02_required": {
-              "type": "boolean",
-              "description": "Indica se è richiesta conformità audit REST 02 (PDND)"
+            "note": {
+              "type": "string"
             }
           }
         },
-        "request": {
-          "type": "object",
-          "required": ["parametri_input"],
-          "properties": {
-            "parametri_input": {
-              "type": "array",
-              "items": { "$ref": "#/$defs/parametro_input" }
-            }
+        "parametri di richiesta": {
+          "type": "array",
+          "title": "Parametri di richiesta",
+          "description": "Parametri in ingresso all'endpoint e-service Fonte Autentica. Ogni elemento segue `parametro_input`.",
+          "items": {
+            "$ref": "#/$defs/parametro_input"
           }
         },
-        "response": {
-          "type": "object",
-          "required": ["versione", "dataset"],
-          "description": "Contratto della response dell'endpoint Fonte Autentica (campi del dataset restituito)",
-          "properties": {
-            "versione": {
-              "type": "string",
-              "description": "Versione del contratto di response (es. 1.0, 1.1)"
-            },
-            "dataset": {
-              "type": "array",
-              "items": { "$ref": "#/$defs/data_model_campo" }
-            }
+        "dati di risposta": {
+          "type": "array",
+          "title": "Dati di risposta",
+          "description": "Campi del dataset restituito dall'endpoint Fonte Autentica (contratto di response **1.0**). Ogni elemento segue `data_model_campo`.",
+          "items": {
+            "$ref": "#/$defs/data_model_campo"
           }
-        },
-        "mappatura_errori": {
-          "type": "array",
-          "items": { "$ref": "#/$defs/mappatura_errore" }
-        },
-        "stati": {
-          "type": "array",
-          "items": { "$ref": "#/$defs/mappatura_stato" }
-        },
-        "lista_nome_campo": {
-          "type": "array",
-          "items": { "$ref": "#/$defs/lista_nome_campo_riga" }
         }
+      }
+    },
+    "mappatura errori": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/mappatura_errore"
+      },
+      "title": "Mappatura errori",
+      "allOf": [
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "codice": {
+                "const": 200
+              }
+            },
+            "required": [
+              "codice"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "codice": {
+                "const": 400
+              }
+            },
+            "required": [
+              "codice"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "codice": {
+                "const": 401
+              }
+            },
+            "required": [
+              "codice"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "codice": {
+                "const": 404
+              }
+            },
+            "required": [
+              "codice"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "codice": {
+                "const": 429
+              }
+            },
+            "required": [
+              "codice"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "codice": {
+                "const": 500
+              }
+            },
+            "required": [
+              "codice"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "codice": {
+                "const": 503
+              }
+            },
+            "required": [
+              "codice"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        }
+      ]
+    },
+    "mappatura stati": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "prefixItems": [
+        {
+          "allOf": [
+            {
+              "$ref": "#/$defs/mappatura_stato"
+            },
+            {
+              "properties": {
+                "stato": {
+                  "const": "Valido"
+                },
+                "descrizione": {
+                  "const": "L'EAA è valido e può essere utilizzato"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "#/$defs/mappatura_stato"
+            },
+            {
+              "properties": {
+                "stato": {
+                  "const": "Non Valido"
+                },
+                "descrizione": {
+                  "const": "L'EAA non è più valido e dunque non può essere più utilizzato"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "#/$defs/mappatura_stato"
+            },
+            {
+              "properties": {
+                "stato": {
+                  "const": "Sospeso"
+                },
+                "descrizione": {
+                  "const": "L'EAA è sospeso e non può essere temporaneamente utilizzato"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "#/$defs/mappatura_stato"
+            },
+            {
+              "properties": {
+                "stato": {
+                  "const": "Scaduto"
+                },
+                "descrizione": {
+                  "const": "L'EAA ha superato la data di scadenza amministrativa e richiede rinnovo o nuova emissione"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "#/$defs/mappatura_stato"
+            },
+            {
+              "properties": {
+                "stato": {
+                  "const": "Da aggiornare"
+                },
+                "descrizione": {
+                  "const": "L'EAA contiene dei dati obsoleti che necessitano di essere aggiornati tramite un rinnovo o nuova emissione"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "title": "Mappatura stati"
+    },
+    "lista attributi": {
+      "type": "array",
+      "description": "Elenco opzionale per organizzare e descrivere gli attributi dell'EAA in vista (es. categorie, parametri, etichette UI); ogni riga segue lo stesso modello di `lista_attributi_riga`.",
+      "items": {
+        "$ref": "#/$defs/lista_attributi_riga"
       }
     },
     "assistenza": {
       "type": "object",
+      "title": "Assistenza",
+      "description": "Ordine di compilazione e presentazione: referenti, canali, FAQ, testi informativi.",
       "required": [
         "referenti",
         "canali",
         "faq",
-        "testi_informativi"
+        "testi informativi"
       ],
       "properties": {
         "referenti": {
+          "title": "Referenti",
           "type": "array",
-          "items": { "$ref": "#/$defs/referente_assistenza" }
-        },
-        "canali": {
-          "type": "array",
-          "items": { "$ref": "#/$defs/canale_assistenza" }
-        },
-        "faq": {
-          "oneOf": [
+          "items": {
+            "$ref": "#/$defs/referente_assistenza"
+          },
+          "prefixItems": [
             {
-              "type": "array",
-              "items": { "$ref": "#/$defs/faq_item" }
+              "allOf": [
+                {
+                  "$ref": "#/$defs/referente_assistenza"
+                },
+                {
+                  "properties": {
+                    "ruolo": {
+                      "const": "Referente ambito sistemistico"
+                    }
+                  }
+                }
+              ]
             },
             {
-              "type": "object",
-              "additionalProperties": { "$ref": "#/$defs/campo_risposta" }
+              "allOf": [
+                {
+                  "$ref": "#/$defs/referente_assistenza"
+                },
+                {
+                  "properties": {
+                    "ruolo": {
+                      "const": "Referente ambito applicativo"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/referente_assistenza"
+                },
+                {
+                  "properties": {
+                    "ruolo": {
+                      "const": "Referente ambito assistenza"
+                    }
+                  }
+                }
+              ]
             }
           ]
         },
-        "testi_informativi": { "type": "string" }
+        "canali": {
+          "title": "Canali",
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "prefixItems": [
+            {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/canale_assistenza"
+                },
+                {
+                  "properties": {
+                    "tipo": {
+                      "const": "Email assistenza"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/canale_assistenza"
+                },
+                {
+                  "properties": {
+                    "tipo": {
+                      "const": "Numero telefonico"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/canale_assistenza"
+                },
+                {
+                  "properties": {
+                    "tipo": {
+                      "const": "Altro"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "faq": {
+          "title": "FAQ",
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/faq_item"
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/$defs/campo_risposta"
+              }
+            }
+          ]
+        },
+        "testi informativi": {
+          "title": "Testi informativi",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/testo_informativo_item"
+          }
+        }
       }
     }
   },
@@ -146,71 +456,127 @@
         "attestazione",
         "parametro",
         "descrizione",
-        "nome_campo",
-        "esempio_campo_compilato",
+        "nome campo",
+        "esempio campo compilato",
         "obbligatorio",
         "tipologia",
-        "lunghezza_massima_caratteri",
         "note"
       ],
       "properties": {
-        "attestazione": { "type": "string" },
-        "parametro": { "type": "string" },
-        "descrizione": { "type": "string" },
-        "nome_campo": { "type": "string" },
-        "esempio_campo_compilato": { "type": "string" },
+        "attestazione": {
+          "type": "string"
+        },
+        "parametro": {
+          "type": "string"
+        },
+        "descrizione": {
+          "type": "string"
+        },
+        "nome campo": {
+          "type": "string"
+        },
+        "esempio campo compilato": {
+          "type": "string"
+        },
         "obbligatorio": {
           "type": "boolean",
           "description": "true se il campo è obbligatorio nella response; false se opzionale"
         },
-        "tipologia": { "type": "string" },
-        "lunghezza_massima_caratteri": {
+        "tipologia": {
+          "type": "string",
+          "enum": [
+            "STRING",
+            "NUMBER",
+            "DATE",
+            "DATETIME",
+            "JSON",
+            "BINARY",
+            "BASE64",
+            "ARRAY_STRING",
+            "ARRAY_NUMBER",
+            "ARRAY_DATE",
+            "ARRAY_DATETIME",
+            "ARRAY_JSON",
+            "ARRAY_BINARY",
+            "ARRAY_BASE64"
+          ],
+          "description": "Tipo di dato del campo restituito. Indica esclusivamente il formato del valore (non l'insieme dei valori leciti). Valori: STRING (testo), NUMBER (numero), DATE (data di calendario), DATETIME (data e ora), JSON (oggetto strutturato in formato JSON), BINARY (dato binario), BASE64 (dato binario codificato in Base64). Per gli elenchi usare i tipi ARRAY_<TIPO> (es. ARRAY_STRING, ARRAY_NUMBER, ARRAY_DATE, ARRAY_DATETIME, ARRAY_JSON, ARRAY_BINARY, ARRAY_BASE64), dove <TIPO> indica il tipo degli elementi."
+        },
+        "lunghezza massima caratteri": {
           "type": "integer",
           "minimum": 0,
-          "description": "Lunghezza massima in caratteri (intero senza segno)"
+          "description": "Lunghezza massima in caratteri quando il dato è serializzato come stringa (es. tipologie testuali). Opzionale: omettere se non applicabile al tipo di attributo; in compilazione si consiglia di valorizzarlo per i campi con limite noto."
         },
-        "note": { "type": "string" }
+        "note": {
+          "type": "string"
+        }
       }
     },
     "parametro_input": {
       "type": "object",
       "required": [
-        "nome_parametro",
+        "nome parametro",
         "descrizione",
-        "nome_campo",
-        "esempio_campo_compilato",
+        "nome campo",
+        "esempio campo compilato",
         "obbligatorio",
         "tipologia",
-        "lunghezza_massima_caratteri",
-        "possibili_valori_ammessi",
+        "lunghezza massima caratteri",
+        "valori ammessi",
         "note"
       ],
       "properties": {
-        "nome_parametro": { "type": "string" },
-        "descrizione": { "type": "string" },
-        "nome_campo": { "type": "string" },
-        "esempio_campo_compilato": { "type": "string" },
+        "nome parametro": {
+          "type": "string"
+        },
+        "descrizione": {
+          "type": "string"
+        },
+        "nome campo": {
+          "type": "string"
+        },
+        "esempio campo compilato": {
+          "type": "string"
+        },
         "obbligatorio": {
           "type": "boolean",
           "description": "true se il parametro è obbligatorio in input; false se opzionale"
         },
-        "tipologia": { "type": "string" },
-        "lunghezza_massima_caratteri": {
+        "tipologia": {
+          "type": "string",
+          "enum": [
+            "STRING",
+            "NUMBER",
+            "DATE",
+            "DATETIME",
+            "JSON",
+            "BINARY",
+            "BASE64",
+            "ARRAY_STRING",
+            "ARRAY_NUMBER",
+            "ARRAY_DATE",
+            "ARRAY_DATETIME",
+            "ARRAY_JSON",
+            "ARRAY_BINARY",
+            "ARRAY_BASE64"
+          ],
+          "description": "Tipo di dato del parametro. Indica esclusivamente il formato del valore; per vincolare l'insieme finito dei valori leciti (dominio chiuso/enumerato) usare invece `valori ammessi`. Valori: STRING (testo), NUMBER (numero), DATE (data di calendario), DATETIME (data e ora), JSON (oggetto strutturato in formato JSON), BINARY (dato binario), BASE64 (dato binario codificato in Base64). Per gli elenchi usare i tipi ARRAY_<TIPO> (es. ARRAY_STRING, ARRAY_NUMBER, ARRAY_DATE, ARRAY_DATETIME, ARRAY_JSON, ARRAY_BINARY, ARRAY_BASE64), dove <TIPO> indica il tipo degli elementi."
+        },
+        "lunghezza massima caratteri": {
           "type": "integer",
           "minimum": 0,
           "description": "Lunghezza massima in caratteri (intero senza segno)"
         },
-        "possibili_valori_ammessi": {
-          "oneOf": [
-            { "type": "string" },
-            {
-              "type": "array",
-              "items": { "type": "string" }
-            }
-          ],
-          "description": "Valori ammessi come stringa o elenco (es. enum)"
+        "note": {
+          "type": "string"
         },
-        "note": { "type": "string" }
+        "valori ammessi": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Insieme finito dei valori leciti del parametro (dominio chiuso/enumerato). Complementare a `tipologia`, che indica il solo formato: usare questo campo solo quando esiste un elenco predefinito di valori; lasciare l'array vuoto (`[]`) quando il dominio è libero."
+        }
       }
     },
     "mappatura_errore": {
@@ -220,23 +586,55 @@
         "esito",
         "applicabile",
         "causa",
-        "azione_utente",
+        "azione utente",
         "note"
       ],
       "properties": {
         "codice": {
           "type": "integer",
-          "minimum": 0,
-          "description": "Codice HTTP o di dominio (es. 200, 404, 540). Obbligatorietà di applicabile vincolata da allOf sotto."
+          "enum": [
+            200,
+            400,
+            401,
+            403,
+            404,
+            405,
+            406,
+            408,
+            409,
+            410,
+            413,
+            414,
+            421,
+            429,
+            431,
+            451,
+            500,
+            501,
+            503,
+            540,
+            541
+          ],
+          "description": "Codice HTTP o di dominio ammesso nel template (coppia codice/applicabile fissata dallo schema)."
         },
-        "esito": { "type": "string" },
+        "esito": {
+          "type": "string"
+        },
         "applicabile": {
           "type": "boolean",
-          "description": "true per codici obbligatori (200, 400, 401, 404, 429, 500, 503); false per codici opzionali (403, 405, 406, 408, 409, 410, 413, 414, 421, 431, 451, 501, 540, 541)."
+          "description": "Obbligatoriamente true se il codice è tra quelli obbligatori del template (200, 400, 401, 404, 429, 500, 503); obbligatoriamente false per qualsiasi altro codice ammesso dall'enum (codici opzionali o futuri aggiunti all'enum ma non nella lista obbligatoria)."
         },
-        "causa": { "type": "string" },
-        "azione_utente": { "type": "string" },
-        "note": { "type": "string" }
+        "causa": {
+          "type": "string",
+          "description": "Causa dell'errore"
+        },
+        "azione utente": {
+          "type": "string",
+          "description": "Messaggio per l'utente in caso di errore"
+        },
+        "note": {
+          "type": "string"
+        }
       },
       "allOf": [
         {
@@ -244,37 +642,34 @@
             "properties": {
               "codice": {
                 "enum": [
-                  403,
-                  405,
-                  406,
-                  408,
-                  409,
-                  410,
-                  413,
-                  414,
-                  421,
-                  431,
-                  451,
-                  501,
-                  540,
-                  541
+                  200,
+                  400,
+                  401,
+                  404,
+                  429,
+                  500,
+                  503
                 ]
               }
             },
-            "required": ["codice"]
+            "required": [
+              "codice"
+            ]
           },
-          "then": { "properties": { "applicabile": { "const": false } } }
-        },
-        {
-          "if": {
+          "then": {
             "properties": {
-              "codice": {
-                "enum": [200, 400, 401, 404, 429, 500, 503]
+              "applicabile": {
+                "const": true
               }
-            },
-            "required": ["codice"]
+            }
           },
-          "then": { "properties": { "applicabile": { "const": true } } }
+          "else": {
+            "properties": {
+              "applicabile": {
+                "const": false
+              }
+            }
+          }
         }
       ]
     },
@@ -284,244 +679,698 @@
         "stato",
         "descrizione",
         "applicabile",
-        "azione_utente",
-        "messaggio",
+        "azione utente",
         "note"
       ],
       "properties": {
         "stato": {
           "type": "string",
-          "enum": ["Valido", "Non Valido", "Sospeso", "Scaduto"],
-          "description": "Valore del form di onboarding. L'OpenAPI dell'e-service Fonte Autentica (PDND AS) espone per i dataset solo status: VALID, INVALID, SUSPENDED; cfr. manuale Appendice D per la corrispondenza."
+          "enum": [
+            "Valido",
+            "Non Valido",
+            "Sospeso",
+            "Scaduto",
+            "Da aggiornare"
+          ],
+          "description": "Valore letterale dello stato (valore canonico come in documentazione): Valido, Non Valido, Sospeso, Scaduto, Da aggiornare."
         },
-        "descrizione": { "type": "string" },
+        "descrizione": {
+          "type": "string",
+          "description": "Descrizione testuale fissa dello stato (vincolata dallo schema, non modificabile)."
+        },
+        "causa": {
+          "type": "string",
+          "description": "Dettaglio opzionale della causa del cambiamento di stato (campo di supporto alla compilazione)."
+        },
         "applicabile": {
-          "type": "boolean",
-          "description": "true se lo stato si applica a questo EAA; false altrimenti"
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "description": "true se lo stato si applica a questo EAA; false altrimenti; null in bozza non ancora compilata."
         },
-        "azione_utente": { "type": "string" },
-        "messaggio": { "type": "string" },
-        "note": { "type": "string" }
+        "azione utente": {
+          "type": "string",
+          "description": "Messaggio per l'utente"
+        },
+        "messaggio": {
+          "type": "string",
+          "description": "Testo informativo aggiuntivo per la soluzione IT-Wallet (opzionale; se assente o vuoto non viene esposto alcun messaggio dedicato oltre a descrizione/azione utente)."
+        },
+        "note": {
+          "type": "string"
+        }
       }
     },
-    "lista_nome_campo_riga": {
+    "lista_attributi_riga": {
       "type": "object",
-      "required": ["categoria", "parametro", "nome_campo", "descrizione"],
+      "required": [
+        "categoria",
+        "parametro",
+        "nome campo",
+        "descrizione"
+      ],
       "properties": {
-        "categoria": { "type": "string" },
-        "parametro": { "type": "string" },
-        "nome_campo": { "type": "string" },
-        "descrizione": { "type": "string" }
+        "categoria": {
+          "type": "string"
+        },
+        "parametro": {
+          "type": "string"
+        },
+        "nome campo": {
+          "type": "string"
+        },
+        "descrizione": {
+          "type": "string"
+        }
       }
     },
     "campo_risposta": {
       "type": "object",
-      "required": ["domanda", "risposta"],
+      "description": "Domanda, campo risposta (testo libero) ed esempio guida; in anteprima/form l'ordine consigliato è domanda → risposta → esempio.",
+      "required": [
+        "domanda",
+        "risposta",
+        "esempio"
+      ],
       "properties": {
-        "domanda": { "type": "string" },
-        "suggerimento": { "type": "string" },
-        "risposta": { "type": "string" }
+        "domanda": {
+          "type": "string",
+          "description": "Testo della domanda",
+          "propertyOrder": 10
+        },
+        "risposta": {
+          "description": "Risposta dell'Ente: stringa di testo libero (vuota in bozza non ancora compilata).",
+          "propertyOrder": 20,
+          "type": "string"
+        },
+        "esempio": {
+          "type": "string",
+          "description": "Esempio di risposta compilata (guida per l'Ente)",
+          "propertyOrder": 30
+        }
+      }
+    },
+    "campo_risposta_booleano": {
+      "type": "object",
+      "description": "Variante di campo_risposta per domande chiuse sì/no: la risposta è esclusivamente un booleano JSON (true/false) oppure null in bozza non ancora compilata; non è ammesso testo libero.",
+      "required": [
+        "domanda",
+        "risposta",
+        "esempio"
+      ],
+      "properties": {
+        "domanda": {
+          "type": "string",
+          "description": "Testo della domanda",
+          "propertyOrder": 10
+        },
+        "risposta": {
+          "description": "Risposta dell'Ente: booleano (true/false) o null in bozza non ancora compilata. Non è ammesso testo libero.",
+          "propertyOrder": 20,
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "esempio": {
+          "type": "string",
+          "description": "Esempio di risposta compilata (guida per l'Ente)",
+          "propertyOrder": 30
+        }
       }
     },
     "canale_assistenza": {
       "type": "object",
-      "required": ["tipo", "risposta", "note"],
+      "required": [
+        "tipo",
+        "dettaglio canale"
+      ],
       "properties": {
         "tipo": {
           "type": "string",
-          "enum": ["Email assistenza", "Numero telefonico", "Altro"],
-          "description": "Tipo di canale di assistenza disponibile"
+          "enum": [
+            "Email assistenza",
+            "Numero telefonico",
+            "Altro"
+          ],
+          "description": "Tipo di canale"
         },
-        "risposta": {
+        "note": {
           "type": "string",
-          "description": "Valore del canale: indirizzo email (Email assistenza), numero di telefono (Numero telefonico), descrizione (Altro). Vuoto se il canale non è utilizzato."
+          "description": "Note aggiuntive sul canale (opzionale)."
         },
-        "note": { "type": "string", "description": "Note aggiuntive sul canale" }
+        "dettaglio canale": {
+          "type": "string",
+          "description": "testo visualizzato dall'utente"
+        },
+        "esempio": {
+          "type": "string"
+        }
       },
       "if": {
-        "properties": { "tipo": { "const": "Email assistenza" } },
-        "required": ["tipo"]
+        "properties": {
+          "tipo": {
+            "const": "Email assistenza"
+          }
+        },
+        "required": [
+          "tipo"
+        ]
       },
       "then": {
         "properties": {
-          "risposta": {
+          "dettaglio canale": {
             "oneOf": [
-              { "type": "string", "maxLength": 0 },
-              { "type": "string", "minLength": 1, "format": "email" }
+              {
+                "type": "string",
+                "maxLength": 0
+              },
+              {
+                "type": "string",
+                "minLength": 1,
+                "format": "email"
+              }
             ]
           }
         }
       }
     },
-    "campo_booleano": {
-      "type": "object",
-      "required": ["domanda", "risposta"],
-      "properties": {
-        "domanda": { "type": "string" },
-        "suggerimento": { "type": "string" },
-        "risposta": { "type": "boolean" }
-      }
-    },
     "referente_assistenza": {
       "type": "object",
-      "required": ["ruolo", "nome", "cognome", "email", "telefono"],
+      "required": [
+        "ruolo",
+        "nome",
+        "cognome",
+        "email",
+        "telefono"
+      ],
       "properties": {
-        "ruolo": { "type": "string" },
-        "nome": { "type": "string" },
-        "cognome": { "type": "string" },
+        "ruolo": {
+          "type": "string"
+        },
+        "nome": {
+          "type": "string"
+        },
+        "cognome": {
+          "type": "string"
+        },
         "email": {
           "type": "string",
           "oneOf": [
-            { "maxLength": 0 },
-            { "minLength": 1, "format": "email" }
-          ],
-          "description": "Indirizzo email del referente; vuoto se non disponibile"
+            {
+              "maxLength": 0
+            },
+            {
+              "minLength": 1,
+              "format": "email"
+            }
+          ]
         },
         "telefono": {
           "type": "string",
           "oneOf": [
-            { "maxLength": 0 },
-            { "minLength": 4, "pattern": "^[0-9+\\-\\s()]+$", "maxLength": 25 }
-          ],
-          "description": "Numero di telefono (es. +39 06 1234567); vuoto se non disponibile"
+            {
+              "maxLength": 0
+            },
+            {
+              "minLength": 4,
+              "pattern": "^[0-9+\\-\\s()]+$",
+              "maxLength": 25
+            }
+          ]
         }
       }
     },
     "faq_item": {
       "type": "object",
-      "required": ["domanda", "risposta"],
+      "description": "Voce FAQ: stessa struttura di campo_risposta (domanda, risposta, esempio; risposta di testo libero).",
+      "required": [
+        "domanda",
+        "risposta",
+        "esempio"
+      ],
       "properties": {
-        "domanda": { "type": "string" },
-        "risposta": { "type": "string" }
+        "domanda": {
+          "type": "string",
+          "description": "Testo della domanda",
+          "propertyOrder": 10
+        },
+        "risposta": {
+          "description": "Risposta dell'Ente: stringa di testo libero (vuota in bozza non ancora compilata).",
+          "propertyOrder": 20,
+          "type": "string"
+        },
+        "esempio": {
+          "type": "string",
+          "description": "Esempio di risposta compilata",
+          "propertyOrder": 30
+        }
       }
     },
     "target_utenti": {
-      "type": "object",
-      "required": ["presenza_doc_preesistente"],
-      "properties": {
-        "presenza_doc_preesistente": { "$ref": "#/$defs/campo_booleano" },
-        "utenti_doc_preesistente_": { "$ref": "#/$defs/campo_risposta" },
-        "utenti_doc_preesistente_eaa": { "$ref": "#/$defs/campo_risposta" },
-        "utenti_eaa": { "$ref": "#/$defs/campo_risposta" },
-        "documento_fisico_preesistente": { "$ref": "#/$defs/campo_booleano" },
-        "chi_puo_richiedere": { "$ref": "#/$defs/campo_risposta" },
-        "prerequisiti": { "$ref": "#/$defs/campo_risposta" },
-        "volume_rilascio": { "$ref": "#/$defs/campo_risposta" },
-        "limitazioni_estensioni": { "$ref": "#/$defs/campo_risposta" }
-      }
+      "allOf": [
+        {
+          "type": "object",
+          "required": [
+            "presenza doc preesistente"
+          ],
+          "properties": {
+            "presenza doc preesistente": {
+              "$ref": "#/$defs/campo_risposta_booleano"
+            },
+            "utenti doc preesistente": {
+              "$ref": "#/$defs/campo_risposta",
+              "description": "Chi può richiedere il documento preesistente (nome chiave canonico, senza spazio finale)."
+            },
+            "utenti doc preesistente ": {
+              "$ref": "#/$defs/campo_risposta",
+              "description": "Deprecato: stessa semantica di «utenti doc preesistente»; accettato solo per compatibilità con moduli già esportati. Non usare nei nuovi file."
+            },
+            "utenti doc preesistente eaa": {
+              "$ref": "#/$defs/campo_risposta"
+            },
+            "utenti doc preesistente EAA": {
+              "$ref": "#/$defs/campo_risposta",
+              "description": "Variante con sigla EAA maiuscola come nel template progettazione-caratteristiche-eaa.json."
+            },
+            "utenti eaa": {
+              "$ref": "#/$defs/campo_risposta"
+            },
+            "utenti EAA": {
+              "$ref": "#/$defs/campo_risposta"
+            },
+            "documento fisico preesistente": {
+              "$ref": "#/$defs/campo_risposta"
+            },
+            "chi puo richiedere": {
+              "$ref": "#/$defs/campo_risposta"
+            },
+            "prerequisiti": {
+              "$ref": "#/$defs/campo_risposta"
+            },
+            "volume rilascio": {
+              "$ref": "#/$defs/campo_risposta"
+            },
+            "limitazioni estensioni": {
+              "$ref": "#/$defs/campo_risposta"
+            }
+          }
+        },
+        {
+          "not": {
+            "allOf": [
+              {
+                "required": [
+                  "utenti doc preesistente"
+                ]
+              },
+              {
+                "required": [
+                  "utenti doc preesistente "
+                ]
+              }
+            ]
+          }
+        }
+      ]
     },
     "emissione_formato": {
       "type": "object",
-      "required": ["prerequisiti_eaa", "catalogo_o_touchpoint_eaa", "modalita_sincrona_differita_eaa", "eaa_multipla_o_singola", "identificazione_utente"],
+      "required": [
+        "prerequisiti EAA",
+        "catalogo o touchpoint EAA",
+        "modalità sincrona differita EAA",
+        "EAA multiplo o singolo",
+        "identificazione utente"
+      ],
       "properties": {
-        "prerequisiti_eaa": { "$ref": "#/$defs/campo_risposta" },
-        "prerequisiti_possesso_doc_preesistente": { "$ref": "#/$defs/campo_risposta" },
-        "canali_richiesta_ doc_preesistente": { "$ref": "#/$defs/campo_risposta" },
-        "formato_doc_preesistente": { "$ref": "#/$defs/campo_risposta" },
-        "volume_rilascio_doc_preesistente": { "$ref": "#/$defs/campo_risposta" },
-        "richieste_fisico_vs_digitale_ doc_preesistente": { "$ref": "#/$defs/campo_risposta" },
-        "variazioni_dati_doc_preesistente_eaa": { "$ref": "#/$defs/campo_risposta" },
-        "variazioni_dati_doc_preesistente_eaa_dettagli": { "$ref": "#/$defs/campo_risposta" },
-        "catalogo_o_touchpoint_eaa": { "$ref": "#/$defs/campo_risposta" },
-        "modalita_sincrona_differita_eaa": { "$ref": "#/$defs/campo_risposta" },
-        "eaa_multipla_o_singola": { "$ref": "#/$defs/campo_booleano" },
-        "dominio": { "$ref": "#/$defs/campo_risposta" },
-        "interesse_pubblico": { "$ref": "#/$defs/campo_booleano" },
-        "interesse_pubblico_motivazione": { "$ref": "#/$defs/campo_risposta" },
-        "canali_richiesta": { "$ref": "#/$defs/campo_risposta" },
-        "richieste_fisico_vs_digitale": { "$ref": "#/$defs/campo_risposta" },
-        "formato_attuale": { "$ref": "#/$defs/campo_risposta" },
-        "dettagli_digitale": { "$ref": "#/$defs/campo_risposta" },
-        "possesso_documento": { "$ref": "#/$defs/campo_booleano" },
-        "possesso_documento_condizioni": { "$ref": "#/$defs/campo_risposta" },
-        "catalogo_o_touchpoint": { "$ref": "#/$defs/campo_risposta" },
-        "modalita_sincrona_differita": { "$ref": "#/$defs/campo_risposta" },
-        "variazioni_dati": { "$ref": "#/$defs/campo_risposta" },
-        "eaa_univoca": { "$ref": "#/$defs/campo_booleano" },
-        "identificazione_utente": { "$ref": "#/$defs/campo_booleano" },
-        "identificazione_utente_motivazione": { "$ref": "#/$defs/campo_risposta" }
+        "prerequisiti EAA": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "prerequisiti eaa": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "prerequisiti possesso doc preesistente": {
+          "$ref": "#/$defs/campo_risposta_booleano"
+        },
+        "canali richiesta doc preesistente": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "formato doc preesistente": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "volume rilascio doc preesistente": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "richieste fisico vs digitale doc preesistente": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "variazioni dati doc preesistente EAA": {
+          "$ref": "#/$defs/campo_risposta_booleano"
+        },
+        "variazioni dati doc preesistente eaa": {
+          "$ref": "#/$defs/campo_risposta_booleano"
+        },
+        "variazioni dati doc preesistente eaa dettagli": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "variazioni dati doc preesistente EAA dettagli": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "catalogo o touchpoint EAA": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "catalogo o touchpoint eaa": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "modalità sincrona differita EAA": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "modalita sincrona differita eaa": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "EAA multiplo o singolo": {
+          "$ref": "#/$defs/campo_risposta_booleano"
+        },
+        "eaa multipla o singola": {
+          "$ref": "#/$defs/campo_risposta_booleano"
+        },
+        "dominio": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "interesse pubblico": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "interesse pubblico motivazione": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "canali richiesta": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "richieste fisico vs digitale": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "formato attuale": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "dettagli digitale": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "possesso documento": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "possesso documento condizioni": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "catalogo o touchpoint": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "modalita sincrona differita": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "variazioni dati": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "eaa univoca": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "identificazione utente": {
+          "$ref": "#/$defs/campo_risposta_booleano"
+        },
+        "identificazione utente motivazione": {
+          "$ref": "#/$defs/campo_risposta"
+        }
       }
     },
     "utilizzo": {
       "type": "object",
-      "required": ["dominio_eaa", "interesse_pubblico_eaa", "interesse_pubblico_motivazione_eaa"],
+      "required": [
+        "dominio EAA",
+        "interesse pubblico EAA",
+        "interesse pubblico motivazione EAA"
+      ],
       "properties": {
-        "dominio_eaa": { "$ref": "#/$defs/campo_risposta" },
-        "interesse_pubblico_eaa": { "$ref": "#/$defs/campo_booleano" },
-        "interesse_pubblico_motivazione_eaa": { "$ref": "#/$defs/campo_risposta" },
-        "casi_d_uso_doc_preesistente": { "$ref": "#/$defs/campo_risposta" },
-        "casi_d_uso_doc_preesistente_eaa": { "$ref": "#/$defs/campo_risposta" },
-        "soggetti_verificatori_doc_preesistente": { "$ref": "#/$defs/campo_risposta" },
-        "modalita_verifica_doc_preesistente": { "$ref": "#/$defs/campo_risposta" },
-        "strumenti_verifica_doc_preesistente": { "$ref": "#/$defs/campo_risposta" },
-        "durata_utilizzo_doc_preesistente": { "$ref": "#/$defs/campo_risposta" },
-        "duarata_validita_doc_preesistente": { "$ref": "#/$defs/campo_risposta" },
-        "validita_territoriale_doc_preesistente": { "$ref": "#/$defs/campo_risposta" },
-        "validita_territoriale_doc_preesistente_eaa": { "$ref": "#/$defs/campo_risposta" },
-        "rinnovo_doc_preesistente": { "$ref": "#/$defs/campo_booleano" },
-        "modalita_rinnovo_doc_preesistente": { "$ref": "#/$defs/campo_risposta" },
-        "casi_d_uso_eaa": { "$ref": "#/$defs/campo_risposta" },
-        "durata_utilizzo_eaa": { "$ref": "#/$defs/campo_risposta" },
-        "validita_territoriale_eaa": { "$ref": "#/$defs/campo_risposta" },
-        "contesti_uso": { "$ref": "#/$defs/campo_risposta" },
-        "soggetti_verificatori": { "$ref": "#/$defs/campo_risposta" },
-        "verifica_validita": { "$ref": "#/$defs/campo_risposta" },
-        "strumenti_verificatore": { "$ref": "#/$defs/campo_risposta" },
-        "utilizzo_continuo": { "$ref": "#/$defs/campo_risposta" },
-        "contesto_online_dal_vivo": { "$ref": "#/$defs/campo_risposta" },
-        "tempo_validita": { "$ref": "#/$defs/campo_risposta" },
-        "rinnovo": { "$ref": "#/$defs/campo_booleano" },
-        "rinnovo_procedura": { "$ref": "#/$defs/campo_risposta" },
-        "validita_europa": { "$ref": "#/$defs/campo_risposta" },
-        "limitazioni_territoriali": { "$ref": "#/$defs/campo_risposta" },
-        "eaa_tutti_contesti": { "$ref": "#/$defs/campo_booleano" },
-        "eaa_tutti_contesti_dettaglio": { "$ref": "#/$defs/campo_risposta" },
-        "estensione_contesti": { "$ref": "#/$defs/campo_booleano" },
-        "estensione_contesti_dettaglio": { "$ref": "#/$defs/campo_risposta" }
+        "dominio EAA": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "dominio eaa": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "interesse pubblico EAA": {
+          "$ref": "#/$defs/campo_risposta_booleano"
+        },
+        "interesse pubblico eaa": {
+          "$ref": "#/$defs/campo_risposta_booleano"
+        },
+        "interesse pubblico motivazione EAA": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "interesse pubblico motivazione eaa": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "casi d' uso doc preesistente": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "casi d uso doc preesistente": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "casi d' uso doc preesistente EAA": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "casi d uso doc preesistente eaa": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "soggetti verificatori doc preesistente": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "modalita verifica doc preesistente": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "strumenti verifica doc preesistente": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "durata utilizzo doc preesistente": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "durata validità doc preesistente": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "duarata validita doc preesistente": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "validità territoriale doc preesistente": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "validita territoriale doc preesistente": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "validità territoriale doc preesistente EAA": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "validita territoriale doc preesistente eaa": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "rinnovo doc preesistente": {
+          "$ref": "#/$defs/campo_risposta_booleano"
+        },
+        "modalità rinnovo doc preesistente": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "modalita rinnovo doc preesistente": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "casi d'uso EAA": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "casi d uso eaa": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "durata utilizzo EAA": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "durata utilizzo eaa": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "validità territoriale EAA": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "validita territoriale eaa": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "contesti uso": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "soggetti verificatori": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "verifica validita": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "strumenti verificatore": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "utilizzo continuo": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "contesto online dal vivo": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "tempo validita": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "rinnovo": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "rinnovo procedura": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "validita europa": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "limitazioni territoriali": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "eaa tutti contesti": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "eaa tutti contesti dettaglio": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "estensione contesti": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "estensione contesti dettaglio": {
+          "$ref": "#/$defs/campo_risposta"
+        }
       }
     },
     "pagamento": {
       "type": "object",
-      "required": ["gratuito_o_pagamento_doc_preesistente", "pagamento_rinnovo_doc_preesistente"],
+      "required": [
+        "gratuito o pagamento doc preesistente",
+        "pagamento rinnovo doc preesistente"
+      ],
       "properties": {
-        "gratuito_o_pagamento_doc_preesistente": { "$ref": "#/$defs/campo_booleano" },
-        "pagamento_rinnovo_doc_preesistente": { "$ref": "#/$defs/campo_booleano" },
-        "modalita_pagamento_doc_preesistente": { "$ref": "#/$defs/campo_risposta" },
-        "gratuito_o_pagamento_eaa": { "$ref": "#/$defs/campo_booleano" },
-        "gratuito_o_pagamento": { "$ref": "#/$defs/campo_booleano" },
-        "modalita_pagamento": { "$ref": "#/$defs/campo_risposta" },
-        "pagamento_rinnovo": { "$ref": "#/$defs/campo_booleano" }
+        "gratuito o pagamento doc preesistente": {
+          "$ref": "#/$defs/campo_risposta_booleano"
+        },
+        "pagamento rinnovo doc preesistente": {
+          "$ref": "#/$defs/campo_risposta_booleano"
+        },
+        "modalità pagamento doc preesistente": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "modalita pagamento doc preesistente": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "gratuito o pagamento EAA": {
+          "$ref": "#/$defs/campo_risposta_booleano"
+        },
+        "gratuito o pagamento eaa": {
+          "$ref": "#/$defs/campo_risposta_booleano"
+        },
+        "gratuito o pagamento": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "modalita pagamento": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "pagamento rinnovo": {
+          "$ref": "#/$defs/campo_risposta"
+        }
       }
     },
     "legale_privacy": {
       "type": "object",
-      "required": ["normativa _doc_preesistente", "normativa_eaa", "titolarita_dati_eaa", "dati_sensibili_eaa", "dati_sensibili_eaa_motivazione"],
+      "required": [
+        "normativa doc preesistente",
+        "normativa EAA",
+        "titolarità dati EAA",
+        "dati sensibili EAA",
+        "dati sensibili EAA motivazione"
+      ],
       "properties": {
-        "normativa _doc_preesistente": { "$ref": "#/$defs/campo_risposta" },
-        "normativa_eaa": { "$ref": "#/$defs/campo_risposta" },
-        "titolarita_dati_eaa": { "$ref": "#/$defs/campo_risposta" },
-        "dati_sensibili_eaa": { "$ref": "#/$defs/campo_booleano" },
-        "dati_sensibili_eaa_motivazione": { "$ref": "#/$defs/campo_risposta" },
-        "normativa": { "$ref": "#/$defs/campo_risposta" },
-        "proprieta_dati": { "$ref": "#/$defs/campo_risposta" },
-        "dati_sensibili": { "$ref": "#/$defs/campo_booleano" },
-        "dati_sensibili_motivazione": { "$ref": "#/$defs/campo_risposta" }
+        "normativa doc preesistente": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "normativa EAA": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "normativa eaa": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "titolarità dati EAA": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "titolarita dati eaa": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "dati sensibili EAA": {
+          "$ref": "#/$defs/campo_risposta_booleano"
+        },
+        "dati sensibili eaa": {
+          "$ref": "#/$defs/campo_risposta_booleano"
+        },
+        "dati sensibili EAA motivazione": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "dati sensibili eaa motivazione": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "normativa": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "proprieta dati": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "dati sensibili": {
+          "$ref": "#/$defs/campo_risposta"
+        },
+        "dati sensibili motivazione": {
+          "$ref": "#/$defs/campo_risposta"
+        }
       }
     },
     "casi_d_uso": {
       "type": "object",
       "required": [
-        "target_utenti",
-        "emissione_formato",
+        "target utenti",
+        "emissione formato",
         "utilizzo",
-        "legale_privacy"
+        "legale privacy"
       ],
       "properties": {
-        "target_utenti": { "$ref": "#/$defs/target_utenti" },
-        "emissione_formato": { "$ref": "#/$defs/emissione_formato" },
-        "utilizzo": { "$ref": "#/$defs/utilizzo" },
-        "pagamento": { "$ref": "#/$defs/pagamento" },
-        "legale_privacy": { "$ref": "#/$defs/legale_privacy" }
+        "target utenti": {
+          "$ref": "#/$defs/target_utenti"
+        },
+        "emissione formato": {
+          "$ref": "#/$defs/emissione_formato"
+        },
+        "utilizzo": {
+          "$ref": "#/$defs/utilizzo"
+        },
+        "pagamento": {
+          "$ref": "#/$defs/pagamento"
+        },
+        "legale privacy": {
+          "$ref": "#/$defs/legale_privacy"
+        }
+      }
+    },
+    "testo_informativo_item": {
+      "type": "object",
+      "required": [
+        "contenuto"
+      ],
+      "properties": {
+        "contenuto": {
+          "type": "string",
+          "description": "Messaggio per l'utente"
+        },
+        "esempio": {
+          "type": "string"
+        }
       }
     }
   }
