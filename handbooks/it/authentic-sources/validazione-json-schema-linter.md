@@ -87,7 +87,7 @@ I file compilati fanno riferimento allo schema tramite `$schema`; in caso di agg
 
 ## 5. Note sullo schema `json-schemas/schema-validazione-form-onboarding-fonte-autentica.schema.json`
 
-- Lo schema valida l'intera struttura del modulo, incluse le sezioni `casi d'uso`, `parametri di richiesta`, `data model`, `mappatura errori`, `mappatura stati `e `assistenza`, obbligatorie e validate dallo schema.
+- Lo schema valida l'intera struttura del modulo, incluse le sezioni `casi d'uso`, `dataset`, `mappatura errori`, `mappatura stati `e `assistenza`, obbligatorie e validate dallo schema.
 - **Sezione casi d'uso**: `casi d' uso` è obbligatoria e unifica i casi documento esistente e non; i campi opzionali si compilano in base al caso.
 - **`casi d'uso` → `target utenti`**: la proprietà canonica è **`utenti doc preesistente`**.
 - **`denominazioni ufficiali`**: sezione obbligatoria con `nome ente titolare`, `nome eaa` e `versione`.
