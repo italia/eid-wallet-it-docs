@@ -1049,7 +1049,7 @@ L'Authentication Button è caratterizzato dai seguenti requisiti:
 
 - Gli attori che intendono integrare l'Authentication Button nella propria Soluzione Tecnica DEVONO garantirne la traduzione in altre lingue, almeno quella inglese; 
 
-- Qualora lo spazio a disposizione lo consenta e/o il contesto lo richieda, l'Authentication Button DOVREBBE essere accompagnato da un testo descrittivo, ad esempio "IT-Wallet è il sistema italiano di portafogli digitali che ti permette di autenticarti online e di accedere a servizi pubblici e privati in modo sicuro e veloce, utilizzando i dati, i documenti e le qualifiche che puoi ottenere in digitale in uno dei portafogli che ne fanno parte.". 
+- Qualora lo spazio a disposizione lo consenta e/o il contesto lo richieda, l'Authentication Button DOVREBBE essere accompagnato da un testo descrittivo: "IT-Wallet è il sistema italiano di portafogli digitali che ti permette di autenticarti online e di accedere a servizi pubblici e privati in modo sicuro e veloce, utilizzando i dati, i documenti e le qualifiche che puoi ottenere in digitale in uno dei portafogli che ne fanno parte.". 
 
 Di seguito alcuni esempi non normativi di layout dell'Authentication Button:  
  
