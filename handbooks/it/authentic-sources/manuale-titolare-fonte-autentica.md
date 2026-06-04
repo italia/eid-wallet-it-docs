@@ -471,7 +471,7 @@ L’obiettivo della sezione "Mappatura errori" è quello di supportare gli Enti 
 **Destinatari**
 
 La sezione “Mappatura errori” si rivolge ad utenti con profilo tecnico, tra cui sviluppatori, referenti dei Sistemi Informativi, partner tecnologici o fornitori IT. Per la definizione di alcuni aspetti, si suggerisce il coinvolgimento di utenti con profilo amministrativo o dirigenziale (es. per la formulazione di contenuti informativi e messaggi). 
-**Istruzioni di compilazione**
+Istruzioni di compilazione:
 
 1. Per il codice 200 e per tutti gli errori obbligatori (400, 401, 404, 429, 500, 503) definisci la motivazione che ha scatenato l'errore popolando il campo "Causa"(es. Servizio momentaneamente non disponibile);
 2. Per ciascun errore descrivi l'azione necessaria per risolvere il problema nel campo "Azione utente". (es. Ti invitiamo a riprovare più tardi). Usa opzionalmente il campo "Note" per aggiungere ulteriori informazioni utili o una spiegazione del perché proponiamo all'utente di compiere un'azione specifica;
