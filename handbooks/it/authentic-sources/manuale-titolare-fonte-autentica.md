@@ -426,6 +426,7 @@ Il modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-walle
 - Mappatura errori
 - Mappatura stati
 - Assistenza
+
 Di seguito le indicazioni di compilazione di ciascuna sezione del modulo.
 
 ### Denominazioni ufficiali

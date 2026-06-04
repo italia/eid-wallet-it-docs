@@ -231,7 +231,7 @@
     "dataset_id": {
       "descrizione": "Identificativo univoco del dataset",
       "esempio campo compilato": "123e4567-e89b-12d3-a456-426614174000",
-      "note": "Si consiglia un UUID oppure una stringa breve, descrittiva e priva di spazi in formato kebab-case per nomi composti (es. tesserino-medici)."
+      "note": ""
     },
     "parametri di richiesta": [
       {
@@ -243,7 +243,7 @@
         "lunghezza massima caratteri": 16,
         "tipologia": "STRING",
         "valori ammessi": ["ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"],
-        "note": "Qualora sia necessario identificare l'utente, il Codice Fiscale è l'identificativo da utilizzare per le chiamate all'e-service."
+        "note": ""
       }
     ],
     "dati di risposta": [
@@ -288,7 +288,7 @@
         "esempio campo compilato": "1988-07-11",
         "obbligatorio": true,
         "tipologia": "DATE",
-        "note": "Formato ISO 8601 (AAAA-MM-GG).",
+        "note": "",
         "lunghezza massima caratteri": 10
       },
       {
@@ -310,7 +310,7 @@
         "esempio campo compilato": "12.500,00",
         "obbligatorio": true,
         "tipologia": "NUMBER",
-        "note": "Importo in euro con due decimali."
+        "note": ""
       },
       {
         "attestazione": "ISEE",
@@ -320,7 +320,7 @@
         "esempio campo compilato": "Ordinario",
         "obbligatorio": true,
         "tipologia": "STRING",
-        "note": "Es. Ordinario, Corrente, Minorenni, Università, Sociosanitario.",
+        "note": "",
         "lunghezza massima caratteri": 30
       },
       {
@@ -342,7 +342,7 @@
         "esempio campo compilato": "2026-12-31",
         "obbligatorio": true,
         "tipologia": "DATE",
-        "note": "Formato ISO 8601 (AAAA-MM-GG).",
+        "note": "",
         "lunghezza massima caratteri": 10
       }
     ]
@@ -362,7 +362,7 @@
       "applicabile": true,
       "causa": "La richiesta non può essere elaborata: parametri richiesti assenti, valori non validi, richiesta malformata, oppure DPoP proof non valida (ove applicabile).",
       "azione utente": "Verificare i dati inseriti e ripetere l'operazione; se il problema persiste, contattare l'assistenza dell'Ente.",
-      "note": "Allineare il messaggio al dettaglio restituito in application/problem+json (title/detail) ove presente."
+      "note": ""
     },
     {
       "codice": 401,
