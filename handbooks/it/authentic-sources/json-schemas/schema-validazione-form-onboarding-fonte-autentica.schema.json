@@ -35,7 +35,8 @@
         },
         "versione": {
           "type": "string",
-          "const": "1.1.0",
+          "const": "2.0.0",
+          "readOnly": true,
           "description": "Versione del template di progettazione (valore fisso; aggiornare lo schema se si incrementa il template)."
         }
       },
