@@ -20,8 +20,7 @@
 - [Modulo da compilare](#modulo-da-compilare)
   - [Denominazioni ufficiali](#denominazioni-ufficiali)
   - [Casi d'uso](#casi-duso)
-  - [Parametri di richiesta](#parametri-di-richiesta)
-  - [Data model](#data-model)
+  - [Dataset](#dataset)
   - [Mappatura errori](#mappatura-errori)
   - [Mappatura stati](#mappatura-stati)
   - [Assistenza](#assistenza)
@@ -82,7 +81,7 @@ Per rivestire il ruolo di Titolare di Fonte Autentica, ciascun Ente interessato 
 
 In particolare, il processo prevede i seguenti step: 
 
-- **Step 1 | Progettazione caratteristiche EAA**: l'Ente approfondisce le Specifiche Tecniche del Sistema IT-Wallet e definisce le caratteristiche dell'Attestato Elettronico di Attributi relativo al proprio dataset, in termini di modalità di scoperta e ottenimento dell’EAA, casi d’uso, parametri di richiesta, dati di risposta, modalità di gestione di errori, stati e assistenza.
+- **Step 1 | Progettazione caratteristiche EAA**: l'Ente approfondisce le Specifiche Tecniche del Sistema IT-Wallet e definisce le caratteristiche dell'Attestato Elettronico di Attributi relativo al proprio dataset, in termini di modalità di scoperta e ottenimento dell’EAA, casi d’uso, dataset, modalità di gestione di errori, stati e assistenza.
   [Vai allo Step 1](#step-1--progettazione-caratteristiche-eaa)
 - **Step 2 | Pubblicazione in collaudo**: l'Ente effettua l'onboarding nella Piattaforma Digitale Nazionale Dati (PDND), se non lo ha già fatto, rilascia l'e-service in ambiente di collaudo su PDND, e attiva il relativo servizio Signal Hub in ambiente di collaudo per la gestione del ciclo di vita dell’EAA nel tempo. Infine, l'Ente notifica al Fornitore di Attestati Elettronici di Attributi, configurato come fruitore dell'e-service, l'avvenuta pubblicazione. 
   [Vai allo Step 2](#step-2--pubblicazione-in-collaudo)
@@ -114,7 +113,7 @@ La versione corrente delle Specifiche Tecniche è disponibile a [questo link](ht
 - [e-Service PDND](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/e-service-pdnd.html) 
 - [Soluzione del Fornitore di Attestati Elettronici](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/credential-issuer-solution.html)
 - [Gestione degli Attestati Elettronici](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/digital-credential-management.html)
-### **Definire le denominazioni ufficiali **
+### **Definire le denominazioni ufficiali**
 
 Il Sistema IT-Wallet consente agli utenti di ottenere più EAA relativi a diversi Titolari Fonte Autentica. E’ quindi importante definire in maniera ufficiale e chiara per l’utente: 
 
@@ -160,23 +159,19 @@ La definizione dei casi d'uso da parte dell'Ente è fondamentale per:
 
 A tal fine, l’Ente deve compilare la sezione "Casi d'uso" del modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa). Per riferimenti e istruzioni di compilazione vai all'apposita sezione del capitolo [Modulo da compilare](#modulo-da-compilare).
 
-### **Definire i parametri di richiesta**
+### **Definire il dataset**
 
-Il Sistema IT-Wallet consente al Fornitore di Attestati Elettronici di Attributi di ottenere i dati dal Titolare di Fonte Autentica al fine di generare l’EAA di interesse per lo specifico utente che ne fa richiesta.  
+Il Sistema IT-Wallet consente al Fornitore di Attestati Elettronici di Attributi di ottenere i dati necessari dal Titolare di Fonte Autentica per generare l'attestato (EAA) richiesto dall'utente, tramite la fruizione di un apposito e-service messo a disposizione dal Titolare stesso.  
 
-Ogni tipologia di EAA è caratterizzata da uno specifico dataset ed è identificata in maniera univoca dal valore `dataset_id`, definito dalla Fonte Autentica. Grazie al ‘dataset_id’ è possibile, quindi, individuare univocamente uno specifico dataset, utile soprattutto nei casi in cui, all’interno dello stesso e-service, coesistano più dataset distinti (es. e-service relativo all’ordine dei medici che raggruppa al suo interno più figure professionali: tesserino-chirurghi, tesserino-odontoiatri, etc.). 
- Il parametro `dataset_id `non va confuso con il parametro `object_id`, definito anch’esso dalla Fonte Autentica e che identifica univocamente ogni istanza di EAA, e che quindi consente di individuare l’istanza associata a uno specifico soggetto o utente. 
+Per una corretta implementazione dell'e-service da pubblicare su PDND (vedi [Step 2](https://github.com/italia/eid-wallet-it-docs/blob/h-as-eaa/handbooks/it/authentic-sources/manuale-titolare-fonte-autentica.md#step-2--pubblicazione-in-collaudo)), è necessario che il Titolare di Fonte Autentica abbia adeguatamente definito a monte il dataset a livello di: `dataset_id`, `paramentri di richiesta` e `dati di risposta`.
 
-Per poter richiamare l’e-service pubblicato relativo al dataset, dovrà essere utilizzato il Codice Fiscale come identificativo univoco dell’utente, qualora necessario. 
+Ogni tipologia di EAA è infatti caratterizzata da uno specifico dataset ed è identificata in maniera univoca dal valore `dataset_id`, definito dal Titolare di Fonte Autentica. Grazie al `dataset_id` è possibile individuare univocamente uno specifico dataset. Questo èutile soprattutto nei casi in cui, all’interno dello stesso e-service, coesistano più dataset distinti (es. e-service relativo all’ordine dei medici che raggruppa al suo interno più figure professionali: tesserino-chirurghi, tesserino-odontoiatri, etc.). Il parametro `dataset_id` non va confuso con il parametro `object_id`, definito anch’esso dal Titolare di Fonte Autentica, che identifica univocamente ogni istanza di EAA, e che consente invece di individuare l’istanza associata a uno specifico soggetto o utente. 
 
-A tal fine, l’Ente deve definire il `dataset_id` e compilare la relativa sezione “Parametri di richiesta” del modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa). Per istruzioni vai all'apposita sezione del capitolo [Modulo da compilare](#modulo-da-compilare).
+I dataset vengono messi a disposizione dei Fornitori di Attestati Elettronici di Attributi per mezzo di un e-service che può essere richiamato attraverso specifici parametri di richiesta definiti dal Titolare di Fonte Autentica. Oltre al `dataset_id`, l’Ente deve quindi definire anche i parametri di richiesta di ciascun dataset. Qualora fosse necessario identificare l'utente, il Codice Fiscale (CF) rappresenta l'identificativo univoco da utilizzare per le chiamate all'e-service. 
 
-### **Definire i dati di risposta**
+Infine, per permettere ai Fornitori di Attestati Elettronici di generare l’EAA, i Titolari di Fonte Autentica devono altresì definire i dati di risposta, ovvero i campi caratterizzanti ciascun dataset.  
 
-Il Sistema IT-Wallet consente all’utente di ottenere in formato digitale i propri documenti, titoli e certificati sotto forma di EAA. Gli EAA sono rilasciati dal Fornitore di Attestati Elettronici di Attributi sulla base dei dati forniti dalla Fonte Autentica tramite l'e-service.  
-In questa fase il Titolare di Fonte Autentica deve progettare il dataset dell'EAA di interesse.  
-
-Nel definire ciascun dataset, i Titolari di Fonte Autentica non devono limitarsi a rendere disponibili le informazioni presenti nei propri sistemi, ma devono adottare una logica orientata al loro utilizzo. Ciò implica definire quali informazioni includere e come rappresentarle in funzione dello scopo dell’Attestato Elettronico, al fine di garantirne la comprensione e l’utilità per l’utente, nonché la verificabilità e l’interoperabilità tra sistemi.
+Nel definire i dati di risposta di ciascun dataset, i Titolari di Fonte Autentica devono utilizzare banche dati complete nei contenuti e negli attributi, garantendo la massima profondità storica possibile, e adottare una logica orientata all’utilizzo dell’EAA relativo. Ciò implica definire quali informazioni includere nel dataset e come rappresentarle in funzione dello scopo dell’Attestato Elettronico, al fine di garantirne la comprensione e l’utilità per l’utente, nonché la verificabilità e l’interoperabilità tra sistemi. 
 
 L’Ente deve quindi accuratamente definire, sulla base dei requisiti illustrati nella sezione [Focus sugli Attestati Elettronici di Attributi](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/functionalities.html#focus-sugli-attestati-elettronici-di-attributi) delle Specifiche Tecniche, la struttura, la tipologia, la numerosità e l’ordinamento degli attributi che intende fornire all'interno di uno specifico dataset, nel rispetto dei seguenti principi: 
 
@@ -189,18 +184,14 @@ A scopo esemplificativo, di seguito sono riportati due esempi di rappresentazion
 
 ![Esempio lista di attributi con valore](images/esempio-lista-di-attributi-con-valore.svg)
 
-*Figura 3: Esempio di resa grafica della Vista di dettaglio di un’EAA nella Soluzione Wallet di PagoPA, caratterizzata da attributi di II livello strutturati come lista di attributi con valore*
+*Figura 3: Esempio di resa grafica della Vista di dettaglio di un EAA nella Soluzione Wallet di PagoPA, caratterizzata da attributi di II livello strutturati come lista di attributi con valore*
 
 ![Esempio lista di descrizioni](images/esempio-lista-di-descrizioni.svg)
 
-*Figura 4: Esempio di resa grafica della Vista di dettaglio di un’EAA nella Soluzione Wallet di PagoPA, caratterizzata da attributi di II livello strutturati come lista di descrizioni*
+*Figura 4: Esempio di resa grafica della Vista di dettaglio di un EAA nella Soluzione Wallet di PagoPA, caratterizzata da attributi di II livello strutturati come lista di descrizioni*
 
-A tal fine, l’Ente deve compilare la sezione "Dati di risposta" del modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa) relativa a ciascun dataset specificando il DatasetID e riportando gli attributi adeguatamente definiti e i relativi dettagli (es. tipologia, obbligatorietà, formato, ordinamento, etc.). Per istruzioni vai all'apposita sezione del capitolo [Modulo da compilare](#modulo-da-compilare).
+A tal fine, l’ente deve adeguatamente definire il `dataset_id`, i `paramentri di richiesta` e i `dati di risposta`, e compilare la sezione “Dataset” del Modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-wallet-it-forms/form.html?webform=authentic-sources-eaa). Per istruzioni vai all'apposita sezione del capitolo [Modulo da compilare](https://github.com/italia/eid-wallet-it-docs/blob/h-as-eaa/handbooks/it/authentic-sources/manuale-titolare-fonte-autentica.md#modulo-da-compilare).
 
-Un'adeguata definizione dei dati di risposta pone le basi per una corretta implementazione dell'e-service da pubblicare su PDND (vedi [Step 2](#step-2--pubblicazione-in-collaudo)) ma è altresì importante considerare e rispettare i seguenti requisiti tecnici: 
-
-- **Identificativo utente**: Qualora fosse necessario identificare l'utente, il Codice Fiscale (CF) rappresenta l'identificativo univoco da utilizzare per le chiamate all'e-service; 
-- **Completezza base di dati**: Ogni e-service pubblicato su PDND dovrà esporre un set di dati completo nel contenuto e negli attributi. È ammessa la pubblicazione di basi dati parziali relative a periodi temporali limitati.
 
 ### **Definire le casistiche di errore**
 
@@ -419,8 +410,7 @@ Il modulo [Progettazione caratteristiche EAA](https://italia.github.io/eid-walle
 
 - Denominazioni ufficiali
 - Casi d’uso
-- Parametri di richiesta
-- Dati di risposta
+- Dataset
 - Mappatura errori
 - Mappatura stati
 - Assistenza
@@ -430,11 +420,11 @@ Di seguito le indicazioni di compilazione di ciascuna sezione del modulo.
  
 L’obiettivo della sezione “Denominazioni ufficiali” è quello di definire la denominazione ufficiale con cui si intende veicolare il nome dell’Ente titolare e definire la denominazione ufficiale dell’EAA relativa allo specifico dataset, secondo quanto definito nello Step 1. 
 
-Destinatari: 
+**Destinatari**
 
 La sezione “Denominazioni ufficiali” si rivolge ad utenti funzionari, amministrativi, dirigenti o responsabili di prodotto. 
  
-Istruzioni di compilazione: 
+**Istruzioni di compilazione**
 - Compila i campi `nome ente titolare `e `nome eaa` seguendo i suggerimenti di compilazione.  
 - Il campo `versione` è il numero di versione del modulo (valore fisso, es. 1.1.0) e non va confuso con una data di compilazione.
 
@@ -442,10 +432,10 @@ Istruzioni di compilazione:
 
 L’obiettivo della sezione "Casi d'uso" è quello di supportare gli Enti nella definizione dei casi d'uso e delle modalità di utilizzo degli EAA di cui intendono fornire i dati, a partire dall'analisi delle attuali modalità di utilizzo dei corrispettivi documenti, ove esistenti.
 
-Destinatari:
+**Destinatari**
 La sezione “Casi d’uso” si rivolge ad utenti funzionari, amministrativi, dirigenti o responsabili di prodotto.
 
-Istruzioni di compilazione:
+**Istruzioni di compilazione**
 
 1. **Domande pertinenti**: nel caso l'EAA non si riferisca a un documento fisico o digitale già esistente (es. patente), non compilare le domande che iniziano con "In caso di documento già esistente..";
 2. **Domande a risposta aperta o sì/no**: ogni voce ha sempre tre campi; nell'interfaccia del modulo l'ordine è `domanda` (testo fisso), `risposta` (da compilare: stringa, oppure `true`/`false`/`null` in JSON per sì/no o bozza) e `esempio` (testo guida con esempio di risposta). Il campo `esempio` non sostituisce la `risposta`.
@@ -453,36 +443,24 @@ Istruzioni di compilazione:
 
 ---
 
-### Parametri di richiesta
-
-Destinatari: 
-
-La sezione “Parametri di richiesta” si rivolge ad utenti con profilo tecnico, tra cui sviluppatori, referenti dei Sistemi Informativi, partner tecnologici o fornitori IT. 
-L’obiettivo della sezione “Parametri di richiesta” è quello di supportare gli Enti nella definizione dei parametri necessari al Fornitore di Attestati Elettronici di Attributi per l’identificazione di uno specifico dataset. 
-Destinatari: 
-
-La sezione “Parametri di richiesta” si rivolge ad utenti con profilo tecnico, tra cui sviluppatori, referenti dei Sistemi Informativi, partner tecnologici o fornitori IT. 
-Istruzioni di compilazione:
-
-Definisci il valore `dataset_id`, necessario per identificare in maniera univoca uno specifico dataset, utilizzando preferibilmente un identificativo di tipo UUID oppure, in alternativa, adottando una stringa breve, descrittiva e priva di spazi in formato kebab case per nomi composti (es. tesserino-medici). 
+### Dataset
 
 
----
+L’obiettivo della sezione “Dataset” è quello di supportare gli Enti nella definizione dei parametri necessari al Fornitore di Attestati Elettronici di Attributi per l’identificazione di uno specifico dataset e nella definizione dei dati di risposta ovvero degli specifici campi del dataset restituito dall'e-service (Attestato Elettronico di Attributi).  
 
-### Data model
+**Destinatari**
 
+La sezione “Dataset” si rivolge ad utenti con profilo tecnico, tra cui sviluppatori, referenti dei Sistemi Informativi, partner tecnologici o fornitori IT.  
 
-L’obiettivo della sezione `dati di risposta` è supportare gli Enti nella definizione dei campi del dataset restituito dall'e-service (Attestato Elettronico di Attributi).
-Destinatari: 
-Destinatari: 
+**Istruzioni di compilazione** 
 
-La sezione “Data model” si rivolge ad utenti con profilo tecnico, tra cui sviluppatori, referenti dei Sistemi Informativi, partner tecnologici o fornitori IT. Per la definizione di alcuni aspetti, si suggerisce il coinvolgimento di utenti con profilo amministrativo o dirigenziale (es. per la definizione del tipo di dati e dell’ordinamento). 
-La sezione “Data model” si rivolge ad utenti con profilo tecnico, tra cui sviluppatori, referenti dei Sistemi Informativi, partner tecnologici o fornitori IT. Per la definizione di alcuni aspetti, si suggerisce il coinvolgimento di utenti con profilo amministrativo o dirigenziale (es. per la definizione del tipo di dati e dell’ordinamento). 
-Istruzioni di compilazione:
+1. Definisci il valore `dataset_id`, necessario per identificare in maniera univoca uno specifico dataset, utilizzando preferibilmente un identificativo di tipo UUID oppure, in alternativa, adottando una stringa breve, descrittiva e priva di spazi in formato kebab case per nomi composti (es. tesserino-medici); 
+2. Definisci i `parametri di richiesta`, necessari per l’emissione dell’EAA relativo al dataset attraverso la fruizione dell’e-service; 
+3. Definisci i `dati risposta`. In particolare: 
+- Prima di iniziare la compilazione, consulta i Template PDND Data Model e usali come punto di partenza per il tuo e-service così da assicurare un'elevata aderenza e compliance alle Specifiche Tecniche; 
+- Associa a ciascun dato che si intende rendere disponibile all’interno dell’EAA un `nome campo`, visibile all’utente finale, assicurandoti che sia parlante e che descriva adeguatamente il dato. Ricorda che i dati possono essere strutturati su un massimo di due livelli; 
+- Ordina i campi in modo da facilitare la leggibilità da parte dell’utente finale: inserisci per primi i dati anagrafici (nome, cognome, data di nascita, luogo di nascita, codice fiscale), poi i dati specifici dell'attestato. 
 
-1. Prima di iniziare la compilazione, consulta i Template PDND Data Model e usali come punto di partenza per il tuo e-service così da assicurare un'elevata aderenza e compliance alle Specifiche Tecniche; 
-2. Associa a ciascun dato che si intende rendere disponibile all’interno dell’EAA un "nome campo", visibile all’utente finale, assicurandoti che sia parlante e che descriva adeguatamente il dato; 
-3. Ordina i campi in modo da facilitare la leggibilità da parte dell’utente finale: inserisci per primi i dati anagrafici (nome, cognome, data di nascita, luogo di nascita, codice fiscale), poi i dati specifici dell'attestato.
 
 ---
 
@@ -490,12 +468,11 @@ Istruzioni di compilazione:
 
 
 L’obiettivo della sezione "Mappatura errori" è quello di supportare gli Enti nella definizione delle caratteristiche dell'e-service - e quindi del corrispettivo Attestato Elettronico di Attributi (EAA) - in termini di errori che potrebbero occorrere interagendo con l'e-service corrispondente.
-Destinatari: 
+**Destinatari**
 Destinatari: 
 
 La sezione “Mappatura errori” si rivolge ad utenti con profilo tecnico, tra cui sviluppatori, referenti dei Sistemi Informativi, partner tecnologici o fornitori IT. Per la definizione di alcuni aspetti, si suggerisce il coinvolgimento di utenti con profilo amministrativo o dirigenziale (es. per la formulazione di contenuti informativi e messaggi). 
-La sezione “Mappatura errori” si rivolge ad utenti con profilo tecnico, tra cui sviluppatori, referenti dei Sistemi Informativi, partner tecnologici o fornitori IT. Per la definizione di alcuni aspetti, si suggerisce il coinvolgimento di utenti con profilo amministrativo o dirigenziale (es. per la formulazione di contenuti informativi e messaggi). 
-Istruzioni di compilazione:
+**Istruzioni di compilazione**
 
 1. Per il codice 200 e per tutti gli errori obbligatori (400, 401, 404, 429, 500, 503) definisci la motivazione che ha scatenato l'errore popolando il campo "Causa"(es. Servizio momentaneamente non disponibile);
 2. Per ciascun errore descrivi l'azione necessaria per risolvere il problema nel campo "Azione utente". (es. Ti invitiamo a riprovare più tardi). Usa opzionalmente il campo "Note" per aggiungere ulteriori informazioni utili o una spiegazione del perché proponiamo all'utente di compiere un'azione specifica;
@@ -505,19 +482,19 @@ Nel caso di compilazione degli errori opzionali:
 - Per l'errore 540 (EAA non esistente presso l'Authentic Source), utilizza il formato "esito": "causa", es.: "NOT_EXISTING": "l'EAA non è presente presso l'Authentic Source", "PENDING": "l'EAA è in attesa di emissione". 
 - Per l'errore 541 (EAA in stato non valido o sospeso), descrivi la causa secondo le [Specifiche Tecniche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/OAS3-PDND-Issuer.html#tag/e-services-PDND/operation/notifyStatusCredentials) (es. scaduto, sospeso, revocato). 
 
+---
 
 ### Mappatura stati
 
 
 L’obiettivo della sezione "Mappatura stati" è quello di supportare gli Enti nella definizione delle caratteristiche dell'e-service - e quindi del corrispettivo Attestato Elettronico di Attributi (EAA) - in termini di stati che potrebbero caratterizzare l’EAA nel corso del suo ciclo di vita.
-Destinatari: 
+**Destinatari**
 
 La sezione “Mappatura stati” si rivolge ad utenti con profilo tecnico, tra cui sviluppatori, referenti dei Sistemi Informativi, partner tecnologici o fornitori IT. Per la definizione di alcuni aspetti, si suggerisce il coinvolgimento di utenti con profilo amministrativo o dirigenziale (es. per la definizione del ciclo vita e la relativa formulazione di contenuti informativi e messaggi). 
 **Valori ammessi per `stato` e uso in OpenAPI.** Il campo `stato` di ogni elemento dell'array può assumere solo i valori letterali `Valido`, `Non Valido`, `Sospeso`, `Scaduto`, `Da aggiornare` (nell'ordine fisso previsto dal manuale). Per compatibilità con file già esportati, lo schema accetta anche la variante `Non valido` (v minuscola) al posto di `Non Valido` per il secondo elemento dell'array. Sul canale tecnico, il campo `status` dei dataset nell'OpenAPI Fonte Autentica (`OAS3-PDND-AS.yaml`) resta limitato a **VALID**, **INVALID**, **SUSPENDED**; per la correlazione con i metadati di scadenza vedi il paragrafo *Corrispondenza con l'API Fonte Autentica* in [Step 1 | Progettazione caratteristiche EAA](#step-1--progettazione-caratteristiche-eaa).
 
 Per ciascuno dei **cinque** stati, il modulo prevede una `descrizione` testuale fissa (vincolata dallo schema): personalizza i messaggi rivolti all'utente tramite `azione utente`, `note` e, se utile, il campo opzionale `messaggio` (testo informativo aggiuntivo in IT-Wallet).
 
-**Istruzioni di compilazione**
 
 1. Mappa la condizione di applicabilità di ciascuno stato relativamente all'attestato in analisi (`applicabile`: `true` / `false`);
 2. Il campo `descrizione` per ciascuno stato è quello predefinito del modulo (vincolato dallo schema e non modificabile); usa `azione utente`, `note` e opzionalmente `messaggio` per chiarire al cittadino cosa fare;
@@ -525,40 +502,7 @@ Per ciascuno dei **cinque** stati, il modulo prevede una `descrizione` testuale 
 
 Per approfondimenti: [Ciclo di Vita degli Attestati Elettronici](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/credential-revocation.html).
 
-Estratto strutturale (nomi campo come nel JSON del modulo; `messaggio` è opzionale):
-
-```json
-"mappatura stati": [
-  {
-    "stato": "Valido",
-    "descrizione": "L'EAA è valido e può essere utilizzato",
-    "applicabile": true,
-    "azione utente": "",
-    "note": ""
-  },
-  {
-    "stato": "Non Valido",
-    "descrizione": "L'EAA non è più valido e dunque non può essere più utilizzato",
-    "applicabile": false,
-    "azione utente": "L'utente deve scaricare nuovamente l'EAA in app",
-    "note": ""
-  },
-  {
-    "stato": "Sospeso",
-    "descrizione": "L'EAA è sospeso e non può essere temporaneamente utilizzato",
-    "applicabile": false,
-    "azione utente": "",
-    "note": ""
-  },
-  {
-    "stato": "Scaduto",
-    "descrizione": "L'EAA ha superato la data di scadenza amministrativa e richiede rinnovo o nuova emissione",
-    "applicabile": false,
-    "azione utente": "",
-    "note": ""
-  }
-]
-
+---
 ### Assistenza
 
 L’obiettivo della sezione "Assistenza" è quello di supportare gli Enti nella definizione dei contenuti per l'informazione e il supporto all'utente nell’interazione con l'EAA.  
@@ -574,6 +518,26 @@ Istruzioni di compilazione:
 - FAQ: per ciascuna voce compila `risposta` (stringa, booleano o null); `domanda` e `esempio` sono testi guida preimpostati nello stesso ordine usato per i casi d'uso (`domanda`, poi `esempio` con esempio di risposta, poi `risposta` da valorizzare).
 - testi informativi (opzionale): se ritenuto utile o necessario dal Titolare di Fonte Autentica, approfondisci la casistica all’interno delle [Specifiche Tecniche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/functionalities.html#ottenimento-dal-catalogo-dell-istanza-del-wallet)); se ritenuto utile, definisci le informazioni essenziali da esporre agli utenti nella soluzione IT-Wallet prima di avviare l’ottenimento dell’EAA e sintetizzale in un testo adeguato. In particolare: 
 1) Poniti le seguenti domande (puoi fare riferimento alla sezione "Casi d'uso", già compilata):  A chi si rivolge o a chi è dedicato l’EAA? (es. pensionati, studenti, etc.) Sussistono dei limiti, delle restrizioni o dei prerequisiti per poter ottenere l’EAA? (es. aver ottenuto la versione fisica del documento, aver conseguito la titolarità al documento dopo il 2020, etc.) Dove e come è possibile usare l’EAA? 
+2) Formula un testo informativo rivolto all’utente a partire dai contenuti sopra raccolti, assicurandoti che sia chiaro, semplice, diretto e conciso (circa 300 - 450 caratteri, spazi inclusi).
+
+---
+### Assistenza
+
+L’obiettivo della sezione "Assistenza" è quello di supportare gli Enti nella definizione dei contenuti per l'informazione e il supporto all'utente nell’interazione con l'EAA.  
+
+Nello specifico, l'Ente deve contribuire al [modello di assistenza](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/functionalities.html#assistenza-utente) del Sistema IT-Wallet rendendo disponibili i recapiti necessari per la risoluzione di eventuali malfunzionamenti, i canali disponibili per la gestione dell'assistenza agli utenti e i contenuti utili alla predisposizione di nuove Domande Frequenti e/o testi informativi da esporre all’utente in IT-Wallet. 
+
+**Destinatari**
+
+La sezione “Assistenza” si rivolge ad utenti amministrativi, responsabili di servizio o della comunicazione, operatori URP, gestori help desk o referenti del supporto tecnico dei fornitori IT. 
+
+**Istruzioni di compilazione**
+
+- Referenti: fornisci e mantieni aggiornati, i dati di contatto (nome, cognome, email, telefono) di almeno 1 referente per l’assistenza agli utenti, 1 referente in ambito applicativo e 1 referente in ambito sistemistico che possano prontamente collaborare con il Fornitore di Attestati Elettronici di Attributi (IPZS per gli Attestati Elettronici di interesse pubblico) e con il Fornitore di Wallet (PagoPA per la soluzione IT-Wallet pubblica) per la risoluzione congiunta di segnalazioni degli utenti e/o malfunzionamenti tra i servizi. 
+- Canali: fornisci almeno un canale di assistenza (es. e-mail assistenza, numero di telefono, etc.) di responsabilità dell’Ente che rappresenti, nel ruolo di Titolare di Fonte Autentica, a cui si possa indirizzare l’utente per quelle richieste di supporto e segnalazioni non gestibili all’interno della soluzione IT-Wallet.  
+- FAQ: per ciascuna voce compila `risposta` (stringa, booleano o null); `domanda` e `esempio` sono testi guida preimpostati nello stesso ordine usato per i casi d'uso (`domanda`, poi `esempio` con esempio di risposta, poi `risposta` da valorizzare).
+- testi informativi (opzionale): se ritenuto utile o necessario dal Titolare di Fonte Autentica, approfondisci la casistica all’interno delle [Specifiche Tecniche](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/functionalities.html#ottenimento-dal-catalogo-dell-istanza-del-wallet)); se ritenuto utile, definisci le informazioni essenziali da esporre agli utenti nella soluzione IT-Wallet prima di avviare l’ottenimento dell’EAA e sintetizzale in un testo adeguato. In particolare: 
+1) Poniti le seguenti domande (puoi fare riferimento alla sezione "Casi d'uso", già compilata): A chi si rivolge o a chi è dedicato l’EAA? (es. pensionati, studenti, etc.) Sussistono dei limiti, delle restrizioni o dei prerequisiti per poter ottenere l’EAA? (es. aver ottenuto la versione fisica del documento, aver conseguito la titolarità al documento dopo il 2020, etc.) Dove e come è possibile usare l’EAA? 
 2) Formula un testo informativo rivolto all’utente a partire dai contenuti sopra raccolti, assicurandoti che sia chiaro, semplice, diretto e conciso (circa 300 - 450 caratteri, spazi inclusi).
 
 ---
