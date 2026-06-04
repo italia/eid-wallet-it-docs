@@ -58,8 +58,25 @@
       ],
       "properties": {
         "dataset_id": {
-          "type": "string",
-          "description": "Identificativo univoco del dataset definito dal Titolare di Fonte Autentica. Si consiglia un UUID oppure una stringa breve, descrittiva e priva di spazi in formato kebab-case per nomi composti (es. tesserino-medici)."
+          "type": "object",
+          "title": "Dataset ID",
+          "description": "Identificativo univoco del dataset definito dal Titolare di Fonte Autentica. Si consiglia un UUID oppure una stringa breve, descrittiva e priva di spazi in formato kebab-case per nomi composti (es. tesserino-medici).",
+          "required": [
+            "descrizione",
+            "esempio campo compilato",
+            "note"
+          ],
+          "properties": {
+            "descrizione": {
+              "type": "string"
+            },
+            "esempio campo compilato": {
+              "type": "string"
+            },
+            "note": {
+              "type": "string"
+            }
+          }
         },
         "parametri di richiesta": {
           "type": "array",
@@ -466,7 +483,24 @@
           "description": "true se il campo è obbligatorio nella response; false se opzionale"
         },
         "tipologia": {
-          "type": "string"
+          "type": "string",
+          "enum": [
+            "STRING",
+            "NUMBER",
+            "DATE",
+            "DATETIME",
+            "JSON",
+            "BINARY",
+            "BASE64",
+            "ARRAY_STRING",
+            "ARRAY_NUMBER",
+            "ARRAY_DATE",
+            "ARRAY_DATETIME",
+            "ARRAY_JSON",
+            "ARRAY_BINARY",
+            "ARRAY_BASE64"
+          ],
+          "description": "Tipo di dato del campo restituito. Indica esclusivamente il formato del valore (non l'insieme dei valori leciti). Valori: STRING (testo), NUMBER (numero), DATE (data di calendario), DATETIME (data e ora), JSON (oggetto strutturato in formato JSON), BINARY (dato binario), BASE64 (dato binario codificato in Base64). Per gli elenchi usare i tipi ARRAY_<TIPO> (es. ARRAY_STRING, ARRAY_NUMBER, ARRAY_DATE, ARRAY_DATETIME, ARRAY_JSON, ARRAY_BINARY, ARRAY_BASE64), dove <TIPO> indica il tipo degli elementi."
         },
         "lunghezza massima caratteri": {
           "type": "integer",
@@ -509,7 +543,24 @@
           "description": "true se il parametro è obbligatorio in input; false se opzionale"
         },
         "tipologia": {
-          "type": "string"
+          "type": "string",
+          "enum": [
+            "STRING",
+            "NUMBER",
+            "DATE",
+            "DATETIME",
+            "JSON",
+            "BINARY",
+            "BASE64",
+            "ARRAY_STRING",
+            "ARRAY_NUMBER",
+            "ARRAY_DATE",
+            "ARRAY_DATETIME",
+            "ARRAY_JSON",
+            "ARRAY_BINARY",
+            "ARRAY_BASE64"
+          ],
+          "description": "Tipo di dato del parametro. Indica esclusivamente il formato del valore; per vincolare l'insieme finito dei valori leciti (dominio chiuso/enumerato) usare invece `valori ammessi`. Valori: STRING (testo), NUMBER (numero), DATE (data di calendario), DATETIME (data e ora), JSON (oggetto strutturato in formato JSON), BINARY (dato binario), BASE64 (dato binario codificato in Base64). Per gli elenchi usare i tipi ARRAY_<TIPO> (es. ARRAY_STRING, ARRAY_NUMBER, ARRAY_DATE, ARRAY_DATETIME, ARRAY_JSON, ARRAY_BINARY, ARRAY_BASE64), dove <TIPO> indica il tipo degli elementi."
         },
         "lunghezza massima caratteri": {
           "type": "integer",
@@ -524,7 +575,7 @@
           "items": {
             "type": "string"
           },
-          "description": "Valori ammessi come elenco (es. enum)"
+          "description": "Insieme finito dei valori leciti del parametro (dominio chiuso/enumerato). Complementare a `tipologia`, che indica il solo formato: usare questo campo solo quando esiste un elenco predefinito di valori; lasciare l'array vuoto (`[]`) quando il dominio è libero."
         }
       }
     },

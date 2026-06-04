@@ -228,7 +228,11 @@
     }
   },
   "dataset": {
-    "dataset_id": "isee-ordinario",
+    "dataset_id": {
+      "descrizione": "Identificativo univoco del dataset",
+      "esempio campo compilato": "123e4567-e89b-12d3-a456-426614174000",
+      "note": "Si consiglia un UUID oppure una stringa breve, descrittiva e priva di spazi in formato kebab-case per nomi composti (es. tesserino-medici)."
+    },
     "parametri di richiesta": [
       {
         "nome parametro": "tax_code",
@@ -236,9 +240,9 @@
         "nome campo": "Codice Fiscale",
         "esempio campo compilato": "DLNRSL88L51C348G",
         "obbligatorio": true,
-        "tipologia": "ALFANUMERICO",
         "lunghezza massima caratteri": 16,
-        "valori ammessi": [],
+        "tipologia": "STRING",
+        "valori ammessi": ["ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"],
         "note": "Qualora sia necessario identificare l'utente, il Codice Fiscale è l'identificativo da utilizzare per le chiamate all'e-service."
       }
     ],
@@ -250,7 +254,7 @@
         "nome campo": "Codice Fiscale",
         "esempio campo compilato": "DLNRSL88L51C348G",
         "obbligatorio": true,
-        "tipologia": "ALFANUMERICO",
+        "tipologia": "STRING",
         "note": "",
         "lunghezza massima caratteri": 16
       },
@@ -261,7 +265,7 @@
         "nome campo": "Nome",
         "esempio campo compilato": "Rosalia",
         "obbligatorio": true,
-        "tipologia": "ALFANUMERICO",
+        "tipologia": "STRING",
         "note": "",
         "lunghezza massima caratteri": 50
       },
@@ -272,7 +276,7 @@
         "nome campo": "Cognome",
         "esempio campo compilato": "De Leon",
         "obbligatorio": true,
-        "tipologia": "ALFANUMERICO",
+        "tipologia": "STRING",
         "note": "",
         "lunghezza massima caratteri": 50
       },
@@ -283,7 +287,7 @@
         "nome campo": "Data di nascita",
         "esempio campo compilato": "1988-07-11",
         "obbligatorio": true,
-        "tipologia": "DATA",
+        "tipologia": "DATE",
         "note": "Formato ISO 8601 (AAAA-MM-GG).",
         "lunghezza massima caratteri": 10
       },
@@ -294,7 +298,7 @@
         "nome campo": "Luogo di nascita",
         "esempio campo compilato": "Caltanissetta",
         "obbligatorio": false,
-        "tipologia": "ALFANUMERICO",
+        "tipologia": "STRING",
         "note": "",
         "lunghezza massima caratteri": 100
       },
@@ -305,7 +309,7 @@
         "nome campo": "Valore ISEE",
         "esempio campo compilato": "12.500,00",
         "obbligatorio": true,
-        "tipologia": "NUMERICO",
+        "tipologia": "NUMBER",
         "note": "Importo in euro con due decimali."
       },
       {
@@ -315,7 +319,7 @@
         "nome campo": "Tipo ISEE",
         "esempio campo compilato": "Ordinario",
         "obbligatorio": true,
-        "tipologia": "ALFANUMERICO",
+        "tipologia": "STRING",
         "note": "Es. Ordinario, Corrente, Minorenni, Università, Sociosanitario.",
         "lunghezza massima caratteri": 30
       },
@@ -326,7 +330,7 @@
         "nome campo": "Protocollo DSU",
         "esempio campo compilato": "INPS-ISEE-2026-01234567A-00",
         "obbligatorio": true,
-        "tipologia": "ALFANUMERICO",
+        "tipologia": "STRING",
         "note": "",
         "lunghezza massima caratteri": 30
       },
@@ -337,7 +341,7 @@
         "nome campo": "Data di scadenza",
         "esempio campo compilato": "2026-12-31",
         "obbligatorio": true,
-        "tipologia": "DATA",
+        "tipologia": "DATE",
         "note": "Formato ISO 8601 (AAAA-MM-GG).",
         "lunghezza massima caratteri": 10
       }
