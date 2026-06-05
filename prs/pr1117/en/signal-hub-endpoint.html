@@ -241,7 +241,7 @@
 <td><p>REQUIRED. Using this field the Authentic Source MAY use to further specify the Signal.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>objectId</strong></p></td>
-<td><p>REQUIRED. The subject to which the Signal is bound. It MUST be set to the <code class="docutils literal notranslate"><span class="pre">object_id</span></code> that the Authentic Source used in the <cite>get attributes</cite> payload response to the the Credential Issuer and that corresponds to the Authentic Source's unique database identifier of the dataset of Attribute (see <a class="reference internal" href="authentic-source-endpoint.html#get-attribute-claims"><span class="std std-ref">Get Attribute Claims</span></a>). The Signal <code class="docutils literal notranslate"><span class="pre">signalType</span></code> MUST be valued with one of the following:</p>
+<td><p>REQUIRED. The subject to which the Signal is bound. It MUST be set to the Authentic Source's <a class="reference internal" href="defined-terms.html#term-Object_id"><span class="xref std std-term">Object_id</span></a> (<code class="docutils literal notranslate"><span class="pre">object_id</span></code>) used in the <cite>get attributes</cite> payload response to the Credential Issuer (see <a class="reference internal" href="authentic-source-endpoint.html#get-attribute-claims"><span class="std std-ref">Get Attribute Claims</span></a>). The Signal <code class="docutils literal notranslate"><span class="pre">signalType</span></code> MUST be valued with one of the following:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">CREATE</span></code>, in order to notify the availability of the attributes related to a specific Digital Credential.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">UPDATE</span></code>, in order to notify the updating of the attributes related to a specific Digital Credential.</p></li>
@@ -354,8 +354,8 @@
 <div><ul>
 <li><p>For each Signal, the Credential Issuer MUST check the <code class="docutils literal notranslate"><span class="pre">SignalType</span></code> value:</p>
 <ul class="simple">
-<li><p>if the Signal <code class="docutils literal notranslate"><span class="pre">SignalType</span></code> is <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> (where <code class="docutils literal notranslate"><span class="pre">objectId</span></code> refers to the <strong>Authentic Source's unique database identifier of the Digital Credential's attributes</strong>), the status and/or value of the attribute associated with a Digital Credential need updates;</p></li>
-<li><p>if the Signal <code class="docutils literal notranslate"><span class="pre">SignalType</span></code> is <code class="docutils literal notranslate"><span class="pre">CREATE</span></code> (where <code class="docutils literal notranslate"><span class="pre">objectId</span></code> refers to the <strong>Authentic Source's unique database identifier of the Digital Credential's attributes</strong>), the requested attributes of a specific Digital Credential are now available;</p></li>
+<li><p>if the Signal <code class="docutils literal notranslate"><span class="pre">SignalType</span></code> is <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> (where <code class="docutils literal notranslate"><span class="pre">objectId</span></code> refers to the <a class="reference internal" href="defined-terms.html#term-Object_id"><span class="xref std std-term">Object_id</span></a> of the Authentic Source), the status and/or value of the attribute associated with a Digital Credential need updates;</p></li>
+<li><p>if the Signal <code class="docutils literal notranslate"><span class="pre">SignalType</span></code> is <code class="docutils literal notranslate"><span class="pre">CREATE</span></code> (where <code class="docutils literal notranslate"><span class="pre">objectId</span></code> refers to the <a class="reference internal" href="defined-terms.html#term-Object_id"><span class="xref std std-term">Object_id</span></a> of the Authentic Source), the requested attributes of a specific Digital Credential are now available;</p></li>
 </ul>
 <p>If the <code class="docutils literal notranslate"><span class="pre">objectId</span></code> does not correspond to any valid identifier known to the Credential Issuer, the Signal MUST be ignored. Otherwise, if it corresponds to a known and valid identifier, the Credential Issuer MUST use the <a class="reference internal" href="authentic-source-endpoint.html#get-attribute-claims"><span class="std std-ref">Get Attribute Claims</span></a> PDND endpoint of the Authentic Source to retrieve the updated information and, if applicable, apply the new status to the corresponding Credential.</p>
 <p>When the Signal has been processed, the Credential Issuer will either move to the next Signal and update its <code class="docutils literal notranslate"><span class="pre">signalId</span></code> counter; or, if there are no more Signals to process, it will resume the Pull cycle.</p>
@@ -420,7 +420,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 22/05/2026.
+      Last updated on 05/06/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

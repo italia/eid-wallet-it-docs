@@ -684,7 +684,7 @@ The Credential Offer object is a JSON object containing the parameters defined i
   * - **grants**
     - REQUIRED. It MUST contain ``authorization_code`` object with the following parameters:
 
-        - **issuer_state**: REQUIRED. Opaque string used to bind the subsequent Authorization Request with the Credential Issuer. It MAY be bound to a specific Credential Dataset provided by a certain Authentic Source. The Wallet MUST include it in the subsequent Authorization Request when present. It MUST be a URN and contains the following information:
+        - **issuer_state**: REQUIRED. Opaque string used to bind the subsequent Authorization Request with the Credential Issuer. It MAY be bound to a specific Credential Dataset provided by a certain Authentic Source. The Wallet MUST include it in the subsequent Authorization Request when present. It MUST be a URN and contain the following information:
 
             - *authenticSourceId:* REQUIRED. It MUST correspond to the ``entity_id`` value of the Authentic Source that provides the Credential Dataset(s) as registered in the :ref:`registry:Authentic Source Registry`. 
 
@@ -692,7 +692,7 @@ The Credential Offer object is a JSON object containing the parameters defined i
 
             - *objectId:* OPTIONAL. Unique identifier of the Credential Dataset available from the Authentic Source. 
 
-        The ``issuer_state`` MUST follow the following structure: ``urn:it-wallet:credential-offer:{authenticSourceId}:{datasetId}:{objectId}``. This URN value MUST be encrypted using the PDND public key related to the ``GetAttributeClaims`` e-service Consumer.
+        The ``issuer_state`` MUST follow the structure ``urn:it-wallet:credential-offer:{authenticSourceId}:{datasetId}`` when ``objectId`` is absent, or ``urn:it-wallet:credential-offer:{authenticSourceId}:{datasetId}:{objectId}`` when ``objectId`` is present. The optional ``objectId`` segment MUST be omitted when not available; an empty trailing segment MUST NOT be used. This URN value MUST be encrypted using the PDND public key related to the ``GetAttributeClaims`` e-service Consumer.
 
         - **authorization_server**: REQUIRED when the Credential Issuer uses more than one authorization server in its Issuer Solution. This string identifies the Authorization Server to use. The value MUST match with one of the values mapped in the ``authorization_servers`` array of the Credential Issuer metadata. It MUST NOT be used if ``authorization_servers`` is absent or it has no multiple entries.
     - Section 4.1.1 of [`OpenID4VCI`_] and Section 4.1 of [`OPENID4VC-HAIP`_].

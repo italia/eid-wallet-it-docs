@@ -135,17 +135,19 @@ Di seguito sono riportati i requisiti di utilizzo del Trust Mark, validi sia in 
 
 - DEVONO utilizzare il Trust Mark esclusivamente per dare prova dell'appartenenza al Sistema IT-Wallet e non DEVONO utilizzarlo per scopi diversi;  
 
-- DEVONO esporre il Trust Mark esclusivamente nelle Soluzioni Tecniche che hanno concluso con successo il processo di registrazione;  
+- DEVONO esporre il Trust Mark esclusivamente nelle Soluzioni Tecniche che hanno concluso con successo il processo di registrazione; 
 
-- DEVONO utilizzare esclusivamente il Trust Mark reso disponibile nelle Risorse Ufficiali e DEVONO rispettare tutte le relative specifiche di utilizzo fornite nel Brand Manual; 
+- DEVONO esporre il Trust Mark in maniera chiara e visibile all'Utente fin dal primo accesso alla Soluzione Tecnica e DEVONO renderlo consultabile all'interno della Soluzione Tecnica; 
+
+- DEVONO utilizzare esclusivamente il Trust Mark reso disponibile nelle Risorse Ufficiali e DEVONO rispettare tutte le relative specifiche di utilizzo fornite nel :ref:`official-resources:Brand Manual`; 
 
 - NON DEVONO alterare, distorcere, modificare il Trust Mark o sostituirlo con elementi non ufficiali;  
 
-- NON DEVONO ridimensionare il Trust Mark oltre i limiti minimi stabiliti dal Brand Manual, in modo da garantire sempre una leggibilità ottimale su qualsiasi formato o dispositivo;  
+- NON DEVONO ridimensionare il Trust Mark oltre i limiti minimi stabiliti dal :ref:`official-resources:Brand Manual`, in modo da garantire sempre una leggibilità ottimale su qualsiasi formato o dispositivo;  
 
-- DEVONO utilizzare il Trust Mark garantendo l'area di rispetto minima definita nel Brand Manual, al fine di garantirne un'adeguata visibilità e riconoscibilità. NON DEVONO permettere ad altri elementi grafici o testuali di interferire con questa area di rispetto;  
+- DEVONO utilizzare il Trust Mark garantendo l'area di rispetto minima definita nel :ref:`official-resources:Brand Manual`, al fine di garantirne un'adeguata visibilità e riconoscibilità. NON DEVONO permettere ad altri elementi grafici o testuali di interferire con questa area di rispetto;  
 
-- NON DEVONO utilizzare il Trust Mark su sfondi di colore che ne compromettano la visibilità o la leggibilità. DEVONO garantito un contrasto adeguato tra il Trust Mark e lo sfondo, in conformità con quanto definito nel Brand Manual; 
+- NON DEVONO utilizzare il Trust Mark su sfondi di colore che ne compromettano la visibilità o la leggibilità e DEVONO garantire un contrasto adeguato tra il Trust Mark e lo sfondo, in conformità con quanto definito nel :ref:`official-resources:Brand Manual`; 
 
 - POSSONO associare il Trust Mark a loghi, marchi o simboli di altri attori del sistema, purchè in accordo con quando stabilito nel Brand Manual. 
 
