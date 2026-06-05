@@ -718,7 +718,7 @@
     },
     "campo_risposta": {
       "type": "object",
-      "description": "Domanda, campo risposta (testo libero) ed esempio guida; in anteprima/form l'ordine consigliato è domanda → risposta → esempio.",
+      "description": "Domanda, campo risposta (testo libero) ed esempio guida.",
       "required": [
         "domanda",
         "risposta",
