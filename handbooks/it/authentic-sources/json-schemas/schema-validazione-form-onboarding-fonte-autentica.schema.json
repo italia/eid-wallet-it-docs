@@ -447,7 +447,6 @@
     "data_model_campo": {
       "type": "object",
       "required": [
-        "attestazione",
         "parametro",
         "descrizione",
         "nome campo",
@@ -457,9 +456,6 @@
         "note"
       ],
       "properties": {
-        "attestazione": {
-          "type": "string"
-        },
         "parametro": {
           "type": "string"
         },
