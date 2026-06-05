@@ -230,7 +230,8 @@
   "dataset": {
     "dataset_id": {
       "descrizione": "Identificativo univoco del dataset",
-      "esempio campo compilato": "123e4567-e89b-12d3-a456-426614174000",
+      "esempio dataset_id": "123e4567-e89b-12d3-a456-426614174000",
+      "valore dataset_id": "",
       "note": ""
     },
     "parametri di richiesta": [

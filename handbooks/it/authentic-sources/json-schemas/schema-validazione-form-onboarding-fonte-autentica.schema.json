@@ -64,15 +64,21 @@
           "description": "Identificativo univoco del dataset definito dal Titolare di Fonte Autentica. Si consiglia un UUID oppure una stringa breve, descrittiva e priva di spazi in formato kebab-case per nomi composti (es. tesserino-medici).",
           "required": [
             "descrizione",
-            "esempio campo compilato",
+            "esempio dataset_id",
+            "valore dataset_id",
             "note"
           ],
           "properties": {
             "descrizione": {
               "type": "string"
             },
-            "esempio campo compilato": {
-              "type": "string"
+            "esempio dataset_id": {
+              "type": "string",
+              "description": "Esempio di valore del dataset_id (guida per l'Ente)."
+            },
+            "valore dataset_id": {
+              "type": "string",
+              "description": "Valore del dataset_id definito dall'Ente (vuoto in bozza non ancora compilata)."
             },
             "note": {
               "type": "string"
