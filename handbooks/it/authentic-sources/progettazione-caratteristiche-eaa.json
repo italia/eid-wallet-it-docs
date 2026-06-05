@@ -361,7 +361,7 @@
       "applicabile": true,
       "causa": "Il voucher o il token di accesso è scaduto, revocato, non valido o la richiesta non risulta autenticata correttamente.",
       "azione utente": "Ripetere il flusso da capo per ottenere un nuovo accesso autorizzato al servizio.",
-      "note": "Coerente con le Specifiche Tecniche su autenticazione verso l'endpoint e-service PDND."
+      "note": ""
     },
     {
       "codice": 403,
@@ -377,7 +377,7 @@
       "applicabile": true,
       "causa": "Non sono stati trovati documenti o attestazioni di titolarità per l'utente richiesto, oppure l'endpoint/risorsa indicata non esiste.",
       "azione utente": "Chiudere e riprovare successivamente, dopo aver verificato i prerequisiti (es. titolarità del documento).",
-      "note": "L'utente deve prima acquisire la titolarità del documento per ottenerne la versione digitale, ove pertinente."
+      "note": ""
     },
     {
       "codice": 405,
@@ -385,7 +385,7 @@
       "applicabile": false,
       "causa": "È stato usato un metodo HTTP non consentito per l'endpoint e-service.",
       "azione utente": "Contattare il referente tecnico: la configurazione del client o del proxy deve usare il metodo previsto dall'OpenAPI.",
-      "note": "Errore tipicamente lato integrazione, non risolvibile dall'utente finale."
+      "note": ""
     },
     {
       "codice": 406,
@@ -449,7 +449,7 @@
       "applicabile": true,
       "causa": "È stato superato il limite di richieste consentite nell'unità di tempo (rate limiting / throttling).",
       "azione utente": "Attendere il tempo indicato (es. header Retry-After) e ripetere la richiesta con moderazione.",
-      "note": "Obbligatorio gestire in modo informativo verso il Fruitore/issuer secondo policy PDND."
+      "note": ""
     },
     {
       "codice": 431,
@@ -473,7 +473,7 @@
       "applicabile": true,
       "causa": "L'endpoint e-service ha riscontrato un errore interno non previsto durante l'elaborazione della richiesta.",
       "azione utente": "Riprovare più tardi; se l'errore persiste, contattare l'assistenza dell'Ente.",
-      "note": "Non esporre dettagli sensibili di stack trace all'utente finale."
+      "note": ""
     },
     {
       "codice": 501,
@@ -489,7 +489,7 @@
       "applicabile": true,
       "causa": "L'endpoint e-service è temporaneamente non disponibile (manutenzione, sovraccarico o indisponibilità infrastrutturale).",
       "azione utente": "Attendere e ripetere la richiesta dopo alcuni minuti.",
-      "note": "Può essere utile indicare finestre di manutenzione note nelle note operative."
+      "note": ""
     },
     {
       "codice": 540,
@@ -497,7 +497,7 @@
       "applicabile": false,
       "causa": "Nel dominio dell'Authentic Source non risulta un EAA/dataset associabile all'utente nella richiesta (es. \"NOT_EXISTING\": \"l'EAA non è presente presso l'Authentic Source\").",
       "azione utente": "Completare i prerequisiti presso l'Ente (es. richiesta documento) o attendere l'elaborazione (es. \"PENDING\": \"l'EAA è in attesa di emissione\").",
-      "note": "Per la compilazione fine usare coppie \"esito\": \"causa\" (es. \"NOT_EXISTING\", \"PENDING\") come descritto nella sezione Mappatura errori del manuale."
+      "note": ""
     },
     {
       "codice": 541,
@@ -505,7 +505,7 @@
       "applicabile": false,
       "causa": "I dati esistono ma lo stato del ciclo di vita non consente l'emissione o l'uso richiesto (es. scaduto, sospeso, revocato, annullato), coerente con Signal Hub / notifiche stato.",
       "azione utente": "Seguire la procedura indicata dall'Ente per il ripristino (es. rinnovo, revoca della sospensione) e richiedere nuovamente l'EAA.",
-      "note": "Dettagliare per ciascuno stato previsto nelle Specifiche Tecniche (notify status / ciclo di vita)."
+      "note": ""
     }
   ],
   "mappatura stati": [
