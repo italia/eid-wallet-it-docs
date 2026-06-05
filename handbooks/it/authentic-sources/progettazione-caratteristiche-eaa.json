@@ -248,7 +248,6 @@
     ],
     "dati di risposta": [
       {
-        "attestazione": "ISEE",
         "parametro": "tax_code",
         "descrizione": "Codice fiscale del dichiarante",
         "nome campo": "Codice Fiscale",
@@ -259,7 +258,6 @@
         "lunghezza massima caratteri": 16
       },
       {
-        "attestazione": "ISEE",
         "parametro": "given_name",
         "descrizione": "Nome del dichiarante",
         "nome campo": "Nome",
@@ -270,7 +268,6 @@
         "lunghezza massima caratteri": 50
       },
       {
-        "attestazione": "ISEE",
         "parametro": "family_name",
         "descrizione": "Cognome del dichiarante",
         "nome campo": "Cognome",
@@ -281,7 +278,6 @@
         "lunghezza massima caratteri": 50
       },
       {
-        "attestazione": "ISEE",
         "parametro": "birth_date",
         "descrizione": "Data di nascita del dichiarante",
         "nome campo": "Data di nascita",
@@ -292,7 +288,6 @@
         "lunghezza massima caratteri": 10
       },
       {
-        "attestazione": "ISEE",
         "parametro": "birth_place",
         "descrizione": "Comune (o Stato estero) di nascita del dichiarante",
         "nome campo": "Luogo di nascita",
@@ -303,7 +298,6 @@
         "lunghezza massima caratteri": 100
       },
       {
-        "attestazione": "ISEE",
         "parametro": "isee_value",
         "descrizione": "Valore dell'indicatore ISEE espresso in euro",
         "nome campo": "Valore ISEE",
@@ -313,7 +307,6 @@
         "note": ""
       },
       {
-        "attestazione": "ISEE",
         "parametro": "isee_type",
         "descrizione": "Tipologia di ISEE rilasciato",
         "nome campo": "Tipo ISEE",
@@ -324,7 +317,6 @@
         "lunghezza massima caratteri": 30
       },
       {
-        "attestazione": "ISEE",
         "parametro": "dsu_protocol",
         "descrizione": "Numero di protocollo della Dichiarazione Sostitutiva Unica (DSU) a cui l'attestazione è riferita",
         "nome campo": "Protocollo DSU",
@@ -335,7 +327,6 @@
         "lunghezza massima caratteri": 30
       },
       {
-        "attestazione": "ISEE",
         "parametro": "expiry_date",
         "descrizione": "Data di scadenza della validità dell'attestazione ISEE",
         "nome campo": "Data di scadenza",
