@@ -45,6 +45,7 @@
       "title": "Denominazioni ufficiali per Ente e EAA"
     },
     "casi d'uso": {
+      "title": "Casi d'uso",
       "$ref": "#/$defs/casi_d_uso"
     },
     "dataset": {
