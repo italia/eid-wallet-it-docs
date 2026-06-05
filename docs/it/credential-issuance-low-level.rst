@@ -647,7 +647,7 @@ L'oggetto Credential Offer è un oggetto JSON contenente i parametri definiti ne
   * - **grants**
     - REQUIRED. DEVE contenere l'oggetto ``authorization_code`` con i seguenti parametri:
 
-        - **issuer_state**: OBBLIGATORIO. Stringa opaca utilizzata per associare la successiva Authorization Request con il Credential Isser. PUO' essere associata a un determinato Credential Dataset fornito da una specifica Fonte AUtentica. Il Wallet DEVE includerlo nella successiva Authorization Request quando presente. Deve essere un’URN e contenere le seguenti informazioni:
+        - **issuer_state**: OPZIONALE. Stringa opaca utilizzata per associare la successiva Authorization Request con il Credential Isser. PUO' essere associata a un determinato Credential Dataset fornito da una specifica Fonte AUtentica. Il Wallet DEVE includerlo nella successiva Authorization Request quando presente. Deve essere un’URN e contenere le seguenti informazioni:
 
             - *authenticSourceId*: OBBLIGATORIO. Deve corrispondere al valore ``entity_id`` della Fonte Autentica che fornisce i Credential Dataset, come indicato nel :ref:`registry:Registro delle Fonti Autentiche`.
 
