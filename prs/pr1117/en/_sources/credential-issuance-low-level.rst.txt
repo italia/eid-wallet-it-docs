@@ -684,7 +684,7 @@ The Credential Offer object is a JSON object containing the parameters defined i
   * - **grants**
     - REQUIRED. It MUST contain ``authorization_code`` object with the following parameters:
 
-        - **issuer_state**: REQUIRED. Opaque string used to bind the subsequent Authorization Request with the Credential Issuer. It MAY be bound to a specific Credential Dataset provided by a certain Authentic Source. The Wallet MUST include it in the subsequent Authorization Request when present. It MUST be a URN and contain the following information:
+        - **issuer_state**: OPTIONAL. Opaque string used to bind the subsequent Authorization Request with the Credential Issuer. It MAY be bound to a specific Credential Dataset provided by a certain Authentic Source. The Wallet MUST include it in the subsequent Authorization Request when present. It MUST be a URN and contain the following information:
 
             - *authenticSourceId:* REQUIRED. It MUST correspond to the ``entity_id`` value of the Authentic Source that provides the Credential Dataset(s) as registered in the :ref:`registry:Authentic Source Registry`. 
 
