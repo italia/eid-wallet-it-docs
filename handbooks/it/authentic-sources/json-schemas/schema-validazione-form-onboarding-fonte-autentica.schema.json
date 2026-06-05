@@ -303,13 +303,6 @@
       ],
       "title": "Mappatura stati"
     },
-    "lista attributi": {
-      "type": "array",
-      "description": "Elenco opzionale per organizzare e descrivere gli attributi dell'EAA in vista (es. categorie, parametri, etichette UI); ogni riga segue lo stesso modello di `lista_attributi_riga`.",
-      "items": {
-        "$ref": "#/$defs/lista_attributi_riga"
-      }
-    },
     "assistenza": {
       "type": "object",
       "title": "Assistenza",
@@ -718,29 +711,6 @@
           "description": "Testo informativo aggiuntivo per la soluzione IT-Wallet (opzionale; se assente o vuoto non viene esposto alcun messaggio dedicato oltre a descrizione/azione utente)."
         },
         "note": {
-          "type": "string"
-        }
-      }
-    },
-    "lista_attributi_riga": {
-      "type": "object",
-      "required": [
-        "categoria",
-        "parametro",
-        "nome campo",
-        "descrizione"
-      ],
-      "properties": {
-        "categoria": {
-          "type": "string"
-        },
-        "parametro": {
-          "type": "string"
-        },
-        "nome campo": {
-          "type": "string"
-        },
-        "descrizione": {
           "type": "string"
         }
       }
