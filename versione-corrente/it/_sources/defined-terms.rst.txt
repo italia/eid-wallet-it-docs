@@ -13,6 +13,14 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 .. glossary::
     :sorted:
 
+    **Dataset_id**
+      Stringa alfanumerica definita dalla Fonte Autentica e che identifica univocamente uno specifico dataset relativo a un Attestato Elettronico di Attributi.
+      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+
+    **Object_id**
+      Stringa alfanumerica definita dalla Fonte Autentica e che identifica univocamente una specifica istanza di Attestato Elettronico di Attributi associata a un determinato Utente.
+      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+
     **Processo di Accreditamento**
       Procedura svolta dall'Ente di Accreditamento Nazionale per accreditare gli Organismi di Valutazione della conformità (CABs), che si conclude con il rilascio di un certificato di accreditamento.
       Non presente in ARF 2.7.3; specifico di IT-Wallet.
