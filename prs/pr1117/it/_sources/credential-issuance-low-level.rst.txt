@@ -655,7 +655,7 @@ L'oggetto Credential Offer è un oggetto JSON contenente i parametri definiti ne
 
             - *objectId*: OPZIONALE. Identificativo univoco del Credential Dataset disponibile presso la Fonte Autentica.
 
-        Il parametro ``issuer_state`` DEVE seguire la seguente struttura: ``urn:it-wallet:credential-offer:{authenticSourceId}:{datasetId}:{objectId}``. Il valore di questo URN DEVE essere cifrato utilizzando la chiave pubblica PDND relativa al Consumer dell’e-service ``GetAttributeClaims``.
+        Il parametro ``issuer_state`` DEVE seguire la seguente struttura: ``urn:it-wallet:credential-offer:{authenticSourceId}:{datasetId}`` se ``objectId`` è assente oppure ``urn:it-wallet:credential-offer:{authenticSourceId}:{datasetId}:{objectId}`` nel caso in cui ``objectId`` è presente. Il segmento opzionale ``objectId`` DEVE essere omesso quando non disponibile; NON DEVE essere utilizzato un segmento finale vuoto. Il valore di questo URN DEVE essere cifrato utilizzando la chiave pubblica PDND relativa al Consumer dell’e-service ``GetAttributeClaims``.
 
 
         - **authorization_server**: REQUIRED quando il Credential Issuer utilizza più di un authorization server nella sua soluzione. Stringa che identifica l'Authorization Server da utilizzare. Il valore DEVE corrispondere a uno dei valori mappati nell'array ``authorization_servers`` dei metadata del Credential Issuer. NON DEVE essere utilizzato se ``authorization_servers`` è assente o non ha voci multiple.
