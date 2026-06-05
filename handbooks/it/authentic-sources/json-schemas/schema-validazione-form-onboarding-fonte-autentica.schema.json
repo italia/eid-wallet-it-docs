@@ -45,6 +45,7 @@
       "title": "Denominazioni ufficiali per Ente e EAA"
     },
     "casi d'uso": {
+      "title": "Casi d'uso",
       "$ref": "#/$defs/casi_d_uso"
     },
     "dataset": {
@@ -303,13 +304,6 @@
       ],
       "title": "Mappatura stati"
     },
-    "lista attributi": {
-      "type": "array",
-      "description": "Elenco opzionale per organizzare e descrivere gli attributi dell'EAA in vista (es. categorie, parametri, etichette UI); ogni riga segue lo stesso modello di `lista_attributi_riga`.",
-      "items": {
-        "$ref": "#/$defs/lista_attributi_riga"
-      }
-    },
     "assistenza": {
       "type": "object",
       "title": "Assistenza",
@@ -453,7 +447,6 @@
     "data_model_campo": {
       "type": "object",
       "required": [
-        "attestazione",
         "parametro",
         "descrizione",
         "nome campo",
@@ -463,9 +456,6 @@
         "note"
       ],
       "properties": {
-        "attestazione": {
-          "type": "string"
-        },
         "parametro": {
           "type": "string"
         },
@@ -722,32 +712,9 @@
         }
       }
     },
-    "lista_attributi_riga": {
-      "type": "object",
-      "required": [
-        "categoria",
-        "parametro",
-        "nome campo",
-        "descrizione"
-      ],
-      "properties": {
-        "categoria": {
-          "type": "string"
-        },
-        "parametro": {
-          "type": "string"
-        },
-        "nome campo": {
-          "type": "string"
-        },
-        "descrizione": {
-          "type": "string"
-        }
-      }
-    },
     "campo_risposta": {
       "type": "object",
-      "description": "Domanda, campo risposta (testo libero) ed esempio guida; in anteprima/form l'ordine consigliato è domanda → risposta → esempio.",
+      "description": "Domanda, campo risposta (testo libero) ed esempio guida.",
       "required": [
         "domanda",
         "risposta",
