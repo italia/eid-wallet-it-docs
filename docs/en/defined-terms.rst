@@ -12,6 +12,14 @@ Below is the description of acronyms and definitions which are useful for furthe
 .. glossary::
     :sorted:
 
+    **Dataset_id**
+      Alphanumeric string defined by the Authentic Source that uniquely identifies a specific dataset relating to an Electronic Attestation of Attributes.
+      Not present in ARF 2.7.3; specific to IT-Wallet.
+
+    **Object_id**
+      Alphanumeric string defined by the Authentic Source that uniquely identifies a specific instance of an Electronic Attestation of Attributes associated with a particular User.
+      Not present in ARF 2.7.3; specific to IT-Wallet.
+
     **Accreditation Process**
       Process performed by the National Accreditation Body to accredit CABs, resulting in an accreditation certificate.
       Not present in ARF 2.7.3; specific to IT-Wallet.
@@ -94,8 +102,9 @@ Below is the description of acronyms and definitions which are useful for furthe
       Not present in ARF 2.7.3.
 
     **Level of Assurance**
-      Degree of confidence in identity vetting and credential presentation.
-      Not present in ARF 2.7.3.
+      In the Union **electronic identification** framework, **levels of assurance** express the degree of confidence in the **correctness of the identification** of natural or legal persons and in the possibility to **rely on electronic identification means**. For **notified electronic identification schemes**, `EIDAS`_ (as amended, including the European Digital Identity Framework codified by `EU_2024_1183`_) defines the levels **low**, **substantial**, and **high**.
+      In these Technical Specifications, **LoA** is also used for **minimum assurance** requirements applying to **User authentication**, **Wallet Instance** context, and **Digital Credential** reliability (including catalog metadata such as minimum Level of Assurance), which MUST remain consistent with applicable Union law, national implementation of notified schemes, and the rules on **European Digital Identity Wallets** and **Person Identification Data (PID)** (including Commission Implementing Regulation (EU) 2024/2979 where relevant).
+      Not present under this wording in ARF 2.7.3; aligned with the eIDAS / EUDI Wallet legal framework.
 
     **Metadata**
       Digital artifact with information about an Organizational Entity (endpoints, public keys, etc.).
@@ -354,7 +363,7 @@ Below is the description of acronyms and definitions which are useful for furthe
       Aligned with ARF 2.7.3 for federation structures.
 
     **Relying Party Intermediary**
-      Organizational Entity that acts on behalf of one or more Relying Parties to provide Technical Solutions for connecting to Wallet Instances and for User authentication or verification of Electronic Attestations. In Union law (`EU_2024_1183`_, Article 5b(8)), intermediaries acting on behalf of relying parties are **deemed to be relying parties** for registration and authentication towards European Digital Identity Wallets and **shall not store data about the content of the transaction** between the Wallet user and the intermediated Relying Party. High-level requirements for wallet-relying party registration—including intermediaries, minimum registration data, transparency, and common authentication mechanisms towards Wallets—are discussed in the EUDI Wallet Architecture and Reference Framework (`ARF`_; *Topic X – Relying Party registration*, `ARF_TOPIC_X_RP`_). IT-Wallet specifies onboarding to the national trust framework, metadata, and technical controls that implement these obligations together with applicable national implementing measures.
+      Organizational Entity that acts on behalf of one or more Relying Parties to provide Technical Solutions for connecting to Wallet Instances and for User authentication or verification of Electronic Attestations. In Union law (`EU_2024_1183`_, Article 5b(8)), intermediaries acting on behalf of relying parties are **deemed to be relying parties** for registration and authentication towards European Digital Identity Wallets and **shall not store data about the content of the transaction** between the Wallet user and the intermediated Relying Party. High-level requirements for wallet-relying party registration—including intermediaries, minimum registration data, transparency, and common authentication mechanisms towards Wallets—are discussed in the EUDI Wallet Architecture and Reference Framework (`ARF`_; *Topic X – Relying Party registration*, `ARF_TOPIC_X_RP`_). IT-Wallet specifies onboarding to the national trust framework, metadata, and technical controls that implement these obligations together with applicable national implementing measures. Within the IT-Wallet trust infrastructure, the Relying Party Intermediary is registered by the Trust Anchor with a specific Trust Mark containing the ``entity_type`` claim with value ``"intermediary"``, which enables the Wallet Instance to identify and display to the User that the requesting RP operates through a recognized Intermediary.
       Distinct from a federation **Intermediary** (`OID-FED`_).
 
 .. note::

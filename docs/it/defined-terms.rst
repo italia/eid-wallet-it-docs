@@ -13,6 +13,14 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 .. glossary::
     :sorted:
 
+    **Dataset_id**
+      Stringa alfanumerica definita dalla Fonte Autentica e che identifica univocamente uno specifico dataset relativo a un Attestato Elettronico di Attributi.
+      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+
+    **Object_id**
+      Stringa alfanumerica definita dalla Fonte Autentica e che identifica univocamente una specifica istanza di Attestato Elettronico di Attributi associata a un determinato Utente.
+      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+
     **Processo di Accreditamento**
       Procedura svolta dall'Ente di Accreditamento Nazionale per accreditare gli Organismi di Valutazione della conformità (CABs), che si conclude con il rilascio di un certificato di accreditamento.
       Non presente in ARF 2.7.3; specifico di IT-Wallet.
@@ -96,8 +104,9 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Non presente in ARF 2.7.3.
 
     **Livello di Garanzia**
-      Grado di sicurezza della verifica dell'identità e nella presentazione degli Attestati Elettronici.
-      Non presente in ARF 2.7.3.
+      Nel quadro dell'Unione per l'**identificazione elettronica**, i **livelli di garanzia** esprimono il grado di fiducia nella **correttezza dell'identificazione** delle persone fisiche o giuridiche e nella possibilità di **fare affidamento sui mezzi di identificazione elettronica**. Per gli **schemi di identificazione elettronica notificati**, `EIDAS`_, come modificato (incluso il Quadro europeo di identità digitale codificato dal `EU_2024_1183`_), definisce i livelli **basso (*low*)**, **sostanziale (*substantial*)** e **alto (*high*)**.
+      Nelle presenti Specifiche Tecniche il termine **LoA** si impiega anche per i **requisiti minimi di garanzia** riguardanti l'**autenticazione dell'Utente**, il contesto dell'**Istanza del Wallet** e l'**affidabilità degli Attestati Elettronici** (inclusi i metadati di catalogo come il livello minimo di garanzia), che DEVONO restare coerenti con la normativa dell'Unione, con l'attuazione nazionale degli schemi notificati e con le discipline sui **Portafogli di Identità Digitale Europea** e sui **Person Identification Data (PID)** (ivi incluso, ove pertinente, il Regolamento di esecuzione (UE) 2024/2979 della Commissione).
+      Non presente con questa formulazione in ARF 2.7.3; allineato al quadro normativo eIDAS / EUDI Wallet.
 
     **Metadata**
       Artefatto digitale contenente informazioni su un'entità organizzativa (endpoint, chiavi pubbliche, ecc.).
@@ -335,7 +344,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Conforme con ARF 2.7.3 per le strutture di federazione.
 
     **Intermediario di Relying Party**
-      Entità Organizzativa che agisce per conto di una o più Relying Party per fornire Soluzioni Tecniche di collegamento alle Istanze del Wallet e per l'autenticazione dell'Utente o la verifica degli Attestati Elettronici. Nel diritto dell'Unione (`EU_2024_1183`_, articolo 5b, paragrafo 8), gli intermediari che agiscono per conto delle relying party sono **considerati relying party** ai fini della registrazione e dell'autenticazione verso i Portafogli di identità digitale europea e **non devono conservare dati sul contenuto della transazione** tra l'utente del Portafoglio e la Relying Party intermediata. I requisiti di alto livello sulla registrazione delle wallet-relying party—inclusi gli intermediari, i dati minimi di registrazione, la trasparenza e i meccanismi comuni di autenticazione verso i Portafogli—sono trattati nell'Architecture and Reference Framework del Portafoglio EUDI (`ARF`_; *Topic X – Relying Party registration*, `ARF_TOPIC_X_RP`_). IT-Wallet disciplina l'onboarding nell'infrastruttura di fiducia nazionale, i metadati e i controlli tecnici che attuano tali obblighi insieme alle misure nazionali di esecuzione applicabili.
+      Entità Organizzativa che agisce per conto di una o più Relying Party per fornire Soluzioni Tecniche di collegamento alle Istanze del Wallet e per l'autenticazione dell'Utente o la verifica degli Attestati Elettronici. Nel diritto dell'Unione (`EU_2024_1183`_, articolo 5b, paragrafo 8), gli intermediari che agiscono per conto delle relying party sono **considerati relying party** ai fini della registrazione e dell'autenticazione verso i Portafogli di identità digitale europea e **non devono conservare dati sul contenuto della transazione** tra l'utente del Portafoglio e la Relying Party intermediata. I requisiti di alto livello sulla registrazione delle wallet-relying party—inclusi gli intermediari, i dati minimi di registrazione, la trasparenza e i meccanismi comuni di autenticazione verso i Portafogli—sono trattati nell'Architecture and Reference Framework del Portafoglio EUDI (`ARF`_; *Topic X – Relying Party registration*, `ARF_TOPIC_X_RP`_). IT-Wallet disciplina l'onboarding nell'infrastruttura di fiducia nazionale, i metadati e i controlli tecnici che attuano tali obblighi insieme alle misure nazionali di esecuzione applicabili. Nell'infrastruttura di trust IT-Wallet, l'Intermediario di Relying Party è registrato dal Trust Anchor con un Trust Mark specifico contenente il claim ``entity_type`` con valore ``"intermediary"``, che consente all'Istanza del Wallet di identificare e mostrare all'Utente che il RP richiedente opera tramite un Intermediario riconosciuto.
       Distinto dall'**Intermediario** di federazione (`OID-FED`_).
 
 .. note::

@@ -47,11 +47,7 @@ La registrazione della Fonte Autentica consente ai fornitori di dati di stabilir
 
 Le Fonti Autentiche DEVONO sottoporsi a procedure di registrazione che convalidano la loro autorità sui dati, dichiarano i loro Attributi dell'Utente disponibili dal Registro degli Attributi dell'Utente standardizzato e stabiliscono meccanismi di integrazione tecnica. Le Fonti Autentiche specificano casi d'uso previsti (formalmente ``purposes``) che determinano l'eleggibilità del catalogo secondo le politiche dell'Organismo di Supervisione.
 
-Le Fonti Autentiche Pubbliche DEVONO sfruttare l'integrazione PDND per fornire dati governativi attraverso l'infrastruttura nazionale standardizzata.
-
-Le Fonti Autentiche Private POSSONO stabilire interfacce di servizio personalizzate che soddisfano requisiti organizzativi o normativi specifici.
-
-Entrambe i flussi DEVONO assicurare standard di qualità dei dati e stabilire tracce di audit per tutte le attività di fornitura dati.
+Le Fonti Autentiche Pubbliche e Private DEVONO sfruttare l'integrazione PDND per fornire dati governativi attraverso l'infrastruttura nazionale standardizzata.
 
 **Processo di Coordinamento AS-CI**: Dopo la registrazione AS, i Credential Issuer identificano entità AS adatte attraverso il Registro AS e richiedono autorizzazione all'integrazione durante la fase di registrazione amministrativa. Per i mandati normativi, l'autorizzazione DEVE essere automatica. Altrimenti, le entità Fonti Autentiche valutano e autorizzano le richieste dei Credential Issuer basate su criteri commerciali e tecnici. Dopo l'autorizzazione amministrativa, le procedure di integrazione tecnica stabiliscono le relazioni operative di accesso ai dati prima della pubblicazione del catalogo dei tipi di Credenziali.
 
@@ -74,6 +70,18 @@ Per PID Provider, Attestation Provider e Relying Party, il processo di onboardin
 
 .. note::
   I **PID Provider**, i **PuB-EAA Provider** e i **Wallet Provider** sono registrati attraverso il sistema di onboarding dell'IT-Wallet e successivamente notificati alla Commissione Europea per l'inclusione nelle Trusted Lists. I Wallet Provider non ricevono certificati di accesso o certificati di registrazione dai Registrar nazionali. La Soluzione Wallet fornita dal Wallet Provider deve essere certificata da Organismi di Valutazione della Conformità (CAB) secondo il quadro nazionale di valutazione della conformità.
+
+Onboarding degli Intermediari di Relying Party
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Gli :term:`Intermediari di Relying Party <Intermediario di Relying Party>` seguono un processo di onboarding dedicato che conferisce loro sia lo status di Intermediario riconosciuto sia l'autorità di effettuare l'onboarding delle Relying Party affiliate per conto del Trust Anchor. Il processo comprende:
+
+- **Registrazione amministrativa**: L'Intermediario presenta documentazione organizzativa e legale che ne attesta l'idoneità ad agire per conto di Relying Party ai sensi dell'Art. 5b(8) del Regolamento eIDAS2 (`EU_2024_1183`_).
+- **Registrazione tecnica**: L'Intermediario registra le proprie chiavi di federazione e gli endpoint, abilitandolo a pubblicare la propria Entity Configuration e a emettere Subordinate Statement per le Foglie affiliate.
+- **Emissione del Trust Mark di Intermediario**: Al termine del processo di onboarding, il Trust Anchor emette all'Intermediario un Trust Mark con identificatore ``federation_entity/intermediary``, che include il claim ``entity_type`` con valore ``"intermediary"``. Questo Trust Mark costituisce l'evidenza verificabile del ruolo riconosciuto dell'Intermediario nella federazione.
+- **Autorizzazione all'emissione di Trust Mark**: Il Trust Anchor aggiorna la propria Entity Configuration includendo l'Intermediario nell'attributo ``trust_mark_issuers`` per gli identificatori ``openid_relying_party/public`` e ``openid_relying_party/private``, autorizzando l'Intermediario a emettere Trust Mark alle proprie Relying Party affiliate.
+
+A seguito di questo onboarding, le Relying Party affiliate all'Intermediario completano il proprio onboarding tramite l'Intermediario, che agisce come Registration Authority intermedia. L'Entity Configuration della RP affiliata DEVE includere il Trust Mark emesso dall'Intermediario e DEVE impostare ``authority_hints`` sull'URL dell'Intermediario.
 
 Gestione del Ciclo di Vita delle Entità
 ----------------------------------------
@@ -171,8 +179,8 @@ Il sistema Registro IT-Wallet coordina tutte le registrazioni attraverso cinque 
 
 Le seguenti mappe dei Journey illustrano due scenari di Credenziali distinti:
 
-    - **Scenario Catalogo Pubblico**: Patente di Guida Mobile (mDL) fornita per una discovery pubblica tramite Catalogo delle Credenziali.
-    - **Scenario Credenziale Privata**: Badge Dipendente Aziendale dall'Azienda (AS Privata, e quindi fornita per la discovery solo tramite Offerta di Credenziale).
+    - **Scenario Catalogo Pubblico**: Patente di Guida Mobile (mDL) resa disponibile per una discovery pubblica tramite Catalogo delle Credenziali.
+    - **Scenario Credenziale Privata**: Badge Dipendente Aziendale dall'Azienda (FA Privata, resa disponibile per la discovery tramite Catalogo delle Credenziali ma ottenibile solo tramite Offerta di Credenziale).
 
 Journey dell'Operatore della Fonte Autentica
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -183,7 +191,7 @@ Dalla prospettiva dell'operatore della Fonte Autentica, il processo di onboardin
 
     - **Dichiarazione degli Attributi dell'Utente**: Seleziona Attributi dell'Utente standardizzati (``given_name``, ``family_name``, ``driving_privileges``, ecc.) dal Registro degli Attributi dell'Utente.
     - **Classificazione della Tassonomia**: Dominio ``MOBILITY_TRAVEL``, Scopo ``DRIVING_RIGHTS``.
-    - **Caso d'Uso**: Servizio pubblico - verifica dell'autorizzazione alla guida (eleggibile per il Catalogo delle Credenziali).
+    - **Caso d'Uso**: Servizio pubblico - verifica dell'autorizzazione alla guida.
     - **Integrazione**: Integrazione e-service PDND seguendo gli standard governativi (vedi :ref:`e-service-pdnd:e-Service PDND`).
     - **Risultato del Catalogo**: mDL diventa pubblicamente scopribile dopo l'integrazione CI.
 
@@ -191,9 +199,9 @@ Dalla prospettiva dell'operatore della Fonte Autentica, il processo di onboardin
 
     - **Dichiarazione degli Attributi dell'Utente**: Seleziona Attributi dell'Utente (``given_name``, ``family_name``, ``employee.job_title``, ecc.) dal Registro degli Attributi dell'Utente.
     - **Classificazione della Tassonomia**: Dominio ``MEMBERSHIP``, Scopo ``ASSOCIATION``.
-    - **Caso d'Uso**: Controllo accessi aziendale privato (non eleggibile per il Catalogo delle Credenziali).
-    - **Integrazione**: API personalizzata per l'integrazione del Credential Issuer.
-    - **Risultato del Catalogo**: Il badge rimane privato, disponibile solo tramite Offerta di Credenziale.
+    - **Caso d'Uso**: Controllo accessi aziendale privato.
+    - **Integrazione**: Integrazione e-service PDND seguendo gli standard governativi (vedi :ref:`e-service-pdnd:e-Service PDND`).
+    - **Risultato del Catalogo**: Il badge diventa pubblicamente scopribile ma è reso disponibile solo tramite Offerta di Credenziale.
 
 Le fasi critiche includono la verifica amministrativa da parte dell'Organismo di Supervisione (che coinvolge controlli di conformità normativa al di fuori dell'ambito tecnico) e la validazione tecnica. Il processo si conclude con la registrazione nel Registro AS, rendendo gli Attributi dell'Utente dichiarati scopribili dai Credential Issuer per le richieste di integrazione. Le richieste di integrazione possono essere inviate anche dalle Fonti Autentiche a specifici Credential Issuer.
 
@@ -218,20 +226,15 @@ Gli operatori del Credential Issuer iniziano effettuando la discovery delle Font
 
     - **discovery AS** o **AS Integration Request**: Identifica la Fonte Autentica nel Registro AS con gli Attributi dell'Utente di accesso dipendente. In alternativa, il Credential Issuer riceve la richiesta di integrazione direttamente dalla Fonte Authentica.
     - **Richiesta di Integrazione**: Richiede approvazione da parte del destinatario della richiesta.
-    - **Configurazione Tecnica**: Integrazione API personalizzata con autenticazione.
-    - **Pubblicazione del Catalogo**: Badge escluso dal catalogo pubblico per politica di supervisione.
+    - **Configurazione Tecnica**:  Integrazione e-service PDND seguendo gli standard governativi (vedi :ref:`e-service-pdnd:e-Service PDND`).
+    - **Pubblicazione del Catalogo**: Badge automaticamente pubblicato nel Catalogo delle Credenziali.
     - **Accesso Utente**: I dipendenti ricevono badge solo tramite Offerta di Credenziale diretta dai sistemi aziendali.
-
-La fase di configurazione tecnica offre due flussi di integrazione distinti a seconda del tipo di Fonte Autentica:
-
-    - **Integrazione AS Pubblica**: Utilizza la piattaforma PDND per accedere ai dati governativi attraverso API standardizzate.
-    - **Integrazione AS Privata**: Stabilisce connessioni API dirette con endpoint personalizzati forniti da organizzazioni private.
 
 Dopo il test di integrazione riuscito e l'approvazione della Fonte Autentica, il Credential Issuer è registrato nel Registro di Federazione come Entità fidata, abilitando l'emissione effettiva di Credenziali agli utenti finali.
 
 .. warning::
 
-    Questo passaggio attiva la disponibilità delle Credenziali per gli utenti finali. Le Credenziali pubbliche diventano scopribili attraverso il catalogo, mentre altre Credenziali rimangono disponibili solo tramite Offerte di Credenziale dirette.
+    Questo passaggio attiva la disponibilità delle Credenziali per gli utenti finali. Le Credenziali pubbliche e private diventano scopribili attraverso il catalogo, ma le Credenziali private saranno rese disponibili solo tramite Offerte di Credenziale.
 
 Journey dell'Operatore del Fornitore di Wallet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
