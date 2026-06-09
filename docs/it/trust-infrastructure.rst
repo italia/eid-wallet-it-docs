@@ -421,21 +421,7 @@ Nell'ecosistema IT-Wallet, gli Intermediari che agiscono per conto dei Relying P
 
 **Emissione del Trust Mark all'Intermediario**
 
-Il Trust Anchor DEVE includere gli Intermediari di Relying Party nell'attributo ``trust_mark_issuers`` della propria Entity Configuration, autorizzandoli ad emettere Trust Mark per le Foglie a loro afferenti. Il Trust Anchor emette all'Intermediario un Trust Mark che attesta il suo ruolo, includendo il claim ``entity_type`` con valore ``"intermediary"`` per distinguere questo profilo dagli Intermediari di Federazione generici.
-
-Il Trust Mark emesso dal Trust Anchor all'Intermediario DEVE contenere, oltre ai claim standard definiti in `OID-FED`_, il seguente claim aggiuntivo:
-
-.. list-table::
-   :class: longtable
-   :widths: 20 60 20
-   :header-rows: 1
-
-   * - **Claim**
-     - **Descrizione**
-     - **Richiesto**
-   * - **entity_type**
-     - Stringa che qualifica il ruolo dell'entità a cui si riferisce il Trust Mark. Per gli Intermediari di Relying Party DEVE avere il valore ``"intermediary"``. Questo claim consente di distinguere un Intermediario di RP (che agisce come aggregatore tecnico per conto di Relying Party) da un generico Intermediario di Federazione.
-     - |check-icon|
+Il Trust Anchor DEVE includere gli Intermediari di Relying Party nell'attributo ``trust_mark_issuers`` della propria Entity Configuration, autorizzandoli ad emettere Trust Mark per le Foglie a loro afferenti. Il Trust Anchor emette all'Intermediario un Trust Mark che attesta il suo ruolo, utilizzando ``https://<federation_authority_domain>/trust_marks/federation_entity/intermediary`` come ``trust_mark_type`` per distinguere questo profilo dagli Intermediari di Federazione generici.
 
 L'Intermediario di Relying Party DEVE includere questo Trust Mark nella propria Entity Configuration come prova del suo ruolo riconosciuto all'interno della Federazione.
 
@@ -454,22 +440,24 @@ Di seguito è riportato un esempio non normativo di Entity Configuration del Tru
 
     {
       "trust_mark_issuers": {
-        "https://trust-anchor.eid-wallet.example.it/openid_relying_party/public": [
-          "https://trust-anchor.eid-wallet.example.it",
-          "https://intermediary.example.org"
-        ],
-        "https://trust-anchor.eid-wallet.example.it/openid_relying_party/private": [
+        "https://trust-anchor.eid-wallet.example.it/federation_entity/openid_credential_verifier": [
           "https://trust-anchor.eid-wallet.example.it",
           "https://intermediary.example.org"
         ],
         "https://trust-anchor.eid-wallet.example.it/federation_entity/intermediary": [
+          "https://trust-anchor.eid-wallet.example.it"
+        ],
+        "https://trust-anchor.eid-wallet.example.it/federation_entity/openid_credential_issuer": [
+          "https://trust-anchor.eid-wallet.example.it"
+        ],
+        "https://trust-anchor.eid-wallet.example.it/federation_entity/wallet_solution": [
           "https://trust-anchor.eid-wallet.example.it"
         ]
       }
     }
 
 .. note::
-  Il Trust Mark con identificatore ``federation_entity/intermediary`` è emesso esclusivamente dal Trust Anchor ed è quello che il Wallet utilizza per verificare che un'entità sia un Intermediario di RP riconosciuto. I Trust Mark ``openid_relying_party/public`` e ``openid_relying_party/private`` possono invece essere emessi anche dagli Intermediari per le Foglie a loro afferenti.
+  Il Trust Mark con identificativo che termina con ``federation_entity/intermediary`` è emesso esclusivamente dal Trust Anchor ed è quello che il Wallet utilizza per verificare che un'entità sia un Intermediario di RP riconosciuto. I Trust Mark ``https://<federation_authority_domain>/trust_marks/federation_entity/openid_credential_verifier`` possono invece essere emessi anche dagli Intermediari per le Foglie a loro afferenti.
 
 
 Entity Configuration Foglie e Intermediari
@@ -890,14 +878,14 @@ Il processo si articola nei seguenti passi:
 
 2. **Identificazione dell'Intermediario**: Tramite il claim ``authority_hints`` nell'EC del RP, l'Istanza del Wallet identifica l'Intermediario e ne scarica l'Entity Configuration.
 
-3. **Validazione del Trust Mark dell'Intermediario**: L'Istanza del Wallet verifica che l'Entity Configuration dell'Intermediario contenga un Trust Mark valido con ``entity_type`` uguale a ``"intermediary"``, emesso dal Trust Anchor. La validità del Trust Mark DEVE essere verificata tramite l'endpoint ``trust_mark_status`` del Trust Anchor.
+3. **Validazione del Trust Mark dell'Intermediario**: L'Istanza del Wallet verifica che l'Entity Configuration dell'Intermediario contenga un Trust Mark valido per il ruolo di Intermediario, emesso dal Trust Anchor. La validità del Trust Mark DEVE essere verificata tramite l'endpoint ``trust_mark_status`` del Trust Anchor.
 
 4. **Costruzione della Trust Chain tramite l'Intermediario**: L'Istanza del Wallet costruisce la Trust Chain completa: Entity Configuration del RP → Subordinate Statement emesso dall'Intermediario per il RP → Subordinate Statement emesso dal Trust Anchor per l'Intermediario → Entity Configuration del Trust Anchor. Questa catena attesta che il RP è una Foglia riconosciuta dall'Intermediario e che l'Intermediario è a sua volta riconosciuto dal Trust Anchor.
 
 5. **Presentazione all'Utente**: Una volta completata la validazione, l'Istanza del Wallet PUÒ indicare all'Utente che il Relying Party richiedente opera tramite un Intermediario riconosciuto, mostrando le informazioni identificative dell'Intermediario (ad esempio ``organization_name``) ottenute dalla sua Entity Configuration.
 
 .. note::
-  La presenza del Trust Mark con ``entity_type: "intermediary"`` nell'EC dell'Intermediario costituisce la prova crittograficamente verificabile che l'entità è stata riconosciuta dal Trust Anchor come Intermediario di Relying Party autorizzato. L'Istanza del Wallet DEVE rifiutare la richiesta del RP se la Trust Chain non può essere costruita e validata tramite un Intermediario riconosciuto o direttamente tramite il Trust Anchor.
+  La presenza del Trust Mark con identificativo che termina con ``federation_entity/intermediary`` nell'EC dell'Intermediario costituisce la prova crittograficamente verificabile che l'entità è stata riconosciuta dal Trust Anchor come Intermediario di Relying Party autorizzato. L'Istanza del Wallet DEVE rifiutare la richiesta del RP se la Trust Chain non può essere costruita e validata tramite un Intermediario riconosciuto o direttamente tramite il Trust Anchor.
 
 Valutare Trust con i Wallet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
