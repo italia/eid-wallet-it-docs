@@ -3,9 +3,18 @@
     "version": "1.0.0",
     "last_modified": "2025-03-15T12:00:00Z",
     "iss": "https://trust-registry.eid-wallet.example.it",
+    "localization": {
+        "available_locales": [
+            "en",
+            "it"
+        ],
+        "base_uri": "https://trust-registry.eid-wallet.example.it/.well-known/l10n/credential-catalog",
+        "default_locale": "it",
+        "version": "1.0.0"
+    },
     "credentials": [
         {
-            "version": "1.0",
+            "version": "1",
             "credential_type": "mDL",
             "credential_name_l10n_id": "mDL.name",
             "legal_type": "pub-eaa",
@@ -73,39 +82,15 @@
                 "user_auth_required": true,
                 "min_loa": "high",
                 "supported_schemes": [
-                    "it-wallet"
+                    "it_wallet"
                 ]
             },
-            "domains": [
-                {
-                    "id": "IDENTITY"
-                },
-                {
-                    "id": "MOBILITY_TRAVEL"
-                }
-            ],
-            "classes": [
-                {
-                    "id": "IDENTIFICATION_DOCUMENTS"
-                },
-                {
-                    "id": "LICENSES_AUTHORIZATIONS"
-                }
-            ],
-            "purposes": [
-                {
-                    "id": "IDENTITY_VERIFICATION"
-                },
-                {
-                    "id": "AGE_VERIFICATION"
-                },
-                {
-                    "id": "DRIVING_RIGHTS"
-                }
-            ],
+            "domains": ["IDENTITY", "MOBILITY_TRAVEL"],
+            "classes": ["IDENTIFICATION_DOCUMENTS", "LICENSES_AUTHORIZATIONS"],
+            "purposes": ["IDENTITY_VERIFICATION", "AGE_VERIFICATION", "DRIVING_RIGHTS"],
             "issuers": [
                 {
-                    "id": "https://issuer.example.org",
+                    "entity_id": "https://issuer.example.org",
                     "organization_name_l10n_id": "mDL.issuer1.name",
                     "organization_code": "ci_example_it",
                     "organization_country": "IT",
@@ -118,8 +103,10 @@
                     "logo_uri": "https://issuer.example.org/logo.svg",
                     "policy_uri": "https://issuer.example.org/privacy",
                     "tos_uri": "https://issuer.example.org/terms",
-                    "service_documentation": "https://issuer.example.org/.well-known/service-doc",
+                    "service_documentation_uri": "https://issuer.example.org/.well-known/service-doc",
                     "issuance_flows": {
+                        "wallet_initiated": true,
+                        "issuer_initiated": true,
                         "deferred_flow": true,
                         "max_deferred_issuance_time_minutes": 1440,
                         "notification_methods": [

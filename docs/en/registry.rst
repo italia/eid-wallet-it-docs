@@ -106,11 +106,13 @@ JWT payload structure (when decoded):
       "credential_catalog": "https://trust-anchor.eid-wallet.example.it/api/v1/.well-known/credential-catalog",
       "taxonomy": "https://trust-anchor.eid-wallet.example.it/api/v1/taxonomy",
       "schema_registry": "https://trust-anchor.eid-wallet.example.it/api/v1/schemas",
-      "federation_list": "https://trust-anchor.eid-wallet.example.it/list",
-      "federation_fetch": "https://trust-anchor.eid-wallet.example.it/fetch",
-      "federation_resolve": "https://trust-anchor.eid-wallet.example.it/resolve",
-      "federation_trust_mark_status": "https://trust-anchor.eid-wallet.example.it/trust_mark_status",
-      "federation_historical_keys": "https://trust-anchor.eid-wallet.example.it/historical-jwks"
+      "federation_list_endpoint": "https://trust-anchor.eid-wallet.example.it/list",
+      "federation_fetch_endpoint": "https://trust-anchor.eid-wallet.example.it/federation_fetch_endpoint",
+      "federation_resolve_endpoint": "https://trust-anchor.eid-wallet.example.it/resolve",
+      "federation_trust_mark_status_endpoint": "https://trust-anchor.eid-wallet.example.it/trust_mark_status",
+      "federation_trust_mark_list_endpoint": "https://dev.ta.wallet.ipzs.it/trust_mark_listing",
+      "federation_trust_mark_endpoint": "https://dev.ta.wallet.ipzs.it/trust_mark",
+      "federation_historical_keys_endpoint": "https://trust-anchor.eid-wallet.example.it/federation_historical_keys"
     },
     "content_negotiation": ["application/json", "application/jwt"]
   }
@@ -239,7 +241,7 @@ The Supervisory Body MUST maintain the Authentic Source Registry to enable coord
 
   - **Organization Information**: Legal entity details, regulatory status, and authoritative role within specific domains.
   - **Data Capabilities**: Declared claims availability referencing standardized definitions from the Claims Registry with corresponding Taxonomy classifications.
-  - **Integration Methods**: Technical access mechanisms (PDND for public AS, custom APIs for private AS).
+  - **Integration Methods**: Technical access mechanisms (PDND).
   - **Intended Purposes**: Supported Credential types and business contexts for AS-CI coordination.
   - **Data Quality Assurance**: Authoritative status, update frequency, and audit trail capabilities.
 
@@ -281,7 +283,8 @@ The AS Registry architecture supports different coordination patterns reflecting
 
   2. **Private Sector AS** (Flexible Integration): Private entities provide specialized data through custom arrangements:
 
-    - **Custom APIs**: ``"integration_method": "custom_api"`` for business-specific data access patterns.
+    - **Custom APIs**: ``"integration_method": "pdnd"``  for business-specific data access.
+    - **Regulatory Compliance**: Full transparency requirements with public catalog publication.
     - **Selective Disclosure**: Limited public visibility with CI-specific approval workflows.
     - **Business Flexibility**: Tailored integration supporting diverse private sector use cases.
 
@@ -390,7 +393,7 @@ The Authentic Source Registry MUST contain the following parameters for each reg
      - REQUIRED. URL to privacy policy document.
    * - **organization_info.tos_uri**
      - string
-     - REQUIRED only for Private AS. URL to terms of service document.
+     - OPTIONAL. URL to terms of service document.
    * - **organization_info.organization_country**
      - string
      - REQUIRED. Two-letter ISO 3166-1 alpha-2 country code of the organization.
@@ -417,7 +420,7 @@ The Authentic Source Registry MUST contain the following parameters for each reg
      - REQUIRED. Array containing data capability specifications.
    * - **data_capabilities[].dataset_id**
      - string
-     - REQUIRED. The unique identifier of the dataset within the scope of the Authentic Source, which MAY be used as a query parameter for the ``GetAttributeClaims`` service.
+     - REQUIRED. The :term:`Dataset_id` within the scope of the Authentic Source, which MAY be used as a query parameter for the ``GetAttributeClaims`` service.
    * - **data_capabilities[].data_origin_l10n_id**
      - string
      - REQUIRED. Localization key referencing the human-readable name of the data origin or department providing the data (e.g., ``authentic_source1.dataset1.origin``).
@@ -438,13 +441,13 @@ The Authentic Source Registry MUST contain the following parameters for each reg
      - REQUIRED. Defines if a claim is always available or not.
    * - **data_capabilities[].integration_method**
      - string
-     - REQUIRED. Authorization framework used for data access. MUST be ``"pdnd"`` for Public AS. Private AS MAY use other authorization frameworks such as: ``"oauth2"``, ``"api_key"``, ``"mtls"``, etc.
+     - REQUIRED. Authorization framework used for data access. MUST be ``"pdnd"``.
    * - **data_capabilities[].integration_endpoint**
      - string
-     - OPTIONAL. Service access point (PDND endpoint for Public AS, API endpoint for Private AS).
+     - OPTIONAL. Service access point (PDND endpoint).
    * - **data_capabilities[].api_specification**
      - string
-     - REQUIRED. URL to `OAS3`_ specification document for this data capability.
+     - OPTIONAL. URL to `OAS3`_ specification document for this data capability.
    * - **data_capabilities[].data_provision**
      - JSON object
      - OPTIONAL. Data provision capabilities and timing specifications.
@@ -463,7 +466,7 @@ The Authentic Source Registry MUST contain the following parameters for each reg
    * - **data_capabilities[].user_information_l10n_id**
      - string
      - OPTIONAL. Localization key referencing a Markdown-formatted string with human-readable information about the data capability relevant to the User (e.g., ``authentic_source1.dataset1.userinfo``). This string MUST be provided by the Authentic Source to the Trust Anchor during onboarding. The Markdown formatting can be plain text or a combination of text and links. For example, if the Authentic Source's database only contains data registered *after* a specific date, this information MUST be conveyed through this key.
-   * - **data_capabilities[].service_documentation**
+   * - **data_capabilities[].service_documentation_uri**
      - string
      - OPTIONAL. URL pointing to the Authentic Source service documentation.
    * - **data_capabilities[].update_frequency**
@@ -1098,21 +1101,43 @@ Each element of the ``credentials`` array contains at least the following inform
 
       * **user_auth_required**: REQUIRED. Flag indicating if User authentication is required during the issuance of the Digital Credential.
       * **min_loa**: REQUIRED. Minimum Level of Assurance required for Digital Credential authentication. It MUST include the Level of Assurance of the User authentication and the Wallet Instance requesting the Digital Credential.
-      * **supported_schemes**: REQUIRED if ``user_auth_required`` is ``true``. Supported digital identity authentication schemes (e.g., ``["it-wallet"]``).
+      * **supported_schemes**: REQUIRED if ``user_auth_required`` is ``true``. Supported digital identity authentication schemes (e.g., ``["it_wallet"]``).
   * - **domains**
-    - REQUIRED. Array of domains to which Digital Credential belongs, such as:
-
-      * **id**: Unique identifier for the domain (e.g., ``"IDENTITY"``, ``"MOBILITY_TRAVEL"``).
+    - REQUIRED. Array of domain IDs to which Digital Credential belongs (e.g., ``"IDENTITY"``, ``"MOBILITY_TRAVEL"``).
   * - **classes**
-    - REQUIRED. Array of classes to which Digital Credential belongs, such as:
-
-      * **id**: Unique identifier for the class (e.g., "IDENTIFICATION_DOCUMENTS", "LICENSES_AUTHORIZATIONS").
+    - REQUIRED. Array of class IDs to which Digital Credential belongs (e.g., ``"IDENTIFICATION_DOCUMENTS"``, ``"LICENSES_AUTHORIZATIONS"``).
   * - **purposes**
-    - REQUIRED. Array of usage purposes for which the Digital Credential can be used, defining specific usage contexts and required claims for each purpose, such as:
-
-      * **id**: Unique identifier for the purpose, referencing a purpose defined in the Taxonomy (e.g., ``"IDENTITY_VERIFICATION"``, ``"AGE_VERIFICATION"``, ``"DRIVING_RIGHTS_VERIFICATION"``).
+    - REQUIRED. Array of usage purpose IDs for which the Digital Credential can be used, defining specific usage contexts and required claims for each purpose (e.g., ``"IDENTITY_VERIFICATION"``, ``"AGE_VERIFICATION"``, ``"DRIVING_RIGHTS_VERIFICATION"``).
   * - **issuers**
-    - REQUIRED. Array of relevant information about authorized Credential Issuers, including administrative and technical data such as Organization name, a reference to the API specification document and supported issuance mechanisms (for example the deferred flow support).
+    - REQUIRED. Array of relevant information about authorized Credential Issuers, including administrative and technical data such as Organization name, a reference to the API specification document and supported issuance mechanisms. Each array element contains:
+
+       * **entity_id**: REQUIRED. String. Unique identifier of the Credential Issuer. It MUST match with the value contained in the ``iss`` parameter of the Credential Issuer Entity Configuration.
+       * **organization_name_l10n_id**: REQUIRED. String. Localization key referencing the localized organization name in the localization bundle (e.g., ``issuer1.name``).
+       * **organization_code**: REQUIRED. String. Credential Issuer IPA code for government entities or VAT number for private entities.
+       * **organization_country**: REQUIRED. String. Two-letter ISO 3166-1 alpha-2 country code of the organization.
+       * **contacts**: REQUIRED. String. Array of contact email addresses for at least one user-support, one application, and one systems specialist.
+       * **legal_type**: REQUIRED. String. Legal classification of the Credential Issuer (e.g., pub-eaa, qeaa, eaa).
+       * **homepage_uri**: REQUIRED. String. URL pointing to the organization's homepage.
+       * **logo_uri**: OPTIONAL. String. URL to the organization's logo image.
+       * **policy_uri**: REQUIRED. String. URL to privacy policy document.
+       * **tos_uri**: OPTIONAL. String. URL to terms of service document.
+       * **service_documentation_uri**: OPTIONAL. String. URL pointing to the Credential Issuer service documentation.
+       * **issuance_flows**: REQUIRED. Object. It contains the following parameters:
+
+          * **deferred_flow**: REQUIRED. Boolean. Indicates if the deferred issuance is supported.
+          * **immediate_flows**: REQUIRED. Boolean. Indicates if the immediate issuance is supported.
+          * **wallet_initiated**: REQUIRED. Boolean. Indicates if the Wallet-Initiated flow is supported.
+          * **issuer_initiated**: REQUIRED. Boolean. Indicates if the Issuer-Initiated flow issuance is supported (Third Party Initiated Flow).
+          * **max_deferred_issuance_time_minutes**: CONDITIONAL. Integer. Maximum time in minutes for the availability of the issuance of the Credential. REQUIRED if ``deferred_flow`` is ``true``.
+          * **notification_methods**: CONDITIONAL. String Array. Contains the notification methods supported by the Credential issuer for the deferred issuance, such as ``"push"``, ``"poll"``. REQUIRED if ``deferred_flow`` is ``true``.
+
+  * - **localization**
+    - REQUIRED. Localization configuration object containing:
+
+       * **default_locale**: Default locale code (e.g., ``it``).
+       * **available_locales**: Array of supported locale codes (e.g., ``["en", "it"]``).
+       * **base_uri**: Base URI for localization bundle retrieval (e.g., ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/credential-catalog/``).
+       * **version**: Version of the localization bundle format.
   * - **authentic_sources**
     - REQUIRED. Array of Authentic Source JSON objects referencing authorized Authentic Sources. Each object MUST contain the AS entity identifier and the specific data capability identifier:
 

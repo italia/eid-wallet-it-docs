@@ -75,7 +75,7 @@ In caso di errore sintattico, Python segnalerà la riga e la posizione.
 
 ## 4. Versionamento dello schema
 
-Lo schema adotta **Semantic Versioning** (es. `1.0.0`). Il campo `version` nella radice dello schema indica la versione corrente:
+Lo schema adotta **Semantic Versioning**. Il campo `$version` nella radice dello schema indica la versione corrente (**`2.0.0`**):
 
 - **MAJOR** (es. 2.0.0): modifiche incompatibili (campi rimossi, tipi cambiati)
 - **MINOR** (es. 1.1.0): nuove proprietà opzionali, estensioni retrocompatibili
@@ -83,15 +83,28 @@ Lo schema adotta **Semantic Versioning** (es. `1.0.0`). Il campo `version` nella
 
 I file compilati fanno riferimento allo schema tramite `$schema`; in caso di aggiornamento dello schema, verificare la compatibilità con le versioni precedenti dei file già compilati.
 
+> **Versione 2.0.0 — break netto.** È stata rimossa ogni retrocompatibilità di versione. In particolare:
+> - i `parametri di richiesta` e i `dati di risposta` non sono più sezioni di primo livello: sono ora annidati nella nuova sezione **`dataset`** insieme a **`dataset_id`**;
+> - rimossi gli alias/strutture legacy `metadata`, `request`, `dataset` (come array), `data model`;
+> - nella sezione `mappatura stati` rimossa la variante `Non valido` (resta solo `Non Valido`).
+>
+> Restano accettate **solo** le chiavi-alias storiche all'interno della sezione `casi d'uso`. I file conformi a versioni precedenti dello schema devono essere migrati alla nuova struttura.
+
 ---
 
 ## 5. Note sullo schema `json-schemas/schema-validazione-form-onboarding-fonte-autentica.schema.json`
 
-- Lo schema valida l'intera struttura del file, incluse le sezioni **casi d'uso**, **assistenza** e **e_service**; queste ultime due sono obbligatorie e validate dallo schema.
-- **Sezione casi d'uso**: `casi_d_uso` è obbligatoria e unifica i casi documento esistente e non; i campi opzionali si compilano in base al caso.
-- **`metadata`**: `nome_ente_titolare` e `nome_eaa` sono obbligatori con `minLength: 1` (non possono essere stringa vuota).
-- **`campo_risposta`**: ogni domanda richiede `domanda` e `risposta`; `suggerimento` è facoltativo.
-- **`assistenza.canali`**: ogni elemento ha `tipo` (enum: "Email assistenza", "Numero telefonico", "Altro"), `risposta` (stringa: indirizzo email, numero di telefono o descrizione a seconda del tipo; vuota se il canale non è utilizzato) e `note` (stringa); per tipo "Email assistenza" con risposta non vuota, lo schema valida il formato email.
+- Lo schema valida l'intera struttura del modulo: le sezioni di primo livello `denominazioni ufficiali`, `casi d'uso`, `dataset`, `mappatura errori`, `mappatura stati` e `assistenza` sono tutte obbligatorie e validate dallo schema.
+- **Sezione casi d'uso**: `casi d' uso` è obbligatoria e unifica i casi documento esistente e non; i campi opzionali si compilano in base al caso.
+- **`casi d'uso` → `target utenti`**: la proprietà canonica è **`utenti doc preesistente`**.
+- **`denominazioni ufficiali`**: sezione obbligatoria con `nome ente titolare`, `nome eaa` e `versione`.
+- **`campo_risposta`** (casi d'uso e stessa forma per le FAQ in `assistenza.faq`): ogni voce richiede **`domanda`**, **`risposta`** e **`esempio`** (`risposta` stringa, booleano o null; in bozza testuale di solito stringa vuota).
+- **`assistenza.canali`**: ogni elemento ha `tipo` (enum: "Email assistenza", "Numero telefonico", "Altro") e `dettaglio canale`; il campo `note` è **opzionale**. Per tipo "Email assistenza" con `dettaglio canale` non vuoto, lo schema valida il formato email.
 - **`assistenza.referenti`**: ogni elemento ha `ruolo`, `nome`, `cognome`, `email`, `telefono` (tutti stringa).
-- **`assistenza.faq`**: ogni elemento ha `domanda` e `risposta` (stringa).
-- **`e_service`**: obbligatorie le sezioni `pdnd_metadata`, `request` (con `parametri_input`), `response` (con `versione` e `dataset`, ossia il data model dei dati in risposta), `mappatura_errori` e `stati` (array di primo livello sotto `e_service`). Facoltativa `lista_nome_campo`.
+- **`assistenza.faq`**: ogni voce ha `domanda`, `risposta`, `esempio` (stessa struttura di `campo_risposta`).
+- **`dataset`**: sezione obbligatoria (oggetto) che descrive il dataset relativo all'EAA. Contiene, nell'ordine: **`dataset_id`**, **`parametri di richiesta`** e **`dati di risposta`**. Si compila un dataset per ciascun modulo/EAA.
+- **`dataset` → `dataset_id`**: stringa obbligatoria, identificativo univoco del dataset definito dal Titolare di Fonte Autentica (consigliati UUID oppure stringa breve in formato kebab-case, es. `tesserino-medici`).
+- **`dataset` → `parametri di richiesta`**: array obbligatorio di oggetti `parametro_input` (parametri in ingresso all'e-service).
+- **`dataset` → `dati di risposta`**: array obbligatorio di oggetti `data_model_campo` (campi in risposta; contratto 1.0). Il campo **`lunghezza massima caratteri`** è opzionale in `data_model_campo` (obbligatorio in `parametro_input`).
+- **`mappatura stati`**: array di **5** elementi fissi (`Valido`, `Non Valido`, `Sospeso`, `Scaduto`, `Da aggiornare`); ogni voce richiede `stato`, `descrizione`, `applicabile`, `azione utente`, `note` (campo opzionale `causa`). Dalla v2.0.0 è ammesso unicamente il valore canonico `Non Valido` (rimossa la variante `Non valido`).
+- **Nomi proprietà**: nelle chiavi del JSON (in particolare sotto `casi d'uso`) non usare **doppi spazi** tra le parole; lo schema e il template ufficiale usano un solo spazio (es. `canali richiesta doc preesistente`, non `canali richiesta  doc preesistente`).

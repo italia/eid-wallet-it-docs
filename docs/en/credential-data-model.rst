@@ -120,7 +120,7 @@ The JWT payload contains the following claims. Unless otherwise specifed, the fo
       - OPTIONAL. UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in :rfc:`7519`.
       - `[RFC7519, Section 4.1.6] <https://www.iana.org/go/rfc7519>`_.
     * - **exp**
-      - REQUIRED. UNIX Timestamp with the expiry time of the JWT, coded as NumericDate as indicated in :rfc:`7519`.
+      - REQUIRED. UNIX Timestamp with the expiry time of the JWT, coded as NumericDate as indicated in :rfc:`7519`. In accordance with [`EIDAS-ARF`_] HLR **ISSU_12c** and **ISSU_12d** it MUST NOT be later than the expiration date of the Wallet Unit Attestation presented as part of the Digital Credential issuance process.
       - `[RFC7519, Section 4.1.4] <https://www.iana.org/go/rfc7519>`_.
     * - **nbf**
       - OPTIONAL. UNIX Timestamp with the start time of validity of the JWT, coded as NumericDate as indicated in :rfc:`7519`.
@@ -153,7 +153,7 @@ The JWT payload contains the following claims. Unless otherwise specifed, the fo
       - OPTIONAL. *JSON object*. Format-encoded data identifier `verification` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. It includes the following sub-value:
 
           * ``trust_framework``: REQUIRED. *String* identifying the trust framework used for User authentication. It MUST be set using one of the values described in the `trust_frameworks_supported` map provided within the Credential Issuer Metadata.
-          * ``assurance_level``: REQUIRED. *String* identifying the level of identity assurance guaranteed during the User authentication process.
+          * ``assurance_level``: REQUIRED. *String* identifying the level of identity assurance guaranteed during the User authentication process. The value MUST match with one of the values mapped in the ``acr_values_supported`` array of the :ref:`credential-issuer-metadata:Credential Issuer Metadata`.
 
       - Domestic extension.
     * - **_sd**
@@ -227,16 +227,6 @@ In the following the disclosure list is given:
    ``["-z34cJ1gC5UBPCIx8OhNiQ", "birth_date", "1980-01-10"]``
 
 
-**Claim** ``expiry_date``:
-
- * SHA-256 Hash: ``_ckhwGvTwFceg8jAFrQwqbw978ZHsaLJE_hs-rqV9lQ``
- * Disclosure:
-   ``WyJYY1hsUFZDcWpITnZlQkNubFZQWWdBIiwgImV4cGlyeV9kYXRlIiwgIjIw``
-   ``MjQtMDEtMDEiXQ``
- * Contents:
-   ``["XcXlPVCqjHNveBCnlVPYgA", "expiry_date", "2024-01-01"]``
-
-
 **Claim** ``tax_id_code``:
 
  * SHA-256 Hash: ``Wq3gFfmC0I9Lefw1mh-Bk5XPRtoSCg9aE23uOhxakas``
@@ -271,20 +261,9 @@ When provided, the Type Metadata Document MUST be a *JSON object* compliant with
 
 The Credential Type Metadata JSON Document MAY be retrieved through a *well-known* endpoint. See Section 6.3.3 of `SD-JWT-VC`_.
 This endpoint, provided by the Credential Issuer, MUST have the following format: ``https://{Credential Issuer Domain}/.well-known/type-metadata``. The ``vct`` query parameter MUST be added to that endpoint.
-The Endpoint returns a ``200 OK`` status code and supports ``application/json`` and ``application/jwt`` as content type.
+The Endpoint returns a ``200 OK`` status code and supports ``application/json`` as content type.
 
 Below a non-normative example is given.
-
-.. code-block:: http
-
-    GET /.well-known/type-metadata?vct=urn%3Aeudi%3Apid%3Ait%3A1 HTTP/1.1
-    Host: pidprovider.example.it
-    Accept: application/jwt
-
-    HTTP/1.1 200 OK
-    Content-Type: application/jwt
-
-    eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
 
 .. code-block:: http
 
@@ -406,7 +385,7 @@ The `MobileSecurityObject` MUST have the following attributes, unless otherwise 
 
         - When defined by an ISO standard, It MUST be a string of the form ``iso.org.{iso-number}.{part}.{version}.{credential_type}`` (e.g. for an mDL, the value MUST be ``org.iso.18013.5.1.mDL``).
 
-        - When defined at the european level, it MUST be a string of the form ``eu.europa.ec.{credential_type}.{version}`` (e.g., ``eu.europa.ec.loyaltycard.1.0``).
+        - When defined at the european level, it MUST be a string of the form ``eu.europa.ec.eudi.{credential_type}.{version}`` (e.g., ``eu.europa.ec.eudi.pid.1``).
 
         - When defined at national level, it MUST be a string of the form ``{Trust Anchor reverse domain}.{credential_type}.{version}`` (e.g., ``it.wallet.trust-registry.pid.1``).
 
@@ -419,7 +398,7 @@ The `MobileSecurityObject` MUST have the following attributes, unless otherwise 
 
           * **signed** *(tdate, OPTIONAL)*. The timestamp indicating when the `MobileSecurityObject` was signed.
           * **validFrom** *(tdate, OPTIONAL)*. Timestamp before which the `MobileSecurityObject` is not considered valid. When present, it MUST be equal to or later than the `signed` time.
-          * **validUntil** *(tdate, REQUIRED)*. Timestamp after which the `MobileSecurityObject` is no longer considered valid.
+          * **validUntil** *(tdate, REQUIRED)*. Timestamp after which the `MobileSecurityObject` is no longer considered valid. In accordance with [`EIDAS-ARF`_] HLR **ISSU_12c** and **ISSU_12d** it MUST NOT be later than the expiration date of the Wallet Unit Attestation presented as part of the Digital Credential issuance process.
 
       - [ISO 18013-5#9.1.2.4]
     * - **digestAlgorithm**
@@ -509,7 +488,7 @@ The following **elementIdentifiers** representing format-encoded metadata attrib
      - *(map, OPTIONAL)*. Format-encoded data identifier `verification` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. The CBOR map includes the following members:
 
          * ``trust_framework`` *(tstr, REQUIRED)*: trust framework used for User authentication.
-         * ``assurance_level`` *(tstr, REQUIRED)*: level of identity assurance guaranteed during User authentication.
+         * ``assurance_level`` *(tstr, REQUIRED)*: level of identity assurance guaranteed during User authentication. The value MUST match with one of the values mapped in the ``acr_values_supported`` array of the :ref:`credential-issuer-metadata:Credential Issuer Metadata`.
 
      - Domestic extension.
 

@@ -122,7 +122,7 @@ Il payload JWT contiene i seguenti claim. Salvo diversamente specificato, i segu
       - OPZIONALE. Timestamp UNIX con l'orario di emissione del JWT, codificato come NumericDate come indicato in :rfc:`7519`.
       - `[RFC7519, Sezione 4.1.6] <https://www.iana.org/go/rfc7519>`_.
     * - **exp**
-      - OBBLIGATORIO. Timestamp UNIX con l'orario di scadenza del JWT, codificato come NumericDate come indicato in :rfc:`7519`.
+      - OBBLIGATORIO. Timestamp UNIX con l'orario di scadenza del JWT, codificato come NumericDate come indicato in :rfc:`7519`. In conformità al requisito [`EIDAS-ARF`_] **ISSU_12c** e **ISSU_12d** il timestamp NON DEVE essere successivo alla data di scadenza della Wallet Unit Attestation presentata durante il processo di emissione della Credenziale Digitale.
       - `[RFC7519, Sezione 4.1.4] <https://www.iana.org/go/rfc7519>`_.
     * - **nbf**
       - OPZIONALE. Timestamp UNIX con l'orario di inizio validità del JWT, codificato come NumericDate come indicato in :rfc:`7519`.
@@ -156,7 +156,7 @@ Il payload JWT contiene i seguenti claim. Salvo diversamente specificato, i segu
         Include i seguenti sotto-valori:
 
           * ``trust_framework``: OBBLIGATORIO. *Stringa* che identifica il trust framework utilizzato per l'autenticazione dell'Utente. DEVE essere impostato utilizzando uno dei valori descritti nella mappa `trust_frameworks_supported` fornita nei Metadata del Fornitore di Attestati Elettronici.
-          * ``assurance_level``: OBBLIGATORIO. *Stringa* che identifica il livello di garanzia dell'identità garantito durante il processo di autenticazione dell'Utente.
+          * ``assurance_level``: OBBLIGATORIO. *Stringa* che identifica il livello di garanzia dell'identità garantito durante il processo di autenticazione dell'Utente. Il valore DEVE corrispondere a uno dei valori mappati nell'array ``acr_values_supported`` presente nel :ref:`credential-issuer-metadata:Metadata del Fornitore di Attestati Elettronici`.
 
       - Estensione domestica.
     * - **_sd**
@@ -229,16 +229,6 @@ Di seguito è riportato l'elenco delle disclosure:
    ``["-z34cJ1gC5UBPCIx8OhNiQ", "birth_date", "1980-01-10"]``
 
 
-**Claim** ``expiry_date``:
-
- * Hash SHA-256: ``_ckhwGvTwFceg8jAFrQwqbw978ZHsaLJE_hs-rqV9lQ``
- * Disclosure:
-   ``WyJYY1hsUFZDcWpITnZlQkNubFZQWWdBIiwgImV4cGlyeV9kYXRlIiwgIjIw``
-   ``MjQtMDEtMDEiXQ``
- * Contenuto:
-   ``["XcXlPVCqjHNveBCnlVPYgA", "expiry_date", "2024-01-01"]``
-
-
 **Claim** ``tax_id_code``:
 
  * Hash SHA-256: ``Wq3gFfmC0I9Lefw1mh-Bk5XPRtoSCg9aE23uOhxakas``
@@ -273,20 +263,9 @@ Il documento di *Type Metadata*, se fornito, DEVE essere un *JSON object* e DEVE
 
 In conformità con la Sezione 6.3.3 di `SD-JWT-VC`_, il documento JSON del *Type Metadata* PUÒ essere recuperato tramite un *well-known* endpoint.
 Questo endpoint, fornito dal Fornitore di Attestati Elettronici, DEVE avere il seguente formato: ``https://{Dominio Credential Issuer}/.well-known/type-metadata``. A tale endpoint DEVE essere aggiunto il parametro di query ``vct``.
-L'endpoint restituisce un codice di stato ``200 OK`` e supporta ``application/json`` e ``application/jwt`` come content type.
+L'endpoint restituisce un codice di stato ``200 OK`` e supporta ``application/json`` come content type.
 
 Di seguito è riportato un esempio non normativo.
-
-.. code-block:: http
-
-    GET /.well-known/type-metadata?vct=urn%3Aeudi%3Apid%3Ait%3A1 HTTP/1.1
-    Host: issuer.example.it
-    Accept: application/jwt
-
-    HTTP/1.1 200 OK
-    Content-Type: application/jwt
-
-    eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
 
 .. code-block:: http
 
@@ -410,7 +389,7 @@ Il `MobileSecurityObject` DEVE avere i seguenti attributi, se non diversamente s
 
           - Se definito da uno standard ISO, DEVE essere una stringa della forma ``iso.org.{iso-number}.{part}.{version}.{credential_type}`` (per esempio, per una mDL, il valore DEVE essere ``org.iso.18013.5.1.mDL``).
 
-          - Se definito a livello europeo, DEVE essere una stringa della forma ``eu.europa.ec.{credential_type}.{version}`` (ad es., ``eu.europa.ec.eudi.pid.1``).
+          - Se definito a livello europeo, DEVE essere una stringa della forma ``eu.europa.ec.eudi.{credential_type}.{version}`` (ad es., ``eu.europa.ec.eudi.pid.1``).
 
           - Se definito a livello nazionale, DEVE essere una stringa della forma ``{Trust Anchor reverse domain}.{credential_type}.{version}`` (ad es., ``it-wallet.trust-registry.pid.1``).
 
@@ -423,7 +402,7 @@ Il `MobileSecurityObject` DEVE avere i seguenti attributi, se non diversamente s
 
           * **signed** *(tdate, OPTIONAL)*. Il timestamp che indica quando il `MobileSecurityObject` è stato firmato.
           * **validFrom** *(tdate, OPTIONAL)*. Timestamp prima del quale il `MobileSecurityObject` non è considerato valido. Quando presente, DEVE essere uguale o successivo a `signed`.
-          * **validUntil** *(tdate, REQUIRED)*. Timestamp dopo il quale il `MobileSecurityObject` non è più considerato valido.
+          * **validUntil** *(tdate, REQUIRED)*. Timestamp dopo il quale il `MobileSecurityObject` non è più considerato valido. In conformità al requisito [`EIDAS-ARF`_] **ISSU_12c** e **ISSU_12d** il timestamp NON DEVE essere successivo alla data di scadenza della Wallet Unit Attestation presentata durante il processo di emissione della Credenziale Digitale.
 
       - [ISO 18013-5#9.1.2.4]
     * - **digestAlgorithm**
@@ -513,7 +492,7 @@ I seguenti **elementIdentifiers** che rappresentano attributi metadata format-en
      - *(map, OPZIONALE)*. Identificativo del dato format-encoded `verification` come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`. La CBOR map include i seguenti membri:
 
          * ``trust_framework`` *(tstr, OBBLIGATORIO)*: trust framework utilizzato per l'autenticazione dell'Utente.
-         * ``assurance_level`` *(tstr, OBBLIGATORIO)*: livello di garanzia dell'identità garantito durante l'autenticazione dell'Utente.
+         * ``assurance_level`` *(tstr, OBBLIGATORIO)*: livello di garanzia dell'identità garantito durante l'autenticazione dell'Utente. Il valore DEVE corrispondere a uno dei valori mappati nell'array ``acr_values_supported`` presente nel :ref:`credential-issuer-metadata:Metadata del Fornitore di Attestati Elettronici`.
 
      - Estensione domestica.
 

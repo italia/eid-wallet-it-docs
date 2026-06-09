@@ -26,6 +26,7 @@
 - Mart Aarma
 - Marta Sciunnach
 - Matteo Fortini
+- Michele Massetti
 - Michele Silletti
 - Nicola Saitto
 - Niels van Dijk
@@ -45,6 +46,7 @@
 - Takahiko Kawasaki
 - Thomas Chiozzi
 - Torsten Lodderstedt
+- Valentina Carollo
 - Valerio Bozzolan
 - Vladimir Duzhinov
 - Zahra Ebadi Ansaroudi

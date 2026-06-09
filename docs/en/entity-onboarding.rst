@@ -38,7 +38,7 @@ The following table summarizes entity types, their roles, and corresponding onbo
    * - Authentic Sources
      - Authoritative data providers for Digital Credential attributes
      - :ref:`entity-onboarding:Authentic Sources Registration Process`
-     - Data authority validation; API integration (e.g., PDND)
+     - Data authority validation; API integration (PDND)
    * - Credential Issuers
      - Generate and issue Digital Credentials using Authentic Source data
      - :ref:`entity-onboarding:Federation Entities Onboarding Process`
@@ -230,7 +230,7 @@ The Authentic Source registration follows a technical process as described below
      - REQUIRED. URL to privacy policy document.
    * - **organization_info.tos_uri**
      - string
-     - REQUIRED only for Private AS. URL to terms of service document.
+     - OPTIONAL. URL to terms of service document.
    * - **organization_info.organization_country**
      - string
      - REQUIRED. Two-letter ISO 3166-1 alpha-2 country code of the organization.
@@ -257,7 +257,7 @@ The Authentic Source registration follows a technical process as described below
      - REQUIRED. Array containing data capability specifications.
    * - **data_capabilities[].dataset_id**
      - string
-     - REQUIRED. The unique identifier of the dataset within the scope of the Authentic Source, which MAY be used as a query parameter for the ``GetAttributeClaims`` service.
+     - REQUIRED. The :term:`Dataset_id` within the scope of the Authentic Source, which MAY be used as a query parameter for the ``GetAttributeClaims`` service.
    * - **data_capabilities[].data_origin**
      - JSON Object Array
      - REQUIRED. Object array containing the human-readable name of the data origin or department providing the data in multiple languages. It MUST contain ``locale`` and ``name`` claims.
@@ -278,13 +278,13 @@ The Authentic Source registration follows a technical process as described below
      - REQUIRED. Defines if a claim is always available or not.
    * - **data_capabilities[].integration_method**
      - string
-     - REQUIRED. Authorization framework used for data access. MUST be ``"pdnd"`` for Public AS. Private AS MAY use other authorization frameworks such as: ``"oauth2"``, ``"api_key"``, ``"mtls"``, etc.
+     - REQUIRED. Authorization framework used for data access. MUST be ``"pdnd"``.
    * - **data_capabilities[].integration_endpoint**
      - string
-     - REQUIRED. Service access point (PDND endpoint for Public AS, API endpoint for Private AS).
+     - OPTIONAL. Service access point (PDND endpoint).
    * - **data_capabilities[].api_specification**
      - string
-     - REQUIRED. URL to `OAS3`_ specification document for this data capability.
+     - OPTIONAL. URL to `OAS3`_ specification document for this data capability.
    * - **data_capabilities[].data_provision**
      - JSON object
      - OPTIONAL. Data provision capabilities and timing specifications.
@@ -309,7 +309,7 @@ The Authentic Source registration follows a technical process as described below
    * - **data_capabilities[].allowed_states**
      - JSON object Array
      - OPTIONAL. Object array containing information in multiple languages for the User about the current status of the dataset and, eventually recommended actions. The status values are defined in the :ref:`credential-revocation:Token Status Lists` Section. It MUST contain ``locale``, ``title``, ``description`` and ``<Status-Type-Value>`` claims.
-   * - **data_capabilities[].service_documentation**
+   * - **data_capabilities[].service_documentation_uri**
      - string
      - OPTIONAL. URL pointing to the Authentic Source service documentation.
    * - **data_capabilities[].update_frequency**
@@ -359,7 +359,7 @@ Following administrative Authentic Source to Credential Issuer authorization obt
 
 Technical integration encompasses:
 
-- **API Endpoint Configuration**: Establishment of secure API connections as specified in Authentic Source technical specifications (PDND e-services for public Authentic Sources, `OAS3`_ implementations for private Authentic Sources).
+- **API Endpoint Configuration**: Establishment of secure API connections as specified in Authentic Source technical specifications (PDND e-services).
 - **Claims Mapping Validation**: Verification that Credential Issuer implementation correctly maps Authentic Source data responses to standardized Claims Registry identifiers.
 - **Data Flow Testing**: Validation of immediate or deferred data provision capabilities and error handling mechanisms.
 - **Security Implementation**: Configuration of authentication, authorization, and audit logging as required by Authentic Source security standards.
@@ -443,7 +443,7 @@ The federation onboarding follows a structured 4-step procedure, it can be perfo
 .. plantuml:: plantuml/federation-onboarding-process.puml
     :width: 99%
     :alt: Federation entity onboarding process showing the 4-step procedure
-    :caption: `Federation Entity Onboarding Process. <https://www.plantuml.com/plantuml/svg/dLHHRnit37w_Nq7qOKYmfF6wz646l3NmqY4BXXPEr-t1G41BF5khZhf9L5B_-vqi7quvtu1XRmSToUyZFtvy5mIznCR2UzBaKOnZk6KnieSFl77ejU4jVFHEKGWLHd4ScmtvgcgxHADCYopmwYJx5M20clurwYRApla-KB2g5Wju46hXktc9lAA_8mM1XxXfJ0WfTR6egfhWyaSGdESV0cv8yJbbpMV7Hkv-le2FSMEDWdlQmwz_t5_0yc5rFc2-cSCKD_YCrkZyYAnXILvCRHGAmLq84LdHWOvWJ-SpULFlmTFM13dMCrmxtno-oyXSc_fnBntNPXkFETZnlthzJDPUVc7tp5Uk9JRwiXve4klM6PQYvatRsZqq9AXH45fdZJ8KuDd83XG6XOS9KLsJAlDICmH_ldux-m5KqMJ7UyqdsXR3h2gqKeufH9KsfOws0W3843NDNynExT0mU0gjuq23K2Nqju2z3ELxEA_81YeXQpIMz0XkHN-HIhzpxqOJfnAamQHUGqMi1_s_dq-hy7jxK2XflwBWx1Fr2rbiOOBBWPD5vck-X1kjXtuUTuObWB9eclxdrxSgFnor6azhmChJ3pk81qmDjyl_i2s3O_fE2fzS-VpqKuYR1R4aZaP_8pu6UKHM7Us5OFTKMEPwABJAGkOv5TvTkgQrbD179bcHwkAxyahWAGa91wZSQH7t2t6YJwKvFnqYVqF_9MqdPBRbAhEoKLCPPpXT2PT8fM8FWa8DiKmX1RDbqjsD-9I5A8XThFdfw5azU2prZCbsgUCJvsL_z8CQp05dRsOp-71_VhAsERBtHYRHiUbKAgXqxZYbaciDEhydKRlfpfFcTVhzKl4ncydSJ6aORu6QScw_YaSbBtJohfckDSgzOw6jHncfDschVY2FJHTqD5FcV-gKsZ3Q_tjdyxtfXSd71iwkPxEhwzdrU6AttZi_KYyV7107Hvlbs_EEMCV6_WC0>`_
+    :caption: `Federation Entity Onboarding Process. <https://www.plantuml.com/plantuml/svg/ZLDDRnCn4BtxLunwQgIavOCUY4W_b1PKAWHAeN2e54tiSJEjrrxMOqB-FVknoswL8769el6yjs_Up3kFWeMap2bC4dpALbGebPSrrfoZ5pXuJuOA50uUhhomR0y08rZwPzT5adKekaP1fMOpk1NAuUKKFljLmCAmVu05_KmK1MxJAkCOA-XiffGbc9o2uBHv40Wzf6WWz_wmaGBNbsFuabQEDTpG5Zv-lubZcDykugZ_wgifx5C7T-ZOD4Nq1kPK25lMA0JNCIRqccf1WfsWEohORg6W1uxIyh6teSZg_trdnqtGwfm7R_aXjHWi9pW-sf1paoSVDluuvEJPJ6mlaxp90tiPS5xakTj2He861I4FZZLJX0tB6ZH6ZRL7P2tf8QuQXk37qScBjyCX8-0gf5B9pe87ZaPWN_ivuFj0lkgdeQjVYnG5Fc7n5A7q0wWcKWgT37sEIMkAqIQd000QJajJM3opr5HmorGeSf6611RPaTa1FvAkdoihUhW1haQFYhpfp-7r57OdlgmSNP0KJB_GjNVO3rmVQQXk48LA6XJAo5TtU6n9zFeifjMicNd9PgHwRNjniA2O1ny93alW61utfMs7Eni2lKRsSJJ-k_HblVJjIBaGyiPerElMRP1jJhtimKwwg5LwfQekix9wrlzTLj3Pk-htj5S_f1X8xekZvyw-cSB-U_-Mrrb0RuRvduSiToHjxYrr7sswzp9Dx_q4Bem1x5AyNBEN2DeXPztZxnFT5Bfix5ZQTVOEj1IzZ2O4SGsfbcFWQluVkLNdv4tAt1y0>`_
 
 **Step 1 - Onboarding Request Submission**: Federation Entity initiates the onboarding process by submitting a technical registration request including the following information.
 
@@ -496,21 +496,7 @@ The example below shows the decoded content of the CSR:
   - **Metadata Policy Application**: Application of federation-specific metadata policies to the entity's metadata based on organizational characteristics and authorization scope as defined in :ref:`trust-infrastructure:Subordinate Statements`. When onboarded through an Intermediate, both Intermediate and Trust Anchor policies apply, with Trust Anchor policies taking precedence in case of conflicts.
   - **X.509 Certificate Issuance**: Certification of the Federation Entity Key with X.509 Certificate issuance using the trust infrastructure detailed in :ref:`trust-infrastructure:X.509 Certificates Issuance`. Intermediates MUST issue X.509 Certificates using appropriate **naming constraints** limiting the use of DNS names and URIs to their subordinates only.
 
-Upon successful validation, the entity receives a response containing an X.509 Certificate Chain where:
-
-  - The first element is the X.509 Certificate containing the Federation Entity Key (issued by the Federation Authority).
-  - **For Trust Anchor onboarding**: The second element is the Trust Anchor's self-signed X.509 Certificate for validating the first X.509 Certificate.
-  - **For Intermediate onboarding**: Additional elements include the Intermediate's X.509 Certificate and the Trust Anchor's self-signed Certificate, forming a complete X.509 X.509 Certificate chain.
-  - All X.509 Certificates are expressed in DER format and encoded in Base64.
-
-Example X.509 X.509 Certificate chain response:
-
-.. code-block:: json
-
-   [
-     "MIIDqjCCA1GgAwIBAgIGAZc6/V9qMAoGCCqGSM49BAMCMIGzMQsw...",
-     "MIIDQzCCAuigAwIBAgIGAZc6+XlDMAoGCCqGSM49BAMCMIGzMQsw..."
-   ]
+  Upon successful validation, the entity receives a Registration Identifier.
 
 .. note::
    If issuance process fails, the requestor entity receives a response with identified issues to be resolved before submitting a new onboarding request.
@@ -518,7 +504,31 @@ Example X.509 X.509 Certificate chain response:
 .. note::
    Each entity can collect its X.509 Certificate Chain by obtaining the Trust Anchor's self-signed X.509 Certificate, which is included within the Entity Configuration's ``jwks`` object, and by aggregating all the ``x5c`` values published by its superior entities, from the Trust Anchor down to its immediate superior. This enables the entity to reconstruct the full certificate chain required for validation and trust establishment within the federation.
 
-**Step 3 - Fetch Subordinate Statement**: as confirmation of success of the onboarding process, the entity MUST fetch the Subordinate Statement about itself from the immediate Federation Authority using the ``/fetch`` endpoint as defined in :ref:`trust-infrastructure:Federation API endpoints`.
+**Step 3 - Federation Entity Data Retrieval**: as confirmation of success of the onboarding process, the entity MUST fetch the Subordinate Statement about itself from the immediate Federation Authority using the ``/fetch`` endpoint as defined in :ref:`trust-infrastructure:Federation API endpoints`.
+
+In this way, the entity receives a X.509 Certificate Chain(s) within ``jwks`` where:
+
+  - The first element is the X.509 Certificate containing the Federation Entity Key (issued by the Federation Authority).
+  - **For Trust Anchor onboarding**: The second element is the Trust Anchor's self-signed X.509 Certificate for validating the first X.509 Certificate.
+  - **For Intermediate onboarding**: Additional elements include the Intermediate's X.509 Certificate and the Trust Anchor's self-signed Certificate, forming a complete X.509 X.509 Certificate chain.
+  - All X.509 Certificates are expressed in DER format and encoded in Base64.
+
+Example X.509 X.509 Certificate chain within ``jwks`` claim:
+
+.. code-block:: json
+
+ {
+    "keys": [
+      {
+        "crv": "P-256",
+        "kty": "EC",
+        "x": "qrJrj3Af_B57sbOIRrcBM7br7wOc8ynj7lHFPTeffUk",
+        "y": "1H0cWDyGgvU8w-kPKU_xycOCUNT2o0bwslIQtnPU6iM",
+        "kid": "5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY",
+		    "x5c": ["MIIDqjCCA1GgAwIBAgIGAZc6/V9qMAoGCCqGSM49BAMCMIGzMQsw...", "MIIDQzCCAuigAwIBAgIGAZc6+XlDMAoGCCqGSM49BAMCMIGzMQsw..."]
+      }
+    ]
+  }
 
 Example fetch request:
 
@@ -529,6 +539,8 @@ Example fetch request:
 
 .. note::
    If the ``/fetch`` endpoint responds with status code set to ``400`` or ``404``, the entity MUST resolve the issues described in the response message, before calling the fetch endpoint again. 
+
+Furthermore, the entity can retrieve Trust Marks through Trust Mark Endpoint as defined in :ref:`trust-infrastructure:Federation API endpoints`.
 
 **Step 4: Entity Configuration Update and Onboarding Completion**
 
@@ -588,7 +600,7 @@ The Federation Entity MUST complete the onboarding process by:
          ]
 
 .. note::
-   To update Trust Marks after onboarding, the entity can use the fetch endpoint of its immediate superior to obtain all the updated Trust Marks about itself. When the Trust Mark issuer is different from the superior entity that has onboarded the entity, Federation Entities can obtain fresh Trust Marks anytime needed by using the Federation Trust Mark endpoint as defined in :ref:`trust-infrastructure:Federation API endpoints`.
+  Federation Entities can obtain Trust Marks anytime needed by using the Trust Mark endpoint exposed by a Trust Mark Issuer as defined in :ref:`trust-infrastructure:Federation API endpoints`.
 
 Upon successful completion of Step 4, the **entity onboarding is successfully completed**. The entity is now operational within the IT-Wallet federation and ready for operational activities.
    
@@ -599,7 +611,7 @@ Upon successful completion of Step 4, the **entity onboarding is successfully co
 IT-Wallet Federation Trust Marks
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Federation Entities receive IT-Wallet Federation Trust Marks during successful onboarding completion. **Trust Marks are issued by the Federation Authority** (Trust Anchor for direct onboarding, Intermediate for mediated onboarding) and serve as verifiable attestations about compliance with IT-Wallet technical profiles and or authorization policies.
+Federation Entities receive IT-Wallet Federation Trust Marks during successful onboarding completion. **Trust Marks are issued by the Federation Authority** (Trust Anchor for direct onboarding, Intermediate for mediated onboarding) through the Federation Trust Mark Endpoint and serve as verifiable attestations about compliance with IT-Wallet technical profiles and or authorization policies.
 
 Trust Mark Types and Schema
 """""""""""""""""""""""""""

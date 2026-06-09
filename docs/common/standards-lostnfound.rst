@@ -9,7 +9,7 @@ Infrastructure of Trust
     :header-rows: 0
 
     * - `OID-FED`_
-      - Hedberg, R., Jones, M.B., Solberg, A.Å., Bradley, J., De Marco, G., Dzhuvinov, V.,  "OpenID Federation 1.0", December 2024, Draft 41.
+      - Hedberg, R., Jones, M.B., Solberg, A.Å., Bradley, J., De Marco, G., Dzhuvinov, V.,  "OpenID Federation 1.0", February 2026, Final.
     * - DTS/ESI-0019602
       - Electronic Signatures and Trust Infrastructures (ESI); Trusted lists; Data model. Trusted lists in other formats, such as JSON, CBOR or ASN.1.
     * - ISO-IEC_7367

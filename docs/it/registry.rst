@@ -106,11 +106,13 @@ Struttura del payload JWT (in forma decodificata):
       "credential_catalog": "https://trust-anchor.eid-wallet.example.it/api/v1/.well-known/credential-catalog",
       "taxonomy": "https://trust-anchor.eid-wallet.example.it/api/v1/taxonomy",
       "schema_registry": "https://trust-anchor.eid-wallet.example.it/api/v1/schemas",
-      "federation_list": "https://trust-anchor.eid-wallet.example.it/list",
-      "federation_fetch": "https://trust-anchor.eid-wallet.example.it/fetch",
-      "federation_resolve": "https://trust-anchor.eid-wallet.example.it/resolve",
-      "federation_trust_mark_status": "https://trust-anchor.eid-wallet.example.it/trust_mark_status",
-      "federation_historical_keys": "https://trust-anchor.eid-wallet.example.it/historical-jwks"
+      "federation_list_endpoint": "https://trust-anchor.eid-wallet.example.it/list",
+      "federation_fetch_endpoint": "https://trust-anchor.eid-wallet.example.it/federation_fetch_endpoint",
+      "federation_resolve_endpoint": "https://trust-anchor.eid-wallet.example.it/resolve",
+      "federation_trust_mark_status_endpoint": "https://trust-anchor.eid-wallet.example.it/trust_mark_status",
+      "federation_trust_mark_list_endpoint": "https://dev.ta.wallet.ipzs.it/trust_mark_listing",
+      "federation_trust_mark_endpoint": "https://dev.ta.wallet.ipzs.it/trust_mark",
+      "federation_historical_keys_endpoint": "https://trust-anchor.eid-wallet.example.it/federation_historical_keys"
     },
     "content_negotiation": ["application/json", "application/jwt"]
   }
@@ -239,7 +241,7 @@ L'Organismo di Vigilanza DEVE mantenere il Registro delle Fonti Autentiche per a
 
   - **Informazioni sull'Organizzazione**: Dettagli della persona giuridica, stato normativo e ruolo autorevole in domini specifici.
   - **Capacità sui Dati**: Disponibilità dei claim dichiarati facendo riferimento alle definizioni standardizzate del Registro dei Claims con le corrispondenti classificazioni della Tassonomia.
-  - **Metodi di Integrazione**: Meccanismi tecnici di accesso (PDND per FA pubbliche, API personalizzate per FA private).
+  - **Metodi di Integrazione**: Meccanismi tecnici di accesso (PDND).
   - **Finalità Previste**: Tipologie di Credenziale supportate e contesti aziendali per il coordinamento FA-EI.
   - **Garanzia della Qualità dei Dati**: Stato autorevole, frequenza di aggiornamento e capacità di audit trail.
 
@@ -281,7 +283,8 @@ L'architettura del Registro FA supporta diversi pattern di coordinamento che rif
 
   2. **FA del Settore Privato** (Integrazione Flessibile): Le entità private forniscono dati specializzati tramite accordi personalizzati:
 
-    - **API Personalizzate**: ``"integration_method": "custom_api"`` per pattern di accesso ai dati specifici del business.
+    - **API Personalizzate**: ``"integration_method": "pdnd"`` per l'accesso ai dati specifici del business.
+    - **Conformità Normativa**: Requisiti di piena trasparenza con pubblicazione pubblica nel catalogo.
     - **Selective Disclosure**: Visibilità pubblica limitata con flussi di approvazione specifici per EI.
     - **Flessibilità Aziendale**: Integrazione su misura a supporto di casi d'uso diversificati del settore privato.
 
@@ -390,7 +393,7 @@ Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciasc
      - OBBLIGATORIO. URL del documento di informativa sulla privacy.
    * - **organization_info.tos_uri**
      - string
-     - OBBLIGATORIO solo per FA Private. URL del documento dei termini di servizio.
+     - OPZIONALE. URL del documento dei termini di servizio.
    * - **organization_info.organization_country**
      - string
      - OBBLIGATORIO. Codice paese ISO 3166-1 alpha-2 a due lettere dell'organizzazione.
@@ -417,7 +420,7 @@ Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciasc
      - OBBLIGATORIO. Array contenente le specifiche delle capacità sui dati.
    * - **data_capabilities[].dataset_id**
      - string
-     - OBBLIGATORIO. L'identificatore univoco del dataset nell'ambito della Fonte Autentica, che PUÒ essere utilizzato come parametro di query per il servizio ``GetAttributeClaims``.
+     - OBBLIGATORIO. Il :term:`Dataset_id` nell'ambito della Fonte Autentica, che PUÒ essere utilizzato come parametro di query per il servizio ``GetAttributeClaims``.
    * - **data_capabilities[].data_origin_l10n_id**
      - string
      - OBBLIGATORIO. Chiave di localizzazione che fa riferimento al nome leggibile dell'origine o del dipartimento che fornisce i dati (es. ``authentic_source1.dataset1.origin``).
@@ -438,13 +441,13 @@ Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciasc
      - OBBLIGATORIO. Definisce se un claim è sempre disponibile o meno.
    * - **data_capabilities[].integration_method**
      - string
-     - OBBLIGATORIO. Framework di autorizzazione utilizzato per l'accesso ai dati. DEVE essere ``"pdnd"`` per le FA Pubbliche. Le FA Private POSSONO utilizzare altri framework di autorizzazione come: ``"oauth2"``, ``"api_key"``, ``"mtls"``, ecc.
+     - OBBLIGATORIO. Framework di autorizzazione utilizzato per l'accesso ai dati. DEVE essere ``"pdnd"``.
    * - **data_capabilities[].integration_endpoint**
      - string
-     - OPZIONALE. Punto di accesso al servizio (endpoint PDND per FA Pubbliche, endpoint API per FA Private).
+     - OPZIONALE. Punto di accesso al servizio (endpoint PDND).
    * - **data_capabilities[].api_specification**
      - string
-     - OBBLIGATORIO. URL del documento di specifica `OAS3`_ per questa capacità dati.
+     - OPZIONALE. URL del documento di specifica `OAS3`_ per questa capacità dati.
    * - **data_capabilities[].data_provision**
      - oggetto JSON
      - OPZIONALE. Capacità di fornitura dei dati e specifiche temporali.
@@ -463,7 +466,7 @@ Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciasc
    * - **data_capabilities[].user_information_l10n_id**
      - string
      - OPZIONALE. Chiave di localizzazione che fa riferimento a una stringa in formato Markdown con informazioni leggibili sulla capacità dati rilevanti per l'Utente (es. ``authentic_source1.dataset1.userinfo``). Questa stringa DEVE essere fornita dalla Fonte Autentica al Trust Anchor durante l'onboarding. La formattazione Markdown può essere testo semplice o una combinazione di testo e link. Ad esempio, se il database della Fonte Autentica contiene solo dati registrati *dopo* una data specifica, questa informazione DEVE essere comunicata tramite questa chiave.
-   * - **data_capabilities[].service_documentation**
+   * - **data_capabilities[].service_documentation_uri**
      - string
      - OPZIONALE. URL che punta alla documentazione del servizio della Fonte Autentica.
    * - **data_capabilities[].update_frequency**
@@ -1098,21 +1101,47 @@ Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazion
 
       * **user_auth_required**: OBBLIGATORIO. Flag che indica se l'autenticazione dell'Utente è richiesta durante l'emissione della Credenziale Digitale.
       * **min_loa**: OBBLIGATORIO. Livello Minimo di Garanzia richiesto per l'autenticazione della Credenziale Digitale. DEVE includere il Livello di Garanzia dell'autenticazione dell'Utente e dell'Istanza Wallet che richiede la Credenziale Digitale.
-      * **supported_schemes**: OBBLIGATORIO se ``user_auth_required`` è ``true``. Schemi di autenticazione dell'identità digitale supportati (es. ``["it-wallet"]``).
+      * **supported_schemes**: OBBLIGATORIO se ``user_auth_required`` è ``true``. Schemi di autenticazione dell'identità digitale supportati (es. ``["it_wallet"]``).
   * - **domains**
-    - OBBLIGATORIO. Array di domini a cui appartiene la Credenziale Digitale, quali:
+    - OBBLIGATORIO. Array contenente gli ID dei domini a cui appartiene la Credenziale Digitale (es. ``"IDENTITY"``, ``"MOBILITY_TRAVEL"``).
 
-      * **id**: Identificatore univoco del dominio (es. ``"IDENTITY"``, ``"MOBILITY_TRAVEL"``).
   * - **classes**
-    - OBBLIGATORIO. Array di classi a cui appartiene la Credenziale Digitale, quali:
+    - OBBLIGATORIO. Array contenente gli ID delle classi a cui appartiene la Credenziale Digitale (es. ``"IDENTIFICATION_DOCUMENTS"``, ``"LICENSES_AUTHORIZATIONS"``).
 
-      * **id**: Identificatore univoco della classe (es. "IDENTIFICATION_DOCUMENTS", "LICENSES_AUTHORIZATIONS").
   * - **purposes**
-    - OBBLIGATORIO. Array delle finalità di utilizzo per cui la Credenziale Digitale può essere impiegata, definendo contesti d'uso specifici e claim richiesti per ciascuna finalità, quali:
-
-      * **id**: Identificatore univoco della finalità, che fa riferimento a una finalità definita nella Tassonomia (es. ``"IDENTITY_VERIFICATION"``, ``"AGE_VERIFICATION"``, ``"DRIVING_RIGHTS_VERIFICATION"``).
+    - OBBLIGATORIO. Array contenente gli ID delle finalità (definita nella Tassonomia) di utilizzo per cui la Credenziale Digitale può essere impiegata, definendo contesti d'uso specifici e claim richiesti per ciascuna finalità (es. ``"IDENTITY_VERIFICATION"``, ``"AGE_VERIFICATION"``, ``"DRIVING_RIGHTS_VERIFICATION"``).
   * - **issuers**
-    - OBBLIGATORIO. Array di informazioni rilevanti sugli Emittenti di Credenziali autorizzati, inclusi dati amministrativi e tecnici quali nome dell'organizzazione, riferimento al documento di specifica API e meccanismi di emissione supportati (ad esempio il supporto al flusso differito).
+    - OBBLIGATORIO. Array di informazioni rilevanti sugli Emittenti di Credenziali autorizzati, inclusi dati amministrativi e tecnici quali nome dell'organizzazione, riferimento al documento di specifica API e meccanismi di emissione supportati. Ogni elemento dell’array contiene:
+
+       * **id**: OBBLIGATORIO. Stringa. Identificativo univoco dell’elemento dell’array.
+       * **entity_id**: OBBLIGATORIO. Stringa. Identificativo univoco del Credential Issuer. DEVE corrispondere al valore contenuto nel parametro ``iss`` dell’Entity Configuration del Credential Issuer.
+       * **organization_name_l10n_id**: OBBLIGATORIO. Stringa. Chiave di localizzazione che fa riferimento al nome localizzato dell’organizzazione nel bundle di localizzazione (es. ``issuer1.name``).
+       * **organization_code**: Stringa. Codice IPA del Credential Issuer per enti pubblici oppure partita IVA per soggetti privati.
+       * **organization_country**: Stringa. Codice paese dell’organizzazione a due lettere conforme allo standard ISO 3166-1 alpha-2.
+       * **contacts**: OBBLIGATORIO. Stringa. Array di indirizzi email di contatto per almeno un referente di supporto utenti, uno applicativo e uno specialista di sistemi.
+       * **legal_type**: Stringa. Classificazione giuridica del Credential Issuer (es. pub-eaa, qeaa, eaa).
+
+       * **homepage_uri**: Stringa. URL che punta alla homepage dell’organizzazione.
+       * **logo_uri**: Stringa. URL dell’immagine del logo dell’organizzazione.
+       * **policy_uri**: OBBLIGATORIO. Stringa. URL al documento di privacy policy.
+       * **tos_uri**: OPZIONALE. Stringa. URL al documento di termini di servizio.
+       * **service_documentation_uri**: OPZIONALE. Stringa. URL che punta alla documentazione del servizio del Credential Issuer.
+       * **issuance_flows**: OBBLIGATORIO. Oggetto. Contiene i seguenti parametri:
+
+          * **deferred_flow**: OBBLIGATORIO. Booleano. Indica se è supportata l’emissione differita.
+          * **immediate_flows**: OBBLIGATORIO. Booleano. Indica se è supportata l’emissione immediata.
+          * **wallet_initiated**: OBBLIGATORIO. Booleano. Indica se è supportato il flusso Wallet-Initiated.
+          * **issuer_initiated**: OBBLIGATORIO. Booleano. Indica se è supportata il flusso Issuer-Initiated (Third Party Initiated Flow).
+          * **max_deferred_issuance_time_minutes**: CONDIZIONALE. Intero. Tempo massimo, in minuti, per la disponibilità dell’emissione della credenziale. OBBLIGATORIO se ``deferred_flow`` è impostato a ``true``.
+          * **notification_methods**: REQUIRED if ``deferred_flow`` is ``true``. CONDIZIONALE. Array di stringhe. Contiene i metodi di notifica supportati dal Credential Issuer per l’emissione differita, come ``"push"``, ``"poll"``. OBBLIGATORIO se ``deferred_flow`` è impostato a ``true``.
+  
+  * - **localization**
+    - OBBLIGATORIO. Oggetto di configurazione della localizzazione contenente:
+
+       * **default_locale**: Codice locale predefinito (es. ``it``).
+       * **available_locales**: Array dei codici locale supportati (es. ``["en", "it"]``).
+       * **base_uri**: URI base per il recupero del bundle di localizzazione (es. ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/credential-catalog/``).
+       * **version**: Versione del formato del bundle di localizzazione.
   * - **authentic_sources**
     - OBBLIGATORIO. Array di oggetti JSON delle Fonti Autentiche che fanno riferimento alle Fonti Autentiche autorizzate. Ogni oggetto DEVE contenere l'identificatore dell'entità FA e l'identificatore specifico della capacità dati:
 
