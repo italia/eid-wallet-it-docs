@@ -4,6 +4,8 @@
 Remote Flow
 ===========
 
+The IT-Wallet remote presentation profile builds on `OpenID4VP`_, `OPENID4VC-HAIP`_, and `ETSI TS 119 472-2`_, which specifies how Relying Party registration information — including transactions mediated by a :term:`Relying Party Intermediary` — is transferred in the Authorization Request. See :ref:`remote-flow-verifier-info` and :ref:`remote-flow-rp-intermediary`.
+
 Depending on whether the User is using a mobile device or a workstation, the Relying Party MUST support the following remote flows (:ref:`RPR-84 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`):
 
 * **Same Device**, the Relying Party MUST provide an ``HTTP`` location to the Wallet Instance using a redirect (``302``) or an HTML href in a web page (:ref:`RPR-01 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`);
@@ -561,6 +563,8 @@ The JWT payload parameters are described herein:
         - **credential_ids**. Array referencing one or more Credentials from the ``dcql_query`` that can authorize the transaction.  
   * - **transaction_data_hashes_alg** 
     - OPTIONAL. Array of strings, each representing a hash algorithm identifier, corresponding to a hash algorithm name listed in the `IANA <https://www.iana.org/assignments/named-information/named-information.xhtml#hash-alg>`_.  One of these algorithms MUST be used to calculate the hashes in the ``transaction_data_hashes`` response parameter.  If omitted, the default hash algorithm is ``sha-256``.
+  * - **verifier_info**
+    - REQUIRED per `ETSI TS 119 472-2`_. A non-empty JSON array defined in `OpenID4VP`_ Section 5.11. Each element is a JSON Object with a ``format`` and a ``data`` member, and MUST NOT contain ``credential_ids``. The array MUST include one element with ``format`` set to ``registrar_dataset`` carrying the Registrar-provided registration data of the Relying Party for the current intended use (see :ref:`remote-flow-verifier-info`). If a Registration Certificate is available, the array MUST also include one element with ``format`` set to ``registration_cert`` carrying the serialized certificate by value. In an intermediated transaction, the ``registrar_dataset`` and ``registration_cert`` elements refer to the **intermediated** Relying Party, while the access certificate in the JWT header identifies the **intermediary** (see :ref:`remote-flow-rp-intermediary`).
   * - **response_type**
     - REQUIRED. It MUST be set to ``vp_token`` (:ref:`RPR-107 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`).
   * - **wallet_nonce**
@@ -595,6 +599,181 @@ The JWT payload parameters are described herein:
 
 .. note::
   The ``client_metadata`` parameter usage is conditional. If ``client_id`` uses the ``x509_hash`` prefix, all the Relying Party metadata, other than its public key used for signing the Request Object, MUST be provided in ``client_metadata``. However, if it is present and ``client_id`` uses the ``openid_federation`` prefix, the Wallet Instance MUST obtain the Relying Party metadata through the OpenID Federation Trust Chain (:ref:`RPR-113 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`), and MUST NOT use ``client_metadata`` to override or replace resolved metadata. The only exception is ``client_metadata.jwks`` (and related encrypted-response capability parameters such as ``encrypted_response_enc_values_supported``), which MAY be used exclusively to carry request-specific (ephemeral) public keys for encrypting the Authorization Response in ``direct_post.jwt`` (see `OpenID4VP`_ Section 8.3). 
+
+.. _remote-flow-verifier-info:
+
+``verifier_info`` and Relying Party registration data
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+`ETSI TS 119 472-2`_ profiles the OpenID4VC-HAIP remote presentation flow for the EUDI Wallet ecosystem. It requires the Request Object to carry Relying Party registration information through the ``verifier_info`` parameter defined in `OpenID4VP`_ Section 5.11.
+
+Each ``verifier_info`` element is a JSON Object. The following ``format`` values are defined for IT-Wallet:
+
+.. list-table::
+  :class: longtable
+  :widths: 25 75
+  :header-rows: 1
+
+  * - **format**
+    - **Description**
+  * - **registrar_dataset**
+    - REQUIRED. Carries Registrar-provided registration data for the Relying Party and intended use relevant to the presentation request. The ``data`` member MUST be a non-empty JSON Object as specified in :ref:`table-registrar-dataset-fields`.
+  * - **registration_cert**
+    - REQUIRED when a Registration Certificate is available for the intended use. The ``data`` member MUST be the base64url encoding of the serialized Registration Certificate (by value, not by reference).
+
+.. _table-registrar-dataset-fields:
+
+The ``data`` object of a ``registrar_dataset`` element MUST contain the following members:
+
+.. list-table::
+  :class: longtable
+  :widths: 25 75
+  :header-rows: 1
+
+  * - **Member**
+    - **Description**
+  * - **identifier**
+    - REQUIRED. The EU-wide unique identifier of the Relying Party for the current intended use, as registered with the Member State Registrar.
+  * - **srvDescription**
+    - REQUIRED. A non-empty array of localized strings (``lang``, ``content``) describing the Relying Party Service registered for the intended use.
+  * - **registryURI**
+    - REQUIRED. URI of the Registrar API where the Wallet Instance MAY verify the registered information about the Relying Party, if requested by the User.
+  * - **intendedUseIdentifier**
+    - REQUIRED. Registrar-provided identifier of the intended use of the Relying Party.
+  * - **purpose**
+    - REQUIRED. A non-empty array of localized strings describing the registered purposes of the intended data processing.
+  * - **policyURI**
+    - REQUIRED. URI of the privacy policy applicable to the registered intended use.
+  * - **credential**
+    - OPTIONAL. Array of Credential objects listing the attestation types and attributes registered for the intended use.
+
+When the presentation is not intermediated, the identity conveyed in ``verifier_info`` matches the Relying Party authenticated through the access certificate in the JWT ``x5c`` header.
+
+.. _remote-flow-rp-intermediary:
+
+Presentation through a Relying Party Intermediary
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A :term:`Relying Party Intermediary` acts on behalf of one or more intermediated Relying Parties. OpenID4VP does not define a dedicated ``is_intermediary`` flag. Instead, the Wallet Instance infers an intermediated transaction from the **combination** of:
+
+1. **Intermediary authentication** — the Request Object is signed by the intermediary and the JWT ``x5c`` header contains the intermediary's access certificate (authenticated via ``x509_hash`` ``client_id`` or an OpenID Federation Trust Chain).
+2. **Intermediated Relying Party registration data** — the ``verifier_info`` ``registrar_dataset`` element carries the name, identifier, Registrar URL, intended use, and related registration data of the **intermediated** Relying Party.
+3. **Optional Registration Certificate** — when available, a ``verifier_info`` ``registration_cert`` element carries the Registration Certificate of the intermediated Relying Party. That certificate MAY contain the association to the intermediary.
+
+The Wallet Instance MUST treat the request as intermediated when the Relying Party identity in the access certificate differs from the Relying Party identity in ``verifier_info`` (ARF Topic 52, requirement RPI_07). In that case, the Wallet Instance MUST:
+
+- authenticate the **intermediary** using its access certificate;
+- display to the User the trade names of **both** the intermediary (from the access certificate) and the intermediated Relying Party (from ``verifier_info`` and, if present, the Registration Certificate) when asking for approval;
+- verify, if the User requests it, that the contractual relationship between the intermediated Relying Party and the intermediary is registered with the competent Registrar — either by inspecting the Registration Certificate or by querying the Registrar API indicated in ``registryURI``;
+- send the Authorization Response to the intermediary's ``response_uri``;
+- record both the intermediary and the intermediated Relying Party in the transaction log.
+
+The intermediated Relying Party itself does not need an access certificate for the transaction; the intermediary holds and presents the Registration Certificate on its behalf when one has been issued.
+
+Non-normative examples
+^^^^^^^^^^^^^^^^^^^^^^
+
+The following examples illustrate the structure of ``verifier_info``. They use fictional endpoints and identifiers.
+
+Direct presentation (no intermediary)
+"""""""""""""""""""""""""""""""""""""
+
+In a direct transaction, the access certificate and ``verifier_info`` refer to the same Relying Party:
+
+.. code-block:: json
+
+  {
+    "client_id": "x509_hash:sha-256:abc123...",
+    "response_mode": "direct_post.jwt",
+    "response_type": "vp_token",
+    "response_uri": "https://comune.esempio.it/oid4vp/response",
+    "verifier_info": [
+      {
+        "format": "registrar_dataset",
+        "data": {
+          "identifier": "urn:eu:wrp:it:12345678901:0001",
+          "srvDescription": [
+            { "lang": "it", "content": "Servizio SPID del Comune di Esempio" }
+          ],
+          "registryURI": "https://registro.eid.gov.it/api/v1",
+          "intendedUseIdentifier": "urn:eu:wrp-intended-use:it:comune-spid-login",
+          "purpose": [
+            { "lang": "it", "content": "Autenticazione dell'utente per l'accesso ai servizi online del Comune" }
+          ],
+          "policyURI": "https://comune.esempio.it/privacy/spid"
+        }
+      },
+      {
+        "format": "registration_cert",
+        "data": "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9..."
+      }
+    ],
+    "dcql_query": { "...": "..." }
+  }
+
+The JWT header ``x5c`` contains the access certificate of ``Comune di Esempio``, whose identifier matches ``verifier_info[0].data.identifier``.
+
+Presentation through a Relying Party Intermediary
+"""""""""""""""""""""""""""""""""""""""""""""""""
+
+In an intermediated transaction, the intermediary authenticates with its own access certificate while ``verifier_info`` describes the intermediated Relying Party:
+
+.. code-block:: json
+
+  {
+    "client_id": "x509_hash:sha-256:def456...",
+    "response_mode": "direct_post.jwt",
+    "response_type": "vp_token",
+    "response_uri": "https://intermediary.provider.it/oid4vp/response",
+    "verifier_info": [
+      {
+        "format": "registrar_dataset",
+        "data": {
+          "identifier": "urn:eu:wrp:it:98765432109:0001",
+          "srvDescription": [
+            { "lang": "it", "content": "Verifica età — Cinema Multiplex" }
+          ],
+          "registryURI": "https://registro.eid.gov.it/api/v1",
+          "intendedUseIdentifier": "urn:eu:wrp-intended-use:it:cinema-age-check",
+          "purpose": [
+            { "lang": "it", "content": "Verifica del limite di età per l'accesso a contenuti riservati" }
+          ],
+          "policyURI": "https://cinema.esempio.it/privacy/age-verification"
+        }
+      },
+      {
+        "format": "registration_cert",
+        "data": "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9..."
+      }
+    ],
+    "dcql_query": { "...": "..." }
+  }
+
+The JWT header ``x5c`` contains the access certificate of the intermediary ``Provider Intermediario S.r.l.`` (identifier ``urn:eu:wrp:it:11111111111:0001``), which differs from the intermediated Relying Party identifier ``urn:eu:wrp:it:98765432109:0001`` in ``verifier_info``. The Wallet Instance therefore displays both identities to the User and verifies the intermediary–Relying Party relationship before asking for consent.
+
+Non-normative Request Object excerpt (intermediary)
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+
+.. code-block:: text
+
+  # JWT header (abbreviated)
+  {
+    "alg": "ES256",
+    "typ": "oauth-authz-req+jwt",
+    "kid": "intermediary-key-2026",
+    "x5c": ["MIIC...intermediary-access-certificate..."]
+  }
+
+  # JWT payload (abbreviated)
+  {
+    "iss": "x509_hash:sha-256:def456...",
+    "client_id": "x509_hash:sha-256:def456...",
+    "response_uri": "https://intermediary.provider.it/oid4vp/response",
+    "verifier_info": [ "... see JSON example above ..." ],
+    "dcql_query": { "...": "..." },
+    "nonce": "n-0Z3k9Qm7xP2vL8wR4tY6uI1oA5sD",
+    "exp": 1744203600
+  }
 
 Authorization Response
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

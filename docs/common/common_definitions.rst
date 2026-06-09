@@ -16,6 +16,7 @@
 .. _ETSI TS 119 602: https://www.etsi.org/deliver/etsi_ts/119600_119699/119602/01.01.01_60/ts_119602v010101p.pdf
 .. _ETSI EN 319 411-1: https://www.etsi.org/deliver/etsi_en/319400_319499/31941101/01.03.00_20/en_31941101v010300a.pdf
 .. _ETSI TS 119 411-8: https://www.etsi.org/deliver/etsi_ts/119400_119499/11941108/01.01.01_60/ts_11941108v010101p.pdf
+.. _ETSI TS 119 472-2: https://www.etsi.org/deliver/etsi_ts/119400_119499/11947202/01.02.01_60/ts_11947202v010201p.pdf
 .. _ETSI TS 119 475: https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.01.01_60/ts_119475v010101p.pdf
 .. _ETSI TS 119 615: https://www.etsi.org/deliver/etsi_ts/119600_119699/119615/01.01.01_60/ts_119615v010101p.pdf
 .. _ETSI EN 319 132-1: https://www.etsi.org/deliver/etsi_en/319100_319199/31913201/01.03.01_60/en_31913201v010301p.pdf
