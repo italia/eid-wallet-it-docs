@@ -439,6 +439,15 @@ Il corpo del JWT della Wallet Instance Attestation contiene i seguenti claim:
     * - **Claim**
       - **Descrizione**
       - **Riferimento**
+    * - **iss**
+      - OBBLIGATORIO. Stringa contenente l'URL che identifica il Fornitore di Wallet.
+      - :rfc:`7519`.
+    * - **sub**
+      - OBBLIGATORIO. JWK Thumbprint della chiave pubblica inclusa nel claim ``cnf``.
+      - :rfc:`7519` e `EUDI-TS 3`_.
+    * - **iat**
+      - OBBLIGATORIO. Timestamp UNIX con il tempo di emissione del JWT.
+      - :rfc:`9126` e :rfc:`7519`.
     * - **exp**
       - OBBLIGATORIO. Timestamp UNIX con il tempo di scadenza del JWT. Questo dovrebbe essere impostato a un massimo di 24 ore.
       - :rfc:`9126` e :rfc:`7519` e `EUDI-TS 3`_.
@@ -454,21 +463,6 @@ Il corpo del JWT della Wallet Instance Attestation contiene i seguenti claim:
     * - **wallet_name**
       - OBBLIGATORIO. Stringa contenente un nome leggibile dall'uomo del Wallet.
       - `OpenID4VCI`_.
-    * - **wallet_version**
-      - OBBLIGATORIO. Valore stringa della versione della Wallet Solution.
-      - `OpenID4VCI`_ and `EUDI-TS 3`_.
-    * - **wallet_solution_certification_information**
-      - OBBLIGATORIO. Valore stringa che contiene un URL che rimanda alla certificazione della Wallet Solution.
-      - `EUDI-TS 3`_.
-    * - **client_status**
-      - OBBLIGATORIO. Meccanismo di stato per la Wallet Attestation.
-
-        - **status**: OBBLIGATORIO. un riferimento alla lista di stato, come specificato nell’Appendice E di `OpenID4VCI`_. Il valore rappresenta lo stato di revoca dell’istanza del Wallet.
-        - **exp**: OBBLIGATORIO. Timestamp UNIX che specifica il momento fino al quale il Wallet Provider si impegna a mantenere lo stato di revoca nell’indice della lista di stato referenziato in ``status``.
-      - `EUDI-TS 3`_.
-    * - **sub**
-      - OBBLIGATORIO. Identificatore dell’istanza del Wallet, che è l’identificatore univoco della Wallet Solution in formato URL.
-      - `EUDI-TS 3`_.
 
 
 Di seguito è riportato un esempio non normativo dell'header e del payload della Wallet Instance Attestation JWT senza codifica e firma applicata:
@@ -481,14 +475,7 @@ Di seguito è riportato un esempio non normativo dell'header e del payload della
 
 
 .. note::
-    Poiché lo schema di certificazione non è ancora stato definito, il contenuto esatto di ``wallet_solution_certification_information`` è indefinito. Questo contenuto sarà definito in un aggiornamento futuro.
-
-.. note::
-    Come meccanismo di revoca per la WIA, è preferita l’opzione di riutilizzo per emittente descritta nella Sezione 2.5.1 di `EUDI-TS 3`_.
-
-
-.. note::
-    Il claim ``iss`` non è più necessario nel corpo della WIA, poiché l’identità del Wallet Provider viene ora dedotta dal certificato di firma nel parametro di intestazione JOSE ``x5c``.
+    Come meccanismo di revoca per la WIA, è preferita l'opzione di riutilizzo per emittente descritta nella Sezione 2.5.1 di `EUDI-TS 3`_.
 
 
 
@@ -718,6 +705,9 @@ Il corpo del Key Attestation JWT contiene le seguenti dichiarazioni (claims):
     * - **Claim**
       - **Descrizione**
       - **Riferimento**
+    * - **iss**
+      - OBBLIGATORIO. Stringa contenente l'URL che identifica il Fornitore di Wallet.
+      - :rfc:`7519`.
     * - **exp**
       - OBBLIGATORIO. Timestamp UNIX con il tempo di scadenza del JWT.
       - :rfc:`9126` e :rfc:`7519`.
@@ -732,6 +722,7 @@ Il corpo del Key Attestation JWT contiene le seguenti dichiarazioni (claims):
 
         - ``iso_18045_high``: Deve essere utilizzato quando l'archiviazione delle chiavi è resistente ad attacchi con potenziale di attacco ``High``.
         - ``iso_18045_moderate``: Deve essere utilizzato quando l'archiviazione delle chiavi è resistente ad attacchi con potenziale di attacco  ``Moderate``.
+        - ``iso_18045_enhanced-basic``: Deve essere utilizzato quando l'archiviazione delle chiavi è resistente ad attacchi con potenziale di attacco  ``Enhanced-Basic``.
         - ``iso_18045_basic``: Deve essere utilizzato quando l'archiviazione delle chiavi è resistente ad attacchi con potenziale di attacco  ``Basic``.
       - `OpenID4VCI`_.
     * - **user_authentication**
@@ -739,13 +730,13 @@ Il corpo del Key Attestation JWT contiene le seguenti dichiarazioni (claims):
 
         - ``iso_18045_high``: Deve essere utilizzato quando l'autenticazione dell'utente è resistente ad attacchi con potenziale di attacco ``High``.
         - ``iso_18045_moderate``: Deve essere utilizzato quando l'autenticazione dell'utente è resistente ad attacchi con potenziale di attacco ``Moderate``.
+        - ``iso_18045_enhanced-basic``: Deve essere utilizzato quando l'autenticazione dell'utente è resistente ad attacchi con potenziale di attacco ``Enhanced-Basic``.
         - ``iso_18045_basic``: Deve essere utilizzato quando l'autenticazione dell'utente è resistente ad attacchi con potenziale di attacco ``Basic``.
       - `OpenID4VCI`_.
-    * - **key_storage_status**
+    * - **status**
       - OBBLIGATORIO. Meccanismo di stato per la Key Attestation.
 
-        - **status**: OBBLIGATORIO. un riferimento alla lista di stato, come specificato nell’Appendice D di `OpenID4VCI`_. Il valore rappresenta lo stato di revoca del WSCD o del Keystore.
-        - **exp**: OBBLIGATORIO. Timestamp UNIX che specifica il momento fino al quale il Wallet Provider si impegna a mantenere lo stato di revoca nell’indice della lista di stato referenziato in ``status``.
+        - **status_list**: OBBLIGATORIO. un riferimento alla lista di stato, come specificato nell'Appendice D di `OpenID4VCI`_. Il valore rappresenta lo stato di revoca del WSCD o del Keystore.
       - `EUDI-TS 3`_.
     * - **certification**
       - OPZIONALE. Una stringa che contiene un URL che rimanda alla certificazione del componente di archiviazione delle chiavi.
@@ -765,11 +756,7 @@ Di seguito è riportato un esempio non normativo dell'intestazione e del payload
     Poiché lo schema di certificazione non è ancora stato definito, il contenuto esatto di ``certification`` non è definito e sarà specificato in un futuro aggiornamento.
 
 .. note::
-    Come meccanismo di revoca per la KA, è preferito l’indice condiviso per tipo descritto nella Sezione 2.5.2 di `EUDI-TS 3`_.
-
-
-.. note::
-    Il claim ``iss`` non è più necessario nel corpo della KA, poiché l’identità del Wallet Provider viene ora dedotta dal certificato di firma nel parametro di intestazione JOSE ``x5c``.
+    Come meccanismo di revoca per la KA, è preferito l'indice condiviso per tipo descritto nella Sezione 2.5.2 di `EUDI-TS 3`_.
 
 
 Catalogo e-Service PDND del Fornitore di Wallet
