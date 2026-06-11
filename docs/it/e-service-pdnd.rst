@@ -1313,8 +1313,6 @@ La `e-Service Response` DEVE avere un content type ``application/json``.
 
 La `e-Service Response` DEVE includere i seguenti parametri di header HTTP:
 
-Il JWT della `e-Service Response` DEVE includere i seguenti parametri nel JOSE header:
-
 .. list-table::
   :class: longtable
   :widths: 20 60 20
@@ -1414,8 +1412,6 @@ La seguente tabella elenca gli HTTP Status Code che DEVONO essere supportati per
     - **Descrizione**
   * - ``400 Bad Request``
     - La richiesta non può essere soddisfatta perché mancano parametri richiesti, contiene parametri non validi o è in qualche modo malformata.
-  * - ``400 Bad Request``
-    - La richiesta non può essere soddisfatta perché contiene una *DPoP proof* non valida.
   * - ``401 Unauthorized``
     - La richiesta non può essere soddisfatta perché il Voucher è scaduto, revocato o in qualche modo malformato.
   * - ``500 Internal Server Error``

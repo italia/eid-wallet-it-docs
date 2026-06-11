@@ -1,5 +1,4 @@
 .. include:: ../common/common_definitions.rst
-
 .. level 2 "included" file, so we start with '^' title level
 
 Wallet Instance

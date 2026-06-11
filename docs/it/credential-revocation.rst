@@ -321,14 +321,11 @@ Per la verifica dello stato di validità di un Attestato Elettronico a lunga dur
     - `TOKEN-STATUS-LIST`_.
 
 Token Status Lists
-------------------
+^^^^^^^^^^^^^^^^^^
 
 Questa sezione definisce una struttura di dati Status List, che viene utilizzata per trasmettere informazioni riguardanti gli stati individuali di più Attestati Elettronici. Gli Attestati Elettronici possono essere di qualsiasi formato, come SD-JWT o mdoc ISO/IEC 18013-5. Una Status List descrive lo stato degli Attestati Elettronici codificando la loro validità in un array di bit. A ciascun Attestato Elettronico viene assegnato un indice durante l'emissione; questo indice rappresenta la sua posizione all'interno dell'array di bit. Il valore del bit o dei bit in questo indice corrisponde allo stato degli Attestati Elettronici. Una Status List viene fornita all'interno di un Token di Status List firmato crittograficamente in formato JWT. Per i dettagli, vedere `TOKEN-STATUS-LIST`_.
 
 In questa specifica, i ruoli di Fornitore di Attestati Elettronici e Status Issuer (cioè, l'entità che emette il Token di Status List sulle informazioni di stato dell'Attestato Elettronico) coincidono, mentre lo Status Provider (cioè, l'entità che fornisce il Token di Status List su un endpoint pubblico) PUÒ essere il Fornitore di Attestati Elettronici stesso o un'altra entità.
-
-Creazione delle Status List
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Il Fornitore di Attestati Elettronici DEVE
 
@@ -562,8 +559,8 @@ Al ricevimento di un Attestato Elettronico, una Relying Party DEVE prima eseguir
   - Se la Relying Party sta utilizzando un sistema per memorizzare nella cache il Token di Status List, DOVREBBE controllare il claim ``ttl`` del Token di Status List e recuperare una copia aggiornata se (tempo in cui lo stato è stato risolto + `ttl` < tempo corrente).
 
 - Decomprimere la Status List con un decompressore compatibile con DEFLATE [:rfc:`1951`] e ZLIB [:rfc:`1950`].
-- Recuperare il valore di stato dell'indice specificato nell'Attestato Elettronico come descritto in :ref:`credential-revocation:Creazione delle Status List`. Fallire se l'indice fornito è fuori dai limiti della Status List.
-- Controllare il valore di stato come descritto in :ref:`credential-revocation:Creazione delle Status List`.
+- Recuperare il valore di stato dell'indice specificato nell'Attestato Elettronico come descritto in :ref:`credential-revocation:Verifica degli Stati degli Attestati Elettronici`. Fallire se l'indice fornito è fuori dai limiti della Status List.
+- Controllare il valore di stato come descritto in :ref:`credential-revocation:Verifica degli Stati degli Attestati Elettronici`.
 
 Se uno di questi controlli fallisce, non è possibile fare alcuna dichiarazione sullo stato dell'Attestato Elettronico e l'Attestato Elettronico DOVREBBE essere rifiutato.
 

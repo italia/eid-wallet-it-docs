@@ -219,6 +219,7 @@ Di seguito è riportato un esempio non normativo di una response di errore.
 
 Nella seguente tabella sono elencati gli *Status Code HTTP* e i relativi codici di errore supportati per la response di errore:
 
+.. _table_par_error_code:
 .. list-table::
     :class: longtable
     :widths: 20 20 60
@@ -842,6 +843,7 @@ Di seguito è riportato un esempio non normativo di una response di errore.
 
 Nella seguente tabella sono elencati i *Status Code HTTP* e i relativi codici di errore supportati per la response di errore:
 
+.. _table_credential_error_code:
 .. list-table::
     :class: longtable
     :widths: 20 20 60
@@ -962,6 +964,7 @@ La Deferred Credential Response DEVE essere inviata utilizzando il media type `a
 Se l'Attestato Elettronico è disponibile, la Deferred Credential Response DEVE utilizzare i parametri ``credentials`` e ``notification_id`` come definito nella Sezione :ref:`credential-issuance-endpoint:Credential Response` e DEVE rispondere con un HTTP Status 200 (vedi sezione 15.3.3 del :rfc:`9110`).
 
 Se il Credential Issuer ha bisogno di più tempo, la Deferred Credential Response DEVE utilizzare i parametri ``interval`` e ``transaction_id`` come definiti nella sezione :ref:`credential-issuance-endpoint:Credential Response` e DEVE rispondere con HTTP Status 202 (vedi Sezione 15.3.3 del :rfc:`9110`).
+
 Il valore di ``transaction_id`` DEVE essere identico a quello presente nella Deferred Credential Request.
 
 Se la Deferred Credential Request non è valida o l'Attestato Elettronico non è disponibile, la Deferred Credential Error Response DEVE essere inviata all'Istanza del Wallet secondo quanto indicato nella Sezione :ref:`credential-issuance-endpoint:Credential Response`.
@@ -1031,6 +1034,7 @@ Di seguito è riportato un esempio non normativo di una response di errore.
 
 Nella seguente tabella sono elencati i *Status Code HTTP* e i relativi codici di errore supportati per la response di errore:
 
+.. _table_notification_error_code:
 .. list-table::
     :class: longtable
     :widths: 20 20 60

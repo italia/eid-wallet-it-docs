@@ -29,6 +29,6 @@ L'oggetto JSON dei metadati la cui chiave è ``wallet_solution`` contiene i segu
          - ``wallet_name`` Stringa contenente il nome del Wallet. 
 
 
-.. nota::
+.. note::
   Alcuni flussi relativi agli Attestati Elettronici richiedono il recupero delle informazioni del Wallet prima di interagire con il Wallet stesso. Il flusso è descritto in :ref:`wallet-metadata-retrieval:Flusso di Recupero dei Wallet Metadata`.
 

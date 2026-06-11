@@ -1,5 +1,6 @@
 .. include:: ../common/common_definitions.rst
 
+
 Infrastruttura del Registro
 ===========================
 
@@ -1133,7 +1134,7 @@ Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazion
           * **wallet_initiated**: OBBLIGATORIO. Booleano. Indica se è supportato il flusso Wallet-Initiated.
           * **issuer_initiated**: OBBLIGATORIO. Booleano. Indica se è supportata il flusso Issuer-Initiated (Third Party Initiated Flow).
           * **max_deferred_issuance_time_minutes**: CONDIZIONALE. Intero. Tempo massimo, in minuti, per la disponibilità dell’emissione della credenziale. OBBLIGATORIO se ``deferred_flow`` è impostato a ``true``.
-          * **notification_methods**: REQUIRED if ``deferred_flow`` is ``true``. CONDIZIONALE. Array di stringhe. Contiene i metodi di notifica supportati dal Credential Issuer per l’emissione differita, come ``"push"``, ``"poll"``. OBBLIGATORIO se ``deferred_flow`` è impostato a ``true``.
+          * **notification_methods**: CONDIZIONALE. Array di stringhe. Contiene i metodi di notifica supportati dal Credential Issuer per l’emissione differita, come ``"push"``, ``"poll"``. OBBLIGATORIO se ``deferred_flow`` è impostato a ``true``.
   
   * - **localization**
     - OBBLIGATORIO. Oggetto di configurazione della localizzazione contenente:

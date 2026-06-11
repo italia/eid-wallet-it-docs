@@ -1,3 +1,6 @@
+.. include:: ../common/common_definitions.rst
+  
+
 Operazioni di Gestione dei Certificati X.509
 =============================================
 

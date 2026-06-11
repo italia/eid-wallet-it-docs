@@ -1,8 +1,6 @@
 .. include:: ../common/common_definitions.rst
 .. include:: ../common/symbols.rst
 
-
-
 The Infrastructure of Trust
 ===========================
 

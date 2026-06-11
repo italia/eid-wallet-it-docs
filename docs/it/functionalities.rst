@@ -1095,8 +1095,8 @@ Per maggiori dettagli sull'utilizzo dell'Authentication Button vedi la sezione :
  
 Il pulsante è disponibile in tre varianti di dimensione (S - default / M / L ) come da Design System .Italia, ed in formato "get" (chiamata ad una pagina esterna) e "post" (form interna al pulsante). Oltre alle varianti di dimensione, sono previste due varianti di pulsante a larghezza fissa utilizzabili in situazioni in cui è preferibile mantenere coerenza con altri pulsanti simili: 
 
-• la versione giustificata (con icona a sinistra e testo centrato); 
-• la versione centrata (con icona e testo centrati). 
+- la versione giustificata (con icona a sinistra e testo centrato);
+- la versione centrata (con icona e testo centrati).
 
 La Risorsa Ufficiale dell'Authentication button html è disponibile nella sezione :ref:`official-resources:Risorse Ufficiali` di queste Specifiche Tecniche. 
 
@@ -1248,20 +1248,6 @@ Di conseguenza, l’EAA assume i seguenti ulteriori stati:
     - DEVE darne all’Utente adeguata evidenza, distinguendo il caso specifico da quello di un’eventuale scadenza amministrativa; 
     - DEVE invitare l’Utente ad aggiornare l’EAA, ossia ad intraprendere un flusso di riemissione dell’EAA stesso; 
     - DEVE consentire all’Utente la funzionalità di presentazione, sia in prossimità che in remoto. Conseguentemente, l’Istanza di Relying Party DEVE adeguatamente informare il Verificatore circa lo specifico stato dell’EAA. 
-
-A prescindere dalla condizione dello specifico EAA (valido, sospeso, da aggiornare, non valido, in scadenza, scaduto), le variazioni di stato del PID hanno un impatto sul suo ciclo di vita. A tal proposito, l’Istanza del Wallet: 
-
-- **Se il PID è in stato valido**: 
-
-  - DEVE garantire all’Utente l’utilizzo dell’EAA in tutti gli scenari ammessi, sia in remoto che in prossimità. 
-
-- **Se il PID è in stato non valido**: 
-
-  - DEVE darne all’Utente adeguata evidenza; 
-  - DEVE invitare l’Utente ad aggiornare il PID, ossia ad intraprendere un flusso di riemissione del PID stesso, senza il quale non sarebbero possibili alcuni scenari (es. l'emissione di un EAA, quale la patente di guida); 
-  - DEVE garantire all’Utente la funzionalità di presentazione degli EAA, sia in prossimità che in remoto; 
-  - DEVE garantire all’Utente la funzionalità di presentazione degli EAA contestualmente al PID in prossimità; 
-  - NON DEVE consentire all’Utente la funzionalità di presentazione degli EAA contestualmente al PID in remoto.  
 
 Di seguito i requisiti funzionali a supporto dell'Esperienza Utente relativi all’aggiornamento dell'Attestato Elettronico che il Fornitore di Attestati Elettronici DEVE garantire attraverso la Soluzione Wallet:
 
@@ -1459,6 +1445,12 @@ Errori di ottenimento degli Attestati Elettronici di Attributi
     - Fornitore di Attestati Elettronici di Attributi, Fonte Autentica
   * - L'Utente non riesce ad ottenere nella propria Istanza del Wallet un certo Attestato Elettronico di Attributi (e.g. assenza di titolarità, versione fisica non valida o scaduta, etc.)
     - Fonte Autentica
+  * - Il servizio di ottenimento di un Attestato Elettronico di Attributi non può essere elaborato entro l'intervallo di tempo definito
+    - Fornitore di Attestati Elettronici di Attributi
+  * - Il servizio di ottenimento di un Attestato Elettronico di Attributi non può essere completato in modo sincrono. All'Utente è richiesto di attendere finché l'Attestato non diventa disponibile (flusso differito)
+    - Fornitore di Attestati Elettronici di Attributi, Fonte Autentica
+  * - Il servizio di ottenimento di un Attestato Elettronico di Attributi non può essere elaborato poiché la richiesta supera il limite consentito (e.g. più Attestati richiesti contemporaneamente)
+    - Fornitore di Attestati Elettronici di Attributi
 
 Errori di presentazione degli Attestati Elettronici
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1486,7 +1478,9 @@ Errori di gestione degli Attestati Elettronici
   * - Il servizio di revoca / archiviazione/ ripristino di un Attestato Elettronico di Attributi non è disponibile (e.g. errori tecnici)
     - Fornitore di Attestati Elettronici di Attributi
   * - Il servizio di revoca del PID non è disponibile (e.g. errori tecnici)
-    - PID Provider 
+    - PID Provider
+  * - Il servizio di cancellazione delle informazioni inviate a una Relying Party non è disponibile (e.g. errori tecnici)
+    - Relying Party
 
 Errori di disattivazione dell'Istanza del Wallet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

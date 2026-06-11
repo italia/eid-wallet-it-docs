@@ -27,8 +27,6 @@ Il flusso ad alto livello inizia con l'Utente che desidera ottenere un PID e avv
 .. note::
     Riguardo al punto 4, il metodo di autenticazione primario è basato su CieID LoA High (L3). Per scenari in cui il PIN CIE non è immediatamente disponibile, è disponibile un meccanismo di autenticazione multi-step alternativo che combina Autenticazione eID Substantial con Verifica MRTD.
 
-    Questo protocollo assicura livelli di sicurezza standard attraverso autenticazione multi-fattore fornendo accessibilità migliorata.
-
     Per specifiche tecniche complete, vedere :ref:`credential-issuance-l2plus:Autenticazione eID Substantial con Verifica MRTD per Emissione PID`.
 
 Flusso ad Alto Livello per (Q)EAA

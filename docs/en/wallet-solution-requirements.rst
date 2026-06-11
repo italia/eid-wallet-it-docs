@@ -1,5 +1,4 @@
 .. include:: ../common/common_definitions.rst
-
 .. level 2 "included" file, so we start with '^' title level
 
 Wallet Solution Requirements
@@ -39,7 +38,6 @@ The requirements for the Wallet Instance Attestation are defined below:
 - The Wallet Instance MUST secure a Wallet Instance Attestation as a prerequisite for transitioning to the Operational state, as defined by `EIDAS-ARF`_.
 - A Wallet Provider SHALL ensure that a non-revoked Wallet Unit at all times presents a temporally valid and non-revoked Wallet Instance Attestation to a PID Provider or Attestation Provider during the issuance process of a PID or attestation. Note: This requirement applies to both device-bound and non-device-bound attestations, as defined by `EIDAS-ARF`_.
 - A Wallet Unit SHALL present a Wallet Instance Attestation only to a PID Provider or Attestation Provider, as part of the issuance process of a PID or an attestation, and not to a Relying Party or any other entity.
-
 
 .. note::
   Throughout this section, the services used to attest genuineness of the Wallet Instance and the device in which it is installed are referred to as **Device Integrity Service API**. The Device Integrity Service API is considered in an abstract fashion and it is assumed to be a service provided by a trusted third party (i.e., the OS Provider's API) which is able to perform integrity checks on the Wallet Instance as well as on the device where it is installed.
@@ -87,5 +85,4 @@ Only the legitimate User can access the private cryptographic keys, preventing u
   At the current stage, the implementation profile defined in this document supports only the **Local Internal WSCD** (:ref:`WP_014 <wallet-instance-testcases>`). Future versions of this specification MAY include other approaches depending on the required Authenticator Assurance Level (`AAL`).
 
 For more detailed information, please refer to :ref:`wallet-instance-registration:Wallet Instance Initialization and Registration`, :ref:`wallet-instance-attestation-issuance:Wallet Instance Attestation Issuance`, and :ref:`wallet-attestation-issuance:Wallet Unit Attestation Issuance` of this document.
-
 

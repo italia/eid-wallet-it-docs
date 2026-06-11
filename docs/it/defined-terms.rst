@@ -27,7 +27,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 
     **Attributi**
     **Attributi dell'Utente**
-      Un insieme di caratteristiche, qualità, diritti o autorizzazioni di una persona fisica o giuridica o di un oggetto o anche una sola di queste informazioni. 
+      Un insieme di caratteristiche, qualità, diritti o autorizzazioni di una persona fisica o giuridica o di un oggetto o anche una sola di queste informazioni.
       Conforme con ARF 2.7.3.
 
     **Autenticazione**

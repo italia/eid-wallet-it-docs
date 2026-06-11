@@ -896,7 +896,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_183
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Status List Definizione dei Valori di Stato per le Credenziali Digitali
-    - Il Fornitore di Attestati Elettronici utilizza con successo i valori per gli Stati possibili definiti nella :ref:`credential-revocation:Creazione delle Status List`.
+    - Il Fornitore di Attestati Elettronici utilizza con successo i valori per gli Stati possibili definiti nella sezione :ref:`credential-revocation:Token Status Lists`.
   * - CI_184
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Status List Definizione degli stati opzionali di stato delle credenziali digitali

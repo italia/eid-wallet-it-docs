@@ -1,8 +1,6 @@
 .. include:: ../common/common_definitions.rst
 .. include:: ../common/symbols.rst
 
-
-
 L'Infrastruttura di Trust
 ==========================
 
@@ -228,55 +226,6 @@ Tutti gli endpoint elencati di seguito sono definiti nelle specifiche `OID-FED`_
 
 
 Tutte le risposte degli endpoint di federazione sono sotto forma di JWT firmato, ad eccezione dell'endpoint di Elenco Subordinati e dell'endpoint di Stato Trust Mark che sono serviti come JSON semplice per impostazione predefinita. L'Endpoint Eventi Subordinati della Federazione restituisce anche JWT firmati con il tipo di contenuto ``application/entity-events-statement+jwt``.
-
-Federation Subordinate Events Endpoint
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-L'Endpoint Eventi Subordinati della Federazione è definito in `OID-FED-SUBORDINATE-EVENTS`_. Questo endpoint fornisce un meccanismo per Trust Anchor e Intermediari per pubblicare eventi storici relativi ai loro Subordinati Immediati. Fornisce trasparenza e responsabilità all'interno della federazione fornendo un record storico completo di eventi significativi che influenzano i partecipanti della federazione.
-
-Per i dettagli completi della specifica, inclusi la posizione dell'endpoint, il formato della richiesta, il formato della risposta, i claim JWT, i parametri degli oggetti evento e i tipi di evento supportati, fare riferimento a `OID-FED-SUBORDINATE-EVENTS`_.
-
-Di seguito è riportato un esempio non normativo di una richiesta e risposta dell'Endpoint Eventi Subordinati della Federazione:
-
-**Esempio di Richiesta**:
-
-.. code-block:: http
-
-   GET /federation_subordinate_events_endpoint?sub=https%3A%2F%2Frp%2Eexample%2Eorg HTTP/1.1
-   Host: immediate-superior.example.org
-
-**Esempio di Risposta**:
-
-.. code-block:: json
-
-   {
-     "iss": "https://immediate-superior.example.org",
-     "sub": "https://rp.example.org",
-     "iat": 1590000000,
-     "federation_registration_events": [
-       {
-         "iat": 1590000000,
-         "event": "registration"
-       },
-       {
-         "iat": 1590000000,
-         "event": "jwks_update"
-       },
-       {
-         "iat": 1600000000,
-         "event": "revocation",
-         "event_description": "compromised node"
-       },
-       {
-         "iat": 1610000000,
-         "event": "registration"
-       }
-     ]
-   }
-
-**Integrazione con la Gestione del Ciclo di Vita delle Entità**:
-
-Questo endpoint completa le procedure di gestione del ciclo di vita delle entità definite in :ref:`entity-onboarding:Onboarding delle Entità` fornendo un tracciamento dettagliato di tutti gli eventi significativi che influenzano i partecipanti della federazione. Supporta sia il monitoraggio automatizzato della conformità che i processi di audit manuale.
 
 Configurazione della Federazione
 --------------------------------
@@ -955,15 +904,29 @@ Quando un partecipante auto-emette un Certificato X.509, aderisce ai seguenti re
 
 1. **Nome del Soggetto**: Il nome del soggetto del Certificato X.509 DEVE corrispondere all'identità del partecipante. Il nome del soggetto degli Intermediari e delle Foglie DEVE includere i seguenti attributi:
 
-  - ``Country Name (C)``: DEVE contenere il codice paese ISO a due lettere.
-  - ``State or Province Name (ST)``: DEVE contenere la regione o stato dove l'entità è localizzata.
-  - ``Locality Name (L)``: DEVE contenere la città dove l'entità è localizzata.
-  - ``Organization Name (O)``: DEVE contenere il nome legale dell'organizzazione.
-  - ``Organizational Unit Name (OU)``: PUÒ contenere il nome del dipartimento all'interno dell'organizzazione (opzionale).
-  - ``Common Name (CN)``: DEVE contenere il nome DNS dell'identificatore unico dell'Entità di Federazione, che è incluso nel valore sub (soggetto) nella sua Entity Configuration di federazione, rimuovendo ``https://`` e qualsiasi path web.
-  - ``Email Address``: DEVE contenere l'indirizzo email di contatto dell'organizzazione.
-  - ``organizationIdentifier``: DEVE contenere il numero di registrazione che identifica univocamente l'organizzazione all'interno del servizio di registrazione, utilizzando il valore OID ``2.5.4.97`` come definito in ``ITU-T X.500``.
-  
+   .. list-table::
+      :widths: 30 70
+      :header-rows: 1
+
+      * - Attributo
+        - Requisito
+      * - ``Country Name (C)``
+        - DEVE contenere il codice paese ISO a due lettere.
+      * - ``State or Province Name (ST)``
+        - DEVE contenere la regione o stato dove l'entità è localizzata.
+      * - ``Locality Name (L)``
+        - DEVE contenere la città dove l'entità è localizzata.
+      * - ``Organization Name (O)``
+        - DEVE contenere il nome legale dell'organizzazione.
+      * - ``Organizational Unit Name (OU)``
+        - PUÒ contenere il nome del dipartimento all'interno dell'organizzazione (opzionale).
+      * - ``Common Name (CN)``
+        - DEVE contenere il nome DNS dell'identificatore unico dell'Entità di Federazione, che è incluso nel valore ``sub`` (soggetto) nella sua Entity Configuration di federazione, rimuovendo ``https://`` e qualsiasi path web.
+      * - ``Email Address``
+        - DEVE contenere l'indirizzo email di contatto dell'organizzazione.
+      * - ``organizationIdentifier``
+        - DEVE contenere il numero di registrazione che identifica univocamente l'organizzazione all'interno del servizio di registrazione, utilizzando il valore OID ``2.5.4.97`` come definito in ``ITU-T X.500``.
+
 2. **Subject Alternative Name (SAN)**: Il Certificato X.509 DEVE includere un ``SAN URI`` che DEVE corrispondere ai valori **sub** e **iss** della sua Entity Configuration di federazione.
 3. **Nome DNS**: Il Certificato X.509 DEVE includere un Nome DNS nel SAN che corrisponde al nome DNS contenuto all'interno dei valori **sub** e **iss** della sua Entity Configuration, rimuovendo ``https://`` e qualsiasi path web.
 4. **Certificate Revocation List (CRL)**: Se il Certificato X.509 emesso ha un tempo di scadenza superiore a 24 ore, l'Emittente X.509 DEVE pubblicare una CRL per i Certificati X.509 emessi. Questo elenco DEVE essere accessibile e regolarmente aggiornato per garantire che qualsiasi Certificato X.509 compromesso o non valido sia prontamente revocato con la motivazione della revoca, se presente.
@@ -1026,6 +989,56 @@ Di seguito è riportato un esempio non normativo, in testo semplice, che illustr
     Signature Algorithm: sha256WithRSAEncryption
     Signature:
         5c:4f:3b:...
+
+
+Federation Subordinate Events Endpoint
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+L'Endpoint Eventi Subordinati della Federazione è definito in `OID-FED-SUBORDINATE-EVENTS`_. Questo endpoint fornisce un meccanismo per Trust Anchor e Intermediari per pubblicare eventi storici relativi ai loro Subordinati Immediati. Fornisce trasparenza e responsabilità all'interno della federazione fornendo un record storico completo di eventi significativi che influenzano i partecipanti della federazione.
+
+Per i dettagli completi della specifica, inclusi la posizione dell'endpoint, il formato della richiesta, il formato della risposta, i claim JWT, i parametri degli oggetti evento e i tipi di evento supportati, fare riferimento a `OID-FED-SUBORDINATE-EVENTS`_.
+
+Di seguito è riportato un esempio non normativo di una richiesta e risposta dell'Endpoint Eventi Subordinati della Federazione:
+
+**Esempio di Richiesta**:
+
+.. code-block:: http
+
+   GET /federation_subordinate_events_endpoint?sub=https%3A%2F%2Frp%2Eexample%2Eorg HTTP/1.1
+   Host: immediate-superior.example.org
+
+**Esempio di Risposta**:
+
+.. code-block:: json
+
+   {
+     "iss": "https://immediate-superior.example.org",
+     "sub": "https://rp.example.org",
+     "iat": 1590000000,
+     "federation_registration_events": [
+       {
+         "iat": 1590000000,
+         "event": "registration"
+       },
+       {
+         "iat": 1590000000,
+         "event": "jwks_update"
+       },
+       {
+         "iat": 1600000000,
+         "event": "revocation",
+         "event_description": "compromised node"
+       },
+       {
+         "iat": 1610000000,
+         "event": "registration"
+       }
+     ]
+   }
+
+**Integrazione con la Gestione del Ciclo di Vita delle Entità**:
+
+Questo endpoint completa le procedure di gestione del ciclo di vita delle entità definite in :ref:`entity-onboarding:Onboarding delle Entità` fornendo un tracciamento dettagliato di tutti gli eventi significativi che influenzano i partecipanti della federazione. Supporta sia il monitoraggio automatizzato della conformità che i processi di audit manuale.
 
 
 Osservazioni sulla Privacy

@@ -1,5 +1,4 @@
 .. include:: ../common/common_definitions.rst
-
 .. "included" file, so we start with '-' title level
 
 .. role:: raw-html(raw)
@@ -750,14 +749,20 @@ Il corpo del Wallet Unit Attestation JWT contiene le seguenti dichiarazioni (cla
       - OPZIONALE. Una stringa che contiene un URL che rimanda alla certificazione del componente di archiviazione delle chiavi.
       - `OpenID4VCI`_.
     * - **eudi_wallet_info**
-      - OPZIONALE. Oggetto JSON contenente le informazioni generali sul Wallet e sul Wallet Provider. Il seguente parametro DEVE essere incluso:
+      - OPZIONALE. Oggetto JSON contenente le informazioni generali sul Wallet e sul Wallet Provider. I seguenti parametri DEVONO essere inclusi:
 
         - **general_info**: OBBLIGATORIO. Un oggetto che contiene i seguenti parametri:
 
           - **wallet_provider_name**: OBBLIGATORIO. Valore stringa del nome del Wallet Provider come riportato nella lista fidata dei Wallet Provider.
-          - **wallet_solution_id**: OBBLIGATORIO. Valore stringa dell'identificatore della Wallet Solution come riportato nella lista fidata dei Wallet Provider. 
+          - **wallet_solution_id**: OBBLIGATORIO. Valore stringa dell'identificatore della Wallet Solution come riportato nella lista fidata dei Wallet Provider.
           - **wallet_solution_version**: OBBLIGATORIO. Valore stringa della versione della Wallet Solution.
           - **wallet_solution_certification_information**: OBBLIGATORIO. Valore stringa che contiene un URL che rimanda alla certificazione della Wallet Solution.
+
+        - **key_storage_info**: OBBLIGATORIO. Un oggetto che contiene i seguenti parametri:
+
+          - **storage_type**: OBBLIGATORIO. Valore stringa che identifica l'implementazione tecnica del WSCD. Può assumere uno dei seguenti valori: ``REMOTE``, ``LOCAL_EXTERNAL``, ``LOCAL_INTERNAL``, ``LOCAL_NATIVE`` o ``HYBRID``.
+          - **keys_exportable**: OBBLIGATORIO. Valore booleano che definisce se le chiavi private del WSCD o del keystore possono essere esportate. DEVE essere impostato a ``true`` se il WSCD consente l'esportazione delle chiavi private (anche se solo in formato cifrato) e ``false`` altrimenti.
+          - **storage_certification_information**: OBBLIGATORIO. Stringa che contiene un URL che rimanda alla certificazione del componente di archiviazione delle chiavi.
       - `EUDI-TS 3`_.
 
 

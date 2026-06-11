@@ -1,5 +1,6 @@
 .. include:: ../common/common_definitions.rst
 
+
 Pushed Authorization Request Endpoint
 """""""""""""""""""""""""""""""""""""
 
@@ -963,7 +964,9 @@ The Deferred Credential Response MUST be sent using the `application/json`` medi
 
 If the Digital Credential(s) is(are) available, the Deferred Credential Response MUST use the ``credentials`` and ``notification_id`` parameters as defined in Section :ref:`credential-issuance-endpoint:Credential Response` and MUST respond with the HTTP status code 200 (see Section 15.3.3 of :rfc:`9110`]). 
 
-If the Credential Issuer still requires more time, the Deferred Credential Response MUST use the ``interval`` and ``transaction_id`` parameters as defined in Section :ref:`credential-issuance-endpoint:Credential Response` and it MUST respond with the HTTP status code 202 (see Section 15.3.3 of :rfc:`9110`]). The value of ``transaction_id`` MUST be same as the value of ``transaction_id`` in the Deferred Credential Request.
+If the Credential Issuer still requires more time, the Deferred Credential Response MUST use the ``interval`` and ``transaction_id`` parameters as defined in Section :ref:`credential-issuance-endpoint:Credential Response` and it MUST respond with the HTTP status code 202 (see Section 15.3.3 of :rfc:`9110`]). 
+
+The value of ``transaction_id`` MUST be same as the value of ``transaction_id`` in the Deferred Credential Request.
 
 If the Deferred Credential Request is invalid or the Digital Credential is not available, the Deferred Credential Error Response MUST be sent to the Wallet Instance according to :ref:`credential-issuance-endpoint:Credential Response`.
 

@@ -1,3 +1,5 @@
+.. include:: ../common/common_definitions.rst
+
 Matrice di Test per la Valutazione delle Firme
 ----------------------------------------------
 

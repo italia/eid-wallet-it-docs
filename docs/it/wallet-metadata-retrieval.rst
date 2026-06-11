@@ -1,3 +1,5 @@
+.. include:: ../common/common_definitions.rst
+
 Flusso di Recupero dei Wallet Metadata
 ======================================
 

@@ -1,10 +1,8 @@
 .. include:: ../common/common_definitions.rst
-
 .. "included" file, so we start with '-' title level
 
 .. role:: raw-html(raw)
   :format: html
-
 
 Credential Issuer Endpoints
 ---------------------------

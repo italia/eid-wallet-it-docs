@@ -1,3 +1,6 @@
+.. include:: ../common/common_definitions.rst
+  
+
 X.509 Certificate Management Operations
 =========================================
 

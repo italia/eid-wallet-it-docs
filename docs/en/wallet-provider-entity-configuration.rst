@@ -1,5 +1,6 @@
 .. include:: ../common/common_definitions.rst
 
+
 Wallet Provider Entity Configuration
 --------------------------------------
 

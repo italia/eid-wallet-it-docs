@@ -1,7 +1,6 @@
 .. include:: ../common/common_definitions.rst
 .. include:: ../common/symbols.rst
 
-
 Security and Privacy Considerations
 ===================================
 
