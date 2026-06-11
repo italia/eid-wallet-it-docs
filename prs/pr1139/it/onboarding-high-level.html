@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+
+<html lang="it" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>4. Sistema di Onboarding &#8212; IT-Wallet Specifiche Tecniche - PR #1139</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
+    <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
+    <script src="_static/documentation_options.js?v=53f44254"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=da26b4cc"></script>
+    <script src="_static/js/theme.js"></script>
+    <script src="_static/js/petite-vue.js"></script>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
+    <link rel="index" title="Indice" href="genindex.html" />
+    <link rel="search" title="Cerca" href="search.html" />
+    <link rel="next" title="5. Design dell&#39;Esperienza Utente" href="functionalities.html" />
+    <link rel="prev" title="3. Panoramica dell&#39;Architettura" href="architecture-overview.html" /> 
+  </head><body data-dark_mode_code_blocks="true">
+
+<div id="top_nav">
+    
+
+    <nav>
+        
+            
+        
+
+        <p id="toggle_sidebar">
+            <a href="#" title="Toggle sidebar">|||</a>
+        </p>
+        <h1><a href="index.html" title="Go to homepage">IT-Wallet Specifiche Tecniche - PR #1139</a></h1>
+            <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
+    
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+            <path fill="white" d="M 244.8,8 C 106.1,8 0,113.3 0,252 c 0,110.9 69.8,205.8 169.5,239.2 12.8,2.3 17.3,-5.6 17.3,-12.1 0,-6.2 -0.3,-40.4 -0.3,-61.4 0,0 -70,15 -84.7,-29.8 0,0 -11.4,-29.1 -27.8,-36.6 0,0 -22.9,-15.7 1.6,-15.4 0,0 24.9,2 38.6,25.8 21.9,38.6 58.6,27.5 72.9,20.9 2.3,-16 8.8,-27.1 16,-33.7 -55.9,-6.2 -112.3,-14.3 -112.3,-110.5 0,-27.5 7.6,-41.3 23.6,-58.9 -2.6,-6.5 -11.1,-33.3 2.6,-67.9 20.9,-6.5 69,27 69,27 20,-5.6 41.5,-8.5 62.8,-8.5 21.3,0 42.8,2.9 62.8,8.5 0,0 48.1,-33.6 69,-27 13.7,34.7 5.2,61.4 2.6,67.9 16,17.7 25.8,31.5 25.8,58.9 0,96.5 -58.9,104.2 -114.8,110.5 9.2,7.9 17,22.9 17,46.4 0,33.7 -0.3,75.4 -0.3,83.6 0,6.5 4.6,14.4 17.3,12.1 C 428.2,457.8 496,362.9 496,252 496,113.3 383.5,8 244.8,8 Z"/>
+        </svg>
+    
+</a>
+        
+
+        <a id="mode_toggle" href="#" @click.prevent="handleClick" :title="mode">
+    <template v-if="mode == 'light'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_light"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M67.48,18.073c1.913,-1.912 1.913,-5.018 0,-6.931c-1.912,-1.912 -5.018,-1.912 -6.931,0l-6.798,6.799c-1.912,1.912 -1.912,5.018 0,6.931c1.913,1.912 5.018,1.912 6.931,-0l6.798,-6.799Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.728,61.108c1.912,-1.913 1.912,-5.018 -0,-6.931c-1.913,-1.913 -5.019,-1.913 -6.931,-0l-6.799,6.798c-1.912,1.913 -1.912,5.019 0,6.931c1.913,1.913 5.019,1.913 6.931,0l6.799,-6.798Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.682,54.177c-1.913,-1.913 -5.018,-1.913 -6.931,-0c-1.912,1.913 -1.912,5.018 0,6.931l6.798,6.798c1.913,1.913 5.019,1.913 6.931,0c1.913,-1.912 1.913,-5.018 0,-6.931l-6.798,-6.798Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M4.901,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,-0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M18.929,11.142c-1.912,-1.912 -5.018,-1.912 -6.931,0c-1.912,1.913 -1.912,5.019 0,6.931l6.799,6.799c1.912,1.912 5.018,1.912 6.931,-0c1.912,-1.913 1.912,-5.019 -0,-6.931l-6.799,-6.799Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.108,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c-0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c-0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'dark'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_dark"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.901,2.196 -4.901,4.901c0,2.705 2.197,4.901 4.901,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.662,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.989,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.732,61.103c1.91,-1.91 1.91,-5.011 0,-6.921l-0.009,-0.01c-1.91,-1.91 -5.012,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.909,1.91 5.011,1.91 6.92,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.672,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.52,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l-0,-0.01c-0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.901,2.196 -4.901,4.901c0,2.704 2.197,4.9 4.901,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.73,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 -0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.098,34.623c-2.699,0 -4.891,2.192 -4.891,4.892l-0,0.019c-0,2.699 2.192,4.891 4.891,4.891c2.7,0 4.892,-2.192 4.892,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.892,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'darkest'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_darkest"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><path d="M39.315,23.791c8.684,-0 15.734,7.05 15.734,15.733c0,8.684 -7.05,15.734 -15.734,15.734c-8.683,0 -15.733,-7.05 -15.733,-15.734c-0,-8.683 7.05,-15.733 15.733,-15.733Zm0,4.737c6.069,0 10.997,4.927 10.997,10.996c-0,6.069 -4.928,10.996 -10.997,10.996c-6.068,0 -10.996,-4.927 -10.996,-10.996c0,-6.069 4.928,-10.996 10.996,-10.996Z" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.216,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.9,2.196 -4.9,4.901c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.666,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.99,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.737,61.103c1.909,-1.91 1.909,-5.011 -0,-6.921l-0.01,-0.01c-1.91,-1.91 -5.011,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.91,1.91 5.011,1.91 6.921,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.676,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.524,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l0,-0.01c0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.216,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901c-0,2.704 2.196,4.9 4.9,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.734,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.103,34.623c-2.7,0 -4.892,2.192 -4.892,4.892l-0,0.019c-0,2.699 2.192,4.891 4.892,4.891c2.699,0 4.891,-2.192 4.891,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.891,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+</a>
+
+<script>
+(function() {
+    const LOCAL_STORAGE_KEY = 'piccoloThemeMode'
+
+    var initialMode = localStorage.getItem(LOCAL_STORAGE_KEY)
+
+    if (initialMode) {
+        // Make sure the value in local storage is valid
+        if (['light', 'dark', 'darkest'].indexOf(initialMode) == -1) {
+            initialMode = 'light'
+            localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+        }
+    } else {
+        // Check if the client prefers dark mode
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            initialMode = 'dark'
+        } else {
+            initialMode = 'light'
+        }
+        localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+    }
+
+    document.documentElement.dataset.mode = initialMode
+
+    PetiteVue.createApp({
+        'mode': initialMode,
+        handleClick() {
+            let currentMode = this.mode
+
+            if (currentMode == 'light') {
+                this.mode = 'dark'
+            } else if (currentMode == 'dark') {
+                this.mode = 'darkest'
+            } else if (currentMode == 'darkest') {
+                this.mode = 'light'
+            }
+
+            document.documentElement.dataset.mode = this.mode
+            localStorage.setItem(LOCAL_STORAGE_KEY, this.mode)
+
+            console.log(this.mode)
+        }
+    }).mount('#mode_toggle')
+})()
+</script>
+            <p class="mobile_search_link">
+                <a href="search.html" title="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 64" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2">
+                        <path d="M14.873 40.009c-2.315-3.943-3.642-8.532-3.642-13.429C11.231 11.91 23.141 0 37.811 0s26.58 11.91 26.58 26.58-11.91 26.58-26.58 26.58a26.44 26.44 0 0 1-14.277-4.161L9.739 62.794a3.12 3.12 0 0 1-4.413 0L.913 58.382c-1.217-1.218-1.217-3.196 0-4.413l13.96-13.96zM37.811 8.054c10.225 0 18.526 8.301 18.526 18.526s-8.301 18.526-18.526 18.526-18.526-8.301-18.526-18.526S27.586 8.054 37.811 8.054z" fill="#fff" />
+                    </svg>
+                </a>
+            </p>
+        
+
+        <div class="searchbox_wrapper">
+            
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Ricerca veloce</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Vai" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper"><p class="caption" role="heading"><span class="caption-text">Indice dei Contenuti</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduzione</a></li>
+<li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2. Brand Identity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Panoramica dell'Architettura</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Sistema di Onboarding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. Design dell'Esperienza Utente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. L'Infrastruttura di Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registry.html">7. Infrastruttura del Registro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entity-onboarding.html">8. Onboarding delle Entità</a></li>
+<li class="toctree-l1"><a class="reference internal" href="x5c-evaluation.html">9. Operazioni di Gestione dei Certificati X.509</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">10. Entità</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">11. Gestione degli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">12. Flussi relativi agli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">13. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">14. Algoritmi Crittografici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">15. Considerazioni di Sicurezza e Privacy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">16. Politiche Generali di Conservazione dei Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">17. Termini Definiti e Riferimenti</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">18. Come contribuire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">19. Rilasci Open Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">20. Appendice</a></li>
+</ul>
+
+        </div>
+      </div>
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="sistema-di-onboarding">
+<h1><span class="section-number">4. </span>Sistema di Onboarding<a class="headerlink" href="#sistema-di-onboarding" title="Link to this heading">¶</a></h1>
+<p>Il sistema di onboarding registra le entità operative (PID Provider, Attestation Provider, Relying Party, Fornitori di Wallet e Fonti Autentiche) affinché possano partecipare all'ecosistema IT-Wallet con autorizzazioni e relazioni di trust chiaramente definite.</p>
+<section id="architettura-del-sistema-di-onboarding">
+<h2><span class="section-number">4.1. </span>Architettura del Sistema di Onboarding<a class="headerlink" href="#architettura-del-sistema-di-onboarding" title="Link to this heading">¶</a></h2>
+<p>Il servizio di onboarding DEVE fornire processi di onboarding specializzati che corrispondano alle caratteristiche operative e agli obblighi normativi dei diversi tipi di partecipanti.</p>
+<figure class="align-default" id="id1">
+<p class="plantuml">
+<object data="_images/plantuml-0217c0cfde9c23cc86d4826a3ef3eac72198d034.svg" type="image/svg+xml" style="width:99%">
+<a href="_images/plantuml-0217c0cfde9c23cc86d4826a3ef3eac72198d034.png"><img src="_images/plantuml-0217c0cfde9c23cc86d4826a3ef3eac72198d034.png" alt="Panoramica del sistema di onboarding IT-Wallet che mostra i processi di registrazione a doppio Journey e l'infrastruttura di trust" style="width: 99.0%"/></a>
+
+</object></p>
+<figcaption>
+<p><span class="caption-number">Fig. 4.1 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/hLL_RnCv4Fr_FyLSE954eir1MbJGWSYb0I8LDKe25H9IDB4d6qkElRAzoOKJt_titUtYP0la3o9Lwevddj-y-U4trg5n-KQ2CxbrPqAj35h_FtEveJEz9RCLj4l-48h9d1FyFRpe3IyMGxt9j2BbNYVlnzUZnMm-cevkvvydequtQTyCFjz-d2zkHc_dY-dutVkvDoPjkAQLK0IpoNGy7yqYJ9Tdo4s_jzBAdU6EhDxGsMMFaN5Y9HWwUlrhRuuEbsXFSMKwjIUu2RvWQFW9dZkKajol77j2MITSxeHMhuCWGo-vte1rUqas6N0-ahGXvUQOTbhqhoEZKBQUm9_BTAYbDgzQZruKls0Bo9LrjnQE2ZzjE9dAcXhQjxh7i9aH6pJxGzIdJvzVBVb9g8_-MbvSNLqqWHsnzI7gSxRizrUdeLxWLV_PYoPg6bfGeM9qY7qrwB-uUdiQzkNbi_xbm6CdJZX9C9wVtHK5Wrkrr6YuK2dCzjRH1cwhZW_bcPHImO0vRMpoZyuLzz-TIi8dq3hqQ7bBg_jV0lutzAnGA38TjDuyoDsQb1CCPZetZ0hVQtJeBz5RmQcCVbTa6v87GwcmpWZouPdHAx9MQ8KIj4bHYQyOkiYV4SyPkl8ewYyRP72OsbTrOQpdxUXLwtvGMjqZfYRp5AOazq6F2HedIfv3GpoGHmcVoFY9hDZUnanW6uwAK2vIuRmpg-CihBG16wHb1CWOsOXWfMVCCKneWzykyAig5ybMssPQLhato6N1FTGvAZvccHIiSd0Qc73YAwcV4oidlK6DYKETnjRcP8xLcvK2FC1FUFyVIHTgnK4hGDz4sjFmCLk2KCQVKgtML-Zxv5l1jmrLwcDbNPWfw0Z5XI7coltVK3oaTHGJo7_GIo6fTqTB66HPaMKfNfr0gPE5dN1hEBm4tDheF5t3tQJc7ssxfjPX5kT5vFZWUVe-aGNkGeHJp-KXtuTdKzVplx3xCAUDXH3YfkKe5gKwgE47L9YIXL0fjmSJ-w7YLRfa7IwbiEimrtNoF4Tvbg5RXzuCyq1HuqLRBz8Z6k-g0O_IMH6dylf5nIKigRUr5QQLjLMh55lk_mUzWWgAU9cS80kTwUG9tFc_uRZhhJwd89FEAd2KLRvRb88Nff-sP_IwFvmDsZYBmGngVeyX6geXEfGw3GaS9z7OkaLLS8j2UlOKJHcuVKRbbkB2iY3__gGD-YtnlpOyFOS1tmWLhYx7yw1fEYXbBMGtcPBy_eWqUh21zKN5O2796qfHzhmwkKIdVRAOXGtdn-TNuC_EOUwpKOAXREBMHpscDvaKeGDZx7O0Dzdl9bq1xtu_C9J8JFn-oacrKdrZJj2jYwzmr_4zXstSn_FxY9TVr3KwXEDBXyTT-HWiMzC6RJmdROZcEi01_932mtkXlpoFCIfAvLeOnJihaFe--n0DhYsNS_-y-R3SJM1Jh4VUJUwBMpmd5zvvV93q5nLxXzl61mz6k0HkSB-OXjvZebj-VGnbtMNrbxyXqZesxqIWMK74RqKr9rr_U1ljiO_MCqdQIZk2i0hY6hw4rlNzXl1o7HUh5OSrTG_XfSAVwYtfKQ8oL5l20oLlIF5y8_y7">Panoramica del Sistema di Onboarding IT-Wallet.</a></span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>Tutti gli Attori Primari DEVONO sottoporsi alla registrazione amministrativa per la conformità legale e normativa, seguita da processi di registrazione tecnica specializzati che DEVONO riflettere i loro ruoli operativi nell'ecosistema degli Attestati Elettronici.</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p><strong>Registrazione Amministrativa</strong>: Tutte le entità (Fonti Autentiche, Relying Party, Fornitori di Wallet, Credential Issuer) DEVONO completare la registrazione amministrativa iniziale che convalida la loro posizione legale, conformità normativa ed eleggibilità organizzativa per partecipare all'ecosistema IT-Wallet.</p></li>
+<li><p><strong>Registrazione Tecnica</strong>: Dopo l'approvazione amministrativa, le entità completano la registrazione tecnica attraverso Journey specializzati:</p>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li><p><strong>Fonti Autentiche</strong>: Dichiarano i loro Attributi dell'Utente disponibili dal Registro degli Attributi dell'Utente e specificano gli scopi di verifica previsti e tipo di organizzazione (pubblica o privata) previsti.</p></li>
+<li><p><strong>Credential Issuer</strong>: Selezionano le Fonti Autentiche basate sugli Attributi dell'Utente richiesti, richiedono l'approvazione dell'integrazione (eccetto per i mandati normativi) e registrano i tipi di Credenziali con pubblicazione automatica del catalogo secondo la politica dell'Organismo di Supervisione.</p></li>
+<li><p><strong>Altre Entità di Federazione</strong> (Relying Party, Fornitori di Wallet): Subiscono registrazione basata su federazione per l'istituzione di trust crittografico.</p></li>
+</ol>
+</div></blockquote>
+</li>
+<li><p><strong>Integrazione del Registro IT-Wallet</strong>:</p>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li><p><strong>Integrazione del Registro degli Attributi dell'Utente e della Tassonomia</strong>: Il Registro degli Attributi dell'Utente fornisce definizioni di dati standardizzate per i singoli Attributi delle Credenziali, mentre la Tassonomia definisce la classificazione gerarchica (domini, classi, scopi) che vengono poi referenziati nel Catalogo degli Attestati Elettronici per implementazioni specifiche di Credenziali. Tutti i partecipanti sfruttano questi registri per dichiarazioni di capacità di fornitura dati e requisiti di emissione/verifica.</p></li>
+<li><p><strong>Integrazione del Registro AS</strong>: Fonti Autentiche registrate con i loro Attributi dell'Utente dichiarati e relative specifiche, abilitando la discovery e coordinazione dei CI.</p></li>
+<li><p><strong>Integrazione del Registro di Federazione</strong>: Entità operative incluse per la validazione del trust durante le operazioni delle Credenziali.</p></li>
+<li><p><strong>Integrazione del Catalogo</strong>: Tipi di Credenziali automaticamente pubblicati nel <a class="reference internal" href="registry.html#catalogo-degli-attestati-elettronici"><span class="std std-ref">Catalogo degli Attestati Elettronici</span></a> basato sulle politiche dell'Organismo di Supervisione per l'eleggibilità alla discovery pubblica.</p></li>
+</ol>
+</div></blockquote>
+</li>
+<li><p><strong>Registrazione dell'Istanza del Wallet</strong>: Le Istanze del Wallet sono registrate indirettamente attraverso i Fornitori di Wallet, stabilendo le specifiche di gestione delle Credenziali a livello utente. I dettagli tecnici sono forniti in <a class="reference internal" href="wallet-instance-registration.html#inizializzazione-e-registrazione-dell-istanza-del-wallet"><span class="std std-ref">Inizializzazione e Registrazione dell'Istanza del Wallet</span></a>.</p></li>
+</ol>
+</div></blockquote>
+</section>
+<section id="processo-di-registrazione-della-fonte-autentica">
+<h2><span class="section-number">4.2. </span>Processo di Registrazione della Fonte Autentica<a class="headerlink" href="#processo-di-registrazione-della-fonte-autentica" title="Link to this heading">¶</a></h2>
+<p>La registrazione della Fonte Autentica consente ai fornitori di dati di stabilire il loro ruolo autorevole nell'ecosistema degli Attestati Elettronici attraverso la registrazione delle loro specifiche di fornire dati e meccanismi di accesso standardizzati basati sul Registro degli Attributi dell'Utente e sulle classificazioni della Tassonomia.</p>
+<p>Le Fonti Autentiche DEVONO sottoporsi a procedure di registrazione che convalidano la loro autorità sui dati, dichiarano i loro Attributi dell'Utente disponibili dal Registro degli Attributi dell'Utente standardizzato e stabiliscono meccanismi di integrazione tecnica. Le Fonti Autentiche specificano casi d'uso previsti (formalmente <code class="docutils literal notranslate"><span class="pre">purposes</span></code>) che determinano l'eleggibilità del catalogo secondo le politiche dell'Organismo di Supervisione.</p>
+<p>Le Fonti Autentiche Pubbliche e Private DEVONO sfruttare l'integrazione PDND per fornire dati governativi attraverso l'infrastruttura nazionale standardizzata.</p>
+<p><strong>Processo di Coordinamento AS-CI</strong>: Dopo la registrazione AS, i Credential Issuer identificano entità AS adatte attraverso il Registro AS e richiedono autorizzazione all'integrazione durante la fase di registrazione amministrativa. Per i mandati normativi, l'autorizzazione DEVE essere automatica. Altrimenti, le entità Fonti Autentiche valutano e autorizzano le richieste dei Credential Issuer basate su criteri commerciali e tecnici. Dopo l'autorizzazione amministrativa, le procedure di integrazione tecnica stabiliscono le relazioni operative di accesso ai dati prima della pubblicazione del catalogo dei tipi di Credenziali.</p>
+<p>Le Fonti Autentiche registrate con successo DEVONO essere incluse nel Registro AS con i loro Attributi dell'Utente dichiarati e le relative specifiche. I tipi di Credenziali DEVONO diventare pubblicamente scopribili nel <a class="reference internal" href="registry.html#catalogo-degli-attestati-elettronici"><span class="std std-ref">Catalogo degli Attestati Elettronici</span></a> solo dopo l'integrazione AS-CI riuscita e l'approvazione della politica dell'Organismo di Supervisione per l'eleggibilità del catalogo.</p>
+<p>Le procedure di implementazione tecnica per la registrazione della Fonte Autentica sono fornite in <a class="reference internal" href="entity-onboarding.html#procedura-di-registrazione-delle-fonti-autentiche"><span class="std std-ref">Procedura di registrazione delle Fonti Autentiche</span></a>.</p>
+</section>
+<section id="processo-di-onboarding-della-federazione">
+<h2><span class="section-number">4.3. </span>Processo di Onboarding della Federazione<a class="headerlink" href="#processo-di-onboarding-della-federazione" title="Link to this heading">¶</a></h2>
+<p>L'onboarding della federazione, inclusi i processi di registrazione amministrativa e tecnica, stabilisce le relazioni di trust crittografiche e le verifiche di conformità che consentono a tutte le entità (PID Provider, Attestation Provider, Relying Party, Fornitori di Wallet e Fonti Autentiche) di partecipare ad attività sicure del ciclo di vita delle Credenziali.
+Le entità operative DEVONO completare l'onboarding che include la verifica dell'eleggibilità amministrativa e la validazione tecnica. Per i Fornitori di Wallet, questo include la valutazione di conformità della Soluzione Wallet e i successivi flussi di notifica nelle Trusted Lists.</p>
+<p>Per PID Provider, Attestation Provider e Relying Party, il processo di onboarding della federazione tipicamente include:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Registrazione dell'Entità</strong>: Raccolta dei dati principali (identificazione, diritti, punti di fornitura del servizio e chiavi pubbliche crittografiche e certificati) necessari per autorizzare le entità e descriverne le capacità.</p></li>
+<li><p><strong>Emissione dei Certificati</strong>: Emissione di certificati che autenticano le entità, fanno riferimento al registro per la verifica dei diritti, supportano la Certificate Transparency e descrivono lo stato di registrazione per Relying Party e Credential Issuer.</p></li>
+<li><p><strong>Pubblicazione del Registro</strong>: Pubblicazione di tutte le entità registrate nel registro, con un'API online (vedi <a class="reference internal" href="trust-infrastructure.html#integrazione-dell-infrastruttura-di-trust-e-del-registro"><span class="std std-ref">Integrazione dell'Infrastruttura di Trust e del Registro</span></a>) che può essere utilizzata per verificare la registrazione delle entità e gli attributi richiesti.</p></li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>I <strong>PID Provider</strong>, i <strong>PuB-EAA Provider</strong> e i <strong>Wallet Provider</strong> sono registrati attraverso il sistema di onboarding dell'IT-Wallet e successivamente notificati alla Commissione Europea per l'inclusione nelle Trusted Lists. I Wallet Provider non ricevono certificati di accesso o certificati di registrazione dai Registrar nazionali. La Soluzione Wallet fornita dal Wallet Provider deve essere certificata da Organismi di Valutazione della Conformità (CAB) secondo il quadro nazionale di valutazione della conformità.</p>
+</div>
+</section>
+<section id="gestione-del-ciclo-di-vita-delle-entita">
+<h2><span class="section-number">4.4. </span>Gestione del Ciclo di Vita delle Entità<a class="headerlink" href="#gestione-del-ciclo-di-vita-delle-entita" title="Link to this heading">¶</a></h2>
+<p>Dopo l'onboarding riuscito, le entità richiedono una gestione continua del ciclo di vita per mantenere lo stato operativo e la conformità all'interno dell'ecosistema IT-Wallet. La gestione del ciclo di vita comprende aggiornamenti amministrativi, modifiche tecniche e processi di uscita dalla federazione che soddisfano i requisiti organizzativi e operativi in evoluzione.</p>
+<section id="gestione-delle-operazioni-continuative">
+<h3><span class="section-number">4.4.1. </span>Gestione delle Operazioni Continuative<a class="headerlink" href="#gestione-delle-operazioni-continuative" title="Link to this heading">¶</a></h3>
+<p>Le entità DEVONO mantenere informazioni amministrative e tecniche aggiornate per assicurare la partecipazione alla federazione e la conformità.</p>
+<p><strong>Aggiornamenti Amministrativi</strong></p>
+<p>Le organizzazioni POSSONO aggiornare le informazioni amministrative attraverso canali di registro standard, come:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Cambiamenti dell'Entità Legale</strong>: Cambiamenti del nome dell'azienda, ristrutturazione organizzativa, modifiche dello stato legale.</p></li>
+<li><p><strong>Informazioni di Contatto</strong>: Aggiornamenti ai canali di contatto ufficiali e al personale responsabile.</p></li>
+<li><p><strong>Stato Normativo</strong>: Cambiamenti in licenze, certificazioni o stato di conformità normativa.</p></li>
+<li><p><strong>Ambito del Servizio</strong>: Modifiche alle offerte di servizio o alle caratteristiche della base utenti.</p></li>
+</ul>
+</div></blockquote>
+<p>Gli aggiornamenti amministrativi DEVONO seguire processi di governance standard e NON DOVREBBERO influenzare le operazioni tecniche della federazione.</p>
+<p><strong>Gestione della Configurazione Tecnica</strong></p>
+<p>Gli aggiornamenti tecnici che influenzano le operazioni del protocollo di federazione richiedono procedure coordinate, inclusi:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Gestione dei Certificati</strong>: Rinnovo regolare dei certificati, sostituzione di emergenza, gestione della revoca.</p></li>
+<li><p><strong>Cambiamenti dell'Infrastruttura</strong>: Aggiornamenti degli endpoint, migrazioni di servizio, modifiche della capacità.</p></li>
+<li><p><strong>Aggiornamenti di Conformità</strong>: Aggiornamenti degli standard di sicurezza, cambiamenti delle politiche, requisiti di audit.</p></li>
+<li><p><strong>Modifiche delle Capacità</strong>: Aggiunta o rimozione di protocolli supportati, tipi di Credenziali o caratteristiche del servizio.</p></li>
+</ul>
+</div></blockquote>
+<p>Gli aggiornamenti tecnici DEVONO essere validati dall'Organismo di Supervisione per mantenere le relazioni di trust della federazione e l'integrità operativa.</p>
+</section>
+<section id="processi-di-uscita-e-rimozione-dalla-federazione">
+<h3><span class="section-number">4.4.2. </span>Processi di Uscita e Rimozione dalla Federazione<a class="headerlink" href="#processi-di-uscita-e-rimozione-dalla-federazione" title="Link to this heading">¶</a></h3>
+<p>Le entità POSSONO uscire dalla federazione volontariamente o essere rimosse dall'Organismo di Supervisione per ragioni di conformità o sicurezza.</p>
+<p><strong>Uscita Volontaria dalla Federazione</strong> - Le organizzazioni POSSONO scegliere di uscire dalla federazione per ragioni commerciali o operative, inclusi:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Cambiamenti Commerciali</strong>: Ristrutturazione organizzativa o interruzione del servizio.</p></li>
+<li><p><strong>Migrazione Tecnica</strong>: Passaggio a soluzioni tecniche o fornitori alternativi.</p></li>
+<li><p><strong>Cambiamenti Normativi</strong>: Cambiamenti nell'ambiente normativo o nei requisiti di conformità.</p></li>
+</ul>
+</div></blockquote>
+<p>L'uscita volontaria DEVE richiedere coordinamento con entità dipendenti e gestione appropriata delle Credenziali esistenti e delle relazioni con gli utenti.</p>
+<p><strong>Rimozione dell'Organismo di Supervisione</strong> - L'Organismo di Supervisione PUÒ avviare la rimozione dell'entità per:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Violazioni di Conformità</strong>: Mancato mantenimento della conformità normativa o aderenza alle politiche della federazione.</p></li>
+<li><p><strong>Incidenti di Sicurezza</strong>: Compromissione dell'infrastruttura di sicurezza o mancato mantenimento degli standard di sicurezza.</p></li>
+<li><p><strong>Fallimenti Operativi</strong>: Fallimenti tecnici persistenti che influenzano la sicurezza della federazione.</p></li>
+<li><p><strong>Violazioni delle Politiche</strong>: Violazioni delle politiche operative della federazione o degli accordi.</p></li>
+</ul>
+</div></blockquote>
+<p>I processi di rimozione POSSONO includere indagini, rimedi e procedure di appello dove appropriato.</p>
+<div class="admonition warning">
+<p class="admonition-title">Avvertimento</p>
+<p>Per incidenti di sicurezza critici o minacce immediate all'integrità della federazione, l'Organismo di Supervisione PUÒ implementare la sospensione di emergenza con effetto immediato.</p>
+</div>
+</section>
+<section id="requisiti-di-coordinamento-del-ciclo-di-vita">
+<h3><span class="section-number">4.4.3. </span>Requisiti di Coordinamento del Ciclo di Vita<a class="headerlink" href="#requisiti-di-coordinamento-del-ciclo-di-vita" title="Link to this heading">¶</a></h3>
+<p>La gestione del ciclo di vita nell'ecosistema IT-Wallet necessita di coordinamento tra più partecipanti per mantenere le operazioni funzionanti e mantenere le relazioni di trust. Il framework di coordinamento copre tre aree principali:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Comunicazione degli stakeholder:</strong> Quando le entità devono apportare cambiamenti che impattano le operazioni dell'ecosistema IT-Wallet, DEVONO informare l'Organismo di Supervisione e i partecipanti della federazione rilevanti in anticipo.</p></li>
+<li><p><strong>Sincronizzazione del registro:</strong> Quando un'entità apporta cambiamenti che influenzano altre entità, tutti i sistemi di registro DEVONO essere aggiornati correttamente assicurando che tutti i cambiamenti siano registrati in modo sicuro con timestamp e ragioni.</p></li>
+<li><p><strong>Garanzia di continuità aziendale:</strong> Le entità DOVREBBERO bilanciare tra l'apportare aggiornamenti necessari e mantenere i loro obblighi verso utenti e normative. Questo include assicurare che il servizio sia il più disponibile possibile, gestire i dati personali correttamente durante i cambiamenti e rimanere conformi ai requisiti legali anche in situazioni di emergenza.</p></li>
+</ul>
+</div></blockquote>
+<p>Le procedure tecniche e i requisiti di conformità specifici per la gestione del ciclo di vita sono dettagliati nella Sezione <a class="reference internal" href="entity-onboarding.html#onboarding-delle-entita"><span class="std std-ref">Onboarding delle Entità</span></a>.</p>
+</section>
+</section>
+<section id="onboarding-journey-maps">
+<h2><span class="section-number">4.5. </span>Onboarding Journey Maps<a class="headerlink" href="#onboarding-journey-maps" title="Link to this heading">¶</a></h2>
+<p>Le seguenti mappe dei Journey forniscono una vista dettagliata dell'esperienza di onboarding dalla prospettiva di ogni tipo di entità e dei loro operatori. Queste rappresentazioni grafiche aiutano le organizzazioni a comprendere i passaggi specifici, i requisiti e le interazioni che incontreranno durante il loro processo di onboarding.</p>
+<p>Ogni mappa del Journey mostra il processo completo dalla pianificazione iniziale all'integrazione finale del registro, evidenziando i punti di contatto critici con l'Organismo di Supervisione e le dipendenze tra i diversi processi di onboarding delle entità.</p>
+<section id="panoramica-dell-ecosistema">
+<h3><span class="section-number">4.5.1. </span>Panoramica dell'Ecosistema<a class="headerlink" href="#panoramica-dell-ecosistema" title="Link to this heading">¶</a></h3>
+<figure class="align-default" id="onboarding-overview">
+<a class="reference internal image-reference" href="_images/overview-onboarding-journey.svg"><img alt="Panoramica dell'onboarding dell'ecosistema IT-Wallet" src="_images/overview-onboarding-journey.svg" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 4.2 </span><span class="caption-text">Onboarding completo dell'ecosistema che mostra i processi principali</span><a class="headerlink" href="#onboarding-overview" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>Il sistema Registro IT-Wallet coordina tutte le registrazioni attraverso cinque componenti principali:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p><strong>Registro degli Attributi dell'Utente</strong> per definizioni semantiche standardizzate dei singoli Attributi delle Credenziali.</p></li>
+<li><p><strong>Registro AS</strong> per fonti di dati e capacità di fornitura dati.</p></li>
+<li><p><strong>Registro di Federazione</strong> per relazioni di trust operative.</p></li>
+<li><p><strong>Catalogo degli Attestati Elettronici</strong> (vedi <a class="reference internal" href="registry.html#catalogo-degli-attestati-elettronici"><span class="std std-ref">Catalogo degli Attestati Elettronici</span></a>) per la discovery dei tipi di Credenziali.</p></li>
+<li><p><strong>Tassonomia</strong> per la classificazione gerarchica che organizza le Credenziali per dominio e scopo.</p></li>
+</ol>
+</div></blockquote>
+<p>Le seguenti mappe dei Journey illustrano due scenari di Credenziali distinti:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Scenario Catalogo Pubblico</strong>: Patente di Guida Mobile (mDL) resa disponibile per una discovery pubblica tramite Catalogo delle Credenziali.</p></li>
+<li><p><strong>Scenario Credenziale Privata</strong>: Badge Dipendente Aziendale dall'Azienda (FA Privata, resa disponibile per la discovery tramite Catalogo delle Credenziali ma ottenibile solo tramite Offerta di Credenziale).</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="journey-dell-operatore-della-fonte-autentica">
+<h3><span class="section-number">4.5.2. </span>Journey dell'Operatore della Fonte Autentica<a class="headerlink" href="#journey-dell-operatore-della-fonte-autentica" title="Link to this heading">¶</a></h3>
+<p>Dalla prospettiva dell'operatore della Fonte Autentica, il processo di onboarding inizia con la valutazione delle capacità di fornire dati esistenti rispetto al Registro degli Attributi dell'Utente standardizzato e alle classificazioni della Tassonomia, determinando quali Attributi dell'Utente possono essere resi disponibili come Attestato Elettronico. L'operatore invia una richiesta di registrazione all'Organismo di Supervisione, dichiarando Attributi dell'Utente specifici dal Registro degli Attributi dell'Utente con i domini della Tassonomia e gli scopi previsti.</p>
+<p><strong>Esempio - Fonte Autentica Pubblica (Scenario mDL)</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Dichiarazione degli Attributi dell'Utente</strong>: Seleziona Attributi dell'Utente standardizzati (<code class="docutils literal notranslate"><span class="pre">given_name</span></code>, <code class="docutils literal notranslate"><span class="pre">family_name</span></code>, <code class="docutils literal notranslate"><span class="pre">driving_privileges</span></code>, ecc.) dal Registro degli Attributi dell'Utente.</p></li>
+<li><p><strong>Classificazione della Tassonomia</strong>: Dominio <code class="docutils literal notranslate"><span class="pre">MOBILITY_TRAVEL</span></code>, Scopo <code class="docutils literal notranslate"><span class="pre">DRIVING_RIGHTS</span></code>.</p></li>
+<li><p><strong>Caso d'Uso</strong>: Servizio pubblico - verifica dell'autorizzazione alla guida.</p></li>
+<li><p><strong>Integrazione</strong>: Integrazione e-service PDND seguendo gli standard governativi (vedi <a class="reference internal" href="e-service-pdnd.html#e-service-pdnd"><span class="std std-ref">e-Service PDND</span></a>).</p></li>
+<li><p><strong>Risultato del Catalogo</strong>: mDL diventa pubblicamente scopribile dopo l'integrazione CI.</p></li>
+</ul>
+</div></blockquote>
+<p><strong>Esempio - AS Aziendale (Scenario Badge Dipendente)</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Dichiarazione degli Attributi dell'Utente</strong>: Seleziona Attributi dell'Utente (<code class="docutils literal notranslate"><span class="pre">given_name</span></code>, <code class="docutils literal notranslate"><span class="pre">family_name</span></code>, <code class="docutils literal notranslate"><span class="pre">employee.job_title</span></code>, ecc.) dal Registro degli Attributi dell'Utente.</p></li>
+<li><p><strong>Classificazione della Tassonomia</strong>: Dominio <code class="docutils literal notranslate"><span class="pre">MEMBERSHIP</span></code>, Scopo <code class="docutils literal notranslate"><span class="pre">ASSOCIATION</span></code>.</p></li>
+<li><p><strong>Caso d'Uso</strong>: Controllo accessi aziendale privato.</p></li>
+<li><p><strong>Integrazione</strong>: Integrazione e-service PDND seguendo gli standard governativi (vedi <a class="reference internal" href="e-service-pdnd.html#e-service-pdnd"><span class="std std-ref">e-Service PDND</span></a>).</p></li>
+<li><p><strong>Risultato del Catalogo</strong>: Il badge diventa pubblicamente scopribile ma è reso disponibile solo tramite Offerta di Credenziale.</p></li>
+</ul>
+</div></blockquote>
+<p>Le fasi critiche includono la verifica amministrativa da parte dell'Organismo di Supervisione (che coinvolge controlli di conformità normativa al di fuori dell'ambito tecnico) e la validazione tecnica. Il processo si conclude con la registrazione nel Registro AS, rendendo gli Attributi dell'Utente dichiarati scopribili dai Credential Issuer per le richieste di integrazione. Le richieste di integrazione possono essere inviate anche dalle Fonti Autentiche a specifici Credential Issuer.</p>
+<div class="admonition warning">
+<p class="admonition-title">Avvertimento</p>
+<p><strong>Dipendenza importante</strong>: Gli Attributi dell'Utente dichiarati nel Registro AS rimangono non disponibili agli utenti finali fino a quando un Credential Issuer completa la registrazione, l'approvazione dell'integrazione e l'implementazione tecnica. La pubblicazione del catalogo dipende dalle politiche dell'Organismo di Supervisione per l'eleggibilità alla discovery pubblica.</p>
+</div>
+</section>
+<section id="journey-dell-operatore-del-credential-issuer">
+<h3><span class="section-number">4.5.3. </span>Journey dell'Operatore del Credential Issuer<a class="headerlink" href="#journey-dell-operatore-del-credential-issuer" title="Link to this heading">¶</a></h3>
+<p>Gli operatori del Credential Issuer iniziano effettuando la discovery delle Fonti Autentiche disponibili attraverso il Registro AS e valutando la fattibilità dell'integrazione basata sugli Attributi dell'Utente richiesti. La richiesta di registrazione specifica quali tipi di Credenziali intendono emettere, seleziona entità Fonte Autentica appropriate e dimostra la capacità tecnica di accedere alle fonti di dati richieste. In alternativa, gli operatori del Credential Issuer ricevono direttamente la richiesta di integrazione dalla Fonte Autentica.</p>
+<p><strong>Esempio - mDL (Scenario Pubblico)</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>discovery AS</strong> o <strong>AS Integration Request</strong>: Identifica la Fonte Autentica che fornisce Attributi mDL nel Registro AS con gli Attributi dell'Utente della patente di guida richiesti. In alternativa, il Credential Issuer riceve la richiesta di integrazione direttamente dalla Fonte Authentica.</p></li>
+<li><p><strong>Richiesta di Integrazione</strong>: Approvazione automatica dovuta al mandato normativo.</p></li>
+<li><p><strong>Configurazione Tecnica</strong>: Integrazione e-service PDND seguendo gli standard governativi (vedi <a class="reference internal" href="e-service-pdnd.html#e-service-pdnd"><span class="std std-ref">e-Service PDND</span></a>).</p></li>
+<li><p><strong>Pubblicazione del Catalogo</strong>: mDL automaticamente pubblicato nel Catalogo delle Credenziali.</p></li>
+<li><p><strong>Accesso Utente</strong>: I cittadini scoprono mDL attraverso un catalogo pubblico nel Wallet.</p></li>
+</ul>
+</div></blockquote>
+<p><strong>Esempio - CI per Badge Dipendente (Scenario Privato)</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>discovery AS</strong> o <strong>AS Integration Request</strong>: Identifica la Fonte Autentica nel Registro AS con gli Attributi dell'Utente di accesso dipendente. In alternativa, il Credential Issuer riceve la richiesta di integrazione direttamente dalla Fonte Authentica.</p></li>
+<li><p><strong>Richiesta di Integrazione</strong>: Richiede approvazione da parte del destinatario della richiesta.</p></li>
+<li><p><strong>Configurazione Tecnica</strong>:  Integrazione e-service PDND seguendo gli standard governativi (vedi <a class="reference internal" href="e-service-pdnd.html#e-service-pdnd"><span class="std std-ref">e-Service PDND</span></a>).</p></li>
+<li><p><strong>Pubblicazione del Catalogo</strong>: Badge automaticamente pubblicato nel Catalogo delle Credenziali.</p></li>
+<li><p><strong>Accesso Utente</strong>: I dipendenti ricevono badge solo tramite Offerta di Credenziale diretta dai sistemi aziendali.</p></li>
+</ul>
+</div></blockquote>
+<p>Dopo il test di integrazione riuscito e l'approvazione della Fonte Autentica, il Credential Issuer è registrato nel Registro di Federazione come Entità fidata, abilitando l'emissione effettiva di Credenziali agli utenti finali.</p>
+<div class="admonition warning">
+<p class="admonition-title">Avvertimento</p>
+<p>Questo passaggio attiva la disponibilità delle Credenziali per gli utenti finali. Le Credenziali pubbliche e private diventano scopribili attraverso il catalogo, ma le Credenziali private saranno rese disponibili solo tramite Offerte di Credenziale.</p>
+</div>
+</section>
+<section id="journey-dell-operatore-del-fornitore-di-wallet">
+<h3><span class="section-number">4.5.4. </span>Journey dell'Operatore del Fornitore di Wallet<a class="headerlink" href="#journey-dell-operatore-del-fornitore-di-wallet" title="Link to this heading">¶</a></h3>
+<p>Gli operatori del Fornitore di Wallet seguono un Journey di onboarding indipendente che si concentra sulla certificazione dell'applicazione e sulla validazione della sicurezza. Il processo evidenzia lo sviluppo e la certificazione di applicazioni Wallet che possono memorizzare e gestire in modo sicuro gli Attestati Elettronici per i cittadini.</p>
+<p>Un requisito tecnico chiave coinvolge l'implementazione di meccanismi di controllo dell'integrità e autenticità del Wallet. Questi controlli consentono al Wallet di ottenere un Wallet Instance Attestation, che serve come prova dello stato di sicurezza e conformità del Wallet durante le operazioni delle Credenziali.</p>
+<p>Il processo di certificazione include la valutazione della sicurezza, coprendo l'architettura del Wallet, i meccanismi di protezione dei dati e le caratteristiche di privacy dell'utente. I fornitori di Wallet certificati con successo sono registrati nel Registro di Federazione e possono distribuire le loro applicazioni attraverso gli app store.</p>
+</section>
+<section id="journey-dell-operatore-della-relying-party">
+<h3><span class="section-number">4.5.5. </span>Journey dell'Operatore della Relying Party<a class="headerlink" href="#journey-dell-operatore-della-relying-party" title="Link to this heading">¶</a></h3>
+<p>Gli operatori della Relying Party iniziano identificando quali tipi di EAA sono richiesti per i loro servizi specifici e valutando la complessità dell'integrazione con i sistemi di autenticazione esistenti. La richiesta di registrazione fornisce evidenza di necessità legittime per accedere a tipi di Credenziale specifici e Attributi dell'Utente, delineando i casi d'uso del servizio previsti e le caratteristiche organizzative che giustificano l'accesso alle Credenziali.</p>
+<p><strong>Esempio - Servizio di Noleggio Auto (RP Privata)</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Classificazione Aziendale</strong>: Codice ATECO 77.11 (servizi di noleggio auto).</p></li>
+<li><p><strong>Richiesta di Autorizzazione</strong>: Verifica dell'autorizzazione alla guida per l'eleggibilità al noleggio.</p></li>
+<li><p><strong>Requisiti degli Attributi dell'Utente</strong>: <code class="docutils literal notranslate"><span class="pre">given_name</span></code>, <code class="docutils literal notranslate"><span class="pre">family_name</span></code>, <code class="docutils literal notranslate"><span class="pre">driving_privileges</span></code>, ecc., da mDL.</p></li>
+<li><p><strong>Giustificazione del Caso d'Uso</strong>: Obbligo legale di verificare la patente di guida valida prima del noleggio del veicolo.</p></li>
+<li><p><strong>Ambito di Autorizzazione</strong>: Concesso accesso al dominio <code class="docutils literal notranslate"><span class="pre">MOBILITY_TRAVEL</span></code>, scopo <code class="docutils literal notranslate"><span class="pre">DRIVING_RIGHTS</span></code>.</p></li>
+</ul>
+</div></blockquote>
+<p><strong>Esempio - Servizi Municipali (RP Pubblica)</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Tipo di Organizzazione</strong>: Pubblica Amministrazione con requisito codice IPA.</p></li>
+<li><p><strong>Richiesta di Autorizzazione</strong>: Verifica dell'identità del cittadino per l'accesso ai servizi municipali.</p></li>
+<li><p><strong>Requisiti degli Attributi dell'Utente</strong>: <code class="docutils literal notranslate"><span class="pre">given_name</span></code>, <code class="docutils literal notranslate"><span class="pre">family_name</span></code>, <code class="docutils literal notranslate"><span class="pre">tax_id_code</span></code> da PID.</p></li>
+<li><p><strong>Giustificazione del Caso d'Uso</strong>: Erogazione di servizi pubblici che richiede identificazione del cittadino.</p></li>
+<li><p><strong>Ambito di Autorizzazione</strong>: Concesso accesso più ampio riflettendo il mandato del servizio pubblico.</p></li>
+</ul>
+</div></blockquote>
+<p><strong>Esempio - Controllo Accessi Aziendale (RP Privata)</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Classificazione Aziendale</strong>: Codice ATECO 62.01 (attività di programmazione informatica).</p></li>
+<li><p><strong>Richiesta di Autorizzazione</strong>: Verifica del dipendente per l'accesso alle strutture aziendali.</p></li>
+<li><p><strong>Requisiti degli Attributi dell'Utente</strong>: <code class="docutils literal notranslate"><span class="pre">given_name</span></code>, <code class="docutils literal notranslate"><span class="pre">family_name</span></code>, <code class="docutils literal notranslate"><span class="pre">employee.job_title</span></code> dal Badge Dipendente Aziendale.</p></li>
+<li><p><strong>Giustificazione del Caso d'Uso</strong>: Sicurezza del posto di lavoro che richiede identificazione del dipendente e controllo degli accessi.</p></li>
+<li><p><strong>Ambito di Autorizzazione</strong>: Concesso accesso al dominio <code class="docutils literal notranslate"><span class="pre">MEMBERSHIP</span></code>, scopo <code class="docutils literal notranslate"><span class="pre">ASSOCIATION</span></code>.</p></li>
+<li><p><strong>Discovery delle Credenziali</strong>: Badge disponibile solo tramite Offerta di Credenziale privata (non eleggibile per il Catalogo delle Credenziali).</p></li>
+</ul>
+</div></blockquote>
+<p>L'integrazione tecnica si concentra sullo sviluppo di flussi di autenticazione che possono verificare gli Attestati Elettronici presentati dagli Utenti. Questo include l'implementazione di meccanismi di verifica crittografica e l'istituzione di canali di comunicazione sicuri con l'infrastruttura di federazione.</p>
+<p>L'autorizzazione del servizio da parte dell'Organismo di Supervisione DEVE coinvolgere una valutazione basata su politiche che considera il tipo di organizzazione (privata vs pubblica amministrazione), la classificazione del settore aziendale e i requisiti di servizio legittimi. Il processo di autorizzazione concede ambiti operativi specifici che definiscono quali domini di Credenziali e scopi la Relying Party può richiedere. Dopo l'approvazione, la Relying Party è registrata nel Registro di Federazione con profili di autorizzazione chiaramente definiti per l'accettazione degli Attestati Elettronici e degli Attributi dell'Utente.</p>
+</section>
+</section>
+<section id="journey-dell-esperienza-utente">
+<h2><span class="section-number">4.6. </span>Journey dell'Esperienza Utente<a class="headerlink" href="#journey-dell-esperienza-utente" title="Link to this heading">¶</a></h2>
+<p>Quando tutti i processi di onboarding delle entità sono completati con successo, gli Utenti possono scoprire e installare Istanze del Wallet certificate, ottenere gli Attestati Elettronici disponibili e presentare i loro Attestati elettronici a Fornitori di Servizi registrati (vedi <a class="reference internal" href="functionalities.html#panoramica-delle-funzionalita"><span class="std std-ref">Panoramica delle Funzionalità</span></a>).</p>
+<p>Questa modalità di integrazione dipende dal fatto che tutte le entità rilevanti abbiano completato i rispettivi Journey di onboarding.</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+    
+        <div id="show_right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&lt;</span><span>Page contents</span></a></p>
+        </div>
+
+        <div id="right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
+            <div class="page_toc">
+                <ul>
+<li><a class="reference internal" href="#">4. Sistema di Onboarding</a><ul>
+<li><a class="reference internal" href="#architettura-del-sistema-di-onboarding">4.1. Architettura del Sistema di Onboarding</a></li>
+<li><a class="reference internal" href="#processo-di-registrazione-della-fonte-autentica">4.2. Processo di Registrazione della Fonte Autentica</a></li>
+<li><a class="reference internal" href="#processo-di-onboarding-della-federazione">4.3. Processo di Onboarding della Federazione</a></li>
+<li><a class="reference internal" href="#gestione-del-ciclo-di-vita-delle-entita">4.4. Gestione del Ciclo di Vita delle Entità</a><ul>
+<li><a class="reference internal" href="#gestione-delle-operazioni-continuative">4.4.1. Gestione delle Operazioni Continuative</a></li>
+<li><a class="reference internal" href="#processi-di-uscita-e-rimozione-dalla-federazione">4.4.2. Processi di Uscita e Rimozione dalla Federazione</a></li>
+<li><a class="reference internal" href="#requisiti-di-coordinamento-del-ciclo-di-vita">4.4.3. Requisiti di Coordinamento del Ciclo di Vita</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#onboarding-journey-maps">4.5. Onboarding Journey Maps</a><ul>
+<li><a class="reference internal" href="#panoramica-dell-ecosistema">4.5.1. Panoramica dell'Ecosistema</a></li>
+<li><a class="reference internal" href="#journey-dell-operatore-della-fonte-autentica">4.5.2. Journey dell'Operatore della Fonte Autentica</a></li>
+<li><a class="reference internal" href="#journey-dell-operatore-del-credential-issuer">4.5.3. Journey dell'Operatore del Credential Issuer</a></li>
+<li><a class="reference internal" href="#journey-dell-operatore-del-fornitore-di-wallet">4.5.4. Journey dell'Operatore del Fornitore di Wallet</a></li>
+<li><a class="reference internal" href="#journey-dell-operatore-della-relying-party">4.5.5. Journey dell'Operatore della Relying Party</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#journey-dell-esperienza-utente">4.6. Journey dell'Esperienza Utente</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    
+
+      <div class="clearer"></div>
+    </div>
+    <div class="button_nav_wrapper">
+        <div class="button_nav">
+            <div class="left">
+                
+                <a href="architecture-overview.html">
+                    <span class="icon">&lt;</span><span><span class="section-number">3. </span>Panoramica dell'Architettura</span></a>
+                
+            </div>
+
+            <div class="right">
+                
+                    <a href="functionalities.html"><span><span class="section-number">5. </span>Design dell'Esperienza Utente</span><span class="icon">&gt;</span></a>
+                
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer" role="contentinfo">
+      Ultimo aggiornamento 11/06/2026.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
+    </div>
+
+<p id="theme_credit"></p>
+  </body>
+</html>
