@@ -766,7 +766,7 @@ Il *proof type* del JWT DEVE contenere i seguenti parametri per l'header JOSE e 
     - Rappresenta la chiave pubblica scelta dall'Istanza del Wallet, in formato JSON Web Key (JWK) [:rfc:`7517`] a cui l'Attestato Elettronico sarà vincolato, come definito nella Sezione 4.1.3 del [:rfc:`7515`].
     - [`OpenID4VCI`_], [:rfc:`7515`], [:rfc:`7517`].
   * - **key_attestation**
-    - Representa la Wallet Unit Attestation.
+    - Representa la Key Attestation.
     - [`OpenID4VCI`_].
 
 .. list-table::

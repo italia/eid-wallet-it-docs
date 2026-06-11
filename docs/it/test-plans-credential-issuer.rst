@@ -832,7 +832,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Endpoint Revoca Istanza di Wallet tramite PDND
       Monitoraggio dello stato della Wallet Instance per l'aggiornamento dello stato degli Attestati Elettronici
-    - Il Fornitore di Attestati Elettronici predispone un meccanismo di monitoraggio degli stati correnti di tutte le Wallet Unit Attestation associate alle Wallet Instance a cui sono stati rilasciati gli Attestati Elettronici.
+    - Il Fornitore di Attestati Elettronici predispone un meccanismo di monitoraggio degli stati correnti di tutte le Key Attestation associate alle Wallet Instance a cui sono stati rilasciati gli Attestati Elettronici.
   * - CI_170
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Aggiornamento Stato Credenziale Seguendo Notifica Cambio Dati
