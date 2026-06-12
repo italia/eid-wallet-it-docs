@@ -41,7 +41,7 @@ To ensure a correct and consistent implementation, Primary Actors:
 
 - MUST use the :ref:`official-resources:Official Resources` and MUST comply with all related usage specifications provided; 
 
-- MAY choose from the available configurations provided. Primary Actors MUST ensure the correct use of atomic components, such as the `Engagement Button`_ or the `Authentication Button`_ ; 
+- MAY choose from the available configurations provided. Primary Actors MUST ensure the correct use of atomic components, such as the :ref:`functionalities:Engagement Button` or the :ref:`functionalities:Authentication Button` ; 
 
 - MUST keep used resources up to date, in line with the latest available version of the :ref:`official-resources:Official Resources`. 
 
@@ -61,7 +61,7 @@ Below are the User Experience requirements that the Wallet Provider MUST guarant
 - The User authorizes the operation using the unlock method previously set;
 - The User receives confirmation of the successful activation of the Wallet Instance.
 
-The Wallet Provider MUST allow the User to remove the PID issued during the activation phase. In addition, the PID Provider SHOULD allow the User to revoke the issued PID through a specific Touchpoint. The Wallet Provider MUST allow the User to always have the option to request the deactivation of their Wallet Instance, even in the absence of the device on which it was installed. For further details, please refer to the `Deactivation of the Wallet Instance`_ and `Management of Electronic Attestations`_ sections.
+The Wallet Provider MUST allow the User to remove the PID issued during the activation phase. In addition, the PID Provider SHOULD allow the User to revoke the issued PID through a specific Touchpoint. The Wallet Provider MUST allow the User to always have the option to request the deactivation of their Wallet Instance, even in the absence of the device on which it was installed. For further details, please refer to the :ref:`functionalities:Deactivation of the Wallet Instance` and :ref:`functionalities:Management of Electronic Attestations` sections.
 
 In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the :ref:`functionalities:Error Management` section.
 
@@ -154,7 +154,7 @@ Depending on the User's specific needs, the type of Electronic Attestation of At
 
 - **from the Wallet Instance Catalog**: the User explores the list of Electronic Attestations of Attributes provided by the Wallet Solution, selects the one of interest, and initiates the request process, concluding with the issuance of the Electronic Attestation of Attributes in the Wallet Instance. This pathway is available for Credential types eligible for public discovery as determined by the Supervisory body policies during the onboarding process (see :ref:`registry:Digital Credentials Catalog`).
 
-- **from a Touchpoint of the Authentic Source** (or the Electronic Attestation of Attributes Provider if it coincides with the Authentic Source; (see :ref:`credential-issuance-low-level:Credential Offer Flow` ): the User interacts with the digital service of the Authentic Source, allowing them to get a specific Electronic Attestation of Attributes in their Wallet Instance via an `Engagement Button`_.
+- **from a Touchpoint of the Authentic Source** (or the Electronic Attestation of Attributes Provider if it coincides with the Authentic Source; (see :ref:`credential-issuance-low-level:Credential Offer Flow` ): the User interacts with the digital service of the Authentic Source, allowing them to get a specific Electronic Attestation of Attributes in their Wallet Instance via an :ref:`functionalities:Engagement Button`.
 
 Although the methods for initiating the request are different, the issuance flows share a similar structure and process. 
 
@@ -192,7 +192,7 @@ Following is an example of informative text:
 
 For further information, please refer to the section :ref:`registry:Authentic Source Registry` (see ``data_capabilities.user_information`` parameter). 
 
-The Wallet Provider MUST allow the User to remove an Electronic Attestation of Attributes through their Wallet Instance at any moment. In case of absence of the device where the Wallet Instance was activated, the Wallet Provider MUST allow the User to deactivate the entire Wallet Instance through a specific Touchpoint. In addition, the Electronic Attestation of Attributes Providers SHOULD allow the User to revoke the issued Digital Credentials through specific Touchpoints. For more details, please refer to the `Deactivation of the Wallet Instance`_ and `Management of Electronic Attestations`_ sections.
+The Wallet Provider MUST allow the User to remove an Electronic Attestation of Attributes through their Wallet Instance at any moment. In case of absence of the device where the Wallet Instance was activated, the Wallet Provider MUST allow the User to deactivate the entire Wallet Instance through a specific Touchpoint. In addition, the Electronic Attestation of Attributes Providers SHOULD allow the User to revoke the issued Digital Credentials through specific Touchpoints. For more details, please refer to the :ref:`functionalities:Deactivation of the Wallet Instance` and :ref:`functionalities:Management of Electronic Attestations` sections.
 
 In the event of communication issues between the systems of the Electronic Attestation of Attributes Provider and the Authentic Source, or if administrative or technical processes prevent the immediate issuance of the Electronic Attestation of Attributes, the actors involved MAY support a deferred issuance process. In this case the Wallet Provider MUST guarantee that:
 
@@ -245,7 +245,7 @@ Issuance from a Touchpoint of the Authentic Source
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Below are illustrated the User Experience requirements for the issuance of an Electronic Attribute Attestation from a Touchpoint of the Authentic Source (also known as :ref:`credential-issuance-low-level:Credential Offer Flow` that the Authentic Source MUST guarantee through their Touchpoint: 
 
-- The User interacts with the `Engagement Button`_ clearly displayed in the Touchpoint interface; 
+- The User interacts with the :ref:`functionalities:Engagement Button` clearly displayed in the Touchpoint interface; 
 - The User selects the Wallet Solution with which to proceed, through an interface that MUST follow the directions and functionalities described for the *Selection Page* in the :ref:`functionalities:Authentication` section; 
 - (*cross-device only*) the User scans the QR code that invokes the opening of their chosen Wallet Instance, through an interface that MUST follow the directions and functionalities described for the *QR Code Page* in the :ref:`functionalities:Authentication` section; alternatively the User can exit the flow.
 - The User accesses their Wallet Instance using the unlock method previously set; 
@@ -325,7 +325,7 @@ The flow is shown below with illustrative wireframes.
 
     Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source, cross device - 04
 
-Following is represented for illustrative purposes the page with the `Engagement Button`_, together with the Selection Page and the QR Code Page with the interface elements and texts updated according to the `Issuance from a Touchpoint of the Authentic Source`_ flow. 
+Following is represented for illustrative purposes the page with the :ref:`functionalities:Engagement Button`, together with the Selection Page and the QR Code Page with the interface elements and texts updated according to the :ref:`functionalities:Issuance from a Touchpoint of the Authentic Source` flow. 
 
 .. only:: format_html 
  
@@ -568,7 +568,7 @@ Below are the User Experience requirements related to both methods that the Wall
 - The User authorizes the operation using the unlock method previously set;
 - The User receives confirmation of the successful presentation.
 
-In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the `Error Management`_ section.
+In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the :ref:`functionalities:Error Management` section.
 
 **Unsupervised Mode**
 
@@ -604,7 +604,7 @@ The flow is shown below with illustrative wireframes.
 Remote Presentation
 ^^^^^^^^^^^^^^^^^^^^
 
-Remote presentation allows the User to present the PID and/or EAA data by interacting with a Relying Party's Touchpoint through the designated `Engagement Button`_.
+Remote presentation allows the User to present the PID and/or EAA data by interacting with a Relying Party's Touchpoint through the designated :ref:`functionalities:Engagement Button`.
 
 This presentation can occur in two different modes, depending on the type of device used to access the service:
 
@@ -615,7 +615,7 @@ Below are the User Experience requirements related to both methods that the Wall
 
 **Same-Device Mode**
 
-- The User clicks the Engagement Button provided on the Relying Party's Touchpoint;
+- The User clicks the :ref:`functionalities:Engagement Button` provided on the Relying Party's Touchpoint;
 - The User selects the Wallet Solution to proceed with, through an interface that MUST follow the instructions and functionalities provided for the Selection Page described in the :ref:`functionalities:Authentication` section;
 - The User accesses their Wallet Instance using the unlock method previously set;
 - The User reviews the requested PID and/or EAA data, the name of the requesting Relying Party, and any related policy. The User decides whether to present any non-mandatory PID and/or EAA data (Selective Disclosure). The User provides consent to proceed or cancels the operation;
@@ -623,7 +623,7 @@ Below are the User Experience requirements related to both methods that the Wall
 - The User receives confirmation of the successful presentation within the Wallet Instance;
 - The User returns to the Relying Party's Touchpoint, where they see confirmation of the completed presentation.
 
-In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the `Error Management`_ section.
+In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the :ref:`functionalities:Error Management` section.
 
 The flow is shown below with illustrative wireframes.
 
@@ -656,7 +656,7 @@ The flow is shown below with illustrative wireframes.
 
 **Cross-Device Mode**
 
-- The User clicks the Engagement Button provided on the Touchpoint of the Relying Party while accessing the service from a different device than the one where the Wallet Instance is installed;
+- The User clicks the :ref:`functionalities:Engagement Button` provided on the Touchpoint of the Relying Party while accessing the service from a different device than the one where the Wallet Instance is installed;
 - The User selects the Wallet Solution to proceed with, through an interface that MUST follow the instructions and functionalities provided for the Selection Page described in the :ref:`functionalities:Authentication` section;
 - The User scans the QR Code provided by the Relying Party using their Wallet Instance or the camera on their device; the QR code interface MUST follow the instructions and functionalities provided for the QR Code Page described in the :ref:`functionalities:Authentication` section;
 - The User reviews the requested PID and/or EAA data, the name of the requesting Relying Party, and any related policy. The User decides whether to present any non-mandatory personal data (Selective Disclosure). The User provides consent to proceed or cancels the operation.
@@ -664,7 +664,7 @@ The flow is shown below with illustrative wireframes.
 - The User receives confirmation of the successful presentation within the Wallet Instance;
 - The User returns to the Relying Party's Touchpoint and views confirmation of the completed presentation.
 
-In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the `Error Management`_ section.
+In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the :ref:`functionalities:Error Management` section.
 
 The flow is shown below with illustrative wireframes.
 
@@ -705,7 +705,7 @@ The flow is shown below with illustrative wireframes.
 
     Example of User Experience in remote, cross-device presentation - 03
 
-Following is represented for illustrative purposes the page with the `Engagement Button`_, together with the Selection Page, the QR Code Page and the Thank You Page with the interface elements and texts updated according to the `Remote Presentation`_ flow.
+Following is represented for illustrative purposes the page with the :ref:`functionalities:Engagement Button`, together with the Selection Page, the QR Code Page and the Thank You Page with the interface elements and texts updated according to the :ref:`functionalities:Remote Presentation` flow.
 
 .. only:: format_html 
  
@@ -739,9 +739,9 @@ Authentication
 
 Authentication is a specific use case of remote presentation that allows the User to securely access services provided by both public and private Relying Parties. This is achieved by presenting the PID and, if necessary, a set of Attributes contained in the obtained Electronic Attestations of Attributes. This process ensures that the User retains control over their data, including the ability to present only the information strictly necessary for verification by Relying Parties.
 
-The Authentication process can be carried out using both the same-device and cross-device modes described above. For the User Experience functional requirements that MUST be addressed, please refer to the functional requirements for `remote presentation`_ in same-device and cross-device modes.
+The Authentication process can be carried out using both the same-device and cross-device modes described above. For the User Experience functional requirements that MUST be addressed, please refer to the functional requirements for :ref:`remote presentation <functionalities:Remote Presentation>` in same-device and cross-device modes.
 
-From a User Experience perspective, the Authentication process differs from the Presentation process only in how it is initiated, which is through a dedicated `Authentication Button`_.
+From a User Experience perspective, the Authentication process differs from the Presentation process only in how it is initiated, which is through a dedicated :ref:`functionalities:Authentication Button`.
 
 To ensure a consistent and seamless Authentication process across all Relying Parties, each Relying Party MUST follow the visual and User Experience requirements outlined below, together with compliance with [REF_ACCESSIBILITY] and, in the case of public entities, with [GL_DESIGN].
 
@@ -861,7 +861,7 @@ To enable Authentication via the IT-Wallet System, the Relying Party MAY replace
 
      Layout Model of Discovery Page in grid 
 
-Alternatively, the Relying Party MAY maintain its own Discovery Page but MUST integrate the Authentication Button as specified in the `Authentication Button`_ section.
+Alternatively, the Relying Party MAY maintain its own Discovery Page but MUST integrate the Authentication Button as specified in the :ref:`functionalities:Authentication Button` section.
 
 The Relying Party implementing the page:
 
@@ -1045,7 +1045,7 @@ The Relying Party implementing the page:
 Authentication Button
 ~~~~~~~~~~~~~~~~~~~~~~
 
-The Authentication Button "Login with IT-Wallet" serves as an `Engagement Button`_, providing Users with a standardized way to Authenticate themselves using their digital Wallet.
+The Authentication Button "Login with IT-Wallet" serves as an :ref:`functionalities:Engagement Button`, providing Users with a standardized way to Authenticate themselves using their digital Wallet.
 
 Relying Parties MUST make the Authentication Button available within the Discovery Page of their Technical Solutions to allow the User to get authenticated into their services using the Wallet Instance under their control.
 
@@ -1389,11 +1389,11 @@ Below are the functional and User Experience requirements that the Wallet Provid
 - The User receives confirmation of successful deactivation;
 - The User is notified that the Wallet Instance is inactive when logging in again.
 
-The User has the ability to reactivate the Wallet Instance by re-downloading the app from the app store (if uninstalled) and/or by following the activation process again. For further details, please refer to the `Activation of the Wallet Instance`_ section.
+The User has the ability to reactivate the Wallet Instance by re-downloading the app from the app store (if uninstalled) and/or by following the activation process again. For further details, please refer to the :ref:`functionalities:Activation of the Wallet Instance` section.
 
-Once the Wallet Instance is reactivated, Electronic Attestations of Attributes can be re-obtained by starting the issuance or restore process again. For more details, please refer to sections `Issuance of Electronic Attestations of Attributes`_ and `Backup and Restore of Electronic Attestation of Attributes`_.
+Once the Wallet Instance is reactivated, Electronic Attestations of Attributes can be re-obtained by starting the issuance or restore process again. For more details, please refer to sections :ref:`functionalities:Issuance of Electronic Attestations of Attributes` and :ref:`functionalities:Backup and Restore of Electronic Attestation of Attributes`.
 
-In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For more details, please refer to the `Error Management`_ section.
+In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For more details, please refer to the :ref:`functionalities:Error Management` section.
 
 
 The flow is shown below with illustrative wireframes.
