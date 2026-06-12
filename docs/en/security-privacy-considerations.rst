@@ -81,8 +81,7 @@ SR-E-20
    * - |check-icon|
      - The Trust Framework must ensure that the identification of an Issuer is unique and unambiguous. If there are multiple instances of the same Issuer using the same key material, the Verifier must trust all instances equally.
 
-The IT Wallet Trust Framework ensures that each entity (e.g., an Issuer) is uniquely identified through cryptographic
-keys and metadata, as distributed via a verifiable attestation, such as the OpenID Federation Entity Configuration verified within a Trust Chain.
+The IT Wallet Trust Framework ensures that each entity (e.g., an Issuer) is uniquely identified through cryptographic keys and metadata, as distributed via a verifiable attestation, such as the OpenID Federation Entity Configuration verified within a Trust Chain.
 
 SR-E-30
 ^^^^^^^
@@ -472,8 +471,8 @@ SPR-P-80
    * - |check-icon|
      - The protocol must ensure that the Issuer cannot learn where the User uses the Credential.
 
-The exchange protocol does not require any interactions between Verifiers and Issuers. In addition, privacy-preserving Status List mechanism
-ensure that while the Verifier checks the Credential's validity, the Issuer does not learn where or when the Credential is being used.
+The exchange protocol does not require any interactions between Verifiers and Issuers.
+In addition, privacy-preserving Status List mechanism ensure that while the Verifier checks the Credential's validity, the Issuer does not learn where or when the Credential is being used.
 
 SPR-W-50
 ^^^^^^^^

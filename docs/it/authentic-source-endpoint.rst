@@ -27,7 +27,7 @@ L'e-service è descritto tramite una specifica OpenAPI in cui sono dettagliati i
     Questa specifica OpenAPI può essere estesa dalle Fonti Autentiche, infatti, l'array ``attributeClaims`` PUÒ contenere proprietà aggiuntive specifiche di una particolare Credenziale. Queste proprietà aggiuntive, così come definito nella specifica OpenAPI, saranno inserite nella Credenziale dal Credential Issuer.
 
 Get Attribute Claims
-"""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 
 .. _table_authentic-source-endpoint-get-attribute-claims:
 .. list-table::
@@ -54,7 +54,7 @@ Questo e-Service DEVE essere invocato dal Credential Issuer nei seguenti casi:
     - il Credential Issuer DEVE leggere il valore ``last_updated`` ricevuto nella risposta per essere in grado di verificare se gli Attributi dell'Utente sono cambiati dall'ultima emissione di un Attestato Elettronico.
 
 Mapping degli Stati del Ciclo di Vita degli Attestati Elettronici
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Per garantire la coerenza tra il "Ciclo di Vita degli Attestati Elettronici" documentato in :ref:`credential-revocation:Ciclo di Vita degli Attestati Elettronici` e l'Enum status delle OpenAPI, la seguente mappatura e logica operativa DEVE essere applicata per il campo ``status`` negli ``attributeClaims``.
 
@@ -110,3 +110,5 @@ Si rimanda all'Appendice tecnica (Sezione :ref:`e-service-pdnd:e-Service PDND`) 
 
 .. warning::
   Non sono ammessi meccanismi alternativi di distribuzione del materiale crittografico (es. endpoint ``.well-known`` pubblici esposti direttamente dalla Fonte Autentica o distribuzione *out-of-band*). La gestione del trust DEVE rimanere centralizzata all'interno del perimetro dell'infrastruttura PDND come descritto nei riferimenti sopra citati.
+
+

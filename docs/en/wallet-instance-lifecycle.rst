@@ -48,9 +48,8 @@ When the state is **Installed**, the Wallet Instance MUST interact only with the
 * illegal activities reported by Judicial or Supervisory Bodies.
 
 .. note::
-  As it is stated in the ARF (see Topic 9 and Topic 38 in Annex 2), the revocation of the Wallet Instance is accomplished by revoking the Wallet Unit Attestation by
-  using the status management mechanism. The Wallet Provider can simply change the status of the Wallet Unit in the Status List to mark the Wallet Unit as revoked and
-  inform the users concerning the reason to revoke the Wallet Unit.  
+  As it is stated in the ARF (see Topic 9 and Topic 38 in Annex 2), the revocation of the Wallet Instance is accomplished by revoking the Wallet Unit Attestation by using the status management mechanism.
+  The Wallet Provider can simply change the status of the Wallet Unit in the Status List to mark the Wallet Unit as revoked and inform the users concerning the reason to revoke the Wallet Unit.  
 
 Transition to Operational
 .........................
@@ -64,9 +63,7 @@ This association allows the User to directly request Wallet Instance revocation 
   As a result of the User account creation, an authentication mechanism MUST be set for the User to interact with the Wallet Provider portal.
   This specification mandates the use of at least a second-factor for User authentication.
 
-As part of the activation, the Wallet Provider MUST evaluate the operating system, general technical capabilities of the device, and trustworthiness of the WSCD 
-to check compliance with the technical and security requirements, the authenticity and integrity of the installed Wallet Instance, and ensure the keys used for 
-key binding resides in a secure WSCD.
+As part of the activation, the Wallet Provider MUST evaluate the operating system, general technical capabilities of the device, and trustworthiness of the WSCD to check compliance with the technical and security requirements, the authenticity and integrity of the installed Wallet Instance, and ensure the keys used for key binding resides in a secure WSCD.
 Upon successful verification, the Wallet Provider MUST issue at least one valid Wallet Attestation to the Wallet Instance, therefore the Wallet Instance enters the **Operational** state.
 
 In addition, if not already done, Users MUST set their preferred method of unlocking their Wallet Instance; this MAY be accomplished by entering a
@@ -127,3 +124,5 @@ A Wallet Provider instead is responsible for:
 * **Wallet Instance Activation** (**WI ACT**): a User account MUST be created and associated with the Wallet Instance through the Wallet Cryptographic Hardware Key Tag. As a result of the User account creation, an authentication mechanism of at least two factors MUST be set for the User to interact with the Wallet Provider portal.
 * **Wallet Instance Revocation** (**WI REV**): for technical security reasons or triggered by external entities (e.g., Users and Supervisory Bodies) the Wallet Instance is revoked and this result in the revocation of the Wallet Unit Attestation, which is reflected on the Wallet Unit Attestation Status List. Additionally, the Wallet Cryptographic Hardware Key Tag MUST be deleted from the User account.
 * **Data Purging**: through an explicit request of Users, the User account at the Wallet Provider MUST be removed from the local storage.
+
+

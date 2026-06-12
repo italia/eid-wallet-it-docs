@@ -60,8 +60,7 @@ The *oauth_authorization_server* metadata MUST contain the following parameters.
     - JSON Web Key Set containing the cryptographic keys for the authorization server. See `OID-FED`_ Section 5.2.1 and `JWK`_.
 
 .. important::
-  If ``token_endpoint_auth_methods_supported`` includes ``attest_jwt_client_auth``, the Authorization Server MUST include both
-  ``client_attestation_signing_alg_values_supported`` and ``client_attestation_pop_signing_alg_values_supported`` in its metadata.
+  If ``token_endpoint_auth_methods_supported`` includes ``attest_jwt_client_auth``, the Authorization Server MUST include both ``client_attestation_signing_alg_values_supported`` and ``client_attestation_pop_signing_alg_values_supported`` in its metadata.
   Clients SHOULD fetch and parse the Authorization Server metadata to detect support and algorithm requirements for Attestation-Based Client Authentication. When algorithms are incompatible, the client MAY obtain a new client attestation using a supported algorithm.
 
 Metadata for openid_credential_issuer
@@ -151,4 +150,5 @@ The *openid_credential_issuer* metadata contains the following claims.
             - **batch_size**: Integer value specifying the maximum array size for the ``proofs`` parameter in a Credential request.
   * - **status_list_aggregation_endpoint**
     - REQUIRED. URL of the Status List Aggregation Endpoint. See `TOKEN-STATUS-LIST`_ Section 9.
+
 

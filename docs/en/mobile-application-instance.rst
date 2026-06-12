@@ -78,7 +78,8 @@ If any errors occur in the Key Attestation APIs process, such as device integrit
 
 .. note::
   It is not necessary to send the Application Instance Hardware public key because it is already included in the ``key_attestation``.
-  As seen in the previous steps, the Key Attestation APIs creates a Key Attestation linked to the provided ``client_data_hash`` which is the digest of the Application Provider's ``nonce``, the public key of the Application Instance Hardware and its Hardware Key Tag (:ref:`WP_133a <wallet-instance-optional-testcases>`). This process eliminates the need to send the Application Instance Hardware public key directly, as it is already included in the Key Attestation.
+  As seen in the previous steps, the Key Attestation APIs creates a Key Attestation linked to the provided ``client_data_hash`` which is the digest of the Application Provider's ``nonce``, the public key of the Application Instance Hardware and its Hardware Key Tag (:ref:`WP_133a <wallet-instance-optional-testcases>`).
+  This process eliminates the need to send the Application Instance Hardware public key directly, as it is already included in the Key Attestation.
 
 **Steps 10-12 (Mobile Application Instance Initialization Response)**: The Application Provider validates the ``nonce`` and ``key_attestation`` signature (:ref:`WP_135–137 <wallet-instance-optional-testcases>`), therefore:
 
@@ -462,3 +463,5 @@ The following table lists HTTP Status Codes and related error codes that are sup
     * - ``503 Service Unavailable``
       - ``temporarily_unavailable``
       - The service is unavailable. Please try again later.
+
+

@@ -1,6 +1,5 @@
 .. include:: ../common/common_definitions.rst
 
-.. _algorithms-cryptographic-algorithms:
 
 Algoritmi Crittografici
 =======================
@@ -65,7 +64,6 @@ I seguenti algoritmi DEVONO essere supportati:
     - Cifratura AES con Galois/Counter Mode e una lunghezza della chiave di 256.
     - Cifratura del Contenuto
     - :rfc:`7516`, :rfc:`7518`.
-
 
 Per le Credenziali emesse in formato mdoc, i seguenti algoritmi DEVONO essere supportati:
 
@@ -162,3 +160,5 @@ I seguenti algoritmi NON DEVONO essere supportati:
     - HMAC utilizzando SHA-512
     - Firma
     - :rfc:`7518`.
+
+

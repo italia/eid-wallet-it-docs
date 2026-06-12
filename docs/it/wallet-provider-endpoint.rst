@@ -17,14 +17,12 @@ Il Fornitore di Wallet, responsabile della fornitura di una Soluzione Wallet, DE
    :ref:`wallet-instance-testcases` e 
    :ref:`wallet-instance-optional-testcases`.
 
-
 Endpoint di Federazione
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 L'endpoint ``/.well-known/openid-federation`` serve come meccanismo di discovery per l'instaurazione della fiducia recuperando la Entity Configuration del Fornitore di Wallet.
 
 Vedere la Sezione :ref:`wallet-provider-entity-configuration:Entity Configuration del Fornitore di Wallet` per i dettagli tecnici (:ref:`WP_001–004 <wallet-provider-backend-testcases>`).
-
 
 
 Endpoint Nonce della Soluzione Wallet
@@ -188,12 +186,12 @@ I seguenti errori DEVONO essere supportati per le risposte di errore relative al
      - La richiesta non può essere autenticata o autorizzata.
 
 Endpoint di Emissione della Wallet Instance Attestation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Questo è un endpoint API RESTful fornito dal Fornitore di Wallet che consente all'Istanza di Wallet di ottenere una Wallet Instance Attestation, inviando una Richiesta di Emissione della Wallet Instance Attestation.
 
 Richiesta di Emissione della Wallet Instance Attestation
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 La richiesta di emissione della Wallet Instance Attestation utilizza il metodo HTTP POST con il ``Content-Type`` impostato su ``application/json`` (:ref:`WP_026 <wallet-instance-testcases>` e :ref:`WP_140–142 <wallet-instance-optional-testcases>`).
 
@@ -225,7 +223,7 @@ In particolare, il JWT della richiesta di emissione della Wallet Instance Attest
       - **Descrizione**
       - **Riferimento**
     * - **alg**
-      - Identificatore dell'algoritmo di firma digitale, come definito nel registro IANA "JSON Web Signature and Encryption Algorithms". DEVE essere uno degli algoritmi supportati elencati in :ref:`algorithms-cryptographic-algorithms` e non DEVE essere impostato su ``none`` né su alcun identificatore di algoritmo simmetrico (MAC).
+      - Identificatore dell'algoritmo di firma digitale, come definito nel registro IANA "JSON Web Signature and Encryption Algorithms". DEVE essere uno degli algoritmi supportati elencati in :ref:`algorithms:Algoritmi Crittografici` e non DEVE essere impostato su ``none`` né su alcun identificatore di algoritmo simmetrico (MAC).
       - [:rfc:`7516#section-4.1.1`]
     * - **kid**
       - thumbprint della JWK dell'Istanza del Wallet contenuta nella dichiarazione ``cnf``.
@@ -278,7 +276,9 @@ Il JWT della richiesta include le seguenti claim nel body:
       - Stringa contenente la versione della Wallet Solution.
       - 
 
+
 Di seguito è riportato un esempio non normativo dell'intestazione e del payload del JWT della Wallet Instance Attestation Request.
+
 
 .. code-block:: json
 
@@ -289,14 +289,13 @@ Di seguito è riportato un esempio non normativo dell'intestazione e del payload
     }
 
 .. code-block:: json
-  
+
     {
       "iss": "https://wallet-provider.example.org/instance/OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
       "nonce": "f3b29a81-45c7-4d12-b8b5-e1f6c9327aef",
       "hardware_signature": "KoZIhvcNAQcCoIAwgAIB...",
       "integrity_assertion": "o2NmbXRvYXBwbGUtYXBwYXNzZXJ0aW9uLXBheWxvYWQtYXBw...",
-      "attested_key": "o2CFbXRvYXBwbGUtYXBwYXNzTYU0aW9uLXBheWxvYWQtZvRM..."
-      "hardware_key_tag": "QW12DylRTmF89iGkpydNDWW7m8bVpa2Fn9KBeXGYtfX"
+      "hardware_key_tag": "QW12DylRTmF89iGkpydNDWW7m8bVpa2Fn9KBeXGYtfX",
       "cnf": {
         "jwk": {
           "crv": "P-256",
@@ -312,7 +311,7 @@ Di seguito è riportato un esempio non normativo dell'intestazione e del payload
 
 
 Risposta all'Emissione della Wallet Instance Attestation
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Se la Richiesta di Emissione della Wallet Instance Attestation viene convalidata con successo, il Fornitore di Wallet restituisce una risposta HTTP con un codice di stato ``200 OK`` e Content-Type ``application/json``. L'Oggetto JSON restituito DEVE possedere il parametro ``wallet_instance-attestations`` (vedi :ref:`wallet-instance-attestation-issuance:Emissione della Wallet Instance Attestation`). ``wallet_insatnce_attestation`` sono oggetti JSON che contengono rispettivamente la Wallet Instance Attestation. Entrambe le attestazioni sono firmate dal Fornitore di Wallet (:ref:`WP_027–029 <wallet-instance-testcases>` e :ref:`WP_143–144 <wallet-instance-optional-testcases>`). La Wallet Instance Attestation JWT deve essere utilizzato per la fase di Emissione di un Attestato Elettronico, come OAuth Client Attestation, e sarà inviato al Fornitore di Attestati Elettronici come discusso in :ref:`credential-issuance:Emissione di Attestati Elettronici`. 
 
@@ -398,9 +397,8 @@ La seguente tabella elenca i codici di stato HTTP e i relativi codici di errore 
       - Il servizio non è disponibile. Si prega di riprovare più tardi.
 
 
-
 JWT della Wallet Instance Attestation
-""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""
 
 L'header JOSE del JWT della Wallet Instance Attestation contiene i seguenti parametri:
 
@@ -476,6 +474,7 @@ Il corpo del JWT della Wallet Instance Attestation contiene i seguenti claim:
       - OBBLIGATORIO. Identificatore dell'Istanza di Wallet che è l'impronta digitale della JWK della Wallet Instance Attestation.
       - :rfc:`9126` e :rfc:`7519`.
 
+
 Di seguito è riportato un esempio non normativo dell'header e del payload della Wallet Instance Attestation JWT senza codifica e firma applicata:
 
 .. literalinclude:: ../../examples/wa-jwt_example_header.json
@@ -489,13 +488,18 @@ Di seguito è riportato un esempio non normativo dell'header e del payload della
     Poiché lo schema di certificazione non è ancora stato definito, il contenuto esatto di ``wallet_solution_certification_information`` è indefinito. Questo contenuto sarà definito in un aggiornamento futuro.
 
 
+
+
+
+
+
 Endpoint di Emissione della Wallet Unit Attestation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Questo è un endpoint API RESTful fornito dal Wallet Provider che consente alla Wallet Instance di ottenere una Wallet Unit Attestation, inviando una Richiesta di Emissione della Wallet Unit Attestation.
 
 Richiesta di Emissione della Wallet Unit Attestation
-"""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 La  richiesta di emissione della Wallet Unit Attestation utilizza il metodo HTTP POST con ``Content-Type`` impostato a ``application/json``. (:ref:`WP_026 <wallet-instance-testcases>` e :ref:`WP_140–142 <wallet-instance-optional-testcases>`).
 
@@ -516,7 +520,6 @@ Di seguito è riportato un esempio non normativo di una Wallet Unit Attestation 
     }
 
 In particolare, il JWT della Wallet Unit Attestation Issuance include i seguenti parametri di header HTTP:
-
 
 .. _table_wua_request_claim:
 .. list-table::
@@ -627,9 +630,10 @@ Di seguito è riportato un esempio non normativo dell'header e del payload JWT d
 
 
 Risposta all'Emissione della Wallet Unit Attestation
-"""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Se la Wallet Unit Attestation Issuance Request viene validata con successo, il Wallet Provider restituisce una risposta HTTP con codice di stato ``200 OK`` e ``Content-Type`` ``application/json``. L'oggetto JSON restituito include ``wallet_unit_attestation`` (si veda :ref:`wallet-attestation-issuance:Emissione della Wallet Unit Attestation`). ``wallet_unit_attestation`` è firmata dal Wallet Provider (:ref:`WP_027–029 <wallet-instance-testcases>` e :ref:`WP_143–144 <wallet-instance-optional-testcases>`). La Wallet Unit Attestation JWT deve essere utilizzata nella fase di Emissione di un Attestato Elettronico, come intestazione JOSE ``key_attestation`` nel JWT di tipo ``proof``, e verrà inviata al Fornitore di Attestati Elettronici come discusso in :ref:`credential-issuance:Emissione di Attestati Elettronici`.
+
 
 L'oggetto JSON restituito nella risposta contiene il seguente parametro:
 
@@ -645,13 +649,12 @@ L'oggetto JSON restituito nella risposta contiene il seguente parametro:
       - OBBLIGATORIO. Una stringa che rappresenta la Wallet Unit Attestation rilasciata.
       - Questa specifica.
 
-
 Il valore del parametro ``wallet_unit_attestation`` è una stringa che rappresenta la Wallet Unit Attestation in formato JWT.
 
 Se durante il processo si verificano errori, viene restituita una risposta di errore come definito nella sezione precedente.
 
-La tabella seguente elenca i codici di stato HTTP e i relativi codici di errore per i casi che differiscono da quanto già riportato:
 
+La tabella seguente elenca i codici di stato HTTP e i relativi codici di errore per i casi che differiscono da quanto già riportato:
 
 .. list-table::
     :class: longtable
@@ -676,8 +679,10 @@ La tabella seguente elenca i codici di stato HTTP e i relativi codici di errore 
 
 
 
+
+
 Wallet Unit Attestation JWT
-""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""
 
 L'intestazione JOSE del Wallet Unit Attestation JWT contiene i seguenti parametri:
 
@@ -811,3 +816,5 @@ Notifica Morte Utente
       - Fornitore di Wallet
     * - **Consumatore**
       - Fornitore di Attestati Elettronici di Dati di Identificazione Personale
+
+

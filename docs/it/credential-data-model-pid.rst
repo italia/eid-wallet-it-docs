@@ -1,7 +1,8 @@
 .. include:: ../common/common_definitions.rst
 
+
 Modello di Dati del PID
-==============================================
+=======================
 
 L'Attestato Elettronico di Dati di Identificazione Personale (PID) è rilasciato dal Fornitore di Attestati Elettronici di Dati di Identificazione Personale secondo le leggi nazionali e DEVE essere fornito in formato SD-JWT VC e mdoc-CBOR. 
 
@@ -37,7 +38,7 @@ Alcuni attributi di dati, come il *codice di identificazione fiscale* e le *info
 Gli attributi che sono **estensioni domestiche** DEVONO essere inclusi nei **namespace domestici** che sono definiti nella Sezione :ref:`credential-data-model-pid:Modello Dati PID in formato SD-JWT-VC` e Sezione :ref:`credential-data-model-pid:Modello Dati PID in formato mdoc-CBOR` per i PID SD-JWT VC e mdoc-CBOR rispettivamente.
 
 Modello Dati PID in formato SD-JWT-VC
----------------------------------------
+-------------------------------------
 
 Per il PID SD-JWT VC definito in questa specifica, il valore ``vct`` DEVE essere ``urn:eudi:pid:it:1`` in conformità ai requisiti dell'ARF PID Rulebook v1.3 per le estensioni domestiche PID (requisito **PID_14**, Sezione 4.2, estendendo il tipo base ``urn:eudi:pid:``).
 
@@ -173,8 +174,9 @@ Il formato combinato per l'emissione del PID è dato da:
 .. literalinclude:: ../../examples/pid-sd-jwt-example-combined.txt
   :language: text
 
+
 Modello Dati PID in formato mdoc-CBOR
---------------------------------------
+-------------------------------------
 
 Il PID in formato mdoc-CBOR DEVE utilizzare il **docType** ``eu.europa.ec.eudi.pid.1`` in conformità al requisito ARF **PID_04**.
 
@@ -249,10 +251,11 @@ Oltre agli attributi di metadati obbligatori definiti nella :ref:`Tabella Mobile
 
 
 Esempio non normativo del PID in mdoc-CBOR
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Un esempio non normativo di un PID in formato mdoc-CBOR (notazione diagnostica) è mostrato di seguito:
 
 .. literalinclude:: ../../examples/pid-mdoc-cbor-example.txt
   :language: text
+
 

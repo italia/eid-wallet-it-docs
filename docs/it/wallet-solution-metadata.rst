@@ -1,9 +1,8 @@
 .. include:: ../common/common_definitions.rst
 
-.. _wallet-solution-metadata-metadati-della-soluzione-wallet:
 
 Metadati della Soluzione Wallet
---------------------------------
+-------------------------------
 
 L'oggetto JSON dei metadati la cui chiave è ``wallet_solution`` contiene i seguenti parametri. Le chiavi pubbliche presenti in questo oggetto sono utilizzate esclusivamente per operazioni di firma e/o crittografia richieste a questa Entità quando agisce come componente del Fornitore di Wallet (ad esempio, firmare gli Attestati di Wallet per l'Istanza del Wallet).
 
@@ -24,11 +23,12 @@ L'oggetto JSON dei metadati la cui chiave è ``wallet_solution`` contiene i segu
       - OBBLIGATORIO. URL del logo dell’entità che verrà mostrato all’Utente durante le interazioni con l’istanza del Wallet. Il MIME type del logo DEVE essere ``application/svg``.
     * - ``wallet_metadata``
       - OBBLIGATORIO. Contiene i parametri relativi ai metadati del Wallet come definiti nella :ref:`Tabella dei parametri dei metadati del portafoglio <table_wallet_metadata_parameters>` e seguenti due parametri 
-      
+
          - ``credential_offer_endpoint`` Credential Offer Endpoint del Wallet.
          - ``wallet_name`` Stringa contenente il nome del Wallet. 
 
 
 .. note::
   Alcuni flussi relativi agli Attestati Elettronici richiedono il recupero delle informazioni del Wallet prima di interagire con il Wallet stesso. Il flusso è descritto in :ref:`wallet-metadata-retrieval:Flusso di Recupero dei Wallet Metadata`.
+
 
