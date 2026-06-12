@@ -340,12 +340,17 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Non presente in ARF 2.7.3; specifico di IT-Wallet.
 
     **Intermediario**
-      Entità intermedia come definita nella Sezione 1.2 di `OID-FED`_ nella catena di fiducia OpenID Federation tra Trust Anchor ed entità foglia. Tale ruolo di federazione **non** coincide con l'**Intermediario di Relying Party** previsto dal quadro europeo di identità digitale (`EU_2024_1183`_).
+    **Intermediario di Federazione**
+      Entità intermedia come definita nella Sezione 1.2 di `OID-FED`_ nella catena di fiducia OpenID Federation tra Trust Anchor ed entità foglia. Tale ruolo di federazione **non** coincide concettualmente con l'**Intermediario di Relying Party** previsto dal quadro europeo di identità digitale (`EU_2024_1183`_); tuttavia, nel profilo implementativo descritto dalle presenti specifiche tecniche, un **Intermediario di Relying Party** è anche realizzato come Entità Intermedia OpenID Federation (vedi **Intermediario IT-Wallet**).
       Conforme con ARF 2.7.3 per le strutture di federazione.
 
     **Intermediario di Relying Party**
       Entità Organizzativa che agisce per conto di una o più Relying Party per fornire Soluzioni Tecniche di collegamento alle Istanze del Wallet e per l'autenticazione dell'Utente o la verifica degli Attestati Elettronici. Nel diritto dell'Unione (`EU_2024_1183`_, articolo 5b, paragrafo 8), gli intermediari che agiscono per conto delle relying party sono **considerati relying party** ai fini della registrazione e dell'autenticazione verso i Portafogli di identità digitale europea e **non devono conservare dati sul contenuto della transazione** tra l'utente del Portafoglio e la Relying Party intermediata. I requisiti di alto livello sulla registrazione delle wallet-relying party—inclusi gli intermediari, i dati minimi di registrazione, la trasparenza e i meccanismi comuni di autenticazione verso i Portafogli—sono trattati nell'Architecture and Reference Framework del Portafoglio EUDI (`ARF`_; *Topic X – Relying Party registration*, `ARF_TOPIC_X_RP`_). IT-Wallet disciplina l'onboarding nell'infrastruttura di fiducia nazionale, i metadati e i controlli tecnici che attuano tali obblighi insieme alle misure nazionali di esecuzione applicabili. Nell'infrastruttura di trust IT-Wallet, l'Intermediario di Relying Party è registrato dal Trust Anchor con un ``trust_mark_type`` specifico, che consente all'Istanza del Wallet di identificare e mostrare all'Utente che il RP richiedente opera tramite un Intermediario riconosciuto.
-      Distinto dall'**Intermediario** di federazione (`OID-FED`_).
+      Il ruolo è concettualmente distinto da quello dell'**Intermediario di Federazione** (`OID-FED`_); tuttavia, nel profilo implementativo descritto dalle presenti specifiche tecniche, un Intermediario di Relying Party è anche un **Intermediario di Federazione** (vedi **Intermediario IT-Wallet**).
+
+    **Intermediario IT-Wallet**
+      Entità Organizzativa che agisce come **Intermediario di Relying Party** e che è tecnicamente realizzata come Entità Intermedia OpenID Federation (`OID-FED`_, Sezione 1.2). Pertanto, nel profilo implementativo IT-Wallet, un Intermediario di Relying Party è anche un'Entità Intermedia OpenID Federation: pubblica la propria Entity Configuration, emette Subordinate Statement per le Relying Party affiliate ed emette loro Trust Mark su autorizzazione del Trust Anchor.
+      Non presente in ARF 2.7.3; specifico di IT-Wallet.
 
 .. note::
    Qualora un termine non è presente nell'ARF 2.7.3, la definizione fornita in IT-Wallet è da ritenersi valida per il solo contesto italiano.
