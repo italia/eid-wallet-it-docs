@@ -585,18 +585,3 @@ In case any error occurs when the Status Token Endpoint generates the response, 
     - The Status List Provider cannot fulfill the request within the defined time interval.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

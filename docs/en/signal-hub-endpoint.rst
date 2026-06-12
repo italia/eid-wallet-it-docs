@@ -164,3 +164,5 @@ After the Signals have been successfully recovered by the Credential Issuer, the
 .. warning::
 
   Given Signal Hub's currently supported security patterns, if the Authentic Source requires the `AUDIT_REST_02` security pattern from the Credential Issuer, the latter MUST revoke the Digital Credential referenced in Signals with ``signalType`` ``UPDATE`` since it cannot contact the Authentic Source to retrieve the updated information without having authenticated the User before. **In this scenario, revocation is the only allowed action.**
+
+

@@ -86,3 +86,4 @@ Only the legitimate User can access the private cryptographic keys, preventing u
 
 For more detailed information, please refer to :ref:`wallet-instance-registration:Wallet Instance Initialization and Registration`, :ref:`wallet-instance-attestation-issuance:Wallet Instance Attestation Issuance`, and :ref:`wallet-attestation-issuance:Wallet Unit Attestation Issuance` of this document.
 
+

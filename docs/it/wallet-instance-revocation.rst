@@ -14,12 +14,12 @@ Come mostrato in :numref:`fig_Wallet_Instance_Revoc_Entities`, altri attori POSS
 - **Fornitori di Attestati Elettronici di Dati di Identificazione Personale** quando notificati dalla Fonte Autentica del PID (ANPR) del decesso dell'Utente.
 - **Autorità Legali o Organismo di Supervisione** in casi di comprovate attività illegali.
 
-
 .. _fig_Wallet_Instance_Revoc_Entities:
 .. plantuml:: plantuml/wallet-instance-revocation-entities.puml
     :width: 99%
     :alt: La figura illustra le Entità coinvolte nel processo di revoca dell'Istanza del Wallet.
     :caption: `Entità coinvolte nel processo di revoca dell'Istanza del Wallet. <https://www.plantuml.com/plantuml/svg/fPFVYnCn4CVVzwyO-s8F15_kKUIyTi6AFqfx8iB1acx6DhXDQZBPkeh_kpCnsyN6DmibP9gPxsU-CxqBf3p5OmUr9KC60nZRkwv73SO27H0-gQv3WfNbfxP5yDYxLf5n5axUjHX2zSJOjeiQuSNYzldYjbcuuybPjFIogbwlbdMpVQWtzOU7p-jwVbDLQ_J1sNaCw9_1x2CVCpuJm03kR8tT9-L7UwKzu-Hx5wrMVfYVqszD60BXaVFpssswpsxWPmNykQ2CxqsknHdNrJaattVAgZq64Bwd0PPcRqXriF2eaHbL5vZZdxNPZzvexceilSw1iNI-Xy9KPJMSSGSisPiMHU5NLKq2Aj91nDickEWJ_Qin1DiKAZJ4M514tkmYyPrSSdKLGaIV58-vKmdtgZDQ1i1451bWKc_gxty8d3S_K3SxfmS1k4GkopCoRED96WdE3t3FhvFQcwXDo_P1JgH1vZdrQ1AOTB1Q5iubwl0NjJoJUtOzN1jOLHliyfPT3wWOFcocjTxWDzOYAI4LYjnoaoJvQ_5N4GWf88tzBqIv01UxtZioNmOPjwphezMew92bYwcL33bznV6z3ASbqwTXPkdcRUb033YbikJ4pKbtQ7KyThy1>`_
+
 
 Indipendentemente da chi ha attivato il processo di revoca, il Wallet Provider DEVE implementare un meccanismo per informare gli Utenti quando la loro Wallet Unit viene revocata (:ref:`WP_034 <wallet-instance-testcases>`):
 
@@ -97,8 +97,6 @@ Di seguito è riportato un esempio non normativo di una Richiesta di Revoca dell
     }
 
 
-
-
 Risposta alla Revoca dell'Istanza del Wallet
 """"""""""""""""""""""""""""""""""""""""""""
 
@@ -130,4 +128,5 @@ La verifica della validità dell'Istanza del Wallet DEVE essere eseguita:
 
 .. note::
   Durante la fase di presentazione degli Attestati Elettronici, una Relying Party può verificare indirettamente la revoca dell'Istanza del Wallet verificando la revoca degli Attestati Elettronici. Infatti, se un'Istanza del Wallet viene revocata, il Fornitore di Wallet revocherà la corrispondente Wallet Unit Attestation, innescando la revoca degli Attestati Elettronici da parte del Fornitore di Attestati Elettronici.
+
 

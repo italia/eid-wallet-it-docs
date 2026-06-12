@@ -30,3 +30,5 @@ The metadata JSON Object whose key is ``wallet_solution`` contains the following
 
 .. note::
   There are Digital Credential flows that require retrieving Wallet Solution metadata before interacting with the Wallet itself. The flow is described in :ref:`wallet-metadata-retrieval:Wallet Metadata Retrieval Flow`.
+
+

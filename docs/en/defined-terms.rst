@@ -482,3 +482,4 @@ Below are the main acronyms used in the document:
   * - **WSCD**
     - Wallet Secure Cryptographic Device
 
+

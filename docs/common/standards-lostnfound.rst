@@ -232,3 +232,5 @@ Digital Credential Presentation Proposals for Future Milestones
       - Cards and security devices for personal identification - Building blocks for identity management via mobile devices - Part 4: Protocols and services for operational phase
     * - ISO/IEC 18013-7
       - Personal identification - ISO-compliant driving licence - Part 7, Mobile driving licence (mDL) add-on functions, February 2024
+
+

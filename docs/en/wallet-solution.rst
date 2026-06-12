@@ -27,3 +27,4 @@ The following diagram depicts the Wallet Solution High Level Architecture.
   wallet-provider-entity-configuration.rst
   wallet-solution-metadata.rst
 
+

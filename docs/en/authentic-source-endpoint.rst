@@ -110,3 +110,5 @@ Please refer to the Technical Appendix (Section :ref:`e-service-pdnd:e-Service P
 
 .. warning::
   Alternative mechanisms for distributing cryptographic material (e.g., public ``.well-known`` endpoints directly exposed by the Authentic Source or *out-of-band* distribution) are not allowed. Trust management MUST remain centralized within the perimeter of the PDND infrastructure as described in the references cited above.
+
+

@@ -114,3 +114,4 @@ The Wallet Solution supports these interaction patterns:
 4. **User to Wallet Instance User Interface**: for Digital Credential management (issuance, presentation, backup, restore, deletion).
 5. **Wallet Instance to Relying Party**: for Digital Credential presentation.
 
+

@@ -151,4 +151,6 @@ Below are illustrated the requirements for the use of the Trust Mark, that apply
 
 - MAY display the Trust Mark alongside other actors' logos, trademarks, or symbols, in accordance with the Brand Manual. 
 
-For further information on the Trust Mark, refer to the Brand Manual, indicated in the :ref:`official-resources:Official Resources` section. The Trust Mark Official Resource is available in the :ref:`official-resources:Official Resources` section of these Technical Specifications. 
+For further information on the Trust Mark, refer to the Brand Manual, indicated in the :ref:`official-resources:Official Resources` section. The Trust Mark Official Resource is available in the :ref:`official-resources:Official Resources` section of these Technical Specifications.
+
+

@@ -86,3 +86,5 @@ Below is a non-normative example of the response.
   {
     "wallet_instance_attestation": "omppc3N1ZXJBdXRohEOhASaiBE...dElEAnFlbGVtZW50SWRl"
   }
+
+

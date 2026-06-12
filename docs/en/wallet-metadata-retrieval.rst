@@ -15,3 +15,5 @@ and obtain the Wallet Solution metadata (see :ref:`wallet-solution-metadata:Wall
 
 Inside the metadata, the third parties offering the Credential Offer and the Relying Parties retrieve the necessary information for the Selection Page, i.e. the logo and name in full of the Wallet Solutions.
 More details on the design of the Selection Page are provided in :ref:`functionalities:User Experience Design`.
+
+

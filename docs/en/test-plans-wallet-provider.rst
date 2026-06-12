@@ -1287,3 +1287,5 @@ These test cases are optional and have been designed for the IT Wallet implement
      - Wallet Initialization / Registration, Lifecycle, Interoperability
      - Key Binding failure (Integrity Assertion failure)
      - When the Integrity Assertion in a Key Binding request fails validation (e.g., is tampered with), Wallet Provider returns a ``403 Forbidden`` response with the error code ``invalid_request``.
+
+

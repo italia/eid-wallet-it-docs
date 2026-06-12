@@ -46,9 +46,3 @@ The architecture enables the following core interaction processes:
   5. **Credential Presentation and Verification**: Users present Digital Credentials to Relying Parties, which verify claims through cryptographic validation and status verification. Relying Parties operate within authorized scopes that define which Credential types and purposes they can request, with validation against the :ref:`registry:Claims Registry` for schema verification.
 
 
- 
-
-
-
-
-

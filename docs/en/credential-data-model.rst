@@ -619,6 +619,3 @@ For SD-JWT-VC, parameters are marked with `(hdr)` if they are located in the JOS
        |
 
 
-
-
-

@@ -244,3 +244,5 @@ When a Web Relying Party Instance needs to be revoked:
 - The cryptographic keys used by the Web Instance MUST be revoked.
 - The Entity Configuration MUST be updated to reflect the revocation.
 - The Trust Anchor MUST be notified of the revocation to update federation metadata.
+
+

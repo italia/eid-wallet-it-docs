@@ -166,4 +166,3 @@ The following phased reading approach is suggested:
     For implementers working on solutions that span multiple roles (e.g., a combined Issuer Relying Party Solutions), it is recommended reviewing the sections for all relevant roles before proceeding with the developments. It is important to take particular note of Entity Configuration requirements and federation flows that apply to multiple roles.
 
 
-

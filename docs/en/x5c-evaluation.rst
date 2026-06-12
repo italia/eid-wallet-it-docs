@@ -379,3 +379,5 @@ Entities that exit the federation MUST maintain the following for regulatory com
 1. **Historical Entity Configuration**: The Entity MUST maintain ``/.well-known/openid-federation`` endpoint accessibility for audit purposes.
 2. **X.509 Certificate Chain Archive**: The Entity MUST keep X.509 Certificate chains accessible for existing Credential verification (minimum 7 years).
 3. **Audit Log Preservation**: The Entity MUST archive federation protocol logs per regulatory requirements.
+
+

@@ -1,5 +1,6 @@
 .. include:: ../common/common_definitions.rst
 
+
 Matrice di Test per il Verificatore di Credenziali in Prossimità
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -353,3 +354,5 @@ Questa sezione fornisce l'insieme dei casi di test progettati per implementatori
     - Chiusura Canale
     - Testare che il canale di comunicazione sia chiuso alla terminazione.
     - Il canale di comunicazione usato per il recupero dati è chiuso correttamente.
+
+

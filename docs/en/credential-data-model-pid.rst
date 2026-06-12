@@ -258,3 +258,4 @@ A non-normative example of a PID in mdoc-CBOR format (diagnostic notation) is sh
 .. literalinclude:: ../../examples/pid-mdoc-cbor-example.txt
   :language: text
 
+

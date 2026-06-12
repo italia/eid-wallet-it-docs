@@ -68,3 +68,5 @@ Funzionalità di Logging delle Istanze del Wallet
 Oltre ai requisiti inclusi nel Regolamento consolidato (UE) n. 910/2014, Art 5a 4(d) e alle informazioni aggiuntive fornite nei Considerando (11) e (13), il Regolamento di esecuzione (UE) 2024/2979 della Commissione stabilisce regole dettagliate per l'applicazione del Regolamento consolidato (UE) n. 910/2014, incluso il logging nelle funzionalità principali dei Portafogli di Identità Digitale Europea.
 
 Il Regolamento (UE) 2024/2979, Articolo 9, definisce gli obblighi di logging relativi alle Soluzioni Wallet e ai meccanismi di portabilità dei dati.
+
+

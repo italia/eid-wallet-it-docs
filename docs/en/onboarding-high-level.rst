@@ -284,3 +284,5 @@ User Experience Journey
 When all entity onboarding processes are successfully completed, Users can discover and install certified Wallet Instances, obtain available Digital Credentials and present their Digital Credentials to registered Relying Parties (see :ref:`functionalities:Functionalities Overview`). 
 
 This seamless integration depends on all relevant entities having completed their respective onboarding journeys.
+
+

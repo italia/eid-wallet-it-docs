@@ -575,3 +575,4 @@ When a session is terminated, the Wallet Instance and the Relying Party Instance
 .. note::
   See :ref:`credential-data-model:mdoc-CBOR Credential Format` for the meaning of CBOR type acronyms.
 
+

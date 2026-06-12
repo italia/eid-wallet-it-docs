@@ -156,3 +156,5 @@ To check the authenticity of the file, the :term:`Wallet Instance` MUST verify t
 
 .. note::
   The :term:`Wallet Instance` MUST not check the expiration of the :term:`Wallet Instance Attestation` as its main purpose is to enable the :term:`Wallet Instance` to verify the authenticity of the backup file by ensuring it has been created and signed by a :term:`Wallet Instance` of a specific :term:`Wallet Provider` (:ref:`WP_128a <credential-backup-testcases>`).
+
+

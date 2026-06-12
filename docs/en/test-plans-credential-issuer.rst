@@ -946,3 +946,4 @@ This section provides the set of test cases designed for technical implementers 
     - Credentials Array Element Information
     - Each element of the *Credentials* array correctly contains all the information defined in the First-level Fields :ref:`table <table_catalog_parameters_first_level>`.
 
+
