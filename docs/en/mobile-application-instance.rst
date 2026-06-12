@@ -245,7 +245,7 @@ The following table lists HTTP Status Codes and related error codes that are sup
     :class: longtable
     :widths: 20 20 50
     :header-rows: 1
- 
+
     * - **HTTP Status Code**
       - **Error Code**
       - **Description**
@@ -372,7 +372,7 @@ The following table lists HTTP Status Codes and related error codes that are sup
     }
 
 .. .. code-block:: json
-  
+
  ..   {
       "iss": "https://application-provider.example.org/instance/hT3v7KQjFZy6GvDkYgOZ1u2F6T4Nz5bPjX8o1MZ3dJY",
       "sub": "https://application-provider.example.org/",

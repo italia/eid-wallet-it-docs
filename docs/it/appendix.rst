@@ -5,7 +5,6 @@ Appendice
 =========
 
 
-
   .. toctree::
     :caption: Indice dell'Appendice
     :maxdepth: 3

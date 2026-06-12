@@ -377,7 +377,6 @@ Di seguito alcuni esempi non normativi di dicitura dell'Engagement Button:
 - Verifica con IT-Wallet / Verify with IT-wallet (vedere :ref:`functionalities:Presentazione da remoto`)
 
 
-
 Focus sugli Attestati Elettronici di Attributi
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

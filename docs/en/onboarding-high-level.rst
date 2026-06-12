@@ -203,7 +203,7 @@ From the Authentic Source operator perspective, the onboarding process begins wi
     - **Catalog Outcome**: Badge becomes publicly discoverable but it is available for the issuance only via Credential Offer.
 
 Critical phases include administrative verification by the Supervisory Body (which involves regulatory compliance checks outside the technical scope) and technical validation. The process concludes with registration in the AS Registry, making the declared claims discoverable by Credential Issuers for integration requests. The integration requests can be also send by the Authentic Sources to a specific Credential Issuers.
- 
+
 .. warning::
 
     **Important dependency**: Declared claims in AS Registry remain unavailable to end users until a Credential Issuer completes registration, integration approval, and technical implementation. Catalog publication depends on Supervisory Body policies for public discovery eligibility.

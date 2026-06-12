@@ -17,7 +17,7 @@ Wallet Architecture and Reference Frameworks
 
     * - `EIDAS-ARF`_
       - EUDI Wallet Architecture and Reference Framework (ARF) v2.8.0.
-    
+
 
 EUDI Wallet Standards and Technical Specifications
 --------------------------------------------------
@@ -32,8 +32,6 @@ EUDI Wallet Standards and Technical Specifications
       - Data Portability and Download (Export).
     * - `EUDI-TS 12`_
       - Specification of Strong Customer Authentication (SCA) Implementation with the Wallet.
-
-
 
 
 Infrastructure of Trust

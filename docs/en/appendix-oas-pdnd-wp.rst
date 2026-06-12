@@ -1,6 +1,6 @@
 .. include:: ../common/common_definitions.rst
 
-    
+
 Wallet Provider PDND OpenAPI Specification 
 ----------------------------------------------
 

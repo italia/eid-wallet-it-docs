@@ -49,7 +49,6 @@ Questo componente DEVE garantire la sicurezza attraverso:
 - Conformità ai requisiti di sicurezza della Federazione IT-Wallet.
 
 
-
 Unità di Wallet
 ---------------
 

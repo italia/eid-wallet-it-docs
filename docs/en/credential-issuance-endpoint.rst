@@ -182,7 +182,6 @@ The body of the Wallet Instance Attestation proof of possession JWT, contained i
       - :rfc:`9126` and :rfc:`7519`.
 
 
-
 Pushed Authorization Request (PAR) Response
 ...........................................
 
@@ -260,7 +259,6 @@ In the following table are listed HTTP Status Codes and related error codes that
     * - *504 Gateway Timeout* [OPTIONAL]
       - `-`
       - The Credential Issuer cannot fulfill the request within the defined time interval.
-
 
 
 Authorization endpoint
@@ -1002,7 +1000,7 @@ The Notification Request MUST be an HTTP POST using the *application/json* media
       - *credential_accepted*: when the Credential was successfully stored in the Wallet Instance.
       - *credential_deleted*: when the unsuccessful Credential issuance was caused by a user action.
       - *credential_failure*: in all other unsuccessful cases.
-      
+
 
     - Section 11.1 of [`OpenID4VCI`_].
   * - **event_description**

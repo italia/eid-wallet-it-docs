@@ -1,5 +1,5 @@
 .. include:: ../common/common_definitions.rst
-  
+
 
 X.509 Certificate Management Operations
 =========================================
@@ -263,7 +263,6 @@ Technical updates affecting federation protocol operations MUST follow specific 
     - **Capability Updates**: The Entity MAY modify supported protocols, algorithms, or service capabilities within the constraints defined by this IT-Wallet implementation profile.
 
 
-
 All technical updates MUST be validated through:
 
   1. **Entity Configuration Validation**: The Entity MUST verify updated EC structure and content.
@@ -339,7 +338,7 @@ Example emergency revocation verification:
    # Check emergency CRL update
    curl -o emergency.crl https://trust-anchor.eid-wallet.example.it/pki/ta-sub.crl
    openssl crl -in emergency.crl -text -noout | grep "Last Update"
-   
+
    # Verify Trust Chain resolution fails
    curl "https://trust-anchor.eid-wallet.example.it/resolve?sub=https%3A//suspended-entity.example.it&trust_anchor=https%3A//trust-registry.eid-wallet.example.it"
    # Expected: HTTP 404 or specific error response

@@ -48,7 +48,6 @@ In this section, state machines are presented to explain the Mobile Relying Part
 As shown in :numref:`fig_RelyingParty_Instance_Mobile_Lifecycle`, the Mobile Relying Party Instance has four distinct states: **Installed**, **Unverified**, **Verified**, and **Uninstalled**. Each state represents a specific functional status and determines the actions that can be performed.
 
 
-
 Transition to Installed
 """""""""""""""""""""""
 
@@ -89,7 +88,6 @@ Transition to Unverified
 The expiration of the Access Certificate (**CERT EXP** transition) leads to the **Unverified** state.
 
 While in this state, the Relying Party Instance can still request the presentation of Digital Credentials to Wallet Instances during the grace period. However, as the Certificate is expired, a specific disclaimer MUST be displayed to the User of the Wallet Instance during the presentation flow; for this reason, this operation is represented by the label **PID/(Q)EAA PRE**. This is required to support offline presentation flows. After the grace period has passed, the Relying Party Instance MUST NOT longer request presentations and will be de-registered.
-
 
 
 Transition to Uninstalled

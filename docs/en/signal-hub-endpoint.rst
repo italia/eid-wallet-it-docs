@@ -49,7 +49,7 @@ Authentic Sources in the IT Wallet ecosystem use the Signal Collection e-Service
 
   - notify the Credential Issuer of a change of status and/or value of a specific attribute associated with a Digital Credential issued by the Credential Issuer;
   - notify the Credential Issuer of the availability of the attributes related to a specific Digital Credential which a User requested in its Wallet. 
-  
+
 The last case, referred to as deferred issuance, happens when the Credential Issuer has requested a Digital Credential's attributes from the Authentic Source (invoking the :ref:`authentic-source-endpoint:Get Attribute Claims` PDND endpoint) and the Authentic Source cannot respond immediately with the requested attributes. Thus, the Authentic Source notifies the Credential Issuer via the Signal Hub at a later time that the requested attributes are now available.
 
 The Signal Collection e-Service endpoint is used by Authentic Sources to deposit Signals to the Signal Hub via a Signal Collection request. The latter MUST be a POST request with ``Content-Type`` set to ``application/json``, whose header MUST have the parameters described in `Signal Hub Guide`_ and whose body MUST contain the following parameters:
@@ -67,10 +67,10 @@ The Signal Collection e-Service endpoint is used by Authentic Sources to deposit
     - REQUIRED. Using this field the Authentic Source MAY use to further specify the Signal.
   * - **objectId**
     - REQUIRED. The subject to which the Signal is bound. It MUST be set to the Authentic Source's :term:`Object_id` (``object_id``) used in the `get attributes` payload response to the Credential Issuer (see :ref:`authentic-source-endpoint:Get Attribute Claims`). The Signal ``signalType`` MUST be valued with one of the following:
-      
+
       - ``CREATE``, in order to notify the availability of the attributes related to a specific Digital Credential.
       - ``UPDATE``, in order to notify the updating of the attributes related to a specific Digital Credential.
-      
+
   * - **signalType**
     - REQUIRED. Signal Type. It MUST be one of the following: 
 
@@ -117,7 +117,7 @@ Credential Issuers in the IT Wallet ecosystem use the Signal Distribution e-Serv
 The Signal Distribution e-Service endpoint is used by Credential Issuers to retrieve Signals from the Signal Hub via a Signal Distribution request. The latter MUST use an HTTP request using the method GET and the following parameters:
 
   - Path Parameters: 
-    
+
     -  ``eserviceId``. REQUIRED. e-Service to which the Signal is bound. It MUST correspond to the e-Service Id value the Credential Issuer is a Consumer of.
 
   - Query Parameters:
@@ -153,12 +153,12 @@ Signals Processing
 After the Signals have been successfully recovered by the Credential Issuer, the latter MUST process them as follows:
 
   - For each Signal, the Credential Issuer MUST check the ``SignalType`` value:
-    
+
     - if the Signal ``SignalType`` is ``UPDATE`` (where ``objectId`` refers to the :term:`Object_id` of the Authentic Source), the status and/or value of the attribute associated with a Digital Credential need updates;
     - if the Signal ``SignalType`` is ``CREATE`` (where ``objectId`` refers to the :term:`Object_id` of the Authentic Source), the requested attributes of a specific Digital Credential are now available; 
 
     If the ``objectId`` does not correspond to any valid identifier known to the Credential Issuer, the Signal MUST be ignored. Otherwise, if it corresponds to a known and valid identifier, the Credential Issuer MUST use the :ref:`authentic-source-endpoint:Get Attribute Claims` PDND endpoint of the Authentic Source to retrieve the updated information and, if applicable, apply the new status to the corresponding Credential.
-    
+
     When the Signal has been processed, the Credential Issuer will either move to the next Signal and update its ``signalId`` counter; or, if there are no more Signals to process, it will resume the Pull cycle.
 
 .. warning::

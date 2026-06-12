@@ -263,7 +263,6 @@ Gli aggiornamenti tecnici che influenzano le operazioni del protocollo della fed
     - **Aggiornamenti delle Capacità**: L'Entità PUÒ modificare i protocolli supportati, gli algoritmi o le capacità di servizio entro i vincoli definiti da questo profilo di implementazione IT-Wallet.
 
 
-
 Tutti gli aggiornamenti tecnici DEVONO essere validati attraverso:
 
   1. **Validazione della Configurazione dell'Entità**: L'Entità DEVE verificare la struttura e il contenuto della EC aggiornata.

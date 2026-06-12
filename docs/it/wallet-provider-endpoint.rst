@@ -488,11 +488,6 @@ Di seguito è riportato un esempio non normativo dell'header e del payload della
     Poiché lo schema di certificazione non è ancora stato definito, il contenuto esatto di ``wallet_solution_certification_information`` è indefinito. Questo contenuto sarà definito in un aggiornamento futuro.
 
 
-
-
-
-
-
 Endpoint di Emissione della Wallet Unit Attestation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -673,12 +668,6 @@ La tabella seguente elenca i codici di stato HTTP e i relativi codici di errore 
     * - ``403 Forbidden``
       - ``invalid_request``
       - La firma della Wallet Unit Attestation Request non è valida oppure non corrisponde alla chiave pubblica associata (JWK).
-
-
-
-
-
-
 
 
 Wallet Unit Attestation JWT

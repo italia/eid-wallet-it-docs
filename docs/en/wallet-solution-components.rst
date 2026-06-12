@@ -49,7 +49,6 @@ This component MUST ensure security through:
 - Compliance with IT-Wallet Federation security requirements.
 
 
-
 Wallet Unit
 -----------
 

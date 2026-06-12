@@ -38,7 +38,7 @@ In addition, the Credential Issuers MAY support:
 
 .. note::
     **Standard or Batch Credential Issuance:** 
-      
+
     The User can configure the Wallet Solution to issue Digital Credentials in either batch or standard mode and define the preferred batch size.
 
 The entire Issuance flow can be divided into two sub-flows:
@@ -204,7 +204,6 @@ The Credential Issuer returns the issued ``request_uri`` to the Wallet Instance.
 .. note::
    **User Authentication and Consent**: The PID Provider performs the User authentication based on CieID scheme with LoA High (CIE L3), or according to eID Substantial Authentication with MRTD Verification as defined in :ref:`credential-issuance-l2plus:eID Substantial Authentication with MRTD Verification for PID Issuance`, and requires the User consent for the PID issuance.
    The (Q)EAA Provider performs the User authentication requesting a valid PID to the Wallet Instance. The (Q)EAA Provider MUST use [`OpenID4VP`_] to request the presentation of the PID. In this circumstance, the (Q)EAA Provider acts as a Relying Party, providing the presentation request to the Wallet Instance. The Wallet Instance MUST have a valid PID, obtained beforehand, to initiate the transaction with the (Q)EAA Provider. During this step, Credential Issuers MAY ask the User's contact details (e.g., their email address) to send notifications about the issued Digital Credential(s).
-
 
 
 **Steps 6-7 (Authorization Response)**: The Credential Issuer sends an authorization ``code`` together with ``state`` and ``iss`` parameters to the Wallet Instance. The Wallet Instance performs the following checks on the Authorization Response:
@@ -445,7 +444,6 @@ Below is a non-normative example of a successful response containing a batch of 
   If the requested Credential cannot be issued immediately and requires more time, the Credential Issuer SHOULD support the Deferred Flow (step 27) as specified in Section :ref:`credential-issuance-endpoint:Deferred Endpoint` (:ref:`WP_065–067 <wallet-credential-issuance-testcases>`). Additionally, in the case of batch issuance, the same ``transaction_id`` retrieves all Credentials that are requested in the batch.
 
 
-
 **Step 25 (Notification Request)**: According to Section 11.1 of [`OpenID4VCI`_], the Wallet sends an HTTP POST request to the Notification Endpoint using the *application/json* media type as in the following non-normative example (:ref:`WP_064 <wallet-credential-issuance-testcases>`).
 
 .. code-block:: http
@@ -464,7 +462,6 @@ Below is a non-normative example of a successful response containing a batch of 
       OptxRimPPToA1plemAgR6pxHF8y6-yqyVnmcw6Fy1dqd-jfxSYoMxhAJpLjA
 .. literalinclude:: ../../examples/notification-request.json
   :language: JSON
-
 
 
 **Step 26 (Notification Response)**: When the Credential Issuer has successfully received the Notification Request from the Wallet, it MUST respond with an HTTP status code *204* as recommended in Section 11.2 of [`OpenID4VCI`_]. Below is a non-normative example of response to a successful Notification Request:
@@ -545,7 +542,7 @@ A non-normative example of a successful response is shown below.
   HTTP/1.1 200 OK
   Content-Type: application/json
   Cache-Control: no-store
-  
+
   {
       "access_token": "eyJ0eXAiOiJhdCtqd3QiLCJhbGciOiJFU..",
       "refresh_token": "eyC3fiLdCtqd3QiLCJhbGciOiCL3..",
@@ -627,7 +624,7 @@ When the new Digital Credential is successfully stored in the secure storage, th
 
 .. note::
   Regardless of the Digital Credential revocation mechanism supported, if the Digital Credential status is set to ``ATTRIBUTE_UPDATE``, the User's attribute set, in the refreshed Digital Credential, doesn't match the one in the stored Digital Credential. In this case, the Wallet Instance MUST request the User's authorization to store the new refreshed Digital Credential  (:ref:`WP_074 <wallet-credential-issuance-testcases>`). 
-  
+
   If instead, either the Digital Credential status is set to ``UPDATE``, only the Credential metadata parameters have changed. In this case, the Wallet Instance SHOULD store the new Digital Credential without requiring explicit user authorization and consent  (:ref:`WP_075 <wallet-credential-issuance-testcases>`).
 
 
@@ -658,7 +655,7 @@ To invoke the correct Wallet Instance, they need to know which Wallet Instance i
 This information SHOULD be obtained using the Selection Page described in :ref:`functionalities:User Experience Design`. 
 
 - If the Selection Page is supported, the User selects the Wallet, and then the Credential Issuer or third party retrieves the Wallet metadata as described in :ref:`wallet-metadata-retrieval:Wallet Metadata Retrieval Flow`. The Wallet Instance invocation mechanism depends on the ``credential_offer_endpoint`` parameter in the Wallet metadata:
-  
+
   - If ``credential_offer_endpoint`` is available and contains an HTTPS URL (Universal Link), the Credential Issuer or third party SHOULD use that endpoint.
   - Otherwise, the Credential Issuer or third party MUST use one of the custom URL schemes: ``openid-credential-offer://`` (as defined in Section 4 of [`OpenID4VCI`_]) or ``haip-vci://`` (as defined in Section 4.2 of [`OPENID4VC-HAIP`_]). The Wallet Instance MUST support both custom URL schemes.
 

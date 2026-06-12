@@ -7,7 +7,6 @@ Matrice dei Test per il Credential Issuer
 Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici e team di sviluppo responsabili della creazione e del deployment di soluzioni Credential Issuer. È anche destinata agli organismi di valutazione che ispezionano e validano le implementazioni di soluzioni Credential Issuer.
 
 
-
 .. list-table::
   :class: longtable
   :widths: 15 15 35 35

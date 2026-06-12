@@ -21,7 +21,7 @@ Naming
 The term "IT-Wallet System", as defined by the establishing regulation, is the official name that SHOULD be used in institutional, formal, or legal contexts to refer to the system. 
 
 The contracted form "IT-Wallet" is the official Brand name that MUST be used in all communications and disclosures, whether written or verbal, physical or digital, to refer to the "IT-Wallet System".  
- 
+
 Below are the requirements for the correct spelling and pronunciation.  
 All those who intend to refer to the IT-Wallet System: 
 

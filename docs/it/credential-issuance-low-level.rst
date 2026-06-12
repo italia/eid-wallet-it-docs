@@ -206,7 +206,6 @@ Il Credential Issuer restituisce il ``request_uri`` emesso all'Istanza del Walle
    Il (Q)EAA Provider esegue l'autenticazione dell'Utente richiedendo un PID valido all'Istanza del Wallet. Il (Q)EAA Provider DEVE utilizzare [`OpenID4VP`_] per richiedere la presentazione del PID. In questa circostanza, il (Q)EAA Provider agisce come una Relying Party, fornendo la richiesta di presentazione all'Istanza del Wallet. L'Istanza del Wallet DEVE avere un PID valido, ottenuto in precedenza, per avviare la transazione con il (Q)EAA Provider. Durante questo passaggio, i Credential Issuer POSSONO chiedere i dettagli di contatto dell'Utente (ad esempio, il loro indirizzo email) per inviare notifiche sugli Attestati Elettronici emessi.
 
 
-
 **Passi 6-7 (`Authorization Response`)**: Il Credential Issuer invia un ``code`` di autorizzazione insieme ai parametri ``state`` e ``iss`` all'Istanza del Wallet. L'Istanza del Wallet esegue i seguenti controlli sulla `Authorization Response`:
 
     1. DEVE verificare che la `Authorization Response` contenga tutti i parametri definiti secondo la :ref:`Tabella dei parametri della Risposta HTTP <table_http_response_claim>` (:ref:`WP_054 <wallet-credential-issuance-testcases>`).
@@ -445,7 +444,6 @@ Di seguito è riportato un esempio non normativo di una risposta di successo con
   Se l'Attestato Elettronico richiesto non può essere emesso immediatamente e richiede più tempo, il Credential Issuer DOVREBBE supportare il Deferred Flow (**passo 27**) come specificato nella Sezione :ref:`credential-issuance-endpoint:Deferred Endpoint` (:ref:`WP_065–067 <wallet-credential-issuance-testcases>`). Inoltre, in caso di emissione in batch, lo stesso ``transaction_id`` si riferisce a tutte le Credenziali richieste nel batch.
 
 
-
 **Passo 25 (Notification Request)**: Secondo la Sezione 11.1 di [`OpenID4VCI`_], il Wallet invia una richiesta HTTP POST all'Endpoint di notifica utilizzando il tipo di supporto *application/json* come nel seguente esempio non normativo (:ref:`WP_064 <wallet-credential-issuance-testcases>`).
 
 .. code-block:: http
@@ -464,7 +462,6 @@ Di seguito è riportato un esempio non normativo di una risposta di successo con
       OptxRimPPToA1plemAgR6pxHF8y6-yqyVnmcw6Fy1dqd-jfxSYoMxhAJpLjA
 .. literalinclude:: ../../examples/notification-request.json
   :language: JSON
-
 
 
 **Passo 26 (`Notification Response`)**: Quando il Credential Issuer ha ricevuto con successo la `Notification Request` dal Wallet, DEVE rispondere con un codice di stato HTTP *204* come raccomandato nella Sezione 11.2 di [`OpenID4VCI`_]. Di seguito è riportato un esempio non normativo di risposta a una `Notification Request` riuscita:

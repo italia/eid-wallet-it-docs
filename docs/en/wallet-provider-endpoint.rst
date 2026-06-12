@@ -117,7 +117,7 @@ In case of an error, the Wallet Provider MUST return an error response as define
 
 - *error*. The error code.
 - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered.
- 
+
 The following sections categorize errors into **common errors**, which apply to all requests, and **request-specific errors**, which are relevant to particular operations (:ref:`WP_035–044 <wallet-instance-testcases>`, and :ref:`WP_150–155 <wallet-instance-optional-testcases>`).
 
 Common Error Responses
@@ -289,7 +289,7 @@ Below is a non-normative example of a Wallet Instance Attestation Request JWT he
     }
 
 .. code-block:: json
-  
+
     {
       "iss": "https://wallet-provider.example.org/instance/OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
       "nonce": "f3b29a81-45c7-4d12-b8b5-e1f6c9327aef",
@@ -488,11 +488,6 @@ Below is a non-normative example of the Wallet Instance Attestation JWT header a
     As the certification scheme has not yet been defined, the exact content of ``wallet_solution_certification_information`` is undefined. This content will be defined in a future update.
 
 
-
-
-
-
-
 Wallet Unit Attestation Issuance Endpoint
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -603,7 +598,7 @@ Below is a non-normative example of a Wallet Unit Attestation Request JWT header
     }
 
 .. code-block:: json
-  
+
     {
       "iss": "https://wallet-provider.example.org/instance/OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
       "aud": "https://wallet-provider.example.org/",
@@ -673,12 +668,6 @@ The following table lists HTTP Status Codes and related error codes for the ones
     * - ``403 Forbidden``
       - ``invalid_request``
       - The signature of the Wallet Unit Attestation Request is invalid or does not match the associated public key (JWK).
-   
-
-
-
-
-
 
 
 Wallet Unit Attestation JWT

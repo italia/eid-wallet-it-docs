@@ -182,7 +182,6 @@ Il body del JWT relativo alla prova di possesso dell'Attestato di Unità di Wall
       - :rfc:`9126` e :rfc:`7519`.
 
 
-
 Pushed Authorization Request (PAR) Response
 ......................................................
 
@@ -260,7 +259,6 @@ Nella seguente tabella sono elencati gli *Status Code HTTP* e i relativi codici 
     * - *504 Gateway Timeout* [OPZIONALE]
       - `-`
       - Il Credential Issuer non può soddisfare la richiesta entro l'intervallo di tempo definito.
-
 
 
 Authorization endpoint

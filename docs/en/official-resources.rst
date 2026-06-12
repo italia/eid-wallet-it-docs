@@ -1,5 +1,5 @@
 .. include:: ../common/common_definitions.rst
-    
+
 
 Official Resources
 -------------------

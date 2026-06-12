@@ -64,7 +64,7 @@ The onboarding process follows a structured multi-phase approach:
   1. **Administrative Registration**: All entities MUST complete initial administrative registration that validates their legal standing, regulatory compliance, and organizational eligibility to participate in the IT-Wallet ecosystem.
 
   2. **Technical Registration**: Following administrative approval, entities make technical registration through specialised pathways:
-    
+
     - **Authentic Source Registration**: Data-focused registration procedures with API integration validation.
     - **Federation Registration**: Cryptographic trust establishment as defined in Section :ref:`trust-infrastructure:The Infrastructure of Trust`.
 
@@ -135,7 +135,7 @@ During registration, Authentic Sources MUST provide the following information:
 
        - Array of claim identifiers from Claims Registry that the Authentic Source provides (e.g., ``["given_name", "family_name", "driving_privileges"]``).
        - Intended Purposes for verification, using taxonomy purpose identifiers (e.g. ``["DRIVING_RIGHTS_VERIFICATION"]``).
-      
+
    * - **API Implementation Details**
      - **REQUIRED**. Integration information details:
 
@@ -603,7 +603,7 @@ The Federation Entity MUST complete the onboarding process by:
   Federation Entities can obtain Trust Marks anytime needed by using the Trust Mark endpoint exposed by a Trust Mark Issuer as defined in :ref:`trust-infrastructure:Federation API endpoints`.
 
 Upon successful completion of Step 4, the **entity onboarding is successfully completed**. The entity is now operational within the IT-Wallet federation and ready for operational activities.
-   
+
 
 .. note::
    **Federation Registry Integration**: Upon successful onboarding completion, the entity's Federation Entity Identifier becomes discoverable through the Trust Anchor's entity listing mechanisms (as defined in :ref:`trust-infrastructure:The Infrastructure of Trust`), indicating active federation participation. The entity becomes part of the federation infrastructure detailed in :ref:`registry:Registry Infrastructure`.

@@ -131,7 +131,6 @@ La figura seguente illustra il flusso di basso livello conforme a ISO 18013-5 pe
 **Passo 8**: L'Istanza di Relying Party DEVE preparare il ``SessionEstablishment``. Questo messaggio DEVE essere firmato dall'Istanza di Relying Party (autenticazione dell'*mdoc reader* come specificato in [`ISO18013-5`_ #12.5]) e cifrato utilizzando la chiave di sessione derivata nel passo precedente. Il messaggio ``SessionEstablishment`` DEVE includere la ``EReaderKey.Pub`` e una richiesta per specifici attributi (:ref:`PPR-002 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>`).
 
 
-
 Di seguito è riportato un esempio non normativo nella notazione diagnostica di un messaggio ``SessionEstablishment`` CBOR che contiene una Richiesta mdoc per un Attestato Elettronico mDL.
 
 .. literalinclude:: ../../examples/iso-session-establishment.txt
@@ -525,7 +524,6 @@ Ogni elemento in **documents** DEVE essere conforme alla seguente struttura e DE
 
    * - **errors**
      - *(map, OPZIONALE)*. Una mappa di codici di errore per ogni elemento dati non restituito raggruppato per namespace. Ogni chiave rappresenta un namespace, e ogni valore è una mappa di identificatori di elementi dati ai corrispondenti codici di errore. Vedere [`ISO18013-5`_ #10.3.6] per dettagli sulla struttura degli errori.
-
 
 
 Una struttura di dati **deviceSigned** DEVE essere conforme alla seguente struttura e DEVE includere i seguenti componenti (:ref:`WP_111a <wallet-credential-presentation-testcases>`):

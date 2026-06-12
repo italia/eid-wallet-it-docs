@@ -488,7 +488,7 @@ The Authentic Source Registry MUST contain the following parameters for each reg
    * - **data_capabilities[].contacts**
      - String Array
      - OPTIONAL. Array of customer service contacts or user support channels (e.g., email address).
-  
+
 .. note::
   For further details on the required features and the expected outcome in terms of user experience, see the Section :ref:`functionalities:Issuance from the Wallet Instance Catalog` for the parameter `data_capabilities.user_information` and Section :ref:`functionalities:Focus on Electronic Attestations of Attributes` for the parameters `organization_info.logo_uri`, `organization_info.logo_extended_uri`, `data_capabilities.logo_uri`, `data_capabilities.background_color` and `data_capabilities.available_claims.order`.
 
@@ -552,7 +552,7 @@ Federation Registry operations are accessed through the Trust Anchor's federatio
 
 .. note::
    Federation endpoints are available through both the registry discovery mechanism (for unified registry access) and the Trust Anchor's Entity Configuration at ``.well-known/openid-federation`` (for federation-specific operations). Both sources provide the same endpoint URLs but serve different discovery patterns: registry discovery for initial ecosystem orientation, Entity Configuration for standard OpenID Federation 1.0 compliance.
-   
+
    For complete technical specifications of federation protocols, entity configurations, trust evaluation mechanisms, and trust chain validation, see :ref:`trust-infrastructure:The Infrastructure of Trust`.
 
 Digital Credentials Catalog

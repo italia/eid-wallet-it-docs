@@ -804,8 +804,6 @@ Di seguito ci sono due esempi di risposte HTTP che utilizzano ``application/json
   }
 
 
-
-
 Status Endpoint
 ^^^^^^^^^^^^^^^
 

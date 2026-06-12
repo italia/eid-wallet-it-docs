@@ -120,7 +120,6 @@ La seguente tabella elenca i codici di stato HTTP e i relativi codici di errore 
       - Il servizio non è disponibile. Si prega di riprovare più tardi.
 
 
-
 Endpoint del Certificato di Accesso della Relying Party
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 

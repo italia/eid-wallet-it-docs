@@ -328,21 +328,21 @@ The flow is shown below with illustrative wireframes.
 Following is represented for illustrative purposes the page with the :ref:`functionalities:Engagement Button`, together with the Selection Page and the QR Code Page with the interface elements and texts updated according to the :ref:`functionalities:Issuance from a Touchpoint of the Authentic Source` flow. 
 
 .. only:: format_html 
- 
+
   .. figure:: ./images/svg/Credential-offer-ENG.svg 
     :alt: Illustrative page with Engagement Button, Selection page and QR code page for the credential offer
     :width: 100% 
     :align: center 
- 
+
     Illustrative page with Engagement Button, Selection page and QR code page for the credential offer
 
- 
+
 .. only:: format_latex 
- 
+
   .. figure:: ./images/pdf/Credential-offer-ENG.pdf 
     :alt: Illustrative page with Engagement Button, Selection page and QR code page for the credential offer
     :width: 100% 
- 
+
     Illustrative page with Engagement Button, Selection page and QR code page for the credential offer
 
 
@@ -375,7 +375,6 @@ Below are some non-mandatory examples of Engagement Button labels:
 - Add to IT-Wallet (see :ref:`functionalities:Issuance from a Touchpoint of the Authentic Source`) 
 
 - Verify with IT-wallet (see :ref:`functionalities:Remote Presentation`) 
-
 
 
 Focus on Electronic Attestations of Attributes
@@ -708,29 +707,29 @@ The flow is shown below with illustrative wireframes.
 Following is represented for illustrative purposes the page with the :ref:`functionalities:Engagement Button`, together with the Selection Page, the QR Code Page and the Thank You Page with the interface elements and texts updated according to the :ref:`functionalities:Remote Presentation` flow.
 
 .. only:: format_html 
- 
+
   .. figure:: ./images/svg/remote-presentation.svg 
     :alt: Illustrative page with Engagement Button, Selection page, QR code page, Thank you page for the remote presentation 
     :width: 100% 
     :align: center 
- 
+
     Illustrative page with Engagement Button, Selection page, QR code page, Thank you page for the remote presentation
 
- 
+
 .. only:: format_latex 
- 
+
   .. figure:: ./images/pdf/remote-presentation-1.pdf 
     :alt: Illustrative page with Engagement Button, Selection page, QR code page, Thank you page for the remote presentation
     :width: 100% 
- 
+
     Illustrative page with Engagement Button, Selection page, QR code page, Thank you page for the remote presentation
 
 .. only:: format_latex 
- 
+
   .. figure:: ./images/pdf/remote-presentation-2.pdf 
     :alt: Illustrative page with Engagement Button, Selection page, QR code page, Thank you page for the remote presentation
     :width: 100% 
- 
+
     Illustrative page with Engagement Button, Selection page, QR code page, Thank you page for the remote presentation
 
 
@@ -956,7 +955,7 @@ Relying Parties MUST implement the QR Code Page (cross-device) provided in the :
      :align: center
 
      QR Code Page 
- 
+
 .. only:: format_latex  
 
   .. figure:: ./images/pdf/QR-page.pdf
@@ -997,7 +996,7 @@ Relying Parties MUST implement the Thank You Page provided in the :ref:`official
      :align: center
 
      Thank You Page 
- 
+
 .. only:: format_latex  
 
   .. figure:: ./images/pdf/thank-you-page.pdf
@@ -1026,7 +1025,7 @@ Relying Parties MUST implement the Error Page provided in the :ref:`official-res
      :align: center
 
      Error Page 
- 
+
 .. only:: format_latex  
 
   .. figure:: ./images/pdf/error-page.pdf
@@ -1070,7 +1069,7 @@ The Authentication Button has the following requirements:
 
 Below are some non-mandatory examples of Authentication Button layout: 
 
- 
+
 .. only:: format_html 
 
   .. figure:: ./images/svg/authentication-button-layout.svg
@@ -1350,7 +1349,7 @@ To ensure the principles of visibility and transparency, the Wallet Provider MUS
 - enable the User, where a transaction involves a Relying Party, to easily initiate a data deletion request to the corresponding Relying Party (using logged contact information);
 - support export of one or more transaction records to a file;
 - allow the User to delete one or more transaction records with prior warning.
-  
+
 Backup and Restore of Electronic Attestation of Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

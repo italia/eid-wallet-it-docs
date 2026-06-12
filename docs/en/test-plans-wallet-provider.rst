@@ -931,7 +931,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
      - Proximity-flow, Presentation, Security
      - Close communication channel
      - Wallet Instance closes the active communication channel by disconnecting the BLE link or ending the NFC APDU exchange.
- 
+
 .. _user-attribute-deletion-testcases:
 
 Test Cases for User Attribute Deletion on Relying Party Side

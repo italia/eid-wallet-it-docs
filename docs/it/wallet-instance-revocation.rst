@@ -40,7 +40,6 @@ Indipendentemente da chi ha attivato il processo di revoca, il Wallet Provider D
   - Il flusso per le Entità Autorizzate (ad esempio, Organismi di Supervisione) è fuori dall'ambito di questa specifica, sarà gestito da ciascun Fornitore di Wallet.
 
 
-
 Richiesta di Revoca dell'Istanza del Wallet
 """""""""""""""""""""""""""""""""""""""""""
 

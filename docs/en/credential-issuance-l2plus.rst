@@ -344,7 +344,7 @@ Below a non-normative example of an MRTD PoP Response:
 
     HTTP/1.1 202 Accepted
     Content-Type: application/jwt; charset=utf-8
-    
+
     eyJhbGciOiJFUzI1NiIsInR5cCI6Im1ydGQtaWFzLXBvcCtqd3QiLCJraWQiOiJiM2YxYTZjMmU5ZDU0YThmOWMzZTdkMWEyZjRiNmM3OCJ9.eyJpc3MiOiJodHRwczovL3BpZC1wcm92aWRlci5leGFtcGxlLm9yZyIsImF1ZCI6Imh0dHBzOi8vd2FsbGV0LmV4YW1wbGUub3JnL2luc3RhbmNlLzEyMzQ1IiwiaWF0IjoxNzUzNTU1ODAwLCJleHAiOjE3NTM1NTYwMDAsIm1ydGRfcG9wX25vbmNlIjoiOWYyYzRhN2UzYjFkOGM5YTZlNWY0YjJhMWMzZDdlOGYiLCJtcnoiOiIuLi4iLCJjaGFsbGVuZ2UiOiIuLi4iLCJodHUiOiIuLi4iLCJodG0iOiIuLi4ifQ.signature
 
 JWT decoded header:
@@ -745,7 +745,7 @@ Moreover, each nonce serves a specific security purpose.
 - Use a different entropy source to prevent correlation attacks.
 
  - ``mrtd_val_pop_nonce`` MUST:
- 
+
 - Be signed by the Wallet Instance private key.
 - Include anti-replay timestamp validation.
 - Be verified against the entire nonce chain for integrity.

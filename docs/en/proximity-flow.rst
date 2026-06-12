@@ -89,7 +89,7 @@ The following table shows the supported Device Retrieval technologies, specifyin
      - M
      - RECOMMENDED
      - C – MUST if the device is equipped with an NFC reader.
- 
+
 Key: C = Conditional | M = Mandatory | :sup:`a`\ Support for at least one of these methods is mandatory (:ref:`WP_096b <wallet-credential-presentation-testcases>`)
 
 .. note::
@@ -129,7 +129,6 @@ The following figure illustrates the low-level flow compliant with ISO 18013-5 f
 **Step 7**: The Wallet Instance and Relying Party Instance independently MUST derive the session keys using their private ephemeral key and the other party's public ephemeral key through a key agreement protocol. This ensures session encryption. In this particular step, the Relying Party Instance MUST compute its session key  (:ref:`PPR-002 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>` and :ref:`WP_104 <wallet-credential-presentation-testcases>`).
 
 **Step 8**: The Relying Party Instance MUST prepare a ``SessionEstablishment`` message. This message MUST be signed by the Relying Party Instance (mdoc reader authentication as specified in [`ISO18013-5`_ #12.5]) and encrypted using the session keys derived in the previous step. The ``SessionEstablishment`` message MUST include the ``EReaderKey.Pub`` and a request for specific attribute(s) (:ref:`PPR-002 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>`).
-
 
 
 Below is a non-normative example using the diagnostic notation of a CBOR-encoded ``SessionEstablishment`` message that contains an mdoc request for an mDL Digital Credential.
@@ -274,7 +273,7 @@ The following figure illustrates the low-level flow compliant with `ISO18013-5`_
     :width: 90%
     :alt: The figure illustrates the Session Establishment over BLE Presentation Flow in proximity.
     :caption: `Session Establishment over BLE. <https://www.plantuml.com/plantuml/svg/ZLHDRzim3BthLn2-r3aaG3PWXs8RYYu15c0PXcRfBhimCki8ioLDakNq5-r_x9UDabitmVeL184Zak_nFLA-y05TwDf6O1UCxjeTEI4idocfBEe0nGzi6WgmrIeKW1xwq_3LDrXfHj6ISZWAWJAeY84uTNpaupFuyDI7OvTVbY2DriGLHWCnvAvHVjyIivGtphImtQuMu4YIYbI1qh2Wg2J1KjTOKqgSF4iYTkO0HIBo53eBfJCDJR7MnhEUII40ullfn_uSblViC6JBpX78FN9xZI1T0IEz9EYQdBgvPKsEMmvWYHn4XR2gaY86SsmEvoHkAF_-cSzdyzdRsPldDMG9zn0aVq7PLaP2J6IAF8GzZPIEi2ANTV7Ns01N-MHeJKbCJdEapve_cTPsF2awM2vcWpFB48xdkVJntYCs7Pt08BirpccewLNOZz0ZCamFmDZbaBDMliKWznFuJgvLEktDwLfm3RlFl_0mXPXfYs93tdFAydXnYW8CM_FO54Nouwu6BfMkbAx5866TcdWQiULZthS7XLNdk1X-QlXAjGaAatkVKLUPEojFO_clZZTu4yZ2Ep4QiRxBUOKLoGXnDWndazn0yAhMZClCR9DqjpOruiXRepr1EIfQOC2Yc737kJb7lpk-Rwao1ATsl0L-z4s8YevkyT6VNbmmBRyx_W40>`_
-    
+
 **Step 1**: The Wallet Instance and Relying Party Instance establish a secure BLE connection [`ISO18013-5`_ #11.1]. The Relying Party Instance (central) connects to the Wallet Instance (peripheral) using the Wallet Instance service UUID provided by DeviceEngagement, then discovers services/characteristics, and enables notifications as needed (:ref:`WP_112c <wallet-credential-presentation-testcases>`).
 
 **Step 2-5**: [Optional] Wallet Instance initiates verification by preparing to check the Relying Party’s identity via the Ident characteristic, that is a BLE GATT characteristic that carries an identifier value as described in [`ISO18013-5`_ #11.1.3.2]. The Wallet Instance derives the expected Ident value and reads the Relying Party's Ident characteristic, comparing it to the expected Ident, and terminating the BLE connection if a mismatch may occur .
@@ -339,7 +338,7 @@ Definitions (Acronyms and Commands)
 
    * - **SELECT APDU**
      - Command that opens the Wallet Instance by `AID`.  Response includes File Control Information (FCI) and Status Word (`SW1/SW2`).
-  
+
    * - **ENVELOPE APDU**
      - Command that carries session messages (e.g., ``SessionEstablishment``).  Response indicates processing status (`OK` or `more data`).
 
@@ -405,19 +404,19 @@ The Device Engagement structure MUST be CBOR encoded and have at least the follo
 
    * - **DeviceRetrievalMode-BLEOptions**
      - *(map)*. Provides options for the BLE connection, such as Peripheral Server or Central Client mode, and the device UUID. See Table 2 of `ISO18013-5`_ for the detailed mapping.
-       
+
        If the Wallet Instance indicates during Device Engagement that it supports both modes, the Relying Party Instance  SHOULD select the mdoc central client mode  [`ISO18013-5`_ #11.1.3.1].
-       
+
        Only present when performing Device Engagement using the QR code. Absent when using NFC to perform Device Engagement.
 
 
    * - **DeviceRetrievalMode-NFCOptions**
      - *(map)*. Provides options for NFC connections, including the supported role (PICC or PCD) and maximum PDU command/response sizes. See Table 2 of `ISO18013-5`_ for the detailed mapping.
-        
+
        In case NFC is used for Device Retrieval, the Wallet Instance MUST support PICC mode and the Relying Party Instance MUST support PCD mode [`ISO18013-5`_ #11.2].
-        
+
        Only present when performing Device Engagement using the QR code. Absent when using NFC to perform Device Engagement.
-  
+
    * - **Capabilities**
      - *(map)*. Declares optional capabilities supported by the mdoc, that are:
 
@@ -427,7 +426,7 @@ The Device Engagement structure MUST be CBOR encoded and have at least the follo
 
    * - **OriginInfos**
      - *(array)*. Describes the interface used to receive and deliver the engagement structure.
-     
+
        `OriginInfos` MAY be an empty array.
 
 
@@ -525,7 +524,6 @@ Each document in **documents** MUST be compliant with the following structure, a
 
    * - **errors**
      - *(map, OPTIONAL)*. A map of error codes for each unreturned data element grouped by namespace. Each key represents a namespace, and each value is a map of data element identifiers to corresponding error codes. See [`ISO18013-5`_ #10.3.6] for details on the errors structure.
-
 
 
 A **deviceSigned** data structure MUST be compliant with the following structure (:ref:`WP_111a <wallet-credential-presentation-testcases>`), and MUST include the following components:

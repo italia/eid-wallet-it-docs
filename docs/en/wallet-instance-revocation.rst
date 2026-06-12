@@ -40,7 +40,6 @@ Regardless of who triggered the revocation, the Wallet Provider has to inform Us
   - The flow for Authorized Entities (e.g., Supervisory Bodies) is out of scope of this specification, it will be managed by each Wallet Provider.
 
 
-
 Wallet Instance Revocation Request
 """"""""""""""""""""""""""""""""""
 

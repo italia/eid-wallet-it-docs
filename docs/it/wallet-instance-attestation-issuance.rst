@@ -51,7 +51,6 @@ Di seguito è riportato un esempio non normativo dell'oggetto JSON ``client_data
   ``integrity_assertion`` è un payload personalizzato generato dal Servizio di Integrità del Dispositivo, firmato dall'OEM del dispositivo e codificato in base64 per avere uniformità tra diversi dispositivi.
 
 
-
 **Passi 11-12 (Richiesta di Emissione della Wallet Instance Attestation)**: L'Istanza del Wallet:
 
 * Costruisce la Wallet Instance Attestation Request sotto forma di JWT. Questo JWT include l'``integrity_assertion``, ``hardware_signature``, ``nonce``, ``hardware_key_tag``, ``cnf``, ``platform``, ``wallet_solution_id``, ``wallet_solution_version``  e altri parametri relativi alla configurazione (vedi :ref:`Tabella del Corpo della Richiesta di Wallet Instance Attestation <table_wia_request_claim>`) ed è firmato utilizzando la chiave privata la cui chiave pubblica è indicata nella richiesta tramite ``cnf`` (:ref:`WP_140–141 <wallet-instance-optional-testcases>`).
