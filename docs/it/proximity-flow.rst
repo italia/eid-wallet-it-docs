@@ -121,10 +121,10 @@ La figura seguente illustra il flusso di basso livello conforme a ISO 18013-5 pe
 
    Fare riferimento a:
 
-   - :ref:`sec-deviceengagement-qr` per ``DeviceEngagement`` tramite QR code
-   - :ref:`sec-deviceengagement-nfc` per ``DeviceEngagement`` tramite NFC
+   - Sez. 8.2.2.1 per ``DeviceEngagement`` tramite QR code
+   - Sez. 8.2.2.2 per ``DeviceEngagement`` tramite NFC
 
-**Passo 6**: L'Istanza di Relying Party genera la sua coppia di chiavi effimera (``EReaderKey.Priv``, ``EReaderKey.Pub``). La chiave privata (``EReaderKey.Priv``) DEVE essere mantenuta segreta, e la chiave pubblica (``EReaderKey.Pub``) DEVE essere utilizzata nel *Session Establishment* (:ref:`PPR-002 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>`).
+**Passo 6**: L'Istanza di Relying Party genera la sua coppia di chiavi effimera (``EReaderKey.Priv``, ``EReaderKey.Pub``). La chiave privata (``EReaderKey.Priv``) DEVE essere mantenuta segreta, e la chiave pubblica (``EReaderKey.Pub``) DEVE essere utilizzata nel *Session Establishment*.
 
 **Passo 7**: L'Istanza del Wallet e l'Istanza di Relying Party DEVONO derivare indipendentemente le chiavi di sessione utilizzando la loro chiave effimera privata e la chiave effimera pubblica dell'altra parte attraverso un Key Agreement Protocol opportuno. Questo garantisce lo scambio di messaggi cifrati nella sessione. In questo particolare passo, l'Istanza di Relying Party DEVE calcolare la sua chiave di sessione (:ref:`PPR-002 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>` and :ref:`WP_097 <wallet-credential-presentation-testcases>`).
 
@@ -139,13 +139,13 @@ Di seguito è riportato un esempio non normativo nella notazione diagnostica di 
 
 .. admonition:: Box B
 
-   L'Istanza di Relying Party DEVE trasmettere il messaggio ``SessionEstablishment`` cifrato e firmato all'Istanza del Wallet su una connessione NFC o BLE sicura stabilita sulla base delle informazioni contenute nel Device Engagement (:ref:`PPR-003 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>`).
+   L'Istanza di Relying Party DEVE trasmettere il messaggio ``SessionEstablishment`` cifrato e firmato all'Istanza del Wallet su una connessione NFC o BLE sicura stabilita sulla base delle informazioni contenute nel Device Engagement.
    Fare riferimento a:
 
    - Sez 8.2.2.3 per ``SessionEstablishment`` tramite BLE, e
    - Sez 8.2.2.5 per ``SessionEstablishment`` tramite NFC
 
-**Passo 9**: L'Istanza del Wallet DEVE calcolare la chiave di sessione, come descritto nel Passo 7 (:ref:`PPR-002 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>`).
+**Passo 9**: L'Istanza del Wallet DEVE calcolare la chiave di sessione, come descritto nel Passo 7.
 
 **Passo 10**: Al ricevimento del ``SessionEstablishment``, l'Istanza del Wallet DEVE decifrarlo utilizzando la chiave di sessione calcolata al Passo 9 e DEVE verificare la firma dell'Istanza di Relying Party (come specificato in [`ISO18013-5`_ #12.5 *mdoc reader authentication*]) per garantire l'autenticità del messaggio (:ref:`PPR-002 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>` and :ref:`WP_105–106 <wallet-credential-presentation-testcases>`).
 
@@ -182,8 +182,6 @@ Di seguito è riportato un esempio non normativo di ``SessionData`` nella notazi
 
     Il record DEVE essere finalizzato al termine della transazione, indicando l’esito (ad esempio, completata, fallita o sessione terminata; Passi 13–14 e Session Termination).
 
-.. _sec-deviceengagement-qr:
-
 ``DeviceEngagement`` tramite QR Code
 ------------------------------------
 La figura seguente illustra il flusso di basso livello conforme a ISO 18013-5 per ``DeviceEngagement`` tramite QR Code corrispondente al Box A nella Figura :ref:`fig_High-Level-Flow-ITWallet-Presentation-ISO-updated`.
@@ -211,8 +209,6 @@ Di seguito è riportato un esempio non normativo di ``DeviceEngagement`` nella n
   :language: text
 
 **Passo 2**: Il verificatore utilizza la sua Istanza di Relying Party per scansionare il QR code e recuperare i dati ``DeviceEngagement`` dall'mdoc. Esso DEVE selezionare una delle tecnologie di trasmissione tra quelle fornite nella struttura ``DeviceEngagement``.
-
-.. _sec-deviceengagement-nfc:
 
 ``DeviceEngagement`` tramite NFC
 --------------------------------
@@ -519,7 +515,7 @@ Ogni elemento in **documents** DEVE essere conforme alla seguente struttura e DE
      - **Descrizione**
 
    * - **docType**
-     - *(tstr)*. identificativo del tipo di documento. Ad esempio, per un mDL, il valore DEVE essere ``org.iso.18013.5.1.mDL`` (:ref:`PPR-010 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>`).
+     - *(tstr)*. identificativo del tipo di documento. Ad esempio, per un mDL, il valore DEVE essere ``org.iso.18013.5.1.mDL``.
 
    * - **issuerSigned**
      - *(bstr)*. Contiene la struttura `IssuerNameSpaces`, che include elementi dati firmati dal Fornitore di Attestati Elettronici, e la struttura `issuerAuth`, che garantisce la loro autenticità e integrità utilizzando il Mobile Security Object (MSO). Vedere :ref:`credential-data-model:Formato Attestato Elettronico mdoc-CBOR`.
@@ -551,7 +547,7 @@ Una struttura di dati **deviceSigned** DEVE essere conforme alla seguente strutt
        - **DataItemValue** *(any)*. Il valore dell'elemento dati.
 
    * - **deviceAuth**
-     - *(COSE_Sign1)*. Contiene la struttura ``DeviceAuth``, che DEVE includere la **deviceSignature** per l'autenticazione dell'Istanza del Wallet. La firma è calcolata sui dati ``DeviceAuthentication``, che lega gli elementi restituiti alla sessione e alla richiesta. Vedi [`ISO18013-5`_ #12.4] per i dettagli sulla struttura di autenticazione (:ref:`PPR-003 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>`).
+     - *(COSE_Sign1)*. Contiene la struttura ``DeviceAuth``, che DEVE includere la **deviceSignature** per l'autenticazione dell'Istanza del Wallet. La firma è calcolata sui dati ``DeviceAuthentication``, che lega gli elementi restituiti alla sessione e alla richiesta. Vedi [`ISO18013-5`_ #12.4] per i dettagli sulla struttura di autenticazione.
 
 Session Termination
 ^^^^^^^^^^^^^^^^^^^
