@@ -27,7 +27,7 @@ Questa funzionalità dell'Istanza del Wallet consente agli Utenti di ottenere un
 
 **Passi 4 - 5:** L'Istanza del Wallet ottiene la Entity Configuration della Relying Party all'endpoint ./well-known/ della Federazione. L'URL o l'Endpoint di Cancellazione (``erasure_endpoint``) può essere trovato all'interno del parametro dei metadati (:ref:`WP_116 <user-attribute-deletion-testcases>`).
 
-**Passo 6:** L'Istanza del Wallet registra le informazioni rilevanti della Richiesta di Cancellazione come definito in :ref:`wallet-instance-dashboard-transaction-registry`. Questi log DEVONO includere almeno (:ref:`WP_117a <user-attribute-deletion-testcases>`):
+**Passo 6:** L'Istanza del Wallet registra le informazioni rilevanti della Richiesta di Cancellazione come definito in :ref:`wallet-instance-dashboard:Dashboard dell’Istanza del Wallet e Registrazione delle Transazioni`. Questi log DEVONO includere almeno (:ref:`WP_117a <user-attribute-deletion-testcases>`):
   * la data della richiesta,
   * la Relying Party a cui è stata fatta la richiesta,
   * gli attributi di cui è stata richiesta la rimozione.
@@ -42,3 +42,5 @@ Questa funzionalità dell'Istanza del Wallet consente agli Utenti di ottenere un
 **Passo 10:** La Relying Party restituisce la Risposta di Cancellazione sotto forma di Risposta HTTP all'User-Agent e include l'URL di callback se fornito nella Richiesta di Cancellazione. I dettagli sulla Risposta di Cancellazione si trovano in :ref:`relying-party-endpoints:Risposta di Cancellazione`.
 
 **Passi 11 - 12:** L'User-Agent utilizza il metodo implementato per restituire la Risposta di Cancellazione all'Istanza del Wallet. Infine, l'Utente viene notificato tramite l'Istanza del Wallet riguardo all'esito della Risposta di Cancellazione (:ref:`WP_119 <user-attribute-deletion-testcases>`).
+
+

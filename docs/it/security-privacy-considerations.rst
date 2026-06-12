@@ -1,7 +1,6 @@
 .. include:: ../common/common_definitions.rst
 .. include:: ../common/symbols.rst
 
-
 Considerazioni di Sicurezza e Privacy
 =====================================
 
@@ -470,7 +469,8 @@ SPR-P-80
    * - |check-icon|
      - Il protocollo deve garantire che il Fornitore di Credenziali non possa sapere dove l'Utente utilizza la Credenziale.
 
-Il protocollo di scambio non richiede alcuna interazione tra Verificatori di Attestati Elettronici e Fornitori di Credenziali. Inoltre, Status List che preserva la privacy, garantisce che mentre il Verificatore di Attestati Elettronici controlla la validità della Credenziale, il Fornitore di Credenziali non apprende dove o quando la Credenziale viene utilizzata.
+Il protocollo di scambio non richiede alcuna interazione tra Verificatori di Attestati Elettronici e Fornitori di Credenziali.
+Inoltre, Status List che preserva la privacy, garantisce che mentre il Verificatore di Attestati Elettronici controlla la validità della Credenziale, il Fornitore di Credenziali non apprende dove o quando la Credenziale viene utilizzata.
 
 SPR-W-50
 ^^^^^^^^
@@ -481,3 +481,5 @@ SPR-W-50
      - Il Wallet deve garantire che le Credenziali e le chiavi private siano protette da accessi non autorizzati.
 
 Per prevenire l'accesso non autorizzato al Wallet, viene sbloccato sul dispositivo dell'Utente inserendo un numero di identificazione personale (PIN) o utilizzando l'autenticazione biometrica, come l'impronta digitale o il riconoscimento facciale, in base alle preferenze dell'Utente e alle capacità del dispositivo. Inoltre, le chiavi crittografiche sono memorizzate in modo sicuro all'interno del WSCD, garantendo che solo l'Utente possa accedervi, impedendo così l'uso non autorizzato o la manomissione.
+
+

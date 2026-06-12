@@ -2,7 +2,7 @@
 
 
 Gestione degli Attestati Elettronici
-=====================================
+====================================
 
 .. toctree::
   :caption: Indice dei Contenuti per la degli Attestati Elettronici
@@ -11,4 +11,5 @@ Gestione degli Attestati Elettronici
   credential-data-model.rst
   credential-data-model-pid.rst
   credential-revocation.rst
+
 

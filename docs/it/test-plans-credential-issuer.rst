@@ -1,5 +1,6 @@
 .. include:: ../common/common_definitions.rst
 
+
 Matrice dei Test per il Credential Issuer
 -----------------------------------------
 
@@ -830,8 +831,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
     - Il Fornitore di Attestati Elettronici aggiorna con successo lo stato della Credenziale Digitale immediatamente quando avviene la revoca
   * - CI_169
     - Modello di Dati e ciclo di vita, Interoperabilità
-    - Endpoint Revoca Istanza di Wallet tramite PDND
-      Monitoraggio dello stato della Wallet Instance per l'aggiornamento dello stato degli Attestati Elettronici
+    - Monitoraggio dello stato della Wallet Instance per l'aggiornamento dello stato degli Attestati Elettronici
     - Il Fornitore di Attestati Elettronici predispone un meccanismo di monitoraggio degli stati correnti di tutte le Wallet Unit Attestation associate alle Wallet Instance a cui sono stati rilasciati gli Attestati Elettronici.
   * - CI_170
     - Modello di Dati e ciclo di vita, Interoperabilità
@@ -945,3 +945,5 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Informazioni Elemento Array Credenziali
     - Ogni elemento dell'array delle credenziali contiene correttamente tutte le informazioni di primo livello definite nella :ref:`Tabella  <table_catalog_parameters_first_level>` corrispondente.
+
+

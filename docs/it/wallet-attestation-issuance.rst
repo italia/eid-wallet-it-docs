@@ -2,7 +2,7 @@
 
 
 Emissione della Wallet Unit Attestation
-========================================
+=======================================
 
 Questa sezione descrive come il Fornitore di Wallet emette una Wallet Unit Attestation.
 
@@ -46,6 +46,7 @@ Di seguito è riportato un esempio non normativo dell'oggetto JSON ``client_data
     "nonce": "i4ThI2Jhbu81i8mqyWEuDG5t",
     "jwk_thumbprints": ["vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c"]
   }
+
 
 **Passi 8-11**: L'Istanza del Wallet:
 
@@ -108,3 +109,5 @@ Di seguito è riportato un esempio non normativo della risposta.
   {
     "wallet_unit_attestation": "omppc3N1ZXJBdXRohEOhASaiBE...dElEAnFlbGVtZW50SWRl"
   }
+
+

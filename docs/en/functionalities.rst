@@ -363,7 +363,7 @@ The Engagement Button:
 
 - MUST maintain a minimum distance from other elements (quiet zone) of at least 24px;
 
--  MUST state in their label the action to be done followed by "IT-Wallet", for example "Login with IT-Wallet", "Add to IT-Wallet", "Verify with IT-Wallet";
+- MUST state in their label the action to be done followed by "IT-Wallet", for example "Login with IT-Wallet", "Add to IT-Wallet", "Verify with IT-Wallet";
 
 - MAY be accompanied by text explaining the added value of performing that action using the IT-Wallet system. 
 
@@ -1432,7 +1432,7 @@ Each Primary Actor MUST implement a proper error management, in compliance with 
 - **Suggested actions for the User** to resolve the error: suggestion to wait, request to try again, referral to FAQs and/or customer care, etc.;
 - **The method for error management**: opening an assistance request through the Wallet Instance, linking to other detailed channels, and so on. For further details, please refer to the :ref:`functionalities:User Assistance` section.
 
-Below is a non-exhaustive list of the main error cases, with reference to the actor responsible for their management, for each phase of the User Experience. The detailed list of errors to be managed for each interaction endpoint with the User is available in the dedicated error sections within :ref:`Endpoints`.
+Below is a non-exhaustive list of the main error cases, with reference to the actor responsible for their management, for each phase of the User Experience. The detailed list of errors to be managed for each interaction endpoint with the User is available in the dedicated error sections within :ref:`endpoints:Endpoints`.
 
 Activation of the Wallet Instance Errors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1577,3 +1577,5 @@ Here are some suggestions for implementing these types of feedback tools:
 **Relational Feedback Collection**
 
 - **Net Promoter Score (NPS)**: To measure User loyalty and the likelihood of recommending the service to others, an evaluation MAY be requested from the User once or twice a year, either through the same service delivery channel (e.g. the Wallet Instance) or external channels such as email or SMS. This should be aligned with the overall feedback collection strategy.
+
+

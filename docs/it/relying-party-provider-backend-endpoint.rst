@@ -1,7 +1,4 @@
 .. include:: ../common/common_definitions.rst
-
-.. _relying-party-provider-backend-endpoint-endpoint-del-backend-del-provider-di-relying-party:
-
 .. "included" file, so we start with '-' title level
 
 La Relying Party DEVE esporre una serie di endpoint per gestire il ciclo di vita delle App di Verifica che utilizzano un servizio di backend remoto fornito dal loro Backend del Provider di Relying Party. Questi endpoint supportano i flussi di presentazione in prossimità fornendo generazione di nonce, registrazione delle chiavi hardware, convalida dell'integrità e rilascio del Certificato di Accesso. I dettagli specifici della loro implementazione sono lasciati alla discrezione della Relying Party.
@@ -40,6 +37,7 @@ Richiesta di Associazione Chiavi della Relying Party
 
 Ulteriori dettagli sulla Relying Party Key Binding Request sono forniti nella sezione :ref:`wallet-provider-endpoint:Richiesta di Emissione della Wallet Instance Attestation`. 
 
+
 Le uniche differenze sono le seguenti:
 
 - L'intestazione ``typ`` del JWT della Integrity Request assume il valore ``rp-kb+jwt``.
@@ -61,7 +59,6 @@ Se si verifica un errore durante il processo, viene restituita una risposta di e
 
   - *error*. Il codice di errore.
   - *error_description*. Testo in formato leggibile dall'uomo che fornisce ulteriori dettagli per chiarire la natura dell'errore riscontrato (:ref:`WP_035 <wallet-instance-testcases>`).
-
 
 Di seguito è riportato un esempio non normativo di una Key Binding Error Response.
 
@@ -121,6 +118,7 @@ La seguente tabella elenca i codici di stato HTTP e i relativi codici di errore 
     * - ``503 Service Unavailable``
       - ``temporarily_unavailable``
       - Il servizio non è disponibile. Si prega di riprovare più tardi.
+
 
 
 Endpoint del Certificato di Accesso della Relying Party
@@ -228,8 +226,10 @@ La seguente tabella elenca gli HTTP Status Code e i relativi codici di errore ch
       - La richiesta non può essere soddisfatta perché l'Endpoint è temporaneamente non disponibile (ad esempio, a causa di manutenzione o sovraccarico).
 
 Endpoint di Cancellazione della Relying Party del Provider Backend
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 L'Endpoint di Cancellazione consente alle Istanze di Wallet di richiedere la cancellazione degli attributi presentati alla Relying Party, supportando i diritti di privacy dell'utente e la conformità normativa.
 
 Per i requisiti di implementazione dettagliati, vedere :ref:`relying-party-remote-flow-endpoints:Endpoint di Cancellazione della Relying Party`.
+
+

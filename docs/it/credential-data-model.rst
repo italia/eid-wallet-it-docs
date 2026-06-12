@@ -1,8 +1,8 @@
 .. include:: ../common/common_definitions.rst
-  
+
 
 Modello di Dati degli Attestati Elettronici
-==============================================
+===========================================
 
 Un modello di dati dell'Attestato Elettronico ha la seguente struttura:
 
@@ -17,7 +17,7 @@ Gli Attestati Elettronici di Attributi (Qualificati) ((Q)EAA) sono rilasciati da
 Mentre il modello dati (Q)EAA è guidato dal caso d'uso e può includere diversi attributi dell'Utente, gli attributi di metadati specifici per ciascun formato dati sono forniti nelle sezioni seguenti.
 
 Attributi di Metadati Format-Agnostic dell'Attestato Elettronico
------------------------------------------------------------------
+----------------------------------------------------------------
 
 La seguente tabella definisce gli attributi di metadati comuni che sono applicabili agli Attestati Elettronici indipendentemente dal loro formato di codifica. Questi attributi rappresentano le informazioni semantiche sulla credenziale.
 
@@ -48,10 +48,8 @@ La seguente tabella definisce gli attributi di metadati comuni che sono applicab
 
 Le sezioni seguenti forniscono gli attributi specifici del formato e una mappatura degli attributi di metadati sopra indicati ai parametri tecnici specifici del formato quando la credenziale è codificata in formato SD-JWT VC o mdoc-CBOR.
 
-.. _credential-data-model-attestato-elettronico-in-formato-sd-jwt-vc:
-
 Formato Attestato Elettronico SD-JWT-VC
-----------------------------------------
+---------------------------------------
 
 Quando gli Attestati Elettronici sono emessi in formato SD-JWT-VC, DEVONO essere conformi alle specifiche `SD-JWT`_ e `SD-JWT-VC`_.
 
@@ -71,7 +69,7 @@ Vedere `SD-JWT-VC`_ e `SD-JWT`_ per ulteriori dettagli.
 
 
 Attributi Metadata degli Attestati Elettronici SD-JWT
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Il JOSE Header contiene i seguenti parametri obbligatori:
 
@@ -101,7 +99,6 @@ Il JOSE Header contiene i seguenti parametri obbligatori:
     - :rfc:`7515` Sezione 4.1.8 e [`SD-JWT-VC`_] Sezione 3.5.
 
 Il payload JWT contiene i seguenti claim. Salvo diversamente specificato, i seguenti claim NON DEVONO essere divulgabili selettivamente.
-
 
 .. _table_sd-jwt-vc_parameters:
 .. list-table::
@@ -152,8 +149,7 @@ Il payload JWT contiene i seguenti claim. Salvo diversamente specificato, i segu
       - OPZIONALE. *Stringa*. Il valore DEVE essere una stringa "integrity metadata" come definito nella Sezione 3 di [`W3C-SRI`_]. *SHA-256*, *SHA-384* e *SHA-512* DEVONO essere supportati come funzioni crittografiche di hash. *MD5* e *SHA-1* NON DEVONO essere utilizzati. Questo claim DEVE essere verificato in base a quanto indicato nella Sezione 3.3.5 di [`W3C-SRI`_].
       - Sezione 6.1 `SD-JWT-VC`_, [`W3C-SRI`_]
     * - **verification**
-      - OPZIONALE. *Oggetto JSON*. Identificativo del dato `verification` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`.
-        Include i seguenti sotto-valori:
+      - OPZIONALE. *Oggetto JSON*. Identificativo del dato `verification` codificato nel formato come definito nella Sezione :ref:`credential-data-model:Attributi di Metadati Format-Agnostic dell'Attestato Elettronico`. Include i seguenti sotto-valori:
 
           * ``trust_framework``: OBBLIGATORIO. *Stringa* che identifica il trust framework utilizzato per l'autenticazione dell'Utente. DEVE essere impostato utilizzando uno dei valori descritti nella mappa `trust_frameworks_supported` fornita nei Metadata del Fornitore di Attestati Elettronici.
           * ``assurance_level``: OBBLIGATORIO. *Stringa* che identifica il livello di garanzia dell'identità garantito durante il processo di autenticazione dell'Utente. Il valore DEVE corrispondere a uno dei valori mappati nell'array ``acr_values_supported`` presente nel :ref:`credential-issuer-metadata:Metadata del Fornitore di Attestati Elettronici`.
@@ -165,6 +161,7 @@ Il payload JWT contiene i seguenti claim. Salvo diversamente specificato, i segu
     * - **_sd_alg**
       - OBBLIGATORIO. *Stringa*. Algoritmo di hash utilizzato dal Fornitore di Attestati Elettronici per generare i digest.
       - 4.1.1 `SD-JWT`_
+
 
 .. note::
   I claim JWT standard ``nbf`` e ``exp`` sono utilizzati per esprimere il periodo di validità tecnica di un Attestato Elettronico conforme a SD-JWT VC.
@@ -257,7 +254,7 @@ Il formato combinato per l'emissione del (Q)EAA è rappresentato di seguito:
   :language: text
 
 Type Metadata dell'Attestato Elettronico
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Il documento di *Type Metadata*, se fornito, DEVE essere un *JSON object* e DEVE essere conforme con la Sezione 6.2 di [`SD-JWT-VC`_].
 
@@ -283,13 +280,11 @@ Di seguito è riportato un esempio non normativo.
       ...
     }
 
-
-.. _credential-data-model-attestato-elettronico-in-formato-mdoc-cbor:
-
 Formato Attestato Elettronico mdoc-CBOR
-------------------------------------------
+---------------------------------------
 
 Gli Attestati Elettronici emessi in formato mdoc-CBOR DEVONO essere basati sullo standard ISO/IEC 18013-5.
+
 I dati in mdoc DEVONO essere codificati in CBOR come definito in :rfc:`8949`.
 
 Questo modello dati struttura gli Attestati Elettronici in componenti distinti: namespaces (**nameSpaces**) e prova crittografica (**issuerAuth**).
@@ -454,7 +449,7 @@ Attributi dei Namespaces
       - [ISO 18013-5#8.3.2.1.2.3]
 
 Attributi Metadata degli Attestati Elettronici mdoc-CBOR
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 I seguenti **elementIdentifiers** che rappresentano attributi metadata format-encoded sono definiti per gli Attestati Elettronici in formato mdoc-CBOR all'interno del rispettivo *nameSpace*:
 
@@ -502,6 +497,7 @@ I seguenti **elementIdentifiers** che rappresentano attributi metadata format-en
 
 .. note::
   Indipendentemente dal tipo di Attestato Elettronico, il valore di ``sub`` NON DEVE essere mostrato all'Utente, in quanto non è un attributo dello stesso. È utilizzato per scopi di identificazione dagli Emittenti di Credenziali.
+
 
 Esempi mdoc-CBOR
 ^^^^^^^^^^^^^^^^

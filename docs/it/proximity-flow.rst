@@ -27,9 +27,10 @@ Le sotto-fasi sono descritte di seguito:
 
 Le Istanze di Relying Party e Wallet registrate nell'ecosistema IT-Wallet DEVONO supportare almeno:
 
+
 - *Flusso di Recupero del Dispositivo Supervisionato* dove un supervisore umano supervisiona il processo di verifica in persona, in contrasto con il *flusso non supervisionato* dove la verifica potrebbe avvenire attraverso sistemi automatizzati senza supervisione umana (:ref:`WP_095 <wallet-credential-presentation-testcases>`).
 - *Autenticazione dell'Istanza di Relying Party* seguendo i meccanismi definiti nella `ISO18013-5`_ per il *reader authentication* (:ref:`WP_098 <wallet-credential-presentation-testcases>`).
-- *Tipo di Documento* domestico e *Namespace* definiti in questa specifica tecnica in aggiunta a quelli già definiti nell'`ISO18013-5`_ per l'mDL (vedi :ref:`credential-data-model-attestato-elettronico-in-formato-mdoc-cbor` per maggiori dettagli) (:ref:`WP_099 <wallet-credential-presentation-testcases>`).
+- *Tipo di Documento* domestico e *Namespace* definiti in questa specifica tecnica in aggiunta a quelli già definiti nell'`ISO18013-5`_ per l'mDL (vedi :ref:`credential-data-model:Formato Attestato Elettronico mdoc-CBOR` per maggiori dettagli) (:ref:`WP_099 <wallet-credential-presentation-testcases>`).
 
 La tabella seguente mostra le tecnologie di *Device Engagement* supportate  (:ref:`WP_097 <wallet-credential-presentation-testcases>`), specificando quali sono obbligatorie.
 
@@ -88,7 +89,7 @@ La tabella seguente mostra le tecnologie di *Device Retrieval* supportate, speci
      - M
      - RACCOMANDATO
      - C – DEVE se il dispositivo è dotato di un lettore NFC.
- 
+
 Legenda: C = Condizionale | M = Obbligatorio | :sup:`a`\  Il supporto per almeno uno di questi metodi è obbligatorio (:ref:`WP_096b <wallet-credential-presentation-testcases>`)
 
 .. note::
@@ -123,12 +124,13 @@ La figura seguente illustra il flusso di basso livello conforme a ISO 18013-5 pe
    - :ref:`sec-deviceengagement-qr` per ``DeviceEngagement`` tramite QR code
    - :ref:`sec-deviceengagement-nfc` per ``DeviceEngagement`` tramite NFC
 
-
 **Passo 6**: L'Istanza di Relying Party genera la sua coppia di chiavi effimera (``EReaderKey.Priv``, ``EReaderKey.Pub``). La chiave privata (``EReaderKey.Priv``) DEVE essere mantenuta segreta, e la chiave pubblica (``EReaderKey.Pub``) DEVE essere utilizzata nel *Session Establishment* (:ref:`PPR-002 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>`).
 
 **Passo 7**: L'Istanza del Wallet e l'Istanza di Relying Party DEVONO derivare indipendentemente le chiavi di sessione utilizzando la loro chiave effimera privata e la chiave effimera pubblica dell'altra parte attraverso un Key Agreement Protocol opportuno. Questo garantisce lo scambio di messaggi cifrati nella sessione. In questo particolare passo, l'Istanza di Relying Party DEVE calcolare la sua chiave di sessione (:ref:`PPR-002 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>` and :ref:`WP_097 <wallet-credential-presentation-testcases>`).
 
 **Passo 8**: L'Istanza di Relying Party DEVE preparare il ``SessionEstablishment``. Questo messaggio DEVE essere firmato dall'Istanza di Relying Party (autenticazione dell'*mdoc reader* come specificato in [`ISO18013-5`_ #12.5]) e cifrato utilizzando la chiave di sessione derivata nel passo precedente. Il messaggio ``SessionEstablishment`` DEVE includere la ``EReaderKey.Pub`` e una richiesta per specifici attributi (:ref:`PPR-002 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>`).
+
+
 
 Di seguito è riportato un esempio non normativo nella notazione diagnostica di un messaggio ``SessionEstablishment`` CBOR che contiene una Richiesta mdoc per un Attestato Elettronico mDL.
 
@@ -150,6 +152,7 @@ Di seguito è riportato un esempio non normativo nella notazione diagnostica di 
 **Passo 11**: L'Istanza del Wallet DEVE decifrare la richiesta di attributi e DEVE chiedere all'Utente il consenso per il rilascio degli attributi richiesti (:ref:`WP_107 <wallet-credential-presentation-testcases>`). DEVE inoltre visualizzare il contenuto del Certificato di Registrazione della Relying Party per garantire l'autenticità, la trasparenza sui dati richiesti e sul suo scopo registrato (:ref:`WP_107a <wallet-credential-presentation-testcases>`).
 
 **Passo 12**: L'Utente esamina la richiesta e le informazioni di registrazione della Relying Party e quindi approva la presentazione degli attributi richiesti.
+
 
 .. admonition:: Box C
 
@@ -182,7 +185,7 @@ Di seguito è riportato un esempio non normativo di ``SessionData`` nella notazi
 .. _sec-deviceengagement-qr:
 
 ``DeviceEngagement`` tramite QR Code
--------------------------------------
+------------------------------------
 La figura seguente illustra il flusso di basso livello conforme a ISO 18013-5 per ``DeviceEngagement`` tramite QR Code corrispondente al Box A nella Figura :ref:`fig_High-Level-Flow-ITWallet-Presentation-ISO-updated`.
 
 .. _fig_DeviceEngagement-QR:
@@ -194,14 +197,14 @@ La figura seguente illustra il flusso di basso livello conforme a ISO 18013-5 pe
 **Passo 1**: L'Istanza del Wallet presenta un QR Code all'Istanza di Relying Party. Il QR code DEVE contenere un URI con "mdoc:" come schema e la struttura ``DeviceEngagement`` specificata nella Sezione 9.1 codificata utilizzando, come percorso, base64url-without-padding, secondo `RFC 4648`_  (:ref:`WP_102a <wallet-credential-presentation-testcases>`).
 
 Esempio Non Normativo con BLE come Device Retrieval
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Di seguito è riportato un esempio non normativo di``DeviceEngagement`` nella notazione diagnostica che utilizza QR per il *Device Engagement* e Bluetooth Low Energy (BLE) per il recupero dei dati.
 
  .. literalinclude:: ../../examples/iso-device-engagement-BLE.txt
   :language: text
 
 Esempio Non Normativo con NFC come Device Retrieval
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Di seguito è riportato un esempio non normativo di ``DeviceEngagement`` nella notazione diagnostica che utilizza QR per il *Device Engagement* e NFC per il recupero dei dati.
 
  .. literalinclude:: ../../examples/iso-device-engagement-NFC.txt
@@ -212,7 +215,7 @@ Di seguito è riportato un esempio non normativo di ``DeviceEngagement`` nella n
 .. _sec-deviceengagement-nfc:
 
 ``DeviceEngagement`` tramite NFC
----------------------------------
+--------------------------------
 La figura seguente illustra il flusso di basso livello conforme a ISO 18013-5 per ``DeviceEngagement`` tramite NFC corrispondente al Box A nella Figura :ref:`fig_High-Level-Flow-ITWallet-Presentation-ISO-updated` (:ref:`WP_103 <wallet-credential-presentation-testcases>`). 
 
 .. _fig_DeviceEngagement-NFC:
@@ -261,13 +264,13 @@ Se è supportato il ``SessionEstablishment`` anticipato, elenca anche il nome de
     Se un messaggio ``SessionEstablishment`` opzionale viene inviato durante *Negotiated Handover* (Passo 5), l'Istanza del Wallet DEVE verificare che corrisponda al messaggio ``SessionEstablishment`` ricevuto durante *Device Retrieval* (utilizzando BLE o canale sicuro NFC). Questa verifica è richiesta per garantire un corretto Session Binding.
 
 Esempio Non Normativo
-^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
 Di seguito è riportato un esempio non normativo di una struttura ``DeviceEngagement`` per *Device Retrieval* tramite BLE e NFC.
   .. literalinclude:: ../../examples/iso-device-engagement-NFC-BLE.txt
    :language: text
 
 ``SessionEstablishment`` tramite BLE
--------------------------------------
+------------------------------------
 La figura seguente illustra il flusso di basso livello conforme a `ISO18013-5`_ per ``SessionEstablishment`` tramite BLE corrispondente ai Box B nella Figura 8.10.
 
 .. _fig_SessionEstablishment-BLE:
@@ -275,7 +278,7 @@ La figura seguente illustra il flusso di basso livello conforme a `ISO18013-5`_ 
     :width: 90%
     :alt: La figura illustra il Flusso di Presentazione Session Establishment tramite BLE in prossimità.
     :caption: `Session Establishment tramite BLE. <https://www.plantuml.com/plantuml/svg/ZLHDRzim3BthLn2-r3aaG3PWXs8RYYu15c0PXcRfBhimCki8ioLDakNq5-r_x9UDabitmVeL184Zak_nFLA-y05TwDf6O1UCxjeTEI4idocfBEe0nGzi6WgmrIeKW1xwq_3LDrXfHj6ISZWAWJAeY84uTNpaupFuyDI7OvTVbY2DriGLHWCnvAvHVjyIivGtphImtQuMu4YIYbI1qh2Wg2J1KjTOKqgSF4iYTkO0HIBo53eBfJCDJR7MnhEUII40ullfn_uSblViC6JBpX78FN9xZI1T0IEz9EYQdBgvPKsEMmvWYHn4XR2gaY86SsmEvoHkAF_-cSzdyzdRsPldDMG9zn0aVq7PLaP2J6IAF8GzZPIEi2ANTV7Ns01N-MHeJKbCJdEapve_cTPsF2awM2vcWpFB48xdkVJntYCs7Pt08BirpccewLNOZz0ZCamFmDZbaBDMliKWznFuJgvLEktDwLfm3RlFl_0mXPXfYs93tdFAydXnYW8CM_FO54Nouwu6BfMkbAx5866TcdWQiULZthS7XLNdk1X-QlXAjGaAatkVKLUPEojFO_clZZTu4yZ2Ep4QiRxBUOKLoGXnDWndazn0yAhMZClCR9DqjpOruiXRepr1EIfQOC2Yc737kJb7lpk-Rwao1ATsl0L-z4s8YevkyT6VNbmmBRyx_W40>`_
-    
+
 **Passo 1**: L'Istanza del Wallet e l'Istanza di Relying Party stabiliscono una connessione BLE sicura [`ISO18013-5`_ #11.1]. L'Istanza di Relying Party (central) si connette all'Istanza del Wallet (peripheral) utilizzando l'UUID del servizio dell'Istanza del Wallet fornito da DeviceEngagement, individua servizi/caratteristiche e abilita le notifiche secondo necessità (:ref:`WP_112c <wallet-credential-presentation-testcases>`).
 
 **Passi 2-5**: [Opzionale] L'Istanza del Wallet avvia la verifica preparandosi a controllare l'identità della Relying Party tramite la caratteristica Ident, che è una caratteristica BLE GATT che trasporta un valore identificatore come descritto in [`ISO18013-5`_ #11.1.3.2]. L'Istanza del Wallet deriva il valore Ident atteso e legge la caratteristica Ident della Relying Party, confrontandola con l'Ident atteso, e terminando la connessione BLE qualora non vi sia corrispondenza (:ref:`WP_112d <wallet-credential-presentation-testcases>`).
@@ -288,7 +291,7 @@ La figura seguente illustra il flusso di basso livello conforme a `ISO18013-5`_ 
 **Passi 7-8**: [Opzionale] Se l'Istanza del Wallet riceve il messaggio ``SessionEstablishment`` durante *Negotiated Handover*, l'Istanza del Wallet DEVE verificare se questo messaggio ``SessionEstablishment`` corrisponde al messaggio ``SessionEstablishment`` ricevuto durante la fase di *Device Retrieval* (cioè, Passo 6). In caso di mancata corrispondenza, l'Istanza del Wallet deve terminare la connessione BLE [`ISO18013-5`_ #9.2.3].
 
 ``SessionData`` tramite BLE
-----------------------------
+---------------------------
 La figura seguente illustra il flusso di basso livello conforme a `ISO18013-5`_ per ``SessionData`` tramite BLE corrispondente ai Box C nella Figura 8.10.
 
 .. _fig_SessionData-BLE:
@@ -301,7 +304,7 @@ La figura seguente illustra il flusso di basso livello conforme a `ISO18013-5`_ 
 
 
 ``SessionEstablishment`` tramite NFC
--------------------------------------
+------------------------------------
 .. note::
     Se il *Device Engagement* viene avviato tramite un QR code, l'Istanza di Relying Party non ha un modo standardizzato per segnalare la sua intenzione di utilizzare NFC per il successivo trasferimento di dati. Questo potrebbe portare a una peggiore esperienza utente, poiché l'Utente potrebbe non essere consapevole di dover utilizzare NFC. Questo problema viene evitato quando NFC viene utilizzato per il *Device Engagement*, poiché stabilisce implicitamente il metodo di trasferimento dati [`ISO18013-5`_ #8.2.5].
 
@@ -317,7 +320,7 @@ La figura seguente illustra il flusso di basso livello conforme a `ISO18013-5`_ 
     :caption: `Session Establishment tramite NFC. <https://www.plantuml.com/plantuml/svg/ZP9BJyCm383l-HLMJzjX9pWX3G6b20HxYF6uSCbIRutKE25nM_ZtE6n2GsWIjyJv77-ESv5OH-vSgtJ7dZgtngXKa9WrDcXYA5vrsoB3Crc6qVAkBCS5w0J3R-fn2NSabv51eShh7TGhfGtRNZDAmizImjCfWAkzWSiGMciqMq-mmXRDzsewLJrCpc4uWqL0sg7w07sZLVLGbKzWl7EQQZLal3-3lQxnjB7H9G57Ytlm4IpLEHaJE1yHQiqQsCC6sJJZRw6YM65ASdibZQnRcng7n4LnQ5EHYP-1iJvEHtplCF4RLVENwc6nh8uvHap1Kvt-g-W3mxucN6MMjcgOd8lLJ0jntCX9M6zH2XgqlRZNNPHaUHkOuzQprRcXMr7qFKOOB3V03VxDip8ZnW0dazFSp4TkPZJRKpERNFOOmnD6PobFUdvJvb7GRgmAvH5KZGT_uc3Jgmivbx_u1G00>`_
 
 Definizioni (Acronimi e Comandi)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. list-table::
    :class: longtable
    :widths: 15 85
@@ -340,7 +343,7 @@ Definizioni (Acronimi e Comandi)
 
    * - **SELECT APDU**
      - Comando che apre l'Istanza del Wallet tramite `AID`. La risposta include File Control Information (FCI) e Status Word (`SW1/SW2`).
-  
+
    * - **ENVELOPE APDU**
      - Comando che trasporta messaggi di sessione (ad esempio, ``SessionEstablishment``). La risposta indica lo stato di elaborazione (`OK` o `more data`).
 
@@ -367,7 +370,7 @@ Definizioni (Acronimi e Comandi)
 
 
 ``SessionData`` tramite NFC
-----------------------------
+---------------------------
 La figura seguente illustra il flusso di basso livello conforme a `ISO18013-5`_ per ``SessionData`` tramite NFC corrispondente al Box C nella Figura 8.10.
 
 .. _fig_SessionData-NFC:
@@ -382,7 +385,7 @@ La figura seguente illustra il flusso di basso livello conforme a `ISO18013-5`_ 
 **Passo 3**: L'Istanza del Wallet invia l'`APDU` finale contenente l'ultimo blocco DeviceResponse (con attributi richiesti) o un status code, dopo il quale la sessione può terminare o continuare con una nuova richiesta.
 
 Device Engagement
-------------------
+-----------------
 
 La struttura del Device Engagement DEVE essere codificata in CBOR e avere almeno le seguenti componenti (:ref:`PPR-001 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>`, :ref:`PPR-021 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>`, :ref:`PPR-022 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>`, and :ref:`WP_102 <wallet-credential-presentation-testcases>`):
 
@@ -401,22 +404,24 @@ La struttura del Device Engagement DEVE essere codificata in CBOR e avere almeno
      - *(array)*. Contiene due valori obbligatori:
 
        - *(int)*. Identificatore della suite di cifratura. Vedere Tabella 22 di `ISO18013-5`_.
+
        - *(bstr)*. Chiave pubblica effimera generata dall'Istanza del Wallet, utilizzata dall'Istanza di Relying Party per derivare la chiave di sessione. La chiave DEVE essere di un tipo consentito dalla suite di cifratura selezionata (:ref:`PPR-022 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>`).
 
    * - **DeviceRetrievalMode-BLEOptions**
      - *(map)*. Fornisce opzioni per la connessione BLE, come modalità Peripheral Server o Central Client, e l'UUID del dispositivo. Vedere Tabella 2 di `ISO18013-5`_ per la mappatura dettagliata.
-       
+
        Se l'Istanza del Wallet indica durante il *Device Engagement* che supporta entrambe le modalità, l'Istanza di Relying Party DOVREBBE selezionare la modalità mdoc central client [`ISO18013-5`_ #11.1.3.1].
-       
+
        Presente solo quando si esegue *Device Engagement* utilizzando il QR code. Assente quando si utilizza NFC per eseguire *Device Engagement*.
+
 
    * - **DeviceRetrievalMode-NFCOptions**
      - *(map)*. Fornisce opzioni per le connessioni NFC, incluso il ruolo supportato (PICC o PCD) e le dimensioni massime di comando/risposta PDU. Vedere Tabella 2 di `ISO18013-5`_ per la mappatura dettagliata.
-        
+
        Nel caso in cui NFC venga utilizzato per *Device Retrieval*, l'Istanza del Wallet DEVE supportare la modalità PICC e l'Istanza di Relying Party DEVE supportare la modalità PCD [`ISO18013-5`_ #11.2].
-        
+
        Quest'ultima è presente solo quando si esegue *Device Engagement* utilizzando il QR code, mentre è assente quando si utilizza NFC per eseguire *Device Engagement*.
-  
+
    * - **Capabilities**
      - *(map)*. Dichiara le capacità opzionali supportate dall'mdoc, che sono:
 
@@ -426,14 +431,16 @@ La struttura del Device Engagement DEVE essere codificata in CBOR e avere almeno
 
    * - **OriginInfos**
      - *(array)*. Descrive l'interfaccia utilizzata per ricevere e consegnare la struttura di engagement.
-     
+
        `OriginInfos` PUÒ essere un array vuoto.
 
 
 Richiesta mdoc
 ^^^^^^^^^^^^^^
 
+
 I messaggi nella Richiesta mdoc DEVONO essere codificati utilizzando CBOR. La stringa di byte CBOR risultante per la Richiesta mdoc DEVE essere cifrata con la Chiave di Sessione ottenuta dopo la fase di Device Engagement e DEVE essere trasmessa utilizzando il protocollo BLE o NFC (:ref:`PPR-026 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>`, :ref:`PPR-027 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>`, :ref:`PPR-028 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>`).
+
 Ogni Richiesta mdoc DEVE essere conforme alla seguente struttura e DEVE includere i seguenti componenti, a meno che non sia specificato diversamente:
 
 .. list-table::
@@ -452,7 +459,7 @@ Ogni Richiesta mdoc DEVE essere conforme alla seguente struttura e DEVE includer
 
        - **itemsRequest**. Struttura `ItemsRequest` codificata CBOR, formattata come:
 
-         - **docType** *(tstr)*. Il tipo di documento richiesto. Vedere :ref:`credential-data-model-attestato-elettronico-in-formato-mdoc-cbor`.
+         - **docType** *(tstr)*. Il tipo di documento richiesto. Vedere :ref:`credential-data-model:Formato Attestato Elettronico mdoc-CBOR`.
 
          - **nameSpaces** *(map)*. Una mappa di identificatori di namespace a *DataElements* richiesti.
 
@@ -472,8 +479,7 @@ Ogni Richiesta mdoc DEVE essere conforme alla seguente struttura e DEVE includer
 
 
 Risposta mdoc
-^^^^^^^^^^^^^^
-
+^^^^^^^^^^^^^
 
 I messaggi nella Risposta mdoc DEVONO essere codificati utilizzando CBOR e DEVONO essere cifrati con la Chiave di Sessione ottenuta dopo la fase di Device Engagement (:ref:`PPR-029 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>`, :ref:`PPR-030 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>`).
 
@@ -516,7 +522,7 @@ Ogni elemento in **documents** DEVE essere conforme alla seguente struttura e DE
      - *(tstr)*. identificativo del tipo di documento. Ad esempio, per un mDL, il valore DEVE essere ``org.iso.18013.5.1.mDL`` (:ref:`PPR-010 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>`).
 
    * - **issuerSigned**
-     - *(bstr)*. Contiene la struttura `IssuerNameSpaces`, che include elementi dati firmati dal Fornitore di Attestati Elettronici, e la struttura `issuerAuth`, che garantisce la loro autenticità e integrità utilizzando il Mobile Security Object (MSO). Vedere :ref:`credential-data-model-attestato-elettronico-in-formato-mdoc-cbor`.
+     - *(bstr)*. Contiene la struttura `IssuerNameSpaces`, che include elementi dati firmati dal Fornitore di Attestati Elettronici, e la struttura `issuerAuth`, che garantisce la loro autenticità e integrità utilizzando il Mobile Security Object (MSO). Vedere :ref:`credential-data-model:Formato Attestato Elettronico mdoc-CBOR`.
 
    * - **deviceSigned**
      - *(bstr)*. Contiene la struttura `DeviceNameSpaces` (elementi dati firmati dall'Istanza del Wallet), e la struttura `deviceAuth`, che include i dati di autenticazione firmati dall'Istanza del Wallet. Vedere la tabella sottostante per dettagli.
@@ -545,12 +551,10 @@ Una struttura di dati **deviceSigned** DEVE essere conforme alla seguente strutt
        - **DataItemValue** *(any)*. Il valore dell'elemento dati.
 
    * - **deviceAuth**
-
      - *(COSE_Sign1)*. Contiene la struttura ``DeviceAuth``, che DEVE includere la **deviceSignature** per l'autenticazione dell'Istanza del Wallet. La firma è calcolata sui dati ``DeviceAuthentication``, che lega gli elementi restituiti alla sessione e alla richiesta. Vedi [`ISO18013-5`_ #12.4] per i dettagli sulla struttura di autenticazione (:ref:`PPR-003 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>`).
 
-
 Session Termination
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^
 
 La sessione DEVE chiudersi qualora si verifichi almeno una delle seguenti condizioni (:ref:`PPR-007 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>` and :ref:`WP_113–113a <wallet-credential-presentation-testcases>`):
 
@@ -559,7 +563,6 @@ La sessione DEVE chiudersi qualora si verifichi almeno una delle seguenti condiz
 - Quando l'Istanza di Relying Party non invia ulteriori richieste.
 
 Se l'Istanza del Wallet e l'Istanza di Relying Party non inviano o ricevono ulteriori richieste, la terminazione della sessione DEVE essere avviata come segue (:ref:`PPR-007 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>` and :ref:`WP_113 <wallet-credential-presentation-testcases>`):
-
 
 - Inviare lo status code per la *Session Termination*, o
 - Inviare il comando "End" come delineato in [`ISO18013-5`_ #11.1.3.3].
@@ -570,4 +573,6 @@ Quando una sessione viene terminata, l'Istanza del Wallet e l'Istanza di Relying
 - Chiusura del canale di comunicazione utilizzato per il *Device Retrieval*.
 
 .. note::
-  Vedere :ref:`credential-data-model-attestato-elettronico-in-formato-mdoc-cbor` per il significato degli acronimi di tipo CBOR.
+  Vedere :ref:`credential-data-model:Formato Attestato Elettronico mdoc-CBOR` per il significato degli acronimi di tipo CBOR.
+
+

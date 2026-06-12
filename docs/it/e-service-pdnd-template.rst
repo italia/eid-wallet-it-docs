@@ -19,7 +19,7 @@ Definizione e linee guida dell'e-service template PDND
 L'infrastruttura PDND supporta la gestione del ciclo di vita dei Servizi Elettronici Template, simile a quella dei servizi elettronici tradizionali. Gli stati del ciclo di vita includono: **Draft**, **Active**, **Supsended** e **Deprecated**. Come per i servizi elettronici tradizionali, PDND applica il controllo degli accessi basato sui ruoli per governare le transizioni di stato.
 
 Gestione dei Servizi Elettronici Template
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Creazione del Servizio Elettronico Template
 """""""""""""""""""""""""""""""""""""""""""
@@ -51,7 +51,7 @@ I seguenti campi possono essere modificati senza attivare una nuova versione del
     - Attributes
 
 Sospensione del e-service Template
-"""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""
 I template, come i servizi elettronici, possono essere Sospesi. Quando sospesi:
 
     - Il template viene rimosso dal catalogo pubblico dei template.
@@ -61,7 +61,7 @@ I template, come i servizi elettronici, possono essere Sospesi. Quando sospesi:
     - I template non possono essere eliminati.
 
 Istanziazione del e-service Template
-"""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""
 I Partecipanti possono istanziare un Servizio Elettronico Template sfogliando il Catalogo Template e selezionando un template. Questo processo genera un nuovo servizio elettronico.
 
 I vincoli di istanziazione includono:
@@ -104,7 +104,7 @@ Di conseguenza, le versioni dei template e le versioni delle istanze sono indipe
 I Partecipanti che istanziano un template possono quindi aggiornare sia l'istanza specifica o, se disponibile, aggiornare a una versione più recente del template.
 
 Template per Fonte Autentica
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 La funzionalità del servizio elettronico template viene utilizzata per standardizzare la trasmissione dei dati dalle Fonti Autentiche ai Fornitori di Attestati Elettronici.
 Il servizio elettronico template DOVREBBE essere pubblicato all'interno della PDND dal Fornitore di Attestati Elettronici ed è accessibile attraverso il Catalogo Template PDND.
@@ -139,10 +139,12 @@ Il processo di istanziazione risulterà in un nuovo servizio elettronico che **D
 Informazioni aggiuntive richieste durante il processo di creazione sono dipendenti dal fornitore.
 
 Specifica OpenAPI della Fonte Autentica PDND
-"""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""
 
 Di seguito è riportata la specifica OpenAPI completa per i servizi elettronici della Fonte Autentica PDND:
 
 .. literalinclude:: ./oas3/OAS3-PDND-AS.yaml
     :language: yaml
     :linenos:
+
+

@@ -1,5 +1,4 @@
 .. include:: ../common/common_definitions.rst
-
 .. "included" file, so we start with '-' title level
 
 .. role:: raw-html(raw)
@@ -7,7 +6,7 @@
 
 
 Endpoint di PDND Signal Hub
------------------------------
+---------------------------
 All'interno della piattaforma PDND, Signal Hub funge da intermediario tra un Provider PDND e i suoi Consumer PDND per facilitare le segnalazioni di variazioni dei dati. Per abilitare tale funzionalità, il gestore della piattaforma PDND, di seguito denominato PDND Manager, agendo come e-Service PDNDProvider, fornisce due e-Service PDND di Signal Hub:
   - l'e-Service di Raccolta Segnali che viene utilizzato dai e-Service PDNDProvider per depositare i Segnali; in questo caso, il e-Service PDNDProvider agisce come Consumer dell'e-Service di Raccolta Segnali;
   - l'e-Service di Distribuzione Segnali che viene utilizzato dai e-Service PDNDConsumer per recuperare i Segnali raccolti; in questo caso, il e-Service PDNDConsumer agisce anche come Consumer dell'e-Service di Distribuzione Segnali.
@@ -40,7 +39,7 @@ Prima di utilizzare Signal Hub, tutti i Fornitori di Attestati Elettronici DEVON
   - essersi registrati come Consumer dell'e-Service di Distribuzione Segnali di Signal Hub;
 
 e-Service di Signal Hub
-^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^
 Questa sezione descrive gli endpoint disponibili per gli e-Service di Raccolta e Distribuzione di Signal Hub, incluse le loro funzionalità e i formati di richiesta e risposta previsti.
 
 e-Service di Raccolta Segnali
@@ -68,10 +67,10 @@ L'endpoint dell'e-Service di Raccolta Segnali viene utilizzato dalle Fonti Auten
     - OBBLIGATORIO. Questo è un campo libero che la Fonte Autentica PUÒ utilizzare per specificare ulteriormente il Segnale.
   * - **objectId**
     - OBBLIGATORIO. Il soggetto a cui è legato il Segnale. DEVE essere impostato sul valore :term:`Object_id` (``object_id``) che la Fonte Autentica ha utilizzato nel payload della risposta del `get attributes` verso il Credential Issuer (vedi :ref:`authentic-source-endpoint:Get Attribute Claims`). Il ``signalType`` del Segnale DEVE essere valorizzato con uno dei seguenti:
-      
+
       - ``CREATE``, al fine di notificare la disponibilità degli attributi relativi ad un specifico Attestato Elettronico.
       - ``UPDATE``, al fine di notificare l'aggiornamento degli attributi relativi ad un specifico Attestato Elettronico.
-      
+
   * - **signalType**
     - OBBLIGATORIO. Tipo di Segnale. DEVE essere uno dei seguenti:
 
@@ -109,7 +108,7 @@ La Fonte Autentica DEVE implementare la logica necessaria per gestire le richies
   - I Segnali sono etichettati da un identificativo univoco, il ``signalId``, che è un numero intero positivo a 64 bit. Il ``signalId`` DEVE essere incrementato di 1 per ogni nuovo Segnale che la Fonte Autentica desidera depositare nell'endpoint dell'e-Service di Raccolta Segnali. Spetta alla Fonte Autentica tenere traccia dell'ultimo ``signalId`` che ha inviato. I Segnali con valori ``signalId`` più bassi sono considerati più vecchi dall'endpoint dell'e-Service di Raccolta Segnali e genereranno un errore quando ricevuti.
 
 e-Service di Distribuzione Segnali
-"""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""
 I Fornitori di Attestati Elettronici nell'ecosistema IT Wallet utilizzano l'e-Service di Distribuzione Segnali per:
 
   - verificare i cambiamenti nello stato e/o il valore di un Attributo specifico associato a un Attestato Elettronico emesso dal Fornitore di Attestati Elettronici stesso;
@@ -118,7 +117,7 @@ I Fornitori di Attestati Elettronici nell'ecosistema IT Wallet utilizzano l'e-Se
 L'endpoint dell'e-Service di Distribuzione Segnali viene utilizzato dai Fornitori di Attestati Elettronici per recuperare i Segnali da Signal Hub tramite una richiesta di Distribuzione Segnali. Quest'ultima DEVE essere una richiesta HTTP con metodo GET e DEVE avere i seguenti parametri:
 
   - Parametri di Path:
-    
+
     -  ``eserviceId``. OBBLIGATORIO. e-Service a cui è legato il Segnale. DEVE corrispondere al valore dell'Id dell'e-Service di cui il Fornitore di Attestati Elettronici è Consumer.
 
   - Parametri di Query:
@@ -154,14 +153,16 @@ Elaborazione dei Segnali
 Dopo che i Segnali sono stati recuperati con successo dal Fornitore di Attestati Elettronici, quest'ultimo DEVE elaborarli come segue:
 
   - Per ogni Segnale, il Fornitore di Attestati Elettronici DEVE verificare il valore ``SignalType``:
-    
+
     - se il ``SignalType`` del Segnale è ``UPDATE`` (l'``objectId`` fa riferimento al :term:`Object_id` della Fonte Autentica), lo stato e/o il valore dell'Attributo associato a un Attestato Elettronico necessitano di aggiornamenti;
     - se il ``SignalType`` del Segnale è ``CREATE`` (l'``objectId`` corrisponde al :term:`Object_id` della Fonte Autentica), gli Attributi richiesti di un Attestato Elettronico specifico sono ora disponibili;
 
     Se l'``objectId`` non corrisponde ad alcun identificativo valido noto al Fornitore di Attestati Elettronici, il Segnale DEVE essere ignorato. Altrimenti, se corrisponde a un identificativo noto e valido, il Fornitore di Attestati Elettronici DEVE utilizzare l'endpoint PDND :ref:`authentic-source-endpoint:Get Attribute Claims` della Fonte Autentica per recuperare le informazioni aggiornate e, se possibile, applicare il nuovo stato/attributo all'Attestato Elettronico corrispondente.
-    
+
     Quando il Segnale è stato elaborato, il Fornitore di Attestati Elettronici passerà al Segnale successivo e aggiornerà il suo contatore ``signalId``; oppure, se non ci sono più Segnali da elaborare, riprenderà il polling.
 
 .. warning::
 
   Dati i pattern di sicurezza attualmente supportati da Signal Hub, se la Fonte Autentica richiede il pattern di sicurezza `AUDIT_REST_02` dal Fornitore di Attestati Elettronici, quest'ultimo DEVE revocare l'Attestato Elettronico referenziato nei Segnali con ``signalType`` ``UPDATE`` non potendo contattare la Fonte Autentica per recuperare le informazioni aggiornate senza aver prima autenticato l'Utente. **In questo scenario, la revoca è l'unica azione ammessa.**
+
+

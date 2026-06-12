@@ -73,9 +73,8 @@ I seguenti pattern di sicurezza definiti in `PDND`_ e `MODI`_ NON DEVONO essere 
     - I seguenti pattern possono essere utilizzati solo quando il Fruitore non può iscriversi all'Infrastruttura PDND (ossia quando la trust tra gli Aderenti deve essere stabilita in forma diretta), pertanto non risultano conformi a **R1**:
 
       - **[ID_AUTH_CHANNEL_02]** Direct Trust mutual Transport-Level Security (*Allegato 2 - Pattern di Sicurezza* [`MODI`_])
-      - **[ID_AUTH_REST_02]** Direct Trust con certificato X.509 su REST con unicità del token/messaggio (*Allegato 2 - Pattern di sicurezza* [`MODI`_]).
+      - **[ID_AUTH_REST_02]** Direct Trust su PDND tramite token JWT emessi dalla piattaforma con caratteristiche di unicità del token/messaggio (*Allegato 2 - Pattern di sicurezza* [`MODI`_]).
       - **[INTEGRITY_REST_01]** Integrità del payload messaggio REST (*Allegato 2 - Pattern di sicurezza* [`MODI`_]).
-      - **[ID_AUTH_REST_02]** Direct Trust su PDND tramite token JWT emessi dalla piattaforma con caratteristiche di unicità (*Allegato 2 - Pattern di sicurezza* [`MODI`_]).
 
     - Il seguente pattern non fornisce correlazione tra i dati tracciati e il Voucher, pertanto non risulta conforme a **R3**:
 
@@ -321,7 +320,7 @@ Voucher PDND per API di Interoperabilità
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Prerequisiti per il Voucher PDND per API di Interoperabilità
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 L'**Aderente** DEVE rispettare i seguenti prerequisiti:
 
@@ -449,12 +448,12 @@ L'Authorization Server PDND DEVE anche validare il JWT ``client_assertion`` come
 
 
 Endpoint Authorization Server PDND
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 L'Endpoint Authorization Server PDND emette Voucher agli Aderenti. Questi Voucher consentono ai Fruitori di accedere alle risorse degli e-Service e agli Erogatori di interagire con l'API di Interoperabilità.
 
 Richiesta (Voucher PDND)
-"""""""""""""""""""""""""
+""""""""""""""""""""""""
 
 La richiesta all'Endpoint Authorization Server PDND aderisce al flusso Client Credentials Grant specificato in :rfc:`6749`. Il client si autentica presentando un'asserzione client basata su JWT come definito in :rfc:`7521` e :rfc:`7523`.
 
@@ -558,7 +557,7 @@ Il JWT ``client_assertion`` DEVE includere i seguenti claim nel payload (se non 
     - [`MODI`_]
 
 Risposta (Voucher PDND)
-"""""""""""""""""""""""""
+"""""""""""""""""""""""
 
 La `Voucher Response` DEVE includere i seguenti parametri nel body:
 
@@ -702,10 +701,10 @@ La seguente tabella elenca gli HTTP Status Code e i relativi codici di errore ch
     - La richiesta non può essere soddisfatta perché l'Authorization Server PDND è temporaneamente non disponibile (ad esempio, a causa di manutenzione o sovraccarico).
 
 Reperimento delle Chiavi
---------------------------
+------------------------
 
 Chiavi dell'Authorization Server PDND
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. _fig_KeyRetrieval_PDND_Flow:
 .. plantuml:: plantuml/pdnd-key-retrieval.puml
@@ -759,17 +758,17 @@ Chiavi dell'Authorization Server PDND
   }
 
 Endpoint .well-known dell'Authorization Server PDND
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 L'Endpoint .well-known fa parte dell'Infrastruttura PDND ed è utilizzato per reperire le chiavi pubbliche utilizzate dall'Authorization Server PDND per firmare i Voucher.
 
 Richiesta (Chiavi dell'Authorization Server PDND)
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""
 
 La `Keys Request` è una richiesta HTTP ``GET`` inviata all'Endpoint .well-known. Questo endpoint consente agli Aderenti di reperire le chiavi pubbliche necessarie per verificare le firme digitali sui Voucher emessi dall'Authorization Server PDND.
 
 Risposta (Chiavi dell'Authorization Server PDND)
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""
 
 L'Endpoint .well-known risponde con un HTTP Status Code ``200 OK`` e un ``JWK Set`` [:rfc:`7517`] contenente le chiavi pubbliche impiegate dall'Authorization Server PDND per firmare i Voucher.
 
@@ -809,10 +808,10 @@ La seguente tabella elenca gli HTTP Status Code e i relativi codici di errore ch
     - La richiesta non può essere soddisfatta perché l'Endpoint .well-known è temporaneamente non disponibile (ad esempio, a causa di manutenzione o sovraccarico).
 
 Chiavi degli Aderenti
-^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
 
 Prerequisiti per il Reperimento delle Chiavi degli Aderenti
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 L'**Aderente** che richiede la chiave DEVE rispettare i seguenti prerequisiti:
 
@@ -822,7 +821,7 @@ L'**Aderente** che richiede la chiave DEVE rispettare i seguenti prerequisiti:
     - Ha ottenuto un Voucher valido per interrogare l'API di Interoperabilità PDND, relativo allo specifico `Client api interop`.
 
 Flusso di Reperimento delle Chiavi degli Aderenti
-""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""
 
 .. _fig_KeyRetrieval_Participant_Flow:
 .. plantuml:: plantuml/pdnd-key-retrieval-participant.puml
@@ -873,12 +872,12 @@ Flusso di Reperimento delle Chiavi degli Aderenti
   L'API di Interoperabilità include un endpoint di notifica degli eventi che avvisa gli Aderenti iscritti sui cambiamenti all'interno dell'Infrastruttura PDND. Tra queste notifiche, l'endpoint ``/events/keys`` fornisce aggiornamenti sulle modifiche al materiale crittografico, come aggiunte o eliminazioni di chiavi. Sfruttando questo meccanismo, gli Aderenti possono implementare una strategia di polling periodico per recuperare tutte le chiavi modificate e aggiornare la loro cache locale. Ciò elimina la necessità di richiedere ogni chiave individualmente durante il flusso.
 
 Endpoint API di Interoperabilità PDND
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 L'Endpoint API di Interoperabilità fa parte dell'Infrastruttura PDND ed è utilizzato per recuperare le chiavi pubbliche di altri Aderenti all'Infrastruttura PDND.
 
 Richiesta (Chiave da API di Interoperabilità PDND)
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""
 
 La `Key Request` è una richiesta HTTP ``GET`` inviata all'API ``/keys/<kid>``. Questa richiesta viene utilizzata per recuperare una chiave specifica identificata dal suo ``kid`` univoco.
 
@@ -896,7 +895,7 @@ La `Key Request` DEVE includere i seguenti parametri di header HTTP:
     - [:rfc:`9449`]
 
 Risposta (Chiave da API di Interoperabilità PDND)
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""
 
 Nel caso in cui esista una chiave pubblica con il ``kid`` fornito, l'Endpoint dell'API di Interoperabilità risponde con un codice di stato ``200 OK`` e un ``JWK`` [:rfc:`7517`] che rappresenta quella chiave.
 
@@ -1156,7 +1155,6 @@ Inoltre, il Fruitore DEVE validare l'integrità della `e-Service Response`, veri
   - Il claim ``signed_headers.content-type`` corrisponda al valore dell'header HTTP ``Content-Type`` della `e-Service Response`.
   - Il claim ``signed_headers.digest`` corrisponda al valore del digest del payload della `e-Service Response`, nonché al valore dell'header HTTP ``Digest`` della `e-Service Response`.
 
-
 Se uno qualsiasi dei controlli precedenti fallisce, il Fruitore DEVE rifiutare la richiesta.
 
 Endpoint e-Service
@@ -1307,7 +1305,7 @@ Se presente, il JWT ``TrackingEvidence``, contenuto nell'header HTTP ``Agid-JWT-
 Quando si rispetta il pattern di sicurezza ``AUDIT_REST_02``, il payload ``TrackingEvidence`` DEVE contenere anche i dati tracciati concordati con l'Erogatore.
 
 Risposta (e-Service)
-""""""""""""""""""""""
+""""""""""""""""""""
 
 La `e-Service Response` DEVE avere un content type ``application/json``.
 
@@ -1418,3 +1416,5 @@ La seguente tabella elenca gli HTTP Status Code che DEVONO essere supportati per
     - La richiesta non può essere soddisfatta perché l'Endpoint e-Service ha riscontrato un problema interno.
   * - ``503 Service Unavailable``
     - La richiesta non può essere soddisfatta perché l'Endpoint e-Service è temporaneamente non disponibile (ad esempio, a causa di manutenzione o sovraccarico).
+
+

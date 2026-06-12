@@ -1,7 +1,8 @@
 .. include:: ../common/common_definitions.rst
 
+
 Pushed Authorization Request Endpoint
-""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""
 
 Pushed Authorization Request (PAR) Request
 ............................................
@@ -41,7 +42,6 @@ la richiesta all'authorization endpoint del Credential Issuer DEVE utilizzare i 
     * - **OAuth-Client-Attestation-PoP**
       - DEVE contenere la Prova di Possesso del JWT dell'Attestato di Unità di Wallet.
       - `OAUTH-ATTESTATION-CLIENT-AUTH`_.
-
 
 .. note::
   I client DOVREBBERO selezionare gli algoritmi da utilizzare per la Wallet Instance Attestation e la relativa prova di possesso sulla base dei campi di metadata dell'Authorization Server
@@ -181,6 +181,8 @@ Il body del JWT relativo alla prova di possesso dell'Attestato di Unità di Wall
       - OPZIONALE. Timestamp UNIX con data e orario prima del quale il JWT NON DEVE essere accettato.
       - :rfc:`9126` e :rfc:`7519`.
 
+
+
 Pushed Authorization Request (PAR) Response
 ......................................................
 
@@ -262,7 +264,7 @@ Nella seguente tabella sono elencati gli *Status Code HTTP* e i relativi codici 
 
 
 Authorization endpoint
-""""""""""""""""""""""""""
+""""""""""""""""""""""
 
 L'authorization endpoint viene utilizzato per interagire con il Credential Issuer e ottenere un *authorization grant*.
 L'authorization server DEVE prima verificare l'identità dell'Utente proprietario dell'Attestato Elettronico.
@@ -811,7 +813,6 @@ La Credential Response contiene i seguenti parametri:
   * - **credentials**
     - OBBLIGATORIO se ``interval`` e ``transaction_id`` non sono presenti, altrimenti NON DEVE essere presente. Array di una o più Credenziali emesse. Il numero di elementi nell'array delle Credenziali corrisponde al numero di chiavi che l'Istanza del Wallet ha fornito tramite il parametro ``proofs`` nella Credential Request. L'array DEVE contenere oggetti JSON, dove ogni oggetto DEVE avere il claim ``credential``. Il valore del claim ``credential`` DEVE essere configurato con una stringa contenente la Credenziale codificata, come descritto di seguito:
 
-
           - **credential**: OBBLIGATORIO. Stringa contenente un Attestato Elettronico emesso. Se l'identificativo del formato richiesto è ``dc+sd-jwt`` allora il parametro ``credential`` NON DEVE essere ricodificato. Se l'identificativo di formato richiesto è ``mso_mdoc`` allora il parametro ``credential`` DEVE essere una rappresentazione codificata in base64url della struttura IssuerSigned codificata in CBOR, come definito in [ISO 18013-5]. Questa struttura DOVREBBE contenere tutti i Namespaces e IssuerSignedItems inclusi negli AuthorizedNamespaces del MobileSecurityObject.
     - Sezione 8.3, Allegato A2.4 e Allegato A3.4 di [`OpenID4VCI`_].
   * - **interval**
@@ -890,7 +891,7 @@ Nella seguente tabella sono elencati i *Status Code HTTP* e i relativi codici di
       - Il Credential Issuer non può soddisfare la richiesta entro l'intervallo di tempo definito.
 
 Deferred Endpoint
-""""""""""""""""""
+"""""""""""""""""
 
 I Credential Issuer POSSONO supportare il *Deferred Endpoint* con l'obiettivo di soddisfare i casi in cui un'emissione immediata potrebbe non essere possibile, a causa di errori durante la comunicazione tra il Credential Issuer e la Fonte Autentica (ad esempio la Fonte Autentica è temporaneamente non disponibile, ecc.) o a causa di processi amministrativi o tecnici da espletare.
 
@@ -1001,7 +1002,7 @@ La Notification Request DEVE essere una HTTP POST utilizzando il media type *app
       - *credential_accepted*: quando l'Attestato Elettronico è stato memorizzato con successo nell'Istanza del Wallet.
       - *credential_deleted*: quando l'emissione non riuscita dell'Attestato Elettronico è stata causata da un'azione dell'utente.
       - *credential_failure*: in tutti gli altri casi di insuccesso.
-      
+
 
     - Sezione 11.1 di [`OpenID4VCI`_].
   * - **event_description**
@@ -1072,3 +1073,5 @@ Per la correzione dati iniziata dall'Utente, l'Istanza del Wallet DOVREBBE invia
 - ``correction_details`` (OPZIONALE): oggetto con campi minimi per indicare gli attributi impattati senza valori sensibili (es. soli identificativi degli attributi).
 
 Nell'eventualità di aver ricevuto un rigetto motivato da parte dell'Utente, il Credential DOVREBBE inoltrare il messaggio dell'utente contenente quel motivo alla Fonte Autentica. È RACCOMANDATO di utilizzare endpoint specifici PDND, forniti da Authentic Source, per facilitare questo scambio di dati.
+
+

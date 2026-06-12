@@ -9,7 +9,7 @@ L'ecosistema IT-Wallet opera attraverso un'Infrastruttura del Registro che forni
 L'architettura del registro risponde ai requisiti di standardizzazione semantica, gestione della fiducia federata e discovery delle Credenziali attraverso componenti specializzati che garantiscono interoperabilità e conformità nell'intero ecosistema.
 
 Panoramica dell'Architettura di Registro
------------------------------------------
+----------------------------------------
 
 Il Registro di Sistema IT-Wallet comprende sei componenti principali:
 
@@ -23,7 +23,7 @@ Il Registro di Sistema IT-Wallet comprende sei componenti principali:
 Questi componenti del registro sono interconnessi e mantenuti dall'Organismo di Vigilanza per garantire coerenza, sicurezza e conformità normativa nell'intero ecosistema.
 
 Endpoint di Discovery del Registro
-------------------------------------
+----------------------------------
 
 Il Trust Anchor DEVE fornire un meccanismo di discovery per tutti i componenti del registro attraverso endpoint *well-known* standardizzati che forniscono metadati e informazioni di discovery REST API per gestire operazioni complesse come paginazione e filtraggio.
 
@@ -60,7 +60,7 @@ Di seguito è riportato un esempio non normativo.
     Content-Type: application/json
 
 Parametri dell'Endpoint di Discovery del Registro
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Il payload JWT della risposta dell'Endpoint di Discovery del Registro DEVE contenere i seguenti parametri:
 
@@ -141,7 +141,7 @@ Il Registro dei Claims DEVE garantire:
   Il Registro dei Claims definisce le proprietà semantiche dei singoli attributi, ma NON DEVE specificare le capacità di selective disclosure. La selective disclosure dipende dalle implementazioni del formato della Credenziale (SD-JWT, mDocs), dalle configurazioni tecniche dell'emittente e dal contesto di presentazione. Queste capacità sono specificate a livello di tipologia di Credenziale all'interno del Catalogo delle Credenziali Digitali e implementate durante i flussi di presentazione delle Credenziali.
 
 Utilizzo del Registro dei Claims
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Il Registro dei Claims DEVE supportare il ciclo di vita completo dell'ecosistema:
 
@@ -158,7 +158,7 @@ Il Registro dei Claims DEVE supportare il ciclo di vita completo dell'ecosistema
   - **Applicazione delle Politiche**: Le politiche di autorizzazione sfruttano le classificazioni per dominio/finalità per il controllo degli accessi.
 
 Struttura del Registro dei Claims
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Il Registro dei Claims mantiene definizioni tecniche neutrali rispetto alla lingua per la coerenza semantica nell'intero ecosistema. Le localizzazioni per gli utenti finali dei nomi e delle descrizioni dei claim sono fornite tramite bundle di localizzazione dedicati referenziati attraverso il campo ``localization.base_uri``, abilitando un efficiente supporto multilingue senza compromettere l'integrità strutturale del registro.
 
@@ -236,7 +236,7 @@ Di seguito è fornito un esempio non normativo dell'output di un bundle di local
 I bundle di localizzazione DEVONO essere disponibili all'URI composto aggiungendo il codice locale e ``.json`` al valore ``localization.base_uri`` (es. ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/claims/it.json``).
 
 Registro delle Fonti Autentiche
---------------------------------
+-------------------------------
 
 L'Organismo di Vigilanza DEVE mantenere il Registro delle Fonti Autentiche per abilitare l'accesso coordinato ai dati e l'emissione di Credenziali nell'intero ecosistema. Il Registro FA DEVE contenere almeno:
 
@@ -257,7 +257,7 @@ Il Registro FA DEVE garantire:
    Il Registro delle Fonti Autentiche è un registro tecnico e non pubblico che fornisce orientamento all'Emittente di Credenziali per il provisioning delle Credenziali.
 
 Utilizzo del Registro delle Fonti Autentiche
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Il Registro FA supporta il coordinamento dell'ecosistema durante l'intero ciclo di vita operativo:
 
@@ -272,7 +272,7 @@ Il Registro FA supporta il coordinamento dell'ecosistema durante l'intero ciclo 
   - **Gestione dell'Integrazione**: Gli endpoint tecnici e i metodi di accesso consentono la comunicazione standardizzata FA-EI.
 
 Coordinamento FA Pubblica vs FA Privata
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 L'architettura del Registro FA supporta diversi pattern di coordinamento che riflettono distinte esigenze operative:
 
@@ -292,12 +292,12 @@ L'architettura del Registro FA supporta diversi pattern di coordinamento che rif
 Questo approccio consente sia la **trasparenza normativa** per la pubblica amministrazione sia la **flessibilità aziendale** per le entità del settore privato, mantenendo al contempo un accesso coordinato ai dati nell'intero ecosistema.
 
 Struttura del Registro FA
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Durante la registrazione, le Fonti Autentiche dichiarano le proprie capacità prima che le tipologie di Credenziale esistano nel catalogo. Questa dichiarazione costituisce la base per la successiva registrazione degli EI e la creazione delle tipologie di Credenziale.
 
 Schema di Identificazione Univoca delle FA
-"""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""
 
 A ciascuna Fonte Autentica DEVE essere assegnato un identificatore univoco che segue lo schema URL HTTPS definito di seguito. Questo identificatore è utilizzato per referenziare le entità FA nell'intero sistema di registro e nel Catalogo delle Credenziali Digitali, garantendo la coerenza con i pattern di identificazione delle entità di OpenID Federation.
 
@@ -327,7 +327,7 @@ L'identificatore FA DEVE seguire le seguenti regole normative:
 - ``https://api.bank.example/auth-source``: Privato - Servizi Finanziari Banca Esempio
 
 Parametri del Registro delle Fonti Autentiche
-""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""
 
 Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciascuna Fonte Autentica registrata:
 
@@ -493,7 +493,7 @@ Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciasc
   Per ulteriori dettagli sulle funzionalità richieste e sul risultato atteso in termini di esperienza utente, si rimanda alla Sezione :ref:`functionalities:Ottenimento degli Attestati Elettronici di Attributi` per il parametro ``data_capabilities.user_information`` e alla Sezione :ref:`functionalities:Focus sugli Attestati Elettronici di Attributi` per i parametri ``organization_info.logo_uri``, ``organization_info.logo_extended_uri``, ``data_capabilities.logo_uri``, ``data_capabilities.background_color`` e ``data_capabilities.available_claims.order``.
 
 Esempio di Registro FA
-"""""""""""""""""""""""
+""""""""""""""""""""""
 
 Di seguito è fornito un esempio non normativo della struttura del Registro FA:
 
@@ -527,17 +527,17 @@ I bundle di localizzazione DEVONO essere disponibili all'URI composto aggiungend
 Un esempio non normativo dell'URI di localizzazione italiana per il bundle sarebbe **https://trust-registry.eid-wallet.example.it/.well-known/l10n/authentic-sources/it.json**.
 
 Coordinamento FA-EI
-^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^
 
 A seguito della registrazione FA, il Registro FA consente agli Emittenti di Credenziali di individuare entità FA idonee e richiedere l'approvazione dell'integrazione. Questo processo di coordinamento è descritto in dettaglio in :ref:`entity-onboarding:Processo di Autorizzazione dalla Fonte Autentica all'Emittente di Credenziali`.
 
 Registro della Federazione
----------------------------
+--------------------------
 
 Il **Registro della Federazione** fornisce l'infrastruttura di fiducia crittografica per tutti i partecipanti all'ecosistema IT-Wallet. Il Registro della Federazione mantiene l'elenco autorevole delle entità fidate e il loro stato operativo utilizzando endpoint specifici della federazione come definito in :ref:`trust-infrastructure:Endpoint API di Federazione`.
 
 Ruolo di Integrazione del Registro
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 All'interno dell'architettura del Registro di Sistema IT-Wallet, il Registro della Federazione funge da **livello di validazione della fiducia** per:
 
@@ -546,17 +546,17 @@ All'interno dell'architettura del Registro di Sistema IT-Wallet, il Registro del
 3. **Verifica della Conformità**: Mantiene i Trust Mark che attestano la conformità normativa e lo stato operativo
 
 Accesso al Registro della Federazione
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Le operazioni del Registro della Federazione sono accessibili attraverso gli endpoint di federazione del Trust Anchor come dettagliato in :ref:`trust-infrastructure:Endpoint API di Federazione`. L'architettura di discovery del registro fornisce informazioni sugli endpoint di federazione tramite l'endpoint di discovery del registro descritto in `Endpoint di Discovery del Registro`_.
 
 .. note::
    Gli endpoint di federazione sono disponibili sia attraverso il meccanismo di discovery del registro (per l'accesso unificato al registro) sia attraverso la Configurazione dell'Entità del Trust Anchor all'indirizzo ``.well-known/openid-federation`` (per operazioni specifiche della federazione). Entrambe le sorgenti forniscono gli stessi URL degli endpoint ma servono diversi pattern di discovery: la discovery del registro per l'orientamento iniziale nell'ecosistema, la Configurazione dell'Entità per la conformità standard a OpenID Federation 1.0.
-   
+
    Per le specifiche tecniche complete dei protocolli di federazione, le configurazioni delle entità, i meccanismi di valutazione della fiducia e la validazione della catena di fiducia, vedere :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
 
 Catalogo degli Attestati Elettronici
---------------------------------------
+------------------------------------
 
 Il Catalogo delle Credenziali Digitali è il registro di tutte le Credenziali Digitali disponibili riconosciute nell'ecosistema IT-Wallet. È pubblicato dal Trust Anchor ed è pubblicamente disponibile per tutte le Entità tramite un endpoint specializzato della Federazione. Funge da unico punto di riferimento per tutti gli attori coinvolti nel processo di emissione, verifica e utilizzo delle Credenziali Digitali.
 
@@ -640,7 +640,7 @@ Di seguito è riportato un esempio non normativo.
 Nella sezione :ref:`registry:Struttura del Catalogo degli Attestati Elettronici` è fornito un esempio del Catalogo delle Credenziali Digitali decodificato in JSON.
 
 Gerarchia delle Credenziali Digitali
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Le Credenziali Digitali riconosciute nell'ecosistema IT-Wallet sono classificate e standardizzate secondo il seguente modello gerarchico multilivello, progettato per migliorare la chiarezza semantica, la discovery delle credenziali e la compatibilità con i flussi di verifica sia credential-specific che claim-based. 
 
@@ -1007,7 +1007,7 @@ Questo approccio consente:
   - **Registrazione flessibile delle RP** a supporto sia delle esigenze di conformità governativa che dei requisiti operativi aziendali.
 
 Struttura del Catalogo degli Attestati Elettronici
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Il contenuto del Catalogo delle Credenziali Digitali è protetto in un JWS che contiene i seguenti parametri dell'intestazione JOSE:
 
@@ -1105,25 +1105,21 @@ Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazion
       * **supported_schemes**: OBBLIGATORIO se ``user_auth_required`` è ``true``. Schemi di autenticazione dell'identità digitale supportati (es. ``["it_wallet"]``).
   * - **domains**
     - OBBLIGATORIO. Array contenente gli ID dei domini a cui appartiene la Credenziale Digitale (es. ``"IDENTITY"``, ``"MOBILITY_TRAVEL"``).
-
   * - **classes**
     - OBBLIGATORIO. Array contenente gli ID delle classi a cui appartiene la Credenziale Digitale (es. ``"IDENTIFICATION_DOCUMENTS"``, ``"LICENSES_AUTHORIZATIONS"``).
-
   * - **purposes**
     - OBBLIGATORIO. Array contenente gli ID delle finalità (definita nella Tassonomia) di utilizzo per cui la Credenziale Digitale può essere impiegata, definendo contesti d'uso specifici e claim richiesti per ciascuna finalità (es. ``"IDENTITY_VERIFICATION"``, ``"AGE_VERIFICATION"``, ``"DRIVING_RIGHTS_VERIFICATION"``).
   * - **issuers**
     - OBBLIGATORIO. Array di informazioni rilevanti sugli Emittenti di Credenziali autorizzati, inclusi dati amministrativi e tecnici quali nome dell'organizzazione, riferimento al documento di specifica API e meccanismi di emissione supportati. Ogni elemento dell’array contiene:
 
-       * **id**: OBBLIGATORIO. Stringa. Identificativo univoco dell’elemento dell’array.
        * **entity_id**: OBBLIGATORIO. Stringa. Identificativo univoco del Credential Issuer. DEVE corrispondere al valore contenuto nel parametro ``iss`` dell’Entity Configuration del Credential Issuer.
        * **organization_name_l10n_id**: OBBLIGATORIO. Stringa. Chiave di localizzazione che fa riferimento al nome localizzato dell’organizzazione nel bundle di localizzazione (es. ``issuer1.name``).
-       * **organization_code**: Stringa. Codice IPA del Credential Issuer per enti pubblici oppure partita IVA per soggetti privati.
-       * **organization_country**: Stringa. Codice paese dell’organizzazione a due lettere conforme allo standard ISO 3166-1 alpha-2.
+       * **organization_code**: OBBLIGATORIO. Stringa. Codice IPA del Credential Issuer per enti pubblici oppure partita IVA per soggetti privati.
+       * **organization_country**: OBBLIGATORIO. Stringa. Codice paese dell’organizzazione a due lettere conforme allo standard ISO 3166-1 alpha-2.
        * **contacts**: OBBLIGATORIO. Stringa. Array di indirizzi email di contatto per almeno un referente di supporto utenti, uno applicativo e uno specialista di sistemi.
-       * **legal_type**: Stringa. Classificazione giuridica del Credential Issuer (es. pub-eaa, qeaa, eaa).
-
-       * **homepage_uri**: Stringa. URL che punta alla homepage dell’organizzazione.
-       * **logo_uri**: Stringa. URL dell’immagine del logo dell’organizzazione.
+       * **legal_type**: OBBLIGATORIO. Stringa. Classificazione giuridica del Credential Issuer (es. pub-eaa, qeaa, eaa).
+       * **homepage_uri**: OBBLIGATORIO. Stringa. URL che punta alla homepage dell’organizzazione.
+       * **logo_uri**: OPZIONALE. Stringa. URL dell’immagine del logo dell’organizzazione.
        * **policy_uri**: OBBLIGATORIO. Stringa. URL al documento di privacy policy.
        * **tos_uri**: OPZIONALE. Stringa. URL al documento di termini di servizio.
        * **service_documentation_uri**: OPZIONALE. Stringa. URL che punta alla documentazione del servizio del Credential Issuer.
@@ -1135,7 +1131,7 @@ Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazion
           * **issuer_initiated**: OBBLIGATORIO. Booleano. Indica se è supportata il flusso Issuer-Initiated (Third Party Initiated Flow).
           * **max_deferred_issuance_time_minutes**: CONDIZIONALE. Intero. Tempo massimo, in minuti, per la disponibilità dell’emissione della credenziale. OBBLIGATORIO se ``deferred_flow`` è impostato a ``true``.
           * **notification_methods**: CONDIZIONALE. Array di stringhe. Contiene i metodi di notifica supportati dal Credential Issuer per l’emissione differita, come ``"push"``, ``"poll"``. OBBLIGATORIO se ``deferred_flow`` è impostato a ``true``.
-  
+
   * - **localization**
     - OBBLIGATORIO. Oggetto di configurazione della localizzazione contenente:
 
@@ -1183,7 +1179,7 @@ I bundle di localizzazione DEVONO essere disponibili all'URI composto aggiungend
 Un esempio non normativo dell'URI di localizzazione italiana per il bundle sarebbe **https://trust-registry.eid-wallet.example.it/.well-known/l10n/credential-catalog/it.json**.
 
 Decentralizzazione delle Informazioni di Visualizzazione e dei Claims
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 La fonte canonica per le caratteristiche di visualizzazione e la struttura dei claim è determinata dai **Metadati dell'Emittente di Credenziali (Configurazione dell'Entità)**.
 
@@ -1308,7 +1304,7 @@ I bundle di localizzazione DEVONO essere disponibili all'URI composto aggiungend
 Un esempio non normativo dell'URI di localizzazione italiana per il bundle sarebbe **https://trust-registry.eid-wallet.example.it/.well-known/l10n/taxonomy/it.json**.
 
 Registro degli Schema
-----------------------
+---------------------
 
 Il **Registro degli Schemi** è l'inventario autorevole di tutti gli **Schemi di Credenziale** (JSON Schema per SD-JWT, CBOR Schema per mDOC) noti e accettati nell'ecosistema IT-Wallet. È gestito dal Trust Anchor e fornisce un'unica fonte verificabile per il recupero delle specifiche tecniche necessarie per il parsing, la validazione e la visualizzazione delle Credenziali Digitali.
 
@@ -1370,7 +1366,7 @@ Un esempio non normativo del payload del Registro degli Schemi:
   :language: JSON
 
 Integrazione del Registro e Riferimenti Incrociati
----------------------------------------------------
+--------------------------------------------------
 
 I componenti del registro sono interconnessi e operano congiuntamente per supportare il completo ecosistema delle Credenziali:
 
@@ -1381,13 +1377,13 @@ I componenti del registro sono interconnessi e operano congiuntamente per suppor
 5. **Registro degli Schemi** ↔ **Emittenti/RP**: Fornisce il collegamento verificabile a tutte le specifiche di formato delle Credenziali note nell'ecosistema.
 
 Percorsi di Utilizzo dell'Infrastruttura del Registro
-------------------------------------------------------
+-----------------------------------------------------
 
 I componenti dell'Infrastruttura del Registro sono progettati per supportare diverse fasi operative dell'ecosistema IT-Wallet, ciascuna con specifiche interazioni tra le entità. 
 I principali Percorsi di seguito illustrano le interazioni con l'Infrastruttura del Registro.
 
 Navigazione del Catalogo
-^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Questo percorso di *Navigazione del Catalogo* supporta gli Utenti (sia utenti umani tramite un'**Istanza Wallet** che sistemi automatizzati come **Relying Party** o portali web) nella discovery e nella selezione delle Credenziali Digitali disponibili.
 
@@ -1402,7 +1398,7 @@ Questo percorso di *Navigazione del Catalogo* supporta gli Utenti (sia utenti um
 3.  **Azione Finale**: L'entità può quindi utilizzare i metadati per mostrare le informazioni del catalogo a un Utente (o utilizzare le informazioni in altro modo).
 
 Emissione di Credenziali
-^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Questo percorso definisce come un Emittente di Credenziali utilizza l'Infrastruttura del Registro per preparare ed emettere una Credenziale Digitale conforme.
 
@@ -1421,7 +1417,7 @@ Questo percorso definisce come un Emittente di Credenziali utilizza l'Infrastrut
 4.  **Emissione della Credenziale**: L'EI utilizza i dati recuperati, gli schemi validati e i formati specificati per generare e firmare la Credenziale Digitale nel formato corretto (es. SD-JWT o mDOC).
 
 Presentazione e Verifica delle Credenziali
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Questo percorso descrive come un'**Istanza Wallet** e una **Relying Party (RP)** interagiscono con l'Infrastruttura del Registro quando una Credenziale Digitale deve essere presentata da un Utente.
 

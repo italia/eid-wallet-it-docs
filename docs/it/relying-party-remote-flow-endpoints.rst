@@ -1,5 +1,4 @@
 .. include:: ../common/common_definitions.rst
-
 .. "included" file, so we start with '-' title level
 
 La Relying Party DEVE esporre una serie di endpoint per supportare i flussi di presentazione remoti come definiti in OpenID4VP 1.0. Questi endpoint abilitano la verifica sicura delle credenziali, l'instaurazione della fiducia e l'autenticazione dell'utente per modelli di interazione cross-device e same-device.
@@ -26,7 +25,7 @@ Endpoint Request URI
 
 L'Endpoint Request URI è dove la Relying Party fornisce il Request Object firmato all'Istanza del Wallet. Questo endpoint supporta sia i metodi GET che POST come definito nella specifica OpenID4VP 1.0.
 
-Per i requisiti di implementazione dettagliati, vedere :ref:`remote-flow-endpoint-uri-request` e :ref:`remote-flow:Richiesta all'Endpoint URI Request`.
+Per i requisiti di implementazione dettagliati, vedere :ref:`remote-flow:Richiesta all'Endpoint URI Request` e :ref:`remote-flow:Risposta dell'Endpoint URI Request`.
 
 
 Endpoint Response URI
@@ -42,7 +41,7 @@ Endpoint Status (Opzionale)
 
 L'Endpoint Status è un endpoint opzionale che consente all'user-agent di monitorare il progresso del flusso di presentazione. Questo endpoint è particolarmente utile per i flussi Same Device dove l'user-agent deve sapere quando l'Istanza del Wallet ha completato la presentazione.
 
-Per i requisiti di implementazione dettagliati, vedere :ref:`remote-flow:Status Endpoint` e :ref:`remote-flow-errori-status-endpoint`.
+Per i requisiti di implementazione dettagliati, vedere :ref:`remote-flow:Status Endpoint` e :ref:`remote-flow:Errori dello Status Endpoint`.
 
 
 Endpoint di Gestione Dati Utente
@@ -140,3 +139,5 @@ Note di Implementazione
 - Le risposte di errore DEVONO seguire i codici di stato HTTP standard e includere appropriate descrizioni degli errori
 
 Per una guida di implementazione completa, fare riferimento alle sezioni degli endpoint individuali e alle matrici di test per i requisiti di validazione.
+
+

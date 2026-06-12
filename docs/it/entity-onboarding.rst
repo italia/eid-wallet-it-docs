@@ -12,7 +12,7 @@ Panoramica
 ----------
 
 Architettura del Sistema di Onboarding delle Entità
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 L'ecosistema IT-Wallet opera su un'infrastruttura di fiducia federata, che richiede alle entità partecipanti di stabilire una fiducia reciproca prima di intraprendere qualsiasi interazione che coinvolga attributi dell'Utente.
 
@@ -22,7 +22,7 @@ Il framework di onboarding definisce procedure di registrazione tecnica in base 
   2. Le Entità Operative (Emittenti di Credenziali, Relying Party, Fornitori di Wallet) seguono procedure di instaurazione della fiducia.
 
 Tipologie di Entità e Percorsi di Onboarding
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 La seguente tabella riepiloga le tipologie di entità, i loro ruoli e i relativi percorsi di onboarding:
 
@@ -57,14 +57,14 @@ La seguente tabella riepiloga le tipologie di entità, i loro ruoli e i relativi
      - Attestazione del Wallet da un Fornitore di Wallet affidabile
 
 Registrazione Amministrativa e Tecnica
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Il processo di onboarding segue un approccio strutturato in più fasi:
 
   1. **Registrazione Amministrativa**: Tutte le entità DEVONO completare la registrazione amministrativa iniziale che ne valida la posizione giuridica, la conformità normativa e l'idoneità organizzativa a partecipare all'ecosistema IT-Wallet.
 
   2. **Registrazione Tecnica**: A seguito dell'approvazione amministrativa, le entità effettuano la registrazione tecnica attraverso percorsi specializzati:
-    
+
     - **Registrazione Fonte Autentica**: Procedure di registrazione incentrate sui dati con validazione dell'integrazione API.
     - **Registrazione in Federazione**: Instaurazione della fiducia crittografica come definito nella Sezione :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
 
@@ -79,12 +79,12 @@ Il processo di onboarding segue un approccio strutturato in più fasi:
 Tutti i componenti del registro e le loro interazioni sono descritti in dettaglio in :ref:`registry:Infrastruttura del Registro`.
 
 Processo di Registrazione delle Fonti Autentiche
--------------------------------------------------
+------------------------------------------------
 
 Le Fonti Autentiche DEVONO completare un processo di registrazione strutturato per confermare il loro status di fornitori di dati autorevoli nell'ecosistema IT-Wallet. Tale processo include la specifica dei requisiti e la validazione procedurale, come descritto in :ref:`onboarding-high-level:Journey dell'Operatore della Fonte Autentica`.
 
 Requisiti di Registrazione delle Fonti Autentiche
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Le Fonti Autentiche DEVONO rispettare i seguenti requisiti tecnici:
 
@@ -110,7 +110,7 @@ Le Fonti Autentiche DEVONO rispettare i seguenti requisiti tecnici:
     - **Audit Trail**: Le Entità DEVONO implementare capacità di logging per tutte le attività di accesso e fornitura dei dati.
 
 Requisiti sulle informazioni di registrazione delle Fonti Autentiche
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. note::
   Solo le Fonti Autentiche italiane possono essere registrate nella fase attuale di IT-Wallet.
@@ -135,7 +135,7 @@ Durante la registrazione, le Fonti Autentiche DEVONO fornire le seguenti informa
 
        - Array di identificatori di claim del Registro dei Claims forniti dalla Fonte Autentica (es. ``["given_name", "family_name", "driving_privileges"]``).
        - Finalità previste per la verifica, utilizzando gli identificatori di finalità della tassonomia (es. ``["DRIVING_RIGHTS_VERIFICATION"]``).
-      
+
    * - **Dettagli di Implementazione API**
      - **OBBLIGATORIO**. Informazioni dettagliate sull'integrazione:
 
@@ -353,7 +353,7 @@ La registrazione della Fonte Autentica segue un processo tecnico descritto di se
    La registrazione della Fonte Autentica è completa e indipendente dall'integrazione con l'Emittente di Credenziali. Le Fonti Autentiche diventano rilevabili immediatamente dopo la pubblicazione nel Registro delle Fonti Autentiche, mentre la disponibilità delle Credenziali per gli Utenti finali dipende dall'autorizzazione amministrativa dalla Fonte Autentica all'Emittente di Credenziali, seguita dalla riuscita integrazione tecnica e dall'approvazione dell'Organismo di Vigilanza per l'idoneità al catalogo.
 
 Processo di Autorizzazione dalla Fonte Autentica all'Emittente di Credenziali
-------------------------------------------------------------------------------
+-----------------------------------------------------------------------------
 
 A seguito dell'autorizzazione amministrativa dalla Fonte Autentica all'Emittente di Credenziali ottenuta durante la fase di registrazione amministrativa, le procedure di integrazione tecnica stabiliscono le connessioni API operative e i meccanismi di accesso ai dati tra gli Emittenti di Credenziali e le Fonti Autentiche.
 
@@ -365,12 +365,12 @@ L'integrazione tecnica comprende:
 - **Implementazione della Sicurezza**: Configurazione dell'autenticazione, dell'autorizzazione e del logging di audit come richiesto dagli standard di sicurezza delle Fonti Autentiche.
 
 Processo di Onboarding delle Entità Federate
----------------------------------------------
+--------------------------------------------
 
 Le Entità Federate, tra cui Emittenti di Credenziali, Relying Party e Fornitori di Wallet, devono completare le procedure di onboarding per diventare partecipanti idonei nell'ecosistema IT-Wallet. Tale processo stabilisce la fiducia distribuita mediante l'emissione di Certificati X.509, la validazione delle Catene di Fiducia e la verifica della conformità, come descritto in :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
 
 Modello Gerarchico dell'Autorità di Federazione
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 La federazione IT-Wallet implementa un **modello di onboarding gerarchico** in cui le Entità Federate DEVONO essere registrate da uno dei seguenti attori:
 
@@ -389,7 +389,7 @@ Pertanto, le Entità Federate POSSONO essere registrate attraverso percorsi diff
   - **Onboarding Mediato da un Intermediario**: L'Entità si registra presso un Intermediario appropriato.
 
 Prerequisiti di Onboarding alla Federazione
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Le Entità Federate DEVONO rispettare i seguenti requisiti tecnici prima di avviare il processo di onboarding:
 
@@ -411,7 +411,7 @@ Le Entità Federate DEVONO rispettare i seguenti requisiti tecnici prima di avvi
   - **Richiesta di Firma del Certificato X.509 (CSR)**: Le entità DEVONO predisporre una Richiesta di Firma del Certificato X.509 (CSR) in formato PKCS #10 contenente **la Chiave dell'Entità della Federazione** per l'emissione del Certificato X.509 da parte dell'Autorità di Federazione, come definito in :ref:`trust-infrastructure:Emissione di Certificati X.509`.
 
 Requisiti di Sicurezza per la Gestione delle Chiavi
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Tutte le entità federate DOVREBBERO mantenere almeno due chiavi di firma attestate dal Trust Anchor:
 
@@ -431,7 +431,7 @@ La chiave di backup DEVE essere:
 - Mantenuta con gli stessi standard di sicurezza della chiave attiva
 
 Procedura di Onboarding alla Federazione
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 La procedura di onboarding alla federazione segue una procedura strutturata in 4 fasi e può essere eseguita dal Trust Anchor o da un Intermediario.
 
 .. note::
@@ -603,18 +603,18 @@ L'Entità Federata DEVE completare il processo di onboarding:
    Le Entità Federate possono ottenere Trust Mark in qualsiasi momento utilizzando il Federation Trust Mark Endpoint come definito in :ref:`trust-infrastructure:Endpoint API di Federazione`.
 
 Al completamento positivo della Fase 4, **l'onboarding dell'entità è completato con successo**. L'entità è ora operativa all'interno della federazione IT-Wallet e pronta per le attività operative.
-   
+
 
 .. note::
    **Integrazione nel Registro della Federazione**: Al completamento positivo dell'onboarding, l'Identificatore dell'Entità Federata dell'entità diventa rilevabile tramite i meccanismi di listing del Trust Anchor (come definito in :ref:`trust-infrastructure:L'Infrastruttura di Trust`), indicando la partecipazione attiva alla federazione. L'entità diventa parte dell'infrastruttura di federazione dettagliata in :ref:`registry:Infrastruttura del Registro`.
 
 Trust Mark della Federazione IT-Wallet
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Le Entità Federate ricevono i Trust Mark della Federazione IT-Wallet al completamento positivo dell'onboarding. **I Trust Mark sono emessi dall'Autorità di Federazione** (Trust Anchor per l'onboarding diretto, Intermediario per l'onboarding mediato) attraverso il Federation Trust Mark Endpoint e fungono da attestazioni verificabili sulla conformità ai profili tecnici IT-Wallet e/o alle politiche di autorizzazione.
 
 Tipologie e Schema dei Trust Mark
-""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""
 
 Le Entità POSSONO ricevere più Trust Mark per finalità diverse. Gli identificatori dei Trust Mark DEVONO seguire uno schema gerarchico che rispecchia l'ambito di autorizzazione:
 
@@ -627,7 +627,7 @@ Dove:
   - ``<entity_type>``: La tipologia dell'entità destinataria (es. ``credential-issuer``, ``relying-party``, ``wallet-provider``).
 
 Struttura dei Trust Mark
-"""""""""""""""""""""""""
+""""""""""""""""""""""""
 
 I Trust Mark nella Configurazione dell'Entità DEVONO essere rappresentati come oggetti JSON contenenti i seguenti claim:
 
@@ -781,7 +781,7 @@ Le Entità Federate DEVONO integrare i Trust Mark nella propria Configurazione d
    }
 
 Validazione dei Trust Mark
-"""""""""""""""""""""""""""
+""""""""""""""""""""""""""
 
 I partecipanti alla federazione validano lo stato dei Trust Mark tramite due meccanismi:
 

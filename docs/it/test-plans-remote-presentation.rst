@@ -1,7 +1,8 @@
 .. include:: ../common/common_definitions.rst
 
+
 Matrice di Test per il Verificatore di Credenziali in Remoto
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Questa sezione fornisce l’insieme dei casi di test progettati per implementatori tecnici e team di sviluppo responsabili della creazione e distribuzione di soluzioni Credential Verifier per flussi remoti. È inoltre destinata agli enti di valutazione che ispezionano e validano le implementazioni delle soluzioni Credential Verifier per flussi remoti.
 
@@ -495,3 +496,5 @@ Questa sezione fornisce l’insieme dei casi di test progettati per implementato
     - Risposta di Errore di Validazione
     - Test che la Response URI restituisca una risposta di errore in caso di fallimento della validazione.
     - La Response URI restituisce una risposta di errore quando i controlli di validazione falliscono.
+
+

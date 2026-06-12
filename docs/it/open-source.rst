@@ -2,7 +2,7 @@
 
 
 Rilasci Open Source
-=====================
+===================
 
 1. Principi Generali
 ^^^^^^^^^^^^^^^^^^^^
@@ -71,3 +71,5 @@ In conformità con il **Cyber Resilience Act (CRA)** e la **Direttiva NIS2 (UE) 
 - **Politica di Sicurezza**: Tutti i repository Open Source **DOVREBBERO** contenere un file ``SECURITY.md`` che descriva la procedura per la segnalazione delle vulnerabilità.
 - **Segnalazione**: I Proprietari di Progetto **DOVREBBERO** istituire un canale per la divulgazione responsabile, al fine di gestire i problemi di sicurezza in modo riservato prima del rilascio pubblico.
 - **Vulnerabilità sfruttate**: I Proprietari di Progetto **DEVONO** cooperare con i Computer Security Incident Response Team (CSIRT) nazionali in merito alle vulnerabilità attivamente sfruttate e seguire rigorosamente i protocolli di divulgazione coordinata per mitigare le minacce derivanti da una divulgazione irresponsabile.
+
+

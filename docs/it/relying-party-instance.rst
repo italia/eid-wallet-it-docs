@@ -1,7 +1,7 @@
 .. include:: ../common/common_definitions.rst
 .. "included" file, so we start with '-' title level
 
-App di Verifica 
+App di Verifica
 ---------------
 
 L'App di Verifica è un'applicazione mobile o embedded progettata per richiedere, ricevere ed elaborare Attestati Elettronici dalle Istanze del Wallet in modo affidabile. Ogni App di Verifica garantisce l'integrità, la riservatezza e l'autenticità degli scambi di Attestati Elettronici, consentendo interazioni sicure tra Utenti e Relying Party.
@@ -26,7 +26,7 @@ App di Verifica Mobile
 
 Il ciclo di vita di un'App di Verifica include quattro stati principali: **Installed**, **Unverified**, **Verified** e **Uninstalled**, supportando funzionalità come registrazione, riemissione del Certificato di Accesso e revoca.
 
-Ciclo di Vita App di Verifica Mobile 
+Ciclo di Vita App di Verifica Mobile
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In questa sezione vengono presentati le macchine a stati finiti per spiegare gli stati dell'App di Verifica Mobile, nonché le loro transizioni e relazioni.
@@ -111,7 +111,7 @@ Un'App di Verifica DEVE supportare tre funzionalità fondamentali: **Registrazio
 
 
 Registrazione App di Verifica Mobile
-""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""
 
 Questo processo consente la registrazione di un'App di Verifica con il Backend della Relying Party e l'emissione di un Certificato di Accesso che sarà utilizzato per autenticarsi verso le Istanze del Wallet durante i flussi di presentazione. Il processo consiste in due sottofasi:
 
@@ -197,13 +197,13 @@ Di seguito è riportato un esempio non normativo di ``client_data``.
 
 
 Riemissione de Certificato di Accesso App di Verifica Mobile
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 L'emissione di un nuovo Certificato di Accesso segue lo stesso flusso descritto nella sezione :ref:`relying-party-instance:Registrazione App di Verifica Mobile` per **Emissione del Certificato di Accesso**. Questi certificati POSSONO essere emessi come a breve durata (tipicamente validi entro 24 ore) o a lunga durata.
 
 
 Revoca App di Verifica Mobile
-""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""
 
 Le Relying Party DEVONO verificare periodicamente l'autenticità e la sicurezza delle App di Verifica.
 Quando vengono rilevati problemi di sicurezza, le Relying Party DEVONO revocare l'App di Verifica, revocando il suo Certificato di Accesso X.509 (in caso di certificati a lunga durata), e in ogni caso, le Relying Party NON DEVONO consentire la riemissione di certificati.
@@ -213,19 +213,19 @@ I Certificati X.509 a lunga durata seguono i requisiti relativi al loro ciclo di
 
 
 App di Verifica Web
---------------------------
+-------------------
 
 Le Web Instance operano controlli di sicurezza lato server che memorizzano in modo sicuro segreti e chiavi crittografiche in un ambiente controllato. Le App di Verifica Web DEVONO essere registrate presso la Trust Anchor o le Entità Intermediarie, secondo :ref:`trust-infrastructure:L'Infrastruttura di Trust`.
 
 
 Funzionalità dell'App di Verifica Web
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Un'App di Verifica Web DEVE supportare due funzionalità fondamentali: **Registrazione** e **Revoca**. Ogni funzionalità è descritta nelle sezioni seguenti.
 
 
 Registrazione Revoca App di Verifica Web
-"""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""
 
 Le App di Verifica Web, in qualità di OAuth Confidential Client, sono registrate direttamente dalla Trust Anchor o un'Entità Intermediaria. La registrazione comporta:
 
@@ -236,7 +236,7 @@ Le App di Verifica Web, in qualità di OAuth Confidential Client, sono registrat
 
 
 Revoca App di Verifica Web
-"""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""
 
 Quando una App di Verifica Web deve essere revocata:
 
@@ -244,3 +244,5 @@ Quando una App di Verifica Web deve essere revocata:
 - Le chiavi crittografiche utilizzate dall'App Web DEVONO essere revocate.
 - L'Entity Configuration DEVE essere aggiornata per riflettere la revoca.
 - La Trust Anchor DEVE essere notificata della revoca per aggiornare i metadata della federazione.
+
+

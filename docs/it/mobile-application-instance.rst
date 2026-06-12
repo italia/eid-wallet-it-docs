@@ -77,7 +77,9 @@ Se si verificano errori nel processo delle API di Key Attestation, come la verif
 **Passo 9 (Richiesta di Inizializzazione dell'Istanza dell'Applicazione Mobile)**: L'Istanza dell'Applicazione Mobile invia una :ref:`mobile-application-instance:Richiesta di Inizializzazione dell'Istanza dell'Applicazione Mobile` al Fornitore dell'Applicazione, per inizializzare l'Istanza dell'Applicazione Mobile, identificata dalla chiave pubblica Cryptographic Hardware. Il corpo della richiesta include i seguenti attributi: il ``nonce``, la Key Attestation (``key_attestation``) e il Cryptographic Hardware Key Tag (``hardware_key_tag``) (:ref:`WP_133 <wallet-instance-optional-testcases>`).
 
 .. note::
-  Non è necessario inviare la chiave pubblica dell'Hardware dell'Istanza dell'Applicazione perché è già inclusa nella ``key_attestation``. Come visto nei passaggi precedenti, le API di Key Attestation creano una Key Attestation collegata al ``client_data_hash`` fornito, che è il digest del ``nonce`` del Fornitore dell'Applicazione, la chiave pubblica dell'Hardware dell'Istanza dell'Applicazione e il suo Hardware Key Tag (:ref:`WP_133a <wallet-instance-optional-testcases>`). Questo processo elimina la necessità di inviare direttamente la chiave pubblica dell'Hardware dell'Istanza dell'Applicazione, poiché è già inclusa nella Key Attestation.
+  Non è necessario inviare la chiave pubblica dell'Hardware dell'Istanza dell'Applicazione perché è già inclusa nella ``key_attestation``.
+  Come visto nei passaggi precedenti, le API di Key Attestation creano una Key Attestation collegata al ``client_data_hash`` fornito, che è il digest del ``nonce`` del Fornitore dell'Applicazione, la chiave pubblica dell'Hardware dell'Istanza dell'Applicazione e il suo Hardware Key Tag (:ref:`WP_133a <wallet-instance-optional-testcases>`).
+  Questo processo elimina la necessità di inviare direttamente la chiave pubblica dell'Hardware dell'Istanza dell'Applicazione, poiché è già inclusa nella Key Attestation.
 
 **Passi 10-12 (Risposta di Inizializzazione dell'Istanza dell'Applicazione Mobile)**: Il Fornitore dell'Applicazione convalida il ``nonce`` e la firma ``key_attestation``, quindi (:ref:`WP_135–137 <wallet-instance-optional-testcases>`):
 
@@ -243,7 +245,7 @@ La seguente tabella elenca i Codici di Stato HTTP e i relativi codici di errore 
     :class: longtable
     :widths: 20 20 50
     :header-rows: 1
- 
+
     * - **Codice di Stato HTTP**
       - **Codice di Errore**
       - **Descrizione**
@@ -268,29 +270,28 @@ La seguente tabella elenca i Codici di Stato HTTP e i relativi codici di errore 
     * - ``503 Service Unavailable``
       - ``temporarily_unavailable``
       - Il servizio non è disponibile. Si prega di riprovare più tardi.
- 
 
 
 .. Associazione Chiave dell'Applicazione Mobile
 .. --------------------------------------------
-.. 
- Il flusso di Associazione Chiave consente all'Istanza dell'Applicazione Mobile di associare una coppia di chiavi appena creata all'Istanza dell'Applicazione Mobile, basandosi su una prova di possesso delle Cryptographic Hardware Keys generate durante la fase di :ref:`mobile-application-instance:Inizializzazione dell'Istanza dell'Applicazione Mobile`. Prima di completare il processo, il Fornitore dell'Applicazione deve anche verificare l'integrità dell'Istanza dell'Applicazione Mobile.
+
+..  Il flusso di Associazione Chiave consente all'Istanza dell'Applicazione Mobile di associare una coppia di chiavi appena creata all'Istanza dell'Applicazione Mobile, basandosi su una prova di possesso delle Cryptographic Hardware Keys generate durante la fase di :ref:`mobile-application-instance:Inizializzazione dell'Istanza dell'Applicazione Mobile`. Prima di completare il processo, il Fornitore dell'Applicazione deve anche verificare l'integrità dell'Istanza dell'Applicazione Mobile.
 
  .. Sebbene il flusso esatto differisca a seconda del contesto (vedi le sezioni :ref:`relying-party-instance:App di Verifica Mobile` e :ref:`wallet-attestation-issuance:Emissione della Wallet Attestation`), la Richiesta di Integrità dell'Applicazione Mobile e la Risposta di Errore sono coerenti.
 
 
 .. Richiesta di Associazione Chiave dell'Applicazione Mobile
 .. ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-..
- La Richiesta di Associazione Chiave utilizza il metodo HTTP POST con ``Content-Type`` impostato su ``application/json``.
-..
- Il corpo della Richiesta di Associazione Chiave contiene un parametro ``assertion`` il cui valore è un JWT firmato che include tutti i parametri di intestazione e gli attributi del corpo descritti di seguito (:ref:`WP_134 <wallet-instance-optional-testcases>`).
-..
- Di seguito è riportato un esempio non normativo di una Richiesta di Associazione Chiave.
-..
- .. code-block:: http
 
-..   POST /key-binding HTTP/1.1
+.. La Richiesta di Associazione Chiave utilizza il metodo HTTP POST con ``Content-Type`` impostato su ``application/json``.
+
+.. Il corpo della Richiesta di Associazione Chiave contiene un parametro ``assertion`` il cui valore è un JWT firmato che include tutti i parametri di intestazione e gli attributi del corpo descritti di seguito (:ref:`WP_134 <wallet-instance-optional-testcases>`).
+
+.. Di seguito è riportato un esempio non normativo di una Richiesta di Associazione Chiave.
+
+.. .. code-block:: http
+
+ ..   POST /key-binding HTTP/1.1
     Host: application-provider.example.org
     Content-Type: application/json
 
@@ -299,14 +300,14 @@ La seguente tabella elenca i Codici di Stato HTTP e i relativi codici di errore 
     }
 
 .. In particolare, il JWT della Richiesta di Associazione Chiave include i seguenti parametri di intestazione HTTP:
-..
- .. _table_key_binding_request_claim:
+
+.. .. _table_key_binding_request_claim:
  .. list-table::
     :class: longtable
     :widths: 20 60 20
     :header-rows: 1
 
-    * - **Parametro**
+..    * - **Parametro**
       - **Descrizione**
       - **Riferimento**
     * - **alg**
@@ -320,8 +321,9 @@ La seguente tabella elenca i Codici di Stato HTTP e i relativi codici di errore 
       -
 
 .. Il JWT della Richiesta di Associazione Chiave include i seguenti attributi del corpo:
-..
- .. list-table::
+
+.. 
+  .. list-table::
     :class: longtable
     :widths: 20 60 20
     :header-rows: 1
@@ -358,7 +360,9 @@ La seguente tabella elenca i Codici di Stato HTTP e i relativi codici di errore 
       - :rfc:`7800`.
 
 .. Di seguito è riportato un esempio non normativo di un'intestazione e un payload JWT di una Richiesta di Associazione Chiave.
-..
+
+
+.. 
  .. code-block:: json
 
  ..   {
@@ -366,10 +370,10 @@ La seguente tabella elenca i Codici di Stato HTTP e i relativi codici di errore 
       "kid": "hT3v7KQjFZy6GvDkYgOZ1u2F6T4Nz5bPjX8o1MZ3dJY",
       "typ": "..."
     }
-..
- .. code-block:: json
-..
-    {
+
+.. .. code-block:: json
+
+ ..   {
       "iss": "https://application-provider.example.org/instance/hT3v7KQjFZy6GvDkYgOZ1u2F6T4Nz5bPjX8o1MZ3dJY",
       "sub": "https://application-provider.example.org/",
       "nonce": "f3b29a81-45c7-4d12-b8b5-e1f6c9327aef",
@@ -395,16 +399,15 @@ La seguente tabella elenca i Codici di Stato HTTP e i relativi codici di errore 
 
 .. Risposta di Errore di Associazione Chiave dell'Applicazione Mobile
 .. """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-..
- Se si verificano errori, il Fornitore dell'Applicazione restituisce una risposta di errore. La risposta utilizza ``application/json`` come ``Content-Type`` e include i seguenti parametri:
-..
-  - *error*. Il codice di errore.
+
+.. Se si verificano errori, il Fornitore dell'Applicazione restituisce una risposta di errore. La risposta utilizza ``application/json`` come ``Content-Type`` e include i seguenti parametri:
+
+  .. - *error*. Il codice di errore.
   - *error_description*. Testo in forma leggibile dall'uomo che fornisce ulteriori dettagli per chiarire la natura dell'errore riscontrato (:ref:`WP_035 <wallet-instance-testcases>`).
 
-..
- Di seguito è riportato un esempio non normativo di una Risposta di Errore di Associazione Chiave.
-..
- .. code-block:: http
+.. Di seguito è riportato un esempio non normativo di una Risposta di Errore di Associazione Chiave.
+
+.. .. code-block:: http
 ..
     HTTP/1.1 403 Forbidden
     Content-Type: application/json
@@ -460,3 +463,5 @@ La seguente tabella elenca i Codici di Stato HTTP e i relativi codici di errore 
     * - ``503 Service Unavailable``
       - ``temporarily_unavailable``
       - Il servizio non è disponibile. Si prega di riprovare più tardi.
+
+

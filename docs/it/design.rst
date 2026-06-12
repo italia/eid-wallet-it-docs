@@ -1,8 +1,8 @@
 .. include:: ../common/common_definitions.rst
-    
+
 
 Principi di Design
--------------------
+------------------
 
 Il Sistema IT-Wallet si basa sul paradigma del Portafoglio di Identità Digitale e ha l'obiettivo di fornire agli Utenti un'esperienza di accesso ai servizi più semplice, veloce e sicura.  
 
