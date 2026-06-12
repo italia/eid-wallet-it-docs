@@ -94,7 +94,7 @@ L'Istanza del Wallet DEVE inviare il JWT firmato della Richiesta di Wallet Unit 
   8. Il dispositivo in uso DEVE essere privo di difetti di sicurezza noti e soddisfare i requisiti minimi di sicurezza definiti dal Fornitore di Wallet.
   9. L'URL nel parametro ``iss`` DEVE corrispondere all'identificatore URL del Fornitore di Wallet  (:ref:`WP_143g <wallet-instance-optional-testcases>`).
 
-Al completamento con successo di tutte le verifiche, il Fornitore di Wallet emette una Wallet Unit Attestation valida per almeno un mese (:ref:`WP_144 <wallet-instance-optional-testcases>`).
+Al completamento con successo di tutte le verifiche, il Fornitore di Wallet emette una Wallet Unit Attestation valida per almeno un mese.
 
 **Passo 28 (Risposta di Emissione della Wallet Unit Attestation)**: Al completamento con successo, il Fornitore di Wallet DEVE restituire una risposta di conferma utilizzando il codice di stato 200 e il Content-Type ``application/json``, contenente la Wallet Unit Attestations firmate dal Fornitore di Wallet. Il Fornitore di Wallet DEVE restituire la Wallet Unit Attestation in formato ``JWT``. L'Istanza del Wallet eseguirà quindi la verifica di sicurezza e integrità della Wallet Unit Attestations ricevute, oltre alla verifica di fiducia del relativo emittente (:ref:`WP_030–031 <wallet-instance-testcases>`).
 

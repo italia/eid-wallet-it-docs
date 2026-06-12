@@ -448,7 +448,7 @@ The request and its parameters are defined in Section 5 (Authorization Request) 
   In the IT Wallet, legacy Relying Parties using an ``https`` URI as ``client_id`` implicitly follow the OpenID Federation client identifier prefix (``openid_federation``). Their trust is established and validated through trust chain resolution, which is treated as equivalent to that of statically trusted (pre-registered) clients as defined in [:rfc:`6749`], for backward compatibility.
 
 .. note::
-  Although the ``response_modes_supported`` field references `JARM`_ to ensure JARM-level interoperability for the Authorization Response by keeping a JWT based format for front-channel redirects such as ``form_post.jwt`` in the Same Device Flow, the Relying Party adopts ``direct_post.jwt`` for the Cross Device Flow, which relies on back-channel delivery using an HTTP POST request to the Relying Party. The actual use of ``direct_post.jwt`` is introduced below, in :ref:`request-uri-response`, where the Relying Party sets the ``response_mode`` for the transaction.
+  Although the ``response_modes_supported`` field references `JARM`_ to ensure JARM-level interoperability for the Authorization Response by keeping a JWT based format for front-channel redirects such as ``form_post.jwt`` in the Same Device Flow, the Relying Party adopts ``direct_post.jwt`` for the Cross Device Flow, which relies on back-channel delivery using an HTTP POST request to the Relying Party. The actual use of ``direct_post.jwt`` is introduced below, in :ref:`remote-flow:Request URI Response`, where the Relying Party sets the ``response_mode`` for the transaction.
 
 .. note::
   The ``wallet_nonce`` parameter is RECOMMENDED for Wallet Instances that want to prevent reply of their http requests to the Relying Parties.
@@ -457,8 +457,6 @@ The request and its parameters are defined in Section 5 (Authorization Request) 
 .. note::
   For the ``authorization_endpoint`` the use of universal links are preferred over custom url-schemes because, when properly configured using Assetlinks JSON for Android and Apple App Site Association for iOS, they provide enhanced security by reducing the risk of URL hijacking.
   Furthermore, universal links offer fallback mechanisms, allowing the flow to continue seamlessly in a browser even if the Wallet Instance is not installed, ensuring a smoother User experience. To ensure interoperability, support custom url-schemes is also RECOMMENDED according to HAIP `OPENID4VC-HAIP`_, and in particular using the custom url ``haip://``.
-
-.. _request-uri-response:
 
 Request URI Response
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^

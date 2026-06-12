@@ -638,11 +638,11 @@ Dopo completamento con successo di tutti gli step di autenticazione e correlazio
 Gestione Errori
 ---------------
 
-La gestione errori DEVE seguire le stesse regole come definite nella Sezione :doc:`credential-issuance-endpoint`, riguardo ai formati e i riferimenti standard correlati.
+La gestione errori DEVE seguire le stesse regole come definite nella Sezione :ref:`credential-issuer-endpoint:Endpoint di Rilascio degli Attestati Elettronici`, riguardo ai formati e i riferimenti standard correlati.
 
 Durante il flusso di Validazione MRTD PoP, quando si verificano errori recuperabili, il Servizio MRTD PoP PUÒ generare e restituire un nonce fresco per abilitare l'Utente a tentare nuovamente mantenendo sicurezza di sessione e prevenendo attacchi replay.
 
-In aggiunta ai codici di errore già definiti nella Sezione :doc:`credential-issuance-endpoint`, almeno i seguenti codici di errore DEVONO essere supportati.
+In aggiunta ai codici di errore già definiti nella Sezione :ref:`credential-issuer-endpoint:Endpoint di Rilascio degli Attestati Elettronici`, almeno i seguenti codici di errore DEVONO essere supportati.
 
 Errori Risposta MRTD PoP
 ^^^^^^^^^^^^^^^^^^^^^^^^

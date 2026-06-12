@@ -49,7 +49,7 @@ Gli Utenti POSSONO richiedere la revoca dell'Istanza del Wallet (:ref:`WP_032 <w
 - *Selezionando la funzionalità di revoca all'interno dalla propria Istanza del Wallet*: questa funzionalità può essere utilizzata dagli Utenti prima di cambiare il proprio telefono.
 - *Utilizzando un user agent esterno*: questo copre i casi in cui gli Utenti perdono il loro dispositivo e quindi l'accesso alla loro Istanza del Wallet.
 
-In entrambi i casi, utilizzando il portale del Fornitore di Wallet:
+In entrambi i casi, utilizzando il portale del Fornitore di Wallet (:ref:`WP_005–006 <wallet-provider-backend-testcases>`):
 
 - Gli Utenti DEVONO autenticarsi con almeno un meccanismo di autenticazione a due fattori, o avere una sessione attiva che soddisfi questo requisito.
 - Il Fornitore di Wallet DEVE consentire agli Utenti di visualizzare lo stato delle loro Istanze del Wallet associate alla loro sessione autenticata e chiedere la revoca, inviando una Richiesta di Recupero o Revoca dell'Istanza del Wallet (:ref:`WP_033 <wallet-instance-testcases>`, e :ref:`WP_145 <wallet-instance-optional-testcases>`), a seconda dei casi, all'endpoint :ref:`wallet-provider-endpoint:Endpoint di Gestione dell'Istanza di Wallet` del Backend del Fornitore del Wallet.

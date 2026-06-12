@@ -23,7 +23,7 @@ Ulteriori dettagli sulla Richiesta e Risposta Nonce sono forniti rispettivamente
 Endpoint di Inizializzazione dell'App di Verifica della Relying Party
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-L'Endpoint di Inizializzazione dell'App di Verifica consente l'inizializzazione delle App di Verifica, consistente nella registrazione di una coppia di Cryptographic Hardware Keys a lunga durata, memorizzate in modo sicuro (:ref:`test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità`).
+L'Endpoint di Inizializzazione dell'App di Verifica consente l'inizializzazione delle App di Verifica, consistente nella registrazione di una coppia di Cryptographic Hardware Keys a lunga durata, memorizzate in modo sicuro.
 
 Ulteriori dettagli sulla Richiesta e Risposta di Inizializzazione dell'App di Verifica sono forniti rispettivamente nelle Sezioni :ref:`mobile-application-instance:Richiesta di Inizializzazione dell'Istanza dell'Applicazione Mobile` e :ref:`mobile-application-instance:Risposta di Inizializzazione dell'Istanza dell'Applicazione Mobile`.
 

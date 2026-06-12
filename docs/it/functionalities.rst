@@ -39,11 +39,11 @@ Le Risorse Ufficiali descrivono le modalità di interazione Utente-Istanza del W
 
 Per garantire un’implementazione corretta e coerente, gli Attori Primari: 
 
-* DEVONO utilizzare esclusivamente le Risorse Ufficiali e DEVONO rispettare le tutte le relative specifiche di utilizzo fornite; 
+* DEVONO utilizzare esclusivamente le :ref:`official-resources:Risorse Ufficiali` e DEVONO rispettare tutte le relative specifiche di utilizzo fornite; 
 
 * POSSONO scegliere quale configurazione implementare, tra quelle rese disponibili, ma DEVONO comunque garantire il corretto utilizzo dei componenti atomici come l'`Engagement Button`_;  
 
-* DEVONO garantire il costante aggiornamento delle risorse utilizzate, in linea con l'ultima versione resa disponibile. 
+* DEVONO garantire il costante aggiornamento delle risorse utilizzate, in linea con l'ultima versione delle :ref:`official-resources:Risorse Ufficiali` resa disponibile. 
 
 Attivazione dell'Istanza del Wallet
 -----------------------------------
@@ -243,7 +243,7 @@ Il flusso è rappresentato di seguito con wireframe esemplificativi.
 
 Ottenimento dal Touchpoint della Fonte Autentica
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Di seguito sono illustrati i requisiti dell'Esperienza Utente del flusso di ottenimento di un Attestato Elettronico di Attributi dal Touchpoint della Fonte Autentica (chiamato anche Credential Offer) che questa DEVE garantire attraverso il proprio Touchpoint:  
+Di seguito sono illustrati i requisiti dell'Esperienza Utente del flusso di ottenimento di un Attestato Elettronico di Attributi dal Touchpoint della Fonte Autentica (chiamato anche :ref:`credential-issuance-low-level:Flusso Credential Offer`) che questa DEVE garantire attraverso il proprio Touchpoint:  
 
 - L’Utente interagisce con l'`Engagement Button`_ chiaramente esposto nell’interfaccia del Touchpoint; 
 - L’Utente seleziona la Soluzione Wallet con la quale procedere, attraverso un’interfaccia che DEVE seguire le indicazioni e le funzionalità previste per la Selection Page descritta nella sezione :ref:`functionalities:Autenticazione`; 

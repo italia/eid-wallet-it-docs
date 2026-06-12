@@ -16,7 +16,7 @@ Questa sezione elenca i requisiti relativi ai Fornitori di Wallet e alle Soluzio
 - L'Istanza del Wallet DEVE fornire agli Utenti un meccanismo per richiedere la cancellazione degli attributi personali da parte di una Relying Party ai sensi dell'articolo 17 del Regolamento (UE) 2016/679, e per registrare ogni Richiesta di Cancellazione effettuata.
 
 .. note::
-   Non esiste una corrispondenza stretta uno-a-uno tra i requisiti in questa sezione e i casi di test in :ref:`wallet-provider-test-matrix`. Alcuni requisiti sono espressi a un livello troppo alto per poter essere rappresentati come casi di test atomici, mentre altri sono già affrontati in modo più dettagliato all'interno dei flussi correlati (ad es. :ref:`wallet-instance-attestation-issuance:Emissione della Wallet Instance Attestation`).
+   Non esiste una corrispondenza stretta uno-a-uno tra i requisiti in questa sezione e i casi di test in :ref:`test-plans-wallet-provider:Matrice di Test per Wallet Provider`. Alcuni requisiti sono espressi a un livello troppo alto per poter essere rappresentati come casi di test atomici, mentre altri sono già affrontati in modo più dettagliato all'interno dei flussi correlati (ad es. :ref:`wallet-instance-attestation-issuance:Emissione della Wallet Instance Attestation`).
 
 Requisiti della Wallet Instance Attestation
 """""""""""""""""""""""""""""""""""""""""""

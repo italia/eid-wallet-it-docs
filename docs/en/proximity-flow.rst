@@ -182,8 +182,6 @@ Below is a non-normative example using the diagnostic notation of a CBOR-encoded
 
     The record MUST be finalized when the transaction ends, indicating the outcome (e.g., completed, failed, or session terminated; Steps 13–14 and Session Termination).
 
-.. _sec-deviceengagement-qr:
-
 ``DeviceEngagement`` over QR Code
 ----------------------------------
 The following figure illustrates the low-level flow compliant with ISO 18013-5 for ``DeviceEngagement`` over QR Code corresponding to Box A in Figure :ref:`fig_High-Level-Flow-ITWallet-Presentation-ISO-updated`.
@@ -211,8 +209,6 @@ Below is a non-normative example using the diagnostic notation of a CBOR-encoded
   :language: text
 
 **Step 2**: The Relying Party uses its Relying Party Instance to scan the QR code and retrieve the ``DeviceEngagement`` data from the mdoc. It MUST select one of the transmission technologies from the ones provided in the ``DeviceEngagement`` structure.
-
-.. _sec-deviceengagement-nfc:
 
 ``DeviceEngagement`` over NFC
 ------------------------------

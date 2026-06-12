@@ -12,7 +12,7 @@ Il Fornitore di Wallet, responsabile della fornitura di una Soluzione Wallet, DE
 
 .. note::
    I test relativi all'uso degli endpoint del Wallet Provider sono definiti in 
-   :ref:`wallet-provider-test-matrix`, in particolare in 
+   :ref:`test-plans-wallet-provider:Matrice di Test per Wallet Provider`, in particolare in 
    :ref:`wallet-provider-backend-testcases`,
    :ref:`wallet-instance-testcases` e 
    :ref:`wallet-instance-optional-testcases`.

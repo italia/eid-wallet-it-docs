@@ -384,7 +384,7 @@ I parametri URL contenuti nella Authorization Request della Relying Party sono d
   * - **request_uri**
     - CONDIZIONALE. OBBLIGATORIO a meno che ``request`` non sia presente. L'URL HTTP dove la Relying Party fornisce il Request Object firmato all'Istanza del Wallet.
   * - **request_uri_method**
-    - OPZIONALE solo se ``request_uri`` è presente. Il metodo HTTP DEVE essere impostato con ``get`` o ``post``. L'Istanza del Wallet dovrebbe utilizzare questo metodo per ottenere il Request Object firmato all'indirizzo fornito dal ``request_uri``. Se non fornito o uguale a ``get``, l'Istanza del Wallet DEVE utilizzare il metodo HTTP ``get``. Altrimenti, l'Istanza del Wallet DOVREBBE fornire i suoi metadata all'interno del body della richiesta HTTP POST codificati in ``application/x-www-form-urlencoded``.
+    - OPZIONALE solo se ``request_uri`` è presente, altrimenti NON DEVE essere presente. Il metodo HTTP DEVE essere impostato con ``get`` o ``post`` (:ref:`RPR-98 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`). L'Istanza del Wallet dovrebbe utilizzare questo metodo per ottenere il Request Object firmato all'indirizzo fornito dal ``request_uri``. Se non fornito o uguale a ``get``, l'Istanza del Wallet DEVE utilizzare il metodo HTTP ``get``. Altrimenti, l'Istanza del Wallet DOVREBBE fornire i suoi metadata all'interno del body della richiesta HTTP POST codificati in ``application/x-www-form-urlencoded``.
 
 .. note::
   Le specifiche IT Wallet raccomandano l'uso di ``request_uri``, ovvero Request Object by reference.
@@ -404,9 +404,9 @@ La Relying Party DOVREBBE abilitare il metodo POST nel suo Endpoint ``request_ur
 Questa funzionalità può essere utile quando, ad esempio, l'Istanza del Wallet supporta un insieme ristretto di funzionalità, algoritmi o un URL specifico per il suo ``authorization_endpoint``, e qualsiasi altra informazione che ritiene necessario fornire alla Relying Party per l'interoperabilità.
 
 .. warning::
-  L'Istanza del Wallet, quando fornisce le sue capacità tecniche alla Relying Party, NON DEVE includere alcuna informazione dell'Utente o altre informazioni esplicite riguardanti l'hardware utilizzato o le preferenze di utilizzo del suo Utente.
+  L'Istanza del Wallet, quando fornisce le sue capacità tecniche alla Relying Party, NON DEVE includere alcuna informazione dell'Utente o altre informazioni esplicite (:ref:`RPR-86 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`) riguardanti l'hardware utilizzato o le preferenze di utilizzo del suo Utente (:ref:`RPR-86 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
 
-Se sia la Relying Party che l'Istanza del Wallet supportano il ``request_uri_method`` con HTTP POST, le capacità (metadata) dell'Istanza del Wallet DEVONO essere fornite utilizzando una richiesta HTTP all'endpoint ``request_uri`` della Relying Party, con il metodo POST e il tipo di contenuto impostato su `application/x-www-form-urlencoded` (:ref:`RPR-101 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>` and :ref:`WP_083 <wallet-credential-presentation-testcases>`).
+Se sia la Relying Party che l'Istanza del Wallet supportano il ``request_uri_method`` con HTTP POST, le capacità (metadata) dell'Istanza del Wallet DEVONO essere fornite utilizzando una richiesta HTTP all'endpoint ``request_uri`` della Relying Party, con il metodo POST e il tipo di contenuto impostato su `application/x-www-form-urlencoded` (:ref:`WP_083 <wallet-credential-presentation-testcases>`).
 La richiesta e i suoi parametri sono definiti nella Sezione 5 (Authorization Request) di `OpenID4VP`_. Di seguito sono riportati i dettagli normativi e i riferimenti sui parametri da utilizzare dall'Istanza del Wallet nella Richiesta URI Request (:ref:`WP_083a–083c <wallet-credential-presentation-testcases>`).
 
 .. list-table:: Parametri dell'Endpoint URI Request
@@ -437,7 +437,7 @@ La richiesta e i suoi parametri sono definiti nella Sezione 5 (Authorization Req
    * - `authorization_endpoint`
      - URL dell'endpoint del server di autorizzazione, vedi `OAUTH2`_. L'utilizzo di un link universale è preferibile per una sicurezza migliorata e supporto di fallback, *URL schems* personalizzati possono anche essere utilizzati se necessario.
    * - `response_types_supported`
-     - OPZIONALE. Array JSON di valori "response_type" di OAuth 2.0. Se presente DEVE essere impostato su `vp_token`. Il valore predefinito è `vp_token`.
+     - OPZIONALE. Array JSON di valori "response_type" di OAuth 2.0. Se presente DEVE essere impostato su ``vp_token`` (:ref:`RPR-82 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
    * - `response_modes_supported`
      - OPZIONALE. Array JSON di valori "response_mode" di OAuth 2.0 come specificato in `OAUTH-MULT-RESP-TYPE`_. Il valore supportato DEVE essere *query*.
    * - `request_object_signing_alg_values_supported`
@@ -448,17 +448,15 @@ La richiesta e i suoi parametri sono definiti nella Sezione 5 (Authorization Req
    Nell’IT Wallet, le Relying Party legacy che utilizzano un URI ``https`` come ``client_id`` seguono implicitamente il prefisso dell’identificatore del client previsto da OpenID Federation (``openid_federation``).  La loro fiducia è stabilita e validata tramite la risoluzione della catena di fiducia, che è considerata equivalente a quella dei client fidati staticamente (``pre-registered``), come definito in [:rfc:`6749`], per garantire la compatibilità con le versioni precedenti.
 
 .. note::
-   Anche se il campo ``response_modes_supported`` fa riferimento a `JARM`_ per garantire l’interoperabilità a livello JARM della Authorization Response, mantenendo un formato basato su JWT per i reindirizzamenti front-channel come ``form_post.jwt`` nel Flusso Same Device, la Relying Party adotta invece ``direct_post.jwt`` nel Flusso Cross Device, che si basa su una consegna back-channel tramite una richiesta HTTP POST alla Relying Party. L’effettivo utilizzo di ``direct_post.jwt`` è descritto di seguito in :ref:`request-uri-response`, dove la Relying Party imposta il ``response_mode`` per la transazione.
+   Anche se il campo ``response_modes_supported`` fa riferimento a `JARM`_ per garantire l’interoperabilità a livello JARM della Authorization Response, mantenendo un formato basato su JWT per i reindirizzamenti front-channel come ``form_post.jwt`` nel Flusso Same Device, la Relying Party adotta invece ``direct_post.jwt`` nel Flusso Cross Device, che si basa su una consegna back-channel tramite una richiesta HTTP POST alla Relying Party. L’effettivo utilizzo di ``direct_post.jwt`` è descritto di seguito in :ref:`remote-flow:Risposta dell'Endpoint URI Request`, dove la Relying Party imposta il ``response_mode`` per la transazione.
 
 .. note::
   Il parametro ``wallet_nonce`` è RACCOMANDATO per le Istanze del Wallet che vogliono prevenire il *replay* delle
-  loro richieste HTTP alle Relying Party da parte di avversari. Quando presente, la Relying Party DEVE Controllarlo.
+  loro richieste HTTP alle Relying Party da parte di avversari. Quando presente, la Relying Party DEVE controllarlo (:ref:`RPR-81 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
 
 .. note::
   Per l'``authorization_endpoint`` l'uso di *univarsal link* è preferito rispetto a *URL scheme* personalizzati perché, quando configurati correttamente utilizzando Assetlinks JSON per Android e Apple App Site Association per iOS, forniscono una sicurezza migliorata riducendo il rischio di dirottamento degli URL.
   Inoltre, gli *univarsal link* offrono meccanismi di fallback, consentendo al flusso di continuare senza problemi in un browser anche se l'Istanza del Wallet non è installata, garantendo un'esperienza Utente più fluida. Per garantire l'interoperabilità, il supporto degli *URL scheme* personalizzati è anche RACCOMANDATO secondo il profilo di interoperabilità HAIP `OPENID4VC-HAIP`_, e in particolare utilizzando l'url personalizzato ``haip://``.
-
-.. _request-uri-response:
 
 Risposta dell'Endpoint URI Request
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -565,7 +563,7 @@ I parametri del payload JWT sono descritti qui:
   * - **wallet_nonce**
     - OBBLIGATORIO se precedentemente fornito dall'Istanza del Wallet (:ref:`RPR-94 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`). Valore stringa utilizzato per mitigare gli attacchi di replay della Request URI Response, come definito nella Sezione 5.10 (Request URI Method) di `OpenID4VP`_.
   * - **response_uri**
-    - OBBLIGATORIO. L'URI di Risposta a cui l'Istanza del Wallet DEVE inviare la Authorization Response utilizzando una HTTP Request con il metodo POST (:ref:`RPR-112 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
+    - OBBLIGATORIO. L'URI di Risposta a cui l'Istanza del Wallet DEVE inviare la Authorization Response utilizzando una HTTP Request con il metodo POST (:ref:`RPR-109 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
   * - **nonce**
     - OBBLIGATORIO. Numero unico e casuale con sufficiente entropia, la cui lunghezza DEVE essere di almeno 32 cifre (:ref:`RPR-110 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`)..
   * - **state**
