@@ -362,11 +362,11 @@ The Trust Anchor Entity Configuration, in addition to the common parameters list
 Trust Marks for Relying Party Intermediaries
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In the IT-Wallet ecosystem, Intermediaries acting on behalf of Relying Parties (pursuant to Art. 5b(8) of the eIDAS2 Regulation `EU_2024_1183`_) are subject to a specific Trust Mark regime that allows the Wallet to recognize and display to the User that the requesting RP operates through an Intermediary.
+In the IT-Wallet ecosystem, Intermediaries acting on behalf of Relying Parties (pursuant to Art. 5b(8) of the eIDAS2 Regulation `EU_2024_1183`_) are subject to a specific Trust Mark regime that allows the Wallet to recognize and display to the User that the requesting RP operates through an Intermediary. In the implementation profile described by these technical specifications, a Relying Party Intermediary is also an OpenID Federation Intermediate Entity (`OID-FED`_): it participates in the federation trust chain as an Intermediate, publishing its own Entity Configuration and issuing Subordinate Statements for its affiliated Relying Parties (see the definition of **IT-Wallet Intermediary**).
 
 **Trust Mark Issuance to the Intermediary**
 
-The Trust Anchor MUST include Relying Party Intermediaries in the ``trust_mark_issuers`` attribute of its own Entity Configuration, authorizing them to issue Trust Marks for their subordinate Leaves. The Trust Anchor issues a Trust Mark to the Intermediary attesting its role, using ``https://<federation_authority_domain>/trust_marks/federation_entity/intermediary`` as ``trust_mark_type`` to distinguish this profile from generic Federation Intermediaries.
+The Trust Anchor MUST include Relying Party Intermediaries in the ``trust_mark_issuers`` attribute of its own Entity Configuration, authorizing them to issue Trust Marks for their subordinate Leaves. The Trust Anchor issues a Trust Mark to the Intermediary attesting its role, using ``https://<federation_authority_domain>/trust_marks/federation-entity/rp_intermediary`` as ``trust_mark_type`` to distinguish it from the other entities in the ecosystem.
 
 The Relying Party Intermediary MUST include this Trust Mark in its own Entity Configuration as proof of its recognized role within the Federation.
 
@@ -385,24 +385,24 @@ Below is a non-normative example of a Trust Anchor Entity Configuration showing 
 
     {
       "trust_mark_issuers": {
-        "https://trust-anchor.eid-wallet.example.it/federation_entity/openid_credential_verifier": [
+        "https://trust-anchor.eid-wallet.example.it/trust_marks/federation-entity/openid_credential_verifier": [
           "https://trust-anchor.eid-wallet.example.it",
           "https://intermediary.example.org"
         ],
-        "https://trust-anchor.eid-wallet.example.it/federation_entity/intermediary": [
+        "https://trust-anchor.eid-wallet.example.it/trust_marks/federation-entity/rp_intermediary": [
           "https://trust-anchor.eid-wallet.example.it"
         ],
-        "https://trust-anchor.eid-wallet.example.it/federation_entity/openid_credential_issuer": [
+        "https://trust-anchor.eid-wallet.example.it/trust_marks/federation-entity/openid_credential_issuer": [
           "https://trust-anchor.eid-wallet.example.it"
         ],
-        "https://trust-anchor.eid-wallet.example.it/federation_entity/wallet_solution": [
+        "https://trust-anchor.eid-wallet.example.it/trust_marks/federation-entity/wallet_solution": [
           "https://trust-anchor.eid-wallet.example.it"
         ]
       }
     }
 
 .. note::
-  The Trust Mark with identifier ending with ``federation_entity/intermediary`` is issued exclusively by the Trust Anchor and is the one the Wallet uses to verify that an entity is a recognized RP Intermediary. The ``https://<federation_authority_domain>/trust_marks/federation_entity/openid_credential_verifier`` Trust Marks may also be issued by Intermediaries for their affiliated Leaves.
+  The Trust Mark with identifier ending with ``federation-entity/rp_intermediary`` is issued exclusively by the Trust Anchor and is the one the Wallet uses to verify that an entity is a recognized RP Intermediary. The ``https://<federation_authority_domain>/trust_marks/federation-entity/openid_credential_verifier`` Trust Marks may also be issued by Intermediaries for their affiliated Leaves.
 
 
 Entity Configuration Leaves and Intermediates
@@ -829,7 +829,7 @@ The process is articulated in the following steps:
 5. **User Presentation**: Once validation is complete, the Wallet Instance MAY indicate to the User that the requesting Relying Party operates through a recognized Intermediary, displaying the Intermediary's identifying information (e.g., ``organization_name``) retrieved from its Entity Configuration.
 
 .. note::
-  The presence of the Trust Mark type ending with ``federation_entity/intermediary`` in the Intermediary's EC is the cryptographically verifiable proof that the entity has been recognized by the Trust Anchor as an authorized Relying Party Intermediary. The Wallet Instance MUST reject the RP's request if the Trust Chain cannot be constructed and validated through a recognized Intermediary or directly through the Trust Anchor.
+  The presence of the Trust Mark type ending with ``federation-entity/rp_intermediary`` in the Intermediary's EC is the cryptographically verifiable proof that the entity has been recognized by the Trust Anchor as an authorized Relying Party Intermediary. The Wallet Instance MUST reject the RP's request if the Trust Chain cannot be constructed and validated through a recognized Intermediary or directly through the Trust Anchor.
 
 Evaluating Trust with Wallets
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
