@@ -369,7 +369,7 @@ Below is the description of acronyms and definitions which are useful for furthe
       While the role is conceptually distinct from that of an **OIDC Federation Intermediate** (`OID-FED`_), in the implementation profile described by these technical specifications, a Relying Party Intermediary is also an **OIDC Federation Intermediate** (see **IT-Wallet Intermediary**).
 
     **IT-Wallet Intermediary**
-      Organizational Entity that acts as a **Relying Party Intermediary** and is technically implemented as an OpenID Federation Intermediate Entity (`OID-FED`_, Section 1.2). Therefore, in the IT-Wallet implementation profile, a Relying Party Intermediary is also an OpenID Federation Intermediate: it publishes its own Entity Configuration, issues Subordinate Statements for its affiliated Relying Parties, and issues Trust Marks to them under the authorization of the Trust Anchor.
+      Organizational Entity that acts as a **Relying Party Intermediary** and is technically implemented as an OpenID Federation Intermediate Entity (`OID-FED`_, Section 1.2). Therefore, in the IT-Wallet implementation profile, a Relying Party Intermediary is also an OpenID Federation Intermediate: it publishes its own Entity Configuration, issues Subordinate Statements for its affiliated Relying Parties, and issues Trust Marks to them.
       Not present in ARF 2.7.3; specific to IT-Wallet.
 
 .. note::
