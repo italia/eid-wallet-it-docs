@@ -349,7 +349,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Il ruolo è concettualmente distinto da quello dell'**Intermediario di Federazione** (`OID-FED`_); tuttavia, nel profilo implementativo descritto dalle presenti specifiche tecniche, un Intermediario di Relying Party è anche un **Intermediario di Federazione** (vedi **Intermediario IT-Wallet**).
 
     **Intermediario IT-Wallet**
-      Entità Organizzativa che agisce come **Intermediario di Relying Party** e che è tecnicamente realizzata come Entità Intermedia OpenID Federation (`OID-FED`_, Sezione 1.2). Pertanto, nel profilo implementativo IT-Wallet, un Intermediario di Relying Party è anche un'Entità Intermedia OpenID Federation: pubblica la propria Entity Configuration, emette Subordinate Statement per le Relying Party affiliate ed emette loro Trust Mark su autorizzazione del Trust Anchor.
+      Entità Organizzativa che agisce come **Intermediario di Relying Party** e che è tecnicamente realizzata come Entità Intermedia OpenID Federation (`OID-FED`_, Sezione 1.2). Pertanto, nel profilo implementativo IT-Wallet, un Intermediario di Relying Party è anche un'Entità Intermedia OpenID Federation: pubblica la propria Entity Configuration, emette Subordinate Statement per le Relying Party affiliate ed emette loro il Trust Mark.
       Non presente in ARF 2.7.3; specifico di IT-Wallet.
 
 
