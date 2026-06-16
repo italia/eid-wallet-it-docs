@@ -105,7 +105,7 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 13.3843px;
+  width: 13px;
   height: 16px;
 }
 
@@ -168,7 +168,7 @@
 }
 
 .btn-itwallet-auth.btn-sm .btn-icon {
-  width: 13.3843px;
+  width: 13px;
   height: 16px;
 }
 
@@ -182,7 +182,7 @@
 }
 
 .btn-itwallet-auth.btn-md .btn-icon {
-  width: 20.0764px;
+  width: 20px;
   height: 24px;
 }
 
@@ -196,7 +196,7 @@
 }
 
 .btn-itwallet-auth.btn-lg .btn-icon {
-  width: 20.0764px;
+  width: 20px;
   height: 24px;
 }
 
