@@ -211,7 +211,7 @@ Di seguito è riportato un esempio non normativo di una richiesta di emissione d
     Content-Type: application/json
 
     {
-      "assertion": "eyJpc3MiOiJodHRwczovL3dhbGxldC1wcm92aWRlc..."
+      "assertion": "eyJpc3MiOiJPbnNpYW5kcklqcDdJbU55ZGlJNklsQ..."
     }
 
 In particolare, il JWT della richiesta di emissione della Wallet Instance Attestation include i seguenti parametri di intestazione HTTP:
@@ -246,7 +246,7 @@ Il JWT della richiesta include le seguenti claim nel body:
       - **Descrizione**
       - **Riferimento**
     * - **iss**
-      - L'identificatore del Fornitore di Wallet concatenato con l'impronta digitale (thumbprint) della JWK nella dichiarazione ``cnf``.
+      - Stringa contenente l'identificativo univoco della Wallet Instance.
       - [:rfc:`9126`], [:rfc:`7519`].
     * - **exp**
       - UNIX timestamp che rappresenta il tempo di scadenza del JWT.
@@ -292,7 +292,7 @@ Di seguito è riportato un esempio non normativo dell'intestazione e del payload
 .. code-block:: json
   
     {
-      "iss": "https://wallet-provider.example.org/instance/OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
+      "iss": "OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
       "nonce": "f3b29a81-45c7-4d12-b8b5-e1f6c9327aef",
       "hardware_signature": "KoZIhvcNAQcCoIAwgAIB...",
       "integrity_assertion": "o2NmbXRvYXBwbGUtYXBwYXNzZXJ0aW9uLXBheWxvYWQtYXBw...",
@@ -503,7 +503,7 @@ Di seguito è riportato un esempio non normativo di una Key Attestation Request.
     Content-Type: application/json
 
     {
-      "assertion": "eyJpc3MiOiJodHRwczovL3dhbGxldC1wcm92aWRlc..."
+      "assertion": "eyJpc3MiOiJPbnNpYW5kcklqcDdJbU55ZGlJNklsQ..."
     }
 
 In particolare, il JWT della Key Attestation Issuance include i seguenti parametri di header HTTP:
@@ -539,7 +539,7 @@ Il JWT della Key Attestation Request include i seguenti claim nel body:
       - **Description**
       - **Reference**
     * - **iss**
-      - L'identificatore del Wallet Provider concatenato con la thumbprint della JWK nel claim ``cnf``.
+      - Stringa contenente l'identificativo univoco della Wallet Instance.
       - [:rfc:`9126`], [:rfc:`7519`].
     * - **exp**
       - Timestamp UNIX che rappresenta il tempo di scadenza del JWT.
@@ -590,7 +590,7 @@ Di seguito è riportato un esempio non normativo dell'header e del payload JWT d
 .. code-block:: json
 
     {
-      "iss": "https://wallet-provider.example.org/instance/OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
+      "iss": "OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
       "nonce": "f3b29a81-45c7-4d12-b8b5-e1f6c9327aef",
       "hardware_signature": "KoZIhvcNAQcCoIAwgAIB...",
       "integrity_assertion": "o2NmbXRvYXBwbGUtYXBwYXNzZXJ0aW9uLXBheWxvYWQtYXBw...",
