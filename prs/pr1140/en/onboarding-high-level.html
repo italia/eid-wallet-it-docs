@@ -228,14 +228,14 @@ Operational entities (PID Providers, Attestation Providers, Relying Parties, and
 </div></blockquote>
 <section id="onboarding-of-relying-party-intermediaries">
 <h3><span class="section-number">4.3.1. </span>Onboarding of Relying Party Intermediaries<a class="headerlink" href="#onboarding-of-relying-party-intermediaries" title="Link to this heading">¶</a></h3>
-<p>Relying Party Intermediaries undergo a dedicated onboarding process that grants them both the status of recognized Intermediary and the authority to onboard affiliated Relying Parties on behalf of the Trust Anchor. In the implementation profile described by these technical specifications, a Relying Party Intermediary is also an OpenID Federation Intermediate Entity (see the definition of <strong>IT-Wallet Intermediary</strong>). The process includes:</p>
+<p>Relying Party Intermediaries use a dedicated onboarding process that grants the status of recognized Intermediary and the authority to onboard subordinate Relying Parties. In the implementation profile described by these technical specifications, a Relying Party Intermediary matches an OpenID Federation Intermediate Entity (see the definition of <strong>IT-Wallet Intermediary</strong>). The process includes:</p>
 <ul class="simple">
 <li><p><strong>Administrative registration</strong>: The Intermediary submits organizational and legal documentation demonstrating its eligibility to act on behalf of Relying Parties pursuant to Art. 5b(8) of the eIDAS2 Regulation (<a class="reference external" href="https://eur-lex.europa.eu/eli/reg/2024/1183/oj">EU_2024_1183</a>).</p></li>
-<li><p><strong>Technical registration</strong>: The Intermediary registers its federation keys and endpoints, enabling it to publish its own Entity Configuration and issue Subordinate Statements for affiliated Leaves.</p></li>
-<li><p><strong>Issuance of the Intermediary Trust Mark</strong>: Upon completion of the onboarding process, the Trust Anchor issues to the Intermediary a Trust Mark with identifier <code class="docutils literal notranslate"><span class="pre">https://&lt;federation_authority_domain&gt;/trust_marks/federation-entity/rp_intermediary</span></code>. This Trust Mark is the verifiable evidence of the Intermediary's recognized role in the federation.</p></li>
+<li><p><strong>Technical registration</strong>: The Intermediary registers its federation keys and endpoints, enabling it to publish its own Entity Configuration and issue Subordinate Statements for subordinate Leaves.</p></li>
+<li><p><strong>Issuance of the Intermediary Trust Mark</strong>: Upon completion of the onboarding process, the Trust Anchor issues to the Intermediary a Trust Mark with identifier <code class="docutils literal notranslate"><span class="pre">https://&lt;federation_authority_domain&gt;/trust_marks/federation-entity/openid_credential_verifier_intermediary</span></code>. This Trust Mark is the verifiable evidence of the Intermediary's recognized role in the federation.</p></li>
 <li><p><strong>Authorization to issue Trust Marks</strong>: The Trust Anchor updates its own Entity Configuration by including the Intermediary in the <code class="docutils literal notranslate"><span class="pre">trust_mark_issuers</span></code> attribute for the <code class="docutils literal notranslate"><span class="pre">https://&lt;federation_authority_domain&gt;/trust_marks/federation-entity/openid_credential_verifier</span></code> identifier, authorizing the Intermediary to issue Trust Marks to its affiliated Relying Parties.</p></li>
 </ul>
-<p>Following this onboarding, Relying Parties affiliated with the Intermediary complete their own onboarding through the Intermediary, which acts as an intermediate Registration Authority. The affiliated RP's Entity Configuration MUST include the Trust Mark issued by the Intermediary and MUST set <code class="docutils literal notranslate"><span class="pre">authority_hints</span></code> to the Intermediary's URL identifier.</p>
+<p>The affiliated RP's Entity Configuration MUST include the Trust Mark issued by the Intermediary and MUST set <code class="docutils literal notranslate"><span class="pre">authority_hints</span></code> using the Intermediary's URL identifier.</p>
 </section>
 </section>
 <section id="entity-lifecycle-management">
@@ -511,7 +511,7 @@ Operational entities (PID Providers, Attestation Providers, Relying Parties, and
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 15/06/2026.
+      Last updated on 16/06/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
