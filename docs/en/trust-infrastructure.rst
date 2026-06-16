@@ -364,7 +364,7 @@ The Trust Anchor Entity Configuration, in addition to the common parameters list
 Trust Marks for Relying Party Intermediaries
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In the IT-Wallet ecosystem, Intermediaries acting on behalf of Relying Parties (pursuant to Art. 5b(8) of the eIDAS2 Regulation `EU_2024_1183`_) are subject to a specific Trust Mark regime that allows the Wallet to recognize and display to the User that the requesting RP operates through an Intermediary. In the implementation profile described by these technical specifications, a Relying Party Intermediary is also an OpenID Federation Intermediate Entity (`OID-FED`_): it participates in the federation trust chain as an Intermediate, publishing its own Entity Configuration and issuing Subordinate Statements for its affiliated Relying Parties (see the definition of **IT-Wallet Intermediary**).
+In the IT-Wallet ecosystem, Intermediaries acting on behalf of Relying Parties (pursuant to Art. 5b(8) of the eIDAS2 Regulation `EU_2024_1183`_) are subject to a specific Trust Mark regime that allows the Wallet to recognize and display to the User that the requesting RP operates through an Intermediary. In the implementation profile described by these technical specifications, a Relying Party Intermediary is also an OpenID Federation Intermediate Entity (`OID-FED`_).
 
 **Trust Mark Issuance to the Intermediary**
 
