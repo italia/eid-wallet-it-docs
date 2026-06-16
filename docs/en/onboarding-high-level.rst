@@ -73,7 +73,7 @@ For PID Providers, Attestation Providers, and Relying Parties, the federation on
 Onboarding of Relying Party Intermediaries
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Relying Party Intermediaries undergo a dedicated onboarding process that grants them both the status of recognized Intermediary and the authority to onboard affiliated Relying Parties on behalf of the Trust Anchor. In the implementation profile described by these technical specifications, a Relying Party Intermediary is also an OpenID Federation Intermediate Entity (see the definition of **IT-Wallet Intermediary**). The process includes:
+Relying Party Intermediaries use a dedicated onboarding process that grants the status of recognized Intermediary and the authority to onboard subordinate Relying Parties. In the implementation profile described by these technical specifications, a Relying Party Intermediary matches an OpenID Federation Intermediate Entity (see the definition of **IT-Wallet Intermediary**). The process includes:
 
 - **Administrative registration**: The Intermediary submits organizational and legal documentation demonstrating its eligibility to act on behalf of Relying Parties pursuant to Art. 5b(8) of the eIDAS2 Regulation (`EU_2024_1183`_).
 - **Technical registration**: The Intermediary registers its federation keys and endpoints, enabling it to publish its own Entity Configuration and issue Subordinate Statements for affiliated Leaves.
