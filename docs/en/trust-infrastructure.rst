@@ -368,7 +368,7 @@ In the IT-Wallet ecosystem, Intermediaries acting on behalf of Relying Parties (
 
 **Trust Mark Issuance to the Intermediary**
 
-The Trust Anchor MUST include Relying Party Intermediaries in the ``trust_mark_issuers`` attribute of its own Entity Configuration, authorizing them to issue Trust Marks for their subordinate Leaves. The Trust Anchor issues a Trust Mark to the Intermediary attesting its role, using ``https://<federation_authority_domain>/trust_marks/federation-entity/rp_intermediary`` as ``trust_mark_type`` to distinguish it from the other entities in the ecosystem.
+The Trust Anchor MUST include Relying Party Intermediaries in the ``trust_mark_issuers`` attribute of its own Entity Configuration, authorizing them to issue Trust Marks for their subordinate Leaves. The Trust Anchor issues a Trust Mark to the Intermediary attesting its role, using ``https://<federation_authority_domain>/trust_marks/federation-entity/openid_credential_verifier_intermediary`` as ``trust_mark_type`` to distinguish it from the other entities in the ecosystem.
 
 The Relying Party Intermediary MUST include this Trust Mark in its own Entity Configuration as proof of its recognized role within the Federation.
 
