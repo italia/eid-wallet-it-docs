@@ -498,7 +498,7 @@
 </tr>
 <tr class="row-odd"><td><p><strong>data_capabilities[].dataset_id</strong></p></td>
 <td><p>string</p></td>
-<td><p>OBBLIGATORIO. Il <a class="reference internal" href="defined-terms.html#term-Dataset_id"><span class="xref std std-term">Dataset_id</span></a> nell'ambito della Fonte Autentica, che PUÒ essere utilizzato come parametro di query per il servizio <code class="docutils literal notranslate"><span class="pre">GetAttributeClaims</span></code>.</p></td>
+<td><p>OBBLIGATORIO. L'identificatore univoco del dataset nell'ambito della Fonte Autentica, che PUÒ essere utilizzato come parametro di query per il servizio <code class="docutils literal notranslate"><span class="pre">GetAttributeClaims</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>data_capabilities[].data_origin</strong></p></td>
 <td><p>JSON Object Array</p></td>
@@ -568,7 +568,7 @@
 <td><p>JSON object Array</p></td>
 <td><p>OPZIONALE. Array di Oggetti contenente informazioni per l'Utente in più lingue sullo stato corrente dei dati forniti ed eventualmente le azioni raccomandate. I valori degli stati sono definiti nella sezione <a class="reference internal" href="credential-revocation.html#token-status-lists"><span class="std std-ref">Token Status Lists</span></a>. DEVE contenere i claim <code class="docutils literal notranslate"><span class="pre">locale</span></code>, <code class="docutils literal notranslate"><span class="pre">title</span></code>, <code class="docutils literal notranslate"><span class="pre">description</span></code> e <code class="docutils literal notranslate"><span class="pre">&lt;Status-Type-Value&gt;</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].service_documentation_uri</strong></p></td>
+<tr class="row-odd"><td><p><strong>data_capabilities[].service_documentation</strong></p></td>
 <td><p>string</p></td>
 <td><p>OPZIONALE. URL che punta alla documentazione del servizio della Fonte Autentica.</p></td>
 </tr>
@@ -758,7 +758,7 @@
 <span class="w">      </span><span class="p">],</span>
 <span class="w">      </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/assets/transport-data-logo.svg&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;logo_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-b1946ac92492d2347c6235b4d2611184e2a3f8b8c8f8f8e8f8f8f8f8f8f8f8f8&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;service_documentation_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://docs.gov.example/transport/api-docs&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;service_documentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://docs.gov.example/transport/api-docs&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;update_frequency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;real_time&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;user_information&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">  </span>
 <span class="w">        </span><span class="p">{</span>
@@ -1417,7 +1417,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 11/06/2026.
+      Ultimo aggiornamento 16/06/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

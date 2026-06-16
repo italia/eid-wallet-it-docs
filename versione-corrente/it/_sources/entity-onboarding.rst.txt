@@ -257,7 +257,7 @@ La registrazione della Fonte Autentica segue un processo tecnico descritto di se
      - OBBLIGATORIO. Array contenente le specifiche delle capacità sui dati.
    * - **data_capabilities[].dataset_id**
      - string
-     - OBBLIGATORIO. Il :term:`Dataset_id` nell'ambito della Fonte Autentica, che PUÒ essere utilizzato come parametro di query per il servizio ``GetAttributeClaims``.
+     - OBBLIGATORIO. L'identificatore univoco del dataset nell'ambito della Fonte Autentica, che PUÒ essere utilizzato come parametro di query per il servizio ``GetAttributeClaims``.
    * - **data_capabilities[].data_origin**
      - JSON Object Array
      - OBBLIGATORIO. Array di oggetti contenente il nome leggibile dell'origine o del dipartimento che fornisce i dati in più lingue. DEVE contenere i claim ``locale`` e ``name``.
@@ -309,7 +309,7 @@ La registrazione della Fonte Autentica segue un processo tecnico descritto di se
    * - **data_capabilities[].allowed_states**
      - JSON object Array
      - OPZIONALE. Array di Oggetti contenente informazioni per l'Utente in più lingue sullo stato corrente dei dati forniti ed eventualmente le azioni raccomandate. I valori degli stati sono definiti nella sezione :ref:`credential-revocation:Token Status Lists`. DEVE contenere i claim ``locale``, ``title``, ``description`` e ``<Status-Type-Value>``.
-   * - **data_capabilities[].service_documentation_uri**
+   * - **data_capabilities[].service_documentation**
      - string
      - OPZIONALE. URL che punta alla documentazione del servizio della Fonte Autentica.
    * - **data_capabilities[].update_frequency**

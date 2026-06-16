@@ -67,7 +67,7 @@ L'endpoint dell'e-Service di Raccolta Segnali viene utilizzato dalle Fonti Auten
   * - **objectType**
     - OBBLIGATORIO. Questo è un campo libero che la Fonte Autentica PUÒ utilizzare per specificare ulteriormente il Segnale.
   * - **objectId**
-    - OBBLIGATORIO. Il soggetto a cui è legato il Segnale. DEVE essere impostato sul valore :term:`Object_id` (``object_id``) che la Fonte Autentica ha utilizzato nel payload della risposta del `get attributes` verso il Credential Issuer (vedi :ref:`authentic-source-endpoint:Get Attribute Claims`). Il ``signalType`` del Segnale DEVE essere valorizzato con uno dei seguenti:
+    - OBBLIGATORIO. Il soggetto a cui è legato il Segnale. DEVE essere impostato sul valore ``object_id`` che la Fonte Autentica ha utilizzato nel payload della risposta del `get attributes` verso il Credential Issuer e che corrisponde all'identificativo univoco del database della Fonte Autentica relativo al set di dati dell'Attributo (vedi :ref:`authentic-source-endpoint:Get Attribute Claims`). Il ``signalType`` del Segnale DEVE essere valorizzato con uno dei seguenti:
       
       - ``CREATE``, al fine di notificare la disponibilità degli attributi relativi ad un specifico Attestato Elettronico.
       - ``UPDATE``, al fine di notificare l'aggiornamento degli attributi relativi ad un specifico Attestato Elettronico.
@@ -155,8 +155,8 @@ Dopo che i Segnali sono stati recuperati con successo dal Fornitore di Attestati
 
   - Per ogni Segnale, il Fornitore di Attestati Elettronici DEVE verificare il valore ``SignalType``:
     
-    - se il ``SignalType`` del Segnale è ``UPDATE`` (l'``objectId`` fa riferimento al :term:`Object_id` della Fonte Autentica), lo stato e/o il valore dell'Attributo associato a un Attestato Elettronico necessitano di aggiornamenti;
-    - se il ``SignalType`` del Segnale è ``CREATE`` (l'``objectId`` corrisponde al :term:`Object_id` della Fonte Autentica), gli Attributi richiesti di un Attestato Elettronico specifico sono ora disponibili;
+    - se il ``SignalType`` del Segnale è ``UPDATE`` (l'``objectId`` fa riferimento all'**identificativo univoco presente nella base dati della Fonte Autentica relativo agli Attributi dell'Attestato Elettronico**), lo stato e/o il valore dell'Attributo associato a un Attestato Elettronico necessitano di aggiornamenti;    
+    - se il ``SignalType`` del Segnale è ``CREATE`` (l'``objectId`` corrisponde al **identificativo univoco presente nella base dati della Fonte Autentica relativo agli Attributi dell'Attestato Elettronico**), gli Attributi richiesti di un Attestato Elettronico specifico sono ora disponibili;
 
     Se l'``objectId`` non corrisponde ad alcun identificativo valido noto al Fornitore di Attestati Elettronici, il Segnale DEVE essere ignorato. Altrimenti, se corrisponde a un identificativo noto e valido, il Fornitore di Attestati Elettronici DEVE utilizzare l'endpoint PDND :ref:`authentic-source-endpoint:Get Attribute Claims` della Fonte Autentica per recuperare le informazioni aggiornate e, se possibile, applicare il nuovo stato/attributo all'Attestato Elettronico corrispondente.
     

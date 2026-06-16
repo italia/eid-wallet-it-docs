@@ -67,7 +67,7 @@ The Signal Collection e-Service endpoint is used by Authentic Sources to deposit
   * - **objectType**
     - REQUIRED. Using this field the Authentic Source MAY use to further specify the Signal.
   * - **objectId**
-    - REQUIRED. The subject to which the Signal is bound. It MUST be set to the Authentic Source's :term:`Object_id` (``object_id``) used in the `get attributes` payload response to the Credential Issuer (see :ref:`authentic-source-endpoint:Get Attribute Claims`). The Signal ``signalType`` MUST be valued with one of the following:
+    - REQUIRED. The subject to which the Signal is bound. It MUST be set to the ``object_id`` that the Authentic Source used in the `get attributes` payload response to the the Credential Issuer and that corresponds to the Authentic Source's unique database identifier of the dataset of Attribute (see :ref:`authentic-source-endpoint:Get Attribute Claims`). The Signal ``signalType`` MUST be valued with one of the following:
       
       - ``CREATE``, in order to notify the availability of the attributes related to a specific Digital Credential.
       - ``UPDATE``, in order to notify the updating of the attributes related to a specific Digital Credential.
@@ -155,8 +155,8 @@ After the Signals have been successfully recovered by the Credential Issuer, the
 
   - For each Signal, the Credential Issuer MUST check the ``SignalType`` value:
     
-    - if the Signal ``SignalType`` is ``UPDATE`` (where ``objectId`` refers to the :term:`Object_id` of the Authentic Source), the status and/or value of the attribute associated with a Digital Credential need updates;
-    - if the Signal ``SignalType`` is ``CREATE`` (where ``objectId`` refers to the :term:`Object_id` of the Authentic Source), the requested attributes of a specific Digital Credential are now available; 
+    - if the Signal ``SignalType`` is ``UPDATE`` (where ``objectId`` refers to the **Authentic Source's unique database identifier of the Digital Credential's attributes**), the status and/or value of the attribute associated with a Digital Credential need updates;
+    - if the Signal ``SignalType`` is ``CREATE`` (where ``objectId`` refers to the **Authentic Source's unique database identifier of the Digital Credential's attributes**), the requested attributes of a specific Digital Credential are now available; 
 
     If the ``objectId`` does not correspond to any valid identifier known to the Credential Issuer, the Signal MUST be ignored. Otherwise, if it corresponds to a known and valid identifier, the Credential Issuer MUST use the :ref:`authentic-source-endpoint:Get Attribute Claims` PDND endpoint of the Authentic Source to retrieve the updated information and, if applicable, apply the new status to the corresponding Credential.
     

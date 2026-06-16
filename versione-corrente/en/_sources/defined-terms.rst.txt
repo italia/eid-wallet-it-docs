@@ -12,14 +12,6 @@ Below is the description of acronyms and definitions which are useful for furthe
 .. glossary::
     :sorted:
 
-    **Dataset_id**
-      Alphanumeric string defined by the Authentic Source that uniquely identifies a specific dataset relating to an Electronic Attestation of Attributes.
-      Not present in ARF 2.7.3; specific to IT-Wallet.
-
-    **Object_id**
-      Alphanumeric string defined by the Authentic Source that uniquely identifies a specific instance of an Electronic Attestation of Attributes associated with a particular User.
-      Not present in ARF 2.7.3; specific to IT-Wallet.
-
     **Accreditation Process**
       Process performed by the National Accreditation Body to accredit CABs, resulting in an accreditation certificate.
       Not present in ARF 2.7.3; specific to IT-Wallet.
