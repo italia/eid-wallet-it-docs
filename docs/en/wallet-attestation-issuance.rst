@@ -24,7 +24,7 @@ This section describes how the Wallet Provider issues Key Attestations.
 **Steps 2-3**: The Wallet Instance MUST:
 
   1. Verify the existence of Cryptographic Hardware Keys. If none exist, Wallet Instance re-initialization is required (:ref:`WP_140a <wallet-instance-optional-testcases>`).
-  2. Generate one or batch of asymmetric credential key pair(s) to be attested in Key Attestation (``key_pub_1``, ``key_priv_1``, ..., ``key_pub_n``, ``key_priv_n``).
+  2. Generate one or batch of asymmetric Credential key pair(s) to be attested in Key Attestation (``key_pub_1``, ``key_priv_1``, ..., ``key_pub_n``, ``key_priv_n``).
   3. Verify the Wallet Provider's federation membership and retrieve its metadata (:ref:`WP_023 <wallet-instance-testcases>`).
 
 **Steps 4-6 (Nonce Retrieval)**: The Wallet Instance requests a ``nonce`` value from the :ref:`wallet-provider-endpoint:Wallet Solution Nonce Endpoint` of the Wallet Provider Backend (:ref:`WP_140b <wallet-instance-optional-testcases>`). The ``nonce`` is required to be unpredictable and serves as the main defense against replay attacks. 
@@ -74,7 +74,7 @@ Below is a non-normative example of the ``client_data`` JSON object.
 
 **Steps 20-21 (Key Attestation Issuance Request)**: The Wallet Instance:
 
-* Constructs the Key Attestation Request in the form of a JWT. This JWT includes the ``integrity_assertion``, ``keys_to_attest``, ``hardware_signature``, ``nonce``, ``hardware_key_tag``, ``cnf``, ``platform`` and other configuration related parameters (see :ref:`Table of the Key Attestation Request Body <table_ka_request_claim>`) and is signed using the private key that it is public key illustrated in the request through ``cnf`` (first element of ``keys_to_attest``) (:ref:`WP_140–141 <wallet-instance-optional-testcases>`).
+* Constructs the Key Attestation Request in the form of a JWT. This JWT includes the ``integrity_assertion``, ``keys_to_attest``, ``hardware_signature``, ``nonce``, ``hardware_key_tag``, ``cnf``, ``platform`` and other configuration related parameters (see :ref:`Table of the Key Attestation Request Body <table_ka_request_claim>`). The Key Attestation Request MUST be signed using the private key related to the public key included in the request, using the ``cnf`` parameter (first element of ``keys_to_attest``) (:ref:`WP_140–141 <wallet-instance-optional-testcases>`).
 * Submits the Key Attestation Request to the :ref:`wallet-provider-endpoint:Key Attestation Issuance Endpoint` of the Wallet Provider Backend.
 
 .. note:: 
@@ -96,7 +96,7 @@ The Wallet Instance MUST send the signed Key Attestation Request JWT as an ``ass
 
 Upon successful completion of all checks, the Wallet Provider issues a Key Attestation valid for at least one month.
 
-**Step 28 (Key Attestation Issuance Response)**: Upon successful completion, the Wallet Provider MUST return a confirmation response using status code 200 and Content-Type ``application/json``, containing the Key Attestations signed by the Wallet Provider in the JWT format. The Wallet Instance will then perform security and integrity verification of the Key Attestations received in addition to trust verification of its Issuer (:ref:`WP_030–031 <wallet-instance-testcases>`).
+**Step 28 (Key Attestation Issuance Response)**: Upon successful completion, the Wallet Provider MUST return a confirmation response using status code set with ``200`` and Content-Type ``application/json``. The response MUST contain the Key Attestations signed by the Wallet Provider using the JWT format. The Wallet Instance MUST perform security and integrity verification of the Key Attestations received, along with the trust verification already evaluated about the Issuer (:ref:`WP_030–031 <wallet-instance-testcases>`).
 
 
 Below is a non-normative example of the response.

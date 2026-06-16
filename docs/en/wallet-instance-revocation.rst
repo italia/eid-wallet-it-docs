@@ -118,14 +118,13 @@ The verification of the Wallet Instance validity MUST be performed:
 
 - **During the validity period of the Digital Credential** by the Credential Issuers every 24 hours by checking the Wallet Instance Attestation Status List of the Wallet Instance holding the PID, and the Key Attestation Status List. Indeed, if the Wallet Instance or the Key Attestation is revoked, the PID hosted within it MUST be revoked. Any other Digital Credential obtained through the presentation of the PID MUST therefore be revoked too. 
 
-- **During the Wallet Instance lifecycle** by the Wallet Instance. Each Wallet Provider may implement different methods to allow a Wallet Instance to check its status. The IT Wallet specification suggests to check the Status List of the Wallet Instance Attestation. 
+- **During the Wallet Instance lifecycle** by the Wallet Instance. Each Wallet Provider may implement different methods to allow a Wallet Instance to check its status. The IT Wallet specification RECOMMENDS to use the Status List of the Wallet Instance Attestation. 
 
 .. note::
-  If Credential Issuers issue credentials with a validity period of less than 24 hours, they only need to verify the validity period of the WIA upon issuance.
 
 .. note::
   In the current version of the specification, Credential Issuers are directly notified of a Wallet Instance revocation by the Wallet Provider using a PDND e-service.
 
 .. note::
-  During the Digital Credential presentation phase, a Relying Party can indirectly check the Wallet Instance revocation by checking the Digital Credential revocation. Indeed if a Wallet Instance is revoked, the Wallet Provider will revoke the corresponding Wallet Instance Attestation, triggering the revocation of the Digital Credential by the Credential Issuer.
+  During the Digital Credential presentation phase, a Relying Party can indirectly check the Wallet Instance revocation by checking the Digital Credential revocation. When a Wallet Instance is revoked, the Wallet Provider revokes the corresponding Wallet Instance Attestations, triggering the revocation of the Digital Credential by Credential Issuer.
 
