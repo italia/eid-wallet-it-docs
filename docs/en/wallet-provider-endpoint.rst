@@ -209,7 +209,7 @@ Below is a non-normative example of a Wallet Instance Attestation Request.
     Content-Type: application/json
 
     {
-      "assertion": "eyJpc3MiOiJodHRwczovL3dhbGxldC1wcm92aWRlc..."
+      "assertion": "eyJpc3MiOiJPbnNpYW5kcklqcDdJbU55ZGlJNklsQ..."
     }
 
 In particular, the Wallet Instance Attestation Issuance JWT includes the following HTTP header parameters:
@@ -244,7 +244,7 @@ The Wallet Instance Attestation Request JWT includes the following body claims:
       - **Description**
       - **Reference**
     * - **iss**
-      - The identifier of the Wallet Provider concatenated with the thumbprint of the JWK in the ``cnf`` claim.
+      - String containing the unique identifier of the Wallet Instance.
       - [:rfc:`9126`], [:rfc:`7519`].
     * - **exp**
       - UNIX timestamp representing the JWT expiration time.
@@ -280,9 +280,6 @@ The Wallet Instance Attestation Request JWT includes the following body claims:
 
 Below is a non-normative example of a Wallet Instance Attestation Request JWT header and payload.
 
-
-.. code-block:: json
-
     {
       "alg": "ES256",
       "kid": "OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
@@ -292,7 +289,7 @@ Below is a non-normative example of a Wallet Instance Attestation Request JWT he
 .. code-block:: json
   
     {
-      "iss": "https://wallet-provider.example.org/instance/OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
+      "iss": "OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
       "nonce": "f3b29a81-45c7-4d12-b8b5-e1f6c9327aef",
       "hardware_signature": "KoZIhvcNAQcCoIAwgAIB...",
       "integrity_assertion": "o2NmbXRvYXBwbGUtYXBwYXNzZXJ0aW9uLXBheWxvYWQtYXBw...",
@@ -502,7 +499,7 @@ Below is a non-normative example of a Key Attestation Request.
     Content-Type: application/json
 
     {
-      "assertion": "eyJpc3MiOiJodHRwczovL3dhbGxldC1wcm92aWRlc..."
+      "assertion": "eyJpc3MiOiJPbnNpYW5kcklqcDdJbU55ZGlJNklsQ..."
     }
 
 In particular, the Key Attestation Issuance JWT includes the following HTTP header parameters:
@@ -537,7 +534,7 @@ The Key Attestation Request JWT includes the following body claims:
       - **Description**
       - **Reference**
     * - **iss**
-      - The identifier of the Wallet Provider concatenated with the thumbprint of the JWK in the ``cnf`` claim.
+      - String containing the unique identifier of the Wallet Instance.
       - [:rfc:`9126`], [:rfc:`7519`].
     * - **exp**
       - UNIX timestamp representing the JWT expiration time.
@@ -588,7 +585,7 @@ Below is a non-normative example of a Key Attestation Request JWT header and pay
 .. code-block:: json
   
     {
-      "iss": "https://wallet-provider.example.org/instance/OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
+      "iss": "OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
       "nonce": "f3b29a81-45c7-4d12-b8b5-e1f6c9327aef",
       "hardware_signature": "KoZIhvcNAQcCoIAwgAIB...",
       "integrity_assertion": "o2NmbXRvYXBwbGUtYXBwYXNzZXJ0aW9uLXBheWxvYWQtYXBw...",
