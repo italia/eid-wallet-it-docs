@@ -66,7 +66,9 @@ This specification is based on the following set of requirements:
     - R1, R2, R4, R5
 
 .. note::
-    In these specifications, the ``REST_JWS_2021_POP`` security pattern is implemented by default in accordance with :rfc:`9449`. If DPoP is not supported by the PDND Infrastructure, the proof of possession is attested by the ``TrackingEvidence`` JWT (as detailed below). However, while the ``TrackingEvidence`` is defined in ``AUDIT_REST_02`` to provide additional tracked data, in this context, it acts as proof of possession of the Voucher. Such implementation choices will be referred to as ``POP_DPoP`` and ``POP_TPoP``, respectively.
+    In these specifications, the ``REST_JWS_2021_POP`` security pattern is implemented by default in accordance with :rfc:`9449`.
+
+    Alternatively, the proof of possession COULD be attested by the ``TrackingEvidence`` JWT (as detailed below). However, while the ``TrackingEvidence`` is defined in ``AUDIT_REST_02`` to provide additional tracked data, in this context, it acts as proof of possession of the Voucher. Such implementation choices will be referred to as ``POP_DPoP`` and ``POP_TPoP``, respectively.
 
 The following security patterns defined in `PDND`_ and `MODI`_ MUST NOT be used as they do not comply with the requirements defined above:
 
