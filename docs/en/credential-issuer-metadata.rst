@@ -130,7 +130,7 @@ The *openid_credential_issuer* metadata contains the following claims.
             - **sd**: String indicating whether the claim is selectively disclosable. It MUST be set to `always` if the claim is selectively disclosure or `never` if not.
             - **display**: Array of objects containing display language properties. Array containing display information about the claim indicated in the ``path``. The array contains an object for each language supported. The parameters that MUST be included are
 
-                - **name**: String value of a display name for the claim.
+                - **label**: String value of a display name for the claim.
                 - **description**: human-readable description for the claim.
                 - **locale**: String value that identifies the language of this object represented as a language tag taken from values defined in *BCP47* :rfc:`5646`. There MUST be only one object for each language identifier.
                 
