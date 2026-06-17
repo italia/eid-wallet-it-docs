@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+
+<html lang="it" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>20.3. PDND e-Service Template &#8212; IT-Wallet Specifiche Tecniche - PR #1145</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
+    <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
+    <script src="_static/documentation_options.js?v=53f44254"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=da26b4cc"></script>
+    <script src="_static/js/theme.js"></script>
+    <script src="_static/js/petite-vue.js"></script>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
+    <link rel="index" title="Indice" href="genindex.html" />
+    <link rel="search" title="Cerca" href="search.html" />
+    <link rel="next" title="20.4. Test Plans" href="test-plans.html" />
+    <link rel="prev" title="20.2. e-Service PDND" href="e-service-pdnd.html" /> 
+  </head><body data-dark_mode_code_blocks="true">
+
+<div id="top_nav">
+    
+
+    <nav>
+        
+            
+        
+
+        <p id="toggle_sidebar">
+            <a href="#" title="Toggle sidebar">|||</a>
+        </p>
+        <h1><a href="index.html" title="Go to homepage">IT-Wallet Specifiche Tecniche - PR #1145</a></h1>
+            <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
+    
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+            <path fill="white" d="M 244.8,8 C 106.1,8 0,113.3 0,252 c 0,110.9 69.8,205.8 169.5,239.2 12.8,2.3 17.3,-5.6 17.3,-12.1 0,-6.2 -0.3,-40.4 -0.3,-61.4 0,0 -70,15 -84.7,-29.8 0,0 -11.4,-29.1 -27.8,-36.6 0,0 -22.9,-15.7 1.6,-15.4 0,0 24.9,2 38.6,25.8 21.9,38.6 58.6,27.5 72.9,20.9 2.3,-16 8.8,-27.1 16,-33.7 -55.9,-6.2 -112.3,-14.3 -112.3,-110.5 0,-27.5 7.6,-41.3 23.6,-58.9 -2.6,-6.5 -11.1,-33.3 2.6,-67.9 20.9,-6.5 69,27 69,27 20,-5.6 41.5,-8.5 62.8,-8.5 21.3,0 42.8,2.9 62.8,8.5 0,0 48.1,-33.6 69,-27 13.7,34.7 5.2,61.4 2.6,67.9 16,17.7 25.8,31.5 25.8,58.9 0,96.5 -58.9,104.2 -114.8,110.5 9.2,7.9 17,22.9 17,46.4 0,33.7 -0.3,75.4 -0.3,83.6 0,6.5 4.6,14.4 17.3,12.1 C 428.2,457.8 496,362.9 496,252 496,113.3 383.5,8 244.8,8 Z"/>
+        </svg>
+    
+</a>
+        
+
+        <a id="mode_toggle" href="#" @click.prevent="handleClick" :title="mode">
+    <template v-if="mode == 'light'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_light"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M67.48,18.073c1.913,-1.912 1.913,-5.018 0,-6.931c-1.912,-1.912 -5.018,-1.912 -6.931,0l-6.798,6.799c-1.912,1.912 -1.912,5.018 0,6.931c1.913,1.912 5.018,1.912 6.931,-0l6.798,-6.799Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.728,61.108c1.912,-1.913 1.912,-5.018 -0,-6.931c-1.913,-1.913 -5.019,-1.913 -6.931,-0l-6.799,6.798c-1.912,1.913 -1.912,5.019 0,6.931c1.913,1.913 5.019,1.913 6.931,0l6.799,-6.798Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.682,54.177c-1.913,-1.913 -5.018,-1.913 -6.931,-0c-1.912,1.913 -1.912,5.018 0,6.931l6.798,6.798c1.913,1.913 5.019,1.913 6.931,0c1.913,-1.912 1.913,-5.018 0,-6.931l-6.798,-6.798Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M4.901,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,-0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M18.929,11.142c-1.912,-1.912 -5.018,-1.912 -6.931,0c-1.912,1.913 -1.912,5.019 0,6.931l6.799,6.799c1.912,1.912 5.018,1.912 6.931,-0c1.912,-1.913 1.912,-5.019 -0,-6.931l-6.799,-6.799Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.108,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c-0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c-0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'dark'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_dark"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.901,2.196 -4.901,4.901c0,2.705 2.197,4.901 4.901,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.662,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.989,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.732,61.103c1.91,-1.91 1.91,-5.011 0,-6.921l-0.009,-0.01c-1.91,-1.91 -5.012,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.909,1.91 5.011,1.91 6.92,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.672,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.52,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l-0,-0.01c-0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.901,2.196 -4.901,4.901c0,2.704 2.197,4.9 4.901,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.73,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 -0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.098,34.623c-2.699,0 -4.891,2.192 -4.891,4.892l-0,0.019c-0,2.699 2.192,4.891 4.891,4.891c2.7,0 4.892,-2.192 4.892,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.892,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'darkest'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_darkest"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><path d="M39.315,23.791c8.684,-0 15.734,7.05 15.734,15.733c0,8.684 -7.05,15.734 -15.734,15.734c-8.683,0 -15.733,-7.05 -15.733,-15.734c-0,-8.683 7.05,-15.733 15.733,-15.733Zm0,4.737c6.069,0 10.997,4.927 10.997,10.996c-0,6.069 -4.928,10.996 -10.997,10.996c-6.068,0 -10.996,-4.927 -10.996,-10.996c0,-6.069 4.928,-10.996 10.996,-10.996Z" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.216,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.9,2.196 -4.9,4.901c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.666,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.99,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.737,61.103c1.909,-1.91 1.909,-5.011 -0,-6.921l-0.01,-0.01c-1.91,-1.91 -5.011,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.91,1.91 5.011,1.91 6.921,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.676,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.524,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l0,-0.01c0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.216,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901c-0,2.704 2.196,4.9 4.9,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.734,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.103,34.623c-2.7,0 -4.892,2.192 -4.892,4.892l-0,0.019c-0,2.699 2.192,4.891 4.892,4.891c2.699,0 4.891,-2.192 4.891,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.891,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+</a>
+
+<script>
+(function() {
+    const LOCAL_STORAGE_KEY = 'piccoloThemeMode'
+
+    var initialMode = localStorage.getItem(LOCAL_STORAGE_KEY)
+
+    if (initialMode) {
+        // Make sure the value in local storage is valid
+        if (['light', 'dark', 'darkest'].indexOf(initialMode) == -1) {
+            initialMode = 'light'
+            localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+        }
+    } else {
+        // Check if the client prefers dark mode
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            initialMode = 'dark'
+        } else {
+            initialMode = 'light'
+        }
+        localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+    }
+
+    document.documentElement.dataset.mode = initialMode
+
+    PetiteVue.createApp({
+        'mode': initialMode,
+        handleClick() {
+            let currentMode = this.mode
+
+            if (currentMode == 'light') {
+                this.mode = 'dark'
+            } else if (currentMode == 'dark') {
+                this.mode = 'darkest'
+            } else if (currentMode == 'darkest') {
+                this.mode = 'light'
+            }
+
+            document.documentElement.dataset.mode = this.mode
+            localStorage.setItem(LOCAL_STORAGE_KEY, this.mode)
+
+            console.log(this.mode)
+        }
+    }).mount('#mode_toggle')
+})()
+</script>
+            <p class="mobile_search_link">
+                <a href="search.html" title="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 64" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2">
+                        <path d="M14.873 40.009c-2.315-3.943-3.642-8.532-3.642-13.429C11.231 11.91 23.141 0 37.811 0s26.58 11.91 26.58 26.58-11.91 26.58-26.58 26.58a26.44 26.44 0 0 1-14.277-4.161L9.739 62.794a3.12 3.12 0 0 1-4.413 0L.913 58.382c-1.217-1.218-1.217-3.196 0-4.413l13.96-13.96zM37.811 8.054c10.225 0 18.526 8.301 18.526 18.526s-8.301 18.526-18.526 18.526-18.526-8.301-18.526-18.526S27.586 8.054 37.811 8.054z" fill="#fff" />
+                    </svg>
+                </a>
+            </p>
+        
+
+        <div class="searchbox_wrapper">
+            
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Ricerca veloce</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Vai" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper"><p class="caption" role="heading"><span class="caption-text">Indice dei Contenuti</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduzione</a></li>
+<li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2. Brand Identity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Panoramica dell'Architettura</a></li>
+<li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Sistema di Onboarding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. Design dell'Esperienza Utente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. L'Infrastruttura di Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registry.html">7. Infrastruttura del Registro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entity-onboarding.html">8. Onboarding delle Entità</a></li>
+<li class="toctree-l1"><a class="reference internal" href="x5c-evaluation.html">9. Operazioni di Gestione dei Certificati X.509</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">10. Entità</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">11. Gestione degli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">12. Flussi relativi agli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">13. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">14. Algoritmi Crittografici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">15. Considerazioni di Sicurezza e Privacy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">16. Politiche Generali di Conservazione dei Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">17. Termini Definiti e Riferimenti</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">18. Come contribuire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">19. Rilasci Open Source</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="appendix.html">20. Appendice</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="mobile-application-instance.html">20.1. Istanza dell'Applicazione Mobile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd.html">20.2. e-Service PDND</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">20.3. PDND e-Service Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test-plans.html">20.4. Test Plans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-wp.html">20.5. Specifica OpenAPI del Fornitore di Wallet PDND</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="pdnd-e-service-template">
+<h1><span class="section-number">20.3. </span>PDND e-Service Template<a class="headerlink" href="#pdnd-e-service-template" title="Link to this heading">¶</a></h1>
+<p>La PDND fornisce uno strumento specializzato che migliora i processi di co-progettazione delle API ottimizzando la pubblicazione e il riutilizzo dei servizi elettronici. Questa funzionalità è definita e regolamentata nel presente documento.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>&quot;Linee Guida sull'infrastruttura tecnologica della Piattaforma Digitale Nazionale Dati per l'interoperabilità dei sistemi informativi e delle basi di dati&quot; (<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2025-06/Linee_guida_Infrastruttura_Interoperabilit%C3%A0_PDND_v2_maggio_2025.pdf">PDND</a>).</p></li>
+</ul>
+</div></blockquote>
+<p>Il template del servizio elettronico serve come modello standardizzato contenente tutti i metadati tecnici e descrittivi necessari per un servizio elettronico. I Gestori delle API, che possono essere sia Fornitori che Consumatori all'interno dell'ecosistema PDND, POSSONO creare e mantenere questi template.</p>
+<p>Una volta che un e-service template è pubblicato, è accessibile attraverso il Catalogo Template PDND che è un repository centralizzato che facilita il riutilizzo. Questo catalogo consente a qualsiasi Partecipante PDND autorizzato di sfogliare i template disponibili e istanziare nuovi servizi elettronici basati su progetti esistenti.</p>
+<section id="definizione-e-linee-guida-dell-e-service-template-pdnd">
+<h2><span class="section-number">20.3.1. </span>Definizione e linee guida dell'e-service template PDND<a class="headerlink" href="#definizione-e-linee-guida-dell-e-service-template-pdnd" title="Link to this heading">¶</a></h2>
+<p>L'infrastruttura PDND supporta la gestione del ciclo di vita dei Servizi Elettronici Template, simile a quella dei servizi elettronici tradizionali. Gli stati del ciclo di vita includono: <strong>Draft</strong>, <strong>Active</strong>, <strong>Supsended</strong> e <strong>Deprecated</strong>. Come per i servizi elettronici tradizionali, PDND applica il controllo degli accessi basato sui ruoli per governare le transizioni di stato.</p>
+<section id="gestione-dei-servizi-elettronici-template">
+<h3><span class="section-number">20.3.1.1. </span>Gestione dei Servizi Elettronici Template<a class="headerlink" href="#gestione-dei-servizi-elettronici-template" title="Link to this heading">¶</a></h3>
+<section id="creazione-del-servizio-elettronico-template">
+<h4><span class="section-number">20.3.1.1.1. </span>Creazione del Servizio Elettronico Template<a class="headerlink" href="#creazione-del-servizio-elettronico-template" title="Link to this heading">¶</a></h4>
+<p>I Partecipanti sono abilitati a creare Servizi Elettronici Template tramite una procedura guidata accessibile attraverso l'interfaccia web PDND (le API saranno disponibili in futuro). Il flusso di lavoro di creazione rispecchia da vicino quello della creazione standard di servizi elettronici, con le seguenti distinzioni:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Un campo aggiuntivo identifica il destinatario previsto del template.</p></li>
+<li><p>Il campo &quot;Audience&quot; è omesso.</p></li>
+<li><p>Le soglie sono opzionali e servono come raccomandazioni per i Partecipanti che implementano il template.</p></li>
+</ul>
+</div></blockquote>
+<p>Ai Partecipanti è vietato creare più template con lo stesso nome: i nomi dei template DEVONO essere unici per partecipante. Alla creazione, un template è inizialmente impostato sullo stato Draft. I template possono quindi essere pubblicati nel Catalogo Template, rendendoli così accessibili a tutti i Partecipanti.</p>
+</section>
+<section id="modifica-del-servizio-elettronico-template">
+<h4><span class="section-number">20.3.1.1.2. </span>Modifica del Servizio Elettronico Template<a class="headerlink" href="#modifica-del-servizio-elettronico-template" title="Link to this heading">¶</a></h4>
+<p>I Partecipanti che hanno creato un template possono modificarlo. La portata dei campi modificabili dipende dallo stato del ciclo di vita del template:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Se il template è in stato Draft, tutti i campi sono modificabili.</p></li>
+<li><p>Per i template in altri stati, solo un sottoinsieme limitato di campi può essere modificato direttamente.</p></li>
+<li><p>I campi che non possono essere modificati nei template pubblicati richiedono la creazione di una nuova versione del template per applicare le modifiche.</p></li>
+</ul>
+</div></blockquote>
+<p>Il versionamento dei template funziona in modo simile a quello dei servizi elettronici, dato che le modifiche al modello possono impattare i servizi istanziati e quindi i Partecipanti che consumano quell'istanza.</p>
+<p>I seguenti campi possono essere modificati senza attivare una nuova versione del template:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Name</p></li>
+<li><p>Intended Recipient</p></li>
+<li><p>Description</p></li>
+<li><p>Voucher Time Limit</p></li>
+<li><p>Documentation (escludendo la specifica OpenAPI)</p></li>
+<li><p>Attributes</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="sospensione-del-e-service-template">
+<h4><span class="section-number">20.3.1.1.3. </span>Sospensione del e-service Template<a class="headerlink" href="#sospensione-del-e-service-template" title="Link to this heading">¶</a></h4>
+<p>I template, come i servizi elettronici, possono essere Sospesi. Quando sospesi:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Il template viene rimosso dal catalogo pubblico dei template.</p></li>
+<li><p>L'istanziazione di nuove istanze dal template sospeso è disabilitata.</p></li>
+<li><p>Le istanze precedentemente istanziate rimangono inalterate.</p></li>
+<li><p>I template possono essere riattivati in qualsiasi momento.</p></li>
+<li><p>I template non possono essere eliminati.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="istanziazione-del-e-service-template">
+<h4><span class="section-number">20.3.1.1.4. </span>Istanziazione del e-service Template<a class="headerlink" href="#istanziazione-del-e-service-template" title="Link to this heading">¶</a></h4>
+<p>I Partecipanti possono istanziare un Servizio Elettronico Template sfogliando il Catalogo Template e selezionando un template. Questo processo genera un nuovo servizio elettronico.</p>
+<p>I vincoli di istanziazione includono:</p>
+<blockquote>
+<div><ul>
+<li><p>Solo i template in stato Attivo sono idonei per l'istanziazione.</p></li>
+<li><p>L'istanziazione è facilitata attraverso una procedura guidata nell'interfaccia web PDND.</p></li>
+<li><p>A causa dell'obiettivo di standardizzazione dei template, la maggior parte dei campi è pre-compilata e immutabile durante l'istanziazione.</p></li>
+<li><p>Le seguenti informazioni non possono essere modificate durante l'istanziazione:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Caricamento della documentazione</p></li>
+<li><p>Tempo di scadenza del token</p></li>
+<li><p>Nome, descrizione e attributi</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+<p>Invece, i seguenti campi devono essere specificati durante l'istanziazione:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Audience</p></li>
+<li><p>Thresholds</p></li>
+<li><p>Automatic/Manual Approval Policy</p></li>
+</ul>
+</div></blockquote>
+<p>Inoltre, sebbene la specifica OpenAPI sia fissa, i seguenti campi di metadati possono essere forniti in modo che PDND possa aggiornare automaticamente la specifica YAML:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Contatti (nome, email, URL, URL Termini e Condizioni)</p></li>
+<li><p>URL del server</p></li>
+</ul>
+</div></blockquote>
+<p>Ogni servizio elettronico istanziato mantiene un ciclo di vita indipendente analogo ai servizi elettronici standard.</p>
+</section>
+</section>
+<section id="gestione-delle-versioni">
+<h3><span class="section-number">20.3.1.2. </span>Gestione delle Versioni<a class="headerlink" href="#gestione-delle-versioni" title="Link to this heading">¶</a></h3>
+<p>Il versioning dei template segue un processo controllato:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>La pubblicazione di una nuova versione del template la imposta su Active.</p></li>
+<li><p>La versione precedentemente Active viene automaticamente trasferita a Deprecated.</p></li>
+<li><p>È consentita solo una versione Active per template in qualsiasi momento.</p></li>
+<li><p>I template possono anche avere una singola versione Draft che coesiste con la versione Active.</p></li>
+</ul>
+</div></blockquote>
+<p>Le istanze derivate dai template mantengono un versioning indipendente poiché i Partecipanti possono aggiornare i campi specifici dell'istanza (ad esempio, URL del server) più volte, mentre l'istanza rimane collegata alla versione del template di origine.</p>
+<p>Di conseguenza, le versioni dei template e le versioni delle istanze sono indipendenti e non direttamente correlate.</p>
+<p>I Partecipanti che istanziano un template possono quindi aggiornare sia l'istanza specifica o, se disponibile, aggiornare a una versione più recente del template.</p>
+</section>
+<section id="template-per-fonte-autentica">
+<h3><span class="section-number">20.3.1.3. </span>Template per Fonte Autentica<a class="headerlink" href="#template-per-fonte-autentica" title="Link to this heading">¶</a></h3>
+<p>La funzionalità del servizio elettronico template viene utilizzata per standardizzare la trasmissione dei dati dalle Fonti Autentiche ai Fornitori di Attestati Elettronici.
+Il servizio elettronico template DOVREBBE essere pubblicato all'interno della PDND dal Fornitore di Attestati Elettronici ed è accessibile attraverso il Catalogo Template PDND.</p>
+<section id="parametri-del-template-per-fonte-autentica">
+<h4><span class="section-number">20.3.1.3.1. </span>Parametri del Template per Fonte Autentica<a class="headerlink" href="#parametri-del-template-per-fonte-autentica" title="Link to this heading">¶</a></h4>
+<p>Il servizio elettronico template <strong>DEVE</strong> rispettare le seguenti proprietà:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Name</strong>: IT Wallet - Fonte Autentica - &lt;<code class="docutils literal notranslate"><span class="pre">Nome</span> <span class="pre">dell'Attestato</span> <span class="pre">Elettronico</span></code>&gt;</p></li>
+<li><p><strong>Intended Recipients</strong>: IT Wallet - Fonte Autentica - &lt;<code class="docutils literal notranslate"><span class="pre">Dominio</span> <span class="pre">della</span> <span class="pre">Fonte</span> <span class="pre">Autentica</span></code>&gt;</p></li>
+<li><p><strong>Description</strong>: Descrizioni utili al Fornitore di Attestati Elettronici in relazione al nuovo attestato elettronico &lt;<code class="docutils literal notranslate"><span class="pre">Nome</span> <span class="pre">dell'Attestato</span> <span class="pre">Elettronico</span></code>&gt;</p></li>
+<li><p><strong>Technology</strong>: REST</p></li>
+<li><p><strong>Data variation via Signal Hub</strong>: True</p></li>
+<li><p><strong>Version changelog</strong>: Servizio elettronico Fonte Autentica tramite implementazione template</p></li>
+<li><p><strong>Voucher Time Limit</strong>: 20</p></li>
+<li><p><strong>Suggest custom threshold</strong>: False</p></li>
+<li><p><strong>Suggest manual agreement approval policy</strong>: False</p></li>
+<li><p><strong>Attributes</strong>: &lt;<code class="docutils literal notranslate"><span class="pre">Nome</span> <span class="pre">ufficiale</span> <span class="pre">dell'Ente</span> <span class="pre">Pubblico</span> <span class="pre">Fornitore</span> <span class="pre">di</span> <span class="pre">Attestati</span> <span class="pre">Elettronici</span></code>&gt;</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="istanziazione-del-template-per-fonte-autentica">
+<h4><span class="section-number">20.3.1.3.2. </span>Istanziazione del Template per Fonte Autentica<a class="headerlink" href="#istanziazione-del-template-per-fonte-autentica" title="Link to this heading">¶</a></h4>
+<p>Ogni Fonte Autentica <strong>DOVREBBE</strong> istanziare il servizio elettronico template <em>IT Wallet - Fonte Autentica</em> nella PDND.
+Il processo di istanziazione risulterà in un nuovo servizio elettronico che <strong>DEVE</strong> soddisfare i seguenti requisiti:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Signal Hub</strong>: True</p></li>
+<li><p><strong>Politica di approvazione manuale</strong>: False</p></li>
+<li><p><strong>Soglia giornaliera chiamate API per ogni fornitore</strong>: maggiore di 10000</p></li>
+<li><p><strong>Soglia giornaliera chiamate API</strong>: maggiore di 10000</p></li>
+</ul>
+</div></blockquote>
+<p>Informazioni aggiuntive richieste durante il processo di creazione sono dipendenti dal fornitore.</p>
+</section>
+<section id="specifica-openapi-della-fonte-autentica-pdnd">
+<h4><span class="section-number">20.3.1.3.3. </span>Specifica OpenAPI della Fonte Autentica PDND<a class="headerlink" href="#specifica-openapi-della-fonte-autentica-pdnd" title="Link to this heading">¶</a></h4>
+<p>Di seguito è riportata la specifica OpenAPI completa per i servizi elettronici della Fonte Autentica PDND:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="nt">openapi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0.1</span>
+<span class="linenos">  2</span><span class="nt">info</span><span class="p">:</span>
+<span class="linenos">  3</span><span class="w">  </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IT Wallet API - AS web services</span>
+<span class="linenos">  4</span><span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2.0</span>
+<span class="linenos">  5</span><span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="linenos">  6</span><span class="w">    </span><span class="no"># IT Wallet Authentic Source e-Service exposed via PDND.</span>
+<span class="linenos">  7</span><span class="w">    </span><span class="no">### ModI patterns to be used:</span>
+<span class="linenos">  8</span><span class="w">      </span><span class="no">- &lt;b&gt;ID_AUTH_CHANNEL_01&lt;/b&gt;: Direct Trust TLS (HTTPS)</span>
+<span class="linenos">  9</span><span class="w">      </span><span class="no">- &lt;b&gt;ID_AUTH_REST_01&lt;/b&gt;: Authorization via PDND token</span>
+<span class="linenos"> 10</span><span class="w">      </span><span class="no">- &lt;b&gt;INTEGRITY_REST_02&lt;/b&gt;: Requests and responses are signed</span>
+<span class="linenos"> 11</span><span class="w">      </span><span class="no">- &lt;b&gt;AUDIT_REST_02&lt;/b&gt;: Additional properties (the pattern is optional if DPoP Token is used)</span>
+<span class="linenos"> 12</span><span class="w">      </span><span class="no">- &lt;b&gt;DPoP Token&lt;/b&gt;: Used as an alternative to a Bearer Token (optional)</span>
+<span class="linenos"> 13</span><span class="w">  </span><span class="nt">termsOfService</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://authentic-source.example.it/tos/&quot;</span>
+<span class="linenos"> 14</span><span class="w">  </span><span class="nt">contact</span><span class="p">:</span>
+<span class="linenos"> 15</span><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IT-Wallet &lt;credential_name&gt; &lt;credential_provider&gt;</span>
+<span class="linenos"> 16</span><span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/italia/eid-wallet-it-docs</span>
+<span class="linenos"> 17</span><span class="w">  </span><span class="nt">x-api-id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ASITW-01</span>
+<span class="linenos"> 18</span><span class="w">  </span><span class="nt">x-summary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IT-Wallet Authentic Source API.</span>
+<span class="linenos"> 19</span><span class="nt">servers</span><span class="p">:</span>
+<span class="linenos"> 20</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://test.authentic-source.example.it/v0.2.0</span>
+<span class="linenos"> 21</span><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Authentic Source API test server</span>
+<span class="linenos"> 22</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://authentic-source.example.it/v0.2.0</span>
+<span class="linenos"> 23</span><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Authentic Source API production server</span>
+<span class="linenos"> 24</span><span class="nt">security</span><span class="p">:</span>
+<span class="linenos"> 25</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">BearerAuth</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<span class="linenos"> 26</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">DPoPAuth</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<span class="linenos"> 27</span><span class="nt">paths</span><span class="p">:</span>
+<span class="linenos"> 28</span><span class="w">  </span><span class="nt">/status</span><span class="p">:</span>
+<span class="linenos"> 29</span><span class="w">    </span><span class="nt">get</span><span class="p">:</span>
+<span class="linenos"> 30</span><span class="w">      </span><span class="nt">tags</span><span class="p">:</span>
+<span class="linenos"> 31</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">status</span>
+<span class="linenos"> 32</span><span class="w">      </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Get Authentic Source API status.</span>
+<span class="linenos"> 33</span><span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Health-check endpoint that returns the operational status of the Authentic Source API.</span>
+<span class="linenos"> 34</span><span class="w">      </span><span class="nt">operationId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">authenticSourceStatus</span>
+<span class="linenos"> 35</span><span class="w">      </span><span class="nt">parameters</span><span class="p">:</span>
+<span class="linenos"> 36</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DPoP</span>
+<span class="linenos"> 37</span><span class="w">          </span><span class="nt">in</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">header</span>
+<span class="linenos"> 38</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Use only if the DPoP voucher has been requested from PDND.</span>
+<span class="linenos"> 39</span><span class="w">          </span><span class="nt">schema</span><span class="p">:</span>
+<span class="linenos"> 40</span><span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos"> 41</span><span class="w">            </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">JWT</span>
+<span class="linenos"> 42</span><span class="w">          </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="linenos"> 43</span><span class="w">      </span><span class="nt">responses</span><span class="p">:</span>
+<span class="linenos"> 44</span><span class="w">        </span><span class="s">&quot;200&quot;</span><span class="p p-Indicator">:</span>
+<span class="linenos"> 45</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service available</span>
+<span class="linenos"> 46</span><span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<span class="linenos"> 47</span><span class="w">            </span><span class="nt">application/problem+json</span><span class="p">:</span>
+<span class="linenos"> 48</span><span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="linenos"> 49</span><span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/ProblemDetails&quot;</span>
+<span class="linenos"> 50</span><span class="w">          </span><span class="nt">headers</span><span class="p">:</span>
+<span class="linenos"> 51</span><span class="w">            </span><span class="nt">Cache-Control</span><span class="p">:</span>
+<span class="linenos"> 52</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/CacheControlHeader&quot;</span>
+<span class="linenos"> 53</span><span class="w">            </span><span class="nt">X-RateLimit-Limit</span><span class="p">:</span>
+<span class="linenos"> 54</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RateLimitLimitHeader&quot;</span>
+<span class="linenos"> 55</span><span class="w">            </span><span class="nt">X-RateLimit-Remaining</span><span class="p">:</span>
+<span class="linenos"> 56</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RateLimitRemainingHeader&quot;</span>
+<span class="linenos"> 57</span><span class="w">            </span><span class="nt">X-RateLimit-Reset</span><span class="p">:</span>
+<span class="linenos"> 58</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RateLimitResetHeader&quot;</span>
+<span class="linenos"> 59</span><span class="w">        </span><span class="s">&quot;429&quot;</span><span class="p p-Indicator">:</span>
+<span class="linenos"> 60</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Too Many Requests</span>
+<span class="linenos"> 61</span><span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<span class="linenos"> 62</span><span class="w">            </span><span class="nt">application/problem+json</span><span class="p">:</span>
+<span class="linenos"> 63</span><span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="linenos"> 64</span><span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/ProblemDetails&quot;</span>
+<span class="linenos"> 65</span><span class="w">          </span><span class="nt">headers</span><span class="p">:</span>
+<span class="linenos"> 66</span><span class="w">            </span><span class="c1"># RFC 6585 defines Retry-After. X-RateLimit-Limit, X-RateLimit-Remaining and X-RateLimit-Reset are not required because redundant along with Retry-After.</span>
+<span class="linenos"> 67</span><span class="w">            </span><span class="nt">Retry-After</span><span class="p">:</span>
+<span class="linenos"> 68</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RetryAfterHeader&quot;</span>
+<span class="linenos"> 69</span><span class="w">        </span><span class="s">&quot;503&quot;</span><span class="p p-Indicator">:</span>
+<span class="linenos"> 70</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service Unavailable</span>
+<span class="linenos"> 71</span><span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<span class="linenos"> 72</span><span class="w">            </span><span class="nt">application/problem+json</span><span class="p">:</span>
+<span class="linenos"> 73</span><span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="linenos"> 74</span><span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/ProblemDetails&quot;</span>
+<span class="linenos"> 75</span><span class="w">          </span><span class="nt">headers</span><span class="p">:</span>
+<span class="linenos"> 76</span><span class="w">            </span><span class="nt">Retry-After</span><span class="p">:</span>
+<span class="linenos"> 77</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RetryAfterHeader&quot;</span>
+<span class="linenos"> 78</span>
+<span class="linenos"> 79</span><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">/attribute-claims/{datasetId}</span><span class="p p-Indicator">:</span>
+<span class="linenos"> 80</span><span class="w">    </span><span class="nt">post</span><span class="p">:</span>
+<span class="linenos"> 81</span><span class="w">      </span><span class="nt">tags</span><span class="p">:</span>
+<span class="linenos"> 82</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">credential</span>
+<span class="linenos"> 83</span><span class="w">      </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Get Attribute Claims</span>
+<span class="linenos"> 84</span><span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
+<span class="linenos"> 85</span><span class="w">        </span><span class="no">This service provides the Credential Issuer with all attribute claims necessary for the issuance of a Digital Credential</span>
+<span class="linenos"> 86</span><span class="w">      </span><span class="nt">operationId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">attributeClaims</span>
+<span class="linenos"> 87</span><span class="w">      </span><span class="nt">parameters</span><span class="p">:</span>
+<span class="linenos"> 88</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">in</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">path</span>
+<span class="linenos"> 89</span><span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">datasetId</span>
+<span class="linenos"> 90</span><span class="w">          </span><span class="nt">schema</span><span class="p">:</span>
+<span class="linenos"> 91</span><span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos"> 92</span><span class="w">          </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="linenos"> 93</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Identifier of the dataset as registered in the Authentic Source Registry</span>
+<span class="linenos"> 94</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DPoP</span>
+<span class="linenos"> 95</span><span class="w">          </span><span class="nt">in</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">header</span>
+<span class="linenos"> 96</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Use only if the DPoP voucher has been requested from PDND.</span>
+<span class="linenos"> 97</span><span class="w">          </span><span class="nt">schema</span><span class="p">:</span>
+<span class="linenos"> 98</span><span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos"> 99</span><span class="w">            </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">JWT</span>
+<span class="linenos">100</span><span class="w">          </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="linenos">101</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Agid-JWT-Signature</span>
+<span class="linenos">102</span><span class="w">          </span><span class="nt">in</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">header</span>
+<span class="linenos">103</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
+<span class="linenos">104</span><span class="w">            </span><span class="no">JWT containing the signature of the message headers whose integrity</span>
+<span class="linenos">105</span><span class="w">            </span><span class="no">needs to be guaranteed, to comply with the INTEGRITY_REST_02</span>
+<span class="linenos">106</span><span class="w">            </span><span class="no">security pattern (see &lt;a target=&quot;blank&quot;</span>
+<span class="linenos">107</span><span class="w">            </span><span class="no">href=&quot;https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/e-service-pdnd.html&quot;&gt;e-Service PDND&lt;/a&gt;). &lt;br/&gt;&lt;br/&gt;</span>
+<span class="linenos">108</span>
+<span class="linenos">109</span><span class="w">            </span><span class="no">&lt;a target=&quot;blank&quot; href=&quot;https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImQ0YzNiMmExLTk4NzYtNTQzMi0xMGZlLWRjYmE5ODc2NTQzMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJzdWIiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJhdWQiOiJodHRwczovL2F1dGhlbnRpYy1zb3VyY2UuZXhhbXBsZS5pdCIsImlhdCI6MTczMzM5Nzg0MCwibmJmIjoxNzMzNDAxNjI4LCJleHAiOjE3MzM0MDE0NDAsImp0aSI6ImQzZjdiMmM5LTI3NGEtNDJiNy04ZjhkLTJlOWQ4YjE3MzRiMCIsInNpZ25lZF9oZWFkZXJzIjpbeyJkaWdlc3QiOiJTSEEtMjU2PTcyZTE4YmRkZGYxM2M5MTFiNGRkNTYyZWUyMTk3OWE1YzlmMjM1YzNhMDFiZDE0MjZlODU3ZDhjMWEyODJmNDEifSx7ImNvbnRlbnQtdHlwZSI6ImFwcGxpY2F0aW9uL2pzb24ifV19.tG5-P96CCA6N1IYC-xk4GumoVkA3NFolpbBn2vQ2e9vpWQ8f5Sm2l4-1VrXfKTx-CUVz_puiwqkBhulrNKj2fA&quot;&gt;EXAMPLE</span>
+<span class="linenos">110</span><span class="w">            </span><span class="no">ON JWT.IO&lt;/a&gt;</span>
+<span class="linenos">111</span><span class="w">          </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="linenos">112</span><span class="w">          </span><span class="nt">schema</span><span class="p">:</span>
+<span class="linenos">113</span><span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">114</span><span class="w">            </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">JWT</span>
+<span class="linenos">115</span><span class="w">            </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eyJhbGciOiJFUzI1NiIsImtpZCI6ImQ0YzNiMmExLTk4NzYtNTQzMi0xMGZlLWRjYmE5ODc2NTQzMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJzdWIiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJhdWQiOiJodHRwczovL2F1dGhlbnRpYy1zb3VyY2UuZXhhbXBsZS5pdCIsImlhdCI6MTczMzM5Nzg0MCwibmJmIjoxNzMzNDAxNjI4LCJleHAiOjE3MzM0MDE0NDAsImp0aSI6ImQzZjdiMmM5LTI3NGEtNDJiNy04ZjhkLTJlOWQ4YjE3MzRiMCIsInNpZ25lZF9oZWFkZXJzIjpbeyJkaWdlc3QiOiJTSEEtMjU2PTcyZTE4YmRkZGYxM2M5MTFiNGRkNTYyZWUyMTk3OWE1YzlmMjM1YzNhMDFiZDE0MjZlODU3ZDhjMWEyODJmNDEifSx7ImNvbnRlbnQtdHlwZSI6ImFwcGxpY2F0aW9uL2pzb24ifV19.tG5-P96CCA6N1IYC-xk4GumoVkA3NFolpbBn2vQ2e9vpWQ8f5Sm2l4-1VrXfKTx-CUVz_puiwqkBhulrNKj2fA</span>
+<span class="linenos">116</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Digest</span>
+<span class="linenos">117</span><span class="w">          </span><span class="nt">in</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">header</span>
+<span class="linenos">118</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
+<span class="linenos">119</span><span class="w">            </span><span class="no">Digest of the message payload, to comply with the INTEGRITY_REST_02</span>
+<span class="linenos">120</span><span class="w">            </span><span class="no">security pattern. According to &lt;a target=&quot;blank&quot; href=&quot;https://www.rfc-editor.org/rfc/rfc3230.html#section-4.2&quot;&gt;RFC</span>
+<span class="linenos">121</span><span class="w">            </span><span class="no">3230 §4.2&lt;/a&gt;, the format MUST be the following: digest-algorithm=encoded</span>
+<span class="linenos">122</span><span class="w">            </span><span class="no">digest output.</span>
+<span class="linenos">123</span><span class="w">          </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="linenos">124</span><span class="w">          </span><span class="nt">schema</span><span class="p">:</span>
+<span class="linenos">125</span><span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">126</span><span class="w">            </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SHA-256=72e18bdddf13c911b4dd562ee21979a5c9f235c3a01bd1426e857d8c1a282f41</span>
+<span class="linenos">127</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Agid-JWT-TrackingEvidence</span>
+<span class="linenos">128</span><span class="w">          </span><span class="nt">in</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">header</span>
+<span class="linenos">129</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
+<span class="linenos">130</span><span class="w">            </span><span class="no">If the Voucher type is Bearer, this header represents a JWT acting as a proof of possession, to comply with the REST_JWS_2021_POP security</span>
+<span class="linenos">131</span><span class="w">            </span><span class="no">pattern using the POP_TPoP implementation. Otherwise, it is a JWT containing the data tracked in the Consumer&#39;s domain, to comply with AUDIT_REST_02 (see &lt;a target=&quot;blank&quot;</span>
+<span class="linenos">132</span><span class="w">            </span><span class="no">href=&quot;https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/e-service-pdnd.html&quot;&gt;e-Service PDND&lt;/a&gt;). &lt;br/&gt;&lt;br/&gt;</span>
+<span class="linenos">133</span><span class="w">            </span><span class="no">&lt;a target=&quot;blank&quot; href=&quot;https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImQ0YzNiMmExLTk4NzYtNTQzMi0xMGZlLWRjYmE5ODc2NTQzMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJhdWQiOiJodHRwczovL2F1dGhlbnRpYy1zb3VyY2UuZXhhbXBsZS5pdCIsImV4cCI6MTczMzA1MjYwMCwibmJmIjoxNzMzMDM2NDUwLCJpYXQiOjE3MzMwMzY0MDAsImp0aSI6ImE0YjVjNmQ3LWU4ZjktYWJjZC1lZjEyLTM0NTY3ODkwMTIzNCIsImRub25jZSI6NjUyODQyNDIxMzY4NSwicHVycG9zZUlkIjoiYjJjM2Q0ZTUtZjZnNy1oOGk5LWowazEtbG1ubzEyMzQ1Njc4IiwidXNlcklEIjoiYThiN2M2ZDUtZTRmMy1nMmgxLWk5ajAta2xtbm9wcXJzdHV2IiwibG9hIjoic3Vic3RhbnRpYWwifQ.y42yfMeW2H9h0b0j0BODUml8yF20stY9q3BwoVU5BB90afBj852Q0QlInncdhjXhUjLS1V76cGBxkutDNvxRNA&quot;&gt;EXAMPLE</span>
+<span class="linenos">134</span><span class="w">            </span><span class="no">ON JWT.IO&lt;/a&gt;</span>
+<span class="linenos">135</span><span class="w">          </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="linenos">136</span><span class="w">          </span><span class="nt">schema</span><span class="p">:</span>
+<span class="linenos">137</span><span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">138</span><span class="w">            </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">JWT</span>
+<span class="linenos">139</span><span class="w">            </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eyJhbGciOiJFUzI1NiIsImtpZCI6ImQ0YzNiMmExLTk4NzYtNTQzMi0xMGZlLWRjYmE5ODc2NTQzMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJhdWQiOiJodHRwczovL2F1dGhlbnRpYy1zb3VyY2UuZXhhbXBsZS5pdCIsImV4cCI6MTczMzA1MjYwMCwibmJmIjoxNzMzMDM2NDUwLCJpYXQiOjE3MzMwMzY0MDAsImp0aSI6ImE0YjVjNmQ3LWU4ZjktYWJjZC1lZjEyLTM0NTY3ODkwMTIzNCIsImRub25jZSI6NjUyODQyNDIxMzY4NSwicHVycG9zZUlkIjoiYjJjM2Q0ZTUtZjZnNy1oOGk5LWowazEtbG1ubzEyMzQ1Njc4IiwidXNlcklEIjoiYThiN2M2ZDUtZTRmMy1nMmgxLWk5ajAta2xtbm9wcXJzdHV2IiwibG9hIjoic3Vic3RhbnRpYWwifQ.y42yfMeW2H9h0b0j0BODUml8yF20stY9q3BwoVU5BB90afBj852Q0QlInncdhjXhUjLS1V76cGBxkutDNvxRNA</span>
+<span class="linenos">140</span><span class="w">      </span><span class="nt">requestBody</span><span class="p">:</span>
+<span class="linenos">141</span><span class="w">        </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="linenos">142</span><span class="w">        </span><span class="nt">content</span><span class="p">:</span>
+<span class="linenos">143</span><span class="w">          </span><span class="nt">application/json</span><span class="p">:</span>
+<span class="linenos">144</span><span class="w">            </span><span class="nt">schema</span><span class="p">:</span>
+<span class="linenos">145</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/CredentialClaimsRequest&quot;</span>
+<span class="linenos">146</span><span class="w">      </span><span class="nt">responses</span><span class="p">:</span>
+<span class="linenos">147</span><span class="w">        </span><span class="s">&quot;200&quot;</span><span class="p p-Indicator">:</span>
+<span class="linenos">148</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OK</span>
+<span class="linenos">149</span><span class="w">          </span><span class="nt">headers</span><span class="p">:</span>
+<span class="linenos">150</span><span class="w">            </span><span class="nt">Agid-JWT-Signature</span><span class="p">:</span>
+<span class="linenos">151</span><span class="w">              </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">JWT containing the signature of the message headers whose integrity needs to be guaranteed, to comply with the INTEGRITY_REST_02 security pattern (see &lt;a target=&quot;blank&quot; href=&quot;https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/e-service-pdnd.html&quot;&gt;e-Service PDND&lt;/a&gt;). &lt;a target=&quot;blank&quot; href=&quot;https://jwt.io/#debugger-io?token=ew0KICAiYWxnIjogIkVTMjU2IiwNCiAgImtpZCI6ICJhMWY1YzhkMi00YjM3LTRlOTEtYjBkMi03OWUzZjBjNGE4ZWYiLA0KICAidHlwIjogIkpXVCINCn0.ew0KICAiaXNzIjogIjEyMzRhYmNkLWVmNTYtZ2g3OC1pOWowLWtsbW5vcHFyc3R3eCIsDQogICJzdWIiOiAiMTIzNGFiY2QtZWY1Ni1naDc4LWk5ajAta2xtbm9wcXJzdHd4IiwNCiAgImF1ZCI6ICJodHRwczovL2ZydWl0b3JlLmV4YW1wbGUvZW50ZS1leGFtcGxlL3YxIiwNCiAgImlhdCI6IDE3MzMzOTc4NDAsDQogICJuYmYiOiAxNzMzNDAxNjI4LA0KICAiZXhwIjogMTczMzQwMTQ0MCwNCiAgImp0aSI6ICI4ZTEyZjRiNy05YzNhLTRmODMtOWI4ZC01MWEyYzdmNmU5ZDQiLA0KICAic2lnbmVkX2hlYWRlcnMiOiBbDQogICAgew0KICAgICAgImRpZ2VzdCI6ICJTSEEtMjU2PTc5YTIwYTc0NDMzNjQyMDMwMTgzMDYwMGFkOWJkY2E5OTM1OTNmODc2MjA5YTAwNGI1OTliNTgzMDk1YjBhNjEiDQogICAgfSwNCiAgICB7DQogICAgICAiY29udGVudC10eXBlIjogImFwcGxpY2F0aW9uL2pzb24iDQogICAgfQ0KICBdDQp9.DpuBNo2UgQhL7WLin4mpdZrbIpQq3tPvCX6HfktkxG7L5mk6a8OK1Hg0mQcZfFi3gelS-aL9kFS-6MoSy4csBg&quot;&gt;EXAMPLE</span>
+<span class="linenos">152</span><span class="w">              </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="linenos">153</span><span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="linenos">154</span><span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">155</span><span class="w">            </span><span class="nt">Digest</span><span class="p">:</span>
+<span class="linenos">156</span><span class="w">              </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Digest of the message payload, to comply with the INTEGRITY_REST_02 security pattern. According to RFC 3230 Section 4.2 &lt;a target=&quot;blank&quot; href=&quot;https://www.rfc-editor.org/rfc/rfc3230.html#section-4.2&quot;&gt;RFC 3230 §4.2&lt;/a&gt;, the format MUST be the following digest-algorithm=encoded digest output.</span>
+<span class="linenos">157</span><span class="w">              </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="linenos">158</span><span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="linenos">159</span><span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">160</span><span class="w">                </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SHA-256=79a20a744336420301830600ad9bdca993593f876209a004b599b583095b0a61</span>
+<span class="linenos">161</span><span class="w">            </span><span class="nt">Cache-Control</span><span class="p">:</span>
+<span class="linenos">162</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/CacheControlHeader&quot;</span>
+<span class="linenos">163</span><span class="w">            </span><span class="nt">X-RateLimit-Limit</span><span class="p">:</span>
+<span class="linenos">164</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RateLimitLimitHeader&quot;</span>
+<span class="linenos">165</span><span class="w">            </span><span class="nt">X-RateLimit-Remaining</span><span class="p">:</span>
+<span class="linenos">166</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RateLimitRemainingHeader&quot;</span>
+<span class="linenos">167</span><span class="w">            </span><span class="nt">X-RateLimit-Reset</span><span class="p">:</span>
+<span class="linenos">168</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RateLimitResetHeader&quot;</span>
+<span class="linenos">169</span><span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<span class="linenos">170</span><span class="w">            </span><span class="nt">application/json</span><span class="p">:</span>
+<span class="linenos">171</span><span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="linenos">172</span><span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/CredentialClaimsResponse&quot;</span>
+<span class="linenos">173</span><span class="w">              </span><span class="nt">example</span><span class="p">:</span>
+<span class="linenos">174</span><span class="w">                </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">864000</span>
+<span class="linenos">175</span><span class="w">                </span><span class="nt">userClaims</span><span class="p">:</span>
+<span class="linenos">176</span><span class="w">                  </span><span class="nt">given_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Mario&quot;</span>
+<span class="linenos">177</span><span class="w">                  </span><span class="nt">family_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Rossi&quot;</span>
+<span class="linenos">178</span><span class="w">                  </span><span class="nt">birth_date</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1980-01-10&quot;</span>
+<span class="linenos">179</span><span class="w">                  </span><span class="nt">place_of_birth</span><span class="p">:</span>
+<span class="linenos">180</span><span class="w">                    </span><span class="nt">country</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;IT&quot;</span>
+<span class="linenos">181</span><span class="w">                    </span><span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Roma&quot;</span>
+<span class="linenos">182</span><span class="w">                    </span><span class="nt">locality</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Roma&quot;</span>
+<span class="linenos">183</span><span class="w">                  </span><span class="nt">tax_id_code</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;TINIT-RSSMRA80A01H501Z&quot;</span>
+<span class="linenos">184</span><span class="w">                  </span><span class="nt">personal_administrative_number</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;12345A123A&quot;</span>
+<span class="linenos">185</span><span class="w">                </span><span class="nt">attributeClaims</span><span class="p">:</span>
+<span class="linenos">186</span><span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">object_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;6F9619FF-8B86-D011-B42D-00C04FC964FF&quot;</span>
+<span class="linenos">187</span><span class="w">                    </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;VALID&quot;</span>
+<span class="linenos">188</span><span class="w">                    </span><span class="nt">last_updated</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2025-01-15T10:30:00Z&quot;</span>
+<span class="linenos">189</span><span class="w">                    </span><span class="nt">institute_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Nome</span><span class="nv"> </span><span class="s">Istituto</span><span class="nv"> </span><span class="s">Universitario&quot;</span>
+<span class="linenos">190</span><span class="w">                    </span><span class="nt">programme_type_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Laurea</span><span class="nv"> </span><span class="s">Magistrale&quot;</span>
+<span class="linenos">191</span><span class="w">                    </span><span class="nt">degree_course_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Computer</span><span class="nv"> </span><span class="s">Science</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">Informatica&quot;</span>
+<span class="linenos">192</span><span class="w">                    </span><span class="nt">academic_qualification_date</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2025-06-25&quot;</span>
+<span class="linenos">193</span><span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">object_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;7A0720AB-9C97-E122-C53E-11D05FD075GG&quot;</span>
+<span class="linenos">194</span><span class="w">                    </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;VALID&quot;</span>
+<span class="linenos">195</span><span class="w">                    </span><span class="nt">last_updated</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2025-01-10T08:00:00Z&quot;</span>
+<span class="linenos">196</span><span class="w">                    </span><span class="nt">institute_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Nome</span><span class="nv"> </span><span class="s">Istituto</span><span class="nv"> </span><span class="s">Universitario&quot;</span>
+<span class="linenos">197</span><span class="w">                    </span><span class="nt">programme_type_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Laurea</span><span class="nv"> </span><span class="s">Triennale&quot;</span>
+<span class="linenos">198</span><span class="w">                    </span><span class="nt">degree_course_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Informatica&quot;</span>
+<span class="linenos">199</span><span class="w">                    </span><span class="nt">academic_qualification_date</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2022-11-27&quot;</span>
+<span class="linenos">200</span><span class="w">                </span><span class="nt">metadataClaims</span><span class="p">:</span>
+<span class="linenos">201</span><span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">object_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;6F9619FF-8B86-D011-B42D-00C04FC964FF&quot;</span>
+<span class="linenos">202</span><span class="w">                    </span><span class="nt">issuance_date</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2025-06-25&quot;</span>
+<span class="linenos">203</span><span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">object_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;7A0720AB-9C97-E122-C53E-11D05FD075GG&quot;</span>
+<span class="linenos">204</span><span class="w">                    </span><span class="nt">issuance_date</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2022-11-27&quot;</span>
+<span class="linenos">205</span><span class="w">        </span><span class="s">&quot;400&quot;</span><span class="p p-Indicator">:</span>
+<span class="linenos">206</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request</span>
+<span class="linenos">207</span><span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<span class="linenos">208</span><span class="w">            </span><span class="nt">application/problem+json</span><span class="p">:</span>
+<span class="linenos">209</span><span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="linenos">210</span><span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/ProblemDetails&quot;</span>
+<span class="linenos">211</span><span class="w">          </span><span class="nt">headers</span><span class="p">:</span>
+<span class="linenos">212</span><span class="w">            </span><span class="nt">X-RateLimit-Limit</span><span class="p">:</span>
+<span class="linenos">213</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RateLimitLimitHeader&quot;</span>
+<span class="linenos">214</span><span class="w">            </span><span class="nt">X-RateLimit-Remaining</span><span class="p">:</span>
+<span class="linenos">215</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RateLimitRemainingHeader&quot;</span>
+<span class="linenos">216</span><span class="w">            </span><span class="nt">X-RateLimit-Reset</span><span class="p">:</span>
+<span class="linenos">217</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RateLimitResetHeader&quot;</span>
+<span class="linenos">218</span><span class="w">        </span><span class="s">&quot;401&quot;</span><span class="p p-Indicator">:</span>
+<span class="linenos">219</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Unauthorized</span>
+<span class="linenos">220</span><span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<span class="linenos">221</span><span class="w">            </span><span class="nt">application/problem+json</span><span class="p">:</span>
+<span class="linenos">222</span><span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="linenos">223</span><span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/ProblemDetails&quot;</span>
+<span class="linenos">224</span><span class="w">          </span><span class="nt">headers</span><span class="p">:</span>
+<span class="linenos">225</span><span class="w">            </span><span class="nt">X-RateLimit-Limit</span><span class="p">:</span>
+<span class="linenos">226</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RateLimitLimitHeader&quot;</span>
+<span class="linenos">227</span><span class="w">            </span><span class="nt">X-RateLimit-Remaining</span><span class="p">:</span>
+<span class="linenos">228</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RateLimitRemainingHeader&quot;</span>
+<span class="linenos">229</span><span class="w">            </span><span class="nt">X-RateLimit-Reset</span><span class="p">:</span>
+<span class="linenos">230</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RateLimitResetHeader&quot;</span>
+<span class="linenos">231</span><span class="w">            </span><span class="nt">WWW-Authenticate</span><span class="p">:</span>
+<span class="linenos">232</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/WWWAuthenticateHeader&quot;</span>
+<span class="linenos">233</span><span class="w">        </span><span class="s">&quot;404&quot;</span><span class="p p-Indicator">:</span>
+<span class="linenos">234</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Claims not found</span>
+<span class="linenos">235</span><span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<span class="linenos">236</span><span class="w">            </span><span class="nt">application/problem+json</span><span class="p">:</span>
+<span class="linenos">237</span><span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="linenos">238</span><span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/ProblemDetails&quot;</span>
+<span class="linenos">239</span><span class="w">          </span><span class="nt">headers</span><span class="p">:</span>
+<span class="linenos">240</span><span class="w">            </span><span class="nt">X-RateLimit-Limit</span><span class="p">:</span>
+<span class="linenos">241</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RateLimitLimitHeader&quot;</span>
+<span class="linenos">242</span><span class="w">            </span><span class="nt">X-RateLimit-Remaining</span><span class="p">:</span>
+<span class="linenos">243</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RateLimitRemainingHeader&quot;</span>
+<span class="linenos">244</span><span class="w">            </span><span class="nt">X-RateLimit-Reset</span><span class="p">:</span>
+<span class="linenos">245</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RateLimitResetHeader&quot;</span>
+<span class="linenos">246</span><span class="w">        </span><span class="s">&quot;429&quot;</span><span class="p p-Indicator">:</span>
+<span class="linenos">247</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Too Many Requests</span>
+<span class="linenos">248</span><span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<span class="linenos">249</span><span class="w">            </span><span class="nt">application/problem+json</span><span class="p">:</span>
+<span class="linenos">250</span><span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="linenos">251</span><span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/ProblemDetails&quot;</span>
+<span class="linenos">252</span><span class="w">          </span><span class="nt">headers</span><span class="p">:</span>
+<span class="linenos">253</span><span class="w">            </span><span class="c1"># RFC 6585 defines Retry-After. X-RateLimit-Limit, X-RateLimit-Remaining and X-RateLimit-Reset are not required because redundant along with Retry-After.</span>
+<span class="linenos">254</span><span class="w">            </span><span class="nt">Retry-After</span><span class="p">:</span>
+<span class="linenos">255</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RetryAfterHeader&quot;</span>
+<span class="linenos">256</span><span class="w">        </span><span class="s">&quot;500&quot;</span><span class="p p-Indicator">:</span>
+<span class="linenos">257</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Internal Server Error.</span>
+<span class="linenos">258</span><span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<span class="linenos">259</span><span class="w">            </span><span class="nt">application/problem+json</span><span class="p">:</span>
+<span class="linenos">260</span><span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="linenos">261</span><span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/ProblemDetails&quot;</span>
+<span class="linenos">262</span><span class="w">          </span><span class="nt">headers</span><span class="p">:</span>
+<span class="linenos">263</span><span class="w">            </span><span class="nt">Retry-After</span><span class="p">:</span>
+<span class="linenos">264</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RetryAfterHeader&quot;</span>
+<span class="linenos">265</span><span class="w">        </span><span class="s">&quot;503&quot;</span><span class="p p-Indicator">:</span>
+<span class="linenos">266</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service Unavailable</span>
+<span class="linenos">267</span><span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<span class="linenos">268</span><span class="w">            </span><span class="nt">application/problem+json</span><span class="p">:</span>
+<span class="linenos">269</span><span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="linenos">270</span><span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/ProblemDetails&quot;</span>
+<span class="linenos">271</span><span class="w">          </span><span class="nt">headers</span><span class="p">:</span>
+<span class="linenos">272</span><span class="w">            </span><span class="nt">Retry-After</span><span class="p">:</span>
+<span class="linenos">273</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/headers/RetryAfterHeader&quot;</span>
+<span class="linenos">274</span>
+<span class="linenos">275</span><span class="nt">tags</span><span class="p">:</span>
+<span class="linenos">276</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">status</span>
+<span class="linenos">277</span><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Endpoint di health check dell&#39;API.</span>
+<span class="linenos">278</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">credential</span>
+<span class="linenos">279</span><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Retrieve information about the credential.</span>
+<span class="linenos">280</span>
+<span class="linenos">281</span><span class="nt">components</span><span class="p">:</span>
+<span class="linenos">282</span><span class="w">  </span><span class="nt">securitySchemes</span><span class="p">:</span>
+<span class="linenos">283</span><span class="w">    </span><span class="nt">BearerAuth</span><span class="p">:</span>
+<span class="linenos">284</span><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
+<span class="linenos">285</span><span class="w">      </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bearer</span>
+<span class="linenos">286</span><span class="w">      </span><span class="nt">bearerFormat</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">JWT</span>
+<span class="linenos">287</span><span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PDND Bearer Token</span>
+<span class="linenos">288</span><span class="w">    </span><span class="nt">DPoPAuth</span><span class="p">:</span>
+<span class="linenos">289</span><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apiKey</span>
+<span class="linenos">290</span><span class="w">      </span><span class="nt">in</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">header</span>
+<span class="linenos">291</span><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DPoP</span>
+<span class="linenos">292</span><span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DPoP proof JWT (RFC 9449).</span>
+<span class="linenos">293</span>
+<span class="linenos">294</span><span class="w">  </span><span class="nt">headers</span><span class="p">:</span>
+<span class="linenos">295</span><span class="w">    </span><span class="nt">CacheControlHeader</span><span class="p">:</span>
+<span class="linenos">296</span><span class="w">      </span><span class="nt">schema</span><span class="p">:</span>
+<span class="linenos">297</span><span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">298</span><span class="w">        </span><span class="nt">enum</span><span class="p">:</span>
+<span class="linenos">299</span><span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">no-store</span>
+<span class="linenos">300</span><span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">no-store</span>
+<span class="linenos">301</span><span class="w">    </span><span class="nt">RateLimitLimitHeader</span><span class="p">:</span>
+<span class="linenos">302</span><span class="w">      </span><span class="nt">schema</span><span class="p">:</span>
+<span class="linenos">303</span><span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<span class="linenos">304</span><span class="w">        </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int32</span>
+<span class="linenos">305</span><span class="w">        </span><span class="nt">minimum</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="linenos">306</span><span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Maximum number of requests within the time window.</span>
+<span class="linenos">307</span><span class="w">    </span><span class="nt">RateLimitRemainingHeader</span><span class="p">:</span>
+<span class="linenos">308</span><span class="w">      </span><span class="nt">schema</span><span class="p">:</span>
+<span class="linenos">309</span><span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<span class="linenos">310</span><span class="w">        </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int32</span>
+<span class="linenos">311</span><span class="w">        </span><span class="nt">minimum</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="linenos">312</span><span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Remaining requests within the time window.</span>
+<span class="linenos">313</span><span class="w">    </span><span class="nt">RateLimitResetHeader</span><span class="p">:</span>
+<span class="linenos">314</span><span class="w">      </span><span class="nt">schema</span><span class="p">:</span>
+<span class="linenos">315</span><span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<span class="linenos">316</span><span class="w">        </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int32</span>
+<span class="linenos">317</span><span class="w">        </span><span class="nt">minimum</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="linenos">318</span><span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UTC epoch in seconds, corresponding to when the window for the current rate limit will reset.</span>
+<span class="linenos">319</span><span class="w">    </span><span class="nt">RetryAfterHeader</span><span class="p">:</span>
+<span class="linenos">320</span><span class="w">      </span><span class="nt">schema</span><span class="p">:</span>
+<span class="linenos">321</span><span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<span class="linenos">322</span><span class="w">        </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int32</span>
+<span class="linenos">323</span><span class="w">        </span><span class="nt">minimum</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="linenos">324</span><span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Seconds to wait before receiving another response.</span>
+<span class="linenos">325</span><span class="w">    </span><span class="nt">WWWAuthenticateHeader</span><span class="p">:</span>
+<span class="linenos">326</span><span class="w">      </span><span class="nt">schema</span><span class="p">:</span>
+<span class="linenos">327</span><span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">328</span><span class="w">        </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
+<span class="linenos">329</span><span class="w">          </span><span class="no">Bearer error=&quot;invalid_token&quot;, error_description=&quot;The access token expired&quot;</span>
+<span class="linenos">330</span><span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The request cannot be fulfilled because the Voucher is expired, revoked or otherwise malformed. See &lt;a target=&quot;blank&quot; href=&quot;https://datatracker.ietf.org/doc/html/rfc6750.html#section-3&quot;&gt;RFC6750&lt;/a&gt; and &lt;a target=&quot;blank&quot; href=&quot;https://datatracker.ietf.org/doc/html/rfc9449.html#section-7.1-11&quot;&gt;RFC9449&lt;/a&gt; for details.</span>
+<span class="linenos">331</span>
+<span class="linenos">332</span><span class="w">  </span><span class="nt">schemas</span><span class="p">:</span>
+<span class="linenos">333</span><span class="w">    </span><span class="nt">CredentialClaimsResponse</span><span class="p">:</span>
+<span class="linenos">334</span><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="linenos">335</span><span class="w">      </span><span class="nt">properties</span><span class="p">:</span>
+<span class="linenos">336</span><span class="w">        </span><span class="nt">userClaims</span><span class="p">:</span>
+<span class="linenos">337</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">List of User Claims.</span>
+<span class="linenos">338</span><span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="linenos">339</span><span class="w">          </span><span class="nt">properties</span><span class="p">:</span>
+<span class="linenos">340</span><span class="w">            </span><span class="nt">given_name</span><span class="p">:</span>
+<span class="linenos">341</span><span class="w">              </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Current First Name.</span>
+<span class="linenos">342</span><span class="w">              </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">343</span><span class="w">              </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Mario&quot;</span>
+<span class="linenos">344</span><span class="w">            </span><span class="nt">family_name</span><span class="p">:</span>
+<span class="linenos">345</span><span class="w">              </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Current Family Name.</span>
+<span class="linenos">346</span><span class="w">              </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">347</span><span class="w">              </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Rossi&quot;</span>
+<span class="linenos">348</span><span class="w">            </span><span class="nt">birth_date</span><span class="p">:</span>
+<span class="linenos">349</span><span class="w">              </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Date of Birth.</span>
+<span class="linenos">350</span><span class="w">              </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">351</span><span class="w">              </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1980-01-10&quot;</span>
+<span class="linenos">352</span><span class="w">            </span><span class="nt">place_of_birth</span><span class="p">:</span>
+<span class="linenos">353</span><span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/place_of_birth&quot;</span>
+<span class="linenos">354</span><span class="w">            </span><span class="nt">tax_id_code</span><span class="p">:</span>
+<span class="linenos">355</span><span class="w">              </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">National tax identification number. REQUIRED if personal_administrative_number is absent.</span>
+<span class="linenos">356</span><span class="w">              </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">357</span><span class="w">              </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;TINIT-XXXXXXXXXXXXXXXX&quot;</span>
+<span class="linenos">358</span><span class="w">            </span><span class="nt">personal_administrative_number</span><span class="p">:</span>
+<span class="linenos">359</span><span class="w">              </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">National unique identifier of a natural person. REQUIRED if tax_id_code is absent.</span>
+<span class="linenos">360</span><span class="w">              </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">361</span><span class="w">              </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;XX00000XX&quot;</span>
+<span class="linenos">362</span><span class="w">        </span><span class="nt">attributeClaims</span><span class="p">:</span>
+<span class="linenos">363</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">List of Datasets of Attribute.</span>
+<span class="linenos">364</span><span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">array</span>
+<span class="linenos">365</span><span class="w">          </span><span class="nt">items</span><span class="p">:</span>
+<span class="linenos">366</span><span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="linenos">367</span><span class="w">            </span><span class="nt">properties</span><span class="p">:</span>
+<span class="linenos">368</span><span class="w">              </span><span class="nt">object_id</span><span class="p">:</span>
+<span class="linenos">369</span><span class="w">                </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Unique identifier of the Dataset. It MUST NOT contain personal data. Required also if additionalProperties are not present. This parameter MUST be used to notify through Signal Hub data updating or availability.</span>
+<span class="linenos">370</span><span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">371</span><span class="w">                </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;6F9619FF-8B86-D011-B42D-00C04FC964FF&quot;</span>
+<span class="linenos">372</span><span class="w">              </span><span class="nt">issuance_date</span><span class="p">:</span>
+<span class="linenos">373</span><span class="w">                </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Administrative validity start date of the Dataset</span>
+<span class="linenos">374</span><span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">375</span><span class="w">                </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2025-01-01&quot;</span>
+<span class="linenos">376</span><span class="w">              </span><span class="nt">expiry_date</span><span class="p">:</span>
+<span class="linenos">377</span><span class="w">                </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Administrative expiry date of the Dataset.</span>
+<span class="linenos">378</span><span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">379</span><span class="w">                </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2025-12-31&quot;</span>
+<span class="linenos">380</span><span class="w">            </span><span class="nt">additionalProperties</span><span class="p">:</span>
+<span class="linenos">381</span><span class="w">              </span><span class="nt">oneOf</span><span class="p">:</span>
+<span class="linenos">382</span><span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">383</span><span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<span class="linenos">384</span><span class="w">                  </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int32</span>
+<span class="linenos">385</span><span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<span class="linenos">386</span><span class="w">                  </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int64</span>
+<span class="linenos">387</span><span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">number</span>
+<span class="linenos">388</span><span class="w">                  </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">float</span>
+<span class="linenos">389</span><span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">number</span>
+<span class="linenos">390</span><span class="w">                  </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">double</span>
+<span class="linenos">391</span><span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boolean</span>
+<span class="linenos">392</span><span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">array</span>
+<span class="linenos">393</span><span class="w">                  </span><span class="nt">items</span><span class="p">:</span>
+<span class="linenos">394</span><span class="w">                    </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/additionalPropertiesArray&#39;</span>
+<span class="linenos">395</span><span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="linenos">396</span><span class="w">                  </span><span class="nt">additionalProperties</span><span class="p">:</span>
+<span class="linenos">397</span><span class="w">                    </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/additionalPropertiesObject&#39;</span>
+<span class="linenos">398</span><span class="w">            </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">object_id</span><span class="p p-Indicator">]</span>
+<span class="linenos">399</span><span class="w">        </span><span class="nt">metadataClaims</span><span class="p">:</span>
+<span class="linenos">400</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">List of Metadata of Attribute.</span>
+<span class="linenos">401</span><span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">array</span>
+<span class="linenos">402</span><span class="w">          </span><span class="nt">items</span><span class="p">:</span>
+<span class="linenos">403</span><span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="linenos">404</span><span class="w">            </span><span class="nt">properties</span><span class="p">:</span>
+<span class="linenos">405</span><span class="w">              </span><span class="nt">object_id</span><span class="p">:</span>
+<span class="linenos">406</span><span class="w">                </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Unique identifier of the Dataset. It MUST NOT contain personal data.</span>
+<span class="linenos">407</span><span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">408</span><span class="w">                </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;6F9619FF-8B86-D011-B42D-00C04FC964FF&quot;</span>
+<span class="linenos">409</span><span class="w">              </span><span class="nt">description</span><span class="p">:</span>
+<span class="linenos">410</span><span class="w">                </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Human-Readable description of the Dataset.</span>
+<span class="linenos">411</span><span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">412</span><span class="w">                </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Example:</span><span class="nv"> </span><span class="s">Master&#39;s</span><span class="nv"> </span><span class="s">Degree</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">Computer</span><span class="nv"> </span><span class="s">Science&quot;</span>
+<span class="linenos">413</span><span class="w">              </span><span class="nt">status</span><span class="p">:</span>
+<span class="linenos">414</span><span class="w">                </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="linenos">415</span><span class="w">                  </span><span class="no">Stato del Dataset. OBBLIGATORIO se additionalProperties di attributeClaims sono presenti. I dataset Issued e Expired ricadono in VALID; la scadenza è verificata</span>
+<span class="linenos">416</span><span class="w">                  </span><span class="no">tramite metadata claims (es. expiry_date, nbf/exp). INVALID indica revoca attiva da parte dell&#39;AS.</span>
+<span class="linenos">417</span><span class="w">                  </span><span class="no">Per come questo stato influenza il ciclo di vita dell&#39;Attestato Elettronico gestito dal</span>
+<span class="linenos">418</span><span class="w">                  </span><span class="no">Fornitore di Attestati Elettronici, vedere la sezione &lt;a target=&quot;blank&quot; href=&quot;https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/credential-revocation.html#aggiornamento-dello-stato-da-parte-delle-fonti-autentiche&quot;&gt;Aggiornamento dello Stato da parte delle Fonti Autentiche&lt;/a&gt;.</span>
+<span class="linenos">419</span><span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">420</span><span class="w">                </span><span class="nt">enum</span><span class="p">:</span>
+<span class="linenos">421</span><span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VALID</span>
+<span class="linenos">422</span><span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INVALID</span>
+<span class="linenos">423</span><span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SUSPENDED</span>
+<span class="linenos">424</span><span class="w">                </span><span class="nt">x-enum-description</span><span class="p">:</span>
+<span class="linenos">425</span><span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VALID - Il dataset è valido (include Issued e Expired; la scadenza è verificata via metadata).</span>
+<span class="linenos">426</span><span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INVALID - Il dataset è stato attivamente revocato dalla Fonte Autentica.</span>
+<span class="linenos">427</span><span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SUSPENDED - Il dataset è temporaneamente non valido (tipicamente reversibile).</span>
+<span class="linenos">428</span><span class="w">                </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;VALID&quot;</span>
+<span class="linenos">429</span><span class="w">              </span><span class="nt">status_description</span><span class="p">:</span>
+<span class="linenos">430</span><span class="w">                </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Human-Readable description of the Status.</span>
+<span class="linenos">431</span><span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">432</span><span class="w">                </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Example:</span><span class="nv"> </span><span class="s">Master&#39;s</span><span class="nv"> </span><span class="s">Degree</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">Computer</span><span class="nv"> </span><span class="s">Science&quot;</span>
+<span class="linenos">433</span><span class="w">              </span><span class="nt">last_updated</span><span class="p">:</span>
+<span class="linenos">434</span><span class="w">                </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OBBLIGATORIO se additionalProperties di attributeClaims sono presenti. Last time the status or attributes of the Dataset have been updated. Its format is `YYYY-MM-DDTHH:MM:SSZ`.</span>
+<span class="linenos">435</span><span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">436</span><span class="w">                </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2025-01-15T10:30:00Z&quot;</span>
+<span class="linenos">437</span><span class="w">              </span><span class="nt">interval</span><span class="p">:</span>
+<span class="linenos">438</span><span class="w">                </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Required if userClaims and additionalProperties of AttributeClaim parameters are not present. This represents the estimated amount of time (in seconds) required before making the request of the attribute claims again.</span>
+<span class="linenos">439</span><span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<span class="linenos">440</span><span class="w">                </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int64</span>
+<span class="linenos">441</span><span class="w">                </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">864000</span>
+<span class="linenos">442</span><span class="w">            </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">object_id</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">description</span><span class="p p-Indicator">]</span>
+<span class="linenos">443</span><span class="w">      </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">attributeClaims</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">metadataClaims</span><span class="p p-Indicator">]</span>
+<span class="linenos">444</span><span class="w">    </span><span class="nt">CredentialClaimsRequest</span><span class="p">:</span>
+<span class="linenos">445</span><span class="w">      </span><span class="nt">required</span><span class="p">:</span>
+<span class="linenos">446</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unique_id</span>
+<span class="linenos">447</span><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="linenos">448</span><span class="w">      </span><span class="nt">properties</span><span class="p">:</span>
+<span class="linenos">449</span><span class="w">        </span><span class="nt">unique_id</span><span class="p">:</span>
+<span class="linenos">450</span><span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">451</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ID ANPR or Tax identification number</span>
+<span class="linenos">452</span><span class="w">        </span><span class="nt">object_id</span><span class="p">:</span>
+<span class="linenos">453</span><span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">454</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Unique identifier of the Credential dataset. If this parameter is present only the indicated dataset is returned.</span>
+<span class="linenos">455</span><span class="w">    </span><span class="nt">additionalPropertiesArray</span><span class="p">:</span>
+<span class="linenos">456</span><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">array</span>
+<span class="linenos">457</span><span class="w">      </span><span class="nt">items</span><span class="p">:</span>
+<span class="linenos">458</span><span class="w">        </span><span class="nt">oneOf</span><span class="p">:</span>
+<span class="linenos">459</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">460</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<span class="linenos">461</span><span class="w">          </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int32</span>
+<span class="linenos">462</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<span class="linenos">463</span><span class="w">          </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int64</span>
+<span class="linenos">464</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">number</span>
+<span class="linenos">465</span><span class="w">          </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">float</span>
+<span class="linenos">466</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">number</span>
+<span class="linenos">467</span><span class="w">          </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">double</span>
+<span class="linenos">468</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boolean</span>
+<span class="linenos">469</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="linenos">470</span><span class="w">          </span><span class="nt">additionalProperties</span><span class="p">:</span>
+<span class="linenos">471</span><span class="w">            </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/additionalPropertiesObject&#39;</span>
+<span class="linenos">472</span><span class="w">    </span><span class="nt">additionalPropertiesObject</span><span class="p">:</span>
+<span class="linenos">473</span><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="linenos">474</span><span class="w">      </span><span class="nt">oneOf</span><span class="p">:</span>
+<span class="linenos">475</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">476</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<span class="linenos">477</span><span class="w">          </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int32</span>
+<span class="linenos">478</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<span class="linenos">479</span><span class="w">          </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int64</span>
+<span class="linenos">480</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">number</span>
+<span class="linenos">481</span><span class="w">          </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">float</span>
+<span class="linenos">482</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">number</span>
+<span class="linenos">483</span><span class="w">          </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">double</span>
+<span class="linenos">484</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boolean</span>
+<span class="linenos">485</span><span class="w">    </span><span class="nt">place_of_birth</span><span class="p">:</span>
+<span class="linenos">486</span><span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Place of Birth.</span>
+<span class="linenos">487</span><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="linenos">488</span><span class="w">      </span><span class="nt">properties</span><span class="p">:</span>
+<span class="linenos">489</span><span class="w">        </span><span class="nt">country</span><span class="p">:</span>
+<span class="linenos">490</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;alpha-2</span><span class="nv"> </span><span class="s">country</span><span class="nv"> </span><span class="s">code</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">specified</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">ISO</span><span class="nv"> </span><span class="s">3166-1&quot;</span>
+<span class="linenos">491</span><span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">492</span><span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;IT&quot;</span>
+<span class="linenos">493</span><span class="w">        </span><span class="nt">region</span><span class="p">:</span>
+<span class="linenos">494</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Name</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">state,</span><span class="nv"> </span><span class="s">province,</span><span class="nv"> </span><span class="s">district,</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">local</span><span class="nv"> </span><span class="s">area&quot;</span>
+<span class="linenos">495</span><span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">496</span><span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Roma&quot;</span>
+<span class="linenos">497</span><span class="w">        </span><span class="nt">locality</span><span class="p">:</span>
+<span class="linenos">498</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Name</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">municipality,</span><span class="nv"> </span><span class="s">city,</span><span class="nv"> </span><span class="s">town,</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">village&quot;</span>
+<span class="linenos">499</span><span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">500</span><span class="w">          </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Roma&quot;</span>
+<span class="linenos">501</span><span class="w">      </span><span class="nt">anyOf</span><span class="p">:</span>
+<span class="linenos">502</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">country</span><span class="p p-Indicator">]</span>
+<span class="linenos">503</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">region</span><span class="p p-Indicator">]</span>
+<span class="linenos">504</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">locality</span><span class="p p-Indicator">]</span>
+<span class="linenos">505</span><span class="w">    </span><span class="nt">ProblemDetails</span><span class="p">:</span>
+<span class="linenos">506</span><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="linenos">507</span><span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RFC7807-compliant problem details object for error responses.</span>
+<span class="linenos">508</span><span class="w">      </span><span class="nt">properties</span><span class="p">:</span>
+<span class="linenos">509</span><span class="w">        </span><span class="nt">type</span><span class="p">:</span>
+<span class="linenos">510</span><span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">511</span><span class="w">          </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uri</span>
+<span class="linenos">512</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">An absolute URI that identifies the problem type.</span>
+<span class="linenos">513</span><span class="w">        </span><span class="nt">title</span><span class="p">:</span>
+<span class="linenos">514</span><span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">515</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A short, human-readable summary of the problem type.</span>
+<span class="linenos">516</span><span class="w">        </span><span class="nt">status</span><span class="p">:</span>
+<span class="linenos">517</span><span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<span class="linenos">518</span><span class="w">          </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int32</span>
+<span class="linenos">519</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The HTTP status code generated by the origin server for this occurrence of the problem.</span>
+<span class="linenos">520</span><span class="w">        </span><span class="nt">detail</span><span class="p">:</span>
+<span class="linenos">521</span><span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">522</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A human-readable explanation specific to this occurrence of the problem.</span>
+<span class="linenos">523</span><span class="w">        </span><span class="nt">instance</span><span class="p">:</span>
+<span class="linenos">524</span><span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">525</span><span class="w">          </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uri</span>
+<span class="linenos">526</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">An absolute URI that identifies the specific occurrence of the problem.</span>
+<span class="linenos">527</span><span class="w">      </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">title</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">status</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">detail</span><span class="p p-Indicator">]</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+    
+        <div id="show_right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&lt;</span><span>Page contents</span></a></p>
+        </div>
+
+        <div id="right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
+            <div class="page_toc">
+                <ul>
+<li><a class="reference internal" href="#">20.3. PDND e-Service Template</a><ul>
+<li><a class="reference internal" href="#definizione-e-linee-guida-dell-e-service-template-pdnd">20.3.1. Definizione e linee guida dell'e-service template PDND</a><ul>
+<li><a class="reference internal" href="#gestione-dei-servizi-elettronici-template">20.3.1.1. Gestione dei Servizi Elettronici Template</a><ul>
+<li><a class="reference internal" href="#creazione-del-servizio-elettronico-template">20.3.1.1.1. Creazione del Servizio Elettronico Template</a></li>
+<li><a class="reference internal" href="#modifica-del-servizio-elettronico-template">20.3.1.1.2. Modifica del Servizio Elettronico Template</a></li>
+<li><a class="reference internal" href="#sospensione-del-e-service-template">20.3.1.1.3. Sospensione del e-service Template</a></li>
+<li><a class="reference internal" href="#istanziazione-del-e-service-template">20.3.1.1.4. Istanziazione del e-service Template</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#gestione-delle-versioni">20.3.1.2. Gestione delle Versioni</a></li>
+<li><a class="reference internal" href="#template-per-fonte-autentica">20.3.1.3. Template per Fonte Autentica</a><ul>
+<li><a class="reference internal" href="#parametri-del-template-per-fonte-autentica">20.3.1.3.1. Parametri del Template per Fonte Autentica</a></li>
+<li><a class="reference internal" href="#istanziazione-del-template-per-fonte-autentica">20.3.1.3.2. Istanziazione del Template per Fonte Autentica</a></li>
+<li><a class="reference internal" href="#specifica-openapi-della-fonte-autentica-pdnd">20.3.1.3.3. Specifica OpenAPI della Fonte Autentica PDND</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    
+
+      <div class="clearer"></div>
+    </div>
+    <div class="button_nav_wrapper">
+        <div class="button_nav">
+            <div class="left">
+                
+                <a href="e-service-pdnd.html">
+                    <span class="icon">&lt;</span><span><span class="section-number">20.2. </span>e-Service PDND</span></a>
+                
+            </div>
+
+            <div class="right">
+                
+                    <a href="test-plans.html"><span><span class="section-number">20.4. </span>Test Plans</span><span class="icon">&gt;</span></a>
+                
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer" role="contentinfo">
+      Ultimo aggiornamento 17/06/2026.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
+    </div>
+
+<p id="theme_credit"></p>
+  </body>
+</html>
