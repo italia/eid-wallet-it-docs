@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="it" class="it-wallet-html">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title id="tab-title">IAM Proxy Italia - IT Wallet</title>
+  <meta name="description" content="Scelta del wallet digitale per proseguire con l'autenticazione.">
+  <link rel="icon" href="spid/favicon-32x32.png">
+
+  <link rel="stylesheet" href="css/style.css?v=wallet-ui-20260422">
+  <link href="css/bootstrap-italia.min.css" rel="stylesheet">
+  <link href="css/ita.min.css" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/i18next-http-backend@1.3.1/i18nextHttpBackend.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/i18next@25.5.2/i18next.min.js"></script>
+  <script src="js/bootstrap-italia.bundle.min.js"></script>
+  <script src="js/header-lang-dropdown.js?v=wallet-ui-20260422"></script>
+</head>
+
+<body class="it-wallet-body">
+  <nav class="it-skip-links" aria-label="Collegamenti di salto">
+    <a id="skip-main" class="visually-hidden-focusable" href="#main-content">Vai al contenuto principale</a>
+    <a id="skip-footer" class="visually-hidden-focusable" href="#page-footer">Vai al piè di pagina</a>
+  </nav>
+  <!-- HEADER (same structure as disco.html) -->
+  <header class="it-header-wrapper" role="banner">
+    <div class="it-header-slim-wrapper bg-primary">
+      <div class="container">
+        <div class="it-header-slim-wrapper-content d-flex justify-content-between align-items-center">
+          <span class="navbar-brand text-white"><strong id="header-region-name"></strong></span>
+          <div class="it-header-slim-right-zone">
+            <div class="nav-item dropdown it-header-lang-dropdown">
+              <button type="button" id="languagesDropButton" class="nav-link dropdown-toggle"
+                aria-controls="language-menu"
+                data-bs-toggle="dropdown" aria-haspopup="menu" aria-expanded="false">
+                <span id="header-lang-active-hint" class="visually-hidden">lingua attiva:</span>
+                <span class="it-header-lang-label" aria-hidden="true">ITA</span>
+                <svg class="icon icon-sm ms-1" aria-hidden="true">
+                  <use href="svg/sprites.svg#it-expand"></use>
+                </svg>
+              </button>
+              <div id="language-menu" class="dropdown-menu dropdown-menu-end">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="link-list-wrapper">
+                      <ul class="link-list" role="menu" aria-labelledby="languagesDropButton">
+                        <li>
+                          <button type="button" class="dropdown-item list-item it-lang-option active" data-lang="it"
+                            role="menuitemradio" aria-checked="true" aria-current="true">
+                            <span lang="it">Italiano</span>
+                          </button>
+                        </li>
+                        <li>
+                          <button type="button" class="dropdown-item list-item it-lang-option" data-lang="en"
+                            role="menuitemradio" aria-checked="false">
+                            <span lang="en">English</span>
+                          </button>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="header-title-section">
+      <div class="container py-3">
+        <div class="d-flex align-items-center">
+          <span id="eid-title" class="visually-hidden">Il tuo logo</span>
+          <svg id="header-logo" class="it-header-logo-placeholder" role="img" aria-labelledby="eid-title"
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 40" height="32" focusable="false">
+            <text id="header-logo-text" class="it-header-logo-placeholder__text" x="0" y="28" aria-hidden="true">Il tuo logo</text>
+          </svg>
+
+          <span class="navbar-separator" aria-hidden="true"></span>
+          
+          <img src="img/IT-Wallet-Logo-Primary-BlueItalia.svg" alt="IT-Wallet" class="it-wallet-navbar-logo" height="32">
+
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main id="main-content" class="container my-4 it-wallet-page" aria-labelledby="page-title">
+    <div class="it-wallet-title-row">
+      <div class="it-wallet-title-slot it-wallet-title-slot--start">
+        <a href="#" id="back-link" class="it-wallet-back-link" aria-label="Torna alla pagina precedente">
+          <svg class="icon icon-sm me-1" aria-hidden="true">
+              <use href="svg/sprites.svg#it-arrow-left"></use>
+          </svg>
+          <span class="it-wallet-back-label">Torna indietro</span>
+        </a>
+      </div>
+      <h1 class="it-wallet-title-heading mb-0" id="page-title">Scegli l'app</h1>
+      <div class="it-wallet-title-slot it-wallet-title-slot--end">
+        <div id="wallet-title-actions" class="it-wallet-title-actions" hidden>
+          <button type="button" id="wallet-search-toggle" class="it-wallet-icon-btn" aria-expanded="false"
+            aria-controls="wallet-controls" aria-label="Cerca wallet">
+            <svg id="wallet-search-toggle-icon-open" class="icon" aria-hidden="true">
+              <use href="svg/sprites.svg#it-search"></use>
+            </svg>
+            <img id="wallet-search-toggle-icon-close" class="it-wallet-toggle-img"
+              src="img/it-wallet-search-toggle-close.svg" alt="" aria-hidden="true" hidden>
+          </button>
+        </div>
+      </div>
+    </div>
+    <p class="text-center mb-4 it-wallet-subtitle" id="page-subtitle">Seleziona il portafoglio digitale con cui proseguire</p>
+
+    <section class="it-wallet-layout-surface" aria-labelledby="page-title">
+      <div id="wallet-controls" class="it-wallet-controls it-wallet-controls-panel mb-4">
+        <form id="wallet-search-form" class="it-wallet-search-form" role="search">
+          <div class="it-wallet-search-fieldset">
+            <div class="it-wallet-search-group">
+              <label for="wallet-search" class="visually-hidden" id="wallet-search-label">Cerca wallet per nome</label>
+              <span class="it-wallet-search-icon" aria-hidden="true">
+                <svg class="icon icon-sm">
+                  <use href="svg/sprites.svg#it-search"></use>
+                </svg>
+              </span>
+              <input type="search" id="wallet-search" name="q" class="form-control"
+                placeholder="Nome" autocomplete="off" enterkeyhint="search">
+              <button class="it-wallet-search-clear d-none" type="button" id="search-clear-btn"
+                aria-label="Reset ricerca">
+                <img src="img/it-wallet-clear-x.svg" class="it-wallet-search-clear-icon" alt=""
+                  aria-hidden="true">
+              </button>
+            </div>
+            <button class="btn btn-primary btn-sm" type="submit" id="search-btn"
+              data-i18n="search.button">Cerca</button>
+            <p id="wallet-search-error" class="it-wallet-search-error" role="alert" hidden></p>
+          </div>
+        </form>
+        <div class="it-wallet-sort-wrap">
+          <button type="button" id="wallet-sort-trigger" class="it-wallet-sort-trigger" aria-haspopup="menu"
+            aria-expanded="false" aria-controls="wallet-sort-menu" aria-label="Ordina wallet">
+            <img src="img/it-wallet-sort-icon.svg" class="it-wallet-sort-icon" alt="" aria-hidden="true">
+          </button>
+          <div id="wallet-sort-menu" class="it-wallet-sort-menu" role="menu" aria-labelledby="wallet-sort-trigger" hidden>
+            <button type="button" class="it-wallet-sort-menu-item is-active" role="menuitemradio" aria-checked="true"
+              data-value="default" id="wallet-sort-item-default">Ordine predefinito</button>
+            <button type="button" class="it-wallet-sort-menu-item" role="menuitemradio" aria-checked="false"
+              data-value="az" id="wallet-sort-item-az">Alfabetico A-Z</button>
+            <button type="button" class="it-wallet-sort-menu-item" role="menuitemradio" aria-checked="false"
+              data-value="za" id="wallet-sort-item-za">Alfabetico Z-A</button>
+          </div>
+          <select id="wallet-sort" class="it-wallet-sort-native" tabindex="-1" aria-hidden="true">
+            <option value="default">Ordine predefinito</option>
+            <option value="az">Alfabetico A-Z</option>
+            <option value="za">Alfabetico Z-A</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="wallet-results-status" class="visually-hidden" role="status" aria-live="polite" aria-atomic="true"></div>
+      <div id="wallet-grid" class="row g-4 justify-content-center align-items-start" aria-live="off">
+        <!-- Wallet cards rendered by it-wallet-loader.js -->
+      </div>
+    </section>
+    <noscript>
+      <p id="noscript-message">Per usare la selezione dei wallet è necessario abilitare JavaScript.</p>
+    </noscript>
+  </main>
+
+  <!-- FOOTER (same structure as disco.html) -->
+  <footer id="page-footer" role="contentinfo" tabindex="-1">
+    <div class="container h-100 d-flex align-items-center">
+      <nav id="footer-legal-nav" class="d-flex flex-wrap justify-content-start" aria-label="Link legali">
+        <a id="footer-legal" href="#" class="text-white me-4 mb-2" target="_blank" rel="noopener">Note legali</a>
+        <a id="footer-privacy" href="#" class="text-white me-4 mb-2" target="_blank" rel="noopener">Privacy</a>
+        <a id="footer-accessibility" href="#" class="text-white mb-2" target="_blank" rel="noopener">Dichiarazione di accessibilità</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script type="module" src="js/it-wallet-loader.js?v=wallet-ui-20260422"></script>
+</body>
+
+</html>
