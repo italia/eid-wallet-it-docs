@@ -73,7 +73,7 @@ Per PID Provider, Attestation Provider e Relying Party, il processo di onboardin
 Onboarding degli Intermediari di Relying Party
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Gli :term:`Intermediari di Relying Party <Intermediario di Relying Party>` seguono un processo di onboarding dedicato che conferisce lo status di Intermediario riconosciuto e l'autorità di effettuare l'onboarding delle Relying Party subordinate. Nel profilo implementativo descritto dalle presenti specifiche tecniche, un Intermediario di Relying Party corrisponde a un'Entità Intermedia OpenID Federation (vedi la definizione di **Intermediario IT-Wallet**). Il processo comprende:
+Gli :term:`Intermediari di Relying Party <Intermediario di Relying Party>` seguono un processo di onboarding dedicato che conferisce lo status di Intermediario riconosciuto e l'autorità di effettuare l'onboarding delle Relying Party subordinate. Nel profilo implementativo descritto dalle presenti specifiche tecniche, un Intermediario di Relying Party corrisponde a un Intermediario di Federazione (vedi la definizione di **Intermediario IT-Wallet**). Il processo comprende:
 
 - **Registrazione amministrativa**: L'Intermediario presenta documentazione organizzativa e legale che ne attesta l'idoneità ad agire per conto di Relying Party ai sensi dell'Art. 5b(8) del Regolamento eIDAS2 (`EU_2024_1183`_).
 - **Registrazione tecnica**: L'Intermediario registra le proprie chiavi di federazione e gli endpoint, abilitandolo a pubblicare la propria Entity Configuration e a emettere Subordinate Statement per le Foglie subordinate.
