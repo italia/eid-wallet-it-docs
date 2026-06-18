@@ -9,7 +9,7 @@ Una Relying Party, come entità Organizzativa che si affida all'IT-Wallet, forni
 Per implementare e fornire Soluzioni Tecniche, una Relying Party può avvalersi dei servizi di un **Intermediario di Relying Party**. Ai sensi dell'articolo 5b, paragrafo 8, del `EU_2024_1183`_, gli intermediari che agiscono per conto delle Relying Party sono considerati Relying Party e **non devono conservare dati sul contenuto della transazione** tra l'Utente del Wallet e la Relying Party intermediata. Per le definizioni complete e il quadro giuridico europeo di riferimento, vedi **Intermediario di Relying Party** e **Intermediario IT-Wallet** in :ref:`defined-terms:Definizioni e Acronimi`.
 
 .. note::
-  Nel profilo implementativo descritto dalle presenti specifiche tecniche, un Intermediario di Relying Party è anche un'Entità Intermedia OpenID Federation (**Intermediario IT-Wallet**).
+  Nel profilo implementativo descritto dalle presenti specifiche tecniche, un Intermediario di Relying Party è anche un Intermediario di Federazione (**Intermediario IT-Wallet**).
 
 Una Relying Party fornisce almeno uno dei seguenti componenti:
 
