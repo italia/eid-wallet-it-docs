@@ -1036,7 +1036,7 @@ Privacy Remarks
 - Wallet Instances MUST NOT publish their metadata through an online service.
 - The trust infrastructure MUST be public, with all endpoints publicly accessible without any client credentials that may disclose who is requesting access.
 - When a Wallet Instance requests the Subordinate Statements to build the Trust Chain for a specific Relying Party or validates a Trust Mark online, issued for a specific Relying Party, the Trust Anchor or its Intermediate do not know that a particular Wallet Instance is inquiring about a specific Relying Party; instead, they only serve the statements related to that Relying Party as a public resource.
-- The Wallet Instance metadata MUST not contain information that may disclose technical information about the hardware used.
+- The Wallet Instance metadata MUST NOT contain information that may disclose technical information about the hardware used.
 - Leaf entity, Intermediate, and Trust Anchor metadata may include the necessary amount of data as part of administrative, technical, and security contact information. It is generally not recommended to use personal contact details in such cases. From a legal perspective, the publication of such information is needed for operational support concerning technical and security matters and the GDPR regulation.
 
 

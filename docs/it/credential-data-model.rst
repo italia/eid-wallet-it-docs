@@ -393,11 +393,11 @@ Il `MobileSecurityObject` DEVE avere i seguenti attributi, se non diversamente s
       - *(tstr)*. Versione del `MobileSecurityObject`.
       - [ISO 18013-5#9.1.2.4]
     * - **validityInfo**
-      - *(map, REQUIRED)*. Contiene le date e gli orari di emissione e scadenza del `MobileSecurityObject`. Include i seguenti sub-valori:
+      - *(map, OBBLIGATORIO)*. Contiene le date e gli orari di emissione e scadenza del `MobileSecurityObject`. Include i seguenti sub-valori:
 
-          * **signed** *(tdate, OPTIONAL)*. Il timestamp che indica quando il `MobileSecurityObject` è stato firmato.
-          * **validFrom** *(tdate, OPTIONAL)*. Timestamp prima del quale il `MobileSecurityObject` non è considerato valido. Quando presente, DEVE essere uguale o successivo a `signed`.
-          * **validUntil** *(tdate, REQUIRED)*. Timestamp dopo il quale il `MobileSecurityObject` non è più considerato valido. In conformità al requisito [`EIDAS-ARF`_] **ISSU_12c** e **ISSU_12d** il timestamp NON DEVE essere successivo alla data di scadenza della Wallet Unit Attestation presentata durante il processo di emissione della Credenziale Digitale.
+          * **signed** *(tdate, OPZIONALE)*. Il timestamp che indica quando il `MobileSecurityObject` è stato firmato.
+          * **validFrom** *(tdate, OPZIONALE)*. Timestamp prima del quale il `MobileSecurityObject` non è considerato valido. Quando presente, DEVE essere uguale o successivo a `signed`.
+          * **validUntil** *(tdate, OBBLIGATORIO)*. Timestamp dopo il quale il `MobileSecurityObject` non è più considerato valido. In conformità al requisito [`EIDAS-ARF`_] **ISSU_12c** e **ISSU_12d** il timestamp NON DEVE essere successivo alla data di scadenza della Wallet Unit Attestation presentata durante il processo di emissione della Credenziale Digitale.
 
       - [ISO 18013-5#9.1.2.4]
     * - **digestAlgorithm**

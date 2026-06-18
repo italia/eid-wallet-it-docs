@@ -343,7 +343,7 @@ The **protected header** MUST contain the following parameter encoded in CBOR fo
       - :rfc:`9053`
 
 .. note::
-  Only the signature algorithm MUST be present in the protected header, other elements SHOULD not be present in the protected header.
+  Only the signature algorithm MUST be present in the protected header, other elements SHOULD NOT be present in the protected header.
 
 The **unprotected header** MUST contain the following parameters, unless otherwise specified:
 

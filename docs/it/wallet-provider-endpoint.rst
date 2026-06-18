@@ -386,7 +386,7 @@ La seguente tabella elenca i codici di stato HTTP e i relativi codici di errore 
     * - ``404 Not Found``
       - ``not_found``
       - L'istanza del Wallet non è stata trovata.
-    * - ``422 Unprocessable Content`` [OPTIONAL]
+    * - ``422 Unprocessable Content`` [OPZIONALE]
       - ``validation_error``
       - La richiesta non rispetta il formato richiesto.
     * - ``500 Internal Server Error``
@@ -461,7 +461,7 @@ Il corpo del JWT della Wallet Instance Attestation contiene i seguenti claim:
       - OBBLIGATORIO. Stringa contenente le informazioni su come leggere lo stato della Wallet App Attestation come definito nella Sezione 6.2 di `TOKEN-STATUS-LIST`_.
       - `OpenID4VCI`_.
     * - **eudi_wallet_info**
-      - OPTIONAL. Oggetto JSON contenente le informazioni generali sul Wallet e sul Wallet Provider. Il seguente parametro DEVE essere incluso:
+      - OPZIONALE. Oggetto JSON contenente le informazioni generali sul Wallet e sul Wallet Provider. Il seguente parametro DEVE essere incluso:
 
         - **general_info**: OBBLIGATORIO. Un oggetto che contiene i seguenti parametri:
 

@@ -684,10 +684,10 @@ L'oggetto Credential Offer è un oggetto JSON contenente i parametri definiti ne
     - Array di stringhe, ciascuna delle quali specifica un identificatore univoco dell'Attestato Elettronico descritto nella mappa ``credential_configurations_supported`` nei Metadata del Credential Issuer (:ref:`WP_050b <wallet-credential-issuance-testcases>`).
     - Sezione 4.1.1 di [`OpenID4VCI`_].
   * - **grants**
-    - REQUIRED. DEVE contenere l'oggetto ``authorization_code`` con i seguenti parametri:
+    - OBBLIGATORIO. DEVE contenere l'oggetto ``authorization_code`` con i seguenti parametri:
 
         - **issuer_state**: OPZIONALE. Stringa opaca creata dal Credential Issuer utilizzata per legare la successiva Authorization Request con il Credential Issuer. Il Wallet DEVE includerlo nella successiva Authorization Request quando presente.
-        - **authorization_server**: REQUIRED quando il Credential Issuer utilizza più di un authorization server nella sua soluzione. Stringa che identifica l'Authorization Server da utilizzare. Il valore DEVE corrispondere a uno dei valori mappati nell'array ``authorization_servers`` dei metadata del Credential Issuer. NON DEVE essere utilizzato se ``authorization_servers`` è assente o non ha voci multiple.
+        - **authorization_server**: OBBLIGATORIO quando il Credential Issuer utilizza più di un authorization server nella sua soluzione. Stringa che identifica l'Authorization Server da utilizzare. Il valore DEVE corrispondere a uno dei valori mappati nell'array ``authorization_servers`` dei metadata del Credential Issuer. NON DEVE essere utilizzato se ``authorization_servers`` è assente o non ha voci multiple.
     - Sezione 4.1.1 di [`OpenID4VCI`_] e Sezione 4.1 di [`OPENID4VC-HAIP`_].
 
 .. note::
