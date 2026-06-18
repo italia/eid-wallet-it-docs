@@ -464,7 +464,7 @@ Each mdoc Request MUST be compliant with the following structure, and MUST inclu
            - **DataElementIdentifier** *(tstr)*. The identifier of the requested data element.
            - **IntentToRetain** *(bool)*. Indicates whether the Relying Party intends to retain the value of the data element.
 
-       - **readerAuth** *(COSE_Sign1, CONDITIONAL)*. Used to authenticate the the Relying Party Instance for each `DocRequest`. The signature is computed over `ReaderAuthentication` data, as defined in [`ISO18013-5`_ #12.5].
+       - **readerAuth** *(COSE_Sign1, CONDITIONAL)*. Used to authenticate the Relying Party Instance for each `DocRequest`. The signature is computed over `ReaderAuthentication` data, as defined in [`ISO18013-5`_ #12.5].
 
          This component MUST be present only if `readerAuthAll` is not used (:ref:`PPR-025 <test-plans-proximity-presentation:Proximity Credential Verifier Test Matrix>`).
 

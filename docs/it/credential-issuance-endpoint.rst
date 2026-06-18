@@ -236,7 +236,7 @@ Nella seguente tabella sono elencati gli *Status Code HTTP* e i relativi codici 
     * - *400 Bad Request* [OBBLIGATORIO]
       - ``invalid_scope``
       - Il Credential Issuer non può soddisfare la richiesta perché lo scope richiesto non è valido oppure è sconosciuto. (:rfc:`6749#section-5.2`).
-    * - *400 Bad Request* [REQUIRED]
+    * - *400 Bad Request* [OBBLIGATORIO]
       - ``use_fresh_attestation``
       - Il Wallet Instance Attestation JWT non è abbastanza recente per essere accettato dal server. Sezione 6.2 di `OAUTH-ATTESTATION-CLIENT-AUTH`_.
     * - *401 Unauthorized* [OBBLIGATORIO]
@@ -543,7 +543,7 @@ Nella seguente tabella sono elencati i *status code HTTP* e i relativi codici di
     * - *400 Bad Request* [OBBLIGATORIO]
       - ``invalid_dpop_proof``
       - Il Credential Issuer non può soddisfare la richiesta a causa di un *DPoP proof* non valido. Sezione 5 del [:rfc:`9449`].
-    * - *400 Bad Request* [REQUIRED]
+    * - *400 Bad Request* [OBBLIGATORIO]
       - ``use_fresh_attestation``
       - Il Wallet Instance Attestation JWT non è abbastanza recente per essere accettato dal server. Sezione 6.2 di `OAUTH-ATTESTATION-CLIENT-AUTH`_.
     * - *401 Unauthorized* [OBBLIGATORIO]

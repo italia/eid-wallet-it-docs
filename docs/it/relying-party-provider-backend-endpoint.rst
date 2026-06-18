@@ -109,7 +109,7 @@ La seguente tabella elenca i codici di stato HTTP e i relativi codici di errore 
     * - ``404 Not Found``
       - ``not_found``
       - L'istanza dell'applicazione di verifica (Verifier App) non è stata trovata.
-    * - ``422 Unprocessable Content`` [OPTIONAL]
+    * - ``422 Unprocessable Content`` [OPZIONALE]
       - ``validation_error``
       - La richiesta non rispetta il formato richiesto.
     * - ``500 Internal Server Error``

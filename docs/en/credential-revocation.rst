@@ -274,7 +274,7 @@ The following diagram illustrates the high-level status update process for Authe
 .. only:: format_latex
 
   .. figure:: ./images/pdf/status-update-as.pdf
-    :alt: Status update process process Authentic Sources
+    :alt: Status update process for Authentic Sources
     :width: 100%
 
 The process starts with data or data validity changes that occur in the Authentic Source data. Changes can also be initiated by third-party entities other than the Authentic Source, such as when law enforcement agencies report illegal activities.

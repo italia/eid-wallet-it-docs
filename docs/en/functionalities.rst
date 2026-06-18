@@ -483,7 +483,7 @@ The Authentic Source:
     - Level I Attributes;
     - Level II Attributes (optional);
 
-  - MUST not exceed two levels of nesting in the organisation of attributes;
+  - MUST NOT exceed two levels of nesting in the organisation of attributes;
   - SHOULD NOT exceed a maximum of 15 Attributes per level;
   - SHOULD NOT exceed a maximum of 85 characters for Attribute values;
   - SHOULD NOT exceed a maximum of 181 characters for the value of each description in the case of Level II Attributes with a “list of descriptions”.
