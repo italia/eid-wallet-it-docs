@@ -360,7 +360,7 @@ Below is the description of acronyms and definitions which are useful for furthe
     **Intermediate Entity**
     **Intermediary**
     **OpenID Federation Intermediate**
-      Intermediate Entity as defined in `OID-FED`_ Section 1.2 within the OpenID Federation Trust Chain between a Trust Anchor and Leaf entities. This federation role is conceptually **distinct** from a **Wallet Relying Party Intermediary** under the European Digital Identity framework (`EU_2024_1183`_); however, in the implementation profile described by these technical specifications, a **Relying Party Intermediary** is also implemented as an OpenID Federation Intermediate Entity (see **IT-Wallet Intermediary**).
+      Intermediate Entity as defined in `OID-FED`_ Section 1.2 within the OpenID Federation Trust Chain between a Trust Anchor and Leaf entities. This federation role is conceptually **distinct** from a **Relying Party Intermediary** under the European Digital Identity framework (`EU_2024_1183`_); however, in the implementation profile described by these technical specifications, a **Relying Party Intermediary** is also implemented as an OpenID Federation Intermediate Entity (see **IT-Wallet Intermediary**).
       Aligned with ARF 2.7.3 for federation structures.
 
     **Relying Party Intermediary**
