@@ -1000,7 +1000,7 @@ Content-Type: application/json
 </tr>
 <tr class="row-odd"><td><p><strong>data_capabilities[].dataset_id</strong></p></td>
 <td><p>string</p></td>
-<td><p>REQUIRED. The unique identifier of the dataset within the scope of the Authentic Source, which MAY be used as a query parameter for the <code class="docutils literal notranslate"><span class="pre">GetAttributeClaims</span></code> service.</p></td>
+<td><p>REQUIRED. The <a class="reference internal" href="defined-terms.html#term-Dataset_id"><span class="xref std std-term">Dataset_id</span></a> within the scope of the Authentic Source, which MAY be used as a query parameter for the <code class="docutils literal notranslate"><span class="pre">GetAttributeClaims</span></code> service.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>data_capabilities[].data_origin_l10n_id</strong></p></td>
 <td><p>string</p></td>
@@ -1062,7 +1062,7 @@ Content-Type: application/json
 <td><p>string</p></td>
 <td><p>OPTIONAL. Localization key referencing a Markdown-formatted string with human-readable information about the data capability relevant to the User (e.g., <code class="docutils literal notranslate"><span class="pre">authentic_source1.dataset1.userinfo</span></code>). This string MUST be provided by the Authentic Source to the Trust Anchor during onboarding. The Markdown formatting can be plain text or a combination of text and links. For example, if the Authentic Source's database only contains data registered <em>after</em> a specific date, this information MUST be conveyed through this key.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>data_capabilities[].service_documentation</strong></p></td>
+<tr class="row-odd"><td><p><strong>data_capabilities[].service_documentation_uri</strong></p></td>
 <td><p>string</p></td>
 <td><p>OPTIONAL. URL pointing to the Authentic Source service documentation.</p></td>
 </tr>
@@ -1226,7 +1226,7 @@ Content-Type: application/json
 <span class="w">                    </span><span class="p">],</span>
 <span class="w">                    </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/logos/38832801/image.svg&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;logo_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-b1946ac92492d2347c6235b4d2611184e2a3f8b8c8f8f8e8f8f8f8f8f8f8f8f8&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;service_documentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://docs.gov.example/transport/api-docs&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;service_documentation_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://docs.gov.example/transport/api-docs&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;update_frequency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;real_time&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;user_information_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;authentic_source1.dataset1.userinfo&quot;</span>
 <span class="w">                </span><span class="p">}</span>
@@ -1326,7 +1326,7 @@ Content-Type: application/json
 <span class="w">                    </span><span class="p">],</span>
 <span class="w">                    </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/logos/38854801/image.svg&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;logo_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-d8e8fca2dc0f896fd7cb4cb0031ba249e3f8b8c8f8f8e8f8f8f8f8f8f8f8f8f9&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;service_documentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://docs.bank.example/psd2-api&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;service_documentation_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://docs.bank.example/psd2-api&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;update_frequency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;daily&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;user_information_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;authentic_source2.dataset1.userinfo&quot;</span>
 <span class="w">                </span><span class="p">},</span>
@@ -1387,7 +1387,7 @@ Content-Type: application/json
 <span class="w">                    </span><span class="p">],</span>
 <span class="w">                    </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/logos/38854802/image.svg&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;logo_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-f4a2b7e1dc0f896fd7cb4cb0031ba249e3f8b8c8f8f8e8f8f8f8f8f8f8f8f8fb&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;service_documentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://docs.bank.example/psd2-api&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;service_documentation_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://docs.bank.example/psd2-api&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;update_frequency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;weekly&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;user_information_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;authentic_source2.dataset2.userinfo&quot;</span>
 <span class="w">                </span><span class="p">}</span>
@@ -2198,7 +2198,35 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 <td><p>REQUIRED. Array of usage purpose IDs for which the Digital Credential can be used, defining specific usage contexts and required claims for each purpose (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;IDENTITY_VERIFICATION&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;AGE_VERIFICATION&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;DRIVING_RIGHTS_VERIFICATION&quot;</span></code>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>issuers</strong></p></td>
-<td><p>REQUIRED. Array of relevant information about authorized Credential Issuers, including administrative and technical data such as Organization name, a reference to the API specification document and supported issuance mechanisms (for example the deferred flow support).</p></td>
+<td><p>REQUIRED. Array of relevant information about authorized Credential Issuers, including administrative and technical data such as Organization name, a reference to the API specification document and supported issuance mechanisms. Each array element contains:</p>
+<blockquote>
+<div><ul>
+<li><p><strong>entity_id</strong>: REQUIRED. String. Unique identifier of the Credential Issuer. It MUST match with the value contained in the <code class="docutils literal notranslate"><span class="pre">iss</span></code> parameter of the Credential Issuer Entity Configuration.</p></li>
+<li><p><strong>organization_name_l10n_id</strong>: REQUIRED. String. Localization key referencing the localized organization name in the localization bundle (e.g., <code class="docutils literal notranslate"><span class="pre">issuer1.name</span></code>).</p></li>
+<li><p><strong>organization_code</strong>: REQUIRED. String. Credential Issuer IPA code for government entities or VAT number for private entities.</p></li>
+<li><p><strong>organization_country</strong>: REQUIRED. String. Two-letter ISO 3166-1 alpha-2 country code of the organization.</p></li>
+<li><p><strong>contacts</strong>: REQUIRED. String. Array of contact email addresses for at least one user-support, one application, and one systems specialist.</p></li>
+<li><p><strong>legal_type</strong>: REQUIRED. String. Legal classification of the Credential Issuer (e.g., pub-eaa, qeaa, eaa).</p></li>
+<li><p><strong>homepage_uri</strong>: REQUIRED. String. URL pointing to the organization's homepage.</p></li>
+<li><p><strong>logo_uri</strong>: OPTIONAL. String. URL to the organization's logo image.</p></li>
+<li><p><strong>policy_uri</strong>: REQUIRED. String. URL to privacy policy document.</p></li>
+<li><p><strong>tos_uri</strong>: OPTIONAL. String. URL to terms of service document.</p></li>
+<li><p><strong>service_documentation_uri</strong>: OPTIONAL. String. URL pointing to the Credential Issuer service documentation.</p></li>
+<li><p><strong>issuance_flows</strong>: REQUIRED. Object. It contains the following parameters:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>deferred_flow</strong>: REQUIRED. Boolean. Indicates if the deferred issuance is supported.</p></li>
+<li><p><strong>immediate_flows</strong>: REQUIRED. Boolean. Indicates if the immediate issuance is supported.</p></li>
+<li><p><strong>wallet_initiated</strong>: REQUIRED. Boolean. Indicates if the Wallet-Initiated flow is supported.</p></li>
+<li><p><strong>issuer_initiated</strong>: REQUIRED. Boolean. Indicates if the Issuer-Initiated flow issuance is supported (Third Party Initiated Flow).</p></li>
+<li><p><strong>max_deferred_issuance_time_minutes</strong>: CONDITIONAL. Integer. Maximum time in minutes for the availability of the issuance of the Credential. REQUIRED if <code class="docutils literal notranslate"><span class="pre">deferred_flow</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></li>
+<li><p><strong>notification_methods</strong>: CONDITIONAL. String Array. Contains the notification methods supported by the Credential issuer for the deferred issuance, such as <code class="docutils literal notranslate"><span class="pre">&quot;push&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;poll&quot;</span></code>. REQUIRED if <code class="docutils literal notranslate"><span class="pre">deferred_flow</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</td>
 </tr>
 <tr class="row-even"><td><p><strong>localization</strong></p></td>
 <td><p>REQUIRED. Localization configuration object containing:</p>
@@ -2327,7 +2355,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 <span class="w">            </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;IDENTITY_VERIFICATION&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;AGE_VERIFICATION&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;DRIVING_RIGHTS&quot;</span><span class="p">],</span>
 <span class="w">            </span><span class="nt">&quot;issuers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;entity_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;organization_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mDL.issuer1.name&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;organization_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ci_example_it&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;organization_country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IT&quot;</span><span class="p">,</span>
@@ -2340,8 +2368,10 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 <span class="w">                    </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org/logo.svg&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;policy_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org/privacy&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;tos_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org/terms&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;service_documentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org/.well-known/service-doc&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;service_documentation_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org/.well-known/service-doc&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;issuance_flows&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;wallet_initiated&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;issuer_initiated&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">                        </span><span class="nt">&quot;deferred_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">                        </span><span class="nt">&quot;max_deferred_issuance_time_minutes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1440</span><span class="p">,</span>
 <span class="w">                        </span><span class="nt">&quot;notification_methods&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
@@ -3409,7 +3439,7 @@ The main Journeys below illustrate the interactions with the Registry Infrastruc
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 16/06/2026.
+      Last updated on 18/06/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

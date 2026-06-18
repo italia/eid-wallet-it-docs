@@ -66,10 +66,10 @@
   background-color: #0066CC;
   color: #FFFFFF;
   padding: 12px 24px; /* Bootstrap Italia / design system spec */
-  /* Default size: Small (S) per Brand Manual */
-  font-size: 0.875rem;    /* 14px */
-  line-height: 1.428;     /* ~20px */
-  min-height: 40px; /* Accessibility: minimum touch area */
+  /* Default size: Medium (M) - versione consigliata */
+  font-size: 1rem;        /* 16px */
+  line-height: 1.4;       /* ~22px */
+  min-height: 48px; /* Accessibility: minimum touch area */
   justify-content: flex-start; /* Default: left alignment */
   box-shadow: none;
 }
@@ -99,14 +99,14 @@
   color: #FFFFFF;
 }
 
-/* Icon - default size Small (S) */
+/* Icon - default size Medium (M) */
 .btn-itwallet-auth .btn-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 13px;
-  height: 16px;
+  width: 20px;
+  height: 24px;
 }
 
 .btn-itwallet-auth .btn-icon svg {
@@ -156,9 +156,9 @@
   padding-left: 0;
 }
 
-/* Sizes - default is Small (S) */
+/* Sizes - default is Medium (M) */
 
-/* Small (default) - base .btn-itwallet-auth already uses these values */
+/* Small */
 .btn-itwallet-auth.btn-sm {
   padding: 12px 24px;
   font-size: 0.875rem;   /* 14px */
@@ -172,11 +172,11 @@
   height: 16px;
 }
 
-/* Medium */
+/* Medium (default) - base .btn-itwallet-auth already uses these values */
 .btn-itwallet-auth.btn-md {
   padding: 12px 24px;
-  font-size: 0.9375rem;  /* 15px */
-  line-height: 1.4;      /* ~21px */
+  font-size: 1rem;       /* 16px */
+  line-height: 1.4;      /* ~22px */
   min-height: 48px;
   gap: 8px;
 }

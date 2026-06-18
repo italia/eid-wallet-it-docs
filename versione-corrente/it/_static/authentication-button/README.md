@@ -84,9 +84,9 @@ Dimensione del bottone fissa. L'icona è allineata a sinistra, mentre la label �
 
 ### Varianti di Dimensione
 
-La dimensione di default è **Small (S)**. Per usare il bottone in dimensione default non è necessario aggiungere classi di size.
+La dimensione di default (consigliata) è **Medium (M)**. Per usare il bottone nella dimensione default non è necessario aggiungere classi di size; la classe `btn-md` è fornita per esplicitarla.
 
-#### Small (Default)
+#### Small
 ```html
 <button class="btn btn-itwallet-auth btn-sm" type="button">
   <span class="btn-icon">...</span>
@@ -94,7 +94,7 @@ La dimensione di default è **Small (S)**. Per usare il bottone in dimensione de
 </button>
 ```
 
-#### Medium
+#### Medium (Default)
 ```html
 <button class="btn btn-itwallet-auth btn-md" type="button">
   <span class="btn-icon">...</span>
