@@ -417,7 +417,7 @@ L'Entity Configuration del Trust Anchor, oltre ai parametri comuni elencati sopr
 Trust Mark degli Intermediari di Relying Party
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Nell'ecosistema IT-Wallet, gli Intermediari che agiscono per conto dei Relying Party (ai sensi dell'Art. 5b(8) del Regolamento eIDAS2 `EU_2024_1183`_) sono soggetti a uno specifico regime di Trust Mark che consente al Wallet di riconoscere e mostrare all'Utente che il RP richiedente opera tramite un Intermediario. Nel profilo implementativo descritto dalle presenti specifiche tecniche, un Intermediario di Relying Party è anche un'Entità Intermedia OpenID Federation (`OID-FED`_).
+Nell'ecosistema IT-Wallet, gli Intermediari di Relying Party che agiscono per conto dei Relying Party (ai sensi dell'Art. 5b(8) del Regolamento eIDAS2 `EU_2024_1183`_) sono soggetti a uno specifico regime di Trust Mark che consente al Wallet di riconoscere e mostrare all'Utente che il RP richiedente opera tramite un Intermediario. Nel profilo implementativo descritto dalle presenti specifiche tecniche, un Intermediario di Relying Party è anche un'Entità Intermedia OpenID Federation (`OID-FED`_).
 
 **Emissione del Trust Mark all'Intermediario**
 
