@@ -67,8 +67,8 @@
   color: #FFFFFF;
   padding: 12px 24px; /* Bootstrap Italia / design system spec */
   /* Default size: Medium (M) - versione consigliata */
-  font-size: 0.9375rem;   /* 15px */
-  line-height: 1.4;       /* ~21px */
+  font-size: 1rem;        /* 16px */
+  line-height: 1.4;       /* ~22px */
   min-height: 48px; /* Accessibility: minimum touch area */
   justify-content: flex-start; /* Default: left alignment */
   box-shadow: none;
@@ -175,8 +175,8 @@
 /* Medium (default) - base .btn-itwallet-auth already uses these values */
 .btn-itwallet-auth.btn-md {
   padding: 12px 24px;
-  font-size: 0.9375rem;  /* 15px */
-  line-height: 1.4;      /* ~21px */
+  font-size: 1rem;       /* 16px */
+  line-height: 1.4;      /* ~22px */
   min-height: 48px;
   gap: 8px;
 }
