@@ -50,9 +50,25 @@ Esempi del formato atteso (da adattare al proprio proxy/IdP):
 **Valori che NON vanno modificati** (non sono endpoint da configurare):
 
 - `"login_url": "it-wallet.html"` — navigazione interna verso la pagina di selezione del wallet inclusa in queste risorse.
-- `"login_url": "#spid-idp-button-xlarge-post"` — àncora dell'interfaccia che apre il menu dei gestori SPID (la lista dei gestori SPID viene tipicamente popolata lato server).
+- `"login_url": "#spid-idp-button-xlarge-post"` — àncora dell'interfaccia che apre il menu dei gestori SPID (la lista dei gestori è gestita separatamente, vedi sotto).
 
 Gli altri URL informativi (`find_how_to_get_digital_id_url`, `learn_more_link`) puntano per default alle pagine pubbliche ufficiali e possono essere personalizzati opzionalmente.
+
+### Configurazione dei gestori (IdP) SPID
+
+I pulsanti dei gestori SPID NON sono nei file di localizzazione: vengono iniettati a runtime dalla classe `Ita` (`js/ita.min.js`) nel menu `[data-spid-remote]` a partire dall'elenco locale `js/spid-idps-default.json`. Ogni voce ha la forma:
+
+```json
+{ "organization_name": "Nome Gestore", "entity_id": "https://idp.example.it", "logo_uri": "img/spid-idp-esempio.svg" }
+```
+
+Per personalizzare l'elenco:
+
+- modifica `js/spid-idps-default.json` (aggiungi/rimuovi gestori, allineandoli a `https://registry.spid.gov.it/entities-idp`);
+- inserisci i relativi loghi in `img/` e referenziali con un percorso relativo in `logo_uri` (se `logo_uri` è vuoto viene mostrato il nome testuale del gestore);
+- l'URL di login del singolo gestore è costruito automaticamente dalla funzione `href` in `js/ita.min.js` come `<return>?entityID=<entity_id>&return=<return>`. Adatta quella funzione al proprio flusso SAML/proxy se necessario.
+
+> Nota: per impostazione predefinita l'elenco è caricato dal file locale (`local = true` in `js/ita.min.js`). È possibile invece recuperarlo dal registro SPID remoto impostando `local = false`, ma in tal caso la richiesta a `registry.spid.gov.it` è soggetta alle policy CORS del browser.
 
 ### Dipendenze esterne (CDN)
 
@@ -76,8 +92,9 @@ discovery-page/
 ├── js/                             # Script
 │   ├── eid-cards-loader.js         # Logica di rendering delle card (i18next + locales)
 │   ├── header-lang-dropdown.js     # Selettore di lingua nell'header
+│   ├── ita.min.js                  # Classe Ita: inietta i gestori SPID nel menu
+│   ├── spid-idps-default.json      # Elenco dei gestori (IdP) SPID
 │   ├── bootstrap-italia.bundle.min.js
-│   ├── ita.min.js
 │   └── jquery-3.7.0.min.js
 ├── locales/                        # Testi e definizione dei metodi (i18next)
 │   ├── eid-it.json

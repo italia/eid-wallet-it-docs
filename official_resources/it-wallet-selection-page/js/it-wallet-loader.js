@@ -371,7 +371,8 @@ function setupBackLink() {
   if (backLink) {
     const params = new URLSearchParams(window.location.search);
     const search = params.toString();
-    backLink.href = search ? 'disco.html?' + search : 'disco.html';
+    const discoUrl = '../discovery-page/disco.html';
+    backLink.href = search ? discoUrl + '?' + search : discoUrl;
   }
 }
 
