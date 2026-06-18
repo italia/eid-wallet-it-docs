@@ -34,7 +34,7 @@
       "name": "IT-Wallet",
       "logo_text": "Login with IT-Wallet",
       "logo": "it-wallet/wallet_icon.svg",
-      "login_url": "it-wallet.html",
+      "login_url": "../it-wallet-selection-page/it-wallet.html",
       "learn_more_descr": "IT-Wallet is Italy's national digital wallet system. It lets you authenticate online and access public and private services securely and quickly, using the data, documents, and qualifications you can obtain digitally through one of the wallets that are part of it."
     },
     "cie": {
