@@ -1,0 +1,256 @@
+name: Generate IT Translations
+
+on:
+  # ---------------------------------------------------------------------------
+  # TRIGGER AUTOMATICO DISABILITATO — il workflow è eseguibile SOLO manualmente
+  # (Actions -> "Run workflow", oppure `gh workflow run`).
+  # Per riattivare la traduzione automatica al merge di una PR, decommentare il
+  # blocco `pull_request` qui sotto.
+  # NB: in questo repository il branch principale è "versione-corrente" (NON "main").
+  # ---------------------------------------------------------------------------
+  # pull_request:
+  #   types: [closed]
+  #   branches:
+  #     - versione-corrente
+  #   paths:
+  #     - 'docs/en/**.rst'
+
+  workflow_dispatch:
+    inputs:
+      files:
+        description: 'List of RST files to translate (space separated), or "*" for all RST files'
+        required: false
+        default: ''
+
+jobs:
+  translate-changed-files:
+    if: (github.event_name == 'pull_request' && github.event.pull_request.merged == true) || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Environment Setup
+        run: |
+          sudo apt-get update && sudo apt-get install -y jq
+          chmod +x .github/scripts/translate-rst.sh
+
+      - name: Get files to translate
+        id: get-files
+        run: |
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+          
+            MERGE_COMMIT_SHA="${{ github.event.pull_request.merge_commit_sha }}"
+            BEFORE_MERGE_SHA=$(git rev-parse $MERGE_COMMIT_SHA^1)
+            
+            CHANGED_FILES=$(git diff --name-only $BEFORE_MERGE_SHA $MERGE_COMMIT_SHA -- 'docs/en/' | grep '\.rst$' || echo "")
+            CHANGED_FILES=$(echo $CHANGED_FILES | tr '\n' ' ')
+            
+            echo "method=pull_request" >> $GITHUB_OUTPUT
+            echo "changed_files=$CHANGED_FILES" >> $GITHUB_OUTPUT
+            
+          elif [[ "${{ github.event_name }}" == "workflow_dispatch" && "${{ github.event.inputs.files }}" == "*" ]]; then
+            
+            CHANGED_FILES=$(find docs/en -name "*.rst" -type f | tr '\n' ' ')
+            
+            echo "method=workflow_dispatch_all_files" >> $GITHUB_OUTPUT
+            echo "changed_files=$CHANGED_FILES" >> $GITHUB_OUTPUT
+            
+          elif [[ "${{ github.event_name }}" == "workflow_dispatch" && ! -z "${{ github.event.inputs.files }}" ]]; then
+            
+            CHANGED_FILES="${{ github.event.inputs.files }}"
+
+            echo "method=workflow_dispatch" >> $GITHUB_OUTPUT
+            echo "changed_files=${{ github.event.inputs.files }}" >> $GITHUB_OUTPUT
+            
+          else
+            
+            BASE_COMMIT=$(git merge-base origin/versione-corrente HEAD)
+            CHANGED_FILES=$(git diff --name-only $BASE_COMMIT HEAD -- 'docs/en/' | grep '\.rst$' || echo "")
+            CHANGED_FILES=$(echo $CHANGED_FILES | tr '\n' ' ')
+            
+            echo "method=workflow_dispatch_all_differences" >> $GITHUB_OUTPUT
+            echo "changed_files=$CHANGED_FILES" >> $GITHUB_OUTPUT
+          
+          fi
+          
+          if [ -z "$CHANGED_FILES" ] || [ "$(echo "$CHANGED_FILES" | tr -d ' \t\n\r')" = "" ]; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          fi
+          
+          cat $GITHUB_OUTPUT
+
+      - name: Run translation script
+        if: steps.get-files.outputs.has_changes == 'true'
+        env:
+          GEMINI_API_KEY: '${{ secrets.GEMINI_API_KEY }}'
+          GEMINI_SYSTEM_PROMPT: '${{ vars.GEMINI_SYSTEM_PROMPT }}'
+          GEMINI_USER_PROMPT: '${{ vars.GEMINI_USER_PROMPT }}'
+          GEMINI_GLOSSARY: '${{ vars.GEMINI_GLOSSARY }}'
+          MODEL: '${{ vars.GEMINI_MODEL }}'
+          TEMPERATURE: '${{ vars.TEMPERATURE }}'
+          TOP_K: '${{ vars.TOP_K }}'
+          TOP_P: '${{ vars.TOP_P }}'
+          OUTPUT_DIR: 'docs/it'
+        run: '.github/scripts/translate-rst.sh ${{ steps.get-files.outputs.changed_files }}'
+
+      - name: Remove orphan translations
+        if: (github.event_name == 'pull_request') || (github.event_name == 'workflow_dispatch' && github.event.inputs.files == '*')
+        env:
+          SOURCE_DIR: 'docs/en'
+          OUTPUT_DIR: 'docs/it'
+        run: |
+          if [ -d "$OUTPUT_DIR" ]; then
+            echo "Checking for orphan translations..."
+            removed_count=0
+            find "$OUTPUT_DIR" -name "*.rst" -type f | while read target_file; do
+              rel_path="${target_file#$OUTPUT_DIR/}"
+              source_file="$SOURCE_DIR/$rel_path"
+              if [ ! -f "$source_file" ]; then
+                echo "Removing orphan: $rel_path"
+                rm -f "$target_file"
+                removed_count=$((removed_count + 1))
+              fi
+            done
+            find "$OUTPUT_DIR" -type d -empty -delete 2>/dev/null || true
+            echo "Orphan cleanup completed"
+          else
+            echo "No translation directory found, skipping cleanup"
+          fi
+
+      - name: Commit and push changes
+        if: steps.get-files.outputs.has_changes == 'true'
+        env:
+          GH_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+          OUTPUT_DIR: 'docs/it'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          
+          # Count successful and failed translations
+          SUCCESS_COUNT=$(echo "$SUCCESS_FILES" | wc -w | tr -d ' ')
+          FAILURE_COUNT=$(echo "$FAILURE_FILES" | wc -w | tr -d ' ')
+          
+          # Format files for PR body with proper markdown
+          if [ -z "$(echo "$SUCCESS_FILES" | tr -d ' \t\n\r')" ]; then
+            SUCCESS_FORMATTED_FILES="*No files translated successfully*"
+          else
+            SUCCESS_FORMATTED_FILES=$(echo "$SUCCESS_FILES" | tr ' ' '\n' | grep -v "^$" | sed 's/^/- ✅ /')
+          fi
+          
+          if [ -z "$(echo "$FAILURE_FILES" | tr -d ' \t\n\r')" ]; then
+            FAILURE_FORMATTED_FILES="*No translation errors*"
+          else
+            FAILURE_FORMATTED_FILES=$(echo "$FAILURE_FILES" | tr ' ' '\n' | grep -v "^$" | sed 's/^/- ❌ /')
+          fi
+          
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            TRIGGER_PR_NUMBER="${{ github.event.pull_request.number }}"
+            TRIGGER_PR_TITLE="${{ github.event.pull_request.title }}"
+            
+            TRANSLATION_BRANCH_NAME="translations/pr-${TRIGGER_PR_NUMBER}-translation"
+            COMMIT_MSG="Add Italian translations for PR #${TRIGGER_PR_NUMBER}"
+            
+            PR_TITLE="🤖 Automated Translation for PR #${TRIGGER_PR_NUMBER}"
+            
+            # Create PR body with proper variable substitution
+            PR_BODY=$(cat << 'EOFBODY'
+          ## 🌍 Automated Italian Translation Report
+          
+          This PR contains Italian translations for RST files modified in the triggering PR.
+          
+          ### 📊 Translation Summary
+          - **✅ Successfully translated**: SUCCESSCOUNT files
+          - **❌ Failed translations**: FAILURECOUNT files
+          
+          ### ✅ Successfully Translated Files
+          SUCCESSFILES
+          
+          ### ❌ Files with Translation Errors
+          FAILUREFILES
+          
+          ---
+          ⚠️ **Important**: These translations were automatically generated using an AI translation service. Please review all translations carefully before merging.
+          EOFBODY
+          )
+            
+            # Replace placeholders with actual values
+            PR_BODY="${PR_BODY//SUCCESSCOUNT/${SUCCESS_COUNT}}"
+            PR_BODY="${PR_BODY//FAILURECOUNT/${FAILURE_COUNT}}"
+            PR_BODY="${PR_BODY//SUCCESSFILES/${SUCCESS_FORMATTED_FILES}}"
+            PR_BODY="${PR_BODY//FAILUREFILES/${FAILURE_FORMATTED_FILES}}"
+          else
+            BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+            COMMIT_SHA=$(git rev-parse HEAD)
+            TIMESTAMP=$(date -u +"%Y%m%dT%H%M%SZ")
+            
+            TRANSLATION_BRANCH_NAME="translations/co-${COMMIT_SHA}-${TIMESTAMP}-translation"
+            COMMIT_MSG="Add Italian translations for commit ${COMMIT_SHA}-${TIMESTAMP} in branch \"${BRANCH_NAME}\""
+            
+            PR_TITLE="🤖 Automated Translation for commit ${COMMIT_SHA}-${TIMESTAMP}"
+            
+            # Create PR body with proper variable substitution
+            PR_BODY=$(cat << 'EOFBODY'
+          ## 🌍 Automated Italian Translation Report
+          
+          This PR contains Italian translations for RST files modified in the triggering commit.
+          
+          ### 📊 Translation Summary
+          - **✅ Successfully translated**: SUCCESSCOUNT files
+          - **❌ Failed translations**: FAILURECOUNT files
+          
+          ### ✅ Successfully Translated Files
+          SUCCESSFILES
+          
+          ### ❌ Files with Translation Errors
+          FAILUREFILES
+          
+          ---
+          ⚠️ **Important**: These translations were automatically generated using an AI translation service. Please review all translations carefully before merging.
+          EOFBODY
+          )
+            
+            # Replace placeholders with actual values
+            PR_BODY="${PR_BODY//SUCCESSCOUNT/${SUCCESS_COUNT}}"
+            PR_BODY="${PR_BODY//FAILURECOUNT/${FAILURE_COUNT}}"
+            PR_BODY="${PR_BODY//SUCCESSFILES/${SUCCESS_FORMATTED_FILES}}"
+            PR_BODY="${PR_BODY//FAILUREFILES/${FAILURE_FORMATTED_FILES}}"
+          fi
+          
+          # Create empty file if there are no translations to ensure git has something to commit
+          if [ -z "$(ls -A ${OUTPUT_DIR}/)" ]; then
+            mkdir -p ${OUTPUT_DIR}/
+            echo "# Translation process completed with errors" > ${OUTPUT_DIR}/README.md
+            echo "No files were successfully translated. See PR description for details." >> ${OUTPUT_DIR}/README.md
+          fi
+          
+          # Create a new branch
+          git checkout -b "$TRANSLATION_BRANCH_NAME"
+          git add ${OUTPUT_DIR}/
+          
+          # Check if staged files are present
+          if git diff --staged --quiet; then
+            echo "⚠️ No changes to commit"
+            # Create dummy log file to force PR creation
+            mkdir -p ${OUTPUT_DIR}/
+            echo "# Translation report - $(date)" > ${OUTPUT_DIR}/REPORT.md
+            echo "Translation process completed. See PR description for details." >> ${OUTPUT_DIR}/REPORT.md
+            echo "Date: $(date)" >> ${OUTPUT_DIR}/REPORT.md
+            echo "Files processed: ${{ steps.get-files.outputs.changed_files }}" >> ${OUTPUT_DIR}/REPORT.md
+            git add ${OUTPUT_DIR}/
+          fi
+          
+          git commit -m "$COMMIT_MSG"
+          git push --force-with-lease origin "$TRANSLATION_BRANCH_NAME"
+          
+          gh pr create \
+            --base "versione-corrente" \
+            --head "$TRANSLATION_BRANCH_NAME" \
+            --title "$PR_TITLE" \
+            --body "$PR_BODY"
+          
+          echo "✅ Pull request created successfully! ✅"
