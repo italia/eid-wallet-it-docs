@@ -66,7 +66,7 @@ Questa specifica si basa sul seguente insieme di requisiti:
     - R1, R2, R4, R5
 
 .. note::
-    In queste specifiche, il pattern di sicurezza ``REST_JWS_2021_POP`` è implementato di default in conformità con :rfc:`9449`.
+    In queste specifiche, il pattern di sicurezza ``REST_JWS_2021_POP`` è implementato in conformità a :rfc:`9449`.
 
     In alternativa, la prova di possesso PUÒ essere attestata dal JWT ``TrackingEvidence`` (come dettagliato di seguito). Tuttavia, mentre il ``TrackingEvidence`` è definito in ``AUDIT_REST_02`` per fornire dati tracciati aggiuntivi, in questo contesto funge da prova di possesso del Voucher. Tali scelte di implementazione saranno indicate rispettivamente come ``POP_DPoP`` e ``POP_TPoP``.
 
