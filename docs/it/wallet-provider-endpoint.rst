@@ -771,6 +771,11 @@ Di seguito è riportato un esempio non normativo dell'intestazione e del payload
 .. note::
     Il claim ``iss`` non è più necessario nel corpo della KA, poiché l’identità del Wallet Provider viene ora dedotta dal certificato di firma nel parametro di intestazione JOSE ``x5c``.
 
+.. note::
+    Un fornitore di Wallet DEVE scegliere il periodo di validità tecnica della KA e DEVE mantenere l'elenco degli stati di revoca per l'intero periodo di validità di tale elenco, come indicato nel file ``key_storage_status.exp``.
+
+
+
 
 Catalogo e-Service PDND del Fornitore di Wallet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -769,6 +769,10 @@ Below is a non-normative example of the Key Attestation JWT header and payload, 
     The ``iss`` claim is not needed anymore in the KA body as Wallet Provider identity is now inferred from the signing certificate in the ``x5c`` JOSE header parameter.
 
 
+.. note::
+    A Wallet Provider SHALL choose the technical validity period of the KA and SHALL maintain the revocation status list for the whole validity period of this list as identified by ``key_storage_status.exp``.
+
+
 
 
 e-Service PDND Wallet Provider Catalog
