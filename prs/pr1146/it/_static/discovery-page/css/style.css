@@ -380,13 +380,13 @@
     font-size: 20px;
     background-color:  rgba(0, 0, 0, 0);
     border: none;
-    color: black;
+    color: #000000;
     cursor: pointer;
     z-index: 1;
 }
 
 #closeButton svg {
-    fill: black;
+    fill: #000000;
 }
 
 .qr-code-text{
@@ -674,7 +674,7 @@ header svg.icon {
 
 .eid-learn-more-toggle .eid-learn-more-arrow path {
   fill: none !important;
-  stroke: #06c !important;
+  stroke: #0066cc !important;
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -699,7 +699,7 @@ header svg.icon {
 /* Language dropdown (developers.italia.it slim header pattern) */
 .it-header-slim-wrapper.bg-primary .it-header-lang-dropdown .nav-link.dropdown-toggle,
 .it-header-slim-wrapper.bg-primary .it-header-lang-dropdown button.nav-link.dropdown-toggle {
-  color: #fff !important;
+  color: #ffffff !important;
   font-weight: 400;
   padding: 0.35rem 0.25rem;
   border: none;
@@ -714,7 +714,7 @@ header svg.icon {
 .it-header-slim-wrapper.bg-primary .it-header-lang-dropdown .nav-link.dropdown-toggle:focus,
 .it-header-slim-wrapper.bg-primary .it-header-lang-dropdown button.nav-link.dropdown-toggle:hover,
 .it-header-slim-wrapper.bg-primary .it-header-lang-dropdown button.nav-link.dropdown-toggle:focus {
-  color: #fff !important;
+  color: #ffffff !important;
 }
 
 .it-header-slim-wrapper.bg-primary .it-header-lang-dropdown .nav-link.dropdown-toggle::after,
@@ -724,7 +724,7 @@ header svg.icon {
 
 .it-header-slim-wrapper.bg-primary .it-header-lang-dropdown .nav-link .icon,
 .it-header-slim-wrapper.bg-primary .it-header-lang-dropdown button.nav-link .icon {
-  color: #fff;
+  color: #ffffff;
   fill: currentColor;
   width: 18px;
   height: 18px;
@@ -917,7 +917,7 @@ footer {
   margin: 0;
   padding: 1rem 0;
   background-color: #004C99;
-  color: white;
+  color: #ffffff;
   position: relative;
   width: 100%;
   height: auto;
@@ -935,8 +935,8 @@ footer .d-flex.flex-wrap a {
 /* CIE dropdown - same style as SPID dropdown */
 .cie-dropdown-menu {
   list-style: none;
-  background: white;
-  border: solid 1px #ddd;
+  background: #ffffff;
+  border: solid 1px #dddddd;
   box-shadow: 0 0 5px rgba(0,0,0,0.2);
   overflow: visible;
   padding: 0;
@@ -957,12 +957,12 @@ footer .d-flex.flex-wrap a {
   font-family: "Titillium Web", HelveticaNeue, "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 600;
   font-size: 0.9em;
-  color: #06C;
+  color: #0066CC;
   text-decoration: none !important;
   line-height: 18px;
   padding: 10px 12px;
   white-space: nowrap;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #dddddd;
 }
 
 .cie-dropdown-menu .cie-option-label {
@@ -974,7 +974,7 @@ footer .d-flex.flex-wrap a {
 }
 
 .cie-dropdown-menu li > a:hover {
-  color: #036;
+  color: #003366;
   cursor: pointer;
   background-color: #F0F0F0;
 }
@@ -1230,7 +1230,7 @@ html.it-wallet-html body.it-wallet-body {
   margin: 0;
   border: 1px solid #0066CC;
   border-radius: 8px;
-  background: #fff;
+  background: #ffffff;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1327,7 +1327,7 @@ html.it-wallet-html body.it-wallet-body {
   padding: 0;
   border: 1px solid #0066CC;
   border-radius: 4px;
-  background: #fff;
+  background: #ffffff;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1346,7 +1346,7 @@ html.it-wallet-html body.it-wallet-body {
   min-width: 220px;
   border: 1px solid #D9E4F2;
   border-radius: 4px;
-  background: #fff;
+  background: #ffffff;
   box-shadow: 0 8px 20px rgba(23, 50, 77, 0.14);
   padding: 0.35rem 0;
   z-index: 30;
