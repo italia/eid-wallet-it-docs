@@ -68,7 +68,7 @@ This specification is based on the following set of requirements:
 .. note::
     In the current specifications, the ``REST_JWS_2021_POP`` security pattern is implemented in accordance with :rfc:`9449`.
 
-    Alternatively, the proof of possession MAY be attested by the ``TrackingEvidence`` JWT (as detailed below). However, while the ``TrackingEvidence`` is defined in ``AUDIT_REST_02`` to provide additional tracked data, in this context, it acts as proof of possession of the Voucher. Such implementation choices will be referred to as ``POP_DPoP`` and ``POP_TPoP``, respectively.
+    Alternatively, the proof of possession MAY be attested using the ``TrackingEvidence`` JWT to provide additional data. In this context, ``TrackingEvidence`` JWT acts as a proof of possession of the PDND Voucher. Such implementation choices will be referred to as ``POP_DPoP`` and ``POP_TPoP``, respectively.
 
 The following security patterns defined in `PDND`_ and `MODI`_ MUST NOT be used as they do not comply with the requirements defined above:
 
