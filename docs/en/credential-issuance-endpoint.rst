@@ -958,7 +958,7 @@ The following is a non-normative example of a Deferred Credential Request:
 Deferred Response
 .................
 
-The Deferred Credential Response MUST be sent using the `application/json`` media type. 
+The Deferred Credential Response MUST be sent using the ``application/json`` media type. 
 
 If the Digital Credential(s) is(are) available, the Deferred Credential Response MUST use the ``credentials`` and ``notification_id`` parameters as defined in Section :ref:`credential-issuance-endpoint:Credential Response` and MUST respond with the HTTP status code 200 (see Section 15.3.3 of :rfc:`9110`]). 
 

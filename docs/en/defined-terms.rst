@@ -154,11 +154,11 @@ Below is the description of acronyms and definitions which are useful for furthe
     **Qualified Electronic Attestation of Attributes**
       Digitally verifiable attestation issued by a QTSP, substantiating possession of attributes.
       Aligned with ARF 2.7.3.
-    
+
     **Electronic Attestation of Attributes**
       Digitally verifiable attestation in electronic form, substantiating possession of attributes.
       Aligned with ARF 2.7.3.
-    
+
     **Electronic Attestation of Attributes issued by or on behalf of a public sector body**
     **Public Electronic Attestation of Attributes**
       Electronic Attestation of Attributes that contains Attributes deriving from a public Authentic Source.
@@ -168,7 +168,7 @@ Below is the description of acronyms and definitions which are useful for furthe
     **Credential of Public Interest**
       Electronic Attestation of Attributes that contains Attributes intended to certify the release, by the State or other public administrations, of authorizations, certifications, qualifications, identity and recognition documents, receipts of revenue, or to assume a fiduciary value and protection of public faith afterwards their issuance or the entries made on them and, in general, when they are considered security documents pursuant to Article 2, paragraph 10-bis, Law 13 July 1966, no. 559. 
       Not present in ARF 2.7.3; specific to IT-Wallet.
-      
+
     **Person Identification Data**
       Electronic Attestation that allows the subject to whom the Personal Identification Data refers to be authenticated.
       Aligned with ARF 2.7.3.
@@ -305,7 +305,7 @@ Below is the description of acronyms and definitions which are useful for furthe
       Not present in ARF 2.7.3.
 
     **eIDAS Trusted List**
-      Repository of information about authoritative entities and their status used in the eIDAS trust services framework (e.g., PID Provider Trusted Lists, Wallet Provider Trusted Lists, List of Trusted List pointing to Member States QTSP Trusted Lists and Member States EAA Provider Trusted Lists, Access Certificates CA and Registristration Certificates Provider Trusted Lists).
+      Repository of information about authoritative entities and their status used in the eIDAS trust services framework (e.g., PID Provider Trusted Lists, Wallet Provider Trusted Lists, List of Trusted List pointing to Member States QTSP Trusted Lists and Member States EAA Provider Trusted Lists, Access Certificates CA and Registration Certificates Provider Trusted Lists).
       Terminology specialized for IT-Wallet.
 
     **User**
@@ -381,49 +381,49 @@ Below are the main defined terms and definitions related to User Experience aspe
 
     **Authentication Button**
       The Engagement Button that enables the User to access the Authentication process and use the services provided by Verifiers.
-  
+
     **Brand Identity**
       Collection of visual, verbal, and strategic elements that a service, a product or an entity uses to present itself to the User and to distinguish itself from others.
 
     **Brand Manual**
       Document defining the rules and standards for the correct and consistent use of a Brand’s distinctive elements, including visual, verbal, and application-related aspects, across different Touchpoints.
-    
+
     **Catalog**
       Section of the Wallet Instance that displays the list of all the available Digital Credentials that can be obtained through the IT-Wallet Instance, and from which it is possible to start the issuing process.
-    
+
     **Call To Action**
       A clear and direct suggestion that encourages users to take a specific action. It can be a button, a link, or another element guiding the user toward a particular goal.
-    
+
     **Detailed View**
       Extended display mode of the Digital Credentials, showing all the Attributes included.
-    
+
     **Discovery Page**
       It's the page of the Touchpoint of the Relying Party where the User lands to access their authenticated area, and it has the goal to show the User all the Authentication methods available.
-  
+
     **Engagement Button**
       Interactive element of the Interface that allows the User to trigger a process (e.g. to Authenticate, to request the issuance of a Digital Credential, etc.).
-  
+
     **Interaction Model**
       A set of characteristics that define how the User interacts with the Interface of one or multiple Touchpoints in order to complete a task or operation and achieve a specific goal.
-    
+
     **Interface**
       The set of graphic, typographical and interactive elements through which the User interacts with the Touchpoint(s) responsible for the delivery of a product or service, in compliance with [GL_DESIGN].
-    
+
     **Preview View**
       Compact visualization mode of the Digital Credential that allows it to be recognized and distinguished in a list of Electronic Attestations thanks to the presence of minimum data or elements.
 
     **Selection Page**
       It's the page of the Touchpoint of the Relying Party or of a third party offering a Credential Offer where the User can see all the Wallet Solutions available in the IT-Wallet System Register and is able to select which one to continue the process of Authentication, presentation or issuance.
-    
+
     **Service Model**
       Set of interactions between actors and touchpoints necessary for service delivery and fruition.
-    
+
     **Touchpoint**
       Point of contact (digital and not) between the User and the product or service.
-    
+
     **Trust Mark**
       A graphic element that gives evidence of the participation of the Primary Actors in the IT-Wallet System and thus guarantees adherence to its standards.
-    
+
     **User Experience**
       The set of people's perceptions and reactions resulting from the use and/or expectation of use of a product, system or service.
       Aligned with ISO 9241-210:2010.

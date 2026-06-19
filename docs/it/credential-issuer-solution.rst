@@ -34,7 +34,7 @@ La Soluzione del Fornitore di Attestati Elettronici Elettronica DEVE:
    6. Implementare una gestione appropriata degli errori e notifiche all'Utente per tutti i processi.
    7. Mantenere log di audit complete rispettando le normative sulla privacy.
    8. Emettere Attestati Elettronici che supportano la Divulgazione Selettiva (*Selective Disclosure*).
-   9. Rinnovare periodicamente la conformità e l'aderenza alla Federazione IT-Wallet .
+   9. Rinnovare periodicamente la conformità e l'aderenza alla Federazione IT-Wallet.
    10. Registrare il Componente Relying Party all'interno dell'ecosistema di Federazione dell'Identità Digitale CIEid (per l'emissione di PID), e all'interno dell'ecosistema IT-Wallet (per l'emissione di (Q)EAA, se necessario).
    11. Per l'emissione di PID, autenticare gli Utenti con LoA High utilizzando l'infrastruttura nazione di Identità Digitale.
    12. Per l'emissione di (Q)EAA che richiedono autenticazione, verificare che il PID dell'Utente sia valido tramite `OpenID4VP`_.
