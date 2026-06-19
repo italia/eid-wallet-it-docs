@@ -754,10 +754,10 @@ Il corpo del Key Attestation JWT contiene le seguenti dichiarazioni (claims):
 
 Di seguito è riportato un esempio non normativo dell'intestazione e del payload del Key Attestation JWT, senza codifica né firma applicata:
 
-.. literalinclude:: ../../examples/wua-jwt_example_header.json
+.. literalinclude:: ../../examples/ka-jwt_example_header.json
   :language: JSON
 
-.. literalinclude:: ../../examples/wua-jwt_example_payload.json
+.. literalinclude:: ../../examples/ka-jwt_example_payload.json
   :language: JSON
 
 

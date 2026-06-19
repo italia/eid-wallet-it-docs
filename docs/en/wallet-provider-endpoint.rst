@@ -750,10 +750,10 @@ The body of the Key Attestation JWT contains the following claims:
 
 Below is a non-normative example of the Key Attestation JWT header and payload, without encoding and signature applied:
 
-.. literalinclude:: ../../examples/wua-jwt_example_header.json
+.. literalinclude:: ../../examples/ka-jwt_example_header.json
   :language: JSON
 
-.. literalinclude:: ../../examples/wua-jwt_example_payload.json
+.. literalinclude:: ../../examples/ka-jwt_example_payload.json
   :language: JSON
 
 
