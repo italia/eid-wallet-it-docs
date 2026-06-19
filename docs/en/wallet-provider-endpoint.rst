@@ -727,6 +727,7 @@ The body of the Key Attestation JWT contains the following claims:
 
         - ``iso_18045_high``: It MUST be used when key storage is resistant to attack with attack potential ``High``.
         - ``iso_18045_moderate``: It MUST be used when key storage is resistant to attack with attack potential ``Moderate``.
+        - ``iso_18045_enhanced-basic``: It MUST be used when key storage is resistant to attack with attack potential ``Enhanced-Basic``.
         - ``iso_18045_basic``: It MUST be used when key storage is resistant to attack with attack potential ``Basic``.
       - `OpenID4VCI`_.
     * - **user_authentication**
@@ -734,6 +735,7 @@ The body of the Key Attestation JWT contains the following claims:
 
         - ``iso_18045_high``: It MUST be used when user authentication is resistant to attack with attack potential ``High``.
         - ``iso_18045_moderate``: It MUST be used when user authentication is resistant to attack with attack potential ``Moderate``.
+        - ``iso_18045_enhanced-basic``: It MUST be used when user authentication is resistant to attack with attack potential ``Enhanced-Basic``.
         - ``iso_18045_basic``: It MUST be used when user authentication is resistant to attack with attack potential ``Basic``.
       - `OpenID4VCI`_.
     * - **key_storage_status**

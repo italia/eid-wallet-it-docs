@@ -2,10 +2,11 @@
     "cnf": {
       "jwk": {
         "kty": "EC",
+        "crv": "P-256",
         "x": "8g9qKk3tRCBHsu57pNy3oMPc-jeJW8zU1LvfG9H5__M",
         "y": "KD0MNCPtJqUd1RGiTdAxEL6OCw5trfzqSrU6BHKOy2g",
-        "crv": "P-256",
-        "kid": "dd762e6f8b613193"
+        "kid": "dd762e6f8b613193",
+        "alg":"ES256"
       }
     },
     "client_status": {
