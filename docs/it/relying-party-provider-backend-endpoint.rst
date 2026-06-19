@@ -1,5 +1,5 @@
-.. include:: ../common/common_definitions.rst
-.. "included" file, so we start with '-' title level
+.. Questo file è incluso in relying-party-endpoints.rst (common_definitions è fornito dal file che lo include).
+.. file "incluso" di livello 3, quindi si parte dal livello di titolo '"'
 
 La Relying Party DEVE esporre una serie di endpoint per gestire il ciclo di vita delle App di Verifica che utilizzano un servizio di backend remoto fornito dal loro Backend del Provider di Relying Party. Questi endpoint supportano i flussi di presentazione in prossimità fornendo generazione di nonce, registrazione delle chiavi hardware, convalida dell'integrità e rilascio del Certificato di Accesso. I dettagli specifici della loro implementazione sono lasciati alla discrezione della Relying Party.
 

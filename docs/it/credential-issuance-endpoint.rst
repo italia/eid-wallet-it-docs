@@ -1,4 +1,5 @@
-.. include:: ../common/common_definitions.rst
+.. Questo file è incluso in credential-issuer-endpoint.rst (common_definitions è fornito dal file che lo include).
+.. file "incluso" di livello 3, quindi si parte dal livello di titolo '"'
 
 
 Pushed Authorization Request Endpoint

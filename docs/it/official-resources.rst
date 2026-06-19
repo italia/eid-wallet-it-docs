@@ -1,4 +1,5 @@
-.. include:: ../common/common_definitions.rst
+.. Questo file è incluso in normative-ref.rst (common_definitions è fornito dal file che lo include).
+.. file "incluso", quindi si parte dal livello di titolo '-'
 
 
 Risorse Ufficiali

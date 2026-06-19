@@ -1,4 +1,5 @@
-.. include:: ../common/common_definitions.rst
+.. This file is included in credential-issuer-solution.rst (common_definitions is provided by the including file).
+.. "included" file, so we start with '-' title level
 
 
 Credential Issuer Entity Configuration

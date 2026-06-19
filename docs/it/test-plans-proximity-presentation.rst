@@ -1,4 +1,6 @@
-.. include:: ../common/common_definitions.rst
+.. Questo file è incluso in test-plans-presentation.rst (common_definitions è fornito dal file che lo include).
+.. file "incluso" di livello 2, quindi si parte dal livello di titolo '^'
+
 
 
 Matrice di Test per il Verificatore di Credenziali in Prossimità

@@ -1,5 +1,5 @@
-.. include:: ../common/common_definitions.rst
-.. "included" file, so we start with '-' title level
+.. This file is included in relying-party-endpoints.rst (common_definitions is provided by the including file).
+.. level 3 "included" file, so we start with '"' title level
 
 The Relying Party MUST expose a set of endpoints for handling the lifecycle of Verifier Apps that use a remote backend service provided by their Relying Party Provider Backend. These endpoints support proximity presentation flows by providing nonce generation, hardware key registration, integrity validation, and Access Certificate issuance. The specific implementation details are left to the Relying Party's discretion.
 
