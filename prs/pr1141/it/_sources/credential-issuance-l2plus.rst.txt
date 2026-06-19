@@ -577,16 +577,16 @@ Dopo completamento con successo di tutti i controlli da parte del Servizio MRTD 
      - **Descrizione**
    * - **status**
      - string
-     - REQUIRED. DEVE essere valorizzato con `require_interaction`.
+     - OBBLIGATORIO. DEVE essere valorizzato con `require_interaction`.
    * - **type**
      - string
-     - REQUIRED. DEVE essere valorizzato con `redirect_to_web`.
+     - OBBLIGATORIO. DEVE essere valorizzato con `redirect_to_web`.
    * - **mrtd_val_pop_nonce**
      - string
      - OBBLIGATORIO. Nonce di conferma finale per callback basato su browser.
    * - **redirect_uri**
      - string
-     - REQUIRED. URI di redirect del browser per il completamento del flusso autorizzativo.
+     - OBBLIGATORIO. URI di redirect del browser per il completamento del flusso autorizzativo.
 
 Di seguito un esempio non normativo di una Risposta di Validazione MRTD PoP:
 
