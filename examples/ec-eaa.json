@@ -192,12 +192,12 @@
                                 "sd": "always",
                                 "display": [
                                     {
-                                        "label": "Numero Documento",
+                                        "name": "Numero Documento",
                                         "locale": "it-IT",
                                         "description": "Numero Documento della carta europea della disabilità"
                                     },
                                     {
-                                        "label": "Document Number",
+                                        "name": "Document Number",
                                         "locale": "en-US",
                                         "description": "Document number of the European Disability Card"
                                     }
@@ -209,12 +209,12 @@
                                 "sd": "always",
                                 "display": [
                                     {
-                                        "label": "Nome",
+                                        "name": "Nome",
                                         "locale": "it-IT",
                                         "description": "Nome del titolare della carta"
                                     },
                                     {
-                                        "label": "Name",
+                                        "name": "Name",
                                         "locale": "en-US",
                                         "description": "Cardholder name"
                                     }
@@ -226,12 +226,12 @@
                                 "sd": "always",
                                 "display": [
                                     {
-                                        "label": "Cognome",
+                                        "name": "Cognome",
                                         "locale": "it-IT",
                                         "description": "Cognome del titolare della carta"
                                     },
                                     {
-                                        "label": "Family Name",
+                                        "name": "Family Name",
                                         "locale": "en-US",
                                         "description": "cardholder last name"
                                     }
@@ -243,13 +243,13 @@
                                 "sd": "always",
                                 "display": [
                                     {
-                                        "label": "Data di Nascita (YYYY-MM-GG)",
+                                        "name": "Data di Nascita (YYYY-MM-GG)",
                                         "locale": "it-IT",
                                         "description": "Data di nascita del titolare della carta"
 
                                     },
                                     {
-                                        "label": "Date of Birth (YYYY-MM-GG)",
+                                        "name": "Date of Birth (YYYY-MM-GG)",
                                         "locale": "en-US",
                                         "description": "cardholder birth date"
                                     }
@@ -261,12 +261,12 @@
                                 "sd": "always",
                                 "display": [
                                     {
-                                        "label": "Codice Fiscale",
+                                        "name": "Codice Fiscale",
                                         "locale": "it-IT",
                                         "description": "Codice fiscale del titolare della carta"
                                     },
                                     {
-                                        "label": "Tax Identification Number",
+                                        "name": "Tax Identification Number",
                                         "locale": "en-US",
                                         "description": "cardholder tax identification number"
                                     }
@@ -278,12 +278,12 @@
                                 "sd": "always",
                                 "display": [
                                     {
-                                        "label": "Data di Scadenza (YYYY-MM-GG)",
+                                        "name": "Data di Scadenza (YYYY-MM-GG)",
                                         "locale": "it-IT",
                                         "description": "Data di scadenza della carta"
                                     },
                                     {
-                                        "label": "Expiration Date (YYYY-MM-GG)",
+                                        "name": "Expiration Date (YYYY-MM-GG)",
                                         "locale": "en-US",
                                         "description": "Card expiration date"
                                     }
@@ -295,12 +295,12 @@
                                 "sd": "always",
                                 "display": [
                                     {
-                                        "label": "Diritto accompagnatore",
+                                        "name": "Diritto accompagnatore",
                                         "locale": "it-IT",
                                         "description": "Questo campo indica se il titolare della carta ha diritto all'indennità di accompagnamento"
                                     },
                                     {
-                                        "label": "Constant attendance allowance",
+                                        "name": "Constant attendance allowance",
                                         "locale": "en-US",
                                         "description": "This field indicates whether the cardholder is entitled to the accompanying allowance"
                                     }
@@ -312,13 +312,13 @@
                                 "sd": "always",
                                 "display": [
                                     {
-                                        "label": "Foto",
+                                        "name": "Foto",
                                         "locale": "it-IT",
                                         "description": "Fotografia del titolare della carta"
 
                                     },
                                     {
-                                        "label": "Portrait",
+                                        "name": "Portrait",
                                         "locale": "en-US",
                                         "description": "Photo of the cardholder"
                                     }
@@ -330,12 +330,12 @@
                                 "sd": "always",
                                 "display": [
                                     {
-                                        "label": "Link QR Code",
+                                        "name": "Link QR Code",
                                         "locale": "it-IT",
                                         "description": "Questo campo contiene il QR-Code"
                                     },
                                     {
-                                        "label": "Link QR Code",
+                                        "name": "Link QR Code",
                                         "locale": "en-US",
                                         "description": "This field contains the QR-Code"
                                     }
@@ -405,12 +405,12 @@
                                 "sd": "always",
                                 "display": [
                                     {
-                                        "label": "Nome",
+                                        "name": "Nome",
                                         "locale": "it-IT",
                                         "description": "Nome del titolare della patente"
                                     },
                                     {
-                                        "label": "First Name",
+                                        "name": "First Name",
                                         "locale": "en-US",
                                         "description": "Name of the driving license holder"
                                     }
@@ -422,12 +422,12 @@
                                 "sd": "always",
                                 "display": [
                                     {
-                                        "label": "Cognome",
+                                        "name": "Cognome",
                                         "locale": "it-IT",
                                         "description": "Cognome del titolare della patente"
                                     },
                                     {
-                                        "label": "Family Name",
+                                        "name": "Family Name",
                                         "locale": "en-US",
                                         "description": "last name of the driving license holder"
                                     }
@@ -439,12 +439,12 @@
                                 "sd": "always",
                                 "display": [
                                     {
-                                        "label": "Data di nascita (YYYY-MM-GG)",
+                                        "name": "Data di nascita (YYYY-MM-GG)",
                                         "locale": "it-IT",
                                         "description": "Data di nascita del titolare della patente"
                                     },
                                     {
-                                        "label": "Date of Birth (YYYY-MM-GG)",
+                                        "name": "Date of Birth (YYYY-MM-GG)",
                                         "locale": "en-US",
                                         "description": "Date of birth of the driving license holder"
                                     }
@@ -456,12 +456,12 @@
                                 "sd": "always",
                                 "display": [
                                     {
-                                        "label": "Luogo di Nascita",
+                                        "name": "Luogo di Nascita",
                                         "locale": "it-IT",
                                         "description": "Luogo di nascita del titolare della patente"
                                     },
                                     {
-                                        "label": "Place of Birth",
+                                        "name": "Place of Birth",
                                         "locale": "en-US",
                                         "description": "Place of birth of the driving license holder"
                                     }
@@ -473,12 +473,12 @@
                                 "sd": "always",
                                 "display": [
                                     {
-                                        "label": "Data di rilascio (YYYY-MM-GG)",
+                                        "name": "Data di rilascio (YYYY-MM-GG)",
                                         "locale": "it-IT",
                                         "description": "Data di rilascio della patente"
                                     },
                                     {
-                                        "label": "Issue Date (YYYY-MM-GG)",
+                                        "name": "Issue Date (YYYY-MM-GG)",
                                         "locale": "en-US",
                                         "description": "Date of issuance of the driving license"
                                     }
@@ -490,12 +490,12 @@
                                 "sd": "always",
                                 "display": [
                                     {
-                                        "label": "Data di scadenza (YYYY-MM-GG)",
+                                        "name": "Data di scadenza (YYYY-MM-GG)",
                                         "locale": "it-IT",
                                         "description": "Data di scadenza della patente"
                                     },
                                     {
-                                        "label": "Expiry Date (YYYY-MM-GG)",
+                                        "name": "Expiry Date (YYYY-MM-GG)",
                                         "locale": "en-US",
                                         "description": "Date of expiry of the driving license"
                                     }
@@ -507,13 +507,13 @@
                                 "sd": "always",
                                 "display": [
                                     {
-                                        "label": "Paese di rilascio",
+                                        "name": "Paese di rilascio",
                                         "locale": "it-IT",
                                         "description": "Paese di rilascio della patente"
 
                                     },
                                     {
-                                        "label": "Issuing Country",
+                                        "name": "Issuing Country",
                                         "locale": "en-US",
                                         "description": "Issuing country of the driving license"
                                     }
@@ -525,12 +525,12 @@
                                 "sd": "always",
                                 "display": [
                                     {
-                                        "label": "Autorità di rilascio",
+                                        "name": "Autorità di rilascio",
                                         "locale": "it-IT",
                                         "description": "Autorità che ha rilasciato la patente"
                                     },
                                     {
-                                        "label": "Issuing Authority",
+                                        "name": "Issuing Authority",
                                         "locale": "en-US",
                                         "description": "Issuing authority of the driving license"
                                     }
@@ -542,12 +542,12 @@
                                 "sd": "always",
                                 "display": [
                                     {
-                                        "label": "Numero di documento",
+                                        "name": "Numero di documento",
                                         "locale": "it-IT",
                                         "description": "Numero Documento della patente"
                                     },
                                     {
-                                        "label": "Document Number",
+                                        "name": "Document Number",
                                         "locale": "en-US",
                                         "description": "Document number of the driving license"
                                     }
@@ -559,12 +559,12 @@
                                 "sd": "always",
                                 "display": [
                                     {
-                                        "label": "Foto codificata",
+                                        "name": "Foto codificata",
                                         "locale": "it-IT",
                                         "description": "Fotografia del titolare della patente"
                                     },
                                     {
-                                        "label": "Portrait base64 encoded",
+                                        "name": "Portrait base64 encoded",
                                         "locale": "en-US",
                                         "description": "Photo of of the driving licence holder"
                                     }
@@ -576,12 +576,12 @@
                                 "sd": "always",
                                 "display": [
                                     {
-                                        "label": "Abilitazioni alla guida",
+                                        "name": "Abilitazioni alla guida",
                                         "locale": "it-IT",
                                         "description": "Elenco delle categorie di abilitazione"
                                     },
                                     {
-                                        "label": "Driving Privileges",
+                                        "name": "Driving Privileges",
                                         "locale": "en-US",
                                         "description": "Driving Privileges list"
                                     }
@@ -593,12 +593,12 @@
                                 "sd": "always",
                                 "display": [
                                     {
-                                        "label": "Annotazioni/Restrizioni",
+                                        "name": "Annotazioni/Restrizioni",
                                         "locale": "it-IT",
                                         "description": "Annotazioni/Restrizioni valide per tutte le categorie separate da spazio"
                                     },
                                     {
-                                        "label": "Restrictions/Conditions",
+                                        "name": "Restrictions/Conditions",
                                         "locale": "en-US",
                                         "description": "Restriction/Condition for all driving privileges separated by space"
                                     }
@@ -610,12 +610,12 @@
                                 "sd": "always",
                                 "display": [
                                     {
-                                        "label": "Dettagli delle categorie di abilitazione",
+                                        "name": "Dettagli delle categorie di abilitazione",
                                         "locale": "it-IT",
                                         "description": "Dettagli relativi alle specifiche categorie di abilitazione"
                                     },
                                     {
-                                        "label": "Driving privilege details",
+                                        "name": "Driving privilege details",
                                         "locale": "en-US",
                                         "description": "Details related to the specific driving privileges"
                                     }
@@ -676,12 +676,12 @@
                                 "sd": "always",
                                 "display": [
                                     {
-                                        "label": "Nome",
+                                        "name": "Nome",
                                         "locale": "it-IT",
                                         "description": "Nome del titolare della patente"
                                     },
                                     {
-                                        "label": "First Name",
+                                        "name": "First Name",
                                         "locale": "en-US",
                                         "description": "Name of the driving license holder"
                                     }
@@ -693,12 +693,12 @@
                                 "sd": "always",
                                 "display": [
                                     {
-                                        "label": "Cognome",
+                                        "name": "Cognome",
                                         "locale": "it-IT",
                                         "description": "Cognome del titolare della patente"
                                     },
                                     {
-                                        "label": "Family Name",
+                                        "name": "Family Name",
                                         "locale": "en-US",
                                         "description": "last name of the driving license holder"
                                     }
@@ -710,12 +710,12 @@
                                 "sd": "always",
                                 "display": [
                                     {
-                                        "label": "Data di nascita (YYYY-MM-GG)",
+                                        "name": "Data di nascita (YYYY-MM-GG)",
                                         "locale": "it-IT",
                                         "description": "Data di nascita del titolare della patente"
                                     },
                                     {
-                                        "label": "Date of Birth (YYYY-MM-GG)",
+                                        "name": "Date of Birth (YYYY-MM-GG)",
                                         "locale": "en-US",
                                         "description": "Date of birth of the driving license holder"
                                     }
@@ -727,12 +727,12 @@
                                 "sd": "always",
                                 "display": [
                                     {
-                                        "label": "Luogo di Nascita",
+                                        "name": "Luogo di Nascita",
                                         "locale": "it-IT",
                                         "description": "Luogo di nascita del titolare della patente"
                                     },
                                     {
-                                        "label": "Place of Birth",
+                                        "name": "Place of Birth",
                                         "locale": "en-US",
                                         "description": "Place of birth of the driving license holder"
                                     }
@@ -744,12 +744,12 @@
                                 "sd": "always",
                                 "display": [
                                     {
-                                        "label": "Data di rilascio (YYYY-MM-GG)",
+                                        "name": "Data di rilascio (YYYY-MM-GG)",
                                         "locale": "it-IT",
                                         "description": "Data di emissione della patente"
                                     },
                                     {
-                                        "label": "Issue Date (YYYY-MM-GG)",
+                                        "name": "Issue Date (YYYY-MM-GG)",
                                         "locale": "en-US",
                                         "description": "Date of issuance of the driving license"
                                     }
@@ -761,12 +761,12 @@
                                 "sd": "always",
                                 "display": [
                                     {
-                                        "label": "Data di scadenza (YYYY-MM-GG)",
+                                        "name": "Data di scadenza (YYYY-MM-GG)",
                                         "locale": "it-IT",
                                         "description": "Data di scadenza della patente"
                                     },
                                     {
-                                        "label": "Expiry Date (YYYY-MM-GG)",
+                                        "name": "Expiry Date (YYYY-MM-GG)",
                                         "locale": "en-US",
                                         "description": "Date of expiry of the driving license"
                                     }
@@ -778,12 +778,12 @@
                                 "sd": "always",
                                 "display": [
                                     {
-                                        "label": "Paese di rilascio",
+                                        "name": "Paese di rilascio",
                                         "locale": "it-IT",
                                         "description": "Paese di rilascio della patente"
                                     },
                                     {
-                                        "label": "Issuing Country",
+                                        "name": "Issuing Country",
                                         "locale": "en-US",
                                         "description": "Issuing country of the driving license"
                                     }
@@ -795,12 +795,12 @@
                                 "sd": "always",
                                 "display": [
                                     {
-                                        "label": "Autorità di rilascio",
+                                        "name": "Autorità di rilascio",
                                         "locale": "it-IT",
                                         "description": "Autorità che ha rilasciato la patente"
                                     },
                                     {
-                                        "label": "Issuing Authority",
+                                        "name": "Issuing Authority",
                                         "locale": "en-US",
                                         "description": "Issuing authority of the driving license"
                                     }
@@ -812,12 +812,12 @@
                                 "sd": "always",
                                 "display": [
                                     {
-                                        "label": "Numero di documento",
+                                        "name": "Numero di documento",
                                         "locale": "it-IT",
                                         "description": "Numero Documento della patente"
                                     },
                                     {
-                                        "label": "Document Number",
+                                        "name": "Document Number",
                                         "locale": "en-US",
                                         "description": "Document number of the driving license"
                                     }
@@ -829,12 +829,12 @@
                                 "sd": "always",
                                 "display": [
                                     {
-                                        "label": "Foto codificata",
+                                        "name": "Foto codificata",
                                         "locale": "it-IT",
                                         "description": "Fotografia del titolare della patente"
                                     },
                                     {
-                                        "label": "Portrait",
+                                        "name": "Portrait",
                                         "locale": "en-US",
                                         "description": "Photo of of the driving licence holder"
                                     }
@@ -846,12 +846,12 @@
                                 "sd": "always",
                                 "display": [
                                     {
-                                        "label": "Abilitazioni alla guida",
+                                        "name": "Abilitazioni alla guida",
                                         "locale": "it-IT",
                                         "description": "Elenco delle categorie di abilitazione"
                                     },
                                     {
-                                        "label": "Driving Privileges",
+                                        "name": "Driving Privileges",
                                         "locale": "en-US",
                                         "description": "Driving Privileges list"
                                     }
@@ -863,12 +863,12 @@
                                 "sd": "always",
                                 "display": [
                                     {
-                                        "label": "Codice identificativo della Nazione",
+                                        "name": "Codice identificativo della Nazione",
                                         "locale": "it-IT",
                                         "description": "Segno distintivo del paese che emette la patente"
                                     },
                                     {
-                                        "label": "Distinguishing sign of the issuing country",
+                                        "name": "Distinguishing sign of the issuing country",
                                         "locale": "en-US",
                                         "description": "Distinguishing sign of the issuing country"
                                     }
