@@ -1,5 +1,5 @@
-.. include:: ../common/common_definitions.rst
-.. "included" file, so we start with '-' title level
+.. This file is included in relying-party-endpoints.rst (common_definitions is provided by the including file).
+.. level 3 "included" file, so we start with '"' title level
 
 The Relying Party MUST expose a set of endpoints to support remote presentation flows as defined in OpenID4VP 1.0. These endpoints enable secure credential verification, trust establishment, and user authentication for cross-device and same-device interaction patterns.
 

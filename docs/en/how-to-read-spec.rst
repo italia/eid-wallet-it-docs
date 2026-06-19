@@ -1,4 +1,5 @@
-.. include:: ../common/common_definitions.rst
+.. This file is included in introduction.rst (common_definitions is provided by the including file).
+.. "included" file, so we start with '-' title level
   
   
 How to Read the Specification
