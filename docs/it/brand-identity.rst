@@ -4,7 +4,7 @@
 Brand Identity
 ==============
 
-La Brand Identity del Sistema IT-Wallet definisce la personalità del sistema e si declina in una serie di elementi codificati che la contraddistinguono, tra cui il naming e gli elementi propri dell'Identità Visiva. Questa contribuisce e valorizza il Modello della Fiducia alla base dell'intero ecosistema, introducendo elementi visivi riconoscibili. 
+La Brand Identity del Sistema IT-Wallet definisce la personalità del sistema e si declina in una serie di elementi codificati che la contraddistinguono, tra cui il naming e gli elementi propri dell'Identità Visiva. Questa contribuisce e valorizza il Modello della Fiducia alla base dell'intero ecosistema, introducendo elementi visivi riconoscibili.
 
 È importante che la consapevolezza dell'Utente e la sua fiducia nell'ecosistema siano favoriti dalla presenza di elementi grafici, da integrare nelle Soluzioni Tecniche e nei diversi Touchpoint.  
 
@@ -12,7 +12,7 @@ Per garantire quindi che la presenza della Brand Identity nelle diverse Soluzion
 In particolare, tutti gli Attori Primari:
 
 - DEVONO seguire esclusivamente le indicazioni specificate nel Brand Manual, indicato nella sezione :ref:`official-resources:Risorse Ufficiali`;
-- DEVONO utilizzare esclusivamente le Risorse Ufficiali che sono disponibili nella relativa sezione :ref:`official-resources:Risorse Ufficiali` di queste Specifiche Tecniche. 
+- DEVONO utilizzare esclusivamente le Risorse Ufficiali che sono disponibili nella relativa sezione :ref:`official-resources:Risorse Ufficiali` di queste Specifiche Tecniche.
 
 
 Naming
@@ -22,7 +22,7 @@ Il termine "Sistema IT-Wallet", così come definito dalla norma istitutiva, rapp
 
 La declinazione contratta "IT-Wallet" rappresenta, invece, il Brand naming ufficiale che DEVE essere utilizzato in ogni contesto comunicativo e divulgativo, scritto o verbale, fisico o digitale, per riferirsi al "Sistema IT-Wallet".  
 
-Di seguito sono riportati i requisiti di scrittura e pronuncia. 
+Di seguito sono riportati i requisiti di scrittura e pronuncia.
 Tutti coloro che intendono riferirsi al Sistema IT-Wallet:
 
 - DEVONO rispettare l'uso delle maiuscole nel termine "IT" e nelle iniziali di "Wallet" e "Sistema";  
@@ -35,9 +35,9 @@ Tutti coloro che intendono riferirsi al Sistema IT-Wallet:
 Identità Visiva
 ---------------
 
-Il Brand "IT-Wallet" ha una propria Identità Visiva. I partecipanti dell'ecosistema DEVONO applicarla per dare visibilità della propria partecipazione al Sistema IT-Wallet, ma NON DEVONO utilizzare l'Identità Visiva del Brand “IT-Wallet” in sostituzione dell’Identità Visiva della propria organizzazione o la propria Soluzione Tecnica. 
+Il Brand "IT-Wallet" ha una propria Identità Visiva. I partecipanti dell'ecosistema DEVONO applicarla per dare visibilità della propria partecipazione al Sistema IT-Wallet, ma NON DEVONO utilizzare l'Identità Visiva del Brand “IT-Wallet” in sostituzione dell’Identità Visiva della propria organizzazione o la propria Soluzione Tecnica.
 
-Per garantire una corretta coesistenza tra l’Identità Visiva del Brand “IT-Wallet” e l’Identità Visiva della propria organizzazione o delle proprie Soluzioni Tecniche, gli Attori Primari DEVONO utilizzare esclusivamente le Risorse Ufficiali e rispettare le indicazioni del Brand Manual. 
+Per garantire una corretta coesistenza tra l’Identità Visiva del Brand “IT-Wallet” e l’Identità Visiva della propria organizzazione o delle proprie Soluzioni Tecniche, gli Attori Primari DEVONO utilizzare esclusivamente le Risorse Ufficiali e rispettare le indicazioni del Brand Manual.
 
 Logo
 ^^^^
@@ -149,7 +149,7 @@ Di seguito sono riportati i requisiti di utilizzo del Trust Mark, validi sia in 
 
 - NON DEVONO utilizzare il Trust Mark su sfondi di colore che ne compromettano la visibilità o la leggibilità e DEVONO garantire un contrasto adeguato tra il Trust Mark e lo sfondo, in conformità con quanto definito nel :ref:`official-resources:Brand Manual`; 
 
-- POSSONO associare il Trust Mark a loghi, marchi o simboli di altri attori del sistema, purchè in accordo con quando stabilito nel Brand Manual. 
+- POSSONO associare il Trust Mark a loghi, marchi o simboli di altri attori del sistema, purchè in accordo con quando stabilito nel Brand Manual.
 
 Per approfondimenti sul Trust Mark, consultare il Brand Manual, indicato nella sezione :ref:`official-resources:Risorse Ufficiali`. La Risorsa Ufficiale del Trust Mark è disponibile nella sezione :ref:`official-resources:Risorse Ufficiali` di queste specifiche tecniche.
 

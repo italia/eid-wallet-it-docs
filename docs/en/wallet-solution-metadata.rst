@@ -25,7 +25,7 @@ The metadata JSON Object whose key is ``wallet_solution`` contains the following
       - REQUIRED. It contains the Wallet Metadata parameters as defined in :ref:`Table of Wallet Metadata Parameters <table_wallet_metadata_parameters>` and the following two parameters
 
          - ``credential_offer_endpoint`` Credential Offer Endpoint of a Wallet.
-         - ``wallet_name`` String containing a human-readable name of the Wallet. 
+         - ``wallet_name`` String containing a human-readable name of the Wallet.
 
 
 .. note::

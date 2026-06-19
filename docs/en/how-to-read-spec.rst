@@ -60,7 +60,7 @@ Readers implementing or operating a **Wallet Provider** Solution should focus on
 
 **Essential sections:**
 
-* **Section** :ref:`functionalities:User Experience Design`: High-level functional requirements supporting the User Experience across all stages of interaction between the User and the service. 
+* **Section** :ref:`functionalities:User Experience Design`: High-level functional requirements supporting the User Experience across all stages of interaction between the User and the service.
 * **Section** :ref:`wallet-solution:Wallet Solution`: Complete wallet implementation requirements, components, and interaction processes.
 * **Section** :ref:`digital-credential-management:Digital Credential Management`: Digital Credential data models, formats and lifecycle management.
 * **Section** :ref:`digital-credential-flows:Digital Credential Flows`: Issuance and presentation flows for Digital Credentials.
@@ -82,7 +82,7 @@ For readers who are interested in implementing a **Credential Issuer** Solution,
 
 **Essential sections:**
 
-* **Section** :ref:`functionalities:User Experience Design`: High-level functional requirements supporting the User Experience across all stages of interaction between the User and the service. 
+* **Section** :ref:`functionalities:User Experience Design`: High-level functional requirements supporting the User Experience across all stages of interaction between the User and the service.
 * **Section** :ref:`credential-issuer-solution:Credential Issuer Solution`: Credential Issuer Solution - Complete Issuer implementation requirements and component details.
 * **Section** :ref:`authentic-sources:Authentic Sources`: Understanding authoritative data source integration patterns.
 * **Section** :ref:`digital-credential-management:Digital Credential Management`: Digital Credential formats and lifecycle management.
@@ -107,7 +107,7 @@ If the reader wants to operate an **Authentic Source**, the focus should be on s
 
 **Essential sections:**
 
-* **Section** :ref:`functionalities:User Experience Design`: High-level functional requirements supporting the User Experience across all stages of interaction between the User and the service. 
+* **Section** :ref:`functionalities:User Experience Design`: High-level functional requirements supporting the User Experience across all stages of interaction between the User and the service.
 * **Section** :ref:`authentic-sources:Authentic Sources`: Requirements and integration patterns with Credential Issuers.
 * **Section** :ref:`authentic-source-endpoint:Authentic Source Endpoints`: API specifications and catalog integration.
 * **Section** :ref:`algorithms:Cryptographic Algorithms`: Data integrity, authentication, and security requirements.
@@ -125,7 +125,7 @@ Readers interested in implementing or operating a **Relying Party** Solution to 
 
 **Essential sections:**
 
-* **Section** :ref:`functionalities:User Experience Design`: High-level functional requirements supporting the User Experience across all stages of interaction between the User and the service. 
+* **Section** :ref:`functionalities:User Experience Design`: High-level functional requirements supporting the User Experience across all stages of interaction between the User and the service.
 * **Section** :ref:`relying-party-solution:Relying Party Solution`: Complete verifier implementation requirements and Entity Configuration.
 * **Section** :ref:`digital-credential-management:Digital Credential Management`: Understanding Digital Credential formats and validity verification.
 * **Section** :ref:`credential-presentation:Digital Credential Presentation`: Presentation flow implementation for both remote and proximity scenarios.

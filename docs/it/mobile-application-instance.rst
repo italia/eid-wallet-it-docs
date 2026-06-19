@@ -322,7 +322,7 @@ La seguente tabella elenca i Codici di Stato HTTP e i relativi codici di errore 
 
 .. Il JWT della Richiesta di Associazione Chiave include i seguenti attributi del corpo:
 
-.. 
+..
   .. list-table::
     :class: longtable
     :widths: 20 60 20
@@ -362,7 +362,7 @@ La seguente tabella elenca i Codici di Stato HTTP e i relativi codici di errore 
 .. Di seguito è riportato un esempio non normativo di un'intestazione e un payload JWT di una Richiesta di Associazione Chiave.
 
 
-.. 
+..
  .. code-block:: json
 
  ..   {

@@ -57,7 +57,7 @@ Transition to Operational
 After installation, the User opens the Wallet Instance and an activation begins (**WI ACT**).
 At this stage, a User account MUST be created with the Wallet Provider and associated with the Wallet Instance through the Wallet Cryptographic
 Hardware Key Tag, subject to obtaining the User's consent (see :ref:`wallet-instance-registration:Wallet Instance Initialization and Registration` for more details, with tests in :ref:`WP_024 <wallet-instance-testcases>` and :ref:`WP_138 <wallet-instance-optional-testcases>`).
-This association allows the User to directly request Wallet Instance revocation from the Wallet Provider. 
+This association allows the User to directly request Wallet Instance revocation from the Wallet Provider.
 
 .. note::
   As a result of the User account creation, an authentication mechanism MUST be set for the User to interact with the Wallet Provider portal.

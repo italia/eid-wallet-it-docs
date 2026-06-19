@@ -286,7 +286,7 @@ Uscita Volontaria - Disattivazione Tecnica
      a. Rimuovere completamente la Configurazione dell'Entità dall'endpoint ``/.well-known/openid-federation`` (restituendo HTTP 404), OPPURE
      b. Mantenere la Configurazione dell'Entità come scaduta (con la claim ``exp`` nel passato). Pertanto NON DEVE aggiornarla con timestamp freschi.
 
-  5. **Aggiornamento dello Stato del Registro**: L'Entità DOVREBBE verificare la rimozione dal Registro della Federazione, verificando anche lo stato del Trust Mark utilizzando l'endpoint dello Stato del Trust Mark. 
+  5. **Aggiornamento dello Stato del Registro**: L'Entità DOVREBBE verificare la rimozione dal Registro della Federazione, verificando anche lo stato del Trust Mark utilizzando l'endpoint dello Stato del Trust Mark.
 
 Esempio non normativo di richiesta di revoca del Certificato X.509 seguendo il formato :rfc:`3280`:
 

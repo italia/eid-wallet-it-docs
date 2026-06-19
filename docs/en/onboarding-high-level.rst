@@ -22,7 +22,7 @@ All Primary Actors MUST undergo administrative registration for legal and regula
 
     2. **Technical Registration**: Following administrative approval, entities complete technical registration through specialized pathways:
 
-        a. **Authentic Sources**: Declare their available claims from the Claims Registry and specify intended verification purposes and organization type (public or private). 
+        a. **Authentic Sources**: Declare their available claims from the Claims Registry and specify intended verification purposes and organization type (public or private).
 
         b. **Credential Issuers**: Select Authentic Sources based on required claims, request integration approval (except for regulatory mandates), and register Credential types with automatic catalog publication per Supervisory Body policy.
 
@@ -45,7 +45,7 @@ Authentic Source Registration Process
 
 Authentic Source registration allows data providers to establish their authoritative role in the Digital Credential ecosystem through the registration of their data capabilities and standardized access mechanisms based on the Claims Registry and Taxonomy classifications.
 
-Authentic Source entities MUST undergo registration procedures that validate their data authority, declare their available claims from the standardized Claims Registry, and establish technical integration mechanisms. Authentic Source entities specify intended use cases (formally ``purposes``) that determine catalog eligibility per Supervisory Body policies. 
+Authentic Source entities MUST undergo registration procedures that validate their data authority, declare their available claims from the standardized Claims Registry, and establish technical integration mechanisms. Authentic Source entities specify intended use cases (formally ``purposes``) that determine catalog eligibility per Supervisory Body policies.
 
 Public and Private Authentic Sources MUST leverage PDND integration to provide government data through standardized national infrastructure.
 
@@ -138,7 +138,7 @@ Removal processes MAY include investigations, remediations, and appeal procedure
 
 .. warning::
 
-    For critical security incidents or immediate threats to federation integrity, the Supervisory Body MAY implement emergency suspension with immediate effect. 
+    For critical security incidents or immediate threats to federation integrity, the Supervisory Body MAY implement emergency suspension with immediate effect.
 
 Lifecycle Coordination Requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -216,7 +216,7 @@ Credential Issuer operators start by discovering available Authentic Source enti
 **Example - mDL (Public Scenario)**:
 
     - **AS Discovery** or **AS Integration Request**: Identifies the Authentic Source providing mDL attributes in AS Registry with required driving license claims. Alternatively, Credential Issuer receives the integration request directly by mDL Authentic Source.
-    - **Integration Request**: Automatic approval due to regulatory mandate. 
+    - **Integration Request**: Automatic approval due to regulatory mandate.
     - **Technical Setup**: e-Service PDND integration following government standards (see :ref:`e-service-pdnd:e-Service PDND`).
     - **Catalog Publication**: mDL automatically published in the Credential Catalog.
     - **User Access**: Citizens discover mDL through a public catalog in Wallet.
@@ -229,7 +229,7 @@ Credential Issuer operators start by discovering available Authentic Source enti
     - **Catalog Publication**: Badge automatically published in the Credential Catalog.
     - **User Access**: Employees receive badges only via direct Credential Offer from company systems.
 
-Following successful integration testing and Authentic Source approval, the Credential Issuer is registered in the Federation Registry as a trusted Entity, enabling actual Credential issuance to end-users. 
+Following successful integration testing and Authentic Source approval, the Credential Issuer is registered in the Federation Registry as a trusted Entity, enabling actual Credential issuance to end-users.
 
 .. warning::
 
@@ -281,7 +281,7 @@ Service authorization by the Supervisory Body MUST involve policy-based evaluati
 User Experience Journey
 -------------------------------
 
-When all entity onboarding processes are successfully completed, Users can discover and install certified Wallet Instances, obtain available Digital Credentials and present their Digital Credentials to registered Relying Parties (see :ref:`functionalities:Functionalities Overview`). 
+When all entity onboarding processes are successfully completed, Users can discover and install certified Wallet Instances, obtain available Digital Credentials and present their Digital Credentials to registered Relying Parties (see :ref:`functionalities:Functionalities Overview`).
 
 This seamless integration depends on all relevant entities having completed their respective onboarding journeys.
 

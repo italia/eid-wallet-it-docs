@@ -330,7 +330,7 @@ The JSON Object returned in the response has the following claim:
       - REQUIRED. A String containing of the issued Wallet Instance Attestation.
       - This specification.
 
-The value of ``wallet_instance_attestation`` parameter is a string representing the Wallet Instance Attestation in a JWT. 
+The value of ``wallet_instance_attestation`` parameter is a string representing the Wallet Instance Attestation in a JWT.
 
 If any errors occur during the process, an error response is returned. The response uses ``application/json`` as the ``Content-Type`` and includes the following parameters:
 
@@ -466,7 +466,7 @@ The body of the Wallet Instance Attestation JWT contains the following claims:
         - **general_info**: REQUIRED. An object that has the following parameters:
 
           - **wallet_provider_name**: REQUIRED. String value of the Wallet Provider name as listed on the trusted list of Wallet Providers.
-          - **wallet_solution_id**: REQUIRED. String value of the Wallet Solution identifier as listed on the trusted list of Wallet Providers. 
+          - **wallet_solution_id**: REQUIRED. String value of the Wallet Solution identifier as listed on the trusted list of Wallet Providers.
           - **wallet_solution_version**: REQUIRED. String value of the Wallet Solution version.
           - **wallet_solution_certification_information**: REQUIRED. String value that contains a URL that links to the certification of the Wallet Solution.
       - `EUDI-TS 3`_.
@@ -644,9 +644,9 @@ The JSON Object returned in the response has the following claim:
       - REQUIRED. A String representing the issued Wallet Unit Attestation.
       - This specification.
 
-The value of ``wallet_unit_attestation`` parameter is a string representing the Wallet Unit Attestation in a JWT. 
+The value of ``wallet_unit_attestation`` parameter is a string representing the Wallet Unit Attestation in a JWT.
 
-If any errors occur during the process, an error response is returned as it is defined in the previous section. 
+If any errors occur during the process, an error response is returned as it is defined in the previous section.
 
 
 The following table lists HTTP Status Codes and related error codes for the ones that are different from what is already reported:
@@ -748,15 +748,15 @@ The body of the Wallet Unit Attestation JWT contains the following claims:
         - **general_info**: REQUIRED. An object that has the following parameters:
 
           - **wallet_provider_name**: REQUIRED. String value of the Wallet Provider name as listed on the trusted list of Wallet Providers.
-          - **wallet_solution_id**: REQUIRED. String value of the Wallet Solution identifier as listed on the trusted list of Wallet Providers. 
+          - **wallet_solution_id**: REQUIRED. String value of the Wallet Solution identifier as listed on the trusted list of Wallet Providers.
           - **wallet_solution_version**: REQUIRED. String value of the Wallet Solution version.
           - **wallet_solution_certification_information**: REQUIRED. String that contains a URL that links to the certification of the Wallet Solution.
 
         - **key_storage_info**: REQUIRED. An object that has the following parameters:
 
-          - **storage_type**: REQUIRED. String value that identifies the technical implementation of WSCD. It can have one of the following values, ``REMOTE``, ``LOCAL_EXTERNAL``, ``LOCAL_INTERNAL``, ``LOCAL_NATIVE``, or ``HYBRID``. 
+          - **storage_type**: REQUIRED. String value that identifies the technical implementation of WSCD. It can have one of the following values, ``REMOTE``, ``LOCAL_EXTERNAL``, ``LOCAL_INTERNAL``, ``LOCAL_NATIVE``, or ``HYBRID``.
           - **keys_exportable**: REQUIRED. Boolean value that defines whether the private keys of the WSCD or keystore can be exported. It SHALL be set to ``true`` if the WSCD  allows the private keys to be exported (including if in encrypted format only) and ``false`` otherwise.
-          - **storage_certification_information**: REQUIRED. String that contains a URL that links to the certification of the key storage component. 
+          - **storage_certification_information**: REQUIRED. String that contains a URL that links to the certification of the key storage component.
       - `EUDI-TS 3`_.
 
 
@@ -770,7 +770,7 @@ Below is a non-normative example of the Wallet Unit Attestation JWT header and p
 
 
 .. note::
-    As the certification scheme has not yet been defined, the exact content of ``wallet_solution_certification_information`` is undefined. 
+    As the certification scheme has not yet been defined, the exact content of ``wallet_solution_certification_information`` is undefined.
     This content will be defined in a future update. Similarly, the exact content of ``storage_certification_information`` is currently undefined and will be specified in a future update, but it SHALL provide sufficient information to determine whether the key storage is a WSCD.  
     Note that the OID4VCI specification does specify a ``certification`` attribute in the ``key_attestation`` element that could be used instead of ``storage_certification_information``.
 

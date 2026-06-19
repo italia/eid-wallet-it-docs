@@ -43,7 +43,7 @@ To ensure a correct and consistent implementation, Primary Actors:
 
 - MAY choose from the available configurations provided. Primary Actors MUST ensure the correct use of atomic components, such as the :ref:`functionalities:Engagement Button` or the :ref:`functionalities:Authentication Button` ; 
 
-- MUST keep used resources up to date, in line with the latest available version of the :ref:`official-resources:Official Resources`. 
+- MUST keep used resources up to date, in line with the latest available version of the :ref:`official-resources:Official Resources`.
 
 Activation of the Wallet Instance
 ----------------------------------
@@ -115,7 +115,7 @@ To ensure a consistent identification and representation of the PID across diffe
 - MUST NOT alter, modify, or replace the IT-Wallet ID graphic asset with unofficial graphic assets; 
 - MUST maintain the minimum clear space as defined in the :ref:`official-resources:Official Resources` to ensure visibility and recognizability. No other graphic or textual elements MUST interfere with this space; 
 - MUST NOT resize the IT-Wallet ID graphic asset below the minimum dimensions specified in the :ref:`official-resources:Official Resources` to maintain legibility across formats and devices; 
-- MUST NOT place the IT-Wallet ID graphic asset on backgrounds that compromise its visibility or legibility. Adequate contrast between the IT-Wallet ID graphic asset and the background MUST be ensured, in line with the :ref:`official-resources:Official Resources`. 
+- MUST NOT place the IT-Wallet ID graphic asset on backgrounds that compromise its visibility or legibility. Adequate contrast between the IT-Wallet ID graphic asset and the background MUST be ensured, in line with the :ref:`official-resources:Official Resources`.
 
 .. only:: format_html
 
@@ -148,7 +148,7 @@ The Electronic Attestations of Attributes is a dynamic object that enables the U
 
 - **consists of a set of Attributes**, the granular data that define it (no static images or PDFs), such as, for example, a characteristic (e.g. “resident”) ora a status (e.g. “student”); 
 
-- **is issued by a Provider of Electronic Attestation of Attributes**, the entity that emits it on the basis of the information acquired and manages its lifecycle. 
+- **is issued by a Provider of Electronic Attestation of Attributes**, the entity that emits it on the basis of the information acquired and manages its lifecycle.
 
 Depending on the User's specific needs, the type of Electronic Attestation of Attributes, and the offerings available from the Wallet Provider, the Electronic Attestation of Attributes Provider, and the Authentic Source, the request of Electronic Attestations of Attributes can occur in two ways:
 
@@ -156,7 +156,7 @@ Depending on the User's specific needs, the type of Electronic Attestation of At
 
 - **from a Touchpoint of the Authentic Source** (or the Electronic Attestation of Attributes Provider if it coincides with the Authentic Source; (see :ref:`credential-issuance-low-level:Credential Offer Flow` ): the User interacts with the digital service of the Authentic Source, allowing them to get a specific Electronic Attestation of Attributes in their Wallet Instance via an :ref:`functionalities:Engagement Button`.
 
-Although the methods for initiating the request are different, the issuance flows share a similar structure and process. 
+Although the methods for initiating the request are different, the issuance flows share a similar structure and process.
 
 Issuance from the Wallet Instance Catalog
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -182,15 +182,15 @@ The Authentic Source MAY provide additional information related to an Electronic
 
 - MUST ensure that the information is constantly updated; 
 
-- MUST include a title and text in which it MAY include references to external channels to direct Users to a procedure, explore a specific topic and/or open support requests. 
+- MUST include a title and text in which it MAY include references to external channels to direct Users to a procedure, explore a specific topic and/or open support requests.
 
 Following is an example of informative text: 
 
 .. note::
   **Title:** Who may obtain the document 
-  **Text:** The digital version of [Document name] is available only to those who already hold the physical one. Please, make sure to have already obtained the corresponding physical document. For more details, [read more information] (URL). 
+  **Text:** The digital version of [Document name] is available only to those who already hold the physical one. Please, make sure to have already obtained the corresponding physical document. For more details, [read more information] (URL).
 
-For further information, please refer to the section :ref:`registry:Authentic Source Registry` (see ``data_capabilities.user_information`` parameter). 
+For further information, please refer to the section :ref:`registry:Authentic Source Registry` (see ``data_capabilities.user_information`` parameter).
 
 The Wallet Provider MUST allow the User to remove an Electronic Attestation of Attributes through their Wallet Instance at any moment. In case of absence of the device where the Wallet Instance was activated, the Wallet Provider MUST allow the User to deactivate the entire Wallet Instance through a specific Touchpoint. In addition, the Electronic Attestation of Attributes Providers SHOULD allow the User to revoke the issued Digital Credentials through specific Touchpoints. For more details, please refer to the :ref:`functionalities:Deactivation of the Wallet Instance` and :ref:`functionalities:Management of Electronic Attestations` sections.
 
@@ -254,9 +254,9 @@ Below are illustrated the User Experience requirements for the issuance of an El
 - The User views a preview of the Electronic Attestation of Attributes. The User confirms the data shown in the preview to proceed with the request or cancels the operation; 
 - The User authorizes the operation using the unlock method previously set; 
 - The User views the positive outcome of the request; 
-- The User views the details of the requested Electronic Attestation of Attributes, including: the data contained in it, the name of the Electronic Attestation of Attributes Provider who issued the Attestation, and the names of the Authentic Sources. 
+- The User views the details of the requested Electronic Attestation of Attributes, including: the data contained in it, the name of the Electronic Attestation of Attributes Provider who issued the Attestation, and the names of the Authentic Sources.
 
-In case of errors during the issuance of the Electronic Attestation of Attributes, the Authentic Source MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the :ref:`functionalities:Error Management` section. 
+In case of errors during the issuance of the Electronic Attestation of Attributes, the Authentic Source MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the :ref:`functionalities:Error Management` section.
 
 The flow is shown below with illustrative wireframes.
 
@@ -325,7 +325,7 @@ The flow is shown below with illustrative wireframes.
 
     Example of User Experience in the issuance of an Electronic Attestation of Attributes from the Authentic Source, cross device - 04
 
-Following is represented for illustrative purposes the page with the :ref:`functionalities:Engagement Button`, together with the Selection Page and the QR Code Page with the interface elements and texts updated according to the :ref:`functionalities:Issuance from a Touchpoint of the Authentic Source` flow. 
+Following is represented for illustrative purposes the page with the :ref:`functionalities:Engagement Button`, together with the Selection Page and the QR Code Page with the interface elements and texts updated according to the :ref:`functionalities:Issuance from a Touchpoint of the Authentic Source` flow.
 
 .. only:: format_html 
 
@@ -365,7 +365,7 @@ The Engagement Button:
 
 - MUST state in their label the action to be done followed by "IT-Wallet", for example "Login with IT-Wallet", "Add to IT-Wallet", "Verify with IT-Wallet";
 
-- MAY be accompanied by text explaining the added value of performing that action using the IT-Wallet system. 
+- MAY be accompanied by text explaining the added value of performing that action using the IT-Wallet system.
 
 - Actors wishing to integrate the Engagement Button into their Touchpoints MUST ensure that it is translated into other languages, at least English.
 
@@ -386,7 +386,7 @@ Designing and implementing an Electronic Attestation of Attributes properly is e
 
  - **opportunity and perceived value**: what the EAA can attest, in which contexts of use and by whom; 
  - **ease of understanding**: how simple and intuitive it is for those who use it and for those who verify it; 
- - **communicative effectiveness**: how recognizable or reliable it is perceived to be by those who use or verify it. 
+ - **communicative effectiveness**: how recognizable or reliable it is perceived to be by those who use or verify it.
 
 
 - The Wallet Provider is responsible for presenting the Electronic Attestation of Attributes in accordance with: 
@@ -406,7 +406,7 @@ In order to guide the Authentic Source in designing and the Wallet Provider in a
  - Tax code 
  - Date of birth  
  - Place of birth  
- - Etc. 
+ - Etc.
 
 - **Level I Attributes**, which are the data that represent and identify the specific type of EAA (e.g. driving licence number, category, expiry date, etc.) 
 
@@ -418,7 +418,7 @@ In order to guide the Authentic Source in designing and the Wallet Provider in a
 - **Metadata**, which are data identifying the details of the EAA at the level of:  
 
  - **Authentic Source name**, which is the identifying name of the data owner or the official database holding the information behind the EAA, defined by the parameter ``data_capabilities.data_origin``;  
- - **Provider of Electronic Attestation of Attributes name**, which is the identifying name of the entity that creates and issues the EAA, defined by the parameter ``organization_name``. 
+ - **Provider of Electronic Attestation of Attributes name**, which is the identifying name of the entity that creates and issues the EAA, defined by the parameter ``organization_name``.
 
 .. only:: format_html
 
@@ -516,7 +516,7 @@ The Wallet Provider is the ultimate responsible party for the visual presentatio
 - MUST include the same data of the Preview View in the Detail View and give a complete representation of all the other Attributes, following the order defined by the Authentic Source within the Authentic Source Registry (see :ref:`registry:Authentic Source Registry`); MAY include specific details in the Detail View, for example information about use case scenario or the reason for the invalid state of the EAA; 
 - MUST include Action Buttons in the Detail View to enable the EAA lifecycle management and allow the User to revoke or to update a EAA at any time (see :ref:`functionalities:Management of Electronic Attestations`); 
 - MUST guarantee that the EAA is a functional element, for the User to access services provided by Relying Parties in digital and proximity contexts (see :ref:`functionalities:Presentation of Electronic Attestations`); 
-- MUST display in the Detail View a method of assistance given by the Authentic Source via the ``data_capabilities.contacts`` parameter (see :ref:`functionalities:User Assistance` and see :ref:`registry:Authentic Source Registry`). 
+- MUST display in the Detail View a method of assistance given by the Authentic Source via the ``data_capabilities.contacts`` parameter (see :ref:`functionalities:User Assistance` and see :ref:`registry:Authentic Source Registry`).
 
 Below an example of Electronic Attestation of Attribute layout, in a Preview View, and Detail View.
 
@@ -552,7 +552,7 @@ Proximity Presentation
 
 Proximity presentation allows the User to present the PID and/or EAA data via their Wallet Instance, using one of two methods:
 
-- **Supervised mode**: the User presents the PID and/or EAA data through the Wallet Instance to a Verifier (e.g., law enforcement officer, desk operator) equipped with a dedicated verification system (:ref:`relying-party-instance:Mobile Relying Party Instance`). 
+- **Supervised mode**: the User presents the PID and/or EAA data through the Wallet Instance to a Verifier (e.g., law enforcement officer, desk operator) equipped with a dedicated verification system (:ref:`relying-party-instance:Mobile Relying Party Instance`).
 
 - **Unsupervised mode**: the User presents the PID and/or EAA data through the Wallet Instance to a designated device (e.g., turnstile, totem) provided with a dedicated verification system (Embedded Relying Party Instance).
 
@@ -822,7 +822,7 @@ Both flows are shown below with illustrative wireframes.
 Relying Parties SHOULD use the :ref:`official-resources:Official Resources` for design and development. If a Relying Party does not intend to use such open source resources, it MAY independently develop the Technical Solutions enabling the Authentication flow, ensuring that it follows the specifications herein provided.
 
 .. note::
-  The images in this section are to be considered illustrative as they are the subject of interface (UI) evolutions. 
+  The images in this section are to be considered illustrative as they are the subject of interface (UI) evolutions.
 
 Relying Parties MUST implement and provide the following pages as part of the Authentication process:
 
@@ -874,13 +874,13 @@ If the User accesses the Discovery Page from the same Touchpoint where the Walle
 
 **Selection Page**
 
-The Selection Page is the page on which the User lands after they have chosen to Authenticate via the IT-Wallet System, and is intended to present the User with the Wallet Solutions available to perform Authentication. 
+The Selection Page is the page on which the User lands after they have chosen to Authenticate via the IT-Wallet System, and is intended to present the User with the Wallet Solutions available to perform Authentication.
 
 .. note::
    This section describes the display of a Selection Page as part of the Authentication process use case. The same page SHOULD be used also by the Relying Parties during presentation and by third parties offering the Credential Offer to enable the Wallet Solution selection option. Further details are provided in :ref:`remote-flow:Remote Flow` and :ref:`credential-issuance-low-level:Credential Offer Flow`.
 
 
-The Relying Party MUST implement the Selection Page made available in the :ref:`official-resources:Official Resources`. 
+The Relying Party MUST implement the Selection Page made available in the :ref:`official-resources:Official Resources`.
 
 .. only:: format_html 
 
@@ -939,13 +939,13 @@ The Relying Party implementing the page:
 
 - MUST include a Call to Action that allows the User to abort the operation and return to the previous page (e.g., the Discovery Page in case of an Authentication process).
 
-The Relying Party MAY also include a text component on the Selection Page to promote the Authentication mode via IT-Wallet, which links back to the IT-Wallet System's official website, as represented in the :ref:`official-resources:Official Resources`. 
+The Relying Party MAY also include a text component on the Selection Page to promote the Authentication mode via IT-Wallet, which links back to the IT-Wallet System's official website, as represented in the :ref:`official-resources:Official Resources`.
 
 **QR Code Page (cross-device only)**
 
 The QR Code Page is presented to the User who selects IT-Wallet System Authentication within a cross-device process. Its purpose is to prompt the User to scan the generated QR code using their Wallet Instance or the camera of their device.
 
-Relying Parties MUST implement the QR Code Page (cross-device) provided in the :ref:`official-resources:Official Resources`. 
+Relying Parties MUST implement the QR Code Page (cross-device) provided in the :ref:`official-resources:Official Resources`.
 
 .. only:: format_html 
 
@@ -986,7 +986,7 @@ Furthermore, in compliance with [REF_ACCESSIBILITY], regarding the QR code, the 
 
 The Thank You Page is displayed after the User completes the Authentication process via their Wallet Instance. Its purpose is to inform the User about the successful Authentication.
 
-Relying Parties MUST implement the Thank You Page provided in the :ref:`official-resources:Official Resources`. 
+Relying Parties MUST implement the Thank You Page provided in the :ref:`official-resources:Official Resources`.
 
 .. only:: format_html 
 
@@ -1015,7 +1015,7 @@ The Relying Party implementing the page:
 
 The Error Page is displayed when an issue occurs during the Authentication process. Its purpose is to inform the User about the nature of the error (e.g., technical issue, network issues, Wallet Instance malfunction, denied data sharing, etc.) and to present the available next steps. For further details, refer to the :ref:`functionalities:Error Management` section.
 
-Relying Parties MUST implement the Error Page provided in the :ref:`official-resources:Official Resources`. 
+Relying Parties MUST implement the Error Page provided in the :ref:`official-resources:Official Resources`.
 
 .. only:: format_html 
 
@@ -1064,7 +1064,7 @@ The Authentication Button has the following requirements:
 
 - The Authentication Button SHOULD always be accompanied by an external link (e.g., "Learn more") that links to the official website of the IT-Wallet System, indicated in the :ref:`official-resources:Official Resources` section; 
 
-- Where space allows and/or the context requires it, the Authentication Button SHOULD be accompanied by a descriptive text: "IT-Wallet is the Italian digital wallet system that allows you to authenticate online and access public and private services quickly and securely, using the data, documents, and attestations you can obtain digitally in one of the participating wallets.". 
+- Where space allows and/or the context requires it, the Authentication Button SHOULD be accompanied by a descriptive text: "IT-Wallet is the Italian digital wallet system that allows you to authenticate online and access public and private services quickly and securely, using the data, documents, and attestations you can obtain digitally in one of the participating wallets.".
 
 
 Below are some non-mandatory examples of Authentication Button layout: 
@@ -1118,7 +1118,7 @@ The button is available in three variants of dimensions (S - default / M / L ) a
 The Official Resource of the Authentication Button is available in the :ref:`official-resources:Official Resources` of these Technical Specification.
 
 **"Login with IT-Wallet" button – svg**
-For further information on the Authentication button refer to the Brand Manual, indicated in the :ref:`official-resources:Official Resources` section. The Authentication button Official Resource is available in the :ref:`official-resources:Official Resources` section of these Technical Specifications. 
+For further information on the Authentication button refer to the Brand Manual, indicated in the :ref:`official-resources:Official Resources` section. The Authentication button Official Resource is available in the :ref:`official-resources:Official Resources` section of these Technical Specifications.
 
 .. only:: format_html
 
@@ -1190,7 +1190,7 @@ Below are the key aspects that impact and define the User Experience in managing
 Status of Electronic Attestations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To ensure reliability and promote the proper use of a Wallet Solution, the Wallet Provider MUST guarantee the User to always have visibility of the status of the Electronic Attestations issued within their Wallet Instance, based on the information received from the Electronic Attestations Provider, which manages their lifecycle. 
+To ensure reliability and promote the proper use of a Wallet Solution, the Wallet Provider MUST guarantee the User to always have visibility of the status of the Electronic Attestations issued within their Wallet Instance, based on the information received from the Electronic Attestations Provider, which manages their lifecycle.
 
 The admissible statuses for an Electronic Attestation are as follows: 
 
@@ -1200,30 +1200,30 @@ The admissible statuses for an Electronic Attestation are as follows:
 
   - MUST provide the User with adequate evidence of this status; 
   - MUST invite the User to wait for the EAA to automatically return to a valid status at the end of the suspension period; 
-  - MUST guarantee the User presentation functionality, both in proximity and remote scenarios. Consequently, the Relying Party Instance MUST adequately inform the Verifier about the specific status of the EAA. 
+  - MUST guarantee the User presentation functionality, both in proximity and remote scenarios. Consequently, the Relying Party Instance MUST adequately inform the Verifier about the specific status of the EAA.
 
 - **To be Updated** (``update`` or ``attribute_update``): the EAA is invalid because one or more of its information elements, at the metadata or Attribute level, is obsolete. In this case, the Wallet Instance: 
 
   - If one or more of the EAA metadata is obsolete: 
 
-    - SHOULD automatically receive the EAA update managed by the Electronic Attestations Provider without informing or requiring action from the User or cause service interruptions in terms of EAA management and presentation. 
+    - SHOULD automatically receive the EAA update managed by the Electronic Attestations Provider without informing or requiring action from the User or cause service interruptions in terms of EAA management and presentation.
 
   - If one or more of the EAA Attributes are obsolete: 
 
     - MUST provide the User with adequate evidence; 
     - MUST invite the User to update the EAA through a new issuance process; 
-    - MUST guarantee the User presentation functionality, both in proximity and remote scenarios. Consequently, the Relying Party Instance MUST adequately inform the Verifier about the specific status of the EAA. 
+    - MUST guarantee the User presentation functionality, both in proximity and remote scenarios. Consequently, the Relying Party Instance MUST adequately inform the Verifier about the specific status of the EAA.
 
 - **Invalid** (``invalid``): the EAA is invalid, in an irreversible condition (e.g., revoked driving license). In this case, the Wallet Instance: 
 
   - MUST provide the User with adequate evidence; 
   - MUST invite the User to update or delete the EAA depending on whether they are entitled to re-obtain it and, therefore, use it again (e.g., a renewed driving license – which can be re-obtained as an EAA – or an exhausted medical prescription – which cannot be re-obtained as an EAA); 
-  - MUST guarantee the User presentation functionality, both in proximity and remote scenarios. Consequently, the Relying Party Instance MUST adequately inform the Verifier about the specific status of the EAA. 
+  - MUST guarantee the User presentation functionality, both in proximity and remote scenarios. Consequently, the Relying Party Instance MUST adequately inform the Verifier about the specific status of the EAA.
 
 In addition to the statuses listed above, it should be specified that an EAA is subject to expiration. Two types of expiration are distinguished: 
 
 - **Administrative expiration**: characterizes certain EAAs and is provided by the Authentic Source within the Attributes of the EAA itself (e.g., driving license expiration date); 
-- **Technical expiration**: characterizes all EAAs and is defined by the Authentic Source in synergy with the Electronic Attestations Provider with the aim of mitigating security risks. This expiration is generally set at 1 year or, in any case, at a period less than or equal to the administrative expiration date. 
+- **Technical expiration**: characterizes all EAAs and is defined by the Authentic Source in synergy with the Electronic Attestations Provider with the aim of mitigating security risks. This expiration is generally set at 1 year or, in any case, at a period less than or equal to the administrative expiration date.
 
 Consequently, the EAA assumes the following additional statuses: 
 
@@ -1233,11 +1233,11 @@ Consequently, the EAA assumes the following additional statuses:
 
     - SHOULD provide the User with adequate evidence; 
     - SHOULD invite the User to perform any necessary actions to re-obtain the updated EAA (e.g., renew the driving license at the competent offices); 
-    - MUST guarantee the User presentation functionality, both in proximity and remote scenarios. 
+    - MUST guarantee the User presentation functionality, both in proximity and remote scenarios.
 
   - If the technical expiration is approaching (e.g. 7 days remaining): 
 
-    - SHOULD automatically trigger the EAA update managed by the Electronic Attestations Provider without requiring action from the User. 
+    - SHOULD automatically trigger the EAA update managed by the Electronic Attestations Provider without requiring action from the User.
 
     - If the automatic update is successful and returns an updated EAA:  
 
@@ -1247,11 +1247,11 @@ Consequently, the EAA assumes the following additional statuses:
 
      - MUST provide the User with adequate evidence of the potential loss of entitlement to the EAA itself; 
      - MUST invite the User to update or delete the EAA depending on whether they are entitled to re-obtain it and, therefore, use it again (e.g., a renewed driving license – which can be re-obtained as an EAA – or an exhausted medical prescription – which cannot be re-obtained as an EAA); 
-     - MUST guarantee the User presentation functionality, both in proximity and remote scenarios. Consequently, the Relying Party Instance MUST adequately inform the Verifier about the specific status of the EAA. 
+     - MUST guarantee the User presentation functionality, both in proximity and remote scenarios. Consequently, the Relying Party Instance MUST adequately inform the Verifier about the specific status of the EAA.
 
     - If the automatic update fails due to the service being unavailable or other technical errors:  
 
-     - SHOULD attempt the update at least once more before the EAA reaches its technical expiration date. 
+     - SHOULD attempt the update at least once more before the EAA reaches its technical expiration date.
 
 - **Expired**: the EAA is valid but has passed the administrative expiration date, if provided by the Authentic Source, or has passed the technical expiration date. In this case, the Wallet Instance: 
 
@@ -1259,13 +1259,13 @@ Consequently, the EAA assumes the following additional statuses:
 
     - MUST provide the User with adequate evidence; 
     - MUST invite the User to perform any necessary actions to re-obtain the updated EAA (e.g., renew the license at the competent offices); 
-    - MUST guarantee the User presentation functionality, both in proximity and remote scenarios. Consequently, the Relying Party Instance MUST adequately inform the Verifier about the specific status of the EAA. 
+    - MUST guarantee the User presentation functionality, both in proximity and remote scenarios. Consequently, the Relying Party Instance MUST adequately inform the Verifier about the specific status of the EAA.
 
   - If the technical expiration date has passed (automatic update not performed or failed): 
 
     - MUST provide the User with adequate evidence, distinguishing this specific case from an administrative expiration; 
     - MUST invite the User to update the EAA by initiating an EAA re-issuance flow; 
-    - MUST allow the User presentation functionality, both in proximity and remote scenarios. Consequently, the Relying Party Instance MUST adequately inform the Verifier about the specific status of the EAA. 
+    - MUST allow the User presentation functionality, both in proximity and remote scenarios. Consequently, the Relying Party Instance MUST adequately inform the Verifier about the specific status of the EAA.
 
 Below are the functional requirements supporting the User Experience regarding the update of the Electronic Attestation that the Electronic Attestation Provider MUST guarantee through the Wallet Solution:
 

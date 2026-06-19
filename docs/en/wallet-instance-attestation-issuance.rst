@@ -20,7 +20,7 @@ This section describes how the Wallet Provider issues a Wallet Instance Attestat
   2. Generate an ephemeral asymmetric key pair for Wallet Instance Attestation (``ephemeral_key_pub``, ``ephemeral_key_priv``), linking the public key to the attestation  (:ref:`WP_026 <wallet-instance-testcases>`).
   3. Verify the Wallet Provider's federation membership and retrieve its metadata (:ref:`WP_023 <wallet-instance-testcases>`).
 
-**Steps 4-6 (Nonce Retrieval)**: The Wallet Instance requests a ``nonce`` value from the :ref:`wallet-provider-endpoint:Wallet Solution Nonce Endpoint` of the Wallet Provider Backend (:ref:`WP_140b <wallet-instance-optional-testcases>`). The ``nonce`` is required to be unpredictable and serves as the main defense against replay attacks. 
+**Steps 4-6 (Nonce Retrieval)**: The Wallet Instance requests a ``nonce`` value from the :ref:`wallet-provider-endpoint:Wallet Solution Nonce Endpoint` of the Wallet Provider Backend (:ref:`WP_140b <wallet-instance-optional-testcases>`). The ``nonce`` is required to be unpredictable and serves as the main defense against replay attacks.
 
 The ``nonce`` MUST ensure single-use within a predetermined time frame.
 

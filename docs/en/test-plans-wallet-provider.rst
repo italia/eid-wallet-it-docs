@@ -4,7 +4,7 @@
 Wallet Provider Test Matrix
 ---------------------------
 
-This section provides the set of test cases for verifying conformance of a Wallet Solution and Wallet Instance implementation to the technical rules defined in the IT-Wallet ecosystem. 
+This section provides the set of test cases for verifying conformance of a Wallet Solution and Wallet Instance implementation to the technical rules defined in the IT-Wallet ecosystem.
 The test plan is based on the requirements extracted from the following Sections:
 
 - :ref:`trust-infrastructure:The Infrastructure of Trust`
@@ -464,7 +464,7 @@ This section lists the test cases from Sections:
    * - WP_056b
      - Issuance, Security
      - Fresh DPoP proof
-     - Wallet Instance generates a fresh DPoP proof with the same key used for the Token Request DPoP proof, and in accordance with :rfc:`9449#section-4`. 
+     - Wallet Instance generates a fresh DPoP proof with the same key used for the Token Request DPoP proof, and in accordance with :rfc:`9449#section-4`.
    * - WP_056c
      - Issuance, Security
      - Match the Credential key proof to the DPoP key
@@ -564,7 +564,7 @@ This section lists the test cases from Sections:
    * - WP_069
      - Issuance, Security
      - Check Digital Credential status
-     - Wallet Instance verifies the status of each stored Digital Credential by retrieving and validating either a Status List Token (per :ref:`credential-revocation:Status List Token`). 
+     - Wallet Instance verifies the status of each stored Digital Credential by retrieving and validating either a Status List Token (per :ref:`credential-revocation:Status List Token`).
    * - WP_070
      - Issuance, Security
      - Re-issuance flow: detect re-issuance necessity (update status)
@@ -580,7 +580,7 @@ This section lists the test cases from Sections:
    * - WP_071b
      - Issuance, Security
      - Restart issuance on full expiry
-     - Wallet Instance re-authenticates the User when initiating  a new Credential Issuance flow. 
+     - Wallet Instance re-authenticates the User when initiating  a new Credential Issuance flow.
    * - WP_072
      - Issuance, Security
      - Retrieve refreshed Credential
@@ -738,7 +738,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_095
      - Proximity-flow, Presentation, Security
      - Support supervised/unsupervised retrieval
-     - Wallet Instance supports a Credential presentation using the Supervised Device Retrieval method for an in-person verification scenario and via Device Retrieval (unsupervised) for automated verification without human oversight. 
+     - Wallet Instance supports a Credential presentation using the Supervised Device Retrieval method for an in-person verification scenario and via Device Retrieval (unsupervised) for automated verification without human oversight.
    * - WP_096
      - Proximity-flow, Presentation, Security
      - Device retrieval support
@@ -750,7 +750,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_096b
      - Proximity-flow, Presentation, Security
      - Support BLE/NFC retrieval (conditional)
-     - Wallet Instance completes the BLE or NFC retrieval flow successfully. BLE support is mandatory, while NFC support is RECOMMENDED. Support for at least one device retrieval method (BLE or NFC) is mandatory; failure constitutes non-compliance. 
+     - Wallet Instance completes the BLE or NFC retrieval flow successfully. BLE support is mandatory, while NFC support is RECOMMENDED. Support for at least one device retrieval method (BLE or NFC) is mandatory; failure constitutes non-compliance.
    * - WP_097
      - Proximity-flow, Presentation, UX
      - Supported DeviceEngagement mechanisms
@@ -758,7 +758,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_097a
      - Proximity-flow, Presentation, Security
      - Support QR/NFC engagement (conditional)
-     - Wallet Instance completes a full data-retrieval transaction over BLE and over NFC (where hardware is available). QR code support is mandatory, while NFC support is RECOMMENDED. Support for at least one engagement method (QR or NFC) is mandatory; failure constitutes non-compliance. 
+     - Wallet Instance completes a full data-retrieval transaction over BLE and over NFC (where hardware is available). QR code support is mandatory, while NFC support is RECOMMENDED. Support for at least one engagement method (QR or NFC) is mandatory; failure constitutes non-compliance.
    * - WP_098
      - Proximity-flow, Presentation, Security
      - Relying Party authentication
@@ -782,7 +782,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_102a
      - Proximity-flow, Presentation, Interoperability 
      - DeviceEngagement over QR
-     - The QR mdoc: URI encodes the valid CBOR DeviceEngagement encoded (per Section 9.1 of [ISO18013-5_]) using base64url-without-padding (:rfc:`4648`). 
+     - The QR mdoc: URI encodes the valid CBOR DeviceEngagement encoded (per Section 9.1 of [ISO18013-5_]) using base64url-without-padding (:rfc:`4648`).
    * - WP_102b
      - Proximity-flow, Presentation, Interoperability
      - Verify Security component
@@ -894,7 +894,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_112c
      - Proximity-flow, Presentation, Interoperability
      - BLE UUID/MTU consistency
-     - The Wallet’s BLE service/characteristic `UUIDs` and effective MTU used on the link are consistent with the values advertised in DeviceEngagement (and/or Carrier Configuration), and the Wallet segments messages accordingly. 
+     - The Wallet’s BLE service/characteristic `UUIDs` and effective MTU used on the link are consistent with the values advertised in DeviceEngagement (and/or Carrier Configuration), and the Wallet segments messages accordingly.
    * - WP_112d
      - Proximity-flow, Presentation, Security
      - BLE Ident characteristic (optional)
@@ -902,7 +902,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_112e
      - Proximity-flow, Presentation, Interoperability
      - NFC SELECT AID handling
-     - Wallet Instance successfully exposes `AID` and, upon SELECT `APDU`, returns valid `FCI` with correct `SW1/SW2`; subsequent ENVELOPE/GET RESPONSE exchanges. 
+     - Wallet Instance successfully exposes `AID` and, upon SELECT `APDU`, returns valid `FCI` with correct `SW1/SW2`; subsequent ENVELOPE/GET RESPONSE exchanges.
    * - WP_112f
      - Proximity-flow, Presentation, Interoperability
      - NFC APDU size consistency
@@ -1015,7 +1015,7 @@ This section lists the test cases from Section :ref:`backup-restore:Backup and R
    * - WP_121
      - Backup and Restore, Security
      - Key derivation from key phrases
-     - Wallet Instance derives an encryption key from the User’s key phrases using a key derivation function (e.g., ``PBKDF2``, ``Bcrypt``, ``Scrypt``, ``Argon2``). 
+     - Wallet Instance derives an encryption key from the User’s key phrases using a key derivation function (e.g., ``PBKDF2``, ``Bcrypt``, ``Scrypt``, ``Argon2``).
    * - WP_121a
      - Backup and Restore, Security
      - Key derivation function configuration

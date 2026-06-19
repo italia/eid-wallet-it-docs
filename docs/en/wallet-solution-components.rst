@@ -68,7 +68,7 @@ Interacting with the Wallet Backend, this component MUST handle:
 - Status management (maintaining and updating validity).
 - Revocation processes (implementing mechanisms to revoke Wallet Instances), according to Section :ref:`wallet-instance-revocation:Wallet Instance Revocation`.
 
-Based on the status of the Wallet Instance and the User request, this component interact with the other Wallet Instance components. 
+Based on the status of the Wallet Instance and the User request, this component interact with the other Wallet Instance components.
 
 Issuer Component
 ^^^^^^^^^^^^^^^^

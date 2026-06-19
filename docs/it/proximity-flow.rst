@@ -211,7 +211,7 @@ Di seguito è riportato un esempio non normativo di ``DeviceEngagement`` nella n
 
 ``DeviceEngagement`` tramite NFC
 --------------------------------
-La figura seguente illustra il flusso di basso livello conforme a ISO 18013-5 per ``DeviceEngagement`` tramite NFC corrispondente al Box A nella Figura :ref:`fig_High-Level-Flow-ITWallet-Presentation-ISO-updated` (:ref:`WP_103 <wallet-credential-presentation-testcases>`). 
+La figura seguente illustra il flusso di basso livello conforme a ISO 18013-5 per ``DeviceEngagement`` tramite NFC corrispondente al Box A nella Figura :ref:`fig_High-Level-Flow-ITWallet-Presentation-ISO-updated` (:ref:`WP_103 <wallet-credential-presentation-testcases>`).
 
 .. _fig_DeviceEngagement-NFC:
 .. plantuml:: plantuml/device-engagement-over-nfc.puml
@@ -235,11 +235,11 @@ Se è supportato il ``SessionEstablishment`` anticipato, elenca anche il nome de
 .. note::
    Per la tecnologia di trasmissione *Device Retrieval NFC*, i contenuti dell'Alternative Carrier Record e del/dei Carrier Configuration Record DEVONO essere conformi a [`ISO18013-5`_ #9.2.2]. Per la tecnologia di trasmissione *Device Retrieval BLE*, i contenuti dell'Alternative Carrier Record e del/dei Carrier Configuration Record devono essere conformi a [`ISO18013-5`_ #11.1.2].
 
-- Auxiliary Data Record DEVE trasportare la struttura ``DeviceEngagement`` dall'Istanza del Wallet all'Istanza di Relying Party come parte del record NDEF ausiliario nel messaggio *Handover Select*. Questo record ha il tipo ``iso.org:18013:deviceengagement``, il riferimento ID "mdoc", e utilizza il formato di tipo esterno del forum NFC (``0x04``). Per ogni record Alternative Carrier, l'Auxiliary Data Reference DEVE puntare al record NDEF contenente la Struttura ``DeviceEngagement`` (:ref:`WP_103e <wallet-credential-presentation-testcases>`). 
+- Auxiliary Data Record DEVE trasportare la struttura ``DeviceEngagement`` dall'Istanza del Wallet all'Istanza di Relying Party come parte del record NDEF ausiliario nel messaggio *Handover Select*. Questo record ha il tipo ``iso.org:18013:deviceengagement``, il riferimento ID "mdoc", e utilizza il formato di tipo esterno del forum NFC (``0x04``). Per ogni record Alternative Carrier, l'Auxiliary Data Reference DEVE puntare al record NDEF contenente la Struttura ``DeviceEngagement`` (:ref:`WP_103e <wallet-credential-presentation-testcases>`).
 
-**Passo 2**: L'Istanza di Relying Party legge il messaggio NDEF (NFC Data Exchange Format) Iniziale dell'Istanza del Wallet, che contiene un service parameter record per ``urn:nfc:sn:handover``, indicando che il Wallet supporta *Negotiated Handover*. 
+**Passo 2**: L'Istanza di Relying Party legge il messaggio NDEF (NFC Data Exchange Format) Iniziale dell'Istanza del Wallet, che contiene un service parameter record per ``urn:nfc:sn:handover``, indicando che il Wallet supporta *Negotiated Handover*.
 
-**Passo 3**: L'Istanza di Relying Party invia una *Handover Request* all'Istanza del Wallet elencando i carrier supportati. 
+**Passo 3**: L'Istanza di Relying Party invia una *Handover Request* all'Istanza del Wallet elencando i carrier supportati.
 
 **Passo 4**: L'Istanza del Wallet restituisce *Handover Select* costruito in risposta al messaggio *Handover Request* ricevuto. I contenuti del messaggio *Handover Select* sono gli stessi del Passo 1 (:ref:`WP_103f <wallet-credential-presentation-testcases>`).
 

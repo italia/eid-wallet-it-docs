@@ -604,7 +604,7 @@ Below a non-normative example of an MRTD PoP Validation Response:
 
 **The MRTD PoP Service MUST:**
 
-- Generate a new nonce  ``mrtd_val_pop_nonce`` for browser-based final confirmation. 
+- Generate a new nonce  ``mrtd_val_pop_nonce`` for browser-based final confirmation.
 - Return HTTP 202 status to indicate async processing completion.
 
 **The Wallet Instance MUST:**
@@ -627,7 +627,7 @@ The Wallet Instance MUST validate that the ``mrtd_val_pop_nonce`` matches the va
 
 - Validate the ``mrtd_val_pop_nonce`` matches the value sent in the verification response, and that it is signed using the Wallet Instance’s private key.
 - Verify the ``mrtd_auth_session`` parameter matches an active session.
-- Verify all authentication steps (LoA3 + MRTD PoP) have been completed successfully (including the identity correlation between LoA3 and document evidence). 
+- Verify all authentication steps (LoA3 + MRTD PoP) have been completed successfully (including the identity correlation between LoA3 and document evidence).
 - Generate the final authorization code.
 
 Phase 4: OAuth Authorization Response
@@ -718,7 +718,7 @@ When components operate outside the PID Provider boundary, the following additio
 
 - Secure Inter-Service Communication (for example, through Certificate pinning, mutual TLS, etc.).
 - Encryption and integrity of sensitive session data and/or personal identity information (for example, using JWE/JWS tokens).
-- Distributed locks for session state updates. 
+- Distributed locks for session state updates.
 
 .. _fig_eID_MRTD_Security_Controls:
 .. plantuml:: plantuml/l2plus-security-controls.puml

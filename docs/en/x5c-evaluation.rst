@@ -286,7 +286,7 @@ Voluntary Exit - Technical Deactivation
      a. Remove the Entity Configuration completely from the ``/.well-known/openid-federation`` endpoint (returning HTTP 404), OR
      b. Keep the Entity Configuration as expired (with ``exp`` claim in the past). It therefore MUST NOT update it with fresh timestamps.
 
-  5. **Registry Status Update**: The Entity SHOULD verify removal from Federation Registry, also verifying the Trust Mark status using the Trust Mark Status endpoint. 
+  5. **Registry Status Update**: The Entity SHOULD verify removal from Federation Registry, also verifying the Trust Mark status using the Trust Mark Status endpoint.
 
 Non-normative example of X.509 Certificate revocation request following :rfc:`3280` format:
 

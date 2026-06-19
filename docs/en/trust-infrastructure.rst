@@ -665,7 +665,7 @@ The Trust Chain is a sequence of verified statements that validates a participan
 
 **Role in Onboarding**: During the entity onboarding, Trust Chains are constructed to prove the complete hierarchical trust relationship from the Trust Anchor to the new entity.
 
-**Role in Operations**: During Credential issuance and presentation, Trust Chains provide cryptographic proof of entity validity and compliance status. 
+**Role in Operations**: During Credential issuance and presentation, Trust Chains provide cryptographic proof of entity validity and compliance status.
 
 Below is an abstract representation of a Trust Chain.
 
@@ -862,7 +862,7 @@ This approach leverages the dynamic and flexible nature of OpenID Federation alo
 
 **Role in Onboarding**: During entity registration, X.509 Certificates complement OpenID Federation mechanisms by providing interoperability with legacy systems and enabling integration with existing PKI infrastructures.
 
-**Role in Operations**: During Credential operations, X.509 Certificates enable secure communications with legacy systems and provide alternative verification paths for entities that require traditional PKI validation. 
+**Role in Operations**: During Credential operations, X.509 Certificates enable secure communications with legacy systems and provide alternative verification paths for entities that require traditional PKI validation.
 
 OpenID Federation and X.509 based PKI share several things in common, as listed below:
 
