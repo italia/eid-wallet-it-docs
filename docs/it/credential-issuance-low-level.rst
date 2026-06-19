@@ -214,7 +214,7 @@ Il Credential Issuer restituisce il ``request_uri`` emesso all'Istanza del Walle
     3. DEVE verificare che l'URL del Credential Issuer nel parametro ``iss`` sia uguale all'identificativo URL previsto del Credential Issuer con cui l'Istanza del Wallet ha iniziato la comunicazione (:rfc:`9027`) come specificato in :ref:`WP_054b <wallet-credential-issuance-testcases>`.
 
 .. note::
-    L'URI di reindirizzamento dell'Istanza del Wallet è un `universal link` o `app link`` registrato con il sistema operativo locale, quindi quest'ultimo lo risolverà e passerà la risposta all'Istanza del Wallet.
+    L'URI di reindirizzamento dell'Istanza del Wallet è un `universal link` o `app link` registrato con il sistema operativo locale, quindi quest'ultimo lo risolverà e passerà la risposta all'Istanza del Wallet.
 
 .. code-block:: http
 

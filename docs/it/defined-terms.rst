@@ -49,7 +49,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
     **Fornitore di Attestati Elettronici**
     **Credential Issuer**
       Soggetto pubblico o privato che fornisce Attestati Elettronici agli Utenti (può essere un fornitore di PID oppure un fornitore di (Q)EAA).
-      Conforme con ARF 2.7.3.; IT-Wallet aggrega sotto questo termine sia il fornitore di PID che di (Q)EAA .
+      Conforme con ARF 2.7.3; IT-Wallet aggrega sotto questo termine sia il fornitore di PID che di (Q)EAA.
 
     **Asset Critici**
       Asset (ad esempio, le chiavi crittografiche) la cui perdita avrebbe gravi ripercussioni sulla Istanza del Wallet.
@@ -65,7 +65,6 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 
     **Servizio di Integrità del Dispositivo**
       Servizio fornito dai produttori di dispositivi per verificare l'integrità delle app e l'archiviazione sicura delle chiavi.
-      Service by device manufacturers to verify app integrity and secure key storage.
       Non presente in ARF 2.7.3.
 
     **Attestato Elettronico**
@@ -156,11 +155,11 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
     **Attestato Elettronico di Attributi Qualificati**
       Attestazione verificabile digitalmente emessa da un QTSP, che comprova il possesso di attributi.
       Conforme con ARF 2.7.3.
-    
+
     **Attestato Elettronico di Attributi**
       Attestato verificabile digitalmente in forma elettronica, comprovante il possesso di attributi.
       Conforme con ARF 2.7.3.
-    
+
     **Attestato Elettronico di Attributi rilasciato da o per conto di un ente pubblico**
     **Attestato Elettronico Pubblico di Attributi**
       Attestato Elettronico di Attributi che contiene Attributi forniti da una Fonte Autentica pubblica.
@@ -169,7 +168,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
     **Attestato Elettronico di Interesse Pubblico**
       Attestato Elettronico di Attributi che contiene Attributi destinati ad attestare il rilascio, da parte dello Stato o di altre pubbliche amministrazioni, di autorizzazioni, certificazioni, abilitazioni, documenti di identità e riconoscimento, ricevute di introiti, ovvero ad assumere un valore fiduciario e di tutela della fede pubblica in seguito alla loro emissione o alle scritturazioni su di essi effettuate e, in generale, quando sono considerati carte valori ai sensi dell'articolo 2, comma 10-bis, della legge 13 luglio 1966, n. 559.
       Non presente in ARF 2.7.3; specifico di IT-Wallet.
-      
+
     **Attestato Elettronico di Dati di Identificazione Personale**
       Attestato Elettronico che consente di autenticare il soggetto a cui si riferiscono i Dati Personali Identificativi.
       Conforme con ARF 2.7.3.
@@ -282,7 +281,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Conforme con ARF 2.7.3.
 
     **Certificate Signing Request**
-      Richiesta inviata a una CA contenente la chiave pubblica e le informazioni identificative utili all'emissione un certificato digitale.
+      Richiesta inviata a una CA contenente la chiave pubblica e le informazioni identificative utili all'emissione di un certificato digitale.
       Non presente in ARF 2.7.3.
 
     **Trusted List**
@@ -321,7 +320,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
     **Soluzione Wallet**
       Insieme di Soluzioni Tecniche al fine di garantire il corretto funzionamento delle istanze di IT-Wallet.
       Conforme con ARF 2.7.3.
-  
+
     **Wallet Unit**
       Configurazione univoca di una soluzione Wallet per un singolo utente, comprensiva delle funzionalità di sicurezza.
       Unique configuration of a Wallet Solution for an individual User, including security features.
@@ -362,34 +361,34 @@ Di seguito sono riportati i principali termini e definizioni relativi agli aspet
 
     **Authentication Button**
       Pulsante che consente all'Utente di avviare il processo di Autenticazione e di utilizzare i servizi forniti dai Verificatori di Attestati Elettronici.
-  
+
     **Brand Identity**
       Insieme di elementi visivi, verbali e strategici che un servizio, un prodotto o un'entità utilizza per presentarsi all'Utente e per distinguersi dagli altri.
-    
+
     **Brand Manual**
       Documento che definisce le regole e gli standard per l’utilizzo corretto e coerente degli elementi distintivi di un Brand, inclusi gli aspetti visivi, verbali e applicativi, nei diversi Touchpoint.
 
     **Catalogo**
       Funzionalità dell'Istanza del Wallet in cui viene visualizzato l'elenco di tutti gli Attestati Elettronici disponibili e ottenibili tramite l'Istanza del Wallet, e dalle quali è possibile avviare il processo di emissione.
-    
+
     **Call To Action**
       Suggerimento chiaro e diretto che incoraggia gli Utenti a intraprendere un'azione specifica. Può essere un pulsante, un link o un altro elemento che guida l'Utente verso un obiettivo specifico.
-    
+
     **Vista di Dettaglio**
       Modalità di visualizzazione estesa degli Attestati Elettronici, che mostra tutti gli Attributi contenuti.
-    
+
     **Discovery Page**
       È la pagina presente nel Touchpoint della Relying Party dove l'Utente atterra per accedere alla propria area autenticata e ha lo scopo di mostrare all'Utente tutti i metodi di Autenticazione disponibili.
-  
+
     **Engagement Button**
       Elemento interattivo dell'interfaccia che consente all'Utente di avviare un processo (ad esempio per autenticarsi, per richiedere il rilascio di un Attestato Elettronico, ecc.).
-  
+
     **Modello di Interazione**
       Insieme di caratteristiche che definiscono le modalità con cui l'Utente interagisce con l'Interfaccia di uno o più Touchpoint per completare un'attività o un'operazione e conseguire un determinato scopo.
-    
+
     **Interfaccia**
       L'insieme degli elementi grafici, tipografici e interattivi attraverso i quali l'Utente interagisce con il/i Touchpoint preposto/i all'erogazione di un prodotto o servizio, nel rispetto di [LG_DESIGN].
-    
+
     **Vista in Anteprima**
       Modalità di visualizzazione compatta dell'Attestato Elettronico che consente di riconoscerla e distinguerla in un elenco di Attestati Elettronici mediante la presenza di dati o elementi minimi.
 
@@ -398,13 +397,13 @@ Di seguito sono riportati i principali termini e definizioni relativi agli aspet
 
     **Modello di Servizio**
       Insieme di interazioni tra attori e Touchpoint necessari per l'erogazione e la fruizione del servizio.
-    
+
     **Touchpoint**
       Punto di contatto (digitale e non) tra l'Utente e il prodotto o servizio.
-    
+
     **Trust Mark**
       Un elemento grafico che fornisce la prova della partecipazione degli Attori Primari al Sistema IT-Wallet e garantisce quindi il rispetto dei suoi standard.
-    
+
     **Esperienza Utente**
       L'insieme delle percezioni e delle reazioni delle persone derivanti dall'uso e/o dalle aspettative d'uso di un prodotto, sistema o servizio.
       In linea con la norma ISO 9241-210:2010.
@@ -479,6 +478,5 @@ Conformemente agli RFC 2119 e 8174 le seguenti parole chiave solamente quando ap
   - NON DOVREBBE/NON DOVREBBERO/NON RACCOMANDATO: indicano un requisito che non è consigliato/raccomandato, ovvero si devono tenere in considerazione tutte le implicazioni derivanti dalla eventuale scelta di applicare comunque il requisito.
   - OBBLIGATORIO: necessario
   - OPZIONALE: facoltativo
-
 
 

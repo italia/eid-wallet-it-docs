@@ -29,7 +29,7 @@ In aggiunta agli attributi dell'Utente elencati sopra, il PID include anche le s
 - Informazioni sullo stato di validità
 - Informazioni di verifica dell'identità e dei dati
 
-Alcuni attributi di dati, come il *codice di identificazione fiscale* e le *informazioni di verifica dell'identità e dei dati*, sono forniti come **estensioni domestiche** definite dalla specifica IT-Wallet italiana. Questi non fanno parte dell'ARF PID Rulebook (Annex 3.01, PID Rulebook v1.3), ma consentiti, vedi ARF HLR PID_06**, il che consente agli Stati Membri di definire attributi domestici aggiuntivi oltre a quelli specificati nel Regolamento di Esecuzione della Commissione (CIR) 2024/2977 (`EU_2024/2977`_). In particolare, le informazioni di verifica dell'identità sono OBBLIGATORIE per i PID italiani per garantire:
+Alcuni attributi di dati, come il *codice di identificazione fiscale* e le *informazioni di verifica dell'identità e dei dati*, sono forniti come **estensioni domestiche** definite dalla specifica IT-Wallet italiana. Questi non fanno parte dell'ARF PID Rulebook (Annex 3.01, PID Rulebook v1.3), ma **consentiti, vedi ARF HLR PID_06**, il che consente agli Stati Membri di definire attributi domestici aggiuntivi oltre a quelli specificati nel Regolamento di Esecuzione della Commissione (CIR) 2024/2977 (`EU_2024/2977`_). In particolare, le informazioni di verifica dell'identità sono OBBLIGATORIE per i PID italiani per garantire:
 
 - Tracciabilità del metodo di autenticazione dell'Utente.
 - Conformità al livello di garanzia dell'identity proofing durante il processo di enrollment (LoA come definito dal Regolamento eIDAS).
