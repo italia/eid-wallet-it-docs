@@ -5,11 +5,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>17.4. Technical References &#8212; IT-Wallet Technical Specifications - PR #968</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <title>17.4. Technical References &#8212; IT-Wallet Specifiche Tecniche - PR #968</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=59943e95" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
-    <script src="_static/documentation_options.js?v=3fd72285"></script>
+    <script src="_static/documentation_options.js?v=53f44254"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/translations.js?v=da26b4cc"></script>
@@ -33,7 +33,7 @@
         <p id="toggle_sidebar">
             <a href="#" title="Toggle sidebar">|||</a>
         </p>
-        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Specifications - PR #968</a></h1>
+        <h1><a href="index.html" title="Go to homepage">IT-Wallet Specifiche Tecniche - PR #968</a></h1>
             <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
     
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
@@ -172,8 +172,8 @@
 <h1><span class="section-number">17.4. </span>Technical References<a class="headerlink" href="#technical-references" title="Link to this heading">¶</a></h1>
 <p>This section details the technical references, grouped by scope, that are part of the current implementation profile.
 This section includes international and national standards, draft specifications, architecture references and other relevant technical documents foundational for the interoperability and the compliance with industry standards.</p>
-<section id="wallet-paradigm-frameworks">
-<h2><span class="section-number">17.4.1. </span>Wallet Paradigm Frameworks<a class="headerlink" href="#wallet-paradigm-frameworks" title="Link to this heading">¶</a></h2>
+<section id="wallet-architecture-and-reference-frameworks">
+<h2><span class="section-number">17.4.1. </span>Wallet Architecture and Reference Frameworks<a class="headerlink" href="#wallet-architecture-and-reference-frameworks" title="Link to this heading">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 25.0%" />
@@ -181,13 +181,33 @@ This section includes international and national standards, draft specifications
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a></p></td>
-<td><p>EUDI Wallet - Architecture and Reference Framework.</p></td>
+<td><p>EUDI Wallet Architecture and Reference Framework (ARF) v2.8.0.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="eudi-wallet-standards-and-technical-specifications">
+<h2><span class="section-number">17.4.2. </span>EUDI Wallet Standards and Technical Specifications<a class="headerlink" href="#eudi-wallet-standards-and-technical-specifications" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 75.0%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts3-wallet-unit-attestation.md#231-general_info">EUDI-TS 3</a></p></td>
+<td><p>Specification of Wallet Unit Attestations (WUA) used in issuance of PID and Attestations.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts10-data-portability-and-download-(export).md">EUDI-TS 10</a></p></td>
+<td><p>Data Portability and Download (Export).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts12-electronic-payments-SCA-implementation-with-wallet.md">EUDI-TS 12</a></p></td>
+<td><p>Specification of Strong Customer Authentication (SCA) Implementation with the Wallet.</p></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="infrastructure-of-trust">
-<h2><span class="section-number">17.4.2. </span>Infrastructure of Trust<a class="headerlink" href="#infrastructure-of-trust" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">17.4.3. </span>Infrastructure of Trust<a class="headerlink" href="#infrastructure-of-trust" title="Link to this heading">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 25.0%" />
@@ -200,21 +220,27 @@ This section includes international and national standards, draft specifications
 <tr class="row-even"><td><p><a class="reference external" href="https://openid.net/specs/openid-federation-wallet-1_0.html">OID-FED-WALLET</a></p></td>
 <td><p>De Marco, G., Hedberg, R., Jones, M.B., Bradley, J., Dzhuvinov, V., &quot;OpenID Federation Wallet Architectures 1.0&quot;, October 2024, Draft 03.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a></p></td>
-<td><p>Hedberg, R., Jones, M.B., Solberg, A.A., Bradley, J., De Marco, G., Dzhuvinov, V., &quot;OpenID Federation 1.0&quot;, December 2025, Draft 46.</p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a></p></td>
+<td><p>Hedberg, R., Jones, M.B., Solberg, A.A., Bradley, J., De Marco, G., Dzhuvinov, V., &quot;OpenID Federation 1.0&quot;, February 2026, Final.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://openid.net/specs/openid-federation-subordinate-events-1_0.html">OID-FED-SUBORDINATE-EVENTS</a></p></td>
+<td><p>De Marco, G., Jones, M.B., &quot;OpenID Federation Subordinate Events Endpoint 1.0&quot;, January 2026, Draft 00.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/119400_119499/11941206/01.01.01_60/ts_11941206v010101p.pdf">ETSI TS 119 412-6</a></p></td>
+<td><p>ETSI TS 119 412-6 v1.1.1 - Electronic Signatures and Infrastructures (ESI); Part 6: Certificate profile requirements for PID, Wallet, EAA, QEAA, and PSBEAA providers.</p></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="digital-credential-data-format">
-<h2><span class="section-number">17.4.3. </span>Digital Credential Data Format<a class="headerlink" href="#digital-credential-data-format" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">17.4.4. </span>Digital Credential Data Format<a class="headerlink" href="#digital-credential-data-format" title="Link to this heading">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 25.0%" />
 <col style="width: 75.0%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/11/">SD-JWT-VC</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/12/">SD-JWT-VC</a></p></td>
 <td><ol class="upperalpha simple" start="15">
 <li><p>Terbu, D.Fett, B. Campbell, &quot;SD-JWT-based Verifiable Credentials (SD-JWT VC)&quot;, September 2025, Draft 11.</p></li>
 </ol>
@@ -227,7 +253,7 @@ This section includes international and national standards, draft specifications
 </table>
 </section>
 <section id="digital-credential-issuance">
-<h2><span class="section-number">17.4.4. </span>Digital Credential Issuance<a class="headerlink" href="#digital-credential-issuance" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">17.4.5. </span>Digital Credential Issuance<a class="headerlink" href="#digital-credential-issuance" title="Link to this heading">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 25.0%" />
@@ -253,7 +279,7 @@ This section includes international and national standards, draft specifications
 </table>
 </section>
 <section id="digital-credential-presentation">
-<h2><span class="section-number">17.4.5. </span>Digital Credential Presentation<a class="headerlink" href="#digital-credential-presentation" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">17.4.6. </span>Digital Credential Presentation<a class="headerlink" href="#digital-credential-presentation" title="Link to this heading">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 25.0%" />
@@ -272,14 +298,14 @@ This section includes international and national standards, draft specifications
 <tr class="row-even"><td><p><a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a></p></td>
 <td><p>ISO/IEC 18013-5 2020. Information technology — Personal identification — ISO-compliant driving license — Part 5: Mobile driving license (mDL) application.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://openid.net/specs/openid-connect-rp-metadata-choices-1_0.html">OIDC-RP-Metadata</a></p></td>
-<td><p>Jones, M.B., Hedberg, R., Bradley, J., Skokan, F., &quot;OpenID Connect Relying Party Metadata Choices 1.0&quot;, April 2025, Draft 2.</p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://openid.net/specs/openid-connect-rp-metadata-choices-1_0-final.html">OIDC-RP-Metadata</a></p></td>
+<td><p>Jones, M.B., Hedberg, R., Bradley, J., Skokan, F., &quot;OpenID Connect Relying Party Metadata Choices 1.0&quot;, March 2026.</p></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="digital-credential-revocation-check-mechanisms">
-<h2><span class="section-number">17.4.6. </span>Digital Credential Revocation Check Mechanisms<a class="headerlink" href="#digital-credential-revocation-check-mechanisms" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">17.4.7. </span>Digital Credential Revocation Check Mechanisms<a class="headerlink" href="#digital-credential-revocation-check-mechanisms" title="Link to this heading">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 25.0%" />
@@ -293,7 +319,7 @@ This section includes international and national standards, draft specifications
 </table>
 </section>
 <section id="national-data-interoperability-platform-specifications">
-<h2><span class="section-number">17.4.7. </span>National Data Interoperability Platform Specifications<a class="headerlink" href="#national-data-interoperability-platform-specifications" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">17.4.8. </span>National Data Interoperability Platform Specifications<a class="headerlink" href="#national-data-interoperability-platform-specifications" title="Link to this heading">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 25.0%" />
@@ -313,7 +339,7 @@ This section includes international and national standards, draft specifications
 </table>
 </section>
 <section id="national-digital-identity-platform-specifications">
-<h2><span class="section-number">17.4.8. </span>National Digital Identity Platform Specifications<a class="headerlink" href="#national-digital-identity-platform-specifications" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">17.4.9. </span>National Digital Identity Platform Specifications<a class="headerlink" href="#national-digital-identity-platform-specifications" title="Link to this heading">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 25.0%" />
@@ -327,7 +353,7 @@ This section includes international and national standards, draft specifications
 </table>
 </section>
 <section id="security-and-protection-profiles">
-<h2><span class="section-number">17.4.9. </span>Security and Protection Profiles<a class="headerlink" href="#security-and-protection-profiles" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">17.4.10. </span>Security and Protection Profiles<a class="headerlink" href="#security-and-protection-profiles" title="Link to this heading">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 25.0%" />
@@ -357,15 +383,16 @@ This section includes international and national standards, draft specifications
             <div class="page_toc">
                 <ul>
 <li><a class="reference internal" href="#">17.4. Technical References</a><ul>
-<li><a class="reference internal" href="#wallet-paradigm-frameworks">17.4.1. Wallet Paradigm Frameworks</a></li>
-<li><a class="reference internal" href="#infrastructure-of-trust">17.4.2. Infrastructure of Trust</a></li>
-<li><a class="reference internal" href="#digital-credential-data-format">17.4.3. Digital Credential Data Format</a></li>
-<li><a class="reference internal" href="#digital-credential-issuance">17.4.4. Digital Credential Issuance</a></li>
-<li><a class="reference internal" href="#digital-credential-presentation">17.4.5. Digital Credential Presentation</a></li>
-<li><a class="reference internal" href="#digital-credential-revocation-check-mechanisms">17.4.6. Digital Credential Revocation Check Mechanisms</a></li>
-<li><a class="reference internal" href="#national-data-interoperability-platform-specifications">17.4.7. National Data Interoperability Platform Specifications</a></li>
-<li><a class="reference internal" href="#national-digital-identity-platform-specifications">17.4.8. National Digital Identity Platform Specifications</a></li>
-<li><a class="reference internal" href="#security-and-protection-profiles">17.4.9. Security and Protection Profiles</a></li>
+<li><a class="reference internal" href="#wallet-architecture-and-reference-frameworks">17.4.1. Wallet Architecture and Reference Frameworks</a></li>
+<li><a class="reference internal" href="#eudi-wallet-standards-and-technical-specifications">17.4.2. EUDI Wallet Standards and Technical Specifications</a></li>
+<li><a class="reference internal" href="#infrastructure-of-trust">17.4.3. Infrastructure of Trust</a></li>
+<li><a class="reference internal" href="#digital-credential-data-format">17.4.4. Digital Credential Data Format</a></li>
+<li><a class="reference internal" href="#digital-credential-issuance">17.4.5. Digital Credential Issuance</a></li>
+<li><a class="reference internal" href="#digital-credential-presentation">17.4.6. Digital Credential Presentation</a></li>
+<li><a class="reference internal" href="#digital-credential-revocation-check-mechanisms">17.4.7. Digital Credential Revocation Check Mechanisms</a></li>
+<li><a class="reference internal" href="#national-data-interoperability-platform-specifications">17.4.8. National Data Interoperability Platform Specifications</a></li>
+<li><a class="reference internal" href="#national-digital-identity-platform-specifications">17.4.9. National Digital Identity Platform Specifications</a></li>
+<li><a class="reference internal" href="#security-and-protection-profiles">17.4.10. Security and Protection Profiles</a></li>
 </ul>
 </li>
 </ul>
@@ -395,7 +422,7 @@ This section includes international and national standards, draft specifications
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 13/01/2026.
+      Ultimo aggiornamento 22/06/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

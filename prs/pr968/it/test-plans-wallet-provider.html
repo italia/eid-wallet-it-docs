@@ -5,11 +5,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>20.4.1.4. Matrice di Test per Wallet Provider &#8212; IT-Wallet Technical Specifications - PR #968</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <title>20.4.1.4. Matrice di Test per Wallet Provider &#8212; IT-Wallet Specifiche Tecniche - PR #968</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=59943e95" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
-    <script src="_static/documentation_options.js?v=3fd72285"></script>
+    <script src="_static/documentation_options.js?v=53f44254"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/translations.js?v=da26b4cc"></script>
@@ -33,7 +33,7 @@
         <p id="toggle_sidebar">
             <a href="#" title="Toggle sidebar">|||</a>
         </p>
-        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Specifications - PR #968</a></h1>
+        <h1><a href="index.html" title="Go to homepage">IT-Wallet Specifiche Tecniche - PR #968</a></h1>
             <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
     
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
@@ -153,7 +153,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="appendix.html">20. Appendice</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="mobile-application-instance.html">20.1. Istanza dell'Applicazione Mobile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="e-service-pdnd.html">20.2. e-Service PDND</a></li>
-<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd-template.html">20.3. Template e-Service PDND</a></li>
+<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd-template.html">20.3. PDND e-Service Template</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="test-plans.html">20.4. Test Plans</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="test-plans-signature.html">20.4.1.1. Matrice di Test per la Valutazione delle Firme</a></li>
 <li class="toctree-l3"><a class="reference internal" href="test-plans-trust.html">20.4.1.2. Matrice di Test per la Valutazione della Fiducia</a></li>
@@ -163,12 +163,7 @@
 <li class="toctree-l3"><a class="reference internal" href="test-plans-presentation.html">20.4.1.6. Matrice di Test per i Verificatori di Credenziali</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-issuer.html">20.5. Specifica OpenAPI del Credential Issuer PDND</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html">20.6. Panoramica</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html#parametri-del-template">20.7. Parametri del Template</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html#istanziazione-del-template">20.8. Istanziazione del Template</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html#specifica-openapi-della-fonte-autentica-pdnd">20.9. Specifica OpenAPI della Fonte Autentica PDND</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-wp.html">20.10. Specifica OpenAPI del Fornitore di Wallet PDND</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-wp.html">20.5. Specifica OpenAPI del Fornitore di Wallet PDND</a></li>
 </ul>
 </li>
 </ul>
@@ -187,12 +182,12 @@
 <p>Questa sezione fornisce l'insieme di casi di test per verificare la conformità di un'implementazione di Soluzione Wallet e Istanza del Wallet alle regole tecniche definite nell'ecosistema IT-Wallet.
 Il piano di test è basato sui requisiti estratti dalle seguenti Sezioni:</p>
 <ul class="simple">
-<li><p><span class="xref std std-ref">trust-infrastructure:The Infrastructure of Trust</span></p></li>
-<li><p><span class="xref std std-ref">wallet-solution:Wallet Solution</span></p></li>
-<li><p><span class="xref std std-ref">credential-issuance:Digital Credential Issuance</span></p></li>
-<li><p><span class="xref std std-ref">credential-presentation:Digital Credential Presentation</span></p></li>
+<li><p><a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a></p></li>
+<li><p><a class="reference internal" href="wallet-solution.html#soluzione-wallet"><span class="std std-ref">Soluzione Wallet</span></a></p></li>
+<li><p><a class="reference internal" href="credential-issuance.html#emissione-di-attestati-elettronici"><span class="std std-ref">Emissione di Attestati Elettronici</span></a></p></li>
+<li><p><a class="reference internal" href="credential-presentation.html#presentazione-dell-attestato-elettronico"><span class="std std-ref">Presentazione dell'Attestato Elettronico</span></a></p></li>
 <li><p><a class="reference internal" href="endpoints.html#endpoints"><span class="std std-ref">Endpoints</span></a></p></li>
-<li><p><span class="xref std std-ref">mobile-application-instance:Mobile Application Instance</span></p></li>
+<li><p><a class="reference internal" href="mobile-application-instance.html#istanza-dell-applicazione-mobile"><span class="std std-ref">Istanza dell'Applicazione Mobile</span></a></p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
@@ -202,11 +197,11 @@ Il piano di test è basato sui requisiti estratti dalle seguenti Sezioni:</p>
 <span id="wallet-provider-backend-testcases"></span><h2><span class="section-number">20.4.1.4.1. </span>Casi di Test per Backend del Fornitore del Wallet<a class="headerlink" href="#casi-di-test-per-backend-del-fornitore-del-wallet" title="Link to this heading">¶</a></h2>
 <p>Questa sezione elenca i casi di test dalle Sezioni:</p>
 <ul class="simple">
-<li><p><span class="xref std std-ref">wallet-solution-requirements:Wallet Solution Requirements</span></p></li>
-<li><p><span class="xref std std-ref">wallet-solution-components:Wallet Solution Components</span></p></li>
-<li><p><span class="xref std std-ref">wallet-instance:Wallet Instance</span></p></li>
-<li><p><span class="xref std std-ref">wallet-provider-entity-configuration:Wallet Provider Entity Configuration</span></p></li>
-<li><p><span class="xref std std-ref">wallet-solution-metadata:Wallet Solution Metadata</span></p></li>
+<li><p><a class="reference internal" href="wallet-solution-requirements.html#requisiti-della-soluzione-wallet"><span class="std std-ref">Requisiti della Soluzione Wallet</span></a></p></li>
+<li><p><a class="reference internal" href="wallet-solution-components.html#componenti-della-soluzione-wallet"><span class="std std-ref">Componenti della Soluzione Wallet</span></a></p></li>
+<li><p><a class="reference internal" href="wallet-instance.html#istanza-del-wallet"><span class="std std-ref">Istanza del Wallet</span></a></p></li>
+<li><p><a class="reference internal" href="wallet-provider-entity-configuration.html#entity-configuration-del-fornitore-di-wallet"><span class="std std-ref">Entity Configuration del Fornitore di Wallet</span></a></p></li>
+<li><p><a class="reference internal" href="wallet-solution-metadata.html#wallet-solution-metadata-metadati-della-soluzione-wallet"><span class="std std-ref">Metadati della Soluzione Wallet</span></a></p></li>
 <li><p><a class="reference external" href="wallet-provider-endpoint.html#e-service-pdnd-wallet-provider-catalogue0">e-Service PDND Wallet Provider Catalogue</a></p></li>
 </ul>
 <table class="longtable docutils align-default">
@@ -232,7 +227,7 @@ Il piano di test è basato sui requisiti estratti dalle seguenti Sezioni:</p>
 <tr class="row-odd"><td><p>WP_002</p></td>
 <td><p>Trust, Sicurezza</p></td>
 <td><p>Firma Entity Configuration</p></td>
-<td><p>L'Entity Configuration del Fornitore del Wallet è un JWT firmato che è conforme a <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a>.</p></td>
+<td><p>L'Entity Configuration del Fornitore del Wallet è un JWT firmato che è conforme a <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_002a</p></td>
 <td><p>Trust, Interoperabilità</p></td>
@@ -354,9 +349,9 @@ La risorsa specificata da <code class="docutils literal notranslate"><span class
 <ul class="simple">
 <li><p><a class="reference external" href="trust.html#configuration-of-the-federation">Configuration of the Federation</a></p></li>
 <li><p><a class="reference external" href="trust.html#trust-evaluation-mechanism">Trust Evaluation Mechanism</a></p></li>
-<li><p><span class="xref std std-ref">wallet-solution-requirements:Wallet Solution Requirements</span></p></li>
-<li><p><span class="xref std std-ref">wallet-solution-components:Wallet Solution Components</span></p></li>
-<li><p><span class="xref std std-ref">wallet-instance:Wallet Instance</span></p></li>
+<li><p><a class="reference internal" href="wallet-solution-requirements.html#requisiti-della-soluzione-wallet"><span class="std std-ref">Requisiti della Soluzione Wallet</span></a></p></li>
+<li><p><a class="reference internal" href="wallet-solution-components.html#componenti-della-soluzione-wallet"><span class="std std-ref">Componenti della Soluzione Wallet</span></a></p></li>
+<li><p><a class="reference internal" href="wallet-instance.html#istanza-del-wallet"><span class="std std-ref">Istanza del Wallet</span></a></p></li>
 <li><p><a class="reference external" href="wallet-provider-endpoint.html#error-handling-for-wallet-instance-management">Error Handling for Wallet Instance Management</a></p></li>
 <li><p><a class="reference external" href="mobile-application-instance.html#mobile-application-instance-initialization">Mobile Application Instance Initialization</a></p></li>
 </ul>
@@ -587,9 +582,9 @@ La risorsa specificata da <code class="docutils literal notranslate"><span class
 <span id="wallet-credential-issuance-testcases"></span><h2><span class="section-number">20.4.1.4.3. </span>Casi di Test per Fase di Issuance<a class="headerlink" href="#casi-di-test-per-fase-di-issuance" title="Link to this heading">¶</a></h2>
 <p>Questa sezione elenca i casi di test dalle Sezioni:</p>
 <ul class="simple">
-<li><p><span class="xref std std-ref">credential-issuance:Digital Credential Issuance</span></p></li>
+<li><p><a class="reference internal" href="credential-issuance.html#emissione-di-attestati-elettronici"><span class="std std-ref">Emissione di Attestati Elettronici</span></a></p></li>
 <li><p><a class="reference external" href="trust.html#trust-evaluation-mechanism">Trust Evaluation Mechanism</a></p></li>
-<li><p><span class="xref std std-ref">credential-issuer-endpoint:Credential Issuer Endpoints</span></p></li>
+<li><p><a class="reference internal" href="credential-issuer-endpoint.html#endpoint-del-credential-issuer"><span class="std std-ref">Endpoint del Credential Issuer</span></a></p></li>
 </ul>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -784,7 +779,7 @@ La risorsa specificata da <code class="docutils literal notranslate"><span class
 <tr class="row-odd"><td><p>WP_060</p></td>
 <td><p>Issuance, Interoperabilità</p></td>
 <td><p>Verificare tipo/schema di un Attestato Elettronico</p></td>
-<td><p>Istanza del Wallet recupera l'Attestato Elettronico rilasciata dal claim <code class="docutils literal notranslate"><span class="pre">credential</span></code> della risposta, verifica che il suo tipo corrisponda al tipo richiesto, e valida lo schema contro <span class="xref std std-ref">credential-data-model:Digital Credential Data Model</span>; se uno dei controlli fallisce, rifiuta l'Attestato Elettronico.</p></td>
+<td><p>Istanza del Wallet recupera l'Attestato Elettronico rilasciata dal claim <code class="docutils literal notranslate"><span class="pre">credential</span></code> della risposta, verifica che il suo tipo corrisponda al tipo richiesto, e valida lo schema contro <a class="reference internal" href="credential-data-model.html#modello-di-dati-degli-attestati-elettronici"><span class="std std-ref">Modello di Dati degli Attestati Elettronici</span></a>; se uno dei controlli fallisce, rifiuta l'Attestato Elettronico.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_061</p></td>
 <td><p>Issuance, Sicurezza</p></td>
@@ -879,7 +874,7 @@ La risorsa specificata da <code class="docutils literal notranslate"><span class
 <tr class="row-even"><td><p>WP_070</p></td>
 <td><p>Issuance, Sicurezza</p></td>
 <td><p>Flusso re-Issuance: rilevare necessità re-Issuance (aggiornare stato)</p></td>
-<td><p>Istanza del Wallet aggiorna un Attestato Elettronico quando la Status List mostra <code class="docutils literal notranslate"><span class="pre">0x03</span></code> (<code class="docutils literal notranslate"><span class="pre">UPDATE</span></code>) o <code class="docutils literal notranslate"><span class="pre">0x04</span></code> (<code class="docutils literal notranslate"><span class="pre">ATTRIBUTE_UPDATE</span></code>) per quell'Attestato Elettronico.</p></td>
+<td><p>Istanza del Wallet aggiorna un Attestato Elettronico quando la Status List mostra <code class="docutils literal notranslate"><span class="pre">0x03</span></code> (<code class="docutils literal notranslate"><span class="pre">UPDATE</span></code>) o <code class="docutils literal notranslate"><span class="pre">0x0F</span></code> (<code class="docutils literal notranslate"><span class="pre">ATTRIBUTE_UPDATE</span></code>) per quell'Attestato Elettronico.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_071</p></td>
 <td><p>Issuance, Sicurezza</p></td>
@@ -926,7 +921,7 @@ La risorsa specificata da <code class="docutils literal notranslate"><span class
 </section>
 <section id="casi-di-test-per-fase-di-presentazione">
 <span id="wallet-credential-presentation-testcases"></span><h2><span class="section-number">20.4.1.4.4. </span>Casi di Test per Fase di Presentazione<a class="headerlink" href="#casi-di-test-per-fase-di-presentazione" title="Link to this heading">¶</a></h2>
-<p>Questa sezione elenca i casi di test dalla Sezione <span class="xref std std-ref">credential-presentation:Digital Credential Presentation</span>,
+<p>Questa sezione elenca i casi di test dalla Sezione <a class="reference internal" href="credential-presentation.html#presentazione-dell-attestato-elettronico"><span class="std std-ref">Presentazione dell'Attestato Elettronico</span></a>,
 coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong>Flusso di Prossimità</strong>.</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -1340,7 +1335,7 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
 <span id="user-attribute-deletion-testcases"></span><h2><span class="section-number">20.4.1.4.5. </span>Casi di Test per Eliminazione Attributi dell'Utente Lato Relying Party<a class="headerlink" href="#casi-di-test-per-eliminazione-attributi-dell-utente-lato-relying-party" title="Link to this heading">¶</a></h2>
 <p>Questa sezione elenca i casi di test dalle Sezioni:</p>
 <ul class="simple">
-<li><p><span class="xref std std-ref">user-attribute-deletion:User's Attributes Deletion</span></p></li>
+<li><p><a class="reference internal" href="user-attribute-deletion.html#eliminazione-degli-attributi-dell-utente"><span class="std std-ref">Eliminazione degli Attributi dell'Utente</span></a></p></li>
 <li><p><a class="reference external" href="relying-party-provider-backend-endpoint.html#relying-party-provider-backend-erasure-endpoint">Relying Party Provider Backend Erasure Endpoint</a></p></li>
 </ul>
 <table class="longtable docutils align-default">
@@ -1403,7 +1398,7 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
 </section>
 <section id="casi-di-test-per-backup-e-ripristino-degli-attestati-elettronici">
 <span id="credential-backup-testcases"></span><h2><span class="section-number">20.4.1.4.6. </span>Casi di Test per Backup e Ripristino degli Attestati Elettronici<a class="headerlink" href="#casi-di-test-per-backup-e-ripristino-degli-attestati-elettronici" title="Link to this heading">¶</a></h2>
-<p>Questa sezione elenca i casi di test dalla Sezione <span class="xref std std-ref">backup-restore:Backup and Restore</span>.</p>
+<p>Questa sezione elenca i casi di test dalla Sezione <a class="reference internal" href="backup-restore.html#backup-e-ripristino"><span class="std std-ref">Backup e Ripristino</span></a>.</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 14.3%" />
@@ -1536,7 +1531,7 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
 <span id="wallet-instance-optional-testcases"></span><h2><span class="section-number">20.4.1.4.7. </span>Casi di Test Opzionali per Istanza del Wallet<a class="headerlink" href="#casi-di-test-opzionali-per-istanza-del-wallet" title="Link to this heading">¶</a></h2>
 <p>Questa sezione elenca i casi di test dalle Sezioni:</p>
 <ul class="simple">
-<li><p><span class="xref std std-ref">wallet-instance:Wallet Instance</span></p></li>
+<li><p><a class="reference internal" href="wallet-instance.html#istanza-del-wallet"><span class="std std-ref">Istanza del Wallet</span></a></p></li>
 <li><p><a class="reference external" href="wallet-provider-endpoint.html#request-specific-error-responses">Request-Specific Error Responses</a></p></li>
 <li><p><a class="reference external" href="mobile-application-instance.html#mobile-application-instance-initialization">Mobile Application Instance Initialization</a></p></li>
 </ul>
@@ -1832,7 +1827,7 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 13/01/2026.
+      Ultimo aggiornamento 22/06/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

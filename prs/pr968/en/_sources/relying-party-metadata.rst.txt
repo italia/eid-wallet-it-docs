@@ -27,9 +27,9 @@ The *openid_credential_verifier* metadata MUST contain the *client_metadata*, as
   * - **encrypted_response_enc_values_supported**
     - JSON array of content encryption algorithms ("enc") the Verifier supports for encrypting the authorization response when using response mode ``direct_post.jwt``. See `OpenID4VP`_ §5.1 and §8.3.1.
   * - **vp_formats_supported**
-    - JSON object defining the formats and proof types of Verifiable Presentations and Verifiable Credentials the RP supports. It consists of a list of name/value pairs, where each name uniquely identifies a supported type. The RP MUST support at least ``dc+sd-jwt``. For SD-JWT VC, the value associated with each name/value pair MUST include ``sd-jwt_alg_values`` listing acceptable signing algorithms; for mdoc, include ``alg_values_supported``. The JOSE/COSE headers of presented artifacts MUST match one of the advertised values. See `OpenID4VP`_ §11 and Appendix B.
+    - JSON object defining the formats and proof types of Verifiable Presentations and Verifiable Credentials the RP supports. It consists of a list of name/value pairs, where each name uniquely identifies a supported type. The RP MUST support at least ``dc+sd-jwt``. For SD-JWT VC, the value associated with each name/value pair MUST include ``sd-jwt_alg_values`` listing acceptable signing algorithms; for mdoc-CBOR, the value MUST include ``issuerauth_alg_values`` and ``deviceauth_alg_values``. The JOSE/COSE headers of presented artifacts MUST match one of the advertised values. See `OpenID4VP`_ §11 and Appendix B.
   * - **jwks**
-    - JSON Web Key Set document, passed by value, containing the protocol specific keys for the Relying Party. See `OID-FED`_ Draft 41 Section 5.2.1 and `JWK`_.
+    - JSON Web Key Set document, passed by value, containing the protocol specific keys for the Relying Party. See `OID-FED`_ Section 5.2.1 and `JWK`_.
   * - **erasure_endpoint**
     - [CONDITIONAL] JSON String that represents the URI to which the Wallet Instance can request deletion of Users' attributes. This URL MUST use the *https* scheme. This endpoint MUST be present whenever the Relying Parties requested attributes that can uniquely identify Users such as the tax_id_code claim of the PID.
 

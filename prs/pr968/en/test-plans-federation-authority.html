@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>20.4.1.3. Federation Authority Test Matrix &#8212; IT-Wallet Technical Specifications - PR #968</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=59943e95" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
-    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/documentation_options.js?v=350a9c04"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -152,7 +152,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="appendix.html">20. Appendix</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="mobile-application-instance.html">20.1. Mobile Application Instance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="e-service-pdnd.html">20.2. e-Service PDND</a></li>
-<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd-template.html">20.3. Template e-Service PDND</a></li>
+<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd-template.html">20.3. PDND e-Service Template</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="test-plans.html">20.4. Test Plans</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="test-plans-signature.html">20.4.1.1. Signature Evaluation Test Matrix</a></li>
 <li class="toctree-l3"><a class="reference internal" href="test-plans-trust.html">20.4.1.2. Trust Evaluation Test Matrix</a></li>
@@ -162,12 +162,7 @@
 <li class="toctree-l3"><a class="reference internal" href="test-plans-presentation.html">20.4.1.6. Credential Verifier Test Matrix</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-issuer.html">20.5. Credential Issuer PDND OpenAPI Specification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html">20.6. Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html#template-parameters">20.7. Template Parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html#template-instantiation">20.8. Template Instantiation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html#authentic-source-pdnd-openapi-specification">20.9. Authentic Source PDND OpenAPI Specification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-wp.html">20.10. Wallet Provider PDND OpenAPI Specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-wp.html">20.5. Wallet Provider PDND OpenAPI Specification</a></li>
 </ul>
 </li>
 </ul>
@@ -189,7 +184,7 @@
 <li><p>Subordinate Statements returned by <code class="docutils literal notranslate"><span class="pre">/fetch</span></code></p></li>
 <li><p>Federation registry endpoints (<code class="docutils literal notranslate"><span class="pre">/list</span></code>, <code class="docutils literal notranslate"><span class="pre">/fetch</span></code>, <code class="docutils literal notranslate"><span class="pre">/trust_mark_status</span></code>, <code class="docutils literal notranslate"><span class="pre">/historical-jwks</span></code>)</p></li>
 </ul>
-<p>All validations  align with (<a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a>).</p>
+<p>All validations  align with (<a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a>).</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 15.0%" />
@@ -213,7 +208,7 @@
 <tr class="row-odd"><td><p>FA_002</p></td>
 <td><p>Security</p></td>
 <td><p>Entity Configuration signature integrity</p></td>
-<td><p>The Entity Configuration is a signed JWT; signature verifies using one of the Federation Entity public keys contained in the Entity Configuration <code class="docutils literal notranslate"><span class="pre">jwks</span></code> per <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a>.</p></td>
+<td><p>The Entity Configuration is a signed JWT; signature verifies using one of the Federation Entity public keys contained in the Entity Configuration <code class="docutils literal notranslate"><span class="pre">jwks</span></code> per <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p>FA_003</p></td>
 <td><p>Interoperability</p></td>
@@ -243,7 +238,7 @@
 <tr class="row-odd"><td><p>FA_008</p></td>
 <td><p>Security</p></td>
 <td><p>Subordinate Statement signature and lifetime</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/fetch?sub={entity}</span></code> returns a signed JWT Subordinate Statement; header and payload verify per <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a>; <code class="docutils literal notranslate"><span class="pre">iss</span></code> equals the issuing Federation Authority; <code class="docutils literal notranslate"><span class="pre">sub</span></code> equals requested entity; <code class="docutils literal notranslate"><span class="pre">iat</span></code>/<code class="docutils literal notranslate"><span class="pre">exp</span></code> valid.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/fetch?sub={entity}</span></code> returns a signed JWT Subordinate Statement; header and payload verify per <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a>; <code class="docutils literal notranslate"><span class="pre">iss</span></code> equals the issuing Federation Authority; <code class="docutils literal notranslate"><span class="pre">sub</span></code> equals requested entity; <code class="docutils literal notranslate"><span class="pre">iat</span></code>/<code class="docutils literal notranslate"><span class="pre">exp</span></code> valid.</p></td>
 </tr>
 <tr class="row-even"><td><p>FA_009</p></td>
 <td><p>Interoperability</p></td>
@@ -337,7 +332,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 13/01/2026.
+      Last updated on 22/06/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

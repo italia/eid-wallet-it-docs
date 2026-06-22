@@ -5,11 +5,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>15. Considerazioni di Sicurezza e Privacy &#8212; IT-Wallet Technical Specifications - PR #968</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <title>15. Considerazioni di Sicurezza e Privacy &#8212; IT-Wallet Specifiche Tecniche - PR #968</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=59943e95" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
-    <script src="_static/documentation_options.js?v=3fd72285"></script>
+    <script src="_static/documentation_options.js?v=53f44254"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/translations.js?v=da26b4cc"></script>
@@ -33,7 +33,7 @@
         <p id="toggle_sidebar">
             <a href="#" title="Toggle sidebar">|||</a>
         </p>
-        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Specifications - PR #968</a></h1>
+        <h1><a href="index.html" title="Go to homepage">IT-Wallet Specifiche Tecniche - PR #968</a></h1>
             <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
     
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
@@ -455,7 +455,7 @@ dove viene discussa una lista di mitigazioni da [<a class="reference external" h
 <p>Un prerequisito per un attacco di questo tipo è che l'attaccante abbia accesso ad alcuni messaggi tra il Wallet e il Verificatore di Attestati Elettronici, ad esempio,
 l'attaccante potrebbe avere accesso alla presentazione contenuta nel Token VP. Dato ciò, la corretta implementazione di TLS garantisce la riservatezza, evitando la fuga della risposta.
 Oltre a TLS, l'implementazione esistente dei controlli <strong>nonce</strong> e audience nel protocollo di presentazione dovrebbe aiutare a soddisfare il requisito di sicurezza P-41.
-Per quanto riguarda il claim <strong>nonce</strong>, il Verificatore di Attestati Elettronici DEVE verificare che il valore <strong>nonce</strong> nel Token VP corrisponda al valore <strong>nonce</strong> che è creato dal Verificatore di Attestati Elettronici durante la richiesta di autorizzazione (<span class="xref std std-ref">test-plans-remote-presentation</span>).
+Per quanto riguarda il claim <strong>nonce</strong>, il Verificatore di Attestati Elettronici DEVE verificare che il valore <strong>nonce</strong> nel Token VP corrisponda al valore <strong>nonce</strong> che è creato dal Verificatore di Attestati Elettronici durante la richiesta di autorizzazione (<a class="reference internal" href="test-plans-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-remoto"><span class="std std-ref">Matrice di Test per il Verificatore di Credenziali in Remoto</span></a>).
 Per quanto riguarda il valore <strong>aud</strong>, il Verificatore di Attestati Elettronici deve verificare che l'audience della presentazione corrisponda all'identificatore del Verificatore di Attestati Elettronici.</p>
 </section>
 <section id="sr-p-50">
@@ -479,10 +479,6 @@ il controllo dell'attaccante, e nel caso di furto delle Credenziali, l'attaccant
 WSCD interno locale che utilizza chiavi basate su hardware. Tuttavia, la mancanza di un
 profilo di certificazione che certifichi il WSCD interno locale contro attaccanti altamente capaci (la certificazione per le attuali soluzioni TEE sul mercato raggiunge al massimo AVA_VAN.3
 come mostrato ad esempio in questo <a class="reference external" href="https://www.tuv-nederland.nl/assets/files/cerfiticaten/2021/08/nscib-cc-0244671-cr-1.0.pdf">Rapporto di Certificazione</a> o <a class="reference external" href="https://globalplatform.org/specs-library/tee-protection-profile-v1-3/">sito Global Platform</a> rende il requisito solo parzialmente soddisfatto.</p>
-<div class="admonition note">
-<p class="admonition-title">Nota</p>
-<p>Nel contesto EUDI Wallet, il WSCD interno locale e altri deployment WSCD sono ancora in fase di certificazione secondo <a class="reference external" href="https://docbox.etsi.org/ESI/Open/workshops/202409_CEN_ETSI_Workshop/DAY3-8%20Certification%20for%20EU%20Digital%20Identity%20Wallets/DAY3-8-26%20ETSI_CEN_WS_WSCA%20Jan%20Kjaersgaard.pdf">CEN_ETSI_Workshop</a>.</p>
-</div>
 </section>
 <section id="sr-v-10">
 <h3><span class="section-number">15.1.17. </span>SR-V-10<a class="headerlink" href="#sr-v-10" title="Link to this heading">¶</a></h3>
@@ -607,7 +603,7 @@ Oltre alle informazioni del Fornitore di Credenziali, il <em>Type Metadata</em> 
 </tr>
 </tbody>
 </table>
-<p>Il Verificatore di Attestati Elettronici che esegue la Trust Evaluation sul Fornitore di Credenziali di una Credenziale non deve rilasciare alcuna informazione al Fornitore di Credenziali sull'Istanza del Wallet con cui sta interagendo. Utilizzando [<a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a>] il Fornitore di Credenziali non sa chi è l'Utente che presenta la Credenziale.
+<p>Il Verificatore di Attestati Elettronici che esegue la Trust Evaluation sul Fornitore di Credenziali di una Credenziale non deve rilasciare alcuna informazione al Fornitore di Credenziali sull'Istanza del Wallet con cui sta interagendo. Utilizzando [<a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a>] il Fornitore di Credenziali non sa chi è l'Utente che presenta la Credenziale.
 Inoltre, la privacy è protetta anche durante il controllo dello stato della Credenziale. Utilizzando Status List [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/13/">TOKEN-STATUS-LIST</a>], la specifica IT-Wallet garantisce che mentre il Verificatore di Attestati Elettronici controlla la validità della Credenziale, il Fornitore di Credenziali non apprende dove o quando la Credenziale viene utilizzata.</p>
 </section>
 <section id="pr-e-70">
@@ -698,7 +694,7 @@ Inoltre, la privacy è protetta anche durante il controllo dello stato della Cre
 <p>La revoca di un'Entità di Federazione (cioè, Fornitore di Credenziali, Verificatore di Attestati Elettronici, Fornitore di Wallet) è invece possibile non emettendo la corrispondente Subordinate Statement su quell'Entità e impostando una breve scadenza della Trust Chain, impedendo così l'uso improprio durante la compromissione.</p>
 <div class="admonition tip">
 <p class="admonition-title">Suggerimento</p>
-<p>Inoltre, [<a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a>] supporta un endpoint delle chiavi storiche per recuperare l'elenco delle chiavi scadute e revocate, con la motivazione della revoca.</p>
+<p>Inoltre, [<a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a>] supporta un endpoint delle chiavi storiche per recuperare l'elenco delle chiavi scadute e revocate, con la motivazione della revoca.</p>
 </div>
 </section>
 <section id="spr-p-10">
@@ -900,7 +896,7 @@ Lo standard OpenID4VCI fornisce l'opzione per il Wallet di richiedere Credenzial
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 13/01/2026.
+      Ultimo aggiornamento 22/06/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

@@ -5,11 +5,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>10.1.2. Componenti della Soluzione Wallet &#8212; IT-Wallet Technical Specifications - PR #968</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <title>10.1.2. Componenti della Soluzione Wallet &#8212; IT-Wallet Specifiche Tecniche - PR #968</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=59943e95" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
-    <script src="_static/documentation_options.js?v=3fd72285"></script>
+    <script src="_static/documentation_options.js?v=53f44254"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/translations.js?v=da26b4cc"></script>
@@ -33,7 +33,7 @@
         <p id="toggle_sidebar">
             <a href="#" title="Toggle sidebar">|||</a>
         </p>
-        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Specifications - PR #968</a></h1>
+        <h1><a href="index.html" title="Go to homepage">IT-Wallet Specifiche Tecniche - PR #968</a></h1>
             <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
     
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
@@ -207,7 +207,8 @@
 <p>Questo componente DEVE gestire:</p>
 <ul class="simple">
 <li><p>Registrazione dell'Istanza del Wallet (dettagliata in <a class="reference internal" href="wallet-instance-registration.html#inizializzazione-e-registrazione-dell-istanza-del-wallet"><span class="std std-ref">Inizializzazione e Registrazione dell'Istanza del Wallet</span></a>).</p></li>
-<li><p>Emissione della Wallet App e Wallet Unit Attestation (dettagliata in <a class="reference internal" href="wallet-attestation-issuance.html#emissione-della-wallet-app-e-wallet-unit-attestation"><span class="std std-ref">Emissione della Wallet App e Wallet Unit Attestation</span></a>).</p></li>
+<li><p>Emissione della Wallet Instance Attestation (dettagliata in <a class="reference internal" href="wallet-instance-attestation-issuance.html#emissione-della-wallet-instance-attestation"><span class="std std-ref">Emissione della Wallet Instance Attestation</span></a>).</p></li>
+<li><p>Emissione della Wallet Unit Attestation (dettagliata in <a class="reference internal" href="wallet-attestation-issuance.html#emissione-della-wallet-unit-attestation"><span class="std std-ref">Emissione della Wallet Unit Attestation</span></a>).</p></li>
 <li><p>Gestione dello stato (mantenimento e aggiornamento della validità).</p></li>
 <li><p>Processi di revoca (implementazione di meccanismi per revocare le Istanze del Wallet), secondo la Sezione <a class="reference internal" href="wallet-instance-revocation.html#revoca-dell-istanza-del-wallet"><span class="std std-ref">Revoca dell'Istanza del Wallet</span></a>.</p></li>
 </ul>
@@ -234,7 +235,8 @@
 <p>Interagendo con il Backend del Wallet, questo componente DEVE gestire:</p>
 <ul class="simple">
 <li><p>Registrazione dell'Istanza del Wallet (dettagliata in <a class="reference internal" href="wallet-instance-registration.html#inizializzazione-e-registrazione-dell-istanza-del-wallet"><span class="std std-ref">Inizializzazione e Registrazione dell'Istanza del Wallet</span></a>).</p></li>
-<li><p>Emissione della Wallet Unit Attestation (dettagliata in <a class="reference internal" href="wallet-attestation-issuance.html#emissione-della-wallet-app-e-wallet-unit-attestation"><span class="std std-ref">Emissione della Wallet App e Wallet Unit Attestation</span></a>).</p></li>
+<li><p>Emissione della Wallet Instance Attestation (dettagliata in <a class="reference internal" href="wallet-instance-attestation-issuance.html#emissione-della-wallet-instance-attestation"><span class="std std-ref">Emissione della Wallet Instance Attestation</span></a>).</p></li>
+<li><p>Emissione della Wallet Unit Attestation (dettagliata in <a class="reference internal" href="wallet-attestation-issuance.html#emissione-della-wallet-unit-attestation"><span class="std std-ref">Emissione della Wallet Unit Attestation</span></a>).</p></li>
 <li><p>Gestione dello stato (mantenimento e aggiornamento della validità).</p></li>
 <li><p>Processi di revoca (implementazione di meccanismi per revocare le Istanze del Wallet), secondo la Sezione <a class="reference internal" href="wallet-instance-revocation.html#revoca-dell-istanza-del-wallet"><span class="std std-ref">Revoca dell'Istanza del Wallet</span></a>.</p></li>
 </ul>
@@ -256,8 +258,17 @@
 <p>Attualmente la riemissione del PID non è gestita dal Componente di Backup e Ripristino.</p>
 </div>
 </section>
+<section id="dashboard-e-registro-delle-transazioni">
+<h3><span class="section-number">10.1.2.2.6. </span>Dashboard e Registro delle Transazioni<a class="headerlink" href="#dashboard-e-registro-delle-transazioni" title="Link to this heading">¶</a></h3>
+<p>Questo componente DEVE fornire le funzionalità di dashboard e di registro delle transazioni della Wallet Unit. In particolare, questo componente DEVE:</p>
+<ul class="simple">
+<li><p>fornire un’interfaccia accessibile all’Utente che consenta all’Utente di accedere alle informazioni di trasparenza delle transazioni;</p></li>
+<li><p>mantenere un registro delle transazioni eseguite tramite la Wallet Unit, incluse le transazioni non completate;</p></li>
+<li><p>supportare l’interazione dell’Utente con i record di transazione, inclusa la visualizzazione, l’esportazione e la cancellazione.</p></li>
+</ul>
+</section>
 <section id="archiviazione-sicura">
-<h3><span class="section-number">10.1.2.2.6. </span>Archiviazione Sicura<a class="headerlink" href="#archiviazione-sicura" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">10.1.2.2.7. </span>Archiviazione Sicura<a class="headerlink" href="#archiviazione-sicura" title="Link to this heading">¶</a></h3>
 <p>L'Istanza del Wallet DEVE utilizzare questo componente per proteggere gli asset critici e per eseguire in modo sicuro funzioni crittografiche.</p>
 </section>
 </section>
@@ -267,7 +278,7 @@
 <p>La Soluzione Wallet supporta questi modelli di interazione:</p>
 <ol class="arabic simple">
 <li><p><strong>Utente verso Frontend del Backend del Wallet</strong>: Interazioni basate sul web per la gestione dell'Istanza del Wallet.</p></li>
-<li><p><strong>Istanza del Wallet verso API del Backend del Wallet</strong>: per la registrazione dell'Istanza del Wallet e l'emissione della Wallet App e Wallet Unit Attestation.</p></li>
+<li><p><strong>Istanza del Wallet verso API del Backend del Wallet</strong>: per la registrazione dell'Istanza del Wallet e l'emissione della Wallet Instance e Wallet Unit Attestation.</p></li>
 <li><p><strong>Fornitore di Attestati Elettronici di Dati di Identificazione Personale verso API del Backend del Wallet</strong>: Chiamate API sicure per richiedere la revoca dell'Istanza del Wallet.</p></li>
 <li><p><strong>Utente verso Interfaccia Utente dell'Istanza del Wallet</strong>: per la gestione delle Credenziali Elettroniche (emissione, presentazione, backup, ripristino, eliminazione).</p></li>
 <li><p><strong>Istanza del Wallet verso Relying Party</strong>: per la presentazione delle Credenziali Elettroniche.</p></li>
@@ -302,7 +313,8 @@
 <li><a class="reference internal" href="#componente-issuer">10.1.2.2.3. Componente Issuer</a></li>
 <li><a class="reference internal" href="#componente-di-presentazione">10.1.2.2.4. Componente di Presentazione</a></li>
 <li><a class="reference internal" href="#componente-di-backup-e-ripristino">10.1.2.2.5. Componente di Backup e Ripristino</a></li>
-<li><a class="reference internal" href="#archiviazione-sicura">10.1.2.2.6. Archiviazione Sicura</a></li>
+<li><a class="reference internal" href="#dashboard-e-registro-delle-transazioni">10.1.2.2.6. Dashboard e Registro delle Transazioni</a></li>
+<li><a class="reference internal" href="#archiviazione-sicura">10.1.2.2.7. Archiviazione Sicura</a></li>
 </ul>
 </li>
 </ul>
@@ -335,7 +347,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 13/01/2026.
+      Ultimo aggiornamento 22/06/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

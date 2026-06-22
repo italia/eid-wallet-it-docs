@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>13.1. Wallet Provider Endpoints &#8212; IT-Wallet Technical Specifications - PR #968</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=59943e95" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
-    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/documentation_options.js?v=350a9c04"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -349,16 +349,16 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </table>
 </section>
 </section>
-<section id="wallet-app-and-wallet-unit-attestation-issuance-endpoint">
-<h2><span class="section-number">13.1.4. </span>Wallet App and Wallet Unit Attestation Issuance Endpoint<a class="headerlink" href="#wallet-app-and-wallet-unit-attestation-issuance-endpoint" title="Link to this heading">¶</a></h2>
-<p>This is a RESTful API endpoint provided by the Wallet Provider that enables the Wallet Instance to obtain Wallet App and Wallet Unit Attestation, by sending a Wallet App and Wallet Unit Attestation Issuance Request.</p>
-<section id="wallet-app-and-wallet-unit-attestation-issuance-request">
-<h3><span class="section-number">13.1.4.1. </span>Wallet App and Wallet Unit Attestation Issuance Request<a class="headerlink" href="#wallet-app-and-wallet-unit-attestation-issuance-request" title="Link to this heading">¶</a></h3>
-<p>The Wallet App and Wallet Unit Attestation Issuance Request uses the HTTP POST method with <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> set to <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_026</span></a> and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_140–142</span></a>).</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">typ</span></code> header of the Wallet App and Wallet Unit Attestation Issuance Request JWT assumes the value <code class="docutils literal notranslate"><span class="pre">attestations-request+jwt</span></code>.</p>
-<p>The Wallet App and Wallet Unit Attestation Issuance Request body contains an <code class="docutils literal notranslate"><span class="pre">assertion</span></code> parameter whose value is a signed JWT including all header parameters and body claims described below.</p>
-<p>Below is a non-normative example of a Wallet App and Wallet Unit Attestation Request.</p>
-<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/wallet-attestation</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<section id="wallet-instance-attestation-issuance-endpoint">
+<h2><span class="section-number">13.1.4. </span>Wallet Instance Attestation Issuance Endpoint<a class="headerlink" href="#wallet-instance-attestation-issuance-endpoint" title="Link to this heading">¶</a></h2>
+<p>This is a RESTful API endpoint provided by the Wallet Provider that enables the Wallet Instance to obtain Wallet Instance Attestation, by sending a Wallet Instance Attestation Issuance Request.</p>
+<section id="wallet-instance-attestation-issuance-request">
+<h3><span class="section-number">13.1.4.1. </span>Wallet Instance Attestation Issuance Request<a class="headerlink" href="#wallet-instance-attestation-issuance-request" title="Link to this heading">¶</a></h3>
+<p>The Wallet Instance Attestation Issuance Request uses the HTTP POST method with <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> set to <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_026</span></a> and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_140–142</span></a>).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">typ</span></code> header of the Wallet Instance Attestation Issuance Request JWT assumes the value <code class="docutils literal notranslate"><span class="pre">wia-request+jwt</span></code>.</p>
+<p>The Wallet Instance Attestation Issuance Request body contains an <code class="docutils literal notranslate"><span class="pre">assertion</span></code> parameter whose value is a signed JWT including all header parameters and body claims described below.</p>
+<p>Below is a non-normative example of a Wallet Instance Attestation Request.</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/wallet-instance-attestation</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="o">:</span> <span class="l">application-provider.example.org</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 
@@ -367,8 +367,8 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In particular, the Wallet App and Wallet Unit Attestation Issuance JWT includes the following HTTP header parameters:</p>
-<table class="longtable docutils align-default" id="table-waa-wua-request-claim">
+<p>In particular, the Wallet Instance Attestation Issuance JWT includes the following HTTP header parameters:</p>
+<table class="longtable docutils align-default" id="table-wia-request-claim">
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -390,12 +390,12 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <td><p>[<span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html#section_3"><strong>RFC 7638#section_3</strong></a>]</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>typ</strong></p></td>
-<td><p>The type of the JWT, it MUST set to <code class="docutils literal notranslate"><span class="pre">attestations-request+jwt</span></code>.</p></td>
+<td><p>The type of the JWT, it MUST set to <code class="docutils literal notranslate"><span class="pre">wia-request+jwt</span></code>.</p></td>
 <td></td>
 </tr>
 </tbody>
 </table>
-<p>The Wallet App and Wallet Unit Attestation Request JWT includes the following body claims:</p>
+<p>The Wallet Instance Attestation Request JWT includes the following body claims:</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 20.0%" />
@@ -413,32 +413,24 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <td><p>The identifier of the Wallet Provider concatenated with the thumbprint of the JWK in the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim.</p></td>
 <td><p>[<span class="target" id="index-4"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>], [<span class="target" id="index-5"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>].</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>aud</strong></p></td>
-<td><p>The identifier of the Wallet Provider.</p></td>
+<tr class="row-odd"><td><p><strong>exp</strong></p></td>
+<td><p>UNIX timestamp representing the JWT expiration time.</p></td>
 <td><p>[<span class="target" id="index-6"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>], [<span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>].</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>exp</strong></p></td>
-<td><p>UNIX timestamp representing the JWT expiration time.</p></td>
+<tr class="row-even"><td><p><strong>iat</strong></p></td>
+<td><p>UNIX timestamp representing the JWT issuance time.</p></td>
 <td><p>[<span class="target" id="index-8"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>], [<span class="target" id="index-9"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>].</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>iat</strong></p></td>
-<td><p>UNIX timestamp representing the JWT issuance time.</p></td>
-<td><p>[<span class="target" id="index-10"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>], [<span class="target" id="index-11"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>].</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>nonce</strong></p></td>
+<tr class="row-odd"><td><p><strong>nonce</strong></p></td>
 <td><p>The <code class="docutils literal notranslate"><span class="pre">nonce</span></code> obtained from the Nonce Endpoint.</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><strong>hardware_signature</strong></p></td>
-<td><p>The signature of <code class="docutils literal notranslate"><span class="pre">client_data_hash_waa</span></code> and <code class="docutils literal notranslate"><span class="pre">client_data_hash_wua</span></code> obtained using the Cryptographic Hardware Key, encoded in the <code class="docutils literal notranslate"><span class="pre">base64url</span></code> format.</p></td>
+<tr class="row-even"><td><p><strong>hardware_signature</strong></p></td>
+<td><p>The signature of <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> obtained using the Cryptographic Hardware Key, encoded in the <code class="docutils literal notranslate"><span class="pre">base64url</span></code> format.</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><strong>integrity_assertion</strong></p></td>
-<td><p>The Integrity Assertion for Wallet App Attestation obtained from the <strong>Device Integrity Service APIs</strong> with the holder binding of <code class="docutils literal notranslate"><span class="pre">client_data_hash_waa</span></code>.</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><strong>attested_key</strong></p></td>
-<td><p>The key Attestation obtained for the credential key either from the <strong>Key Attestation APIs</strong> with the holder binding of <code class="docutils literal notranslate"><span class="pre">client_data_hash_wua</span></code> or from the <strong>Device Integrity Service APIs</strong> with the holder binding of <code class="docutils literal notranslate"><span class="pre">client_data_hash_wua</span></code>.</p></td>
+<tr class="row-odd"><td><p><strong>integrity_assertion</strong></p></td>
+<td><p>The Integrity Assertion for Wallet Instance Attestation obtained from the <strong>Device Integrity Service APIs</strong> with the holder binding of <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code>.</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p><strong>hardware_key_tag</strong></p></td>
@@ -447,26 +439,36 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </tr>
 <tr class="row-odd"><td><p><strong>cnf</strong></p></td>
 <td><p>JSON object containing the public part of an asymmetric key pair owned by the Wallet Instance.</p></td>
-<td><p><span class="target" id="index-12"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7800.html"><strong>RFC 7800</strong></a>.</p></td>
+<td><p><span class="target" id="index-10"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7800.html"><strong>RFC 7800</strong></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>platform</strong></p></td>
+<td><p>String containing the value of the device operating system.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>wallet_solution_id</strong></p></td>
+<td><p>String containing the identifier of the Wallet Solution.</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>wallet_solution_version</strong></p></td>
+<td><p>String containing the version of the Wallet Solution.</p></td>
+<td></td>
 </tr>
 </tbody>
 </table>
-<p>Below is a non-normative example of a Wallet App and Wallet Unit Attestation Request JWT header and payload.</p>
+<p>Below is a non-normative example of a Wallet Instance Attestation Request JWT header and payload.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;attestations-request+jwt&quot;</span>
+<span class="w">  </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wia-request+jwt&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org/instance/OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org/&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;nonce&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f3b29a81-45c7-4d12-b8b5-e1f6c9327aef&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;hardware_signature&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;KoZIhvcNAQcCoIAwgAIB...&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;integrity_assertion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;o2NmbXRvYXBwbGUtYXBwYXNzZXJ0aW9uLXBheWxvYWQtYXBw...&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;attested_key&quot;</span><span class="p">:</span><span class="w"> </span><span class="nt">&quot;o2CFbXRvYXBwbGUtYXBwYXNzTYU0aW9uLXBheWxvYWQtZvRM...&quot;</span>
-<span class="w">  </span><span class="nt">&quot;hardware_key_tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="nt">&quot;QW12DylRTmF89iGkpydNDWW7m8bVpa2Fn9KBeXGYtfX&quot;</span>
+<span class="w">  </span><span class="nt">&quot;hardware_key_tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;QW12DylRTmF89iGkpydNDWW7m8bVpa2Fn9KBeXGYtfX&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;cnf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;jwk&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;crv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
@@ -474,14 +476,17 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <span class="w">      </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8FJtI-yr3pjyRKGMnz4WmdnQD_uJSq4R95Nj98b44&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MKZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg&quot;</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;platform&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;iOS&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;wallet_solution_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wallet-mobile&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;wallet_solution_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.1.0&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </section>
-<section id="wallet-app-and-wallet-unit-attestation-issuance-response">
-<h3><span class="section-number">13.1.4.2. </span>Wallet App and Wallet Unit Attestation Issuance Response<a class="headerlink" href="#wallet-app-and-wallet-unit-attestation-issuance-response" title="Link to this heading">¶</a></h3>
-<p>If the Wallet App and Wallet Unit Attestation Issuance Request is successfully validated, the Wallet Provider returns an HTTP response with a status code of <code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code> and <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. The returned JSON Object MUST possess the <code class="docutils literal notranslate"><span class="pre">wallet_attestations</span></code> parameter, which includes <code class="docutils literal notranslate"><span class="pre">wallet_app_attestation</span></code> and <code class="docutils literal notranslate"><span class="pre">wallet_unit_attestation</span></code> elements (see <a class="reference internal" href="wallet-attestation-issuance.html#wallet-app-and-wallet-unit-attestation-issuance"><span class="std std-ref">Wallet App and Wallet Unit Attestation Issuance</span></a>). <code class="docutils literal notranslate"><span class="pre">wallet_app_attestation</span></code> and <code class="docutils literal notranslate"><span class="pre">wallet_unit_attestation</span></code> are single JSON objects containing the Wallet App Attestation and the Wallet Unit Attestation, respectively. Both attestations are signed by the Wallet Provider (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_027–029</span></a> and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_143–144</span></a>). The JWT formatted Wallet App Attestation is to be used for the Issuance phase, as an OAuth Client Attestation, and will be sent to the Credential Issuer as discussed in <a class="reference internal" href="credential-issuance.html#digital-credential-issuance"><span class="std std-ref">Digital Credential Issuance</span></a>. The JWT formatted Wallet Unit Attestation is to be used for the Issuance phase, as an <code class="docutils literal notranslate"><span class="pre">key_attestation</span></code> JOSE header in the JWT <code class="docutils literal notranslate"><span class="pre">proof</span></code> type, and will be sent to the Credential Issuer as discussed in <a class="reference internal" href="credential-issuance.html#digital-credential-issuance"><span class="std std-ref">Digital Credential Issuance</span></a>.</p>
+<section id="wallet-instance-attestation-issuance-response">
+<h3><span class="section-number">13.1.4.2. </span>Wallet Instance Attestation Issuance Response<a class="headerlink" href="#wallet-instance-attestation-issuance-response" title="Link to this heading">¶</a></h3>
+<p>If the Wallet Instance Attestation Issuance Request is successfully validated, the Wallet Provider returns an HTTP response with a status code of <code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code> and <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. The returned JSON Object includes <code class="docutils literal notranslate"><span class="pre">wallet_instance_attestation</span></code> (see <a class="reference internal" href="wallet-instance-attestation-issuance.html#wallet-instance-attestation-issuance"><span class="std std-ref">Wallet Instance Attestation Issuance</span></a>). <code class="docutils literal notranslate"><span class="pre">wallet_instance_attestation</span></code> is signed by the Wallet Provider (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_027–029</span></a> and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_143–144</span></a>). The JWT formatted Wallet Instance Attestation is to be used for the Issuance phase, as an OAuth Client Attestation, and will be sent to the Credential Issuer as discussed in <a class="reference internal" href="credential-issuance.html#digital-credential-issuance"><span class="std std-ref">Digital Credential Issuance</span></a>.</p>
 <p>The JSON Object returned in the response has the following claim:</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -496,18 +501,13 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>wallet_attestations</strong></p></td>
-<td><p>REQUIRED. A JSON array containing one Wallet App Attestation and one Wallet Unit Attestation in <code class="docutils literal notranslate"><span class="pre">wallet_app_attestation</span></code> and <code class="docutils literal notranslate"><span class="pre">wallet_unit_attestation</span></code> elements, respectively. It MUST contain the following mandatory claims:</p>
-<ul class="simple">
-<li><p><strong>wallet_app_attestation</strong>: A JSON object containing of the issued Wallet App Attestation.</p></li>
-<li><p><strong>wallet_unit_attestation</strong>: A JSON object containing of the issued Wallet Unit Attestation.</p></li>
-</ul>
-</td>
+<tr class="row-even"><td><p><strong>wallet_instance_attestation</strong></p></td>
+<td><p>REQUIRED. A String containing of the issued Wallet Instance Attestation.</p></td>
 <td><p>This specification.</p></td>
 </tr>
 </tbody>
 </table>
-<p>The value of <code class="docutils literal notranslate"><span class="pre">wallet_app_attestation</span></code> and <code class="docutils literal notranslate"><span class="pre">wallet_unit_attestation</span></code> parameters are strings representing the Wallet App Attestation and Wallet Unit Attestation in a JWT, respectively.</p>
+<p>The value of <code class="docutils literal notranslate"><span class="pre">wallet_instance_attestation</span></code> parameter is a string representing the Wallet Instance Attestation in a JWT.</p>
 <p>If any errors occur during the process, an error response is returned. The response uses <code class="docutils literal notranslate"><span class="pre">application/json</span></code> as the <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> and includes the following parameters:</p>
 <blockquote>
 <div><ul class="simple">
@@ -515,7 +515,7 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <li><p><em>error_description</em>. Text in human-readable form providing further details to clarify the nature of the error encountered (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_035</span></a>).</p></li>
 </ul>
 </div></blockquote>
-<p>Below is a non-normative example of a Wallet App and Wallet Unit Attestation Issuance Response.</p>
+<p>Below is a non-normative example of a Wallet Instance Attestation Issuance Response.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">403</span> <span class="ne">Forbidden</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 
@@ -541,7 +541,7 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">bad_request</span></code></p></td>
-<td><p>The request is malformed, missing required parameters (e.g., header parameters, Integrity Assertion, or <code class="docutils literal notranslate"><span class="pre">attested_key</span></code>), or includes invalid and unknown parameters.</p></td>
+<td><p>The request is malformed, missing required parameters (e.g., header parameters, or Integrity Assertion), or includes invalid and unknown parameters.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
@@ -553,11 +553,11 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
-<td><p>The signature of the Wallet App and Wallet Unit Attestation Request is invalid or does not match the associated public key (JWK).</p></td>
+<td><p>The signature of the Wallet Instance Attestation Request is invalid or does not match the associated public key (JWK).</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
-<td><p>The Integrity Assertion or Key Attestation (<code class="docutils literal notranslate"><span class="pre">attested_key</span></code>) validation failed; the Integrity Assertion or Key Attestation (<code class="docutils literal notranslate"><span class="pre">attested_key</span></code>) is tampered with or improperly signed.</p></td>
+<td><p>The Integrity Assertion validation failed; the Integrity Assertion is tampered with or improperly signed.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
@@ -590,9 +590,9 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </tbody>
 </table>
 </section>
-<section id="wallet-app-attestation-jwt">
-<h3><span class="section-number">13.1.4.3. </span>Wallet App Attestation JWT<a class="headerlink" href="#wallet-app-attestation-jwt" title="Link to this heading">¶</a></h3>
-<p>The JOSE header of the Wallet App Attestation JWT contains the following parameters:</p>
+<section id="wallet-instance-attestation-jwt">
+<h3><span class="section-number">13.1.4.3. </span>Wallet Instance Attestation JWT<a class="headerlink" href="#wallet-instance-attestation-jwt" title="Link to this heading">¶</a></h3>
+<p>The JOSE header of the Wallet Instance Attestation JWT contains the following parameters:</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 20.0%" />
@@ -608,11 +608,11 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <tbody>
 <tr class="row-even"><td><p><strong>alg</strong></p></td>
 <td><p>REQUIRED. A digital signature algorithm identifier such as per IANA &quot;JSON Web Signature and Encryption Algorithms&quot; registry. It MUST be one of the supported algorithms listed in the Section <a class="reference internal" href="algorithms.html#cryptographic-algorithms"><span class="std std-ref">Cryptographic Algorithms</span></a> and MUST NOT be set to <code class="docutils literal notranslate"><span class="pre">none</span></code> or any symmetric algorithm (MAC) identifier.</p></td>
-<td><p><span class="target" id="index-13"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>.</p></td>
+<td><p><span class="target" id="index-11"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>kid</strong></p></td>
-<td><p>REQUIRED. Unique identifier of the public key associated to the private key the Wallet Provider used to sign the Wallet App Attestation.</p></td>
-<td><p><span class="target" id="index-14"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html#section_3"><strong>RFC 7638#section_3</strong></a>.</p></td>
+<td><p>REQUIRED. Unique identifier of the public key associated to the private key the Wallet Provider used to sign the Wallet Instance Attestation.</p></td>
+<td><p><span class="target" id="index-12"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html#section_3"><strong>RFC 7638#section_3</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>typ</strong></p></td>
 <td><p>REQUIRED. It MUST be set to <code class="docutils literal notranslate"><span class="pre">oauth-client-attestation+jwt</span></code></p></td>
@@ -620,15 +620,15 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </tr>
 <tr class="row-odd"><td><p><strong>trust_chain</strong></p></td>
 <td><p>OPTIONAL. Sequence of Entity Statements that composes the Trust Chain related to the Wallet Provider.</p></td>
-<td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Section 4.3 <em>Trust Chain Header Parameter</em>.</p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Section 4.3 <em>Trust Chain Header Parameter</em>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>x5c</strong></p></td>
-<td><p>REQUIRED. Contains the X.509 public key certificate or certificate chain (<span class="target" id="index-15"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>) corresponding to the key used to digitally sign the JWT.</p></td>
-<td><p><span class="target" id="index-16"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Section 4.1.8, <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/11/">SD-JWT-VC</a> Section 3.5 and <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-06.html">OPENID4VC-HAIP</a>.</p></td>
+<td><p>REQUIRED. Contains the X.509 public key certificate or certificate chain (<span class="target" id="index-13"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>) corresponding to the key used to digitally sign the JWT.</p></td>
+<td><p><span class="target" id="index-14"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Section 4.1.8, <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/12/">SD-JWT-VC</a> Section 3.5 and <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-06.html">OPENID4VC-HAIP</a>.</p></td>
 </tr>
 </tbody>
 </table>
-<p>The body of the Wallet App Attestation JWT contains the following claims:</p>
+<p>The body of the Wallet Instance Attestation JWT contains the following claims:</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 20.0%" />
@@ -644,83 +644,305 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <tbody>
 <tr class="row-even"><td><p><strong>iss</strong></p></td>
 <td><p>REQUIRED. Identifier of the Wallet Provider.</p></td>
-<td><p><span class="target" id="index-17"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-18"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-15"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-16"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>exp</strong></p></td>
 <td><p>REQUIRED. UNIX Timestamp with the expiry time of the JWT.</p></td>
-<td><p><span class="target" id="index-19"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-20"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-17"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-18"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>iat</strong></p></td>
-<td><p>OPTIONAL. UNIX Timestamp with the time of JWT issuance.</p></td>
-<td><p><span class="target" id="index-21"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-22"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p>REQUIRED. UNIX Timestamp with the time of JWT issuance.</p></td>
+<td><p><span class="target" id="index-19"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-20"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>nbf</strong></p></td>
 <td><p>OPTIONAL. UNIX Timestamp with the start time of validity of the JWT issuance.</p></td>
-<td><p><span class="target" id="index-23"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-24"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-21"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-22"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>cnf</strong></p></td>
 <td><p>REQUIRED. JSON object, containing the public part of an asymmetric key pair owned by the Wallet Instance.</p></td>
-<td><p><span class="target" id="index-25"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7800.html"><strong>RFC 7800</strong></a>.</p></td>
+<td><p><span class="target" id="index-23"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7800.html"><strong>RFC 7800</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>wallet_link</strong></p></td>
-<td><p>OPTIONAL. String containing a URL to get further information about the Wallet and the Wallet Provider.</p></td>
+<td><p>REQUIRED. String containing a URL to get further information about the Wallet and the Wallet Provider.</p></td>
 <td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>wallet_name</strong></p></td>
-<td><p>OPTIONAL. String containing a human-readable name of the Wallet.</p></td>
+<td><p>REQUIRED. String containing a human-readable name of the Wallet.</p></td>
 <td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>status</strong></p></td>
-<td><p>OPTIONAL. Status mechanism for the Wallet Attestation as defined in Section 6.2 of <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/13/">TOKEN-STATUS-LIST</a>.</p></td>
-<td><p><span class="target" id="index-26"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-27"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p>REQUIRED. Status mechanism for the Wallet Attestation as defined in Section 6.2 of <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/13/">TOKEN-STATUS-LIST</a>.</p></td>
+<td><p><span class="target" id="index-24"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-25"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>sub</strong></p></td>
-<td><p>REQUIRED. Identifier of the Wallet Instance which is the thumbprint of the Wallet App Attestation JWK.</p></td>
-<td><p><span class="target" id="index-28"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-29"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<tr class="row-even"><td><p><strong>eudi_wallet_info</strong></p></td>
+<td><p>OPTIONAL. JSON object, containing the general information about the Wallet and Wallet Provider. The following parameter MUST be included:</p>
+<ul class="simple">
+<li><p><strong>general_info</strong>: REQUIRED. An object that has the following parameters:</p>
+<ul>
+<li><p><strong>wallet_provider_name</strong>: REQUIRED. String value of the Wallet Provider name as listed on the trusted list of Wallet Providers.</p></li>
+<li><p><strong>wallet_solution_id</strong>: REQUIRED. String value of the Wallet Solution identifier as listed on the trusted list of Wallet Providers.</p></li>
+<li><p><strong>wallet_solution_version</strong>: REQUIRED. String value of the Wallet Solution version.</p></li>
+<li><p><strong>wallet_solution_certification_information</strong>: REQUIRED. String value that contains a URL that links to the certification of the Wallet Solution.</p></li>
+</ul>
+</li>
+</ul>
+</td>
+<td><p><a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts3-wallet-unit-attestation.md#231-general_info">EUDI-TS 3</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>sub</strong></p></td>
+<td><p>REQUIRED. Identifier of the Wallet Instance which is the thumbprint of the Wallet instance Attestation JWK.</p></td>
+<td><p><span class="target" id="index-26"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-27"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 </tbody>
 </table>
-<p>Below is a non-normative example of the Wallet App Attestation JWT header and payload, without encoding and signature applied:</p>
+<p>Below is a non-normative example of the Wallet Instance Attestation JWT header and payload, without encoding and signature applied:</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;trust_chain&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="s2">&quot;eyJhbGciOiJFUz...6S0A&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;eyJhbGciOiJFUz...jJLA&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;eyJhbGciOiJFUz...H9gw&quot;</span>
-<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;oauth-client-attestation+jwt&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;x5c&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="s2">&quot;MIIDqjCCApKgAwIBAgIESLNEvDA ...&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;MIICwzCCAasCCQCKVy9eKjvi+jA ...&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;MIIDTDCCAjSgAwIBAgIJAPlnQYH...&quot;</span>
+<span class="w">      </span><span class="s2">&quot;MIICrDCCAlKgAwIBAgIUCQ5zD8eGxAN6c5isgQk0jkp3qzwwCgYIKoZIzj0EAwIwgZIxCzAJBgNVBAYTAklUMQ4wDAYDVQQIDAVMYXppbzENMAsGA1UEBwwEUm9tYTEWMBQGA1UECgwNUGFnb1BBIFMucC5BLjEkMCIGA1UEAwwbZm9vMTEuYmxvYi5jb3JlLndpbmRvd3MubmV0MSYwJAYJKoZIhvcNAQkBFhdwYWdvcGFzcGFAcGVjLnBhZ29wYS5pdDAeFw0yNTA3MDMxNTE2NTlaFw0yNjA3MDMxNTE2NTlaMIGSMQswCQYDVQQGEwJJVDEOMAwGA1UECAwFTGF6aW8xDTALBgNVBAcMBFJvbWExFjAUBgNVBAoMDVBhZ29QQSBTLnAuQS4xJDAiBgNVBAMMG2ZvbzExLmJsb2IuY29yZS53aW5kb3dzLm5ldDEmMCQGCSqGSIb3DQEJARYXcGFnb3Bhc3BhQHBlYy5wYWdvcGEuaXQwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAARtdnuBd5hAg3cPyz7/o8vBFyL4sp45HikFogMZse7f9/iL4gn6YM/ehP1CQI0dFnT3c/RdxFyRukKWXscopwXso4GDMIGAMAkGA1UdEwQCMAAwCwYDVR0PBAQDAgWgMCYGA1UdEQQfMB2CG2ZvbzExLmJsb2IuY29yZS53aW5kb3dzLm5ldDAdBgNVHQ4EFgQUOd7M/0bo1+saPT/H9M+G96sKnYIwHwYDVR0jBBgwFoAUkKHxQLaudIm0WfwZeN5HMTG8SCMwCgYIKoZIzj0EAwIDSAAwRQIgSXKs9Gx2bXVG9nxap1I/KqwHdh6SQDKI85J9n7FqrI8CIQCqltHTw6sci1R4RSOFySEvzEohQTbNTke+X2lD9iQd5A==&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;MIIDqjCCA1GgAwIBAgIGAZc6/V9qMAoGCCqGSM49BAMCMIGzMQswCQYDVQQGEwJJVDEOMAwGA1UECAwFTGF6aW8xDTALBgNVBAcMBFJvbWExMTAvBgNVBAoMKElzdGl0dXRvIFBvbGlncmFmaWNvIGUgWmVjY2EgZGVsbG8gU3RhdG8xCzAJBgNVBAsMAklUMR4wHAYDVQQDDBVwcmUudGEud2FsbGV0LmlwenMuaXQxJTAjBgkqhkiG9w0BCQEWFnByb3RvY29sbG9AcGVjLmlwenMuaXQwHhcNMjUwNjA0MTI0OTMzWhcNMjcwNjA0MTI0OTMzWjCBkjELMAkGA1UEBhMCSVQxDjAMBgNVBAgMBUxhemlvMQ0wCwYDVQQHDARSb21hMRYwFAYDVQQKDA1QYWdvUEEgUy5wLkEuMSQwIgYDVQQDDBtmb28xMS5ibG9iLmNvcmUud2luZG93cy5uZXQxJjAkBgkqhkiG9w0BCQEWF3BhZ29wYXNwYUBwZWMucGFnb3BhLml0MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEgXY4FApFJCj91Gpb1K9GEIouTq2X3L0K64Iq0ob4l/iX7p1ysisVV2vOhj1xEm/3M24U5HcywPPpNIOEHTESjqOCAW4wggFqMB0GA1UdDgQWBBSQofFAtq50ibRZ/Bl43kcxMbxIIzCB5QYDVR0jBIHdMIHagBTzUINxjECpXem0zyIpsnTqv3DEGaGBuaSBtjCBszELMAkGA1UEBhMCSVQxDjAMBgNVBAgMBUxhemlvMQ0wCwYDVQQHDARSb21hMTEwLwYDVQQKDChJc3RpdHV0byBQb2xpZ3JhZmljbyBlIFplY2NhIGRlbGxvIFN0YXRvMQswCQYDVQQLDAJJVDEeMBwGA1UEAwwVcHJlLnRhLndhbGxldC5pcHpzLml0MSUwIwYJKoZIhvcNAQkBFhZwcm90b2NvbGxvQHBlYy5pcHpzLml0ggYBlzr5eUMwEgYDVR0TAQH/BAgwBgEB/wIBADAOBgNVHQ8BAf8EBAMCAAcwPQYDVR0fBDYwNDAyoDCgLoYsaHR0cHM6Ly9wcmUudGEud2FsbGV0LmlwenMuaXQvcGtpL3RhLXN1Yi5jcmwwCgYIKoZIzj0EAwIDRwAwRAIgBSyH++oPDP8ipRxHcJ8u2HkN7wL44XpJFxSIBV9RFHMCIBixpcT43NSsk0EvhJb4g68c1d9OrBnXOXVuyCtWWE6a&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;MIIDQzCCAuigAwIBAgIGAZc6+XlDMAoGCCqGSM49BAMCMIGzMQswCQYDVQQGEwJJVDEOMAwGA1UECAwFTGF6aW8xDTALBgNVBAcMBFJvbWExMTAvBgNVBAoMKElzdGl0dXRvIFBvbGlncmFmaWNvIGUgWmVjY2EgZGVsbG8gU3RhdG8xCzAJBgNVBAsMAklUMR4wHAYDVQQDDBVwcmUudGEud2FsbGV0LmlwenMuaXQxJTAjBgkqhkiG9w0BCQEWFnByb3RvY29sbG9AcGVjLmlwenMuaXQwHhcNMjUwNjA0MTI0NTE3WhcNMzAwNjAzMTI0NTE3WjCBszELMAkGA1UEBhMCSVQxDjAMBgNVBAgMBUxhemlvMQ0wCwYDVQQHDARSb21hMTEwLwYDVQQKDChJc3RpdHV0byBQb2xpZ3JhZmljbyBlIFplY2NhIGRlbGxvIFN0YXRvMQswCQYDVQQLDAJJVDEeMBwGA1UEAwwVcHJlLnRhLndhbGxldC5pcHpzLml0MSUwIwYJKoZIhvcNAQkBFhZwcm90b2NvbGxvQHBlYy5pcHpzLml0MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEaE0xyhd3e9LDT7uwHOclL5H3389gwiCwFhI3KOvidn0glBIHYxqH+4Z9VTMYWG5L8cwC9AaJUCNGu2dp5ZiiTKOB5TCB4jAdBgNVHQ4EFgQU81CDcYxAqV3ptM8iKbJ06r9wxBkwHwYDVR0jBBgwFoAU81CDcYxAqV3ptM8iKbJ06r9wxBkwDwYDVR0TAQH/BAUwAwEB/zBEBggrBgEFBQcBAQQ4MDYwNAYIKwYBBQUHMAKGKGh0dHBzOi8vcHJlLnRhLndhbGxldC5pcHpzLml0L3BraS90YS5jZXIwDgYDVR0PAQH/BAQDAgEGMDkGA1UdHwQyMDAwLqAsoCqGKGh0dHBzOi8vcHJlLnRhLndhbGxldC5pcHpzLml0L3BraS90YS5jcmwwCgYIKoZIzj0EAwIDSQAwRgIhAOsQYzR+eGf4je63VGHqkpmkBbfyOre+mfIdHHowWWR/AiEA58xBNb5UW5uMB+tQur8fq24RD5MmRHLYS6bDgIYmluw=&quot;</span>
 <span class="w">    </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;oauth-client-attestation+jwt&quot;</span>
-<span class="p">}</span>
+<span class="w">    </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8UkfrvttLkpAQOOp&quot;</span>
+<span class="w">  </span><span class="p">}</span>
 </pre></div>
 </div>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;cnf&quot;</span><span class="p">:</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;jwk&quot;</span><span class="p">:</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;crv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4HNptI-xr2pjyRJKGMnz4WmdnQD_uJSq4R95Nj98b44&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LIZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg&quot;</span>
-<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="nt">&quot;cnf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;jwk&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8g9qKk3tRCBHsu57pNy3oMPc-jeJW8zU1LvfG9H5__M&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;KD0MNCPtJqUd1RGiTdAxEL6OCw5trfzqSrU6BHKOy2g&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;crv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dd762e6f8b613193&quot;</span>
+<span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687281195</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687288395</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;eudi_wallet_info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;general_info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;wallet_provider_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ExampleOrg&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;wallet_solution_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wallet-mobile&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;wallet_solution_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;wallet_solution_certification_information&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;wallet_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wallet_v1&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;wallet_link&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.com/wallet/detail_info.html&quot;</span>
+<span class="w">    </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1772444318</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1772447918</span>
+<span class="w">  </span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As the certification scheme has not yet been defined, the exact content of <code class="docutils literal notranslate"><span class="pre">wallet_solution_certification_information</span></code> is undefined. This content will be defined in a future update.</p>
+</div>
+</section>
+</section>
+<section id="wallet-unit-attestation-issuance-endpoint">
+<h2><span class="section-number">13.1.5. </span>Wallet Unit Attestation Issuance Endpoint<a class="headerlink" href="#wallet-unit-attestation-issuance-endpoint" title="Link to this heading">¶</a></h2>
+<p>This is a RESTful API endpoint provided by the Wallet Provider that enables the Wallet Instance to obtain Wallet Unit Attestation, by sending a Wallet Unit Attestation Issuance Request.</p>
+<section id="wallet-unit-attestation-issuance-request">
+<h3><span class="section-number">13.1.5.1. </span>Wallet Unit Attestation Issuance Request<a class="headerlink" href="#wallet-unit-attestation-issuance-request" title="Link to this heading">¶</a></h3>
+<p>The Wallet Unit Attestation Issuance Request uses the HTTP POST method with <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> set to <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_026</span></a> and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_140–142</span></a>).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">typ</span></code> header of the Wallet Unit Attestation Issuance Request JWT assumes the value <code class="docutils literal notranslate"><span class="pre">wua-request+jwt</span></code>.</p>
+<p>The Wallet Unit Attestation Issuance Request body contains an <code class="docutils literal notranslate"><span class="pre">assertion</span></code> parameter whose value is a signed JWT including all header parameters and body claims described below.</p>
+<p>Below is a non-normative example of a Wallet Unit Attestation Request.</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/wallet-unit-attestation</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">application-provider.example.org</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;assertion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJpc3MiOiJodHRwczovL3dhbGxldC1wcm92aWRlc...&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In particular, the Wallet Unit Attestation Issuance JWT includes the following HTTP header parameters:</p>
+<table class="longtable docutils align-default" id="table-wua-request-claim">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Parameter</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>alg</strong></p></td>
+<td><p>A digital signature algorithm identifier such as per IANA &quot;JSON Web Signature and Encryption Algorithms&quot; registry. It MUST be one of the supported algorithms listed in the <a class="reference internal" href="algorithms.html#cryptographic-algorithms"><span class="std std-ref">Cryptographic Algorithms</span></a> and MUST NOT be set to <code class="docutils literal notranslate"><span class="pre">none</span></code> or any symmetric algorithm (MAC) identifier.</p></td>
+<td><p>[<span class="target" id="index-28"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>kid</strong></p></td>
+<td><p>Thumbprint of the Wallet Instance's JWK contained in the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim.</p></td>
+<td><p>[<span class="target" id="index-29"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html#section_3"><strong>RFC 7638#section_3</strong></a>]</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>typ</strong></p></td>
+<td><p>The type of the JWT, it MUST set to <code class="docutils literal notranslate"><span class="pre">wua-request+jwt</span></code>.</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>The Wallet Unit Attestation Request JWT includes the following body claims:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Claim</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>iss</strong></p></td>
+<td><p>The identifier of the Wallet Provider concatenated with the thumbprint of the JWK in the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim.</p></td>
+<td><p>[<span class="target" id="index-30"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>], [<span class="target" id="index-31"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>].</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>aud</strong></p></td>
+<td><p>The identifier of the Wallet Provider.</p></td>
+<td><p>[<span class="target" id="index-32"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>], [<span class="target" id="index-33"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>].</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>exp</strong></p></td>
+<td><p>UNIX timestamp representing the JWT expiration time.</p></td>
+<td><p>[<span class="target" id="index-34"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>], [<span class="target" id="index-35"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>].</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>iat</strong></p></td>
+<td><p>UNIX timestamp representing the JWT issuance time.</p></td>
+<td><p>[<span class="target" id="index-36"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>], [<span class="target" id="index-37"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>].</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>nonce</strong></p></td>
+<td><p>The <code class="docutils literal notranslate"><span class="pre">nonce</span></code> obtained from the Nonce Endpoint.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>keys_to_attest</strong></p></td>
+<td><p>JSON array of JWT strings, each representing a <code class="docutils literal notranslate"><span class="pre">Key_Attestation_Requests</span></code>.</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>hardware_signature</strong></p></td>
+<td><p>The signature of <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> obtained using the Cryptographic Hardware Key, encoded in the <code class="docutils literal notranslate"><span class="pre">base64url</span></code> format.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>integrity_assertion</strong></p></td>
+<td><p>The Integrity Assertion for Wallet Instance Attestation obtained from the <strong>Device Integrity Service APIs</strong> with the holder binding of <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code>.</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>hardware_key_tag</strong></p></td>
+<td><p>The value of the Cryptographic Hardware Key Tag.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>cnf</strong></p></td>
+<td><p>JSON object containing the public part of the first asymmetric key pair (first element of <code class="docutils literal notranslate"><span class="pre">keys_to_attest</span></code>) owned by the Wallet Instance.</p></td>
+<td><p><span class="target" id="index-38"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7800.html"><strong>RFC 7800</strong></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>platform</strong></p></td>
+<td><p>String containing the value of the device operating system.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>wallet_solution_id</strong></p></td>
+<td><p>String containg the identifier of the Wallet Solution .</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>wallet_solution_version</strong></p></td>
+<td><p>String containing the version of the Wallet Solution.</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Below is a non-normative example of a Wallet Unit Attestation Request JWT header and payload.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wua-request+jwt&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org/instance/OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;aud&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org/&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;nonce&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f3b29a81-45c7-4d12-b8b5-e1f6c9327aef&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;hardware_signature&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;KoZIhvcNAQcCoIAwgAIB...&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;integrity_assertion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;o2NmbXRvYXBwbGUtYXBwYXNzZXJ0aW9uLXBheWxvYWQtYXBw...&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;hardware_key_tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;QW12DylRTmF89iGkpydNDWW7m8bVpa2Fn9KBeXGYtfX&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;cnf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;jwk&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;crv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8FJtI-yr3pjyRKGMnz4WmdnQD_uJSq4R95Nj98b44&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MKZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;keys_to_attest&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;eyJ0eXAiOiJrZXktYXR0ZXN0YXRpb24tcmVxdWVzdCtqd3QiLCJhbGciOiJFUzI1NiIsImtpZCI6Ik9LSEhrVk5PckthUFZKdWZsREt3MVNRSEZOWTVpeTlPaXdBdHBBMGNvSUEifQ.eyJ3c2NkX2tleV9hdHRlc3RhdGlvbiI6eyJzdG9yYWdlX3R5cGUiOiJMT0NBTF9OQVRJVkUifSwiY25mIjp7Imp3ayI6eyJrdHkiOiJFQyIsIngiOiJ4QUg5U05mYXE5SjVkbWt6WFlRTGVrNVlmcFBjOGlfUHBNUlQzMTVoak1rIiwieSI6IlBFMlhMY3BXNmVYSDRGbFlHTlA5Qmh3UVFkRWlaRTF0QWRULUVpaEFDQzgiLCJjcnYiOiJQLTI1NiIsImtpZCI6Ik9LSEhrVk5PckthUFZKdWZsREt3MVNRSEZOWTVpeTlPaXdBdHBBMGNvSUEifX0sImlhdCI6MTc3MzA1Mzg2MSwiZXhwIjoxNzczMDU3NDYxfQ.Rn3D0GwYYZJaupzJ6617V0xav_HH6bGnttoGrD4lwY8ICPH9NiEbTF9ZBYD3aHh20Z9GCjQ8Fhit5Fbps8v9Aw&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;eyJ0eXAiOiJrZXktYXR0ZXN0YXRpb24tcmVxdWVzdCtqd3QiLCJhbGciOiJFUzI1NiIsImtpZCI6IkViUUJSQ2dLNWJrVzlZNU1idGEwZlpzMVdhVTBLZVpiek9iTXVvY2NLb28ifQ.eyJ3c2NkX2tleV9hdHRlc3RhdGlvbiI6eyJzdG9yYWdlX3R5cGUiOiJMT0NBTF9OQVRJVkUifSwiY25mIjp7Imp3ayI6eyJrdHkiOiJFQyIsIngiOiJEVVFWTGhLMUtRUmQtZ3g3UU5jYVNhWENnOXg0S3R6QmstNWIxWTNkeWU0IiwieSI6IkZxVjk0TWVrVm5fQ05mNTIxdm1vLVFIcWZObk12eGdIR3NFeDlCTlc4aFEiLCJjcnYiOiJQLTI1NiIsImtpZCI6IkViUUJSQ2dLNWJrVzlZNU1idGEwZlpzMVdhVTBLZVpiek9iTXVvY2NLb28ifX0sImlhdCI6MTc3MzA1Mzg2MSwiZXhwIjoxNzczMDU3NDYxfQ.wIYOmX8-dmuRnuaCVg1kFoTHhsvv01vbapQ8-3er-HIiAF819Kt3Uy0PUN_WgxP7eWMGwhkn_9tQnnhdgXLYyw&quot;</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;platform&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;iOS&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;wallet_solution_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wallet-mobile&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;wallet_solution_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.1.0&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </section>
+<section id="wallet-unit-attestation-issuance-response">
+<h3><span class="section-number">13.1.5.2. </span>Wallet Unit Attestation Issuance Response<a class="headerlink" href="#wallet-unit-attestation-issuance-response" title="Link to this heading">¶</a></h3>
+<p>If the Wallet Unit Attestation Issuance Request is successfully validated, the Wallet Provider returns an HTTP response with a status code of <code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code> and <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. The returned JSON Object includes <code class="docutils literal notranslate"><span class="pre">wallet_unit_attestation</span></code> (see <a class="reference internal" href="wallet-attestation-issuance.html#wallet-unit-attestation-issuance"><span class="std std-ref">Wallet Unit Attestation Issuance</span></a>). <code class="docutils literal notranslate"><span class="pre">wallet_unit_attestation</span></code> is signed by the Wallet Provider (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_027–029</span></a> and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_143–144</span></a>). The JWT formatted Wallet Unit Attestation is to be used for the Issuance phase, as an <code class="docutils literal notranslate"><span class="pre">key_attestation</span></code> JOSE header in JWT <code class="docutils literal notranslate"><span class="pre">proof</span></code> type, and will be sent to the Credential Issuer as discussed in <a class="reference internal" href="credential-issuance.html#digital-credential-issuance"><span class="std std-ref">Digital Credential Issuance</span></a>.</p>
+<p>The JSON Object returned in the response has the following claim:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Parameter</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>wallet_unit_attestation</strong></p></td>
+<td><p>REQUIRED. A String representing the issued Wallet Unit Attestation.</p></td>
+<td><p>This specification.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The value of <code class="docutils literal notranslate"><span class="pre">wallet_unit_attestation</span></code> parameter is a string representing the Wallet Unit Attestation in a JWT.</p>
+<p>If any errors occur during the process, an error response is returned as it is defined in the previous section.</p>
+<p>The following table lists HTTP Status Codes and related error codes for the ones that are different from what is already reported:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 20.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>HTTP Status Code</strong></p></th>
+<th class="head"><p><strong>Error Code</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bad_request</span></code></p></td>
+<td><p>The request is malformed, missing required parameters (e.g., header parameters, Integrity Assertion, or <code class="docutils literal notranslate"><span class="pre">keys_to_attest</span></code>), or includes invalid and unknown parameters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
+<td><p>The Integrity Assertion or Key Attestation (<code class="docutils literal notranslate"><span class="pre">keys_to_attest</span></code>) validation failed; the Integrity Assertion or Key Attestation (<code class="docutils literal notranslate"><span class="pre">keys_to_attest</span></code>) is tampered with or improperly signed.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
+<td><p>The signature of the Wallet Unit Attestation Request is invalid or does not match the associated public key (JWK).</p></td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="wallet-unit-attestation-jwt">
-<h3><span class="section-number">13.1.4.4. </span>Wallet Unit Attestation JWT<a class="headerlink" href="#wallet-unit-attestation-jwt" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">13.1.5.3. </span>Wallet Unit Attestation JWT<a class="headerlink" href="#wallet-unit-attestation-jwt" title="Link to this heading">¶</a></h3>
 <p>The JOSE header of the Wallet Unit Attestation JWT contains the following parameters:</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -737,11 +959,11 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <tbody>
 <tr class="row-even"><td><p><strong>alg</strong></p></td>
 <td><p>REQUIRED. A digital signature algorithm identifier such as per IANA &quot;JSON Web Signature and Encryption Algorithms&quot; registry. It MUST be one of the supported algorithms listed in the Section <a class="reference internal" href="algorithms.html#cryptographic-algorithms"><span class="std std-ref">Cryptographic Algorithms</span></a> and MUST NOT be set to <code class="docutils literal notranslate"><span class="pre">none</span></code> or any symmetric algorithm (MAC) identifier.</p></td>
-<td><p><span class="target" id="index-30"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>.</p></td>
+<td><p><span class="target" id="index-39"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>kid</strong></p></td>
 <td><p>REQUIRED. Unique identifier of the public key associated to the private key the Wallet Provider used to sign the Wallet Unit Attestation.</p></td>
-<td><p><span class="target" id="index-31"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html#section_3"><strong>RFC 7638#section_3</strong></a>.</p></td>
+<td><p><span class="target" id="index-40"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html#section_3"><strong>RFC 7638#section_3</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>typ</strong></p></td>
 <td><p>REQUIRED. It MUST be set to <code class="docutils literal notranslate"><span class="pre">key-attestation+jwt</span></code></p></td>
@@ -749,11 +971,11 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </tr>
 <tr class="row-odd"><td><p><strong>trust_chain</strong></p></td>
 <td><p>OPTIONAL. Sequence of Entity Statements that composes the Trust Chain related to the Wallet Provider.</p></td>
-<td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Section 4.3 <em>Trust Chain Header Parameter</em>.</p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Section 4.3 <em>Trust Chain Header Parameter</em>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>x5c</strong></p></td>
-<td><p>REQUIRED. Contains the X.509 public key certificate or certificate chain (<span class="target" id="index-32"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>) corresponding to the key used to digitally sign the JWT.</p></td>
-<td><p><span class="target" id="index-33"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Section 4.1.8.</p></td>
+<td><p>REQUIRED. Contains the X.509 public key certificate or certificate chain (<span class="target" id="index-41"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>) corresponding to the key used to digitally sign the JWT.</p></td>
+<td><p><span class="target" id="index-42"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Section 4.1.8.</p></td>
 </tr>
 </tbody>
 </table>
@@ -773,19 +995,19 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <tbody>
 <tr class="row-even"><td><p><strong>iss</strong></p></td>
 <td><p>REQUIRED. Identifier of the Wallet Provider.</p></td>
-<td><p><span class="target" id="index-34"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-35"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-43"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-44"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>exp</strong></p></td>
 <td><p>REQUIRED. UNIX Timestamp with the expiry time of the JWT.</p></td>
-<td><p><span class="target" id="index-36"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-37"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-45"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-46"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>iat</strong></p></td>
 <td><p>REQUIRED. UNIX Timestamp with the time of JWT issuance.</p></td>
-<td><p><span class="target" id="index-38"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-39"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p><span class="target" id="index-47"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-48"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>attested_keys</strong></p></td>
 <td><p>REQUIRED. A non-empty array of attested keys from the same key storage component using the syntax of JWK, containing the public part of an asymmetric key pair owned by the Wallet Instance.</p></td>
-<td><p><span class="target" id="index-40"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>.</p></td>
+<td><p><span class="target" id="index-49"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>key_storage</strong></p></td>
 <td><p>REQUIRED. A non-empty array of case sensitive strings that assert the attack potential resistance of the key storage component and its keys attested in the <code class="docutils literal notranslate"><span class="pre">attested_keys</span></code> parameter. The following values are defined as a value for this claim:</p>
@@ -815,22 +1037,41 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <td><p>OPTIONAL. A String that contains a URL that links to the certification of the key storage component.</p></td>
 <td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>.</p></td>
 </tr>
+<tr class="row-even"><td><p><strong>eudi_wallet_info</strong></p></td>
+<td><p>OPTIONAL. JSON object, containing the general information about the Wallet and Wallet Provider. The following parameters MUST be included:</p>
+<ul class="simple">
+<li><p><strong>general_info</strong>: REQUIRED. An object that has the following parameters:</p>
+<ul>
+<li><p><strong>wallet_provider_name</strong>: REQUIRED. String value of the Wallet Provider name as listed on the trusted list of Wallet Providers.</p></li>
+<li><p><strong>wallet_solution_id</strong>: REQUIRED. String value of the Wallet Solution identifier as listed on the trusted list of Wallet Providers.</p></li>
+<li><p><strong>wallet_solution_version</strong>: REQUIRED. String value of the Wallet Solution version.</p></li>
+<li><p><strong>wallet_solution_certification_information</strong>: REQUIRED. String that contains a URL that links to the certification of the Wallet Solution.</p></li>
+</ul>
+</li>
+<li><p><strong>key_storage_info</strong>: REQUIRED. An object that has the following parameters:</p>
+<ul>
+<li><p><strong>storage_type</strong>: REQUIRED. String value that identifies the technical implementation of WSCD. It can have one of the following values, <code class="docutils literal notranslate"><span class="pre">REMOTE</span></code>, <code class="docutils literal notranslate"><span class="pre">LOCAL_EXTERNAL</span></code>, <code class="docutils literal notranslate"><span class="pre">LOCAL_INTERNAL</span></code>, <code class="docutils literal notranslate"><span class="pre">LOCAL_NATIVE</span></code>, or <code class="docutils literal notranslate"><span class="pre">HYBRID</span></code>.</p></li>
+<li><p><strong>keys_exportable</strong>: REQUIRED. Boolean value that defines whether the private keys of the WSCD or keystore can be exported. It SHALL be set to <code class="docutils literal notranslate"><span class="pre">true</span></code> if the WSCD  allows the private keys to be exported (including if in encrypted format only) and <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise.</p></li>
+<li><p><strong>storage_certification_information</strong>: REQUIRED. String that contains a URL that links to the certification of the key storage component.</p></li>
+</ul>
+</li>
+</ul>
+</td>
+<td><p><a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts3-wallet-unit-attestation.md#231-general_info">EUDI-TS 3</a>.</p></td>
+</tr>
 </tbody>
 </table>
 <p>Below is a non-normative example of the Wallet Unit Attestation JWT header and payload, without encoding and signature applied:</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;trust_chain&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="s2">&quot;eyJhbGciOiJFUz...6S0A&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;eyJhbGciOiJFUz...jJLA&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;eyJhbGciOiJFUz...H9gw&quot;</span>
-<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;key-attestation+jwt&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;x5c&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="s2">&quot;&lt;Wallet Provider X.509 Certificate&gt;&quot;</span>
+<span class="w">      </span><span class="s2">&quot;MIICrDCCAlKgAwIBAgIUCQ5zD8eGxAN6c5isgQk0jkp3qzwwCgYIKoZIzj0EAwIwgZIxCzAJBgNVBAYTAklUMQ4wDAYDVQQIDAVMYXppbzENMAsGA1UEBwwEUm9tYTEWMBQGA1UECgwNUGFnb1BBIFMucC5BLjEkMCIGA1UEAwwbZm9vMTEuYmxvYi5jb3JlLndpbmRvd3MubmV0MSYwJAYJKoZIhvcNAQkBFhdwYWdvcGFzcGFAcGVjLnBhZ29wYS5pdDAeFw0yNTA3MDMxNTE2NTlaFw0yNjA3MDMxNTE2NTlaMIGSMQswCQYDVQQGEwJJVDEOMAwGA1UECAwFTGF6aW8xDTALBgNVBAcMBFJvbWExFjAUBgNVBAoMDVBhZ29QQSBTLnAuQS4xJDAiBgNVBAMMG2ZvbzExLmJsb2IuY29yZS53aW5kb3dzLm5ldDEmMCQGCSqGSIb3DQEJARYXcGFnb3Bhc3BhQHBlYy5wYWdvcGEuaXQwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAARtdnuBd5hAg3cPyz7/o8vBFyL4sp45HikFogMZse7f9/iL4gn6YM/ehP1CQI0dFnT3c/RdxFyRukKWXscopwXso4GDMIGAMAkGA1UdEwQCMAAwCwYDVR0PBAQDAgWgMCYGA1UdEQQfMB2CG2ZvbzExLmJsb2IuY29yZS53aW5kb3dzLm5ldDAdBgNVHQ4EFgQUOd7M/0bo1+saPT/H9M+G96sKnYIwHwYDVR0jBBgwFoAUkKHxQLaudIm0WfwZeN5HMTG8SCMwCgYIKoZIzj0EAwIDSAAwRQIgSXKs9Gx2bXVG9nxap1I/KqwHdh6SQDKI85J9n7FqrI8CIQCqltHTw6sci1R4RSOFySEvzEohQTbNTke+X2lD9iQd5A==&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;MIIDqjCCA1GgAwIBAgIGAZc6/V9qMAoGCCqGSM49BAMCMIGzMQswCQYDVQQGEwJJVDEOMAwGA1UECAwFTGF6aW8xDTALBgNVBAcMBFJvbWExMTAvBgNVBAoMKElzdGl0dXRvIFBvbGlncmFmaWNvIGUgWmVjY2EgZGVsbG8gU3RhdG8xCzAJBgNVBAsMAklUMR4wHAYDVQQDDBVwcmUudGEud2FsbGV0LmlwenMuaXQxJTAjBgkqhkiG9w0BCQEWFnByb3RvY29sbG9AcGVjLmlwenMuaXQwHhcNMjUwNjA0MTI0OTMzWhcNMjcwNjA0MTI0OTMzWjCBkjELMAkGA1UEBhMCSVQxDjAMBgNVBAgMBUxhemlvMQ0wCwYDVQQHDARSb21hMRYwFAYDVQQKDA1QYWdvUEEgUy5wLkEuMSQwIgYDVQQDDBtmb28xMS5ibG9iLmNvcmUud2luZG93cy5uZXQxJjAkBgkqhkiG9w0BCQEWF3BhZ29wYXNwYUBwZWMucGFnb3BhLml0MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEgXY4FApFJCj91Gpb1K9GEIouTq2X3L0K64Iq0ob4l/iX7p1ysisVV2vOhj1xEm/3M24U5HcywPPpNIOEHTESjqOCAW4wggFqMB0GA1UdDgQWBBSQofFAtq50ibRZ/Bl43kcxMbxIIzCB5QYDVR0jBIHdMIHagBTzUINxjECpXem0zyIpsnTqv3DEGaGBuaSBtjCBszELMAkGA1UEBhMCSVQxDjAMBgNVBAgMBUxhemlvMQ0wCwYDVQQHDARSb21hMTEwLwYDVQQKDChJc3RpdHV0byBQb2xpZ3JhZmljbyBlIFplY2NhIGRlbGxvIFN0YXRvMQswCQYDVQQLDAJJVDEeMBwGA1UEAwwVcHJlLnRhLndhbGxldC5pcHpzLml0MSUwIwYJKoZIhvcNAQkBFhZwcm90b2NvbGxvQHBlYy5pcHpzLml0ggYBlzr5eUMwEgYDVR0TAQH/BAgwBgEB/wIBADAOBgNVHQ8BAf8EBAMCAAcwPQYDVR0fBDYwNDAyoDCgLoYsaHR0cHM6Ly9wcmUudGEud2FsbGV0LmlwenMuaXQvcGtpL3RhLXN1Yi5jcmwwCgYIKoZIzj0EAwIDRwAwRAIgBSyH++oPDP8ipRxHcJ8u2HkN7wL44XpJFxSIBV9RFHMCIBixpcT43NSsk0EvhJb4g68c1d9OrBnXOXVuyCtWWE6a&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;MIIDQzCCAuigAwIBAgIGAZc6+XlDMAoGCCqGSM49BAMCMIGzMQswCQYDVQQGEwJJVDEOMAwGA1UECAwFTGF6aW8xDTALBgNVBAcMBFJvbWExMTAvBgNVBAoMKElzdGl0dXRvIFBvbGlncmFmaWNvIGUgWmVjY2EgZGVsbG8gU3RhdG8xCzAJBgNVBAsMAklUMR4wHAYDVQQDDBVwcmUudGEud2FsbGV0LmlwenMuaXQxJTAjBgkqhkiG9w0BCQEWFnByb3RvY29sbG9AcGVjLmlwenMuaXQwHhcNMjUwNjA0MTI0NTE3WhcNMzAwNjAzMTI0NTE3WjCBszELMAkGA1UEBhMCSVQxDjAMBgNVBAgMBUxhemlvMQ0wCwYDVQQHDARSb21hMTEwLwYDVQQKDChJc3RpdHV0byBQb2xpZ3JhZmljbyBlIFplY2NhIGRlbGxvIFN0YXRvMQswCQYDVQQLDAJJVDEeMBwGA1UEAwwVcHJlLnRhLndhbGxldC5pcHpzLml0MSUwIwYJKoZIhvcNAQkBFhZwcm90b2NvbGxvQHBlYy5pcHpzLml0MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEaE0xyhd3e9LDT7uwHOclL5H3389gwiCwFhI3KOvidn0glBIHYxqH+4Z9VTMYWG5L8cwC9AaJUCNGu2dp5ZiiTKOB5TCB4jAdBgNVHQ4EFgQU81CDcYxAqV3ptM8iKbJ06r9wxBkwHwYDVR0jBBgwFoAU81CDcYxAqV3ptM8iKbJ06r9wxBkwDwYDVR0TAQH/BAUwAwEB/zBEBggrBgEFBQcBAQQ4MDYwNAYIKwYBBQUHMAKGKGh0dHBzOi8vcHJlLnRhLndhbGxldC5pcHpzLml0L3BraS90YS5jZXIwDgYDVR0PAQH/BAQDAgEGMDkGA1UdHwQyMDAwLqAsoCqGKGh0dHBzOi8vcHJlLnRhLndhbGxldC5pcHpzLml0L3BraS90YS5jcmwwCgYIKoZIzj0EAwIDSQAwRgIhAOsQYzR+eGf4je63VGHqkpmkBbfyOre+mfIdHHowWWR/AiEA58xBNb5UW5uMB+tQur8fq24RD5MmRHLYS6bDgIYmluw=&quot;</span>
 <span class="w">    </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;key-attestation+jwt&quot;</span>
-<span class="p">}</span>
+<span class="w">    </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8UkfrvttLkpAQOOp&quot;</span>
+<span class="w">  </span><span class="p">}</span>
 </pre></div>
 </div>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -853,14 +1094,32 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <span class="w">    </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687288395</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;key_storage&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;iso_18045_moderate&quot;</span><span class="w"> </span><span class="p">],</span>
 <span class="w">    </span><span class="nt">&quot;user_authentication&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;iso_18045_moderate&quot;</span><span class="w"> </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;certification&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GP&quot;</span>
+<span class="w">    </span><span class="nt">&quot;eudi_wallet_info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;general_info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;wallet_provider_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ExampleOrg&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">            </span><span class="nt">&quot;wallet_solution_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wallet-mobile&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;wallet_solution_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;wallet_solution_certification_information&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;key_storage_info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">           </span><span class="nt">&quot;storage_type&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LOCAL_NATIVE&quot;</span><span class="p">,</span><span class="w">	</span>
+<span class="w">           </span><span class="nt">&quot;keys_exportable&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">           </span><span class="nt">&quot;storage_certification_information&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As the certification scheme has not yet been defined, the exact content of <code class="docutils literal notranslate"><span class="pre">wallet_solution_certification_information</span></code> is undefined.
+This content will be defined in a future update. Similarly, the exact content of <code class="docutils literal notranslate"><span class="pre">storage_certification_information</span></code> is currently undefined and will be specified in a future update, but it SHALL provide sufficient information to determine whether the key storage is a WSCD.
+Note that the OID4VCI specification does specify a <code class="docutils literal notranslate"><span class="pre">certification</span></code> attribute in the <code class="docutils literal notranslate"><span class="pre">key_attestation</span></code> element that could be used instead of <code class="docutils literal notranslate"><span class="pre">storage_certification_information</span></code>.</p>
 </div>
 </section>
 </section>
 <section id="e-service-pdnd-wallet-provider-catalog">
-<h2><span class="section-number">13.1.5. </span>e-Service PDND Wallet Provider Catalog<a class="headerlink" href="#e-service-pdnd-wallet-provider-catalog" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">13.1.6. </span>e-Service PDND Wallet Provider Catalog<a class="headerlink" href="#e-service-pdnd-wallet-provider-catalog" title="Link to this heading">¶</a></h2>
 <p>User's death leads to the revocation of the Wallet Instances of the User and the deletion of the User account at the Wallet Provider. For this reason, the Wallet Provider provides the following e-service through PDND.
 A PID Provider that has been notified by the Authentic Source of the PID of the User's death MUST send a notification to Wallet Providers using this endpoint.</p>
 <div class="admonition note">
@@ -868,7 +1127,7 @@ A PID Provider that has been notified by the Authentic Source of the PID of the 
 <p>A complete OpenAPI Specification is available <span class="raw-html"><a href="OAS3-PDND-WP.html" target="_blank">here</a></span>.</p>
 </div>
 <section id="notify-user-death">
-<h3><span class="section-number">13.1.5.1. </span>Notify User Death<a class="headerlink" href="#notify-user-death" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">13.1.6.1. </span>Notify User Death<a class="headerlink" href="#notify-user-death" title="Link to this heading">¶</a></h3>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 20.0%" />
@@ -919,15 +1178,20 @@ A PID Provider that has been notified by the Authentic Source of the PID of the 
 <li><a class="reference internal" href="#request-specific-error-responses">13.1.3.9. Request-Specific Error Responses</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#wallet-app-and-wallet-unit-attestation-issuance-endpoint">13.1.4. Wallet App and Wallet Unit Attestation Issuance Endpoint</a><ul>
-<li><a class="reference internal" href="#wallet-app-and-wallet-unit-attestation-issuance-request">13.1.4.1. Wallet App and Wallet Unit Attestation Issuance Request</a></li>
-<li><a class="reference internal" href="#wallet-app-and-wallet-unit-attestation-issuance-response">13.1.4.2. Wallet App and Wallet Unit Attestation Issuance Response</a></li>
-<li><a class="reference internal" href="#wallet-app-attestation-jwt">13.1.4.3. Wallet App Attestation JWT</a></li>
-<li><a class="reference internal" href="#wallet-unit-attestation-jwt">13.1.4.4. Wallet Unit Attestation JWT</a></li>
+<li><a class="reference internal" href="#wallet-instance-attestation-issuance-endpoint">13.1.4. Wallet Instance Attestation Issuance Endpoint</a><ul>
+<li><a class="reference internal" href="#wallet-instance-attestation-issuance-request">13.1.4.1. Wallet Instance Attestation Issuance Request</a></li>
+<li><a class="reference internal" href="#wallet-instance-attestation-issuance-response">13.1.4.2. Wallet Instance Attestation Issuance Response</a></li>
+<li><a class="reference internal" href="#wallet-instance-attestation-jwt">13.1.4.3. Wallet Instance Attestation JWT</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#e-service-pdnd-wallet-provider-catalog">13.1.5. e-Service PDND Wallet Provider Catalog</a><ul>
-<li><a class="reference internal" href="#notify-user-death">13.1.5.1. Notify User Death</a></li>
+<li><a class="reference internal" href="#wallet-unit-attestation-issuance-endpoint">13.1.5. Wallet Unit Attestation Issuance Endpoint</a><ul>
+<li><a class="reference internal" href="#wallet-unit-attestation-issuance-request">13.1.5.1. Wallet Unit Attestation Issuance Request</a></li>
+<li><a class="reference internal" href="#wallet-unit-attestation-issuance-response">13.1.5.2. Wallet Unit Attestation Issuance Response</a></li>
+<li><a class="reference internal" href="#wallet-unit-attestation-jwt">13.1.5.3. Wallet Unit Attestation JWT</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#e-service-pdnd-wallet-provider-catalog">13.1.6. e-Service PDND Wallet Provider Catalog</a><ul>
+<li><a class="reference internal" href="#notify-user-death">13.1.6.1. Notify User Death</a></li>
 </ul>
 </li>
 </ul>
@@ -959,7 +1223,7 @@ A PID Provider that has been notified by the Authentic Source of the PID of the 
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 13/01/2026.
+      Last updated on 22/06/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

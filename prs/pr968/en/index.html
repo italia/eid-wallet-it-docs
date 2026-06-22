@@ -5,11 +5,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>IT-Wallet Technical Documentation - 1.3.3 &#8212; IT-Wallet Technical Specifications - PR #968</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <title>IT-Wallet Technical Documentation - 1.4.1 &#8212; IT-Wallet Technical Specifications - PR #968</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=59943e95" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
-    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/documentation_options.js?v=350a9c04"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -161,7 +161,7 @@
           <div class="body" role="main">
             
   <section id="it-wallet-technical-documentation-version">
-<h1>IT-Wallet Technical Documentation - 1.3.3<a class="headerlink" href="#it-wallet-technical-documentation-version" title="Link to this heading">¶</a></h1>
+<h1>IT-Wallet Technical Documentation - 1.4.1<a class="headerlink" href="#it-wallet-technical-documentation-version" title="Link to this heading">¶</a></h1>
 <p>This document provides the technical architecture, implementation framework and design requirements to be adopted by the IT-Wallet System Technical Solutions.</p>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
@@ -191,7 +191,10 @@
 <li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Onboarding System</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="onboarding-high-level.html#onboarding-system-architecture">4.1. Onboarding System Architecture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="onboarding-high-level.html#authentic-source-registration-process">4.2. Authentic Source Registration Process</a></li>
-<li class="toctree-l2"><a class="reference internal" href="onboarding-high-level.html#federation-onboarding-process">4.3. Federation Onboarding Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="onboarding-high-level.html#federation-onboarding-process">4.3. Federation Onboarding Process</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="onboarding-high-level.html#onboarding-of-relying-party-intermediaries">4.3.1. Onboarding of Relying Party Intermediaries</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="onboarding-high-level.html#entity-lifecycle-management">4.4. Entity Lifecycle Management</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="onboarding-high-level.html#ongoing-operations-management">4.4.1. Ongoing Operations Management</a></li>
 <li class="toctree-l3"><a class="reference internal" href="onboarding-high-level.html#federation-exit-and-removal-processes">4.4.2. Federation Exit and Removal Processes</a></li>
@@ -229,7 +232,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="functionalities.html#management-of-electronic-attestations">5.6. Management of Electronic Attestations</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="functionalities.html#status-of-electronic-attestations">5.6.1. Status of Electronic Attestations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="functionalities.html#history-of-electronic-attestations">5.6.2. History of Electronic Attestations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="functionalities.html#transaction-logging">5.6.2. Transaction Logging</a></li>
 <li class="toctree-l3"><a class="reference internal" href="functionalities.html#backup-and-restore-of-electronic-attestation-of-attributes">5.6.3. Backup and Restore of Electronic Attestation of Attributes</a></li>
 </ul>
 </li>
@@ -256,8 +259,9 @@
 <li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#entity-configuration">6.7. Entity Configuration</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#entity-configurations-common-parameters">6.7.1. Entity Configurations Common Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#entity-configuration-trust-anchor">6.7.2. Entity Configuration Trust Anchor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#entity-configuration-leaves-and-intermediates">6.7.3. Entity Configuration Leaves and Intermediates</a></li>
-<li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#id1">6.7.4. Metadata Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#trust-marks-for-relying-party-intermediaries">6.7.3. Trust Marks for Relying Party Intermediaries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#entity-configuration-leaves-and-intermediates">6.7.4. Entity Configuration Leaves and Intermediates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#id1">6.7.5. Metadata Types</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#metadata-of-federation-entity-leaves">6.8. Metadata of federation_entity Leaves</a></li>
@@ -291,7 +295,10 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="registry.html">7. Registry Infrastructure</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="registry.html#registry-architecture-overview">7.1. Registry Architecture Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="registry.html#registry-discovery-endpoint">7.2. Registry Discovery Endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="registry.html#registry-discovery-endpoint">7.2. Registry Discovery Endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="registry.html#registry-discovery-endpoint-parameters">7.2.1. Registry Discovery Endpoint Parameters</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="registry.html#claims-registry">7.3. Claims Registry</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="registry.html#claims-registry-usage">7.3.1. Claims Registry Usage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="registry.html#claims-registry-structure">7.3.2. Claims Registry Structure</a></li>
@@ -453,8 +460,9 @@
 <li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#id1">13.1.1. Federation Endpoint</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-solution-nonce-endpoint">13.1.2. Wallet Solution Nonce Endpoint</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-instance-management-endpoint">13.1.3. Wallet Instance Management Endpoint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-app-and-wallet-unit-attestation-issuance-endpoint">13.1.4. Wallet App and Wallet Unit Attestation Issuance Endpoint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#e-service-pdnd-wallet-provider-catalog">13.1.5. e-Service PDND Wallet Provider Catalog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-instance-attestation-issuance-endpoint">13.1.4. Wallet Instance Attestation Issuance Endpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-unit-attestation-issuance-endpoint">13.1.5. Wallet Unit Attestation Issuance Endpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#e-service-pdnd-wallet-provider-catalog">13.1.6. e-Service PDND Wallet Provider Catalog</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="credential-issuer-endpoint.html">13.2. Credential Issuer Endpoints</a><ul>
@@ -530,8 +538,9 @@
 <li class="toctree-l2"><a class="reference internal" href="log-retention-policy.html#iso-iec-27001-logging-general-requirements">16.1. ISO/IEC 27001 Logging General Requirements</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="log-retention-policy.html#wallet-provider-log-retention-policy">16.1.1. Wallet Provider Log Retention Policy</a></li>
 <li class="toctree-l3"><a class="reference internal" href="log-retention-policy.html#credential-issuer-log-retention-policy">16.1.2. Credential Issuer Log Retention Policy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="log-retention-policy.html#relying-party-log-retention-policy">16.1.3. Relying Party Log Retention Policy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="log-retention-policy.html#wallet-instances-logging-features">16.1.4. Wallet Instances Logging Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="log-retention-policy.html#authentic-source-log-retention-policy">16.1.3. Authentic Source Log Retention Policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="log-retention-policy.html#relying-party-log-retention-policy">16.1.4. Relying Party Log Retention Policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="log-retention-policy.html#wallet-instances-logging-features">16.1.5. Wallet Instances Logging Features</a></li>
 </ul>
 </li>
 </ul>
@@ -546,15 +555,16 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="standards.html">17.3. Technical References</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="standards.html#wallet-paradigm-frameworks">17.3.1. Wallet Paradigm Frameworks</a></li>
-<li class="toctree-l3"><a class="reference internal" href="standards.html#infrastructure-of-trust">17.3.2. Infrastructure of Trust</a></li>
-<li class="toctree-l3"><a class="reference internal" href="standards.html#digital-credential-data-format">17.3.3. Digital Credential Data Format</a></li>
-<li class="toctree-l3"><a class="reference internal" href="standards.html#digital-credential-issuance">17.3.4. Digital Credential Issuance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="standards.html#digital-credential-presentation">17.3.5. Digital Credential Presentation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="standards.html#digital-credential-revocation-check-mechanisms">17.3.6. Digital Credential Revocation Check Mechanisms</a></li>
-<li class="toctree-l3"><a class="reference internal" href="standards.html#national-data-interoperability-platform-specifications">17.3.7. National Data Interoperability Platform Specifications</a></li>
-<li class="toctree-l3"><a class="reference internal" href="standards.html#national-digital-identity-platform-specifications">17.3.8. National Digital Identity Platform Specifications</a></li>
-<li class="toctree-l3"><a class="reference internal" href="standards.html#security-and-protection-profiles">17.3.9. Security and Protection Profiles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standards.html#wallet-architecture-and-reference-frameworks">17.3.1. Wallet Architecture and Reference Frameworks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standards.html#eudi-wallet-standards-and-technical-specifications">17.3.2. EUDI Wallet Standards and Technical Specifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standards.html#infrastructure-of-trust">17.3.3. Infrastructure of Trust</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standards.html#digital-credential-data-format">17.3.4. Digital Credential Data Format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standards.html#digital-credential-issuance">17.3.5. Digital Credential Issuance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standards.html#digital-credential-presentation">17.3.6. Digital Credential Presentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standards.html#digital-credential-revocation-check-mechanisms">17.3.7. Digital Credential Revocation Check Mechanisms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standards.html#national-data-interoperability-platform-specifications">17.3.8. National Data Interoperability Platform Specifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standards.html#national-digital-identity-platform-specifications">17.3.9. National Digital Identity Platform Specifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standards.html#security-and-protection-profiles">17.3.10. Security and Protection Profiles</a></li>
 </ul>
 </li>
 </ul>
@@ -564,10 +574,23 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="open-source.html">19. Open Source Releases</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="open-source.html#wallet-providers">19.1. Wallet Providers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="open-source.html#credential-issuers">19.2. Credential Issuers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="open-source.html#relying-parties">19.3. Relying Parties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="open-source.html#responsible-disclosure">19.4. Responsible Disclosure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open-source.html#general-principles">19.1. 1. General Principles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open-source.html#standard-requirements">19.2. 2. Standard Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="open-source.html#licensing">19.2.1. 2.1 Licensing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open-source.html#code-management-transparency">19.2.2. 2.2 Code Management &amp; Transparency</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open-source.html#security-quality">19.2.3. 2.3 Security &amp; Quality</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="open-source.html#wallet-providers">19.3. 3. Wallet Providers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="open-source.html#mandatory-open-source">19.3.1. 3.1 Mandatory Open Source</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="open-source.html#credential-issuers-and-relying-parties">19.4. 4. Credential Issuers and Relying Parties</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="open-source.html#integration-components">19.4.1. 4.1 Integration components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open-source.html#backend-infrastructure">19.4.2. 4.2 Backend infrastructure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="open-source.html#responsible-disclosure-and-vulnerability-management">19.5. 5. Responsible Disclosure and Vulnerability Management</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="appendix.html">20. Appendix</a><ul>
@@ -582,7 +605,7 @@
 <li class="toctree-l3"><a class="reference internal" href="e-service-pdnd.html#e-service-usage">20.2.4. e-Service Usage</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd-template.html">20.3. Template e-Service PDND</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd-template.html">20.3. PDND e-Service Template</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="e-service-pdnd-template.html#pdnd-template-e-service-definition-and-guidelines">20.3.1. PDND Template e-service definition and guidelines</a></li>
 </ul>
 </li>
@@ -621,7 +644,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 13/01/2026.
+      Last updated on 22/06/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

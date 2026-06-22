@@ -33,7 +33,8 @@ Wallet Instance Lifecycle Management
 This component MUST handle:
 
 - Wallet Instance Registration (detailed in :ref:`wallet-instance-registration:Wallet Instance Initialization and Registration`).
-- Wallet App and Wallet Unit Attestation Issuance (detailed in :ref:`wallet-attestation-issuance:Wallet App and Wallet Unit Attestation Issuance`).
+- Wallet Instance Attestation Issuance (detailed in :ref:`wallet-instance-attestation-issuance:Wallet Instance Attestation Issuance`)
+- Wallet Unit Attestation Issuance (detailed in :ref:`wallet-attestation-issuance:Wallet Unit Attestation Issuance`).
 - Status management (maintaining and updating validity).
 - Revocation processes (implementing mechanisms to revoke Wallet Instances), according to Section :ref:`wallet-instance-revocation:Wallet Instance Revocation`.
 
@@ -63,7 +64,8 @@ Wallet Instance Lifecycle Management Component
 Interacting with the Wallet Backend, this component MUST handle:
 
 - Wallet Instance Registration (detailed in :ref:`wallet-instance-registration:Wallet Instance Initialization and Registration`).
-- Wallet App and Wallet Unit Attestation Issuance (detailed in :ref:`wallet-attestation-issuance:Wallet App and Wallet Unit Attestation Issuance`).
+- Wallet Instance Attestation Issuance (detailed in :ref:`wallet-instance-attestation-issuance:Wallet Instance Attestation Issuance`)
+- Wallet Unit Attestation Issuance (detailed in :ref:`wallet-attestation-issuance:Wallet Unit Attestation Issuance`).
 - Status management (maintaining and updating validity).
 - Revocation processes (implementing mechanisms to revoke Wallet Instances), according to Section :ref:`wallet-instance-revocation:Wallet Instance Revocation`.
 
@@ -87,6 +89,13 @@ For each Digital Credential that is issued to the Wallet Instance, this componen
 .. note::
    Currently the re-issuance of the PID is not managed by the Backup and Restore Component.
 
+Dashboard and Transaction Log
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+This component MUST provide the Wallet Unit dashboard and transaction log functionality. In particular, this component MUST:
+
+- provide a user-accessible interface enabling the User to access transaction transparency information;
+- maintain a transaction log of transactions executed through the Wallet Unit, including non-completed transactions;
+- support User interaction with transaction records, including viewing, export, and deletion.
 
 Secure Storage
 ^^^^^^^^^^^^^^
@@ -100,8 +109,8 @@ Wallet Solution Interaction Patterns
 The Wallet Solution supports these interaction patterns:
 
 1. **User to Wallet Backend Frontend**: Web-based interactions for Wallet Instance management.
-2. **Wallet Instance to Wallet Backend API**: for Wallet Instance registration, Wallet App and Wallet Unit Attestation issuance.
+2. **Wallet Instance to Wallet Backend API**: for Wallet Instance registration, Wallet Instance Attestation and Wallet Unit Attestation issuance.
 3. **PID Provider to Wallet Backend API**: Secure API calls to request Wallet Instance revocation.
 4. **User to Wallet Instance User Interface**: for Digital Credential management (issuance, presentation, backup, restore, deletion).
-5. **Wallet Intance to Relying Party**: for Digital Credential presentation.
+5. **Wallet Instance to Relying Party**: for Digital Credential presentation.
 

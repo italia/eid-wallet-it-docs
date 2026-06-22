@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>12.3. Wallet Metadata Retrieval Flow &#8212; IT-Wallet Technical Specifications - PR #968</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=59943e95" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
-    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/documentation_options.js?v=350a9c04"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -170,7 +170,7 @@
 <h1><span class="section-number">12.3. </span>Wallet Metadata Retrieval Flow<a class="headerlink" href="#wallet-metadata-retrieval-flow" title="Link to this heading">¶</a></h1>
 <p>There are Digital Credential flows that require retrieving Wallet information before interacting with the Wallet itself. For example, to enable the Wallet Solution selection option during a Credential Offer flow or a Presentation flow.
 To do so, the third parties offering the Credential Offer (e.g., Authentic Source, Registry, Catalogue) and the Relying Parties consult the IT-Wallet System Register, in particular the Federation Registry, via the Trust Anchor's endpoints.</p>
-<p>First, using the Immediate Subordinate Listing endpoint they obtain the list of all subordinates of the Trust Anchor identified by their <code class="docutils literal notranslate"><span class="pre">entity_id</span></code>. To obtain only the Wallet Provider <code class="docutils literal notranslate"><span class="pre">entity_id</span></code>, a query parameter <code class="docutils literal notranslate"><span class="pre">entity_type</span></code> set with <code class="docutils literal notranslate"><span class="pre">wallet_provider</span></code> MAY be used.
+<p>First, using the Immediate Subordinate Listing endpoint they obtain the list of all subordinates of the Trust Anchor identified by their <code class="docutils literal notranslate"><span class="pre">entity_id</span></code>. To obtain only the Wallet Provider <code class="docutils literal notranslate"><span class="pre">entity_id</span></code>, a query parameter <code class="docutils literal notranslate"><span class="pre">entity_type</span></code> set with <code class="docutils literal notranslate"><span class="pre">wallet_solution</span></code> MAY be used.
 If the responder does not support this feature, it MUST use the HTTP status code 400 and the content type <code class="docutils literal notranslate"><span class="pre">application/json</span></code>, with the error code <code class="docutils literal notranslate"><span class="pre">unsupported_parameter</span></code>.</p>
 <p>Then, given the <code class="docutils literal notranslate"><span class="pre">entity_id</span></code>, they fetch the corresponding Entity Configuration for each Wallet Provider using the federation metadata endpoint (GET .well-known/openid-federation)
 and obtain the Wallet Solution metadata (see <a class="reference internal" href="wallet-solution-metadata.html#wallet-solution-metadata"><span class="std std-ref">Wallet Solution Metadata</span></a>). More details on the use of the Trust Anchor's endpoints are provided in <a class="reference internal" href="trust-infrastructure.html#the-infrastructure-of-trust"><span class="std std-ref">The Infrastructure of Trust</span></a>.</p>
@@ -206,7 +206,7 @@ More details on the design of the Selection Page are provided in <a class="refer
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 13/01/2026.
+      Last updated on 22/06/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

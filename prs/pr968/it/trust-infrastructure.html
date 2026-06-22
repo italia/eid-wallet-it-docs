@@ -5,11 +5,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>6. L&#39;Infrastruttura di Trust &#8212; IT-Wallet Technical Specifications - PR #968</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <title>6. L&#39;Infrastruttura di Trust &#8212; IT-Wallet Specifiche Tecniche - PR #968</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=59943e95" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
-    <script src="_static/documentation_options.js?v=3fd72285"></script>
+    <script src="_static/documentation_options.js?v=53f44254"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/translations.js?v=da26b4cc"></script>
@@ -33,7 +33,7 @@
         <p id="toggle_sidebar">
             <a href="#" title="Toggle sidebar">|||</a>
         </p>
-        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Specifications - PR #968</a></h1>
+        <h1><a href="index.html" title="Go to homepage">IT-Wallet Specifiche Tecniche - PR #968</a></h1>
             <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
     
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
@@ -165,12 +165,11 @@
   <section id="l-infrastruttura-di-trust">
 <h1><span class="section-number">6. </span>L'Infrastruttura di Trust<a class="headerlink" href="#l-infrastruttura-di-trust" title="Link to this heading">¶</a></h1>
 <p>L'ecosistema IT-Wallet opera all'interno di un'infrastruttura di trust federata dove le entità partecipanti stabiliscono relazioni di trust crittografiche e mantengono la conformità con standard di sicurezza comuni. Questa infrastruttura fornisce le fondamenta per operazioni sicure di Credenziali Elettroniche tra i partecipanti dell'ecosistema.</p>
-<p>Questa sezione delinea l'implementazione del Trust Model in un'infrastruttura che è conforme a OpenID Federation 1.0 <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a>. Questa infrastruttura coinvolge un'API RESTful per la distribuzione di metadati, policy dei metadati, trust mark, chiavi pubbliche crittografiche e certificati X.509, e lo stato di revoca dei partecipanti, chiamati anche Entità di Federazione.</p>
-<p>L'Infrastruttura di trust facilita l'applicazione di un meccanismo di valutazione del trust tra le parti definite nell'<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>.
-Questa infrastruttura di trust lavora in coordinamento con l'Infrastruttura di Registro (vedi <a class="reference internal" href="registry.html#infrastruttura-del-registro"><span class="std std-ref">Infrastruttura del Registro</span></a>) per abilitare i processi di onboarding delle entità dettagliati in <a class="reference internal" href="entity-onboarding.html#onboarding-delle-entita"><span class="std std-ref">Onboarding delle Entità</span></a>. In particolare, abilita l'implementazione tecnica dei processi di onboarding descritti in <a class="reference internal" href="entity-onboarding.html#onboarding-delle-entita"><span class="std std-ref">Onboarding delle Entità</span></a> e supporta gli scenari operativi illustrati in <a class="reference internal" href="onboarding-high-level.html#onboarding-journey-maps"><span class="std std-ref">Onboarding Journey Maps</span></a>.</p>
+<p>Questa sezione definisce l'implementazione del Trust Model in un'infrastruttura che è conforme a OpenID Federation 1.0 <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a>. Tale infrastruttura nazionale prevede un'API RESTful per la distribuzione di metadati, policy dei metadati, trust mark, chiavi pubbliche crittografiche e certificati X.509, e lo stato di revoca dei partecipanti, chiamati anche Entità di Federazione.</p>
+<p>Questa infrastruttura di trust lavora in coordinamento con l'Infrastruttura del Registro (vedi <a class="reference internal" href="registry.html#infrastruttura-del-registro"><span class="std std-ref">Infrastruttura del Registro</span></a>) per abilitare i processi di onboarding delle entità dettagliati in <a class="reference internal" href="entity-onboarding.html#onboarding-delle-entita"><span class="std std-ref">Onboarding delle Entità</span></a>. In particolare, abilita l'implementazione tecnica dei processi di onboarding descritti in <a class="reference internal" href="entity-onboarding.html#onboarding-delle-entita"><span class="std std-ref">Onboarding delle Entità</span></a> e supporta gli scenari operativi illustrati in <a class="reference internal" href="onboarding-high-level.html#onboarding-journey-maps"><span class="std std-ref">Onboarding Journey Maps</span></a>.</p>
 <p><strong>Abilitazione dell'Onboarding</strong>: L'Infrastruttura di Trust fornisce i meccanismi crittografici che consentono alle nuove entità (Credential Issuer, Relying Party, Fornitori di Wallet) di stabilire relazioni di trust verificabili durante il loro processo di registrazione. Senza questa infrastruttura, le entità non sarebbero in grado di dimostrare il loro stato di conformità o le capacità operative agli altri partecipanti dell'ecosistema.</p>
 <p><strong>Supporto al Ciclo di Vita delle Entità</strong>: Durante tutto il ciclo di vita operativo di un'entità, l'Infrastruttura di Trust mantiene attestazioni di trust aggiornate, gestisce la rotazione delle chiavi, gestisce scenari di revoca e supporta il monitoraggio della conformità. Questo supporta direttamente le procedure di gestione del ciclo di vita dettagliate in <a class="reference internal" href="entity-onboarding.html#onboarding-delle-entita"><span class="std std-ref">Onboarding delle Entità</span></a>.</p>
-<p><strong>Integrazione con l'Infrastruttura di Registro</strong>: L'Infrastruttura di Trust implementa il componente Federation Registry dell'Infrastruttura di Registro più ampia, fornendo le fondamenta tecniche per la scoperta delle entità e la validazione del trust che sottende tutte le procedure di onboarding.</p>
+<p><strong>Integrazione con l'Infrastruttura del Registro</strong>: L'Infrastruttura di Trust implementa il componente Federation Registry dell'Infrastruttura del Registro più ampia, fornendo le fondamenta tecniche per la scoperta delle entità e la validazione del trust che sottende tutte le procedure di onboarding.</p>
 <figure class="align-default" id="id2">
 <p class="plantuml">
 <object data="_images/plantuml-02526ff8d1d9d12e5be1f25efe444ae33dc82b43.svg" type="image/svg+xml" style="width:99%">
@@ -178,21 +177,21 @@ Questa infrastruttura di trust lavora in coordinamento con l'Infrastruttura di R
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 6.1 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/png/XT1HQy90303Wz_iLcNkMiIAoXo5AtK3OWup17aViPUxmcYkvd29Z_tsjThM2kBSc-P9UCesAegdqviPnuPCbUCn7T_de8m-iw9XaOapSEAvGi8GL5fkrXCGs3pu8g237kaIiFJKJ2RiZMFcwmnYXGf7Ndc3m9YagpBZu2Z80ZA08j_FnqyDpTkOMh2GbMOTA1-TOxplv3ymkZdmXt58y64_u6UjnZPcFhw6iGzTKTwu_3Ty6eDUG2rbYTUXX4MEYu-w5wnvwfj_HUr9OIjWwszfTTTc-ajyxNiCIHVS7AIVvOqpzZs6gXXDGDBkg_MwEQQGNPQOzIQ_UxjypJVeqhKcTeYcnJQN_1G00">I ruoli all'interno della Federazione, dove il Trust Anchor supervisiona i suoi subordinati, che includono uno o più Intermediari e Foglie.</a></span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 6.1 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/png/XT1HQy90303Wz_iLcNkMiIAoXo5AtK3OWup17aViPUxmcYkvd29Z_tsjThM2kBSc-P9UCesAegdqviPnuPCbUCn7T_de8m-iw9XaOapSEAvGi8GL5fkrXCGs3pu8g237kaIiFJKJ2RiZMFcwmnYXGf7Ndc3m9YagpBZu2Z80ZA08j_FnqyDpTkOMh2GbMOTA1-TOxplv3ymkZdmXt58y64_u6UjnZPcFhw6iGzTKTwu_3Ty6eDUG2rbYTUXX4MEYu-w5wnvwfj_HUr9OIjWwszfTTTc-ajyxNiCIHVS7AIVvOqpzZs6gXXDGDBkg_MwEQQGNPQOzIQ_UxjypJVeqhKcTeYcnJQN_1G00">I ruoli all'interno della Federazione, dove il National Trust Anchor supervisiona i suoi subordinati, che includono uno o più Intermediari e Foglie.</a></span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<p>In questa rappresentazione, sia il Trust Anchor che gli Intermediari assumono il ruolo di Registration Authority.</p>
+<p>In questa rappresentazione, sia il <a class="reference internal" href="defined-terms.html#term-National-Trust-Anchor"><span class="xref std std-term">National Trust Anchor</span></a> che gli Intermediari assumono il ruolo di Registration Authority.</p>
 <section id="ruoli-di-federazione">
 <h2><span class="section-number">6.1. </span>Ruoli di Federazione<a class="headerlink" href="#ruoli-di-federazione" title="Link to this heading">¶</a></h2>
 <p>Tutti i partecipanti sono Entità di Federazione che DEVONO essere registrate da un Registration Body, eccetto le Istanze del Wallet che sono dispositivi personali dell'Utente finale autenticati dal loro Fornitore di Wallet.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>L'Istanza del Wallet, come dispositivo personale, è considerata affidabile attraverso un'attestazione verificabile rilasciata e firmata da una terza parte fidata.</p>
-<p>Questo è chiamato <em>Wallet Attestation</em> ed è documentato nella sezione dedicata <a class="reference internal" href="wallet-attestation-issuance.html#emissione-della-wallet-app-e-wallet-unit-attestation"><span class="std std-ref">Emissione della Wallet App e Wallet Unit Attestation</span></a>.</p>
+<p>Questo è chiamato <em>Wallet Instance Attestation</em> ed è documentato nella sezione dedicata <a class="reference internal" href="wallet-instance-attestation-issuance.html#emissione-della-wallet-instance-attestation"><span class="std std-ref">Emissione della Wallet Instance Attestation</span></a>.</p>
 </div>
-<p><strong>Ruolo nell'Onboarding</strong>: Durante la registrazione delle entità, il Trust Anchor e gli Intermediari agiscono come Autorità di Federazione. Questo stabilisce la posizione del partecipante nella gerarchia di trust e gli consente di partecipare alle operazioni di credenziali. Le Foglie (Credential Issuer, Relying Party, Fornitori di Wallet) subiscono la registrazione per dimostrare la loro idoneità e ricevere l'autorizzazione per svolgere le loro funzioni designate.</p>
-<p><strong>Ruolo nelle Operazioni</strong>: Durante l'emissione e la presentazione delle credenziali, questi ruoli abilitano la validazione del trust distribuita senza richiedere la verifica centralizzata per ogni transazione. Le Foglie utilizzano il loro stato registrato per emettere credenziali, verificare presentazioni o fornire servizi di wallet agli utenti finali.</p>
-<p>Di seguito la tabella con il riepilogo dei ruoli delle Entità di Federazione, mappati sui corrispondenti ruoli EUDI Wallet, come definiti nell'<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>.</p>
+<p><strong>Ruolo nell'Onboarding</strong>: Durante la registrazione dell'entità, il Trust Anchor e gli Intermediate agiscono come Autorità di Federazione. Ciò stabilisce la posizione del partecipante nella gerarchia di fiducia e gli consente di partecipare alle operazioni di credenziali. Le foglie (Emittenti di credenziali, Relying Party, Wallet Provider) si sottopongono a registrazione per dimostrare la propria idoneità e ricevere l'autorizzazione a svolgere le funzioni loro assegnate.</p>
+<p><strong>Ruolo nelle Operazioni</strong>: Durante l'emissione e la presentazione delle Credenziali, questi ruoli abilitano la validazione del trust distribuita senza richiedere la verifica centralizzata per ogni transazione. Le Foglie utilizzano il loro stato registrato per emettere Credenziali, verificare presentazioni o fornire servizi di Wallet agli utenti finali.</p>
+<p>Di seguito la tabella con il riepilogo dei ruoli delle Entità di Federazione, mappati sui corrispondenti ruoli EUDI Wallet.</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 20.0%" />
@@ -207,8 +206,8 @@ Questa infrastruttura di trust lavora in coordinamento con l'Infrastruttura di R
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Public Key Infrastructure (PKI)</p></td>
-<td><p>Trust Anchor</p></td>
-<td><p>La Federazione ha capacità PKI. L'Entità che configura l'intera infrastruttura è il Trust Anchor.</p></td>
+<td><p><a class="reference internal" href="defined-terms.html#term-National-Trust-Anchor"><span class="xref std std-term">National Trust Anchor</span></a></p></td>
+<td><p>La Federazione ha capacità PKI e utilizza OpenID Federation 1.0 <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a>. L'Entità che configura l'intera infrastruttura a livello nazionale è il <a class="reference internal" href="defined-terms.html#term-National-Trust-Anchor"><span class="xref std std-term">National Trust Anchor</span></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Qualified Trust Service Provider (QTSP)</p></td>
 <td><p>Leaf</p></td>
@@ -234,11 +233,7 @@ Questa infrastruttura di trust lavora in coordinamento con l'Infrastruttura di R
 <td><p>Leaf</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>Trusted List</p></td>
-<td><p>Trust Anchor</p></td>
-<td><p>L'endpoint di listing, l'endpoint di stato del trust mark e l'endpoint di fetch DEVONO essere esposti sia dai Trust Anchor che dagli Intermediari, rendendo la Trusted List distribuita su più Entità di Federazione, dove ognuna di queste è responsabile per i propri subordinati registrati. Altri endpoint che utilizzano formati di dati diversi POSSONO essere implementati per facilitare l'interoperabilità con sistemi che non supportano OpenID Federation 1.0. In tali casi, le stesse informazioni sulle entità di federazione DEVONO essere sincronizzate tra questi endpoint, garantendo la disponibilità coerente delle informazioni attraverso canali diversi.</p></td>
-</tr>
-<tr class="row-even"><td><p>Fornitore di Wallet</p></td>
+<tr class="row-odd"><td><p>Fornitore di Wallet</p></td>
 <td><p>Leaf</p></td>
 <td></td>
 </tr>
@@ -247,12 +242,12 @@ Questa infrastruttura di trust lavora in coordinamento con l'Infrastruttura di R
 </section>
 <section id="integrazione-dell-infrastruttura-di-trust-e-del-registro">
 <span id="trust-infrastructure-integrazione-tra-infrastruttura-di-trust-e-registry"></span><h2><span class="section-number">6.2. </span>Integrazione dell'Infrastruttura di Trust e del Registro<a class="headerlink" href="#integrazione-dell-infrastruttura-di-trust-e-del-registro" title="Link to this heading">¶</a></h2>
-<p>L'Infrastruttura di Trust implementa il componente Federation Registry dell'Infrastruttura di Registro. Il Federation Registry mantiene l'elenco autorevole delle entità fidate attraverso gli endpoint di federazione definiti in questa sezione, inclusi l'elenco delle entità (/list), le dichiarazioni dei subordinati (/fetch), la validazione dei trust mark (/trust_mark_status) e la gestione delle chiavi storiche (/historical-jwks).</p>
+<p>L'Infrastruttura di Trust implementa il componente Federation Registry dell'Infrastruttura del Registro. Il Federation Registry mantiene l'elenco autorevole delle entità fidate attraverso gli endpoint di federazione definiti in questa sezione, inclusi l'elenco delle entità (/list), le dichiarazioni dei subordinati (/fetch), la validazione dei trust mark (/trust_mark_status), gli eventi sui subordinati (/federation_subordinate_events_endpoint) e la gestione delle chiavi storiche (/historical-jwks).</p>
 <p>Questo Federation Registry opera insieme ad altri componenti del registro (Claims Registry, AS Registry, Catalogo degli Attestati Elettronici, Taxonomy) per fornire supporto completo all'ecosistema. Per l'architettura completa del registro e le interazioni dei componenti, vedi <a class="reference internal" href="registry.html#infrastruttura-del-registro"><span class="std std-ref">Infrastruttura del Registro</span></a>.</p>
 </section>
 <section id="proprieta-generali">
 <h2><span class="section-number">6.3. </span>Proprietà Generali<a class="headerlink" href="#proprieta-generali" title="Link to this heading">¶</a></h2>
-<p>L'architettura dell'infrastruttura di trust è costruita sui seguenti principi fondamentali:</p>
+<p>L'architettura dell'infrastruttura di trust è fondata sui seguenti principi fondamentali:</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 16.7%" />
@@ -268,46 +263,46 @@ Questa infrastruttura di trust lavora in coordinamento con l'Infrastruttura di R
 <tbody>
 <tr class="row-even"><td><p>P1</p></td>
 <td><p><strong>Sicurezza</strong></p></td>
-<td><p>Incorpora meccanismi per garantire l'integrità, la riservatezza e l'autenticità delle Trust Relationship e delle interazioni all'interno della federazione.</p></td>
+<td><p>Incorpora meccanismi per garantire l'integrità, la riservatezza e l'autenticità delle Relazioni di Trust e delle interazioni all'interno della federazione.</p></td>
 </tr>
 <tr class="row-odd"><td><p>P2</p></td>
 <td><p><strong>Privacy</strong></p></td>
-<td><p>Progettata per rispettare e proteggere la privacy delle entità coinvolte, la divulgazione minima fa parte di questo.</p></td>
+<td><p>Progettata per rispettare e proteggere la privacy delle entità coinvolte; la divulgazione minima è parte integrante di questo principio.</p></td>
 </tr>
 <tr class="row-even"><td><p>P3</p></td>
 <td><p><strong>Interoperabilità</strong></p></td>
-<td><p>Supporta l'interazione senza soluzione di continuità e la creazione di trust tra sistemi ed entità diverse all'interno della federazione.</p></td>
+<td><p>Supporta l'interazione fluida e la creazione di trust tra sistemi ed entità diverse all'interno della federazione.</p></td>
 </tr>
 <tr class="row-odd"><td><p>P4</p></td>
 <td><p><strong>Trust Transitivo</strong></p></td>
-<td><p>Trust stabilito indirettamente attraverso una catena di relazioni fidate, consentendo alle entità di fidarsi l'una dell'altra basandosi su autorità comuni e intermediari fidati.</p></td>
+<td><p>Trust stabilita indirettamente attraverso una catena di relazioni fidate, che consente alle entità di fidarsi reciprocamente sulla base di autorità comuni e intermediari fidati.</p></td>
 </tr>
 <tr class="row-even"><td><p>P5</p></td>
-<td><p><strong>Delegazione</strong></p></td>
+<td><p><strong>Delega</strong></p></td>
 <td><p>Capacità o funzionalità tecnica di delegare autorità o responsabilità ad altre entità, consentendo un meccanismo di trust distribuito.</p></td>
 </tr>
 <tr class="row-odd"><td><p>P6</p></td>
 <td><p><strong>Scalabilità</strong></p></td>
-<td><p>Progettata per gestire efficientemente un numero crescente di entità o interazioni senza un aumento significativo della complessità di gestione del trust.</p></td>
+<td><p>Progettata per gestire in modo efficiente un numero crescente di entità o interazioni senza un aumento significativo della complessità di gestione del trust.</p></td>
 </tr>
 <tr class="row-even"><td><p>P7</p></td>
 <td><p><strong>Flessibilità</strong></p></td>
-<td><p>Adattabile a varie esigenze operative e organizzative, consentendo alle entità di definire e regolare le loro Trust Relationship e policy.</p></td>
+<td><p>Adattabile a varie esigenze operative e organizzative, consentendo alle entità di definire e adeguare le proprie Relazioni di Trust e policy.</p></td>
 </tr>
 <tr class="row-odd"><td><p>P8</p></td>
 <td><p><strong>Autonomia</strong></p></td>
-<td><p>Pur facendo parte di un ecosistema federato, ogni entità mantiene il controllo sulle proprie definizioni e configurazioni.</p></td>
+<td><p>Pur facendo parte di un ecosistema federato, ciascuna entità mantiene il controllo sulle proprie definizioni e configurazioni.</p></td>
 </tr>
 <tr class="row-even"><td><p>P9</p></td>
 <td><p><strong>Decentralizzazione</strong></p></td>
-<td><p>A differenza dei sistemi centralizzati tradizionali, l'infrastruttura di trust dovrebbe consentire un approccio decentralizzato.</p></td>
+<td><p>A differenza dei sistemi centralizzati tradizionali, l'infrastruttura di trust consente un approccio decentralizzato.</p></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="requisiti-dell-infrastruttura-di-trust">
 <h2><span class="section-number">6.4. </span>Requisiti dell'Infrastruttura di Trust<a class="headerlink" href="#requisiti-dell-infrastruttura-di-trust" title="Link to this heading">¶</a></h2>
-<p>Questa sezione include i requisiti necessari per l'implementazione e il funzionamento di successo dell'infrastruttura di trust.</p>
+<p>Questa sezione include i requisiti necessari per la corretta implementazione e il funzionamento dell'infrastruttura di trust.</p>
 <table class="longtable docutils align-default" id="id3">
 <caption><span class="caption-number">Tabella 6.1 </span><span class="caption-text">Requisiti Funzionali</span><a class="headerlink" href="#id3" title="Link to this table">¶</a></caption>
 <colgroup>
@@ -321,69 +316,69 @@ Questa infrastruttura di trust lavora in coordinamento con l'Infrastruttura di R
 </thead>
 <tbody>
 <tr class="row-even"><td><p>FR1</p></td>
-<td><p><strong>Stabilimento del Trust di Federazione</strong>: il sistema deve essere in grado di stabilire trust tra diverse entità (Credential Issuer, Relying Party, ecc.) all'interno di una federazione, utilizzando firme crittografiche per lo scambio sicuro di informazioni sui partecipanti nell'ecosistema.</p></td>
+<td><p><strong>Creazione di Trust nella Federazione</strong>: il sistema deve essere in grado di stabilire trust tra diverse entità (Credential Issuer, Relying Party, ecc.) all'interno di una federazione, utilizzando firme crittografiche per lo scambio sicuro di informazioni sui partecipanti all'ecosistema.</p></td>
 </tr>
 <tr class="row-odd"><td><p>FR2</p></td>
-<td><p><strong>Autenticazione delle Entità</strong>: il sistema deve implementare meccanismi per autenticare le entità all'interno della federazione, garantendo la conformità alle regole condivise.</p></td>
+<td><p><strong>Autenticazione delle Entità</strong>: il sistema deve implementare meccanismi per autenticare le entità all'interno della federazione, garantendone la conformità alle regole condivise.</p></td>
 </tr>
 <tr class="row-even"><td><p>FR3</p></td>
-<td><p><strong>Validazione delle Firme</strong>: il sistema deve supportare la creazione, verifica e validazione delle firme elettroniche e fornire meccanismi standard e sicuri per ottenere le chiavi pubbliche crittografiche richieste per la validazione delle firme.</p></td>
+<td><p><strong>Validazione delle Firme</strong>: il sistema deve supportare la creazione, verifica e validazione di firme elettroniche e fornire meccanismi standard e sicuri per ottenere le chiavi pubbliche crittografiche necessarie per la validazione delle firme.</p></td>
 </tr>
 <tr class="row-odd"><td><p>FR4</p></td>
-<td><p><strong>Marcatura Temporale</strong>: gli artefatti firmati devono contenere marcature temporali per garantire l'integrità e il non ripudio delle transazioni nel tempo, grazie alle interfacce, servizi, modello di archiviazione e approcci definiti all'interno della federazione.</p></td>
+<td><p><strong>Marcatura Temporale</strong>: gli artefatti firmati devono contenere marcature temporali per garantire l'integrità e il non-ripudio delle transazioni nel tempo, grazie alle interfacce, ai servizi, al modello di archiviazione e agli approcci definiti all'interno della federazione.</p></td>
 </tr>
 <tr class="row-even"><td><p>FR5</p></td>
-<td><p><strong>Validazione dei Certificati</strong>: il sistema richiede trasmissione riservata, protetta tramite TLS su HTTP, e validazione dei certificati per l'autenticazione del sito web.</p></td>
+<td><p><strong>Validazione dei Certificati</strong>: il sistema richiede trasmissioni riservate, protette tramite TLS su HTTP, e la validazione dei certificati per l'autenticazione dei siti web.</p></td>
 </tr>
 <tr class="row-odd"><td><p>FR6</p></td>
 <td><p><strong>Interoperabilità e Conformità agli Standard</strong>: garantire l'interoperabilità tra i membri della federazione aderendo agli standard tecnici, facilitando le transazioni elettroniche transfrontaliere.</p></td>
 </tr>
 <tr class="row-even"><td><p>FR7</p></td>
-<td><p><strong>Protezione dei Dati e Privacy</strong>: implementare misure di protezione dei dati in conformità alle normative GDPR, garantendo la privacy e la sicurezza dei dati personali elaborati all'interno della federazione.</p></td>
+<td><p><strong>Protezione dei Dati e Privacy</strong>: implementare misure di protezione dei dati in conformità con il GDPR, garantendo la privacy e la sicurezza dei dati personali trattati all'interno della federazione.</p></td>
 </tr>
 <tr class="row-odd"><td><p>FR8</p></td>
-<td><p><strong>Risoluzione delle Controversie e Responsabilità</strong>: stabilire procedure chiare per la risoluzione delle controversie e definire la responsabilità tra i membri della federazione.</p></td>
+<td><p><strong>Risoluzione delle Controversie e Responsabilità</strong>: stabilire procedure chiare per la risoluzione delle controversie e definire le responsabilità tra i membri della federazione.</p></td>
 </tr>
 <tr class="row-even"><td><p>FR9</p></td>
 <td><p><strong>Servizi di Emergenza e Revoca</strong>: implementare meccanismi per la revoca immediata dei partecipanti in caso di violazioni della sicurezza o altre emergenze.</p></td>
 </tr>
 <tr class="row-odd"><td><p>FR10</p></td>
-<td><p><strong>Infrastruttura di Trust Scalabile</strong>: il sistema deve supportare meccanismi di stabilimento del trust scalabili, sfruttando approcci e soluzioni tecniche che completano gli approcci transitivi di delegazione per gestire efficientemente le Trust Relationship man mano che la federazione cresce, rimuovendo i registri centrali che potrebbero fallire tecnicamente o amministrativamente.</p></td>
+<td><p><strong>Infrastruttura di Trust Scalabile</strong>: il sistema deve supportare meccanismi scalabili per la creazione di trust, sfruttando approcci e soluzioni tecniche che complementino gli approcci di delega transitiva per gestire in modo efficiente le Relazioni di Trust man mano che la federazione cresce, eliminando i registri centrali che potrebbero presentare fallimenti tecnici o amministrativi.</p></td>
 </tr>
 <tr class="row-even"><td><p>FR11</p></td>
-<td><p><strong>Scalabilità di Archiviazione Efficiente</strong>: implementare una soluzione di archiviazione che si scala orizzontalmente per accogliere volumi di dati crescenti minimizzando i costi di archiviazione centrale e amministrativi. Il sistema dovrebbe consentire ai membri di archiviare e presentare indipendentemente attestazioni di trust storiche e artefatti firmati durante le risoluzioni delle controversie, con l'infrastruttura di federazione che mantiene solo un registro delle chiavi storiche per validare i dati storici, archiviati e forniti dai partecipanti.</p></td>
+<td><p><strong>Scalabilità Efficiente dello Storage</strong>: implementare una soluzione di archiviazione che scala orizzontalmente per accogliere volumi di dati crescenti, minimizzando i costi di archiviazione centrale e amministrativi. Il sistema dovrebbe consentire ai membri di archiviare e presentare in modo indipendente attestazioni di trust storiche e artefatti firmati durante le risoluzioni delle controversie, mentre l'infrastruttura della federazione mantiene solo un registro delle chiavi storiche per validare i dati storici, archiviati e forniti dai partecipanti.</p></td>
 </tr>
 <tr class="row-odd"><td><p>FR12</p></td>
-<td><p><strong>Attestazione Verificabile (Trust Mark)</strong>: incorporare un meccanismo per l'emissione e la verifica di attestazioni verificabili che servono come prova di conformità a profili o standard specifici. Questo consente alle entità all'interno della federazione di dimostrare l'aderenza agli standard di sicurezza, privacy e operativi concordati.</p></td>
+<td><p><strong>Attestazione Verificabile (Trust Mark)</strong>: incorporare un meccanismo per l'emissione e la verifica di attestazioni verificabili che fungono da prova di conformità a profili o standard specifici. Ciò consente alle entità all'interno della federazione di dimostrare l'aderenza agli standard di sicurezza, privacy e operativi concordati.</p></td>
 </tr>
 <tr class="row-even"><td><p>FR13</p></td>
-<td><p><strong>Meccanismo di Risoluzione delle Controversie Decentralizzato</strong>: progettare un meccanismo decentralizzato per la risoluzione delle controversie che consenta ai membri della federazione di verificare indipendentemente lo stabilimento del trust storico e gli artefatti firmati, riducendo la dipendenza dalle autorità centrali e semplificando il processo di risoluzione.</p></td>
+<td><p><strong>Meccanismo Decentralizzato per la Risoluzione delle Controversie</strong>: progettare un meccanismo decentralizzato per la risoluzione delle controversie che consenta ai membri della federazione di verificare in modo indipendente la creazione di trust storica e gli artefatti firmati, riducendo la dipendenza dalle autorità centrali e semplificando il processo di risoluzione.</p></td>
 </tr>
 <tr class="row-odd"><td><p>FR14</p></td>
-<td><p><strong>Interoperabilità Cross-Federazione</strong>: garantire che il sistema sia capace di interoperare con altre federazioni o Trust Framework, facilitando transazioni cross-federazione e stabilimento del trust senza compromettere sicurezza o conformità.</p></td>
+<td><p><strong>Interoperabilità tra Federazioni</strong>: garantire che il sistema sia in grado di interoperare con altre federazioni o Trust Framework, facilitando transazioni e creazione di trust tra federazioni senza compromettere la sicurezza o la conformità.</p></td>
 </tr>
 <tr class="row-even"><td><p>FR15</p></td>
-<td><p><strong>Registration Body Autonomi</strong>: il sistema deve facilitare l'integrazione di registration body autonomi che operano in conformità alle regole di federazione. Questi enti sono incaricati di valutare e registrare entità all'interno della federazione, secondo le regole prestabilite e la loro conformità che deve essere periodicamente attestata.</p></td>
+<td><p><strong>Organismi di Registrazione Autonomi</strong>: il sistema deve facilitare l'integrazione di organismi di registrazione autonomi che operano in conformità con le regole della federazione. Questi organismi hanno il compito di valutare e registrare le entità all'interno della federazione, secondo le regole prestabilite e la loro conformità che deve essere periodicamente attestata.</p></td>
 </tr>
 <tr class="row-odd"><td><p>FR16</p></td>
-<td><p><strong>Audit Periodico dei Registration Body e delle Entità</strong>: implementare meccanismi per l'audit periodico e il monitoraggio dello stato di conformità sia dei registration body che delle loro entità registrate.</p></td>
+<td><p><strong>Audit Periodico degli Organismi di Registrazione e delle Entità</strong>: implementare meccanismi per l'audit periodico e il monitoraggio dello stato di conformità sia degli organismi di registrazione che delle loro entità registrate.</p></td>
 </tr>
 <tr class="row-even"><td><p>FR17</p></td>
-<td><p><strong>Attestazione di Conformità per Dispositivi Personali</strong>: enti fidati, sotto forma di entità di federazione, dovrebbero emettere attestazioni di conformità e fornire prova firmata di tale conformità per l'hardware dei dispositivi personali utilizzati all'interno della federazione. Queste attestazioni dovrebbero essere attestate e periodicamente rinnovate per garantire che i dispositivi soddisfino gli standard di sicurezza attuali.</p></td>
+<td><p><strong>Attestazione di Conformità per i Dispositivi Personali</strong>: organismi fidati, in forma di entità di federazione, dovrebbero emettere attestazioni di conformità e fornire prove firmate di tale conformità per l'hardware dei dispositivi personali utilizzati all'interno della federazione. Queste attestazioni dovrebbero essere attestate e periodicamente rinnovate per garantire che i dispositivi soddisfino gli attuali standard di sicurezza.</p></td>
 </tr>
 <tr class="row-odd"><td><p>FR18</p></td>
-<td><p><strong>Monitoraggio Automatizzato della Conformità</strong>: il sistema dovrebbe includere strumenti automatizzati per monitorare la conformità delle entità agli standard di federazione. Questa automazione aiuta nella rilevazione precoce di potenziali problemi di conformità.</p></td>
+<td><p><strong>Monitoraggio Automatizzato della Conformità</strong>: il sistema dovrebbe includere strumenti automatizzati per il monitoraggio della conformità delle entità agli standard della federazione. Questa automazione aiuta nel rilevamento precoce di potenziali problemi di conformità.</p></td>
 </tr>
 <tr class="row-even"><td><p>FR19</p></td>
-<td><p><strong>Binding delle Capacità del Protocollo Sicuro</strong>: il protocollo sicuro deve abilitare lo scambio di dati delle capacità specifiche del protocollo come metadati crittograficamente legati associati a un'identità specifica. Questi metadati dovrebbero definire le capacità tecniche associate all'identità, garantendo prova verificabile e associazione a prova di manomissione per un robusto stabilimento del trust e controllo degli accessi.</p></td>
+<td><p><strong>Binding Sicuro delle Capacità del Protocollo</strong>: il protocollo sicuro deve consentire lo scambio di dati sulle capacità specifiche del protocollo come metadati crittograficamente vincolati allegati a un'identità specifica. Questi metadati dovrebbero definire le capacità tecniche associate all'identità, garantendo prova verificabile e associazione antimanomissione per una robusta creazione di trust e controllo degli accessi.</p></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="endpoint-api-di-federazione">
-<span id="trust-infrastructure-endpoint-delle-api-della-federazione"></span><h2><span class="section-number">6.5. </span>Endpoint API di Federazione<a class="headerlink" href="#endpoint-api-di-federazione" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">6.5. </span>Endpoint API di Federazione<a class="headerlink" href="#endpoint-api-di-federazione" title="Link to this heading">¶</a></h2>
 <p>OpenID Federation 1.0 utilizza Servizi Web RESTful protetti su HTTPs. OpenID Federation 1.0 definisce quali sono gli endpoint web che i partecipanti DEVONO rendere pubblicamente disponibili. La tabella sottostante riassume gli endpoint e i loro ambiti.</p>
-<p>Tutti gli endpoint elencati di seguito sono definiti nelle specifiche <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a>.</p>
+<p>Tutti gli endpoint elencati di seguito sono definiti nelle specifiche <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a>.</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 25.0%" />
@@ -406,79 +401,53 @@ Questa infrastruttura di trust lavora in coordinamento con l'Infrastruttura di R
 </tr>
 <tr class="row-odd"><td><p>subordinate list endpoint</p></td>
 <td><p><strong>GET</strong> /list</p></td>
-<td><p>Elenca i Subordinati. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Sezione 5.1.1</p></td>
+<td><p>Elenca i Subordinati. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 8.2</p></td>
 <td><p>Trust Anchor, Intermediario</p></td>
 </tr>
 <tr class="row-even"><td><p>fetch endpoint</p></td>
-<td><p><strong>GET</strong> /fetch?sub=https://rp.example.org</p></td>
-<td><p>Restituisce un JWT firmato su un soggetto specifico, il suo Subordinato. È chiamato Subordinate Statement. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Sezione 5.1.1</p></td>
+<td><p><strong>GET</strong> /federation_fetch_endpoint?sub=https://rp.example.org</p></td>
+<td><p>Restituisce un JWT firmato su un soggetto specifico, il suo Subordinato. È chiamato Subordinate Statement. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 8.1</p></td>
 <td><p>Trust Anchor, Intermediario</p></td>
 </tr>
 <tr class="row-odd"><td><p>trust mark status</p></td>
-<td><p><strong>POST</strong> /status?sub=...&amp;trust_mark_id=...</p></td>
-<td><p>Restituisce lo stato dell'emissione (validità) di un Trust Mark relativo a un soggetto specifico. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Sezione 5.1.1</p></td>
+<td><p><strong>POST</strong> /trust_mark_status</p></td>
+<td><p>Restituisce lo stato dell'emissione (validità) di un Trust Mark relativo a un soggetto specifico. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 8.4</p></td>
 <td><p>Trust Anchor, Intermediario</p></td>
 </tr>
-<tr class="row-even"><td><p>trust marked listing</p></td>
-<td><p><strong>GET</strong> /trust_mark_listing?trust_mark_id=...</p></td>
-<td><p>Elenca tutte le entità per le quali sono stati emessi Trust Mark e sono ancora validi. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Sezione 5.1.1</p></td>
+<tr class="row-even"><td><p>trust mark  list</p></td>
+<td><p><strong>GET</strong> /trust_mark_listing?trust_mark_type=...</p></td>
+<td><p>Elenca tutte le entità per le quali sono stati emessi Trust Mark e sono ancora validi. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 8.5</p></td>
 <td><p>Trust Anchor, Intermediario</p></td>
 </tr>
-<tr class="row-odd"><td><p>historical keys</p></td>
-<td><p><strong>GET</strong> /historical-jwks</p></td>
-<td><p>Elenca le chiavi scadute e revocate, con la motivazione della revoca. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Sezione 5.1.1</p></td>
+<tr class="row-odd"><td><p>trust mark</p></td>
+<td><p><strong>GET</strong> /trust_mark?trust_mark_type=...</p></td>
+<td><p>Restituisce il Trust Mark relativo a un soggetto specifico. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 8.6</p></td>
+<td><p>Trust Anchor, Intermediate</p></td>
+</tr>
+<tr class="row-even"><td><p>historical keys</p></td>
+<td><p><strong>GET</strong> /federation_historical_keys</p></td>
+<td><p>Elenca le chiavi scadute e revocate, con la motivazione della revoca. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 8.7</p></td>
 <td><p>Trust Anchor, Intermediario</p></td>
 </tr>
-<tr class="row-even"><td><p>subordinate events</p></td>
+<tr class="row-odd"><td><p>subordinate events</p></td>
 <td><p><strong>GET</strong> /federation_subordinate_events_endpoint?sub=https://rp.example.org</p></td>
 <td><p>Restituisce una traccia storica degli eventi di registrazione sui Subordinati Immediati, come registrazione, revoca e aggiornamenti delle loro Chiavi dell'Entità di Federazione. Vedi la sezione <a class="reference internal" href="#federation-subordinate-events-endpoint"><span class="std std-ref">Federation Subordinate Events Endpoint</span></a> per maggiori dettagli.</p></td>
 <td><p>Trust Anchor, Intermediario</p></td>
 </tr>
 </tbody>
 </table>
-<p>Tutte le risposte degli endpoint di federazione sono sotto forma di JWT firmato, ad eccezione dell'<strong>endpoint di Elenco Subordinati</strong> e dell'<strong>endpoint di Stato Trust Mark</strong> che sono serviti come JSON semplice per impostazione predefinita. L'<strong>Endpoint Eventi Subordinati della Federazione</strong> restituisce anche JWT firmati con il tipo di contenuto <code class="docutils literal notranslate"><span class="pre">application/entity-events-statement+jwt</span></code>.</p>
+<p>Tutte le risposte degli endpoint di federazione sono sotto forma di JWT firmato, ad eccezione dell'endpoint di Elenco Subordinati e dell'endpoint di Stato Trust Mark che sono serviti come JSON semplice per impostazione predefinita. L'Endpoint Eventi Subordinati della Federazione restituisce anche JWT firmati con il tipo di contenuto <code class="docutils literal notranslate"><span class="pre">application/entity-events-statement+jwt</span></code>.</p>
 <section id="federation-subordinate-events-endpoint">
 <h3><span class="section-number">6.5.1. </span>Federation Subordinate Events Endpoint<a class="headerlink" href="#federation-subordinate-events-endpoint" title="Link to this heading">¶</a></h3>
-<p>L'Endpoint Eventi Subordinati della Federazione fornisce un meccanismo per Trust Anchor e Intermediari per pubblicare eventi storici relativi ai loro Subordinati Immediati. Questo endpoint fornisce trasparenza e responsabilità all'interno della federazione fornendo un record storico completo di eventi significativi che influenzano i partecipanti della federazione.</p>
-<p><strong>Endpoint Location</strong>:</p>
-<p>L'Endpoint Eventi Subordinati della Federazione è pubblicato nei metadati <code class="docutils literal notranslate"><span class="pre">federation_entity</span></code> utilizzando il parametro <code class="docutils literal notranslate"><span class="pre">federation_subordinate_events_endpoint</span></code>.</p>
-<p><strong>Request Format</strong>:</p>
-<p>La richiesta all'<code class="docutils literal notranslate"><span class="pre">federation_subordinate_events_endpoint</span></code> DEVE essere una richiesta HTTP GET con i seguenti parametri di query:</p>
-<ul class="simple">
-<li><p><strong>sub</strong>: (OBBLIGATORIO) L'Identificativo dell'Entità del soggetto per cui viene richiesta la traccia storica.</p></li>
-</ul>
-<p><strong>Response Format</strong>:</p>
-<p>Una risposta di successo DEVE utilizzare il codice di stato HTTP 200 e il tipo di contenuto <code class="docutils literal notranslate"><span class="pre">application/entity-events-statement+jwt</span></code>. La risposta è un JWT firmato che è esplicitamente tipizzato impostando il parametro header <code class="docutils literal notranslate"><span class="pre">typ</span></code> su <code class="docutils literal notranslate"><span class="pre">entity-events-statement+jwt</span></code> per prevenire la confusione cross-JWT.</p>
-<p><strong>JWT Claims</strong>:</p>
-<p>I claim nella risposta della dichiarazione eventi subordinati sono:</p>
-<ul class="simple">
-<li><p><strong>iss</strong>: (OBBLIGATORIO) Identificativo dell'Entità dell'emittente della risposta</p></li>
-<li><p><strong>sub</strong>: (OBBLIGATORIO) Identificativo dell'Entità del soggetto della risposta</p></li>
-<li><p><strong>iat</strong>: (OBBLIGATORIO) Ora in cui questa risposta è stata emessa, espressa come Secondi dall'Epoch</p></li>
-<li><p><strong>exp</strong>: (OPZIONALE) Ora in cui questa risoluzione non è più valida, espressa come Secondi dall'Epoch</p></li>
-<li><p><strong>federation_registration_events</strong>: (OBBLIGATORIO) Array di oggetti JSON, ognuno rappresentante un evento di particolare interesse dalla prospettiva della federazione</p></li>
-</ul>
-<p><strong>Event Object Parameters</strong>:</p>
-<ul class="simple">
-<li><p><strong>iat</strong>: (OBBLIGATORIO) Ora in cui si è verificato l'evento, utilizzando il formato ora definito per il claim <code class="docutils literal notranslate"><span class="pre">iat</span></code></p></li>
-<li><p><strong>event</strong>: (OBBLIGATORIO) Stringa che identifica il tipo di evento</p></li>
-<li><p><strong>event_description</strong>: (OPZIONALE) Stringa che può offrire informazioni aggiuntive sull'evento</p></li>
-</ul>
-<p><strong>Supported Event Types</strong>:</p>
-<ul class="simple">
-<li><p><strong>registration</strong>: Indica quando un'Entità è stata registrata nella federazione</p></li>
-<li><p><strong>revocation</strong>: Indica quando la registrazione di un'Entità è stata revocata</p></li>
-<li><p><strong>suspension</strong>: Indica quando la registrazione di un'Entità è stata sospesa</p></li>
-<li><p><strong>jwks_update</strong>: Indica quando le Chiavi dell'Entità di Federazione di un'Entità sono state aggiornate</p></li>
-<li><p><strong>metadata_update</strong>: Indica quando i metadati di un'Entità sono stati aggiornati nel Subordinate Statement</p></li>
-<li><p><strong>metadata_policy_update</strong>: Indica quando la policy dei metadati di un'Entità è stata aggiornata nel Subordinate Statement</p></li>
-</ul>
-<p><strong>Example Request</strong>:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GET /federation_subordinate_events_endpoint?sub=https%3A%2F%2Frp%2Eexample%2Eorg HTTP/1.1
-Host: immediate-superior.example.org
+<p>L'Endpoint Eventi Subordinati della Federazione è definito in <a class="reference external" href="https://openid.net/specs/openid-federation-subordinate-events-1_0.html">OID-FED-SUBORDINATE-EVENTS</a>. Questo endpoint fornisce un meccanismo per Trust Anchor e Intermediari per pubblicare eventi storici relativi ai loro Subordinati Immediati. Fornisce trasparenza e responsabilità all'interno della federazione fornendo un record storico completo di eventi significativi che influenzano i partecipanti della federazione.</p>
+<p>Per i dettagli completi della specifica, inclusi la posizione dell'endpoint, il formato della richiesta, il formato della risposta, i claim JWT, i parametri degli oggetti evento e i tipi di evento supportati, fare riferimento a <a class="reference external" href="https://openid.net/specs/openid-federation-subordinate-events-1_0.html">OID-FED-SUBORDINATE-EVENTS</a>.</p>
+<p>Di seguito è riportato un esempio non normativo di una richiesta e risposta dell'Endpoint Eventi Subordinati della Federazione:</p>
+<p><strong>Esempio di Richiesta</strong>:</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/federation_subordinate_events_endpoint?sub=https%3A%2F%2Frp%2Eexample%2Eorg</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">immediate-superior.example.org</span>
 </pre></div>
 </div>
-<p><strong>Example Response</strong>:</p>
+<p><strong>Esempio di Risposta</strong>:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://immediate-superior.example.org&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://rp.example.org&quot;</span><span class="p">,</span>
@@ -490,7 +459,7 @@ Host: immediate-superior.example.org
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1590000000</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jwks_updates&quot;</span>
+<span class="w">      </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jwks_update&quot;</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1600000000</span><span class="p">,</span>
@@ -505,7 +474,7 @@ Host: immediate-superior.example.org
 <span class="p">}</span>
 </pre></div>
 </div>
-<p><strong>Integration with Entity Lifecycle Management</strong>:</p>
+<p><strong>Integrazione con la Gestione del Ciclo di Vita delle Entità</strong>:</p>
 <p>Questo endpoint completa le procedure di gestione del ciclo di vita delle entità definite in <a class="reference internal" href="entity-onboarding.html#onboarding-delle-entita"><span class="std std-ref">Onboarding delle Entità</span></a> fornendo un tracciamento dettagliato di tutti gli eventi significativi che influenzano i partecipanti della federazione. Supporta sia il monitoraggio automatizzato della conformità che i processi di audit manuale.</p>
 </section>
 </section>
@@ -553,7 +522,7 @@ Host: immediate-superior.example.org
 <span class="w">            </span><span class="nt">&quot;federation_resolve_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/resolve&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;federation_list_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/list&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;federation_trust_mark_status_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/trust_mark_status&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;federation_trust_mark_listing_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/trust_mark_listing&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;federation_trust_mark_list_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/trust_mark_listing&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;federation_subordinate_events_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/events&quot;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">},</span>
@@ -639,13 +608,51 @@ Host: immediate-superior.example.org
 <tbody>
 <tr class="row-even"><td><p><strong>trust_mark_issuers</strong></p></td>
 <td><p>Array JSON che definisce quali autorità di Federazione sono considerate affidabili per l'emissione di Trust Mark specifici, assegnati con i loro identificatori unici.</p></td>
-<td><p><a class="reference internal" href="_images/Eo_circle_red_letter-x.png"><img alt="uncheck-icon" src="_images/Eo_circle_red_letter-x.png" style="width: 25px;" /></a></p></td>
+<td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 </tr>
 </tbody>
 </table>
 </section>
+<section id="trust-mark-degli-intermediari-di-relying-party">
+<h3><span class="section-number">6.7.3. </span>Trust Mark degli Intermediari di Relying Party<a class="headerlink" href="#trust-mark-degli-intermediari-di-relying-party" title="Link to this heading">¶</a></h3>
+<p>Nell'ecosistema IT-Wallet, gli Intermediari di Relying Party che agiscono per conto dei Relying Party (ai sensi dell'Art. 5b(8) del Regolamento eIDAS2 <a class="reference external" href="https://eur-lex.europa.eu/eli/reg/2024/1183/oj">EU_2024_1183</a>) sono soggetti a uno specifico regime di Trust Mark che consente al Wallet di riconoscere e mostrare all'Utente che il RP richiedente opera tramite un Intermediario di Relying Party.</p>
+<p><strong>Emissione del Trust Mark all'Intermediario di Relying Party</strong></p>
+<p>Il Trust Anchor DEVE includere gli Intermediari di Relying Party nell'attributo <code class="docutils literal notranslate"><span class="pre">trust_mark_issuers</span></code> della propria Entity Configuration, autorizzandoli ad emettere Trust Mark per le Foglie a loro afferenti. Il Trust Anchor emette all'Intermediario di Relying Party un Trust Mark che attesta il suo ruolo, utilizzando <code class="docutils literal notranslate"><span class="pre">https://&lt;federation_authority_domain&gt;/trust_marks/federation-entity/openid_credential_verifier_intermediary</span></code> come <code class="docutils literal notranslate"><span class="pre">trust_mark_type</span></code> per distinguerlo dalle altre entità presenti nell'ecosistema.</p>
+<p>L'Intermediario di Relying Party DEVE includere questo Trust Mark nella propria Entity Configuration come prova del suo ruolo riconosciuto all'interno della Federazione.</p>
+<p><strong>Emissione di Trust Mark alle Foglie afferenti all'Intermediario di Relying Party</strong></p>
+<p>I Trust Mark emessi alle Foglie (Relying Party) afferenti a un Intermediario di Relying Party DEVONO essere emessi dall'Intermediario di Relying Party stesso, e non direttamente dal Trust Anchor.</p>
+<p>Un Relying Party afferente a un Intermediario di Relying Party DEVE includere nella propria Entity Configuration:</p>
+<ul class="simple">
+<li><p>Il Trust Mark emesso dall'Intermediario di Relying Party, come prova del completamento del processo di onboarding gestito dall'Intermediario di Relying Party;</p></li>
+<li><p>Il proprio <code class="docutils literal notranslate"><span class="pre">authority_hints</span></code> contenente l'URL dell'Intermediario di Relying Party (non direttamente del Trust Anchor), indicando così la corretta catena gerarchica.</p></li>
+</ul>
+<p>Di seguito è riportato un esempio non normativo di Entity Configuration del Trust Anchor che mostra la configurazione aggiornata di <code class="docutils literal notranslate"><span class="pre">trust_mark_issuers</span></code> con gli Intermediari di Relying Party autorizzati:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;trust_mark_issuers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;https://trust-anchor.eid-wallet.example.it/trust_marks/federation-entity/openid_credential_verifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;https://intermediary.example.org&quot;</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;https://trust-anchor.eid-wallet.example.it/trust_marks/federation-entity/openid_credential_verifier_intermediary&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it&quot;</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;https://trust-anchor.eid-wallet.example.it/trust_marks/federation-entity/openid_credential_issuer&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it&quot;</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;https://trust-anchor.eid-wallet.example.it/trust_marks/federation-entity/wallet_solution&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it&quot;</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Il Trust Mark con identificativo che termina con <code class="docutils literal notranslate"><span class="pre">federation-entity/openid_credential_verifier_intermediary</span></code> è emesso esclusivamente dal Trust Anchor ed è quello che il Wallet utilizza per verificare che un'entità sia un Intermediario di Relying Party riconosciuto. I Trust Mark <code class="docutils literal notranslate"><span class="pre">https://&lt;federation_authority_domain&gt;/trust_marks/federation-entity/openid_credential_verifier</span></code> DOVREBBERO invece essere emessi anche dagli Intermediari di Relying Party per le Foglie a loro afferenti.</p>
+</div>
+</section>
 <section id="entity-configuration-foglie-e-intermediari">
-<h3><span class="section-number">6.7.3. </span>Entity Configuration Foglie e Intermediari<a class="headerlink" href="#entity-configuration-foglie-e-intermediari" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">6.7.4. </span>Entity Configuration Foglie e Intermediari<a class="headerlink" href="#entity-configuration-foglie-e-intermediari" title="Link to this heading">¶</a></h3>
 <p>Oltre ai claim precedentemente definiti, l'Entity Configuration delle Foglie e delle Entità Intermedie utilizza i seguenti parametri:</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -672,7 +679,7 @@ Host: immediate-superior.example.org
 </table>
 </section>
 <section id="id1">
-<h3><span class="section-number">6.7.4. </span>Tipi di Metadati<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">6.7.5. </span>Tipi di Metadati<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
 <p>In questa sezione sono definiti i principali tipi di metadati mappati sui ruoli dell'ecosistema, fornendo i riferimenti del protocollo di metadati per ognuno di questi.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
@@ -696,12 +703,12 @@ Host: immediate-superior.example.org
 <tr class="row-even"><td><p>Trust Anchor</p></td>
 <td><p>Trust Anchor</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code></p></td>
-<td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a></p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a></p></td>
 </tr>
 <tr class="row-odd"><td><p>Intermediario</p></td>
 <td><p>Intermediario</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code></p></td>
-<td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a></p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a></p></td>
 </tr>
 <tr class="row-even"><td><p>Fornitore di Wallet</p></td>
 <td><p>Fornitore di Wallet</p></td>
@@ -721,7 +728,7 @@ Host: immediate-superior.example.org
 <tr class="row-odd"><td><p>Relying Party</p></td>
 <td><p>Relying Party</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code>, <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code></p></td>
-<td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a>, <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a></p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a>, <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -740,7 +747,7 @@ Inoltre, se dovesse esserci la necessità di Autenticazione dell'Utente da parte
 </section>
 <section id="metadati-di-federation-entity-foglie">
 <h2><span class="section-number">6.8. </span>Metadati di federation_entity Foglie<a class="headerlink" href="#metadati-di-federation-entity-foglie" title="Link to this heading">¶</a></h2>
-<p>I metadati <em>federation_entity</em> per le Foglie DEVONO contenere i seguenti claim.</p>
+<p>I metadati <em>federation_entity</em> per le Foglie contiene i seguenti claim.</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 25.0%" />
@@ -753,25 +760,25 @@ Inoltre, se dovesse esserci la necessità di Autenticazione dell'Utente da parte
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>organization_name</strong></p></td>
-<td><p>Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Sezione 5.2.2</p></td>
+<td><p>OBBLIGATORIO. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 5.2.2</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>homepage_uri</strong></p></td>
-<td><p>Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Sezione 5.2.2</p></td>
+<td><p>OBBLIGATORIO. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 5.2.2</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>policy_uri</strong></p></td>
-<td><p>Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Sezione 5.2.2</p></td>
+<td><p>OBBLIGATORIO. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 5.2.2</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>logo_uri</strong></p></td>
-<td><p>URL del logo dell'entità; DEVE essere in formato SVG. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Sezione 5.2.2</p></td>
+<td><p>OBBLIGATORIO. URL del logo dell'entità; DEVE essere in formato SVG. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 5.2.2</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>contacts</strong></p></td>
-<td><p>Indirizzo email verificato istituzionale (PEC) dell'entità. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Sezione 5.2.2</p></td>
+<td><p>OBBLIGATORIO. Indirizzo email verificato istituzionale (PEC) dell'entità. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 5.2.2</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>federation_resolve_endpoint</strong></p></td>
-<td><p>Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Sezione 5.1.1</p></td>
+<td><p>OPZIONALE. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 8.3</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>tos_uri</strong></p></td>
-<td><p>[OPZIONALE] Stringa URL che punta a un documento di termini di servizio leggibile dall'uomo per il client che descrive una relazione contrattuale tra l'utente finale e il client che l'utente finale accetta quando autorizza il client. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a>.</p></td>
+<td><p>OPZIONALE. Stringa URL che punta a un documento di termini di servizio leggibile dall'uomo per il client che descrive una relazione contrattuale tra l'utente finale e il client che l'utente finale accetta quando autorizza il client. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -864,27 +871,27 @@ Il Subordinate Statement PUÒ contenere una policy di metadati e i Trust Mark re
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>iss</strong></p></td>
-<td><p>Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Sezione 3 per ulteriori dettagli.</p></td>
+<td><p>Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 3 per ulteriori dettagli.</p></td>
 <td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>sub</strong></p></td>
-<td><p>Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Sezione 3 per ulteriori dettagli.</p></td>
+<td><p>Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 3 per ulteriori dettagli.</p></td>
 <td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>iat</strong></p></td>
-<td><p>Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Sezione 3 per ulteriori dettagli.</p></td>
+<td><p>Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 3 per ulteriori dettagli.</p></td>
 <td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>exp</strong></p></td>
-<td><p>Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Sezione 3 per ulteriori dettagli.</p></td>
+<td><p>Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 3 per ulteriori dettagli.</p></td>
 <td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>jwks</strong></p></td>
-<td><p>JWKS di Federazione dell'entità <em>sub</em>. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Sezione 3 per ulteriori dettagli.</p></td>
+<td><p>JWKS di Federazione dell'entità <em>sub</em>. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 3 per ulteriori dettagli.</p></td>
 <td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>metadata_policy</strong></p></td>
-<td><p>Oggetto JSON che descrive la policy dei Metadati. Ogni chiave dell'Oggetto JSON rappresenta un identificatore del tipo di metadati e ogni valore DEVE essere un Oggetto JSON che rappresenta la policy dei metadati secondo quel tipo di metadati. Si prega di fare riferimento alle specifiche <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a>, Sezione 6.1, per i dettagli di implementazione.</p></td>
+<td><p>Oggetto JSON che descrive la policy dei Metadati. Ogni chiave dell'Oggetto JSON rappresenta un identificatore del tipo di metadati e ogni valore DEVE essere un Oggetto JSON che rappresenta la policy dei metadati secondo quel tipo di metadati. Si prega di fare riferimento alle specifiche <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a>, Sezione 6.1, per i dettagli di implementazione.</p></td>
 <td><p><a class="reference internal" href="_images/Eo_circle_red_letter-x.png"><img alt="uncheck-icon" src="_images/Eo_circle_red_letter-x.png" style="width: 25px;" /></a></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>trust_marks</strong></p></td>
@@ -912,17 +919,6 @@ Il Subordinate Statement PUÒ contenere una policy di metadati e i Trust Mark re
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>La revoca di un'Entità è fatta con l'indisponibilità del Subordinate Statement relativo ad essa. Se il Trust Anchor o il suo Intermediario non pubblica un Subordinate Statement valido, o se pubblica un Subordinate Statement scaduto/non valido, il soggetto del Subordinate Statement DEVE essere inteso come non valido o revocato.</p>
-</div>
-<p>La concatenazione delle dichiarazioni, attraverso la combinazione di questi meccanismi di firma e il binding di claim e chiavi pubbliche, forma la Trust Chain.</p>
-<p>Le Trust Chain possono anche essere verificate offline, utilizzando una delle chiavi pubbliche del Trust Anchor.</p>
-<div class="admonition note">
-<p class="admonition-title">Nota</p>
-<p>Poiché l'Istanza del Wallet non è un'Entità di Federazione, il Meccanismo di Trust Evaluation relativo ad essa <strong>richiede la presentazione del Wallet Attestation durante le fasi di emissione e presentazione delle credenziali</strong>.</p>
-<p>Il Wallet Attestation trasmette tutte le informazioni richieste riguardanti l'istanza, come la sua chiave pubblica e qualsiasi altra informazione tecnica o amministrativa, senza alcun dato personale dell'Utente.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Nota</p>
-<p>La revoca di un'Entità è fatta con l'indisponibilità del Subordinate Statement relativo ad essa. Se il Trust Anchor o il suo Intermediario non pubblica un Subordinate Statement valido, o se pubblica un Subordinate Statement scaduto e o non valido, il soggetto del Subordinate Statement DEVE essere inteso come non valido o revocato.</p>
 </div>
 <p>La concatenazione delle dichiarazioni, attraverso la combinazione di questi meccanismi di firma e il binding di claim e chiavi pubbliche, forma la Trust Chain.</p>
 <p>Le Trust Chain possono anche essere verificate offline, utilizzando una delle chiavi pubbliche del Trust Anchor.</p>
@@ -1057,6 +1053,22 @@ I meccanismi di Trust Evaluation sono distinti dai flussi di protocollo e sono i
 <p class="admonition-title">Nota</p>
 <p>Come mostrato nella figura, è richiesta una connessione internet per aggiornare la Trust Chain su un RP e controllare il suo stato di revoca.</p>
 </div>
+<section id="stabilire-trust-con-il-relying-party-che-opera-tramite-intermediario">
+<h4><span class="section-number">6.12.2.1. </span>Stabilire Trust con il Relying Party che opera tramite Intermediario<a class="headerlink" href="#stabilire-trust-con-il-relying-party-che-opera-tramite-intermediario" title="Link to this heading">¶</a></h4>
+<p>Quando un Relying Party opera tramite un Intermediario di Relying Party, l'Istanza del Wallet DEVE eseguire un processo di Trust Evaluation esteso che include la validazione del Trust Mark dell'Intermediario di Relying Party. Questo processo si svolge durante la fase di costruzione e validazione della Trust Chain e consente al Wallet di presentare all'Utente informazioni trasparenti sull'entità che ha registrato e garantisce il RP.</p>
+<p>Il processo si articola nei seguenti passi:</p>
+<ol class="arabic simple">
+<li><p><strong>Download dell'Entity Configuration del RP</strong>: L'Istanza del Wallet scarica l'Entity Configuration del Relying Party dall'endpoint <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> del RP. L'EC del RP contiene il claim <code class="docutils literal notranslate"><span class="pre">authority_hints</span></code> che punta all'URL dell'Intermediario di Relying Party (non direttamente al Trust Anchor).</p></li>
+<li><p><strong>Identificazione dell'Intermediario di Relying Party</strong>: Tramite il claim <code class="docutils literal notranslate"><span class="pre">authority_hints</span></code> nell'EC del RP, l'Istanza del Wallet identifica l'Intermediario di Relying Party e ne scarica l'Entity Configuration.</p></li>
+<li><p><strong>Validazione del Trust Mark dell'Intermediario di Relying Party</strong>: L'Istanza del Wallet verifica che l'Entity Configuration dell'Intermediario di Relying Party contenga un Trust Mark valido per il ruolo di Intermediario di Relying Party, emesso dal Trust Anchor. La validità del Trust Mark DEVE essere verificata tramite l'endpoint <code class="docutils literal notranslate"><span class="pre">/trust_mark_status</span></code> del Trust Anchor.</p></li>
+<li><p><strong>Costruzione della Trust Chain tramite l'Intermediario di Relying Party</strong>: L'Istanza del Wallet costruisce la Trust Chain completa: Entity Configuration del RP → Subordinate Statement emesso dall'Intermediario di Relying Party per il RP → Subordinate Statement emesso dal Trust Anchor per l'Intermediario di Relying Party → Entity Configuration del Trust Anchor. Questa catena attesta che il RP è una Foglia riconosciuta dall'Intermediario di Relying Party e che l'Intermediario di Relying Party è a sua volta riconosciuto dal Trust Anchor.</p></li>
+<li><p><strong>Presentazione all'Utente</strong>: Una volta completata la validazione, l'Istanza del Wallet PUÒ indicare all'Utente che il Relying Party richiedente opera tramite un Intermediario di Relying Party riconosciuto, mostrando le informazioni identificative dell'Intermediario di Relying Party (ad esempio <code class="docutils literal notranslate"><span class="pre">organization_name</span></code>) ottenute dalla sua Entity Configuration.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>La presenza del Trust Mark con identificativo che termina con <code class="docutils literal notranslate"><span class="pre">federation-entity/openid_credential_verifier_intermediary</span></code> nell'EC dell'Intermediario di Relying Party costituisce la prova crittograficamente verificabile che l'entità è stata riconosciuta dal Trust Anchor come Intermediario di Relying Party autorizzato. L'Istanza del Wallet DEVE rifiutare la richiesta del RP se la Trust Chain non può essere costruita e validata tramite un Intermediario di Relying Party riconosciuto o direttamente tramite il Trust Anchor.</p>
+</div>
+</section>
 </section>
 <section id="valutare-trust-con-i-wallet">
 <h3><span class="section-number">6.12.3. </span>Valutare Trust con i Wallet<a class="headerlink" href="#valutare-trust-con-i-wallet" title="Link to this heading">¶</a></h3>
@@ -1068,7 +1080,7 @@ I meccanismi di Trust Evaluation sono distinti dai flussi di protocollo e sono i
 <section id="non-ripudio-delle-attestazioni-di-lunga-durata">
 <h2><span class="section-number">6.13. </span>Non-ripudio delle Attestazioni di Lunga Durata<a class="headerlink" href="#non-ripudio-delle-attestazioni-di-lunga-durata" title="Link to this heading">¶</a></h2>
 <p>Il Trust Anchor e i suoi Intermediari DEVONO esporre l'endpoint delle Chiavi Storiche di Federazione, dove sono pubblicate tutte le parti pubbliche delle Chiavi dell'Entità di Federazione che non sono più utilizzate, sia scadute che revocate.</p>
-<p>I dettagli di questo endpoint sono definiti nella <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-46.html">OID-FED</a> Sezione 8.7.</p>
+<p>I dettagli di questo endpoint sono definiti nella <a class="reference external" href="https://openid.net/specs/openid-federation-1_0.html">OID-FED</a> Sezione 8.7.</p>
 <p>Ogni JWT contenente una Trust Chain negli header JWT può essere verificato nel tempo, poiché l'intera Trust Chain è verificabile utilizzando la chiave pubblica del Trust Anchor.</p>
 <p>Anche se il Trust Anchor ha cambiato le sue chiavi crittografiche per la firma digitale, l'endpoint delle Chiavi Storiche di Federazione rende sempre disponibili le chiavi non più utilizzate per le verifiche di firma storiche.</p>
 </section>
@@ -1413,8 +1425,9 @@ Signature:
 <li><a class="reference internal" href="#entity-configuration">6.7. Entity Configuration</a><ul>
 <li><a class="reference internal" href="#parametri-comuni-delle-entity-configuration">6.7.1. Parametri Comuni delle Entity Configuration</a></li>
 <li><a class="reference internal" href="#entity-configuration-trust-anchor">6.7.2. Entity Configuration Trust Anchor</a></li>
-<li><a class="reference internal" href="#entity-configuration-foglie-e-intermediari">6.7.3. Entity Configuration Foglie e Intermediari</a></li>
-<li><a class="reference internal" href="#id1">6.7.4. Tipi di Metadati</a></li>
+<li><a class="reference internal" href="#trust-mark-degli-intermediari-di-relying-party">6.7.3. Trust Mark degli Intermediari di Relying Party</a></li>
+<li><a class="reference internal" href="#entity-configuration-foglie-e-intermediari">6.7.4. Entity Configuration Foglie e Intermediari</a></li>
+<li><a class="reference internal" href="#id1">6.7.5. Tipi di Metadati</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#metadati-di-federation-entity-foglie">6.8. Metadati di federation_entity Foglie</a></li>
@@ -1434,7 +1447,10 @@ Signature:
 </li>
 <li><a class="reference internal" href="#meccanismo-di-trust-evaluation">6.12. Meccanismo di Trust Evaluation</a><ul>
 <li><a class="reference internal" href="#stabilire-trust-con-i-credential-issuer">6.12.1. Stabilire Trust con i Credential Issuer</a></li>
-<li><a class="reference internal" href="#stabilire-trust-con-il-relying-party">6.12.2. Stabilire Trust con il Relying Party</a></li>
+<li><a class="reference internal" href="#stabilire-trust-con-il-relying-party">6.12.2. Stabilire Trust con il Relying Party</a><ul>
+<li><a class="reference internal" href="#stabilire-trust-con-il-relying-party-che-opera-tramite-intermediario">6.12.2.1. Stabilire Trust con il Relying Party che opera tramite Intermediario</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#valutare-trust-con-i-wallet">6.12.3. Valutare Trust con i Wallet</a></li>
 </ul>
 </li>
@@ -1476,7 +1492,7 @@ Signature:
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 13/01/2026.
+      Ultimo aggiornamento 22/06/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

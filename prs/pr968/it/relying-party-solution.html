@@ -5,11 +5,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>10.3. Soluzione di Relying Party &#8212; IT-Wallet Technical Specifications - PR #968</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <title>10.3. Soluzione di Relying Party &#8212; IT-Wallet Specifiche Tecniche - PR #968</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=59943e95" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
-    <script src="_static/documentation_options.js?v=3fd72285"></script>
+    <script src="_static/documentation_options.js?v=53f44254"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/translations.js?v=da26b4cc"></script>
@@ -33,7 +33,7 @@
         <p id="toggle_sidebar">
             <a href="#" title="Toggle sidebar">|||</a>
         </p>
-        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Specifications - PR #968</a></h1>
+        <h1><a href="index.html" title="Go to homepage">IT-Wallet Specifiche Tecniche - PR #968</a></h1>
             <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
     
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
@@ -178,7 +178,11 @@
   <section id="soluzione-di-relying-party">
 <h1><span class="section-number">10.3. </span>Soluzione di Relying Party<a class="headerlink" href="#soluzione-di-relying-party" title="Link to this heading">¶</a></h1>
 <p>Una Relying Party, come entità Organizzativa che si affida all'IT-Wallet, fornisce Soluzioni Tecniche (Soluzione di Relying Party) che potrebbero combinare software, hardware, servizi, impostazioni e configurazioni, incluse App di Verifica per l'autenticazione dell'Utente e la verifica degli Attestati Elettronici.</p>
-<p>Per implementare e fornire Soluzioni Tecniche, una Relying Party potrebbe avvalersi dei servizi forniti da un Intermediario. Un Intermediario di Relying Party è un'Entità Organizzativa che può agire per conto della Relying Party offrendo servizi ad essa, consentendo alla Relying Party di connettersi all'Istanza del Wallet e autenticare gli Utenti e verificare gli Attestati Elettronici dell'Utente.</p>
+<p>Per implementare e fornire Soluzioni Tecniche, una Relying Party può avvalersi dei servizi di un <strong>Intermediario di Relying Party</strong>. Ai sensi dell'articolo 5b, paragrafo 8, del <a class="reference external" href="https://eur-lex.europa.eu/eli/reg/2024/1183/oj">EU_2024_1183</a>, gli intermediari che agiscono per conto delle Relying Party sono considerati Relying Party e <strong>non devono conservare dati sul contenuto della transazione</strong> tra l'Utente del Wallet e la Relying Party intermediata. Per le definizioni complete e il quadro giuridico europeo di riferimento, vedi <strong>Intermediario di Relying Party</strong> e <strong>Intermediario IT-Wallet</strong> in <a class="reference internal" href="defined-terms.html#definizioni-e-acronimi"><span class="std std-ref">Definizioni e Acronimi</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Nel profilo implementativo descritto dalle presenti specifiche tecniche, un Intermediario di Relying Party è anche un Intermediario di Federazione (<strong>Intermediario IT-Wallet</strong>).</p>
+</div>
 <p>Una Relying Party fornisce almeno uno dei seguenti componenti:</p>
 <ul class="simple">
 <li><p><strong>Backend della Relying Party</strong>: Gestisce la registrazione delle Istanze di Relying Party e la relativa gestione dei Certificati. Ottiene il Certificato X.509 secondo l'<a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>. DOVREBBE inoltre fornire un Certificato X.509 alle proprie App di Verifica. Può anche implementare servizi web aggiuntivi e logica di business per i propri scopi e casi d'uso.</p></li>
@@ -197,7 +201,7 @@
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 10.10 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/jLHDRzim3BtxLt2vD0NMxTBZC3HD0zJOXXbjYc8dGvQPM9Wi2QBSBXZwtqV9YTtKBOOT5Y2HIVFZlKSn5nI43rshuGRrJfaj56pluDRgBYXhu5fj6_YA3wXXuMMZ0ihGUSpUAIDrLoDyMfv_N9wNIziwQz24prbsdL-jojlrwcRrVVsZMCrFi-m4hd2Z38AGmNe2OMgW7GLiAIlGapNpZj2_XzaT7pC-LnmHNV2eGWFv-knUQ8rXniKouC_Gi5pz2lFWEmgbCBAniSWwch18PYmMlpbHXyGyjug25udT4drG6oL5m1wJy_P1rMmKNtAGmebAQHKKEpRMGsWGkAFoE082bBPdag1bbxOpjV2xkUy5BLqKjApsRWRokjApK_XzJ6pkNLa9-HDDFScwxFq7RjUCNKTo1UI60kk0u9yJZTpaI1PQOSGMM-xo0VBMwVH8K7Ma31A1jbib4sToA6DM70P8GKZCC-9CFoDRLwfzvpUv3jW6hXE-ZrYLKYksEFaUArWcuy2JFMSLOwXXuwq9oAmK7tuZ92QqyVQ0w48JnoH7xbTgguBGiFHOnrVy-80-gT6B_pgSrlByiHJESVDloO25StgVbc0DR_udigViASjkqpLBz_qntRr1yYXDyemIxrVfX8OEVKJ2_7mZFUhKYHhbABjKFBBzBawRtANn7mMz75eUMGiPA2tk9FXOqabmnh4lbddSWhylCGGRY_HbniGfokAmv-o5HP5Jofoa7U5zEwtdE1dAfEjYF_xn_wOVDHjo6F-nS9EY4qp_LlI2UNMj_WC0">Architettura di Alto Livello della Soluzione di Relying Party.</a></span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 10.11 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/jLHDRzim3BtxLt2vD0NMxTBZC3HD0zJOXXbjYc8dGvQPM9Wi2QBSBXZwtqV9YTtKBOOT5Y2HIVFZlKSn5nI43rshuGRrJfaj56pluDRgBYXhu5fj6_YA3wXXuMMZ0ihGUSpUAIDrLoDyMfv_N9wNIziwQz24prbsdL-jojlrwcRrVVsZMCrFi-m4hd2Z38AGmNe2OMgW7GLiAIlGapNpZj2_XzaT7pC-LnmHNV2eGWFv-knUQ8rXniKouC_Gi5pz2lFWEmgbCBAniSWwch18PYmMlpbHXyGyjug25udT4drG6oL5m1wJy_P1rMmKNtAGmebAQHKKEpRMGsWGkAFoE082bBPdag1bbxOpjV2xkUy5BLqKjApsRWRokjApK_XzJ6pkNLa9-HDDFScwxFq7RjUCNKTo1UI60kk0u9yJZTpaI1PQOSGMM-xo0VBMwVH8K7Ma31A1jbib4sToA6DM70P8GKZCC-9CFoDRLwfzvpUv3jW6hXE-ZrYLKYksEFaUArWcuy2JFMSLOwXXuwq9oAmK7tuZ92QqyVQ0w48JnoH7xbTgguBGiFHOnrVy-80-gT6B_pgSrlByiHJESVDloO25StgVbc0DR_udigViASjkqpLBz_qntRr1yYXDyemIxrVfX8OEVKJ2_7mZFUhKYHhbABjKFBBzBawRtANn7mMz75eUMGiPA2tk9FXOqabmnh4lbddSWhylCGGRY_HbniGfokAmv-o5HP5Jofoa7U5zEwtdE1dAfEjYF_xn_wOVDHjo6F-nS9EY4qp_LlI2UNMj_WC0">Architettura di Alto Livello della Soluzione di Relying Party.</a></span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <div class="toctree-wrapper compound">
@@ -265,7 +269,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 13/01/2026.
+      Ultimo aggiornamento 22/06/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

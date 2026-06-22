@@ -5,11 +5,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>10.1.4.2.4. Eliminazione degli Attributi dell&#39;Utente &#8212; IT-Wallet Technical Specifications - PR #968</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <title>10.1.4.2.5. Eliminazione degli Attributi dell&#39;Utente &#8212; IT-Wallet Specifiche Tecniche - PR #968</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=59943e95" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
-    <script src="_static/documentation_options.js?v=3fd72285"></script>
+    <script src="_static/documentation_options.js?v=53f44254"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/translations.js?v=da26b4cc"></script>
@@ -18,8 +18,8 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Indice" href="genindex.html" />
     <link rel="search" title="Cerca" href="search.html" />
-    <link rel="next" title="10.1.5. Backup e Ripristino" href="backup-restore.html" />
-    <link rel="prev" title="10.1.4.2.3. Revoca dell&#39;Istanza del Wallet" href="wallet-instance-revocation.html" /> 
+    <link rel="next" title="10.1.4.2.6. Dashboard dell’Istanza del Wallet e Registrazione delle Transazioni" href="wallet-instance-dashboard.html" />
+    <link rel="prev" title="10.1.4.2.4. Revoca dell&#39;Istanza del Wallet" href="wallet-instance-revocation.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -33,7 +33,7 @@
         <p id="toggle_sidebar">
             <a href="#" title="Toggle sidebar">|||</a>
         </p>
-        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Specifications - PR #968</a></h1>
+        <h1><a href="index.html" title="Go to homepage">IT-Wallet Specifiche Tecniche - PR #968</a></h1>
             <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
     
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
@@ -178,7 +178,7 @@
           <div class="body" role="main">
             
   <section id="eliminazione-degli-attributi-dell-utente">
-<h1><span class="section-number">10.1.4.2.4. </span>Eliminazione degli Attributi dell'Utente<a class="headerlink" href="#eliminazione-degli-attributi-dell-utente" title="Link to this heading">¶</a></h1>
+<h1><span class="section-number">10.1.4.2.5. </span>Eliminazione degli Attributi dell'Utente<a class="headerlink" href="#eliminazione-degli-attributi-dell-utente" title="Link to this heading">¶</a></h1>
 <p>Questa funzionalità dell'Istanza del Wallet consente agli Utenti di ottenere un elenco di tutte le Relying Party a cui sono stati presentati attributi che possono identificare univocamente gli Utenti (ad esempio, l'attributo tax_id_code dell'Attestato Elettronico di Dati di Identificazione Personale). Successivamente, gli Utenti possono richiedere l'eliminazione di tutti gli attributi presentati a una Relying Party di loro scelta. Di seguito viene presentato il flusso di alto livello relativo a questa interazione (<a class="reference internal" href="test-plans-wallet-provider.html#user-attribute-deletion-testcases"><span class="std std-ref">WP_115</span></a>).</p>
 <figure class="align-default" id="id1">
 <p class="plantuml">
@@ -187,7 +187,7 @@
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 10.6 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/TLFDZjD03BxdAQnUkB3x03sWNR55ue8G2-B2nKcSTaGw3cDFIzyUUqeIfkpUHlNdxyTVyo2AIVDnX2SQIGD7u06-2QKt0e-gARHPIHhCoZ4VMqeDTie9DexP00faUpHDox_djISwXOwQoOX35oQC2fllE1ezV8oc5pigYpXDKAES01xt5FNAZ0t57epwol-5nak8U_XiEvTwSvTGSYBOnPx3ttMYIMlK1-efeQTquBGW1qEkKb0YmTqxTxWrpoV-IO3pCQ2VBpNasFa3ns1-mE6-vTjRU3xm6SOW2ZnKpWC9_8WXmiGY9FBApMzjF9jgfw07gky0oaQNw5SckOxxjSdLjQp-FEss9Z7XtNlxgP0qK21mDqkNaKmSXVmwaPM0JvHysW00V3NLcuQ1MyKGNHQAgxcX-V0m93xwf22EfDYZedd-Fw8Xl1pNRTOORkr5vP7tVk5_HTTaSqUuzGEZlydlyGAqYkfTl2tG9N5T0sOJZ1ewL9AImHkzByXXv3DqRDDet70su8A00mgqH14aTns937aSQxh-lhv0iR4wBrykhLLx-9QpuPKNcMMhX5_YLiLcN3g__JT_OWt3vShqO5RoSVm3">Processo di Eliminazione degli Attributi dell'Utente.</a></span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 10.7 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/TLFDZjD03BxdAQnUkB3x03sWNR55ue8G2-B2nKcSTaGw3cDFIzyUUqeIfkpUHlNdxyTVyo2AIVDnX2SQIGD7u06-2QKt0e-gARHPIHhCoZ4VMqeDTie9DexP00faUpHDox_djISwXOwQoOX35oQC2fllE1ezV8oc5pigYpXDKAES01xt5FNAZ0t57epwol-5nak8U_XiEvTwSvTGSYBOnPx3ttMYIMlK1-efeQTquBGW1qEkKb0YmTqxTxWrpoV-IO3pCQ2VBpNasFa3ns1-mE6-vTjRU3xm6SOW2ZnKpWC9_8WXmiGY9FBApMzjF9jgfw07gky0oaQNw5SckOxxjSdLjQp-FEss9Z7XtNlxgP0qK21mDqkNaKmSXVmwaPM0JvHysW00V3NLcuQ1MyKGNHQAgxcX-V0m93xwf22EfDYZedd-Fw8Xl1pNRTOORkr5vP7tVk5_HTTaSqUuzGEZlydlyGAqYkfTl2tG9N5T0sOJZ1ewL9AImHkzByXXv3DqRDDet70su8A00mgqH14aTns937aSQxh-lhv0iR4wBrykhLLx-9QpuPKNcMMhX5_YLiLcN3g__JT_OWt3vShqO5RoSVm3">Processo di Eliminazione degli Attributi dell'Utente.</a></span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Passo 1:</strong> L'Utente richiede l'eliminazione degli attributi invocando la funzione di eliminazione degli attributi dell'Istanza del Wallet.</p>
@@ -195,20 +195,20 @@
 <p><strong>Passo 3:</strong> L'Utente seleziona la Relying Party di destinazione per l'eliminazione degli attributi.</p>
 <p><strong>Passi 4 - 5:</strong> L'Istanza del Wallet ottiene la Entity Configuration della Relying Party all'endpoint ./well-known/ della Federazione. L'URL o l'Endpoint di Cancellazione (<code class="docutils literal notranslate"><span class="pre">erasure_endpoint</span></code>) può essere trovato all'interno del parametro dei metadati (<a class="reference internal" href="test-plans-wallet-provider.html#user-attribute-deletion-testcases"><span class="std std-ref">WP_116</span></a>).</p>
 <dl class="simple">
-<dt><strong>Passo 6:</strong> L'Istanza del Wallet registra le informazioni rilevanti della Richiesta di Cancellazione. Questi log DEVONO includere almeno (<a class="reference internal" href="test-plans-wallet-provider.html#user-attribute-deletion-testcases"><span class="std std-ref">WP_117a</span></a>):</dt><dd><ul class="simple">
+<dt><strong>Passo 6:</strong> L'Istanza del Wallet registra le informazioni rilevanti della Richiesta di Cancellazione come definito in <a class="reference internal" href="wallet-instance-dashboard.html#wallet-instance-dashboard-transaction-registry"><span class="std std-ref">Dashboard dell’Istanza del Wallet e Registrazione delle Transazioni</span></a>. Questi log DEVONO includere almeno (<a class="reference internal" href="test-plans-wallet-provider.html#user-attribute-deletion-testcases"><span class="std std-ref">WP_117a</span></a>):</dt><dd><ul class="simple">
 <li><p>la data della richiesta,</p></li>
 <li><p>la Relying Party a cui è stata fatta la richiesta,</p></li>
 <li><p>gli attributi di cui è stata richiesta la rimozione.</p></li>
 </ul>
 </dd>
 </dl>
-<p><strong>Passi 7 - 8:</strong> L'Istanza del Wallet reindirizza l'Utente all'Endpoint di Cancellazione. DEVE inoltre garantire che sia presente un meccanismo di callback per consentire all'User-Agent di notificare all'Istanza del Wallet (e quindi all'Utente) dopo la Risposta di Cancellazione (<a class="reference internal" href="test-plans-wallet-provider.html#user-attribute-deletion-testcases"><span class="std std-ref">WP_118</span></a>). I dettagli sulla Richiesta di Cancellazione si trovano in <a class="reference internal" href="relying-party-remote-flow-endpoints.html#relying-party-remote-flow-endpoints-richiesta-di-cancellazione"><span class="std std-ref">Richiesta di Cancellazione</span></a> (<a class="reference internal" href="test-plans-wallet-provider.html#user-attribute-deletion-testcases"><span class="std std-ref">WP_117</span></a>).</p>
+<p><strong>Passi 7 - 8:</strong> L'Istanza del Wallet reindirizza l'Utente all'Endpoint di Cancellazione. DEVE inoltre garantire che sia presente un meccanismo di callback per consentire all'User-Agent di notificare all'Istanza del Wallet (e quindi all'Utente) dopo la Risposta di Cancellazione (<a class="reference internal" href="test-plans-wallet-provider.html#user-attribute-deletion-testcases"><span class="std std-ref">WP_118</span></a>). I dettagli sulla Richiesta di Cancellazione si trovano in <a class="reference internal" href="relying-party-endpoints.html#richiesta-di-cancellazione"><span class="std std-ref">Richiesta di Cancellazione</span></a> (<a class="reference internal" href="test-plans-wallet-provider.html#user-attribute-deletion-testcases"><span class="std std-ref">WP_117</span></a>).</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>La pagina web della Relying Party autenticherà l'Utente con un Livello di Garanzia appropriato utilizzando qualsiasi metodo come CIE o la presentazione dell'Attestato Elettronico di Dati di Identificazione Personale. Il meccanismo specifico utilizzato per l'autenticazione è lasciato alla Relying Party. Dopo aver autenticato l'Utente, la Relying Party PUÒ richiedere all'Utente di eseguire ulteriori passaggi necessari per l'eliminazione degli attributi, ad esempio, potrebbe richiedere all'Utente di confermare l'operazione di eliminazione.</p>
 </div>
 <p><strong>Passo 9:</strong> Dopo aver autenticato con successo l'Utente, la Relying Party DEVE eliminare tutti gli attributi legati all'Utente in suo possesso.</p>
-<p><strong>Passo 10:</strong> La Relying Party restituisce la Risposta di Cancellazione sotto forma di Risposta HTTP all'User-Agent e include l'URL di callback se fornito nella Richiesta di Cancellazione. I dettagli sulla Risposta di Cancellazione si trovano in <a class="reference internal" href="relying-party-remote-flow-endpoints.html#relying-party-remote-flow-endpoints-risposta-di-cancellazione"><span class="std std-ref">Risposta di Cancellazione</span></a>.</p>
+<p><strong>Passo 10:</strong> La Relying Party restituisce la Risposta di Cancellazione sotto forma di Risposta HTTP all'User-Agent e include l'URL di callback se fornito nella Richiesta di Cancellazione. I dettagli sulla Risposta di Cancellazione si trovano in <a class="reference internal" href="relying-party-endpoints.html#risposta-di-cancellazione"><span class="std std-ref">Risposta di Cancellazione</span></a>.</p>
 <p><strong>Passi 11 - 12:</strong> L'User-Agent utilizza il metodo implementato per restituire la Risposta di Cancellazione all'Istanza del Wallet. Infine, l'Utente viene notificato tramite l'Istanza del Wallet riguardo all'esito della Risposta di Cancellazione (<a class="reference internal" href="test-plans-wallet-provider.html#user-attribute-deletion-testcases"><span class="std std-ref">WP_119</span></a>).</p>
 </section>
 
@@ -226,13 +226,13 @@
             <div class="left">
                 
                 <a href="wallet-instance-revocation.html">
-                    <span class="icon">&lt;</span><span><span class="section-number">10.1.4.2.3. </span>Revoca dell'Istanza del Wallet</span></a>
+                    <span class="icon">&lt;</span><span><span class="section-number">10.1.4.2.4. </span>Revoca dell'Istanza del Wallet</span></a>
                 
             </div>
 
             <div class="right">
                 
-                    <a href="backup-restore.html"><span><span class="section-number">10.1.5. </span>Backup e Ripristino</span><span class="icon">&gt;</span></a>
+                    <a href="wallet-instance-dashboard.html"><span><span class="section-number">10.1.4.2.6. </span>Dashboard dell’Istanza del Wallet e Registrazione delle Transazioni</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
@@ -240,7 +240,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 13/01/2026.
+      Ultimo aggiornamento 22/06/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

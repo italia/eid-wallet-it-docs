@@ -8,17 +8,17 @@
 
 Endpoint di PDND Signal Hub
 -----------------------------
-All'interno della piattaforma PDND, Signal Hub funge da intermediario tra un Provider PDND e i suoi Consumer PDND per facilitare le segnalazioni di variazioni dei dati. Per abilitare tale funzionalità, il gestore della piattaforma PDND, di seguito denominato PDND Manager, agendo come PDND e-Service Provider, fornisce due e-Service PDND di Signal Hub:
-  - l'e-Service di Raccolta Segnali che viene utilizzato dai PDND e-Service Provider per depositare i Segnali; in questo caso, il PDND e-Service Provider agisce come Consumer dell'e-Service di Raccolta Segnali;
-  - l'e-Service di Distribuzione Segnali che viene utilizzato dai PDND e-Service Consumer per recuperare i Segnali raccolti; in questo caso, il PDND e-Service Consumer agisce anche come Consumer dell'e-Service di Distribuzione Segnali.
+All'interno della piattaforma PDND, Signal Hub funge da intermediario tra un Provider PDND e i suoi Consumer PDND per facilitare le segnalazioni di variazioni dei dati. Per abilitare tale funzionalità, il gestore della piattaforma PDND, di seguito denominato PDND Manager, agendo come e-Service PDNDProvider, fornisce due e-Service PDND di Signal Hub:
+  - l'e-Service di Raccolta Segnali che viene utilizzato dai e-Service PDNDProvider per depositare i Segnali; in questo caso, il e-Service PDNDProvider agisce come Consumer dell'e-Service di Raccolta Segnali;
+  - l'e-Service di Distribuzione Segnali che viene utilizzato dai e-Service PDNDConsumer per recuperare i Segnali raccolti; in questo caso, il e-Service PDNDConsumer agisce anche come Consumer dell'e-Service di Distribuzione Segnali.
 
-Al fine di proteggere la privacy del soggetto del Segnale, il PDND Manager richiede a ciascun PDND e-Service Provider di pseudonimizzare l'identificativo del soggetto utilizzato all'interno dei Segnali e di configurare un endpoint di pseudonimizzazione per il proprio PDND e-Service. Questo endpoint di pseudonimizzazione viene utilizzato dagli e-Service Consumer per ottenere l'algoritmo di pseudonimizzazione al fine di calcolare lo Pseudonimo del soggetto del Segnale. Solo il PDND e-Service Provider e i suoi PDND e-Service Consumer sono in grado di collegare un Segnale ai dati personali del soggetto, mentre il PDND Manager gestisce solo gli identificativi pseudonimizzati.
+Al fine di proteggere la privacy del soggetto del Segnale, il PDND Manager richiede a ciascun e-Service PDNDProvider di pseudonimizzare l'identificativo del soggetto utilizzato all'interno dei Segnali e di configurare un endpoint di pseudonimizzazione per il proprio PDND e-Service. Questo endpoint di pseudonimizzazione viene utilizzato dagli e-Service Consumer per ottenere l'algoritmo di pseudonimizzazione al fine di calcolare lo Pseudonimo del soggetto del Segnale. Solo il e-Service PDNDProvider e i suoi e-Service PDNDConsumer sono in grado di collegare un Segnale ai dati personali del soggetto, mentre il PDND Manager gestisce solo gli identificativi pseudonimizzati.
 
 Per specifiche tecniche dettagliate e linee guida per l'implementazione, si prega di fare riferimento alla `Signal Hub Guide`_.
 
 Nel contesto dell'IT Wallet, le Fonti Autentiche interagiscono con Signal Hub per notificare ai Fornitori di Attestati Elettronici i cambiamenti nello stato e/o nel valore degli Attributi associati agli Attestati Elettronici. Nello specifico,
   - la Fonte Autentica depositerà i Segnali in Signal Hub, svolgendo quindi il ruolo di PDND Consumer dell'e-Service di Raccolta Segnali;
-  - il Fornitore di Attestati Elettronici recupererà i Segnali da Signal Hub, e svolgerà quindi il ruolo di PDND e-Service Consumer dell'e-Service di Distribuzione Segnali.
+  - il Fornitore di Attestati Elettronici recupererà i Segnali da Signal Hub, e svolgerà quindi il ruolo di e-Service PDNDConsumer dell'e-Service di Distribuzione Segnali.
 
 .. note::
   Nel contesto dell'IT Wallet, a causa della particolare natura dei dati scambiati, la pseudonimizzazione del soggetto del Segnale non è necessaria poiché l'identificativo è già opaco e non correlato al soggetto dell'Attestato Elettronico. Pertanto, la Fonte Autentica non ha bisogno di configurare un endpoint di pseudonimizzazione per i suoi e-Service.
@@ -67,10 +67,10 @@ L'endpoint dell'e-Service di Raccolta Segnali viene utilizzato dalle Fonti Auten
   * - **objectType**
     - OBBLIGATORIO. Questo è un campo libero che la Fonte Autentica PUÒ utilizzare per specificare ulteriormente il Segnale.
   * - **objectId**
-    - OBBLIGATORIO. Il soggetto a cui è legato il Segnale. Se il Segnale ha ``signalType``:
-    
-      - ``CREATE``, allora DEVE essere impostato sul valore ``jti`` che il Fornitore di Attestati Elettronici ha utilizzato nel token Agid-JWT-Signature della richiesta `get attributes` alla Fonte Autentica per ottenere gli Attributi relativi a un Attestato Elettronico specifico (vedere :ref:`authentic-source-endpoint:Get Attribute Claims`);
-      - ``UPDATE``, allora DEVE essere impostato sull'identificatore univoco del database della Fonte Autentica degli Attributi dell'Attestato Elettronico a cui si riferisce il Segnale.
+    - OBBLIGATORIO. Il soggetto a cui è legato il Segnale. DEVE essere impostato sul valore :term:`Object_id` (``object_id``) che la Fonte Autentica ha utilizzato nel payload della risposta del `get attributes` verso il Credential Issuer (vedi :ref:`authentic-source-endpoint:Get Attribute Claims`). Il ``signalType`` del Segnale DEVE essere valorizzato con uno dei seguenti:
+      
+      - ``CREATE``, al fine di notificare la disponibilità degli attributi relativi ad un specifico Attestato Elettronico.
+      - ``UPDATE``, al fine di notificare l'aggiornamento degli attributi relativi ad un specifico Attestato Elettronico.
       
   * - **signalType**
     - OBBLIGATORIO. Tipo di Segnale. DEVE essere uno dei seguenti:
@@ -82,7 +82,7 @@ L'endpoint dell'e-Service di Raccolta Segnali viene utilizzato dalle Fonti Auten
     - OBBLIGATORIO. e-Service a cui è legato il Segnale. DEVE corrispondere al valore dell'Id dell'e-Service di cui la Fonte Autentica è Provider.
 
 .. note::
-  Nel Deferred Issuance Flow, cioè quando la Fonte Autentica notifica al Fornitore di Attestati Elettronici la disponibilità degli Attributi dell'Attestato Elettronico tramite Signal Hub; entrambe le entità DEVONO tenere traccia del valore ``jti`` del Fornitore di Attestati Elettronici utilizzato nell'Agid-JWT-Signature della richiesta `get attributes`. Questo è necessario poiché l'``objectId`` del Segnale DEVE essere impostato su quel valore ``jti`` quando il Segnale ha ``signalType`` valorizzato con ``CREATE``.
+  Nel Deferred Issuance Flow, cioè quando la Fonte Autentica notifica al Fornitore di Attestati Elettronici la disponibilità degli Attributi dell'Attestato Elettronico tramite Signal Hub; entrambe le entità DEVONO tenere traccia del valore ``object_id`` della Fonte Autentica utilizzato nella risposta del `get attributes`. Questo è necessario poiché l'``objectId`` del Segnale DEVE essere impostato su quel valore ``object_id`` quando il Segnale ha il ``signalType`` valorizzato con ``CREATE``.
 
 Un esempio non normativo di richiesta di richiesta di Raccolta Segnali può essere trovato nel `Signal Hub push`_.
 
@@ -101,7 +101,7 @@ La response dell'e-Service di Raccolta Segnale è specificata nel `Signal Hub pu
 Se si verifica un errore, la response DEVE aderire alla specifica definita nel `Signal Hub push-yaml`_.
 
 .. note::
-    Lna Specifica OpenAPI completa dell'e-Service di Raccolta Segnali è disponibile nel `Signal Hub push-yaml`_.
+    La Specifica OpenAPI completa dell'e-Service di Raccolta Segnali è disponibile nel `Signal Hub push-yaml`_.
 
 La Fonte Autentica DEVE implementare la logica necessaria per gestire le richieste all'endpoint dell'e-Service di Raccolta Segnali, nel fare ciò deve considerare i seguenti aspetti:
 
@@ -155,8 +155,8 @@ Dopo che i Segnali sono stati recuperati con successo dal Fornitore di Attestati
 
   - Per ogni Segnale, il Fornitore di Attestati Elettronici DEVE verificare il valore ``SignalType``:
     
-    - se il ``SignalType`` del Segnale è ``UPDATE``, lo stato e/o il valore dell'Attributo associato a un Attestato Elettronico necessitano di aggiornamenti;
-    - se il ``SignalType`` del Segnale è ``CREATE``, gli Attributi richiesti di un Attestato Elettronico specifico sono ora disponibili;
+    - se il ``SignalType`` del Segnale è ``UPDATE`` (l'``objectId`` fa riferimento al :term:`Object_id` della Fonte Autentica), lo stato e/o il valore dell'Attributo associato a un Attestato Elettronico necessitano di aggiornamenti;
+    - se il ``SignalType`` del Segnale è ``CREATE`` (l'``objectId`` corrisponde al :term:`Object_id` della Fonte Autentica), gli Attributi richiesti di un Attestato Elettronico specifico sono ora disponibili;
 
     Se l'``objectId`` non corrisponde ad alcun identificativo valido noto al Fornitore di Attestati Elettronici, il Segnale DEVE essere ignorato. Altrimenti, se corrisponde a un identificativo noto e valido, il Fornitore di Attestati Elettronici DEVE utilizzare l'endpoint PDND :ref:`authentic-source-endpoint:Get Attribute Claims` della Fonte Autentica per recuperare le informazioni aggiornate e, se possibile, applicare il nuovo stato/attributo all'Attestato Elettronico corrispondente.
     
@@ -164,4 +164,4 @@ Dopo che i Segnali sono stati recuperati con successo dal Fornitore di Attestati
 
 .. warning::
 
-  Dati i pattern di sicurezza attualmente supportati da Signal Hub, se la Fonte Autentica richiede il pattern di sicurezza `AUDIT_REST_02` dal Fornitore di Attestati Elettronici, quest'ultimo DEVE revocare l'Attestato Elettronico referenziato nei Segnali con ``signalType`` ``UPDATE`` non potendo contattare la Fonte Autentica per recuperare le informazioni aggiornate senza aver prima autenticato l'Utente.
+  Dati i pattern di sicurezza attualmente supportati da Signal Hub, se la Fonte Autentica richiede il pattern di sicurezza `AUDIT_REST_02` dal Fornitore di Attestati Elettronici, quest'ultimo DEVE revocare l'Attestato Elettronico referenziato nei Segnali con ``signalType`` ``UPDATE`` non potendo contattare la Fonte Autentica per recuperare le informazioni aggiornate senza aver prima autenticato l'Utente. **In questo scenario, la revoca è l'unica azione ammessa.**

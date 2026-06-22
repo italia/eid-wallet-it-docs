@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>13.5. PDND Signal Hub Endpoints &#8212; IT-Wallet Technical Specifications - PR #968</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=59943e95" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
-    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/documentation_options.js?v=350a9c04"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -171,18 +171,18 @@
   <section id="pdnd-signal-hub-endpoints">
 <h1><span class="section-number">13.5. </span>PDND Signal Hub Endpoints<a class="headerlink" href="#pdnd-signal-hub-endpoints" title="Link to this heading">¶</a></h1>
 <dl class="simple">
-<dt>Within the PDND platform, the Signal Hub serves as an intermediary component between PDND Providers and their PDND Consumers to facilitate real-time data variation notifications. To enable this functionality, the PDND Manager, acting in the role of PDND e-Service Provider, offers the following specialized PDND Signal Hub e-Services:</dt><dd><ul class="simple">
-<li><p>the Signal Collection e-Service which is used by PDND e-Service Providers to deposit Signals, since the PDND e-Service Provider acts as Consumer of the Signal Collection e-Service;</p></li>
-<li><p>the Signal Distribution e-Service which is used by PDND e-Service Consumers to retrieve collected Signals, since the PDND e-Service Consumer also acts as Consumer of the Signal Distribution e-Service.</p></li>
+<dt>Within the PDND platform, the Signal Hub serves as an intermediary component between PDND Providers and their PDND Consumers to facilitate real-time data variation notifications. To enable this functionality, the PDND Manager, acting in the role of e-Service PDNDProvider, offers the following specialized PDND Signal Hub e-Services:</dt><dd><ul class="simple">
+<li><p>the Signal Collection e-Service which is used by e-Service PDNDProviders to deposit Signals, since the e-Service PDNDProvider acts as Consumer of the Signal Collection e-Service;</p></li>
+<li><p>the Signal Distribution e-Service which is used by e-Service PDNDConsumers to retrieve collected Signals, since the e-Service PDNDConsumer also acts as Consumer of the Signal Distribution e-Service.</p></li>
 </ul>
 </dd>
 </dl>
-<p>In order to protect the privacy of the Signal's subject, the PDND Manager requires each PDND e-Service Provider to pseudonymize the subject's identifier used within the Signals and set up a pseudonymization endpoint for their PDND e-Service. This pseudonymization endpoint is used by e-Service Consumers to use the pseudonymization algorithm in order to calculate the Signal subject's pseudonym. Only the PDND e-Service Provider and its PDND e-Service Consumers are able to link a Signal to the subject's personal data, while the PDND Manager only handles pseudonymized identifiers.</p>
+<p>In order to protect the privacy of the Signal's subject, the PDND Manager requires each e-Service PDNDProvider to pseudonymize the subject's identifier used within the Signals and set up a pseudonymization endpoint for their PDND e-Service. This pseudonymization endpoint is used by e-Service Consumers to use the pseudonymization algorithm in order to calculate the Signal subject's pseudonym. Only the e-Service PDNDProvider and its e-Service PDNDConsumers are able to link a Signal to the subject's personal data, while the PDND Manager only handles pseudonymized identifiers.</p>
 <p>For detailed technical specifications and implementation guidelines, please refer to the <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub">Signal Hub Guide</a>.</p>
 <dl class="simple">
 <dt>In the context of the IT Wallet, Authentic Sources interact with the Signal Hub to notify Credential Issuers about changes in the status and/or value of attributes associated with Digital Credentials. Specifically,</dt><dd><ul class="simple">
 <li><p>the Authentic Source will deposit Signals in the Signal Hub, thus playing the role of PDND Consumer of the Signal Collection e-Service;</p></li>
-<li><p>the Credential Issuer will retrieve Signals from the Signal Hub, and will thus play the role of PDND e-Service Consumer of the Signal Distribution e-Service.</p></li>
+<li><p>the Credential Issuer will retrieve Signals from the Signal Hub, and will thus play the role of e-Service PDNDConsumer of the Signal Distribution e-Service.</p></li>
 </ul>
 </dd>
 </dl>
@@ -241,10 +241,10 @@
 <td><p>REQUIRED. Using this field the Authentic Source MAY use to further specify the Signal.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>objectId</strong></p></td>
-<td><p>REQUIRED. The subject to which the Signal is bound. If the Signal has <code class="docutils literal notranslate"><span class="pre">signalType</span></code>:</p>
+<td><p>REQUIRED. The subject to which the Signal is bound. It MUST be set to the Authentic Source's <a class="reference internal" href="defined-terms.html#term-Object_id"><span class="xref std std-term">Object_id</span></a> (<code class="docutils literal notranslate"><span class="pre">object_id</span></code>) used in the <cite>get attributes</cite> payload response to the Credential Issuer (see <a class="reference internal" href="authentic-source-endpoint.html#get-attribute-claims"><span class="std std-ref">Get Attribute Claims</span></a>). The Signal <code class="docutils literal notranslate"><span class="pre">signalType</span></code> MUST be valued with one of the following:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">CREATE</span></code>, then it MUST be set to the <code class="docutils literal notranslate"><span class="pre">jti</span></code> value the Credental Issuer used in the Agid-JWT-Signature token of the <cite>get attributes</cite> request to the Authentic Source to obtain the attributes related to a specific Digital Credential (see <a class="reference internal" href="authentic-source-endpoint.html#get-attribute-claims"><span class="std std-ref">Get Attribute Claims</span></a>);</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">UPDATE</span></code>, then it MUST be set to the Authentic Source's unique database identifier of the Digital Credential's attributes the Signal refers to.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CREATE</span></code>, in order to notify the availability of the attributes related to a specific Digital Credential.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">UPDATE</span></code>, in order to notify the updating of the attributes related to a specific Digital Credential.</p></li>
 </ul>
 </td>
 </tr>
@@ -263,9 +263,9 @@
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>In the deffered issuance flow, i.e., when the Authentic Source notifies the Credential Issuer of the availability of the Digital Credential's attributes via Signal Hub; both entities MUST keep track of the Credential Issuer's <code class="docutils literal notranslate"><span class="pre">jti</span></code> value used in the Agid-JWT-Signature of the <code class="docutils literal notranslate"><span class="pre">get</span> <span class="pre">attributes</span></code> request. This is necessary since the <code class="docutils literal notranslate"><span class="pre">objectId</span></code> of the Signal MUST be set to that <code class="docutils literal notranslate"><span class="pre">jti</span></code> value when the Signal has <code class="docutils literal notranslate"><span class="pre">signalType</span></code> with value <code class="docutils literal notranslate"><span class="pre">CREATE</span></code>.</p>
+<p>In the deffered issuance flow, i.e., when the Authentic Source notifies the Credential Issuer of the availability of the Digital Credential's attributes via Signal Hub; both entities MUST keep track of the Authentic Source's <code class="docutils literal notranslate"><span class="pre">object_id</span></code> value used in the <code class="docutils literal notranslate"><span class="pre">get</span> <span class="pre">attributes</span></code> payload response. This is necessary since the <code class="docutils literal notranslate"><span class="pre">objectId</span></code> of the Signal MUST be set to that <code class="docutils literal notranslate"><span class="pre">object_id</span></code> value when the Signal has <code class="docutils literal notranslate"><span class="pre">signalType</span></code> with value <code class="docutils literal notranslate"><span class="pre">CREATE</span></code>.</p>
 </div>
-<p>A non normative example of the Signal Collection request can be found at <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-depositare-un-segnale">Signal Hub push</a>.</p>
+<p>A non-normative example of the Signal Collection request can be found at <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-depositare-un-segnale">Signal Hub push</a>.</p>
 <p>The Signal Collection e-Service response, acknowledging the correct parsing of the request, is specified in <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-depositare-un-segnale">Signal Hub push</a>, and has <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> set to <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. The payload contains the body parameter:</p>
 <table class="docutils align-default" id="table-signal-deposit-response-parameters">
 <colgroup>
@@ -330,7 +330,7 @@
 </ul>
 </div></blockquote>
 <p>Regardless of the response code used, the response has <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> set to <code class="docutils literal notranslate"><span class="pre">application/json</span></code> an the header parameters indicated in <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-recuperare-i-segnali">Signal Hub pull</a>. The body parameter <code class="docutils literal notranslate"><span class="pre">lastSignalId</span></code>, referencing the <code class="docutils literal notranslate"><span class="pre">signalId</span></code> of the last Signal transmitted by the Signal Distribution e-Service is added to the response's payload.</p>
-<p>In <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-recuperare-i-segnali">Signal Hub pull</a> can be found non normative examples of a Signal Distribution requests and responses.</p>
+<p>In <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-recuperare-i-segnali">Signal Hub pull</a> can be found non-normative examples of a Signal Distribution requests and responses.</p>
 <p>If any error occurs during the request parsing, the response MUST adhere to the error format defined in <a class="reference external" href="https://raw.githubusercontent.com/pagopa/interop-signalhub-core/refs/tags/1.0.1/docs/openAPI/pull-signals.yaml">Signal Hub pull-yaml</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -341,7 +341,7 @@
 <div><ul class="simple">
 <li><p>Signals are queried and retrieved per PDND e-Service, meaning that the Credential Issuer MUST implement a poll cycle for each e-Service ID;</p></li>
 <li><p>the retention period of Signals in the Signal Hub is specified in <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub">Signal Hub Guide</a>. Signals older than the specified retention period are not available for retrieval;</p></li>
-<li><p>the Signal Hub does not keep track of the last <code class="docutils literal notranslate"><span class="pre">signalId</span></code> notified to a specific Credential Issuer. Each Credential Issuer MUST keep track of the last <code class="docutils literal notranslate"><span class="pre">signalId</span></code> it has received for each PDND e-Service ID;</p></li>
+<li><p>the Signal Hub does not keep track of the last <code class="docutils literal notranslate"><span class="pre">signalId</span></code> notified to a specific Credential Issuer. Each Credential Issuer MUST keep track of the last <code class="docutils literal notranslate"><span class="pre">signalId</span></code> it has received for each e-Service PDNDID;</p></li>
 <li><p>the Signal Distribution e-Service endpoint returns Signals in batches. The maximal size the batch is specified in <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub">Signal Hub Guide</a>. The Signal Distribution e-Service will indicate if additional Signals are available for retrieval.</p></li>
 </ul>
 </div></blockquote>
@@ -354,8 +354,8 @@
 <div><ul>
 <li><p>For each Signal, the Credential Issuer MUST check the <code class="docutils literal notranslate"><span class="pre">SignalType</span></code> value:</p>
 <ul class="simple">
-<li><p>if the Signal <code class="docutils literal notranslate"><span class="pre">SignalType</span></code> is <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code>, the status and/or value of the attribute associated with a Digest Credential need updates;</p></li>
-<li><p>if the Signal <code class="docutils literal notranslate"><span class="pre">SignalType</span></code> is <code class="docutils literal notranslate"><span class="pre">CREATE</span></code>, the requested attributes of a specific Digital Credential are now available;</p></li>
+<li><p>if the Signal <code class="docutils literal notranslate"><span class="pre">SignalType</span></code> is <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> (where <code class="docutils literal notranslate"><span class="pre">objectId</span></code> refers to the <a class="reference internal" href="defined-terms.html#term-Object_id"><span class="xref std std-term">Object_id</span></a> of the Authentic Source), the status and/or value of the attribute associated with a Digital Credential need updates;</p></li>
+<li><p>if the Signal <code class="docutils literal notranslate"><span class="pre">SignalType</span></code> is <code class="docutils literal notranslate"><span class="pre">CREATE</span></code> (where <code class="docutils literal notranslate"><span class="pre">objectId</span></code> refers to the <a class="reference internal" href="defined-terms.html#term-Object_id"><span class="xref std std-term">Object_id</span></a> of the Authentic Source), the requested attributes of a specific Digital Credential are now available;</p></li>
 </ul>
 <p>If the <code class="docutils literal notranslate"><span class="pre">objectId</span></code> does not correspond to any valid identifier known to the Credential Issuer, the Signal MUST be ignored. Otherwise, if it corresponds to a known and valid identifier, the Credential Issuer MUST use the <a class="reference internal" href="authentic-source-endpoint.html#get-attribute-claims"><span class="std std-ref">Get Attribute Claims</span></a> PDND endpoint of the Authentic Source to retrieve the updated information and, if applicable, apply the new status to the corresponding Credential.</p>
 <p>When the Signal has been processed, the Credential Issuer will either move to the next Signal and update its <code class="docutils literal notranslate"><span class="pre">signalId</span></code> counter; or, if there are no more Signals to process, it will resume the Pull cycle.</p>
@@ -364,7 +364,7 @@
 </div></blockquote>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Given Signal Hub's currently supported security patterns, if the Authentic Source requires the <cite>AUDIT_REST_02</cite> security pattern from the Credential Issuer, the latter MUST revoke the Digital Credential referenced in Signals with <code class="docutils literal notranslate"><span class="pre">signalType</span></code> <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> since it cannot contact the Authentic Source to retrieve the updated information without having authenticated the User before.</p>
+<p>Given Signal Hub's currently supported security patterns, if the Authentic Source requires the <cite>AUDIT_REST_02</cite> security pattern from the Credential Issuer, the latter MUST revoke the Digital Credential referenced in Signals with <code class="docutils literal notranslate"><span class="pre">signalType</span></code> <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> since it cannot contact the Authentic Source to retrieve the updated information without having authenticated the User before. <strong>In this scenario, revocation is the only allowed action.</strong></p>
 </div>
 </section>
 </section>
@@ -420,7 +420,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 13/01/2026.
+      Last updated on 22/06/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

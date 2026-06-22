@@ -5,11 +5,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>10.1.4.2. Funzionalità dell&#39;Istanza del Wallet &#8212; IT-Wallet Technical Specifications - PR #968</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <title>10.1.4.2. Funzionalità dell&#39;Istanza del Wallet &#8212; IT-Wallet Specifiche Tecniche - PR #968</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=59943e95" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
-    <script src="_static/documentation_options.js?v=3fd72285"></script>
+    <script src="_static/documentation_options.js?v=53f44254"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/translations.js?v=da26b4cc"></script>
@@ -33,7 +33,7 @@
         <p id="toggle_sidebar">
             <a href="#" title="Toggle sidebar">|||</a>
         </p>
-        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Specifications - PR #968</a></h1>
+        <h1><a href="index.html" title="Go to homepage">IT-Wallet Specifiche Tecniche - PR #968</a></h1>
             <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
     
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
@@ -183,7 +183,8 @@
 <blockquote>
 <div><ul class="simple">
 <li><p>Registrazione del Wallet (dettagliata in <a class="reference internal" href="wallet-instance-registration.html#inizializzazione-e-registrazione-dell-istanza-del-wallet"><span class="std std-ref">Inizializzazione e Registrazione dell'Istanza del Wallet</span></a>),</p></li>
-<li><p>Emissione della Wallet App Attestation e della Wallet Unit Attestation (descritta in dettaglio in <a class="reference internal" href="wallet-attestation-issuance.html#emissione-della-wallet-app-e-wallet-unit-attestation"><span class="std std-ref">Emissione della Wallet App e Wallet Unit Attestation</span></a>),</p></li>
+<li><p>Emissione della Wallet Instance Attestation (descritta in dettaglio in <a class="reference internal" href="wallet-instance-attestation-issuance.html#emissione-della-wallet-instance-attestation"><span class="std std-ref">Emissione della Wallet Instance Attestation</span></a>),</p></li>
+<li><p>Emissione della Wallet Unit Attestation (descritta in dettaglio in <a class="reference internal" href="wallet-attestation-issuance.html#emissione-della-wallet-unit-attestation"><span class="std std-ref">Emissione della Wallet Unit Attestation</span></a>),</p></li>
 <li><p>Revoca del Wallet (dettagliata in <a class="reference internal" href="wallet-instance-revocation.html#revoca-dell-istanza-del-wallet"><span class="std std-ref">Revoca dell'Istanza del Wallet</span></a>) e</p></li>
 <li><p>Cancellazione degli attributi presentati (dettagliata in <a class="reference internal" href="user-attribute-deletion.html#eliminazione-degli-attributi-dell-utente"><span class="std std-ref">Eliminazione degli Attributi dell'Utente</span></a>).</p></li>
 </ul>
@@ -197,14 +198,19 @@
 <p class="caption" role="heading"><span class="caption-text">Indice delle Funzionalità dell'Istanza del Wallet</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="wallet-instance-registration.html">10.1.4.2.1. Inizializzazione e Registrazione dell'Istanza del Wallet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-attestation-issuance.html">10.1.4.2.2. Emissione della Wallet App e Wallet Unit Attestation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-instance-revocation.html">10.1.4.2.3. Revoca dell'Istanza del Wallet</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-revocation.html#richiesta-di-revoca-dell-istanza-del-wallet">10.1.4.2.3.1. Richiesta di Revoca dell'Istanza del Wallet</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-revocation.html#risposta-alla-revoca-dell-istanza-del-wallet">10.1.4.2.3.2. Risposta alla Revoca dell'Istanza del Wallet</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-revocation.html#meccanismi-di-verifica-della-revoca">10.1.4.2.3.3. Meccanismi di Verifica della Revoca</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-instance-attestation-issuance.html">10.1.4.2.2. Emissione della Wallet Instance Attestation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-attestation-issuance.html">10.1.4.2.3. Emissione della Wallet Unit Attestation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-instance-revocation.html">10.1.4.2.4. Revoca dell'Istanza del Wallet</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-revocation.html#richiesta-di-revoca-dell-istanza-del-wallet">10.1.4.2.4.1. Richiesta di Revoca dell'Istanza del Wallet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-revocation.html#risposta-alla-revoca-dell-istanza-del-wallet">10.1.4.2.4.2. Risposta alla Revoca dell'Istanza del Wallet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-revocation.html#meccanismi-di-verifica-della-revoca">10.1.4.2.4.3. Meccanismi di Verifica della Revoca</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="user-attribute-deletion.html">10.1.4.2.4. Eliminazione degli Attributi dell'Utente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-attribute-deletion.html">10.1.4.2.5. Eliminazione degli Attributi dell'Utente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-instance-dashboard.html">10.1.4.2.6. Dashboard dell’Istanza del Wallet e Registrazione delle Transazioni</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-dashboard.html#esportazione-e-cancellazione-dei-record-di-transazione">10.1.4.2.6.1. Esportazione e Cancellazione dei Record di Transazione</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </section>
@@ -237,7 +243,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 13/01/2026.
+      Ultimo aggiornamento 22/06/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

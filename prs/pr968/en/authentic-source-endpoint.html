@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>13.4. Authentic Source Endpoints &#8212; IT-Wallet Technical Specifications - PR #968</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=59943e95" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
-    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/documentation_options.js?v=350a9c04"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -173,13 +173,15 @@
 <section id="e-service-pdnd-authentic-source-catalog">
 <h2><span class="section-number">13.4.1. </span>e-Service PDND Authentic Source Catalog<a class="headerlink" href="#e-service-pdnd-authentic-source-catalog" title="Link to this heading">¶</a></h2>
 <p>Public Authentic Sources MUST provide the following e-Service through PDND to provide the Credential Issuer with User's attributes required to the issuance of a Digital Credential.</p>
+<p>The e-service is described via an OpenAPI definition where the request, response, and error messages are detailed.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>A complete OpenAPI Specification is available <span class="raw-html"><a href="OAS3-PDND-AS.html" target="_blank">here</a></span>.</p>
+<p>The base OpenAPI Specification is available <span class="raw-html"><a href="OAS3-PDND-AS.html" target="_blank">here</a></span>.
+This OpenAPI specification can be extended by the Authentic Sources, in fact, the array <code class="docutils literal notranslate"><span class="pre">attributeClaims</span></code> MAY contain additional properties specific to a particular Credential. These additional properties, as defined in the OpenAPI specification, will be inserted into the Credential by the Credential Issuer.</p>
 </div>
 <section id="get-attribute-claims">
 <h3><span class="section-number">13.4.1.1. </span>Get Attribute Claims<a class="headerlink" href="#get-attribute-claims" title="Link to this heading">¶</a></h3>
-<table class="longtable docutils align-default" id="authentic-source-endpoint-get-attribute-claims">
+<table class="longtable docutils align-default" id="table-authentic-source-endpoint-get-attribute-claims">
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 80.0%" />
@@ -196,17 +198,126 @@
 </tr>
 </tbody>
 </table>
+<p>This e-Service MUST be invoked by the Credential Issuer in the following cases:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>During the Credential issuance flow to retrieve the Digital Credential dataset(s). In this situation, the <code class="docutils literal notranslate"><span class="pre">object_id</span></code> claim MUST not be used in the e-service request payload, and the e-service response MUST include all Credential datasets that are <code class="docutils literal notranslate"><span class="pre">VALID</span></code> state and not administratively expired (i.e., <code class="docutils literal notranslate"><span class="pre">expiry_date</span></code> &gt; current date of the e-service request).</p></li>
+<li><p>After receiving an update notification through Signal Hub. In this situation, the <code class="docutils literal notranslate"><span class="pre">object_id</span></code> claim MUST be included in the request payload, and the e-service response MUST return only the Credential dataset identified by the <code class="docutils literal notranslate"><span class="pre">object_id</span></code> claim independently from its state.</p></li>
+</ul>
+</div></blockquote>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <dl class="simple">
 <dt>The Authentic Source and the Credential Issuer MUST implement the necessary logic to keep track of the requests and responses exchanged via this e-Service, in order to be able to correlate them with the related issuance of a Digital Credential. In particular,</dt><dd><ul class="simple">
-<li><p>both MUST save the <code class="docutils literal notranslate"><span class="pre">jti</span></code> value in the Agid-JWT-Signature payload of the request to manage Signals related to the deffered issuance of a Digital Credential (see <a class="reference internal" href="signal-hub-endpoint.html#signals-processing"><span class="std std-ref">Signals Processing</span></a>);</p></li>
+<li><p>both MUST save the <code class="docutils literal notranslate"><span class="pre">object_id</span></code> value in the payload of the response to manage Signals related to the deffered issuance of a Digital Credential (see <a class="reference internal" href="signal-hub-endpoint.html#signals-processing"><span class="std std-ref">Signals Processing</span></a>). Any subsequent notification related to a specific dataset MUST be handled via <code class="docutils literal notranslate"><span class="pre">object_id</span></code>.</p></li>
 <li><p>the Authentic Source MUST record the datetime value provided within the <code class="docutils literal notranslate"><span class="pre">last_updated</span></code> parameter, which indicates the last time the User's attributes were updated in the Authentic Source's database;</p></li>
 <li><p>the Credential Issuer MUST read the <code class="docutils literal notranslate"><span class="pre">last_updated</span></code> value received in the response to be able to check if the User's attributes have changed since the last issuance of a Digital Credential.</p></li>
 </ul>
 </dd>
 </dl>
 </div>
+</section>
+<section id="credential-lifecycle-states-mapping">
+<h3><span class="section-number">13.4.1.2. </span>Credential Lifecycle States Mapping<a class="headerlink" href="#credential-lifecycle-states-mapping" title="Link to this heading">¶</a></h3>
+<p>To ensure consistency between the &quot;Electronic Attestation Lifecycle&quot; documented in <a class="reference internal" href="credential-revocation.html#digital-credential-lifecycle"><span class="std std-ref">Digital Credential Lifecycle</span></a> and the OpenAPI status Enum, the following mapping and operational logic MUST be applied for the <code class="docutils literal notranslate"><span class="pre">status</span></code> field in the <code class="docutils literal notranslate"><span class="pre">attributeClaims</span></code>.</p>
+<p><strong>Directionality and Responsibility:</strong>
+State changes of a Digital Credential at the Credential Issuer level DO NOT imply a change at the Authentic Source. Conversely, any state change of a dataset at the Authentic Source MUST be processed by the Credential Issuer to update the technical Digital Credential status.</p>
+<p><strong>Operational Guidance:</strong></p>
+<ul class="simple">
+<li><p><strong>Technical vs Administrative Validity</strong>: Digital Credentials distinguish between a <strong>technical validity</strong> set by the Credential Issuer (claims <code class="docutils literal notranslate"><span class="pre">iat</span></code> and <code class="docutils literal notranslate"><span class="pre">exp</span></code>) and an <strong>administrative validity</strong> determined by the Authentic Source (claims <code class="docutils literal notranslate"><span class="pre">issuance_date</span></code> and <code class="docutils literal notranslate"><span class="pre">expiry_date</span></code>).</p></li>
+<li><p><strong>Expiry Hierarchy</strong>: The technical expiry (<code class="docutils literal notranslate"><span class="pre">exp</span></code>) MUST NOT be later than the administrative expiry (<code class="docutils literal notranslate"><span class="pre">expiry_date</span></code>). For example, a driver's license may be administratively valid for 10 years, while the issued Digital Credential may have a technical expiry of 1 year.</p></li>
+<li><p><strong>Re-issuance</strong>: If a Digital Credential reaches its technical expiry (<code class="docutils literal notranslate"><span class="pre">exp</span></code>) but the dataset is still administratively valid, the OpenAPI status remains <code class="docutils literal notranslate"><span class="pre">VALID</span></code>, allowing the Digital Credential to be re-issued multiple times within the administrative timeframe.</p></li>
+<li><p><strong>Metadata Verification</strong>: The Credential Issuer MUST verify the effective usability by checking both the technical claims and the administrative dates.</p></li>
+<li><p><strong>Irreversibility</strong>: After a transition to <code class="docutils literal notranslate"><span class="pre">INVALID</span></code>, the Digital Credential cannot return to a <code class="docutils literal notranslate"><span class="pre">VALID</span></code> state. A new issuance is required for a new dataset. This applies to both explicit revocation and administrative expiry.</p></li>
+<li><p><strong>Signal Processing</strong>: Signals MUST be processed sequentially. If a Signal invalidates a Digital Credential, subsequent correction Signals for the same object are ignored.</p></li>
+</ul>
+<p><strong>Status Mapping and Case Logic:</strong></p>
+<p>The Credential Issuer MUST update the Digital Credential <code class="docutils literal notranslate"><span class="pre">status</span></code> based on Signals received from the Authentic Source via Signal Hub (<code class="docutils literal notranslate"><span class="pre">signalType=UPDATE</span></code>):</p>
+<ul class="simple">
+<li><p><strong>Revocation</strong>: If a dataset is revoked at the Authentic Source (status <code class="docutils literal notranslate"><span class="pre">INVALID</span></code>), the Credential Issuer MUST revoke the Digital Credentials that use that dataset (status transition from <code class="docutils literal notranslate"><span class="pre">VALID/SUSPENDED</span></code> to <code class="docutils literal notranslate"><span class="pre">INVALID</span></code>).</p></li>
+<li><p><strong>Suspension</strong>: If a dataset is suspended at the Authentic Source (status <code class="docutils literal notranslate"><span class="pre">SUSPENDED</span></code>), the Credential Issuer MUST suspend the Digital Credentials (status transition from <code class="docutils literal notranslate"><span class="pre">VALID</span></code> to <code class="docutils literal notranslate"><span class="pre">SUSPENDED</span></code>).</p></li>
+<li><p><strong>Restoration</strong>: If a suspended dataset returns to <code class="docutils literal notranslate"><span class="pre">VALID</span></code> at the Authentic Source, the Credential Issuer MUST restore the Digital Credential validity (status transition from <code class="docutils literal notranslate"><span class="pre">SUSPENDED</span></code> to <code class="docutils literal notranslate"><span class="pre">VALID</span></code>).</p></li>
+<li><p><strong>Modification</strong>: If a dataset is modified but remains <code class="docutils literal notranslate"><span class="pre">VALID</span></code> at the Authentic Source, the Credential Issuer—detecting the change via the <code class="docutils literal notranslate"><span class="pre">last_updated</span></code> field—assigns the technical status <code class="docutils literal notranslate"><span class="pre">ATTRIBUTE_UPDATE</span></code> to the Digital Credential. This triggers a re-issuance flow when the Wallet Instance checks the status.</p></li>
+<li><dl class="simple">
+<dt><strong>Administrative Expiry</strong>:</dt><dd><ul>
+<li><p><strong>Scenario A (Metadata-driven)</strong>: If <code class="docutils literal notranslate"><span class="pre">expiry_date</span></code> was shared with the Credential Issuer in metadata, the Authentic Source DOES NOT send Signals upon expiry; the Credential Issuer manages the lifecycle independently ensuring technical <code class="docutils literal notranslate"><span class="pre">exp</span></code> &lt;= <code class="docutils literal notranslate"><span class="pre">expiry_date</span></code>.</p></li>
+<li><p><strong>Scenario B (Signal-driven)</strong>: If <code class="docutils literal notranslate"><span class="pre">expiry_date</span></code> is NOT present in metadata and the dataset expires, the Authentic Source MUST set its status to <code class="docutils literal notranslate"><span class="pre">INVALID</span></code> and send a Signal via Signal Hub; the Credential Issuer then revokes the Digital Credentials (status transition to <code class="docutils literal notranslate"><span class="pre">INVALID</span></code>).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="example-of-authentic-source-response">
+<h3><span class="section-number">13.4.1.3. </span>Example of Authentic Source response<a class="headerlink" href="#example-of-authentic-source-response" title="Link to this heading">¶</a></h3>
+<p>The endpoint response MUST use the HTTP Content-Type set to <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. Below is a concrete example with fictitious data to clarify the expected shape and content.</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-number">Listing 13.1 </span><span class="caption-text">Example of the response JSON payload (Get Attribute Claims)</span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;userClaims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;given_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mario&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;family_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Rossi&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;birth_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1980-01-10&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;birth_place&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Roma&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tax_id_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TINIT-RSSMRA80A01H501Z&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;personal_administrative_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;12345A123A&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;attributeClaims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;object_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;6F9619FF-8B86-D011-B42D-00C04FC964FF&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;institute_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Nome Istituto Universitario&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;programme_type_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Laurea Magistrale&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;degree_course_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Computer Science - Informatica&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;academic_qualification_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-06-25&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;issuance_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-06-25&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;...&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;object_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;7A0720AB-9C97-E122-C53E-11D05FD075GG&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;institute_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Nome Istituto Universitario&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;programme_type_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Laurea Triennale&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;degree_course_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Informatica&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;academic_qualification_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-11-27&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;issuance_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-11-27&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;...&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;metadataClaims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;object_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;6F9619FF-8B86-D011-B42D-00C04FC964FF&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Laurea Magistrale in Informatica 2025&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;VALID&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;last_updated&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-09-15T10:30:00Z&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;object_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;7A0720AB-9C97-E122-C53E-11D05FD075GG&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Laurea Triennale in Informatica 2027&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;VALID&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;last_updated&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-01-10T08:00:00Z&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>In summary:</p>
+<ul class="simple">
+<li><p><strong>userClaims</strong>: user identity data (first name, family name, date/place of birth, tax id or personal administrative number). At least one of <code class="docutils literal notranslate"><span class="pre">tax_id_code</span></code> and <code class="docutils literal notranslate"><span class="pre">personal_administrative_number</span></code> is required when providing user claims.</p></li>
+<li><p><strong>attributeClaims</strong>: array of datasets; each element <strong>MUST</strong> contain <code class="docutils literal notranslate"><span class="pre">object_id</span></code>, <code class="docutils literal notranslate"><span class="pre">status</span></code> (VALID | INVALID | SUSPENDED), <code class="docutils literal notranslate"><span class="pre">last_updated</span></code> (ISO 8601 format), plus any dataset-specific attributes (e.g. <code class="docutils literal notranslate"><span class="pre">nationality</span></code>, <code class="docutils literal notranslate"><span class="pre">residence_address</span></code>).</p></li>
+<li><p><strong>metadataClaims</strong>: array of metadata per dataset (<code class="docutils literal notranslate"><span class="pre">object_id</span></code> required; <code class="docutils literal notranslate"><span class="pre">issuance_date</span></code> and <code class="docutils literal notranslate"><span class="pre">expiry_date</span></code> optional).</p></li>
+<li><p><strong>interval</strong>: required when the request does not include a <code class="docutils literal notranslate"><span class="pre">claims</span></code> parameter; indicates the number of seconds to wait before repeating the request (e.g. 864000 = 10 days).</p></li>
+</ul>
+<p>The successful response (HTTP 200) returns a <code class="docutils literal notranslate"><span class="pre">CredentialClaimsResponse</span></code> object formatted as a <strong>JSON Payload</strong>, accompanied by the <code class="docutils literal notranslate"><span class="pre">Agid-JWT-Signature</span></code> and <code class="docutils literal notranslate"><span class="pre">Digest</span></code> integrity headers.</p>
+<section id="signature-verification-and-key-management">
+<h4><span class="section-number">13.4.1.3.1. </span>Signature Verification and Key Management<a class="headerlink" href="#signature-verification-and-key-management" title="Link to this heading">¶</a></h4>
+<p>The Credential Issuer (Consumer) MUST verify the integrity and authenticity of the JSON response by validating the <code class="docutils literal notranslate"><span class="pre">Agid-JWT-Signature</span></code> and <code class="docutils literal notranslate"><span class="pre">Digest</span></code> headers received from the Authentic Source.</p>
+<p>The signature verification and key retrieval process MUST strictly follow the <strong>INTEGRITY_REST_02</strong> standard pattern defined for <strong>PDND e-Services</strong>.
+Please refer to the Technical Appendix (Section <a class="reference internal" href="e-service-pdnd.html#e-service-pdnd"><span class="std std-ref">e-Service PDND</span></a>) for details on JWT signature validation and specifications for retrieving the Provider's public key via the Interoperability API.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Alternative mechanisms for distributing cryptographic material (e.g., public <code class="docutils literal notranslate"><span class="pre">.well-known</span></code> endpoints directly exposed by the Authentic Source or <em>out-of-band</em> distribution) are not allowed. Trust management MUST remain centralized within the perimeter of the PDND infrastructure as described in the references cited above.</p>
+</div>
+</section>
 </section>
 </section>
 </section>
@@ -228,6 +339,11 @@
 <li><a class="reference internal" href="#">13.4. Authentic Source Endpoints</a><ul>
 <li><a class="reference internal" href="#e-service-pdnd-authentic-source-catalog">13.4.1. e-Service PDND Authentic Source Catalog</a><ul>
 <li><a class="reference internal" href="#get-attribute-claims">13.4.1.1. Get Attribute Claims</a></li>
+<li><a class="reference internal" href="#credential-lifecycle-states-mapping">13.4.1.2. Credential Lifecycle States Mapping</a></li>
+<li><a class="reference internal" href="#example-of-authentic-source-response">13.4.1.3. Example of Authentic Source response</a><ul>
+<li><a class="reference internal" href="#signature-verification-and-key-management">13.4.1.3.1. Signature Verification and Key Management</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -259,7 +375,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 13/01/2026.
+      Last updated on 22/06/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
