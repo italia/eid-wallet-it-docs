@@ -33,7 +33,9 @@ HTML Components
 
 The following official HTML components are available in the `official_resources/ <https://github.com/italia/eid-wallet-it-docs/tree/versione-corrente/official_resources>`_ folder of this repository:
 
-- **Authentication Button Component**: Official HTML/CSS component for authentication via IT-Wallet, based on the `Bootstrap Italia <https://italia.github.io/bootstrap-italia/docs/componenti/buttons/>`_ library - `View the component <https://github.com/italia/eid-wallet-it-docs/tree/versione-corrente/official_resources/authentication-button>`_ - `Live demo <_static/authentication-button/authentication-button.html>`_
+- **Authentication Button Component**: Official HTML/CSS component for authentication via IT-Wallet, based on the `Bootstrap Italia <https://italia.github.io/bootstrap-italia/docs/componenti/buttons/>`__ library - `View the component <https://github.com/italia/eid-wallet-it-docs/tree/versione-corrente/official_resources/authentication-button>`__ - `Live demo <_static/authentication-button/authentication-button.html>`__
+- **Discovery Page**: Official, self-contained HTML/CSS/JS template for selecting the authentication method (digital identity), based on the `Bootstrap Italia <https://italia.github.io/bootstrap-italia/>`__ library - `View the template <https://github.com/italia/eid-wallet-it-docs/tree/versione-corrente/official_resources/discovery-page>`__ - `Live demo <_static/discovery-page/disco.html>`__
+- **IT-Wallet Selection Page**: Official, self-contained HTML/CSS/JS template for selecting the digital wallet to continue authentication, based on the `Bootstrap Italia <https://italia.github.io/bootstrap-italia/>`__ library - `View the template <https://github.com/italia/eid-wallet-it-docs/tree/versione-corrente/official_resources/it-wallet-selection-page>`__ - `Live demo <_static/it-wallet-selection-page/it-wallet.html>`__
 
 Brand Manual
 ^^^^^^^^^^^^
