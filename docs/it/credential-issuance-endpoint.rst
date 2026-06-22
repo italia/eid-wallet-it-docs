@@ -44,7 +44,7 @@ la richiesta all'authorization endpoint del Credential Issuer DEVE utilizzare i 
 
 
 .. note::
-  I client DOVREBBERO selezionare gli algoritmi da utilizzare per la Wallet App Attestation e la relativa prova di possesso sulla base dei campi di metadata dell'Authorization Server
+  I client DOVREBBERO selezionare gli algoritmi da utilizzare per la Wallet Instance Attestation e la relativa prova di possesso sulla base dei campi di metadata dell'Authorization Server
   ``client_attestation_signing_alg_values_supported`` e ``client_attestation_pop_signing_alg_values_supported`` documentati in :ref:`credential-issuer-metadata:Metadata per oauth_authorization_server`.
 
 
@@ -235,7 +235,7 @@ Nella seguente tabella sono elencati gli *Status Code HTTP* e i relativi codici 
       - Il Credential Issuer non può soddisfare la richiesta perché lo scope richiesto non è valido oppure è sconosciuto. (:rfc:`6749#section-5.2`).
     * - *400 Bad Request* [REQUIRED]
       - ``use_fresh_attestation``
-      - Il Wallet App Attestation JWT non è abbastanza recente per essere accettato dal server. Sezione 6.2 di `OAUTH-ATTESTATION-CLIENT-AUTH`_.
+      - Il Wallet Instance Attestation JWT non è abbastanza recente per essere accettato dal server. Sezione 6.2 di `OAUTH-ATTESTATION-CLIENT-AUTH`_.
     * - *401 Unauthorized* [OBBLIGATORIO]
       - ``invalid_client``
       - Il Credential Issuer non può soddisfare la richiesta a causa del fallimento della *Client Authentication* (ad esempio in caso di client sconosciuto, nessun parametro relativo alla Client Authentication presente oppure se il metodo di autenticazione non è supportato). (:rfc:`6749#section-5.2`).
@@ -542,7 +542,7 @@ Nella seguente tabella sono elencati i *status code HTTP* e i relativi codici di
       - Il Credential Issuer non può soddisfare la richiesta a causa di un *DPoP proof* non valido. Sezione 5 del [:rfc:`9449`].
     * - *400 Bad Request* [REQUIRED]
       - ``use_fresh_attestation``
-      - Il Wallet App Attestation JWT non è abbastanza recente per essere accettato dal server. Sezione 6.2 di `OAUTH-ATTESTATION-CLIENT-AUTH`_.
+      - Il Wallet Instance Attestation JWT non è abbastanza recente per essere accettato dal server. Sezione 6.2 di `OAUTH-ATTESTATION-CLIENT-AUTH`_.
     * - *401 Unauthorized* [OBBLIGATORIO]
       - ``invalid_client``
       - Il Credential Issuer non può soddisfare la richiesta a causa del fallimento della *Client Authentication* (ad esempio in caso di client sconosciuto, nessun parametro relativo alla Client Authentication presente oppure se il metodo di autenticazione non è supportato). (:rfc:`6749#section-5.2`).

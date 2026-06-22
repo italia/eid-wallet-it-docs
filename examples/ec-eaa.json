@@ -41,8 +41,8 @@
                 "S256"
             ],
             "acr_values_supported": [
-                "https://trust-registry.it-wallet.example.it/loa/substantial",
-                "https://trust-registry.it-wallet.example.it/loa/high"
+                "https://trust-anchor.example.it/loa/substantial",
+                "https://trust-anchor.example.it/loa/high"
             ],
             "scopes_supported": [
                 "EuropeanDisabilityCard",
@@ -171,19 +171,7 @@
                                     "uri#integrity": "3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg==",
                                     "alt_text": "Testo alternativo all'immagine del logo"
                                 },
-                                "background_color": "#12107c",
-                                "background_image": {
-
-                                    "uri": "https://trust-registry.it-wallet.example.it/images/EuropeanDisabilityCard/image-IT.svg",
-                                    "uri#integrity": "3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg=="
-
-                                },
-                                "watermark_image": {
-
-                                    "uri": "https://trust-registry.it-wallet.example.it/images/EuropeanDisabilityCard/imag-watermark-IT.svg",
-                                    "uri#integrity": "3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg=="
-
-                                }
+                                "background_color": "#12107c"
                             },
                             {
                                 "name": "European Disability Card",
@@ -194,11 +182,7 @@
                                     "uri#integrity": "3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg==",
                                     "alt_text": "Alternative text for the logo image"
                                 },
-                                "background_color": "#12107c",
-                                "background_image": {
-                                    "uri": "https://trust-registry.it-wallet.example.it/images/EuropeanDisabilityCard/image-US.svg",
-                                    "uri#integrity": "3GGZJH7igkyeprXI9Plm3dQsWMYOeuz0MaEK34PC7sOtLfgeoK9scXOvMeiACF8Tk2WOT36NsYCPduoLyOD1Sg=="
-                                }
+                                "background_color": "#12107c"
                             }
                         ],
                         "claims": [
@@ -400,13 +384,7 @@
                                     "uri#integrity": "qU4OnSrnRcL695rQqy9ayCMx6sboaXxEaW5rXvSAmnQ=",
                                     "alt_text": "Testo alternativo all'immagine del logo"
                                 },
-                                "background_color": "#12107c",
-                                "background_image": {
-
-                                    "uri": "https://trust-registry.it-wallet.example.it/images/mDL/image-IT.svg",
-                                    "uri#integrity": "J0HV7GiDjWZrV8Vb6P4f6zeDDXASl3j2xVnoDYqhQK0="
-
-                                }
+                                "background_color": "#12107c"
                             },
                             {
                                 "name": "Mobile Driver's License",
@@ -417,13 +395,7 @@
                                     "uri#integrity": "F5P1wXpfToammXkx6HF++66G534ystjOy7r4UMWwz1lcZYJU8kAKRKtFua7DvZLe",
                                     "alt_text": "Testo alternativo all'immagine del logo"
                                 },
-                                "background_color": "#12107c",
-                                "background_image": {
-
-                                    "uri": "https://trust-registry.it-wallet.example.it/images/mDL/image-US.svg",
-                                    "uri#integrity": "UyDP7JZDp9dpmxq9wbbuam8ylrQ05LsSRQzZVjdJTbJBZm57twaZvE2SnDKzycl0"
-
-                                }
+                                "background_color": "#12107c"
                             }
                         ],
                         "claims": [
@@ -668,9 +640,9 @@
                         "cose_key"
                     ],
                     "credential_signing_alg_values_supported": [
-                        "ES256",
-                        "ES384",
-                        "ES512"
+                        -7,
+                        -35,
+                        -36
                     ],
                     "credential_metadata": {
                         "display": [
@@ -683,13 +655,7 @@
                                     "uri#integrity": "qU4OnSrnRcL695rQqy9ayCMx6sboaXxEaW5rXvSAmnQ=",
                                     "alt_text": "Testo alternativo all'immagine del logo"
                                 },
-                                "background_color": "#12107c",
-                                "background_image": {
-
-                                    "uri": "https://trust-registry.it-wallet.example.it/images/mDL/image-IT.svg",
-                                    "uri#integrity": "J0HV7GiDjWZrV8Vb6P4f6zeDDXASl3j2xVnoDYqhQK0="
-
-                                }
+                                "background_color": "#12107c"
                             },
                             {
                                 "name": "Mobile Driver's License",
@@ -700,13 +666,7 @@
                                     "uri#integrity": "F5P1wXpfToammXkx6HF++66G534ystjOy7r4UMWwz1lcZYJU8kAKRKtFua7DvZLe",
                                     "alt_text": "Testo alternativo all'immagine del logo"
                                 },
-                                "background_color": "#12107c",
-                                "background_image": {
-
-                                    "uri": "https://trust-registry.it-wallet.example.it/images/mDL/image-US.svg",
-                                    "uri#integrity": "UyDP7JZDp9dpmxq9wbbuam8ylrQ05LsSRQzZVjdJTbJBZm57twaZvE2SnDKzycl0"
-
-                                }
+                                "background_color": "#12107c"
                             }
                         ],
                         "claims": [

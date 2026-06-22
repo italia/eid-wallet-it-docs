@@ -16,7 +16,7 @@ as -> sb: Submit registration request
 == Step 2: Technical Validation ==
 
 sb -> sb: Validate Claims Registry compliance\n(format, identifiers, existence)
-sb -> sb: Verify Taxonomy classification\n(domains, purposes)
+sb -> sb: Verify expressed intended purposes over the Taxonomy
 sb -> sb: Check API integration verification\n(PDND compliance or OpenAPI 3.0)
 sb -> sb: Validate response format standards\n(Claims Registry usage, state mapping)
 

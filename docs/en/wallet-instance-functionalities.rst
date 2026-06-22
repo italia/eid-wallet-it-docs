@@ -6,7 +6,8 @@ Wallet Instance Functionalities
 A Wallet Instance, MUST support the following functionalities:
 
   - Wallet Registration (detailed in :ref:`wallet-instance-registration:Wallet Instance Initialization and Registration`),
-  - Wallet App and Wallet Unit Attestation Issuance (detailed in :ref:`wallet-attestation-issuance:Wallet App and Wallet Unit Attestation Issuance`),
+  - Wallet Instance Attestation Issuance (detailed in :ref:`wallet-instance-attestation-issuance:Wallet Instance Attestation Issuance`),
+  - Wallet Unit Attestation Issuance (detailed in :ref:`wallet-attestation-issuance:Wallet Unit Attestation Issuance`),
   - Wallet Revocation (detailed in :ref:`wallet-instance-revocation:Wallet Instance Revocation`) and
   - Deletion of presented attributes (detailed in :ref:`user-attribute-deletion:User's Attributes Deletion`).
 
@@ -20,8 +21,10 @@ Each functionality is described in detail in the following sections.
   :maxdepth: 3
 
   wallet-instance-registration.rst
+  wallet-instance-attestation-issuance.rst
   wallet-attestation-issuance.rst
   wallet-instance-revocation.rst
   user-attribute-deletion.rst
+  wallet-instance-dashboard.rst
 
 

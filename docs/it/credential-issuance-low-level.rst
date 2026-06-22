@@ -126,7 +126,7 @@ Di seguito un esempio non normativo di `PAR Request`.
     OAuth-Client-Attestation: ew0KICAiYWxnIjogIkVTMjU2IiwNCiAgImtpZCI6ICIwYjQ5OGRkZTA5MTcyYWRhNzAxZDA3ZWI2Zjk4NjdhZCIsDQogICJ0eXAiOiAib2F1dGgtY2xpZW50LWF0dGVzdGF0aW9uK2p3dCIsDQogICAgIng1YyI6IFsNCiAgICAgICAgIk1JSURxakNDQXBLZ0F3SUJBZ0lFU0xORXZEQSAuLi4iLA0KICAgICAgICAiTUlJQ3d6Q0NBYXNDQ1FDS1Z5OWVLanZpK2pBIC4uLiIsDQogICAgICAgICJNSUlEVERDQ0FqU2dBd0lCQWdJSkFQbG5RWUguLi4iDQogICAgXQ0KfQ.ew0KICAiaXNzIjogImh0dHBzOi8vd2FsbGV0LXByb3ZpZGVyLmV4YW1wbGUub3JnIiwNCiAgInN1YiI6ICI0N2I5ODIzNjk3OTFkMDgwMDNhNzI4M2YwNTljYjBkMTQ3Yjk4MjM2OTc5MWQwODAwM2E3MjgzZjA1OWNiMGQxIiwNCiAgImNuZiI6IHsNCiAgICAiandrIjogew0KICAgICAgImNydiI6ICJQLTI1NiIsDQogICAgICAia3R5IjogIkVDIiwNCiAgICAgICJ4IjogIjRITnB0SS14cjJwanlSSktHTW56NFdtZG5RRF91SlNxNFI5NU5qOThiNDQiLA0KICAgICAgInkiOiAiTElablNCMzl2RkpoWWdTM2s3alhFNHIzLUNvR0ZRd1p0UEJJUnFwTmxyZyINCiAgICB9DQogIH0sDQogICJ3YWxsZXRfbmFtZSI6ICJXYWxsZXRfdjEiLA0KICAid2FsbGV0X2xpbmsiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS93YWxsZXQvZGV0YWlsX2luZm8uaHRtbCIsDQogICJpYXQiOiAxNzQwMTU4MDQ3LA0KICAiZXhwIjogMTc0MDE1ODE2Nw0KfQ.TCUOw--YhIFkem4gWC9DPovOOB7oBZE5QGjrSzKZHCDw-9s8Hj9OmsGi8M9sD9dJLtBxg_fNroe4E7uEFM5U4w
     OAuth-Client-Attestation-PoP: eyJhbGciOiJFUzI1NiIsInR5cCI6Im9hdXRoLWNsaWVudC1hdHRlc3RhdGlvbi1wb3Arand0In0.ew0KICAiaXNzIjogIiA0N2I5ODIzNjk3OTFkMDgwMDNhNzI4M2YwNTljYjBkMSIsDQogICJhdWQiOiAiaHR0cHM6Ly9hcy5leGFtcGxlLmNvbSIsDQogICJqdGkiOiAiZDI1ZDAwYWItNTUyYi00NmZjLWFlMTktOThmNDQwZjI1MDY0IiwNCiAgImlhdCI6IDE3NDAxNTg2MTcNCn0.B0KOkGi9vMxf3H2Y8rrF-mdLNsuluTvAUbjFfL1Hi-gdaPW7-8ziS9uVh7aTnSAHKWzMfkZLv5q-bxhkglR4PA
 
-    client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$&
+    client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-instance-attestation$&
     request=$SIGNED-JWT
 
 Di seguito un esempio non normativo dell'header e del body della prova di possesso dell'Attestato di Unità di Wallet (WIA-PoP):
@@ -183,7 +183,7 @@ Il Credential Issuer restituisce il ``request_uri`` emesso all'Istanza del Walle
 
 .. code-block:: http
 
-    GET /authorize?client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$&request_uri=urn%3Aietf%3Aparams%3Aoauth%3Arequest_uri%3Abwc4JK-ESC0w8acc191e-Y1LTC2 HTTP/1.1
+    GET /authorize?client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-instance-attestation$&request_uri=urn%3Aietf%3Aparams%3Aoauth%3Arequest_uri%3Abwc4JK-ESC0w8acc191e-Y1LTC2 HTTP/1.1
     Host: eaa-provider.example.org
 
 
@@ -564,12 +564,12 @@ Il seguente diagramma descrive il Re-issuance Flow dell'Attestato Elettronico.
 .. plantuml:: plantuml/credential-reissuance-flow.puml
     :width: 99%
     :alt: La figura illustra il Re-issuance Flow.
-    :caption: `Re-issuance Flow. <https://www.plantuml.com/plantuml/svg/ZLDHYnCn47xFh_ZUlCAT7EXJ3z5Y4GuKZgeS8ZxaTcUxmMscPcRRqrzlahQnUqHq7fQ4p3VVDpFVYjgWnhCIWbltQkvxyh1OkhLJE-1je9QykdZqHAr06G-4STjQfVOIsjDvpgt8I47mOV45Ghw5XMTrdMkiElPGpeZFGW6ZEB-6HQ2r4wLO13pg5NTN3pOY6zviHdy2DhtrdeRd9XLDSesPvogy9I-ujyD0YbilQdr3DmO6m7n56Xpj21_LwYXuxqJnYR-JHySXfK2K8_DP3nB1GER0G9tcsuf-Z2xbxTDuF6Dd1zUcfqffUendoOz5RRgu3XT_U4v0v_7r-l7wnINYz-MtrpDeuhZuIJBBCD0WX0lFCnYSXoXl3OuqhZFbDH4jceP4ZegosahbOwJBXAaybt8hwW99_t_rW7biBYYcg7S3xm_3hVFLEYkHzs4mZGEBzV2qpzvBoqSNUPvcxftssNRF18inwTQJjQQfqvNbA0EktyeX6HBBExx3PFZA24SVbjIej_ABbU4yjOeShF8gM-JlSvydcv9eRZItoS7zobtUrFPTg2Rv93M6oMuvK6wX9hs-r_fcoophm7yprjm_Nz90IjW6sZaUPO8nMS2R21atmsy0>`_
+    :caption: `Re-issuance Flow. <https://www.plantuml.com/plantuml/svg/ZLFVYnCn47xFN_6zsSAT7FYsXtZL8Xme75KvH7p8xSvsWsbICvEs-jURfEtQbOZEmp93vfjlVdnxnwA3n8rLnL7E2o6OzI3gSI07ZQLP6z4MRm9rvCGarn5r3F5u8iHjfuMwAyX0bpdtp942u_tYCvXS1urKs_IcrMAyI-Y2-CGK4DcuDJG2hGqBfIBmKQvzV_sa4xBrcqrqPs0xQEV8FbUvQ6vNgQPKyLjoZ4TjBGdk7OjsBTqgA03DYYGOsX4-Y9R8U9U8yD5_8uVUXvm25f-OBsRW10OA1oprKg8LVOycv-tpUfp7JblJvQTAQJeadylZs6qEJ8_PRvupq3XykJdSlBX2-hx--ceEoHop7yJp0WDP9ioSdqFXqbZyLk54OtfL_3FHecs9-THHwRPI-MGbk6GQdyToA-e3yV1_zO0c3HS4KzHRw_V7vTRuwfCL6--XCBKZYtPmj2_QoyT7dtZ-pDmR6OhidZ4MCVSjPsbDKwSdApOkk1wDJXOabW_-0PFbYqSuwN1CJVrMVh7ZSYfIuQDKNXQ9_7tlJPOfiPH1ovW-c9zbojlQlKUgIJvnXM5wMn-eZ51hlNxN-cN7NTQ1_sQigRzPaYKXR0FjZ8yymQZIm5s2n8tz1G00>`_
 
 **Passo 1**: Il flusso inizia quando l'Utente apre l'Istanza del Wallet: questo passaggio PUÒ essere attivato da una notifica inviata dal Credential Issuer (utilizzando ad esempio uno dei contatti di comunicazione out-of-band registrati durante il flusso di emissione).
 
 **Passo 2**: L'Istanza del Wallet DEVE controllare lo stato di ogni Attestato Elettronico memorizzato, recuperando — se non disponibile — un Token di Stato valido (seguendo il flusso descritto nella Sezione :ref:`credential-revocation:Token di Status List`) come da (:ref:`WP_069 <wallet-credential-issuance-testcases>`).  
-L'Istanza del Wallet DEVE poi verificare (:ref:`WP_070 <wallet-credential-issuance-testcases>`) se un Attestato Elettronico ha lo stato impostato su ``0x03`` - ``UPDATE`` o ``0x04`` - ``ATTRIBUTE_UPDATE``.
+L'Istanza del Wallet DEVE poi verificare (:ref:`WP_070 <wallet-credential-issuance-testcases>`) se un Attestato Elettronico ha lo stato impostato su ``0x03`` - ``UPDATE`` o ``0x0`` - ``ATTRIBUTE_UPDATE``.
  
 Se le condizioni non sono soddisfatte, il flusso DEVE essere interrotto.  
 Altrimenti, l'Istanza del Wallet DEVE verificare i relativi Access Token. Se sono ancora validi, il Passo 3 PUÒ essere saltato (:ref:`WP_071 <wallet-credential-issuance-testcases>`).
@@ -597,6 +597,13 @@ Per garantire l'integrità e la sicurezza del Re-issuance Flow, si applicano le 
   - Refresh Token vincolato al mittente: I Refresh Token DEVONO essere crittograficamente vincolati all'Istanza del Wallet utilizzando il protocollo DPoP. Ciò mitiga il rischio di uso improprio del token, garantendo che solo l'Istanza del Wallet prevista possa utilizzarlo.
 
 .. _credential-issuance-low-level-credential-offer-flow:
+
+.. note::
+    Durante ogni transazione di emissione di un Attestato Elettronico e, ove supportato, ogni transazione di riemissione/aggiornamento eseguita tramite i flussi descritti in questa sezione, l'Istanza del Wallet DEVE creare e mantenere un corrispondente record di transazione nel registro delle transazioni dell'Istanza del Wallet (vedi :ref:`wallet-instance-dashboard:Dashboard dell’Istanza del Wallet e Registrazione delle Transazioni`).
+
+    L'Istanza del Wallet DEVE creare un record di transazione per ogni processo di emissione. Il record DEVE acquisire le informazioni di contesto rilevanti necessarie a garantire tracciabilità e responsabilizzazione della transazione.
+
+    Il record DEVE essere aggiornato man mano che il flusso progredisce per riflettere lo stato della transazione e l'esito (ad es., il/i tipo/i di Attestato emesso/i e la quantità). Nei casi in cui la transazione non si completi con successo, il record DEVE indicare la corrispondente motivazione della mancata conclusione.
 
 Flusso Credential Offer
 -----------------------
@@ -641,7 +648,6 @@ L'oggetto Credential Offer è un oggetto JSON contenente i parametri definiti ne
 
         - **issuer_state**: OPZIONALE. Stringa opaca creata dal Credential Issuer utilizzata per legare la successiva Authorization Request con il Credential Issuer. Il Wallet DEVE includerlo nella successiva Authorization Request quando presente.
         - **authorization_server**: REQUIRED quando il Credential Issuer utilizza più di un authorization server nella sua soluzione. Stringa che identifica l'Authorization Server da utilizzare. Il valore DEVE corrispondere a uno dei valori mappati nell'array ``authorization_servers`` dei metadata del Credential Issuer. NON DEVE essere utilizzato se ``authorization_servers`` è assente o non ha voci multiple.
-        - **scope**: REQUIRED. Valore stringa che mappa a uno specifico tipo di Attestato Elettronico. Il Wallet DEVE utilizzare questo valore di scope nell'Authorization Request. Vedere Sezione 4.1 di [`OPENID4VC-HAIP`_] per i dettagli.
     - Sezione 4.1.1 di [`OpenID4VCI`_] e Sezione 4.1 di [`OPENID4VC-HAIP`_].
 
 .. note::
@@ -657,7 +663,7 @@ La Credential Offer può essere trasmessa per valore utilizzando qualsiasi metod
 
 .. code-block:: text
 
-  openid-credential-offer://?credential_offer=%7B%22credential_issuer%22%3A%22https%3A//credential-issuer.example.org%22%2C%22credential_configuration_ids%22%3A%5B%22dc_sd_jwt_Education_degree%22%5D%2C%22grants%22%3A%7B%22authorization_code%22%3A%7B%22scope%22%3A%22Education_degree%22%7D%7D%7D
+  openid-credential-offer://?credential_offer=%7B%22credential_issuer%22%3A%22https%3A//credential-issuer.example.org%22%2C%22credential_configuration_ids%22%3A%5B%22dc_sd_jwt_Education_degree%22%5D%2C%22grants%22%3A%7B%22authorization_code%22%3A%7B%22issuer_state%22%3A%22eyJhbGciOiJSU0Et...F77QK8%22%7D%7D%7D
 
 L'oggetto Credential Offer decodificato:
 
@@ -668,7 +674,7 @@ L'oggetto Credential Offer decodificato:
     "credential_configuration_ids": ["dc_sd_jwt_Education_degree"],
     "grants": {
       "authorization_code": {
-        "scope": "Education_degree"
+        "issuer_state": "eyJhbGciOiJSU0Et...F77QK8",
       }
     }
   }
@@ -703,7 +709,6 @@ Il Credential Issuer risponde:
     "grants": {
       "authorization_code": {
         "issuer_state": "eyJhbGciOiJSU0Et...F77QK8",
-        "scope": "EuropeanDisabilityCard"
       }
     }
   }
@@ -739,7 +744,7 @@ L'Authentic Source risponde:
     "credential_configuration_ids": ["mso_mdoc_mDL"],
     "grants": {
       "authorization_code": {
-        "scope": "mDL"
+       "issuer_state": "eyJhbGciOiJSU0Et...F77QK8",
       }
     }
   }

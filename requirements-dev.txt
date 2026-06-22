@@ -1,6 +1,7 @@
-# Fix UserWarning: pkg_resources is deprecated
-
-setuptools<81.0.0
+# Pin <82: setuptools 82+ removed pkg_resources (required by sphinxcontrib-redoc/stevedore)
+# The related deprecation warning is silenced in docs/*/conf.py. 
+# See https://github.com/italia/eid-wallet-it-docs/issues/960
+setuptools>=65.0.0,<82
 
 # Basic Dependencies
 
@@ -11,25 +12,25 @@ charset-normalizer==3.3.2
 commonmark==0.9.1
 doc8==1.1.1
 docutils==0.20.1
-idna==3.7
+idna==3.15
 imagesize==1.4.1
 Jinja2==3.1.6
 MarkupSafe==2.1.5
 packaging==24.1
 pbr==6.0.0
-Pygments==2.18.0
+Pygments==2.20.0
 pyparsing==3.1.2
 pytz==2024.1
 PyYAML==6.0.1
 recommonmark==0.7.1
-requests==2.32.4
+requests==2.33.0
 restructuredtext-lint==1.4.0
 snowballstemmer==2.2.0
 Sphinx==7.4.5
 sphinx-theme==1.0
 stevedore==5.2.0
 tomli==2.0.1
-urllib3==2.6.3
+urllib3==2.7.0
 
 # Sphinx and Documentation Extensions
 
@@ -42,10 +43,12 @@ sphinxcontrib-serializinghtml==1.1.10
 sphinxcontrib-redoc==1.6.0
 sphinxcontrib-plantuml==0.30
 myst-parser==4.0.1
+jsonschema>=4.0.0
+pypdf>=4.3.1
 
 # Themes and Graphics
 
 piccolo_theme==0.23.0
-pillow==11.3.0
+pillow==12.2.0
 svglib==1.5.1
 reportlab==4.4.0

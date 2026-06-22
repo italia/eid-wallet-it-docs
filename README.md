@@ -9,6 +9,7 @@
 
 - [Intro](#intro)
 - [Versioning and preview](#versioning-and-preview)
+  - [Branching approach](#branching-approach)
 - [Releases](#releases)
 - [Contributing](#how-to-contribute)
 - [Authors](#authors)
@@ -25,15 +26,12 @@ The repository is structured as sphinx project tree. **The first stable release 
 
 ## Versioning and preview
 
-This project adheres to the [*Semantic
-Versioning*](https://semver.org/) model.
-
-Furthermore, this project uses the git *branches* and *tags* in the following way:
+This project uses the git *branches* and *tags* in the following way:
 * the branch `versione-corrente` contains the last stable version of the documentation;
 * The [release page](https://github.com/italia/eid-wallet-it-docs/releases) of
   this project contains all the released versions of the specifications. For the sake of coherence, the *releases* are made according to the tag names.
 
-Each time a release is created or edited, a preview is built based on the tag the release refers to. 
+Each time a release is created or edited, a preview is built based on the tag the release refers to.
 A preview of the latest editor's copy build, corresponding to the branch `versione-corrente` can be navigated using the following link:
 
 English version:
@@ -44,50 +42,47 @@ Versione Italiana:
 
  - [Ultima versione in corso di sviluppo](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/)
 
+### Branching approach
+
+The repository follows a dual-track strategy:
+
+- **Long-Term Support (LTS)** — The 1.4.x series is the LTS line, maintained on the branch `versione-corrente`. This branch receives fixes and minor updates (e.g. 1.4.1, 1.4.2) to ensure stability for production deployments.
+
+- **Future development (EUDIW)** — Milestones from version 1.5 onward are developed on the `eudiw` branch and tagged as separate scopes. This keeps the EUDI Wallet framework evolution distinct from the current LTS documentation.
+
+- **Transition to EUDIW** — When the IT-Wallet is officially notified as an EUDIW-compliant wallet, the `eudiw` branch will be merged into `versione-corrente`. At that point, the LTS line based on 1.4.x will be considered End-of-Life (EOL), and the merged documentation will become the new main specification.
+
+**LTS scope** — For the 1.4.x LTS series, that may be less than 18 months, the period of support is counted from the publication date of the 1.4.0 release tag on GitHub. Within this window, LTS covers:
+
+- **Documentation fixes**: corrections of errors, clarifications, and alignment with implementation findings.
+- **Security-related updates**: changes required to reflect security fixes or hardening.
+- **Regulatory adjustments**: minor updates needed to stay aligned with national regulation or authoritative guidance, without introducing new features.
+
+LTS does not cover new features, API changes, or modifications that would imply a minor or major version bump beyond the 1.4.x series.
+
 ### Releases
 
 This section contains the references about the official releases of this project.
 
-#### IT-Wallet Releases
-
-Released versions are available in both Italian and English, and can be accessed in HTML and PDF formats.
+#### Stable release
 
 | Version | English | Italian |
 |---------|---------|---------|
-| 1.3.3 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.3.3/en/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.3.3/eid-wallet-it-docs-en-20251223-165425.pdf) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.3.3/it/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.3.3/eid-wallet-it-docs-it-20251223-165425.pdf) |
-| 1.3.2 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.3.2/en/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.3.2/eid-wallet-it-docs-en-20251210-170029.pdf) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.3.2/it/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.3.2/eid-wallet-it-docs-it-20251210-170029.pdf) |
-| 1.3.1 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.3.1/en/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.3.1/eid-wallet-it-docs-en-20251128-101201.pdf) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.3.1/it/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.3.1/eid-wallet-it-docs-it-20251128-101201.pdf) |
-| 1.3.0 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.3.0/en/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.3.0/eid-wallet-it-docs-en-20251105-173944.pdf) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.3.0/it/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.3.0/eid-wallet-it-docs-it-20251105-173944.pdf) |
-| 1.2.1 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.2.1/en/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.2.1/eid-wallet-it-docs-en-20251021-171536.pdf) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.2.1/it/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.2.1/eid-wallet-it-docs-it-20251021-171536.pdf) |
-| 1.2.0 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.2.0/en/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.2.0/eid-wallet-it-docs-en-20251008-145727.pdf) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.2.0/it/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.2.0/eid-wallet-it-docs-it-20251008-145727.pdf) |
-| 1.1.0 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.1.0/en/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.1.0/eid-wallet-it-docs-en-20250731-104027.pdf) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.1.0/it/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.1.0/eid-wallet-it-docs-it-20250731-104027.pdf) |
-| 1.0.2 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.0.2/en/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.0.2/eid-wallet-it-docs-en-20250618-105321.pdf) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.0.2/it/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.0.2/eid-wallet-it-docs-it-20250618-105321.pdf) |
-| 1.0.1 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.0.1/en/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.0.1/eid-wallet-it-docs-en-20250603-153138.pdf) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.0.1/it/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.0.1/eid-wallet-it-docs-it-20250603-153138.pdf) |
-| v1.0.0 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v1.0.0/en/) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v1.0.0/it/) |
+| 1.4.1 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.4.1-2/en/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.4.1-2/eid-wallet-it-docs-en-20260508-172010.pdf) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.4.1-2/it/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.4.1-2/eid-wallet-it-docs-it-20260508-172010.pdf) |
 
-#### IT-Wallet Early Stages Releases
+For previous releases see [RELEASES-HISTORY.md](RELEASES-HISTORY.md).
 
-The following table contains all historical versions before 1.0.0, representing the early development stages of the IT-Wallet product:
+## Build Previews
 
-| Version | English | Italian |
-|---------|---------|---------|
-| v0.9.3 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.9.3/en/) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.9.3/it/) |
-| v0.9.2 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.9.2/en/) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.9.2/it/) |
-| v0.9.1 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.9.1/en/) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.9.1/it/) |
-| v0.9.0 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.9.0/en/) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.9.0/it/) |
-| v0.8.2 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.8.2/en/) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.8.2/it/) |
-| v0.8.1 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.8.1/en/) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.8.1/it/) |
-| v0.8.0 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.8.0/en/) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.8.0/it/) |
-| v0.7.1 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.7.1/en/) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.7.1/it/) |
-| v0.7.0 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.7.0/en/) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.7.0/it/) |
-| v0.6.0 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.6.0/en/) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.6.0/it/) |
-| v0.5.0 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.5.0/en/) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.5.0/it/) |
-| v0.4.1 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.4.1/en/) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/v0.4.1/it/) |
+### Using Github Actions
+
+- access the manual [build frontend](https://github.com/italia/eid-wallet-it-docs/actions/workflows/build-html-manual.yml)
+- insert the Pull Request number using the form and submit the workflow as shown in the image below.
+
+<img width="1894" height="734" alt="image" src="https://github.com/user-attachments/assets/cdc81d14-4665-41c8-b251-385a1170a299" />
 
 
-## Build
-
-HTML
+#### Build HTML with Sphinx
 ````
 pip install -r requirements-dev.txt
 
@@ -101,6 +96,58 @@ sphinx-build -b singlehtml docs/en/  html/
 cd html
 pandoc -o eid-it-wallet-docs.odt index.html
 ````
+
+### Build PDFs (EN and IT) with Docker
+
+You can build the English and Italian PDFs locally using Docker, without installing LaTeX or Sphinx on your machine.
+
+#### Option A: Use the prebuilt image from GitHub Container Registry
+
+A prebuilt image is published on GitHub Container Registry as [`ghcr.io/italia/eidas-it-wallet-docs-builder`](https://github.com/italia/eid-wallet-it-docs/pkgs/container/eidas-it-wallet-docs-builder).
+
+- **1. Pull the image and tag it as `eid-wallet-it-docs`**
+
+```bash
+docker pull ghcr.io/italia/eidas-it-wallet-docs-builder:latest
+docker tag ghcr.io/italia/eidas-it-wallet-docs-builder:latest eid-wallet-it-docs
+```
+
+You can also use a specific digest or tag shown on the package page, e.g.:
+
+```bash
+docker pull ghcr.io/italia/eidas-it-wallet-docs-builder:b235e366abbb852177eb2db39c9b2de2a7b71129
+docker tag ghcr.io/italia/eidas-it-wallet-docs-builder:b235e366abbb852177eb2db39c9b2de2a7b71129 eid-wallet-it-docs
+```
+
+#### Option B: Build the Docker image locally
+
+From the repository root:
+
+```bash
+docker build -t eid-wallet-it-docs .
+```
+
+#### Run the container to generate PDFs (shared for both options)
+
+From the repository root:
+
+```bash
+docker run --rm \
+  -e PDF_BUILD_TAG=1.4.0 \
+  -v "$PWD":/workspace \
+  -w /workspace \
+  eid-wallet-it-docs \
+  bash -lc "./utils/build-pdf-local.sh"
+```
+
+This command:
+
+- uses the `eid-wallet-it-docs` image (either pulled from GHCR and tagged, or built locally);
+- mounts the current repository into `/workspace` inside the container;
+- runs `./utils/build-pdf-local.sh`, which for each language in `docs/en` and `docs/it`:
+  - builds LaTeX with Sphinx,
+  - compiles the main `.tex` file with LuaLaTeX,
+  - and copies the resulting PDFs into the `pdf_output/` directory in your working tree.
 
 
 ## How to contribute

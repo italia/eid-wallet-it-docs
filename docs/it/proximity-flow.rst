@@ -120,8 +120,8 @@ La figura seguente illustra il flusso di basso livello conforme a ISO 18013-5 pe
 
    Fare riferimento a:
 
-   - Sez 8.2.2.1 per ``DeviceEngagement`` tramite QR code
-   - Sez 8.2.2.2 per ``DeviceEngagement`` tramite NFC
+   - :ref:`sec-deviceengagement-qr` per ``DeviceEngagement`` tramite QR code
+   - :ref:`sec-deviceengagement-nfc` per ``DeviceEngagement`` tramite NFC
 
 
 **Passo 6**: L'Istanza di Relying Party genera la sua coppia di chiavi effimera (``EReaderKey.Priv``, ``EReaderKey.Pub``). La chiave privata (``EReaderKey.Priv``) DEVE essere mantenuta segreta, e la chiave pubblica (``EReaderKey.Pub``) DEVE essere utilizzata nel *Session Establishment* (:ref:`PPR-002 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>`).
@@ -169,6 +169,15 @@ Di seguito è riportato un esempio non normativo di ``SessionData`` nella notazi
 **Passo 14**: Una volta completato lo scambio di dati, una delle parti può terminare la sessione. La sessione può essere terminata inviando lo status code per la *Session Termination* in un messaggio ``SessionData``; questo può essere inviato insieme a una la Richiesta mdoc o Risposta mdoc [`ISO18013-5`_ #12.2.4] (:ref:`WP_113c <wallet-credential-presentation-testcases>`). Se viene utilizzato BLE, questo può comportare l'invio di uno *status code* per la *Session Termination* o il comando "End". In questo scenario, il Client GATT (Istanza di Relying Party) DEVE annullare l'iscrizione dalle caratteristiche e disconnettersi dal server GATT (Istanza del Wallet) (:ref:`PPR-007 <test-plans-proximity-presentation:Matrice di Test per il Verificatore di Credenziali in Prossimità>`, :ref:`WP_113b <wallet-credential-presentation-testcases>`, and :ref:`WP_114 <wallet-credential-presentation-testcases>`).
 
 **Considerazione Finale**: Il flusso di presentazione si è concentrato sullo scambio tecnico di dati in contesti di prossimità. È cruciale riconoscere che i flussi di prossimità supervisionati che coinvolgono un verificatore umano svolgono un ruolo vitale in molti casi d'uso (ad esempio, verifica dell'età in un negozio, controllo dell'identità da parte delle forze dell'ordine). L'elemento umano aggiunge un livello di verifica dell'identità attraverso l'ispezione visiva e il confronto, contribuendo agli aspetti di User Binding e garanzia di autenticazione complessiva non completamente catturati in un flusso di presentazione puramente tecnico.
+
+.. note::
+    Durante ciascuna transazione di presentazione di credenziali eseguita tramite il Proximity Flow, la Wallet Instance DEVE creare e mantenere un corrispondente record di transazione nel registro delle transazioni (vedere :ref:`wallet-instance-dashboard:Dashboard dell’Istanza del Wallet e Registrazione delle Transazioni`).
+
+    Il record di transazione DEVE essere creato una volta che la Wallet Instance ha stabilito con successo la sessione e ha accettato il reader per l’elaborazione (ossia, dopo aver decifrato il messaggio ``SessionEstablishment`` e verificato l’autenticazione del reader, Passo 10). A questo punto, il record DEVE includere i metadati della transazione e il contesto della richiesta disponibile in quella fase (ad esempio, il/i tipo/i di attestazione richiesti come ``docType`` e l’/gli identificativo/i degli attributi richiesti), senza registrare alcun valore degli attributi.
+
+    Il record DEVE essere aggiornato man mano che la transazione procede, in modo da riflettere l’evoluzione dello stato della transazione e il contesto del risultato (ad esempio, quanto effettivamente presentato dopo il consenso dell’Utente e la preparazione/invio della risposta, Passi 11–12), senza registrare alcun valore degli attributi.
+
+    Il record DEVE essere finalizzato al termine della transazione, indicando l’esito (ad esempio, completata, fallita o sessione terminata; Passi 13–14 e Session Termination).
 
 .. _sec-deviceengagement-qr:
 

@@ -10,21 +10,21 @@ The IT-Wallet ecosystem operates within a federated trust infrastructure where p
 
 This section outlines the implementation of the Trust Model in an infrastructure that complies with OpenID Federation 1.0 `OID-FED`_. This infrastructure involves a RESTful API for distributing metadata, metadata policies, trust marks, cryptographic public keys and X.509 Certificates, and the revocation status of the participants, also called Federation Entities.
 
-The Infrastructure of trust facilitates the application of a trust assessment mechanism among the parties defined in the `EIDAS-ARF`_.
+The national infrastructure involves a RESTful API for distributing metadata, metadata policies, trust marks, cryptographic public keys and X.509 Certificates, and the revocation status of the participants, also called Federation Entities.
+
 This trust infrastructure works in coordination with the Registry Infrastructure (see :ref:`registry:Registry Infrastructure`) to enable the entity onboarding processes detailed in :ref:`entity-onboarding:Entity Onboarding`. In particular, it enables the technical   implementation of the onboarding processes described in :ref:`entity-onboarding:Entity Onboarding` and supports the operational scenarios illustrated in :ref:`onboarding-high-level:Onboarding Journey Maps`.
 
-**Onboarding Enablement**: The Trust Infrastructure provides the cryptographic mechanisms that allow new entities (Credential Issuers, Relying Parties, Wallet Providers) to establish verifiable trust relationships during their registration process. Without this infrastructure, entities would not be able to prove their compliance status or operational capabilities to other ecosystem participants.
+The Trust Infrastructure provides the cryptographic mechanisms that allow new entities (Credential Issuers, Relying Parties, Wallet Providers) to establish verifiable trust relationships during their registration process. Without this infrastructure, entities would not be able to prove their compliance status or operational capabilities to other ecosystem participants.
 
-**Entity Lifecycle Support**: Throughout an entity's operational lifecycle, the Trust Infrastructure maintains up-to-date trust attestations, handles key rotation, manages revocation scenarios, and supports compliance monitoring. This directly supports the lifecycle management procedures detailed in :ref:`entity-onboarding:Entity Onboarding`.
+Throughout an entity's operational lifecycle, the Trust Infrastructure maintains up-to-date trust attestations, handles key rotation, manages revocation scenarios, and supports compliance monitoring. This directly supports the lifecycle management procedures detailed in :ref:`entity-onboarding:Entity Onboarding`.
 
-**Registry Infrastructure Integration**: The Trust Infrastructure implements the Federation Registry component of the broader Registry Infrastructure, providing the technical foundation for entity discovery and trust validation that underpins all onboarding procedures.
 
 .. plantuml:: plantuml/trust-roles.puml
    :width: 99%
    :alt: The figure illustrates the trust roles.
    :caption: `The roles within the Federation, where the Trust Anchor oversees its subordinates, which include one or more Intermediates and Leaves. <https://www.plantuml.com/plantuml/png/XT1HQy90303Wz_iLcNkMiIAoXo5AtK3OWup17aViPUxmcYkvd29Z_tsjThM2kBSc-P9UCesAegdqviPnuPCbUCn7T_de8m-iw9XaOapSEAvGi8GL5fkrXCGs3pu8g237kaIiFJKJ2RiZMFcwmnYXGf7Ndc3m9YagpBZu2Z80ZA08j_FnqyDpTkOMh2GbMOTA1-TOxplv3ymkZdmXt58y64_u6UjnZPcFhw6iGzTKTwu_3Ty6eDUG2rbYTUXX4MEYu-w5wnvwfj_HUr9OIjWwszfTTTc-ajyxNiCIHVS7AIVvOqpzZs6gXXDGDBkg_MwEQQGNPQOzIQ_UxjypJVeqhKcTeYcnJQN_1G00>`_
 
-In this representation, both the Trust Anchor and the Intermediates assume the role of Registration Authority.
+In this representation, both the :term:`National Trust Anchor` and the Intermediates assume the role of Registration Authority.
 
 Federation Roles
 ----------------
@@ -34,13 +34,13 @@ All the participants are Federation Entities that MUST be registered by a Regist
 .. note::
   The Wallet Instance, as a personal device, is deemed reliable through a verifiable attestation issued and signed by a trusted third party.
 
-  This is called *Wallet Attestation* and is documented in the dedicated :ref:`wallet-attestation-issuance:Wallet App and Wallet Unit Attestation Issuance`.
+  This is called *Wallet Instance Attestation* and is documented in the dedicated :ref:`wallet-instance-attestation-issuance:Wallet Instance Attestation Issuance`.
 
 **Role in Onboarding**: During entity registration, the Trust Anchor and Intermediates act as Federation Authorities. This establishes the participant's position in the trust hierarchy and enables them to participate in credential operations. Leaves (Credential Issuers, Relying Parties, Wallet Providers) undergo registration to prove their eligibility and receive authorization to perform their designated functions.
 
-**Role in Operations**: During credential issuance and presentation, these roles enable distributed trust validation without requiring centralized verification for each transaction. Leaves utilize their registered status to issue credentials, verify presentations, or provide wallet services to end users.
+**Role in Operations**: During Credential issuance and presentation, these roles enable distributed trust validation without requiring centralized verification for each transaction. Leaves utilize their registered status to issue Credentials, verify presentations, or provide Wallet services to end users.
 
-Below the table with the summary of the Federation Entity roles, mapped on the corresponding EUDI Wallet roles, as defined in the `EIDAS-ARF`_.
+Below the table with the summary of the Federation Entity roles, mapped on the corresponding EUDI Wallet roles.
 
 .. list-table::
    :class: longtable
@@ -51,8 +51,8 @@ Below the table with the summary of the Federation Entity roles, mapped on the c
      - Federation Role
      - Notes
    * - Public Key Infrastructure (PKI)
-     - Trust Anchor
-     - The Federation has PKI capabilities. The Entity that configures the entire infrastructure is the Trust Anchor.
+     - :term:`National Trust Anchor`
+     - The Federation has PKI capabilities and uses OpenID Federation 1.0 `OID-FED`_. The Entity that configures the entire infrastructure at national level is the :term:`National Trust Anchor`.
    * - Qualified Trust Service Provider (QTSP)
      - Leaf
      -
@@ -71,9 +71,6 @@ Below the table with the summary of the Federation Entity roles, mapped on the c
    * - Trust Service Provider (TSP)
      - Leaf
      -
-   * - Trusted List
-     - Trust Anchor
-     - The listing endpoint, the trust mark status endpoint, and the fetch endpoint MUST be exposed by both Trust Anchors and Intermediates, making the Trusted List distributed over multiple Federation Entities, where each of these is responsible for their registered subordinates. Other endpoints using different data formats MAY be implemented to facilitate interoperability with systems that do not support OpenID Federation 1.0. In such cases, the same information about federation entities MUST be synchronized across these endpoints, ensuring consistent availability of information through different channels.
    * - Wallet Provider
      - Leaf
      -
@@ -81,12 +78,12 @@ Below the table with the summary of the Federation Entity roles, mapped on the c
 Trust Infrastructure and Registry Integration
 ---------------------------------------------
 
-The Trust Infrastructure implements the Federation Registry component of the Registry Infrastructure. The Federation Registry maintains the authoritative list of trusted entities through the federation endpoints defined in this section, including entity listing (/list), subordinate statements (/fetch), trust mark validation (/trust_mark_status), and historical key management (/historical-jwks).
+The Trust Infrastructure implements the Federation Registry component of the Registry Infrastructure. The Federation Registry maintains the authoritative list of trusted entities through the federation endpoints defined in this section, including entity listing (/list), subordinate statements (/fetch), trust mark validation (/trust_mark_status), subordinate events (/federation_subordinate_events_endpoint), and historical key management (/historical-jwks).
 
 This Federation Registry operates alongside other registry components (Claims Registry, AS Registry, Digital Credentials Catalog, Taxonomy) to provide comprehensive ecosystem support. For complete registry architecture and component interactions, see :ref:`registry:Registry Infrastructure`.
 
 General Properties
-------------------
+-------------------
 
 The architecture of the trust infrastructure is built upon the following core principles:
 
@@ -125,7 +122,6 @@ The architecture of the trust infrastructure is built upon the following core pr
    * - P9
      - **Decentralization**
      - Unlike traditional centralized systems, the trust infrastructure should allow a decentralized approach.
-
 
 Trust Infrastructure Requirements
 ---------------------------------
@@ -178,7 +174,6 @@ This section includes the requirements necessary for the successful implementati
    * - FR19
      - **Secure Protocol Capabilities Binding**: the secure protocol must enable the exchange of protocol-specific capabilities data as cryptographically-bound metadata attached to a specific identity. This metadata should define the technical capabilities associated with the identity, ensuring verifiable proof and tamper-proof association for robust trust establishment and access control.
 
-
 Federation API endpoints
 ------------------------
 
@@ -201,31 +196,34 @@ All the endpoints listed below are defined in the `OID-FED`_ specs.
      - Trust Anchor, Intermediate, Wallet Provider, Relying Party, Credential Issuer
    * - subordinate list endpoint
      - **GET** /list
-     - Lists the Subordinates. See `OID-FED`_ Section 5.1.1
+     - Lists the Subordinates. See `OID-FED`_ Section 8.2
      - Trust Anchor, Intermediate
    * - fetch endpoint
-     - **GET** /fetch?sub=https://rp.example.org
-     - Returns a signed JWT about a specific subject, its Subordinate. It's called Subordinate Statement. See `OID-FED`_ Section 5.1.1
+     - **GET** /federation_fetch_endpoint?sub=https://rp.example.org
+     - Returns a signed JWT about a specific subject, its Subordinate. It's called Subordinate Statement. See `OID-FED`_ Section 8.1
      - Trust Anchor, Intermediate
    * - trust mark status
-     - **POST** /status?sub=...&trust_mark_id=...
-     - Returns the status of the issuance (validity) of a Trust Mark related to a specific subject. See `OID-FED`_ Section 5.1.1
+     - **POST** /trust_mark_status
+     - Returns the status of the issuance (validity) of a Trust Mark related to a specific subject. See `OID-FED`_ Section 8.4
      - Trust Anchor, Intermediate
-   * - trust marked listing
-     - **GET** /trust_mark_listing?trust_mark_id=...
-     - Lists all entities for which Trust Marks have been issued and are still valid. See `OID-FED`_ Section 5.1.1
+   * - trust mark list
+     - **GET** /trust_mark_listing?trust_mark_type=...
+     - Lists all entities for which Trust Marks have been issued and are still valid. See `OID-FED`_ Section 8.5
+     - Trust Anchor, Intermediate
+   * - trust mark
+     - **GET** /trust_mark?trust_mark_type=...
+     - Returns the Trust Mark related to a specific subject. See `OID-FED`_ Section 8.6
      - Trust Anchor, Intermediate
    * - historical keys
-     - **GET** /historical-jwks
-     - Lists the expired and revoked keys, with the motivation of the revocation. See `OID-FED`_ Section 5.1.1
+     - **GET** /federation_historical_keys
+     - Lists the expired and revoked keys, with the motivation of the revocation. See `OID-FED`_ Section 8.7
      - Trust Anchor, Intermediate
    * - subordinate events
      - **GET** /federation_subordinate_events_endpoint?sub=https://rp.example.org
      - Returns a historical track of registration events about Immediate Subordinates, such as registration, revocation, and updates of their Federation Entity Keys. See the section :ref:`trust-infrastructure:Federation Subordinate Events Endpoint` for more details.
      - Trust Anchor, Intermediate
 
-
-All the responses of the federation endpoints are in the form of signed JWT, with the exception of the **Subordinate Listing endpoint** and the **Trust Mark Status endpoint** that are served as plain JSON by default. The **Federation Subordinate Events Endpoint** also returns signed JWTs with the content type ``application/entity-events-statement+jwt``.
+All the responses of the federation endpoints are in the form of signed JWT, with the exception of the Subordinate Listing endpoint and the Trust Mark Status endpoint that are served as plain JSON by default. The Federation Subordinate Events Endpoint also returns signed JWTs with the content type ``application/entity-events-statement+jwt``.
 
 Configuration of the Federation
 -------------------------------
@@ -278,7 +276,7 @@ Below is a non-normative example of a Trust Anchor Entity Configuration, where e
                 "federation_resolve_endpoint": "https://trust-anchor.eid-wallet.example.it/resolve",
                 "federation_list_endpoint": "https://trust-anchor.eid-wallet.example.it/list",
                 "federation_trust_mark_status_endpoint": "https://trust-anchor.eid-wallet.example.it/trust_mark_status",
-                "federation_trust_mark_listing_endpoint": "https://trust-anchor.eid-wallet.example.it/trust_mark_listing",
+                "federation_trust_mark_list_endpoint": "https://trust-anchor.eid-wallet.example.it/trust_mark_listing",
                 "federation_subordinate_events_endpoint": "https://trust-anchor.eid-wallet.example.it/events"
             }
         },
@@ -307,7 +305,7 @@ The Entity Configuration MAY also contain one or more Trust Marks.
 
 **Role in Onboarding**: New entities publish their Entity Configuration as part of their registration process, declaring their capabilities, supported protocols, and compliance status to the federation. The configuration serves as the entity's initial declaration of its technical readiness and operational scope, enabling other participants to discover and validate its registration status.
 
-**Role in Operations**: During credential operations, Entity Configurations are retrieved by wallets, credential issuers, and relying parties to verify the current operational status, supported capabilities, and compliance attestations of other entities. This enables dynamic discovery of service endpoints, cryptographic keys, and protocol versions required for secure credential exchange.
+**Role in Operations**: During Credential operations, Entity Configurations are retrieved by wallets, credential issuers, and relying parties to verify the current operational status, supported capabilities, and compliance attestations of other entities. This enables dynamic discovery of service endpoints, cryptographic keys, and protocol versions required for secure Credential exchange.
 
 Technical details about Entity Configuration of Wallet Provider, Credential Issuer and Relying Party are given in Section :ref:`wallet-provider-entity-configuration:Wallet Provider Entity Configuration`, :ref:`credential-issuer-entity-configuration:Credential Issuer Entity Configuration` and :ref:`relying-party-entity-configuration:Relying Party Entity Configuration` respectively.
 
@@ -360,7 +358,53 @@ The Trust Anchor Entity Configuration, in addition to the common parameters list
      - **Required**
    * - **trust_mark_issuers**
      - JSON Array that defines which Federation authorities are considered trustworthy for issuing specific Trust Marks, assigned with their unique identifiers.
-     - |uncheck-icon|
+     - |check-icon|
+
+
+Trust Marks for Relying Party Intermediaries
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In the IT-Wallet ecosystem, Relying Party Intermediaries acting on behalf of Relying Parties (pursuant to Art. 5b(8) of the eIDAS2 Regulation `EU_2024_1183`_) are subject to a specific Trust Mark regime that allows the Wallet to recognize and display to the User that the requesting RP operates through a Relying Party Intermediary.
+
+**Trust Mark Issuance to the Relying Party Intermediary**
+
+The Trust Anchor MUST include Relying Party Intermediaries in the ``trust_mark_issuers`` attribute of its own Entity Configuration, authorizing them to issue Trust Marks for their subordinate Leaves. The Trust Anchor issues a Trust Mark to the Relying Party Intermediary attesting its role, using ``https://<federation_authority_domain>/trust_marks/federation-entity/openid_credential_verifier_intermediary`` as ``trust_mark_type`` to distinguish it from the other entities in the ecosystem.
+
+The Relying Party Intermediary MUST include this Trust Mark in its own Entity Configuration as proof of its recognized role within the Federation.
+
+**Trust Mark Issuance to Leaves Affiliated with the Relying Party Intermediary**
+
+Trust Marks issued to Leaves (Relying Parties) affiliated with a Relying Party Intermediary MUST be issued by the Relying Party Intermediary itself, not directly by the Trust Anchor.
+
+A Relying Party affiliated with a Relying Party Intermediary MUST include in its own Entity Configuration:
+
+- The Trust Mark issued by the Relying Party Intermediary, as proof of the successful onboarding process managed by the Relying Party Intermediary;
+- Its own ``authority_hints`` containing the URL of the Relying Party Intermediary (not directly of the Trust Anchor), thus indicating the correct hierarchical chain.
+
+Below is a non-normative example of a Trust Anchor Entity Configuration showing the updated ``trust_mark_issuers`` configuration with authorized Relying Party Intermediaries:
+
+.. code-block:: json
+
+    {
+      "trust_mark_issuers": {
+        "https://trust-anchor.eid-wallet.example.it/trust_marks/federation-entity/openid_credential_verifier": [
+          "https://trust-anchor.eid-wallet.example.it",
+          "https://intermediary.example.org"
+        ],
+        "https://trust-anchor.eid-wallet.example.it/trust_marks/federation-entity/openid_credential_verifier_intermediary": [
+          "https://trust-anchor.eid-wallet.example.it"
+        ],
+        "https://trust-anchor.eid-wallet.example.it/trust_marks/federation-entity/openid_credential_issuer": [
+          "https://trust-anchor.eid-wallet.example.it"
+        ],
+        "https://trust-anchor.eid-wallet.example.it/trust_marks/federation-entity/wallet_solution": [
+          "https://trust-anchor.eid-wallet.example.it"
+        ]
+      }
+    }
+
+.. note::
+  The Trust Mark with identifier ending with ``federation-entity/openid_credential_verifier_intermediary`` is issued exclusively by the Trust Anchor and is the one the Wallet uses to verify that an entity is a recognized Relying Party Intermediary. The ``https://<federation_authority_domain>/trust_marks/federation-entity/openid_credential_verifier`` Trust Marks SHOULD also be issued by Relying Party Intermediaries for their affiliated Leaves.
 
 
 Entity Configuration Leaves and Intermediates
@@ -444,7 +488,7 @@ In this section are defined the main metadata types mapped to the roles of the e
 Metadata of federation_entity Leaves
 ------------------------------------
 
-The *federation_entity* metadata for Leaves MUST contain the following claims.
+The *federation_entity* metadata for Leaves contain the following claims.
 
 
 .. list-table::
@@ -455,19 +499,19 @@ The *federation_entity* metadata for Leaves MUST contain the following claims.
   * - **Claim**
     - **Description**
   * - **organization_name**
-    - See `OID-FED`_ Section 5.2.2
+    - REQUIRED. See `OID-FED`_ Section 5.2.2
   * - **homepage_uri**
-    - See `OID-FED`_ Section 5.2.2
+    - REQUIRED. See `OID-FED`_ Section 5.2.2
   * - **policy_uri**
-    - See `OID-FED`_ Section 5.2.2
+    - REQUIRED. See `OID-FED`_ Section 5.2.2
   * - **logo_uri**
-    - URL of the entity's logo; it MUST be in SVG format. See `OID-FED`_ Section 5.2.2
+    - REQUIRED. URL of the entity's logo; it MUST be in SVG format. See `OID-FED`_ Section 5.2.2
   * - **contacts**
-    - Institutional verified email address (PEC) of the entity. See `OID-FED`_ Section 5.2.2
+    - REQUIRED. Institutional verified email address (PEC) of the entity. See `OID-FED`_ Section 5.2.2
   * - **federation_resolve_endpoint**
-    - See `OID-FED`_ Section 5.1.1
+    - OPTIONAL. See `OID-FED`_ Section 8.3
   * - **tos_uri**
-    - [OPTIONAL] URL string that points to a human-readable terms of service document for the client that describes a contractual relationship between the end-user and the client that the end-user accepts when authorizing the client. See `OID-FED`_.
+    - OPTIONAL. URL string that points to a human-readable terms of service document for the client that describes a contractual relationship between the end-user and the client that the end-user accepts when authorizing the client. See `OID-FED`_.
 
 
 Subordinate Statements
@@ -485,7 +529,7 @@ Trust Anchors and Intermediates MUST expose the Federation Fetch endpoint, where
 
 **Role in Onboarding**: During entity registration, Trust Anchors and Intermediates issue Subordinate Statements to formally attest the registration and capabilities of new entities. These statements establish the hierarchical trust relationship and apply any required metadata policies that constrain or enhance the entity's declared capabilities based on federation policies.
 
-**Role in Operations**: During credential operations, Subordinate Statements are retrieved to validate trust chains and apply current metadata policies. They enable real-time verification of an entity's registration status and ensure that operational capabilities comply with federation-wide policies and the entity's authorized scope.
+**Role in Operations**: During Credential operations, Subordinate Statements are retrieved to validate Trust Chains and apply current metadata policies. They enable real-time verification of an entity's registration status and ensure that operational capabilities comply with federation-wide policies and the entity's authorized scope.
 
 Below there is a non-normative example of an Subordinate Statement issued by an Registration Body (such as the Trust Anchor or its Intermediate) in relation to one of its Subordinates.
 
@@ -769,6 +813,26 @@ In the process depicted in the sequence diagram below, the Wallet Instance uses 
 .. note::
   As shown in the figure, internet connection is required to update the Trust Chain about an RP and check its revocation status.
 
+Establishing Trust with a Relying Party Operating through an Intermediary
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+When a Relying Party operates through a Relying Party Intermediary, the Wallet Instance MUST perform an extended Trust Evaluation process that includes validation of the Relying Party Intermediary's Trust Mark. This process takes place during the Trust Chain construction and validation phase and enables the Wallet to present to the User transparent information about the entity that registered and vouches for the RP.
+
+The process is articulated in the following steps:
+
+1. **Download of the RP Entity Configuration**: The Wallet Instance downloads the Relying Party's Entity Configuration from the RP's ``/.well-known/openid-federation`` endpoint. The RP's EC contains the ``authority_hints`` claim pointing to the Relying Party Intermediary's URL (not directly to the Trust Anchor).
+
+2. **Identification of the Relying Party Intermediary**: Via the ``authority_hints`` claim in the RP's EC, the Wallet Instance identifies the Relying Party Intermediary and downloads its Entity Configuration.
+
+3. **Validation of the Relying Party Intermediary's Trust Mark**: The Wallet Instance verifies that the Relying Party Intermediary's Entity Configuration contains a valid Trust Mark for the Relying Party Intermediary role, issued by the Trust Anchor. The validity of the Trust Mark MUST be verified via the Trust Anchor's ``/trust_mark_status`` endpoint.
+
+4. **Trust Chain Construction through the Relying Party Intermediary**: The Wallet Instance constructs the complete Trust Chain: RP Entity Configuration → Subordinate Statement issued by the Relying Party Intermediary for the RP → Subordinate Statement issued by the Trust Anchor for the Relying Party Intermediary → Trust Anchor Entity Configuration. This chain attests that the RP is a Leaf recognized by the Relying Party Intermediary and that the Relying Party Intermediary is in turn recognized by the Trust Anchor.
+
+5. **User Presentation**: Once validation is complete, the Wallet Instance MAY indicate to the User that the requesting Relying Party operates through a recognized Relying Party Intermediary, displaying the Relying Party Intermediary's identifying information (e.g., ``organization_name``) retrieved from its Entity Configuration.
+
+.. note::
+  The presence of the Trust Mark type ending with ``federation-entity/openid_credential_verifier_intermediary`` in the Relying Party Intermediary's EC is the cryptographically verifiable proof that the entity has been recognized by the Trust Anchor as an authorized Relying Party Intermediary. The Wallet Instance MUST reject the RP's request if the Trust Chain cannot be constructed and validated through a recognized Relying Party Intermediary or directly through the Trust Anchor.
+
 Evaluating Trust with Wallets
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -922,46 +986,11 @@ Below is a non-normative example, in plain text, illustrating the content of a C
 Federation Subordinate Events Endpoint
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Federation Subordinate Events Endpoint provides a mechanism for Trust Anchors and Intermediates to publish historical events related to their Immediate Subordinates registration status. This endpoint provides transparency and accountability within the federation by providing a comprehensive historical record of significant events affecting federation participants.
+The Federation Subordinate Events Endpoint is defined in `OID-FED-SUBORDINATE-EVENTS`_. This endpoint provides a mechanism for Trust Anchors and Intermediates to publish historical events related to their Immediate Subordinates registration status. It provides transparency and accountability within the federation by providing a comprehensive historical record of significant events affecting federation participants.
 
-**Endpoint Location**:
+For complete specification details, including endpoint location, request format, response format, JWT claims, event object parameters, and supported event types, refer to `OID-FED-SUBORDINATE-EVENTS`_.
 
-The Federation Subordinate Events Endpoint is published in the ``federation_entity`` metadata using the ``federation_subordinate_events_endpoint`` parameter.
-
-**Request Format**:
-
-The request to the ``federation_subordinate_events_endpoint`` MUST be an HTTP GET request with the following query parameters:
-
-- **sub**: (REQUIRED) The Entity Identifier of the subject for which the historical track is being requested.
-
-**Response Format**:
-
-A successful response MUST use the HTTP status code 200 and the content type ``application/entity-events-statement+jwt``. The response is a signed JWT that is explicitly typed by setting the ``typ`` header parameter to ``entity-events-statement+jwt`` to prevent cross-JWT confusion.
-
-**JWT Claims**:
-
-The claims in the Subordinate events statement response are:
-
-- **iss**: (REQUIRED) Entity Identifier of the issuer of the response
-- **sub**: (REQUIRED) Entity Identifier of the subject of the response  
-- **iat**: (REQUIRED) Time when this response was issued, expressed as Seconds Since the Epoch
-- **exp**: (OPTIONAL) Time when this resolution is no longer valid, expressed as Seconds Since the Epoch
-- **federation_registration_events**: (REQUIRED) Array of JSON objects, each representing an event of particular interest from the federation's perspective
-
-**Event Object Parameters**:
-
-- **iat**: (REQUIRED) Time when the event occurred, using the time format defined for the ``iat`` claim
-- **event**: (REQUIRED) String that identifies the event type
-- **event_description**: (OPTIONAL) String that may offer additional information about the event
-
-**Supported Event Types**:
-
-- **registration**: Indicates when an Entity was registered in the federation
-- **revocation**: Indicates when an Entity's registration was revoked
-- **suspension**: Indicates when an Entity's registration was suspended
-- **jwks_update**: Indicates when an Entity's Federation Entity Keys were updated
-- **metadata_update**: Indicates when an Entity's metadata was updated in the Subordinate Statement
-- **metadata_policy_update**: Indicates when an Entity's metadata policy was updated in the Subordinate Statement
+Below is a non-normative example of a Federation Subordinate Events Endpoint request and response:
 
 **Example Request**:
 
@@ -985,7 +1014,7 @@ The claims in the Subordinate events statement response are:
        },
        {
          "iat": 1590000000,
-         "event": "jwks_updates"
+         "event": "jwks_update"
        },
        {
          "iat": 1600000000,

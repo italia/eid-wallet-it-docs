@@ -16,7 +16,7 @@
   "vct#integrity": "55f5fe57f1e491d49f33672784528532d9d",
   "verification": {
     "trust_framework": "it_cie",
-    "assurance_level": "high"
+    "assurance_level": "https://trust-anchor.example.it/loa/high"
   },
   "given_name": "Mario",
   "family_name": "Rossi",
