@@ -1,5 +1,5 @@
 .. include:: ../common/common_definitions.rst
-.. "included" file, so we start with '-' title level
+.. Incluso tramite relying-party-solution.rst al livello di titolo '-' (livello 1).
 
 App di Verifica
 ---------------

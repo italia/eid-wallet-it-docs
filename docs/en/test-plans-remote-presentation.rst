@@ -1,5 +1,5 @@
-.. This file is included in test-plans-presentation.rst (common_definitions is provided by the including file).
-.. level 2 "included" file, so we start with '^' title level
+.. include:: ../common/common_definitions.rst
+.. Included via test-plans-presentation.rst at title level '^' (level 2).
 
 
 Remote Credential Verifier Test Matrix

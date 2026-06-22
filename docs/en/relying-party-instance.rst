@@ -1,5 +1,5 @@
 .. include:: ../common/common_definitions.rst
-.. "included" file, so we start with '-' title level
+.. Included via relying-party-solution.rst at title level '-' (level 1).
 
 Relying Party Instance
 ----------------------

@@ -1,5 +1,5 @@
 .. include:: ../common/common_definitions.rst
-.. "included" file, so we start with '-' title level
+.. Incluso tramite index.rst al livello di titolo '=' (titolo documento).
 
 Brand Identity
 ==============

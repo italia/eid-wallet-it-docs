@@ -1,6 +1,5 @@
 .. include:: ../common/common_definitions.rst
-
-.. "included" file, so we start with '-' title level
+.. Incluso tramite entities.rst al livello di titolo '-' (livello 1).
 
 Soluzione Wallet
 ----------------

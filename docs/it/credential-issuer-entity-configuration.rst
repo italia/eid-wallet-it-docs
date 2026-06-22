@@ -1,5 +1,5 @@
-.. Questo file è incluso in credential-issuer-solution.rst (common_definitions è fornito dal file che lo include).
-.. file "incluso", quindi si parte dal livello di titolo '-'
+.. include:: ../common/common_definitions.rst
+.. Incluso tramite credential-issuer-solution.rst al livello di titolo '-' (livello 1).
 
 
 Entity Configuration del Fornitore di Attestati Elettronici
