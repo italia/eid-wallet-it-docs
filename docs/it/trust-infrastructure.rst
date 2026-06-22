@@ -8,23 +8,23 @@ L'Infrastruttura di Trust
 
 L'ecosistema IT-Wallet opera all'interno di un'infrastruttura di trust federata dove le entità partecipanti stabiliscono relazioni di trust crittografiche e mantengono la conformità con standard di sicurezza comuni. Questa infrastruttura fornisce le fondamenta per operazioni sicure di Credenziali Elettroniche tra i partecipanti dell'ecosistema.
 
-Questa sezione delinea l'implementazione del Trust Model in un'infrastruttura che è conforme a OpenID Federation 1.0 `OID-FED`_. Questa infrastruttura coinvolge un'API RESTful per la distribuzione di metadati, policy dei metadati, trust mark, chiavi pubbliche crittografiche e certificati X.509, e lo stato di revoca dei partecipanti, chiamati anche Entità di Federazione.
+Questa sezione definisce l'implementazione del Trust Model in un'infrastruttura che è conforme a OpenID Federation 1.0 `OID-FED`_. Tale infrastruttura nazionale prevede un'API RESTful per la distribuzione di metadati, policy dei metadati, trust mark, chiavi pubbliche crittografiche e certificati X.509, e lo stato di revoca dei partecipanti, chiamati anche Entità di Federazione.
 
-L'Infrastruttura di trust facilita l'applicazione di un meccanismo di valutazione del trust tra le parti definite nell'`EIDAS-ARF`_.
-Questa infrastruttura di trust lavora in coordinamento con l'Infrastruttura di Registro (vedi :ref:`registry:Infrastruttura del Registro`) per abilitare i processi di onboarding delle entità dettagliati in :ref:`entity-onboarding:Onboarding delle Entità`. In particolare, abilita l'implementazione tecnica dei processi di onboarding descritti in :ref:`entity-onboarding:Onboarding delle Entità` e supporta gli scenari operativi illustrati in :ref:`onboarding-high-level:Onboarding Journey Maps`.
+
+Questa infrastruttura di trust lavora in coordinamento con l'Infrastruttura del Registro (vedi :ref:`registry:Infrastruttura del Registro`) per abilitare i processi di onboarding delle entità dettagliati in :ref:`entity-onboarding:Onboarding delle Entità`. In particolare, abilita l'implementazione tecnica dei processi di onboarding descritti in :ref:`entity-onboarding:Onboarding delle Entità` e supporta gli scenari operativi illustrati in :ref:`onboarding-high-level:Onboarding Journey Maps`.
 
 **Abilitazione dell'Onboarding**: L'Infrastruttura di Trust fornisce i meccanismi crittografici che consentono alle nuove entità (Credential Issuer, Relying Party, Fornitori di Wallet) di stabilire relazioni di trust verificabili durante il loro processo di registrazione. Senza questa infrastruttura, le entità non sarebbero in grado di dimostrare il loro stato di conformità o le capacità operative agli altri partecipanti dell'ecosistema.
 
 **Supporto al Ciclo di Vita delle Entità**: Durante tutto il ciclo di vita operativo di un'entità, l'Infrastruttura di Trust mantiene attestazioni di trust aggiornate, gestisce la rotazione delle chiavi, gestisce scenari di revoca e supporta il monitoraggio della conformità. Questo supporta direttamente le procedure di gestione del ciclo di vita dettagliate in :ref:`entity-onboarding:Onboarding delle Entità`.
 
-**Integrazione con l'Infrastruttura di Registro**: L'Infrastruttura di Trust implementa il componente Federation Registry dell'Infrastruttura di Registro più ampia, fornendo le fondamenta tecniche per la scoperta delle entità e la validazione del trust che sottende tutte le procedure di onboarding.
+**Integrazione con l'Infrastruttura del Registro**: L'Infrastruttura di Trust implementa il componente Federation Registry dell'Infrastruttura del Registro più ampia, fornendo le fondamenta tecniche per la scoperta delle entità e la validazione del trust che sottende tutte le procedure di onboarding.
 
 .. plantuml:: plantuml/trust-roles.puml
    :width: 99%
    :alt: La figura illustra i ruoli di trust.
-   :caption: `I ruoli all'interno della Federazione, dove il Trust Anchor supervisiona i suoi subordinati, che includono uno o più Intermediari e Foglie. <https://www.plantuml.com/plantuml/png/XT1HQy90303Wz_iLcNkMiIAoXo5AtK3OWup17aViPUxmcYkvd29Z_tsjThM2kBSc-P9UCesAegdqviPnuPCbUCn7T_de8m-iw9XaOapSEAvGi8GL5fkrXCGs3pu8g237kaIiFJKJ2RiZMFcwmnYXGf7Ndc3m9YagpBZu2Z80ZA08j_FnqyDpTkOMh2GbMOTA1-TOxplv3ymkZdmXt58y64_u6UjnZPcFhw6iGzTKTwu_3Ty6eDUG2rbYTUXX4MEYu-w5wnvwfj_HUr9OIjWwszfTTTc-ajyxNiCIHVS7AIVvOqpzZs6gXXDGDBkg_MwEQQGNPQOzIQ_UxjypJVeqhKcTeYcnJQN_1G00>`_
+   :caption: `I ruoli all'interno della Federazione, dove il National Trust Anchor supervisiona i suoi subordinati, che includono uno o più Intermediari e Foglie. <https://www.plantuml.com/plantuml/png/XT1HQy90303Wz_iLcNkMiIAoXo5AtK3OWup17aViPUxmcYkvd29Z_tsjThM2kBSc-P9UCesAegdqviPnuPCbUCn7T_de8m-iw9XaOapSEAvGi8GL5fkrXCGs3pu8g237kaIiFJKJ2RiZMFcwmnYXGf7Ndc3m9YagpBZu2Z80ZA08j_FnqyDpTkOMh2GbMOTA1-TOxplv3ymkZdmXt58y64_u6UjnZPcFhw6iGzTKTwu_3Ty6eDUG2rbYTUXX4MEYu-w5wnvwfj_HUr9OIjWwszfTTTc-ajyxNiCIHVS7AIVvOqpzZs6gXXDGDBkg_MwEQQGNPQOzIQ_UxjypJVeqhKcTeYcnJQN_1G00>`_
 
-In questa rappresentazione, sia il Trust Anchor che gli Intermediari assumono il ruolo di Registration Authority.
+In questa rappresentazione, sia il :term:`National Trust Anchor` che gli Intermediari assumono il ruolo di Registration Authority.
 
 Ruoli di Federazione
 --------------------
@@ -34,13 +34,13 @@ Tutti i partecipanti sono Entità di Federazione che DEVONO essere registrate da
 .. note::
   L'Istanza del Wallet, come dispositivo personale, è considerata affidabile attraverso un'attestazione verificabile rilasciata e firmata da una terza parte fidata.
 
-  Questo è chiamato *Wallet Attestation* ed è documentato nella sezione dedicata :ref:`wallet-attestation-issuance:Emissione della Wallet App e Wallet Unit Attestation`.
+  Questo è chiamato *Wallet Instance Attestation* ed è documentato nella sezione dedicata :ref:`wallet-instance-attestation-issuance:Emissione della Wallet Instance Attestation`.
 
-**Ruolo nell'Onboarding**: Durante la registrazione delle entità, il Trust Anchor e gli Intermediari agiscono come Autorità di Federazione. Questo stabilisce la posizione del partecipante nella gerarchia di trust e gli consente di partecipare alle operazioni di credenziali. Le Foglie (Credential Issuer, Relying Party, Fornitori di Wallet) subiscono la registrazione per dimostrare la loro idoneità e ricevere l'autorizzazione per svolgere le loro funzioni designate.
+**Ruolo nell'Onboarding**: Durante la registrazione dell'entità, il Trust Anchor e gli Intermediate agiscono come Autorità di Federazione. Ciò stabilisce la posizione del partecipante nella gerarchia di fiducia e gli consente di partecipare alle operazioni di credenziali. Le foglie (Emittenti di credenziali, Relying Party, Wallet Provider) si sottopongono a registrazione per dimostrare la propria idoneità e ricevere l'autorizzazione a svolgere le funzioni loro assegnate.
 
-**Ruolo nelle Operazioni**: Durante l'emissione e la presentazione delle credenziali, questi ruoli abilitano la validazione del trust distribuita senza richiedere la verifica centralizzata per ogni transazione. Le Foglie utilizzano il loro stato registrato per emettere credenziali, verificare presentazioni o fornire servizi di wallet agli utenti finali.
+**Ruolo nelle Operazioni**: Durante l'emissione e la presentazione delle Credenziali, questi ruoli abilitano la validazione del trust distribuita senza richiedere la verifica centralizzata per ogni transazione. Le Foglie utilizzano il loro stato registrato per emettere Credenziali, verificare presentazioni o fornire servizi di Wallet agli utenti finali.
 
-Di seguito la tabella con il riepilogo dei ruoli delle Entità di Federazione, mappati sui corrispondenti ruoli EUDI Wallet, come definiti nell'`EIDAS-ARF`_.
+Di seguito la tabella con il riepilogo dei ruoli delle Entità di Federazione, mappati sui corrispondenti ruoli EUDI Wallet.
 
 .. list-table::
    :class: longtable
@@ -51,8 +51,8 @@ Di seguito la tabella con il riepilogo dei ruoli delle Entità di Federazione, m
      - Ruolo di Federazione
      - Note
    * - Public Key Infrastructure (PKI)
-     - Trust Anchor
-     - La Federazione ha capacità PKI. L'Entità che configura l'intera infrastruttura è il Trust Anchor.
+     - :term:`National Trust Anchor`
+     - La Federazione ha capacità PKI e utilizza OpenID Federation 1.0 `OID-FED`_. L'Entità che configura l'intera infrastruttura a livello nazionale è il :term:`National Trust Anchor`.
    * - Qualified Trust Service Provider (QTSP)
      - Leaf
      -
@@ -71,9 +71,6 @@ Di seguito la tabella con il riepilogo dei ruoli delle Entità di Federazione, m
    * - Trust Service Provider (TSP)
      - Leaf
      -
-   * - Trusted List
-     - Trust Anchor
-     - L'endpoint di listing, l'endpoint di stato del trust mark e l'endpoint di fetch DEVONO essere esposti sia dai Trust Anchor che dagli Intermediari, rendendo la Trusted List distribuita su più Entità di Federazione, dove ognuna di queste è responsabile per i propri subordinati registrati. Altri endpoint che utilizzano formati di dati diversi POSSONO essere implementati per facilitare l'interoperabilità con sistemi che non supportano OpenID Federation 1.0. In tali casi, le stesse informazioni sulle entità di federazione DEVONO essere sincronizzate tra questi endpoint, garantendo la disponibilità coerente delle informazioni attraverso canali diversi.
    * - Fornitore di Wallet
      - Leaf
      -
@@ -83,14 +80,15 @@ Di seguito la tabella con il riepilogo dei ruoli delle Entità di Federazione, m
 Integrazione dell'Infrastruttura di Trust e del Registro
 --------------------------------------------------------
 
-L'Infrastruttura di Trust implementa il componente Federation Registry dell'Infrastruttura di Registro. Il Federation Registry mantiene l'elenco autorevole delle entità fidate attraverso gli endpoint di federazione definiti in questa sezione, inclusi l'elenco delle entità (/list), le dichiarazioni dei subordinati (/fetch), la validazione dei trust mark (/trust_mark_status) e la gestione delle chiavi storiche (/historical-jwks).
+L'Infrastruttura di Trust implementa il componente Federation Registry dell'Infrastruttura del Registro. Il Federation Registry mantiene l'elenco autorevole delle entità fidate attraverso gli endpoint di federazione definiti in questa sezione, inclusi l'elenco delle entità (/list), le dichiarazioni dei subordinati (/fetch), la validazione dei trust mark (/trust_mark_status), gli eventi sui subordinati (/federation_subordinate_events_endpoint) e la gestione delle chiavi storiche (/historical-jwks).
 
 Questo Federation Registry opera insieme ad altri componenti del registro (Claims Registry, AS Registry, Catalogo degli Attestati Elettronici, Taxonomy) per fornire supporto completo all'ecosistema. Per l'architettura completa del registro e le interazioni dei componenti, vedi :ref:`registry:Infrastruttura del Registro`.
 
-Proprietà Generali
-------------------
 
-L'architettura dell'infrastruttura di trust è costruita sui seguenti principi fondamentali:
+Proprietà Generali
+-------------------
+
+L'architettura dell'infrastruttura di trust è fondata sui seguenti principi fondamentali:
 
 .. list-table::
    :class: longtable
@@ -102,37 +100,36 @@ L'architettura dell'infrastruttura di trust è costruita sui seguenti principi f
      - Descrizione
    * - P1
      - **Sicurezza**
-     - Incorpora meccanismi per garantire l'integrità, la riservatezza e l'autenticità delle Trust Relationship e delle interazioni all'interno della federazione.
+     - Incorpora meccanismi per garantire l'integrità, la riservatezza e l'autenticità delle Relazioni di Trust e delle interazioni all'interno della federazione.
    * - P2
      - **Privacy**
-     - Progettata per rispettare e proteggere la privacy delle entità coinvolte, la divulgazione minima fa parte di questo.
+     - Progettata per rispettare e proteggere la privacy delle entità coinvolte; la divulgazione minima è parte integrante di questo principio.
    * - P3
      - **Interoperabilità**
-     - Supporta l'interazione senza soluzione di continuità e la creazione di trust tra sistemi ed entità diverse all'interno della federazione.
+     - Supporta l'interazione fluida e la creazione di trust tra sistemi ed entità diverse all'interno della federazione.
    * - P4
      - **Trust Transitivo**
-     - Trust stabilito indirettamente attraverso una catena di relazioni fidate, consentendo alle entità di fidarsi l'una dell'altra basandosi su autorità comuni e intermediari fidati.
+     - Trust stabilita indirettamente attraverso una catena di relazioni fidate, che consente alle entità di fidarsi reciprocamente sulla base di autorità comuni e intermediari fidati.
    * - P5
-     - **Delegazione**
+     - **Delega**
      - Capacità o funzionalità tecnica di delegare autorità o responsabilità ad altre entità, consentendo un meccanismo di trust distribuito.
    * - P6
      - **Scalabilità**
-     - Progettata per gestire efficientemente un numero crescente di entità o interazioni senza un aumento significativo della complessità di gestione del trust.
+     - Progettata per gestire in modo efficiente un numero crescente di entità o interazioni senza un aumento significativo della complessità di gestione del trust.
    * - P7
      - **Flessibilità**
-     - Adattabile a varie esigenze operative e organizzative, consentendo alle entità di definire e regolare le loro Trust Relationship e policy.
+     - Adattabile a varie esigenze operative e organizzative, consentendo alle entità di definire e adeguare le proprie Relazioni di Trust e policy.
    * - P8
      - **Autonomia**
-     - Pur facendo parte di un ecosistema federato, ogni entità mantiene il controllo sulle proprie definizioni e configurazioni.
+     - Pur facendo parte di un ecosistema federato, ciascuna entità mantiene il controllo sulle proprie definizioni e configurazioni.
    * - P9
      - **Decentralizzazione**
-     - A differenza dei sistemi centralizzati tradizionali, l'infrastruttura di trust dovrebbe consentire un approccio decentralizzato.
-
+     - A differenza dei sistemi centralizzati tradizionali, l'infrastruttura di trust consente un approccio decentralizzato.
 
 Requisiti dell'Infrastruttura di Trust
---------------------------------------
+---------------------------------------
 
-Questa sezione include i requisiti necessari per l'implementazione e il funzionamento di successo dell'infrastruttura di trust.
+Questa sezione include i requisiti necessari per la corretta implementazione e il funzionamento dell'infrastruttura di trust.
 
 .. list-table:: Requisiti Funzionali
    :class: longtable
@@ -142,46 +139,43 @@ Questa sezione include i requisiti necessari per l'implementazione e il funziona
    * - ID
      - Descrizione
    * - FR1
-     - **Stabilimento del Trust di Federazione**: il sistema deve essere in grado di stabilire trust tra diverse entità (Credential Issuer, Relying Party, ecc.) all'interno di una federazione, utilizzando firme crittografiche per lo scambio sicuro di informazioni sui partecipanti nell'ecosistema.
+     - **Creazione di Trust nella Federazione**: il sistema deve essere in grado di stabilire trust tra diverse entità (Credential Issuer, Relying Party, ecc.) all'interno di una federazione, utilizzando firme crittografiche per lo scambio sicuro di informazioni sui partecipanti all'ecosistema.
    * - FR2
-     - **Autenticazione delle Entità**: il sistema deve implementare meccanismi per autenticare le entità all'interno della federazione, garantendo la conformità alle regole condivise.
+     - **Autenticazione delle Entità**: il sistema deve implementare meccanismi per autenticare le entità all'interno della federazione, garantendone la conformità alle regole condivise.
    * - FR3
-     - **Validazione delle Firme**: il sistema deve supportare la creazione, verifica e validazione delle firme elettroniche e fornire meccanismi standard e sicuri per ottenere le chiavi pubbliche crittografiche richieste per la validazione delle firme.
+     - **Validazione delle Firme**: il sistema deve supportare la creazione, verifica e validazione di firme elettroniche e fornire meccanismi standard e sicuri per ottenere le chiavi pubbliche crittografiche necessarie per la validazione delle firme.
    * - FR4
-     - **Marcatura Temporale**: gli artefatti firmati devono contenere marcature temporali per garantire l'integrità e il non ripudio delle transazioni nel tempo, grazie alle interfacce, servizi, modello di archiviazione e approcci definiti all'interno della federazione.
+     - **Marcatura Temporale**: gli artefatti firmati devono contenere marcature temporali per garantire l'integrità e il non-ripudio delle transazioni nel tempo, grazie alle interfacce, ai servizi, al modello di archiviazione e agli approcci definiti all'interno della federazione.
    * - FR5
-     - **Validazione dei Certificati**: il sistema richiede trasmissione riservata, protetta tramite TLS su HTTP, e validazione dei certificati per l'autenticazione del sito web.
+     - **Validazione dei Certificati**: il sistema richiede trasmissioni riservate, protette tramite TLS su HTTP, e la validazione dei certificati per l'autenticazione dei siti web.
    * - FR6
      - **Interoperabilità e Conformità agli Standard**: garantire l'interoperabilità tra i membri della federazione aderendo agli standard tecnici, facilitando le transazioni elettroniche transfrontaliere.
    * - FR7
-     - **Protezione dei Dati e Privacy**: implementare misure di protezione dei dati in conformità alle normative GDPR, garantendo la privacy e la sicurezza dei dati personali elaborati all'interno della federazione.
+     - **Protezione dei Dati e Privacy**: implementare misure di protezione dei dati in conformità con il GDPR, garantendo la privacy e la sicurezza dei dati personali trattati all'interno della federazione.
    * - FR8
-     - **Risoluzione delle Controversie e Responsabilità**: stabilire procedure chiare per la risoluzione delle controversie e definire la responsabilità tra i membri della federazione.
+     - **Risoluzione delle Controversie e Responsabilità**: stabilire procedure chiare per la risoluzione delle controversie e definire le responsabilità tra i membri della federazione.
    * - FR9
      - **Servizi di Emergenza e Revoca**: implementare meccanismi per la revoca immediata dei partecipanti in caso di violazioni della sicurezza o altre emergenze.
    * - FR10
-     - **Infrastruttura di Trust Scalabile**: il sistema deve supportare meccanismi di stabilimento del trust scalabili, sfruttando approcci e soluzioni tecniche che completano gli approcci transitivi di delegazione per gestire efficientemente le Trust Relationship man mano che la federazione cresce, rimuovendo i registri centrali che potrebbero fallire tecnicamente o amministrativamente.
+     - **Infrastruttura di Trust Scalabile**: il sistema deve supportare meccanismi scalabili per la creazione di trust, sfruttando approcci e soluzioni tecniche che complementino gli approcci di delega transitiva per gestire in modo efficiente le Relazioni di Trust man mano che la federazione cresce, eliminando i registri centrali che potrebbero presentare fallimenti tecnici o amministrativi.
    * - FR11
-     - **Scalabilità di Archiviazione Efficiente**: implementare una soluzione di archiviazione che si scala orizzontalmente per accogliere volumi di dati crescenti minimizzando i costi di archiviazione centrale e amministrativi. Il sistema dovrebbe consentire ai membri di archiviare e presentare indipendentemente attestazioni di trust storiche e artefatti firmati durante le risoluzioni delle controversie, con l'infrastruttura di federazione che mantiene solo un registro delle chiavi storiche per validare i dati storici, archiviati e forniti dai partecipanti.
+     - **Scalabilità Efficiente dello Storage**: implementare una soluzione di archiviazione che scala orizzontalmente per accogliere volumi di dati crescenti, minimizzando i costi di archiviazione centrale e amministrativi. Il sistema dovrebbe consentire ai membri di archiviare e presentare in modo indipendente attestazioni di trust storiche e artefatti firmati durante le risoluzioni delle controversie, mentre l'infrastruttura della federazione mantiene solo un registro delle chiavi storiche per validare i dati storici, archiviati e forniti dai partecipanti.
    * - FR12
-     - **Attestazione Verificabile (Trust Mark)**: incorporare un meccanismo per l'emissione e la verifica di attestazioni verificabili che servono come prova di conformità a profili o standard specifici. Questo consente alle entità all'interno della federazione di dimostrare l'aderenza agli standard di sicurezza, privacy e operativi concordati.
+     - **Attestazione Verificabile (Trust Mark)**: incorporare un meccanismo per l'emissione e la verifica di attestazioni verificabili che fungono da prova di conformità a profili o standard specifici. Ciò consente alle entità all'interno della federazione di dimostrare l'aderenza agli standard di sicurezza, privacy e operativi concordati.
    * - FR13
-     - **Meccanismo di Risoluzione delle Controversie Decentralizzato**: progettare un meccanismo decentralizzato per la risoluzione delle controversie che consenta ai membri della federazione di verificare indipendentemente lo stabilimento del trust storico e gli artefatti firmati, riducendo la dipendenza dalle autorità centrali e semplificando il processo di risoluzione.
+     - **Meccanismo Decentralizzato per la Risoluzione delle Controversie**: progettare un meccanismo decentralizzato per la risoluzione delle controversie che consenta ai membri della federazione di verificare in modo indipendente la creazione di trust storica e gli artefatti firmati, riducendo la dipendenza dalle autorità centrali e semplificando il processo di risoluzione.
    * - FR14
-     - **Interoperabilità Cross-Federazione**: garantire che il sistema sia capace di interoperare con altre federazioni o Trust Framework, facilitando transazioni cross-federazione e stabilimento del trust senza compromettere sicurezza o conformità.
+     - **Interoperabilità tra Federazioni**: garantire che il sistema sia in grado di interoperare con altre federazioni o Trust Framework, facilitando transazioni e creazione di trust tra federazioni senza compromettere la sicurezza o la conformità.
    * - FR15
-     - **Registration Body Autonomi**: il sistema deve facilitare l'integrazione di registration body autonomi che operano in conformità alle regole di federazione. Questi enti sono incaricati di valutare e registrare entità all'interno della federazione, secondo le regole prestabilite e la loro conformità che deve essere periodicamente attestata.
+     - **Organismi di Registrazione Autonomi**: il sistema deve facilitare l'integrazione di organismi di registrazione autonomi che operano in conformità con le regole della federazione. Questi organismi hanno il compito di valutare e registrare le entità all'interno della federazione, secondo le regole prestabilite e la loro conformità che deve essere periodicamente attestata.
    * - FR16
-     - **Audit Periodico dei Registration Body e delle Entità**: implementare meccanismi per l'audit periodico e il monitoraggio dello stato di conformità sia dei registration body che delle loro entità registrate.
+     - **Audit Periodico degli Organismi di Registrazione e delle Entità**: implementare meccanismi per l'audit periodico e il monitoraggio dello stato di conformità sia degli organismi di registrazione che delle loro entità registrate.
    * - FR17
-     - **Attestazione di Conformità per Dispositivi Personali**: enti fidati, sotto forma di entità di federazione, dovrebbero emettere attestazioni di conformità e fornire prova firmata di tale conformità per l'hardware dei dispositivi personali utilizzati all'interno della federazione. Queste attestazioni dovrebbero essere attestate e periodicamente rinnovate per garantire che i dispositivi soddisfino gli standard di sicurezza attuali.
+     - **Attestazione di Conformità per i Dispositivi Personali**: organismi fidati, in forma di entità di federazione, dovrebbero emettere attestazioni di conformità e fornire prove firmate di tale conformità per l'hardware dei dispositivi personali utilizzati all'interno della federazione. Queste attestazioni dovrebbero essere attestate e periodicamente rinnovate per garantire che i dispositivi soddisfino gli attuali standard di sicurezza.
    * - FR18
-     - **Monitoraggio Automatizzato della Conformità**: il sistema dovrebbe includere strumenti automatizzati per monitorare la conformità delle entità agli standard di federazione. Questa automazione aiuta nella rilevazione precoce di potenziali problemi di conformità.
+     - **Monitoraggio Automatizzato della Conformità**: il sistema dovrebbe includere strumenti automatizzati per il monitoraggio della conformità delle entità agli standard della federazione. Questa automazione aiuta nel rilevamento precoce di potenziali problemi di conformità.
    * - FR19
-     - **Binding delle Capacità del Protocollo Sicuro**: il protocollo sicuro deve abilitare lo scambio di dati delle capacità specifiche del protocollo come metadati crittograficamente legati associati a un'identità specifica. Questi metadati dovrebbero definire le capacità tecniche associate all'identità, garantendo prova verificabile e associazione a prova di manomissione per un robusto stabilimento del trust e controllo degli accessi.
-
-
-.. _trust-infrastructure-endpoint-delle-api-della-federazione:
+     - **Binding Sicuro delle Capacità del Protocollo**: il protocollo sicuro deve consentire lo scambio di dati sulle capacità specifiche del protocollo come metadati crittograficamente vincolati allegati a un'identità specifica. Questi metadati dovrebbero definire le capacità tecniche associate all'identità, garantendo prova verificabile e associazione antimanomissione per una robusta creazione di trust e controllo degli accessi.
 
 Endpoint API di Federazione
 ---------------------------
@@ -205,23 +199,27 @@ Tutti gli endpoint elencati di seguito sono definiti nelle specifiche `OID-FED`_
      - Trust Anchor, Intermediario, Fornitore di Wallet, Relying Party, Credential Issuer
    * - subordinate list endpoint
      - **GET** /list
-     - Elenca i Subordinati. Vedi `OID-FED`_ Sezione 5.1.1
+     - Elenca i Subordinati. Vedi `OID-FED`_ Sezione 8.2
      - Trust Anchor, Intermediario
    * - fetch endpoint
-     - **GET** /fetch?sub=https://rp.example.org
-     - Restituisce un JWT firmato su un soggetto specifico, il suo Subordinato. È chiamato Subordinate Statement. Vedi `OID-FED`_ Sezione 5.1.1
+     - **GET** /federation_fetch_endpoint?sub=https://rp.example.org
+     - Restituisce un JWT firmato su un soggetto specifico, il suo Subordinato. È chiamato Subordinate Statement. Vedi `OID-FED`_ Sezione 8.1
      - Trust Anchor, Intermediario
    * - trust mark status
-     - **POST** /status?sub=...&trust_mark_id=...
-     - Restituisce lo stato dell'emissione (validità) di un Trust Mark relativo a un soggetto specifico. Vedi `OID-FED`_ Sezione 5.1.1
+     - **POST** /trust_mark_status
+     - Restituisce lo stato dell'emissione (validità) di un Trust Mark relativo a un soggetto specifico. Vedi `OID-FED`_ Sezione 8.4
      - Trust Anchor, Intermediario
-   * - trust marked listing
-     - **GET** /trust_mark_listing?trust_mark_id=...
-     - Elenca tutte le entità per le quali sono stati emessi Trust Mark e sono ancora validi. Vedi `OID-FED`_ Sezione 5.1.1
+   * - trust mark  list
+     - **GET** /trust_mark_listing?trust_mark_type=...
+     - Elenca tutte le entità per le quali sono stati emessi Trust Mark e sono ancora validi. Vedi `OID-FED`_ Sezione 8.5
      - Trust Anchor, Intermediario
+   * - trust mark
+     - **GET** /trust_mark?trust_mark_type=...
+     - Restituisce il Trust Mark relativo a un soggetto specifico. Vedi `OID-FED`_ Sezione 8.6
+     - Trust Anchor, Intermediate
    * - historical keys
-     - **GET** /historical-jwks
-     - Elenca le chiavi scadute e revocate, con la motivazione della revoca. Vedi `OID-FED`_ Sezione 5.1.1
+     - **GET** /federation_historical_keys
+     - Elenca le chiavi scadute e revocate, con la motivazione della revoca. Vedi `OID-FED`_ Sezione 8.7
      - Trust Anchor, Intermediario
    * - subordinate events
      - **GET** /federation_subordinate_events_endpoint?sub=https://rp.example.org
@@ -229,60 +227,25 @@ Tutti gli endpoint elencati di seguito sono definiti nelle specifiche `OID-FED`_
      - Trust Anchor, Intermediario
 
 
-Tutte le risposte degli endpoint di federazione sono sotto forma di JWT firmato, ad eccezione dell'**endpoint di Elenco Subordinati** e dell'**endpoint di Stato Trust Mark** che sono serviti come JSON semplice per impostazione predefinita. L'**Endpoint Eventi Subordinati della Federazione** restituisce anche JWT firmati con il tipo di contenuto ``application/entity-events-statement+jwt``.
+Tutte le risposte degli endpoint di federazione sono sotto forma di JWT firmato, ad eccezione dell'endpoint di Elenco Subordinati e dell'endpoint di Stato Trust Mark che sono serviti come JSON semplice per impostazione predefinita. L'Endpoint Eventi Subordinati della Federazione restituisce anche JWT firmati con il tipo di contenuto ``application/entity-events-statement+jwt``.
 
 Federation Subordinate Events Endpoint
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-L'Endpoint Eventi Subordinati della Federazione fornisce un meccanismo per Trust Anchor e Intermediari per pubblicare eventi storici relativi ai loro Subordinati Immediati. Questo endpoint fornisce trasparenza e responsabilità all'interno della federazione fornendo un record storico completo di eventi significativi che influenzano i partecipanti della federazione.
+L'Endpoint Eventi Subordinati della Federazione è definito in `OID-FED-SUBORDINATE-EVENTS`_. Questo endpoint fornisce un meccanismo per Trust Anchor e Intermediari per pubblicare eventi storici relativi ai loro Subordinati Immediati. Fornisce trasparenza e responsabilità all'interno della federazione fornendo un record storico completo di eventi significativi che influenzano i partecipanti della federazione.
 
-**Endpoint Location**:
+Per i dettagli completi della specifica, inclusi la posizione dell'endpoint, il formato della richiesta, il formato della risposta, i claim JWT, i parametri degli oggetti evento e i tipi di evento supportati, fare riferimento a `OID-FED-SUBORDINATE-EVENTS`_.
 
-L'Endpoint Eventi Subordinati della Federazione è pubblicato nei metadati ``federation_entity`` utilizzando il parametro ``federation_subordinate_events_endpoint``.
+Di seguito è riportato un esempio non normativo di una richiesta e risposta dell'Endpoint Eventi Subordinati della Federazione:
 
-**Request Format**:
+**Esempio di Richiesta**:
 
-La richiesta all'``federation_subordinate_events_endpoint`` DEVE essere una richiesta HTTP GET con i seguenti parametri di query:
-
-- **sub**: (OBBLIGATORIO) L'Identificativo dell'Entità del soggetto per cui viene richiesta la traccia storica.
-
-**Response Format**:
-
-Una risposta di successo DEVE utilizzare il codice di stato HTTP 200 e il tipo di contenuto ``application/entity-events-statement+jwt``. La risposta è un JWT firmato che è esplicitamente tipizzato impostando il parametro header ``typ`` su ``entity-events-statement+jwt`` per prevenire la confusione cross-JWT.
-
-**JWT Claims**:
-
-I claim nella risposta della dichiarazione eventi subordinati sono:
-
-- **iss**: (OBBLIGATORIO) Identificativo dell'Entità dell'emittente della risposta
-- **sub**: (OBBLIGATORIO) Identificativo dell'Entità del soggetto della risposta  
-- **iat**: (OBBLIGATORIO) Ora in cui questa risposta è stata emessa, espressa come Secondi dall'Epoch
-- **exp**: (OPZIONALE) Ora in cui questa risoluzione non è più valida, espressa come Secondi dall'Epoch
-- **federation_registration_events**: (OBBLIGATORIO) Array di oggetti JSON, ognuno rappresentante un evento di particolare interesse dalla prospettiva della federazione
-
-**Event Object Parameters**:
-
-- **iat**: (OBBLIGATORIO) Ora in cui si è verificato l'evento, utilizzando il formato ora definito per il claim ``iat``
-- **event**: (OBBLIGATORIO) Stringa che identifica il tipo di evento
-- **event_description**: (OPZIONALE) Stringa che può offrire informazioni aggiuntive sull'evento
-
-**Supported Event Types**:
-
-- **registration**: Indica quando un'Entità è stata registrata nella federazione
-- **revocation**: Indica quando la registrazione di un'Entità è stata revocata
-- **suspension**: Indica quando la registrazione di un'Entità è stata sospesa
-- **jwks_update**: Indica quando le Chiavi dell'Entità di Federazione di un'Entità sono state aggiornate
-- **metadata_update**: Indica quando i metadati di un'Entità sono stati aggiornati nel Subordinate Statement
-- **metadata_policy_update**: Indica quando la policy dei metadati di un'Entità è stata aggiornata nel Subordinate Statement
-
-**Example Request**:
-
-.. code-block:: text
+.. code-block:: http
 
    GET /federation_subordinate_events_endpoint?sub=https%3A%2F%2Frp%2Eexample%2Eorg HTTP/1.1
    Host: immediate-superior.example.org
 
-**Example Response**:
+**Esempio di Risposta**:
 
 .. code-block:: json
 
@@ -297,7 +260,7 @@ I claim nella risposta della dichiarazione eventi subordinati sono:
        },
        {
          "iat": 1590000000,
-         "event": "jwks_updates"
+         "event": "jwks_update"
        },
        {
          "iat": 1600000000,
@@ -311,7 +274,7 @@ I claim nella risposta della dichiarazione eventi subordinati sono:
      ]
    }
 
-**Integration with Entity Lifecycle Management**:
+**Integrazione con la Gestione del Ciclo di Vita delle Entità**:
 
 Questo endpoint completa le procedure di gestione del ciclo di vita delle entità definite in :ref:`entity-onboarding:Onboarding delle Entità` fornendo un tracciamento dettagliato di tutti gli eventi significativi che influenzano i partecipanti della federazione. Supporta sia il monitoraggio automatizzato della conformità che i processi di audit manuale.
 
@@ -366,7 +329,7 @@ Di seguito è riportato un esempio non normativo di un'Entity Configuration del 
                 "federation_resolve_endpoint": "https://trust-anchor.eid-wallet.example.it/resolve",
                 "federation_list_endpoint": "https://trust-anchor.eid-wallet.example.it/list",
                 "federation_trust_mark_status_endpoint": "https://trust-anchor.eid-wallet.example.it/trust_mark_status",
-                "federation_trust_mark_listing_endpoint": "https://trust-anchor.eid-wallet.example.it/trust_mark_listing",
+                "federation_trust_mark_list_endpoint": "https://trust-anchor.eid-wallet.example.it/trust_mark_listing",
                 "federation_subordinate_events_endpoint": "https://trust-anchor.eid-wallet.example.it/events"
             }
         },
@@ -448,7 +411,53 @@ L'Entity Configuration del Trust Anchor, oltre ai parametri comuni elencati sopr
      - **Richiesto**
    * - **trust_mark_issuers**
      - Array JSON che definisce quali autorità di Federazione sono considerate affidabili per l'emissione di Trust Mark specifici, assegnati con i loro identificatori unici.
-     - |uncheck-icon|
+     - |check-icon|
+
+
+Trust Mark degli Intermediari di Relying Party
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Nell'ecosistema IT-Wallet, gli Intermediari di Relying Party che agiscono per conto dei Relying Party (ai sensi dell'Art. 5b(8) del Regolamento eIDAS2 `EU_2024_1183`_) sono soggetti a uno specifico regime di Trust Mark che consente al Wallet di riconoscere e mostrare all'Utente che il RP richiedente opera tramite un Intermediario di Relying Party.
+
+**Emissione del Trust Mark all'Intermediario di Relying Party**
+
+Il Trust Anchor DEVE includere gli Intermediari di Relying Party nell'attributo ``trust_mark_issuers`` della propria Entity Configuration, autorizzandoli ad emettere Trust Mark per le Foglie a loro afferenti. Il Trust Anchor emette all'Intermediario di Relying Party un Trust Mark che attesta il suo ruolo, utilizzando ``https://<federation_authority_domain>/trust_marks/federation-entity/openid_credential_verifier_intermediary`` come ``trust_mark_type`` per distinguerlo dalle altre entità presenti nell'ecosistema.
+
+L'Intermediario di Relying Party DEVE includere questo Trust Mark nella propria Entity Configuration come prova del suo ruolo riconosciuto all'interno della Federazione.
+
+**Emissione di Trust Mark alle Foglie afferenti all'Intermediario di Relying Party**
+
+I Trust Mark emessi alle Foglie (Relying Party) afferenti a un Intermediario di Relying Party DEVONO essere emessi dall'Intermediario di Relying Party stesso, e non direttamente dal Trust Anchor.
+
+Un Relying Party afferente a un Intermediario di Relying Party DEVE includere nella propria Entity Configuration:
+
+- Il Trust Mark emesso dall'Intermediario di Relying Party, come prova del completamento del processo di onboarding gestito dall'Intermediario di Relying Party;
+- Il proprio ``authority_hints`` contenente l'URL dell'Intermediario di Relying Party (non direttamente del Trust Anchor), indicando così la corretta catena gerarchica.
+
+Di seguito è riportato un esempio non normativo di Entity Configuration del Trust Anchor che mostra la configurazione aggiornata di ``trust_mark_issuers`` con gli Intermediari di Relying Party autorizzati:
+
+.. code-block:: json
+
+    {
+      "trust_mark_issuers": {
+        "https://trust-anchor.eid-wallet.example.it/trust_marks/federation-entity/openid_credential_verifier": [
+          "https://trust-anchor.eid-wallet.example.it",
+          "https://intermediary.example.org"
+        ],
+        "https://trust-anchor.eid-wallet.example.it/trust_marks/federation-entity/openid_credential_verifier_intermediary": [
+          "https://trust-anchor.eid-wallet.example.it"
+        ],
+        "https://trust-anchor.eid-wallet.example.it/trust_marks/federation-entity/openid_credential_issuer": [
+          "https://trust-anchor.eid-wallet.example.it"
+        ],
+        "https://trust-anchor.eid-wallet.example.it/trust_marks/federation-entity/wallet_solution": [
+          "https://trust-anchor.eid-wallet.example.it"
+        ]
+      }
+    }
+
+.. note::
+  Il Trust Mark con identificativo che termina con ``federation-entity/openid_credential_verifier_intermediary`` è emesso esclusivamente dal Trust Anchor ed è quello che il Wallet utilizza per verificare che un'entità sia un Intermediario di Relying Party riconosciuto. I Trust Mark ``https://<federation_authority_domain>/trust_marks/federation-entity/openid_credential_verifier`` DOVREBBERO invece essere emessi anche dagli Intermediari di Relying Party per le Foglie a loro afferenti. 
 
 
 Entity Configuration Foglie e Intermediari
@@ -532,7 +541,7 @@ In questa sezione sono definiti i principali tipi di metadati mappati sui ruoli 
 Metadati di federation_entity Foglie
 ------------------------------------
 
-I metadati *federation_entity* per le Foglie DEVONO contenere i seguenti claim.
+I metadati *federation_entity* per le Foglie contiene i seguenti claim.
 
 
 .. list-table::
@@ -543,19 +552,19 @@ I metadati *federation_entity* per le Foglie DEVONO contenere i seguenti claim.
   * - **Claim**
     - **Descrizione**
   * - **organization_name**
-    - Vedi `OID-FED`_ Sezione 5.2.2
+    - OBBLIGATORIO. Vedi `OID-FED`_ Sezione 5.2.2
   * - **homepage_uri**
-    - Vedi `OID-FED`_ Sezione 5.2.2
+    - OBBLIGATORIO. Vedi `OID-FED`_ Sezione 5.2.2
   * - **policy_uri**
-    - Vedi `OID-FED`_ Sezione 5.2.2
+    - OBBLIGATORIO. Vedi `OID-FED`_ Sezione 5.2.2
   * - **logo_uri**
-    - URL del logo dell'entità; DEVE essere in formato SVG. Vedi `OID-FED`_ Sezione 5.2.2
+    - OBBLIGATORIO. URL del logo dell'entità; DEVE essere in formato SVG. Vedi `OID-FED`_ Sezione 5.2.2
   * - **contacts**
-    - Indirizzo email verificato istituzionale (PEC) dell'entità. Vedi `OID-FED`_ Sezione 5.2.2
+    - OBBLIGATORIO. Indirizzo email verificato istituzionale (PEC) dell'entità. Vedi `OID-FED`_ Sezione 5.2.2
   * - **federation_resolve_endpoint**
-    - Vedi `OID-FED`_ Sezione 5.1.1
+    - OPZIONALE. Vedi `OID-FED`_ Sezione 8.3
   * - **tos_uri**
-    - [OPZIONALE] Stringa URL che punta a un documento di termini di servizio leggibile dall'uomo per il client che descrive una relazione contrattuale tra l'utente finale e il client che l'utente finale accetta quando autorizza il client. Vedi `OID-FED`_.
+    - OPZIONALE. Stringa URL che punta a un documento di termini di servizio leggibile dall'uomo per il client che descrive una relazione contrattuale tra l'utente finale e il client che l'utente finale accetta quando autorizza il client. Vedi `OID-FED`_.
 
 
 I Subordinate Statement
@@ -704,17 +713,6 @@ Le Trust Chain possono anche essere verificate offline, utilizzando una delle ch
 
   Il Wallet Attestation trasmette tutte le informazioni richieste riguardanti l'istanza, come la sua chiave pubblica e qualsiasi altra informazione tecnica o amministrativa, senza alcun dato personale dell'Utente.
 
-.. note::
-  La revoca di un'Entità è fatta con l'indisponibilità del Subordinate Statement relativo ad essa. Se il Trust Anchor o il suo Intermediario non pubblica un Subordinate Statement valido, o se pubblica un Subordinate Statement scaduto e o non valido, il soggetto del Subordinate Statement DEVE essere inteso come non valido o revocato.
-
-La concatenazione delle dichiarazioni, attraverso la combinazione di questi meccanismi di firma e il binding di claim e chiavi pubbliche, forma la Trust Chain.
-
-Le Trust Chain possono anche essere verificate offline, utilizzando una delle chiavi pubbliche del Trust Anchor.
-
-.. note::
-  Poiché l'Istanza del Wallet non è un'Entità di Federazione, il Meccanismo di Trust Evaluation relativo ad essa **richiede la presentazione del Wallet Attestation durante le fasi di emissione e presentazione delle credenziali**.
-
-  Il Wallet Attestation trasmette tutte le informazioni richieste riguardanti l'istanza, come la sua chiave pubblica e qualsiasi altra informazione tecnica o amministrativa, senza alcun dato personale dell'Utente.
 
 Trust Chain
 -----------
@@ -868,6 +866,26 @@ Nel processo raffigurato nel diagramma di sequenza sottostante, l'Istanza del Wa
 
 .. note::
   Come mostrato nella figura, è richiesta una connessione internet per aggiornare la Trust Chain su un RP e controllare il suo stato di revoca.
+
+Stabilire Trust con il Relying Party che opera tramite Intermediario
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Quando un Relying Party opera tramite un Intermediario di Relying Party, l'Istanza del Wallet DEVE eseguire un processo di Trust Evaluation esteso che include la validazione del Trust Mark dell'Intermediario di Relying Party. Questo processo si svolge durante la fase di costruzione e validazione della Trust Chain e consente al Wallet di presentare all'Utente informazioni trasparenti sull'entità che ha registrato e garantisce il RP.
+
+Il processo si articola nei seguenti passi:
+
+1. **Download dell'Entity Configuration del RP**: L'Istanza del Wallet scarica l'Entity Configuration del Relying Party dall'endpoint ``/.well-known/openid-federation`` del RP. L'EC del RP contiene il claim ``authority_hints`` che punta all'URL dell'Intermediario di Relying Party (non direttamente al Trust Anchor).
+
+2. **Identificazione dell'Intermediario di Relying Party**: Tramite il claim ``authority_hints`` nell'EC del RP, l'Istanza del Wallet identifica l'Intermediario di Relying Party e ne scarica l'Entity Configuration.
+
+3. **Validazione del Trust Mark dell'Intermediario di Relying Party**: L'Istanza del Wallet verifica che l'Entity Configuration dell'Intermediario di Relying Party contenga un Trust Mark valido per il ruolo di Intermediario di Relying Party, emesso dal Trust Anchor. La validità del Trust Mark DEVE essere verificata tramite l'endpoint ``/trust_mark_status`` del Trust Anchor.
+
+4. **Costruzione della Trust Chain tramite l'Intermediario di Relying Party**: L'Istanza del Wallet costruisce la Trust Chain completa: Entity Configuration del RP → Subordinate Statement emesso dall'Intermediario di Relying Party per il RP → Subordinate Statement emesso dal Trust Anchor per l'Intermediario di Relying Party → Entity Configuration del Trust Anchor. Questa catena attesta che il RP è una Foglia riconosciuta dall'Intermediario di Relying Party e che l'Intermediario di Relying Party è a sua volta riconosciuto dal Trust Anchor.
+
+5. **Presentazione all'Utente**: Una volta completata la validazione, l'Istanza del Wallet PUÒ indicare all'Utente che il Relying Party richiedente opera tramite un Intermediario di Relying Party riconosciuto, mostrando le informazioni identificative dell'Intermediario di Relying Party (ad esempio ``organization_name``) ottenute dalla sua Entity Configuration.
+
+.. note::
+  La presenza del Trust Mark con identificativo che termina con ``federation-entity/openid_credential_verifier_intermediary`` nell'EC dell'Intermediario di Relying Party costituisce la prova crittograficamente verificabile che l'entità è stata riconosciuta dal Trust Anchor come Intermediario di Relying Party autorizzato. L'Istanza del Wallet DEVE rifiutare la richiesta del RP se la Trust Chain non può essere costruita e validata tramite un Intermediario di Relying Party riconosciuto o direttamente tramite il Trust Anchor.
 
 Valutare Trust con i Wallet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^

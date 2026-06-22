@@ -120,7 +120,7 @@ e l'effetto sul loro storage locale.
 .. plantuml:: plantuml/credential-lifecycle.puml
     :width: 99%
     :alt: La figura illustra il Ciclo di Vita degli Attestati Elettronici.
-    :caption: `Gestione del Ciclo di Vita degli Attestati Elettronici. <https://www.plantuml.com/plantuml/svg/ZLDTRnCn47pthnYUQAKMAj6db8z6YP0gWLG5K8KGGkxTNix2iODtdRJyUcmdENB82FRXPCixExExSzSiEaXSMVN4kCR6bl1oTlbyTlbj_kZqoZIlbL8bHpalX62MlQYxdXmqvcPfH5lC0hNanAIZ8sePud5FYEjM2xLda9wESswO8mN6--bdCBaM6iwBwKoZnNW7yGNnYIaWid5BQ0HQ6XPAHU2ZdFlk_5udPEDNg-WEmARNpf5zfdBHB5UfIQdYr-GOTzfQ4jmu5kqQkb9G02OBac1eG_WWMYBZdM71H_-T73eVSWfOV68-we4J62WSiDH9kIteHpGvRvl7upmssfesFrLAqqCwStaSrEQBwN3oc-S0D0vVBXukNfmXVI-_lZc5P8wJH-BJ0WDP9fmuVmg5us3nQuKzZUdKy9g9far3p7j5HMsbyZxoPSGqUYxb5jG5ulx_wW6Jr5mGZ55lhT_kXblZgtTMOjY7mZXsBDh1qRPuBoyVNUBvCtDhf2-sUygOngnR3jOQfuvNLc8OSFqs7B8XCR_rjnWDNpp2teT3Qj9R-SLsmwbOXNTMULKiylUvJx9DYQKqMjhqmVmiNLxLzZrGZVA9QmoZtVf0fOMQzFfUwviTPba7_fknvlx9d2m9OHreOtpa4KOL0TS94bVs5m00>`_
+    :caption: `Gestione del Ciclo di Vita degli Attestati Elettronici. <https://www.plantuml.com/plantuml/svg/ZLDTQnGn57tFhpW-sKAh1VkqzQErYr1GA5Kf8YBfp9sTO3PPSs-whR_U9BiRTvU8teSX8VUSSp_EdBFe875krHFZEXjxmilBq-UNfz-dZqxFJVTQALLobFD226OsYheToK5ZQcP6jCLbe9wSc7HqH3r3FEu8ST5heVu8Cj9spXLpfC3uSF45JAw7Hk8sW-cq6EyIkY0-CmL4Dcu6ZK0pmqA913xAiH-ExtH2Tdu-Zsu3x4Rj7DbdAfFcSfMQ51Q_8CUurTQIuCgnQDVHcO82CBaX2ORk2Hz5IsIyJqBuv7-Gm-13JW6BJyfRFN020qK3bWOfjnlw6KtEM-RnE8zxRKsVdnhKz93EN1vhjVbY1XpyqTa0ZSFNauUJ5qT8txVVtXn2iiR18_5XWO4i4mwSFuJ2Th3uXS9QnWoglcQXYwuZvdL5fTfzvXgLjYhLvqftGqCW7l-F3vYave9W5_NE-kLgk2szTcSbwZuKTcEbeXqSBOltyl8n99tzpAMHiTZkAUCYvhfbOwtjrFsLbQW3Rj_g8HiIqsj_ZPtXYqTO-x2cfdeRlrWTphvLU6MLLyKYVv_x9DkKM4gZfKqVpA_IvLbhtrLg9v-ugR2zMn-ejD0glRtNzcRhBDl0Vokst3-PaYKXB0BT6nzv1wDA0US94kVsDm00>`_
 
 .. .. figure:: ../../images/DigitalCredential_Lifecycle.svg
 ..     :figwidth: 100%
@@ -285,7 +285,7 @@ Una volta che i dati cambiano, la Fonte Autentica notifica i Fornitori di Attest
 
 Il Fornitore di Attestati Elettronici interroga periodicamente il Signal Hub :ref:`signal-hub-endpoint:e-Service di Distribuzione Segnali` per nuovi Signal. Quando viene trovato un nuovo Signal, il Fornitore di Attestati Elettronici lo recupera e lo processa come descritto in :ref:`signal-hub-endpoint:Elaborazione dei Segnali`. Quindi, il Fornitore di Attestati Elettronici aggiorna lo Stato dell’Attestato secondo la modalità definita dal meccanismo di validità. Il Fornitore di Attestati Elettronici PUÒ notificare l’Utente tramite un canale di comunicazione registrato e out-of-band.
 
-L’Istanza del Wallet, a seguito di controlli periodici dello stato di validità degli Attestati Elettronici memorizzati, riceve lo stato aggiornato. Quando lo Stato dell’Attestato viene modificato in INVALID, il Fornitore di Attestati Elettronici DEVE informare l’Utente di tale cambiamento. Nel caso in cui lo stato dell’Attestato venga modificato in UPDATE (risp. 0x03) o ATTRIBUTE_UPDATE (risp. 0x04), l’Istanza del Wallet DOVREBBE procedere alla riemissione dell’Attestato Elettronico, come descritto in :ref:`credential-issuance-low-level:Re-Issuance Flow`.
+L’Istanza del Wallet, a seguito di controlli periodici dello stato di validità degli Attestati Elettronici memorizzati, riceve lo stato aggiornato. Quando lo Stato dell’Attestato viene modificato in ``INVALID``, il Fornitore di Attestati Elettronici DEVE informare l’Utente di tale cambiamento. Nel caso in cui lo stato dell’Attestato venga modificato in ``UPDATE`` (risp. 0x03) o ``ATTRIBUTE_UPDATE`` (risp. 0x0F), l’Istanza del Wallet DOVREBBE procedere alla riemissione dell’Attestato Elettronico, come descritto in :ref:`credential-issuance-low-level:Re-Issuance Flow`.
 
 Gestione del ciclo di vita delle Credenziali in batch
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -314,10 +314,10 @@ Per la verifica dello stato di validità di un Attestato Elettronico a lunga dur
     - **Riferimento**
   * - Remoto
     -
-      - [RICHIESTO] Token Status List.
+      - [OBBLIGATORIO] Token Status List.
     - `TOKEN-STATUS-LIST`_.
   * - Prossimità
-    - [RICHIESTO] Token Status List.
+    - [OBBLIGATORIO] Token Status List.
     - `TOKEN-STATUS-LIST`_.
 
 Token Status Lists
@@ -344,7 +344,7 @@ Il Fornitore di Attestati Elettronici DEVE utilizzare i seguenti valori per i po
   - 0x01 - ``INVALID`` - L'Attestato Elettronico è revocato.
   - 0x02 - ``SUSPENDED`` - L'Attestato Elettronico è temporaneamente non valido, sospeso. Questo stato è solitamente temporaneo.
   - 0x03 - ``UPDATE`` - I parametri dei metadata dell'Attestato Elettronico sono cambiati.
-  - 0x0B - ``ATTRIBUTE_UPDATE`` - Gli attributi dell'Attestato Elettronico sono cambiati.
+  - 0x0F - ``ATTRIBUTE_UPDATE`` - Gli attributi dell'Attestato Elettronico sono cambiati.
 
 Ad esempio, se sono possibili cinque stati per un certo Attestato Elettronico, allora k=4. Se il Fornitore di Attestati Elettronici crea un array per memorizzare gli stati di 6 Attestati Elettronici, i cui stati di validità sono 0, 0, 0, 3, 1, 2, rispettivamente; farà:
 
@@ -375,16 +375,16 @@ Il Token di Status List è disponibile all'Endpoint di Status List e contiene i 
     - **Descrizione**
     - **Riferimento**
   * - **alg**
-    - RICHIESTO. Un identificatore di algoritmo di firma digitale come per il registro IANA "JSON Web Signature and Encryption Algorithms". DEVE essere uno degli algoritmi supportati nella Sezione :ref:`algorithms:Algoritmi Crittografici` e NON DEVE essere impostato su ``none`` o su un identificatore di algoritmo simmetrico (MAC).
+    - OBBLIGATORIO. Un identificatore di algoritmo di firma digitale come per il registro IANA "JSON Web Signature and Encryption Algorithms". DEVE essere uno degli algoritmi supportati nella Sezione :ref:`algorithms:Algoritmi Crittografici` e NON DEVE essere impostato su ``none`` o su un identificatore di algoritmo simmetrico (MAC).
     - [:rfc:`7515`], [:rfc:`7517`].
   * - **typ**
-    - RICHIESTO. DEVE corrispondere al valore ``statuslist+jwt``.
+    - OBBLIGATORIO. DEVE corrispondere al valore ``statuslist+jwt``.
     - `TOKEN-STATUS-LIST`_
   * - **kid**
-    - RICHIESTO. Identificatore univoco della chiave pubblica del Fornitore di Attestati Elettronici che firma il Token di Status.
+    - OBBLIGATORIO. Identificatore univoco della chiave pubblica del Fornitore di Attestati Elettronici che firma il Token di Status.
     - :rfc:`7638#section_3`.
   * - **x5c**
-    - RICHIESTO. Certificato di chiave pubblica X.509 o catena di certificati corrispondente alla chiave utilizzata per firmare il Token di Status List.
+    - OBBLIGATORIO. Certificato di chiave pubblica X.509 o catena di certificati corrispondente alla chiave utilizzata per firmare il Token di Status List.
     - :rfc:`5280`
 
 .. list-table::
@@ -396,10 +396,10 @@ Il Token di Status List è disponibile all'Endpoint di Status List e contiene i 
     - **Descrizione**
     - **Riferimento**
   * - **sub**
-    - RICHIESTO. Il claim del soggetto DEVE specificare l'URI del Token di Status List. Il valore DEVE essere uguale a quello del claim ``uri`` contenuto nel claim ``status_list`` dell'Attestato Elettronico.
+    - OBBLIGATORIO. Il claim del soggetto DEVE specificare l'URI del Token di Status List. Il valore DEVE essere uguale a quello del claim ``uri`` contenuto nel claim ``status_list`` dell'Attestato Elettronico.
     - [:rfc:`7519`]
   * - **iat**
-    - RICHIESTO. Il claim issued at DEVE specificare l'ora in cui è stato emesso il Token di Status List.
+    - OBBLIGATORIO. Il claim issued at DEVE specificare l'ora in cui è stato emesso il Token di Status List.
     - [:rfc:`7519`]
   * - **exp**
     - RACCOMANDATO. Il claim expiration time, se presente, DEVE specificare l'ora in cui il Token di Status List è considerato scaduto dal Fornitore di Attestati Elettronici.
@@ -408,7 +408,7 @@ Il Token di Status List è disponibile all'Endpoint di Status List e contiene i 
     - RACCOMANDATO. Il claim time to live, se presente, DEVE specificare la quantità massima di tempo, in secondi, che il Token di Status List può essere memorizzato nella cache da un consumatore prima che una copia aggiornata DOVREBBE essere recuperata. Il valore del claim DEVE essere un numero positivo codificato in JSON come un numero. Questa quantità di tempo NON DOVREBBE superare il tempo di scadenza definito nel claim **exp**.
     - `TOKEN-STATUS-LIST`_
   * - **status_list**
-    - RICHIESTO. Oggetto JSON che contiene una Status List.
+    - OBBLIGATORIO. Oggetto JSON che contiene una Status List.
     - `TOKEN-STATUS-LIST`_
 
 .. note::
@@ -426,10 +426,10 @@ Una Status List codificata in JSON ha la seguente struttura:
     - **Descrizione**
     - **Riferimento**
   * - **bits**
-    - RICHIESTO. Intero JSON che specifica il numero di bit per Attestato Elettronico nell'array di byte compresso (`lst`). I valori consentiti per bits sono 1,2,4 e 8.
+    - OBBLIGATORIO. Intero JSON che specifica il numero di bit per Attestato Elettronico nell'array di byte compresso (`lst`). I valori consentiti per bits sono 1,2,4 e 8.
     - `TOKEN-STATUS-LIST`_
   * - **lst**
-    - RICHIESTO. Stringa JSON che contiene i valori di stato per tutti gli Attestato Elettronici di cui trasmette gli stati. Il valore DEVE essere l'array di byte compresso codificato in base64url.
+    - OBBLIGATORIO. Stringa JSON che contiene i valori di stato per tutti gli Attestato Elettronici di cui trasmette gli stati. Il valore DEVE essere l'array di byte compresso codificato in base64url.
     - `TOKEN-STATUS-LIST`_
   * - **aggregation_uri**
     - OPZIONALE. Stringa JSON che contiene un URI per recuperare l'Aggregazione di Status List per questo tipo di Attestato Elettronico o Fornitore di Attestati Elettronici.
@@ -484,17 +484,17 @@ Il valore del claim ``status_list`` DEVE essere a sua volta un Oggetto JSON con 
     - **Descrizione**
     - **Riferimento**
   * - **idx**
-    - RICHIESTO. Il claim idx (indice) DEVE specificare un Intero che rappresenta l'indice da controllare per le informazioni sullo stato nella Status List per l'Attestato Elettronico corrente. Il valore di idx DEVE essere un numero non negativo, contenente il valore zero o maggiore.
+    - OBBLIGATORIO. Il claim idx (indice) DEVE specificare un Intero che rappresenta l'indice da controllare per le informazioni sullo stato nella Status List per l'Attestato Elettronico corrente. Il valore di idx DEVE essere un numero non negativo, contenente il valore zero o maggiore.
     - `TOKEN-STATUS-LIST`_
   * - **uri**
-    - RICHIESTO. Il claim uri (URI) DEVE specificare un valore String che identifica il Token di Status List contenente le informazioni sullo stato per l'Attestato Elettronico. Il valore di uri DEVE essere un URI conforme a [:rfc:`3986`].
+    - OBBLIGATORIO. Il claim uri (URI) DEVE specificare un valore String che identifica il Token di Status List contenente le informazioni sullo stato per l'Attestato Elettronico. Il valore di uri DEVE essere un URI conforme a [:rfc:`3986`].
     - `TOKEN-STATUS-LIST`_
 
 
 Verifica degli Stati degli Attestati Elettronici
 """"""""""""""""""""""""""""""""""""""""""""""""
 
-Il recupero, l'elaborazione e la verifica di un Token di Status List possono essere effettuati sia dall'Istanza del Wallet che da una Relying Party. Di seguito viene descritto per la Relying Party, tuttavia, le stesse regole si applicherebbero anche all'Istanza del Wallet.
+Il recupero, l'elaborazione e la verifica di un Token di Status List possono essere effettuati sia dall'Istanza del Wallet che da una Relying Party. Di seguito viene descritto per la Wallet Instance, tuttavia, le stesse regole si applicherebbero anche al Relying Party.
 
 .. _fig_entity-relation-credential-revocation-SL:
 .. plantuml:: plantuml/status-list-flow.puml
@@ -578,9 +578,9 @@ In caso di errore durante la generazione della risposta da parte dell'Endpoint d
 
   * - **Codice di Stato**
     - **Descrizione**
-  * - *500 Internal Server Error* [RICHIESTO]
+  * - *500 Internal Server Error* [OBBLIGATORIO]
     - Il Provider di Status List ha riscontrato un problema interno.
-  * - *503 Service Unavailable* [RICHIESTO]
+  * - *503 Service Unavailable* [OBBLIGATORIO]
     - Il Provider di Status List è temporaneamente non disponibile.
   * - *504 Gateway Timeout* [OPZIONALE]
     - Il Provider di Status List non può soddisfare la richiesta entro l'intervallo di tempo definito.

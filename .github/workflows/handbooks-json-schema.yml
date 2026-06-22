@@ -1,0 +1,66 @@
+# JSON Schema validation for handbook assets: runs every Makefile found under handbooks/.
+name: handbooks-json-schema
+
+on:
+  push:
+    branches: ["*"]
+    paths:
+      - "handbooks/**"
+      - "handbooks/it/authentic-sources/progettazione-caratteristiche-eaa.json"
+      - "handbooks/it/authentic-sources/json-schemas/schema-validazione-form-onboarding-fonte-autentica.schema.json"
+      - "utils/validate_casi_d_uso_json.py"
+      - ".github/workflows/handbooks-json-schema.yml"
+  pull_request:
+    branches: ["*"]
+    paths:
+      - "handbooks/**"
+      - "handbooks/it/authentic-sources/progettazione-caratteristiche-eaa.json"
+      - "handbooks/it/authentic-sources/json-schemas/schema-validazione-form-onboarding-fonte-autentica.schema.json"
+      - "utils/validate_casi_d_uso_json.py"
+      - ".github/workflows/handbooks-json-schema.yml"
+  workflow_dispatch:
+
+jobs:
+  pre_job:
+    runs-on: ubuntu-latest
+    outputs:
+      should_skip: ${{ steps.skip_check.outputs.should_skip }}
+    steps:
+      - id: skip_check
+        uses: fkirc/skip-duplicate-actions@v3.4.0
+        with:
+          skip_after_successful_duplicate: "true"
+          same_content_newer: "true"
+
+  validate:
+    name: Validate handbook JSON (Makefiles)
+    needs: pre_job
+    if: needs.pre_job.outputs.should_skip != 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install jsonschema
+        run: pip install "jsonschema>=4.0.0"
+
+      - name: Run Makefiles under handbooks
+        run: |
+          set -euo pipefail
+          found=0
+          while IFS= read -r -d '' makefile; do
+            found=1
+            dir=$(dirname "$makefile")
+            echo "::group::make in $dir"
+            (cd "$dir" && make)
+            echo "::endgroup::"
+          done < <(find handbooks -type f -name Makefile -print0)
+
+          if [ "$found" -eq 0 ]; then
+            echo "No Makefiles under handbooks/; nothing to run."
+          fi

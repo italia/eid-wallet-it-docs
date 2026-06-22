@@ -1,0 +1,74 @@
+name: Lint HTML and CSS
+
+on:
+  push:
+    branches:
+      - '**'
+    paths:
+      - 'official_resources/**/*.html'
+      - 'official_resources/**/*.css'
+      - '.htmlhintrc.json'
+      - '.stylelintrc.json'
+      - '.github/workflows/lint-html-css.yml'
+  pull_request:
+    branches:
+      - '**'
+    paths:
+      - 'official_resources/**/*.html'
+      - 'official_resources/**/*.css'
+      - '.htmlhintrc.json'
+      - '.stylelintrc.json'
+      - '.github/workflows/lint-html-css.yml'
+  workflow_dispatch:
+
+jobs:
+  lint:
+    name: Lint HTML and CSS
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Verify config files exist
+        run: |
+          if [ ! -f .htmlhintrc.json ]; then
+            echo "Error: .htmlhintrc.json not found"
+            exit 1
+          fi
+          if [ ! -f .stylelintrc.json ]; then
+            echo "Error: .stylelintrc.json not found"
+            exit 1
+          fi
+          echo "Config files found"
+
+      - name: Lint HTML files
+        run: |
+          echo "Linting HTML files..."
+          HTML_FILES=$(find official_resources -name "*.html" -type f)
+          if [ -z "$HTML_FILES" ]; then
+            echo "No HTML files found to lint"
+            exit 0
+          fi
+          echo "$HTML_FILES" | while read file; do
+            echo "Checking $file"
+            npx --yes htmlhint "$file" --config .htmlhintrc.json || exit 1
+          done
+
+      - name: Lint CSS files
+        run: |
+          echo "Linting CSS files..."
+          CSS_FILES=$(find official_resources -name "*.css" -type f)
+          if [ -z "$CSS_FILES" ]; then
+            echo "No CSS files found to lint"
+            exit 0
+          fi
+          echo "$CSS_FILES" | while read file; do
+            echo "Checking $file"
+            npx --yes stylelint "$file" --config .stylelintrc.json || exit 1
+          done

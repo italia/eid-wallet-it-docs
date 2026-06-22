@@ -223,7 +223,7 @@ SR-P-41
 Un prerequisito per un attacco di questo tipo è che l'attaccante abbia accesso ad alcuni messaggi tra il Wallet e il Verificatore di Attestati Elettronici, ad esempio,
 l'attaccante potrebbe avere accesso alla presentazione contenuta nel Token VP. Dato ciò, la corretta implementazione di TLS garantisce la riservatezza, evitando la fuga della risposta.
 Oltre a TLS, l'implementazione esistente dei controlli **nonce** e audience nel protocollo di presentazione dovrebbe aiutare a soddisfare il requisito di sicurezza P-41.
-Per quanto riguarda il claim **nonce**, il Verificatore di Attestati Elettronici DEVE verificare che il valore **nonce** nel Token VP corrisponda al valore **nonce** che è creato dal Verificatore di Attestati Elettronici durante la richiesta di autorizzazione (:ref:`test-plans-remote-presentation`).
+Per quanto riguarda il claim **nonce**, il Verificatore di Attestati Elettronici DEVE verificare che il valore **nonce** nel Token VP corrisponda al valore **nonce** che è creato dal Verificatore di Attestati Elettronici durante la richiesta di autorizzazione (:ref:`test-plans-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto`).
 Per quanto riguarda il valore **aud**, il Verificatore di Attestati Elettronici deve verificare che l'audience della presentazione corrisponda all'identificatore del Verificatore di Attestati Elettronici.
 
 SR-P-50
@@ -243,9 +243,6 @@ il controllo dell'attaccante, e nel caso di furto delle Credenziali, l'attaccant
 WSCD interno locale che utilizza chiavi basate su hardware. Tuttavia, la mancanza di un
 profilo di certificazione che certifichi il WSCD interno locale contro attaccanti altamente capaci (la certificazione per le attuali soluzioni TEE sul mercato raggiunge al massimo AVA_VAN.3
 come mostrato ad esempio in questo `Rapporto di Certificazione <https://www.tuv-nederland.nl/assets/files/cerfiticaten/2021/08/nscib-cc-0244671-cr-1.0.pdf>`_ o `sito Global Platform <https://globalplatform.org/specs-library/tee-protection-profile-v1-3/>`_ rende il requisito solo parzialmente soddisfatto.
-
-.. note::
-   Nel contesto EUDI Wallet, il WSCD interno locale e altri deployment WSCD sono ancora in fase di certificazione secondo `CEN_ETSI_Workshop <https://docbox.etsi.org/ESI/Open/workshops/202409_CEN_ETSI_Workshop/DAY3-8%20Certification%20for%20EU%20Digital%20Identity%20Wallets/DAY3-8-26%20ETSI_CEN_WS_WSCA%20Jan%20Kjaersgaard.pdf>`_.
 
 SR-V-10
 ^^^^^^^

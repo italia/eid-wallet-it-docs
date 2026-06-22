@@ -1,5 +1,6 @@
 - Alen Horvat
 - Amir Sharif
+- Andrea Misuraca
 - Andrea Moro
 - Andrea Prosseda
 - Chris Phillips
@@ -12,17 +13,20 @@
 - Francesco Ventola
 - Gabriella Cefalù
 - Giada Sciarretta
+- Gian Paolo Rossi
 - Giuseppe De Marco
 - Klaas Wierenga
 - Kristina Yasuda
 - Leif Johansson
 - Lorenzo Cerini
+- Lorenzo Nardi
 - Manuel Rafeli
 - Marco Basili
 - Marco Pernpruner
 - Mart Aarma
 - Marta Sciunnach
 - Matteo Fortini
+- Michele Massetti
 - Michele Silletti
 - Nicola Saitto
 - Niels van Dijk
@@ -42,6 +46,7 @@
 - Takahiko Kawasaki
 - Thomas Chiozzi
 - Torsten Lodderstedt
+- Valentina Carollo
 - Valerio Bozzolan
 - Vladimir Duzhinov
 - Zahra Ebadi Ansaroudi

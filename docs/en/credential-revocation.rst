@@ -122,7 +122,7 @@ and the effect on their local storage.
 .. plantuml:: plantuml/credential-lifecycle.puml
     :width: 99%
     :alt: The figure illustrates the Digital Credential Lifecycle.
-    :caption: `Digital Credential Lifecycle Management. <https://www.plantuml.com/plantuml/svg/ZLDTRnCn47pthnYUQAKMAj6db8z6YP0gWLG5K8KGGkxTNix2iODtdRJyUcmdENB82FRXPCixExExSzSiEaXSMVN4kCR6bl1oTlbyTlbj_kZqoZIlbL8bHpalX62MlQYxdXmqvcPfH5lC0hNanAIZ8sePud5FYEjM2xLda9wESswO8mN6--bdCBaM6iwBwKoZnNW7yGNnYIaWid5BQ0HQ6XPAHU2ZdFlk_5udPEDNg-WEmARNpf5zfdBHB5UfIQdYr-GOTzfQ4jmu5kqQkb9G02OBac1eG_WWMYBZdM71H_-T73eVSWfOV68-we4J62WSiDH9kIteHpGvRvl7upmssfesFrLAqqCwStaSrEQBwN3oc-S0D0vVBXukNfmXVI-_lZc5P8wJH-BJ0WDP9fmuVmg5us3nQuKzZUdKy9g9far3p7j5HMsbyZxoPSGqUYxb5jG5ulx_wW6Jr5mGZ55lhT_kXblZgtTMOjY7mZXsBDh1qRPuBoyVNUBvCtDhf2-sUygOngnR3jOQfuvNLc8OSFqs7B8XCR_rjnWDNpp2teT3Qj9R-SLsmwbOXNTMULKiylUvJx9DYQKqMjhqmVmiNLxLzZrGZVA9QmoZtVf0fOMQzFfUwviTPba7_fknvlx9d2m9OHreOtpa4KOL0TS94bVs5m00>`_
+    :caption: `Digital Credential Lifecycle Management. <https://www.plantuml.com/plantuml/svg/ZLDTQnGn57tFhpW-sKAh1VkqzQErYr1GA5Kf8YBfp9sTO3PPSs-whR_U9BiRTvU8teSX8VUSSp_EdBFe875krHFZEXjxmilBq-UNfz-dZqxFJVTQALLobFD226OsYheToK5ZQcP6jCLbe9wSc7HqH3r3FEu8ST5heVu8Cj9spXLpfC3uSF45JAw7Hk8sW-cq6EyIkY0-CmL4Dcu6ZK0pmqA913xAiH-ExtH2Tdu-Zsu3x4Rj7DbdAfFcSfMQ51Q_8CUurTQIuCgnQDVHcO82CBaX2ORk2Hz5IsIyJqBuv7-Gm-13JW6BJyfRFN020qK3bWOfjnlw6KtEM-RnE8zxRKsVdnhKz93EN1vhjVbY1XpyqTa0ZSFNauUJ5qT8txVVtXn2iiR18_5XWO4i4mwSFuJ2Th3uXS9QnWoglcQXYwuZvdL5fTfzvXgLjYhLvqftGqCW7l-F3vYave9W5_NE-kLgk2szTcSbwZuKTcEbeXqSBOltyl8n99tzpAMHiTZkAUCYvhfbOwtjrFsLbQW3Rj_g8HiIqsj_ZPtXYqTO-x2cfdeRlrWTphvLU6MLLyKYVv_x9DkKM4gZfKqVpA_IvLbhtrLg9v-ugR2zMn-ejD0glRtNzcRhBDl0Vokst3-PaYKXB0BT6nzv1wDA0US94kVsDm00>`_
 
 .. .. figure:: ../../images/DigitalCredential_Lifecycle.svg
 ..     :figwidth: 100%
@@ -231,11 +231,11 @@ The User's death triggers a change in the validity status of the User's identifi
 Status Update by Wallet Instance
 """"""""""""""""""""""""""""""""
 
-When the User deletes a Digital Credential from the Wallet Instance, the Wallet Instance by default SHALL NOT notify the Credential Issuer of this deletion event. Deleting a Digital Credential from the Wallet Instance only removes the local copy and does not change the validity status at the Issuer.
+When the User deletes a Digital Credential from the Wallet Instance, the Wallet Instance by default MUST NOT notify the Credential Issuer of this deletion event. Deleting a Digital Credential from the Wallet Instance only removes the local copy and does not change the validity status at the Issuer.
 
 The Wallet Instance MAY inform the User, prior to deletion, that deletion is a local action and does not imply revocation at the Issuer, and MAY implement, under the User's explicit consent at deletion time, a notification feature to inform the Credential Issuer of the User's intention to revoke the Digital Credential.
 
-If the User wants the Issuer to revoke a Digital Credential, the User SHOULD explicitly confirm this intention via the Wallet Instance's deletion prompt (when available), which SHALL then notify the Credential Issuer; alternatively, the User MAY use the Issuer's web portal or other Issuer-provided channels.
+If the User wants the Issuer to revoke a Digital Credential, the User SHOULD explicitly confirm this intention via the Wallet Instance's deletion prompt (when available), which MUST then notify the Credential Issuer; alternatively, the User MAY use the Issuer's web portal or other Issuer-provided channels.
 
 When the revoked Credential is the PID, the Credential Issuer MUST send a notification of this event to the User within 24 hours.
 For any other Credential different from the PID, the Credential Issuer SHOULD send a notification of this event to the User. The notification to the User MAY be implemented in several ways, such as using a User's email address, telephone number, or any other verified and secure communication channel. The notification to the User MUST also include all the information about the Credential revocation status. The method used for the notification to the User is out of scope of the current technical implementation profile. When the revocation occurs, the Credential Issuer MUST update the status of the Digital Credential accordingly. When the Notification Response sent by the Credential Issuer is successfully received by the Wallet Instance, the Wallet Instance MUST delete the Digital Credential.
@@ -283,7 +283,7 @@ Once the data changes, the Authentic Source notifies the Credential Issuers who 
 
 The Credential Issuer periodically queries the Signal Hub :ref:`signal-hub-endpoint:Signal Distribution e-Service` for new Signals. When a new Signal is found, the Credential Issuer retrieves it and processes it as described in :ref:`signal-hub-endpoint:Signals Processing`. Then, the Credential Issuer updates the Credential Status according to the validity mechanism's defined mode. The Credential Issuer MAY notify the User through a registered out-of-band communication channel.
 
-The Wallet instance, following periodic checks of the validity status of the stored Digital Credentials, receives the updated status. When the Credential Status is changed to INVALID, the Credential Issuer MUST inform the User about this change. In case the Credential status is modified to UPDATE (resp. 0x03) or ATTRIBUTE_UPDATE (resp. 0x04), the Wallet Instance SHOULD proceed to the re-issuance of the Digital Credential, as described in :ref:`credential-issuance-low-level:Re-Issuance Flow`.
+The Wallet instance, following periodic checks of the validity status of the stored Digital Credentials, receives the updated status. When the Credential Status is changed to ``INVALID``, the Credential Issuer MUST inform the User about this change. In case the Credential status is modified to ``UPDATE`` (resp. 0x03) or ``ATTRIBUTE_UPDATE`` (resp. 0x0F), the Wallet Instance SHOULD proceed to the re-issuance of the Digital Credential, as described in :ref:`credential-issuance-low-level:Re-Issuance Flow`.
 
 
 Batch Credential Lifecycle Management
@@ -291,7 +291,7 @@ Batch Credential Lifecycle Management
 
 When multiple Digital Credentials are issued together in a single batch, their lifecycle remains fully granular:
 
-  * **Grouped triggers, independent updates**: regardless of the actor that triggers a batch status update (e.g. the Wallet Instance via Notification Endpoint with ``event=credential_deleted``, Wallet Provider via updating Wallet Unit Attestation status list) the status updating is handled as N separate status changes.  The Credential Issuer updates each Credential's own status individually (for example, flipping its status-list bit to ``INVALID`` or ``SUSPENDED``). By default, a Wallet Instance SHALL NOT trigger batch status updates when the User deletes local Credentials. Upon deletion, the Wallet Instance MAY, under the User's explicit consent, notify the Credential Issuer of the User's intention to revoke the affected Credential(s).
+  * **Grouped triggers, independent updates**: regardless of the actor that triggers a batch status update (e.g. the Wallet Instance via Notification Endpoint with ``event=credential_deleted``, Wallet Provider via updating Wallet Unit Attestation status list) the status updating is handled as N separate status changes.  The Credential Issuer updates each Credential's own status individually (for example, flipping its status-list bit to ``INVALID`` or ``SUSPENDED``). By default, a Wallet Instance MUST NOT trigger batch status updates when the User deletes local Credentials. Upon deletion, the Wallet Instance MAY, under the User's explicit consent, notify the Credential Issuer of the User's intention to revoke the affected Credential(s).
 
 .. note::
   As the Wallet UI typically surfaces a batch as one Credential (e.g., 3 uses remaining), a User-driven deletion in the Wallet removes the entire batch locally. By default it does not request revocation at the Issuer. The Wallet MAY offer the User an optional prompt to request revocation at the Issuer as part of the deletion flow.
@@ -342,7 +342,7 @@ The Issuer of a Digital Credential MUST use the following values for possible St
   - 0x01 - ``INVALID`` - The Digital Credential is revoked.
   - 0x02 - ``SUSPENDED`` - The Digital Credential is temporarily invalid, hanging. This state is usually temporary.
   - 0x03 - ``UPDATE`` - The Digital Credential metadata parameters have changed.
-  - 0x0B - ``ATTRIBUTE_UPDATE`` - The Digital Credential attributes have changed.
+  - 0x0F - ``ATTRIBUTE_UPDATE`` - The Digital Credential attributes have changed.
 
 For example, if five states for a certain Digital Credential are possible, then k=4. If the Credential Issuer creates an array to store the statuses of 6 Digital Credentials, whose validity statuses are 0, 0, 0, 3, 1, 2, respectively; it will:
 
@@ -493,7 +493,7 @@ The value of the claim ``status_list`` MUST be itself a JSON Object with the fol
 Checking Credentials Statuses
 """""""""""""""""""""""""""""
 
-The fetching, processing and verifying of a Status List Token may be done by either the Wallet Instance or a Relying Party. Below it is described for the Relying Party, however, the same rules would also apply to the Wallet Instance.
+The fetching, processing and verifying of a Status List Token may be done by either the Wallet Instance or a Relying Party. Below it is described for the Wallet Instance, however, the same rules would also apply to the Relying Party.
 
 .. _fig_entity-relation-credential-revocation-SL:
 .. plantuml:: plantuml/status-list-flow.puml

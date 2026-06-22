@@ -35,3 +35,6 @@ v_env/bin/activate
 
 .*
 !.github
+!.stylelintrc.json
+!.htmlhintrc.json
+*__pycache__

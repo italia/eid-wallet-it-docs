@@ -4,25 +4,17 @@
 Sistema di Onboarding
 ============================
 
-L'ecosistema IT-Wallet opera come un'infrastruttura di trust federata dove le entità partecipanti devono stabilire relazioni di trust crittografiche e mantenere la conformità con standard di sicurezza comuni.
-
-Il sistema di onboarding DEVE abilitare operazioni sicure con Attestati Elettronici. Allo stesso tempo, DEVE soddisfare i diversi requisiti operativi che i diversi partecipanti richiedono.
-
-I processi amministrativi per le entità organizzative sono comuni a tutti i partecipanti e indipendenti dalle loro funzioni tecniche all'interno dell'ecosistema. Tuttavia, i processi di registrazione tecnica DEVONO tenere conto dei ruoli operativi distinti.
-
-I Credential Issuer, le Relying Party e le Istanze del Wallet (registrate indirettamente tramite i Fornitori di Wallet) partecipano direttamente alle operazioni di emissione e verifica delle Credenziali. Queste entità richiedono la costituzione di trust crittografico attraverso protocolli di federazione.
-
-Le Fonti Autentiche forniscono dati autorevoli attraverso relazioni di trust dirette con i Credential Issuer. Servono un ruolo centrale nella discovery e disponibilità dei dati, richiedendo procedure di registrazione specializzate focalizzate sui dati.
+Il sistema di onboarding registra le entità operative (PID Provider, Attestation Provider, Relying Party, Fornitori di Wallet e Fonti Autentiche) affinché possano partecipare all'ecosistema IT-Wallet con autorizzazioni e relazioni di trust chiaramente definite.
 
 Architettura del Sistema di Onboarding
 ---------------------------------------
 
-Il framework di onboarding DEVE fornire processi di onboarding specializzati che corrispondano alle caratteristiche operative e agli obblighi normativi dei diversi tipi di partecipanti.
+Il servizio di onboarding DEVE fornire processi di onboarding specializzati che corrispondano alle caratteristiche operative e agli obblighi normativi dei diversi tipi di partecipanti.
 
 .. plantuml:: plantuml/trust-infrastructure-overview.puml
     :width: 99%
     :alt: Panoramica del sistema di onboarding IT-Wallet che mostra i processi di registrazione a doppio Journey e l'infrastruttura di trust
-    :caption: `Panoramica del Sistema di Onboarding IT-Wallet. <//www.plantuml.com/plantuml/svg/hLL_RnCv4Fr_FyLSE954eir1MbJGWSYb0I8LDKe25H9IDB4d6qkElRAzoOKJt_titUtYP0la3o9Lwevddj-y-U4trg5n-KQ2CxbrPqAj35h_FtEveJEz9RCLj4l-48h9d1FyFRpe3IyMGxt9j2BbNYVlnzUZnMm-cevkvvydequtQTyCFjz-d2zkHc_dY-dutVkvDoPjkAQLK0IpoNGy7yqYJ9Tdo4s_jzBAdU6EhDxGsMMFaN5Y9HWwUlrhRuuEbsXFSMKwjIUu2RvWQFW9dZkKajol77j2MITSxeHMhuCWGo-vte1rUqas6N0-ahGXvUQOTbhqhoEZKBQUm9_BTAYbDgzQZruKls0Bo9LrjnQE2ZzjE9dAcXhQjxh7i9aH6pJxGzIdJvzVBVb9g8_-MbvSNLqqWHsnzI7gSxRizrUdeLxWLV_PYoPg6bfGeM9qY7qrwB-uUdiQzkNbi_xbm6CdJZX9C9wVtHK5Wrkrr6YuK2dCzjRH1cwhZW_bcPHImO0vRMpoZyuLzz-TIi8dq3hqQ7bBg_jV0lutzAnGA38TjDuyoDsQb1CCPZetZ0hVQtJeBz5RmQcCVbTa6v87GwcmpWZouPdHAx9MQ8KIj4bHYQyOkiYV4SyPkl8ewYyRP72OsbTrOQpdxUXLwtvGMjqZfYRp5AOazq6F2HedIfv3GpoGHmcVoFY9hDZUnanW6uwAK2vIuRmpg-CihBG16wHb1CWOsOXWfMVCCKneWzykyAig5ybMssPQLhato6N1FTGvAZvccHIiSd0Qc73YAwcV4oidlK6DYKETnjRcP8xLcvK2FC1FUFyVIHTgnK4hGDz4sjFmCLk2KCQVKgtML-Zxv5l1jmrLwcDbNPWfw0Z5XI7coltVK3oaTHGJo7_GIo6fTqTB66HPaMKfNfr0gPE5dN1hEBm4tDheF5t3tQJc7ssxfjPX5kT5vFZWUVe-aGNkGeHJp-KXtuTdKzVplx3xCAUDXH3YfkKe5gKwgE47L9YIXL0fjmSJ-w7YLRfa7IwbiEimrtNoF4Tvbg5RXzuCyq1HuqLRBz8Z6k-g0O_IMH6dylf5nIKigRUr5QQLjLMh55lk_mUzWWgAU9cS80kTwUG9tFc_uRZhhJwd89FEAd2KLRvRb88Nff-sP_IwFvmDsZYBmGngVeyX6geXEfGw3GaS9z7OkaLLS8j2UlOKJHcuVKRbbkB2iY3__gGD-YtnlpOyFOS1tmWLhYx7yw1fEYXbBMGtcPBy_eWqUh21zKN5O2796qfHzhmwkKIdVRAOXGtdn-TNuC_EOUwpKOAXREBMHpscDvaKeGDZx7O0Dzdl9bq1xtu_C9J8JFn-oacrKdrZJj2jYwzmr_4zXstSn_FxY9TVr3KwXEDBXyTT-HWiMzC6RJmdROZcEi01_932mtkXlpoFCIfAvLeOnJihaFe--n0DhYsNS_-y-R3SJM1Jh4VUJUwBMpmd5zvvV93q5nLxXzl61mz6k0HkSB-OXjvZebj-VGnbtMNrbxyXqZesxqIWMK74RqKr9rr_U1ljiO_MCqdQIZk2i0hY6hw4rlNzXl1o7HUh5OSrTG_XfSAVwYtfKQ8oL5l20oLlIF5y8_y7>`_
+    :caption: `Panoramica del Sistema di Onboarding IT-Wallet. <https://www.plantuml.com/plantuml/svg/hLL_RnCv4Fr_FyLSE954eir1MbJGWSYb0I8LDKe25H9IDB4d6qkElRAzoOKJt_titUtYP0la3o9Lwevddj-y-U4trg5n-KQ2CxbrPqAj35h_FtEveJEz9RCLj4l-48h9d1FyFRpe3IyMGxt9j2BbNYVlnzUZnMm-cevkvvydequtQTyCFjz-d2zkHc_dY-dutVkvDoPjkAQLK0IpoNGy7yqYJ9Tdo4s_jzBAdU6EhDxGsMMFaN5Y9HWwUlrhRuuEbsXFSMKwjIUu2RvWQFW9dZkKajol77j2MITSxeHMhuCWGo-vte1rUqas6N0-ahGXvUQOTbhqhoEZKBQUm9_BTAYbDgzQZruKls0Bo9LrjnQE2ZzjE9dAcXhQjxh7i9aH6pJxGzIdJvzVBVb9g8_-MbvSNLqqWHsnzI7gSxRizrUdeLxWLV_PYoPg6bfGeM9qY7qrwB-uUdiQzkNbi_xbm6CdJZX9C9wVtHK5Wrkrr6YuK2dCzjRH1cwhZW_bcPHImO0vRMpoZyuLzz-TIi8dq3hqQ7bBg_jV0lutzAnGA38TjDuyoDsQb1CCPZetZ0hVQtJeBz5RmQcCVbTa6v87GwcmpWZouPdHAx9MQ8KIj4bHYQyOkiYV4SyPkl8ewYyRP72OsbTrOQpdxUXLwtvGMjqZfYRp5AOazq6F2HedIfv3GpoGHmcVoFY9hDZUnanW6uwAK2vIuRmpg-CihBG16wHb1CWOsOXWfMVCCKneWzykyAig5ybMssPQLhato6N1FTGvAZvccHIiSd0Qc73YAwcV4oidlK6DYKETnjRcP8xLcvK2FC1FUFyVIHTgnK4hGDz4sjFmCLk2KCQVKgtML-Zxv5l1jmrLwcDbNPWfw0Z5XI7coltVK3oaTHGJo7_GIo6fTqTB66HPaMKfNfr0gPE5dN1hEBm4tDheF5t3tQJc7ssxfjPX5kT5vFZWUVe-aGNkGeHJp-KXtuTdKzVplx3xCAUDXH3YfkKe5gKwgE47L9YIXL0fjmSJ-w7YLRfa7IwbiEimrtNoF4Tvbg5RXzuCyq1HuqLRBz8Z6k-g0O_IMH6dylf5nIKigRUr5QQLjLMh55lk_mUzWWgAU9cS80kTwUG9tFc_uRZhhJwd89FEAd2KLRvRb88Nff-sP_IwFvmDsZYBmGngVeyX6geXEfGw3GaS9z7OkaLLS8j2UlOKJHcuVKRbbkB2iY3__gGD-YtnlpOyFOS1tmWLhYx7yw1fEYXbBMGtcPBy_eWqUh21zKN5O2796qfHzhmwkKIdVRAOXGtdn-TNuC_EOUwpKOAXREBMHpscDvaKeGDZx7O0Dzdl9bq1xtu_C9J8JFn-oacrKdrZJj2jYwzmr_4zXstSn_FxY9TVr3KwXEDBXyTT-HWiMzC6RJmdROZcEi01_932mtkXlpoFCIfAvLeOnJihaFe--n0DhYsNS_-y-R3SJM1Jh4VUJUwBMpmd5zvvV93q5nLxXzl61mz6k0HkSB-OXjvZebj-VGnbtMNrbxyXqZesxqIWMK74RqKr9rr_U1ljiO_MCqdQIZk2i0hY6hw4rlNzXl1o7HUh5OSrTG_XfSAVwYtfKQ8oL5l20oLlIF5y8_y7>`_
 
 Tutti gli Attori Primari DEVONO sottoporsi alla registrazione amministrativa per la conformità legale e normativa, seguita da processi di registrazione tecnica specializzati che DEVONO riflettere i loro ruoli operativi nell'ecosistema degli Attestati Elettronici.
 
@@ -30,7 +22,7 @@ Tutti gli Attori Primari DEVONO sottoporsi alla registrazione amministrativa per
 
     2. **Registrazione Tecnica**: Dopo l'approvazione amministrativa, le entità completano la registrazione tecnica attraverso Journey specializzati:
 
-        a. **Fonti Autentiche**: Dichiarano i loro Attributi dell'Utente disponibili dal Registro degli Attributi dell'Utente e specificano domini, scopi e tipo di organizzazione (pubblica o privata) previsti.
+        a. **Fonti Autentiche**: Dichiarano i loro Attributi dell'Utente disponibili dal Registro degli Attributi dell'Utente e specificano gli scopi di verifica previsti e tipo di organizzazione (pubblica o privata) previsti.
 
         b. **Credential Issuer**: Selezionano le Fonti Autentiche basate sugli Attributi dell'Utente richiesti, richiedono l'approvazione dell'integrazione (eccetto per i mandati normativi) e registrano i tipi di Credenziali con pubblicazione automatica del catalogo secondo la politica dell'Organismo di Supervisione.
 
@@ -38,7 +30,7 @@ Tutti gli Attori Primari DEVONO sottoporsi alla registrazione amministrativa per
 
     3. **Integrazione del Registro IT-Wallet**:
 
-        a. **Integrazione del Registro degli Attributi dell'Utente e della Tassonomia**: Il Registro degli Attributi dell'Utente fornisce definizioni di dati standardizzate per i singoli Attributi delle Credenziali, mentre la Tassonomia definisce la classificazione gerarchica (domini, scopi) che vengono poi referenziati nel Catalogo degli Attestati Elettronici per implementazioni specifiche di Credenziali. Tutti i partecipanti sfruttano questi registri per dichiarazioni di capacità di fornitura dati e requisiti di emissione/verifica.
+        a. **Integrazione del Registro degli Attributi dell'Utente e della Tassonomia**: Il Registro degli Attributi dell'Utente fornisce definizioni di dati standardizzate per i singoli Attributi delle Credenziali, mentre la Tassonomia definisce la classificazione gerarchica (domini, classi, scopi) che vengono poi referenziati nel Catalogo degli Attestati Elettronici per implementazioni specifiche di Credenziali. Tutti i partecipanti sfruttano questi registri per dichiarazioni di capacità di fornitura dati e requisiti di emissione/verifica.
 
         b. **Integrazione del Registro AS**: Fonti Autentiche registrate con i loro Attributi dell'Utente dichiarati e relative specifiche, abilitando la discovery e coordinazione dei CI.
 
@@ -55,28 +47,41 @@ La registrazione della Fonte Autentica consente ai fornitori di dati di stabilir
 
 Le Fonti Autentiche DEVONO sottoporsi a procedure di registrazione che convalidano la loro autorità sui dati, dichiarano i loro Attributi dell'Utente disponibili dal Registro degli Attributi dell'Utente standardizzato e stabiliscono meccanismi di integrazione tecnica. Le Fonti Autentiche specificano casi d'uso previsti (formalmente ``purposes``) che determinano l'eleggibilità del catalogo secondo le politiche dell'Organismo di Supervisione.
 
-Le Fonti Autentiche Pubbliche DEVONO sfruttare l'integrazione PDND per fornire dati governativi attraverso l'infrastruttura nazionale standardizzata.
-
-Le Fonti Autentiche Private POSSONO stabilire interfacce di servizio personalizzate che soddisfano requisiti organizzativi o normativi specifici.
-
-Entrambe i flussi DEVONO assicurare standard di qualità dei dati e stabilire tracce di audit per tutte le attività di fornitura dati.
+Le Fonti Autentiche Pubbliche e Private DEVONO sfruttare l'integrazione PDND per fornire dati governativi attraverso l'infrastruttura nazionale standardizzata.
 
 **Processo di Coordinamento AS-CI**: Dopo la registrazione AS, i Credential Issuer identificano entità AS adatte attraverso il Registro AS e richiedono autorizzazione all'integrazione durante la fase di registrazione amministrativa. Per i mandati normativi, l'autorizzazione DEVE essere automatica. Altrimenti, le entità Fonti Autentiche valutano e autorizzano le richieste dei Credential Issuer basate su criteri commerciali e tecnici. Dopo l'autorizzazione amministrativa, le procedure di integrazione tecnica stabiliscono le relazioni operative di accesso ai dati prima della pubblicazione del catalogo dei tipi di Credenziali.
 
 Le Fonti Autentiche registrate con successo DEVONO essere incluse nel Registro AS con i loro Attributi dell'Utente dichiarati e le relative specifiche. I tipi di Credenziali DEVONO diventare pubblicamente scopribili nel :ref:`registry:Catalogo degli Attestati Elettronici` solo dopo l'integrazione AS-CI riuscita e l'approvazione della politica dell'Organismo di Supervisione per l'eleggibilità del catalogo.
 
-Le procedure di implementazione tecnica per la registrazione della Fonte Autentica sono fornite in :ref:`entity-onboarding:Procedura di Registrazione AS`.
+Le procedure di implementazione tecnica per la registrazione della Fonte Autentica sono fornite in :ref:`entity-onboarding:Procedura di Registrazione delle Fonti Autentiche`.
 
 
 Processo di Onboarding della Federazione
 -----------------------------------------
 
-L'onboarding della federazione stabilisce le relazioni di trust crittografiche e i framework di conformità che consentono alle entità operative di partecipare ad attività sicure del ciclo di vita delle Credenziali.
-Le entità operative DEVONO completare l'onboarding che include la verifica dell'eleggibilità amministrativa, la validazione dell'infrastruttura tecnica e l'istituzione del trust crittografico. Il processo di onboarding crea relazioni di trust crittografiche attraverso l'emissione di certificati, la configurazione della catena di trust e l'attestazione di conformità. Questi meccanismi abilitano interazioni sicure tra i partecipanti della federazione e forniscono la base per la validazione del trust distribuito attraverso l'ecosistema.
+L'onboarding della federazione, inclusi i processi di registrazione amministrativa e tecnica, stabilisce le relazioni di trust crittografiche e le verifiche di conformità che consentono a tutte le entità (PID Provider, Attestation Provider, Relying Party, Fornitori di Wallet e Fonti Autentiche) di partecipare ad attività sicure del ciclo di vita delle Credenziali.
+Le entità operative DEVONO completare l'onboarding che include la verifica dell'eleggibilità amministrativa e la validazione tecnica. Per i Fornitori di Wallet, questo include la valutazione di conformità della Soluzione Wallet e i successivi flussi di notifica nelle Trusted Lists.
 
-Le entità registrate con successo sono incluse nel Registro di Federazione, che mantiene l'elenco autorevole dei partecipanti della federazione fidati. Questo registro abilita la validazione del trust operativo durante le attività del ciclo di vita delle Credenziali.
+Per PID Provider, Attestation Provider e Relying Party, il processo di onboarding della federazione tipicamente include:
 
-Le Relying Party DEVONO verificare gli Attestati Elettronici con garanzia crittografica, i Fornitori di Wallet DEVONO fornire servizi di portafoglio digitale fidati ai cittadini, e i Credential Issuer DEVONO emettere Attestati Elettronici utilizzando fonti di dati autorevoli. Tutte le operazioni DEVONO avvenire all'interno di relazioni di trust stabilite che assicurano sicurezza e auditabilità.
+ - **Registrazione dell'Entità**: Raccolta dei dati principali (identificazione, diritti, punti di fornitura del servizio e chiavi pubbliche crittografiche e certificati) necessari per autorizzare le entità e descriverne le capacità.
+ - **Emissione dei Certificati**: Emissione di certificati che autenticano le entità, fanno riferimento al registro per la verifica dei diritti, supportano la Certificate Transparency e descrivono lo stato di registrazione per Relying Party e Credential Issuer.
+ - **Pubblicazione del Registro**: Pubblicazione di tutte le entità registrate nel registro, con un'API online (vedi :ref:`trust-infrastructure:Integrazione dell'Infrastruttura di Trust e del Registro`) che può essere utilizzata per verificare la registrazione delle entità e gli attributi richiesti.
+
+.. note::
+  I **PID Provider**, i **PuB-EAA Provider** e i **Wallet Provider** sono registrati attraverso il sistema di onboarding dell'IT-Wallet e successivamente notificati alla Commissione Europea per l'inclusione nelle Trusted Lists. I Wallet Provider non ricevono certificati di accesso o certificati di registrazione dai Registrar nazionali. La Soluzione Wallet fornita dal Wallet Provider deve essere certificata da Organismi di Valutazione della Conformità (CAB) secondo il quadro nazionale di valutazione della conformità.
+
+Onboarding degli Intermediari di Relying Party
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Gli :term:`Intermediari di Relying Party <Intermediario di Relying Party>` seguono un processo di onboarding dedicato che conferisce lo status di Intermediario riconosciuto e l'autorità di effettuare l'onboarding delle Relying Party subordinate. Nel profilo implementativo descritto dalle presenti specifiche tecniche, un Intermediario di Relying Party corrisponde a un Intermediario di Federazione (vedi la definizione di **Intermediario IT-Wallet**). Il processo comprende:
+
+- **Registrazione amministrativa**: L'Intermediario presenta documentazione organizzativa e legale che ne attesta l'idoneità ad agire per conto di Relying Party ai sensi dell'Art. 5b(8) del Regolamento eIDAS2 (`EU_2024_1183`_).
+- **Registrazione tecnica**: L'Intermediario registra le proprie chiavi di federazione e gli endpoint, abilitandolo a pubblicare la propria Entity Configuration e a emettere Subordinate Statement per le Foglie subordinate.
+- **Emissione del Trust Mark di Intermediario**: Al termine del processo di onboarding, il Trust Anchor emette all'Intermediario un Trust Mark con identificativo ``https://<federation_authority_domain>/trust_marks/federation-entity/openid_credential_verifier_intermediary``. Questo Trust Mark costituisce l'evidenza verificabile del ruolo riconosciuto dell'Intermediario nella federazione.
+- **Autorizzazione all'emissione di Trust Mark**: Il Trust Anchor aggiorna la propria Entity Configuration includendo l'Intermediario nell'attributo ``trust_mark_issuers`` per l'identificativo ``https://<federation_authority_domain>/trust_marks/federation-entity/openid_credential_verifier``, autorizzando l'Intermediario a emettere Trust Mark alle proprie Relying Party affiliate.
+
+L'Entity Configuration della RP affiliata DEVE includere il Trust Mark emesso dall'Intermediario e DEVE impostare ``authority_hints`` utilizzando l'identificativo URL dell'Intermediario.
 
 Gestione del Ciclo di Vita delle Entità
 ----------------------------------------
@@ -145,7 +150,7 @@ La gestione del ciclo di vita nell'ecosistema IT-Wallet necessita di coordinamen
     - **Sincronizzazione del registro:** Quando un'entità apporta cambiamenti che influenzano altre entità, tutti i sistemi di registro DEVONO essere aggiornati correttamente assicurando che tutti i cambiamenti siano registrati in modo sicuro con timestamp e ragioni.
     - **Garanzia di continuità aziendale:** Le entità DOVREBBERO bilanciare tra l'apportare aggiornamenti necessari e mantenere i loro obblighi verso utenti e normative. Questo include assicurare che il servizio sia il più disponibile possibile, gestire i dati personali correttamente durante i cambiamenti e rimanere conformi ai requisiti legali anche in situazioni di emergenza.
 
-Le procedure tecniche e i requisiti di conformità specifici per la gestione del ciclo di vita sono dettagliati nella Sezione :ref:`entity-onboarding-gestione-del-ciclo-di-vita-delle-entita`.
+Le procedure tecniche e i requisiti di conformità specifici per la gestione del ciclo di vita sono dettagliati nella Sezione :ref:`entity-onboarding:Onboarding delle Entità`.
 
 Onboarding Journey Maps
 ------------------------
@@ -174,8 +179,8 @@ Il sistema Registro IT-Wallet coordina tutte le registrazioni attraverso cinque 
 
 Le seguenti mappe dei Journey illustrano due scenari di Credenziali distinti:
 
-    - **Scenario Catalogo Pubblico**: Patente di Guida Mobile (mDL) fornita per una discovery pubblica tramite Catalogo delle Credenziali.
-    - **Scenario Credenziale Privata**: Badge Dipendente Aziendale dall'Azienda (AS Privata, e quindi fornita per la discovery solo tramite Offerta di Credenziale).
+    - **Scenario Catalogo Pubblico**: Patente di Guida Mobile (mDL) resa disponibile per una discovery pubblica tramite Catalogo delle Credenziali.
+    - **Scenario Credenziale Privata**: Badge Dipendente Aziendale dall'Azienda (FA Privata, resa disponibile per la discovery tramite Catalogo delle Credenziali ma ottenibile solo tramite Offerta di Credenziale).
 
 Journey dell'Operatore della Fonte Autentica
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -185,8 +190,8 @@ Dalla prospettiva dell'operatore della Fonte Autentica, il processo di onboardin
 **Esempio - Fonte Autentica Pubblica (Scenario mDL)**:
 
     - **Dichiarazione degli Attributi dell'Utente**: Seleziona Attributi dell'Utente standardizzati (``given_name``, ``family_name``, ``driving_privileges``, ecc.) dal Registro degli Attributi dell'Utente.
-    - **Classificazione della Tassonomia**: Dominio ``AUTHORIZATION``, Scopo ``DRIVING_LICENSE``.
-    - **Caso d'Uso**: Servizio pubblico - verifica dell'autorizzazione alla guida (eleggibile per il Catalogo delle Credenziali).
+    - **Classificazione della Tassonomia**: Dominio ``MOBILITY_TRAVEL``, Scopo ``DRIVING_RIGHTS``.
+    - **Caso d'Uso**: Servizio pubblico - verifica dell'autorizzazione alla guida.
     - **Integrazione**: Integrazione e-service PDND seguendo gli standard governativi (vedi :ref:`e-service-pdnd:e-Service PDND`).
     - **Risultato del Catalogo**: mDL diventa pubblicamente scopribile dopo l'integrazione CI.
 
@@ -194,11 +199,11 @@ Dalla prospettiva dell'operatore della Fonte Autentica, il processo di onboardin
 
     - **Dichiarazione degli Attributi dell'Utente**: Seleziona Attributi dell'Utente (``given_name``, ``family_name``, ``employee.job_title``, ecc.) dal Registro degli Attributi dell'Utente.
     - **Classificazione della Tassonomia**: Dominio ``MEMBERSHIP``, Scopo ``ASSOCIATION``.
-    - **Caso d'Uso**: Controllo accessi aziendale privato (non eleggibile per il Catalogo delle Credenziali).
-    - **Integrazione**: API personalizzata per l'integrazione del Credential Issuer.
-    - **Risultato del Catalogo**: Il badge rimane privato, disponibile solo tramite Offerta di Credenziale.
+    - **Caso d'Uso**: Controllo accessi aziendale privato.
+    - **Integrazione**: Integrazione e-service PDND seguendo gli standard governativi (vedi :ref:`e-service-pdnd:e-Service PDND`).
+    - **Risultato del Catalogo**: Il badge diventa pubblicamente scopribile ma è reso disponibile solo tramite Offerta di Credenziale.
 
-Le fasi critiche includono la verifica amministrativa da parte dell'Organismo di Supervisione (che coinvolge controlli di conformità normativa al di fuori dell'ambito tecnico) e la validazione tecnica. Il processo si conclude con la registrazione nel Registro AS, rendendo gli Attributi dell'Utente dichiarati scopribili dai Credential Issuer per le richieste di integrazione.
+Le fasi critiche includono la verifica amministrativa da parte dell'Organismo di Supervisione (che coinvolge controlli di conformità normativa al di fuori dell'ambito tecnico) e la validazione tecnica. Il processo si conclude con la registrazione nel Registro AS, rendendo gli Attributi dell'Utente dichiarati scopribili dai Credential Issuer per le richieste di integrazione. Le richieste di integrazione possono essere inviate anche dalle Fonti Autentiche a specifici Credential Issuer.
 
 .. warning::
 
@@ -207,11 +212,11 @@ Le fasi critiche includono la verifica amministrativa da parte dell'Organismo di
 Journey dell'Operatore del Credential Issuer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Gli operatori del Credential Issuer iniziano effettuando la discovery delle Fonti Autentiche disponibili attraverso il Registro AS e valutando la fattibilità dell'integrazione basata sugli Attributi dell'Utente richiesti. La richiesta di registrazione specifica quali tipi di Credenziali intendono emettere, seleziona entità Fonte Autentica appropriate e dimostra la capacità tecnica di accedere alle fonti di dati richieste.
+Gli operatori del Credential Issuer iniziano effettuando la discovery delle Fonti Autentiche disponibili attraverso il Registro AS e valutando la fattibilità dell'integrazione basata sugli Attributi dell'Utente richiesti. La richiesta di registrazione specifica quali tipi di Credenziali intendono emettere, seleziona entità Fonte Autentica appropriate e dimostra la capacità tecnica di accedere alle fonti di dati richieste. In alternativa, gli operatori del Credential Issuer ricevono direttamente la richiesta di integrazione dalla Fonte Autentica.
 
 **Esempio - mDL (Scenario Pubblico)**:
 
-    - **discovery AS**: Identifica la Fonte Autentica che fornisce Attributi mDL nel Registro AS con gli Attributi dell'Utente della patente di guida richiesti.
+    - **discovery AS** o **AS Integration Request**: Identifica la Fonte Autentica che fornisce Attributi mDL nel Registro AS con gli Attributi dell'Utente della patente di guida richiesti. In alternativa, il Credential Issuer riceve la richiesta di integrazione direttamente dalla Fonte Authentica.
     - **Richiesta di Integrazione**: Approvazione automatica dovuta al mandato normativo.
     - **Configurazione Tecnica**: Integrazione e-service PDND seguendo gli standard governativi (vedi :ref:`e-service-pdnd:e-Service PDND`).
     - **Pubblicazione del Catalogo**: mDL automaticamente pubblicato nel Catalogo delle Credenziali.
@@ -219,29 +224,24 @@ Gli operatori del Credential Issuer iniziano effettuando la discovery delle Font
 
 **Esempio - CI per Badge Dipendente (Scenario Privato)**:
 
-    - **discovery AS**: Identifica la Fonte Autentica nel Registro AS con gli Attributi dell'Utente di accesso dipendente.
-    - **Richiesta di Integrazione**: Richiede approvazione AS.
-    - **Configurazione Tecnica**: Integrazione API personalizzata con autenticazione.
-    - **Pubblicazione del Catalogo**: Badge escluso dal catalogo pubblico per politica di supervisione.
+    - **discovery AS** o **AS Integration Request**: Identifica la Fonte Autentica nel Registro AS con gli Attributi dell'Utente di accesso dipendente. In alternativa, il Credential Issuer riceve la richiesta di integrazione direttamente dalla Fonte Authentica.
+    - **Richiesta di Integrazione**: Richiede approvazione da parte del destinatario della richiesta.
+    - **Configurazione Tecnica**:  Integrazione e-service PDND seguendo gli standard governativi (vedi :ref:`e-service-pdnd:e-Service PDND`).
+    - **Pubblicazione del Catalogo**: Badge automaticamente pubblicato nel Catalogo delle Credenziali.
     - **Accesso Utente**: I dipendenti ricevono badge solo tramite Offerta di Credenziale diretta dai sistemi aziendali.
-
-La fase di configurazione tecnica offre due flussi di integrazione distinti a seconda del tipo di Fonte Autentica:
-
-    - **Integrazione AS Pubblica**: Utilizza la piattaforma PDND per accedere ai dati governativi attraverso API standardizzate.
-    - **Integrazione AS Privata**: Stabilisce connessioni API dirette con endpoint personalizzati forniti da organizzazioni private.
 
 Dopo il test di integrazione riuscito e l'approvazione della Fonte Autentica, il Credential Issuer è registrato nel Registro di Federazione come Entità fidata, abilitando l'emissione effettiva di Credenziali agli utenti finali.
 
 .. warning::
 
-    Questo passaggio attiva la disponibilità delle Credenziali per gli utenti finali. Le Credenziali pubbliche diventano scopribili attraverso il catalogo, mentre altre Credenziali rimangono disponibili solo tramite Offerte di Credenziale dirette.
+    Questo passaggio attiva la disponibilità delle Credenziali per gli utenti finali. Le Credenziali pubbliche e private diventano scopribili attraverso il catalogo, ma le Credenziali private saranno rese disponibili solo tramite Offerte di Credenziale.
 
 Journey dell'Operatore del Fornitore di Wallet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Gli operatori del Fornitore di Wallet seguono un Journey di onboarding indipendente che si concentra sulla certificazione dell'applicazione e sulla validazione della sicurezza. Il processo evidenzia lo sviluppo e la certificazione di applicazioni Wallet che possono memorizzare e gestire in modo sicuro gli Attestati Elettronici per i cittadini.
 
-Un requisito tecnico chiave coinvolge l'implementazione di meccanismi di controllo dell'integrità e autenticità del Wallet. Questi controlli consentono al Wallet di ottenere un Wallet App Attestation, che serve come prova dello stato di sicurezza e conformità del Wallet durante le operazioni delle Credenziali.
+Un requisito tecnico chiave coinvolge l'implementazione di meccanismi di controllo dell'integrità e autenticità del Wallet. Questi controlli consentono al Wallet di ottenere un Wallet Instance Attestation, che serve come prova dello stato di sicurezza e conformità del Wallet durante le operazioni delle Credenziali.
 
 Il processo di certificazione include la valutazione della sicurezza, coprendo l'architettura del Wallet, i meccanismi di protezione dei dati e le caratteristiche di privacy dell'utente. I fornitori di Wallet certificati con successo sono registrati nel Registro di Federazione e possono distribuire le loro applicazioni attraverso gli app store.
 
@@ -256,7 +256,7 @@ Gli operatori della Relying Party iniziano identificando quali tipi di EAA sono 
     - **Richiesta di Autorizzazione**: Verifica dell'autorizzazione alla guida per l'eleggibilità al noleggio.
     - **Requisiti degli Attributi dell'Utente**: ``given_name``, ``family_name``, ``driving_privileges``, ecc., da mDL.
     - **Giustificazione del Caso d'Uso**: Obbligo legale di verificare la patente di guida valida prima del noleggio del veicolo.
-    - **Ambito di Autorizzazione**: Concesso accesso al dominio ``AUTHORIZATION``, scopo ``DRIVING_LICENSE``.
+    - **Ambito di Autorizzazione**: Concesso accesso al dominio ``MOBILITY_TRAVEL``, scopo ``DRIVING_RIGHTS``.
 
 **Esempio - Servizi Municipali (RP Pubblica)**:
 

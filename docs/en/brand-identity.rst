@@ -12,7 +12,7 @@ It is important to strengthen the User awareness and trust in the ecosystem by i
 Therefore, to ensure that the Brand Identity is applied consistently and coherently across the different Technical Solutions, and that it supports a high-quality User Experience, Primary Actors MUST comply with the requirements for applying the IT-Wallet System Brand Identity within their Technical Solutions. 
 In particular, all Primary Actors:  
 
-- MUST exclusively follow the indications specified in the Brand Manual, which will be made available shortly on the official website https://www.wallet.gov.it. 
+- MUST exclusively follow the indications specified in the Brand Manual, indicated in the :ref:`official-resources:Official Resources` section. 
 - MUST exclusively use the Official Resources that will be made available in the related :ref:`official-resources:Official Resources` folder of these Technical Specifications.  
 
 
@@ -47,9 +47,10 @@ The Logo is the official graphical element that ensures immediate recognition of
 
 .. only:: format_html
 
-  .. figure:: ./images/svg/logoIT-Wallet.svg
+  .. figure:: ../../official_resources/IT-Wallet-Logo/IT-Wallet-Logo-Primary-BlueItalia.svg
     :alt: “IT-Wallet" Logo on a light background  
     :width: 100%
+    :align: center
 
     “IT-Wallet" Logo on a light background  
 
@@ -58,15 +59,17 @@ The Logo is the official graphical element that ensures immediate recognition of
   .. figure:: ./images/pdf/logoIT-Wallet.pdf
     :alt: “IT-Wallet" Logo on a light background  
     :width: 100%
+    :align: center
 
     “IT-Wallet" Logo on a light background 
 
 
 .. only:: format_html
 
-  .. figure:: ./images/svg/symbol-IT-Wallet.svg
+  .. figure:: ../../official_resources/IT-Wallet-Symbol/IT-Wallet-Symbol-Primary-BlueItalia.svg
     :alt: “IT-Wallet” Logo symbol on a light background  
-    :width: 100%
+    :width: 25%
+    :align: center
 
     “IT-Wallet” Logo symbol on a light background  
 
@@ -74,7 +77,8 @@ The Logo is the official graphical element that ensures immediate recognition of
 
   .. figure:: ./images/pdf/symbol-IT-Wallet.pdf
     :alt: “IT-Wallet” Logo symbol on a light background  
-    :width: 100%
+    :width: 25%
+    :align: center
 
     “IT-Wallet” Logo symbol on a light background   
 
@@ -101,8 +105,8 @@ Below are illustrated the requirements for the use of the Logo. All actors inten
 
 - MAY use the Logo symbol within a shape or a button to reference the connection to IT-Wallet, such as in Engagement Buttons (see :ref:`functionalities:Authentication Button`), in accordance with the Brand Manual. 
 
-For further information on the Logo and its related symbol refer to the Brand Manual, which will soon be made available on the official website https://www.wallet.gov.it.  
-The Logo Official Resources will be made available in the related :ref:`official-resources:Official Resources` section of these Technical Specifications. 
+For further information on the Logo and its related symbol refer to the Brand Manual, indicated in the :ref:`official-resources:Official Resources` section.  
+The Logo Official Resources are available in the related :ref:`official-resources:Official Resources` section of these Technical Specifications. 
 
 
 Trust Mark
@@ -112,9 +116,10 @@ The Trust Mark is the official graphic element that guarantees the belonging of 
 
 .. only:: format_html
 
-  .. figure:: ./images/svg/trustmark-ENG.svg
+  .. figure:: ../../official_resources/IT-Wallet-Trust-Mark/ENG/Trust-Mark-ENG-Primary-BlueItalia.svg
     :alt: Trust Mark on a light background  
     :width: 100%
+    :align: center
 
     Trust Mark on a light background  
 
@@ -123,6 +128,7 @@ The Trust Mark is the official graphic element that guarantees the belonging of 
   .. figure:: ./images/pdf/trustmark-ENG.pdf
     :alt: Trust Mark on a light background  
     :width: 100%
+    :align: center
 
     Trust Mark on a light background 
 
@@ -132,16 +138,18 @@ Below are illustrated the requirements for the use of the Trust Mark, that apply
 
 - MUST display the Trust Mark only in the Technical Solutions that have successfully completed the registration process; 
 
-- MUST exclusively use the Trust Mark provided in the Official Resources and MUST comply with the related usage specifications provided in the Brand Manual; 
+- MUST display the Trust Mark in a clear and visible manner to the User from the first moment they access the Technical Solution and MUST make it available for consultation within the Technical Solution;
+
+- MUST exclusively use the Trust Mark provided in the Official Resources and MUST comply with the related usage specifications provided in the :ref:`official-resources:Brand Manual`; 
 
 - MUST NOT alter, distort, modify the Trust Mark, or replace it with unofficial elements; 
 
-- MUST NOT resize the Trust Mark below the minimum dimensions specified in the Brand Manual to maintain legibility across formats and devices; 
+- MUST NOT resize the Trust Mark below the minimum dimensions specified in the :ref:`official-resources:Brand Manual` to maintain legibility across formats and devices; 
 
-- MUST maintain the minimum clear space as defined in the Brand Manual to ensure visibility and recognizability. They MUST NOT allow other graphic or textual elements to interfere with this space; 
+- MUST maintain the minimum clear space as defined in the :ref:`official-resources:Brand Manual` to ensure visibility and recognizability and MUST NOT allow other graphic or textual elements to interfere with this space; 
 
-- MUST NOT place the Trust Mark on backgrounds that compromise its visibility or legibility. They MUST ensure adequate contrast between the Trust Mark and the background, in accordance with the Brand Manual; 
+- MUST NOT place the Trust Mark on backgrounds that compromise its visibility or legibility. They MUST ensure adequate contrast between the Trust Mark and the background, in accordance with the :ref:`official-resources:Brand Manual`; 
 
 - MAY display the Trust Mark alongside other actors' logos, trademarks, or symbols, in accordance with the Brand Manual. 
 
- For further information on the Trust Mark, refer to the Brand Manual which will soon by made available on the official website https://www.wallet.gov.it. Trust Mark Official Resources will be made available in the related :ref:`official-resources:Official Resources` section of these Technical Specifications. 
+For further information on the Trust Mark, refer to the Brand Manual, indicated in the :ref:`official-resources:Official Resources` section. The Trust Mark Official Resource is available in the :ref:`official-resources:Official Resources` section of these Technical Specifications. 
