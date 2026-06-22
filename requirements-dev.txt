@@ -1,4 +1,6 @@
-# Fix UserWarning: pkg_resources is deprecated
+# Keep pkg_resources available (removed in setuptools 82+, still required by
+# sphinxcontrib-redoc/stevedore). The related deprecation warning is silenced in
+# docs/*/conf.py. See https://github.com/italia/eid-wallet-it-docs/issues/960
 
 setuptools<81.0.0
 

@@ -14,6 +14,14 @@ version = settings_doc_version
 import sys, os
 import shlex
 import subprocess
+import warnings
+
+# Suppress the pkg_resources deprecation warnings emitted by sphinxcontrib-redoc,
+# which still imports pkg_resources. Temporary workaround until sphinxcontrib-redoc
+# migrates from pkg_resources to importlib.metadata.
+# See https://github.com/italia/eid-wallet-it-docs/issues/960
+warnings.filterwarnings("ignore", message=r"pkg_resources is deprecated as an API")
+warnings.filterwarnings("ignore", message=r"Deprecated call to `pkg_resources\.declare_namespace")
 
 from pathlib import Path
 confdir = Path(__file__).resolve().parent
