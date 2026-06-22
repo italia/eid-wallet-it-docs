@@ -226,6 +226,17 @@ Operational entities (PID Providers, Attestation Providers, Relying Parties, and
 <li><p><strong>Registry Publication</strong>: Publication of all registered entities in the registry, with an online API (see <a class="reference internal" href="trust-infrastructure.html#trust-infrastructure-and-registry-integration"><span class="std std-ref">Trust Infrastructure and Registry Integration</span></a>) that can be used to verify entity registration, and requested attributes.</p></li>
 </ul>
 </div></blockquote>
+<section id="onboarding-of-relying-party-intermediaries">
+<h3><span class="section-number">4.3.1. </span>Onboarding of Relying Party Intermediaries<a class="headerlink" href="#onboarding-of-relying-party-intermediaries" title="Link to this heading">¶</a></h3>
+<p>Relying Party Intermediaries use a dedicated onboarding process that grants the status of recognized Intermediary and the authority to onboard subordinate Relying Parties. In the implementation profile described by these technical specifications, a Relying Party Intermediary matches an OpenID Federation Intermediate Entity (see the definition of <strong>IT-Wallet Intermediary</strong>). The process includes:</p>
+<ul class="simple">
+<li><p><strong>Administrative registration</strong>: The Intermediary submits organizational and legal documentation demonstrating its eligibility to act on behalf of Relying Parties pursuant to Art. 5b(8) of the eIDAS2 Regulation (<a class="reference external" href="https://eur-lex.europa.eu/eli/reg/2024/1183/oj">EU_2024_1183</a>).</p></li>
+<li><p><strong>Technical registration</strong>: The Intermediary registers its federation keys and endpoints, enabling it to publish its own Entity Configuration and issue Subordinate Statements for subordinate Leaves.</p></li>
+<li><p><strong>Issuance of the Intermediary Trust Mark</strong>: Upon completion of the onboarding process, the Trust Anchor issues to the Intermediary a Trust Mark with identifier <code class="docutils literal notranslate"><span class="pre">https://&lt;federation_authority_domain&gt;/trust_marks/federation-entity/openid_credential_verifier_intermediary</span></code>. This Trust Mark is the verifiable evidence of the Intermediary's recognized role in the federation.</p></li>
+<li><p><strong>Authorization to issue Trust Marks</strong>: The Trust Anchor updates its own Entity Configuration by including the Intermediary in the <code class="docutils literal notranslate"><span class="pre">trust_mark_issuers</span></code> attribute for the <code class="docutils literal notranslate"><span class="pre">https://&lt;federation_authority_domain&gt;/trust_marks/federation-entity/openid_credential_verifier</span></code> identifier, authorizing the Intermediary to issue Trust Marks to its affiliated Relying Parties.</p></li>
+</ul>
+<p>The affiliated RP's Entity Configuration MUST include the Trust Mark issued by the Intermediary and MUST set <code class="docutils literal notranslate"><span class="pre">authority_hints</span></code> using the Intermediary's URL identifier.</p>
+</section>
 </section>
 <section id="entity-lifecycle-management">
 <h2><span class="section-number">4.4. </span>Entity Lifecycle Management<a class="headerlink" href="#entity-lifecycle-management" title="Link to this heading">¶</a></h2>
@@ -452,7 +463,10 @@ Operational entities (PID Providers, Attestation Providers, Relying Parties, and
 <li><a class="reference internal" href="#">4. Onboarding System</a><ul>
 <li><a class="reference internal" href="#onboarding-system-architecture">4.1. Onboarding System Architecture</a></li>
 <li><a class="reference internal" href="#authentic-source-registration-process">4.2. Authentic Source Registration Process</a></li>
-<li><a class="reference internal" href="#federation-onboarding-process">4.3. Federation Onboarding Process</a></li>
+<li><a class="reference internal" href="#federation-onboarding-process">4.3. Federation Onboarding Process</a><ul>
+<li><a class="reference internal" href="#onboarding-of-relying-party-intermediaries">4.3.1. Onboarding of Relying Party Intermediaries</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#entity-lifecycle-management">4.4. Entity Lifecycle Management</a><ul>
 <li><a class="reference internal" href="#ongoing-operations-management">4.4.1. Ongoing Operations Management</a></li>
 <li><a class="reference internal" href="#federation-exit-and-removal-processes">4.4.2. Federation Exit and Removal Processes</a></li>
@@ -497,7 +511,7 @@ Operational entities (PID Providers, Attestation Providers, Relying Parties, and
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 18/06/2026.
+      Last updated on 22/06/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
