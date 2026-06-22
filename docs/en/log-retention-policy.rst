@@ -42,7 +42,7 @@ Information related to the registration and management of Wallet Instances can b
 Credential Issuer Log Retention Policy
 --------------------------------------
 
-Credential Issuers define the retention period for Credentials based on sector-specific regulations. In the absence of specific regulations, the retention period for Credentials SHOULD not exceed 12 months after the date of expiration, configured at time of issuance within the metadata of the Issuer Signed part of the Credential.
+Credential Issuers define the retention period for Credentials based on sector-specific regulations. In the absence of specific regulations, the retention period for Credentials SHOULD NOT exceed 12 months after the date of expiration, configured at time of issuance within the metadata of the Issuer Signed part of the Credential.
 
 
 
