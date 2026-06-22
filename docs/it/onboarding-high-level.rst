@@ -71,6 +71,18 @@ Per PID Provider, Attestation Provider e Relying Party, il processo di onboardin
 .. note::
   I **PID Provider**, i **PuB-EAA Provider** e i **Wallet Provider** sono registrati attraverso il sistema di onboarding dell'IT-Wallet e successivamente notificati alla Commissione Europea per l'inclusione nelle Trusted Lists. I Wallet Provider non ricevono certificati di accesso o certificati di registrazione dai Registrar nazionali. La Soluzione Wallet fornita dal Wallet Provider deve essere certificata da Organismi di Valutazione della Conformità (CAB) secondo il quadro nazionale di valutazione della conformità.
 
+Onboarding degli Intermediari di Relying Party
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Gli :term:`Intermediari di Relying Party <Intermediario di Relying Party>` seguono un processo di onboarding dedicato che conferisce lo status di Intermediario riconosciuto e l'autorità di effettuare l'onboarding delle Relying Party subordinate. Nel profilo implementativo descritto dalle presenti specifiche tecniche, un Intermediario di Relying Party corrisponde a un Intermediario di Federazione (vedi la definizione di **Intermediario IT-Wallet**). Il processo comprende:
+
+- **Registrazione amministrativa**: L'Intermediario presenta documentazione organizzativa e legale che ne attesta l'idoneità ad agire per conto di Relying Party ai sensi dell'Art. 5b(8) del Regolamento eIDAS2 (`EU_2024_1183`_).
+- **Registrazione tecnica**: L'Intermediario registra le proprie chiavi di federazione e gli endpoint, abilitandolo a pubblicare la propria Entity Configuration e a emettere Subordinate Statement per le Foglie subordinate.
+- **Emissione del Trust Mark di Intermediario**: Al termine del processo di onboarding, il Trust Anchor emette all'Intermediario un Trust Mark con identificativo ``https://<federation_authority_domain>/trust_marks/federation-entity/openid_credential_verifier_intermediary``. Questo Trust Mark costituisce l'evidenza verificabile del ruolo riconosciuto dell'Intermediario nella federazione.
+- **Autorizzazione all'emissione di Trust Mark**: Il Trust Anchor aggiorna la propria Entity Configuration includendo l'Intermediario nell'attributo ``trust_mark_issuers`` per l'identificativo ``https://<federation_authority_domain>/trust_marks/federation-entity/openid_credential_verifier``, autorizzando l'Intermediario a emettere Trust Mark alle proprie Relying Party affiliate.
+
+L'Entity Configuration della RP affiliata DEVE includere il Trust Mark emesso dall'Intermediario e DEVE impostare ``authority_hints`` utilizzando l'identificativo URL dell'Intermediario.
+
 Gestione del Ciclo di Vita delle Entità
 ----------------------------------------
 

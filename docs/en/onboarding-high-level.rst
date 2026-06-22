@@ -70,6 +70,18 @@ For PID Providers, Attestation Providers, and Relying Parties, the federation on
  - **Certificate Issuance**: Issuance of certificates that authenticate entities, reference the registry for entitlement verification, support certificate transparency, and describe registration status for Relying Parties and Credential Issuers.
  - **Registry Publication**: Publication of all registered entities in the registry, with an online API (see :ref:`trust-infrastructure:Trust Infrastructure and Registry Integration`) that can be used to verify entity registration, and requested attributes.
 
+Onboarding of Relying Party Intermediaries
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Relying Party Intermediaries use a dedicated onboarding process that grants the status of recognized Intermediary and the authority to onboard subordinate Relying Parties. In the implementation profile described by these technical specifications, a Relying Party Intermediary matches an OpenID Federation Intermediate Entity (see the definition of **IT-Wallet Intermediary**). The process includes:
+
+- **Administrative registration**: The Intermediary submits organizational and legal documentation demonstrating its eligibility to act on behalf of Relying Parties pursuant to Art. 5b(8) of the eIDAS2 Regulation (`EU_2024_1183`_).
+- **Technical registration**: The Intermediary registers its federation keys and endpoints, enabling it to publish its own Entity Configuration and issue Subordinate Statements for subordinate Leaves.
+- **Issuance of the Intermediary Trust Mark**: Upon completion of the onboarding process, the Trust Anchor issues to the Intermediary a Trust Mark with identifier ``https://<federation_authority_domain>/trust_marks/federation-entity/openid_credential_verifier_intermediary``. This Trust Mark is the verifiable evidence of the Intermediary's recognized role in the federation.
+- **Authorization to issue Trust Marks**: The Trust Anchor updates its own Entity Configuration by including the Intermediary in the ``trust_mark_issuers`` attribute for the ``https://<federation_authority_domain>/trust_marks/federation-entity/openid_credential_verifier`` identifier, authorizing the Intermediary to issue Trust Marks to its affiliated Relying Parties.
+
+The affiliated RP's Entity Configuration MUST include the Trust Mark issued by the Intermediary and MUST set ``authority_hints`` using the Intermediary's URL identifier.
+
 Entity Lifecycle Management
 ---------------------------
 

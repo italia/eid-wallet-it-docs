@@ -85,6 +85,98 @@ L'Infrastruttura di Trust implementa il componente Federation Registry dell'Infr
 Questo Federation Registry opera insieme ad altri componenti del registro (Claims Registry, AS Registry, Catalogo degli Attestati Elettronici, Taxonomy) per fornire supporto completo all'ecosistema. Per l'architettura completa del registro e le interazioni dei componenti, vedi :ref:`registry:Infrastruttura del Registro`.
 
 
+Proprietà Generali
+-------------------
+
+L'architettura dell'infrastruttura di trust è fondata sui seguenti principi fondamentali:
+
+.. list-table::
+   :class: longtable
+   :widths: 20 20 80
+   :header-rows: 1
+
+   * - Identificatore
+     - Proprietà
+     - Descrizione
+   * - P1
+     - **Sicurezza**
+     - Incorpora meccanismi per garantire l'integrità, la riservatezza e l'autenticità delle Relazioni di Trust e delle interazioni all'interno della federazione.
+   * - P2
+     - **Privacy**
+     - Progettata per rispettare e proteggere la privacy delle entità coinvolte; la divulgazione minima è parte integrante di questo principio.
+   * - P3
+     - **Interoperabilità**
+     - Supporta l'interazione fluida e la creazione di trust tra sistemi ed entità diverse all'interno della federazione.
+   * - P4
+     - **Trust Transitivo**
+     - Trust stabilita indirettamente attraverso una catena di relazioni fidate, che consente alle entità di fidarsi reciprocamente sulla base di autorità comuni e intermediari fidati.
+   * - P5
+     - **Delega**
+     - Capacità o funzionalità tecnica di delegare autorità o responsabilità ad altre entità, consentendo un meccanismo di trust distribuito.
+   * - P6
+     - **Scalabilità**
+     - Progettata per gestire in modo efficiente un numero crescente di entità o interazioni senza un aumento significativo della complessità di gestione del trust.
+   * - P7
+     - **Flessibilità**
+     - Adattabile a varie esigenze operative e organizzative, consentendo alle entità di definire e adeguare le proprie Relazioni di Trust e policy.
+   * - P8
+     - **Autonomia**
+     - Pur facendo parte di un ecosistema federato, ciascuna entità mantiene il controllo sulle proprie definizioni e configurazioni.
+   * - P9
+     - **Decentralizzazione**
+     - A differenza dei sistemi centralizzati tradizionali, l'infrastruttura di trust consente un approccio decentralizzato.
+
+Requisiti dell'Infrastruttura di Trust
+---------------------------------------
+
+Questa sezione include i requisiti necessari per la corretta implementazione e il funzionamento dell'infrastruttura di trust.
+
+.. list-table:: Requisiti Funzionali
+   :class: longtable
+   :widths: 20 80
+   :header-rows: 1
+
+   * - ID
+     - Descrizione
+   * - FR1
+     - **Creazione di Trust nella Federazione**: il sistema deve essere in grado di stabilire trust tra diverse entità (Credential Issuer, Relying Party, ecc.) all'interno di una federazione, utilizzando firme crittografiche per lo scambio sicuro di informazioni sui partecipanti all'ecosistema.
+   * - FR2
+     - **Autenticazione delle Entità**: il sistema deve implementare meccanismi per autenticare le entità all'interno della federazione, garantendone la conformità alle regole condivise.
+   * - FR3
+     - **Validazione delle Firme**: il sistema deve supportare la creazione, verifica e validazione di firme elettroniche e fornire meccanismi standard e sicuri per ottenere le chiavi pubbliche crittografiche necessarie per la validazione delle firme.
+   * - FR4
+     - **Marcatura Temporale**: gli artefatti firmati devono contenere marcature temporali per garantire l'integrità e il non-ripudio delle transazioni nel tempo, grazie alle interfacce, ai servizi, al modello di archiviazione e agli approcci definiti all'interno della federazione.
+   * - FR5
+     - **Validazione dei Certificati**: il sistema richiede trasmissioni riservate, protette tramite TLS su HTTP, e la validazione dei certificati per l'autenticazione dei siti web.
+   * - FR6
+     - **Interoperabilità e Conformità agli Standard**: garantire l'interoperabilità tra i membri della federazione aderendo agli standard tecnici, facilitando le transazioni elettroniche transfrontaliere.
+   * - FR7
+     - **Protezione dei Dati e Privacy**: implementare misure di protezione dei dati in conformità con il GDPR, garantendo la privacy e la sicurezza dei dati personali trattati all'interno della federazione.
+   * - FR8
+     - **Risoluzione delle Controversie e Responsabilità**: stabilire procedure chiare per la risoluzione delle controversie e definire le responsabilità tra i membri della federazione.
+   * - FR9
+     - **Servizi di Emergenza e Revoca**: implementare meccanismi per la revoca immediata dei partecipanti in caso di violazioni della sicurezza o altre emergenze.
+   * - FR10
+     - **Infrastruttura di Trust Scalabile**: il sistema deve supportare meccanismi scalabili per la creazione di trust, sfruttando approcci e soluzioni tecniche che complementino gli approcci di delega transitiva per gestire in modo efficiente le Relazioni di Trust man mano che la federazione cresce, eliminando i registri centrali che potrebbero presentare fallimenti tecnici o amministrativi.
+   * - FR11
+     - **Scalabilità Efficiente dello Storage**: implementare una soluzione di archiviazione che scala orizzontalmente per accogliere volumi di dati crescenti, minimizzando i costi di archiviazione centrale e amministrativi. Il sistema dovrebbe consentire ai membri di archiviare e presentare in modo indipendente attestazioni di trust storiche e artefatti firmati durante le risoluzioni delle controversie, mentre l'infrastruttura della federazione mantiene solo un registro delle chiavi storiche per validare i dati storici, archiviati e forniti dai partecipanti.
+   * - FR12
+     - **Attestazione Verificabile (Trust Mark)**: incorporare un meccanismo per l'emissione e la verifica di attestazioni verificabili che fungono da prova di conformità a profili o standard specifici. Ciò consente alle entità all'interno della federazione di dimostrare l'aderenza agli standard di sicurezza, privacy e operativi concordati.
+   * - FR13
+     - **Meccanismo Decentralizzato per la Risoluzione delle Controversie**: progettare un meccanismo decentralizzato per la risoluzione delle controversie che consenta ai membri della federazione di verificare in modo indipendente la creazione di trust storica e gli artefatti firmati, riducendo la dipendenza dalle autorità centrali e semplificando il processo di risoluzione.
+   * - FR14
+     - **Interoperabilità tra Federazioni**: garantire che il sistema sia in grado di interoperare con altre federazioni o Trust Framework, facilitando transazioni e creazione di trust tra federazioni senza compromettere la sicurezza o la conformità.
+   * - FR15
+     - **Organismi di Registrazione Autonomi**: il sistema deve facilitare l'integrazione di organismi di registrazione autonomi che operano in conformità con le regole della federazione. Questi organismi hanno il compito di valutare e registrare le entità all'interno della federazione, secondo le regole prestabilite e la loro conformità che deve essere periodicamente attestata.
+   * - FR16
+     - **Audit Periodico degli Organismi di Registrazione e delle Entità**: implementare meccanismi per l'audit periodico e il monitoraggio dello stato di conformità sia degli organismi di registrazione che delle loro entità registrate.
+   * - FR17
+     - **Attestazione di Conformità per i Dispositivi Personali**: organismi fidati, in forma di entità di federazione, dovrebbero emettere attestazioni di conformità e fornire prove firmate di tale conformità per l'hardware dei dispositivi personali utilizzati all'interno della federazione. Queste attestazioni dovrebbero essere attestate e periodicamente rinnovate per garantire che i dispositivi soddisfino gli attuali standard di sicurezza.
+   * - FR18
+     - **Monitoraggio Automatizzato della Conformità**: il sistema dovrebbe includere strumenti automatizzati per il monitoraggio della conformità delle entità agli standard della federazione. Questa automazione aiuta nel rilevamento precoce di potenziali problemi di conformità.
+   * - FR19
+     - **Binding Sicuro delle Capacità del Protocollo**: il protocollo sicuro deve consentire lo scambio di dati sulle capacità specifiche del protocollo come metadati crittograficamente vincolati allegati a un'identità specifica. Questi metadati dovrebbero definire le capacità tecniche associate all'identità, garantendo prova verificabile e associazione antimanomissione per una robusta creazione di trust e controllo degli accessi.
+
 Endpoint API di Federazione
 ---------------------------
 
@@ -322,6 +414,52 @@ L'Entity Configuration del Trust Anchor, oltre ai parametri comuni elencati sopr
      - |check-icon|
 
 
+Trust Mark degli Intermediari di Relying Party
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Nell'ecosistema IT-Wallet, gli Intermediari di Relying Party che agiscono per conto dei Relying Party (ai sensi dell'Art. 5b(8) del Regolamento eIDAS2 `EU_2024_1183`_) sono soggetti a uno specifico regime di Trust Mark che consente al Wallet di riconoscere e mostrare all'Utente che il RP richiedente opera tramite un Intermediario di Relying Party.
+
+**Emissione del Trust Mark all'Intermediario di Relying Party**
+
+Il Trust Anchor DEVE includere gli Intermediari di Relying Party nell'attributo ``trust_mark_issuers`` della propria Entity Configuration, autorizzandoli ad emettere Trust Mark per le Foglie a loro afferenti. Il Trust Anchor emette all'Intermediario di Relying Party un Trust Mark che attesta il suo ruolo, utilizzando ``https://<federation_authority_domain>/trust_marks/federation-entity/openid_credential_verifier_intermediary`` come ``trust_mark_type`` per distinguerlo dalle altre entità presenti nell'ecosistema.
+
+L'Intermediario di Relying Party DEVE includere questo Trust Mark nella propria Entity Configuration come prova del suo ruolo riconosciuto all'interno della Federazione.
+
+**Emissione di Trust Mark alle Foglie afferenti all'Intermediario di Relying Party**
+
+I Trust Mark emessi alle Foglie (Relying Party) afferenti a un Intermediario di Relying Party DEVONO essere emessi dall'Intermediario di Relying Party stesso, e non direttamente dal Trust Anchor.
+
+Un Relying Party afferente a un Intermediario di Relying Party DEVE includere nella propria Entity Configuration:
+
+- Il Trust Mark emesso dall'Intermediario di Relying Party, come prova del completamento del processo di onboarding gestito dall'Intermediario di Relying Party;
+- Il proprio ``authority_hints`` contenente l'URL dell'Intermediario di Relying Party (non direttamente del Trust Anchor), indicando così la corretta catena gerarchica.
+
+Di seguito è riportato un esempio non normativo di Entity Configuration del Trust Anchor che mostra la configurazione aggiornata di ``trust_mark_issuers`` con gli Intermediari di Relying Party autorizzati:
+
+.. code-block:: json
+
+    {
+      "trust_mark_issuers": {
+        "https://trust-anchor.eid-wallet.example.it/trust_marks/federation-entity/openid_credential_verifier": [
+          "https://trust-anchor.eid-wallet.example.it",
+          "https://intermediary.example.org"
+        ],
+        "https://trust-anchor.eid-wallet.example.it/trust_marks/federation-entity/openid_credential_verifier_intermediary": [
+          "https://trust-anchor.eid-wallet.example.it"
+        ],
+        "https://trust-anchor.eid-wallet.example.it/trust_marks/federation-entity/openid_credential_issuer": [
+          "https://trust-anchor.eid-wallet.example.it"
+        ],
+        "https://trust-anchor.eid-wallet.example.it/trust_marks/federation-entity/wallet_solution": [
+          "https://trust-anchor.eid-wallet.example.it"
+        ]
+      }
+    }
+
+.. note::
+  Il Trust Mark con identificativo che termina con ``federation-entity/openid_credential_verifier_intermediary`` è emesso esclusivamente dal Trust Anchor ed è quello che il Wallet utilizza per verificare che un'entità sia un Intermediario di Relying Party riconosciuto. I Trust Mark ``https://<federation_authority_domain>/trust_marks/federation-entity/openid_credential_verifier`` DOVREBBERO invece essere emessi anche dagli Intermediari di Relying Party per le Foglie a loro afferenti. 
+
+
 Entity Configuration Foglie e Intermediari
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -424,7 +562,7 @@ I metadati *federation_entity* per le Foglie contiene i seguenti claim.
   * - **contacts**
     - OBBLIGATORIO. Indirizzo email verificato istituzionale (PEC) dell'entità. Vedi `OID-FED`_ Sezione 5.2.2
   * - **federation_resolve_endpoint**
-    - OBBLIGATORIO. Vedi `OID-FED`_ Sezione 5.1.1
+    - OPZIONALE. Vedi `OID-FED`_ Sezione 8.3
   * - **tos_uri**
     - OPZIONALE. Stringa URL che punta a un documento di termini di servizio leggibile dall'uomo per il client che descrive una relazione contrattuale tra l'utente finale e il client che l'utente finale accetta quando autorizza il client. Vedi `OID-FED`_.
 
@@ -728,6 +866,26 @@ Nel processo raffigurato nel diagramma di sequenza sottostante, l'Istanza del Wa
 
 .. note::
   Come mostrato nella figura, è richiesta una connessione internet per aggiornare la Trust Chain su un RP e controllare il suo stato di revoca.
+
+Stabilire Trust con il Relying Party che opera tramite Intermediario
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Quando un Relying Party opera tramite un Intermediario di Relying Party, l'Istanza del Wallet DEVE eseguire un processo di Trust Evaluation esteso che include la validazione del Trust Mark dell'Intermediario di Relying Party. Questo processo si svolge durante la fase di costruzione e validazione della Trust Chain e consente al Wallet di presentare all'Utente informazioni trasparenti sull'entità che ha registrato e garantisce il RP.
+
+Il processo si articola nei seguenti passi:
+
+1. **Download dell'Entity Configuration del RP**: L'Istanza del Wallet scarica l'Entity Configuration del Relying Party dall'endpoint ``/.well-known/openid-federation`` del RP. L'EC del RP contiene il claim ``authority_hints`` che punta all'URL dell'Intermediario di Relying Party (non direttamente al Trust Anchor).
+
+2. **Identificazione dell'Intermediario di Relying Party**: Tramite il claim ``authority_hints`` nell'EC del RP, l'Istanza del Wallet identifica l'Intermediario di Relying Party e ne scarica l'Entity Configuration.
+
+3. **Validazione del Trust Mark dell'Intermediario di Relying Party**: L'Istanza del Wallet verifica che l'Entity Configuration dell'Intermediario di Relying Party contenga un Trust Mark valido per il ruolo di Intermediario di Relying Party, emesso dal Trust Anchor. La validità del Trust Mark DEVE essere verificata tramite l'endpoint ``/trust_mark_status`` del Trust Anchor.
+
+4. **Costruzione della Trust Chain tramite l'Intermediario di Relying Party**: L'Istanza del Wallet costruisce la Trust Chain completa: Entity Configuration del RP → Subordinate Statement emesso dall'Intermediario di Relying Party per il RP → Subordinate Statement emesso dal Trust Anchor per l'Intermediario di Relying Party → Entity Configuration del Trust Anchor. Questa catena attesta che il RP è una Foglia riconosciuta dall'Intermediario di Relying Party e che l'Intermediario di Relying Party è a sua volta riconosciuto dal Trust Anchor.
+
+5. **Presentazione all'Utente**: Una volta completata la validazione, l'Istanza del Wallet PUÒ indicare all'Utente che il Relying Party richiedente opera tramite un Intermediario di Relying Party riconosciuto, mostrando le informazioni identificative dell'Intermediario di Relying Party (ad esempio ``organization_name``) ottenute dalla sua Entity Configuration.
+
+.. note::
+  La presenza del Trust Mark con identificativo che termina con ``federation-entity/openid_credential_verifier_intermediary`` nell'EC dell'Intermediario di Relying Party costituisce la prova crittograficamente verificabile che l'entità è stata riconosciuta dal Trust Anchor come Intermediario di Relying Party autorizzato. L'Istanza del Wallet DEVE rifiutare la richiesta del RP se la Trust Chain non può essere costruita e validata tramite un Intermediario di Relying Party riconosciuto o direttamente tramite il Trust Anchor.
 
 Valutare Trust con i Wallet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
