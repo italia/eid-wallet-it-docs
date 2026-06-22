@@ -420,7 +420,7 @@ Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciasc
      - OBBLIGATORIO. Array contenente le specifiche delle capacità sui dati.
    * - **data_capabilities[].dataset_id**
      - string
-     - OBBLIGATORIO. L'identificatore univoco del dataset nell'ambito della Fonte Autentica, che PUÒ essere utilizzato come parametro di query per il servizio ``GetAttributeClaims``.
+     - OBBLIGATORIO. Il :term:`Dataset_id` nell'ambito della Fonte Autentica, che PUÒ essere utilizzato come parametro di query per il servizio ``GetAttributeClaims``.
    * - **data_capabilities[].data_origin_l10n_id**
      - string
      - OBBLIGATORIO. Chiave di localizzazione che fa riferimento al nome leggibile dell'origine o del dipartimento che fornisce i dati (es. ``authentic_source1.dataset1.origin``).
@@ -466,7 +466,7 @@ Il Registro delle Fonti Autentiche DEVE contenere i seguenti parametri per ciasc
    * - **data_capabilities[].user_information_l10n_id**
      - string
      - OPZIONALE. Chiave di localizzazione che fa riferimento a una stringa in formato Markdown con informazioni leggibili sulla capacità dati rilevanti per l'Utente (es. ``authentic_source1.dataset1.userinfo``). Questa stringa DEVE essere fornita dalla Fonte Autentica al Trust Anchor durante l'onboarding. La formattazione Markdown può essere testo semplice o una combinazione di testo e link. Ad esempio, se il database della Fonte Autentica contiene solo dati registrati *dopo* una data specifica, questa informazione DEVE essere comunicata tramite questa chiave.
-   * - **data_capabilities[].service_documentation**
+   * - **data_capabilities[].service_documentation_uri**
      - string
      - OPZIONALE. URL che punta alla documentazione del servizio della Fonte Autentica.
    * - **data_capabilities[].update_frequency**
@@ -1111,7 +1111,30 @@ Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazion
   * - **purposes**
     - OBBLIGATORIO. Array contenente gli ID delle finalità (definita nella Tassonomia) di utilizzo per cui la Credenziale Digitale può essere impiegata, definendo contesti d'uso specifici e claim richiesti per ciascuna finalità (es. ``"IDENTITY_VERIFICATION"``, ``"AGE_VERIFICATION"``, ``"DRIVING_RIGHTS_VERIFICATION"``).
   * - **issuers**
-    - OBBLIGATORIO. Array di informazioni rilevanti sugli Emittenti di Credenziali autorizzati, inclusi dati amministrativi e tecnici quali nome dell'organizzazione, riferimento al documento di specifica API e meccanismi di emissione supportati (ad esempio il supporto al flusso differito).
+    - OBBLIGATORIO. Array di informazioni rilevanti sugli Emittenti di Credenziali autorizzati, inclusi dati amministrativi e tecnici quali nome dell'organizzazione, riferimento al documento di specifica API e meccanismi di emissione supportati. Ogni elemento dell’array contiene:
+
+       * **id**: OBBLIGATORIO. Stringa. Identificativo univoco dell’elemento dell’array.
+       * **entity_id**: OBBLIGATORIO. Stringa. Identificativo univoco del Credential Issuer. DEVE corrispondere al valore contenuto nel parametro ``iss`` dell’Entity Configuration del Credential Issuer.
+       * **organization_name_l10n_id**: OBBLIGATORIO. Stringa. Chiave di localizzazione che fa riferimento al nome localizzato dell’organizzazione nel bundle di localizzazione (es. ``issuer1.name``).
+       * **organization_code**: Stringa. Codice IPA del Credential Issuer per enti pubblici oppure partita IVA per soggetti privati.
+       * **organization_country**: Stringa. Codice paese dell’organizzazione a due lettere conforme allo standard ISO 3166-1 alpha-2.
+       * **contacts**: OBBLIGATORIO. Stringa. Array di indirizzi email di contatto per almeno un referente di supporto utenti, uno applicativo e uno specialista di sistemi.
+       * **legal_type**: Stringa. Classificazione giuridica del Credential Issuer (es. pub-eaa, qeaa, eaa).
+
+       * **homepage_uri**: Stringa. URL che punta alla homepage dell’organizzazione.
+       * **logo_uri**: Stringa. URL dell’immagine del logo dell’organizzazione.
+       * **policy_uri**: OBBLIGATORIO. Stringa. URL al documento di privacy policy.
+       * **tos_uri**: OPZIONALE. Stringa. URL al documento di termini di servizio.
+       * **service_documentation_uri**: OPZIONALE. Stringa. URL che punta alla documentazione del servizio del Credential Issuer.
+       * **issuance_flows**: OBBLIGATORIO. Oggetto. Contiene i seguenti parametri:
+
+          * **deferred_flow**: OBBLIGATORIO. Booleano. Indica se è supportata l’emissione differita.
+          * **immediate_flows**: OBBLIGATORIO. Booleano. Indica se è supportata l’emissione immediata.
+          * **wallet_initiated**: OBBLIGATORIO. Booleano. Indica se è supportato il flusso Wallet-Initiated.
+          * **issuer_initiated**: OBBLIGATORIO. Booleano. Indica se è supportata il flusso Issuer-Initiated (Third Party Initiated Flow).
+          * **max_deferred_issuance_time_minutes**: CONDIZIONALE. Intero. Tempo massimo, in minuti, per la disponibilità dell’emissione della credenziale. OBBLIGATORIO se ``deferred_flow`` è impostato a ``true``.
+          * **notification_methods**: REQUIRED if ``deferred_flow`` is ``true``. CONDIZIONALE. Array di stringhe. Contiene i metodi di notifica supportati dal Credential Issuer per l’emissione differita, come ``"push"``, ``"poll"``. OBBLIGATORIO se ``deferred_flow`` è impostato a ``true``.
+  
   * - **localization**
     - OBBLIGATORIO. Oggetto di configurazione della localizzazione contenente:
 

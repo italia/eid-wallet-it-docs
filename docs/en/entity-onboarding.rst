@@ -257,7 +257,7 @@ The Authentic Source registration follows a technical process as described below
      - REQUIRED. Array containing data capability specifications.
    * - **data_capabilities[].dataset_id**
      - string
-     - REQUIRED. The unique identifier of the dataset within the scope of the Authentic Source, which MAY be used as a query parameter for the ``GetAttributeClaims`` service.
+     - REQUIRED. The :term:`Dataset_id` within the scope of the Authentic Source, which MAY be used as a query parameter for the ``GetAttributeClaims`` service.
    * - **data_capabilities[].data_origin**
      - JSON Object Array
      - REQUIRED. Object array containing the human-readable name of the data origin or department providing the data in multiple languages. It MUST contain ``locale`` and ``name`` claims.
@@ -309,7 +309,7 @@ The Authentic Source registration follows a technical process as described below
    * - **data_capabilities[].allowed_states**
      - JSON object Array
      - OPTIONAL. Object array containing information in multiple languages for the User about the current status of the dataset and, eventually recommended actions. The status values are defined in the :ref:`credential-revocation:Token Status Lists` Section. It MUST contain ``locale``, ``title``, ``description`` and ``<Status-Type-Value>`` claims.
-   * - **data_capabilities[].service_documentation**
+   * - **data_capabilities[].service_documentation_uri**
      - string
      - OPTIONAL. URL pointing to the Authentic Source service documentation.
    * - **data_capabilities[].update_frequency**

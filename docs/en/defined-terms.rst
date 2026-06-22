@@ -12,6 +12,14 @@ Below is the description of acronyms and definitions which are useful for furthe
 .. glossary::
     :sorted:
 
+    **Dataset_id**
+      Alphanumeric string defined by the Authentic Source that uniquely identifies a specific dataset relating to an Electronic Attestation of Attributes.
+      Not present in ARF 2.7.3; specific to IT-Wallet.
+
+    **Object_id**
+      Alphanumeric string defined by the Authentic Source that uniquely identifies a specific instance of an Electronic Attestation of Attributes associated with a particular User.
+      Not present in ARF 2.7.3; specific to IT-Wallet.
+
     **Accreditation Process**
       Process performed by the National Accreditation Body to accredit CABs, resulting in an accreditation certificate.
       Not present in ARF 2.7.3; specific to IT-Wallet.
@@ -351,8 +359,16 @@ Below is the description of acronyms and definitions which are useful for furthe
 
     **Intermediate Entity**
     **Intermediary**
-      Intermediate Entity as defined in `OID-FED`_ Section 1.2, for example in IT-Wallet it could be a Relying Party intermediary that offers and manages, on behalf of Relying Party, the Technical Solutions for the remote or proximity verification of Electronic Attestations.
-      Aligned with ARF 2.7.3.
+    **OpenID Federation Intermediate**
+      Intermediate Entity as defined in `OID-FED`_ Section 1.2 within the OpenID Federation Trust Chain between a Trust Anchor and Leaf entities. This federation role is conceptually **distinct** from a **Relying Party Intermediary** under the European Digital Identity framework (`EU_2024_1183`_); however, in the implementation profile described by these technical specifications, a **Relying Party Intermediary** is also implemented as an OpenID Federation Intermediate Entity (see **IT-Wallet Intermediary**).
+      Aligned with ARF 2.7.3 for federation structures.
+
+    **Relying Party Intermediary**
+      Organizational Entity that acts on behalf of one or more Relying Parties to provide Technical Solutions for connecting to Wallet Instances and for User authentication or verification of Electronic Attestations. In Union law (`EU_2024_1183`_, Article 5b(8)), intermediaries acting on behalf of Relying Parties are **deemed to be Relying Parties** for registration and authentication towards European Digital Identity Wallets and **shall not store data about the content of the transaction** between the Wallet User and the intermediated Relying Party. High-level requirements for Wallet Relying Party registration, including intermediaries, minimum registration data, transparency, and common authentication mechanisms towards Wallets, are discussed in the EUDI Wallet Architecture and Reference Framework (`ARF`_; *Topic X – Relying Party registration*, `ARF_TOPIC_X_RP`_). IT-Wallet specifies onboarding to the national trust framework, metadata, and technical controls that implement these obligations together with applicable national implementing measures.
+
+    **IT-Wallet Intermediary**
+      Organizational Entity that acts as a **Relying Party Intermediary** and is technically implemented as an OpenID Federation Intermediate Entity (`OID-FED`_, Section 1.2). Therefore, in the IT-Wallet implementation profile, a Relying Party Intermediary is also an OpenID Federation Intermediate: it publishes its own Entity Configuration, issues Subordinate Statements for its affiliated Relying Parties, and issues Trust Marks to them. Within the IT-Wallet trust infrastructure, it is registered by the Trust Anchor with a specific ``trust_mark_type``, which enables the Wallet Instance to identify and display to the User that the requesting Relying Party operates through a recognized Intermediary.
+      Not present in ARF 2.7.3; specific to IT-Wallet.
 
 .. note::
    For any term not present in ARF 2.7.3, the IT-Wallet definition is provided as authoritative for the Italian context.
