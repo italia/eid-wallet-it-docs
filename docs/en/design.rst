@@ -1,5 +1,5 @@
-.. This file is included in functionalities.rst (common_definitions is provided by the including file).
-.. "included" file, so we start with '-' title level
+.. include:: ../common/common_definitions.rst
+.. Included via functionalities.rst at title level '-' (level 1).
 
 
 Design Principles

@@ -1,5 +1,5 @@
 .. include:: ../common/common_definitions.rst
-.. level 2 "included" file, so we start with '^' title level
+.. Incluso tramite wallet-solution.rst al livello di titolo '^' (livello 2).
 
 Requisiti della Soluzione Wallet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

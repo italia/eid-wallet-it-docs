@@ -1,5 +1,5 @@
 .. include:: ../common/common_definitions.rst
-.. level 3 "included" file, so we start with '"' title level
+.. Incluso tramite wallet-instance.rst al livello di titolo '"' (livello 3).
 
 Ciclo di vita dell'Istanza del Wallet
 """""""""""""""""""""""""""""""""""""

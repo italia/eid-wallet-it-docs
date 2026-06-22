@@ -1,5 +1,5 @@
-.. Questo file è incluso in test-plans-presentation.rst (common_definitions è fornito dal file che lo include).
-.. file "incluso" di livello 2, quindi si parte dal livello di titolo '^'
+.. include:: ../common/common_definitions.rst
+.. Incluso tramite test-plans-presentation.rst al livello di titolo '^' (livello 2).
 
 
 

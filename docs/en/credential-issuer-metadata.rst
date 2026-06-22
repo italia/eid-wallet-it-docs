@@ -1,5 +1,5 @@
-.. This file is included in credential-issuer-solution.rst (common_definitions is provided by the including file).
-.. "included" file, so we start with '-' title level
+.. include:: ../common/common_definitions.rst
+.. Included via credential-issuer-solution.rst at title level '-' (level 1).
 
 
 Credential Issuer Metadata
