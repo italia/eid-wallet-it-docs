@@ -123,8 +123,6 @@ La verifica della validità dell'Istanza del Wallet DEVE essere eseguita:
 - **Durante il ciclo di vita dell'Istanza del Wallet** da parte dell'Istanza del Wallet. Ogni Fornitore di Wallet può implementare metodi diversi per consentire a un'Istanza del Wallet di verificarne il suo stato. La specifica IT Wallet RACCOMANDA di utilizzare la Status List della Wallet Instance Attestation.
 
 .. note::
-
-.. note::
   Nell'attuale versione della specifica, i Fornitori di Attestati vengono notificati direttamente della revoca di un'Istanza del Wallet dal Fornitore di Wallet tramite un servizio e-service PDND.
 
 .. note::
