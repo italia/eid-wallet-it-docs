@@ -50,7 +50,7 @@ Quando lo stato è **Installato**, l'Istanza del Wallet DEVE interagire solo con
 
 .. note::
   Come indicato nell'ARF (vedi Topic 9 e Topic 38 nell'Allegato 2), la revoca dell'Istanza del Wallet viene effettuata revocando la Wallet Instance Attestation tramite il meccanismo di gestione dello stato.
-  Il Fornitore di Wallet può semplicemente modificare lo stato della Wallet Instance nella Status List di Wallet Instance Attestation, contrassegnandola come revocata, e informare gli utenti riguardo al motivo della revoca dell’istanza del Wallet. 
+  Il Fornitore di Wallet può semplicemente modificare lo stato della Wallet Instance nella Status List di Wallet Instance Attestation, contrassegnandola come revocata, e   informare gli Utenti riguardo al motivo della revoca dell'Istanza del Wallet. 
 
 
 Transizione a Operativo

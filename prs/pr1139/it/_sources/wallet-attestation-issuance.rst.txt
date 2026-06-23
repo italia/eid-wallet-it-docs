@@ -23,7 +23,7 @@ Questa sezione descrive come il Fornitore di Wallet emette una Key Attestation.
 **Passi 2-3**: L'Istanza del Wallet DEVE:
 
   1. Verificare l'esistenza delle Cryptographic Hardware Keys. Se non esistono, è necessaria la reinizializzazione dell'Istanza del Wallet (:ref:`WP_140a <wallet-instance-optional-testcases>`).
-  2. Generare una o più coppie di chiavi asimmetriche delle credenziali da attestare nella Key Attestation (``key_pub_1``, ``key_priv_1``, ..., ``key_pub_n``, ``key_priv_n``). 
+  2. Generare una o più coppie di chiavi asimmetriche delle Credenziali da attestare nella Key Attestation (``key_pub_1``, ``key_priv_1``, ..., ``key_pub_n``, ``key_priv_n``). 
   3. Verificare l'appartenenza del Fornitore di Wallet alla federazione e recuperare i suoi metadati (:ref:`WP_023 <wallet-instance-testcases>`).
 
 **Passi 4-6 (Recupero del Nonce)**: L'Istanza del Wallet richiede un ``nonce`` all'endpoint :ref:`wallet-provider-endpoint:Endpoint Nonce della Soluzione Wallet` del Backend del Fornitore del Wallet (:ref:`WP_140b <wallet-instance-optional-testcases>`). Il ``nonce`` deve essere imprevedibile e funge da principale difesa contro gli attacchi di replay.
@@ -72,7 +72,7 @@ Di seguito è riportato un esempio non normativo dell'oggetto JSON ``client_data
 
 **Passi 20-21 (Richiesta di Emissione della Key Attestation)**: L'Istanza del Wallet:
 
-* Costruisce la Key Attestation Request sotto forma di JWT. Questo JWT include l'``integrity_assertion``, ``keys_to_attest``, ``hardware_signature``, ``nonce``, ``hardware_key_tag``, ``cnf``, ``platform``, ``wallet_solution_id``, ``wallet_solution_version``  e altri parametri relativi alla configurazione (vedi :ref:`Tabella del Corpo della Richiesta di Key Attestation <table_ka_request_claim>`) ed è firmato utilizzando la chiave privata la cui chiave pubblica è indicata nella richiesta tramite ``cnf`` (primo elemento di ``keys_to_attest``) (:ref:`WP_140–141 <wallet-instance-optional-testcases>`).
+* Costruisce la Key Attestation Request sotto forma di JWT. Questo JWT include l'``integrity_assertion``, ``keys_to_attest``, ``hardware_signature``, ``nonce``, ``hardware_key_tag``, ``cnf``, ``platform``, ``wallet_solution_id``, ``wallet_solution_version``  e altri parametri relativi alla configurazione (vedi :ref:`Tabella del Corpo della Richiesta di Key Attestation <table_ka_request_claim>`). La Key Attestation Request DEVE essere firmata utilizzando la chiave privata corrispondente alla chiave pubblica inclusa nella richiesta, tramite il parametro ``cnf`` (primo elemento di ``keys_to_attest``) (:ref:`WP_140–141 <wallet-instance-optional-testcases>`).
 * Invia la Key Attestation Request all'endpoint :ref:`wallet-provider-endpoint:Endpoint di Emissione della Key Attestation` del Backend del Fornitore del Wallet.
 
 .. note:: 
@@ -94,7 +94,7 @@ L'Istanza del Wallet DEVE inviare il JWT firmato della Richiesta di Key Attestat
 
 Al completamento con successo di tutte le verifiche, il Fornitore di Wallet emette una Key Attestation valida per almeno un mese (:ref:`WP_144 <wallet-instance-optional-testcases>`).
 
-**Passo 28 (Risposta di Emissione della Key Attestation)**: Al completamento con successo, il Fornitore di Wallet DEVE restituire una risposta di conferma utilizzando il codice di stato 200 e il Content-Type ``application/json``, contenente la Key Attestations firmate dal Fornitore di Wallet. Il Fornitore di Wallet DEVE restituire la Key Attestation in formato ``JWT``. L'Istanza del Wallet eseguirà quindi la verifica di sicurezza e integrità della Key Attestations ricevute, oltre alla verifica di fiducia del relativo emittente (:ref:`WP_030–031 <wallet-instance-testcases>`).
+**Passo 28 (Risposta di Emissione della Key Attestation)**: Al completamento con successo, il Fornitore di Wallet DEVE restituire una risposta di conferma con codice di stato ``200`` e Content-Type ``application/json``. La risposta DEVE contenere le Key Attestations firmate dal Fornitore di Wallet in formato JWT. L'Istanza del Wallet DEVE eseguire la verifica di sicurezza e integrità delle Key Attestations ricevute, insieme alla verifica di fiducia già valutata sull'Emittente (:ref:`WP_030–031 <wallet-instance-testcases>`).
 
 
 Di seguito è riportato un esempio non normativo della risposta.

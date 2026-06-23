@@ -194,7 +194,7 @@
 <blockquote>
 <div><ol class="arabic simple">
 <li><p>Verify the existence of Cryptographic Hardware Keys. If none exist, Wallet Instance re-initialization is required (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_140a</span></a>).</p></li>
-<li><p>Generate one or batch of asymmetric credential key pair(s) to be attested in Key Attestation (<code class="docutils literal notranslate"><span class="pre">key_pub_1</span></code>, <code class="docutils literal notranslate"><span class="pre">key_priv_1</span></code>, ..., <code class="docutils literal notranslate"><span class="pre">key_pub_n</span></code>, <code class="docutils literal notranslate"><span class="pre">key_priv_n</span></code>).</p></li>
+<li><p>Generate one or batch of asymmetric Credential key pair(s) to be attested in Key Attestation (<code class="docutils literal notranslate"><span class="pre">key_pub_1</span></code>, <code class="docutils literal notranslate"><span class="pre">key_priv_1</span></code>, ..., <code class="docutils literal notranslate"><span class="pre">key_pub_n</span></code>, <code class="docutils literal notranslate"><span class="pre">key_priv_n</span></code>).</p></li>
 <li><p>Verify the Wallet Provider's federation membership and retrieve its metadata (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_023</span></a>).</p></li>
 </ol>
 </div></blockquote>
@@ -241,7 +241,7 @@
 </ul>
 <p><strong>Steps 20-21 (Key Attestation Issuance Request)</strong>: The Wallet Instance:</p>
 <ul class="simple">
-<li><p>Constructs the Key Attestation Request in the form of a JWT. This JWT includes the <code class="docutils literal notranslate"><span class="pre">integrity_assertion</span></code>, <code class="docutils literal notranslate"><span class="pre">keys_to_attest</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code>, <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>, <code class="docutils literal notranslate"><span class="pre">cnf</span></code>, <code class="docutils literal notranslate"><span class="pre">platform</span></code> and other configuration related parameters (see <a class="reference internal" href="wallet-provider-endpoint.html#table-ka-request-claim"><span class="std std-ref">Table of the Key Attestation Request Body</span></a>) and is signed using the private key that it is public key illustrated in the request through <code class="docutils literal notranslate"><span class="pre">cnf</span></code> (first element of <code class="docutils literal notranslate"><span class="pre">keys_to_attest</span></code>) (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_140–141</span></a>).</p></li>
+<li><p>Constructs the Key Attestation Request in the form of a JWT. This JWT includes the <code class="docutils literal notranslate"><span class="pre">integrity_assertion</span></code>, <code class="docutils literal notranslate"><span class="pre">keys_to_attest</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code>, <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>, <code class="docutils literal notranslate"><span class="pre">cnf</span></code>, <code class="docutils literal notranslate"><span class="pre">platform</span></code> and other configuration related parameters (see <a class="reference internal" href="wallet-provider-endpoint.html#table-ka-request-claim"><span class="std std-ref">Table of the Key Attestation Request Body</span></a>). The Key Attestation Request MUST be signed using the private key related to the public key included in the request, using the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> parameter (first element of <code class="docutils literal notranslate"><span class="pre">keys_to_attest</span></code>) (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_140–141</span></a>).</p></li>
 <li><p>Submits the Key Attestation Request to the <a class="reference internal" href="wallet-provider-endpoint.html#key-attestation-issuance-endpoint"><span class="std std-ref">Key Attestation Issuance Endpoint</span></a> of the Wallet Provider Backend.</p></li>
 </ul>
 <div class="admonition note">
@@ -264,7 +264,7 @@
 </ol>
 </div></blockquote>
 <p>Upon successful completion of all checks, the Wallet Provider issues a Key Attestation valid for at least one month.</p>
-<p><strong>Step 28 (Key Attestation Issuance Response)</strong>: Upon successful completion, the Wallet Provider MUST return a confirmation response using status code 200 and Content-Type <code class="docutils literal notranslate"><span class="pre">application/json</span></code>, containing the Key Attestations signed by the Wallet Provider in the JWT format. The Wallet Instance will then perform security and integrity verification of the Key Attestations received in addition to trust verification of its Issuer (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_030–031</span></a>).</p>
+<p><strong>Step 28 (Key Attestation Issuance Response)</strong>: Upon successful completion, the Wallet Provider MUST return a confirmation response using status code set with <code class="docutils literal notranslate"><span class="pre">200</span></code> and Content-Type <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. The response MUST contain the Key Attestations signed by the Wallet Provider using the JWT format. The Wallet Instance MUST perform security and integrity verification of the Key Attestations received, along with the trust verification already evaluated about the Issuer (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_030–031</span></a>).</p>
 <p>Below is a non-normative example of the response.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
@@ -304,7 +304,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 11/06/2026.
+      Last updated on 23/06/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

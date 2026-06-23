@@ -211,7 +211,7 @@ Di seguito è riportato un esempio non normativo di una richiesta di emissione d
     Content-Type: application/json
 
     {
-      "assertion": "eyJpc3MiOiJodHRwczovL3dhbGxldC1wcm92aWRlc..."
+      "assertion": "eyJpc3MiOiJPbnNpYW5kcklqcDdJbU55ZGlJNklsQ..."
     }
 
 In particolare, il JWT della richiesta di emissione della Wallet Instance Attestation include i seguenti parametri di intestazione HTTP:
@@ -246,7 +246,7 @@ Il JWT della richiesta include le seguenti claim nel body:
       - **Descrizione**
       - **Riferimento**
     * - **iss**
-      - L'identificatore del Fornitore di Wallet concatenato con l'impronta digitale (thumbprint) della JWK nella dichiarazione ``cnf``.
+      - Stringa contenente l'identificativo univoco della Wallet Instance.
       - [:rfc:`9126`], [:rfc:`7519`].
     * - **exp**
       - UNIX timestamp che rappresenta il tempo di scadenza del JWT.
@@ -292,7 +292,7 @@ Di seguito è riportato un esempio non normativo dell'intestazione e del payload
 .. code-block:: json
   
     {
-      "iss": "https://wallet-provider.example.org/instance/OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
+      "iss": "OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
       "nonce": "f3b29a81-45c7-4d12-b8b5-e1f6c9327aef",
       "hardware_signature": "KoZIhvcNAQcCoIAwgAIB...",
       "integrity_assertion": "o2NmbXRvYXBwbGUtYXBwYXNzZXJ0aW9uLXBheWxvYWQtYXBw...",
@@ -490,7 +490,7 @@ Richiesta di Emissione della Key Attestation
 
 La  richiesta di emissione della Key Attestation utilizza il metodo HTTP POST con ``Content-Type`` impostato a ``application/json``. (:ref:`WP_026 <wallet-instance-testcases>` e :ref:`WP_140–142 <wallet-instance-optional-testcases>`).
 
-L'header ``typ`` del JWT della richiesta di emissione Key Attestation Issuance assume il valore ``keyattestation-request+jwt``.
+L'header ``typ`` del JWT della richiesta di emissione Key Attestation Issuance assume il valore ``wua-request+jwt``.
 
 Il body della richiesta di emissione Key Attestation contiene un parametro ``assertion`` il cui valore è un JWT firmato che include tutti i parametri di header e i claim del body descritti di seguito.
 
@@ -503,7 +503,7 @@ Di seguito è riportato un esempio non normativo di una Key Attestation Request.
     Content-Type: application/json
 
     {
-      "assertion": "eyJpc3MiOiJodHRwczovL3dhbGxldC1wcm92aWRlc..."
+      "assertion": "eyJpc3MiOiJPbnNpYW5kcklqcDdJbU55ZGlJNklsQ..."
     }
 
 In particolare, il JWT della Key Attestation Issuance include i seguenti parametri di header HTTP:
@@ -525,7 +525,7 @@ In particolare, il JWT della Key Attestation Issuance include i seguenti paramet
       - Thumbprint della JWK della Wallet Instance contenuta nel claim ``cnf``.
       - [:rfc:`7638#section_3`]
     * - **typ**
-      - Il tipo del JWT; DEVE essere impostato a ``keyattestation-request+jwt``.
+      - Il tipo del JWT; DEVE essere impostato a ``wua-request+jwt``.
       -
 
 Il JWT della Key Attestation Request include i seguenti claim nel body:
@@ -539,10 +539,7 @@ Il JWT della Key Attestation Request include i seguenti claim nel body:
       - **Description**
       - **Reference**
     * - **iss**
-      - L'identificatore del Wallet Provider concatenato con la thumbprint della JWK nel claim ``cnf``.
-      - [:rfc:`9126`], [:rfc:`7519`].
-    * - **aud**
-      - L'identificatore del Wallet Provider.
+      - Stringa contenente l'identificativo univoco della Wallet Instance.
       - [:rfc:`9126`], [:rfc:`7519`].
     * - **exp**
       - Timestamp UNIX che rappresenta il tempo di scadenza del JWT.
@@ -587,14 +584,13 @@ Di seguito è riportato un esempio non normativo dell'header e del payload JWT d
     {
       "alg": "ES256",
       "kid": "OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
-      "typ": "keyattestation-request+jwt"
+      "typ": "wua-request+jwt"
     }
 
 .. code-block:: json
 
     {
-      "iss": "https://wallet-provider.example.org/instance/OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
-      "aud": "https://wallet-provider.example.org/",
+      "iss": "OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
       "nonce": "f3b29a81-45c7-4d12-b8b5-e1f6c9327aef",
       "hardware_signature": "KoZIhvcNAQcCoIAwgAIB...",
       "integrity_assertion": "o2NmbXRvYXBwbGUtYXBwYXNzZXJ0aW9uLXBheWxvYWQtYXBw...",
@@ -611,7 +607,9 @@ Di seguito è riportato un esempio non normativo dell'header e del payload JWT d
         "eyJ0eXAiOiJrZXktYXR0ZXN0YXRpb24tcmVxdWVzdCtqd3QiLCJhbGciOiJFUzI1NiIsImtpZCI6Ik9LSEhrVk5PckthUFZKdWZsREt3MVNRSEZOWTVpeTlPaXdBdHBBMGNvSUEifQ.eyJ3c2NkX2tleV9hdHRlc3RhdGlvbiI6eyJzdG9yYWdlX3R5cGUiOiJMT0NBTF9OQVRJVkUifSwiY25mIjp7Imp3ayI6eyJrdHkiOiJFQyIsIngiOiJ4QUg5U05mYXE5SjVkbWt6WFlRTGVrNVlmcFBjOGlfUHBNUlQzMTVoak1rIiwieSI6IlBFMlhMY3BXNmVYSDRGbFlHTlA5Qmh3UVFkRWlaRTF0QWRULUVpaEFDQzgiLCJjcnYiOiJQLTI1NiIsImtpZCI6Ik9LSEhrVk5PckthUFZKdWZsREt3MVNRSEZOWTVpeTlPaXdBdHBBMGNvSUEifX0sImlhdCI6MTc3MzA1Mzg2MSwiZXhwIjoxNzczMDU3NDYxfQ.Rn3D0GwYYZJaupzJ6617V0xav_HH6bGnttoGrD4lwY8ICPH9NiEbTF9ZBYD3aHh20Z9GCjQ8Fhit5Fbps8v9Aw",
         "eyJ0eXAiOiJrZXktYXR0ZXN0YXRpb24tcmVxdWVzdCtqd3QiLCJhbGciOiJFUzI1NiIsImtpZCI6IkViUUJSQ2dLNWJrVzlZNU1idGEwZlpzMVdhVTBLZVpiek9iTXVvY2NLb28ifQ.eyJ3c2NkX2tleV9hdHRlc3RhdGlvbiI6eyJzdG9yYWdlX3R5cGUiOiJMT0NBTF9OQVRJVkUifSwiY25mIjp7Imp3ayI6eyJrdHkiOiJFQyIsIngiOiJEVVFWTGhLMUtRUmQtZ3g3UU5jYVNhWENnOXg0S3R6QmstNWIxWTNkeWU0IiwieSI6IkZxVjk0TWVrVm5fQ05mNTIxdm1vLVFIcWZObk12eGdIR3NFeDlCTlc4aFEiLCJjcnYiOiJQLTI1NiIsImtpZCI6IkViUUJSQ2dLNWJrVzlZNU1idGEwZlpzMVdhVTBLZVpiek9iTXVvY2NLb28ifX0sImlhdCI6MTc3MzA1Mzg2MSwiZXhwIjoxNzczMDU3NDYxfQ.wIYOmX8-dmuRnuaCVg1kFoTHhsvv01vbapQ8-3er-HIiAF819Kt3Uy0PUN_WgxP7eWMGwhkn_9tQnnhdgXLYyw"
       ],
-      "platform": "iOS"
+      "platform": "iOS",
+      "wallet_solution_id": "Wallet-mobile",
+      "wallet_solution_version": "1.1.0"
     }
 
 
@@ -686,7 +684,7 @@ L'intestazione JOSE del Key Attestation JWT contiene i seguenti parametri:
       - OBBLIGATORIO. Identificatore univoco della chiave pubblica associata alla chiave privata che il Fornitore di Wallet ha utilizzato per firmare la Key Attestation.
       - :rfc:`7638#section_3`.
     * - **typ**
-      - OBBLIGATORIO. Deve essere impostato su ``keyattestation+jwt``
+      - OBBLIGATORIO. Deve essere impostato su ``key-attestation+jwt``
       - `OPENID4VC-HAIP`_.
     * - **trust_chain**
       - OPZIONALE. Sequenza di Entity Statement che compone la Catena di Fiducia relativa al Fornitore di Wallet.
@@ -745,10 +743,10 @@ Il corpo del Key Attestation JWT contiene le seguenti dichiarazioni (claims):
 
 Di seguito è riportato un esempio non normativo dell'intestazione e del payload del Key Attestation JWT, senza codifica né firma applicata:
 
-.. literalinclude:: ../../examples/wua-jwt_example_header.json
+.. literalinclude:: ../../examples/ka-jwt_example_header.json
   :language: JSON
 
-.. literalinclude:: ../../examples/wua-jwt_example_payload.json
+.. literalinclude:: ../../examples/ka-jwt_example_payload.json
   :language: JSON
 
 
