@@ -126,11 +126,12 @@ I Metadata *openid_credential_issuer* contiene i seguenti *claims*.
             - **path**: Contiene il puntatore che specifica il percorso all'attributo specifico all'interno dell'Attestato Elettronico come definito nell'Appendice C di `OpenID4VCI`_.
             - **mandatory**: Valore booleano che, se impostato su `true`, indica che il Credential Issuer includerà sempre questo attributo nelle Credenziali che emette.
             - **sd**: Stringa che indica se il claim è divulgabile selettivamente. DEVE essere impostato su `always` se il claim è divulgabile selettivamente o `never` se non lo è.
-            - **display**: Array di oggetti contenenti le proprietà di visualizzazione. Array contenente informazioni di visualizzazione relative al claim indicato nel ``path``. L'array contiene un oggetto per ogni lingua supportata. I parametri che DEVONO essere inclusi sono:
+            - **display**: Array di oggetti contenenti le proprietà di visualizzazione. Array contenente informazioni di visualizzazione relative al claim indicato nel ``path``. L'array contiene un oggetto per ogni lingua supportata. Contiene i seguenti parametri:
 
-                - **name**: Nome dell'attributo in formato stringa.
-                - **description**: Descrizione "human-readable" dell'Attributo.
-                - **locale**: Stringa che identifica la localizzazione con un tag linguistico come definito in *BCP47* :rfc:`5646`. DEVE esserci un solo oggetto per ogni identificativo di localizzazione.
+                - **name**: OBBLIGATORIO. Nome dell'attributo in formato stringa.
+                - **label**: OPZIONALE. Nome dell'attributo in formato stringa.
+                - **description**: OBBLIGATORIO. Descrizione "human-readable" dell'Attributo.
+                - **locale**: OBBLIGATORIO. Stringa che identifica la localizzazione con un tag linguistico come definito in *BCP47* :rfc:`5646`. DEVE esserci un solo oggetto per ogni identificativo di localizzazione.
 
         - **schema_id**: OBBLIGATORIO. Identificativo dello schema delle credenziali come definito nel :ref:`registry:Registro degli Schema`.
         - **authentic_sources**: OBBLIGATORIO. Oggetto contenente il parametro ``entity_id`` e ``dataset_id``, valorizzato con i rispettivi dentificativi come censiti all'interno del :ref:`registry:Registro delle Fonti Autentiche`.
