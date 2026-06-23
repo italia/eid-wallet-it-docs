@@ -541,6 +541,8 @@ Il processo di presentazione permette all'Utente di accedere a un servizio oppur
 
 - **Presentazione da remoto**: l'Utente presenta il PID e/o un set di Attributi contenuti in uno o più Attestati Elettronici tramite l'Istanza del Wallet ad un Verificatore di Attestati Elettronici predisposto per la verifica online al fine, ad esempio, di Autenticarsi e fruire dei servizi erogati. 
 
+Al di là del tipo di presentazione, il Fornitore di Wallet DEVE garantire che l’Istanza di Wallet informi l’Utente circa l’identità del Verificatore di Attestati Elettronici. In presenza di un Intermediario di Relying Party, il Fornitore di Wallet DEVE renderlo visibile all’Utente durante la fase di richiesta di presentazione. L'identità del Verificatore di Attestati Elettronici primario DEVE in ogni caso rimanere visibile all'Utente e NON DEVE essere sostituita da quella dell'Intermediario.
+
 Presentazione in prossimità 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -571,8 +573,6 @@ In caso di errori nell'utilizzo dell'Istanza del Wallet, il Fornitore di Wallet 
 - L'Utente prende visione dei dati del PID e/o gli Attributi richiesti per la presentazione, del nome del Verificatore di Attestati Elettronici che li richiede e delle relative eventuali informative. L'Utente sceglie se presentare o meno eventuali dati del PID o degli Attributi non obbligatori ai fini della presentazione (Divulgazione Selettiva). L'Utente dà il proprio consenso per poter proseguire oppure annulla l'operazione; 
 - L'Utente autorizza l'operazione utilizzando la modalità di sblocco precedentemente impostata; 
 - L'Utente visualizza l'esito positivo della presentazione avvenuta. 
-
-In presenza di un Intermediario di Relying Party, il Wallet Provider DEVE renderlo visibile all’Utente durante la fase di richiesta di presentazione nella Wallet Instance, fornendo un ulteriore elemento di dettaglio rispetto all'identità del Relying Party intermediato. L'identità del Relying Party primario DEVE in ogni caso rimanere visibile all'Utente e NON DEVE essere sostituita da quella dell'Intermediario. 
 
 In caso di errori nell'utilizzo dell'Istanza del Wallet, il Fornitore di Wallet DEVE garantire all'Utente la visualizzazione di messaggi coerenti che lo informino e guidino alla loro risoluzione. Per approfondimenti si rimanda alla sezione :ref:`functionalities:Gestione degli errori`. 
 
@@ -618,8 +618,6 @@ Di seguito i requisiti dell'Esperienza Utente relativi a entrambe le modalità c
 - L'Utente autorizza l'operazione utilizzando la modalità di sblocco precedentemente impostata; 
 - L'Utente visualizza nell'Istanza del Wallet l'esito positivo della presentazione avvenuta; 
 - L'Utente torna al flusso nel Touchpoint del Verificatore di Attestati Elettronici su cui visualizza l'esito della presentazione completata. 
-
-In presenza di un Intermediario di Relying Party, il Wallet Provider DEVE renderlo visibile all’Utente durante la fase di richiesta di presentazione nella Wallet Instance, fornendo un ulteriore elemento di dettaglio rispetto all'identità del Relying Party intermediato. L'identità del Relying Party primario DEVE in ogni caso rimanere visibile all'Utente e NON DEVE essere sostituita da quella dell'Intermediario. 
 
 In caso di errori nell'utilizzo dell'Istanza del Wallet, il Fornitore di Wallet DEVE garantire all'Utente la visualizzazione di messaggi coerenti che lo informino e guidino alla loro risoluzione. Per approfondimenti si rimanda alla sezione :ref:`functionalities:Gestione degli errori`. 
 
