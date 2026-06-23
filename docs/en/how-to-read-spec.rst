@@ -159,7 +159,7 @@ To implement the Wallet Solution in line with specific technological standards t
 **Phase 4: Registration**
 
 To become registered as a Wallet Provider within the system by completing the administrative and technical procedures so that the Wallet Solution is recognized by the system.
-
+**Section** :ref:`entity-onboarding:Entity Onboarding`: Focus on technical implementation procedures for Wallet Provider registration. 
 - **Section** :ref:`onboarding-high-level:Onboarding System': Overview of the onboarding system architecture and the Wallet Provider registration process.  
 **Section** :ref:`entity-onboarding:Entity Onboarding`: Focus on technical implementation procedures for Wallet Provider registration. 
 - **Section** :ref:`x5c-evaluation:X.509 Certificate Management Operations': Operational procedures for managing X.509 Certificates within the IT-Wallet federation
@@ -197,7 +197,7 @@ To develop endpoints based on specific protocols, and to implement (Q)EAA issuan
 - **Section** :ref:`credential-issuer-solution:Credential Issuer Solution`: Technical and functional requirements on components, and interaction patterns to issue and manage (Q)EAAs lifecycle.
 - **Section** :ref:`digital-credential-flows:Digital Credential Flows`: Technical and functional requirements on (Q)EAA issuance and presentation flows.
 
-- **Section** :ref:`endpoints:Endpoints`: Implementation of issuance interfaces, including the Credential Endpoint and Token Endpoint (see paragraph :ref:`endpoints:`Credential Issuer Endpoints'). 
+- **Section** :ref:`credential-issuer-endpoint:Credential Issuer Endpoints`: Key requirements for the implementation of Credential Issuer metadata and authorization endpoints.
 - **Section** :ref:`algorithms:Cryptographic Algorithms': To meet security requirements by designing digital signature systems that make attestations unfalsifiable.
 
 - **Section** :ref:`e-service-pdnd:e-Service PDND`: Mandatory integration specifications with the PDND (National Digital Data Platform) and the associated interoperability requirements for accessing authoritative data required for (Q)EAA issuance.
@@ -255,10 +255,10 @@ To implement verification functionalities following specific protocols, to send 
 - **Section** :ref:`security-privacy-considerations:Security and Privacy Considerations`: Security and compliance requirements for implemented solutions. 
 
 - **Section** :ref:`log-retention-policy:General Log Retention Policies`: General Log retention requirements and requirements specific for Relying Parties, in accordance with ISO/IEC 27001.
-
+- **Section** :ref:`test-plans:Test Plans`: Guide to set up the test environment and validate backend interactions with the test matrices provided by the ecosystem. 
 **Phase 4: Registration**
 
-**Objective**: To become accredited as a secure and reliable actor when requesting user data.   
+To become registered as Relying Party within the system, by completing the administrative and technical procedure and be a reliable actor when requesting User’s data.
 
 - **Section** :ref:`onboarding-high-level:Onboarding System': learning the methods for participating in the IT-Wallet ecosystem  (see paragraph :ref:`ronboarding-high-level:Relying Party Operator Journey'). 
 
