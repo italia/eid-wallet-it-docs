@@ -260,8 +260,8 @@ To implement verification functionalities following specific protocols, to send 
 
 To become registered as Relying Party within the system, by completing the administrative and technical procedure and be a reliable actor when requesting User’s data.
 
-- **Section** :ref:`onboarding-high-level:Onboarding System': learning the methods for participating in the IT-Wallet ecosystem  (see paragraph :ref:`ronboarding-high-level:Relying Party Operator Journey'). 
-
+- **Section** :ref:`onboarding-high-level:Onboarding System': Overview of the onboarding system architecture and the Relying Party registration process.
+- **Section** :ref:`entity-onboarding:Entity Onboarding`: Focus on implementation procedures for Relying Party registration. 
 - **Section** :ref:`x5c-evaluation:X.509 Certificate Management Operations': Operational procedures for managing X.509 Certificates within the IT-Wallet federation
 
 - **Section**: :ref:`est-plans:Test Plans': Information on how test environments support implementers, auditors, and compliance testing in validating Wallet Solution behavior. 
