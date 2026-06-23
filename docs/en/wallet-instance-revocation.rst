@@ -114,13 +114,11 @@ Revocation Check Mechanisms
 
 The verification of the Wallet Instance validity MUST be performed:
 
-- **During Digital Credential issuance** by the Credential Issuers. Only Wallet Instances in Operational or Valid state have valid Wallet Instance Attestation and Key Attestation. The verification of the validity of a Wallet Instance is indirectly performed by Credential Issuers by checking the presence of a valid Wallet Instance Attestation (i.e., not expired, not revoked checking the Wallet Instance Attestation Status List, and signed by a trusted Wallet Provider). 
+- **During Digital Credential issuance** by the Credential Issuers. Only Wallet Instances in Operational or Valid state have valid Wallet Instance Attestation and Key Attestation. The verification of the validity of a Wallet Instance is indirectly performed by Credential Issuers by checking the presence of a valid Wallet Instance Attestation (i.e., not expired, not revoked checking the Wallet Instance Attestation Status List, and signed by a trusted Wallet Provider).
 
-- **During the validity period of the Digital Credential** by the Credential Issuers every 24 hours by checking the Wallet Instance Attestation Status List of the Wallet Instance holding the PID, and the Key Attestation Status List. Indeed, if the Wallet Instance or the Key Attestation is revoked, the PID hosted within it MUST be revoked. Any other Digital Credential obtained through the presentation of the PID MUST therefore be revoked too. 
+- **During the validity period of the Digital Credential** by the Credential Issuers every 24 hours by checking the Wallet Instance Attestation Status List of the Wallet Instance holding the PID, and the Key Attestation Status List. Indeed, if the Wallet Instance or the Key Attestation is revoked, the PID hosted within it MUST be revoked. Any other Digital Credential obtained through the presentation of the PID MUST therefore be revoked too.
 
-- **During the Wallet Instance lifecycle** by the Wallet Instance. Each Wallet Provider may implement different methods to allow a Wallet Instance to check its status. The IT Wallet specification RECOMMENDS to use the Status List of the Wallet Instance Attestation. 
-
-.. note::
+- **During the Wallet Instance lifecycle** by the Wallet Instance. Each Wallet Provider may implement different methods to allow a Wallet Instance to check its status. The IT Wallet specification RECOMMENDS to use the Status List of the Wallet Instance Attestation.
 
 .. note::
   In the current version of the specification, Credential Issuers are directly notified of a Wallet Instance revocation by the Wallet Provider using a PDND e-service.
