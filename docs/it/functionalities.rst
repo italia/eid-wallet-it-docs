@@ -572,6 +572,8 @@ In caso di errori nell'utilizzo dell'Istanza del Wallet, il Fornitore di Wallet 
 - L'Utente autorizza l'operazione utilizzando la modalità di sblocco precedentemente impostata; 
 - L'Utente visualizza l'esito positivo della presentazione avvenuta. 
 
+In presenza di un Intermediario di Relying Party, il Wallet Provider DEVE renderlo visibile all’Utente durante la fase di richiesta di presentazione nella Wallet Instance, fornendo un ulteriore elemento di dettaglio rispetto all'identità del Relying Party intermediato. L'identità del Relying Party primario DEVE in ogni caso rimanere visibile all'Utente e NON DEVE essere sostituita da quella dell'Intermediario. 
+
 In caso di errori nell'utilizzo dell'Istanza del Wallet, il Fornitore di Wallet DEVE garantire all'Utente la visualizzazione di messaggi coerenti che lo informino e guidino alla loro risoluzione. Per approfondimenti si rimanda alla sezione :ref:`functionalities:Gestione degli errori`. 
 
 Il flusso è rappresentato di seguito con wireframe esemplificativi.
@@ -616,6 +618,8 @@ Di seguito i requisiti dell'Esperienza Utente relativi a entrambe le modalità c
 - L'Utente autorizza l'operazione utilizzando la modalità di sblocco precedentemente impostata; 
 - L'Utente visualizza nell'Istanza del Wallet l'esito positivo della presentazione avvenuta; 
 - L'Utente torna al flusso nel Touchpoint del Verificatore di Attestati Elettronici su cui visualizza l'esito della presentazione completata. 
+
+In presenza di un Intermediario di Relying Party, il Wallet Provider DEVE renderlo visibile all’Utente durante la fase di richiesta di presentazione nella Wallet Instance, fornendo un ulteriore elemento di dettaglio rispetto all'identità del Relying Party intermediato. L'identità del Relying Party primario DEVE in ogni caso rimanere visibile all'Utente e NON DEVE essere sostituita da quella dell'Intermediario. 
 
 In caso di errori nell'utilizzo dell'Istanza del Wallet, il Fornitore di Wallet DEVE garantire all'Utente la visualizzazione di messaggi coerenti che lo informino e guidino alla loro risoluzione. Per approfondimenti si rimanda alla sezione :ref:`functionalities:Gestione degli errori`. 
 
