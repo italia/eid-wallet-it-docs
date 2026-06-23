@@ -12,10 +12,10 @@ Wallet Provider Endpoints
 The Wallet Provider, responsible for delivering a Wallet Solution, MUST expose the endpoints to support trust establishment and essential Wallet Instance functionalities. These include the ``/.well-known/openid-federation`` Federation Endpoint which MUST adhere to the OpenID Federation 1.0 specification to reliably establish trust with the Wallet Provider's as well as, endpoints for Wallet Instance registration, nonce generation (required for registration), attestation issuance, and revocation. Aside from the Federation endpoint, the implementation details of the others are left to the Wallet Provider's discretion.
 
 .. note::
-  Tests related to the use of Wallet Provider endpoints are defined in 
-  :ref:`wallet-provider-test-matrix`, particularly 
+  Tests related to the use of Wallet Provider endpoints are defined in
+  :ref:`wallet-provider-test-matrix`, particularly
   :ref:`wallet-provider-backend-testcases`,
-  :ref:`wallet-instance-testcases`, and 
+  :ref:`wallet-instance-testcases`, and
   :ref:`wallet-instance-optional-testcases`.
 
 Federation Endpoint
@@ -118,7 +118,7 @@ In case of an error, the Wallet Provider MUST return an error response as define
 
 - *error*. The error code.
 - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered.
- 
+
 The following sections categorize errors into **common errors**, which apply to all requests, and **request-specific errors**, which are relevant to particular operations (:ref:`WP_035–044 <wallet-instance-testcases>`, and :ref:`WP_150–155 <wallet-instance-optional-testcases>`).
 
 Common Error Responses
@@ -269,13 +269,13 @@ The Wallet Instance Attestation Request JWT includes the following body claims:
       - :rfc:`7800`.
     * - **platform**
       - String containing the value of the device operating system.
-      - 
+      -
     * - **wallet_solution_id**
       - String containing the identifier of the Wallet Solution.
-      - 
+      -
     * - **wallet_solution_version**
       - String containing the version of the Wallet Solution.
-      - 
+      -
 
 
 Below is a non-normative example of a Wallet Instance Attestation Request JWT header and payload.
@@ -286,8 +286,9 @@ Below is a non-normative example of a Wallet Instance Attestation Request JWT he
       "typ": "wia-request+jwt"
     }
 
+
 .. code-block:: json
-  
+
     {
       "iss": "OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
       "nonce": "f3b29a81-45c7-4d12-b8b5-e1f6c9327aef",
@@ -328,7 +329,7 @@ The JSON Object returned in the response has the following claim:
       - REQUIRED. A String containing of the issued Wallet Instance Attestation.
       - This specification.
 
-The value of ``wallet_instance_attestation`` parameter is a string representing the Wallet Instance Attestation in a JWT. 
+The value of ``wallet_instance_attestation`` parameter is a string representing the Wallet Instance Attestation in a JWT.
 
 If any errors occur during the process, an error response is returned. The response uses ``application/json`` as the ``Content-Type`` and includes the following parameters:
 
@@ -562,13 +563,13 @@ The Key Attestation Request JWT includes the following body claims:
       - :rfc:`7800`.
     * - **platform**
       - String containing the value of the device operating system.
-      - 
+      -
     * - **wallet_solution_id**
       - String containing the identifier of the Wallet Solution.
-      - 
+      -
     * - **wallet_solution_version**
       - String containing the version of the Wallet Solution.
-      - 
+      -
 
 
 Below is a non-normative example of a Key Attestation Request JWT header and payload.
@@ -583,7 +584,7 @@ Below is a non-normative example of a Key Attestation Request JWT header and pay
     }
 
 .. code-block:: json
-  
+
     {
       "iss": "OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
       "nonce": "f3b29a81-45c7-4d12-b8b5-e1f6c9327aef",
@@ -628,9 +629,9 @@ The JSON Object returned in the response has the following claim:
       - REQUIRED. A String representing the issued Key Attestation.
       - This specification.
 
-The value of ``key_attestation`` parameter is a string representing the Key Attestation in a JWT. 
+The value of ``key_attestation`` parameter is a string representing the Key Attestation in a JWT.
 
-If any errors occur during the process, an error response is returned as it is defined in the previous section. 
+If any errors occur during the process, an error response is returned as it is defined in the previous section.
 
 
 The following table lists HTTP Status Codes and related error codes for the ones that are different from what is already reported:
@@ -652,7 +653,7 @@ The following table lists HTTP Status Codes and related error codes for the ones
     * - ``403 Forbidden``
       - ``invalid_request``
       - The signature of the Key Attestation Request is invalid or does not match the associated public key (JWK).
-   
+
 
 
 
@@ -736,7 +737,7 @@ The body of the Key Attestation JWT contains the following claims:
     * - **certification**
       - OPTIONAL. A String that contains a URL that links to the certification of the key storage component.
       - `OpenID4VCI`_.
-    
+
 
 
 Below is a non-normative example of the Key Attestation JWT header and payload, without encoding and signature applied:
