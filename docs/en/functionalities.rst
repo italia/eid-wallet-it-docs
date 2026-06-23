@@ -578,6 +578,8 @@ In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee 
 - The User authorizes the operation using the unlock method previously set;
 - The User receives confirmation of the successful presentation.
 
+In case of a Relying Party Intermediary, the Wallet Provider MUST enable the Wallet Instance to disclose to the User the intermediary's involvement during the presentation request phase, providing additional element to the identity of the underlying Relying Party. The identity of the primary Relying Party MUST always be visible to the User and MUST NOT be replaced by that of the Relying Party Intermediary. 
+
 In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the :ref:`functionalities:Error Management` section.
 
 The flow is shown below with illustrative wireframes.
@@ -621,6 +623,8 @@ Below are the User Experience requirements related to both methods that the Wall
 - The User authorizes the operation using the unlock method previously set;
 - The User receives confirmation of the successful presentation within the Wallet Instance;
 - The User returns to the Relying Party's Touchpoint, where they see confirmation of the completed presentation.
+
+In case of a Relying Party Intermediary, the Wallet Provider MUST enable the Wallet Instance to disclose to the User the intermediary's involvement during the presentation request phase, providing additional element to the identity of the underlying Relying Party. The identity of the primary Relying Party MUST always be visible to the User and MUST NOT be replaced by that of the Relying Party Intermediary.
 
 In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the `Error Management`_ section.
 
