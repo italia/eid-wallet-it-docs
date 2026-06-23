@@ -547,6 +547,8 @@ The presentation process allows the User to access a service or demonstrate owne
 
 - **Remote Presentation**: the User presents the PID and/or EAA data through the Wallet Instance, to a Relying Party configured for online verification, for instance, to Authenticate and access the services offered.
 
+Regardless of the type of presentation, the Wallet Provider MUST allow the Wallet Instance to inform the User of the identity of the Relying Party. In case of a Relying Party Intermediary, the User MUST be informed of the intermediary’s involvement during the presentation request phase. The identity of the primary Relying Party MUST always be visible to the User and MUST NOT be replaced by that of the Relying Party Intermediary.
+
 Proximity Presentation
 ^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -577,8 +579,6 @@ In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee 
 - The User reviews the requested PID and/or EAA data, the name of the requesting Relying Party, and any related policy. The User decides whether to present any non-mandatory PID and/or EAA (Selective Disclosure). The User provides consent to proceed or cancels the operation;
 - The User authorizes the operation using the unlock method previously set;
 - The User receives confirmation of the successful presentation.
-
-In case of a Relying Party Intermediary, the Wallet Provider MUST enable the Wallet Instance to disclose to the User the intermediary's involvement during the presentation request phase, providing additional element to the identity of the underlying Relying Party. The identity of the primary Relying Party MUST always be visible to the User and MUST NOT be replaced by that of the Relying Party Intermediary. 
 
 In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the :ref:`functionalities:Error Management` section.
 
@@ -623,8 +623,6 @@ Below are the User Experience requirements related to both methods that the Wall
 - The User authorizes the operation using the unlock method previously set;
 - The User receives confirmation of the successful presentation within the Wallet Instance;
 - The User returns to the Relying Party's Touchpoint, where they see confirmation of the completed presentation.
-
-In case of a Relying Party Intermediary, the Wallet Provider MUST enable the Wallet Instance to disclose to the User the intermediary's involvement during the presentation request phase, providing additional element to the identity of the underlying Relying Party. The identity of the primary Relying Party MUST always be visible to the User and MUST NOT be replaced by that of the Relying Party Intermediary.
 
 In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the `Error Management`_ section.
 
