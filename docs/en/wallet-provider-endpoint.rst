@@ -280,12 +280,13 @@ The Wallet Instance Attestation Request JWT includes the following body claims:
 
 Below is a non-normative example of a Wallet Instance Attestation Request JWT header and payload.
 
+.. code-block:: json
+
     {
       "alg": "ES256",
       "kid": "OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
       "typ": "wia-request+jwt"
     }
-
 
 .. code-block:: json
 
