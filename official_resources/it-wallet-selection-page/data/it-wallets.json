@@ -19,7 +19,7 @@
     {
       "id": "https://example-wallet.net",
       "logo_uri": "../shared-ui/img/wallet-placeholder.svg",
-      "name": "Nome Wallet su 2 righe",
+      "name": "Nome wallet five",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.",
       "uri": "../it-wallet-presentation-qr-code-page/qr-code-page.html",
       "how_to_get_url": "#"
