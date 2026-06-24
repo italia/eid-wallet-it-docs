@@ -826,7 +826,7 @@ coprendo sia le fasi di presentazione **Flusso Remoto** che **Flusso di Prossimi
    * - WP_103e
      - Flusso-prossimità, Presentazione, Interoperabilità
      - Auxiliary Data Record per DeviceEngagement
-     - Istanza del Wallet fornisce un Auxiliary Data Record che trasporta il DeviceEngagement (tipo ``iso.org:18013:deviceengagement``, ID ``mdoc``) utilizzando NFC Forum external type (0x04); ogni Alternative Carrier Record fa riferimento a questo record.
+     - Istanza del Wallet fornisce un Auxiliary Data Record che trasporta il DeviceEngagement (tipo ``iso.org:18013:deviceengagement``, ID ``mdoc``) utilizzando NFC Forum external type (0x04); ogni Alternative Carrier Record DEVE fare riferimento a questo record.
    * - WP_103f
      - Flusso-prossimità, Presentazione, Interoperabilità
      - Alternative Carrier Records

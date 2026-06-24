@@ -258,7 +258,7 @@ Digital Credential Type Metadata Document
 
 When provided, the Type Metadata Document MUST be a *JSON object* compliant with Section 6.2 of [`SD-JWT-VC`_].
 
-In addition to the properties defined in section 9.2 of [`SD-JWT-VC`_] the following property SHOULD included:
+In addition to the properties defined in section 9.2 of [`SD-JWT-VC`_] the following property SHOULD be included:
 
   - ``name``: A human-readable label for the claim, intended for end users.
 

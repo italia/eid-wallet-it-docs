@@ -49,7 +49,7 @@ Tutte le validazioni sono allineate con (`OID-FED`_).
   * - FA_007
     - Security
     - Tolleranza di validazione per ``exp``
-    - La validazione rifiuta l'Entity Configuration se ``exp`` è nel passato; può essere applicato uno skew massimo di 120 secondi quando si confrontano ``iat``/``exp`` con l'ora corrente.
+    - La validazione rifiuta l'Entity Configuration se ``exp`` è nel passato; PUÒ essere applicato uno skew massimo di 120 secondi quando si confrontano ``iat``/``exp`` con l'ora corrente.
   * - FA_008
     - Security
     - Firma e durata del Subordinate Statement

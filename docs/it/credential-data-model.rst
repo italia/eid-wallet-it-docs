@@ -258,7 +258,7 @@ Type Metadata dell'Attestato Elettronico
 
 Il documento di *Type Metadata*, se fornito, DEVE essere un *JSON object* e DEVE essere conforme con la Sezione 6.2 di [`SD-JWT-VC`_].
 
-In aggiunta ai parametri definiti nella sezione 9.2 di [`SD-JWT-VC`_], il seguente parametro PUO' essere incluso:
+In aggiunta ai parametri definiti nella sezione 9.2 di [`SD-JWT-VC`_], il seguente parametro DOVREBBE essere incluso:
 
   - ``name``: Nome "human-readable" dell'Attributo destinato agli utenti finali.
 

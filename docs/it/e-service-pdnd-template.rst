@@ -62,7 +62,7 @@ I template, come i servizi elettronici, possono essere Sospesi. Quando sospesi:
 
 Istanziazione del e-service Template
 """"""""""""""""""""""""""""""""""""
-I Partecipanti possono istanziare un Servizio Elettronico Template sfogliando il Catalogo Template e selezionando un template. Questo processo genera un nuovo servizio elettronico.
+I Partecipanti POSSONO istanziare un Servizio Elettronico Template sfogliando il Catalogo Template e selezionando un template. Questo processo genera un nuovo servizio elettronico.
 
 I vincoli di istanziazione includono:
 

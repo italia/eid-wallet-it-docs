@@ -85,7 +85,7 @@ Il Fornitore di Attestati Elettronici DEVE aggiornare lo ``status`` dell'Attesta
 Esempio di risposta della Authentic Source
 """"""""""""""""""""""""""""""""""""""""""
 
-La risposta ha come HTTP Content-Type ``application/json``. Di seguito un esempio concreto con dati fittizi per chiarire forma e contenuto attesi.
+La risposta DEVE avere come HTTP Content-Type ``application/json``. Di seguito un esempio concreto con dati fittizi per chiarire forma e contenuto attesi.
 
 .. literalinclude:: ../../examples/credential-claims-response-example.json
   :language: json

@@ -1270,8 +1270,8 @@ Consequently, the EAA assumes the following additional statuses:
 Below are the functional requirements supporting the User Experience regarding the update of the Electronic Attestation that the Electronic Attestation Provider MUST guarantee through the Wallet Solution:
 
 - The User sees in the Electronic Attestation Preview View that its status is not valid;
-- The User sees a message in the Detail View informing them of the new status of the Electronic Attestation and CAN find out more information;
-- The User sees any additional information on the requirements and/or limitations relating to the status of the Electronic Attestation of Attributes and CAN close the message or proceed with any action requested by the Electronic Attestation Provider;
+- The User sees a message in the Detail View informing them of the new status of the Electronic Attestation and MAY find out more information;
+- The User sees any additional information on the requirements and/or limitations relating to the status of the Electronic Attestation of Attributes and MAY close the message or proceed with any action requested by the Electronic Attestation Provider;
 - The User sees specific Call To Action buttons in the Detail View to delete the Electronic Attestation or update it if no longer valid.
 
 The flow is shown below with illustrative wireframes.

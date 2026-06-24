@@ -111,7 +111,7 @@ The *openid_credential_issuer* metadata contains the following claims.
         - **doctype**: REQUIRED only if ``format`` is set to "*mso_mdoc*". As defined in [:ref:`credential-data-model:mDoc-CBOR Credential Format`].
         - **credential_metadata**: REQUIRED. Object containing information relevant to the usage and display of issued Credentials. The parameters that MUST be included are
 
-          - **display**: Array of objects containing display language properties. The parameters that MUST be included are
+          - **display**: Array of objects containing display language properties. The following parameters are included:
 
                 - **name**: REQUIRED. String value of a display name for the Digital Credential.
                 - **locale**: REQUIRED. String value that identifies the language of this object represented as a language tag taken from values defined in *BCP47* :rfc:`5646`. There MUST be only one object for each language identifier.
