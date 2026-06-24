@@ -174,6 +174,9 @@
 <p>Le definizioni di <em>Utente</em>, <em>Servizio Fiduciario</em>, <em>Trust Model</em>, <em>Trusted List</em>, <em>Trust Framework</em>, <em>Attributo</em>, <em>Fornitore di Attestati Elettronici di Attributi</em> o <em>Fornitore di servizi fiduciari (TSP)</em>, <em>Person Identification Data (PID)</em>, <em>Lista di Revoca</em>, <em>Fornitore di Attestati Elettronici di Attributi qualificati</em> o <em>Fornitore di servizi fiduciari qualificati (QTSP)</em>, <em>Attestato Elettronico di Attributi (EAA)</em>, sono definite nel documento <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>.</p>
 <p>Di seguito le descrizioni di acronimi e definizioni, correlati al presente documento utili ad approfondimenti su tematiche inerenti l' IT-Wallet e i componenti con i quali interagisce.</p>
 <dl class="simple glossary">
+<dt id="term-Access-Certificate-Authority"><strong>Access Certificate Authority</strong><a class="headerlink" href="#term-Access-Certificate-Authority" title="Link to this term">¶</a></dt><dt id="term-Access-CA"><strong>Access CA</strong><a class="headerlink" href="#term-Access-CA" title="Link to this term">¶</a></dt><dd><p>Autorità di Certificazione responsabile dell'emissione dei Certificati di Accesso a PID Provider, Attestation Provider e Relying Party per interazioni sicure all'interno dell'ecosistema IT-Wallet.
+Non presente in ARF 2.7.3; specifico di IT-Wallet.</p>
+</dd>
 <dt id="term-Asset-Critici"><strong>Asset Critici</strong><a class="headerlink" href="#term-Asset-Critici" title="Link to this term">¶</a></dt><dd><p>Asset (ad esempio, le chiavi crittografiche) la cui perdita avrebbe gravi ripercussioni sulla Istanza del Wallet.
 Conforme con ARF 2.7.3.</p>
 </dd>
@@ -243,10 +246,16 @@ Conforme con ARF 2.7.3.</p>
 <dt id="term-Divulgazione-Selettiva"><strong>Divulgazione Selettiva</strong><a class="headerlink" href="#term-Divulgazione-Selettiva" title="Link to this term">¶</a></dt><dd><p>Funzionalità che consente all'Utente di inviare un sottoinsieme di dati contenuti in Attestati Elettronici.
 Conforme con ARF 2.7.3.</p>
 </dd>
+<dt id="term-eIDAS-Trusted-List"><strong>eIDAS Trusted List</strong><a class="headerlink" href="#term-eIDAS-Trusted-List" title="Link to this term">¶</a></dt><dd><p>Archivio di informazioni sulle entità autorevoli e sul loro stato utilizzato nel quadro dei servizi fiduciari eIDAS (es. Trusted List dei PID Provider, Trusted List dei Wallet Provider, List of Trusted List che punta alle Trusted List dei QTSP e dei Fornitori di EAA degli Stati Membri, Trusted List delle CA dei Certificati di Accesso e dei Fornitori di Certificati di Registrazione).
+Non presente in ARF 2.7.3; specifico di IT-Wallet.</p>
+</dd>
 <dt id="term-Enti-Nazionali-di-Accreditamento"><strong>Enti Nazionali di Accreditamento</strong><a class="headerlink" href="#term-Enti-Nazionali-di-Accreditamento" title="Link to this term">¶</a></dt><dd><p>Organismi che svolgono l'attività di accreditamento su delega di uno Stato membro.
 Conforme con ARF 2.7.3.</p>
 </dd>
 <dt id="term-Entita-Organizzativa"><strong>Entità Organizzativa</strong><a class="headerlink" href="#term-Entita-Organizzativa" title="Link to this term">¶</a></dt><dd><p>Persona giuridica (pubblica o privata) riconosciuta per svolgere un ruolo nell'ecosistema IT-Wallet.
+Non presente in ARF 2.7.3; specifico di IT-Wallet.</p>
+</dd>
+<dt id="term-Federation-Registry"><strong>Federation Registry</strong><a class="headerlink" href="#term-Federation-Registry" title="Link to this term">¶</a></dt><dd><p>Componente di registro dell'Infrastruttura del Registro IT-Wallet che mantiene l'elenco autorevole delle entità fidate che partecipano alla federazione, inclusi i relativi metadati di federazione, gli endpoint e le chiavi pubbliche.
 Non presente in ARF 2.7.3; specifico di IT-Wallet.</p>
 </dd>
 <dt id="term-Fonte-Autentica"><strong>Fonte Autentica</strong><a class="headerlink" href="#term-Fonte-Autentica" title="Link to this term">¶</a></dt><dd><p>Soggetto pubblico o privato responsabile di un archivio o sistema che è considerato fonte primaria per gli Attributi o per i Dati di Identificazione Personale.
@@ -263,6 +272,9 @@ Conforme con ARF 2.7.3.</p>
 </dd>
 <dt id="term-Fornitore-di-Attestati-Elettronici-di-Dati-di-Identificazione-Personale"><strong>Fornitore di Attestati Elettronici di Dati di Identificazione Personale</strong><a class="headerlink" href="#term-Fornitore-di-Attestati-Elettronici-di-Dati-di-Identificazione-Personale" title="Link to this term">¶</a></dt><dt id="term-PID-Provider"><strong>PID Provider</strong><a class="headerlink" href="#term-PID-Provider" title="Link to this term">¶</a></dt><dd><p>Fornitore di Attestato Elettronico responsabile dell'emissione/revoca del PID, che garantisce l'associazione crittografica con la Wallet Unit.
 Conforme con ARF 2.7.3.</p>
+</dd>
+<dt id="term-Fornitore-di-Certificati-di-Registrazione"><strong>Fornitore di Certificati di Registrazione</strong><a class="headerlink" href="#term-Fornitore-di-Certificati-di-Registrazione" title="Link to this term">¶</a></dt><dt id="term-Provider-of-Registration-Certificates"><strong>Provider of Registration Certificates</strong><a class="headerlink" href="#term-Provider-of-Registration-Certificates" title="Link to this term">¶</a></dt><dt id="term-Reg.-Cert.-Provider"><strong>Reg. Cert. Provider</strong><a class="headerlink" href="#term-Reg.-Cert.-Provider" title="Link to this term">¶</a></dt><dd><p>Entità Organizzativa responsabile dell'emissione dei Certificati di Registrazione che descrivono lo stato di registrazione e i diritti di PID Provider, Attestation Provider e Relying Party.
+Non presente in ARF 2.7.3; specifico di IT-Wallet.</p>
 </dd>
 <dt id="term-Fornitore-di-Servizi"><strong>Fornitore di Servizi</strong><a class="headerlink" href="#term-Fornitore-di-Servizi" title="Link to this term">¶</a></dt><dt id="term-Relying-Party"><strong>Relying Party</strong><a class="headerlink" href="#term-Relying-Party" title="Link to this term">¶</a></dt><dt id="term-WalletRelying-Party"><strong>Wallet‑Relying Party</strong><a class="headerlink" href="#term-WalletRelying-Party" title="Link to this term">¶</a></dt><dd><p>Entità che si affida all'identificazione elettronica o al Servizio Fiduciario di un'Istanza del Wallet.
 Conforme con ARF 2.7.3.</p>
@@ -299,6 +311,9 @@ Non presente in ARF 2.7.3.</p>
 <dt id="term-Livello-di-Garanzia"><strong>Livello di Garanzia</strong><a class="headerlink" href="#term-Livello-di-Garanzia" title="Link to this term">¶</a></dt><dd><p>Nel quadro dell'Unione per l'<strong>identificazione elettronica</strong>, i <strong>livelli di garanzia</strong> esprimono il grado di fiducia nella <strong>correttezza dell'identificazione</strong> delle persone fisiche o giuridiche e nella possibilità di <strong>fare affidamento sui mezzi di identificazione elettronica</strong>. Per gli <strong>schemi di identificazione elettronica notificati</strong>, <a class="reference external" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv%3AOJ.L_.2014.257.01.0073.01.ENG">EIDAS</a>, come modificato (incluso il Quadro europeo di identità digitale codificato dal <a class="reference external" href="https://eur-lex.europa.eu/eli/reg/2024/1183/oj">EU_2024_1183</a>), definisce i livelli <strong>basso (*low*)</strong>, <strong>sostanziale (*substantial*)</strong> e <strong>alto (*high*)</strong>.
 Nelle presenti Specifiche Tecniche il termine <strong>LoA</strong> si impiega anche per i <strong>requisiti minimi di garanzia</strong> riguardanti l'<strong>autenticazione dell'Utente</strong>, il contesto dell'<strong>Istanza del Wallet</strong> e l'<strong>affidabilità degli Attestati Elettronici</strong> (inclusi i metadati di catalogo come il livello minimo di garanzia), che DEVONO restare coerenti con la normativa dell'Unione, con l'attuazione nazionale degli schemi notificati e con le discipline sui <strong>Portafogli di Identità Digitale Europea</strong> e sui <strong>Person Identification Data (PID)</strong> (ivi incluso, ove pertinente, il Regolamento di esecuzione (UE) 2024/2979 della Commissione).
 Non presente con questa formulazione in ARF 2.7.3; allineato al quadro normativo eIDAS / EUDI Wallet.</p>
+</dd>
+<dt id="term-Member-State-Trusted-List-Provider"><strong>Member State Trusted List Provider</strong><a class="headerlink" href="#term-Member-State-Trusted-List-Provider" title="Link to this term">¶</a></dt><dt id="term-MS-TLP"><strong>MS TLP</strong><a class="headerlink" href="#term-MS-TLP" title="Link to this term">¶</a></dt><dd><p>Entità Organizzativa designata da uno Stato Membro per compilare, firmare e pubblicare le Trusted List nazionali (es. Trusted List dei QTSP, Trusted List dei Fornitori di EAA) e per notificarne la posizione alla Commissione Europea.
+Non presente in ARF 2.7.3; specifico di IT-Wallet.</p>
 </dd>
 <dt id="term-Metadata"><strong>Metadata</strong><a class="headerlink" href="#term-Metadata" title="Link to this term">¶</a></dt><dd><p>Artefatto digitale contenente informazioni su un'entità organizzativa (endpoint, chiavi pubbliche, ecc.).
 Non presente in ARF 2.7.3.</p>
@@ -337,6 +352,9 @@ Conforme con ARF 2.7.3.</p>
 Conforme con ARF 2.7.3.</p>
 </dd>
 <dt id="term-Registro-del-Sistema-IT-Wallet"><strong>Registro del Sistema IT-Wallet</strong><a class="headerlink" href="#term-Registro-del-Sistema-IT-Wallet" title="Link to this term">¶</a></dt><dd><p>Registro delle entità partecipanti al Sistema IT-Wallet.
+Non presente in ARF 2.7.3; specifico di IT-Wallet.</p>
+</dd>
+<dt id="term-Registro-delle-Fonti-Autentiche"><strong>Registro delle Fonti Autentiche</strong><a class="headerlink" href="#term-Registro-delle-Fonti-Autentiche" title="Link to this term">¶</a></dt><dt id="term-Authentic-Source-Registry"><strong>Authentic Source Registry</strong><a class="headerlink" href="#term-Authentic-Source-Registry" title="Link to this term">¶</a></dt><dt id="term-AS-Registry"><strong>AS Registry</strong><a class="headerlink" href="#term-AS-Registry" title="Link to this term">¶</a></dt><dd><p>Registro contenente le Fonti Autentiche, le loro capacità dichiarate e i claim disponibili, utilizzato dai Fornitori di Attestati Elettronici per individuare e integrare fornitori di dati autorevoli.
 Non presente in ARF 2.7.3; specifico di IT-Wallet.</p>
 </dd>
 <dt id="term-Relazione-di-Fiducia"><strong>Relazione di Fiducia</strong><a class="headerlink" href="#term-Relazione-di-Fiducia" title="Link to this term">¶</a></dt><dt id="term-Trust-Relationship"><strong>Trust Relationship</strong><a class="headerlink" href="#term-Trust-Relationship" title="Link to this term">¶</a></dt><dd><p>Affidabilità tra Entità Organizzative verificata in seguito alla Trust Evaluation.

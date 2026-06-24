@@ -275,10 +275,36 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Certificato di autenticazione e convalida della Wallet Relying Party.
       Conforme con ARF 2.7.3.
 
+    **Access Certificate Authority**
+    **Access CA**
+      Autorità di Certificazione responsabile dell'emissione dei Certificati di Accesso a PID Provider, Attestation Provider e Relying Party per interazioni sicure all'interno dell'ecosistema IT-Wallet.
+      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+
     **Certificato di Registrazione**
     **Registration Certificate**
       Oggetto che indica gli Attributi che la Relying Party ha registrato al fine di richiederli agli Utenti.
       Conforme con ARF 2.7.3.
+
+    **Fornitore di Certificati di Registrazione**
+    **Provider of Registration Certificates**
+    **Reg. Cert. Provider**
+      Entità Organizzativa responsabile dell'emissione dei Certificati di Registrazione che descrivono lo stato di registrazione e i diritti di PID Provider, Attestation Provider e Relying Party.
+      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+
+    **Federation Registry**
+      Componente di registro dell'Infrastruttura del Registro IT-Wallet che mantiene l'elenco autorevole delle entità fidate che partecipano alla federazione, inclusi i relativi metadati di federazione, gli endpoint e le chiavi pubbliche.
+      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+
+    **Registro delle Fonti Autentiche**
+    **Authentic Source Registry**
+    **AS Registry**
+      Registro contenente le Fonti Autentiche, le loro capacità dichiarate e i claim disponibili, utilizzato dai Fornitori di Attestati Elettronici per individuare e integrare fornitori di dati autorevoli.
+      Non presente in ARF 2.7.3; specifico di IT-Wallet.
+
+    **Member State Trusted List Provider**
+    **MS TLP**
+      Entità Organizzativa designata da uno Stato Membro per compilare, firmare e pubblicare le Trusted List nazionali (es. Trusted List dei QTSP, Trusted List dei Fornitori di EAA) e per notificarne la posizione alla Commissione Europea.
+      Non presente in ARF 2.7.3; specifico di IT-Wallet.
 
     **Certificate Signing Request**
       Richiesta inviata a una CA contenente la chiave pubblica e le informazioni identificative utili all'emissione di un certificato digitale.
@@ -287,6 +313,10 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
     **Trusted List**
       Archivio di informazioni sugli enti autoritativi e sul loro stato.
       Conforme con ARF 2.7.3.
+
+    **eIDAS Trusted List**
+      Archivio di informazioni sulle entità autorevoli e sul loro stato utilizzato nel quadro dei servizi fiduciari eIDAS (es. Trusted List dei PID Provider, Trusted List dei Wallet Provider, List of Trusted List che punta alle Trusted List dei QTSP e dei Fornitori di EAA degli Stati Membri, Trusted List delle CA dei Certificati di Accesso e dei Fornitori di Certificati di Registrazione).
+      Non presente in ARF 2.7.3; specifico di IT-Wallet.
 
     **Utente**
       Persona fisica o giuridica che utilizza servizi fiduciari o mezzi di identificazione elettronica.

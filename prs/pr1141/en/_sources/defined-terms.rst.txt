@@ -274,7 +274,7 @@ Below is the description of acronyms and definitions which are useful for furthe
     **Access Certificate Authority**
     **Access CA**
       Certificate Authority responsible for issuing Access Certificates to PID Providers, Attestation Providers, and Relying Parties for secure interactions within the IT-Wallet ecosystem.
-      Aligned with ARF 2.7.3; terminology specialized for IT-Wallet.
+      Not present in ARF 2.7.3; specific to IT-Wallet.
 
     **Registration Certificate**
       Data object indicating the attributes the Relying Party has registered to request from Users.
@@ -284,7 +284,7 @@ Below is the description of acronyms and definitions which are useful for furthe
     **Provider of Registration Certificates**
     **Reg. Cert. Provider**
       Organizational Entity responsible for issuing Registration Certificates that describe the registration status and entitlements of PID Providers, Attestation Providers, and Relying Parties.
-      Aligned with ARF 2.7.3; terminology specialized for IT-Wallet.
+      Not present in ARF 2.7.3; specific to IT-Wallet.
 
     **Federation Registry**
       Registry component of the IT-Wallet Registry Infrastructure that maintains the authoritative list of trusted entities participating in the federation, including their federation metadata, endpoints, and public keys.
@@ -298,15 +298,19 @@ Below is the description of acronyms and definitions which are useful for furthe
     **Member State Trusted List Provider**
     **MS TLP**
       Organizational Entity designated by a Member State to compile, sign, and publish national Trusted Lists (e.g., QTSP Trusted Lists, EAA Provider Trusted Lists) and to notify their locations to the European Commission.
-      Terminology specialized for IT-Wallet.
+      Not present in ARF 2.7.3; specific to IT-Wallet.
 
     **Certificate Signing Request**
       Request sent to a CA containing the public key and identifying information for a digital certificate.
       Not present in ARF 2.7.3.
 
+    **Trusted List**
+      Repository of information about authoritative entities and their status.
+      Aligned with ARF 2.7.3.
+
     **eIDAS Trusted List**
       Repository of information about authoritative entities and their status used in the eIDAS trust services framework (e.g., PID Provider Trusted Lists, Wallet Provider Trusted Lists, List of Trusted List pointing to Member States QTSP Trusted Lists and Member States EAA Provider Trusted Lists, Access Certificates CA and Registration Certificates Provider Trusted Lists).
-      Terminology specialized for IT-Wallet.
+      Not present in ARF 2.7.3; specific to IT-Wallet.
 
     **User**
       Natural or legal person using trust services or electronic identification means.
