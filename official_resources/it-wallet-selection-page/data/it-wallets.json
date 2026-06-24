@@ -2,7 +2,7 @@
   "immediate_subordinate_entities": [
     {
       "id": "https://io.pagopa.it",
-      "logo_uri": "it-wallet/io_logo.svg",
+      "logo_uri": "it-wallet/io_logo.svg?v=io-official",
       "name": "IO, l'app dei servizi pubblici",
       "description": "L'app dei servizi pubblici italiani per ricevere notifiche, pagamenti e documenti dalla Pubblica Amministrazione.",
       "uri": "../it-wallet-presentation-qr-code-page/qr-code-page.html",
