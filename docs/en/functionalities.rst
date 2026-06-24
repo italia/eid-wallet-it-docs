@@ -547,6 +547,8 @@ The presentation process allows the User to access a service or demonstrate owne
 
 - **Remote Presentation**: the User presents the PID and/or EAA data through the Wallet Instance, to a Relying Party configured for online verification, for instance, to Authenticate and access the services offered.
 
+Regardless of the type of presentation, the Wallet Provider MUST allow the Wallet Instance to inform the User of the identity of the Relying Party. In case of a Relying Party Intermediary, the User MUST be informed of the intermediary’s involvement during the presentation request phase. The identity of the primary Relying Party MUST always be visible to the User and MUST NOT be replaced by that of the Relying Party Intermediary.
+
 Proximity Presentation
 ^^^^^^^^^^^^^^^^^^^^^^^
 
