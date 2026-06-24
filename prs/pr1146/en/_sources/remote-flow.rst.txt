@@ -119,6 +119,8 @@ The details of each step shown in the previous picture are described below.
 
     https://wallet-solution.example.org/authorization?client_id=openid_federation%3Ahttps%3A%2F%2Frelying-party.example.org&request_uri=https%3A%2F%2Frelying-party.example.org&request_uri_method=post
 
+  An official, self-contained HTML template for this **Cross Device** QR code page—including header, footer, accessibility, multilingual copy, and a configurable demonstrative payload—is provided in the :ref:`official-resources:HTML Components` section (**IT-Wallet Presentation QR Code Page**). It is linked from the wallet cards on the **IT-Wallet Selection Page** in the same section.
+
   Conversely, in the **Same Device Flow**, the Relying Party uses an HTTP response redirect (with status code set to 302) or an html page with an href button, containing the URL providing the same information as in the Cross-Device Flow (:ref:`WP_076–077 <wallet-credential-presentation-testcases>`). 
   Below is a non-normative example with Request Object by reference:
 

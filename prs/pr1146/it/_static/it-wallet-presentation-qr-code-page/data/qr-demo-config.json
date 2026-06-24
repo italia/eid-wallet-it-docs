@@ -5,7 +5,7 @@
   "request_uri_method": "post",
   "qrcode_size": 250,
   "qrcode_color": "#000000",
-  "qrcode_logo_path": "img/IT-Wallet-Logo-Primary-BlueItalia.svg",
+  "qrcode_logo_path": "../shared-ui/img/IT-Wallet-Logo-Primary-BlueItalia.svg",
   "qrcode_expiration_time": 120,
   "selection_page_url": "../it-wallet-selection-page/it-wallet.html"
 }

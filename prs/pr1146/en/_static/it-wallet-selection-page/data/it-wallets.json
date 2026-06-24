@@ -10,7 +10,7 @@
     },
     {
       "id": "https://wallet-demo.example.org",
-      "logo_uri": "img/wallet-placeholder.svg",
+      "logo_uri": "../shared-ui/img/wallet-placeholder.svg",
       "name": "Wallet Demo",
       "description": "Esempio di wallet digitale per l'autenticazione e la gestione delle credenziali verificate.",
       "uri": "../it-wallet-presentation-qr-code-page/qr-code-page.html",
@@ -18,7 +18,7 @@
     },
     {
       "id": "https://example-wallet.net",
-      "logo_uri": "img/wallet-placeholder.svg",
+      "logo_uri": "../shared-ui/img/wallet-placeholder.svg",
       "name": "Nome Wallet su 2 righe",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.",
       "uri": "../it-wallet-presentation-qr-code-page/qr-code-page.html",
@@ -26,7 +26,7 @@
     },
     {
       "id": "https://lorem-wallet-1.example",
-      "logo_uri": "img/wallet-placeholder.svg",
+      "logo_uri": "../shared-ui/img/wallet-placeholder.svg",
       "name": "Lorem Wallet One",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       "uri": "../it-wallet-presentation-qr-code-page/qr-code-page.html",
@@ -34,7 +34,7 @@
     },
     {
       "id": "https://lorem-wallet-2.example",
-      "logo_uri": "img/wallet-placeholder.svg",
+      "logo_uri": "../shared-ui/img/wallet-placeholder.svg",
       "name": "Lorem Wallet Two",
       "description": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       "uri": "../it-wallet-presentation-qr-code-page/qr-code-page.html",
@@ -42,7 +42,7 @@
     },
     {
       "id": "https://lorem-wallet-3.example",
-      "logo_uri": "img/wallet-placeholder.svg",
+      "logo_uri": "../shared-ui/img/wallet-placeholder.svg",
       "name": "Lorem Wallet Three",
       "description": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
       "uri": "../it-wallet-presentation-qr-code-page/qr-code-page.html",
@@ -50,7 +50,7 @@
     },
     {
       "id": "https://lorem-wallet-4.example",
-      "logo_uri": "img/wallet-placeholder.svg",
+      "logo_uri": "../shared-ui/img/wallet-placeholder.svg",
       "name": "Lorem Wallet Four",
       "description": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.",
       "uri": "../it-wallet-presentation-qr-code-page/qr-code-page.html",

@@ -90,7 +90,7 @@
     "alt1": {
       "name": "{Alternativa 1}",
       "logo_text": "Entra con {Alternativa 1}",
-      "logo": "svg/sprites.svg#it-code-circle",
+      "logo": "../shared-ui/svg/sprites.svg#it-code-circle",
       "login_url": "CAMBIAMI",
       "learn_more_descr": "{Alternativa 1} è un sistema di identità federata che ti permette di accedere ai servizi che supportano l’autenticazione con {Alternativa 1}."
     }

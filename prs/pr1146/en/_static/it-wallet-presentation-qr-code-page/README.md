@@ -2,7 +2,7 @@
 
 Pagina ufficiale statica per il **flusso Cross Device** della presentazione remota (OpenID4VP), mostrata dopo la selezione del wallet in `it-wallet-selection-page`.
 
-L'export è **autoconsistente** e pensato per anteprima, review UX e integrazione documentale: non richiede backend SATOSA/pyeduwi. Il countdown del timer è simulato lato client; non è presente polling sullo `status` endpoint.
+L'export è pensato per anteprima, review UX e integrazione documentale: non richiede backend SATOSA/pyeduwi. Il countdown del timer è simulato lato client; non è presente polling sullo `status` endpoint. Gli asset UI comuni (CSS, JS, font, sprite, favicon, loghi) sono in `../shared-ui/`.
 
 ## Collegamento dalla Selection Page
 
@@ -70,8 +70,9 @@ it-wallet-presentation-qr-code-page/
 ├── qr-code-page.html
 ├── data/qr-demo-config.json
 ├── locales/qr-it.json, qr-en.json
-├── js/qr-code-page.js, header-lang-dropdown.js, qrcode/
-├── css/, img/, svg/, spid/, bootstrap-italia/
+└── js/qr-code-page.js
+
+../shared-ui/                       # CSS, JS comuni, web component QR, loghi (vedi README)
 ```
 
 ## Riferimenti
