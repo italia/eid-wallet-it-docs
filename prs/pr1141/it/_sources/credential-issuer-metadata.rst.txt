@@ -45,12 +45,12 @@ I Metadata *oauth_authorization_server* DEVONO contenere i seguenti parametri.
     - Array JSON contenente un elenco dei valori di *grant type* supportati. L'*authorization server* DEVE supportare *authorization_code*.
   * - **token_endpoint_auth_methods_supported**
     - Array JSON contenente un elenco dei metodi di *client authentication* supportati. Il *token endpoint* DEVE supportare *attest_jwt_client_auth* come definito in `OAUTH-ATTESTATION-CLIENT-AUTH`_.
-  * - **token_endpoint_auth_signing_alg_values_supported**
-    - Array JSON contenente un elenco degli algoritmi di firma ("valori *alg*") supportati dal *token endpoint* per la firma sul JWT utilizzato per autenticare il client al *token endpoint*. Vedi :rfc:`8414#section-2`.
   * - **client_attestation_signing_alg_values_supported**
     - Array JSON con l’elenco dei valori JWS "alg" supportati per la Wallet Attestation (``oauth-client-attestation+jwt``). I valori DEVONO provenire dalla Sezione :ref:`algorithms:Algoritmi Crittografici` e NON DEVONO includere ``none`` né algoritmi simmetrici (MAC).
   * - **client_attestation_pop_signing_alg_values_supported**
     - Array JSON con l’elenco dei valori JWS "alg" supportati per la Proof-of-Possession della Wallet Attestation (``oauth-client-attestation-pop+jwt``). I valori DEVONO provenire dalla Sezione :ref:`algorithms:Algoritmi Crittografici` e NON DEVONO includere ``none`` né algoritmi simmetrici (MAC).
+  * - **token_endpoint_auth_signing_alg_values_supported**
+    - Array JSON contenente un elenco degli algoritmi di firma ("valori *alg*") supportati dal *token endpoint* per la firma sul JWT utilizzato per autenticare il client al *token endpoint*. Vedi :rfc:`8414#section-2`.
   * - **require_signed_request_object**
     - Booleano. DEVE essere impostato a `true` per indicare che la richiesta di autorizzazione è protetta usando un Request Object firmato [:rfc:`9101`].
   * - **request_object_signing_alg_values_supported**

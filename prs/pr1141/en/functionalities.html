@@ -527,6 +527,7 @@
 <li><p><strong>Proximity Presentation</strong>: the User presents the PID and/or EAA data through the Wallet Instance, directly to a Verifier or to a device designated for in-person verification.</p></li>
 <li><p><strong>Remote Presentation</strong>: the User presents the PID and/or EAA data through the Wallet Instance, to a Relying Party configured for online verification, for instance, to Authenticate and access the services offered.</p></li>
 </ul>
+<p>Regardless of the type of presentation, the Wallet Provider MUST allow the Wallet Instance to inform the User of the identity of the Relying Party. In case of a Relying Party Intermediary, the User MUST be informed of the intermediary’s involvement during the presentation request phase. The identity of the primary Relying Party MUST always be visible to the User and MUST NOT be replaced by that of the Relying Party Intermediary.</p>
 <section id="proximity-presentation">
 <h3><span class="section-number">5.5.1. </span>Proximity Presentation<a class="headerlink" href="#proximity-presentation" title="Link to this heading">¶</a></h3>
 <p>Proximity presentation allows the User to present the PID and/or EAA data via their Wallet Instance, using one of two methods:</p>
@@ -927,8 +928,8 @@ For further information on the Authentication button refer to the Brand Manual, 
 <p>Below are the functional requirements supporting the User Experience regarding the update of the Electronic Attestation that the Electronic Attestation Provider MUST guarantee through the Wallet Solution:</p>
 <ul class="simple">
 <li><p>The User sees in the Electronic Attestation Preview View that its status is not valid;</p></li>
-<li><p>The User sees a message in the Detail View informing them of the new status of the Electronic Attestation and CAN find out more information;</p></li>
-<li><p>The User sees any additional information on the requirements and/or limitations relating to the status of the Electronic Attestation of Attributes and CAN close the message or proceed with any action requested by the Electronic Attestation Provider;</p></li>
+<li><p>The User sees a message in the Detail View informing them of the new status of the Electronic Attestation and MAY find out more information;</p></li>
+<li><p>The User sees any additional information on the requirements and/or limitations relating to the status of the Electronic Attestation of Attributes and MAY close the message or proceed with any action requested by the Electronic Attestation Provider;</p></li>
 <li><p>The User sees specific Call To Action buttons in the Detail View to delete the Electronic Attestation or update it if no longer valid.</p></li>
 </ul>
 <p>The flow is shown below with illustrative wireframes.</p>
