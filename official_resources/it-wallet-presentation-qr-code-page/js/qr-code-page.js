@@ -91,6 +91,23 @@ function updateTimerDisplay() {
   }
 }
 
+function setupBackLink() {
+  const backLink = document.getElementById('back-link');
+  if (!backLink) return;
+  const params = new URLSearchParams(window.location.search);
+  const search = params.toString();
+  const selectionUrl = demoConfig.selection_page_url || '../it-wallet-selection-page/it-wallet.html';
+  backLink.href = search ? `${selectionUrl}?${search}` : selectionUrl;
+}
+
+function updateBackLink(t) {
+  const backText = t('backLabel', { defaultValue: 'Torna indietro' });
+  const backLink = document.getElementById('back-link');
+  if (backLink) backLink.setAttribute('aria-label', backText);
+  const backLabel = document.querySelector('.it-wallet-back-label');
+  if (backLabel) backLabel.textContent = backText;
+}
+
 function updateShellTexts(t) {
   const regionEl = document.getElementById('header-region-name');
   if (regionEl) regionEl.textContent = t('header.region_name');
@@ -136,13 +153,15 @@ function updateShellTexts(t) {
 
   const payloadSummary = document.getElementById('qr-payload-summary');
   if (payloadSummary) payloadSummary.textContent = t('demoPayloadLabel');
+
+  updateBackLink(t);
 }
 
 function updateTexts(t) {
   updateShellTexts(t);
 
   const title = document.getElementById('content-title');
-  if (title) title.innerHTML = `<b>${t('contentTitle')}</b>`;
+  if (title) title.textContent = t('contentTitle');
 
   const info = document.getElementById('content-qrcode-info-text');
   if (info) {
@@ -151,13 +170,6 @@ function updateTexts(t) {
 
   const support = document.getElementById('content-text');
   if (support) support.innerHTML = t('supportText');
-
-  const back = document.getElementById('btn-back');
-  if (back) {
-    back.textContent = t('backLabel');
-    back.setAttribute('href', demoConfig.selection_page_url);
-    back.setAttribute('aria-label', t('backLabel'));
-  }
 }
 
 function stopCountdown() {
@@ -190,6 +202,7 @@ function showExpiredState(t) {
   const actions = document.getElementById('content-function');
   if (!actions) return;
 
+  actions.hidden = false;
   actions.innerHTML = `
     <button id="qr-reload-btn" type="button" class="btn btn-primary">
       ${t('qrCodeReloadLabel')}
@@ -223,7 +236,7 @@ function initI18n() {
       lng: initialLang,
       fallbackLng: 'it',
       backend: {
-        loadPath: `${getBasePath()}locales/qr-{{lng}}.json`,
+        loadPath: `${getBasePath()}locales/qr-{{lng}}.json?v=wallet-ui-qr-20260624`,
       },
     })
     .then((t) => {
@@ -246,5 +259,6 @@ function initI18n() {
 
 document.addEventListener('DOMContentLoaded', async () => {
   await loadDemoConfig();
+  setupBackLink();
   initI18n();
 });

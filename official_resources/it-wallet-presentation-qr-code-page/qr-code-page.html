@@ -123,11 +123,21 @@
     </div>
   </header>
 
-  <main id="main-content" aria-labelledby="content-title">
-    <div class="container py-5 text-center">
-      <h1 id="content-title" class="h2 mb-4"></h1>
+  <main id="main-content" class="container py-5 it-wallet-page text-center" aria-labelledby="content-title">
+    <div class="it-wallet-title-row">
+      <div class="it-wallet-title-slot it-wallet-title-slot--start">
+        <a href="#" id="back-link" class="it-wallet-back-link" aria-label="Torna alla pagina precedente">
+          <svg class="icon icon-sm me-1" aria-hidden="true">
+            <use href="../shared-ui/svg/sprites.svg#it-arrow-left"></use>
+          </svg>
+          <span class="it-wallet-back-label">Torna indietro</span>
+        </a>
+      </div>
+      <h1 class="it-wallet-title-heading mb-0" id="content-title"></h1>
+      <div class="it-wallet-title-slot it-wallet-title-slot--end" aria-hidden="true"></div>
+    </div>
 
-      <p id="content-text" class="text-secondary small mb-4"></p>
+    <p id="content-text" class="text-secondary small mb-4"></p>
 
       <div id="content-qrcode" class="d-flex justify-content-center mb-4">
         <div id="content-qrcode-payload">
@@ -151,18 +161,11 @@
         <code id="qr-payload-preview"></code>
       </details>
 
-      <div id="content-function" class="mt-3">
-        <a id="btn-back"
-           class="btn btn-outline-primary"
-           href="../it-wallet-selection-page/it-wallet.html">
-          Indietro
-        </a>
-      </div>
+      <div id="content-function" class="mt-3" hidden></div>
 
       <noscript>
         <p id="noscript-message">Per usare la pagina del codice QR è necessario abilitare JavaScript.</p>
       </noscript>
-    </div>
   </main>
 
   <footer id="page-footer" role="contentinfo" tabindex="-1">

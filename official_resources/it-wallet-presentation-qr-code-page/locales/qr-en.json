@@ -22,7 +22,7 @@
   "contentTitle": "Scan the QR code",
   "qrCodeValidInfo": "The QR code is valid for <b id=\"timer\">{{seconds}}</b> seconds",
   "supportText": "Use the <b>IT-Wallet</b> app feature or your smartphone camera",
-  "backLabel": "Back",
+  "backLabel": "Go back",
   "qrCodeExpiredInfo": "The QR code has expired, reload the page to generate a new one.",
   "qrCodeReloadLabel": "Reload",
   "appTitle": "Continue on the IT-Wallet app",
