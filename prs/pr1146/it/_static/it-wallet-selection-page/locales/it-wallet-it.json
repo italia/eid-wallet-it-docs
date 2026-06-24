@@ -18,7 +18,7 @@
   },
   "search": {
     "label": "Cerca wallet per nome",
-    "placeholder": "Nome",
+    "placeholder": "Cerca per nome",
     "clear_label": "Reset ricerca",
     "button": "Cerca",
     "empty_error": "Inserisci un termine di ricerca",

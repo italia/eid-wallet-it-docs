@@ -527,6 +527,7 @@
 <li><p><strong>Proximity Presentation</strong>: the User presents the PID and/or EAA data through the Wallet Instance, directly to a Verifier or to a device designated for in-person verification.</p></li>
 <li><p><strong>Remote Presentation</strong>: the User presents the PID and/or EAA data through the Wallet Instance, to a Relying Party configured for online verification, for instance, to Authenticate and access the services offered.</p></li>
 </ul>
+<p>Regardless of the type of presentation, the Wallet Provider MUST allow the Wallet Instance to inform the User of the identity of the Relying Party. In case of a Relying Party Intermediary, the User MUST be informed of the intermediary’s involvement during the presentation request phase. The identity of the primary Relying Party MUST always be visible to the User and MUST NOT be replaced by that of the Relying Party Intermediary.</p>
 <section id="proximity-presentation">
 <h3><span class="section-number">5.5.1. </span>Proximity Presentation<a class="headerlink" href="#proximity-presentation" title="Link to this heading">¶</a></h3>
 <p>Proximity presentation allows the User to present the PID and/or EAA data via their Wallet Instance, using one of two methods:</p>

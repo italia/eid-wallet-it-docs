@@ -2,7 +2,7 @@
   "immediate_subordinate_entities": [
     {
       "id": "https://io.pagopa.it",
-      "logo_uri": "it-wallet/io_logo.svg",
+      "logo_uri": "it-wallet/io_logo.svg?v=io-official",
       "name": "IO, l'app dei servizi pubblici",
       "description": "L'app dei servizi pubblici italiani per ricevere notifiche, pagamenti e documenti dalla Pubblica Amministrazione.",
       "uri": "../it-wallet-presentation-qr-code-page/qr-code-page.html",
@@ -19,7 +19,7 @@
     {
       "id": "https://example-wallet.net",
       "logo_uri": "../shared-ui/img/wallet-placeholder.svg",
-      "name": "Nome Wallet su 2 righe",
+      "name": "Nome wallet five",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.",
       "uri": "../it-wallet-presentation-qr-code-page/qr-code-page.html",
       "how_to_get_url": "#"

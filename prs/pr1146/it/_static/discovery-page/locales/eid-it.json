@@ -35,7 +35,9 @@
       "logo_text": "Entra con IT-Wallet",
       "logo": "it-wallet/wallet_icon.svg",
       "login_url": "../it-wallet-selection-page/it-wallet.html",
-      "learn_more_descr": "IT-Wallet è il sistema italiano di portafogli digitali che ti permette di autenticarti online e di accedere a servizi pubblici e privati in modo sicuro e veloce, utilizzando i dati, i documenti e le qualifiche che puoi ottenere in digitale in uno dei portafogli che ne fanno parte."
+      "learn_more_descr": "IT-Wallet è il sistema italiano di portafogli digitali che ti permette di autenticarti online e di accedere a servizi pubblici e privati in modo sicuro e veloce, utilizzando i dati, i documenti e le qualifiche che puoi ottenere in digitale in uno dei portafogli che ne fanno parte.",
+      "learn_more_link": "https://wallet.gov.it",
+      "learn_more_label": "Scopri come ottenerlo"
     },
     "cie": {
       "name": "CIE SAML2",

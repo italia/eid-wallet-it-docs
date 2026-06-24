@@ -541,6 +541,8 @@ Il processo di presentazione permette all'Utente di accedere a un servizio oppur
 
 - **Presentazione da remoto**: l'Utente presenta il PID e/o un set di Attributi contenuti in uno o più Attestati Elettronici tramite l'Istanza del Wallet ad un Verificatore di Attestati Elettronici predisposto per la verifica online al fine, ad esempio, di Autenticarsi e fruire dei servizi erogati. 
 
+Al di là del tipo di presentazione, il Fornitore di Wallet DEVE garantire che l’Istanza di Wallet informi l’Utente circa l’identità del Verificatore di Attestati Elettronici. In presenza di un Intermediario di Relying Party, il Fornitore di Wallet DEVE renderlo visibile all’Utente durante la fase di richiesta di presentazione. L'identità del Verificatore di Attestati Elettronici primario DEVE in ogni caso rimanere visibile all'Utente e NON DEVE essere sostituita da quella dell'Intermediario.
+
 Presentazione in prossimità 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
