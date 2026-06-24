@@ -7,7 +7,6 @@ Credential Issuer Test Matrix
 This section provides the set of test cases designed for technical implementers and development teams responsible for creating and deploying Credential Issuer solutions. It is also intended for assessment bodies inspecting and validating the implementations of Credential Issuer solutions.
 
 
-
 .. list-table::
   :class: longtable
   :widths: 15 15 35 35
@@ -945,4 +944,5 @@ This section provides the set of test cases designed for technical implementers 
     - Data Model and lifecycle, Interoperability
     - Credentials Array Element Information
     - Each element of the *Credentials* array correctly contains all the information defined in the First-level Fields :ref:`table <table_catalog_parameters_first_level>`.
+
 

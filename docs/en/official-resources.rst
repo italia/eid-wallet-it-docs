@@ -42,3 +42,5 @@ Brand Manual
 ^^^^^^^^^^^^
 
 The Brand Manual containing complete indications for the use of graphic assets and the visual identity of the IT-Wallet System will soon be available at the :ref:`official website <official-resources:Official Website>`.
+
+

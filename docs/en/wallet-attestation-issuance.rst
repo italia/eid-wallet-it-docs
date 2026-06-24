@@ -27,7 +27,7 @@ This section describes how the Wallet Provider issues a Wallet Unit Attestations
   2. Generate one or batch of asymmetric credential key pair(s) to be attested in Wallet Unit Attestation (``key_pub_1``, ``key_priv_1``, ..., ``key_pub_n``, ``key_priv_n``).
   3. Verify the Wallet Provider's federation membership and retrieve its metadata (:ref:`WP_023 <wallet-instance-testcases>`).
 
-**Steps 4-6 (Nonce Retrieval)**: The Wallet Instance requests a ``nonce`` value from the :ref:`wallet-provider-endpoint:Wallet Solution Nonce Endpoint` of the Wallet Provider Backend (:ref:`WP_140b <wallet-instance-optional-testcases>`). The ``nonce`` is required to be unpredictable and serves as the main defense against replay attacks. 
+**Steps 4-6 (Nonce Retrieval)**: The Wallet Instance requests a ``nonce`` value from the :ref:`wallet-provider-endpoint:Wallet Solution Nonce Endpoint` of the Wallet Provider Backend (:ref:`WP_140b <wallet-instance-optional-testcases>`). The ``nonce`` is required to be unpredictable and serves as the main defense against replay attacks.
 
 The ``nonce`` MUST ensure single-use within a predetermined time frame.
 
@@ -64,13 +64,13 @@ Below is a non-normative example of the ``client_data`` JSON object.
 
 *  requests the Key Attestation API to create an ``key_attestation`` value for each ``client_data_hash`` per each ``key_pub``.
 *  receives a signed ``key_attestation`` value from the Key Attestation API, authenticated by the OEM.
-*  generate ``keys_to_attest`` value by signing the ``key_attestation`` using the private key of the initially generated credential key pair (``priv_key``). 
+*  generate ``keys_to_attest`` value by signing the ``key_attestation`` using the private key of the initially generated credential key pair (``priv_key``).
 
 **Steps 16-19**: The Wallet Instance:
 
 *  requests the Device Integrity Service to create an ``integrity_assertion`` value for each ``client_data_hash`` per each ``key_pub``.
 *  receives a signed ``integrity_assertion`` value from the Device Integrity Service, authenticated by the OEM.
-*  generate ``keys_to_attest`` value by signing the ``integrity_assertion`` that is obtained for the Wallet Unit Attestation using the private key of the initially generated credential key pair (``priv_key``). 
+*  generate ``keys_to_attest`` value by signing the ``integrity_assertion`` that is obtained for the Wallet Unit Attestation using the private key of the initially generated credential key pair (``priv_key``).
 
 **Steps 20-21 (Wallet Unit Attestation Issuance Request)**: The Wallet Instance:
 
@@ -109,3 +109,5 @@ Below is a non-normative example of the response.
   {
     "wallet_unit_attestation": "omppc3N1ZXJBdXRohEOhASaiBE...dElEAnFlbGVtZW50SWRl"
   }
+
+

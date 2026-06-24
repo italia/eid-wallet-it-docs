@@ -183,7 +183,6 @@ Il body del JWT relativo alla prova di possesso dell'Attestato di Unità di Wall
       - :rfc:`9126` e :rfc:`7519`.
 
 
-
 Pushed Authorization Request (PAR) Response
 ......................................................
 
@@ -261,7 +260,6 @@ Nella seguente tabella sono elencati gli *Status Code HTTP* e i relativi codici 
     * - *504 Gateway Timeout* [OPZIONALE]
       - `-`
       - Il Credential Issuer non può soddisfare la richiesta entro l'intervallo di tempo definito.
-
 
 
 Authorization endpoint
@@ -961,7 +959,7 @@ Di seguito è riportato un esempio non normativo di una Deferred Credential Requ
 Deferred Response
 ..................
 
-La Deferred Credential Response DEVE essere inviata utilizzando il media type ``application/json``. 
+La Deferred Credential Response DEVE essere inviata utilizzando il media type ``application/json``.
 
 Se l'Attestato Elettronico è disponibile, la Deferred Credential Response DEVE utilizzare i parametri ``credentials`` e ``notification_id`` come definito nella Sezione :ref:`credential-issuance-endpoint:Credential Response` e DEVE rispondere con un HTTP Status 200 (vedi sezione 15.3.3 del :rfc:`9110`).
 

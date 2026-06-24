@@ -25,7 +25,7 @@ L'oggetto JSON dei metadati la cui chiave è ``wallet_solution`` contiene i segu
       - OBBLIGATORIO. Contiene i parametri relativi ai metadati del Wallet come definiti nella :ref:`Tabella dei parametri dei metadati del portafoglio <table_wallet_metadata_parameters>` e seguenti due parametri 
 
          - ``credential_offer_endpoint`` Credential Offer Endpoint del Wallet.
-         - ``wallet_name`` Stringa contenente il nome del Wallet. 
+         - ``wallet_name`` Stringa contenente il nome del Wallet.
 
 
 .. note::

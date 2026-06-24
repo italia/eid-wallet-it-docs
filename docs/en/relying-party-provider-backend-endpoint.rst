@@ -120,7 +120,6 @@ The following table lists HTTP Status Codes and related error codes that are sup
       - The service is unavailable. Please try again later.
 
 
-
 Relying Party Provider Backend Access Certificate Endpoint
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -231,3 +230,5 @@ Relying Party Provider Backend Erasure Endpoint
 The Erasure Endpoint allows Wallet Instances to request deletion of attributes presented to the Relying Party, supporting user privacy rights and regulatory compliance.
 
 For detailed implementation requirements, see :ref:`relying-party-remote-flow-endpoints:Relying Party Erasure Endpoint`.
+
+

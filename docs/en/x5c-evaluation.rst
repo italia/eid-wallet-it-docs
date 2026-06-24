@@ -1,5 +1,5 @@
 .. include:: ../common/common_definitions.rst
-  
+
 
 X.509 Certificate Management Operations
 =========================================
@@ -263,7 +263,6 @@ Technical updates affecting federation protocol operations MUST follow specific 
     - **Capability Updates**: The Entity MAY modify supported protocols, algorithms, or service capabilities within the constraints defined by this IT-Wallet implementation profile.
 
 
-
 All technical updates MUST be validated through:
 
   1. **Entity Configuration Validation**: The Entity MUST verify updated EC structure and content.
@@ -287,7 +286,7 @@ Voluntary Exit - Technical Deactivation
      a. Remove the Entity Configuration completely from the ``/.well-known/openid-federation`` endpoint (returning HTTP 404), OR
      b. Keep the Entity Configuration as expired (with ``exp`` claim in the past). It therefore MUST NOT update it with fresh timestamps.
 
-  5. **Registry Status Update**: The Entity SHOULD verify removal from Federation Registry, also verifying the Trust Mark status using the Trust Mark Status endpoint. 
+  5. **Registry Status Update**: The Entity SHOULD verify removal from Federation Registry, also verifying the Trust Mark status using the Trust Mark Status endpoint.
 
 Non-normative example of X.509 Certificate revocation request following :rfc:`3280` format:
 
@@ -339,7 +338,7 @@ Example emergency revocation verification:
    # Check emergency CRL update
    curl -o emergency.crl https://trust-anchor.eid-wallet.example.it/pki/ta-sub.crl
    openssl crl -in emergency.crl -text -noout | grep "Last Update"
-   
+
    # Verify Trust Chain resolution fails
    curl "https://trust-anchor.eid-wallet.example.it/resolve?sub=https%3A//suspended-entity.example.it&trust_anchor=https%3A//trust-registry.eid-wallet.example.it"
    # Expected: HTTP 404 or specific error response
@@ -379,3 +378,5 @@ Entities that exit the federation MUST maintain the following for regulatory com
 1. **Historical Entity Configuration**: The Entity MUST maintain ``/.well-known/openid-federation`` endpoint accessibility for audit purposes.
 2. **X.509 Certificate Chain Archive**: The Entity MUST keep X.509 Certificate chains accessible for existing Credential verification (minimum 7 years).
 3. **Audit Log Preservation**: The Entity MUST archive federation protocol logs per regulatory requirements.
+
+

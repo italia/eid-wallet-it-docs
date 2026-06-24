@@ -4,7 +4,7 @@
 Infrastruttura del Registro
 ===========================
 
-L'ecosistema IT-Wallet opera attraverso un'Infrastruttura del Registro che fornisce definizioni standardizzate dei dati, registrazione delle entità e capacità di discovery delle Credenziali. Il sistema di registro è composto da molteplici componenti interconnessi che supportano il ciclo di vita completo delle operazioni sulle Credenziali digitali, dall'onboarding delle entità alla presentazione delle Credenziali. 
+L'ecosistema IT-Wallet opera attraverso un'Infrastruttura del Registro che fornisce definizioni standardizzate dei dati, registrazione delle entità e capacità di discovery delle Credenziali. Il sistema di registro è composto da molteplici componenti interconnessi che supportano il ciclo di vita completo delle operazioni sulle Credenziali digitali, dall'onboarding delle entità alla presentazione delle Credenziali.
 
 L'architettura del registro risponde ai requisiti di standardizzazione semantica, gestione della fiducia federata e discovery delle Credenziali attraverso componenti specializzati che garantiscono interoperabilità e conformità nell'intero ecosistema.
 
@@ -642,7 +642,7 @@ Nella sezione :ref:`registry:Struttura del Catalogo degli Attestati Elettronici`
 Gerarchia delle Credenziali Digitali
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Le Credenziali Digitali riconosciute nell'ecosistema IT-Wallet sono classificate e standardizzate secondo il seguente modello gerarchico multilivello, progettato per migliorare la chiarezza semantica, la discovery delle credenziali e la compatibilità con i flussi di verifica sia credential-specific che claim-based. 
+Le Credenziali Digitali riconosciute nell'ecosistema IT-Wallet sono classificate e standardizzate secondo il seguente modello gerarchico multilivello, progettato per migliorare la chiarezza semantica, la discovery delle credenziali e la compatibilità con i flussi di verifica sia credential-specific che claim-based.
 
 La gerarchia è definita come segue:
 
@@ -677,7 +677,7 @@ Le Tipologie di Credenziale consentono il targeting preciso per i flussi di veri
 
 Una **Finalità (Intento di Verifica)** descrive *perché* una credenziale può essere richiesta da una Relying Party (es. Verifica dell'Identità, Verifica dell'Età, Idoneità a servizi specifici).  
 Le Finalità DEVONO descrivere **gli esiti della verifica**.
-Ogni Tipologia di Credenziale DEVE dichiarare il proprio Dominio, Classe e Finalità supportate. 
+Ogni Tipologia di Credenziale DEVE dichiarare il proprio Dominio, Classe e Finalità supportate.
 
 Le tabelle seguenti forniscono esempi non esaustivi che illustrano le relazioni tra Domini, Classi di Credenziale e Tipologie di Credenziale, seguiti dalla loro mappatura sulle Finalità di verifica.
 Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive **POSSONO** essere aggiunti nel tempo con l'evolversi dell'ecosistema IT-Wallet.
@@ -1192,7 +1192,7 @@ La logica complessiva per la presentazione di una Credenziale è:
 Tassonomia
 ----------
 
-La **Tassonomia** fornisce il fondamento semantico per l'interoperabilità delle Credenziali Digitali mantenendo il vocabolario autorevole per l'organizzazione delle Credenziali all'interno dell'ecosistema IT-Wallet. La tassonomia è neutrale rispetto al formato della Credenziale. 
+La **Tassonomia** fornisce il fondamento semantico per l'interoperabilità delle Credenziali Digitali mantenendo il vocabolario autorevole per l'organizzazione delle Credenziali all'interno dell'ecosistema IT-Wallet. La tassonomia è neutrale rispetto al formato della Credenziale.
 
 La Tassonomia fornisce, in un'unica risorsa, il sistema di classificazione gerarchica che organizza Domini, Classi e Finalità applicabili alle Tipologie di Credenziale, supportando la valutazione delle politiche di autorizzazione e la standardizzazione a livello di ecosistema.
 
@@ -1379,7 +1379,7 @@ I componenti del registro sono interconnessi e operano congiuntamente per suppor
 Percorsi di Utilizzo dell'Infrastruttura del Registro
 -----------------------------------------------------
 
-I componenti dell'Infrastruttura del Registro sono progettati per supportare diverse fasi operative dell'ecosistema IT-Wallet, ciascuna con specifiche interazioni tra le entità. 
+I componenti dell'Infrastruttura del Registro sono progettati per supportare diverse fasi operative dell'ecosistema IT-Wallet, ciascuna con specifiche interazioni tra le entità.
 I principali Percorsi di seguito illustrano le interazioni con l'Infrastruttura del Registro.
 
 Navigazione del Catalogo

@@ -16,8 +16,3 @@ This section describes the PID and (Q)EAAs issuance flow with a high level of se
   credential-issuance-l2plus.rst
 
 
-
-
-
-
-

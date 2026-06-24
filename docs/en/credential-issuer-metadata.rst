@@ -121,7 +121,7 @@ The *openid_credential_issuer* metadata contains the following claims.
                   - **uri**: REQUIRED. String value that contains a URI where the Wallet can obtain the logo of the Digital Credential from the Credential Issuer. The logo mime type MUST be ``application/svg``.
                   - **uri#integrity**: REQUIRED. integrity metadata as defined in Section 3 of `W3C-SRI`_.
                   - **alt_text**: OPTIONAL. String value of the alternative text for the logo image.
-                
+
                 - **background_color**: OPTIONAL. String value of a background color of the Digital Credential represented as numerical color values defined in `W3C.CSS-COLOR`_.
 
           - **claims**: REQUIRED. Array of JSON object each describing how a certain claim related to the Credential MUST be displayed to the User. This Array lists the claims in the order they MUST be displayed by the Wallet. To provide detailed information about the claim, the innermost value MUST contain at least the following parameters. See `OpenID4VCI`_ Section A.3.2.
@@ -135,7 +135,7 @@ The *openid_credential_issuer* metadata contains the following claims.
                 - **label**: OPTIONAL. String value of a display name for the claim.
                 - **description**: REQUIRED. human-readable description for the claim.
                 - **locale**: REQUIRED. String value that identifies the language of this object represented as a language tag taken from values defined in *BCP47* :rfc:`5646`. There MUST be only one object for each language identifier.
-                
+
         - **schema_id**: REQUIRED. Identifier of the credential schema as defined in the :ref:`registry:Schema Registry`.
         - **authentic_sources**: REQUIRED. Object containing ``entity_id`` and ``dataset_id`` parameters valued with the respective identifiers as registered in the :ref:`registry:Authentic Source Registry`.
   * - **jwks**

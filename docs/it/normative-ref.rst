@@ -20,3 +20,5 @@ Di seguito i riferimenti normativi e i rispettivi acronimi inclusi in queste Spe
       - Regolamento (UE) n. 910/2014 del Parlamento europeo e del Consiglio, del 23 luglio 2014, in materia di identificazione elettronica e servizi fiduciari per le transazioni elettroniche nel mercato interno e che abroga la direttiva 1999/93/CE (Regolamento eIDAS).
 
 .. include:: official-resources.rst
+
+

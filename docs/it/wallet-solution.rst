@@ -25,3 +25,5 @@ Il seguente diagramma illustra l'Architettura di Alto Livello della Soluzione Wa
   backup-restore.rst
   wallet-provider-entity-configuration.rst
   wallet-solution-metadata.rst
+
+

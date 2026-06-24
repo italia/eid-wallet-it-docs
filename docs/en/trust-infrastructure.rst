@@ -665,7 +665,7 @@ The Trust Chain is a sequence of verified statements that validates a participan
 
 **Role in Onboarding**: During the entity onboarding, Trust Chains are constructed to prove the complete hierarchical trust relationship from the Trust Anchor to the new entity.
 
-**Role in Operations**: During Credential issuance and presentation, Trust Chains provide cryptographic proof of entity validity and compliance status. 
+**Role in Operations**: During Credential issuance and presentation, Trust Chains provide cryptographic proof of entity validity and compliance status.
 
 Below is an abstract representation of a Trust Chain.
 
@@ -862,7 +862,7 @@ This approach leverages the dynamic and flexible nature of OpenID Federation alo
 
 **Role in Onboarding**: During entity registration, X.509 Certificates complement OpenID Federation mechanisms by providing interoperability with legacy systems and enabling integration with existing PKI infrastructures.
 
-**Role in Operations**: During Credential operations, X.509 Certificates enable secure communications with legacy systems and provide alternative verification paths for entities that require traditional PKI validation. 
+**Role in Operations**: During Credential operations, X.509 Certificates enable secure communications with legacy systems and provide alternative verification paths for entities that require traditional PKI validation.
 
 OpenID Federation and X.509 based PKI share several things in common, as listed below:
 
@@ -919,7 +919,7 @@ When a participant self-issues an X.509 Certificate, it adheres to the following
         - MUST contain the organization's contact email address.
       * - ``organizationIdentifier``
         - MUST contain the registration number that uniquely identifies the organization within the registration service, using the OID value ``2.5.4.97`` as defined in ``ITU-T X.500``.
-        
+
 2. **Subject Alternative Name (SAN)**: The X.509 Certificate MUST include a ``SAN URI`` that MUST match the **sub** and the **iss** values of its federation Entity Configuration.
 3. **DNS Name**: The X.509 Certificate MUST include a DNS Name in the SAN that matches the DNS name contained within the **sub** and the **iss** values of its Entity Configuration, removing ``https://`` and any webpaths.
 4. **Certificate Revocation List (CRL)**: If the issued X.509 Certificates has an expiration time superior to 24 hours, the X.509 Issuer MUST publish a CRL for the issued X.509 Certificates. This list MUST be accessible and regularly updated to ensure that any compromised or invalid X.509 Certificates are promptly revoked with the motivation of the revocation, if any.
@@ -1049,4 +1049,5 @@ Considerations about Decentralization
 - Since the credential presentation must be signed, storing the signed presentation requests and responses, which include the Trust Chain, the Wallet Instance may have the snapshot of the federation configuration (Trust Anchor Entity Configuration in the Trust Chain) and the verifiable reliability of the Relying Party it has interacted with.
 - Each signed attestation is long-lived since it can be cryptographically validated even when the federation configuration changes or the keys of its issuers are renewed.
 - Each participant should be able to update its Entity Configuration without notifying the changes to any third party. The metadata policy contained within a Trust Chain must be applied to overload any information related to protocol specific metadata.
+
 

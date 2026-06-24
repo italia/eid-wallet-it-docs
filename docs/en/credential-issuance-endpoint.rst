@@ -183,7 +183,6 @@ The body of the Wallet Instance Attestation proof of possession JWT, contained i
       - :rfc:`9126` and :rfc:`7519`.
 
 
-
 Pushed Authorization Request (PAR) Response
 ...........................................
 
@@ -261,7 +260,6 @@ In the following table are listed HTTP Status Codes and related error codes that
     * - *504 Gateway Timeout* [OPTIONAL]
       - `-`
       - The Credential Issuer cannot fulfill the request within the defined time interval.
-
 
 
 Authorization endpoint
@@ -961,11 +959,11 @@ The following is a non-normative example of a Deferred Credential Request:
 Deferred Response
 .................
 
-The Deferred Credential Response MUST be sent using the ``application/json`` media type. 
+The Deferred Credential Response MUST be sent using the ``application/json`` media type.
 
-If the Digital Credential(s) is(are) available, the Deferred Credential Response MUST use the ``credentials`` and ``notification_id`` parameters as defined in Section :ref:`credential-issuance-endpoint:Credential Response` and MUST respond with the HTTP status code 200 (see Section 15.3.3 of :rfc:`9110`]). 
+If the Digital Credential(s) is(are) available, the Deferred Credential Response MUST use the ``credentials`` and ``notification_id`` parameters as defined in Section :ref:`credential-issuance-endpoint:Credential Response` and MUST respond with the HTTP status code 200 (see Section 15.3.3 of :rfc:`9110`]).
 
-If the Credential Issuer still requires more time, the Deferred Credential Response MUST use the ``interval`` and ``transaction_id`` parameters as defined in Section :ref:`credential-issuance-endpoint:Credential Response` and it MUST respond with the HTTP status code 202 (see Section 15.3.3 of :rfc:`9110`]). 
+If the Credential Issuer still requires more time, the Deferred Credential Response MUST use the ``interval`` and ``transaction_id`` parameters as defined in Section :ref:`credential-issuance-endpoint:Credential Response` and it MUST respond with the HTTP status code 202 (see Section 15.3.3 of :rfc:`9110`]).
 
 The value of ``transaction_id`` MUST be same as the value of ``transaction_id`` in the Deferred Credential Request.
 
@@ -1003,7 +1001,7 @@ The Notification Request MUST be an HTTP POST using the *application/json* media
       - *credential_accepted*: when the Credential was successfully stored in the Wallet Instance.
       - *credential_deleted*: when the unsuccessful Credential issuance was caused by a user action.
       - *credential_failure*: in all other unsuccessful cases.
-      
+
 
     - Section 11.1 of [`OpenID4VCI`_].
   * - **event_description**
@@ -1074,3 +1072,5 @@ For holder-initiated data correction, the Wallet Instance SHOULD send a Notifica
 - ``correction_details`` (OPTIONAL): object with minimal fields indicating impacted attributes without sensitive values (e.g., attribute identifiers only).
 
 In the case of receiving a Credential failure that includes a stated reason, the Credential Issuer SHOULD forward the User's message containing that reason to the Authentic Source. It is RECOMMENDED to use PDND specific endpoints, provided by Authentic Source, to facilitate this data exchange.
+
+

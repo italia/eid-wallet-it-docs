@@ -68,3 +68,4 @@ Similarly to the PID high-level flow, the above diagram depicts a (Q)EAA high-le
     5. **Obtaining Attributes**: the (Q)EAA Provider fetches User attributes from the relevant Authentic Source.
     6. **(Q)EAA Issuance**: the (Q)EAA Provider releases a (Q)EAA bound to the key material held by the requesting Wallet Instance.
 
+

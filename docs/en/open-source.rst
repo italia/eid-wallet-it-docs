@@ -72,3 +72,4 @@ In compliance with the **Cyber Resilience Act (CRA)** and **NIS2 Directive (EU) 
 - **Reporting**: Project Owners **SHOULD** establish a channel for responsible disclosure to handle security issues privately before public release.
 - **Exploited vulnerabilities**: Project Owners **MUST** cooperate with National Computer Security Incident Response Teams (CSIRTs) regarding actively exploited vulnerabilities and strictly follow coordinated disclosure protocols to mitigate threats derived from irresponsible disclosure.
 
+
