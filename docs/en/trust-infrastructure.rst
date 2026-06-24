@@ -826,7 +826,7 @@ The process is articulated in the following steps:
 
 4. **Trust Chain Construction through the Relying Party Intermediary**: The Wallet Instance constructs the complete Trust Chain: RP Entity Configuration → Subordinate Statement issued by the Relying Party Intermediary for the RP → Subordinate Statement issued by the Trust Anchor for the Relying Party Intermediary → Trust Anchor Entity Configuration. This chain attests that the RP is a Leaf recognized by the Relying Party Intermediary and that the Relying Party Intermediary is in turn recognized by the Trust Anchor.
 
-5. **User Presentation**: Once validation is complete, the Wallet Instance MAY indicate to the User that the requesting Relying Party operates through a recognized Relying Party Intermediary, displaying the Relying Party Intermediary's identifying information (e.g., ``organization_name``) retrieved from its Entity Configuration.
+5. **User Presentation**: Once validation is complete, the Wallet Instance MUST indicate to the User that the requesting Relying Party operates through a recognized Relying Party Intermediary, displaying the Relying Party Intermediary's identifying information (e.g., ``organization_name``) retrieved from its Entity Configuration.
 
 .. note::
   The presence of the Trust Mark type ending with ``federation-entity/openid_credential_verifier_intermediary`` in the Relying Party Intermediary's EC is the cryptographically verifiable proof that the entity has been recognized by the Trust Anchor as an authorized Relying Party Intermediary. The Wallet Instance MUST reject the RP's request if the Trust Chain cannot be constructed and validated through a recognized Relying Party Intermediary or directly through the Trust Anchor.

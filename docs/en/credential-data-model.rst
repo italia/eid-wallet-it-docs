@@ -258,6 +258,10 @@ Digital Credential Type Metadata Document
 
 When provided, the Type Metadata Document MUST be a *JSON object* compliant with Section 6.2 of [`SD-JWT-VC`_].
 
+In addition to the properties defined in section 9.2 of [`SD-JWT-VC`_] the following property SHOULD included:
+
+  - ``name``: A human-readable label for the claim, intended for end users.
+
 The Credential Type Metadata JSON Document MAY be retrieved through a *well-known* endpoint. See Section 6.3.3 of `SD-JWT-VC`_.
 This endpoint, provided by the Credential Issuer, MUST have the following format: ``https://{Credential Issuer Domain}/.well-known/type-metadata``. The ``vct`` query parameter MUST be added to that endpoint.
 The Endpoint returns a ``200 OK`` status code and supports ``application/json`` as content type.
