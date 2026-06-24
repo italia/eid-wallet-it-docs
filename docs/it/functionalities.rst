@@ -365,7 +365,7 @@ L'Engagement Button:
 
 - DEVE riportare nella dicitura l’azione da svolgere seguita da “IT-Wallet”, ad esempio "Entra con IT-Wallet", “Aggiungi a IT-Wallet”, “Verifica con IT-Wallet”);
 
-- PUO’ essere accompagnato da un testo che spiega il valore aggiunto dal fare quell’azione usando il sistema IT-Wallet.
+- PUÒ essere accompagnato da un testo che spiega il valore aggiunto dal fare quell’azione usando il sistema IT-Wallet.
 
 - Gli attori che intendono integrare l'Engagement Button nel proprio Touchpoint DEVONO garantirne la traduzione in altre lingue, almeno quella inglese;
 
@@ -546,6 +546,8 @@ Il processo di presentazione permette all'Utente di accedere a un servizio oppur
 - **Presentazione in prossimità**: l'Utente presenta il PID e/o un set di Attributi contenuti in uno o più Attestati Elettronici tramite l'Istanza del Wallet direttamente a un Verificatore di Attestati Elettronici o a un dispositivo preposti alla verifica in presenza;
 
 - **Presentazione da remoto**: l'Utente presenta il PID e/o un set di Attributi contenuti in uno o più Attestati Elettronici tramite l'Istanza del Wallet ad un Verificatore di Attestati Elettronici predisposto per la verifica online al fine, ad esempio, di Autenticarsi e fruire dei servizi erogati.
+
+Indipendentemente dal tipo di presentazione, il Fornitore di Wallet DEVE consentire all'Istanza del Wallet di informare l'Utente sull'identità della Relying Party. Nel caso di un Intermediario di Relying Party, l'Utente DEVE essere informato del coinvolgimento dell'intermediario durante la fase di richiesta della presentazione. L'identità della Relying Party primaria DEVE essere sempre visibile all'Utente e NON DEVE essere sostituita da quella dell'Intermediario di Relying Party.
 
 Presentazione in prossimità
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -129,7 +129,7 @@ Il payload del JWT ``request`` contenuto nel messaggio HTTP POST contiene i segu
       - *Redirection URI* a cui è indirizzata la response. DEVE essere un *universal link* oppure un *app link* registrato nel sistema operativo locale, in modo tale che quest'ultimo potrà fornirà la response all'Istanza del Wallet.
       - Vedi [`OIDC`_] Sezione 3.1.2.1.
     * - **jti**
-      - Identificativo univoco del JWT che, insieme al valore contenuto nel claim ``iss``, impedisce il riutilizzo del JWT (*replay attack*). Siccome il valore del `jti` da solo non è resistente alle collisioni, esso DOVRA' essere identificato in modo univoco insieme al suo emittente.
+      - Identificativo univoco del JWT che, insieme al valore contenuto nel claim ``iss``, impedisce il riutilizzo del JWT (*replay attack*). Siccome il valore del `jti` da solo non è resistente alle collisioni, esso DOVRÀ essere identificato in modo univoco insieme al suo emittente.
       - [:rfc:`7519`].
     * - **issuer_state**
       - DEVE essere presente solo in caso di issuer initiated flow. DEVE contenere lo stesso valore presente nel Credential Offer.
