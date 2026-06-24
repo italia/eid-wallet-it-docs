@@ -1,0 +1,244 @@
+/* global i18next, initHeaderLangDropdown */
+
+const QR_CONFIG_FALLBACK = {
+  url_scheme: 'haip',
+  client_id: 'openid_federation:https://relying-party.example.org/OpenID4VP',
+  request_uri: 'https://relying-party.example.org/OpenID4VP/request-uri?id=7f3c2a1b-9c4d-4e5f-a6b7-8d9e0f1a2b3c',
+  request_uri_method: 'post',
+  qrcode_size: 250,
+  qrcode_color: '#000000',
+  qrcode_logo_path: 'img/IT-Wallet-Logo-Primary-BlueItalia.svg',
+  qrcode_expiration_time: 120,
+  selection_page_url: '../it-wallet-selection-page/it-wallet.html',
+};
+
+let demoConfig = { ...QR_CONFIG_FALLBACK };
+let expirationTime = demoConfig.qrcode_expiration_time;
+let countdown = null;
+let countdownStarted = false;
+
+function getBasePath() {
+  const path = window.location.pathname;
+  const lastSlash = path.lastIndexOf('/');
+  return lastSlash >= 0 ? path.slice(0, lastSlash + 1) : '/';
+}
+
+function buildAuthorizationRequestUrl(scheme, params) {
+  let normalizedScheme = scheme || 'haip';
+  if (!normalizedScheme.includes('://')) {
+    normalizedScheme = `${normalizedScheme}://`;
+  }
+  const query = new URLSearchParams(params).toString();
+  const separator = normalizedScheme.includes('?') ? '' : '?';
+  return `${normalizedScheme}${separator}${query}`;
+}
+
+function buildDemoQrPayload(config) {
+  const params = {
+    client_id: config.client_id,
+    request_uri: config.request_uri,
+  };
+  if (config.request_uri_method) {
+    params.request_uri_method = config.request_uri_method;
+  }
+  return buildAuthorizationRequestUrl(config.url_scheme, params);
+}
+
+function applyQrVisualConfig(config) {
+  const root = document.documentElement;
+  root.style.setProperty('--qr-size', `${config.qrcode_size}px`);
+
+  const qrCode = document.querySelector('qr-code');
+  if (qrCode) {
+    qrCode.setAttribute('module-color', config.qrcode_color);
+    qrCode.setAttribute('position-ring-color', config.qrcode_color);
+    qrCode.setAttribute('position-center-color', config.qrcode_color);
+    qrCode.setAttribute('contents', buildDemoQrPayload(config));
+  }
+
+  const logo = document.querySelector('.icon-qr-code');
+  if (logo) {
+    logo.src = getBasePath() + config.qrcode_logo_path;
+  }
+
+  const payloadPreview = document.getElementById('qr-payload-preview');
+  if (payloadPreview) {
+    payloadPreview.textContent = buildDemoQrPayload(config);
+  }
+}
+
+function newWindowHintText(t) {
+  return t('footer.new_window_hint');
+}
+
+function setFooterLink(el, text, href, hint) {
+  if (!el) return;
+  el.textContent = text;
+  if (href) el.setAttribute('href', href);
+  el.setAttribute('aria-label', `${text} (${hint})`);
+}
+
+function updateTimerDisplay() {
+  const timer = document.getElementById('timer');
+  if (timer) {
+    timer.textContent = String(Math.max(expirationTime, 0));
+  }
+}
+
+function updateShellTexts(t) {
+  const regionEl = document.getElementById('header-region-name');
+  if (regionEl) regionEl.textContent = t('header.region_name');
+
+  const skipNav = document.querySelector('.it-skip-links');
+  if (skipNav) skipNav.setAttribute('aria-label', t('skip_links.nav_label'));
+
+  const skipMain = document.getElementById('skip-main');
+  if (skipMain) skipMain.textContent = t('skip_links.main_content');
+
+  const skipFooter = document.getElementById('skip-footer');
+  if (skipFooter) skipFooter.textContent = t('skip_links.footer');
+
+  const eidTitle = document.getElementById('eid-title');
+  const logoAlt = t('header.logo_alt');
+  if (eidTitle) eidTitle.textContent = logoAlt;
+
+  const headerLogoText = document.getElementById('header-logo-text');
+  if (headerLogoText) headerLogoText.textContent = logoAlt;
+
+  document.querySelectorAll('.qr-header-logo-wallet').forEach((img) => {
+    img.setAttribute('alt', t('header.wallet_brand_alt'));
+  });
+
+  const hint = newWindowHintText(t);
+  setFooterLink(document.getElementById('footer-legal'), t('footer.legal_notice'), t('footer.legal_url'), hint);
+  setFooterLink(document.getElementById('footer-privacy'), t('footer.privacy_policy'), t('footer.privacy_url'), hint);
+  setFooterLink(document.getElementById('footer-accessibility'), t('footer.accessibility_statement'), t('footer.accessibility_url'), hint);
+
+  const footerNav = document.getElementById('footer-legal-nav');
+  if (footerNav) footerNav.setAttribute('aria-label', t('footer.nav_label'));
+
+  const noscriptMsg = document.getElementById('noscript-message');
+  if (noscriptMsg) noscriptMsg.textContent = t('noscript.message');
+
+  const pageTitle = t('page_title');
+  const tabTitle = document.getElementById('tab-title');
+  if (tabTitle) tabTitle.textContent = pageTitle;
+  document.title = pageTitle;
+
+  const metaDesc = document.getElementById('meta-description');
+  if (metaDesc) metaDesc.setAttribute('content', t('meta.description'));
+
+  const payloadSummary = document.getElementById('qr-payload-summary');
+  if (payloadSummary) payloadSummary.textContent = t('demoPayloadLabel');
+}
+
+function updateTexts(t) {
+  updateShellTexts(t);
+
+  const title = document.getElementById('content-title');
+  if (title) title.innerHTML = `<b>${t('contentTitle')}</b>`;
+
+  const info = document.getElementById('content-qrcode-info-text');
+  if (info) {
+    info.innerHTML = t('qrCodeValidInfo', { seconds: String(Math.max(expirationTime, 0)) });
+  }
+
+  const support = document.getElementById('content-text');
+  if (support) support.innerHTML = t('supportText');
+
+  const back = document.getElementById('btn-back');
+  if (back) {
+    back.textContent = t('backLabel');
+    back.setAttribute('href', demoConfig.selection_page_url);
+    back.setAttribute('aria-label', t('backLabel'));
+  }
+}
+
+function stopCountdown() {
+  if (countdown) {
+    clearInterval(countdown);
+    countdown = null;
+  }
+}
+
+function startCountdown(t) {
+  if (countdownStarted) return;
+  countdownStarted = true;
+  countdown = setInterval(() => {
+    expirationTime -= 1;
+    updateTimerDisplay();
+    if (expirationTime < 0) {
+      stopCountdown();
+      showExpiredState(t);
+    }
+  }, 1000);
+}
+
+function showExpiredState(t) {
+  const payload = document.getElementById('content-qrcode-payload');
+  if (payload) payload.classList.add('qr-faded');
+
+  const info = document.getElementById('content-qrcode-info-text');
+  if (info) info.innerHTML = t('qrCodeExpiredInfo');
+
+  const actions = document.getElementById('content-function');
+  if (!actions) return;
+
+  actions.innerHTML = `
+    <button id="qr-reload-btn" type="button" class="btn btn-primary">
+      ${t('qrCodeReloadLabel')}
+    </button>
+  `;
+  document.getElementById('qr-reload-btn')?.addEventListener('click', () => {
+    window.location.reload();
+  });
+}
+
+async function loadDemoConfig() {
+  try {
+    const response = await fetch(`${getBasePath()}data/qr-demo-config.json`);
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+    demoConfig = { ...QR_CONFIG_FALLBACK, ...data };
+  } catch (err) {
+    console.warn('qr-code-page: using fallback demo config', err);
+    demoConfig = { ...QR_CONFIG_FALLBACK };
+  }
+  expirationTime = Number(demoConfig.qrcode_expiration_time) || 120;
+  applyQrVisualConfig(demoConfig);
+}
+
+function initI18n() {
+  const initialLang = localStorage.getItem('lang') || 'it';
+
+  i18next
+    .use(i18nextHttpBackend)
+    .init({
+      lng: initialLang,
+      fallbackLng: 'it',
+      backend: {
+        loadPath: `${getBasePath()}locales/qr-{{lng}}.json`,
+      },
+    })
+    .then((t) => {
+      if (typeof initHeaderLangDropdown === 'function') {
+        initHeaderLangDropdown(i18next, {
+          afterLanguageChange(lng) {
+            const code = (lng || 'it').split('-')[0];
+            localStorage.setItem('lang', code === 'en' ? 'en' : 'it');
+            updateTexts(i18next.t);
+          },
+        });
+      }
+      updateTexts(t);
+      startCountdown(t);
+    })
+    .catch((err) => {
+      console.error('qr-code-page: i18next init failed', err);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  await loadDemoConfig();
+  initI18n();
+});

@@ -29,21 +29,15 @@ python3 -m http.server 8000
 
 ### Personalizzazione dei wallet
 
-Modifica `data/it-wallets.json`. Ogni voce in `immediate_subordinate_entities` definisce `id`, `name`, `logo_uri`, `description` e `uri` (URL di avvio del flusso).
+Modifica `data/it-wallets.json`. Ogni voce in `immediate_subordinate_entities` definisce `id`, `name`, `logo_uri`, `description` e `uri` (URL della pagina successiva nel flusso).
 
-### Configurazione degli URL di login (placeholder `CAMBIAMI`)
-
-> ⚠️ **Importante**: il campo `uri` di ogni wallet in `data/it-wallets.json` è volutamente impostato al valore segnaposto `CAMBIAMI`. **Ogni `uri` con valore `CAMBIAMI` DEVE essere sostituito** con l'URL reale che avvia il flusso di autenticazione/presentazione (es. OpenID4VP) del proprio ambiente prima di andare in produzione.
-
-Per configurare, apri `data/it-wallets.json` e sostituisci ogni occorrenza di `"uri": "CAMBIAMI"` con l'URL corretto. Puoi individuarle rapidamente cercando la stringa `CAMBIAMI`.
-
-Esempio del formato atteso (da adattare al proprio proxy):
+Per l'anteprima statica ufficiale, ogni card punta alla QR code page di presentazione remota:
 
 ```json
-"uri": "/Saml2/disco?entityID=wallet"
+"uri": "../it-wallet-presentation-qr-code-page/qr-code-page.html"
 ```
 
-> Nota: quando l'`uri` contiene `entityID=wallet`, lo script `js/it-wallet-loader.js` instrada la richiesta verso il flusso wallet (OpenID4VP) e vi aggiunge automaticamente i parametri `return` ed `entityID` presenti nella query string della pagina.
+Sostituisci l'`uri` con l'endpoint reale del proprio ambiente (es. OpenID4VP / pre-request) prima di andare in produzione.
 
 ### Personalizzazione dei testi
 

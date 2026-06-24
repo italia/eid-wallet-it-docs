@@ -192,9 +192,11 @@ function buildWalletUri(uri) {
   // For wallet flow, entityID must be 'wallet' to route to OpenID4VP; do not overwrite with page params
   const entityID = uri.includes('entityID=wallet') ? 'wallet' : (params.get('entityID') || 'wallet');
   try {
-    const u = new URL(uri, window.location.origin);
-    u.searchParams.set('return', returnUrl);
-    u.searchParams.set('entityID', entityID);
+    const u = new URL(uri, window.location.href);
+    if (uri.includes('entityID=wallet')) {
+      u.searchParams.set('return', returnUrl);
+      u.searchParams.set('entityID', entityID);
+    }
     return u.toString();
   } catch {
     return uri + (uri.includes('?') ? '&' : '?') + 'return=' + encodeURIComponent(returnUrl) + '&entityID=' + encodeURIComponent(entityID);
