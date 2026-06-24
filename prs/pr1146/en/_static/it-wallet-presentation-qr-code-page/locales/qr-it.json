@@ -22,7 +22,7 @@
   "contentTitle": "Inquadra il codice QR",
   "qrCodeValidInfo": "Il codice QR è valido per <b id=\"timer\">{{seconds}}</b> secondi",
   "supportText": "Usa la funzionalità dell'app <b>IT-Wallet</b> o la fotocamera del tuo smartphone",
-  "backLabel": "Indietro",
+  "backLabel": "Torna indietro",
   "qrCodeExpiredInfo": "Il codice QR è scaduto, ricarica la pagina per generarne uno nuovo.",
   "qrCodeReloadLabel": "Ricarica",
   "appTitle": "Continua sull'app IT-Wallet",
