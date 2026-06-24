@@ -129,11 +129,12 @@ The *openid_credential_issuer* metadata contains the following claims.
             - **path**: It contains the pointer that specifies the path to a specific claim within the Digital Credential as defined in Appendix C of `OpenID4VCI`_.
             - **mandatory**: Boolean which, when set to `true`, indicates that the Credential Issuer will always include this claim in the issued Credential.
             - **sd**: String indicating whether the claim is selectively disclosable. It MUST be set to `always` if the claim is selectively disclosure or `never` if not.
-            - **display**: Array of objects containing display language properties. Array containing display information about the claim indicated in the ``path``. The array contains an object for each language supported. The parameters that MUST be included are
+            - **display**: Array of objects containing display language properties. Array containing display information about the claim indicated in the ``path``. The array contains an object for each language supported. It contains the following parameters:
 
-                - **name**: String value of a display name for the claim.
-                - **description**: human-readable description for the claim.
-                - **locale**: String value that identifies the language of this object represented as a language tag taken from values defined in *BCP47* :rfc:`5646`. There MUST be only one object for each language identifier.
+                - **name**: REQUIRED. String value of a display name for the claim.
+                - **label**: OPTIONAL. String value of a display name for the claim.
+                - **description**: REQUIRED. human-readable description for the claim.
+                - **locale**: REQUIRED. String value that identifies the language of this object represented as a language tag taken from values defined in *BCP47* :rfc:`5646`. There MUST be only one object for each language identifier.
                 
         - **schema_id**: REQUIRED. Identifier of the credential schema as defined in the :ref:`registry:Schema Registry`.
         - **authentic_sources**: REQUIRED. Object containing ``entity_id`` and ``dataset_id`` parameters valued with the respective identifiers as registered in the :ref:`registry:Authentic Source Registry`.
