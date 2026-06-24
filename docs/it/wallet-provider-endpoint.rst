@@ -11,10 +11,10 @@ Endpoint del Fornitore di Wallet
 Il Fornitore di Wallet, responsabile della fornitura di una Soluzione Wallet, DEVE esporre gli endpoint per supportare l'instaurazione della fiducia e le funzionalità essenziali dell'Istanza di Wallet. Questi includono l'endpoint di Federazione ``/.well-known/openid-federation`` che DEVE aderire alla specifica OpenID Federation 1.0 per stabilire in modo affidabile la fiducia con il Fornitore di Wallet, nonché endpoint per la registrazione dell'Istanza di Wallet, la generazione di nonce (richiesta per la registrazione), l'emissione di attestati e la revoca. A parte l'endpoint di Federazione, i dettagli di implementazione degli altri sono lasciati alla discrezione del Fornitore di Wallet.
 
 .. note::
-   I test relativi all'uso degli endpoint del Wallet Provider sono definiti in 
-   :ref:`test-plans-wallet-provider:Matrice di Test per Wallet Provider`, in particolare in 
+   I test relativi all'uso degli endpoint del Wallet Provider sono definiti in
+   :ref:`test-plans-wallet-provider:Matrice di Test per Wallet Provider`, in particolare in
    :ref:`wallet-provider-backend-testcases`,
-   :ref:`wallet-instance-testcases` e 
+   :ref:`wallet-instance-testcases` e
    :ref:`wallet-instance-optional-testcases`.
 
 Endpoint di Federazione
@@ -230,7 +230,7 @@ In particolare, il JWT della richiesta di emissione della Wallet Instance Attest
       - [:rfc:`7638#section_3`]
     * - **typ**
       - Il tipo del JWT, che DEVE essere impostato su ``wia-request+jwt``.
-      - 
+      -
 
 Il JWT della richiesta include le seguenti claim nel body:
 
@@ -268,13 +268,13 @@ Il JWT della richiesta include le seguenti claim nel body:
       - :rfc:`7800`.
     * - **platform**
       - Stringa contenente il valore del sistema operativo del dispositivo.
-      - 
+      -
     * - **wallet_solution_id**
       - Stringa contenente l'identificatore della Wallet Solution.
-      - 
+      -
     * - **wallet_solution_version**
       - Stringa contenente la versione della Wallet Solution.
-      - 
+      -
 
 
 Di seguito è riportato un esempio non normativo dell'intestazione e del payload del JWT della Wallet Instance Attestation Request.

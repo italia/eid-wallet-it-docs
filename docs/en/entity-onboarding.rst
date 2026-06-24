@@ -142,7 +142,7 @@ During registration, Authentic Sources MUST provide the following information:
        - Authorization framework for API access.
        - API definitions such as Request/Response Formats, including error management.
    * - **Data Provision Capabilities**
-     - **REQUIRED**. Indicates if Authentic Source supports immediate/deferred data provision (boolean).    
+     - **REQUIRED**. Indicates if Authentic Source supports immediate/deferred data provision (boolean).
    * - **User Information**
      - **OPTIONAL**. Markdown-formatted text containing human-readable information about data availability constraints or limitations. For example, if the Authentic Source database only contains data registered after a specific date, this information MUST be conveyed to Users.
 
@@ -163,7 +163,7 @@ The Authentic Source registration follows a technical process as described below
 .. plantuml:: plantuml/as-registration-process.puml
     :width: 99%
     :alt: Authentic Source registration process showing the 3-step procedure
-    :caption: `Authentic Source Registration Process. <https://www.plantuml.com/plantuml/svg/TLD1Rziw3BxxLn0zlG1vhs_hBK26TkqEFMmBbcAdNcY9SRJAaaPARRDVFzfE6iVBWXmCyUF7Z_p8Qyd8kRGURahUKiZEm3eMDWJVg76I6REB0LOS3ObKM78CfQs9goeXAzmb31akfkaNWAB_Kz2w9E9d9v5ty37QNG-IUiAqFfGUuanDLIsNiCwKuDrYeWlD4pQa-YZX_csvh2hD-_U3PY_s4OB83GRtQu2ui8dSzj-FuP_xrGsOQ6aEdXhqu6pNoSOHp_KzP3HPPYFAEpA-exIO4Gmch9rtsP4erwr7ryfR1oCkcSC3liOGsnreleY-cbx2AVV61OARrJsuDdbgDNtGR2cZyrsDrTsNkyklYKA7klhlVv14vYpRkW_i1gM9eyvU4LFDhct9EinqQMb3p6HXu-CBI4afSZuGIgs4fMvT1XvxmFIpaEIZIUyNy41c6rIGX-_edJqQ8_MUwX0Wc8xCH6tSOJ2asWQVvgTpf5T5aW9cOpvYRVLlCrOg6rjqGTFrXPh8ZlGx5KvHICPCjrioJuC5GP7xDf-9nsoT2IEf41b6bipEDSeaAGOX69e2oHWiiZstDqMmeRb2kiGMKtAXcUbU-poUg1JJdUMc-0hqDzH4cHm9fivwz5hc-PZRQwUiCoGlD6RTeFDa_s3yGQOFlxYyXH6H4odz7dMBuBXVMO4S0QrbLQS5WZrknzK2HYSEgr9xPwOBmjGiXf1iE_WdDJ_lr0_WVQBMEtG0TZX8ErviBQlGDwxF-4GTaNLYebg9jIUebUMMgLyjz73VDSAYwtvsZ8ToYyV0X7RNsGWnqH16FxcogWfHjNN5b6lUgr01MgkN1pKf8PqAUhj4hygABil9gD9nL5LrJS6Mrly6>`_ 
+    :caption: `Authentic Source Registration Process. <https://www.plantuml.com/plantuml/svg/TLD1Rziw3BxxLn0zlG1vhs_hBK26TkqEFMmBbcAdNcY9SRJAaaPARRDVFzfE6iVBWXmCyUF7Z_p8Qyd8kRGURahUKiZEm3eMDWJVg76I6REB0LOS3ObKM78CfQs9goeXAzmb31akfkaNWAB_Kz2w9E9d9v5ty37QNG-IUiAqFfGUuanDLIsNiCwKuDrYeWlD4pQa-YZX_csvh2hD-_U3PY_s4OB83GRtQu2ui8dSzj-FuP_xrGsOQ6aEdXhqu6pNoSOHp_KzP3HPPYFAEpA-exIO4Gmch9rtsP4erwr7ryfR1oCkcSC3liOGsnreleY-cbx2AVV61OARrJsuDdbgDNtGR2cZyrsDrTsNkyklYKA7klhlVv14vYpRkW_i1gM9eyvU4LFDhct9EinqQMb3p6HXu-CBI4afSZuGIgs4fMvT1XvxmFIpaEIZIUyNy41c6rIGX-_edJqQ8_MUwX0Wc8xCH6tSOJ2asWQVvgTpf5T5aW9cOpvYRVLlCrOg6rjqGTFrXPh8ZlGx5KvHICPCjrioJuC5GP7xDf-9nsoT2IEf41b6bipEDSeaAGOX69e2oHWiiZstDqMmeRb2kiGMKtAXcUbU-poUg1JJdUMc-0hqDzH4cHm9fivwz5hc-PZRQwUiCoGlD6RTeFDa_s3yGQOFlxYyXH6H4odz7dMBuBXVMO4S0QrbLQS5WZrknzK2HYSEgr9xPwOBmjGiXf1iE_WdDJ_lr0_WVQBMEtG0TZX8ErviBQlGDwxF-4GTaNLYebg9jIUebUMMgLyjz73VDSAYwtvsZ8ToYyV0X7RNsGWnqH16FxcogWfHjNN5b6lUgr01MgkN1pKf8PqAUhj4hygABil9gD9nL5LrJS6Mrly6>`_
 
 **Step 1 - Registration Package Preparation**: The Entity prepares registration information according to the requirements table above. A non-normative example of information in JSON format is provided below.
 
@@ -745,7 +745,7 @@ Federation Entities MUST integrate Trust Marks in their Entity Configuration usi
    {
      "iss": "https://credentials.example.gov",
      "sub": "https://credentials.example.gov",
-     "jwks": { 
+     "jwks": {
       // jwks content
      },
      "authority_hints": ["https://trust-anchor.eid-wallet.example.it"],
@@ -755,7 +755,7 @@ Federation Entities MUST integrate Trust Marks in their Entity Configuration usi
          "trust_mark": "eyJhbGciOiJFUzI1NiIsImtpZCI6IlRydXN0QW5jaG9yS2V5SWQiLCJ0eXAiOiJKV1QifQ..."
        }
      ],
-     "metadata": { 
+     "metadata": {
       // Metadata content
      }
    }
@@ -765,7 +765,7 @@ Federation Entities MUST integrate Trust Marks in their Entity Configuration usi
    {
      "iss": "https://healthcare-ci.example.gov",
      "sub": "https://healthcare-ci.example.gov",
-     "jwks": { 
+     "jwks": {
       // jwks content
      },
      "authority_hints": ["https://healthcare.intermediate.eid-wallet.example.it"],
@@ -775,8 +775,8 @@ Federation Entities MUST integrate Trust Marks in their Entity Configuration usi
          "trust_mark": "eyJhbGciOiJFUzI1NiIsImtpZCI6IkhlYWx0aGNhcmVJbnRlcm1lZGlhdGVLZXlJZCIsInR5cCI6IkpXVCJ9..."
        }
      ],
-     "metadata": { 
-      // Metadata content  
+     "metadata": {
+      // Metadata content
     }
    }
 

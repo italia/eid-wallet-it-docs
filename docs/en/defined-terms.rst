@@ -462,7 +462,7 @@ Below are the main acronyms used in the document:
   * - **LoA**
     - Level of Assurance
   * - **NAB**
-    - National Accreditation Body 
+    - National Accreditation Body
   * - **OID4VP**
     - OpenID for Verifiable Presentation
   * - **PDND**

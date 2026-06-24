@@ -12,40 +12,40 @@ Specification Structure Overview
 
 The specification is organized into the following major sections:
 
-**Section** :ref:`introduction:Introduction`: 
+**Section** :ref:`introduction:Introduction`:
   Establishes scope, and normative language for the IT-Wallet ecosystem.
 
-**Section** :ref:`brand-identity:Brand Identity`: 
+**Section** :ref:`brand-identity:Brand Identity`:
   Provides the IT-Wallet Brand Identity requirements, guidance on the naming convention and on the application of the visual elements that identify the ecosystem.
 
 **Section** :ref:`architecture-overview:Architecture Overview`:
   Provides high-level view on the Architecture in terms of governance and operational processes enabled.
 
-**Section** :ref:`functionalities:User Experience Design`: 
+**Section** :ref:`functionalities:User Experience Design`:
   Provides design principles and high-level functional requirements to ensure a high-quality User Experience across all stages of interaction between the User and the service.
 
 **Section** :ref:`trust-infrastructure:The Infrastructure of Trust`:
   Defines the federation-based trust model, entity relationships, and trust evaluation mechanisms that secure the entire ecosystem.
 
-**Section** :ref:`entities:Entities`: 
+**Section** :ref:`entities:Entities`:
   Comprehensive implementation requirements for each ecosystem participant: Wallet Solutions, Credential Issuers, Relying Parties, and Authentic Sources, including their components, interaction patterns, and configuration requirements.
 
-**Section** :ref:`digital-credential-management:Digital Credential Management`: 
+**Section** :ref:`digital-credential-management:Digital Credential Management`:
   Covers Digital Credential data models and formats, lifecycle management, validity verification, and the Credentials Catalog structure.
 
 **Section** :ref:`digital-credential-flows:Digital Credential Flows`:
   Detailed implementation guidance for Digital Credential issuance and presentation workflows, including both remote and proximity interaction flows.
 
-**Section** :ref:`endpoints:Endpoints`: 
+**Section** :ref:`endpoints:Endpoints`:
   Technical specifications for all API endpoints exposed by each entity type, including federation endpoints and specialized service integrations.
 
-**Section** :ref:`algorithms:Cryptographic Algorithms`, :ref:`security-privacy-considerations:Security and Privacy Considerations`, and :ref:`log-retention-policy:General Log Retention Policies` (**Implementation Support**): 
+**Section** :ref:`algorithms:Cryptographic Algorithms`, :ref:`security-privacy-considerations:Security and Privacy Considerations`, and :ref:`log-retention-policy:General Log Retention Policies` (**Implementation Support**):
   Cryptographic requirements, security and privacy considerations, and log retention policies essential for compliant implementations.
 
 **Section** :ref:`defined-terms-and-references:Defined Terms and References`, :ref:`official-resources:Official Resources`, :ref:`contribute:How to contribute`, and :ref:`open-source:Open Source Releases` (**Terminology and References**):
   Comprehensive terminology, normative references, additional documentation, tools, resources and contribution guidelines.
 
-**Section** :ref:`appendix:Appendix`: 
+**Section** :ref:`appendix:Appendix`:
   Provides supplementary technical details, implementation patterns, and testing frameworks including mobile application instance management, national platform integration specifications, and comprehensive test matrices for ecosystem validation.
 
 
@@ -99,7 +99,7 @@ For readers who are interested in implementing a **Credential Issuer** Solution,
 
 .. note::
 
-    If the Credential Issuer authenticates the User it must comply with Section :ref:`credential-presentation:Digital Credential Presentation`. If the Authentic Source providing User's attributes belongs to the public sector it must comply with Section :ref:`e-service-pdnd:e-Service PDND`.  
+    If the Credential Issuer authenticates the User it must comply with Section :ref:`credential-presentation:Digital Credential Presentation`. If the Authentic Source providing User's attributes belongs to the public sector it must comply with Section :ref:`e-service-pdnd:e-Service PDND`.
 
 Authentic Source
 """"""""""""""""

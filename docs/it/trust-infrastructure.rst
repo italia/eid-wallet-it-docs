@@ -554,7 +554,7 @@ Di seguito è riportato un esempio non normativo di un Subordinate Statement eme
                     "crv": "P-256",
                     "x": "1kNR9Ar3MzMokYTY8BRvRIue85NIXrYX4XD3K4JW7vI",
                     "y": "slT14644zbYXYF-xmw7aPdlbMuw3T1URwI4nafMtKrY",
-                    "x5c": [ 
+                    "x5c": [
                       // <X.509 certificate about the Subordinate>
                       ]
                 }

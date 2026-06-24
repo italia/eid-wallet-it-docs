@@ -74,7 +74,7 @@ La tabella seguente mostra le tecnologie di *Device Retrieval* supportate, speci
      - **ISO 18013-5**
      - **IT Wallet**
      - **IT Wallet**
-   * - 
+   * -
      - **Istanza del Wallet**
      - **Istanza di Relying Party**
      - **Istanza del Wallet**
@@ -117,7 +117,7 @@ La figura seguente illustra il flusso di basso livello conforme a ISO 18013-5 pe
 
 .. admonition:: Box A
 
-   L'Istanza del Wallet e l'Istanza di Relying Party scambiano dati di *Device Engagement* tramite QR code o tramite NFC Connection Handover (:ref:`WP_097 <wallet-credential-presentation-testcases>`).  
+   L'Istanza del Wallet e l'Istanza di Relying Party scambiano dati di *Device Engagement* tramite QR code o tramite NFC Connection Handover (:ref:`WP_097 <wallet-credential-presentation-testcases>`).
 
    Fare riferimento a:
 
@@ -223,13 +223,13 @@ La figura seguente illustra il flusso di basso livello conforme a ISO 18013-5 pe
 - **Static Handover**: L'Istanza di Relying Party recupera un messaggio *Handover Select* direttamente dal Tag di Tipo 4 dell'Istanza del Wallet. Questo messaggio contiene almeno un Alternative Carrier Record, ognuno indicante un metodo di recupero supportato dall'Istanza del Wallet  (:ref:`WP_103a <wallet-credential-presentation-testcases>`). L'Istanza di Relying Party DEVE selezionare una di queste tecnologie di trasmissione. (vedere Passo 1)
 - **Negotiated Handover**: L'Istanza del Wallet include il servizio ``urn:nfc:sn:handover`` in un Service Parameter Record del messaggio NDEF (NFC Data Exchange Format) iniziale  (:ref:`WP_103b <wallet-credential-presentation-testcases>`). Selezionando questo servizio, l'Istanza di Relying Party invia una *Handover Request* con un Alternative Carrier Record per ogni carrier che supporta. L'Istanza del Wallet risponde con un messaggio *Handover Select* contenente esattamente un carrier selezionato. (Vedere Passi 2-4)
 
-**Passo 1**: L'Istanza di Relying Party legge il Tag NFC di Tipo 4 del Wallet per ottenere un messaggio *Handover Select*, che include: 
+**Passo 1**: L'Istanza di Relying Party legge il Tag NFC di Tipo 4 del Wallet per ottenere un messaggio *Handover Select*, che include:
 - Alternative Carrier Record: un record NDEF all'interno di un messaggio *Handover Select* o *Handover Request*. Punta a una possibile tecnologia di comunicazione (chiamata "carrier"), come NFC o BLE. Informa il lettore sul carrier supportato e un puntatore (Auxiliary Data Reference) a informazioni più dettagliate. L'Alternative Carrier Record per la tecnologia di trasmissione *Device Retrieval* NFC deve fare riferimento al Carrier Configuration Record con il riferimento ID "nfc".
 - Carrier Configuration Record: fornisce i parametri tecnici necessari per utilizzare effettivamente quel carrier. Per la tecnologia di trasmissione *Device Retrieval NFC*, DEVE avere il tipo "iso.org:18013:nfc" e il riferimento ID "nfc". Il contenuto binario del Carrier Configuration Record DEVE essere codificato secondo la Tabella 1 di [`ISO18013-5`_ #9.2.2] (:ref:`WP_103d <wallet-credential-presentation-testcases>`).
 
 Per esempio:
-Per NFC, questo definisce le lunghezze massime di comando/risposta APDU (Application Protocol Data Unit); 
-Per BLE, definisce l'UUID del servizio dell'Istanza del Wallet, gli UUID delle caratteristiche, la dimensione MTU (Maximum Transmission Unit) e parametri di connessione opzionali; 
+Per NFC, questo definisce le lunghezze massime di comando/risposta APDU (Application Protocol Data Unit);
+Per BLE, definisce l'UUID del servizio dell'Istanza del Wallet, gli UUID delle caratteristiche, la dimensione MTU (Maximum Transmission Unit) e parametri di connessione opzionali;
 Se è supportato il ``SessionEstablishment`` anticipato, elenca anche il nome del servizio TNEP (Tag NDEF Exchange Protocol) utilizzato per inviare il messaggio ``SessionEstablishment`` durante l'handover.
 
 .. note::

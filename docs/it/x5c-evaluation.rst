@@ -22,7 +22,7 @@ Ogni entità federata DEVE esporre il proprio Certificato X.509 dell'Entità Fed
 	1. Auto-emissione di Certificati X.509 del Protocollo per operazioni crittografiche interne (capacità sub-CA limitata).
 	2. Agire come Chiave dell'Entità Federata per la firma delle Dichiarazioni dell'Entità.
 
-.. note:: 
+.. note::
   Le Foglie della Federazione possono SOLO emettere Certificati X.509 su se stesse e per scopi specifici dell'applicazione. Le Foglie della Federazione NON DEVONO emettere Certificati X.509 per altre entità federate, come limitato dalle loro Autorità Federali utilizzando l'estensione X.509 Name Constraints.
 
 Per i Certificati X.509 specifici del protocollo, con periodi di validità superiori a 24 ore, l'entità emittente DEVE pubblicare e aggiornare regolarmente una Lista di Revoca dei Certificati X.509 (CRL) su un endpoint pubblicamente accessibile.
@@ -352,7 +352,7 @@ Componenti tecnici specifici POSSONO essere modificati mantenendo l'appartenenza
    {
      "iss": "https://ci.example.it",
      "sub": "https://ci.example.it",
-     "jwks": { 
+     "jwks": {
        // contenuto jwks
      },
      "metadata": {

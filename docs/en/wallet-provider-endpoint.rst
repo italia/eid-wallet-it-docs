@@ -11,10 +11,10 @@ Wallet Provider Endpoints
 The Wallet Provider, responsible for delivering a Wallet Solution, MUST expose the endpoints to support trust establishment and essential Wallet Instance functionalities. These include the ``/.well-known/openid-federation`` Federation Endpoint which MUST adhere to the OpenID Federation 1.0 specification to reliably establish trust with the Wallet Provider's as well as, endpoints for Wallet Instance registration, nonce generation (required for registration), attestation issuance, and revocation. Aside from the Federation endpoint, the implementation details of the others are left to the Wallet Provider's discretion.
 
 .. note::
-  Tests related to the use of Wallet Provider endpoints are defined in 
-  :ref:`test-plans-wallet-provider:Wallet Provider Test Matrix`, particularly 
+  Tests related to the use of Wallet Provider endpoints are defined in
+  :ref:`test-plans-wallet-provider:Wallet Provider Test Matrix`, particularly
   :ref:`wallet-provider-backend-testcases`,
-  :ref:`wallet-instance-testcases`, and 
+  :ref:`wallet-instance-testcases`, and
   :ref:`wallet-instance-optional-testcases`.
 
 Federation Endpoint
@@ -268,13 +268,13 @@ The Wallet Instance Attestation Request JWT includes the following body claims:
       - :rfc:`7800`.
     * - **platform**
       - String containing the value of the device operating system.
-      - 
+      -
     * - **wallet_solution_id**
       - String containing the identifier of the Wallet Solution.
-      - 
+      -
     * - **wallet_solution_version**
       - String containing the version of the Wallet Solution.
-      - 
+      -
 
 
 Below is a non-normative example of a Wallet Instance Attestation Request JWT header and payload.
@@ -577,13 +577,13 @@ The Wallet Unit Attestation Request JWT includes the following body claims:
       - :rfc:`7800`.
     * - **platform**
       - String containing the value of the device operating system.
-      - 
+      -
     * - **wallet_solution_id**
       - String containg the identifier of the Wallet Solution .
-      - 
+      -
     * - **wallet_solution_version**
       - String containing the version of the Wallet Solution.
-      - 
+      -
 
 
 Below is a non-normative example of a Wallet Unit Attestation Request JWT header and payload.
@@ -771,7 +771,7 @@ Below is a non-normative example of the Wallet Unit Attestation JWT header and p
 
 .. note::
     As the certification scheme has not yet been defined, the exact content of ``wallet_solution_certification_information`` is undefined.
-    This content will be defined in a future update. Similarly, the exact content of ``storage_certification_information`` is currently undefined and will be specified in a future update, but it SHALL provide sufficient information to determine whether the key storage is a WSCD.  
+    This content will be defined in a future update. Similarly, the exact content of ``storage_certification_information`` is currently undefined and will be specified in a future update, but it SHALL provide sufficient information to determine whether the key storage is a WSCD.
     Note that the OID4VCI specification does specify a ``certification`` attribute in the ``key_attestation`` element that could be used instead of ``storage_certification_information``.
 
 

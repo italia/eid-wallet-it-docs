@@ -9,7 +9,7 @@ The following algorithms MUST be supported:
 
 .. list-table::
   :class: longtable
-  :widths: 20 20 20 20 
+  :widths: 20 20 20 20
   :header-rows: 1
 
   * - **Algorithm `alg` parameter value**
@@ -78,15 +78,15 @@ For Credentials issued in mdoc format, the following algorithms MUST be supporte
     - **References**
   * - **ECKA-DH**
     - Elliptic Curve Key Agreement Algorithm – Diffie-Hellman.
-    - Key agreement 
+    - Key agreement
     - BSI TR-03111.
   * - **HKDF**
     - HMAC-based Key Derivation Function.
-    - Session key derivation 
+    - Session key derivation
     - :rfc:`5869`.
   * - **AES-256-GCM**
     - Advanced Encryption Standard with Galois/Counter Mode and a key length of 256.
-    - Session encryption 
+    - Session encryption
     - NIST SP 800-38D.
 
 The following algorithms are RECOMMENDED to be supported:

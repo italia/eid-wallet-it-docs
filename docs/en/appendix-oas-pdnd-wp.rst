@@ -1,7 +1,7 @@
 .. include:: ../common/common_definitions.rst
 
 
-Wallet Provider PDND OpenAPI Specification 
+Wallet Provider PDND OpenAPI Specification
 ----------------------------------------------
 
 Below is the complete OpenAPI Specification for the Wallet Provider PDND e-services:

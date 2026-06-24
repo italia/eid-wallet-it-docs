@@ -74,7 +74,7 @@ The following table shows the supported Device Retrieval technologies, specifyin
      - **ISO 18013-5**
      - **IT Wallet**
      - **IT Wallet**
-   * - 
+   * -
      - **Wallet Instance**
      - **RP Instance**
      - **Wallet Instance**
@@ -117,7 +117,7 @@ The following figure illustrates the low-level flow compliant with ISO 18013-5 f
 
 .. admonition:: Box A
 
-   The Wallet Instance and Relying Party Instance exchange *Device Engagement* data via QR code or via NFC Connection Handover (:ref:`WP_097 <wallet-credential-presentation-testcases>`).  
+   The Wallet Instance and Relying Party Instance exchange *Device Engagement* data via QR code or via NFC Connection Handover (:ref:`WP_097 <wallet-credential-presentation-testcases>`).
 
    Refer to:
 
@@ -223,13 +223,13 @@ The following figure illustrates the low-level flow compliant with ISO 18013-5 f
 - **Static Handover**: The Relying Party Instance retrieves a Handover Select message directly from the Wallet Instance's Type 4 Tag. This message contains at least one Alternative Carrier Record, each indicating a retrieval method supported by the Wallet Instance (:ref:`WP_103a <wallet-credential-presentation-testcases>`). The Relying Party Instance MUST select one of these transmission technologies. (see Step 1)
 - **Negotiated Handover**: The Wallet Instance includes the service ``urn:nfc:sn:handover`` in a Service Parameter Record of the initial NDEF (NFC Data Exchange Format) message  (:ref:`WP_103b <wallet-credential-presentation-testcases>`). Upon selecting this service, the Relying Party Instance sends a Handover Request with an Alternative Carrier Record for each carrier it supports. The Wallet Instance replies with a Handover Select message containing exactly one selected carrier. (See Step 2-4)
 
-**Step 1**: The Relying Party Instance reads the Wallet’s NFC Type 4 Tag to obtain a Handover Select message, which includes: 
+**Step 1**: The Relying Party Instance reads the Wallet’s NFC Type 4 Tag to obtain a Handover Select message, which includes:
 - Alternative Carrier Record is an NDEF record inside a Handover Select or Handover Request message. It points to one possible communication technology (called a “carrier”), such as NFC or BLE. It tells the reader about the supported carrier and a pointer (Auxiliary Data Reference) to more detailed information. The Alternative Carrier Record for the NFC device retrieval transmission technology MUST reference the Carrier Configuration Record with the ID reference “nfc”.
 - Carrier Configuration Record provides the technical parameters needed actually to use that carrier. For NFC device retrieval transmission technology, it MUST have the type “iso.org:18013:nfc” and the ID reference “nfc”. The binary content of the Carrier Configuration Record MUST be encoded according to Table 1 of [`ISO18013-5`_ #9.2.2] (:ref:`WP_103d <wallet-credential-presentation-testcases>`).
 
 For example:
-For NFC, this defines maximum APDU (Application Protocol Data Unit) command/response lengths; 
-For BLE, it defines the Wallet Instance service UUID, characteristic UUIDs, MTU (Maximum Transmission Unit) size, and optional connection parameters; 
+For NFC, this defines maximum APDU (Application Protocol Data Unit) command/response lengths;
+For BLE, it defines the Wallet Instance service UUID, characteristic UUIDs, MTU (Maximum Transmission Unit) size, and optional connection parameters;
 If early ``SessionEstablishment`` is supported, it also lists the TNEP (Tag NDEF Exchange Protocol) service name used to send the ``SessionEstablishment`` message during handover.
 
 .. note::

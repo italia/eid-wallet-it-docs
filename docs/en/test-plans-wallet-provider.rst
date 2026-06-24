@@ -252,7 +252,7 @@ This section lists the test cases from Sections:
      - Wallet Attestation integrity verification
      - Wallet Instance verifies the signature of the received Wallet Attestation.
    * - WP_031
-     - Wallet Attestation Issuance, Trust, Security 
+     - Wallet Attestation Issuance, Trust, Security
      - Wallet Attestation trust verification
      - Wallet Instance verifies and confirms that the Wallet Attestation issuer (i.e., Wallet Provider) is a trusted member of the Federation, before accepting the Wallet Attestation.
    * - WP_032
@@ -331,7 +331,7 @@ This section lists the test cases from Sections:
 
 .. _wallet-credential-issuance-testcases:
 
-Test Cases for Issuance Phase 
+Test Cases for Issuance Phase
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This section lists the test cases from Sections:
 
@@ -593,7 +593,7 @@ This section lists the test cases from Sections:
      - Issuance, Security and Privacy
      - Delete old batch Credentials
      - When the Wallet Instance receives and stores a new batch of the same Credential with the same claims, it deletes the previous Credentials.
-   * - WP_074 
+   * - WP_074
      - Issuance, UX
      - Consent on new Digital Credential store with ``user_attribute`` update
      - If the Digital Credential update involves changes to the User's attribute values (``attribute_update``), Wallet Instance prompts the User for consent before storing the new refreshed Digital Credential.
@@ -606,7 +606,7 @@ This section lists the test cases from Sections:
 
 Test Cases for Presentation Phase
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-This section lists the test cases from Section :ref:`credential-presentation:Digital Credential Presentation`,  
+This section lists the test cases from Section :ref:`credential-presentation:Digital Credential Presentation`,
 covering both the **Remote Flow** and the **Proximity Flow** presentation phases.
 
 
@@ -780,7 +780,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
      - CBOR encoding of DeviceEngagement data
      - DeviceEngagement is CBOR encoded and contains Version, Security, Capabilities, and OriginInfos (may be empty). For QR engagement it also includes DeviceRetrievalMode-BLEOptions and/or DeviceRetrievalMode-NFCOptions. For NFC engagement, these options are omitted.
    * - WP_102a
-     - Proximity-flow, Presentation, Interoperability 
+     - Proximity-flow, Presentation, Interoperability
      - DeviceEngagement over QR
      - The QR mdoc: URI encodes the valid CBOR DeviceEngagement encoded (per Section 9.1 of [ISO18013-5_]) using base64url-without-padding (:rfc:`4648`).
    * - WP_102b
@@ -881,7 +881,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
      - Within each document, the ``deviceSigned`` component includes a ``deviceNameSpaces`` structure (possibly empty) plus a ``deviceAuth`` ``COSE_Sign1`` containing the required ``deviceSignature`` over the device-authentication data.
    * - WP_112
      - Proximity-flow, Presentation, Security
-     - Encrypt ``SessionData`` 
+     - Encrypt ``SessionData``
      - Wallet Instance encrypts the ``SessionData`` message with the derived session keys.
    * - WP_112a
      - Proximity-flow, Presentation, Interoperability
@@ -937,7 +937,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
 Test Cases for User Attribute Deletion on Relying Party Side
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This section lists the test cases from Sections: 
+This section lists the test cases from Sections:
 
 - :ref:`user-attribute-deletion:User's Attributes Deletion`
 - `Relying Party Provider Backend Erasure Endpoint <relying-party-provider-backend-endpoint.html#relying-party-provider-backend-erasure-endpoint>`_
@@ -1094,7 +1094,7 @@ This section lists the test cases from Section :ref:`backup-restore:Backup and R
 Optional Test Cases for Wallet Instance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This section lists the test cases from Sections: 
+This section lists the test cases from Sections:
 
 - :ref:`wallet-instance:Wallet Instance`
 - `Request-Specific Error Responses <wallet-provider-endpoint.html#request-specific-error-responses>`_

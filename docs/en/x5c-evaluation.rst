@@ -22,7 +22,7 @@ Each federation entity MUST expose its Federation Entity X.509 Certificate on a 
 	1. Self-issuing Protocol X.509 Certificates for internal cryptographic operations (limited sub-CA capability).
 	2. Acting as the Federation Entity Key for signing Entity Statements.
 
-.. note:: 
+.. note::
   Federation Leaves can ONLY issue X.509 Certificates about themselves and for application specific purposes. Federation Leaves MUST NOT issue X.509 Certificates for other federation entities, as limited by their Federation Authorities using X.509 Name Constraints extension.
 
 For protocol specific X.509 Certificates, with validity periods exceeding 24 hours, the issuing entity MUST publish and regularly update an X.509 Certificate Revocation List (CRL) on a publicly accessible endpoint.
@@ -352,7 +352,7 @@ Specific technical components MAY be modified while maintaining federation membe
    {
      "iss": "https://ci.example.it",
      "sub": "https://ci.example.it",
-     "jwks": { 
+     "jwks": {
        // jwks content
      },
      "metadata": {

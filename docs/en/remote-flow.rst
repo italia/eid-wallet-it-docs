@@ -40,7 +40,7 @@ A High-Level description of the remote flow, from the User's perspective, is giv
 
   1. *Authorization Request*: the Wallet Instance obtains a ``URL`` in the Same Device flow or a ``QR Code`` in Cross Device flow containing the signed Request Object either
 
-    * directly, by passing a Request Object by value (via ``request`` parameter) or 
+    * directly, by passing a Request Object by value (via ``request`` parameter) or
     * by passing a Request Object by a reference (via ``request_uri`` parameter), where the signed Request Object is available for download. This is the only method permitted for OpenID4VC High Assurance Interoperability Profile (HAIP)-Compliant Relying Parties `OPENID4VC-HAIP`_.
 
     If by reference, Steps 2 and 3 are performed.
@@ -163,7 +163,7 @@ The details of each step shown in the previous picture are described below.
           "vp_formats_supported": {
             "dc+sd-jwt": {
                 "sd-jwt_alg_values": ["ES256", "ES384"]
-            }, 
+            },
             "mso_mdoc": {
                 "issuerauth_alg_values": [-9, -51],
                 "deviceauth_alg_values": [-9, -51]
@@ -234,7 +234,7 @@ The details of each step shown in the previous picture are described below.
             "id": "mobile driving license",
             "format": "mso_mdoc",
             "meta": {
-              "doctype_value": "org.iso.18013.5.1.mDL" 
+              "doctype_value": "org.iso.18013.5.1.mDL"
             },
             "claims": [
               {"path": ["org.iso.18013.5.1", "given_name"]},
@@ -551,12 +551,12 @@ The JWT payload parameters are described herein:
   * - **response_mode**
     - REQUIRED. It MUST be set to ``direct_post.jwt`` (:ref:`RPR-106 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`).
   * - **dcql_query**
-    - REQUIRED. Object representing a request for a presentation of Credentials, according to the DCQL query language defined in Section 6 of `OpenID4VP`_.  
+    - REQUIRED. Object representing a request for a presentation of Credentials, according to the DCQL query language defined in Section 6 of `OpenID4VP`_.
   * - **transaction_data**
-    - OPTIONAL. Non-empty array of JSON objects, each describing a transaction that the Relying Party requests the User to authorize. Each transaction object includes: 
+    - OPTIONAL. Non-empty array of JSON objects, each describing a transaction that the Relying Party requests the User to authorize. Each transaction object includes:
         - **type**.  String that identifies the transaction data type.
-        - **credential_ids**. Array referencing one or more Credentials from the ``dcql_query`` that can authorize the transaction.  
-  * - **transaction_data_hashes_alg** 
+        - **credential_ids**. Array referencing one or more Credentials from the ``dcql_query`` that can authorize the transaction.
+  * - **transaction_data_hashes_alg**
     - OPTIONAL. Array of strings, each representing a hash algorithm identifier, corresponding to a hash algorithm name listed in the `IANA <https://www.iana.org/assignments/named-information/named-information.xhtml#hash-alg>`_.  One of these algorithms MUST be used to calculate the hashes in the ``transaction_data_hashes`` response parameter.  If omitted, the default hash algorithm is ``sha-256``.
   * - **response_type**
     - REQUIRED. It MUST be set to ``vp_token`` (:ref:`RPR-107 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`).
@@ -665,9 +665,9 @@ When an SD-JWT is presented, the KB-JWT signature MUST be verified by the same p
     - REQUIRED. Ensures the freshness of the signature. The value type of this claim MUST be a string. The value MUST match with the one provided in the request object.
   * - **sd_hash**
     - REQUIRED. The base64url-encoded hash digest over the Issuer-signed JWT and the selected disclosures.
-  * - **transaction_data_hashes** 
+  * - **transaction_data_hashes**
     - CONDITIONAL. REQUIRED when the request includes ``transaction_data``. Non-empty array of base64url-encoded hashes. Each hash is computed over the exact string value of the corresponding ``transaction_data`` item.
-  * - **transaction_data_hashes_alg** 
+  * - **transaction_data_hashes_alg**
     - CONDITIONAL. REQUIRED only if the request included ``transaction_data_hashes_alg``. String naming the hash algorithm actually used to compute ``transaction_data_hashes``; if that parameter was not provided, the hash function MUST be ``sha-256``.
 
 

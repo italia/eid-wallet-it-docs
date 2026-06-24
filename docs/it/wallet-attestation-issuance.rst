@@ -77,7 +77,7 @@ Di seguito è riportato un esempio non normativo dell'oggetto JSON ``client_data
 * Costruisce la Wallet Unit Attestation Request sotto forma di JWT. Questo JWT include l'``integrity_assertion``, ``keys_to_attest``, ``hardware_signature``, ``nonce``, ``hardware_key_tag``, ``cnf``, ``platform``, ``wallet_solution_id``, ``wallet_solution_version``  e altri parametri relativi alla configurazione (vedi :ref:`Tabella del Corpo della Richiesta di Wallet Unit Attestation <table_wua_request_claim>`) ed è firmato utilizzando la chiave privata la cui chiave pubblica è indicata nella richiesta tramite ``cnf`` (primo elemento di ``keys_to_attest``) (:ref:`WP_140–141 <wallet-instance-optional-testcases>`).
 * Invia la Wallet Unit Attestation Request all'endpoint :ref:`wallet-provider-endpoint:Endpoint di Emissione della Wallet Unit Attestation` del Backend del Fornitore del Wallet.
 
-.. note:: 
+.. note::
   ``keys_to_attest`` contiene un oggetto ``key_attestation`` nel caso di Android e un oggetto ``integrity_assertion`` nel caso di iOS.
 
 L'Istanza del Wallet DEVE inviare il JWT firmato della Richiesta di Wallet Unit Attestation come parametro ``assertion`` nel corpo di una richiesta HTTP all'endpoint :ref:`wallet-provider-endpoint:Endpoint di Emissione della Wallet Unit Attestation` del Fornitore di Wallet (:ref:`WP_142 <wallet-instance-optional-testcases>`).

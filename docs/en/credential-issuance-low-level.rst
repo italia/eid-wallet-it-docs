@@ -37,7 +37,7 @@ In addition, the Credential Issuers MAY support:
 
 
 .. note::
-    **Standard or Batch Credential Issuance:** 
+    **Standard or Batch Credential Issuance:**
 
     The User can configure the Wallet Solution to issue Digital Credentials in either batch or standard mode and define the preferred batch size.
 

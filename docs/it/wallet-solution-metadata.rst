@@ -22,7 +22,7 @@ L'oggetto JSON dei metadati la cui chiave è ``wallet_solution`` contiene i segu
     * - ``logo_uri``
       - OBBLIGATORIO. URL del logo dell’entità che verrà mostrato all’Utente durante le interazioni con l’istanza del Wallet. Il MIME type del logo DEVE essere ``application/svg``.
     * - ``wallet_metadata``
-      - OBBLIGATORIO. Contiene i parametri relativi ai metadati del Wallet come definiti nella :ref:`Tabella dei parametri dei metadati del portafoglio <table_wallet_metadata_parameters>` e seguenti due parametri 
+      - OBBLIGATORIO. Contiene i parametri relativi ai metadati del Wallet come definiti nella :ref:`Tabella dei parametri dei metadati del portafoglio <table_wallet_metadata_parameters>` e seguenti due parametri
 
          - ``credential_offer_endpoint`` Credential Offer Endpoint del Wallet.
          - ``wallet_name`` Stringa contenente il nome del Wallet.

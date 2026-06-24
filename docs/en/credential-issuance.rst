@@ -4,7 +4,7 @@
 Digital Credential Issuance
 ============================
 
-This section describes the PID and (Q)EAAs issuance flow with a high level of security.  
+This section describes the PID and (Q)EAAs issuance flow with a high level of security.
 
 
 .. toctree::

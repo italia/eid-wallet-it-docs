@@ -16,7 +16,7 @@ In order to protect the privacy of the Signal's subject, the PDND Manager requir
 For detailed technical specifications and implementation guidelines, please refer to the `Signal Hub Guide`_.
 
 In the context of the IT Wallet, Authentic Sources interact with the Signal Hub to notify Credential Issuers about changes in the status and/or value of attributes associated with Digital Credentials. Specifically,
-  - the Authentic Source will deposit Signals in the Signal Hub, thus playing the role of PDND Consumer of the Signal Collection e-Service; 
+  - the Authentic Source will deposit Signals in the Signal Hub, thus playing the role of PDND Consumer of the Signal Collection e-Service;
   - the Credential Issuer will retrieve Signals from the Signal Hub, and will thus play the role of e-Service PDNDConsumer of the Signal Distribution e-Service.
 
 .. note::
@@ -72,7 +72,7 @@ The Signal Collection e-Service endpoint is used by Authentic Sources to deposit
       - ``UPDATE``, in order to notify the updating of the attributes related to a specific Digital Credential.
 
   * - **signalType**
-    - REQUIRED. Signal Type. It MUST be one of the following: 
+    - REQUIRED. Signal Type. It MUST be one of the following:
 
       - ``UPDATE``, when the Signal refers to a change in the status and/or value of a specific attribute associated with a Digital Credential;
       - ``CREATE``, when the Signal refers to the availability of the attributes of a specific Digital Credential;
@@ -116,7 +116,7 @@ Credential Issuers in the IT Wallet ecosystem use the Signal Distribution e-Serv
 
 The Signal Distribution e-Service endpoint is used by Credential Issuers to retrieve Signals from the Signal Hub via a Signal Distribution request. The latter MUST use an HTTP request using the method GET and the following parameters:
 
-  - Path Parameters: 
+  - Path Parameters:
 
     -  ``eserviceId``. REQUIRED. e-Service to which the Signal is bound. It MUST correspond to the e-Service Id value the Credential Issuer is a Consumer of.
 
@@ -155,7 +155,7 @@ After the Signals have been successfully recovered by the Credential Issuer, the
   - For each Signal, the Credential Issuer MUST check the ``SignalType`` value:
 
     - if the Signal ``SignalType`` is ``UPDATE`` (where ``objectId`` refers to the :term:`Object_id` of the Authentic Source), the status and/or value of the attribute associated with a Digital Credential need updates;
-    - if the Signal ``SignalType`` is ``CREATE`` (where ``objectId`` refers to the :term:`Object_id` of the Authentic Source), the requested attributes of a specific Digital Credential are now available; 
+    - if the Signal ``SignalType`` is ``CREATE`` (where ``objectId`` refers to the :term:`Object_id` of the Authentic Source), the requested attributes of a specific Digital Credential are now available;
 
     If the ``objectId`` does not correspond to any valid identifier known to the Credential Issuer, the Signal MUST be ignored. Otherwise, if it corresponds to a known and valid identifier, the Credential Issuer MUST use the :ref:`authentic-source-endpoint:Get Attribute Claims` PDND endpoint of the Authentic Source to retrieve the updated information and, if applicable, apply the new status to the corresponding Credential.
 

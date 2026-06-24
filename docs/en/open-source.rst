@@ -1,7 +1,7 @@
 .. include:: ../common/common_definitions.rst
 
 
-Open Source Releases 
+Open Source Releases
 =====================
 
 1. General Principles
@@ -42,7 +42,7 @@ All entities (Wallet Providers, Credential Issuers, Relying Parties) involved wi
 3. Wallet Providers
 ^^^^^^^^^^^^^^^^^^^
 
-3.1 Mandatory Open Source 
+3.1 Mandatory Open Source
 """""""""""""""""""""""""
 
 Pursuant to the **Consolidated Regulation (EU) No 910/2014 (eIDAS 2.0)**, Art. 5a par. 3, the source code of the application software components of IT-Wallet solutions **MUST** be open-source licensed.
@@ -52,7 +52,7 @@ For duly justified security reasons, the source code of specific components, oth
 4. Credential Issuers and Relying Parties
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-4.1 Integration components 
+4.1 Integration components
 """"""""""""""""""""""""""
 
 To foster ecosystem interoperability and reduce integration costs:

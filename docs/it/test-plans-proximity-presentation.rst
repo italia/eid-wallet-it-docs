@@ -2,7 +2,6 @@
 .. Incluso tramite test-plans-presentation.rst al livello di titolo '^' (livello 2).
 
 
-
 Matrice di Test per il Verificatore di Credenziali in Prossimità
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

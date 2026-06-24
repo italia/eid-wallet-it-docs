@@ -14,12 +14,12 @@ A Digital Credential data model has the following structure:
 - **User attributes**: Information about the User, such as identity or qualifications.
 
 The (Q)EAAs are issued by (Q)EAA Issuers to a Wallet Instance and MUST be provided in SD-JWT VC or mdoc-CBOR data format.
-The (Q)EAA data model is use-case driven and may include different User attributes according to its specific purpose. The (Q)EAA metadata attributes are specific for each data format, as described in the following sections.  
+The (Q)EAA data model is use-case driven and may include different User attributes according to its specific purpose. The (Q)EAA metadata attributes are specific for each data format, as described in the following sections.
 
 Format-Agnostic Credential Metadata Attributes
 -----------------------------------------------
 
-The following table defines the common metadata attributes that are applicable to Digital Credentials regardless of their encoding format. These attributes represent the semantic information about the Credential.  
+The following table defines the common metadata attributes that are applicable to Digital Credentials regardless of their encoding format. These attributes represent the semantic information about the Credential.
 
 .. _table_format_agnostic_attributes:
 .. list-table::
@@ -68,7 +68,7 @@ The Disclosures are provided to the Holder together with the SD-JWT in the *Comb
 See `SD-JWT-VC`_ and `SD-JWT`_ for additional details.
 
 
-Digital Credential SD-JWT Metadata Attributes 
+Digital Credential SD-JWT Metadata Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The JOSE header contains the following mandatory parameters:
@@ -132,7 +132,7 @@ The JWT payload contains the following claims. Unless otherwise specifed, the fo
       - Commission Implementing Regulation `EU_2024/2977`_.
     * - **issuance_date**
       - OPTIONAL. *String*. Format-encoded data identifier `issuance_date` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`.  This attribute pertains to the administrative issuance date, which is typically different from the technical issuance date expressed by the JWT ``iat`` claim.
-      - Section 2.6 of the ARF PID Rulebook v1.3 [`EIDAS-ARF`_].  
+      - Section 2.6 of the ARF PID Rulebook v1.3 [`EIDAS-ARF`_].
     * - **date_of_expiry**
       - OPTIONAL. *String*. Format-encoded data identifier `expiry_date` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`.  This attribute pertains to the administrative validity period of the Digital Credential, which is typically different from the technical validity period expressed by the JWT ``exp`` claim.
       - Commission Implementing Regulation `EU_2024/2977`_.
@@ -477,7 +477,7 @@ The following **elementIdentifiers** representing format-encoded metadata attrib
 
    * - **issuance_date**
      - *(tdate or full-date, OPTIONAL)*. Format-encoded data identifier `issuance_date` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`.  This attribute pertains to the administrative issuance date, which is typically different from the technical issuance date expressed by the `MobileSecurityObject` parameters ``signed`` or ``validFrom``.
-     - Section 2.6 of the ARF PID Rulebook v1.3 [`EIDAS-ARF`_].  
+     - Section 2.6 of the ARF PID Rulebook v1.3 [`EIDAS-ARF`_].
 
    * - **expiry_date**
      - *(tdate or full-date, OPTIONAL)*. Format-encoded data identifier `expiry_date` as defined in Section :ref:`credential-data-model:Format-Agnostic Credential Metadata Attributes`. It MUST be according to ISO 8601-1 YYYY-MM-DD format.

@@ -37,7 +37,7 @@ In aggiunta, i Credential Issuer POSSONO supportare:
 
 
 .. note::
-    **Standard or Batch Credential Issuance:** 
+    **Standard or Batch Credential Issuance:**
 
     L'Utente può configurare la Wallet Solution per emettere Attestati Elettronici in modalità batch o standard e definire la dimensione preferita del batch.
 
@@ -623,7 +623,7 @@ Il Refresh Token Flow consente all'Istanza del Wallet di ottenere un nuovo Refre
 Quando il nuovo Attestato Elettronico è memorizzato con successo nel secure storage, l'Istanza del Wallet DEVE eliminare quello precedente (:ref:`WP_073 <wallet-credential-issuance-testcases>`).
 
 .. note::
-  Indipendentemente dal meccanismo di revoca supportato, se lo stato dell'Attestato Elettronico è impostato su ``ATTRIBUTE_UPDATE``, l'insieme di attributi dell'Utente nell'Attestato aggiornato non corrisponde a quello memorizzato. In questo caso, l'Istanza del Wallet DEVE richiedere l'autorizzazione dell'Utente per memorizzare il nuovo Attestato aggiornato (:ref:`WP_074 <wallet-credential-issuance-testcases>`).  
+  Indipendentemente dal meccanismo di revoca supportato, se lo stato dell'Attestato Elettronico è impostato su ``ATTRIBUTE_UPDATE``, l'insieme di attributi dell'Utente nell'Attestato aggiornato non corrisponde a quello memorizzato. In questo caso, l'Istanza del Wallet DEVE richiedere l'autorizzazione dell'Utente per memorizzare il nuovo Attestato aggiornato (:ref:`WP_074 <wallet-credential-issuance-testcases>`).
 
   Se invece lo stato è impostato su ``UPDATE``, solo i parametri dei Metadata sono cambiati. In questo caso, l'Istanza del Wallet DOVREBBE memorizzare il nuovo Attestato senza richiedere autorizzazione o consenso esplicito dell'Utente (:ref:`WP_075 <wallet-credential-issuance-testcases>`).
 

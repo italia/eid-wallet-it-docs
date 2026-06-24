@@ -256,7 +256,7 @@ Below is a non-normative example of a Trust Anchor Entity Configuration, where e
                     "crv": "P-256",
                     "x": "1kNR9Ar3MzMokYTY8BRvRIue85NIXrYX4XD3K4JW7vI",
                     "y": "slT14644zbYXYF-xmw7aPdlbMuw3T1URwI4nafMtKrY",
-                    "x5c": [ 
+                    "x5c": [
                       // <self-issued X.509 certificate about the Trust Anchor>
                       ]
                 }
@@ -554,7 +554,7 @@ Below there is a non-normative example of an Subordinate Statement issued by an 
                     "crv": "P-256",
                     "x": "1kNR9Ar3MzMokYTY8BRvRIue85NIXrYX4XD3K4JW7vI",
                     "y": "slT14644zbYXYF-xmw7aPdlbMuw3T1URwI4nafMtKrY",
-                    "x5c": [ 
+                    "x5c": [
                       // <X.509 certificate about the Subordinate>
                       ]
                 }

@@ -27,7 +27,7 @@ In addition to the User attributes listed above, the PID includes also the follo
 - Issuing country
 - Expiry Date
 - Validity status information
-- Identity and data proofing information 
+- Identity and data proofing information
 
 Some attributes, such as the *taxpayer identification number* and the *identity and data proofing information*, are provided as **domestic extensions** defined by the Italian IT-Wallet specification. It is NOT part of the ARF PID Rulebook (Annex 3.01, PID Rulebook v1.3), but is **permitted under ARF requirement PID_06**, which allows Member States to define additional domestic attributes beyond those specified in Commission Implementing Regulation (CIR) 2024/2977 (`EU_2024/2977`_). In particular, the identity proofing information is REQUIRED for Italian PIDs to ensure:
 
@@ -47,7 +47,7 @@ The SD-JWT VC PID defined in this specification MUST use the ``vct`` claim value
 
    During the transitional phase before full EUDIW operability, national implementations MAY use the ``vct`` value ``urn:it-wallet:pid:1``. Upon reaching full EUDIW operability, all implementations MUST transition to the EUDI-compliant identifier ``urn:eudi:pid:it:1`` specified above.
 
-According to `EU_2024/2977`_ and **Section 4 of the ARF PID Rulebook v1.3** [`EIDAS-ARF`_], the PID in SD-JWT VC format includes the following User Attributes: 
+According to `EU_2024/2977`_ and **Section 4 of the ARF PID Rulebook v1.3** [`EIDAS-ARF`_], the PID in SD-JWT VC format includes the following User Attributes:
 
 .. _table_sd-jwt-vc_pid_parameters:
 .. list-table::
@@ -78,7 +78,7 @@ According to `EU_2024/2977`_ and **Section 4 of the ARF PID Rulebook v1.3** [`EI
       - Commission Implementing Regulation `EU_2024/2977`_
     * - **tax_id_code**
       - REQUIRED if ``personal_administrative_number`` is not present, OPTIONAL otherwise. *String*. National tax identification code of natural person as a String format. It MUST be set according to ETSI EN 319 412-1. For example ``TINIT-<ItalianTaxIdentificationNumber>``.
-      - Domestic extension 
+      - Domestic extension
 
 All the User attributed listed above MUST be selectively disclosable.
 In addition to the mandatory metadata attributes defined in :ref:`SD-JWT header JOSE Parameters Table <table_sd-jwt-vc_jose_header>` and :ref:`SD-JWT Parameters Table <table_sd-jwt-vc_parameters>`, the following metadata attributes are REQUIRED for a PID:

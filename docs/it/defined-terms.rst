@@ -327,7 +327,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Conforme con ARF 2.7.3.
 
     **Wallet Unit Attestation**
-      Oggetto emesso da un Fornitore di Wallet che dimostra che le chiavi utilizzate per il binding crittografico degli Attestati Elettronici risiedono in un WSCD affidabile e verifica che la Wallet Unit non sia stata revocata. Specifico per l'IT-Wallet.  
+      Oggetto emesso da un Fornitore di Wallet che dimostra che le chiavi utilizzate per il binding crittografico degli Attestati Elettronici risiedono in un WSCD affidabile e verifica che la Wallet Unit non sia stata revocata. Specifico per l'IT-Wallet.
 
     **Wallet Instance Attestation**
     **Wallet Attestation**

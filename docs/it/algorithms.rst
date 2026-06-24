@@ -78,15 +78,15 @@ Per le Credenziali emesse in formato mdoc, i seguenti algoritmi DEVONO essere su
     - **Riferimenti**
   * - **ECKA-DH**
     - Elliptic Curve Key Agreement Algorithm - Diffie-Hellman.
-    - Accordo di chiave 
+    - Accordo di chiave
     - BSI TR-03111.
   * - **HKDF**
     - HMAC-based Key Derivation Function.
-    - Derivazione della chiave di sessione 
+    - Derivazione della chiave di sessione
     - :rfc:`5869`.
   * - **AES-256-GCM**
     - Advanced Encryption Standard con Galois/Counter Mode e una lunghezza della chiave di 256.
-    - Cifratura della sessione 
+    - Cifratura della sessione
     - NIST SP 800-38D.
 
 Si RACCOMANDA di supportare i seguenti algoritmi:

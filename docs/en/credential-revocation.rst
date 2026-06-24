@@ -254,7 +254,7 @@ Authentic Sources manage attributes separately from Digital Credentials, which v
 
 Authentic Sources using PDND MUST use Signal Hub as the only notification update mechanism. In this case, they MUST deposit a Signal through the :ref:`signal-hub-endpoint:Signal Collection e-Service` in the following cases:
 
-  - The value of one or more Attributes contained in the Authentic Source's database has changed; 
+  - The value of one or more Attributes contained in the Authentic Source's database has changed;
   - The validity status of the Attributes is updated (revocation or suspension).
 
 In both cases, the Signal MUST have ``signalType`` set to ``UPDATE``.

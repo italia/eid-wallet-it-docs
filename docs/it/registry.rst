@@ -648,34 +648,34 @@ La gerarchia è definita come segue:
 
 **Dominio**
 
-Un **Dominio** rappresenta un'area tematica di alto livello che raggruppa famiglie di Credenziali afferenti allo stesso contesto generale (es. Identità, Salute, Istruzione, Mobilità).  
+Un **Dominio** rappresenta un'area tematica di alto livello che raggruppa famiglie di Credenziali afferenti allo stesso contesto generale (es. Identità, Salute, Istruzione, Mobilità).
 I Domini forniscono un livello organizzativo di primo piano.
 
 **Classe di Credenziale**
 
-Una **Classe di Credenziale** rappresenta una famiglia di Credenziali che condividono natura, funzione o struttura simili (es. Documenti di Identità, Certificati di Stato Civile).  
+Una **Classe di Credenziale** rappresenta una famiglia di Credenziali che condividono natura, funzione o struttura simili (es. Documenti di Identità, Certificati di Stato Civile).
 
 Ogni Classe DOVREBBE definire:
 
-- un identificatore di Classe stabile (URI),  
+- un identificatore di Classe stabile (URI),
 - la semantica attesa della Famiglia di Credenziali.
 
 Le Classi consentono alle Relying Party e alle Soluzioni Wallet di richiedere o abbinare le Credenziali in base alla loro categoria tipologica.
 
 **Tipologia di Credenziale**
 
-Una **Tipologia di Credenziale** rappresenta una Credenziale specifica all'interno di una Classe (es. Credenziale di Viaggio Digitale, Certificato di Nascita, Patente di Guida Mobile).  
+Una **Tipologia di Credenziale** rappresenta una Credenziale specifica all'interno di una Classe (es. Credenziale di Viaggio Digitale, Certificato di Nascita, Patente di Guida Mobile).
 Ogni Tipologia di Credenziale DEVE includere:
 
-- un identificatore univoco,  
-- l'identificatore dell'Emittente della Credenziale,  
+- un identificatore univoco,
+- l'identificatore dell'Emittente della Credenziale,
 - l'insieme degli Attributi che possono essere inclusi nelle presentazioni.
 
 Le Tipologie di Credenziale consentono il targeting preciso per i flussi di verifica conformi o normativamente mandatati.
 
 **Finalità (Intento di Verifica)**
 
-Una **Finalità (Intento di Verifica)** descrive *perché* una credenziale può essere richiesta da una Relying Party (es. Verifica dell'Identità, Verifica dell'Età, Idoneità a servizi specifici).  
+Una **Finalità (Intento di Verifica)** descrive *perché* una credenziale può essere richiesta da una Relying Party (es. Verifica dell'Identità, Verifica dell'Età, Idoneità a servizi specifici).
 Le Finalità DEVONO descrivere **gli esiti della verifica**.
 Ogni Tipologia di Credenziale DEVE dichiarare il proprio Dominio, Classe e Finalità supportate.
 
@@ -685,7 +685,7 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive **POSS
 .. list-table:: Tassonomia delle Credenziali Digitali: Gerarchia e Classificazione
    :class: longtable
    :header-rows: 1
-   :widths: 15 25 30 30  
+   :widths: 15 25 30 30
 
    * - **Dominio**
      - **Descrizione**
@@ -694,11 +694,11 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive **POSS
 
    * - *IDENTITÀ*
      - Credenziali che stabiliscono o confermano l'identità legale di una persona e il suo status personale, civile o giuridico.
-     - 
+     -
        * Documenti di Identità
        * Certificati Anagrafici e di Stato Civile
        * Stato Economico e Giuridico
-     - 
+     -
        * Credenziale di Viaggio Digitale
        * Patente di Guida Mobile (solo Italia)
        * Codice Fiscale / Tessera Sanitaria
@@ -715,11 +715,11 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive **POSS
 
    * - *CASA E FAMIGLIA*
      - Credenziali che attestano la composizione del nucleo familiare, la residenza e i rapporti giuridici o fiscali legati all'abitazione.
-     - 
+     -
        * Documenti Catastali e Immobiliari
        * Documenti Familiari
        * Documenti Tributari Locali
-     - 
+     -
        * Atto di Compravendita
        * Visura Catastale
        * Planimetria Catastale
@@ -732,10 +732,10 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive **POSS
 
    * - *ISTRUZIONE*
      - Credenziali che attestano risultati scolastici, titoli accademici e formazione professionale.
-     - 
+     -
        * Titoli di Studio
        * Certificazioni Professionali
-     - 
+     -
        * Diploma di Licenza Media
        * Diploma di Istruzione Secondaria Superiore
        * Laurea Triennale
@@ -749,10 +749,10 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive **POSS
 
    * - *SALUTE*
      - Credenziali relative alla copertura sanitaria, allo stato di salute e a certificazioni di carattere sanitario.
-     - 
+     -
        * Certificazioni e Idoneità
        * Cartelle Cliniche
-     - 
+     -
        * Tessera Sanitaria (TEAM)
        * Tessera Europea di Assicurazione Malattia (CED)
        * Certificato di Disabilità
@@ -764,12 +764,12 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive **POSS
 
    * - *FINANZIARIO*
      - Credenziali relative a strumenti di pagamento, autorizzazioni finanziarie e prove di pagamento.
-     - 
+     -
        * Strumenti di Pagamento
        * Credenziali e Autorizzazioni di Pagamento
        * Pagamenti e Tributi Pubblici
        * Pagamenti Ricorrenti e Abbonamenti
-     - 
+     -
        * Carta di Pagamento Digitale (debito / credito / prepagata)
        * Carta Virtuale
        * Conto Bancario (IBAN)
@@ -782,10 +782,10 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive **POSS
 
    * - *CULTURA E TEMPO LIBERO*
      - Credenziali che attestano l'appartenenza, l'affiliazione o la partecipazione a programmi culturali o ricreativi.
-     - 
+     -
        * Carte e Benefici Culturali
        * Programmi di Fidelizzazione e Associativi
-     - 
+     -
        * Carta della Cultura
        * Abbonamenti Annuali ai Musei
        * Carta Cinema
@@ -796,11 +796,11 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive **POSS
 
    * - *LAVORO*
      - Credenziali che attestano rapporti di lavoro, status professionale e contribuzione previdenziale.
-     - 
+     -
        * Documenti di Lavoro
        * Stato Occupazionale
        * Accesso
-     - 
+     -
        * Contratto di Lavoro Digitale
        * Curriculum Vitae (CV)
        * Permesso di Soggiorno
@@ -810,7 +810,7 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive **POSS
 
    * - *MOBILITÀ E VIAGGI*
      - Credenziali che attestano diritti di mobilità, stato del veicolo e titolarità in ambito di viaggio.
-     - 
+     -
        * Patenti e Autorizzazioni
        * Documenti del Veicolo
        * Abbonamenti al Trasporto
@@ -818,7 +818,7 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive **POSS
        * Assicurazione Viaggio
        * Prenotazioni
        * Sconti e Agevolazioni
-     - 
+     -
        * Patente di Guida Mobile
        * Patente Nautica
        * Certificato di Proprietà del Veicolo
@@ -836,11 +836,11 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive **POSS
 
    * - *BONUS*
      - Credenziali che attestano il diritto a benefici economici, incentivi o voucher.
-     - 
+     -
        * Benefici Economici e Sussidi
        * Incentivi e Voucher
        * Bonus Salute e Benessere
-     - 
+     -
        * Credenziale Assegno Familiare
        * Credenziale Indennità di Disoccupazione
        * Voucher Digitale
@@ -859,131 +859,131 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive **POSS
      - **Finalità Supportate**
 
    * - Documenti di Identità
-     - 
+     -
        * Verifica dell'identità
        * Verifica dell'età
        * Identificazione della persona
    * - Certificati Anagrafici e di Stato Civile
-     - 
+     -
        * Verifica dello stato civile
        * Diritto di residenza
        * Verifica della composizione del nucleo familiare
    * - Stato Economico e Giuridico
-     - 
+     -
        * Idoneità a servizi o benefici
        * Verifica dello stato giuridico
        * Verifica del casellario giudiziale
    * - Documenti Catastali e Immobiliari
-     - 
+     -
        * Verifica di residenza e nucleo familiare
        * Verifica della proprietà immobiliare
        * Conformità urbanistica e catastale
    * - Documenti Familiari
-     - 
+     -
        * Verifica della composizione del nucleo familiare
        * Idoneità ai servizi sociali basati sul nucleo familiare
    * - Documenti Tributari Locali
-     - 
+     -
        * Conformità agli obblighi tributari locali
        * Verifica dello stato dell'imposta sulla proprietà
    * - Titoli di Studio
-     - 
+     -
        * Verifica del titolo e del grado accademico
        * Idoneità ai percorsi formativi
    * - Certificazioni Professionali
-     - 
+     -
        * Verifica dell'abilitazione professionale
        * Valutazione delle competenze ai fini lavorativi
    * - Certificazioni e Idoneità
-     - 
+     -
        * Verifica dello stato vaccinale
        * Verifica dello stato di idoneità
        * Accesso ad aree con restrizioni sanitarie
    * - Cartelle Cliniche
-     - 
+     -
        * Accesso ai servizi sanitari
        * Condivisione della documentazione medica
        * Validazione della storia clinica
    * - Strumenti di Pagamento
-     - 
+     -
        * Autorizzazione al pagamento
        * Esecuzione del pagamento
        * Prova di pagamento
    * - Credenziali e Autorizzazioni di Pagamento
-     - 
+     -
        * Gestione delle autorizzazioni finanziarie
        * Strong Customer Authentication (SCA)
    * - Pagamenti e Tributi Pubblici
-     - 
+     -
        * Prova di pagamento delle tasse
        * Prova di pagamento dei tributi
        * Validazione del bollo digitale
    * - Pagamenti Ricorrenti e Abbonamenti
-     - 
+     -
        * Gestione dei pagamenti ricorrenti
        * Verifica del mandato di abbonamento
    * - Carte e Benefici Culturali
-     - 
+     -
        * Accesso ai servizi culturali
        * Accesso ai servizi ricreativi
        * Applicazione degli sconti per i soci
    * - Programmi di Fidelizzazione e Associativi
-     - 
+     -
        * Verifica dell'affiliazione
        * Verifica della partecipazione
        * Utilizzo dei benefici fedeltà
    * - Documenti di Lavoro
-     - 
+     -
        * Verifica dello stato occupazionale
        * Validazione del profilo professionale
    * - Stato Occupazionale
-     - 
+     -
        * Verifica dei contributi previdenziali
        * Idoneità ai benefici correlati all'occupazione
    * - Patenti e Autorizzazioni
-     - 
+     -
        * Verifica dei diritti di guida
        * Verifica dei diritti di navigazione
        * Controlli delle forze dell'ordine
    * - Documenti del Veicolo
-     - 
+     -
        * Verifica dell'immatricolazione del veicolo
        * Verifica della revisione del veicolo
        * Verifica dello stato assicurativo
    * - Abbonamenti al Trasporto
-     - 
+     -
        * Accesso ai servizi di trasporto
        * Verifica dell'abbonamento al trasporto pubblico
    * - Documenti di Viaggio
-     - 
+     -
        * Diritto di viaggio o circolazione
        * Verifica dell'identità per la mobilità transfrontaliera
    * - Assicurazione Viaggio e Prenotazioni
-     - 
+     -
        * Verifica della copertura assicurativa di viaggio
        * Verifica della prenotazione alloggio
        * Verifica della prenotazione di trasporto
    * - Sconti e Agevolazioni
-     - 
+     -
        * Applicazione degli sconti per i soci
        * Accesso alle agevolazioni turistiche
    * - Benefici Economici e Sussidi
-     - 
+     -
        * Verifica dell'idoneità ai benefici familiari
        * Verifica dell'idoneità ai sussidi di disoccupazione
        * Erogazione del supporto economico
    * - Incentivi e Voucher
-     - 
+     -
        * Utilizzo dei voucher digitali
        * Utilizzo degli incentivi all'acquisto
        * Verifica dell'idoneità al cashback
    * - Bonus Salute e Benessere
-     - 
+     -
        * Accesso ai bonus sanitari
        * Utilizzo dei voucher per la salute mentale
        * Utilizzo dei voucher per lo sport
    * - Affiliazione Lavorativa
-     - 
+     -
        * Verifica del permesso di accesso
 
 Ogni Credenziale DEVE specificare domini, classi e finalità per abilitare sia gli **Scenari Credential-Specific** che gli **Scenari Credential-Agnostic** in base ai requisiti della Relying Party e ai pattern di richiesta di presentazione, come definito nelle tabelle di mappatura sopra.
