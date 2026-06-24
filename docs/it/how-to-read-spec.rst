@@ -263,7 +263,7 @@ Il Relying Party è l'utilizzatore finale delle credenziali. Il suo compito è t
 
 - **Sezione** ref:`digital-credential-flows:Flussi relativi agli attestati elettronici`: per l’implementazione del flusso di presentazione sia per scenari remoti che di prossimità (ref:`credential-presentation:12.2`. 
 
-- **Sezione** ref:`endpoints:Endpoints`: per implementare correttamente le interfacce di ricezione e verifica dei dati (riferimento ai paragrafi ref:`relying-party-endpoints:Endpoint della Relying Party` e ref:`relying-party-endpoints:Endpoint del Backend del Provider di Relying Party`). 
+- **Sezione** :ref:`endpoints:Endpoints`: per implementare correttamente le interfacce di ricezione e verifica dei dati (riferimento ai paragrafi :ref:`relying-party-endpoints:Endpoint della Relying Party` e :ref:`relying-party-endpoints:Endpoint del Backend del Provider di Relying Party`). 
 
 - **Sezione** :ref:`security-privacy-considerations:Considerazioni di Sicurezza e Privacy`: per implementare soluzioni che rispettino tutti i parametri di sicurezza.  
 
