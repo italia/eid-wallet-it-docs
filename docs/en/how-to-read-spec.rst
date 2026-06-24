@@ -212,7 +212,7 @@ To become registered as Credential Issuer within the system, by completing the a
 - **Section** :ref:`onboarding-high-level:Onboarding System': Overview of the onboarding system architecture and the Credential Issuer registration process.
 - **Section** :ref:`entity-onboarding:Entity Onboarding': Focus on technical implementation procedures for Credential Issuer registration.
 - **Section** :ref:`x5c-evaluation:X.509 Certificate Management Operations': Operational procedures for managing X.509 Certificates within the IT-Wallet federation.
-
+- **Section** :ref:`entity-onboarding:Entity Onboarding': Focus on technical implementation procedures for Credential Issuer registration.
 
 
 **Relying Party**
@@ -262,13 +262,10 @@ To become registered as Relying Party within the system, by completing the admin
 
 - **Section** :ref:`onboarding-high-level:Onboarding System': Overview of the onboarding system architecture and the Relying Party registration process.
 - **Section** :ref:`entity-onboarding:Entity Onboarding`: Focus on implementation procedures for Relying Party registration. 
-- **Section** :ref:`x5c-evaluation:X.509 Certificate Management Operations': Operational procedures for managing X.509 Certificates within the IT-Wallet federation
+- **Section** :ref:`x5c-evaluation:X.509 Certificate Management Operations': Operational procedures for managing X.509 Certificates within the IT-Wallet federation.
 
-- **Section**: :ref:`est-plans:Test Plans': Information on how test environments support implementers, auditors, and compliance testing in validating Wallet Solution behavior. 
 
-NOTE
 
-For implementers working on solutions that cover multiple roles (e.g., a combination of Credential Provider Solutions and Relying Parties), it is recommended to review the sections for all relevant roles before proceeding with development. It is important to pay particular attention to Entity Configuration requirements and to federation flows that apply across multiple roles.
 
 
 
