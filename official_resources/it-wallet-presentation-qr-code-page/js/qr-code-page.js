@@ -7,7 +7,7 @@ const QR_CONFIG_FALLBACK = {
   request_uri_method: 'post',
   qrcode_size: 250,
   qrcode_color: '#000000',
-  qrcode_logo_path: 'img/IT-Wallet-Logo-Primary-BlueItalia.svg',
+  qrcode_logo_path: '../shared-ui/img/IT-Wallet-Logo-Primary-BlueItalia.svg',
   qrcode_expiration_time: 120,
   selection_page_url: '../it-wallet-selection-page/it-wallet.html',
 };
@@ -16,6 +16,12 @@ let demoConfig = { ...QR_CONFIG_FALLBACK };
 let expirationTime = demoConfig.qrcode_expiration_time;
 let countdown = null;
 let countdownStarted = false;
+
+function resolveAsset(path) {
+  if (!path) return path;
+  if (/^(https?:|\/)/.test(path)) return path;
+  return new URL(path, window.location.href).href;
+}
 
 function getBasePath() {
   const path = window.location.pathname;
@@ -58,7 +64,7 @@ function applyQrVisualConfig(config) {
 
   const logo = document.querySelector('.icon-qr-code');
   if (logo) {
-    logo.src = getBasePath() + config.qrcode_logo_path;
+    logo.src = resolveAsset(config.qrcode_logo_path);
   }
 
   const payloadPreview = document.getElementById('qr-payload-preview');

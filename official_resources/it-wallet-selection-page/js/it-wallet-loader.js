@@ -7,6 +7,13 @@ const SHOW_CARD_LEARN_MORE = false;
 const SEARCH_MIN_WALLETS = 7;
 const WALLET_LOADING_FALLBACK = 'Caricamento in corso...';
 const WALLET_ERROR_FALLBACK = 'Impossibile caricare l\'elenco wallet. Ricarica la pagina.';
+const SHARED_UI = '../shared-ui/';
+
+function resolveAsset(path) {
+  if (!path) return path;
+  if (/^(https?:|\/)/.test(path)) return path;
+  return new URL(path, window.location.href).href;
+}
 
 function getWalletGrid() {
   return document.getElementById('wallet-grid');
@@ -227,7 +234,7 @@ function createWalletCard(wallet, resource, basePath) {
   const left = document.createElement('div');
   left.className = 'it-wallet-card-left';
   const img = document.createElement('img');
-  img.src = (wallet.logo_uri || '').startsWith('/') ? wallet.logo_uri : basePath + (wallet.logo_uri || '');
+  img.src = resolveAsset(wallet.logo_uri || SHARED_UI + 'img/wallet-placeholder.svg');
   img.alt = '';
   img.setAttribute('aria-hidden', 'true');
   img.className = 'wallet-card-logo flex-shrink-0';
@@ -246,7 +253,7 @@ function createWalletCard(wallet, resource, basePath) {
   const arrowSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
   arrowSvg.setAttribute('class', 'icon');
   const arrowUse = document.createElementNS('http://www.w3.org/2000/svg', 'use');
-  arrowUse.setAttribute('href', basePath + 'svg/sprites.svg#it-arrow-right');
+  arrowUse.setAttribute('href', SHARED_UI + 'svg/sprites.svg#it-arrow-right');
   arrowSvg.appendChild(arrowUse);
   arrow.appendChild(arrowSvg);
 
@@ -295,7 +302,7 @@ function createWalletCard(wallet, resource, basePath) {
     extIcon.setAttribute('class', 'icon icon-sm ms-1');
     extIcon.setAttribute('aria-hidden', 'true');
     const useEl = document.createElementNS('http://www.w3.org/2000/svg', 'use');
-    useEl.setAttribute('href', basePath + 'svg/sprites.svg#it-external-link');
+    useEl.setAttribute('href', SHARED_UI + 'svg/sprites.svg#it-external-link');
     extIcon.appendChild(useEl);
     howToGetLink.appendChild(extIcon);
 
@@ -341,7 +348,7 @@ function renderWallets(wallets, resource, basePath) {
     const emptyDiv = document.createElement('div');
     emptyDiv.className = 'col-12 d-flex flex-column align-items-center justify-content-center py-5';
     const img = document.createElement('img');
-    img.src = basePath + 'img/error-icon.svg';
+    img.src = resolveAsset(SHARED_UI + 'img/error-icon.svg');
     img.alt = '';
     img.className = 'it-wallet-no-results-icon mb-3';
     img.setAttribute('aria-hidden', 'true');

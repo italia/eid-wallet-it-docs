@@ -6,7 +6,7 @@ Pagina ufficiale di *discovery* per la selezione del metodo di autenticazione (i
 
 `disco.html` è la pagina con cui l'utente sceglie il metodo di autenticazione (IT-Wallet, CIE, SPID, eIDAS, CNS, IDEM, ...). I metodi e i relativi testi sono caricati dinamicamente a runtime dai file in `locales/` tramite [i18next](https://www.i18next.com/), quindi è possibile aggiungere, rimuovere o tradurre le card senza modificare l'HTML.
 
-Questo pacchetto è **autoconsistente**: tutti gli asset statici necessari (CSS, JavaScript, font, immagini, sprite SVG e file di localizzazione) sono inclusi e referenziati con percorsi relativi.
+Questo pacchetto condivide con le altre pagine HTML ufficiali gli asset in `../shared-ui/` (CSS, JavaScript comuni, font, sprite SVG, favicon e loghi condivisi). Nella cartella `discovery-page/` restano solo i file specifici della discovery (HTML, loader, localizzazione, asset SPID/CIE/IT-Wallet).
 
 ## Caratteristiche
 
@@ -83,28 +83,20 @@ La libreria i18next è caricata da CDN (jsDelivr); è quindi richiesta una conne
 
 ```
 discovery-page/
-├── README.md                       # Questa documentazione
-├── disco.html                      # Pagina di selezione del metodo di autenticazione
-├── css/                            # Fogli di stile
-│   ├── style.css                   # Stili della pagina e delle card
-│   ├── bootstrap-italia.min.css    # Bootstrap Italia (autoconsistente, asset in data-URI)
-│   └── ita.min.css                 # Componenti .Italia aggiuntivi
-├── js/                             # Script
-│   ├── eid-cards-loader.js         # Logica di rendering delle card (i18next + locales)
-│   ├── header-lang-dropdown.js     # Selettore di lingua nell'header
-│   ├── ita.min.js                  # Classe Ita: inietta i gestori SPID nel menu
-│   ├── spid-idps-default.json      # Elenco dei gestori (IdP) SPID
-│   ├── bootstrap-italia.bundle.min.js
-│   └── jquery-3.7.0.min.js
-├── locales/                        # Testi e definizione dei metodi (i18next)
+├── README.md
+├── disco.html
+├── js/
+│   ├── eid-cards-loader.js
+│   └── spid-idps-default.json
+├── locales/
 │   ├── eid-it.json
 │   └── eid-en.json
-├── svg/sprites.svg                 # Sprite delle icone .Italia
-├── img/                            # Loghi dei metodi (eIDAS, CNS, IDEM)
-├── cie/cie_white.svg               # Logo CIE
-├── it-wallet/wallet_icon.svg       # Icona IT-Wallet
-├── spid/                           # Asset SPID (pulsante, icona, favicon)
-└── bootstrap-italia/fonts/         # Font statici (Titillium Web, Lora, Roboto Mono)
+├── img/                            # Loghi specifici (eIDAS, CNS, IDEM, gestori SPID)
+├── cie/cie_white.svg
+├── it-wallet/wallet_icon.svg
+└── spid/                           # Pulsante e script SPID (favicon in ../shared-ui/spid/)
+
+../shared-ui/                       # Asset condivisi con selection e QR page (vedi README)
 ```
 
 ## Libreria di Riferimento

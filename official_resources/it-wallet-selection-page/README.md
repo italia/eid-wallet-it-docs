@@ -6,7 +6,7 @@ Pagina ufficiale per la selezione del portafoglio digitale (IT-Wallet) con cui p
 
 `it-wallet.html` è la pagina in cui l'utente, dopo aver scelto IT-Wallet nella *discovery page*, seleziona l'app/portafoglio digitale con cui autenticarsi. L'elenco dei wallet è caricato dinamicamente a runtime da `data/it-wallets.json`, mentre i testi dell'interfaccia provengono dai file in `locales/` tramite [i18next](https://www.i18next.com/). Quando i wallet disponibili sono numerosi, vengono mostrati gli strumenti di ricerca e ordinamento.
 
-Questo pacchetto è **autoconsistente**: tutti gli asset statici necessari (CSS, JavaScript, font, immagini, sprite SVG, file di localizzazione e dati) sono inclusi e referenziati con percorsi relativi.
+Questo pacchetto condivide con le altre pagine HTML ufficiali gli asset in `../shared-ui/` (CSS, JavaScript comuni, font, sprite SVG, favicon e loghi condivisi). Nella cartella `it-wallet-selection-page/` restano solo i file specifici della selezione wallet (HTML, loader, dati, localizzazione e icone UI di ricerca/ordinamento).
 
 ## Caratteristiche
 
@@ -56,25 +56,15 @@ La libreria i18next è caricata da CDN (jsDelivr); è quindi richiesta una conne
 
 ```
 it-wallet-selection-page/
-├── README.md                       # Questa documentazione
-├── it-wallet.html                  # Pagina di selezione del wallet
-├── css/                            # Fogli di stile
-│   ├── style.css                   # Stili della pagina e delle card wallet
-│   ├── bootstrap-italia.min.css    # Bootstrap Italia (autoconsistente, asset in data-URI)
-│   └── ita.min.css                 # Componenti .Italia aggiuntivi
-├── js/                             # Script
-│   ├── it-wallet-loader.js         # Logica di rendering, ricerca e ordinamento (i18next + data)
-│   ├── header-lang-dropdown.js     # Selettore di lingua nell'header
-│   └── bootstrap-italia.bundle.min.js
-├── locales/                        # Testi dell'interfaccia (i18next)
-│   ├── it-wallet-it.json
-│   └── it-wallet-en.json
-├── data/it-wallets.json            # Elenco dei wallet disponibili
-├── svg/sprites.svg                 # Sprite delle icone .Italia
-├── img/                            # Loghi e icone (logo IT-Wallet, icone UI, placeholder)
-├── it-wallet/io_logo.svg           # Logo dell'app IO
-├── spid/favicon-32x32.png          # Favicon
-└── bootstrap-italia/fonts/         # Font statici (Titillium Web, Lora, Roboto Mono)
+├── README.md
+├── it-wallet.html
+├── js/it-wallet-loader.js
+├── locales/it-wallet-it.json, it-wallet-en.json
+├── data/it-wallets.json
+├── img/                            # Icone UI ricerca/ordinamento
+└── it-wallet/io_logo.svg
+
+../shared-ui/                       # Asset condivisi (vedi README)
 ```
 
 ## Libreria di Riferimento

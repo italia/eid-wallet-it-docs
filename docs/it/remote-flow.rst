@@ -121,6 +121,10 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
 
     https://wallet-solution.example.org/authorization?client_id=openid_federation%3A%2F%2Frelying-party.example.org&request_uri=https%3A%2F%2Frelying-party.example.org&request_uri_method=post
 
+  Quando si utilizza un custom URL scheme al posto di un ``authorization_endpoint`` HTTPS, gli stessi parametri di query sono veicolati nel payload del Codice QR (ad esempio ``haip://?client_id=...&request_uri=...&request_uri_method=post``).
+
+  Un template HTML ufficiale e autoconsistente per questa pagina QR **Cross Device**—con header, footer, accessibilità, testi multilingua e payload dimostrativo configurabile—è disponibile nella sezione :ref:`official-resources:Componenti HTML` (**IT-Wallet Presentation QR Code Page**). È raggiungibile dalle card della **IT-Wallet Selection Page** nella stessa sezione.
+
   Mentre, nel **Flusso Same Device**, la Relying Party risponde tramite HTTP Response Redirect (con codice di stato impostato a ``302``) o mostra all'utente una pagina html con un pulsante href, aventi l'URL che fornisce le stesse informazioni del Flusso Cross Device (:ref:`WP_076–077 <wallet-credential-presentation-testcases>`). 
   Di seguito è riportato un esempio non normativo per un Request Object by reference:
 
