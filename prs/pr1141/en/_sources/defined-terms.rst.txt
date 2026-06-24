@@ -166,7 +166,7 @@ Below is the description of acronyms and definitions which are useful for furthe
 
     **Electronic Attestation of Public Interest**
     **Credential of Public Interest**
-      Electronic Attestation of Attributes that contains Attributes intended to certify the release, by the State or other public administrations, of authorizations, certifications, qualifications, identity and recognition documents, receipts of revenue, or to assume a fiduciary value and protection of public faith afterwards their issuance or the entries made on them and, in general, when they are considered security documents pursuant to Article 2, paragraph 10-bis, Law 13 July 1966, no. 559. 
+      Electronic Attestation of Attributes that contains Attributes intended to certify the release, by the State or other public administrations, of authorizations, certifications, qualifications, identity and recognition documents, receipts of revenue, or to assume a fiduciary value and protection of public faith afterwards their issuance or the entries made on them and, in general, when they are considered security documents pursuant to Article 2, paragraph 10-bis, Law 13 July 1966, no. 559.
       Not present in ARF 2.7.3; specific to IT-Wallet.
 
     **Person Identification Data**
@@ -225,7 +225,7 @@ Below is the description of acronyms and definitions which are useful for furthe
       The PDND platform managed by the PDND Manager which enable collection and distribution of Signals. It consists of two PDND e-Services: Signal Collection and Signal Distribution.
 
     **Signal (Signal Hub)**
-      A digital signal propagated through the PDND Signal Hub. It is used by Authentic Sources to notify Credential Issuers about updates to statuses and/or information within a domain managed by the Authentic Source itself. 
+      A digital signal propagated through the PDND Signal Hub. It is used by Authentic Sources to notify Credential Issuers about updates to statuses and/or information within a domain managed by the Authentic Source itself.
 
     **Supervision Process**
       Process by a Supervisory Body to review and ensure proper functioning of the Wallet Provider and others.
@@ -347,12 +347,12 @@ Below is the description of acronyms and definitions which are useful for furthe
 
     **Wallet Unit Attestation**
      Data object issued by a Wallet Provider that proves the keys used for key binding of Credentials reside in a trustworthy WSCD,
-     and checks the Wallet Unit has not been revoked. Specific to IT-Wallet. 
+     and checks the Wallet Unit has not been revoked. Specific to IT-Wallet.
 
     **Wallet Instance Attestation**
     **Wallet Attestation**
       Data object issued by a Wallet Provider proving the integrity of the Wallet Instance.
-      Specific to IT-Wallet. 
+      Specific to IT-Wallet.
 
     **Digital Credential Catalog**
       Electronic catalog containing information about the formats and schemes of Digital Credentials, the data contained and the Authentic Sources. The Catalog contains additional information that allows for the establishment of the authenticity and reliability of the information contained therein.
@@ -462,7 +462,7 @@ Below are the main acronyms used in the document:
   * - **LoA**
     - Level of Assurance
   * - **NAB**
-    - National Accreditation Body 
+    - National Accreditation Body
   * - **OID4VP**
     - OpenID for Verifiable Presentation
   * - **PDND**
@@ -485,4 +485,5 @@ Below are the main acronyms used in the document:
     - Wallet Secure Cryptographic Application
   * - **WSCD**
     - Wallet Secure Cryptographic Device
+
 

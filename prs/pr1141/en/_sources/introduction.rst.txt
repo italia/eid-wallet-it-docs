@@ -18,7 +18,7 @@ The main roles in the Wallet ecosystem are listed as follow:
 - **Users**: individuals who own a Wallet Instance and have control over the Digital Credentials they can request, acquire, store, and present to Relying Parties;
 
 In this model, the Credential Issuer (e.g., an educational institution) provides Digital Credentials to the User, who can store them in their Wallet Instance.
-The Wallet Instance is typically provided as a mobile application on the User's smartphone. 
+The Wallet Instance is typically provided as a mobile application on the User's smartphone.
 
 What distinguishes this new approach from previous identity access management systems is that Digital Credentials refer to characteristics, qualities or properties, already authenticated at source. These Digital Credentials can be used by the User without the Credential Issuers being aware of their use. During the use of the Digital Credentials, no usage information is released to third parties as the relationship is exclusive between the User and the Relying Party, in a transparent and informed manner.
 The development of the IT-Wallet System includes a phased experimentation process, aimed at testing the Wallet and assessing its impact in real-world contexts. This process is designed to validate technical components, user experience elements, and interoperability mechanisms, while ensuring a progressive and controlled adoption of the System. Moreover, it supports the continuous improvement of the IT-Wallet and its gradual alignment with the European Digital Identity Wallet (EUDI Wallet), both in terms of architecture and compliance with evolving European specifications.

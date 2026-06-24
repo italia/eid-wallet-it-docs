@@ -297,7 +297,6 @@ Quando più Attestati Elettronici vengono emessi insieme in un singolo batch, il
   Poiché l'interfaccia utente del Wallet in genere visualizza un batch come un singolo Attestato Elettronico (ad esempio, con 3 utilizzi rimanenti), un'eliminazione da parte dell'utente rimuove l'intero batch localmente. Per impostazione predefinita non richiede la revoca presso il Fornitore di Attestati Elettronici. L’Istanza del Wallet PUÒ offrire all’Utente un prompt opzionale per richiedere la revoca presso il Fornitore di Attestati Elettronici nell’ambito del flusso di eliminazione.
 
 
-
 Meccanismi di Verifica della Validità
 -------------------------------------
 

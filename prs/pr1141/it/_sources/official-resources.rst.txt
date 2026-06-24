@@ -1,4 +1,5 @@
 .. include:: ../common/common_definitions.rst
+.. Incluso tramite normative-ref.rst al livello di titolo '-' (livello 1).
 
 
 Risorse Ufficiali
@@ -33,7 +34,9 @@ Componenti HTML
 
 I seguenti componenti HTML ufficiali sono disponibili nella cartella `official_resources/ <https://github.com/italia/eid-wallet-it-docs/tree/versione-corrente/official_resources>`_ di questo repository:
 
-- **Authentication Button Component**: Componente HTML/CSS ufficiale per l'autenticazione tramite IT-Wallet, basato sulla libreria `Bootstrap Italia <https://italia.github.io/bootstrap-italia/docs/componenti/buttons/>`_ - `Vedi il componente <https://github.com/italia/eid-wallet-it-docs/tree/versione-corrente/official_resources/authentication-button>`_ - `Demo live <_static/authentication-button/authentication-button.html>`_
+- **Authentication Button Component**: Componente HTML/CSS ufficiale per l'autenticazione tramite IT-Wallet, basato sulla libreria `Bootstrap Italia <https://italia.github.io/bootstrap-italia/docs/componenti/buttons/>`__ - `Vedi il componente <https://github.com/italia/eid-wallet-it-docs/tree/versione-corrente/official_resources/authentication-button>`__ - `Demo live <_static/authentication-button/authentication-button.html>`__
+- **Discovery Page**: Template HTML/CSS/JS ufficiale e autoconsistente per la selezione del metodo di autenticazione (identità digitale), basato sulla libreria `Bootstrap Italia <https://italia.github.io/bootstrap-italia/>`__ - `Vedi il template <https://github.com/italia/eid-wallet-it-docs/tree/versione-corrente/official_resources/discovery-page>`__ - `Demo live <_static/discovery-page/disco.html>`__
+- **IT-Wallet Selection Page**: Template HTML/CSS/JS ufficiale e autoconsistente per la selezione del portafoglio digitale (wallet) con cui proseguire l'autenticazione, basato sulla libreria `Bootstrap Italia <https://italia.github.io/bootstrap-italia/>`__ - `Vedi il template <https://github.com/italia/eid-wallet-it-docs/tree/versione-corrente/official_resources/it-wallet-selection-page>`__ - `Demo live <_static/it-wallet-selection-page/it-wallet.html>`__
 
 Brand Manual
 ^^^^^^^^^^^^

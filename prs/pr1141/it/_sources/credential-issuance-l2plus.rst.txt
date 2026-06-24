@@ -391,7 +391,7 @@ Body JWT decodificato:
 - Memorizzare nuovo valore ``mrtd_pop_nonce`` in modo sicuro per richieste di validazione successive.
 - Validare informazioni MRZ opzionali se presenti nella risposta.
 - Estrarre HTTP target URI (``htu``) e metodo (``htm``) per lo step successivo.
-- Gestire errori, fornendo feedback utente relativo. 
+- Gestire errori, fornendo feedback utente relativo.
 - Memorizzare dati di challenge temporaneamente in memoria sicura (non storage persistente).
 - Preparare sessione di lettura NFC.
 

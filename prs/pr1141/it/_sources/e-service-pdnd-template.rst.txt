@@ -128,7 +128,7 @@ Il servizio elettronico template **DEVE** rispettare le seguenti proprietà:
 Istanziazione del Template per Fonte Autentica
 """"""""""""""""""""""""""""""""""""""""""""""
 
-Ogni Fonte Autentica **DOVREBBE** istanziare il servizio elettronico template *IT Wallet - Fonte Autentica* nella PDND.  
+Ogni Fonte Autentica **DOVREBBE** istanziare il servizio elettronico template *IT Wallet - Fonte Autentica* nella PDND.
 Il processo di istanziazione risulterà in un nuovo servizio elettronico che **DEVE** soddisfare i seguenti requisiti:
 
     - **Signal Hub**: True

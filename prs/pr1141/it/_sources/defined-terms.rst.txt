@@ -289,7 +289,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Conforme con ARF 2.7.3.
 
     **Utente**
-      Persona fisica o giuridica che utilizza servizi fiduciari o mezzi di identificazione elettronica. 
+      Persona fisica o giuridica che utilizza servizi fiduciari o mezzi di identificazione elettronica.
       Conforme con ARF 2.7.3.
 
     **Verificatore di Attestati Elettronici**
@@ -327,7 +327,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Conforme con ARF 2.7.3.
 
     **Wallet Unit Attestation**
-      Oggetto emesso da un Fornitore di Wallet che dimostra che le chiavi utilizzate per il binding crittografico degli Attestati Elettronici risiedono in un WSCD affidabile e verifica che la Wallet Unit non sia stata revocata. Specifico per l'IT-Wallet.  
+      Oggetto emesso da un Fornitore di Wallet che dimostra che le chiavi utilizzate per il binding crittografico degli Attestati Elettronici risiedono in un WSCD affidabile e verifica che la Wallet Unit non sia stata revocata. Specifico per l'IT-Wallet.
 
     **Wallet Instance Attestation**
     **Wallet Attestation**
@@ -393,7 +393,7 @@ Di seguito sono riportati i principali termini e definizioni relativi agli aspet
       Modalità di visualizzazione compatta dell'Attestato Elettronico che consente di riconoscerla e distinguerla in un elenco di Attestati Elettronici mediante la presenza di dati o elementi minimi.
 
     **Selection Page**
-      È la pagina presente nel Touchpoint della Relying Party o delle terze parti che supportano un Credential Offer dove l'Utente viene a conoscenza di tutte le Soluzioni Wallet presenti nel Registro del Sistema IT-Wallet e può scegliere con quale proseguire il processo di Autenticazione, presentazione o erogazione. 
+      È la pagina presente nel Touchpoint della Relying Party o delle terze parti che supportano un Credential Offer dove l'Utente viene a conoscenza di tutte le Soluzioni Wallet presenti nel Registro del Sistema IT-Wallet e può scegliere con quale proseguire il processo di Autenticazione, presentazione o erogazione.
 
     **Modello di Servizio**
       Insieme di interazioni tra attori e Touchpoint necessari per l'erogazione e la fruizione del servizio.
@@ -473,7 +473,7 @@ Conformemente agli RFC 2119 e 8174 le seguenti parole chiave solamente quando ap
 
   - DEVE/DEVONO: indicano un requisito che è necessario soddisfare.
   - NON DEVE/NON DEVONO: indicano un divieto assoluto.
-  - PUO'/POSSONO: indicano un requisito opzionale, ovvero si può scegliere di soddisfarlo o meno senza alcun tipo di implicazione. 
+  - PUO'/POSSONO: indicano un requisito opzionale, ovvero si può scegliere di soddisfarlo o meno senza alcun tipo di implicazione.
   - DOVREBBE/DOVREBBERO/RACCOMANDATO: indicano un requisito consigliato/raccomandato, ovvero si devono tenere in considerazione tutte le implicazioni derivanti da una eventuale scelta alternativa.
   - NON DOVREBBE/NON DOVREBBERO/NON RACCOMANDATO: indicano un requisito che non è consigliato/raccomandato, ovvero si devono tenere in considerazione tutte le implicazioni derivanti dalla eventuale scelta di applicare comunque il requisito.
   - OBBLIGATORIO: necessario

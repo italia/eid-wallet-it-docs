@@ -1,5 +1,5 @@
 .. include:: ../common/common_definitions.rst
-.. "included" file, so we start with '-' title level
+.. Incluso tramite relying-party-solution.rst al livello di titolo '-' (livello 1).
 
 App di Verifica
 ---------------
@@ -48,7 +48,6 @@ In questa sezione vengono presentati le macchine a stati finiti per spiegare gli
 Come mostrato in :numref:`fig_RelyingParty_Instance_Mobile_Lifecycle`, l'App di Verifica Mobile ha quattro stati distinti: **Installed**, **Unverified**, **Verified** e **Uninstalled**. Ogni stato rappresenta uno stato funzionale specifico e determina le azioni che possono essere eseguite.
 
 
-
 Transizione a Installed
 """""""""""""""""""""""
 
@@ -89,7 +88,6 @@ Transizione a Unverified
 La scadenza del Certificato di Accesso (transizione **CERT EXP**) porta allo stato **Unverified**.
 
 In questo stato, l'App di Verifica può ancora richiedere la presentazione di Attestati Elettronici alle Istanze del Wallet durante il periodo di grazia. Tuttavia, poiché il Certificato è scaduto, un disclaimer specifico DEVE essere mostrato all'Utente dell'Istanza del Wallet durante il flusso di presentazione; per questo motivo, questa operazione è rappresentata dall'etichetta **PID/(Q)EAA PRE**. Questo è necessario per supportare i flussi di presentazione offline. Dopo che il periodo di grazia è trascorso, la Relying Party Instance NON DEVE più richiedere presentazioni e sarà de-registrata.
-
 
 
 Transizione a Uninstalled

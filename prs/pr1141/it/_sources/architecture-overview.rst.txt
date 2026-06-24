@@ -4,7 +4,7 @@
 Panoramica dell'Architettura
 ============================
 
-Il Sistema IT-Wallet è un ecosistema federato che consente la gestione sicura dell'Identità Digitale e lo scambio di Attestati Elettronici per cittadini e organizzazioni. 
+Il Sistema IT-Wallet è un ecosistema federato che consente la gestione sicura dell'Identità Digitale e lo scambio di Attestati Elettronici per cittadini e organizzazioni.
 L'ecosistema IT-Wallet è costruito su un'architettura multi-livello, dove gli organi di governance stabiliscono e mantengono l'infrastruttura di trust, gli Attori Primari implementano e gestiscono le Soluzioni Tecniche, e i sistemi esterni forniscono servizi aggiuntivi.
 
 I seguenti diagrammi illustrano la panoramica dell'architettura IT-Wallet.

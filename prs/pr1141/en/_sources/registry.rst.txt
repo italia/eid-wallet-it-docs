@@ -4,7 +4,7 @@
 Registry Infrastructure
 ==========================
 
-The IT-Wallet ecosystem operates through a registry infrastructure that provides standardized data definitions, entity registration, and Credential discovery capabilities. The registry system consists of multiple interconnected components that support the complete lifecycle of digital Credential operations from entity onboarding to Credential presentation. 
+The IT-Wallet ecosystem operates through a registry infrastructure that provides standardized data definitions, entity registration, and Credential discovery capabilities. The registry system consists of multiple interconnected components that support the complete lifecycle of digital Credential operations from entity onboarding to Credential presentation.
 
 The registry architecture addresses semantic standardization, federation trust management, and Credential discovery requirements through specialized registry components that ensure interoperability and compliance across the ecosystem.
 
@@ -488,7 +488,7 @@ The Authentic Source Registry MUST contain the following parameters for each reg
    * - **data_capabilities[].contacts**
      - String Array
      - OPTIONAL. Array of customer service contacts or user support channels (e.g., email address).
-  
+
 .. note::
   For further details on the required features and the expected outcome in terms of user experience, see the Section :ref:`functionalities:Issuance from the Wallet Instance Catalog` for the parameter `data_capabilities.user_information` and Section :ref:`functionalities:Focus on Electronic Attestations of Attributes` for the parameters `organization_info.logo_uri`, `organization_info.logo_extended_uri`, `data_capabilities.logo_uri`, `data_capabilities.background_color` and `data_capabilities.available_claims.order`.
 
@@ -552,7 +552,7 @@ Federation Registry operations are accessed through the Trust Anchor's federatio
 
 .. note::
    Federation endpoints are available through both the registry discovery mechanism (for unified registry access) and the Trust Anchor's Entity Configuration at ``.well-known/openid-federation`` (for federation-specific operations). Both sources provide the same endpoint URLs but serve different discovery patterns: registry discovery for initial ecosystem orientation, Entity Configuration for standard OpenID Federation 1.0 compliance.
-   
+
    For complete technical specifications of federation protocols, entity configurations, trust evaluation mechanisms, and trust chain validation, see :ref:`trust-infrastructure:The Infrastructure of Trust`.
 
 Digital Credentials Catalog
@@ -642,42 +642,42 @@ In the section :ref:`registry:Digital Credentials Catalog Structure` an example 
 Digital Credentials Hierarchy
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Digital Credentials recognized within the IT-Wallet ecosystem are classified and standardized according to the following multi-level hierarchical model designed to improve semantic clarity, credential discovery, and compatibility with both credential-specific and claim-based verification workflows. 
+Digital Credentials recognized within the IT-Wallet ecosystem are classified and standardized according to the following multi-level hierarchical model designed to improve semantic clarity, credential discovery, and compatibility with both credential-specific and claim-based verification workflows.
 
 The hierarchy is defined as follows:
 
 **Domain**
 
-A **Domain** represents a high-level thematic area grouping Credential families that relate to the same broad context (e.g., Identity, Health, Education, Mobility).  
+A **Domain** represents a high-level thematic area grouping Credential families that relate to the same broad context (e.g., Identity, Health, Education, Mobility).
 Domains provide a top-level organizational layer.
 
 **Credential Class**
 
-A **Credential Class** represents a family of Credentials sharing similar nature, function, or structure (e.g., Identification Documents, Civil Status Certificates).  
+A **Credential Class** represents a family of Credentials sharing similar nature, function, or structure (e.g., Identification Documents, Civil Status Certificates).
 
 Each Class SHOULD define:
 
-- a stable Class identifier (URI),  
+- a stable Class identifier (URI),
 - the expected semantics of the Credential Family.
 
 Classes enable Relying Parties and Wallet Solutions to request or match Credentials based on their type category.
 
 **Credential Type**
 
-A **Credential Type** represents a specific Credential within a Class (e.g. Digital Travel Credential, Birth Certificate, Mobile Driving License).  
+A **Credential Type** represents a specific Credential within a Class (e.g. Digital Travel Credential, Birth Certificate, Mobile Driving License).
 Each Credential Type MUST include:
 
-- a unique identifier,  
-- the Credential Issuer identifier,  
+- a unique identifier,
+- the Credential Issuer identifier,
 - the set of Attributes that may be included in presentations.
 
 Credential Types enable precise targeting for compliance-driven or regulation-mandated verification flows.
 
 **Purpose (Verification Intent)**
 
-A **Purpose (Verification Intent)** describes *why* a credential may be requested by a Relying Party (e.g., Identity Verification, Age Verification, Eligibility for specific services).  
+A **Purpose (Verification Intent)** describes *why* a credential may be requested by a Relying Party (e.g., Identity Verification, Age Verification, Eligibility for specific services).
 Purposes MUST describe **verification outcomes**.
-Each Credential Type MUST declare its Domain, Class, and supported Purposes. 
+Each Credential Type MUST declare its Domain, Class, and supported Purposes.
 
 The following tables provide non-exhaustive examples illustrating the relationships between Domains, Credential Classes, and Credential Types, followed by their mapping to verification Purposes.
 Additional Domains, Classes, specific Credentials, and verification Purposes **MAY** be added over time as the IT-Wallet ecosystem evolves.
@@ -685,7 +685,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes **M
 .. list-table:: Digital Credential Taxonomy: Hierarchy and Classification
    :class: longtable
    :header-rows: 1
-   :widths: 15 25 30 30  
+   :widths: 15 25 30 30
 
    * - **Domain**
      - **Description**
@@ -694,11 +694,11 @@ Additional Domains, Classes, specific Credentials, and verification Purposes **M
 
    * - *IDENTITY*
      - Credentials that establish or confirm a person's legal identity and personal, civil or legal status.
-     - 
+     -
        * Identification Documents
        * Civil Registry and Personal Status Certificates
        * Economic and Legal Status
-     - 
+     -
        * Digital Travel Credential
        * Mobile Driving License (Italy only)
        * Tax Code / Health Insurance Card
@@ -715,11 +715,11 @@ Additional Domains, Classes, specific Credentials, and verification Purposes **M
 
    * - *HOME AND FAMILY*
      - Credentials that attest household composition, residence, and housing-related legal or fiscal relationships.
-     - 
+     -
        * Property and Cadastral Documents
        * Family Documents
        * Local Tax Documents
-     - 
+     -
        * Deed of Sale
        * Cadastral Survey
        * Cadastral Floor Plan
@@ -732,10 +732,10 @@ Additional Domains, Classes, specific Credentials, and verification Purposes **M
 
    * - *EDUCATION*
      - Credentials that attest educational achievements, academic qualifications, and professional training.
-     - 
+     -
        * Educational Qualifications
        * Professional Certifications
-     - 
+     -
        * Lower Secondary School Diploma
        * Upper Secondary School Diploma
        * Bachelor's Degree
@@ -749,10 +749,10 @@ Additional Domains, Classes, specific Credentials, and verification Purposes **M
 
    * - *HEALTH*
      - Credentials related to healthcare coverage, medical status, and health-related certifications.
-     - 
+     -
        * Certifications and Eligibility
        * Medical Records
-     - 
+     -
        * Health Insurance Card (TEAM)
        * European Health Card (CED)
        * Disability Certificate
@@ -764,12 +764,12 @@ Additional Domains, Classes, specific Credentials, and verification Purposes **M
 
    * - *FINANCIAL*
      - Credentials related to payment instruments, financial authorizations, and proof of payments.
-     - 
+     -
        * Payment Instruments
        * Payment Credentials and Authorisations
        * Public Payments and Fees
        * Recurring Payments and Subscriptions
-     - 
+     -
        * Digital Payment Card (debit / credit / prepaid)
        * Virtual Card
        * Bank Account (IBAN)
@@ -782,10 +782,10 @@ Additional Domains, Classes, specific Credentials, and verification Purposes **M
 
    * - *CULTURE AND LEISURE*
      - Credentials that attest membership, affiliation, or participation in cultural or recreational programs.
-     - 
+     -
        * Cultural Cards and Benefits
        * Membership and Loyalty Programs
-     - 
+     -
        * Culture Card
        * Annual Museum Passes
        * Cinema Card
@@ -796,11 +796,11 @@ Additional Domains, Classes, specific Credentials, and verification Purposes **M
 
    * - *EMPLOYMENT*
      - Credentials that attest employment relationships, professional status, and contribution records.
-     - 
+     -
        * Employment Documents
        * Employment Status
        * Employment Affiliation
-     - 
+     -
        * Digital Employment Contract
        * Curriculum Vitae (CV)
        * Residence Permit
@@ -810,7 +810,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes **M
 
    * - *MOBILITY AND TRAVEL*
      - Credentials that attest mobility rights, vehicle-related status, and travel-related entitlements.
-     - 
+     -
        * Licenses and Authorizations
        * Vehicle Documents
        * Transport Subscriptions
@@ -818,7 +818,7 @@ Additional Domains, Classes, specific Credentials, and verification Purposes **M
        * Travel Insurance
        * Bookings
        * Discounts and Benefits
-     - 
+     -
        * Mobile Driving License
        * Boating License
        * Vehicle Registration Certificate
@@ -836,11 +836,11 @@ Additional Domains, Classes, specific Credentials, and verification Purposes **M
 
    * - *BONUSES*
      - Credentials that attest entitlement to economic benefits, incentives, or vouchers.
-     - 
+     -
        * Economic Benefits and Allowances
        * Incentives and Vouchers
        * Health and Wellbeing Bonuses
-     - 
+     -
        * Family Allowance Credential
        * Unemployment Benefit Credential
        * Digital Voucher
@@ -859,131 +859,131 @@ Additional Domains, Classes, specific Credentials, and verification Purposes **M
      - **Supported Purposes**
 
    * - Identification Documents
-     - 
+     -
        * Identity verification
        * Age verification
        * Person identification
    * - Civil Registry and Personal Status Certificates
-     - 
+     -
        * Civil status verification
        * Right of residence
        * Household composition verification
    * - Economic and Legal Status
-     - 
+     -
        * Eligibility for services or benefits
        * Legal status verification
        * Criminal record check
    * - Property and Cadastral Documents
-     - 
+     -
        * Residence and household verification
        * Property ownership verification
        * Real estate compliance
    * - Family Documents
-     - 
+     -
        * Household composition verification
        * Eligibility for family-based social services
    * - Local Tax Documents
-     - 
+     -
        * Compliance with local tax obligations
        * Verification of property tax status
    * - Educational Qualifications
-     - 
+     -
        * Qualification and degree verification
        * Eligibility for education pathways
    * - Professional Certifications
-     - 
+     -
        * Professional license verification
        * Skills assessment for work
    * - Certifications and Eligibility
-     - 
+     -
        * Verification of vaccination status
        * Verification of fitness status
        * Access to health-restricted areas
    * - Medical Records
-     - 
+     -
        * Access to healthcare services
        * Sharing of medical records
        * Medical history validation
    * - Payment Instruments
-     - 
+     -
        * Payment authorization
        * Payment execution
        * Proof of payment
    * - Payment Credentials and Authorisations
-     - 
+     -
        * Management of financial authorizations
        * Strong Customer Authentication (SCA)
    * - Public Payments and Fees
-     - 
+     -
        * Proof of tax payment
        * Proof of fee payment
        * Digital stamp duty validation
    * - Recurring Payments and Subscriptions
-     - 
+     -
        * Management of recurring payments
        * Subscription mandate verification
    * - Cultural Cards and Benefits
-     - 
+     -
        * Access to cultural services
        * Access to leisure services
        * Application of member discounts
    * - Membership and Loyalty Programs
-     - 
+     -
        * Verification of affiliation
        * Verification of participation
        * Use of loyalty benefits
    * - Employment Documents
-     - 
+     -
        * Employment status verification
        * Professional profile validation
    * - Employment Status
-     - 
+     -
        * Verification of contribution records
        * Eligibility for employment-related benefits
    * - Licenses and Authorizations
-     - 
+     -
        * Driving rights verification
        * Navigation rights verification
        * Law enforcement controls
    * - Vehicle Documents
-     - 
+     -
        * Vehicle registration verification
        * Vehicle inspection verification
        * Insurance status check
    * - Transport Subscriptions
-     - 
+     -
        * Access to transport services
        * Public transport pass verification
    * - Travel Documents
-     - 
+     -
        * Right to travel or circulate
        * Cross-border mobility identity check
    * - Travel Insurance and Bookings
-     - 
+     -
        * Verification of travel insurance coverage
        * Accommodation reservation check
        * Transport reservation check
    * - Discounts and Benefits
-     - 
+     -
        * Application of member discounts
        * Access to tourist benefits
    * - Economic Benefits and Allowances
-     - 
+     -
        * Eligibility verification for family benefits
        * Eligibility verification for unemployment benefits
        * Allocation of economic support
    * - Incentives and Vouchers
-     - 
+     -
        * Use of digital vouchers
        * Use of purchase incentives
        * Cashback eligibility verification
    * - Health and Wellbeing Bonuses
-     - 
+     -
        * Access to healthcare bonuses
        * Use of mental health vouchers
        * Use of sports vouchers
    * - Employment Affiliation
-     - 
+     -
        * Access permit verification
 
 Each Credential MUST specify domains, classes and purposes to enable both **Credential-Specific Scenarios** and **Credential-Agnostic Scenarios** according to Relying Party's requirements and presentation request patterns, as defined in the mapping tables above.
@@ -1192,7 +1192,7 @@ The overall logic for presenting a Credential is:
 Taxonomy
 --------
 
-The **Taxonomy** provides the semantic foundation for Digital Credential interoperability by maintaining the authoritative vocabulary for organizing Credentials within the IT-Wallet ecosystem. The taxonomy is neutral with respect to the Credential format. 
+The **Taxonomy** provides the semantic foundation for Digital Credential interoperability by maintaining the authoritative vocabulary for organizing Credentials within the IT-Wallet ecosystem. The taxonomy is neutral with respect to the Credential format.
 
 The Taxonomy provides, in a single resource, the hierarchical classification system organizing Domains, Classes and Purposes that can be applied to Credential Types, supporting authorization policy evaluation and ecosystem-wide standardization.
 
@@ -1379,7 +1379,7 @@ The registry components are interconnected and work together to support the comp
 Registry Infrastructure Usage Journeys
 ------------------------------------------
 
-The components of the Registry Infrastructure are designed to support various operational phases of the IT-Wallet ecosystem, each involving specific interactions between entities. 
+The components of the Registry Infrastructure are designed to support various operational phases of the IT-Wallet ecosystem, each involving specific interactions between entities.
 The main Journeys below illustrate the interactions with the Registry Infrastructure.
 
 Catalog Browsing

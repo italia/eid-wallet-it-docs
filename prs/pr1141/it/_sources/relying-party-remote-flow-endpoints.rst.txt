@@ -1,5 +1,5 @@
 .. include:: ../common/common_definitions.rst
-.. "included" file, so we start with '-' title level
+.. Incluso tramite relying-party-endpoints.rst al livello di titolo '"' (livello 3).
 
 La Relying Party DEVE esporre una serie di endpoint per supportare i flussi di presentazione remoti come definiti in OpenID4VP 1.0. Questi endpoint abilitano la verifica sicura delle credenziali, l'instaurazione della fiducia e l'autenticazione dell'utente per modelli di interazione cross-device e same-device.
 

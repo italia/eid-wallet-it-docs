@@ -391,7 +391,7 @@ Questa sezione elenca i casi di test dalle Sezioni:
      - Istanza del Wallet verifica che ogni ``credential_configuration_id`` richiesto appaia nei metadata ``credential_configurations_supported`` del Credential Issuer; ID mancanti causano il fallimento dell'offerta.
    * - WP_051
      - Issuance, Interoperabilità
-     - Richiesta Attestato Elettronico utilizzando Flusso OAuth 2.0 Code 
+     - Richiesta Attestato Elettronico utilizzando Flusso OAuth 2.0 Code
      - Istanza del Wallet richiede con successo PID/(Q)EAA dal Fornitore PID/(Q)EAA utilizzando il Flusso Authorization Code come in `OpenID4VCI`_.
    * - WP_052
      - Issuance, Interoperabilità

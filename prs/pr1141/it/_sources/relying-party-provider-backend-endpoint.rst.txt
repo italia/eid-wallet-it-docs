@@ -1,5 +1,5 @@
 .. include:: ../common/common_definitions.rst
-.. "included" file, so we start with '-' title level
+.. Incluso tramite relying-party-endpoints.rst al livello di titolo '"' (livello 3).
 
 La Relying Party DEVE esporre una serie di endpoint per gestire il ciclo di vita delle App di Verifica che utilizzano un servizio di backend remoto fornito dal loro Backend del Provider di Relying Party. Questi endpoint supportano i flussi di presentazione in prossimità fornendo generazione di nonce, registrazione delle chiavi hardware, convalida dell'integrità e rilascio del Certificato di Accesso. I dettagli specifici della loro implementazione sono lasciati alla discrezione della Relying Party.
 
@@ -35,7 +35,7 @@ Il Key Binding Endpoint della Relying Party consente alle App di Verifica di ass
 Richiesta di Associazione Chiavi della Relying Party
 ....................................................
 
-Ulteriori dettagli sulla Relying Party Key Binding Request sono forniti nella sezione :ref:`wallet-provider-endpoint:Richiesta di Emissione della Wallet Instance Attestation`. 
+Ulteriori dettagli sulla Relying Party Key Binding Request sono forniti nella sezione :ref:`wallet-provider-endpoint:Richiesta di Emissione della Wallet Instance Attestation`.
 
 
 Le uniche differenze sono le seguenti:
@@ -118,7 +118,6 @@ La seguente tabella elenca i codici di stato HTTP e i relativi codici di errore 
     * - ``503 Service Unavailable``
       - ``temporarily_unavailable``
       - Il servizio non è disponibile. Si prega di riprovare più tardi.
-
 
 
 Endpoint del Certificato di Accesso della Relying Party

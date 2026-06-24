@@ -1,5 +1,6 @@
 .. include:: ../common/common_definitions.rst
 
+
 Matrice di Test per la Valutazione delle Firme
 ----------------------------------------------
 
@@ -75,3 +76,5 @@ Questa sezione fornisce l'insieme comune di casi di test per le Soluzioni Wallet
     - Data model validation
     - Assicurarsi che il tipo JOSE/COSE corrisponda al data model definito.
     - I parametri o claim, i loro valori e lo schema utilizzato per rappresentarli sono conformi al data model.
+
+

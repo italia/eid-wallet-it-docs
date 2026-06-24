@@ -1,5 +1,6 @@
 .. include:: ../common/common_definitions.rst
 
+
 Funzionalità dell'Istanza del Wallet
 ====================================
 
@@ -26,3 +27,5 @@ Ciascuna funzionalità è descritta in dettaglio nelle sezioni seguenti.
   wallet-instance-revocation.rst
   user-attribute-deletion.rst
   wallet-instance-dashboard.rst
+
+

@@ -1,5 +1,5 @@
 .. include:: ../common/common_definitions.rst
-.. "included" file, so we start with '-' title level
+.. Included via endpoints.rst at title level '-' (level 1).
 
 .. role:: raw-html(raw)
   :format: html
@@ -11,10 +11,10 @@ Wallet Provider Endpoints
 The Wallet Provider, responsible for delivering a Wallet Solution, MUST expose the endpoints to support trust establishment and essential Wallet Instance functionalities. These include the ``/.well-known/openid-federation`` Federation Endpoint which MUST adhere to the OpenID Federation 1.0 specification to reliably establish trust with the Wallet Provider's as well as, endpoints for Wallet Instance registration, nonce generation (required for registration), attestation issuance, and revocation. Aside from the Federation endpoint, the implementation details of the others are left to the Wallet Provider's discretion.
 
 .. note::
-  Tests related to the use of Wallet Provider endpoints are defined in 
-  :ref:`test-plans-wallet-provider:Wallet Provider Test Matrix`, particularly 
+  Tests related to the use of Wallet Provider endpoints are defined in
+  :ref:`test-plans-wallet-provider:Wallet Provider Test Matrix`, particularly
   :ref:`wallet-provider-backend-testcases`,
-  :ref:`wallet-instance-testcases`, and 
+  :ref:`wallet-instance-testcases`, and
   :ref:`wallet-instance-optional-testcases`.
 
 Federation Endpoint
@@ -117,7 +117,7 @@ In case of an error, the Wallet Provider MUST return an error response as define
 
 - *error*. The error code.
 - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered.
- 
+
 The following sections categorize errors into **common errors**, which apply to all requests, and **request-specific errors**, which are relevant to particular operations (:ref:`WP_035–044 <wallet-instance-testcases>`, and :ref:`WP_150–155 <wallet-instance-optional-testcases>`).
 
 Common Error Responses
@@ -268,13 +268,13 @@ The Wallet Instance Attestation Request JWT includes the following body claims:
       - :rfc:`7800`.
     * - **platform**
       - String containing the value of the device operating system.
-      - 
+      -
     * - **wallet_solution_id**
       - String containing the identifier of the Wallet Solution.
-      - 
+      -
     * - **wallet_solution_version**
       - String containing the version of the Wallet Solution.
-      - 
+      -
 
 
 Below is a non-normative example of a Wallet Instance Attestation Request JWT header and payload.
@@ -289,7 +289,7 @@ Below is a non-normative example of a Wallet Instance Attestation Request JWT he
     }
 
 .. code-block:: json
-  
+
     {
       "iss": "https://wallet-provider.example.org/instance/OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
       "nonce": "f3b29a81-45c7-4d12-b8b5-e1f6c9327aef",
@@ -330,7 +330,7 @@ The JSON Object returned in the response has the following claim:
       - REQUIRED. A String containing of the issued Wallet Instance Attestation.
       - This specification.
 
-The value of ``wallet_instance_attestation`` parameter is a string representing the Wallet Instance Attestation in a JWT. 
+The value of ``wallet_instance_attestation`` parameter is a string representing the Wallet Instance Attestation in a JWT.
 
 If any errors occur during the process, an error response is returned. The response uses ``application/json`` as the ``Content-Type`` and includes the following parameters:
 
@@ -466,7 +466,7 @@ The body of the Wallet Instance Attestation JWT contains the following claims:
         - **general_info**: REQUIRED. An object that has the following parameters:
 
           - **wallet_provider_name**: REQUIRED. String value of the Wallet Provider name as listed on the trusted list of Wallet Providers.
-          - **wallet_solution_id**: REQUIRED. String value of the Wallet Solution identifier as listed on the trusted list of Wallet Providers. 
+          - **wallet_solution_id**: REQUIRED. String value of the Wallet Solution identifier as listed on the trusted list of Wallet Providers.
           - **wallet_solution_version**: REQUIRED. String value of the Wallet Solution version.
           - **wallet_solution_certification_information**: REQUIRED. String value that contains a URL that links to the certification of the Wallet Solution.
       - `EUDI-TS 3`_.
@@ -486,11 +486,6 @@ Below is a non-normative example of the Wallet Instance Attestation JWT header a
 
 .. note::
     As the certification scheme has not yet been defined, the exact content of ``wallet_solution_certification_information`` is undefined. This content will be defined in a future update.
-
-
-
-
-
 
 
 Wallet Unit Attestation Issuance Endpoint
@@ -582,13 +577,13 @@ The Wallet Unit Attestation Request JWT includes the following body claims:
       - :rfc:`7800`.
     * - **platform**
       - String containing the value of the device operating system.
-      - 
+      -
     * - **wallet_solution_id**
       - String containg the identifier of the Wallet Solution .
-      - 
+      -
     * - **wallet_solution_version**
       - String containing the version of the Wallet Solution.
-      - 
+      -
 
 
 Below is a non-normative example of a Wallet Unit Attestation Request JWT header and payload.
@@ -603,7 +598,7 @@ Below is a non-normative example of a Wallet Unit Attestation Request JWT header
     }
 
 .. code-block:: json
-  
+
     {
       "iss": "https://wallet-provider.example.org/instance/OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
       "aud": "https://wallet-provider.example.org/",
@@ -649,9 +644,9 @@ The JSON Object returned in the response has the following claim:
       - REQUIRED. A String representing the issued Wallet Unit Attestation.
       - This specification.
 
-The value of ``wallet_unit_attestation`` parameter is a string representing the Wallet Unit Attestation in a JWT. 
+The value of ``wallet_unit_attestation`` parameter is a string representing the Wallet Unit Attestation in a JWT.
 
-If any errors occur during the process, an error response is returned as it is defined in the previous section. 
+If any errors occur during the process, an error response is returned as it is defined in the previous section.
 
 
 The following table lists HTTP Status Codes and related error codes for the ones that are different from what is already reported:
@@ -673,12 +668,6 @@ The following table lists HTTP Status Codes and related error codes for the ones
     * - ``403 Forbidden``
       - ``invalid_request``
       - The signature of the Wallet Unit Attestation Request is invalid or does not match the associated public key (JWK).
-   
-
-
-
-
-
 
 
 Wallet Unit Attestation JWT
@@ -759,15 +748,15 @@ The body of the Wallet Unit Attestation JWT contains the following claims:
         - **general_info**: REQUIRED. An object that has the following parameters:
 
           - **wallet_provider_name**: REQUIRED. String value of the Wallet Provider name as listed on the trusted list of Wallet Providers.
-          - **wallet_solution_id**: REQUIRED. String value of the Wallet Solution identifier as listed on the trusted list of Wallet Providers. 
+          - **wallet_solution_id**: REQUIRED. String value of the Wallet Solution identifier as listed on the trusted list of Wallet Providers.
           - **wallet_solution_version**: REQUIRED. String value of the Wallet Solution version.
           - **wallet_solution_certification_information**: REQUIRED. String that contains a URL that links to the certification of the Wallet Solution.
 
         - **key_storage_info**: REQUIRED. An object that has the following parameters:
 
-          - **storage_type**: REQUIRED. String value that identifies the technical implementation of WSCD. It can have one of the following values, ``REMOTE``, ``LOCAL_EXTERNAL``, ``LOCAL_INTERNAL``, ``LOCAL_NATIVE``, or ``HYBRID``. 
+          - **storage_type**: REQUIRED. String value that identifies the technical implementation of WSCD. It can have one of the following values, ``REMOTE``, ``LOCAL_EXTERNAL``, ``LOCAL_INTERNAL``, ``LOCAL_NATIVE``, or ``HYBRID``.
           - **keys_exportable**: REQUIRED. Boolean value that defines whether the private keys of the WSCD or keystore can be exported. It SHALL be set to ``true`` if the WSCD  allows the private keys to be exported (including if in encrypted format only) and ``false`` otherwise.
-          - **storage_certification_information**: REQUIRED. String that contains a URL that links to the certification of the key storage component. 
+          - **storage_certification_information**: REQUIRED. String that contains a URL that links to the certification of the key storage component.
       - `EUDI-TS 3`_.
 
 
@@ -781,8 +770,8 @@ Below is a non-normative example of the Wallet Unit Attestation JWT header and p
 
 
 .. note::
-    As the certification scheme has not yet been defined, the exact content of ``wallet_solution_certification_information`` is undefined. 
-    This content will be defined in a future update. Similarly, the exact content of ``storage_certification_information`` is currently undefined and will be specified in a future update, but it SHALL provide sufficient information to determine whether the key storage is a WSCD.  
+    As the certification scheme has not yet been defined, the exact content of ``wallet_solution_certification_information`` is undefined.
+    This content will be defined in a future update. Similarly, the exact content of ``storage_certification_information`` is currently undefined and will be specified in a future update, but it SHALL provide sufficient information to determine whether the key storage is a WSCD.
     Note that the OID4VCI specification does specify a ``certification`` attribute in the ``key_attestation`` element that could be used instead of ``storage_certification_information``.
 
 
@@ -816,4 +805,5 @@ Notify User Death
       - Wallet Provider
     * - **Consumer**
       - PID Provider
+
 

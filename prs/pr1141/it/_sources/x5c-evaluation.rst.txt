@@ -22,7 +22,7 @@ Ogni entità federata DEVE esporre il proprio Certificato X.509 dell'Entità Fed
 	1. Auto-emissione di Certificati X.509 del Protocollo per operazioni crittografiche interne (capacità sub-CA limitata).
 	2. Agire come Chiave dell'Entità Federata per la firma delle Dichiarazioni dell'Entità.
 
-.. note:: 
+.. note::
   Le Foglie della Federazione possono SOLO emettere Certificati X.509 su se stesse e per scopi specifici dell'applicazione. Le Foglie della Federazione NON DEVONO emettere Certificati X.509 per altre entità federate, come limitato dalle loro Autorità Federali utilizzando l'estensione X.509 Name Constraints.
 
 Per i Certificati X.509 specifici del protocollo, con periodi di validità superiori a 24 ore, l'entità emittente DEVE pubblicare e aggiornare regolarmente una Lista di Revoca dei Certificati X.509 (CRL) su un endpoint pubblicamente accessibile.
@@ -263,7 +263,6 @@ Gli aggiornamenti tecnici che influenzano le operazioni del protocollo della fed
     - **Aggiornamenti delle Capacità**: L'Entità PUÒ modificare i protocolli supportati, gli algoritmi o le capacità di servizio entro i vincoli definiti da questo profilo di implementazione IT-Wallet.
 
 
-
 Tutti gli aggiornamenti tecnici DEVONO essere validati attraverso:
 
   1. **Validazione della Configurazione dell'Entità**: L'Entità DEVE verificare la struttura e il contenuto della EC aggiornata.
@@ -287,7 +286,7 @@ Uscita Volontaria - Disattivazione Tecnica
      a. Rimuovere completamente la Configurazione dell'Entità dall'endpoint ``/.well-known/openid-federation`` (restituendo HTTP 404), OPPURE
      b. Mantenere la Configurazione dell'Entità come scaduta (con la claim ``exp`` nel passato). Pertanto NON DEVE aggiornarla con timestamp freschi.
 
-  5. **Aggiornamento dello Stato del Registro**: L'Entità DOVREBBE verificare la rimozione dal Registro della Federazione, verificando anche lo stato del Trust Mark utilizzando l'endpoint dello Stato del Trust Mark. 
+  5. **Aggiornamento dello Stato del Registro**: L'Entità DOVREBBE verificare la rimozione dal Registro della Federazione, verificando anche lo stato del Trust Mark utilizzando l'endpoint dello Stato del Trust Mark.
 
 Esempio non normativo di richiesta di revoca del Certificato X.509 seguendo il formato :rfc:`3280`:
 
@@ -353,7 +352,7 @@ Componenti tecnici specifici POSSONO essere modificati mantenendo l'appartenenza
    {
      "iss": "https://ci.example.it",
      "sub": "https://ci.example.it",
-     "jwks": { 
+     "jwks": {
        // contenuto jwks
      },
      "metadata": {

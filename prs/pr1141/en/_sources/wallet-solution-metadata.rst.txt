@@ -23,10 +23,12 @@ The metadata JSON Object whose key is ``wallet_solution`` contains the following
       - REQUIRED. URL of the entity's logo that will be shown to the User. The logo mime type MUST be ``application/svg``.
     * - ``wallet_metadata``
       - REQUIRED. It contains the Wallet Metadata parameters as defined in :ref:`Table of Wallet Metadata Parameters <table_wallet_metadata_parameters>` and the following two parameters
-        
+
          - ``credential_offer_endpoint`` Credential Offer Endpoint of a Wallet.
-         - ``wallet_name`` String containing a human-readable name of the Wallet. 
+         - ``wallet_name`` String containing a human-readable name of the Wallet.
 
 
 .. note::
   There are Digital Credential flows that require retrieving Wallet Solution metadata before interacting with the Wallet itself. The flow is described in :ref:`wallet-metadata-retrieval:Wallet Metadata Retrieval Flow`.
+
+

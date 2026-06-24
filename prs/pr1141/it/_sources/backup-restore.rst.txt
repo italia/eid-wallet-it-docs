@@ -37,7 +37,7 @@ Di seguito, la descrizione dei passaggi di :numref:`fig_Backup_flow`:
 
 **Passaggio 1**: L'Utente seleziona l'opzione per eseguire il backup delle Credenziali memorizzate nell'Istanza del Wallet (:ref:`WP_120 <credential-backup-testcases>`).
 
-**Passaggi 2-3**: L'Istanza del Wallet, utilizzando le API di backup, seleziona casualmente 10 frasi chiave da un elenco di parole pre-generato e le mostra all'Utente (:ref:`WP_120a <credential-backup-testcases>`).  
+**Passaggi 2-3**: L'Istanza del Wallet, utilizzando le API di backup, seleziona casualmente 10 frasi chiave da un elenco di parole pre-generato e le mostra all'Utente (:ref:`WP_120a <credential-backup-testcases>`).
 L'Utente DEVE conservare in modo sicuro la frase chiave scelta tra quelle proposte dal sistema (ad esempio, in un'app di gestione password) poiché sono fondamentali per il ripristino del backup (:ref:`WP_120b <credential-backup-testcases>`).
 
 .. note::
@@ -142,11 +142,11 @@ Flusso di ripristino per Credenziale con associazione hardware
 
 ..   Restore flow.
 
-Considerando che l'Utente ha inizializzato la nuova Istanza del Wallet e questa è in stato attivo avendo ottenuto un nuovo Attestato Elettronico di Dati di Identificazione Personale, questa specifica allenta il requisito dell'ARF riguardante l'aggiunta dell'Attestato Elettronico di Dati di Identificazione Personale nel file di backup.  
+Considerando che l'Utente ha inizializzato la nuova Istanza del Wallet e questa è in stato attivo avendo ottenuto un nuovo Attestato Elettronico di Dati di Identificazione Personale, questa specifica allenta il requisito dell'ARF riguardante l'aggiunta dell'Attestato Elettronico di Dati di Identificazione Personale nel file di backup.
 Di seguito, la descrizione dei passaggi di :numref:`fig_Restore_flow`:
 
-**Passaggi 1-6**: L'Utente desidera ripristinare le Credenziali Elettroniche utilizzando il backup precedentemente creato con la propria Istanza del Wallet.  
-L'Utente seleziona `ripristina backup delle Credenziali Elettroniche` nell'app dell'Istanza del Wallet e viene fornito all'Utente un prompt con la funzione di importazione. Il file di backup da importare può essere fornito utilizzando un archivio locale o una posizione remota utilizzando anche un archivio cloud, e quindi inviare le frasi chiave di recupero (:ref:`WP_126 <credential-backup-testcases>`, :ref:`WP_127 <credential-backup-testcases>`).  
+**Passaggi 1-6**: L'Utente desidera ripristinare le Credenziali Elettroniche utilizzando il backup precedentemente creato con la propria Istanza del Wallet.
+L'Utente seleziona `ripristina backup delle Credenziali Elettroniche` nell'app dell'Istanza del Wallet e viene fornito all'Utente un prompt con la funzione di importazione. Il file di backup da importare può essere fornito utilizzando un archivio locale o una posizione remota utilizzando anche un archivio cloud, e quindi inviare le frasi chiave di recupero (:ref:`WP_126 <credential-backup-testcases>`, :ref:`WP_127 <credential-backup-testcases>`).
 Per verificare l'autenticità del file, l'Istanza del Wallet DEVE verificare la firma del JWT di backup per garantirne l'autenticità (:ref:`WP_129 <credential-backup-testcases>`). Per fare ciò, estrae prima il JWT della Wallet Instance Attestation dal claim ``wallet_instance_attestation`` e ottiene la relativa chiave pubblica utilizzando la Wallet Instance Attestation (claim ``cnf``) come specificato in :ref:`WP_128 <credential-backup-testcases>`.
 
 **Passaggi 7-8**: L'Istanza del Wallet per ogni voce di Credenziale con associazione hardware nel payload del JWT di backup esegue i seguenti passaggi (:ref:`WP_130 <credential-backup-testcases>`):

@@ -44,7 +44,7 @@ Get Attribute Claims
 
 This e-Service MUST be invoked by the Credential Issuer in the following cases:
 
-  - During the Credential issuance flow to retrieve the Digital Credential dataset(s). In this situation, the ``object_id`` claim MUST not be used in the e-service request payload, and the e-service response MUST include all Credential datasets that are ``VALID`` state and not administratively expired (i.e., ``expiry_date`` > current date of the e-service request).
+  - During the Credential issuance flow to retrieve the Digital Credential dataset(s). In this situation, the ``object_id`` claim MUST NOT be used in the e-service request payload, and the e-service response MUST include all Credential datasets that are ``VALID`` state and not administratively expired (i.e., ``expiry_date`` > current date of the e-service request).
   - After receiving an update notification through Signal Hub. In this situation, the ``object_id`` claim MUST be included in the request payload, and the e-service response MUST return only the Credential dataset identified by the ``object_id`` claim independently from its state.
 
 .. note::
@@ -110,3 +110,5 @@ Please refer to the Technical Appendix (Section :ref:`e-service-pdnd:e-Service P
 
 .. warning::
   Alternative mechanisms for distributing cryptographic material (e.g., public ``.well-known`` endpoints directly exposed by the Authentic Source or *out-of-band* distribution) are not allowed. Trust management MUST remain centralized within the perimeter of the PDND infrastructure as described in the references cited above.
+
+
