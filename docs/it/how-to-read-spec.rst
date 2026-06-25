@@ -186,17 +186,13 @@ Comprendere il funzionamento generale dell’ecosistema, l’architettura tecnic
 
 - **Sezione** :ref:`defined-terms-and-references:Termini Definiti e Riferimenti`: Terminologia completa, riferimenti normativi, documentazione, risorse e strumenti aggiuntivi, linee guida per i contributi. 
 
-**Fase 2: Design**
+**Fase 2: Progettazione**
 
-**Obiettivo**: progettare tecnicamente gli attestati strutturando i metadati affinché rispondano ai requisiti tecnici e normativi e permettano all'utente di condividere solo le informazioni necessarie. 
+Comprendere i requisiti e progettare tecnicamente i (Q)EAA, strutturandone i metadati in conformità ai requisiti tecnici e normativi. 
 
-- **Sezione** :ref:`functionalities:Design dell'Esperienza Utente`: per conoscere i requisiti funzionali di alto livello a supporto dell’Esperienza Utente in tutte le fasi di interazione tra l’Utente e il servizio. 
+- **Sezione** :ref:`functionalities:Design dell'Esperienza Utente`: Requisiti chiave relativi alla struttura, all’emissione, allo stato e alla gestione nel tempo dei (Q)EAA.
 
-- **Sezione** :ref:`entities:Entità`: per conoscere i requisiti di implementazione e gli attributi necessari per configurare il proprio profilo di Issuer (riferimento ai paragrafi :ref:`Soluzione del Fornitore di Attestati Elettronici` e :ref:`aFonti Autentiche`).
-
-**Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`:  per conoscere i requisiti tecnici necessari per la progettazione e gestione degli attestati e il loro ciclo di vita. 
-
-**Sezione** :ref:`algorithms:Algoritmi Crittografici`: per rispondere ai requisiti di sicurezza progettando sistemi di firma digitale che rendano gli attestati non falsificabili.
+**Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`:  Requisiti tecnici e funzionali relativi al ciclo di vita dei (Q)EAA. 
 
 **Fase 3: Implementazione**
 
