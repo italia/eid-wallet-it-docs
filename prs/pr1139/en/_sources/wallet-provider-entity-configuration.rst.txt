@@ -1,5 +1,6 @@
 .. include:: ../common/common_definitions.rst
 
+
 Wallet Provider Entity Configuration
 --------------------------------------
 
@@ -67,4 +68,5 @@ Below is a non-normative example of a payload of a Wallet Provider Entity Config
 
 .. literalinclude:: ../../examples/ec-wp.json
   :language: JSON
+
 

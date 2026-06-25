@@ -23,7 +23,7 @@ Questa sezione descrive come il Fornitore di Wallet emette una Key Attestation.
 **Passi 2-3**: L'Istanza del Wallet DEVE:
 
   1. Verificare l'esistenza delle Cryptographic Hardware Keys. Se non esistono, è necessaria la reinizializzazione dell'Istanza del Wallet (:ref:`WP_140a <wallet-instance-optional-testcases>`).
-  2. Generare una o più coppie di chiavi asimmetriche delle Credenziali da attestare nella Key Attestation (``key_pub_1``, ``key_priv_1``, ..., ``key_pub_n``, ``key_priv_n``). 
+  2. Generare una o più coppie di chiavi asimmetriche delle Credenziali da attestare nella Key Attestation (``key_pub_1``, ``key_priv_1``, ..., ``key_pub_n``, ``key_priv_n``).
   3. Verificare l'appartenenza del Fornitore di Wallet alla federazione e recuperare i suoi metadati (:ref:`WP_023 <wallet-instance-testcases>`).
 
 **Passi 4-6 (Recupero del Nonce)**: L'Istanza del Wallet richiede un ``nonce`` all'endpoint :ref:`wallet-provider-endpoint:Endpoint Nonce della Soluzione Wallet` del Backend del Fornitore del Wallet (:ref:`WP_140b <wallet-instance-optional-testcases>`). Il ``nonce`` deve essere imprevedibile e funge da principale difesa contro gli attacchi di replay.
@@ -45,6 +45,7 @@ Di seguito è riportato un esempio non normativo dell'oggetto JSON ``client_data
     "nonce": "i4ThI2Jhbu81i8mqyWEuDG5t",
     "jwk_thumbprints": ["vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c"]
   }
+
 
 **Passi 8-11**: L'Istanza del Wallet:
 
@@ -75,7 +76,7 @@ Di seguito è riportato un esempio non normativo dell'oggetto JSON ``client_data
 * Costruisce la Key Attestation Request sotto forma di JWT. Questo JWT include l'``integrity_assertion``, ``keys_to_attest``, ``hardware_signature``, ``nonce``, ``hardware_key_tag``, ``cnf``, ``platform``, ``wallet_solution_id``, ``wallet_solution_version``  e altri parametri relativi alla configurazione (vedi :ref:`Tabella del Corpo della Richiesta di Key Attestation <table_ka_request_claim>`). La Key Attestation Request DEVE essere firmata utilizzando la chiave privata corrispondente alla chiave pubblica inclusa nella richiesta, tramite il parametro ``cnf`` (primo elemento di ``keys_to_attest``) (:ref:`WP_140–141 <wallet-instance-optional-testcases>`).
 * Invia la Key Attestation Request all'endpoint :ref:`wallet-provider-endpoint:Endpoint di Emissione della Key Attestation` del Backend del Fornitore del Wallet.
 
-.. note:: 
+.. note::
   ``keys_to_attest`` contiene un oggetto ``key_attestation`` nel caso di Android e un oggetto ``integrity_assertion`` nel caso di iOS.
 
 L'Istanza del Wallet DEVE inviare il JWT firmato della Richiesta di Key Attestation come parametro ``assertion`` nel corpo di una richiesta HTTP all'endpoint :ref:`wallet-provider-endpoint:Endpoint di Emissione della Key Attestation` del Fornitore di Wallet (:ref:`WP_142 <wallet-instance-optional-testcases>`).
@@ -107,3 +108,5 @@ Di seguito è riportato un esempio non normativo della risposta.
   {
     "key_attestation": "omppc3N1ZXJBdXRohEOhASaiBE...dElEAnFlbGVtZW50SWRl"
   }
+
+

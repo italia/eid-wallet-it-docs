@@ -1021,7 +1021,7 @@ The Trust Evaluation mechanisms are distinct from protocol flows and are impleme
 <li><p><strong>Identification of the Relying Party Intermediary</strong>: Via the <code class="docutils literal notranslate"><span class="pre">authority_hints</span></code> claim in the RP's EC, the Wallet Instance identifies the Relying Party Intermediary and downloads its Entity Configuration.</p></li>
 <li><p><strong>Validation of the Relying Party Intermediary's Trust Mark</strong>: The Wallet Instance verifies that the Relying Party Intermediary's Entity Configuration contains a valid Trust Mark for the Relying Party Intermediary role, issued by the Trust Anchor. The validity of the Trust Mark MUST be verified via the Trust Anchor's <code class="docutils literal notranslate"><span class="pre">/trust_mark_status</span></code> endpoint.</p></li>
 <li><p><strong>Trust Chain Construction through the Relying Party Intermediary</strong>: The Wallet Instance constructs the complete Trust Chain: RP Entity Configuration → Subordinate Statement issued by the Relying Party Intermediary for the RP → Subordinate Statement issued by the Trust Anchor for the Relying Party Intermediary → Trust Anchor Entity Configuration. This chain attests that the RP is a Leaf recognized by the Relying Party Intermediary and that the Relying Party Intermediary is in turn recognized by the Trust Anchor.</p></li>
-<li><p><strong>User Presentation</strong>: Once validation is complete, the Wallet Instance MAY indicate to the User that the requesting Relying Party operates through a recognized Relying Party Intermediary, displaying the Relying Party Intermediary's identifying information (e.g., <code class="docutils literal notranslate"><span class="pre">organization_name</span></code>) retrieved from its Entity Configuration.</p></li>
+<li><p><strong>User Presentation</strong>: Once validation is complete, the Wallet Instance MUST indicate to the User that the requesting Relying Party operates through a recognized Relying Party Intermediary, displaying the Relying Party Intermediary's identifying information (e.g., <code class="docutils literal notranslate"><span class="pre">organization_name</span></code>) retrieved from its Entity Configuration.</p></li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1404,7 +1404,7 @@ Signature:
 <li><p>Wallet Instances MUST NOT publish their metadata through an online service.</p></li>
 <li><p>The trust infrastructure MUST be public, with all endpoints publicly accessible without any client credentials that may disclose who is requesting access.</p></li>
 <li><p>When a Wallet Instance requests the Subordinate Statements to build the Trust Chain for a specific Relying Party or validates a Trust Mark online, issued for a specific Relying Party, the Trust Anchor or its Intermediate do not know that a particular Wallet Instance is inquiring about a specific Relying Party; instead, they only serve the statements related to that Relying Party as a public resource.</p></li>
-<li><p>The Wallet Instance metadata MUST not contain information that may disclose technical information about the hardware used.</p></li>
+<li><p>The Wallet Instance metadata MUST NOT contain information that may disclose technical information about the hardware used.</p></li>
 <li><p>Leaf entity, Intermediate, and Trust Anchor metadata may include the necessary amount of data as part of administrative, technical, and security contact information. It is generally not recommended to use personal contact details in such cases. From a legal perspective, the publication of such information is needed for operational support concerning technical and security matters and the GDPR regulation.</p></li>
 </ul>
 </section>
@@ -1513,7 +1513,7 @@ Signature:
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 23/06/2026.
+      Last updated on 25/06/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

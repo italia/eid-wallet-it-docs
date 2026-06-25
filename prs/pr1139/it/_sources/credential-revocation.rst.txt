@@ -104,10 +104,12 @@ le condizioni che hanno portato alla sua sospensione vengono risolte, o passa a 
   * Guidata dal caso d'uso, basata sullo stato di validità degli attributi contenuti nell'Attestato Elettronico di Attributi (Q)EAA. In questo caso, una Fonte Autentica aderente a PDND DEVONO notificare al Fornitore di Attestati Elettronici qualsiasi cambiamento nello stato degli attributi attestati dall'Attestato Elettronico di Attributi (Q)EAA.
   * Esplicitamente richiesta dall'Utente.
 
+
 Ciclo di vita degli Attestati Elettronici ottenuti in batch
 -----------------------------------------------------------
 
 Ciascuna degli Attestati Elettronici emessi in batch, entra immediatamente nel proprio stato relativo al ciclo di vita. Tutte le transizioni di stato (Emessa → Valida → Scaduta/Sospesa/Revocata) avvengono a livello di singolo Attestato Elettronico, utilizzando i parametri individuali dell'Attestato Elettronico (ad esempio, date di validità, Status List).
+
 
 Gestione del Ciclo di Vita degli Attestati Elettronici
 ------------------------------------------------------
@@ -161,10 +163,10 @@ Entità Coinvolte
 Mentre il Fornitore di Attestati Elettronici DEVE gestire direttamente lo stato di validità degli Attestati Elettronici che ha emesso, altri attori POSSONO attivare il processo di revoca/sospensione dell'Attestato Elettronico:
 
   - Utenti, attraverso:
-  
+
     - La loro Istanza del Wallet
     - Servizio web fornito dal Fornitore di Attestati Elettronici
-  
+
   - La Fonte Autentica quando gli attributi dell'Attestato Elettronico vengono aggiornati o cambiano stato di validità
   - Il Fornitore di Wallet quando revoca un'Istanza del Wallet
   - Il Gestore di Identità Digitale se l'Identità Digitale utilizzata per il rilascio del PID è stata rubata o compromessa
@@ -205,7 +207,7 @@ Aggiornamento dello Stato relativo all'Utente
 
 Gli Utenti POSSONO modificare lo stato di validità del loro Attestato Elettronico:
 
-  1. Eliminando l'Attestato Elettronico dalla propria Istanza del Wallet: l'Istanza del Wallet DOVREBBE proporre all'Utente un prompt per notificare opzionalmente al Fornitore di Attestati Elettronici il desiderio da parte dell'Utente di richiedere la revoca della Credenziale. Quando l'Utente utilizza questa funzionalità, la notifica da inviare al Fornitore di Attestati Elettronici DEVE utilizzare il Notification Endpoint messo a disposizione dal Fornitore di Attestati Elettronici, come descritto nella Sezione :ref:`credential-revocation-status-update-by-wallet-instance`.
+  1. Eliminando l'Attestato Elettronico dalla propria Istanza del Wallet: l'Istanza del Wallet DOVREBBE proporre all'Utente un prompt per notificare opzionalmente al Fornitore di Attestati Elettronici il desiderio da parte dell'Utente di richiedere la revoca della Credenziale. Quando l'Utente utilizza questa funzionalità, la notifica da inviare al Fornitore di Attestati Elettronici DEVE utilizzare il Notification Endpoint messo a disposizione dal Fornitore di Attestati Elettronici, come descritto nella Sezione :ref:`credential-revocation:Aggiornamento dello Stato da parte dell'Istanza del Wallet`.
   2. Utilizzando il portale web del Fornitore di Attestati Elettronici:
 
     a. Gli Utenti POSSONO accedere ad un'area sicura con almeno lo stesso Livello di Garanzia utilizzato durante la fase di emissione.
@@ -221,12 +223,10 @@ Inoltre, quando gli Utenti rilevano dati non corretti in un Attestato Elettronic
   Se l'Utente attiva un'altra Istanza del Wallet dello stesso Fornitore di Wallet e utilizzando la stessa Soluzione di Wallet e ottiene un nuovo PID, il PID precedente DEVE essere revocato e la precedente Istanza del Wallet DEVE passare allo stato operativo.
 
 In caso di morte dell'Utente, i Fornitori di Attestati Elettronici DEVONO garantire che gli Attestati Elettronici e le Istanze del Wallet di proprietà dell'Utente siano revocati.
-La morte dell'Utente comporta una modifica dello stato di validità degli attributi identificativi dell'Utente contenuti nel registro pubblico (ANPR). La morte dell'Utente DEVE produrre la revoca del PID. Pertanto, la Fonte Autentica del PID (ANPR) DEVE notificare al PID Provider che gli attributi dell'Utente non sono più validi a causa della morte dell'Utente. La Fonte Autentica e il PID Provider DEVONO utilizzare i meccanismi previsti nella Sezione :ref:`credential-revocation-status-update-by-authentic-sources`.
+La morte dell'Utente comporta una modifica dello stato di validità degli attributi identificativi dell'Utente contenuti nel registro pubblico (ANPR). La morte dell'Utente DEVE produrre la revoca del PID. Pertanto, la Fonte Autentica del PID (ANPR) DEVE notificare al PID Provider che gli attributi dell'Utente non sono più validi a causa della morte dell'Utente. La Fonte Autentica e il PID Provider DEVONO utilizzare i meccanismi previsti nella Sezione :ref:`credential-revocation:Aggiornamento dello Stato da parte delle Fonti Autentiche`.
 
 .. note::
   Le versioni future della presente specifica tecnica definiranno come le informazioni verso i Fornitori di (Q)EAA vengono propagate, in accordo alla normativa nazionale. Inoltre, saranno definite procedure automatizzate per la revoca degli Attestati dovuta ad attività illecite.
-
-.. _credential-revocation-status-update-by-wallet-instance:
 
 Aggiornamento dello Stato da parte dell'Istanza del Wallet
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -241,17 +241,15 @@ Quando l'Attestato Elettronico revocato è il PID, il Fornitore di Attestati Ele
 Per qualsiasi altro Attestato Elettronico diverso dal PID, il Fornitore di Attestati Elettronici DOVREBBE inviare una notifica di questo evento all'Utente. La notifica all'Utente PUÒ essere implementata in diversi modi, ad esempio utilizzando l'indirizzo email dell'Utente, il numero di telefono o qualsiasi altro canale di comunicazione verificato e sicuro. La notifica all'Utente DEVE includere anche tutte le informazioni sullo stato di revoca dell'Attestato Elettronico. Il metodo utilizzato per la notifica all'Utente è fuori dallo scopo del presente profilo tecnico di implementazione. Quando la revoca avviene, il Fornitore di Attestati Elettronici DEVE aggiornare di conseguenza lo stato dell'Attestato Elettronico. Quando la Notification Response inviata dal Fornitore di Attestati Elettronici viene ricevuta con successo dall'Istanza del Wallet, l'Istanza del Wallet DEVE eliminare l'Attestato Elettronico.
 
 Aggiornamento dello Stato da parte dei Fornitori di Wallet
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 In caso di perdita o furto del dispositivo, notificato dall'Utente, o di una vulnerabilità di sicurezza nota che interessa le Wallet Instance, il Fornitore di Wallet DEVE revocare tutte le Wallet Instance interessate. Pertanto, il Fornitore di Wallet DEVE garantire che lo stato aggiornato sia riportato nella status list delle relative Wallet Instance Attestation.
 In caso di vulnerabilità del WSCD, il Fornitori di Wallet DEVE revocare la relativa Key Attestation.
 In aggiunta a quanto definito in :ref:`credential-revocation:Ciclo di Vita degli Attestati Elettronici`, il Fornitore di Attestati Elettronici DEVE implementare un meccanismo di monitoraggio degli stati correnti di tutte le Wallet Instance e Key Attestations relative alle Wallet Instance a cui sono stati emessi gli Attestati Elettronici.
 Dopo la revoca della Wallet Instance Attestation, il Credential Issuer procede alla revoca di tutte le credenziali rilasciate all’istanza del Wallet.
 
-.. _credential-revocation-status-update-by-authentic-sources:
-
 Aggiornamento dello Stato da parte delle Fonti Autentiche
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Le Fonti Autentiche gestiscono gli attributi separatamente dagli Attestati Elettronici, i quali verificano l’autenticità in modo analogo ai documenti fisici. La perdita di un documento fisico non implica la perdita dei diritti che rappresenta; significa solo che l’Utente non può dimostrarli. Tuttavia, se un Utente perde determinati diritti a causa di una grave infrazione, la Fonte Autentica revocherà gli attributi correlati. In tali casi, quando gli attributi di un Utente vengono aggiornati, le Fonti Autentiche DEVONO notificare ai Fornitori di Attestati Elettronici di aggiornare lo stato di validità di qualsiasi Attestato Elettronico che contenga tali attributi.
 
@@ -288,6 +286,7 @@ Il Fornitore di Attestati Elettronici interroga periodicamente il Signal Hub :re
 
 L’Istanza del Wallet, a seguito di controlli periodici dello stato di validità degli Attestati Elettronici memorizzati, riceve lo stato aggiornato. Quando lo Stato dell’Attestato viene modificato in ``INVALID``, il Fornitore di Attestati Elettronici DEVE informare l’Utente di tale cambiamento. Nel caso in cui lo stato dell’Attestato venga modificato in ``UPDATE`` (risp. 0x03) o ``ATTRIBUTE_UPDATE`` (risp. 0x0F), l’Istanza del Wallet DOVREBBE procedere alla riemissione dell’Attestato Elettronico, come descritto in :ref:`credential-issuance-low-level:Re-Issuance Flow`.
 
+
 Gestione del ciclo di vita delle Credenziali in batch
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -321,15 +320,13 @@ Per la verifica dello stato di validità di un Attestato Elettronico a lunga dur
     - [OBBLIGATORIO] Token Status List.
     - `TOKEN-STATUS-LIST`_.
 
+
 Token Status Lists
-------------------
+^^^^^^^^^^^^^^^^^^
 
 Questa sezione definisce una struttura di dati Status List, che viene utilizzata per trasmettere informazioni riguardanti gli stati individuali di più Attestati Elettronici. Gli Attestati Elettronici possono essere di qualsiasi formato, come SD-JWT o mdoc ISO/IEC 18013-5. Una Status List descrive lo stato degli Attestati Elettronici codificando la loro validità in un array di bit. A ciascun Attestato Elettronico viene assegnato un indice durante l'emissione; questo indice rappresenta la sua posizione all'interno dell'array di bit. Il valore del bit o dei bit in questo indice corrisponde allo stato degli Attestati Elettronici. Una Status List viene fornita all'interno di un Token di Status List firmato crittograficamente in formato JWT. Per i dettagli, vedere `TOKEN-STATUS-LIST`_.
 
 In questa specifica, i ruoli di Fornitore di Attestati Elettronici e Status Issuer (cioè, l'entità che emette il Token di Status List sulle informazioni di stato dell'Attestato Elettronico) coincidono, mentre lo Status Provider (cioè, l'entità che fornisce il Token di Status List su un endpoint pubblico) PUÒ essere il Fornitore di Attestati Elettronici stesso o un'altra entità.
-
-Creazione delle Status List
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Il Fornitore di Attestati Elettronici DEVE
 
@@ -362,9 +359,10 @@ Ad esempio, se sono possibili cinque stati per un certo Attestato Elettronico, a
 Una volta che la Relying Party riceve un Attestato Elettronico, questo le consente di richiedere la Status List per validare il suo stato attraverso il parametro URI fornito e cercare l'indice corrispondente. Tuttavia, la Relying Party è in grado di memorizzare l'URI e l'indice dell'Attestato Elettronico per richiedere nuovamente la Status List in un momento successivo. Facendolo regolarmente, la Relying Party può creare un profilo dello stato di validità dell'Attestato Elettronico. Questo comportamento potrebbe anche essere abusato in casi in cui non è intenzionale e sconosciuto all'Utente, ad esempio profilando la sospensione di una patente di guida. Questo comportamento potrebbe essere mitigato, ad esempio, con la regolare riemissione dell'Attestato Elettronico.
 
 Token di Status List
-"""""""""""""""""""""""
+""""""""""""""""""""
 
 Il Token di Status List è disponibile all'Endpoint di Status List e contiene i seguenti parametri.
+
 
 .. _table_status_list_endpoint_parameters:
 .. list-table::
@@ -463,8 +461,8 @@ Di seguito è riportato un esempio di Token di Status List prima di applicare la
     "sub": "https://example-issuer.com/statuslists/",
     "ttl": 43200
   }
- 
- 
+
+
 Gestione dello Stato degli Attestati Elettronici con Token di Status List
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -546,7 +544,7 @@ Di seguito è riportato un esempio non normativo di una risposta per un Token di
   eyJhbGciOiJFUzI1NiIsImtpZCI6IjEyIiwidHlwIjoic3RhdHVzbGlzdCtqd3QifQ.eyJleHAiOjIyOTE3MjAxNzAsImlhdCI6MTY4NjkyMDE3MCwiaXNzIjoiaHR0cHM6Ly9leGFtcGxlLmNvbSIsInN0YXR1c19saXN0Ijp7ImJpdHMiOjEsImxzdCI6ImVOcmJ1UmdBQWhjQlhRIn0sInN1YiI6Imh0dHBzOi8vZXhhbXBsZS5jb20vc3RhdHVzbGlzdHMvMSIsInR0bCI6NDMyMDB9.SSdg3AnTHsyRtCHziLy-QnXg-YRldMEXkdEgDXgE_ZvIvjM0eULQlzEbLBLfCeGhlqKJSReC-m85K79CTjJDzg
 
 Al ricevimento di un Attestato Elettronico, una Relying Party DEVE prima eseguire la validazione dell'Attestato Elettronico stesso (ad esempio, controllando gli attributi previsti, la firma valida e il tempo di scadenza). Se questa validazione non ha successo, l'Attestato Elettronico DEVE essere rifiutata. Se la validazione ha avuto successo, la Relying Party DEVE eseguire i seguenti passaggi di validazione per valutare lo stato dell'Attestato Elettronico:
- 
+
 - Controllare l'esistenza di un claim ``status``, controllare l'esistenza di un claim ``status_list`` all'interno del claim ``status`` e validare che il contenuto di ``status_list`` aderisca alle regole definite nella Sezione :ref:`credential-revocation:Gestione dello Stato degli Attestati Elettronici con Token di Status List`.
 - Risolvere il Token di Status List dall'URI fornito.
 - Validare il Token di Status List:
@@ -563,8 +561,8 @@ Al ricevimento di un Attestato Elettronico, una Relying Party DEVE prima eseguir
   - Se la Relying Party sta utilizzando un sistema per memorizzare nella cache il Token di Status List, DOVREBBE controllare il claim ``ttl`` del Token di Status List e recuperare una copia aggiornata se (tempo in cui lo stato è stato risolto + `ttl` < tempo corrente).
 
 - Decomprimere la Status List con un decompressore compatibile con DEFLATE [:rfc:`1951`] e ZLIB [:rfc:`1950`].
-- Recuperare il valore di stato dell'indice specificato nell'Attestato Elettronico come descritto in :ref:`credential-revocation:Creazione delle Status List`. Fallire se l'indice fornito è fuori dai limiti della Status List.
-- Controllare il valore di stato come descritto in :ref:`credential-revocation:Creazione delle Status List`.
+- Recuperare il valore di stato dell'indice specificato nell'Attestato Elettronico come descritto in :ref:`credential-revocation:Verifica degli Stati degli Attestati Elettronici`. Fallire se l'indice fornito è fuori dai limiti della Status List.
+- Controllare il valore di stato come descritto in :ref:`credential-revocation:Verifica degli Stati degli Attestati Elettronici`.
 
 Se uno di questi controlli fallisce, non è possibile fare alcuna dichiarazione sullo stato dell'Attestato Elettronico e l'Attestato Elettronico DOVREBBE essere rifiutato.
 
@@ -585,3 +583,5 @@ In caso di errore durante la generazione della risposta da parte dell'Endpoint d
     - Il Provider di Status List è temporaneamente non disponibile.
   * - *504 Gateway Timeout* [OPZIONALE]
     - Il Provider di Status List non può soddisfare la richiesta entro l'intervallo di tempo definito.
+
+

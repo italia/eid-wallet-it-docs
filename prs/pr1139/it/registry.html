@@ -2202,15 +2202,14 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive <stron
 <td><p>OBBLIGATORIO. Array di informazioni rilevanti sugli Emittenti di Credenziali autorizzati, inclusi dati amministrativi e tecnici quali nome dell'organizzazione, riferimento al documento di specifica API e meccanismi di emissione supportati. Ogni elemento dell’array contiene:</p>
 <blockquote>
 <div><ul>
-<li><p><strong>id</strong>: OBBLIGATORIO. Stringa. Identificativo univoco dell’elemento dell’array.</p></li>
 <li><p><strong>entity_id</strong>: OBBLIGATORIO. Stringa. Identificativo univoco del Credential Issuer. DEVE corrispondere al valore contenuto nel parametro <code class="docutils literal notranslate"><span class="pre">iss</span></code> dell’Entity Configuration del Credential Issuer.</p></li>
 <li><p><strong>organization_name_l10n_id</strong>: OBBLIGATORIO. Stringa. Chiave di localizzazione che fa riferimento al nome localizzato dell’organizzazione nel bundle di localizzazione (es. <code class="docutils literal notranslate"><span class="pre">issuer1.name</span></code>).</p></li>
-<li><p><strong>organization_code</strong>: Stringa. Codice IPA del Credential Issuer per enti pubblici oppure partita IVA per soggetti privati.</p></li>
-<li><p><strong>organization_country</strong>: Stringa. Codice paese dell’organizzazione a due lettere conforme allo standard ISO 3166-1 alpha-2.</p></li>
+<li><p><strong>organization_code</strong>: OBBLIGATORIO. Stringa. Codice IPA del Credential Issuer per enti pubblici oppure partita IVA per soggetti privati.</p></li>
+<li><p><strong>organization_country</strong>: OBBLIGATORIO. Stringa. Codice paese dell’organizzazione a due lettere conforme allo standard ISO 3166-1 alpha-2.</p></li>
 <li><p><strong>contacts</strong>: OBBLIGATORIO. Stringa. Array di indirizzi email di contatto per almeno un referente di supporto utenti, uno applicativo e uno specialista di sistemi.</p></li>
-<li><p><strong>legal_type</strong>: Stringa. Classificazione giuridica del Credential Issuer (es. pub-eaa, qeaa, eaa).</p></li>
-<li><p><strong>homepage_uri</strong>: Stringa. URL che punta alla homepage dell’organizzazione.</p></li>
-<li><p><strong>logo_uri</strong>: Stringa. URL dell’immagine del logo dell’organizzazione.</p></li>
+<li><p><strong>legal_type</strong>: OBBLIGATORIO. Stringa. Classificazione giuridica del Credential Issuer (es. pub-eaa, qeaa, eaa).</p></li>
+<li><p><strong>homepage_uri</strong>: OBBLIGATORIO. Stringa. URL che punta alla homepage dell’organizzazione.</p></li>
+<li><p><strong>logo_uri</strong>: OPZIONALE. Stringa. URL dell’immagine del logo dell’organizzazione.</p></li>
 <li><p><strong>policy_uri</strong>: OBBLIGATORIO. Stringa. URL al documento di privacy policy.</p></li>
 <li><p><strong>tos_uri</strong>: OPZIONALE. Stringa. URL al documento di termini di servizio.</p></li>
 <li><p><strong>service_documentation_uri</strong>: OPZIONALE. Stringa. URL che punta alla documentazione del servizio del Credential Issuer.</p></li>
@@ -2222,7 +2221,7 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive <stron
 <li><p><strong>wallet_initiated</strong>: OBBLIGATORIO. Booleano. Indica se è supportato il flusso Wallet-Initiated.</p></li>
 <li><p><strong>issuer_initiated</strong>: OBBLIGATORIO. Booleano. Indica se è supportata il flusso Issuer-Initiated (Third Party Initiated Flow).</p></li>
 <li><p><strong>max_deferred_issuance_time_minutes</strong>: CONDIZIONALE. Intero. Tempo massimo, in minuti, per la disponibilità dell’emissione della credenziale. OBBLIGATORIO se <code class="docutils literal notranslate"><span class="pre">deferred_flow</span></code> è impostato a <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></li>
-<li><p><strong>notification_methods</strong>: REQUIRED if <code class="docutils literal notranslate"><span class="pre">deferred_flow</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>. CONDIZIONALE. Array di stringhe. Contiene i metodi di notifica supportati dal Credential Issuer per l’emissione differita, come <code class="docutils literal notranslate"><span class="pre">&quot;push&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;poll&quot;</span></code>. OBBLIGATORIO se <code class="docutils literal notranslate"><span class="pre">deferred_flow</span></code> è impostato a <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></li>
+<li><p><strong>notification_methods</strong>: CONDIZIONALE. Array di stringhe. Contiene i metodi di notifica supportati dal Credential Issuer per l’emissione differita, come <code class="docutils literal notranslate"><span class="pre">&quot;push&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;poll&quot;</span></code>. OBBLIGATORIO se <code class="docutils literal notranslate"><span class="pre">deferred_flow</span></code> è impostato a <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -2243,12 +2242,15 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive <stron
 </td>
 </tr>
 <tr class="row-odd"><td><p><strong>authentic_sources</strong></p></td>
-<td><p>OBBLIGATORIO. Array di oggetti JSON delle Fonti Autentiche che fanno riferimento alle Fonti Autentiche autorizzate. Ogni oggetto DEVE contenere l'identificatore dell'entità FA e l'identificatore specifico della capacità dati:</p>
+<td><p>CONDIZIONALE. È OBBLIGATORIO solo se <code class="docutils literal notranslate"><span class="pre">parent_credentials</span></code> è assente. Array di oggetti JSON delle Fonti Autentiche che fanno riferimento alle Fonti Autentiche autorizzate. Ogni oggetto DEVE contenere l'identificatore dell'entità FA e l'identificatore specifico della capacità dati:</p>
 <ul class="simple">
 <li><p><strong>id</strong>: Identificatore stringa che fa riferimento all'entity_id della Fonte Autentica come registrato in <a class="reference internal" href="#registro-delle-fonti-autentiche"><span class="std std-ref">Registro delle Fonti Autentiche</span></a>.</p></li>
 <li><p><strong>dataset_id</strong>: Identificatore stringa della specifica capacità dati/dataset utilizzato dall'Emittente dalla FA.</p></li>
 </ul>
 </td>
+</tr>
+<tr class="row-even"><td><p><strong>parent_credentials</strong></p></td>
+<td><p>CONDIZIONALE. È OBBLIGATORIO solo se <code class="docutils literal notranslate"><span class="pre">authentic_sources</span></code> è assente. Array degli identificativi di <code class="docutils literal notranslate"><span class="pre">credential_type</span></code> relativi a Credenziali designate come fonti dei dati. Ogni elemento identifica una Credenziale che funge da Fonte Autentica durante il processo di emissione della Credenziale Digitale.</p></td>
 </tr>
 </tbody>
 </table>
@@ -3441,7 +3443,7 @@ I principali Percorsi di seguito illustrano le interazioni con l'Infrastruttura 
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 23/06/2026.
+      Ultimo aggiornamento 25/06/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

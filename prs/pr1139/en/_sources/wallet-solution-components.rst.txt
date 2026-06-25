@@ -49,7 +49,6 @@ This component MUST ensure security through:
 - Compliance with IT-Wallet Federation security requirements.
 
 
-
 Wallet Unit
 -----------
 
@@ -69,7 +68,7 @@ Interacting with the Wallet Backend, this component MUST handle:
 - Status management (maintaining and updating validity).
 - Revocation processes (implementing mechanisms to revoke Wallet Instances), according to Section :ref:`wallet-instance-revocation:Wallet Instance Revocation`.
 
-Based on the status of the Wallet Instance and the User request, this component interact with the other Wallet Instance components. 
+Based on the status of the Wallet Instance and the User request, this component interact with the other Wallet Instance components.
 
 Issuer Component
 ^^^^^^^^^^^^^^^^
@@ -113,4 +112,5 @@ The Wallet Solution supports these interaction patterns:
 3. **PID Provider to Wallet Backend API**: Secure API calls to request Wallet Instance revocation.
 4. **User to Wallet Instance User Interface**: for Digital Credential management (issuance, presentation, backup, restore, deletion).
 5. **Wallet Instance to Relying Party**: for Digital Credential presentation.
+
 

@@ -21,7 +21,7 @@ As shown in :numref:`fig_Wallet_Instance_Revoc_Entities`, other actors MAY trigg
     :caption: `Entities involved in the Wallet Instance revocation process. <https://www.plantuml.com/plantuml/svg/fPFVYnCn4CVVzwyO-s8F15_kKUIyTi6AFqfx8iB1acx6DhXDQZBPkeh_kpCnsyN6DmibP9gPxsU-CxqBf3p5OmUr9KC60nZRkwv73SO27H0-gQv3WfNbfxP5yDYxLf5n5axUjHX2zSJOjeiQuSNYzldYjbcuuybPjFIogbwlbdMpVQWtzOU7p-jwVbDLQ_J1sNaCw9_1x2CVCpuJm03kR8tT9-L7UwKzu-Hx5wrMVfYVqszD60BXaVFpssswpsxWPmNykQ2CxqsknHdNrJaattVAgZq64Bwd0PPcRqXriF2eaHbL5vZZdxNPZzvexceilSw1iNI-Xy9KPJMSSGSisPiMHU5NLKq2Aj91nDickEWJ_Qin1DiKAZJ4M514tkmYyPrSSdKLGaIV58-vKmdtgZDQ1i1451bWKc_gxty8d3S_K3SxfmS1k4GkopCoRED96WdE3t3FhvFQcwXDo_P1JgH1vZdrQ1AOTB1Q5iubwl0NjJoJUtOzN1jOLHliyfPT3wWOFcocjTxWDzOYAI4LYjnoaoJvQ_5N4GWf88tzBqIv01UxtZioNmOPjwphezMew92bYwcL33bznV6z3ASbqwTXPkdcRUb033YbikJ4pKbtQ7KyThy1>`_
 
 
-Regardless of who triggered the revocation, the Wallet Provider has to inform Users when their Wallet Unit is revoked, according to the following requirements (:ref:`WP_034 <wallet-instance-testcases>`):
+Regardless of who triggered the revocation, the Wallet Provider MUST inform Users when their Wallet Unit is revoked, according to the following requirements (:ref:`WP_034 <wallet-instance-testcases>`):
 
 - Out-of-band alerts (e.g., email or SMS) MUST be sent as the primary notification mechanism alongside the Wallet Unit itself.
 - The alert MUST occur within 24 hours from the effective Wallet Unit revocation.
@@ -38,7 +38,6 @@ Regardless of who triggered the revocation, the Wallet Provider has to inform Us
   - The flow for the Wallet Instance Revocation triggered by the User is detailed below.
   - The endpoint used by the PID Provider is detailed in the Wallet Provider Catalog of e-Service PDND Catalog (see Section :ref:`wallet-provider-endpoint:e-Service PDND Wallet Provider Catalog` for technical details).
   - The flow for Authorized Entities (e.g., Supervisory Bodies) is out of scope of this specification, it will be managed by each Wallet Provider.
-
 
 
 Wallet Instance Revocation Request
@@ -125,4 +124,5 @@ The verification of the Wallet Instance validity MUST be performed:
 
 .. note::
   During the Digital Credential presentation phase, a Relying Party can indirectly check the Wallet Instance revocation by checking the Digital Credential revocation. When a Wallet Instance is revoked, the Wallet Provider revokes the corresponding Wallet Instance Attestations, triggering the revocation of the Digital Credential by Credential Issuer.
+
 

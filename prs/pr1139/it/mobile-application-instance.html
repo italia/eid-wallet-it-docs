@@ -233,7 +233,9 @@ Per i dispositivi Android, l'inclusione di <strong>Strongbox Keymaster</strong> 
 <p><strong>Passo 9 (Richiesta di Inizializzazione dell'Istanza dell'Applicazione Mobile)</strong>: L'Istanza dell'Applicazione Mobile invia una <a class="reference internal" href="#richiesta-di-inizializzazione-dell-istanza-dell-applicazione-mobile"><span class="std std-ref">Richiesta di Inizializzazione dell'Istanza dell'Applicazione Mobile</span></a> al Fornitore dell'Applicazione, per inizializzare l'Istanza dell'Applicazione Mobile, identificata dalla chiave pubblica Cryptographic Hardware. Il corpo della richiesta include i seguenti attributi: il <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, la Key Attestation (<code class="docutils literal notranslate"><span class="pre">key_attestation</span></code>) e il Cryptographic Hardware Key Tag (<code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>) (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_133</span></a>).</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Non è necessario inviare la chiave pubblica dell'Hardware dell'Istanza dell'Applicazione perché è già inclusa nella <code class="docutils literal notranslate"><span class="pre">key_attestation</span></code>. Come visto nei passaggi precedenti, le API di Key Attestation creano una Key Attestation collegata al <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> fornito, che è il digest del <code class="docutils literal notranslate"><span class="pre">nonce</span></code> del Fornitore dell'Applicazione, la chiave pubblica dell'Hardware dell'Istanza dell'Applicazione e il suo Hardware Key Tag (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_133a</span></a>). Questo processo elimina la necessità di inviare direttamente la chiave pubblica dell'Hardware dell'Istanza dell'Applicazione, poiché è già inclusa nella Key Attestation.</p>
+<p>Non è necessario inviare la chiave pubblica dell'Hardware dell'Istanza dell'Applicazione perché è già inclusa nella <code class="docutils literal notranslate"><span class="pre">key_attestation</span></code>.
+Come visto nei passaggi precedenti, le API di Key Attestation creano una Key Attestation collegata al <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> fornito, che è il digest del <code class="docutils literal notranslate"><span class="pre">nonce</span></code> del Fornitore dell'Applicazione, la chiave pubblica dell'Hardware dell'Istanza dell'Applicazione e il suo Hardware Key Tag (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_133a</span></a>).
+Questo processo elimina la necessità di inviare direttamente la chiave pubblica dell'Hardware dell'Istanza dell'Applicazione, poiché è già inclusa nella Key Attestation.</p>
 </div>
 <p><strong>Passi 10-12 (Risposta di Inizializzazione dell'Istanza dell'Applicazione Mobile)</strong>: Il Fornitore dell'Applicazione convalida il <code class="docutils literal notranslate"><span class="pre">nonce</span></code> e la firma <code class="docutils literal notranslate"><span class="pre">key_attestation</span></code>, quindi (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_135–137</span></a>):</p>
 <blockquote>
@@ -498,7 +500,7 @@ Per i dispositivi Android, l'inclusione di <strong>Strongbox Keymaster</strong> 
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 23/06/2026.
+      Ultimo aggiornamento 25/06/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

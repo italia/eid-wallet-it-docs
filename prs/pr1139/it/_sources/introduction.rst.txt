@@ -8,7 +8,8 @@ Nell'ultimo decennio, la digitalizzazione ha trasformato radicalmente il modo in
 
 In Italia, il Decreto-Legge n. 19 del 2 marzo 2024, convertito, con modificazioni, dalla Legge n. 56 del 29 aprile 2024, ha introdotto l'articolo 64-quater del Decreto Legislativo n. 82 del 7 marzo 2005, istituendo il Sistema di Portafoglio Digitale Italiano - Sistema IT-Wallet. Il Sistema IT-Wallet consente a persone fisiche o giuridiche di accedere a servizi pubblici e privati attraverso la presentazione sicura di Attestati Elettronici, attestanti diritti, deleghe, caratteristiche, licenze o qualifiche. L'articolo 64-quater prevede inoltre l'adozione di uno o più decreti attuativi per definire le regole che disciplinano il funzionamento del Sistema IT-Wallet, compresi i ruoli delle entità coinvolte, i requisiti tecnici e di sicurezza, e i principi di sostenibilità economica, di cui queste Specifiche Tecniche – redatte attraverso un processo aperto e collaborativo – costituiscono parte integrante.
 
-Grazie al Sistema IT-Wallet, le persone fisiche e giuridiche possono fornire direttamente, tramite il proprio Wallet, le informazioni necessarie per accedere ai servizi offerti da enti pubblici e privati sotto forma di Attestati Elettronici. Analogamente a un portafoglio fisico, un'Istanza del Wallet può contenere dati relativi all'identità o ai documenti, come la patente di guida o la tessera sanitaria, nonché una vasta gamma di informazioni digitali verificabili, come una qualifica professionale, un diploma di istruzione, una licenza o un attributo certificato.
+Grazie al Sistema IT-Wallet, le persone fisiche e giuridiche possono fornire direttamente, tramite il proprio Wallet, le informazioni necessarie per accedere ai servizi offerti da enti pubblici e privati sotto forma di Attestati Elettronici.
+Analogamente a un portafoglio fisico, un'Istanza del Wallet può contenere dati relativi all'identità o ai documenti, come la patente di guida o la tessera sanitaria, nonché una vasta gamma di informazioni digitali verificabili, come una qualifica professionale, un diploma di istruzione, una licenza o un attributo certificato.
 
 I principali ruoli nell'ecosistema Wallet sono elencati di seguito:
 
@@ -42,9 +43,10 @@ Il documento, distinguendo tra aspetti normativi obbligatori e buone pratiche pr
 - garantire la coerenza di progettazione tra macro-funzionalità e singole interazioni tra l'Utente e i Touchpoint del servizio;
 - mantenere un adeguato livello di qualità, promuovendo i principi di usabilità, accessibilità e inclusività.
 
+
 Il secondo focus è definire l'architettura tecnica e il quadro di riferimento che servirà da linea guida per tutte le parti coinvolte nello sviluppo delle Soluzioni Tecniche del Sistema IT-Wallet.
 
-La documentazione, gli strumenti e le risorse aggiuntive - di seguito definite Risorse Ufficiali - per la progettazione e lo sviluppo delle Soluzioni Tecniche del Sistema IT-Wallet saranno presto disponibili nella sezione :ref:`official-resources:Risorse Ufficiali`: e saranno aggiornate periodicamente. 
+La documentazione, gli strumenti e le risorse aggiuntive - di seguito definite Risorse Ufficiali - per la progettazione e lo sviluppo delle Soluzioni Tecniche del Sistema IT-Wallet saranno presto disponibili nella sezione :ref:`official-resources:Risorse Ufficiali`: e saranno aggiornate periodicamente.
 
 Linguaggio Normativo e Convenzioni
 ----------------------------------
@@ -52,3 +54,5 @@ Linguaggio Normativo e Convenzioni
 Le parole chiave "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY" e "OPTIONAL" in questo documento devono essere interpretate come descritto in BCP 14 [RFC2119] [RFC8174] quando, e solo quando, appaiono in maiuscolo, come mostrato qui.
 
 .. include:: how-to-read-spec.rst
+
+

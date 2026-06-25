@@ -1,10 +1,10 @@
 .. include:: ../common/common_definitions.rst
 
+
 Credential Issuer Test Matrix
 ---------------------------------
 
 This section provides the set of test cases designed for technical implementers and development teams responsible for creating and deploying Credential Issuer solutions. It is also intended for assessment bodies inspecting and validating the implementations of Credential Issuer solutions.
-
 
 
 .. list-table::
@@ -307,7 +307,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_061a
     - Issuance, Security
     - PKCE ``code_verifier`` Verification in Token Request
-    - The Credential Issuer verifies that the ``code_verifier`` parameter is present and matches the ``code_challenge`` associated with the authorization code (:rfc:`7636`); in case of mismatch, the request is rejected.  
+    - The Credential Issuer verifies that the ``code_verifier`` parameter is present and matches the ``code_challenge`` associated with the authorization code (:rfc:`7636`); in case of mismatch, the request is rejected.
   * - CI_062
     - Issuance, Security
     - Redirect URI Matching Validation of the Token Request
@@ -944,4 +944,5 @@ This section provides the set of test cases designed for technical implementers 
     - Data Model and lifecycle, Interoperability
     - Credentials Array Element Information
     - Each element of the *Credentials* array correctly contains all the information defined in the First-level Fields :ref:`table <table_catalog_parameters_first_level>`.
+
 

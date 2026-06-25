@@ -172,16 +172,12 @@
   <section id="endpoint-della-relying-party">
 <h1><span class="section-number">13.3. </span>Endpoint della Relying Party<a class="headerlink" href="#endpoint-della-relying-party" title="Link to this heading">¶</a></h1>
 <p>La Relying Party DEVE esporre una serie completa di endpoint per supportare l'ecosistema IT-Wallet completo, inclusi sia i flussi di presentazione remoti che di prossimità.</p>
-<div class="admonition note">
-<p class="admonition-title">Nota</p>
-<p>I test relativi agli endpoint della Relying Party sono definiti nella matrice di test per presentazione remota (<a class="reference internal" href="test-plans-remote-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-remoto"><span class="std std-ref">Matrice di Test per il Verificatore di Credenziali in Remoto</span></a>) e prossimità (<a class="reference internal" href="test-plans-proximity-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-prossimita"><span class="std std-ref">Matrice di Test per il Verificatore di Credenziali in Prossimità</span></a>).</p>
-</div>
 <section id="endpoint-per-flussi-remoti-della-relying-party">
 <h2><span class="section-number">13.3.1. </span>Endpoint per Flussi Remoti della Relying Party<a class="headerlink" href="#endpoint-per-flussi-remoti-della-relying-party" title="Link to this heading">¶</a></h2>
 <p>La Relying Party DEVE esporre una serie di endpoint per supportare i flussi di presentazione remoti come definiti in OpenID4VP 1.0. Questi endpoint abilitano la verifica sicura delle credenziali, l'instaurazione della fiducia e l'autenticazione dell'utente per modelli di interazione cross-device e same-device.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>I test relativi agli endpoint per flussi remoti della Relying Party sono definiti nella matrice di test per presentazione remota (<a class="reference internal" href="test-plans-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-remoto"><span class="std std-ref">Matrice di Test per il Verificatore di Credenziali in Remoto</span></a>).</p>
+<p>I test relativi agli endpoint per flussi remoti della Relying Party sono definiti nella matrice di test per presentazione remota (<a class="reference internal" href="test-plans-remote-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-remoto"><span class="std std-ref">Matrice di Test per il Verificatore di Credenziali in Remoto</span></a>).</p>
 </div>
 <section id="endpoint-di-federazione">
 <h3><span class="section-number">13.3.1.1. </span>Endpoint di Federazione<a class="headerlink" href="#endpoint-di-federazione" title="Link to this heading">¶</a></h3>
@@ -194,7 +190,7 @@
 <section id="endpoint-request-uri">
 <h4><span class="section-number">13.3.1.2.1. </span>Endpoint Request URI<a class="headerlink" href="#endpoint-request-uri" title="Link to this heading">¶</a></h4>
 <p>L'Endpoint Request URI è dove la Relying Party fornisce il Request Object firmato all'Istanza del Wallet. Questo endpoint supporta sia i metodi GET che POST come definito nella specifica OpenID4VP 1.0.</p>
-<p>Per i requisiti di implementazione dettagliati, vedere <a class="reference internal" href="remote-flow.html#remote-flow-endpoint-uri-request"><span class="std std-ref">Richiesta all'Endpoint URI Request</span></a> e <a class="reference internal" href="remote-flow.html#richiesta-all-endpoint-uri-request"><span class="std std-ref">Richiesta all'Endpoint URI Request</span></a>.</p>
+<p>Per i requisiti di implementazione dettagliati, vedere <a class="reference internal" href="remote-flow.html#richiesta-all-endpoint-uri-request"><span class="std std-ref">Richiesta all'Endpoint URI Request</span></a> e <a class="reference internal" href="remote-flow.html#risposta-dell-endpoint-uri-request"><span class="std std-ref">Risposta dell'Endpoint URI Request</span></a>.</p>
 </section>
 <section id="endpoint-response-uri">
 <h4><span class="section-number">13.3.1.2.2. </span>Endpoint Response URI<a class="headerlink" href="#endpoint-response-uri" title="Link to this heading">¶</a></h4>
@@ -204,7 +200,7 @@
 <section id="endpoint-status-opzionale">
 <h4><span class="section-number">13.3.1.2.3. </span>Endpoint Status (Opzionale)<a class="headerlink" href="#endpoint-status-opzionale" title="Link to this heading">¶</a></h4>
 <p>L'Endpoint Status è un endpoint opzionale che consente all'user-agent di monitorare il progresso del flusso di presentazione. Questo endpoint è particolarmente utile per i flussi Same Device dove l'user-agent deve sapere quando l'Istanza del Wallet ha completato la presentazione.</p>
-<p>Per i requisiti di implementazione dettagliati, vedere <a class="reference internal" href="remote-flow.html#status-endpoint"><span class="std std-ref">Status Endpoint</span></a> e <a class="reference internal" href="remote-flow.html#remote-flow-errori-status-endpoint"><span class="std std-ref">Errori dello Status Endpoint</span></a>.</p>
+<p>Per i requisiti di implementazione dettagliati, vedere <a class="reference internal" href="remote-flow.html#status-endpoint"><span class="std std-ref">Status Endpoint</span></a> e <a class="reference internal" href="remote-flow.html#errori-dello-status-endpoint"><span class="std std-ref">Errori dello Status Endpoint</span></a>.</p>
 </section>
 </section>
 <section id="endpoint-di-gestione-dati-utente">
@@ -288,7 +284,7 @@
 <li><p><strong>Rate Limiting</strong>: Gli endpoint DOVREBBERO implementare rate limiting per prevenire abusi</p></li>
 <li><p><strong>Audit Logging</strong>: Tutte le interazioni degli endpoint DOVREBBERO essere registrate per il monitoraggio della sicurezza</p></li>
 </ul>
-<p>Per i requisiti di sicurezza dettagliati, vedere <a class="reference internal" href="#considerazioni-di-sicurezza"><span class="std std-ref">Considerazioni di Sicurezza</span></a> e i casi di test pertinenti in <a class="reference internal" href="test-plans-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-remoto"><span class="std std-ref">Matrice di Test per il Verificatore di Credenziali in Remoto</span></a>.</p>
+<p>Per i requisiti di sicurezza dettagliati, vedere <a class="reference internal" href="remote-flow.html#flusso-remoto"><span class="std std-ref">Flusso Remoto</span></a> e i casi di test pertinenti in <a class="reference internal" href="test-plans-remote-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-remoto"><span class="std std-ref">Matrice di Test per il Verificatore di Credenziali in Remoto</span></a>.</p>
 </section>
 <section id="note-di-implementazione">
 <h3><span class="section-number">13.3.1.5. </span>Note di Implementazione<a class="headerlink" href="#note-di-implementazione" title="Link to this heading">¶</a></h3>
@@ -304,7 +300,7 @@
 </section>
 <section id="endpoint-del-backend-del-provider-di-relying-party">
 <h2><span class="section-number">13.3.2. </span>Endpoint del Backend del Provider di Relying Party<a class="headerlink" href="#endpoint-del-backend-del-provider-di-relying-party" title="Link to this heading">¶</a></h2>
-<span class="target" id="relying-party-provider-backend-endpoint-endpoint-del-backend-del-provider-di-relying-party"></span><p>La Relying Party DEVE esporre una serie di endpoint per gestire il ciclo di vita delle App di Verifica che utilizzano un servizio di backend remoto fornito dal loro Backend del Provider di Relying Party. Questi endpoint supportano i flussi di presentazione in prossimità fornendo generazione di nonce, registrazione delle chiavi hardware, convalida dell'integrità e rilascio del Certificato di Accesso. I dettagli specifici della loro implementazione sono lasciati alla discrezione della Relying Party.</p>
+<p>La Relying Party DEVE esporre una serie di endpoint per gestire il ciclo di vita delle App di Verifica che utilizzano un servizio di backend remoto fornito dal loro Backend del Provider di Relying Party. Questi endpoint supportano i flussi di presentazione in prossimità fornendo generazione di nonce, registrazione delle chiavi hardware, convalida dell'integrità e rilascio del Certificato di Accesso. I dettagli specifici della loro implementazione sono lasciati alla discrezione della Relying Party.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>I test relativi agli endpoint della Relying Party sono definiti nella matrice di test per presentazione remota (<a class="reference internal" href="test-plans-remote-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-remoto"><span class="std std-ref">Matrice di Test per il Verificatore di Credenziali in Remoto</span></a>) e prossimità (<a class="reference internal" href="test-plans-proximity-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-prossimita"><span class="std std-ref">Matrice di Test per il Verificatore di Credenziali in Prossimità</span></a>).</p>
@@ -320,7 +316,7 @@
 </section>
 <section id="endpoint-di-inizializzazione-dell-app-di-verifica-della-relying-party">
 <h3><span class="section-number">13.3.2.3. </span>Endpoint di Inizializzazione dell'App di Verifica della Relying Party<a class="headerlink" href="#endpoint-di-inizializzazione-dell-app-di-verifica-della-relying-party" title="Link to this heading">¶</a></h3>
-<p>L'Endpoint di Inizializzazione dell'App di Verifica consente l'inizializzazione delle App di Verifica, consistente nella registrazione di una coppia di Cryptographic Hardware Keys a lunga durata, memorizzate in modo sicuro (<a class="reference internal" href="test-plans-proximity-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-prossimita"><span class="std std-ref">Matrice di Test per il Verificatore di Credenziali in Prossimità</span></a>).</p>
+<p>L'Endpoint di Inizializzazione dell'App di Verifica consente l'inizializzazione delle App di Verifica, consistente nella registrazione di una coppia di Cryptographic Hardware Keys a lunga durata, memorizzate in modo sicuro.</p>
 <p>Ulteriori dettagli sulla Richiesta e Risposta di Inizializzazione dell'App di Verifica sono forniti rispettivamente nelle Sezioni <a class="reference internal" href="mobile-application-instance.html#richiesta-di-inizializzazione-dell-istanza-dell-applicazione-mobile"><span class="std std-ref">Richiesta di Inizializzazione dell'Istanza dell'Applicazione Mobile</span></a> e <a class="reference internal" href="mobile-application-instance.html#risposta-di-inizializzazione-dell-istanza-dell-applicazione-mobile"><span class="std std-ref">Risposta di Inizializzazione dell'Istanza dell'Applicazione Mobile</span></a>.</p>
 </section>
 <section id="endpoint-di-associazione-chiavi-della-relying-party">
@@ -409,7 +405,7 @@
 <td><p><code class="docutils literal notranslate"><span class="pre">not_found</span></code></p></td>
 <td><p>L'istanza dell'applicazione di verifica (Verifier App) non è stata trovata.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">422</span> <span class="pre">Unprocessable</span> <span class="pre">Content</span></code> [OPTIONAL]</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">422</span> <span class="pre">Unprocessable</span> <span class="pre">Content</span></code> [OPZIONALE]</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">validation_error</span></code></p></td>
 <td><p>La richiesta non rispetta il formato richiesto.</p></td>
 </tr>
@@ -631,7 +627,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 23/06/2026.
+      Ultimo aggiornamento 25/06/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

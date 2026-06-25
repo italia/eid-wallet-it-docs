@@ -128,7 +128,7 @@ The template e-service **MUST** adhere to the following specifications:
 Authentic Source Template Instantiation
 """"""""""""""""""""""""""""""""""""""""
 
-Each Authentic Source **SHOULD** instantiate the *IT Wallet - Authentic Source* template e-service in PDND.  
+Each Authentic Source **SHOULD** instantiate the *IT Wallet - Authentic Source* template e-service in PDND.
 The instantiation process will result in a new e-service that **MUST** satisfy the following requirements:
 
     - **Signal Hub**: True
@@ -146,3 +146,5 @@ Below is the complete Open API Specification for the Authentic Source PDND e-ser
 .. literalinclude:: ./oas3/OAS3-PDND-AS.yaml
     :language: yaml
     :linenos:
+
+
