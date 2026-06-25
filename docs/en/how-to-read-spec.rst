@@ -55,7 +55,7 @@ The proposed reading paths are intended as guidance and do not replace the need 
 
 For entities interested in addressing multiple roles, it is recommended to deepen all the reading paths related to relevant roles. 
 
-**Authentic Source**
+### Authentic Source
 
 
 The Authentic Source focuses on securely exposing, managing, and guaranteeing the absolute accuracy and integrity of the authoritative raw data underlying (Q)EAA. 
@@ -134,18 +134,15 @@ To understand the User Experience requirements and design the Wallet Solution fo
 
 To implement the Wallet Solution in line with specific technological standards to ensure the communication between the Wallet Solution and other actors.
 - **Section** :ref:`wallet-solution:Wallet Solution`: Technical and functional requirements on components, functionalities and lifecycle to configure the Wallet Solution. 
-- **Section** :ref:`wallet-solution:Wallet Solution`: Technical and functional requirements on components, functionalities and lifecycle to configure the Wallet Solution. 
 
-- **Section** :ref:`digital-credential-flows:Digital Credential Flows`: Technical and functional requirements on (Q)EAA issuance and presentation flows. 
 - **Section** :ref:`digital-credential-flows:Digital Credential Flows`: Technical and functional requirements on (Q)EAA issuance and presentation flows. 
 - **Section** :ref:`wallet-provider-endpoint:Wallet Provider Endpoints`: Key requirements for the implementation of the Wallet Provider’s interfaces (APIs) required for interoperability among entities. 
-- **Section** :ref: `registry infrastructure`: Overview on Registry infrastructure and federation Registry. 
+- **Section** :ref:`registry infrastructure`: Overview on Registry infrastructure and federation Registry. 
 
-- **Section** :ref:`algorithms:Cryptographic Algorithms': Selection and implementation of cryptographic standards required to secure keys and transactions. 
+- **Section** :ref:`algorithms:Cryptographic Algorithms`: Selection and implementation of cryptographic standards required to secure keys and transactions. 
 - **Section** :ref:`security-privacy-considerations:Security and Privacy Considerations`: Security and compliance requirements for Wallet Solutions.
 
 - **Section** :ref:`log-retention-policy:General Log Retention Policies`: General Log retention requirements and requirements specific for Wallet Providers, in accordance with ISO/IEC 27001. 
-- **Section** :ref:`mobile-application-instance: Mobile Application Instance`: Requirements for mobile application instance, related to initialization request and response. 
 - **Section** :ref:`mobile-application-instance: Mobile Application Instance`: Requirements for mobile application instance, related to initialization request and response. 
 
 - **Section** :ref:`test-plans:Test Plans`: Guide to set up the test environment and validate backend interactions with the test matrices provided by the ecosystem. 
