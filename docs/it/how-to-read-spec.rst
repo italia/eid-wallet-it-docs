@@ -63,17 +63,13 @@ Fonte Autentica
 
 La Fonte Autentica si occupa di rendere disponibili i dati affidabili alla base dei (Q)EAA e di garantirne e gestirne in modo sicuro l’assoluta accuratezza e integrità. 
 
-**Fase 1: Scoperta**
+- **Sezione** :ref:`introduction:Introduzione`: Scopo e contesto normativo del Sistema IT-Wallet.
 
-Comprendere il funzionamento generale dell’ecosistema, l’architettura tecnica e l’Infrastruttura di Trust. 
+- **Sezione** :ref:`architecture-overview:Panoramica dell'Architettura`: Panoramica dell’architettura del Sistema IT-Wallet in termini di governance e processi operativi abilitati. 
 
-- **Sezione** :ref:`introduction:Introduzione`: per comprendere l’ambito e il linguaggio normativo dell'ecosistema IT-Wallet. 
+- **Sezione** :ref:`trust-infrastructure:L'Infrastruttura di Trust`: Requisiti chiave del modello di fiducia federato e dei meccanismi di valutazione della fiducia tra le entità.
 
-- **Sezione** :ref:`architecture-overview:Panoramica dell'Architettura`: per conoscere l’Architettura del sistema IT-Wallet, in termini di governance e processi operativi abilitati. 
-
-- **Sezione** :ref:`trust-infrastructure:L'Infrastruttura di Trust`: per conoscere i requisiti chiave della Trust Chain e come essere registrati nella Trust List per poter operare sia a livello nazionale che europeo.  
-
-- **Sezione** :ref:`defined-terms-and-references:Termini Definiti e Riferimenti`: per conoscere i riferimenti normativi, i termini definiti e gli standard tecnici per consentire un'interoperabilità sicura e corretta tra tutti i partecipanti (puoi ricorrere a questa sezione per ogni dubbio su terminologia, standard di riferimento, acronimi...) 
+- **Sezione** :ref:`defined-terms-and-references:Termini Definiti e Riferimenti`: Terminologia completa, riferimenti normativi, documentazione, risorse e strumenti aggiuntivi, linee guida per i contributi. 
 **Fase 2: Progettazione**
 
 Comprendere i requisiti e progettare gli aspetti, le funzionalità e le caratteristiche specifiche del (Q)EAA da emettere. 
@@ -175,17 +171,17 @@ Fornitore di Attestati Elettronici
 
 Il Fornitore di Attestati Elettronici si occupa di trasformare i dati autorevoli di origine provenienti dalle Fonti Autentiche in (Q)EAA e di gestirne l’intero ciclo di vita, dall’emissione alla revoca o alla scadenza. 
 
-**Fase 1: Scoperta del sistema IT-Wallet**
+**Fase 1: Scoperta**
 
-**Obiettivo**: conoscere il contesto di riferimento, i requisiti tecnici e la normativa per entrare a far parte della Trust Chain (catena di fiducia) su cui si fonda tutto il sistema. 
+Comprendere il funzionamento generale dell’ecosistema, l’architettura tecnica e l’Infrastruttura di Trust. 
 
-- **Sezione** :ref:`introduction:Introduzione`: per comprendere l’ambito e il linguaggio normativo dell'ecosistema IT-Wallet. 
+- **Sezione** :ref:`introduction:Introduzione`: Scopo e contesto normativo del Sistema IT-Wallet.
 
-- **Sezione** :ref:`architecture-overview:Panoramica dell'Architettura`: per conoscere l’Architettura del sistema IT-Wallet, in termini di governance e processi operativi abilitati.  
+- **Sezione** :ref:`architecture-overview:Panoramica dell'Architettura`: Panoramica dell’architettura del Sistema IT-Wallet in termini di governance e processi operativi abilitati. 
 
-- **Sezione** :ref:`trust-infrastructure:L'Infrastruttura di Trust`: per comprendere come il Credential Issuer viene riconosciuto nel sistema del Wallet come emittente autorizzato e come deve validare a sua volta le Fonti Autentiche.
+- **Sezione** :ref:`trust-infrastructure:L'Infrastruttura di Trust`: Requisiti chiave del modello di fiducia federato e dei meccanismi di valutazione della fiducia tra le entità.
 
-- **Sezione** :ref:`defined-terms-and-references:Termini Definiti e Riferimenti`: per conoscere i riferimenti normativi, i termini definiti e gli standard tecnici per consentire un'interoperabilità sicura e corretta tra tutti i partecipanti (puoi ricorrere a questa sezione per ogni dubbio su terminologia, standard di riferimento, acronimi...).
+- **Sezione** :ref:`defined-terms-and-references:Termini Definiti e Riferimenti`: Terminologia completa, riferimenti normativi, documentazione, risorse e strumenti aggiuntivi, linee guida per i contributi. 
 
 **Fase 2: Design**
 
