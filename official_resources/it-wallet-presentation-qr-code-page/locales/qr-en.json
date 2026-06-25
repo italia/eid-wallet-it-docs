@@ -25,7 +25,7 @@
   "qrCodeLinkAriaLabel": "QR code for signing in with {{walletName}}",
   "backLabel": "Go back",
   "cancelLabel": "Cancel",
-  "qrCodeExpiredInfo": "The QR code has expired.",
+  "qrCodeExpiredInfo": "The QR code is no longer valid",
   "qrCodeReloadLabel": "Generate a new code",
   "appTitle": "Continue on the {{walletName}} app",
   "appText": "To continue, follow the instructions on the app and authorize access",

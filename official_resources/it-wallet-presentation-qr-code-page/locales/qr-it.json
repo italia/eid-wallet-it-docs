@@ -25,7 +25,7 @@
   "qrCodeLinkAriaLabel": "Codice QR per l'autenticazione con {{walletName}}",
   "backLabel": "Torna indietro",
   "cancelLabel": "Annulla",
-  "qrCodeExpiredInfo": "Il codice QR è scaduto.",
+  "qrCodeExpiredInfo": "Il codice QR non è più valido",
   "qrCodeReloadLabel": "Genera un nuovo codice",
   "appTitle": "Continua sull'app {{walletName}}",
   "appText": "Per proseguire, segui le istruzioni sull'app e autorizza l'accesso",
