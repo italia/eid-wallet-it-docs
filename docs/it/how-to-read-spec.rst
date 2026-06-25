@@ -221,13 +221,13 @@ Sviluppare endpoint secondo su specifici protocolli e implementare le funzionali
 
 **Fase 4: Registrazione**
 
-**Obiettivo**: accreditarsi nel sistema in modo tale che gli attestati emessi verso il Wallet risultino ufficialmente “fidati” e verificabili. 
+Registrarsi al sistema come Credential Issuer, completando le procedure amministrative e tecniche previste affinché i (Q)EAA emessi verso i Wallet siano riconosciuti come affidabili dal Sistema. 
 
-- **Sezione** :ref:`onboarding-high-level:Sistema di Onboarding`: per conoscere le modalità di partecipazione all’ecosistema IT-Wallet  (riferimento al paragrafo :ref:`onboarding-high-level:Journey dell'Operatore del Credential Issuer`).  
+- **Sezione** :ref:`onboarding-high-level:Sistema di Onboarding`: Panoramica dell’architettura del sistema di onboarding e del processo di registrazione della Fonte Autentica. 
 
-- **Sezione** :ref:`x5c-evaluation:Operazioni di Gestione dei Certificati X.509`: per conoscere le procedure operative per la gestione dei Certificati X.509 all'interno della federazione IT-Wallet. 
+- **Sezione** :ref:`Entity Onboarding:Onboarding delle Entità`: Approfondimento sulle procedure tecniche per la registrazione del Fornitore di Attestati Elettronici. 
 
-- **Sezione** :ref:`test-plans:Test Plans`: per avere informazioni in merito a come gli ambienti di test possono supportare implementatori, auditor e ambienti di test di conformità nella validazione del comportamento delle Soluzioni Wallet.
+- **Sezione** :ref:`x5c-evaluation:Operazioni di Gestione dei Certificati X.509`: Procedure operative per la gestione dei certificati X.509 nell’ambito della federazione IT-Wallet. 
 
 
 Fornitori di servizi (Relying Party)
