@@ -233,40 +233,33 @@ Sviluppare endpoint secondo su specifici protocolli e implementare le funzionali
 Fornitori di servizi (Relying Party)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Il Relying Party è l'utilizzatore finale delle credenziali. Il suo compito è trasformare la verifica digitale in un valore aggiunto per il proprio business, garantendo al contempo all'utente un processo di identificazione rapido, sicuro e rispettoso della minimizzazione dei dati richiesti. 
-**Focus**: progettazione dell’esperienza di verifica delle credenziali, rispetto della privacy dell’utente  
+**Fase 1: Scoperta*
 
-**Fase 1: Scoperta del sistema IT-Wallet**
+Comprendere il funzionamento generale dell’ecosistema, l’architettura tecnica e l’Infrastruttura di Trust. 
 
-**Obiettivo**: conoscere il contesto di riferimento, i requisiti tecnici e la normativa per entrare a far parte della Trust Chain (catena di fiducia) su cui si fonda tutto il sistema.
+- **Sezione** :ref:`introduction:Introduzione`: Scopo e contesto normativo del Sistema IT-Wallet.
 
-- **Sezione** :ref:`introduction:Introduzione`: per comprendere l’ambito e il linguaggio normativo dell'ecosistema IT-Wallet. 
+- **Sezione** :ref:`architecture-overview:Panoramica dell'Architettura`: Panoramica dell’architettura del Sistema IT-Wallet in termini di governance e processi operativi abilitati. 
 
-- **Sezione** :ref:`architecture-overview:Panoramica dell'Architettura`: per conoscere l’Architettura del sistema IT-Wallet, in termini di governance e processi operativi abilitati.   
+- **Sezione** :ref:`trust-infrastructure:L'Infrastruttura di Trust`: Requisiti chiave del modello di fiducia federato e dei meccanismi di valutazione della fiducia tra le entità.
 
-- **Sezione** :ref:`trust-infrastructure:L'Infrastruttura di Trust`: per capire come verificare che la credenziale presentata dall'utente provenga da una Fonte Autentica certificata.
+- **Sezione** :ref:`defined-terms-and-references:Termini Definiti e Riferimenti`: Terminologia completa, riferimenti normativi, documentazione, risorse e strumenti aggiuntivi, linee guida per i contributi. 
+**Fase 2: Progettazione**
 
-- **Sezione** :ref:`defined-terms-and-references:Termini Definiti e Riferimenti`: per conoscere i riferimenti normativi, i termini definiti e gli standard tecnici per consentire un'interoperabilità sicura e corretta tra tutti i partecipanti (puoi ricorrere a questa sezione per ogni dubbio su terminologia, standard di riferimento, acronimi...).
+Comprendere i requisiti di Esperienza Utente e progettare le funzionalità di verifica necessarie all’erogazione del servizio all’Utente finale. 
 
-**Fase 2: Design**
+- **Sezione** :ref:`brand-identity:Brand Identity`: Panoramica della Brand Identity del Sistema IT-Wallet e indicazioni sugli asset da adottare da parte della Relying Party.
 
-**Obiettivo**: definire i requisiti di verifica, stabilendo gli attributi necessari per erogare il servizio; progettare l'esperienza di richiesta, definendo le modalità di condivisione dei dati. 
+- **Sezione** :ref:`functionalities:Design dell'Esperienza Utente`: Requisiti chiave relativi ai modelli di interazione, ai layout delle interfacce e agli asset grafici, al fine di garantire un’esperienza utente efficace, fluida e assicurare coerenza tra i sistemi di presentazione e verifica. 
 
-- **Sezione** :ref:`brand-identity:Brand Identity`: per garantire che le eventuali app di verifica rispettino le linee guida di comunicazione e l'identità visiva del sistema IT-Wallet.  
 
-- **Sezione** :ref:`functionalities:Design dell'Esperienza Utente`: per conoscere i requisiti funzionali di alto livello a supporto dell’Esperienza Utente in tutte le fasi di interazione tra l’Utente e il servizio.  
+**Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`: Gestione degli Attestati Elettronici: Requisiti tecnici e funzionali relativi al ciclo di vita dei (Q)EAA.
 
-- **Sezione** :ref:`entities:Entità`: per conoscere i requisiti di implementazione e gli attributi necessari per configurare il profilo del Verificatore (riferimento al paragrafo :ref:`Soluzione di Relying Party`). 
-
-**Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`: per comprendere quali sono i formati delle Credenziali Elettroniche e verifica della validità. 
-
-**Sezione** :ref:`algorithms:Algoritmi Crittografici`: per progettare i sistemi di validazione delle firme digitali che "sigillano" i dati presentati dall'utente. 
 
 **Fase 3: Implementazione**
 
-**Obiettivo**: implementare il protocollo OpenID4VP per inviare le richieste al Wallet e ricevere gli attestati, assicurando la corretta decodifica dei formati. 
+Implementare le funzionalità di verifica secondo specifici protocolli, al fine di inviare richieste di verifica al Wallet e ricevere una risposta con l’autorizzazione dell’Utente. 
 
-- **Sezione** ref:`digital-credential-flows:Flussi relativi agli attestati elettronici`: per l’implementazione del flusso di presentazione sia per scenari remoti che di prossimità (ref:`credential-presentation:12.2`. 
 
 - **Sezione** :ref:`relying-party-solution:Soluzione di Relying Party`: Requisiti tecnici e funzionali relativi ai componenti e alle funzionalità per la verifica del PID e dei (Q)EAA. 
 
