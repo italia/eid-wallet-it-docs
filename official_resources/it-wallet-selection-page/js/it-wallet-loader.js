@@ -206,15 +206,13 @@ function buildWalletUri(wallet) {
       if (pageParams.has('return')) u.searchParams.set('return', pageParams.get('return'));
       if (pageParams.has('entityID')) u.searchParams.set('entityID', pageParams.get('entityID'));
     }
-    if (wallet.name) u.searchParams.set('wallet_name', wallet.name);
-    if (wallet.logo_uri) u.searchParams.set('wallet_logo', resolveAsset(wallet.logo_uri));
+    if (wallet.id) u.searchParams.set('wallet_id', wallet.id);
     return u.toString();
   } catch {
     const params = new URLSearchParams();
     if (pageParams.has('return')) params.set('return', pageParams.get('return'));
     if (pageParams.has('entityID')) params.set('entityID', pageParams.get('entityID'));
-    if (wallet.name) params.set('wallet_name', wallet.name);
-    if (wallet.logo_uri) params.set('wallet_logo', resolveAsset(wallet.logo_uri));
+    if (wallet.id) params.set('wallet_id', wallet.id);
     const query = params.toString();
     const separator = uri.includes('?') ? '&' : '?';
     return query ? `${uri}${separator}${query}` : uri;

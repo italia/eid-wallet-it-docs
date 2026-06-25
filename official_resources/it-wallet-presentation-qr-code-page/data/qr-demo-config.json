@@ -8,5 +8,6 @@
   "qrcode_logo_path": "../shared-ui/img/IT-Wallet-Logo-Primary-BlueItalia.svg",
   "qrcode_expiration_time": 12,
   "selection_page_url": "../it-wallet-selection-page/it-wallet.html",
-  "discovery_page_url": "../discovery-page/disco.html"
+  "discovery_page_url": "../discovery-page/disco.html",
+  "wallets_registry_url": "../it-wallet-selection-page/data/it-wallets.json"
 }

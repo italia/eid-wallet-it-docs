@@ -13,10 +13,13 @@ const QR_CONFIG_FALLBACK = {
   qrcode_expiration_time: 120,
   selection_page_url: '../it-wallet-selection-page/it-wallet.html',
   discovery_page_url: '../discovery-page/disco.html',
+  wallets_registry_url: '../it-wallet-selection-page/data/it-wallets.json',
 };
 
 let demoConfig = { ...QR_CONFIG_FALLBACK };
+let trustedWalletsById = new Map();
 let selectedWallet = {
+  id: null,
   name: DEFAULT_WALLET_BRAND,
   logo: null,
 };
@@ -24,10 +27,28 @@ let expirationTime = demoConfig.qrcode_expiration_time;
 let countdown = null;
 let countdownStarted = false;
 
+function escapeHtml(text) {
+  return String(text)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 function resolveAsset(path) {
   if (!path) return path;
   if (/^(https?:|\/)/.test(path)) return path;
   return new URL(path, window.location.href).href;
+}
+
+function getSelectionPageUrl() {
+  return demoConfig.selection_page_url || QR_CONFIG_FALLBACK.selection_page_url;
+}
+
+function getWalletsRegistryUrl() {
+  const configured = demoConfig.wallets_registry_url || QR_CONFIG_FALLBACK.wallets_registry_url;
+  return new URL(configured, window.location.href).href;
 }
 
 function getBasePath() {
@@ -61,17 +82,69 @@ function getWalletBrandName() {
   return selectedWallet.name || DEFAULT_WALLET_BRAND;
 }
 
-function readSelectedWalletFromUrl() {
+function resolveAllowlistedLogo(logoUri) {
+  if (!logoUri || typeof logoUri !== 'string') return null;
+
+  const trimmed = logoUri.trim();
+  if (!trimmed || /^(javascript|data|vbscript):/i.test(trimmed)) return null;
+
+  let resolved;
+  try {
+    resolved = new URL(trimmed, new URL(getSelectionPageUrl(), window.location.href));
+  } catch {
+    return null;
+  }
+
+  if (resolved.origin !== window.location.origin) {
+    console.warn('qr-code-page: rejected logo from untrusted origin', resolved.href);
+    return null;
+  }
+
+  return resolved.href;
+}
+
+async function loadTrustedWallets() {
+  trustedWalletsById = new Map();
+
+  try {
+    const response = await fetch(getWalletsRegistryUrl());
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+    (data.immediate_subordinate_entities || []).forEach((wallet) => {
+      if (wallet?.id) trustedWalletsById.set(wallet.id, wallet);
+    });
+  } catch (err) {
+    console.warn('qr-code-page: wallet registry unavailable', err);
+  }
+}
+
+function resolveSelectedWalletFromUrl() {
   const params = new URLSearchParams(window.location.search);
-  const name = params.get('wallet_name')?.trim();
-  const logo = params.get('wallet_logo')?.trim();
-  if (name) selectedWallet.name = name;
-  if (logo) selectedWallet.logo = logo;
+  const walletId = params.get('wallet_id')?.trim();
+
+  if (params.has('wallet_name') || params.has('wallet_logo')) {
+    console.warn('qr-code-page: ignoring unsupported wallet_name/wallet_logo URL params');
+  }
+
+  if (!walletId) return;
+
+  const wallet = trustedWalletsById.get(walletId);
+  if (!wallet) {
+    console.warn('qr-code-page: unknown or untrusted wallet_id', walletId);
+    return;
+  }
+
+  selectedWallet = {
+    id: wallet.id,
+    name: wallet.name || DEFAULT_WALLET_BRAND,
+    logo: resolveAllowlistedLogo(wallet.logo_uri),
+  };
 }
 
 function substituteWalletBrand(text, walletName) {
   if (!text || typeof text !== 'string') return text;
-  return text.replace(/IT-Wallet/g, walletName);
+  const safeName = escapeHtml(walletName);
+  return text.replace(/IT-Wallet/g, safeName);
 }
 
 function walletTranslation(t, key, extra = {}) {
@@ -80,7 +153,7 @@ function walletTranslation(t, key, extra = {}) {
     t(key, {
       ...extra,
       walletName,
-      interpolation: { escapeValue: false },
+      interpolation: { escapeValue: true },
     }),
     walletName,
   );
@@ -145,7 +218,7 @@ function setupBackLink() {
   if (!backLink) return;
   const params = new URLSearchParams(window.location.search);
   const search = params.toString();
-  const selectionUrl = demoConfig.selection_page_url || '../it-wallet-selection-page/it-wallet.html';
+  const selectionUrl = getSelectionPageUrl();
   backLink.href = search ? `${selectionUrl}?${search}` : selectionUrl;
 }
 
@@ -153,6 +226,7 @@ function setupCancelLink() {
   const cancelLink = document.getElementById('qr-cancel-link');
   if (!cancelLink) return;
   const params = new URLSearchParams(window.location.search);
+  params.delete('wallet_id');
   params.delete('wallet_name');
   params.delete('wallet_logo');
   const discoveryUrl = demoConfig.discovery_page_url || '../discovery-page/disco.html';
@@ -194,7 +268,8 @@ function updateShellTexts(t) {
 
   const qrCodeLink = document.getElementById('qr-code-link');
   if (qrCodeLink) {
-    qrCodeLink.setAttribute('aria-label', walletTranslation(t, 'qrCodeLinkAriaLabel'));
+    const ariaLabel = walletTranslation(t, 'qrCodeLinkAriaLabel');
+    qrCodeLink.setAttribute('aria-label', ariaLabel.replace(/<[^>]+>/g, ''));
   }
 
   const hint = newWindowHintText(t);
@@ -236,7 +311,10 @@ function updateTexts(t) {
 
   const info = document.getElementById('content-qrcode-info-text');
   if (info) {
-    info.innerHTML = t('qrCodeValidInfo', { seconds: String(Math.max(expirationTime, 0)) });
+    info.innerHTML = t('qrCodeValidInfo', {
+      seconds: String(Math.max(expirationTime, 0)),
+      interpolation: { escapeValue: true },
+    });
   }
 
   const support = document.getElementById('content-text');
@@ -294,7 +372,7 @@ function showExpiredState(t) {
   });
 }
 
-async function loadDemoConfig() {
+async function fetchDemoConfig() {
   try {
     const response = await fetch(`${getBasePath()}data/qr-demo-config.json`);
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
@@ -304,11 +382,15 @@ async function loadDemoConfig() {
     console.warn('qr-code-page: using fallback demo config', err);
     demoConfig = { ...QR_CONFIG_FALLBACK };
   }
-  if (selectedWallet.logo) {
-    demoConfig.qrcode_logo_path = selectedWallet.logo;
-  }
   expirationTime = Number(demoConfig.qrcode_expiration_time) || 120;
-  applyQrVisualConfig(demoConfig);
+}
+
+function applyDemoConfig() {
+  const config = { ...demoConfig };
+  if (selectedWallet.logo) {
+    config.qrcode_logo_path = selectedWallet.logo;
+  }
+  applyQrVisualConfig(config);
 }
 
 function initI18n() {
@@ -320,7 +402,7 @@ function initI18n() {
       lng: initialLang,
       fallbackLng: 'it',
       backend: {
-        loadPath: `${getBasePath()}locales/qr-{{lng}}.json?v=wallet-ui-qr-20260624`,
+        loadPath: `${getBasePath()}locales/qr-{{lng}}.json?v=wallet-ui-qr-20260625`,
       },
     })
     .then((t) => {
@@ -342,8 +424,10 @@ function initI18n() {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-  readSelectedWalletFromUrl();
-  await loadDemoConfig();
+  await fetchDemoConfig();
+  await loadTrustedWallets();
+  resolveSelectedWalletFromUrl();
+  applyDemoConfig();
   setupBackLink();
   setupCancelLink();
   initI18n();
