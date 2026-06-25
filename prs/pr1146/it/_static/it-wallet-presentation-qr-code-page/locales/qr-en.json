@@ -24,6 +24,7 @@
   "supportText": "Use <b>{{walletName}}</b> or your smartphone camera",
   "qrCodeLinkAriaLabel": "QR code for signing in with {{walletName}}",
   "backLabel": "Go back",
+  "cancelLabel": "Cancel",
   "qrCodeExpiredInfo": "The QR code has expired.",
   "qrCodeReloadLabel": "Generate a new code",
   "appTitle": "Continue on the {{walletName}} app",

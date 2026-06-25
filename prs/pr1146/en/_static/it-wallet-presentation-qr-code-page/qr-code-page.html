@@ -76,6 +76,21 @@
       fill: currentColor;
     }
 
+    .qr-cancel-link {
+      color: #0066CC;
+      font-weight: 600;
+      text-decoration: underline;
+      background: none;
+      border: 0;
+      padding: 0;
+    }
+
+    .qr-cancel-link:hover,
+    .qr-cancel-link:focus {
+      color: #004d99;
+      text-decoration: underline;
+    }
+
     #content-qrcode-info-text {
       color: #000;
     }
@@ -229,6 +244,10 @@
         <summary id="qr-payload-summary" class="mb-2">Contenuto dimostrativo del QR (Authorization Request)</summary>
         <a id="qr-payload-preview" href=""></a>
       </details>
+
+      <p class="text-center mb-4">
+        <a href="#" id="qr-cancel-link" class="qr-cancel-link">Annulla</a>
+      </p>
 
       <noscript>
         <p id="noscript-message">Per usare la pagina del codice QR è necessario abilitare JavaScript.</p>

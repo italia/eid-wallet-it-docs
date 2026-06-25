@@ -12,6 +12,7 @@ const QR_CONFIG_FALLBACK = {
   qrcode_logo_path: '../shared-ui/img/IT-Wallet-Logo-Primary-BlueItalia.svg',
   qrcode_expiration_time: 120,
   selection_page_url: '../it-wallet-selection-page/it-wallet.html',
+  discovery_page_url: '../discovery-page/disco.html',
 };
 
 let demoConfig = { ...QR_CONFIG_FALLBACK };
@@ -148,6 +149,17 @@ function setupBackLink() {
   backLink.href = search ? `${selectionUrl}?${search}` : selectionUrl;
 }
 
+function setupCancelLink() {
+  const cancelLink = document.getElementById('qr-cancel-link');
+  if (!cancelLink) return;
+  const params = new URLSearchParams(window.location.search);
+  params.delete('wallet_name');
+  params.delete('wallet_logo');
+  const discoveryUrl = demoConfig.discovery_page_url || '../discovery-page/disco.html';
+  const search = params.toString();
+  cancelLink.href = search ? `${discoveryUrl}?${search}` : discoveryUrl;
+}
+
 function updateBackLink(t) {
   const backText = t('backLabel', { defaultValue: 'Torna indietro' });
   const backLink = document.getElementById('back-link');
@@ -209,6 +221,9 @@ function updateShellTexts(t) {
 
   const reloadLabel = document.getElementById('qr-reload-label');
   if (reloadLabel) reloadLabel.textContent = t('qrCodeReloadLabel');
+
+  const cancelLink = document.getElementById('qr-cancel-link');
+  if (cancelLink) cancelLink.textContent = t('cancelLabel');
 
   updateBackLink(t);
 }
@@ -318,5 +333,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   readSelectedWalletFromUrl();
   await loadDemoConfig();
   setupBackLink();
+  setupCancelLink();
   initI18n();
 });
