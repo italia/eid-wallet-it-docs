@@ -21,7 +21,7 @@
   "login_logo": "Log in with your digital wallet",
   "contentTitle": "Scan the QR code",
   "qrCodeValidInfo": "The QR code is valid for <b id=\"timer\">{{seconds}}</b> seconds",
-  "supportText": "Use the <b>IT-Wallet</b> app feature or your smartphone camera",
+  "supportText": "Use <b>IT-Wallet</b> or your smartphone camera",
   "backLabel": "Go back",
   "qrCodeExpiredInfo": "The QR code has expired, reload the page to generate a new one.",
   "qrCodeReloadLabel": "Reload",
