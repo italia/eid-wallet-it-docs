@@ -263,12 +263,24 @@ function startCountdown(t) {
   }, 1000);
 }
 
+function renderExpiredInfo(t) {
+  const message = walletTranslation(t, 'qrCodeExpiredInfo');
+  return `
+    <span class="qr-expired-info">
+      <svg class="icon icon-sm" aria-hidden="true">
+        <use href="../shared-ui/svg/sprites.svg#it-warning-circle"></use>
+      </svg>
+      <span>${message}</span>
+    </span>
+  `;
+}
+
 function showExpiredState(t) {
   const qrLink = document.getElementById('qr-code-link');
   if (qrLink) qrLink.classList.add('qr-faded');
 
   const info = document.getElementById('content-qrcode-info-text');
-  if (info) info.innerHTML = walletTranslation(t, 'qrCodeExpiredInfo');
+  if (info) info.innerHTML = renderExpiredInfo(t);
 
   const actions = document.getElementById('content-function');
   if (!actions) return;
