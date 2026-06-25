@@ -58,12 +58,10 @@ Lettura per fasi di progetto
 """"""""""""""""""""""""""""
 
 Per un accesso semplificato agli argomenti di queste specifiche, di seguito viene presentato un percorso di lettura per ruoli che tiene conto della fase in cui si trovano a operare all’interno del sistema IT-Wallet con un rimando preciso alla sezione di interesse del documento. 
-
-Fonti Autentiche (Authentic Source)  
+Fonte Autentica
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-L’Authentic Source è il proprietario del dato. Il suo ruolo è garantire che le informazioni originali siano trasmesse correttamente e rese disponibili ai sistemi di emissione in modo sicuro e sempre aggiornato.  
-**Focus**: disponibilità del dato, correttezza delle informazioni trasmesse, allineamento costante tra il database originale e le credenziali emesse.  
+La Fonte Autentica si occupa di rendere disponibili i dati affidabili alla base dei (Q)EAA e di garantirne e gestirne in modo sicuro l’assoluta accuratezza e integrità. 
 
 **Fase 1: Scoperta**
 
@@ -76,10 +74,9 @@ Comprendere il funzionamento generale dell’ecosistema, l’architettura tecnic
 - **Sezione** :ref:`trust-infrastructure:L'Infrastruttura di Trust`: per conoscere i requisiti chiave della Trust Chain e come essere registrati nella Trust List per poter operare sia a livello nazionale che europeo.  
 
 - **Sezione** :ref:`defined-terms-and-references:Termini Definiti e Riferimenti`: per conoscere i riferimenti normativi, i termini definiti e gli standard tecnici per consentire un'interoperabilità sicura e corretta tra tutti i partecipanti (puoi ricorrere a questa sezione per ogni dubbio su terminologia, standard di riferimento, acronimi...) 
+**Fase 2: Progettazione**
 
-**Fase 2: Design**
-
-**Obiettivo**: conoscere i requisiti di implementazione degli attributi ritenuti necessari per tradurre i dati in un formato digitale standardizzato (EAA) riconosciuto dal Wallet.  
+Comprendere i requisiti e progettare gli aspetti, le funzionalità e le caratteristiche specifiche del (Q)EAA da emettere. 
 
 
 - **Sezione** :ref:`functionalities:Design dell'Esperienza Utente`: Requisiti chiave relativi alle modalità con cui consentire agli Utenti di ottenere i (Q)EAA, alla struttura dei (Q)EAA, al loro stato e alla loro gestione nel tempo.
@@ -165,18 +162,18 @@ Implementare la Soluzione Wallet in conformità a specifici standard tecnologici
 
 Registrarsi al sistema come Fornitore di Wallet, completando le procedure amministrative e tecniche richieste per il riconoscimento della Soluzione Wallet da parte del sistema. 
 
-- **Sezione** :ref:`onboarding-high-level:Sistema di Onboarding`: per conoscere le modalità di partecipazione all’ecosistema IT-Wallet e tutto ciò che riguarda la riconoscibilità dei propri dati da parte di tutti gli attori (riferimento al paragrafo :ref:`onboarding-high-level:Journey dell'Operatore del Fornitore di Wallet`).  
+- **Sezione** :ref:`onboarding-high-level:Sistema di Onboarding`: Panoramica dell’architettura del sistema di onboarding e del processo di registrazione del Fornitore di Wallet.
 
-- **Sezione** :ref:`x5c-evaluation:Operazioni di Gestione dei Certificati X.509`: per conoscere le procedure operative per la gestione dei Certificati X.509 all'interno della federazione IT-Wallet. 
+- **Sezione** :ref:`entity-onboarding:Onboarding delle Entità`: Approfondimento sulle procedure tecniche per la registrazione del Fornitore di Wallet. 
 
-- **Sezione** :ref:`test-plans:Test Plans`: per avere informazioni in merito a come gli ambienti di test possono supportare implementatori, auditor e ambienti di test di conformità nella validazione del comportamento delle Soluzioni Wallet.
+- **Sezione** :ref:`x5c-evaluation:Operazioni di Gestione dei Certificati X.509`: Procedure operative per la gestione dei certificati X.509 nell’ambito della federazione IT-Wallet. 
 
 
-Fornitori di Credenziali (Credential Issuer)
+
+Fornitore di Attestati Elettronici 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Il Credential Issuer è il fornitore tecnico delle credenziali. Il suo compito principale è trasformare i dati ricevuti dalle Fonti Autentiche in attestati digitali sicuri, pronti per essere emessi verso il Wallet. È il fulcro tecnico che garantisce l'interoperabilità attraverso l'uso di standard internazionali come OpenID4VCI. 
-**Focus**: progettazione delle credenziali a partire dal dato grezzo, sicurezza del dato ottenuto, ciclo di vita delle credenziali. 
+Il Fornitore di Attestati Elettronici si occupa di trasformare i dati autorevoli di origine provenienti dalle Fonti Autentiche in (Q)EAA e di gestirne l’intero ciclo di vita, dall’emissione alla revoca o alla scadenza. 
 
 **Fase 1: Scoperta del sistema IT-Wallet**
 
@@ -204,15 +201,23 @@ Il Credential Issuer è il fornitore tecnico delle credenziali. Il suo compito p
 
 **Fase 3: Implementazione**
 
-**Obiettivo**: sviluppare gli endpoint di emissione in base al protocollo OpenID4VCI, implementando le funzioni di rilascio, rinnovo e gestione tecnica del ciclo di vita della credenziale.
+Sviluppare endpoint secondo su specifici protocolli e implementare le funzionalità di emissione, rinnovo, revoca e tutte le altre funzioni tecniche di gestione del ciclo di vita dei (Q)EAA. 
 
-- **Sezione** ref:`digital-credential-flows:Flussi relativi agli attestati elettronici`: per conoscere le specifiche di dettaglio per implementare i flussi di emissione, le modalità di presentazione dell’attestato elettronico e il flusso di recupero delle informazioni del wallet. 
+- **Sezione** :ref:`credential-issuer-solution:Soluzione del Fornitore di Attestati Elettronici`: Requisiti tecnici e funzionali relativi ai componenti e ai modelli di interazione necessari per l’emissione e la gestione del ciclo di vita dei (Q)EAA. 
 
-- **Sezione** ref:`endpoints:Endpoints`: per implementare correttamente le interfacce (API) di emissione, in particolare il Credential Endpoint e il Token Endpoint  (riferimento al paragrafo ref:`endpoints:Endpoint del Credential Issuer`). 
+- **Sezione** :ref:`digital-credential-flows:Flussi relativi agli attestati elettronici`: Requisiti tecnici e funzionali relativi ai flussi di emissione e presentazione dei (Q)EAA.
 
-- **Sezione** :ref:`security-privacy-considerations:Considerazioni di Sicurezza e Privacy`: per implementare soluzioni che rispettino tutti i parametri di sicurezza.  
+- **Sezione** :ref:`credential-issuer-endopoint:Endpoint del Credential Issuer`: Requisiti chiave per l’implementazione dei metadati del Fornitore di Attestati Elettronici e degli endpoint di autorizzazione. 
 
-- **Sezione** :ref:`log-retention-policy:Politiche Generali di Conservazione dei Log`: per implementare soluzioni che rispettino i parametri di sicurezza e i requisiti definiti nella norma ISO/IEC 27001.
+- **Sezione** :ref:`algorithms:Algoritmi Crittografici’: Selezione e implementazione degli standard crittografici necessari a garantire la sicurezza delle chiavi e delle transazioni. 
+
+- **Sezione** :ref:`e-service-pdnd:e-Service PDND’: Specifiche obbligatorie per l’integrazione con la PDND (Piattaforma Digitale Nazionale Dati) e relativi requisiti di interoperabilità per la pubblicazione di un e-service. 
+
+- **Sezione** :ref:`security-privacy-considerations:Considerazioni di Sicurezza e Privacy`: Requisiti di sicurezza e conformità per le soluzioni implementate. 
+
+- **Sezione** :ref:`log-retention-policy:Politiche Generali di Conservazione dei Log`: Requisiti generali per la conservazione dei log e requisiti specifici per i Fornitori di Attestati Elettronici, in conformità alla norma ISO/IEC 27001. 
+
+- **Sezione** :ref:`test-plans:Test Plans`: Guida alla configurazione dell’ambiente di test e alla validazione delle interazioni backend tramite l’utilizzo delle matrici di test fornite dall’ecosistema. 
 
 **Fase 4: Registrazione**
 
