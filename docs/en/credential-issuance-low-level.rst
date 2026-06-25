@@ -1,5 +1,6 @@
 .. include:: ../common/common_definitions.rst
 
+
 Credential Issuance Low-Level Flows
 ====================================
 
@@ -32,12 +33,12 @@ In addition, the Credential Issuers MAY support:
   * **Refresh Token Flow**: The Wallet Instance requests a new Access Token at the Token Endpoint of the PID/(Q)EEA Provider.
   * **Re-issuance Flow**: Following updates to an already stored Digital Credential, the Wallet Instance requests a refresh of the Digital Credential at the Credential Endpoint of the Credential Issuer.
   * **Deferred Issuance Flow**: The Credential Issuer may require time to issue the requested Digital Credential, due to the Authentic Sources data provisioning rules, and allows the Wallet to retrieve the requested Credential in the future.
-  * **Batch Credential Issuance Flow**: It enables the issuance of a batch of one or more Digital Credential. Digital Credentials that are issued in a batch MUST share the same format and contain the same set of attributes about the Holder. Each Credential MUST contain different Cryptographic Data to achieve unlinkability between the Digital Credentials. 
+  * **Batch Credential Issuance Flow**: It enables the issuance of a batch of one or more Digital Credential. Digital Credentials that are issued in a batch MUST share the same format and contain the same set of attributes about the Holder. Each Credential MUST contain different Cryptographic Data to achieve unlinkability between the Digital Credentials.
 
 
 .. note::
-    **Standard or Batch Credential Issuance:** 
-      
+    **Standard or Batch Credential Issuance:**
+
     The User can configure the Wallet Solution to issue Digital Credentials in either batch or standard mode and define the preferred batch size.
 
 The entire Issuance flow can be divided into two sub-flows:
@@ -87,7 +88,7 @@ The following diagram shows the *Issuance flow*.
 ..     PID/(Q)EAA Issuance - Detailed flow
 
 
-Once *User Request flow* is completed, the Wallet Instance processes the Metadata of the Credential Issuer as defined in Section :ref:`trust-infrastructure:Trust Evaluation Mechanism`. Additionally, in the case of Batch Credential issuance, the Wallet Instance MUST check the support of batch issuance by looking for the ``batch_credential_issuance`` object in the Credential Issuer metadata, from where the Wallet Instance can get the ``batch_size`` value. 
+Once *User Request flow* is completed, the Wallet Instance processes the Metadata of the Credential Issuer as defined in Section :ref:`trust-infrastructure:Trust Evaluation Mechanism`. Additionally, in the case of Batch Credential issuance, the Wallet Instance MUST check the support of batch issuance by looking for the ``batch_credential_issuance`` object in the Credential Issuer metadata, from where the Wallet Instance can get the ``batch_size`` value.
 
 .. note::
   **Federation Check:** The Wallet Instance must verify whether the Credential Issuer is a member of the Federation, obtaining its protocol specific Metadata (:ref:`WP_046 <wallet-credential-issuance-testcases>`). A non-normative example of a response from the endpoint **.well-known/openid-federation** with the **Entity Configuration** and the **Metadata** of the Credential Issuer is represented within the section :ref:`credential-issuer-entity-configuration:Credential Issuer Entity Configuration`.
@@ -108,7 +109,9 @@ In case of Issuer Initiated flow, in addition to the Federation Check defined ab
   * Specifies the types of the requested credentials using the ``authorization_details`` [RAR :rfc:`9396`] parameter and or ``scope`` parameter (:ref:`WP_052d <wallet-credential-issuance-testcases>`).
 
 .. note::
-  This specification uses JAR [:rfc:`9101`] to ensure end-to-end integrity of authorization requests for all Request Object parameters. When interacting with cross-border Credential Issuers whose Authorization Servers may not support JAR, Wallet Instances SHOULD check the ``require_signed_request_object`` parameter in the Authorization Server metadata to determine whether to sign the Request Object. Wallet Solutions supporting both JAR-compliant and non-compliant Authorization Servers may duplicate parameters in both the request body and the signed Request Object. Section 10.7 of :rfc:`9101` provides the security requirements on how to manage this duplication properly.
+  This specification uses JAR [:rfc:`9101`] to ensure end-to-end integrity of authorization requests for all Request Object parameters.
+  When interacting with cross-border Credential Issuers whose Authorization Servers may not support JAR, Wallet Instances SHOULD check the ``require_signed_request_object`` parameter in the Authorization Server metadata to determine whether to sign the Request Object.
+  Wallet Solutions supporting both JAR-compliant and non-compliant Authorization Servers may duplicate parameters in both the request body and the signed Request Object. Section 10.7 of :rfc:`9101` provides the security requirements on how to manage this duplication properly.
 
 .. note::
    For eID Substantial Authentication with MRTD Verification, the ``authorization_details`` object MUST contain the type ``"it_l2+document_proof"``. For complete protocol specifications, see :ref:`credential-issuance-l2plus:eID Substantial Authentication with MRTD Verification for PID Issuance`.
@@ -201,7 +204,6 @@ The Credential Issuer returns the issued ``request_uri`` to the Wallet Instance.
 .. note::
    **User Authentication and Consent**: The PID Provider performs the User authentication based on CieID scheme with LoA High (CIE L3), or according to eID Substantial Authentication with MRTD Verification as defined in :ref:`credential-issuance-l2plus:eID Substantial Authentication with MRTD Verification for PID Issuance`, and requires the User consent for the PID issuance.
    The (Q)EAA Provider performs the User authentication requesting a valid PID to the Wallet Instance. The (Q)EAA Provider MUST use [`OpenID4VP`_] to request the presentation of the PID. In this circumstance, the (Q)EAA Provider acts as a Relying Party, providing the presentation request to the Wallet Instance. The Wallet Instance MUST have a valid PID, obtained beforehand, to initiate the transaction with the (Q)EAA Provider. During this step, Credential Issuers MAY ask the User's contact details (e.g., their email address) to send notifications about the issued Digital Credential(s).
-
 
 
 **Steps 6-7 (Authorization Response)**: The Credential Issuer sends an authorization ``code`` together with ``state`` and ``iss`` parameters to the Wallet Instance. The Wallet Instance performs the following checks on the Authorization Response:
@@ -357,7 +359,7 @@ Where a non-normative example of the decoded content of the ``jwt`` parameter is
 **Step 18 (Proofs of Possession of Credentials)**: The Wallet Instance MUST generate N key proofs using provided ``c_nonce`` in **Step 13** and one for each Credential in the batch. The number of key proofs (N) is defined by the ``batch_size`` value (:ref:`WP_058b <wallet-credential-issuance-testcases>`).
 
 .. note::
-  The ``c_nonce`` value in all the jwt proofs is identical and it is not needed to obtain separate nonce values per proof. 
+  The ``c_nonce`` value in all the jwt proofs is identical and it is not needed to obtain separate nonce values per proof.
 
 
 **Step 19 (Batch Credential Request)**: The Wallet Instance sends a request for the batch of Digital Credential to the Credential endpoint. This request MUST include the Access Token, DPoP Proof JWT, Credential type, proofs (which demonstrates possession of the keys). The proofs parameter MUST set using a JSON object containing two or more evidence of possession of the cryptographic key materials to which the issued batch of Digital Credential will be bound. To verify the proofs, the Credential Issuer, in addition to the predefined checks in **Step 16**, must ensure the ``jwk`` attribute in each key proofs is unique (:ref:`WP_058 <wallet-credential-issuance-testcases>`).
@@ -435,12 +437,11 @@ Below is a non-normative example of a successful response containing a batch of 
 
 
 .. note::
-  When the Wallet Instance receives a new batch of the same Credential with the same claims, the Wallet MUST delete previous Credentials (:ref:`WP_073a <wallet-credential-issuance-testcases>`). 
+  When the Wallet Instance receives a new batch of the same Credential with the same claims, the Wallet MUST delete previous Credentials (:ref:`WP_073a <wallet-credential-issuance-testcases>`).
 
 
 .. note::
   If the requested Credential cannot be issued immediately and requires more time, the Credential Issuer SHOULD support the Deferred Flow (step 27) as specified in Section :ref:`credential-issuance-endpoint:Deferred Endpoint` (:ref:`WP_065–067 <wallet-credential-issuance-testcases>`). Additionally, in the case of batch issuance, the same ``transaction_id`` retrieves all Credentials that are requested in the batch.
-
 
 
 **Step 25 (Notification Request)**: According to Section 11.1 of [`OpenID4VCI`_], the Wallet sends an HTTP POST request to the Notification Endpoint using the *application/json* media type as in the following non-normative example (:ref:`WP_064 <wallet-credential-issuance-testcases>`).
@@ -463,7 +464,6 @@ Below is a non-normative example of a successful response containing a batch of 
   :language: JSON
 
 
-
 **Step 26 (Notification Response)**: When the Credential Issuer has successfully received the Notification Request from the Wallet, it MUST respond with an HTTP status code *204* as recommended in Section 11.2 of [`OpenID4VCI`_]. Below is a non-normative example of response to a successful Notification Request:
 
 
@@ -476,7 +476,7 @@ Below is a non-normative example of a successful response containing a batch of 
 
 
 .. note::
-   For batch-issued Digital Credentials, a single ``notification_id`` covers the entire batch-issued Credentials. The notification response (e.g. ``credential_accepted`` or ``credential_stored``) applies to all Credentials, any partial failure is treated as a batch failure. 
+   For batch-issued Digital Credentials, a single ``notification_id`` covers the entire batch-issued Credentials. The notification response (e.g. ``credential_accepted`` or ``credential_stored``) applies to all Credentials, any partial failure is treated as a batch failure.
 
 
 Refresh Token Flow
@@ -542,7 +542,7 @@ A non-normative example of a successful response is shown below.
   HTTP/1.1 200 OK
   Content-Type: application/json
   Cache-Control: no-store
-  
+
   {
       "access_token": "eyJ0eXAiOiJhdCtqd3QiLCJhbGciOiJFU..",
       "refresh_token": "eyC3fiLdCtqd3QiLCJhbGciOiCL3..",
@@ -609,19 +609,22 @@ The following diagram describes the Digital Credential re-issuance flow.
 
 **Step 1**: The flow starts when the User opens the Wallet Instance: this step MAY be triggered either by a notification sent by the Credential Issuer (using e.g., one of the out-of-band communication contacts registered during the Issuance flow).
 
-**Step 2**: The Wallet Instance MUST check the status of any stored Digital Credential, by retrieving either a valid Status List Token (following the flow described in Section :ref:`credential-revocation:Status List Token`) as per (:ref:`WP_069 <wallet-credential-issuance-testcases>`), if a valid one is not available. Then, the Wallet Instance MUST check  (:ref:`WP_070 <wallet-credential-issuance-testcases>`) if any Digital Credential has status set to ``0x03`` - ``UPDATE`` or ``0x0F`` - ``ATTRIBUTE_UPDATE``.
+**Step 2**: The Wallet Instance MUST check the status of any stored Digital Credential, by retrieving either a valid Status List Token (following the flow described in Section :ref:`credential-revocation:Status List Token`) as per (:ref:`WP_069 <wallet-credential-issuance-testcases>`), if a valid one is not available.
+Then, the Wallet Instance MUST check  (:ref:`WP_070 <wallet-credential-issuance-testcases>`) if any Digital Credential has status set to ``0x03`` - ``UPDATE`` or ``0x0F`` - ``ATTRIBUTE_UPDATE``.
 
 If the conditions above are not met, the flow MUST be interrupted.
 
 Otherwise, the Wallet Instance MUST check the related Access Tokens. If they are still valid, then Step 3 MAY be skipped  (:ref:`WP_071 <wallet-credential-issuance-testcases>`).
 
-**Step 3**: If the Access Token is expired and the Wallet Instance still has a valid Refresh Token, the Wallet Instance MUST obtain a new Access Token starting a Refresh Token Flow, according to Section :ref:`credential-issuance-low-level:Refresh Token Flow`  (:ref:`WP_071a <wallet-credential-issuance-testcases>`). The Refresh Token Flow enables the Wallet Instance to obtain a new Refresh Token and a new DPoP Access Token to refresh the Digital Credential. If the Refresh Token is expired, a new Issuance Flow authenticating the User is required (:ref:`WP_067 <wallet-credential-issuance-testcases>` and :ref:`WP_071b <wallet-credential-issuance-testcases>`).
+**Step 3**: If the Access Token is expired and the Wallet Instance still has a valid Refresh Token, the Wallet Instance MUST obtain a new Access Token starting a Refresh Token Flow, according to Section :ref:`credential-issuance-low-level:Refresh Token Flow`  (:ref:`WP_071a <wallet-credential-issuance-testcases>`).
+The Refresh Token Flow enables the Wallet Instance to obtain a new Refresh Token and a new DPoP Access Token to refresh the Digital Credential. If the Refresh Token is expired, a new Issuance Flow authenticating the User is required (:ref:`WP_067 <wallet-credential-issuance-testcases>` and :ref:`WP_071b <wallet-credential-issuance-testcases>`).
 
-**Step 4**: The Wallet Instance MUST use a valid DPoP Access Token to retrieve the new Digital Credential requesting it to the Credential endpoint following the steps from 12 to 22 of Figure 9 in Section :ref:`credential-issuance-low-level:Low-Level Issuance Flow`  (:ref:`WP_072 <wallet-credential-issuance-testcases>`). When the new Digital Credential is successfully stored in the secure storage, the Wallet Instance MUST delete the previous one  (:ref:`WP_073 <wallet-credential-issuance-testcases>`).
+**Step 4**: The Wallet Instance MUST use a valid DPoP Access Token to retrieve the new Digital Credential requesting it to the Credential endpoint following the steps from 12 to 22 of Figure 9 in Section :ref:`credential-issuance-low-level:Low-Level Issuance Flow`  (:ref:`WP_072 <wallet-credential-issuance-testcases>`).
+When the new Digital Credential is successfully stored in the secure storage, the Wallet Instance MUST delete the previous one  (:ref:`WP_073 <wallet-credential-issuance-testcases>`).
 
 .. note::
-  Regardless of the Digital Credential revocation mechanism supported, if the Digital Credential status is set to ``ATTRIBUTE_UPDATE``, the User's attribute set, in the refreshed Digital Credential, doesn't match the one in the stored Digital Credential. In this case, the Wallet Instance MUST request the User's authorization to store the new refreshed Digital Credential  (:ref:`WP_074 <wallet-credential-issuance-testcases>`). 
-  
+  Regardless of the Digital Credential revocation mechanism supported, if the Digital Credential status is set to ``ATTRIBUTE_UPDATE``, the User's attribute set, in the refreshed Digital Credential, doesn't match the one in the stored Digital Credential. In this case, the Wallet Instance MUST request the User's authorization to store the new refreshed Digital Credential  (:ref:`WP_074 <wallet-credential-issuance-testcases>`).
+
   If instead, either the Digital Credential status is set to ``UPDATE``, only the Credential metadata parameters have changed. In this case, the Wallet Instance SHOULD store the new Digital Credential without requiring explicit user authorization and consent  (:ref:`WP_075 <wallet-credential-issuance-testcases>`).
 
 
@@ -648,14 +651,15 @@ Credential Offer Flow
 
 A Credential Issuer or third party (e.g., Authentic Source, Registry, Catalogue) initiates Credential Issuance by sending a Credential Offer to the Wallet Instance.
 
-To invoke the correct Wallet Instance, they need to know which Wallet Instance is installed on the User's device and the User wishes to use. This information SHOULD be obtained using the Selection Page described in :ref:`functionalities:User Experience Design`. 
+To invoke the correct Wallet Instance, they need to know which Wallet Instance is installed on the User's device and the User wishes to use.
+This information SHOULD be obtained using the Selection Page described in :ref:`functionalities:User Experience Design`.
 
 - If the Selection Page is supported, the User selects the Wallet, and then the Credential Issuer or third party retrieves the Wallet metadata as described in :ref:`wallet-metadata-retrieval:Wallet Metadata Retrieval Flow`. The Wallet Instance invocation mechanism depends on the ``credential_offer_endpoint`` parameter in the Wallet metadata:
-  
+
   - If ``credential_offer_endpoint`` is available and contains an HTTPS URL (Universal Link), the Credential Issuer or third party SHOULD use that endpoint.
   - Otherwise, the Credential Issuer or third party MUST use one of the custom URL schemes: ``openid-credential-offer://`` (as defined in Section 4 of [`OpenID4VCI`_]) or ``haip-vci://`` (as defined in Section 4.2 of [`OPENID4VC-HAIP`_]). The Wallet Instance MUST support both custom URL schemes.
 
-- In the case when the the Credential Issuer or third party does not support the Selection Page, or the retrieval of the Wallet metadata may fail for some reason, the the Credential Issuer or third party invokes the Wallet Instance using the custom URL scheme described above.
+- In the case when the Credential Issuer or third party does not support the Selection Page, or the retrieval of the Wallet metadata may fail for some reason, the Credential Issuer or third party invokes the Wallet Instance using the custom URL scheme described above.
 
 The Credential Offer can be transmitted by value or by reference:
 

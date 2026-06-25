@@ -1,6 +1,5 @@
 .. include:: ../common/common_definitions.rst
-
-.. level 2 "included" file, so we start with '^' title level
+.. Incluso tramite wallet-solution.rst al livello di titolo '^' (livello 2).
 
 Requisiti della Soluzione Wallet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -17,10 +16,10 @@ Questa sezione elenca i requisiti relativi ai Fornitori di Wallet e alle Soluzio
 - L'Istanza del Wallet DEVE fornire agli Utenti un meccanismo per richiedere la cancellazione degli attributi personali da parte di una Relying Party ai sensi dell'articolo 17 del Regolamento (UE) 2016/679, e per registrare ogni Richiesta di Cancellazione effettuata.
 
 .. note::
-   Non esiste una corrispondenza stretta uno-a-uno tra i requisiti in questa sezione e i casi di test in :ref:`wallet-provider-test-matrix`. Alcuni requisiti sono espressi a un livello troppo alto per poter essere rappresentati come casi di test atomici, mentre altri sono già affrontati in modo più dettagliato all'interno dei flussi correlati (ad es. :ref:`wallet-instance-attestation-issuance:Emissione della Wallet Instance Attestation`).
+   Non esiste una corrispondenza stretta uno-a-uno tra i requisiti in questa sezione e i casi di test in :ref:`test-plans-wallet-provider:Matrice di Test per Wallet Provider`. Alcuni requisiti sono espressi a un livello troppo alto per poter essere rappresentati come casi di test atomici, mentre altri sono già affrontati in modo più dettagliato all'interno dei flussi correlati (ad es. :ref:`wallet-instance-attestation-issuance:Emissione della Wallet Instance Attestation`).
 
 Requisiti della Wallet Instance Attestation
-""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""
 
 la Wallet Instance Attestation contiene informazioni riguardanti il livello di sicurezza del dispositivo che ospita l'Istanza del Wallet.
 Esso dimostra principalmente l'**autenticità**, l'**integrità**, la **sicurezza** e in generale l'**affidabilità** di una particolare Istanza del Wallet.
@@ -30,7 +29,6 @@ I requisiti per la Wallet Instance Attestation sono definiti di seguito:
 - la Wallet Instance Attestation DEVE fornire tutte le informazioni rilevanti per attestare l'**integrità** e la **sicurezza** del dispositivo in cui è installata l'Istanza del Wallet (:ref:`WP_019 <wallet-instance-testcases>`).
 - la Wallet Instance Attestation DEVE essere firmato dal Fornitore di Wallet che ha autorità e proprietà sulla Soluzione Wallet, come specificato dalla Registration Authority di supervisione. Questo garantisce che la Wallet Instance Attestation colleghi in modo univoco il Fornitore di Wallet a questa particolare Istanza del Wallet (:ref:`WP_020 <wallet-instance-testcases>`).
 - Il Fornitore di Wallet DEVE periodicamente valutare e garantire l'integrità, l'autenticità e la genuinità dell'Istanza del Wallet. Il Fornitore di Wallet verifica l'Istanza del Wallet utilizzando il flusso più sicuro reso disponibile dalle API del Fornitore del Sistema Operativo, come la *Play Integrity API* per Android e *App Attest* per iOS (:ref:`WP_011 <wallet-provider-backend-testcases>`).
-- Il Fornitore di Wallet DEVE possedere un meccanismo di revoca per l'Istanza del Wallet, che consenta al Fornitore di Wallet di terminare il servizio per una specifica Istanza in qualsiasi momento (:ref:`WP_011 <wallet-provider-backend-testcases>`).
 - la Wallet Instance Attestation DEVE essere vincolato in modo sicuro alla chiave pubblica effimera dell'Istanza del Wallet (:ref:`WP_019b <wallet-instance-testcases>`).
 - la Wallet Instance Attestation PUÒ essere utilizzato più volte durante il suo periodo di validità, consentendo autenticazioni e autorizzazioni ripetute senza la necessità di richiedere nuovi attestati ad ogni interazione. Tuttavia, è RACCOMANDATO che le Istanze del Wallet evitino di utilizzare ripetutamente lo stesso attestato, a causa di preoccupazioni sulla privacy come la possibilità di collegamento tra diverse interazioni.
 - La Wallet Instance Attestation DEVE avere una durata limitata e DEVE includere un tempo di scadenza, oltre il quale NON DEVE più essere considerata valida.
@@ -38,8 +36,8 @@ I requisiti per la Wallet Instance Attestation sono definiti di seguito:
 - Ogni Istanza del Wallet DOVREBBE essere in grado di richiedere più Wallet Instance Attestation utilizzando diverse chiavi pubbliche crittografiche associate ad essi.
 - la Wallet Instance Attestation NON DEVE contenere informazioni sull'Utente che controlla l'Istanza del Wallet (:ref:`WP_029b <wallet-instance-testcases>`).
 - L'Istanza del Wallet DEVE ottenere una Wallet Instance Attestation come prerequisito per passare allo stato Operativo, come definito da `EIDAS-ARF`_.
-- Un Wallet provider DEVE garantire che una Wallet Unit non revocata presenti in ogni momento una Wallet Instance valida e non revocata a un fornitore di PID o a un fornitore di attestazioni durante il processo di emissione di un PID o di un'attestazione. Nota: questo requisito si applica sia alle attestazioni associate a un dispositivo che a quelle non associate a un dispositivo, come definito da `EIDAS-ARF`_.
-- Una Wallet Unit DEVE presentare una Wallet Instance Attestation esclusivamente a un fornitore di PID o a un fornitore di attestazioni, nell'ambito del processo di emissione di un PID o di un'attestazione, e non a una parte affidabile o a qualsiasi altra entità.
+- Un Wallet Provider DEVE garantire che una Wallet Unit non revocata presenti in ogni momento una Wallet Instance Attestation temporalmente valida e non revocata a un PID Provider o a un Attestation Provider durante il processo di emissione di un PID o di un'attestazione. Nota: questo requisito si applica sia alle attestazioni associate a un dispositivo che a quelle non associate a un dispositivo, come definito da `EIDAS-ARF`_.
+- Una Wallet Unit DEVE presentare una Wallet Instance Attestation esclusivamente a un PID Provider o a un Attestation Provider, nell'ambito del processo di emissione di un PID o di un'attestazione, e non a una Relying Party o a qualsiasi altra entità.
 
 .. note::
   In questa sezione, i servizi utilizzati per attestare la genuinità dell'Istanza del Wallet e del dispositivo in cui è installata sono indicati come **API del Servizio di Integrità del Dispositivo**. L'API del Servizio di Integrità del Dispositivo è considerata in modo astratto e si presume sia un servizio fornito da una terza parte affidabile (cioè, l'API del Fornitore del Sistema Operativo) in grado di eseguire controlli di integrità sull'Istanza del Wallet e sul dispositivo in cui è installata.
@@ -62,6 +60,7 @@ I requisiti per la Key Attestation sono definiti di seguito:
 - La Key Attestation DEVE contenere una o più chiavi pubbliche di credenziali attestate provenienti dallo stesso WSCD.
 - La Key Attestation DEVE essere firmata dal Wallet Provider che ha autorità e proprietà sulla Wallet Solution, come specificato dall'Autorità di Registrazione di riferimento. I Wallet Provider DEVONO garantire che i certificati utilizzati per firmare le KA e le WIA siano conformi a tutti i requisiti applicabili della `ETSI TS 119 412-6`_, in particolare alla Clausola 5.
 - La Key Attestation NON DEVE essere emessa dal Wallet Provider se l'affidabilità del WSCD non è garantita. In tal caso, l'istanza del Wallet DEVE essere revocata.
+
 
 Requisiti WSCD
 """"""""""""""

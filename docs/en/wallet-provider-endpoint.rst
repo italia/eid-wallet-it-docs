@@ -1,6 +1,5 @@
 .. include:: ../common/common_definitions.rst
-
-.. "included" file, so we start with '-' title level
+.. Included via endpoints.rst at title level '-' (level 1).
 
 .. role:: raw-html(raw)
   :format: html
@@ -790,4 +789,5 @@ Notify User Death
       - Wallet Provider
     * - **Consumer**
       - PID Provider
+
 

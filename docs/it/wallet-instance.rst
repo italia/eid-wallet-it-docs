@@ -1,6 +1,5 @@
 .. include:: ../common/common_definitions.rst
-
-.. level 2 "included" file, so we start with '^' title level
+.. Incluso tramite wallet-solution.rst al livello di titolo '^' (livello 2).
 
 Istanza del Wallet
 ^^^^^^^^^^^^^^^^^^
@@ -16,3 +15,5 @@ L'Istanza del Wallet stabilisce un rapporto di fiducia con i Fornitori di PID e 
 
   wallet-instance-lifecycle.rst
   wallet-instance-functionalities.rst
+
+

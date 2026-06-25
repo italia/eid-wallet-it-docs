@@ -39,3 +39,5 @@ Deletion of transaction records MUST:
 The Wallet Instance MUST continue to protect any remaining transaction records in accordance with the confidentiality, integrity, and authenticity requirements defined for the transaction log in this section.
 
 No entity other than the User MAY delete transaction records.
+
+

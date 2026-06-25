@@ -1,7 +1,12 @@
+.. include:: ../common/common_definitions.rst
+.. Incluso tramite normative-ref.rst al livello di titolo '-' (livello 1).
+
+
 Risorse Ufficiali
 -----------------
 
 Questa sezione contiene asset, risorse e artefatti che non possono essere distribuiti sotto forma di documentazione tecnica ma devono essere forniti nel loro formato digitale nativo. Questi includono file sorgente in formati come SVG, immagini raster, repository di codice, file di configurazione e altri asset digitali essenziali per la progettazione e l'implementazione delle Soluzioni Tecniche del Sistema IT-Wallet.
+
 Qualsiasi risorsa tecnica aggiuntiva, repository e documentazione aggiuntiva saranno rese disponibili in questa sezione nelle versioni successive delle presenti specifiche tecniche.
 
 Sito Ufficiale
@@ -24,13 +29,14 @@ Di seguito sono elencate le risorse grafiche ufficiali, disponibili per il downl
 - **Template di pagina**: i modelli delle pagine appartenenti al flusso di Autenticazione: Discovery page, Selection page, QR code page, Thank you page ed Error page,  – Consulta `Pages-templates/ <https://github.com/italia/eid-wallet-it-docs/tree/versione-corrente/official_resources/Pages-templates>`_
 - **Icone e pittogrammi**: icone e pittogrammi utili per l'implementazione del flusso di Autenticazione – `Scarica OK State <_static/Icons-and-pictograms/OK_State.svg>`_ - `Scarica KO state <_static/Icons-and-pictograms/KO_State.svg>`_ - `Scarica order <_static/Icons-and-pictograms/Order.svg>`_
 
-
 Componenti HTML
-^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
 
 I seguenti componenti HTML ufficiali sono disponibili nella cartella `official_resources/ <https://github.com/italia/eid-wallet-it-docs/tree/versione-corrente/official_resources>`_ di questo repository:
 
-- **Authentication Button Component**: Componente HTML/CSS ufficiale per l'autenticazione tramite IT-Wallet, basato sulla libreria `Bootstrap Italia <https://italia.github.io/bootstrap-italia/docs/componenti/buttons/>`_ - `Vedi il componente <https://github.com/italia/eid-wallet-it-docs/tree/versione-corrente/official_resources/authentication-button>`_ - `Demo live <_static/authentication-button/authentication-button.html>`_
+- **Authentication Button Component**: Componente HTML/CSS ufficiale per l'autenticazione tramite IT-Wallet, basato sulla libreria `Bootstrap Italia <https://italia.github.io/bootstrap-italia/docs/componenti/buttons/>`__ - `Vedi il componente <https://github.com/italia/eid-wallet-it-docs/tree/versione-corrente/official_resources/authentication-button>`__ - `Demo live <_static/authentication-button/authentication-button.html>`__
+- **Discovery Page**: Template HTML/CSS/JS ufficiale e autoconsistente per la selezione del metodo di autenticazione (identità digitale), basato sulla libreria `Bootstrap Italia <https://italia.github.io/bootstrap-italia/>`__ - `Vedi il template <https://github.com/italia/eid-wallet-it-docs/tree/versione-corrente/official_resources/discovery-page>`__ - `Demo live <_static/discovery-page/disco.html>`__
+- **IT-Wallet Selection Page**: Template HTML/CSS/JS ufficiale e autoconsistente per la selezione del portafoglio digitale (wallet) con cui proseguire l'autenticazione, basato sulla libreria `Bootstrap Italia <https://italia.github.io/bootstrap-italia/>`__ - `Vedi il template <https://github.com/italia/eid-wallet-it-docs/tree/versione-corrente/official_resources/it-wallet-selection-page>`__ - `Demo live <_static/it-wallet-selection-page/it-wallet.html>`__
 
 Brand Manual
 ^^^^^^^^^^^^

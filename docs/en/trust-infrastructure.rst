@@ -1,8 +1,6 @@
 .. include:: ../common/common_definitions.rst
 .. include:: ../common/symbols.rst
 
-
-
 The Infrastructure of Trust
 ===========================
 
@@ -258,7 +256,7 @@ Below is a non-normative example of a Trust Anchor Entity Configuration, where e
                     "crv": "P-256",
                     "x": "1kNR9Ar3MzMokYTY8BRvRIue85NIXrYX4XD3K4JW7vI",
                     "y": "slT14644zbYXYF-xmw7aPdlbMuw3T1URwI4nafMtKrY",
-                    "x5c": [ 
+                    "x5c": [
                       // <self-issued X.509 certificate about the Trust Anchor>
                       ]
                 }
@@ -359,6 +357,52 @@ The Trust Anchor Entity Configuration, in addition to the common parameters list
    * - **trust_mark_issuers**
      - JSON Array that defines which Federation authorities are considered trustworthy for issuing specific Trust Marks, assigned with their unique identifiers.
      - |check-icon|
+
+
+Trust Marks for Relying Party Intermediaries
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In the IT-Wallet ecosystem, Relying Party Intermediaries acting on behalf of Relying Parties (pursuant to Art. 5b(8) of the eIDAS2 Regulation `EU_2024_1183`_) are subject to a specific Trust Mark regime that allows the Wallet to recognize and display to the User that the requesting RP operates through a Relying Party Intermediary.
+
+**Trust Mark Issuance to the Relying Party Intermediary**
+
+The Trust Anchor MUST include Relying Party Intermediaries in the ``trust_mark_issuers`` attribute of its own Entity Configuration, authorizing them to issue Trust Marks for their subordinate Leaves. The Trust Anchor issues a Trust Mark to the Relying Party Intermediary attesting its role, using ``https://<federation_authority_domain>/trust_marks/federation-entity/openid_credential_verifier_intermediary`` as ``trust_mark_type`` to distinguish it from the other entities in the ecosystem.
+
+The Relying Party Intermediary MUST include this Trust Mark in its own Entity Configuration as proof of its recognized role within the Federation.
+
+**Trust Mark Issuance to Leaves Affiliated with the Relying Party Intermediary**
+
+Trust Marks issued to Leaves (Relying Parties) affiliated with a Relying Party Intermediary MUST be issued by the Relying Party Intermediary itself, not directly by the Trust Anchor.
+
+A Relying Party affiliated with a Relying Party Intermediary MUST include in its own Entity Configuration:
+
+- The Trust Mark issued by the Relying Party Intermediary, as proof of the successful onboarding process managed by the Relying Party Intermediary;
+- Its own ``authority_hints`` containing the URL of the Relying Party Intermediary (not directly of the Trust Anchor), thus indicating the correct hierarchical chain.
+
+Below is a non-normative example of a Trust Anchor Entity Configuration showing the updated ``trust_mark_issuers`` configuration with authorized Relying Party Intermediaries:
+
+.. code-block:: json
+
+    {
+      "trust_mark_issuers": {
+        "https://trust-anchor.eid-wallet.example.it/trust_marks/federation-entity/openid_credential_verifier": [
+          "https://trust-anchor.eid-wallet.example.it",
+          "https://intermediary.example.org"
+        ],
+        "https://trust-anchor.eid-wallet.example.it/trust_marks/federation-entity/openid_credential_verifier_intermediary": [
+          "https://trust-anchor.eid-wallet.example.it"
+        ],
+        "https://trust-anchor.eid-wallet.example.it/trust_marks/federation-entity/openid_credential_issuer": [
+          "https://trust-anchor.eid-wallet.example.it"
+        ],
+        "https://trust-anchor.eid-wallet.example.it/trust_marks/federation-entity/wallet_solution": [
+          "https://trust-anchor.eid-wallet.example.it"
+        ]
+      }
+    }
+
+.. note::
+  The Trust Mark with identifier ending with ``federation-entity/openid_credential_verifier_intermediary`` is issued exclusively by the Trust Anchor and is the one the Wallet uses to verify that an entity is a recognized Relying Party Intermediary. The ``https://<federation_authority_domain>/trust_marks/federation-entity/openid_credential_verifier`` Trust Marks SHOULD also be issued by Relying Party Intermediaries for their affiliated Leaves.
 
 
 Entity Configuration Leaves and Intermediates
@@ -510,7 +554,7 @@ Below there is a non-normative example of an Subordinate Statement issued by an 
                     "crv": "P-256",
                     "x": "1kNR9Ar3MzMokYTY8BRvRIue85NIXrYX4XD3K4JW7vI",
                     "y": "slT14644zbYXYF-xmw7aPdlbMuw3T1URwI4nafMtKrY",
-                    "x5c": [ 
+                    "x5c": [
                       // <X.509 certificate about the Subordinate>
                       ]
                 }
@@ -621,7 +665,7 @@ The Trust Chain is a sequence of verified statements that validates a participan
 
 **Role in Onboarding**: During the entity onboarding, Trust Chains are constructed to prove the complete hierarchical trust relationship from the Trust Anchor to the new entity.
 
-**Role in Operations**: During Credential issuance and presentation, Trust Chains provide cryptographic proof of entity validity and compliance status. 
+**Role in Operations**: During Credential issuance and presentation, Trust Chains provide cryptographic proof of entity validity and compliance status.
 
 Below is an abstract representation of a Trust Chain.
 
@@ -767,6 +811,26 @@ In the process depicted in the sequence diagram below, the Wallet Instance uses 
 .. note::
   As shown in the figure, internet connection is required to update the Trust Chain about an RP and check its revocation status.
 
+Establishing Trust with a Relying Party Operating through an Intermediary
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+When a Relying Party operates through a Relying Party Intermediary, the Wallet Instance MUST perform an extended Trust Evaluation process that includes validation of the Relying Party Intermediary's Trust Mark. This process takes place during the Trust Chain construction and validation phase and enables the Wallet to present to the User transparent information about the entity that registered and vouches for the RP.
+
+The process is articulated in the following steps:
+
+1. **Download of the RP Entity Configuration**: The Wallet Instance downloads the Relying Party's Entity Configuration from the RP's ``/.well-known/openid-federation`` endpoint. The RP's EC contains the ``authority_hints`` claim pointing to the Relying Party Intermediary's URL (not directly to the Trust Anchor).
+
+2. **Identification of the Relying Party Intermediary**: Via the ``authority_hints`` claim in the RP's EC, the Wallet Instance identifies the Relying Party Intermediary and downloads its Entity Configuration.
+
+3. **Validation of the Relying Party Intermediary's Trust Mark**: The Wallet Instance verifies that the Relying Party Intermediary's Entity Configuration contains a valid Trust Mark for the Relying Party Intermediary role, issued by the Trust Anchor. The validity of the Trust Mark MUST be verified via the Trust Anchor's ``/trust_mark_status`` endpoint.
+
+4. **Trust Chain Construction through the Relying Party Intermediary**: The Wallet Instance constructs the complete Trust Chain: RP Entity Configuration → Subordinate Statement issued by the Relying Party Intermediary for the RP → Subordinate Statement issued by the Trust Anchor for the Relying Party Intermediary → Trust Anchor Entity Configuration. This chain attests that the RP is a Leaf recognized by the Relying Party Intermediary and that the Relying Party Intermediary is in turn recognized by the Trust Anchor.
+
+5. **User Presentation**: Once validation is complete, the Wallet Instance MUST indicate to the User that the requesting Relying Party operates through a recognized Relying Party Intermediary, displaying the Relying Party Intermediary's identifying information (e.g., ``organization_name``) retrieved from its Entity Configuration.
+
+.. note::
+  The presence of the Trust Mark type ending with ``federation-entity/openid_credential_verifier_intermediary`` in the Relying Party Intermediary's EC is the cryptographically verifiable proof that the entity has been recognized by the Trust Anchor as an authorized Relying Party Intermediary. The Wallet Instance MUST reject the RP's request if the Trust Chain cannot be constructed and validated through a recognized Relying Party Intermediary or directly through the Trust Anchor.
+
 Evaluating Trust with Wallets
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -798,7 +862,7 @@ This approach leverages the dynamic and flexible nature of OpenID Federation alo
 
 **Role in Onboarding**: During entity registration, X.509 Certificates complement OpenID Federation mechanisms by providing interoperability with legacy systems and enabling integration with existing PKI infrastructures.
 
-**Role in Operations**: During Credential operations, X.509 Certificates enable secure communications with legacy systems and provide alternative verification paths for entities that require traditional PKI validation. 
+**Role in Operations**: During Credential operations, X.509 Certificates enable secure communications with legacy systems and provide alternative verification paths for entities that require traditional PKI validation.
 
 OpenID Federation and X.509 based PKI share several things in common, as listed below:
 
@@ -855,7 +919,7 @@ When a participant self-issues an X.509 Certificate, it adheres to the following
         - MUST contain the organization's contact email address.
       * - ``organizationIdentifier``
         - MUST contain the registration number that uniquely identifies the organization within the registration service, using the OID value ``2.5.4.97`` as defined in ``ITU-T X.500``.
-        
+
 2. **Subject Alternative Name (SAN)**: The X.509 Certificate MUST include a ``SAN URI`` that MUST match the **sub** and the **iss** values of its federation Entity Configuration.
 3. **DNS Name**: The X.509 Certificate MUST include a DNS Name in the SAN that matches the DNS name contained within the **sub** and the **iss** values of its Entity Configuration, removing ``https://`` and any webpaths.
 4. **Certificate Revocation List (CRL)**: If the issued X.509 Certificates has an expiration time superior to 24 hours, the X.509 Issuer MUST publish a CRL for the issued X.509 Certificates. This list MUST be accessible and regularly updated to ensure that any compromised or invalid X.509 Certificates are promptly revoked with the motivation of the revocation, if any.
@@ -972,7 +1036,7 @@ Privacy Remarks
 - Wallet Instances MUST NOT publish their metadata through an online service.
 - The trust infrastructure MUST be public, with all endpoints publicly accessible without any client credentials that may disclose who is requesting access.
 - When a Wallet Instance requests the Subordinate Statements to build the Trust Chain for a specific Relying Party or validates a Trust Mark online, issued for a specific Relying Party, the Trust Anchor or its Intermediate do not know that a particular Wallet Instance is inquiring about a specific Relying Party; instead, they only serve the statements related to that Relying Party as a public resource.
-- The Wallet Instance metadata MUST not contain information that may disclose technical information about the hardware used.
+- The Wallet Instance metadata MUST NOT contain information that may disclose technical information about the hardware used.
 - Leaf entity, Intermediate, and Trust Anchor metadata may include the necessary amount of data as part of administrative, technical, and security contact information. It is generally not recommended to use personal contact details in such cases. From a legal perspective, the publication of such information is needed for operational support concerning technical and security matters and the GDPR regulation.
 
 
@@ -985,4 +1049,5 @@ Considerations about Decentralization
 - Since the credential presentation must be signed, storing the signed presentation requests and responses, which include the Trust Chain, the Wallet Instance may have the snapshot of the federation configuration (Trust Anchor Entity Configuration in the Trust Chain) and the verifiable reliability of the Relying Party it has interacted with.
 - Each signed attestation is long-lived since it can be cryptographically validated even when the federation configuration changes or the keys of its issuers are renewed.
 - Each participant should be able to update its Entity Configuration without notifying the changes to any third party. The metadata policy contained within a Trust Chain must be applied to overload any information related to protocol specific metadata.
+
 

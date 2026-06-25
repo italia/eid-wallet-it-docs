@@ -5,14 +5,16 @@ on:
     branches:
       - 'versione-corrente'
     paths:
-      - 'docs/**' # Trigger only if there are changes in docs path
+      - 'docs/**'
+      - 'official_resources/**'
   pull_request:
     types:
       - opened
       - synchronize
       - reopened
     paths:
-      - 'docs/**' # Trigger only if there are changes in docs path
+      - 'docs/**'
+      - 'official_resources/**'
   release:
     types:
       - published
@@ -97,15 +99,19 @@ jobs:
 
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
             echo "path=prs/pr${{ github.event.pull_request.number }}" >> $GITHUB_OUTPUT
+            echo "publish_official_resources=false" >> $GITHUB_OUTPUT
           elif [[ "${{ github.event_name }}" == "release" ]]; then
             TAG="${{ github.event.release.tag_name }}"
             echo "path=releases/${TAG}" >> $GITHUB_OUTPUT
+            echo "publish_official_resources=false" >> $GITHUB_OUTPUT
           elif [[ "${GITHUB_REF}" == refs/tags/* ]]; then
             TAG="${GITHUB_REF#refs/tags/}"
             echo "path=releases/${TAG}" >> $GITHUB_OUTPUT
+            echo "publish_official_resources=false" >> $GITHUB_OUTPUT
           else 
             # Default case - push to default branch
             echo "path=$DEFAULT_BRANCH" >> $GITHUB_OUTPUT
+            echo "publish_official_resources=true" >> $GITHUB_OUTPUT
           fi
 
       # Append appropriate tags to document title based on build context
@@ -159,8 +165,9 @@ jobs:
           mkdir -p html/templates/ && cp -r .github/templates/* html/templates/
           mkdir -p html/static/ && cp -r .github/static/* html/static/
 
-      # Copy official_resources for GitHub Pages deployment
+      # Publish official_resources only from versione-corrente builds (not PR/release previews)
       - name: Copy official resources
+        if: steps.deployment.outputs.publish_official_resources == 'true'
         run: |
           mkdir -p html/official_resources/ && cp -r official_resources/* html/official_resources/
 

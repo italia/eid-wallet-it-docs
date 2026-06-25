@@ -1,5 +1,6 @@
 .. include:: ../common/common_definitions.rst
 
+
 eID Substantial Authentication with MRTD Verification for PID Issuance
 =======================================================================
 
@@ -343,7 +344,7 @@ Below a non-normative example of an MRTD PoP Response:
 
     HTTP/1.1 202 Accepted
     Content-Type: application/jwt; charset=utf-8
-    
+
     eyJhbGciOiJFUzI1NiIsInR5cCI6Im1ydGQtaWFzLXBvcCtqd3QiLCJraWQiOiJiM2YxYTZjMmU5ZDU0YThmOWMzZTdkMWEyZjRiNmM3OCJ9.eyJpc3MiOiJodHRwczovL3BpZC1wcm92aWRlci5leGFtcGxlLm9yZyIsImF1ZCI6Imh0dHBzOi8vd2FsbGV0LmV4YW1wbGUub3JnL2luc3RhbmNlLzEyMzQ1IiwiaWF0IjoxNzUzNTU1ODAwLCJleHAiOjE3NTM1NTYwMDAsIm1ydGRfcG9wX25vbmNlIjoiOWYyYzRhN2UzYjFkOGM5YTZlNWY0YjJhMWMzZDdlOGYiLCJtcnoiOiIuLi4iLCJjaGFsbGVuZ2UiOiIuLi4iLCJodHUiOiIuLi4iLCJodG0iOiIuLi4ifQ.signature
 
 JWT decoded header:
@@ -603,7 +604,7 @@ Below a non-normative example of an MRTD PoP Validation Response:
 
 **The MRTD PoP Service MUST:**
 
-- Generate a new nonce  ``mrtd_val_pop_nonce`` for browser-based final confirmation. 
+- Generate a new nonce  ``mrtd_val_pop_nonce`` for browser-based final confirmation.
 - Return HTTP 202 status to indicate async processing completion.
 
 **The Wallet Instance MUST:**
@@ -626,7 +627,7 @@ The Wallet Instance MUST validate that the ``mrtd_val_pop_nonce`` matches the va
 
 - Validate the ``mrtd_val_pop_nonce`` matches the value sent in the verification response, and that it is signed using the Wallet Instance’s private key.
 - Verify the ``mrtd_auth_session`` parameter matches an active session.
-- Verify all authentication steps (LoA3 + MRTD PoP) have been completed successfully (including the identity correlation between LoA3 and document evidence). 
+- Verify all authentication steps (LoA3 + MRTD PoP) have been completed successfully (including the identity correlation between LoA3 and document evidence).
 - Generate the final authorization code.
 
 Phase 4: OAuth Authorization Response
@@ -717,7 +718,7 @@ When components operate outside the PID Provider boundary, the following additio
 
 - Secure Inter-Service Communication (for example, through Certificate pinning, mutual TLS, etc.).
 - Encryption and integrity of sensitive session data and/or personal identity information (for example, using JWE/JWS tokens).
-- Distributed locks for session state updates. 
+- Distributed locks for session state updates.
 
 .. _fig_eID_MRTD_Security_Controls:
 .. plantuml:: plantuml/l2plus-security-controls.puml
@@ -744,7 +745,7 @@ Moreover, each nonce serves a specific security purpose.
 - Use a different entropy source to prevent correlation attacks.
 
  - ``mrtd_val_pop_nonce`` MUST:
- 
+
 - Be signed by the Wallet Instance private key.
 - Include anti-replay timestamp validation.
 - Be verified against the entire nonce chain for integrity.
@@ -835,4 +836,5 @@ Implementations SHOULD incorporate rate-limiting mechanisms to protect against a
 PID Provider SHOULD implement session timeouts approach with proper cleanup mechanisms, ensuring session resources are released and temporary cryptographic material is securely deleted when sessions expire.
 
 All security-relevant events throughout the eID Substantial Authentication with MRTD Verification flow MUST be logged with sufficient detail for auditing purposes while preserving the privacy of the User, ensuring that personally identifiable information, when stored, is appropriately hashed. The audit logs SHOULD have consistent correlation identifiers, enabling end-to-end tracing across all protocol phases, with cryptographic integrity protection to prevent tampering.
+
 

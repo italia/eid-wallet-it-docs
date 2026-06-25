@@ -1,6 +1,5 @@
 .. include:: ../common/common_definitions.rst
-
-.. "included" file, so we start with '-' title level
+.. Incluso tramite entities.rst al livello di titolo '-' (livello 1).
 
 Soluzione Wallet
 ----------------
@@ -26,3 +25,5 @@ Il seguente diagramma illustra l'Architettura di Alto Livello della Soluzione Wa
   backup-restore.rst
   wallet-provider-entity-configuration.rst
   wallet-solution-metadata.rst
+
+
