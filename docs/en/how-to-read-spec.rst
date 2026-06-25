@@ -44,14 +44,6 @@ The specification is organized into the following major sections:
 **Section** :ref:`appendix:Appendix`: 
   Provides supplementary technical details, implementation patterns, and testing frameworks including mobile application instance management, national platform integration specifications, and comprehensive test matrices for ecosystem validation.
 
-Role based reading
-^^^^^^^^^^^^^^^^^^
-
-Quick paths by objective
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-Use these summaries when you already know your goal; the role sections below expand each path.
-
 
 
 Reading paths by roles
@@ -63,7 +55,7 @@ The proposed reading paths are intended as guidance and do not replace the need 
 
 For entities interested in addressing multiple roles, it is recommended to deepen all the reading paths related to relevant roles. 
 
-**Authentic Sources**
+**Authentic Source**
 
 
 The Authentic Source focuses on securely exposing, managing, and guaranteeing the absolute accuracy and integrity of the authoritative raw data underlying (Q)EAA. 
@@ -91,7 +83,7 @@ To understand the requirements and design the features, functionalities and spec
 - **Section** :ref:`e-service-pdnd-template:PDND e-Service Template`: Standardized blueprint containing all necessary technical and descriptive metadata for the e-service definition.
 **Phase 3: Implementation**
 
-To implement the technological interfaces required to communicate with Credential Issuers and tomanage the entire (Q)EAA data lifecycle.
+To implement the technological interfaces required to communicate with Credential Issuers and to manage the entire (Q)EAA data lifecycle.
 - **Section** :ref:`authentic-sources:Authentic Sources`: Authentic Source’s role and responsabilities.
 
 - **Section** :ref:`e-service-pdnd:e-Service PDND`: Mandatory integration specifications with the PDND (National Digital Data Platform) and the associated interoperability requirements for publishing an e-service. 
@@ -154,7 +146,9 @@ To implement the Wallet Solution in line with specific technological standards t
 
 - **Section** :ref:`log-retention-policy:General Log Retention Policies`: General Log retention requirements and requirements specific for Wallet Providers, in accordance with ISO/IEC 27001. 
 - **Section** :ref:`mobile-application-instance: Mobile Application Instance`: Requirements for mobile application instance, related to initialization request and response. 
+- **Section** :ref:`mobile-application-instance: Mobile Application Instance`: Requirements for mobile application instance, related to initialization request and response. 
 
+- **Section** :ref:`test-plans:Test Plans`: Guide to set up the test environment and validate backend interactions with the test matrices provided by the ecosystem. 
 - **Section** :ref:`test-plans:Test Plans`: Guide to set up the test environment and validate backend interactions with the test matrices provided by the ecosystem. 
 **Phase 4: Registration**
 
@@ -208,7 +202,7 @@ To develop endpoints based on specific protocols, and to implement (Q)EAA issuan
 **Phase 4: Registration**
 
 To become registered as Credential Issuer within the system, by completing the administrative and technical procedure so that (Q)EAA issued to the Wallet are officially trusted.
-
+- **Section** :ref:`entity-onboarding:Entity Onboarding': Focus on technical implementation procedures for Credential Issuer registration.
 - **Section** :ref:`onboarding-high-level:Onboarding System': Overview of the onboarding system architecture and the Credential Issuer registration process.
 - **Section** :ref:`entity-onboarding:Entity Onboarding': Focus on technical implementation procedures for Credential Issuer registration.
 - **Section** :ref:`x5c-evaluation:X.509 Certificate Management Operations': Operational procedures for managing X.509 Certificates within the IT-Wallet federation.
