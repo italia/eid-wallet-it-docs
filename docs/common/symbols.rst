@@ -6,3 +6,5 @@
 
 .. |uncheck-icon| image:: ../common/symbols/Eo_circle_red_letter-x.png
     :width: 25
+
+
