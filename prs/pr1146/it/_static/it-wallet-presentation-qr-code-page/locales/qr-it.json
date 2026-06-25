@@ -21,7 +21,7 @@
   "login_logo": "Accedi con il tuo wallet digitale",
   "contentTitle": "Inquadra il codice QR",
   "qrCodeValidInfo": "Il codice QR è valido per <b id=\"timer\">{{seconds}}</b> secondi",
-  "supportText": "Usa la funzionalità dell'app <b>IT-Wallet</b> o la fotocamera del tuo smartphone",
+  "supportText": "Usa la funzionalità di <b>IO, l'app dei servizi pubblici</b> o la fotocamera del tuo smartphone",
   "backLabel": "Torna indietro",
   "qrCodeExpiredInfo": "Il codice QR è scaduto, ricarica la pagina per generarne uno nuovo.",
   "qrCodeReloadLabel": "Ricarica",
@@ -34,7 +34,7 @@
   "failureText": "Ricorda che per effettuare l'accesso con IT-Wallet devi acconsentire alla lettura dei tuoi dati. Se il problema si ripete, contatta l'assistenza.",
   "retryLabel": "Riprova",
   "contactSupportLabel": "Contatta l'assistenza",
-  "demoPayloadLabel": "Contenuto dimostrativo del QR (Authorization Request)",
+  "demoPayloadLabel": "Contenuto QR Code (Authorization Request)",
   "footer": {
     "nav_label": "Link legali",
     "legal_notice": "Note legali",

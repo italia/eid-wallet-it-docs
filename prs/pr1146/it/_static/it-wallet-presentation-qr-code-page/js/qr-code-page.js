@@ -54,12 +54,14 @@ function applyQrVisualConfig(config) {
   const root = document.documentElement;
   root.style.setProperty('--qr-size', `${config.qrcode_size}px`);
 
+  const payloadUrl = buildDemoQrPayload(config);
+
   const qrCode = document.querySelector('qr-code');
   if (qrCode) {
     qrCode.setAttribute('module-color', config.qrcode_color);
     qrCode.setAttribute('position-ring-color', config.qrcode_color);
     qrCode.setAttribute('position-center-color', config.qrcode_color);
-    qrCode.setAttribute('contents', buildDemoQrPayload(config));
+    qrCode.setAttribute('contents', payloadUrl);
   }
 
   const logo = document.querySelector('.icon-qr-code');
@@ -67,9 +69,15 @@ function applyQrVisualConfig(config) {
     logo.src = resolveAsset(config.qrcode_logo_path);
   }
 
+  const qrCodeLink = document.getElementById('qr-code-link');
+  if (qrCodeLink) {
+    qrCodeLink.href = payloadUrl;
+  }
+
   const payloadPreview = document.getElementById('qr-payload-preview');
   if (payloadPreview) {
-    payloadPreview.textContent = buildDemoQrPayload(config);
+    payloadPreview.href = payloadUrl;
+    payloadPreview.textContent = payloadUrl;
   }
 }
 
