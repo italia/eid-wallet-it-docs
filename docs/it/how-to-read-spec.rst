@@ -107,8 +107,7 @@ Implementare le interfacce tecnologiche necessarie per comunicare con il Fornito
 **Sezione** :ref:`e-service-pdnd:e-Service PDND`: Specifiche obbligatorie per l’integrazione con la PDND (Piattaforma Digitale Nazionale Dati) e relativi requisiti di interoperabilità per la pubblicazione di un e-service.
 
 **Sezione** :ref:`authentic-source-endpoint:Endpoint delle Fonti Autentiche`: Requisiti chiave per l’implementazione delle API che consentono al Credential Issuer di recuperare in modo sicuro e coerente i dati autorevoli e di gestirne il ciclo di vita tramite gli endpoint del Signal Hub. 
-- **Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`: per conoscere nello specifico il ciclo di vita e la gestione degli Attestati elettronici (riferimento al paragrafo :ref:`credential-revocation:Ciclo di vita degli Attestati Elettronici`) 
-
+- **Sezione** :ref:`registry infrastructure:Infrastruttura del Registro`: Approfondimento sui componenti del Registro di interesse per la Fonte Autentica. 
 
 - **Sezione** :ref:`log-retention-policy:Politiche Generali di Conservazione dei Log`: Requisiti generali per la conservazione dei log e requisiti specifici per le Fonti Autentiche, in conformità alla norma ISO/IEC 27001. 
 - **Sezione** :ref:`test-plans:Test Plans`: Guida alla configurazione dell’ambiente di test e alla validazione delle interazioni backend tramite l’utilizzo delle matrici di test fornite dall’ecosistema. 
@@ -174,7 +173,7 @@ Implementare la Soluzione Wallet in conformità a specifici standard tecnologici
 
 **Fase 4: Registrazione**
 
-**Obiettivo**: accreditarsi come Wallet Provider nel sistema in modo tale che le Wallet Instance dei cittadini siano riconosciute come valide dal sistema.  
+Registrarsi al sistema come Fornitore di Wallet, completando le procedure amministrative e tecniche richieste per il riconoscimento della Soluzione Wallet da parte del sistema. 
 
 - **Sezione** :ref:`onboarding-high-level:Sistema di Onboarding`: per conoscere le modalità di partecipazione all’ecosistema IT-Wallet e tutto ciò che riguarda la riconoscibilità dei propri dati da parte di tutti gli attori (riferimento al paragrafo :ref:`onboarding-high-level:Journey dell'Operatore del Fornitore di Wallet`).  
 
