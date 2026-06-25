@@ -207,6 +207,9 @@ function updateShellTexts(t) {
   const payloadSummary = document.getElementById('qr-payload-summary');
   if (payloadSummary) payloadSummary.textContent = t('demoPayloadLabel');
 
+  const reloadLabel = document.getElementById('qr-reload-label');
+  if (reloadLabel) reloadLabel.textContent = t('qrCodeReloadLabel');
+
   updateBackLink(t);
 }
 
@@ -246,8 +249,8 @@ function startCountdown(t) {
 }
 
 function showExpiredState(t) {
-  const payload = document.getElementById('content-qrcode-payload');
-  if (payload) payload.classList.add('qr-faded');
+  const qrLink = document.getElementById('qr-code-link');
+  if (qrLink) qrLink.classList.add('qr-faded');
 
   const info = document.getElementById('content-qrcode-info-text');
   if (info) info.innerHTML = walletTranslation(t, 'qrCodeExpiredInfo');
@@ -255,12 +258,10 @@ function showExpiredState(t) {
   const actions = document.getElementById('content-function');
   if (!actions) return;
 
+  const reloadLabel = document.getElementById('qr-reload-label');
+  if (reloadLabel) reloadLabel.textContent = t('qrCodeReloadLabel');
+
   actions.hidden = false;
-  actions.innerHTML = `
-    <button id="qr-reload-btn" type="button" class="btn btn-primary">
-      ${t('qrCodeReloadLabel')}
-    </button>
-  `;
   document.getElementById('qr-reload-btn')?.addEventListener('click', () => {
     window.location.reload();
   });
