@@ -9,7 +9,7 @@ The `EIDAS-ARF`_ framework empowers Member States to establish the interfaces, t
     - "Linee Guida sull'interoperabilità tecnica delle Pubbliche Amministrazioni" (`MODI`_);
     - "Linee Guida sull'infrastruttura tecnologica della Piattaforma Digitale Nazionale Dati per l'interoperabilità dei sistemi informativi e delle basi di dati" (`PDND`_).
 
-To leverage the PDND, entities MUST formally be subscribed becoming **Participants** (*Aderenti*). Within the PDND infrastructure, Participants MUST assume at least one of the the following roles:
+To leverage the PDND, entities MUST formally be subscribed becoming **Participants** (*Aderenti*). Within the PDND infrastructure, Participants MUST assume at least one of the following roles:
 
     - **Providers** (*Erogatori*): expose e-Services to other Participants.
     - **Consumers** (*Fruitori*): utilize e-Services offered by Providers within the PDND infrastructure.
@@ -1418,4 +1418,5 @@ The following table lists the HTTP Status Codes that MUST be supported for the e
     - The request cannot be fulfilled because the e-Service Endpoint encountered an internal problem.
   * - ``503 Service Unavailable``
     - The request cannot be fulfilled because the e-Service Endpoint is temporarily unavailable (e.g., due to maintenance or overload).
+
 

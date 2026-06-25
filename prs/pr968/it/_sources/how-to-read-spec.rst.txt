@@ -1,4 +1,6 @@
 .. include:: ../common/common_definitions.rst
+.. Incluso tramite introduction.rst al livello di titolo '-' (livello 1).
+
 
 Come leggere le Specifiche
 --------------------------
@@ -10,45 +12,45 @@ Panoramica della Struttura delle Specifiche
 
 La specifica è organizzata nelle seguenti sezioni principali:
 
-**Sezione** :ref:`introduction:Introduzione`: 
+**Sezione** :ref:`introduction:Introduzione`:
   Stabilisce l'ambito e il linguaggio normativo per l'ecosistema IT-Wallet.
 
-**Sezione** :ref:`brand-identity:Brand Identity`: 
-  Fornisce i requisiti relativi alla Brand Identity del Sistema IT-Wallet, le indicazioni relative al naming e all'applicazione degli elementi visivi che identificano l’ecosistema.  
+**Sezione** :ref:`brand-identity:Brand Identity`:
+  Fornisce i requisiti relativi alla Brand Identity del Sistema IT-Wallet, le indicazioni relative al naming e all'applicazione degli elementi visivi che identificano l’ecosistema.
 
 **Sezione** :ref:`architecture-overview:Panoramica dell'Architettura`:
   Fornisce una visione di alto livello dell’Architettura, in termini di governance e processi operativi abilitati.
 
-**Sezione** :ref:`functionalities:Design dell'Esperienza Utente`: 
-  Fornisce i principi di design e i requisiti funzionali di alto livello per garantire un’Esperienza Utente di qualità in tutte le fasi di interazione tra l’Utente e il servizio. 
+**Sezione** :ref:`functionalities:Design dell'Esperienza Utente`:
+  Fornisce i principi di design e i requisiti funzionali di alto livello per garantire un’Esperienza Utente di qualità in tutte le fasi di interazione tra l’Utente e il servizio.
 
 **Sezione** :ref:`trust-infrastructure:L'Infrastruttura di Trust`:
   Definisce il modello di trust basato sulla federazione, le relazioni tra entità e i meccanismi di valutazione della fiducia che proteggono l'intero ecosistema.
 
-**Sezione** :ref:`entities:Entità`: 
+**Sezione** :ref:`entities:Entità`:
   Requisiti di implementazione completi per ogni partecipante all'ecosistema: Soluzioni Wallet, Fornitori di Credenziali, Relying Party e Fonti Autentiche, inclusi i loro componenti, modelli di interazione e requisiti di configurazione.
 
-**Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`: 
+**Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`:
   Copre i modelli di dati e i formati delle Credenziali Elettroniche, la gestione del ciclo di vita, la verifica della validità e la struttura del catalogo delle Credenziali.
 
 **Sezione** :ref:`digital-credential-flows:Flussi relativi agli Attestati Elettronici`:
   Guida dettagliata all'implementazione per i flussi di emissione e presentazione delle Credenziali Elettroniche, inclusi i flussi di interazione remota e di prossimità.
 
-**Sezione** :ref:`endpoints:Endpoints`: 
+**Sezione** :ref:`endpoints:Endpoints`:
   Specifiche tecniche per tutti gli endpoint API esposti da ciascun tipo di entità, inclusi gli endpoint di federazione e le integrazioni di servizi specializzati.
 
-**Sezione** :ref:`algorithms:Algoritmi Crittografici`, :ref:`security-privacy-considerations:Considerazioni di Sicurezza e Privacy`, e :ref:`log-retention-policy:Politiche Generali di Conservazione dei Log` (**Supporto all'Implementazione**): 
+**Sezione** :ref:`algorithms:Algoritmi Crittografici`, :ref:`security-privacy-considerations:Considerazioni di Sicurezza e Privacy`, e :ref:`log-retention-policy:Politiche Generali di Conservazione dei Log` (**Supporto all'Implementazione**):
   Requisiti crittografici, considerazioni sulla sicurezza e sulla privacy, e politiche di conservazione dei log essenziali per implementazioni conformi.
 
 **Sezione** :ref:`defined-terms-and-references:Termini Definiti e Riferimenti`, :ref:`official-resources:Risorse Ufficiali`, :ref:`contribute:Come contribuire`, e :ref:`open-source:Rilasci Open Source` (**Terminologia e Riferimenti**):
   Terminologia completa, riferimenti normativi, documentazione, risorse e strumenti aggiuntivi, linee guida per i contributi.
 
-**Sezione** :ref:`appendix:Appendice`: 
+**Sezione** :ref:`appendix:Appendice`:
   Fornisce dettagli tecnici supplementari, modelli di implementazione e framework di test, inclusa la gestione delle istanze di applicazioni mobili, specifiche di integrazione della piattaforma nazionale e matrici di test complete per la validazione dell'ecosistema.
 
 
 Journey di Lettura per Ruolo
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Prima di immergersi nelle sezioni specifiche per ruolo, tutti i lettori dovrebbero familiarizzare con i concetti fondamentali delineati nelle Sezioni :ref:`introduction:Introduzione`, :ref:`brand-identity:Brand Identity`, :ref:`architecture-overview:Panoramica dell'Architettura` e :ref:`trust-infrastructure:L'Infrastruttura di Trust`, che stabiliscono il vocabolario comune e l'infrastruttura di fiducia che forniscono il quadro sottostante per l'intero ecosistema.
 
@@ -59,7 +61,7 @@ I lettori che implementano o gestiscono una Soluzione di **Fornitore di Wallet**
 
 **Sezioni essenziali:**
 
-* **Sezione** :ref:`functionalities:Design dell'Esperienza Utente`: Requisiti funzionali di alto livello a supporto dell’Esperienza Utente in tutte le fasi di interazione tra l’Utente e il servizio. 
+* **Sezione** :ref:`functionalities:Design dell'Esperienza Utente`: Requisiti funzionali di alto livello a supporto dell’Esperienza Utente in tutte le fasi di interazione tra l’Utente e il servizio.
 * **Sezione** :ref:`wallet-solution:Soluzione Wallet`: Requisiti completi di implementazione del Wallet, componenti e processi di interazione.
 * **Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`: Modelli di dati, formati e gestione del ciclo di vita delle Credenziali Elettroniche.
 * **Sezione** :ref:`digital-credential-flows:Flussi relativi agli Attestati Elettronici`: Flussi di emissione e presentazione per le Credenziali Elettroniche.
@@ -97,7 +99,7 @@ Per i lettori interessati all'implementazione di una Soluzione di **Fornitore di
 
 .. note::
 
-    Se il Fornitore di Credenziali autentica l'Utente deve conformarsi alla Sezione :ref:`credential-presentation:Presentazione dell'Attestato Elettronico`. Se la Fonte Autentica che fornisce gli attributi dell'Utente appartiene al settore pubblico deve conformarsi alla Sezione :ref:`e-service-pdnd:e-Service PDND`.  
+    Se il Fornitore di Credenziali autentica l'Utente deve conformarsi alla Sezione :ref:`credential-presentation:Presentazione dell'Attestato Elettronico`. Se la Fonte Autentica che fornisce gli attributi dell'Utente appartiene al settore pubblico deve conformarsi alla Sezione :ref:`e-service-pdnd:e-Service PDND`.
 
 Fonte Autentica
 """""""""""""""
@@ -129,8 +131,6 @@ I lettori interessati all'implementazione o alla gestione di una Soluzione di **
 * **Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`: Comprensione dei formati delle Credenziali Elettroniche e verifica della validità.
 * **Sezione** :ref:`credential-presentation:Presentazione dell'Attestato Elettronico`: Implementazione del flusso di presentazione sia per scenari remoti che di prossimità.
 * **Sezione** :ref:`relying-party-endpoints:Endpoint della Relying Party`: Panoramica completa di tutti gli endpoint della Relying Party e i loro ambiti.
-* **Sezione** :ref:`relying-party-endpoints:Endpoint per Flussi Remoti della Relying Party`: Specifiche API complete della Relying Party per flussi remoti e di prossimità.
-* **Sezione** :ref:`Endpoint del Backend del Provider di Relying Party <relying-party-provider-backend-endpoint-endpoint-del-backend-del-provider-di-relying-party>`: Specifiche API del Backend del Provider di Relying Party per la gestione del ciclo di vita delle App di Verifica.
 * **Sezione** :ref:`algorithms:Algoritmi Crittografici`: Requisiti della suite crittografica.
 
 **Sezioni secondarie:**
@@ -165,3 +165,5 @@ Si suggerisce il seguente approccio di lettura in fasi:
 .. note::
 
     Per gli implementatori che lavorano su soluzioni che coprono più ruoli (ad esempio, una combinazione di Soluzioni di Fornitore di Credenziali e Relying Party), si raccomanda di rivedere le sezioni per tutti i ruoli pertinenti prima di procedere con gli sviluppi. È importante prestare particolare attenzione ai requisiti di Entity Configuration e ai flussi di federazione che si applicano a più ruoli.
+
+

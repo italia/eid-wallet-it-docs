@@ -241,7 +241,7 @@
 </table>
 </section>
 <section id="integrazione-dell-infrastruttura-di-trust-e-del-registro">
-<span id="trust-infrastructure-integrazione-tra-infrastruttura-di-trust-e-registry"></span><h2><span class="section-number">6.2. </span>Integrazione dell'Infrastruttura di Trust e del Registro<a class="headerlink" href="#integrazione-dell-infrastruttura-di-trust-e-del-registro" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">6.2. </span>Integrazione dell'Infrastruttura di Trust e del Registro<a class="headerlink" href="#integrazione-dell-infrastruttura-di-trust-e-del-registro" title="Link to this heading">¶</a></h2>
 <p>L'Infrastruttura di Trust implementa il componente Federation Registry dell'Infrastruttura del Registro. Il Federation Registry mantiene l'elenco autorevole delle entità fidate attraverso gli endpoint di federazione definiti in questa sezione, inclusi l'elenco delle entità (/list), le dichiarazioni dei subordinati (/fetch), la validazione dei trust mark (/trust_mark_status), gli eventi sui subordinati (/federation_subordinate_events_endpoint) e la gestione delle chiavi storiche (/historical-jwks).</p>
 <p>Questo Federation Registry opera insieme ad altri componenti del registro (Claims Registry, AS Registry, Catalogo degli Attestati Elettronici, Taxonomy) per fornire supporto completo all'ecosistema. Per l'architettura completa del registro e le interazioni dei componenti, vedi <a class="reference internal" href="registry.html#infrastruttura-del-registro"><span class="std std-ref">Infrastruttura del Registro</span></a>.</p>
 </section>
@@ -437,46 +437,6 @@
 </tbody>
 </table>
 <p>Tutte le risposte degli endpoint di federazione sono sotto forma di JWT firmato, ad eccezione dell'endpoint di Elenco Subordinati e dell'endpoint di Stato Trust Mark che sono serviti come JSON semplice per impostazione predefinita. L'Endpoint Eventi Subordinati della Federazione restituisce anche JWT firmati con il tipo di contenuto <code class="docutils literal notranslate"><span class="pre">application/entity-events-statement+jwt</span></code>.</p>
-<section id="federation-subordinate-events-endpoint">
-<h3><span class="section-number">6.5.1. </span>Federation Subordinate Events Endpoint<a class="headerlink" href="#federation-subordinate-events-endpoint" title="Link to this heading">¶</a></h3>
-<p>L'Endpoint Eventi Subordinati della Federazione è definito in <a class="reference external" href="https://openid.net/specs/openid-federation-subordinate-events-1_0.html">OID-FED-SUBORDINATE-EVENTS</a>. Questo endpoint fornisce un meccanismo per Trust Anchor e Intermediari per pubblicare eventi storici relativi ai loro Subordinati Immediati. Fornisce trasparenza e responsabilità all'interno della federazione fornendo un record storico completo di eventi significativi che influenzano i partecipanti della federazione.</p>
-<p>Per i dettagli completi della specifica, inclusi la posizione dell'endpoint, il formato della richiesta, il formato della risposta, i claim JWT, i parametri degli oggetti evento e i tipi di evento supportati, fare riferimento a <a class="reference external" href="https://openid.net/specs/openid-federation-subordinate-events-1_0.html">OID-FED-SUBORDINATE-EVENTS</a>.</p>
-<p>Di seguito è riportato un esempio non normativo di una richiesta e risposta dell'Endpoint Eventi Subordinati della Federazione:</p>
-<p><strong>Esempio di Richiesta</strong>:</p>
-<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/federation_subordinate_events_endpoint?sub=https%3A%2F%2Frp%2Eexample%2Eorg</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">immediate-superior.example.org</span>
-</pre></div>
-</div>
-<p><strong>Esempio di Risposta</strong>:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://immediate-superior.example.org&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://rp.example.org&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1590000000</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;federation_registration_events&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1590000000</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;registration&quot;</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1590000000</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jwks_update&quot;</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1600000000</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;revocation&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;event_description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;compromised node&quot;</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1610000000</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;registration&quot;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">]</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p><strong>Integrazione con la Gestione del Ciclo di Vita delle Entità</strong>:</p>
-<p>Questo endpoint completa le procedure di gestione del ciclo di vita delle entità definite in <a class="reference internal" href="entity-onboarding.html#onboarding-delle-entita"><span class="std std-ref">Onboarding delle Entità</span></a> fornendo un tracciamento dettagliato di tutti gli eventi significativi che influenzano i partecipanti della federazione. Supporta sia il monitoraggio automatizzato della conformità che i processi di audit manuale.</p>
-</section>
 </section>
 <section id="configurazione-della-federazione">
 <h2><span class="section-number">6.6. </span>Configurazione della Federazione<a class="headerlink" href="#configurazione-della-federazione" title="Link to this heading">¶</a></h2>
@@ -1009,7 +969,7 @@ Il Subordinate Statement PUÒ contenere una policy di metadati e i Trust Mark re
 <li><p><strong>Scoperta di Entità di Federazione</strong>: Le Istanze del Wallet e i Relying Party DEVONO verificare l'identità dell'Emittente utilizzando il processo di Scoperta di Entità di Federazione definito in <a class="reference internal" href="#discovery-della-federazione"><span class="std std-ref">Discovery della Federazione</span></a>. Questo comporta l'interrogazione degli endpoint di federazione per confermare lo stato di validità dell'Emittente e la conformità al Trust Framework.</p></li>
 <li><p><strong>Trust Chain</strong>: Le Istanze del Wallet e i Relying Party valutano le Trust Chain dell'Emittente utilizzando i meccanismi definiti in <a class="reference internal" href="#trust-chain"><span class="std std-ref">Trust Chain</span></a>. Le Trust Chain possono essere fornite staticamente o costruite attraverso un processo di Scoperta di Entità di Federazione, per garantire che l'entità che richiede la Credenziale faccia parte di una federazione riconosciuta e fidata.</p></li>
 <li><p><strong>Valutazione dei Trust Mark</strong>: I Trust Mark sono valutati per garantire la conformità continua alle policy di federazione. Questi marchi indicano l'aderenza a standard e pratiche specifici richiesti dalla federazione.</p></li>
-<li><p><strong>Valutazione delle Policy</strong>: Le Istanze del Wallet e i Relying Party DEVONO verificare che il Credential Issuer sia autorizzato nell'emissione della Credenziale di loro interesse. Metadati, policy dei metadati e Trust Mark sono utilizzati per l'implementazione di questi controlli.</p></li>
+<li><p><strong>Valutazione delle Policy</strong>: Le Istanze del Wallet e i Relying Party DEVONO verificare che il Credential Issuer sia autorizzato nell'emissione della Credenziale di loro interesse. Metadati, policy dei metadati e Trust Mark sono utilizzati per l'implementazione di questi controlli (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-issuance-testcases"><span class="std std-ref">WP_050a</span></a>).</p></li>
 </ul>
 <p>Nel processo rappresentato nel diagramma di sequenza sottostante, l'Istanza del Wallet utilizza l'API di Federazione per scoprire e raccogliere tutti i Credential Issuer abilitati all'interno della federazione. Il processo di scoperta produce la Trust Chain. Quando la Trust Chain è fornita staticamente all'interno di una richiesta firmata o Credenziale, RICHIEDE solo di essere aggiornata quando la connessione internet è disponibile, mentre DEVE essere aggiornata quando la Trust Chain fornita staticamente risulta scaduta.</p>
 <figure class="align-default" id="id4">
@@ -1034,9 +994,9 @@ I meccanismi di Trust Evaluation sono distinti dai flussi di protocollo e sono i
 <p>Le Trust Evaluation sono condotte come segue:</p>
 <ul class="simple">
 <li><p><strong>Scoperta di Entità di Federazione</strong>: Quando l'Istanza del Wallet riceve una richiesta firmata emessa da un Relying Party, l'Istanza del Wallet DEVE verificare l'identità del Relying Party utilizzando il processo di Scoperta di Entità di Federazione definito in <a class="reference internal" href="#discovery-della-federazione"><span class="std std-ref">Discovery della Federazione</span></a>. Questo comporta l'interrogazione degli endpoint di federazione per confermare lo stato di validità del Relying Party e la conformità al Trust Framework e valutare la firma della richiesta utilizzando il materiale crittografico ottenuto dalla Trust Chain.</p></li>
-<li><p><strong>Trust Chain</strong>: L'Istanza del Wallet valuta le Trust Chain del Relying Party utilizzando i meccanismi definiti in <a class="reference internal" href="#trust-chain"><span class="std std-ref">Trust Chain</span></a>. Le Trust Chain possono essere fornite staticamente o costruite attraverso un processo di Scoperta di Entità di Federazione, per garantire che il Relying Party faccia parte di una federazione riconosciuta e fidata.</p></li>
-<li><p><strong>Valutazione dei Trust Mark</strong>: I Trust Mark sono valutati per garantire la conformità continua alle policy di federazione. Questi marchi indicano l'aderenza a standard e pratiche specifici richiesti dalla federazione. I Relying Party POSSONO includere Trust Mark nella loro Entity Configuration per segnalare proprietà amministrative e conformità a profili specifici, come le concessioni nell'interagire con utenti minorenni.</p></li>
-<li><p><strong>Valutazione delle Policy</strong>: L'Istanza del Wallet DEVE verificare che il Relying Party sia autorizzato a richiedere la Credenziale di interesse. Metadati, policy dei metadati e Trust Mark sono utilizzati per implementare questi controlli.</p></li>
+<li><p><strong>Trust Chain</strong>: L'Istanza del Wallet valuta le Trust Chain del Relying Party utilizzando i meccanismi definiti in <a class="reference internal" href="#trust-chain"><span class="std std-ref">Trust Chain</span></a>. Le Trust Chain possono essere fornite staticamente o costruite attraverso un processo di Scoperta di Entità di Federazione, per garantire che il Relying Party faccia parte di una federazione riconosciuta e fidata (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_079</span></a>).</p></li>
+<li><p><strong>Valutazione dei Trust Mark</strong>: I Trust Mark sono valutati per garantire la conformità continua alle policy di federazione. Questi marchi indicano l'aderenza a standard e pratiche specifici richiesti dalla federazione. I Relying Party POSSONO includere Trust Mark nella loro Entity Configuration per segnalare proprietà amministrative e conformità a profili specifici, come le concessioni nell'interagire con utenti minorenni (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_080</span></a>).</p></li>
+<li><p><strong>Valutazione delle Policy</strong>: L'Istanza del Wallet DEVE verificare che il Relying Party sia autorizzato a richiedere la Credenziale di interesse. Metadati, policy dei metadati e Trust Mark sono utilizzati per implementare questi controlli (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_087</span></a>).</p></li>
 </ul>
 <p>Nel processo raffigurato nel diagramma di sequenza sottostante, l'Istanza del Wallet utilizza l'API di Federazione per scoprire e raccogliere tutti i Relying Party abilitati all'interno della federazione. Il processo di scoperta produce la Trust Chain. Quando la Trust Chain è fornita staticamente all'interno di una richiesta firmata, deve solo essere aggiornata quando una connessione internet è disponibile, ma DEVE essere aggiornata se la Trust Chain fornita staticamente è scaduta.</p>
 <figure class="align-default" id="id5">
@@ -1062,7 +1022,7 @@ I meccanismi di Trust Evaluation sono distinti dai flussi di protocollo e sono i
 <li><p><strong>Identificazione dell'Intermediario di Relying Party</strong>: Tramite il claim <code class="docutils literal notranslate"><span class="pre">authority_hints</span></code> nell'EC del RP, l'Istanza del Wallet identifica l'Intermediario di Relying Party e ne scarica l'Entity Configuration.</p></li>
 <li><p><strong>Validazione del Trust Mark dell'Intermediario di Relying Party</strong>: L'Istanza del Wallet verifica che l'Entity Configuration dell'Intermediario di Relying Party contenga un Trust Mark valido per il ruolo di Intermediario di Relying Party, emesso dal Trust Anchor. La validità del Trust Mark DEVE essere verificata tramite l'endpoint <code class="docutils literal notranslate"><span class="pre">/trust_mark_status</span></code> del Trust Anchor.</p></li>
 <li><p><strong>Costruzione della Trust Chain tramite l'Intermediario di Relying Party</strong>: L'Istanza del Wallet costruisce la Trust Chain completa: Entity Configuration del RP → Subordinate Statement emesso dall'Intermediario di Relying Party per il RP → Subordinate Statement emesso dal Trust Anchor per l'Intermediario di Relying Party → Entity Configuration del Trust Anchor. Questa catena attesta che il RP è una Foglia riconosciuta dall'Intermediario di Relying Party e che l'Intermediario di Relying Party è a sua volta riconosciuto dal Trust Anchor.</p></li>
-<li><p><strong>Presentazione all'Utente</strong>: Una volta completata la validazione, l'Istanza del Wallet PUÒ indicare all'Utente che il Relying Party richiedente opera tramite un Intermediario di Relying Party riconosciuto, mostrando le informazioni identificative dell'Intermediario di Relying Party (ad esempio <code class="docutils literal notranslate"><span class="pre">organization_name</span></code>) ottenute dalla sua Entity Configuration.</p></li>
+<li><p><strong>Presentazione all'Utente</strong>: Una volta completata la validazione, l'Istanza del Wallet DEVE indicare all'Utente che il Relying Party richiedente opera tramite un Intermediario di Relying Party riconosciuto, mostrando le informazioni identificative dell'Intermediario di Relying Party (ad esempio <code class="docutils literal notranslate"><span class="pre">organization_name</span></code>) ottenute dalla sua Entity Configuration.</p></li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
@@ -1085,7 +1045,7 @@ I meccanismi di Trust Evaluation sono distinti dai flussi di protocollo e sono i
 <p>Anche se il Trust Anchor ha cambiato le sue chiavi crittografiche per la firma digitale, l'endpoint delle Chiavi Storiche di Federazione rende sempre disponibili le chiavi non più utilizzate per le verifiche di firma storiche.</p>
 </section>
 <section id="x-509-pki">
-<span id="trust-infrastructure-pki-x509"></span><h2><span class="section-number">6.14. </span>X.509 PKI<a class="headerlink" href="#x-509-pki" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">6.14. </span>X.509 PKI<a class="headerlink" href="#x-509-pki" title="Link to this heading">¶</a></h2>
 <p>L'Infrastruttura a Chiave Pubblica (PKI) X.509 è un framework progettato per creare, gestire, distribuire, utilizzare, archiviare e revocare certificati digitali X.509. Al centro della PKI X.509 c'è il concetto di Autorità di Certificazione (CA), che emette certificati digitali alle entità. Questi certificati sono richiesti per stabilire comunicazioni sicure su reti, incluso internet, abilitando funzionalità di crittografia e firma digitale. La gerarchia PKI tipicamente coinvolge una CA radice in cima, con una o più CA subordinate sotto, formando una catena di trust. Le entità si affidano a questa catena di trust per verificare l'autenticità dei certificati. Gli standard X.509 definiscono il formato dei certificati a chiave pubblica.</p>
 <p>L'integrazione di OpenID Federation 1.0 con la PKI tradizionale basata su X.509 (rfc:5280), completata da un'API RESTful, mira a migliorare l'infrastruttura con funzionalità aggiuntive, rendendola navigabile e trasparente.</p>
 <p>Questo approccio sfrutta la natura dinamica e flessibile di OpenID Federation insieme al requisito dei Certificati X.509 per applicazioni legacy e scopi di interoperabilità, mirando ad affrontare le esigenze in evoluzione di verifica dello stato di registrazione dei partecipanti alla federazione, la loro conformità alle regole condivise e la gestione generale e interoperabile del trust in ecosistemi digitali multilaterali.</p>
@@ -1114,22 +1074,46 @@ I partecipanti alla federazione che hanno bisogno di emettere Certificati X.509 
 <p>Le Foglie di Federazione non sono Autorità di Certificazione (CA) o intermediari CA autorizzati a emettere certificati X.509 per i loro subordinati. Invece, le Foglie di Federazione agiscono come intermediari per l'emissione di certificati esclusivamente su se stesse. Questo è realizzato applicando vincoli di denominazione appropriati per garantire che i certificati X.509 siano correttamente delimitati.
 I vincoli di denominazione sono applicati dai Superiori Immediati all'interno dei certificati emessi all'entità Foglia, specificamente riguardo alle Chiavi dell'Entità di Federazione della Foglia. Di conseguenza, la Foglia può emettere certificati X.509 solo su se stessa, mantenendo così l'integrità della Trust Chain.</p>
 <p>Quando un partecipante auto-emette un Certificato X.509, aderisce ai seguenti requisiti:</p>
-<ol class="arabic simple">
-<li><p><strong>Nome del Soggetto</strong>: Il nome del soggetto del Certificato X.509 DEVE corrispondere all'identità del partecipante. Il nome del soggetto degli Intermediari e delle Foglie DEVE includere i seguenti attributi:</p></li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Country</span> <span class="pre">Name</span> <span class="pre">(C)</span></code>: DEVE contenere il codice paese ISO a due lettere.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">State</span> <span class="pre">or</span> <span class="pre">Province</span> <span class="pre">Name</span> <span class="pre">(ST)</span></code>: DEVE contenere la regione o stato dove l'entità è localizzata.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Locality</span> <span class="pre">Name</span> <span class="pre">(L)</span></code>: DEVE contenere la città dove l'entità è localizzata.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Organization</span> <span class="pre">Name</span> <span class="pre">(O)</span></code>: DEVE contenere il nome legale dell'organizzazione.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Organizational</span> <span class="pre">Unit</span> <span class="pre">Name</span> <span class="pre">(OU)</span></code>: PUÒ contenere il nome del dipartimento all'interno dell'organizzazione (opzionale).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Common</span> <span class="pre">Name</span> <span class="pre">(CN)</span></code>: DEVE contenere il nome DNS dell'identificatore unico dell'Entità di Federazione, che è incluso nel valore sub (soggetto) nella sua Entity Configuration di federazione, rimuovendo <code class="docutils literal notranslate"><span class="pre">https://</span></code> e qualsiasi path web.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Email</span> <span class="pre">Address</span></code>: DEVE contenere l'indirizzo email di contatto dell'organizzazione.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">organizationIdentifier</span></code>: DEVE contenere il numero di registrazione che identifica univocamente l'organizzazione all'interno del servizio di registrazione, utilizzando il valore OID <code class="docutils literal notranslate"><span class="pre">2.5.4.97</span></code> come definito in <code class="docutils literal notranslate"><span class="pre">ITU-T</span> <span class="pre">X.500</span></code>.</p></li>
-</ul>
-</div></blockquote>
-<ol class="arabic simple" start="2">
+<ol class="arabic">
+<li><p><strong>Nome del Soggetto</strong>: Il nome del soggetto del Certificato X.509 DEVE corrispondere all'identità del partecipante. Il nome del soggetto degli Intermediari e delle Foglie DEVE includere i seguenti attributi:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Attributo</p></th>
+<th class="head"><p>Requisito</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Country</span> <span class="pre">Name</span> <span class="pre">(C)</span></code></p></td>
+<td><p>DEVE contenere il codice paese ISO a due lettere.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">State</span> <span class="pre">or</span> <span class="pre">Province</span> <span class="pre">Name</span> <span class="pre">(ST)</span></code></p></td>
+<td><p>DEVE contenere la regione o stato dove l'entità è localizzata.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Locality</span> <span class="pre">Name</span> <span class="pre">(L)</span></code></p></td>
+<td><p>DEVE contenere la città dove l'entità è localizzata.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Organization</span> <span class="pre">Name</span> <span class="pre">(O)</span></code></p></td>
+<td><p>DEVE contenere il nome legale dell'organizzazione.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Organizational</span> <span class="pre">Unit</span> <span class="pre">Name</span> <span class="pre">(OU)</span></code></p></td>
+<td><p>PUÒ contenere il nome del dipartimento all'interno dell'organizzazione (opzionale).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Common</span> <span class="pre">Name</span> <span class="pre">(CN)</span></code></p></td>
+<td><p>DEVE contenere il nome DNS dell'identificatore unico dell'Entità di Federazione, che è incluso nel valore <code class="docutils literal notranslate"><span class="pre">sub</span></code> (soggetto) nella sua Entity Configuration di federazione, rimuovendo <code class="docutils literal notranslate"><span class="pre">https://</span></code> e qualsiasi path web.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Email</span> <span class="pre">Address</span></code></p></td>
+<td><p>DEVE contenere l'indirizzo email di contatto dell'organizzazione.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">organizationIdentifier</span></code></p></td>
+<td><p>DEVE contenere il numero di registrazione che identifica univocamente l'organizzazione all'interno del servizio di registrazione, utilizzando il valore OID <code class="docutils literal notranslate"><span class="pre">2.5.4.97</span></code> come definito in <code class="docutils literal notranslate"><span class="pre">ITU-T</span> <span class="pre">X.500</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</li>
 <li><p><strong>Subject Alternative Name (SAN)</strong>: Il Certificato X.509 DEVE includere un <code class="docutils literal notranslate"><span class="pre">SAN</span> <span class="pre">URI</span></code> che DEVE corrispondere ai valori <strong>sub</strong> e <strong>iss</strong> della sua Entity Configuration di federazione.</p></li>
 <li><p><strong>Nome DNS</strong>: Il Certificato X.509 DEVE includere un Nome DNS nel SAN che corrisponde al nome DNS contenuto all'interno dei valori <strong>sub</strong> e <strong>iss</strong> della sua Entity Configuration, rimuovendo <code class="docutils literal notranslate"><span class="pre">https://</span></code> e qualsiasi path web.</p></li>
 <li><p><strong>Certificate Revocation List (CRL)</strong>: Se il Certificato X.509 emesso ha un tempo di scadenza superiore a 24 ore, l'Emittente X.509 DEVE pubblicare una CRL per i Certificati X.509 emessi. Questo elenco DEVE essere accessibile e regolarmente aggiornato per garantire che qualsiasi Certificato X.509 compromesso o non valido sia prontamente revocato con la motivazione della revoca, se presente.</p></li>
@@ -1347,7 +1331,7 @@ BAMCA0gAMEUCIQDFmNugWs3S/qfzwhK09S8U0qfMF+pezrJpfqkPWpWrpgIgbbeb
 <p>Utilizzando il livello sottostante stabilito con OpenID Federation 1.0, tutti i certificati X.509 sono emessi in modo propriamente decentralizzato utilizzando il pattern di delegazione.</p>
 </section>
 <section id="revoca-di-certificati-x-509">
-<span id="trust-infrastructure-revoca-dei-certificati-x509"></span><h3><span class="section-number">6.14.3. </span>Revoca di Certificati X.509<a class="headerlink" href="#revoca-di-certificati-x-509" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">6.14.3. </span>Revoca di Certificati X.509<a class="headerlink" href="#revoca-di-certificati-x-509" title="Link to this heading">¶</a></h3>
 <p>Un Certificato X.509 può essere revocato dal suo Emittente.
 Le liste di revoca, e/o qualsiasi altro meccanismo di controllo della revoca, sono particolarmente richieste per i Certificati X.509 con un tempo di scadenza superiore a 24 ore; altrimenti, non sono richieste.</p>
 <p>Quando l'emittente del Certificato X.509 è la Foglia e quindi il Certificato X.509 si riferisce a se stesso, se il tempo di scadenza del certificato è superiore a 24 ore dal tempo <code class="docutils literal notranslate"><span class="pre">X509_NOT_VALID_BEFORE</span></code>, DEVE implementare una CRL relativa al certificato emesso e mantenerla aggiornata.
@@ -1373,6 +1357,46 @@ Signature:
     5c:4f:3b:...
 </pre></div>
 </div>
+</section>
+<section id="federation-subordinate-events-endpoint">
+<h3><span class="section-number">6.14.4. </span>Federation Subordinate Events Endpoint<a class="headerlink" href="#federation-subordinate-events-endpoint" title="Link to this heading">¶</a></h3>
+<p>L'Endpoint Eventi Subordinati della Federazione è definito in <a class="reference external" href="https://openid.net/specs/openid-federation-subordinate-events-1_0.html">OID-FED-SUBORDINATE-EVENTS</a>. Questo endpoint fornisce un meccanismo per Trust Anchor e Intermediari per pubblicare eventi storici relativi ai loro Subordinati Immediati. Fornisce trasparenza e responsabilità all'interno della federazione fornendo un record storico completo di eventi significativi che influenzano i partecipanti della federazione.</p>
+<p>Per i dettagli completi della specifica, inclusi la posizione dell'endpoint, il formato della richiesta, il formato della risposta, i claim JWT, i parametri degli oggetti evento e i tipi di evento supportati, fare riferimento a <a class="reference external" href="https://openid.net/specs/openid-federation-subordinate-events-1_0.html">OID-FED-SUBORDINATE-EVENTS</a>.</p>
+<p>Di seguito è riportato un esempio non normativo di una richiesta e risposta dell'Endpoint Eventi Subordinati della Federazione:</p>
+<p><strong>Esempio di Richiesta</strong>:</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/federation_subordinate_events_endpoint?sub=https%3A%2F%2Frp%2Eexample%2Eorg</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">immediate-superior.example.org</span>
+</pre></div>
+</div>
+<p><strong>Esempio di Risposta</strong>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://immediate-superior.example.org&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://rp.example.org&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1590000000</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;federation_registration_events&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1590000000</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;registration&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1590000000</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jwks_update&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1600000000</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;revocation&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;event_description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;compromised node&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1610000000</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;registration&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Integrazione con la Gestione del Ciclo di Vita delle Entità</strong>:</p>
+<p>Questo endpoint completa le procedure di gestione del ciclo di vita delle entità definite in <a class="reference internal" href="entity-onboarding.html#onboarding-delle-entita"><span class="std std-ref">Onboarding delle Entità</span></a> fornendo un tracciamento dettagliato di tutti gli eventi significativi che influenzano i partecipanti della federazione. Supporta sia il monitoraggio automatizzato della conformità che i processi di audit manuale.</p>
 </section>
 </section>
 <section id="osservazioni-sulla-privacy">
@@ -1417,10 +1441,7 @@ Signature:
 <li><a class="reference internal" href="#integrazione-dell-infrastruttura-di-trust-e-del-registro">6.2. Integrazione dell'Infrastruttura di Trust e del Registro</a></li>
 <li><a class="reference internal" href="#proprieta-generali">6.3. Proprietà Generali</a></li>
 <li><a class="reference internal" href="#requisiti-dell-infrastruttura-di-trust">6.4. Requisiti dell'Infrastruttura di Trust</a></li>
-<li><a class="reference internal" href="#endpoint-api-di-federazione">6.5. Endpoint API di Federazione</a><ul>
-<li><a class="reference internal" href="#federation-subordinate-events-endpoint">6.5.1. Federation Subordinate Events Endpoint</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#endpoint-api-di-federazione">6.5. Endpoint API di Federazione</a></li>
 <li><a class="reference internal" href="#configurazione-della-federazione">6.6. Configurazione della Federazione</a></li>
 <li><a class="reference internal" href="#entity-configuration">6.7. Entity Configuration</a><ul>
 <li><a class="reference internal" href="#parametri-comuni-delle-entity-configuration">6.7.1. Parametri Comuni delle Entity Configuration</a></li>
@@ -1459,6 +1480,7 @@ Signature:
 <li><a class="reference internal" href="#trust-anchor-di-federazione-e-ca-x-509">6.14.1. Trust Anchor di Federazione e CA X.509</a></li>
 <li><a class="reference internal" href="#emissione-di-certificati-x-509">6.14.2. Emissione di Certificati X.509</a></li>
 <li><a class="reference internal" href="#revoca-di-certificati-x-509">6.14.3. Revoca di Certificati X.509</a></li>
+<li><a class="reference internal" href="#federation-subordinate-events-endpoint">6.14.4. Federation Subordinate Events Endpoint</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#osservazioni-sulla-privacy">6.15. Osservazioni sulla Privacy</a></li>
@@ -1492,7 +1514,7 @@ Signature:
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 22/06/2026.
+      Ultimo aggiornamento 25/06/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

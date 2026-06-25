@@ -175,7 +175,7 @@
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>I test relativi all'uso degli endpoint del Wallet Provider sono definiti in
-<a class="reference internal" href="test-plans-wallet-provider.html#wallet-provider-test-matrix"><span class="std std-ref">Matrice di Test per Wallet Provider</span></a>, in particolare in
+<a class="reference internal" href="test-plans-wallet-provider.html#matrice-di-test-per-wallet-provider"><span class="std std-ref">Matrice di Test per Wallet Provider</span></a>, in particolare in
 <a class="reference internal" href="test-plans-wallet-provider.html#wallet-provider-backend-testcases"><span class="std std-ref">Casi di Test per Backend del Fornitore del Wallet</span></a>,
 <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">Casi di Test per Istanza del Wallet</span></a> e
 <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">Casi di Test Opzionali per Istanza del Wallet</span></a>.</p>
@@ -383,7 +383,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>alg</strong></p></td>
-<td><p>Identificatore dell'algoritmo di firma digitale, come definito nel registro IANA &quot;JSON Web Signature and Encryption Algorithms&quot;. DEVE essere uno degli algoritmi supportati elencati in <a class="reference internal" href="algorithms.html#algorithms-cryptographic-algorithms"><span class="std std-ref">Algoritmi Crittografici</span></a> e non DEVE essere impostato su <code class="docutils literal notranslate"><span class="pre">none</span></code> né su alcun identificatore di algoritmo simmetrico (MAC).</p></td>
+<td><p>Identificatore dell'algoritmo di firma digitale, come definito nel registro IANA &quot;JSON Web Signature and Encryption Algorithms&quot;. DEVE essere uno degli algoritmi supportati elencati in <a class="reference internal" href="algorithms.html#algoritmi-crittografici"><span class="std std-ref">Algoritmi Crittografici</span></a> e non DEVE essere impostato su <code class="docutils literal notranslate"><span class="pre">none</span></code> né su alcun identificatore di algoritmo simmetrico (MAC).</p></td>
 <td><p>[<span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>]</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>kid</strong></p></td>
@@ -469,8 +469,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 <span class="w">  </span><span class="nt">&quot;nonce&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f3b29a81-45c7-4d12-b8b5-e1f6c9327aef&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;hardware_signature&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;KoZIhvcNAQcCoIAwgAIB...&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;integrity_assertion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;o2NmbXRvYXBwbGUtYXBwYXNzZXJ0aW9uLXBheWxvYWQtYXBw...&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;attested_key&quot;</span><span class="p">:</span><span class="w"> </span><span class="nt">&quot;o2CFbXRvYXBwbGUtYXBwYXNzTYU0aW9uLXBheWxvYWQtZvRM...&quot;</span>
-<span class="w">  </span><span class="nt">&quot;hardware_key_tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="nt">&quot;QW12DylRTmF89iGkpydNDWW7m8bVpa2Fn9KBeXGYtfX&quot;</span>
+<span class="w">  </span><span class="nt">&quot;hardware_key_tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;QW12DylRTmF89iGkpydNDWW7m8bVpa2Fn9KBeXGYtfX&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;cnf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;jwk&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;crv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
@@ -577,7 +576,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 <td><p><code class="docutils literal notranslate"><span class="pre">not_found</span></code></p></td>
 <td><p>L'istanza del Wallet non è stata trovata.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">422</span> <span class="pre">Unprocessable</span> <span class="pre">Content</span></code> [OPTIONAL]</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">422</span> <span class="pre">Unprocessable</span> <span class="pre">Content</span></code> [OPZIONALE]</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">validation_error</span></code></p></td>
 <td><p>La richiesta non rispetta il formato richiesto.</p></td>
 </tr>
@@ -677,7 +676,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 <td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>eudi_wallet_info</strong></p></td>
-<td><p>OPTIONAL. Oggetto JSON contenente le informazioni generali sul Wallet e sul Wallet Provider. Il seguente parametro DEVE essere incluso:</p>
+<td><p>OPZIONALE. Oggetto JSON contenente le informazioni generali sul Wallet e sul Wallet Provider. Il seguente parametro DEVE essere incluso:</p>
 <ul class="simple">
 <li><p><strong>general_info</strong>: OBBLIGATORIO. Un oggetto che contiene i seguenti parametri:</p>
 <ul>
@@ -1040,7 +1039,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 <td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>eudi_wallet_info</strong></p></td>
-<td><p>OPZIONALE. Oggetto JSON contenente le informazioni generali sul Wallet e sul Wallet Provider. Il seguente parametro DEVE essere incluso:</p>
+<td><p>OPZIONALE. Oggetto JSON contenente le informazioni generali sul Wallet e sul Wallet Provider. I seguenti parametri DEVONO essere inclusi:</p>
 <ul class="simple">
 <li><p><strong>general_info</strong>: OBBLIGATORIO. Un oggetto che contiene i seguenti parametri:</p>
 <ul>
@@ -1048,6 +1047,13 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 <li><p><strong>wallet_solution_id</strong>: OBBLIGATORIO. Valore stringa dell'identificatore della Wallet Solution come riportato nella lista fidata dei Wallet Provider.</p></li>
 <li><p><strong>wallet_solution_version</strong>: OBBLIGATORIO. Valore stringa della versione della Wallet Solution.</p></li>
 <li><p><strong>wallet_solution_certification_information</strong>: OBBLIGATORIO. Valore stringa che contiene un URL che rimanda alla certificazione della Wallet Solution.</p></li>
+</ul>
+</li>
+<li><p><strong>key_storage_info</strong>: OBBLIGATORIO. Un oggetto che contiene i seguenti parametri:</p>
+<ul>
+<li><p><strong>storage_type</strong>: OBBLIGATORIO. Valore stringa che identifica l'implementazione tecnica del WSCD. Può assumere uno dei seguenti valori: <code class="docutils literal notranslate"><span class="pre">REMOTE</span></code>, <code class="docutils literal notranslate"><span class="pre">LOCAL_EXTERNAL</span></code>, <code class="docutils literal notranslate"><span class="pre">LOCAL_INTERNAL</span></code>, <code class="docutils literal notranslate"><span class="pre">LOCAL_NATIVE</span></code> o <code class="docutils literal notranslate"><span class="pre">HYBRID</span></code>.</p></li>
+<li><p><strong>keys_exportable</strong>: OBBLIGATORIO. Valore booleano che definisce se le chiavi private del WSCD o del keystore possono essere esportate. DEVE essere impostato a <code class="docutils literal notranslate"><span class="pre">true</span></code> se il WSCD consente l'esportazione delle chiavi private (anche se solo in formato cifrato) e <code class="docutils literal notranslate"><span class="pre">false</span></code> altrimenti.</p></li>
+<li><p><strong>storage_certification_information</strong>: OBBLIGATORIO. Stringa che contiene un URL che rimanda alla certificazione del componente di archiviazione delle chiavi.</p></li>
 </ul>
 </li>
 </ul>
@@ -1218,7 +1224,7 @@ Un Fornitore di Attestati Elettronici di Dati di Identificazione Personale che �
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 22/06/2026.
+      Ultimo aggiornamento 25/06/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
