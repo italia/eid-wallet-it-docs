@@ -18,6 +18,18 @@
       --brand-blue: #0072CE;
     }
 
+    .qr-code-link {
+      display: inline-block;
+      text-decoration: none;
+      line-height: 0;
+    }
+
+    .qr-code-link:focus-visible {
+      outline: 2px solid #0066CC;
+      outline-offset: 4px;
+      border-radius: 0.25rem;
+    }
+
     .qr-code {
       display: block;
       margin: auto;
@@ -155,16 +167,18 @@
 
       <div id="content-qrcode" class="d-flex justify-content-center mb-4">
         <div id="content-qrcode-payload">
-          <qr-code
-            contents=""
-            module-color="#000000"
-            position-ring-color="#000000"
-            position-center-color="#000000"
-            class="qr-code"
-            aria-label="Codice QR per l'autenticazione con IT-Wallet"
-          >
-            <img class="icon-qr-code" src="../shared-ui/img/IT-Wallet-Logo-Primary-BlueItalia.svg" slot="icon" alt="" />
-          </qr-code>
+          <a id="qr-code-link" class="qr-code-link" href=""
+            aria-label="Codice QR per l'autenticazione con IT-Wallet">
+            <qr-code
+              contents=""
+              module-color="#000000"
+              position-ring-color="#000000"
+              position-center-color="#000000"
+              class="qr-code"
+            >
+              <img class="icon-qr-code" src="../shared-ui/img/IT-Wallet-Logo-Primary-BlueItalia.svg" slot="icon" alt="" />
+            </qr-code>
+          </a>
         </div>
       </div>
 
