@@ -1,4 +1,5 @@
 .. include:: ../common/common_definitions.rst
+.. Included via credential-issuer-solution.rst at title level '-' (level 1).
 
 
 Credential Issuer Entity Configuration
@@ -36,4 +37,5 @@ Below is a non-normative example of an Entity Configuration of a (Q)EAA Provider
 
 .. literalinclude:: ../../examples/ec-eaa.json
   :language: JSON
+
 
