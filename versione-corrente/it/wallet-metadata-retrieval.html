@@ -174,7 +174,7 @@ A tal fine, le terze parti che offrono il Credential Offer (ad esempio, Authenti
 <p>In primo luogo, con l'Immediate Subordinate Listing endpoint ottengono la lista di tutti i subordinati del Trust Anchor identificati dal loro <code class="docutils literal notranslate"><span class="pre">entity_id</span></code>. Per ottenere solo l'<code class="docutils literal notranslate"><span class="pre">entity_id</span></code> relativi ai Wallet Provider, è POSSIBILE utilizzare il parametro di query <code class="docutils literal notranslate"><span class="pre">entity_type</span></code> con valore  <code class="docutils literal notranslate"><span class="pre">wallet_solution</span></code>.
 Se il Trust Anchor non supporta questa funzione, DEVE utilizzare il codice di stato HTTP 400 e il Content Type  <code class="docutils literal notranslate"><span class="pre">application/json</span></code>, con il codice di errore <code class="docutils literal notranslate"><span class="pre">unsupported_parameter</span></code>.</p>
 <p>Quindi, dato l'<code class="docutils literal notranslate"><span class="pre">entity_id</span></code>, per ciascun Wallet Provider recuperano la corrispondente configurazione utilizzando l'endpoint dei metadati della federazione (GET .well-known/openid-federation)
-e ottengono i metadati della Wallet Solution (vedere <a class="reference internal" href="wallet-solution-metadata.html#wallet-solution-metadata-metadati-della-soluzione-wallet"><span class="std std-ref">Metadati della Soluzione Wallet</span></a>). Maggiori dettagli sull'uso degli endpoint del Trust Anchor sono forniti in <a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>.</p>
+e ottengono i metadati della Wallet Solution (vedere <a class="reference internal" href="wallet-solution-metadata.html#metadati-della-soluzione-wallet"><span class="std std-ref">Metadati della Soluzione Wallet</span></a>). Maggiori dettagli sull'uso degli endpoint del Trust Anchor sono forniti in <a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>.</p>
 <p>All'interno dei metadati, le terze parti che supportano il Credential Offer e le Relying Party recuperano le informazioni necessarie per la Selection Page, ovvero il logo e il nome completo delle Soluzioni Wallet.
 Maggiori dettagli sulla progettazione della Selection Page sono disponibili in <a class="reference internal" href="functionalities.html#design-dell-esperienza-utente"><span class="std std-ref">Design dell'Esperienza Utente</span></a>.</p>
 </section>
@@ -207,7 +207,7 @@ Maggiori dettagli sulla progettazione della Selection Page sono disponibili in <
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 24/06/2026.
+      Ultimo aggiornamento 25/06/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

@@ -1,5 +1,6 @@
 .. include:: ../common/common_definitions.rst
 
+
 Relying Party Metadata
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -36,4 +37,5 @@ The *openid_credential_verifier* metadata MUST contain the *client_metadata*, as
 
 .. note::
   The parameters **response_uris** and **erasure_endpoint** are introduced in this specification.
+
 

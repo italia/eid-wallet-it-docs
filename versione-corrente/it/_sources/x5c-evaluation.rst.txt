@@ -1,12 +1,15 @@
+.. include:: ../common/common_definitions.rst
+
+
 Operazioni di Gestione dei Certificati X.509
-=============================================
+============================================
 
 Questa sezione definisce le procedure operative per la gestione dei Certificati X.509 all'interno della federazione IT-Wallet, coprendo l'analisi delle catene di Certificati X.509, le procedure di validazione e la verifica di revoca. Queste procedure completano i processi di onboarding della federazione e supportano la gestione continua del ciclo di vita dei Certificati X.509 per tutti i partecipanti.
 
 Per l'infrastruttura PKI X.509 fondamentale e le procedure di emissione dei certificati, vedere :ref:`trust-infrastructure:X.509 PKI`.
 
 Architettura PKI della Federazione
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 La federazione IT-Wallet opera con un'infrastruttura a chiave pubblica gerarchica dove:
 
@@ -19,19 +22,19 @@ Ogni entità federata DEVE esporre il proprio Certificato X.509 dell'Entità Fed
 	1. Auto-emissione di Certificati X.509 del Protocollo per operazioni crittografiche interne (capacità sub-CA limitata).
 	2. Agire come Chiave dell'Entità Federata per la firma delle Dichiarazioni dell'Entità.
 
-.. note:: 
+.. note::
   Le Foglie della Federazione possono SOLO emettere Certificati X.509 su se stesse e per scopi specifici dell'applicazione. Le Foglie della Federazione NON DEVONO emettere Certificati X.509 per altre entità federate, come limitato dalle loro Autorità Federali utilizzando l'estensione X.509 Name Constraints.
 
 Per i Certificati X.509 specifici del protocollo, con periodi di validità superiori a 24 ore, l'entità emittente DEVE pubblicare e aggiornare regolarmente una Lista di Revoca dei Certificati X.509 (CRL) su un endpoint pubblicamente accessibile.
 
 Struttura e Analisi della Catena di Certificati X.509
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Le entità federate ricevono catene di Certificati X.509 durante il processo di onboarding. Le entità federate DEVONO validare queste catene su se stesse.
 
 
 Visualizzazione della Catena di Certificati X.509
-"""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""
 
 Il seguente script consente alle entità federate di:
 
@@ -67,12 +70,12 @@ Le entità federate DOVREBBERO verificare:
 		- Certificati X.509 del Protocollo: ``CA:FALSE`` (non può emettere certificati).
 
 Gestione della Revoca dei Certificati X.509
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Le entità federate DEVONO implementare la verifica di revoca dei Certificati X.509 per garantire la validazione continua della fiducia e la conformità con i requisiti di sicurezza della federazione.
 
 Distribuzione e Accesso CRL
-""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""
 
 Le autorità federali pubblicano Liste di Revoca dei Certificati X.509 (CRL) su endpoint pubblicamente accessibili. Le entità federate DEVONO essere in grado di accedere e processare queste distribuzioni CRL per la verifica di revoca.
 
@@ -104,10 +107,10 @@ Di seguito è fornito un esempio non normativo di script bash per la verifica de
 
 
 Migliori Pratiche per la Gestione dei Certificati X.509
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Integrazione della Validazione dei Certificati X.509
-"""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Le entità federate DOVREBBERO integrare le procedure di validazione dei Certificati X.509 nelle loro operazioni standard della federazione:
 
@@ -118,7 +121,7 @@ Le entità federate DOVREBBERO integrare le procedure di validazione dei Certifi
 	5. **Validazione Periodica**: Implementare programmi regolari di validazione dei Certificati X.509 e CRL.
 
 Diagnostica e Risoluzione dei Problemi
-"""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""
 
 Le entità federate DEVONO implementare procedure diagnostiche per identificare e risolvere problemi relativi ai Certificati X.509:
 
@@ -156,12 +159,12 @@ Le entità federate DEVONO coordinare la gestione dei Certificati X.509 con le p
 
 
 Procedure di Rotazione delle Chiavi
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Le entità federate DEVONO implementare meccanismi di rotazione delle chiavi per mantenere la postura di sicurezza e rispondere agli eventi di sicurezza. Questa sezione definisce le procedure operative per rilevare e rispondere alle rotazioni delle chiavi superiori e per il rinnovo delle chiavi subordinate.
 
 Rotazione delle Chiavi Superiori
-"""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""
 
 Le entità subordinate DEVONO eseguire la verifica periodica della propria Trust Chain per rilevare le rotazioni delle chiavi superiori e garantire la continuità dell'appartenenza alla federazione.
 
@@ -207,7 +210,7 @@ Quando esistono più certificati X.509 per la stessa chiave pubblica subordinata
   Un'entità superiore non può avviare autonomamente un processo di rotazione delle Chiavi Subordinate. Il meccanismo di rotazione delle Chiavi Subordinate è sempre avviato dall'entità Subordinata, vedi Sezione :ref:`x5c-evaluation:Rotazione delle Chiavi Subordinate`.
 
 Rotazione delle Chiavi Subordinate
-"""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""
 
 I Subordinati ruotano le proprie Chiavi dell'Entità Federata inviando Certificate Signing Request al proprio superiore immediato seguendo la stessa procedura dell'onboarding iniziale.
 
@@ -233,7 +236,7 @@ Questa sezione fornisce le procedure di implementazione tecnica per la gestione 
 Mentre l'aggiornamento dei dati amministrativi DEVE seguire processi di governance che sono fuori dall'ambito di questa specifica tecnica, gli aggiornamenti della configurazione tecnica sono descritti nelle seguenti sezioni.
 
 Aggiornamenti della Configurazione Tecnica
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Gli aggiornamenti tecnici che influenzano le operazioni del protocollo della federazione DEVONO seguire procedure specifiche per:
 
@@ -260,7 +263,6 @@ Gli aggiornamenti tecnici che influenzano le operazioni del protocollo della fed
     - **Aggiornamenti delle Capacità**: L'Entità PUÒ modificare i protocolli supportati, gli algoritmi o le capacità di servizio entro i vincoli definiti da questo profilo di implementazione IT-Wallet.
 
 
-
 Tutti gli aggiornamenti tecnici DEVONO essere validati attraverso:
 
   1. **Validazione della Configurazione dell'Entità**: L'Entità DEVE verificare la struttura e il contenuto della EC aggiornata.
@@ -269,12 +271,12 @@ Tutti gli aggiornamenti tecnici DEVONO essere validati attraverso:
   4. **Test di Integrazione**: L'Entità DOVREBBE testare le operazioni del protocollo della federazione con la configurazione aggiornata.
 
 Procedure Tecniche di Uscita dalla Federazione
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Per il contesto aziendale sui processi di uscita dalla federazione, vedere :ref:`onboarding-high-level:Processi di Uscita e Rimozione dalla Federazione`. Questa sezione copre le procedure di implementazione tecnica.
 
 Uscita Volontaria - Disattivazione Tecnica
-""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""
 
   1. **Richiesta di Revoca del Certificato X.509**: L'Entità DEVE inviare una richiesta di revoca del Certificato X.509 all'Autorità Federata con il motivo della revoca. La richiesta DEVE essere firmata con la Chiave Privata dell'Entità Federata corrispondente al Certificato X.509 che viene revocato per dimostrare la legittimità della richiesta di revoca.
   2. **Verifica dell'Aggiornamento CRL**: L'Autorità Federata DEVE revocare il Certificato X.509 dell'Entità e l'Entità DEVE verificare che appaiano nella Lista di Revoca dei Certificati X.509 aggiornata.
@@ -284,7 +286,7 @@ Uscita Volontaria - Disattivazione Tecnica
      a. Rimuovere completamente la Configurazione dell'Entità dall'endpoint ``/.well-known/openid-federation`` (restituendo HTTP 404), OPPURE
      b. Mantenere la Configurazione dell'Entità come scaduta (con la claim ``exp`` nel passato). Pertanto NON DEVE aggiornarla con timestamp freschi.
 
-  5. **Aggiornamento dello Stato del Registro**: L'Entità DOVREBBE verificare la rimozione dal Registro della Federazione, verificando anche lo stato del Trust Mark utilizzando l'endpoint dello Stato del Trust Mark. 
+  5. **Aggiornamento dello Stato del Registro**: L'Entità DOVREBBE verificare la rimozione dal Registro della Federazione, verificando anche lo stato del Trust Mark utilizzando l'endpoint dello Stato del Trust Mark.
 
 Esempio non normativo di richiesta di revoca del Certificato X.509 seguendo il formato :rfc:`3280`:
 
@@ -320,7 +322,7 @@ Esempio CRR in formato DER (codificato Base64):
    -----END CERTIFICATE REVOCATION REQUEST-----
 
 Rimozione da Parte dell'Organo di Supervisione - Implementazione Tecnica
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
   1. **Revoca di Emergenza del Certificato X.509**: L'Autorità Federata DEVE revocare immediatamente il Certificato X.509 con il codice di motivo appropriato (ad es., "Key Compromise", "Cessation of Operation").
   2. **Aggiornamento di Emergenza CRL**: Il Trust Anchor DEVE pubblicare la CRL aggiornata entro il tempo di emergenza.
@@ -336,7 +338,7 @@ Esempio di verifica di revoca di emergenza:
    # Controlla l'aggiornamento di emergenza CRL
    curl -o emergency.crl https://trust-anchor.eid-wallet.example.it/pki/ta-sub.crl
    openssl crl -in emergency.crl -text -noout | grep "Last Update"
-   
+
    # Verifica che la risoluzione della Catena di Fiducia fallisca
    curl "https://trust-anchor.eid-wallet.example.it/resolve?sub=https%3A//suspended-entity.example.it&trust_anchor=https%3A//trust-registry.eid-wallet.example.it"
    # Previsto: HTTP 404 o risposta di errore specifica
@@ -350,7 +352,7 @@ Componenti tecnici specifici POSSONO essere modificati mantenendo l'appartenenza
    {
      "iss": "https://ci.example.it",
      "sub": "https://ci.example.it",
-     "jwks": { 
+     "jwks": {
        // contenuto jwks
      },
      "metadata": {
@@ -376,3 +378,5 @@ Le entità che escono dalla federazione DEVONO mantenere quanto segue per la con
 1. **Configurazione Storica dell'Entità**: L'Entità DEVE mantenere l'accessibilità dell'endpoint ``/.well-known/openid-federation`` per scopi di audit.
 2. **Archivio della Catena di Certificati X.509**: L'Entità DEVE mantenere le catene di Certificati X.509 accessibili per la verifica delle Credenziali esistenti (minimo 7 anni).
 3. **Conservazione dei Log di Audit**: L'Entità DEVE archiviare i log del protocollo della federazione per i requisiti normativi.
+
+

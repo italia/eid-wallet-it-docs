@@ -2,12 +2,12 @@
 
 
 Sistema di Onboarding
-============================
+=====================
 
 Il sistema di onboarding registra le entità operative (PID Provider, Attestation Provider, Relying Party, Fornitori di Wallet e Fonti Autentiche) affinché possano partecipare all'ecosistema IT-Wallet con autorizzazioni e relazioni di trust chiaramente definite.
 
 Architettura del Sistema di Onboarding
----------------------------------------
+--------------------------------------
 
 Il servizio di onboarding DEVE fornire processi di onboarding specializzati che corrispondano alle caratteristiche operative e agli obblighi normativi dei diversi tipi di partecipanti.
 
@@ -41,13 +41,15 @@ Tutti gli Attori Primari DEVONO sottoporsi alla registrazione amministrativa per
     4. **Registrazione dell'Istanza del Wallet**: Le Istanze del Wallet sono registrate indirettamente attraverso i Fornitori di Wallet, stabilendo le specifiche di gestione delle Credenziali a livello utente. I dettagli tecnici sono forniti in :ref:`wallet-instance-registration:Inizializzazione e Registrazione dell'Istanza del Wallet`.
 
 Processo di Registrazione della Fonte Autentica
-------------------------------------------------
+-----------------------------------------------
 
 La registrazione della Fonte Autentica consente ai fornitori di dati di stabilire il loro ruolo autorevole nell'ecosistema degli Attestati Elettronici attraverso la registrazione delle loro specifiche di fornire dati e meccanismi di accesso standardizzati basati sul Registro degli Attributi dell'Utente e sulle classificazioni della Tassonomia.
 
 Le Fonti Autentiche DEVONO sottoporsi a procedure di registrazione che convalidano la loro autorità sui dati, dichiarano i loro Attributi dell'Utente disponibili dal Registro degli Attributi dell'Utente standardizzato e stabiliscono meccanismi di integrazione tecnica. Le Fonti Autentiche specificano casi d'uso previsti (formalmente ``purposes``) che determinano l'eleggibilità del catalogo secondo le politiche dell'Organismo di Supervisione.
 
 Le Fonti Autentiche Pubbliche e Private DEVONO sfruttare l'integrazione PDND per fornire dati governativi attraverso l'infrastruttura nazionale standardizzata.
+
+Questo percorso DEVE assicurare gli standard di qualità dei dati e stabilire audit trail per tutte le attività di fornitura dei dati.
 
 **Processo di Coordinamento AS-CI**: Dopo la registrazione AS, i Credential Issuer identificano entità AS adatte attraverso il Registro AS e richiedono autorizzazione all'integrazione durante la fase di registrazione amministrativa. Per i mandati normativi, l'autorizzazione DEVE essere automatica. Altrimenti, le entità Fonti Autentiche valutano e autorizzano le richieste dei Credential Issuer basate su criteri commerciali e tecnici. Dopo l'autorizzazione amministrativa, le procedure di integrazione tecnica stabiliscono le relazioni operative di accesso ai dati prima della pubblicazione del catalogo dei tipi di Credenziali.
 
@@ -57,7 +59,7 @@ Le procedure di implementazione tecnica per la registrazione della Fonte Autenti
 
 
 Processo di Onboarding della Federazione
------------------------------------------
+----------------------------------------
 
 L'onboarding della federazione, inclusi i processi di registrazione amministrativa e tecnica, stabilisce le relazioni di trust crittografiche e le verifiche di conformità che consentono a tutte le entità (PID Provider, Attestation Provider, Relying Party, Fornitori di Wallet e Fonti Autentiche) di partecipare ad attività sicure del ciclo di vita delle Credenziali.
 Le entità operative DEVONO completare l'onboarding che include la verifica dell'eleggibilità amministrativa e la validazione tecnica. Per i Fornitori di Wallet, questo include la valutazione di conformità della Soluzione Wallet e i successivi flussi di notifica nelle Trusted Lists.
@@ -68,11 +70,8 @@ Per PID Provider, Attestation Provider e Relying Party, il processo di onboardin
  - **Emissione dei Certificati**: Emissione di certificati che autenticano le entità, fanno riferimento al registro per la verifica dei diritti, supportano la Certificate Transparency e descrivono lo stato di registrazione per Relying Party e Credential Issuer.
  - **Pubblicazione del Registro**: Pubblicazione di tutte le entità registrate nel registro, con un'API online (vedi :ref:`trust-infrastructure:Integrazione dell'Infrastruttura di Trust e del Registro`) che può essere utilizzata per verificare la registrazione delle entità e gli attributi richiesti.
 
-.. note::
-  I **PID Provider**, i **PuB-EAA Provider** e i **Wallet Provider** sono registrati attraverso il sistema di onboarding dell'IT-Wallet e successivamente notificati alla Commissione Europea per l'inclusione nelle Trusted Lists. I Wallet Provider non ricevono certificati di accesso o certificati di registrazione dai Registrar nazionali. La Soluzione Wallet fornita dal Wallet Provider deve essere certificata da Organismi di Valutazione della Conformità (CAB) secondo il quadro nazionale di valutazione della conformità.
-
 Onboarding degli Intermediari di Relying Party
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Gli :term:`Intermediari di Relying Party <Intermediario di Relying Party>` seguono un processo di onboarding dedicato che conferisce lo status di Intermediario riconosciuto e l'autorità di effettuare l'onboarding delle Relying Party subordinate. Nel profilo implementativo descritto dalle presenti specifiche tecniche, un Intermediario di Relying Party corrisponde a un Intermediario di Federazione (vedi la definizione di **Intermediario IT-Wallet**). Il processo comprende:
 
@@ -84,12 +83,12 @@ Gli :term:`Intermediari di Relying Party <Intermediario di Relying Party>` seguo
 L'Entity Configuration della RP affiliata DEVE includere il Trust Mark emesso dall'Intermediario e DEVE impostare ``authority_hints`` utilizzando l'identificativo URL dell'Intermediario.
 
 Gestione del Ciclo di Vita delle Entità
-----------------------------------------
+---------------------------------------
 
 Dopo l'onboarding riuscito, le entità richiedono una gestione continua del ciclo di vita per mantenere lo stato operativo e la conformità all'interno dell'ecosistema IT-Wallet. La gestione del ciclo di vita comprende aggiornamenti amministrativi, modifiche tecniche e processi di uscita dalla federazione che soddisfano i requisiti organizzativi e operativi in evoluzione.
 
 Gestione delle Operazioni Continuative
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Le entità DEVONO mantenere informazioni amministrative e tecniche aggiornate per assicurare la partecipazione alla federazione e la conformità.
 
@@ -116,7 +115,7 @@ Gli aggiornamenti tecnici che influenzano le operazioni del protocollo di federa
 Gli aggiornamenti tecnici DEVONO essere validati dall'Organismo di Supervisione per mantenere le relazioni di trust della federazione e l'integrità operativa.
 
 Processi di Uscita e Rimozione dalla Federazione
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Le entità POSSONO uscire dalla federazione volontariamente o essere rimosse dall'Organismo di Supervisione per ragioni di conformità o sicurezza.
 
@@ -142,7 +141,7 @@ I processi di rimozione POSSONO includere indagini, rimedi e procedure di appell
     Per incidenti di sicurezza critici o minacce immediate all'integrità della federazione, l'Organismo di Supervisione PUÒ implementare la sospensione di emergenza con effetto immediato.
 
 Requisiti di Coordinamento del Ciclo di Vita
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 La gestione del ciclo di vita nell'ecosistema IT-Wallet necessita di coordinamento tra più partecipanti per mantenere le operazioni funzionanti e mantenere le relazioni di trust. Il framework di coordinamento copre tre aree principali:
 
@@ -153,7 +152,7 @@ La gestione del ciclo di vita nell'ecosistema IT-Wallet necessita di coordinamen
 Le procedure tecniche e i requisiti di conformità specifici per la gestione del ciclo di vita sono dettagliati nella Sezione :ref:`entity-onboarding:Onboarding delle Entità`.
 
 Onboarding Journey Maps
-------------------------
+-----------------------
 
 Le seguenti mappe dei Journey forniscono una vista dettagliata dell'esperienza di onboarding dalla prospettiva di ogni tipo di entità e dei loro operatori. Queste rappresentazioni grafiche aiutano le organizzazioni a comprendere i passaggi specifici, i requisiti e le interazioni che incontreranno durante il loro processo di onboarding.
 
@@ -183,7 +182,7 @@ Le seguenti mappe dei Journey illustrano due scenari di Credenziali distinti:
     - **Scenario Credenziale Privata**: Badge Dipendente Aziendale dall'Azienda (FA Privata, resa disponibile per la discovery tramite Catalogo delle Credenziali ma ottenibile solo tramite Offerta di Credenziale).
 
 Journey dell'Operatore della Fonte Autentica
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Dalla prospettiva dell'operatore della Fonte Autentica, il processo di onboarding inizia con la valutazione delle capacità di fornire dati esistenti rispetto al Registro degli Attributi dell'Utente standardizzato e alle classificazioni della Tassonomia, determinando quali Attributi dell'Utente possono essere resi disponibili come Attestato Elettronico. L'operatore invia una richiesta di registrazione all'Organismo di Supervisione, dichiarando Attributi dell'Utente specifici dal Registro degli Attributi dell'Utente con i domini della Tassonomia e gli scopi previsti.
 
@@ -210,7 +209,7 @@ Le fasi critiche includono la verifica amministrativa da parte dell'Organismo di
     **Dipendenza importante**: Gli Attributi dell'Utente dichiarati nel Registro AS rimangono non disponibili agli utenti finali fino a quando un Credential Issuer completa la registrazione, l'approvazione dell'integrazione e l'implementazione tecnica. La pubblicazione del catalogo dipende dalle politiche dell'Organismo di Supervisione per l'eleggibilità alla discovery pubblica.
 
 Journey dell'Operatore del Credential Issuer
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Gli operatori del Credential Issuer iniziano effettuando la discovery delle Fonti Autentiche disponibili attraverso il Registro AS e valutando la fattibilità dell'integrazione basata sugli Attributi dell'Utente richiesti. La richiesta di registrazione specifica quali tipi di Credenziali intendono emettere, seleziona entità Fonte Autentica appropriate e dimostra la capacità tecnica di accedere alle fonti di dati richieste. In alternativa, gli operatori del Credential Issuer ricevono direttamente la richiesta di integrazione dalla Fonte Autentica.
 
@@ -237,7 +236,7 @@ Dopo il test di integrazione riuscito e l'approvazione della Fonte Autentica, il
     Questo passaggio attiva la disponibilità delle Credenziali per gli utenti finali. Le Credenziali pubbliche e private diventano scopribili attraverso il catalogo, ma le Credenziali private saranno rese disponibili solo tramite Offerte di Credenziale.
 
 Journey dell'Operatore del Fornitore di Wallet
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Gli operatori del Fornitore di Wallet seguono un Journey di onboarding indipendente che si concentra sulla certificazione dell'applicazione e sulla validazione della sicurezza. Il processo evidenzia lo sviluppo e la certificazione di applicazioni Wallet che possono memorizzare e gestire in modo sicuro gli Attestati Elettronici per i cittadini.
 
@@ -246,7 +245,7 @@ Un requisito tecnico chiave coinvolge l'implementazione di meccanismi di control
 Il processo di certificazione include la valutazione della sicurezza, coprendo l'architettura del Wallet, i meccanismi di protezione dei dati e le caratteristiche di privacy dell'utente. I fornitori di Wallet certificati con successo sono registrati nel Registro di Federazione e possono distribuire le loro applicazioni attraverso gli app store.
 
 Journey dell'Operatore della Relying Party
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Gli operatori della Relying Party iniziano identificando quali tipi di EAA sono richiesti per i loro servizi specifici e valutando la complessità dell'integrazione con i sistemi di autenticazione esistenti. La richiesta di registrazione fornisce evidenza di necessità legittime per accedere a tipi di Credenziale specifici e Attributi dell'Utente, delineando i casi d'uso del servizio previsti e le caratteristiche organizzative che giustificano l'accesso alle Credenziali.
 
@@ -280,8 +279,10 @@ L'integrazione tecnica si concentra sullo sviluppo di flussi di autenticazione c
 L'autorizzazione del servizio da parte dell'Organismo di Supervisione DEVE coinvolgere una valutazione basata su politiche che considera il tipo di organizzazione (privata vs pubblica amministrazione), la classificazione del settore aziendale e i requisiti di servizio legittimi. Il processo di autorizzazione concede ambiti operativi specifici che definiscono quali domini di Credenziali e scopi la Relying Party può richiedere. Dopo l'approvazione, la Relying Party è registrata nel Registro di Federazione con profili di autorizzazione chiaramente definiti per l'accettazione degli Attestati Elettronici e degli Attributi dell'Utente.
 
 Journey dell'Esperienza Utente
--------------------------------
+------------------------------
 
 Quando tutti i processi di onboarding delle entità sono completati con successo, gli Utenti possono scoprire e installare Istanze del Wallet certificate, ottenere gli Attestati Elettronici disponibili e presentare i loro Attestati elettronici a Fornitori di Servizi registrati (vedi :ref:`functionalities:Panoramica delle Funzionalità`).
 
 Questa modalità di integrazione dipende dal fatto che tutte le entità rilevanti abbiano completato i rispettivi Journey di onboarding.
+
+

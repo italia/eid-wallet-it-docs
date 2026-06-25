@@ -1,5 +1,6 @@
 .. include:: ../common/common_definitions.rst
 
+
 Riferimenti Normativi
 =====================
 
@@ -15,5 +16,9 @@ Di seguito i riferimenti normativi e i rispettivi acronimi inclusi in queste Spe
       - Linee Guida sull'Accessibilità degli strumenti informatici ai sensi dell'articolo 11 della Legge 4/2004. Direttiva (UE) 2019/882 del Parlamento europeo e del Consiglio del 17 aprile 2019 sui requisiti di accessibilità dei prodotti e dei servizi.
     * - LG_DESIGN
       - Linee Guida di design per i siti internet e i servizi digitali della pubblica amministrazione, ai sensi dell'articolo 53, comma 1-ter del Decreto Legislativo 7 marzo 2005, n. 82, e successive modifiche.
+    * - `EIDAS`_
+      - Regolamento (UE) n. 910/2014 del Parlamento europeo e del Consiglio, del 23 luglio 2014, in materia di identificazione elettronica e servizi fiduciari per le transazioni elettroniche nel mercato interno e che abroga la direttiva 1999/93/CE (Regolamento eIDAS).
 
 .. include:: official-resources.rst
+
+

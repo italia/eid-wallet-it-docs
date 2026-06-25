@@ -255,10 +255,7 @@
 <li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#integrazione-dell-infrastruttura-di-trust-e-del-registro">6.2. Integrazione dell'Infrastruttura di Trust e del Registro</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#proprieta-generali">6.3. Proprietà Generali</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#requisiti-dell-infrastruttura-di-trust">6.4. Requisiti dell'Infrastruttura di Trust</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#endpoint-api-di-federazione">6.5. Endpoint API di Federazione</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#federation-subordinate-events-endpoint">6.5.1. Federation Subordinate Events Endpoint</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#endpoint-api-di-federazione">6.5. Endpoint API di Federazione</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#configurazione-della-federazione">6.6. Configurazione della Federazione</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#entity-configuration">6.7. Entity Configuration</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#parametri-comuni-delle-entity-configuration">6.7.1. Parametri Comuni delle Entity Configuration</a></li>
@@ -290,6 +287,7 @@
 <li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#trust-anchor-di-federazione-e-ca-x-509">6.14.1. Trust Anchor di Federazione e CA X.509</a></li>
 <li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#emissione-di-certificati-x-509">6.14.2. Emissione di Certificati X.509</a></li>
 <li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#revoca-di-certificati-x-509">6.14.3. Revoca di Certificati X.509</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#federation-subordinate-events-endpoint">6.14.4. Federation Subordinate Events Endpoint</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#osservazioni-sulla-privacy">6.15. Osservazioni sulla Privacy</a></li>
@@ -439,7 +437,6 @@
 <li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#ciclo-di-vita-degli-attestati-elettronici-ottenuti-in-batch">11.3.2. Ciclo di vita degli Attestati Elettronici ottenuti in batch</a></li>
 <li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#gestione-del-ciclo-di-vita-degli-attestati-elettronici">11.3.3. Gestione del Ciclo di Vita degli Attestati Elettronici</a></li>
 <li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#meccanismi-di-verifica-della-validita">11.3.4. Meccanismi di Verifica della Validità</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#token-status-lists">11.3.5. Token Status Lists</a></li>
 </ul>
 </li>
 </ul>
@@ -579,10 +576,23 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="open-source.html">19. Rilasci Open Source</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="open-source.html#fornitori-di-wallet">19.1. Fornitori di Wallet</a></li>
-<li class="toctree-l2"><a class="reference internal" href="open-source.html#fornitori-di-credenziali">19.2. Fornitori di Credenziali</a></li>
-<li class="toctree-l2"><a class="reference internal" href="open-source.html#relying-party">19.3. Relying Party</a></li>
-<li class="toctree-l2"><a class="reference internal" href="open-source.html#divulgazione-responsabile">19.4. Divulgazione Responsabile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open-source.html#principi-generali">19.1. 1. Principi Generali</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open-source.html#requisiti-standard">19.2. 2. Requisiti Standard</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="open-source.html#licenze">19.2.1. 2.1 Licenze</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open-source.html#gestione-del-codice-e-trasparenza">19.2.2. 2.2 Gestione del Codice e Trasparenza</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open-source.html#sicurezza-e-qualita">19.2.3. 2.3 Sicurezza e Qualità</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="open-source.html#fornitori-di-wallet">19.3. 3. Fornitori di Wallet</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="open-source.html#open-source-obbligatorio">19.3.1. 3.1 Open Source Obbligatorio</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="open-source.html#fornitori-di-credenziali-e-relying-party">19.4. 4. Fornitori di Credenziali e Relying Party</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="open-source.html#componenti-di-integrazione">19.4.1. 4.1 Componenti di integrazione</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open-source.html#infrastruttura-di-backend">19.4.2. 4.2 Infrastruttura di backend</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="open-source.html#divulgazione-responsabile-e-gestione-delle-vulnerabilita">19.5. 5. Divulgazione Responsabile e Gestione delle Vulnerabilità</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="appendix.html">20. Appendice</a><ul>
@@ -636,7 +646,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 24/06/2026.
+      Ultimo aggiornamento 25/06/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

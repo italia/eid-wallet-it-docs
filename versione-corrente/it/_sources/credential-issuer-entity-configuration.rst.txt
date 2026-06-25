@@ -1,8 +1,9 @@
 .. include:: ../common/common_definitions.rst
+.. Incluso tramite credential-issuer-solution.rst al livello di titolo '-' (livello 1).
 
 
 Entity Configuration del Fornitore di Attestati Elettronici
-------------------------------------------------------------
+-----------------------------------------------------------
 
 I Fornitori di Attestati Elettronici, in quanto Entità di Federazione, DEVONO rispettare le linee guida delineate nella Sezione :ref:`trust-infrastructure:Configurazione della Federazione`. In particolare, DEVONO fornire un endpoint *well-known* che ospiti la loro Entity Configuration.
 Quest'ultima DEVE contenere i parametri definiti nelle Sezioni :ref:`trust-infrastructure:Entity Configuration Foglie e Intermediari` e :ref:`trust-infrastructure:Parametri Comuni delle Entity Configuration`.
@@ -25,7 +26,7 @@ I Metadata *openid_credential_issuer* DEVONO contenere i parametri come definiti
 I Metadata *openid_credential_verifier* DEVONO contenere i parametri come definiti nella Sezione :ref:`relying-party-entity-configuration:Entity Configuration Relying Party`.
 
 Esempio di Entity Configuration di un Fornitore di Attestati Elettronici di Attributi
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Di seguito è riportato un esempio non normativo di una Entity Configuration di un Fornitore di Attestati Elettronici di Attributi contenente Metadata per:
 
@@ -36,3 +37,5 @@ Di seguito è riportato un esempio non normativo di una Entity Configuration di 
 
 .. literalinclude:: ../../examples/ec-eaa.json
   :language: JSON
+
+
