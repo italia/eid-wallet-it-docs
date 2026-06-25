@@ -1,6 +1,5 @@
 .. include:: ../common/common_definitions.rst
-
-.. level 2 "included" file, so we start with '^' title level
+.. Incluso tramite wallet-solution.rst al livello di titolo '^' (livello 2).
 
 Requisiti della Soluzione Wallet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -17,10 +16,10 @@ Questa sezione elenca i requisiti relativi ai Fornitori di Wallet e alle Soluzio
 - L'Istanza del Wallet DEVE fornire agli Utenti un meccanismo per richiedere la cancellazione degli attributi personali da parte di una Relying Party ai sensi dell'articolo 17 del Regolamento (UE) 2016/679, e per registrare ogni Richiesta di Cancellazione effettuata.
 
 .. note::
-   Non esiste una corrispondenza stretta uno-a-uno tra i requisiti in questa sezione e i casi di test in :ref:`wallet-provider-test-matrix`. Alcuni requisiti sono espressi a un livello troppo alto per poter essere rappresentati come casi di test atomici, mentre altri sono già affrontati in modo più dettagliato all'interno dei flussi correlati (ad es. :ref:`wallet-instance-attestation-issuance:Emissione della Wallet Instance Attestation`).
+   Non esiste una corrispondenza stretta uno-a-uno tra i requisiti in questa sezione e i casi di test in :ref:`test-plans-wallet-provider:Matrice di Test per Wallet Provider`. Alcuni requisiti sono espressi a un livello troppo alto per poter essere rappresentati come casi di test atomici, mentre altri sono già affrontati in modo più dettagliato all'interno dei flussi correlati (ad es. :ref:`wallet-instance-attestation-issuance:Emissione della Wallet Instance Attestation`).
 
 Requisiti della Wallet Instance Attestation
-""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""
 
 la Wallet Instance Attestation contiene informazioni riguardanti il livello di sicurezza del dispositivo che ospita l'Istanza del Wallet.
 Esso dimostra principalmente l'**autenticità**, l'**integrità**, la **sicurezza** e in generale l'**affidabilità** di una particolare Istanza del Wallet.
@@ -30,7 +29,6 @@ I requisiti per la Wallet Instance Attestation sono definiti di seguito:
 - la Wallet Instance Attestation DEVE fornire tutte le informazioni rilevanti per attestare l'**integrità** e la **sicurezza** del dispositivo in cui è installata l'Istanza del Wallet (:ref:`WP_019 <wallet-instance-testcases>`).
 - la Wallet Instance Attestation DEVE essere firmato dal Fornitore di Wallet che ha autorità e proprietà sulla Soluzione Wallet, come specificato dalla Registration Authority di supervisione. Questo garantisce che la Wallet Instance Attestation colleghi in modo univoco il Fornitore di Wallet a questa particolare Istanza del Wallet (:ref:`WP_020 <wallet-instance-testcases>`).
 - Il Fornitore di Wallet DEVE periodicamente valutare e garantire l'integrità, l'autenticità e la genuinità dell'Istanza del Wallet. Il Fornitore di Wallet verifica l'Istanza del Wallet utilizzando il flusso più sicuro reso disponibile dalle API del Fornitore del Sistema Operativo, come la *Play Integrity API* per Android e *App Attest* per iOS (:ref:`WP_011 <wallet-provider-backend-testcases>`).
-- Il Fornitore di Wallet DEVE possedere un meccanismo di revoca per l'Istanza del Wallet, che consenta al Fornitore di Wallet di terminare il servizio per una specifica Istanza in qualsiasi momento (:ref:`WP_011 <wallet-provider-backend-testcases>`).
 - la Wallet Instance Attestation DEVE essere vincolato in modo sicuro alla chiave pubblica effimera dell'Istanza del Wallet (:ref:`WP_019b <wallet-instance-testcases>`).
 - la Wallet Instance Attestation PUÒ essere utilizzato più volte durante il suo periodo di validità, consentendo autenticazioni e autorizzazioni ripetute senza la necessità di richiedere nuovi attestati ad ogni interazione. Tuttavia, è RACCOMANDATO che le Istanze del Wallet evitino di utilizzare ripetutamente lo stesso attestato, a causa di preoccupazioni sulla privacy come la possibilità di collegamento tra diverse interazioni.
 - La Wallet Instance Attestation DEVE avere una durata limitata e DEVE includere un tempo di scadenza, oltre il quale NON DEVE più essere considerata valida.
@@ -38,30 +36,38 @@ I requisiti per la Wallet Instance Attestation sono definiti di seguito:
 - Ogni Istanza del Wallet DOVREBBE essere in grado di richiedere più Wallet Instance Attestation utilizzando diverse chiavi pubbliche crittografiche associate ad essi.
 - la Wallet Instance Attestation NON DEVE contenere informazioni sull'Utente che controlla l'Istanza del Wallet (:ref:`WP_029b <wallet-instance-testcases>`).
 - L'Istanza del Wallet DEVE ottenere una Wallet Instance Attestation come prerequisito per passare allo stato Operativo, come definito da `EIDAS-ARF`_.
-- Un Wallet provider DEVE garantire che una Wallet Unit non revocata presenti in ogni momento una Wallet Instance valida e non revocata a un fornitore di PID o a un fornitore di attestazioni durante il processo di emissione di un PID o di un'attestazione. Nota: questo requisito si applica sia alle attestazioni associate a un dispositivo che a quelle non associate a un dispositivo, come definito da `EIDAS-ARF`_.
-- Una Wallet Unit DEVE presentare una Wallet Instance Attestation esclusivamente a un fornitore di PID o a un fornitore di attestazioni, nell'ambito del processo di emissione di un PID o di un'attestazione, e non a una parte affidabile o a qualsiasi altra entità.
+- Un Wallet Provider DEVE garantire che una Wallet Unit non revocata presenti in ogni momento una Wallet Instance Attestation temporalmente valida e non revocata a un PID Provider o a un Attestation Provider durante il processo di emissione di un PID o di un'attestazione. Nota: questo requisito si applica sia alle attestazioni associate a un dispositivo che a quelle non associate a un dispositivo, come definito da `EIDAS-ARF`_.
+- Una Wallet Unit DEVE presentare una Wallet Instance Attestation esclusivamente a un PID Provider o a un Attestation Provider, nell'ambito del processo di emissione di un PID o di un'attestazione, e non a una Relying Party o a qualsiasi altra entità.
 
 .. note::
   In questa sezione, i servizi utilizzati per attestare la genuinità dell'Istanza del Wallet e del dispositivo in cui è installata sono indicati come **API del Servizio di Integrità del Dispositivo**. L'API del Servizio di Integrità del Dispositivo è considerata in modo astratto e si presume sia un servizio fornito da una terza parte affidabile (cioè, l'API del Fornitore del Sistema Operativo) in grado di eseguire controlli di integrità sull'Istanza del Wallet e sul dispositivo in cui è installata.
 
 
 Requisiti della Wallet Unit Attestation
-""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""
 
-La Wallet Unit Attestation contiene informazioni che garantiscono che le chiavi utilizzate per il collegamento crittografico degli Attestati Elettronici siano archiviate in un WSCD **affidabile**.
-Inoltre, fornisce un metodo per autenticare il WSCD presso il Fornitore di Attributi Elettronici e verifica che la Wallet Unit non sia stata revocata.
+La Wallet Unit Attestation contiene informazioni che garantiscono che le chiavi utilizzate per il collegamento crittografico degli Attestati Elettronici siano archiviate in un WSCD **affidabile**. Inoltre, fornisce un metodo per autenticare il WSCD presso il Fornitore di Attributi Elettronici e verifica che la Wallet Unit non sia stata revocata.
 
 I requisiti per la Wallet Unit Attestation sono definiti di seguito:
 
 - La Wallet Unit Attestation DEVE fornire al PID Provider o all'Attestation Provider informazioni sulle capacità del WSCA e del WSCD della Wallet Unit, in modo che possano prendere una decisione ben fondata sull'opportunità di emettere un PID o un'attestazione per tale Wallet Unit.
 - La Wallet Unit Attestation DEVE consentire ai PID Provider e agli Attestation Provider di verificare l'autenticità e lo stato di revoca della Wallet Unit.
-- Durante l'emissione di un PID o di un'attestazione vincolata al dispositivo, una Wallet Unit DEVE recuperare, dai metadati dell'emittente (come specificato in OpenID4VCI_), i requisiti del PID Provider o dell'Attestation Provider riguardanti l'autenticazione dell'utente e l'archiviazione delle chiavi da parte del WSCA/WSCD. La Wallet Unit DEVE determinare quale dei propri WSCA/WSCD, se presente, soddisfi tali requisiti. Se un WSCA/WSCD conforme è disponibile per la Wallet Unit, quest'ultima DEVE richiederne la generazione di una nuova coppia di chiavi per il nuovo PID o l'attestazione. La Wallet Unit DEVE fornire al PID Provider o all'Attestation Provider la Wallet Unit Attestation che descrive le proprietà del WSCA/WSCD che ha generato la nuova chiave privata del PID o dell'attestazione.
+- Un Wallet Provider DEVE garantire che una Wallet Unit non revocata possa in ogni momento presentare una Wallet Unit Attestation, quando richiesto da un PID Provider o da un Attestation Provider.
+- Durante l'emissione di un PID, la Wallet Unit DEVE fornire al PID Provider una WUA valida che descriva il WSCA/WSCD che ha generato la nuova chiave privata del PID. Nota: una chiave privata del PID è sempre generata e gestita dal WSCA/WSCD, che per definizione è conforme ai requisiti per il Livello di Garanzia Alto.
+- Durante l'emissione di un'attestazione vincolata al dispositivo, una Wallet Unit DEVE recuperare dai metadati dell'emittente (come specificato in `OpenID4VCI`_) i requisiti dell'Attestation Provider riguardanti l'archiviazione delle chiavi da parte del WSCA/WSCD. La Wallet Unit DEVE determinare quale dei propri WSCA/WSCD, se presente, soddisfi tali requisiti. Se un WSCA/WSCD o un keystore conforme è disponibile per la Wallet Unit, quest'ultima DEVE fornire all'Attestation Provider una WUA valida che descriva il WSCA/WSCD o il keystore selezionato. Nota: una WUA descrive le proprietà del WSCA/WSCD o di un keystore e contiene una o più chiavi pubbliche corrispondenti a chiavi private generate e archiviate in tale WSCA/WSCD o keystore.
 - Se una Wallet Unit contiene più WSCA, essa DEVE, in modo interno e sicuro, tenere traccia di quali PID e attestazioni sono associati a ciascun WSCA.
-- Una Wallet Unit DEVE presentare una Wallet Unit Attestation solo come parte del processo di emissione di un PID o di un'attestazione.
+- Una Wallet Unit DEVE presentare una Wallet Unit Attestation solo come parte del processo di emissione di un PID o di un'attestazione vincolata a chiave.
 - La Wallet Unit Attestation DEVE consentire ai PID Provider di richiedere a un Wallet Provider la revoca di una Wallet Unit, includendo un identificatore per la Wallet Unit all'interno della WUA (ad esempio, un URI e un indice a una Attestation Status List). Il Wallet Provider DEVE garantire che tale identificatore della Wallet Unit non consenta il tracciamento dell'utente.
 - La Wallet Unit Attestation DEVE contenere una o più chiavi pubbliche di credenziali attestate provenienti dallo stesso WSCD.
 - La Wallet Unit Attestation DEVE essere firmata dal Wallet Provider che ha autorità e proprietà sulla Wallet Solution, come specificato dall'Autorità di Registrazione di riferimento. I Wallet Provider DEVONO garantire che i certificati utilizzati per firmare le WUA e le WIA siano conformi a tutti i requisiti applicabili della `ETSI TS 119 412-6`_, in particolare alla Clausola 5.
+- Un Attestation Provider che emette attestazioni non vincolate al dispositivo DEVE indicare nei propri metadati di Credential Issuer che non necessita di una WUA. Una Wallet Unit NON DEVE inviare una WUA a un Attestation Provider quando richiede un'attestazione non vincolata al dispositivo. Nota: una Wallet Unit invia una WIA all'Attestation Provider indipendentemente dal fatto che le attestazioni emesse siano vincolate al dispositivo o meno.
+- Un Wallet Provider DEVE garantire che la presentazione di una WUA sia crittograficamente vincolata allo specifico contesto in cui è destinata a essere utilizzata. Nota: come specificato in `OpenID4VCI`_, ciò si ottiene facendo sì che la WUA firmata contenga essa stessa un nonce fornito dal PID Provider o dall'Attestation Provider durante il processo di emissione. In alternativa, la Wallet Unit presenta la WUA insieme a una Proof-of-Possession consistente in una firma su tale nonce, creata con la chiave privata corrispondente a una delle chiavi pubbliche attestate nella WUA.
+- Durante l'emissione di un PID o di un'attestazione vincolata al dispositivo, il PID Provider o l'Attestation Provider DEVE verificare la WUA in conformità ai requisiti dell'Appendice F.4 di `OpenID4VCI`_.
+- Durante l'emissione di un PID o di un'attestazione vincolata al dispositivo, il PID Provider o l'Attestation Provider DEVE ricevere una prova che la Wallet Unit possiede le chiavi private corrispondenti a tutte le chiavi pubbliche presenti nella WUA.
+- Se il WSCA/WSCD è in grado di esportare una chiave privata, il Wallet Provider DEVE specificare questa capacità come attributo nella WUA.
+- Un Wallet Provider DEVE considerare tutti i fattori rilevanti, inclusi l'utilizzo offline, l'interoperabilità e il rischio che una WUA diventi un vettore di tracciamento dell'Utente, nel decidere il periodo di validità di una WUA.
 - La Wallet Unit Attestation NON DEVE essere emessa dal Wallet Provider se l'affidabilità del WSCD non è garantita. In tal caso, l'istanza del Wallet DEVE essere revocata.
+
 
 Requisiti WSCD
 """"""""""""""
@@ -79,3 +85,5 @@ Solo l'Utente legittimo può accedere alle chiavi crittografiche private, impede
   Nella fase attuale, il profilo di implementazione definito in questo documento supporta solo il **WSCD Interno Locale** (:ref:`WP_014 <wallet-instance-testcases>`). Le versioni future di questa specifica POTREBBERO includere altri approcci a seconda del Livello di Garanzia dell'Autenticatore richiesto (`AAL`).
 
 Per informazioni più dettagliate, fare riferimento a :ref:`wallet-instance-registration:Inizializzazione e Registrazione dell'Istanza del Wallet`, :ref:`wallet-instance-attestation-issuance:Emissione della Wallet Instance Attestation` e :ref:`wallet-attestation-issuance:Emissione della Wallet Unit Attestation` di questo documento.
+
+

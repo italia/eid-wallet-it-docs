@@ -264,9 +264,8 @@
 <li><p>I seguenti pattern possono essere utilizzati solo quando il Fruitore non può iscriversi all'Infrastruttura PDND (ossia quando la trust tra gli Aderenti deve essere stabilita in forma diretta), pertanto non risultano conformi a <strong>R1</strong>:</p>
 <ul>
 <li><p><strong>[ID_AUTH_CHANNEL_02]</strong> Direct Trust mutual Transport-Level Security (<em>Allegato 2 - Pattern di Sicurezza</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>])</p></li>
-<li><p><strong>[ID_AUTH_REST_02]</strong> Direct Trust con certificato X.509 su REST con unicità del token/messaggio (<em>Allegato 2 - Pattern di sicurezza</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]).</p></li>
+<li><p><strong>[ID_AUTH_REST_02]</strong> Direct Trust su PDND tramite token JWT emessi dalla piattaforma con caratteristiche di unicità del token/messaggio (<em>Allegato 2 - Pattern di sicurezza</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]).</p></li>
 <li><p><strong>[INTEGRITY_REST_01]</strong> Integrità del payload messaggio REST (<em>Allegato 2 - Pattern di sicurezza</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]).</p></li>
-<li><p><strong>[ID_AUTH_REST_02]</strong> Direct Trust su PDND tramite token JWT emessi dalla piattaforma con caratteristiche di unicità (<em>Allegato 2 - Pattern di sicurezza</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]).</p></li>
 </ul>
 </li>
 <li><p>Il seguente pattern non fornisce correlazione tra i dati tracciati e il Voucher, pertanto non risulta conforme a <strong>R3</strong>:</p>
@@ -1686,7 +1685,6 @@
 <h4><span class="section-number">20.2.4.3.2. </span>Risposta (e-Service)<a class="headerlink" href="#risposta-e-service" title="Link to this heading">¶</a></h4>
 <p>La <cite>e-Service Response</cite> DEVE avere un content type <code class="docutils literal notranslate"><span class="pre">application/json</span></code>.</p>
 <p>La <cite>e-Service Response</cite> DEVE includere i seguenti parametri di header HTTP:</p>
-<p>Il JWT della <cite>e-Service Response</cite> DEVE includere i seguenti parametri nel JOSE header:</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 20.0%" />
@@ -1811,16 +1809,13 @@
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code></p></td>
 <td><p>La richiesta non può essere soddisfatta perché mancano parametri richiesti, contiene parametri non validi o è in qualche modo malformata.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code></p></td>
-<td><p>La richiesta non può essere soddisfatta perché contiene una <em>DPoP proof</em> non valida.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">401</span> <span class="pre">Unauthorized</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">401</span> <span class="pre">Unauthorized</span></code></p></td>
 <td><p>La richiesta non può essere soddisfatta perché il Voucher è scaduto, revocato o in qualche modo malformato.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">500</span> <span class="pre">Internal</span> <span class="pre">Server</span> <span class="pre">Error</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">500</span> <span class="pre">Internal</span> <span class="pre">Server</span> <span class="pre">Error</span></code></p></td>
 <td><p>La richiesta non può essere soddisfatta perché l'Endpoint e-Service ha riscontrato un problema interno.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">503</span> <span class="pre">Service</span> <span class="pre">Unavailable</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">503</span> <span class="pre">Service</span> <span class="pre">Unavailable</span></code></p></td>
 <td><p>La richiesta non può essere soddisfatta perché l'Endpoint e-Service è temporaneamente non disponibile (ad esempio, a causa di manutenzione o sovraccarico).</p></td>
 </tr>
 </tbody>

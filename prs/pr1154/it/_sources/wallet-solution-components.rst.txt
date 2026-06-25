@@ -49,7 +49,6 @@ Questo componente DEVE garantire la sicurezza attraverso:
 - Conformità ai requisiti di sicurezza della Federazione IT-Wallet.
 
 
-
 Unità di Wallet
 ---------------
 
@@ -91,7 +90,6 @@ Per ogni Credenziale Elettronica emessa all'Istanza del Wallet, questo component
 
 Dashboard e Registro delle Transazioni
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 Questo componente DEVE fornire le funzionalità di dashboard e di registro delle transazioni della Wallet Unit. In particolare, questo componente DEVE:
 
 - fornire un’interfaccia accessibile all’Utente che consenta all’Utente di accedere alle informazioni di trasparenza delle transazioni;
@@ -114,3 +112,5 @@ La Soluzione Wallet supporta questi modelli di interazione:
 3. **Fornitore di Attestati Elettronici di Dati di Identificazione Personale verso API del Backend del Wallet**: Chiamate API sicure per richiedere la revoca dell'Istanza del Wallet.
 4. **Utente verso Interfaccia Utente dell'Istanza del Wallet**: per la gestione delle Credenziali Elettroniche (emissione, presentazione, backup, ripristino, eliminazione).
 5. **Istanza del Wallet verso Relying Party**: per la presentazione delle Credenziali Elettroniche.
+
+

@@ -160,7 +160,7 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <span class="target" id="relying-party-provider-backend-endpoint-endpoint-del-backend-del-provider-di-relying-party"></span><p>La Relying Party DEVE esporre una serie di endpoint per gestire il ciclo di vita delle App di Verifica che utilizzano un servizio di backend remoto fornito dal loro Backend del Provider di Relying Party. Questi endpoint supportano i flussi di presentazione in prossimità fornendo generazione di nonce, registrazione delle chiavi hardware, convalida dell'integrità e rilascio del Certificato di Accesso. I dettagli specifici della loro implementazione sono lasciati alla discrezione della Relying Party.</p>
+  <p>La Relying Party DEVE esporre una serie di endpoint per gestire il ciclo di vita delle App di Verifica che utilizzano un servizio di backend remoto fornito dal loro Backend del Provider di Relying Party. Questi endpoint supportano i flussi di presentazione in prossimità fornendo generazione di nonce, registrazione delle chiavi hardware, convalida dell'integrità e rilascio del Certificato di Accesso. I dettagli specifici della loro implementazione sono lasciati alla discrezione della Relying Party.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>I test relativi agli endpoint della Relying Party sono definiti nella matrice di test per presentazione remota (<a class="reference internal" href="test-plans-remote-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-remoto"><span class="std std-ref">Matrice di Test per il Verificatore di Credenziali in Remoto</span></a>) e prossimità (<a class="reference internal" href="test-plans-proximity-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-prossimita"><span class="std std-ref">Matrice di Test per il Verificatore di Credenziali in Prossimità</span></a>).</p>
@@ -176,7 +176,7 @@
 </section>
 <section id="endpoint-di-inizializzazione-dell-app-di-verifica-della-relying-party">
 <h1>Endpoint di Inizializzazione dell'App di Verifica della Relying Party<a class="headerlink" href="#endpoint-di-inizializzazione-dell-app-di-verifica-della-relying-party" title="Link to this heading">¶</a></h1>
-<p>L'Endpoint di Inizializzazione dell'App di Verifica consente l'inizializzazione delle App di Verifica, consistente nella registrazione di una coppia di Cryptographic Hardware Keys a lunga durata, memorizzate in modo sicuro (<a class="reference internal" href="test-plans-proximity-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-prossimita"><span class="std std-ref">Matrice di Test per il Verificatore di Credenziali in Prossimità</span></a>).</p>
+<p>L'Endpoint di Inizializzazione dell'App di Verifica consente l'inizializzazione delle App di Verifica, consistente nella registrazione di una coppia di Cryptographic Hardware Keys a lunga durata, memorizzate in modo sicuro.</p>
 <p>Ulteriori dettagli sulla Richiesta e Risposta di Inizializzazione dell'App di Verifica sono forniti rispettivamente nelle Sezioni <a class="reference internal" href="mobile-application-instance.html#richiesta-di-inizializzazione-dell-istanza-dell-applicazione-mobile"><span class="std std-ref">Richiesta di Inizializzazione dell'Istanza dell'Applicazione Mobile</span></a> e <a class="reference internal" href="mobile-application-instance.html#risposta-di-inizializzazione-dell-istanza-dell-applicazione-mobile"><span class="std std-ref">Risposta di Inizializzazione dell'Istanza dell'Applicazione Mobile</span></a>.</p>
 </section>
 <section id="endpoint-di-associazione-chiavi-della-relying-party">
@@ -265,7 +265,7 @@
 <td><p><code class="docutils literal notranslate"><span class="pre">not_found</span></code></p></td>
 <td><p>L'istanza dell'applicazione di verifica (Verifier App) non è stata trovata.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">422</span> <span class="pre">Unprocessable</span> <span class="pre">Content</span></code> [OPTIONAL]</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">422</span> <span class="pre">Unprocessable</span> <span class="pre">Content</span></code> [OPZIONALE]</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">validation_error</span></code></p></td>
 <td><p>La richiesta non rispetta il formato richiesto.</p></td>
 </tr>
