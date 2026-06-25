@@ -1,5 +1,7 @@
 /* global i18next, initHeaderLangDropdown */
 
+const DEFAULT_WALLET_BRAND = 'IT-Wallet';
+
 const QR_CONFIG_FALLBACK = {
   url_scheme: 'haip',
   client_id: 'openid_federation:https://relying-party.example.org/OpenID4VP',
@@ -13,6 +15,10 @@ const QR_CONFIG_FALLBACK = {
 };
 
 let demoConfig = { ...QR_CONFIG_FALLBACK };
+let selectedWallet = {
+  name: DEFAULT_WALLET_BRAND,
+  logo: null,
+};
 let expirationTime = demoConfig.qrcode_expiration_time;
 let countdown = null;
 let countdownStarted = false;
@@ -50,6 +56,35 @@ function buildDemoQrPayload(config) {
   return buildAuthorizationRequestUrl(config.url_scheme, params);
 }
 
+function getWalletBrandName() {
+  return selectedWallet.name || DEFAULT_WALLET_BRAND;
+}
+
+function readSelectedWalletFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  const name = params.get('wallet_name')?.trim();
+  const logo = params.get('wallet_logo')?.trim();
+  if (name) selectedWallet.name = name;
+  if (logo) selectedWallet.logo = logo;
+}
+
+function substituteWalletBrand(text, walletName) {
+  if (!text || typeof text !== 'string') return text;
+  return text.replace(/IT-Wallet/g, walletName);
+}
+
+function walletTranslation(t, key, extra = {}) {
+  const walletName = getWalletBrandName();
+  return substituteWalletBrand(
+    t(key, {
+      ...extra,
+      walletName,
+      interpolation: { escapeValue: false },
+    }),
+    walletName,
+  );
+}
+
 function applyQrVisualConfig(config) {
   const root = document.documentElement;
   root.style.setProperty('--qr-size', `${config.qrcode_size}px`);
@@ -66,7 +101,12 @@ function applyQrVisualConfig(config) {
 
   const logo = document.querySelector('.icon-qr-code');
   if (logo) {
-    logo.src = resolveAsset(config.qrcode_logo_path);
+    const logoPath = config.qrcode_logo_path || QR_CONFIG_FALLBACK.qrcode_logo_path;
+    logo.onerror = () => {
+      logo.onerror = null;
+      logo.src = resolveAsset(QR_CONFIG_FALLBACK.qrcode_logo_path);
+    };
+    logo.src = resolveAsset(logoPath);
   }
 
   const qrCodeLink = document.getElementById('qr-code-link');
@@ -137,8 +177,13 @@ function updateShellTexts(t) {
   if (headerLogoText) headerLogoText.textContent = logoAlt;
 
   document.querySelectorAll('.qr-header-logo-wallet').forEach((img) => {
-    img.setAttribute('alt', t('header.wallet_brand_alt'));
+    img.setAttribute('alt', getWalletBrandName());
   });
+
+  const qrCodeLink = document.getElementById('qr-code-link');
+  if (qrCodeLink) {
+    qrCodeLink.setAttribute('aria-label', walletTranslation(t, 'qrCodeLinkAriaLabel'));
+  }
 
   const hint = newWindowHintText(t);
   setFooterLink(document.getElementById('footer-legal'), t('footer.legal_notice'), t('footer.legal_url'), hint);
@@ -157,10 +202,13 @@ function updateShellTexts(t) {
   document.title = pageTitle;
 
   const metaDesc = document.getElementById('meta-description');
-  if (metaDesc) metaDesc.setAttribute('content', t('meta.description'));
+  if (metaDesc) metaDesc.setAttribute('content', walletTranslation(t, 'meta.description'));
 
   const payloadSummary = document.getElementById('qr-payload-summary');
   if (payloadSummary) payloadSummary.textContent = t('demoPayloadLabel');
+
+  const reloadLabel = document.getElementById('qr-reload-label');
+  if (reloadLabel) reloadLabel.textContent = t('qrCodeReloadLabel');
 
   updateBackLink(t);
 }
@@ -177,7 +225,7 @@ function updateTexts(t) {
   }
 
   const support = document.getElementById('content-text');
-  if (support) support.innerHTML = t('supportText');
+  if (support) support.innerHTML = walletTranslation(t, 'supportText');
 }
 
 function stopCountdown() {
@@ -201,21 +249,19 @@ function startCountdown(t) {
 }
 
 function showExpiredState(t) {
-  const payload = document.getElementById('content-qrcode-payload');
-  if (payload) payload.classList.add('qr-faded');
+  const qrLink = document.getElementById('qr-code-link');
+  if (qrLink) qrLink.classList.add('qr-faded');
 
   const info = document.getElementById('content-qrcode-info-text');
-  if (info) info.innerHTML = t('qrCodeExpiredInfo');
+  if (info) info.innerHTML = walletTranslation(t, 'qrCodeExpiredInfo');
 
   const actions = document.getElementById('content-function');
   if (!actions) return;
 
+  const reloadLabel = document.getElementById('qr-reload-label');
+  if (reloadLabel) reloadLabel.textContent = t('qrCodeReloadLabel');
+
   actions.hidden = false;
-  actions.innerHTML = `
-    <button id="qr-reload-btn" type="button" class="btn btn-primary">
-      ${t('qrCodeReloadLabel')}
-    </button>
-  `;
   document.getElementById('qr-reload-btn')?.addEventListener('click', () => {
     window.location.reload();
   });
@@ -230,6 +276,9 @@ async function loadDemoConfig() {
   } catch (err) {
     console.warn('qr-code-page: using fallback demo config', err);
     demoConfig = { ...QR_CONFIG_FALLBACK };
+  }
+  if (selectedWallet.logo) {
+    demoConfig.qrcode_logo_path = selectedWallet.logo;
   }
   expirationTime = Number(demoConfig.qrcode_expiration_time) || 120;
   applyQrVisualConfig(demoConfig);
@@ -266,6 +315,7 @@ function initI18n() {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
+  readSelectedWalletFromUrl();
   await loadDemoConfig();
   setupBackLink();
   initI18n();

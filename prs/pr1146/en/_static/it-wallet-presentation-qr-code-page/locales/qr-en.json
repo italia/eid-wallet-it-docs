@@ -7,7 +7,7 @@
     "lang_trigger": "Language selection, {{name}} selected"
   },
   "meta": {
-    "description": "Sign in with IT-Wallet using a QR code."
+    "description": "Sign in with {{walletName}} using a QR code."
   },
   "noscript": {
     "message": "JavaScript must be enabled to use the QR code page."
@@ -21,17 +21,18 @@
   "login_logo": "Log in with your digital wallet",
   "contentTitle": "Scan the QR code",
   "qrCodeValidInfo": "The QR code is valid for <b id=\"timer\">{{seconds}}</b> seconds",
-  "supportText": "Use <b>IT-Wallet</b> or your smartphone camera",
+  "supportText": "Use <b>{{walletName}}</b> or your smartphone camera",
+  "qrCodeLinkAriaLabel": "QR code for signing in with {{walletName}}",
   "backLabel": "Go back",
-  "qrCodeExpiredInfo": "The QR code has expired, reload the page to generate a new one.",
-  "qrCodeReloadLabel": "Reload",
-  "appTitle": "Continue on the IT-Wallet app",
+  "qrCodeExpiredInfo": "The QR code has expired.",
+  "qrCodeReloadLabel": "Generate a new code",
+  "appTitle": "Continue on the {{walletName}} app",
   "appText": "To continue, follow the instructions on the app and authorize access",
   "connectedTitle": "Authentication completed!",
   "connectedText": "Continue on the website",
   "clickAccessLabel": "Continue",
   "failureTitle": "We were unable to retrieve your data",
-  "failureText": "Remember that to log in with IT-Wallet, you must consent to the reading of your information. If the problem persist, please contact the support service.",
+  "failureText": "Remember that to log in with {{walletName}}, you must consent to the reading of your information. If the problem persist, please contact the support service.",
   "retryLabel": "Try again",
   "contactSupportLabel": "Contact support",
   "demoPayloadLabel": "QR Code payload (Authorization Request)",
