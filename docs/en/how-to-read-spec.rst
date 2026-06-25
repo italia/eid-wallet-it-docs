@@ -97,11 +97,11 @@ To implement the technological interfaces required to communicate with Credentia
 
 To become registered as an Authentic Source within the system by completing the administrative and technical procedures required. 
 
-- **Section** :ref:`onboarding-high-level:Onboarding System': Overview of the onboarding system architecture and the Authentic Source registration process. 
+- **Section** :ref:`onboarding-high-level:Onboarding System`: Overview of the onboarding system architecture and the Authentic Source registration process. 
 - **Section** :ref:`entity-onboarding:Entity Onboarding`: Focus on technical implementation procedures for Authentic Source registration.
-- **Section** :ref:`x5c-evaluation:X.509 Certificate Management Operations': Operational procedures for managing X.509 Certificates within the IT-Wallet federation.
+- **Section** :ref:`x5c-evaluation:X.509 Certificate Management Operations`: Operational procedures for managing X.509 Certificates within the IT-Wallet federation.
 
-**Wallet Provider**
+### **Wallet Provider**
 
 
 The Wallet Provider focuses on designing and developing the Wallet Solution that enables the User to store, manage, and present their PID and (Q)EAAs. 
@@ -122,7 +122,7 @@ To understand the general functioning of the ecosystem, the technical architectu
 
 To understand the User Experience requirements and design the Wallet Solution following common patterns to ensure the usability and accessibility of the solutions.
 
-- **Section** :ref:`brand-identity:Brand Identity': Overview of the IT-Wallet Brand Identity and indications on assets to be adopted by the Wallet Provider.  
+- **Section** :ref:`brand-identity:Brand Identity`: Overview of the IT-Wallet Brand Identity and indications on assets to be adopted by the Wallet Provider.  
 
 - **Section** :ref:`functionalities:User Experience Design`: Key requirements on Interaction Models and Interface layouts and graphic assets to ensure an effective and seamless User Experience and coherence among Wallet Solutions. 
 
@@ -145,7 +145,6 @@ To implement the Wallet Solution in line with specific technological standards t
 - **Section** :ref:`log-retention-policy:General Log Retention Policies`: General Log retention requirements and requirements specific for Wallet Providers, in accordance with ISO/IEC 27001. 
 - **Section** :ref:`mobile-application-instance: Mobile Application Instance`: Requirements for mobile application instance, related to initialization request and response. 
 
-- **Section** :ref:`test-plans:Test Plans`: Guide to set up the test environment and validate backend interactions with the test matrices provided by the ecosystem. 
 - **Section** :ref:`test-plans:Test Plans`: Guide to set up the test environment and validate backend interactions with the test matrices provided by the ecosystem. 
 **Phase 4: Registration**
 
