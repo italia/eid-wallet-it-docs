@@ -151,11 +151,10 @@ To implement the Wallet Solution in line with specific technological standards t
 To become registered as a Wallet Provider within the system by completing the administrative and technical procedures so that the Wallet Solution is recognized by the system.
 **Section** :ref:`entity-onboarding:Entity Onboarding`: Focus on technical implementation procedures for Wallet Provider registration. 
 - **Section** :ref:`onboarding-high-level:Onboarding System': Overview of the onboarding system architecture and the Wallet Provider registration process.  
-**Section** :ref:`entity-onboarding:Entity Onboarding`: Focus on technical implementation procedures for Wallet Provider registration. 
-- **Section** :ref:`x5c-evaluation:X.509 Certificate Management Operations': Operational procedures for managing X.509 Certificates within the IT-Wallet federation
+- **Section** :ref:`x5c-evaluation:X.509 Certificate Management Operations`: Operational procedures for managing X.509 Certificates within the IT-Wallet federation
 
 
-**Credential Issuer**
+### **Credential Issuer**
 
 The Credential Issuer focuses on transforming authoritative raw data from Authentic Source into (Q)EAAs, and managing their entire lifecycle from issuance and to revocation or expiration.
 
@@ -188,7 +187,7 @@ To develop endpoints based on specific protocols, and to implement (Q)EAA issuan
 - **Section** :ref:`digital-credential-flows:Digital Credential Flows`: Technical and functional requirements on (Q)EAA issuance and presentation flows.
 
 - **Section** :ref:`credential-issuer-endpoint:Credential Issuer Endpoints`: Key requirements for the implementation of Credential Issuer metadata and authorization endpoints.
-- **Section** :ref:`algorithms:Cryptographic Algorithms': To meet security requirements by designing digital signature systems that make attestations unfalsifiable.
+- **Section** :ref:`algorithms:Cryptographic Algorithms`: To meet security requirements by designing digital signature systems that make attestations unfalsifiable.
 
 - **Section** :ref:`e-service-pdnd:e-Service PDND`: Mandatory integration specifications with the PDND (National Digital Data Platform) and the associated interoperability requirements for accessing authoritative data required for (Q)EAA issuance.
 - **Section** :ref:`security-privacy-considerations:Security and Privacy Considerations`: Security and compliance requirements for implemented solutions. 
@@ -198,14 +197,11 @@ To develop endpoints based on specific protocols, and to implement (Q)EAA issuan
 **Phase 4: Registration**
 
 To become registered as Credential Issuer within the system, by completing the administrative and technical procedure so that (Q)EAA issued to the Wallet are officially trusted.
-- **Section** :ref:`entity-onboarding:Entity Onboarding': Focus on technical implementation procedures for Credential Issuer registration.
-- **Section** :ref:`onboarding-high-level:Onboarding System': Overview of the onboarding system architecture and the Credential Issuer registration process.
-- **Section** :ref:`entity-onboarding:Entity Onboarding': Focus on technical implementation procedures for Credential Issuer registration.
-- **Section** :ref:`x5c-evaluation:X.509 Certificate Management Operations': Operational procedures for managing X.509 Certificates within the IT-Wallet federation.
-- **Section** :ref:`entity-onboarding:Entity Onboarding': Focus on technical implementation procedures for Credential Issuer registration.
+- **Section** :ref:`onboarding-high-level:Onboarding System`: Overview of the onboarding system architecture and the Credential Issuer registration process.
+- **Section** :ref:`x5c-evaluation:X.509 Certificate Management Operations`: Operational procedures for managing X.509 Certificates within the IT-Wallet federation.
 
 
-**Relying Party**
+### **Relying Party**
 
 
 The Relying Party focuses on securely requesting, receiving, and verifying the authenticity and validity of the PID and (Q)EAAs presented by the User to grant access to online and offline services.
@@ -226,7 +222,7 @@ To understand the general functioning of the ecosystem, the technical architectu
 
 To understand the User Experience requirements and design the verification functionalities necessary to provide the service to the end User.
 
-- **Section** :ref:`brand-identity:Brand Identity': Overview of the IT-Wallet Brand Identity and indications on assets to be adopted by the Relying Party.
+- **Section** :ref:`brand-identity:Brand Identity`: Overview of the IT-Wallet Brand Identity and indications on assets to be adopted by the Relying Party.
 
 - **Section** :ref:`functionalities:User Experience Design`: Key requirements on Interaction Models, Interface layouts and graphic assets to ensure an effective and seamless User Experience, and coherence among presentation and verification systems.
 
@@ -238,7 +234,7 @@ To understand the User Experience requirements and design the verification funct
 
 To implement verification functionalities following specific protocols, to send verification requests to the Wallet and receive a response with the User’s authorization.
 - **Section** :ref:`relying-party-solution:Relying Party Solution`: Technical and functional requirements on components and functionalities for PID and (Q)EAA verification.
-- **Section** ref:`digital-credential-flows:`Digital Credential Flows':  Technical and functional requirements on (Q)EAA presentation and verification flows.
+- **Section** ref:`digital-credential-flows:Digital Credential Flows`:  Technical and functional requirements on (Q)EAA presentation and verification flows.
 
 - **Section** :ref:`relying-party-endpoints:Relying Party Endpoints`: Key requirements for the implementation of (Q)EAAs verification endpoints.
 
@@ -250,9 +246,9 @@ To implement verification functionalities following specific protocols, to send 
 
 To become registered as Relying Party within the system, by completing the administrative and technical procedure and be a reliable actor when requesting User’s data.
 
-- **Section** :ref:`onboarding-high-level:Onboarding System': Overview of the onboarding system architecture and the Relying Party registration process.
+- **Section** :ref:`onboarding-high-level:Onboarding System`: Overview of the onboarding system architecture and the Relying Party registration process.
 - **Section** :ref:`entity-onboarding:Entity Onboarding`: Focus on implementation procedures for Relying Party registration. 
-- **Section** :ref:`x5c-evaluation:X.509 Certificate Management Operations': Operational procedures for managing X.509 Certificates within the IT-Wallet federation.
+- **Section** :ref:`x5c-evaluation:X.509 Certificate Management Operations`: Operational procedures for managing X.509 Certificates within the IT-Wallet federation.
 
 
 
