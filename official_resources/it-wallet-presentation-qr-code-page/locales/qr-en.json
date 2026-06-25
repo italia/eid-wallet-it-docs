@@ -34,7 +34,7 @@
   "failureText": "Remember that to log in with IT-Wallet, you must consent to the reading of your information. If the problem persist, please contact the support service.",
   "retryLabel": "Try again",
   "contactSupportLabel": "Contact support",
-  "demoPayloadLabel": "Demo QR payload (Authorization Request)",
+  "demoPayloadLabel": "QR Code payload (Authorization Request)",
   "footer": {
     "nav_label": "Legal links",
     "legal_notice": "Legal notes",

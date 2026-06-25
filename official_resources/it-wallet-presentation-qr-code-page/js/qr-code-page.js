@@ -68,8 +68,10 @@ function applyQrVisualConfig(config) {
   }
 
   const payloadPreview = document.getElementById('qr-payload-preview');
+  const payloadUrl = buildDemoQrPayload(config);
   if (payloadPreview) {
-    payloadPreview.textContent = buildDemoQrPayload(config);
+    payloadPreview.href = payloadUrl;
+    payloadPreview.textContent = payloadUrl;
   }
 }
 
