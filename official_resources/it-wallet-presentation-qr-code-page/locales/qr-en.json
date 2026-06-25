@@ -21,7 +21,7 @@
   "login_logo": "Log in with your digital wallet",
   "contentTitle": "Scan the QR code",
   "qrCodeValidInfo": "The QR code is valid for <b id=\"timer\">{{seconds}}</b> seconds",
-  "supportText": "Use <b>{{walletName}}</b> or your smartphone camera",
+  "supportText": "Use <b>{{walletName}}</b> or your smartphone <b>camera</b>",
   "qrCodeLinkAriaLabel": "QR code for signing in with {{walletName}}",
   "backLabel": "Go back",
   "cancelLabel": "Cancel",

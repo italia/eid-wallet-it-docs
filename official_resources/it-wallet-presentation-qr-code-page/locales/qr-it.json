@@ -21,7 +21,7 @@
   "login_logo": "Accedi con il tuo wallet digitale",
   "contentTitle": "Inquadra il codice QR",
   "qrCodeValidInfo": "Il codice QR è valido per <b id=\"timer\">{{seconds}}</b> secondi",
-  "supportText": "Usa la funzionalità di <b>{{walletName}}</b> o la fotocamera del tuo smartphone",
+  "supportText": "Usa la funzionalità di <b>{{walletName}}</b> o la <b>fotocamera</b> del tuo smartphone",
   "qrCodeLinkAriaLabel": "Codice QR per l'autenticazione con {{walletName}}",
   "backLabel": "Torna indietro",
   "cancelLabel": "Annulla",
