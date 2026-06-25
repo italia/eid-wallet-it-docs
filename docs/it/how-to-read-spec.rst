@@ -268,23 +268,29 @@ Il Relying Party è l'utilizzatore finale delle credenziali. Il suo compito è t
 
 - **Sezione** ref:`digital-credential-flows:Flussi relativi agli attestati elettronici`: per l’implementazione del flusso di presentazione sia per scenari remoti che di prossimità (ref:`credential-presentation:12.2`. 
 
-- **Sezione** :ref:`endpoints:Endpoints`: per implementare correttamente le interfacce di ricezione e verifica dei dati (riferimento ai paragrafi :ref:`relying-party-endpoints:Endpoint della Relying Party` e :ref:`relying-party-endpoints:Endpoint del Backend del Provider di Relying Party`). 
+- **Sezione** :ref:`relying-party-solution:Soluzione di Relying Party`: Requisiti tecnici e funzionali relativi ai componenti e alle funzionalità per la verifica del PID e dei (Q)EAA. 
 
-- **Sezione** :ref:`security-privacy-considerations:Considerazioni di Sicurezza e Privacy`: per implementare soluzioni che rispettino tutti i parametri di sicurezza.  
+- **Sezione** :ref:`digital-credential-flows:Flussi relativi agli Attestati Elettronici`: Requisiti tecnici e funzionali relativi ai flussi di emissione e presentazione dei (Q)EAA. 
 
-- **Sezione** :ref:`log-retention-policy:Politiche Generali di Conservazione dei Log`: per implementare soluzioni che rispettino i parametri di sicurezza e i requisiti definiti nella norma ISO/IEC 27001.
+- **Sezione** :ref:`relying-party-endpoint:Endpoint della Relying Party`: Requisiti chiave per l’implementazione degli endpoint di verifica dei (Q)EAA.
+
+- **Sezione** :ref:`security-privacy-considerations:Considerazioni di Sicurezza e Privacy`: Requisiti di sicurezza e conformità per le soluzioni implementate. 
+
+- **Sezione** :ref:`log-retention-policy:Politiche Generali di Conservazione dei Log`: Requisiti generali per la conservazione dei log e requisiti specifici per le Relying Party, in conformità alla norma ISO/IEC 27001. 
+
+- **Sezione** :ref:`test-plans:Test Plans`: Guida alla configurazione dell’ambiente di test e alla validazione delle interazioni backend tramite l’utilizzo delle matrici di test fornite dall’ecosistema. 
 
 **Fase 4: Registrazione**
 
-**Obiettivo**: accreditarsi nel sistema in modo tale da essere riconosciuti come attore sicuro e affidabile nel momento della richiesta dei dati dell’utente.  
+Registrarsi al sistema come Relying Party, completando le procedure amministrative e tecniche previste, e diventare soggetto affidabile per la richiesta dei dati degli Utenti. 
 
-- **Sezione** :ref:`onboarding-high-level:Sistema di Onboarding`: per conoscere le modalità di partecipazione all’ecosistema IT-Wallet (riferimento al paragrafo :ref:`onboarding-high-level:Journey dell'Operatore della Relying Party`).  
+- **Sezione** :ref:`onboarding-high-level:Sistema di Onboarding`: Approfondimento sulle procedure tecniche per la registrazione della Relying Party. 
 
-- **Sezione** :ref:`x5c-evaluation:Operazioni di Gestione dei Certificati X.509`: per conoscere le procedure operative per la gestione dei Certificati X.509 all'interno della federazione IT-Wallet. 
+- **Sezione** :ref:`entity Onboarding:Onboarding delle Entità`: Approfondimento sulle procedure tecniche per la registrazione della Relying Party. 
 
-- **Sezione** :ref:`test-plans:Test Plans`: per avere informazioni in merito a come gli ambienti di test possono supportare implementatori, auditor e ambienti di test di conformità nella validazione del comportamento delle Soluzioni Wallet.
+- **Sezione** :ref:`x5c-evaluation:Operazioni di Gestione dei Certificati X.509`: Procedure operative per la gestione dei certificati X.509 nell’ambito della federazione IT-Wallet. 
+
 
 
 .. note::
 
-    Per gli implementatori che lavorano su soluzioni che coprono più ruoli (ad esempio, una combinazione di Soluzioni di Fornitore di Credenziali e Relying Party), si raccomanda di rivedere le sezioni per tutti i ruoli pertinenti prima di procedere con gli sviluppi. È importante prestare particolare attenzione ai requisiti di Entity Configuration e ai flussi di federazione che si applicano a più ruoli.
