@@ -1,15 +1,12 @@
 .. include:: ../common/common_definitions.rst
 .. include:: ../common/symbols.rst
 
-
-
 L'Infrastruttura di Trust
-==========================
+=========================
 
 L'ecosistema IT-Wallet opera all'interno di un'infrastruttura di trust federata dove le entità partecipanti stabiliscono relazioni di trust crittografiche e mantengono la conformità con standard di sicurezza comuni. Questa infrastruttura fornisce le fondamenta per operazioni sicure di Credenziali Elettroniche tra i partecipanti dell'ecosistema.
 
 Questa sezione definisce l'implementazione del Trust Model in un'infrastruttura che è conforme a OpenID Federation 1.0 `OID-FED`_. Tale infrastruttura nazionale prevede un'API RESTful per la distribuzione di metadati, policy dei metadati, trust mark, chiavi pubbliche crittografiche e certificati X.509, e lo stato di revoca dei partecipanti, chiamati anche Entità di Federazione.
-
 
 Questa infrastruttura di trust lavora in coordinamento con l'Infrastruttura del Registro (vedi :ref:`registry:Infrastruttura del Registro`) per abilitare i processi di onboarding delle entità dettagliati in :ref:`entity-onboarding:Onboarding delle Entità`. In particolare, abilita l'implementazione tecnica dei processi di onboarding descritti in :ref:`entity-onboarding:Onboarding delle Entità` e supporta gli scenari operativi illustrati in :ref:`onboarding-high-level:Onboarding Journey Maps`.
 
@@ -18,6 +15,7 @@ Questa infrastruttura di trust lavora in coordinamento con l'Infrastruttura del 
 **Supporto al Ciclo di Vita delle Entità**: Durante tutto il ciclo di vita operativo di un'entità, l'Infrastruttura di Trust mantiene attestazioni di trust aggiornate, gestisce la rotazione delle chiavi, gestisce scenari di revoca e supporta il monitoraggio della conformità. Questo supporta direttamente le procedure di gestione del ciclo di vita dettagliate in :ref:`entity-onboarding:Onboarding delle Entità`.
 
 **Integrazione con l'Infrastruttura del Registro**: L'Infrastruttura di Trust implementa il componente Federation Registry dell'Infrastruttura del Registro più ampia, fornendo le fondamenta tecniche per la scoperta delle entità e la validazione del trust che sottende tutte le procedure di onboarding.
+
 
 .. plantuml:: plantuml/trust-roles.puml
    :width: 99%
@@ -75,8 +73,6 @@ Di seguito la tabella con il riepilogo dei ruoli delle Entità di Federazione, m
      - Leaf
      -
 
-.. _trust-infrastructure-integrazione-tra-infrastruttura-di-trust-e-registry:
-
 Integrazione dell'Infrastruttura di Trust e del Registro
 --------------------------------------------------------
 
@@ -84,9 +80,8 @@ L'Infrastruttura di Trust implementa il componente Federation Registry dell'Infr
 
 Questo Federation Registry opera insieme ad altri componenti del registro (Claims Registry, AS Registry, Catalogo degli Attestati Elettronici, Taxonomy) per fornire supporto completo all'ecosistema. Per l'architettura completa del registro e le interazioni dei componenti, vedi :ref:`registry:Infrastruttura del Registro`.
 
-
 Proprietà Generali
--------------------
+------------------
 
 L'architettura dell'infrastruttura di trust è fondata sui seguenti principi fondamentali:
 
@@ -127,7 +122,7 @@ L'architettura dell'infrastruttura di trust è fondata sui seguenti principi fon
      - A differenza dei sistemi centralizzati tradizionali, l'infrastruttura di trust consente un approccio decentralizzato.
 
 Requisiti dell'Infrastruttura di Trust
----------------------------------------
+--------------------------------------
 
 Questa sezione include i requisiti necessari per la corretta implementazione e il funzionamento dell'infrastruttura di trust.
 
@@ -226,57 +221,7 @@ Tutti gli endpoint elencati di seguito sono definiti nelle specifiche `OID-FED`_
      - Restituisce una traccia storica degli eventi di registrazione sui Subordinati Immediati, come registrazione, revoca e aggiornamenti delle loro Chiavi dell'Entità di Federazione. Vedi la sezione :ref:`trust-infrastructure:Federation Subordinate Events Endpoint` per maggiori dettagli.
      - Trust Anchor, Intermediario
 
-
 Tutte le risposte degli endpoint di federazione sono sotto forma di JWT firmato, ad eccezione dell'endpoint di Elenco Subordinati e dell'endpoint di Stato Trust Mark che sono serviti come JSON semplice per impostazione predefinita. L'Endpoint Eventi Subordinati della Federazione restituisce anche JWT firmati con il tipo di contenuto ``application/entity-events-statement+jwt``.
-
-Federation Subordinate Events Endpoint
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-L'Endpoint Eventi Subordinati della Federazione è definito in `OID-FED-SUBORDINATE-EVENTS`_. Questo endpoint fornisce un meccanismo per Trust Anchor e Intermediari per pubblicare eventi storici relativi ai loro Subordinati Immediati. Fornisce trasparenza e responsabilità all'interno della federazione fornendo un record storico completo di eventi significativi che influenzano i partecipanti della federazione.
-
-Per i dettagli completi della specifica, inclusi la posizione dell'endpoint, il formato della richiesta, il formato della risposta, i claim JWT, i parametri degli oggetti evento e i tipi di evento supportati, fare riferimento a `OID-FED-SUBORDINATE-EVENTS`_.
-
-Di seguito è riportato un esempio non normativo di una richiesta e risposta dell'Endpoint Eventi Subordinati della Federazione:
-
-**Esempio di Richiesta**:
-
-.. code-block:: http
-
-   GET /federation_subordinate_events_endpoint?sub=https%3A%2F%2Frp%2Eexample%2Eorg HTTP/1.1
-   Host: immediate-superior.example.org
-
-**Esempio di Risposta**:
-
-.. code-block:: json
-
-   {
-     "iss": "https://immediate-superior.example.org",
-     "sub": "https://rp.example.org",
-     "iat": 1590000000,
-     "federation_registration_events": [
-       {
-         "iat": 1590000000,
-         "event": "registration"
-       },
-       {
-         "iat": 1590000000,
-         "event": "jwks_update"
-       },
-       {
-         "iat": 1600000000,
-         "event": "revocation",
-         "event_description": "compromised node"
-       },
-       {
-         "iat": 1610000000,
-         "event": "registration"
-       }
-     ]
-   }
-
-**Integrazione con la Gestione del Ciclo di Vita delle Entità**:
-
-Questo endpoint completa le procedure di gestione del ciclo di vita delle entità definite in :ref:`entity-onboarding:Onboarding delle Entità` fornendo un tracciamento dettagliato di tutti gli eventi significativi che influenzano i partecipanti della federazione. Supporta sia il monitoraggio automatizzato della conformità che i processi di audit manuale.
 
 Configurazione della Federazione
 --------------------------------
@@ -415,7 +360,7 @@ L'Entity Configuration del Trust Anchor, oltre ai parametri comuni elencati sopr
 
 
 Trust Mark degli Intermediari di Relying Party
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Nell'ecosistema IT-Wallet, gli Intermediari di Relying Party che agiscono per conto dei Relying Party (ai sensi dell'Art. 5b(8) del Regolamento eIDAS2 `EU_2024_1183`_) sono soggetti a uno specifico regime di Trust Mark che consente al Wallet di riconoscere e mostrare all'Utente che il RP richiedente opera tramite un Intermediario di Relying Party.
 
@@ -457,7 +402,7 @@ Di seguito è riportato un esempio non normativo di Entity Configuration del Tru
     }
 
 .. note::
-  Il Trust Mark con identificativo che termina con ``federation-entity/openid_credential_verifier_intermediary`` è emesso esclusivamente dal Trust Anchor ed è quello che il Wallet utilizza per verificare che un'entità sia un Intermediario di Relying Party riconosciuto. I Trust Mark ``https://<federation_authority_domain>/trust_marks/federation-entity/openid_credential_verifier`` DOVREBBERO invece essere emessi anche dagli Intermediari di Relying Party per le Foglie a loro afferenti. 
+  Il Trust Mark con identificativo che termina con ``federation-entity/openid_credential_verifier_intermediary`` è emesso esclusivamente dal Trust Anchor ed è quello che il Wallet utilizza per verificare che un'entità sia un Intermediario di Relying Party riconosciuto. I Trust Mark ``https://<federation_authority_domain>/trust_marks/federation-entity/openid_credential_verifier`` DOVREBBERO invece essere emessi anche dagli Intermediari di Relying Party per le Foglie a loro afferenti.
 
 
 Entity Configuration Foglie e Intermediari
@@ -568,7 +513,7 @@ I metadati *federation_entity* per le Foglie contiene i seguenti claim.
 
 
 I Subordinate Statement
-------------------------
+-----------------------
 
 I Trust Anchor e gli Intermediari pubblicano Subordinate Statement relativi ai loro Subordinati immediati.
 Il Subordinate Statement PUÒ contenere una policy di metadati e i Trust Mark relativi a un Subordinato.
@@ -595,7 +540,7 @@ Di seguito è riportato un esempio non normativo di un Subordinate Statement eme
     }
 
 .. code-block:: json
-  
+
     {
         "exp": 1649623546,
         "iat": 1649450746,
@@ -609,7 +554,7 @@ Di seguito è riportato un esempio non normativo di un Subordinate Statement eme
                     "crv": "P-256",
                     "x": "1kNR9Ar3MzMokYTY8BRvRIue85NIXrYX4XD3K4JW7vI",
                     "y": "slT14644zbYXYF-xmw7aPdlbMuw3T1URwI4nafMtKrY",
-                    "x5c": [ 
+                    "x5c": [
                       // <X.509 certificate about the Subordinate>
                       ]
                 }
@@ -712,7 +657,6 @@ Le Trust Chain possono anche essere verificate offline, utilizzando una delle ch
   Poiché l'Istanza del Wallet non è un'Entità di Federazione, il Meccanismo di Trust Evaluation relativo ad essa **richiede la presentazione del Wallet Attestation durante le fasi di emissione e presentazione delle credenziali**.
 
   Il Wallet Attestation trasmette tutte le informazioni richieste riguardanti l'istanza, come la sua chiave pubblica e qualsiasi altra informazione tecnica o amministrativa, senza alcun dato personale dell'Utente.
-
 
 Trust Chain
 -----------
@@ -829,7 +773,7 @@ Le Trust Evaluation implementano modi diversi, come definito di seguito:
 
 * **Valutazione dei Trust Mark**: I Trust Mark sono valutati per garantire la conformità continua alle policy di federazione. Questi marchi indicano l'aderenza a standard e pratiche specifici richiesti dalla federazione.
 
-* **Valutazione delle Policy**: Le Istanze del Wallet e i Relying Party DEVONO verificare che il Credential Issuer sia autorizzato nell'emissione della Credenziale di loro interesse. Metadati, policy dei metadati e Trust Mark sono utilizzati per l'implementazione di questi controlli.
+* **Valutazione delle Policy**: Le Istanze del Wallet e i Relying Party DEVONO verificare che il Credential Issuer sia autorizzato nell'emissione della Credenziale di loro interesse. Metadati, policy dei metadati e Trust Mark sono utilizzati per l'implementazione di questi controlli (:ref:`WP_050a <wallet-credential-issuance-testcases>`).
 
 Nel processo rappresentato nel diagramma di sequenza sottostante, l'Istanza del Wallet utilizza l'API di Federazione per scoprire e raccogliere tutti i Credential Issuer abilitati all'interno della federazione. Il processo di scoperta produce la Trust Chain. Quando la Trust Chain è fornita staticamente all'interno di una richiesta firmata o Credenziale, RICHIEDE solo di essere aggiornata quando la connessione internet è disponibile, mentre DEVE essere aggiornata quando la Trust Chain fornita staticamente risulta scaduta.
 
@@ -851,11 +795,11 @@ Le Trust Evaluation sono condotte come segue:
 
 * **Scoperta di Entità di Federazione**: Quando l'Istanza del Wallet riceve una richiesta firmata emessa da un Relying Party, l'Istanza del Wallet DEVE verificare l'identità del Relying Party utilizzando il processo di Scoperta di Entità di Federazione definito in :ref:`trust-infrastructure:Discovery della Federazione`. Questo comporta l'interrogazione degli endpoint di federazione per confermare lo stato di validità del Relying Party e la conformità al Trust Framework e valutare la firma della richiesta utilizzando il materiale crittografico ottenuto dalla Trust Chain.
 
-* **Trust Chain**: L'Istanza del Wallet valuta le Trust Chain del Relying Party utilizzando i meccanismi definiti in :ref:`trust-infrastructure:Trust Chain`. Le Trust Chain possono essere fornite staticamente o costruite attraverso un processo di Scoperta di Entità di Federazione, per garantire che il Relying Party faccia parte di una federazione riconosciuta e fidata.
+* **Trust Chain**: L'Istanza del Wallet valuta le Trust Chain del Relying Party utilizzando i meccanismi definiti in :ref:`trust-infrastructure:Trust Chain`. Le Trust Chain possono essere fornite staticamente o costruite attraverso un processo di Scoperta di Entità di Federazione, per garantire che il Relying Party faccia parte di una federazione riconosciuta e fidata (:ref:`WP_079 <wallet-credential-presentation-testcases>`).
 
-* **Valutazione dei Trust Mark**: I Trust Mark sono valutati per garantire la conformità continua alle policy di federazione. Questi marchi indicano l'aderenza a standard e pratiche specifici richiesti dalla federazione. I Relying Party POSSONO includere Trust Mark nella loro Entity Configuration per segnalare proprietà amministrative e conformità a profili specifici, come le concessioni nell'interagire con utenti minorenni.
+* **Valutazione dei Trust Mark**: I Trust Mark sono valutati per garantire la conformità continua alle policy di federazione. Questi marchi indicano l'aderenza a standard e pratiche specifici richiesti dalla federazione. I Relying Party POSSONO includere Trust Mark nella loro Entity Configuration per segnalare proprietà amministrative e conformità a profili specifici, come le concessioni nell'interagire con utenti minorenni (:ref:`WP_080 <wallet-credential-presentation-testcases>`).
 
-* **Valutazione delle Policy**: L'Istanza del Wallet DEVE verificare che il Relying Party sia autorizzato a richiedere la Credenziale di interesse. Metadati, policy dei metadati e Trust Mark sono utilizzati per implementare questi controlli.
+* **Valutazione delle Policy**: L'Istanza del Wallet DEVE verificare che il Relying Party sia autorizzato a richiedere la Credenziale di interesse. Metadati, policy dei metadati e Trust Mark sono utilizzati per implementare questi controlli (:ref:`WP_087 <wallet-credential-presentation-testcases>`).
 
 Nel processo raffigurato nel diagramma di sequenza sottostante, l'Istanza del Wallet utilizza l'API di Federazione per scoprire e raccogliere tutti i Relying Party abilitati all'interno della federazione. Il processo di scoperta produce la Trust Chain. Quando la Trust Chain è fornita staticamente all'interno di una richiesta firmata, deve solo essere aggiornata quando una connessione internet è disponibile, ma DEVE essere aggiornata se la Trust Chain fornita staticamente è scaduta.
 
@@ -868,7 +812,7 @@ Nel processo raffigurato nel diagramma di sequenza sottostante, l'Istanza del Wa
   Come mostrato nella figura, è richiesta una connessione internet per aggiornare la Trust Chain su un RP e controllare il suo stato di revoca.
 
 Stabilire Trust con il Relying Party che opera tramite Intermediario
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Quando un Relying Party opera tramite un Intermediario di Relying Party, l'Istanza del Wallet DEVE eseguire un processo di Trust Evaluation esteso che include la validazione del Trust Mark dell'Intermediario di Relying Party. Questo processo si svolge durante la fase di costruzione e validazione della Trust Chain e consente al Wallet di presentare all'Utente informazioni trasparenti sull'entità che ha registrato e garantisce il RP.
 
@@ -882,7 +826,7 @@ Il processo si articola nei seguenti passi:
 
 4. **Costruzione della Trust Chain tramite l'Intermediario di Relying Party**: L'Istanza del Wallet costruisce la Trust Chain completa: Entity Configuration del RP → Subordinate Statement emesso dall'Intermediario di Relying Party per il RP → Subordinate Statement emesso dal Trust Anchor per l'Intermediario di Relying Party → Entity Configuration del Trust Anchor. Questa catena attesta che il RP è una Foglia riconosciuta dall'Intermediario di Relying Party e che l'Intermediario di Relying Party è a sua volta riconosciuto dal Trust Anchor.
 
-5. **Presentazione all'Utente**: Una volta completata la validazione, l'Istanza del Wallet PUÒ indicare all'Utente che il Relying Party richiedente opera tramite un Intermediario di Relying Party riconosciuto, mostrando le informazioni identificative dell'Intermediario di Relying Party (ad esempio ``organization_name``) ottenute dalla sua Entity Configuration.
+5. **Presentazione all'Utente**: Una volta completata la validazione, l'Istanza del Wallet DEVE indicare all'Utente che il Relying Party richiedente opera tramite un Intermediario di Relying Party riconosciuto, mostrando le informazioni identificative dell'Intermediario di Relying Party (ad esempio ``organization_name``) ottenute dalla sua Entity Configuration.
 
 .. note::
   La presenza del Trust Mark con identificativo che termina con ``federation-entity/openid_credential_verifier_intermediary`` nell'EC dell'Intermediario di Relying Party costituisce la prova crittograficamente verificabile che l'entità è stata riconosciuta dal Trust Anchor come Intermediario di Relying Party autorizzato. L'Istanza del Wallet DEVE rifiutare la richiesta del RP se la Trust Chain non può essere costruita e validata tramite un Intermediario di Relying Party riconosciuto o direttamente tramite il Trust Anchor.
@@ -906,8 +850,6 @@ I dettagli di questo endpoint sono definiti nella `OID-FED`_ Sezione 8.7.
 Ogni JWT contenente una Trust Chain negli header JWT può essere verificato nel tempo, poiché l'intera Trust Chain è verificabile utilizzando la chiave pubblica del Trust Anchor.
 
 Anche se il Trust Anchor ha cambiato le sue chiavi crittografiche per la firma digitale, l'endpoint delle Chiavi Storiche di Federazione rende sempre disponibili le chiavi non più utilizzate per le verifiche di firma storiche.
-
-.. _trust-infrastructure-pki-x509:
 
 X.509 PKI
 ---------
@@ -955,15 +897,29 @@ Quando un partecipante auto-emette un Certificato X.509, aderisce ai seguenti re
 
 1. **Nome del Soggetto**: Il nome del soggetto del Certificato X.509 DEVE corrispondere all'identità del partecipante. Il nome del soggetto degli Intermediari e delle Foglie DEVE includere i seguenti attributi:
 
-  - ``Country Name (C)``: DEVE contenere il codice paese ISO a due lettere.
-  - ``State or Province Name (ST)``: DEVE contenere la regione o stato dove l'entità è localizzata.
-  - ``Locality Name (L)``: DEVE contenere la città dove l'entità è localizzata.
-  - ``Organization Name (O)``: DEVE contenere il nome legale dell'organizzazione.
-  - ``Organizational Unit Name (OU)``: PUÒ contenere il nome del dipartimento all'interno dell'organizzazione (opzionale).
-  - ``Common Name (CN)``: DEVE contenere il nome DNS dell'identificatore unico dell'Entità di Federazione, che è incluso nel valore sub (soggetto) nella sua Entity Configuration di federazione, rimuovendo ``https://`` e qualsiasi path web.
-  - ``Email Address``: DEVE contenere l'indirizzo email di contatto dell'organizzazione.
-  - ``organizationIdentifier``: DEVE contenere il numero di registrazione che identifica univocamente l'organizzazione all'interno del servizio di registrazione, utilizzando il valore OID ``2.5.4.97`` come definito in ``ITU-T X.500``.
-  
+   .. list-table::
+      :widths: 30 70
+      :header-rows: 1
+
+      * - Attributo
+        - Requisito
+      * - ``Country Name (C)``
+        - DEVE contenere il codice paese ISO a due lettere.
+      * - ``State or Province Name (ST)``
+        - DEVE contenere la regione o stato dove l'entità è localizzata.
+      * - ``Locality Name (L)``
+        - DEVE contenere la città dove l'entità è localizzata.
+      * - ``Organization Name (O)``
+        - DEVE contenere il nome legale dell'organizzazione.
+      * - ``Organizational Unit Name (OU)``
+        - PUÒ contenere il nome del dipartimento all'interno dell'organizzazione (opzionale).
+      * - ``Common Name (CN)``
+        - DEVE contenere il nome DNS dell'identificatore unico dell'Entità di Federazione, che è incluso nel valore ``sub`` (soggetto) nella sua Entity Configuration di federazione, rimuovendo ``https://`` e qualsiasi path web.
+      * - ``Email Address``
+        - DEVE contenere l'indirizzo email di contatto dell'organizzazione.
+      * - ``organizationIdentifier``
+        - DEVE contenere il numero di registrazione che identifica univocamente l'organizzazione all'interno del servizio di registrazione, utilizzando il valore OID ``2.5.4.97`` come definito in ``ITU-T X.500``.
+
 2. **Subject Alternative Name (SAN)**: Il Certificato X.509 DEVE includere un ``SAN URI`` che DEVE corrispondere ai valori **sub** e **iss** della sua Entity Configuration di federazione.
 3. **Nome DNS**: Il Certificato X.509 DEVE includere un Nome DNS nel SAN che corrisponde al nome DNS contenuto all'interno dei valori **sub** e **iss** della sua Entity Configuration, rimuovendo ``https://`` e qualsiasi path web.
 4. **Certificate Revocation List (CRL)**: Se il Certificato X.509 emesso ha un tempo di scadenza superiore a 24 ore, l'Emittente X.509 DEVE pubblicare una CRL per i Certificati X.509 emessi. Questo elenco DEVE essere accessibile e regolarmente aggiornato per garantire che qualsiasi Certificato X.509 compromesso o non valido sia prontamente revocato con la motivazione della revoca, se presente.
@@ -992,8 +948,6 @@ Di seguito è riportato un esempio non normativo, in testo semplice (formato Ope
 
 Utilizzando il livello sottostante stabilito con OpenID Federation 1.0, tutti i certificati X.509 sono emessi in modo propriamente decentralizzato utilizzando il pattern di delegazione.
 
-
-.. _trust-infrastructure-revoca-dei-certificati-x509:
 
 Revoca di Certificati X.509
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1027,6 +981,54 @@ Di seguito è riportato un esempio non normativo, in testo semplice, che illustr
     Signature:
         5c:4f:3b:...
 
+Federation Subordinate Events Endpoint
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+L'Endpoint Eventi Subordinati della Federazione è definito in `OID-FED-SUBORDINATE-EVENTS`_. Questo endpoint fornisce un meccanismo per Trust Anchor e Intermediari per pubblicare eventi storici relativi ai loro Subordinati Immediati. Fornisce trasparenza e responsabilità all'interno della federazione fornendo un record storico completo di eventi significativi che influenzano i partecipanti della federazione.
+
+Per i dettagli completi della specifica, inclusi la posizione dell'endpoint, il formato della richiesta, il formato della risposta, i claim JWT, i parametri degli oggetti evento e i tipi di evento supportati, fare riferimento a `OID-FED-SUBORDINATE-EVENTS`_.
+
+Di seguito è riportato un esempio non normativo di una richiesta e risposta dell'Endpoint Eventi Subordinati della Federazione:
+
+**Esempio di Richiesta**:
+
+.. code-block:: http
+
+   GET /federation_subordinate_events_endpoint?sub=https%3A%2F%2Frp%2Eexample%2Eorg HTTP/1.1
+   Host: immediate-superior.example.org
+
+**Esempio di Risposta**:
+
+.. code-block:: json
+
+   {
+     "iss": "https://immediate-superior.example.org",
+     "sub": "https://rp.example.org",
+     "iat": 1590000000,
+     "federation_registration_events": [
+       {
+         "iat": 1590000000,
+         "event": "registration"
+       },
+       {
+         "iat": 1590000000,
+         "event": "jwks_update"
+       },
+       {
+         "iat": 1600000000,
+         "event": "revocation",
+         "event_description": "compromised node"
+       },
+       {
+         "iat": 1610000000,
+         "event": "registration"
+       }
+     ]
+   }
+
+**Integrazione con la Gestione del Ciclo di Vita delle Entità**:
+
+Questo endpoint completa le procedure di gestione del ciclo di vita delle entità definite in :ref:`entity-onboarding:Onboarding delle Entità` fornendo un tracciamento dettagliato di tutti gli eventi significativi che influenzano i partecipanti della federazione. Supporta sia il monitoraggio automatizzato della conformità che i processi di audit manuale.
 
 Osservazioni sulla Privacy
 --------------------------
@@ -1047,4 +1049,5 @@ Considerazioni sulla Decentralizzazione
 - Poiché la presentazione delle credenziali deve essere firmata, memorizzando le richieste e risposte di presentazione firmate, che includono la Trust Chain, l'Istanza del Wallet può avere lo snapshot della configurazione di federazione (Entity Configuration del Trust Anchor nella Trust Chain) e l'affidabilità verificabile del Relying Party con cui ha interagito.
 - Ogni attestazione firmata è di lunga durata poiché può essere validata crittograficamente anche quando la configurazione di federazione cambia o le chiavi dei suoi emittenti sono rinnovate.
 - Ogni partecipante dovrebbe essere in grado di aggiornare la sua Entity Configuration senza notificare i cambiamenti a qualsiasi terza parte. La policy dei metadati contenuta all'interno di una Trust Chain deve essere applicata per sovrascrivere qualsiasi informazione relativa ai metadati specifici del protocollo.
+
 

@@ -1,9 +1,8 @@
 .. include:: ../common/common_definitions.rst
 
-.. _wallet-provider-test-matrix:
 
 Matrice di Test per Wallet Provider
-------------------------------------
+-----------------------------------
 
 Questa sezione fornisce l'insieme di casi di test per verificare la conformità di un'implementazione di Soluzione Wallet e Istanza del Wallet alle regole tecniche definite nell'ecosistema IT-Wallet.
 Il piano di test è basato sui requisiti estratti dalle seguenti Sezioni:
@@ -22,14 +21,14 @@ Il piano di test è basato sui requisiti estratti dalle seguenti Sezioni:
 .. _wallet-provider-backend-testcases:
 
 Casi di Test per Backend del Fornitore del Wallet
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Questa sezione elenca i casi di test dalle Sezioni:
 
 - :ref:`wallet-solution-requirements:Requisiti della Soluzione Wallet`
 - :ref:`wallet-solution-components:Componenti della Soluzione Wallet`
 - :ref:`wallet-instance:Istanza del Wallet`
 - :ref:`wallet-provider-entity-configuration:Entity Configuration del Fornitore di Wallet`
-- :ref:`wallet-solution-metadata-metadati-della-soluzione-wallet`
+- :ref:`wallet-solution-metadata:Metadati della Soluzione Wallet`
 - `e-Service PDND Wallet Provider Catalogue <wallet-provider-endpoint.html#e-service-pdnd-wallet-provider-catalogue0>`_
 
 
@@ -143,7 +142,7 @@ Questa sezione elenca i casi di test dalle Sezioni:
 .. _wallet-instance-testcases:
 
 Casi di Test per Istanza del Wallet
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Questa sezione elenca i casi di test dalle Sezioni:
 
 - `Configuration of the Federation <trust.html#configuration-of-the-federation>`_
@@ -333,7 +332,7 @@ Questa sezione elenca i casi di test dalle Sezioni:
 .. _wallet-credential-issuance-testcases:
 
 Casi di Test per Fase di Issuance
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Questa sezione elenca i casi di test dalle Sezioni:
 
 - :ref:`credential-issuance:Emissione di Attestati Elettronici`
@@ -392,7 +391,7 @@ Questa sezione elenca i casi di test dalle Sezioni:
      - Istanza del Wallet verifica che ogni ``credential_configuration_id`` richiesto appaia nei metadata ``credential_configurations_supported`` del Credential Issuer; ID mancanti causano il fallimento dell'offerta.
    * - WP_051
      - Issuance, Interoperabilità
-     - Richiesta Attestato Elettronico utilizzando Flusso OAuth 2.0 Code 
+     - Richiesta Attestato Elettronico utilizzando Flusso OAuth 2.0 Code
      - Istanza del Wallet richiede con successo PID/(Q)EAA dal Fornitore PID/(Q)EAA utilizzando il Flusso Authorization Code come in `OpenID4VCI`_.
    * - WP_052
      - Issuance, Interoperabilità
@@ -606,7 +605,7 @@ Questa sezione elenca i casi di test dalle Sezioni:
 .. _wallet-credential-presentation-testcases:
 
 Casi di Test per Fase di Presentazione
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Questa sezione elenca i casi di test dalla Sezione :ref:`credential-presentation:Presentazione dell'Attestato Elettronico`,
 coprendo sia le fasi di presentazione **Flusso Remoto** che **Flusso di Prossimità**.
 
@@ -827,7 +826,7 @@ coprendo sia le fasi di presentazione **Flusso Remoto** che **Flusso di Prossimi
    * - WP_103e
      - Flusso-prossimità, Presentazione, Interoperabilità
      - Auxiliary Data Record per DeviceEngagement
-     - Istanza del Wallet fornisce un Auxiliary Data Record che trasporta il DeviceEngagement (tipo ``iso.org:18013:deviceengagement``, ID ``mdoc``) utilizzando NFC Forum external type (0x04); ogni Alternative Carrier Record fa riferimento a questo record.
+     - Istanza del Wallet fornisce un Auxiliary Data Record che trasporta il DeviceEngagement (tipo ``iso.org:18013:deviceengagement``, ID ``mdoc``) utilizzando NFC Forum external type (0x04); ogni Alternative Carrier Record DEVE fare riferimento a questo record.
    * - WP_103f
      - Flusso-prossimità, Presentazione, Interoperabilità
      - Alternative Carrier Records
@@ -933,18 +932,15 @@ coprendo sia le fasi di presentazione **Flusso Remoto** che **Flusso di Prossimi
      - Chiudere canale di comunicazione
      - Istanza del Wallet chiude il canale attivo disconnettendo il link BLE o terminando lo scambio APDU NFC; non rimangono canali aperti.
 
-   
-
 .. _user-attribute-deletion-testcases:
 
 Casi di Test per Eliminazione Attributi dell'Utente Lato Relying Party
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Questa sezione elenca i casi di test dalle Sezioni:
 
 - :ref:`user-attribute-deletion:Eliminazione degli Attributi dell'Utente`
 - `Relying Party Provider Backend Erasure Endpoint <relying-party-provider-backend-endpoint.html#relying-party-provider-backend-erasure-endpoint>`_
-
 
 .. list-table::
    :class: longtable
@@ -991,7 +987,7 @@ Questa sezione elenca i casi di test dalle Sezioni:
 .. _credential-backup-testcases:
 
 Casi di Test per Backup e Ripristino degli Attestati Elettronici
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Questa sezione elenca i casi di test dalla Sezione :ref:`backup-restore:Backup e Ripristino`.
 
@@ -1096,7 +1092,7 @@ Questa sezione elenca i casi di test dalla Sezione :ref:`backup-restore:Backup e
 .. _wallet-instance-optional-testcases:
 
 Casi di Test Opzionali per Istanza del Wallet
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Questa sezione elenca i casi di test dalle Sezioni:
 
@@ -1291,3 +1287,5 @@ Questi casi di test sono opzionali e sono stati progettati per l'implementazione
      - Inizializzazione / Registrazione Wallet, Ciclo di vita, Interoperabilità
      - Fallimento Key Binding (fallimento Integrity Assertion)
      - Quando l'Integrity Assertion in una richiesta Key Binding non passa la validazione (es. il dispositivo è manomesso), il Fornitore del Wallet restituisce una risposta ``403 Forbidden`` con codice errore ``invalid_request``.
+
+
