@@ -106,60 +106,68 @@ L’Authentic Source è il proprietario del dato. Il suo ruolo è garantire che 
 
 - **Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`: per conoscere nello specifico il ciclo di vita e la gestione degli Attestati elettronici (riferimento al paragrafo :ref:`credential-revocation:Ciclo di vita degli Attestati Elettronici`) 
 
-- **Sezione** :ref:`security-privacy-considerations:Considerazioni di Sicurezza e Privacy` per implementare soluzioni che rispettino tutti i parametri di sicurezza  
 
-- **Sezione** :ref:`log-retention-policy:Politiche Generali di Conservazione dei Log`: per implementare soluzioni che rispettino i parametri di sicurezza e i requisiti definiti nella norma ISO/IEC 27001 
-
+- **Sezione** :ref:`log-retention-policy:Politiche Generali di Conservazione dei Log`: Requisiti generali per la conservazione dei log e requisiti specifici per le Fonti Autentiche, in conformità alla norma ISO/IEC 27001. 
+- **Sezione** :ref:`test-plans:Test Plans`: Guida alla configurazione dell’ambiente di test e alla validazione delle interazioni backend tramite l’utilizzo delle matrici di test fornite dall’ecosistema. 
 **Fase 4: Registrazione**
 
-**Obiettivo**: accreditarsi come Fonte Autentica nel sistema rispettando le procedure amministrative e tecniche che garantiscono sull’affidabilità dell'ente. 
+Registrarsi al sistema come Fonte Autentica, completando le procedure amministrative e tecniche richieste. 
 
-- **Sezione** :ref:`onboarding-high-level:Sistema di Onboarding`: per conoscere le modalità di partecipazione all’ecosistema IT-Wallet e tutto ciò che riguarda la riconoscibilità dei propri dati da parte di tutti gli attori (riferimento al paragrafo :ref:`onboarding-high-level:Processo di registrazione della Fonte Autentica`).  
+- **Sezione** :ref:`onboarding-high-level:Sistema di Onboarding`: Panoramica dell’architettura del sistema di onboarding e del processo di registrazione della Fonte Autentica. 
 
-- **Sezione** :ref:`x5c-evaluation:Operazioni di Gestione dei Certificati X.509`: per conoscere le procedure operative per la gestione dei Certificati X.509 all'interno della federazione IT-Wallet. 
+- **Sezione** :ref:`entity-onboarding:Onboarding delle Entità`: Approfondimento sulle procedure tecniche per la registrazione della Fonte Autentica. 
+
+- **Sezione** :ref:`x5c-evaluation:Operazioni di Gestione dei Certificati X.509`: Procedure operative per la gestione dei certificati X.509 nell’ambito della federazione IT-Wallet. 
 
 
-**Wallet Provider**
+**Fornitore di Wallet**
 ~~~~~~~~~~~~~~~~~~~
 
-Il Wallet Provider è colui che progetta il portafoglio digitale, pubblico o privato. Funge da punto di contatto diretto con il cittadino e la sua sfida consiste nel coniugare un'esperienza utente fluida e intuitiva con i più alti standard di sicurezza. 
-**Focus**: rispetto dei protocolli e degli standard di sicurezza, fluidità dell’esperienza utente, rispetto delle linee guida del sistema IT-Wallet. 
+Il Fornitore di Wallet si occupa della progettazione e dello sviluppo della Soluzione Wallet, che consente all’Utente di conservare, gestire e presentare il proprio PID e i propri (Q)EAA. 
 
-**Fase 1: Scoperta del sistema IT-Wallet**
+**Fase 1: Scoperta**
 
-**Obiettivo:** conoscere il contesto di riferimento, i requisiti tecnici e la normativa per entrare a far parte della Trust Chain (catena di fiducia) su cui si fonda tutto il sistema. 
+Comprendere il funzionamento generale dell’ecosistema, l’architettura tecnica e l’Infrastruttura di Trust. 
 
-- **Sezione** :ref:`introduction:Introduzione`: per comprendere l’ambito e il linguaggio normativo dell'ecosistema IT-Wallet. 
+- **Sezione** :ref:`introduction:Introduzione`: Scopo e contesto normativo del Sistema IT-Wallet.
 
-- **Sezione** :ref:`architecture-overview:Panoramica dell'Architettura`: per conoscere l’Architettura del sistema IT-Wallet, in termini di governance e processi operativi abilitati.  
+- **Sezione** :ref:`architecture-overview:Panoramica dell'Architettura`: Panoramica dell’architettura del Sistema IT-Wallet in termini di governance e processi operativi abilitati. 
 
-- **Sezione** :ref:`trust-infrastructure:L'Infrastruttura di Trust`: per comprendere il funzionamento della Trust Chain e capire come validare gli attestati delle Fonti Autentiche (AS) e degli Issuer (CI). 
+- **Sezione** :ref:`trust-infrastructure:L'Infrastruttura di Trust`: Requisiti chiave del modello di fiducia federato e dei meccanismi di valutazione della fiducia tra le entità.
 
-- **Sezione** :ref:`defined-terms-and-references:Termini Definiti e Riferimenti`: per conoscere i riferimenti normativi, i termini definiti e gli standard tecnici per consentire un'interoperabilità sicura e corretta tra tutti i partecipanti (puoi ricorrere a questa sezione per ogni dubbio su terminologia, standard di riferimento, acronimi...). 
+- **Sezione** :ref:`defined-terms-and-references:Termini Definiti e Riferimenti`: Terminologia completa, riferimenti normativi, documentazione, risorse e strumenti aggiuntivi, linee guida per i contributi. 
 
-**Fase 2: Design**
+**Fase 2: Progettazione**
 
-**Obiettivo**: definire l'identità visiva del Wallet, progettare l’esperienza utente, modellare l'entità tecnica e scegliere gli algoritmi crittografici che garantiranno la protezione dei dati sul dispositivo. 
+Comprendere i requisiti relativi all’Esperienza Utente e progettare la Soluzione Wallet secondo modelli comuni, al fine di garantirne l’usabilità e l’accessibilità. 
 
-- **Sezione** :ref:`brand-identity:Brand Identity`: per garantire che l'App rispetti le linee guida di comunicazione e l'identità visiva del sistema IT-Wallet.  
+- **Sezione** :ref:`brand-identity:Brand Identity`: Panoramica della Brand Identity del Sistema IT-Wallet e indicazioni sugli asset di riferimento per il Fornitore di Wallet.
 
-- **Sezione** :ref:`functionalities:Design dell'Esperienza Utente`: per progettare interfacce semplici e sicure garantendo che l’esperienza utente sia immediata e intuitiva. 
+- **Sezione** :ref:`functionalities:Design dell'Esperienza Utente`: Requisiti chiave relativi ai modelli di interazione, ai layout delle interfacce e agli asset grafici, al fine di garantire un’esperienza utente efficace, fluida e assicurare coerenza tra le diverse Soluzioni Wallet.
 
-- **Sezione** :ref:`entities:Entità`: per conoscere i requisiti di implementazione e gli attributi necessari per configurare la propria entità (riferimento al paragrafo :ref:`Soluzione Wallet`). 
-
-**Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`: per progettare come l'App gestirà tecnicamente il ciclo di vita dei dati (archiviazione protetta e presentazione). 
-
-**Sezione** :ref:`algorithms:Algoritmi Crittografici`: per selezionare e progettare l'implementazione degli standard crittografici necessari alla messa in sicurezza delle chiavi e delle transazioni. 
+**Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`: Gestione degli Attestati Elettronici: Requisiti tecnici e funzionali relativi al ciclo di vita dei (Q)EAA. 
 
 **Fase 3: Implementazione**
 
-**Obiettivo**: implementare gli endpoint per la comunicazione e adottare gli standard tecnologici (es. SD-JWT) che assicurano al Wallet di interfacciarsi con gli altri attori.
+Implementare la Soluzione Wallet in conformità a specifici standard tecnologici, al fine di garantire la comunicazione tra la Soluzione Wallet e gli altri attori del Sistema. 
 
-- **Sezione** ref:`endpoints:Endpoints`: per implementare correttamente le interfacce (API) del Wallet Provider necessarie all'interoperabilità del sistema (riferimento al paragrafo ref:`endpoints:Endpoint del Fornitore di Wallet`). 
+- **Sezione** :ref:`wallet-solution:Soluzione Wallet`: Requisiti tecnici e funzionali relativi ai componenti, alle funzionalità e al ciclo di vita necessari per la configurazione della Soluzione Wallet. 
 
-- **Sezione** :ref:`security-privacy-considerations:Considerazioni di Sicurezza e Privacy`: per implementare soluzioni che rispettino tutti i parametri di sicurezza.  
+- **Sezione** :ref:`digital-credential-flows: Flussi relativi agli Attestati Elettronici`: Requisiti tecnici e funzionali relativi ai flussi di emissione e presentazione dei (Q)EAA.
 
-- **Sezione** :ref:`log-retention-policy:Politiche Generali di Conservazione dei Log`: per implementare soluzioni che rispettino i parametri di sicurezza e i requisiti definiti nella norma ISO/IEC 27001.
+- **Sezione** :ref:`wallet-provider-endpoint:Endpoint del Fornitore di Wallet`: Requisiti chiave per l’implementazione delle interfacce (API) del Fornitore di Wallet necessarie a garantire l’interoperabilità tra le entità. 
+
+- **Sezione** :ref:`registry-infrastructure:Infrastruttura del Registro`: Approfondimento sui componenti del Registro. 
+
+- **Sezione** :ref:`algorithms:Algoritmi Crittografici’: Selezione e implementazione degli standard crittografici necessari a garantire la sicurezza delle chiavi e delle transazioni. 
+
+- **Sezione** :ref:`security-privacy-considerations:Considerazioni di Sicurezza e Privacy`: Requisiti di sicurezza e conformità per le Soluzioni Wallet. 
+
+- **Sezione** :ref:`log-retention-policy:Politiche Generali di Conservazione dei Log`: Requisiti generali per la conservazione dei log e requisiti specifici per i Fornitori di Wallet, in conformità alla norma ISO/IEC 27001. 
+
+- **Sezione** :ref:`mobile-application-instance: Istanza dell'Applicazione Mobile`: Requisiti relativi all’istanza dell’applicazione mobile, con riferimento alla richiesta e alla risposta di inizializzazione. 
+
+- **Sezione** :ref:`test-plans:Test Plans`: Guida alla configurazione dell’ambiente di test e alla validazione delle interazioni backend tramite l’utilizzo delle matrici di test fornite dall’ecosistema. 
 
 **Fase 4: Registrazione**
 
