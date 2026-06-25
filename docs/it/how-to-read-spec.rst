@@ -53,11 +53,14 @@ Lettura per ruolo
 Lettura rapida per obiettivi  
 """"""""""""""""""""""""""""
 
-
-Lettura per fasi di progetto  
+Percorsi di lettura per ruolo
 """"""""""""""""""""""""""""
 
-Per un accesso semplificato agli argomenti di queste specifiche, di seguito viene presentato un percorso di lettura per ruoli che tiene conto della fase in cui si trovano a operare all’interno del sistema IT-Wallet con un rimando preciso alla sezione di interesse del documento. 
+Per facilitare la consultazione degli argomenti trattati in queste specifiche, di seguito sono riportati percorsi di lettura organizzati per ruolo. Ogni percorso è strutturato in base alle diverse fasi di adesione e partecipazione al Sistema IT-Wallet e contiene riferimenti diretti alle sezioni più rilevanti per ciascun ruolo. 
+
+I percorsi di lettura proposti hanno finalità orientativa e non sostituiscono la necessità di consultare le altre sezioni quando è richiesta una comprensione più ampia del sistema. 
+
+Per le entità interessate a operare in più ruoli, si raccomanda di approfondire tutti i percorsi di lettura relativi ai ruoli di interesse. 
 Fonte Autentica
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
