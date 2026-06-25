@@ -92,18 +92,21 @@ L’Authentic Source è il proprietario del dato. Il suo ruolo è garantire che 
 **Obiettivo**: conoscere i requisiti di implementazione degli attributi ritenuti necessari per tradurre i dati in un formato digitale standardizzato (EAA) riconosciuto dal Wallet.  
 
 
-- **Sezione** :ref:`functionalities:Design dell'Esperienza Utente`: per conoscere le modalità di ottenimento degli Attestati Elettronici da parte dell’utente (riferimento al paragrafo :ref:`functionalities:Ottenimento degli Attestati Elettronici di Attributi`). 
+- **Sezione** :ref:`functionalities:Design dell'Esperienza Utente`: Requisiti chiave relativi alle modalità con cui consentire agli Utenti di ottenere i (Q)EAA, alla struttura dei (Q)EAA, al loro stato e alla loro gestione nel tempo.
 
-- **Sezione** :ref:`entities:Entità`: per conoscere i requisiti di implementazione e in particolare gli attributi necessari per fornire l'Attestato Elettronico richiesto dall'Utente (riferimento a paragrafo :ref:`authentic-sources:Fonti Autentiche`) 
 
-**Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`:  per conoscere come i dati autorevoli e gli attributi diventano Credenziali Elettroniche e in cosa consiste il loro ciclo di vita.
+**Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`: Requisiti tecnici e funzionali relativi al ciclo di vita dei (Q)EAA. 
+
+- **Sezione** :ref:`e-service-pdnd-template:PDND e-Service Template`: Modello di riferimento contenente tutti i metadati tecnici e descrittivi necessari per la definizione dell’e-service. 
 
 **Fase 3: Implementazione**
 
-**Obiettivo**: adottare i requisiti che servono a realizzare le interfacce tecnologiche (API) necessarie per dialogare con i Credential Issuer gestendo l'intero ciclo di vita del dato. 
+Implementare le interfacce tecnologiche necessarie per comunicare con il Fornitore di Attestati Elettronici e gestire l’intero ciclo di vita dei dati associati ai (Q)EAA. 
 
-- **Sezione** :ref:`endpoints:Endpoints`: per implementare correttamente le interfacce (API) che permettono al Credential Issuer di recuperare i dati autorevoli in modo sicuro e standardizzato (riferimento a paragrafo :ref:`authentic-source-endpoint:Endpoint delle Fonti Autentiche`) 
+- **Sezione** :ref:`authentic-sources:Fonti Autentiche`: Ruolo e responsabilità della Fonte Autentica. 
+**Sezione** :ref:`e-service-pdnd:e-Service PDND`: Specifiche obbligatorie per l’integrazione con la PDND (Piattaforma Digitale Nazionale Dati) e relativi requisiti di interoperabilità per la pubblicazione di un e-service.
 
+**Sezione** :ref:`authentic-source-endpoint:Endpoint delle Fonti Autentiche`: Requisiti chiave per l’implementazione delle API che consentono al Credential Issuer di recuperare in modo sicuro e coerente i dati autorevoli e di gestirne il ciclo di vita tramite gli endpoint del Signal Hub. 
 - **Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`: per conoscere nello specifico il ciclo di vita e la gestione degli Attestati elettronici (riferimento al paragrafo :ref:`credential-revocation:Ciclo di vita degli Attestati Elettronici`) 
 
 
