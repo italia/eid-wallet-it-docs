@@ -1143,10 +1143,12 @@ Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazion
        * **base_uri**: URI base per il recupero del bundle di localizzazione (es. ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/credential-catalog/``).
        * **version**: Versione del formato del bundle di localizzazione.
   * - **authentic_sources**
-    - OBBLIGATORIO. Array di oggetti JSON delle Fonti Autentiche che fanno riferimento alle Fonti Autentiche autorizzate. Ogni oggetto DEVE contenere l'identificatore dell'entità FA e l'identificatore specifico della capacità dati:
+    - CONDIZIONALE. È OBBLIGATORIO solo se ``parent_credentials`` è assente. Array di oggetti JSON delle Fonti Autentiche che fanno riferimento alle Fonti Autentiche autorizzate. Ogni oggetto DEVE contenere l'identificatore dell'entità FA e l'identificatore specifico della capacità dati:
 
       * **id**: Identificatore stringa che fa riferimento all'entity_id della Fonte Autentica come registrato in :ref:`registry:Registro delle Fonti Autentiche`.
       * **dataset_id**: Identificatore stringa della specifica capacità dati/dataset utilizzato dall'Emittente dalla FA.
+  * - **parent_credentials**
+    - CONDIZIONALE. È OBBLIGATORIO solo se ``authentic_sources`` è assente. Array degli identificativi di ``credential_type`` relativi a Credenziali designate come Fonti Autentiche. Ogni elemento identifica una Credenziale che funge da Fonte Autentica durante il processo di emissione della Credenziale Digitale.
 
 .. note::
   L'unione di ``credential_type`` e ``version`` DEVE essere univoca nel Catalogo delle Credenziali.

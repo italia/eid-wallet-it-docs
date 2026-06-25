@@ -1139,10 +1139,12 @@ Each element of the ``credentials`` array contains at least the following inform
        * **base_uri**: Base URI for localization bundle retrieval (e.g., ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/credential-catalog/``).
        * **version**: Version of the localization bundle format.
   * - **authentic_sources**
-    - REQUIRED. Array of Authentic Source JSON objects referencing authorized Authentic Sources. Each object MUST contain the AS entity identifier and the specific data capability identifier:
+    - CONDITIONAL. It is REQUIRED only if ``parent_credentials`` is absent. Array of Authentic Source JSON objects referencing authorized Authentic Sources. Each object MUST contain the AS entity identifier and the specific data capability identifier:
 
       * **id**: String identifier referencing the Authentic Source entity_id as registered in the :ref:`registry:Authentic Source Registry`.
       * **dataset_id**: String identifier of the specific data capability/dataset used by the Issuer from the AS.
+  * - **parent_credentials**
+    - CONDITIONAL. It is REQUIRED only if ``authentic_sources`` is absent. Array of ``credential_type`` identifier corresponding to Credentials designated as Authentic Sources. Each element identifies a Credential that acts as an Authentic Source during the Digital Credential Issuance process.
 
 .. note::
   The union of ``credential_type`` and ``version`` MUST be unique in the Credential Catalog.
