@@ -1148,7 +1148,7 @@ Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazion
       * **id**: Identificatore stringa che fa riferimento all'entity_id della Fonte Autentica come registrato in :ref:`registry:Registro delle Fonti Autentiche`.
       * **dataset_id**: Identificatore stringa della specifica capacità dati/dataset utilizzato dall'Emittente dalla FA.
   * - **parent_credentials**
-    - CONDIZIONALE. È OBBLIGATORIO solo se ``authentic_sources`` è assente. Array degli identificativi di ``credential_type`` relativi a Credenziali designate come Fonti Autentiche. Ogni elemento identifica una Credenziale che funge da Fonte Autentica durante il processo di emissione della Credenziale Digitale.
+    - CONDIZIONALE. È OBBLIGATORIO solo se ``authentic_sources`` è assente. Array degli identificativi di ``credential_type`` relativi a Credenziali designate come fonti dei dati. Ogni elemento identifica una Credenziale che funge da Fonte Autentica durante il processo di emissione della Credenziale Digitale.
 
 .. note::
   L'unione di ``credential_type`` e ``version`` DEVE essere univoca nel Catalogo delle Credenziali.
