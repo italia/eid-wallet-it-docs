@@ -67,6 +67,29 @@ function buildAuthorizationRequestUrl(scheme, params) {
   return `${normalizedScheme}${separator}${query}`;
 }
 
+function generateUuid4() {
+  if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
+    return crypto.randomUUID();
+  }
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (char) => {
+    const random = Math.floor(Math.random() * 16);
+    const value = char === 'x' ? random : (random & 0x3) | 0x8;
+    return value.toString(16);
+  });
+}
+
+function withRandomRequestUriId(requestUri) {
+  if (!requestUri || typeof requestUri !== 'string') return requestUri;
+  try {
+    const url = new URL(requestUri, window.location.href);
+    url.searchParams.set('id', generateUuid4());
+    return url.toString();
+  } catch {
+    console.warn('qr-code-page: unable to randomize request_uri id', requestUri);
+    return requestUri;
+  }
+}
+
 function buildDemoQrPayload(config) {
   const params = {
     client_id: config.client_id,
@@ -387,6 +410,7 @@ async function fetchDemoConfig() {
 
 function applyDemoConfig() {
   const config = { ...demoConfig };
+  config.request_uri = withRandomRequestUriId(config.request_uri);
   if (selectedWallet.logo) {
     config.qrcode_logo_path = selectedWallet.logo;
   }
