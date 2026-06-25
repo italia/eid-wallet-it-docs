@@ -1,10 +1,10 @@
 .. include:: ../common/common_definitions.rst
 
+
 Matrice dei Test per il Credential Issuer
 -----------------------------------------
 
 Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici e team di sviluppo responsabili della creazione e del deployment di soluzioni Credential Issuer. È anche destinata agli organismi di valutazione che ispezionano e validano le implementazioni di soluzioni Credential Issuer.
-
 
 
 .. list-table::
@@ -227,7 +227,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_045
     - Emissione, Interoperabilità
     - Tabella dei codici di stato HTTP per la risposta PAR
-    - Quando l’elaborazione della richiesta PAR incontra errori, il Credential Issuer risponde come definito in :rfc:`9126`, secondo i codici di stato HTTP.
+    - Quando l’elaborazione della richiesta PAR incontra errori, il Credential Issuer risponde come definito in :rfc:`9126`, in accordo con la :ref:`Tabella dei Codici di Stato HTTP <table_par_error_code>`.
   * - CI_046
     - Emissione, Sicurezza e Privacy
     - Verifica dell’identità dell’utente durante la richiesta di autorizzazione
@@ -411,7 +411,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_085
     - Emissione, Interoperabilità
     - Tabella dei Codici di Stato HTTP per la Risposta di Credenziale
-    - Quando la Richiesta di Credenziale non contiene un Access Token valido, il Credential Endpoint restituisce una risposta di errore come definito nella Sezione 3 di [:rfc:`6750`], in accordo con la Tabella dei Codici di Stato HTTP.
+    - Quando la Richiesta di Credenziale non contiene un Access Token valido, il Credential Endpoint restituisce una risposta di errore come definito nella Sezione 3 di [:rfc:`6750`], in accordo con la :ref:`Tabella dei Codici di Stato HTTP <table_credential_error_code>`.
   * - CI_086
     - Emissione, Interoperabilità
     - Notification ID unificato per operazioni batch
@@ -419,7 +419,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_087
     - Emissione, Interoperabilità
     - Tabella dei Codici di Stato HTTP per la Risposta di Notifica
-    - Quando la Richiesta di Notifica non contiene un Access Token valido, il Notification Endpoint restituisce una risposta di errore come definito nella Sezione 3 di [:rfc:`6750`], in accordo con la Tabella dei Codici di Stato HTTP.
+    - Quando la Richiesta di Notifica non contiene un Access Token valido, il Notification Endpoint restituisce una risposta di errore come definito nella Sezione 3 di [:rfc:`6750`], in accordo con la :ref:`Tabella dei Codici di Stato HTTP <table_notification_error_code>`.
   * - CI_088
     - Emissione, Sicurezza
     - Restrizione dello scope dell’Access Token
@@ -547,7 +547,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_117
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Attributi Utente PID domestico
-    - Il PID è fornito con successo con gli attributi utente definiti nella rispettiva :ref:`tabella degli Attributi PID dell'Utente <table_sd-jwt-vc_parameters>`.
+    - Il PID è fornito con successo con gli attributi utente definiti nella rispettiva :ref:`tabella degli Attributi PID dell'Utente <table_sd-jwt-vc_pid_parameters>`.
   * - CI_118
     - Modello di Dati e ciclo di vita, Emissione, Interoperabilità
     - Formati di Credenziali (Q)EAA
@@ -830,8 +830,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
     - Il Fornitore di Attestati Elettronici aggiorna con successo lo stato della Credenziale Digitale immediatamente quando avviene la revoca
   * - CI_169
     - Modello di Dati e ciclo di vita, Interoperabilità
-    - Endpoint Revoca Istanza di Wallet tramite PDND
-      Monitoraggio dello stato della Wallet Instance per l'aggiornamento dello stato degli Attestati Elettronici
+    - Monitoraggio dello stato della Wallet Instance per l'aggiornamento dello stato degli Attestati Elettronici
     - Il Fornitore di Attestati Elettronici predispone un meccanismo di monitoraggio degli stati correnti di tutte le Wallet Unit Attestation associate alle Wallet Instance a cui sono stati rilasciati gli Attestati Elettronici.
   * - CI_170
     - Modello di Dati e ciclo di vita, Interoperabilità
@@ -896,7 +895,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_183
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Status List Definizione dei Valori di Stato per le Credenziali Digitali
-    - Il Fornitore di Attestati Elettronici utilizza con successo i valori per gli Stati possibili definiti nella :ref:`credential-revocation:Creazione delle Status List`.
+    - Il Fornitore di Attestati Elettronici utilizza con successo i valori per gli Stati possibili definiti nella sezione :ref:`credential-revocation:Token Status Lists`.
   * - CI_184
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Status List Definizione degli stati opzionali di stato delle credenziali digitali
@@ -945,3 +944,5 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Informazioni Elemento Array Credenziali
     - Ogni elemento dell'array delle credenziali contiene correttamente tutte le informazioni di primo livello definite nella :ref:`Tabella  <table_catalog_parameters_first_level>` corrispondente.
+
+

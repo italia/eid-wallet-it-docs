@@ -1,6 +1,5 @@
 .. include:: ../common/common_definitions.rst
 
-.. _wallet-instance-dashboard-transaction-registry:
 
 Dashboard dell’Istanza del Wallet e Registrazione delle Transazioni
 ===================================================================
@@ -21,7 +20,6 @@ Il Fornitore del Wallet DEVE proteggere la riservatezza, l’integrità e l’au
 
 I record DEVONO essere conservati per almeno il periodo minimo previsto dalla normativa applicabile, come definito in :ref:`log-retention-policy:Politiche Generali di Conservazione dei Log`. Qualora limiti di spazio richiedano una cancellazione automatica, l’Istanza del Wallet DEVE notificare l’Utente tramite la dashboard, avvertire delle possibili conseguenze e offrire la possibilità di esportare i record interessati prima della cancellazione.
 
-
 Esportazione e Cancellazione dei Record di Transazione
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -41,3 +39,5 @@ La cancellazione dei record di transazione DEVE:
 L’Istanza del Wallet DEVE continuare a proteggere eventuali record di transazione rimanenti in conformità ai requisiti di riservatezza, integrità e autenticità definiti per il registro delle transazioni nella presente sezione.
 
 Nessuna entità diversa dall’Utente PUÒ cancellare i record di transazione.
+
+

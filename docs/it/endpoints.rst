@@ -1,6 +1,5 @@
 .. include:: ../common/common_definitions.rst
 
-.. _Endpoints:
 
 Endpoints
 =========
@@ -14,4 +13,5 @@ Endpoints
   relying-party-endpoints.rst
   authentic-source-endpoint.rst
   signal-hub-endpoint.rst
-  
+
+

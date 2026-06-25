@@ -2,7 +2,7 @@
 
 
 Emissione della Wallet Unit Attestation
-========================================
+=======================================
 
 Questa sezione descrive come il Fornitore di Wallet emette una Wallet Unit Attestation.
 
@@ -24,7 +24,7 @@ Questa sezione descrive come il Fornitore di Wallet emette una Wallet Unit Attes
 **Passi 2-3**: L'Istanza del Wallet DEVE:
 
   1. Verificare l'esistenza delle Cryptographic Hardware Keys. Se non esistono, è necessaria la reinizializzazione dell'Istanza del Wallet (:ref:`WP_140a <wallet-instance-optional-testcases>`).
-  2. Generare una o più coppie di chiavi asimmetriche delle credenziali da attestare nella Wallet Unit Attestation (``key_pub_1``, ``key_priv_1``, ..., ``key_pub_n``, ``key_priv_n``). 
+  2. Generare una o più coppie di chiavi asimmetriche delle credenziali da attestare nella Wallet Unit Attestation (``key_pub_1``, ``key_priv_1``, ..., ``key_pub_n``, ``key_priv_n``).
   3. Verificare l'appartenenza del Fornitore di Wallet alla federazione e recuperare i suoi metadati (:ref:`WP_023 <wallet-instance-testcases>`).
 
 **Passi 4-6 (Recupero del Nonce)**: L'Istanza del Wallet richiede un ``nonce`` all'endpoint :ref:`wallet-provider-endpoint:Endpoint Nonce della Soluzione Wallet` del Backend del Fornitore del Wallet (:ref:`WP_140b <wallet-instance-optional-testcases>`). Il ``nonce`` deve essere imprevedibile e funge da principale difesa contro gli attacchi di replay.
@@ -46,6 +46,7 @@ Di seguito è riportato un esempio non normativo dell'oggetto JSON ``client_data
     "nonce": "i4ThI2Jhbu81i8mqyWEuDG5t",
     "jwk_thumbprints": ["vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c"]
   }
+
 
 **Passi 8-11**: L'Istanza del Wallet:
 
@@ -76,7 +77,7 @@ Di seguito è riportato un esempio non normativo dell'oggetto JSON ``client_data
 * Costruisce la Wallet Unit Attestation Request sotto forma di JWT. Questo JWT include l'``integrity_assertion``, ``keys_to_attest``, ``hardware_signature``, ``nonce``, ``hardware_key_tag``, ``cnf``, ``platform``, ``wallet_solution_id``, ``wallet_solution_version``  e altri parametri relativi alla configurazione (vedi :ref:`Tabella del Corpo della Richiesta di Wallet Unit Attestation <table_wua_request_claim>`) ed è firmato utilizzando la chiave privata la cui chiave pubblica è indicata nella richiesta tramite ``cnf`` (primo elemento di ``keys_to_attest``) (:ref:`WP_140–141 <wallet-instance-optional-testcases>`).
 * Invia la Wallet Unit Attestation Request all'endpoint :ref:`wallet-provider-endpoint:Endpoint di Emissione della Wallet Unit Attestation` del Backend del Fornitore del Wallet.
 
-.. note:: 
+.. note::
   ``keys_to_attest`` contiene un oggetto ``key_attestation`` nel caso di Android e un oggetto ``integrity_assertion`` nel caso di iOS.
 
 L'Istanza del Wallet DEVE inviare il JWT firmato della Richiesta di Wallet Unit Attestation come parametro ``assertion`` nel corpo di una richiesta HTTP all'endpoint :ref:`wallet-provider-endpoint:Endpoint di Emissione della Wallet Unit Attestation` del Fornitore di Wallet (:ref:`WP_142 <wallet-instance-optional-testcases>`).
@@ -93,7 +94,7 @@ L'Istanza del Wallet DEVE inviare il JWT firmato della Richiesta di Wallet Unit 
   8. Il dispositivo in uso DEVE essere privo di difetti di sicurezza noti e soddisfare i requisiti minimi di sicurezza definiti dal Fornitore di Wallet.
   9. L'URL nel parametro ``iss`` DEVE corrispondere all'identificatore URL del Fornitore di Wallet  (:ref:`WP_143g <wallet-instance-optional-testcases>`).
 
-Al completamento con successo di tutte le verifiche, il Fornitore di Wallet emette una Wallet Unit Attestation valida per almeno un mese (:ref:`WP_144 <wallet-instance-optional-testcases>`).
+Al completamento con successo di tutte le verifiche, il Fornitore di Wallet emette una Wallet Unit Attestation valida per almeno un mese.
 
 **Passo 28 (Risposta di Emissione della Wallet Unit Attestation)**: Al completamento con successo, il Fornitore di Wallet DEVE restituire una risposta di conferma utilizzando il codice di stato 200 e il Content-Type ``application/json``, contenente la Wallet Unit Attestations firmate dal Fornitore di Wallet. Il Fornitore di Wallet DEVE restituire la Wallet Unit Attestation in formato ``JWT``. L'Istanza del Wallet eseguirà quindi la verifica di sicurezza e integrità della Wallet Unit Attestations ricevute, oltre alla verifica di fiducia del relativo emittente (:ref:`WP_030–031 <wallet-instance-testcases>`).
 
@@ -108,3 +109,5 @@ Di seguito è riportato un esempio non normativo della risposta.
   {
     "wallet_unit_attestation": "omppc3N1ZXJBdXRohEOhASaiBE...dElEAnFlbGVtZW50SWRl"
   }
+
+

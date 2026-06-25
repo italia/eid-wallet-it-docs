@@ -42,3 +42,5 @@ This Wallet Instance functionality allows Users to obtain a list of all Relying 
 **Step 10:** The Relying Party returns the Erasure Response in the form of an HTTP Response to the User-Agent and includes the callback URL if provided in the Erasure Request. Details on the Erasure Response can be found in :ref:`relying-party-provider-backend-endpoint:Relying Party Provider Backend Erasure Endpoint`.
 
 **Steps 11 - 12:** The User-Agent uses the implemented method to return the Erasure Response to the Wallet Instance. Finally, the User is notified via the Wallet Instance regarding the Erasure Response outcome (:ref:`WP_119 <user-attribute-deletion-testcases>`).
+
+
