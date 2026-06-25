@@ -57,12 +57,16 @@
     }
 
     .qr-payload-preview {
-      text-align: left;
+      text-align: center;
       max-width: 36rem;
       margin: 0 auto 1rem;
       padding: 0.75rem;
       background: #f8f9fa;
       border-radius: 0.25rem;
+    }
+
+    .qr-payload-preview summary {
+      text-align: center;
     }
 
     .qr-payload-preview a#qr-payload-preview {
@@ -184,7 +188,7 @@
 
       <p id="content-qrcode-info-text" class="mb-3" aria-live="polite" aria-atomic="true"></p>
 
-      <details class="qr-payload-preview text-start mb-4">
+      <details class="qr-payload-preview text-center mb-4">
         <summary id="qr-payload-summary" class="mb-2">Contenuto dimostrativo del QR (Authorization Request)</summary>
         <a id="qr-payload-preview" href=""></a>
       </details>

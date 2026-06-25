@@ -7,7 +7,7 @@
     "lang_trigger": "Selezione lingua, {{name}} selezionata"
   },
   "meta": {
-    "description": "Autenticazione con IT-Wallet tramite codice QR."
+    "description": "Autenticazione con {{walletName}} tramite codice QR."
   },
   "noscript": {
     "message": "Per usare la pagina del codice QR è necessario abilitare JavaScript."
@@ -21,17 +21,18 @@
   "login_logo": "Accedi con il tuo wallet digitale",
   "contentTitle": "Inquadra il codice QR",
   "qrCodeValidInfo": "Il codice QR è valido per <b id=\"timer\">{{seconds}}</b> secondi",
-  "supportText": "Usa la funzionalità di <b>IO, l'app dei servizi pubblici</b> o la fotocamera del tuo smartphone",
+  "supportText": "Usa la funzionalità di <b>{{walletName}}</b> o la fotocamera del tuo smartphone",
+  "qrCodeLinkAriaLabel": "Codice QR per l'autenticazione con {{walletName}}",
   "backLabel": "Torna indietro",
   "qrCodeExpiredInfo": "Il codice QR è scaduto, ricarica la pagina per generarne uno nuovo.",
   "qrCodeReloadLabel": "Ricarica",
-  "appTitle": "Continua sull'app IT-Wallet",
+  "appTitle": "Continua sull'app {{walletName}}",
   "appText": "Per proseguire, segui le istruzioni sull'app e autorizza l'accesso",
   "connectedTitle": "Autenticazione completata!",
   "connectedText": "Continua sul sito",
   "clickAccessLabel": "Accedi al servizio",
   "failureTitle": "Non siamo riusciti a recuperare i dati della tua identità digitale",
-  "failureText": "Ricorda che per effettuare l'accesso con IT-Wallet devi acconsentire alla lettura dei tuoi dati. Se il problema si ripete, contatta l'assistenza.",
+  "failureText": "Ricorda che per effettuare l'accesso con {{walletName}} devi acconsentire alla lettura dei tuoi dati. Se il problema si ripete, contatta l'assistenza.",
   "retryLabel": "Riprova",
   "contactSupportLabel": "Contatta l'assistenza",
   "demoPayloadLabel": "Contenuto QR Code (Authorization Request)",

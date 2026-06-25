@@ -192,21 +192,32 @@ function filterWallets(wallets, query) {
   });
 }
 
-function buildWalletUri(uri) {
-  const params = new URLSearchParams(window.location.search);
-  // Default return to proxy's disco callback when missing (e.g. direct access or params lost)
-  const returnUrl = params.get('return') || (window.location.origin + '/Saml2/disco');
-  // For wallet flow, entityID must be 'wallet' to route to OpenID4VP; do not overwrite with page params
-  const entityID = uri.includes('entityID=wallet') ? 'wallet' : (params.get('entityID') || 'wallet');
+function buildWalletUri(wallet) {
+  const uri = wallet.uri;
+  const pageParams = new URLSearchParams(window.location.search);
+  const returnUrl = pageParams.get('return') || (window.location.origin + '/Saml2/disco');
+  const entityID = uri.includes('entityID=wallet') ? 'wallet' : (pageParams.get('entityID') || 'wallet');
   try {
     const u = new URL(uri, window.location.href);
     if (uri.includes('entityID=wallet')) {
       u.searchParams.set('return', returnUrl);
       u.searchParams.set('entityID', entityID);
+    } else {
+      if (pageParams.has('return')) u.searchParams.set('return', pageParams.get('return'));
+      if (pageParams.has('entityID')) u.searchParams.set('entityID', pageParams.get('entityID'));
     }
+    if (wallet.name) u.searchParams.set('wallet_name', wallet.name);
+    if (wallet.logo_uri) u.searchParams.set('wallet_logo', resolveAsset(wallet.logo_uri));
     return u.toString();
   } catch {
-    return uri + (uri.includes('?') ? '&' : '?') + 'return=' + encodeURIComponent(returnUrl) + '&entityID=' + encodeURIComponent(entityID);
+    const params = new URLSearchParams();
+    if (pageParams.has('return')) params.set('return', pageParams.get('return'));
+    if (pageParams.has('entityID')) params.set('entityID', pageParams.get('entityID'));
+    if (wallet.name) params.set('wallet_name', wallet.name);
+    if (wallet.logo_uri) params.set('wallet_logo', resolveAsset(wallet.logo_uri));
+    const query = params.toString();
+    const separator = uri.includes('?') ? '&' : '?';
+    return query ? `${uri}${separator}${query}` : uri;
   }
 }
 
@@ -225,7 +236,7 @@ function createWalletCard(wallet, resource, basePath) {
   body.className = 'it-card-body d-flex flex-column justify-content-center';
 
   const cardLink = document.createElement('a');
-  cardLink.href = buildWalletUri(wallet.uri);
+  cardLink.href = buildWalletUri(wallet);
   cardLink.className = 'it-wallet-card-hit';
 
   const row = document.createElement('div');
