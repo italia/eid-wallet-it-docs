@@ -98,9 +98,9 @@ Below is the description of acronyms and definitions which are useful for furthe
       Register of entities participating in the IT-Wallet System.
       Not present in ARF 2.7.3; specific to IT-Wallet.
 
-    **Key Attestation**
-      Attestation from device OEM about secure key storage in hardware-backed keystore.
-      Not present in ARF 2.7.3.
+    **Key Attestation APIs (OEM)**
+      A device manufacturer’s attestation mechanism that confirms whether cryptographic keys are stored securely in a hardware-backed keystore. Examples include Android Key Attestation API for Android devices and Apple DeviceCheck for iOS devices.
+      Not present in ARF 2.7.3; specific to IT-Wallet.
 
     **Level of Assurance**
       In the Union **electronic identification** framework, **levels of assurance** express the degree of confidence in the **correctness of the identification** of natural or legal persons and in the possibility to **rely on electronic identification means**. For **notified electronic identification schemes**, `EIDAS`_ (as amended, including the European Digital Identity Framework codified by `EU_2024_1183`_) defines the levels **low**, **substantial**, and **high**.
@@ -349,9 +349,9 @@ Below is the description of acronyms and definitions which are useful for furthe
       Unique configuration of a Wallet Solution for an individual User, including security features.
       Aligned with ARF 2.7.3.
 
-    **Wallet Unit Attestation**
-     Data object issued by a Wallet Provider that proves the keys used for key binding of Credentials reside in a trustworthy WSCD,
-     and checks the Wallet Unit has not been revoked. Specific to IT-Wallet.
+    **Key Attestation**
+     Data object issued by a Wallet Provider that proves the keys used for key binding of Credentials reside in a trustworthy WSCD using the Key Attetstaion APIs (OEM).
+     Aligned with Technical Specification 3.
 
     **Wallet Instance Attestation**
     **Wallet Attestation**

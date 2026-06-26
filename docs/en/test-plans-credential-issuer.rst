@@ -831,7 +831,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_169
     - Data Model and lifecycle, Interoperability
     - Wallet Instance Status Monitoring for the Digital Credential Status Update
-    - Credential Issuer establishes a monitoring mechanism of the current statuses of all the Wallet Unit Attestations related to the Wallet Instances to which the Credentials were issued.
+    - Credential Issuer establishes a monitoring mechanism of the current statuses of all the Key Attestations related to the Wallet Instances to which the Credentials were issued.
   * - CI_170
     - Data Model and lifecycle, Interoperability
     - Credential Status Update Following Data Change Notification

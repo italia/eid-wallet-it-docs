@@ -48,8 +48,9 @@ Quando lo stato è **Installato**, l'Istanza del Wallet DEVE interagire solo con
 * attività illegali segnalate da Organi Giudiziari o di Vigilanza.
 
 .. note::
-  Come indicato nell'ARF (vedi Topic 9 e Topic 38 nell'Allegato 2), la revoca dell'Istanza del Wallet viene effettuata revocando la Wallet Unit Attestation tramite il meccanismo di gestione dello stato.
-  Il Fornitore di Wallet può semplicemente modificare lo stato della Wallet Unit nella Status List per contrassegnarla come revocata e informare gli utenti riguardo al motivo della revoca della Wallet Unit.
+  Come indicato nell'ARF (vedi Topic 9 e Topic 38 nell'Allegato 2), la revoca dell'Istanza del Wallet viene effettuata revocando la Wallet Instance Attestation tramite il meccanismo di gestione dello stato.
+  Il Fornitore di Wallet può semplicemente modificare lo stato della Wallet Instance nella Status List di Wallet Instance Attestation, contrassegnandola come revocata, e   informare gli Utenti riguardo al motivo della revoca dell'Istanza del Wallet. 
+
 
 Transizione a Operativo
 .......................
@@ -122,7 +123,7 @@ eliminare le coppie di Cryptographic Hardware Key (:ref:`WP_149 <wallet-instance
 Un Fornitore di Wallet invece è responsabile per:
 
 * **Attivazione dell'Istanza del Wallet** (**WI ACT**): un account Utente DEVE essere creato e associato all'Istanza del Wallet tramite il Cryptographic Hardware Key Tag. Come risultato della creazione dell'account Utente, DEVE essere impostato un meccanismo di autenticazione di almeno due fattori per l'Utente per interagire con il portale del Fornitore di Wallet.
-* **Revoca dell'Istanza del Wallet** (**WI REV**): Per motivi di sicurezza tecnica o a seguito dell'intervento di entità esterne (ad esempio Utenti o Autorità di Vigilanza), l'istanza del Wallet viene revocata, con conseguente revoca della Wallet Unit Attestation, che viene riportata nella Wallet Unit Attestation Status List. Inoltre, il Wallet Cryptographic Hardware Key Tag DEVE essere eliminato dall'account dell'utente.
+* **Revoca dell'Istanza del Wallet** (**WI REV**): Per motivi di sicurezza tecnica o a seguito dell'intervento di entità esterne (ad esempio Utenti o Autorità di Vigilanza), l'istanza del Wallet viene revocata, con conseguente revoca della Wallet Instance Attestation, che viene riportata nella Wallet Instance Attestation Status List. Inoltre, il Wallet Cryptographic Hardware Key Tag DEVE essere eliminato dall'account dell'utente.
 * **Eliminazione dei Dati**: attraverso una richiesta esplicita degli Utenti, l'account Utente presso il Fornitore di Wallet DEVE essere rimosso dallo storage locale.
 
 

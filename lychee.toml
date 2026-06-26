@@ -36,4 +36,9 @@ exclude = [
   # External: certificate/TLS issues should not block doc PRs (revisit periodically)
   "^https://www\\.wallet\\.gov\\.it",
   "^https?://dev\\.ta\\.wallet\\.ipzs\\.it(/|\\?|#|$)",
+  # External: servers that return 403 to automated/bot requests (links are valid)
+  "^https://www\\.f5\\.com/",
+  "^https://www\\.tuv-nederland\\.nl/",
+  # PlantUML render URLs: generated encoded content, not stable HTTP endpoints
+  "^https://www\\.plantuml\\.com/plantuml/",
 ]
