@@ -74,7 +74,7 @@ Di seguito il ruolo del Titolare di Fonte Autentica nel contesto del flusso di r
 
 Per rivestire il ruolo di Titolare di Fonte Autentica, ciascun Ente interessato deve attenersi al seguente processo di onboarding tecnico, da considerarsi valido fino alla pubblicazione del Regolamento IT-Wallet e alla disponibilità di:
 
-- Portale di Onboarding
+- Portale di Registrazione IT-Wallet
 - Registro delle Fonti Autentiche
 - Catalogo degli Attestati Elettronici
 
