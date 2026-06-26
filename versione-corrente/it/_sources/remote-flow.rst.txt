@@ -121,7 +121,9 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
 
     https://wallet-solution.example.org/authorization?client_id=openid_federation%3A%2F%2Frelying-party.example.org&request_uri=https%3A%2F%2Frelying-party.example.org&request_uri_method=post
 
-  Mentre, nel **Flusso Same Device**, la Relying Party risponde tramite HTTP Response Redirect (con codice di stato impostato a ``302``) o mostra all'utente una pagina html con un pulsante href, aventi l'URL che fornisce le stesse informazioni del Flusso Cross Device (:ref:`WP_076–077 <wallet-credential-presentation-testcases>`).
+  Un template HTML ufficiale e autoconsistente per questa pagina QR **Cross Device**—con header, footer, accessibilità, testi multilingua e payload dimostrativo configurabile—è disponibile nella sezione :ref:`official-resources:Componenti HTML` (**IT-Wallet Presentation QR Code Page**). È raggiungibile dalle card della **IT-Wallet Selection Page** nella stessa sezione.
+
+  Mentre, nel **Flusso Same Device**, la Relying Party risponde tramite HTTP Response Redirect (con codice di stato impostato a ``302``) o mostra all'utente una pagina html con un pulsante href, aventi l'URL che fornisce le stesse informazioni del Flusso Cross Device (:ref:`WP_076–077 <wallet-credential-presentation-testcases>`). 
   Di seguito è riportato un esempio non normativo per un Request Object by reference:
 
   .. code-block:: http
@@ -456,7 +458,7 @@ La richiesta e i suoi parametri sono definiti nella Sezione 5 (Authorization Req
 
 .. note::
   Per l'``authorization_endpoint`` l'uso di *univarsal link* è preferito rispetto a *URL scheme* personalizzati perché, quando configurati correttamente utilizzando Assetlinks JSON per Android e Apple App Site Association per iOS, forniscono una sicurezza migliorata riducendo il rischio di dirottamento degli URL.
-  Inoltre, gli *univarsal link* offrono meccanismi di fallback, consentendo al flusso di continuare senza problemi in un browser anche se l'Istanza del Wallet non è installata, garantendo un'esperienza Utente più fluida. Il supporto degli *URL scheme* ``openid4vp://`` e ``haip-vp://`` definiti in `OPENID4VC-HAIP`_, e `OPENID4VP`_ è supportato per garantire l'interoperabilità.
+  Inoltre, gli *univarsal link* offrono meccanismi di fallback, consentendo al flusso di continuare senza problemi in un browser anche se l'Istanza del Wallet non è installata, garantendo un'esperienza Utente più fluida. Gli *URL scheme* ``openid4vp://`` e ``haip-vp://`` definiti in `OPENID4VC-HAIP`_ e `OPENID4VP`_ sono supportati per garantire l'interoperabilità.
 
 Risposta dell'Endpoint URI Request
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
