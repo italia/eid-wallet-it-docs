@@ -48,8 +48,9 @@ When the state is **Installed**, the Wallet Instance MUST interact only with the
 * illegal activities reported by Judicial or Supervisory Bodies.
 
 .. note::
-  As it is stated in the ARF (see Topic 9 and Topic 38 in Annex 2), the revocation of the Wallet Instance is accomplished by revoking the Wallet Unit Attestation by using the status management mechanism.
-  The Wallet Provider can simply change the status of the Wallet Unit in the Status List to mark the Wallet Unit as revoked and inform the users concerning the reason to revoke the Wallet Unit.
+  As it is stated in the ARF (see Topic 9 and Topic 38 in Annex 2), the revocation of the Wallet Instance is accomplished by revoking the Wallet Instance Attestation by
+  using the status management mechanism. The Wallet Provider can simply change the status of the Wallet Instance Attestation in the Wallet Instance Attestation Status List to mark it as revoked and
+  inform the Users concerning the reason for revoking the Wallet Instance.
 
 Transition to Operational
 .........................
@@ -122,7 +123,7 @@ delete the Wallet Cryptographic Hardware Key pairs (:ref:`WP_149 <wallet-instanc
 A Wallet Provider instead is responsible for:
 
 * **Wallet Instance Activation** (**WI ACT**): a User account MUST be created and associated with the Wallet Instance through the Wallet Cryptographic Hardware Key Tag. As a result of the User account creation, an authentication mechanism of at least two factors MUST be set for the User to interact with the Wallet Provider portal.
-* **Wallet Instance Revocation** (**WI REV**): for technical security reasons or triggered by external entities (e.g., Users and Supervisory Bodies) the Wallet Instance is revoked and this result in the revocation of the Wallet Unit Attestation, which is reflected on the Wallet Unit Attestation Status List. Additionally, the Wallet Cryptographic Hardware Key Tag MUST be deleted from the User account.
+* **Wallet Instance Revocation** (**WI REV**): for technical security reasons or triggered by external entities (e.g., Users and Supervisory Bodies) the Wallet Instance is revoked and this result in the revocation of the Wallet Instance Attestation, which is reflected on the Wallet Instance Attestation Status List. Additionally, the Wallet Cryptographic Hardware Key Tag MUST be deleted from the User account.
 * **Data Purging**: through an explicit request of Users, the User account at the Wallet Provider MUST be removed from the local storage.
 
 

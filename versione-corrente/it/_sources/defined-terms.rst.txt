@@ -98,9 +98,9 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Registro delle entità partecipanti al Sistema IT-Wallet.
       Non presente in ARF 2.7.3; specifico di IT-Wallet.
 
-    **Key Attestation**
-      Attestazione dell'OEM del dispositivo sull'archiviazione sicura delle chiavi nell'hardware-backed keystore.
-      Non presente in ARF 2.7.3.
+    **Key Attestation APIs (OEM)**
+      Meccanismo di attestazione del produttore del dispositivo che conferma se le chiavi crittografiche sono archiviate in modo sicuro in un keystore supportato dall’hardware. Esempi includono l’Android Key Attestation API per i dispositivi Android e Apple DeviceCheck per i dispositivi iOS.
+      Non presente in ARF 2.7.3;specifico dell’IT-Wallet.
 
     **Livello di Garanzia**
       Nel quadro dell'Unione per l'**identificazione elettronica**, i **livelli di garanzia** esprimono il grado di fiducia nella **correttezza dell'identificazione** delle persone fisiche o giuridiche e nella possibilità di **fare affidamento sui mezzi di identificazione elettronica**. Per gli **schemi di identificazione elettronica notificati**, `EIDAS`_, come modificato (incluso il Quadro europeo di identità digitale codificato dal `EU_2024_1183`_), definisce i livelli **basso (*low*)**, **sostanziale (*substantial*)** e **alto (*high*)**.
@@ -356,8 +356,9 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Unique configuration of a Wallet Solution for an individual User, including security features.
       Conforme con ARF 2.7.3.
 
-    **Wallet Unit Attestation**
-      Oggetto emesso da un Fornitore di Wallet che dimostra che le chiavi utilizzate per il binding crittografico degli Attestati Elettronici risiedono in un WSCD affidabile e verifica che la Wallet Unit non sia stata revocata. Specifico per l'IT-Wallet.
+    **Key Attestation**
+      Oggetto di dati emesso da un Wallet Provider che dimostra che le chiavi utilizzate per il key binding delle credenziali risiedono in un WSCD affidabile, utilizzando le API di Key Attestation (OEM).
+      Allineato alla Technical Specification 3.
 
     **Wallet Instance Attestation**
     **Wallet Attestation**

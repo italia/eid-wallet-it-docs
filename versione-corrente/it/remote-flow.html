@@ -618,7 +618,7 @@ loro richieste HTTP alle Relying Party da parte di avversari. Quando presente, l
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>Per l'<code class="docutils literal notranslate"><span class="pre">authorization_endpoint</span></code> l'uso di <em>univarsal link</em> è preferito rispetto a <em>URL scheme</em> personalizzati perché, quando configurati correttamente utilizzando Assetlinks JSON per Android e Apple App Site Association per iOS, forniscono una sicurezza migliorata riducendo il rischio di dirottamento degli URL.
-Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo al flusso di continuare senza problemi in un browser anche se l'Istanza del Wallet non è installata, garantendo un'esperienza Utente più fluida. Per garantire l'interoperabilità, il supporto degli <em>URL scheme</em> personalizzati è anche RACCOMANDATO secondo il profilo di interoperabilità HAIP <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-06.html">OPENID4VC-HAIP</a>, e in particolare utilizzando l'url personalizzato <code class="docutils literal notranslate"><span class="pre">haip://</span></code>.</p>
+Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo al flusso di continuare senza problemi in un browser anche se l'Istanza del Wallet non è installata, garantendo un'esperienza Utente più fluida. Il supporto degli <em>URL scheme</em> <code class="docutils literal notranslate"><span class="pre">openid4vp://</span></code> e <code class="docutils literal notranslate"><span class="pre">haip-vp://</span></code> definiti in <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-06.html">OPENID4VC-HAIP</a>, e <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OPENID4VP</a> è supportato per garantire l'interoperabilità.</p>
 </div>
 </section>
 <section id="risposta-dell-endpoint-uri-request">
@@ -1209,7 +1209,7 @@ della richiesta DOVREBBE includere un parametro con un valore casuale. La rispos
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 25/06/2026.
+      Ultimo aggiornamento 26/06/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

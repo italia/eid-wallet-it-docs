@@ -456,7 +456,7 @@ The request and its parameters are defined in Section 5 (Authorization Request) 
 
 .. note::
   For the ``authorization_endpoint`` the use of universal links are preferred over custom url-schemes because, when properly configured using Assetlinks JSON for Android and Apple App Site Association for iOS, they provide enhanced security by reducing the risk of URL hijacking.
-  Furthermore, universal links offer fallback mechanisms, allowing the flow to continue seamlessly in a browser even if the Wallet Instance is not installed, ensuring a smoother User experience. To ensure interoperability, support custom url-schemes is also RECOMMENDED according to HAIP `OPENID4VC-HAIP`_, and in particular using the custom url ``haip://``.
+  Furthermore, universal links offer fallback mechanisms, allowing the flow to continue seamlessly in a browser even if the Wallet Instance is not installed, ensuring a smoother User experience. The URL schemes ``openid4vp://`` and ``haip-vp://`` defined in `OPENID4VP`_ and `OPENID4VC-HAIP`_ are supported to ensure interoperability.
 
 Request URI Response
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^

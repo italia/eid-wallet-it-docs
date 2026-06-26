@@ -268,8 +268,11 @@ Not present in ARF 2.7.3; specific to IT-Wallet.</p>
 <dt id="term-IT-Wallet-System-Register"><strong>IT-Wallet System Register</strong><a class="headerlink" href="#term-IT-Wallet-System-Register" title="Link to this term">¶</a></dt><dd><p>Register of entities participating in the IT-Wallet System.
 Not present in ARF 2.7.3; specific to IT-Wallet.</p>
 </dd>
-<dt id="term-Key-Attestation"><strong>Key Attestation</strong><a class="headerlink" href="#term-Key-Attestation" title="Link to this term">¶</a></dt><dd><p>Attestation from device OEM about secure key storage in hardware-backed keystore.
-Not present in ARF 2.7.3.</p>
+<dt id="term-Key-Attestation"><strong>Key Attestation</strong><a class="headerlink" href="#term-Key-Attestation" title="Link to this term">¶</a></dt><dd><p>Data object issued by a Wallet Provider that proves the keys used for key binding of Credentials reside in a trustworthy WSCD using the Key Attetstaion APIs (OEM).
+Aligned with Technical Specification 3.</p>
+</dd>
+<dt id="term-Key-Attestation-APIs-OEM"><strong>Key Attestation APIs (OEM)</strong><a class="headerlink" href="#term-Key-Attestation-APIs-OEM" title="Link to this term">¶</a></dt><dd><p>A device manufacturer’s attestation mechanism that confirms whether cryptographic keys are stored securely in a hardware-backed keystore. Examples include Android Key Attestation API for Android devices and Apple DeviceCheck for iOS devices.
+Not present in ARF 2.7.3; specific to IT-Wallet.</p>
 </dd>
 <dt id="term-Level-of-Assurance"><strong>Level of Assurance</strong><a class="headerlink" href="#term-Level-of-Assurance" title="Link to this term">¶</a></dt><dd><p>In the Union <strong>electronic identification</strong> framework, <strong>levels of assurance</strong> express the degree of confidence in the <strong>correctness of the identification</strong> of natural or legal persons and in the possibility to <strong>rely on electronic identification means</strong>. For <strong>notified electronic identification schemes</strong>, <a class="reference external" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv%3AOJ.L_.2014.257.01.0073.01.ENG">EIDAS</a> (as amended, including the European Digital Identity Framework codified by <a class="reference external" href="https://eur-lex.europa.eu/eli/reg/2024/1183/oj">EU_2024_1183</a>) defines the levels <strong>low</strong>, <strong>substantial</strong>, and <strong>high</strong>.
 In these Technical Specifications, <strong>LoA</strong> is also used for <strong>minimum assurance</strong> requirements applying to <strong>User authentication</strong>, <strong>Wallet Instance</strong> context, and <strong>Digital Credential</strong> reliability (including catalog metadata such as minimum Level of Assurance), which MUST remain consistent with applicable Union law, national implementation of notified schemes, and the rules on <strong>European Digital Identity Wallets</strong> and <strong>Person Identification Data (PID)</strong> (including Commission Implementing Regulation (EU) 2024/2979 where relevant).
@@ -424,9 +427,6 @@ Aligned with ARF 2.7.3.</p>
 </dd>
 <dt id="term-Wallet-Unit"><strong>Wallet Unit</strong><a class="headerlink" href="#term-Wallet-Unit" title="Link to this term">¶</a></dt><dd><p>Unique configuration of a Wallet Solution for an individual User, including security features.
 Aligned with ARF 2.7.3.</p>
-</dd>
-<dt id="term-Wallet-Unit-Attestation"><strong>Wallet Unit Attestation</strong><a class="headerlink" href="#term-Wallet-Unit-Attestation" title="Link to this term">¶</a></dt><dd><p>Data object issued by a Wallet Provider that proves the keys used for key binding of Credentials reside in a trustworthy WSCD,
-and checks the Wallet Unit has not been revoked. Specific to IT-Wallet.</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -598,7 +598,7 @@ Aligned with ISO 9241-210:2010.</p>
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 25/06/2026.
+      Last updated on 26/06/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
