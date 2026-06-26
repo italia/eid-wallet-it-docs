@@ -26,6 +26,11 @@ let selectedWallet = {
 let expirationTime = demoConfig.qrcode_expiration_time;
 let countdown = null;
 let countdownStarted = false;
+let currentQrPayloadUrl = '';
+
+function isDebugMode() {
+  return new URLSearchParams(window.location.search).get('debug') === 'true';
+}
 
 function escapeHtml(text) {
   return String(text)
@@ -194,11 +199,50 @@ function adjustQrIconLayout() {
   wrapper.style.justifyContent = 'center';
 }
 
+function applyQrCodeLink(payloadUrl) {
+  const qrCodeLink = document.getElementById('qr-code-link');
+  if (!qrCodeLink) return;
+
+  if (isDebugMode()) {
+    qrCodeLink.href = payloadUrl;
+    qrCodeLink.classList.remove('qr-code-link--display-only');
+    qrCodeLink.removeAttribute('tabindex');
+  } else {
+    qrCodeLink.removeAttribute('href');
+    qrCodeLink.classList.add('qr-code-link--display-only');
+    qrCodeLink.setAttribute('tabindex', '-1');
+  }
+}
+
+function applyDebugPanel(t) {
+  const panel = document.getElementById('qr-payload-debug');
+  if (!panel) return;
+
+  if (!isDebugMode()) {
+    panel.hidden = true;
+    return;
+  }
+
+  panel.hidden = false;
+
+  const payloadSummary = document.getElementById('qr-payload-summary');
+  if (payloadSummary && t) {
+    payloadSummary.textContent = t('demoPayloadLabel');
+  }
+
+  const payloadPreview = document.getElementById('qr-payload-preview');
+  if (payloadPreview && currentQrPayloadUrl) {
+    payloadPreview.href = currentQrPayloadUrl;
+    payloadPreview.textContent = currentQrPayloadUrl;
+  }
+}
+
 function applyQrVisualConfig(config) {
   const root = document.documentElement;
   root.style.setProperty('--qr-size', `${config.qrcode_size}px`);
 
   const payloadUrl = buildDemoQrPayload(config);
+  currentQrPayloadUrl = payloadUrl;
 
   const qrCode = document.querySelector('qr-code');
   if (qrCode) {
@@ -220,8 +264,10 @@ function applyQrVisualConfig(config) {
 
   const qrCodeLink = document.getElementById('qr-code-link');
   if (qrCodeLink) {
-    qrCodeLink.href = payloadUrl;
+    applyQrCodeLink(payloadUrl);
   }
+
+  applyDebugPanel();
 
   requestAnimationFrame(adjustQrIconLayout);
 }
@@ -327,6 +373,8 @@ function updateShellTexts(t) {
 
   const cancelLink = document.getElementById('qr-cancel-link');
   if (cancelLink) cancelLink.textContent = t('cancelLabel');
+
+  applyDebugPanel(t);
 
   updateBackLink(t);
 }
