@@ -36,7 +36,6 @@
   "failureText": "Ricorda che per effettuare l'accesso con {{walletName}} devi acconsentire alla lettura dei tuoi dati. Se il problema si ripete, contatta l'assistenza.",
   "retryLabel": "Riprova",
   "contactSupportLabel": "Contatta l'assistenza",
-  "demoPayloadLabel": "Contenuto QR Code (Authorization Request)",
   "footer": {
     "nav_label": "Link legali",
     "legal_notice": "Note legali",

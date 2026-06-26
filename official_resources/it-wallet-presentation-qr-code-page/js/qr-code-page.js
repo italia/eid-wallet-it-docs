@@ -9,7 +9,7 @@ const QR_CONFIG_FALLBACK = {
   request_uri_method: 'post',
   qrcode_size: 250,
   qrcode_color: '#000000',
-  qrcode_logo_path: '../shared-ui/img/IT-Wallet-Logo-Primary-BlueItalia.svg',
+  qrcode_logo_path: '../shared-ui/img/IT-Wallet-Mark.svg',
   qrcode_expiration_time: 120,
   selection_page_url: '../it-wallet-selection-page/it-wallet.html',
   discovery_page_url: '../discovery-page/disco.html',
@@ -182,6 +182,18 @@ function walletTranslation(t, key, extra = {}) {
   );
 }
 
+function adjustQrIconLayout() {
+  const qrCode = document.querySelector('qr-code');
+  const wrapper = qrCode?.shadowRoot?.querySelector('#icon-wrapper');
+  if (!wrapper) return;
+
+  wrapper.style.width = '23.1%';
+  wrapper.style.aspectRatio = '1';
+  wrapper.style.display = 'flex';
+  wrapper.style.alignItems = 'center';
+  wrapper.style.justifyContent = 'center';
+}
+
 function applyQrVisualConfig(config) {
   const root = document.documentElement;
   root.style.setProperty('--qr-size', `${config.qrcode_size}px`);
@@ -211,11 +223,7 @@ function applyQrVisualConfig(config) {
     qrCodeLink.href = payloadUrl;
   }
 
-  const payloadPreview = document.getElementById('qr-payload-preview');
-  if (payloadPreview) {
-    payloadPreview.href = payloadUrl;
-    payloadPreview.textContent = payloadUrl;
-  }
+  requestAnimationFrame(adjustQrIconLayout);
 }
 
 function newWindowHintText(t) {
@@ -313,9 +321,6 @@ function updateShellTexts(t) {
 
   const metaDesc = document.getElementById('meta-description');
   if (metaDesc) metaDesc.setAttribute('content', walletTranslation(t, 'meta.description'));
-
-  const payloadSummary = document.getElementById('qr-payload-summary');
-  if (payloadSummary) payloadSummary.textContent = t('demoPayloadLabel');
 
   const reloadLabel = document.getElementById('qr-reload-label');
   if (reloadLabel) reloadLabel.textContent = t('qrCodeReloadLabel');
@@ -454,5 +459,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   applyDemoConfig();
   setupBackLink();
   setupCancelLink();
+  document.querySelector('qr-code')?.addEventListener('codeRendered', adjustQrIconLayout);
   initI18n();
 });

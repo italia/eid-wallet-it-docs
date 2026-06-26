@@ -104,38 +104,13 @@
 
     .qr-expired-info .icon {
       flex-shrink: 0;
+      color: #995C00;
       fill: currentColor;
     }
 
     .btn-custom {
       background-color: var(--brand-blue);
       color: white;
-    }
-
-    .qr-payload-preview {
-      text-align: center;
-      max-width: 36rem;
-      margin: 0 auto 1rem;
-      padding: 0.75rem;
-      background: #f8f9fa;
-      border-radius: 0.25rem;
-    }
-
-    .qr-payload-preview summary {
-      text-align: center;
-    }
-
-    .qr-payload-preview a#qr-payload-preview {
-      font-family: monospace;
-      font-size: 0.75rem;
-      word-break: break-all;
-      color: #0066CC;
-      text-decoration: underline;
-    }
-
-    .qr-payload-preview a#qr-payload-preview:hover,
-    .qr-payload-preview a#qr-payload-preview:focus {
-      color: #004d99;
     }
   </style>
 
@@ -236,7 +211,9 @@
               position-center-color="#000000"
               class="qr-code"
             >
-              <img class="icon-qr-code" src="../shared-ui/img/IT-Wallet-Logo-Primary-BlueItalia.svg" slot="icon" alt="" />
+              <span slot="icon" class="qr-code-icon-shell">
+                <img class="icon-qr-code" src="../shared-ui/img/IT-Wallet-Mark.svg" alt="" />
+              </span>
             </qr-code>
           </a>
           <div id="content-function" class="qr-code-overlay" hidden>
@@ -251,11 +228,6 @@
       </div>
 
       <p id="content-qrcode-info-text" class="mb-3" aria-live="polite" aria-atomic="true"></p>
-
-      <details class="qr-payload-preview text-center mb-4">
-        <summary id="qr-payload-summary" class="mb-2">Contenuto dimostrativo del QR (Authorization Request)</summary>
-        <a id="qr-payload-preview" href=""></a>
-      </details>
 
       <p class="text-center mb-4">
         <a href="#" id="qr-cancel-link" class="qr-cancel-link">Annulla</a>

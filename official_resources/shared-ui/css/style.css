@@ -393,11 +393,24 @@
     font-size: 15px;
 }
 
+.qr-code-icon-shell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(var(--qr-size, 250px) * 0.231);
+    height: calc(var(--qr-size, 250px) * 0.231);
+    background: #fff;
+    border-radius: calc(var(--qr-size, 250px) * 0.032);
+    box-sizing: border-box;
+    padding: calc(var(--qr-size, 250px) * 0.028);
+}
+
 .icon-qr-code {
-    width: 130%;
-    vertical-align: middle;
-    margin-left: -15%;
-    margin-top: -10%;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    margin: 0;
 }
 
 /* ----- disco.html / eid-cards layout ----- */
