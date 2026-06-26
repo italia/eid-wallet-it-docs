@@ -47,13 +47,11 @@ La specifica è organizzata nelle seguenti sezioni principali:
   Fornisce dettagli tecnici supplementari, modelli di implementazione e framework di test, inclusa la gestione delle istanze di applicazioni mobili, specifiche di integrazione della piattaforma nazionale e matrici di test complete per la validazione dell'ecosistema.
 
 
-Lettura per ruolo
-^^^^^^^^^^^^^^^^^
+Percorsi di lettura per ruolo
+^^^^^^^^^^^^^^^^^^^^^^
 
-Lettura rapida per obiettivi  
 """"""""""""""""""""""""""""
 
-Percorsi di lettura per ruolo
 """"""""""""""""""""""""""""
 
 Per facilitare la consultazione degli argomenti trattati in queste specifiche, di seguito sono riportati percorsi di lettura organizzati per ruolo. Ogni percorso è strutturato in base alle diverse fasi di adesione e partecipazione al Sistema IT-Wallet e contiene riferimenti diretti alle sezioni più rilevanti per ciascun ruolo. 

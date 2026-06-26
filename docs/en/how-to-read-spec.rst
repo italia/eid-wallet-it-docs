@@ -198,6 +198,8 @@ To develop endpoints based on specific protocols, and to implement (Q)EAA issuan
 
 To become registered as Credential Issuer within the system, by completing the administrative and technical procedure so that (Q)EAA issued to the Wallet are officially trusted.
 - **Section** :ref:`onboarding-high-level:Onboarding System`: Overview of the onboarding system architecture and the Credential Issuer registration process.
+
+- **Section** :ref:`entity-onboarding:Entity Onboarding`: Focus on technical implementation procedures for Credential Issuer registration. 
 - **Section** :ref:`x5c-evaluation:X.509 Certificate Management Operations`: Operational procedures for managing X.509 Certificates within the IT-Wallet federation.
 
 
