@@ -399,7 +399,7 @@
     justify-content: center;
     width: calc(var(--qr-size, 250px) * 0.231);
     height: calc(var(--qr-size, 250px) * 0.231);
-    background: #fff;
+    background: #ffffff;
     border-radius: calc(var(--qr-size, 250px) * 0.032);
     box-sizing: border-box;
     padding: calc(var(--qr-size, 250px) * 0.028);
