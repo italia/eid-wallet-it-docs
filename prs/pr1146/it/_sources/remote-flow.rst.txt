@@ -458,7 +458,7 @@ La richiesta e i suoi parametri sono definiti nella Sezione 5 (Authorization Req
 
 .. note::
   Per l'``authorization_endpoint`` l'uso di *univarsal link* è preferito rispetto a *URL scheme* personalizzati perché, quando configurati correttamente utilizzando Assetlinks JSON per Android e Apple App Site Association per iOS, forniscono una sicurezza migliorata riducendo il rischio di dirottamento degli URL.
-  Inoltre, gli *univarsal link* offrono meccanismi di fallback, consentendo al flusso di continuare senza problemi in un browser anche se l'Istanza del Wallet non è installata, garantendo un'esperienza Utente più fluida. Per garantire l'interoperabilità, il supporto degli *URL scheme* personalizzati è anche RACCOMANDATO secondo il profilo di interoperabilità HAIP `OPENID4VC-HAIP`_, e in particolare utilizzando l'url personalizzato ``haip://``.
+  Inoltre, gli *univarsal link* offrono meccanismi di fallback, consentendo al flusso di continuare senza problemi in un browser anche se l'Istanza del Wallet non è installata, garantendo un'esperienza Utente più fluida. Gli *URL scheme* ``openid4vp://`` e ``haip-vp://`` definiti in `OPENID4VC-HAIP`_ e `OPENID4VP`_ sono supportati per garantire l'interoperabilità.
 
 Risposta dell'Endpoint URI Request
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

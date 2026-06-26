@@ -2241,12 +2241,15 @@ Additional Domains, Classes, specific Credentials, and verification Purposes <st
 </td>
 </tr>
 <tr class="row-odd"><td><p><strong>authentic_sources</strong></p></td>
-<td><p>REQUIRED. Array of Authentic Source JSON objects referencing authorized Authentic Sources. Each object MUST contain the AS entity identifier and the specific data capability identifier:</p>
+<td><p>CONDITIONAL. It is REQUIRED only if <code class="docutils literal notranslate"><span class="pre">parent_credentials</span></code> is absent. Array of Authentic Source JSON objects referencing authorized Authentic Sources. Each object MUST contain the AS entity identifier and the specific data capability identifier:</p>
 <ul class="simple">
 <li><p><strong>id</strong>: String identifier referencing the Authentic Source entity_id as registered in the <a class="reference internal" href="#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>.</p></li>
 <li><p><strong>dataset_id</strong>: String identifier of the specific data capability/dataset used by the Issuer from the AS.</p></li>
 </ul>
 </td>
+</tr>
+<tr class="row-even"><td><p><strong>parent_credentials</strong></p></td>
+<td><p>CONDITIONAL. It is REQUIRED only if <code class="docutils literal notranslate"><span class="pre">authentic_sources</span></code> is absent. Array of <code class="docutils literal notranslate"><span class="pre">credential_type</span></code> identifier corresponding to Credentials designated as data sources. Each element identifies a Credential that acts as an Authentic Source during the Digital Credential Issuance process.</p></td>
 </tr>
 </tbody>
 </table>
@@ -3439,7 +3442,7 @@ The main Journeys below illustrate the interactions with the Registry Infrastruc
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 25/06/2026.
+      Last updated on 26/06/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

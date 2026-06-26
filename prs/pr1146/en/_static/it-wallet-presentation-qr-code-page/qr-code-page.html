@@ -104,12 +104,18 @@
 
     .qr-expired-info .icon {
       flex-shrink: 0;
+      color: #995C00;
       fill: currentColor;
     }
 
     .btn-custom {
       background-color: var(--brand-blue);
       color: white;
+    }
+
+    .qr-code-link--display-only {
+      cursor: default;
+      pointer-events: none;
     }
 
     .qr-payload-preview {
@@ -236,7 +242,9 @@
               position-center-color="#000000"
               class="qr-code"
             >
-              <img class="icon-qr-code" src="../shared-ui/img/IT-Wallet-Logo-Primary-BlueItalia.svg" slot="icon" alt="" />
+              <span slot="icon" class="qr-code-icon-shell">
+                <img class="icon-qr-code" src="../shared-ui/img/IT-Wallet-Mark.svg" alt="" />
+              </span>
             </qr-code>
           </a>
           <div id="content-function" class="qr-code-overlay" hidden>
@@ -252,7 +260,7 @@
 
       <p id="content-qrcode-info-text" class="mb-3" aria-live="polite" aria-atomic="true"></p>
 
-      <details class="qr-payload-preview text-center mb-4">
+      <details id="qr-payload-debug" class="qr-payload-preview text-center mb-4" hidden>
         <summary id="qr-payload-summary" class="mb-2">Contenuto dimostrativo del QR (Authorization Request)</summary>
         <a id="qr-payload-preview" href=""></a>
       </details>

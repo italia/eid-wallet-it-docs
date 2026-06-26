@@ -30,7 +30,11 @@ Esempio generato (valori di demo):
 haip://?client_id=openid_federation%3A%2F%2Frelying-party.example.org%2FOpenID4VP&request_uri=https%3A%2F%2Frelying-party.example.org%2FOpenID4VP%2Frequest-uri%3Fid%3D7f3c2a1b-9c4d-4e5f-a6b7-8d9e0f1a2b3c&request_uri_method=post
 ```
 
-Il blocco `<details>` in pagina mostra il payload effettivo per verifica manuale.
+Per verificare manualmente il payload in pagina (accordion e link cliccabile sul QR), aggiungere `debug=true` ai parametri URL, ad esempio:
+
+```text
+qr-code-page.html?wallet_id=it-wallet&debug=true
+```
 
 ## Utilizzo
 

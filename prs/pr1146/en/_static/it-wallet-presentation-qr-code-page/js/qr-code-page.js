@@ -9,7 +9,7 @@ const QR_CONFIG_FALLBACK = {
   request_uri_method: 'post',
   qrcode_size: 250,
   qrcode_color: '#000000',
-  qrcode_logo_path: '../shared-ui/img/IT-Wallet-Logo-Primary-BlueItalia.svg',
+  qrcode_logo_path: '../shared-ui/img/IT-Wallet-Mark.svg',
   qrcode_expiration_time: 120,
   selection_page_url: '../it-wallet-selection-page/it-wallet.html',
   discovery_page_url: '../discovery-page/disco.html',
@@ -26,6 +26,11 @@ let selectedWallet = {
 let expirationTime = demoConfig.qrcode_expiration_time;
 let countdown = null;
 let countdownStarted = false;
+let currentQrPayloadUrl = '';
+
+function isDebugMode() {
+  return new URLSearchParams(window.location.search).get('debug') === 'true';
+}
 
 function escapeHtml(text) {
   return String(text)
@@ -182,11 +187,62 @@ function walletTranslation(t, key, extra = {}) {
   );
 }
 
+function adjustQrIconLayout() {
+  const qrCode = document.querySelector('qr-code');
+  const wrapper = qrCode?.shadowRoot?.querySelector('#icon-wrapper');
+  if (!wrapper) return;
+
+  wrapper.style.width = '23.1%';
+  wrapper.style.aspectRatio = '1';
+  wrapper.style.display = 'flex';
+  wrapper.style.alignItems = 'center';
+  wrapper.style.justifyContent = 'center';
+}
+
+function applyQrCodeLink(payloadUrl) {
+  const qrCodeLink = document.getElementById('qr-code-link');
+  if (!qrCodeLink) return;
+
+  if (isDebugMode()) {
+    qrCodeLink.href = payloadUrl;
+    qrCodeLink.classList.remove('qr-code-link--display-only');
+    qrCodeLink.removeAttribute('tabindex');
+  } else {
+    qrCodeLink.removeAttribute('href');
+    qrCodeLink.classList.add('qr-code-link--display-only');
+    qrCodeLink.setAttribute('tabindex', '-1');
+  }
+}
+
+function applyDebugPanel(t) {
+  const panel = document.getElementById('qr-payload-debug');
+  if (!panel) return;
+
+  if (!isDebugMode()) {
+    panel.hidden = true;
+    return;
+  }
+
+  panel.hidden = false;
+
+  const payloadSummary = document.getElementById('qr-payload-summary');
+  if (payloadSummary && t) {
+    payloadSummary.textContent = t('demoPayloadLabel');
+  }
+
+  const payloadPreview = document.getElementById('qr-payload-preview');
+  if (payloadPreview && currentQrPayloadUrl) {
+    payloadPreview.href = currentQrPayloadUrl;
+    payloadPreview.textContent = currentQrPayloadUrl;
+  }
+}
+
 function applyQrVisualConfig(config) {
   const root = document.documentElement;
   root.style.setProperty('--qr-size', `${config.qrcode_size}px`);
 
   const payloadUrl = buildDemoQrPayload(config);
+  currentQrPayloadUrl = payloadUrl;
 
   const qrCode = document.querySelector('qr-code');
   if (qrCode) {
@@ -208,14 +264,12 @@ function applyQrVisualConfig(config) {
 
   const qrCodeLink = document.getElementById('qr-code-link');
   if (qrCodeLink) {
-    qrCodeLink.href = payloadUrl;
+    applyQrCodeLink(payloadUrl);
   }
 
-  const payloadPreview = document.getElementById('qr-payload-preview');
-  if (payloadPreview) {
-    payloadPreview.href = payloadUrl;
-    payloadPreview.textContent = payloadUrl;
-  }
+  applyDebugPanel();
+
+  requestAnimationFrame(adjustQrIconLayout);
 }
 
 function newWindowHintText(t) {
@@ -314,14 +368,13 @@ function updateShellTexts(t) {
   const metaDesc = document.getElementById('meta-description');
   if (metaDesc) metaDesc.setAttribute('content', walletTranslation(t, 'meta.description'));
 
-  const payloadSummary = document.getElementById('qr-payload-summary');
-  if (payloadSummary) payloadSummary.textContent = t('demoPayloadLabel');
-
   const reloadLabel = document.getElementById('qr-reload-label');
   if (reloadLabel) reloadLabel.textContent = t('qrCodeReloadLabel');
 
   const cancelLink = document.getElementById('qr-cancel-link');
   if (cancelLink) cancelLink.textContent = t('cancelLabel');
+
+  applyDebugPanel(t);
 
   updateBackLink(t);
 }
@@ -454,5 +507,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   applyDemoConfig();
   setupBackLink();
   setupCancelLink();
+  document.querySelector('qr-code')?.addEventListener('codeRendered', adjustQrIconLayout);
   initI18n();
 });

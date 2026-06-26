@@ -2242,12 +2242,15 @@ Domini, Classi, Credenziali specifiche e Finalità di verifica aggiuntive <stron
 </td>
 </tr>
 <tr class="row-odd"><td><p><strong>authentic_sources</strong></p></td>
-<td><p>OBBLIGATORIO. Array di oggetti JSON delle Fonti Autentiche che fanno riferimento alle Fonti Autentiche autorizzate. Ogni oggetto DEVE contenere l'identificatore dell'entità FA e l'identificatore specifico della capacità dati:</p>
+<td><p>CONDIZIONALE. È OBBLIGATORIO solo se <code class="docutils literal notranslate"><span class="pre">parent_credentials</span></code> è assente. Array di oggetti JSON delle Fonti Autentiche che fanno riferimento alle Fonti Autentiche autorizzate. Ogni oggetto DEVE contenere l'identificatore dell'entità FA e l'identificatore specifico della capacità dati:</p>
 <ul class="simple">
 <li><p><strong>id</strong>: Identificatore stringa che fa riferimento all'entity_id della Fonte Autentica come registrato in <a class="reference internal" href="#registro-delle-fonti-autentiche"><span class="std std-ref">Registro delle Fonti Autentiche</span></a>.</p></li>
 <li><p><strong>dataset_id</strong>: Identificatore stringa della specifica capacità dati/dataset utilizzato dall'Emittente dalla FA.</p></li>
 </ul>
 </td>
+</tr>
+<tr class="row-even"><td><p><strong>parent_credentials</strong></p></td>
+<td><p>CONDIZIONALE. È OBBLIGATORIO solo se <code class="docutils literal notranslate"><span class="pre">authentic_sources</span></code> è assente. Array degli identificativi di <code class="docutils literal notranslate"><span class="pre">credential_type</span></code> relativi a Credenziali designate come fonti dei dati. Ogni elemento identifica una Credenziale che funge da Fonte Autentica durante il processo di emissione della Credenziale Digitale.</p></td>
 </tr>
 </tbody>
 </table>
@@ -3440,7 +3443,7 @@ I principali Percorsi di seguito illustrano le interazioni con l'Infrastruttura 
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 25/06/2026.
+      Ultimo aggiornamento 26/06/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
