@@ -74,7 +74,7 @@ Di seguito il ruolo del Titolare di Fonte Autentica nel contesto del flusso di r
 
 Per rivestire il ruolo di Titolare di Fonte Autentica, ciascun Ente interessato deve attenersi al seguente processo di onboarding tecnico, da considerarsi valido fino alla pubblicazione del Regolamento IT-Wallet e alla disponibilità di:
 
-- Portale di Onboarding
+- Portale di Registrazione IT-Wallet
 - Registro delle Fonti Autentiche
 - Catalogo degli Attestati Elettronici
 
@@ -472,7 +472,7 @@ La sezione “Dataset” si rivolge ad utenti con profilo tecnico, tra cui svilu
 1. Definisci il valore `dataset_id`, necessario per identificare in maniera univoca uno specifico dataset, utilizzando preferibilmente un identificativo di tipo UUID oppure, in alternativa, adottando una stringa breve, descrittiva e priva di spazi in formato kebab case per nomi composti (es. tesserino-medici);
 2. Definisci i `parametri di richiesta`, necessari per l’emissione dell’EAA relativo al dataset attraverso la fruizione dell’e-service;
 3. Definisci i `dati di risposta`. In particolare:
-   - Prima di iniziare la compilazione, consulta i [Template PDND Data Model](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/e-service-pdnd-template.html) e usali come punto di partenza per il tuo e-service così da assicurare un'elevata aderenza e compliance alle Specifiche Tecniche;
+   - Prima di iniziare la compilazione, consulta i **Template PDND Data Model** e utilizzali come punto di partenza per il tuo e-service, così da assicurare un'elevata aderenza e compliance alle Specifiche Tecniche. Per visualizzare i template è necessario accedere all'area riservata del portale [PDND Interoperabilità](https://www.interop.pagopa.it/), selezionare l'ambiente di Produzione, quindi accedere al [Catalogo Template](https://selfcare.interop.pagopa.it/ui/it/erogazione/catalogo-template?creatorsIds=%5B%5B%22Istituto+Poligrafico+e+Zecca+dello+Stato+S.P.A.%22%2C%2251bd1011-b2ff-4d8c-872e-8a9580510a56%22%5D%5D);
    - Associa a ciascun dato che si intende rendere disponibile all’interno dell’EAA un `nome campo`, visibile all’utente finale, assicurandoti che sia parlante e che descriva adeguatamente il dato. Ricorda che i dati possono essere strutturati su un massimo di due livelli;
    - Ordina i campi in modo da facilitare la leggibilità da parte dell’utente finale: inserisci per primi i dati anagrafici (nome, cognome, data di nascita, luogo di nascita, codice fiscale), poi i dati specifici dell'attestato.
 
