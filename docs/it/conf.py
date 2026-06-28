@@ -288,11 +288,15 @@ latex_elements = {
         
         % -- handling overfull/underfull --
         \tolerance=9999
-        \emergencystretch=3em
+        \emergencystretch=4em
         \hbadness=10000
         \vbadness=10000
         \hfuzz=2pt
         \vfuzz=2pt
+
+        \usepackage{adjustbox}
+        \usepackage{fvextra}
+        \usepackage{seqsplit}
         
         % -- prevent too big dim  --
         \maxdimen=16383.99999pt
@@ -314,28 +318,60 @@ latex_elements = {
         % temporally save the original command
         \let\original@includegraphics\includegraphics
         
-        %  includegraphics is redefined for special characters 
+        % Scale figures to fit page body (caption + image) and handle special chars
         \renewcommand{\includegraphics}[2][]{%
             \begingroup
             \catcode`\-=12\relax
             \catcode`\_=12\relax
-            \original@includegraphics[#1]{#2}%
+            \adjustbox{max width=\linewidth,max height=0.76\textheight,keepaspectratio,center}{%
+                \original@includegraphics[#1]{#2}%
+            }%
             \endgroup
         }
-        
-        % improvements for images
+
         \@ifundefined{sphinxincludegraphics}{}{%
             \let\original@sphinxincludegraphics\sphinxincludegraphics
             \renewcommand{\sphinxincludegraphics}[2][]{%
                 \begingroup
                 \catcode`\-=12\relax
                 \catcode`\_=12\relax
-                \original@sphinxincludegraphics[#1]{#2}%
+                \adjustbox{max width=\linewidth,max height=0.76\textheight,keepaspectratio,center}{%
+                    \original@sphinxincludegraphics[#1]{#2}%
+                }%
                 \endgroup
             }%
         }
         \makeatother
-        
+
+        % Break long JWT/URL lines in code blocks at any character
+        \RecustomVerbatimEnvironment{sphinxVerbatim}{Verbatim}{%
+            breaklines=true,%
+            breakanywhere=true,%
+            breaksymbolleft={},%
+            breaksymbolright={},%
+            commandchars=\\\{\}%
+        }
+        \RecustomVerbatimEnvironment{sphinxVerbatim*}{Verbatim}{%
+            breaklines=true,%
+            breakanywhere=true,%
+            breaksymbolleft={},%
+            breaksymbolright={}%
+        }
+
+        % Pygments wraps long JWT strings in unbreakable boxes; seqsplit fixes that
+        \makeatletter
+        \def\PYG@do#1{%
+            \PYG@bc{\PYG@tc{\PYG@ul{\PYG@it{\PYG@bf{\PYG@ff{\seqsplit{#1}}}}}}}%
+        }
+
+        % Narrow tables: smaller type and tighter columns improve line breaking
+        \AtBeginEnvironment{longtable}{%
+            \small%
+            \setlength{\tabcolsep}{3.5pt}%
+            \emergencystretch=4em%
+        }
+        \makeatother
+
         % -- Improvment for long verbatim  --
         \makeatletter
         \def\sphinx@verbatim@space{\leavevmode\kern.5\fontdimen2\font}
@@ -354,7 +390,20 @@ latex_elements = {
         \defaultfontfeatures{Ligatures=TeX}
         \setmainfont{Latin Modern Roman}
         \setsansfont{Latin Modern Sans}
-        \setmonofont{Latin Modern Mono}
+        \setmonofont{DejaVu Sans Mono}[
+            BoldFont={DejaVu Sans Mono Bold},
+            ItalicFont={DejaVu Sans Mono Oblique},
+            Scale=MatchLowercase,
+        ]
+        \newfontfamily\UnicodeFallbackFont{DejaVu Sans}[
+            Scale=MatchLowercase,
+        ]
+        \usepackage{newunicodechar}
+        \newunicodechar{↔}{{\UnicodeFallbackFont ↔}}
+        \newunicodechar{ˌ}{{\UnicodeFallbackFont ˌ}}
+        \newunicodechar{ˈ}{{\UnicodeFallbackFont ˈ}}
+        \newunicodechar{ː}{{\UnicodeFallbackFont ː}}
+        \newunicodechar{ɪ}{{\UnicodeFallbackFont ɪ}}
     ''',
 }
 
