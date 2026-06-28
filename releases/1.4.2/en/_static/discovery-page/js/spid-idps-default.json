@@ -1,0 +1,15 @@
+[
+  { "organization_name": "Sielte S.p.A.", "entity_id": "https://identity.sieltecloud.it", "logo_uri": "img/spid-idp-sielteid.svg" },
+  { "organization_name": "TI Trust Technologies srl", "entity_id": "https://login.id.tim.it/affwebservices/public/saml2sso", "logo_uri": "img/spid-idp-timid.svg" },
+  { "organization_name": "TeamSystem s.p.a.", "entity_id": "https://spid.teamsystem.com/idp", "logo_uri": "img/spid-idp-teamsystemid.svg" },
+  { "organization_name": "ArubaPEC S.p.A.", "entity_id": "https://loginspid.aruba.it", "logo_uri": "img/spid-idp-arubaid.svg" },
+  { "organization_name": "InfoCert S.p.A.", "entity_id": "https://identity.infocert.it", "logo_uri": "img/spid-idp-infocertid.svg" },
+  { "organization_name": "Poste Italiane SpA", "entity_id": "https://posteid.poste.it", "logo_uri": "img/spid-idp-posteid.svg" },
+  { "organization_name": "Intesi Group S.p.A.", "entity_id": "https://idp.intesigroup.com", "logo_uri": "img/spid-idp-intesigroupspid.svg" },
+  { "organization_name": "EtnaHitech S.C.p.A.", "entity_id": "https://id.eht.eu", "logo_uri": "img/spid-idp-etnaid.svg" },
+  { "organization_name": "InfoCamere S.C.p.A.", "entity_id": "https://loginspid.infocamere.it", "logo_uri": "img/spid-idp-infocamereid.svg" },
+  { "organization_name": "Namirial", "entity_id": "https://idp.namirialtsp.com/idp", "logo_uri": "img/spid-idp-namirialid.svg" },
+  { "organization_name": "Lepida S.p.A.", "entity_id": "https://id.lepida.it/idp/shibboleth", "logo_uri": "img/spid-idp-lepidaid.svg" },
+  { "organization_name": "Register.it S.p.A.", "entity_id": "https://spid.register.it", "logo_uri": "img/spid-idp-spiditalia.svg" },
+  { "organization_name": "SPID Test", "entity_id": "https://localhost:8443", "logo_uri": "" }
+]
