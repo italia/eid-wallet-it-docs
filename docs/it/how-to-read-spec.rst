@@ -48,7 +48,7 @@ La specifica è organizzata nelle seguenti sezioni principali:
 
 
 Percorsi di lettura per ruolo
-^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 """"""""""""""""""""""""""""
 
