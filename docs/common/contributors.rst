@@ -46,6 +46,9 @@
 - Takahiko Kawasaki
 - Thomas Chiozzi
 - Torsten Lodderstedt
+- Valentina Carollo
 - Valerio Bozzolan
 - Vladimir Duzhinov
 - Zahra Ebadi Ansaroudi
+
+

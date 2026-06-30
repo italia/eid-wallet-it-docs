@@ -1,3 +1,7 @@
+.. include:: ../common/common_definitions.rst
+.. Included via normative-ref.rst at title level '-' (level 1).
+
+
 Official Resources
 -------------------
 
@@ -22,15 +26,23 @@ The following official graphic assets are available for download in the `officia
 - **IT-Wallet ID**: Official graphic element that ensures the unique identification and representation of the PID across all Wallet Solutions - `Download IT-Wallet ID <_static/IT-Wallet-ID/IT-Wallet-ID-Primary-BlueItalia.svg>`_
 - **Trust Mark**: Official graphic element for attesting the participation in the IT-Wallet System - `Download Trust Mark <_static/IT-Wallet-Trust-Mark/ENG/Trust-Mark-ENG-Primary-BlueItalia.svg>`_ - Read more at section :ref:`brand-identity:Trust Mark`
 - **Authentication Button**: Official button for authentication via IT-Wallet - `Download Authentication Button <_static/IT-Wallet-Authentication-Button/ENG/IT-Wallet-Authentication-Button-ENG-Standard-Default.svg>`_
+- **Pages templates**: the models of the pages that belong to the Authentication flow: Discovery page, Selection page, QR code page, Thank you page and Error page  – Go to `Pages-templates/ <https://github.com/italia/eid-wallet-it-docs/tree/versione-corrente/official_resources/Pages-templates>`_
+- **Icons and pictograms**: icons and pictograms useful to implement the Authentication flow – `Download OK State <_static/Icons-and-pictograms/OK_State.svg>`_ - `Download KO state <_static/Icons-and-pictograms/KO_State.svg>`_ - `Download order <_static/Icons-and-pictograms/Order.svg>`_
 
 HTML Components
 ^^^^^^^^^^^^^^^
 
 The following official HTML components are available in the `official_resources/ <https://github.com/italia/eid-wallet-it-docs/tree/versione-corrente/official_resources>`_ folder of this repository:
 
-- **Authentication Button Component**: Official HTML/CSS component for authentication via IT-Wallet, based on the `Bootstrap Italia <https://italia.github.io/bootstrap-italia/docs/componenti/buttons/>`_ library - `View the component <https://github.com/italia/eid-wallet-it-docs/tree/versione-corrente/official_resources/authentication-button>`_ - `Live demo <_static/authentication-button/authentication-button.html>`_
+- **Authentication Button Component**: Official HTML/CSS component for authentication via IT-Wallet, based on the `Bootstrap Italia <https://italia.github.io/bootstrap-italia/docs/componenti/buttons/>`__ library - `View the component <https://github.com/italia/eid-wallet-it-docs/tree/versione-corrente/official_resources/authentication-button>`__ - `Live demo <_static/authentication-button/authentication-button.html>`__
+- **Discovery Page**: Official, self-contained HTML/CSS/JS template for selecting the authentication method (digital identity), based on the `Bootstrap Italia <https://italia.github.io/bootstrap-italia/>`__ library - `View the template <https://github.com/italia/eid-wallet-it-docs/tree/versione-corrente/official_resources/discovery-page>`__ - `Live demo <_static/discovery-page/disco.html>`__
+- **IT-Wallet Selection Page**: Official, self-contained HTML/CSS/JS template for selecting the digital wallet to continue authentication, based on the `Bootstrap Italia <https://italia.github.io/bootstrap-italia/>`__ library - `View the template <https://github.com/italia/eid-wallet-it-docs/tree/versione-corrente/official_resources/it-wallet-selection-page>`__ - `Live demo <_static/it-wallet-selection-page/it-wallet.html>`__
+- **IT-Wallet Presentation QR Code Page**: Official, self-contained HTML/CSS/JS template for the OpenID4VP remote presentation **Cross Device** flow (QR code page), including a demonstrative Authorization Request payload encoded with a custom URL scheme (``haip://``, Request Object by reference, as described in :ref:`remote-flow:Remote Flow`). The wallet cards on the Selection Page link to this demo. Based on the `Bootstrap Italia <https://italia.github.io/bootstrap-italia/>`__ library - `View the template <https://github.com/italia/eid-wallet-it-docs/tree/versione-corrente/official_resources/it-wallet-presentation-qr-code-page>`__ - `Live demo <_static/it-wallet-presentation-qr-code-page/qr-code-page.html>`__
+
+Common static assets shared by the three pages above (Bootstrap Italia, CSS, shared JavaScript, SVG sprites, favicon, and logos) live in `official_resources/shared-ui/` and are referenced with relative paths ``../shared-ui/...``.
 
 Brand Manual
 ^^^^^^^^^^^^
 
 The Brand Manual containing complete indications for the use of graphic assets and the visual identity of the IT-Wallet System will soon be available at the :ref:`official website <official-resources:Official Website>`.
+

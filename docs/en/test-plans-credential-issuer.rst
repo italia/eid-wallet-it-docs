@@ -1,10 +1,10 @@
 .. include:: ../common/common_definitions.rst
 
+
 Credential Issuer Test Matrix
 ---------------------------------
 
 This section provides the set of test cases designed for technical implementers and development teams responsible for creating and deploying Credential Issuer solutions. It is also intended for assessment bodies inspecting and validating the implementations of Credential Issuer solutions.
-
 
 
 .. list-table::
@@ -41,9 +41,9 @@ This section provides the set of test cases designed for technical implementers 
     - Entity Configurations parameters
     - Entity Configurations have in common these parameters: iss, sub, iat, exp, jwks, metadata.
   * - CI_007
-    - Trust, Security
-    - Credential Issuer Discovery
-    - The Credential Issuer exposes a well-known endpoint hosting its Entity Configuration.
+    - Voided
+    - Voided
+    - Voided
   * - CI_008
     - Trust, Interoperability
     - Credential Issuer metadata
@@ -105,9 +105,9 @@ This section provides the set of test cases designed for technical implementers 
     - PAR Authorization Details
     - When both scope and authorization_details request the same Credential type, Credential Issuer follows the specifications given by the authorization_details object
   * - CI_018
-    - Issuance, Security
-    - PAR Request Object Signature Validation
-    - Credential Issuer successfully validates the Request Object signature using the algorithm from the alg header parameter and the public key from the Wallet Attestation's cnf.jwk claim (referenced by kid), confirming signature integrity (:rfc:`9126`/:rfc:`9101`)
+    - Voided
+    - Voided
+    - Voided
   * - CI_019
     - Issuance, Security
     - PAR Algorithm Compliance Check
@@ -128,7 +128,7 @@ This section provides the set of test cases designed for technical implementers 
     - Issuance, Security
     - PAR Request URI Parameter Rejection
     - Credential Issuer detects and rejects any PAR request containing the request_uri parameter (:rfc:`9126`), returning an appropriate error response indicating the parameter is not supported.
-  * - CRFCI_024
+  * - CI_024
     - Issuance, Security
     - PAR Mandatory Parameters Validation
     - Credential Issuer verifies all mandatory HTTP parameters are present in the Request Object and validates their values against the defined Table specifications (derived from :rfc:`9126`); missing or invalid parameters trigger structured error responses.
@@ -189,13 +189,13 @@ This section provides the set of test cases designed for technical implementers 
     - Wallet Provider Trust Establishment
     - Credential Issuer establishes trust in the Wallet Provider as an authorized Federation entity by querying Federation API endpoints (e.g., .well-known/openid-federation, /fetch) and validating the provider's federation status through official channels and trust verification processes.
   * - CI_038
-    - Issuance, Interoperability
-    - One-Time Request URI Provision in the PAR response
-    - Credential Issuer generates and provides a unique, one-time use request_uri value
+    - Voided
+    - Voided
+    - Voided
   * - CI_039
-    - Issuance, Security
-    - Request URI Client Binding in the PAR response
-    - Issued request_uri value is cryptographically bound to the specific client_id provided in the Request Object
+    - Voided
+    - Voided
+    - Voided
   * - CI_040
     - Issuance, Security
     - Recommended PAR Response Request URI Validity Duration
@@ -307,7 +307,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_061a
     - Issuance, Security
     - PKCE ``code_verifier`` Verification in Token Request
-    - The Credential Issuer verifies that the ``code_verifier`` parameter is present and matches the ``code_challenge`` associated with the authorization code (:rfc:`7636`); in case of mismatch, the request is rejected.  
+    - The Credential Issuer verifies that the ``code_verifier`` parameter is present and matches the ``code_challenge`` associated with the authorization code (:rfc:`7636`); in case of mismatch, the request is rejected.
   * - CI_062
     - Issuance, Security
     - Redirect URI Matching Validation of the Token Request
@@ -377,9 +377,9 @@ This section provides the set of test cases designed for technical implementers 
     - JWT Temporal Validity in the Credential Request
     - The creation time of the JWT (via iat claim or server-managed timestamp through nonce claim) falls within the server's acceptable time window
   * - CI_079
-    - Issuance, Interoperability
-    - Credential Registration for Revocation
-    - Credential Issuer registers all issued Credentials in a revocation registry for potential future revocation needs
+    - Voided
+    - Voided
+    - Voided
   * - CI_080
     - Issuance, Interoperability
     - Recommended Fresh Cryptographic Key Generation in the Credential Request
@@ -437,9 +437,9 @@ This section provides the set of test cases designed for technical implementers 
     - Credential Endpoint Access Authorization
     - Access Token allows access to Credential endpoint for Digital Credential refresh/re-issuance of existing credentials
   * - CI_090
-    - Issuance, Security
-    - DPoP-Bound Refresh Token Security
-    - Refresh Tokens are bound to DPoP keys to mitigate stolen token impact
+    - Voided
+    - Voided
+    - Voided
   * - CI_091
     - Issuance,Interoperability
     - OAuth Client Attestation PoP Validation for Refresh
@@ -477,9 +477,9 @@ This section provides the set of test cases designed for technical implementers 
     - Refresh Token Security Properties
     - Refresh tokens are generated with unguessable values and protected from modification through cryptographic integrity mechanisms
   * - CI_100
-    - Issuance, Security
-    - Cryptographic Refresh Token Binding
-    - Authorization Servers cryptographically bind Refresh Tokens to the Wallet Instance according to :rfc:`9449` specifications
+    - Voided
+    - Voided
+    - Voided
   * - CI_101
     - Issuance, Security
     - Consistent DPoP Key Binding between Refresh and Access token
@@ -537,9 +537,9 @@ This section provides the set of test cases designed for technical implementers 
     - First-Time Issuance Restriction for Refresh Tokens
     - Access Tokens obtained through Refresh Token flows are prohibited from being used for first-time issuance of Digital Credentials
   * - CI_115
-    - Issuance, Security
-    - Mandatory Expiry Date Consistency after Re-Issuance
-    - Credential Issuer sets the same expiry date for re-issued Digital Credentials as the previous credential version
+    - Voided
+    - Voided
+    - Voided
   * - CI_116
     - Issuance, Privacy
     - User Consent for Attribute-Based Re-issuance
@@ -553,9 +553,9 @@ This section provides the set of test cases designed for technical implementers 
     - (Q)EAA Credential Formats
     - (Q)EAA are Issued to a Wallet Instance in SD-JWT VC or mdoc-CBOR data format.
   * - CI_119
-    - Data Model and lifecycle, Interoperability
-    - PID/(Q)EAA Digital Credential Format
-    - PID/(Q)EAA is successfully issued in the form of Digital Credential with Digital Credential format as SD-JWT as specified in `SD-JWT-VC`_.
+    - Voided
+    - Voided
+    - Voided
   * - CI_120
     - Data Model and lifecycle, Security
     - Signature of the SD-JWT credential
@@ -831,7 +831,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_169
     - Data Model and lifecycle, Interoperability
     - Wallet Instance Status Monitoring for the Digital Credential Status Update
-    - Credential Issuer establishes a monitoring mechanism of the current statuses of all the Wallet Unit Attestations related to the Wallet Instances to which the Credentials were issued.
+    - Credential Issuer establishes a monitoring mechanism of the current statuses of all the Key Attestations related to the Wallet Instances to which the Credentials were issued.
   * - CI_170
     - Data Model and lifecycle, Interoperability
     - Credential Status Update Following Data Change Notification
@@ -944,4 +944,5 @@ This section provides the set of test cases designed for technical implementers 
     - Data Model and lifecycle, Interoperability
     - Credentials Array Element Information
     - Each element of the *Credentials* array correctly contains all the information defined in the First-level Fields :ref:`table <table_catalog_parameters_first_level>`.
+
 

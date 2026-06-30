@@ -1,5 +1,6 @@
 .. include:: ../common/common_definitions.rst
 
+
 Normative References
 ====================
 
@@ -19,4 +20,5 @@ Below the normative references and respective acronyms included in these Technic
       - Regulation (EU) No 910/2014 of the European Parliament and of the Council of 23 July 2014 on electronic identification and trust services for electronic transactions in the internal market and repealing Directive 1999/93/EC (eIDAS Regulation).
 
 .. include:: official-resources.rst
+
 

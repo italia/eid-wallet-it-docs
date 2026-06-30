@@ -11,3 +11,5 @@ This process allows the User who has just installed the Wallet Instance applicat
 
 .. note::
   The Wallet Provider SHOULD associate the Wallet Instance (through the ``hardware_key_tag`` identifier) with a specific User uniquely identified within the Wallet Provider's systems. This will be useful for the lifecycle of the Wallet Instance and for a future revocation. For details see :ref:`mobile-application-instance:Mobile Application Instance`.
+
+

@@ -74,9 +74,15 @@ jobs:
           sed -i '/\\documentclass.*sphinxmanual/a \\\\pdfminorversion=7' build/latex/en/eid-wallet-it-docs.tex
           cd build/latex/en
 
+          # LuaLaTeX may exit 1 on warnings (overfull hbox, float too large, etc.)
+          # while still producing a usable PDF; fail only if the PDF is missing.
           run_lualatex() {
             lualatex -interaction=nonstopmode -file-line-error "$SETTINGS_FILE_NAME.tex" 2>&1 | tee -a lualatex-en.log
-            rc=${PIPESTATUS[0]}; return $rc
+            rc=${PIPESTATUS[0]}
+            if [[ $rc -ne 0 && ! -f "$SETTINGS_FILE_NAME.pdf" ]]; then
+              return $rc
+            fi
+            return 0
           }
           : > lualatex-en.log
 
@@ -104,17 +110,30 @@ jobs:
           for f in build/latex/it/images/pdf/*.pdf; do [ -f "$f" ] || continue; out="${f%.pdf}-t.pdf"; gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.5 -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$out" "$f" 2>/dev/null; [ -f "$out" ] && mv "$out" "$f"; rm -f "$out"; done
           sed -i '/\\documentclass.*sphinxmanual/a \\\\pdfminorversion=7' build/latex/it/eid-wallet-it-docs.tex
           cd build/latex/it
+
+          run_lualatex() {
+            lualatex -interaction=nonstopmode -file-line-error "$SETTINGS_FILE_NAME.tex" 2>&1 | tee -a lualatex-it.log
+            rc=${PIPESTATUS[0]}
+            if [[ $rc -ne 0 && ! -f "$SETTINGS_FILE_NAME.pdf" ]]; then
+              return $rc
+            fi
+            return 0
+          }
+          : > lualatex-it.log
+
           echo "=== First LaTeX run ==="
-          lualatex -interaction=nonstopmode -file-line-error "$SETTINGS_FILE_NAME.tex"
+          run_lualatex || { echo "First lualatex run failed. Last 120 lines of log:"; tail -120 lualatex-it.log; exit 1; }
           echo "Processing index..."
           makeindex -s python.ist "$SETTINGS_FILE_NAME.idx" || true
           echo "=== Second LaTeX run ==="
-          lualatex -interaction=nonstopmode -file-line-error "$SETTINGS_FILE_NAME.tex"
+          run_lualatex || { echo "Second lualatex run failed. Last 120 lines of log:"; tail -120 lualatex-it.log; exit 1; }
           echo "=== Final LaTeX run ==="
-          lualatex -interaction=nonstopmode -file-line-error "$SETTINGS_FILE_NAME.tex"
+          run_lualatex || { echo "Third lualatex run failed. Last 120 lines of log:"; tail -120 lualatex-it.log; exit 1; }
 
           if [ ! -f "$SETTINGS_FILE_NAME.pdf" ]; then
             echo "ERROR: Italian PDF was not generated"
+            echo "=== Last 120 lines of LaTeX log ==="
+            tail -120 lualatex-it.log
             exit 1
           fi
           ls -la "$SETTINGS_FILE_NAME.pdf"
