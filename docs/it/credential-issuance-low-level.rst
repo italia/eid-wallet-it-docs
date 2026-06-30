@@ -129,7 +129,8 @@ Il Credential Issuer esegue i seguenti controlli alla ricezione della `PAR Reque
     9. DEVE verificare che il `Request Object` sia stato emesso in un momento precedente al valore esposto nel claim ``iat``. DOVREBBE rifiutare la richiesta se il claim ``iat`` è lontano dall'ora corrente (:rfc:`9126`) di più di `5` minuti.
     10. DEVE verificare che il claim ``jti`` nel `Request Object` non sia stato utilizzato in precedenza dall'Istanza del Wallet identificata dal ``client_id``. Ciò consente al Credential Issuer di mitigare gli attacchi di replay (:rfc:`7519`).
     11. DEVE validare il parametro ``OAuth-Client-Attestation-PoP`` in base alla Sezione 5 di [`OAUTH-ATTESTATION-CLIENT-AUTH`_].
-    12. Deve verificare, se presente, la validità dell’``issuer_state`` e la coerenza con il ``credential_configuration_id`` richiesto nel Request Object.
+    12. DEVE verificare, se presente, la validità dell’``issuer_state`` e la coerenza con il ``credential_configuration_id`` richiesto nel Request Object.
+
 
 Di seguito un esempio non normativo di `PAR Request`.
 
@@ -697,13 +698,11 @@ L'oggetto Credential Offer è un oggetto JSON contenente i parametri definiti ne
 
         Il parametro ``issuer_state`` DEVE seguire la seguente struttura: ``urn:it-wallet:credential-offer:{authenticSourceId}:{datasetId}`` se ``objectId`` è assente oppure ``urn:it-wallet:credential-offer:{authenticSourceId}:{datasetId}:{objectId}`` nel caso in cui ``objectId`` è presente. Il segmento opzionale ``objectId`` DEVE essere omesso quando non disponibile; NON DEVE essere utilizzato un segmento finale vuoto. Il valore di questo URN DEVE essere cifrato utilizzando la chiave pubblica PDND relativa al Consumer dell’e-service ``GetAttributeClaims``.
 
-
         - **authorization_server**: REQUIRED quando il Credential Issuer utilizza più di un authorization server nella sua soluzione. Stringa che identifica l'Authorization Server da utilizzare. Il valore DEVE corrispondere a uno dei valori mappati nell'array ``authorization_servers`` dei metadata del Credential Issuer. NON DEVE essere utilizzato se ``authorization_servers`` è assente o non ha voci multiple.
     - Sezione 4.1.1 di [`OpenID4VCI`_] e Sezione 4.1 di [`OPENID4VC-HAIP`_].
 
 .. note::
   Quando si utilizza ``credential_offer_uri`` (per riferimento), il Credential Issuer o la terza parte DOVREBBE utilizzare un URI univoco per ogni Credential Offer o altrimenti prevenire il caching dell'URI, come raccomandato nella Sezione 4.1.3 di [`OpenID4VCI`_].
-
 
 Esempi non normativi
 ^^^^^^^^^^^^^^^^^^^^
