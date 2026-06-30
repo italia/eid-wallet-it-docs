@@ -279,7 +279,6 @@ Il JWT della richiesta include le seguenti claim nel body:
 
 Di seguito è riportato un esempio non normativo dell'intestazione e del payload del JWT della Wallet Instance Attestation Request.
 
-
 .. code-block:: json
 
     {
@@ -477,6 +476,7 @@ Di seguito è riportato un esempio non normativo dell'header e del payload della
 
 
 
+
 Endpoint di Emissione della Key Attestation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -504,7 +504,6 @@ Di seguito è riportato un esempio non normativo di una Key Attestation Request.
     }
 
 In particolare, il JWT della Key Attestation Issuance include i seguenti parametri di header HTTP:
-
 
 .. _table_ka_request_claim:
 .. list-table::
@@ -630,7 +629,6 @@ L'oggetto JSON restituito nella risposta contiene il seguente parametro:
       - OBBLIGATORIO. Una stringa che rappresenta la Key Attestation rilasciata.
       - Questa specifica.
 
-
 Il valore del parametro ``key_attestation`` è una stringa che rappresenta la Key Attestation in formato JWT.
 
 Se durante il processo si verificano errori, viene restituita una risposta di errore come definito nella sezione precedente.
@@ -655,6 +653,8 @@ La tabella seguente elenca i codici di stato HTTP e i relativi codici di errore 
     * - ``403 Forbidden``
       - ``invalid_request``
       - La firma della key Attestation Request non è valida oppure non corrisponde alla chiave pubblica associata (JWK).
+
+
 
 
 
@@ -739,6 +739,7 @@ Il corpo del Key Attestation JWT contiene le seguenti dichiarazioni (claims):
       - `OpenID4VCI`_.
 
 
+
 Di seguito è riportato un esempio non normativo dell'intestazione e del payload del Key Attestation JWT, senza codifica né firma applicata:
 
 .. literalinclude:: ../../examples/ka-jwt_example_header.json
@@ -751,8 +752,11 @@ Di seguito è riportato un esempio non normativo dell'intestazione e del payload
 .. note::
     Poiché lo schema di certificazione non è ancora stato definito, il contenuto esatto di ``certification`` non è definito e sarà specificato in un futuro aggiornamento.
 
+
 .. note::
     Come meccanismo di revoca per la KA, è preferito l'indice condiviso per tipo descritto nella Sezione 2.5.2 di `EUDI-TS 3`_.
+
+
 
 
 Catalogo e-Service PDND del Fornitore di Wallet
