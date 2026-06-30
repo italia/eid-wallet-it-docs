@@ -78,7 +78,7 @@ Il payload JWT della risposta dell'Endpoint di Discovery del Registro DEVE conte
    * - **last_updated**
      - OBBLIGATORIO. Timestamp dell'ultima modifica al documento di discovery (es. ``2024-03-15T10:30:00Z``).
    * - **endpoints**
-     - OBBLIGATORIO. Oggetto JSON contenente gli URI di tutti i componenti del registro. Devono essere presenti le seguenti chiavi di endpoint:
+     - OBBLIGATORIO. Oggetto JSON contenente gli URI di tutti i componenti del registro. DEVONO essere presenti le seguenti chiavi di endpoint:
 
        * **claims_registry**: URI dell'API del Registro dei Claims.
        * **authentic_sources**: URI dell'API del Registro delle Fonti Autentiche.

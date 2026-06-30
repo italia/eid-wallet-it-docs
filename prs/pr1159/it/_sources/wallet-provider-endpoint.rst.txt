@@ -682,7 +682,7 @@ L'intestazione JOSE del Key Attestation JWT contiene i seguenti parametri:
       - OBBLIGATORIO. Identificatore univoco della chiave pubblica associata alla chiave privata che il Fornitore di Wallet ha utilizzato per firmare la Key Attestation.
       - :rfc:`7638#section_3`.
     * - **typ**
-      - OBBLIGATORIO. Deve essere impostato su ``key-attestation+jwt``
+      - OBBLIGATORIO. DEVE essere impostato su ``key-attestation+jwt``
       - `OPENID4VC-HAIP`_.
     * - **trust_chain**
       - OPZIONALE. Sequenza di Entity Statement che compone la Catena di Fiducia relativa al Fornitore di Wallet.
@@ -716,18 +716,18 @@ Il corpo del Key Attestation JWT contiene le seguenti dichiarazioni (claims):
     * - **key_storage**
       - OBBLIGATORIO. Un array non vuoto di stringhe sensibili alle maiuscole che dichiarano la resistenza al potenziale di attacco del componente di archiviazione delle chiavi e delle chiavi attestate nel parametro ``attested_keys``. I seguenti valori sono definiti come possibili valori per questa dichiarazione claim:
 
-        - ``iso_18045_high``: Deve essere utilizzato quando l'archiviazione delle chiavi è resistente ad attacchi con potenziale di attacco ``High``.
-        - ``iso_18045_moderate``: Deve essere utilizzato quando l'archiviazione delle chiavi è resistente ad attacchi con potenziale di attacco  ``Moderate``.
-        - ``iso_18045_enhanced-basic``: Deve essere utilizzato quando l'archiviazione delle chiavi è resistente ad attacchi con potenziale di attacco  ``Enhanced-Basic``.
-        - ``iso_18045_basic``: Deve essere utilizzato quando l'archiviazione delle chiavi è resistente ad attacchi con potenziale di attacco  ``Basic``.
+        - ``iso_18045_high``: DEVE essere utilizzato quando l'archiviazione delle chiavi è resistente ad attacchi con potenziale di attacco ``High``.
+        - ``iso_18045_moderate``: DEVE essere utilizzato quando l'archiviazione delle chiavi è resistente ad attacchi con potenziale di attacco  ``Moderate``.
+        - ``iso_18045_enhanced-basic``: DEVE essere utilizzato quando l'archiviazione delle chiavi è resistente ad attacchi con potenziale di attacco  ``Enhanced-Basic``.
+        - ``iso_18045_basic``: DEVE essere utilizzato quando l'archiviazione delle chiavi è resistente ad attacchi con potenziale di attacco  ``Basic``.
       - `OpenID4VCI`_.
     * - **user_authentication**
       - OBBLIGATORIO. Un array non vuoto di stringhe sensibili alle maiuscole che dichiarano la resistenza al potenziale di attacco dei metodi di autenticazione utente autorizzati ad accedere alle chiavi private dal parametro attested_keys. I seguenti valori sono definiti come possibili valori per questa dichiarazione claim:
 
-        - ``iso_18045_high``: Deve essere utilizzato quando l'autenticazione dell'utente è resistente ad attacchi con potenziale di attacco ``High``.
-        - ``iso_18045_moderate``: Deve essere utilizzato quando l'autenticazione dell'utente è resistente ad attacchi con potenziale di attacco ``Moderate``.
-        - ``iso_18045_enhanced-basic``: Deve essere utilizzato quando l'autenticazione dell'utente è resistente ad attacchi con potenziale di attacco ``Enhanced-Basic``.
-        - ``iso_18045_basic``: Deve essere utilizzato quando l'autenticazione dell'utente è resistente ad attacchi con potenziale di attacco ``Basic``.
+        - ``iso_18045_high``: DEVE essere utilizzato quando l'autenticazione dell'utente è resistente ad attacchi con potenziale di attacco ``High``.
+        - ``iso_18045_moderate``: DEVE essere utilizzato quando l'autenticazione dell'utente è resistente ad attacchi con potenziale di attacco ``Moderate``.
+        - ``iso_18045_enhanced-basic``: DEVE essere utilizzato quando l'autenticazione dell'utente è resistente ad attacchi con potenziale di attacco ``Enhanced-Basic``.
+        - ``iso_18045_basic``: DEVE essere utilizzato quando l'autenticazione dell'utente è resistente ad attacchi con potenziale di attacco ``Basic``.
       - `OpenID4VCI`_.
     * - **status**
       - OBBLIGATORIO. Meccanismo di stato per la Key Attestation.

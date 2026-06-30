@@ -129,6 +129,8 @@ The Credential Issuer performs the following checks upon the receipt of the PAR 
     9. It MUST check that the Request Object was issued in a previous time than the value exposed in the ``iat`` claim. It SHOULD reject the request if the ``iat`` claim is far from the current time (:rfc:`9126`) of more than `5` minutes.
     10. It MUST check that the ``jti`` claim in the Request Object has not been used before by the Wallet Instance identified by the ``client_id``. This allows the Credential Issuer to mitigate replay attacks (:rfc:`7519`).
     11. It MUST validate the ``OAuth-Client-Attestation-PoP`` parameter based on Section 5 of [`OAUTH-ATTESTATION-CLIENT-AUTH`_].
+    12. It MUST verify, if present, the validity of the ``issuer_state`` and the coherence with the ``credential_configuration_id`` requested in the Request Object.
+
 
 Below is a non-normative example of the PAR Request.
 
@@ -686,13 +688,21 @@ The Credential Offer object is a JSON object containing the parameters defined i
   * - **grants**
     - REQUIRED. It MUST contain ``authorization_code`` object with the following parameters:
 
-        - **issuer_state**: OPTIONAL. Opaque string created by the Credential Issuer used to bind the subsequent Authorization Request with the Credential Issuer. The Wallet MUST include it in the subsequent Authorization Request when present.
+        - **issuer_state**: OPTIONAL. Opaque string used to bind the subsequent Authorization Request with the Credential Issuer. It MAY be bound to a specific Credential Dataset provided by a certain Authentic Source. The Wallet MUST include it in the subsequent Authorization Request when present. It MUST be a URN and contain the following information:
+
+            - *authenticSourceId:* REQUIRED. It MUST correspond to the ``entity_id`` value of the Authentic Source that provides the Credential Dataset(s) as registered in the :ref:`registry:Authentic Source Registry`. 
+
+            - *datasetId:* REQUIRED. The unique identifier of the dataset provided by the Authentic Source as registered in the :ref:`registry:Authentic Source Registry`. 
+
+            - *objectId:* OPTIONAL. Unique identifier of the Credential Dataset available from the Authentic Source. 
+
+        The ``issuer_state`` MUST follow the structure ``urn:it-wallet:credential-offer:{authenticSourceId}:{datasetId}`` when ``objectId`` is absent, or ``urn:it-wallet:credential-offer:{authenticSourceId}:{datasetId}:{objectId}`` when ``objectId`` is present. The optional ``objectId`` segment MUST be omitted when not available; an empty trailing segment MUST NOT be used. This URN value MUST be encrypted using the PDND public key related to the ``GetAttributeClaims`` e-service Consumer.
+
         - **authorization_server**: REQUIRED when the Credential Issuer uses more than one authorization server in its Issuer Solution. This string identifies the Authorization Server to use. The value MUST match with one of the values mapped in the ``authorization_servers`` array of the Credential Issuer metadata. It MUST NOT be used if ``authorization_servers`` is absent or it has no multiple entries.
     - Section 4.1.1 of [`OpenID4VCI`_] and Section 4.1 of [`OPENID4VC-HAIP`_].
 
 .. note::
   When using ``credential_offer_uri`` (by reference), the Credential Issuer or third party SHOULD use a unique URI for each Credential Offer or otherwise prevent caching of the URI, as recommended in Section 4.1.3 of [`OpenID4VCI`_].
-
 
 Non-normative Examples
 ^^^^^^^^^^^^^^^^^^^^^^^
