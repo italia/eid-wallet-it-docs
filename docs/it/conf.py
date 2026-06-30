@@ -163,7 +163,7 @@ html_theme_options = {
     "show_theme_credit": False,
     "source_url": 'https://github.com/italia/eudi-wallet-it-docs',
     "source_icon": "github",
-    # "banner_text": 'We just launched a newletter, <a href="https://mynewsletter.com/">please subscribe</a>!'
+    # "banner_text": 'We just launched a newsletter, <a href="https://mynewsletter.com/">please subscribe</a>!'
 }
 
 # -- ReadTheDoc requirements and local template generation---------------------
@@ -283,7 +283,7 @@ latex_elements = {
         \setlength{\headheight}{14pt}
         \addtolength{\topmargin}{-2pt}
         
-        % -- Geometry settings (note that sphinx already include Geomerty pkg) --
+        % -- Geometry settings (note that sphinx already include Geometry pkg) --
         \geometry{margin=2.5cm,top=3cm,bottom=3cm}
         
         % -- handling overfull/underfull --
@@ -301,7 +301,7 @@ latex_elements = {
         % -- prevent too big dim  --
         \maxdimen=16383.99999pt
         
-        % -- improvment space interruption --
+        % -- improvement space interruption --
         \widowpenalty=10000
         \clubpenalty=10000
         \brokenpenalty=10000
@@ -372,7 +372,7 @@ latex_elements = {
         }
         \makeatother
 
-        % -- Improvment for long verbatim  --
+        % -- Improvement for long verbatim  --
         \makeatletter
         \def\sphinx@verbatim@space{\leavevmode\kern.5\fontdimen2\font}
         \makeatother

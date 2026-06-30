@@ -47,7 +47,7 @@ The :term:`User` MUST securely store the key phrase chosen from those proposed b
   To extract the key from the list of selected words a key derivation function MUST be applied. Password-Based-Key-Derivation Function 2 (PBKDF2) is among the mostly used ones based on `RFC 2898`_ and it is recommended by the `NIST 800-132 <https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf>`_. There are other relevant techniques that are available and used widely, such as Bcrypt, Scrypt, and Argon2. More details on this approach can be found `here <https://cryptobook.nakov.com/mac-and-key-derivation/kdf-deriving-key-from-password>`_ (:ref:`WP_121 <credential-backup-testcases>`).
 
 .. note::
-  The work factor for PBKDF2 is implemented through an iteration count, which should set differently based on the internal hashing algorithm used. The recommended value for ``SHA-256`` hashing algorithim is 600000 iterations as stated in the `OWASP Password Storage Cheatsheet <https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#pbkdf2>`_ (:ref:`WP_121a <credential-backup-testcases>`).
+  The work factor for PBKDF2 is implemented through an iteration count, which should set differently based on the internal hashing algorithm used. The recommended value for ``SHA-256`` hashing algorithm is 600000 iterations as stated in the `OWASP Password Storage Cheatsheet <https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#pbkdf2>`_ (:ref:`WP_121a <credential-backup-testcases>`).
 
 **Step 4**: The :term:`Wallet Instance` performs the operations below to create the backup JWT entry for the backup file (:ref:`WP_122 <credential-backup-testcases>`).
 
@@ -120,7 +120,7 @@ The body of backup JWT contains the following REQUIRED claims (:ref:`WP_122b <cr
   * - **wallet_instance_attestation**
     - It MUST be set to a value containing the :term:`Wallet Instance Attestation` JWT.
   * - **credentials_backup**
-    - Object that describes specifics of the:term:`Credential` that are backupped. This object contains a list of name/value pairs, where each name is a unique identifier of the :term:`Credential Issuer`. This identifier is used to initiate the issuance phase. The value is an array of unique strings. Each string corresponds to the ``credential_configuration_id`` that identifies the specific:term:`Digital Credential` that was issued.
+    - Object that describes specifics of the:term:`Credential` that are backed up. This object contains a list of name/value pairs, where each name is a unique identifier of the :term:`Credential Issuer`. This identifier is used to initiate the issuance phase. The value is an array of unique strings. Each string corresponds to the ``credential_configuration_id`` that identifies the specific:term:`Digital Credential` that was issued.
 
 
 Restore flow for Hardware Binding Credential

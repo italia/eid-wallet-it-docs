@@ -126,7 +126,7 @@ The ``request`` JWT payload contained in the HTTP POST message is given with the
             - **challenge_redirect_uri**: REQUIRED. Redirect URI, recognized by Wallet Instance, for handling the challenge response.
       - See [RAR :rfc:`9396`], [`OpenID4VCI`_] and :ref:`credential-issuance-l2plus:eID Substantial Authentication with MRTD Verification for PID Issuance`.
     * - **redirect_uri**
-      - Redirection URI to which the response is intended to be sent. It MUST be an universal or app link registered with the local operating system, so this latter will provide the response to the Wallet Instance.
+      - Redirection URI to which the response is intended to be sent. It MUST be a universal or app link registered with the local operating system, so this latter will provide the response to the Wallet Instance.
       - See [`OIDC`_] Section 3.1.2.1.
     * - **jti**
       - Unique identifier of the JWT that, together with the value contained in the ``iss`` claim, prevents the reuse of the JWT (replay attack). Since the `jti` value alone is not collision resistant, it MUST be identified uniquely together with its issuer.
@@ -136,7 +136,7 @@ The ``request`` JWT payload contained in the HTTP POST message is given with the
       - [:rfc:`7519`].
 
 .. note::
-  If the request cointains scope value and the *authorization_details* parameter the Credential Issuer MUST interpret these individually. However, if both request the same Credential type, then the Credential Issuer MUST follow the request as given by the authorization details object.
+  If the request contains scope value and the *authorization_details* parameter the Credential Issuer MUST interpret these individually. However, if both request the same Credential type, then the Credential Issuer MUST follow the request as given by the authorization details object.
 
 The JOSE header of the Wallet Instance Attestation proof of possession, contained in the HTTP Request headers, MUST contain:
 
@@ -296,7 +296,7 @@ Authorization Response
 
 The authentication response is returned by the Credential issuer authorization endpoint at the end of the authentication flow.
 
-If the authentication is successful the Credential Issuer redirects the User by adding the following query parameters as required to the *redirect_uri*. The redirect URI MUST be an universal or app link registered with the local operating system, so this latter is able to provide the response to the Wallet Instance.
+If the authentication is successful the Credential Issuer redirects the User by adding the following query parameters as required to the *redirect_uri*. The redirect URI MUST be a universal or app link registered with the local operating system, so this latter is able to provide the response to the Wallet Instance.
 
 .. list-table::
     :class: longtable
@@ -892,7 +892,7 @@ In the following table are listed HTTP Status Codes and related error codes that
 Deferred Endpoint
 """""""""""""""""
 
-Credential Issuers MAY support the *Deferred Endpoint* aiming to satify the cases where an immediate issuance might be not possible, due to errors during the communication between the Credential Issuer and the Authentic Source (for example the Authentic Source is temporarily unavailable, etc.) or due to administrative or technical processes.
+Credential Issuers MAY support the *Deferred Endpoint* aiming to satisfy the cases where an immediate issuance might be not possible, due to errors during the communication between the Credential Issuer and the Authentic Source (for example the Authentic Source is temporarily unavailable, etc.) or due to administrative or technical processes.
 
 In the case where the Authentic Source and the Credential Issuer are both enabled to use *PDND*, what is described in Section :ref:`authentic-sources:Authentic Sources` MUST apply.
 
@@ -906,7 +906,7 @@ The following requirements apply:
  5. As, in general, an unavailability may be an unexpected event, the Credential Issuer MUST be able to switch on the fly between a *immediate* and an *deferred* flow. This decision MUST be taken after the authorization step.
 
 
-If Credential Issuers, supporting this flow, are not able to immediately issue a requested Credential, they MUST provide the Wallet Instance with an HTTP Credential Response cointaining the amount of time to wait before making a new Credential request and an identifier of the deferred issuance transaction (*transaction_id*). The HTTP status code MUST be *202* (see Section 15.3.3 of [:rfc:`9110`]). Below a non-normative example is given.
+If Credential Issuers, supporting this flow, are not able to immediately issue a requested Credential, they MUST provide the Wallet Instance with an HTTP Credential Response containing the amount of time to wait before making a new Credential request and an identifier of the deferred issuance transaction (*transaction_id*). The HTTP status code MUST be *202* (see Section 15.3.3 of [:rfc:`9110`]). Below a non-normative example is given.
 
 .. code-block:: http
 
