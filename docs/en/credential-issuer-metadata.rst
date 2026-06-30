@@ -137,7 +137,8 @@ The *openid_credential_issuer* metadata contains the following claims.
                 - **locale**: REQUIRED. String value that identifies the language of this object represented as a language tag taken from values defined in *BCP47* :rfc:`5646`. There MUST be only one object for each language identifier.
 
         - **schema_id**: REQUIRED. Identifier of the credential schema as defined in the :ref:`registry:Schema Registry`.
-        - **authentic_sources**: REQUIRED. Object containing ``entity_id`` and ``dataset_id`` parameters valued with the respective identifiers as registered in the :ref:`registry:Authentic Source Registry`.
+        - **authentic_sources**: CONDITIONAL. It is REQUIRED only if ``parent_credentials`` is absent. Object containing ``entity_id`` and ``dataset_id`` parameters valued with the respective identifiers as registered in the :ref:`registry:Authentic Source Registry`.
+        - **parent_credentials**: CONDITIONAL. It is REQUIRED only if ``authentic_sources`` is absent. Array containing ``credential_type`` identifiers as indicated in the :ref:`registry:Digital Credentials Catalog`.
   * - **jwks**
     - REQUIRED. JSON Web Key Set document, passed by value, containing the protocol specific keys for the Credential Issuer. See `OID-FED`_ Section 5.2.1 and `JWK`_.
   * - **trust_frameworks_supported**
