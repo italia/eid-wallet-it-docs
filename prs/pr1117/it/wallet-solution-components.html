@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
-    <script src="_static/documentation_options.js?v=53f44254"></script>
+    <script src="_static/documentation_options.js?v=640cc83e"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/translations.js?v=da26b4cc"></script>
@@ -208,7 +208,7 @@
 <ul class="simple">
 <li><p>Registrazione dell'Istanza del Wallet (dettagliata in <a class="reference internal" href="wallet-instance-registration.html#inizializzazione-e-registrazione-dell-istanza-del-wallet"><span class="std std-ref">Inizializzazione e Registrazione dell'Istanza del Wallet</span></a>).</p></li>
 <li><p>Emissione della Wallet Instance Attestation (dettagliata in <a class="reference internal" href="wallet-instance-attestation-issuance.html#emissione-della-wallet-instance-attestation"><span class="std std-ref">Emissione della Wallet Instance Attestation</span></a>).</p></li>
-<li><p>Emissione della Wallet Unit Attestation (dettagliata in <a class="reference internal" href="wallet-attestation-issuance.html#emissione-della-wallet-unit-attestation"><span class="std std-ref">Emissione della Wallet Unit Attestation</span></a>).</p></li>
+<li><p>Emissione della Key Attestation (dettagliata in <a class="reference internal" href="wallet-attestation-issuance.html#emissione-della-key-attestation"><span class="std std-ref">Emissione della Key Attestation</span></a>).</p></li>
 <li><p>Gestione dello stato (mantenimento e aggiornamento della validità).</p></li>
 <li><p>Processi di revoca (implementazione di meccanismi per revocare le Istanze del Wallet), secondo la Sezione <a class="reference internal" href="wallet-instance-revocation.html#revoca-dell-istanza-del-wallet"><span class="std std-ref">Revoca dell'Istanza del Wallet</span></a>.</p></li>
 </ul>
@@ -236,7 +236,7 @@
 <ul class="simple">
 <li><p>Registrazione dell'Istanza del Wallet (dettagliata in <a class="reference internal" href="wallet-instance-registration.html#inizializzazione-e-registrazione-dell-istanza-del-wallet"><span class="std std-ref">Inizializzazione e Registrazione dell'Istanza del Wallet</span></a>).</p></li>
 <li><p>Emissione della Wallet Instance Attestation (dettagliata in <a class="reference internal" href="wallet-instance-attestation-issuance.html#emissione-della-wallet-instance-attestation"><span class="std std-ref">Emissione della Wallet Instance Attestation</span></a>).</p></li>
-<li><p>Emissione della Wallet Unit Attestation (dettagliata in <a class="reference internal" href="wallet-attestation-issuance.html#emissione-della-wallet-unit-attestation"><span class="std std-ref">Emissione della Wallet Unit Attestation</span></a>).</p></li>
+<li><p>Emissione della Key Attestation (dettagliata in <a class="reference internal" href="wallet-attestation-issuance.html#emissione-della-key-attestation"><span class="std std-ref">Emissione della Key Attestation</span></a>).</p></li>
 <li><p>Gestione dello stato (mantenimento e aggiornamento della validità).</p></li>
 <li><p>Processi di revoca (implementazione di meccanismi per revocare le Istanze del Wallet), secondo la Sezione <a class="reference internal" href="wallet-instance-revocation.html#revoca-dell-istanza-del-wallet"><span class="std std-ref">Revoca dell'Istanza del Wallet</span></a>.</p></li>
 </ul>
@@ -278,7 +278,7 @@
 <p>La Soluzione Wallet supporta questi modelli di interazione:</p>
 <ol class="arabic simple">
 <li><p><strong>Utente verso Frontend del Backend del Wallet</strong>: Interazioni basate sul web per la gestione dell'Istanza del Wallet.</p></li>
-<li><p><strong>Istanza del Wallet verso API del Backend del Wallet</strong>: per la registrazione dell'Istanza del Wallet e l'emissione della Wallet Instance e Wallet Unit Attestation.</p></li>
+<li><p><strong>Istanza del Wallet verso API del Backend del Wallet</strong>: per la registrazione dell'Istanza del Wallet e l'emissione della Wallet Instance e key Attestation.</p></li>
 <li><p><strong>Fornitore di Attestati Elettronici di Dati di Identificazione Personale verso API del Backend del Wallet</strong>: Chiamate API sicure per richiedere la revoca dell'Istanza del Wallet.</p></li>
 <li><p><strong>Utente verso Interfaccia Utente dell'Istanza del Wallet</strong>: per la gestione delle Credenziali Elettroniche (emissione, presentazione, backup, ripristino, eliminazione).</p></li>
 <li><p><strong>Istanza del Wallet verso Relying Party</strong>: per la presentazione delle Credenziali Elettroniche.</p></li>
@@ -347,7 +347,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 05/06/2026.
+      Ultimo aggiornamento 30/06/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

@@ -1,10 +1,10 @@
 .. include:: ../common/common_definitions.rst
 
+
 Matrice dei Test per il Credential Issuer
 -----------------------------------------
 
 Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici e team di sviluppo responsabili della creazione e del deployment di soluzioni Credential Issuer. È anche destinata agli organismi di valutazione che ispezionano e validano le implementazioni di soluzioni Credential Issuer.
-
 
 
 .. list-table::
@@ -41,9 +41,9 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
     - Parametri delle Entity Configuration
     - Le Entity Configuration hanno in comune i seguenti parametri: iss, sub, iat, exp, jwks, metadata.
   * - CI_007
-    - Trust, Sicurezza
-    - Scoperta del Credential Issuer
-    - Il Credential Issuer espone un endpoint well-known che ospita la sua Entity Configuration.
+    - Annullato
+    - Annullato
+    - Annullato
   * - CI_008
     - Trust, Interoperabilità
     - Metadata del Credential Issuer
@@ -105,9 +105,9 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
     - Authorization Details nella PAR
     - Quando sia scope che authorization_details richiedono lo stesso tipo di Credential, il Credential Issuer segue le specifiche fornite dall’oggetto authorization_details.
   * - CI_018
-    - Emissione, Sicurezza
-    - Validazione della Firma del Request Object nella PAR
-    - Il Credential Issuer valida correttamente la firma del Request Object utilizzando l’algoritmo del parametro alg e la chiave pubblica della Wallet Attestation (cnf.jwk, referenziata da kid), confermando l’integrità della firma (:rfc:`9126`/:rfc:`9101`).
+    - Annullato
+    - Annullato
+    - Annullato
   * - CI_019
     - Emissione, Sicurezza
     - Verifica di Conformità dell’Algoritmo nella PAR
@@ -189,13 +189,13 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
     - Stabilimento della fiducia nel Wallet Provider
     - Il Credential Issuer stabilisce la fiducia nel Wallet Provider come entità autorizzata della Federazione interrogando gli endpoint API della Federazione (ad es. .well-known/openid-federation, /fetch) e validando lo stato federativo del provider tramite canali ufficiali e processi di verifica della fiducia.
   * - CI_038
-    - Emissione, Interoperabilità
-    - Fornitura di un URI di richiesta monouso nella risposta PAR
-    - Il Credential Issuer genera e fornisce un valore request_uri univoco e utilizzabile una sola volta.
+    - Annullato
+    - Annullato
+    - Annullato
   * - CI_039
-    - Emissione, Sicurezza
-    - Associazione crittografica del request_uri al client nella risposta PAR
-    - Il valore request_uri emesso è crittograficamente vincolato allo specifico client_id fornito nell’oggetto di richiesta.
+    - Annullato
+    - Annullato
+    - Annullato
   * - CI_040
     - Emissione, Sicurezza
     - Durata consigliata di validità del request_uri nella risposta PAR
@@ -227,7 +227,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_045
     - Emissione, Interoperabilità
     - Tabella dei codici di stato HTTP per la risposta PAR
-    - Quando l’elaborazione della richiesta PAR incontra errori, il Credential Issuer risponde come definito in :rfc:`9126`, secondo i codici di stato HTTP.
+    - Quando l’elaborazione della richiesta PAR incontra errori, il Credential Issuer risponde come definito in :rfc:`9126`, in accordo con la :ref:`Tabella dei Codici di Stato HTTP <table_par_error_code>`.
   * - CI_046
     - Emissione, Sicurezza e Privacy
     - Verifica dell’identità dell’utente durante la richiesta di autorizzazione
@@ -377,9 +377,9 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
     - Validità temporale del JWT nella Richiesta di Credenziale
     - Il tempo di creazione del JWT (tramite claim iat o timestamp gestito dal server attraverso la claim nonce) rientra nella finestra temporale accettabile dal server.
   * - CI_079
-    - Emissione, Interoperabilità
-    - Registrazione delle Credenziali emesse per revoca
-    - Il Credential Issuer registra tutte le Credenziali emesse in un registro di revoca per eventuali necessità future.
+    - Annullato
+    - Annullato
+    - Annullato
   * - CI_080
     - Emissione, Interoperabilità
     - Generazione raccomandata di nuove chiavi crittografiche nella Richiesta di Credenziale
@@ -411,7 +411,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_085
     - Emissione, Interoperabilità
     - Tabella dei Codici di Stato HTTP per la Risposta di Credenziale
-    - Quando la Richiesta di Credenziale non contiene un Access Token valido, il Credential Endpoint restituisce una risposta di errore come definito nella Sezione 3 di [:rfc:`6750`], in accordo con la Tabella dei Codici di Stato HTTP.
+    - Quando la Richiesta di Credenziale non contiene un Access Token valido, il Credential Endpoint restituisce una risposta di errore come definito nella Sezione 3 di [:rfc:`6750`], in accordo con la :ref:`Tabella dei Codici di Stato HTTP <table_credential_error_code>`.
   * - CI_086
     - Emissione, Interoperabilità
     - Notification ID unificato per operazioni batch
@@ -419,7 +419,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_087
     - Emissione, Interoperabilità
     - Tabella dei Codici di Stato HTTP per la Risposta di Notifica
-    - Quando la Richiesta di Notifica non contiene un Access Token valido, il Notification Endpoint restituisce una risposta di errore come definito nella Sezione 3 di [:rfc:`6750`], in accordo con la Tabella dei Codici di Stato HTTP.
+    - Quando la Richiesta di Notifica non contiene un Access Token valido, il Notification Endpoint restituisce una risposta di errore come definito nella Sezione 3 di [:rfc:`6750`], in accordo con la :ref:`Tabella dei Codici di Stato HTTP <table_notification_error_code>`.
   * - CI_088
     - Emissione, Sicurezza
     - Restrizione dello scope dell’Access Token
@@ -437,9 +437,9 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
     - Autorizzazione di accesso al Credential Endpoint
     - L'Access Token consente l'accesso al Credential endpoint per il rinnovo/re-emissione di Attestati Elettronici esistenti.
   * - CI_090
-    - Emissione, Sicurezza
-    - Sicurezza del Refresh Token vincolato a DPoP
-    - I Refresh Token sono vincolati alle chiavi DPoP per mitigare l’impatto di un furto di token.
+    - Annullato
+    - Annullato
+    - Annullato
   * - CI_091
     - Emissione, Interoperabilità
     - Validazione dell’OAuth Client Attestation PoP per il Refresh
@@ -477,9 +477,9 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
     - Proprietà di sicurezza del Refresh Token
     - I Refresh Token sono generati con valori non indovinabili e protetti da modifiche tramite meccanismi crittografici di integrità.
   * - CI_100
-    - Emissione, Sicurezza
-    - Binding crittografico dei Refresh Token
-    - Gli Authorization Server vincolano crittograficamente i Refresh Token al Wallet Instance secondo le specifiche di :rfc:`9449`.
+    - Annullato
+    - Annullato
+    - Annullato
   * - CI_101
     - Emissione, Sicurezza
     - Coerenza di binding della chiave DPoP tra Refresh e Access Token
@@ -537,9 +537,9 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
     - Restrizione di prima emissione per i Refresh Token
     - Gli Access Token ottenuti tramite Refresh Token non possono essere utilizzati per la prima emissione di Attestati Elettronici.
   * - CI_115
-    - Emissione, Sicurezza
-    - Obbligo di coerenza della data di scadenza dopo la Ri-emissione
-    - Il Credential Issuer imposta la stessa data di scadenza per gli Attestati Elettronici riemessi come per la versione precedente.
+    - Annullato
+    - Annullato
+    - Annullato
   * - CI_116
     - Emissione, Privacy
     - Consenso utente per la Ri-emissione basata su attributi
@@ -547,15 +547,15 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_117
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Attributi Utente PID domestico
-    - Il PID è fornito con successo con gli attributi utente definiti nella rispettiva :ref:`tabella degli Attributi PID dell'Utente <table_sd-jwt-vc_parameters>`.
+    - Il PID è fornito con successo con gli attributi utente definiti nella rispettiva :ref:`tabella degli Attributi PID dell'Utente <table_sd-jwt-vc_pid_parameters>`.
   * - CI_118
     - Modello di Dati e ciclo di vita, Emissione, Interoperabilità
     - Formati di Credenziali (Q)EAA
     - Le (Q)EAA sono rilasciate a un'Istanza del Wallet in formato dati SD-JWT VC o mdoc-CBOR.
   * - CI_119
-    - Modello di Dati e ciclo di vita, Interoperabilità
-    - Formato Credenziale Digitale PID/(Q)EAA
-    - Il PID/(Q)EAA è emesso con successo sotto forma di Credenziale Digitale con formato Credenziale Digitale SD-JWT come specificato in `SD-JWT-VC`_
+    - Annullato
+    - Annullato
+    - Annullato
   * - CI_120
     - Modello di Dati e ciclo di vita, Sicurezza
     - Firma della credenziale SD-JWT
@@ -830,9 +830,8 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
     - Il Fornitore di Attestati Elettronici aggiorna con successo lo stato della Credenziale Digitale immediatamente quando avviene la revoca
   * - CI_169
     - Modello di Dati e ciclo di vita, Interoperabilità
-    - Endpoint Revoca Istanza di Wallet tramite PDND
-      Monitoraggio dello stato della Wallet Instance per l'aggiornamento dello stato degli Attestati Elettronici
-    - Il Fornitore di Attestati Elettronici predispone un meccanismo di monitoraggio degli stati correnti di tutte le Wallet Unit Attestation associate alle Wallet Instance a cui sono stati rilasciati gli Attestati Elettronici.
+    - Monitoraggio dello stato della Wallet Instance per l'aggiornamento dello stato degli Attestati Elettronici
+    - Il Fornitore di Attestati Elettronici predispone un meccanismo di monitoraggio degli stati correnti di tutte le Wallet Key Attestation associate alle Wallet Instance a cui sono stati rilasciati gli Attestati Elettronici.
   * - CI_170
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Aggiornamento Stato Credenziale Seguendo Notifica Cambio Dati
@@ -896,7 +895,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_183
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Status List Definizione dei Valori di Stato per le Credenziali Digitali
-    - Il Fornitore di Attestati Elettronici utilizza con successo i valori per gli Stati possibili definiti nella :ref:`credential-revocation:Creazione delle Status List`.
+    - Il Fornitore di Attestati Elettronici utilizza con successo i valori per gli Stati possibili definiti nella sezione :ref:`credential-revocation:Token Status Lists`.
   * - CI_184
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Status List Definizione degli stati opzionali di stato delle credenziali digitali
@@ -945,3 +944,5 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Informazioni Elemento Array Credenziali
     - Ogni elemento dell'array delle credenziali contiene correttamente tutte le informazioni di primo livello definite nella :ref:`Tabella  <table_catalog_parameters_first_level>` corrispondente.
+
+

@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
-    <script src="_static/documentation_options.js?v=53f44254"></script>
+    <script src="_static/documentation_options.js?v=640cc83e"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/translations.js?v=da26b4cc"></script>
@@ -163,7 +163,7 @@
   <p>La Relying Party DEVE esporre una serie di endpoint per supportare i flussi di presentazione remoti come definiti in OpenID4VP 1.0. Questi endpoint abilitano la verifica sicura delle credenziali, l'instaurazione della fiducia e l'autenticazione dell'utente per modelli di interazione cross-device e same-device.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>I test relativi agli endpoint per flussi remoti della Relying Party sono definiti nella matrice di test per presentazione remota (<a class="reference internal" href="test-plans-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-remoto"><span class="std std-ref">Matrice di Test per il Verificatore di Credenziali in Remoto</span></a>).</p>
+<p>I test relativi agli endpoint per flussi remoti della Relying Party sono definiti nella matrice di test per presentazione remota (<a class="reference internal" href="test-plans-remote-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-remoto"><span class="std std-ref">Matrice di Test per il Verificatore di Credenziali in Remoto</span></a>).</p>
 </div>
 <section id="endpoint-di-federazione">
 <h1>Endpoint di Federazione<a class="headerlink" href="#endpoint-di-federazione" title="Link to this heading">¶</a></h1>
@@ -176,7 +176,7 @@
 <section id="endpoint-request-uri">
 <h2>Endpoint Request URI<a class="headerlink" href="#endpoint-request-uri" title="Link to this heading">¶</a></h2>
 <p>L'Endpoint Request URI è dove la Relying Party fornisce il Request Object firmato all'Istanza del Wallet. Questo endpoint supporta sia i metodi GET che POST come definito nella specifica OpenID4VP 1.0.</p>
-<p>Per i requisiti di implementazione dettagliati, vedere <a class="reference internal" href="remote-flow.html#remote-flow-endpoint-uri-request"><span class="std std-ref">Richiesta all'Endpoint URI Request</span></a> e <a class="reference internal" href="remote-flow.html#richiesta-all-endpoint-uri-request"><span class="std std-ref">Richiesta all'Endpoint URI Request</span></a>.</p>
+<p>Per i requisiti di implementazione dettagliati, vedere <a class="reference internal" href="remote-flow.html#richiesta-all-endpoint-uri-request"><span class="std std-ref">Richiesta all'Endpoint URI Request</span></a> e <a class="reference internal" href="remote-flow.html#risposta-dell-endpoint-uri-request"><span class="std std-ref">Risposta dell'Endpoint URI Request</span></a>.</p>
 </section>
 <section id="endpoint-response-uri">
 <h2>Endpoint Response URI<a class="headerlink" href="#endpoint-response-uri" title="Link to this heading">¶</a></h2>
@@ -186,7 +186,7 @@
 <section id="endpoint-status-opzionale">
 <h2>Endpoint Status (Opzionale)<a class="headerlink" href="#endpoint-status-opzionale" title="Link to this heading">¶</a></h2>
 <p>L'Endpoint Status è un endpoint opzionale che consente all'user-agent di monitorare il progresso del flusso di presentazione. Questo endpoint è particolarmente utile per i flussi Same Device dove l'user-agent deve sapere quando l'Istanza del Wallet ha completato la presentazione.</p>
-<p>Per i requisiti di implementazione dettagliati, vedere <a class="reference internal" href="remote-flow.html#status-endpoint"><span class="std std-ref">Status Endpoint</span></a> e <a class="reference internal" href="remote-flow.html#remote-flow-errori-status-endpoint"><span class="std std-ref">Errori dello Status Endpoint</span></a>.</p>
+<p>Per i requisiti di implementazione dettagliati, vedere <a class="reference internal" href="remote-flow.html#status-endpoint"><span class="std std-ref">Status Endpoint</span></a> e <a class="reference internal" href="remote-flow.html#errori-dello-status-endpoint"><span class="std std-ref">Errori dello Status Endpoint</span></a>.</p>
 </section>
 </section>
 <section id="endpoint-di-gestione-dati-utente">
@@ -270,7 +270,7 @@
 <li><p><strong>Rate Limiting</strong>: Gli endpoint DOVREBBERO implementare rate limiting per prevenire abusi</p></li>
 <li><p><strong>Audit Logging</strong>: Tutte le interazioni degli endpoint DOVREBBERO essere registrate per il monitoraggio della sicurezza</p></li>
 </ul>
-<p>Per i requisiti di sicurezza dettagliati, vedere <a class="reference internal" href="relying-party-endpoints.html#considerazioni-di-sicurezza"><span class="std std-ref">Considerazioni di Sicurezza</span></a> e i casi di test pertinenti in <a class="reference internal" href="test-plans-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-remoto"><span class="std std-ref">Matrice di Test per il Verificatore di Credenziali in Remoto</span></a>.</p>
+<p>Per i requisiti di sicurezza dettagliati, vedere <a class="reference internal" href="remote-flow.html#flusso-remoto"><span class="std std-ref">Flusso Remoto</span></a> e i casi di test pertinenti in <a class="reference internal" href="test-plans-remote-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-remoto"><span class="std std-ref">Matrice di Test per il Verificatore di Credenziali in Remoto</span></a>.</p>
 </section>
 <section id="note-di-implementazione">
 <h1>Note di Implementazione<a class="headerlink" href="#note-di-implementazione" title="Link to this heading">¶</a></h1>
@@ -335,7 +335,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 05/06/2026.
+      Ultimo aggiornamento 30/06/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

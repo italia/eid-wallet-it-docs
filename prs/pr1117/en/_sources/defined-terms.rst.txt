@@ -1,5 +1,6 @@
 .. include:: ../common/common_definitions.rst
 
+
 Defined Terms and Acronyms
 ==========================
 
@@ -97,9 +98,9 @@ Below is the description of acronyms and definitions which are useful for furthe
       Register of entities participating in the IT-Wallet System.
       Not present in ARF 2.7.3; specific to IT-Wallet.
 
-    **Key Attestation**
-      Attestation from device OEM about secure key storage in hardware-backed keystore.
-      Not present in ARF 2.7.3.
+    **Key Attestation APIs (OEM)**
+      A device manufacturer’s attestation mechanism that confirms whether cryptographic keys are stored securely in a hardware-backed keystore. Examples include Android Key Attestation API for Android devices and Apple DeviceCheck for iOS devices.
+      Not present in ARF 2.7.3; specific to IT-Wallet.
 
     **Level of Assurance**
       In the Union **electronic identification** framework, **levels of assurance** express the degree of confidence in the **correctness of the identification** of natural or legal persons and in the possibility to **rely on electronic identification means**. For **notified electronic identification schemes**, `EIDAS`_ (as amended, including the European Digital Identity Framework codified by `EU_2024_1183`_) defines the levels **low**, **substantial**, and **high**.
@@ -153,11 +154,11 @@ Below is the description of acronyms and definitions which are useful for furthe
     **Qualified Electronic Attestation of Attributes**
       Digitally verifiable attestation issued by a QTSP, substantiating possession of attributes.
       Aligned with ARF 2.7.3.
-    
+
     **Electronic Attestation of Attributes**
       Digitally verifiable attestation in electronic form, substantiating possession of attributes.
       Aligned with ARF 2.7.3.
-    
+
     **Electronic Attestation of Attributes issued by or on behalf of a public sector body**
     **Public Electronic Attestation of Attributes**
       Electronic Attestation of Attributes that contains Attributes deriving from a public Authentic Source.
@@ -165,9 +166,9 @@ Below is the description of acronyms and definitions which are useful for furthe
 
     **Electronic Attestation of Public Interest**
     **Credential of Public Interest**
-      Electronic Attestation of Attributes that contains Attributes intended to certify the release, by the State or other public administrations, of authorizations, certifications, qualifications, identity and recognition documents, receipts of revenue, or to assume a fiduciary value and protection of public faith afterwards their issuance or the entries made on them and, in general, when they are considered security documents pursuant to Article 2, paragraph 10-bis, Law 13 July 1966, no. 559. 
+      Electronic Attestation of Attributes that contains Attributes intended to certify the release, by the State or other public administrations, of authorizations, certifications, qualifications, identity and recognition documents, receipts of revenue, or to assume a fiduciary value and protection of public faith afterwards their issuance or the entries made on them and, in general, when they are considered security documents pursuant to Article 2, paragraph 10-bis, Law 13 July 1966, no. 559.
       Not present in ARF 2.7.3; specific to IT-Wallet.
-      
+
     **Person Identification Data**
       Electronic Attestation that allows the subject to whom the Personal Identification Data refers to be authenticated.
       Aligned with ARF 2.7.3.
@@ -224,7 +225,7 @@ Below is the description of acronyms and definitions which are useful for furthe
       The PDND platform managed by the PDND Manager which enable collection and distribution of Signals. It consists of two PDND e-Services: Signal Collection and Signal Distribution.
 
     **Signal (Signal Hub)**
-      A digital signal propagated through the PDND Signal Hub. It is used by Authentic Sources to notify Credential Issuers about updates to statuses and/or information within a domain managed by the Authentic Source itself. 
+      A digital signal propagated through the PDND Signal Hub. It is used by Authentic Sources to notify Credential Issuers about updates to statuses and/or information within a domain managed by the Authentic Source itself.
 
     **Supervision Process**
       Process by a Supervisory Body to review and ensure proper functioning of the Wallet Provider and others.
@@ -273,7 +274,7 @@ Below is the description of acronyms and definitions which are useful for furthe
     **Access Certificate Authority**
     **Access CA**
       Certificate Authority responsible for issuing Access Certificates to PID Providers, Attestation Providers, and Relying Parties for secure interactions within the IT-Wallet ecosystem.
-      Aligned with ARF 2.7.3; terminology specialized for IT-Wallet.
+      Not present in ARF 2.7.3; specific to IT-Wallet.
 
     **Registration Certificate**
       Data object indicating the attributes the Relying Party has registered to request from Users.
@@ -283,7 +284,7 @@ Below is the description of acronyms and definitions which are useful for furthe
     **Provider of Registration Certificates**
     **Reg. Cert. Provider**
       Organizational Entity responsible for issuing Registration Certificates that describe the registration status and entitlements of PID Providers, Attestation Providers, and Relying Parties.
-      Aligned with ARF 2.7.3; terminology specialized for IT-Wallet.
+      Not present in ARF 2.7.3; specific to IT-Wallet.
 
     **Federation Registry**
       Registry component of the IT-Wallet Registry Infrastructure that maintains the authoritative list of trusted entities participating in the federation, including their federation metadata, endpoints, and public keys.
@@ -297,15 +298,19 @@ Below is the description of acronyms and definitions which are useful for furthe
     **Member State Trusted List Provider**
     **MS TLP**
       Organizational Entity designated by a Member State to compile, sign, and publish national Trusted Lists (e.g., QTSP Trusted Lists, EAA Provider Trusted Lists) and to notify their locations to the European Commission.
-      Terminology specialized for IT-Wallet.
+      Not present in ARF 2.7.3; specific to IT-Wallet.
 
     **Certificate Signing Request**
       Request sent to a CA containing the public key and identifying information for a digital certificate.
       Not present in ARF 2.7.3.
 
+    **Trusted List**
+      Repository of information about authoritative entities and their status.
+      Aligned with ARF 2.7.3.
+
     **eIDAS Trusted List**
-      Repository of information about authoritative entities and their status used in the eIDAS trust services framework (e.g., PID Provider Trusted Lists, Wallet Provider Trusted Lists, List of Trusted List pointing to Member States QTSP Trusted Lists and Member States EAA Provider Trusted Lists, Access Certificates CA and Registristration Certificates Provider Trusted Lists).
-      Terminology specialized for IT-Wallet.
+      Repository of information about authoritative entities and their status used in the eIDAS trust services framework (e.g., PID Provider Trusted Lists, Wallet Provider Trusted Lists, List of Trusted List pointing to Member States QTSP Trusted Lists and Member States EAA Provider Trusted Lists, Access Certificates CA and Registration Certificates Provider Trusted Lists).
+      Not present in ARF 2.7.3; specific to IT-Wallet.
 
     **User**
       Natural or legal person using trust services or electronic identification means.
@@ -344,14 +349,14 @@ Below is the description of acronyms and definitions which are useful for furthe
       Unique configuration of a Wallet Solution for an individual User, including security features.
       Aligned with ARF 2.7.3.
 
-    **Wallet Unit Attestation**
-     Data object issued by a Wallet Provider that proves the keys used for key binding of Credentials reside in a trustworthy WSCD,
-     and checks the Wallet Unit has not been revoked. Specific to IT-Wallet. 
+    **Key Attestation**
+     Data object issued by a Wallet Provider that proves the keys used for key binding of Credentials reside in a trustworthy WSCD using the Key Attetstaion APIs (OEM).
+     Aligned with Technical Specification 3.
 
     **Wallet Instance Attestation**
     **Wallet Attestation**
       Data object issued by a Wallet Provider proving the integrity of the Wallet Instance.
-      Specific to IT-Wallet. 
+      Specific to IT-Wallet.
 
     **Digital Credential Catalog**
       Electronic catalog containing information about the formats and schemes of Digital Credentials, the data contained and the Authentic Sources. The Catalog contains additional information that allows for the establishment of the authenticity and reliability of the information contained therein.
@@ -359,8 +364,16 @@ Below is the description of acronyms and definitions which are useful for furthe
 
     **Intermediate Entity**
     **Intermediary**
-      Intermediate Entity as defined in `OID-FED`_ Section 1.2, for example in IT-Wallet it could be a Relying Party intermediary that offers and manages, on behalf of Relying Party, the Technical Solutions for the remote or proximity verification of Electronic Attestations.
-      Aligned with ARF 2.7.3.
+    **OpenID Federation Intermediate**
+      Intermediate Entity as defined in `OID-FED`_ Section 1.2 within the OpenID Federation Trust Chain between a Trust Anchor and Leaf entities. This federation role is conceptually **distinct** from a **Relying Party Intermediary** under the European Digital Identity framework (`EU_2024_1183`_); however, in the implementation profile described by these technical specifications, a **Relying Party Intermediary** is also implemented as an OpenID Federation Intermediate Entity (see **IT-Wallet Intermediary**).
+      Aligned with ARF 2.7.3 for federation structures.
+
+    **Relying Party Intermediary**
+      Organizational Entity that acts on behalf of one or more Relying Parties to provide Technical Solutions for connecting to Wallet Instances and for User authentication or verification of Electronic Attestations. In Union law (`EU_2024_1183`_, Article 5b(8)), intermediaries acting on behalf of Relying Parties are **deemed to be Relying Parties** for registration and authentication towards European Digital Identity Wallets and **shall not store data about the content of the transaction** between the Wallet User and the intermediated Relying Party. High-level requirements for Wallet Relying Party registration, including intermediaries, minimum registration data, transparency, and common authentication mechanisms towards Wallets, are discussed in the EUDI Wallet Architecture and Reference Framework (`ARF`_; *Topic X – Relying Party registration*, `ARF_TOPIC_X_RP`_). IT-Wallet specifies onboarding to the national trust framework, metadata, and technical controls that implement these obligations together with applicable national implementing measures.
+
+    **IT-Wallet Intermediary**
+      Organizational Entity that acts as a **Relying Party Intermediary** and is technically implemented as an OpenID Federation Intermediate Entity (`OID-FED`_, Section 1.2). Therefore, in the IT-Wallet implementation profile, a Relying Party Intermediary is also an OpenID Federation Intermediate: it publishes its own Entity Configuration, issues Subordinate Statements for its affiliated Relying Parties, and issues Trust Marks to them. Within the IT-Wallet trust infrastructure, it is registered by the Trust Anchor with a specific ``trust_mark_type``, which enables the Wallet Instance to identify and display to the User that the requesting Relying Party operates through a recognized Intermediary.
+      Not present in ARF 2.7.3; specific to IT-Wallet.
 
 .. note::
    For any term not present in ARF 2.7.3, the IT-Wallet definition is provided as authoritative for the Italian context.
@@ -372,49 +385,49 @@ Below are the main defined terms and definitions related to User Experience aspe
 
     **Authentication Button**
       The Engagement Button that enables the User to access the Authentication process and use the services provided by Verifiers.
-  
+
     **Brand Identity**
       Collection of visual, verbal, and strategic elements that a service, a product or an entity uses to present itself to the User and to distinguish itself from others.
 
     **Brand Manual**
       Document defining the rules and standards for the correct and consistent use of a Brand’s distinctive elements, including visual, verbal, and application-related aspects, across different Touchpoints.
-    
+
     **Catalog**
       Section of the Wallet Instance that displays the list of all the available Digital Credentials that can be obtained through the IT-Wallet Instance, and from which it is possible to start the issuing process.
-    
+
     **Call To Action**
       A clear and direct suggestion that encourages users to take a specific action. It can be a button, a link, or another element guiding the user toward a particular goal.
-    
+
     **Detailed View**
       Extended display mode of the Digital Credentials, showing all the Attributes included.
-    
+
     **Discovery Page**
       It's the page of the Touchpoint of the Relying Party where the User lands to access their authenticated area, and it has the goal to show the User all the Authentication methods available.
-  
+
     **Engagement Button**
       Interactive element of the Interface that allows the User to trigger a process (e.g. to Authenticate, to request the issuance of a Digital Credential, etc.).
-  
+
     **Interaction Model**
       A set of characteristics that define how the User interacts with the Interface of one or multiple Touchpoints in order to complete a task or operation and achieve a specific goal.
-    
+
     **Interface**
       The set of graphic, typographical and interactive elements through which the User interacts with the Touchpoint(s) responsible for the delivery of a product or service, in compliance with [GL_DESIGN].
-    
+
     **Preview View**
       Compact visualization mode of the Digital Credential that allows it to be recognized and distinguished in a list of Electronic Attestations thanks to the presence of minimum data or elements.
 
     **Selection Page**
       It's the page of the Touchpoint of the Relying Party or of a third party offering a Credential Offer where the User can see all the Wallet Solutions available in the IT-Wallet System Register and is able to select which one to continue the process of Authentication, presentation or issuance.
-    
+
     **Service Model**
       Set of interactions between actors and touchpoints necessary for service delivery and fruition.
-    
+
     **Touchpoint**
       Point of contact (digital and not) between the User and the product or service.
-    
+
     **Trust Mark**
       A graphic element that gives evidence of the participation of the Primary Actors in the IT-Wallet System and thus guarantees adherence to its standards.
-    
+
     **User Experience**
       The set of people's perceptions and reactions resulting from the use and/or expectation of use of a product, system or service.
       Aligned with ISO 9241-210:2010.
@@ -453,7 +466,7 @@ Below are the main acronyms used in the document:
   * - **LoA**
     - Level of Assurance
   * - **NAB**
-    - National Accreditation Body 
+    - National Accreditation Body
   * - **OID4VP**
     - OpenID for Verifiable Presentation
   * - **PDND**
@@ -476,4 +489,5 @@ Below are the main acronyms used in the document:
     - Wallet Secure Cryptographic Application
   * - **WSCD**
     - Wallet Secure Cryptographic Device
+
 

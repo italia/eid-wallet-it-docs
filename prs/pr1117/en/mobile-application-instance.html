@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
-    <script src="_static/documentation_options.js?v=350a9c04"></script>
+    <script src="_static/documentation_options.js?v=02f2166e"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -233,7 +233,8 @@ For Android devices, the inclusion of <strong>Strongbox Keymaster</strong> may v
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>It is not necessary to send the Application Instance Hardware public key because it is already included in the <code class="docutils literal notranslate"><span class="pre">key_attestation</span></code>.
-As seen in the previous steps, the Key Attestation APIs creates a Key Attestation linked to the provided <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> which is the digest of the Application Provider's <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, the public key of the Application Instance Hardware and its Hardware Key Tag (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_133a</span></a>). This process eliminates the need to send the Application Instance Hardware public key directly, as it is already included in the Key Attestation.</p>
+As seen in the previous steps, the Key Attestation APIs creates a Key Attestation linked to the provided <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> which is the digest of the Application Provider's <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, the public key of the Application Instance Hardware and its Hardware Key Tag (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_133a</span></a>).
+This process eliminates the need to send the Application Instance Hardware public key directly, as it is already included in the Key Attestation.</p>
 </div>
 <p><strong>Steps 10-12 (Mobile Application Instance Initialization Response)</strong>: The Application Provider validates the <code class="docutils literal notranslate"><span class="pre">nonce</span></code> and <code class="docutils literal notranslate"><span class="pre">key_attestation</span></code> signature (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_135–137</span></a>), therefore:</p>
 <blockquote>
@@ -498,7 +499,7 @@ As seen in the previous steps, the Key Attestation APIs creates a Key Attestatio
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 05/06/2026.
+      Last updated on 30/06/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

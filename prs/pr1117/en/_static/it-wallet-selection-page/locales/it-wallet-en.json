@@ -1,0 +1,68 @@
+{
+  "header": {
+    "region_name": "Organization Name",
+    "lang_active_hint": "active language:",
+    "lang_trigger": "Language selection, {{name}} selected"
+  },
+  "meta": {
+    "description": "Choose a digital wallet to continue with authentication."
+  },
+  "noscript": {
+    "message": "JavaScript must be enabled to use wallet selection."
+  },
+  "titles": {
+    "page_title": "Choose the app",
+    "page_subtitle": "Select the digital wallet to continue",
+    "logo_title": "Your Logo",
+    "wallet_brand_alt": "IT-Wallet"
+  },
+  "search": {
+    "label": "Search wallet by name",
+    "placeholder": "Search by name",
+    "clear_label": "Clear search",
+    "button": "Search",
+    "empty_error": "Enter a search term",
+    "no_results": "No results",
+    "results_one": "{{count}} result found",
+    "results_many": "{{count}} results found",
+    "results_none": "No results found",
+    "results_reset": "Search cleared, {{count}} wallets available",
+    "toggle_open": "Open wallet search and sort tools",
+    "toggle_close": "Close wallet search and sort tools",
+    "panel_open": "Search and sort tools displayed",
+    "panel_closed": "Search and sort tools hidden"
+  },
+  "sort": {
+    "default": "Default sorting",
+    "az": "Alphabetical A-Z",
+    "za": "Alphabetical Z-A",
+    "trigger_label": "Sort wallets"
+  },
+  "loading": {
+    "in_progress": "Loading...",
+    "error": "Unable to load the wallet list. Reload the page."
+  },
+  "wallets": {
+    "load_more": "Load more"
+  },
+  "nav": {
+    "back": "Back"
+  },
+  "footer": {
+    "nav_label": "Legal links",
+    "legal_notice": "Legal notes",
+    "privacy_policy": "Privacy Policy",
+    "accessibility_statement": "Accessibility statement",
+    "new_window_hint": "opens in a new window"
+  },
+  "skip_links": {
+    "nav_label": "Skip links",
+    "main_content": "Skip to main content",
+    "footer": "Skip to footer"
+  },
+  "learn_more": {
+    "question": "Don't know what IT-Wallet is?",
+    "link": "Find out more",
+    "how_to_get": "Find out how to get it"
+  }
+}

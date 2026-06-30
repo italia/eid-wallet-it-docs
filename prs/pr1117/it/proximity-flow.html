@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
-    <script src="_static/documentation_options.js?v=53f44254"></script>
+    <script src="_static/documentation_options.js?v=640cc83e"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/translations.js?v=da26b4cc"></script>
@@ -198,7 +198,7 @@ Durante la sottofase di comunicazione, l'Istanza di Relying Party ha l'opzione d
 <ul class="simple">
 <li><p><em>Flusso di Recupero del Dispositivo Supervisionato</em> dove un supervisore umano supervisiona il processo di verifica in persona, in contrasto con il <em>flusso non supervisionato</em> dove la verifica potrebbe avvenire attraverso sistemi automatizzati senza supervisione umana (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_095</span></a>).</p></li>
 <li><p><em>Autenticazione dell'Istanza di Relying Party</em> seguendo i meccanismi definiti nella <a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> per il <em>reader authentication</em> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_098</span></a>).</p></li>
-<li><p><em>Tipo di Documento</em> domestico e <em>Namespace</em> definiti in questa specifica tecnica in aggiunta a quelli già definiti nell'<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> per l'mDL (vedi <a class="reference internal" href="credential-data-model.html#credential-data-model-attestato-elettronico-in-formato-mdoc-cbor"><span class="std std-ref">Formato Attestato Elettronico mdoc-CBOR</span></a> per maggiori dettagli) (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_099</span></a>).</p></li>
+<li><p><em>Tipo di Documento</em> domestico e <em>Namespace</em> definiti in questa specifica tecnica in aggiunta a quelli già definiti nell'<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> per l'mDL (vedi <a class="reference internal" href="credential-data-model.html#formato-attestato-elettronico-mdoc-cbor"><span class="std std-ref">Formato Attestato Elettronico mdoc-CBOR</span></a> per maggiori dettagli) (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_099</span></a>).</p></li>
 </ul>
 <p>La tabella seguente mostra le tecnologie di <em>Device Engagement</em> supportate  (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_097</span></a>), specificando quali sono obbligatorie.</p>
 <table class="longtable docutils align-default">
@@ -303,11 +303,11 @@ Durante la sottofase di comunicazione, l'Istanza di Relying Party ha l'opzione d
 <p>L'Istanza del Wallet e l'Istanza di Relying Party scambiano dati di <em>Device Engagement</em> tramite QR code o tramite NFC Connection Handover (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_097</span></a>).</p>
 <p>Fare riferimento a:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#sec-deviceengagement-qr"><span class="std std-ref">DeviceEngagement tramite QR Code</span></a> per <code class="docutils literal notranslate"><span class="pre">DeviceEngagement</span></code> tramite QR code</p></li>
-<li><p><a class="reference internal" href="#sec-deviceengagement-nfc"><span class="std std-ref">DeviceEngagement tramite NFC</span></a> per <code class="docutils literal notranslate"><span class="pre">DeviceEngagement</span></code> tramite NFC</p></li>
+<li><p>Sez. 8.2.2.1 per <code class="docutils literal notranslate"><span class="pre">DeviceEngagement</span></code> tramite QR code</p></li>
+<li><p>Sez. 8.2.2.2 per <code class="docutils literal notranslate"><span class="pre">DeviceEngagement</span></code> tramite NFC</p></li>
 </ul>
 </div>
-<p><strong>Passo 6</strong>: L'Istanza di Relying Party genera la sua coppia di chiavi effimera (<code class="docutils literal notranslate"><span class="pre">EReaderKey.Priv</span></code>, <code class="docutils literal notranslate"><span class="pre">EReaderKey.Pub</span></code>). La chiave privata (<code class="docutils literal notranslate"><span class="pre">EReaderKey.Priv</span></code>) DEVE essere mantenuta segreta, e la chiave pubblica (<code class="docutils literal notranslate"><span class="pre">EReaderKey.Pub</span></code>) DEVE essere utilizzata nel <em>Session Establishment</em> (<a class="reference internal" href="test-plans-proximity-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-prossimita"><span class="std std-ref">PPR-002</span></a>).</p>
+<p><strong>Passo 6</strong>: L'Istanza di Relying Party genera la sua coppia di chiavi effimera (<code class="docutils literal notranslate"><span class="pre">EReaderKey.Priv</span></code>, <code class="docutils literal notranslate"><span class="pre">EReaderKey.Pub</span></code>). La chiave privata (<code class="docutils literal notranslate"><span class="pre">EReaderKey.Priv</span></code>) DEVE essere mantenuta segreta, e la chiave pubblica (<code class="docutils literal notranslate"><span class="pre">EReaderKey.Pub</span></code>) DEVE essere utilizzata nel <em>Session Establishment</em>.</p>
 <p><strong>Passo 7</strong>: L'Istanza del Wallet e l'Istanza di Relying Party DEVONO derivare indipendentemente le chiavi di sessione utilizzando la loro chiave effimera privata e la chiave effimera pubblica dell'altra parte attraverso un Key Agreement Protocol opportuno. Questo garantisce lo scambio di messaggi cifrati nella sessione. In questo particolare passo, l'Istanza di Relying Party DEVE calcolare la sua chiave di sessione (<a class="reference internal" href="test-plans-proximity-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-prossimita"><span class="std std-ref">PPR-002</span></a> and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_097</span></a>).</p>
 <p><strong>Passo 8</strong>: L'Istanza di Relying Party DEVE preparare il <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code>. Questo messaggio DEVE essere firmato dall'Istanza di Relying Party (autenticazione dell'<em>mdoc reader</em> come specificato in [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #12.5]) e cifrato utilizzando la chiave di sessione derivata nel passo precedente. Il messaggio <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> DEVE includere la <code class="docutils literal notranslate"><span class="pre">EReaderKey.Pub</span></code> e una richiesta per specifici attributi (<a class="reference internal" href="test-plans-proximity-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-prossimita"><span class="std std-ref">PPR-002</span></a>).</p>
 <p>Di seguito è riportato un esempio non normativo nella notazione diagnostica di un messaggio <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> CBOR che contiene una Richiesta mdoc per un Attestato Elettronico mDL.</p>
@@ -350,14 +350,14 @@ Durante la sottofase di comunicazione, l'Istanza di Relying Party ha l'opzione d
 </div>
 <div class="admonition-box-b admonition">
 <p class="admonition-title">Box B</p>
-<p>L'Istanza di Relying Party DEVE trasmettere il messaggio <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> cifrato e firmato all'Istanza del Wallet su una connessione NFC o BLE sicura stabilita sulla base delle informazioni contenute nel Device Engagement (<a class="reference internal" href="test-plans-proximity-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-prossimita"><span class="std std-ref">PPR-003</span></a>).
+<p>L'Istanza di Relying Party DEVE trasmettere il messaggio <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> cifrato e firmato all'Istanza del Wallet su una connessione NFC o BLE sicura stabilita sulla base delle informazioni contenute nel Device Engagement.
 Fare riferimento a:</p>
 <ul class="simple">
 <li><p>Sez 8.2.2.3 per <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> tramite BLE, e</p></li>
 <li><p>Sez 8.2.2.5 per <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> tramite NFC</p></li>
 </ul>
 </div>
-<p><strong>Passo 9</strong>: L'Istanza del Wallet DEVE calcolare la chiave di sessione, come descritto nel Passo 7 (<a class="reference internal" href="test-plans-proximity-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-prossimita"><span class="std std-ref">PPR-002</span></a>).</p>
+<p><strong>Passo 9</strong>: L'Istanza del Wallet DEVE calcolare la chiave di sessione, come descritto nel Passo 7.</p>
 <p><strong>Passo 10</strong>: Al ricevimento del <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code>, l'Istanza del Wallet DEVE decifrarlo utilizzando la chiave di sessione calcolata al Passo 9 e DEVE verificare la firma dell'Istanza di Relying Party (come specificato in [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #12.5 <em>mdoc reader authentication</em>]) per garantire l'autenticità del messaggio (<a class="reference internal" href="test-plans-proximity-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-prossimita"><span class="std std-ref">PPR-002</span></a> and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_105–106</span></a>).</p>
 <p><strong>Passo 11</strong>: L'Istanza del Wallet DEVE decifrare la richiesta di attributi e DEVE chiedere all'Utente il consenso per il rilascio degli attributi richiesti (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_107</span></a>). DEVE inoltre visualizzare il contenuto del Certificato di Registrazione della Relying Party per garantire l'autenticità, la trasparenza sui dati richiesti e sul suo scopo registrato (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_107a</span></a>).</p>
 <p><strong>Passo 12</strong>: L'Utente esamina la richiesta e le informazioni di registrazione della Relying Party e quindi approva la presentazione degli attributi richiesti.</p>
@@ -569,7 +569,7 @@ Fare riferimento a (<a class="reference internal" href="test-plans-wallet-provid
 <p>Il record DEVE essere finalizzato al termine della transazione, indicando l’esito (ad esempio, completata, fallita o sessione terminata; Passi 13–14 e Session Termination).</p>
 </div>
 <section id="deviceengagement-tramite-qr-code">
-<span id="sec-deviceengagement-qr"></span><h2><span class="section-number">12.2.2.1. </span><code class="docutils literal notranslate"><span class="pre">DeviceEngagement</span></code> tramite QR Code<a class="headerlink" href="#deviceengagement-tramite-qr-code" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">12.2.2.1. </span><code class="docutils literal notranslate"><span class="pre">DeviceEngagement</span></code> tramite QR Code<a class="headerlink" href="#deviceengagement-tramite-qr-code" title="Link to this heading">¶</a></h2>
 <p>La figura seguente illustra il flusso di basso livello conforme a ISO 18013-5 per <code class="docutils literal notranslate"><span class="pre">DeviceEngagement</span></code> tramite QR Code corrispondente al Box A nella Figura <a class="reference internal" href="#fig-high-level-flow-itwallet-presentation-iso-updated"><span class="std std-ref">Flusso di Presentazione di Basso Livello in prossimità.</span></a>.</p>
 <figure class="align-default" id="id3">
 <span id="fig-deviceengagement-qr"></span><p class="plantuml">
@@ -668,7 +668,7 @@ Fare riferimento a (<a class="reference internal" href="test-plans-wallet-provid
 </section>
 </section>
 <section id="deviceengagement-tramite-nfc">
-<span id="sec-deviceengagement-nfc"></span><h2><span class="section-number">12.2.2.2. </span><code class="docutils literal notranslate"><span class="pre">DeviceEngagement</span></code> tramite NFC<a class="headerlink" href="#deviceengagement-tramite-nfc" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">12.2.2.2. </span><code class="docutils literal notranslate"><span class="pre">DeviceEngagement</span></code> tramite NFC<a class="headerlink" href="#deviceengagement-tramite-nfc" title="Link to this heading">¶</a></h2>
 <p>La figura seguente illustra il flusso di basso livello conforme a ISO 18013-5 per <code class="docutils literal notranslate"><span class="pre">DeviceEngagement</span></code> tramite NFC corrispondente al Box A nella Figura <a class="reference internal" href="#fig-high-level-flow-itwallet-presentation-iso-updated"><span class="std std-ref">Flusso di Presentazione di Basso Livello in prossimità.</span></a> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_103</span></a>).</p>
 <figure class="align-default" id="id4">
 <span id="fig-deviceengagement-nfc"></span><p class="plantuml">
@@ -684,7 +684,7 @@ Fare riferimento a (<a class="reference internal" href="test-plans-wallet-provid
 - <strong>Static Handover</strong>: L'Istanza di Relying Party recupera un messaggio <em>Handover Select</em> direttamente dal Tag di Tipo 4 dell'Istanza del Wallet. Questo messaggio contiene almeno un Alternative Carrier Record, ognuno indicante un metodo di recupero supportato dall'Istanza del Wallet  (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_103a</span></a>). L'Istanza di Relying Party DEVE selezionare una di queste tecnologie di trasmissione. (vedere Passo 1)
 - <strong>Negotiated Handover</strong>: L'Istanza del Wallet include il servizio <code class="docutils literal notranslate"><span class="pre">urn:nfc:sn:handover</span></code> in un Service Parameter Record del messaggio NDEF (NFC Data Exchange Format) iniziale  (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_103b</span></a>). Selezionando questo servizio, l'Istanza di Relying Party invia una <em>Handover Request</em> con un Alternative Carrier Record per ogni carrier che supporta. L'Istanza del Wallet risponde con un messaggio <em>Handover Select</em> contenente esattamente un carrier selezionato. (Vedere Passi 2-4)</p>
 <p><strong>Passo 1</strong>: L'Istanza di Relying Party legge il Tag NFC di Tipo 4 del Wallet per ottenere un messaggio <em>Handover Select</em>, che include:
-- Alternative Carrier Record: un record NDEF all'interno di un messaggio <em>Handover Select</em> o <em>Handover Request</em>. Punta a una possibile tecnologia di comunicazione (chiamata &quot;carrier&quot;), come NFC o BLE. Informa il lettore sul carrier supportato e un puntatore (Auxiliary Data Reference) a informazioni più dettagliate. L'Alternative Carrier Record per la tecnologia di trasmissione <em>Device Retrieval</em> NFC deve fare riferimento al Carrier Configuration Record con il riferimento ID &quot;nfc&quot;.
+- Alternative Carrier Record: un record NDEF all'interno di un messaggio <em>Handover Select</em> o <em>Handover Request</em>. Punta a una possibile tecnologia di comunicazione (chiamata &quot;carrier&quot;), come NFC o BLE. Informa il lettore sul carrier supportato e un puntatore (Auxiliary Data Reference) a informazioni più dettagliate. L'Alternative Carrier Record per la tecnologia di trasmissione <em>Device Retrieval</em> NFC DEVE fare riferimento al Carrier Configuration Record con il riferimento ID &quot;nfc&quot;.
 - Carrier Configuration Record: fornisce i parametri tecnici necessari per utilizzare effettivamente quel carrier. Per la tecnologia di trasmissione <em>Device Retrieval NFC</em>, DEVE avere il tipo &quot;iso.org:18013:nfc&quot; e il riferimento ID &quot;nfc&quot;. Il contenuto binario del Carrier Configuration Record DEVE essere codificato secondo la Tabella 1 di [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #9.2.2] (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_103d</span></a>).</p>
 <p>Per esempio:
 Per NFC, questo definisce le lunghezze massime di comando/risposta APDU (Application Protocol Data Unit);
@@ -922,8 +922,8 @@ Se è supportato il <code class="docutils literal notranslate"><span class="pre"
 </table>
 <section id="richiesta-mdoc">
 <h3><span class="section-number">12.2.2.7.1. </span>Richiesta mdoc<a class="headerlink" href="#richiesta-mdoc" title="Link to this heading">¶</a></h3>
-<p>I messaggi nella Richiesta mdoc DEVONO essere codificati utilizzando CBOR. La stringa di byte CBOR risultante per la Richiesta mdoc DEVE essere cifrata con la Chiave di Sessione ottenuta dopo la fase di Device Engagement e DEVE essere trasmessa utilizzando il protocollo BLE o NFC (<a class="reference internal" href="test-plans-proximity-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-prossimita"><span class="std std-ref">PPR-026</span></a>, <a class="reference internal" href="test-plans-proximity-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-prossimita"><span class="std std-ref">PPR-027</span></a>, <a class="reference internal" href="test-plans-proximity-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-prossimita"><span class="std std-ref">PPR-028</span></a>).
-Ogni Richiesta mdoc DEVE essere conforme alla seguente struttura e DEVE includere i seguenti componenti, a meno che non sia specificato diversamente:</p>
+<p>I messaggi nella Richiesta mdoc DEVONO essere codificati utilizzando CBOR. La stringa di byte CBOR risultante per la Richiesta mdoc DEVE essere cifrata con la Chiave di Sessione ottenuta dopo la fase di Device Engagement e DEVE essere trasmessa utilizzando il protocollo BLE o NFC (<a class="reference internal" href="test-plans-proximity-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-prossimita"><span class="std std-ref">PPR-026</span></a>, <a class="reference internal" href="test-plans-proximity-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-prossimita"><span class="std std-ref">PPR-027</span></a>, <a class="reference internal" href="test-plans-proximity-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-prossimita"><span class="std std-ref">PPR-028</span></a>).</p>
+<p>Ogni Richiesta mdoc DEVE essere conforme alla seguente struttura e DEVE includere i seguenti componenti, a meno che non sia specificato diversamente:</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 30.0%" />
@@ -943,7 +943,7 @@ Ogni Richiesta mdoc DEVE essere conforme alla seguente struttura e DEVE includer
 <ul>
 <li><p><strong>itemsRequest</strong>. Struttura <cite>ItemsRequest</cite> codificata CBOR, formattata come:</p>
 <ul>
-<li><p><strong>docType</strong> <em>(tstr)</em>. Il tipo di documento richiesto. Vedere <a class="reference internal" href="credential-data-model.html#credential-data-model-attestato-elettronico-in-formato-mdoc-cbor"><span class="std std-ref">Formato Attestato Elettronico mdoc-CBOR</span></a>.</p></li>
+<li><p><strong>docType</strong> <em>(tstr)</em>. Il tipo di documento richiesto. Vedere <a class="reference internal" href="credential-data-model.html#formato-attestato-elettronico-mdoc-cbor"><span class="std std-ref">Formato Attestato Elettronico mdoc-CBOR</span></a>.</p></li>
 <li><p><strong>nameSpaces</strong> <em>(map)</em>. Una mappa di identificatori di namespace a <em>DataElements</em> richiesti.</p>
 <p>Ogni voce in <cite>DataElements</cite> include:</p>
 <ul class="simple">
@@ -1009,10 +1009,10 @@ Ogni Richiesta mdoc DEVE essere conforme alla seguente struttura e DEVE includer
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>docType</strong></p></td>
-<td><p><em>(tstr)</em>. identificativo del tipo di documento. Ad esempio, per un mDL, il valore DEVE essere <code class="docutils literal notranslate"><span class="pre">org.iso.18013.5.1.mDL</span></code> (<a class="reference internal" href="test-plans-proximity-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-prossimita"><span class="std std-ref">PPR-010</span></a>).</p></td>
+<td><p><em>(tstr)</em>. identificativo del tipo di documento. Ad esempio, per un mDL, il valore DEVE essere <code class="docutils literal notranslate"><span class="pre">org.iso.18013.5.1.mDL</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>issuerSigned</strong></p></td>
-<td><p><em>(bstr)</em>. Contiene la struttura <cite>IssuerNameSpaces</cite>, che include elementi dati firmati dal Fornitore di Attestati Elettronici, e la struttura <cite>issuerAuth</cite>, che garantisce la loro autenticità e integrità utilizzando il Mobile Security Object (MSO). Vedere <a class="reference internal" href="credential-data-model.html#credential-data-model-attestato-elettronico-in-formato-mdoc-cbor"><span class="std std-ref">Formato Attestato Elettronico mdoc-CBOR</span></a>.</p></td>
+<td><p><em>(bstr)</em>. Contiene la struttura <cite>IssuerNameSpaces</cite>, che include elementi dati firmati dal Fornitore di Attestati Elettronici, e la struttura <cite>issuerAuth</cite>, che garantisce la loro autenticità e integrità utilizzando il Mobile Security Object (MSO). Vedere <a class="reference internal" href="credential-data-model.html#formato-attestato-elettronico-mdoc-cbor"><span class="std std-ref">Formato Attestato Elettronico mdoc-CBOR</span></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>deviceSigned</strong></p></td>
 <td><p><em>(bstr)</em>. Contiene la struttura <cite>DeviceNameSpaces</cite> (elementi dati firmati dall'Istanza del Wallet), e la struttura <cite>deviceAuth</cite>, che include i dati di autenticazione firmati dall'Istanza del Wallet. Vedere la tabella sottostante per dettagli.</p></td>
@@ -1044,7 +1044,7 @@ Ogni Richiesta mdoc DEVE essere conforme alla seguente struttura e DEVE includer
 </td>
 </tr>
 <tr class="row-odd"><td><p><strong>deviceAuth</strong></p></td>
-<td><p><em>(COSE_Sign1)</em>. Contiene la struttura <code class="docutils literal notranslate"><span class="pre">DeviceAuth</span></code>, che DEVE includere la <strong>deviceSignature</strong> per l'autenticazione dell'Istanza del Wallet. La firma è calcolata sui dati <code class="docutils literal notranslate"><span class="pre">DeviceAuthentication</span></code>, che lega gli elementi restituiti alla sessione e alla richiesta. Vedi [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #12.4] per i dettagli sulla struttura di autenticazione (<a class="reference internal" href="test-plans-proximity-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-prossimita"><span class="std std-ref">PPR-003</span></a>).</p></td>
+<td><p><em>(COSE_Sign1)</em>. Contiene la struttura <code class="docutils literal notranslate"><span class="pre">DeviceAuth</span></code>, che DEVE includere la <strong>deviceSignature</strong> per l'autenticazione dell'Istanza del Wallet. La firma è calcolata sui dati <code class="docutils literal notranslate"><span class="pre">DeviceAuthentication</span></code>, che lega gli elementi restituiti alla sessione e alla richiesta. Vedi [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #12.4] per i dettagli sulla struttura di autenticazione.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1069,7 +1069,7 @@ Ogni Richiesta mdoc DEVE essere conforme alla seguente struttura e DEVE includer
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Vedere <a class="reference internal" href="credential-data-model.html#credential-data-model-attestato-elettronico-in-formato-mdoc-cbor"><span class="std std-ref">Formato Attestato Elettronico mdoc-CBOR</span></a> per il significato degli acronimi di tipo CBOR.</p>
+<p>Vedere <a class="reference internal" href="credential-data-model.html#formato-attestato-elettronico-mdoc-cbor"><span class="std std-ref">Formato Attestato Elettronico mdoc-CBOR</span></a> per il significato degli acronimi di tipo CBOR.</p>
 </div>
 </section>
 </section>
@@ -1141,7 +1141,7 @@ Ogni Richiesta mdoc DEVE essere conforme alla seguente struttura e DEVE includer
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 05/06/2026.
+      Ultimo aggiornamento 30/06/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

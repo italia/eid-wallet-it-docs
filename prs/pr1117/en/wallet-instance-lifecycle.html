@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
-    <script src="_static/documentation_options.js?v=350a9c04"></script>
+    <script src="_static/documentation_options.js?v=02f2166e"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -215,9 +215,9 @@ official app store of their device's operating system (this ensures authenticity
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>As it is stated in the ARF (see Topic 9 and Topic 38 in Annex 2), the revocation of the Wallet Instance is accomplished by revoking the Wallet Unit Attestation by
-using the status management mechanism. The Wallet Provider can simply change the status of the Wallet Unit in the Status List to mark the Wallet Unit as revoked and
-inform the users concerning the reason to revoke the Wallet Unit.</p>
+<p>As it is stated in the ARF (see Topic 9 and Topic 38 in Annex 2), the revocation of the Wallet Instance is accomplished by revoking the Wallet Instance Attestation by
+using the status management mechanism. The Wallet Provider can simply change the status of the Wallet Instance Attestation in the Wallet Instance Attestation Status List to mark it as revoked and
+inform the Users concerning the reason for revoking the Wallet Instance.</p>
 </div>
 </section>
 <section id="id1">
@@ -231,9 +231,7 @@ This association allows the User to directly request Wallet Instance revocation 
 <p>As a result of the User account creation, an authentication mechanism MUST be set for the User to interact with the Wallet Provider portal.
 This specification mandates the use of at least a second-factor for User authentication.</p>
 </div>
-<p>As part of the activation, the Wallet Provider MUST evaluate the operating system, general technical capabilities of the device, and trustworthiness of the WSCD
-to check compliance with the technical and security requirements, the authenticity and integrity of the installed Wallet Instance, and ensure the keys used for
-key binding resides in a secure WSCD.
+<p>As part of the activation, the Wallet Provider MUST evaluate the operating system, general technical capabilities of the device, and trustworthiness of the WSCD to check compliance with the technical and security requirements, the authenticity and integrity of the installed Wallet Instance, and ensure the keys used for key binding resides in a secure WSCD.
 Upon successful verification, the Wallet Provider MUST issue at least one valid Wallet Attestation to the Wallet Instance, therefore the Wallet Instance enters the <strong>Operational</strong> state.</p>
 <p>In addition, if not already done, Users MUST set their preferred method of unlocking their Wallet Instance; this MAY be accomplished by entering a
 personal identification number (PIN) or by utilizing biometric authentication, such as fingerprint or facial recognition, according to personal
@@ -281,7 +279,7 @@ delete the Wallet Cryptographic Hardware Key pairs (<a class="reference internal
 <p>A Wallet Provider instead is responsible for:</p>
 <ul class="simple">
 <li><p><strong>Wallet Instance Activation</strong> (<strong>WI ACT</strong>): a User account MUST be created and associated with the Wallet Instance through the Wallet Cryptographic Hardware Key Tag. As a result of the User account creation, an authentication mechanism of at least two factors MUST be set for the User to interact with the Wallet Provider portal.</p></li>
-<li><p><strong>Wallet Instance Revocation</strong> (<strong>WI REV</strong>): for technical security reasons or triggered by external entities (e.g., Users and Supervisory Bodies) the Wallet Instance is revoked and this result in the revocation of the Wallet Unit Attestation, which is reflected on the Wallet Unit Attestation Status List. Additionally, the Wallet Cryptographic Hardware Key Tag MUST be deleted from the User account.</p></li>
+<li><p><strong>Wallet Instance Revocation</strong> (<strong>WI REV</strong>): for technical security reasons or triggered by external entities (e.g., Users and Supervisory Bodies) the Wallet Instance is revoked and this result in the revocation of the Wallet Instance Attestation, which is reflected on the Wallet Instance Attestation Status List. Additionally, the Wallet Cryptographic Hardware Key Tag MUST be deleted from the User account.</p></li>
 <li><p><strong>Data Purging</strong>: through an explicit request of Users, the User account at the Wallet Provider MUST be removed from the local storage.</p></li>
 </ul>
 </section>
@@ -336,7 +334,7 @@ delete the Wallet Cryptographic Hardware Key pairs (<a class="reference internal
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 05/06/2026.
+      Last updated on 30/06/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

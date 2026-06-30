@@ -5,11 +5,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Documentazione Tecnica IT-Wallet - 1.4.1 &#8212; IT-Wallet Specifiche Tecniche - PR #1117</title>
+    <title>Documentazione Tecnica IT-Wallet - 1.4.2 &#8212; IT-Wallet Specifiche Tecniche - PR #1117</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
-    <script src="_static/documentation_options.js?v=53f44254"></script>
+    <script src="_static/documentation_options.js?v=640cc83e"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/translations.js?v=da26b4cc"></script>
@@ -162,7 +162,7 @@
           <div class="body" role="main">
             
   <section id="documentazione-tecnica-it-wallet-version">
-<h1>Documentazione Tecnica IT-Wallet - 1.4.1<a class="headerlink" href="#documentazione-tecnica-it-wallet-version" title="Link to this heading">¶</a></h1>
+<h1>Documentazione Tecnica IT-Wallet - 1.4.2<a class="headerlink" href="#documentazione-tecnica-it-wallet-version" title="Link to this heading">¶</a></h1>
 <p>Questo documento fornisce l'architettura tecnica, il framework di implementazione e i requisiti di progettazione da adottare per le Soluzioni Tecniche del Sistema IT-Wallet.</p>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Indice dei Contenuti</span></p>
@@ -172,9 +172,7 @@
 <li class="toctree-l2"><a class="reference internal" href="introduction.html#linguaggio-normativo-e-convenzioni">1.2. Linguaggio Normativo e Convenzioni</a></li>
 <li class="toctree-l2"><a class="reference internal" href="introduction.html#come-leggere-le-specifiche">1.3. Come leggere le Specifiche</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="introduction.html#panoramica-della-struttura-delle-specifiche">1.3.1. Panoramica della Struttura delle Specifiche</a></li>
-<li class="toctree-l3"><a class="reference internal" href="introduction.html#journey-di-lettura-per-ruolo">1.3.2. Journey di Lettura per Ruolo</a></li>
-<li class="toctree-l3"><a class="reference internal" href="introduction.html#argomenti-trasversali">1.3.3. Argomenti Trasversali</a></li>
-<li class="toctree-l3"><a class="reference internal" href="introduction.html#approccio-all-implementazione">1.3.4. Approccio all'Implementazione</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#percorsi-di-lettura-per-ruolo">1.3.2. Percorsi di lettura per ruolo</a></li>
 </ul>
 </li>
 </ul>
@@ -192,7 +190,10 @@
 <li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Sistema di Onboarding</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="onboarding-high-level.html#architettura-del-sistema-di-onboarding">4.1. Architettura del Sistema di Onboarding</a></li>
 <li class="toctree-l2"><a class="reference internal" href="onboarding-high-level.html#processo-di-registrazione-della-fonte-autentica">4.2. Processo di Registrazione della Fonte Autentica</a></li>
-<li class="toctree-l2"><a class="reference internal" href="onboarding-high-level.html#processo-di-onboarding-della-federazione">4.3. Processo di Onboarding della Federazione</a></li>
+<li class="toctree-l2"><a class="reference internal" href="onboarding-high-level.html#processo-di-onboarding-della-federazione">4.3. Processo di Onboarding della Federazione</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="onboarding-high-level.html#onboarding-degli-intermediari-di-relying-party">4.3.1. Onboarding degli Intermediari di Relying Party</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="onboarding-high-level.html#gestione-del-ciclo-di-vita-delle-entita">4.4. Gestione del Ciclo di Vita delle Entità</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="onboarding-high-level.html#gestione-delle-operazioni-continuative">4.4.1. Gestione delle Operazioni Continuative</a></li>
 <li class="toctree-l3"><a class="reference internal" href="onboarding-high-level.html#processi-di-uscita-e-rimozione-dalla-federazione">4.4.2. Processi di Uscita e Rimozione dalla Federazione</a></li>
@@ -250,44 +251,45 @@
 <li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. L'Infrastruttura di Trust</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#ruoli-di-federazione">6.1. Ruoli di Federazione</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#integrazione-dell-infrastruttura-di-trust-e-del-registro">6.2. Integrazione dell'Infrastruttura di Trust e del Registro</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#endpoint-api-di-federazione">6.3. Endpoint API di Federazione</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#federation-subordinate-events-endpoint">6.3.1. Federation Subordinate Events Endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#proprieta-generali">6.3. Proprietà Generali</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#requisiti-dell-infrastruttura-di-trust">6.4. Requisiti dell'Infrastruttura di Trust</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#endpoint-api-di-federazione">6.5. Endpoint API di Federazione</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#configurazione-della-federazione">6.6. Configurazione della Federazione</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#entity-configuration">6.7. Entity Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#parametri-comuni-delle-entity-configuration">6.7.1. Parametri Comuni delle Entity Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#entity-configuration-trust-anchor">6.7.2. Entity Configuration Trust Anchor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#trust-mark-degli-intermediari-di-relying-party">6.7.3. Trust Mark degli Intermediari di Relying Party</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#entity-configuration-foglie-e-intermediari">6.7.4. Entity Configuration Foglie e Intermediari</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#id1">6.7.5. Tipi di Metadati</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#configurazione-della-federazione">6.4. Configurazione della Federazione</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#entity-configuration">6.5. Entity Configuration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#parametri-comuni-delle-entity-configuration">6.5.1. Parametri Comuni delle Entity Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#entity-configuration-trust-anchor">6.5.2. Entity Configuration Trust Anchor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#entity-configuration-foglie-e-intermediari">6.5.3. Entity Configuration Foglie e Intermediari</a></li>
-<li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#id1">6.5.4. Tipi di Metadati</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#metadati-di-federation-entity-foglie">6.8. Metadati di federation_entity Foglie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#i-subordinate-statement">6.9. I Subordinate Statement</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#subordinate-statement">6.9.1. Subordinate Statement</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#metadati-di-federation-entity-foglie">6.6. Metadati di federation_entity Foglie</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#i-subordinate-statement">6.7. I Subordinate Statement</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#subordinate-statement">6.7.1. Subordinate Statement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#discovery-della-federazione">6.10. Discovery della Federazione</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#trust-chain">6.11. Trust Chain</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#meccanismi-di-attestazione-di-trust-offline">6.11.1. Meccanismi di Attestazione di Trust Offline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#rinnovo-rapido-della-trust-chain">6.11.2. Rinnovo Rapido della Trust Chain</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#discovery-della-federazione">6.8. Discovery della Federazione</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#trust-chain">6.9. Trust Chain</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#meccanismi-di-attestazione-di-trust-offline">6.9.1. Meccanismi di Attestazione di Trust Offline</a></li>
-<li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#rinnovo-rapido-della-trust-chain">6.9.2. Rinnovo Rapido della Trust Chain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#meccanismo-di-trust-evaluation">6.12. Meccanismo di Trust Evaluation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#stabilire-trust-con-i-credential-issuer">6.12.1. Stabilire Trust con i Credential Issuer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#stabilire-trust-con-il-relying-party">6.12.2. Stabilire Trust con il Relying Party</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#valutare-trust-con-i-wallet">6.12.3. Valutare Trust con i Wallet</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#meccanismo-di-trust-evaluation">6.10. Meccanismo di Trust Evaluation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#stabilire-trust-con-i-credential-issuer">6.10.1. Stabilire Trust con i Credential Issuer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#stabilire-trust-con-il-relying-party">6.10.2. Stabilire Trust con il Relying Party</a></li>
-<li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#valutare-trust-con-i-wallet">6.10.3. Valutare Trust con i Wallet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#non-ripudio-delle-attestazioni-di-lunga-durata">6.13. Non-ripudio delle Attestazioni di Lunga Durata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#x-509-pki">6.14. X.509 PKI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#trust-anchor-di-federazione-e-ca-x-509">6.14.1. Trust Anchor di Federazione e CA X.509</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#emissione-di-certificati-x-509">6.14.2. Emissione di Certificati X.509</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#revoca-di-certificati-x-509">6.14.3. Revoca di Certificati X.509</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#federation-subordinate-events-endpoint">6.14.4. Federation Subordinate Events Endpoint</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#non-ripudio-delle-attestazioni-di-lunga-durata">6.11. Non-ripudio delle Attestazioni di Lunga Durata</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#x-509-pki">6.12. X.509 PKI</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#trust-anchor-di-federazione-e-ca-x-509">6.12.1. Trust Anchor di Federazione e CA X.509</a></li>
-<li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#emissione-di-certificati-x-509">6.12.2. Emissione di Certificati X.509</a></li>
-<li class="toctree-l3"><a class="reference internal" href="trust-infrastructure.html#revoca-di-certificati-x-509">6.12.3. Revoca di Certificati X.509</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#osservazioni-sulla-privacy">6.13. Osservazioni sulla Privacy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#considerazioni-sulla-decentralizzazione">6.14. Considerazioni sulla Decentralizzazione</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#osservazioni-sulla-privacy">6.15. Osservazioni sulla Privacy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trust-infrastructure.html#considerazioni-sulla-decentralizzazione">6.16. Considerazioni sulla Decentralizzazione</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="registry.html">7. Infrastruttura del Registro</a><ul>
@@ -433,7 +435,6 @@
 <li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#ciclo-di-vita-degli-attestati-elettronici-ottenuti-in-batch">11.3.2. Ciclo di vita degli Attestati Elettronici ottenuti in batch</a></li>
 <li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#gestione-del-ciclo-di-vita-degli-attestati-elettronici">11.3.3. Gestione del Ciclo di Vita degli Attestati Elettronici</a></li>
 <li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#meccanismi-di-verifica-della-validita">11.3.4. Meccanismi di Verifica della Validità</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#token-status-lists">11.3.5. Token Status Lists</a></li>
 </ul>
 </li>
 </ul>
@@ -459,7 +460,7 @@
 <li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#endpoint-nonce-della-soluzione-wallet">13.1.2. Endpoint Nonce della Soluzione Wallet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#endpoint-di-gestione-dell-istanza-di-wallet">13.1.3. Endpoint di Gestione dell'Istanza di Wallet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#endpoint-di-emissione-della-wallet-instance-attestation">13.1.4. Endpoint di Emissione della Wallet Instance Attestation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#endpoint-di-emissione-della-wallet-unit-attestation">13.1.5. Endpoint di Emissione della Wallet Unit Attestation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#endpoint-di-emissione-della-key-attestation">13.1.5. Endpoint di Emissione della Key Attestation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#catalogo-e-service-pdnd-del-fornitore-di-wallet">13.1.6. Catalogo e-Service PDND del Fornitore di Wallet</a></li>
 </ul>
 </li>
@@ -573,10 +574,23 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="open-source.html">19. Rilasci Open Source</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="open-source.html#fornitori-di-wallet">19.1. Fornitori di Wallet</a></li>
-<li class="toctree-l2"><a class="reference internal" href="open-source.html#fornitori-di-credenziali">19.2. Fornitori di Credenziali</a></li>
-<li class="toctree-l2"><a class="reference internal" href="open-source.html#relying-party">19.3. Relying Party</a></li>
-<li class="toctree-l2"><a class="reference internal" href="open-source.html#divulgazione-responsabile">19.4. Divulgazione Responsabile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open-source.html#principi-generali">19.1. 1. Principi Generali</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open-source.html#requisiti-standard">19.2. 2. Requisiti Standard</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="open-source.html#licenze">19.2.1. 2.1 Licenze</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open-source.html#gestione-del-codice-e-trasparenza">19.2.2. 2.2 Gestione del Codice e Trasparenza</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open-source.html#sicurezza-e-qualita">19.2.3. 2.3 Sicurezza e Qualità</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="open-source.html#fornitori-di-wallet">19.3. 3. Fornitori di Wallet</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="open-source.html#open-source-obbligatorio">19.3.1. 3.1 Open Source Obbligatorio</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="open-source.html#fornitori-di-credenziali-e-relying-party">19.4. 4. Fornitori di Credenziali e Relying Party</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="open-source.html#componenti-di-integrazione">19.4.1. 4.1 Componenti di integrazione</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open-source.html#infrastruttura-di-backend">19.4.2. 4.2 Infrastruttura di backend</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="open-source.html#divulgazione-responsabile-e-gestione-delle-vulnerabilita">19.5. 5. Divulgazione Responsabile e Gestione delle Vulnerabilità</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="appendix.html">20. Appendice</a><ul>
@@ -630,7 +644,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 05/06/2026.
+      Ultimo aggiornamento 30/06/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

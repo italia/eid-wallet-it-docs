@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
-    <script src="_static/documentation_options.js?v=350a9c04"></script>
+    <script src="_static/documentation_options.js?v=02f2166e"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -201,7 +201,7 @@ This OpenAPI specification can be extended by the Authentic Sources, in fact, th
 <p>This e-Service MUST be invoked by the Credential Issuer in the following cases:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>During the Credential issuance flow to retrieve the Digital Credential dataset(s). In this situation, the <code class="docutils literal notranslate"><span class="pre">object_id</span></code> claim MUST not be used in the e-service request payload, and the e-service response MUST include all Credential datasets that are <code class="docutils literal notranslate"><span class="pre">VALID</span></code> state and not administratively expired (i.e., <code class="docutils literal notranslate"><span class="pre">expiry_date</span></code> &gt; current date of the e-service request).</p></li>
+<li><p>During the Credential issuance flow to retrieve the Digital Credential dataset(s). In this situation, the <code class="docutils literal notranslate"><span class="pre">object_id</span></code> claim MUST NOT be used in the e-service request payload, and the e-service response MUST include all Credential datasets that are <code class="docutils literal notranslate"><span class="pre">VALID</span></code> state and not administratively expired (i.e., <code class="docutils literal notranslate"><span class="pre">expiry_date</span></code> &gt; current date of the e-service request).</p></li>
 <li><p>After receiving an update notification through Signal Hub. In this situation, the <code class="docutils literal notranslate"><span class="pre">object_id</span></code> claim MUST be included in the request payload, and the e-service response MUST return only the Credential dataset identified by the <code class="docutils literal notranslate"><span class="pre">object_id</span></code> claim independently from its state.</p></li>
 </ul>
 </div></blockquote>
@@ -375,7 +375,7 @@ Please refer to the Technical Appendix (Section <a class="reference internal" hr
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 05/06/2026.
+      Last updated on 30/06/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
