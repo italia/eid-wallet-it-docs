@@ -474,7 +474,7 @@ La Fonte Autentica:
 
   - DEVE fornire il colore utilizzando esclusivamente una delle seguenti modalità colore: HEX, HSB, RGB, sRGB, HSL, o HSV.
 
-- DEVE fornire l’**ordine degli Attributi** desiderato tramite il parametro ``data_capabilities.available_claims_order``. In particolare, la Fonte Autentica:
+- DEVE fornire l’**ordine degli Attributi** desiderato tramite il parametro ``data_capabilities.available_claims_order``. L’obiettivo è quello di caratterizzare l’EAA rendendolo riconoscibile agli occhi dell’Utente, soprattutto nei casi in cui si voglia dare a un nuovo EAA una forte immagine identitaria oppure si voglia mantenere coerenza con un eventuale corrispettivo fisico (es. si pensi alla patente di guida italiana e al suo caratteristico colore rosa). In particolare, la Fonte Autentica:
 
   - DEVE ordinare i dati secondo la struttura predefinita:
 

@@ -470,7 +470,7 @@ The Authentic Source:
   - MUST provide the logo with a minimum size of 200 × 30 pixels and a maximum size of 650 × 180 pixels;
   - MUST provide the logo with a maximum file size of 150 KB.
 
-- MAY define a distinctive **EAA color** to be associated with a specific EAA via the ``data_capabilities.background_color`` parameter. In particular, the Authentic Source:
+- MAY define a distinctive **EAA color** to be associated with a specific EAA via the ``data_capabilities.background_color`` parameter. The aim is to characterise the EAA, making it recognisable to the User, particularly in cases where the intention is to give a new EAA a strong identity or to maintain consistency with a corresponding physical document (e.g., consider the italian driving licence and its distinctive pink colour). In particular, the Authentic Source:
 
   - MUST provide the background color only using one of the following color modes: HEX, HSB, RGB, sRGB, HSL, or HSV.
 
