@@ -220,7 +220,7 @@ SR-P-41
      - The protocol must ensure that an attacker cannot successfully forward an interaction between a Wallet and a Verifier to a Verifier under the control of the attacker.
 
 A prerequisite for a successful attack of this kind is that the attacker has access to some messages between the Wallet and the Verifier, for example,
-the attacker might have access to the presentation contained in the VP Token. Given that, the proper implementation of TLS guarrantes confidentiality, avoiding the leakage of the response.
+the attacker might have access to the presentation contained in the VP Token. Given that, the proper implementation of TLS guarantees confidentiality, avoiding the leakage of the response.
 In addition to TLS, the existing implementation of **nonce** and audience checks in the presentation protocol should help to meet the P-41 security requirement.
 Regarding the **nonce** claim, the Verifier MUST check that the **nonce** value in the VP Token matches the **nonce** value that is created by the Verifier during the authorization request.
 Regarding the **aud** value, the Verifier must check that the audience of the presentation matches the Verifier's identifier.
@@ -251,7 +251,7 @@ SR-V-10
    * - |partially-check-icon|
      - (conditional w.r.t I-50+V-20) The Verifier must ensure that the Credential is stored in a secure Wallet.
 
-Verifier checks the Wallet Attestation during exchanges (sent with the authorization response), ensuring that it meets the security criteria required by the Verifier and is under the sole responsability of its issuer, the trusted Wallet Provider.
+Verifier checks the Wallet Attestation during exchanges (sent with the authorization response), ensuring that it meets the security criteria required by the Verifier and is under the sole responsibility of its issuer, the trusted Wallet Provider.
 
 .. note::
   Currently, no explicit security and privacy measures related to this requirement are specified in [`OpenID4VC-SecTrust`_] and it is not clearly defined what ^stored in a secure Wallet^ means. Without this detail, this requirement is considered only partially satisfied. Indeed, the Wallet Attestation guarantees

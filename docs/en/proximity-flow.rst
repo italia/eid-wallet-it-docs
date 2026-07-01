@@ -334,7 +334,7 @@ Definitions (Acronyms and Commands)
      - Application Identifier, unique ID used in SELECT `APDU` command to engage the Wallet Instance.
 
    * - **APDU**
-     - Application Protocol Data Unit, a standard message format for communication between Relying Party Instance (PCD) and Wallet (PICC) consists of Command APDUs (e.g., `SELECT`, `ENVELOPE`, `GET RESPONSE`) from the reader and Response `APDUs` from the wallet, which include data exhange and end exchange using status words (`SW1/SW2`).
+     - Application Protocol Data Unit, a standard message format for communication between Relying Party Instance (PCD) and Wallet (PICC) consists of Command APDUs (e.g., `SELECT`, `ENVELOPE`, `GET RESPONSE`) from the reader and Response `APDUs` from the wallet, which include data exchange and end exchange using status words (`SW1/SW2`).
 
    * - **SELECT APDU**
      - Command that opens the Wallet Instance by `AID`.  Response includes File Control Information (FCI) and Status Word (`SW1/SW2`).

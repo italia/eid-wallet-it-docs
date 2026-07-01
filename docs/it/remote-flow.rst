@@ -437,7 +437,7 @@ La richiesta e i suoi parametri sono definiti nella Sezione 5 (Authorization Req
    * - `client_id_prefixes_supported`
      - RACCOMANDATO. Un array non vuoto dei prefissi dell’identificatore del Client supportati dall’Istanza del Wallet. I valori validi includono ``openid_federation`` e ``x509_hash``; se omesso, il valore predefinito è pre-registrato.
    * - `authorization_endpoint`
-     - URL dell'endpoint del server di autorizzazione, vedi `OAUTH2`_. L'utilizzo di un link universale è preferibile per una sicurezza migliorata e supporto di fallback, *URL schems* personalizzati possono anche essere utilizzati se necessario.
+     - URL dell'endpoint del server di autorizzazione, vedi `OAUTH2`_. L'utilizzo di un link universale è preferibile per una sicurezza migliorata e supporto di fallback, *URL schemes* personalizzati possono anche essere utilizzati se necessario.
    * - `response_types_supported`
      - OPZIONALE. Array JSON di valori "response_type" di OAuth 2.0. Se presente DEVE essere impostato su ``vp_token`` (:ref:`RPR-82 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
    * - `response_modes_supported`
@@ -678,11 +678,11 @@ Errori della Authorization Response
 
 Ci sono casi in cui l'Istanza del Wallet non può convalidare il Request Object o il Request Object risulta non valido. Questo errore si verifica se il Request Object viene recuperato con successo dall'url fornito nel parametro ``request_uri`` ma non supera i controlli di convalida. Ciò potrebbe essere dovuto a firme errate, claim non conformim o altri errori di convalida, come la revoca della trust per la specifica Relying Party che lo ha emesso.
 
-Se l'Istanza del Wallet incontra tali errori durante la valutazione della Authorization Request, DEVE notificare alla Relying Party inviando una *Error Response* nella *Autorization Response* (:ref:`WP_090 <wallet-credential-presentation-testcases>`).
-L'Istanza del Wallet invia la *Error Response* nella *Autorization Response* all'endpoint ``response_uri`` della Relying Party utilizzando una richiesta HTTP POST (:ref:`WP_090<wallet-credential-presentation-testcases>`).
+Se l'Istanza del Wallet incontra tali errori durante la valutazione della Authorization Request, DEVE notificare alla Relying Party inviando una *Error Response* nella *Authorization Response* (:ref:`WP_090 <wallet-credential-presentation-testcases>`).
+L'Istanza del Wallet invia la *Error Response* nella *Authorization Response* all'endpoint ``response_uri`` della Relying Party utilizzando una richiesta HTTP POST (:ref:`WP_090<wallet-credential-presentation-testcases>`).
 Questa *Error Response* DEVE essere codificata nel corpo della richiesta utilizzando il formato definito dal tipo di contenuto ``application/x-www-form-urlencoded``.
 
-Di seguito è riportato un esempio non normativo di una *Error Response* nella *Autorization Response*.
+Di seguito è riportato un esempio non normativo di una *Error Response* nella *Authorization Response*.
 
 .. code-block:: http
 
@@ -697,7 +697,7 @@ Di seguito è riportato un esempio non normativo di una *Error Response* nella *
 .. warning::
   L'attuale specifica OpenID4VP delinea varie risposte di errore che un'Istanza del Wallet può restituire alla Relying Party in caso di *Authorization Request* errata. Per migliorare la privacy, le Istanze del Wallet NON DOVREBBERO notificare alla Relying Party le richieste errate qualora un uso improprio delle risposte di errore potrebbe portare a raccogliere informazioni lesive della privacy dell'Utente (ad esempio, se l'Utente decide di non voler presentare l'Attestato Elettronico richiesto).
 
-Nella seguente tabella sono elencati gli *Error codes* e le descrizioni che sono supportati per la *Error Response* nella *Autorization Response*:
+Nella seguente tabella sono elencati gli *Error codes* e le descrizioni che sono supportati per la *Error Response* nella *Authorization Response*:
 
 .. list-table::
    :class: longtable

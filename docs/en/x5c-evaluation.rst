@@ -52,7 +52,7 @@ X.509 Certificate Chain Validation
 
 Federation entities MUST validate X.509 certificate chains to ensure proper trust establishment and verify compliance with federation PKI requirements.
 
-A non-normative exampe of X.509 Certificate chain validation procedure is given below:
+A non-normative example of X.509 Certificate chain validation procedure is given below:
 
 .. literalinclude:: ../../utils/certificate-chain-validation.sh
    :language: bash

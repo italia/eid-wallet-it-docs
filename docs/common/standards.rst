@@ -61,7 +61,7 @@ Digital Credential Data Format
     :header-rows: 0
 
     * - `SD-JWT-VC`_
-      - O. Terbu, D.Fett, B. Campbell, "SD-JWT-based Verifiable Credentials (SD-JWT VC)", September 2025, Draft 11.
+      - O. Terbu, D.Fett, B. Campbell, "SD-JWT-based Verifiable Credentials (SD-JWT VC)", October 2025, Draft 12.
     * - `ISO18013-5`_
       - ISO/IEC 18013-5 2020. Information technology — Personal identification — ISO-compliant driving license — Part 5: Mobile driving license (mDL) application.
 

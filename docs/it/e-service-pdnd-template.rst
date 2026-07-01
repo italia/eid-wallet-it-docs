@@ -16,7 +16,7 @@ Una volta che un e-service template è pubblicato, è accessibile attraverso il 
 Definizione e linee guida dell'e-service template PDND
 ------------------------------------------------------
 
-L'infrastruttura PDND supporta la gestione del ciclo di vita dei Servizi Elettronici Template, simile a quella dei servizi elettronici tradizionali. Gli stati del ciclo di vita includono: **Draft**, **Active**, **Supsended** e **Deprecated**. Come per i servizi elettronici tradizionali, PDND applica il controllo degli accessi basato sui ruoli per governare le transizioni di stato.
+L'infrastruttura PDND supporta la gestione del ciclo di vita dei Servizi Elettronici Template, simile a quella dei servizi elettronici tradizionali. Gli stati del ciclo di vita includono: **Draft**, **Active**, **Suspended** e **Deprecated**. Come per i servizi elettronici tradizionali, PDND applica il controllo degli accessi basato sui ruoli per governare le transizioni di stato.
 
 Gestione dei Servizi Elettronici Template
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

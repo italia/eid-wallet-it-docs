@@ -10,7 +10,7 @@ Public Authentic Sources MUST interact with Credential Issuers via PDND accordin
 
 Authentic Sources MUST:
 
-  - provide User's attributes when requested by the Credential Issuer authorized to issue the related Digital Credential attesting the attributes. Public Authentic Sources MUST use PDND to send User's attributes to their Credential Issuers. When the User's attributes is not available duting the Issuance Flow, Authentic Sources MUST provide Credential Issuers with an estimated time when the User's data will be available. Authentic Sources MAY require an evidence that:
+  - provide User's attributes when requested by the Credential Issuer authorized to issue the related Digital Credential attesting the attributes. Public Authentic Sources MUST use PDND to send User's attributes to their Credential Issuers. When the User's attributes is not available during the Issuance Flow, Authentic Sources MUST provide Credential Issuers with an estimated time when the User's data will be available. Authentic Sources MAY require an evidence that:
 
     - the request for Users attributes is related to data about themselves;
     - the request for User attributes comes from a valid Wallet Instance;
