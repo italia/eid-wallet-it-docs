@@ -1,0 +1,31 @@
+{%- from "components/icons.html" import icon_search with context -%}
+{%- macro docs_searchbox(form_class, input_id) -%}
+<div class="{{ form_class }} it-docs-searchbox" role="search">
+  <form class="it-docs-search-form" action="{{ pathto('search') }}" method="get">
+    <label class="visually-hidden" for="{{ input_id }}">{{ _('Search') }}</label>
+    <input id="{{ input_id }}"
+           class="form-control it-docs-search-input"
+           type="search"
+           name="q"
+           placeholder="{{ _('Search') }}"
+           autocomplete="off"
+           autocorrect="off"
+           autocapitalize="off"
+           spellcheck="false"
+           enterkeyhint="search"/>
+    <button class="btn it-docs-search-submit" type="submit" title="{{ _('Search') }}">
+      {{ icon_search('icon it-docs-search-icon') }}
+      <span class="visually-hidden">{{ _('Search') }}</span>
+    </button>
+  </form>
+</div>
+{%- endmacro -%}
+{%- if pagename != "search" and builder != "singlehtml" -%}
+{%- set variant = search_variant|default('both') -%}
+{%- if variant in ['slim', 'both'] -%}
+{{ docs_searchbox('it-docs-searchbox--slim', 'it-docs-search-input') }}
+{%- endif -%}
+{%- if variant in ['mobile', 'both'] -%}
+{{ docs_searchbox('it-docs-searchbox--mobile', 'it-docs-search-input-mobile') }}
+{%- endif -%}
+{%- endif -%}

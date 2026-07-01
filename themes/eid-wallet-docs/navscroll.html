@@ -1,0 +1,33 @@
+{%- if display_toc -%}
+{%- from "components/icons.html" import icon_expand, icon_close with context -%}
+<nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
+     data-bs-navscroll
+     aria-label="{{ _('Page contents') }}">
+  <button class="custom-navbar-toggler"
+          type="button"
+          data-it-docs-nav-toggle
+          data-it-docs-nav-target="#itDocsNavscroll"
+          aria-controls="itDocsNavscroll"
+          aria-expanded="false"
+          aria-label="{{ _('Open page contents') }}">
+    {{ icon_expand('icon') }}
+    <span>{{ _('Page contents') }}</span>
+  </button>
+  <div class="navbar-collapsable it-docs-navscroll-panel" id="itDocsNavscroll">
+    <div class="overlay"></div>
+    <div class="close-div">
+      <button class="btn close-menu" type="button" aria-label="{{ _('Close page contents') }}">
+        {{ icon_close() }}
+      </button>
+    </div>
+    <div class="menu-wrapper it-docs-menu-scroll">
+      <div class="link-list-wrapper">
+        <h3>{{ _('On this page') }}</h3>
+        <div class="it-docs-local-toc">
+          {{ toc }}
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+{%- endif -%}

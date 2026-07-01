@@ -148,45 +148,27 @@ myst_enable_auto_toc_tree = True
 myst_update_mathjax = False
 
 # -- Options for HTML output ----------------------------------------------
-html_theme = 'piccolo_theme'
+html_theme = 'eid-wallet-docs'
+html_theme_path = ['../../themes']
 
-# html_theme_path = [docs_italia_theme.get_html_theme_path()]
-
-# Theme options are theme-specific and customize the look and feel of a theme
-# further. For a list of options available for each theme, see the
-# documentation.
 html_theme_options = {
-    # This option can be used with docs-italia-theme to customise how the versions "badge" is shown:
-    # 'False': default (alabaster) badge | 'True': custom (italia) badge
-    # 'custom_versions_badge': True,
-    #'collapse_navigation': True,
-    "show_theme_credit": False,
-    "source_url": 'https://github.com/italia/eudi-wallet-it-docs',
+    "header_org_name": settings_editor_name,
+    "header_project_name": settings_project_name,
+    "header_logo_path": "shared-ui/img/IT-Wallet-Logo-Primary-BlueItalia.svg",
+    "source_url": "https://github.com/italia/eudi-wallet-it-docs",
     "source_icon": "github",
-    # "banner_text": 'We just launched a newsletter, <a href="https://mynewsletter.com/">please subscribe</a>!'
+    "alternate_lang": "it",
+    "alternate_lang_label": "ITA",
+    "alternate_lang_name": "Italiano",
+    "footer_org_name": settings_editor_name,
+    "footer_project_name": settings_project_name,
 }
 
-# -- ReadTheDoc requirements and local template generation---------------------
-
-# on_rtd is whether we are on readthedocs.org, this line of code grabbed from docs.readthedocs.org
-#  on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
-
-#  if not on_rtd: # only import and set the theme if we're building docs locally
-    #  html_theme_path = [docs_italia_theme.get_html_theme_path()]
-    #  html_theme = 'docs_italia_theme'
-    #  pass
-#  else:
-    #  # Override default css to get a larger width for ReadTheDoc build
-    #  html_context = {
-        #  'css_files': [
-            #  '_static/css/theme.css',
-            #  '_static/css/badge_only.css',
-            #  '_static/css/itwallet-override.css' # div#top_nav nav { background-color: #0066CC } actually #3889CE
-        #  ],
-    #  }
-
 html_css_files = [
-    "itwallet-override.css"
+    "eid-wallet-docs-fonts.css",
+    "shared-ui/css/bootstrap-italia.min.css",
+    "shared-ui/css/ita.min.css",
+    "eid-wallet-docs-overrides.css",
 ]
 
 
@@ -248,6 +230,9 @@ html_last_updated_fmt = '%d/%m/%Y'
 
 # If true, "(C) Copyright ..." is shown in the HTML footer. Default is True.
 html_show_copyright = False
+
+# Hide ¶ permalink anchors next to headings, figures and code blocks.
+html_permalinks = False
 
 # If true, an OpenSearch description file will be output, and all pages will
 # contain a <link> tag referring to it. The value of this option must be the
