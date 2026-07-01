@@ -18,7 +18,6 @@ Each functionality is described in detail in the following sections.
   The details provided below are non-normative and are intended to clarify the functionalities of the Wallet Instance Registration. The actual implementation may vary based on the specific use case and requirements of the Wallet Provider.
 
 .. toctree::
-  :caption: Wallet Instance Functionalities Table of Contents
   :maxdepth: 3
 
   wallet-instance-registration.rst

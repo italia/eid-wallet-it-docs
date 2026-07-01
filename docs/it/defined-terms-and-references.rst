@@ -5,7 +5,6 @@ Termini Definiti e Riferimenti
 ==============================
 
 .. toctree::
-  :caption: Indice dei Termini Definiti e Riferimenti
   :maxdepth: 3
 
   defined-terms.rst

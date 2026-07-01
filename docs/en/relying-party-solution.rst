@@ -35,7 +35,6 @@ The following diagram depicts the Relying Party Solution High Level Architecture
 
 
 .. toctree::
-  :caption: Relying Party Solution Table of Contents
   :maxdepth: 3
 
   relying-party-instance.rst

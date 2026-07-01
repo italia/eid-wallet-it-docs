@@ -8,7 +8,6 @@ Questa sezione descrive il flusso di emissione di un Attestato Elettronico di Da
 
 
 .. toctree::
-  :caption: Indice dei Contenuti per l'Emissione di Attestati Elettronici
   :maxdepth: 3
 
   credential-issuance-high-level.rst

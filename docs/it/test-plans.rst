@@ -36,7 +36,6 @@ Per ogni caso di test, la tabella specifica:
 
 
 .. toctree::
-  :caption: Piani di Test per Ambito
   :maxdepth: 3
 
   test-plans-signature.rst

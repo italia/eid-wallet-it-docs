@@ -6,7 +6,6 @@ Appendice
 
 
   .. toctree::
-    :caption: Indice dell'Appendice
     :maxdepth: 3
 
     mobile-application-instance.rst
@@ -17,7 +16,6 @@ Appendice
 .. only:: latex
 
   .. toctree::
-    :caption: Indice dell'Appendice
     :maxdepth: 3
 
     appendix-oas-pdnd-wp.rst

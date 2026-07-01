@@ -5,7 +5,6 @@ Entities
 ========
 
 .. toctree::
-  :caption: Entities Table of Contents
   :maxdepth: 3
 
   wallet-solution.rst

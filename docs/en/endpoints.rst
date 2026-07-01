@@ -5,7 +5,6 @@ Endpoints
 =========
 
 .. toctree::
-  :caption: Endpoints Table of Contents
   :maxdepth: 3
 
   wallet-provider-endpoint.rst

@@ -11,7 +11,6 @@ These verifiable attestations, provided by the Wallet Provider, serve to authent
 
 
 .. toctree::
-  :caption: Wallet Instance Table of Contents
   :maxdepth: 3
 
   wallet-instance-lifecycle.rst

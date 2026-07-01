@@ -16,7 +16,6 @@ The following diagram depicts the Wallet Solution High Level Architecture.
 
 
 .. toctree::
-  :caption: Wallet Solution Table of Contents
   :maxdepth: 2
 
   wallet-solution-requirements.rst

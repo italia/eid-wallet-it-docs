@@ -5,7 +5,6 @@ Endpoints
 =========
 
 .. toctree::
-  :caption: Indice dei Contenuti degli Endpoints
   :maxdepth: 3
 
   wallet-provider-endpoint.rst

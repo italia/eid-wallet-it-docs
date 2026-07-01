@@ -713,6 +713,7 @@ header svg.icon {
 .it-header-slim-wrapper.bg-primary .it-header-lang-dropdown .nav-link.dropdown-toggle,
 .it-header-slim-wrapper.bg-primary .it-header-lang-dropdown button.nav-link.dropdown-toggle {
   color: #ffffff !important;
+  font-size: 0.875rem;
   font-weight: 400;
   padding: 0.35rem 0.25rem;
   border: none;

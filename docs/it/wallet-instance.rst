@@ -10,7 +10,6 @@ L'Istanza del Wallet stabilisce un rapporto di fiducia con i Fornitori di PID e 
 
 
 .. toctree::
-  :caption: Indice dei Contenuti dell'Istanza del Wallet
   :maxdepth: 3
 
   wallet-instance-lifecycle.rst

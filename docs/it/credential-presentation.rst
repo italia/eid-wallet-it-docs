@@ -16,7 +16,6 @@ In questa sezione vengono descritti i seguenti flussi:
 
 
 .. toctree::
-  :caption: Indice dei Contenuti della Presentazione della Credenziale
   :maxdepth: 3
 
   remote-flow.rst

@@ -18,7 +18,6 @@ Ciascuna funzionalità è descritta in dettaglio nelle sezioni seguenti.
   I dettagli forniti di seguito sono non normativi e hanno lo scopo di chiarire le funzionalità della Registrazione dell'Istanza del Wallet. L'implementazione effettiva può variare in base al caso d'uso specifico e ai requisiti del Fornitore di Wallet.
 
 .. toctree::
-  :caption: Indice delle Funzionalità dell'Istanza del Wallet
   :maxdepth: 3
 
   wallet-instance-registration.rst

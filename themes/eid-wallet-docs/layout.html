@@ -1,0 +1,250 @@
+{% extends "basic/layout.html" %}
+{%- from "components/icons.html" import icon_burger, icon_close, icon_chevron_left, icon_chevron_right, icon_expand with context -%}
+
+{%- set logo_url = pathto('_static/' ~ theme_header_logo_path, 1) if theme_header_logo_path else '' -%}
+{%- set current_lang = (language or 'en')|lower -%}
+{%- if current_lang not in ['en', 'it'] -%}
+  {%- set current_lang = 'en' -%}
+{%- endif -%}
+{%- set current_lang_short = 'EN' if current_lang == 'en' else 'ITA' -%}
+{%- set current_lang_href = pathto(pagename) -%}
+{%- set it_lang_href = current_lang_href if current_lang == 'it' else '../it/' ~ pagename ~ '.html' -%}
+{%- set en_lang_href = current_lang_href if current_lang == 'en' else '../en/' ~ pagename ~ '.html' -%}
+{%- set header_project_name = theme_header_project_name or theme_footer_project_name or project -%}
+
+{%- block body_tag -%}
+<body class="it-docs-body{% if pagename == 'index' %} it-docs-page-index{% endif %}">
+{%- endblock %}
+
+{%- block extrahead %}
+  {{ super() }}
+  <meta name="description" content="{{ docstitle|striptags|e }}">
+  <script>
+    (function () {
+      try {
+        var mode = localStorage.getItem("it-docs-brightness");
+        if (mode && /^(light|middle|black)$/.test(mode)) {
+          document.documentElement.setAttribute("data-it-docs-brightness", mode);
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }
+    })();
+  </script>
+{%- endblock %}
+
+{%- block header %}
+<nav class="it-skip-links" aria-label="{{ _('Skip links') }}">
+  <a id="skip-main" class="visually-hidden-focusable" href="#main-content">{{ _('Skip to main content') }}</a>
+  <a id="skip-footer" class="visually-hidden-focusable" href="#page-footer">{{ _('Skip to footer') }}</a>
+</nav>
+
+<header class="it-header-wrapper it-docs-header" role="banner">
+  <div class="it-header-slim-wrapper bg-primary">
+    <div class="container">
+      <div class="it-header-slim-wrapper-content d-flex justify-content-between align-items-center">
+        <span class="navbar-brand text-white" id="header-region-name">
+          <strong>{{ theme_header_org_name or shorttitle }}</strong>
+        </span>
+        <div class="it-header-slim-right-zone it-docs-slim-tools d-flex align-items-center">
+          {%- set search_variant = 'slim' -%}
+          {%- include "searchbox.html" %}
+          {%- if theme_source_url %}
+          {%- include "components/source_link.html" %}
+          {%- endif %}
+          {%- include "components/brightness_toggle.html" %}
+          <div class="nav-item dropdown it-header-lang-dropdown">
+            <button type="button"
+                    id="languagesDropButton"
+                    class="nav-link dropdown-toggle"
+                    aria-controls="language-menu"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="menu"
+                    aria-expanded="false">
+              <span id="header-lang-active-hint" class="visually-hidden">
+                {%- if current_lang == 'en' -%}
+                  {{ _('Active language:') }}
+                {%- else -%}
+                  lingua attiva:
+                {%- endif -%}
+              </span>
+              <span class="it-header-lang-label" aria-hidden="true">{{ current_lang_short }}</span>
+              {{ icon_expand() }}
+            </button>
+            <div id="language-menu" class="dropdown-menu dropdown-menu-end">
+              <div class="row">
+                <div class="col-12">
+                  <div class="link-list-wrapper">
+                    <ul class="link-list" role="menu" aria-labelledby="languagesDropButton">
+                      <li>
+                        <a class="dropdown-item list-item it-lang-option{% if current_lang == 'it' %} active{% endif %}"
+                           href="{{ it_lang_href }}"
+                           data-lang="it"
+                           role="menuitemradio"
+                           aria-checked="{{ 'true' if current_lang == 'it' else 'false' }}"
+                           {% if current_lang == 'it' %}aria-current="true"{% endif %}>
+                          <span lang="it">Italiano</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item list-item it-lang-option{% if current_lang == 'en' %} active{% endif %}"
+                           href="{{ en_lang_href }}"
+                           data-lang="en"
+                           role="menuitemradio"
+                           aria-checked="{{ 'true' if current_lang == 'en' else 'false' }}"
+                           {% if current_lang == 'en' %}aria-current="true"{% endif %}>
+                          <span lang="en">English</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="header-title-section it-docs-header-title">
+    <div class="container py-3">
+      <div class="d-flex align-items-center justify-content-between flex-nowrap">
+        <div class="it-brand-wrapper it-docs-brand-wrapper">
+          <a href="{{ pathto(root_doc)|e }}"
+             class="it-docs-brand-link d-flex align-items-center min-w-0 text-decoration-none"
+             title="{{ _('Home') }}">
+            {%- if logo_url %}
+            <img src="{{ logo_url }}" alt="" class="it-docs-logo" height="40">
+            <span class="navbar-separator it-docs-header-separator" aria-hidden="true"></span>
+            {%- endif %}
+            <span class="it-docs-header-project-name" id="header-project-name">{{ header_project_name|e }}</span>
+          </a>
+        </div>
+        <button class="custom-navbar-toggler d-lg-none it-docs-sidebar-toggler"
+                type="button"
+                data-it-docs-nav-toggle
+                data-it-docs-nav-target="#itDocsPrimaryNav"
+                aria-controls="itDocsPrimaryNav"
+                aria-expanded="false"
+                aria-label="{{ _('Open navigation') }}">
+          {{ icon_burger() }}
+          <span>{{ _('Menu') }}</span>
+        </button>
+      </div>
+      <div class="it-docs-header-mobile-tools d-lg-none">
+        {%- set search_variant = 'mobile' -%}
+        {%- include "searchbox.html" %}
+      </div>
+    </div>
+  </div>
+</header>
+{%- endblock %}
+
+{%- block relbar1 %}{% endblock %}
+
+{%- block content %}
+<div class="it-docs-layout">
+  <div class="container-fluid it-docs-container">
+    <div class="row it-docs-row">
+      <aside class="col-12 col-lg-2 it-docs-sidebar-col" aria-label="{{ _('Primary navigation') }}">
+        <div class="navbar-collapsable it-docs-primary-nav-collapsable" id="itDocsPrimaryNav">
+          <div class="overlay d-lg-none"></div>
+          <div class="close-div d-lg-none">
+            <button class="btn close-menu" type="button" aria-label="{{ _('Close navigation') }}">
+              {{ icon_close() }}
+            </button>
+          </div>
+          <div class="menu-wrapper it-docs-menu-scroll">
+            {%- block sidebar1 %}
+            {%- include "globaltoc.html" %}
+            {%- endblock %}
+          </div>
+        </div>
+      </aside>
+
+      <div class="col-12 col-lg-8 it-docs-main-col">
+        <main id="main-content" class="it-docs-main it-page-sections-container" role="main" tabindex="-1">
+          <noscript>
+            <p class="it-docs-noscript alert alert-warning" role="alert">
+              {{ _('JavaScript is required for navigation menus and some interactive features.') }}
+            </p>
+          </noscript>
+          <div class="body">
+            {% block body %}{% endblock %}
+          </div>
+
+          {%- if prev or next %}
+          <nav class="it-docs-pager d-flex flex-wrap justify-content-between gap-3 mt-5" aria-label="{{ _('Page navigation') }}">
+            <div class="it-docs-pager-prev">
+              {%- if prev %}
+              <a class="btn btn-outline-primary" href="{{ prev.link|e }}">
+                {{ icon_chevron_left('icon icon-sm me-1') }}
+                <span>{{ prev.title|striptags|e }}</span>
+              </a>
+              {%- endif %}
+            </div>
+            <div class="it-docs-pager-next ms-auto">
+              {%- if next %}
+              <a class="btn btn-primary" href="{{ next.link|e }}">
+                <span>{{ next.title|striptags|e }}</span>
+                {{ icon_chevron_right('icon icon-sm ms-1') }}
+              </a>
+              {%- endif %}
+            </div>
+          </nav>
+          {%- endif %}
+        </main>
+      </div>
+
+      <aside class="col-12 col-lg-2 it-docs-navscroll-col" aria-label="{{ _('Secondary navigation') }}">
+        <div class="it-docs-navscroll-sticky it-docs-menu-scroll">
+          {%- block sidebar2 %}
+          {%- include "navscroll.html" %}
+          {%- endblock %}
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+{%- endblock %}
+
+{%- block relbar2 %}{% endblock %}
+
+{%- block footer %}
+<footer id="page-footer" class="it-docs-footer" role="contentinfo" tabindex="-1">
+  <div class="container">
+    <div class="it-docs-footer-inner">
+      {%- include "components/footer_partners.html" -%}
+      <div class="it-docs-footer-meta">
+        <p class="it-docs-footer-project">{{ theme_footer_project_name or project }}</p>
+        {%- if theme_footer_org_name %}
+        <p class="it-docs-footer-org">{{ theme_footer_org_name }}</p>
+        {%- endif %}
+        <p class="it-docs-footer-details">
+          {%- if version -%}
+          <span class="it-docs-footer-detail">{{ _('Version') }} {{ version|e }}</span>
+          {%- endif -%}
+          {%- if last_updated -%}
+          <span class="it-docs-footer-detail">{% trans last_updated=last_updated|e %}Last updated {{ last_updated }}{% endtrans %}</span>
+          {%- endif -%}
+          {%- if show_sphinx -%}
+          <span class="it-docs-footer-detail">
+            {% trans sphinx_version=sphinx_version|e %}Sphinx {{ sphinx_version }}{% endtrans %}
+          </span>
+          {%- endif -%}
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+{%- endblock %}
+
+{%- include "components/back_to_top.html" %}
+
+{%- block scripts %}
+{{ super() }}
+<script src="{{ pathto('_static/shared-ui/js/jquery-3.7.0.min.js', 1) }}"></script>
+<script src="{{ pathto('_static/shared-ui/js/ita.min.js', 1) }}"></script>
+<script src="{{ pathto('_static/shared-ui/js/bootstrap-italia.bundle.min.js', 1) }}"></script>
+<script src="{{ pathto('_static/js/eid-wallet-docs.js', 1) }}"></script>
+{%- endblock %}
