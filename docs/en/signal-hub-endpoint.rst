@@ -20,7 +20,7 @@ In the context of the IT Wallet, Authentic Sources interact with the Signal Hub 
   - the Credential Issuer will retrieve Signals from the Signal Hub, and will thus play the role of e-Service PDNDConsumer of the Signal Distribution e-Service.
 
 .. note::
-  In the context of IT Wallet, due to the particular nature of the data exchanged, the pseudonymization of the Signal's subject is not needed since it is already an opaque identifier unrelated to the Digial Credential's subject. Thus, the Authentic Source does not need to set up a pseudonymization endpoint for its e-Services.
+  In the context of IT Wallet, due to the particular nature of the data exchanged, the pseudonymization of the Signal's subject is not needed since it is already an opaque identifier unrelated to the Digital Credential's subject. Thus, the Authentic Source does not need to set up a pseudonymization endpoint for its e-Services.
 
 Authentic Sources that leverage PDND MUST use the Signal Hub e-Services.
 
@@ -81,7 +81,7 @@ The Signal Collection e-Service endpoint is used by Authentic Sources to deposit
     - REQUIRED. e-Service to which the Signal is bound. It MUST correspond to the e-Service Id value the Authentic Source is a Provider of.
 
 .. note::
-  In the deffered issuance flow, i.e., when the Authentic Source notifies the Credential Issuer of the availability of the Digital Credential's attributes via Signal Hub; both entities MUST keep track of the Authentic Source's ``object_id`` value used in the ``get attributes`` payload response. This is necessary since the ``objectId`` of the Signal MUST be set to that ``object_id`` value when the Signal has ``signalType`` with value ``CREATE``.
+  In the deferred issuance flow, i.e., when the Authentic Source notifies the Credential Issuer of the availability of the Digital Credential's attributes via Signal Hub; both entities MUST keep track of the Authentic Source's ``object_id`` value used in the ``get attributes`` payload response. This is necessary since the ``objectId`` of the Signal MUST be set to that ``object_id`` value when the Signal has ``signalType`` with value ``CREATE``.
 
 A non-normative example of the Signal Collection request can be found at `Signal Hub push`_.
 

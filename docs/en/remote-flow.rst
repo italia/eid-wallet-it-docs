@@ -437,7 +437,7 @@ The request and its parameters are defined in Section 5 (Authorization Request) 
    * - `client_id_prefixes_supported`
      - RECOMMENDED. A non-empty array of the Client Identifier Prefixes that the Wallet Instance supports.  Valid values include ``openid_federation`` and ``x509_hash``; if omitted, the default is ``pre-registered``.
    * - `authorization_endpoint`
-     - URL of the authorization server's endpoint, see `OAUTH2`_. Using an universal link is preferable for enhanced security and fallback support, custom url schemes can also be used if necessary.
+     - URL of the authorization server's endpoint, see `OAUTH2`_. Using a universal link is preferable for enhanced security and fallback support, custom url schemes can also be used if necessary.
    * - `response_types_supported`
      - OPTIONAL. JSON array of OAuth 2.0 ``response_type`` values. If present it MUST be set to ``vp_token`` (:ref:`RPR-82 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`).
    * - `response_modes_supported`
@@ -695,7 +695,7 @@ Below is a non-normative example of an Authorization Error Response.
   error_description=...
 
 .. warning::
-  The current OpenID4VP specification outlines various error responses that a Wallet Instance may return to the Relying Party (Verifier) in case of faulty requests. For privacy enhancement, Wallet Instances SHOULD NOT notify the Relying Party of faulty requests in certain scenarios. This is to prevent any potential misuse of error responses that could lead to gather informations that could be exploited.
+  The current OpenID4VP specification outlines various error responses that a Wallet Instance may return to the Relying Party (Verifier) in case of faulty requests. For privacy enhancement, Wallet Instances SHOULD NOT notify the Relying Party of faulty requests in certain scenarios. This is to prevent any potential misuse of error responses that could lead to gather information that could be exploited.
 
 In the following table are listed error codes and descriptions that are supported for the Authorization Error Response:
 
@@ -881,7 +881,7 @@ The following table lists the HTTP Status Codes and related error codes that MUS
       - The User session is invalid or expired.
     * - ``500 Internal Server Error``
       - ``server_error``
-      - The request cannot be fulfilled due to an intenal server error. (:rfc:`6749#section-4.1.2.1`).
+      - The request cannot be fulfilled due to an internal server error. (:rfc:`6749#section-4.1.2.1`).
     * - ``503 Service Unavailable``
       - ``temporarily_unavailable``
       - The request cannot be fulfilled because the service is temporarily unavailable (e.g., due to maintenance or overload). (:rfc:`6749#section-4.1.2.1`).

@@ -259,7 +259,7 @@ Authentic Sources using PDND MUST use Signal Hub as the only notification update
 
 In both cases, the Signal MUST have ``signalType`` set to ``UPDATE``.
 
-Credential Issuers MUST check the PDND Signal Hub :ref:`signal-hub-endpoint:Signal Distribution e-Service` periodically for new Signals. For the Signal processing flow, please refer to the Section :ref:`signal-hub-endpoint:Signals Processing`. The Credential Issuer is able to identify the nature of the ``UPDATE`` Signal by quering the Authentic Source `get attribute` API and inspecting the response payload, as described in Section :ref:`authentic-source-endpoint:Get Attribute Claims`.
+Credential Issuers MUST check the PDND Signal Hub :ref:`signal-hub-endpoint:Signal Distribution e-Service` periodically for new Signals. For the Signal processing flow, please refer to the Section :ref:`signal-hub-endpoint:Signals Processing`. The Credential Issuer is able to identify the nature of the ``UPDATE`` Signal by querying the Authentic Source `get attribute` API and inspecting the response payload, as described in Section :ref:`authentic-source-endpoint:Get Attribute Claims`.
 
 The following diagram illustrates the high-level status update process for Authentic Sources.
 
@@ -345,7 +345,7 @@ The Issuer of a Digital Credential MUST use the following values for possible St
 
 For example, if five states for a certain Digital Credential are possible, then k=4. If the Credential Issuer creates an array to store the statuses of 6 Digital Credentials, whose validity statuses are 0, 0, 0, 3, 1, 2, respectively; it will:
 
-  - create the bit array ``[0, 0, 0, 0, 0, 0, 0, 0; 0, 0, 1, 1, 0, 0, 0, 0; 0, 0, 1, 0, 0, 0, 0, 1]`` which in exadecimal notation generates the byte array ``[0x00, 0x30, 0x21]``.
+  - create the bit array ``[0, 0, 0, 0, 0, 0, 0, 0; 0, 0, 1, 1, 0, 0, 0, 0; 0, 0, 1, 0, 0, 0, 0, 1]`` which in hexadecimal notation generates the byte array ``[0x00, 0x30, 0x21]``.
   - compress the array using DEFLATE.
 
 .. note::
@@ -353,7 +353,7 @@ For example, if five states for a certain Digital Credential are possible, then 
 
 .. note::
   The main privacy consideration for a Status List is to prevent the Issuer from tracking the usage of the Digital Credential when the status is being checked. If a Credential Issuer offers status information by referencing a specific token, this would enable the Credential Issuer to create a profile for the issued token by correlating the date and identity of Relying Parties, that are requesting the status. Implementations MUST therefore integrate the status information of many Digital Credentials into the same list. As a result, the Issuer does not learn for which Digital Credential the Relying Party is requesting the Status List. The privacy of the User is protected by the anonymity within the set of Digital Credential in the Status List, this limits the possibilities of tracking by the Issuer.
-  This herd privacy effect depends on the number of entities within the Status List. A larger amount of Digial Credentials referenced therein results in better privacy but also impacts the performance as more data has to be transferred to read the Status List. Depending on the Status List parameters (e.g. the amounts of bits designating the Credential values), Credential Issuers have to strike an appropriate balance between privacy and performance.
+  This herd privacy effect depends on the number of entities within the Status List. A larger amount of Digital Credentials referenced therein results in better privacy but also impacts the performance as more data has to be transferred to read the Status List. Depending on the Status List parameters (e.g. the amounts of bits designating the Credential values), Credential Issuers have to strike an appropriate balance between privacy and performance.
 
 Once the Relying Party receives a Digital Credential, this enables it to request the Status List to validate its status through the provided URI parameter and look up the corresponding index. However, the Relying Party is able to store the URI and index of the Digital Credential to request the Status List again at a later time. By doing so regularly, the Relying Party may create a profile of the Digital Credential's validity status. This behaviour might also be abused in cases where this is not intended and unknown to the User, e.g. profiling the suspension of a driving license. This behaviour could be mitigated e.g., by regular re-issuance of the Digital Credential.
 
@@ -410,7 +410,7 @@ The Status List Token is available at the Status List Endpoint and contains the 
     - `TOKEN-STATUS-LIST`_
 
 .. note::
-  It is RECOMMENDED that the Credential Issuer sets the ``exp`` claim so that the Status List Token is short-lived. Typically, this involves the ``exp`` claim not to exeed the ``iat`` claim by more than 24 hours.
+  It is RECOMMENDED that the Credential Issuer sets the ``exp`` claim so that the Status List Token is short-lived. Typically, this involves the ``exp`` claim not to exceed the ``iat`` claim by more than 24 hours.
 
 A JSON-encoded Status List has the following structure:
 

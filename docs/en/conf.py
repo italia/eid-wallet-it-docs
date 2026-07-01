@@ -4,7 +4,7 @@
 settings_project_name = "IT-Wallet Technical Specifications"
 # settings_copyright_copyleft = 'Dipartimento per la Trasformazione Digitale'
 settings_editor_name = 'Dipartimento per la Trasformazione Digitale'
-settings_doc_version = '1.4.2'
+settings_doc_version = '1.4.3'
 settings_doc_release = "versione-corrente"
 settings_basename = 'eid-wallet-it-docs'
 settings_file_name = 'eid-wallet-it-docs'
@@ -268,7 +268,7 @@ latex_elements = {
         \setlength{\headheight}{14pt}
         \addtolength{\topmargin}{-2pt}
         
-        % -- Geometry settings (note that sphinx already include Geomerty pkg) --
+        % -- Geometry settings (note that sphinx already include Geometry pkg) --
         \geometry{margin=2.5cm,top=3cm,bottom=3cm}
         
         % -- handling overfull/underfull --
@@ -286,7 +286,7 @@ latex_elements = {
         % -- prevent too big dim  --
         \maxdimen=16383.99999pt
         
-        % -- improvment space interruption --
+        % -- improvement space interruption --
         \widowpenalty=10000
         \clubpenalty=10000
         \brokenpenalty=10000
@@ -357,7 +357,7 @@ latex_elements = {
         }
         \makeatother
 
-        % -- Improvment for long verbatim  --
+        % -- Improvement for long verbatim  --
         \makeatletter
         \def\sphinx@verbatim@space{\leavevmode\kern.5\fontdimen2\font}
         \makeatother

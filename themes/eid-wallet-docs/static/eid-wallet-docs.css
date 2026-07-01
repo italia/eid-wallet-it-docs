@@ -2208,9 +2208,28 @@ html[data-it-docs-brightness="black"] .it-docs-search-help {
   color: var(--it-docs-content-muted);
 }
 
-/* Back to top — Bootstrap Italia component; raise z-index above page content */
+/* Back to top — Bootstrap Italia component; inline SVG icon (sprite <use> is unreliable) */
 .it-docs-back-to-top.back-to-top {
   z-index: 1040;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.it-docs-back-to-top.back-to-top .it-docs-back-to-top-icon {
+  margin: 0;
+  position: static;
+  top: auto;
+  transform: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  color: #fff;
+}
+
+.it-docs-back-to-top.back-to-top .it-docs-back-to-top-icon path {
+  fill: currentColor;
 }
 
 html[data-it-docs-brightness="middle"] .it-docs-back-to-top.back-to-top,
@@ -2223,7 +2242,7 @@ html[data-it-docs-brightness="black"] .it-docs-back-to-top.back-to-top:hover {
   background: rgb(234.7785, 235.96425, 237.15);
 }
 
-html[data-it-docs-brightness="middle"] .it-docs-back-to-top.back-to-top .icon,
-html[data-it-docs-brightness="black"] .it-docs-back-to-top.back-to-top .icon {
+html[data-it-docs-brightness="middle"] .it-docs-back-to-top.back-to-top .it-docs-back-to-top-icon,
+html[data-it-docs-brightness="black"] .it-docs-back-to-top.back-to-top .it-docs-back-to-top-icon {
   color: hsl(210, 25%, 35.2%);
 }

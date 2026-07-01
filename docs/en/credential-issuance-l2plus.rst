@@ -32,7 +32,7 @@ System Architecture
 The system architecture comprises the following main components:
 
 	- **Wallet Instance:** It handles the PID request according to IT-Wallet Specification, supporting additional cryptographic capabilities for MRTD/IAS Electronic Document reading according to `ICAO 9303`_ and `BSI-03110`_ specifications.
-	- **eID Substantial Authentication with MRTD Verification System:** Orchestrates the authentication flow, integrating LoA3 Identity Providers, Electronic Document Verification Service, and performing all the identity correlation checks to guarantee that the User requesting a PID mathes with the authenticated one.
+	- **eID Substantial Authentication with MRTD Verification System:** Orchestrates the authentication flow, integrating LoA3 Identity Providers, Electronic Document Verification Service, and performing all the identity correlation checks to guarantee that the User requesting a PID matches with the authenticated one.
 
 		- **PID Authorization Server:** Handles the authorization flow for PID Issuance, coordinating the User authentication and the remote identity proofing.
 		- **MRTD PoP Service:** Handles electronic document proof of possession with cryptographic document validation.

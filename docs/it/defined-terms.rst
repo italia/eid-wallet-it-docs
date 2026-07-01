@@ -504,7 +504,7 @@ Conformemente agli RFC 2119 e 8174 le seguenti parole chiave solamente quando ap
 
   - DEVE/DEVONO: indicano un requisito che è necessario soddisfare.
   - NON DEVE/NON DEVONO: indicano un divieto assoluto.
-  - PUO'/POSSONO: indicano un requisito opzionale, ovvero si può scegliere di soddisfarlo o meno senza alcun tipo di implicazione.
+  - PUÒ/POSSONO: indicano un requisito opzionale, ovvero si può scegliere di soddisfarlo o meno senza alcun tipo di implicazione.
   - DOVREBBE/DOVREBBERO/RACCOMANDATO: indicano un requisito consigliato/raccomandato, ovvero si devono tenere in considerazione tutte le implicazioni derivanti da una eventuale scelta alternativa.
   - NON DOVREBBE/NON DOVREBBERO/NON RACCOMANDATO: indicano un requisito che non è consigliato/raccomandato, ovvero si devono tenere in considerazione tutte le implicazioni derivanti dalla eventuale scelta di applicare comunque il requisito.
   - OBBLIGATORIO: necessario

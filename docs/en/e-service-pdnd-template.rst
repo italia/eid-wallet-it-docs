@@ -123,7 +123,7 @@ The template e-service **MUST** adhere to the following specifications:
     - **Voucher Time Limit**: 20
     - **Suggest custom threshold**: False
     - **Suggest manual agreement approval policy**: False
-    - **Attributes**: <``Offcial name of the Credential Issuer Public Authority``>
+    - **Attributes**: <``Official name of the Credential Issuer Public Authority``>
 
 Authentic Source Template Instantiation
 """"""""""""""""""""""""""""""""""""""""

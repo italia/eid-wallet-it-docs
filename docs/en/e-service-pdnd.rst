@@ -1179,7 +1179,7 @@ The e-Service Request MUST include the following HTTP header parameters (unless 
     - Voucher released by the PDND Authorization Server.
     - [:rfc:`9449`], [`MODI`_], [`PDND`_]
   * - **DPoP**
-    - DPoP proof JWT, to comply with the ``REST_JWS_2021_POP`` security pattern. Is is mandatory only when following the ``POP_DPoP`` implementation.
+    - DPoP proof JWT, to comply with the ``REST_JWS_2021_POP`` security pattern. It is mandatory only when following the ``POP_DPoP`` implementation.
     - [:rfc:`9449`], [`PDND`_]
   * - **Agid-JWT-Signature**
     - JWT containing the signature of the message headers whose integrity needs to be guaranteed, to comply with the ``INTEGRITY_REST_02`` security pattern.
