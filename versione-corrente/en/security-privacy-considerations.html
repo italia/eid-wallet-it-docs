@@ -452,7 +452,7 @@ where a list of mitigations from [<a class="reference external" href="https://da
 </tbody>
 </table>
 <p>A prerequisite for a successful attack of this kind is that the attacker has access to some messages between the Wallet and the Verifier, for example,
-the attacker might have access to the presentation contained in the VP Token. Given that, the proper implementation of TLS guarrantes confidentiality, avoiding the leakage of the response.
+the attacker might have access to the presentation contained in the VP Token. Given that, the proper implementation of TLS guarantees confidentiality, avoiding the leakage of the response.
 In addition to TLS, the existing implementation of <strong>nonce</strong> and audience checks in the presentation protocol should help to meet the P-41 security requirement.
 Regarding the <strong>nonce</strong> claim, the Verifier MUST check that the <strong>nonce</strong> value in the VP Token matches the <strong>nonce</strong> value that is created by the Verifier during the authorization request.
 Regarding the <strong>aud</strong> value, the Verifier must check that the audience of the presentation matches the Verifier's identifier.</p>
@@ -492,7 +492,7 @@ as shown for example in this <a class="reference external" href="https://www.tuv
 </tr>
 </tbody>
 </table>
-<p>Verifier checks the Wallet Attestation during exchanges (sent with the authorization response), ensuring that it meets the security criteria required by the Verifier and is under the sole responsability of its issuer, the trusted Wallet Provider.</p>
+<p>Verifier checks the Wallet Attestation during exchanges (sent with the authorization response), ensuring that it meets the security criteria required by the Verifier and is under the sole responsibility of its issuer, the trusted Wallet Provider.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Currently, no explicit security and privacy measures related to this requirement are specified in [<a class="reference external" href="https://openid.github.io/OpenID4VC_SecTrust/draft-oid4vc-security-and-trust.html">OpenID4VC-SecTrust</a>] and it is not clearly defined what ^stored in a secure Wallet^ means. Without this detail, this requirement is considered only partially satisfied. Indeed, the Wallet Attestation guarantees
@@ -896,7 +896,7 @@ In addition, privacy-preserving Status List mechanism ensure that while the Veri
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 30/06/2026.
+      Last updated on 01/07/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

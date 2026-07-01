@@ -215,7 +215,7 @@ The <a class="reference internal" href="defined-terms.html#term-User"><span clas
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The work factor for PBKDF2 is implemented through an iteration count, which should set differently based on the internal hashing algorithm used. The recommended value for <code class="docutils literal notranslate"><span class="pre">SHA-256</span></code> hashing algorithim is 600000 iterations as stated in the <a class="reference external" href="https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#pbkdf2">OWASP Password Storage Cheatsheet</a> (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_121a</span></a>).</p>
+<p>The work factor for PBKDF2 is implemented through an iteration count, which should set differently based on the internal hashing algorithm used. The recommended value for <code class="docutils literal notranslate"><span class="pre">SHA-256</span></code> hashing algorithm is 600000 iterations as stated in the <a class="reference external" href="https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#pbkdf2">OWASP Password Storage Cheatsheet</a> (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_121a</span></a>).</p>
 </div>
 <p><strong>Step 4</strong>: The <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> performs the operations below to create the backup JWT entry for the backup file (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_122</span></a>).</p>
 <ul class="simple">
@@ -298,7 +298,7 @@ The <a class="reference internal" href="defined-terms.html#term-User"><span clas
 <td><p>It MUST be set to a value containing the <a class="reference internal" href="defined-terms.html#term-Wallet-Instance-Attestation"><span class="xref std std-term">Wallet Instance Attestation</span></a> JWT.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>credentials_backup</strong></p></td>
-<td><p>Object that describes specifics of the:term:<cite>Credential</cite> that are backupped. This object contains a list of name/value pairs, where each name is a unique identifier of the <a class="reference internal" href="defined-terms.html#term-Credential-Issuer"><span class="xref std std-term">Credential Issuer</span></a>. This identifier is used to initiate the issuance phase. The value is an array of unique strings. Each string corresponds to the <code class="docutils literal notranslate"><span class="pre">credential_configuration_id</span></code> that identifies the specific:term:<cite>Digital Credential</cite> that was issued.</p></td>
+<td><p>Object that describes specifics of the:term:<cite>Credential</cite> that are backed up. This object contains a list of name/value pairs, where each name is a unique identifier of the <a class="reference internal" href="defined-terms.html#term-Credential-Issuer"><span class="xref std std-term">Credential Issuer</span></a>. This identifier is used to initiate the issuance phase. The value is an array of unique strings. Each string corresponds to the <code class="docutils literal notranslate"><span class="pre">credential_configuration_id</span></code> that identifies the specific:term:<cite>Digital Credential</cite> that was issued.</p></td>
 </tr>
 </tbody>
 </table>
@@ -378,7 +378,7 @@ To check the authenticity of the file, the <a class="reference internal" href="d
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 30/06/2026.
+      Last updated on 01/07/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

@@ -938,7 +938,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 <td><p><span class="target" id="index-34"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html#section_3"><strong>RFC 7638#section_3</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>typ</strong></p></td>
-<td><p>OBBLIGATORIO. Deve essere impostato su <code class="docutils literal notranslate"><span class="pre">key-attestation+jwt</span></code></p></td>
+<td><p>OBBLIGATORIO. DEVE essere impostato su <code class="docutils literal notranslate"><span class="pre">key-attestation+jwt</span></code></p></td>
 <td><p><a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-06.html">OPENID4VC-HAIP</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>trust_chain</strong></p></td>
@@ -984,10 +984,10 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 <tr class="row-even"><td><p><strong>key_storage</strong></p></td>
 <td><p>OBBLIGATORIO. Un array non vuoto di stringhe sensibili alle maiuscole che dichiarano la resistenza al potenziale di attacco del componente di archiviazione delle chiavi e delle chiavi attestate nel parametro <code class="docutils literal notranslate"><span class="pre">attested_keys</span></code>. I seguenti valori sono definiti come possibili valori per questa dichiarazione claim:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">iso_18045_high</span></code>: Deve essere utilizzato quando l'archiviazione delle chiavi è resistente ad attacchi con potenziale di attacco <code class="docutils literal notranslate"><span class="pre">High</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">iso_18045_moderate</span></code>: Deve essere utilizzato quando l'archiviazione delle chiavi è resistente ad attacchi con potenziale di attacco  <code class="docutils literal notranslate"><span class="pre">Moderate</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">iso_18045_enhanced-basic</span></code>: Deve essere utilizzato quando l'archiviazione delle chiavi è resistente ad attacchi con potenziale di attacco  <code class="docutils literal notranslate"><span class="pre">Enhanced-Basic</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">iso_18045_basic</span></code>: Deve essere utilizzato quando l'archiviazione delle chiavi è resistente ad attacchi con potenziale di attacco  <code class="docutils literal notranslate"><span class="pre">Basic</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iso_18045_high</span></code>: DEVE essere utilizzato quando l'archiviazione delle chiavi è resistente ad attacchi con potenziale di attacco <code class="docutils literal notranslate"><span class="pre">High</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iso_18045_moderate</span></code>: DEVE essere utilizzato quando l'archiviazione delle chiavi è resistente ad attacchi con potenziale di attacco  <code class="docutils literal notranslate"><span class="pre">Moderate</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iso_18045_enhanced-basic</span></code>: DEVE essere utilizzato quando l'archiviazione delle chiavi è resistente ad attacchi con potenziale di attacco  <code class="docutils literal notranslate"><span class="pre">Enhanced-Basic</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iso_18045_basic</span></code>: DEVE essere utilizzato quando l'archiviazione delle chiavi è resistente ad attacchi con potenziale di attacco  <code class="docutils literal notranslate"><span class="pre">Basic</span></code>.</p></li>
 </ul>
 </td>
 <td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>.</p></td>
@@ -995,10 +995,10 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 <tr class="row-odd"><td><p><strong>user_authentication</strong></p></td>
 <td><p>OBBLIGATORIO. Un array non vuoto di stringhe sensibili alle maiuscole che dichiarano la resistenza al potenziale di attacco dei metodi di autenticazione utente autorizzati ad accedere alle chiavi private dal parametro attested_keys. I seguenti valori sono definiti come possibili valori per questa dichiarazione claim:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">iso_18045_high</span></code>: Deve essere utilizzato quando l'autenticazione dell'utente è resistente ad attacchi con potenziale di attacco <code class="docutils literal notranslate"><span class="pre">High</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">iso_18045_moderate</span></code>: Deve essere utilizzato quando l'autenticazione dell'utente è resistente ad attacchi con potenziale di attacco <code class="docutils literal notranslate"><span class="pre">Moderate</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">iso_18045_enhanced-basic</span></code>: Deve essere utilizzato quando l'autenticazione dell'utente è resistente ad attacchi con potenziale di attacco <code class="docutils literal notranslate"><span class="pre">Enhanced-Basic</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">iso_18045_basic</span></code>: Deve essere utilizzato quando l'autenticazione dell'utente è resistente ad attacchi con potenziale di attacco <code class="docutils literal notranslate"><span class="pre">Basic</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iso_18045_high</span></code>: DEVE essere utilizzato quando l'autenticazione dell'utente è resistente ad attacchi con potenziale di attacco <code class="docutils literal notranslate"><span class="pre">High</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iso_18045_moderate</span></code>: DEVE essere utilizzato quando l'autenticazione dell'utente è resistente ad attacchi con potenziale di attacco <code class="docutils literal notranslate"><span class="pre">Moderate</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iso_18045_enhanced-basic</span></code>: DEVE essere utilizzato quando l'autenticazione dell'utente è resistente ad attacchi con potenziale di attacco <code class="docutils literal notranslate"><span class="pre">Enhanced-Basic</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iso_18045_basic</span></code>: DEVE essere utilizzato quando l'autenticazione dell'utente è resistente ad attacchi con potenziale di attacco <code class="docutils literal notranslate"><span class="pre">Basic</span></code>.</p></li>
 </ul>
 </td>
 <td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>.</p></td>
@@ -1169,7 +1169,7 @@ Un Fornitore di Attestati Elettronici di Dati di Identificazione Personale che �
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 30/06/2026.
+      Ultimo aggiornamento 01/07/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

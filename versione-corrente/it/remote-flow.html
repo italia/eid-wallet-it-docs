@@ -249,8 +249,8 @@ Queste informazioni DOVREBBERO essere fornite dall'Utente utilizzando la Selecti
 <p>Di seguito è riportato un diagramma di sequenza che dettaglia le interazioni tra tutte le parti coinvolte.</p>
 <figure class="align-default" id="id2">
 <p class="plantuml">
-<object data="_images/plantuml-cbacc3672c6c707b149e910099e3f6afad2308d9.svg" type="image/svg+xml" style="width:99%">
-<a href="_images/plantuml-cbacc3672c6c707b149e910099e3f6afad2308d9.png"><img src="_images/plantuml-cbacc3672c6c707b149e910099e3f6afad2308d9.png" alt="La figura illustra il Flusso Remoto." style="width: 99.0%"/></a>
+<object data="_images/plantuml-4fec61cbc9cd13a365548ac6830884590973ac06.svg" type="image/svg+xml" style="width:99%">
+<a href="_images/plantuml-4fec61cbc9cd13a365548ac6830884590973ac06.png"><img src="_images/plantuml-4fec61cbc9cd13a365548ac6830884590973ac06.png" alt="La figura illustra il Flusso Remoto." style="width: 99.0%"/></a>
 
 </object></p>
 <figcaption>
@@ -590,7 +590,7 @@ La richiesta e i suoi parametri sono definiti nella Sezione 5 (Authorization Req
 <td><p>RACCOMANDATO. Un array non vuoto dei prefissi dell’identificatore del Client supportati dall’Istanza del Wallet. I valori validi includono <code class="docutils literal notranslate"><span class="pre">openid_federation</span></code> e <code class="docutils literal notranslate"><span class="pre">x509_hash</span></code>; se omesso, il valore predefinito è pre-registrato.</p></td>
 </tr>
 <tr class="row-even"><td><p><cite>authorization_endpoint</cite></p></td>
-<td><p>URL dell'endpoint del server di autorizzazione, vedi <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc6749">OAUTH2</a>. L'utilizzo di un link universale è preferibile per una sicurezza migliorata e supporto di fallback, <em>URL schems</em> personalizzati possono anche essere utilizzati se necessario.</p></td>
+<td><p>URL dell'endpoint del server di autorizzazione, vedi <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc6749">OAUTH2</a>. L'utilizzo di un link universale è preferibile per una sicurezza migliorata e supporto di fallback, <em>URL schemes</em> personalizzati possono anche essere utilizzati se necessario.</p></td>
 </tr>
 <tr class="row-odd"><td><p><cite>response_types_supported</cite></p></td>
 <td><p>OPZIONALE. Array JSON di valori &quot;response_type&quot; di OAuth 2.0. Se presente DEVE essere impostato su <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> (<a class="reference internal" href="test-plans-remote-presentation.html#matrice-di-test-per-il-verificatore-di-credenziali-in-remoto"><span class="std std-ref">RPR-82</span></a>).</p></td>
@@ -900,10 +900,10 @@ Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo
 <section id="errori-della-authorization-response">
 <h3><span class="section-number">12.2.1.5.1. </span>Errori della Authorization Response<a class="headerlink" href="#errori-della-authorization-response" title="Link to this heading">¶</a></h3>
 <p>Ci sono casi in cui l'Istanza del Wallet non può convalidare il Request Object o il Request Object risulta non valido. Questo errore si verifica se il Request Object viene recuperato con successo dall'url fornito nel parametro <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> ma non supera i controlli di convalida. Ciò potrebbe essere dovuto a firme errate, claim non conformim o altri errori di convalida, come la revoca della trust per la specifica Relying Party che lo ha emesso.</p>
-<p>Se l'Istanza del Wallet incontra tali errori durante la valutazione della Authorization Request, DEVE notificare alla Relying Party inviando una <em>Error Response</em> nella <em>Autorization Response</em> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_090</span></a>).
-L'Istanza del Wallet invia la <em>Error Response</em> nella <em>Autorization Response</em> all'endpoint <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> della Relying Party utilizzando una richiesta HTTP POST (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_090</span></a>).
+<p>Se l'Istanza del Wallet incontra tali errori durante la valutazione della Authorization Request, DEVE notificare alla Relying Party inviando una <em>Error Response</em> nella <em>Authorization Response</em> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_090</span></a>).
+L'Istanza del Wallet invia la <em>Error Response</em> nella <em>Authorization Response</em> all'endpoint <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> della Relying Party utilizzando una richiesta HTTP POST (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_090</span></a>).
 Questa <em>Error Response</em> DEVE essere codificata nel corpo della richiesta utilizzando il formato definito dal tipo di contenuto <code class="docutils literal notranslate"><span class="pre">application/x-www-form-urlencoded</span></code>.</p>
-<p>Di seguito è riportato un esempio non normativo di una <em>Error Response</em> nella <em>Autorization Response</em>.</p>
+<p>Di seguito è riportato un esempio non normativo di una <em>Error Response</em> nella <em>Authorization Response</em>.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/response_uri</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">HOST</span><span class="o">:</span> <span class="l">relying-party.example.org</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/x-www-form-urlencoded</span>
@@ -917,7 +917,7 @@ Questa <em>Error Response</em> DEVE essere codificata nel corpo della richiesta 
 <p class="admonition-title">Avvertimento</p>
 <p>L'attuale specifica OpenID4VP delinea varie risposte di errore che un'Istanza del Wallet può restituire alla Relying Party in caso di <em>Authorization Request</em> errata. Per migliorare la privacy, le Istanze del Wallet NON DOVREBBERO notificare alla Relying Party le richieste errate qualora un uso improprio delle risposte di errore potrebbe portare a raccogliere informazioni lesive della privacy dell'Utente (ad esempio, se l'Utente decide di non voler presentare l'Attestato Elettronico richiesto).</p>
 </div>
-<p>Nella seguente tabella sono elencati gli <em>Error codes</em> e le descrizioni che sono supportati per la <em>Error Response</em> nella <em>Autorization Response</em>:</p>
+<p>Nella seguente tabella sono elencati gli <em>Error codes</em> e le descrizioni che sono supportati per la <em>Error Response</em> nella <em>Authorization Response</em>:</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 25.0%" />
@@ -1210,7 +1210,7 @@ della richiesta DOVREBBE includere un parametro con un valore casuale. La rispos
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 30/06/2026.
+      Ultimo aggiornamento 01/07/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

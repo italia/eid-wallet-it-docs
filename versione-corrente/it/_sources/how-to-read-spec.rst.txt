@@ -1,4 +1,5 @@
 .. include:: ../common/common_definitions.rst
+.. Incluso tramite introduction.rst al livello di titolo '-' (livello 1).
 
 Come leggere le Specifiche
 --------------------------
@@ -50,7 +51,6 @@ La specifica è organizzata nelle seguenti sezioni principali:
 Percorsi di lettura per ruolo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
 Per facilitare la consultazione degli argomenti trattati in queste specifiche, di seguito sono riportati percorsi di lettura organizzati per ruolo. Ogni percorso è strutturato in base alle diverse fasi di adesione e partecipazione al Sistema IT-Wallet e contiene riferimenti diretti alle sezioni più rilevanti per ciascun ruolo.
 
 I percorsi di lettura proposti hanno finalità orientativa e non sostituiscono la necessità di consultare le altre sezioni quando è richiesta una comprensione più ampia del sistema.
@@ -78,9 +78,7 @@ Comprendere il funzionamento generale dell’ecosistema, l’architettura tecnic
 
 Comprendere i requisiti e progettare gli aspetti, le funzionalità e le caratteristiche specifiche del (Q)EAA da emettere.
 
-
 - **Sezione** :ref:`functionalities:Design dell'Esperienza Utente`: Requisiti chiave relativi alle modalità con cui consentire agli Utenti di ottenere i (Q)EAA, alla struttura dei (Q)EAA, al loro stato e alla loro gestione nel tempo.
-
 
 - **Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`: Requisiti tecnici e funzionali relativi al ciclo di vita dei (Q)EAA.
 
@@ -173,7 +171,6 @@ Registrarsi al sistema come Fornitore di Wallet, completando le procedure ammini
 - **Sezione** :ref:`x5c-evaluation:Operazioni di Gestione dei Certificati X.509`: Procedure operative per la gestione dei certificati X.509 nell’ambito della federazione IT-Wallet.
 
 
-
 Fornitore di Attestati Elettronici
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -255,14 +252,11 @@ Comprendere i requisiti di Esperienza Utente e progettare le funzionalità di ve
 
 - **Sezione** :ref:`functionalities:Design dell'Esperienza Utente`: Requisiti chiave relativi ai modelli di interazione, ai layout delle interfacce e agli asset grafici, al fine di garantire un’esperienza utente efficace, fluida e assicurare coerenza tra i sistemi di presentazione e verifica.
 
-
 - **Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`: Requisiti tecnici e funzionali relativi al ciclo di vita dei (Q)EAA.
-
 
 **Fase 3: Implementazione**
 
 Implementare le funzionalità di verifica secondo specifici protocolli, al fine di inviare richieste di verifica al Wallet e ricevere una risposta con l’autorizzazione dell’Utente.
-
 
 - **Sezione** :ref:`relying-party-solution:Soluzione di Relying Party`: Requisiti tecnici e funzionali relativi ai componenti e alle funzionalità per la verifica del PID e dei (Q)EAA.
 
@@ -285,5 +279,3 @@ Registrarsi al sistema come Relying Party, completando le procedure amministrati
 - **Sezione** :ref:`entity-onboarding:Onboarding delle Entità`: Approfondimento sulle procedure tecniche per la registrazione della Relying Party.
 
 - **Sezione** :ref:`x5c-evaluation:Operazioni di Gestione dei Certificati X.509`: Procedure operative per la gestione dei certificati X.509 nell’ambito della federazione IT-Wallet.
-
-

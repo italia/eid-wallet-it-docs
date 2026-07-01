@@ -1,3 +1,6 @@
+.. include:: ../common/common_definitions.rst
+.. Included via introduction.rst at title level '-' (level 1).
+
 How to Read the Specification
 -----------------------------
 

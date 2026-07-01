@@ -279,7 +279,6 @@ Il JWT della richiesta include le seguenti claim nel body:
 
 Di seguito è riportato un esempio non normativo dell'intestazione e del payload del JWT della Wallet Instance Attestation Request.
 
-
 .. code-block:: json
 
     {
@@ -477,6 +476,7 @@ Di seguito è riportato un esempio non normativo dell'header e del payload della
 
 
 
+
 Endpoint di Emissione della Key Attestation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -504,7 +504,6 @@ Di seguito è riportato un esempio non normativo di una Key Attestation Request.
     }
 
 In particolare, il JWT della Key Attestation Issuance include i seguenti parametri di header HTTP:
-
 
 .. _table_ka_request_claim:
 .. list-table::
@@ -630,7 +629,6 @@ L'oggetto JSON restituito nella risposta contiene il seguente parametro:
       - OBBLIGATORIO. Una stringa che rappresenta la Key Attestation rilasciata.
       - Questa specifica.
 
-
 Il valore del parametro ``key_attestation`` è una stringa che rappresenta la Key Attestation in formato JWT.
 
 Se durante il processo si verificano errori, viene restituita una risposta di errore come definito nella sezione precedente.
@@ -661,6 +659,8 @@ La tabella seguente elenca i codici di stato HTTP e i relativi codici di errore 
 
 
 
+
+
 Key Attestation JWT
 """"""""""""""""""""""""""""
 
@@ -682,7 +682,7 @@ L'intestazione JOSE del Key Attestation JWT contiene i seguenti parametri:
       - OBBLIGATORIO. Identificatore univoco della chiave pubblica associata alla chiave privata che il Fornitore di Wallet ha utilizzato per firmare la Key Attestation.
       - :rfc:`7638#section_3`.
     * - **typ**
-      - OBBLIGATORIO. Deve essere impostato su ``key-attestation+jwt``
+      - OBBLIGATORIO. DEVE essere impostato su ``key-attestation+jwt``
       - `OPENID4VC-HAIP`_.
     * - **trust_chain**
       - OPZIONALE. Sequenza di Entity Statement che compone la Catena di Fiducia relativa al Fornitore di Wallet.
@@ -716,18 +716,18 @@ Il corpo del Key Attestation JWT contiene le seguenti dichiarazioni (claims):
     * - **key_storage**
       - OBBLIGATORIO. Un array non vuoto di stringhe sensibili alle maiuscole che dichiarano la resistenza al potenziale di attacco del componente di archiviazione delle chiavi e delle chiavi attestate nel parametro ``attested_keys``. I seguenti valori sono definiti come possibili valori per questa dichiarazione claim:
 
-        - ``iso_18045_high``: Deve essere utilizzato quando l'archiviazione delle chiavi è resistente ad attacchi con potenziale di attacco ``High``.
-        - ``iso_18045_moderate``: Deve essere utilizzato quando l'archiviazione delle chiavi è resistente ad attacchi con potenziale di attacco  ``Moderate``.
-        - ``iso_18045_enhanced-basic``: Deve essere utilizzato quando l'archiviazione delle chiavi è resistente ad attacchi con potenziale di attacco  ``Enhanced-Basic``.
-        - ``iso_18045_basic``: Deve essere utilizzato quando l'archiviazione delle chiavi è resistente ad attacchi con potenziale di attacco  ``Basic``.
+        - ``iso_18045_high``: DEVE essere utilizzato quando l'archiviazione delle chiavi è resistente ad attacchi con potenziale di attacco ``High``.
+        - ``iso_18045_moderate``: DEVE essere utilizzato quando l'archiviazione delle chiavi è resistente ad attacchi con potenziale di attacco  ``Moderate``.
+        - ``iso_18045_enhanced-basic``: DEVE essere utilizzato quando l'archiviazione delle chiavi è resistente ad attacchi con potenziale di attacco  ``Enhanced-Basic``.
+        - ``iso_18045_basic``: DEVE essere utilizzato quando l'archiviazione delle chiavi è resistente ad attacchi con potenziale di attacco  ``Basic``.
       - `OpenID4VCI`_.
     * - **user_authentication**
       - OBBLIGATORIO. Un array non vuoto di stringhe sensibili alle maiuscole che dichiarano la resistenza al potenziale di attacco dei metodi di autenticazione utente autorizzati ad accedere alle chiavi private dal parametro attested_keys. I seguenti valori sono definiti come possibili valori per questa dichiarazione claim:
 
-        - ``iso_18045_high``: Deve essere utilizzato quando l'autenticazione dell'utente è resistente ad attacchi con potenziale di attacco ``High``.
-        - ``iso_18045_moderate``: Deve essere utilizzato quando l'autenticazione dell'utente è resistente ad attacchi con potenziale di attacco ``Moderate``.
-        - ``iso_18045_enhanced-basic``: Deve essere utilizzato quando l'autenticazione dell'utente è resistente ad attacchi con potenziale di attacco ``Enhanced-Basic``.
-        - ``iso_18045_basic``: Deve essere utilizzato quando l'autenticazione dell'utente è resistente ad attacchi con potenziale di attacco ``Basic``.
+        - ``iso_18045_high``: DEVE essere utilizzato quando l'autenticazione dell'utente è resistente ad attacchi con potenziale di attacco ``High``.
+        - ``iso_18045_moderate``: DEVE essere utilizzato quando l'autenticazione dell'utente è resistente ad attacchi con potenziale di attacco ``Moderate``.
+        - ``iso_18045_enhanced-basic``: DEVE essere utilizzato quando l'autenticazione dell'utente è resistente ad attacchi con potenziale di attacco ``Enhanced-Basic``.
+        - ``iso_18045_basic``: DEVE essere utilizzato quando l'autenticazione dell'utente è resistente ad attacchi con potenziale di attacco ``Basic``.
       - `OpenID4VCI`_.
     * - **status**
       - OBBLIGATORIO. Meccanismo di stato per la Key Attestation.
@@ -737,6 +737,7 @@ Il corpo del Key Attestation JWT contiene le seguenti dichiarazioni (claims):
     * - **certification**
       - OPZIONALE. Una stringa che contiene un URL che rimanda alla certificazione del componente di archiviazione delle chiavi.
       - `OpenID4VCI`_.
+
 
 
 Di seguito è riportato un esempio non normativo dell'intestazione e del payload del Key Attestation JWT, senza codifica né firma applicata:
@@ -751,8 +752,11 @@ Di seguito è riportato un esempio non normativo dell'intestazione e del payload
 .. note::
     Poiché lo schema di certificazione non è ancora stato definito, il contenuto esatto di ``certification`` non è definito e sarà specificato in un futuro aggiornamento.
 
+
 .. note::
     Come meccanismo di revoca per la KA, è preferito l'indice condiviso per tipo descritto nella Sezione 2.5.2 di `EUDI-TS 3`_.
+
+
 
 
 Catalogo e-Service PDND del Fornitore di Wallet

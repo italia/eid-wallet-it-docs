@@ -245,8 +245,8 @@ This information SHOULD be provided by the User using the Selection Page describ
 <p>Below is a sequence diagram that details the interactions between all the involved parties.</p>
 <figure class="align-default" id="id2">
 <p class="plantuml">
-<object data="_images/plantuml-cbacc3672c6c707b149e910099e3f6afad2308d9.svg" type="image/svg+xml" style="width:99%">
-<a href="_images/plantuml-cbacc3672c6c707b149e910099e3f6afad2308d9.png"><img src="_images/plantuml-cbacc3672c6c707b149e910099e3f6afad2308d9.png" alt="The figure illustrates the Remote Protocol Flow." style="width: 99.0%"/></a>
+<object data="_images/plantuml-4fec61cbc9cd13a365548ac6830884590973ac06.svg" type="image/svg+xml" style="width:99%">
+<a href="_images/plantuml-4fec61cbc9cd13a365548ac6830884590973ac06.png"><img src="_images/plantuml-4fec61cbc9cd13a365548ac6830884590973ac06.png" alt="The figure illustrates the Remote Protocol Flow." style="width: 99.0%"/></a>
 
 </object></p>
 <figcaption>
@@ -586,7 +586,7 @@ The request and its parameters are defined in Section 5 (Authorization Request) 
 <td><p>RECOMMENDED. A non-empty array of the Client Identifier Prefixes that the Wallet Instance supports.  Valid values include <code class="docutils literal notranslate"><span class="pre">openid_federation</span></code> and <code class="docutils literal notranslate"><span class="pre">x509_hash</span></code>; if omitted, the default is <code class="docutils literal notranslate"><span class="pre">pre-registered</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><cite>authorization_endpoint</cite></p></td>
-<td><p>URL of the authorization server's endpoint, see <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc6749">OAUTH2</a>. Using an universal link is preferable for enhanced security and fallback support, custom url schemes can also be used if necessary.</p></td>
+<td><p>URL of the authorization server's endpoint, see <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc6749">OAUTH2</a>. Using a universal link is preferable for enhanced security and fallback support, custom url schemes can also be used if necessary.</p></td>
 </tr>
 <tr class="row-odd"><td><p><cite>response_types_supported</cite></p></td>
 <td><p>OPTIONAL. JSON array of OAuth 2.0 <code class="docutils literal notranslate"><span class="pre">response_type</span></code> values. If present it MUST be set to <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> (<a class="reference internal" href="test-plans-remote-presentation.html#remote-credential-verifier-test-matrix"><span class="std std-ref">RPR-82</span></a>).</p></td>
@@ -911,7 +911,7 @@ The Authorization Error Response MUST be encoded in the request body using the f
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>The current OpenID4VP specification outlines various error responses that a Wallet Instance may return to the Relying Party (Verifier) in case of faulty requests. For privacy enhancement, Wallet Instances SHOULD NOT notify the Relying Party of faulty requests in certain scenarios. This is to prevent any potential misuse of error responses that could lead to gather informations that could be exploited.</p>
+<p>The current OpenID4VP specification outlines various error responses that a Wallet Instance may return to the Relying Party (Verifier) in case of faulty requests. For privacy enhancement, Wallet Instances SHOULD NOT notify the Relying Party of faulty requests in certain scenarios. This is to prevent any potential misuse of error responses that could lead to gather information that could be exploited.</p>
 </div>
 <p>In the following table are listed error codes and descriptions that are supported for the Authorization Error Response:</p>
 <table class="longtable docutils align-default">
@@ -1124,7 +1124,7 @@ The request url SHOULD include a parameter with a random value. The HTTP respons
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">500</span> <span class="pre">Internal</span> <span class="pre">Server</span> <span class="pre">Error</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">server_error</span></code></p></td>
-<td><p>The request cannot be fulfilled due to an intenal server error. (<span class="target" id="index-10"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>).</p></td>
+<td><p>The request cannot be fulfilled due to an internal server error. (<span class="target" id="index-10"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">503</span> <span class="pre">Service</span> <span class="pre">Unavailable</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">temporarily_unavailable</span></code></p></td>
@@ -1203,7 +1203,7 @@ The request url SHOULD include a parameter with a random value. The HTTP respons
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 30/06/2026.
+      Last updated on 01/07/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

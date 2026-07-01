@@ -763,7 +763,7 @@ The Trust Chains can also be verified offline, using one of the Trust Anchor's p
 Establishing Trust with Credential Issuers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In the issuance process, Trust Evaluation ensures the integrity and authenticity of the Credentials being issued and the realiability of their Issuers. This section delineates the Trust Evaluation mechanisms distinct from the protocol flows, implemented by Wallet Instances and Relying Parties, as described in the dedicated section.
+In the issuance process, Trust Evaluation ensures the integrity and authenticity of the Credentials being issued and the reliability of their Issuers. This section delineates the Trust Evaluation mechanisms distinct from the protocol flows, implemented by Wallet Instances and Relying Parties, as described in the dedicated section.
 
 Trust Evaluations implement different ways, as defined below:
 

@@ -188,7 +188,7 @@
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>In the context of IT Wallet, due to the particular nature of the data exchanged, the pseudonymization of the Signal's subject is not needed since it is already an opaque identifier unrelated to the Digial Credential's subject. Thus, the Authentic Source does not need to set up a pseudonymization endpoint for its e-Services.</p>
+<p>In the context of IT Wallet, due to the particular nature of the data exchanged, the pseudonymization of the Signal's subject is not needed since it is already an opaque identifier unrelated to the Digital Credential's subject. Thus, the Authentic Source does not need to set up a pseudonymization endpoint for its e-Services.</p>
 </div>
 <p>Authentic Sources that leverage PDND MUST use the Signal Hub e-Services.</p>
 <p>Below it is provided the description of how the Authentic Sources and Credential Issuers interact with the Signal Hub e-Services together with the detailed formats of the requests and responses.</p>
@@ -263,7 +263,7 @@
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>In the deffered issuance flow, i.e., when the Authentic Source notifies the Credential Issuer of the availability of the Digital Credential's attributes via Signal Hub; both entities MUST keep track of the Authentic Source's <code class="docutils literal notranslate"><span class="pre">object_id</span></code> value used in the <code class="docutils literal notranslate"><span class="pre">get</span> <span class="pre">attributes</span></code> payload response. This is necessary since the <code class="docutils literal notranslate"><span class="pre">objectId</span></code> of the Signal MUST be set to that <code class="docutils literal notranslate"><span class="pre">object_id</span></code> value when the Signal has <code class="docutils literal notranslate"><span class="pre">signalType</span></code> with value <code class="docutils literal notranslate"><span class="pre">CREATE</span></code>.</p>
+<p>In the deferred issuance flow, i.e., when the Authentic Source notifies the Credential Issuer of the availability of the Digital Credential's attributes via Signal Hub; both entities MUST keep track of the Authentic Source's <code class="docutils literal notranslate"><span class="pre">object_id</span></code> value used in the <code class="docutils literal notranslate"><span class="pre">get</span> <span class="pre">attributes</span></code> payload response. This is necessary since the <code class="docutils literal notranslate"><span class="pre">objectId</span></code> of the Signal MUST be set to that <code class="docutils literal notranslate"><span class="pre">object_id</span></code> value when the Signal has <code class="docutils literal notranslate"><span class="pre">signalType</span></code> with value <code class="docutils literal notranslate"><span class="pre">CREATE</span></code>.</p>
 </div>
 <p>A non-normative example of the Signal Collection request can be found at <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-depositare-un-segnale">Signal Hub push</a>.</p>
 <p>The Signal Collection e-Service response, acknowledging the correct parsing of the request, is specified in <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-depositare-un-segnale">Signal Hub push</a>, and has <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> set to <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. The payload contains the body parameter:</p>
@@ -420,7 +420,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 30/06/2026.
+      Last updated on 01/07/2026.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
