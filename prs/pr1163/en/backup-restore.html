@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>10.1.5. Backup and Restore &#8212; IT-Wallet Technical Specifications - PR #1163</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=2d03bfa4" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
+    <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
+    <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=077bf722" />
+
+    <script src="_static/documentation_options.js?v=a68a9277"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="_static/shared-ui/js/jquery-3.7.0.min.js"></script>
+<script src="_static/shared-ui/js/ita.min.js"></script>
+<script src="_static/shared-ui/js/bootstrap-italia.bundle.min.js"></script>
+<script src="_static/js/eid-wallet-docs.js"></script>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="10.1.6. Wallet Provider Entity Configuration" href="wallet-provider-entity-configuration.html" />
+    <link rel="prev" title="10.1.4.2.6. Wallet Instance Dashboard and Transaction Logging" href="wallet-instance-dashboard.html" />
+   
+  <meta name="description" content="IT-Wallet Technical Specifications - PR #1163">
+  <script>
+    (function () {
+      try {
+        var mode = localStorage.getItem("it-docs-brightness");
+        if (mode && /^(light|middle|black)$/.test(mode)) {
+          document.documentElement.setAttribute("data-it-docs-brightness", mode);
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }
+    })();
+  </script>
+  </head><body class="it-docs-body">
+<nav class="it-skip-links" aria-label="Skip links">
+  <a id="skip-main" class="visually-hidden-focusable" href="#main-content">Skip to main content</a>
+  <a id="skip-footer" class="visually-hidden-focusable" href="#page-footer">Skip to footer</a>
+</nav>
+
+<header class="it-header-wrapper it-docs-header" role="banner">
+  <div class="it-header-slim-wrapper bg-primary">
+    <div class="container">
+      <div class="it-header-slim-wrapper-content d-flex justify-content-between align-items-center">
+        <span class="navbar-brand text-white" id="header-region-name">
+          <strong>Dipartimento per la Trasformazione Digitale</strong>
+        </span>
+        <div class="it-header-slim-right-zone it-docs-slim-tools d-flex align-items-center"><div class="it-docs-searchbox--slim it-docs-searchbox" role="search">
+  <form class="it-docs-search-form" action="search.html" method="get">
+    <label class="visually-hidden" for="it-docs-search-input">Search</label>
+    <input id="it-docs-search-input"
+           class="form-control it-docs-search-input"
+           type="search"
+           name="q"
+           placeholder="Search"
+           autocomplete="off"
+           autocorrect="off"
+           autocapitalize="off"
+           spellcheck="false"
+           enterkeyhint="search"/>
+    <button class="btn it-docs-search-submit" type="submit" title="Search">
+      <svg class="icon it-docs-search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M21.9 21.1 16 15.3c1.3-1.5 2-3.4 2-5.3 0-4.4-3.6-8-8-8s-8 3.6-8 8 3.6 8 8 8c1.9 0 3.8-.7 5.3-2l5.8 5.9.8-.8zM10 17c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/>
+</svg>
+      <span class="visually-hidden">Search</span>
+    </button>
+  </form>
+</div><a id="source_link" class="it-docs-source-link" href="https://github.com/italia/eudi-wallet-it-docs" title="Source repository" target="_blank" rel="noopener">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" aria-hidden="true" focusable="false">
+    <path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.4-2.1.7-2.1-1.3-4.3-4.3-5.2-2.6-.7-5.5.3-6.4 2.1zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5 21.3 0 42.8 2.9 62.8 8.5 0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8z"/>
+  </svg>
+  
+  <span class="visually-hidden">Source repository</span>
+</a><div class="nav-item dropdown it-docs-brightness-dropdown">
+  <button type="button"
+          id="it-docs-brightness-toggle"
+          class="it-docs-brightness-toggle nav-link dropdown-toggle"
+          aria-controls="it-docs-brightness-menu"
+          data-bs-toggle="dropdown"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          title="Content brightness">
+    <span id="it-docs-brightness-active-hint" class="visually-hidden">
+      Active brightness:
+    </span>
+    <svg class="icon it-docs-brightness-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M12 7.75a4.25 4.25 0 1 0 0 8.5 4.25 4.25 0 0 0 0-8.5zM10.5 1.25h3v4.75h-3V1.25zm0 17h3v4.75h-3V18.25zM1.25 10.5h4.75v3h-4.75v-3zm17 0h4.75v3H18.25v-3zM5.1 5.1h3.2v3.2H5.1V5.1zm10.7 0h3.2v3.2h-3.2V5.1zM5.1 15.7h3.2v3.2H5.1v-3.2zm10.7 0h3.2v3.2h-3.2v-3.2z"/>
+</svg>
+    <span class="visually-hidden" id="it-docs-brightness-current-label">Light</span>
+    <svg class="icon ms-1 it-docs-brightness-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
+</svg>
+  </button>
+  <div id="it-docs-brightness-menu" class="dropdown-menu dropdown-menu-end">
+    <div class="row">
+      <div class="col-12">
+        <div class="link-list-wrapper">
+          <ul class="link-list" role="menu" aria-labelledby="it-docs-brightness-toggle">
+            <li>
+              <button type="button"
+                      class="dropdown-item list-item it-docs-brightness-option active"
+                      data-it-docs-brightness="light"
+                      role="menuitemradio"
+                      aria-checked="true">
+                <span>Light</span>
+              </button>
+            </li>
+            <li>
+              <button type="button"
+                      class="dropdown-item list-item it-docs-brightness-option"
+                      data-it-docs-brightness="middle"
+                      role="menuitemradio"
+                      aria-checked="false">
+                <span>Middle</span>
+              </button>
+            </li>
+            <li>
+              <button type="button"
+                      class="dropdown-item list-item it-docs-brightness-option"
+                      data-it-docs-brightness="black"
+                      role="menuitemradio"
+                      aria-checked="false">
+                <span>Black</span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          <div class="nav-item dropdown it-header-lang-dropdown">
+            <button type="button"
+                    id="languagesDropButton"
+                    class="nav-link dropdown-toggle"
+                    aria-controls="language-menu"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="menu"
+                    aria-expanded="false">
+              <span id="header-lang-active-hint" class="visually-hidden">Active language:</span>
+              <span class="it-header-lang-label" aria-hidden="true">EN</span>
+              <svg class="icon icon-sm ms-1 it-header-lang-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
+</svg>
+            </button>
+            <div id="language-menu" class="dropdown-menu dropdown-menu-end">
+              <div class="row">
+                <div class="col-12">
+                  <div class="link-list-wrapper">
+                    <ul class="link-list" role="menu" aria-labelledby="languagesDropButton">
+                      <li>
+                        <a class="dropdown-item list-item it-lang-option"
+                           href="../it/backup-restore.html"
+                           data-lang="it"
+                           role="menuitemradio"
+                           aria-checked="false"
+                           >
+                          <span lang="it">Italiano</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item list-item it-lang-option active"
+                           href="#"
+                           data-lang="en"
+                           role="menuitemradio"
+                           aria-checked="true"
+                           aria-current="true">
+                          <span lang="en">English</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="header-title-section it-docs-header-title">
+    <div class="container py-3">
+      <div class="d-flex align-items-center justify-content-between flex-nowrap">
+        <div class="it-brand-wrapper it-docs-brand-wrapper">
+          <a href="index.html"
+             class="it-docs-brand-link d-flex align-items-center min-w-0 text-decoration-none"
+             title="Home">
+            <img src="_static/shared-ui/img/IT-Wallet-Logo-Primary-BlueItalia.svg" alt="" class="it-docs-logo" height="40">
+            <span class="navbar-separator it-docs-header-separator" aria-hidden="true"></span>
+            <span class="it-docs-header-project-name" id="header-project-name">IT-Wallet Technical Specifications - PR #1163</span>
+          </a>
+        </div>
+        <button class="custom-navbar-toggler d-lg-none it-docs-sidebar-toggler"
+                type="button"
+                data-it-docs-nav-toggle
+                data-it-docs-nav-target="#itDocsPrimaryNav"
+                aria-controls="itDocsPrimaryNav"
+                aria-expanded="false"
+                aria-label="Open navigation">
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M22 5v1H2V5h20zM2 12.5h20v-1H2v1zM2 19h20v-1H2v1z"/>
+</svg>
+          <span>Menu</span>
+        </button>
+      </div>
+      <div class="it-docs-header-mobile-tools d-lg-none"><div class="it-docs-searchbox--mobile it-docs-searchbox" role="search">
+  <form class="it-docs-search-form" action="search.html" method="get">
+    <label class="visually-hidden" for="it-docs-search-input-mobile">Search</label>
+    <input id="it-docs-search-input-mobile"
+           class="form-control it-docs-search-input"
+           type="search"
+           name="q"
+           placeholder="Search"
+           autocomplete="off"
+           autocorrect="off"
+           autocapitalize="off"
+           spellcheck="false"
+           enterkeyhint="search"/>
+    <button class="btn it-docs-search-submit" type="submit" title="Search">
+      <svg class="icon it-docs-search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M21.9 21.1 16 15.3c1.3-1.5 2-3.4 2-5.3 0-4.4-3.6-8-8-8s-8 3.6-8 8 3.6 8 8 8c1.9 0 3.8-.7 5.3-2l5.8 5.9.8-.8zM10 17c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/>
+</svg>
+      <span class="visually-hidden">Search</span>
+    </button>
+  </form>
+</div>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="it-docs-layout">
+  <div class="container-fluid it-docs-container">
+    <div class="row it-docs-row">
+      <aside class="col-12 col-lg-2 it-docs-sidebar-col" aria-label="Primary navigation">
+        <div class="navbar-collapsable it-docs-primary-nav-collapsable" id="itDocsPrimaryNav">
+          <div class="overlay d-lg-none"></div>
+          <div class="close-div d-lg-none">
+            <button class="btn close-menu" type="button" aria-label="Close navigation">
+              <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="m12.7 12 3.7 3.6-.8.8-3.6-3.7-3.6 3.7-.8-.8 3.7-3.6-3.7-3.6.8-.8 3.6 3.7 3.6-3.7.8.8-3.7 3.6z"/>
+</svg>
+            </button>
+          </div>
+          <div class="menu-wrapper it-docs-menu-scroll"><div class="sidebar-wrapper it-line-right-side it-docs-primary-nav">
+  <div class="sidebar-linklist-wrapper">
+    <div class="link-list-wrapper">
+      
+      <div class="it-docs-sphinx-toc">
+        <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2. Brand Identity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Architecture Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Onboarding System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. User Experience Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. The Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registry.html">7. Registry Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entity-onboarding.html">8. Entity Onboarding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="x5c-evaluation.html">9. X.509 Certificate Management Operations</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="entities.html">10. Entities</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="wallet-solution.html">10.1. Wallet Solution</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution-requirements.html">10.1.1. Wallet Solution Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution-components.html">10.1.2. Wallet Solution Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution-components.html#wallet-solution-interaction-patterns">10.1.3. Wallet Solution Interaction Patterns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance.html">10.1.4. Wallet Instance</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">10.1.5. Backup and Restore</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-entity-configuration.html">10.1.6. Wallet Provider Entity Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution-metadata.html">10.1.7. Wallet Solution Metadata</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html">10.2. Credential Issuer Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html">10.3. Relying Party Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentic-sources.html">10.4. Authentic Sources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">11. Digital Credential Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">12. Digital Credential Flows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">13. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">14. Cryptographic Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">15. Security and Privacy Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">16. General Log Retention Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">17. Defined Terms and References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">18. How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">19. Open Source Releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">20. Appendix</a></li>
+</ul>
+
+      </div>
+    </div>
+  </div>
+</div>
+          </div>
+        </div>
+      </aside>
+
+      <div class="col-12 col-lg-8 it-docs-main-col">
+        <main id="main-content" class="it-docs-main it-page-sections-container" role="main" tabindex="-1">
+          <noscript>
+            <p class="it-docs-noscript alert alert-warning" role="alert">
+              JavaScript is required for navigation menus and some interactive features.
+            </p>
+          </noscript>
+          <div class="body">
+            
+  <section id="backup-and-restore">
+<h1><span class="section-number">10.1.5. </span>Backup and Restore</h1>
+<p>The <strong>Backup and Restore</strong> functionality becomes relevant when the <a class="reference internal" href="defined-terms.html#term-User"><span class="xref std std-term">User</span></a> wants to change device and/or <a class="reference internal" href="defined-terms.html#term-Wallet-Solution"><span class="xref std std-term">Wallet Solution</span></a> in order to access the previously issued Digital Credentials again.</p>
+<ul class="simple">
+<li><p>The mobile device has been <strong>lost</strong>, <strong>stolen</strong>, <strong>damaged</strong>, or <strong>compromised</strong> (e.g., due to unauthorized access).</p></li>
+<li><p>The <a class="reference internal" href="defined-terms.html#term-User"><span class="xref std std-term">User</span></a> replaces an existing <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> with a new instance of the same <a class="reference internal" href="defined-terms.html#term-Wallet-Solution"><span class="xref std std-term">Wallet Solution</span></a>.</p></li>
+<li><p>The <a class="reference internal" href="defined-terms.html#term-User"><span class="xref std std-term">User</span></a> has changed their mobile device and needs to set up the <a class="reference internal" href="defined-terms.html#term-Wallet-Solution"><span class="xref std std-term">Wallet Solution</span></a> on the new device.</p></li>
+<li><p>The <a class="reference internal" href="defined-terms.html#term-User"><span class="xref std std-term">User</span></a> performs a factory reset on the current phone and needs to set up the <a class="reference internal" href="defined-terms.html#term-Wallet-Solution"><span class="xref std std-term">Wallet Solution</span></a> again.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For Wallet Solutions based on the IT Wallet <a class="reference internal" href="defined-terms.html#term-Technical-Specifications"><span class="xref std std-term">Technical Specifications</span></a>, the migration to a different <a class="reference internal" href="defined-terms.html#term-Wallet-Solution"><span class="xref std std-term">Wallet Solution</span></a> (known as data portability) can be supported following the backup and restore functionality described in this section.</p>
+</div>
+<section id="backup-flow">
+<h2><span class="section-number">10.1.5.1. </span>Backup Flow</h2>
+<figure class="align-default" id="id2">
+<span id="fig-backup-flow"></span><p class="plantuml">
+<object data="_images/plantuml-5c3d200c016a8c60fd7435d9b4f85537a92e9a72.svg" type="image/svg+xml" style="width:90%">
+<a href="_images/plantuml-5c3d200c016a8c60fd7435d9b4f85537a92e9a72.png"><img src="_images/plantuml-5c3d200c016a8c60fd7435d9b4f85537a92e9a72.png" alt="The figure illustrates the sequence diagram for backup flow, with the steps explained below." style="width: 90.0%"/></a>
+
+</object></p>
+<figcaption>
+<p><span class="caption-number">Fig. 10.8 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/png/VP5HRzGm3CVVyodClMn8j1KmU9YcqxPZe8bDEkaqyG1eIbFlQaYJAd4uAhJlJj96WuvZUMhj_y_-spxrB1s7JejdP9GE3KBBtFlZgd9oLsw9sr07ZqvPmsYuLBQhUYrDOWhFZQQwMXqLwnIwkRwgEkaPNGpThY8XoQ0h-rHVICNMmKsi1TB38dqiXDWCKT_TdjjW6kc6mvtK6dbZTM2oviMaE_3m3d-GmiLp-2KWlltOfV4iZSA8VHe3a2CPpE_1sM6Wt24A6TsTJCezkbggxw4_wsc3Blc8rFaOWhFr9UHW9k_5dEriJHetR9tS9l1w_Cy3mPLLKaFE9fUvnhqG1t3nizUaY47BmGO6sNmBdZiq37VMGMyzfIsHsOfP5oW-jzGqQBuMIvYlHeXnt28c0i4nB4xgvSiIyZGhXv5YajgVLFLo8QBc96aVBs02NvNm0GqwoGWVSO1rwwJ7FsWYKxj9_ReSvzmZVLmT_j_og4mcKyCBezpGCpQGpRydZK_K2pHLU5F-Y-vp_8GKlXY8QTWHjx1sjkkdW_oL6-zQhRGDJRvkzlQm_ld5fePlInZ1ENAAfWcT_Wq0">Backup flow</a></span></p>
+</figcaption>
+</figure>
+<p>Below, the description of the steps of <a class="reference internal" href="#fig-backup-flow"><span class="std std-numref">Fig. 10.8</span></a>:</p>
+<p><strong>Step 1</strong>: The <a class="reference internal" href="defined-terms.html#term-User"><span class="xref std std-term">User</span></a> selects the option to back up Credentials stored within the <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_120</span></a>).</p>
+<p><strong>Steps 2-3</strong>: The <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> using the backup APIs randomly selects 10 key phrases from a pre-generated list of words and displays it to the User (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_120a</span></a>).
+The <a class="reference internal" href="defined-terms.html#term-User"><span class="xref std std-term">User</span></a> MUST securely store the key phrase chosen from those proposed by the system (e.g., in a password manager or a physical safe) as they are critical for restoring the backup (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_120b</span></a>).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As highlighted in the ARF, encryption is necessary because the backup file is considered sensitive. Even if an attacker only knows the <a class="reference internal" href="defined-terms.html#term-Issuer"><span class="xref std std-term">Issuer</span></a> identifiers, they can infer the different types of Digital Credentials, which constitutes a violation of <a class="reference internal" href="defined-terms.html#term-User"><span class="xref std std-term">User</span></a> privacy.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To extract the key from the list of selected words a key derivation function MUST be applied. Password-Based-Key-Derivation Function 2 (PBKDF2) is among the mostly used ones based on <a class="reference external" href="http://tools.ietf.org/html/rfc2898.html">RFC 2898</a> and it is recommended by the <a class="reference external" href="https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf">NIST 800-132</a>. There are other relevant techniques that are available and used widely, such as Bcrypt, Scrypt, and Argon2. More details on this approach can be found <a class="reference external" href="https://cryptobook.nakov.com/mac-and-key-derivation/kdf-deriving-key-from-password">here</a> (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_121</span></a>).</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The work factor for PBKDF2 is implemented through an iteration count, which should set differently based on the internal hashing algorithm used. The recommended value for <code class="docutils literal notranslate"><span class="pre">SHA-256</span></code> hashing algorithm is 600000 iterations as stated in the <a class="reference external" href="https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#pbkdf2">OWASP Password Storage Cheatsheet</a> (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_121a</span></a>).</p>
+</div>
+<p><strong>Step 4</strong>: The <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> performs the operations below to create the backup JWT entry for the backup file (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_122</span></a>).</p>
+<ul class="simple">
+<li><p>For each of the HW bound key Credentials, add the <a class="reference internal" href="defined-terms.html#term-Credential-Issuer"><span class="xref std std-term">Credential Issuer</span></a> identifier and the <code class="docutils literal notranslate"><span class="pre">credential_configuration_id</span></code> as an entry in the backup JWT (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_122d</span></a>).</p></li>
+<li><p>Sign the backup JWT using the private key that its public key is attested within the <a class="reference internal" href="defined-terms.html#term-Wallet-Instance-Attestation"><span class="xref std std-term">Wallet Instance Attestation</span></a>. The related public key that is attested by the <a class="reference internal" href="defined-terms.html#term-Wallet-Provider"><span class="xref std std-term">Wallet Provider</span></a> is provided within the <a class="reference internal" href="defined-terms.html#term-Wallet-Instance-Attestation"><span class="xref std std-term">Wallet Instance Attestation</span></a> (<code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim). The <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> MUST verify the validity of the <a class="reference internal" href="defined-terms.html#term-Wallet-Instance-Attestation"><span class="xref std std-term">Wallet Instance Attestation</span></a> before signing the backup JWT (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_123</span></a>).</p></li>
+<li><p>Add the signed backup JWT as an entry to the backup file (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_122</span></a>).</p></li>
+<li><p>Encrypt the backup file using the provided key phrase (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_124</span></a>).</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Backup JWT MAY contain transaction history for each Credential entry within the <code class="docutils literal notranslate"><span class="pre">credentials_backup</span></code> claim (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_122c</span></a>).</p>
+</div>
+<p><strong>Step 5</strong>: The <a class="reference internal" href="defined-terms.html#term-User"><span class="xref std std-term">User</span></a> will be prompted to choose a storage option for securely storing the backup file. Options may include native storage or external storage solutions, such as cloud storage, USB devices, e-mail delivery or any other (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_125</span></a>).</p>
+<p><strong>Step 6</strong>: In the case where the <a class="reference internal" href="defined-terms.html#term-User"><span class="xref std std-term">User</span></a> prefers the native storage, the backup file is stored on the <a class="reference internal" href="defined-terms.html#term-User"><span class="xref std std-term">User</span></a> device.</p>
+<p>A non-normative example of the backup JWT header and payload is as the following:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wallet-unit-credentials-backup+jwt&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="s2">&quot;2024-12-13T16:35:06+01:00&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;wallet_provider_id&quot;</span><span class="p">:</span><span class="s2">&quot;https://wallet-provider.example.org/&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;wallet_instance_version&quot;</span><span class="p">:</span><span class="s2">&quot;v1.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;wallet_instance_attestation&quot;</span><span class="p">:</span><span class="s2">&quot;eyJhbGciOiJFUzI1NiIsImVVfQz.eyJpc3MiOiAiaH...LCAibmJ&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;credentials_backup&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;https://issuer.example.org/v1.0/mDL&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013-5.1.mDL&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;https://eaa-provider.example.org/&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;dc_sd_jwt_EuropeanDisabilityCard&quot;</span><span class="p">]</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The JOSE header of the backup JWT MUST contain the following REQUIRED parameters (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_122a</span></a>):</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>JOSE header</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>alg</strong></p></td>
+<td><p>A digital signature algorithm identifier such as per IANA &quot;JSON Web Signature and Encryption Algorithms&quot; registry. It MUST be one of the supported algorithms listed in the Section <a class="reference internal" href="algorithms.html#cryptographic-algorithms"><span class="std std-ref">Cryptographic Algorithms</span></a> and MUST NOT be set to <code class="docutils literal notranslate"><span class="pre">none</span></code> or any symmetric algorithm (MAC) identifier.</p></td>
+<td><p><span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>typ</strong></p></td>
+<td><p>It MUST be set to <code class="docutils literal notranslate"><span class="pre">wallet-unit-credentials-backup+jwt</span></code></p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+<p>The body of backup JWT contains the following REQUIRED claims (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_122b</span></a>):</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 75.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Claim</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>timestamp</strong></p></td>
+<td><p>UNIX timestamp with the time of backup file creation. This value is updated every time a new Credential entry is added to the backup file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>wallet_provider_id</strong></p></td>
+<td><p>It MUST be set to the unique identifier of the <a class="reference internal" href="defined-terms.html#term-Wallet-Provider"><span class="xref std std-term">Wallet Provider</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>wallet_instance_version</strong></p></td>
+<td><p>It MUST be set to the version of the <a class="reference internal" href="defined-terms.html#term-Wallet-Solution"><span class="xref std std-term">Wallet Solution</span></a> that has been backed up.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>wallet_instance_attestation</strong></p></td>
+<td><p>It MUST be set to a value containing the <a class="reference internal" href="defined-terms.html#term-Wallet-Instance-Attestation"><span class="xref std std-term">Wallet Instance Attestation</span></a> JWT.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>credentials_backup</strong></p></td>
+<td><p>Object that describes specifics of the:term:<cite>Credential</cite> that are backed up. This object contains a list of name/value pairs, where each name is a unique identifier of the <a class="reference internal" href="defined-terms.html#term-Credential-Issuer"><span class="xref std std-term">Credential Issuer</span></a>. This identifier is used to initiate the issuance phase. The value is an array of unique strings. Each string corresponds to the <code class="docutils literal notranslate"><span class="pre">credential_configuration_id</span></code> that identifies the specific:term:<cite>Digital Credential</cite> that was issued.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="restore-flow-for-hardware-binding-credential">
+<h2><span class="section-number">10.1.5.2. </span>Restore flow for Hardware Binding Credential</h2>
+<figure class="align-default" id="id3">
+<span id="fig-restore-flow"></span><p class="plantuml">
+<object data="_images/plantuml-7142b2a7089df27ff5c53a5880e973d5371ea5e9.svg" type="image/svg+xml" style="width:90%">
+<a href="_images/plantuml-7142b2a7089df27ff5c53a5880e973d5371ea5e9.png"><img src="_images/plantuml-7142b2a7089df27ff5c53a5880e973d5371ea5e9.png" alt="The figure illustrates the sequence diagram for restore flow, with the steps explained below." style="width: 90.0%"/></a>
+
+</object></p>
+<figcaption>
+<p><span class="caption-number">Fig. 10.9 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/png/TP5DRnCn48Rl-ok6N9fAP5T0-L0LHVrea2fQ4OWg3e2gsVKqCNZjbJrk6w7-T-or5TYssPCpVfzd9kCZnsZPjwfu8NMZl21OCtVkiAeitfKhoMjVUqUsCPf9SzcOjkeKwiXC70ibw-hqOBA8fQlBYwf5nsH3wVeq42WrsRAB_W8RDXQkWWlGmIWUHaMnt8HyUtrYl1PeD-CxL8fuQPHdQVJBbDjpS4Qtig7HFlmf87pFO-VQCUg60lQjBq2kP31_syd6NkOE8SXaRp0cdydLsFpstN4dbsJZ784wwKjml3Y7NCpaGr4CuTRKKj6IZSLL92_xt_aVmOLfK46wJMCcoSDsD_Dx7fyxvya6E1r2gs8FvlUTaeraKBWndW75B--u9SrmOonqnicuHAbNnM06c7nVIo58_vpCOBYvgFrA2YFdrh9pHR-TaFCI3c4qhMUlof1mmKIGbZojwjaevQQJVxdN9IoiQJi6Dd3LAOC2yj8-IaK3QWR30PFXJGbBKjJm_npS12dau5QIHqpSGT_vLWg2kMxifcCI0mLg4MuuK9ze0ukrHKSkkRoCfiVldRnlozs-fwR7ZjtUToMSKVP65dxeKCqDaYmzEpnvhoHuNyBdcb5gk2H6WOn3RBg3-r12du3nb_tv_BXde3WYBNoh_W80">Restore Flow</a></span></p>
+</figcaption>
+</figure>
+<p>Considering that the <a class="reference internal" href="defined-terms.html#term-User"><span class="xref std std-term">User</span></a> has initialized the new <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> and it is in active state by obtaining a new PID, this specification relaxes the requirement of the ARF concerning the addition of the PID in the backup file.
+Below, the description of the steps of <a class="reference internal" href="#fig-restore-flow"><span class="std std-numref">Fig. 10.9</span></a>:</p>
+<p><strong>Steps 1-6</strong>: The <a class="reference internal" href="defined-terms.html#term-User"><span class="xref std std-term">User</span></a> wants to restore the Digital Credentials using the backup previously created with their <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a>.
+The <a class="reference internal" href="defined-terms.html#term-User"><span class="xref std std-term">User</span></a> selects <cite>restore Digital Credentials backup</cite> in the <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> app and a prompt with the import function is provided to the User (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_126</span></a>). The backup file to be imported can be provided using a local storage or a remote location using a cloud storage as well, and therefore submit the recovery key phrases (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_127</span></a>).
+To check the authenticity of the file, the <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> MUST verify the backup JWT's signature to ensure its authenticity (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_129</span></a>). To do this, it first extracts the <a class="reference internal" href="defined-terms.html#term-Wallet-Instance-Attestation"><span class="xref std std-term">Wallet Instance Attestation</span></a> JWT from <code class="docutils literal notranslate"><span class="pre">wallet_instance_attestation</span></code> claim and obtains the related public key using the <a class="reference internal" href="defined-terms.html#term-Wallet-Instance-Attestation"><span class="xref std std-term">Wallet Instance Attestation</span></a> (<code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim) as per <a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_128</span></a>.</p>
+<p><strong>Steps 7-8</strong>: The <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> for each HW binding credentials entry in the payload of the backup JWT performs the following steps (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_130</span></a>):</p>
+<ul class="simple">
+<li><p>It extracts the <a class="reference internal" href="defined-terms.html#term-Credential-Issuer"><span class="xref std std-term">Credential Issuer</span></a> identifier and the <code class="docutils literal notranslate"><span class="pre">credential_configuration_id</span></code> from the entry. The former is used to identify the Issuer and obtains its metadata, while the latter will be used to signal the Credential type to the <a class="reference internal" href="defined-terms.html#term-Credential-Issuer"><span class="xref std std-term">Credential Issuer</span></a> (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_130a</span></a>).</p></li>
+<li><p>Using the <a class="reference internal" href="defined-terms.html#term-Issuer"><span class="xref std std-term">Issuer</span></a> identifier the <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> obtains the metadata of the <a class="reference internal" href="defined-terms.html#term-Credential-Issuer"><span class="xref std std-term">Credential Issuer</span></a> and makes a re-issuance request to the <a class="reference internal" href="defined-terms.html#term-Credential-Issuer"><span class="xref std std-term">Credential Issuer</span></a> by providing the new <a class="reference internal" href="defined-terms.html#term-Holder-Key-Binding"><span class="xref std std-term">Holder Key Binding</span></a> with the:term:<cite>Credential</cite> (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_130b</span></a>).</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> MUST NOT check the expiration of the <a class="reference internal" href="defined-terms.html#term-Wallet-Instance-Attestation"><span class="xref std std-term">Wallet Instance Attestation</span></a> as its main purpose is to enable the <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> to verify the authenticity of the backup file by ensuring it has been created and signed by a <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> of a specific <a class="reference internal" href="defined-terms.html#term-Wallet-Provider"><span class="xref std std-term">Wallet Provider</span></a> (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_128a</span></a>).</p>
+</div>
+</section>
+</section>
+
+
+          </div>
+          <nav class="it-docs-pager d-flex flex-wrap justify-content-between gap-3 mt-5" aria-label="Page navigation">
+            <div class="it-docs-pager-prev">
+              <a class="btn btn-outline-primary" href="wallet-instance-dashboard.html">
+                <svg class="icon icon-sm me-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M14.6 17.2 9 11.6 14.6 6l.8.7-4.9 4.9 4.9 4.9z"/>
+</svg>
+                <span>10.1.4.2.6. Wallet Instance Dashboard and Transaction Logging</span>
+              </a>
+            </div>
+            <div class="it-docs-pager-next ms-auto">
+              <a class="btn btn-primary" href="wallet-provider-entity-configuration.html">
+                <span>10.1.6. Wallet Provider Entity Configuration</span>
+                <svg class="icon icon-sm ms-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="m9.8 17.2-.8-.7 4.9-4.9L9 6.7l.8-.7 5.6 5.6z"/>
+</svg>
+              </a>
+            </div>
+          </nav>
+        </main>
+      </div>
+
+      <aside class="col-12 col-lg-2 it-docs-navscroll-col" aria-label="Secondary navigation">
+        <div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
+     data-bs-navscroll
+     aria-label="Page contents">
+  <button class="custom-navbar-toggler"
+          type="button"
+          data-it-docs-nav-toggle
+          data-it-docs-nav-target="#itDocsNavscroll"
+          aria-controls="itDocsNavscroll"
+          aria-expanded="false"
+          aria-label="Open page contents">
+    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
+</svg>
+    <span>Page contents</span>
+  </button>
+  <div class="navbar-collapsable it-docs-navscroll-panel" id="itDocsNavscroll">
+    <div class="overlay"></div>
+    <div class="close-div">
+      <button class="btn close-menu" type="button" aria-label="Close page contents">
+        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="m12.7 12 3.7 3.6-.8.8-3.6-3.7-3.6 3.7-.8-.8 3.7-3.6-3.7-3.6.8-.8 3.6 3.7 3.6-3.7.8.8-3.7 3.6z"/>
+</svg>
+      </button>
+    </div>
+    <div class="menu-wrapper it-docs-menu-scroll">
+      <div class="link-list-wrapper">
+        <h3>On this page</h3>
+        <div class="it-docs-local-toc">
+          <ul>
+<li><a class="reference internal" href="#">10.1.5. Backup and Restore</a><ul>
+<li><a class="reference internal" href="#backup-flow">10.1.5.1. Backup Flow</a></li>
+<li><a class="reference internal" href="#restore-flow-for-hardware-binding-credential">10.1.5.2. Restore flow for Hardware Binding Credential</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+<footer id="page-footer" class="it-docs-footer" role="contentinfo" tabindex="-1">
+  <div class="container">
+    <div class="it-docs-footer-inner"><nav id="footer-partners-nav"
+     class="it-docs-footer-partners"
+     aria-label="Institutional partners">
+  <ul class="it-docs-footer-partners-list">
+    <li>
+      <a href="https://innovazione.gov.it/"
+         class="it-docs-footer-partner-link it-docs-footer-partner-link--dtd"
+         target="_blank"
+         rel="noopener">
+        <img src="_static/img/footer/logo-dtd.svg"
+             alt="Department for Digital Transformation"
+             width="120"
+             height="32"
+             loading="lazy"
+             decoding="async">
+      </a>
+    </li>
+    <li>
+      <a href="https://www.ipzs.it/"
+         class="it-docs-footer-partner-link it-docs-footer-partner-link--ipzs"
+         target="_blank"
+         rel="noopener">
+        <img src="_static/img/footer/logo-ipzs.png"
+             alt="Istituto Poligrafico e Zecca dello Stato"
+             width="105"
+             height="43"
+             loading="lazy"
+             decoding="async">
+      </a>
+    </li>
+    <li>
+      <a href="https://www.pagopa.it/it/"
+         class="it-docs-footer-partner-link it-docs-footer-partner-link--pagopa"
+         target="_blank"
+         rel="noopener">
+        <img src="_static/img/footer/logo-pagopa.svg"
+             alt="PagoPA"
+             width="121"
+             height="34"
+             loading="lazy"
+             decoding="async">
+      </a>
+    </li>
+    <li>
+      <a href="https://www.agid.gov.it/it/"
+         class="it-docs-footer-partner-link it-docs-footer-partner-link--agid"
+         target="_blank"
+         rel="noopener">
+        <img src="_static/img/footer/logo-agid.svg"
+             alt="Agenzia per l'Italia Digitale"
+             width="203"
+             height="31"
+             loading="lazy"
+             decoding="async">
+      </a>
+    </li>
+  </ul>
+</nav><div class="it-docs-footer-meta">
+        <p class="it-docs-footer-project">IT-Wallet Technical Specifications - PR #1163</p>
+        <p class="it-docs-footer-org">Dipartimento per la Trasformazione Digitale</p>
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.3</span><span class="it-docs-footer-detail">Last updated 01/07/2026</span><span class="it-docs-footer-detail">
+            Sphinx 7.4.5
+          </span></p>
+      </div>
+    </div>
+  </div>
+</footer><a href="#"
+   class="back-to-top shadow it-docs-back-to-top"
+   data-bs-toggle="backtotop"
+   data-bs-scroll-limit="100"
+   data-bs-position-top="0"
+   aria-label="Back to top">
+  <svg class="icon it-docs-back-to-top-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M18.6 10.1 12 3.5l-6.6 6.6.7.7 5.4-5.3V21h1V5.5l5.4 5.3.7-.7z"/>
+</svg>
+</a>
+  </body>
+</html>

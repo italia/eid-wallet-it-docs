@@ -1,0 +1,54 @@
+/**
+ * Post–Bootstrap Italia overrides (loaded after bootstrap-italia.min.css).
+ * Brightness modes and navscroll/local TOC need to win over BI defaults.
+ */
+
+:root {
+  --bs-font-sans-serif: var(--it-docs-font-family);
+  --bs-body-font-family: var(--it-docs-font-family);
+}
+
+/* Black mode — local TOC (On this page), desktop only */
+@media (min-width: 992px) {
+  html[data-it-docs-brightness="black"] .it-docs-navscroll.navbar.it-navscroll-wrapper,
+  html[data-it-docs-brightness="black"] .it-docs-navscroll.navbar.it-navscroll-wrapper .menu-wrapper,
+  html[data-it-docs-brightness="black"] .it-docs-navscroll.navbar.it-navscroll-wrapper .navbar-collapsable,
+  html[data-it-docs-brightness="black"] .it-docs-navscroll.navbar.it-navscroll-wrapper .navbar-collapsable .menu-wrapper {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: var(--it-docs-content-text);
+  }
+}
+
+html[data-it-docs-brightness="black"] .it-docs-navscroll.navbar.it-navscroll-wrapper .link-list-wrapper > h3,
+html[data-it-docs-brightness="black"] .it-docs-navscroll .it-docs-local-toc {
+  color: var(--it-docs-content-muted);
+}
+
+html[data-it-docs-brightness="black"] .it-docs-navscroll .it-docs-local-toc a,
+html[data-it-docs-brightness="black"] .it-docs-navscroll .it-docs-local-toc ul ul a,
+html[data-it-docs-brightness="black"] .it-docs-navscroll .it-docs-local-toc ul ul ul a,
+html[data-it-docs-brightness="black"] .it-docs-navscroll.navbar.it-navscroll-wrapper .link-list-wrapper .it-docs-local-toc ul li a,
+html[data-it-docs-brightness="black"] .it-docs-navscroll.navbar.it-navscroll-wrapper .link-list-wrapper .it-docs-local-toc ul li ul li a {
+  color: var(--it-docs-content-text) !important;
+}
+
+html[data-it-docs-brightness="black"] .it-docs-navscroll .it-docs-local-toc a:hover,
+html[data-it-docs-brightness="black"] .it-docs-navscroll .it-docs-local-toc a.active,
+html[data-it-docs-brightness="black"] .it-docs-navscroll.navbar.it-navscroll-wrapper .link-list-wrapper .it-docs-local-toc ul li a:hover,
+html[data-it-docs-brightness="black"] .it-docs-navscroll.navbar.it-navscroll-wrapper .link-list-wrapper .it-docs-local-toc ul li a.active,
+html[data-it-docs-brightness="black"] .it-docs-navscroll.navbar.it-navscroll-wrapper .link-list-wrapper .it-docs-local-toc ul li ul li a:hover,
+html[data-it-docs-brightness="black"] .it-docs-navscroll.navbar.it-navscroll-wrapper .link-list-wrapper .it-docs-local-toc ul li ul li a.active {
+  color: var(--it-docs-content-link) !important;
+  border-left-color: var(--it-docs-content-link) !important;
+}
+
+html[data-it-docs-brightness="black"] .it-docs-navscroll.navbar.it-navscroll-wrapper .link-list-wrapper .it-docs-local-toc ul li a.active span,
+html[data-it-docs-brightness="black"] .it-docs-navscroll.navbar.it-navscroll-wrapper .link-list-wrapper .it-docs-local-toc ul li ul li a.active span {
+  color: var(--it-docs-content-link) !important;
+  text-decoration: none;
+}
+
+html[data-it-docs-brightness="black"] .it-docs-navscroll.navbar.it-navscroll-wrapper .link-list-wrapper .it-docs-local-toc ul li ul li a.active {
+  border-left: none;
+}

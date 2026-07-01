@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+
+<html lang="it" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>10.3.1. App di Verifica &#8212; IT-Wallet Specifiche Tecniche - PR #1163</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=2d03bfa4" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
+    <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
+    <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=077bf722" />
+
+    <script src="_static/documentation_options.js?v=c0744c27"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=da26b4cc"></script>
+<script src="_static/shared-ui/js/jquery-3.7.0.min.js"></script>
+<script src="_static/shared-ui/js/ita.min.js"></script>
+<script src="_static/shared-ui/js/bootstrap-italia.bundle.min.js"></script>
+<script src="_static/js/eid-wallet-docs.js"></script>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
+    <link rel="index" title="Indice" href="genindex.html" />
+    <link rel="search" title="Cerca" href="search.html" />
+    <link rel="next" title="10.3.4. Entity Configuration Relying Party" href="relying-party-entity-configuration.html" />
+    <link rel="prev" title="10.3. Soluzione di Relying Party" href="relying-party-solution.html" />
+   
+  <meta name="description" content="IT-Wallet Specifiche Tecniche - PR #1163">
+  <script>
+    (function () {
+      try {
+        var mode = localStorage.getItem("it-docs-brightness");
+        if (mode && /^(light|middle|black)$/.test(mode)) {
+          document.documentElement.setAttribute("data-it-docs-brightness", mode);
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }
+    })();
+  </script>
+  </head><body class="it-docs-body">
+<nav class="it-skip-links" aria-label="Skip links">
+  <a id="skip-main" class="visually-hidden-focusable" href="#main-content">Skip to main content</a>
+  <a id="skip-footer" class="visually-hidden-focusable" href="#page-footer">Skip to footer</a>
+</nav>
+
+<header class="it-header-wrapper it-docs-header" role="banner">
+  <div class="it-header-slim-wrapper bg-primary">
+    <div class="container">
+      <div class="it-header-slim-wrapper-content d-flex justify-content-between align-items-center">
+        <span class="navbar-brand text-white" id="header-region-name">
+          <strong>Dipartimento per la Trasformazione Digitale</strong>
+        </span>
+        <div class="it-header-slim-right-zone it-docs-slim-tools d-flex align-items-center"><div class="it-docs-searchbox--slim it-docs-searchbox" role="search">
+  <form class="it-docs-search-form" action="search.html" method="get">
+    <label class="visually-hidden" for="it-docs-search-input">Cerca</label>
+    <input id="it-docs-search-input"
+           class="form-control it-docs-search-input"
+           type="search"
+           name="q"
+           placeholder="Cerca"
+           autocomplete="off"
+           autocorrect="off"
+           autocapitalize="off"
+           spellcheck="false"
+           enterkeyhint="search"/>
+    <button class="btn it-docs-search-submit" type="submit" title="Cerca">
+      <svg class="icon it-docs-search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M21.9 21.1 16 15.3c1.3-1.5 2-3.4 2-5.3 0-4.4-3.6-8-8-8s-8 3.6-8 8 3.6 8 8 8c1.9 0 3.8-.7 5.3-2l5.8 5.9.8-.8zM10 17c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/>
+</svg>
+      <span class="visually-hidden">Cerca</span>
+    </button>
+  </form>
+</div><a id="source_link" class="it-docs-source-link" href="https://github.com/italia/eudi-wallet-it-docs" title="Source repository" target="_blank" rel="noopener">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" aria-hidden="true" focusable="false">
+    <path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.4-2.1.7-2.1-1.3-4.3-4.3-5.2-2.6-.7-5.5.3-6.4 2.1zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5 21.3 0 42.8 2.9 62.8 8.5 0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8z"/>
+  </svg>
+  
+  <span class="visually-hidden">Source repository</span>
+</a><div class="nav-item dropdown it-docs-brightness-dropdown">
+  <button type="button"
+          id="it-docs-brightness-toggle"
+          class="it-docs-brightness-toggle nav-link dropdown-toggle"
+          aria-controls="it-docs-brightness-menu"
+          data-bs-toggle="dropdown"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          title="Content brightness">
+    <span id="it-docs-brightness-active-hint" class="visually-hidden">
+      Active brightness:
+    </span>
+    <svg class="icon it-docs-brightness-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M12 7.75a4.25 4.25 0 1 0 0 8.5 4.25 4.25 0 0 0 0-8.5zM10.5 1.25h3v4.75h-3V1.25zm0 17h3v4.75h-3V18.25zM1.25 10.5h4.75v3h-4.75v-3zm17 0h4.75v3H18.25v-3zM5.1 5.1h3.2v3.2H5.1V5.1zm10.7 0h3.2v3.2h-3.2V5.1zM5.1 15.7h3.2v3.2H5.1v-3.2zm10.7 0h3.2v3.2h-3.2v-3.2z"/>
+</svg>
+    <span class="visually-hidden" id="it-docs-brightness-current-label">Light</span>
+    <svg class="icon ms-1 it-docs-brightness-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
+</svg>
+  </button>
+  <div id="it-docs-brightness-menu" class="dropdown-menu dropdown-menu-end">
+    <div class="row">
+      <div class="col-12">
+        <div class="link-list-wrapper">
+          <ul class="link-list" role="menu" aria-labelledby="it-docs-brightness-toggle">
+            <li>
+              <button type="button"
+                      class="dropdown-item list-item it-docs-brightness-option active"
+                      data-it-docs-brightness="light"
+                      role="menuitemradio"
+                      aria-checked="true">
+                <span>Light</span>
+              </button>
+            </li>
+            <li>
+              <button type="button"
+                      class="dropdown-item list-item it-docs-brightness-option"
+                      data-it-docs-brightness="middle"
+                      role="menuitemradio"
+                      aria-checked="false">
+                <span>Middle</span>
+              </button>
+            </li>
+            <li>
+              <button type="button"
+                      class="dropdown-item list-item it-docs-brightness-option"
+                      data-it-docs-brightness="black"
+                      role="menuitemradio"
+                      aria-checked="false">
+                <span>Black</span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          <div class="nav-item dropdown it-header-lang-dropdown">
+            <button type="button"
+                    id="languagesDropButton"
+                    class="nav-link dropdown-toggle"
+                    aria-controls="language-menu"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="menu"
+                    aria-expanded="false">
+              <span id="header-lang-active-hint" class="visually-hidden">lingua attiva:</span>
+              <span class="it-header-lang-label" aria-hidden="true">ITA</span>
+              <svg class="icon icon-sm ms-1 it-header-lang-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
+</svg>
+            </button>
+            <div id="language-menu" class="dropdown-menu dropdown-menu-end">
+              <div class="row">
+                <div class="col-12">
+                  <div class="link-list-wrapper">
+                    <ul class="link-list" role="menu" aria-labelledby="languagesDropButton">
+                      <li>
+                        <a class="dropdown-item list-item it-lang-option active"
+                           href="#"
+                           data-lang="it"
+                           role="menuitemradio"
+                           aria-checked="true"
+                           aria-current="true">
+                          <span lang="it">Italiano</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item list-item it-lang-option"
+                           href="../en/relying-party-instance.html"
+                           data-lang="en"
+                           role="menuitemradio"
+                           aria-checked="false"
+                           >
+                          <span lang="en">English</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="header-title-section it-docs-header-title">
+    <div class="container py-3">
+      <div class="d-flex align-items-center justify-content-between flex-nowrap">
+        <div class="it-brand-wrapper it-docs-brand-wrapper">
+          <a href="index.html"
+             class="it-docs-brand-link d-flex align-items-center min-w-0 text-decoration-none"
+             title="Home">
+            <img src="_static/shared-ui/img/IT-Wallet-Logo-Primary-BlueItalia.svg" alt="" class="it-docs-logo" height="40">
+            <span class="navbar-separator it-docs-header-separator" aria-hidden="true"></span>
+            <span class="it-docs-header-project-name" id="header-project-name">IT-Wallet Specifiche Tecniche - PR #1163</span>
+          </a>
+        </div>
+        <button class="custom-navbar-toggler d-lg-none it-docs-sidebar-toggler"
+                type="button"
+                data-it-docs-nav-toggle
+                data-it-docs-nav-target="#itDocsPrimaryNav"
+                aria-controls="itDocsPrimaryNav"
+                aria-expanded="false"
+                aria-label="Open navigation">
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M22 5v1H2V5h20zM2 12.5h20v-1H2v1zM2 19h20v-1H2v1z"/>
+</svg>
+          <span>Menu</span>
+        </button>
+      </div>
+      <div class="it-docs-header-mobile-tools d-lg-none"><div class="it-docs-searchbox--mobile it-docs-searchbox" role="search">
+  <form class="it-docs-search-form" action="search.html" method="get">
+    <label class="visually-hidden" for="it-docs-search-input-mobile">Cerca</label>
+    <input id="it-docs-search-input-mobile"
+           class="form-control it-docs-search-input"
+           type="search"
+           name="q"
+           placeholder="Cerca"
+           autocomplete="off"
+           autocorrect="off"
+           autocapitalize="off"
+           spellcheck="false"
+           enterkeyhint="search"/>
+    <button class="btn it-docs-search-submit" type="submit" title="Cerca">
+      <svg class="icon it-docs-search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M21.9 21.1 16 15.3c1.3-1.5 2-3.4 2-5.3 0-4.4-3.6-8-8-8s-8 3.6-8 8 3.6 8 8 8c1.9 0 3.8-.7 5.3-2l5.8 5.9.8-.8zM10 17c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/>
+</svg>
+      <span class="visually-hidden">Cerca</span>
+    </button>
+  </form>
+</div>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="it-docs-layout">
+  <div class="container-fluid it-docs-container">
+    <div class="row it-docs-row">
+      <aside class="col-12 col-lg-2 it-docs-sidebar-col" aria-label="Primary navigation">
+        <div class="navbar-collapsable it-docs-primary-nav-collapsable" id="itDocsPrimaryNav">
+          <div class="overlay d-lg-none"></div>
+          <div class="close-div d-lg-none">
+            <button class="btn close-menu" type="button" aria-label="Close navigation">
+              <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="m12.7 12 3.7 3.6-.8.8-3.6-3.7-3.6 3.7-.8-.8 3.7-3.6-3.7-3.6.8-.8 3.6 3.7 3.6-3.7.8.8-3.7 3.6z"/>
+</svg>
+            </button>
+          </div>
+          <div class="menu-wrapper it-docs-menu-scroll"><div class="sidebar-wrapper it-line-right-side it-docs-primary-nav">
+  <div class="sidebar-linklist-wrapper">
+    <div class="link-list-wrapper">
+      
+      <div class="it-docs-sphinx-toc">
+        <p class="caption" role="heading"><span class="caption-text">Indice dei Contenuti</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduzione</a></li>
+<li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2. Brand Identity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Panoramica dell'Architettura</a></li>
+<li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Sistema di Onboarding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. Design dell'Esperienza Utente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. L'Infrastruttura di Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registry.html">7. Infrastruttura del Registro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entity-onboarding.html">8. Onboarding delle Entità</a></li>
+<li class="toctree-l1"><a class="reference internal" href="x5c-evaluation.html">9. Operazioni di Gestione dei Certificati X.509</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="entities.html">10. Entità</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html">10.1. Soluzione Wallet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html">10.2. Soluzione del Fornitore di Attestati Elettronici</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="relying-party-solution.html">10.3. Soluzione di Relying Party</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">10.3.1. App di Verifica</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app-di-verifica-mobile">10.3.2. App di Verifica Mobile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app-di-verifica-web">10.3.3. App di Verifica Web</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-entity-configuration.html">10.3.4. Entity Configuration Relying Party</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-metadata.html">10.3.5. Metadati della Relying Party</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="authentic-sources.html">10.4. Fonti Autentiche</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">11. Gestione degli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">12. Flussi relativi agli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">13. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">14. Algoritmi Crittografici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">15. Considerazioni di Sicurezza e Privacy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">16. Politiche Generali di Conservazione dei Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">17. Termini Definiti e Riferimenti</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">18. Come contribuire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">19. Rilasci Open Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">20. Appendice</a></li>
+</ul>
+
+      </div>
+    </div>
+  </div>
+</div>
+          </div>
+        </div>
+      </aside>
+
+      <div class="col-12 col-lg-8 it-docs-main-col">
+        <main id="main-content" class="it-docs-main it-page-sections-container" role="main" tabindex="-1">
+          <noscript>
+            <p class="it-docs-noscript alert alert-warning" role="alert">
+              JavaScript is required for navigation menus and some interactive features.
+            </p>
+          </noscript>
+          <div class="body">
+            
+  <section id="app-di-verifica">
+<h1><span class="section-number">10.3.1. </span>App di Verifica</h1>
+<p>L'App di Verifica è un'applicazione mobile o embedded progettata per richiedere, ricevere ed elaborare Attestati Elettronici dalle Istanze del Wallet in modo affidabile. Ogni App di Verifica garantisce l'integrità, la riservatezza e l'autenticità degli scambi di Attestati Elettronici, consentendo interazioni sicure tra Utenti e Relying Party.</p>
+<p>Esistono due tipi principali di App di Verifica, ciascuna destinata a diversi ambienti operativi:</p>
+<ul class="simple">
+<li><p><strong>App di Verifica Embedded</strong>: una soluzione hardware/software che opera su un dispositivo specializzato (ad es., varchi di accesso). Ogni App di Verifica corrisponde a un'installazione specifica dell'applicazione su un dispositivo embedded. Poiché la trust con l'App di Verifica Embedded è stabilita attraverso la trust instaurata con il Mobile Relying Party Provider, l'App di Verifica Embedded può essere considerata un Confidential Client di OAuth.</p></li>
+<li><p><strong>App di Verifica Mobile</strong>: un'applicazione nativa che opera su un dispositivo mobile (ad es., smartphone o tablet). Ogni istanza corrisponde a un'installazione specifica dell'applicazione su un dispositivo. Poiché la trust con la App di Verifica Mobile è stabilita attraverso la trust instaurata con il Mobile Relying Party Provider, l'App di Verifica Mobile può essere considerata un Confidential Client di OAuth.</p></li>
+<li><p><strong>App di Verifica Web</strong>: un'applicazione remota gestita dalla Relying Party. Un'App di Verifica Web opera come Confidential Client di OAuth, il che significa che può memorizzare in modo sicuro configurazioni riservate (come le sue chiavi crittografiche private) su un server remoto. In questo contesto, la Relying Party non è fornita da terzi e la richiesta di presentazione e la successiva validazione sono gestite automaticamente dal software.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Le App di Verifica Embedded e Mobile che agiscono come client pubblici non sono considerate all'interno di queste specifiche.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>A differenza della App di Verifica Web, un'App di Verifica Mobile o Embedded richiedono una gestione appropriata del ciclo di vita e procedure ad hoc di registrazione gestite attraverso il Backend della Relying Party.</p>
+</div>
+<p>Ulteriori dettagli tecnici e operativi sono discussi nelle sezioni seguenti.</p>
+</section>
+<section id="app-di-verifica-mobile">
+<h1><span class="section-number">10.3.2. </span>App di Verifica Mobile</h1>
+<p>Il ciclo di vita di un'App di Verifica include quattro stati principali: <strong>Installed</strong>, <strong>Unverified</strong>, <strong>Verified</strong> e <strong>Uninstalled</strong>, supportando funzionalità come registrazione, riemissione del Certificato di Accesso e revoca.</p>
+<section id="ciclo-di-vita-app-di-verifica-mobile">
+<h2><span class="section-number">10.3.2.1. </span>Ciclo di Vita App di Verifica Mobile</h2>
+<p>In questa sezione vengono presentati le macchine a stati finiti per spiegare gli stati dell'App di Verifica Mobile, nonché le loro transizioni e relazioni.</p>
+<figure class="align-default" id="id1">
+<span id="fig-relyingparty-instance-mobile-lifecycle"></span><p class="plantuml">
+<object data="_images/plantuml-3521db702acb0af2e2c3e37c739df99f3157aa1e.svg" type="image/svg+xml" style="width:99%">
+<a href="_images/plantuml-3521db702acb0af2e2c3e37c739df99f3157aa1e.png"><img src="_images/plantuml-3521db702acb0af2e2c3e37c739df99f3157aa1e.png" alt="La figura illustra il Ciclo di vita dell'App di Verifica Mobile." style="width: 99.0%"/></a>
+
+</object></p>
+<figcaption>
+<p><span class="caption-number">Fig. 10.12 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/XP7VQ_em5CNVyrTSzENx5SIkw1X5Ycx6KTYaYpyOZ3reSwk1c4gRRdH__M8DZJZ4FlMU--avXzjHeTUvBlSINaIAIPL8X2m5lKDupJR2J0nb9TGMOiDL42dpWKgGx0H7mFt1Q1oB91S7BJ95Y5bhF65I8eVsT3eUU9xLMolCHIgGjs1T6Eirhw3j-m-Flc-9fVgo2BHJytXUin3ET7BV7_G7X7nqFg7Bis_L3Lrc02oE89hD5wJH6ihQE6uvkoHpiTrfWzRrJX2ZpwGUR_fOIcAg_tPYT6K1PpzCCfdbmKQM6CRHfFVlxJyTZo5cTDYhL-55ihjG04-KBO2-nyI9DnkUe-N15Qcz68tcytFa8l1wsqvJr_7NxZ2XnuEwWWOqaFcP9g0GFnZS-U6mTtmBoGWLB_Vo5m00">Ciclo di vita della App di Verifica Mobile.</a></span></p>
+</figcaption>
+</figure>
+<p>Come mostrato in <a class="reference internal" href="#fig-relyingparty-instance-mobile-lifecycle"><span class="std std-numref">Fig. 10.12</span></a>, l'App di Verifica Mobile ha quattro stati distinti: <strong>Installed</strong>, <strong>Unverified</strong>, <strong>Verified</strong> e <strong>Uninstalled</strong>. Ogni stato rappresenta uno stato funzionale specifico e determina le azioni che possono essere eseguite.</p>
+<section id="transizione-a-installed">
+<h3><span class="section-number">10.3.2.1.1. </span>Transizione a Installed</h3>
+<p>La macchina a stati inizia con l'installazione della App di Verifica (transizione <strong>RPI INST</strong>), dove gli Utenti scaricano e installano una App di Verifica utilizzando l'app store ufficiale del sistema operativo del loro dispositivo, portando allo stato <strong>Installed</strong>.</p>
+<p>In questo stato, l'App di Verifica DEVE interagire solo con il Backend della Relying Party per essere registrata (cioè, per verificare l'integrità dell'Istanza, registrare le Cryptographic Hardware Keys e ottenere un Certificato di Accesso).</p>
+<p>Quando avviene la revoca dell'App di Verifica (transizione <strong>RPI REV</strong>), l'App di Verifica DEVE tornare da <strong>Verified</strong> a <strong>Installed</strong>. Questa transizione implica le seguenti operazioni:</p>
+<ol class="arabic simple">
+<li><p>Il Certificato di Accesso DEVE essere revocato.</p></li>
+<li><p>Le Cryptographic Hardware Keys DEVONO essere cancellate.</p></li>
+</ol>
+<p>La revoca può avvenire nei seguenti casi:</p>
+<ul class="simple">
+<li><p>Per motivi di sicurezza (ad es., compromissione del materiale crittografico).</p></li>
+<li><p>Per motivi tecnici (ad es., deprecazione della Soluzione di Relying Party).</p></li>
+<li><p>In caso di de-registrazione della Relying Party (come dettagliato in <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>, Sezione 6.4.3).</p></li>
+<li><p>Attività illegali segnalate da Organi Giudiziari o di Supervisione.</p></li>
+</ul>
+<p>Inoltre, ogni Relying Party DOVREBBE stabilire un periodo di tempo (periodo di grazia) durante il quale l'App di Verifica può richiedere presentazioni di Credenziali Elettroniche autenticandosi verso un'Istanza del Wallet utilizzando un Certificato di Accesso scaduto. Dopo questo periodo, l'App di Verifica DEVE essere de-registrata (transizione <strong>RPI DEREG</strong>) e tornare allo stato <strong>Installed</strong>. Questa transizione implica che le Cryptographic Hardware Keys DEVONO essere cancellate.</p>
+</section>
+<section id="transizione-a-verified">
+<h3><span class="section-number">10.3.2.1.2. </span>Transizione a Verified</h3>
+<p>L'App di Verifica deve ottenere un Certificato di Accesso appropriato, che sarà utilizzato per autenticarsi verso le Istanze del Wallet. Questo Certificato viene ottenuto interagendo con il Backend della Relying Party, che a sua volta comunica con l'Autorità di Certificazione per i Certificati di Accesso dell'App di Verifica. In particolare, la transizione di registrazione (<strong>RPI REG</strong>) consiste nelle seguenti sottofasi, che portano allo stato <strong>Verified</strong>:</p>
+<ol class="arabic simple">
+<li><p><strong>Inizializzazione</strong>: Dopo la verifica dell'integrità dell'App di Verifica, questa registra una coppia di Cryptographic Hardware Keys.</p></li>
+<li><p><strong>Emissione del Certificato di Accesso</strong>: L'App di Verifica ottiene un Certificato di Accesso.</p></li>
+</ol>
+<p>Nel caso in cui il Certificato di Accesso sia scaduto, un nuovo Certificato di Accesso può essere emesso per l'App di Verifica; questa operazione è rappresentata dalla transizione <strong>CERT REISS</strong> verso lo stato <strong>Verified</strong>.</p>
+<p>In questo stato, l'App di Verifica può richiedere la presentazione di Attestati Elettronici alle Istanze del Wallet (<strong>PID/(Q)EAA PRE</strong>), utilizzando il Certificato di Accesso per autenticarsi.</p>
+</section>
+<section id="transizione-a-unverified">
+<h3><span class="section-number">10.3.2.1.3. </span>Transizione a Unverified</h3>
+<p>La scadenza del Certificato di Accesso (transizione <strong>CERT EXP</strong>) porta allo stato <strong>Unverified</strong>.</p>
+<p>In questo stato, l'App di Verifica può ancora richiedere la presentazione di Attestati Elettronici alle Istanze del Wallet durante il periodo di grazia. Tuttavia, poiché il Certificato è scaduto, un disclaimer specifico DEVE essere mostrato all'Utente dell'Istanza del Wallet durante il flusso di presentazione; per questo motivo, questa operazione è rappresentata dall'etichetta <strong>PID/(Q)EAA PRE</strong>. Questo è necessario per supportare i flussi di presentazione offline. Dopo che il periodo di grazia è trascorso, la Relying Party Instance NON DEVE più richiedere presentazioni e sarà de-registrata.</p>
+</section>
+<section id="transizione-a-uninstalled">
+<h3><span class="section-number">10.3.2.1.4. </span>Transizione a Uninstalled</h3>
+<p>Attraverso gli stati <strong>Installed</strong>, <strong>Verified</strong> e <strong>Unverified</strong>, la Relying Party Instance può essere rimossa completamente attraverso la disinstallazione dell'App di Verifica (transizione <strong>RPI UNINST</strong>), portando allo stato <strong>Uninstalled</strong>. Se un'App di Verifica è <strong>Uninstalled</strong>, termina il suo ciclo di vita.</p>
+</section>
+</section>
+<section id="funzionalita-dell-app-di-verifica-mobile">
+<h2><span class="section-number">10.3.2.2. </span>Funzionalità dell'App di Verifica Mobile</h2>
+<p>Un'App di Verifica DEVE supportare tre funzionalità fondamentali: <strong>Registrazione</strong>, <strong>Riemissione del Certificato di Accesso</strong> e <strong>Revoca</strong>. Ogni funzionalità è descritta in dettaglio nelle sezioni seguenti.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>In questa sezione, i servizi utilizzati per attestare l'autenticità dell'App di Verifica e del dispositivo in cui è installata sono indicati come <strong>Servizio di Integrità del Dispositivo</strong>. Il Servizio di Integrità del Dispositivo è considerato in modo astratto e si presume che sia un servizio fornito da una terza parte affidabile (cioè, l'API del fornitore del sistema operativo) in grado di eseguire controlli di integrità sull'Istanza del Wallet e sul dispositivo in cui è installata.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>I dettagli forniti di seguito sono non normativi e sono destinati a chiarire le funzionalità dell'App di Verifica Mobile. L'implementazione effettiva può variare in base al caso d'uso specifico e ai requisiti della Relying Party.</p>
+</div>
+<section id="registrazione-app-di-verifica-mobile">
+<h3><span class="section-number">10.3.2.2.1. </span>Registrazione App di Verifica Mobile</h3>
+<p>Questo processo consente la registrazione di un'App di Verifica con il Backend della Relying Party e l'emissione di un Certificato di Accesso che sarà utilizzato per autenticarsi verso le Istanze del Wallet durante i flussi di presentazione. Il processo consiste in due sottofasi:</p>
+<ol class="arabic simple">
+<li><p><strong>Inizializzazione</strong>: L'App di Verifica richiede un'asserzione di sicurezza e integrità dal produttore del sistema operativo, che lega anche una coppia di chiavi crittografiche asimmetriche a lunga durata memorizzata in un adeguato storage sicuro all'interno del dispositivo stesso; l'asserzione viene quindi convalidata dal Backend della Relying Party. Ulteriori dettagli sono forniti nella Sezione <a class="reference internal" href="mobile-application-instance.html#istanza-dell-applicazione-mobile"><span class="std std-ref">Istanza dell'Applicazione Mobile</span></a>.</p></li>
+<li><p><strong>Emissione del Certificato di Accesso</strong>: L'App di Verifica richiede un Certificato di Accesso dal Backend della Relying Party. Prima di interagire con l'Autorità di Certificazione per l'emissione del Certificato di Accesso, il Backend della Relying Party convalida l'integrità e la sicurezza dell'App di Verifica sfruttando le chiavi attestate a lunga durata generate nella sottofase precedente. Il flusso è mostrato in <a class="reference internal" href="#fig-relyingparty-instance-mobile-registration-accesscertificateissuance"><span class="std std-numref">Fig. 10.13</span></a>, mentre una descrizione passo-passo è fornita di seguito.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>I Certificati di Accesso POSSONO essere emessi come a breve durata (tipicamente validi entro 24 ore) o a lunga durata.</p>
+</div>
+<figure class="align-default" id="id2">
+<span id="fig-relyingparty-instance-mobile-registration-accesscertificateissuance"></span><p class="plantuml">
+<object data="_images/plantuml-86989b654ca41a7352c0d1eeefe6c158b05c5c95.svg" type="image/svg+xml" style="width:99%">
+<a href="_images/plantuml-86989b654ca41a7352c0d1eeefe6c158b05c5c95.png"><img src="_images/plantuml-86989b654ca41a7352c0d1eeefe6c158b05c5c95.png" alt="La figura illustra il Flusso di Emissione del Certificato di Accesso dell'App di Verifica Mobile." style="width: 99.0%"/></a>
+
+</object></p>
+<figcaption>
+<p><span class="caption-number">Fig. 10.13 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/ZLF1ZjD03BtdAwpX04Zm0psWBMM1QeMqQijjfSYPkCsewSmmdXJozpXX89tL2EsXKMg_Ppy_EtSSCSJXqbSuH6U7IqEXwanBS7GkDkvNLRr-58JHngEDNA6EBe3wpXGK8CF0Gl0B0jGtrvYUO4VzQEm99lO8MokDhAQPWzv3plb4LwD9K95EmGX-Js6Eh1-tVoWO6Lwn3rBo58Xipi-RVKHz9jlEn4QVoz1SrvDTQqtCi2717et6ACs7sBb9pbn9etYnFwnt1zZSxmxRpzlD-d1VoJ3lFyXZ1PkEz1dC4JPXzD6T0lhEQFYAeVs9WU21HeRf1QzeUcnwgcxONyXIm4W2WJEDuD44UAEKlDT-Q9Hw1-bFC5UbtYQkpBSIhtyCn540raqcgsbDvegHvldbDmEN9WjoJYO9Ix2bh411fe1rRyZ6kiM8IW7QzibgT_73ysJT8NTID5N1oAiYO14zOGGkpqMQ-NiRDJ9FIt8s5vf89QLTMa7DvcGn3a5cB48VIAx7s7Owa6JghS_bTCdgT0qCpfPPDxRdUVREChrW0zcfxcMmc_hJuMWEpyuanNB5HSa9cP8Q2zpfSz0u9-Vk2qUY_nhY_5NLUf6QBqrZPiN_2GKpzj45UW5DmDKTsNQuzBy1">Flusso di Emissione del Certificato di Accesso della App di Verifica Mobile.</a></span></p>
+</figcaption>
+</figure>
+<p><strong>Passi 1-2:</strong> La App di Verifica Mobile:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Verifica l'esistenza delle Cryptographic Hardware Keys. Se non esistono, è necessaria la re-inizializzazione dell'App di Verifica.</p></li>
+<li><p>Genera una coppia di chiavi asimmetriche per il Certificato di Accesso (<code class="docutils literal notranslate"><span class="pre">key_pub</span></code>, <code class="docutils literal notranslate"><span class="pre">key_priv</span></code>).</p></li>
+</ol>
+</div></blockquote>
+<p><strong>Passi 3-5:</strong> L'App di Verifica Mobile richiede un <code class="docutils literal notranslate"><span class="pre">nonce</span></code> dall'<a class="reference internal" href="relying-party-provider-backend-endpoint.html#endpoint-nonce-della-relying-party"><span class="std std-ref">Endpoint Nonce della Relying Party</span></a> del Backend della Relying Party. Questo <code class="docutils literal notranslate"><span class="pre">nonce</span></code> DEVE essere imprevedibile per servire come principale difesa contro i replay attack.</p>
+<p>In caso di richiesta riuscita, l'<a class="reference internal" href="relying-party-provider-backend-endpoint.html#endpoint-nonce-della-relying-party"><span class="std std-ref">Endpoint Nonce della Relying Party</span></a> genera e restituisce il <code class="docutils literal notranslate"><span class="pre">nonce</span></code> all'App di Verifica Mobile. L'<a class="reference internal" href="relying-party-provider-backend-endpoint.html#endpoint-nonce-della-relying-party"><span class="std std-ref">Endpoint Nonce della Relying Party</span></a> DEVE garantire che sia monouso e valido solo entro un periodo di tempo specifico.</p>
+<p>Esempi non normativi della Richiesta e Risposta del Nonce possono essere trovati rispettivamente nelle sezioni <a class="reference internal" href="mobile-application-instance.html#richiesta-di-nonce-dell-applicazione-mobile"><span class="std std-ref">Richiesta di Nonce dell'Applicazione Mobile</span></a> e <a class="reference internal" href="mobile-application-instance.html#risposta-di-nonce-dell-applicazione-mobile"><span class="std std-ref">Risposta di Nonce dell'Applicazione Mobile</span></a>.</p>
+<p><strong>Passo 6:</strong> L'App di Verifica:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Genera <code class="docutils literal notranslate"><span class="pre">client_data</span></code>, un JSON Object che include <code class="docutils literal notranslate"><span class="pre">nonce</span></code> e l'impronta digitale di <code class="docutils literal notranslate"><span class="pre">key_pub</span></code>, ottenuta dalla sua rappresentazione <code class="docutils literal notranslate"><span class="pre">JWK</span></code>.</p></li>
+<li><p>Calcola <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> applicando l'algoritmo SHA256 a <code class="docutils literal notranslate"><span class="pre">client_data</span></code>.</p></li>
+</ol>
+</div></blockquote>
+<p>Di seguito è riportato un esempio non normativo di <code class="docutils literal notranslate"><span class="pre">client_data</span></code>.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;nonce&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f3b29a81-45c7-4d12-b8b5-e1f6c9327aef&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;jwk_thumbprint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hT3v7KQjFZy6GvDkYgOZ1u2F6T4Nz5bPjX8o1MZ3dJY&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Passi 7-8:</strong> L'App di Verifica Mobile:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Richiede al Servizio di Integrità del Dispositivo di creare un valore <code class="docutils literal notranslate"><span class="pre">integrity_assertion</span></code> collegato al <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code>.</p></li>
+<li><p>Riceve un valore <code class="docutils literal notranslate"><span class="pre">integrity_assertion</span></code> firmato dal Servizio di Integrità del Dispositivo, autenticato dall'OEM.</p></li>
+</ol>
+</div></blockquote>
+<p><strong>Passi 9-11:</strong> L'App di Verifica Mobile:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Genera un valore <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code> firmando il <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> con la chiave privata Cryptographic Hardware, che servirà come prova di possesso per le Cryptographic Hardware Keys.</p></li>
+<li><p>Genera la <a class="reference internal" href="relying-party-provider-backend-endpoint.html#richiesta-di-associazione-chiavi-della-relying-party"><span class="std std-ref">Richiesta di Associazione Chiavi della Relying Party</span></a> sotto forma di JWT. Questo JWT include <code class="docutils literal notranslate"><span class="pre">integrity_assertion</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code>, <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code> e <code class="docutils literal notranslate"><span class="pre">cnf</span></code> (che rappresenta <code class="docutils literal notranslate"><span class="pre">key_pub</span></code>); è firmato utilizzando <code class="docutils literal notranslate"><span class="pre">key_priv</span></code>.</p></li>
+<li><p>Invia il JWT firmato <a class="reference internal" href="relying-party-provider-backend-endpoint.html#richiesta-di-associazione-chiavi-della-relying-party"><span class="std std-ref">Richiesta di Associazione Chiavi della Relying Party</span></a> come parametro <code class="docutils literal notranslate"><span class="pre">assertion</span></code> nel corpo di HTTP request all'<a class="reference internal" href="relying-party-provider-backend-endpoint.html#endpoint-di-associazione-chiavi-della-relying-party"><span class="std std-ref">Endpoint di Associazione Chiavi della Relying Party</span></a>.</p></li>
+</ol>
+</div></blockquote>
+<p><strong>Passo 12:</strong> Il Backend della Relying Party valuta la Richiesta di Key Binding ed esegue i seguenti controlli:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>La richiesta include tutti i parametri di intestazione HTTP richiesti come definito in <a class="reference internal" href="relying-party-provider-backend-endpoint.html#richiesta-di-associazione-chiavi-della-relying-party"><span class="std std-ref">Richiesta di Associazione Chiavi della Relying Party</span></a>.</p></li>
+<li><p>La firma della Richiesta di Key Binding è valida e verificabile utilizzando il <code class="docutils literal notranslate"><span class="pre">jwk</span></code> fornito.</p></li>
+<li><p>Il valore <code class="docutils literal notranslate"><span class="pre">nonce</span></code> è stato generato dal Backend della Relying Party e non è stato utilizzato in precedenza.</p></li>
+<li><p>L'App di Verifica possiede valide Cryptographic Hardware Keys registrate.</p></li>
+<li><p>Il <code class="docutils literal notranslate"><span class="pre">client_data</span></code> può essere ricostruito utilizzando <code class="docutils literal notranslate"><span class="pre">nonce</span></code> e <code class="docutils literal notranslate"><span class="pre">cnf</span></code> (che rappresenta <code class="docutils literal notranslate"><span class="pre">key_pub</span></code>). Il valore del parametro <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code> viene quindi convalidato utilizzando la chiave pubblica della Cryptographic Hardware Key registrata associata all'App di Verifica.</p></li>
+<li><p>L'<code class="docutils literal notranslate"><span class="pre">integrity_assertion</span></code> può essere convalidata secondo le linee guida del produttore del dispositivo. I controlli specifici eseguiti dal Backend della Relying Party sono dettagliati nella documentazione del produttore del sistema operativo.</p></li>
+<li><p>Il dispositivo in uso è privo di difetti di sicurezza noti e soddisfa i requisiti minimi di sicurezza definiti dalla Relying Party.</p></li>
+<li><p>L'URL nel parametro <code class="docutils literal notranslate"><span class="pre">iss</span></code> corrisponde all'identificatore URL della Relying Party.</p></li>
+</ol>
+</div></blockquote>
+<p><strong>Passo 13:</strong> Se i controlli hanno successo, il Backend della Relying Party risponde con una conferma di successo (<a class="reference internal" href="relying-party-provider-backend-endpoint.html#risposta-di-associazione-chiavi-della-relying-party"><span class="std std-ref">Risposta di Associazione Chiavi della Relying Party</span></a>).</p>
+<p><strong>Passo 14:</strong> L'App di Verifica Mobile genera una Certificate Signing Request (CSR, <code class="docutils literal notranslate"><span class="pre">csr</span></code>) utilizzando <code class="docutils literal notranslate"><span class="pre">key_pub</span></code> e <code class="docutils literal notranslate"><span class="pre">key_priv</span></code>.</p>
+<p><strong>Passo 15:</strong> L'App di Verifica Mobile invia la CSR al <a class="reference internal" href="relying-party-provider-backend-endpoint.html#endpoint-del-certificato-di-accesso-della-relying-party"><span class="std std-ref">Endpoint del Certificato di Accesso della Relying Party</span></a> del Backend della Relying Party, come parte della <a class="reference internal" href="relying-party-provider-backend-endpoint.html#richiesta-del-certificato-di-accesso-della-relying-party"><span class="std std-ref">Richiesta del Certificato di Accesso della Relying Party</span></a>.</p>
+<p><strong>Passi 16-17:</strong> Il Backend della Relying Party verifica che la chiave pubblica nella CSR corrisponda a un'App di Verifica che è stata precedentemente convalidata, cioè che corrisponda a quella legata alle Cryptographic Hardware Keys attraverso <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code>. Se questo controllo ha successo, il Backend della Relying Party invia la CSR all'Autorità di Certificazione per i Certificati di Accesso dell'App di Verifica.</p>
+<p><strong>Passi 18-19:</strong> L'Autorità di Certificazione per i Certificati di Accesso dell'App di Verifica firma la CSR, ottenendo un Certificato di Accesso valido (<code class="docutils literal notranslate"><span class="pre">access_certificate</span></code>) che invia al Backend della Relying Party.</p>
+<p><strong>Passi 20-21:</strong> Il Backend della Relying Party invia il Certificato di Accesso (come parte della <a class="reference internal" href="relying-party-provider-backend-endpoint.html#risposta-del-certificato-di-accesso-della-relying-party"><span class="std std-ref">Risposta del Certificato di Accesso della Relying Party</span></a>) all'App di Verifica Mobile, che lo memorizza per future autenticazioni verso le Istanze del Wallet.</p>
+</section>
+<section id="riemissione-de-certificato-di-accesso-app-di-verifica-mobile">
+<h3><span class="section-number">10.3.2.2.2. </span>Riemissione de Certificato di Accesso App di Verifica Mobile</h3>
+<p>L'emissione di un nuovo Certificato di Accesso segue lo stesso flusso descritto nella sezione <a class="reference internal" href="#registrazione-app-di-verifica-mobile"><span class="std std-ref">Registrazione App di Verifica Mobile</span></a> per <strong>Emissione del Certificato di Accesso</strong>. Questi certificati POSSONO essere emessi come a breve durata (tipicamente validi entro 24 ore) o a lunga durata.</p>
+</section>
+<section id="revoca-app-di-verifica-mobile">
+<h3><span class="section-number">10.3.2.2.3. </span>Revoca App di Verifica Mobile</h3>
+<p>Le Relying Party DEVONO verificare periodicamente l'autenticità e la sicurezza delle App di Verifica.
+Quando vengono rilevati problemi di sicurezza, le Relying Party DEVONO revocare l'App di Verifica, revocando il suo Certificato di Accesso X.509 (in caso di certificati a lunga durata), e in ogni caso, le Relying Party NON DEVONO consentire la riemissione di certificati.
+Di conseguenza, la revoca dell'App di Verifica Mobile DEVE essere legata alla validità dei Certificati di Accesso X.509.</p>
+<p>I Certificati X.509 a lunga durata seguono i requisiti relativi al loro ciclo di vita, definiti in <a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>.</p>
+</section>
+</section>
+</section>
+<section id="app-di-verifica-web">
+<h1><span class="section-number">10.3.3. </span>App di Verifica Web</h1>
+<p>Le Web Instance operano controlli di sicurezza lato server che memorizzano in modo sicuro segreti e chiavi crittografiche in un ambiente controllato. Le App di Verifica Web DEVONO essere registrate presso la Trust Anchor o le Entità Intermediarie, secondo <a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>.</p>
+<section id="funzionalita-dell-app-di-verifica-web">
+<h2><span class="section-number">10.3.3.1. </span>Funzionalità dell'App di Verifica Web</h2>
+<p>Un'App di Verifica Web DEVE supportare due funzionalità fondamentali: <strong>Registrazione</strong> e <strong>Revoca</strong>. Ogni funzionalità è descritta nelle sezioni seguenti.</p>
+<section id="registrazione-revoca-app-di-verifica-web">
+<h3><span class="section-number">10.3.3.1.1. </span>Registrazione Revoca App di Verifica Web</h3>
+<p>Le App di Verifica Web, in qualità di OAuth Confidential Client, sono registrate direttamente dalla Trust Anchor o un'Entità Intermediaria. La registrazione comporta:</p>
+<ul class="simple">
+<li><p>La Relying Party DEVE registrare la sua App Web con la Trust Anchor o con le appropriate Entità Intermediarie della Federazione.</p></li>
+<li><p>La Relying Party DEVE esporre una Entity Configuration come definito nel Trust Framework.</p></li>
+<li><p>L'Entity Configuration DEVE contenere tutti i metadati necessari per la federazione, inclusi gli endpoint e le chiavi pubbliche.</p></li>
+<li><p>Non è richiesta alcuna gestione del ciclo di vita delle singole istanze, poiché l'App Web opera come parte dell'ambiente server protetto.</p></li>
+</ul>
+</section>
+<section id="revoca-app-di-verifica-web">
+<h3><span class="section-number">10.3.3.1.2. </span>Revoca App di Verifica Web</h3>
+<p>Quando una App di Verifica Web deve essere revocata:</p>
+<ul class="simple">
+<li><p>La revoca DEVE essere eseguita secondo le procedure del Trust Framework.</p></li>
+<li><p>Le chiavi crittografiche utilizzate dall'App Web DEVONO essere revocate.</p></li>
+<li><p>L'Entity Configuration DEVE essere aggiornata per riflettere la revoca.</p></li>
+<li><p>La Trust Anchor DEVE essere notificata della revoca per aggiornare i metadata della federazione.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+          </div>
+          <nav class="it-docs-pager d-flex flex-wrap justify-content-between gap-3 mt-5" aria-label="Page navigation">
+            <div class="it-docs-pager-prev">
+              <a class="btn btn-outline-primary" href="relying-party-solution.html">
+                <svg class="icon icon-sm me-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M14.6 17.2 9 11.6 14.6 6l.8.7-4.9 4.9 4.9 4.9z"/>
+</svg>
+                <span>10.3. Soluzione di Relying Party</span>
+              </a>
+            </div>
+            <div class="it-docs-pager-next ms-auto">
+              <a class="btn btn-primary" href="relying-party-entity-configuration.html">
+                <span>10.3.4. Entity Configuration Relying Party</span>
+                <svg class="icon icon-sm ms-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="m9.8 17.2-.8-.7 4.9-4.9L9 6.7l.8-.7 5.6 5.6z"/>
+</svg>
+              </a>
+            </div>
+          </nav>
+        </main>
+      </div>
+
+      <aside class="col-12 col-lg-2 it-docs-navscroll-col" aria-label="Secondary navigation">
+        <div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
+     data-bs-navscroll
+     aria-label="Page contents">
+  <button class="custom-navbar-toggler"
+          type="button"
+          data-it-docs-nav-toggle
+          data-it-docs-nav-target="#itDocsNavscroll"
+          aria-controls="itDocsNavscroll"
+          aria-expanded="false"
+          aria-label="Open page contents">
+    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
+</svg>
+    <span>Page contents</span>
+  </button>
+  <div class="navbar-collapsable it-docs-navscroll-panel" id="itDocsNavscroll">
+    <div class="overlay"></div>
+    <div class="close-div">
+      <button class="btn close-menu" type="button" aria-label="Close page contents">
+        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="m12.7 12 3.7 3.6-.8.8-3.6-3.7-3.6 3.7-.8-.8 3.7-3.6-3.7-3.6.8-.8 3.6 3.7 3.6-3.7.8.8-3.7 3.6z"/>
+</svg>
+      </button>
+    </div>
+    <div class="menu-wrapper it-docs-menu-scroll">
+      <div class="link-list-wrapper">
+        <h3>On this page</h3>
+        <div class="it-docs-local-toc">
+          <ul>
+<li><a class="reference internal" href="#">10.3.1. App di Verifica</a></li>
+<li><a class="reference internal" href="#app-di-verifica-mobile">10.3.2. App di Verifica Mobile</a><ul>
+<li><a class="reference internal" href="#ciclo-di-vita-app-di-verifica-mobile">10.3.2.1. Ciclo di Vita App di Verifica Mobile</a><ul>
+<li><a class="reference internal" href="#transizione-a-installed">10.3.2.1.1. Transizione a Installed</a></li>
+<li><a class="reference internal" href="#transizione-a-verified">10.3.2.1.2. Transizione a Verified</a></li>
+<li><a class="reference internal" href="#transizione-a-unverified">10.3.2.1.3. Transizione a Unverified</a></li>
+<li><a class="reference internal" href="#transizione-a-uninstalled">10.3.2.1.4. Transizione a Uninstalled</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#funzionalita-dell-app-di-verifica-mobile">10.3.2.2. Funzionalità dell'App di Verifica Mobile</a><ul>
+<li><a class="reference internal" href="#registrazione-app-di-verifica-mobile">10.3.2.2.1. Registrazione App di Verifica Mobile</a></li>
+<li><a class="reference internal" href="#riemissione-de-certificato-di-accesso-app-di-verifica-mobile">10.3.2.2.2. Riemissione de Certificato di Accesso App di Verifica Mobile</a></li>
+<li><a class="reference internal" href="#revoca-app-di-verifica-mobile">10.3.2.2.3. Revoca App di Verifica Mobile</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#app-di-verifica-web">10.3.3. App di Verifica Web</a><ul>
+<li><a class="reference internal" href="#funzionalita-dell-app-di-verifica-web">10.3.3.1. Funzionalità dell'App di Verifica Web</a><ul>
+<li><a class="reference internal" href="#registrazione-revoca-app-di-verifica-web">10.3.3.1.1. Registrazione Revoca App di Verifica Web</a></li>
+<li><a class="reference internal" href="#revoca-app-di-verifica-web">10.3.3.1.2. Revoca App di Verifica Web</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+<footer id="page-footer" class="it-docs-footer" role="contentinfo" tabindex="-1">
+  <div class="container">
+    <div class="it-docs-footer-inner"><nav id="footer-partners-nav"
+     class="it-docs-footer-partners"
+     aria-label="Institutional partners">
+  <ul class="it-docs-footer-partners-list">
+    <li>
+      <a href="https://innovazione.gov.it/"
+         class="it-docs-footer-partner-link it-docs-footer-partner-link--dtd"
+         target="_blank"
+         rel="noopener">
+        <img src="_static/img/footer/logo-dtd.svg"
+             alt="Department for Digital Transformation"
+             width="120"
+             height="32"
+             loading="lazy"
+             decoding="async">
+      </a>
+    </li>
+    <li>
+      <a href="https://www.ipzs.it/"
+         class="it-docs-footer-partner-link it-docs-footer-partner-link--ipzs"
+         target="_blank"
+         rel="noopener">
+        <img src="_static/img/footer/logo-ipzs.png"
+             alt="Istituto Poligrafico e Zecca dello Stato"
+             width="105"
+             height="43"
+             loading="lazy"
+             decoding="async">
+      </a>
+    </li>
+    <li>
+      <a href="https://www.pagopa.it/it/"
+         class="it-docs-footer-partner-link it-docs-footer-partner-link--pagopa"
+         target="_blank"
+         rel="noopener">
+        <img src="_static/img/footer/logo-pagopa.svg"
+             alt="PagoPA"
+             width="121"
+             height="34"
+             loading="lazy"
+             decoding="async">
+      </a>
+    </li>
+    <li>
+      <a href="https://www.agid.gov.it/it/"
+         class="it-docs-footer-partner-link it-docs-footer-partner-link--agid"
+         target="_blank"
+         rel="noopener">
+        <img src="_static/img/footer/logo-agid.svg"
+             alt="Agenzia per l'Italia Digitale"
+             width="203"
+             height="31"
+             loading="lazy"
+             decoding="async">
+      </a>
+    </li>
+  </ul>
+</nav><div class="it-docs-footer-meta">
+        <p class="it-docs-footer-project">IT-Wallet Specifiche Tecniche - PR #1163</p>
+        <p class="it-docs-footer-org">Dipartimento per la Trasformazione Digitale</p>
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.3</span><span class="it-docs-footer-detail">Last updated 01/07/2026</span><span class="it-docs-footer-detail">
+            Sphinx 7.4.5
+          </span></p>
+      </div>
+    </div>
+  </div>
+</footer><a href="#"
+   class="back-to-top shadow it-docs-back-to-top"
+   data-bs-toggle="backtotop"
+   data-bs-scroll-limit="100"
+   data-bs-position-top="0"
+   aria-label="Torna su">
+  <svg class="icon it-docs-back-to-top-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M18.6 10.1 12 3.5l-6.6 6.6.7.7 5.4-5.3V21h1V5.5l5.4 5.3.7-.7z"/>
+</svg>
+</a>
+  </body>
+</html>

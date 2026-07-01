@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Federation Endpoint &#8212; IT-Wallet Technical Specifications - PR #1163</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=2d03bfa4" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
+    <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
+    <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=077bf722" />
+
+    <script src="_static/documentation_options.js?v=a68a9277"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="_static/shared-ui/js/jquery-3.7.0.min.js"></script>
+<script src="_static/shared-ui/js/ita.min.js"></script>
+<script src="_static/shared-ui/js/bootstrap-italia.bundle.min.js"></script>
+<script src="_static/js/eid-wallet-docs.js"></script>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <meta name="description" content="IT-Wallet Technical Specifications - PR #1163">
+  <script>
+    (function () {
+      try {
+        var mode = localStorage.getItem("it-docs-brightness");
+        if (mode && /^(light|middle|black)$/.test(mode)) {
+          document.documentElement.setAttribute("data-it-docs-brightness", mode);
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }
+    })();
+  </script>
+  </head><body class="it-docs-body">
+<nav class="it-skip-links" aria-label="Skip links">
+  <a id="skip-main" class="visually-hidden-focusable" href="#main-content">Skip to main content</a>
+  <a id="skip-footer" class="visually-hidden-focusable" href="#page-footer">Skip to footer</a>
+</nav>
+
+<header class="it-header-wrapper it-docs-header" role="banner">
+  <div class="it-header-slim-wrapper bg-primary">
+    <div class="container">
+      <div class="it-header-slim-wrapper-content d-flex justify-content-between align-items-center">
+        <span class="navbar-brand text-white" id="header-region-name">
+          <strong>Dipartimento per la Trasformazione Digitale</strong>
+        </span>
+        <div class="it-header-slim-right-zone it-docs-slim-tools d-flex align-items-center"><div class="it-docs-searchbox--slim it-docs-searchbox" role="search">
+  <form class="it-docs-search-form" action="search.html" method="get">
+    <label class="visually-hidden" for="it-docs-search-input">Search</label>
+    <input id="it-docs-search-input"
+           class="form-control it-docs-search-input"
+           type="search"
+           name="q"
+           placeholder="Search"
+           autocomplete="off"
+           autocorrect="off"
+           autocapitalize="off"
+           spellcheck="false"
+           enterkeyhint="search"/>
+    <button class="btn it-docs-search-submit" type="submit" title="Search">
+      <svg class="icon it-docs-search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M21.9 21.1 16 15.3c1.3-1.5 2-3.4 2-5.3 0-4.4-3.6-8-8-8s-8 3.6-8 8 3.6 8 8 8c1.9 0 3.8-.7 5.3-2l5.8 5.9.8-.8zM10 17c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/>
+</svg>
+      <span class="visually-hidden">Search</span>
+    </button>
+  </form>
+</div><a id="source_link" class="it-docs-source-link" href="https://github.com/italia/eudi-wallet-it-docs" title="Source repository" target="_blank" rel="noopener">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" aria-hidden="true" focusable="false">
+    <path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.4-2.1.7-2.1-1.3-4.3-4.3-5.2-2.6-.7-5.5.3-6.4 2.1zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5 21.3 0 42.8 2.9 62.8 8.5 0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8z"/>
+  </svg>
+  
+  <span class="visually-hidden">Source repository</span>
+</a><div class="nav-item dropdown it-docs-brightness-dropdown">
+  <button type="button"
+          id="it-docs-brightness-toggle"
+          class="it-docs-brightness-toggle nav-link dropdown-toggle"
+          aria-controls="it-docs-brightness-menu"
+          data-bs-toggle="dropdown"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          title="Content brightness">
+    <span id="it-docs-brightness-active-hint" class="visually-hidden">
+      Active brightness:
+    </span>
+    <svg class="icon it-docs-brightness-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M12 7.75a4.25 4.25 0 1 0 0 8.5 4.25 4.25 0 0 0 0-8.5zM10.5 1.25h3v4.75h-3V1.25zm0 17h3v4.75h-3V18.25zM1.25 10.5h4.75v3h-4.75v-3zm17 0h4.75v3H18.25v-3zM5.1 5.1h3.2v3.2H5.1V5.1zm10.7 0h3.2v3.2h-3.2V5.1zM5.1 15.7h3.2v3.2H5.1v-3.2zm10.7 0h3.2v3.2h-3.2v-3.2z"/>
+</svg>
+    <span class="visually-hidden" id="it-docs-brightness-current-label">Light</span>
+    <svg class="icon ms-1 it-docs-brightness-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
+</svg>
+  </button>
+  <div id="it-docs-brightness-menu" class="dropdown-menu dropdown-menu-end">
+    <div class="row">
+      <div class="col-12">
+        <div class="link-list-wrapper">
+          <ul class="link-list" role="menu" aria-labelledby="it-docs-brightness-toggle">
+            <li>
+              <button type="button"
+                      class="dropdown-item list-item it-docs-brightness-option active"
+                      data-it-docs-brightness="light"
+                      role="menuitemradio"
+                      aria-checked="true">
+                <span>Light</span>
+              </button>
+            </li>
+            <li>
+              <button type="button"
+                      class="dropdown-item list-item it-docs-brightness-option"
+                      data-it-docs-brightness="middle"
+                      role="menuitemradio"
+                      aria-checked="false">
+                <span>Middle</span>
+              </button>
+            </li>
+            <li>
+              <button type="button"
+                      class="dropdown-item list-item it-docs-brightness-option"
+                      data-it-docs-brightness="black"
+                      role="menuitemradio"
+                      aria-checked="false">
+                <span>Black</span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          <div class="nav-item dropdown it-header-lang-dropdown">
+            <button type="button"
+                    id="languagesDropButton"
+                    class="nav-link dropdown-toggle"
+                    aria-controls="language-menu"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="menu"
+                    aria-expanded="false">
+              <span id="header-lang-active-hint" class="visually-hidden">Active language:</span>
+              <span class="it-header-lang-label" aria-hidden="true">EN</span>
+              <svg class="icon icon-sm ms-1 it-header-lang-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
+</svg>
+            </button>
+            <div id="language-menu" class="dropdown-menu dropdown-menu-end">
+              <div class="row">
+                <div class="col-12">
+                  <div class="link-list-wrapper">
+                    <ul class="link-list" role="menu" aria-labelledby="languagesDropButton">
+                      <li>
+                        <a class="dropdown-item list-item it-lang-option"
+                           href="../it/relying-party-remote-flow-endpoints.html"
+                           data-lang="it"
+                           role="menuitemradio"
+                           aria-checked="false"
+                           >
+                          <span lang="it">Italiano</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item list-item it-lang-option active"
+                           href="#"
+                           data-lang="en"
+                           role="menuitemradio"
+                           aria-checked="true"
+                           aria-current="true">
+                          <span lang="en">English</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="header-title-section it-docs-header-title">
+    <div class="container py-3">
+      <div class="d-flex align-items-center justify-content-between flex-nowrap">
+        <div class="it-brand-wrapper it-docs-brand-wrapper">
+          <a href="index.html"
+             class="it-docs-brand-link d-flex align-items-center min-w-0 text-decoration-none"
+             title="Home">
+            <img src="_static/shared-ui/img/IT-Wallet-Logo-Primary-BlueItalia.svg" alt="" class="it-docs-logo" height="40">
+            <span class="navbar-separator it-docs-header-separator" aria-hidden="true"></span>
+            <span class="it-docs-header-project-name" id="header-project-name">IT-Wallet Technical Specifications - PR #1163</span>
+          </a>
+        </div>
+        <button class="custom-navbar-toggler d-lg-none it-docs-sidebar-toggler"
+                type="button"
+                data-it-docs-nav-toggle
+                data-it-docs-nav-target="#itDocsPrimaryNav"
+                aria-controls="itDocsPrimaryNav"
+                aria-expanded="false"
+                aria-label="Open navigation">
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M22 5v1H2V5h20zM2 12.5h20v-1H2v1zM2 19h20v-1H2v1z"/>
+</svg>
+          <span>Menu</span>
+        </button>
+      </div>
+      <div class="it-docs-header-mobile-tools d-lg-none"><div class="it-docs-searchbox--mobile it-docs-searchbox" role="search">
+  <form class="it-docs-search-form" action="search.html" method="get">
+    <label class="visually-hidden" for="it-docs-search-input-mobile">Search</label>
+    <input id="it-docs-search-input-mobile"
+           class="form-control it-docs-search-input"
+           type="search"
+           name="q"
+           placeholder="Search"
+           autocomplete="off"
+           autocorrect="off"
+           autocapitalize="off"
+           spellcheck="false"
+           enterkeyhint="search"/>
+    <button class="btn it-docs-search-submit" type="submit" title="Search">
+      <svg class="icon it-docs-search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M21.9 21.1 16 15.3c1.3-1.5 2-3.4 2-5.3 0-4.4-3.6-8-8-8s-8 3.6-8 8 3.6 8 8 8c1.9 0 3.8-.7 5.3-2l5.8 5.9.8-.8zM10 17c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/>
+</svg>
+      <span class="visually-hidden">Search</span>
+    </button>
+  </form>
+</div>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="it-docs-layout">
+  <div class="container-fluid it-docs-container">
+    <div class="row it-docs-row">
+      <aside class="col-12 col-lg-2 it-docs-sidebar-col" aria-label="Primary navigation">
+        <div class="navbar-collapsable it-docs-primary-nav-collapsable" id="itDocsPrimaryNav">
+          <div class="overlay d-lg-none"></div>
+          <div class="close-div d-lg-none">
+            <button class="btn close-menu" type="button" aria-label="Close navigation">
+              <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="m12.7 12 3.7 3.6-.8.8-3.6-3.7-3.6 3.7-.8-.8 3.7-3.6-3.7-3.6.8-.8 3.6 3.7 3.6-3.7.8.8-3.7 3.6z"/>
+</svg>
+            </button>
+          </div>
+          <div class="menu-wrapper it-docs-menu-scroll"><div class="sidebar-wrapper it-line-right-side it-docs-primary-nav">
+  <div class="sidebar-linklist-wrapper">
+    <div class="link-list-wrapper">
+      
+      <div class="it-docs-sphinx-toc">
+        <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2. Brand Identity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Architecture Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Onboarding System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. User Experience Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. The Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registry.html">7. Registry Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entity-onboarding.html">8. Entity Onboarding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="x5c-evaluation.html">9. X.509 Certificate Management Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">10. Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">11. Digital Credential Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">12. Digital Credential Flows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">13. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">14. Cryptographic Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">15. Security and Privacy Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">16. General Log Retention Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">17. Defined Terms and References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">18. How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">19. Open Source Releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">20. Appendix</a></li>
+</ul>
+
+      </div>
+    </div>
+  </div>
+</div>
+          </div>
+        </div>
+      </aside>
+
+      <div class="col-12 col-lg-8 it-docs-main-col">
+        <main id="main-content" class="it-docs-main it-page-sections-container" role="main" tabindex="-1">
+          <noscript>
+            <p class="it-docs-noscript alert alert-warning" role="alert">
+              JavaScript is required for navigation menus and some interactive features.
+            </p>
+          </noscript>
+          <div class="body">
+            
+  <p>The Relying Party MUST expose a set of endpoints to support remote presentation flows as defined in OpenID4VP 1.0. These endpoints enable secure credential verification, trust establishment, and user authentication for cross-device and same-device interaction patterns.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Tests related to Relying Party remote flow endpoints are defined in the remote presentation test matrix (<a class="reference internal" href="test-plans-remote-presentation.html#remote-credential-verifier-test-matrix"><span class="std std-ref">Remote Credential Verifier Test Matrix</span></a>).</p>
+</div>
+<section id="id1">
+<h1>Federation Endpoint</h1>
+<p>The Relying Party MUST provide its Entity Configuration through the <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> endpoint, according to Section <a class="reference internal" href="trust-infrastructure.html#entity-configuration"><span class="std std-ref">Entity Configuration</span></a>. This endpoint enables trust establishment and discovery of the Relying Party's capabilities.</p>
+<p>Technical details are provided in Section <a class="reference internal" href="relying-party-entity-configuration.html#relying-party-entity-configuration"><span class="std std-ref">Relying Party Entity Configuration</span></a>.</p>
+</section>
+<section id="openid4vp-remote-flow-endpoints">
+<h1>OpenID4VP Remote Flow Endpoints</h1>
+<p>The following endpoints are required for OpenID4VP 1.0 remote presentation flows as described in <a class="reference internal" href="remote-flow.html#remote-flow"><span class="std std-ref">Remote Flow</span></a>. These endpoints support both Same Device and Cross Device flows:</p>
+<section id="request-uri-endpoint">
+<h2>Request URI Endpoint</h2>
+<p>The Request URI Endpoint is where the Relying Party provides the signed Request Object to the Wallet Instance. This endpoint supports both GET and POST methods as defined in the OpenID4VP 1.0 specification.</p>
+<p>For detailed implementation requirements, see <a class="reference internal" href="remote-flow.html#request-uri-request"><span class="std std-ref">Request URI Request</span></a> and <a class="reference internal" href="remote-flow.html#request-uri-response"><span class="std std-ref">Request URI Response</span></a>.</p>
+</section>
+<section id="response-uri-endpoint">
+<h2>Response URI Endpoint</h2>
+<p>The Response URI Endpoint receives the Authorization Response from the Wallet Instance containing the Verifiable Presentation. This endpoint processes the presentation and validates the credentials.</p>
+<p>For detailed implementation requirements, see <a class="reference internal" href="remote-flow.html#authorization-response"><span class="std std-ref">Authorization Response</span></a> and <a class="reference internal" href="remote-flow.html#relying-party-response"><span class="std std-ref">Relying Party Response</span></a>.</p>
+</section>
+<section id="status-endpoint-optional">
+<h2>Status Endpoint (Optional)</h2>
+<p>The Status Endpoint is an optional endpoint that allows the user-agent to monitor the progress of the presentation flow. This endpoint is particularly useful for Same Device flows where the user-agent needs to know when the Wallet Instance has completed the presentation.</p>
+<p>For detailed implementation requirements, see <a class="reference internal" href="remote-flow.html#status-endpoint"><span class="std std-ref">Status Endpoint</span></a> and <a class="reference internal" href="remote-flow.html#status-endpoint-errors"><span class="std std-ref">Status Endpoint Errors</span></a>.</p>
+</section>
+</section>
+<section id="user-data-management-endpoints">
+<h1>User Data Management Endpoints</h1>
+<p>The following endpoint supports user data management and privacy compliance requirements for remote flows:</p>
+<section id="relying-party-erasure-endpoint">
+<h2>Relying Party Erasure Endpoint</h2>
+<p>The Erasure Endpoint, which is described in <a class="reference internal" href="relying-party-metadata.html#relying-party-metadata"><span class="std std-ref">Relying Party Metadata</span></a>, allows Wallet Instances to request deletion of attributes presented to the Relying Party. The Relying Party MUST request User authentication before proceeding with the attribute deletion.</p>
+</section>
+<section id="erasure-request">
+<h2>Erasure Request</h2>
+<p>The Erasure Request MUST be a GET request to the Erasure Endpoint. The Wallet Instance MUST also support a call back mechanism which enables the User-Agent to notify the Wallet Instance (and thus the User) once the Erasure Response is returned.</p>
+<p>Below is a non-normative example of an Erasure Request where the call back URL is passed as a query parameter.</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/erasure-endpoint?callback_url=https://wallet-instance/erasure_response</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">relying-party.example.org</span>
+</pre></div>
+</div>
+</section>
+<section id="erasure-response">
+<h2>Erasure Response</h2>
+<p>If the deletion of all attributes bound to the User have been successful, the Erasure Response MUST return a 204 HTTP status code.</p>
+<p>If instead the attributes deletion procedure fails due any circumstances, the Relying Party MUST return an error response with <code class="docutils literal notranslate"><span class="pre">application/json</span></code> as the content type and MUST include the following parameters:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">error</span></code>: The error code.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">error_description</span></code>: Text in human-readable form providing further details to clarify the nature of the error encountered.</p></li>
+</ul>
+</div></blockquote>
+<p>The following table lists the HTTP Status Codes and related error codes that MUST be supported for the error response:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Status Code</strong></p></th>
+<th class="head"><p><strong>Error Code</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bad_request</span></code></p></td>
+<td><p>The request is malformed, missing required parameters (e.g., header parameters or integrity assertion), or includes invalid and unknown parameters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">401</span> <span class="pre">Unauthorized</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">unauthorized</span></code></p></td>
+<td><p>The request could not be fulfilled due to invalid authentication by the User.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">500</span> <span class="pre">Internal</span> <span class="pre">Server</span> <span class="pre">Error</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">server_error</span></code></p></td>
+<td><p>The request cannot be fulfilled because the Erasure Endpoint encountered an internal problem. (<span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">503</span> <span class="pre">Service</span> <span class="pre">Unavailable</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">temporarily_unavailable</span></code></p></td>
+<td><p>The request cannot be fulfilled because the Erasure Endpoint is temporarily unavailable (e.g., due to maintenance or overload). (<span class="target" id="index-1"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>).</p></td>
+</tr>
+</tbody>
+</table>
+<p>The following is an example of an error response from Erasure Endpoint:</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">500</span> <span class="ne">Internal Server Error</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+<span class="w"> </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;server_error&quot;</span><span class="p">,</span>
+<span class="w"> </span><span class="nt">&quot;error_description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The request cannot be fulfilled due to an internal server error.&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Upon receiving an error response, the Wallet Instance which made the Erasure Request MUST inform the User of the error condition in an appropriate manner.</p>
+</section>
+</section>
+<section id="security-considerations">
+<h1>Security Considerations</h1>
+<p>All Relying Party endpoints MUST implement appropriate security measures:</p>
+<ul class="simple">
+<li><p><strong>HTTPS Only</strong>: All endpoints MUST be accessible only over HTTPS</p></li>
+<li><p><strong>Endpoint Mix-up Protection</strong>: Endpoint URLs MUST be attested by trusted third parties through the Trust Chain</p></li>
+<li><p><strong>Input Validation</strong>: All endpoints MUST validate input parameters and reject malformed requests</p></li>
+<li><p><strong>Rate Limiting</strong>: Endpoints SHOULD implement rate limiting to prevent abuse</p></li>
+<li><p><strong>Audit Logging</strong>: All endpoint interactions SHOULD be logged for security monitoring</p></li>
+</ul>
+<p>For detailed security requirements, see <a class="reference internal" href="remote-flow.html#remote-flow"><span class="std std-ref">Remote Flow</span></a> and the relevant test cases in <a class="reference internal" href="test-plans-remote-presentation.html#remote-credential-verifier-test-matrix"><span class="std std-ref">Remote Credential Verifier Test Matrix</span></a>.</p>
+</section>
+<section id="implementation-notes">
+<h1>Implementation Notes</h1>
+<ul class="simple">
+<li><p>The specific implementation details for most endpoints are left to the Relying Party's discretion</p></li>
+<li><p>Endpoints MUST comply with the OpenID4VP 1.0 specification for remote flows</p></li>
+<li><p>Proximity flow endpoints MUST support the lifecycle management of Verifier Apps</p></li>
+<li><p>All endpoints MUST be discoverable through the Relying Party's Entity Configuration</p></li>
+<li><p>Error responses MUST follow the standard HTTP status codes and include appropriate error descriptions</p></li>
+</ul>
+<p>For comprehensive implementation guidance, refer to the individual endpoint sections and the test matrices for validation requirements.</p>
+</section>
+
+
+          </div>
+        </main>
+      </div>
+
+      <aside class="col-12 col-lg-2 it-docs-navscroll-col" aria-label="Secondary navigation">
+        <div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
+     data-bs-navscroll
+     aria-label="Page contents">
+  <button class="custom-navbar-toggler"
+          type="button"
+          data-it-docs-nav-toggle
+          data-it-docs-nav-target="#itDocsNavscroll"
+          aria-controls="itDocsNavscroll"
+          aria-expanded="false"
+          aria-label="Open page contents">
+    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
+</svg>
+    <span>Page contents</span>
+  </button>
+  <div class="navbar-collapsable it-docs-navscroll-panel" id="itDocsNavscroll">
+    <div class="overlay"></div>
+    <div class="close-div">
+      <button class="btn close-menu" type="button" aria-label="Close page contents">
+        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="m12.7 12 3.7 3.6-.8.8-3.6-3.7-3.6 3.7-.8-.8 3.7-3.6-3.7-3.6.8-.8 3.6 3.7 3.6-3.7.8.8-3.7 3.6z"/>
+</svg>
+      </button>
+    </div>
+    <div class="menu-wrapper it-docs-menu-scroll">
+      <div class="link-list-wrapper">
+        <h3>On this page</h3>
+        <div class="it-docs-local-toc">
+          <ul>
+<li><a class="reference internal" href="#">Federation Endpoint</a></li>
+<li><a class="reference internal" href="#openid4vp-remote-flow-endpoints">OpenID4VP Remote Flow Endpoints</a><ul>
+<li><a class="reference internal" href="#request-uri-endpoint">Request URI Endpoint</a></li>
+<li><a class="reference internal" href="#response-uri-endpoint">Response URI Endpoint</a></li>
+<li><a class="reference internal" href="#status-endpoint-optional">Status Endpoint (Optional)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#user-data-management-endpoints">User Data Management Endpoints</a><ul>
+<li><a class="reference internal" href="#relying-party-erasure-endpoint">Relying Party Erasure Endpoint</a></li>
+<li><a class="reference internal" href="#erasure-request">Erasure Request</a></li>
+<li><a class="reference internal" href="#erasure-response">Erasure Response</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#security-considerations">Security Considerations</a></li>
+<li><a class="reference internal" href="#implementation-notes">Implementation Notes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+<footer id="page-footer" class="it-docs-footer" role="contentinfo" tabindex="-1">
+  <div class="container">
+    <div class="it-docs-footer-inner"><nav id="footer-partners-nav"
+     class="it-docs-footer-partners"
+     aria-label="Institutional partners">
+  <ul class="it-docs-footer-partners-list">
+    <li>
+      <a href="https://innovazione.gov.it/"
+         class="it-docs-footer-partner-link it-docs-footer-partner-link--dtd"
+         target="_blank"
+         rel="noopener">
+        <img src="_static/img/footer/logo-dtd.svg"
+             alt="Department for Digital Transformation"
+             width="120"
+             height="32"
+             loading="lazy"
+             decoding="async">
+      </a>
+    </li>
+    <li>
+      <a href="https://www.ipzs.it/"
+         class="it-docs-footer-partner-link it-docs-footer-partner-link--ipzs"
+         target="_blank"
+         rel="noopener">
+        <img src="_static/img/footer/logo-ipzs.png"
+             alt="Istituto Poligrafico e Zecca dello Stato"
+             width="105"
+             height="43"
+             loading="lazy"
+             decoding="async">
+      </a>
+    </li>
+    <li>
+      <a href="https://www.pagopa.it/it/"
+         class="it-docs-footer-partner-link it-docs-footer-partner-link--pagopa"
+         target="_blank"
+         rel="noopener">
+        <img src="_static/img/footer/logo-pagopa.svg"
+             alt="PagoPA"
+             width="121"
+             height="34"
+             loading="lazy"
+             decoding="async">
+      </a>
+    </li>
+    <li>
+      <a href="https://www.agid.gov.it/it/"
+         class="it-docs-footer-partner-link it-docs-footer-partner-link--agid"
+         target="_blank"
+         rel="noopener">
+        <img src="_static/img/footer/logo-agid.svg"
+             alt="Agenzia per l'Italia Digitale"
+             width="203"
+             height="31"
+             loading="lazy"
+             decoding="async">
+      </a>
+    </li>
+  </ul>
+</nav><div class="it-docs-footer-meta">
+        <p class="it-docs-footer-project">IT-Wallet Technical Specifications - PR #1163</p>
+        <p class="it-docs-footer-org">Dipartimento per la Trasformazione Digitale</p>
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.3</span><span class="it-docs-footer-detail">Last updated 01/07/2026</span><span class="it-docs-footer-detail">
+            Sphinx 7.4.5
+          </span></p>
+      </div>
+    </div>
+  </div>
+</footer><a href="#"
+   class="back-to-top shadow it-docs-back-to-top"
+   data-bs-toggle="backtotop"
+   data-bs-scroll-limit="100"
+   data-bs-position-top="0"
+   aria-label="Back to top">
+  <svg class="icon it-docs-back-to-top-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M18.6 10.1 12 3.5l-6.6 6.6.7.7 5.4-5.3V21h1V5.5l5.4 5.3.7-.7z"/>
+</svg>
+</a>
+  </body>
+</html>

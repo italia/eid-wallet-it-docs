@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+
+<html lang="it" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>13.5. Endpoint di PDND Signal Hub &#8212; IT-Wallet Specifiche Tecniche - PR #1163</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=2d03bfa4" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
+    <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
+    <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-overrides.css?v=077bf722" />
+
+    <script src="_static/documentation_options.js?v=c0744c27"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=da26b4cc"></script>
+<script src="_static/shared-ui/js/jquery-3.7.0.min.js"></script>
+<script src="_static/shared-ui/js/ita.min.js"></script>
+<script src="_static/shared-ui/js/bootstrap-italia.bundle.min.js"></script>
+<script src="_static/js/eid-wallet-docs.js"></script>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
+    <link rel="index" title="Indice" href="genindex.html" />
+    <link rel="search" title="Cerca" href="search.html" />
+    <link rel="next" title="14. Algoritmi Crittografici" href="algorithms.html" />
+    <link rel="prev" title="13.4. Endpoint delle Fonti Autentiche" href="authentic-source-endpoint.html" />
+   
+  <meta name="description" content="IT-Wallet Specifiche Tecniche - PR #1163">
+  <script>
+    (function () {
+      try {
+        var mode = localStorage.getItem("it-docs-brightness");
+        if (mode && /^(light|middle|black)$/.test(mode)) {
+          document.documentElement.setAttribute("data-it-docs-brightness", mode);
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }
+    })();
+  </script>
+  </head><body class="it-docs-body">
+<nav class="it-skip-links" aria-label="Skip links">
+  <a id="skip-main" class="visually-hidden-focusable" href="#main-content">Skip to main content</a>
+  <a id="skip-footer" class="visually-hidden-focusable" href="#page-footer">Skip to footer</a>
+</nav>
+
+<header class="it-header-wrapper it-docs-header" role="banner">
+  <div class="it-header-slim-wrapper bg-primary">
+    <div class="container">
+      <div class="it-header-slim-wrapper-content d-flex justify-content-between align-items-center">
+        <span class="navbar-brand text-white" id="header-region-name">
+          <strong>Dipartimento per la Trasformazione Digitale</strong>
+        </span>
+        <div class="it-header-slim-right-zone it-docs-slim-tools d-flex align-items-center"><div class="it-docs-searchbox--slim it-docs-searchbox" role="search">
+  <form class="it-docs-search-form" action="search.html" method="get">
+    <label class="visually-hidden" for="it-docs-search-input">Cerca</label>
+    <input id="it-docs-search-input"
+           class="form-control it-docs-search-input"
+           type="search"
+           name="q"
+           placeholder="Cerca"
+           autocomplete="off"
+           autocorrect="off"
+           autocapitalize="off"
+           spellcheck="false"
+           enterkeyhint="search"/>
+    <button class="btn it-docs-search-submit" type="submit" title="Cerca">
+      <svg class="icon it-docs-search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M21.9 21.1 16 15.3c1.3-1.5 2-3.4 2-5.3 0-4.4-3.6-8-8-8s-8 3.6-8 8 3.6 8 8 8c1.9 0 3.8-.7 5.3-2l5.8 5.9.8-.8zM10 17c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/>
+</svg>
+      <span class="visually-hidden">Cerca</span>
+    </button>
+  </form>
+</div><a id="source_link" class="it-docs-source-link" href="https://github.com/italia/eudi-wallet-it-docs" title="Source repository" target="_blank" rel="noopener">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" aria-hidden="true" focusable="false">
+    <path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.4-2.1.7-2.1-1.3-4.3-4.3-5.2-2.6-.7-5.5.3-6.4 2.1zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5 21.3 0 42.8 2.9 62.8 8.5 0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8z"/>
+  </svg>
+  
+  <span class="visually-hidden">Source repository</span>
+</a><div class="nav-item dropdown it-docs-brightness-dropdown">
+  <button type="button"
+          id="it-docs-brightness-toggle"
+          class="it-docs-brightness-toggle nav-link dropdown-toggle"
+          aria-controls="it-docs-brightness-menu"
+          data-bs-toggle="dropdown"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          title="Content brightness">
+    <span id="it-docs-brightness-active-hint" class="visually-hidden">
+      Active brightness:
+    </span>
+    <svg class="icon it-docs-brightness-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M12 7.75a4.25 4.25 0 1 0 0 8.5 4.25 4.25 0 0 0 0-8.5zM10.5 1.25h3v4.75h-3V1.25zm0 17h3v4.75h-3V18.25zM1.25 10.5h4.75v3h-4.75v-3zm17 0h4.75v3H18.25v-3zM5.1 5.1h3.2v3.2H5.1V5.1zm10.7 0h3.2v3.2h-3.2V5.1zM5.1 15.7h3.2v3.2H5.1v-3.2zm10.7 0h3.2v3.2h-3.2v-3.2z"/>
+</svg>
+    <span class="visually-hidden" id="it-docs-brightness-current-label">Light</span>
+    <svg class="icon ms-1 it-docs-brightness-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
+</svg>
+  </button>
+  <div id="it-docs-brightness-menu" class="dropdown-menu dropdown-menu-end">
+    <div class="row">
+      <div class="col-12">
+        <div class="link-list-wrapper">
+          <ul class="link-list" role="menu" aria-labelledby="it-docs-brightness-toggle">
+            <li>
+              <button type="button"
+                      class="dropdown-item list-item it-docs-brightness-option active"
+                      data-it-docs-brightness="light"
+                      role="menuitemradio"
+                      aria-checked="true">
+                <span>Light</span>
+              </button>
+            </li>
+            <li>
+              <button type="button"
+                      class="dropdown-item list-item it-docs-brightness-option"
+                      data-it-docs-brightness="middle"
+                      role="menuitemradio"
+                      aria-checked="false">
+                <span>Middle</span>
+              </button>
+            </li>
+            <li>
+              <button type="button"
+                      class="dropdown-item list-item it-docs-brightness-option"
+                      data-it-docs-brightness="black"
+                      role="menuitemradio"
+                      aria-checked="false">
+                <span>Black</span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          <div class="nav-item dropdown it-header-lang-dropdown">
+            <button type="button"
+                    id="languagesDropButton"
+                    class="nav-link dropdown-toggle"
+                    aria-controls="language-menu"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="menu"
+                    aria-expanded="false">
+              <span id="header-lang-active-hint" class="visually-hidden">lingua attiva:</span>
+              <span class="it-header-lang-label" aria-hidden="true">ITA</span>
+              <svg class="icon icon-sm ms-1 it-header-lang-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
+</svg>
+            </button>
+            <div id="language-menu" class="dropdown-menu dropdown-menu-end">
+              <div class="row">
+                <div class="col-12">
+                  <div class="link-list-wrapper">
+                    <ul class="link-list" role="menu" aria-labelledby="languagesDropButton">
+                      <li>
+                        <a class="dropdown-item list-item it-lang-option active"
+                           href="#"
+                           data-lang="it"
+                           role="menuitemradio"
+                           aria-checked="true"
+                           aria-current="true">
+                          <span lang="it">Italiano</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item list-item it-lang-option"
+                           href="../en/signal-hub-endpoint.html"
+                           data-lang="en"
+                           role="menuitemradio"
+                           aria-checked="false"
+                           >
+                          <span lang="en">English</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="header-title-section it-docs-header-title">
+    <div class="container py-3">
+      <div class="d-flex align-items-center justify-content-between flex-nowrap">
+        <div class="it-brand-wrapper it-docs-brand-wrapper">
+          <a href="index.html"
+             class="it-docs-brand-link d-flex align-items-center min-w-0 text-decoration-none"
+             title="Home">
+            <img src="_static/shared-ui/img/IT-Wallet-Logo-Primary-BlueItalia.svg" alt="" class="it-docs-logo" height="40">
+            <span class="navbar-separator it-docs-header-separator" aria-hidden="true"></span>
+            <span class="it-docs-header-project-name" id="header-project-name">IT-Wallet Specifiche Tecniche - PR #1163</span>
+          </a>
+        </div>
+        <button class="custom-navbar-toggler d-lg-none it-docs-sidebar-toggler"
+                type="button"
+                data-it-docs-nav-toggle
+                data-it-docs-nav-target="#itDocsPrimaryNav"
+                aria-controls="itDocsPrimaryNav"
+                aria-expanded="false"
+                aria-label="Open navigation">
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M22 5v1H2V5h20zM2 12.5h20v-1H2v1zM2 19h20v-1H2v1z"/>
+</svg>
+          <span>Menu</span>
+        </button>
+      </div>
+      <div class="it-docs-header-mobile-tools d-lg-none"><div class="it-docs-searchbox--mobile it-docs-searchbox" role="search">
+  <form class="it-docs-search-form" action="search.html" method="get">
+    <label class="visually-hidden" for="it-docs-search-input-mobile">Cerca</label>
+    <input id="it-docs-search-input-mobile"
+           class="form-control it-docs-search-input"
+           type="search"
+           name="q"
+           placeholder="Cerca"
+           autocomplete="off"
+           autocorrect="off"
+           autocapitalize="off"
+           spellcheck="false"
+           enterkeyhint="search"/>
+    <button class="btn it-docs-search-submit" type="submit" title="Cerca">
+      <svg class="icon it-docs-search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M21.9 21.1 16 15.3c1.3-1.5 2-3.4 2-5.3 0-4.4-3.6-8-8-8s-8 3.6-8 8 3.6 8 8 8c1.9 0 3.8-.7 5.3-2l5.8 5.9.8-.8zM10 17c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/>
+</svg>
+      <span class="visually-hidden">Cerca</span>
+    </button>
+  </form>
+</div>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="it-docs-layout">
+  <div class="container-fluid it-docs-container">
+    <div class="row it-docs-row">
+      <aside class="col-12 col-lg-2 it-docs-sidebar-col" aria-label="Primary navigation">
+        <div class="navbar-collapsable it-docs-primary-nav-collapsable" id="itDocsPrimaryNav">
+          <div class="overlay d-lg-none"></div>
+          <div class="close-div d-lg-none">
+            <button class="btn close-menu" type="button" aria-label="Close navigation">
+              <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="m12.7 12 3.7 3.6-.8.8-3.6-3.7-3.6 3.7-.8-.8 3.7-3.6-3.7-3.6.8-.8 3.6 3.7 3.6-3.7.8.8-3.7 3.6z"/>
+</svg>
+            </button>
+          </div>
+          <div class="menu-wrapper it-docs-menu-scroll"><div class="sidebar-wrapper it-line-right-side it-docs-primary-nav">
+  <div class="sidebar-linklist-wrapper">
+    <div class="link-list-wrapper">
+      
+      <div class="it-docs-sphinx-toc">
+        <p class="caption" role="heading"><span class="caption-text">Indice dei Contenuti</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduzione</a></li>
+<li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2. Brand Identity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Panoramica dell'Architettura</a></li>
+<li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Sistema di Onboarding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. Design dell'Esperienza Utente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. L'Infrastruttura di Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registry.html">7. Infrastruttura del Registro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entity-onboarding.html">8. Onboarding delle Entità</a></li>
+<li class="toctree-l1"><a class="reference internal" href="x5c-evaluation.html">9. Operazioni di Gestione dei Certificati X.509</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">10. Entità</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">11. Gestione degli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">12. Flussi relativi agli Attestati Elettronici</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="endpoints.html">13. Endpoints</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="wallet-provider-endpoint.html">13.1. Endpoint del Fornitore di Wallet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credential-issuer-endpoint.html">13.2. Endpoint del Credential Issuer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html">13.3. Endpoint della Relying Party</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentic-source-endpoint.html">13.4. Endpoint delle Fonti Autentiche</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">13.5. Endpoint di PDND Signal Hub</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">14. Algoritmi Crittografici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">15. Considerazioni di Sicurezza e Privacy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">16. Politiche Generali di Conservazione dei Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">17. Termini Definiti e Riferimenti</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">18. Come contribuire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">19. Rilasci Open Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">20. Appendice</a></li>
+</ul>
+
+      </div>
+    </div>
+  </div>
+</div>
+          </div>
+        </div>
+      </aside>
+
+      <div class="col-12 col-lg-8 it-docs-main-col">
+        <main id="main-content" class="it-docs-main it-page-sections-container" role="main" tabindex="-1">
+          <noscript>
+            <p class="it-docs-noscript alert alert-warning" role="alert">
+              JavaScript is required for navigation menus and some interactive features.
+            </p>
+          </noscript>
+          <div class="body">
+            
+  <section id="endpoint-di-pdnd-signal-hub">
+<h1><span class="section-number">13.5. </span>Endpoint di PDND Signal Hub</h1>
+<dl class="simple">
+<dt>All'interno della piattaforma PDND, Signal Hub funge da intermediario tra un Provider PDND e i suoi Consumer PDND per facilitare le segnalazioni di variazioni dei dati. Per abilitare tale funzionalità, il gestore della piattaforma PDND, di seguito denominato PDND Manager, agendo come e-Service PDNDProvider, fornisce due e-Service PDND di Signal Hub:</dt><dd><ul class="simple">
+<li><p>l'e-Service di Raccolta Segnali che viene utilizzato dai e-Service PDNDProvider per depositare i Segnali; in questo caso, il e-Service PDNDProvider agisce come Consumer dell'e-Service di Raccolta Segnali;</p></li>
+<li><p>l'e-Service di Distribuzione Segnali che viene utilizzato dai e-Service PDNDConsumer per recuperare i Segnali raccolti; in questo caso, il e-Service PDNDConsumer agisce anche come Consumer dell'e-Service di Distribuzione Segnali.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Al fine di proteggere la privacy del soggetto del Segnale, il PDND Manager richiede a ciascun e-Service PDNDProvider di pseudonimizzare l'identificativo del soggetto utilizzato all'interno dei Segnali e di configurare un endpoint di pseudonimizzazione per il proprio PDND e-Service. Questo endpoint di pseudonimizzazione viene utilizzato dagli e-Service Consumer per ottenere l'algoritmo di pseudonimizzazione al fine di calcolare lo Pseudonimo del soggetto del Segnale. Solo il e-Service PDNDProvider e i suoi e-Service PDNDConsumer sono in grado di collegare un Segnale ai dati personali del soggetto, mentre il PDND Manager gestisce solo gli identificativi pseudonimizzati.</p>
+<p>Per specifiche tecniche dettagliate e linee guida per l'implementazione, si prega di fare riferimento alla <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub">Signal Hub Guide</a>.</p>
+<dl class="simple">
+<dt>Nel contesto dell'IT Wallet, le Fonti Autentiche interagiscono con Signal Hub per notificare ai Fornitori di Attestati Elettronici i cambiamenti nello stato e/o nel valore degli Attributi associati agli Attestati Elettronici. Nello specifico,</dt><dd><ul class="simple">
+<li><p>la Fonte Autentica depositerà i Segnali in Signal Hub, svolgendo quindi il ruolo di PDND Consumer dell'e-Service di Raccolta Segnali;</p></li>
+<li><p>il Fornitore di Attestati Elettronici recupererà i Segnali da Signal Hub, e svolgerà quindi il ruolo di e-Service PDNDConsumer dell'e-Service di Distribuzione Segnali.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Nel contesto dell'IT Wallet, a causa della particolare natura dei dati scambiati, la pseudonimizzazione del soggetto del Segnale non è necessaria poiché l'identificativo è già opaco e non correlato al soggetto dell'Attestato Elettronico. Pertanto, la Fonte Autentica non ha bisogno di configurare un endpoint di pseudonimizzazione per i suoi e-Service.</p>
+</div>
+<p>Le Fonti Autentiche che utilizzano PDND DEVONO utilizzare gli e-Service di Signal Hub.</p>
+<p>Di seguito viene fornita la descrizione di come le Fonti Autentiche e i Fornitori di Attestati Elettronici interagiscono con gli e-Service di Signal Hub insieme ai formati dettagliati delle request e delle response.</p>
+<section id="prerequisiti">
+<h2><span class="section-number">13.5.1. </span>Prerequisiti</h2>
+<p>Prima di utilizzare Signal Hub, tutte le Fonti Autentiche DEVONO:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>essersi registrate come Provider del loro e-Service presso PDND;</p></li>
+<li><p>essersi registrate come Consumer dell'e-Service di Raccolta Segnali di Signal Hub;</p></li>
+</ul>
+</div></blockquote>
+<p>Prima di utilizzare Signal Hub, tutti i Fornitori di Attestati Elettronici DEVONO:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>essersi registrati come Consumer degli e-Service delle Fonti Autentiche pertinenti;</p></li>
+<li><p>essersi registrati come Consumer dell'e-Service di Distribuzione Segnali di Signal Hub;</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="e-service-di-signal-hub">
+<h2><span class="section-number">13.5.2. </span>e-Service di Signal Hub</h2>
+<p>Questa sezione descrive gli endpoint disponibili per gli e-Service di Raccolta e Distribuzione di Signal Hub, incluse le loro funzionalità e i formati di richiesta e risposta previsti.</p>
+<section id="e-service-di-raccolta-segnali">
+<h3><span class="section-number">13.5.2.1. </span>e-Service di Raccolta Segnali</h3>
+<p>Le Fonti Autentiche nell'ecosistema IT Wallet utilizzano l'e-Service di Raccolta Segnali per:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>notificare al Fornitore di Attestati Elettronici un cambiamento di stato e/o valore di un Attributo specifico associato a un Attestato Elettronico emesso dal Fornitore di Attestati Elettronici;</p></li>
+<li><p>notificare al Fornitore di Attestati Elettronici la disponibilità degli Attributi relativi a un Attestato Elettronico specifico che un Utente ha richiesto nel suo Wallet.</p></li>
+</ul>
+</div></blockquote>
+<p>L'ultimo caso, denominato <em>deferred issuance</em>, si verifica quando il Fornitore di Attestati Elettronici ha richiesto gli Attributi di un Attestato Elettronico dalla Fonte Autentica (invocando l'endpoint PDND <a class="reference internal" href="authentic-source-endpoint.html#get-attribute-claims"><span class="std std-ref">Get Attribute Claims</span></a>) e la Fonte Autentica non può rispondere immediatamente con gli Attributi richiesti. Pertanto, la Fonte Autentica notifica al Fornitore di Attestati Elettronici tramite Signal Hub in un momento successivo che gli Attributi richiesti sono ora disponibili.</p>
+<p>L'endpoint dell'e-Service di Raccolta Segnali viene utilizzato dalle Fonti Autentiche per depositare i Segnali in Signal Hub tramite una request di Raccolta Segnali. Quest'ultima DEVE essere una richiesta POST con <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> impostato su <code class="docutils literal notranslate"><span class="pre">application/json</span></code>, il cui header DEVE avere i parametri descritti nel <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub">Signal Hub Guide</a> e il cui body DEVE contenere i seguenti parametri:</p>
+<table class="docutils align-default" id="table-signal-deposit-request-parameters">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 75.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Nome Parametro</strong></p></th>
+<th class="head"><p><strong>Descrizione</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>signalId</strong></p></td>
+<td><p>OBBLIGATORIO. Numero intero positivo a 64 bit identificativo del Segnale.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>objectType</strong></p></td>
+<td><p>OBBLIGATORIO. Questo è un campo libero che la Fonte Autentica PUÒ utilizzare per specificare ulteriormente il Segnale.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>objectId</strong></p></td>
+<td><p>OBBLIGATORIO. Il soggetto a cui è legato il Segnale. DEVE essere impostato sul valore <a class="reference internal" href="defined-terms.html#term-Object_id"><span class="xref std std-term">Object_id</span></a> (<code class="docutils literal notranslate"><span class="pre">object_id</span></code>) che la Fonte Autentica ha utilizzato nel payload della risposta del <cite>get attributes</cite> verso il Credential Issuer (vedi <a class="reference internal" href="authentic-source-endpoint.html#get-attribute-claims"><span class="std std-ref">Get Attribute Claims</span></a>). Il <code class="docutils literal notranslate"><span class="pre">signalType</span></code> del Segnale DEVE essere valorizzato con uno dei seguenti:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CREATE</span></code>, al fine di notificare la disponibilità degli attributi relativi ad un specifico Attestato Elettronico.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">UPDATE</span></code>, al fine di notificare l'aggiornamento degli attributi relativi ad un specifico Attestato Elettronico.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>signalType</strong></p></td>
+<td><p>OBBLIGATORIO. Tipo di Segnale. DEVE essere uno dei seguenti:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">UPDATE</span></code>, quando il Segnale si riferisce a un cambiamento nello stato e/o valore di un Attributo specifico associato a un Attestato Elettronico;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CREATE</span></code>, quando il Segnale si riferisce alla disponibilità degli Attributi di un Attestato Elettronico specifico;</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>eserviceId</strong></p></td>
+<td><p>OBBLIGATORIO. e-Service a cui è legato il Segnale. DEVE corrispondere al valore dell'Id dell'e-Service di cui la Fonte Autentica è Provider.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Nel Deferred Issuance Flow, cioè quando la Fonte Autentica notifica al Fornitore di Attestati Elettronici la disponibilità degli Attributi dell'Attestato Elettronico tramite Signal Hub; entrambe le entità DEVONO tenere traccia del valore <code class="docutils literal notranslate"><span class="pre">object_id</span></code> della Fonte Autentica utilizzato nella risposta del <cite>get attributes</cite>. Questo è necessario poiché l'<code class="docutils literal notranslate"><span class="pre">objectId</span></code> del Segnale DEVE essere impostato su quel valore <code class="docutils literal notranslate"><span class="pre">object_id</span></code> quando il Segnale ha il <code class="docutils literal notranslate"><span class="pre">signalType</span></code> valorizzato con <code class="docutils literal notranslate"><span class="pre">CREATE</span></code>.</p>
+</div>
+<p>Un esempio non normativo di richiesta di richiesta di Raccolta Segnali può essere trovato nel <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-depositare-un-segnale">Signal Hub push</a>.</p>
+<p>La response dell'e-Service di Raccolta Segnale è specificata nel <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-depositare-un-segnale">Signal Hub push</a> e ha <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> impostato su <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. Il payload contiene il parametro del body:</p>
+<table class="docutils align-default" id="table-signal-deposit-response-parameters">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 75.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Nome Parametro</strong></p></th>
+<th class="head"><p><strong>Descrizione</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>signalId</strong></p></td>
+<td><p>OBBLIGATORIO. L'identificativo del Segnale che è stato raccolto con successo dall'e-Service di Raccolta Segnali.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Se si verifica un errore, la response DEVE aderire alla specifica definita nel <a class="reference external" href="https://raw.githubusercontent.com/pagopa/interop-signalhub-core/refs/tags/1.0.1/docs/openAPI/push-signals.yaml">Signal Hub push-yaml</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>La Specifica OpenAPI completa dell'e-Service di Raccolta Segnali è disponibile nel <a class="reference external" href="https://raw.githubusercontent.com/pagopa/interop-signalhub-core/refs/tags/1.0.1/docs/openAPI/push-signals.yaml">Signal Hub push-yaml</a>.</p>
+</div>
+<p>La Fonte Autentica DEVE implementare la logica necessaria per gestire le richieste all'endpoint dell'e-Service di Raccolta Segnali, nel fare ciò deve considerare i seguenti aspetti:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>I Segnali vengono inviati per e-Service PDND, pertanto la Fonte Autentica DOVREBBE implementare un ciclo di deposito Segnali per ogni e-Service ID di cui è Provider PDND;</p></li>
+<li><p>I Segnali sono etichettati da un identificativo univoco, il <code class="docutils literal notranslate"><span class="pre">signalId</span></code>, che è un numero intero positivo a 64 bit. Il <code class="docutils literal notranslate"><span class="pre">signalId</span></code> DEVE essere incrementato di 1 per ogni nuovo Segnale che la Fonte Autentica desidera depositare nell'endpoint dell'e-Service di Raccolta Segnali. Spetta alla Fonte Autentica tenere traccia dell'ultimo <code class="docutils literal notranslate"><span class="pre">signalId</span></code> che ha inviato. I Segnali con valori <code class="docutils literal notranslate"><span class="pre">signalId</span></code> più bassi sono considerati più vecchi dall'endpoint dell'e-Service di Raccolta Segnali e genereranno un errore quando ricevuti.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="e-service-di-distribuzione-segnali">
+<h3><span class="section-number">13.5.2.2. </span>e-Service di Distribuzione Segnali</h3>
+<p>I Fornitori di Attestati Elettronici nell'ecosistema IT Wallet utilizzano l'e-Service di Distribuzione Segnali per:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>verificare i cambiamenti nello stato e/o il valore di un Attributo specifico associato a un Attestato Elettronico emesso dal Fornitore di Attestati Elettronici stesso;</p></li>
+<li><p>verificare la disponibilità degli Attributi relativi a un Attestato Elettronico richiesto da un Utente.</p></li>
+</ul>
+</div></blockquote>
+<p>L'endpoint dell'e-Service di Distribuzione Segnali viene utilizzato dai Fornitori di Attestati Elettronici per recuperare i Segnali da Signal Hub tramite una richiesta di Distribuzione Segnali. Quest'ultima DEVE essere una richiesta HTTP con metodo GET e DEVE avere i seguenti parametri:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Parametri di Path:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">eserviceId</span></code>. OBBLIGATORIO. e-Service a cui è legato il Segnale. DEVE corrispondere al valore dell'Id dell'e-Service di cui il Fornitore di Attestati Elettronici è Consumer.</p></li>
+</ul>
+</li>
+<li><p>Parametri di Query:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">signalId</span></code>. OPZIONALE. Intero che rappresenta l'ultimo numero di Segnale elaborato dal Fornitore di Attestati Elettronici. L'e-Service di Distribuzione Segnali risponderà con Segnali aventi valori <code class="docutils literal notranslate"><span class="pre">signalId</span></code> progressivamente maggiori. Se non specificato, il valore predefinito è il valore <code class="docutils literal notranslate"><span class="pre">signalId</span></code> più basso disponibile nell'e-Service di Distribuzione Segnali.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code>. OPZIONALE. Intero che rappresenta il numero massimo di Segnali da restituire nella risposta di Distribuzione Segnali. Se non specificato, il valore predefinito è <code class="docutils literal notranslate"><span class="pre">10</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Parametri degli Header: questi sono quelli descritti in <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-recuperare-i-segnali">Signal Hub pull</a>.</p></li>
+</ul>
+</div></blockquote>
+<p>Se la richiesta di Distribuzione Segnali viene elaborata correttamente, l'e-Service risponderà con Status Code:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>HTTP 200 OK se la richiesta è formata correttamente e non ci sono più Segnali da richiedere;</p></li>
+<li><p>HTTP 206 OK se la richiesta è formata correttamente ma ci sono più Segnali da richiedere.</p></li>
+</ul>
+</div></blockquote>
+<p>Indipendentemente dal codice di risposta utilizzato, la risposta ha <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> impostato su <code class="docutils literal notranslate"><span class="pre">application/json</span></code> e i parametri dell'header indicati nel <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-recuperare-i-segnali">Signal Hub pull</a>. Il parametro del body <code class="docutils literal notranslate"><span class="pre">lastSignalId</span></code>, che fa riferimento al <code class="docutils literal notranslate"><span class="pre">signalId</span></code> dell'ultimo Segnale trasmesso dall'e-Service di Distribuzione Segnali, viene aggiunto al payload della risposta.</p>
+<p>In <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-recuperare-i-segnali">Signal Hub pull</a> si possono trovare esempi non normativi di richieste e risposte di Distribuzione Segnali.</p>
+<p>Se si verifica un errore durante l'analisi della request, la risposta DEVE aderire al formato di errore definito in <a class="reference external" href="https://raw.githubusercontent.com/pagopa/interop-signalhub-core/refs/tags/1.0.1/docs/openAPI/pull-signals.yaml">Signal Hub pull-yaml</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>La Specifica OpenAPI completa dell'e-Service di Raccolta Segnali è disponibile in <a class="reference external" href="https://raw.githubusercontent.com/pagopa/interop-signalhub-core/refs/tags/1.0.1/docs/openAPI/pull-signals.yaml">Signal Hub pull-yaml</a>.</p>
+</div>
+<p>Il Fornitore di Attestati Elettronici DEVE implementare la logica necessaria per gestire il polling presso l'endpoint dell'e-Service di Distribuzione Segnali, nel fare ciò deve considerare i seguenti aspetti:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>I Segnali vengono richiesti e recuperati per e-Service PDND, il che significa che il Fornitore di Attestati Elettronici DEVE implementare un ciclo di polling per ogni e-Service;</p></li>
+<li><p>il periodo di conservazione dei Segnali in Signal Hub è specificato nella <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub">Signal Hub Guide</a>. I Segnali più vecchi del periodo di conservazione specificato non saranno disponibili per il recupero;</p></li>
+<li><p>Signal Hub non tiene traccia dell'ultimo <code class="docutils literal notranslate"><span class="pre">signalId</span></code> notificato ai Fornitori di Attestati Elettronici. Ogni Fornitore di Attestati Elettronici DEVE tenere traccia dell'ultimo <code class="docutils literal notranslate"><span class="pre">signalId</span></code> che ha ricevuto per ogni e-Service ID PDND;</p></li>
+<li><p>l'endpoint dell'e-Service di Distribuzione Segnali restituisce i Segnali in batch. La dimensione massima del batch è specificata nella <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub">Signal Hub Guide</a>. L'e-Service di Distribuzione Segnali indicherà se sono disponibili Segnali aggiuntivi per il recupero.</p></li>
+</ul>
+</div></blockquote>
+</section>
+</section>
+<section id="elaborazione-dei-segnali">
+<h2><span class="section-number">13.5.3. </span>Elaborazione dei Segnali</h2>
+<p>Dopo che i Segnali sono stati recuperati con successo dal Fornitore di Attestati Elettronici, quest'ultimo DEVE elaborarli come segue:</p>
+<blockquote>
+<div><ul>
+<li><p>Per ogni Segnale, il Fornitore di Attestati Elettronici DEVE verificare il valore <code class="docutils literal notranslate"><span class="pre">SignalType</span></code>:</p>
+<ul class="simple">
+<li><p>se il <code class="docutils literal notranslate"><span class="pre">SignalType</span></code> del Segnale è <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> (l'<code class="docutils literal notranslate"><span class="pre">objectId</span></code> fa riferimento al <a class="reference internal" href="defined-terms.html#term-Object_id"><span class="xref std std-term">Object_id</span></a> della Fonte Autentica), lo stato e/o il valore dell'Attributo associato a un Attestato Elettronico necessitano di aggiornamenti;</p></li>
+<li><p>se il <code class="docutils literal notranslate"><span class="pre">SignalType</span></code> del Segnale è <code class="docutils literal notranslate"><span class="pre">CREATE</span></code> (l'<code class="docutils literal notranslate"><span class="pre">objectId</span></code> corrisponde al <a class="reference internal" href="defined-terms.html#term-Object_id"><span class="xref std std-term">Object_id</span></a> della Fonte Autentica), gli Attributi richiesti di un Attestato Elettronico specifico sono ora disponibili;</p></li>
+</ul>
+<p>Se l'<code class="docutils literal notranslate"><span class="pre">objectId</span></code> non corrisponde ad alcun identificativo valido noto al Fornitore di Attestati Elettronici, il Segnale DEVE essere ignorato. Altrimenti, se corrisponde a un identificativo noto e valido, il Fornitore di Attestati Elettronici DEVE utilizzare l'endpoint PDND <a class="reference internal" href="authentic-source-endpoint.html#get-attribute-claims"><span class="std std-ref">Get Attribute Claims</span></a> della Fonte Autentica per recuperare le informazioni aggiornate e, se possibile, applicare il nuovo stato/attributo all'Attestato Elettronico corrispondente.</p>
+<p>Quando il Segnale è stato elaborato, il Fornitore di Attestati Elettronici passerà al Segnale successivo e aggiornerà il suo contatore <code class="docutils literal notranslate"><span class="pre">signalId</span></code>; oppure, se non ci sono più Segnali da elaborare, riprenderà il polling.</p>
+</li>
+</ul>
+</div></blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Avvertimento</p>
+<p>Dati i pattern di sicurezza attualmente supportati da Signal Hub, se la Fonte Autentica richiede il pattern di sicurezza <cite>AUDIT_REST_02</cite> dal Fornitore di Attestati Elettronici, quest'ultimo DEVE revocare l'Attestato Elettronico referenziato nei Segnali con <code class="docutils literal notranslate"><span class="pre">signalType</span></code> <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> non potendo contattare la Fonte Autentica per recuperare le informazioni aggiornate senza aver prima autenticato l'Utente. <strong>In questo scenario, la revoca è l'unica azione ammessa.</strong></p>
+</div>
+</section>
+</section>
+
+
+          </div>
+          <nav class="it-docs-pager d-flex flex-wrap justify-content-between gap-3 mt-5" aria-label="Page navigation">
+            <div class="it-docs-pager-prev">
+              <a class="btn btn-outline-primary" href="authentic-source-endpoint.html">
+                <svg class="icon icon-sm me-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M14.6 17.2 9 11.6 14.6 6l.8.7-4.9 4.9 4.9 4.9z"/>
+</svg>
+                <span>13.4. Endpoint delle Fonti Autentiche</span>
+              </a>
+            </div>
+            <div class="it-docs-pager-next ms-auto">
+              <a class="btn btn-primary" href="algorithms.html">
+                <span>14. Algoritmi Crittografici</span>
+                <svg class="icon icon-sm ms-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="m9.8 17.2-.8-.7 4.9-4.9L9 6.7l.8-.7 5.6 5.6z"/>
+</svg>
+              </a>
+            </div>
+          </nav>
+        </main>
+      </div>
+
+      <aside class="col-12 col-lg-2 it-docs-navscroll-col" aria-label="Secondary navigation">
+        <div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
+     data-bs-navscroll
+     aria-label="Page contents">
+  <button class="custom-navbar-toggler"
+          type="button"
+          data-it-docs-nav-toggle
+          data-it-docs-nav-target="#itDocsNavscroll"
+          aria-controls="itDocsNavscroll"
+          aria-expanded="false"
+          aria-label="Open page contents">
+    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
+</svg>
+    <span>Page contents</span>
+  </button>
+  <div class="navbar-collapsable it-docs-navscroll-panel" id="itDocsNavscroll">
+    <div class="overlay"></div>
+    <div class="close-div">
+      <button class="btn close-menu" type="button" aria-label="Close page contents">
+        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="m12.7 12 3.7 3.6-.8.8-3.6-3.7-3.6 3.7-.8-.8 3.7-3.6-3.7-3.6.8-.8 3.6 3.7 3.6-3.7.8.8-3.7 3.6z"/>
+</svg>
+      </button>
+    </div>
+    <div class="menu-wrapper it-docs-menu-scroll">
+      <div class="link-list-wrapper">
+        <h3>On this page</h3>
+        <div class="it-docs-local-toc">
+          <ul>
+<li><a class="reference internal" href="#">13.5. Endpoint di PDND Signal Hub</a><ul>
+<li><a class="reference internal" href="#prerequisiti">13.5.1. Prerequisiti</a></li>
+<li><a class="reference internal" href="#e-service-di-signal-hub">13.5.2. e-Service di Signal Hub</a><ul>
+<li><a class="reference internal" href="#e-service-di-raccolta-segnali">13.5.2.1. e-Service di Raccolta Segnali</a></li>
+<li><a class="reference internal" href="#e-service-di-distribuzione-segnali">13.5.2.2. e-Service di Distribuzione Segnali</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#elaborazione-dei-segnali">13.5.3. Elaborazione dei Segnali</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+<footer id="page-footer" class="it-docs-footer" role="contentinfo" tabindex="-1">
+  <div class="container">
+    <div class="it-docs-footer-inner"><nav id="footer-partners-nav"
+     class="it-docs-footer-partners"
+     aria-label="Institutional partners">
+  <ul class="it-docs-footer-partners-list">
+    <li>
+      <a href="https://innovazione.gov.it/"
+         class="it-docs-footer-partner-link it-docs-footer-partner-link--dtd"
+         target="_blank"
+         rel="noopener">
+        <img src="_static/img/footer/logo-dtd.svg"
+             alt="Department for Digital Transformation"
+             width="120"
+             height="32"
+             loading="lazy"
+             decoding="async">
+      </a>
+    </li>
+    <li>
+      <a href="https://www.ipzs.it/"
+         class="it-docs-footer-partner-link it-docs-footer-partner-link--ipzs"
+         target="_blank"
+         rel="noopener">
+        <img src="_static/img/footer/logo-ipzs.png"
+             alt="Istituto Poligrafico e Zecca dello Stato"
+             width="105"
+             height="43"
+             loading="lazy"
+             decoding="async">
+      </a>
+    </li>
+    <li>
+      <a href="https://www.pagopa.it/it/"
+         class="it-docs-footer-partner-link it-docs-footer-partner-link--pagopa"
+         target="_blank"
+         rel="noopener">
+        <img src="_static/img/footer/logo-pagopa.svg"
+             alt="PagoPA"
+             width="121"
+             height="34"
+             loading="lazy"
+             decoding="async">
+      </a>
+    </li>
+    <li>
+      <a href="https://www.agid.gov.it/it/"
+         class="it-docs-footer-partner-link it-docs-footer-partner-link--agid"
+         target="_blank"
+         rel="noopener">
+        <img src="_static/img/footer/logo-agid.svg"
+             alt="Agenzia per l'Italia Digitale"
+             width="203"
+             height="31"
+             loading="lazy"
+             decoding="async">
+      </a>
+    </li>
+  </ul>
+</nav><div class="it-docs-footer-meta">
+        <p class="it-docs-footer-project">IT-Wallet Specifiche Tecniche - PR #1163</p>
+        <p class="it-docs-footer-org">Dipartimento per la Trasformazione Digitale</p>
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.4.3</span><span class="it-docs-footer-detail">Last updated 01/07/2026</span><span class="it-docs-footer-detail">
+            Sphinx 7.4.5
+          </span></p>
+      </div>
+    </div>
+  </div>
+</footer><a href="#"
+   class="back-to-top shadow it-docs-back-to-top"
+   data-bs-toggle="backtotop"
+   data-bs-scroll-limit="100"
+   data-bs-position-top="0"
+   aria-label="Torna su">
+  <svg class="icon it-docs-back-to-top-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M18.6 10.1 12 3.5l-6.6 6.6.7.7 5.4-5.3V21h1V5.5l5.4 5.3.7-.7z"/>
+</svg>
+</a>
+  </body>
+</html>
