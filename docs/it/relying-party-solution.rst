@@ -35,6 +35,7 @@ Il seguente diagramma illustra l'Architettura ad alto livello della Soluzione di
 
 
 .. toctree::
+  :caption: Indice dei Contenuti della Soluzione di Relying Party
   :maxdepth: 3
 
   relying-party-instance.rst

@@ -11,6 +11,7 @@ Queste attestazioni verificabili, fornite dal Fornitore di Wallet, servono ad au
 
 
 .. toctree::
+  :caption: Indice dei Contenuti dell'Istanza del Wallet
   :maxdepth: 3
 
   wallet-instance-lifecycle.rst

@@ -1,6 +1,7 @@
 <div class="sidebar-wrapper it-line-right-side it-docs-primary-nav">
   <div class="sidebar-linklist-wrapper">
     <div class="link-list-wrapper">
+      {# Sphinx renders toctree captions from RST; hidden in HTML via theme CSS. #}
       <div class="it-docs-sphinx-toc">
         {{ toctree(includehidden=theme_globaltoc_includehidden, collapse=theme_globaltoc_collapse, titles_only=True, maxdepth=theme_globaltoc_maxdepth) }}
       </div>

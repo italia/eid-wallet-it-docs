@@ -16,6 +16,7 @@ In this section the following flows are described:
 
 
 .. toctree::
+  :caption: Credential Presentation Table of Contents
   :maxdepth: 3
 
   remote-flow.rst

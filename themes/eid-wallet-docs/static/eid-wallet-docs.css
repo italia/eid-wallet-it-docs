@@ -581,8 +581,10 @@ body.it-docs-body {
   padding-top: 0;
 }
 
-.it-docs-sphinx-toc > p.caption,
-.it-docs-sphinx-toc > p.caption .caption-text,
+.it-docs-sphinx-toc > p.caption {
+  display: none;
+}
+
 .it-docs-navscroll.navbar.it-navscroll-wrapper .link-list-wrapper > h3 {
   font-size: var(--it-docs-nav-heading-size);
   font-weight: 600;
@@ -1867,11 +1869,7 @@ html[data-it-docs-brightness="black"] .it-docs-header-separator {
   background-color: var(--it-docs-content-border-strong);
 }
 
-html[data-it-docs-brightness="middle"] .it-docs-sphinx-toc > p.caption,
-html[data-it-docs-brightness="middle"] .it-docs-sphinx-toc > p.caption .caption-text,
 html[data-it-docs-brightness="middle"] .it-docs-navscroll.navbar.it-navscroll-wrapper .link-list-wrapper > h3,
-html[data-it-docs-brightness="black"] .it-docs-sphinx-toc > p.caption,
-html[data-it-docs-brightness="black"] .it-docs-sphinx-toc > p.caption .caption-text,
 html[data-it-docs-brightness="black"] .it-docs-navscroll.navbar.it-navscroll-wrapper .link-list-wrapper > h3 {
   color: var(--it-docs-content-muted);
 }

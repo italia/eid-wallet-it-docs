@@ -16,6 +16,7 @@ Il seguente diagramma illustra l'Architettura di Alto Livello della Soluzione Wa
 
 
 .. toctree::
+  :caption: Indice dei Contenuti della Soluzione Wallet
   :maxdepth: 2
 
   wallet-solution-requirements.rst

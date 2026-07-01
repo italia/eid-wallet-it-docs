@@ -5,6 +5,7 @@ Entità
 ======
 
 .. toctree::
+  :caption: Indice dei Contenuti delle Entità
   :maxdepth: 3
 
   wallet-solution.rst

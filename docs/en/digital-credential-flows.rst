@@ -5,6 +5,7 @@ Digital Credential Flows
 ========================
 
 .. toctree::
+  :caption: Digital Credential Flows Table of Contents
   :maxdepth: 3
 
   credential-issuance.rst
