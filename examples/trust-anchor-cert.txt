@@ -1,0 +1,27 @@
+trustAnchorFromCert ::= {
+    Certificate {
+      tbsCertificate {
+        version         v3,
+        serialNumber    1,
+        signature       { algorithm sha256WithRSAEncryption, parameters NULL },
+        issuer          rdnSequence { { { type commonName, value "Example Root CA" } } },
+        validity        { notBefore utcTime "20260101000000Z",
+                          notAfter  utcTime "20460101000000Z" },
+        subject         rdnSequence { { { type commonName, value "Example Root CA" } } },
+        subjectPublicKeyInfo rsaPubKey,
+        extensions {
+          { extnID id-ce-basicConstraints,
+            critical TRUE,
+            extnValue '3003020101FF'H },               -- cA=TRUE, pathLen absent
+          { extnID id-ce-subjectKeyIdentifier,
+            critical FALSE,
+            extnValue '0414A1B2C3D4E5F60718293A4B5C6D7E8F90A1B2C3D4'H },
+          { extnID id-ce-keyUsage,
+            critical TRUE,
+            extnValue '030205C0'H }                   -- keyCertSign, cRLSign
+        }
+      },
+      signatureAlgorithm { algorithm sha256WithRSAEncryption, parameters NULL },
+      signatureValue '...RSA signature over tbsCertificate... 'H
+    }
+}

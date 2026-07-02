@@ -4,7 +4,18 @@
 EUDIW Trust Artifacts
 ---------------------
 
-This section defines the required trust artifacts and their conceptual roles in the EUDIW ecosystem as for `ARF`_, including :ref:`infrastructure-trust:Register of WRPs`, :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC)` and :ref:`infrastructure-trust:Wallet-Relying Party Registration Certificate (WRPRC)`, :ref:`infrastructure-trust:List of Trusted Entities (LoTE)`, :ref:`infrastructure-trust:Embedded Disclosure Policy (EDP)`, :ref:`infrastructure-trust:Entity Sign/Seal Certificate`, and :ref:`infrastructure-trust:Trust Anchor Certificate`.
+This section defines the required trust artifacts and their conceptual roles in the EUDIW ecosystem as per `EIDAS-ARF`_, including:
+
+- :ref:`trust-artifact-eudiw:Register of WRPs`, 
+- :ref:`trust-artifact-eudiw:X509 Certificate Profiles`, containing the following specialized profiles:
+
+  - :ref:`trust-artifact-eudiw:Wallet-Relying Party Access Certificate (WRPAC) Profile`, 
+  - :ref:`trust-artifact-eudiw:Entity Sign/Seal Certificate Profile`, and 
+  - :ref:`trust-artifact-eudiw:Trust Anchor Certificate Profile`.
+
+- :ref:`trust-artifact-eudiw:Wallet-Relying Party Registration Certificate (WRPRC) Profile`,
+- :ref:`trust-artifact-eudiw:Trusted List, Lists of Trusted Lists, and Lists of Trusted Entities`, and 
+- :ref:`trust-artifact-eudiw:Embedded Disclosure Policy Data Model`.
 
 Register of WRPs
 ^^^^^^^^^^^^^^^^
@@ -363,6 +374,7 @@ Clause 4 in ETSI TS 119 412-6, further specifies PID Providers X509 certificates
     * ``0.4.0.194118.1.4`` (``QCP-l-eudiwrp``)
 
    The ``cpsURI`` under Certificate policies MUST indicate a URL where the CPS of the Provider of WRPAC is located.
+
   - ``subjectKeyIdentifier`` For end entity certificates, the subject key identifier extension provides a means of identifying certificates that contain the particular public key used in an application. The subject key identifier SHOULD be derived from the public key using the methods defined in :rfc:`5280`, clause 4.2.1.2.
   - ``authorityInfoAccess`` MUST be present.
   - the (esi4-qcStatement-6) ``qcStatements`` extension with the OID ``1.3.6.1.5.5.7.1.3`` MUST be present with ``QcType`` valued as ``0.4.0.194126.1.1`` (``id-etsi-qct-pid``) as defined in Annex A of [`ETSI_TS_119_412_6`_].
@@ -371,7 +383,7 @@ The extension is mandatory as stated in [`ETSI_TS_119_411_8`_], requirement GEN-
      - :rfc:`3647#section-3.3.1`, :rfc:`5280#section-4.2.1.4`.
 
 .. note::
-    **Dependency Considerations**: The WRPAC attributes MUST be derived from the information held in the Register as specified in clause 5.1.2 of ETSI TS 119 475 `ETSI_TS_119_475`_. This also implies that for some specific attributes in the WRPAC the same value MUST be encountered in the corresponding WRPRC if any.
+    **Dependency Considerations**: The WRPAC attributes MUST be derived from the information held in the Register as specified in clause 5.1.2 of `ETSI_TS_119_475`_ `ETSI_TS_119_475`_. This also implies that for some specific attributes in the WRPAC the same value MUST be encountered in the corresponding WRPRC if any.
 
 Wallet-Relying Party Access Certificate compliant with this 
 
@@ -386,7 +398,7 @@ Trust Anchor Certificate Profile
 .. warning:: 
   aggiungere schema dei trust anchors
 
-  non hanno delle certificate policies?
+  non hanno delle certificate policies? tipo NCP o simili? sembra logico di si' a maggior ragione se sono emessi da un CA che emette anche WRPAC o Entity Sign/Seal Certificates che hanno questi requisiti.
 
 This section specifies an **X.509 certificate profile** for **Trust Anchors** used in the European Digital Identity Wallet (EUDIW) ecosystem. These certificates MUST be notified to the European Commission as described in `CIR2025/2980`_ and subsequently included in the appropriate LoTE.
 
@@ -452,51 +464,19 @@ This section further specifies the requirements of :ref:`trust-artifact-eudiw:X5
      - :rfc:`5280#section-4.2.1.3`.
 
 .. note::
+   **Trust Anchor revocation.**
+    Trust Anchor certificates are not expected to be revoked as they are trusted by policy when published in a LoTE or Trusted List. As a result, revocation information (e.g., CRL or OCSP) is not required for Trust Anchor certificates and entities using Trust Anchor certificates retrived in a LoTE or Trusted List MAY avoid revocation checking for Trust Anchor certificates.
+
+.. note::
 
    **Self-signed vs. non-self-signed trust anchors.**
    A LoTE / Trusted List-published trust anchor certificate MAY be self-signed (traditional root CA style) or non-self-signed but treated as a trust anchor by policy (a pinned intermediate CA certificate).
    Relying parties MUST NOT require an additional issuer chain above a LoTE-designated trust anchor, even if it is not self-signed, because the trust anchor is a trust-store input designated by policy.
 
-## Examples (pseudo-structure)
+The following are non-normative examples of trust anchor certificates in a pseudo-structure format.
 
-The following are non normative examples of trust anchor certificates in a pseudo-structure format.
-
-```text
-trustAnchorFromCert TrustAnchorChoice ::= {
-  certificate
-    -- a standard RFC 5280 Certificate object
-    Certificate {
-      tbsCertificate {
-        version         v3,
-        serialNumber    1,
-        signature       { algorithm sha256WithRSAEncryption, parameters NULL },
-        issuer          rdnSequence { { { type commonName, value "Example Root CA" } } },
-        validity        { notBefore utcTime "20260101000000Z",
-                          notAfter  utcTime "20460101000000Z" },
-        subject         rdnSequence { { { type commonName, value "Example Root CA" } } },
-        subjectPublicKeyInfo rsaPubKey,
-        extensions {
-          { extnID id-ce-basicConstraints,
-            critical TRUE,
-            extnValue '3003020101FF'H },               -- cA=TRUE, pathLen absent
-          { extnID id-ce-subjectKeyIdentifier,
-            critical FALSE,
-            extnValue '0414A1B2C3D4E5F60718293A4B5C6D7E8F90A1B2C3D4'H },
-          { extnID id-ce-keyUsage,
-            critical TRUE,
-            extnValue '030205C0'H }                   -- keyCertSign, cRLSign
-        }
-      },
-      signatureAlgorithm { algorithm sha256WithRSAEncryption, parameters NULL },
-      signatureValue '...RSA signature over tbsCertificate... 'H
-    }
-}
-```
-
-.. warning::
-  DA CAPIRE se serve - vedi discussione su APTITUDE e https://github.com/openid/OpenID4VC-HAIP/issues/372
-  in caso rimuoverlo dalla parte introduttiva di questa sezione
-
+.. literalinclude:: ../../examples/trust-anchor-cert.txt
+  :language: text
 
 Entity Sign/Seal Certificate Profile
 """"""""""""""""""""""""""""""""""""""
@@ -505,13 +485,27 @@ This section specifies :ref:`trust-artifact-eudiw:X509 Certificate Profiles` by 
 
 The following table maps the Sign/Seal Certificate subject to the scope of the certificate and the location of the Trust Anchor.
 
-| Sign/Seal Certificate subject | Attestation signed | Trust Anchor location |
-| :---------------------------: | :----------------: | :-------------------: |
-| PID Provider | signing PID | PID Providers LoTE |
-| Wallet Provider | WIA, KA | Wallet Providers LoTE  |
-| EAA Provider | signing EAA | MS decision |
-| QEAA Provider | signing QEAA | TL |
-| Pub-EAA Provider | signing  PuB-EAA | Pub-EAA Providers LoTE |
+.. list-table:: Certificate Attestation and Trust Anchor Matrix
+   :header-rows: 1
+
+   * - Sign/Seal Certificate subject
+     - Attestation signed
+     - Trust Anchor location
+   * - PID Provider
+     - signing PID
+     - PID Providers LoTE
+   * - Wallet Provider
+     - WIA, KA
+     - Wallet Providers LoTE
+   * - EAA Provider
+     - signing EAA
+     - MS decision
+   * - QEAA Provider
+     - signing QEAA
+     - TL
+   * - Pub-EAA Provider
+     - signing PuB-EAA
+     - Pub-EAA Providers LoTE
 
 PID Provider Sign/Seal Certificate
 .....................................
@@ -666,29 +660,17 @@ Below are represented many non-normative examples of WRPRCs' headers and payload
 
 .. warning::
 
-    [`ETSI_TS_119_475`, Table 10] defines the intermediary name subfield as ``sname``. The example in Annex C of the same standard uses ``name`` instead. This specification follows the normative Table 10 and uses ``sname``.
+    `ETSI_TS_119_475`, Table 10 defines the intermediary name subfield as ``sname``. The example in Annex C of the same standard uses ``name`` instead. This specification follows the normative Table 10 and uses ``sname``.
 
 Trusted List, Lists of Trusted Lists, and Lists of Trusted Entities
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. warning::
-
-    trust eval con federation, su credenziale mdoc. Nella credenziale deve esserci x5c con il certificato di firma. Quindi un EAA nazionale deve avere certificato.
-
-    Chi riceve la credenziale deve validare il certificato di firma, quindi deve avere il trust anchor. Usiamo federation per valutare questo? Nel caso il trust anchor e' unico per la federazione, e viene pinnato tramite metodi out-of-band. Il problema e' legato alla revoca, chi assicura che il certificato di firma sia valido? Altro problem: come facciamo a validare il TA? (e.g., usaimo federation). 
-
-    Opzione: sdoppiamo iso compliant trust eval da federation crando un trust eval simile ad uediw. Problema: come passiamo i registration cert?
-
-    Implicazioni: X509 certificate is transversal.
-
-    2 Options: use X509 certificate and validate it via federation adding an ad hoc trust anchor, or use a similar eudiw trust eval.
     
 This section describes the format and contents of three types of Trust Artifacts, each of which conveys a list of current and historical Trust Anchors (containers of an Entity public key and identifier which are assumed to be trusted).
 
 Ecosystem Entities utilize these lists to:
 
-- Validate runtime trustworthiness: Verify a Trust Anchor (see `:ref:trust-artifact-eudiw:Trust Anchor Certificate Profile`) to authenticate, authorize, or validate an entity or artifact during live operations.
-- Perform historical validation: Validate information contained within the list for historical audit purposes.
+- **Validate runtime trustworthiness**: Verify a Trust Anchor (see `:ref:trust-artifact-eudiw:Trust Anchor Certificate Profile`) to authenticate, authorize, or validate an entity or artifact during live operations.
+- **Perform historical validation**: Validate information contained within the list for historical audit purposes.
 
 The three distinct types of trust lists are:
 
@@ -696,13 +678,13 @@ The three distinct types of trust lists are:
 
   - Qualified Trust Service Providers (QTSP)s, such as Qualified Certificates Issuing and revocation mechanisms, QEAA Providers, Qualified electronic archiving services.
   - Non-Qualified Trust Services such as EAA Providers, 
-  - Other Trust Services defined at the national level, such as Archiving, Key escrow.
+  - Other Trust Services defined at the national level, such as archiving.
 
-  Within eIDAS, TLs are maintained by Member States, who are responsible for keeping record of the trusted services providers under their respective jurisdiction. They are numbered and renewed periodically, and published in a website for unrestricted download. To protect their integrity and assure authenticity, they are also signed with trusted certificates contained in the LOTL.
+   Within eIDAS, TLs are maintained by Member States, who are responsible for keeping record of the trusted services providers under their respective jurisdiction. They are numbered and renewed periodically, and published in a website for unrestricted download. To protect their integrity and assure authenticity, they are also signed with trusted certificates contained in the LOTL.
 
 - List of Trusted Lists (LOTL): Established under Chapter II of Annex I of CID (EU) 2015/1505, as amended by CID (EU) 2025/2164, and specified in `ETSI_TS_119_612`_. There is only one LOTL, which is published in XML format and signed by the European Commission (EC). It utilizes an AdES digital signature at conformance level baseline B (per `ETSI_TS_119_182_1`_) and references the trusted certificates that each National Trusted List. To facilitate key rotation and continuous updates, the LOTL implements a pivoting mechanism. It is published in a machine-readable format at an endpoint specified within the Official Journal of the European Union (OJEU).
 
-  The XML schema for both Trusted Lists and List of Trusted Lists, containing parameters' name and description can be found at https://forge.etsi.org/rep/esi/x19_612_trusted_lists/-/raw/v2.4.1/19612_xsd.xsd. Currently the human-readable version of the LOTL and National TLs are published in the following URI: <https://ec.europa.eu/tools/lotl/eu-lotl.xml>.
+  The XML schema for both Trusted Lists and List of Trusted Lists, containing parameters' name and description can be found at https://forge.etsi.org/rep/esi/x19_612_trusted_lists/-/raw/v2.4.1/19612_xsd.xsd. Currently, the human-readable version of the LOTL and National TLs are published in the following URI: <https://ec.europa.eu/tools/lotl/eu-lotl.xml>.
 
 - Lists of Trusted Entities (LoTE): Established under Articles 4 and 5 of [CIR 2024/2980] and specified in `ETSI_TS_119_602`_. These are available in either XML or JSON format and are signed with an AdES digital signature at conformance level baseline B (per `ETSI_TS_119_182_1`_). To facilitate continuous updates, the LoTE implements a pivoting mechanism and is published in a machine-readable format at an endpoint specified within the OJEU. The <artifacts:List of Trusted Entities (LoTE)|LoTE> types can be one of the following, as defined in annex C.2:
 
@@ -810,23 +792,25 @@ Annex III of [CIR 2024/2979] defines three common EDP types:
 - **No Policy.** No EDP is present, or the EDP explicitly indicates that no restrictions apply (ISS-MDATA-EBD-4.2.5.2-06).
 
 - **Authorized Relying Parties Only.** The EDP contains a list of RPs that are allowed to access the Attestation. According to `ETSI_TS_119_472_3 `_(ISS-MDATA-EBD-4.2.5.2-07), authorized RPs are identified by their subject distinguished name as held in the Wallet-Relying Party Access Certificate, in LDAP string form as defined in :rfc:`4514`.
-For legal persons, the relevant DN attributes are ``commonName``, ``organizationName``, ``organizationIdentifier``, and ``countryName``.
-For natural persons: ``commonName``, ``givenName``, ``surname``, ``serialNumber``, and ``countryName``. The ``organizationIdentifier`` attribute type is represented by the LDAP string "ORGID"; the ``serialNumber`` attribute type is represented by "SN" (according to `ETSI_TS_119_472_3`_ NOTE 1 and NOTE 2 to ISS-MDATA-EBD-4.2.5.2-07).
 
-!!! note
+  - For legal persons, the relevant DN attributes are ``commonName``, ``organizationName``, ``organizationIdentifier``, and ``countryName``. 
+  - For natural persons: ``commonName``, ``givenName``, ``surname``, ``serialNumber``, and ``countryName``. The ``organizationIdentifier`` attribute type is represented by the LDAP string "ORGID"; the ``serialNumber`` attribute type is represented by "SN" (according to `ETSI_TS_119_472_3`_ NOTE 1 and NOTE 2 to ISS-MDATA-EBD-4.2.5.2-07).
 
-    `ETSI_TS_119_472_3 `_(ISS-MDATA-EBD-4.2.5.2-07) also allows identifying authorized RPs by URI-encoded entitlements as specified in [ETSI TS 119 475], held in the <artifacts:Wallet-Relying Party Registration Certificate (WRPRC)|WRPRC>. [ETSI TS 119 475, Annex A.3] defines sub-entitlements for Service Providers, currently for Payment Service Providers (e.g. `https://uri.etsi.org/19475/SubEntitlement/psp/psp-ai`). Future versions may include additional sector-specific sub-entitlements at national or EU level. This specification supports both the subject DN and the entitlement URI identification mechanisms.
+- **Specific Root of Trust.** The EDP contains a list of trusted roots or intermediate certificates. Only RPs whose Wallet-Relying Party Access Certificate chain to one of these roots are allowed to access the Attestation. According to `ETSI_TS_119_472_3`_ (ISS-MDATA-EBD-4.2.5.2-08/09), each authorized root is identified by its issuer distinguished name in LDAP string form as defined in RFC 4514 and the issuer's certificate serial number.
 
-!!! note
+.. note::
 
-    [ARF] HLR EDP_02 refers to "EU-wide unique identifiers", as defined in Reg_32, for the authorized RP list. `ETSI_TS_119_472_3 `_(ISS-MDATA-EBD-4.2.5.2-07) identifies authorized RPs by their subject DN from the Wallet-Relying Party Access Certificate. The organizationIdentifier attribute within the DN has the same semantics as the identifier given in Reg_32. This specification aligns with the `ETSI_TS_119_472_3`_ formulation. Future ARF versions are expected to align accordingly.
+  `ETSI_TS_119_472_3 `_(ISS-MDATA-EBD-4.2.5.2-07) also allows identifying authorized RPs by URI-encoded entitlements as specified in `ETSI_TS_119_475`_, held in the Wallet-Relying Party Registration Certificate. Annex A.3 of `ETSI_TS_119_475`_, defines sub-entitlements for Service Providers, currently for Payment Service Providers (e.g. ``https://uri.etsi.org/19475/SubEntitlement/psp/psp-ai``). Future versions may include additional sector-specific sub-entitlements at national or EU level. This specification supports both the subject DN and the entitlement URI identification mechanisms.
 
-- **Specific Root of Trust.** The EDP contains a list of trusted roots or intermediate certificates. Only RPs whose <artifacts:Wallet-Relying Party Access Certificate (WRPAC)|WRPACs> chain to one of these roots are allowed to access the Attestation. According to `ETSI_TS_119_472_3 `_(ISS-MDATA-EBD-4.2.5.2-08/09), each authorized root is identified by its issuer distinguished name in LDAP string form as defined in RFC 4514 and the issuer's certificate serial number.
+.. note::
+
+  `EIDAS-ARF`_ HLR EDP_02 refers to *EU-wide unique identifiers*, as defined in Reg_32, for the authorized RP list. `ETSI_TS_119_472_3`_ (ISS-MDATA-EBD-4.2.5.2-07) identifies authorized RPs by their subject DN from the Wallet-Relying Party Access Certificate. The ``organizationIdentifier`` attribute within the DN has the same semantics as the identifier given in `EIDAS-ARF`_ HLR Reg_32. This specification aligns with the `ETSI_TS_119_472_3`_ formulation.
 
 Embedded Disclosure Policy Data Model
 """"""""""""""""""""""""""""""""""""""
 
-The following table provides a comprehensive overview of the Embedded Disclosure Policy data model, including parameter names, data types, descriptions, and the specific clauses in `ETSI_TS_119_472_3`_ where each 
+The following table provides a comprehensive overview of the Embedded Disclosure Policy data model, including parameter names, data types, descriptions, and the specific clauses in `ETSI_TS_119_472_3`_ where each parameter is defined.
+
 .. list-table:: Embedded Disclosure Policy Parameters
    :class: longtable
    :header-rows: 1

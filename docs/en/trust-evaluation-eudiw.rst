@@ -42,7 +42,7 @@ Each validation procedure (defined in :ref:`trust-evaluation-eudiw:List of Trust
     - ``LOTL-Status == LOTL_VERIFICATION_PASSED``, or
     - ``EU-TL-Status == EU-TL_VERIFICATION_PASSED``;
 
-    Then the List of Trusted Entities or Trusted List is valid and the Trust Anchor certificates (see :ref:`trust-artifact-eudiw:Trust Anchor Certificate Profile`) therein MUST be considered trustworthy.
+     Then the List of Trusted Entities or Trusted List is valid and the Trust Anchor certificates (see :ref:`trust-artifact-eudiw:Trust Anchor Certificate Profile`) therein MUST be considered trustworthy.
 
 - If the validation algorithms terminate with:
 
@@ -50,7 +50,7 @@ Each validation procedure (defined in :ref:`trust-evaluation-eudiw:List of Trust
     - ``LOTL-Status == LOTL_VERIFICATION_FAILED``, or
     - ``EU-TL-Status == EU-TL_VERIFICATION_FAILED``;
 
-    Then the List of Trusted Entities or Trusted List is not valid and the Trust Anchor certificates (see :ref:`trust-artifact-eudiw:Trust Anchor Certificate Profile`) therein MUST NOT be considered trustworthy. 
+     Then the List of Trusted Entities or Trusted List is not valid and the Trust Anchor certificates (see :ref:`trust-artifact-eudiw:Trust Anchor Certificate Profile`) therein MUST NOT be considered trustworthy. 
 
 List of Trusted Entities Validation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -60,7 +60,7 @@ This section defines the validation of the EU-level List of Trusted Entities (Li
 List of Trusted Entities Validation Algorithm
 """"""""""""""""""""""""""""""""""""""""""""""
 
-The validating Entity MUST initializes the following variables as described in [`ETSITS119615`_].
+The validating Entity MUST initializes the following variables as described in [`ETSI_TS_119_615`_].
 
 **Input Variables**:
 
@@ -84,32 +84,49 @@ The validation MUST perform the following steps:
 1. (Initialization) Download the JWT file from ``OJEU-LoTE-Loc`` and assign it to ``LoTE``.
 2. (Parsing) Extract the first certificate from the ``x5c`` header of ``LoTE`` and assign it to ``LoTE-Signer-Cert``.
 3. (Pivot Discovery) Iterate through the ``uriValue`` claims in the ``SchemeInformationURI`` object. Count the number of valid URIs found before encountering the URI matching ``OJEU-Loc``. Let $n$ be that count.
+
     - If no URI matches ``OJEU-Loc``: Validation MUST fail with ``LoTE-Status`` set to ``LoTE_VERIFICATION_FAILED`` and ``LoTE-Sub-Status`` set to ``OJEU_LOCATION_INPUT_NOT_MATCHING_OJEU_LOCATION_IN_LoTE``. (This may imply that a new version of the OJEU is available).
+
 4. (LoTE Location Conflict) Check the condition: ``OJEU-LoTE-Loc != LoTE Location`` AND ``LoTE != Content at LoTE Location``.
+
     - (`LoTE Location`` is the URI in the ``PointersToOtherLoTE`` claim of ``LoTE`` with ``SchemeTerritory`` = ``EU``).
     - If ``TRUE``: Validation MUST stop with ``LoTE-Status`` set to ``LoTE_VERIFICATION_FAILED`` and ``LoTE-Sub-Status`` set to ``LoTE_FILE_CONFLICT``.
     - If ``FALSE``, proceed to the next step.
+
 5. (LoTE Freshness) Check the condition: ``OJEU-LoTE-Loc == LoTE Location`` AND ``LoTE !=`` Content at ``LoTE Location``.
+
     - If ``TRUE``: Set ``OJEU-LoTE-Loc`` to ``LoTE Location`` and restart from Step 1.
     - If ``FALSE``, proceed to the next step.
+
 6. (Digital Signature Validation) Validate the cryptographic signature of the current ``LoTE`` using the public key from ``LoTE-Signer-Cert``.
+
     - If validation fails: Stop with ``LoTE-Status`` set to ``LoTE_VERIFICATION_FAILED`` and ``LoTE-Sub-Status`` set to ``LoTE_SIGNATURE_VERIFICATION_FAILED``.
     - If successful:
+
         - Set ``LoTESO-Cert`` to ``LoTE-Signer-Cert``.
         - Set ``LoTESO-Certs-Set`` to the certificates found in the ``PointersToOtherLoTE`` claim (territory ``EU``) of the current ``LoTE`` payload.
+
 7. (Intermediate Pivot Validation)
+
     - Case $n=0$ (No Pivots): Proceed directly to Step 8.
     - Case $n \neq 0$ (History Chain):
+
         - Iterate $i$ from 1 to $n$ (from most recent Pivot to oldest). Let ``Pivot`` be the file downloaded from the $i$-th URI.
         - (Link Check) Set ``Pivot-Certs-Set`` to the certificates in the ``PointersToOtherLoTE`` claim (territory ``EU``) of ``Pivot`. If ``LoTESO-Cert`` (the signer of the previous file in the chain) is not in ``Pivot-Certs-Set``, validation MUST fail with ``LoTE-Sub-Status`` set to ``PIVOT_i-1_SIGNER_CERT_NOT_AUTHENTICATED_BY_PIVOT_i``.
         - (Update Signer) Set ``LoTESO-Cert`` to the first certificate in the ``x5c`` header parameter of ``Pivot``.
         - (Verify Signature) Validate the signature of ``Pivot`` using ``LoTESO-Cert``. If it fails, validation MUST fail with ``LoTE-Status`` set to ``LoTE_VERIFICATION_FAILED``, and ``LoTE-Sub-Status`` set to ``PIVOT_i_SIGNATURE_VERIFICATION_FAILED``.
         - The loop continues, walking backwards until ``LoTESO-Cert`` represents the signer of the oldest Pivot.
+
 8. (Trust Root Validation) Verify the end of the chain. If ``LoTESO-Cert`` (from the last Pivot or current LoTE List of Trusted Entitie) is not in ``OJEU-LoTE-Certs-Set`` (the Trust Anchor), validation MUST fail with ``LoTE-Sub-Status`` set to ``PIVOT_n_SIGNER_CERT_NOT_AUTHENTICATED_BY_OJEU``.
+
 9. (Expiration) If current time is greater than the ``NextUpdate`` parameter's value of ``LoTE``, validation MUST fail.
+
 10. (Success) Set ``Authenticated-LoTE`` to ``LoTE`, ``LoTE-Status`` to ``LoTE_VERIFICATION_PASSED``.
+
 11. (Update Bookmark) If ``OJEU-LoTE-Loc`` does not match the ``LoTE Location`` in ``Authenticated-LoTE`` (territory ``EU``), update ``OJEU-LoTE-Loc`` to that value.
+
 12. (Update Trust Root) [Caution: This step modifies the Root of Trust configuration]
+
     - If ``OJEU-Loc`` does not match the first URI in ``SchemeInformationURI``, update ``OJEU-LoTE-Loc``.
     - Update ``OJEU-LoTE-Certs-Set`` according to the new Trust Anchor either in ``Authenticated-LoTE`` or from a new Official Journal of the European Union OJEU publication.
 
@@ -188,14 +205,15 @@ To authenticate the Wallet-Relying Party, the Wallet Unit MUST verify the authen
         - if the Presentation follows the Proximity Flow, the Wallet Unit MUST extract the ``readerAuthAll[].33`` (or alternatively ``readerAuth[].33``) claim value from the mdoc Request and check its signature using the top certificate of the certificate chain (i.e., the one whose subject DN corresponds to the Credential Issuer's name).
 
 2. **Construct the Certification Path:** Build a path starting from the certificate issued by the Provider of WRPAC ($C_1$) and ending with the Wallet-Relying Party Access Certificate presented by the WRP ($C_n$). *(Note: The simplest path consists of just one certificate, where $n=1$).*
+
 3. **LoTE Validation:** Retrieve the WRPAC Trust Anchor that anchors the root of the certificate path from the validated List of Trusted Entities (see :ref:`trust-evaluation-eudiw:List of Trusted Entities Validation`).
+
 4. **Trust Anchor Retrieval:** To retrieve the correct Trust Anchor, the Wallet Unit MUST:
     
     - match the ``issuer.organizationIdentifier`` field value of certificate $C_1$ with the ``TrustedEntityList[].TrustedEntity.TETradeName`` field value of the LoTE; and
     - use the certificates found in the ``TrustedEntityServices[].ServiceInformation.ServiceDigitalIdentity`` field as the Trust Anchor.
 
-4. **Execute Path Validation:** Run the algorithm defined in :ref:`trust-evaluation-eudiw:X509 Certificate Chain Validation Algorithm` as described in :ref:`trust-evaluation-eudiw:Wallet-Relying Party Access Certificate Validation`.
-
+5. **Execute Path Validation:** Run the algorithm defined in :ref:`trust-evaluation-eudiw:X509 Certificate Chain Validation Algorithm` as described in :ref:`trust-evaluation-eudiw:Wallet-Relying Party Access Certificate Validation`.
 
 .. warning::
 
@@ -265,16 +283,16 @@ The Validation flow that the Wallet Unit performs, depends on the availability o
     - ``verifier_info`` parameter included in the Request Object JWT within the authorization request (see [`ETSITS119472-2`_] and Section 5.1 of [`OpenID4VP`_]). This is an array of JSON Objects containing Wallet-Relying Party Registration Certificate in base64-encoded format and data including the URL of Registrar online service.
     - ``euwrprc`` CBOR byte string with serialized Wallet-Relying Party Registration Certificate member of ``requestInfo`` included in the ISO ``DeviceRequest`` Proximity Flow, Section 5.3 [`ETSITS119472-2`_].
 
-    !!! warning
+     !!! warning
 
-        Currently, the mapping of RPRC_19a data in the ``requestInfo`` map is not defined in [`ETSITS119472-2`_]
+        Currently, the mapping of `EIDAS-ARF`_ HRL RPRC_19a data in the ``requestInfo`` map is not defined in [`ETSITS119472-2`_]
 
 - During the Issuance flow, the Credential Issuer includes authorization data in the Credential Issuer Metadata through the ``issuer_info`` array (Section 4.2.3 of [`ETSITS119472-3`_]). This array contains:
 
     - [OPTIONAL] A ``registration_cert`` element containing the Wallet-Relying Party Registration Certificate by value (ISS-MDATA-REG_CERT-4.2.3-04/05) (OPTIONAL).
     - [REQUIRED] An element with format ``registrar_dataset`` containing self-declared registration information including ``identifier``, ``srvDescription``, ``registryURI`, and ``providesAttestations``.
 
-    Metadata is signed with the Attestation Provider Wallet-Relying Party Access Certificate private key (ISSU_22a). Authorization data contained in the Embedded Disclosure Policy is also distributed through the Credential Issuer Metadata within ``credential_configurations_supported`` field.
+     Metadata is signed with the Attestation Provider Wallet-Relying Party Access Certificate private key (ISSU_22a). Authorization data contained in the Embedded Disclosure Policy is also distributed through the Credential Issuer Metadata within ``credential_configurations_supported`` field.
 
 In case the Wallet-Relying Party Registration Certificate is not available, or its validation fails, the Wallet Unit MUST use the entity identifier and, OPTIONALLY, the ``intended_use_id`` (``presentation``) or (``issuance``). use the Registrar URL and query this service using the entity unique identifier and, for presentation, the ``intended_use_id``.
 
@@ -319,10 +337,6 @@ When the Wallet-Relying Party Registration Certificate is not available or valid
 
     - During the Presentation flow the entity identifiers is either the value of the ``verifier_info[].data.identifier`` parameter in the Request object for the Remote flow, or the value of the ``docRequest.itemsRequest[].requestInfo.EUWrpRegistrarInfo.identifier`` parameter in the mdoc Request.
     - During the Issuance flow the entity identifier is the value of the ``issuer_info[].data.identifier`` parameter.
-
-.. note::
-
-    As per [RPRC_19a] in the [`ARF`_], when the Relying Party requesting the presentation is a Relying Party Intermediary, it MUST use the intermediated Relying Party data in the Presentation Request.
  
 4. **Format verification**: confirm ``typ`` is ``jwt`` (Section 5.2.1 of [`ETSITS119475`_]).
 5. **Verify pertinence**: the Wallet Unit MUST verify that the response pertains to the relevant authorization subject and intended use.
@@ -339,6 +353,10 @@ When the Wallet-Relying Party Registration Certificate is not available or valid
     - The ``trust_anchor`` MUST be a certificate of the Registrar obtained from the List of Trusted Entities. This certificate MUST be the Trust Anchor certificate of the Provider of WRPRC which issued certificate $C_1$.
 
 9. **Normalize** Register-derived data into the same internal model used for Wallet-Relying Party Registration Certificate data.
+
+.. note::
+
+    As per RPRC_19a in the `EIDAS-ARF`_, even if the Relying Party requesting the presentation is a Relying Party Intermediary, it MUST use the intermediated Relying Party data in the Presentation Request.
 
 **Output Model**
 
@@ -383,32 +401,32 @@ To validate the Authorization profile of a Wallet-Relying Party, the Wallet Unit
 
 1. **Binding verification**. The Wallet Unit MUST ensure that the authenticated entity is the same as the entity described in the authorization data. The types of checks depend on the flow as well as the context.
 
-    - **Credential Issuance**. The Wallet Unit MUST match the Credential Issuer identifier extracted from the Wallet-Relying Party Access Certificate subject in the ``subject.organizationIdentifier`` (clause 5.1.4 in [`ETSIEN319412-1`_]) with 
+    - **Credential Issuance**. The Wallet Unit MUST match the Credential Issuer identifier extracted from the Wallet-Relying Party Access Certificate subject in the ``subject.organizationIdentifier`` (clause 5.1.4 in `ETSIEN319412-1`_) with 
     
         - the Credential Issuer's WRPRC ``sub`` field's value; or,
         - in case no WRPRC is available, the Credential Issuer ``identifier`` value used in the GET request (``/wrp/{identifier}``) to the Register endpoint; and
         - the ``issuer_info.data.identifier`` field's value from the Credential Issuer Metadata's payload.
 
-    If any checks fail, the Wallet Unit MUST set the ``authz_val_state`` to ``BINDING_FAILED``.
+     If any checks fail, the Wallet Unit MUST set the ``authz_val_state`` to ``BINDING_FAILED``.
 
-    - **Credential Presentation**. The Wallet Unit MUST extract the Relying Party identifier from the Wallet-Relying Party Access Certificate subject in the ``subject.organizationIdentifier`` (clause 5.1.4 in [`ETSIEN319412-1`_]).
+    - **Credential Presentation**. The Wallet Unit MUST extract the Relying Party identifier from the Wallet-Relying Party Access Certificate subject in the ``subject.organizationIdentifier`` (clause 5.1.4 in `ETSIEN319412-1`_).
     
-    The Wallet Unit first assumes the **No intermediary** scenario. The Wallet Unit MUST match the extracted Relying Party identifier with
+     The Wallet Unit first assumes the **No intermediary** scenario. The Wallet Unit MUST match the extracted Relying Party identifier with
 
         - the Relying Party's WRPRC ``sub`` field's value; or,
         - in case no WRPRC is available, the Relying Party ``identifier`` value used in the GET request (``/wrp/{identifier}``) to the Register endpoint; and
         - the ``verifier_info.data.identifier`` field's value from the Request Object's payload during the Remote flow; or,
         - the ``docRequest.itemsRequest[].requestInfo.EUWrpRegistrarInfo.identifier`` field in the mdoc Request during the proximity flow.
 
-    If any checks fail, it is possible that the Presentation happens in the **Intermediary** scenario, where the Presentation Request is intermediated by a Relying Party Intermediary. The Wallet Unit MUST attempt to match the Relying Party identifier extracted from the WRPAC (``subject.organizationIdentifier``) with 
+     If any checks fail, it is possible that the Presentation happens in the **Intermediary** scenario, where the Presentation Request is intermediated by a Relying Party Intermediary. The Wallet Unit MUST attempt to match the Relying Party identifier extracted from the WRPAC (``subject.organizationIdentifier``) with 
         - the Relying Party Intermediary's ``intermediary.sub`` field's value (in either the WRPRC or Register Response depending on availability);
 
 If the Binding verification fails, the Wallet Unit MUST stop the Authorization Validation Procedure and set the ``authz_val_state`` to ``BINDING_FAILED``. 
 
-If the Binding verification succseedes, the Wallet Unit MUST display to the User both the Intermediary identity and the intermediated RP identity. The display SHOULD follow the pattern: 
+If the Binding verification succeedes, the Wallet Unit MUST display to the User both the Intermediary identity and the intermediated RP identity. The display SHOULD follow the pattern: 
 
-- "[``intermediary.sname``] acting on behalf of [``verifier_info.data.srvDescription``] for [``verifier_info.data.intendedUseIdentifier``]" when in Remote flow.
-- "[``intermediary.sname``] acting on behalf of [``docRequest.itemsRequest[].requestInfo.EUWrpRegistrarInfo.srvDescription``] for [``docRequest.itemsRequest[].requestInfo.EUWrpRegistrarInfo.intendedUseIdentifier``]" when in proximity flow.
+- *"[``intermediary.sname``] acting on behalf of [``verifier_info.data.srvDescription``] for [``verifier_info.data.intendedUseIdentifier``]"* when in Remote flow.
+- *"[``intermediary.sname``] acting on behalf of [``docRequest.itemsRequest[].requestInfo.EUWrpRegistrarInfo.srvDescription``] for [``docRequest.itemsRequest[].requestInfo.EUWrpRegistrarInfo.intendedUseIdentifier``]"* when in proximity flow.
 
 .. note::
     
@@ -418,7 +436,6 @@ If the Binding verification succseedes, the Wallet Unit MUST display to the User
 
     The Registrar online service API, including the specific parameters for querying intermediary relationships, is defined in TS5. This specification does not define the Register API; it only defines how the Wallet Unit uses the Register response for authorization purposes.
 
-
 2. **Entitlement Verification**. The Wallet Unit MUST verify that the entitlements of the authorization subject match the expected role. The Wallet Unit MUST parse the ``entitlement`` field from the WRPRC or the ``data.entitlements`` field from Register response's payload, and MUST check that its value is equal to:
 
     - ``https://uri.etsi.org/19475/Entitlement/PID_Provider`` for PID Providers in the context of PID Issuance;
@@ -427,7 +444,7 @@ If the Binding verification succseedes, the Wallet Unit MUST display to the User
     - ``https://uri.etsi.org/19475/Entitlement/Non_Q_EAA_Provider`` for EAA Providers in the context of EAA Issuance;
     - ``https://uri.etsi.org/19475/Entitlement/Service_Provider`` for Relying Parties in the context of Credential Presentation.
 
-    If the ``entitlements`` array does not contain the expected value, the Wallet Unit MUST set the ``authz_val_state`` to ``WRONG_ENTITLEMENT``.
+     If the ``entitlements`` array does not contain the expected value, the Wallet Unit MUST set the ``authz_val_state`` to ``WRONG_ENTITLEMENT``.
 
 3. **Attestation Type Verification**. During Credential Issuance, the Wallet Unit MUST verify that the PID or Attestation Type being issued is registered for the Credential Issuer:
 
@@ -436,7 +453,7 @@ If the Binding verification succseedes, the Wallet Unit MUST display to the User
     
         - the ``provides_attestations[]`` (in the WRPRC) or ``data.providesAttestations`` (in the Registrar Response) array against the ``credential_configurations_supported`` keys in the Credential Issuer Metadata. Matching MUST be case-sensitive and exact (``vct_value`` for SD-JWT VC, ``doctype`` for mDL).
 
-    If not found, the procedure MUST output ``ATTESTATION_TYPE_NOT_REGISTERED``.
+     If not found, the procedure MUST output ``ATTESTATION_TYPE_NOT_REGISTERED``.
 
 4. **Scope Comparison**. During Credential Presentation, the Wallet Unit MUST verify that the PID or Attestation Type being requested is registered for the Relying Party. Depending on the flow, the Wallet Unit MUST:
 
@@ -446,7 +463,7 @@ If the Binding verification succseedes, the Wallet Unit MUST display to the User
         - extract the ``docRequests.itemsRequest[].docType`` array from the mdoc Request and match it against the ``credentials[].meta.doctype_value`` or ``data.credentials[].meta.doctype_value`` claims of either the WRPRC or the Register Query Response.
         - extract the ``docRequests.itemsRequest[].nameSpaces{}`` objects from the mdoc Request and match it against the objects in the ``credentials[].claim[]`` or ``data.credentials[].claim[]`` array of either the WRPRC or the Register Query Response.
 
-    If some of these checks fail, the Wallet Unit MUST set the ``authz_val_state`` to ``OVERASKING_DETECTED`` and identify the unregistered attributes or Digital Credentials.
+     If some of these checks fail, the Wallet Unit MUST set the ``authz_val_state`` to ``OVERASKING_DETECTED`` and identify the unregistered attributes or Digital Credentials.
 
 If all of the above checks (when required) are satisfied, the Wallet Unit MUST set the ``authz_val_state`` to ``VERIFICATION_PASSED``.
 
@@ -454,7 +471,7 @@ If all of the above checks (when required) are satisfied, the Wallet Unit MUST s
 
     1. The code names may be changed a bit...
 
-    2. unsure about the value of onstraining the implementation algorithm that much...
+    2. unsure about the value of constraining the implementation algorithm that much...
 
 5. **EDP Evaluation**. During Credential Presentation, for each Digital Credential matching a Presentation Request, the Wallet Unit MUST check for a locally stored Embedded Disclosure Policy. If no Embedded Disclosure Policy exists, this check is superseded. Otherwise, if the Embedded Disclosure Policy are present and 
 
@@ -462,7 +479,7 @@ If all of the above checks (when required) are satisfied, the Wallet Unit MUST s
     - ``policy_type = authorized_rp_only``; only **Authorized Relying Parties** within the ``authorized_parties[]`` list can be authorized for the Presentation. The Wallet Unit MUST compare the Relying Party subject DN from Wallet-Relying Party Access Certificate against ``subject_dn`` entries, and/or compare the RP entitlements or sub-entitlements from Wallet-Relying Party Registration Certificate against ``entitlement_uri`` entries. A match on either criterion is sufficient.
     - ``policy_type = specific_root_of_trust`` only Relying Parties whose WRPAC trust chain contains one of the ``trusted_roots[]`` array of objects can be authorized for the Presentation. The Wallet Unit MUST compare against the ``trusted_roots`` list and match ``issuer_dn`` using LDAP DN comparison and ``serial_number`` using integer comparison (as defined in ISS-MDATA-EBD-4.2.5.2-09, [`ETSITS119472-3`_]). 
     
-    If either of these checks is satisfied or no EDP are present, the Wallet Unit MUST set the ``edp_state`` to ``EDP_SATISFIED``; on the contrary, if none are satisfied the Wallet Unit MUST set the ``edp_state`` to ``EDP_NOT_SATISFIED``.
+     If either of these checks is satisfied or no EDP are present, the Wallet Unit MUST set the ``edp_state`` to ``EDP_SATISFIED``; on the contrary, if none are satisfied the Wallet Unit MUST set the ``edp_state`` to ``EDP_NOT_SATISFIED``.
 
 
 **Output Model**
@@ -520,42 +537,59 @@ Initialize the state variables:
 Iterate through the path for $i$ from $1$ to $n$:
 
 1. Basic Integrity & Binding Checks:
+
     - Verify the signature of $C_i$ using ``working_public_key``, ``working_public_key_parameters``, and the algorithm identifier.
     - Ensure ``current_time`` falls within the ``notBefore`` and ``notAfter`` validity period of $C_i$.
     - Check revocation status (Certificate Revocation List (CRL) or Online Certificate Status Protocol (OCSP)) as defined in [Revocation Checking](#revocation-checking).
     - Verify that the issuer name of $C_i$ matches ``working_issuer_name``.
+
 2. Policy Processing:
+
     - If ``certificatePolicies`` extension is present and ``valid_policy_tree`` is not ``NULL``:
         - Process policy constraints, qualifiers, and mappings according to [RFC 5280, Section 6.1.3].
+
         - for each policy $P$ not equal to ``anyPolicy`` in the certificate policies extension, let $P$-OID denote the OID for policy $P$ and $P$-Q denote the qualifier set for policy $P$.
             - for each node of depth $i-1$ in the ``valid_policy_tree`` where $P$-OID is in the node's ``expected_policy_set``, create a child node with ``valid_policy`` $P$-OID, ``qualifier_set`` $P$-Q, and ``expected_policy_set`` set to {$P$-OID}.
             - If no match is found for $P$-OID in any node of depth $i-1$ and the ``valid_policy_tree`` has a node of depth $i-1$ with ``valid_policy`` set to ``anyPolicy`, generate a child node with ``valid_policy`` $P$-OID, ``qualifier_set`` $P$-Q, and ``expected_policy_set`` set to {``anyPolicy``}.
+
         - if the ``certificatePolicies`` extension contains ``anyPolicy`` with the qualifier set $AP$-Q, $i \leq n$, and the certificate is self issued, then for each node of depth $i-1$ in the ``valid_policy_tree`` and each value in the ``expected_policy_set`` of that node, generate a child node with ``valid_policy`` and ``expected_policy_set`` set to the ``expected_policy_set`` value, set the ``qualifier_set`` set to $AP$-Q.
         - Update the ``valid_policy_tree`` by pruning nodes that do not match the policies in $C_i$.
+
     - If ``certificatePolicies`` is missing, set ``valid_policy_tree`` to ``NULL``.
+
 3. Policy State Verification:
+
     - Verify that either ``explicit_policy > 0`` OR ``valid_policy_tree`` is not ``NULL``. If this fails, abort.
 
 **Step 3: Preparation for Next Certificate**
 
 1. If $i < n$ (i.e., $C_i$ is an intermediate Certificate Authority), perform the following updates:
+
     - Set ``working_issuer_name`` to the Subject DN of $C_i$.
     - Set ``working_public_key`` to the Subject Public Key of $C_i$.
     - Update ``working_public_key_parameters`` and ``working_public_key_algorithm`` from $C_i$.
+
 2. Constraint Checks (Intermediates Only):
+
     - Verify ``basicConstraints`` extension is present and ``cA`` is set to TRUE.
     - If ``keyUsage`` extension is present, verify the ``keyCertSign`` bit is set.
     - Path Length: Verify ``max_path_length`` > 0. Decrement ``max_path_length`` by 1.
+
         - If $C_i$ contains ``pathLenConstraint``, set ``max_path_length`` to $\min(\text{current}, \text{pathLenConstraint})$.
+
 3. Policy Counters:
+
     - Decrement ``explicit_policy`` and ``inhibit_any_policy`` (if > 0).
 
 **Step 4: Wrap-up**
+
 After processing $C_n$:
 
 1. If ``explicit_policy`` > 0, decrement it.
 2. If ``explicit_policy`` > 0 OR ``valid_policy_tree`` is not ``NULL``, the path is VALID.
 3. Otherwise, the path is INVALID.
+
+The following figure illustrates the flowchart of the X509 Certificate Chain Validation Algorithm.
 
 .. plantuml:: plantuml/x509-chain-val-alg.puml
     :width: 99%
@@ -601,6 +635,8 @@ If any of the steps 1-4 fail or the Certificate Revocation List is unavailable, 
 
     armonize certificate state value with the trust management
 
+The following figure illustrates the flowchart of the CRL Status Validation Algorithm.
+
 .. plantuml:: plantuml/crl-revocation.puml
     :width: 99%
     :alt: The figure illustrates the Flowchart of the CRL Validation Algorithm.
@@ -625,6 +661,8 @@ When using OCSP, the Entity performing validation MUST:
 .. note::
 
     It is assumed that only basic OCSP responses (i.e., where ``responseType`` is ``id-pkix-ocsp-basic``) are supported.
+
+The following figure illustrates the flowchart of the OCSP Response Validation Algorithm.
 
 .. plantuml:: plantuml/ocsp-revocation.puml
     :width: 99%
