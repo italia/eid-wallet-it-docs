@@ -10,40 +10,39 @@ title CRL Validation Process
 start
 
 repeat
-  if (Step 1: Time Check\nIs current_time between\nthisUpdate and nextUpdate?) then (Yes)
-    break
-  else (No)
+  if (Step 1: Time Check\nIs current_time between\nthisUpdate and nextUpdate?) then (No)
     :Attempt to retrieve updated CRL;
     if (Update Retrieved?) then (Yes)
-      ' Loops back to Step 1 Time Check
+      ' Loops back to top for Step 1 Time Check
     else (No)
-      :Certificate status: unknown\nReason: CRL Expired/Unavailable;<<#F2F28F>>
+      #F2F28F:Certificate status: unknown\nReason: CRL Expired/Unavailable;
       stop
     endif
+  else (Yes)
   endif
-repeat while (True)
+repeat while (current_time < thisUpdate OR current_time > nextUpdate)
 
 :Step 2: Verify Issuer;
 if (Does CRL Issuer match\nCertificate Issuer?) then (No)
-  :Certificate status: UNKNOWN\nReason: Issuer Mismatch;<<#F2F28F>>
+  #F2F28F:Certificate status: UNKNOWN\nReason: Issuer Mismatch;
   stop
 else (Yes)
 endif
 
 :Step 3: Verify Distribution Point;
 if (Do Distribution Points match?) then (No)
-  :Certificate status: UNKNOWN\nReason: Distribution Point Mismatch;<<#F2F28F>>
+  #F2F28F:Certificate status: UNKNOWN\nReason: Distribution Point Mismatch;
   stop
 else (Yes)
   if (Check BasicConstraints) then (Certificate\nhas `CA=TRUE`)
     if (Is CRL onlyContainsCACerts=TRUE?) then (No)
-      :Certificate status: UNKNOWN\nReason: Distribution Point Mismatch;<<#F2F28F>>
+      #F2F28F:Certificate status: UNKNOWN\nReason: Distribution Point Mismatch;
       stop
     else (Yes)
     endif
   else (Certificate defaults\nto `CA=FALSE`)
     if (Is CRL onlyContainsUserCerts=TRUE?) then (No)
-      :Certificate status: UNKNOWN\nReason: Distribution Point Mismatch;<<#F2F28F>>
+      #F2F28F:Certificate status: UNKNOWN\nReason: Distribution Point Mismatch;
       stop
     else (Yes)
     endif
@@ -52,11 +51,11 @@ endif
 
 :Step 4: Signature & Key Usage;
 if (Validate CRL Signature) then (Invalid)
-  :Certificate status: UNKNOWN\nReason: Invalid CRL Signature;<<#F2F28F>>
+  #F2F28F:Certificate status: UNKNOWN\nReason: Invalid CRL Signature;
   stop
 else (Valid)
   if (If KeyUsage present:\nIs cRLSign bit set?) then (No)
-    :Certificate status: UNKNOWN\nReason: Invalid CRL Signature;<<#F2F28F>>
+    #F2F28F:Certificate status: UNKNOWN\nReason: Invalid CRL Signature;
     stop
   else (Yes)
   endif
@@ -64,10 +63,10 @@ endif
 
 :Step 5: Revocation Lookup;
 if (Is Certificate Serial Number\nin revokedCertificates?) then (Yes)
-  :Certificate status: revoked;<<#ffcdd2>>
+  #ffcdd2:Certificate status: revoked;
   stop
 else (No)
-  :Certificate status: good;<<#dcedc8>>
+  #dcedc8:Certificate status: good;
   stop
 endif
 

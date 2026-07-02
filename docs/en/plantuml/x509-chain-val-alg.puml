@@ -61,7 +61,7 @@ while (Is i <= n?) is (Yes)
                     Decrement explicit_policy and 
                     inhibit_any_policy if > 0;
                 else (No)
-                    :Validation FAILED;<<#ffccb3>>
+                    #ffccb3:Validation FAILED;
                     stop
                 endif
             else (No (current Cert is Cn))
@@ -71,11 +71,11 @@ while (Is i <= n?) is (Yes)
             :Increment i : i = i + 1;
             
         else (No)
-            :Validation FAILED;<<#ffccb3>>
+            #ffccb3:Validation FAILED;
             stop
         endif
     else (No)
-        :Validation FAILED;<<#ffccb3>>
+        #ffccb3:Validation FAILED;
         stop
     endif
 endwhile (No)
@@ -84,10 +84,10 @@ endwhile (No)
 If explicit_policy > 0, decrement it.;
 
 if (Final Decision:\nIs explicit_policy > 0 OR\nvalid_policy_tree is NOT NULL?) then (Yes)
-    :Validation SUCCESSFUL;<<#dcedc8>>
+    #dcedc8:Validation SUCCESSFUL;
     stop
 else (No)
-    :Validation FAILED;<<#ffccb3>>
+    #ffccb3:Validation FAILED;
     stop
 endif
 @enduml
