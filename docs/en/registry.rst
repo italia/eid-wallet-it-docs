@@ -2,23 +2,32 @@
 
 
 Registry Infrastructure
-==========================
+=======================
+
+.. warning::
+    
+    TOLTE parti relative a Federation Registry
+
+    DA CAPIRE 
+      1. perdiamo discovery degli endpoint per federation registry (possiamo assumerli noti (essendo quelli di OID FED) sapendo dominio TA?), similmente come fare discovery del WRP Registry (per RPRC_19a A Relying Party Instance SHALL include in each presentation request ... d) the URL of the Registrar of the Relying Party)? forse la parte di discovery la possiamo tenere comune x trust e aspetti di interop
+      2. come aggiornare "Decentralization of Display and Claim Information" + "7.10. Registry Infrastructure Usage Journeys", CI metadata non solo con OID FED  [todo: rimuovere riferimento EC oppure fare rimando  --> da capire dove mettere metadata retrieval / probabilmente onboarding]
+      3. controllare PR Pasquale su label/spaziature... e capire se fare modifiche 
+      4. se dettagliare relazione con cataloghi EC, se registry vanno aggiornati  x essere allineati con quelli EC 
 
 The IT-Wallet ecosystem operates through a registry infrastructure that provides standardized data definitions, entity registration, and Credential discovery capabilities. The registry system consists of multiple interconnected components that support the complete lifecycle of digital Credential operations from entity onboarding to Credential presentation.
 
-The registry architecture addresses semantic standardization, federation trust management, and Credential discovery requirements through specialized registry components that ensure interoperability and compliance across the ecosystem.
+The registry architecture addresses semantic standardization and Credential discovery requirements through specialized registry components that ensure interoperability and compliance across the ecosystem.
 
 Registry Architecture Overview
 ------------------------------
 
-The IT-Wallet System Register comprises six main components:
+The IT-Wallet registry infrastructure comprises five main components:
 
 1. **Claims Registry**: Standardized semantic definitions for individual Credential attributes, data types, and validation rules.
 2. **Authentic Source (AS) Registry**: Catalog of registered data providers with their declared capabilities and available claims.
-3. **Federation Registry**: Authoritative list of trusted entities participating in the federation with their technical configurations.
-4. **Digital Credentials Catalog**: Public discovery mechanism for available Credential types with their metadata and issuance information.
-5. **Schema Registry**: Authoritative list of Credential Schemas.
-6. **Taxonomy**: Hierarchical classification system organizing Credentials by domain and purpose.
+3. **Digital Credentials Catalog**: Public discovery mechanism for available Credential types with their metadata and issuance information.
+4. **Schema Registry**: Authoritative list of Credential Schemas.
+5. **Taxonomy**: Hierarchical classification system organizing Credentials by domain and purpose.
 
 These registry components are interconnected and maintained by the Supervisory Body to ensure consistency, security, and regulatory compliance across the ecosystem.
 
@@ -31,11 +40,6 @@ The Trust Anchor MUST publish registry discovery metadata at the ``.well-known/i
 
 - **Default Content-Type**: ``application/jwt`` (signed JWT ensuring authenticity and integrity)
 - **Alternative Content-Type**: ``application/json`` (plain JSON for development/debugging purposes)
-
-Moreover, the IT-Wallet System Register MUST use two distinct access patterns:
-
-- **Data Registry APIs**: MUST support pagination and filtering capabilities.
-- **Federation Trust Infrastructure**: as defined in :ref:`trust-infrastructure:The Infrastructure of Trust`.
 
 Below a non-normative example is given.
 
@@ -85,11 +89,6 @@ The JWT payload of the Registry Discovery response MUST contain the following pa
        * **credential_catalog**: URI of the Digital Credentials Catalog well-known endpoint.
        * **taxonomy**: URI of the Taxonomy resource.
        * **schema_registry**: URI of the Schema Registry API.
-       * **federation_list**: URI of the federation list endpoint (OpenID Federation ``/list``).
-       * **federation_fetch**: URI of the federation fetch endpoint (OpenID Federation ``/fetch``).
-       * **federation_resolve**: URI of the federation resolve endpoint (OpenID Federation ``/resolve``).
-       * **federation_trust_mark_status**: URI of the Trust Mark status endpoint.
-       * **federation_historical_keys**: URI of the historical JWKs endpoint.
    * - **content_negotiation**
      - REQUIRED. Array of content types supported by the discovery endpoint (e.g., ``["application/json", "application/jwt"]``).
 
@@ -107,13 +106,6 @@ JWT payload structure (when decoded):
       "credential_catalog": "https://trust-anchor.eid-wallet.example.it/api/v1/.well-known/credential-catalog",
       "taxonomy": "https://trust-anchor.eid-wallet.example.it/api/v1/taxonomy",
       "schema_registry": "https://trust-anchor.eid-wallet.example.it/api/v1/schemas",
-      "federation_list_endpoint": "https://trust-anchor.eid-wallet.example.it/list",
-      "federation_fetch_endpoint": "https://trust-anchor.eid-wallet.example.it/federation_fetch_endpoint",
-      "federation_resolve_endpoint": "https://trust-anchor.eid-wallet.example.it/resolve",
-      "federation_trust_mark_status_endpoint": "https://trust-anchor.eid-wallet.example.it/trust_mark_status",
-      "federation_trust_mark_list_endpoint": "https://dev.ta.wallet.ipzs.it/trust_mark_listing",
-      "federation_trust_mark_endpoint": "https://dev.ta.wallet.ipzs.it/trust_mark",
-      "federation_historical_keys_endpoint": "https://trust-anchor.eid-wallet.example.it/federation_historical_keys"
     },
     "content_negotiation": ["application/json", "application/jwt"]
   }
@@ -141,7 +133,7 @@ The Claims Registry MUST ensure:
   The Claims Registry defines semantic properties of individual attributes, but MUST NOT specify selective disclosure capabilities. Selective disclosure depends on Credential format implementations (SD-JWT, mDocs), issuer technical configurations, and presentation context. These capabilities are specified at the Credential type level within the Digital Credentials Catalog and implemented during Credential presentation flows.
 
 Claims Registry Usage
-^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
 
 The Claims Registry MUST support the complete ecosystem lifecycle:
 
@@ -257,7 +249,7 @@ The AS Registry MUST ensure:
    Authentic Source Registry is a technical and non-public registry that provides guidance for the Credential Issuer for Credential provisioning.
 
 Authentic Source Registry Usage
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The AS Registry supports ecosystem coordination throughout the operational lifecycle:
 
@@ -556,9 +548,9 @@ Federation Registry operations are accessed through the Trust Anchor's federatio
    For complete technical specifications of federation protocols, entity configurations, trust evaluation mechanisms, and trust chain validation, see :ref:`trust-infrastructure:The Infrastructure of Trust`.
 
 Digital Credentials Catalog
------------------------------
+---------------------------
 
-The Digital Credentials Catalog is the registry of all available Digital Credentials recognized within the IT-Wallet ecosystem. It is published by the Trust Anchor and publicly available by all Entities through a specialized Federation endpoint. It acts as a single reference point for all actors involved in the process of issuing, verifying and using Digital Credentials.
+The Digital Credentials Catalog is the registry of all available Digital Credentials recognized within the IT-Wallet ecosystem. It is published by the Trust Anchor and publicly available by all Entities through a specialized endpoint. It acts as a single reference point for all actors involved in the process of issuing, verifying and using Digital Credentials.
 
 The Digital Credential Catalog aims to:
 
@@ -640,7 +632,7 @@ Below a non-normative example is given.
 In the section :ref:`registry:Digital Credentials Catalog Structure` an example of Digital Credentials Catalog is given as decoded in JSON.
 
 Digital Credentials Hierarchy
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Digital Credentials recognized within the IT-Wallet ecosystem are classified and standardized according to the following multi-level hierarchical model designed to improve semantic clarity, credential discovery, and compatibility with both credential-specific and claim-based verification workflows.
 
@@ -1007,7 +999,7 @@ This approach allows:
   - **Flexible RP registration** supporting both government compliance needs and business operational requirements.
 
 Digital Credentials Catalog Structure
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Digital Credentials Catalog contents is secured in a JWS that contains the following JOSE header parameters:
 
@@ -1181,7 +1173,7 @@ Localization bundles MUST be available at the URI composed by appending the loca
 A non-normative example of the Italian localization URI for the bundle would be **https://trust-registry.eid-wallet.example.it/.well-known/l10n/credential-catalog/it.json**.
 
 Decentralization of Display and Claim Information
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The canonical source for display characteristics and claim structure is determined by the **Credential Issuer's Metadata (Entity Configuration)**.
 
@@ -1375,17 +1367,16 @@ The registry components are interconnected and work together to support the comp
 1. **AS Registry** ↔ **Taxonomy**: AS entities declare capabilities using taxonomy classifications for standardized categorization.
 2. **AS Registry** ↔ **Catalog**: Credential types reference AS capabilities for data source validation.
 3. **Catalog** ↔ **Taxonomy**: Credential entries specify domains and purposes from the taxonomy for discovery and authorization.
-4. **Federation Registry** ↔ **All Components**: Provides cryptographic trust validation for all registry operations and entity authentication.
-5. **Schema Registry** ↔ **Issuer/RPs**: Provides the verifiable link to all known Credential format specifications used in the ecosystem.
+4. **Schema Registry** ↔ **Issuer/RPs**: Provides the verifiable link to all known Credential format specifications used in the ecosystem.
 
 Registry Infrastructure Usage Journeys
-------------------------------------------
+--------------------------------------
 
 The components of the Registry Infrastructure are designed to support various operational phases of the IT-Wallet ecosystem, each involving specific interactions between entities.
 The main Journeys below illustrate the interactions with the Registry Infrastructure.
 
 Catalog Browsing
-^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^
 
 This *Catalog Browsing* journey supports Users (both human users via a **Wallet Instance** and automated systems like **Relying Parties** or web portals) in discovering and selecting available Digital Credentials.
 
@@ -1400,7 +1391,7 @@ This *Catalog Browsing* journey supports Users (both human users via a **Wallet 
 3.  **Final Action**: The entity can then can use the metadata to display the catalog information to a User (or use the information in other way).
 
 Credential Issuance
-^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^
 
 This journey defines how a Credential Issuer uses the Registry Infrastructure to prepare and issue a compliant Digital Credential.
 
