@@ -318,7 +318,7 @@ When a Wallet-Relying Party Registration Certificate is available, the Wallet Un
     - The ``trust_anchor`` MUST be a certificate of the Provider of Wallet-Relying Party Registration Certificates obtained from the List of Trusted Entities. This certificate MUST either be exactly or be used to sign/seal $C_1$.
 
 6. **Temporal validity**: check ``iat`` and ``exp`` (if present).
-7. **Status verification**: check revocation status via the ``status`` field of the WRPRC.
+7. **Status verification**: check revocation status via the ``status`` field of the WRPRC as described in :ref:`credential-revocation:Checking Credentials Statuses`.
 8. **Coherence check**: verify Wallet-Relying Party Registration Certificate subject and fields are coherent with the scenario.
 
 **Output Model**
