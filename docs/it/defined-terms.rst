@@ -25,8 +25,8 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Procedura svolta dall'Ente di Accreditamento Nazionale per accreditare gli Organismi di Valutazione della conformità (CABs), che si conclude con il rilascio di un certificato di accreditamento.
       Non presente in ARF 2.7.3; specifico di IT-Wallet.
 
-    **Attributo**
-    **Attributo dell'Utente**
+    **Attributi**
+    **Attributi dell'Utente**
       Un insieme di caratteristiche, qualità, diritti o autorizzazioni di una persona fisica o giuridica o di un oggetto o anche una sola di queste informazioni.
       Conforme con ARF 2.7.3.
 
@@ -51,15 +51,15 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Soggetto pubblico o privato che fornisce Attestati Elettronici agli Utenti (può essere un fornitore di PID oppure un fornitore di (Q)EAA).
       Conforme con ARF 2.7.3; IT-Wallet aggrega sotto questo termine sia il fornitore di PID che di (Q)EAA.
 
-    **Asset Critico**
-      Asset (ad esempio, una chiave crittografica) la cui perdita avrebbe gravi ripercussioni sull'Istanza del Wallet.
+    **Asset Critici**
+      Asset (ad esempio, le chiavi crittografiche) la cui perdita avrebbe gravi ripercussioni sull'Istanza del Wallet.
       Conforme con ARF 2.7.3.
 
     **Cryptographic Hardware Key Tag**
-      Identificativo univoco per la Cryptographic Hardware Key, utilizzato per accedere alla chiave privata dell'hardware.
+      Identificativo univoco per le Cryptographic Hardware Keys, utilizzato per accedere alla chiave privata dell'hardware.
       Non presente in ARF 2.7.3.
 
-    **Cryptographic Hardware Key**
+    **Cryptographic Hardware Keys**
       Coppia di chiavi generata dall'Istanza del Wallet, valida per tutta la sua durata.
       Non presente in ARF 2.7.3.
 
@@ -111,8 +111,8 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Artefatto digitale contenente informazioni su un'entità organizzativa (endpoint, chiavi pubbliche, ecc.).
       Non presente in ARF 2.7.3.
 
-    **Ente Nazionale di Accreditamento**
-      Organismo che svolge l'attività di accreditamento su delega di uno Stato membro.
+    **Enti Nazionali di Accreditamento**
+      Organismi che svolgono l'attività di accreditamento su delega di uno Stato membro.
       Conforme con ARF 2.7.3.
 
     **Gestore di Identità Digitale**
@@ -144,8 +144,8 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Linguaggio formale per la definizione di policy di sicurezza, privacy e gestione dell'identità.
       Non presente in ARF 2.7.3; specifico di IT-Wallet.
 
-    **Attore Primario**
-      Entità che realizza le Soluzioni Tecniche per il funzionamento del Sistema IT-Wallet.
+    **Attori Primari**
+      Entità che realizzano le Soluzioni Tecniche per il funzionamento del Sistema IT-Wallet.
       Non presente in ARF 2.7.3; specifico di IT-Wallet.
 
     **Pseudonimo**
@@ -233,12 +233,12 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
     **Segnale (Signal Hub)**
       Un segnale digitale propagato attraverso Signal Hub PDND. È utilizzato dalle Fonti Autentiche per notificare ai Fornitore di Attestati Elettronici aggiornamenti su stati e/o informazioni all'interno di un dominio gestito dalla Fonte Autentica stessa.
 
-    **Soluzione Tecnica**
+    **Soluzioni Tecniche**
       Insieme dei sistemi hardware/software e dei servizi realizzati dai Fornitori di Wallet, Fornitori di Attestati Elettronici di Dati di Identificazione Personale, ecc.
       Non presente in ARF 2.7.3; specifico di IT-Wallet.
 
-    **Specifica Tecnica**
-      Specifica che fornisce l'architettura tecnica, il quadro implementativo e i requisiti di progettazione.
+    **Specifiche Tecniche**
+      Specifiche che forniscono l'architettura tecnica, il quadro implementativo e i requisiti di progettazione.
       Conforme con ARF 2.7.3.
 
     **Trust**
@@ -285,7 +285,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Oggetto che indica gli Attributi che la Relying Party ha registrato al fine di richiederli agli Utenti.
       Conforme con ARF 2.7.3.
 
-    **Fornitore di Certificato di Registrazione**
+    **Fornitore di Certificati di Registrazione**
     **Provider of Registration Certificates**
     **Reg. Cert. Provider**
       Entità Organizzativa responsabile dell'emissione dei Certificati di Registrazione che descrivono lo stato di registrazione e i diritti di PID Provider, Attestation Provider e Relying Party.
@@ -295,7 +295,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Componente di registro dell'Infrastruttura del Registro IT-Wallet che mantiene l'elenco autorevole delle entità fidate che partecipano alla federazione, inclusi i relativi metadati di federazione, gli endpoint e le chiavi pubbliche.
       Non presente in ARF 2.7.3; specifico di IT-Wallet.
 
-    **Registro della Fonte Autentica**
+    **Registro delle Fonti Autentiche**
     **Authentic Source Registry**
     **AS Registry**
       Registro contenente le Fonti Autentiche, le loro capacità dichiarate e i claim disponibili, utilizzato dai Fornitori di Attestati Elettronici per individuare e integrare fornitori di dati autorevoli.
@@ -322,10 +322,9 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Persona fisica o giuridica che utilizza servizi fiduciari o mezzi di identificazione elettronica.
       Conforme con ARF 2.7.3.
 
-    **Verificatore**
-    **Verificatore di Attestato Elettronico**
+    **Verificatore di Attestati Elettronici**
     **Verificatore di Credenziali**
-      Persona o entità che utilizza un'Istanza di Relying Party.
+      Una persona o entità che utilizza un'Istanza di Relying Party.
       Simile ad ARF 2.7.3. ARF utilizza questo termine solo nei casi di interazione tra Wallet.
 
     **Istanza del Wallet**
@@ -367,7 +366,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Oggetto emesso da un Fornitore di Wallet che attesta l'integrità dell'Istanza del Wallet.
       Specifico per l'IT-Wallet.
 
-    **Catalogo dell'Attestato Elettronico**
+    **Catalogo degli Attestati Elettronici**
       Catalogo elettronico contenente informazioni relative ai formati e agli schemi degli Attestati Elettronici, ai dati in essi contenuti e alle Fonti Autentiche. Il Catalogo contiene informazioni aggiuntive che consentono di stabilire l'autenticità e l'affidabilità delle informazioni in esso contenute.
       Non presente in ARF 2.7.3; specifico di IT-Wallet.
 
