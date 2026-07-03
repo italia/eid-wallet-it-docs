@@ -49,19 +49,11 @@ jobs:
         run: |
           python -m pip install -r requirements-dev.txt
 
-      # Append appropriate tags to document title based on build context
-      - name: Append tags to document title
+      - name: Configure PDF build metadata
         run: |
           if [[ "${{ github.event_name }}" == "release" ]]; then
-            TAG="${{ github.event.release.tag_name }}"
-            sed -i 's/\(settings_project_name = ".*\)"/\1 - Release '"${TAG}"'"/' docs/it/conf.py
-            sed -i 's/\(settings_project_name = ".*\)"/\1 - Release '"${TAG}"'"/' docs/en/conf.py
-            echo "Applied release tag '${TAG}' to document titles"
-          else
-            # This is for workflow_dispatch, we use editor's copy designation
-            echo "Using default title for manual build"
-            sed -i 's/\(settings_project_name = ".*\)"/\1 - Versione Corrente"/' docs/it/conf.py
-            sed -i 's/\(settings_project_name = ".*\)"/\1 - Editor'"'"'s Copy"/' docs/en/conf.py
+            echo "PDF_RELEASE_DATE=$(date -d "${{ github.event.release.published_at }}" +%Y-%m-%d)" >> "$GITHUB_ENV"
+            echo "Using GitHub Release date: $(date -d "${{ github.event.release.published_at }}" +%Y-%m-%d)"
           fi
 
           sed -i 's/settings_file_name = ".*"/settings_file_name = "'"$SETTINGS_FILE_NAME"'"/' docs/en/conf.py
