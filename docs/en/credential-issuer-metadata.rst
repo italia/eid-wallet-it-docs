@@ -129,7 +129,7 @@ The *openid_credential_issuer* metadata contains the following claims.
             - **path**: REQUIRED. It contains the pointer that specifies the path to a specific claim within the Digital Credential as defined in Appendix C of `OpenID4VCI`_.
             - **mandatory**: REQUIRED. Boolean which, when set to `true`, indicates that the Credential Issuer will always include this claim in the issued Credential.
             - **sd**: REQUIRED.String indicating whether the claim is selectively disclosable. It MUST be set to `always` if the claim is selectively disclosure or `never` if not.
-            - **display**: CONDITIONAL. REQUIRED only for the claims that are defined in the specific Attestation Rulebook. Array of objects containing display language properties. Array containing display information about the claim indicated in the ``path``. The array contains an object for each language supported. It contains the following parameters:
+            - **display**: CONDITIONAL. REQUIRED only for the claims that are shown to the User. Array of objects containing display language properties. Array containing display information about the claim indicated in the ``path``. The array contains an object for each language supported. It contains the following parameters:
 
                 - **name**: REQUIRED. String value of a display name for the claim.
                 - **label**: OPTIONAL. String value of a display name for the claim.
