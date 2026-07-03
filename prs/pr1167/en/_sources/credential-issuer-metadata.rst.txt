@@ -124,7 +124,7 @@ The *openid_credential_issuer* metadata contains the following claims.
 
                 - **background_color**: OPTIONAL. String value of a background color of the Digital Credential represented as numerical color values defined in `W3C.CSS-COLOR`_.
 
-          - **claims**: REQUIRED. Array of JSON object each describing how a certain claim related to the Credential MUST be displayed to the User. This Array lists the claims in the order they MUST be displayed by the Wallet. To provide detailed information about the claim, the innermost value contains the following parameters. See `OpenID4VCI`_ Section A.3.2.
+          - **claims**: REQUIRED. Array of JSON object each describing how a certain claim related to the Credential MUST be displayed to the User. This Array lists the claims in the order they MUST be displayed by the Wallet. To provide detailed information about the claim, the innermost value contains the following parameters. See `OpenID4VCI`_ Section B.2.
 
             - **path**: REQUIRED. It contains the pointer that specifies the path to a specific claim within the Digital Credential as defined in Appendix C of `OpenID4VCI`_.
             - **mandatory**: REQUIRED. Boolean which, when set to `true`, indicates that the Credential Issuer will always include this claim in the issued Credential.
