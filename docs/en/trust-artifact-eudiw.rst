@@ -346,7 +346,7 @@ Wallet-Relying Party Access Certificate (WRPAC) Profile
 
     3. aggiornare conseguentemente l'esempio
 
-    4. WRPAC sono solo di durata lunga?
+    4. WRPAC sono solo di durata lunga? 
 
 This section describes the purpose, format and content of Wallet-Relying Party Access Certificates (WRPACs).
 
@@ -522,6 +522,9 @@ The following is a non-normative example of a PuB-EAA Provider's end-entity cert
 Registrar Sign/Seal Certificate
 ................................
 
+.. warning:: 
+  The registrar is one per MS, it could be ideal to reference the sign/seal certificate directly on the LoTE, instead of a sub-CA.
+  
 CIR 2025/848, further specifies the Registrar Sign/Seal Certificate parameters as follows:
 
 - Among core parameters, all are required as described in :ref:`trust-artifact-eudiw:X509 Certificate Profiles`.

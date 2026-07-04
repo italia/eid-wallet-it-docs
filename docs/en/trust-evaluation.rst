@@ -18,6 +18,10 @@ Trust evaluation is characterized through three fundamental, sequential processe
 Authorization Decision and Override Rules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. warning::
+
+  TODO: define the optimal level of indentation of the section.
+
 **Output Model**
 
 The Authorization Decision can be:
