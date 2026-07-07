@@ -71,8 +71,8 @@ Below is the description of acronyms and definitions which are useful for furthe
 
     **Digital Credential**
     **Credential**
-     Signed set of Attributes in a specific format (e.g., mDoc-CBOR, SD-JWT VC), may be PID or (Q)EAA.
-     Not present in ARF 2.7.3.
+      Signed set of Attributes in a specific format (e.g., mDoc-CBOR, SD-JWT VC), may be PID or (Q)EAA.
+      Not present in ARF 2.7.3.
 
     **Federation Authority**
       Public governance entity issuing guidelines, rules, and managing trust lists and participant status.
@@ -178,7 +178,7 @@ Below is the description of acronyms and definitions which are useful for furthe
       Aligned with ARF 2.7.3.
 
     **Electronic Attestation of Attributes Provider**
-    **Electionic Attestation Provider**
+    **Electronic Attestation Provider**
       Organizational Entity providing EAAs.
       Aligned with ARF 2.7.3.
 
@@ -222,7 +222,7 @@ Below is the description of acronyms and definitions which are useful for furthe
       Not present in ARF 2.7.3.
 
     **Signal Hub**
-      The PDND platform managed by the PDND Manager which enable collection and distribution of Signals. It consists of two PDND e-Services: Signal Collection and Signal Distribution.
+      The PDND platform managed by the PDND Manager which enables collection and distribution of Signals. It consists of two PDND e-Services: Signal Collection and Signal Distribution.
 
     **Signal (Signal Hub)**
       A digital signal propagated through the PDND Signal Hub. It is used by Authentic Sources to notify Credential Issuers about updates to statuses and/or information within a domain managed by the Authentic Source itself.
@@ -334,15 +334,15 @@ Below is the description of acronyms and definitions which are useful for furthe
       Not present in ARF 2.7.3.
 
     **Wallet Secure Cryptographic Application**
-      Application managing Critical Assets using cryptographic functions provided by the WSCD.
+      Application managing critical assets using cryptographic functions provided by the WSCD.
       Aligned with ARF 2.7.3.
 
     **Wallet Secure Cryptographic Device**
-      Tamper-resistant device providing an environment for the WSCA to protect Critical Assets.
+      Tamper-resistant device providing an environment for the WSCA to protect critical assets.
       Aligned with ARF 2.7.3.
 
     **Wallet Solution**
-      Set of Technical Solutions for the proper functioning of IT-Wallet Instances.
+      Set of Technical Solutions for the proper functioning of Wallet Instances.
       Aligned with ARF 2.7.3.
 
     **Wallet Unit**
@@ -350,8 +350,8 @@ Below is the description of acronyms and definitions which are useful for furthe
       Aligned with ARF 2.7.3.
 
     **Key Attestation**
-     Data object issued by a Wallet Provider that proves the keys used for key binding of Credentials reside in a trustworthy WSCD using the Key Attetstaion APIs (OEM).
-     Aligned with Technical Specification 3.
+      Data object issued by a Wallet Provider that proves the keys used for key binding of Credentials reside in a trustworthy WSCD using the Key Attestation APIs (OEM).
+      Aligned with Technical Specification 3.
 
     **Wallet Instance Attestation**
     **Wallet Attestation**

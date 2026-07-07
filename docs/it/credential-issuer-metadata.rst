@@ -124,12 +124,12 @@ I Metadata *openid_credential_issuer* contiene i seguenti *claims*.
 
                 - **background_color**: OPZIONALE. Stringa che rappresenta il colore di sfondo dell’Attestato Elettronico, espresso come valore numerico secondo la definizione del documento `W3C.CSS-COLOR`_.
 
-          - **claims**: OBBLIGATORIO. Array di oggetti JSON ciascuno che descrive come un determinato attributo relativo all'Attestato Elettronico DEVE essere visualizzato all'Utente. Questo array elenca le attestazioni nell’ordine in cui DEVONO essere mostrate dal Wallet. Per fornire informazioni dettagliate sull’attestazione, il valore più interno DEVE contenere almeno i seguenti parametri. Vedi OpenID4VCI_ Sezione A.3.2.
+          - **claims**: OBBLIGATORIO. Array di oggetti JSON ciascuno che descrive come un determinato attributo relativo all'Attestato Elettronico DEVE essere visualizzato all'Utente. Questo array elenca le attestazioni nell’ordine in cui DEVONO essere mostrate dal Wallet. Per fornire informazioni dettagliate sull’attestazione, il valore più interno contiene i seguenti parametri. Vedi OpenID4VCI_ Sezione A.3.2.
 
-            - **path**: Contiene il puntatore che specifica il percorso all'attributo specifico all'interno dell'Attestato Elettronico come definito nell'Appendice C di `OpenID4VCI`_.
-            - **mandatory**: Valore booleano che, se impostato su `true`, indica che il Credential Issuer includerà sempre questo attributo nelle Credenziali che emette.
-            - **sd**: Stringa che indica se il claim è divulgabile selettivamente. DEVE essere impostato su `always` se il claim è divulgabile selettivamente o `never` se non lo è.
-            - **display**: Array di oggetti contenenti le proprietà di visualizzazione. Array contenente informazioni di visualizzazione relative al claim indicato nel ``path``. L'array contiene un oggetto per ogni lingua supportata. Contiene i seguenti parametri:
+            - **path**: OBBLIGATORIO. Contiene il puntatore che specifica il percorso all'attributo specifico all'interno dell'Attestato Elettronico come definito nell'Appendice C di `OpenID4VCI`_.
+            - **mandatory**: OBBLIGATORIO. Valore booleano che, se impostato su `true`, indica che il Credential Issuer includerà sempre questo attributo nelle Credenziali che emette.
+            - **sd**: OBBLIGATORIO. Stringa che indica se il claim è divulgabile selettivamente. DEVE essere impostato su `always` se il claim è divulgabile selettivamente o `never` se non lo è.
+            - **display**: CONDIZIONALE. OBBLIGATORIO solo per i *claims* che vengono mostrati all'Utente. Array di oggetti contenenti le proprietà di visualizzazione. Array contenente informazioni di visualizzazione relative al claim indicato nel ``path``. L'array contiene un oggetto per ogni lingua supportata. Contiene i seguenti parametri:
 
                 - **name**: OBBLIGATORIO. Nome dell'attributo in formato stringa.
                 - **label**: OPZIONALE. Nome dell'attributo in formato stringa.

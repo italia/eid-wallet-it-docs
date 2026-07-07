@@ -10,6 +10,10 @@
 #
 # Usage: from repo root, with env activated:
 #   ./utils/build-pdf-local.sh
+#
+# Optional override:
+#   PDF_RELEASE_DATE=2026-07-03 ./utils/build-pdf-local.sh
+# Otherwise the date is resolved from the current git tag or the build date.
 
 set -e
 ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
@@ -19,55 +23,8 @@ cd "$ROOT_DIR"
 export LANG="${LANG:-C.UTF-8}"
 export LC_ALL="${LC_ALL:-C.UTF-8}"
 
-# Optional: keep docs/*/conf.py exactly as edited (do not touch settings_project_name).
-# Usage: PDF_SKIP_TITLE_EDIT=1 ./utils/build-pdf-local.sh
-if [[ -z "${PDF_SKIP_TITLE_EDIT:-}" ]]; then
-  # Prepare temporary edits to document titles, similar to .github/workflows/build-pdf.yml
-  IT_CONF="$ROOT_DIR/docs/it/conf.py"
-  EN_CONF="$ROOT_DIR/docs/en/conf.py"
-  IT_CONF_BAK="$(mktemp)"
-  EN_CONF_BAK="$(mktemp)"
-  cp "$IT_CONF" "$IT_CONF_BAK"
-  cp "$EN_CONF" "$EN_CONF_BAK"
-
-  trap 'cp "$IT_CONF_BAK" "$IT_CONF"; cp "$EN_CONF_BAK" "$EN_CONF"' EXIT
-
-  # Determine tag:
-  # - If PDF_BUILD_TAG is set, use that (manual override)
-  # - Otherwise, if HEAD is exactly at a tag, use that
-  # - Otherwise use "current version" labels
-  TAG="${PDF_BUILD_TAG:-}"
-  if [[ -z "$TAG" ]] && git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-    TAG="$(git describe --tags --exact-match HEAD 2>/dev/null || true)"
-  fi
-
-  if [[ -n "$TAG" ]]; then
-    # Use Python to robustly normalize titles to "<base> - Release <TAG>" for both languages
-    python - <<PY
-from pathlib import Path
-
-tag = "${TAG}"
-for conf_path in [Path("$IT_CONF"), Path("$EN_CONF")]:
-    text = conf_path.read_text(encoding="utf-8")
-    lines = text.splitlines()
-    for i, line in enumerate(lines):
-        if line.strip().startswith("settings_project_name"):
-            # Extract base before the first " - "
-            before_eq, _, value = line.partition("=")
-            value_str = value.strip().strip('"')
-            base = value_str.split(" - ", 1)[0]
-            lines[i] = f'{before_eq}= "{base} - Release {tag}"'
-            break
-    conf_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
-print(f"Applied release tag '{tag}' to document titles (local build)")
-PY
-  else
-    sed -i 's/\(settings_project_name = ".*\)"/\1 - Versione Corrente"/' "$IT_CONF"
-    sed -i 's/\(settings_project_name = ".*\)"/\1 - Editor'"'"'s Copy"/' "$EN_CONF"
-    echo "Applied editor/default titles for local build"
-  fi
-else
-  echo "PDF_SKIP_TITLE_EDIT set: leaving docs/en/conf.py and docs/it/conf.py unchanged"
+if [[ -n "${PDF_RELEASE_DATE:-}" ]]; then
+  echo "Using PDF release date override: ${PDF_RELEASE_DATE}"
 fi
 
 if ! command -v lualatex &>/dev/null; then
