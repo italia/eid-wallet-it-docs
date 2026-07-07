@@ -1,0 +1,79 @@
+@startuml
+title IT-Wallet Onboarding System Overview
+
+skinparam shadowing false
+skinparam defaultTextAlignment center
+skinparam packageStyle rectangle
+skinparam ArrowColor #555555
+skinparam rectangle {
+  BorderColor #333333
+}
+skinparam database {
+  BorderColor #333333
+}
+skinparam actor {
+  BorderColor #333333
+}
+
+actor "Entity\n(requesting onboarding)" as ent
+
+package "IT-Wallet Onboarding System" {
+
+  rectangle "Onboarding UI" as ui #D5E8D4
+
+  package "Administrative Process" {
+    rectangle "Supervisory Body" as adm #E1BEE7
+  }
+
+  package "Registration Process" {
+    rectangle "OID-FED Federation Authorities\n(Trust Anchor + Intermediates)\n-- national, mandatory --" as fed #BBDEFB
+    rectangle "Registrar\n(Registration Service)" as reg #C8E6C9
+    database "WRP Register\n(CIR 2025/848)" as wrpreg #C8E6C9
+  }
+
+  package "Certificate Issuance Process" {
+    rectangle "Provider of WRPAC" as wrpac #C8E6C9
+    rectangle "Provider of WRPRC" as wrprc #C8E6C9
+    rectangle "Signature / Seal\nCertificate Issuance" as sig #C8E6C9
+  }
+  
+  package "Registry Infrastructure" as reginf {
+    database "Claims Registry" as claims #FFF2CC
+    database "AS Registry" as asreg #FFF2CC
+    database "Digital Credentials Catalog" as cat #FFF2CC
+    database "Schema Registry" as schema #FFF2CC
+    database "Taxonomy" as tax #FFF2CC
+  }
+
+  package "Notification and Publication" {
+    rectangle "Publication Service" as pub #BBDEFB
+    database "Trusted Lists\n(LoTE / LOTL / EUMS TL)" as tl #BBDEFB
+  }
+
+}
+
+
+
+cloud "European\nCommission" as ec #EEEEEE
+
+ent --> ui : submit data,\nreceive artifacts
+
+ui --> adm : administrative\nrequest
+ui --> fed : OID-FED registration\n(every entity)
+ui --> reg : WRP registration\n(notified / cross-border)
+ui --> wrpac : request WRPAC
+ui ..> wrprc : request WRPRC\n(where mandated)
+ui --> pub : submit\nnotifiable data
+ui --> reginf : updates registry infrastructure
+
+
+reg --> wrpreg : write record\n(active)
+wrpac --> reg : verify status\n& consistency
+wrprc --> reg : verify status\n& consistency
+fed --> sig : issue X.509 /\nsigning certificate
+
+pub --> tl : sign & publish
+pub --> ec : notification
+
+adm ..> reginf : validate claims,\npurposes, schemas
+@enduml
